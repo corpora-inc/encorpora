@@ -1,0 +1,4013 @@
+{
+  "id": "two-way-row-percent--st",
+  "title": "Two-way tables",
+  "teaches": [
+    "two-way-missing",
+    "two-way-association-choice"
+  ],
+  "skill": "two-way-tables",
+  "cast": {
+    "teacher": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -4.1,
+          -4.2,
+          13.1,
+          6.2
+        ],
+        "points": {
+          "rowSevenA": [
+            0,
+            3
+          ],
+          "rowSevenB": [
+            11,
+            3
+          ],
+          "rowSevenC": [
+            11,
+            0
+          ],
+          "rowSevenD": [
+            0,
+            0
+          ],
+          "rowEightA": [
+            0,
+            -0.6
+          ],
+          "rowEightB": [
+            11,
+            -0.6
+          ],
+          "rowEightC": [
+            11,
+            -3.6
+          ],
+          "rowEightD": [
+            0,
+            -3.6
+          ],
+          "SplitTop": [
+            5.5,
+            3
+          ],
+          "SplitBottom": [
+            5.5,
+            -3.6
+          ],
+          "gradeSevenP": [
+            -0.3,
+            1.5
+          ],
+          "gradeEightP": [
+            -0.3,
+            -2.1
+          ],
+          "totalSevenP": [
+            12.1,
+            1.5
+          ],
+          "totalEightP": [
+            12.1,
+            -2.1
+          ],
+          "yesHeadP": [
+            2.75,
+            4.2
+          ],
+          "noHeadP": [
+            8.25,
+            4.2
+          ],
+          "P1": [
+            -0.68,
+            3.3
+          ],
+          "P2": [
+            0.06,
+            3.3
+          ],
+          "P3": [
+            0.8,
+            3.3
+          ],
+          "P4": [
+            1.54,
+            3.3
+          ],
+          "P5": [
+            2.28,
+            3.3
+          ],
+          "P6": [
+            3.02,
+            3.3
+          ],
+          "P7": [
+            3.76,
+            3.3
+          ],
+          "P8": [
+            4.5,
+            3.3
+          ],
+          "P9": [
+            5.24,
+            3.3
+          ],
+          "P10": [
+            5.98,
+            3.3
+          ],
+          "P11": [
+            6.72,
+            3.3
+          ],
+          "P12": [
+            7.46,
+            3.3
+          ],
+          "P13": [
+            8.2,
+            3.3
+          ],
+          "P14": [
+            8.94,
+            3.3
+          ],
+          "P15": [
+            9.68,
+            3.3
+          ],
+          "P16": [
+            -0.68,
+            2.15
+          ],
+          "P17": [
+            0.06,
+            2.15
+          ],
+          "P18": [
+            0.8,
+            2.15
+          ],
+          "P19": [
+            1.54,
+            2.15
+          ],
+          "P20": [
+            2.28,
+            2.15
+          ],
+          "P21": [
+            3.02,
+            2.15
+          ],
+          "P22": [
+            3.76,
+            2.15
+          ],
+          "P23": [
+            4.5,
+            2.15
+          ],
+          "P24": [
+            5.24,
+            2.15
+          ],
+          "P25": [
+            5.98,
+            2.15
+          ],
+          "P26": [
+            6.72,
+            2.15
+          ],
+          "P27": [
+            7.46,
+            2.15
+          ],
+          "P28": [
+            8.2,
+            2.15
+          ],
+          "P29": [
+            8.94,
+            2.15
+          ],
+          "P30": [
+            9.68,
+            2.15
+          ],
+          "P31": [
+            -0.68,
+            1.0
+          ],
+          "P32": [
+            0.06,
+            1.0
+          ],
+          "P33": [
+            0.8,
+            1.0
+          ],
+          "P34": [
+            1.54,
+            1.0
+          ],
+          "P35": [
+            2.28,
+            1.0
+          ],
+          "P36": [
+            3.02,
+            1.0
+          ],
+          "P37": [
+            3.76,
+            1.0
+          ],
+          "P38": [
+            4.5,
+            1.0
+          ],
+          "P39": [
+            5.24,
+            1.0
+          ],
+          "P40": [
+            5.98,
+            1.0
+          ],
+          "P41": [
+            6.72,
+            1.0
+          ],
+          "P42": [
+            7.46,
+            1.0
+          ],
+          "P43": [
+            8.2,
+            1.0
+          ],
+          "P44": [
+            8.94,
+            1.0
+          ],
+          "P45": [
+            9.68,
+            1.0
+          ],
+          "P46": [
+            -0.68,
+            -0.15
+          ],
+          "P47": [
+            0.06,
+            -0.15
+          ],
+          "P48": [
+            0.8,
+            -0.15
+          ],
+          "P49": [
+            1.54,
+            -0.15
+          ],
+          "P50": [
+            2.28,
+            -0.15
+          ],
+          "P51": [
+            3.02,
+            -0.15
+          ],
+          "P52": [
+            3.76,
+            -0.15
+          ],
+          "P53": [
+            4.5,
+            -0.15
+          ],
+          "P54": [
+            5.24,
+            -0.15
+          ],
+          "P55": [
+            5.98,
+            -0.15
+          ],
+          "P56": [
+            6.72,
+            -0.15
+          ],
+          "P57": [
+            7.46,
+            -0.15
+          ],
+          "P58": [
+            8.2,
+            -0.15
+          ],
+          "P59": [
+            8.94,
+            -0.15
+          ],
+          "P60": [
+            9.68,
+            -0.15
+          ],
+          "P61": [
+            -0.68,
+            -1.3
+          ],
+          "P62": [
+            0.06,
+            -1.3
+          ],
+          "P63": [
+            0.8,
+            -1.3
+          ],
+          "P64": [
+            1.54,
+            -1.3
+          ],
+          "P65": [
+            2.28,
+            -1.3
+          ],
+          "P66": [
+            3.02,
+            -1.3
+          ],
+          "P67": [
+            3.76,
+            -1.3
+          ],
+          "P68": [
+            4.5,
+            -1.3
+          ],
+          "P69": [
+            5.24,
+            -1.3
+          ],
+          "P70": [
+            5.98,
+            -1.3
+          ],
+          "P71": [
+            6.72,
+            -1.3
+          ],
+          "P72": [
+            7.46,
+            -1.3
+          ],
+          "P73": [
+            8.2,
+            -1.3
+          ],
+          "P74": [
+            8.94,
+            -1.3
+          ],
+          "P75": [
+            9.68,
+            -1.3
+          ],
+          "nSYP": [
+            2.75,
+            1.5
+          ],
+          "nSNP": [
+            8.25,
+            1.5
+          ],
+          "nEYP": [
+            2.75,
+            -2.1
+          ],
+          "nENP": [
+            8.25,
+            -2.1
+          ],
+          "curfewTitleP": [
+            5.5,
+            5.6
+          ]
+        },
+        "parts": [
+          {
+            "id": "rowSeven",
+            "poly": [
+              "rowSevenA",
+              "rowSevenB",
+              "rowSevenC",
+              "rowSevenD"
+            ],
+            "fill": "none",
+            "ink": "muted"
+          },
+          {
+            "id": "rowEight",
+            "poly": [
+              "rowEightA",
+              "rowEightB",
+              "rowEightC",
+              "rowEightD"
+            ],
+            "fill": "none",
+            "ink": "muted"
+          },
+          {
+            "id": "split",
+            "seg": [
+              "SplitTop",
+              "SplitBottom"
+            ],
+            "ink": "muted",
+            "dash": true
+          },
+          {
+            "id": "gradeSeven",
+            "label": "\\text{Grade 7}",
+            "at": "gradeSevenP",
+            "dir": "w",
+            "size": "m"
+          },
+          {
+            "id": "gradeEight",
+            "label": "\\text{Grade 8}",
+            "at": "gradeEightP",
+            "dir": "w",
+            "size": "m"
+          },
+          {
+            "id": "totalSeven",
+            "label": "25",
+            "at": "totalSevenP",
+            "dir": "c",
+            "size": "l"
+          },
+          {
+            "id": "totalEight",
+            "label": "50",
+            "at": "totalEightP",
+            "dir": "c",
+            "size": "l"
+          },
+          {
+            "id": "yesHead",
+            "label": "\\text{Yes}",
+            "at": "yesHeadP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "noHead",
+            "label": "\\text{No}",
+            "at": "noHeadP",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm"
+          },
+          {
+            "id": "student1",
+            "group": "students",
+            "dot": "P1",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student2",
+            "group": "students",
+            "dot": "P2",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student3",
+            "group": "students",
+            "dot": "P3",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student4",
+            "group": "students",
+            "dot": "P4",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student5",
+            "group": "students",
+            "dot": "P5",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student6",
+            "group": "students",
+            "dot": "P6",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student7",
+            "group": "students",
+            "dot": "P7",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student8",
+            "group": "students",
+            "dot": "P8",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student9",
+            "group": "students",
+            "dot": "P9",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student10",
+            "group": "students",
+            "dot": "P10",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student11",
+            "group": "students",
+            "dot": "P11",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student12",
+            "group": "students",
+            "dot": "P12",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student13",
+            "group": "students",
+            "dot": "P13",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student14",
+            "group": "students",
+            "dot": "P14",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student15",
+            "group": "students",
+            "dot": "P15",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student16",
+            "group": "students",
+            "dot": "P16",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student17",
+            "group": "students",
+            "dot": "P17",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student18",
+            "group": "students",
+            "dot": "P18",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student19",
+            "group": "students",
+            "dot": "P19",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student20",
+            "group": "students",
+            "dot": "P20",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student21",
+            "group": "students",
+            "dot": "P21",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student22",
+            "group": "students",
+            "dot": "P22",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student23",
+            "group": "students",
+            "dot": "P23",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student24",
+            "group": "students",
+            "dot": "P24",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student25",
+            "group": "students",
+            "dot": "P25",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student26",
+            "group": "students",
+            "dot": "P26",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student27",
+            "group": "students",
+            "dot": "P27",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student28",
+            "group": "students",
+            "dot": "P28",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student29",
+            "group": "students",
+            "dot": "P29",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student30",
+            "group": "students",
+            "dot": "P30",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student31",
+            "group": "students",
+            "dot": "P31",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student32",
+            "group": "students",
+            "dot": "P32",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student33",
+            "group": "students",
+            "dot": "P33",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student34",
+            "group": "students",
+            "dot": "P34",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student35",
+            "group": "students",
+            "dot": "P35",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student36",
+            "group": "students",
+            "dot": "P36",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student37",
+            "group": "students",
+            "dot": "P37",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student38",
+            "group": "students",
+            "dot": "P38",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student39",
+            "group": "students",
+            "dot": "P39",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student40",
+            "group": "students",
+            "dot": "P40",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student41",
+            "group": "students",
+            "dot": "P41",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student42",
+            "group": "students",
+            "dot": "P42",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student43",
+            "group": "students",
+            "dot": "P43",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student44",
+            "group": "students",
+            "dot": "P44",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student45",
+            "group": "students",
+            "dot": "P45",
+            "r": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "student46",
+            "group": "students",
+            "dot": "P46",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student47",
+            "group": "students",
+            "dot": "P47",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student48",
+            "group": "students",
+            "dot": "P48",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student49",
+            "group": "students",
+            "dot": "P49",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student50",
+            "group": "students",
+            "dot": "P50",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student51",
+            "group": "students",
+            "dot": "P51",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student52",
+            "group": "students",
+            "dot": "P52",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student53",
+            "group": "students",
+            "dot": "P53",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student54",
+            "group": "students",
+            "dot": "P54",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student55",
+            "group": "students",
+            "dot": "P55",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student56",
+            "group": "students",
+            "dot": "P56",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student57",
+            "group": "students",
+            "dot": "P57",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student58",
+            "group": "students",
+            "dot": "P58",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student59",
+            "group": "students",
+            "dot": "P59",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student60",
+            "group": "students",
+            "dot": "P60",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student61",
+            "group": "students",
+            "dot": "P61",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student62",
+            "group": "students",
+            "dot": "P62",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student63",
+            "group": "students",
+            "dot": "P63",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student64",
+            "group": "students",
+            "dot": "P64",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student65",
+            "group": "students",
+            "dot": "P65",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student66",
+            "group": "students",
+            "dot": "P66",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student67",
+            "group": "students",
+            "dot": "P67",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student68",
+            "group": "students",
+            "dot": "P68",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student69",
+            "group": "students",
+            "dot": "P69",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student70",
+            "group": "students",
+            "dot": "P70",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student71",
+            "group": "students",
+            "dot": "P71",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student72",
+            "group": "students",
+            "dot": "P72",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student73",
+            "group": "students",
+            "dot": "P73",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student74",
+            "group": "students",
+            "dot": "P74",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "student75",
+            "group": "students",
+            "dot": "P75",
+            "r": 10,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "nSY",
+            "label": "20",
+            "at": "nSYP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent"
+          },
+          {
+            "id": "nSN",
+            "label": "5",
+            "at": "nSNP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "warm"
+          },
+          {
+            "id": "nEY",
+            "label": "20",
+            "at": "nEYP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent"
+          },
+          {
+            "id": "nEN",
+            "label": "30",
+            "at": "nENP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "warm"
+          },
+          {
+            "id": "curfewTitle",
+            "label": "\\text{Has a curfew?}",
+            "at": "curfewTitleP",
+            "size": "l",
+            "dir": "c"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A two-way table sorts the same people by two questions at once. Find a group's percent, then compare groups to see whether their answers are linked.",
+          "do": [
+            {
+              "do": "header",
+              "text": "Two-way tables"
+            },
+            {
+              "do": "text",
+              "text": "Same people. Two questions.",
+              "at": "same"
+            },
+            {
+              "do": "text",
+              "text": "Find a share. Compare groups.",
+              "at": "Find"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Seventy-five students. One dot each. We ask two questions: which grade, and do you have a curfew?",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "The same students, sorted two ways"
+            },
+            {
+              "do": "text",
+              "text": "75 students • one dot each"
+            },
+            {
+              "do": "text",
+              "text": "Grade? Curfew?",
+              "at": "questions"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "First, grade: twenty-five seventh graders and fifty eighth graders.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "P1": [
+                  0.7,
+                  1.82
+                ],
+                "P2": [
+                  1.5,
+                  1.82
+                ],
+                "P3": [
+                  2.3,
+                  1.82
+                ],
+                "P4": [
+                  3.1,
+                  1.82
+                ],
+                "P5": [
+                  3.9,
+                  1.82
+                ],
+                "P6": [
+                  4.7,
+                  1.82
+                ],
+                "P7": [
+                  5.5,
+                  1.82
+                ],
+                "P8": [
+                  6.3,
+                  1.82
+                ],
+                "P9": [
+                  7.1,
+                  1.82
+                ],
+                "P10": [
+                  7.9,
+                  1.82
+                ],
+                "P11": [
+                  8.7,
+                  1.82
+                ],
+                "P12": [
+                  9.5,
+                  1.82
+                ],
+                "P13": [
+                  10.3,
+                  1.82
+                ],
+                "P14": [
+                  1.1,
+                  1.18
+                ],
+                "P15": [
+                  1.9,
+                  1.18
+                ],
+                "P16": [
+                  2.7,
+                  1.18
+                ],
+                "P17": [
+                  3.5,
+                  1.18
+                ],
+                "P18": [
+                  4.3,
+                  1.18
+                ],
+                "P19": [
+                  5.1,
+                  1.18
+                ],
+                "P20": [
+                  5.9,
+                  1.18
+                ],
+                "P21": [
+                  6.7,
+                  1.18
+                ],
+                "P22": [
+                  7.5,
+                  1.18
+                ],
+                "P23": [
+                  8.3,
+                  1.18
+                ],
+                "P24": [
+                  9.1,
+                  1.18
+                ],
+                "P25": [
+                  9.9,
+                  1.18
+                ],
+                "P26": [
+                  0.7,
+                  -1.14
+                ],
+                "P27": [
+                  1.5,
+                  -1.14
+                ],
+                "P28": [
+                  2.3,
+                  -1.14
+                ],
+                "P29": [
+                  3.1,
+                  -1.14
+                ],
+                "P30": [
+                  3.9,
+                  -1.14
+                ],
+                "P31": [
+                  4.7,
+                  -1.14
+                ],
+                "P32": [
+                  5.5,
+                  -1.14
+                ],
+                "P33": [
+                  6.3,
+                  -1.14
+                ],
+                "P34": [
+                  7.1,
+                  -1.14
+                ],
+                "P35": [
+                  7.9,
+                  -1.14
+                ],
+                "P36": [
+                  8.7,
+                  -1.14
+                ],
+                "P37": [
+                  9.5,
+                  -1.14
+                ],
+                "P38": [
+                  10.3,
+                  -1.14
+                ],
+                "P39": [
+                  0.7,
+                  -1.78
+                ],
+                "P40": [
+                  1.5,
+                  -1.78
+                ],
+                "P41": [
+                  2.3,
+                  -1.78
+                ],
+                "P42": [
+                  3.1,
+                  -1.78
+                ],
+                "P43": [
+                  3.9,
+                  -1.78
+                ],
+                "P44": [
+                  4.7,
+                  -1.78
+                ],
+                "P45": [
+                  5.5,
+                  -1.78
+                ],
+                "P46": [
+                  6.3,
+                  -1.78
+                ],
+                "P47": [
+                  7.1,
+                  -1.78
+                ],
+                "P48": [
+                  7.9,
+                  -1.78
+                ],
+                "P49": [
+                  8.7,
+                  -1.78
+                ],
+                "P50": [
+                  9.5,
+                  -1.78
+                ],
+                "P51": [
+                  10.3,
+                  -1.78
+                ],
+                "P52": [
+                  0.7,
+                  -2.42
+                ],
+                "P53": [
+                  1.5,
+                  -2.42
+                ],
+                "P54": [
+                  2.3,
+                  -2.42
+                ],
+                "P55": [
+                  3.1,
+                  -2.42
+                ],
+                "P56": [
+                  3.9,
+                  -2.42
+                ],
+                "P57": [
+                  4.7,
+                  -2.42
+                ],
+                "P58": [
+                  5.5,
+                  -2.42
+                ],
+                "P59": [
+                  6.3,
+                  -2.42
+                ],
+                "P60": [
+                  7.1,
+                  -2.42
+                ],
+                "P61": [
+                  7.9,
+                  -2.42
+                ],
+                "P62": [
+                  8.7,
+                  -2.42
+                ],
+                "P63": [
+                  9.5,
+                  -2.42
+                ],
+                "P64": [
+                  10.3,
+                  -2.42
+                ],
+                "P65": [
+                  1.5,
+                  -3.06
+                ],
+                "P66": [
+                  2.3,
+                  -3.06
+                ],
+                "P67": [
+                  3.1,
+                  -3.06
+                ],
+                "P68": [
+                  3.9,
+                  -3.06
+                ],
+                "P69": [
+                  4.7,
+                  -3.06
+                ],
+                "P70": [
+                  5.5,
+                  -3.06
+                ],
+                "P71": [
+                  6.3,
+                  -3.06
+                ],
+                "P72": [
+                  7.1,
+                  -3.06
+                ],
+                "P73": [
+                  7.9,
+                  -3.06
+                ],
+                "P74": [
+                  8.7,
+                  -3.06
+                ],
+                "P75": [
+                  9.5,
+                  -3.06
+                ]
+              },
+              "at": "grade",
+              "dur": 2.5
+            },
+            {
+              "do": "show",
+              "target": [
+                "rowSeven",
+                "rowEight",
+                "gradeSeven",
+                "gradeEight"
+              ],
+              "at": "grade"
+            },
+            {
+              "do": "show",
+              "target": "totalSeven",
+              "at": "twenty-five"
+            },
+            {
+              "do": "show",
+              "target": "totalEight",
+              "at": "fifty"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Then, within each grade, curfew: yes or no. Each student lands in exactly one cell.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Each cell matches both answers."
+            },
+            {
+              "do": "show",
+              "target": [
+                "yesHead",
+                "noHead",
+                "split",
+                "curfewTitle"
+              ],
+              "at": "curfew"
+            },
+            {
+              "do": "move",
+              "points": {
+                "P1": [
+                  0.71,
+                  2.16
+                ],
+                "P2": [
+                  1.73,
+                  2.16
+                ],
+                "P3": [
+                  2.75,
+                  2.16
+                ],
+                "P4": [
+                  3.77,
+                  2.16
+                ],
+                "P5": [
+                  4.79,
+                  2.16
+                ],
+                "P6": [
+                  0.71,
+                  1.72
+                ],
+                "P7": [
+                  1.73,
+                  1.72
+                ],
+                "P8": [
+                  2.75,
+                  1.72
+                ],
+                "P9": [
+                  3.77,
+                  1.72
+                ],
+                "P10": [
+                  4.79,
+                  1.72
+                ],
+                "P11": [
+                  0.71,
+                  1.28
+                ],
+                "P12": [
+                  1.73,
+                  1.28
+                ],
+                "P13": [
+                  2.75,
+                  1.28
+                ],
+                "P14": [
+                  3.77,
+                  1.28
+                ],
+                "P15": [
+                  4.79,
+                  1.28
+                ],
+                "P16": [
+                  0.71,
+                  0.84
+                ],
+                "P17": [
+                  1.73,
+                  0.84
+                ],
+                "P18": [
+                  2.75,
+                  0.84
+                ],
+                "P19": [
+                  3.77,
+                  0.84
+                ],
+                "P20": [
+                  4.79,
+                  0.84
+                ],
+                "P21": [
+                  6.21,
+                  1.5
+                ],
+                "P22": [
+                  7.23,
+                  1.5
+                ],
+                "P23": [
+                  8.25,
+                  1.5
+                ],
+                "P24": [
+                  9.27,
+                  1.5
+                ],
+                "P25": [
+                  10.29,
+                  1.5
+                ],
+                "P26": [
+                  0.71,
+                  -1.44
+                ],
+                "P27": [
+                  1.73,
+                  -1.44
+                ],
+                "P28": [
+                  2.75,
+                  -1.44
+                ],
+                "P29": [
+                  3.77,
+                  -1.44
+                ],
+                "P30": [
+                  4.79,
+                  -1.44
+                ],
+                "P31": [
+                  0.71,
+                  -1.88
+                ],
+                "P32": [
+                  1.73,
+                  -1.88
+                ],
+                "P33": [
+                  2.75,
+                  -1.88
+                ],
+                "P34": [
+                  3.77,
+                  -1.88
+                ],
+                "P35": [
+                  4.79,
+                  -1.88
+                ],
+                "P36": [
+                  0.71,
+                  -2.32
+                ],
+                "P37": [
+                  1.73,
+                  -2.32
+                ],
+                "P38": [
+                  2.75,
+                  -2.32
+                ],
+                "P39": [
+                  3.77,
+                  -2.32
+                ],
+                "P40": [
+                  4.79,
+                  -2.32
+                ],
+                "P41": [
+                  0.71,
+                  -2.76
+                ],
+                "P42": [
+                  1.73,
+                  -2.76
+                ],
+                "P43": [
+                  2.75,
+                  -2.76
+                ],
+                "P44": [
+                  3.77,
+                  -2.76
+                ],
+                "P45": [
+                  4.79,
+                  -2.76
+                ],
+                "P46": [
+                  6.21,
+                  -1.0
+                ],
+                "P47": [
+                  7.23,
+                  -1.0
+                ],
+                "P48": [
+                  8.25,
+                  -1.0
+                ],
+                "P49": [
+                  9.27,
+                  -1.0
+                ],
+                "P50": [
+                  10.29,
+                  -1.0
+                ],
+                "P51": [
+                  6.21,
+                  -1.44
+                ],
+                "P52": [
+                  7.23,
+                  -1.44
+                ],
+                "P53": [
+                  8.25,
+                  -1.44
+                ],
+                "P54": [
+                  9.27,
+                  -1.44
+                ],
+                "P55": [
+                  10.29,
+                  -1.44
+                ],
+                "P56": [
+                  6.21,
+                  -1.88
+                ],
+                "P57": [
+                  7.23,
+                  -1.88
+                ],
+                "P58": [
+                  8.25,
+                  -1.88
+                ],
+                "P59": [
+                  9.27,
+                  -1.88
+                ],
+                "P60": [
+                  10.29,
+                  -1.88
+                ],
+                "P61": [
+                  6.21,
+                  -2.32
+                ],
+                "P62": [
+                  7.23,
+                  -2.32
+                ],
+                "P63": [
+                  8.25,
+                  -2.32
+                ],
+                "P64": [
+                  9.27,
+                  -2.32
+                ],
+                "P65": [
+                  10.29,
+                  -2.32
+                ],
+                "P66": [
+                  6.21,
+                  -2.76
+                ],
+                "P67": [
+                  7.23,
+                  -2.76
+                ],
+                "P68": [
+                  8.25,
+                  -2.76
+                ],
+                "P69": [
+                  9.27,
+                  -2.76
+                ],
+                "P70": [
+                  10.29,
+                  -2.76
+                ],
+                "P71": [
+                  6.21,
+                  -3.2
+                ],
+                "P72": [
+                  7.23,
+                  -3.2
+                ],
+                "P73": [
+                  8.25,
+                  -3.2
+                ],
+                "P74": [
+                  9.27,
+                  -3.2
+                ],
+                "P75": [
+                  10.29,
+                  -3.2
+                ]
+              },
+              "at": "yes",
+              "dur": 3
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Count the dots, and we have a two-way table.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "hide",
+              "target": "students",
+              "at": "table",
+              "dur": 1
+            },
+            {
+              "do": "show",
+              "target": [
+                "nSY",
+                "nSN",
+                "nEY",
+                "nEN"
+              ],
+              "at": "table",
+              "dur": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.3,
+          -3.9,
+          12.5,
+          4
+        ],
+        "points": {
+          "T": [
+            0,
+            3.2
+          ]
+        },
+        "parts": [
+          {
+            "id": "t",
+            "table": true,
+            "at": "T",
+            "head": [
+              "Yes",
+              "No",
+              "Total"
+            ],
+            "rows": [
+              {
+                "label": "Grade 7",
+                "cells": [
+                  "20",
+                  "5",
+                  "25"
+                ]
+              },
+              {
+                "label": "Grade 8",
+                "cells": [
+                  "20",
+                  "30",
+                  "50"
+                ]
+              },
+              {
+                "label": "Total",
+                "cells": [
+                  "40",
+                  "35",
+                  "75"
+                ]
+              }
+            ],
+            "cell": [
+              2.8,
+              1.55
+            ],
+            "labelW": 3.2,
+            "corner": "Curfew?",
+            "totals": true,
+            "size": "l",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "The counts across each row make its total. Twenty plus five makes twenty-five.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "A row is one group"
+            },
+            {
+              "do": "given",
+              "target": "t.row.1"
+            },
+            {
+              "do": "write",
+              "tex": "20+5=25",
+              "at": "Twenty"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "For eighth grade, fifty altogether and twenty yes leaves thirty without a curfew.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Whole row: 50 students"
+            },
+            {
+              "do": "given",
+              "target": "t.row.2"
+            },
+            {
+              "do": "hide",
+              "target": "t.cell.2.2"
+            },
+            {
+              "do": "write",
+              "tex": "50-20=30",
+              "at": "thirty"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.2.2",
+              "at": "thirty"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "What percent of the seventh graders have a curfew?",
+          "pause": 1.2,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "given",
+              "target": "t"
+            },
+            {
+              "do": "header",
+              "text": "What percent of Grade 7 has a curfew?"
+            },
+            {
+              "do": "given",
+              "target": "t.row.1",
+              "at": "seventh"
+            },
+            {
+              "do": "text",
+              "text": "Choose the whole first.",
+              "at": "seventh"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The question names seventh graders. Their whole is twenty-five; twenty of them have a curfew.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "t.cell.1.3",
+              "at": "twenty-five"
+            },
+            {
+              "do": "text",
+              "text": "Whole: all 25 seventh graders",
+              "at": "whole"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.1.1",
+              "at": "twenty"
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{20}{25}",
+              "at": "twenty"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.4,
+          -3.2,
+          10.4,
+          4
+        ],
+        "points": {
+          "sevenL": [
+            0,
+            2.7
+          ],
+          "sevenLB": [
+            0,
+            1.4500000000000002
+          ],
+          "sevenM": [
+            4,
+            2.7
+          ],
+          "sevenMB": [
+            4,
+            1.4500000000000002
+          ],
+          "sevenR": [
+            5,
+            2.7
+          ],
+          "sevenRB": [
+            5,
+            1.4500000000000002
+          ],
+          "sevenNameP": [
+            1.5,
+            3.35
+          ],
+          "sevenTotalP": [
+            2.5,
+            0.8500000000000001
+          ],
+          "sevenCountP": [
+            2,
+            2.075
+          ],
+          "sevenPercentP": [
+            2,
+            2.075
+          ],
+          "sevenWholeP": [
+            9,
+            3.35
+          ],
+          "eightL": [
+            0,
+            -0.6
+          ],
+          "eightLB": [
+            0,
+            -1.85
+          ],
+          "eightM": [
+            4,
+            -0.6
+          ],
+          "eightMB": [
+            4,
+            -1.85
+          ],
+          "eightR": [
+            10,
+            -0.6
+          ],
+          "eightRB": [
+            10,
+            -1.85
+          ],
+          "eightNameP": [
+            1.5,
+            0.050000000000000044
+          ],
+          "eightTotalP": [
+            5,
+            -2.45
+          ],
+          "eightCountP": [
+            2,
+            -1.225
+          ],
+          "eightPercentP": [
+            2,
+            -1.225
+          ],
+          "eightWholeP": [
+            9,
+            0.050000000000000044
+          ]
+        },
+        "parts": [
+          {
+            "id": "sevenYes",
+            "poly": [
+              "sevenL",
+              "sevenM",
+              "sevenMB",
+              "sevenLB"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "sevenNo",
+            "poly": [
+              "sevenM",
+              "sevenR",
+              "sevenRB",
+              "sevenMB"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "sevenName",
+            "label": "\\text{Grade 7}",
+            "at": "sevenNameP",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "sevenTotal",
+            "label": "25\\text{ students}",
+            "at": "sevenTotalP",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "sevenCount",
+            "label": "20",
+            "at": "sevenCountP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "sevenPercent",
+            "label": "80\\%",
+            "at": "sevenPercentP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "sevenWhole",
+            "label": "100\\%",
+            "at": "sevenWholeP",
+            "dir": "c",
+            "size": "m",
+            "start": false
+          },
+          {
+            "id": "eightYes",
+            "poly": [
+              "eightL",
+              "eightM",
+              "eightMB",
+              "eightLB"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "eightNo",
+            "poly": [
+              "eightM",
+              "eightR",
+              "eightRB",
+              "eightMB"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "eightName",
+            "label": "\\text{Grade 8}",
+            "at": "eightNameP",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "eightTotal",
+            "label": "50\\text{ students}",
+            "at": "eightTotalP",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "eightCount",
+            "label": "20",
+            "at": "eightCountP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "eightPercent",
+            "label": "40\\%",
+            "at": "eightPercentP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "eightWhole",
+            "label": "100\\%",
+            "at": "eightWholeP",
+            "dir": "c",
+            "size": "m",
+            "start": false
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Draw each row as a bar. Fifty students makes a bar twice as long as twenty-five.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "What percent of Grade 7 has a curfew?"
+            },
+            {
+              "do": "text",
+              "text": "Green: has a curfew"
+            },
+            {
+              "do": "text",
+              "text": "Orange: no curfew"
+            },
+            {
+              "do": "highlight",
+              "target": "eightTotal",
+              "at": "Fifty"
+            },
+            {
+              "do": "highlight",
+              "target": "sevenTotal",
+              "at": "twenty-five"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The green parts both count twenty. Same count. But do they fill the same share of their groups?",
+          "pause": 1.3,
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "sevenYes",
+                "eightYes"
+              ],
+              "at": "twenty"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Stretch the shorter bar. Its green and orange parts stretch together.",
+          "pause": 3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Make the wholes the same length."
+            },
+            {
+              "do": "hide",
+              "target": [
+                "sevenCount",
+                "eightCount"
+              ],
+              "at": "Stretch",
+              "dur": 0.5
+            },
+            {
+              "do": "move",
+              "points": {
+                "sevenM": [
+                  8,
+                  2.7
+                ],
+                "sevenMB": [
+                  8,
+                  1.45
+                ],
+                "sevenR": [
+                  10,
+                  2.7
+                ],
+                "sevenRB": [
+                  10,
+                  1.45
+                ],
+                "sevenPercentP": [
+                  4,
+                  2.075
+                ],
+                "sevenTotalP": [
+                  5,
+                  0.85
+                ]
+              },
+              "at": "Stretch",
+              "dur": 5.5
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Each full bar is one hundred percent of its own grade. No students were added; only the drawing's scale changed.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "sevenWhole",
+                "eightWhole"
+              ],
+              "at": "hundred"
+            },
+            {
+              "do": "text",
+              "text": "Each bar = its own whole",
+              "at": "own"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Look at the green: eighty percent of seventh graders, but forty percent of eighth graders.",
+          "pause": 1.1,
+          "do": [
+            {
+              "do": "show",
+              "target": "sevenPercent",
+              "at": "eighty"
+            },
+            {
+              "do": "show",
+              "target": "eightPercent",
+              "at": "forty"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Percent means out of one hundred. Twenty out of twenty-five equals eighty out of one hundred: eighty percent.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "What percent of Grade 7 has a curfew?"
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{20}{25}=\\frac{20\\times4}{25\\times4}",
+              "at": "Twenty"
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{80}{100}=80\\%",
+              "at": "eighty"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "For eighth graders, twenty out of fifty equals forty out of one hundred: forty percent.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "What percent of Grade 8 has a curfew?"
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{20}{50}=\\frac{20\\times2}{50\\times2}",
+              "at": "twenty"
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{40}{100}=40\\%",
+              "at": "forty"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.3,
+          -3.9,
+          12.5,
+          4
+        ],
+        "points": {
+          "T": [
+            0,
+            3.2
+          ]
+        },
+        "parts": [
+          {
+            "id": "t",
+            "table": true,
+            "at": "T",
+            "head": [
+              "Yes",
+              "No",
+              "Total"
+            ],
+            "rows": [
+              {
+                "label": "Grade 7",
+                "cells": [
+                  "20",
+                  "5",
+                  "25"
+                ]
+              },
+              {
+                "label": "Grade 8",
+                "cells": [
+                  "20",
+                  "30",
+                  "50"
+                ]
+              },
+              {
+                "label": "Total",
+                "cells": [
+                  "40",
+                  "35",
+                  "75"
+                ]
+              }
+            ],
+            "cell": [
+              2.8,
+              1.55
+            ],
+            "labelW": 3.2,
+            "corner": "Curfew?",
+            "totals": true,
+            "size": "l",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Why not divide twenty by seventy-five? That uses all students as the whole.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "What percent of Grade 7 has a curfew?"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.3.3",
+              "at": "seventy-five"
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{20}{75}\\approx27\\%",
+              "at": "seventy-five"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "About twenty-seven percent of all students are seventh graders with a curfew. That's a different question.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "t.cell.1.1",
+              "at": "seventh"
+            },
+            {
+              "do": "text",
+              "text": "Of all students: in Grade 7 AND has a curfew."
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "For the percent within seventh grade, use twenty-five underneath. Divide the matching count by the group's total, then multiply by one hundred.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "given",
+              "target": "t.row.1",
+              "at": "seventh"
+            },
+            {
+              "do": "text",
+              "text": "Of Grade 7: has a curfew."
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{20}{25}\\times100=80",
+              "at": "twenty-five"
+            },
+            {
+              "do": "answer",
+              "tex": "80\\%",
+              "at": "hundred"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.4,
+          -3.4,
+          12.2,
+          4.2
+        ],
+        "points": {
+          "sevenL": [
+            0,
+            2.7
+          ],
+          "sevenLB": [
+            0,
+            1.4500000000000002
+          ],
+          "sevenM": [
+            7.5,
+            2.7
+          ],
+          "sevenMB": [
+            7.5,
+            1.4500000000000002
+          ],
+          "sevenR": [
+            10.0,
+            2.7
+          ],
+          "sevenRB": [
+            10.0,
+            1.4500000000000002
+          ],
+          "sevenNameP": [
+            2,
+            3.35
+          ],
+          "sevenTotalP": [
+            5.0,
+            0.8500000000000001
+          ],
+          "sevenCountP": [
+            3.75,
+            2.075
+          ],
+          "sevenPercentP": [
+            3.75,
+            2.075
+          ],
+          "sevenWholeP": [
+            9,
+            3.35
+          ],
+          "eightL": [
+            0,
+            -0.6
+          ],
+          "eightLB": [
+            0,
+            -1.85
+          ],
+          "eightM": [
+            2.0,
+            -0.6
+          ],
+          "eightMB": [
+            2.0,
+            -1.85
+          ],
+          "eightR": [
+            5.0,
+            -0.6
+          ],
+          "eightRB": [
+            5.0,
+            -1.85
+          ],
+          "eightNameP": [
+            2,
+            0.050000000000000044
+          ],
+          "eightTotalP": [
+            2.5,
+            -2.45
+          ],
+          "eightCountP": [
+            1.0,
+            -1.225
+          ],
+          "eightPercentP": [
+            2.0,
+            -1.225
+          ],
+          "eightWholeP": [
+            9,
+            0.050000000000000044
+          ],
+          "T": [
+            0,
+            3.4
+          ]
+        },
+        "parts": [
+          {
+            "id": "t",
+            "table": true,
+            "at": "T",
+            "head": [
+              "Yes",
+              "No",
+              "Total"
+            ],
+            "rows": [
+              {
+                "label": "Dog owner",
+                "cells": [
+                  "30",
+                  "10",
+                  "40"
+                ]
+              },
+              {
+                "label": "No dog",
+                "cells": [
+                  "8",
+                  "12",
+                  "20"
+                ]
+              },
+              {
+                "label": "Total",
+                "cells": [
+                  "38",
+                  "22",
+                  "60"
+                ]
+              }
+            ],
+            "cell": [
+              2.8,
+              1.55
+            ],
+            "labelW": 3.2,
+            "corner": "Walk daily?",
+            "totals": true,
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "sevenYes",
+            "poly": [
+              "sevenL",
+              "sevenM",
+              "sevenMB",
+              "sevenLB"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "sevenNo",
+            "poly": [
+              "sevenM",
+              "sevenR",
+              "sevenRB",
+              "sevenMB"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "start": false
+          },
+          {
+            "id": "sevenName",
+            "label": "\\text{Dog owner}",
+            "at": "sevenNameP",
+            "dir": "c",
+            "size": "m",
+            "start": false
+          },
+          {
+            "id": "sevenTotal",
+            "label": "40\\text{ adults}",
+            "at": "sevenTotalP",
+            "dir": "c",
+            "size": "m",
+            "start": false
+          },
+          {
+            "id": "sevenCount",
+            "label": "30",
+            "at": "sevenCountP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sevenPercent",
+            "label": "75\\%",
+            "at": "sevenPercentP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "sevenWhole",
+            "label": "100\\%",
+            "at": "sevenWholeP",
+            "dir": "c",
+            "size": "m",
+            "start": false
+          },
+          {
+            "id": "eightYes",
+            "poly": [
+              "eightL",
+              "eightM",
+              "eightMB",
+              "eightLB"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "eightNo",
+            "poly": [
+              "eightM",
+              "eightR",
+              "eightRB",
+              "eightMB"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "start": false
+          },
+          {
+            "id": "eightName",
+            "label": "\\text{No dog}",
+            "at": "eightNameP",
+            "dir": "c",
+            "size": "m",
+            "start": false
+          },
+          {
+            "id": "eightTotal",
+            "label": "20\\text{ adults}",
+            "at": "eightTotalP",
+            "dir": "c",
+            "size": "m",
+            "start": false
+          },
+          {
+            "id": "eightCount",
+            "label": "8",
+            "at": "eightCountP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "eightPercent",
+            "label": "40\\%",
+            "at": "eightPercentP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "eightWhole",
+            "label": "100\\%",
+            "at": "eightWholeP",
+            "dir": "c",
+            "size": "m",
+            "start": false
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Of adults without a dog, what percent walk daily? Eight out of twenty.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Of adults without a dog, what percent walk daily?"
+            },
+            {
+              "do": "given",
+              "target": "t.row.2",
+              "at": "without"
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{8}{20}",
+              "at": "Eight"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Stretch to equal wholes: forty percent without a dog; seventy-five percent with one.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "given",
+              "target": "t"
+            },
+            {
+              "do": "hide",
+              "target": "t",
+              "at": "Stretch",
+              "dur": 0.4
+            },
+            {
+              "do": "show",
+              "target": [
+                "sevenYes",
+                "sevenNo",
+                "sevenName",
+                "sevenTotal",
+                "eightYes",
+                "eightNo",
+                "eightName",
+                "eightTotal"
+              ],
+              "at": "Stretch",
+              "dur": 0.4
+            },
+            {
+              "do": "text",
+              "text": "Green: walks daily",
+              "at": "Stretch"
+            },
+            {
+              "do": "move",
+              "points": {
+                "sevenM": [
+                  7.5,
+                  2.7
+                ],
+                "sevenMB": [
+                  7.5,
+                  1.4500000000000002
+                ],
+                "sevenR": [
+                  10,
+                  2.7
+                ],
+                "sevenRB": [
+                  10,
+                  1.4500000000000002
+                ],
+                "sevenTotalP": [
+                  5,
+                  0.8500000000000001
+                ],
+                "eightM": [
+                  4.0,
+                  -0.6
+                ],
+                "eightMB": [
+                  4.0,
+                  -1.85
+                ],
+                "eightR": [
+                  10,
+                  -0.6
+                ],
+                "eightRB": [
+                  10,
+                  -1.85
+                ],
+                "eightTotalP": [
+                  5,
+                  -2.45
+                ]
+              },
+              "at": "to",
+              "dur": 1
+            },
+            {
+              "do": "show",
+              "target": [
+                "sevenWhole",
+                "eightWhole"
+              ],
+              "at": "wholes"
+            },
+            {
+              "do": "show",
+              "target": "eightPercent",
+              "at": "forty"
+            },
+            {
+              "do": "answer",
+              "tex": "40\\%",
+              "at": "forty"
+            },
+            {
+              "do": "show",
+              "target": "sevenPercent",
+              "at": "seventy-five"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.4,
+          -3.4,
+          12.2,
+          4.2
+        ],
+        "points": {
+          "sevenL": [
+            0,
+            2.7
+          ],
+          "sevenLB": [
+            0,
+            1.4500000000000002
+          ],
+          "sevenM": [
+            2.0,
+            2.7
+          ],
+          "sevenMB": [
+            2.0,
+            1.4500000000000002
+          ],
+          "sevenR": [
+            5.0,
+            2.7
+          ],
+          "sevenRB": [
+            5.0,
+            1.4500000000000002
+          ],
+          "sevenNameP": [
+            2,
+            3.35
+          ],
+          "sevenTotalP": [
+            2.5,
+            0.8500000000000001
+          ],
+          "sevenCountP": [
+            1.0,
+            2.075
+          ],
+          "sevenPercentP": [
+            2.0,
+            2.075
+          ],
+          "sevenWholeP": [
+            9,
+            3.35
+          ],
+          "eightL": [
+            0,
+            -0.6
+          ],
+          "eightLB": [
+            0,
+            -1.85
+          ],
+          "eightM": [
+            4.0,
+            -0.6
+          ],
+          "eightMB": [
+            4.0,
+            -1.85
+          ],
+          "eightR": [
+            10.0,
+            -0.6
+          ],
+          "eightRB": [
+            10.0,
+            -1.85
+          ],
+          "eightNameP": [
+            2,
+            0.050000000000000044
+          ],
+          "eightTotalP": [
+            5.0,
+            -2.45
+          ],
+          "eightCountP": [
+            2.0,
+            -1.225
+          ],
+          "eightPercentP": [
+            2.0,
+            -1.225
+          ],
+          "eightWholeP": [
+            9,
+            0.050000000000000044
+          ],
+          "T": [
+            0,
+            3.4
+          ]
+        },
+        "parts": [
+          {
+            "id": "t",
+            "table": true,
+            "at": "T",
+            "head": [
+              "Yes",
+              "No",
+              "Total"
+            ],
+            "rows": [
+              {
+                "label": "Sport",
+                "cells": [
+                  "12",
+                  "18",
+                  "30"
+                ]
+              },
+              {
+                "label": "No sport",
+                "cells": [
+                  "24",
+                  "36",
+                  "60"
+                ]
+              },
+              {
+                "label": "Total",
+                "cells": [
+                  "36",
+                  "54",
+                  "90"
+                ]
+              }
+            ],
+            "cell": [
+              2.8,
+              1.55
+            ],
+            "labelW": 3.2,
+            "corner": "Breakfast daily?",
+            "totals": true,
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "sevenYes",
+            "poly": [
+              "sevenL",
+              "sevenM",
+              "sevenMB",
+              "sevenLB"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "sevenNo",
+            "poly": [
+              "sevenM",
+              "sevenR",
+              "sevenRB",
+              "sevenMB"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "start": false
+          },
+          {
+            "id": "sevenName",
+            "label": "\\text{Sport}",
+            "at": "sevenNameP",
+            "dir": "c",
+            "size": "m",
+            "start": false
+          },
+          {
+            "id": "sevenTotal",
+            "label": "30\\text{ students}",
+            "at": "sevenTotalP",
+            "dir": "c",
+            "size": "m",
+            "start": false
+          },
+          {
+            "id": "sevenCount",
+            "label": "12",
+            "at": "sevenCountP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sevenPercent",
+            "label": "40\\%",
+            "at": "sevenPercentP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "sevenWhole",
+            "label": "100\\%",
+            "at": "sevenWholeP",
+            "dir": "c",
+            "size": "m",
+            "start": false
+          },
+          {
+            "id": "eightYes",
+            "poly": [
+              "eightL",
+              "eightM",
+              "eightMB",
+              "eightLB"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "eightNo",
+            "poly": [
+              "eightM",
+              "eightR",
+              "eightRB",
+              "eightMB"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "start": false
+          },
+          {
+            "id": "eightName",
+            "label": "\\text{No sport}",
+            "at": "eightNameP",
+            "dir": "c",
+            "size": "m",
+            "start": false
+          },
+          {
+            "id": "eightTotal",
+            "label": "60\\text{ students}",
+            "at": "eightTotalP",
+            "dir": "c",
+            "size": "m",
+            "start": false
+          },
+          {
+            "id": "eightCount",
+            "label": "24",
+            "at": "eightCountP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "eightPercent",
+            "label": "40\\%",
+            "at": "eightPercentP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "eightWhole",
+            "label": "100\\%",
+            "at": "eightWholeP",
+            "dir": "c",
+            "size": "m",
+            "start": false
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Of students playing a sport, what percent eat breakfast daily? Twelve out of thirty.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Of students playing a sport, what percent eat breakfast daily?"
+            },
+            {
+              "do": "given",
+              "target": "t.row.1",
+              "at": "playing"
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{12}{30}",
+              "at": "Twelve"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Stretch to equal wholes: forty percent with a sport; forty percent without. Same share.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "given",
+              "target": "t"
+            },
+            {
+              "do": "hide",
+              "target": "t",
+              "at": "Stretch",
+              "dur": 0.4
+            },
+            {
+              "do": "show",
+              "target": [
+                "sevenYes",
+                "sevenNo",
+                "sevenName",
+                "sevenTotal",
+                "eightYes",
+                "eightNo",
+                "eightName",
+                "eightTotal"
+              ],
+              "at": "Stretch",
+              "dur": 0.4
+            },
+            {
+              "do": "text",
+              "text": "Green: eats breakfast daily",
+              "at": "Stretch"
+            },
+            {
+              "do": "move",
+              "points": {
+                "sevenM": [
+                  4.0,
+                  2.7
+                ],
+                "sevenMB": [
+                  4.0,
+                  1.4500000000000002
+                ],
+                "sevenR": [
+                  10,
+                  2.7
+                ],
+                "sevenRB": [
+                  10,
+                  1.4500000000000002
+                ],
+                "sevenTotalP": [
+                  5,
+                  0.8500000000000001
+                ],
+                "eightM": [
+                  4.0,
+                  -0.6
+                ],
+                "eightMB": [
+                  4.0,
+                  -1.85
+                ],
+                "eightR": [
+                  10,
+                  -0.6
+                ],
+                "eightRB": [
+                  10,
+                  -1.85
+                ],
+                "eightTotalP": [
+                  5,
+                  -2.45
+                ]
+              },
+              "at": "to",
+              "dur": 1
+            },
+            {
+              "do": "show",
+              "target": [
+                "sevenWhole",
+                "eightWhole"
+              ],
+              "at": "wholes"
+            },
+            {
+              "do": "show",
+              "target": "sevenPercent",
+              "at": "forty"
+            },
+            {
+              "do": "answer",
+              "tex": "40\\%",
+              "at": "forty"
+            },
+            {
+              "do": "show",
+              "target": "eightPercent",
+              "at": "forty",
+              "nth": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.5,
+          -2,
+          17.5,
+          7.5
+        ],
+        "points": {
+          "title0P": [
+            2.5,
+            6.7
+          ],
+          "c0r0NameP": [
+            2.5,
+            5.5
+          ],
+          "c0r0L": [
+            0,
+            4.7
+          ],
+          "c0r0M": [
+            4.0,
+            4.7
+          ],
+          "c0r0R": [
+            5,
+            4.7
+          ],
+          "c0r0LB": [
+            0,
+            4.0
+          ],
+          "c0r0MB": [
+            4.0,
+            4.0
+          ],
+          "c0r0RB": [
+            5,
+            4.0
+          ],
+          "c0r0PercentP": [
+            2.5,
+            3.2
+          ],
+          "c0r1NameP": [
+            2.5,
+            1.0999999999999999
+          ],
+          "c0r1L": [
+            0,
+            0.2999999999999998
+          ],
+          "c0r1M": [
+            2.0,
+            0.2999999999999998
+          ],
+          "c0r1R": [
+            5,
+            0.2999999999999998
+          ],
+          "c0r1LB": [
+            0,
+            -0.40000000000000013
+          ],
+          "c0r1MB": [
+            2.0,
+            -0.40000000000000013
+          ],
+          "c0r1RB": [
+            5,
+            -0.40000000000000013
+          ],
+          "c0r1PercentP": [
+            2.5,
+            -1.2000000000000002
+          ],
+          "title1P": [
+            8.5,
+            6.7
+          ],
+          "c1r0NameP": [
+            8.5,
+            5.5
+          ],
+          "c1r0L": [
+            6,
+            4.7
+          ],
+          "c1r0M": [
+            9.75,
+            4.7
+          ],
+          "c1r0R": [
+            11,
+            4.7
+          ],
+          "c1r0LB": [
+            6,
+            4.0
+          ],
+          "c1r0MB": [
+            9.75,
+            4.0
+          ],
+          "c1r0RB": [
+            11,
+            4.0
+          ],
+          "c1r0PercentP": [
+            8.5,
+            3.2
+          ],
+          "c1r1NameP": [
+            8.5,
+            1.0999999999999999
+          ],
+          "c1r1L": [
+            6,
+            0.2999999999999998
+          ],
+          "c1r1M": [
+            8.0,
+            0.2999999999999998
+          ],
+          "c1r1R": [
+            11,
+            0.2999999999999998
+          ],
+          "c1r1LB": [
+            6,
+            -0.40000000000000013
+          ],
+          "c1r1MB": [
+            8.0,
+            -0.40000000000000013
+          ],
+          "c1r1RB": [
+            11,
+            -0.40000000000000013
+          ],
+          "c1r1PercentP": [
+            8.5,
+            -1.2000000000000002
+          ],
+          "title2P": [
+            14.5,
+            6.7
+          ],
+          "c2r0NameP": [
+            14.5,
+            5.5
+          ],
+          "c2r0L": [
+            12,
+            4.7
+          ],
+          "c2r0M": [
+            14.0,
+            4.7
+          ],
+          "c2r0R": [
+            17,
+            4.7
+          ],
+          "c2r0LB": [
+            12,
+            4.0
+          ],
+          "c2r0MB": [
+            14.0,
+            4.0
+          ],
+          "c2r0RB": [
+            17,
+            4.0
+          ],
+          "c2r0PercentP": [
+            14.5,
+            3.2
+          ],
+          "c2r1NameP": [
+            14.5,
+            1.0999999999999999
+          ],
+          "c2r1L": [
+            12,
+            0.2999999999999998
+          ],
+          "c2r1M": [
+            14.0,
+            0.2999999999999998
+          ],
+          "c2r1R": [
+            17,
+            0.2999999999999998
+          ],
+          "c2r1LB": [
+            12,
+            -0.40000000000000013
+          ],
+          "c2r1MB": [
+            14.0,
+            -0.40000000000000013
+          ],
+          "c2r1RB": [
+            17,
+            -0.40000000000000013
+          ],
+          "c2r1PercentP": [
+            14.5,
+            -1.2000000000000002
+          ]
+        },
+        "parts": [
+          {
+            "id": "title0",
+            "label": "\\text{Curfew}",
+            "at": "title0P",
+            "dir": "c",
+            "size": "m",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "c0r0Name",
+            "label": "\\text{Grade 7}",
+            "at": "c0r0NameP",
+            "dir": "c",
+            "size": "m",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "c0r0Yes",
+            "poly": [
+              "c0r0L",
+              "c0r0M",
+              "c0r0MB",
+              "c0r0LB"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "c0r0No",
+            "poly": [
+              "c0r0M",
+              "c0r0R",
+              "c0r0RB",
+              "c0r0MB"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "c0r0Percent",
+            "label": "80\\%",
+            "at": "c0r0PercentP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "c0r1Name",
+            "label": "\\text{Grade 8}",
+            "at": "c0r1NameP",
+            "dir": "c",
+            "size": "m",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "c0r1Yes",
+            "poly": [
+              "c0r1L",
+              "c0r1M",
+              "c0r1MB",
+              "c0r1LB"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "c0r1No",
+            "poly": [
+              "c0r1M",
+              "c0r1R",
+              "c0r1RB",
+              "c0r1MB"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "c0r1Percent",
+            "label": "40\\%",
+            "at": "c0r1PercentP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "title1",
+            "label": "\\text{Walk daily}",
+            "at": "title1P",
+            "dir": "c",
+            "size": "m",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "c1r0Name",
+            "label": "\\text{Dog owner}",
+            "at": "c1r0NameP",
+            "dir": "c",
+            "size": "m",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "c1r0Yes",
+            "poly": [
+              "c1r0L",
+              "c1r0M",
+              "c1r0MB",
+              "c1r0LB"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "c1r0No",
+            "poly": [
+              "c1r0M",
+              "c1r0R",
+              "c1r0RB",
+              "c1r0MB"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "c1r0Percent",
+            "label": "75\\%",
+            "at": "c1r0PercentP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "c1r1Name",
+            "label": "\\text{No dog}",
+            "at": "c1r1NameP",
+            "dir": "c",
+            "size": "m",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "c1r1Yes",
+            "poly": [
+              "c1r1L",
+              "c1r1M",
+              "c1r1MB",
+              "c1r1LB"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "c1r1No",
+            "poly": [
+              "c1r1M",
+              "c1r1R",
+              "c1r1RB",
+              "c1r1MB"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "c1r1Percent",
+            "label": "40\\%",
+            "at": "c1r1PercentP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "title2",
+            "label": "\\text{Breakfast}",
+            "at": "title2P",
+            "dir": "c",
+            "size": "m",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "c2r0Name",
+            "label": "\\text{Sport}",
+            "at": "c2r0NameP",
+            "dir": "c",
+            "size": "m",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "c2r0Yes",
+            "poly": [
+              "c2r0L",
+              "c2r0M",
+              "c2r0MB",
+              "c2r0LB"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "c2r0No",
+            "poly": [
+              "c2r0M",
+              "c2r0R",
+              "c2r0RB",
+              "c2r0MB"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "c2r0Percent",
+            "label": "40\\%",
+            "at": "c2r0PercentP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "c2r1Name",
+            "label": "\\text{No sport}",
+            "at": "c2r1NameP",
+            "dir": "c",
+            "size": "m",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "c2r1Yes",
+            "poly": [
+              "c2r1L",
+              "c2r1M",
+              "c2r1MB",
+              "c2r1LB"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "c2r1No",
+            "poly": [
+              "c2r1M",
+              "c2r1R",
+              "c2r1RB",
+              "c2r1MB"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "c2r1Percent",
+            "label": "40\\%",
+            "at": "c2r1PercentP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Compare each pair. When the shares differ a lot, the two things are linked: an association.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Compare shares within each table"
+            },
+            {
+              "do": "text",
+              "text": "Each full bar = 100% of its group."
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "c0r0Yes",
+                "c0r1Yes"
+              ],
+              "at": "differ"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "c1r0Yes",
+                "c1r1Yes"
+              ],
+              "at": "linked"
+            },
+            {
+              "do": "text",
+              "text": "Large difference: association",
+              "at": "association"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "When the shares are about the same, there is no association. Here, breakfast is equally common in both groups.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "c2r0Yes",
+                "c2r1Yes"
+              ],
+              "at": "same"
+            },
+            {
+              "do": "text",
+              "text": "Similar shares: no association",
+              "at": "no"
+            },
+            {
+              "do": "text",
+              "text": "Breakfast: 40% in each group",
+              "at": "breakfast"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Find the group the question names; its total is the whole.",
+          "pause": 2,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Find the group the question names."
+            },
+            {
+              "do": "text",
+              "text": "Its total is the whole.",
+              "at": "total"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
