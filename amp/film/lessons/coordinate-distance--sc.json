@@ -1,0 +1,1862 @@
+{
+ "id": "coordinate-distance--sc",
+ "title": "Distance between two points",
+ "teaches": [],
+ "cast": {
+  "teacher": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     0.4,
+     0.2,
+     7.6,
+     6.8
+    ],
+    "points": {
+     "A": [
+      2,
+      2
+     ],
+     "B": [
+      6,
+      5
+     ],
+     "C": [
+      6,
+      2
+     ],
+     "Z": [
+      4,
+      5
+     ],
+     "gridTop": [
+      1,
+      6
+     ],
+     "AXL": [
+      1,
+      1
+     ],
+     "AXR": [
+      7,
+      1
+     ],
+     "AYB": [
+      1,
+      1
+     ],
+     "AYT": [
+      1,
+      6
+     ],
+     "OriginTag": [
+      1.25,
+      0.65
+     ],
+     "ticksOnex0": [
+      1.2,
+      1.25
+     ],
+     "ticksOnex2": [
+      3,
+      1.25
+     ],
+     "ticksOnex4": [
+      5,
+      1.25
+     ],
+     "ticksOnex6": [
+      6.8,
+      1.25
+     ],
+     "ticksOney2": [
+      1.22,
+      3
+     ],
+     "ticksOney4": [
+      1.22,
+      5
+     ],
+     "ticksTwoxm2": [
+      2,
+      4.25
+     ],
+     "ticksTwox0": [
+      4.17,
+      4.25
+     ],
+     "ticksTwox2": [
+      6,
+      4.25
+     ],
+     "ticksTwoym2": [
+      3.54,
+      2
+     ],
+     "ticksTwoy2": [
+      3.74,
+      5.8
+     ],
+     "aTag": [
+      2.2,
+      5.58
+     ],
+     "generalAName": [
+      2,
+      5.72
+     ],
+     "rootName": [
+      2.3,
+      3.1
+     ]
+    },
+    "parts": [
+     {
+      "id": "grid",
+      "grid": [
+       6,
+       5
+      ],
+      "at": "gridTop",
+      "size": 1,
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "axisX",
+      "seg": [
+       "AXL",
+       "AXR"
+      ],
+      "ink": "muted",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "axisY",
+      "seg": [
+       "AYB",
+       "AYT"
+      ],
+      "ink": "muted",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "straight",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "gold",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "horizontal",
+      "seg": [
+       "A",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 5
+     },
+     {
+      "id": "vertical",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "violet",
+      "w": 5
+     },
+     {
+      "id": "leftHalf",
+      "seg": [
+       "A",
+       "Z"
+      ],
+      "ink": "blue",
+      "w": 7
+     },
+     {
+      "id": "rightHalf",
+      "seg": [
+       "Z",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 7
+     },
+     {
+      "id": "hPulse",
+      "seg": [
+       "A",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 11
+     },
+     {
+      "id": "vPulse",
+      "seg": [
+       "C",
+       "B"
+      ],
+      "ink": "violet",
+      "w": 11
+     },
+     {
+      "id": "dPulse",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "gold",
+      "w": 11
+     },
+     {
+      "id": "corner",
+      "angle": [
+       "A",
+       "C",
+       "B"
+      ],
+      "right": true,
+      "r": 34,
+      "ink": "ink",
+      "fill": "paper"
+     },
+     {
+      "id": "dotA",
+      "dot": "A",
+      "r": 9,
+      "start": true
+     },
+     {
+      "id": "dotB",
+      "dot": "B",
+      "r": 9,
+      "start": true
+     },
+     {
+      "id": "aOne",
+      "label": "A(\\cb{1},\\cv{1})",
+      "at": "A",
+      "dir": "s",
+      "ink": "ink",
+      "size": "l",
+      "halo": true,
+      "start": true,
+      "far": 0.1
+     },
+     {
+      "id": "bOne",
+      "label": "B(\\cb{5},\\cv{4})",
+      "at": "B",
+      "dir": "n",
+      "ink": "ink",
+      "size": "l",
+      "halo": true,
+      "start": true,
+      "far": 0.18
+     },
+     {
+      "id": "aTwo",
+      "label": "A(\\cb{-2},\\cv{1})",
+      "at": "aTag",
+      "dir": "c",
+      "ink": "ink",
+      "size": "l",
+      "halo": true,
+      "start": false,
+      "far": 0
+     },
+     {
+      "id": "bTwo",
+      "label": "B(\\cb{2},\\cv{-2})",
+      "at": "B",
+      "dir": "sw",
+      "ink": "ink",
+      "size": "l",
+      "halo": true,
+      "start": false,
+      "far": 0.12
+     },
+     {
+      "id": "bThree",
+      "label": "B(\\cb{0},\\cv{-2})",
+      "at": "B",
+      "dir": "sw",
+      "ink": "ink",
+      "size": "l",
+      "halo": true,
+      "start": false,
+      "far": 0.12
+     },
+     {
+      "id": "aGeneral",
+      "label": "(\\cb{x_1},\\cv{y_1})",
+      "at": "generalAName",
+      "dir": "c",
+      "ink": "ink",
+      "size": "l",
+      "halo": true,
+      "start": false,
+      "far": 0
+     },
+     {
+      "id": "bGeneral",
+      "label": "(\\cb{x_2},\\cv{y_2})",
+      "at": "B",
+      "dir": "sw",
+      "ink": "ink",
+      "size": "l",
+      "halo": true,
+      "start": false,
+      "far": 0.12
+     },
+     {
+      "id": "legFourUp",
+      "label": "4",
+      "at": "horizontal",
+      "dir": "c",
+      "ink": "blue",
+      "size": "l",
+      "halo": true,
+      "start": false,
+      "far": 0
+     },
+     {
+      "id": "legThreeUp",
+      "label": "3",
+      "at": "vertical",
+      "dir": "c",
+      "ink": "violet",
+      "size": "l",
+      "halo": true,
+      "start": false,
+      "far": 0
+     },
+     {
+      "id": "legFour",
+      "label": "4",
+      "at": "horizontal",
+      "dir": "c",
+      "ink": "blue",
+      "size": "l",
+      "halo": true,
+      "start": false,
+      "far": 0
+     },
+     {
+      "id": "legThree",
+      "label": "3",
+      "at": "vertical",
+      "dir": "c",
+      "ink": "violet",
+      "size": "l",
+      "halo": true,
+      "start": false,
+      "far": 0
+     },
+     {
+      "id": "legTwo",
+      "label": "2",
+      "at": "horizontal",
+      "dir": "c",
+      "ink": "blue",
+      "size": "l",
+      "halo": true,
+      "start": false,
+      "far": 0
+     },
+     {
+      "id": "xChange",
+      "label": "|x_2-x_1|",
+      "at": "horizontal",
+      "dir": "n",
+      "ink": "blue",
+      "size": "m",
+      "halo": true,
+      "start": false,
+      "far": 0.13
+     },
+     {
+      "id": "yChange",
+      "label": "|y_2-y_1|",
+      "at": "vertical",
+      "dir": "e",
+      "ink": "violet",
+      "size": "m",
+      "halo": true,
+      "start": false,
+      "far": 0.13
+     },
+     {
+      "id": "dUp",
+      "label": "d",
+      "at": "straight",
+      "dir": "c",
+      "ink": "gold",
+      "size": "l",
+      "halo": true,
+      "start": false,
+      "far": 0
+     },
+     {
+      "id": "fiveUp",
+      "label": "5",
+      "at": "straight",
+      "dir": "c",
+      "ink": "gold",
+      "size": "l",
+      "halo": true,
+      "start": false,
+      "far": 0
+     },
+     {
+      "id": "five",
+      "label": "5",
+      "at": "straight",
+      "dir": "c",
+      "ink": "gold",
+      "size": "l",
+      "halo": true,
+      "start": false,
+      "far": 0
+     },
+     {
+      "id": "root",
+      "label": "\\sqrt{13}",
+      "at": "rootName",
+      "dir": "c",
+      "ink": "gold",
+      "size": "l",
+      "halo": true,
+      "start": false,
+      "far": 0
+     },
+     {
+      "id": "dDown",
+      "label": "d",
+      "at": "straight",
+      "dir": "c",
+      "ink": "gold",
+      "size": "l",
+      "halo": true,
+      "start": false,
+      "far": 0
+     },
+     {
+      "id": "ticksOnex0",
+      "group": "ticksOne",
+      "label": "0",
+      "at": "ticksOnex0",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "ticksOnex2",
+      "group": "ticksOne",
+      "label": "2",
+      "at": "ticksOnex2",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "ticksOnex4",
+      "group": "ticksOne",
+      "label": "4",
+      "at": "ticksOnex4",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "ticksOney2",
+      "group": "ticksOne",
+      "label": "2",
+      "at": "ticksOney2",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "ticksOney4",
+      "group": "ticksOne",
+      "label": "4",
+      "at": "ticksOney4",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "ticksTwoxm2",
+      "group": "ticksTwo",
+      "label": "-2",
+      "at": "ticksTwoxm2",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "halo": true,
+      "start": false
+     },
+     {
+      "id": "ticksTwox0",
+      "group": "ticksTwo",
+      "label": "0",
+      "at": "ticksTwox0",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "halo": true,
+      "start": false
+     },
+     {
+      "id": "ticksTwox2",
+      "group": "ticksTwo",
+      "label": "2",
+      "at": "ticksTwox2",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "halo": true,
+      "start": false
+     },
+     {
+      "id": "ticksTwoym2",
+      "group": "ticksTwo",
+      "label": "-2",
+      "at": "ticksTwoym2",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "halo": true,
+      "start": false
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A straight distance on a grid can be found by making a right triangle.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "hPulse",
+        "vPulse",
+        "dPulse"
+       ],
+       "dur": 0.15,
+       "at": "A"
+      },
+      {
+       "do": "header",
+       "text": "Distance between two points",
+       "at": "A"
+      },
+      {
+       "do": "text",
+       "text": "Find the straight distance",
+       "at": "A"
+      },
+      {
+       "do": "draw",
+       "target": "dPulse",
+       "at": "straight",
+       "dur": 0.55
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each coordinate pair gives horizontal position first, then vertical position: *A* is one, one; *B* is five, four.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "hPulse",
+        "vPulse",
+        "dPulse"
+       ],
+       "at": "Each",
+       "dur": 0.15
+      },
+      {
+       "do": "clear",
+       "at": "Each"
+      },
+      {
+       "do": "write",
+       "tex": "(\\cb{x},\\cv{y})",
+       "note": "\\text{horizontal, vertical}",
+       "at": "Each"
+      },
+      {
+       "do": "highlight",
+       "target": "aOne",
+       "at": "A"
+      },
+      {
+       "do": "highlight",
+       "target": "bOne",
+       "at": "B"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Draw a horizontal side and a vertical side down to meet it. The square corner marks a right angle.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "hPulse",
+        "vPulse",
+        "dPulse"
+       ],
+       "dur": 0.15,
+       "at": "Draw"
+      },
+      {
+       "do": "clear",
+       "at": "Draw"
+      },
+      {
+       "do": "text",
+       "text": "Make a right triangle",
+       "at": "Draw"
+      },
+      {
+       "do": "draw",
+       "target": "horizontal",
+       "at": "horizontal",
+       "dur": 2
+      },
+      {
+       "do": "draw",
+       "target": "vertical",
+       "at": "vertical",
+       "dur": 2
+      },
+      {
+       "do": "show",
+       "target": "corner",
+       "at": "square"
+      },
+      {
+       "do": "highlight",
+       "target": "corner",
+       "at": "right"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The sides meeting there are legs. The opposite side is the hypotenuse. Call its length *d*, the straight distance.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "The"
+      },
+      {
+       "do": "text",
+       "text": "Legs meet at the right angle",
+       "at": "The"
+      },
+      {
+       "do": "show",
+       "target": "hPulse",
+       "at": "sides"
+      },
+      {
+       "do": "hide",
+       "target": "hPulse",
+       "at": "legs",
+       "dur": 0.15
+      },
+      {
+       "do": "show",
+       "target": "vPulse",
+       "at": "legs"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "hPulse",
+        "vPulse"
+       ],
+       "at": "opposite"
+      },
+      {
+       "do": "text",
+       "text": "Hypotenuse: opposite that angle",
+       "at": "hypotenuse"
+      },
+      {
+       "do": "show",
+       "target": "dUp",
+       "at": "d"
+      },
+      {
+       "do": "draw",
+       "target": "dPulse",
+       "at": "hypotenuse",
+       "dur": 0.7
+      },
+      {
+       "do": "write",
+       "tex": "d=\\text{straight distance}",
+       "at": "d"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Subtract the horizontal coordinates: five minus one is four.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "hPulse",
+        "vPulse",
+        "dPulse"
+       ],
+       "dur": 0.15,
+       "at": "Subtract"
+      },
+      {
+       "do": "clear",
+       "at": "Subtract"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{5-1=4}",
+       "at": "five",
+       "note": "\\text{horizontal}"
+      },
+      {
+       "do": "show",
+       "target": "legFourUp",
+       "at": "four"
+      },
+      {
+       "do": "draw",
+       "target": "hPulse",
+       "at": "five",
+       "dur": 0.55
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Vertically, four minus one is three. These differences measure separation, not distance from the origin.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "hPulse",
+        "vPulse",
+        "dPulse"
+       ],
+       "dur": 0.15,
+       "at": "Vertically"
+      },
+      {
+       "do": "write",
+       "tex": "\\cv{4-1=3}",
+       "at": "four",
+       "note": "\\text{vertical}",
+       "fresh": true
+      },
+      {
+       "do": "show",
+       "target": "legThreeUp",
+       "at": "three"
+      },
+      {
+       "do": "draw",
+       "target": "vPulse",
+       "at": "four",
+       "dur": 0.55
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "By the Pythagorean theorem, the legs' squares add to the hypotenuse's square.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "hPulse",
+        "vPulse",
+        "dPulse"
+       ],
+       "dur": 0.15,
+       "at": "By"
+      },
+      {
+       "do": "clear",
+       "at": "By"
+      },
+      {
+       "do": "header",
+       "tex": "d^2=\\cb{\\text{leg}^2}+\\cv{\\text{leg}^2}",
+       "label": "Pythagorean theorem",
+       "at": "By"
+      },
+      {
+       "do": "write",
+       "tex": "d^2=\\cb{4^2}+\\cv{3^2}",
+       "at": "squares"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Squared means multiplied by itself. Four squared plus three squared is twenty-five.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "hPulse",
+        "vPulse",
+        "dPulse"
+       ],
+       "dur": 0.15,
+       "at": "Squared"
+      },
+      {
+       "do": "write",
+       "tex": "d^2=\\cb{4\\times4}+\\cv{3\\times3}",
+       "at": "multiplied"
+      },
+      {
+       "do": "write",
+       "tex": "d^2=25",
+       "at": "twenty-five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The length whose square is twenty-five is its square root: five.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "hPulse",
+        "vPulse",
+        "dPulse"
+       ],
+       "dur": 0.15,
+       "at": "The"
+      },
+      {
+       "do": "clear",
+       "at": "The"
+      },
+      {
+       "do": "write",
+       "tex": "d^2=25",
+       "at": "The"
+      },
+      {
+       "do": "write",
+       "tex": "d=\\sqrt{25}=5",
+       "at": "root"
+      },
+      {
+       "do": "hide",
+       "target": "dUp",
+       "at": "five"
+      },
+      {
+       "do": "show",
+       "target": "fiveUp",
+       "at": "five"
+      },
+      {
+       "do": "draw",
+       "target": "dPulse",
+       "at": "five",
+       "dur": 0.55
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A common slip is adding four and three, but seven measures the bent path; the straight distance is the hypotenuse, five.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "hPulse",
+        "vPulse",
+        "dPulse"
+       ],
+       "dur": 0.15,
+       "at": "A"
+      },
+      {
+       "do": "clear",
+       "at": "A"
+      },
+      {
+       "do": "write",
+       "tex": "d=\\cb{4}+\\cv{3}=7",
+       "at": "adding",
+       "id": "slip"
+      },
+      {
+       "do": "strike",
+       "target": "slip",
+       "at": "but"
+      },
+      {
+       "do": "write",
+       "tex": "d=5",
+       "at": "straight"
+      },
+      {
+       "do": "show",
+       "target": "hPulse",
+       "at": "four",
+       "dur": 0.15
+      },
+      {
+       "do": "hide",
+       "target": "hPulse",
+       "at": "three",
+       "dur": 0.15
+      },
+      {
+       "do": "show",
+       "target": "vPulse",
+       "at": "three",
+       "dur": 0.15
+      },
+      {
+       "do": "hide",
+       "target": "vPulse",
+       "at": "hypotenuse",
+       "dur": 0.15
+      },
+      {
+       "do": "draw",
+       "target": "dPulse",
+       "at": "hypotenuse",
+       "dur": 0.55
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Shift the grid to show points across the axes.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "hPulse",
+        "vPulse",
+        "dPulse"
+       ],
+       "dur": 0.15,
+       "at": "Shift"
+      },
+      {
+       "do": "clear",
+       "at": "Shift"
+      },
+      {
+       "do": "header",
+       "text": "Distance between two points",
+       "at": "Shift"
+      },
+      {
+       "do": "text",
+       "text": "Change location and direction",
+       "at": "Shift"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "aOne",
+        "bOne",
+        "fiveUp",
+        "legFourUp",
+        "legThreeUp",
+        "corner",
+        "ticksOne"
+       ],
+       "at": "Shift"
+      },
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         2,
+         5
+        ],
+        "B": [
+         6,
+         2
+        ],
+        "C": [
+         6,
+         5
+        ],
+        "AXL": [
+         1,
+         4
+        ],
+        "AXR": [
+         7,
+         4
+        ],
+        "AYB": [
+         4,
+         1
+        ],
+        "AYT": [
+         4,
+         6
+        ]
+       },
+       "at": "Shift",
+       "dur": 1.8
+      },
+      {
+       "do": "show",
+       "target": [
+        "aTwo",
+        "bTwo",
+        "corner",
+        "ticksTwo"
+       ],
+       "at": "axes"
+      },
+      {
+       "do": "hide",
+       "target": "grid",
+       "at": "Shift",
+       "dur": 0.2
+      },
+      {
+       "do": "show",
+       "target": "grid",
+       "at": "axes",
+       "dur": 0.3
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two minus negative two is four: two to zero, two beyond.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "hPulse",
+        "vPulse",
+        "dPulse"
+       ],
+       "dur": 0.15,
+       "at": "Two"
+      },
+      {
+       "do": "clear",
+       "at": "Two"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{2-(-2)=4}",
+       "at": "Two",
+       "note": "\\text{horizontal}"
+      },
+      {
+       "do": "show",
+       "target": "legFour",
+       "at": "four"
+      },
+      {
+       "do": "draw",
+       "target": "leftHalf",
+       "at": "zero",
+       "dur": 0.6
+      },
+      {
+       "do": "draw",
+       "target": "rightHalf",
+       "at": "beyond",
+       "dur": 0.6
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Negative two minus one is negative three: downward, with length three.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "hPulse",
+        "vPulse",
+        "dPulse"
+       ],
+       "dur": 0.15,
+       "at": "Negative"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "leftHalf",
+        "rightHalf"
+       ],
+       "at": "Negative"
+      },
+      {
+       "do": "write",
+       "tex": "\\cv{-2-1=-3}",
+       "at": "Negative",
+       "note": "\\text{vertical}",
+       "fresh": true
+      },
+      {
+       "do": "show",
+       "target": "legThree",
+       "at": "length"
+      },
+      {
+       "do": "draw",
+       "target": "vPulse",
+       "at": "downward",
+       "dur": 0.55
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Negative three squared is negative three times negative three: nine. Sixteen plus nine is twenty-five, so the distance is five.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "hPulse",
+        "vPulse",
+        "dPulse"
+       ],
+       "at": "Negative"
+      },
+      {
+       "do": "clear",
+       "at": "Negative"
+      },
+      {
+       "do": "write",
+       "tex": "\\cv{(-3)^2=(-3)\\times(-3)=9}",
+       "at": "Negative"
+      },
+      {
+       "do": "highlight",
+       "target": "legThree",
+       "at": "nine"
+      },
+      {
+       "do": "write",
+       "tex": "d^2=\\cb{16}+\\cv{9}=25",
+       "at": "Sixteen"
+      },
+      {
+       "do": "write",
+       "tex": "d=5",
+       "at": "five"
+      },
+      {
+       "do": "show",
+       "target": "five",
+       "at": "five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Shorten the horizontal leg to two.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "hPulse",
+        "vPulse",
+        "dPulse"
+       ],
+       "dur": 0.15,
+       "at": "Shorten"
+      },
+      {
+       "do": "clear",
+       "at": "Shorten"
+      },
+      {
+       "do": "text",
+       "text": "Shorter leg, shorter distance",
+       "at": "Shorten"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "bTwo",
+        "legFour",
+        "five",
+        "corner"
+       ],
+       "at": "Shorten"
+      },
+      {
+       "do": "move",
+       "points": {
+        "B": [
+         4,
+         2
+        ],
+        "C": [
+         4,
+         5
+        ]
+       },
+       "at": "Shorten",
+       "dur": 1.4
+      },
+      {
+       "do": "show",
+       "target": [
+        "bThree",
+        "legTwo",
+        "corner"
+       ],
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two squared plus the square of negative three is thirteen. The exact distance is square root of thirteen.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "hPulse",
+        "vPulse",
+        "dPulse"
+       ],
+       "dur": 0.15,
+       "at": "Two"
+      },
+      {
+       "do": "clear",
+       "at": "Two"
+      },
+      {
+       "do": "write",
+       "tex": "d^2=\\cb{2^2}+\\cv{(-3)^2}=13",
+       "at": "Two"
+      },
+      {
+       "do": "write",
+       "tex": "d=\\sqrt{13}",
+       "at": "exact",
+       "fresh": true
+      },
+      {
+       "do": "show",
+       "target": "root",
+       "at": "root"
+      },
+      {
+       "do": "draw",
+       "target": "dPulse",
+       "at": "root",
+       "dur": 0.6
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "That positive number squares to thirteen. Three squared is nine; four squared is sixteen, so the distance lies between three and four.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "hPulse",
+        "vPulse",
+        "dPulse"
+       ],
+       "dur": 0.15,
+       "at": "That"
+      },
+      {
+       "do": "clear",
+       "at": "That"
+      },
+      {
+       "do": "write",
+       "tex": "(\\sqrt{13})^2=13",
+       "at": "squares"
+      },
+      {
+       "do": "write",
+       "tex": "3^2=9<13<16=4^2",
+       "at": "Three"
+      },
+      {
+       "do": "write",
+       "tex": "3<\\sqrt{13}<4",
+       "at": "between"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Use letters for any two points. Small one and two name the first and second point.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "hPulse",
+        "vPulse",
+        "dPulse"
+       ],
+       "at": "Use"
+      },
+      {
+       "do": "clear",
+       "at": "Use"
+      },
+      {
+       "do": "text",
+       "text": "1: first point; 2: second point",
+       "at": "Use"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "aTwo",
+        "bThree",
+        "legTwo",
+        "legThree",
+        "root",
+        "ticksTwo"
+       ],
+       "at": "letters"
+      },
+      {
+       "do": "move",
+       "points": {
+        "B": [
+         5.3,
+         2
+        ],
+        "C": [
+         5.3,
+         5
+        ]
+       },
+       "at": "letters",
+       "dur": 1
+      },
+      {
+       "do": "show",
+       "target": [
+        "aGeneral",
+        "bGeneral",
+        "dDown"
+       ],
+       "at": "Small"
+      },
+      {
+       "do": "highlight",
+       "target": "dotA",
+       "at": "first"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Subtract matching coordinates. The bars mean the size of the difference, whichever way you subtract.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Subtract"
+      },
+      {
+       "do": "text",
+       "text": "Horizontal: $\\cb{|x_2-x_1|}$",
+       "at": "Subtract"
+      },
+      {
+       "do": "show",
+       "target": "xChange",
+       "at": "Subtract"
+      },
+      {
+       "do": "text",
+       "text": "Vertical: $\\cv{|y_2-y_1|}$",
+       "at": "coordinates"
+      },
+      {
+       "do": "show",
+       "target": "yChange",
+       "at": "coordinates"
+      },
+      {
+       "do": "highlight",
+       "target": "yChange",
+       "at": "bars"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Squaring removes the sign. Square each change and add for the distance squared.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Squaring"
+      },
+      {
+       "do": "write",
+       "tex": "d^2\\!=\\!\\cb{(x_2\\!-\\!x_1)^2}\\!+\\!\\cv{(y_2\\!-\\!y_1)^2}",
+       "at": "Squaring"
+      },
+      {
+       "do": "draw",
+       "target": "hPulse",
+       "at": "Square",
+       "dur": 0.6
+      },
+      {
+       "do": "hide",
+       "target": "hPulse",
+       "at": "add",
+       "dur": 0.15
+      },
+      {
+       "do": "draw",
+       "target": "vPulse",
+       "at": "add",
+       "dur": 0.6
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Take the square root. This distance formula is the Pythagorean theorem written with coordinates.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "hPulse",
+        "vPulse",
+        "dPulse"
+       ],
+       "dur": 0.15,
+       "at": "Take"
+      },
+      {
+       "do": "write",
+       "tex": "d\\!=\\!\\sqrt{\\cb{(x_2\\!-\\!x_1)^2}\\!+\\!\\cv{(y_2\\!-\\!y_1)^2}}",
+       "at": "root",
+       "fresh": true
+      },
+      {
+       "do": "draw",
+       "target": "dPulse",
+       "at": "distance",
+       "dur": 0.55
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "With legs four and three, the distance is five.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "With"
+      },
+      {
+       "do": "header",
+       "tex": "d=\\sqrt{\\cb{(x_2-x_1)^2}+\\cv{(y_2-y_1)^2}}",
+       "label": "Distance between two points",
+       "at": "With"
+      },
+      {
+       "do": "write",
+       "tex": "d=\\sqrt{\\cb{4}^2+\\cv{3}^2}=5",
+       "at": "five",
+       "fresh": true
+      },
+      {
+       "do": "hide",
+       "target": [
+        "hPulse",
+        "vPulse",
+        "dPulse"
+       ],
+       "dur": 0.15,
+       "at": "With"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "aGeneral",
+        "bGeneral",
+        "xChange",
+        "yChange",
+        "dDown",
+        "corner"
+       ],
+       "at": "With"
+      },
+      {
+       "do": "move",
+       "points": {
+        "B": [
+         6,
+         2
+        ],
+        "C": [
+         6,
+         5
+        ]
+       },
+       "at": "With",
+       "dur": 1
+      },
+      {
+       "do": "show",
+       "target": [
+        "aTwo",
+        "bTwo",
+        "legFour",
+        "legThree",
+        "corner"
+       ],
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "five",
+       "at": "five"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "hPulse",
+        "vPulse",
+        "dPulse"
+       ],
+       "at": "With"
+      },
+      {
+       "do": "show",
+       "target": "ticksTwo",
+       "at": "With"
+      },
+      {
+       "do": "draw",
+       "target": "hPulse",
+       "at": "four",
+       "dur": 0.35
+      },
+      {
+       "do": "hide",
+       "target": "hPulse",
+       "at": "three",
+       "dur": 0.15
+      },
+      {
+       "do": "draw",
+       "target": "vPulse",
+       "at": "three",
+       "dur": 0.35
+      },
+      {
+       "do": "hide",
+       "target": "vPulse",
+       "at": "five",
+       "dur": 0.15
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "With legs two and three, the distance is square root of thirteen.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "write",
+       "tex": "d=\\sqrt{\\cb{2}^2+\\cv{3}^2}=\\sqrt{13}",
+       "at": "root"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "hPulse",
+        "vPulse",
+        "dPulse"
+       ],
+       "dur": 0.15,
+       "at": "With"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "bTwo",
+        "legFour",
+        "five",
+        "corner"
+       ],
+       "at": "With"
+      },
+      {
+       "do": "move",
+       "points": {
+        "B": [
+         4,
+         2
+        ],
+        "C": [
+         4,
+         5
+        ]
+       },
+       "at": "With",
+       "dur": 1
+      },
+      {
+       "do": "show",
+       "target": [
+        "bThree",
+        "legTwo",
+        "corner"
+       ],
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "root",
+       "at": "root"
+      },
+      {
+       "do": "draw",
+       "target": "hPulse",
+       "at": "two",
+       "dur": 0.35
+      },
+      {
+       "do": "hide",
+       "target": "hPulse",
+       "at": "three",
+       "dur": 0.15
+      },
+      {
+       "do": "draw",
+       "target": "vPulse",
+       "at": "three",
+       "dur": 0.35
+      },
+      {
+       "do": "hide",
+       "target": "vPulse",
+       "at": "root",
+       "dur": 0.15
+      },
+      {
+       "do": "draw",
+       "target": "dPulse",
+       "at": "root",
+       "dur": 0.6
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The formula combines both squared coordinate changes under one square root.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "hPulse",
+        "vPulse",
+        "dPulse"
+       ],
+       "dur": 0.15,
+       "at": "The"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "aTwo",
+        "bThree",
+        "legTwo",
+        "legThree",
+        "root"
+       ],
+       "at": "The"
+      },
+      {
+       "do": "show",
+       "target": [
+        "aGeneral",
+        "bGeneral",
+        "dDown",
+        "xChange",
+        "yChange"
+       ],
+       "at": "squared"
+      },
+      {
+       "do": "hide",
+       "target": "ticksTwo",
+       "at": "formula"
+      },
+      {
+       "do": "move",
+       "at": "formula",
+       "points": {
+        "B": [
+         5.3,
+         2
+        ],
+        "C": [
+         5.3,
+         5
+        ]
+       },
+       "dur": 0.8
+      },
+      {
+       "do": "show",
+       "target": "hPulse",
+       "at": "squared",
+       "dur": 0.15
+      },
+      {
+       "do": "hide",
+       "target": "hPulse",
+       "at": "changes",
+       "dur": 0.15
+      },
+      {
+       "do": "show",
+       "target": "vPulse",
+       "at": "changes",
+       "dur": 0.15
+      },
+      {
+       "do": "hide",
+       "target": "vPulse",
+       "at": "root",
+       "dur": 0.15
+      },
+      {
+       "do": "draw",
+       "target": "dPulse",
+       "at": "root",
+       "dur": 0.55
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The coordinate differences make the legs. Square, add, and take the square root to find the straight distance.",
+     "pause": 2.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "hPulse",
+        "vPulse",
+        "dPulse"
+       ],
+       "dur": 0.15,
+       "at": "The"
+      },
+      {
+       "do": "show",
+       "target": "hPulse",
+       "at": "differences",
+       "dur": 0.15
+      },
+      {
+       "do": "hide",
+       "target": "hPulse",
+       "at": "add",
+       "dur": 0.15
+      },
+      {
+       "do": "show",
+       "target": "vPulse",
+       "at": "add",
+       "dur": 0.15
+      },
+      {
+       "do": "hide",
+       "target": "vPulse",
+       "at": "straight",
+       "dur": 0.15
+      },
+      {
+       "do": "draw",
+       "target": "dPulse",
+       "at": "straight",
+       "dur": 0.55
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
