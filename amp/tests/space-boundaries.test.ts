@@ -1,6 +1,9 @@
 import assert from "node:assert/strict";
+import { mkdirSync, mkdtempSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { dirname, join } from "node:path";
 import test from "node:test";
-import { check, findings } from "../scripts/check-space-boundaries.js";
+import { check, findings, reaches } from "../scripts/check-space-boundaries.js";
 
 test("the shared widgets carry no space branches today", () => {
   const { checked, found } = check();
@@ -8,37 +11,94 @@ test("the shared widgets carry no space branches today", () => {
   assert.deepEqual(found, []);
 });
 
-test("the lint catches each way a widget could guess its space", () => {
-  const caught = (source: string) => findings("ui/Widget.tsx", source);
+test("the lint reads the syntax tree: every way a widget could guess its space", () => {
   for (const source of [
     'const label = org.kind === "family" ? "child" : "student";',
-    'if ("school" === org.kind) return null;',
+    // CP-2 M2: split across lines.
+    'const label = org.kind ===\n  "family" ? "child" : "student";',
+    // A switch.
+    'switch (org.kind) { case "family": return "child"; }',
+    // Element access, optional chaining, reversed operands.
+    'const label = org["kind"] === "family" ? "child" : "student";',
+    'if (org?.kind !== "school") return null;',
+    'if ("district" == place.kind) return null;',
     'return space === "family" ? a : b;',
-    "export function Widget({ family }: { family: boolean }) {",
-    "  family?: boolean;",
-    "<JoinClass family={true} />",
+    "export function Widget({ family }: { family: boolean }) {}",
+    "type Props = { family?: boolean };",
+    "const x = <JoinClass family />;",
     "const mine = me.familyClass?.classId;",
     "const shared = me.secondParentOf ?? [];",
     "const schools = me.staffOf;",
     "const teachingHere = inSchool;",
-    'import { resolveSpace } from "../features/spaces/resolve";',
-    'import { useSpace } from "../../spaces/useSpace";',
-    'import { useSchoolNavigation } from "../navigation/school-navigation";',
-    'import { placesFor } from "../onboarding/guard";',
-    'import { secondParentChild } from "../second-parent/api";',
+    // Choosing its own words or space.
+    'const words = spaceWords("family");',
+    "const here = spaceOfPath(location.pathname);",
   ])
-    assert.equal(caught(source).length, 1, source);
+    assert.ok(
+      findings("ui/Widget.tsx", source).length > 0,
+      `not caught: ${source}`,
+    );
 });
 
-test("words as props, comments and ordinary code pass", () => {
+test("words as props, failures' kinds and comments pass", () => {
   for (const source of [
-    'import type { SpaceWords } from "../../spaces/words";',
+    'import type { SpaceWords } from "../features/spaces/words";',
     "// A family's class says child; the caller decides.",
-    ' * kind === "family" in a comment',
-    "/* family: boolean */",
+    '/* org.kind === "family" in a comment */',
     "const words: SpaceWords = props.words;",
-    'const error = failure.kind === "network";',
+    'const offline = error.kind === "network";',
     "const font = 'font-family';",
   ])
     assert.deepEqual(findings("ui/Widget.tsx", source), [], source);
+});
+
+/** A tiny source tree: a shared widget and what it imports. */
+function tree(files: Record<string, string>) {
+  const root = mkdtempSync(join(tmpdir(), "space-boundaries-"));
+  for (const [path, source] of Object.entries(files)) {
+    mkdirSync(dirname(join(root, path)), { recursive: true });
+    writeFileSync(join(root, path), source);
+  }
+  for (const path of [
+    "features/spaces/resolve.ts",
+    "features/spaces/useSpace.ts",
+    "features/spaces/words.ts",
+    "features/navigation/shell-frame.ts",
+    "features/onboarding/guard.ts",
+  ]) {
+    mkdirSync(dirname(join(root, path)), { recursive: true });
+    if (!files[path]) writeFileSync(join(root, path), "export const x = 1;\n");
+  }
+  return root;
+}
+
+test("imports: split, aliased, re-exported, dynamic or reached through another module", () => {
+  for (const source of [
+    'import { resolveSpace } from\n  "../features/spaces/resolve";',
+    'import { resolveSpace as pick } from "../features/spaces/resolve";',
+    'export * from "../features/spaces/resolve";',
+    'export { useSpace } from "../features/spaces/useSpace";',
+    'const load = () => import("../features/spaces/useSpace");',
+    'import { shellFrame } from "../features/navigation/shell-frame";',
+    'import { placesFor } from "../features/onboarding/guard";',
+    // Words as a value: the widget would choose them.
+    'import { spaceWords } from "../features/spaces/words";',
+    // Through a helper that isn't shared.
+    'import { helper } from "../lib/helper";',
+  ]) {
+    const root = tree({
+      "ui/Widget.tsx": source,
+      "lib/helper.ts":
+        'import { useSpace } from "../features/spaces/useSpace";\nexport const helper = useSpace;\n',
+    });
+    assert.ok(
+      reaches("ui/Widget.tsx", root).length > 0,
+      `not caught: ${source}`,
+    );
+  }
+  const root = tree({
+    "ui/Widget.tsx":
+      'import type { SpaceWords } from "../features/spaces/words";\nimport type { Thing } from "../features/onboarding/guard";\n',
+  });
+  assert.deepEqual(reaches("ui/Widget.tsx", root), []);
 });
