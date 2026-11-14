@@ -370,12 +370,6 @@
   color: var(--atlas-muted);
   font-size: 12px;
 }
-.pathways-fallback {
-  position: absolute;
-  inset: 120px 20px auto;
-  color: var(--atlas-on-surface);
-  line-height: 1.6;
-}
 .pathways-browser {
   box-sizing: border-box;
   width: 260px;
@@ -751,17 +745,6 @@
   .pathways-learner {
     font-size: 12px;
   }
-}
-.pathways-lesson-practice {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 8px 14px;
-  border-radius: 10px;
-  background: var(--color-primary);
-  color: var(--color-on-primary);
-  text-decoration: none;
-  margin-bottom: 16px;
 }
 
 .pathways-camera .camera-narrow {

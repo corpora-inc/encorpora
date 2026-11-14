@@ -1,6 +1,7 @@
 {
   "id": "derive-line-equation--sd",
   "title": "Why a line has the equation y = mx + b",
+  "teaches": ["graphed-line-slope"],
   "cast": {
     "teacher": {}
   },

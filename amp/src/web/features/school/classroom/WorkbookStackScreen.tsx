@@ -273,7 +273,14 @@ function Stack({
   const me = useQuery(meOptions(currentSession())).data;
   // A family's own parent continues with AMP; a class or school has no
   // checkout, so its next step is to talk to us.
-  const used = data.students.filter(freeWorkbooksUsed);
+  // A school's students have no free allowance: theirs is the class's
+  // practice, and after it a seat ("Needs a seat"), never "free" words.
+  const orgKind = useQuery({
+    ...orgOptions(currentSession(), org),
+    refetchOnMount: false,
+  }).data?.kind;
+  const used =
+    orgKind === "school" ? [] : data.students.filter(freeWorkbooksUsed);
   // A family's own child continues with AMP; any other class talks to us.
   const family = me?.signedIn && me.familyClass?.classId === classId;
   const child = family

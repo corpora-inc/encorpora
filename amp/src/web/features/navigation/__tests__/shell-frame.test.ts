@@ -193,7 +193,9 @@ test.each(["district", "network"] as const)(
   },
 );
 
-test("review regression: a lone school hides Overview, Staff and Activity", () => {
+// A solo school's authorized administrator still reaches its staff
+// (CP-1 review, R7): only the overview and activity collapse into the class.
+test("review regression: a lone school hides Overview and Activity, never readable Staff", () => {
   const org = {
     id: "org",
     kind: "school" as const,
@@ -212,6 +214,7 @@ test("review regression: a lone school hides Overview, Staff and Activity", () =
     )[],
   };
   expect(schoolTabs(org, { lone: true }).map((tab) => tab.id)).toEqual([
+    "staff",
     "calendar",
     "privacy",
   ]);

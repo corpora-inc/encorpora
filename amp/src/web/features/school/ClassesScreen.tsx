@@ -70,37 +70,12 @@ import {
 import { yearsOptions } from "./org/org-api";
 import { classPath, orgPath } from "./paths";
 import { SmallClassGrades } from "./classes/SmallClassGrades";
-import {
-  AccessLine,
-  AccessSheets,
-  practiceClosed,
-  useClassAccess,
-} from "./pilots/ClassAccess";
+import { AccessLine, AccessSheets, useClassAccess } from "./pilots/ClassAccess";
 import { SMALL_CLASS } from "../navigation/shell-frame";
 import { meOptions } from "../../lib/query";
 import styles from "./School.module.css";
+import { COURSE_OPTIONS, courseLabel } from "./courses";
 
-const COURSE_OPTIONS: readonly (readonly [string, string])[] = [
-  ["", "Each student’s own grade"],
-  ["K", "Kindergarten"],
-  ...Array.from(
-    { length: 8 },
-    (_, index) => [String(index + 1), `Grade ${index + 1}`] as const,
-  ),
-  ["algebra-1", "Algebra 1"],
-  ["geometry", "Geometry"],
-  ["algebra-2", "Algebra 2"],
-  ["precalculus", "Precalculus"],
-];
-const courseLabel = (bands: readonly string[]) =>
-  bands.length
-    ? bands
-        .map(
-          (band) =>
-            COURSE_OPTIONS.find(([value]) => value === band)?.[1] ?? band,
-        )
-        .join(", ")
-    : "Own grades";
 const GRADING: GradingKind[] = ["year", "semester", "trimester", "quarter"];
 const gradingLabel = (kind: GradingKind) =>
   kind === "year"
@@ -638,7 +613,7 @@ export function ClassScreen() {
   useLoggedError(error);
   // Before practice starts and after it ends, no one signs in: no code.
   const access = useClassAccess({ org: orgId, class: classId });
-  const closed = practiceClosed(access.view);
+  const closed = access.closed;
   // Before practice starts no one needs a seat yet; while it runs, the
   // students it covers don't.
   const seatsNeeded =
@@ -718,7 +693,7 @@ export function ClassScreen() {
           }
         />
         <section className={styles.classMeta}>
-          {!closed && !access.pending && (
+          {!closed && !access.pending && klass.joinCode && (
             <JoinClass
               code={klass.joinCode}
               place={{ org: orgId, class: classId }}

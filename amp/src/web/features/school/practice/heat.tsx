@@ -71,6 +71,7 @@ export function HeatLegend({
   midpoint,
   midpointWord,
   empty = false,
+  emptyLabel = "Not on the roster yet",
 }: {
   /** What the scale measures; left out where a title above already says it. */
   caption?: string;
@@ -78,6 +79,8 @@ export function HeatLegend({
   /** What the midpoint is: "target", "median week". */
   midpointWord: string;
   empty?: boolean;
+  /** What a hatched cell means, in the space's words. */
+  emptyLabel?: string;
 }) {
   const ticks = heatTicks(midpoint);
   return (
@@ -102,7 +105,7 @@ export function HeatLegend({
       {empty && (
         <span className={styles.legendKeys}>
           <span>
-            <span className={styles.cell} data-empty="" /> Not on the roster yet
+            <span className={styles.cell} data-empty="" /> {emptyLabel}
           </span>
         </span>
       )}

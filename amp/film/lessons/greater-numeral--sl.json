@@ -1,6 +1,8 @@
 {
  "id": "greater-numeral--sl",
  "title": "Greater or less, through ten",
+ "teaches": [],
+ "skill": "compare-numerals",
  "cast": {
   "teacher": {},
   "learner": {}

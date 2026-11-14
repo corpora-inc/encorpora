@@ -1,12 +1,15 @@
 import React, { createContext, useContext } from "react";
 import katex from "katex";
 import { segmentPrintText } from "./math-typesetting";
+import { trailingDisplayMath } from "./prompt-structure";
+import { DisplayMath, displayMathStyles } from "./DisplayMath";
 
 // Keep KaTeX bases atomic for PDF pagination. Explicit breaks between bases
 // retain operator wrapping while nowrap joins the final base to punctuation.
 // WebKit needs each break inside a normal-whitespace span to wrap within nowrap.
 // Neither the source text nor MathML includes these layout-only break points.
 export const printMathStyles = `
+${displayMathStyles}
 .print-math{display:inline-block;break-inside:avoid}
 :is(p,li)>.print-math:has(.mfrac,.sqrt),:is(p,li)>.print-math-punctuation:has(.mfrac,.sqrt){padding:.2em 0}
 .print-math .katex{font-size:1.08em}
@@ -29,6 +32,22 @@ export function PrintMathText({ text }: { text: string }) {
     .filter((s) => s.kind === "text")
     .flatMap((s) => s.source.match(/[A-Za-z]{2,}/g) ?? []).length;
   const prose = useContext(PrintMathProse) && words >= 3;
+  const display = trailingDisplayMath(text);
+  if (display)
+    return (
+      <>
+        {display.lead && (
+          <>
+            <PrintMathText text={display.lead} />{" "}
+          </>
+        )}
+        <DisplayMath
+          tex={display.tex}
+          source={display.source}
+          originalSource={display.originalSource}
+        />
+      </>
+    );
   let attachedPunctuationLength = 0;
   return (
     <>

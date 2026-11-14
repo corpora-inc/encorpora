@@ -1,7 +1,8 @@
 {
  "id": "root-between-integers--sr",
  "title": "A square root: from area to side",
- "teaches": [],
+ "teaches": ["root-nearest-tenth"],
+ "skill": "approximate-roots",
  "cast": {
   "teacher": {}
  },

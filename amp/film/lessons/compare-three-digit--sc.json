@@ -1,9 +1,8 @@
 {
   "id": "compare-three-digit--sc",
   "title": "Compare hundreds, tens, and ones",
-  "teaches": [
-    "three-digit-symbol"
-  ],
+  "teaches": ["three-digit-symbol"],
+  "skill": "compare-three-digit",
   "cast": {
     "teacher": {},
     "learner": {}

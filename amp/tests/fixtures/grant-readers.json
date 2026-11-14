@@ -112,7 +112,7 @@
   {
     "path": "src/family/repository.ts",
     "hash": "5ed34c9052417187dfe06c60e36afc592672130d264e22c03fe67f616792a031",
-    "reason": "Deletion financial retention: whether a learner ever had a paid record (non-pilot grants, commerce orders, or a funded invoice payment received) so deletion keeps it; historical, never a current entitlement read."
+    "reason": "Child-only practice-here predicate explicitly excludes adults; deletion financial retention explicitly excludes pilot grants and counts received funded-invoice payments."
   },
   {
     "path": "src/family/repository.ts",
@@ -251,8 +251,18 @@
   },
   {
     "path": "src/schools/pilot-access.ts",
-    "hash": "f26a4aff4428f65ae8594fc1e789faf49b3650ff80417e2a2003436a265c3586",
-    "reason": "Class practice gate reads student enrollment learners only, not the separate teacher adult learner."
+    "hash": "75227ba33d35d5e12a3960efe720698e6b68895cb1cea5459d96f4cf4f2a4abc",
+    "reason": "Class practice gate reads grants of the class's entering students only (studentInClassSql: role 'student'), never the separate teacher adult learner."
+  },
+  {
+    "path": "src/schools/pilot-access.ts",
+    "hash": "8ef655f80a51775b98632c2f09fe8d03315ab9eeff65d05e691b24afd38552d2",
+    "reason": "classRecheckAt executes exactly the classRecheckQuery statement inventoried above (student enrollment grants only, scheduling a re-read)."
+  },
+  {
+    "path": "src/schools/pilot-access.ts",
+    "hash": "be84f2484a50787db1e1ca0ddb858b797e64c7e823517066d57505f989e55087",
+    "reason": "Class practice recheck statement reads grant start and end moments of the class's student enrollments only, per pupil; it schedules a re-read and never authorizes adult learning."
   },
   {
     "path": "src/schools/pilots.ts",
@@ -415,18 +425,18 @@
     "reason": "Dynamic migration DDL preserves and extends the installed problem-flag response-kind CHECK; it reads pg_constraint and alters amp_problem_flags only."
   },
   {
+    "path": "scripts/verify-funded-invoice-journey.ts",
+    "hash": "1874878834934838f5e3551d0a93c7d87a596de3215f24dcae63ea04a7872298",
+    "reason": "Browser journey fixture reads the temporary grant row linked to its own funded invoice to verify it; test-only, it never authorizes learning."
+  },
+  {
     "path": "src/funding-purchase/repository.ts",
     "hash": "f3adafd4afc4127f95f94d8c2bd8c9d89e75faae86d894a935eb1e5404144a24",
-    "reason": "Shows a funding invoice's own pending status from the one provisional grant minted for that invoice (joined by its gift); it decides no access, which accessGrantsFor resolves for practice."
+    "reason": "Funded-invoice presentation reads the one temporary grant linked to this invoice (amp_access_gifts) for its end date and status on the invoice screen; it never authorizes learning."
   },
   {
     "path": "src/funding-purchase/repository.ts",
     "hash": "33ae203a7303455c3c007a8046dc2c4e1bff321aafcfcd74a3ab4a1b10da2287",
-    "reason": "A write, not a read: cancelling a funding invoice revokes exactly the provisional grants minted for it (by gift); later entitlement reads see the revocation through accessGrantsFor."
-  },
-  {
-    "path": "scripts/verify-funded-invoice-journey.ts",
-    "hash": "1874878834934838f5e3551d0a93c7d87a596de3215f24dcae63ea04a7872298",
-    "reason": "Browser verification fixture: reads the funded invoice's own gift grant row to assert what provisioning wrote; not product code and decides no access."
+    "reason": "Cancelling a funded invoice revokes exactly the temporary grant linked to that invoice: a write keyed by the invoice, never an entitlement read."
   }
 ]

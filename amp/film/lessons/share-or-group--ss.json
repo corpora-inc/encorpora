@@ -1,9 +1,8 @@
 {
  "id": "share-or-group--ss",
  "title": "Division asks two questions",
- "teaches": [
-  "story-both-interpretations"
- ],
+ "teaches": ["story-both-interpretations"],
+ "skill": "division-meaning",
  "cast": {
   "teacher": {},
   "learner": {}

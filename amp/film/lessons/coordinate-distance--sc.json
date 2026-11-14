@@ -1,7 +1,8 @@
 {
  "id": "coordinate-distance--sc",
  "title": "Distance between two points",
- "teaches": [],
+ "teaches": ["coordinate-distance-exact"],
+ "skill": "coordinate-distance",
  "cast": {
   "teacher": {}
  },

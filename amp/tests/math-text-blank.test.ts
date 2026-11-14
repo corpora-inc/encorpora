@@ -105,7 +105,6 @@ test("a variable introducing a grouped formula stays typeset", () => {
   );
 });
 
-
 test("explicit numeric coordinate lists wrap between pairs without changing TeX formulas", () => {
   for (const pairs of [
     ["(0,5)", "(1,11)", "(2,37)", "(3,107)"],
@@ -113,10 +112,44 @@ test("explicit numeric coordinate lists wrap between pairs without changing TeX 
   ]) {
     const formula = pairs.join(", ");
     const result = segments(`Observed: $${formula}$.`);
-    assert.deepEqual(result.filter((s) => s.math).map((s) => s.text), pairs);
-    assert.equal(result.map((s) => s.plain ?? s.text).join(""), `Observed: ${formula}.`);
+    assert.deepEqual(
+      result.filter((s) => s.math).map((s) => s.text),
+      pairs,
+    );
+    assert.equal(
+      result.map((s) => s.plain ?? s.text).join(""),
+      `Observed: ${formula}.`,
+    );
   }
-  for (const formula of ["(x, y), (a, b)", "(1,2), x+3", "1,000", "f(x,y)=x+y", "(1,2); (3,4)"]) {
-    assert.deepEqual(segments(`$${formula}$`), [{ text: formula, math: true, plain: formula }]);
+  for (const formula of [
+    "(x, y), (a, b)",
+    "(1,2), x+3",
+    "1,000",
+    "f(x,y)=x+y",
+    "(1,2); (3,4)",
+  ]) {
+    assert.deepEqual(segments(`$${formula}$`), [
+      { text: formula, math: true, plain: formula },
+    ]);
   }
+});
+
+test("sentence-ending numbers stay separate from the next formula", () => {
+  for (const [text, formulas] of [
+    ["The loose counters are 8. 10 + 8 = 18.", ["10 + 8 = 18"]],
+    ["The total is 18.\n10 + 8 = 18.", ["10 + 8 = 18"]],
+    ["2 + 6 = 8. 10 + 8 = 18.", ["2 + 6 = 8", "10 + 8 = 18"]],
+    ["The value is 8.10. 10.5 + 8.1 = 18.6.", ["10.5 + 8.1 = 18.6"]],
+    ["The value is 8. x + 8 = 18.", ["x + 8 = 18"]],
+  ] as const) {
+    const parts = segments(text);
+    assert.deepEqual(
+      parts.filter((s) => s.math).map((s) => s.plain),
+      formulas,
+    );
+    assert.equal(parts.map((s) => s.plain ?? s.text).join(""), text);
+  }
+  assert.deepEqual(segments("$8.10 + 8 = 16.10$"), [
+    { math: true, text: "8.10 + 8 = 16.10", plain: "8.10 + 8 = 16.10" },
+  ]);
 });

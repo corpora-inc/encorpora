@@ -11,6 +11,7 @@ export function Dialog({
   aboveNavigation = false,
   fullOnPhone = false,
   tall = false,
+  wide = false,
   back,
   initialFocus,
 }: {
@@ -26,6 +27,9 @@ export function Dialog({
    * lesson): the sheet is its full height from the start, so nothing moves
    * when it lands. */
   tall?: boolean;
+  /** A reading sheet with figures (a lesson): wider on a desktop, its prose
+   * still at a reading measure. */
+  wide?: boolean;
   /** A layer under this one (nav/LayerHost): X returns to it, and says so
    * quietly in place of the cross ("‹ Adding fractions"). */
   back?: string;
@@ -42,7 +46,7 @@ export function Dialog({
           className={`${styles.overlay} ${aboveNavigation ? styles.aboveNavigation : ""}`}
         />
         <RadixDialog.Content
-          className={`${styles.content} ${aboveNavigation ? styles.aboveNavigation : ""} ${fullOnPhone ? styles.fullOnPhone : ""} ${tall ? styles.tall : ""}`}
+          className={`${styles.content} ${aboveNavigation ? styles.aboveNavigation : ""} ${fullOnPhone ? styles.fullOnPhone : ""} ${tall ? styles.tall : ""} ${wide ? styles.wide : ""}`}
           aria-describedby={undefined}
           // Focus goes back to what opened it, as a sheet's does, also when
           // it closes by its address (a layer popped by Back).

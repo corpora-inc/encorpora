@@ -1,9 +1,8 @@
 {
  "id": "pairing-leftover--so",
  "title": "Odd and even: partners and equal groups",
- "teaches": [
-  "even-as-equal-addends"
- ],
+ "teaches": ["even-as-equal-addends"],
+ "skill": "odd-and-even",
  "cast": {
   "teacher": {},
   "learner": {}

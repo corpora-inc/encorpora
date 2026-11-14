@@ -1,7 +1,7 @@
 import { useCloseClick } from "../../../nav/links";
 import { useQuery } from "@tanstack/react-query";
-import { Link, useSearch } from "@tanstack/react-router";
-import { useState } from "react";
+import { Link, useParams, useSearch } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import type { IssuedCards } from "../../../../schools/contracts";
 import { Button, buttonClass } from "../../../ui/Button";
 import { PrintButton } from "../../../ui/PrintButton";
@@ -15,6 +15,7 @@ import "../SchoolFrame.module.css";
 import { rosterOptions, useIssueCards, useStaffSession } from "./api";
 import { useClassHost, type ClassHost } from "./host";
 import styles from "./Cards.module.css";
+import { ClosedSignIn, useClassAccess } from "../pilots/ClassAccess";
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -77,6 +78,14 @@ export function CardsScreen({ host: given }: { host?: ClassHost } = {}) {
       : undefined;
   const session = useStaffSession();
   const roster = useQuery(rosterOptions(session, place));
+  const access = useClassAccess(place);
+  // Cards made while practice ran go when it closes, on a page left open:
+  // they would only lead to a closed class (CP-3 r3 H1).
+  // Only when the server says so: while a recheck is asked, they wait.
+  const closedNow = access.practice !== "open";
+  useEffect(() => {
+    if (closedNow) setIssued(null);
+  }, [closedNow]);
   const issue = useIssueCards(session, place);
   const [issued, setIssued] = useState<IssuedCards | null>(null);
   // Back to where it was opened: the roster, Today, sign-in help.
@@ -105,7 +114,14 @@ export function CardsScreen({ host: given }: { host?: ClassHost } = {}) {
         </EmptyState>
       </main>
     );
-  if (!roster.data) return <LoadingScreen />;
+  if (!roster.data || access.pending) return <LoadingScreen />;
+  // A card leads nowhere until practice runs: never print one before.
+  if (access.closed || access.unavailable)
+    return (
+      <main className={styles.center} data-dense>
+        <ClosedSignIn place={place} />
+      </main>
+    );
   const { class: info, canManage } = roster.data;
   const students = roster.data.students.filter(
     (entry) => !host.keep || host.keep(entry.id),

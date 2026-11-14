@@ -94,8 +94,12 @@ export type SpaceResources = {
     path?: readonly string[];
     name?: string | null;
     can?: readonly string[];
+    /** Whether its students can practice, for every reader of the class:
+     * the one state the sign-in board follows (SPEC R14). */
+    practice?: "open" | "waiting" | "ended";
   } | null;
-  /** Students covered by the class's running practice. */
+  /** Students covered by the class's running practice (an answer that
+   * doesn't carry `year.practice`, from an older server). */
   covered?: number;
   /** The family a `/family/<family>/…` address names: its own children and
    * what this reader may do with each (docs/architecture/family-api.md). */
@@ -231,6 +235,10 @@ type Frame = {
    * practice", a child's name on their learning screens): null when
    * nothing is named. */
   label: string | null;
+  /** A shorter name the bar may show when the whole one doesn't fit, and
+   * always on a phone: a class without its school. The bar never cuts a
+   * name short (AppShell's PlaceName). */
+  shortLabel: string | null;
 };
 
 export type SpaceDescriptor =
@@ -441,6 +449,7 @@ function resolveOnce(
     words: spaceWords("public"),
     place: null,
     label: null,
+    shortLabel: null,
   };
   const words = (space: Space) => ({ words: spaceWords(space) });
   if (session.kind === "student")
@@ -932,13 +941,18 @@ function teachingSpace(
   const klass = onClass
     ? classes.find((entry) => entry.id === frame.classId)
     : undefined;
-  // Starting needs the class's sign-in board, where the server says so.
+  // Starting the class opens its sign-in board: the class's own capability
+  // to read it, and its students able to practice, as the server says for
+  // every reader (never a pilot only some roles may read).
   const start =
     onClass &&
     status === "ready" &&
     !past &&
     !!year?.can?.includes("signin.read") &&
-    (demo || (resources.covered ?? 0) > 0);
+    (demo ||
+      (year?.practice !== undefined
+        ? year.practice === "open"
+        : (resources.covered ?? 0) > 0));
   const tabs =
     status !== "ready" || !org
       ? []
@@ -964,13 +978,25 @@ function teachingSpace(
     ...(demo ? (["demo-setup"] as const) : []),
     ...(start && !demo ? (["start-class"] as const) : []),
   ];
+  // The school above a class, for someone who administers or oversees it:
+  // its license, staff, calendar and settings stay two taps away even when
+  // a one-class school collapses to its class. A teacher with only their
+  // own class's rights never gets the admin screens this way.
+  const oversees = (
+    ["overview.read", "staff.read", "license.read"] as const
+  ).some((permission) => can.has(permission));
+  const schoolHome =
+    org && lone ? (schoolTabs(org, { lone })[0]?.path ?? null) : null;
+  // A teacher of a school with several classes reaches its Classes (their
+  // other classes, earlier years) the same way, without the admin screens.
   const school: Destination[] =
-    status !== "unavailable" && !lone && (!onClass || can.has("overview.read"))
+    status !== "unavailable" &&
+    (!onClass || oversees || (!lone && can.has("classes.read")))
       ? [
           {
             id: "school",
             label: onClass ? "School" : (org?.name ?? "School"),
-            path: `school/${orgId}`,
+            path: schoolHome ?? `school/${orgId}`,
             icon: "school",
             ...(onClass && org ? { detail: org.name } : {}),
             current: !onClass,
@@ -1029,18 +1055,23 @@ function teachingSpace(
               label: klass?.name ?? year?.name ?? "Class",
               path: `school/${orgId}/classes/${frame.classId}/today`,
               icon: "class",
+              // Its school, by name, where no School row below says it: a
+              // phone's bar names the class alone.
+              ...(org && !school.length ? { detail: org.name } : {}),
               current: true,
             },
             ...school,
           ],
     place: `class:${orgId}:${frame.classId}`,
-    label: (() => {
+    // The class and its school, by name (R16), a one-class school too; the
+    // class alone on a phone or where both don't fit.
+    ...(() => {
       const name = klass?.name ?? year?.name ?? null;
-      return name && status !== "unavailable"
-        ? lone || !org
-          ? name
-          : `${name} · ${org.name}`
-        : null;
+      const named = !!name && status !== "unavailable";
+      return {
+        label: named ? (org ? `${name} · ${org.name}` : name) : null,
+        shortLabel: named && org ? name : null,
+      };
     })(),
   };
 }

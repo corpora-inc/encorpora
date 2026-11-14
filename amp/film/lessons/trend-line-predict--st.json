@@ -1,14 +1,8 @@
 {
   "id": "trend-line-predict--st",
   "title": "A line through the cloud",
-  "teaches": [
-    "trend-line-best-fit-choice",
-    "trend-line-fit-assess",
-    "trend-line-compare",
-    "trend-line-fit",
-    "trend-line-read",
-    "trend-slope-meaning"
-  ],
+  "teaches": ["trend-line-best-fit-choice", "trend-line-fit-assess", "trend-line-compare", "trend-line-fit", "trend-line-read", "trend-slope-meaning"],
+  "skill": "scatterplots",
   "cast": {
     "teacher": {}
   },

@@ -1,9 +1,8 @@
 {
  "id": "turn-around-fact--st",
  "title": "Turn an addition fact around",
- "teaches": [
-  "turn-around-sum"
- ],
+ "teaches": ["turn-around-sum"],
+ "skill": "turn-around-facts",
  "cast": {
   "teacher": {},
   "learner": {}

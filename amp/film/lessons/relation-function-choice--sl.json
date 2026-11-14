@@ -1,11 +1,8 @@
 {
   "id": "relation-function-choice--sl",
   "title": "One input, one output",
-  "teaches": [
-    "relation-point-removal",
-    "function-pair-select",
-    "function-missing-input"
-  ],
+  "teaches": ["relation-point-removal", "function-pair-select", "function-missing-input"],
+  "skill": "function-notation",
   "cast": {
     "teacher": {},
     "learner": {}

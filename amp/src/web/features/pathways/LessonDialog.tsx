@@ -1,7 +1,13 @@
 import { lazy, Suspense, type ReactNode } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { lessonFilms } from "../../../content/lesson-films";
+import { skillCatalogOptions } from "../../lib/learning-view";
 import { Dialog } from "../../ui/Dialog";
+import { FilmLink } from "../films/FilmLink";
 import { LessonWait } from "./LessonWait";
 import { LessonBoundary } from "./LessonRecovery";
+import { pathwaysLessonOptions } from "./lesson-query";
+import styles from "./LessonDialog.module.css";
 const SkillLesson = lazy(() => import("./SkillLesson"));
 
 /** A problem type's id, as `?lesson=` carries it. */
@@ -14,6 +20,9 @@ export const lessonParam = (raw: unknown) =>
  * A problem type's short lesson, over the screen that opened it. Its address
  * is that screen's with `?lesson=`, so a link, a refresh or Back opens it
  * again, and closing returns to that screen (lib/return-to.ts).
+ *
+ * Its head comes first and at once: the problem type's title, then one row
+ * of what to do with it (the page's Try, then its film), the lesson under.
  */
 export function LessonDialog({
   lesson,
@@ -33,7 +42,7 @@ export function LessonDialog({
   aboveLayers?: boolean;
   /** The layer under this one, where X returns. */
   back?: string;
-  /** Actions above the lesson (try this problem type). */
+  /** The page's action with this problem type (try it), first in the row. */
   children?: ReactNode;
 }) {
   return (
@@ -45,22 +54,61 @@ export function LessonDialog({
       title="Explore a problem type"
       fullOnPhone
       tall
+      wide
       aboveNavigation={aboveLayers}
       onCloseAutoFocus={onCloseAutoFocus}
       back={back}
     >
-      {lesson && children}
       {lesson && (
-        <LessonBoundary key={lesson} onBack={onClose} backLabel={backLabel}>
-          <Suspense fallback={<LessonWait />}>
-            <SkillLesson
-              templateId={lesson}
-              onBack={onClose}
-              backLabel={backLabel}
-            />
-          </Suspense>
-        </LessonBoundary>
+        <div className={styles.lesson}>
+          <LessonHead lesson={lesson}>{children}</LessonHead>
+          <div className={styles.body}>
+            <LessonBoundary key={lesson} onBack={onClose} backLabel={backLabel}>
+              <Suspense fallback={<LessonWait />}>
+                <SkillLesson
+                  templateId={lesson}
+                  onBack={onClose}
+                  backLabel={backLabel}
+                />
+              </Suspense>
+            </LessonBoundary>
+          </div>
+        </div>
       )}
     </Dialog>
+  );
+}
+
+/** The problem type's title and its one row of actions, drawn whole or not
+ * at all. The title comes from the catalog (almost always already here) or
+ * the lesson's own request, whichever lands first; until then nothing is
+ * drawn, so a title that wraps never pushes a control that was already
+ * there. The film is known from the bundled catalogue, and the page holds its
+ * own action's place until it knows it (PathwaysScreen). */
+function LessonHead({
+  lesson,
+  children,
+}: {
+  lesson: string;
+  children?: ReactNode;
+}) {
+  const catalog = useQuery(skillCatalogOptions);
+  const known = catalog.data?.templates.find((t) => t.id === lesson)?.title;
+  // The lesson's own title when it lands first (a cold link), or the
+  // catalog has none: the same request as the lesson under it.
+  const loaded = useQuery(pathwaysLessonOptions(lesson));
+  const title = known ?? loaded.data?.lesson.title;
+  const film = lessonFilms[lesson];
+  if (!title) return null;
+  return (
+    <div className={styles.head}>
+      <h2 className={styles.title}>{title}</h2>
+      {(children || film) && (
+        <div className={styles.actions}>
+          {children}
+          {film && <FilmLink templateId={lesson} film={film} button />}
+        </div>
+      )}
+    </div>
   );
 }

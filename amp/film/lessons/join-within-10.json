@@ -1,6 +1,8 @@
 {
   "id": "join-within-10",
   "title": "Join two small groups",
+  "teaches": [],
+  "skill": "addition-within-10",
   "seed": "film",
   "shots": [
     {

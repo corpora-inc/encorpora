@@ -151,7 +151,7 @@ async function shows(page: Page, step: keyof Chain, student: string) {
   }
   if (step === "lesson") {
     await lessonDialog(page).waitFor();
-    await page.locator(".lesson-film-link").waitFor();
+    await page.locator("[data-film-link]").waitFor();
     return;
   }
   await lessonDialog(page).waitFor({ state: "hidden" });
@@ -205,7 +205,7 @@ async function open(
   await shows(page, "lesson", miss.student);
   const lesson = here(page);
   if (record) await snap(page, "lesson-over-answer");
-  await lessonDialog(page).locator(".lesson-film-link").click();
+  await lessonDialog(page).locator("[data-film-link]").click();
   await shows(page, "film", miss.student);
   const film = here(page);
   assert.match(film, /^\/lessons\/[^/]+\/watch\?/);

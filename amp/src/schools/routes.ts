@@ -1,9 +1,10 @@
+import { classPracticeGate, inSnapshot } from "./pilot-access.js";
 import { adultNameSql } from "../account/profile.js";
 import { forgedPost } from "./request-origin.js";
 import { definePilotRoutes, registerBuyerHandoff } from "./pilot-routes.js";
 import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import { randomBytes } from "node:crypto";
-import type { Pool } from "pg";
+import type { Pool, PoolClient } from "pg";
 import { z } from "zod";
 import type { Authenticator } from "../server/auth.js";
 import {
@@ -73,6 +74,9 @@ export type SchoolRouteContext<T extends SchoolTarget = SchoolTarget> = {
   target: T;
   repository: SchoolRepository;
   pool: Pool;
+  /** Where this request reads: the pool, or for a `snapshot` route the one
+   * snapshot its reader was authorized in. */
+  db: Pick<PoolClient, "query">;
   services: SchoolServices;
 };
 /** What school routes need from the server around them. */
@@ -108,6 +112,7 @@ export type SchoolRoute = {
   target: (input: TargetInput) => TargetRef;
   handler: (context: SchoolRouteContext) => Promise<unknown>;
   bodyLimit?: number;
+  snapshot?: boolean;
 };
 /** Every school route, so a test can walk them all against a cross-tenant
  * matrix. `registerSchoolRoutes` binds exactly this table. */
@@ -123,13 +128,17 @@ export function defineSchoolRoute<R extends TargetRef>(route: {
   target: (input: TargetInput) => R;
   handler: (context: SchoolRouteContext<Loaded<R>>) => Promise<unknown>;
   bodyLimit?: number;
+  /** Load the reader, authorize them and run the handler in one read-only
+   * snapshot (`inSnapshot`): what the answer says they may do and what it
+   * says of the place are true at the same instant (CP-3 r6). Reads only. */
+  snapshot?: boolean;
 }): void {
   schoolRoutes.push(route as unknown as SchoolRoute);
 }
 
 const isId = (value: string) => z.uuid().safeParse(value).success;
 async function loadTarget(
-  pool: Pool,
+  pool: Pick<PoolClient, "query">,
   ref: TargetRef,
 ): Promise<SchoolTarget | null> {
   if (ref.kind === "self") return ref;
@@ -171,7 +180,7 @@ async function loadTarget(
 /** A student's home org is the one they attend today; their classes are the
  * ones they're in today. A removed or unrostered student isn't found. */
 async function loadStudent(
-  pool: Pool,
+  pool: Pick<PoolClient, "query">,
   personId: string,
 ): Promise<SchoolTarget | null> {
   if (!isId(personId)) return null;
@@ -311,37 +320,43 @@ export async function registerSchoolRoutes(
           const accountId = await options.authenticate(request);
           // A demo visitor's place follows the nightly switch first.
           await followDemo(options.pool, accountId, services.now?.().getTime());
-          const actor = await loadActor(options.pool, accountId);
           const ref = route.target({
             params: request.params as Record<string, string>,
             body: request.body,
           });
-          const target = await loadTarget(options.pool, ref);
-          if (!target || !can(actor, route.action, target)) {
-            // A link into a demo school that has since been replaced opens
-            // the visitor's current one instead.
-            const moved =
-              ref.kind === "self"
-                ? null
-                : await movedDemoPath(options.pool, accountId, ref);
-            if (moved)
-              throw new SchoolError(409, "demo_moved", undefined, moved);
-            throw new SchoolError(404, "not_found");
-          }
-          // An opened demo stays: idle ones go after 30 days.
-          if ("demo" in target && target.demo)
-            void touchDemo(options.pool, target.orgId).catch((error) =>
-              request.log.error({ code: error?.code }, "Demo visit not kept"),
-            );
-          return route.handler({
-            request,
-            reply,
-            actor,
-            target,
-            repository,
-            services,
-            pool: options.pool,
-          });
+          const respond = async (db: Pick<PoolClient, "query">) => {
+            const actor = await loadActor(db, accountId);
+            const target = await loadTarget(db, ref);
+            if (!target || !can(actor, route.action, target)) {
+              // A link into a demo school that has since been replaced
+              // opens the visitor's current one instead.
+              const moved =
+                ref.kind === "self"
+                  ? null
+                  : await movedDemoPath(options.pool, accountId, ref);
+              if (moved)
+                throw new SchoolError(409, "demo_moved", undefined, moved);
+              throw new SchoolError(404, "not_found");
+            }
+            // An opened demo stays: idle ones go after 30 days.
+            if ("demo" in target && target.demo)
+              void touchDemo(options.pool, target.orgId).catch((error) =>
+                request.log.error({ code: error?.code }, "Demo visit not kept"),
+              );
+            return route.handler({
+              request,
+              reply,
+              actor,
+              target,
+              repository,
+              services,
+              pool: options.pool,
+              db,
+            });
+          };
+          return route.snapshot
+            ? inSnapshot(options.pool, respond)
+            : respond(options.pool);
         },
       });
   });
@@ -446,18 +461,25 @@ defineSchoolRoute({
   action: "classes.create",
   target: orgParam,
   bodyLimit: 4096,
-  handler: async ({ request, reply, actor, target, repository }) =>
-    reply.code(201).send({
-      class: await repository.createClass(
-        target.orgId,
-        request.body,
-        actorPerson(actor, target),
-        // Someone who teaches here teaches the class they just made.
-        actor.roles.find(
-          (role) => role.role === "teacher" && target.path.includes(role.orgId),
-        )?.personId,
-      ),
-    }),
+  handler: async ({ request, reply, actor, target, repository }) => {
+    const created = await repository.createClass(
+      target.orgId,
+      request.body,
+      actorPerson(actor, target),
+      // Someone who teaches here teaches the class they just made.
+      actor.roles.find(
+        (role) => role.role === "teacher" && target.path.includes(role.orgId),
+      )?.personId,
+    );
+    // Its code, like every read's, only while its students can practice
+    // (SPEC R14): a new class of an unlicensed school has none to give yet.
+    const gate = await classPracticeGate(repository.pool, created.id);
+    return reply.code(201).send({
+      class: gate
+        ? { ...created, joinCode: "", codeAvailable: false }
+        : { ...created, codeAvailable: true },
+    });
+  },
 });
 defineSchoolRoute({
   method: "GET",

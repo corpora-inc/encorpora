@@ -1,3 +1,4 @@
+import { classPracticeGates } from "./pilot-access.js";
 import { adultNameSql } from "../account/profile.js";
 import { PERSON_NAME } from "./term-grades.js";
 import { visibleToSql } from "./demo/sql.js";
@@ -1005,7 +1006,7 @@ export class SchoolRepository {
     /** The reader: another visitor of a shared demo isn't named. */
     viewer: string | null = null,
   ): Promise<ClassResource[]> {
-    return (
+    const rows = (
       await this.pool.query(
         `SELECT c.id,c.org_id AS "orgId",c.session_id AS "sessionId",c.name,c.course_bands AS "courseBands",
            c.grading_kind AS "gradingKind",c.join_code AS "joinCode",
@@ -1027,7 +1028,17 @@ export class SchoolRepository {
          ORDER BY c.name,c.id LIMIT $3 OFFSET $4`,
         [orgId, classIds, page.limit, page.offset, year, viewer],
       )
-    ).rows;
+    ).rows as ClassResource[];
+    // A class's code only while its students can practice (SPEC R14).
+    const gates = await classPracticeGates(
+      this.pool,
+      rows.map((row) => row.id),
+    );
+    return rows.map((row) =>
+      gates.has(row.id)
+        ? { ...row, joinCode: "", codeAvailable: false }
+        : { ...row, codeAvailable: true },
+    );
   }
   /** Active students at this org and below; `classIds` narrows to a teacher's
    * own classes, and only those classes are listed on each student. */

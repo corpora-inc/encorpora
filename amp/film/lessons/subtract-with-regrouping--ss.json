@@ -1,6 +1,8 @@
 {
   "id": "subtract-with-regrouping--ss",
   "title": "Open a block to subtract",
+  "teaches": [],
+  "skill": "regroup-hundreds",
   "cast": {
     "teacher": {},
     "learner": {}

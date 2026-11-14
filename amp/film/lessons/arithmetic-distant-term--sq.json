@@ -1,13 +1,8 @@
 {
  "id": "arithmetic-distant-term--sq",
  "title": "An arithmetic sequence is a staircase",
- "teaches": [
-  "arithmetic-term",
-  "arithmetic-sequence-as-function",
-  "series-recursion",
-  "nonlinear-recursion-term",
-  "recursion-term-steps"
- ],
+ "teaches": ["arithmetic-term", "arithmetic-sequence-as-function", "series-recursion", "nonlinear-recursion-term", "recursion-term-steps"],
+ "skill": "arithmetic-sequences",
  "cast": {
   "teacher": {},
   "learner": {}

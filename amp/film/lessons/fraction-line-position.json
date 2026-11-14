@@ -1,6 +1,8 @@
 {
   "id": "fraction-line-position",
   "title": "Read a fraction location",
+  "teaches": ["fraction-line-names-select"],
+  "skill": "fractions-number-line",
   "seed": "film",
   "shots": [
     {

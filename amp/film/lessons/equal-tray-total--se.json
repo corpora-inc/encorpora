@@ -2,6 +2,7 @@
  "id": "equal-tray-total--se",
  "title": "Multiplication counts equal groups",
  "teaches": [],
+ "skill": "multiplication-meaning",
  "cast": {
   "teacher": {},
   "learner": {}

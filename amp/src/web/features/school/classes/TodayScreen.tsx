@@ -1,14 +1,15 @@
 import { spaceWords } from "../../spaces/words";
-import { useRef } from "react";
+import { standing } from "../../../lib/AppError";
 import { ScreenTitle } from "../../../ui/ScreenTitle";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
 import type { TodayResponse } from "../../../../schools/teacher-contracts";
-import { buttonClass } from "../../../ui/Button";
+import { Button, buttonClass } from "../../../ui/Button";
 import { EmptyState } from "../../../ui/EmptyState";
 import { meOptions } from "../../../lib/query";
 import { secondParentOptions } from "../../second-parent/api";
 import { currentSession, orgOptions } from "../api";
+import { classYearOptions } from "../org/org-api";
 import { useDemoOrg } from "../demo/DemoPlace";
 import { presenceOptions, useStaffSession } from "./api";
 import { ClassFrame } from "./ClassFrame";
@@ -19,7 +20,7 @@ import { classUrl, fullDay, LoadFailed } from "./teacher-shared";
 import { FamilyNotice } from "./today/FamilyNotice";
 import { FamilyToday } from "./today/FamilyToday";
 import { Feed } from "./today/Feed";
-import { SignInCode } from "./today/SignInCode";
+import { PracticeSlot } from "./today/PracticeSlot";
 import { todoEntries, useChecks } from "./today/todo-entries";
 import { WeekFacts } from "./today/WeekFacts";
 import todayStyles from "./today/Today.module.css";
@@ -27,7 +28,6 @@ import styles from "./Teacher.module.css";
 import {
   accessFeedEntry,
   AccessSheets,
-  practiceClosed,
   useClassAccess,
 } from "../pilots/ClassAccess";
 
@@ -36,9 +36,13 @@ import {
 function ClassToday({
   data,
   place,
+  headed,
 }: {
   data: TodayResponse;
   place: { org: string; class: string };
+  /** The header's practice slot says where practice stands (PracticeSlot):
+   * starting, waiting, ended and "couldn't check" live there, not here. */
+  headed: boolean;
 }) {
   const [done, setDone] = useChecks(place.class, data.today);
   const { start: canStart } = useSchoolNavigation({
@@ -51,16 +55,41 @@ function ClassToday({
   });
   const access = useClassAccess(place);
   // The board and cards wait for practice, and end with it.
-  const closed = practiceClosed(access.view);
-  const practice = accessFeedEntry(
+  const closed = access.closed;
+  // What this person may do in this class, as the server says (a viewer
+  // or an aide reads the class; adding students and printing cards are
+  // its teacher's and its school's).
+  const can = new Set(
+    standing(
+      useQuery({
+        ...classYearOptions(currentSession(), place.class),
+        refetchOnMount: false,
+      }),
+    )?.can ?? [],
+  );
+  const adds = can.has("class.import") || can.has("students.add");
+  const entry = accessFeedEntry(
     access.view,
     place,
     access.pilot,
     access.teaches,
   );
+  // Practice running, but not for everyone, or ending soon: said in the
+  // feed beside the code. The rest is the header slot's.
+  const practice =
+    headed &&
+    (access.closed || !["ending", "partial"].includes(access.view.kind))
+      ? null
+      : entry;
   const entries = todoEntries({
+    // Anything that opens the board ("Start class", students who haven't
+    // started) waits for practice: the board would only say it's closed.
     todos: data.todos.filter(
-      (todo) => (canStart && !closed) || todo.id !== "start-class",
+      (todo) =>
+        (adds || todo.id !== "add-students") &&
+        ((canStart && !closed) ||
+          (todo.id !== "start-class" &&
+            !("tab" in todo.action && todo.action.tab === "start"))),
     ),
     place,
     canPrint: data.canPrint,
@@ -70,10 +99,24 @@ function ClassToday({
     importStudents: true,
   });
   if (practice) entries.unshift(practice);
+  // Couldn't check where practice stands: said calmly, with Try again,
+  // never a dead closed state.
+  if (access.unavailable && !headed)
+    entries.unshift({
+      id: "practice-unknown",
+      title: "Couldn’t check practice",
+      detail: "",
+      mark: "status",
+      actions: (
+        <Button variant="secondary" onClick={access.retry}>
+          Try again
+        </Button>
+      ),
+    });
   // Before anyone has started, the next step after the board: cards for
   // the students who sign in on a device of their own.
   const starting = data.todos.some((todo) => todo.id === "start-class");
-  if (starting && data.canPrint && !closed)
+  if (starting && can.has("signin.manage") && !closed)
     entries.push({
       id: "cards",
       title: `Print sign-in cards for ${data.students.length === 1 ? "your student" : `your ${data.students.length} students`}`,
@@ -140,14 +183,18 @@ export function TodayScreen() {
   const data = today.data;
   const demo = useDemoOrg(place.org);
   const access = useClassAccess(place);
-  const closed = practiceClosed(access.view);
-  // Practice started from this page: the code waits for the next visit
-  // rather than pushing the feed down under the teacher's finger (rule 1).
-  // The new first item, Start class, opens the board with the code.
-  const closedOnArrival = useRef<boolean | null>(null);
-  if (closedOnArrival.current === null && !access.pending)
-    closedOnArrival.current = closed;
-  const codeShown = !closed && !closedOnArrival.current;
+  // The header's practice slot (PracticeSlot): the Start action, the code,
+  // Request seats, one height in every state, so practice opening during
+  // this visit moves nothing (CP-3 r6).
+  const signInRead = (
+    standing(
+      useQuery({
+        ...classYearOptions(account, place.class),
+        refetchOnMount: false,
+      }),
+    )?.can ?? []
+  ).includes("signin.read");
+  const headed = !family && !!data && data.students.length > 0 && signInRead;
   const loading =
     access.pending ||
     org.isPending ||
@@ -188,11 +235,10 @@ export function TodayScreen() {
             {/* The code waits for a roster, and for practice. A family's
                 children mostly practice on the parent's device: their code
                 is an option under the children, not the page's lead. */}
-            {code && codeShown && !family && data.students.length > 0 && (
-              <SignInCode
-                code={code}
+            {headed && (
+              <PracticeSlot
                 place={place}
-                words={spaceWords(family ? "family" : "classroom")}
+                words={spaceWords("classroom")}
                 // The bar's Start class opens the board, except in a demo
                 // (its bar leads to the real class).
                 board={demo}
@@ -217,7 +263,7 @@ export function TodayScreen() {
             />
           ) : (
             <>
-              <ClassToday data={data} place={place} />
+              <ClassToday data={data} place={place} headed={headed} />
               <AccessSheets place={place} />
             </>
           )}
@@ -294,18 +340,36 @@ export function MapScreen() {
 }
 
 function EmptyMap({ org, classId }: { org: string; classId: string }) {
+  // Only someone who may add them is offered it. A family's map keeps the
+  // way it has (P2 moves the family's own).
+  const family =
+    useQuery({
+      ...orgOptions(currentSession(), org),
+      refetchOnMount: false,
+    }).data?.kind === "family";
+  const can =
+    standing(
+      useQuery({
+        ...classYearOptions(currentSession(), classId),
+        refetchOnMount: false,
+      }),
+    )?.can ?? [];
+  const adds =
+    family || can.includes("class.import") || can.includes("students.add");
   return (
     <EmptyState
       title="No students in this class yet"
       action={
-        <Link
-          to="/$"
-          params={{ _splat: classUrl(org, classId, "settings") }}
-          search={{ add: 1 } as never}
-          className={buttonClass("primary")}
-        >
-          Add students
-        </Link>
+        adds && (
+          <Link
+            to="/$"
+            params={{ _splat: classUrl(org, classId, "settings") }}
+            search={{ add: 1 } as never}
+            className={buttonClass("primary")}
+          >
+            Add students
+          </Link>
+        )
       }
     />
   );

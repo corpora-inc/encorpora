@@ -632,6 +632,14 @@ async function beforeStarter({ params }: { params: { choice?: string } }) {
   if (!session) throw redirect({ to: "/sign-in" });
   if (params.choice !== undefined && !isStarterChoice(params.choice))
     throw redirect({ to: "/start", replace: true });
+  // The school answer's next step depends on the account's schools: there
+  // before the page paints, so its buttons never arrive late.
+  if (params.choice === "school") {
+    const { orgsOptions } = await import("../features/school/api");
+    await queryClient
+      .ensureQueryData(orgsOptions(session))
+      .catch((error) => console.warn("Schools didn’t load ahead", error));
+  }
 }
 const starter = lazyRouteComponent(
   () => import("../features/onboarding/Starter"),

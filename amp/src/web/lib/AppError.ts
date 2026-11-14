@@ -33,3 +33,21 @@ export class AppError extends Error {
     });
   }
 }
+
+/** An answer the server refused: the thing is gone for this person (a
+ * revoked role, a removed class), unlike a passing network failure. */
+export const refused = (error: unknown) =>
+  error instanceof AppError &&
+  (error.status === 401 || error.status === 403 || error.status === 404);
+
+/** A query's answer as it stands: undefined until answered, null once the
+ * server refused it. A refusal revokes the cached answer, whatever it said
+ * (no cached "open" or capability outlives the server's no, CP-3 r6); a
+ * refetch that failed otherwise keeps the last answer. */
+export function standing<T>(query: {
+  data: T | undefined;
+  error: unknown;
+  isError: boolean;
+}): T | null | undefined {
+  return query.isError && refused(query.error) ? null : query.data;
+}

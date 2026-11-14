@@ -1,6 +1,8 @@
 {
  "id": "number-bond-missing--sb",
  "title": "Two parts make the whole",
+ "teaches": [],
+ "skill": "number-bonds",
  "cast": {
   "teacher": {},
   "learner": {}
