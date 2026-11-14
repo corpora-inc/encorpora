@@ -388,7 +388,7 @@ export const timeResponse = z.object({
       minutes: z.number(),
       problems: z.number(),
       /** In this class over these days: before `from`, not on its roster. */
-      from: day.optional(),
+      from: day.refine((value) => value >= "0001-01-01").optional(),
       to: day.optional(),
       days: z.array(
         z.object({ day, minutes: z.number(), problems: z.number().default(0) }),
@@ -538,7 +538,11 @@ export const evidenceQuerySchema = z.strictObject({
   offset: z.coerce.number().int().min(0).max(100_000).default(0),
 });
 export const timeQuerySchema = z.strictObject({
-  period: z.enum(timePeriods).default("month"),
+  period: z
+    .enum([...timePeriods, "weeks"])
+    .default("month")
+    .transform((period) => (period === "weeks" ? ("month" as const) : period)),
+  from: day.refine((value) => value >= "0001-01-01").optional(),
 });
 export const gradebookColumns = [
   "sis",

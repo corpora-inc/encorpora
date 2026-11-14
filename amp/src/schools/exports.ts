@@ -73,10 +73,10 @@ export type TimeRow = {
   minutes: number;
   problems: number;
 };
-export function timeCsv(rows: Iterable<TimeRow>): Readable {
+export function timeCsv(rows: Iterable<TimeRow>, group?: string): Readable {
   return Readable.from(
     (function* () {
-      yield `${BOM}${line(["SIS ID", "Student", "Date", "Active minutes", "Problems"])}`;
+      yield `${BOM}${line(["SIS ID", "Student", "Date", "Active minutes", "Problems", ...(group === undefined ? [] : ["Group"])])}`;
       for (const row of rows)
         yield line([
           row.identifier,
@@ -84,6 +84,7 @@ export function timeCsv(rows: Iterable<TimeRow>): Readable {
           row.day,
           Math.round(row.minutes * 10) / 10,
           row.problems,
+          ...(group === undefined ? [] : [group]),
         ]);
     })(),
     { objectMode: false },

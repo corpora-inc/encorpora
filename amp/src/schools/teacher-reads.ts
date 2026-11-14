@@ -1,3 +1,4 @@
+import { SchoolError } from "./contracts.js";
 import { adultNameSql } from "../account/profile.js";
 import type { Pool } from "pg";
 import { hasProblemLesson } from "../content/problem-lessons.js";
@@ -556,12 +557,20 @@ export async function periodRange(
   pool: Pool,
   context: ClassContext,
   period: TimePeriod,
+  from?: string,
 ): Promise<{ from: string; to: string }> {
+  if (from !== undefined) {
+    const range = await periodRange(pool, context, period);
+    if (from > range.to) throw new SchoolError(400, "invalid_time_range");
+    return { from, to: range.to };
+  }
   const today = context.today;
   if (period === "week") return { from: weekStart(today), to: today };
   if (period === "month")
     return { from: shift(weekStart(today), -21), to: today };
-  const term = currentTerm(await termsFor(pool, context), today);
+  const term = context.sessionId
+    ? currentTerm(await termsFor(pool, context), today)
+    : null;
   return term && term.startsOn <= today
     ? {
         from: term.startsOn,
@@ -583,8 +592,9 @@ export async function readTime(
   pool: Pool,
   context: ClassContext,
   period: TimePeriod,
+  from?: string,
 ): Promise<TimeResponse> {
-  const range = await periodRange(pool, context, period);
+  const range = await periodRange(pool, context, period, from);
   const students = await termRoster(pool, context.id, range);
   const roster = asMembers(students);
   const weeks = mondays(range);
@@ -662,8 +672,9 @@ export async function readStudentTime(
   context: ClassContext,
   period: TimePeriod,
   personId: string,
+  from?: string,
 ): Promise<StudentTimeResponse | null> {
-  const range = await periodRange(pool, context, period);
+  const range = await periodRange(pool, context, period, from);
   const student = (await termRoster(pool, context.id, range)).find(
     (entry) => entry.id === personId,
   );

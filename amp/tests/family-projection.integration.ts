@@ -257,6 +257,254 @@ test(
       ok(get(`/api/v1/families/${fa.org_id}/teaching`, account));
 
     await t.test(
+      "owned-child time matches class days and CSV without host authority",
+      async () => {
+        const externalFamily = (
+          await ok(get("/api/v1/families", external.account))
+        ).families[0].familyId;
+        const base = `/api/v1/families/${externalFamily}/children/${approved.learnerId}`;
+        const classBase = `/api/v1/school/classes/${fa.class_id}`;
+        const today = schoolDay();
+        // Every heartbeat surface shares the class aggregation, including fractional minutes.
+        for (const surface of [
+          "lesson",
+          "feedback",
+          "map",
+          "other",
+          "hint",
+          "video",
+          "example",
+        ]) {
+          await db.query(
+            "INSERT INTO amp_active_days(learner_id,day,surface,active_ms) VALUES($1,$2,$3,9000)",
+            [approved.learnerId, today, surface],
+          );
+        }
+        try {
+          for (const period of ["week", "weeks", "term"]) {
+            for (const from of ["", `&from=${today}`]) {
+              const query = `?period=${period}${from}`;
+              const child = await ok(
+                get(`${base}/time${query}`, external.account),
+              );
+              const klass = await ok(
+                get(`${classBase}/time${query}`, a.account),
+              );
+              const student = klass.students.find(
+                (row: any) => row.id === approved.personId,
+              );
+              assert.deepEqual(child.days, student.days);
+              assert.equal(child.minutes, student.minutes);
+              assert.equal(child.problems, student.problems);
+              assert.equal(child.problems, 47);
+              assert.equal(child.days[0].minutes, 24.1);
+              assert.equal(child.timezone, "America/New_York");
+              assert.equal(child.period, period);
+              assert.deepEqual(
+                Object.keys(child).sort(),
+                [
+                  "id",
+                  "name",
+                  "group",
+                  "timezone",
+                  "period",
+                  "range",
+                  "minutes",
+                  "problems",
+                  "days",
+                ].sort(),
+              );
+              assert.equal(
+                JSON.stringify(child).includes(hosted.learnerId),
+                false,
+              );
+              assert.equal(JSON.stringify(child).includes(fa.class_id), false);
+              const individual = await ok(
+                get(
+                  `${classBase}/students/${approved.personId}/time${query}`,
+                  a.account,
+                ),
+              );
+              assert.deepEqual(child.days, individual.days);
+              const csv = await get(
+                `${base}/time.csv${query}`,
+                external.account,
+              );
+              assert.equal(csv.statusCode, 200, csv.body);
+              assert.match(csv.headers["content-type"]!, /text\/csv/);
+              assert.equal(csv.headers["cache-control"], "no-store");
+              assert.match(csv.headers["content-disposition"]!, /attachment/);
+              const classCsv = await get(
+                `${classBase}/exports/time.csv${query}`,
+                a.account,
+              );
+              const childRow = classCsv.body
+                .split("\r\n")
+                .find((line) => line.includes(",External Child,"))!;
+              assert.ok(childRow);
+              assert.equal(
+                csv.body.split("\r\n")[0],
+                classCsv.body.split("\r\n")[0] + ",Group",
+              );
+              assert.equal(
+                csv.body.split("\r\n")[1],
+                childRow + "," + child.group,
+              );
+            }
+          }
+          // Exact starts include and exclude historical evidence at the same boundary.
+          const earlier = schoolDay(-8);
+          const enrollment = (
+            await db.query(
+              "SELECT id,begin_on::text AS begin_on FROM amp_enrollments WHERE person_id=$1 AND class_id=$2 AND role='student'",
+              [approved.personId, fa.class_id],
+            )
+          ).rows[0];
+          await db.query("UPDATE amp_enrollments SET begin_on=$2 WHERE id=$1", [
+            enrollment.id,
+            earlier,
+          ]);
+          await db.query(
+            "INSERT INTO amp_active_days(learner_id,day,surface,active_ms) VALUES($1,$2,'practice',12000)",
+            [approved.learnerId, earlier],
+          );
+          await db.query(
+            "INSERT INTO amp_skill_days(learner_id,day,skill_id,attempts,correct,independent) VALUES($1,$2,'fixture-skill',3,3,3)",
+            [approved.learnerId, earlier],
+          );
+          try {
+            for (const from of [earlier, today]) {
+              const query = `?period=weeks&from=${from}`;
+              const child = await ok(
+                get(`${base}/time${query}`, external.account),
+              );
+              const klass = await ok(
+                get(`${classBase}/time${query}`, a.account),
+              );
+              const student = klass.students.find(
+                (row: any) => row.id === approved.personId,
+              );
+              assert.deepEqual(child.range, klass.range);
+              assert.deepEqual(child.days, student.days);
+              assert.equal(child.problems, from === earlier ? 50 : 47);
+              assert.equal(child.days.length, from === earlier ? 2 : 1);
+            }
+          } finally {
+            await db.query(
+              "UPDATE amp_enrollments SET begin_on=$2 WHERE id=$1",
+              [enrollment.id, enrollment.begin_on],
+            );
+            await db.query(
+              "DELETE FROM amp_active_days WHERE learner_id=$1 AND day=$2",
+              [approved.learnerId, earlier],
+            );
+            await db.query(
+              "DELETE FROM amp_skill_days WHERE learner_id=$1 AND day=$2",
+              [approved.learnerId, earlier],
+            );
+          }
+          for (const suffix of ["time", "time.csv"]) {
+            // Host holder, host co-teacher, unrelated family, foreign child in an owned family.
+            for (const actor of [
+              a.account,
+              co.account,
+              b.account,
+              outsider.account,
+            ]) {
+              assert.equal(
+                (await get(`${base}/${suffix}`, actor)).statusCode,
+                404,
+              );
+            }
+            assert.equal(
+              (
+                await get(
+                  `/api/v1/families/${fa.org_id}/children/${approved.learnerId}/${suffix}`,
+                  a.account,
+                )
+              ).statusCode,
+              404,
+            );
+            assert.equal(
+              (
+                await get(
+                  `/api/v1/families/${fa.org_id}/children/${ownedA.id}/${suffix}`,
+                  co.account,
+                )
+              ).statusCode,
+              403,
+            );
+            assert.equal(
+              (
+                await get(
+                  `/api/v1/families/${fb.org_id}/children/${ownedB.id}/${suffix}`,
+                  a.account,
+                )
+              ).statusCode,
+              200,
+            );
+            const session = await ok(
+              post(
+                `/api/v1/family/learners/${ownedA.id}/practice-here`,
+                a.account,
+              ),
+              201,
+            );
+            cookieAccount = external.account;
+            assert.equal(
+              (
+                await app.inject({
+                  method: "GET",
+                  url: `${base}/${suffix}`,
+                  headers: {
+                    authorization: `Bearer ${session.token}`,
+                    cookie: "parent=fixture",
+                  },
+                })
+              ).statusCode,
+              401,
+            );
+            for (const query of [
+              "?from=2026-02-30",
+              "?from=0000-01-01",
+              "?from=9999-12-31",
+              "?period=invalid",
+            ]) {
+              assert.equal(
+                (await get(`${base}/${suffix}${query}`, external.account))
+                  .statusCode,
+                400,
+              );
+            }
+          }
+          // Current ownership is rechecked for every request, including exports.
+          await db.query("UPDATE amp_learners SET account_id=$2 WHERE id=$1", [
+            approved.learnerId,
+            outsider.account,
+          ]);
+          try {
+            for (const suffix of ["time", "time.csv"])
+              assert.equal(
+                (await get(`${base}/${suffix}`, external.account)).statusCode,
+                404,
+              );
+          } finally {
+            await db.query(
+              "UPDATE amp_learners SET account_id=$2 WHERE id=$1",
+              [approved.learnerId, external.account],
+            );
+          }
+        } finally {
+          await db.query(
+            "DELETE FROM amp_active_days WHERE learner_id=$1 AND surface<>'practice'",
+            [approved.learnerId],
+          );
+          cookieAccount = null;
+        }
+      },
+    );
+
+    await t.test(
       "placement and nullable family/holder names are available without projections",
       async () => {
         const places = (await ok(get("/api/v1/families", a.account))).families;
@@ -371,6 +619,8 @@ test(
             `/api/v1/families/${fa.org_id}`,
             `/api/v1/families/${fa.org_id}/teaching`,
             `/api/v1/families/${fa.org_id}/children/${ownedA.id}/progress`,
+            `/api/v1/families/${fa.org_id}/children/${ownedA.id}/time`,
+            `/api/v1/families/${fa.org_id}/children/${ownedA.id}/time.csv`,
           ])
             assert.equal((await request(path)).statusCode, 200, path);
           await ok(
@@ -802,6 +1052,26 @@ test(
           "ending the host relationship may create their own class, never restore the host enrollment",
         );
         await ok(post("/api/v1/family/second-parent/remove", b.account));
+        for (const suffix of ["time", "time.csv"]) {
+          assert.equal(
+            (
+              await get(
+                `/api/v1/families/${fb.org_id}/children/${ownedB.id}/${suffix}`,
+                a.account,
+              )
+            ).statusCode,
+            404,
+          );
+          assert.equal(
+            (
+              await get(
+                `/api/v1/families/${externalFamily}/children/${approved.learnerId}/${suffix}`,
+                external.account,
+              )
+            ).statusCode,
+            200,
+          );
+        }
         assert.equal(
           (await get(`/api/v1/families/${fb.org_id}`, a.account)).statusCode,
           404,
