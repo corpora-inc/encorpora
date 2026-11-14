@@ -6,7 +6,9 @@ import type { Page } from "playwright";
 export async function schoolShellReview(page: Page, shot?: string) {
   const url = new URL(page.url());
   const path = url.pathname;
-  // A student opened from a class (`?class=`) stays inside that class.
+  // The frame names its space (features/spaces): a class is a classroom, or
+  // a family's when the family owns it; a student opened from a class
+  // (`?class=`) stays inside that class. Elsewhere, the learner's space.
   const kind =
     path.includes("/classes/") ||
     (/^\/school\/[^/]+\/students\//.test(path) && url.searchParams.has("class"))
@@ -14,10 +16,19 @@ export async function schoolShellReview(page: Page, shot?: string) {
       : path.startsWith("/school/")
         ? "school"
         : "plain";
-  assert.equal(
-    await page.locator(`[data-app-frame="${kind}"]`).count(),
-    1,
-    `${path}: shared frame`,
+  const spaces = {
+    class: ["classroom", "family"],
+    school: ["school"],
+    plain: ["family", "me"],
+  }[kind];
+  const frames = await page
+    .locator("[data-app-frame]")
+    .evaluateAll((all) =>
+      all.map((frame) => frame.getAttribute("data-app-frame")),
+    );
+  assert.ok(
+    frames.length === 1 && spaces.includes(frames[0]!),
+    `${path}: shared frame (${frames.join(", ") || "none"})`,
   );
   assert.equal(
     await page.locator("[data-app-bar]").count(),

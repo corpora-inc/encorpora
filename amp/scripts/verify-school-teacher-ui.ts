@@ -214,10 +214,6 @@ async function seed(): Promise<Seeded> {
     accountId: TEACHER,
     classId: support.id,
   });
-  await db.query(
-    "UPDATE amp_people SET display_name='Ms. Okafor' WHERE account_id=$1",
-    [TEACHER],
-  );
   const people = new Map<string, Student>();
   for (const person of PEOPLE) {
     const student = await schools.provisionStudent(org.id, {
@@ -479,10 +475,14 @@ async function journey(browser: Browser, engine: string, width: number) {
       body,
     ),
   );
-  await page
+  // A person taps what is on screen: bring it into view and let the page
+  // settle first (a scroll still landing closes any popover, by design).
+  const details = page
     .getByRole("region", { name: "This week" })
-    .getByRole("button", { name: "Details", exact: true })
-    .click();
+    .getByRole("button", { name: "Details", exact: true });
+  await details.scrollIntoViewIfNeeded();
+  await settle(page, 300);
+  await details.click();
   const spread = page.getByRole("dialog", {
     name: "Active minutes by student, the numbers",
   });
@@ -679,10 +679,13 @@ async function journey(browser: Browser, engine: string, width: number) {
     "Alder Street School",
     "Quarter 2",
     "Grade 5",
-    "Ms. Okafor",
+    // An adult's name is their own (account profile, else the roster's
+    // given and family names); a school never sets a teacher's display
+    // name, so the fixture no longer forges one.
+    "Grace Okafor",
     "Final grade",
     "Active minutes",
-    "Skills shown on their own",
+    "Skills earned",
     "Working level",
   ])
     check(`${label} report card has ${expected}`, cardText.includes(expected));
