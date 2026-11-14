@@ -418,6 +418,16 @@ try {
       },
     });
   });
+  // The class's own state agrees: its students can practice (the server
+  // gates the code on it, SPEC R14).
+  const yearUrl = `**/api/v1/school/classes/${created.class_id}/year`;
+  await page.route(yearUrl, async (route) => {
+    const response = await route.fetch();
+    await route.fulfill({
+      response,
+      json: { ...(await response.json()), practice: "open" },
+    });
+  });
   await page.goto(
     `${origin}/school/${created.org_id}/classes/${created.class_id}/today`,
   );
@@ -435,6 +445,7 @@ try {
   );
   await capture("partial-coverage");
   await page.unroute(pilotUrl);
+  await page.unroute(yearUrl);
   const guest = await browser.newContext();
   const buyerPage = await guest.newPage();
   await buyerPage.goto(buyer);
