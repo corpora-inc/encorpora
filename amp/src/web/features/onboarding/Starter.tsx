@@ -417,6 +417,12 @@ function Myself({
   );
 }
 
+const FACTS = [
+  ["objectives", "objectives mapped to Common Core standards"],
+  ["problemTypes", "problem types that write new problems"],
+  ["lessons", "lessons, with a hint and an explanation for every problem"],
+] as const;
+
 /** The school pitch: a demo school to explore now, and a person to set up
  * the real one with. */
 function School({
@@ -452,29 +458,23 @@ function School({
         exploring={exploring}
         onExplore={onExplore}
       />
+      {/* The words are always there; only each number waits for the
+          catalog, in its own line box, so nothing moves when it arrives. */}
       <ul className={styles.facts} aria-busy={summary.isPending || undefined}>
-        {summary.data ? (
-          <>
-            <li>
-              <strong>{count(summary.data.objectives)}</strong>
-              <span>objectives mapped to Common Core standards</span>
-            </li>
-            <li>
-              <strong>{count(summary.data.problemTypes)}</strong>
-              <span>problem types that write new problems</span>
-            </li>
-            <li>
-              <strong>{count(summary.data.lessons)}</strong>
-              <span>
-                lessons, with a hint and an explanation for every problem
-              </span>
-            </li>
-          </>
-        ) : (
-          [0, 1, 2].map((index) => (
-            <li key={index} className="amp-skeleton" aria-hidden="true" />
-          ))
-        )}
+        {FACTS.map(([key, label]) => (
+          <li key={key}>
+            <strong>
+              {summary.data ? (
+                count(summary.data[key])
+              ) : (
+                <i className={`amp-skeleton ${styles.pending}`}>
+                  <span />
+                </i>
+              )}
+            </strong>
+            <span>{label}</span>
+          </li>
+        ))}
       </ul>
       <section className={styles.talk} aria-labelledby="starter-talk">
         <h2 id="starter-talk">Talk to us</h2>

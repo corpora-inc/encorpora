@@ -139,7 +139,18 @@
   font-weight: 400;
   font-variant-numeric: tabular-nums;
 }
-.facts span {
+.facts .pending {
+  display: inline-block;
+  width: 3.5ch;
+  height: 0.75em;
+  vertical-align: baseline;
+}
+.facts .pending > span {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-small);
+}
+.facts li > span {
   color: var(--color-muted-text);
   font-size: var(--text-label);
   line-height: 1.4;

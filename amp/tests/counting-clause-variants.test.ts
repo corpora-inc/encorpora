@@ -324,6 +324,10 @@ test("count-objects families keep a typed count and a legacy reprint", () => {
     const n = Number(problem.public.prompt.match(/\d+/)![0]);
     assert.equal(Number(problem.answer), n - 1);
     assert.ok(Number(problem.answer) >= 1);
+    // Counting back one, a counting skill: never a take-away story.
+    assert.match(problem.public.prompt, /Count back one\./);
+    for (const text of [problem.public.prompt, ...problem.explanation])
+      assert.doesNotMatch(text, /leaves|left|takes? away|gone/i);
   }
 
   const spotted = collect(
