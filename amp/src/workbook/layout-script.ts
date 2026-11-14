@@ -19,7 +19,10 @@
  * It sets `data-layout` on <html> to "ready", or "error" after logging why.
  * Printers wait for that (see `pdf.ts`). Plain ES5 text, never transpiled.
  */
+import { displayMathFitScript } from "../content/DisplayMath";
+
 export const workbookLayoutScript = String.raw`(function () {
+  ${displayMathFitScript}
   var root = document.documentElement;
   function fail(error) {
     // Put the unpaged blocks back, so a failed layout still prints whole
@@ -31,7 +34,7 @@ export const workbookLayoutScript = String.raw`(function () {
     console.error("Workbook layout failed:", error && error.stack ? error.stack : error);
   }
   function list(nodes) { return Array.prototype.slice.call(nodes); }
-  function height(el) { return el.getBoundingClientRect().height; }
+  function height(el) { fitDisplayMath(el); return el.getBoundingClientRect().height; }
   var backup = null;
   function layout() {
     var wb = document.querySelector(".wb");

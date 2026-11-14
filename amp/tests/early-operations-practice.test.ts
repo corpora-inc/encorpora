@@ -183,3 +183,55 @@ test("every early-operation family has one illustrated lesson", () => {
     );
   }
 });
+
+test("independent bus-story oracle accepts counted people and rejects contradictory figures", async () => {
+  const { spawnSync } = await import("node:child_process");
+  const { fileURLToPath } = await import("node:url");
+  const cases = sample("two-step-change", 256).filter((p) =>
+    p.public.prompt.startsWith("A bus"),
+  );
+  // Include the exact full-inventory failure as well as broad generated cases.
+  cases.push(generateProblem("two-step-change", "independent-2", 1));
+  const result = spawnSync(
+    "python3",
+    [
+      "-c",
+      `
+import copy, json, sys
+sys.path.insert(0, 'scripts')
+from early_operations_math_oracle import solve_early_operations
+for case in json.load(sys.stdin):
+    public = case['public']
+    solved = solve_early_operations(public)
+    assert str(solved) == case['answer']
+    wrong = copy.deepcopy(public)
+    wrong['figure']['steps'][0]['value'] += 1
+    try:
+        solve_early_operations(wrong)
+    except ValueError:
+        pass
+    else:
+        raise AssertionError('Accepted a contradictory figure')
+for off, on in [(1, 1), (1, 3), (4, 1), (4, 3)]:
+    for named in [True, False]:
+        def people(n):
+            return (' person' if n == 1 else ' people') if named else ''
+        def verb(n):
+            return 'gets' if n == 1 else 'get'
+        public = {
+            'templateId': 'two-step-change',
+            'prompt': f'A bus has 20 people. At a stop, {off}{people(off)} {verb(off)} off and then {on}{people(on)} {verb(on)} on. How many people are on the bus now?',
+            'figure': {'kind': 'change-chain', 'start': 20, 'steps': [{'op': '−', 'value': off}, {'op': '+', 'value': on}], 'end': None},
+        }
+        assert solve_early_operations(public) == 20 - off + on
+print('bus-story cases:', ${cases.length}, '+ 8 singular/plural/legacy fixtures')
+`,
+    ],
+    {
+      cwd: fileURLToPath(new URL("../", import.meta.url)),
+      input: JSON.stringify(cases),
+      encoding: "utf8",
+    },
+  );
+  assert.equal(result.status, 0, result.stderr || String(result.error));
+});

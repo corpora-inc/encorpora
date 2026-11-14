@@ -36,6 +36,22 @@ const JOIN_MS = Number(process.env.AMP_DEMO_JOIN_MS ?? 1_000);
 const DAY = 86_400_000;
 const ZONE = "America/New_York";
 
+/** A fixed school-day clock: the latest Wednesday noon in `zone` at or
+ * before `real`. The school shown then always has its morning's sitting (a
+ * weekend's has none, and the shown day switches at 9:00), so the suite
+ * reads the same whatever day or hour it runs. */
+function schoolDayNoon(real: number, zone: string) {
+  for (let back = 0; back <= 7; back++) {
+    const day = new Intl.DateTimeFormat("en-CA", { timeZone: zone }).format(
+      real - back * DAY,
+    );
+    const noon = zonedInstant(day, 12, zone);
+    if (new Date(`${day}T12:00:00Z`).getUTCDay() === 3 && noon <= real)
+      return noon;
+  }
+  throw new Error("no Wednesday noon in the last week");
+}
+
 test(
   "The shared demo school: joined in under a second, visitors invisible to each other, rewritten each day, never counted",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
@@ -56,7 +72,7 @@ test(
       throw new ApiError(401, "Sign in to continue");
     });
     // The school clock, which the test moves to the next week's night.
-    let clock = Date.now();
+    let clock = schoolDayNoon(Date.now(), ZONE);
     const app = buildApp({ repository: learning, authenticate });
     await registerSchoolRoutes(app, {
       pool: db,
@@ -81,11 +97,16 @@ test(
     // for today's weekday, then today's school in the zone.
     await workbookWorker().warm();
     const warmed = performance.now();
-    await warmDemoSchools(db, { timezones: [ZONE], ahead: 0, learning });
+    await warmDemoSchools(db, {
+      timezones: [ZONE],
+      ahead: 0,
+      learning,
+      now: clock,
+    });
     console.log(
       `  school written from the shipped term in ${Math.round(performance.now() - warmed)} ms`,
     );
-    const today = (await currentSchool(db, ZONE))!;
+    const today = (await currentSchool(db, ZONE, clock))!;
     assert.ok(today, "the zone has a school");
     // A week on: the same weekday, so the same term moved seven days.
     const next = sharedDay(clock + 7 * DAY, ZONE);
@@ -184,402 +205,469 @@ test(
     type Demo = { kind: string; orgId: string; classId: string; path: string };
     let teacherDemo: Demo;
     let headDemo: Demo;
-    await t.test("joining a warm shared school takes under a second", async () => {
-      for (const [kind, visitor] of [
-        ["class", visitors.teacher],
-        ["school", visitors.head],
-      ] as const) {
-        const started = performance.now();
-        const joined = await call("POST", "/api/v1/school/demo", visitor.account, {
-          kind,
-          timezone: ZONE,
-        });
-        const elapsed = performance.now() - started;
-        assert.equal(joined.statusCode, 201, joined.body);
-        console.log(`  a ${kind} visitor joined in ${Math.round(elapsed)} ms`);
-        assert.ok(elapsed <= JOIN_MS, `joined in ${Math.round(elapsed)} ms`);
-        const demo = joined.json().demo as Demo;
-        assert.deepEqual(
-          { orgId: demo.orgId, classId: demo.classId },
-          { orgId: today.orgId, classId: today.heroClassId },
-        );
-        assert.equal(
-          demo.path,
-          `school/${today.orgId}/classes/${today.heroClassId}/today`,
-        );
-        if (kind === "class") teacherDemo = demo;
-        else headDemo = demo;
-      }
-      // Coming back is the same place.
-      const again = await call(
-        "POST",
-        "/api/v1/school/demo",
-        visitors.teacher.account,
-        { kind: "class", timezone: ZONE },
-      );
-      assert.equal(again.statusCode, 200);
-      assert.deepEqual(again.json().demo, teacherDemo);
-      // The head is its admin; the teacher teaches the hero class.
-      const orgOf = async (account: string) =>
-        (await call("GET", `/api/v1/school/orgs/${today.orgId}`, account)).json()
-          .org;
-      const head = await orgOf(visitors.head.account);
-      const teacher = await orgOf(visitors.teacher.account);
-      assert.equal(head.demo, true);
-      assert.ok(head.roles.includes("admin"));
-      assert.equal(head.solo, false, "a school visitor sees the school");
-      assert.deepEqual(teacher.roles, ["teacher"]);
-      assert.equal(teacher.solo, true, "a class visitor sees their class");
-      assert.deepEqual(teacher.teaches, [today.heroClassId]);
-    });
-
-    await t.test("a second request waits for the first and returns the same membership", async () => {
-      const account = "amp|double-click";
-      // Another request holds the account's lock past 5 s.
-      const holder = await db.connect();
-      await holder.query("SELECT pg_advisory_lock(hashtextextended($1,0))", [
-        `school-demo:${account}`,
-      ]);
-      const waiting = call("POST", "/api/v1/school/demo", account, {
-        kind: "class",
-      });
-      await new Promise((done) => setTimeout(done, 6_000));
-      await holder.query("SELECT pg_advisory_unlock_all()");
-      holder.release();
-      const first = await waiting;
-      assert.equal(first.statusCode, 201, first.body);
-      const [a, b] = await Promise.all(
-        [0, 1].map(() =>
-          call("POST", "/api/v1/school/demo", account, { kind: "class" }),
-        ),
-      );
-      assert.deepEqual([a!.statusCode, b!.statusCode], [200, 200]);
-      assert.equal(a!.json().demo.orgId, first.json().demo.orgId);
-      assert.equal(
-        await count(
-          "SELECT count(*) AS n FROM amp_people WHERE account_id=$1 AND deleted_at IS NULL",
-          [account],
-        ),
-        1,
-      );
-      // Asking for the school next makes the same person its admin.
-      const [c, d] = await Promise.all(
-        [0, 1].map(() =>
-          call("POST", "/api/v1/school/demo", account, { kind: "school" }),
-        ),
-      );
-      assert.equal(c!.json().demo.orgId, d!.json().demo.orgId);
-      assert.equal(
-        await count(
-          `SELECT count(*) AS n FROM amp_org_roles r JOIN amp_people p ON p.id=r.person_id
-           WHERE p.account_id=$1 AND r.role='admin'`,
-          [account],
-        ),
-        1,
-      );
-      assert.equal(
-        (await call("DELETE", "/api/v1/school/demo", account)).json().removed,
-        1,
-      );
-      assert.equal(
-        (await call("GET", `/api/v1/school/orgs/${today.orgId}`, account))
-          .statusCode,
-        404,
-      );
-    });
-
-    await t.test("Today, the map, the gradebook, time and workbooks are alive", async () => {
-      const token = visitors.teacher.account;
-      const base = `/api/v1/school/classes/${today.heroClassId}`;
-      const day = (await call("GET", `${base}/today`, token)).json();
-      assert.equal(day.week.students, 24);
-      assert.ok(day.todos.length >= 3, JSON.stringify(day.todos));
-      const map = (await call("GET", `${base}/map`, token)).json();
-      const placed = map.students.filter((s: { level: unknown }) => s.level);
-      assert.ok(placed.length >= 22 && map.strands.length >= 3);
-      const book = (await call("GET", `${base}/gradebook`, token)).json();
-      const ranged = book.students.filter(
-        (s: { suggestion: { status: string; letters: string | null } }) =>
-          s.suggestion.status === "ready" && s.suggestion.letters,
-      );
-      assert.ok(ranged.length >= 18, `ranges: ${ranged.length}`);
-      assert.equal((await call("GET", `${base}/time`, token)).statusCode, 200);
-      const stack = (await call("GET", `${base}/workbooks`, token)).json();
-      const set = stack.recent[0];
-      assert.ok(
-        set && set.students === 24 && set.marked > 12 && set.marked < 24,
-        JSON.stringify(set),
-      );
-      // The hero class is here today: presence moves with the clock.
-      const presence = (await call("GET", `${base}/presence`, token)).json();
-      assert.ok(JSON.stringify(presence).length > 2);
-      const school = (
-        await call(
-          "GET",
-          `/api/v1/school/orgs/${today.orgId}/classes`,
-          visitors.head.account,
-        )
-      ).json();
-      assert.equal(school.classes.length, 6);
-      const overview = await call(
-        "GET",
-        `/api/v1/school/orgs/${today.orgId}/overview`,
-        visitors.head.account,
-      );
-      assert.equal(overview.statusCode, 200);
-    });
-
-    await t.test("visitors play, but never reach a real student or a stranger", async () => {
-      const today_ = await call(
-        "GET",
-        `/api/v1/school/classes/${today.heroClassId}/today`,
-        stranger,
-      );
-      assert.equal(today_.statusCode, 404);
-      const person = (
-        await db.query(
-          "SELECT p.id,p.learner_id FROM amp_people p WHERE p.tenant_id=$1 AND p.given_name='Priya'",
-          [today.orgId],
-        )
-      ).rows[0];
-      const path = `/api/v1/school/demo/students/${person.id}/session`;
-      assert.equal((await call("POST", path, stranger)).statusCode, 404);
-      assert.equal(
-        (
-          await call(
+    await t.test(
+      "joining a warm shared school takes under a second",
+      async () => {
+        for (const [kind, visitor] of [
+          ["class", visitors.teacher],
+          ["school", visitors.head],
+        ] as const) {
+          const started = performance.now();
+          const joined = await call(
             "POST",
-            `/api/v1/school/demo/students/${realStudent.personId}/session`,
-            visitors.teacher.account,
-          )
-        ).statusCode,
-        404,
-      );
-      // Nothing adds a real child to a demo, or invites anyone.
-      const add = await call(
-        "POST",
-        `/api/v1/school/orgs/${today.orgId}/students`,
-        visitors.head.account,
-        { givenName: "Real", familyName: "Child", classId: today.heroClassId },
-      );
-      assert.equal(add.statusCode, 404);
-      const invite = await call(
-        "POST",
-        `/api/v1/school/orgs/${today.orgId}/staff/invites`,
-        visitors.head.account,
-        { email: "someone@example.test", role: "teacher" },
-      );
-      assert.equal(invite.statusCode, 404);
-      const can = (
-        await call("GET", `/api/v1/school/orgs/${today.orgId}`, visitors.head.account)
-      ).json().org.can as string[];
-      for (const action of ["students.add", "staff.manage", "roster.import"])
-        assert.ok(!can.includes(action), `${action} is not offered`);
-      // Practice as Priya: her session, her learner, real problems.
-      const session = await call("POST", path, visitors.teacher.account);
-      assert.equal(session.statusCode, 201);
-      const { token } = session.json();
-      const batch = await app.inject({
-        method: "POST",
-        url: `/api/v1/learners/${person.learner_id}/batches`,
-        headers: { authorization: `Bearer ${token}` },
-        payload: { count: 3 },
-      });
-      assert.equal(batch.statusCode, 200, batch.body);
-      const problem = batch.json().problems[0];
-      const stored = (
-        await db.query("SELECT content FROM amp_instances WHERE id=$1", [
-          problem.id,
-        ])
-      ).rows[0].content;
-      const answered = await app.inject({
-        method: "POST",
-        url: `/api/v1/learners/${person.learner_id}/attempts`,
-        headers: { authorization: `Bearer ${token}` },
-        payload: {
-          problemId: problem.id,
-          requestId: randomUUID(),
-          response: stored.answer,
-        },
-      });
-      assert.equal(answered.statusCode, 200, answered.body);
-      assert.equal(
-        await count("SELECT free_online_used AS n FROM amp_learners WHERE id=$1", [
-          person.learner_id,
-        ]),
-        0,
-      );
-      // The session reaches only her learner.
-      const other = await app.inject({
-        method: "POST",
-        url: `/api/v1/learners/${realStudent.learnerId}/batches`,
-        headers: { authorization: `Bearer ${token}` },
-        payload: { count: 1 },
-      });
-      assert.notEqual(other.statusCode, 200);
-      // A demo never makes a visitor's own practice free; the real school
-      // still counts.
-      const { adultPracticeEnd } = await import("../src/account/adult-access.js");
-      assert.equal(
-        await adultPracticeEnd(db, visitors.teacher.account).then((end) => !!end),
-        true,
-      );
-      assert.equal(await adultPracticeEnd(db, visitors.head.account), null);
-      // One visitor's new class code would be everyone's: never offered,
-      // and refused.
-      const base = `/api/v1/school/classes/${today.heroClassId}`;
-      for (const visitor of Object.values(visitors)) {
-        const presence = (await call("GET", `${base}/presence`, visitor.account)).json();
-        assert.equal(presence.canManage, false, "no New code on Today");
-        const roster = (await call("GET", `${base}/roster`, visitor.account)).json();
-        assert.equal(roster.canManage, true, "Practice as and cards stay");
-        assert.equal(roster.canNewCode, false, "no New code on the roster");
+            "/api/v1/school/demo",
+            visitor.account,
+            {
+              kind,
+              timezone: ZONE,
+            },
+          );
+          const elapsed = performance.now() - started;
+          assert.equal(joined.statusCode, 201, joined.body);
+          console.log(
+            `  a ${kind} visitor joined in ${Math.round(elapsed)} ms`,
+          );
+          assert.ok(elapsed <= JOIN_MS, `joined in ${Math.round(elapsed)} ms`);
+          const demo = joined.json().demo as Demo;
+          assert.deepEqual(
+            { orgId: demo.orgId, classId: demo.classId },
+            { orgId: today.orgId, classId: today.heroClassId },
+          );
+          assert.equal(
+            demo.path,
+            `school/${today.orgId}/classes/${today.heroClassId}/today`,
+          );
+          if (kind === "class") teacherDemo = demo;
+          else headDemo = demo;
+        }
+        // Coming back is the same place.
+        const again = await call(
+          "POST",
+          "/api/v1/school/demo",
+          visitors.teacher.account,
+          { kind: "class", timezone: ZONE },
+        );
+        assert.equal(again.statusCode, 200);
+        assert.deepEqual(again.json().demo, teacherDemo);
+        // The head is its admin; the teacher teaches the hero class.
+        const orgOf = async (account: string) =>
+          (
+            await call("GET", `/api/v1/school/orgs/${today.orgId}`, account)
+          ).json().org;
+        const head = await orgOf(visitors.head.account);
+        const teacher = await orgOf(visitors.teacher.account);
+        assert.equal(head.demo, true);
+        assert.ok(head.roles.includes("admin"));
+        assert.equal(head.solo, false, "a school visitor sees the school");
+        assert.deepEqual(teacher.roles, ["teacher"]);
+        assert.equal(teacher.solo, true, "a class visitor sees their class");
+        assert.deepEqual(teacher.teaches, [today.heroClassId]);
+      },
+    );
+
+    await t.test(
+      "a second request waits for the first and returns the same membership",
+      async () => {
+        const account = "amp|double-click";
+        // Another request holds the account's lock past 5 s.
+        const holder = await db.connect();
+        await holder.query("SELECT pg_advisory_lock(hashtextextended($1,0))", [
+          `school-demo:${account}`,
+        ]);
+        const waiting = call("POST", "/api/v1/school/demo", account, {
+          kind: "class",
+        });
+        await new Promise((done) => setTimeout(done, 6_000));
+        await holder.query("SELECT pg_advisory_unlock_all()");
+        holder.release();
+        const first = await waiting;
+        assert.equal(first.statusCode, 201, first.body);
+        const [a, b] = await Promise.all(
+          [0, 1].map(() =>
+            call("POST", "/api/v1/school/demo", account, { kind: "class" }),
+          ),
+        );
+        assert.deepEqual([a!.statusCode, b!.statusCode], [200, 200]);
+        assert.equal(a!.json().demo.orgId, first.json().demo.orgId);
         assert.equal(
-          (await call("POST", `${base}/rotate-code`, visitor.account, {})).statusCode,
+          await count(
+            "SELECT count(*) AS n FROM amp_people WHERE account_id=$1 AND deleted_at IS NULL",
+            [account],
+          ),
+          1,
+        );
+        // Asking for the school next makes the same person its admin.
+        const [c, d] = await Promise.all(
+          [0, 1].map(() =>
+            call("POST", "/api/v1/school/demo", account, { kind: "school" }),
+          ),
+        );
+        assert.equal(c!.json().demo.orgId, d!.json().demo.orgId);
+        assert.equal(
+          await count(
+            `SELECT count(*) AS n FROM amp_org_roles r JOIN amp_people p ON p.id=r.person_id
+           WHERE p.account_id=$1 AND r.role='admin'`,
+            [account],
+          ),
+          1,
+        );
+        assert.equal(
+          (await call("DELETE", "/api/v1/school/demo", account)).json().removed,
+          1,
+        );
+        assert.equal(
+          (await call("GET", `/api/v1/school/orgs/${today.orgId}`, account))
+            .statusCode,
           404,
         );
-      }
-      // Both act, so the activity log has something of each.
-      const students = (
-        await db.query(
-          `SELECT p.id FROM amp_people p JOIN amp_enrollments e ON e.person_id=p.id AND e.role='student'
-           WHERE e.class_id=$1 AND p.given_name<>'Priya' ORDER BY p.given_name LIMIT 2`,
-          [today.heroClassId],
-        )
-      ).rows.map((row) => row.id as string);
-      for (const [index, visitor] of Object.values(visitors).entries()) {
-        const reset = await call(
-          "POST",
-          `${base}/students/${students[index]}/reset-pictures`,
-          visitor.account,
-          {},
+      },
+    );
+
+    await t.test(
+      "Today, the map, the gradebook, time and workbooks are alive",
+      async () => {
+        const token = visitors.teacher.account;
+        const base = `/api/v1/school/classes/${today.heroClassId}`;
+        const day = (await call("GET", `${base}/today`, token)).json();
+        assert.equal(day.week.students, 24);
+        assert.ok(day.todos.length >= 3, JSON.stringify(day.todos));
+        const map = (await call("GET", `${base}/map`, token)).json();
+        const placed = map.students.filter((s: { level: unknown }) => s.level);
+        assert.ok(placed.length >= 22 && map.strands.length >= 3);
+        const book = (await call("GET", `${base}/gradebook`, token)).json();
+        const ranged = book.students.filter(
+          (s: { suggestion: { status: string; letters: string | null } }) =>
+            s.suggestion.status === "ready" && s.suggestion.letters,
         );
-        assert.ok(reset.statusCode < 300, reset.body);
-      }
-    });
-
-    await t.test("two visitors never appear in each other's responses", async () => {
-      const personOf = async (account: string) =>
-        (
-          await db.query(
-            "SELECT id FROM amp_people WHERE account_id=$1 AND tenant_id=$2 AND deleted_at IS NULL",
-            [account, today.orgId],
+        assert.ok(ranged.length >= 18, `ranges: ${ranged.length}`);
+        assert.equal(
+          (await call("GET", `${base}/time`, token)).statusCode,
+          200,
+        );
+        const stack = (await call("GET", `${base}/workbooks`, token)).json();
+        const set = stack.recent[0];
+        assert.ok(
+          set && set.students === 24 && set.marked > 12 && set.marked < 24,
+          JSON.stringify(set),
+        );
+        // The hero class is here today: presence moves with the clock.
+        const presence = (await call("GET", `${base}/presence`, token)).json();
+        assert.ok(JSON.stringify(presence).length > 2);
+        const school = (
+          await call(
+            "GET",
+            `/api/v1/school/orgs/${today.orgId}/classes`,
+            visitors.head.account,
           )
-        ).rows[0].id as string;
-      const org = `/api/v1/school/orgs/${today.orgId}`;
-      const klass = `/api/v1/school/classes/${today.heroClassId}`;
-      const reads = [
-        "/api/v1/me",
-        "/api/v1/school/orgs",
-        org,
-        `${org}/staff`,
-        `${org}/classes`,
-        `${org}/overview`,
-        `${org}/practice`,
-        `${org}/standing`,
-        `${org}/activity`,
-        `${org}/license`,
-        `${klass}/today`,
-        `${klass}/map`,
-        `${klass}/gradebook`,
-        `${klass}/time`,
-        `${klass}/standing`,
-        `${klass}/presence`,
-        `${klass}/roster`,
-        `${klass}/workbooks`,
-        `${klass}/experience`,
-        `${klass}/experience/me`,
-      ];
-      const pairs = [
-        [visitors.teacher, visitors.head],
-        [visitors.head, visitors.teacher],
-      ] as const;
-      for (const [viewer, other] of pairs) {
-        const secrets = [
-          other.name,
-          other.name.split(" ")[1]!,
-          other.email,
-          other.account,
-          await personOf(other.account),
-        ];
-        let seen = 0;
-        const check = (label: string, body: string) => {
-          for (const secret of secrets)
-            assert.ok(
-              !body.includes(secret),
-              `${viewer.name} sees ${secret} in ${label}`,
-            );
-        };
-        for (const path of reads) {
-          const response = await call("GET", path, viewer.account);
-          if (response.statusCode === 200) seen++;
-          check(path, response.body);
-        }
-        const search = await call("POST", `${org}/activity/people`, viewer.account, {
-          q: other.name.split(" ")[1]!.slice(0, 5),
-        });
-        check("activity search", search.body);
-        // Each still sees themself where they are listed.
-        if (viewer === visitors.head) {
-          const staff = await call("GET", `${org}/staff`, viewer.account);
-          // The made-up teachers and themself: nobody else.
-          assert.deepEqual(
-            staff
-              .json()
-              .staff.map((row: { name: string }) => row.name)
-              .sort(),
-            [viewer.name, "Ms. Kowalski", "Ms. Rivera", "Ms. Tanaka"].sort(),
-          );
-          // The made-up teachers are the school's running staff, not
-          // invitations waiting.
-          assert.deepEqual(
-            [...new Set(staff.json().staff.map((row: { status: string }) => row.status))],
-            ["active"],
-          );
-          const activity = await call("GET", `${org}/activity`, viewer.account);
-          assert.ok(activity.body.includes(viewer.name.split(" ")[0]!), "their own action shows");
-        }
-        assert.ok(seen >= 12, `${viewer.name} read ${seen} views`);
-      }
-    });
+        ).json();
+        assert.equal(school.classes.length, 6);
+        const overview = await call(
+          "GET",
+          `/api/v1/school/orgs/${today.orgId}/overview`,
+          visitors.head.account,
+        );
+        assert.equal(overview.statusCode, 200);
+      },
+    );
 
-    await t.test("demo grants and students never reach the reports", async () => {
-      assert.ok(
-        (await count("SELECT count(*) AS n FROM amp_grants WHERE channel='demo'")) >=
-          100,
-      );
-      const after = await insightsReport(db, window);
-      assert.equal(after.totals.served, before.totals.served);
-      assert.equal(after.totals.learners, before.totals.learners);
-      assert.equal(after.totals.flags, before.totals.flags);
-      for (const visitor of Object.values(visitors)) {
-        const flags = (
+    await t.test(
+      "visitors play, but never reach a real student or a stranger",
+      async () => {
+        const today_ = await call(
+          "GET",
+          `/api/v1/school/classes/${today.heroClassId}/today`,
+          stranger,
+        );
+        assert.equal(today_.statusCode, 404);
+        const person = (
           await db.query(
-            `SELECT ${grantedAccessSql("$1")} AS granted,${purchaseEvidenceSql("$1")} AS paid`,
-            [visitor.account],
+            "SELECT p.id,p.learner_id FROM amp_people p WHERE p.tenant_id=$1 AND p.given_name='Priya'",
+            [today.orgId],
           )
         ).rows[0];
-        assert.deepEqual(flags, { granted: false, paid: false });
-      }
-    });
-
-    await t.test("the same school every day, its dates moved by whole weeks", async () => {
-      const written = performance.now();
-      await ensureSchool(db, next, learning);
-      console.log(
-        `  next school written in ${Math.round(performance.now() - written)} ms`,
-      );
-      const nextOrg = (
-        await db.query(
-          "SELECT org_id FROM amp_demo_schools WHERE timezone=$1 AND day=$2::date",
-          [ZONE, next.day],
-        )
-      ).rows[0].org_id as string;
-      // Students, classes, answers and levels, with each date as the
-      // school's own wall clock, so the two differ only by the seven days.
-      const story = async (orgId: string, days: number) =>
-        (
+        const path = `/api/v1/school/demo/students/${person.id}/session`;
+        assert.equal((await call("POST", path, stranger)).statusCode, 404);
+        assert.equal(
+          (
+            await call(
+              "POST",
+              `/api/v1/school/demo/students/${realStudent.personId}/session`,
+              visitors.teacher.account,
+            )
+          ).statusCode,
+          404,
+        );
+        // Nothing adds a real child to a demo, or invites anyone.
+        const add = await call(
+          "POST",
+          `/api/v1/school/orgs/${today.orgId}/students`,
+          visitors.head.account,
+          {
+            givenName: "Real",
+            familyName: "Child",
+            classId: today.heroClassId,
+          },
+        );
+        assert.equal(add.statusCode, 404);
+        const invite = await call(
+          "POST",
+          `/api/v1/school/orgs/${today.orgId}/staff/invites`,
+          visitors.head.account,
+          { email: "someone@example.test", role: "teacher" },
+        );
+        assert.equal(invite.statusCode, 404);
+        const can = (
+          await call(
+            "GET",
+            `/api/v1/school/orgs/${today.orgId}`,
+            visitors.head.account,
+          )
+        ).json().org.can as string[];
+        for (const action of ["students.add", "staff.manage", "roster.import"])
+          assert.ok(!can.includes(action), `${action} is not offered`);
+        // Practice as Priya: her session, her learner, real problems.
+        const session = await call("POST", path, visitors.teacher.account);
+        assert.equal(session.statusCode, 201);
+        const { token } = session.json();
+        const batch = await app.inject({
+          method: "POST",
+          url: `/api/v1/learners/${person.learner_id}/batches`,
+          headers: { authorization: `Bearer ${token}` },
+          payload: { count: 3 },
+        });
+        assert.equal(batch.statusCode, 200, batch.body);
+        const problem = batch.json().problems[0];
+        const stored = (
+          await db.query("SELECT content FROM amp_instances WHERE id=$1", [
+            problem.id,
+          ])
+        ).rows[0].content;
+        const answered = await app.inject({
+          method: "POST",
+          url: `/api/v1/learners/${person.learner_id}/attempts`,
+          headers: { authorization: `Bearer ${token}` },
+          payload: {
+            problemId: problem.id,
+            requestId: randomUUID(),
+            response: stored.answer,
+          },
+        });
+        assert.equal(answered.statusCode, 200, answered.body);
+        assert.equal(
+          await count(
+            "SELECT free_online_used AS n FROM amp_learners WHERE id=$1",
+            [person.learner_id],
+          ),
+          0,
+        );
+        // The session reaches only her learner.
+        const other = await app.inject({
+          method: "POST",
+          url: `/api/v1/learners/${realStudent.learnerId}/batches`,
+          headers: { authorization: `Bearer ${token}` },
+          payload: { count: 1 },
+        });
+        assert.notEqual(other.statusCode, 200);
+        // A demo never makes a visitor's own practice free; the real school
+        // still counts.
+        const { adultPracticeEnd } =
+          await import("../src/account/adult-access.js");
+        assert.equal(
+          await adultPracticeEnd(db, visitors.teacher.account).then(
+            (end) => !!end,
+          ),
+          true,
+        );
+        assert.equal(await adultPracticeEnd(db, visitors.head.account), null);
+        // One visitor's new class code would be everyone's: never offered,
+        // and refused.
+        const base = `/api/v1/school/classes/${today.heroClassId}`;
+        for (const visitor of Object.values(visitors)) {
+          const presence = (
+            await call("GET", `${base}/presence`, visitor.account)
+          ).json();
+          assert.equal(presence.canManage, false, "no New code on Today");
+          const roster = (
+            await call("GET", `${base}/roster`, visitor.account)
+          ).json();
+          assert.equal(roster.canManage, true, "Practice as and cards stay");
+          assert.equal(roster.canNewCode, false, "no New code on the roster");
+          assert.equal(
+            (await call("POST", `${base}/rotate-code`, visitor.account, {}))
+              .statusCode,
+            404,
+          );
+        }
+        // Both act, so the activity log has something of each.
+        const students = (
           await db.query(
-            `SELECT c.name AS class,p.given_name||' '||p.family_name AS student,
+            `SELECT p.id FROM amp_people p JOIN amp_enrollments e ON e.person_id=p.id AND e.role='student'
+           WHERE e.class_id=$1 AND p.given_name<>'Priya' ORDER BY p.given_name LIMIT 2`,
+            [today.heroClassId],
+          )
+        ).rows.map((row) => row.id as string);
+        for (const [index, visitor] of Object.values(visitors).entries()) {
+          const reset = await call(
+            "POST",
+            `${base}/students/${students[index]}/reset-pictures`,
+            visitor.account,
+            {},
+          );
+          assert.ok(reset.statusCode < 300, reset.body);
+        }
+      },
+    );
+
+    await t.test(
+      "two visitors never appear in each other's responses",
+      async () => {
+        const personOf = async (account: string) =>
+          (
+            await db.query(
+              "SELECT id FROM amp_people WHERE account_id=$1 AND tenant_id=$2 AND deleted_at IS NULL",
+              [account, today.orgId],
+            )
+          ).rows[0].id as string;
+        const org = `/api/v1/school/orgs/${today.orgId}`;
+        const klass = `/api/v1/school/classes/${today.heroClassId}`;
+        const reads = [
+          "/api/v1/me",
+          "/api/v1/school/orgs",
+          org,
+          `${org}/staff`,
+          `${org}/classes`,
+          `${org}/overview`,
+          `${org}/practice`,
+          `${org}/standing`,
+          `${org}/activity`,
+          `${org}/license`,
+          `${klass}/today`,
+          `${klass}/map`,
+          `${klass}/gradebook`,
+          `${klass}/time`,
+          `${klass}/standing`,
+          `${klass}/presence`,
+          `${klass}/roster`,
+          `${klass}/workbooks`,
+          `${klass}/experience`,
+          `${klass}/experience/me`,
+        ];
+        const pairs = [
+          [visitors.teacher, visitors.head],
+          [visitors.head, visitors.teacher],
+        ] as const;
+        for (const [viewer, other] of pairs) {
+          const secrets = [
+            other.name,
+            other.name.split(" ")[1]!,
+            other.email,
+            other.account,
+            await personOf(other.account),
+          ];
+          let seen = 0;
+          const check = (label: string, body: string) => {
+            for (const secret of secrets)
+              assert.ok(
+                !body.includes(secret),
+                `${viewer.name} sees ${secret} in ${label}`,
+              );
+          };
+          for (const path of reads) {
+            const response = await call("GET", path, viewer.account);
+            if (response.statusCode === 200) seen++;
+            check(path, response.body);
+          }
+          const search = await call(
+            "POST",
+            `${org}/activity/people`,
+            viewer.account,
+            {
+              q: other.name.split(" ")[1]!.slice(0, 5),
+            },
+          );
+          check("activity search", search.body);
+          // Each still sees themself where they are listed.
+          if (viewer === visitors.head) {
+            const staff = await call("GET", `${org}/staff`, viewer.account);
+            // The made-up teachers and themself: nobody else.
+            assert.deepEqual(
+              staff
+                .json()
+                .staff.map((row: { name: string }) => row.name)
+                .sort(),
+              [viewer.name, "Ms. Kowalski", "Ms. Rivera", "Ms. Tanaka"].sort(),
+            );
+            // The made-up teachers are the school's running staff, not
+            // invitations waiting.
+            assert.deepEqual(
+              [
+                ...new Set(
+                  staff
+                    .json()
+                    .staff.map((row: { status: string }) => row.status),
+                ),
+              ],
+              ["active"],
+            );
+            const activity = await call(
+              "GET",
+              `${org}/activity`,
+              viewer.account,
+            );
+            assert.ok(
+              activity.body.includes(viewer.name.split(" ")[0]!),
+              "their own action shows",
+            );
+          }
+          assert.ok(seen >= 12, `${viewer.name} read ${seen} views`);
+        }
+      },
+    );
+
+    await t.test(
+      "demo grants and students never reach the reports",
+      async () => {
+        assert.ok(
+          (await count(
+            "SELECT count(*) AS n FROM amp_grants WHERE channel='demo'",
+          )) >= 100,
+        );
+        const after = await insightsReport(db, window);
+        assert.equal(after.totals.served, before.totals.served);
+        assert.equal(after.totals.learners, before.totals.learners);
+        assert.equal(after.totals.flags, before.totals.flags);
+        for (const visitor of Object.values(visitors)) {
+          const flags = (
+            await db.query(
+              `SELECT ${grantedAccessSql("$1")} AS granted,${purchaseEvidenceSql("$1")} AS paid`,
+              [visitor.account],
+            )
+          ).rows[0];
+          assert.deepEqual(flags, { granted: false, paid: false });
+        }
+      },
+    );
+
+    await t.test(
+      "the same school every day, its dates moved by whole weeks",
+      async () => {
+        const written = performance.now();
+        await ensureSchool(db, next, learning);
+        console.log(
+          `  next school written in ${Math.round(performance.now() - written)} ms`,
+        );
+        const nextOrg = (
+          await db.query(
+            "SELECT org_id FROM amp_demo_schools WHERE timezone=$1 AND day=$2::date",
+            [ZONE, next.day],
+          )
+        ).rows[0].org_id as string;
+        // Students, classes, answers and levels, with each date as the
+        // school's own wall clock, so the two differ only by the seven days.
+        const story = async (orgId: string, days: number) =>
+          (
+            await db.query(
+              `SELECT c.name AS class,p.given_name||' '||p.family_name AS student,
                (SELECT json_agg(json_build_object(
                   'at',(a.created_at AT TIME ZONE $2)-make_interval(days=>$3),
                   'outcome',a.outcome-'id'-'problemId'-'requestId'-'createdAt',
@@ -594,35 +682,37 @@ test(
              JOIN amp_classes c ON c.id=e.class_id
              WHERE p.tenant_id=$1 AND p.learner_id IS NOT NULL
              ORDER BY c.name,student`,
-            [orgId, ZONE, days],
-          )
-        ).rows;
-      const [now_, later] = await Promise.all([
-        story(today.orgId, 0),
-        story(nextOrg, 7),
-      ]);
-      assert.equal(now_.length, 139);
-      // Paper marks too: the printed workbooks roll as on the anchor day.
-      // Priya practiced in this test, so her term is left out.
-      const written_ = (rows: typeof now_) =>
-        rows.map((row) =>
-          row.student.startsWith("Priya ")
-            ? { ...row, levels: null, answers: null }
-            : row,
+              [orgId, ZONE, days],
+            )
+          ).rows;
+        const [now_, later] = await Promise.all([
+          story(today.orgId, 0),
+          story(nextOrg, 7),
+        ]);
+        assert.equal(now_.length, 139);
+        // Paper marks too: the printed workbooks roll as on the anchor day.
+        // Priya practiced in this test, so her term is left out.
+        const written_ = (rows: typeof now_) =>
+          rows.map((row) =>
+            row.student.startsWith("Priya ")
+              ? { ...row, levels: null, answers: null }
+              : row,
+          );
+        const paper = (rows: typeof now_) =>
+          rows.flatMap((row) =>
+            (row.answers ?? []).filter(
+              (answer: { problem: { selection?: { reason?: string } } }) =>
+                answer.problem.selection?.reason === "paper",
+            ),
+          ).length;
+        assert.ok(paper(now_) > 100, `paper marks: ${paper(now_)}`);
+        assert.deepEqual(written_(now_), written_(later));
+        assert.ok(
+          later.reduce((sum, row) => sum + (row.answers?.length ?? 0), 0) >
+            10_000,
         );
-      const paper = (rows: typeof now_) =>
-        rows.flatMap((row) =>
-          (row.answers ?? []).filter(
-            (answer: { problem: { selection?: { reason?: string } } }) =>
-              answer.problem.selection?.reason === "paper",
-          ),
-        ).length;
-      assert.ok(paper(now_) > 100, `paper marks: ${paper(now_)}`);
-      assert.deepEqual(written_(now_), written_(later));
-      assert.ok(
-        later.reduce((sum, row) => sum + (row.answers?.length ?? 0), 0) > 10_000,
-      );
-    });
+      },
+    );
 
     /** The latest moment anything in a school happened: answers, help,
      * active time and level days (each day as its end, midnight after). */
@@ -642,157 +732,217 @@ test(
       const localToday = new Intl.DateTimeFormat("en-CA", {
         timeZone: ZONE,
       }).format(now);
-      assert.ok(last.answer.getTime() <= now, `${label}: an answer at ${last.answer.toISOString()}`);
-      assert.ok(last.help.getTime() <= now, `${label}: help at ${last.help.toISOString()}`);
-      assert.ok(last.active <= localToday, `${label}: active time on ${last.active}`);
-      assert.ok(last.level <= localToday, `${label}: a level day on ${last.level}`);
+      assert.ok(
+        last.answer.getTime() <= now,
+        `${label}: an answer at ${last.answer.toISOString()}`,
+      );
+      assert.ok(
+        last.help.getTime() <= now,
+        `${label}: help at ${last.help.toISOString()}`,
+      );
+      assert.ok(
+        last.active <= localToday,
+        `${label}: active time on ${last.active}`,
+      );
+      assert.ok(
+        last.level <= localToday,
+        `${label}: a level day on ${last.level}`,
+      );
     };
 
-    await t.test("a visitor never sees the future: the school switches when the day's sitting ends", async () => {
-      // The school being shown now has nothing later than now.
-      const served = (await currentSchool(db, ZONE, Date.now()))!;
-      await nothingLater(served.orgId, Date.now(), "now");
-      // At 01:00 and 08:59 of the new day, the day before's school is shown:
-      // the new one's sitting is still to come.
-      const nextOrg = (
-        await db.query(
-          "SELECT org_id FROM amp_demo_schools WHERE timezone=$1 AND day=$2::date",
-          [ZONE, next.day],
-        )
-      ).rows[0].org_id as string;
-      for (const hour of [1, 8 + 59 / 60]) {
-        const at = zonedInstant(next.day, 0, ZONE) + hour * 3_600_000;
-        const shown = (await currentSchool(db, ZONE, at))!;
-        assert.equal(shown.orgId, today.orgId, `at ${hour}h the day before's school`);
-        await nothingLater(shown.orgId, at, `${hour}h`);
-        // Showing the new day's school then would have shown the future.
-        assert.ok((await latest(nextOrg)).answer.getTime() > at);
-      }
-      // At 09:00 it switches, and still nothing is later than now.
-      const nine = switchAt(next.day, ZONE);
-      assert.equal(nine, zonedInstant(next.day, 9, ZONE));
-      assert.equal((await currentSchool(db, ZONE, nine - 1))!.orgId, today.orgId);
-      const switched = (await currentSchool(db, ZONE, nine))!;
-      assert.equal(switched.orgId, nextOrg);
-      await nothingLater(switched.orgId, nine, "09:00");
-      // A visitor's request at 08:59 stays in the day before's school.
-      clock = nine - 60_000;
-      const places = (
-        await call("GET", "/api/v1/school/orgs", visitors.teacher.account)
-      ).json().orgs.map((org: { id: string }) => org.id);
-      assert.ok(places.includes(today.orgId) && !places.includes(nextOrg));
-    });
-
-    await t.test("after the switch a visitor lands in the new school; the old one goes after the grace period", async () => {
-      const old = today;
-      // The new day's sitting has ended.
-      clock = zonedInstant(next.day, 10, ZONE);
-      const moved = (await currentSchool(db, ZONE, clock))!;
-      assert.equal(moved.day, next.day);
-      // The teacher's next navigation: their old link opens the new school.
-      const stale = await call(
-        "GET",
-        `/api/v1/school/classes/${old.heroClassId}/today`,
-        visitors.teacher.account,
-      );
-      assert.equal(stale.statusCode, 409, stale.body);
-      assert.deepEqual(stale.json(), {
-        error: "demo_moved",
-        path: `school/${moved.orgId}/classes/${moved.heroClassId}/today`,
-      });
-      const fresh = await call(
-        "GET",
-        `/api/v1/school/classes/${moved.heroClassId}/today`,
-        visitors.teacher.account,
-      );
-      assert.equal(fresh.statusCode, 200);
-      const places = (
-        await call("GET", "/api/v1/school/orgs", visitors.teacher.account)
-      ).json().orgs.map((org: { id: string }) => org.id);
-      assert.ok(places.includes(moved.orgId) && !places.includes(old.orgId));
-      // Joining again lands in the new one too, still the hero's teacher.
-      const again = await call("POST", "/api/v1/school/demo", visitors.teacher.account, {
-        kind: "class",
-        timezone: ZONE,
-      });
-      assert.equal(again.json().demo.orgId, moved.orgId);
-
-      // Within the grace period the old school stays; after it, it goes
-      // through the tree removal.
-      const switched = switchAt(next.day, ZONE);
-      assert.deepEqual(
-        await retireSchools(db, { now: switched + GRACE_MS - 60_000, timezones: [ZONE] }),
-        { removed: 0 },
-      );
-      const removing = performance.now();
-      assert.deepEqual(
-        await retireSchools(db, { now: switched + GRACE_MS + 60_000, timezones: [ZONE] }),
-        { removed: 1 },
-      );
-      console.log(
-        `  old school removed in ${Math.round(performance.now() - removing)} ms`,
-      );
-      for (const [table, column] of [
-        ["amp_orgs", "id"],
-        ["amp_people", "tenant_id"],
-        ["amp_classes", "org_id"],
-        ["amp_school_events", "org_id"],
-      ] as const)
+    await t.test(
+      "a visitor never sees the future: the school switches when the day's sitting ends",
+      async () => {
+        // The school being shown now has nothing later than now.
+        // The school shown at the clock: nothing in it is later than now
+        // (the visitors' own practice here is real, at the real time).
+        const served = (await currentSchool(db, ZONE, clock))!;
+        await nothingLater(served.orgId, Date.now(), "now");
+        // At 01:00 and 08:59 of the new day, the day before's school is shown:
+        // the new one's sitting is still to come.
+        const nextOrg = (
+          await db.query(
+            "SELECT org_id FROM amp_demo_schools WHERE timezone=$1 AND day=$2::date",
+            [ZONE, next.day],
+          )
+        ).rows[0].org_id as string;
+        for (const hour of [1, 8 + 59 / 60]) {
+          const at = zonedInstant(next.day, 0, ZONE) + hour * 3_600_000;
+          const shown = (await currentSchool(db, ZONE, at))!;
+          assert.equal(
+            shown.orgId,
+            today.orgId,
+            `at ${hour}h the day before's school`,
+          );
+          await nothingLater(shown.orgId, at, `${hour}h`);
+          // Showing the new day's school then would have shown the future.
+          assert.ok((await latest(nextOrg)).answer.getTime() > at);
+        }
+        // At 09:00 it switches, and still nothing is later than now.
+        const nine = switchAt(next.day, ZONE);
+        assert.equal(nine, zonedInstant(next.day, 9, ZONE));
         assert.equal(
-          await count(`SELECT count(*) AS n FROM ${table} WHERE ${column}=$1`, [
-            old.orgId,
+          (await currentSchool(db, ZONE, nine - 1))!.orgId,
+          today.orgId,
+        );
+        const switched = (await currentSchool(db, ZONE, nine))!;
+        assert.equal(switched.orgId, nextOrg);
+        await nothingLater(switched.orgId, nine, "09:00");
+        // A visitor's request at 08:59 stays in the day before's school.
+        clock = nine - 60_000;
+        const places = (
+          await call("GET", "/api/v1/school/orgs", visitors.teacher.account)
+        )
+          .json()
+          .orgs.map((org: { id: string }) => org.id);
+        assert.ok(places.includes(today.orgId) && !places.includes(nextOrg));
+      },
+    );
+
+    await t.test(
+      "after the switch a visitor lands in the new school; the old one goes after the grace period",
+      async () => {
+        const old = today;
+        // The new day's sitting has ended.
+        clock = zonedInstant(next.day, 10, ZONE);
+        const moved = (await currentSchool(db, ZONE, clock))!;
+        assert.equal(moved.day, next.day);
+        // The teacher's next navigation: their old link opens the new school.
+        const stale = await call(
+          "GET",
+          `/api/v1/school/classes/${old.heroClassId}/today`,
+          visitors.teacher.account,
+        );
+        assert.equal(stale.statusCode, 409, stale.body);
+        assert.deepEqual(stale.json(), {
+          error: "demo_moved",
+          path: `school/${moved.orgId}/classes/${moved.heroClassId}/today`,
+        });
+        const fresh = await call(
+          "GET",
+          `/api/v1/school/classes/${moved.heroClassId}/today`,
+          visitors.teacher.account,
+        );
+        assert.equal(fresh.statusCode, 200);
+        const places = (
+          await call("GET", "/api/v1/school/orgs", visitors.teacher.account)
+        )
+          .json()
+          .orgs.map((org: { id: string }) => org.id);
+        assert.ok(places.includes(moved.orgId) && !places.includes(old.orgId));
+        // Joining again lands in the new one too, still the hero's teacher.
+        const again = await call(
+          "POST",
+          "/api/v1/school/demo",
+          visitors.teacher.account,
+          {
+            kind: "class",
+            timezone: ZONE,
+          },
+        );
+        assert.equal(again.json().demo.orgId, moved.orgId);
+
+        // Within the grace period the old school stays; after it, it goes
+        // through the tree removal.
+        const switched = switchAt(next.day, ZONE);
+        assert.deepEqual(
+          await retireSchools(db, {
+            now: switched + GRACE_MS - 60_000,
+            timezones: [ZONE],
+          }),
+          { removed: 0 },
+        );
+        const removing = performance.now();
+        assert.deepEqual(
+          await retireSchools(db, {
+            now: switched + GRACE_MS + 60_000,
+            timezones: [ZONE],
+          }),
+          { removed: 1 },
+        );
+        console.log(
+          `  old school removed in ${Math.round(performance.now() - removing)} ms`,
+        );
+        for (const [table, column] of [
+          ["amp_orgs", "id"],
+          ["amp_people", "tenant_id"],
+          ["amp_classes", "org_id"],
+          ["amp_school_events", "org_id"],
+        ] as const)
+          assert.equal(
+            await count(
+              `SELECT count(*) AS n FROM ${table} WHERE ${column}=$1`,
+              [old.orgId],
+            ),
+            0,
+            table,
+          );
+        // The head comes back after it is gone: their place has moved, and an
+        // old link still opens the new school.
+        const late = await call(
+          "GET",
+          `/api/v1/school/orgs/${old.orgId}/overview`,
+          visitors.head.account,
+        );
+        assert.equal(late.statusCode, 409, late.body);
+        assert.equal(
+          late.json().path,
+          `school/${moved.orgId}/classes/${moved.heroClassId}/today`,
+        );
+        const head = (
+          await call(
+            "GET",
+            `/api/v1/school/orgs/${moved.orgId}`,
+            visitors.head.account,
+          )
+        ).json().org;
+        assert.ok(head.roles.includes("admin"), "still the school's admin");
+        // A stranger's guess at the old school is just not found.
+        assert.equal(
+          (
+            await call(
+              "GET",
+              `/api/v1/school/orgs/${old.orgId}/overview`,
+              stranger,
+            )
+          ).statusCode,
+          404,
+        );
+      },
+    );
+
+    await t.test(
+      "retention: old per-visitor demos and idle visitors go",
+      async () => {
+        // A demo made for one visitor before there was a shared school.
+        const legacy = randomUUID();
+        await db.query(
+          `INSERT INTO amp_orgs(id,kind,path,name,timezone,solo,setup_pending,created_by,demo,demo_kind,demo_seen_at)
+         VALUES($1,'school',ARRAY[$1]::uuid[],'Grade 5 Math','UTC',true,false,'amp|legacy',true,'class',now())`,
+          [legacy],
+        );
+        await db.query(
+          "UPDATE amp_demo_visitors SET seen_at=now()-interval '31 days' WHERE account_id=$1",
+          [visitors.head.account],
+        );
+        assert.deepEqual(await purgeIdleDemos(db), {
+          expiredDemoPlaces: 1,
+          expiredDemoVisitors: 1,
+        });
+        assert.equal(
+          await count("SELECT count(*) AS n FROM amp_orgs WHERE id=$1", [
+            legacy,
           ]),
           0,
-          table,
         );
-      // The head comes back after it is gone: their place has moved, and an
-      // old link still opens the new school.
-      const late = await call(
-        "GET",
-        `/api/v1/school/orgs/${old.orgId}/overview`,
-        visitors.head.account,
-      );
-      assert.equal(late.statusCode, 409, late.body);
-      assert.equal(late.json().path, `school/${moved.orgId}/classes/${moved.heroClassId}/today`);
-      const head = (
-        await call("GET", `/api/v1/school/orgs/${moved.orgId}`, visitors.head.account)
-      ).json().org;
-      assert.ok(head.roles.includes("admin"), "still the school's admin");
-      // A stranger's guess at the old school is just not found.
-      assert.equal(
-        (await call("GET", `/api/v1/school/orgs/${old.orgId}/overview`, stranger))
-          .statusCode,
-        404,
-      );
-    });
-
-    await t.test("retention: old per-visitor demos and idle visitors go", async () => {
-      // A demo made for one visitor before there was a shared school.
-      const legacy = randomUUID();
-      await db.query(
-        `INSERT INTO amp_orgs(id,kind,path,name,timezone,solo,setup_pending,created_by,demo,demo_kind,demo_seen_at)
-         VALUES($1,'school',ARRAY[$1]::uuid[],'Grade 5 Math','UTC',true,false,'amp|legacy',true,'class',now())`,
-        [legacy],
-      );
-      await db.query(
-        "UPDATE amp_demo_visitors SET seen_at=now()-interval '31 days' WHERE account_id=$1",
-        [visitors.head.account],
-      );
-      assert.deepEqual(await purgeIdleDemos(db), {
-        expiredDemoPlaces: 1,
-        expiredDemoVisitors: 1,
-      });
-      assert.equal(
-        await count("SELECT count(*) AS n FROM amp_orgs WHERE id=$1", [legacy]),
-        0,
-      );
-      // The shared school is not the retention job's.
-      assert.equal(
-        await count("SELECT count(*) AS n FROM amp_orgs WHERE demo"),
-        1,
-      );
-      // Nothing real moved.
-      assert.deepEqual(await realState(), untouched);
-    });
+        // The shared school is not the retention job's.
+        assert.equal(
+          await count("SELECT count(*) AS n FROM amp_orgs WHERE demo"),
+          1,
+        );
+        // Nothing real moved.
+        assert.deepEqual(await realState(), untouched);
+      },
+    );
   },
 );

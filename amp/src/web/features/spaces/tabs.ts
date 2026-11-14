@@ -114,7 +114,7 @@ export function classroomTabs(
 }
 
 /** A school, network or district: exactly what its API says this person may
- * read. A one-class school is that class, without the admin weight. */
+ * read. A one-class school is that class, without the overview's weight. */
 export function schoolTabs(
   org: Pick<OrgResource, "id" | "kind" | "can">,
   { lone = false }: { lone?: boolean } = {},
@@ -128,7 +128,9 @@ export function schoolTabs(
       ["overview", "Overview", "overview.read", true, !lone],
       ["schools", "Schools", "overview.read", false, district && !lone],
       ["classes", "Classes", "classes.read", true, true],
-      ["staff", "Staff", "staff.read", true, !lone],
+      // A one-class school keeps its staff for whoever may read them: the
+      // co-teacher to invite, the aide to add.
+      ["staff", "Staff", "staff.read", true, true],
       ["license", "License", "license.read", true, true],
       ["calendar", "Calendar", "calendar.read", false, true],
       ["privacy", "Privacy", "privacy.read", false, true],

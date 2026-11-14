@@ -839,6 +839,7 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
                     }
                     midpoint={isDay ? midpoint / 5 : midpoint}
                     midpointWord={measure === "minutes" ? "target" : "median"}
+                    emptyLabel={family ? "Before they joined" : undefined}
                     empty={data.students.some(
                       (row) => (row.from ?? data.range.from) > data.range.from,
                     )}

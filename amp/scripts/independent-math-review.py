@@ -176,8 +176,7 @@ def plain_span(match):
 
 
 def plain_reading(value):
-    """The learner-facing text with each $…$ span that holds no other TeX
-    command read as its text: $x$ as x, $A'$ as A′, $\\angle ABC$ as ∠ABC."""
+    """Read typeset names as text without changing formulas or sentence marks."""
     if isinstance(value, str):
         return PLAIN_MATH.sub(plain_span, value)
     if isinstance(value, list):
@@ -186,27 +185,58 @@ def plain_reading(value):
         return {key: plain_reading(item) for key, item in value.items()}
     return value
 
+
+def sentence_reading(value, sentence=False):
+    """Give display math a terminal sentence mark for legacy prose parsers.
+
+    Only sentence fields qualify. Answers, options, identifiers, operands and
+    operators are unchanged. This reading is tried only after the original.
+    """
+    if isinstance(value, str):
+        if (sentence and value and not re.search(r'[.!?;]\s*$', value)
+                and re.search(r'(?:\$|[\d)\]□a-zA-Z²³])\s*$', value)):
+            mark = '?' if re.match(r'(?:Which|What|How)\b', value) else '.'
+            return value.rstrip() + mark
+        return value
+    if isinstance(value, list):
+        return [sentence_reading(item, sentence) for item in value]
+    if isinstance(value, dict):
+        return {key: sentence_reading(item, key in {'prompt', 'hint', 'explanation'})
+                for key, item in value.items()}
+    return value
+
+
+def equivalent_readings(value):
+    yield value
+    punctuated = sentence_reading(value)
+    seen = [value]
+    for reading in (punctuated, plain_reading(value), plain_reading(punctuated)):
+        if reading not in seen:
+            seen.append(reading)
+            yield reading
+
+
+READING_ERRORS = (ValueError, TypeError, KeyError, AttributeError, StopIteration, IndexError)
+
+
 def read_plainly(check):
-    """A family check that retries once with the plain reading of a problem,
-    lesson or record whose variables are typeset ($x$ read as x)."""
+    """Try original wording, display punctuation and typeset-name readings.
+
+    Keep the original error if none passes; never repair mathematical content.
+    """
     def check_typeset(*args, **kwargs):
-        readings = [plain_reading(arg) for arg in args]
-        retry = readings != list(args)
-        try:
-            result = check(*args, **kwargs)
-            if result is not False or not retry:
-                return result
-        except (ValueError, TypeError, KeyError, AttributeError, StopIteration) as original:
-            if not retry:
-                raise
+        first_error = None
+        for reading in equivalent_readings(list(args)):
             try:
-                return check(*readings, **kwargs)
-            # The plain reading is only a second chance: however it fails
-            # (a lookup that finds no typeset span, say), the typeset
-            # reading's own error is the verdict.
-            except (ValueError, TypeError, KeyError, AttributeError, StopIteration, IndexError) as fallback:
-                raise original from fallback
-        return check(*readings, **kwargs)
+                result = check(*reading, **kwargs)
+                if result is not False:
+                    return result
+            except READING_ERRORS as error:
+                if first_error is None:
+                    first_error = error
+        if first_error is not None:
+            raise first_error
+        return False
     check_typeset.__wrapped__ = check
     return check_typeset
 
@@ -330,19 +360,8 @@ def rectangle_width(public):
 
 
 def solve(public):
-    """Only public prompt/figure givens enter this function, never generated
-    answers. A family oracle that does not read the typeset wording retries
-    with its plain reading (see plain_reading)."""
-    try:
-        return solve_family(public)
-    except ValueError as original:
-        reading = plain_reading(public)
-        if reading == public:
-            raise
-        try:
-            return solve_family(reading)
-        except ValueError as fallback:
-            raise original from fallback
+    """Solve public givens with equivalent prose/display readings only."""
+    return read_plainly(solve_family)(public)
 
 
 def solve_family(public):
@@ -770,19 +789,18 @@ def check_generated_case(problem, check):
     """Record once after validation; retain the original error if both readings fail."""
     public = problem['public']
     try:
-        try:
-            check(problem, record=False)
-        except (ValueError, TypeError, KeyError, AttributeError, StopIteration) as original:
-            reading = plain_reading(problem)
-            if reading == problem:
-                raise
+        first_error = None
+        for reading in equivalent_readings(problem):
             try:
                 check(reading, record=False)
-            except (ValueError, TypeError, KeyError, AttributeError, StopIteration) as fallback:
-                raise original from fallback
-            problem = reading
-        check(problem)
-    except (ValueError, TypeError, KeyError, AttributeError, StopIteration, ZeroDivisionError, OverflowError) as error:
+            except READING_ERRORS as error:
+                if first_error is None:
+                    first_error = error
+                continue
+            check(reading)
+            return
+        raise first_error
+    except (*READING_ERRORS, ZeroDivisionError, OverflowError) as error:
         raise ValueError(f"{public['templateId']}/{public['seed']}: {error}") from error
 
 

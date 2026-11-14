@@ -157,7 +157,8 @@ test("Classroom: the class, no family learner, no practice settings", () => {
   render(<DrawerContents close={() => {}} space={space} />);
   expect(screen.queryByText("Pip")).toBeNull();
   expect(screen.queryByRole("link", { name: /practice/i })).toBeNull();
-  expect(links()).toEqual(["Grade 4 Math"]);
+  // The class, and its school's classes: other classes, earlier years.
+  expect(links()).toEqual(["Grade 4 Math", "School, Alder Grove"]);
   expect(screen.queryByTestId("curriculum")).toBeNull();
   expect(screen.getByTestId("switcher").dataset.current).toBe(
     `class:${SCHOOL}:${ROOM}`,

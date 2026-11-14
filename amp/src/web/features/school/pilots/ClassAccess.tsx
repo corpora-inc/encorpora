@@ -1,19 +1,28 @@
 import { useQuery } from "@tanstack/react-query";
 import { CopyButton } from "../parts";
-import { useState, type FormEvent } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type FormEvent,
+  type ReactNode,
+} from "react";
 import { z } from "zod";
 import { AGREEMENT_VERSION } from "../../../../schools/agreement";
 import type { PilotState } from "../../../../schools/pilot-contracts";
-import { AppError } from "../../../lib/AppError";
+import { AppError, refused, standing } from "../../../lib/AppError";
 import { queryClient } from "../../../lib/query";
 import { useLoggedError } from "../../../feedback";
-import { Button } from "../../../ui/Button";
+import { Link } from "@tanstack/react-router";
+import { Button, buttonClass } from "../../../ui/Button";
+import { EmptyState } from "../../../ui/EmptyState";
 import { Loading } from "../../../ui/Loading";
 import { Sheet } from "../../../ui/Sheet";
 import { Stepper } from "../../../ui/Stepper";
 import { TextArea } from "../../../ui/TextField";
 import { Toast } from "../../../ui/Toast";
 import { currentSession, orgOptions, refreshSchool } from "../api";
+import { classYearOptions } from "../org/org-api";
 import { useClassSearch } from "../classes/teacher-shared";
 import type { FeedEntry } from "../classes/today/Feed";
 import { Authorization } from "./Authorization";
@@ -24,8 +33,16 @@ import school from "../School.module.css";
 
 type Place = { org: string; class: string };
 
+/** Whether a class's students can practice, as the server says (its
+ * class-year read): the sign-in tools (the code, the board, cards) follow
+ * this exactly, for every role. `unknown`: it couldn't be read. */
+export type Practice = "open" | "waiting" | "ended" | "unknown";
+
 /** Where a school class stands on practice access, read once and shared by
- * Today, Students and Settings (the same query, so each says the same). */
+ * Today, Students and Settings (the same queries, so each says the same).
+ * The server's practice state decides whether its sign-in tools are open;
+ * the pilot, for those who may read it, says what to do about it (start,
+ * when it ends, partial coverage). */
 export function useClassAccess(place: Place): {
   view: AccessView;
   pilot: PilotState | undefined;
@@ -33,6 +50,20 @@ export function useClassAccess(place: Place): {
   /** Still learning where the class stands: screens hold their sign-in
    * tools' place rather than show and then withdraw them. */
   pending: boolean;
+  practice: Practice;
+  /** No student can sign in now (or it couldn't be checked): its code,
+   * board and cards are withheld. */
+  closed: boolean;
+  /** A known moment passed: the tools wait while the server is asked. */
+  checking: boolean;
+  /** Where the class stands couldn't be checked: say so, with Try again. */
+  unavailable: boolean;
+  /** Why practice ended, when the server says (CP-3 r7). */
+  end: "session" | "roster" | "coverage" | null;
+  /** When the server last answered where the class stands (this page's
+   * clock): a code read before it may be stale. */
+  answeredAt: number;
+  retry: () => void;
 } {
   const session = currentSession();
   const org = useQuery({
@@ -40,33 +71,211 @@ export function useClassAccess(place: Place): {
     refetchOnMount: false,
   }).data;
   const school = org?.kind === "school" && !org.demo;
+  const teaches = org?.teaches?.includes(place.class) ?? false;
+  // Only someone the server lets read the class's pilot asks for it: its
+  // teacher, or an administrator. A viewer or an aide would only be
+  // refused, and a refused read would hold the screen's wait forever.
+  const readable = teaches || (org?.can?.includes("pilot.read") ?? false);
+  // A failed read stays failed until Try again (or a change invalidates
+  // it): each screen that mounts must not ask again, or a wait that holds
+  // the screen would ask forever.
   const query = useQuery({
     ...pilotOptions(session, place.class),
-    enabled: school,
+    enabled: school && readable,
+    retryOnMount: false,
   });
+  // Whether students can practice, for every reader of the class (a viewer
+  // and an aide too): the sign-in tools follow the class, never the role.
+  const year = useQuery({
+    ...classYearOptions(session, place.class),
+    enabled: school,
+    refetchOnMount: false,
+    retryOnMount: false,
+    // A screen left open, then looked at again, reads where it stands.
+    refetchOnWindowFocus: true,
+  });
+  // Anything deciding practice can next change at a known moment (the
+  // server's `recheckAt`): a screen left open withholds its sign-in tools
+  // from that moment and asks the server again; the answer decides
+  // (CP-3 r4). Time is measured in the server's clock, from its answer and
+  // this page's monotonic clock: a device clock set wrong can't close an
+  // open class or open a closed one.
+  // The answer as it stands: a refusal (401, 403, 404) revokes the cached
+  // one, whatever it said and however far off its moment (CP-3 r6).
+  const answer = standing(year) ?? undefined;
+  const remaining = recheckRemaining(answer);
+  const due = remaining !== null && remaining <= 0;
+  // The last ask failed (its answer is older than its failure): the cached
+  // answer is not a fresh one.
+  const failedLast = year.errorUpdatedAt > year.dataUpdatedAt;
+  // Failures in a row since the last answer: they space the next tries.
+  const failures = useRef({ since: 0, count: 0 });
+  if (failures.current.since !== year.dataUpdatedAt)
+    failures.current = { since: year.dataUpdatedAt, count: 0 };
+  const counted = useRef(0);
+  if (failedLast && counted.current !== year.errorUpdatedAt) {
+    counted.current = year.errorUpdatedAt;
+    failures.current.count++;
+  }
+  const [wake, setWake] = useState(0);
+  useEffect(() => {
+    if (remaining === null) return;
+    const ask = () => {
+      // Every screen part watching this class shares one ask: a read in
+      // flight is joined, never cancelled and sent again.
+      void year.refetch({ cancelRefetch: false });
+      void queryClient.invalidateQueries({
+        predicate: (entry) =>
+          entry.queryKey.includes(place.class) &&
+          !entry.queryKey.includes("class-year"),
+      });
+    };
+    if (remaining <= 0) {
+      if (year.isFetching) return;
+      // Due: ask now. A failed ask is asked again soon (5 s, 15 s, then
+      // every minute) while the screen says it couldn't check; only an
+      // answer goes back to the hourly measure.
+      if (!failedLast) {
+        ask();
+        return;
+      }
+      const delay =
+        RETRY_MS[Math.min(failures.current.count, RETRY_MS.length) - 1] ??
+        RETRY_MS[0]!;
+      // Several parts of a screen arm this together: the first to fire
+      // asks, the rest see the query moved on and leave it.
+      const key = classYearOptions(session, place.class).queryKey;
+      const armed = [year.errorUpdatedAt, year.dataUpdatedAt];
+      const again = setTimeout(() => {
+        const state = queryClient.getQueryState(key);
+        if (
+          state?.errorUpdatedAt === armed[0] &&
+          state.dataUpdatedAt === armed[1] &&
+          state.fetchStatus === "idle"
+        )
+          ask();
+      }, delay);
+      return () => clearTimeout(again);
+    }
+    // Never armed further than an hour ahead: each wake re-measures and
+    // re-arms, so a far deadline (or setTimeout's 24.8-day limit) is never
+    // lost.
+    const timer = setTimeout(
+      () => setWake((n) => n + 1),
+      Math.min(remaining + 250, MAX_WAIT_MS),
+    );
+    return () => clearTimeout(timer);
+  }, [
+    answer?.recheckAt,
+    answer?.serverNow,
+    answer?.receivedAt,
+    year.errorUpdatedAt,
+    year.isFetching,
+    due,
+    wake,
+    place.class,
+  ]);
+  const retry = () => {
+    void year.refetch();
+    if (readable) void query.refetch();
+  };
   const pilot = query.data;
-  const teaches = org?.teaches?.includes(place.class) ?? false;
-  const pending = !org || (school && query.isPending);
-  if (!school || !pilot)
-    return { view: { kind: "none" }, pilot, teaches, pending };
+  const pending =
+    !org || (school && (year.isPending || (readable && query.isPending)));
+  if (!school)
+    return {
+      view: { kind: "none" },
+      pilot,
+      teaches,
+      pending,
+      practice: "open",
+      closed: false,
+      checking: false,
+      unavailable: false,
+      end: null,
+      answeredAt: year.dataUpdatedAt,
+      retry,
+    };
+  // Unknown is never open: a failed read, or an answer without the state.
+  const read: Practice = answer
+    ? (answer.practice ?? "unknown")
+    : year.isError
+      ? "unknown"
+      : "waiting";
+  // The server's word; while a recheck is due, its tools wait for the next.
+  const practice: Practice = read;
+  const checking = due && read === "open";
+  const unavailable =
+    !pending &&
+    (practice === "unknown" ||
+      (readable && query.isError) ||
+      // A due recheck that failed: say so, with Try again, never an
+      // endless "Checking practice".
+      (due && failedLast));
+  const view: AccessView = pilot
+    ? accessView(pilot, teaches)
+    : practice === "ended"
+      ? { kind: "ended" }
+      : practice === "waiting"
+        ? { kind: "waiting" }
+        : { kind: "none" };
   return {
-    view: accessView(pilot, teaches),
+    view,
     pilot,
     teaches,
     pending,
+    practice,
+    closed: practice !== "open" || checking,
+    checking,
+    unavailable,
+    end: practice === "ended" ? (answer?.practiceEnd ?? null) : null,
+    answeredAt: year.dataUpdatedAt,
+    retry,
   };
+}
+
+/** A read of the class refused (401, 403, 404: this reader lost it): the
+ * class's own state is read again at once, so every screen's cached
+ * answers and capabilities give way to the refusal (`standing`), never
+ * waiting for a later moment (CP-3 r7). A passing failure changes nothing. */
+export function useRevokeOnRefusal(
+  query: { error: unknown; errorUpdatedAt: number },
+  place: Place,
+) {
+  const refusal = refused(query.error) ? query.errorUpdatedAt : 0;
+  useEffect(() => {
+    if (!refusal) return;
+    void queryClient.invalidateQueries({
+      queryKey: classYearOptions(currentSession(), place.class).queryKey,
+    });
+  }, [refusal, place.class]);
+}
+
+/** The longest a screen waits before measuring again. */
+const MAX_WAIT_MS = 60 * 60 * 1000;
+/** How soon a failed recheck is asked again, then every minute. */
+const RETRY_MS = [5_000, 15_000, 60_000] as const;
+
+/** How long until the class should be asked again, in the server's time:
+ * its `recheckAt` less its clock at the answer, less what this page's
+ * monotonic clock says has passed since. Null when there's nothing dated
+ * (or an older server sent no clock). */
+export function recheckRemaining(
+  year:
+    | { recheckAt?: string | null; serverNow?: string; receivedAt?: number }
+    | undefined,
+  now = performance.now(),
+): number | null {
+  if (!year?.recheckAt || !year.serverNow || year.receivedAt === undefined)
+    return null;
+  const at = Date.parse(year.recheckAt),
+    server = Date.parse(year.serverNow);
+  if (!Number.isFinite(at) || !Number.isFinite(server)) return null;
+  return at - server - (now - year.receivedAt);
 }
 
 /** Practice is over for this class. */
 export const practiceEnded = (view: AccessView) => view.kind === "ended";
-/** No student of this class can practice: none yet, not started (or only
- * its teacher can start it), or over. Its sign-in tools (the code, the link, the
- * board, cards) lead nowhere, so no screen offers them. */
-export const practiceClosed = (view: AccessView) =>
-  view.kind === "empty" ||
-  view.kind === "start" ||
-  view.kind === "waiting" ||
-  view.kind === "ended";
 
 /** Starting practice: at once when the class is authorized, else through
  * the authorization sheet (a class that arrived from a roster sync). */
@@ -103,7 +312,7 @@ function useStartPractice(place: Place, pilot: PilotState | undefined) {
 export function StartPracticeButton({
   place,
   pilot,
-  label = "Start",
+  label = "Start practice",
 }: {
   place: Place;
   pilot: PilotState | undefined;
@@ -137,6 +346,13 @@ export function RequestSeatsButton({ primary }: { primary: boolean }) {
   );
 }
 
+/** What starting would run to: "30 days, through Dec 14", or a class
+ * joining its teacher's running practice, "Through Dec 14". */
+export const startDetail = (view: Extract<AccessView, { kind: "start" }>) =>
+  view.joining
+    ? `Through ${practiceDate(view.until)}`
+    : `30 days, through ${practiceDate(view.until)}`;
+
 /** Today's feed item for practice access: only while there is something to
  * do about it (start, or arrange seats). Active practice needs no item. */
 export function accessFeedEntry(
@@ -145,7 +361,7 @@ export function accessFeedEntry(
   pilot: PilotState | undefined,
   canRequest: boolean,
 ): FeedEntry | null {
-  // Starting is a task; the rest are states, said without a box to tick.
+  // Starting is required, the rest are states: none has a box to tick.
   const entry = (
     title: string,
     detail: string,
@@ -155,17 +371,18 @@ export function accessFeedEntry(
       id: `practice-${view.kind}`,
       title,
       detail,
-      mark: view.kind === "start" ? "plain" : "status",
+      // Practice access is never an optional to-do: no box to tick, the
+      // one required action at the end of its line.
+      mark: "status",
       actions,
     }) as const;
   switch (view.kind) {
     case "start":
       return entry(
         "Start practice",
-        view.joining
-          ? `Through ${practiceDate(view.until)}`
-          : `30 days, through ${practiceDate(view.until)}`,
-        <StartPracticeButton place={place} pilot={pilot} />,
+        startDetail(view),
+        // The title names the action; its button says only Start.
+        <StartPracticeButton place={place} pilot={pilot} label="Start" />,
       );
     case "waiting":
       return entry(
@@ -212,9 +429,7 @@ export function AccessHeaderAction({
 }) {
   const { teaches } = useClassAccess(place);
   if (view.kind === "start")
-    return (
-      <StartPracticeButton place={place} pilot={pilot} label="Start practice" />
-    );
+    return <StartPracticeButton place={place} pilot={pilot} />;
   if (view.kind === "ended" && teaches) return <RequestSeatsButton primary />;
   return null;
 }
@@ -467,7 +682,7 @@ function RequestSeatsSheet({
               />
               <TextArea
                 label="Note for the buyer (optional)"
-              hint="The buyer sees this. Leave out students’ names."
+                hint="The buyer sees this. Leave out students’ names."
                 value={note}
                 onChange={(event) => setNote(event.target.value)}
                 maxLength={1000}
@@ -571,12 +786,141 @@ function AuthorizeSheet({
               aria-busy={busy}
               disabled={busy || !authorized || !name.trim() || !title.trim()}
             >
-              Start
+              Start practice
             </Button>
           </div>
         </form>
       </Sheet>
       <Toast message={error} onDismiss={() => setError("")} />
     </>
+  );
+}
+
+/** In place of a sign-in tool (the board, cards) while no student of the
+ * class can practice: the code reaches students only once practice runs, so
+ * this says where the class stands and offers the one next step that works.
+ * Null while practice runs, or for a class without a pilot (a family's). */
+export function ClosedSignIn({
+  place,
+  also,
+  onRetry,
+  known,
+}: {
+  place: Place;
+  /** A way back beside the next step (the board's Exit). */
+  also?: ReactNode;
+  /** Also read again what the screen itself read (the board's presence). */
+  onRetry?: () => void;
+  /** What a fresher read of the screen's own said (the board's poll). */
+  known?: Practice;
+}) {
+  const access = useClassAccess(place);
+  const { view, pilot, teaches, retry } = access;
+  // The fresher answer wins over a cached open or unknown one.
+  const practice =
+    known &&
+    known !== "open" &&
+    (access.practice === "open" || access.practice === "unknown")
+      ? known
+      : access.practice;
+  const unavailable = access.unavailable && practice === access.practice;
+  const actions = (next: ReactNode) => (
+    <div className={styles.sheetActions}>
+      {next}
+      {also}
+    </div>
+  );
+  const today = `/school/${place.org}/classes/${place.class}/today`;
+  const to = (label: string, search: Record<string, number> = {}) => (
+    <Link
+      to={today as never}
+      search={search as never}
+      className={buttonClass("primary")}
+    >
+      {label}
+    </Link>
+  );
+  // A known moment passed: asking the server, briefly.
+  if (access.checking && practice === "open" && !unavailable)
+    return (
+      <div className={styles.sheetBody} data-practice-checking="">
+        <Loading>Checking practice</Loading>
+        {also}
+      </div>
+    );
+  // Couldn't check, or the answers disagree (the code withheld while the
+  // class reads as open): say so calmly, and try again.
+  if (unavailable || practice === "open" || practice === "unknown")
+    return (
+      <EmptyState
+        title="Couldn’t check practice"
+        action={actions(
+          <Button
+            variant="primary"
+            onClick={() => {
+              retry();
+              onRetry?.();
+            }}
+          >
+            Try again
+          </Button>,
+        )}
+      >
+        The class’s code shows here once it’s clear its students can practice.
+      </EmptyState>
+    );
+  if (practice === "waiting" && view.kind === "empty")
+    return (
+      <EmptyState
+        title="Add your students first"
+        action={actions(
+          <Link
+            to={`/school/${place.org}/classes/${place.class}/import` as never}
+            className={buttonClass("primary")}
+          >
+            Add students
+          </Link>,
+        )}
+      />
+    );
+  if (practice === "waiting" && view.kind === "start")
+    return (
+      <EmptyState
+        title="Practice hasn’t started"
+        action={actions(
+          // Starting may first need the authorization sheet, which Today
+          // holds; an authorized class starts right here.
+          pilot?.authorized ? (
+            <StartPracticeButton place={place} pilot={pilot} />
+          ) : (
+            to("Start practice", { authorize: 1 })
+          ),
+        )}
+      >
+        {view.joining
+          ? `Through ${practiceDate(view.until)}`
+          : `30 days, through ${practiceDate(view.until)}`}
+      </EmptyState>
+    );
+  if (practice === "waiting")
+    return (
+      <EmptyState
+        title="Waiting for the class’s teacher to start practice"
+        action={actions(also ? null : to("Back to Today"))}
+      />
+    );
+  return (
+    <EmptyState
+      title="Practice has ended"
+      action={actions(
+        teaches
+          ? to("Request seats", { seats: 1 })
+          : also
+            ? null
+            : to("Back to Today"),
+      )}
+    >
+      Reports, exports and workbooks stay with the class.
+    </EmptyState>
   );
 }

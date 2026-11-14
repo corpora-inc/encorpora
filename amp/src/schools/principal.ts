@@ -45,8 +45,30 @@ export function studentBearer(request: Headers): string | null {
 
 type Database = Pick<PoolClient, "query">;
 /** SQL: `row` (a role or enrollment) is active today in the org's timezone. */
+/** The first instant at which `(now() AT TIME ZONE tz)::date` reaches the
+ * date `d`: the moment every date predicate here (`activeToday`, and the
+ * same comparison inside the pilot and seat functions) flips for that day.
+ * Converting local midnight directly can pick a repeated midnight (a
+ * fall-back to standard time at 00:00, as in America/Havana): this finds
+ * the earliest instant whose local date is `d`, among the quarter-hours up
+ * to three hours before it, where every transition falls. */
+export const localDayStart = (d: string, tz: string) =>
+  `(SELECT min(at) FROM generate_series((${d})::timestamp AT TIME ZONE ${tz} - interval '3 hours',
+     (${d})::timestamp AT TIME ZONE ${tz}, interval '15 minutes') at
+   WHERE (at AT TIME ZONE ${tz})::date >= (${d}))`;
 export const activeToday = (row: string, org: string) =>
   `${row}.begin_on<=(now() AT TIME ZONE ${org}.timezone)::date AND (${row}.end_on IS NULL OR ${row}.end_on>(now() AT TIME ZONE ${org}.timezone)::date)`;
+/** SQL: `p` (enrolled as `e`) is a live student of class `c` (org `o`) today,
+ * exactly as student entry reads it: the enrollment current in the class's
+ * school's zone, a learner, and a student role current in its own org's
+ * zone. Student sign-in (`/join`, cards, sessions) and the practice gate
+ * both read this one predicate (CP-3 r7), so the gate never reports a class
+ * open for a roster `/join` would show empty. */
+export const studentInClassSql = (e: string, p: string, c: string, o: string) =>
+  `${e}.class_id=${c}.id AND ${e}.role='student' AND ${activeToday(e, o)}
+  AND ${p}.deleted_at IS NULL AND ${p}.learner_id IS NOT NULL
+  AND EXISTS(SELECT 1 FROM amp_org_roles in_r JOIN amp_orgs in_ro ON in_ro.id=in_r.org_id
+    WHERE in_r.person_id=${p}.id AND in_r.role='student' AND ${activeToday("in_r", "in_ro")})`;
 export const ACTIVE_STUDENT = `EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
   WHERE r.person_id=p.id AND r.role='student' AND ${activeToday("r", "o")})`;
 

@@ -4,6 +4,7 @@ import { createRequire } from "node:module";
 import { publicationHtml } from "../src/content/publications";
 import { lessons } from "../src/content/lessons";
 import { generateProblem } from "../src/math/engine";
+import { displayMathFitScript } from "../src/content/DisplayMath";
 const { JSDOM } = createRequire(import.meta.url)("jsdom") as {
   JSDOM: new (html: string) => {
     window: { document: Document; getComputedStyle: typeof getComputedStyle };
@@ -23,10 +24,35 @@ test("workbooks and solutions reproduce the same twelve exercises without answer
   }
 });
 test("publication content escapes source text rather than executing markup", () => {
-  const lesson = { ...lessons[0], title: "<script>alert(1)</script>" };
-  const html = publicationHtml(lesson, "lesson");
-  assert.ok(!html.includes("<script>"));
-  assert.ok(html.includes("&lt;script&gt;"));
+  const expectedScript = `${displayMathFitScript}\ndocument.fonts.ready.then(function () { fitDisplayMath(document); });`;
+  for (const payload of [
+    "<script>alert(1)</script>",
+    '</title></script><script src="https://example.invalid/injected.js"></script><img src=x onerror="alert(1)">',
+  ]) {
+    const lesson = { ...lessons[0], title: payload, summary: payload };
+    for (const kind of ["lesson", "workbook", "solutions"] as const) {
+      const html = publicationHtml(lesson, kind);
+      const document = new JSDOM(html).window.document;
+      const scripts = [...document.querySelectorAll("script")];
+      assert.equal(
+        scripts.length,
+        1,
+        "only the fixed math-fitting script may execute",
+      );
+      assert.equal(scripts[0]!.attributes.length, 0);
+      assert.equal(scripts[0]!.textContent, expectedScript);
+      assert.equal(document.querySelector("h1")!.textContent, payload);
+      assert.ok(document.title.startsWith(payload));
+      assert.equal(document.querySelector("img, [onerror], [onload]"), null);
+      assert.ok(html.includes("&lt;script"));
+      // Retain the original no-script assertion over all untrusted content.
+      scripts[0]!.remove();
+      assert.ok(!document.documentElement.outerHTML.includes("<script"));
+      assert.ok(
+        document.querySelector("article")!.textContent!.includes(payload),
+      );
+    }
+  }
 });
 test("multi-select solutions review each printed statement once and retain its letter", () => {
   const plain = (element: Element) => {

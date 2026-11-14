@@ -19,6 +19,7 @@ import { appReturn } from "../spaces/returns";
 import { cleverEnabled } from "../school/clever/enabled";
 import { chosenPlan } from "../../lib/pending-trial";
 import { Button, buttonClass } from "../../ui/Button";
+import { SchoolNext } from "../school/pilots/SchoolNext";
 import { Toast } from "../../ui/Toast";
 import { loadCurriculum } from "../schools/api";
 import { TalkToUs } from "../schools/TalkToUs";
@@ -333,6 +334,7 @@ function SchoolStep({ session }: { session: AuthSession }) {
   return (
     <>
       <School
+        session={session}
         exploring={demo.isPending && demo.variables === "school"}
         onExplore={explore}
       />
@@ -418,9 +420,11 @@ function Myself({
 /** The school pitch: a demo school to explore now, and a person to set up
  * the real one with. */
 function School({
+  session,
   exploring,
   onExplore,
 }: {
+  session: AuthSession;
   exploring: boolean;
   onExplore: () => void;
 }) {
@@ -438,24 +442,16 @@ function School({
       back="/start"
       title="AMP for your school"
       lede="Every student works at their own level in every area of math, from counting to precalculus, with unlimited problems and personalized workbooks. Teachers see who needs them today, and they decide every grade."
-      next={
-        <div className={styles.actions}>
-          <Button
-            variant="primary"
-            aria-busy={exploring || undefined}
-            disabled={exploring}
-            onClick={onExplore}
-          >
-            Explore a demo school
-          </Button>
-          {clever && (
-            <Link to="/school/connect" className={buttonClass("secondary")}>
-              Use Clever
-            </Link>
-          )}
-        </div>
-      }
     >
+      {/* The next step first: what this account can do now, by what it
+          already has (an invitation, a school, its own class's pilot). */}
+      <SchoolNext
+        session={session}
+        className={styles.actions}
+        clever={clever}
+        exploring={exploring}
+        onExplore={onExplore}
+      />
       <ul className={styles.facts} aria-busy={summary.isPending || undefined}>
         {summary.data ? (
           <>
