@@ -68,25 +68,26 @@ test("Family: its own children and destinations, then the switcher, then the acc
     },
   );
   render(<DrawerContents close={() => {}} space={space} />);
-  expect(sections()).toEqual([
-    "Who is practicing",
-    "AMP navigation",
-    "Your places",
-    "Account",
-  ]);
-  expect(links()).toEqual(["Today", "Let Wren practice", "Wren’s progress"]);
-  // The child's screens name the child in their address.
+  // No child picker: the children are rows, each opening their page.
+  expect(sections()).toEqual(["AMP navigation", "Your places", "Account"]);
+  expect(links()).toEqual(["Today", "Pip", "Wren"]);
   expect(
-    screen
-      .getByRole("link", { name: "Let Wren practice" })
-      .getAttribute("href"),
-  ).toBe("/practice?learner=wren");
-  expect(screen.getByRole("option", { name: "Pip" })).toBeTruthy();
+    screen.getByRole("link", { name: "Wren" }).getAttribute("href"),
+  ).toBe(`/family/${FAMILY}/kids/wren`);
+  expect(screen.getByRole("link", { name: "Today" }).getAttribute("href")).toBe(
+    `/family/${FAMILY}`,
+  );
+  expect(screen.queryByRole("option", { name: "Pip" })).toBeNull();
   expect(screen.getByTestId("switcher").dataset.current).toBe("home");
+  // One account for every space; the family's settings are its own tab.
+  expect(screen.queryByRole("link", { name: "Family & account" })).toBeNull();
   expect(
-    screen.getByRole("link", { name: "Family & account" }).getAttribute("href"),
-  ).toBe("/family");
-  expect(screen.getByTestId("curriculum")).toBeTruthy();
+    screen.getByRole("link", { name: "Account" }).getAttribute("href"),
+  ).toBe("/account/security");
+  // Device preferences: one quiet section of switches.
+  expect(document.querySelector("[data-this-device]")).toBeTruthy();
+  expect(screen.getByRole("switch", { name: "Sound" })).toBeTruthy();
+  expect(screen.queryByText("Show grade numbers")).toBeNull();
 });
 
 test("Classroom: the class, no family learner, no practice settings", () => {

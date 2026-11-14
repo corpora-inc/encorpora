@@ -702,7 +702,6 @@ test("account: its own neutral addresses and the old ones, never family chrome",
       space.tabs.map((tab) => tab.path),
       [
         "account/security",
-        "family/learners",
         "account/billing",
         "account/privacy",
       ],

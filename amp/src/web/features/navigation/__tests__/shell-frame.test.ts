@@ -93,7 +93,6 @@ test("a learner's record and the account each have one row of tabs; the URLs nev
   ]);
   expect(accountTabs.map((tab) => tab.label)).toEqual([
     "Sign-in",
-    "Learners",
     "Billing",
     "Privacy",
   ]);
