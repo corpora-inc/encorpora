@@ -597,17 +597,19 @@ async function noSelfServe(browser: Browser) {
   await page.goto(`${origin}/sign-up`);
   await signUp(page, `visitor-${randomUUID().slice(0, 8)}@example.com`);
   await page.waitForURL(/\/account\/ready|\/start/);
-  for (const target of [
-    "/school/new",
-    "/school/new?step=calendar",
-    "/school",
-  ]) {
+  // Signed in, a school's setup address with nothing to set up opens the
+  // school first run (SPEC R11): never the public page and its Sign in.
+  for (const target of ["/school/new", "/school/new?step=calendar"]) {
     await page.goto(`${origin}${target}`);
-    await page.waitForURL(`${origin}/schools`);
-    await heading(page, /complete math curriculum/);
+    await page.waitForURL(`${origin}/start/school`);
+    await heading(page, "AMP for your school");
     check(
-      `signed in, ${target} is /schools`,
-      path(page) === "/schools",
+      `signed in, ${target} is the school first run`,
+      path(page) === "/start/school" &&
+        (await page
+          .getByRole("link", { name: "Start with your class" })
+          .count()) === 1 &&
+        (await page.getByRole("link", { name: "Sign in" }).count()) === 0,
       path(page),
     );
   }

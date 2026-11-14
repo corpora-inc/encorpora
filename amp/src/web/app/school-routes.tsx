@@ -245,7 +245,8 @@ export function schoolRoutes(root: AnyRoute) {
     }),
     // Guided setup, for the admin of a school we issued. Their invitation is
     // how they arrive; without one there's nothing to set up, so a visitor
-    // goes to `/schools`, which says how a school starts.
+    // goes to `/schools`, which says how a school starts, and someone signed
+    // in to their school first run.
     createRoute({
       getParentRoute: () => root,
       path: "/school/new",
@@ -263,13 +264,27 @@ export function schoolRoutes(root: AnyRoute) {
           throw redirect({ to: "/schools", replace: true });
         const session = await staffSession(location);
         const orgs = await queryClient.fetchQuery(orgsOptions(session));
+        // Setup is its admin's: anyone else's address for it is their
+        // first run, never a setup they can't make.
         const requested =
           typeof search.org === "string"
-            ? orgs.find((org) => org.id === search.org)
+            ? orgs.find(
+                (org) =>
+                  org.id === search.org &&
+                  (!org.setupPending || org.roles.includes("admin")),
+              )
             : orgs.find(
                 (org) => org.setupPending && org.roles.includes("admin"),
               );
-        if (!requested) throw redirect({ to: "/schools", replace: true });
+        // Signed in with nothing to set up: the school first run, which
+        // knows what this account has (an invitation, a school, a pilot)
+        // and offers its next step. Never the public page and its Sign in.
+        if (!requested)
+          throw redirect({
+            to: "/start/$choice",
+            params: { choice: "school" },
+            replace: true,
+          } as never);
         if (!requested.setupPending)
           throw redirect({ ...orgHome(requested), replace: true } as never);
         const [state] = await Promise.all([

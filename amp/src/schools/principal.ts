@@ -45,6 +45,17 @@ export function studentBearer(request: Headers): string | null {
 
 type Database = Pick<PoolClient, "query">;
 /** SQL: `row` (a role or enrollment) is active today in the org's timezone. */
+/** The first instant at which `(now() AT TIME ZONE tz)::date` reaches the
+ * date `d`: the moment every date predicate here (`activeToday`, and the
+ * same comparison inside the pilot and seat functions) flips for that day.
+ * Converting local midnight directly can pick a repeated midnight (a
+ * fall-back to standard time at 00:00, as in America/Havana): this finds
+ * the earliest instant whose local date is `d`, among the quarter-hours up
+ * to three hours before it, where every transition falls. */
+export const localDayStart = (d: string, tz: string) =>
+  `(SELECT min(at) FROM generate_series((${d})::timestamp AT TIME ZONE ${tz} - interval '3 hours',
+     (${d})::timestamp AT TIME ZONE ${tz}, interval '15 minutes') at
+   WHERE (at AT TIME ZONE ${tz})::date >= (${d}))`;
 export const activeToday = (row: string, org: string) =>
   `${row}.begin_on<=(now() AT TIME ZONE ${org}.timezone)::date AND (${row}.end_on IS NULL OR ${row}.end_on>(now() AT TIME ZONE ${org}.timezone)::date)`;
 export const ACTIVE_STUDENT = `EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id

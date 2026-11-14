@@ -279,8 +279,11 @@
 
 /* The place on screen, named beside the logo (docs/architecture/spaces.md):
    "Grade 4 Math · Alder Grove", a family, "My practice", or whose record a
-   learning screen shows. One line, cut with an ellipsis, never wrapping. */
+   learning screen shows. One line, never wrapping and never cut short:
+   `ui/PlaceName` shows the whole name, a shorter one, or none, all laid
+   out in one cell so the choice moves nothing. */
 .place {
+  display: inline-grid;
   overflow: hidden;
   min-width: 0;
   max-width: min(36ch, 42vw);
@@ -290,8 +293,19 @@
   font-size: 15px;
   font-weight: 650;
   line-height: 1.25;
-  text-overflow: ellipsis;
   white-space: nowrap;
+}
+.placeOption {
+  grid-area: 1 / 1;
+  width: max-content;
+  visibility: hidden;
+}
+.placeOption[data-shown] {
+  visibility: visible;
+}
+/* Not measured yet, or no name fits: the divider goes too. */
+.place:not(:has([data-shown])) {
+  visibility: hidden;
 }
 /* Beside a row of tabs, the name gives way first: the tabs keep their room. */
 @media (min-width: 1024px) {

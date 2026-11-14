@@ -453,13 +453,15 @@ test("school and district tabs follow the server's capabilities exactly", () => 
   );
   assert.ok(ids(district).includes("schools"));
   assert.equal(district.active, "schools");
-  // A one-class school is its class: no overview, staff or activity.
+  // A one-class school is its class: no overview or activity. Its staff
+  // stay, for whoever may read them.
   const lone = resolveSpace(at(`/school/${SCHOOL}/classes`), adult(staffOnly), {
     org: school({ solo: true }),
     classes: [klass(ROOM, SCHOOL, "A")],
   });
   assert.deepEqual(ids(lone), [
     "classes",
+    "staff",
     "license",
     "calendar",
     "privacy",
@@ -652,7 +654,8 @@ test("power user: each place looks right on its own terms, and nothing follows t
   expectSpace(room, "classroom");
   assert.ok(!("learner" in room));
   assert.ok(!JSON.stringify(room).includes("Pip"));
-  assert.deepEqual(destinations(room), ["Grade 4 Math"]);
+  // Their class, and the school's classes (other classes, earlier years).
+  assert.deepEqual(destinations(room), ["Grade 4 Math", "School"]);
   const other = resolveSpace(
     at(classPath(OTHER_FAMILY, OTHER_FAMILY_CLASS)),
     adult(power, "pip"),
@@ -835,6 +838,70 @@ test("every space has its words, and a family's never say student", () => {
   assert.ok(!/\bclass\b/.test(family));
   const room = Object.values(spaceWords("classroom")).join(" ").toLowerCase();
   assert.ok(!/\b(child|children|kids)\b/.test(room));
+});
+
+test("a one-class school's admin reaches the school from the class; its own pilot teacher does not", () => {
+  const lone = (can: readonly string[], roles: OrgResource["roles"]) =>
+    resolveSpace(at(classPath(SCHOOL, ROOM)), adult(staffOnly), {
+      org: school({
+        solo: true,
+        roles,
+        teaches: [ROOM],
+        can: can as OrgResource["can"],
+      }),
+      classes: [klass(ROOM, SCHOOL, "Grade 4 Math")],
+      year: { past: false },
+    });
+  const admin = lone(ADMIN_CAN, ["admin"]);
+  expectSpace(admin, "classroom");
+  // The class and its school, by name, a one-class school too (R16).
+  assert.equal(admin.label, "Grade 4 Math · Alder Grove");
+  assert.equal(admin.role, "teacher");
+  const above = admin.destinations.find((entry) => entry.id === "school");
+  assert.ok(above, "the school is a destination");
+  // `/school/<org>` would open the class again: its first tab instead.
+  assert.equal(above.path, `school/${SCHOOL}/classes`);
+  assert.equal(above.detail, "Alder Grove");
+  const pilot = lone(
+    [
+      "org.read",
+      "classes.read",
+      "students.read",
+      "calendar.read",
+      "settings.read",
+    ],
+    ["teacher"],
+  );
+  expectSpace(pilot, "classroom");
+  assert.deepEqual(destinations(pilot), ["Grade 4 Math"]);
+  assert.equal(pilot.label, "Grade 4 Math · Alder Grove");
+  // A phone's bar names the class alone; the drawer says its school.
+  assert.equal(pilot.shortLabel, "Grade 4 Math");
+  assert.equal(pilot.destinations[0]?.detail, "Alder Grove");
+  assert.equal(
+    admin.destinations[0]?.detail,
+    undefined,
+    "its School row says it",
+  );
+});
+
+test("an admin or viewer inspecting a class keeps their own role; only teaching makes them its teacher", () => {
+  for (const role of ["admin", "viewer"] as const) {
+    const space = resolveSpace(at(classPath(SCHOOL, ROOM)), adult(staffOnly), {
+      org: school({ roles: [role], teaches: [] }),
+      classes: [
+        klass(ROOM, SCHOOL, "Grade 4 Math"),
+        klass(ROOM_TWO, SCHOOL, "B"),
+      ],
+      year: { past: false },
+      covered: 3,
+    });
+    expectSpace(space, "classroom");
+    assert.equal(space.role, role);
+    // Start class is the class's teacher's, on the server's terms: never
+    // offered on the strength of oversight.
+    assert.ok(destinations(space).includes("School"));
+  }
 });
 
 test("CP-2 H2: one learner per address, the same order as adoption", () => {
@@ -1082,4 +1149,46 @@ test("CP-2 r3: the frame reads the address as the learning view does: ?learner= 
   );
   expectSpace(space, "me");
   assert.equal(space.status, "unavailable");
+});
+
+test("Start class follows the class's own practice state and board capability, for every role (CP-3 r3 M1)", () => {
+  for (const role of ["viewer", "aide", "teacher", "admin"] as const) {
+    const space = (practice: "open" | "waiting" | "ended", covered: number) =>
+      resolveSpace(at(classPath(SCHOOL, ROOM)), adult(staffOnly), {
+        org: school({
+          roles: [role],
+          teaches: role === "teacher" ? [ROOM] : [],
+        }),
+        classes: [klass(ROOM, SCHOOL, "Grade 4 Math")],
+        year: {
+          past: false,
+          orgId: SCHOOL,
+          path: [SCHOOL],
+          can: ["classes.read", "signin.read"],
+          practice,
+        },
+        // A pilot this role can't read reads as nobody covered: never the
+        // board's gate.
+        covered,
+      });
+    // Partly paid, never started, or licensed and empty: open, so the
+    // board is offered, whatever pilot coverage this person can see.
+    assert.deepEqual(space("open", 0).actions, ["start-class"], role);
+    // Closed is closed, even with stale coverage.
+    assert.deepEqual(space("waiting", 3).actions, [], role);
+    assert.deepEqual(space("ended", 3).actions, [], role);
+  }
+  // Without the board's capability, no Start class.
+  const noBoard = resolveSpace(at(classPath(SCHOOL, ROOM)), adult(staffOnly), {
+    org: school({ roles: ["viewer"] }),
+    classes: [klass(ROOM, SCHOOL, "Grade 4 Math")],
+    year: {
+      past: false,
+      orgId: SCHOOL,
+      path: [SCHOOL],
+      can: ["classes.read"],
+      practice: "open",
+    },
+  });
+  assert.deepEqual(noBoard.actions, []);
 });

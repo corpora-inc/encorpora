@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useLocation, useRouterState } from "@tanstack/react-router";
 import { useMemo, useRef } from "react";
 import { useLearnerStore } from "../../learner-store";
-import { AppError } from "../../lib/AppError";
+import { AppError, refused, standing } from "../../lib/AppError";
 import { isConfirmed } from "../../lib/session-generation";
 import { meOptions, sessionOptions } from "../../lib/query";
 import { classesOptions, orgOptions } from "../school/api";
@@ -86,27 +86,17 @@ export function useLocationMatch(): SpaceMatch {
  * of them changes (a sign-out, an ended role, a refetch): it is a render
  * snapshot, never a cached grant.
  */
-/** An answer the server refused: the place is gone for this person (a
- * revoked role, a removed class), unlike a passing network failure. */
-const refused = (error: unknown) =>
-  error instanceof AppError &&
-  (error.status === 401 || error.status === 403 || error.status === 404);
-
 type Answer<T> = {
   data: T | undefined;
   error: unknown;
   isError: boolean;
 };
 /** A resource as the resolver reads it: undefined until answered (or after a
- * failed lookup, which `failed` reports), null once refused. Nothing a
- * replaced session asked is ever cached (`retireSession`); a same-account
- * renewal keeps the account's answers until its own `/me` fails
- * (`unconfirmed`). */
-function current<T>(query: Answer<T>): T | null | undefined {
-  // A refused lookup is no answer; a refetch that failed otherwise keeps the
-  // last answer on screen.
-  return query.isError && refused(query.error) ? null : query.data;
-}
+ * failed lookup, which `failed` reports), null once refused (`standing`).
+ * Nothing a replaced session asked is ever cached (`retireSession`); a
+ * same-account renewal keeps the account's answers until its own `/me`
+ * fails (`unconfirmed`). */
+const current = standing;
 /** A request its own session no longer stands behind (it was replaced on
  * the way) is no answer at all: what was there stays. */
 const replaced = (error: unknown) =>
@@ -167,10 +157,19 @@ export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
     refetchOnMount: false,
   });
   const orgNow = current(org);
-  // Only a real school's class has practice to start.
+  // Only a real school's class has practice to start, and only an older
+  // server's year read lacks the practice state; even then, only someone who
+  // may read the class's pilot asks for it.
   const pilot = useQuery({
     ...pilotOptions(auth, classId),
-    enabled: !!classId && orgNow?.kind === "school" && orgNow.demo !== true,
+    enabled:
+      !!classId &&
+      orgNow?.kind === "school" &&
+      orgNow.demo !== true &&
+      !!year.data &&
+      year.data.practice === undefined &&
+      (!!orgNow.teaches?.includes(classId) ||
+        !!orgNow.can?.includes("pilot.read")),
     refetchOnMount: false,
   });
   if (!match) return null;

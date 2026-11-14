@@ -89,6 +89,7 @@
     "test:school-pilot-ui": "tsx scripts/verify-school-pilot-ui.ts",
     "test:school-setup-ui": "tsx scripts/verify-school-setup-ui.ts",
     "test:school-places-ui": "tsx scripts/verify-school-places-ui.ts",
+    "test:school-spaces-ui": "tsx scripts/verify-school-spaces-ui.ts",
     "test:adult-practice-ui": "tsx scripts/verify-adult-practice-ui.ts",
     "test:teacher-in-class-ui": "tsx scripts/verify-teacher-in-class-ui.ts",
     "test:family-class-ui": "tsx scripts/verify-family-class-ui.ts",

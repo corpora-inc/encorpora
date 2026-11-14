@@ -251,8 +251,18 @@
   },
   {
     "path": "src/schools/pilot-access.ts",
-    "hash": "f26a4aff4428f65ae8594fc1e789faf49b3650ff80417e2a2003436a265c3586",
-    "reason": "Class practice gate reads student enrollment learners only, not the separate teacher adult learner."
+    "hash": "59cf864cc7c5f7a0a1dc56cbbf2862d89322ca42b60e514207266d963f651a2d",
+    "reason": "Class practice gate reads grants of the class's student enrollments only (role 'student'), never the separate teacher adult learner."
+  },
+  {
+    "path": "src/schools/pilot-access.ts",
+    "hash": "6a99f0ee39a1d06da2c5bfa0e77b1deff2d52a2f801e4638c88b01dfed4272c8",
+    "reason": "Class practice recheck statement reads grant start and end moments of the class's student enrollments only; it schedules a re-read and never authorizes adult learning."
+  },
+  {
+    "path": "src/schools/pilot-access.ts",
+    "hash": "8ef655f80a51775b98632c2f09fe8d03315ab9eeff65d05e691b24afd38552d2",
+    "reason": "classRecheckAt executes exactly the classRecheckQuery statement inventoried above (student enrollment grants only, scheduling a re-read)."
   },
   {
     "path": "src/schools/pilots.ts",

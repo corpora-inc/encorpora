@@ -132,6 +132,8 @@ test(
     const rivera = await staff("Elena", "Rivera", "teacher", period.id);
     await db.query(
       "UPDATE amp_people SET display_name='Ms. Rivera' WHERE account_id=$1",
+      // A roster name never stands in for the adult's own (family-api.md):
+      // every line below names her "Elena Rivera".
       [rivera],
     );
     await db.query(
@@ -341,11 +343,11 @@ test(
           read.teachers.map((line) => [line.name, line.you]),
           [
             ["Daniel Chen", false],
-            ["Ms. Rivera", true],
+            ["Elena Rivera", true],
           ],
           "both teachers, not the aide or another class's teacher",
         );
-        const own = read.teachers.find((line) => line.name === "Ms. Rivera")!;
+        const own = read.teachers.find((line) => line.name === "Elena Rivera")!;
         assert.equal(own.level?.overall.level, 9.92);
         // Not started on any work yet: a line with no level.
         assert.equal(
@@ -403,8 +405,18 @@ test(
         assert.equal(top.you.rank, 1);
         // 92 points sits in the list; 40 is below it.
         assert.deepEqual(top.teachers, [
-          { name: "Ms. Rivera", value: 92, inList: true },
-          { name: "Daniel Chen", value: 40, inList: false },
+          {
+            name: "Elena Rivera",
+            adultName: "Elena Rivera",
+            value: 92,
+            inList: true,
+          },
+          {
+            name: "Daniel Chen",
+            adultName: "Daniel Chen",
+            value: 40,
+            inList: false,
+          },
         ]);
         // Off the list, a student's own line has no rank, as before.
         const low = await standings(last);
@@ -445,7 +457,8 @@ test(
           [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
         );
         assert.deepEqual(practice.teachers[0], {
-          name: "Ms. Rivera",
+          name: "Elena Rivera",
+          adultName: "Elena Rivera",
           value: 400,
           inList: true,
         });
@@ -454,7 +467,8 @@ test(
         });
         const level = await standings(first);
         assert.deepEqual(level.teachers[0], {
-          name: "Ms. Rivera",
+          name: "Elena Rivera",
+          adultName: "Elena Rivera",
           value: 9.9,
           inList: true,
         });
@@ -468,7 +482,12 @@ test(
         const solo = await standings(alone, club.id);
         assert.deepEqual(solo.top, []);
         assert.deepEqual(solo.teachers, [
-          { name: "Ms. Rivera", value: 92, inList: false },
+          {
+            name: "Elena Rivera",
+            adultName: "Elena Rivera",
+            value: 92,
+            inList: false,
+          },
         ]);
         // A wider board, by grade with made-up names: the class's own
         // teachers, and the students' places as they were.
@@ -484,7 +503,7 @@ test(
         );
         assert.deepEqual(
           wide.teachers.map((line) => line.name),
-          ["Ms. Rivera", "Daniel Chen"],
+          ["Elena Rivera", "Daniel Chen"],
         );
         await post(`${CLASS}/experience`, rivera, {
           values: { standings: "class" },
@@ -517,7 +536,7 @@ test(
       // Only in this class: the club still shows her.
       assert.deepEqual(
         (await standings(alone, club.id)).teachers.map((line) => line.name),
-        ["Ms. Rivera"],
+        ["Elena Rivera"],
       );
       // A settings change keeps her choice.
       await post(`${CLASS}/experience`, rivera, {
@@ -565,7 +584,7 @@ test(
       assert.deepEqual(show.json().teacherLine, { shown: true });
       assert.deepEqual(
         (await map(rivera)).teachers.map((line) => line.name),
-        ["Daniel Chen", "Ms. Rivera"],
+        ["Daniel Chen", "Elena Rivera"],
       );
       const stored = await db.query(
         `SELECT "values" FROM amp_scope_settings WHERE scope_kind='class' AND scope_id=$1`,

@@ -321,6 +321,15 @@
 .todo[data-status] .todoActions {
   grid-column: 1;
 }
+/* Wide enough: its action at the end of its line, as every item's is. */
+@container (min-width: 720px) {
+  .todo[data-status] {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .todo[data-status] .todoActions {
+    grid-column: 2;
+  }
+}
 .todo + .todo {
   box-shadow: inset 0 1px 0 var(--color-border);
 }
@@ -420,4 +429,35 @@
   grid-template-columns: repeat(var(--spread-columns), minmax(0, 1fr));
   gap: 2px;
   max-width: calc(var(--spread-columns) * 32px);
+}
+
+/* The code's slot (CodeSlot): one grid cell holding a hidden copy of the
+   code row on the widest code, with the code or a quiet line over it, so
+   practice opening mid-visit moves nothing below. */
+.codeSlot {
+  display: grid;
+  min-width: 0;
+}
+.codeSlotHold,
+.codeSlotShown {
+  grid-area: 1 / 1;
+  min-width: 0;
+}
+.codeSlotHold {
+  visibility: hidden;
+}
+/* At the top of the slot on a phone (where the code's label starts),
+   centred on the code's one row wider up. */
+.codeSlotQuiet {
+  align-self: start;
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+}
+@container (min-width: 720px) {
+  .codeSlotQuiet {
+    align-self: center;
+    justify-self: end;
+    text-align: end;
+  }
 }

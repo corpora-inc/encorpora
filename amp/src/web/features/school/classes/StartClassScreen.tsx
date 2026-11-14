@@ -13,6 +13,7 @@ import { CodeTiles } from "../join/CodeTiles";
 import "../SchoolFrame.module.css";
 import { presenceOptions, useStaffSession } from "./api";
 import styles from "./Start.module.css";
+import { ClosedSignIn, useClassAccess } from "../pilots/ClassAccess";
 
 const POLL_MS = 4000;
 /** Sized to the room: fewer students, bigger names. */
@@ -81,7 +82,16 @@ export function StartClassScreen() {
     refetchIntervalInBackground: true,
     placeholderData: keepPreviousData,
   });
+  // The code reaches students only while practice runs (R14).
+  const access = useClassAccess({ org: params.org, class: params.class });
   useKeepAwake();
+  // The board's own poll can learn first that practice closed: the class's
+  // state is read again so every screen agrees.
+  const polled = presence.data?.class.practice;
+  useEffect(() => {
+    if (polled && polled !== "open" && access.practice === "open")
+      access.retry();
+  }, [polled, access.practice]);
   const [fullscreen, setFullscreen] = useState(false);
   useEffect(() => {
     const changed = () => setFullscreen(!!document.fullscreenElement);
@@ -118,8 +128,21 @@ export function StartClassScreen() {
         </EmptyState>
       </main>
     );
-  if (!presence.data) return <LoadingScreen />;
-  const { class: info, students } = presence.data;
+  if (!presence.data || access.pending) return <LoadingScreen />;
+  // The server sends the code only while practice runs.
+  if (access.closed || !presence.data.class.joinCode)
+    return (
+      <main className={styles.problem} data-dense>
+        <ClosedSignIn
+          place={{ org: params.org, class: params.class }}
+          also={exit}
+          onRetry={() => void presence.refetch()}
+          known={presence.data.class.practice}
+        />
+      </main>
+    );
+  const { class: shown, students } = presence.data;
+  const info = shown;
   const here = students.filter((student) => student.here).length;
   const joinUrl = `${location.origin}/join/${info.joinCode}`;
   return (

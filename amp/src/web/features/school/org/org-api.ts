@@ -59,15 +59,30 @@ export const classYearResource = z.object({
   path: z.array(z.uuid()).optional(),
   name: z.string().nullable().optional(),
   can: z.array(z.enum(schoolActions)).optional(),
+  /** Whether the class's students can practice, for anyone who reads the
+   * class (SPEC R14): its sign-in tools follow this, whatever the role. */
+  practice: z.enum(["open", "waiting", "ended"]).optional(),
+  /** When anything deciding practice can next change (null: nothing
+   * dated ahead): ask again then. */
+  recheckAt: z.string().nullable().optional(),
+  /** The server's clock at this answer: the device's is never trusted. */
+  serverNow: z.string().optional(),
+  /** When this answer was asked for, on this page's monotonic clock. */
+  receivedAt: z.number().optional(),
 });
 export type ClassYear = z.infer<typeof classYearResource>;
 export const classYearOptions = (session: AuthSession, classId: string) =>
   queryOptions({
     queryKey: keyFor(session, "class-year", classId),
-    queryFn: ({ signal }) =>
-      call(`/classes/${classId}/year`, classYearResource, session, {
+    queryFn: ({ signal }) => {
+      // Anchored when asked, not when answered: the server's clock was
+      // read after this, so counting from here never postpones a moment
+      // by however long the answer took (CP-3 r5).
+      const asked = performance.now();
+      return call(`/classes/${classId}/year`, classYearResource, session, {
         signal,
-      }),
+      }).then((year): ClassYear => ({ ...year, receivedAt: asked }));
+    },
   });
 export const rolloverOptions = (session: AuthSession, orgId: string) =>
   queryOptions({
