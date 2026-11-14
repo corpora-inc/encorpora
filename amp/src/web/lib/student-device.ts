@@ -1,3 +1,4 @@
+import { dropAllCapabilities } from "../capability-entry";
 /** A school student's sign-in on this device. Shared devices keep it in session
  * storage, so it ends with the tab; personal devices in local storage. It wins
  * over any parent session until the student signs out.
@@ -78,6 +79,8 @@ export function handedReturnPath(): string {
   }
 }
 export function clearStudentDevice() {
+  // A parent's or teacher's held link never stays beside a child's session.
+  dropAllCapabilities();
   for (const [store, keys] of [
     [() => sessionStorage, [studentKey, activeKey, handedKey, returnKey]],
     [() => localStorage, [studentKey, learnerKey]],

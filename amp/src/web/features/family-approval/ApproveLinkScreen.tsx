@@ -1,4 +1,4 @@
-import { heldCapability } from "../../capability-entry";
+import { dropCapability, heldCapability } from "../../capability-entry";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
@@ -61,6 +61,10 @@ export function ApproveLinkScreen() {
     retry: false,
     queryFn: () => approvals.lookup(parsed!.token),
   });
+  // A link the server refuses is let go here (capability-entry.ts).
+  useEffect(() => {
+    if (lookup.isError) dropCapability("/family/approve");
+  }, [lookup.isError]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   useLoggedError(error);
