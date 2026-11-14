@@ -149,62 +149,74 @@ export function findings(
   };
   // Names bound to a kind or a space: `const k = org.kind`,
   // `const { kind: placeKind } = org`, `const { space } = props`.
-  const aliases = new Set<string>();
+  // Names bound to a kind or a space, by category, through any chain of
+  // ordinary bindings: `const k = org.kind`, `const alias = k`,
+  // `const { kind: placeKind } = org`, `const { "kind": k } = org`,
+  // `const { space: place } = props`, `const place = descriptor.space`.
+  const aliases = new Map<string, "kind" | "space">();
   // Tables keyed by an org's kind or a space: `{ family: …, school: … }`.
+  const bare = (node: ts.Node) =>
+    ts.isAsExpression(node) || ts.isSatisfiesExpression(node)
+      ? node.expression
+      : node;
   const keyedByKind = (node: ts.Node | undefined) =>
     !!node &&
-    ts.isObjectLiteralExpression(
-      ts.isAsExpression(node) || ts.isSatisfiesExpression(node)
-        ? node.expression
-        : node,
-    ) &&
-    (
-      (ts.isAsExpression(node) || ts.isSatisfiesExpression(node)
-        ? node.expression
-        : node) as ts.ObjectLiteralExpression
-    ).properties.some(
+    ts.isObjectLiteralExpression(bare(node)) &&
+    (bare(node) as ts.ObjectLiteralExpression).properties.some(
       (property) =>
         !!property.name &&
         KINDS.has(property.name.getText().replace(/["']/g, "")),
     );
   const tables = new Set<string>();
-  const collect = (node: ts.Node) => {
-    if (
-      ts.isVariableDeclaration(node) &&
-      ts.isIdentifier(node.name) &&
-      keyedByKind(node.initializer)
-    )
-      tables.add(node.name.text);
-    if (
-      ts.isVariableDeclaration(node) &&
-      ts.isIdentifier(node.name) &&
-      node.initializer &&
-      (readsKind(node.initializer) !== null || readsSpace(node.initializer))
-    )
-      aliases.add(node.name.text);
-    if (
-      ts.isBindingElement(node) &&
-      ts.isIdentifier(node.name) &&
-      ["kind", "space"].includes(
-        (node.propertyName && ts.isIdentifier(node.propertyName)
-          ? node.propertyName.text
-          : node.name.text) ?? "",
-      )
-    )
-      aliases.add(node.name.text);
-    ts.forEachChild(node, collect);
+  const categoryOf = (node: ts.Node): "kind" | "space" | null => {
+    const value = bare(
+      ts.isParenthesizedExpression(node) ? node.expression : node,
+    );
+    if (readsSpace(value)) return "space";
+    if (readsKind(value) !== null) return "kind";
+    return ts.isIdentifier(value) ? (aliases.get(value.text) ?? null) : null;
   };
-  collect(tree);
-  const discriminates = (side: ts.Node) =>
-    readsKind(side) !== null ||
-    readsSpace(side) ||
-    (ts.isIdentifier(side) && aliases.has(side.text));
+  const propertyNameOf = (element: ts.BindingElement) => {
+    const name = element.propertyName ?? element.name;
+    return ts.isIdentifier(name) || ts.isStringLiteralLike(name)
+      ? name.text
+      : null;
+  };
+  const collect = (node: ts.Node): boolean => {
+    let grew = false;
+    if (ts.isVariableDeclaration(node) && ts.isIdentifier(node.name)) {
+      if (keyedByKind(node.initializer)) tables.add(node.name.text);
+      const category = node.initializer ? categoryOf(node.initializer) : null;
+      if (category && aliases.get(node.name.text) !== category) {
+        aliases.set(node.name.text, category);
+        grew = true;
+      }
+    }
+    if (ts.isBindingElement(node) && ts.isIdentifier(node.name)) {
+      const property = propertyNameOf(node);
+      if (
+        (property === "kind" || property === "space") &&
+        aliases.get(node.name.text) !== property
+      ) {
+        aliases.set(node.name.text, property);
+        grew = true;
+      }
+    }
+    ts.forEachChild(node, (child) => {
+      if (collect(child)) grew = true;
+    });
+    return grew;
+  };
+  // Until every chain of aliases is followed.
+  for (let pass = 0; pass < 8 && collect(tree); pass++);
+  const discriminates = (side: ts.Node) => categoryOf(side) !== null;
   const compares = (side: ts.Node, other: ts.Node) => {
     const value = literal(other);
-    if (value === null || !discriminates(side)) return false;
-    const owner = readsKind(side) ?? "";
-    if (readsSpace(side)) return true;
-    return KINDS.has(value) && !failure(owner, value);
+    const category = categoryOf(side);
+    if (value === null || !category) return false;
+    // A space has its own names (me, classroom, student…): any is a branch.
+    if (category === "space") return true;
+    return KINDS.has(value) && !failure(readsKind(side) ?? "", value);
   };
   const visit = (node: ts.Node) => {
     if (
@@ -228,7 +240,7 @@ export function findings(
           cases.some(
             (value) => value && KINDS.has(value) && !failure(owner, value),
           )) ||
-        readsSpace(node.expression)
+        categoryOf(node.expression) === "space"
       )
         report(node.expression, "switches on an org's kind or a space");
     }
