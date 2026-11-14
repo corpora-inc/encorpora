@@ -20,6 +20,7 @@ const state = vi.hoisted(() => ({
   own: null as { id: string; name: string } | null,
   children: [] as Child[],
   consent: "none" as "none" | "pending" | "active" | "withdrawn",
+  offerAvailable: true,
   consentRequest: null as { id: string; phase: string } | null,
   posts: [] as { url: string; body: unknown }[],
 }));
@@ -87,6 +88,8 @@ const me = () => ({
 let invoices: unknown[] = [];
 function respond(url: string, init?: RequestInit) {
   const path = new URL(url, location.origin).pathname;
+  if (path === "/api/v1/events")
+    return Promise.resolve(new Response(null, { status: 204 }));
   if (init?.method === "POST") {
     state.posts.push({ url: path, body: JSON.parse(String(init.body)) });
     if (path === "/api/v1/me/practice") {
@@ -104,7 +107,11 @@ function respond(url: string, init?: RequestInit) {
     path === "/api/v1/me"
       ? me()
       : path === "/api/v1/funding/offers"
-        ? { offers: [{ programId: "az-esa", jurisdiction: "AZ" }] }
+        ? {
+            offers: state.offerAvailable
+              ? [{ programId: "az-esa", jurisdiction: "AZ" }]
+              : [],
+          }
         : path === "/api/v1/funding/invoices"
           ? { invoices }
           : path === "/api/v1/consent"
@@ -120,6 +127,7 @@ beforeEach(() => {
   state.children = [];
   state.consent = "none";
   state.consentRequest = null;
+  state.offerAvailable = true;
   state.session = { token: "t", accountId: "adult" };
   state.posts = [];
   invoices = [
@@ -259,16 +267,13 @@ test.each(["active", "pending", "withdrawn"] as const)(
 );
 
 test.each(["awaiting-initial", "awaiting-confirmation", "expired"])(
-  "a %s consent request resumes consent even when /me has no consent record",
+  "a %s consent request permits choosing restricted parent-entry setup",
   async (phase) => {
     invoices = [];
     state.consentRequest = { id: "consent-request", phase };
     const router = await open("/purchase/arizona-esa");
-    await screen.findByRole("heading", { name: "Learning consent" });
-    expect(router.state.location.pathname).toBe("/start/consent");
-    expect(
-      screen.queryByRole("heading", { name: "Who’s learning?" }),
-    ).toBeNull();
+    await screen.findByRole("heading", { name: "Who’s learning?" });
+    expect(router.state.location.pathname).toBe("/purchase/arizona-esa");
     expect(state.posts).toEqual([]);
   },
 );
@@ -321,7 +326,7 @@ test.each([
     expect(state.posts).toEqual([]);
     fireEvent.click(screen.getByRole("link", { name: "For my child" }));
     await vi.waitFor(() =>
-      expect(router.state.location.pathname).toBe("/start/consent"),
+      expect(router.state.location.pathname).toBe("/start/name"),
     );
     expect(state.posts).toEqual([]);
   },
@@ -412,7 +417,7 @@ test.each([
   },
 );
 
-test("the question waits for consent history instead of flashing before the parent path", async () => {
+test("the question waits for invoices before choosing a recipient", async () => {
   invoices = [];
   let release!: (response: Response) => void;
   let requested = false;
@@ -420,7 +425,9 @@ test("the question waits for consent history instead of flashing before the pare
     "fetch",
     vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
       const url = String(input instanceof Request ? input.url : input);
-      if (new URL(url, location.origin).pathname === "/api/v1/consent") {
+      if (
+        new URL(url, location.origin).pathname === "/api/v1/funding/invoices"
+      ) {
         requested = true;
         return new Promise<Response>((resolve) => {
           release = resolve;
@@ -432,11 +439,11 @@ test("the question waits for consent history instead of flashing before the pare
   await open("/purchase/arizona-esa");
   await vi.waitFor(() => expect(requested).toBe(true));
   expect(screen.queryByRole("button", { name: "For me" })).toBeNull();
-  release(Response.json({ request: { id: "pending-consent" } }));
-  await screen.findByRole("heading", { name: "Learning consent" });
+  release(Response.json({ invoices: [] }));
+  await screen.findByRole("heading", { name: "Who’s learning?" });
 });
 
-test("refreshing consent history keeps the current question and its controls mounted", async () => {
+test("refreshing invoices keeps the current question and its controls mounted", async () => {
   invoices = [];
   await open("/purchase/arizona-esa");
   const button = await screen.findByRole("button", { name: "For me" });
@@ -446,7 +453,9 @@ test("refreshing consent history keeps the current question and its controls mou
     "fetch",
     vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
       const url = String(input instanceof Request ? input.url : input);
-      if (new URL(url, location.origin).pathname === "/api/v1/consent") {
+      if (
+        new URL(url, location.origin).pathname === "/api/v1/funding/invoices"
+      ) {
         requested = true;
         return new Promise<Response>((resolve) => {
           release = resolve;
@@ -459,7 +468,7 @@ test("refreshing consent history keeps the current question and its controls mou
   let refresh!: Promise<void>;
   await act(async () => {
     refresh = queryClient.invalidateQueries({
-      queryKey: ["account", "adult", "funded-consent-history"],
+      queryKey: ["account", "adult", "invoice-intents"],
     });
     // Flush Query's scheduled observer notification while the request is held.
     await new Promise((resolve) => setTimeout(resolve, 0));
@@ -468,7 +477,56 @@ test("refreshing consent history keeps the current question and its controls mou
     await vi.waitFor(() => expect(requested).toBe(true));
     expect(screen.queryByRole("button", { name: "For me" })).toBe(button);
   } finally {
-    release(Response.json({ request: null }));
+    release(Response.json({ invoices: [] }));
     await refresh;
   }
 });
+
+test.each([true, false])(
+  "an expired invoice with verified payment=%s uses server fulfillment eligibility",
+  async (paid) => {
+    state.own = { id: "own", name: "Fixture Student" };
+    invoices = [
+      {
+        ...(invoices[0] as object),
+        expiresAt: "2000-01-01T00:00:00.000Z",
+        paymentVerified: paid,
+      },
+    ];
+    await open("/purchase/arizona-esa");
+    await screen.findByRole("heading", { name: "Connect your invoice" });
+    if (paid) {
+      fireEvent.click(screen.getByRole("button", { name: "Use this invoice" }));
+      await vi.waitFor(() => expect(state.posts).toHaveLength(1));
+      expect(state.posts[0]).toMatchObject({ body: { learnerId: "own" } });
+    } else {
+      expect(
+        screen.queryByRole("button", { name: "Use this invoice" }),
+      ).toBeNull();
+      expect(screen.getByText(/needs a billing review/)).toBeTruthy();
+    }
+  },
+);
+
+test.each([true, false])(
+  "an unavailable new offer with verified existing payment=%s preserves the consent route",
+  async (paid) => {
+    state.offerAvailable = false;
+    state.children = [{ id: "child", name: "Fixture Student" }];
+    invoices = [
+      {
+        ...(invoices[0] as object),
+        expiresAt: "2000-01-01T00:00:00.000Z",
+        paymentVerified: paid,
+      },
+    ];
+    const router = await open("/purchase/arizona-esa");
+    if (paid) {
+      await screen.findByRole("heading", { name: "Learning consent" });
+      expect(router.state.location.pathname).toBe("/start/consent");
+    } else {
+      await screen.findByText(/offer is unavailable/);
+      expect(router.state.location.pathname).toBe("/purchase/arizona-esa");
+    }
+  },
+);

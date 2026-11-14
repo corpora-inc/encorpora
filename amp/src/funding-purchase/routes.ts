@@ -1,3 +1,4 @@
+import { AccessGiftError } from "../access-grants/contracts.js";
 import { funnelVisitor } from "../analytics/visitor-header.js";
 import { secondParentOwner } from "../family/second-parent.js";
 import {
@@ -49,7 +50,10 @@ export async function registerFundingPurchaseRoutes(
       reply.header("X-Content-Type-Options", "nosniff");
     });
     scope.setErrorHandler((error, _request, reply) => {
-      if (error instanceof FundingPurchaseError)
+      if (
+        error instanceof FundingPurchaseError ||
+        error instanceof AccessGiftError
+      )
         return reply.code(error.statusCode).send({ error: error.code });
       if (error instanceof z.ZodError)
         return reply.code(400).send({ error: "invalid_funding_request" });
@@ -96,6 +100,8 @@ export async function registerFundingPurchaseRoutes(
         );
         return {
           invoiceId: intent.id,
+          accessStatus: "funded-pending",
+          emailStatus: "queued",
           totalMinor: intent.offer.subtotalMinor + intent.offer.taxMinor,
           merchantName: intent.offer.merchant.legalName,
           pdfBase64: Buffer.from(

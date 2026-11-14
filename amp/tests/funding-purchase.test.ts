@@ -14,7 +14,10 @@ import { annualTermEnd } from "../src/funding-purchase/provision.js";
 import { testFundingOffer as offer } from "./funding-purchase.fixture.js";
 import { researchedRefundTerms } from "../src/funding-purchase/refund-terms.js";
 import { loadFundingOffers } from "../src/funding-purchase/config.js";
-import { programAnnualPriceMinor } from "../src/funding-purchase/program-prices.js";
+import {
+  programAnnualPriceMinor,
+  programMonthlyPriceMinor,
+} from "../src/funding-purchase/program-prices.js";
 import { fundingPrograms } from "../src/funding-purchase/programs.js";
 import { mkdtemp, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
@@ -325,4 +328,29 @@ test("a program without a listed price keeps the price in the offers file", asyn
   await writeFile(path, JSON.stringify([other]));
   const [loaded] = await loadFundingOffers(path);
   assert.equal(loaded!.subtotalMinor, offer.subtotalMinor);
+});
+
+test("a configured monthly invoice uses the monthly listing, never the annual price", async (t) => {
+  const directory = await mkdtemp(join(tmpdir(), "amp-monthly-offers-"));
+  const path = join(directory, "offers.json");
+  t.mock.method(console, "warn", () => {});
+  await writeFile(
+    path,
+    JSON.stringify([
+      {
+        ...offer,
+        termMonths: 1,
+        termPolicy: "one-month-from-verified-provisioning",
+      },
+    ]),
+  );
+  const [loaded] = await loadFundingOffers(path);
+  assert.equal(
+    loaded!.subtotalMinor,
+    programMonthlyPriceMinor[offer.programId],
+  );
+  assert.notEqual(
+    loaded!.subtotalMinor,
+    programAnnualPriceMinor[offer.programId],
+  );
 });
