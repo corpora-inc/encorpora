@@ -13,10 +13,11 @@ blank boxes. Semicolon-separated equations form a stacked system, including
 rows with separate TeX delimiters or mixed plain and delimited notation. A formula on
 its own in a choice or label keeps that surface's layout.
 
-Expressions mixing `÷` (or `\div`) with slash notation stay inline. Legacy web
-and print notation can assign different groups to `2 ÷ 1/6`; converting it to a
-shared display must not silently pick one. Use explicit TeX such as
-`2 \div \frac{1}{6}` to display an unambiguous fractional divisor.
+Complete expressions mixing `÷` (or `\div`) with slash notation stay inline.
+Legacy web and print notation can assign different groups to `2 ÷ 1/6`;
+converting it to a shared display must not silently pick one. Use explicit TeX
+such as `2 \div \frac{1}{6}` to display an unambiguous fractional divisor.
+The separate legacy blank-box (`□`) fallback retains its web notation.
 
 `polishProblem` removes a sentence period from final display mathematics after the
 shared copy-edit pass, including clause variants that preserve their authored
