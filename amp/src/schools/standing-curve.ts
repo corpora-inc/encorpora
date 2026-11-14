@@ -81,4 +81,3 @@ export function curveOf(
     typical: compact(weightedDensity(typical, grid)),
   };
 }
-

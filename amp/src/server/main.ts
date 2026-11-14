@@ -1,5 +1,6 @@
 import { userSchema } from "../schools/clever/model.js";
 import { registerSchoolAdoptionRoutes } from "../schools/adoption-routes.js";
+import { pageOrigins } from "../schools/request-origin.js";
 import { CleverClient } from "../schools/clever/client.js";
 import { SchoolError } from "../schools/contracts.js";
 import { serverPoolOptions } from "./database.js";
@@ -208,6 +209,8 @@ await registerDeleteAccountRoutes(app, {
   ...(cleverConfig ? { resolveCleverPerson: cleverPerson } : {}),
 });
 const schoolNow = schoolClock(process.env);
+/** The school guards accept every origin sign-in trusts. */
+const schoolPageOrigins = accounts ? pageOrigins(accounts.config) : undefined;
 await registerSchoolRoutes(app, {
   pool: repository.pool,
   authenticate,
@@ -215,6 +218,7 @@ await registerSchoolRoutes(app, {
     ...(schoolNow ? { now: schoolNow } : {}),
     secret: linkSecret,
     origin: accounts?.config.baseURL ?? "",
+    origins: schoolPageOrigins,
     learning: repository,
     renderer: workbookRenderer,
     ...(accounts ? { mail: accounts.send } : {}),
@@ -247,11 +251,13 @@ await registerCleverOnboarding(app, {
   worker: false,
   maintenance: true,
   origin: accounts?.config.baseURL,
+  origins: schoolPageOrigins,
 });
 await registerSchoolAdoptionRoutes(app, {
   pool: repository.pool,
   authenticate,
   origin: accounts?.config.baseURL,
+  origins: schoolPageOrigins,
   secret: linkSecret,
   ...(cleverConfig
     ? {

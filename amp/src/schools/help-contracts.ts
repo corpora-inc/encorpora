@@ -84,4 +84,3 @@ export const helpWeekResource = z.object({
     person: z.number(),
   }),
 });
-

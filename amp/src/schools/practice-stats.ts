@@ -20,7 +20,8 @@ export function summarize(values: readonly number[]): Summary | null {
   const sorted = [...values].sort((a, b) => a - b);
   const mean = sorted.reduce((sum, value) => sum + value, 0) / n;
   const half = n >> 1;
-  const median = n % 2 ? sorted[half]! : (sorted[half - 1]! + sorted[half]!) / 2;
+  const median =
+    n % 2 ? sorted[half]! : (sorted[half - 1]! + sorted[half]!) / 2;
   const squares = sorted.reduce((sum, value) => sum + (value - mean) ** 2, 0);
   return { n, mean, median, sd: n > 1 ? Math.sqrt(squares / (n - 1)) : 0 };
 }
