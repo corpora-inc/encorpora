@@ -1179,6 +1179,48 @@
       }
     ]
   },
+  "cylinder-volume": {
+    "id": "cylinder-volume--sc",
+    "version": "a3f0ec4fbfafcb658ce5e75239e11dfaf5710425389e4be01cc6504a1147b0ad",
+    "title": "A cylinder is a circle, stacked",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/cylinder-volume--sc/a3f0ec4fbfafcb658ce5e75239e11dfaf5710425389e4be01cc6504a1147b0ad/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/cylinder-volume--sc/a3f0ec4fbfafcb658ce5e75239e11dfaf5710425389e4be01cc6504a1147b0ad/audio.m4a",
+    "duration": 156.4,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/cylinder-volume--sc/a3f0ec4fbfafcb658ce5e75239e11dfaf5710425389e4be01cc6504a1147b0ad/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/cylinder-volume--sc/a3f0ec4fbfafcb658ce5e75239e11dfaf5710425389e4be01cc6504a1147b0ad/audio.m4a",
+        "version": "a3f0ec4fbfafcb658ce5e75239e11dfaf5710425389e4be01cc6504a1147b0ad",
+        "duration": 156.4
+      }
+    ]
+  },
+  "cylinder-volume-slots": {
+    "id": "cylinder-volume--sc",
+    "version": "a3f0ec4fbfafcb658ce5e75239e11dfaf5710425389e4be01cc6504a1147b0ad",
+    "title": "A cylinder is a circle, stacked",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/cylinder-volume--sc/a3f0ec4fbfafcb658ce5e75239e11dfaf5710425389e4be01cc6504a1147b0ad/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/cylinder-volume--sc/a3f0ec4fbfafcb658ce5e75239e11dfaf5710425389e4be01cc6504a1147b0ad/audio.m4a",
+    "duration": 156.4,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/cylinder-volume--sc/a3f0ec4fbfafcb658ce5e75239e11dfaf5710425389e4be01cc6504a1147b0ad/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/cylinder-volume--sc/a3f0ec4fbfafcb658ce5e75239e11dfaf5710425389e4be01cc6504a1147b0ad/audio.m4a",
+        "version": "a3f0ec4fbfafcb658ce5e75239e11dfaf5710425389e4be01cc6504a1147b0ad",
+        "duration": 156.4
+      }
+    ]
+  },
   "decimal-both-sides-equation": {
     "id": "grouped-both-sides-solve--sg",
     "version": "1092015819b91c412ebb772db42bcc58a130124e6c38d76449d414ce8390312a",
@@ -2885,6 +2927,28 @@
       }
     ]
   },
+  "missing-factor-fact": {
+    "id": "missing-factor-fact--sm",
+    "version": "65b5ed8276f049be6c1ee11664d7630cd0b4444eb393d5652da7ad746c3a3815",
+    "title": "The number in the box",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/missing-factor-fact--sm/65b5ed8276f049be6c1ee11664d7630cd0b4444eb393d5652da7ad746c3a3815/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/missing-factor-fact--sm/65b5ed8276f049be6c1ee11664d7630cd0b4444eb393d5652da7ad746c3a3815/audio.m4a",
+    "duration": 147.98,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/missing-factor-fact--sm/65b5ed8276f049be6c1ee11664d7630cd0b4444eb393d5652da7ad746c3a3815/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/missing-factor-fact--sm/65b5ed8276f049be6c1ee11664d7630cd0b4444eb393d5652da7ad746c3a3815/audio.m4a",
+        "version": "65b5ed8276f049be6c1ee11664d7630cd0b4444eb393d5652da7ad746c3a3815",
+        "duration": 147.98
+      }
+    ]
+  },
   "missing-start-story": {
     "id": "missing-start-story--ss",
     "version": "ba620ed16943c1805470f96b356f624965e3897e2102d42c1f0d05d2592d8d06",
@@ -3057,6 +3121,27 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/negative-coefficient-equation--su/6be360be82829be334a775119bd647b64061388e6fc5357a5a11ba5c8f01d8ab/audio.m4a",
         "version": "6be360be82829be334a775119bd647b64061388e6fc5357a5a11ba5c8f01d8ab",
         "duration": 119.44
+      }
+    ]
+  },
+  "negative-integer-power": {
+    "id": "negative-integer-power--sn",
+    "version": "8fd357b9cc67a9c8a096c2242405b5c796cc489c85a1bc5359d4ddc2a97fc4af",
+    "title": "Down the staircase, past zero",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/negative-integer-power--sn/8fd357b9cc67a9c8a096c2242405b5c796cc489c85a1bc5359d4ddc2a97fc4af/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/negative-integer-power--sn/8fd357b9cc67a9c8a096c2242405b5c796cc489c85a1bc5359d4ddc2a97fc4af/audio.m4a",
+    "duration": 147.55,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/negative-integer-power--sn/8fd357b9cc67a9c8a096c2242405b5c796cc489c85a1bc5359d4ddc2a97fc4af/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/negative-integer-power--sn/8fd357b9cc67a9c8a096c2242405b5c796cc489c85a1bc5359d4ddc2a97fc4af/audio.m4a",
+        "version": "8fd357b9cc67a9c8a096c2242405b5c796cc489c85a1bc5359d4ddc2a97fc4af",
+        "duration": 147.55
       }
     ]
   },
@@ -4184,6 +4269,28 @@
       }
     ]
   },
+  "share-or-group": {
+    "id": "share-or-group--ss",
+    "version": "c19edd62c02afb5dbac443bce44f65bd2d4b3082a0fbf8ba964b710949a5d421",
+    "title": "Division asks two questions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/share-or-group--ss/c19edd62c02afb5dbac443bce44f65bd2d4b3082a0fbf8ba964b710949a5d421/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/share-or-group--ss/c19edd62c02afb5dbac443bce44f65bd2d4b3082a0fbf8ba964b710949a5d421/audio.m4a",
+    "duration": 133.66997732426304,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/share-or-group--ss/c19edd62c02afb5dbac443bce44f65bd2d4b3082a0fbf8ba964b710949a5d421/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/share-or-group--ss/c19edd62c02afb5dbac443bce44f65bd2d4b3082a0fbf8ba964b710949a5d421/audio.m4a",
+        "version": "c19edd62c02afb5dbac443bce44f65bd2d4b3082a0fbf8ba964b710949a5d421",
+        "duration": 133.66997732426304
+      }
+    ]
+  },
   "share-whole-items": {
     "id": "share-whole-items--bc",
     "version": "cda031807d65ad632f0c3c1f50636d9444951c0fff4f6c4039401fe8ee13abf6",
@@ -4572,6 +4679,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/build-shape-sticks-balls--sb/3a2c1f1492c586106dc1f88999c3952e58f73d05292772695d6ec152203b42f1/audio.m4a",
         "version": "3a2c1f1492c586106dc1f88999c3952e58f73d05292772695d6ec152203b42f1",
         "duration": 84.52
+      }
+    ]
+  },
+  "story-both-interpretations": {
+    "id": "share-or-group--ss",
+    "version": "c19edd62c02afb5dbac443bce44f65bd2d4b3082a0fbf8ba964b710949a5d421",
+    "title": "Division asks two questions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/share-or-group--ss/c19edd62c02afb5dbac443bce44f65bd2d4b3082a0fbf8ba964b710949a5d421/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/share-or-group--ss/c19edd62c02afb5dbac443bce44f65bd2d4b3082a0fbf8ba964b710949a5d421/audio.m4a",
+    "duration": 133.66997732426304,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/share-or-group--ss/c19edd62c02afb5dbac443bce44f65bd2d4b3082a0fbf8ba964b710949a5d421/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/share-or-group--ss/c19edd62c02afb5dbac443bce44f65bd2d4b3082a0fbf8ba964b710949a5d421/audio.m4a",
+        "version": "c19edd62c02afb5dbac443bce44f65bd2d4b3082a0fbf8ba964b710949a5d421",
+        "duration": 133.66997732426304
       }
     ]
   },
@@ -5438,6 +5567,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/unknown-addend-story--su/b5b5ceec5e11fad9b78b865459498cbcfd209b8ee8378bcab6c32bc900eb8e02/audio.m4a",
         "version": "b5b5ceec5e11fad9b78b865459498cbcfd209b8ee8378bcab6c32bc900eb8e02",
         "duration": 90.36
+      }
+    ]
+  },
+  "unknown-dividend": {
+    "id": "missing-factor-fact--sm",
+    "version": "65b5ed8276f049be6c1ee11664d7630cd0b4444eb393d5652da7ad746c3a3815",
+    "title": "The number in the box",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/missing-factor-fact--sm/65b5ed8276f049be6c1ee11664d7630cd0b4444eb393d5652da7ad746c3a3815/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/missing-factor-fact--sm/65b5ed8276f049be6c1ee11664d7630cd0b4444eb393d5652da7ad746c3a3815/audio.m4a",
+    "duration": 147.98,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/missing-factor-fact--sm/65b5ed8276f049be6c1ee11664d7630cd0b4444eb393d5652da7ad746c3a3815/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/missing-factor-fact--sm/65b5ed8276f049be6c1ee11664d7630cd0b4444eb393d5652da7ad746c3a3815/audio.m4a",
+        "version": "65b5ed8276f049be6c1ee11664d7630cd0b4444eb393d5652da7ad746c3a3815",
+        "duration": 147.98
       }
     ]
   },

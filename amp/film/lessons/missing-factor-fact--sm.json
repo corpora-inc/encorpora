@@ -1,0 +1,5345 @@
+{
+  "id": "missing-factor-fact--sm",
+  "title": "The number in the box",
+  "teaches": ["unknown-dividend"],
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -2.1,
+          -4.3,
+          3.9,
+          2.15
+        ],
+        "points": {
+          "G": [
+            -0.5,
+            0.5
+          ],
+          "Row": [
+            -1.5,
+            -1
+          ],
+          "Each": [
+            1.5,
+            1.5
+          ],
+          "Total": [
+            1.5,
+            -3.6
+          ],
+          "TL": [
+            -0.45,
+            0.7
+          ],
+          "TR": [
+            3.45,
+            0.7
+          ],
+          "LL": [
+            -0.7,
+            0.4
+          ],
+          "LB": [
+            -0.7,
+            -2.4
+          ],
+          "W1": [
+            -0.4,
+            0.4
+          ],
+          "W2": [
+            3.4,
+            0.4
+          ],
+          "W3": [
+            3.4,
+            -0.4
+          ],
+          "W4": [
+            -0.4,
+            -0.4
+          ],
+          "d1c1": [
+            0,
+            0
+          ],
+          "d1c2": [
+            1,
+            0
+          ],
+          "d1c3": [
+            2,
+            0
+          ],
+          "d1c4": [
+            3,
+            0
+          ],
+          "d2c1": [
+            0,
+            -1
+          ],
+          "d2c2": [
+            1,
+            -1
+          ],
+          "d2c3": [
+            2,
+            -1
+          ],
+          "d2c4": [
+            3,
+            -1
+          ],
+          "d3c1": [
+            0,
+            -2
+          ],
+          "d3c2": [
+            1,
+            -2
+          ],
+          "d3c3": [
+            2,
+            -2
+          ],
+          "d3c4": [
+            3,
+            -2
+          ]
+        },
+        "parts": [
+          {
+            "id": "rowWash",
+            "poly": [
+              "W1",
+              "W2",
+              "W3",
+              "W4"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 1
+          },
+          {
+            "id": "grid",
+            "grid": [
+              4,
+              3
+            ],
+            "at": "G"
+          },
+          {
+            "id": "topBracket",
+            "seg": [
+              "TL",
+              "TR"
+            ],
+            "ink": "accent",
+            "w": 2
+          },
+          {
+            "id": "sideBracket",
+            "seg": [
+              "LL",
+              "LB"
+            ],
+            "ink": "blue",
+            "w": 2
+          },
+          {
+            "id": "rows",
+            "label": "3",
+            "at": "Row",
+            "dir": "c",
+            "size": "xl",
+            "ink": "blue"
+          },
+          {
+            "id": "each",
+            "label": "4",
+            "at": "Each",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent"
+          },
+          {
+            "id": "total",
+            "label": "12\\text{ in all}",
+            "at": "Total",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm"
+          },
+          {
+            "id": "live",
+            "label": "@n\\text{ dots}",
+            "at": "Total",
+            "of": "grid",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm"
+          },
+          {
+            "id": "d1c1",
+            "dot": "d1c1",
+            "group": "col1",
+            "r": 36,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d1c2",
+            "dot": "d1c2",
+            "group": "col2",
+            "r": 36,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d1c3",
+            "dot": "d1c3",
+            "group": "col3",
+            "r": 36,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d1c4",
+            "dot": "d1c4",
+            "group": "col4",
+            "r": 36,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d2c1",
+            "dot": "d2c1",
+            "group": "col1",
+            "r": 36,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d2c2",
+            "dot": "d2c2",
+            "group": "col2",
+            "r": 36,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d2c3",
+            "dot": "d2c3",
+            "group": "col3",
+            "r": 36,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d2c4",
+            "dot": "d2c4",
+            "group": "col4",
+            "r": 36,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d3c1",
+            "dot": "d3c1",
+            "group": "col1",
+            "r": 36,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d3c2",
+            "dot": "d3c2",
+            "group": "col2",
+            "r": 36,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d3c3",
+            "dot": "d3c3",
+            "group": "col3",
+            "r": 36,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d3c4",
+            "dot": "d3c4",
+            "group": "col4",
+            "r": 36,
+            "ink": "accent",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "An array is dots in equal rows. Three rows, four dots in each row.",
+          "do": [
+            {
+              "do": "header",
+              "text": "The number in the box"
+            },
+            {
+              "do": "show",
+              "target": [
+                "sideBracket",
+                "rows"
+              ],
+              "at": "Three"
+            },
+            {
+              "do": "show",
+              "target": [
+                "rowWash",
+                "topBracket",
+                "each"
+              ],
+              "at": "four"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{3}\\times\\ca{4}",
+              "at": "Three"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Twelve dots in all. Rows times dots in each row gives the total.",
+          "do": [
+            {
+              "do": "show",
+              "target": "total",
+              "at": "Twelve"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{3}\\times\\ca{4}=\\cw{12}",
+              "at": "Twelve"
+            },
+            {
+              "do": "hide",
+              "target": "rowWash",
+              "at": "Twelve"
+            }
+          ],
+          "pause": 0.3
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -2.1,
+          -7.3,
+          6.9,
+          2.15
+        ],
+        "points": {
+          "G": [
+            -0.5,
+            0.5
+          ],
+          "Row": [
+            -1.5,
+            -2.5
+          ],
+          "Each": [
+            3,
+            1.5
+          ],
+          "Total": [
+            3,
+            -6.6
+          ],
+          "TL": [
+            -0.45,
+            0.7
+          ],
+          "TR": [
+            6.45,
+            0.7
+          ],
+          "LL": [
+            -0.7,
+            0.4
+          ],
+          "LB": [
+            -0.7,
+            -5.4
+          ],
+          "W1": [
+            -0.4,
+            0.46
+          ],
+          "W2": [
+            6.4,
+            0.46
+          ],
+          "W3": [
+            6.4,
+            -0.46
+          ],
+          "W4": [
+            -0.4,
+            -0.46
+          ],
+          "d1c1": [
+            0,
+            0
+          ],
+          "d1c2": [
+            1,
+            0
+          ],
+          "d1c3": [
+            2,
+            0
+          ],
+          "d1c4": [
+            3,
+            0
+          ],
+          "d1c5": [
+            4,
+            0
+          ],
+          "d1c6": [
+            5,
+            0
+          ],
+          "d1c7": [
+            6,
+            0
+          ],
+          "d2c1": [
+            0,
+            -1
+          ],
+          "d2c2": [
+            1,
+            -1
+          ],
+          "d2c3": [
+            2,
+            -1
+          ],
+          "d2c4": [
+            3,
+            -1
+          ],
+          "d2c5": [
+            4,
+            -1
+          ],
+          "d2c6": [
+            5,
+            -1
+          ],
+          "d2c7": [
+            6,
+            -1
+          ],
+          "d3c1": [
+            0,
+            -2
+          ],
+          "d3c2": [
+            1,
+            -2
+          ],
+          "d3c3": [
+            2,
+            -2
+          ],
+          "d3c4": [
+            3,
+            -2
+          ],
+          "d3c5": [
+            4,
+            -2
+          ],
+          "d3c6": [
+            5,
+            -2
+          ],
+          "d3c7": [
+            6,
+            -2
+          ],
+          "d4c1": [
+            0,
+            -3
+          ],
+          "d4c2": [
+            1,
+            -3
+          ],
+          "d4c3": [
+            2,
+            -3
+          ],
+          "d4c4": [
+            3,
+            -3
+          ],
+          "d4c5": [
+            4,
+            -3
+          ],
+          "d4c6": [
+            5,
+            -3
+          ],
+          "d4c7": [
+            6,
+            -3
+          ],
+          "d5c1": [
+            0,
+            -4
+          ],
+          "d5c2": [
+            1,
+            -4
+          ],
+          "d5c3": [
+            2,
+            -4
+          ],
+          "d5c4": [
+            3,
+            -4
+          ],
+          "d5c5": [
+            4,
+            -4
+          ],
+          "d5c6": [
+            5,
+            -4
+          ],
+          "d5c7": [
+            6,
+            -4
+          ],
+          "d6c1": [
+            0,
+            -5
+          ],
+          "d6c2": [
+            1,
+            -5
+          ],
+          "d6c3": [
+            2,
+            -5
+          ],
+          "d6c4": [
+            3,
+            -5
+          ],
+          "d6c5": [
+            4,
+            -5
+          ],
+          "d6c6": [
+            5,
+            -5
+          ],
+          "d6c7": [
+            6,
+            -5
+          ],
+          "Box": [
+            3,
+            1.5
+          ],
+          "N1": [
+            0,
+            1.2
+          ],
+          "N2": [
+            1,
+            1.2
+          ],
+          "N3": [
+            2,
+            1.2
+          ],
+          "N4": [
+            3,
+            1.2
+          ],
+          "N5": [
+            4,
+            1.2
+          ],
+          "N6": [
+            5,
+            1.2
+          ],
+          "N7": [
+            6,
+            1.2
+          ]
+        },
+        "parts": [
+          {
+            "id": "rowWash",
+            "poly": [
+              "W1",
+              "W2",
+              "W3",
+              "W4"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 1
+          },
+          {
+            "id": "grid",
+            "grid": [
+              7,
+              6
+            ],
+            "at": "G"
+          },
+          {
+            "id": "topBracket",
+            "seg": [
+              "TL",
+              "TR"
+            ],
+            "ink": "accent",
+            "w": 2
+          },
+          {
+            "id": "sideBracket",
+            "seg": [
+              "LL",
+              "LB"
+            ],
+            "ink": "blue",
+            "w": 2
+          },
+          {
+            "id": "rows",
+            "label": "6",
+            "at": "Row",
+            "dir": "c",
+            "size": "xl",
+            "ink": "blue"
+          },
+          {
+            "id": "each",
+            "label": "\\square",
+            "at": "Each",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent"
+          },
+          {
+            "id": "total",
+            "label": "42\\text{ in all}",
+            "at": "Total",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm"
+          },
+          {
+            "id": "live",
+            "label": "@n\\text{ dots}",
+            "at": "Total",
+            "of": "grid",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm"
+          },
+          {
+            "id": "d1c1",
+            "dot": "d1c1",
+            "group": "col1",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d1c2",
+            "dot": "d1c2",
+            "group": "col2",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d1c3",
+            "dot": "d1c3",
+            "group": "col3",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d1c4",
+            "dot": "d1c4",
+            "group": "col4",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d1c5",
+            "dot": "d1c5",
+            "group": "col5",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d1c6",
+            "dot": "d1c6",
+            "group": "col6",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d1c7",
+            "dot": "d1c7",
+            "group": "col7",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d2c1",
+            "dot": "d2c1",
+            "group": "col1",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d2c2",
+            "dot": "d2c2",
+            "group": "col2",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d2c3",
+            "dot": "d2c3",
+            "group": "col3",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d2c4",
+            "dot": "d2c4",
+            "group": "col4",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d2c5",
+            "dot": "d2c5",
+            "group": "col5",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d2c6",
+            "dot": "d2c6",
+            "group": "col6",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d2c7",
+            "dot": "d2c7",
+            "group": "col7",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d3c1",
+            "dot": "d3c1",
+            "group": "col1",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d3c2",
+            "dot": "d3c2",
+            "group": "col2",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d3c3",
+            "dot": "d3c3",
+            "group": "col3",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d3c4",
+            "dot": "d3c4",
+            "group": "col4",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d3c5",
+            "dot": "d3c5",
+            "group": "col5",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d3c6",
+            "dot": "d3c6",
+            "group": "col6",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d3c7",
+            "dot": "d3c7",
+            "group": "col7",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d4c1",
+            "dot": "d4c1",
+            "group": "col1",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d4c2",
+            "dot": "d4c2",
+            "group": "col2",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d4c3",
+            "dot": "d4c3",
+            "group": "col3",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d4c4",
+            "dot": "d4c4",
+            "group": "col4",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d4c5",
+            "dot": "d4c5",
+            "group": "col5",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d4c6",
+            "dot": "d4c6",
+            "group": "col6",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d4c7",
+            "dot": "d4c7",
+            "group": "col7",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d5c1",
+            "dot": "d5c1",
+            "group": "col1",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d5c2",
+            "dot": "d5c2",
+            "group": "col2",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d5c3",
+            "dot": "d5c3",
+            "group": "col3",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d5c4",
+            "dot": "d5c4",
+            "group": "col4",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d5c5",
+            "dot": "d5c5",
+            "group": "col5",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d5c6",
+            "dot": "d5c6",
+            "group": "col6",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d5c7",
+            "dot": "d5c7",
+            "group": "col7",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d6c1",
+            "dot": "d6c1",
+            "group": "col1",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d6c2",
+            "dot": "d6c2",
+            "group": "col2",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d6c3",
+            "dot": "d6c3",
+            "group": "col3",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d6c4",
+            "dot": "d6c4",
+            "group": "col4",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d6c5",
+            "dot": "d6c5",
+            "group": "col5",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d6c6",
+            "dot": "d6c6",
+            "group": "col6",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d6c7",
+            "dot": "d6c7",
+            "group": "col7",
+            "r": 30,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "seven",
+            "label": "7",
+            "at": "Each",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent"
+          },
+          {
+            "id": "number1",
+            "label": "1",
+            "at": "N1",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent"
+          },
+          {
+            "id": "number2",
+            "label": "2",
+            "at": "N2",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent"
+          },
+          {
+            "id": "number3",
+            "label": "3",
+            "at": "N3",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent"
+          },
+          {
+            "id": "number4",
+            "label": "4",
+            "at": "N4",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent"
+          },
+          {
+            "id": "number5",
+            "label": "5",
+            "at": "N5",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent"
+          },
+          {
+            "id": "number6",
+            "label": "6",
+            "at": "N6",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent"
+          },
+          {
+            "id": "number7",
+            "label": "7",
+            "at": "N7",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Six times a box equals forty-two. The box stands for a missing number.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "tex": "\\cb{6}\\times\\square=\\cw{42}"
+            },
+            {
+              "do": "show",
+              "target": [
+                "sideBracket",
+                "rows",
+                "each"
+              ],
+              "at": "missing"
+            },
+            {
+              "do": "text",
+              "text": "6 rows; 42 dots in all",
+              "at": "forty-two"
+            }
+          ],
+          "pause": 0.05
+        },
+        {
+          "speaker": "learner",
+          "say": "Does forty-two go in the box?",
+          "do": [],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Forty-two is the whole array. We need how many dots belong in each of six rows.",
+          "do": [
+            {
+              "do": "text",
+              "text": "The box: dots in each row"
+            },
+            {
+              "do": "show",
+              "target": "col1",
+              "at": "six"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Start with one dot per row: six dots. Each new column adds six more. Stop at forty-two.",
+          "do": [
+            {
+              "do": "show",
+              "target": "live"
+            },
+            {
+              "do": "highlight",
+              "target": "col1",
+              "at": "six"
+            },
+            {
+              "do": "clear",
+              "at": "adds"
+            },
+            {
+              "do": "text",
+              "text": "Add 6. Stop at 42.",
+              "at": "adds"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Six.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "col1"
+            }
+          ],
+          "pause": 0.1
+        },
+        {
+          "speaker": "teacher",
+          "say": "Twelve.",
+          "do": [
+            {
+              "do": "show",
+              "target": "col2"
+            },
+            {
+              "do": "highlight",
+              "target": "col2"
+            }
+          ],
+          "pause": 0.1
+        },
+        {
+          "speaker": "teacher",
+          "say": "Eighteen.",
+          "do": [
+            {
+              "do": "show",
+              "target": "col3"
+            },
+            {
+              "do": "highlight",
+              "target": "col3"
+            }
+          ],
+          "pause": 0.1
+        },
+        {
+          "speaker": "teacher",
+          "say": "Twenty-four.",
+          "do": [
+            {
+              "do": "show",
+              "target": "col4"
+            },
+            {
+              "do": "highlight",
+              "target": "col4"
+            }
+          ],
+          "pause": 0.1
+        },
+        {
+          "speaker": "teacher",
+          "say": "Thirty.",
+          "do": [
+            {
+              "do": "show",
+              "target": "col5"
+            },
+            {
+              "do": "highlight",
+              "target": "col5"
+            }
+          ],
+          "pause": 0.1
+        },
+        {
+          "speaker": "teacher",
+          "say": "Thirty-six.",
+          "do": [
+            {
+              "do": "show",
+              "target": "col6"
+            },
+            {
+              "do": "highlight",
+              "target": "col6"
+            }
+          ],
+          "pause": 0.1
+        },
+        {
+          "speaker": "teacher",
+          "say": "Forty-two. Exactly.",
+          "do": [
+            {
+              "do": "show",
+              "target": "col7"
+            },
+            {
+              "do": "highlight",
+              "target": "col7"
+            }
+          ],
+          "pause": 0.5
+        },
+        {
+          "speaker": "teacher",
+          "say": "Count across one row: one, two, three, four, five, six, seven.",
+          "do": [
+            {
+              "do": "hide",
+              "target": "each"
+            },
+            {
+              "do": "show",
+              "target": "rowWash"
+            },
+            {
+              "do": "show",
+              "target": "number1",
+              "at": "one",
+              "nth": 2
+            },
+            {
+              "do": "highlight",
+              "target": "d1c1",
+              "at": "one",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": "number2",
+              "at": "two"
+            },
+            {
+              "do": "highlight",
+              "target": "d1c2",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "number3",
+              "at": "three"
+            },
+            {
+              "do": "highlight",
+              "target": "d1c3",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "number4",
+              "at": "four"
+            },
+            {
+              "do": "highlight",
+              "target": "d1c4",
+              "at": "four"
+            },
+            {
+              "do": "show",
+              "target": "number5",
+              "at": "five"
+            },
+            {
+              "do": "highlight",
+              "target": "d1c5",
+              "at": "five"
+            },
+            {
+              "do": "show",
+              "target": "number6",
+              "at": "six"
+            },
+            {
+              "do": "highlight",
+              "target": "d1c6",
+              "at": "six"
+            },
+            {
+              "do": "show",
+              "target": "number7",
+              "at": "seven"
+            },
+            {
+              "do": "highlight",
+              "target": "d1c7",
+              "at": "seven"
+            }
+          ],
+          "pause": 0.05
+        },
+        {
+          "speaker": "learner",
+          "say": "Seven in every row! So seven goes in the box.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "each",
+                "number1",
+                "number2",
+                "number3",
+                "number4",
+                "number5",
+                "number6",
+                "number7"
+              ]
+            },
+            {
+              "do": "show",
+              "target": [
+                "seven",
+                "topBracket"
+              ]
+            },
+            {
+              "do": "answer",
+              "tex": "6\\times\\boxed{7}=42",
+              "at": "box"
+            },
+            {
+              "do": "hide",
+              "target": "live"
+            },
+            {
+              "do": "show",
+              "target": "total"
+            },
+            {
+              "do": "hide",
+              "target": "rowWash",
+              "at": "So"
+            }
+          ],
+          "pause": 0.05
+        },
+        {
+          "speaker": "teacher",
+          "say": "Forty-two divided into six equal rows also asks how many in each row. Seven.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "tex": "42\\div6=\\square"
+            },
+            {
+              "do": "write",
+              "tex": "42\\div6=\\boxed7",
+              "at": "Seven"
+            },
+            {
+              "do": "hide",
+              "target": "rowWash"
+            }
+          ],
+          "pause": 0.3
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -2.1,
+          -10.3,
+          10.7,
+          2.45
+        ],
+        "points": {
+          "G": [
+            -0.5,
+            0.5
+          ],
+          "Row": [
+            -1.5,
+            -4
+          ],
+          "Each": [
+            4.5,
+            1.8
+          ],
+          "Total": [
+            4.5,
+            -9.6
+          ],
+          "TL": [
+            -0.45,
+            0.7
+          ],
+          "TR": [
+            9.45,
+            0.7
+          ],
+          "LL": [
+            -0.7,
+            0.4
+          ],
+          "LB": [
+            -0.7,
+            -8.4
+          ],
+          "W1": [
+            -0.4,
+            0.46
+          ],
+          "W2": [
+            9.4,
+            0.46
+          ],
+          "W3": [
+            9.4,
+            -0.46
+          ],
+          "W4": [
+            -0.4,
+            -0.46
+          ],
+          "d1c1": [
+            0,
+            0
+          ],
+          "d1c2": [
+            1,
+            0
+          ],
+          "d1c3": [
+            2,
+            0
+          ],
+          "d1c4": [
+            3,
+            0
+          ],
+          "d1c5": [
+            4,
+            0
+          ],
+          "d1c6": [
+            5,
+            0
+          ],
+          "d1c7": [
+            6,
+            0
+          ],
+          "d1c8": [
+            7,
+            0
+          ],
+          "d1c9": [
+            8,
+            0
+          ],
+          "d1c10": [
+            9,
+            0
+          ],
+          "d2c1": [
+            0,
+            -1
+          ],
+          "d2c2": [
+            1,
+            -1
+          ],
+          "d2c3": [
+            2,
+            -1
+          ],
+          "d2c4": [
+            3,
+            -1
+          ],
+          "d2c5": [
+            4,
+            -1
+          ],
+          "d2c6": [
+            5,
+            -1
+          ],
+          "d2c7": [
+            6,
+            -1
+          ],
+          "d2c8": [
+            7,
+            -1
+          ],
+          "d2c9": [
+            8,
+            -1
+          ],
+          "d2c10": [
+            9,
+            -1
+          ],
+          "d3c1": [
+            0,
+            -2
+          ],
+          "d3c2": [
+            1,
+            -2
+          ],
+          "d3c3": [
+            2,
+            -2
+          ],
+          "d3c4": [
+            3,
+            -2
+          ],
+          "d3c5": [
+            4,
+            -2
+          ],
+          "d3c6": [
+            5,
+            -2
+          ],
+          "d3c7": [
+            6,
+            -2
+          ],
+          "d3c8": [
+            7,
+            -2
+          ],
+          "d3c9": [
+            8,
+            -2
+          ],
+          "d3c10": [
+            9,
+            -2
+          ],
+          "d4c1": [
+            0,
+            -3
+          ],
+          "d4c2": [
+            1,
+            -3
+          ],
+          "d4c3": [
+            2,
+            -3
+          ],
+          "d4c4": [
+            3,
+            -3
+          ],
+          "d4c5": [
+            4,
+            -3
+          ],
+          "d4c6": [
+            5,
+            -3
+          ],
+          "d4c7": [
+            6,
+            -3
+          ],
+          "d4c8": [
+            7,
+            -3
+          ],
+          "d4c9": [
+            8,
+            -3
+          ],
+          "d4c10": [
+            9,
+            -3
+          ],
+          "d5c1": [
+            0,
+            -4
+          ],
+          "d5c2": [
+            1,
+            -4
+          ],
+          "d5c3": [
+            2,
+            -4
+          ],
+          "d5c4": [
+            3,
+            -4
+          ],
+          "d5c5": [
+            4,
+            -4
+          ],
+          "d5c6": [
+            5,
+            -4
+          ],
+          "d5c7": [
+            6,
+            -4
+          ],
+          "d5c8": [
+            7,
+            -4
+          ],
+          "d5c9": [
+            8,
+            -4
+          ],
+          "d5c10": [
+            9,
+            -4
+          ],
+          "d6c1": [
+            0,
+            -5
+          ],
+          "d6c2": [
+            1,
+            -5
+          ],
+          "d6c3": [
+            2,
+            -5
+          ],
+          "d6c4": [
+            3,
+            -5
+          ],
+          "d6c5": [
+            4,
+            -5
+          ],
+          "d6c6": [
+            5,
+            -5
+          ],
+          "d6c7": [
+            6,
+            -5
+          ],
+          "d6c8": [
+            7,
+            -5
+          ],
+          "d6c9": [
+            8,
+            -5
+          ],
+          "d6c10": [
+            9,
+            -5
+          ],
+          "d7c1": [
+            0,
+            -6
+          ],
+          "d7c2": [
+            1,
+            -6
+          ],
+          "d7c3": [
+            2,
+            -6
+          ],
+          "d7c4": [
+            3,
+            -6
+          ],
+          "d7c5": [
+            4,
+            -6
+          ],
+          "d7c6": [
+            5,
+            -6
+          ],
+          "d7c7": [
+            6,
+            -6
+          ],
+          "d7c8": [
+            7,
+            -6
+          ],
+          "d7c9": [
+            8,
+            -6
+          ],
+          "d7c10": [
+            9,
+            -6
+          ],
+          "d8c1": [
+            0,
+            -7
+          ],
+          "d8c2": [
+            1,
+            -7
+          ],
+          "d8c3": [
+            2,
+            -7
+          ],
+          "d8c4": [
+            3,
+            -7
+          ],
+          "d8c5": [
+            4,
+            -7
+          ],
+          "d8c6": [
+            5,
+            -7
+          ],
+          "d8c7": [
+            6,
+            -7
+          ],
+          "d8c8": [
+            7,
+            -7
+          ],
+          "d8c9": [
+            8,
+            -7
+          ],
+          "d8c10": [
+            9,
+            -7
+          ],
+          "d9c1": [
+            0,
+            -8
+          ],
+          "d9c2": [
+            1,
+            -8
+          ],
+          "d9c3": [
+            2,
+            -8
+          ],
+          "d9c4": [
+            3,
+            -8
+          ],
+          "d9c5": [
+            4,
+            -8
+          ],
+          "d9c6": [
+            5,
+            -8
+          ],
+          "d9c7": [
+            6,
+            -8
+          ],
+          "d9c8": [
+            7,
+            -8
+          ],
+          "d9c9": [
+            8,
+            -8
+          ],
+          "d9c10": [
+            9,
+            -8
+          ],
+          "R1": [
+            10.05,
+            0
+          ],
+          "R2": [
+            10.05,
+            -1
+          ],
+          "R3": [
+            10.05,
+            -2
+          ],
+          "R4": [
+            10.05,
+            -3
+          ],
+          "R5": [
+            10.05,
+            -4
+          ],
+          "R6": [
+            10.05,
+            -5
+          ],
+          "R7": [
+            10.05,
+            -6
+          ],
+          "R8": [
+            10.05,
+            -7
+          ],
+          "R9": [
+            10.05,
+            -8
+          ]
+        },
+        "parts": [
+          {
+            "id": "rowWash",
+            "poly": [
+              "W1",
+              "W2",
+              "W3",
+              "W4"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 1
+          },
+          {
+            "id": "grid",
+            "grid": [
+              10,
+              9
+            ],
+            "at": "G"
+          },
+          {
+            "id": "topBracket",
+            "seg": [
+              "TL",
+              "TR"
+            ],
+            "ink": "accent",
+            "w": 2
+          },
+          {
+            "id": "sideBracket",
+            "seg": [
+              "LL",
+              "LB"
+            ],
+            "ink": "blue",
+            "w": 2
+          },
+          {
+            "id": "rows",
+            "label": "\\square",
+            "at": "Row",
+            "dir": "c",
+            "size": "xl",
+            "ink": "blue"
+          },
+          {
+            "id": "each",
+            "label": "10",
+            "at": "Each",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent"
+          },
+          {
+            "id": "total",
+            "label": "90\\text{ in all}",
+            "at": "Total",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm"
+          },
+          {
+            "id": "live",
+            "label": "@n\\text{ dots}",
+            "at": "Total",
+            "of": "grid",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm"
+          },
+          {
+            "id": "d1c1",
+            "dot": "d1c1",
+            "group": "row1",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d1c2",
+            "dot": "d1c2",
+            "group": "row1",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d1c3",
+            "dot": "d1c3",
+            "group": "row1",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d1c4",
+            "dot": "d1c4",
+            "group": "row1",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d1c5",
+            "dot": "d1c5",
+            "group": "row1",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d1c6",
+            "dot": "d1c6",
+            "group": "row1",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d1c7",
+            "dot": "d1c7",
+            "group": "row1",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d1c8",
+            "dot": "d1c8",
+            "group": "row1",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d1c9",
+            "dot": "d1c9",
+            "group": "row1",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d1c10",
+            "dot": "d1c10",
+            "group": "row1",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d2c1",
+            "dot": "d2c1",
+            "group": "row2",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d2c2",
+            "dot": "d2c2",
+            "group": "row2",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d2c3",
+            "dot": "d2c3",
+            "group": "row2",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d2c4",
+            "dot": "d2c4",
+            "group": "row2",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d2c5",
+            "dot": "d2c5",
+            "group": "row2",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d2c6",
+            "dot": "d2c6",
+            "group": "row2",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d2c7",
+            "dot": "d2c7",
+            "group": "row2",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d2c8",
+            "dot": "d2c8",
+            "group": "row2",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d2c9",
+            "dot": "d2c9",
+            "group": "row2",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d2c10",
+            "dot": "d2c10",
+            "group": "row2",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d3c1",
+            "dot": "d3c1",
+            "group": "row3",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d3c2",
+            "dot": "d3c2",
+            "group": "row3",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d3c3",
+            "dot": "d3c3",
+            "group": "row3",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d3c4",
+            "dot": "d3c4",
+            "group": "row3",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d3c5",
+            "dot": "d3c5",
+            "group": "row3",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d3c6",
+            "dot": "d3c6",
+            "group": "row3",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d3c7",
+            "dot": "d3c7",
+            "group": "row3",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d3c8",
+            "dot": "d3c8",
+            "group": "row3",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d3c9",
+            "dot": "d3c9",
+            "group": "row3",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d3c10",
+            "dot": "d3c10",
+            "group": "row3",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d4c1",
+            "dot": "d4c1",
+            "group": "row4",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d4c2",
+            "dot": "d4c2",
+            "group": "row4",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d4c3",
+            "dot": "d4c3",
+            "group": "row4",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d4c4",
+            "dot": "d4c4",
+            "group": "row4",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d4c5",
+            "dot": "d4c5",
+            "group": "row4",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d4c6",
+            "dot": "d4c6",
+            "group": "row4",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d4c7",
+            "dot": "d4c7",
+            "group": "row4",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d4c8",
+            "dot": "d4c8",
+            "group": "row4",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d4c9",
+            "dot": "d4c9",
+            "group": "row4",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d4c10",
+            "dot": "d4c10",
+            "group": "row4",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d5c1",
+            "dot": "d5c1",
+            "group": "row5",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d5c2",
+            "dot": "d5c2",
+            "group": "row5",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d5c3",
+            "dot": "d5c3",
+            "group": "row5",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d5c4",
+            "dot": "d5c4",
+            "group": "row5",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d5c5",
+            "dot": "d5c5",
+            "group": "row5",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d5c6",
+            "dot": "d5c6",
+            "group": "row5",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d5c7",
+            "dot": "d5c7",
+            "group": "row5",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d5c8",
+            "dot": "d5c8",
+            "group": "row5",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d5c9",
+            "dot": "d5c9",
+            "group": "row5",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d5c10",
+            "dot": "d5c10",
+            "group": "row5",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d6c1",
+            "dot": "d6c1",
+            "group": "row6",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d6c2",
+            "dot": "d6c2",
+            "group": "row6",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d6c3",
+            "dot": "d6c3",
+            "group": "row6",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d6c4",
+            "dot": "d6c4",
+            "group": "row6",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d6c5",
+            "dot": "d6c5",
+            "group": "row6",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d6c6",
+            "dot": "d6c6",
+            "group": "row6",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d6c7",
+            "dot": "d6c7",
+            "group": "row6",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d6c8",
+            "dot": "d6c8",
+            "group": "row6",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d6c9",
+            "dot": "d6c9",
+            "group": "row6",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d6c10",
+            "dot": "d6c10",
+            "group": "row6",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d7c1",
+            "dot": "d7c1",
+            "group": "row7",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d7c2",
+            "dot": "d7c2",
+            "group": "row7",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d7c3",
+            "dot": "d7c3",
+            "group": "row7",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d7c4",
+            "dot": "d7c4",
+            "group": "row7",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d7c5",
+            "dot": "d7c5",
+            "group": "row7",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d7c6",
+            "dot": "d7c6",
+            "group": "row7",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d7c7",
+            "dot": "d7c7",
+            "group": "row7",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d7c8",
+            "dot": "d7c8",
+            "group": "row7",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d7c9",
+            "dot": "d7c9",
+            "group": "row7",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d7c10",
+            "dot": "d7c10",
+            "group": "row7",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d8c1",
+            "dot": "d8c1",
+            "group": "row8",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d8c2",
+            "dot": "d8c2",
+            "group": "row8",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d8c3",
+            "dot": "d8c3",
+            "group": "row8",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d8c4",
+            "dot": "d8c4",
+            "group": "row8",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d8c5",
+            "dot": "d8c5",
+            "group": "row8",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d8c6",
+            "dot": "d8c6",
+            "group": "row8",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d8c7",
+            "dot": "d8c7",
+            "group": "row8",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d8c8",
+            "dot": "d8c8",
+            "group": "row8",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d8c9",
+            "dot": "d8c9",
+            "group": "row8",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d8c10",
+            "dot": "d8c10",
+            "group": "row8",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d9c1",
+            "dot": "d9c1",
+            "group": "row9",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d9c2",
+            "dot": "d9c2",
+            "group": "row9",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d9c3",
+            "dot": "d9c3",
+            "group": "row9",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d9c4",
+            "dot": "d9c4",
+            "group": "row9",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d9c5",
+            "dot": "d9c5",
+            "group": "row9",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d9c6",
+            "dot": "d9c6",
+            "group": "row9",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d9c7",
+            "dot": "d9c7",
+            "group": "row9",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d9c8",
+            "dot": "d9c8",
+            "group": "row9",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d9c9",
+            "dot": "d9c9",
+            "group": "row9",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d9c10",
+            "dot": "d9c10",
+            "group": "row9",
+            "r": 22,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "rnum1",
+            "label": "1",
+            "at": "R1",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue"
+          },
+          {
+            "id": "rnum2",
+            "label": "2",
+            "at": "R2",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue"
+          },
+          {
+            "id": "rnum3",
+            "label": "3",
+            "at": "R3",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue"
+          },
+          {
+            "id": "rnum4",
+            "label": "4",
+            "at": "R4",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue"
+          },
+          {
+            "id": "rnum5",
+            "label": "5",
+            "at": "R5",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue"
+          },
+          {
+            "id": "rnum6",
+            "label": "6",
+            "at": "R6",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue"
+          },
+          {
+            "id": "rnum7",
+            "label": "7",
+            "at": "R7",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue"
+          },
+          {
+            "id": "rnum8",
+            "label": "8",
+            "at": "R8",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue"
+          },
+          {
+            "id": "rnum9",
+            "label": "9",
+            "at": "R9",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue"
+          },
+          {
+            "id": "nine",
+            "label": "9",
+            "at": "Row",
+            "dir": "c",
+            "size": "xl",
+            "ink": "blue"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Box times ten equals ninety. This time, ten is in each row. How many rows?",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "tex": "\\square\\times10=90"
+            },
+            {
+              "do": "show",
+              "target": [
+                "each",
+                "topBracket",
+                "rows",
+                "row1",
+                "rnum1",
+                "live"
+              ],
+              "at": "ten",
+              "nth": 2
+            },
+            {
+              "do": "text",
+              "text": "The box: number of rows",
+              "at": "How"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Count tens until ninety: ten, twenty, thirty, forty, fifty, sixty, seventy, eighty, ninety.",
+          "do": [
+            {
+              "do": "show",
+              "target": "row2",
+              "at": "twenty"
+            },
+            {
+              "do": "show",
+              "target": "rnum2",
+              "at": "twenty"
+            },
+            {
+              "do": "show",
+              "target": "row3",
+              "at": "thirty"
+            },
+            {
+              "do": "show",
+              "target": "rnum3",
+              "at": "thirty"
+            },
+            {
+              "do": "show",
+              "target": "row4",
+              "at": "forty"
+            },
+            {
+              "do": "show",
+              "target": "rnum4",
+              "at": "forty"
+            },
+            {
+              "do": "show",
+              "target": "row5",
+              "at": "fifty"
+            },
+            {
+              "do": "show",
+              "target": "rnum5",
+              "at": "fifty"
+            },
+            {
+              "do": "show",
+              "target": "row6",
+              "at": "sixty"
+            },
+            {
+              "do": "show",
+              "target": "rnum6",
+              "at": "sixty"
+            },
+            {
+              "do": "show",
+              "target": "row7",
+              "at": "seventy"
+            },
+            {
+              "do": "show",
+              "target": "rnum7",
+              "at": "seventy"
+            },
+            {
+              "do": "show",
+              "target": "row8",
+              "at": "eighty"
+            },
+            {
+              "do": "show",
+              "target": "rnum8",
+              "at": "eighty"
+            },
+            {
+              "do": "show",
+              "target": "row9",
+              "at": "ninety",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": "rnum9",
+              "at": "ninety",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": "rowWash",
+              "at": "ten"
+            },
+            {
+              "do": "move",
+              "points": {
+                "W1": [
+                  -0.4,
+                  -0.54
+                ],
+                "W2": [
+                  9.4,
+                  -0.54
+                ],
+                "W3": [
+                  9.4,
+                  -1.46
+                ],
+                "W4": [
+                  -0.4,
+                  -1.46
+                ]
+              },
+              "at": "twenty",
+              "dur": 0.28
+            },
+            {
+              "do": "move",
+              "points": {
+                "W1": [
+                  -0.4,
+                  -1.54
+                ],
+                "W2": [
+                  9.4,
+                  -1.54
+                ],
+                "W3": [
+                  9.4,
+                  -2.46
+                ],
+                "W4": [
+                  -0.4,
+                  -2.46
+                ]
+              },
+              "at": "thirty",
+              "dur": 0.28
+            },
+            {
+              "do": "move",
+              "points": {
+                "W1": [
+                  -0.4,
+                  -2.54
+                ],
+                "W2": [
+                  9.4,
+                  -2.54
+                ],
+                "W3": [
+                  9.4,
+                  -3.46
+                ],
+                "W4": [
+                  -0.4,
+                  -3.46
+                ]
+              },
+              "at": "forty",
+              "dur": 0.28
+            },
+            {
+              "do": "move",
+              "points": {
+                "W1": [
+                  -0.4,
+                  -3.54
+                ],
+                "W2": [
+                  9.4,
+                  -3.54
+                ],
+                "W3": [
+                  9.4,
+                  -4.46
+                ],
+                "W4": [
+                  -0.4,
+                  -4.46
+                ]
+              },
+              "at": "fifty",
+              "dur": 0.28
+            },
+            {
+              "do": "move",
+              "points": {
+                "W1": [
+                  -0.4,
+                  -4.54
+                ],
+                "W2": [
+                  9.4,
+                  -4.54
+                ],
+                "W3": [
+                  9.4,
+                  -5.46
+                ],
+                "W4": [
+                  -0.4,
+                  -5.46
+                ]
+              },
+              "at": "sixty",
+              "dur": 0.28
+            },
+            {
+              "do": "move",
+              "points": {
+                "W1": [
+                  -0.4,
+                  -5.54
+                ],
+                "W2": [
+                  9.4,
+                  -5.54
+                ],
+                "W3": [
+                  9.4,
+                  -6.46
+                ],
+                "W4": [
+                  -0.4,
+                  -6.46
+                ]
+              },
+              "at": "seventy",
+              "dur": 0.28
+            },
+            {
+              "do": "move",
+              "points": {
+                "W1": [
+                  -0.4,
+                  -6.54
+                ],
+                "W2": [
+                  9.4,
+                  -6.54
+                ],
+                "W3": [
+                  9.4,
+                  -7.46
+                ],
+                "W4": [
+                  -0.4,
+                  -7.46
+                ]
+              },
+              "at": "eighty",
+              "dur": 0.28
+            },
+            {
+              "do": "move",
+              "points": {
+                "W1": [
+                  -0.4,
+                  -7.54
+                ],
+                "W2": [
+                  9.4,
+                  -7.54
+                ],
+                "W3": [
+                  9.4,
+                  -8.46
+                ],
+                "W4": [
+                  -0.4,
+                  -8.46
+                ]
+              },
+              "at": "ninety",
+              "dur": 0.28,
+              "nth": 2
+            }
+          ],
+          "pause": 0.05
+        },
+        {
+          "speaker": "learner",
+          "say": "Nine rows of ten. The box is nine, not ninety.",
+          "do": [
+            {
+              "do": "hide",
+              "target": "rowWash"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "rows",
+                "live"
+              ]
+            },
+            {
+              "do": "show",
+              "target": [
+                "nine",
+                "sideBracket",
+                "total"
+              ]
+            },
+            {
+              "do": "answer",
+              "tex": "\\boxed9\\times10=90",
+              "at": "nine"
+            }
+          ],
+          "pause": 0.05
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -2.1,
+          -10.3,
+          7.9,
+          2.45
+        ],
+        "points": {
+          "G": [
+            -0.5,
+            0.5
+          ],
+          "Row": [
+            -1.5,
+            -4
+          ],
+          "Each": [
+            3.5,
+            1.8
+          ],
+          "Total": [
+            3.5,
+            -9.6
+          ],
+          "TL": [
+            -0.45,
+            0.7
+          ],
+          "TR": [
+            7.45,
+            0.7
+          ],
+          "LL": [
+            -0.7,
+            0.4
+          ],
+          "LB": [
+            -0.7,
+            -8.4
+          ],
+          "W1": [
+            -0.4,
+            0.46
+          ],
+          "W2": [
+            7.4,
+            0.46
+          ],
+          "W3": [
+            7.4,
+            -0.46
+          ],
+          "W4": [
+            -0.4,
+            -0.46
+          ],
+          "d1c1": [
+            0,
+            0
+          ],
+          "d1c2": [
+            1,
+            0
+          ],
+          "d1c3": [
+            2,
+            0
+          ],
+          "d1c4": [
+            3,
+            0
+          ],
+          "d1c5": [
+            4,
+            0
+          ],
+          "d1c6": [
+            5,
+            0
+          ],
+          "d1c7": [
+            6,
+            0
+          ],
+          "d1c8": [
+            7,
+            0
+          ],
+          "d2c1": [
+            0,
+            -1
+          ],
+          "d2c2": [
+            1,
+            -1
+          ],
+          "d2c3": [
+            2,
+            -1
+          ],
+          "d2c4": [
+            3,
+            -1
+          ],
+          "d2c5": [
+            4,
+            -1
+          ],
+          "d2c6": [
+            5,
+            -1
+          ],
+          "d2c7": [
+            6,
+            -1
+          ],
+          "d2c8": [
+            7,
+            -1
+          ],
+          "d3c1": [
+            0,
+            -2
+          ],
+          "d3c2": [
+            1,
+            -2
+          ],
+          "d3c3": [
+            2,
+            -2
+          ],
+          "d3c4": [
+            3,
+            -2
+          ],
+          "d3c5": [
+            4,
+            -2
+          ],
+          "d3c6": [
+            5,
+            -2
+          ],
+          "d3c7": [
+            6,
+            -2
+          ],
+          "d3c8": [
+            7,
+            -2
+          ],
+          "d4c1": [
+            0,
+            -3
+          ],
+          "d4c2": [
+            1,
+            -3
+          ],
+          "d4c3": [
+            2,
+            -3
+          ],
+          "d4c4": [
+            3,
+            -3
+          ],
+          "d4c5": [
+            4,
+            -3
+          ],
+          "d4c6": [
+            5,
+            -3
+          ],
+          "d4c7": [
+            6,
+            -3
+          ],
+          "d4c8": [
+            7,
+            -3
+          ],
+          "d5c1": [
+            0,
+            -4
+          ],
+          "d5c2": [
+            1,
+            -4
+          ],
+          "d5c3": [
+            2,
+            -4
+          ],
+          "d5c4": [
+            3,
+            -4
+          ],
+          "d5c5": [
+            4,
+            -4
+          ],
+          "d5c6": [
+            5,
+            -4
+          ],
+          "d5c7": [
+            6,
+            -4
+          ],
+          "d5c8": [
+            7,
+            -4
+          ],
+          "d6c1": [
+            0,
+            -5
+          ],
+          "d6c2": [
+            1,
+            -5
+          ],
+          "d6c3": [
+            2,
+            -5
+          ],
+          "d6c4": [
+            3,
+            -5
+          ],
+          "d6c5": [
+            4,
+            -5
+          ],
+          "d6c6": [
+            5,
+            -5
+          ],
+          "d6c7": [
+            6,
+            -5
+          ],
+          "d6c8": [
+            7,
+            -5
+          ],
+          "d7c1": [
+            0,
+            -6
+          ],
+          "d7c2": [
+            1,
+            -6
+          ],
+          "d7c3": [
+            2,
+            -6
+          ],
+          "d7c4": [
+            3,
+            -6
+          ],
+          "d7c5": [
+            4,
+            -6
+          ],
+          "d7c6": [
+            5,
+            -6
+          ],
+          "d7c7": [
+            6,
+            -6
+          ],
+          "d7c8": [
+            7,
+            -6
+          ],
+          "d8c1": [
+            0,
+            -7
+          ],
+          "d8c2": [
+            1,
+            -7
+          ],
+          "d8c3": [
+            2,
+            -7
+          ],
+          "d8c4": [
+            3,
+            -7
+          ],
+          "d8c5": [
+            4,
+            -7
+          ],
+          "d8c6": [
+            5,
+            -7
+          ],
+          "d8c7": [
+            6,
+            -7
+          ],
+          "d8c8": [
+            7,
+            -7
+          ],
+          "d9c1": [
+            0,
+            -8
+          ],
+          "d9c2": [
+            1,
+            -8
+          ],
+          "d9c3": [
+            2,
+            -8
+          ],
+          "d9c4": [
+            3,
+            -8
+          ],
+          "d9c5": [
+            4,
+            -8
+          ],
+          "d9c6": [
+            5,
+            -8
+          ],
+          "d9c7": [
+            6,
+            -8
+          ],
+          "d9c8": [
+            7,
+            -8
+          ]
+        },
+        "parts": [
+          {
+            "id": "rowWash",
+            "poly": [
+              "W1",
+              "W2",
+              "W3",
+              "W4"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 1
+          },
+          {
+            "id": "grid",
+            "grid": [
+              8,
+              9
+            ],
+            "at": "G"
+          },
+          {
+            "id": "topBracket",
+            "seg": [
+              "TL",
+              "TR"
+            ],
+            "ink": "accent",
+            "w": 2
+          },
+          {
+            "id": "sideBracket",
+            "seg": [
+              "LL",
+              "LB"
+            ],
+            "ink": "blue",
+            "w": 2
+          },
+          {
+            "id": "rows",
+            "label": "\\square",
+            "at": "Row",
+            "dir": "c",
+            "size": "xl",
+            "ink": "blue"
+          },
+          {
+            "id": "each",
+            "label": "8",
+            "at": "Each",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent"
+          },
+          {
+            "id": "total",
+            "label": "72\\text{ in all}",
+            "at": "Total",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm"
+          },
+          {
+            "id": "live",
+            "label": "@n\\text{ dots}",
+            "at": "Total",
+            "of": "grid",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm"
+          },
+          {
+            "id": "d1c1",
+            "dot": "d1c1",
+            "group": "row1",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d1c2",
+            "dot": "d1c2",
+            "group": "row1",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d1c3",
+            "dot": "d1c3",
+            "group": "row1",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d1c4",
+            "dot": "d1c4",
+            "group": "row1",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d1c5",
+            "dot": "d1c5",
+            "group": "row1",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d1c6",
+            "dot": "d1c6",
+            "group": "row1",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d1c7",
+            "dot": "d1c7",
+            "group": "row1",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d1c8",
+            "dot": "d1c8",
+            "group": "row1",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d2c1",
+            "dot": "d2c1",
+            "group": "row2",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d2c2",
+            "dot": "d2c2",
+            "group": "row2",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d2c3",
+            "dot": "d2c3",
+            "group": "row2",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d2c4",
+            "dot": "d2c4",
+            "group": "row2",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d2c5",
+            "dot": "d2c5",
+            "group": "row2",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d2c6",
+            "dot": "d2c6",
+            "group": "row2",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d2c7",
+            "dot": "d2c7",
+            "group": "row2",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d2c8",
+            "dot": "d2c8",
+            "group": "row2",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d3c1",
+            "dot": "d3c1",
+            "group": "row3",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d3c2",
+            "dot": "d3c2",
+            "group": "row3",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d3c3",
+            "dot": "d3c3",
+            "group": "row3",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d3c4",
+            "dot": "d3c4",
+            "group": "row3",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d3c5",
+            "dot": "d3c5",
+            "group": "row3",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d3c6",
+            "dot": "d3c6",
+            "group": "row3",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d3c7",
+            "dot": "d3c7",
+            "group": "row3",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d3c8",
+            "dot": "d3c8",
+            "group": "row3",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d4c1",
+            "dot": "d4c1",
+            "group": "row4",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d4c2",
+            "dot": "d4c2",
+            "group": "row4",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d4c3",
+            "dot": "d4c3",
+            "group": "row4",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d4c4",
+            "dot": "d4c4",
+            "group": "row4",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d4c5",
+            "dot": "d4c5",
+            "group": "row4",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d4c6",
+            "dot": "d4c6",
+            "group": "row4",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d4c7",
+            "dot": "d4c7",
+            "group": "row4",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d4c8",
+            "dot": "d4c8",
+            "group": "row4",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d5c1",
+            "dot": "d5c1",
+            "group": "row5",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d5c2",
+            "dot": "d5c2",
+            "group": "row5",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d5c3",
+            "dot": "d5c3",
+            "group": "row5",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d5c4",
+            "dot": "d5c4",
+            "group": "row5",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d5c5",
+            "dot": "d5c5",
+            "group": "row5",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d5c6",
+            "dot": "d5c6",
+            "group": "row5",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d5c7",
+            "dot": "d5c7",
+            "group": "row5",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d5c8",
+            "dot": "d5c8",
+            "group": "row5",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d6c1",
+            "dot": "d6c1",
+            "group": "row6",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d6c2",
+            "dot": "d6c2",
+            "group": "row6",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d6c3",
+            "dot": "d6c3",
+            "group": "row6",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d6c4",
+            "dot": "d6c4",
+            "group": "row6",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d6c5",
+            "dot": "d6c5",
+            "group": "row6",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d6c6",
+            "dot": "d6c6",
+            "group": "row6",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d6c7",
+            "dot": "d6c7",
+            "group": "row6",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d6c8",
+            "dot": "d6c8",
+            "group": "row6",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d7c1",
+            "dot": "d7c1",
+            "group": "row7",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d7c2",
+            "dot": "d7c2",
+            "group": "row7",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d7c3",
+            "dot": "d7c3",
+            "group": "row7",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d7c4",
+            "dot": "d7c4",
+            "group": "row7",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d7c5",
+            "dot": "d7c5",
+            "group": "row7",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d7c6",
+            "dot": "d7c6",
+            "group": "row7",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d7c7",
+            "dot": "d7c7",
+            "group": "row7",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d7c8",
+            "dot": "d7c8",
+            "group": "row7",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d8c1",
+            "dot": "d8c1",
+            "group": "row8",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d8c2",
+            "dot": "d8c2",
+            "group": "row8",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d8c3",
+            "dot": "d8c3",
+            "group": "row8",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d8c4",
+            "dot": "d8c4",
+            "group": "row8",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d8c5",
+            "dot": "d8c5",
+            "group": "row8",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d8c6",
+            "dot": "d8c6",
+            "group": "row8",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d8c7",
+            "dot": "d8c7",
+            "group": "row8",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d8c8",
+            "dot": "d8c8",
+            "group": "row8",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d9c1",
+            "dot": "d9c1",
+            "group": "row9",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d9c2",
+            "dot": "d9c2",
+            "group": "row9",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d9c3",
+            "dot": "d9c3",
+            "group": "row9",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d9c4",
+            "dot": "d9c4",
+            "group": "row9",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d9c5",
+            "dot": "d9c5",
+            "group": "row9",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d9c6",
+            "dot": "d9c6",
+            "group": "row9",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d9c7",
+            "dot": "d9c7",
+            "group": "row9",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "d9c8",
+            "dot": "d9c8",
+            "group": "row9",
+            "r": 26,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "nine",
+            "label": "9",
+            "at": "Row",
+            "dir": "c",
+            "size": "xl",
+            "ink": "blue"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Seventy-two divided by a box equals eight. Seventy-two dots, eight in each row. What is hidden?",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "tex": "72\\div\\square=8"
+            },
+            {
+              "do": "show",
+              "target": [
+                "each",
+                "topBracket",
+                "rows",
+                "live",
+                "row1"
+              ],
+              "at": "dots"
+            },
+            {
+              "do": "show",
+              "target": "rowWash",
+              "at": "eight",
+              "nth": 2
+            },
+            {
+              "do": "text",
+              "text": "8 in each row"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "The number of rows. How many eights make seventy-two?",
+          "do": [
+            {
+              "do": "hide",
+              "target": "rowWash"
+            },
+            {
+              "do": "write",
+              "tex": "\\square\\times8=72"
+            },
+            {
+              "do": "show",
+              "target": "live"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Eight, sixteen, twenty-four, thirty-two, forty, forty-eight, fifty-six, sixty-four, seventy-two.",
+          "do": [
+            {
+              "do": "show",
+              "target": "row2",
+              "at": "sixteen"
+            },
+            {
+              "do": "show",
+              "target": "row3",
+              "at": "twenty-four"
+            },
+            {
+              "do": "show",
+              "target": "row4",
+              "at": "thirty-two"
+            },
+            {
+              "do": "show",
+              "target": "row5",
+              "at": "forty"
+            },
+            {
+              "do": "show",
+              "target": "row6",
+              "at": "forty-eight"
+            },
+            {
+              "do": "show",
+              "target": "row7",
+              "at": "fifty-six"
+            },
+            {
+              "do": "show",
+              "target": "row8",
+              "at": "sixty-four"
+            },
+            {
+              "do": "show",
+              "target": "row9",
+              "at": "seventy-two"
+            },
+            {
+              "do": "show",
+              "target": "rowWash",
+              "at": "Eight"
+            },
+            {
+              "do": "move",
+              "points": {
+                "W1": [
+                  -0.4,
+                  -0.54
+                ],
+                "W2": [
+                  7.4,
+                  -0.54
+                ],
+                "W3": [
+                  7.4,
+                  -1.46
+                ],
+                "W4": [
+                  -0.4,
+                  -1.46
+                ]
+              },
+              "at": "sixteen",
+              "dur": 0.28
+            },
+            {
+              "do": "move",
+              "points": {
+                "W1": [
+                  -0.4,
+                  -1.54
+                ],
+                "W2": [
+                  7.4,
+                  -1.54
+                ],
+                "W3": [
+                  7.4,
+                  -2.46
+                ],
+                "W4": [
+                  -0.4,
+                  -2.46
+                ]
+              },
+              "at": "twenty-four",
+              "dur": 0.28
+            },
+            {
+              "do": "move",
+              "points": {
+                "W1": [
+                  -0.4,
+                  -2.54
+                ],
+                "W2": [
+                  7.4,
+                  -2.54
+                ],
+                "W3": [
+                  7.4,
+                  -3.46
+                ],
+                "W4": [
+                  -0.4,
+                  -3.46
+                ]
+              },
+              "at": "thirty-two",
+              "dur": 0.28
+            },
+            {
+              "do": "move",
+              "points": {
+                "W1": [
+                  -0.4,
+                  -3.54
+                ],
+                "W2": [
+                  7.4,
+                  -3.54
+                ],
+                "W3": [
+                  7.4,
+                  -4.46
+                ],
+                "W4": [
+                  -0.4,
+                  -4.46
+                ]
+              },
+              "at": "forty",
+              "dur": 0.28
+            },
+            {
+              "do": "move",
+              "points": {
+                "W1": [
+                  -0.4,
+                  -4.54
+                ],
+                "W2": [
+                  7.4,
+                  -4.54
+                ],
+                "W3": [
+                  7.4,
+                  -5.46
+                ],
+                "W4": [
+                  -0.4,
+                  -5.46
+                ]
+              },
+              "at": "forty-eight",
+              "dur": 0.28
+            },
+            {
+              "do": "move",
+              "points": {
+                "W1": [
+                  -0.4,
+                  -5.54
+                ],
+                "W2": [
+                  7.4,
+                  -5.54
+                ],
+                "W3": [
+                  7.4,
+                  -6.46
+                ],
+                "W4": [
+                  -0.4,
+                  -6.46
+                ]
+              },
+              "at": "fifty-six",
+              "dur": 0.28
+            },
+            {
+              "do": "move",
+              "points": {
+                "W1": [
+                  -0.4,
+                  -6.54
+                ],
+                "W2": [
+                  7.4,
+                  -6.54
+                ],
+                "W3": [
+                  7.4,
+                  -7.46
+                ],
+                "W4": [
+                  -0.4,
+                  -7.46
+                ]
+              },
+              "at": "sixty-four",
+              "dur": 0.28
+            },
+            {
+              "do": "move",
+              "points": {
+                "W1": [
+                  -0.4,
+                  -7.54
+                ],
+                "W2": [
+                  7.4,
+                  -7.54
+                ],
+                "W3": [
+                  7.4,
+                  -8.46
+                ],
+                "W4": [
+                  -0.4,
+                  -8.46
+                ]
+              },
+              "at": "seventy-two",
+              "dur": 0.28
+            }
+          ],
+          "pause": 0.5
+        },
+        {
+          "speaker": "teacher",
+          "say": "Nine rows. Check: nine times eight makes seventy-two. Seventy-two divided by nine is eight.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "hide",
+              "target": "rowWash"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "rows",
+                "live"
+              ]
+            },
+            {
+              "do": "show",
+              "target": [
+                "nine",
+                "sideBracket",
+                "total"
+              ]
+            },
+            {
+              "do": "write",
+              "tex": "9\\times8=72",
+              "at": "Check"
+            },
+            {
+              "do": "answer",
+              "tex": "72\\div\\boxed9=8",
+              "at": "divided"
+            }
+          ],
+          "pause": 0.5
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -2.1,
+          -7.3,
+          6.9,
+          2.15
+        ],
+        "points": {
+          "G": [
+            -0.5,
+            0.5
+          ],
+          "Row": [
+            -1.5,
+            -2.5
+          ],
+          "Each": [
+            3,
+            1.5
+          ],
+          "Total": [
+            3,
+            -6.6
+          ],
+          "TL": [
+            -0.45,
+            0.7
+          ],
+          "TR": [
+            6.45,
+            0.7
+          ],
+          "LL": [
+            -0.7,
+            0.4
+          ],
+          "LB": [
+            -0.7,
+            -5.4
+          ],
+          "W1": [
+            -0.4,
+            0.4
+          ],
+          "W2": [
+            6.4,
+            0.4
+          ],
+          "W3": [
+            6.4,
+            -0.4
+          ],
+          "W4": [
+            -0.4,
+            -0.4
+          ],
+          "d1c1": [
+            0,
+            0
+          ],
+          "d1c2": [
+            1,
+            0
+          ],
+          "d1c3": [
+            2,
+            0
+          ],
+          "d1c4": [
+            3,
+            0
+          ],
+          "d1c5": [
+            4,
+            0
+          ],
+          "d1c6": [
+            5,
+            0
+          ],
+          "d1c7": [
+            6,
+            0
+          ],
+          "d2c1": [
+            0,
+            -1
+          ],
+          "d2c2": [
+            1,
+            -1
+          ],
+          "d2c3": [
+            2,
+            -1
+          ],
+          "d2c4": [
+            3,
+            -1
+          ],
+          "d2c5": [
+            4,
+            -1
+          ],
+          "d2c6": [
+            5,
+            -1
+          ],
+          "d2c7": [
+            6,
+            -1
+          ],
+          "d3c1": [
+            0,
+            -2
+          ],
+          "d3c2": [
+            1,
+            -2
+          ],
+          "d3c3": [
+            2,
+            -2
+          ],
+          "d3c4": [
+            3,
+            -2
+          ],
+          "d3c5": [
+            4,
+            -2
+          ],
+          "d3c6": [
+            5,
+            -2
+          ],
+          "d3c7": [
+            6,
+            -2
+          ],
+          "d4c1": [
+            0,
+            -3
+          ],
+          "d4c2": [
+            1,
+            -3
+          ],
+          "d4c3": [
+            2,
+            -3
+          ],
+          "d4c4": [
+            3,
+            -3
+          ],
+          "d4c5": [
+            4,
+            -3
+          ],
+          "d4c6": [
+            5,
+            -3
+          ],
+          "d4c7": [
+            6,
+            -3
+          ],
+          "d5c1": [
+            0,
+            -4
+          ],
+          "d5c2": [
+            1,
+            -4
+          ],
+          "d5c3": [
+            2,
+            -4
+          ],
+          "d5c4": [
+            3,
+            -4
+          ],
+          "d5c5": [
+            4,
+            -4
+          ],
+          "d5c6": [
+            5,
+            -4
+          ],
+          "d5c7": [
+            6,
+            -4
+          ],
+          "d6c1": [
+            0,
+            -5
+          ],
+          "d6c2": [
+            1,
+            -5
+          ],
+          "d6c3": [
+            2,
+            -5
+          ],
+          "d6c4": [
+            3,
+            -5
+          ],
+          "d6c5": [
+            4,
+            -5
+          ],
+          "d6c6": [
+            5,
+            -5
+          ],
+          "d6c7": [
+            6,
+            -5
+          ],
+          "Mask": [
+            3,
+            1.5
+          ],
+          "CWa": [
+            -0.4,
+            0.4
+          ],
+          "CWb": [
+            0.4,
+            0.4
+          ],
+          "CWc": [
+            0.4,
+            -5.4
+          ],
+          "CWd": [
+            -0.4,
+            -5.4
+          ]
+        },
+        "parts": [
+          {
+            "id": "columnWash",
+            "poly": [
+              "CWa",
+              "CWb",
+              "CWc",
+              "CWd"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 1
+          },
+          {
+            "id": "rowWash",
+            "poly": [
+              "W1",
+              "W2",
+              "W3",
+              "W4"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 1
+          },
+          {
+            "id": "grid",
+            "grid": [
+              7,
+              6
+            ],
+            "at": "G"
+          },
+          {
+            "id": "topBracket",
+            "seg": [
+              "TL",
+              "TR"
+            ],
+            "ink": "accent",
+            "w": 2
+          },
+          {
+            "id": "sideBracket",
+            "seg": [
+              "LL",
+              "LB"
+            ],
+            "ink": "blue",
+            "w": 2
+          },
+          {
+            "id": "rows",
+            "label": "6",
+            "at": "Row",
+            "dir": "c",
+            "size": "xl",
+            "ink": "blue"
+          },
+          {
+            "id": "each",
+            "label": "7",
+            "at": "Each",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent"
+          },
+          {
+            "id": "total",
+            "label": "42\\text{ in all}",
+            "at": "Total",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm"
+          },
+          {
+            "id": "live",
+            "label": "@n\\text{ dots}",
+            "at": "Total",
+            "of": "grid",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm"
+          },
+          {
+            "id": "d1c1",
+            "dot": "d1c1",
+            "group": "col1",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d1c2",
+            "dot": "d1c2",
+            "group": "col2",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d1c3",
+            "dot": "d1c3",
+            "group": "col3",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d1c4",
+            "dot": "d1c4",
+            "group": "col4",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d1c5",
+            "dot": "d1c5",
+            "group": "col5",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d1c6",
+            "dot": "d1c6",
+            "group": "col6",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d1c7",
+            "dot": "d1c7",
+            "group": "col7",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d2c1",
+            "dot": "d2c1",
+            "group": "col1",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d2c2",
+            "dot": "d2c2",
+            "group": "col2",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d2c3",
+            "dot": "d2c3",
+            "group": "col3",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d2c4",
+            "dot": "d2c4",
+            "group": "col4",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d2c5",
+            "dot": "d2c5",
+            "group": "col5",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d2c6",
+            "dot": "d2c6",
+            "group": "col6",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d2c7",
+            "dot": "d2c7",
+            "group": "col7",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d3c1",
+            "dot": "d3c1",
+            "group": "col1",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d3c2",
+            "dot": "d3c2",
+            "group": "col2",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d3c3",
+            "dot": "d3c3",
+            "group": "col3",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d3c4",
+            "dot": "d3c4",
+            "group": "col4",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d3c5",
+            "dot": "d3c5",
+            "group": "col5",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d3c6",
+            "dot": "d3c6",
+            "group": "col6",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d3c7",
+            "dot": "d3c7",
+            "group": "col7",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d4c1",
+            "dot": "d4c1",
+            "group": "col1",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d4c2",
+            "dot": "d4c2",
+            "group": "col2",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d4c3",
+            "dot": "d4c3",
+            "group": "col3",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d4c4",
+            "dot": "d4c4",
+            "group": "col4",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d4c5",
+            "dot": "d4c5",
+            "group": "col5",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d4c6",
+            "dot": "d4c6",
+            "group": "col6",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d4c7",
+            "dot": "d4c7",
+            "group": "col7",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d5c1",
+            "dot": "d5c1",
+            "group": "col1",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d5c2",
+            "dot": "d5c2",
+            "group": "col2",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d5c3",
+            "dot": "d5c3",
+            "group": "col3",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d5c4",
+            "dot": "d5c4",
+            "group": "col4",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d5c5",
+            "dot": "d5c5",
+            "group": "col5",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d5c6",
+            "dot": "d5c6",
+            "group": "col6",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d5c7",
+            "dot": "d5c7",
+            "group": "col7",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d6c1",
+            "dot": "d6c1",
+            "group": "col1",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d6c2",
+            "dot": "d6c2",
+            "group": "col2",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d6c3",
+            "dot": "d6c3",
+            "group": "col3",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d6c4",
+            "dot": "d6c4",
+            "group": "col4",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d6c5",
+            "dot": "d6c5",
+            "group": "col5",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d6c6",
+            "dot": "d6c6",
+            "group": "col6",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "d6c7",
+            "dot": "d6c7",
+            "group": "col7",
+            "r": 30,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "mask",
+            "label": "\\square",
+            "at": "Mask",
+            "dir": "c",
+            "size": "xl",
+            "ink": "warm",
+            "flies": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "One array, three numbers. Hide how many are in each row.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "One array, three numbers"
+            },
+            {
+              "do": "show",
+              "target": [
+                "sideBracket",
+                "topBracket",
+                "rows",
+                "each",
+                "total"
+              ]
+            },
+            {
+              "do": "hide",
+              "target": "each",
+              "at": "Hide"
+            },
+            {
+              "do": "show",
+              "target": "mask",
+              "at": "Hide"
+            },
+            {
+              "do": "write",
+              "tex": "6\\times\\square=42",
+              "at": "Hide"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "It's seven.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "hide",
+              "target": "mask"
+            },
+            {
+              "do": "show",
+              "target": "each"
+            },
+            {
+              "do": "write",
+              "tex": "6\\times\\boxed7=42"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Forty-two dots, with six in every column. How many columns?",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "tex": "42\\div\\square=6"
+            },
+            {
+              "do": "show",
+              "target": "mask"
+            },
+            {
+              "do": "hide",
+              "target": "each"
+            },
+            {
+              "do": "show",
+              "target": "columnWash",
+              "at": "six"
+            },
+            {
+              "do": "slide",
+              "target": "columnWash",
+              "by": [
+                6,
+                0
+              ],
+              "at": "How",
+              "dur": 1.2
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Seven again!",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "mask",
+                "columnWash"
+              ]
+            },
+            {
+              "do": "show",
+              "target": "each"
+            },
+            {
+              "do": "write",
+              "tex": "42\\div\\boxed7=6"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Hide the total.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "tex": "\\square\\div7=6"
+            },
+            {
+              "do": "hide",
+              "target": "total",
+              "at": "total"
+            },
+            {
+              "do": "move",
+              "points": {
+                "Mask": "Total"
+              },
+              "dur": 0.01
+            },
+            {
+              "do": "show",
+              "target": "mask",
+              "at": "total"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Six rows of seven give forty-two.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "show",
+              "target": "rowWash",
+              "at": "seven"
+            },
+            {
+              "do": "write",
+              "tex": "\\boxed{42}\\div7=6",
+              "at": "forty-two"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "mask",
+                "rowWash"
+              ],
+              "at": "forty-two"
+            },
+            {
+              "do": "show",
+              "target": "total",
+              "at": "forty-two"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Hide the rows. Forty-two in groups of seven makes how many rows?",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "tex": "42\\div7=\\square"
+            },
+            {
+              "do": "hide",
+              "target": "rows",
+              "at": "rows"
+            },
+            {
+              "do": "move",
+              "points": {
+                "Mask": "Row"
+              },
+              "dur": 0.01
+            },
+            {
+              "do": "show",
+              "target": "mask",
+              "at": "rows"
+            },
+            {
+              "do": "show",
+              "target": "rowWash",
+              "at": "seven"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Six.",
+          "pause": 0.1,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "mask",
+                "rowWash"
+              ]
+            },
+            {
+              "do": "show",
+              "target": "rows"
+            },
+            {
+              "do": "write",
+              "tex": "42\\div7=\\boxed6"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The box is a number the other two already decide.",
+          "pause": 1.5,
+          "do": []
+        }
+      ]
+    }
+  ]
+}
