@@ -43,6 +43,7 @@ import {
 } from "../src/server/accounts";
 import { PostgresRepository } from "../src/server/repository";
 import { templates } from "../src/math/engine";
+import { workbookWorker } from "../src/workbook/off-thread";
 import { migrate } from "./migrate";
 import { schoolAdmin } from "./school-admin";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
@@ -91,9 +92,16 @@ await registerFamilyRoutes(api, { pool: db, authenticate });
 await registerSchoolRoutes(api, {
   pool: db,
   authenticate,
-  services: { origin, secret: "fixture-school-spaces-browser-secret" },
+  services: {
+    origin,
+    secret: "fixture-school-spaces-browser-secret",
+    // Workbooks are made and printed as production does; nothing prints.
+    learning,
+    renderer: { render: async () => Buffer.from("%PDF-1.4\n%%EOF\n") },
+  },
 });
 await api.listen({ host: "127.0.0.1", port: port + 1 });
+await workbookWorker().warm();
 const vite = await createServer({
   ...(process.env.AMP_VITE_CACHE_DIR
     ? { cacheDir: process.env.AMP_VITE_CACHE_DIR }
@@ -314,6 +322,51 @@ async function placeName(page: Page) {
 }
 
 try {
+  /** Every student of a class and what they have: the same people, the same
+   * learners, the same enrollments and their work, compared across expiry
+   * and payment (CP-1 H6): never re-imported, never replaced. */
+  async function records(classId: string) {
+    const { rows } = await db.query(
+      `SELECT p.id AS person,p.learner_id AS learner,e.id AS enrollment,
+       (SELECT count(*)::int FROM amp_attempts a WHERE a.learner_id=p.learner_id) AS attempts,
+       (SELECT count(*)::int FROM amp_workbooks w WHERE w.learner_id=p.learner_id) AS workbooks
+     FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
+     WHERE e.class_id=$1 AND e.role='student' ORDER BY p.id`,
+      [classId],
+    );
+    return rows as {
+      person: string;
+      learner: string;
+      enrollment: string;
+      attempts: number;
+      workbooks: number;
+    }[];
+  }
+
+  /** A staff member of a school, signed in on a device of their own. */
+  async function member(
+    orgId: string,
+    slug: string,
+    given: string,
+    family: string,
+    role: "admin" | "viewer" | "aide" | "teacher",
+    classId?: string,
+  ) {
+    const page = await device();
+    const address = `${slug}@staff.example.test`;
+    const accountId = await signUp(page, address, `${given} ${family}`);
+    await schools.addStaff({
+      orgId,
+      role,
+      givenName: given,
+      familyName: family,
+      accountId,
+      ...(classId ? { classId } : {}),
+    });
+    await signIn(page, address);
+    return page;
+  }
+
   // ── 1. The revenue path ────────────────────────────────────────────────
   const teacher = await device();
   const email = "rosa.lindqvist@example.test";
@@ -383,6 +436,32 @@ try {
   assert.equal(await placeName(teacher), "Grade 4 Math · Birchwood Elementary");
   await teacher.getByRole("heading", { name: "Add your students" }).waitFor();
   await capture(teacher, "class-day0-students");
+  // Its school's viewer and the class's aide read the class; neither is
+  // offered what only its teacher and school may do (M1).
+  const pilotViewer = await member(
+    created.org_id,
+    "omar",
+    "Omar",
+    "Nasser",
+    "viewer",
+  );
+  const pilotAide = await member(
+    created.org_id,
+    "june",
+    "June",
+    "Park",
+    "aide",
+    created.class_id,
+  );
+  for (const page of [pilotViewer, pilotAide]) {
+    await page.goto(`${classUrl}/today`);
+    await settled(page);
+    assert.equal(
+      await page.getByRole("link", { name: "Add students" }).count(),
+      0,
+      "only the teacher and the school add students",
+    );
+  }
   // The board waits for students, then for practice.
   await teacher.goto(`${classUrl}/start`);
   await teacher
@@ -417,6 +496,30 @@ try {
   await teacher
     .getByRole("heading", { name: "Practice hasn’t started" })
     .waitFor();
+  // Whatever their role, nobody's screens carry the code before Start (H2).
+  const closedFor = async (page: Page, where: string, ended: boolean) => {
+    for (const leaf of ["today", "roster", "start", "settings"]) {
+      await page.goto(`${classUrl}/${leaf}`);
+      await settled(page);
+      const text = await page.locator("body").innerText();
+      assert.ok(
+        !text.includes(code) &&
+          !text.includes(`${code.slice(0, 3)}-${code.slice(3)}`),
+        `${where} ${leaf}: no class code`,
+      );
+      if (leaf === "start")
+        await page
+          .getByRole("heading", {
+            name: ended
+              ? "Practice has ended"
+              : /^(Practice hasn’t started|Waiting for the class’s teacher to start practice)$/,
+          })
+          .waitFor();
+    }
+  };
+  await closedFor(pilotViewer, "viewer before Start", false);
+  await closedFor(pilotAide, "aide before Start", false);
+  await capture(pilotAide, "aide-board-before-start");
   await teacher.goto(`${classUrl}/today`);
   // Today's one required item: titled Start practice, its button Start,
   // and no box to tick.
@@ -500,11 +603,29 @@ try {
     "K–2",
     `a grade 4 student starts at grade 4, not ${firstProblem.templateId}`,
   );
+  // Exactly the class's course, saved as the learner's own start.
+  const anaLearner = (
+    await db.query("SELECT learner_id FROM amp_people WHERE id=$1", [ana])
+  ).rows[0].learner_id as string;
+  const placed = (
+    await db.query(
+      "SELECT starting_course_level,birth_year FROM amp_learners WHERE id=$1",
+      [anaLearner],
+    )
+  ).rows[0] as {
+    starting_course_level: number | null;
+    birth_year: number | null;
+  };
+  assert.equal(Number(placed.starting_course_level), 4, "starts at grade 4");
+  assert.equal(placed.birth_year, null, "a course never invents a birth year");
   await capture(student, "student-first-problem");
-  // A few answers, so the records have something in them.
+  // A few answers, so the records have something in them: at least one
+  // answer is saved, or the journey fails.
+  let answered = 0;
   for (let n = 0; n < 3; n++) {
     const answer = student.getByLabel("Answer", { exact: true });
     if (!(await answer.count())) break;
+    answered++;
     await answer.fill("7");
     await student.getByRole("button", { name: "Check", exact: true }).click();
     const next = student.getByRole("button", { name: /^(Next|Continue)/ });
@@ -519,6 +640,58 @@ try {
       .catch(() => undefined);
   }
 
+  assert.ok(answered > 0, "the student answered");
+  const attempts = (
+    await db.query(
+      "SELECT count(*)::int AS n FROM amp_attempts WHERE learner_id=$1",
+      [anaLearner],
+    )
+  ).rows[0].n as number;
+  assert.ok(attempts > 0, "the student's answers are saved");
+  // The aide prints workbooks, but never sign-in cards (M1).
+  await pilotAide.goto(`${classUrl}/today`);
+  await settled(pilotAide);
+  assert.equal(
+    await pilotAide.getByRole("link", { name: "Print cards" }).count(),
+    0,
+    "an aide prints no sign-in cards",
+  );
+  // An issued workbook, and a final grade: records that must outlast
+  // practice and payment.
+  const classApi = `${origin}/api/v1/school/classes/${created.class_id}`;
+  const stack = (await (
+    await teacher.request.get(`${classApi}/workbooks`)
+  ).json()) as { today: string };
+  let workbook: string | null = null;
+  for (let tries = 0; tries < 30 && !workbook; tries++) {
+    const made = await teacher.request.post(
+      `${classApi}/students/${ana}/workbooks`,
+      {
+        headers: { Origin: origin },
+        data: { date: stack.today, minutes: 30, paper: "letter", number: 1 },
+      },
+    );
+    const body = (await made.json()) as {
+      id?: string;
+      workbook?: { id: string };
+    };
+    workbook = made.ok() ? (body.id ?? null) : null;
+    if (!workbook) await teacher.waitForTimeout(1000);
+  }
+  assert.ok(workbook, "a workbook was made for the student");
+  const termRead = (await (
+    await teacher.request.get(`${classApi}/gradebook`)
+  ).json()) as { term?: { id: string } };
+  const graded = await teacher.request.post(
+    `${classApi}/students/${ana}/final`,
+    {
+      headers: { Origin: origin },
+      data: { term: termRead.term!.id, value: "B+" },
+    },
+  );
+  assert.equal(graded.status(), 200, "a final grade is entered");
+  const before = await records(created.class_id);
+  assert.equal(before.length, 4);
   // The records: the map, grades, report cards, time, workbooks.
   for (const leaf of [
     "map",
@@ -553,6 +726,20 @@ try {
   assert.equal(new URL(buyer).pathname, "/schools/continue");
   await capture(teacher, "buyer-link");
   await teacher.keyboard.press("Escape");
+  // The buyer's page: the school and the request, never a student's name.
+  const buyerPage = await device();
+  await buyerPage.goto(buyer);
+  await buyerPage
+    .getByRole("heading", { name: "AMP for Birchwood Elementary", exact: true })
+    .waitFor();
+  assert.equal(
+    new URL(buyerPage.url()).hash,
+    "",
+    "the token leaves the address",
+  );
+  for (const name of ["Ana Brook", "Ben Cole", "Ana B."])
+    assert.equal(await buyerPage.getByText(name).count(), 0, name);
+  await capture(buyerPage, "buyer-page");
 
   // The teacher's own pilot, in the school first run: her class, and the
   // buyer handoff beside it.
@@ -604,11 +791,41 @@ try {
       .waitFor();
   }
   await capture(teacher, "board-expired");
+  await closedFor(pilotViewer, "viewer after practice", true);
+  await closedFor(pilotAide, "aide after practice", true);
+  await capture(pilotViewer, "viewer-board-expired");
+  // The issued workbook still prints, and its paper results still go in.
+  const pdf = await teacher.request.get(
+    `${classApi}/students/${ana}/workbooks/${workbook}/pdf`,
+  );
+  assert.equal(pdf.status(), 200, "an issued workbook prints after practice");
+  const marked = await teacher.request.post(
+    `${classApi}/students/${ana}/workbooks/${workbook}/marks`,
+    {
+      headers: { Origin: origin },
+      data: { entries: [{ n: 1, mark: "right" }] },
+    },
+  );
+  assert.equal(marked.status(), 200, "paper results go in after practice");
+  assert.deepEqual(
+    (await records(created.class_id)).map(
+      ({ person, learner, enrollment }) => ({
+        person,
+        learner,
+        enrollment,
+      }),
+    ),
+    before.map(({ person, learner, enrollment }) => ({
+      person,
+      learner,
+      enrollment,
+    })),
+    "the same students, learners and enrollments after practice",
+  );
   // Exports answer after practice ends (docs/schools.md, "When a school
   // pays"): the gradebook's CSV and the time CSV.
   await teacher.goto(`${classUrl}/gradebook`);
   await settled(teacher);
-  const classApi = `${origin}/api/v1/school/classes/${created.class_id}`;
   const book = await teacher.request.get(`${classApi}/gradebook`);
   assert.equal(book.status(), 200, "the gradebook reads after practice");
   const term = ((await book.json()) as { term?: { id: string } }).term?.id;
@@ -638,6 +855,15 @@ try {
   // A student's next step says so, without a code to retry.
   await student.goto(`${origin}/practice`);
   await settled(student);
+  await student
+    .getByText(/has ended/)
+    .first()
+    .waitFor();
+  assert.equal(
+    await student.getByRole("button", { name: "Check", exact: true }).count(),
+    0,
+    "no problem after practice ends",
+  );
   await capture(student, "student-expired");
 
   // Paid: the school buys from the teacher's link; the same records, the
@@ -645,12 +871,26 @@ try {
   const request = (
     await db.query("SELECT id FROM amp_school_purchase_requests LIMIT 1")
   ).rows[0].id as string;
+  // First a partial purchase: two seats for four students.
   await schoolAdmin(schools, "activate-purchase", {
     id: request,
-    seats: 4,
+    seats: 2,
     endsAt: new Date(Date.now() + 300 * 864e5).toISOString(),
     reference: "PO-FIXTURE-1",
   });
+  await teacher.goto(`${classUrl}/today`);
+  await teacher
+    .getByRole("heading", { name: "2 of 4 students have practice access" })
+    .waitFor();
+  await capture(teacher, "today-partial");
+  // Then the whole class.
+  const license = (
+    await db.query(
+      "SELECT id FROM amp_school_licenses WHERE org_id=$1 ORDER BY created_at DESC LIMIT 1",
+      [created.org_id],
+    )
+  ).rows[0].id as string;
+  await schoolAdmin(schools, "set-seats", { licenseId: license, seats: 4 });
   await teacher.goto(`${classUrl}/today`);
   await teacher.getByText(`${code.slice(0, 3)}-${code.slice(3)}`).waitFor();
   assert.equal(await count(teacher, "Practice has ended"), 0);
@@ -676,6 +916,38 @@ try {
   );
   await student.goto(`${origin}/practice`);
   await student.getByRole("button", { name: "Check", exact: true }).waitFor();
+  // Every student, learner, enrollment and record is the same one: paid
+  // coverage lands on the pilot's records, with nothing re-imported.
+  const after = await records(created.class_id);
+  assert.deepEqual(
+    after.map(({ person, learner, enrollment }) => ({
+      person,
+      learner,
+      enrollment,
+    })),
+    before.map(({ person, learner, enrollment }) => ({
+      person,
+      learner,
+      enrollment,
+    })),
+    "the same students after payment",
+  );
+  for (const [index, row] of after.entries()) {
+    assert.ok(row.attempts >= before[index]!.attempts, "answers kept");
+    assert.equal(row.workbooks, before[index]!.workbooks, "workbooks kept");
+  }
+  assert.equal(
+    (
+      await db.query(
+        "SELECT count(*)::int AS n FROM amp_people WHERE tenant_id=(SELECT path[1] FROM amp_orgs WHERE id=$1) AND learner_id IS NOT NULL",
+        [created.org_id],
+      )
+    ).rows[0].n,
+    4,
+    "no student was imported twice",
+  );
+  const grade = await teacher.request.get(`${classApi}/gradebook`);
+  assert.ok((await grade.text()).includes("B+"), "the final grade is kept");
 
   // ── 2. Roles at a licensed school ──────────────────────────────────────
   const lakeside = await schools.createOrg(
@@ -857,7 +1129,8 @@ try {
   await settled(teacher);
   assert.equal(await placeName(teacher), "Grade 4 Math · Birchwood Elementary");
 
-  // An invitation kept on this device opens first in the school first run.
+  // A stale invitation kept on this device (used, expired or unknown) is
+  // dropped: the account's own next step shows, and it never returns (M3).
   const invited = await device();
   await signUp(invited, "nora@lakeside.example.test", "Nora Quinn");
   await invited.goto(`${origin}/start/school`);
@@ -865,8 +1138,71 @@ try {
     localStorage.setItem("amp.school-invite", "A".repeat(43)),
   );
   await invited.reload();
+  await invited.locator("[data-school-next=none]").waitFor();
+  await invited.waitForFunction(
+    () => localStorage.getItem("amp.school-invite") === null,
+  );
+  // An open one leads, by its school's name.
+  const sent = await principal.page.request.post(
+    `${origin}/api/v1/school/orgs/${lakeside.id}/staff/invites`,
+    {
+      headers: { Origin: origin },
+      data: { email: "nora@lakeside.example.test", role: "teacher" },
+    },
+  );
+  assert.equal(sent.status(), 201, "the invitation is made");
+  const listed = (await (
+    await principal.page.request.get(
+      `${origin}/api/v1/school/orgs/${lakeside.id}/staff`,
+    )
+  ).json()) as
+    | { staff?: { inviteUrl?: string | null }[] }
+    | { inviteUrl?: string | null }[];
+  const people = Array.isArray(listed) ? listed : (listed.staff ?? []);
+  const link = people.find((person) => person.inviteUrl)?.inviteUrl;
+  assert.ok(link, "the invitation's link");
+  await invited.evaluate(
+    (fragment) => localStorage.setItem("amp.school-invite", fragment),
+    new URL(link).hash.slice(1),
+  );
+  await invited.reload();
   await invited.locator("[data-school-next=invited]").waitFor();
+  await invited
+    .getByRole("link", { name: "Join Lakeside Middle", exact: true })
+    .waitFor();
   await invited.evaluate(() => localStorage.removeItem("amp.school-invite"));
+
+  // A viewer of a school its admin is still setting up waits; nothing
+  // leads into a setup only its admin can do (M2).
+  const pending = await schools.createOrg(
+    { kind: "school", name: "Cedar Hill School", timezone: "UTC" },
+    {
+      version: AGREEMENT_VERSION,
+      signerName: "Cedar Admin",
+      signerTitle: "Principal",
+    },
+  );
+  await db.query("UPDATE amp_orgs SET setup_pending=true WHERE id=$1", [
+    pending.id,
+  ]);
+  const waiting = await member(pending.id, "ivo", "Ivo", "Berg", "viewer");
+  for (const path of ["/school/new", `/school/new?org=${pending.id}`]) {
+    await waiting.goto(`${origin}${path}`);
+    await waiting.waitForURL(`${origin}/start/school`);
+  }
+  const next = await waiting
+    .locator("[data-school-next]")
+    .getAttribute("data-school-next");
+  assert.equal(next, "pending", "a viewer waits for the school's admin");
+  await waiting
+    .getByText(/Cedar Hill School’s admin is setting it up/)
+    .waitFor();
+  assert.equal(
+    await waiting
+      .getByRole("link", { name: /Finish setting up|Open Cedar/ })
+      .count(),
+    0,
+  );
 
   // The administrator's first run opens her school.
   await principal.page.goto(`${origin}/start/school`);

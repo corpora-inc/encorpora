@@ -256,9 +256,15 @@ export function schoolRoutes(root: AnyRoute) {
           throw redirect({ to: "/schools", replace: true });
         const session = await staffSession(location);
         const orgs = await queryClient.fetchQuery(orgsOptions(session));
+        // Setup is its admin's: anyone else's address for it is their
+        // first run, never a setup they can't make.
         const requested =
           typeof search.org === "string"
-            ? orgs.find((org) => org.id === search.org)
+            ? orgs.find(
+                (org) =>
+                  org.id === search.org &&
+                  (!org.setupPending || org.roles.includes("admin")),
+              )
             : orgs.find(
                 (org) => org.setupPending && org.roles.includes("admin"),
               );

@@ -9,6 +9,7 @@ import { EmptyState } from "../../../ui/EmptyState";
 import { meOptions } from "../../../lib/query";
 import { secondParentOptions } from "../../second-parent/api";
 import { currentSession, orgOptions } from "../api";
+import { classYearOptions } from "../org/org-api";
 import { useDemoOrg } from "../demo/DemoPlace";
 import { presenceOptions, useStaffSession } from "./api";
 import { ClassFrame } from "./ClassFrame";
@@ -52,6 +53,16 @@ function ClassToday({
   const access = useClassAccess(place);
   // The board and cards wait for practice, and end with it.
   const closed = practiceClosed(access.view);
+  // What this person may do in this class, as the server says (a viewer
+  // or an aide reads the class; adding students and printing cards are
+  // its teacher's and its school's).
+  const can = new Set(
+    useQuery({
+      ...classYearOptions(currentSession(), place.class),
+      refetchOnMount: false,
+    }).data?.can ?? [],
+  );
+  const adds = can.has("class.import") || can.has("students.add");
   const practice = accessFeedEntry(
     access.view,
     place,
@@ -63,9 +74,10 @@ function ClassToday({
     // started) waits for practice: the board would only say it's closed.
     todos: data.todos.filter(
       (todo) =>
-        (canStart && !closed) ||
-        (todo.id !== "start-class" &&
-          !("tab" in todo.action && todo.action.tab === "start")),
+        (adds || todo.id !== "add-students") &&
+        ((canStart && !closed) ||
+          (todo.id !== "start-class" &&
+            !("tab" in todo.action && todo.action.tab === "start"))),
     ),
     place,
     canPrint: data.canPrint,
@@ -78,7 +90,7 @@ function ClassToday({
   // Before anyone has started, the next step after the board: cards for
   // the students who sign in on a device of their own.
   const starting = data.todos.some((todo) => todo.id === "start-class");
-  if (starting && data.canPrint && !closed)
+  if (starting && can.has("signin.manage") && !closed)
     entries.push({
       id: "cards",
       title: `Print sign-in cards for ${data.students.length === 1 ? "your student" : `your ${data.students.length} students`}`,
@@ -291,18 +303,34 @@ export function MapScreen() {
 }
 
 function EmptyMap({ org, classId }: { org: string; classId: string }) {
+  // Only someone who may add them is offered it. A family's map keeps the
+  // way it has (P2 moves the family's own).
+  const family =
+    useQuery({
+      ...orgOptions(currentSession(), org),
+      refetchOnMount: false,
+    }).data?.kind === "family";
+  const can =
+    useQuery({
+      ...classYearOptions(currentSession(), classId),
+      refetchOnMount: false,
+    }).data?.can ?? [];
+  const adds =
+    family || can.includes("class.import") || can.includes("students.add");
   return (
     <EmptyState
       title="No students in this class yet"
       action={
-        <Link
-          to="/$"
-          params={{ _splat: classUrl(org, classId, "settings") }}
-          search={{ add: 1 } as never}
-          className={buttonClass("primary")}
-        >
-          Add students
-        </Link>
+        adds && (
+          <Link
+            to="/$"
+            params={{ _splat: classUrl(org, classId, "settings") }}
+            search={{ add: 1 } as never}
+            className={buttonClass("primary")}
+          >
+            Add students
+          </Link>
+        )
       }
     />
   );

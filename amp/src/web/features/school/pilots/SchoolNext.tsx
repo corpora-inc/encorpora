@@ -1,46 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import type { OrgResource } from "../../../../schools/contracts";
 import type { AuthSession } from "../../../auth";
 import { useLoggedError } from "../../../feedback";
 import { Button, buttonClass } from "../../../ui/Button";
 import { classesOptions, orgOptions, orgsOptions, school } from "../api";
-import { orgHome, rememberedInvite } from "../paths";
-
-/** What an account already has at a school, read from its places: the next
- * step for each is different (docs/architecture/spaces.md, "School first
- * runs"). A demo is something to explore, never an institution. */
-export type SchoolState =
-  | { kind: "invited"; token: string }
-  | { kind: "setup"; org: OrgResource }
-  | { kind: "admin"; org: OrgResource }
-  | { kind: "teacher"; org: OrgResource }
-  | { kind: "none"; demo: OrgResource | null };
-
-const real = (org: OrgResource) => !org.demo && org.kind !== "family";
-
-export function schoolState(
-  orgs: readonly OrgResource[],
-  invite: string | null,
-): SchoolState {
-  const token = invite?.replace(/^#/, "").split(".")[0] ?? "";
-  if (/^[A-Za-z0-9_-]{43}$/.test(token)) return { kind: "invited", token };
-  const mine = orgs.filter(real);
-  const setup = mine.find(
-    (org) => org.setupPending && org.roles.includes("admin"),
-  );
-  if (setup) return { kind: "setup", org: setup };
-  const admin = mine.find(
-    (org) => org.roles.includes("admin") || org.roles.includes("viewer"),
-  );
-  if (admin) return { kind: "admin", org: admin };
-  const teacher = mine.find((org) => org.roles.length > 0);
-  if (teacher) return { kind: "teacher", org: teacher };
-  return {
-    kind: "none",
-    demo: orgs.find((org) => org.demo && org.kind !== "family") ?? null,
-  };
-}
+import { forgetInvite, orgHome, rememberedInvite } from "../paths";
+import { inviteToken, schoolState } from "./school-state";
 
 /**
  * The school answer's next step, by what this account already has
@@ -66,14 +33,29 @@ export function SchoolNext({
 }) {
   const orgs = useQuery(orgsOptions(session));
   useLoggedError(orgs.isError ? "Your schools didn’t load." : "");
-  const state = orgs.data ? schoolState(orgs.data, rememberedInvite()) : null;
+  // An invitation kept on this device leads only while the server says it
+  // is open; a used, expired or unknown one is dropped, and the account's
+  // own next step shows instead.
+  const [stored, setStored] = useState(() => rememberedInvite());
+  const token = inviteToken(stored);
   const invite = useQuery({
-    queryKey: ["school-invite", state?.kind === "invited" ? state.token : ""],
-    enabled: state?.kind === "invited",
+    queryKey: ["school-invite", token ?? ""],
+    enabled: !!token,
     retry: false,
-    queryFn: () =>
-      school.lookupInvite(state?.kind === "invited" ? state.token : ""),
+    queryFn: () => school.lookupInvite(token!),
   });
+  const stale =
+    !!token &&
+    (invite.isError || (!!invite.data && invite.data.status !== "open"));
+  useEffect(() => {
+    if (!stale) return;
+    forgetInvite();
+    setStored(null);
+  }, [stale]);
+  const state =
+    orgs.data && (!token || !invite.isPending)
+      ? schoolState(orgs.data, !stale && token ? stored : null)
+      : null;
   const teacherOrg = state?.kind === "teacher" ? state.org.id : null;
   // Which of its classes this teacher teaches: the org's own read says.
   const teacherAt = useQuery({
@@ -141,10 +123,17 @@ export function SchoolNext({
             to={"/school/invite" as never}
             className={buttonClass("primary")}
           >
-            {invite.data?.status === "open"
-              ? `Join ${invite.data.orgName}`
-              : "Open your invitation"}
+            {`Join ${invite.data?.orgName ?? "your school"}`}
           </Link>
+        </div>
+      );
+    case "pending":
+      return (
+        <div className={className} data-school-next="pending">
+          <p role="status">
+            {state.org.name}’s admin is setting it up. It opens here once they
+            finish.
+          </p>
         </div>
       );
     case "setup":

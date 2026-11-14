@@ -1,5 +1,5 @@
 import { touchDemoOfPersonSql } from "./demo/sql.js";
-import { classPracticeGate } from "./pilot-access.js";
+import { assertSignInOpen, classPracticeGate } from "./pilot-access.js";
 import {
   createHash,
   randomBytes,
@@ -361,7 +361,14 @@ export class SchoolSignIn {
       | { id: string; name: string; joinCode: string; lockedUntil: Date | null }
       | undefined;
     if (!found) throw new SchoolError(404, "not_found");
-    return found;
+    // The code reaches staff, and through them students, only while
+    // practice runs (SPEC R14); records stay readable either way.
+    const gate = await classPracticeGate(this.pool, classId);
+    return {
+      ...found,
+      joinCode: gate ? null : found.joinCode,
+      practice: gate ?? ("open" as const),
+    };
   }
   private async assertStudent(classId: string, personId: string) {
     const found =
@@ -393,6 +400,7 @@ export class SchoolSignIn {
         name: found.name,
         joinCode: found.joinCode,
         joinLockedUntil: found.lockedUntil?.toISOString() ?? null,
+        practice: found.practice,
       },
       canManage,
       students: rows,
@@ -423,6 +431,7 @@ export class SchoolSignIn {
         name: found.name,
         joinCode: found.joinCode,
         joinLockedUntil: found.lockedUntil?.toISOString() ?? null,
+        practice: found.practice,
       },
       canManage,
       canShare,
@@ -441,6 +450,7 @@ export class SchoolSignIn {
     target: { classId: string; orgId: string },
     actorPersonId: string | null,
   ) {
+    await assertSignInOpen(this.pool, target.classId);
     return this.schools.transaction(async (client) => {
       for (let attempt = 0; attempt < 6; attempt++) {
         const joinCode = generateJoinCode();
@@ -525,6 +535,7 @@ export class SchoolSignIn {
     cards: readonly { personId: string; token: string }[],
   ): Promise<{ className: string; cards: { name: string; token: string }[] }> {
     const found = await this.classInfo(classId);
+    await assertSignInOpen(this.pool, classId);
     if (cards.some((card) => !CARD_TOKEN.test(card.token)))
       throw new SchoolError(410, "card_replaced");
     const { rows } = await this.pool.query(
@@ -561,6 +572,7 @@ export class SchoolSignIn {
   ): Promise<IssuedCards> {
     const input = issueCardsSchema.parse(raw ?? {});
     const found = await this.classInfo(target.classId);
+    await assertSignInOpen(this.pool, target.classId);
     return this.schools.transaction(async (client) => {
       const { rows: students } = await client.query(
         `SELECT p.id,${STUDENT_NAME} AS name FROM ${STUDENTS_OF_CLASS}

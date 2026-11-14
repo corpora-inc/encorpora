@@ -126,7 +126,8 @@ export function StartClassScreen() {
       </main>
     );
   if (!presence.data || access.pending) return <LoadingScreen />;
-  if (practiceClosed(access.view))
+  // The server sends the code only while practice runs.
+  if (practiceClosed(access.view) || !presence.data.class.joinCode)
     return (
       <main className={styles.problem} data-dense>
         <ClosedSignIn
@@ -135,7 +136,8 @@ export function StartClassScreen() {
         />
       </main>
     );
-  const { class: info, students } = presence.data;
+  const { class: shown, students } = presence.data;
+  const info = { ...shown, joinCode: shown.joinCode! };
   const here = students.filter((student) => student.here).length;
   const joinUrl = `${location.origin}/join/${info.joinCode}`;
   return (

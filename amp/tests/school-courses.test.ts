@@ -1,7 +1,14 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { startSchoolClassSchema } from "../src/schools/pilot-contracts.js";
-import { courseFromName } from "../src/web/features/school/courses.js";
+import {
+  CLASS_COURSES,
+  startSchoolClassSchema,
+} from "../src/schools/pilot-contracts.js";
+import { gradeNumber } from "../src/learning/frontier.js";
+import {
+  COURSE_OPTIONS,
+  courseFromName,
+} from "../src/web/features/school/courses.js";
 
 test("a class's name suggests its course, and says none when it names none", () => {
   for (const [name, course] of [
@@ -39,5 +46,24 @@ test("a class start carries at most one course, and never needs one", () => {
   assert.ok(
     !startSchoolClassSchema.safeParse({ ...base, courseBands: ["4", "5"] })
       .success,
+  );
+  // Only a course the curriculum knows, never free text.
+  for (const course of ["Grade 4", "13", "calculus", ""])
+    assert.ok(
+      !startSchoolClassSchema.safeParse({ ...base, courseBands: [course] })
+        .success,
+      course,
+    );
+});
+
+test("every course a class may name is one the curriculum places", () => {
+  for (const course of CLASS_COURSES) assert.ok(course in gradeNumber, course);
+  assert.deepEqual([...CLASS_COURSES].sort(), Object.keys(gradeNumber).sort());
+  // And the setup picker offers exactly those, plus "each student's own".
+  assert.deepEqual(
+    COURSE_OPTIONS.map(([value]) => value)
+      .filter(Boolean)
+      .sort(),
+    [...CLASS_COURSES].sort(),
   );
 });

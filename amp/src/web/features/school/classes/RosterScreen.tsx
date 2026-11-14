@@ -400,7 +400,7 @@ export function RosterScreen() {
           {family && <h2 className={styles.sectionTitle}>Children</h2>}
           {/* Day 0 of a school class is its one step; the code waits for a
               roster, and for practice: none before it starts or after. */}
-          {!dayZero && !closed && (
+          {!dayZero && !closed && data.class.joinCode && (
             <section className={styles.code} aria-label="Class code">
               <div className={styles.codeText}>
                 <h2>Class code</h2>

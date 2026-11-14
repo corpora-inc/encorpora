@@ -661,13 +661,16 @@ function JoinStep({ session, me, kind, index }: StepProps) {
             what="The class code"
             className={styles.joinWait}
           >
-            {(data) => (
-              <JoinClass
-                code={data.class.joinCode}
-                place={{ org: place.orgId, class: place.classId }}
-                words={spaceWords(parent ? "family" : "classroom")}
-              />
-            )}
+            {(data) =>
+              // A family's class always has its code (no practice gate).
+              data.class.joinCode && (
+                <JoinClass
+                  code={data.class.joinCode}
+                  place={{ org: place.orgId, class: place.classId }}
+                  words={spaceWords(parent ? "family" : "classroom")}
+                />
+              )
+            }
           </QueryBlock>
         </section>
       </div>

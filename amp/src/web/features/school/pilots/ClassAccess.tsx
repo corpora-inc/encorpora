@@ -16,6 +16,7 @@ import { Stepper } from "../../../ui/Stepper";
 import { TextArea } from "../../../ui/TextField";
 import { Toast } from "../../../ui/Toast";
 import { currentSession, orgOptions, refreshSchool } from "../api";
+import { classYearOptions } from "../org/org-api";
 import { useClassSearch } from "../classes/teacher-shared";
 import type { FeedEntry } from "../classes/today/Feed";
 import { Authorization } from "./Authorization";
@@ -51,12 +52,32 @@ export function useClassAccess(place: Place): {
     ...pilotOptions(session, place.class),
     enabled: school && readable,
   });
+  // Whether students can practice, for every reader of the class (a viewer
+  // and an aide too): the sign-in tools follow the class, never the role.
+  const year = useQuery({
+    ...classYearOptions(session, place.class),
+    enabled: school,
+    refetchOnMount: false,
+  });
   const pilot = query.data;
-  const pending = !org || (school && readable && query.isPending);
-  if (!school || !pilot)
-    return { view: { kind: "none" }, pilot, teaches, pending };
+  const pending =
+    !org || (school && (year.isPending || (readable && query.isPending)));
+  if (!school) return { view: { kind: "none" }, pilot, teaches, pending };
+  // Unknown is never open: a failed read keeps the tools closed.
+  const gate = year.data?.practice ?? (year.isError ? "waiting" : "open");
+  const closedBy: AccessView | null =
+    gate === "ended"
+      ? { kind: "ended" }
+      : gate === "waiting"
+        ? { kind: "waiting" }
+        : null;
+  if (!pilot)
+    return { view: closedBy ?? { kind: "none" }, pilot, teaches, pending };
+  const view = accessView(pilot, teaches);
   return {
-    view: accessView(pilot, teaches),
+    // The pilot says more (start, ending, partial); the class's own state
+    // decides whether its tools are open.
+    view: closedBy && !practiceClosed(view) ? closedBy : view,
     pilot,
     teaches,
     pending,

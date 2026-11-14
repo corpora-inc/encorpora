@@ -297,9 +297,14 @@ export const presenceResource = z.object({
   class: z.object({
     id: z.uuid(),
     name: z.string(),
-    joinCode: z.string(),
+    /** Null while no student can practice: before Start, after it ends
+     * (SPEC R14). The code reaches students only while practice runs. */
+    joinCode: z.string().nullable(),
     /** Sign-in is paused by guessing until then; a new code reopens it. */
     joinLockedUntil: z.string().nullable().optional(),
+    /** Whether students can practice, for anyone who reads the class:
+     * `open`, or why not. */
+    practice: z.enum(["open", "waiting", "ended"]).optional(),
   }),
   /** Whether this person can make a new code (and so offer it). */
   canManage: z.boolean().optional(),
@@ -311,9 +316,11 @@ export const signInRosterResource = z.object({
   class: z.object({
     id: z.uuid(),
     name: z.string(),
-    joinCode: z.string(),
+    /** Null while no student can practice (SPEC R14). */
+    joinCode: z.string().nullable(),
     /** Too many wrong pictures across the class: sign-in is paused until then. */
     joinLockedUntil: z.string().nullable(),
+    practice: z.enum(["open", "waiting", "ended"]).optional(),
   }),
   /** Whether this person can change sign-in, or only read it. */
   canManage: z.boolean(),
@@ -386,7 +393,8 @@ export const classResource = z.object({
   name: z.string(),
   courseBands: z.array(z.string()),
   gradingKind: z.enum(gradingKinds),
-  joinCode: z.string(),
+  /** Null while no student of the class can practice (SPEC R14). */
+  joinCode: z.string().nullable(),
   studentCount: z.number().int(),
   /** Its teachers today, by name. */
   teachers: z.array(z.string()).default([]),

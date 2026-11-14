@@ -698,7 +698,7 @@ export function ClassScreen() {
           }
         />
         <section className={styles.classMeta}>
-          {!closed && !access.pending && (
+          {!closed && !access.pending && klass.joinCode && (
             <JoinClass
               code={klass.joinCode}
               place={{ org: orgId, class: classId }}

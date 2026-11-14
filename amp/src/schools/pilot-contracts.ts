@@ -1,6 +1,23 @@
 import { z } from "zod";
 import { plainName, timezone, gradeLevelSchema } from "./contracts.js";
 
+/** The courses a class may name, as the curriculum's grade bands
+ * (`learning/frontier.ts` gradeNumber): the course a student begins at. */
+export const CLASS_COURSES = [
+  "K",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "algebra-1",
+  "geometry",
+  "algebra-2",
+  "precalculus",
+] as const;
 export const startSchoolClassSchema = z.strictObject({
   requestId: z.uuid(),
   schoolName: z.string().trim().min(1).max(200),
@@ -16,7 +33,7 @@ export const startSchoolClassSchema = z.strictObject({
   gradeLevel: gradeLevelSchema.optional(),
   /** The class's course ("4", "algebra-1"): where a rostered student with
    * no birth year begins (SPEC R14). None: each student's own grade. */
-  courseBands: z.array(z.string().trim().min(1).max(40)).max(1).optional(),
+  courseBands: z.array(z.enum(CLASS_COURSES)).max(1).optional(),
 });
 export type StartSchoolClass = z.infer<typeof startSchoolClassSchema>;
 export const pilotStateSchema = z.object({
