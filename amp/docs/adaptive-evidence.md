@@ -11,7 +11,7 @@ Each skill has a durable summary: attempts, independent correct answers, the lat
 
 Retrieval intervals are six hours, one day, three days, seven days, fourteen days and thirty days. Independent success advances spacing only after six hours since the last credited retrieval. Errors and assistance reset it. Response speed does not affect this scheduling rule.
 
-The frontier estimates a curriculum-grade coordinate: kindergarten is 0, grades 1–8 use their numbers, and Algebra 1, Geometry, Algebra 2 and Precalculus occupy 9–12. This ordering is a scheduling convenience, not proof that courses have equivalent difficulty. The prior starts from age or a selected grade band. **A working grade is not mastery of that grade or a population percentile.** The readout shows hundredths so small changes are visible; hundredths do not establish that degree of measurement accuracy.
+The frontier estimates a curriculum-grade coordinate: kindergarten is 0, grades 1–8 use their numbers, and Algebra 1, Geometry, Algebra 2 and Precalculus occupy 9–12. This ordering is a scheduling convenience, not proof that courses have equivalent difficulty. The prior starts from age or a selected grade band; for a start set by age, the overall readout's prior is only as wide as that age is spread nationally ([early placement](#early-placement-grade-frontier-v5)). **A working grade is not mastery of that grade or a population percentile.** The readout shows hundredths so small changes are visible; hundredths do not establish that degree of measurement accuracy.
 
 The versioned, validated `src/learning/frontier-policy.ts` separates two jobs:
 
@@ -41,6 +41,110 @@ Production aims near `level − 0.5 + 0.3 × uncertainty`. Due reviews, errors a
 **Placement.** A new learner's first four answers follow scripted openers in `src/learning/placement.ts`. These are short, familiar items from this year's or last year's core material for the grade expected at that age; high-school ages start on grade-8 items. Choice items with at least three options may open where they bring a strand typed items cannot: comparing lengths, weights and capacity (K), clocks and lengths (grade 1), and coins and clocks (grade 2). A client without choice support skips such a slot to adaptive selection. Each slot has a small pool of items in one strand, and neighbouring slots differ. The learner id picks from each pool, so siblings start differently while one learner's sequence stays fixed. Adaptive selection then takes over from the frontier, climbing fast from a wrong start ([the climb](pathway-selection.md#practice-recovery-and-confirmation)). The first 20 answers offer only **assessment** families. **Scaffold** families, which are method steps such as a partial product or a make-ten step, return to practice afterwards. Opener outcomes are ordinary evidence.
 
 Production selection reasons describe a prerequisite, revisit after an error or assistance, scheduled review, work in a skill with recorded evidence (`frontier`), or an unobserved skill (`explore`).
+
+## Early placement (grade-frontier-v5)
+
+Under v4, a ten-year-old who answers three on-grade problems right is shown about grade 6, overall and in every area. The prior causes this, not the answers. Every learner starts with a flat 2.5-grade prior. Three right answers only rule out the low end, so the posterior mean lands in the prior's upper tail, about 0.8 of a prior sd above the start.
+
+v5 (`DEFAULT_FRONTIER_POLICY`) changes what is shown and how wide it is drawn. It does not change what is practised, online or on paper. v4 is kept as `PREVIOUS_FRONTIER_POLICY` for paired replays.
+
+- **Overall readout: national-norms prior.** For a start set by a birth year, a separate readout fold (`Frontier.readout`) is kept whose prior is as wide as that age is spread nationally. This is `NORMS_PRIOR_SD`, the "AMP prior sd" column of the [norms prior](engine/norms-prior.md): 0.7 at K, 1.6 at grade 4, capped at 2.5 from grade 6.
+  - It is a provisional, external prior, not fitted to AMP learners.
+  - `overall`, which selection and workbooks read, keeps the flat prior, so the whole frontier practice reads is v4's.
+- **Display rule** (`frontier-policy.ts` `display`; `frontier-report.ts`). For an age-anchored learner, the shown overall level is held to the half-grade band around their age, then released by a tenth of the way to the estimate per answer. From ten answers on, it is the estimate.
+  - Each area is shown at the overall shown level, plus its own answers ÷ 10 of its difference from the overall estimate. An area with few answers of its own sits near the learner's level.
+  - Display only: nothing that selects problems or composes a workbook reads it.
+  - An area restarted from a chosen level is not blended: it shows as estimated, like any chosen start.
+- **Shown widths (sd-cal-v2).** The reported width is 0.2 + a factor × the posterior sd, read by each estimate's own answer count (an area's own answers, as production stores them).
+  - Overall: 1.01 up to 10 answers, 0.80 from 20.
+  - Areas: 0.85 up to 10 answers, 0.95 from 20.
+  - When the shown overall level sits off the estimate, its width adds that distance ÷ 1.64, so the shown range always holds the estimate's own range.
+  - An area's width is the same blend of the overall shown width and its own as its level.
+- **Practice is unchanged.** Every estimate practice reads is v4's: the pooled estimate, `overall`, the areas, the climb and both response curves.
+  - `tests/frontier-early-anchor.test.ts` checks that the raw frontier, the planned problems and the composed workbook are identical to v4's.
+  - The simulation below counts no online problem that would differ in 158,400.
+- **Chosen starts.** An adult's start, a family band or a restarted area is estimated and shown at v4's levels. Only its widths follow sd-cal-v2.
+- **One value everywhere.** Every view of a learner's level reads the same estimate, through `reportFrontier`. That covers the learner's own readout, their Starting view, the level trend, the stored level day, the class map, Today, and the teacher's record.
+  - A rostered learner's or an adult's level day is stored after each answer, not only when the next problems are fetched. A teacher reads what the learner last saw, even if they stopped there.
+  - The class map's starting estimate, for a learner with nothing stored yet, is the same one their own Starting view shows (`startingShown`).
+  - The trend releases the display rule on the answers the estimate counted, so a family the catalog no longer knows does not count towards it.
+  - `scripts/refresh-level-days.ts` rewrites each learner's latest day still stored under an older estimator, so the current level matches. It runs dry by default and journals and can revert with `--apply`; it is run once after deploying a new estimator.
+  - Earlier days stay as they were shown, each labelled with its own `policy_version`. Term and growth reads treat them as that record. Growth reads only settled days, past ten answers, where the two versions agree within sampling noise.
+  - `tests/level-consistency.integration.ts` asserts the same level, overall and by area, across these views before any answer, after answers that stop without fetching more, and after a refresh.
+
+| Constructed case: born 2016, read in the fall of 2026, three right answers | v4 | v5 |
+|---|---:|---:|
+| Before any answer, overall | 4.13, range 0.8–7.4 | 4.00, range 1.0–7.0 |
+| After 1 (decimals, grade 4, typed) | 5.55 | 4.54 |
+| After 2 (angles, grade 4, four options) | 5.85 | 4.62 |
+| After 3 (bar graph, grade 3, typed) | 5.97, range 3.6–8.3 | 4.71, range 2.0–7.4 |
+| Areas after 3: decimals, geometry, data | 6.21, 6.11, 6.03 | 4.81, 4.80, 4.79 (each ± 1.62) |
+
+Behind v5's shown 4.71, the readout's own estimate is 5.19: the narrower prior moves it 1.2 grades from 4, not 2. `tests/frontier-early-anchor.test.ts` pins the case. It fails under v4.
+
+**Simulation.** `scripts/frontier/early-anchor-simulation.ts` runs the production planner and display path for 200 answers on both policies, along one answer sequence. Each version is shown through its own reporter: v4 through sd-cal-v1 (`legacyReportFrontier`, main's reporter), and v5 through sd-cal-v2. Coverage is of the unclipped ±1.64 envelope; the chart clamps its bounds to [0, 13].
+
+- Truth comes from external norms, not from AMP data or the demo school. Children aged grade 1, 2, 4, 6 and 8 are drawn from N(age, the national spread), with areas N(0, 0.5²) apart.
+- Fixed offsets cover −4 … +4 grades, plus learners on level with areas alternately one grade above and below.
+- Adults on the grade-7 default have the same offsets.
+- Answers come from a misspecified curve on the estimator's scale (item difficulty off its catalog grade by N(0, 0.5²), own slip and guess) at slopes 1.7 and 1.15.
+- The display rule was chosen on seed 1 from nine candidates, and the widths were fit on seed 1 and on the calibration grid at seed 20261110. The tables below are seed 2, untouched by either. Seed 1 agrees.
+
+Overall shown level, mean |shown − true| in grades, v4 → v5:
+
+| Learners (seed 2) | n | 3 answers | 5 | 10 | 20 | 50 | 200 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Children drawn from national norms | 30 | 1.32 → 1.40 | 1.17 → 1.23 | 0.85 → 0.79 | 0.63 → 0.57 | 0.43 → 0.42 | 0.31 → 0.31 |
+| On level | 30 | 1.16 → **0.52** | 1.02 → **0.56** | 0.69 → **0.54** | 0.56 → 0.51 | 0.38 → 0.37 | 0.25 → 0.25 |
+| One grade off | 60 | 1.02 → **0.63** | 0.89 → **0.55** | 0.63 → 0.56 | 0.54 → 0.48 | 0.33 → 0.32 | 0.25 → 0.25 |
+| Two grades off | 60 | 0.75 → 1.42 | 0.90 → 1.22 | 0.75 → 0.85 | 0.62 → 0.65 | 0.39 → 0.39 | 0.32 → 0.32 |
+| Three or four off | 120 | 1.76 → 2.67 | 1.24 → 2.27 | 1.00 → 1.16 | 0.59 → 0.70 | 0.52 → 0.51 | 0.29 → 0.29 |
+| Uneven areas | 30 | 1.30 → **0.49** | 1.00 → **0.59** | 1.07 → **0.89** | 0.77 → 0.67 | 0.58 → 0.54 | 0.63 → 0.63 |
+| Adults, −4 … +4 | 66 | 1.17 → 1.17 | 1.05 → 1.05 | 0.77 → 0.77 | 0.59 → 0.59 | 0.44 → 0.44 | 0.28 → 0.28 |
+
+**Learners within half a grade of their age.** Shown a grade or more above their age after 3 answers: 51% under v4, 2% under v5. Named two grades up (shown ≥ 1.5 above): 49% → 0%. After 10 answers, 32% → 22%.
+
+**The cost is the far tails, for the first ten to twenty answers.**
+
+- Two grades from their age, the shown level is a grade or more off:
+  - after 3 answers, 25% → 93%;
+  - after 10, 22% → 35%;
+  - after 20, 18% → 17%.
+- Three or four off:
+  - after 10, 39% → 48%;
+  - after 20, 17% → 23%.
+- From 50 answers on, the two differ by no more than sampling noise.
+- Practice reaches these learners exactly as before.
+
+**Areas.** Mean |shown − true| for children drawn from national norms: 1.04 → 0.87 at 10 answers, 0.95 → 0.70 at 20, 0.82 → 0.65 at 50. On-level learners: 1.47 → 0.57 at 3 answers.
+
+**Shown range coverage.** How often the shown ±1.64-width range covers the truth (target 90%), sd-cal-v1 → sd-cal-v2:
+
+| Learners (seed 2) | Estimate | 3 answers | 5 | 10 | 20 | 50 | 200 |
+|---|---|---:|---:|---:|---:|---:|---:|
+| Children drawn from national norms | overall | 80% → 97% | 80% → 97% | 80% → 97% | 83% → 83% | 100% → 100% | 100% → 100% |
+| Children drawn from national norms | areas | 73% → 90% | 80% → 93% | 84% → 89% | 89% → 86% | 88% → 93% | 91% → 94% |
+| Children, every profile | overall | 86% → 78% | 87% → 82% | 84% → 89% | 88% → 87% | 94% → 92% | 99% → 98% |
+| Adults | overall | 92% → 94% | 91% → 97% | 94% → 94% | 91% → 94% | 92% → 92% | 98% → 98% |
+| Adults | areas | 89% → 91% | 88% → 89% | 92% → 93% | 94% → 96% | 92% → 93% | 93% → 96% |
+
+- On the validation set (seed 2 plus the calibration grid at seed 20261115), the estimate's own ±1.64 range covers 88–95% in every own-answer band, overall and areas.
+- Early ranges are wider than before: an adult's overall sd after 3 answers goes from 1.37 to 1.76, after 20 from 0.78 to 0.82, and after 200 from 0.65 to 0.59.
+- Children far from their age are under-covered in the first five answers (78–82% across every profile). The age prior puts little weight there.
+- `tests/frontier-production-calibration.test.ts` now checks the shown ±1.64 range on the fitted seed. That is a reproducibility check; the seeds above are the evidence.
+
+**Real learners.** Retained answers were exported read-only, excluding:
+
+- demo-school learners;
+- practice profiles;
+- internal accounts.
+
+This leaves a few dozen learners and a few hundred answers, most learners with fewer than ten. A private cohort manifest records the exclusions; the export never enters the repository. That is too few to measure accuracy, so the replay is descriptive only.
+
+- After three answers, v4 showed a fifth of the birth-year learners more than a grade above their age start; v5 showed none.
+- Learners with a chosen start are shown identically.
+
+No parameter here is fitted to AMP data. The demo school's learners are generated at 0.6 × the national spread (`src/schools/demo/truth.ts`), so they can validate nothing about it.
 
 ## Isolated experimental model
 
@@ -79,8 +183,13 @@ npx tsx scripts/compare-frontier.ts 86dfa922c development frozen-v1
 npx tsx scripts/compare-frontier.ts 86dfa922c evaluation frozen-v1
 npx tsx scripts/compare-frontier.ts 86dfa922c audit frozen-v1
 npx tsx scripts/compare-frontier.ts 86dfa922c stress frozen-v1
+# Early placement: both policies, seeds 1 and 2 (about 15 minutes each)
+npx tsx scripts/frontier/early-anchor-simulation.ts --seed 1 --reps 3
+npx tsx scripts/frontier/early-anchor-simulation.ts --seed 2 --reps 3
+# Shown-range coverage on the calibration grid at another seed
+npx tsx scripts/frontier/production-calibration.ts --quick --model misspecified --seed 20261115
 # Regression checks
-npx tsx --test tests/frontier-calibration.test.ts tests/frontier-isolation.test.ts
+npx tsx --test tests/frontier-calibration.test.ts tests/frontier-isolation.test.ts tests/frontier-early-anchor.test.ts
 ```
 
 Comparison uses the current catalog unless `frozen-v1` selects the regression fixture. It requires a Git checkout containing baseline commit `86dfa922c`. Only pass trusted baseline commits: the comparison command executes source code from the selected commit. It loads that planner, estimator and evidence projection into a temporary directory. Both policies receive the same selected template metadata and skill catalog objects, populations and seeds. Report metadata records the baseline commit, catalog counts and SHA-256 of `JSON.stringify({ templates, skills })` in source order (`template-and-skill-json-v1`). This identifies planning metadata; simulations do not execute problem generators or lesson content. The experimental run executes the actual experimental planner, estimator and evidence projection; it supplies twelve recent attempts and durable skill summaries as the API does. Six answers form a simulated day, with three-answer batches and 180 answers per run.

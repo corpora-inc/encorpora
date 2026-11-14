@@ -43,6 +43,31 @@ export const frontierPolicySchema = z
       .object({
         overallSd: z.number().finite().min(0.1).max(10),
         strandSd: z.number().finite().min(0.1).max(10),
+        /** The overall prior sd for a start set by age (a birth year), by
+         * starting grade: `[start, sd]` in rising start order, linearly
+         * interpolated, held flat past either end. It sets the overall
+         * readout's prior only; selection's pooled estimate keeps
+         * `overallSd`. A start someone chose (an adult's start, a family
+         * band, a restarted area) keeps `overallSd`, and so does every start
+         * when this is absent. */
+        sdByStart: z
+          .array(
+            z
+              .tuple([
+                z.number().finite().min(-1).max(13),
+                z.number().finite().min(0.1).max(10),
+              ])
+              .readonly(),
+          )
+          .min(1)
+          .max(20)
+          .refine(
+            (knots) =>
+              knots.every((k, i) => i === 0 || k[0] > knots[i - 1]![0]),
+            "Starts must rise",
+          )
+          .readonly()
+          .optional(),
       })
       .strict(),
     response,
@@ -98,6 +123,22 @@ export const frontierPolicySchema = z
         distinctFamilies: 2,
         placedAfterMisses: 2,
       }),
+    /** How the shown levels of a learner whose start came from their age are
+     * held while the evidence is thin (`frontier-report.ts`). The overall
+     * level may leave the band of `ageBand` grades around the age-expected
+     * grade by answered / `startingAnswers` of the way to its estimate. An
+     * area is shown at the overall shown level plus its own answers /
+     * `areaAnswers` of its difference from the overall estimate. Display
+     * only; the estimates and selection never read it. Absent: shown as
+     * estimated. */
+    display: z
+      .object({
+        ageBand: z.number().finite().min(0).max(2),
+        startingAnswers: z.number().int().min(1).max(100),
+        areaAnswers: z.number().int().min(1).max(100),
+      })
+      .strict()
+      .optional(),
     overallUncertainty: z
       .object({
         rareMissThreshold: z.number().finite().min(0.5).max(1),
@@ -169,10 +210,11 @@ export const LEGACY_FRONTIER_POLICY = createFrontierPolicy({
   },
 });
 
-/** Working grade, not mastery or a norm-referenced percentile. Overall evidence
+/** The production policy until 2026-11-13, kept for paired replays. Working
+ * grade, not mastery or a norm-referenced percentile. Overall evidence
  * accumulates steadily; strand estimates can react faster to local gaps.
  * A surprising miss does not make the next overall answer count extra. */
-export const DEFAULT_FRONTIER_POLICY = createFrontierPolicy({
+export const PREVIOUS_FRONTIER_POLICY = createFrontierPolicy({
   ...LEGACY_FRONTIER_POLICY,
   version: "grade-frontier-v4-evidence-anchored-climb",
   // The start is a guess: the ceiling stands on what the learner has shown
@@ -211,4 +253,45 @@ export const DEFAULT_FRONTIER_POLICY = createFrontierPolicy({
     retentionPerAnswer: 0.7,
     maxVariance: 1,
   },
+});
+
+/** Overall prior sd for a start set by age, by that grade, in grade-years:
+ * the within-grade spread of mathematics achievement from national norms
+ * (NWEA 2020 true-score SDs and Bloom/Hill annual gains, the "AMP prior sd"
+ * column of docs/engine/norms-prior.md), capped at the former flat 2.5 from
+ * grade 6 up so no start moves faster than it did. A provisional prior: it
+ * is not fitted to AMP learners, and a national spread on another vertical
+ * scale is only an approximation to the spread on AMP's. */
+export const NORMS_PRIOR_SD: readonly (readonly [start: number, sd: number])[] =
+  [
+    [0, 0.7],
+    [1, 0.8],
+    [2, 1.0],
+    [3, 1.1],
+    [4, 1.6],
+    [5, 1.9],
+    [6, 2.5],
+  ];
+
+/** Working grade, not mastery or a norm-referenced percentile.
+ *
+ * - The overall readout of a learner whose start came from a birth year has
+ *   a prior as wide as that age is spread nationally (`NORMS_PRIOR_SD`), not
+ *   a flat 2.5. A chosen start (an adult's, a family band) keeps 2.5.
+ * - For such a learner, the shown overall level leaves the age band over the
+ *   first ten answers, a tenth of the way per answer, and an area with few
+ *   answers of its own is shown near the overall level (`display`): a
+ *   ten-year-old's first three right answers move them to the edge of their
+ *   grade, not two grades up. From ten answers on, the overall level shown
+ *   is the estimate. Chosen starts show as estimated, as before.
+ * - Selection is unchanged: its pooled estimate, the areas, the climb and
+ *   the response curves are v4's, for every learner. */
+export const DEFAULT_FRONTIER_POLICY = createFrontierPolicy({
+  ...PREVIOUS_FRONTIER_POLICY,
+  version: "grade-frontier-v5-age-anchored",
+  prior: {
+    ...PREVIOUS_FRONTIER_POLICY.prior,
+    sdByStart: NORMS_PRIOR_SD,
+  },
+  display: { ageBand: 0.5, startingAnswers: 10, areaAnswers: 10 },
 });

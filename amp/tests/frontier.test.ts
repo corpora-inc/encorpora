@@ -45,6 +45,7 @@ function simulate(
     const at = october + i * 60000;
     const frontier = estimateFrontier({
       start,
+      fromAge: true,
       observations: attempts,
       gradeOf,
       strandOf,
@@ -84,6 +85,7 @@ function simulate(
     shown,
     frontier: estimateFrontier({
       start,
+      fromAge: true,
       observations: attempts,
       gradeOf,
       strandOf,

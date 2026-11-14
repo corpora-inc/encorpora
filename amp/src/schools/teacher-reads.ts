@@ -1,4 +1,6 @@
 import type { Pool } from "pg";
+import { initialLevel } from "../learning/frontier.js";
+import { startingShown } from "../learning/frontier-report.js";
 import { hasProblemLesson } from "../content/problem-lessons.js";
 import { templates } from "../math/engine.js";
 import {
@@ -320,7 +322,34 @@ const STRAND_LABELS: Record<string, string> = {
 export const strandLabel = (id: string) =>
   STRAND_LABELS[id] ?? id[0]!.toUpperCase() + id.slice(1);
 
-/** Fewer answers than this and a level is mostly its starting guess. */
+/** What each learner with no stored level is shown before any answer: the
+ * same estimate as their own Starting view (`startingShown`). */
+async function startingLevels(pool: Pool, learnerIds: readonly string[]) {
+  const found = new Map<string, { level: number; sd: number }>();
+  if (!learnerIds.length) return found;
+  const { rows } = await pool.query(
+    "SELECT id,birth_year,adult,starting_band FROM amp_learners WHERE id=ANY($1::text[])",
+    [learnerIds],
+  );
+  const now = Date.now();
+  for (const row of rows) {
+    const birthYear = row.birth_year as number | null;
+    const start = initialLevel({
+      birthYear,
+      adult: row.adult === true,
+      band: row.starting_band as Parameters<typeof initialLevel>[0]["band"],
+      now,
+    });
+    const { level, sd } = startingShown(start, birthYear != null);
+    found.set(row.id as string, { level, sd });
+  }
+  return found;
+}
+
+/** Fewer answers than this and a level is mostly its starting guess (the
+ * class map's "Starting" mark). The shown level's own display rule releases
+ * over its first ten answers (`frontier-policy.ts`, `display`); the two are
+ * separate states. */
 const PROVISIONAL_ANSWERS = 20;
 type StoredLevel = Awaited<ReturnType<typeof levels>>[number];
 const mapLevel = (row: StoredLevel | undefined) => ({
@@ -357,6 +386,13 @@ export async function readMap(
     ]),
   );
   const course = courseBand(context.courseBands);
+  const starts = await startingLevels(
+    pool,
+    [...members(named), ...teachers]
+      .filter((member) => !stored.has(member.personId))
+      .map((member) => member.learnerId),
+  );
+  const startOf = (learnerId: string) => starts.get(learnerId) ?? null;
   const evidence = new Map<string, number>();
   for (const student of named)
     for (const [id, estimate] of Object.entries(
@@ -379,6 +415,7 @@ export async function readMap(
         : student.gradeLevel === null
           ? null
           : { from: student.gradeLevel - 0.5, to: student.gradeLevel + 0.5 },
+      start: stored.has(student.id) ? null : startOf(student.learnerId),
     })),
     teachers: teachers.map((teacher) => ({
       id: teacher.personId,
@@ -387,6 +424,7 @@ export async function readMap(
       you: teacher.accountId === readerAccountId,
       ...mapLevel(stored.get(teacher.personId)),
       reference: course ? { from: course.from, to: course.to } : null,
+      start: stored.has(teacher.personId) ? null : startOf(teacher.learnerId),
     })),
   };
 }

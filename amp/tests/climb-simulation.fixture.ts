@@ -105,7 +105,12 @@ export function simulateClimb(
     band: learner.band,
     now: CLIMB_EPOCH,
   });
-  const state = newLearnerFrontier({ epoch: 0, start, strandStarts: {} });
+  const state = newLearnerFrontier({
+    epoch: 0,
+    start,
+    fromAge: learner.birthYear != null,
+    strandStarts: {},
+  });
   const attempts: Outcome[] = [];
   const steps: ClimbStep[] = [];
   const key = `climb:${options.seed}`;

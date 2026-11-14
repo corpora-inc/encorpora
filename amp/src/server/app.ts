@@ -128,6 +128,19 @@ const attemptSchema = z
   .strict();
 /** Strips one-time secrets (password-reset and verification tokens, OAuth
  * codes) from a URL before it is logged. */
+/** Whether a learner's level is stored by day: a rostered student's (school
+ * or family) or an adult's. */
+async function keepsLevelDays(
+  account: Parameters<typeof isSchoolAccount>[0],
+  tx: { onSchoolRoster(): Promise<boolean>; isAdult(): Promise<boolean> },
+) {
+  return (
+    isSchoolAccount(account) ||
+    (await tx.onSchoolRoster()) ||
+    (await tx.isAdult())
+  );
+}
+
 export function redactUrl(url: string) {
   const parsed = new URL(url, "http://local");
   const path = parsed.pathname.replace(
@@ -723,12 +736,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
       // The frontier was computed for planning; a rostered student's (school
       // or family) or an adult's level for today is stored from it, with no
       // second replay.
-      if (
-        levelNow &&
-        (isSchoolAccount(account) ||
-          (await tx.onSchoolRoster()) ||
-          (await tx.isAdult()))
-      )
+      if (levelNow && (await keepsLevelDays(account, tx)))
         await tx.saveLevelDay(levelNow);
       const saved: SavedProblem[] = [];
       const problems: PublicProblem[] = [];
@@ -1246,6 +1254,10 @@ function routes(app: FastifyInstance, options: AppOptions) {
       };
       const before = await tx.masteredSkills();
       await tx.saveAttempt(outcome);
+      // Today's stored level includes this answer, so a teacher or a report
+      // reads what the learner was last shown even if they stop here.
+      if (await keepsLevelDays(account, tx))
+        await tx.saveLevelDay(await tx.frontier());
       // A mastery moment: this answer made a previously missed skill
       // review-ready. Shown once, with the answer; never stored.
       const mastered =

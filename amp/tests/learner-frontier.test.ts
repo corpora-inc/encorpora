@@ -59,6 +59,7 @@ function replayed(
 ) {
   const frontier = estimateFrontier({
     start: key.start,
+    fromAge: key.fromAge,
     observations,
     now,
     ...frontierCatalog,
@@ -83,6 +84,9 @@ function replayed(
 }
 function assertClose(stored: Frontier, full: Frontier, label: string) {
   assert.deepEqual(stored.overall, full.overall, `${label}: overall`);
+  assert.deepEqual(stored.anchor, full.anchor, `${label}: age anchor`);
+  assert.deepEqual(stored.readout, full.readout, `${label}: readout`);
+  assert.deepEqual(stored.restarted, full.restarted, `${label}: restarted`);
   assert.deepEqual(stored.adaptive, full.adaptive, `${label}: adaptive`);
   assert.deepEqual(
     stored.confirmation,
@@ -105,9 +109,10 @@ function assertClose(stored: Frontier, full: Frontier, label: string) {
   }
 }
 
-const key = (strandStarts = {}): LearnerFrontierKey => ({
+const key = (strandStarts = {}, fromAge = false): LearnerFrontierKey => ({
   epoch: 0,
   start: 4,
+  ...(fromAge ? { fromAge } : {}),
   strandStarts,
 });
 const scenarios: [string, (i: number) => number][] = [
@@ -120,8 +125,13 @@ for (const [name, abilityAt] of scenarios)
   test(`a stored level tracks replaying the whole history: ${name}`, () => {
     const observations = history(480, name.length, abilityAt);
     const restartStrand = frontierCatalog.strandOf(families[0]!);
-    for (const starts of [{}, { [restartStrand]: { level: 3, revision: 2 } }]) {
-      const k = key(starts);
+    for (const [starts, fromAge] of [
+      [{}, false],
+      [{ [restartStrand]: { level: 3, revision: 2 } }, false],
+      [{}, true],
+      [{ [restartStrand]: { level: 3, revision: 2 } }, true],
+    ] as const) {
+      const k = key(starts, fromAge);
       let state = newLearnerFrontier(k);
       observations.forEach((observation, i) => {
         state = advanceLearnerFrontier(state, [observation]);
@@ -180,6 +190,20 @@ test("a state is only reused for the same estimator, epoch, start, restarts and 
   assert.ok(isCurrentLearnerFrontier(state, k));
   assert.ok(!isCurrentLearnerFrontier(state, { ...k, epoch: 1 }));
   assert.ok(!isCurrentLearnerFrontier(state, { ...k, start: 5 }));
+  assert.ok(
+    !isCurrentLearnerFrontier(state, { ...k, fromAge: true }),
+    "a start set by age has another prior",
+  );
+  const aged = advanceLearnerFrontier(
+    newLearnerFrontier({ ...k, fromAge: true }),
+    history(30, 2, () => 5),
+  );
+  assert.ok(isCurrentLearnerFrontier(aged, { ...k, fromAge: true }));
+  assert.ok(!isCurrentLearnerFrontier(aged, k));
+  // The flag survives storage, so a stored age-anchored state stays one.
+  const reloaded = decodeLearnerFrontier(encodeLearnerFrontier(aged))!;
+  assert.ok(isCurrentLearnerFrontier(reloaded, { ...k, fromAge: true }));
+  assert.equal(reloaded.main.fromAge, true);
   assert.ok(!isCurrentLearnerFrontier(state, { ...k, strandStarts: {} }));
   assert.ok(
     !isCurrentLearnerFrontier(state, {
@@ -209,16 +233,26 @@ test("one pass gives the same trend as estimating each prefix", () => {
   const observations = history(83, 11, (i) => 3 + i / 20);
   const now = Date.parse(observations.at(-1)!.createdAt!) + 3_600_000;
   const counts = trendCounts(observations.length);
-  assert.deepEqual(
-    overallTrend({ start: 4, observations, now, ...frontierCatalog }, counts),
-    counts.map((answered) => {
-      const { level, sd } = estimateFrontier({
-        start: 4,
-        observations: observations.slice(0, answered),
-        now,
-        ...frontierCatalog,
-      }).overall;
-      return { answered, level, sd };
-    }),
-  );
+  for (const fromAge of [false, true])
+    assert.deepEqual(
+      overallTrend(
+        { start: 4, fromAge, observations, now, ...frontierCatalog },
+        counts,
+      ),
+      counts.map((answered) => {
+        const frontier = estimateFrontier({
+          start: 4,
+          fromAge,
+          observations: observations.slice(0, answered),
+          now,
+          ...frontierCatalog,
+        });
+        const {
+          level,
+          sd,
+          answered: counted,
+        } = frontier.readout ?? frontier.overall;
+        return { answered, level, sd, counted };
+      }),
+    );
 });

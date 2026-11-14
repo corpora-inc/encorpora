@@ -64,6 +64,7 @@ export function simulateLearner(
   const frontierAt = (at: number) =>
     estimateFrontier({
       start,
+      fromAge: true,
       observations: attempts,
       gradeOf,
       strandOf,
