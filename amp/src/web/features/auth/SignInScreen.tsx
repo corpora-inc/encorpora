@@ -39,6 +39,9 @@ import {
   isFundedReturn,
 } from "../../lib/funded-entry";
 import { useAuthDraft } from "./draft";
+import { currentBrowserKind } from "../../../analytics/browser-kind";
+import { nativeRuntime } from "../../native-runtime";
+import { OpenInBrowser } from "./OpenInBrowser";
 
 type Step =
   "sign-in" | "create" | "forgot" | "reset" | "check-email" | "two-factor";
@@ -120,13 +123,19 @@ export function SignInScreen() {
   };
   const { data: config } = useSuspenseQuery(authConfigOptions);
   const accounts = config.mode === "accounts";
-  const providers = accounts ? config.providers.filter(isProvider) : [];
+  const inApp = !nativeRuntime && currentBrowserKind() !== "standard";
+  const providers = accounts
+    ? config.providers
+        .filter(isProvider)
+        .filter((p) => !inApp || p !== "google")
+    : [];
   const passwords = accounts ? config.passwords : true;
   // Passkey-first sign-up wherever this browser and deployment support it;
   // a password is the secondary choice (`?method=password`).
   const passkeyCreate =
     step === "create" &&
     accounts &&
+    !inApp &&
     !!config.passkeySignup &&
     passkeysAvailable();
   const passkeyMethod = passkeyCreate && params.get("method") !== "password";
@@ -144,6 +153,7 @@ export function SignInScreen() {
   const [methodHint, setMethodHint] = useState<{
     step: Step;
     methods: SignInMethod[];
+    externalOnly?: boolean;
     minHeight?: number;
   } | null>(null);
   const hinted = methodHint?.step === step ? methodHint : null;
@@ -211,8 +221,9 @@ export function SignInScreen() {
   // Parents sent to sign in from /access get the parent signup layout:
   // "Continue with Google" in full on its own row.
   const parentLayout = parentEntry || carry.return === "access";
-  const primaryProviders =
-    parentLayout && providers.some((p) => p !== "github")
+  const primaryProviders = inApp
+    ? []
+    : parentLayout && providers.some((p) => p !== "github")
       ? providers.filter((p) => p !== "github")
       : providers;
   const additionalProviders = providers.filter(
@@ -407,13 +418,15 @@ export function SignInScreen() {
     if (methods.includes("password")) return false;
     const usable = methods.filter((m) =>
       m === "passkey"
-        ? passkeysAvailable()
+        ? !inApp && passkeysAvailable()
         : m !== "password" && providers.includes(m),
     );
-    if (!usable.length) return false;
+    const externalOnly = inApp && !usable.length;
+    if (!usable.length && !externalOnly) return false;
     setMethodHint({
       step,
-      methods: usable,
+      methods: externalOnly ? methods : usable,
+      externalOnly,
       minHeight: formRef.current?.getBoundingClientRect().height,
     });
     return true;
@@ -643,7 +656,7 @@ export function SignInScreen() {
             )}
           </div>
         )}
-        {step === "sign-in" && providers.length > 0 && (
+        {step === "sign-in" && !inApp && providers.length > 0 && (
           <p className={styles.hint}>
             Choose the sign-in method you used to create your account.
           </p>
@@ -686,7 +699,7 @@ export function SignInScreen() {
             onSelect={social}
           />
         )}
-        {step === "sign-in" && (
+        {step === "sign-in" && !inApp && (
           <Button
             type="button"
             variant="secondary"
@@ -697,7 +710,7 @@ export function SignInScreen() {
           </Button>
         )}
         {showProviders &&
-          providers.length > 0 &&
+          primaryProviders.length > 0 &&
           (passwords || passkeyCreate) && <EmailDivider copy={copy} />}
         {hinted ? (
           <div
@@ -719,15 +732,19 @@ export function SignInScreen() {
             </div>
             <p role="status">
               This email signs in with {methodList(hinted.methods)}.
+              {hinted.externalOnly &&
+                " Open this page in your browser to continue."}
             </p>
             <ProviderButtons
-              providers={hinted.methods.filter(isProvider)}
+              providers={
+                hinted.externalOnly ? [] : hinted.methods.filter(isProvider)
+              }
               copy={copy}
               busy={busy || !!pending}
               pending={pending}
               onSelect={social}
             />
-            {hinted.methods.includes("passkey") && (
+            {!inApp && hinted.methods.includes("passkey") && (
               <Button
                 type="button"
                 variant="primary"
@@ -865,6 +882,7 @@ export function SignInScreen() {
             </form>
           )
         )}
+        {inApp && showProviders && <OpenInBrowser />}
         <div className="account-links">
           {step === "sign-in" && passwords && (
             <>

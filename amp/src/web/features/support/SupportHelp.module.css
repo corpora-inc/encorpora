@@ -31,3 +31,24 @@
 .status {
   min-height: 2.8em;
 }
+
+.contact {
+  display: grid;
+  justify-items: center;
+}
+.addressRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+.address {
+  color: var(--color-on-surface);
+  user-select: all;
+}
+.copyStatus {
+  width: min(100%, 240px);
+  text-align: left;
+  min-height: 1.5em;
+  line-height: 1.5;
+}

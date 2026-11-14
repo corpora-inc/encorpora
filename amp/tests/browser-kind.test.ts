@@ -1,4 +1,5 @@
 import test from "node:test";
+import { userAgents } from "./fixtures/in-app-user-agents";
 import assert from "node:assert/strict";
 import { browserKind } from "../src/analytics/browser-kind.js";
 import {
@@ -101,5 +102,34 @@ test("errors and landings carry the browser kind; the shared entry context does 
       context: { referrer: "social", device: "phone", browser: "standard" },
     }).success,
     false,
+  );
+});
+
+for (const { name, kind, ua } of userAgents) {
+  test(`real user agent: ${name}`, () => assert.equal(browserKind(ua), kind));
+}
+
+test("overlapping app markers and generic webviews stay embedded", () => {
+  assert.equal(
+    browserKind(android(" [FBAN/Orca-Android;FBAV/489.0.0.40.109;]")),
+    "inapp-facebook",
+  );
+  assert.equal(
+    browserKind(ios(" [FBAN/MessengerForiOS;FBAV/489.0.0.40.109;]")),
+    "inapp-facebook",
+  );
+  assert.equal(
+    browserKind(android(" Instagram 355.0 [FBAN/FB4A;]")),
+    "inapp-instagram",
+  );
+  assert.equal(
+    browserKind(
+      "Mozilla/5.0 (Linux; Android 14; wv; Mobile) Chrome/130.0 Mobile Safari/537.36",
+    ),
+    "inapp-other",
+  );
+  assert.equal(
+    browserKind("Mozilla/5.0 LinkedIn/9.0 Safari/604.1"),
+    "inapp-other",
   );
 });
