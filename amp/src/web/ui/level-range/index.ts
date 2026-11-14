@@ -6,6 +6,7 @@ export {
   LevelRangeStart,
   LevelRows,
   type LevelRangeArea,
+  WHOLE_SCALE,
 } from "./LevelRange";
 export { LevelAxis, LevelBar } from "./LevelBar";
 export { LevelPath, type PathPoint } from "./LevelPath";

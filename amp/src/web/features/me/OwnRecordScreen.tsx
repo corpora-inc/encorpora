@@ -156,7 +156,6 @@ export function OwnRecordScreen() {
           <LevelRangeStart
             title="Where you are"
             heading={1}
-            start={level.overall}
             action={
               hero ? (
                 <Link

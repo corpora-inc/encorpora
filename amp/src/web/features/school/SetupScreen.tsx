@@ -356,7 +356,7 @@ function SchoolStep({ state, orgId }: { state: SetupState; orgId: string }) {
             options={[
               {
                 value: "class",
-                label: "Just my class",
+                label: "One class",
                 detail: "One teacher and one class.",
               },
               {
@@ -788,7 +788,7 @@ function StudentsStep({
   const navigate = useNavigate();
   const solo = state.org.solo;
   const [className, setClassName] = useState(
-    state.firstClass?.name ?? (solo ? "My class" : ""),
+    state.firstClass?.name ?? (solo ? "Math class" : ""),
   );
   const [names, setNames] = useState("");
   const [grade, setGrade] = useState<number | null>(null);
@@ -892,13 +892,13 @@ function StudentsStep({
   const finishForImport = () =>
     void finish(
       "import",
-      solo ? { className: className.trim() || "My class" } : {},
+      solo ? { className: className.trim() || "Math class" } : {},
       () => orgPath(orgId, "import"),
     );
   const skip = () =>
     void finish(
       "skip",
-      { className: className.trim() || "My class" },
+      { className: className.trim() || "Math class" },
       classHome,
     );
   return (

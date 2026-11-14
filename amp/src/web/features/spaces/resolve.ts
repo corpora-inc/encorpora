@@ -719,20 +719,14 @@ function meSpace(
         ]
       : [
           ...(me?.adultPractice?.eligible
-            ? [
-                destination(
-                  "start",
-                  "Start my own practice",
-                  "me/start",
-                  "learn",
-                ),
-              ]
+            ? [destination("start", "Practice yourself", "me/start", "learn")]
             : []),
           destination("profiles", "Profiles", "me/profiles", "someone"),
         ],
     place: "me",
-    label:
-      chosen?.kind === "own" && chosen.profile ? chosen.name : "My practice",
+    // No place name: the tabs and the screen say whose this is. A practice
+    // profile is named, so its levels are never mistaken for theirs.
+    label: chosen?.kind === "own" && chosen.profile ? chosen.name : "",
   };
 }
 

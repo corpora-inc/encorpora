@@ -695,7 +695,7 @@ async function loneTeacher(
   // One teacher and one class: said on the school step.
   await page.getByRole("link", { name: "Back" }).click();
   await heading(page, "Where will you use AMP?");
-  await page.getByRole("radio", { name: /Just my class/ }).click();
+  await page.getByRole("radio", { name: /One class/ }).click();
   await page.getByRole("button", { name: "Continue" }).click();
   await heading(page, "When does your school year run?");
   await page.getByRole("button", { name: "Decide later" }).click();
@@ -719,7 +719,7 @@ async function loneTeacher(
   await shot(page, "class-landing", width, theme);
   // Adding one more, from the class's settings.
   await page.goto(page.url().replace(/\/today$/, "/settings"));
-  await page.getByRole("heading", { name: "My class", level: 1 }).waitFor();
+  await page.getByRole("heading", { name: "Math class", level: 1 }).waitFor();
   await page.getByText("Noor Haddad").waitFor();
   await pause(page);
   await page.getByRole("button", { name: "Add student" }).click();

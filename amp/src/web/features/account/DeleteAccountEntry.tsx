@@ -23,7 +23,7 @@ export function DeleteAccountEntry({
         >
           <span className={pages.rowText}>
             <span className={`${pages.rowTitle} ${pages.danger}`}>
-              Delete my account
+              Delete account
             </span>
             <span className={pages.rowMeta}>
               Your account, learners and practice, for good

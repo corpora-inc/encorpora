@@ -343,7 +343,7 @@ export function AccountSecurity() {
                               submit(e, async () => {
                                 checked(
                                   await accountClient.passkey.addPasskey({
-                                    name: keyName.trim() || "My passkey",
+                                    name: keyName.trim() || "Passkey",
                                   }),
                                 );
                                 setKeyName("");

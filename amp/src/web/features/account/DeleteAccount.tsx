@@ -322,7 +322,7 @@ function DeleteAccount({ session }: { session: AuthSession }) {
                   disabled={!confirmed || remove.isPending}
                   aria-busy={remove.isPending || undefined}
                 >
-                  Delete my account
+                  Delete account
                 </Button>
               </form>
             )}

@@ -19,25 +19,25 @@ import {
   likelyRange,
   type Estimate,
   type RangeScale,
+  WHOLE_SCALE,
 } from "../../../ui/level-range";
 import { strandNames } from "../../../BirthYearPrompt";
 import { Menu, MenuItem } from "../../../ui/Menu";
 import { classUrl, parseSort, useClassSearch } from "./teacher-shared";
 import styles from "./ClassMap.module.css";
 
-/** Before any work, a wide band around where they should be, drawn dashed. */
+/** A provisional guess wider than this rests against an end of the scale. */
 const UNKNOWN_SD = 0.9;
-const middleOf = (reference: MapStudent["reference"]) =>
-  reference ? (reference.from + reference.to) / 2 : null;
 
 type Placed = {
   student: MapStudent;
-  estimate: Estimate;
+  /** Null before any work: not measured yet (the whole scale, a "?"). */
+  estimate: Estimate | null;
   /** Too little work to place: a starting guess, drawn dashed. */
   estimated: boolean;
 };
 
-function place(student: MapStudent, lens: string, center: number): Placed {
+function place(student: MapStudent, lens: string): Placed {
   const known =
     lens === "overall"
       ? student.level?.overall
@@ -50,14 +50,31 @@ function place(student: MapStudent, lens: string, center: number): Placed {
           student.provisional ||
           (lens !== "overall" && !student.level?.strands[lens]),
       }
-    : {
-        student,
-        estimate: {
-          level: middleOf(student.reference) ?? center,
-          sd: UNKNOWN_SD,
-        },
-        estimated: true,
-      };
+    : { student, estimate: null, estimated: true };
+}
+
+/** The scale for a set of placed rows: every measured row's whole likely
+ * range and every own-grade stripe; before anyone is measured, the whole
+ * curriculum, as a level not yet measured spans it. */
+function placedScale(rows: readonly Placed[], minSpan: number): RangeScale {
+  const measured = rows.flatMap((row) => row.estimate ?? []);
+  if (!measured.length) return WHOLE_SCALE;
+  return fitScale(
+    rows.flatMap((row) =>
+      row.estimate && (!row.estimated || row.estimate.sd <= UNKNOWN_SD)
+        ? [row.estimate]
+        : [],
+    ),
+    {
+      minSpan,
+      include: rows.flatMap((row) => [
+        ...(row.estimate ? [row.estimate.level] : []),
+        ...(row.student.reference
+          ? [row.student.reference.from, row.student.reference.to]
+          : []),
+      ]),
+    },
+  );
 }
 
 /**
@@ -100,40 +117,14 @@ export function ClassMap({
       : "overall";
   const label = (id: string) =>
     data.strands.find((strand) => strand.id === id)?.label ?? "Overall";
-  const center = useMemo(() => {
-    const course = data.class.course?.level;
-    if (course !== undefined) return course;
-    const middles = data.students
-      .map((student) => middleOf(student.reference))
-      .filter((value): value is number => value !== null)
-      .sort((a, b) => a - b);
-    return middles[Math.floor(middles.length / 2)] ?? 5;
-  }, [data]);
   const placed = useMemo(
-    () => data.students.map((student) => place(student, lens, center)),
-    [data, lens, center],
+    () => data.students.map((student) => place(student, lens)),
+    [data, lens],
   );
   // Every whole likely range and every own-grade stripe, so nobody's bar
   // runs off an end; only a provisional guess too wide to mean much rests
   // its band against an end, with its dot inside.
-  const scale = useMemo(
-    () =>
-      fitScale(
-        placed
-          .filter((row) => !row.estimated || row.estimate.sd <= UNKNOWN_SD)
-          .map((row) => row.estimate),
-        {
-          minSpan: 4,
-          include: placed.flatMap((row) => [
-            row.estimate.level,
-            ...(row.student.reference
-              ? [row.student.reference.from, row.student.reference.to]
-              : []),
-          ]),
-        },
-      ),
-    [placed],
-  );
+  const scale = useMemo(() => placedScale(placed, 4), [placed]);
   const starting = placed.every((row) => row.estimated);
   const sort = parseSort(search.sort);
   const byName = sort?.column === "student";
@@ -146,7 +137,7 @@ export function ClassMap({
       // Who has too little work to place goes after everyone who has.
       if (a.estimated !== b.estimated) return a.estimated ? 1 : -1;
       return (
-        sign * (a.estimate.level - b.estimate.level) ||
+        sign * ((a.estimate?.level ?? 0) - (b.estimate?.level ?? 0)) ||
         a.student.name.localeCompare(b.student.name, "en")
       );
     });
@@ -164,6 +155,7 @@ export function ClassMap({
     set({ sort: `${column}:${next}` }, { replace: true });
   };
   const reading = (row: Placed) => {
+    if (!row.estimate) return "not measured yet";
     if (row.estimated) return "not enough work yet";
     const [from, to] = likelyRange(row.estimate);
     const reference = row.student.reference;
@@ -183,7 +175,6 @@ export function ClassMap({
     return (
       <SmallClassMap
         data={data}
-        center={center}
         starting={starting}
         action={action}
         name={name}
@@ -282,9 +273,13 @@ export function ClassMap({
               />
             </span>
             <span role="cell" className={styles.numbers}>
-              {row.estimated ? (
+              {!row.estimate || row.estimated ? (
                 <span className={styles.notYet}>
-                  {starting ? "Starting" : "Not enough work"}
+                  {!row.estimate
+                    ? "Not yet"
+                    : starting
+                      ? "Starting"
+                      : "Not enough work"}
                 </span>
               ) : (
                 likelyRange(row.estimate)
@@ -312,14 +307,12 @@ const AREA_ORDER = Object.keys(strandNames);
  */
 function SmallClassMap({
   data,
-  center,
   starting,
   action,
   name,
   grades: graded,
 }: {
   data: MapResponse;
-  center: number;
   starting: boolean;
   action?: ReactNode;
   name?: (student: MapStudent) => ReactNode;
@@ -344,10 +337,10 @@ function SmallClassMap({
   );
   const learners = data.students.map((student) => ({
     student,
-    overall: place(student, "overall", center),
+    overall: place(student, "overall"),
     areas: student.level
       ? areas.map((area) => {
-          const row = place(student, area.id, center);
+          const row = place(student, area.id);
           return {
             id: area.id,
             label: area.label,
@@ -357,27 +350,16 @@ function SmallClassMap({
         })
       : [],
   }));
-  const scale: RangeScale = fitScale(
-    learners.flatMap((learner) =>
-      [
-        learner.overall,
-        ...learner.areas.map((area) => ({
-          estimate: area.estimate,
-          estimated: !!area.estimated,
-        })),
-      ]
-        .filter((row) => !row.estimated || row.estimate.sd <= UNKNOWN_SD)
-        .map((row) => row.estimate),
-    ),
-    {
-      minSpan: 6,
-      include: learners.flatMap((learner) => [
-        learner.overall.estimate.level,
-        ...(learner.student.reference
-          ? [learner.student.reference.from, learner.student.reference.to]
-          : []),
-      ]),
-    },
+  const scale: RangeScale = placedScale(
+    learners.flatMap((learner) => [
+      learner.overall,
+      ...learner.areas.map((area) => ({
+        student: learner.student,
+        estimate: area.estimate,
+        estimated: !!area.estimated,
+      })),
+    ]),
+    6,
   );
   return (
     <div className={styles.map}>
@@ -387,7 +369,9 @@ function SmallClassMap({
       {starting && action && <div className={styles.starting}>{action}</div>}
       {learners.map((learner) => {
         const { student, overall } = learner;
-        const [from, to] = likelyRange(overall.estimate);
+        const [from, to] = overall.estimate
+          ? likelyRange(overall.estimate)
+          : [0, 0];
         return (
           <section
             key={student.id}
@@ -408,7 +392,7 @@ function SmallClassMap({
                   </EntityLink>
                 )}
               </h2>
-              {!overall.estimated && (
+              {overall.estimate && !overall.estimated && (
                 <p className={styles.learnerLevel}>
                   Likely {from.toFixed(1)}–{to.toFixed(1)}
                 </p>

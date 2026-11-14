@@ -146,9 +146,6 @@ export function Home(props: Props) {
           <LevelRangeStart
             title={who ? `Where ${who} is` : "Where you are"}
             heading={1}
-            start={f.overall}
-            grade={grade}
-            numbers={shown}
             who={who}
             action={go}
             secondary={freeLine}

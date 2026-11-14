@@ -65,6 +65,13 @@ const count = (n: number, one: string, many: string) =>
   `${n} ${n === 1 ? one : many}`;
 
 /** Their own family's side: their children, or the way into it. */
+/** The adult's own name as they gave it (R12): their given name, else the
+ * name they go by; null when they haven't given one. */
+export function adultName(me: SignedInMe): string | null {
+  const name = me.account.givenName?.trim() || me.account.displayName?.trim();
+  return name || null;
+}
+
 function ownFamily(me: SignedInMe): PlaceEntry | null {
   const home =
     me.learners.length > 0 ||
@@ -92,7 +99,7 @@ function ownFamily(me: SignedInMe): PlaceEntry | null {
  * The switcher's places, grouped by space: Family (their own, the families
  * they are a second parent or co-teacher of), Teaching (each school, network
  * or district with their role, the schools below one they oversee, and each
- * class they teach or aide) and My practice. Every place the account may
+ * class they teach or aide) and Practice. Every place the account may
  * open, with its role; nothing it may not. Without the places read (it
  * failed, or there is none), the schools `/me` names stand in.
  */
@@ -276,9 +283,10 @@ export function placeGroups(
       ? [
           {
             id: "me" as const,
-            name: "My practice",
-            // Never their own name back to them (docs/design/ia.md).
-            detail: "Your levels and practice",
+            // Their own name where it is known (a switcher lists places by
+            // name), else what the place is.
+            name: adultName(me) ?? "Practice",
+            detail: "Levels, practice and workbooks",
             path: "me",
           },
         ]
@@ -286,7 +294,7 @@ export function placeGroups(
         ? [
             {
               id: "me" as const,
-              name: "Start my own practice",
+              name: "Practice yourself",
               detail: "Free for you",
               path: "me/start",
             },
@@ -302,7 +310,7 @@ export function placeGroups(
   return [
     { id: "family" as const, label: "Family", entries: family },
     { id: "teaching" as const, label: "Teaching", entries: teaching },
-    { id: "practice" as const, label: "My practice", entries: practice },
+    { id: "practice" as const, label: "Practice", entries: practice },
   ].filter((group) => group.entries.length > 0);
 }
 

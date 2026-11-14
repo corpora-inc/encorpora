@@ -132,7 +132,7 @@ try {
         name: "Sign in again to delete",
       });
       const remove = page.getByRole("button", {
-        name: "Delete my account",
+        name: "Delete account",
         exact: true,
       });
       await page.goto(`${origin}/family/security/delete`);
