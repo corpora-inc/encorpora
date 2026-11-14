@@ -4,6 +4,10 @@ import { RouterProvider } from "@tanstack/react-router";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import type { AuthSession } from "../../../auth";
 
+// Analytics has its own transport tests. Its delayed flush must not outlive
+// a module reset and appear as a gift POST in the next test's fetch fixture.
+vi.mock("../../../lib/analytics");
+
 /* A gift of AMP for an adult on her own: she uses it for herself, with no
    parental consent and no child to set up. A child's gift is unchanged. */
 
