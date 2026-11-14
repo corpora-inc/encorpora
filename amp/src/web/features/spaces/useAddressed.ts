@@ -10,7 +10,13 @@ import { addressedIdentity, type AddressedIdentity } from "./identity";
 export function useAddressedIdentity(): AddressedIdentity | null {
   const key = useRouterState({
     select: (state) => {
-      const shown = state.resolvedLocation ?? state.location;
+      // The displayed route's own pathname and search (the same snapshot
+      // the shell reads: useSettledMatch), never the address still loading.
+      const leaf = state.matches.at(-1);
+      const shown =
+        leaf && leaf.status === "success"
+          ? { pathname: leaf.pathname, search: leaf.search }
+          : (state.resolvedLocation ?? state.location);
       const found = addressedIdentity(
         shown.pathname,
         shown.search as Record<string, unknown>,

@@ -1101,3 +1101,12 @@ test("CP-2 r2 H2: a profile this account doesn't have is unavailable, never ?lea
   assert.equal(space.status, "unavailable");
   assert.equal(space.learner, null);
 });
+
+test("CP-2 r3: the frame reads the address as the learning view does: ?learner= never names a profile", () => {
+  const space = resolveSpace(
+    at("/practice", { search: { learner: "profile-4" } }),
+    adult(power, "jonah"),
+  );
+  expectSpace(space, "me");
+  assert.equal(space.status, "unavailable");
+});

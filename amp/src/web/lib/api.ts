@@ -2,6 +2,7 @@ import { observeLearningRequest } from "./learning-analytics";
 import { observePurchaseRequest } from "./purchase-analytics";
 import type { z } from "zod";
 import { AppError } from "./AppError";
+import { isRetired } from "./session-generation";
 import { validationPaths } from "./batch-capability-fallback";
 import {
   buildIsStale,
@@ -154,16 +155,51 @@ const errorCode = (data: unknown) =>
   typeof data.error === "string"
     ? data.error
     : "";
-export async function request<T>(
+type RequestOptions = {
+  token?: string | null;
+  body?: unknown;
+  signal?: AbortSignal;
+  method?: string;
+  headers?: Record<string, string>;
+};
+
+/** A request from a session this tab has left (lib/session-generation.ts):
+ * refused, so neither the asking nor the answer reaches the new session. */
+function replacedSession() {
+  return new AppError(
+    "authentication",
+    "This was asked by a sign-in that has since changed.",
+    false,
+    null,
+    "session_replaced",
+  );
+}
+
+export function request<T>(
   path: string,
   schema: z.ZodType<T>,
-  options: {
-    token?: string | null;
-    body?: unknown;
-    signal?: AbortSignal;
-    method?: string;
-    headers?: Record<string, string>;
-  } = {},
+  options: RequestOptions = {},
+): Promise<T> {
+  return requestWith(() => send(path, schema, options), options);
+}
+
+/** A request's session checks around its sending: checked when it is
+ * asked, and again when it answers, so a session retired in between never
+ * has its answer read or cached. */
+export async function requestWith<T>(
+  sending: () => Promise<T>,
+  options: { token?: string | null },
+): Promise<T> {
+  if (isRetired(options.token)) throw replacedSession();
+  const answer = await sending();
+  if (isRetired(options.token)) throw replacedSession();
+  return answer;
+}
+
+async function send<T>(
+  path: string,
+  schema: z.ZodType<T>,
+  options: RequestOptions,
 ): Promise<T> {
   const method =
     options.method ?? (options.body === undefined ? "GET" : "POST");

@@ -15,8 +15,18 @@ const router = vi.hoisted(() => ({
   },
 }));
 vi.mock("@tanstack/react-router", () => ({
-  useRouterState: ({ select }: { select: (s: typeof router) => unknown }) =>
-    select(router),
+  // The displayed route is the resolved one; `location` may be loading.
+  useRouterState: ({ select }: { select: (s: unknown) => unknown }) =>
+    select({
+      ...router,
+      matches: [
+        {
+          pathname: router.resolvedLocation.pathname,
+          search: router.resolvedLocation.search,
+          status: "success",
+        },
+      ],
+    }),
 }));
 afterEach(cleanup);
 

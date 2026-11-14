@@ -7,6 +7,7 @@ import type {
 } from "../../../schools/contracts";
 import type { TabItem } from "../../ui/Tabs";
 import { shellFrame, type ShellFrame } from "../navigation/shell-frame";
+import { addressedIdentity, type AddressedIdentity } from "./identity";
 import { spaceOfPath, type RouteSpace, type Space } from "./space";
 import {
   accountTabs,
@@ -325,18 +326,16 @@ type Chosen =
  * practice. A learner who is none of theirs is nobody's here. */
 function chosenLearner(
   me: SignedInMe | null,
-  routeLearner: string | null,
-  profileId: string | null,
+  /** What the address names (features/spaces/identity.ts): the one answer
+   * when present, in the same order and with the same kinds as the
+   * learning view and practice read it. */
+  named: AddressedIdentity | null,
   selected: string | null,
-  named: string | null = null,
 ): Chosen | null {
   const own = me?.adultPractice?.learner ?? null;
-  const pick = (id: string | null): Chosen | null => {
-    if (!id) return null;
+  const learnerOf = (id: string): Chosen | null => {
     if (own?.id === id)
       return { kind: "own", id, name: own.name, profile: false };
-    const profile = me?.practiceProfiles?.find((entry) => entry.id === id);
-    if (profile) return { kind: "own", id, name: profile.label, profile: true };
     const child = me?.learners.find((learner) => learner.id === id);
     if (child) return { kind: "child", id, name: child.name, family: null };
     for (const family of me?.secondParentOf ?? []) {
@@ -346,18 +345,16 @@ function chosenLearner(
     }
     return null;
   };
-  // One order everywhere (adoption, the address builder, here): the route's
-  // own `$learnerId`, then a practice profile (a mode), then `?learner=`,
-  // then the device's choice.
-  if (routeLearner) return pick(routeLearner);
-  // A named profile that isn't this account's is nobody: never `?learner=`
-  // or the device's choice in its place.
-  if (profileId) {
-    const profile = pick(profileId);
-    return profile?.kind === "own" && profile.profile ? profile : null;
-  }
-  if (named) return pick(named);
-  const chosen = pick(selected);
+  const profileOf = (id: string): Chosen | null => {
+    const profile = me?.practiceProfiles?.find((entry) => entry.id === id);
+    return profile
+      ? { kind: "own", id, name: profile.label, profile: true }
+      : null;
+  };
+  // Named: that learner or profile, of the kind named, or nobody.
+  if (named)
+    return named.kind === "profile" ? profileOf(named.id) : learnerOf(named.id);
+  const chosen = selected ? (learnerOf(selected) ?? profileOf(selected)) : null;
   if (chosen) return chosen;
   const first = me?.learners[0];
   if (first)
@@ -478,24 +475,15 @@ function resolveOnce(
     }
   }
   if (route === "learner" || route === "me" || route === "family") {
-    const profile = text(match.search?.profile);
-    const named = text(match.search?.learner);
-    const chosen =
+    const named =
       route === "me"
         ? null
-        : chosenLearner(
-            me,
-            match.learner ?? null,
-            profile,
-            session.learnerId,
-            named,
-          );
+        : addressedIdentity(match.pathname, match.search ?? {});
+    const chosen =
+      route === "me" ? null : chosenLearner(me, named, session.learnerId);
     // The address named someone this account doesn't read: unavailable,
     // never whoever was chosen before.
-    const foreign =
-      route === "learner" &&
-      !chosen &&
-      (!!match.learner || !!profile || !!named);
+    const foreign = route === "learner" && !chosen && !!named;
     if (chosen?.kind === "child")
       return familySpace({ ...base, ...words("family") }, frame, me, {
         orgId: chosen.family ?? me?.familyClass?.orgId ?? null,
@@ -509,9 +497,7 @@ function resolveOnce(
       { ...base, ...words("me") },
       frame,
       me,
-      foreign
-        ? null
-        : (chosen ?? chosenLearner(me, null, profile, session.learnerId)),
+      foreign ? null : (chosen ?? chosenLearner(me, null, session.learnerId)),
       match.pathname,
       foreign,
     );
