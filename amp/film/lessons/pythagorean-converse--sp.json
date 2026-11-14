@@ -1,0 +1,1634 @@
+{
+ "id": "pythagorean-converse--sp",
+ "title": "Three sides decide the angle",
+ "teaches": [],
+ "cast": {
+  "teacher": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -1,
+     -0.8,
+     4.7,
+     3.7
+    ],
+    "points": {
+     "O": [
+      0,
+      0
+     ],
+     "B": [
+      4,
+      0
+     ],
+     "P": {
+      "on": "orbit",
+      "deg": 67.97568716295784
+     },
+     "M": {
+      "mid": [
+       "O",
+       "P"
+      ]
+     },
+     "N": {
+      "mid": [
+       "P",
+       "B"
+      ]
+     }
+    },
+    "parts": [
+     {
+      "id": "orbit",
+      "circle": "O",
+      "r": 3
+     },
+     {
+      "id": "stickThree",
+      "seg": [
+       "O",
+       "P"
+      ],
+      "ink": "blue",
+      "w": 8,
+      "start": true
+     },
+     {
+      "id": "stickFour",
+      "seg": [
+       "O",
+       "B"
+      ],
+      "ink": "accent",
+      "w": 8,
+      "start": true
+     },
+     {
+      "id": "third",
+      "seg": [
+       "P",
+       "B"
+      ],
+      "ink": "warm",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "pin",
+      "dot": "O",
+      "r": 8,
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "opening",
+      "angle": [
+       "B",
+       "O",
+       "P"
+      ],
+      "r": 52,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "start": true
+     },
+     {
+      "id": "right",
+      "angle": [
+       "B",
+       "O",
+       "P"
+      ],
+      "r": 62,
+      "right": true,
+      "ink": "gold"
+     },
+     {
+      "id": "three",
+      "label": "3",
+      "at": "stickThree",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "halo": true,
+      "start": true,
+      "flies": true,
+      "far": 0
+     },
+     {
+      "id": "four",
+      "label": "4",
+      "at": "stickFour",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent",
+      "halo": true,
+      "start": true,
+      "far": 0
+     },
+     {
+      "id": "thirdTwo",
+      "label": "4",
+      "at": "third",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm",
+      "halo": true,
+      "start": true,
+      "flies": true,
+      "far": 0
+     },
+     {
+      "id": "thirdFive",
+      "label": "5",
+      "at": "third",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm",
+      "halo": true,
+      "flies": true,
+      "far": 0
+     },
+     {
+      "id": "thirdSix",
+      "label": "6",
+      "at": "third",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm",
+      "halo": true,
+      "flies": true,
+      "far": 0
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Can three lengths reveal a right angle, a square corner?",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "text",
+       "text": "Three lengths. A right angle?"
+      },
+      {
+       "do": "highlight",
+       "target": "opening",
+       "at": "corner"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Join sticks three and four at a hinge. Connect their tips.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Two fixed lengths"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "stickThree",
+        "stickFour"
+       ],
+       "at": "sticks"
+      },
+      {
+       "do": "highlight",
+       "target": "third",
+       "at": "Connect"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -4.6,
+     -4.5,
+     7.6,
+     8.6
+    ],
+    "points": {
+     "O": [
+      0,
+      0
+     ],
+     "B": [
+      4,
+      0
+     ],
+     "P": {
+      "on": "orbit",
+      "deg": 67.97568716295784
+     },
+     "M": {
+      "mid": [
+       "O",
+       "P"
+      ]
+     },
+     "N": {
+      "mid": [
+       "P",
+       "B"
+      ]
+     },
+     "Q": {
+      "on": "orbit",
+      "deg": 157.97568716295785
+     },
+     "R": {
+      "on": "diagonal",
+      "deg": 112.97568716295784
+     },
+     "U": [
+      0,
+      -4
+     ],
+     "V": [
+      4,
+      -4
+     ],
+     "K": [
+      0,
+      4
+     ],
+     "L": [
+      4,
+      4
+     ],
+     "D": {
+      "on": "upperOrbit",
+      "deg": 22.97568716295784
+     },
+     "E": {
+      "on": "farOrbit",
+      "deg": -22.02431283704216
+     },
+     "AreaNine": {
+      "mid": [
+       "O",
+       "R"
+      ]
+     },
+     "AreaSixteen": [
+      2,
+      -2
+     ],
+     "AreaThird": {
+      "mid": [
+       "P",
+       "E"
+      ]
+     },
+     "Reading": {
+      "on": "areaFunction",
+      "x": 67.97568716295784
+     }
+    },
+    "parts": [
+     {
+      "id": "diagonal",
+      "circle": "O",
+      "r": 4.242640687119286
+     },
+     {
+      "id": "upperOrbit",
+      "circle": "K",
+      "r": 4.242640687119286
+     },
+     {
+      "id": "farOrbit",
+      "circle": "L",
+      "r": 3
+     },
+     {
+      "id": "areaFunction",
+      "plot": "25-24*cos(x*pi/180)",
+      "from": 67.97568716295784,
+      "to": 120
+     },
+     {
+      "id": "squareNine",
+      "poly": [
+       "O",
+       "P",
+       "R",
+       "Q"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2
+     },
+     {
+      "id": "squareSixteen",
+      "poly": [
+       "O",
+       "U",
+       "V",
+       "B"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2
+     },
+     {
+      "id": "squareThird",
+      "poly": [
+       "P",
+       "B",
+       "E",
+       "D"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "orbit",
+      "circle": "O",
+      "r": 3
+     },
+     {
+      "id": "stickThree",
+      "seg": [
+       "O",
+       "P"
+      ],
+      "ink": "blue",
+      "w": 8,
+      "start": true
+     },
+     {
+      "id": "stickFour",
+      "seg": [
+       "O",
+       "B"
+      ],
+      "ink": "accent",
+      "w": 8,
+      "start": true
+     },
+     {
+      "id": "third",
+      "seg": [
+       "P",
+       "B"
+      ],
+      "ink": "warm",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "pin",
+      "dot": "O",
+      "r": 8,
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "opening",
+      "angle": [
+       "B",
+       "O",
+       "P"
+      ],
+      "r": 52,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "start": true
+     },
+     {
+      "id": "right",
+      "angle": [
+       "B",
+       "O",
+       "P"
+      ],
+      "r": 62,
+      "right": true,
+      "ink": "gold"
+     },
+     {
+      "id": "three",
+      "label": "3",
+      "at": "stickThree",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "halo": true,
+      "start": true,
+      "flies": true,
+      "far": 0
+     },
+     {
+      "id": "four",
+      "label": "4",
+      "at": "stickFour",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent",
+      "halo": true,
+      "start": true,
+      "far": 0
+     },
+     {
+      "id": "thirdTwo",
+      "label": "4",
+      "at": "third",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm",
+      "halo": true,
+      "start": true,
+      "flies": true,
+      "far": 0
+     },
+     {
+      "id": "thirdFive",
+      "label": "5",
+      "at": "third",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm",
+      "halo": true,
+      "flies": true,
+      "far": 0
+     },
+     {
+      "id": "thirdSix",
+      "label": "6",
+      "at": "third",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm",
+      "halo": true,
+      "flies": true,
+      "far": 0
+     },
+     {
+      "id": "nine",
+      "label": "9",
+      "at": "AreaNine",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "flies": true
+     },
+     {
+      "id": "sixteen",
+      "label": "16",
+      "at": "AreaSixteen",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent"
+     },
+     {
+      "id": "areaLive",
+      "label": "\\approx @y",
+      "at": "AreaThird",
+      "dir": "c",
+      "size": "s",
+      "ink": "warm",
+      "of": "Reading",
+      "flies": true
+     },
+     {
+      "id": "areaStart",
+      "label": "16",
+      "at": "AreaThird",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "flies": true
+     },
+     {
+      "id": "areaFive",
+      "label": "25",
+      "at": "AreaThird",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "flies": true
+     },
+     {
+      "id": "areaSix",
+      "label": "36",
+      "at": "AreaThird",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "flies": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Build a square on each side. Squaring means multiplying a length by itself.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "draw",
+       "target": [
+        "squareNine",
+        "squareSixteen",
+        "squareThird"
+       ],
+       "at": "square",
+       "dur": 1.5
+      },
+      {
+       "do": "write",
+       "tex": "3^2=3\\times3=9",
+       "at": "Squaring"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The blue square has area nine; the green, sixteen. Together, twenty-five.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{9}+\\ca{16}=25"
+      },
+      {
+       "do": "show",
+       "target": "nine",
+       "at": "nine"
+      },
+      {
+       "do": "show",
+       "target": "sixteen",
+       "at": "sixteen"
+      },
+      {
+       "do": "show",
+       "target": "areaStart",
+       "at": "Together"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "At this opening, the third side is four, the same as the longer stick. Its square has area sixteen: less than twenty-five.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cw{16}<25",
+       "at": "sixteen"
+      },
+      {
+       "do": "highlight",
+       "target": "opening",
+       "at": "opening"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Open the hinge. The third side is now the longest side, and its square grows toward twenty-five.",
+     "pause": 0.7,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{9}+\\ca{16}=25"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "areaStart",
+        "thirdTwo"
+       ],
+       "at": "Open"
+      },
+      {
+       "do": "show",
+       "target": "areaLive",
+       "at": "Open"
+      },
+      {
+       "do": "glide",
+       "point": "P",
+       "deg": 90,
+       "at": "Open",
+       "dur": 4.5
+      },
+      {
+       "do": "glide",
+       "point": "Q",
+       "deg": 180,
+       "at": "Open",
+       "dur": 4.5
+      },
+      {
+       "do": "glide",
+       "point": "R",
+       "deg": 135,
+       "at": "Open",
+       "dur": 4.5
+      },
+      {
+       "do": "glide",
+       "point": "D",
+       "deg": 45,
+       "at": "Open",
+       "dur": 4.5
+      },
+      {
+       "do": "glide",
+       "point": "E",
+       "deg": 0,
+       "at": "Open",
+       "dur": 4.5
+      },
+      {
+       "do": "glide",
+       "point": "Reading",
+       "x": 90,
+       "at": "Open",
+       "dur": 4.5
+      },
+      {
+       "do": "highlight",
+       "target": "third",
+       "at": "longest"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Exactly twenty-five. The third side is five, and the hinge makes a right angle: ninety degrees.",
+     "pause": 1,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "areaLive",
+        "opening"
+       ]
+      },
+      {
+       "do": "show",
+       "target": [
+        "areaFive",
+        "thirdFive",
+        "right"
+       ]
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{5^2}=25",
+       "at": "five"
+      },
+      {
+       "do": "text",
+       "text": "Right angle: $90^\\circ$",
+       "at": "ninety"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The Pythagorean theorem tells us the squares balance at a right angle. Could they balance at another opening?",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{3^2}+\\ca{4^2}=\\cw{5^2}"
+      },
+      {
+       "do": "text",
+       "text": "Could another opening work?",
+       "at": "another"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Keep opening. The third side grows to six. Its square grows past twenty-five.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{9}+\\ca{16}=25"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "areaFive",
+        "thirdFive",
+        "right"
+       ],
+       "at": "Keep"
+      },
+      {
+       "do": "show",
+       "target": [
+        "areaLive",
+        "opening"
+       ],
+       "at": "Keep"
+      },
+      {
+       "do": "glide",
+       "point": "P",
+       "deg": 117.27961273597808,
+       "at": "Keep",
+       "dur": 4.2
+      },
+      {
+       "do": "glide",
+       "point": "Q",
+       "deg": 207.27961273597808,
+       "at": "Keep",
+       "dur": 4.2
+      },
+      {
+       "do": "glide",
+       "point": "R",
+       "deg": 162.27961273597808,
+       "at": "Keep",
+       "dur": 4.2
+      },
+      {
+       "do": "glide",
+       "point": "D",
+       "deg": 72.27961273597808,
+       "at": "Keep",
+       "dur": 4.2
+      },
+      {
+       "do": "glide",
+       "point": "E",
+       "deg": 27.279612735978077,
+       "at": "Keep",
+       "dur": 4.2
+      },
+      {
+       "do": "glide",
+       "point": "Reading",
+       "x": 117.27961273597808,
+       "at": "Keep",
+       "dur": 4.2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Six squared is thirty-six, greater than twenty-five. The hinge is past a right angle. This triangle is not right.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": "areaLive"
+      },
+      {
+       "do": "show",
+       "target": [
+        "areaSix",
+        "thirdSix"
+       ]
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{9}+\\ca{16}=25"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{6^2}=36>25",
+       "at": "thirty-six"
+      },
+      {
+       "do": "text",
+       "text": "Not a right triangle",
+       "at": "not"
+      },
+      {
+       "do": "highlight",
+       "target": "opening",
+       "at": "hinge"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Close it back to five. Each length of the third side fits just one opening.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "One opening for each third length",
+       "at": "one"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "areaSix",
+        "thirdSix"
+       ]
+      },
+      {
+       "do": "show",
+       "target": "areaLive"
+      },
+      {
+       "do": "glide",
+       "point": "P",
+       "deg": 90,
+       "at": "Close",
+       "dur": 3.5
+      },
+      {
+       "do": "glide",
+       "point": "Q",
+       "deg": 180,
+       "at": "Close",
+       "dur": 3.5
+      },
+      {
+       "do": "glide",
+       "point": "R",
+       "deg": 135,
+       "at": "Close",
+       "dur": 3.5
+      },
+      {
+       "do": "glide",
+       "point": "D",
+       "deg": 45,
+       "at": "Close",
+       "dur": 3.5
+      },
+      {
+       "do": "glide",
+       "point": "E",
+       "deg": 0,
+       "at": "Close",
+       "dur": 3.5
+      },
+      {
+       "do": "glide",
+       "point": "Reading",
+       "x": 90,
+       "at": "Close",
+       "dur": 3.5
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So five locks this hinge at the right angle. That equality guarantees a right triangle.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "areaLive",
+        "opening"
+       ]
+      },
+      {
+       "do": "show",
+       "target": [
+        "areaFive",
+        "thirdFive",
+        "right"
+       ]
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{9}+\\ca{16}=\\cw{25}",
+       "at": "equality"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Working backward like this is called the converse. The same idea works for any two fixed side lengths.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "term",
+       "word": "converse",
+       "meaning": "The theorem's if and then parts reversed.",
+       "at": "converse"
+      },
+      {
+       "do": "text",
+       "text": "Matching totals → right angle",
+       "at": "same"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Try a triangle with sides twenty-six, ten, and twenty-four centimeters. Is it right?",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Sides 26 cm, 10 cm, 24 cm: a right triangle?"
+      },
+      {
+       "do": "problem",
+       "text": "A triangle has sides 26 cm, 10 cm, and 24 cm. Is it a right triangle?"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Find the longest first: twenty-six, even though it is listed first. Square that side separately.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\underbrace{26}_{\\text{longest}},\\;10,\\;24",
+       "at": "longest"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{26^2}=676",
+       "at": "separately"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Square the other two and add: one hundred plus five hundred seventy-six equals six hundred seventy-six.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{26^2}=676"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{10^2}+\\ca{24^2}",
+       "at": "other"
+      },
+      {
+       "do": "write",
+       "tex": "100+576=676",
+       "at": "hundred"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Equal totals: a right triangle. Its hypotenuse is twenty-six, opposite the right angle.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{10^2}+\\ca{24^2}=\\cw{26^2}",
+       "at": "Equal"
+      },
+      {
+       "do": "write",
+       "tex": "676=676",
+       "at": "totals"
+      },
+      {
+       "do": "answer",
+       "tex": "\\text{Right triangle}",
+       "at": "triangle"
+      },
+      {
+       "do": "text",
+       "text": "26 cm: hypotenuse",
+       "at": "twenty-six"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "What about four, thirteen, and fourteen centimeters? Fourteen is longest.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Sides 4 cm, 13 cm, 14 cm: a right triangle?"
+      },
+      {
+       "do": "problem",
+       "text": "Sides: 4 cm, 13 cm, 14 cm.\nIs the triangle right?"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{14^2}=196",
+       "at": "longest"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The other squares add to sixteen plus one hundred sixty-nine: one hundred eighty-five.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{14^2}=196"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{4^2}+\\ca{13^2}"
+      },
+      {
+       "do": "write",
+       "tex": "16+169=185",
+       "at": "sixteen"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One hundred eighty-five is not one hundred ninety-six. Not a right triangle. Too small or too large, either way it fails the test.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "185\\ne196"
+      },
+      {
+       "do": "answer",
+       "tex": "\\text{Not a right triangle}",
+       "at": "Not",
+       "nth": 2
+      },
+      {
+       "do": "text",
+       "text": "Smaller or larger: not equal",
+       "at": "Too"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -4.6,
+     -4.5,
+     7.6,
+     8.6
+    ],
+    "points": {
+     "O": [
+      0,
+      0
+     ],
+     "B": [
+      4,
+      0
+     ],
+     "P": {
+      "on": "orbit",
+      "deg": 90
+     },
+     "M": {
+      "mid": [
+       "O",
+       "P"
+      ]
+     },
+     "N": {
+      "mid": [
+       "P",
+       "B"
+      ]
+     },
+     "Q": {
+      "on": "orbit",
+      "deg": 180
+     },
+     "R": {
+      "on": "diagonal",
+      "deg": 135
+     },
+     "U": [
+      0,
+      -4
+     ],
+     "V": [
+      4,
+      -4
+     ],
+     "K": [
+      0,
+      4
+     ],
+     "L": [
+      4,
+      4
+     ],
+     "D": {
+      "on": "upperOrbit",
+      "deg": 45
+     },
+     "E": {
+      "on": "farOrbit",
+      "deg": 0
+     },
+     "AreaNine": {
+      "mid": [
+       "O",
+       "R"
+      ]
+     },
+     "AreaSixteen": [
+      2,
+      -2
+     ],
+     "AreaThird": {
+      "mid": [
+       "P",
+       "E"
+      ]
+     },
+     "Reading": {
+      "on": "areaFunction",
+      "x": 90
+     }
+    },
+    "parts": [
+     {
+      "id": "diagonal",
+      "circle": "O",
+      "r": 4.242640687119286,
+      "start": false
+     },
+     {
+      "id": "upperOrbit",
+      "circle": "K",
+      "r": 4.242640687119286,
+      "start": false
+     },
+     {
+      "id": "farOrbit",
+      "circle": "L",
+      "r": 3,
+      "start": false
+     },
+     {
+      "id": "areaFunction",
+      "plot": "25-24*cos(x*pi/180)",
+      "from": 28.95502437185985,
+      "to": 120,
+      "start": false
+     },
+     {
+      "id": "squareNine",
+      "poly": [
+       "O",
+       "P",
+       "R",
+       "Q"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "squareSixteen",
+      "poly": [
+       "O",
+       "U",
+       "V",
+       "B"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "squareThird",
+      "poly": [
+       "P",
+       "B",
+       "E",
+       "D"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "orbit",
+      "circle": "O",
+      "r": 3,
+      "start": false
+     },
+     {
+      "id": "stickThree",
+      "seg": [
+       "O",
+       "P"
+      ],
+      "ink": "blue",
+      "w": 8,
+      "start": true
+     },
+     {
+      "id": "stickFour",
+      "seg": [
+       "O",
+       "B"
+      ],
+      "ink": "accent",
+      "w": 8,
+      "start": true
+     },
+     {
+      "id": "third",
+      "seg": [
+       "P",
+       "B"
+      ],
+      "ink": "warm",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "pin",
+      "dot": "O",
+      "r": 8,
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "opening",
+      "angle": [
+       "B",
+       "O",
+       "P"
+      ],
+      "r": 52,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "start": false
+     },
+     {
+      "id": "right",
+      "angle": [
+       "B",
+       "O",
+       "P"
+      ],
+      "r": 62,
+      "right": true,
+      "ink": "gold",
+      "start": true
+     },
+     {
+      "id": "three",
+      "label": "3",
+      "at": "stickThree",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "halo": true,
+      "start": true,
+      "flies": true,
+      "far": 0
+     },
+     {
+      "id": "four",
+      "label": "4",
+      "at": "stickFour",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent",
+      "halo": true,
+      "start": true,
+      "far": 0
+     },
+     {
+      "id": "thirdTwo",
+      "label": "2",
+      "at": "third",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm",
+      "halo": true,
+      "start": false,
+      "flies": true,
+      "far": 0
+     },
+     {
+      "id": "thirdFive",
+      "label": "5",
+      "at": "third",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm",
+      "halo": true,
+      "flies": true,
+      "start": true,
+      "far": 0
+     },
+     {
+      "id": "thirdSix",
+      "label": "6",
+      "at": "third",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm",
+      "halo": true,
+      "flies": true,
+      "start": false,
+      "far": 0
+     },
+     {
+      "id": "nine",
+      "label": "9",
+      "at": "AreaNine",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "sixteen",
+      "label": "16",
+      "at": "AreaSixteen",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "areaLive",
+      "label": "\\approx @y",
+      "at": "AreaThird",
+      "dir": "c",
+      "size": "s",
+      "ink": "warm",
+      "of": "Reading",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "areaStart",
+      "label": "4",
+      "at": "AreaThird",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "areaFive",
+      "label": "25",
+      "at": "AreaThird",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "areaSix",
+      "label": "36",
+      "at": "AreaThird",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "aLength",
+      "label": "a",
+      "at": "stickThree",
+      "ink": "blue",
+      "dir": "c",
+      "size": "l",
+      "halo": true
+     },
+     {
+      "id": "bLength",
+      "label": "b",
+      "at": "stickFour",
+      "ink": "accent",
+      "dir": "c",
+      "size": "l",
+      "halo": true
+     },
+     {
+      "id": "cLength",
+      "label": "c",
+      "at": "third",
+      "ink": "warm",
+      "dir": "c",
+      "size": "l",
+      "halo": true
+     },
+     {
+      "id": "aSquare",
+      "label": "a^2",
+      "at": "AreaNine",
+      "ink": "blue",
+      "dir": "c",
+      "size": "l",
+      "halo": true
+     },
+     {
+      "id": "bSquare",
+      "label": "b^2",
+      "at": "AreaSixteen",
+      "ink": "accent",
+      "dir": "c",
+      "size": "l",
+      "halo": true
+     },
+     {
+      "id": "cSquare",
+      "label": "c^2",
+      "at": "AreaThird",
+      "ink": "warm",
+      "dir": "c",
+      "size": "l",
+      "halo": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "For any triangle, pick out the longest side; call it *c*. Call the others *a* and *b*.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Three sides decide the angle"
+      },
+      {
+       "do": "text",
+       "text": "$c$: a longest side",
+       "at": "longest"
+      },
+      {
+       "do": "text",
+       "text": "$a$, $b$: the other two",
+       "at": "others"
+      },
+      {
+       "do": "hide",
+       "target": "thirdFive",
+       "at": "c"
+      },
+      {
+       "do": "show",
+       "target": "cLength",
+       "at": "c"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "three",
+        "four"
+       ],
+       "at": "others"
+      },
+      {
+       "do": "show",
+       "target": [
+        "aLength",
+        "bLength"
+       ],
+       "at": "others"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Square the other two and add. Compare with the longest side squared.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "a^2+b^2\\;\\overset{?}{=}\\;c^2",
+       "at": "Square"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "nine",
+        "sixteen",
+        "areaFive"
+       ],
+       "at": "Square"
+      },
+      {
+       "do": "show",
+       "target": [
+        "aSquare",
+        "bSquare",
+        "cSquare"
+       ],
+       "at": "Square"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Equal means a right angle, opposite the longest side. Three lengths decide it.",
+     "pause": 1.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "answer",
+       "tex": "\\cb{a^2}+\\ca{b^2}=\\cw{c^2}",
+       "at": "Equal"
+      },
+      {
+       "do": "text",
+       "text": "Right angle opposite $c$",
+       "at": "opposite"
+      },
+      {
+       "do": "highlight",
+       "target": "right",
+       "at": "right"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

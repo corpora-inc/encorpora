@@ -1480,6 +1480,28 @@
       }
     ]
   },
+  "equal-tray-total": {
+    "id": "equal-tray-total--se",
+    "version": "6ecffe9f071680236246937be29bb892f071158fbd1805c14d14caa752e5fc1f",
+    "title": "Multiplication counts equal groups",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equal-tray-total--se/6ecffe9f071680236246937be29bb892f071158fbd1805c14d14caa752e5fc1f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equal-tray-total--se/6ecffe9f071680236246937be29bb892f071158fbd1805c14d14caa752e5fc1f/audio.m4a",
+    "duration": 114.18993197278911,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equal-tray-total--se/6ecffe9f071680236246937be29bb892f071158fbd1805c14d14caa752e5fc1f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equal-tray-total--se/6ecffe9f071680236246937be29bb892f071158fbd1805c14d14caa752e5fc1f/audio.m4a",
+        "version": "6ecffe9f071680236246937be29bb892f071158fbd1805c14d14caa752e5fc1f",
+        "duration": 114.18993197278911
+      }
+    ]
+  },
   "equation-solution-count": {
     "id": "linear-equation--sb",
     "version": "ca617d1848631cd9eb6fe7b18192f2994255c1deefb5cb71c9b70e0a7c67eb83",
@@ -3497,6 +3519,27 @@
       }
     ]
   },
+  "pythagorean-converse": {
+    "id": "pythagorean-converse--sp",
+    "version": "bb9fcc42511f37ba2dc79658c8215b933dac5b87f057bdb64cf0e2455bca30f0",
+    "title": "Three sides decide the angle",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/pythagorean-converse--sp/bb9fcc42511f37ba2dc79658c8215b933dac5b87f057bdb64cf0e2455bca30f0/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/pythagorean-converse--sp/bb9fcc42511f37ba2dc79658c8215b933dac5b87f057bdb64cf0e2455bca30f0/audio.m4a",
+    "duration": 156.57,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/pythagorean-converse--sp/bb9fcc42511f37ba2dc79658c8215b933dac5b87f057bdb64cf0e2455bca30f0/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/pythagorean-converse--sp/bb9fcc42511f37ba2dc79658c8215b933dac5b87f057bdb64cf0e2455bca30f0/audio.m4a",
+        "version": "bb9fcc42511f37ba2dc79658c8215b933dac5b87f057bdb64cf0e2455bca30f0",
+        "duration": 156.57
+      }
+    ]
+  },
   "pythagorean-proof-area": {
     "id": "right-triangle--sr",
     "version": "40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6",
@@ -5396,6 +5439,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/audio.m4a",
         "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
         "duration": 261.19
+      }
+    ]
+  },
+  "zero-one-groups": {
+    "id": "zero-one-groups--sz",
+    "version": "7ec8aba1ac76b3cc3916648c45f9dc74e0898c405e3862a72144d085836994de",
+    "title": "Zero groups, empty groups, one group",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/zero-one-groups--sz/7ec8aba1ac76b3cc3916648c45f9dc74e0898c405e3862a72144d085836994de/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/zero-one-groups--sz/7ec8aba1ac76b3cc3916648c45f9dc74e0898c405e3862a72144d085836994de/audio.m4a",
+    "duration": 114.14995464852608,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/zero-one-groups--sz/7ec8aba1ac76b3cc3916648c45f9dc74e0898c405e3862a72144d085836994de/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/zero-one-groups--sz/7ec8aba1ac76b3cc3916648c45f9dc74e0898c405e3862a72144d085836994de/audio.m4a",
+        "version": "7ec8aba1ac76b3cc3916648c45f9dc74e0898c405e3862a72144d085836994de",
+        "duration": 114.14995464852608
       }
     ]
   }
