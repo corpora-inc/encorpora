@@ -17,14 +17,20 @@ export type MountedFigure = {
 };
 
 /**
- * True when the first thing a shot does to its scene is clear parts away (a scene
- * action of `disappear`s only, on the shot's first cue): those parts were never meant to be seen.
+ * True when the first thing a shot does to its scene only sets it up: on the shot's first
+ * cue it takes parts away, or takes parts away and puts others in place in an instant.
+ * Those parts were never meant to be seen where they were drawn, so the shot begins set up.
  */
-export function startsCleared(list: { a: Action; t0: number }[]): boolean {
+export function startsCleared(list: { a: Action; t0: number; dur?: number }[]): boolean {
   const first = list.find((e) => e.a.do === "scene");
-  if (!first || first.a.do !== "scene") return false;
+  if (!first || first.a.do !== "scene" || !first.a.actions.length) return false;
   const start = Math.min(...list.map((e) => e.t0));
-  return first.t0 <= start + 0.05 && first.a.actions.length > 0 && first.a.actions.every((x) => x.do === "disappear");
+  if (first.t0 > start + 0.05) return false;
+  const kinds = new Set(first.a.actions.map((x) => x.do));
+  if (!kinds.has("disappear")) return false;
+  if ([...kinds].every((k) => k === "disappear")) return true;
+  // an instant arrangement (parts hidden and others moved into place in no time) is setup too
+  return (first.dur ?? 1) <= 0.1 && [...kinds].every((k) => k === "disappear" || k === "move" || k === "fill");
 }
 
 /**
