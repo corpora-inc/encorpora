@@ -1,3 +1,4 @@
+import { heldCapability } from "../../capability-entry";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
@@ -40,7 +41,11 @@ export function InviteScreen() {
   const location = useLocation();
   const navigate = useNavigate();
   const client = useQueryClient();
-  const fragment = location.hash || rememberedInvite() || "";
+  const fragment =
+    location.hash ||
+    heldCapability("/school/invite") ||
+    rememberedInvite() ||
+    "";
   const parsed = parseFragment(fragment);
   const session = useQuery(sessionOptions).data;
   const me = useQuery({

@@ -15,6 +15,7 @@ import {
   type PlaceEntry,
   type PlaceGroup,
 } from "../spaces/places";
+import { appReturn } from "../spaces/returns";
 import styles from "./PlaceSwitcher.module.css";
 
 export type { PlaceEntry } from "../spaces/places";
@@ -115,7 +116,11 @@ export function PlaceSwitcher({
   onNavigate?: () => void;
 }) {
   const navigate = useNavigate();
-  const origin = useLocation({ select: (location) => location.href });
+  // Where "Add a place" returns: a place, never a link's secret
+  // (features/spaces/returns.ts).
+  const origin = appReturn(
+    useLocation({ select: (location) => location.href }),
+  );
   const [expanded, setExpanded] = useState(false);
   const groups = given ?? placeGroups(me, null);
   const all = groups.flatMap((group) => group.entries);
@@ -210,7 +215,10 @@ export function PlaceSwitcher({
         onSelect={() => {
           onNavigate?.();
           // Adding a place returns to here if they change their mind.
-          void navigate({ to: "/start", search: { from: origin } as never });
+          void navigate({
+            to: "/start",
+            search: (origin ? { from: origin } : {}) as never,
+          });
         }}
       >
         <span className={styles.item} data-place="add">
