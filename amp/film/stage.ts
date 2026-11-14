@@ -32,7 +32,8 @@ const ease = (u: number) => {
   return u * u * u * (u * (u * 6 - 15) + 10);
 };
 /**
- * A highlight grows about its own centre and takes no layout space. It stops
+ * A highlight grows about its own centre and takes no layout space. Open
+ * strokes only bolden: their endpoints and measured spans must stay put. Growth stops
  * at the card's inner margin and at a label, and a part with no room still
  * boldens. The shot's view is a tight drawing area, so a light on its edge
  * would be clipped there: the picture's clip opens around the lit part, stroke
@@ -1831,7 +1832,7 @@ class GeoStage {
       delete old.dataset.rl; delete old.dataset.rt; delete old.dataset.rr; delete old.dataset.rb;
       delete old.dataset.ox; delete old.dataset.oy; delete old.dataset.cx; delete old.dataset.cy;
     };
-    for (const old of this.svg.querySelectorAll<SVGElement>("[data-em], [data-grow]")) {
+    for (const old of this.svg.querySelectorAll<SVGElement>("[data-em], [data-grow], [data-hot]")) {
       clearGrow(old);
       old.removeAttribute("transform");
     }
@@ -1923,7 +1924,7 @@ class GeoStage {
             }
           }
           e.extra[0]!.setAttribute("d", d);
-          e.extra[0]!.style.stroke = INK[p.ink ?? "ink"]!;
+          e.extra[0]!.style.stroke = emphInk(INK[p.ink ?? "ink"]!, em);
           e.extra[0]!.style.strokeWidth = "4.5";
           e.extra[0]!.style.opacity = String(o);
         }
@@ -2103,7 +2104,7 @@ class GeoStage {
           if (Math.abs(y / yevery - Math.round(y / yevery)) < 1e-6) nums.push([fmtNum(y), q, "w"]);
         }
         e.el.setAttribute("d", d);
-        e.el.style.stroke = INK[p.ink ?? "muted"]!; e.el.style.strokeWidth = "3.5"; e.el.style.opacity = String(o);
+        e.el.style.stroke = emphInk(INK[p.ink ?? "muted"]!, em); e.el.style.strokeWidth = "3.5"; e.el.style.opacity = String(o);
         // numbers that would touch each other (near the origin, or crowded) drop out, nearest the origin first
         {
           const o0 = map([0, 0]), fs = AXIS_NUM_PX[p.size ?? "s"]!, gap = LABEL_GAP * 0.62;
@@ -2167,12 +2168,23 @@ class GeoStage {
         const q0: P = [a[0] + dirv[0] * gap, a[1] + dirv[1] * gap], q1: P = [b[0] + dirv[0] * gap, b[1] + dirv[1] * gap];
         const tick = 13;
         e.el.setAttribute("d", `M${q0[0] - dirv[0] * tick} ${q0[1] - dirv[1] * tick}L${q0[0]} ${q0[1]}L${q1[0]} ${q1[1]}L${q1[0] - dirv[0] * tick} ${q1[1] - dirv[1] * tick}`);
-        e.el.style.stroke = INK[p.ink ?? "ink"]!; e.el.style.strokeWidth = "4"; e.el.style.opacity = String(o);
+        e.el.style.stroke = emphInk(INK[p.ink ?? "ink"]!, em); e.el.style.strokeWidth = "4"; e.el.style.opacity = String(o);
         place(e.html!, [(q0[0] + q1[0]) / 2, (q0[1] + q1[1]) / 2], p.side, 0.7, o, em);
       }
       void unit;
-      if (em > 0.02 && !this.emphList.some((x) => x.el === e.el)) this.markEm(e.el, em);
-      e.extra?.forEach((x) => { if (em > 0.02 && !x.classList.contains("film-em") && !this.emphList.some((q) => q.el === x)) this.markEm(x, em); });
+      if ("seg" in p || "vector" in p || "dim" in p || "curve" in p || "plot" in p || "axes" in p) {
+        // Open paths, including their ticks and arrowheads, encode exact joins
+        // or coordinates. Keep them out of grow groups, but retain lit clipping.
+        for (const el of [e.el, ...(e.extra ?? [])]) {
+          if (em <= 0.02) continue;
+          el.style.strokeWidth = String(parseFloat(el.style.strokeWidth) * (1 + 0.75 * em));
+          el.dataset.hot = "1";
+          el.dataset.em0 = em.toFixed(3);
+        }
+      } else {
+        if (em > 0.02 && !this.emphList.some((x) => x.el === e.el)) this.markEm(e.el, em);
+        e.extra?.forEach((x) => { if (em > 0.02 && !x.classList.contains("film-em") && !this.emphList.some((q) => q.el === x)) this.markEm(x, em); });
+      }
       if (light !== undefined && em > 0.02) {
         for (const el of [e.el, e.html, e.side, ...(e.extra ?? [])]) {
           if (el && !el.classList.contains("film-em")) el.dataset.light = light;
