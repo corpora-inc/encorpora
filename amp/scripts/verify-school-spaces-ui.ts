@@ -705,9 +705,9 @@ try {
     0,
     "an admin is never offered the teacher's Start practice",
   );
+  await capture(principal.page, "admin-class");
   const adminDrawer = await drawer(principal.page);
   assert.match(adminDrawer, /School/);
-  await capture(principal.page, "admin-class");
   await principal.page.goto(`${lakeClass}/roster`);
   await principal.page.getByRole("heading", { name: "Teachers" }).waitFor();
   await principal.page
@@ -769,12 +769,12 @@ try {
   await teacher.goto(`${school}/classes/${seven.id}/today`);
   await settled(teacher);
   assert.equal(await placeName(teacher), "Grade 7 Math · Lakeside Middle");
+  await capture(teacher, "multi-school-class");
   const both = await places(teacher);
   assert.match(both, /Grade 4 Math/);
   assert.match(both, /Grade 7 Math/);
   const menu = await drawer(teacher);
   assert.doesNotMatch(menu, /Kenji|Omar|Ana Brook|Birchwood/);
-  await capture(teacher, "multi-school-class");
   await teacher.goto(`${classUrl}/today`);
   await settled(teacher);
   assert.equal(await placeName(teacher), "Grade 4 Math · Birchwood Elementary");
