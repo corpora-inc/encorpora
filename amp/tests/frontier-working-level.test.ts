@@ -182,7 +182,7 @@ test("legacy policy replays the former production estimate", () => {
 });
 
 test("policy injection is immutable, validated, and keeps untouched-strand uncertainty", () => {
-  const input: FrontierParameters = structuredClone(DEFAULT_FRONTIER_POLICY);
+  const input = structuredClone(DEFAULT_FRONTIER_POLICY) as FrontierParameters;
   input.version = "test-broader-strand-prior";
   input.prior.strandSd = 3;
   const policy = createFrontierPolicy(input);

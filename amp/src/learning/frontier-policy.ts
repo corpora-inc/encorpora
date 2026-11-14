@@ -43,6 +43,26 @@ export const frontierPolicySchema = z
       .object({
         overallSd: z.number().finite().min(0.1).max(10),
         strandSd: z.number().finite().min(0.1).max(10),
+        /** The overall prior sd for a start set by age (a birth year), by
+         * starting grade: `[start, sd]` in rising start order, linearly
+         * interpolated, held flat past either end. A start someone chose (an
+         * adult's start, a family band, a restarted area) says less, and
+         * keeps `overallSd`; so does every start when this is absent. */
+        sdByStart: z
+          .array(
+            z.tuple([
+              z.number().finite().min(-1).max(13),
+              z.number().finite().min(0.1).max(10),
+            ]),
+          )
+          .min(1)
+          .max(20)
+          .refine(
+            (knots) =>
+              knots.every((k, i) => i === 0 || k[0] > knots[i - 1]![0]),
+            "Starts must rise",
+          )
+          .optional(),
       })
       .strict(),
     response,
@@ -169,10 +189,11 @@ export const LEGACY_FRONTIER_POLICY = createFrontierPolicy({
   },
 });
 
-/** Working grade, not mastery or a norm-referenced percentile. Overall evidence
+/** The production policy until 2026-11-13, kept for paired replays. Working
+ * grade, not mastery or a norm-referenced percentile. Overall evidence
  * accumulates steadily; strand estimates can react faster to local gaps.
  * A surprising miss does not make the next overall answer count extra. */
-export const DEFAULT_FRONTIER_POLICY = createFrontierPolicy({
+export const PREVIOUS_FRONTIER_POLICY = createFrontierPolicy({
   ...LEGACY_FRONTIER_POLICY,
   version: "grade-frontier-v4-evidence-anchored-climb",
   // The start is a guess: the ceiling stands on what the learner has shown
@@ -211,4 +232,42 @@ export const DEFAULT_FRONTIER_POLICY = createFrontierPolicy({
     retentionPerAnswer: 0.7,
     maxVariance: 1,
   },
+});
+
+/** Overall prior sd for a start set by age, by that grade: how spread out
+ * learners of one age are on AMP's grade scale. Fitted by marginal maximum
+ * likelihood to the first 30 independent answers of school-age learners
+ * (2026-11-13: 0.54 at K–2, 0.88 at 3–5, 1.31 at 6–8), and set at the upper
+ * end of each 95% profile-likelihood interval (0.7, 1.05, 1.65), so a learner
+ * who is truly far ahead or behind still moves quickly. Above grade 8 there
+ * are too few learners to fit, and the width returns to 2.5, the former flat
+ * width, by grade 9. National norms (NWEA 2020, Bloom/Hill;
+ * docs/engine/norms-prior.md) are wider at every grade from 3 up, and on
+ * retained answers they predict the later level less well. */
+export const AGE_PRIOR_SD: readonly (readonly [start: number, sd: number])[] = [
+  [1, 0.7],
+  [4, 1.05],
+  [7, 1.65],
+  [9, 2.5],
+];
+
+/** Working grade, not mastery or a norm-referenced percentile.
+ *
+ * - A start set by a birth year has a prior as wide as learners of that age
+ *   are spread (`AGE_PRIOR_SD`), not a flat 2.5: a ten-year-old's first
+ *   three right answers no longer carry the shown level two grades up. A
+ *   chosen start (an adult's, a family band) keeps 2.5.
+ * - The overall curve's slope is 1.15 a grade, fitted by marginal likelihood
+ *   to retained production answers (1.7 before): an answer carries the
+ *   information real answers carry.
+ *
+ * Scheduling's local curve (`strandResponse`) is unchanged. */
+export const DEFAULT_FRONTIER_POLICY = createFrontierPolicy({
+  ...PREVIOUS_FRONTIER_POLICY,
+  version: "grade-frontier-v5-age-anchored",
+  prior: {
+    ...PREVIOUS_FRONTIER_POLICY.prior,
+    sdByStart: AGE_PRIOR_SD,
+  },
+  response: { ...PREVIOUS_FRONTIER_POLICY.response, discrimination: 1.15 },
 });

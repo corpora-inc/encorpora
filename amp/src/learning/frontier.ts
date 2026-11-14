@@ -180,6 +180,29 @@ function responseModel(response: FrontierPolicy["response"]): ResponseModel {
 function prior(mean: number, sd: number) {
   return GRID.map((theta) => -(((theta - mean) / sd) ** 2) / 2);
 }
+/** How wide the overall prior is for a learner who starts at `start`: for a
+ * start set by age, the policy's grade table (`prior.sdByStart`); otherwise
+ * its one `overallSd`. */
+export function overallPriorSd(
+  start: number,
+  policy: FrontierPolicy,
+  fromAge = false,
+): number {
+  const knots = policy.prior.sdByStart;
+  if (!knots || !fromAge) return policy.prior.overallSd;
+  const first = knots[0]!;
+  if (start <= first[0]) return first[1];
+  for (let index = 1; index < knots.length; index++) {
+    const [leftStart, leftSd] = knots[index - 1]!;
+    const [rightStart, rightSd] = knots[index]!;
+    if (start <= rightStart)
+      return (
+        leftSd +
+        ((rightSd - leftSd) * (start - leftStart)) / (rightStart - leftStart)
+      );
+  }
+  return knots[knots.length - 1]![1];
+}
 function summarize(
   log: number[],
   answered: number,
@@ -416,16 +439,21 @@ const emptyConfirmation = (): FrontierConfirmationState => ({
   buckets: [],
 });
 
+/** `fromAge`: the start comes from a birth year (`initialLevel`), so the
+ * prior is only as wide as learners of that age are spread
+ * (`prior.sdByStart`). */
 export function createFrontierState(
   start: number,
   policy: FrontierPolicy = DEFAULT_FRONTIER_POLICY,
+  fromAge = false,
 ): FrontierState {
+  const sd = overallPriorSd(start, policy, fromAge);
   return {
     start,
     observed: 0,
     lastAt: null,
-    overall: startFold(prior(start, policy.prior.overallSd)),
-    adaptive: startFold(prior(start, policy.prior.overallSd)),
+    overall: startFold(prior(start, sd)),
+    adaptive: startFold(prior(start, sd)),
     strands: {},
     confirmation: {},
     pooled: emptyConfirmation(),
@@ -744,6 +772,8 @@ export function readFrontierState(
 export function estimateFrontier(
   options: FrontierCatalog & {
     start: number;
+    /** The start comes from a birth year (`createFrontierState`). */
+    fromAge?: boolean;
     observations: readonly FrontierObservation[];
     now?: number;
     /** Validated, immutable parameters for reproducible estimator comparisons. */
@@ -752,7 +782,7 @@ export function estimateFrontier(
 ): Frontier {
   const policy = options.policy ?? DEFAULT_FRONTIER_POLICY;
   assertFrontierPolicy(policy);
-  const state = createFrontierState(options.start, policy);
+  const state = createFrontierState(options.start, policy, options.fromAge);
   for (const observation of options.observations)
     advanceFrontierState(state, observation, options, policy);
   return readFrontierState(state, options.now ?? state.lastAt ?? 0, policy);
@@ -763,6 +793,7 @@ export function estimateFrontier(
 export function overallTrend(
   options: FrontierCatalog & {
     start: number;
+    fromAge?: boolean;
     observations: readonly FrontierObservation[];
     now: number;
   },
@@ -770,7 +801,12 @@ export function overallTrend(
   policy: FrontierPolicy = DEFAULT_FRONTIER_POLICY,
 ) {
   const model = responseModel(policy.response);
-  const fold = startFold(prior(options.start, policy.prior.overallSd));
+  const fold = startFold(
+    prior(
+      options.start,
+      overallPriorSd(options.start, policy, options.fromAge),
+    ),
+  );
   const read = new Map<number, Estimate>();
   const wanted = new Set(counts);
   const note = (answered: number) => {

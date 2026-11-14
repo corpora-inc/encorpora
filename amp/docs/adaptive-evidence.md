@@ -11,11 +11,11 @@ Each skill has a durable summary: attempts, independent correct answers, the lat
 
 Retrieval intervals are six hours, one day, three days, seven days, fourteen days and thirty days. Independent success advances spacing only after six hours since the last credited retrieval. Errors and assistance reset it. Response speed does not affect this scheduling rule.
 
-The frontier estimates a curriculum-grade coordinate: kindergarten is 0, grades 1–8 use their numbers, and Algebra 1, Geometry, Algebra 2 and Precalculus occupy 9–12. This ordering is a scheduling convenience, not proof that courses have equivalent difficulty. The prior starts from age or a selected grade band. **A working grade is not mastery of that grade or a population percentile.** The readout shows hundredths so small changes are visible; hundredths do not establish that degree of measurement accuracy.
+The frontier estimates a curriculum-grade coordinate: kindergarten is 0, grades 1–8 use their numbers, and Algebra 1, Geometry, Algebra 2 and Precalculus occupy 9–12. This ordering is a scheduling convenience, not proof that courses have equivalent difficulty. The prior starts from age or a selected grade band. A start set by a birth year is only as wide as learners of that age are spread on this scale (about 0.7 of a grade at K–2, 1.05 at grade 4, 1.65 at grade 7, 2.5 from grade 9; `AGE_PRIOR_SD`, fitted to retained answers, see [the norms prior](engine/norms-prior.md)). A start someone chose, such as an adult's start or a family band, keeps the wider 2.5, so the adult default of grade 7 is unchanged. **A working grade is not mastery of that grade or a population percentile.** The readout shows hundredths so small changes are visible; hundredths do not establish that degree of measurement accuracy.
 
 The versioned, validated `src/learning/frontier-policy.ts` separates two jobs:
 
-- **Overall working level:** a steadier pooled estimate, using a provisional 60% unassisted typed-success anchor at the same grade, a 4% typed guess floor and an 8% slip ceiling allowance. Four-choice chance guessing raises the modeled same-grade observed success to 70%. These are editorial parameters, not student norms.
+- **Overall working level:** a steadier pooled estimate, using a provisional 60% unassisted typed-success anchor at the same grade, a 4% typed guess floor and an 8% slip ceiling allowance. Four-choice chance guessing raises the modeled same-grade observed success to 70%. The slope is 1.15 logits a grade, fitted to retained production answers ([early placement](#early-placement-grade-frontier-v5-2026-11-13)); the anchor, floor and slip remain editorial.
 - **Local selection:** responsive subject estimates and a responsive pooled prior for unpracticed areas. This retains the local response model's roughly 68% typed-success anchor and 4% slip allowance. Each observed area uses its own answers. The broad pooled prior shares information across areas but does not demonstrate a skill there. The two estimates have different purposes and are not expected to be identical.
 
 Recency remains active in both: before each answer, process variance lets older evidence fade. The overall variance per answer is 0.003 grade²; local estimates use 0.03. Both allow 0.02 grade² per elapsed day, with each gap capped at 30 days. Surprising independent successes can reopen an estimate that has become too certain. Local estimates also widen after surprising failures, allowing the scheduler to react promptly to gaps.
@@ -41,6 +41,76 @@ Production aims near `level − 0.5 + 0.3 × uncertainty`. Due reviews, errors a
 **Placement.** A new learner's first four answers follow scripted openers in `src/learning/placement.ts`. These are short, familiar items from this year's or last year's core material for the grade expected at that age; high-school ages start on grade-8 items. Choice items with at least three options may open where they bring a strand typed items cannot: comparing lengths, weights and capacity (K), clocks and lengths (grade 1), and coins and clocks (grade 2). A client without choice support skips such a slot to adaptive selection. Each slot has a small pool of items in one strand, and neighbouring slots differ. The learner id picks from each pool, so siblings start differently while one learner's sequence stays fixed. Adaptive selection then takes over from the frontier, climbing fast from a wrong start ([the climb](pathway-selection.md#practice-recovery-and-confirmation)). The first 20 answers offer only **assessment** families. **Scaffold** families, which are method steps such as a partial product or a make-ten step, return to practice afterwards. Opener outcomes are ordinary evidence.
 
 Production selection reasons describe a prerequisite, revisit after an error or assistance, scheduled review, work in a skill with recorded evidence (`frontier`), or an unobserved skill (`explore`).
+
+## Early placement (grade-frontier-v5, 2026-11-13)
+
+A ten-year-old who answered three problems right was shown about grade 6 overall and in every area. The cause was the prior, not the answers: a flat 2.5-grade prior on a learner whose age says grade 4, multiplied by three right answers, which only rule out the low end. The posterior mean then sits in the prior's upper tail, about 0.8 of a prior sd above the start. v5 (`DEFAULT_FRONTIER_POLICY`; v4 is kept as `PREVIOUS_FRONTIER_POLICY` for paired replays) changes two things, both fitted to retained production answers:
+
+- **The age prior.** A birth-year start uses `AGE_PRIOR_SD` (0.7 at K–2, 1.05 at grade 4, 1.65 at grade 7, 2.5 from grade 9). These are the upper ends of the 95% profile-likelihood intervals of the population spread, fitted by marginal maximum likelihood to learners' first 30 answers ([norms prior](engine/norms-prior.md)). Chosen starts keep 2.5.
+- **The overall slope.** 1.15 logits a grade instead of 1.7. Fitted the same way, it is stable across answer windows (10, 30 and 60 answers: 1.11, 1.14, 1.20) and on half the learners (1.09). Part of the flatness is real variation between a learner's areas, which the overall readout pools.
+
+The local model scheduling reads (`strandResponse`, the area estimates) is unchanged apart from starting from the narrower age prior.
+
+| The founder's case (born 2016, 2026-11-13) |               v4 |               v5 |
+| ------------------------------------------ | ---------------: | ---------------: |
+| Before any answer, overall                 |      4.13 ± 1.99 |      4.00 ± 1.00 |
+| After 1 right answer (decimals, grade 4)   |             5.55 |             4.36 |
+| After 2 (fraction equivalence, 4 options)  |             5.85 |             4.53 |
+| After 3 (fraction line plot, grade 3)      |      5.97 ± 1.43 |      4.63 ± 0.87 |
+| Areas after 3: decimals, fractions, data   | 6.21, 6.11, 6.03 | 5.33, 5.11, 5.03 |
+
+Shown widths are the reported sd (`frontier-report.ts`). `tests/frontier-early-anchor.test.ts` pins this case and fails under v4.
+
+**Retained production answers, replayed.** Retained attempts were exported read-only (no names, emails or account identifiers) and replayed locally under each policy, up to 300 answers per learner; nothing about any learner enters this repository. Lower is better in both tables.
+
+| Policy                                   | Next-answer log loss, all answers | First 20 answers | Held-out half of learners |
+| ---------------------------------------- | --------------------------------: | ---------------: | ------------------------: |
+| v4                                       |                            0.5687 |           0.6341 |                    0.5649 |
+| v4 prior from national norms, slope 1.15 |                            0.5627 |           0.6152 |                    0.5596 |
+| **v5**                                   |                        **0.5622** |       **0.6112** |                **0.5591** |
+| v5 with v4's slope 1.7                   |                            0.5670 |           0.6139 |                    0.5632 |
+
+How well the level shown early predicts the level after 150 answers (learners with at least 150), as mean signed / mean absolute difference in grades:
+
+| Policy               |          After 3 |                5 |               10 |               20 |               50 |
+| -------------------- | ---------------: | ---------------: | ---------------: | ---------------: | ---------------: |
+| v4                   |     +0.33 / 0.90 |     +0.22 / 0.92 |     −0.01 / 0.69 |     −0.05 / 0.56 |     −0.15 / 0.42 |
+| national-norms prior |     +0.21 / 0.63 |     +0.13 / 0.65 |     −0.02 / 0.59 |     −0.04 / 0.51 |     −0.12 / 0.40 |
+| **v5**               | **+0.14 / 0.60** | **+0.10 / 0.58** | **−0.01 / 0.53** | **−0.03 / 0.47** | **−0.12 / 0.38** |
+
+Learners shown more than a grade above their age start after three answers: 26% under v4, 1% under v5; more than a grade below: 20% and 4%. After 50 answers the two policies differ by more than half a grade for no learner, and by 0.03 on average.
+
+Caveats: the age table and slope were fitted on the same retained answers that are replayed (the held-out column refits the slope on the other half only); the population is AMP's, which may include test accounts and is not a national sample; the 150-answer reference is itself an estimate.
+
+**Synthetic learners.** `scripts/frontier/early-anchor-simulation.ts` runs the production planner against each policy's own frontier for 200 answers, for six ages (grades 1, 2, 4, 6 and 8 by birth year, and the adult default), six profiles (two and one grade behind, on level, one and two ahead, and uneven by area), two truth curves (slope 1.7 and 1.15, each item's true difficulty off its catalog grade by N(0, 0.5²), each learner with their own slip and guess) and six replicates.
+
+Both truth curves pooled (72 learners a profile), mean |shown − true| in grades:
+
+| Profile                     | Policy |  After 3 |        5 |       10 |       20 |   50 |  200 |
+| --------------------------- | ------ | -------: | -------: | -------: | -------: | ---: | ---: |
+| On level                    | v4     |     1.01 |     0.96 |     0.78 |     0.52 | 0.39 | 0.29 |
+| On level                    | v5     | **0.48** | **0.56** | **0.52** |     0.53 | 0.39 | 0.26 |
+| One behind                  | v4     |     1.33 |     1.09 |     0.72 |     0.53 | 0.40 | 0.30 |
+| One behind                  | v5     | **1.02** | **0.92** |     0.69 |     0.59 | 0.37 | 0.29 |
+| One ahead                   | v4     |     0.92 |     0.89 |     0.74 |     0.56 | 0.39 | 0.23 |
+| One ahead                   | v5     | **0.80** | **0.63** | **0.57** | **0.40** | 0.33 | 0.29 |
+| Two behind                  | v4     |     1.24 |     0.83 |     0.76 |     0.57 | 0.36 | 0.29 |
+| Two behind                  | v5     |     1.31 |     1.10 |     0.95 |     0.68 | 0.40 | 0.29 |
+| Two ahead                   | v4     |     0.44 |     0.66 |     0.77 |     0.57 | 0.38 | 0.32 |
+| Two ahead                   | v5     |     1.27 |     1.15 |     0.99 |     0.62 | 0.37 | 0.30 |
+| Uneven by area              | v4     |     1.27 |     1.19 |     1.06 |     0.71 | 0.58 | 0.60 |
+| Uneven by area              | v5     | **0.58** | **0.66** | **0.74** |     0.57 | 0.44 | 0.53 |
+| Weighted by a spread of 0.9 | v4     |     1.02 |     0.94 |     0.73 |     0.50 | 0.37 | 0.28 |
+| Weighted by a spread of 0.9 | v5     | **0.67** | **0.65** | **0.55** |     0.48 | 0.35 | 0.28 |
+| Weighted by a spread of 1.6 | v4     |     0.99 |     0.90 |     0.73 |     0.51 | 0.37 | 0.28 |
+| Weighted by a spread of 1.6 | v5     | **0.84** | **0.77** | **0.65** |     0.52 | 0.35 | 0.28 |
+
+The weighted rows weight the five offsets by a normal population of that spread (0.9 is AMP's fitted spread at grades 3–5; 1.6 is the national norm at grade 4), school ages only.
+
+- **Steadier.** The mean step of the shown level over answers 1–20 falls from 0.34 to 0.22 grades, and the largest move from the start in the first five answers from 1.94 to 1.09.
+- **The cost is the far tails, for about fifteen answers.** A learner truly two grades ahead is shown a grade or more short after 10 answers 51% of the time (v4: 32%), after 20 answers 18% (13%), after 50 answers 6% (8%). Two behind: 42% (22%) at 10, 25% (17%) at 20, 1% (1%) at 50. The median answers until the shown level stays within 0.75 of the truth fall for both (two ahead 55 → 35, two behind 50 → 29), because v5 moves less once it gets there.
+- **Practice is unaffected.** Mean area error is 1.19 → 1.06 after 3 answers, 0.87 → 0.89 after 20, 0.78 → 0.77 after 50, 0.62 → 0.62 after 200. The climb (`placedAfterMisses`, the ceilings) reads demonstrated success, not the prior.
+- **Adults are unchanged** (chosen start): 1.13 → 1.11, 0.96 → 0.95, 0.50 → 0.48 at 3, 10 and 50 answers.
 
 ## Isolated experimental model
 
@@ -79,8 +149,10 @@ npx tsx scripts/compare-frontier.ts 86dfa922c development frozen-v1
 npx tsx scripts/compare-frontier.ts 86dfa922c evaluation frozen-v1
 npx tsx scripts/compare-frontier.ts 86dfa922c audit frozen-v1
 npx tsx scripts/compare-frontier.ts 86dfa922c stress frozen-v1
+# Early placement: v4 against v5 on synthetic learners (about 40 minutes)
+npx tsx scripts/frontier/early-anchor-simulation.ts --policies v4,v5
 # Regression checks
-npx tsx --test tests/frontier-calibration.test.ts tests/frontier-isolation.test.ts
+npx tsx --test tests/frontier-calibration.test.ts tests/frontier-isolation.test.ts tests/frontier-early-anchor.test.ts
 ```
 
 Comparison uses the current catalog unless `frozen-v1` selects the regression fixture. It requires a Git checkout containing baseline commit `86dfa922c`. Only pass trusted baseline commits: the comparison command executes source code from the selected commit. It loads that planner, estimator and evidence projection into a temporary directory. Both policies receive the same selected template metadata and skill catalog objects, populations and seeds. Report metadata records the baseline commit, catalog counts and SHA-256 of `JSON.stringify({ templates, skills })` in source order (`template-and-skill-json-v1`). This identifies planning metadata; simulations do not execute problem generators or lesson content. The experimental run executes the actual experimental planner, estimator and evidence projection; it supplies twelve recent attempts and durable skill summaries as the API does. Six answers form a simulated day, with three-answer batches and 180 answers per run.

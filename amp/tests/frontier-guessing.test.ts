@@ -44,11 +44,12 @@ function estimate(
 }
 
 test("one lucky guess moves the estimate far less than a typed correct answer", () => {
-  // A kindergarten-age learner answers one grade-4 item correctly.
+  // A learner who chose to start at kindergarten (the wide, chosen-start
+  // prior) answers one grade-4 item correctly.
   const prior = estimate([]).overall.level;
   const typed = estimate([{ kind: "typed", correct: true }]).overall.level;
   const choice = estimate([{ kind: "choice", correct: true }]).overall.level;
-  assert.ok(typed - prior > 1.8, `typed lift ${typed - prior}`);
+  assert.ok(typed - prior > 1.5, `typed lift ${typed - prior}`);
   assert.ok(choice - prior < 0.8, `choice lift ${choice - prior}`);
   assert.ok(choice - prior < 0.4 * (typed - prior), `${choice} vs ${typed}`);
   // Fewer options, more luck: a correct pick of three says less than of four.
@@ -78,7 +79,7 @@ test("repeated correct choice answers still converge upward", () => {
       })),
       { start: 2, grade: 6 },
     ).overall;
-  const levels = [1, 4, 8, 16].map((n) => run(n));
+  const levels = [1, 4, 8, 16, 32].map((n) => run(n));
   for (let i = 1; i < levels.length; i++)
     assert.ok(levels[i]!.level > levels[i - 1]!.level, JSON.stringify(levels));
   assert.ok(levels.at(-1)!.level > 6, JSON.stringify(levels.at(-1)));

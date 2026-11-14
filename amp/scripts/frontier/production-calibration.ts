@@ -217,7 +217,12 @@ export function simulateLearner(job: LearnerJob): CalibrationPoint[] {
       `Birth year ${birthYear} started at ${start}, not grade ${job.grade}`,
     );
   const theta0 = job.grade + job.offset;
-  const state = newLearnerFrontier({ epoch: 0, start, strandStarts: {} });
+  const state = newLearnerFrontier({
+    epoch: 0,
+    start,
+    fromAge: true,
+    strandStarts: {},
+  });
   const attempts: Outcome[] = [];
   const points: CalibrationPoint[] = [];
   const wanted = new Set<number>(CHECKPOINTS);
@@ -508,7 +513,12 @@ export function simulateGrowthLearner(job: GrowthJob): GrowthSeries {
       `Birth year ${birthYear} started at ${start}, not grade ${job.grade}`,
     );
   const theta0 = job.grade + job.offset;
-  const state = newLearnerFrontier({ epoch: 0, start, strandStarts: {} });
+  const state = newLearnerFrontier({
+    epoch: 0,
+    start,
+    fromAge: true,
+    strandStarts: {},
+  });
   const attempts: Outcome[] = [];
   const days: GrowthReading[] = [];
   let serial = 0;

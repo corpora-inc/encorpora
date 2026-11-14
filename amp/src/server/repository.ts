@@ -60,8 +60,15 @@ function frontierFrom(
   start: number,
   observations: readonly FrontierObservation[],
   now: number,
+  fromAge = false,
 ): Frontier {
-  return estimateFrontier({ start, observations, now, ...frontierCatalog });
+  return estimateFrontier({
+    start,
+    fromAge,
+    observations,
+    now,
+    ...frontierCatalog,
+  });
 }
 import {
   lockLearningAccount,
@@ -849,7 +856,7 @@ export class PgTransaction implements LearnerTransaction {
     const settings = await this.practiceSettings();
     const key = {
       epoch: settings.epoch,
-      start: await this.startingLevel(now),
+      ...(await this.startingEstimate(now)),
       strandStarts: settings.strandStarts,
     };
     const row = await this.db.query(
@@ -890,11 +897,9 @@ export class PgTransaction implements LearnerTransaction {
   }
   /** The level as it was after a learner's first `answers` answers. */
   private async frontierAtAnswer(now: number, answers: number) {
-    const { start, observations, settings } = await this.frontierInputs(
-      now,
-      answers,
-    );
-    const frontier = frontierFrom(start, observations, now);
+    const { start, fromAge, observations, settings } =
+      await this.frontierInputs(now, answers);
+    const frontier = frontierFrom(start, observations, now, fromAge);
     for (const [strand, reset] of Object.entries(settings.strandStarts))
       applyStrandRestart(
         frontier,
@@ -913,16 +918,21 @@ export class PgTransaction implements LearnerTransaction {
       );
     return frontier;
   }
-  private async startingLevel(now: number) {
+  /** Where the estimate starts, and whether a birth year set it. */
+  private async startingEstimate(now: number) {
     const learner = await this.learner();
-    return initialLevel({
-      birthYear: learner?.birth_year as number | null | undefined,
-      adult: learner?.adult === true,
-      band: learner?.starting_band as Parameters<
-        typeof initialLevel
-      >[0]["band"],
-      now,
-    });
+    const birthYear = learner?.birth_year as number | null | undefined;
+    return {
+      start: initialLevel({
+        birthYear,
+        adult: learner?.adult === true,
+        band: learner?.starting_band as Parameters<
+          typeof initialLevel
+        >[0]["band"],
+        now,
+      }),
+      fromAge: birthYear != null,
+    };
   }
   /** The starting estimate from age and the answers in evidence order. */
   private async frontierInputs(now: number, answers: number | null = null) {
@@ -934,7 +944,7 @@ export class PgTransaction implements LearnerTransaction {
     );
     return {
       settings,
-      start: await this.startingLevel(now),
+      ...(await this.startingEstimate(now)),
       observations: history.rows as (FrontierObservation & {
         practiceRevision: number;
       })[],
@@ -942,9 +952,9 @@ export class PgTransaction implements LearnerTransaction {
   }
   async frontierTrend(points?: number): Promise<TrendPoint[]> {
     const now = Date.now();
-    const { start, observations } = await this.frontierInputs(now);
+    const { start, fromAge, observations } = await this.frontierInputs(now);
     return overallTrend(
-      { start, observations, now, ...frontierCatalog },
+      { start, fromAge, observations, now, ...frontierCatalog },
       trendCounts(observations.length, trendStep(observations.length, points)),
     ).map((point) => ({
       ...point,
