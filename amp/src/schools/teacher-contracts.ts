@@ -147,6 +147,9 @@ export const mapStudentResource = z.object({
   provisional: z.boolean(),
   /** The ground this student is graded against; null when there isn't any. */
   reference: z.object({ from: z.number(), to: z.number() }).nullable(),
+  /** With no level stored yet: the starting estimate the learner's own view
+   * shows (`startingShown`). */
+  start: z.object({ level: z.number(), sd: z.number() }).nullable().optional(),
 });
 export type MapStudent = z.infer<typeof mapStudentResource>;
 /** A teacher of the class who practices themselves (docs/families.md): a line
@@ -161,6 +164,7 @@ export const mapTeacherResource = z.object({
   provisional: z.boolean(),
   /** This class's course, when it has one. */
   reference: z.object({ from: z.number(), to: z.number() }).nullable(),
+  start: z.object({ level: z.number(), sd: z.number() }).nullable().optional(),
 });
 export type MapTeacher = z.infer<typeof mapTeacherResource>;
 export const mapResponse = z.object({

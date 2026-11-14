@@ -124,9 +124,11 @@ function simulateTruth(
   now: number,
   today: string,
 ): Simulation {
+  // Demo students have birth years (`build.ts`), so their start is age's.
   const state = newLearnerFrontier({
     epoch: 0,
     start: grade,
+    fromAge: true,
     strandStarts: {},
   });
   const attempts: Outcome[] = [];

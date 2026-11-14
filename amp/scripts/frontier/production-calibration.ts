@@ -28,7 +28,11 @@ import {
   productionSuccessProbability,
 } from "../../src/learning/frontier";
 import { DEFAULT_FRONTIER_POLICY } from "../../src/learning/frontier-policy";
-import { reportedSd } from "../../src/learning/frontier-report";
+import {
+  REPORTED_SD_VERSION,
+  reportFrontier,
+} from "../../src/learning/frontier-report";
+import { RANGE_SD_MULTIPLIER } from "../../src/learning/level-check";
 import {
   formatGrowthStudy,
   summarizeGrowth,
@@ -83,6 +87,12 @@ export type CalibrationPoint = {
   mean: number;
   /** Posterior sd from the estimator, before reported-sd calibration. */
   sd: number;
+  /** As shown (`reportFrontier`): the display rule's level and the reported
+   * width for this estimate's own answer count, as production stores it. */
+  shown: number;
+  shownSd: number;
+  /** This estimate's own answers: an area's, not the learner's total. */
+  counted: number;
   truth: number;
 };
 
@@ -90,6 +100,8 @@ export type CoverageMetrics = {
   n: number;
   coverage1: number;
   coverage2: number;
+  /** Within ±1.64 sd: the range the app draws (`RANGE_SD_MULTIPLIER`). */
+  coverageShown: number;
   mae: number;
   rmse: number;
 };
@@ -217,7 +229,12 @@ export function simulateLearner(job: LearnerJob): CalibrationPoint[] {
       `Birth year ${birthYear} started at ${start}, not grade ${job.grade}`,
     );
   const theta0 = job.grade + job.offset;
-  const state = newLearnerFrontier({ epoch: 0, start, strandStarts: {} });
+  const state = newLearnerFrontier({
+    epoch: 0,
+    start,
+    fromAge: true,
+    strandStarts: {},
+  });
   const attempts: Outcome[] = [];
   const points: CalibrationPoint[] = [];
   const wanted = new Set<number>(CHECKPOINTS);
@@ -296,11 +313,16 @@ export function simulateLearner(job: LearnerJob): CalibrationPoint[] {
       rep: job.rep,
       answers: answered,
     };
+    const shown = reportFrontier(after);
     points.push({
       ...base,
       scope: "overall",
-      mean: after.overall.level,
-      sd: after.overall.sd,
+      // The readout's own estimate (an age-anchored learner's), as shown.
+      mean: (after.readout ?? after.overall).level,
+      sd: (after.readout ?? after.overall).sd,
+      shown: shown.overall.level,
+      shownSd: shown.overall.sd,
+      counted: (after.readout ?? after.overall).answered,
       truth: overallTruth,
     });
     for (const [name, estimate] of Object.entries(after.strands))
@@ -309,6 +331,9 @@ export function simulateLearner(job: LearnerJob): CalibrationPoint[] {
         scope: name,
         mean: estimate.level,
         sd: estimate.sd,
+        shown: shown.strands[name]!.level,
+        shownSd: shown.strands[name]!.sd,
+        counted: estimate.answered,
         truth: overallTruth + (strandOffset.get(name) ?? 0),
       });
   }
@@ -359,16 +384,19 @@ function jobsFor(options: {
 function metrics(
   points: readonly CalibrationPoint[],
   sdOf: (point: CalibrationPoint) => number,
+  centreOf: (point: CalibrationPoint) => number = (point) => point.mean,
 ): CoverageMetrics {
   let within1 = 0;
   let within2 = 0;
+  let withinShown = 0;
   let absolute = 0;
   let squared = 0;
   for (const point of points) {
-    const error = Math.abs(point.mean - point.truth);
+    const error = Math.abs(centreOf(point) - point.truth);
     const sd = sdOf(point);
     if (error <= sd) within1 += 1;
     if (error <= 2 * sd) within2 += 1;
+    if (error <= RANGE_SD_MULTIPLIER * sd) withinShown += 1;
     absolute += error;
     squared += error * error;
   }
@@ -377,6 +405,7 @@ function metrics(
     n,
     coverage1: n ? within1 / n : 0,
     coverage2: n ? within2 / n : 0,
+    coverageShown: n ? withinShown / n : 0,
     mae: n ? absolute / n : 0,
     rmse: n ? Math.sqrt(squared / n) : 0,
   };
@@ -425,8 +454,12 @@ function bandFor(
     answers,
     scope,
     posterior: metrics(points, (point) => point.sd),
-    reported: metrics(points, (point) =>
-      reportedSd(point.sd, { answered: point.answers }),
+    // What production shows and stores: the shown level, and the width
+    // `reportFrontier` gives for the estimate's own answer count.
+    reported: metrics(
+      points,
+      (point) => point.shownSd,
+      (point) => point.shown,
     ),
   };
 }
@@ -487,8 +520,7 @@ export function simulateGrowthLearner(job: GrowthJob): GrowthSeries {
     rng() * (MISSPECIFIED_RESPONSE.guessMax - MISSPECIFIED_RESPONSE.guessMin);
   const growth =
     MISSPECIFIED_RESPONSE.growthMin +
-    rng() *
-      (MISSPECIFIED_RESPONSE.growthMax - MISSPECIFIED_RESPONSE.growthMin);
+    rng() * (MISSPECIFIED_RESPONSE.growthMax - MISSPECIFIED_RESPONSE.growthMin);
   const strandOffset = new Map<string, number>();
   for (const strand of strandNames)
     strandOffset.set(strand, (rng() - 0.5) * 1.2);
@@ -508,7 +540,12 @@ export function simulateGrowthLearner(job: GrowthJob): GrowthSeries {
       `Birth year ${birthYear} started at ${start}, not grade ${job.grade}`,
     );
   const theta0 = job.grade + job.offset;
-  const state = newLearnerFrontier({ epoch: 0, start, strandStarts: {} });
+  const state = newLearnerFrontier({
+    epoch: 0,
+    start,
+    fromAge: true,
+    strandStarts: {},
+  });
   const attempts: Outcome[] = [];
   const days: GrowthReading[] = [];
   let serial = 0;
@@ -572,14 +609,13 @@ export function simulateGrowthLearner(job: GrowthJob): GrowthSeries {
       ]);
     }
     const at = CALIBRATION_EPOCH + day * DAY_MS + count * 1000;
-    const after = readLearnerFrontier(state, at);
+    // A level day as stored: what the learner is shown.
+    const shown = reportFrontier(readLearnerFrontier(state, at)).overall;
     days.push({
       day,
-      answers: after.overall.answered,
-      level: after.overall.level,
-      reportedSd: reportedSd(after.overall.sd, {
-        answered: after.overall.answered,
-      }),
+      answers: shown.answered,
+      level: shown.level,
+      reportedSd: shown.sd,
       truth: theta0 + growth * (day / termDays),
     });
   }
@@ -702,7 +738,13 @@ export async function runGrowthRecovery(
     process.stderr.write(
       `growth ${quick ? "quick" : "full"} seed ${seed}: ${jobs.length} learners in ${((Date.now() - started) / 1000).toFixed(1)}s\n`,
     );
-  return { seed, quick, termDays: MISSPECIFIED_RESPONSE.termDays, summary, series };
+  return {
+    seed,
+    quick,
+    termDays: MISSPECIFIED_RESPONSE.termDays,
+    summary,
+    series,
+  };
 }
 
 function writeGrowth(report: Awaited<ReturnType<typeof runGrowthRecovery>>) {
@@ -839,7 +881,7 @@ function percent(value: number) {
 }
 
 function metricRow(band: ScopeBand, metrics: CoverageMetrics) {
-  return `| ${band.answers} | ${band.scope} | ${metrics.n} | ${percent(metrics.coverage1)} | ${percent(metrics.coverage2)} | ${metrics.mae.toFixed(3)} | ${metrics.rmse.toFixed(3)} |`;
+  return `| ${band.answers} | ${band.scope} | ${metrics.n} | ${percent(metrics.coverage1)} | ${percent(metrics.coverageShown)} | ${percent(metrics.coverage2)} | ${metrics.mae.toFixed(3)} | ${metrics.rmse.toFixed(3)} |`;
 }
 
 function formatModel(name: string, model: ModelReport) {
@@ -851,14 +893,14 @@ function formatModel(name: string, model: ModelReport) {
     "",
     "### Posterior sd",
     "",
-    "| answers | scope | n | ±1σ % | ±2σ % | MAE | RMSE |",
-    "| ---: | --- | ---: | ---: | ---: | ---: | ---: |",
+    "| answers | scope | n | ±1σ % | ±1.64σ % | ±2σ % | MAE | RMSE |",
+    "| ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: |",
     ...summary.map((band) => metricRow(band, band.posterior)),
     "",
-    "### Reported sd",
+    "### As shown (shown level, reported sd for own answers)",
     "",
-    "| answers | scope | n | ±1σ % | ±2σ % | MAE | RMSE |",
-    "| ---: | --- | ---: | ---: | ---: | ---: | ---: |",
+    "| answers | scope | n | ±1σ % | ±1.64σ % | ±2σ % | MAE | RMSE |",
+    "| ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: |",
     ...summary.map((band) => metricRow(band, band.reported)),
     "",
     `Growth (estimate at ${ANSWERS} minus estimate at ${CHECKPOINTS[0]}, against true Δθ): n=${model.growth.n}, MAE ${model.growth.mae.toFixed(3)}, RMSE ${model.growth.rmse.toFixed(3)}, bias ${model.growth.bias.toFixed(3)}.`,
@@ -885,7 +927,7 @@ export function formatCalibration(report: CalibrationReport) {
   const header = [
     `# Production frontier coverage (seed ${report.seed}, ${report.quick ? "quick" : "full"})`,
     "",
-    `Policy \`${report.policy}\`. Reported sd is sd-cal-v1. ${report.learners} learners, checkpoints ${report.checkpoints.join(", ")}.`,
+    `Policy \`${report.policy}\`. Shown as reportFrontier shows it: reported sd ${REPORTED_SD_VERSION}, own answer counts, display rule. ${report.learners} learners, checkpoints ${report.checkpoints.join(", ")}.`,
     "",
   ];
   return (
@@ -914,7 +956,10 @@ export function writeCalibration(report: CalibrationReport) {
 if (!isMainThread) {
   parentPort!.on(
     "message",
-    (message: { kind: "run"; job: LearnerJob } | { kind: "growth"; job: GrowthJob }) => {
+    (
+      message:
+        { kind: "run"; job: LearnerJob } | { kind: "growth"; job: GrowthJob },
+    ) => {
       try {
         const started = Date.now();
         if (message.kind === "growth") {

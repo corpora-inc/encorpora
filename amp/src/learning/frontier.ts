@@ -48,7 +48,7 @@ export type FrontierObservation = {
 /** Curriculum coordinate, uncertainty width, and evidence counts. `sd` is
  * the posterior width, including a bounded surprise reserve, and it is what
  * scheduling reads. The width stored and shown is `reportedSd`
- * (`frontier-report.ts`, sd-cal-v1), fit to a misspecified synthetic learner.
+ * (`frontier-report.ts`, sd-cal-v2), fit to a misspecified synthetic learner.
  * Item difficulties are not fitted to real students, and there is no external
  * norm. */
 export type Estimate = {
@@ -66,6 +66,18 @@ export type Frontier = {
   /** Responsive pooled prior for local selection, separate from the displayed
    * working grade. Optional for older clients and stored snapshots. */
   adaptive?: Estimate;
+  /** For a start set by age: the overall estimate the learner is shown,
+   * from a prior as wide as that age is spread (`prior.sdByStart`). Display
+   * only (`frontier-report.ts`); `overall`, which selection and workbooks
+   * read, keeps the policy's flat prior. */
+  readout?: Estimate;
+  /** Areas restarted from a level someone chose (`applyStrandRestart`):
+   * shown as estimated, like any chosen start. */
+  restarted?: string[];
+  /** A start set by age, and how the shown level is held near it while the
+   * evidence is thin (`ageAnchor`, `frontier-report.ts`). Absent for a start
+   * someone chose. */
+  anchor?: AgeAnchor;
   /** Preserve the injected prior when looking up an untouched strand. */
   strandPriorSd?: number;
   /** A scheduling ceiling supported by independent, varied success: the
@@ -179,6 +191,51 @@ function responseModel(response: FrontierPolicy["response"]): ResponseModel {
 }
 function prior(mean: number, sd: number) {
   return GRID.map((theta) => -(((theta - mean) / sd) ** 2) / 2);
+}
+/** The age a start came from, for display: the age-expected grade and the
+ * policy's display rule (`frontier-policy.ts`, `display`). */
+export type AgeAnchor = {
+  level: number;
+  band: number;
+  startingAnswers: number;
+  areaAnswers: number;
+};
+export function ageAnchor(
+  start: number,
+  policy: FrontierPolicy,
+  fromAge: boolean,
+): AgeAnchor | undefined {
+  const rule = policy.display;
+  if (!fromAge || !rule) return undefined;
+  return {
+    level: start,
+    band: rule.ageBand,
+    startingAnswers: rule.startingAnswers,
+    areaAnswers: rule.areaAnswers,
+  };
+}
+/** How wide the overall prior is for a learner who starts at `start`: for a
+ * start set by age, the policy's grade table (`prior.sdByStart`); otherwise
+ * its one `overallSd`. */
+export function overallPriorSd(
+  start: number,
+  policy: FrontierPolicy,
+  fromAge = false,
+): number {
+  const knots = policy.prior.sdByStart;
+  if (!knots || !fromAge) return policy.prior.overallSd;
+  const first = knots[0]!;
+  if (start <= first[0]) return first[1];
+  for (let index = 1; index < knots.length; index++) {
+    const [leftStart, leftSd] = knots[index - 1]!;
+    const [rightStart, rightSd] = knots[index]!;
+    if (start <= rightStart)
+      return (
+        leftSd +
+        ((rightSd - leftSd) * (start - leftStart)) / (rightStart - leftStart)
+      );
+  }
+  return knots[knots.length - 1]![1];
 }
 function summarize(
   log: number[],
@@ -399,6 +456,10 @@ export type FrontierStrandState =
  * than by how many answers it has seen. */
 export type FrontierState = {
   start: number;
+  /** The start came from a birth year (`createFrontierState`). */
+  fromAge?: boolean;
+  /** The age-anchored overall readout's fold (`Frontier.readout`). */
+  readout?: FrontierFold;
   observed: number;
   lastAt: number | null;
   overall: FrontierFold;
@@ -416,12 +477,25 @@ const emptyConfirmation = (): FrontierConfirmationState => ({
   buckets: [],
 });
 
+/** `fromAge`: the start comes from a birth year (`initialLevel`), so a
+ * separate readout fold is kept whose prior is only as wide as that age is
+ * spread (`prior.sdByStart`). `overall` and `adaptive`, which selection and
+ * workbooks read, keep `overallSd` whatever the start. */
 export function createFrontierState(
   start: number,
   policy: FrontierPolicy = DEFAULT_FRONTIER_POLICY,
+  fromAge = false,
 ): FrontierState {
+  const readout =
+    fromAge && policy.prior.sdByStart
+      ? {
+          readout: startFold(prior(start, overallPriorSd(start, policy, true))),
+        }
+      : {};
   return {
     start,
+    ...(fromAge ? { fromAge } : {}),
+    ...readout,
     observed: 0,
     lastAt: null,
     overall: startFold(prior(start, policy.prior.overallSd)),
@@ -497,14 +571,17 @@ export function advanceFrontierState(
   if (!item) return;
   state.lastAt = item.at;
   const strandModel = responseModel(policy.strandResponse);
-  advanceFold(
-    state.overall,
-    item,
-    policy,
-    policy.overall,
-    responseModel(policy.response),
-    true,
-  );
+  for (const fold of state.readout
+    ? [state.overall, state.readout]
+    : [state.overall])
+    advanceFold(
+      fold,
+      item,
+      policy,
+      policy.overall,
+      responseModel(policy.response),
+      true,
+    );
   advanceFold(state.adaptive, item, policy, policy.strand, strandModel);
   const strand = (state.strands[item.strand] ??= { replay: [] });
   if (strand.fold) {
@@ -692,6 +769,13 @@ export function readFrontierState(
       policy,
       policy.strand,
     );
+  const anchor = ageAnchor(state.start, policy, state.fromAge === true);
+  const display = {
+    ...(state.readout
+      ? { readout: finishFold(state.readout, now, policy, policy.overall) }
+      : {}),
+    ...(anchor ? { anchor } : {}),
+  };
   if (!policy.confirmation.enabled)
     return {
       expected: state.start,
@@ -699,6 +783,7 @@ export function readFrontierState(
       adaptive,
       strands,
       strandPriorSd: policy.prior.strandSd,
+      ...display,
     };
   const c = policy.confirmation;
   const shown = demonstrated(state.pooled, policy);
@@ -731,6 +816,7 @@ export function readFrontierState(
     adaptive,
     strands,
     strandPriorSd: policy.prior.strandSd,
+    ...display,
     confirmation,
     unconfirmedCeiling: Math.max(floor, (shown ?? -Infinity) + rise),
     foundationLevel: foundation,
@@ -744,6 +830,8 @@ export function readFrontierState(
 export function estimateFrontier(
   options: FrontierCatalog & {
     start: number;
+    /** The start comes from a birth year (`createFrontierState`). */
+    fromAge?: boolean;
     observations: readonly FrontierObservation[];
     now?: number;
     /** Validated, immutable parameters for reproducible estimator comparisons. */
@@ -752,17 +840,19 @@ export function estimateFrontier(
 ): Frontier {
   const policy = options.policy ?? DEFAULT_FRONTIER_POLICY;
   assertFrontierPolicy(policy);
-  const state = createFrontierState(options.start, policy);
+  const state = createFrontierState(options.start, policy, options.fromAge);
   for (const observation of options.observations)
     advanceFrontierState(state, observation, options, policy);
   return readFrontierState(state, options.now ?? state.lastAt ?? 0, policy);
 }
 
-/** The overall estimate after each of `counts` answers, as of `now`: the same
- * numbers as estimating each prefix alone, from one pass over the history. */
+/** The readout's overall estimate after each of `counts` answers, as of
+ * `now`: the same numbers as estimating each prefix alone (`readout` for a
+ * start set by age, else `overall`), from one pass over the history. */
 export function overallTrend(
   options: FrontierCatalog & {
     start: number;
+    fromAge?: boolean;
     observations: readonly FrontierObservation[];
     now: number;
   },
@@ -770,7 +860,12 @@ export function overallTrend(
   policy: FrontierPolicy = DEFAULT_FRONTIER_POLICY,
 ) {
   const model = responseModel(policy.response);
-  const fold = startFold(prior(options.start, policy.prior.overallSd));
+  const fold = startFold(
+    prior(
+      options.start,
+      overallPriorSd(options.start, policy, options.fromAge),
+    ),
+  );
   const read = new Map<number, Estimate>();
   const wanted = new Set(counts);
   const note = (answered: number) => {
@@ -783,9 +878,12 @@ export function overallTrend(
     if (item) advanceFold(fold, item, policy, policy.overall, model, true);
     note(index + 1);
   });
+  // `answered` is the position in the history (the trend's x-axis);
+  // `counted` is how many of those the estimate used, which is what the
+  // display rule and the reported width read (`reportFrontier`).
   return counts.map((answered) => {
-    const { level, sd } = read.get(answered)!;
-    return { answered, level, sd };
+    const { level, sd, answered: counted } = read.get(answered)!;
+    return { answered, level, sd, counted };
   });
 }
 

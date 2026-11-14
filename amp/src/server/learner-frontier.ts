@@ -55,6 +55,9 @@ export type StrandStarts = Record<string, { level: number; revision: number }>;
 export type LearnerFrontierKey = {
   epoch: number;
   start: number;
+  /** The start comes from a birth year, so the prior is that grade's spread
+   * (`createFrontierState`). */
+  fromAge?: boolean;
   strandStarts: StrandStarts;
 };
 export type LearnerFrontierState = LearnerFrontierKey & {
@@ -134,7 +137,7 @@ export function newLearnerFrontier(
     ...key,
     fingerprint: estimatorFingerprint(),
     sequence: "0",
-    main: createFrontierState(key.start),
+    main: createFrontierState(key.start, DEFAULT_FRONTIER_POLICY, key.fromAge),
     restarted: Object.fromEntries(
       Object.entries(key.strandStarts).map(([strand, { level }]) => [
         strand,
@@ -165,6 +168,7 @@ export function isCurrentLearnerFrontier(
     state.fingerprint === estimatorFingerprint() &&
     state.epoch === key.epoch &&
     state.start === key.start &&
+    !!state.fromAge === !!key.fromAge &&
     sameStarts(state.strandStarts, key.strandStarts) &&
     state.signature === catalogSignature(state.families)
   );
@@ -227,6 +231,9 @@ export function applyStrandRestart(
   local: Frontier,
 ) {
   frontier.strands[strand] = local.strands[strand] ?? local.overall;
+  frontier.restarted = [
+    ...new Set([...(frontier.restarted ?? []), strand]),
+  ].sort();
   if (frontier.confirmation)
     frontier.confirmation[strand] = {
       ...(local.confirmation?.[strand] ?? {
@@ -352,6 +359,8 @@ const encodeState = (
   position: ReadonlyMap<string, number>,
 ) => ({
   start: state.start,
+  ...(state.fromAge ? { fromAge: true } : {}),
+  ...(state.readout ? { readout: encodeFold(state.readout) } : {}),
   observed: state.observed,
   lastAt: state.lastAt,
   overall: encodeFold(state.overall),
@@ -373,6 +382,8 @@ const decodeState = (
   families: readonly string[],
 ): FrontierState => ({
   start: encoded.start,
+  ...(encoded.fromAge ? { fromAge: true } : {}),
+  ...(encoded.readout ? { readout: decodeFold(encoded.readout) } : {}),
   observed: encoded.observed,
   lastAt: encoded.lastAt,
   overall: decodeFold(encoded.overall),
