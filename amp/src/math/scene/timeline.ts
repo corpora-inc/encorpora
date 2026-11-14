@@ -150,14 +150,15 @@ export function frameAt(
   for (let k = 0; k <= Math.min(step, steps.length - 1); k++) {
     const p = k < step ? 1 : clamp(progress);
     const current = k === step;
-    // A step that takes parts away and brings others in does it in turn: out
-    // during its first half, in during its second. Two labels crossing in one
-    // place would otherwise read as one garbled label for the length of the fade.
+    // A step that takes parts away and brings others in does it in turn, so two
+    // labels crossing in one place never read as one garbled label.
     const swap =
       steps[k]!.actions.some((a) => a.do === "disappear") &&
       steps[k]!.actions.some((a) => a.do === "appear");
-    const pOut = swap ? clamp(p * 2) : p,
-      pIn = swap ? clamp(p * 2 - 1) : p;
+    // The two overlap only while both are faint (a dip, not a gap): out over the
+    // first three fifths of the step, in over the last three fifths.
+    const pOut = swap ? clamp(p / 0.6) : p,
+      pIn = swap ? clamp((p - 0.4) / 0.6) : p;
     for (const a of steps[k]!.actions) {
       const hit = items.filter((d) => matches(d.id, a.target));
       hit.forEach((d, i) => {

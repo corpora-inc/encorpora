@@ -277,11 +277,12 @@ test("a step that swaps parts takes the old out before it brings the new in", ()
   const mark = "nl.mark.0", hop = "nl.hop.0";
   const swap = stepsSchema.parse([one({ do: "disappear", target: mark }, { do: "appear", target: hop })]);
   const at = (p: number) => { const f = frameAt(layout, swap, 0, p); return [shown(f, mark), shown(f, hop)]; };
-  assert.deepEqual(at(0), [1, 0]);
-  assert.deepEqual(at(0.25), [0.5, 0]);
-  assert.deepEqual(at(0.5), [0, 0]); // never both half-shown in one place
-  assert.deepEqual(at(0.75), [0, 0.5]);
-  assert.deepEqual(at(1), [0, 1]);
+  const near = (got: number[], want: number[]) => got.forEach((g, i) => assert.ok(Math.abs(g - want[i]!) < 1e-9, `${got} vs ${want}`));
+  near(at(0), [1, 0]);
+  near(at(0.3), [0.5, 0]); // the old part is half gone before the new one starts
+  near(at(0.5), [1 / 6, 1 / 6]); // they overlap only while both are faint
+  near(at(0.7), [0, 0.5]);
+  near(at(1), [0, 1]);
   // a step that only fades one way keeps its whole duration
   const out = stepsSchema.parse([one({ do: "disappear", target: mark })]);
   assert.equal(shown(frameAt(layout, out, 0, 0.5), mark), 0.5);
