@@ -88,6 +88,9 @@ export class OfflineRepository {
       );
       if (!consent.rowCount)
         throw new ApiError(403, "offline_consent_required");
+      // Refresh before any stored-grant read, including idempotent reissue,
+      // quotas, preflight and reconciliation of an already issued pack.
+      await new PgTransaction(c, learner).refreshDerivedAccess();
       const now = (await c.query("SELECT clock_timestamp() AS now")).rows[0]
         .now as Date;
       const result = await run(c, consent.rows[0].revision, now);

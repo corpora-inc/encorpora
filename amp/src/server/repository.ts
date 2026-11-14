@@ -1273,17 +1273,23 @@ export class PgTransaction implements LearnerTransaction {
   async trialRemaining() {
     return (await this.trialProgress())?.remaining ?? null;
   }
-  async hasAccess() {
+  /** Shared by online access and offline issue/reuse/preflight/reconcile.
+   * Caller holds the account and learner locks; profiles never get grants. */
+  async refreshDerivedAccess() {
     const learner = await this.learner();
-    // A practice profile has no grant: the account's own access covers it.
-    if (learner?.simulation)
-      return profilesCovered(this.db, learner.account_id as string);
-    if (learner?.adult)
+    if (learner?.adult && !learner.simulation)
       await refreshAdultAccess(
         this.db,
         learner.account_id as string,
         this.learnerId,
       );
+  }
+  async hasAccess() {
+    const learner = await this.learner();
+    // A practice profile has no grant: the account's own access covers it.
+    if (learner?.simulation)
+      return profilesCovered(this.db, learner.account_id as string);
+    await this.refreshDerivedAccess();
     const result = await this.db.query(
       "SELECT 1 FROM amp_grants WHERE learner_id=$1 AND status='active' AND starts_at<=now() AND ends_at>now() AND amp_school_grant_valid(id) LIMIT 1",
       [this.learnerId],

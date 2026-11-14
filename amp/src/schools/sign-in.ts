@@ -1,3 +1,5 @@
+import { ensureFamilyClass } from "../family/family-class.js";
+import { lockLearningAccount } from "../server/account-access.js";
 import { touchDemoOfPersonSql } from "./demo/sql.js";
 import { classPracticeGate } from "./pilot-access.js";
 import {
@@ -111,9 +113,12 @@ export class SchoolSignIn {
   }
 
   /** A class a student can still join: not archived, term not over. */
-  async liveClass(code: string): Promise<LiveClass> {
+  async liveClass(
+    code: string,
+    db: Pick<PoolClient, "query"> = this.pool,
+  ): Promise<LiveClass> {
     const found = (
-      await this.pool.query(
+      await db.query(
         `SELECT c.id,c.name,c.org_id,o.path,o.sign_in_providers,
            GREATEST(0,CEIL(EXTRACT(EPOCH FROM c.join_locked_until-now())))::int AS locked_for
          FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
@@ -129,8 +134,31 @@ export class SchoolSignIn {
     return found;
   }
 
+  /** POST class-code entry maintains the family before testing its year.
+   * Keep liveClass read-only: OIDC GET routes also use that validator. */
+  private async prepareClass(code: string): Promise<LiveClass> {
+    return this.schools.transaction(async (client) => {
+      const family = (
+        await client.query<{ account_id: string }>(
+          `SELECT f.account_id FROM amp_families f
+         JOIN amp_classes c ON c.id=f.class_id
+         JOIN amp_orgs o ON o.id=c.org_id AND o.kind='family'
+         WHERE c.join_code=$1 AND c.archived_at IS NULL`,
+          [code],
+        )
+      ).rows[0];
+      if (family) {
+        await lockLearningAccount(client, family.account_id);
+        await ensureFamilyClass(client, this.pool, family.account_id, {
+          converting: true,
+        });
+      }
+      return this.liveClass(code, client);
+    });
+  }
+
   async lookup({ code }: { code: string }): Promise<JoinRoster> {
-    const found = await this.liveClass(code);
+    const found = await this.prepareClass(code);
     // Practice isn't open for this class: say so before anyone picks a name
     // and three pictures for nothing.
     const practice = await classPracticeGate(this.pool, found.id);
@@ -157,7 +185,7 @@ export class SchoolSignIn {
     pictures: SchoolPicture[];
     set?: boolean;
   }): Promise<StudentGrant> {
-    const found = await this.liveClass(input.code);
+    const found = await this.prepareClass(input.code);
     const student = await this.pool.query(
       `SELECT p.id FROM ${STUDENTS_OF_CLASS} WHERE c.id=$1 AND p.id=$2 AND ${IN_CLASS}`,
       [found.id, input.personId],

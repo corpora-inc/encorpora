@@ -1,3 +1,5 @@
+import { SchoolSignIn } from "../src/schools/sign-in.js";
+import { gradeFor } from "../src/family/family-class.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
@@ -595,6 +597,152 @@ test(
           lookup.json().students.map((s: { name: string }) => s.name),
           ["Orla"],
         );
+      },
+    );
+    await t.test(
+      "expired family years advance on code sign-in, never on parent reads",
+      async () => {
+        const parent = await user("Rollover Fixture");
+        await consent(parent);
+        const child = await learning.create(parent, "Year child", 2016);
+        const family = (
+          await db.query(
+            `SELECT c.id,c.join_code,c.session_id FROM amp_families f
+         JOIN amp_classes c ON c.id=f.class_id WHERE f.account_id=$1`,
+            [parent],
+          )
+        ).rows[0];
+        const expire = () =>
+          db.query(
+            `UPDATE amp_academic_sessions SET starts_on=current_date-400,ends_on=current_date-1
+         WHERE id=(SELECT session_id FROM amp_classes WHERE id=$1)`,
+            [family.id],
+          );
+        await expire();
+        // Simulate the roster grade left over from the preceding year.
+        await db.query(
+          "UPDATE amp_people SET grade_level=0 WHERE learner_id=$1",
+          [child.id],
+        );
+        await me(parent);
+        assert.equal((await get("/api/v1/family", parent)).statusCode, 200);
+        assert.equal(
+          (
+            await db.query("SELECT session_id FROM amp_classes WHERE id=$1", [
+              family.id,
+            ])
+          ).rows[0].session_id,
+          family.session_id,
+        );
+        assert.equal(
+          (
+            await db.query(
+              "SELECT grade_level FROM amp_people WHERE learner_id=$1",
+              [child.id],
+            )
+          ).rows[0].grade_level,
+          0,
+        );
+        // The validator shared with OIDC GET routes cannot maintain a year.
+        const reader = await db.connect();
+        try {
+          await reader.query("BEGIN READ ONLY");
+          await assert.rejects(
+            new SchoolSignIn(new SchoolRepository(db)).liveClass(
+              family.join_code,
+              reader,
+            ),
+            /class_not_found/,
+          );
+        } finally {
+          await reader.query("ROLLBACK");
+          reader.release();
+        }
+        const signed = await joinByPictures(family.join_code, "Year child");
+        assert.ok(signed.token);
+        const current = (
+          await db.query("SELECT session_id FROM amp_classes WHERE id=$1", [
+            family.id,
+          ])
+        ).rows[0].session_id;
+        assert.notEqual(current, family.session_id);
+        assert.equal(
+          (
+            await db.query(
+              "SELECT grade_level FROM amp_people WHERE learner_id=$1",
+              [child.id],
+            )
+          ).rows[0].grade_level,
+          gradeFor(2016),
+        );
+        // Repeated sign-ins preserve the year and the child's learner.
+        await joinByPictures(family.join_code, "Year child");
+        assert.equal(
+          (
+            await db.query("SELECT session_id FROM amp_classes WHERE id=$1", [
+              family.id,
+            ])
+          ).rows[0].session_id,
+          current,
+        );
+        // Picture sign-in also works without a lookup first.
+        await expire();
+        const personId = (
+          await db.query("SELECT id FROM amp_people WHERE learner_id=$1", [
+            child.id,
+          ])
+        ).rows[0].id;
+        const direct = await open("/api/v1/school/join/picture", {
+          code: family.join_code,
+          personId,
+          pictures: ["fox", "moon", "owl"],
+        });
+        assert.equal(direct.statusCode, 200, direct.body);
+        // Archived families do not reopen through their code.
+        await db.query("UPDATE amp_classes SET archived_at=now() WHERE id=$1", [
+          family.id,
+        ]);
+        assert.equal(
+          (await open("/api/v1/school/join/lookup", { code: family.join_code }))
+            .statusCode,
+          404,
+        );
+      },
+    );
+
+    await t.test(
+      "parent child-detail writes advance an expired family year",
+      async () => {
+        const parent = await user("Write rollover Fixture");
+        await consent(parent);
+        const child = await learning.create(parent, "Write child", 2016);
+        for (const action of ["rename", "birth-year"]) {
+          const before = (
+            await db.query(
+              "SELECT c.session_id FROM amp_families f JOIN amp_classes c ON c.id=f.class_id WHERE f.account_id=$1",
+              [parent],
+            )
+          ).rows[0].session_id;
+          await db.query(
+            "UPDATE amp_academic_sessions SET starts_on=current_date-400,ends_on=current_date-1 WHERE id=$1",
+            [before],
+          );
+          const response = await post(
+            `/api/v1/family/learners/${child.id}/${action}`,
+            parent,
+            action === "rename"
+              ? { name: "Renamed child" }
+              : { birthYear: 2016 },
+          );
+          assert.equal(response.statusCode, 200, response.body);
+          const after = (
+            await db.query(
+              "SELECT c.session_id FROM amp_families f JOIN amp_classes c ON c.id=f.class_id WHERE f.account_id=$1",
+              [parent],
+            )
+          ).rows[0].session_id;
+          assert.notEqual(after, before, action);
+        }
       },
     );
   },
