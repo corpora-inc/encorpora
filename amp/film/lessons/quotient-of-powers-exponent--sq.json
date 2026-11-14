@@ -1,0 +1,2320 @@
+{
+  "id": "quotient-of-powers-exponent--sq",
+  "title": "Cancel in pairs",
+  "teaches": [
+    "exponent-quotient-slots"
+  ],
+  "cast": {
+    "teacher": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -0.8,
+          -1.65,
+          5.8,
+          1.65
+        ],
+        "points": {
+          "L": [
+            -0.4,
+            0
+          ],
+          "R": [
+            5.4,
+            0
+          ],
+          "One": [
+            3.5,
+            -0.95
+          ],
+          "t1": [
+            0,
+            0.95
+          ],
+          "t2": [
+            1,
+            0.95
+          ],
+          "t3": [
+            2,
+            0.95
+          ],
+          "t4": [
+            3,
+            0.95
+          ],
+          "t5": [
+            4,
+            0.95
+          ],
+          "t6": [
+            5,
+            0.95
+          ],
+          "b1": [
+            0,
+            -0.95
+          ],
+          "b2": [
+            1,
+            -0.95
+          ],
+          "U1": [
+            0,
+            0
+          ],
+          "U2": [
+            1,
+            0
+          ]
+        },
+        "parts": [
+          {
+            "id": "bar",
+            "seg": [
+              "L",
+              "R"
+            ],
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "t1",
+            "label": "\\LARGE x",
+            "at": "t1",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "t2",
+            "label": "\\LARGE x",
+            "at": "t2",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "t3",
+            "label": "\\LARGE x",
+            "at": "t3",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "t4",
+            "label": "\\LARGE x",
+            "at": "t4",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "t5",
+            "label": "\\LARGE x",
+            "at": "t5",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "t6",
+            "label": "\\LARGE x",
+            "at": "t6",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "b1",
+            "label": "\\LARGE x",
+            "at": "b1",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "b2",
+            "label": "\\LARGE x",
+            "at": "b2",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "unit1",
+            "label": "\\Large 1",
+            "at": "U1",
+            "dir": "c",
+            "size": "l",
+            "ink": "muted",
+            "flies": true
+          },
+          {
+            "id": "unit2",
+            "label": "\\Large 1",
+            "at": "U2",
+            "dir": "c",
+            "size": "l",
+            "ink": "muted",
+            "flies": true
+          },
+          {
+            "id": "identity",
+            "label": "\\LARGE 1",
+            "at": "One",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "flies": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "*x* to the sixth divided by *x* squared. Is it *x* cubed, because six divided by two is three?",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "tex": "\\frac{x^6}{x^2}",
+              "label": "Same base · x ≠ 0"
+            },
+            {
+              "do": "write",
+              "tex": "x^3\\;?",
+              "id": "guess",
+              "at": "cubed"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "An exponent counts factors, the copies being multiplied. Six on top, two on the bottom.",
+          "pause": 0.2,
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "t1",
+                "t2",
+                "t3",
+                "t4",
+                "t5",
+                "t6"
+              ],
+              "at": "Six"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b1",
+                "b2"
+              ],
+              "at": "two"
+            },
+            {
+              "do": "strike",
+              "target": "guess",
+              "at": "factors"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A pair: a factor from the top with a factor from the bottom. Together they make one, and multiplying by one changes nothing.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{x}{x}=1",
+              "at": "one"
+            },
+            {
+              "do": "move",
+              "points": {
+                "t1": [
+                  0,
+                  0.42
+                ],
+                "b1": [
+                  0,
+                  -0.42
+                ]
+              },
+              "at": "Together",
+              "dur": 0.55
+            },
+            {
+              "do": "hide",
+              "target": [
+                "t1",
+                "b1"
+              ],
+              "at": "Together",
+              "dur": 0.65
+            },
+            {
+              "do": "show",
+              "target": "unit1",
+              "dur": 0.16,
+              "at": "one"
+            },
+            {
+              "do": "hide",
+              "target": "unit1",
+              "at": "nothing",
+              "dur": 0.22
+            },
+            {
+              "do": "move",
+              "points": {
+                "L": [
+                  0.6,
+                  0
+                ]
+              },
+              "at": "Together",
+              "dur": 0.4
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Another pair makes one, then disappears.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "t2": [
+                  1,
+                  0.42
+                ],
+                "b2": [
+                  1,
+                  -0.42
+                ]
+              },
+              "at": "pair",
+              "dur": 0.55
+            },
+            {
+              "do": "hide",
+              "target": [
+                "t2",
+                "b2"
+              ],
+              "at": "pair",
+              "dur": 0.65
+            },
+            {
+              "do": "show",
+              "target": "unit2",
+              "dur": 0.16,
+              "at": "one"
+            },
+            {
+              "do": "hide",
+              "target": "unit2",
+              "at": "disappears",
+              "dur": 0.22
+            },
+            {
+              "do": "move",
+              "points": {
+                "L": [
+                  1.6,
+                  0
+                ]
+              },
+              "at": "pair",
+              "dur": 0.4
+            },
+            {
+              "do": "show",
+              "target": "identity",
+              "at": "disappears"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Four factors are left on top.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "bar",
+                "identity"
+              ]
+            },
+            {
+              "do": "move",
+              "points": {
+                "t3": [
+                  1,
+                  0
+                ],
+                "t4": [
+                  2,
+                  0
+                ],
+                "t5": [
+                  3,
+                  0
+                ],
+                "t6": [
+                  4,
+                  0
+                ]
+              },
+              "dur": 0.75
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "That is *x* to the fourth. Six minus two, not six divided by two.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "answer",
+              "tex": "x^4",
+              "at": "fourth"
+            },
+            {
+              "do": "write",
+              "tex": "6-2=4",
+              "at": "Six"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "If the question asks for the exponent, *k*, it is four.",
+          "pause": 0.2,
+          "do": [
+            {
+              "do": "write",
+              "tex": "k=4",
+              "at": "four"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.6,
+          -1.65,
+          4.6,
+          1.65
+        ],
+        "points": {
+          "L": [
+            -0.4,
+            0
+          ],
+          "R": [
+            4.4,
+            0
+          ],
+          "One": [
+            3,
+            0.95
+          ],
+          "t1": [
+            0,
+            0.95
+          ],
+          "t2": [
+            1,
+            0.95
+          ],
+          "b1": [
+            0,
+            -0.95
+          ],
+          "b2": [
+            1,
+            -0.95
+          ],
+          "b3": [
+            2,
+            -0.95
+          ],
+          "b4": [
+            3,
+            -0.95
+          ],
+          "b5": [
+            4,
+            -0.95
+          ],
+          "U1": [
+            0,
+            0
+          ],
+          "U2": [
+            1,
+            0
+          ]
+        },
+        "parts": [
+          {
+            "id": "bar",
+            "seg": [
+              "L",
+              "R"
+            ],
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "t1",
+            "label": "\\LARGE x",
+            "at": "t1",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "t2",
+            "label": "\\LARGE x",
+            "at": "t2",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "b1",
+            "label": "\\LARGE x",
+            "at": "b1",
+            "dir": "c",
+            "size": "xl",
+            "ink": "blue",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "b2",
+            "label": "\\LARGE x",
+            "at": "b2",
+            "dir": "c",
+            "size": "xl",
+            "ink": "blue",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "b3",
+            "label": "\\LARGE x",
+            "at": "b3",
+            "dir": "c",
+            "size": "xl",
+            "ink": "blue",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "b4",
+            "label": "\\LARGE x",
+            "at": "b4",
+            "dir": "c",
+            "size": "xl",
+            "ink": "blue",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "b5",
+            "label": "\\LARGE x",
+            "at": "b5",
+            "dir": "c",
+            "size": "xl",
+            "ink": "blue",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "unit1",
+            "label": "\\Large 1",
+            "at": "U1",
+            "dir": "c",
+            "size": "xl",
+            "ink": "muted",
+            "flies": true
+          },
+          {
+            "id": "unit2",
+            "label": "\\Large 1",
+            "at": "U2",
+            "dir": "c",
+            "size": "xl",
+            "ink": "muted",
+            "flies": true
+          },
+          {
+            "id": "identity",
+            "label": "\\LARGE 1",
+            "at": "One",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "flies": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Now the other way round: *x* squared over *x* to the fifth.",
+          "pause": 0.2,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "tex": "\\frac{x^2}{x^5}",
+              "label": "Same base · x ≠ 0"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "This pair makes one, then disappears.",
+          "pause": 0.2,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "t1": [
+                  0,
+                  0.42
+                ],
+                "b1": [
+                  0,
+                  -0.42
+                ]
+              },
+              "at": "pair",
+              "dur": 0.55
+            },
+            {
+              "do": "hide",
+              "target": [
+                "t1",
+                "b1"
+              ],
+              "at": "pair",
+              "dur": 0.65
+            },
+            {
+              "do": "show",
+              "target": "unit1",
+              "dur": 0.16,
+              "at": "one"
+            },
+            {
+              "do": "hide",
+              "target": "unit1",
+              "at": "disappears",
+              "dur": 0.22
+            },
+            {
+              "do": "move",
+              "points": {
+                "L": [
+                  0.6,
+                  0
+                ]
+              },
+              "at": "pair",
+              "dur": 0.4
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The next pair: one again, and it disappears.",
+          "pause": 0.2,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "t2": [
+                  1,
+                  0.42
+                ],
+                "b2": [
+                  1,
+                  -0.42
+                ]
+              },
+              "at": "pair",
+              "dur": 0.55
+            },
+            {
+              "do": "hide",
+              "target": [
+                "t2",
+                "b2"
+              ],
+              "at": "pair",
+              "dur": 0.65
+            },
+            {
+              "do": "show",
+              "target": "unit2",
+              "dur": 0.16,
+              "at": "one"
+            },
+            {
+              "do": "hide",
+              "target": "unit2",
+              "at": "disappears",
+              "dur": 0.22
+            },
+            {
+              "do": "move",
+              "points": {
+                "L": [
+                  1.6,
+                  0
+                ]
+              },
+              "at": "pair",
+              "dur": 0.4
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Three factors are left on the bottom, and none on top, so a one stands there.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "b3": [
+                  1,
+                  -0.95
+                ],
+                "b4": [
+                  2,
+                  -0.95
+                ],
+                "b5": [
+                  3,
+                  -0.95
+                ],
+                "L": [
+                  0.5,
+                  0
+                ],
+                "R": [
+                  3.5,
+                  0
+                ],
+                "One": [
+                  2,
+                  0.95
+                ]
+              },
+              "dur": 0.75
+            },
+            {
+              "do": "show",
+              "target": "identity",
+              "at": "one"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "One over *x* cubed is *x* to the negative third.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\frac{1}{x^3}=x^{-3}",
+              "at": "negative"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Two minus five is negative three. A negative exponent says the leftovers are on the bottom.",
+          "pause": 0.2,
+          "do": [
+            {
+              "do": "write",
+              "tex": "2-5=-3",
+              "at": "Two"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.8,
+          -2.3,
+          4.8,
+          2.9
+        ],
+        "points": {
+          "L": [
+            -0.4,
+            0.55
+          ],
+          "R": [
+            4.4,
+            0.55
+          ],
+          "IL": [
+            -0.3,
+            -0.95
+          ],
+          "IR": [
+            4.3,
+            -0.95
+          ],
+          "One": [
+            2,
+            -0.25
+          ],
+          "a1": [
+            0,
+            1.35
+          ],
+          "b1": [
+            0,
+            -1.65
+          ],
+          "a2": [
+            1,
+            1.35
+          ],
+          "b2": [
+            1,
+            -1.65
+          ],
+          "a3": [
+            2,
+            1.35
+          ],
+          "b3": [
+            2,
+            -1.65
+          ],
+          "a4": [
+            3,
+            1.35
+          ],
+          "b4": [
+            3,
+            -1.65
+          ],
+          "a5": [
+            4,
+            1.35
+          ],
+          "b5": [
+            4,
+            -1.65
+          ]
+        },
+        "parts": [
+          {
+            "id": "bar",
+            "seg": [
+              "L",
+              "R"
+            ],
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "inner",
+            "seg": [
+              "IL",
+              "IR"
+            ],
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "one",
+            "label": "\\Large 1",
+            "at": "One",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "a1",
+            "label": "\\LARGE x",
+            "at": "a1",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "b1",
+            "label": "\\LARGE x",
+            "at": "b1",
+            "dir": "c",
+            "size": "xl",
+            "ink": "blue",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "a2",
+            "label": "\\LARGE x",
+            "at": "a2",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "b2",
+            "label": "\\LARGE x",
+            "at": "b2",
+            "dir": "c",
+            "size": "xl",
+            "ink": "blue",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "a3",
+            "label": "\\LARGE x",
+            "at": "a3",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "b3",
+            "label": "\\LARGE x",
+            "at": "b3",
+            "dir": "c",
+            "size": "xl",
+            "ink": "blue",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "a4",
+            "label": "\\LARGE x",
+            "at": "a4",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "b4",
+            "label": "\\LARGE x",
+            "at": "b4",
+            "dir": "c",
+            "size": "xl",
+            "ink": "blue",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "a5",
+            "label": "\\LARGE x",
+            "at": "a5",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "b5",
+            "label": "\\LARGE x",
+            "at": "b5",
+            "dir": "c",
+            "size": "xl",
+            "ink": "blue",
+            "flies": true,
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "What if the bottom exponent is negative five?",
+          "pause": 0.2,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "tex": "\\frac{x^5}{x^{-5}}",
+              "label": "Same base · x ≠ 0"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "That means one over *x* to the fifth.",
+          "pause": 0.2,
+          "do": [
+            {
+              "do": "write",
+              "tex": "x^{-5}=\\frac{1}{x^5}",
+              "at": "means"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Dividing by this fraction means multiplying by *x* to the fifth.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "x^5\\div\\frac{1}{x^5}=x^5\\times x^5",
+              "at": "multiplying"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The five blue factors rise through the bar and join the top.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "one",
+                "inner"
+              ],
+              "at": "rise",
+              "dur": 0.6
+            },
+            {
+              "do": "move",
+              "points": {
+                "b1": [
+                  0,
+                  0.65
+                ],
+                "b2": [
+                  1,
+                  0.65
+                ],
+                "b3": [
+                  2,
+                  0.65
+                ],
+                "b4": [
+                  3,
+                  0.65
+                ],
+                "b5": [
+                  4,
+                  0.65
+                ],
+                "a1": [
+                  0,
+                  2.1
+                ],
+                "a2": [
+                  1,
+                  2.1
+                ],
+                "a3": [
+                  2,
+                  2.1
+                ],
+                "a4": [
+                  3,
+                  2.1
+                ],
+                "a5": [
+                  4,
+                  2.1
+                ]
+              },
+              "at": "rise",
+              "dur": 1.4
+            },
+            {
+              "do": "hide",
+              "target": "bar",
+              "at": "join",
+              "dur": 0.5
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Nothing cancels. Five and five: ten factors on top.",
+          "pause": 0.8,
+          "do": []
+        },
+        {
+          "speaker": "teacher",
+          "say": "*x* to the tenth. Five minus negative five equals ten.",
+          "pause": 0.2,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "answer",
+              "tex": "x^{10}",
+              "at": "tenth"
+            },
+            {
+              "do": "write",
+              "tex": "5-(-5)=10",
+              "at": "Five"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -2.3,
+          -1.95,
+          7.2,
+          1.95
+        ],
+        "points": {
+          "L": [
+            -2.1,
+            0
+          ],
+          "R": [
+            6.6,
+            0
+          ],
+          "One": [
+            3,
+            1.2
+          ],
+          "t1": [
+            0,
+            1.2
+          ],
+          "t2": [
+            1,
+            1.2
+          ],
+          "t3": [
+            2,
+            1.2
+          ],
+          "t4": [
+            3,
+            1.2
+          ],
+          "t5": [
+            4,
+            1.2
+          ],
+          "t6": [
+            5,
+            1.2
+          ],
+          "b1": [
+            0,
+            -1.2
+          ],
+          "b2": [
+            1,
+            -1.2
+          ],
+          "b3": [
+            2,
+            -1.2
+          ],
+          "b4": [
+            3,
+            -1.2
+          ],
+          "b5": [
+            4,
+            -1.2
+          ],
+          "b6": [
+            5,
+            -1.2
+          ],
+          "b7": [
+            6,
+            -1.2
+          ],
+          "U1": [
+            0,
+            0
+          ],
+          "U2": [
+            1,
+            0
+          ],
+          "U3": [
+            2,
+            0
+          ],
+          "U4": [
+            3,
+            0
+          ],
+          "U5": [
+            4,
+            0
+          ],
+          "U6": [
+            5,
+            0
+          ],
+          "Ct": [
+            -1.45,
+            1.2
+          ],
+          "Cb": [
+            -1.45,
+            -1.2
+          ],
+          "Five": [
+            -1.45,
+            1.2
+          ],
+          "Result": [
+            2.5,
+            0
+          ]
+        },
+        "parts": [
+          {
+            "id": "bar",
+            "seg": [
+              "L",
+              "R"
+            ],
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "t1",
+            "label": "\\Large x",
+            "at": "t1",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "t2",
+            "label": "\\Large x",
+            "at": "t2",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "t3",
+            "label": "\\Large x",
+            "at": "t3",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "t4",
+            "label": "\\Large x",
+            "at": "t4",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "t5",
+            "label": "\\Large x",
+            "at": "t5",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "t6",
+            "label": "\\Large x",
+            "at": "t6",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "b1",
+            "label": "\\Large x",
+            "at": "b1",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "b2",
+            "label": "\\Large x",
+            "at": "b2",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "b3",
+            "label": "\\Large x",
+            "at": "b3",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "b4",
+            "label": "\\Large x",
+            "at": "b4",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "b5",
+            "label": "\\Large x",
+            "at": "b5",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "b6",
+            "label": "\\Large x",
+            "at": "b6",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "b7",
+            "label": "\\Large x",
+            "at": "b7",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "thirty",
+            "label": "\\LARGE 30",
+            "at": "Ct",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "six",
+            "label": "\\LARGE 6",
+            "at": "Cb",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "five",
+            "label": "\\LARGE 5",
+            "at": "Five",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm",
+            "flies": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Divide the numbers in front: thirty divided by six is five.",
+          "pause": 0.2,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "tex": "\\frac{30x^6}{6x^7}",
+              "label": "Same base · x ≠ 0"
+            },
+            {
+              "do": "write",
+              "tex": "30\\div6=5",
+              "at": "thirty"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "thirty",
+                "six"
+              ],
+              "at": "five"
+            },
+            {
+              "do": "show",
+              "target": "five",
+              "at": "five"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "One pair, gone.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "t1": [
+                  0,
+                  0.42
+                ],
+                "b1": [
+                  0,
+                  -0.42
+                ]
+              },
+              "at": "pair",
+              "dur": 0.75
+            },
+            {
+              "do": "hide",
+              "target": [
+                "t1",
+                "b1"
+              ],
+              "at": "pair",
+              "dur": 0.7
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Two pairs, gone.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "t2": [
+                  1,
+                  0.42
+                ],
+                "b2": [
+                  1,
+                  -0.42
+                ]
+              },
+              "at": "pairs",
+              "dur": 0.75
+            },
+            {
+              "do": "hide",
+              "target": [
+                "t2",
+                "b2"
+              ],
+              "at": "pairs",
+              "dur": 0.7
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Three pairs, gone.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "t3": [
+                  2,
+                  0.42
+                ],
+                "b3": [
+                  2,
+                  -0.42
+                ]
+              },
+              "at": "pairs",
+              "dur": 0.75
+            },
+            {
+              "do": "hide",
+              "target": [
+                "t3",
+                "b3"
+              ],
+              "at": "pairs",
+              "dur": 0.7
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Four pairs, gone.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "t4": [
+                  3,
+                  0.42
+                ],
+                "b4": [
+                  3,
+                  -0.42
+                ]
+              },
+              "at": "pairs",
+              "dur": 0.75
+            },
+            {
+              "do": "hide",
+              "target": [
+                "t4",
+                "b4"
+              ],
+              "at": "pairs",
+              "dur": 0.7
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Five pairs, gone.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "t5": [
+                  4,
+                  0.42
+                ],
+                "b5": [
+                  4,
+                  -0.42
+                ]
+              },
+              "at": "pairs",
+              "dur": 0.75
+            },
+            {
+              "do": "hide",
+              "target": [
+                "t5",
+                "b5"
+              ],
+              "at": "pairs",
+              "dur": 0.7
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Six pairs, gone.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "t6": [
+                  5,
+                  0.42
+                ],
+                "b6": [
+                  5,
+                  -0.42
+                ]
+              },
+              "at": "pairs",
+              "dur": 0.75
+            },
+            {
+              "do": "hide",
+              "target": [
+                "t6",
+                "b6"
+              ],
+              "at": "pairs",
+              "dur": 0.7
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "One *x* is left on the bottom. Five over *x*.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "Five": [
+                  2.45,
+                  0.8
+                ],
+                "b7": [
+                  2.45,
+                  -0.8
+                ],
+                "L": [
+                  1.75,
+                  0
+                ],
+                "R": [
+                  3.15,
+                  0
+                ]
+              },
+              "dur": 0.65
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Six minus seven is negative one. Five times *x* to the negative first.",
+          "pause": 0.2,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "6-7=-1",
+              "at": "Six"
+            },
+            {
+              "do": "answer",
+              "tex": "\\frac5x=5x^{-1}",
+              "at": "first"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.7,
+          -1.65,
+          1.7,
+          1.65
+        ],
+        "points": {
+          "L": [
+            -0.4,
+            0
+          ],
+          "R": [
+            1.4,
+            0
+          ],
+          "One": [
+            0.5,
+            0
+          ],
+          "t1": [
+            0,
+            0.95
+          ],
+          "t2": [
+            1,
+            0.95
+          ],
+          "b1": [
+            0,
+            -0.95
+          ],
+          "b2": [
+            1,
+            -0.95
+          ],
+          "U1": [
+            0,
+            0
+          ],
+          "U2": [
+            1,
+            0
+          ]
+        },
+        "parts": [
+          {
+            "id": "bar",
+            "seg": [
+              "L",
+              "R"
+            ],
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "t1",
+            "label": "\\LARGE x",
+            "at": "t1",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "t2",
+            "label": "\\LARGE x",
+            "at": "t2",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "b1",
+            "label": "\\LARGE x",
+            "at": "b1",
+            "dir": "c",
+            "size": "xl",
+            "ink": "blue",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "b2",
+            "label": "\\LARGE x",
+            "at": "b2",
+            "dir": "c",
+            "size": "xl",
+            "ink": "blue",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "unit1",
+            "label": "\\Large 1",
+            "at": "U1",
+            "dir": "c",
+            "size": "xl",
+            "ink": "muted",
+            "flies": true
+          },
+          {
+            "id": "identity",
+            "label": "\\Huge 1",
+            "at": "One",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "flies": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "When the counts match, every pair cancels.",
+          "pause": 0.2,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "tex": "\\frac{x^2}{x^2}",
+              "label": "Same base · x ≠ 0"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "One pair makes one, then disappears.",
+          "pause": 0.1,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "t1": [
+                  0,
+                  0.42
+                ],
+                "b1": [
+                  0,
+                  -0.42
+                ]
+              },
+              "at": "pair",
+              "dur": 0.55
+            },
+            {
+              "do": "hide",
+              "target": [
+                "t1",
+                "b1"
+              ],
+              "at": "pair",
+              "dur": 0.65
+            },
+            {
+              "do": "show",
+              "target": "unit1",
+              "dur": 0.16,
+              "at": "one",
+              "nth": 2
+            },
+            {
+              "do": "hide",
+              "target": "unit1",
+              "at": "disappears",
+              "dur": 0.22
+            },
+            {
+              "do": "move",
+              "points": {
+                "L": [
+                  0.6,
+                  0
+                ]
+              },
+              "at": "pair",
+              "dur": 0.4
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The last pair leaves just one.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "t2": [
+                  1,
+                  0.42
+                ],
+                "b2": [
+                  1,
+                  -0.42
+                ]
+              },
+              "at": "leaves",
+              "dur": 0.4
+            },
+            {
+              "do": "hide",
+              "target": [
+                "t2",
+                "b2",
+                "bar"
+              ],
+              "at": "leaves",
+              "dur": 0.5
+            },
+            {
+              "do": "show",
+              "target": "identity",
+              "at": "one"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Two minus two is zero. Exponent zero, value one.",
+          "pause": 0.2,
+          "do": [
+            {
+              "do": "write",
+              "tex": "2-2=0",
+              "at": "Two"
+            },
+            {
+              "do": "write",
+              "tex": "x^0=1",
+              "at": "value"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.8,
+          -1.65,
+          5.8,
+          1.65
+        ],
+        "points": {
+          "L": [
+            -0.4,
+            0
+          ],
+          "R": [
+            5.4,
+            0
+          ],
+          "One": [
+            3.5,
+            -0.95
+          ],
+          "t1": [
+            0,
+            0.95
+          ],
+          "t2": [
+            1,
+            0.95
+          ],
+          "t3": [
+            2,
+            0.95
+          ],
+          "t4": [
+            3,
+            0.95
+          ],
+          "t5": [
+            4,
+            0.95
+          ],
+          "t6": [
+            5,
+            0.95
+          ],
+          "b1": [
+            0,
+            -0.95
+          ],
+          "b2": [
+            1,
+            -0.95
+          ],
+          "U1": [
+            0,
+            0
+          ],
+          "U2": [
+            1,
+            0
+          ]
+        },
+        "parts": [
+          {
+            "id": "bar",
+            "seg": [
+              "L",
+              "R"
+            ],
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "t1",
+            "label": "\\LARGE x",
+            "at": "t1",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "t2",
+            "label": "\\LARGE x",
+            "at": "t2",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "t3",
+            "label": "\\LARGE x",
+            "at": "t3",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "t4",
+            "label": "\\LARGE x",
+            "at": "t4",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "t5",
+            "label": "\\LARGE x",
+            "at": "t5",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "t6",
+            "label": "\\LARGE x",
+            "at": "t6",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "b1",
+            "label": "\\LARGE x",
+            "at": "b1",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "b2",
+            "label": "\\LARGE x",
+            "at": "b2",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "unit1",
+            "label": "\\Large 1",
+            "at": "U1",
+            "dir": "c",
+            "size": "l",
+            "ink": "muted",
+            "flies": true
+          },
+          {
+            "id": "unit2",
+            "label": "\\Large 1",
+            "at": "U2",
+            "dir": "c",
+            "size": "l",
+            "ink": "muted",
+            "flies": true
+          },
+          {
+            "id": "identity",
+            "label": "\\LARGE 1",
+            "at": "One",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "flies": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Same base. Six on top, two on the bottom.",
+          "pause": 0.2,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "tex": "\\frac{x^6}{x^2}",
+              "label": "Same base · x ≠ 0"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A pair makes one, and is gone.",
+          "pause": 0.1,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "t1": [
+                  0,
+                  0.42
+                ],
+                "b1": [
+                  0,
+                  -0.42
+                ]
+              },
+              "at": "pair",
+              "dur": 0.55
+            },
+            {
+              "do": "hide",
+              "target": [
+                "t1",
+                "b1"
+              ],
+              "at": "pair",
+              "dur": 0.65
+            },
+            {
+              "do": "show",
+              "target": "unit1",
+              "dur": 0.16,
+              "at": "one",
+              "nth": 1
+            },
+            {
+              "do": "hide",
+              "target": "unit1",
+              "at": "gone",
+              "dur": 0.22
+            },
+            {
+              "do": "move",
+              "points": {
+                "L": [
+                  0.6,
+                  0
+                ]
+              },
+              "at": "pair",
+              "dur": 0.4
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Another pair, one, and gone.",
+          "pause": 0.1,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "t2": [
+                  1,
+                  0.42
+                ],
+                "b2": [
+                  1,
+                  -0.42
+                ]
+              },
+              "at": "pair",
+              "dur": 0.55
+            },
+            {
+              "do": "hide",
+              "target": [
+                "t2",
+                "b2"
+              ],
+              "at": "pair",
+              "dur": 0.65
+            },
+            {
+              "do": "show",
+              "target": "unit2",
+              "dur": 0.16,
+              "at": "one"
+            },
+            {
+              "do": "hide",
+              "target": "unit2",
+              "at": "gone",
+              "dur": 0.22
+            },
+            {
+              "do": "move",
+              "points": {
+                "L": [
+                  1.6,
+                  0
+                ]
+              },
+              "at": "pair",
+              "dur": 0.4
+            },
+            {
+              "do": "show",
+              "target": "identity",
+              "at": "gone"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Four factors are left.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "bar",
+                "identity"
+              ]
+            },
+            {
+              "do": "move",
+              "points": {
+                "t3": [
+                  1,
+                  0
+                ],
+                "t4": [
+                  2,
+                  0
+                ],
+                "t5": [
+                  3,
+                  0
+                ],
+                "t6": [
+                  4,
+                  0
+                ]
+              },
+              "dur": 0.65
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Six minus two is four.",
+          "pause": 0.2,
+          "do": [
+            {
+              "do": "write",
+              "tex": "6-2=4",
+              "at": "Six"
+            },
+            {
+              "do": "answer",
+              "tex": "\\frac{x^6}{x^2}=x^4",
+              "at": "four"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Subtract the bottom exponent from the top one; that is what is left after the pairs cancel.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "t3",
+                "t4",
+                "t5",
+                "t6"
+              ],
+              "at": "left"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
