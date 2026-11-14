@@ -67,6 +67,8 @@ test("all template explanations, methods and lesson worked steps preserve numeri
 // Independent expectation: final tokenized formulas after a colon/imperative
 // must be displayed. This does not ask the formatter whether it supports it.
 function expectedDisplay(text: string) {
+  // A list's last value stays with its label (checked separately below).
+  if (listTail(text) !== null) return false;
   const tokens = segmentPrintText(text);
   if (
     tokens.at(-1)?.kind === "text" &&
