@@ -85,6 +85,9 @@ export type SchoolServices = {
   secret: string;
   /** Where links in mail and on screen point. */
   origin: string;
+  /** Every origin AMP's pages are served from, for the forged-post guard.
+   * Absent: `origin` alone. */
+  origins?: readonly string[];
   /** The account mail path. Absent: invitations rely on their copied link. */
   mail?: (
     to: string,
@@ -233,7 +236,7 @@ export async function registerSchoolRoutes(
       reply.header("X-Request-Id", request.id);
       reply.header("Cache-Control", "no-store");
       reply.header("X-Content-Type-Options", "nosniff");
-      if (forgedPost(request, services.origin)) {
+      if (forgedPost(request, services.origins ?? services.origin)) {
         request.log.warn(
           { origin: request.headers.origin ?? null, url: request.url },
           "School request refused: origin",

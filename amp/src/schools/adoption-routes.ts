@@ -32,6 +32,8 @@ export async function registerSchoolAdoptionRoutes(
     pool: Pool;
     authenticate: Authenticator;
     origin?: string;
+    /** Every origin AMP's pages are served from. Absent: `origin` alone. */
+    origins?: readonly string[];
     /** The link secret: approval links derive from it, so they can be read
      * again by the school that issued them. */
     secret?: string;
@@ -45,7 +47,7 @@ export async function registerSchoolAdoptionRoutes(
         .header("Cache-Control", "no-store")
         .header("Referrer-Policy", "no-referrer");
 
-      if (forgedPost(request, options.origin, true)) {
+      if (forgedPost(request, options.origins ?? options.origin, true)) {
         request.log.warn(
           { origin: request.headers.origin ?? null, url: request.url },
           "Adoption request refused: origin",
