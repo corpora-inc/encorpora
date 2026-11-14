@@ -37,7 +37,7 @@ export async function availableGift(db: Database, accountId: string) {
   const row = (
     await db.query(
       `SELECT id,months,claim_by,covers FROM amp_access_gifts WHERE recipient_email=$1
-     AND activated_at IS NULL AND revoked_at IS NULL AND (claim_by IS NULL OR claim_by>now())
+     AND source<>'funded-pending' AND activated_at IS NULL AND revoked_at IS NULL AND (claim_by IS NULL OR claim_by>now())
      ORDER BY issued_at,id LIMIT 1`,
       [email],
     )
@@ -215,7 +215,11 @@ export async function activateGiftInTransaction(
   db: PoolClient,
   accountId: string,
   learnerId: string | undefined,
-  options: { giftId?: string; development?: boolean } = {},
+  options: {
+    giftId?: string;
+    development?: boolean;
+    fundingInvoiceId?: string;
+  } = {},
 ) {
   if (!(await installed(db))) {
     if (options.giftId) throw new AccessGiftError(404, "gift_unavailable");
@@ -250,7 +254,11 @@ export async function activateGiftInTransaction(
       learnerId,
       options.development,
     ));
-  if (!consented && !ownAdult)
+  const pendingLearning =
+    options.fundingInvoiceId &&
+    learnerId &&
+    (await learningConsentActive(db, accountId, false, learnerId));
+  if (!consented && !ownAdult && !pendingLearning)
     throw new AccessGiftError(403, "consent_required");
   if (learnerId !== undefined) {
     const learner = await db.query(
@@ -265,7 +273,7 @@ export async function activateGiftInTransaction(
     await db.query(
       options.giftId
         ? "SELECT * FROM amp_access_gifts WHERE id=$1 AND (recipient_email=$2 OR account_id=$3) FOR UPDATE"
-        : `SELECT * FROM amp_access_gifts WHERE recipient_email=$1 AND activated_at IS NULL AND revoked_at IS NULL
+        : `SELECT * FROM amp_access_gifts WHERE recipient_email=$1 AND source<>'funded-pending' AND activated_at IS NULL AND revoked_at IS NULL
          AND (claim_by IS NULL OR claim_by>now()) ORDER BY issued_at,id LIMIT 1 FOR UPDATE`,
       options.giftId ? [options.giftId, email, accountId] : [email],
     )
@@ -274,6 +282,11 @@ export async function activateGiftInTransaction(
     if (options.giftId) throw new AccessGiftError(404, "gift_unavailable");
     return null;
   }
+  if (
+    gift.source === "funded-pending" &&
+    gift.funding_invoice_id !== options.fundingInvoiceId
+  )
+    throw new AccessGiftError(409, "invoice_claim_required");
   if (gift.revoked_at) throw new AccessGiftError(409, "gift_unavailable");
   if (gift.covers === "family" && gift.activated_at) {
     if (gift.account_id !== accountId)
@@ -322,12 +335,30 @@ export async function activateGiftInTransaction(
       )
     : null;
   if (licensed.rowCount || stripeLinked?.rowCount) {
+    // A renewal invoice must not replace or extend existing paid access.
+    if (options.fundingInvoiceId) return null;
     if (options.giftId)
       throw new AccessGiftError(409, "learner_already_licensed");
     return null;
   }
-  const ends = giftEnd(now, gift.months);
-  const grantId = `email-gift:${gift.id}`;
+  const pending = gift.source === "funded-pending";
+  const ends = pending ? new Date(gift.claim_by) : giftEnd(now, gift.months);
+  // Consume the adult's eligibility atomically with the grant. Unique account
+  // and normalized-email keys serialize concurrent claims, including siblings.
+  // This record has no child reference and survives individual learning deletion.
+  if (pending) {
+    const consumed = await db.query(
+      `INSERT INTO amp_funded_pending_eligibility(account_id,recipient_email,program_id)
+       SELECT $1,$2,offer_snapshot->>'programId' FROM amp_funding_invoice_intents WHERE id=$3
+       ON CONFLICT DO NOTHING RETURNING account_id`,
+      [accountId, email, options.fundingInvoiceId],
+    );
+    if (!consumed.rowCount) return null;
+  }
+  // Each invoice owns its bridge; eligibility, not a learner UUID, limits use.
+  const grantId = pending
+    ? `funded-pending:${gift.id}`
+    : `email-gift:${gift.id}`;
   await db.query(
     `INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at)
      VALUES($1,$2,'pilot',$1,'active',$3,$4)`,

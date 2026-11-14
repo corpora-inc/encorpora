@@ -17,13 +17,16 @@ export type BrowserKind = (typeof BROWSER_KINDS)[number];
  * and Messenger webviews also carry Facebook's markers on some versions. */
 const markers: readonly (readonly [BrowserKind, RegExp])[] = [
   ["inapp-tiktok", /\bmusical_ly|\btrill_\d|BytedanceWebview|\bTikTok\b/i],
-  ["inapp-instagram", /\bInstagram\b/],
-  ["inapp-snapchat", /\bSnapchat\b/],
-  ["inapp-facebook", /\bFBAN\/|\bFBAV\/|\bFB_IAB\/|\bFBIOS\b|\bFB4A\b/],
+  ["inapp-instagram", /\bInstagram\b/i],
+  ["inapp-snapchat", /\bSnapchat\b/i],
+  [
+    "inapp-facebook",
+    /\bFBAN\/|\bFBAV\/|\bFB_IAB\/|\bFBIOS\b|\bFB4A\b|\bMessenger\//i,
+  ],
   [
     "inapp-other",
     // An Android WebView (`; wv)`), or another app's own marker.
-    /; wv\)|\bLine\/|LinkedInApp|\bPinterest|\bTwitter|MicroMessenger|WhatsApp|\bReddit\/|\bGSA\/|\bBarcelona\b/,
+    /;\s*wv\b|\bLine\/|\bLinkedIn(?:App)?\b|\bPinterest|\bTwitter|MicroMessenger|WhatsApp|\bReddit\/|\bGSA\/|\bBarcelona\b/i,
   ],
 ];
 

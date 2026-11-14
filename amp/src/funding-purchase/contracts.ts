@@ -213,7 +213,9 @@ export function presentRequest(
   };
 }
 export type PublicFundingOffer = ReturnType<typeof presentOffer>;
-export type PublicFundingRequest = ReturnType<typeof presentRequest>;
+export type PublicFundingRequest = ReturnType<typeof presentRequest> & {
+  fundedPending?: { status: string; endsAt: string } | null;
+};
 export function availableOffers(
   offers: readonly FundingOffer[],
   at: Date,

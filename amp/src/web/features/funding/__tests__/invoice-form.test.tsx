@@ -128,3 +128,15 @@ test("a program that sells only the year shows no choice", async () => {
   expect(await screen.findByText("One learner · one year")).toBeTruthy();
   expect(screen.queryByRole("radiogroup", { name: "Pay for" })).toBeNull();
 });
+
+test("purchase footer keeps the pending limit concise and omits general parent feedback", async () => {
+  await open("/invoice/arizona-esa");
+  await screen.findByRole("button", { name: "Create invoice PDF" });
+  expect(
+    screen.getByText("Access while payment is pending lasts up to 30 days.")
+      .textContent,
+  ).toBe("Access while payment is pending lasts up to 30 days.");
+  expect(
+    screen.queryByRole("button", { name: "Share parent feedback" }),
+  ).toBeNull();
+});

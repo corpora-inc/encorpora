@@ -1,3 +1,4 @@
+import { learningConsentActive } from "../src/server/account-access.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
@@ -726,7 +727,25 @@ test(
         ),
         /verified_consent_required/,
       );
-      assert.deepEqual(await grants(pool, "child"), []);
+      const remaining = await grants(pool, "child");
+      assert.equal(
+        remaining.length,
+        0,
+        "the account's bridge was already used by its adult learner",
+      );
+      assert.equal((await grants(pool, "parent-own")).length, 1);
+      assert.equal(
+        await learningConsentActive(pool, "amp|parent", false, "child"),
+        false,
+      );
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int n FROM amp_commerce_orders WHERE learner_id='child'",
+          )
+        ).rows[0].n,
+        0,
+      );
     }),
 );
 
