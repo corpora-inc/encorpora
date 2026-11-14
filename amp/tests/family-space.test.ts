@@ -251,6 +251,50 @@ test("a child's page marks that child, and only one of the family's own", () => 
   assert.equal(stranger.learner, null);
 });
 
+test("Q-209: a child's Pathways and Inventory are their own addresses, with their record's tabs", () => {
+  for (const screen of ["pathways", "inventory"] as const) {
+    const pathname = `/family/${A}/kids/wren/${screen}`;
+    assert.equal(spaceOfPath(pathname), "family");
+    const space = resolveSpace({ pathname, space: "family" }, adult(power), {
+      family: familyA,
+    });
+    if (space.space !== "family") throw new Error(space.space);
+    assert.equal(space.status, "ready");
+    assert.equal(space.learner?.id, "wren");
+    assert.equal(space.label, "Wren");
+    assert.equal(space.active, screen);
+    assert.deepEqual(
+      space.tabs.map((tab) => [tab.id, tab.path, tab.search]),
+      [
+        ["overview", `family/${A}/kids/wren`, undefined],
+        ["pathways", `family/${A}/kids/wren/pathways`, undefined],
+        ["inventory", `family/${A}/kids/wren/inventory`, undefined],
+      ],
+    );
+    // A child's practice is their own session (their page, Today): no
+    // adult's /practice from here.
+    assert.deepEqual(space.actions, []);
+  }
+  // A child who isn't this family's: unavailable, never another child.
+  const stranger = resolveSpace(
+    { pathname: `/family/${A}/kids/zed/pathways`, space: "family" },
+    adult(power),
+    { family: familyA },
+  );
+  if (stranger.space !== "family") throw new Error(stranger.space);
+  assert.equal(stranger.status, "unavailable");
+  assert.equal(stranger.learner, null);
+  assert.deepEqual(stranger.tabs, []);
+  assert.deepEqual(stranger.destinations, []);
+  // The child's page keeps the family's own tabs.
+  const page = resolveSpace(
+    { pathname: `/family/${A}/kids/wren`, space: "family" },
+    adult(power),
+    { family: familyA },
+  );
+  assert.equal(page.tabs[0]?.path, `family/${A}`);
+});
+
 test("each child's rights are a learner target of their own", () => {
   const space = resolveSpace(
     { pathname: `/family/${B}`, space: "family" },

@@ -143,8 +143,19 @@ export function schoolTabs(
     .map(([id, label, , phone]) => tab(id, label, at(id), phone));
 }
 
-/** A learner's record: their level, the map of what they know, and the
- * inventory of their work. */
+/** A family's child's record, at the child's own addresses: their page
+ * (the Overview), their map and their inventory. */
+export function childTabs(family: string, learner: string): TabItem[] {
+  const at = `family/${family}/kids/${encodeURIComponent(learner)}`;
+  return [
+    tab("overview", "Overview", at),
+    tab("pathways", "Pathways", `${at}/pathways`),
+    tab("inventory", "Inventory", `${at}/inventory`),
+  ];
+}
+
+/** A student's own record: their level, the map of what they know, and the
+ * inventory of their work. Self is implicit: no learner in the address. */
 export function learnerTabs(): TabItem[] {
   return [
     tab("overview", "Overview", "overview"),
@@ -154,9 +165,9 @@ export function learnerTabs(): TabItem[] {
 }
 
 /** An adult's own practice: practice, where they are, and their workbooks on
- * a phone; their map, inventory and practice profiles under More. Every
- * learning tab names whose it is: their own learner, or the practice
- * profile they are practicing as (which has its own levels, and no
+ * a phone; their map, inventory and practice profiles under More. Their own
+ * learning tabs name nobody (self is implicit); a practice profile's name
+ * the profile they are practicing as (which has its own levels, and no
  * workbooks). */
 export function meTabs(
   ownLearner: string | null,
@@ -172,11 +183,10 @@ export function meTabs(
       tab("profiles", "Profiles", "me/profiles"),
     ];
   }
-  const own = ownLearner ? { search: { learner: ownLearner } } : {};
   return [
     ...(ownLearner
       ? [
-          { ...tab("practice", "Practice", "practice", true), ...own },
+          tab("practice", "Practice", "practice", true),
           tab("levels", "Levels", "me", true),
           tab(
             "workbooks",
@@ -186,8 +196,8 @@ export function meTabs(
           ),
         ]
       : []),
-    { ...tab("pathways", "Pathways", "pathways"), ...own },
-    { ...tab("inventory", "Inventory", "inventory"), ...own },
+    tab("pathways", "Pathways", "pathways"),
+    tab("inventory", "Inventory", "inventory"),
     tab("profiles", "Profiles", "me/profiles"),
   ];
 }

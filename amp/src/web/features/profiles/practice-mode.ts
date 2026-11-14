@@ -1,6 +1,15 @@
 import type { SignedInMe } from "../../../account/contracts";
 import { AppError } from "../../lib/AppError";
-import { addressedIdentity, type AddressedIdentity } from "../spaces/identity";
+import {
+  addressedIdentity,
+  childAddress,
+  learningIdentity,
+  type AddressedIdentity,
+} from "../spaces/identity";
+import { canonicalLearning } from "../spaces/learner-urls";
+import { familyPlacesOptions } from "../family/api";
+import { useLearnerStore } from "../../learner-store";
+import { redirect } from "@tanstack/react-router";
 import { hasHome } from "../onboarding/guard";
 import { returnTarget } from "../../lib/return-to";
 import { rootRedirect } from "../../nav/root";
@@ -133,6 +142,44 @@ export async function adoptPracticeMode(location: {
     throw rootRedirect();
 }
 
+/**
+ * Before a shared learning screen loads: an older address goes to its
+ * canonical one (features/spaces/learner-urls.ts), replacing it in history,
+ * so `?learner=` never shows. The device's choice is read (a parent with no
+ * practice of their own sees the child it names), never changed. A learner
+ * this account doesn't read stays, for `adoptPracticeMode` to refuse.
+ */
+export async function canonicalLearnerAddress(location: {
+  pathname: string;
+  searchStr: string;
+}) {
+  if (studentSession() || !isLearningPath(location.pathname)) return;
+  const params = new URLSearchParams(location.searchStr);
+  const session = await queryClient
+    .ensureQueryData(sessionOptions)
+    .catch(() => null);
+  if (!session) return;
+  const me = await queryClient
+    .ensureQueryData(meOptions(session))
+    .catch(() => null);
+  if (!me?.signedIn || me.account.kind === "student") return;
+  // Only an older key, or a parent with no practice of their own, can have
+  // another address; a child's family id comes from the account's places.
+  if (!params.has("learner") && me.adultPractice?.learner) return;
+  const places = await queryClient
+    .ensureQueryData(familyPlacesOptions(session))
+    .catch(() => null);
+  const href = canonicalLearning(
+    location.pathname,
+    params,
+    me,
+    places,
+    useLearnerStore.getState().learnerId,
+  );
+  if (href && href !== `${location.pathname}${location.searchStr}`)
+    throw redirect({ href, replace: true });
+}
+
 /** This account reads the learner or profile an address names. */
 export function readsIdentity(me: SignedInMe, named: AddressedIdentity) {
   if (named.kind === "profile")
@@ -148,9 +195,11 @@ export function readsIdentity(me: SignedInMe, named: AddressedIdentity) {
 
 /**
  * The device's choice once a screen is on view (called by the shell with the
- * committed address): the learner or profile the address names, the adult's
- * own on `/me`, and a profile left chosen is put down on a learning screen
- * that names none. Returns the choice to make, or undefined for none.
+ * committed address): the learner or profile the address names (a family's
+ * child by their path), the adult's own on `/me` and on a shared learning
+ * screen that names nobody (self), and, for an account with no practice of
+ * its own, a profile left chosen is put down. Returns the choice to make, or
+ * undefined for none.
  */
 export function committedChoice(
   me: SignedInMe,
@@ -160,9 +209,14 @@ export function committedChoice(
 ): string | null | undefined {
   const own = me.adultPractice?.learner?.id ?? null;
   if (pathname === "/me") return own && current !== own ? own : undefined;
-  if (!isLearningPath(pathname) && !/^\/learners\//.test(pathname))
+  if (
+    !isLearningPath(pathname) &&
+    !/^\/learners\//.test(pathname) &&
+    !childAddress(pathname)
+  )
     return undefined;
-  const named = addressedIdentity(pathname, search);
+  // An unnamed shared learning screen is the adult's own (self).
+  const named = learningIdentity(pathname, search, own);
   if (named)
     return readsIdentity(me, named) && current !== named.id
       ? named.id
@@ -179,8 +233,9 @@ const START = /^\/start(?:\/|$)/;
  * The address keys a move carries from here to there, or null (one rule,
  * docs/architecture/spaces.md, "Learning screens"):
  * - between the starter's steps, where adding a place returns (`from`);
- * - between learning screens, whose they are: a practice profile (with its
- *   `from`), which outranks `?learner=`, or else the learner named here.
+ * - between learning screens, a practice profile (with its `from`). A
+ *   learner never travels: yourself is unnamed, and a child's screens carry
+ *   them in their path.
  * A destination that names its own learner or profile (`explicit`, the keys
  * the caller set) replaces the one here; a profile and a learner never
  * travel together.
@@ -215,6 +270,7 @@ export function carriedKeys(
         here.search[key],
       ]),
     );
-  const learner = here.search[LEARNER_KEY];
-  return typeof learner === "string" ? { [LEARNER_KEY]: learner } : null;
+  // A learner is never carried: yourself needs no name, and a child's
+  // screens name them in their own address (/family/<family>/kids/<learner>).
+  return null;
 }

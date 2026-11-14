@@ -66,7 +66,7 @@ export function LayerHost({
     .map((entity, index) => (
       <Layer
         key={
-          entity.kind === "work"
+          entity.kind === "work" || entity.kind === "own-work"
             ? `${index}:work`
             : `${index}:${entity.kind}:${entity.id}`
         }
@@ -110,7 +110,9 @@ function Layer({
   const back = useLayerTitle(below.at(-1));
   // A replayed answer fills the screen: a sheet under it waits closed
   // (Back reopens it), so only one thing ever holds focus.
-  const underAnswer = above.some((layer) => layer.kind === "work");
+  const underAnswer = above.some(
+    (layer) => layer.kind === "work" || layer.kind === "own-work",
+  );
   switch (entity.kind) {
     case "student":
       return (
@@ -178,6 +180,16 @@ function Layer({
         />
       ) : null;
     }
+    case "own-work":
+      return (
+        <WorkReplaySlot
+          own
+          student=""
+          attempt={entity.id}
+          skill={workSkill(search.skill)}
+          layer={{ close, covered: above.length > 0 }}
+        />
+      );
     case "work": {
       const { student, attempt } = workParts(entity.id);
       return (

@@ -45,6 +45,7 @@ import {
   updateProfileSchema,
 } from "../learning/practice-profiles.js";
 import { studentMe } from "../schools/student-me.js";
+import { readOwnWorkReplay } from "../schools/work-replay.js";
 import { Readable } from "node:stream";
 import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import type { Pool } from "pg";
@@ -97,6 +98,11 @@ export interface FamilyRouteOptions {
   /** Prints the adult's progress report. Absent: that PDF answers 503. */
   renderer?: WorkbookRenderer | null;
 }
+const ownWorkParams = z.object({
+  attempt: z.string().regex(/^[0-9a-f][0-9a-f-]{7,99}$/i),
+});
+const ownWorkQuery = z.object({ skill: z.string().max(120).optional() });
+
 export async function registerFamilyRoutes(
   app: FastifyInstance,
   options: FamilyRouteOptions,
@@ -282,6 +288,25 @@ export async function registerFamilyRoutes(
       const practice = await readOwnPractice(repository, account);
       if (!practice) throw new FamilyError(404, "adult_practice_not_started");
       return practice;
+    });
+    // One of the adult's own answers, replayed as they saw it (/me's Recent
+    // work). Only their own learner's; a profile's or anyone else's is 404.
+    scope.get("/api/v1/me/practice/work/:attempt", async (request) => {
+      const account = await options.authenticate(request);
+      if (isSchoolAccount(account))
+        throw new FamilyError(404, "adult_practice_not_started");
+      const { attempt } = ownWorkParams.parse(request.params);
+      const { skill } = ownWorkQuery.parse(request.query);
+      const own = await options.pool.query<{ id: string }>(
+        "SELECT id FROM amp_learners WHERE account_id=$1 AND adult AND NOT simulation AND deleted_at IS NULL",
+        [account],
+      );
+      const learner = own.rows[0]?.id;
+      const replay = learner
+        ? await readOwnWorkReplay(options.pool, learner, attempt, skill)
+        : null;
+      if (!replay) throw new FamilyError(404, "not_found");
+      return replay;
     });
     // The adult's own record as a printed progress report, rendered for this
     // request and never stored.

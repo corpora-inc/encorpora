@@ -15,6 +15,8 @@ import { PlaceSwitcher, usePlaces } from "./PlaceSwitcher";
 import type { SpaceDescriptor } from "../spaces/resolve";
 import { useLocationMatch, useSpace } from "../spaces/useSpace";
 import { ACCOUNT_HOME } from "../spaces/tabs";
+import { childPath } from "../spaces/identity";
+import { childFamily } from "../spaces/learner-urls";
 import { clearInitialConsentChallenge } from "../../consent-entry";
 import {
   clearOwnedPurchaseReturn,
@@ -40,7 +42,8 @@ function NavIcon({ kind }: { kind: Icon }) {
   const paths: Record<Icon, string> = {
     learn: "m9 5 10 7-10 7V5Z",
     // One person: a child of the family.
-    child: "M12 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-6.5 9a6.5 6.5 0 0 1 13 0",
+    child:
+      "M12 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-6.5 9a6.5 6.5 0 0 1 13 0",
     level: "M5 19h14M7 15v-3m5 3V8m5 7V4",
     // A person and an arrow: practicing as someone else.
     someone:
@@ -153,20 +156,20 @@ export default function DrawerContents({
   function chooseLearner(id: string) {
     useLearnerStore.getState().select(id);
     const at = location.pathname;
-    // Progress screens stay on the same tab for the new child; anywhere
-    // else, their practice, or a second parent's child's progress.
-    const destination = ["/progress", "/inventory", "/overview"].includes(at)
-      ? at
-      : at.startsWith("/pathways")
-        ? "/pathways"
-        : space?.space === "family" && space.relation !== "holder"
-          ? "/overview"
-          : "/practice";
-    void navigate({
-      to: "/$",
-      params: { _splat: destination.slice(1) },
-      search: { learner: id } as never,
-    });
+    // A child's screens are at their own address, in their family: the
+    // same tab for the new child, else their page.
+    const family = view.account ? childFamily(view.account, id) : null;
+    if (family) {
+      const screen = at.endsWith("/pathways")
+        ? "pathways"
+        : at.endsWith("/inventory")
+          ? "inventory"
+          : "overview";
+      void navigate({
+        to: "/$",
+        params: { _splat: childPath(family, id, screen).slice(1) },
+      });
+    }
     close();
   }
   const learnerChoices: ListboxOption[] = learners.map((learner) => ({
@@ -244,17 +247,24 @@ export default function DrawerContents({
               {/* A family's children, as rows under their own heading. */}
               {destination.icon === "child" &&
                 all[index - 1]?.icon !== "child" && (
-                  <span className={`${styles.kicker} ${styles.groupLabel}`} data-drawer-kids="">
+                  <span
+                    className={`${styles.kicker} ${styles.groupLabel}`}
+                    data-drawer-kids=""
+                  >
                     {all.filter((entry) => entry.icon === "child").length === 1
                       ? "Your child"
                       : "Your kids"}
                   </span>
                 )}
-              {nav(`/${destination.path}`, destination.label, destination.icon, {
-                detail: destination.detail,
-                current: destination.current,
-                search: destination.search,
-              })}
+              {nav(
+                `/${destination.path}`,
+                destination.label,
+                destination.icon,
+                {
+                  detail: destination.detail,
+                  current: destination.current,
+                },
+              )}
             </Fragment>
           ),
         )}

@@ -63,18 +63,22 @@ export function WorkbookList({
       setDownloading(null);
     }
   }
-  if (query.error)
+  // Only a read that failed for good (after quiet retries) or took too
+  // long says so; until then the list waits as its skeleton.
+  if (query.error && !query.data)
     return (
       <div className={styles.emptyPanel} role="alert">
         <p>
           {workbookMessage(
             query.error,
-            "Past workbooks didn't load. Try again.",
+            "Couldn’t load the workbooks. Try again in a moment.",
           )}
         </p>
         <button
           type="button"
           className={styles.retry}
+          aria-busy={query.isFetching || undefined}
+          disabled={query.isFetching}
           onClick={() => void query.refetch()}
         >
           Try again
@@ -90,6 +94,10 @@ export function WorkbookList({
           {query.data.workbooks.map((workbook) => {
             const date = dateParts(workbook.date);
             const choices = choicesLabel(workbook.choices, areaName);
+            // Every result entered: the results are there to read.
+            const entered =
+              workbook.entered !== undefined &&
+              workbook.entered >= workbook.problems;
             return (
               <li key={workbook.id} className={styles.row}>
                 <span className={styles.tile} aria-hidden="true">
@@ -126,9 +134,9 @@ export function WorkbookList({
                     to="/learners/$learnerId/workbooks/$workbookId/results"
                     params={{ learnerId, workbookId: workbook.id }}
                     className={buttonClass("quiet", styles.rowButton)}
-                    aria-label={`Enter results for workbook ${workbook.code}`}
+                    aria-label={`${entered ? "See" : "Enter"} results for workbook ${workbook.code}`}
                   >
-                    Enter results
+                    {entered ? "See results" : "Enter results"}
                   </Link>
                   <Button
                     variant="secondary"
@@ -153,12 +161,14 @@ export function WorkbookList({
           })}
         </ul>
       ) : (
+        // Each row's place, with its shine (ui/loading.css), until the
+        // list lands in the same space.
         <div
-          className={`${styles.list} ${styles.listSkeleton}`}
+          className={`${styles.list} ${styles.listSkeleton} amp-skeleton`}
           aria-hidden="true"
         >
           {[0, 1, 2].map((key) => (
-            <span key={key} className={`${styles.row} amp-skeleton`} />
+            <span key={key} className={styles.row} />
           ))}
         </div>
       )}
