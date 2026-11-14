@@ -650,7 +650,7 @@ async function choose(page: Page, label: string, value: string) {
 }
 /** The one search's field (docs/design/ia.md): skills, lessons, films and
  * math words, grouped once something is typed. */
-const SEARCH = "Search skills, lessons and math words";
+const SEARCH = "Search";
 /** A skill among the grouped search results: a link that opens it as a
  * layer over the map (`?open=skill:<id>`), keeping the page's search. */
 const skillResult = (page: Page, id: string) =>
