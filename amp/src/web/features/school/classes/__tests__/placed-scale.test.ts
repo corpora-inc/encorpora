@@ -5,18 +5,29 @@ import { placedScale } from "../ClassMap";
 
 const student = (id: string) =>
   ({ id, reference: null }) as unknown as MapStudent;
+const measured = (id: string, level: number) => ({
+  student: student(id),
+  estimate: { level, sd: 0.2 },
+  estimated: false,
+});
+const unstarted = (id: string) => ({
+  student: student(id),
+  estimate: null,
+  estimated: true,
+});
 
-test("anyone not measured yet keeps the map on the whole K to Precalc scale (CP-5 #4)", () => {
-  const measuredRow = {
-    student: student("a"),
-    estimate: { level: 4, sd: 0.2 },
-    estimated: false,
-  };
-  expect(placedScale([measuredRow], 4)).not.toEqual(WHOLE_SCALE);
+test("the map fits its measured learners; one not started never flattens them", () => {
+  const fitted = placedScale([measured("a", 4), measured("b", 5)], 4);
+  expect(fitted).not.toEqual(WHOLE_SCALE);
+  // A learner with no answers adds nothing to the scale: it shows a pill.
   expect(
-    placedScale(
-      [measuredRow, { student: student("b"), estimate: null, estimated: true }],
-      4,
-    ),
-  ).toEqual(WHOLE_SCALE);
+    placedScale([measured("a", 4), measured("b", 5), unstarted("c")], 4),
+  ).toEqual(fitted);
+});
+
+test("before anyone has answered, the whole K to Precalc scale", () => {
+  expect(placedScale([unstarted("a"), unstarted("b")], 4)).toEqual(
+    WHOLE_SCALE,
+  );
+  expect(placedScale([], 4)).toEqual(WHOLE_SCALE);
 });

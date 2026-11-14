@@ -1,6 +1,6 @@
 import { useState, type ReactNode } from "react";
 import { gradeName, levelDetails } from "../../../learning/level-check";
-import { LevelAxis, LevelBar } from "./LevelBar";
+import { LevelAxis, LevelBar, LevelNotStarted } from "./LevelBar";
 import { LevelPath, type PathPoint } from "./LevelPath";
 import { fitScale, likelyRange, type Estimate, type RangeScale } from "./scale";
 import styles from "./LevelRange.module.css";
@@ -252,9 +252,14 @@ export function LevelRows({
   axis = true,
   moving = false,
   rowLink,
+  notStarted,
 }: {
   /** Null before the first answer: the row is not measured yet. */
   overall: Estimate | null;
+  /** Others on this scale are measured: an unmeasured row shows this pill
+   * instead of a bar (LevelNotStarted), never a range on their scale.
+   * Without it, the full-scale "?". */
+  notStarted?: string;
   overallLabel?: string;
   areas: readonly LevelRangeArea[];
   scale: RangeScale;
@@ -311,6 +316,7 @@ export function LevelRows({
           numbers={numbers}
           decimals={decimals}
           moving={moving}
+          notStarted={notStarted}
           rowLink={rowLink}
           point={point}
           strong
@@ -365,7 +371,9 @@ function AreaRow({
   moving = false,
   rowLink,
   point,
+  notStarted,
 }: {
+  notStarted?: string;
   area: LevelRangeArea;
   scale: RangeScale;
   grade: readonly [number, number] | null;
@@ -382,21 +390,29 @@ function AreaRow({
       <li
         className={rowClass}
         data-strand={area.id || undefined}
-        aria-label={`${area.label}: ${words.notYet}`}
+        aria-label={`${area.label}: ${notStarted ?? words.notYet}`}
+        data-not-started={notStarted ? "" : undefined}
       >
         <span className={styles.rowName} aria-hidden="true">
           {area.label}
         </span>
         <span className={styles.rowBar} aria-hidden="true">
-          <LevelBar
-            estimate={null}
-            scale={scale}
-            size={strong ? "large" : "regular"}
-            moving={moving}
-          />
+          {notStarted ? (
+            <LevelNotStarted
+              label={notStarted}
+              size={strong ? "large" : "regular"}
+            />
+          ) : (
+            <LevelBar
+              estimate={null}
+              scale={scale}
+              size={strong ? "large" : "regular"}
+              moving={moving}
+            />
+          )}
         </span>
         <span className={styles.rowNumbers} aria-hidden="true">
-          {numbers ? "Not yet" : ""}
+          {numbers && !notStarted ? "Not yet" : ""}
         </span>
       </li>
     );
