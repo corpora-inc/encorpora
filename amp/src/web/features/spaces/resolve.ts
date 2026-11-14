@@ -522,15 +522,20 @@ function resolveOnce(
             actions: [],
             label: null,
           } as SpaceDescriptor;
+        // A family's org is no school: no school above the group, and the
+        // bar names the group alone (no class name as its shorter name).
         return {
           ...space,
           label: "Tutoring group",
+          shortLabel: null,
           place: `group:${group?.familyId ?? orgId}`,
-          destinations: space.destinations.map((entry) =>
-            entry.id === "class"
-              ? { ...entry, label: "Tutoring group" }
-              : entry,
-          ),
+          destinations: space.destinations
+            .filter((entry) => entry.id !== "school")
+            .map((entry) =>
+              entry.id === "class"
+                ? { ...entry, label: "Tutoring group" }
+                : entry,
+            ),
         };
       }
       if (family)

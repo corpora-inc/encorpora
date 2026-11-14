@@ -274,6 +274,8 @@ test("a family's class at its class address is its tutoring group: the whole gro
   expectSpace(space, "classroom");
   assert.equal(space.status, "ready");
   assert.equal(space.label, "Tutoring group");
+  // Never the class's name as a phone's shorter name, never a school above.
+  assert.equal(space.shortLabel, null);
   assert.equal(space.place, `group:${FAMILY}`);
   assert.deepEqual(ids(space), [
     "today",
