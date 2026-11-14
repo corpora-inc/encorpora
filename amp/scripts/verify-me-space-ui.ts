@@ -42,7 +42,7 @@ const WIDTHS =
     : [320, 390, 768, 1280];
 const SCHEMES = ["light", "dark"] as const;
 const PASSWORD = "design pass persona passphrase";
-/** `--only day0,answer,level,family,live,served,levelmode,maps`: parts. */
+/** `--only day0,answer,level,family,live,served,levelmode,maps,familylive`. */
 const onlyArg = process.argv.indexOf("--only");
 const ONLY =
   onlyArg > 0 ? new Set(process.argv[onlyArg + 1]!.split(",")) : null;
@@ -372,8 +372,26 @@ if (part("level")) {
         }
         await context.close();
       }
-  if (ids.size !== 1)
-    fail("practice at a level", `${ids.size} profiles, not one reused`);
+  // Each choice is a fresh simulation (CP-5 r2 #1): a new profile each
+  // time, and only the last one left on the account.
+  if (ids.size !== 3)
+    fail("practice at a level", `${ids.size} profiles for three choices`);
+  const context = await reader(390, "light");
+  await signIn(context, adult.email);
+  const me = await api<{
+    practiceProfiles?: { id: string; level?: unknown }[];
+  }>(context.request, "GET", "/me");
+  const level = (me.practiceProfiles ?? []).filter((entry) => entry.level);
+  if (
+    level.length !== 1 ||
+    !ids.has(level[0]!.id) ||
+    [...ids].at(-1) !== level[0]!.id
+  )
+    fail(
+      "practice at a level",
+      `the account holds ${level.length} level profile(s)`,
+    );
+  await context.close();
 }
 
 // 3. A family's child with no answers: the same unmeasured level.
@@ -633,6 +651,91 @@ if (part("maps")) {
   });
   await context.close();
 }
+
+// 9. The first answer while a family child's page is open (CP-5 r2 #2):
+// the same overall bar takes the estimate in place, nothing above it moves.
+if (part("familylive"))
+  for (const width of [320, 390, 1280]) {
+    const where = `family child live first answer ${width}`;
+    const context = await reader(width, "light", "reduce");
+    const email = `fam-${randomUUID().slice(0, 8)}@personas.amp.test`;
+    const signed = await context.request.post(
+      `${origin}/api/auth/sign-up/email`,
+      {
+        headers: { Origin: origin },
+        data: { email, password: PASSWORD, name: "Kit Vale" },
+      },
+    );
+    if (!signed.ok()) throw new Error(`sign-up ${signed.status()}`);
+    await api(context.request, "POST", "/start", {
+      as: "parent",
+      children: [{ birthYear: new Date().getFullYear() - 9 }],
+    });
+    const me = await api<{ learners: { id: string }[] }>(
+      context.request,
+      "GET",
+      "/me",
+    );
+    const child = me.learners[0]!.id;
+    const page = await context.newPage();
+    await page.goto(`${origin}/family`, { waitUntil: "load" });
+    await page
+      .getByRole("link", { name: /^Child 1/ })
+      .first()
+      .click();
+    await page.locator("[data-levels-not-yet] [data-unmeasured]").waitFor();
+    await settle(page);
+    const bar = await page
+      .locator("[data-levels-not-yet] [data-level-bar]")
+      .elementHandle();
+    const before = await bar!.boundingBox();
+    const mark = await shift(page);
+    const batch = await api<{ problems: { id: string }[] }>(
+      context.request,
+      "POST",
+      `/learners/${child}/batches`,
+      { count: 1 },
+    );
+    await api(context.request, "POST", `/learners/${child}/attempts`, {
+      problemId: batch.problems[0]!.id,
+      requestId: randomUUID(),
+      response: "1",
+    });
+    // Practice serves the next problem, as it does after an answer.
+    await api(context.request, "POST", `/learners/${child}/batches`, {
+      count: 1,
+    });
+    await page.evaluate(() => {
+      window.dispatchEvent(new Event("visibilitychange"));
+      document.dispatchEvent(new Event("visibilitychange"));
+    });
+    await page.locator("[data-levels-found]").waitFor({ timeout: 30000 });
+    await page.waitForTimeout(800);
+    const after = await bar!.boundingBox();
+    if (!(await bar!.evaluate((node) => node.isConnected)))
+      fail(where, "the bar was replaced");
+    if (await bar!.evaluate((node) => node.hasAttribute("data-unmeasured")))
+      fail(where, "the bar still reads not measured");
+    if (
+      !before ||
+      !after ||
+      Math.abs(before.x - after.x) > 0.5 ||
+      Math.abs(before.y - after.y) > 0.5 ||
+      Math.abs(before.width - after.width) > 0.5 ||
+      Math.abs(before.height - after.height) > 0.5
+    )
+      fail(
+        where,
+        `the bar moved: ${JSON.stringify(before)} → ${JSON.stringify(after)}`,
+      );
+    const moved = (await shift(page)) - mark;
+    if (moved > 0.001) fail(where, `layout shift ${moved.toFixed(4)}`);
+    await page.screenshot({
+      path: join(shots, `family-child-live-first-answer-${width}.png`),
+      fullPage: true,
+    });
+    await context.close();
+  }
 
 await browser.close();
 if (failures.length) {

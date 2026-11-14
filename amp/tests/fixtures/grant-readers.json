@@ -111,8 +111,8 @@
   },
   {
     "path": "src/family/repository.ts",
-    "hash": "f1888988809faf010d35289dccc24e9eb2c98b989ced48e550aa927f91325717",
-    "reason": "Child-only practice-here predicate explicitly excludes adults; deletion financial retention explicitly excludes pilot grants."
+    "hash": "5ed34c9052417187dfe06c60e36afc592672130d264e22c03fe67f616792a031",
+    "reason": "Deletion financial retention: whether a learner ever had a paid record (non-pilot grants, commerce orders, or a funded invoice payment received) so deletion keeps it; historical, never a current entitlement read."
   },
   {
     "path": "src/family/repository.ts",
@@ -413,5 +413,20 @@
     "path": "migrations/0106-trend-line-fit-problem-flags.sql",
     "hash": "278a49ae17993e3b11100e47788e4c3bbc2f036c9112ebbe3d52327f6231d2fa",
     "reason": "Dynamic migration DDL preserves and extends the installed problem-flag response-kind CHECK; it reads pg_constraint and alters amp_problem_flags only."
+  },
+  {
+    "path": "src/funding-purchase/repository.ts",
+    "hash": "f3adafd4afc4127f95f94d8c2bd8c9d89e75faae86d894a935eb1e5404144a24",
+    "reason": "Shows a funding invoice's own pending status from the one provisional grant minted for that invoice (joined by its gift); it decides no access, which accessGrantsFor resolves for practice."
+  },
+  {
+    "path": "src/funding-purchase/repository.ts",
+    "hash": "33ae203a7303455c3c007a8046dc2c4e1bff321aafcfcd74a3ab4a1b10da2287",
+    "reason": "A write, not a read: cancelling a funding invoice revokes exactly the provisional grants minted for it (by gift); later entitlement reads see the revocation through accessGrantsFor."
+  },
+  {
+    "path": "scripts/verify-funded-invoice-journey.ts",
+    "hash": "1874878834934838f5e3551d0a93c7d87a596de3215f24dcae63ea04a7872298",
+    "reason": "Browser verification fixture: reads the funded invoice's own gift grant row to assert what provisioning wrote; not product code and decides no access."
   }
 ]

@@ -24,9 +24,18 @@ const count = (n: number, one: string, many = `${one}s`) =>
   `${n} ${n === 1 ? one : many}`;
 
 /** One value over what it counts. */
-export function Fact({ value, label }: { value: string; label: string }) {
+export function Fact({
+  value,
+  label,
+  wide = false,
+}: {
+  value: string;
+  label: string;
+  /** Takes the two cells the week's figures will, so the row holds. */
+  wide?: boolean;
+}) {
   return (
-    <span className={styles.fact}>
+    <span className={`${styles.fact} ${wide ? styles.factWide : ""}`}>
       <span className={styles.factValue}>{value}</span>
       <span className={styles.factLabel}>{label}</span>
     </span>
@@ -55,13 +64,17 @@ export function AccessFact({ child }: { child: FamilyChild }) {
 export function WeekFactsOf({
   child,
   today,
+  steady = false,
 }: {
   child: FamilyChild;
   today: string;
+  /** Before any practice, hold the two cells its figures will take, so the
+   * first answer moves nothing (a child's page; CP-5 r2 #2). */
+  steady?: boolean;
 }) {
   const { week } = child;
   if (!week.lastPracticed)
-    return <Fact value="Not started" label="no practice yet" />;
+    return <Fact value="Not started" label="no practice yet" wide={steady} />;
   return (
     <>
       <Fact

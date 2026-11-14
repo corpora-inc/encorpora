@@ -135,11 +135,16 @@ export async function listProfiles(
 }
 
 /**
- * "Practice at a level" (SPEC R5): the account's one level profile, made the
- * first time, then started again at each new grade and pace. Every strand
- * starts again there, even one already at that level, so each choice is a
- * fresh session at it. Its name is the choice ("4th grade · on level"),
- * never a person's.
+ * "Practice at a level" (SPEC R5): the account's one level profile, a fresh
+ * simulation at every grade and pace. Each choice replaces the previous one
+ * whole: a new learner, so every read keys on it (overall and area levels,
+ * skill evidence and progress, recent answers, skips, the review schedule,
+ * the planner) and nothing of the last choice can reach it. The previous
+ * one is deleted with everything it practiced, as a profile is: it is
+ * nobody's record, and the product promises nothing about anyone is kept.
+ * An answer from a tab still on it changes nothing (its learner is gone).
+ * Its usage counters (the free allowance) carry over, so a new choice never
+ * refills it. Named by the choice ("4th grade · on level"), never a person.
  */
 export async function practiceAtLevel(
   families: FamilyRepository,
@@ -148,64 +153,66 @@ export async function practiceAtLevel(
 ): Promise<{ learnerId: string }> {
   return families.transaction(accountId, async (client) => {
     const levels = presetLevels(choice.grade, choice.pace);
-    const label = presetLabel(choice.grade, choice.pace);
-    const found = await client.query<{ id: string }>(
-      `SELECT id FROM amp_learners WHERE account_id=$1 AND level_practice IS NOT NULL
+    const found = await client.query<{
+      id: string;
+      online: number;
+      workbooks: number;
+    }>(
+      `SELECT id,free_online_used AS online,free_workbooks_used AS workbooks
+       FROM amp_learners WHERE account_id=$1 AND level_practice IS NOT NULL
          AND deleted_at IS NULL FOR UPDATE`,
       [accountId],
     );
-    const existing = found.rows[0]?.id;
-    if (!existing) {
-      if (!(await familyHasLearnerRoom(client, accountId)))
-        throw new FamilyError(403, "too_many_learners");
-      const learnerId = randomUUID();
-      await client.query(
-        `INSERT INTO amp_learners(id,account_id,name,adult,simulation,starting_band,starting_policy,starting_excluded_strands,level_practice)
-         VALUES($1,$2,$3,true,true,$4,1,ARRAY[]::text[],$5)`,
-        [
-          learnerId,
-          accountId,
-          label,
-          nearestStart(levels),
-          JSON.stringify(choice),
-        ],
-      );
-      await client.query(
-        "INSERT INTO amp_practice_settings(learner_id,state) VALUES($1,$2)",
-        [
-          learnerId,
-          JSON.stringify(startsAt(defaultPracticeSettings(), levels)),
-        ],
-      );
-      return { learnerId };
-    }
+    const previous = found.rows[0];
+    if (previous) await retire(families, client, accountId, previous.id);
+    else if (!(await familyHasLearnerRoom(client, accountId)))
+      throw new FamilyError(403, "too_many_learners");
+    const learnerId = randomUUID();
     await client.query(
-      `UPDATE amp_learners SET name=$2,starting_band=$3,level_practice=$4 WHERE id=$1`,
-      [existing, label, nearestStart(levels), JSON.stringify(choice)],
+      `INSERT INTO amp_learners(id,account_id,name,adult,simulation,starting_band,starting_policy,
+         starting_excluded_strands,level_practice,free_online_used,free_workbooks_used)
+       VALUES($1,$2,$3,true,true,$4,1,ARRAY[]::text[],$5,$6,$7)`,
+      [
+        learnerId,
+        accountId,
+        presetLabel(choice.grade, choice.pace),
+        nearestStart(levels),
+        JSON.stringify(choice),
+        previous?.online ?? 0,
+        previous?.workbooks ?? 0,
+      ],
     );
-    const stored = (
-      await client.query<{ state: unknown }>(
-        "SELECT state FROM amp_practice_settings WHERE learner_id=$1 FOR UPDATE",
-        [existing],
-      )
-    ).rows[0];
-    const previous = stored
-      ? practiceSettingsSchema.parse(stored.state)
-      : defaultPracticeSettings();
     await client.query(
-      `INSERT INTO amp_practice_settings(learner_id,state) VALUES($1,$2)
-       ON CONFLICT(learner_id) DO UPDATE SET state=EXCLUDED.state,updated_at=now()`,
-      [existing, JSON.stringify(startsAt(previous, levels))],
+      "INSERT INTO amp_practice_settings(learner_id,state) VALUES($1,$2)",
+      [learnerId, JSON.stringify(startsAt(defaultPracticeSettings(), levels))],
     );
-    return { learnerId: existing };
+    return { learnerId };
   });
 }
 
-/** A fresh simulation at `levels` from the next problem: a new epoch, so
- * the overall estimate, recent answers and skips start empty and an answer
- * to a problem served before (another tab) never counts toward it; and every
- * strand starting there, with no focus left from before. Usage counters
- * (the free allowance) live on the learner and are kept. */
+/** Deletes a profile and everything it practiced, inside the caller's
+ * transaction. A problem report it filed stays, without its note. */
+async function retire(
+  families: FamilyRepository,
+  client: PoolClient,
+  accountId: string,
+  learnerId: string,
+) {
+  await client.query(
+    "UPDATE amp_problem_flags SET learner_id=NULL,note=NULL WHERE learner_id=$1",
+    [learnerId],
+  );
+  await client.query("DELETE FROM amp_learners WHERE id=$1", [learnerId]);
+  await families.audit(
+    client,
+    accountId,
+    "learner.learning-deleted",
+    learnerId,
+    1,
+  );
+}
+
+/** Every strand starting at `levels` from the first problem, no focus. */
 function startsAt(
   previous: PracticeSettings,
   levels: ProfileLevels,

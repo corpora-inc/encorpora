@@ -1,5 +1,9 @@
 import { EntityLink } from "../../../nav/links";
-import { measured } from "../../../../learning/level-check";
+import {
+  gradeName,
+  levelRange as likelyRange,
+  measured,
+} from "../../../../learning/level-check";
 import type { Entity } from "../../../nav/entities";
 import type {
   ProgressRecord,
@@ -45,33 +49,68 @@ export function RecordLevels({
   record,
   empty,
   openAreas = false,
+  holdFirst = false,
+  found,
 }: {
   record: ProgressRecord;
   /** The line under the level before there's any work to read it from. */
   empty: string;
   /** Each row opens its area over the page (the page hosts the layer). */
   openAreas?: boolean;
+  /** The page opened before the first answer (CP-5 r2 #2): when the level
+   * arrives the same overall bar glides from the whole scale to it, in
+   * place, and the line under it says what was found. The whole record
+   * shows on the next visit. */
+  holdFirst?: boolean;
+  /** What was found, as the line under the held bar says it. */
+  found?: (best: string, from: string, to: string) => string;
 }) {
   const { level, reference } = record;
-  if (!level || !measured(level.overall))
+  const isMeasured = !!level && measured(level.overall);
+  if (!isMeasured || holdFirst) {
+    const range = isMeasured ? likelyRange(level!.overall) : null;
     return (
       <div className={styles.levelsNotYet} data-levels-not-yet>
-        <LevelRows overall={null} areas={[]} scale={WHOLE_SCALE} moving />
-        {empty && <p className={styles.quietLine}>{empty}</p>}
+        <LevelRows
+          overall={isMeasured ? level!.overall : null}
+          areas={[]}
+          scale={WHOLE_SCALE}
+          moving
+        />
+        {/* Both lines share one cell, so the change moves nothing. */}
+        <div className={styles.levelsLines}>
+          <p
+            className={styles.quietLine}
+            aria-hidden={isMeasured || undefined}
+            data-hidden={isMeasured || undefined}
+          >
+            {empty}
+          </p>
+          {isMeasured && range && (
+            <p className={styles.quietLine} data-levels-found>
+              {(found ?? foundLine)(
+                gradeName(level!.overall.level),
+                gradeName(range[0]),
+                gradeName(range[1]),
+              )}
+            </p>
+          )}
+        </div>
       </div>
     );
+  }
   const areas = record.strands.flatMap((strand) => {
-    const estimate = level.strands[strand.id];
+    const estimate = level!.strands[strand.id];
     return estimate ? [{ id: strand.id, label: strand.label, estimate }] : [];
   });
   const grade = reference ? ([reference.from, reference.to] as const) : null;
   const scale = fitScale(
-    [level.overall, ...areas.map((area) => area.estimate)],
+    [level!.overall, ...areas.map((area) => area.estimate)],
     { minSpan: 5, include: grade ? [...grade] : [] },
   );
   return (
     <LevelRows
-      overall={level.overall}
+      overall={level!.overall}
       areas={areas}
       scale={scale}
       grade={grade}
@@ -79,6 +118,12 @@ export function RecordLevels({
     />
   );
 }
+
+/** The held bar's line once the level is found. */
+const foundLine = (best: string, from: string, to: string) =>
+  from === to
+    ? `Best guess ${best}.`
+    : `Best guess ${best}, likely ${from} to ${to}.`;
 
 /** Active minutes for each of the last 12 weeks. */
 export function RecordWeeks({ record }: { record: ProgressRecord }) {
