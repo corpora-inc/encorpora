@@ -1,3 +1,5 @@
+import { prepareClassWalletProvision } from "./classwallet.js";
+import { timelyClassWalletPayment } from "./timely-settlement.js";
 import { purchaseConsentSatisfied } from "../server/account-access.js";
 import { recordFundedCampaignEvent } from "../analytics/funded-campaign.js";
 import type { Pool, PoolClient } from "pg";
@@ -53,7 +55,7 @@ export async function fundedTermStart(
   for (let step = 0; step < 24; step++) {
     const covering = (
       await db.query<{ ends_at: Date }>(
-        "SELECT max(ends_at) AS ends_at FROM amp_grants WHERE learner_id=$1 AND status='active' AND starts_at<=$2 AND ends_at>$2",
+        "SELECT max(ends_at) AS ends_at FROM amp_grants WHERE learner_id=$1 AND status='active' AND starts_at<=$2 AND ends_at>$2 AND id NOT LIKE 'funded-pending:%'",
         [learnerId, start],
       )
     ).rows[0]?.ends_at;
@@ -142,7 +144,35 @@ export async function provisionFundingRequest(
           throw new FundingPurchaseError(409, "provisioning_payload_mismatch");
         return { requestId: request.id, orderId: request.orderId };
       }
-      const live = availableOffers(offers, new Date()).find(
+      // A verified in-window settlement remains payable while consent is
+      // pending. Require the persisted operator import and its exact conversion;
+      // caller-supplied event timestamps alone cannot waive an expired quote.
+      let timelySettlement = false;
+      let settlementAt: string | undefined;
+      if (Date.parse(request.expiresAt) <= Date.now()) {
+        const payment = await timelyClassWalletPayment(client, request);
+        if (payment) {
+          settlementAt = payment.settledAt;
+          timelySettlement =
+            payment.order_id === created.orderId &&
+            canonicalCommercePayload(payment.conversion_payload) ===
+              canonicalCommercePayload(data) &&
+            canonicalCommercePayload(
+              prepareClassWalletProvision(
+                payment.payment_row,
+                request,
+                payment.verified_config,
+                activation.occurredAt,
+                undefined,
+                term.startsAt,
+              ),
+            ) === canonicalCommercePayload(data);
+        }
+      }
+      const live = availableOffers(
+        offers,
+        timelySettlement ? new Date(settlementAt!) : new Date(),
+      ).find(
         (o) =>
           o.id === request.offer.id && o.revision === request.offer.revision,
       );
@@ -174,7 +204,7 @@ export async function provisionFundingRequest(
         throw new FundingPurchaseError(404, "learner_not_found");
       if (
         request.status === "cancelled" ||
-        Date.parse(request.expiresAt) <= Date.now()
+        (Date.parse(request.expiresAt) <= Date.now() && !timelySettlement)
       )
         throw new FundingPurchaseError(409, "request_not_provisionable");
       if (Date.parse(created.occurredAt) < Date.parse(request.createdAt))
@@ -206,6 +236,16 @@ export async function provisionFundingRequest(
           ).rowCount)
       )
         throw new FundingPurchaseError(409, "funded_term_start_unsupported");
+      // Replace only this learner's unpaid bridge. Validation and replacement
+      // share the transaction, so a rejected payment cannot revoke access.
+      await client.query(
+        "UPDATE amp_grants SET status='revoked' WHERE learner_id=$1 AND id LIKE 'funded-pending:%'",
+        [request.learnerId],
+      );
+      await client.query(
+        "UPDATE amp_access_gifts SET revoked_at=COALESCE(revoked_at,now()) WHERE learner_id=$1 AND source='funded-pending'",
+        [request.learnerId],
+      );
       // The exclusive account lock is acquired before request/order/learner locks.
       // It serializes this bounded operator import with other grant and privacy writers.
       const overlap = await client.query(

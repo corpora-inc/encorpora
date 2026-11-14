@@ -156,7 +156,7 @@ test("a parent approving another family's child pays first; the plan before any 
   ).toBe("/family/approvals/approval");
 });
 
-test("funded entry requires confirmation and active consent before learner details", () => {
+test("funded entry requires confirmation and permits restricted parent-entry learner details", () => {
   for (const path of steps) {
     const unconfirmed = me({
       account: {
@@ -170,12 +170,12 @@ test("funded entry requires confirmation and active consent before learner detai
       path === "/start/verify-email" ? null : "/start/verify-email",
     );
     // A new account with no learner yet chooses who it's for on the program's
-    // page (themselves, or a child); a child's details still need consent.
+    // page (themselves, or a child); parent-entry setup permits restricted learning.
     expect(startDestination(me(), path, false, true)).toBe(
       path === "/start/consent"
         ? null
         : path === "/start/name" || path === "/start/birth-year"
-          ? "/start/consent"
+          ? null
           : "/purchase/arkansas-efa",
     );
   }
@@ -266,11 +266,9 @@ test("an adult buying for herself goes to the program, never through parent cons
       expect(startDestination(myself, path, false, slug)).toBe(
         `/purchase/${slug}`,
       );
-    // Adding a child from there still asks for consent first.
+    // Adding a child uses the existing parent-entry first run.
     expect(startDestination(myself, "/start/consent", false, slug)).toBeNull();
-    expect(startDestination(myself, "/start/name", false, slug)).toBe(
-      "/start/consent",
-    );
+    expect(startDestination(myself, "/start/name", false, slug)).toBeNull();
   }
   // Confirming the email still comes first.
   expect(
@@ -293,7 +291,7 @@ test("a parent's children still need consent before a funded purchase", () => {
     birthYear: 2016,
     entitlement: { active: false, plan: null, endsAt: null },
   };
-  for (const path of ["/start", "/purchase/arizona-esa", "/start/name"])
+  for (const path of ["/start", "/purchase/arizona-esa"])
     expect(
       startDestination(me({ learners: [learner] }), path, false, "arizona-esa"),
     ).toBe("/start/consent");
@@ -303,7 +301,7 @@ test.each(["pending", "withdrawn"] as const)(
   "funded entry resumes %s parental consent before a child exists",
   (status) => {
     const parent = me({ consent: { status, method: null } });
-    for (const path of ["/start", "/purchase/arizona-esa", "/start/name"])
+    for (const path of ["/start", "/purchase/arizona-esa"])
       expect(startDestination(parent, path, false, "arizona-esa")).toBe(
         "/start/consent",
       );

@@ -190,7 +190,7 @@ export class FundingPurchaseRepository {
     );
   }
   async present(account: string, request: FundingRequest) {
-    return presentRequest(
+    const presented = presentRequest(
       request,
       request.orderId
         ? await readCommerceOrder(this.pool, account, request.orderId)
@@ -198,6 +198,29 @@ export class FundingPurchaseRepository {
       new Date(),
       this.offerAvailable(request),
     );
+    const pending = (
+      await this.pool.query(
+        `SELECT g.ends_at,g.status FROM amp_access_gifts a JOIN amp_grants g ON g.id=a.grant_id
+       WHERE a.funding_invoice_id=$1`,
+        [request.id],
+      )
+    ).rows[0];
+    const pendingActive =
+      pending &&
+      !request.orderId &&
+      pending.status === "active" &&
+      new Date(pending.ends_at).getTime() > Date.now();
+    return {
+      ...presented,
+      accessStatus: pendingActive ? "funded-pending" : presented.accessStatus,
+      fundedPending:
+        pending && !request.orderId
+          ? {
+              status: pendingActive ? "funded-pending" : "ended",
+              endsAt: new Date(pending.ends_at).toISOString(),
+            }
+          : null,
+    };
   }
   async update(
     account: string,
@@ -228,6 +251,16 @@ export class FundingPurchaseRepository {
         "UPDATE amp_funding_requests SET status=$3 WHERE id=$1 AND account_id=$2",
         [id, account, status],
       );
+      if (status === "cancelled") {
+        await client.query(
+          "UPDATE amp_grants SET status='revoked' WHERE id IN (SELECT grant_id FROM amp_access_gifts WHERE funding_invoice_id=$1)",
+          [id],
+        );
+        await client.query(
+          "UPDATE amp_access_gifts SET revoked_at=COALESCE(revoked_at,now()) WHERE funding_invoice_id=$1",
+          [id],
+        );
+      }
       await recordFundedParentStatus(client, id, status, at);
       return { ...request, status };
     });
