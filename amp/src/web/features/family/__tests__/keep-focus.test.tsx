@@ -6,11 +6,29 @@ import {
   screen,
 } from "@testing-library/react";
 import { useState } from "react";
-import { afterEach, expect, test } from "vitest";
+import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { Switch } from "../../../ui/Switch";
 import { OptionList } from "../OptionList";
 
-afterEach(cleanup);
+// Each save is a timer: a fake clock, so the test decides when a save ends
+// and none is left running after it, under any load.
+beforeEach(() => {
+  vi.useFakeTimers();
+});
+afterEach(() => {
+  act(() => {
+    vi.runOnlyPendingTimers();
+  });
+  cleanup();
+  vi.clearAllTimers();
+  vi.useRealTimers();
+});
+
+/** The save in flight ends. */
+const saved = () =>
+  act(() => {
+    vi.advanceTimersByTime(20);
+  });
 
 const OPTIONS = [
   { value: "hidden", label: "Hidden", detail: "Never shown" },
@@ -38,7 +56,7 @@ function Saving({ saves }: { saves: string[] }) {
   );
 }
 
-test("consecutive arrow keys keep the focus through each save, never on the page", async () => {
+test("consecutive arrow keys keep the focus through each save, never on the page", () => {
   const saves: string[] = [];
   render(<Saving saves={saves} />);
   const first = screen.getByRole("radio", { name: /Hidden/ });
@@ -52,7 +70,7 @@ test("consecutive arrow keys keep the focus through each save, never on the page
   expect(saves).toEqual(["choice"]);
   expect(document.activeElement).toBe(second);
   // Saved: the next key moves on from where the focus is.
-  await act(() => new Promise((done) => setTimeout(done, 20)));
+  saved();
   fireEvent.keyDown(document.activeElement!, { key: "ArrowDown" });
   expect(saves).toEqual(["choice", "shown"]);
   expect(document.activeElement).toBe(
@@ -81,7 +99,7 @@ function Toggle({ saves }: { saves: boolean[] }) {
   );
 }
 
-test("a switch keeps the focus while it saves, and takes the next key after", async () => {
+test("a switch keeps the focus while it saves, and takes the next key after", () => {
   const saves: boolean[] = [];
   render(<Toggle saves={saves} />);
   const control = screen.getByRole("switch", { name: "Working together" });
@@ -92,7 +110,7 @@ test("a switch keeps the focus while it saves, and takes the next key after", as
   // A second press while saving sends nothing.
   fireEvent.click(control);
   expect(saves).toEqual([true]);
-  await act(() => new Promise((done) => setTimeout(done, 20)));
+  saved();
   expect(document.activeElement).toBe(control);
   fireEvent.click(control);
   expect(saves).toEqual([true, false]);
