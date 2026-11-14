@@ -3838,7 +3838,7 @@ class Board {
 /** An app figure mounted into a shot's card (film/example.tsx): how to draw it at t, and what its checks found. */
 export type FigureMount = { seek?: (t: number) => void; issues?: string[]; notes?: string[] };
 export class Film {
-  shots: { el: HTMLElement; t0: number; t1: number; geo?: GeoStage; list: Entry[]; extern?: (t: number) => void; mount?: FigureMount; hasFig: boolean; pose: FigurePose | null; fill: number }[] = [];
+  shots: { el: HTMLElement; t0: number; t1: number; geo?: GeoStage; list: Entry[]; extern?: (t: number) => void; mount?: FigureMount; hasFig: boolean; /** Fades in only after the shot before it has gone (see `seek`). */ dip?: boolean; pose: FigurePose | null; fill: number }[] = [];
   board: Board;
   issues: string[] = [];
   /** Worth knowing, not wrong: printed as notes, never a reason to stop. */
@@ -3875,7 +3875,11 @@ export class Film {
         else mount = mountFigure?.(host, shot, list);
         for (const m of geo?.issues ?? []) this.issues.push(`Shot ${i + 1}: ${m}`);
       }
-      this.shots.push({ el, t0, t1: Infinity, geo, list, extern: mount?.seek, mount, hasFig, pose: null, fill: 0 });
+      // Two different app figures in a row (coins on a mat, then other coins) are drawn in the same
+      // place: dissolved over each other they read as one garbled picture, so the second waits for the first to go.
+      const before = i > 0 ? script.shots[i - 1]!.figure : undefined;
+      const dip = hasFig && !!before && (!!mount || !("parts" in before)) && JSON.stringify(before) !== JSON.stringify(shot.figure);
+      this.shots.push({ el, t0, t1: Infinity, geo, list, extern: mount?.seek, mount, hasFig, dip, pose: null, fill: 0 });
     });
     this.shots.forEach((s, i) => { s.t1 = this.shots[i + 1]?.t0 ?? Infinity; });
     this.lockFrames();
@@ -4151,7 +4155,7 @@ export class Film {
   seek(t: number) {
     this.shots.forEach((s, i) => {
       // The film, and each shot, eases in. Nothing is fully present on the first frame.
-      const inn = i === 0 ? ease(t / 0.7) : ease((t - s.t0) / 0.6);
+      const inn = i === 0 ? ease(t / 0.7) : s.dip ? ease((t - s.t0 - 0.28) / 0.45) : ease((t - s.t0) / 0.6);
       // the last shot never fades: the film ends on its summary, held
       const out = s.t1 === Infinity ? 1 : 1 - ease((t - s.t1) / 0.3);
       const o = inn * out;
