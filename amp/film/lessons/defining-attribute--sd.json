@@ -1,9 +1,8 @@
 {
  "id": "defining-attribute--sd",
  "title": "What makes a shape that shape",
- "teaches": [
-  "count-sides-corners"
- ],
+ "teaches": ["count-sides-corners"],
+ "skill": "shape-attributes",
  "cast": {
   "teacher": {},
   "learner": {}

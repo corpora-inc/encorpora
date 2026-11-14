@@ -1,6 +1,8 @@
 {
   "id": "subtract-two-digit-regroup--ss",
   "title": "Not enough ones? Break a ten",
+  "teaches": [],
+  "skill": "subtraction-within-100",
   "cast": {
     "teacher": {},
     "learner": {}

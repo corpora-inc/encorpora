@@ -1,13 +1,8 @@
 {
   "id": "graphed-line-slope--sl",
   "title": "Any two points, same slope",
-  "teaches": [
-    "mcas-slope-sign-description",
-    "slope-triangle-statements",
-    "unequal-step-rate",
-    "slope-constant-similar-triangles",
-    "slope-argument-order"
-  ],
+  "teaches": ["mcas-slope-sign-description", "slope-triangle-statements", "unequal-step-rate", "slope-constant-similar-triangles", "slope-argument-order", "line-slope"],
+  "skill": "slope",
   "cast": {
     "teacher": {},
     "learner": {}

@@ -1,11 +1,8 @@
 {
   "id": "compare-lengths--sm",
   "title": "Pick what to measure",
-  "teaches": [
-    "measurable-attribute-choice",
-    "compare-weights",
-    "compare-capacity"
-  ],
+  "teaches": ["measurable-attribute-choice", "compare-weights", "compare-capacity"],
+  "skill": "compare-attributes",
   "cast": {
     "teacher": {},
     "learner": {}

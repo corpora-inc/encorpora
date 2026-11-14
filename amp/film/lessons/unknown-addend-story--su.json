@@ -1,6 +1,8 @@
 {
   "id": "unknown-addend-story--su",
   "title": "The missing part: whole and one part, find the gap",
+  "teaches": [],
+  "skill": "missing-addend",
   "cast": { "teacher": {}, "learner": {} },
   "shots": [
     {

@@ -1,6 +1,8 @@
 {
   "id": "frequency-table-build--pr",
   "title": "Build a frequency table",
+  "teaches": ["bar-chart-total"],
+  "skill": "picture-bar-graphs",
   "cast": {
     "teacher": {},
     "learner": {}

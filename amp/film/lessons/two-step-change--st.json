@@ -1,6 +1,8 @@
 {
   "id": "two-step-change--st",
   "title": "A story with two changes",
+  "teaches": ["story-sentence-match-1000", "linked-time-equations"],
+  "skill": "two-step-stories",
   "cast": {
     "teacher": {},
     "learner": {}

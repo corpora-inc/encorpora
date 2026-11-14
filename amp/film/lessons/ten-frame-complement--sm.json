@@ -1,6 +1,8 @@
 {
   "id": "ten-frame-complement--sm",
   "title": "How many more to fill the ten?",
+  "teaches": [],
+  "skill": "make-ten",
   "cast": {
     "teacher": {},
     "learner": {}

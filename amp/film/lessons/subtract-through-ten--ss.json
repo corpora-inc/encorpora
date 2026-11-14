@@ -1,9 +1,8 @@
 {
  "id": "subtract-through-ten--ss",
  "title": "Down to ten, then the rest",
- "teaches": [
-  "subtract-within-20"
- ],
+ "teaches": ["subtract-within-20"],
+ "skill": "subtraction-within-20",
  "cast": {
   "teacher": {},
   "learner": {}

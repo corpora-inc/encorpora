@@ -1,7 +1,7 @@
 {
  "id": "pythagorean-converse--sp",
  "title": "Three sides decide the angle",
- "teaches": [],
+ "teaches": ["pythagorean-sort-table", "pythagorean-converse-proof"],
  "cast": {
   "teacher": {}
  },
