@@ -124,6 +124,8 @@ function legacy(r: Random): Built {
   };
 }
 
+/** One more arrives (count on one), or count back one: the counting word
+ * just before. The second keeps its stored id, `one-leaves`. */
 function oneMore(templateId: string, seed: string, leaves: boolean): Built {
   const s = surfaceStream(
     templateId,
@@ -140,7 +142,7 @@ function oneMore(templateId: string, seed: string, leaves: boolean): Built {
   const answer = leaves ? n - 1 : n + 1;
   const many = plural(noun);
   const prompt = leaves
-    ? `There ${isAre(n)} ${count(n, noun)}. One ${noun} leaves. How many ${many} now?`
+    ? `There ${isAre(n)} ${count(n, noun)}. Count back one. How many ${many} is that?`
     : `There ${isAre(n)} ${count(n, noun)}. One more ${noun} comes. How many ${many} now?`;
   const groups = leaves
     ? [
@@ -153,7 +155,7 @@ function oneMore(templateId: string, seed: string, leaves: boolean): Built {
       ];
   const decade = !leaves && (n === 9 || n === 19);
   const hint = leaves
-    ? `Start from ${n}. One ${noun} leaves, so say the counting word just before ${n}.`
+    ? `Say ${n}, then the counting word just before it.`
     : decade
       ? `${n} ends in 9, so the next word starts a new ten. Count on one from ${n}. Do not stick a 1 onto ${n}.`
       : `Start from ${n}. One more ${noun} means the next counting word. Do not start over.`;
@@ -162,14 +164,14 @@ function oneMore(templateId: string, seed: string, leaves: boolean): Built {
   const other = leaves ? n + 1 : n - 1;
   const explanation = leaves
     ? [
-        `There ${isAre(n)} ${count(n, noun)}. One ${noun} leaves.`,
-        `The word just before ${n} is ${WORD[answer]}. We do not keep the old count.`,
-        `Saying ${copied} copies the number you started with. The ${noun} that left is still being counted.`,
+        `Start at ${n}. Counting back one says the counting word just before it.`,
+        `The word just before ${n} is ${WORD[answer]}.`,
+        `Saying ${copied} stays on the number you started with.`,
         twice >= 1
-          ? `Saying ${twice} takes away two, not one.`
-          : `The count cannot fall below 1.`,
-        `Saying ${other} adds ${withArticle(noun)} instead of taking one away.`,
-        `Count the ${many} that are still here. There ${isAre(answer)} ${count(answer, noun)}.`,
+          ? `Saying ${twice} counts back two, not one.`
+          : `Counting back one from ${n} stops at 1.`,
+        `Saying ${other} counts forward instead of back.`,
+        `Counting back one from ${n} gives ${answer}. That is ${count(answer, noun)}.`,
       ]
     : [
         `There ${isAre(n)} ${count(n, noun)}. One more ${noun} comes.`,
@@ -199,7 +201,7 @@ function oneMore(templateId: string, seed: string, leaves: boolean): Built {
         },
       ],
       leaves
-        ? `${count(n, noun)}, and one ${noun} leaving`
+        ? `${count(n, noun)}, counting back one`
         : `${count(n, noun)}, and one more ${noun} arriving`,
       280,
       n + (leaves ? 0 : 1) > 10 ? 340 : 220,
