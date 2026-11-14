@@ -150,8 +150,13 @@ export function segments(text: string): Segment[] {
         continue;
       }
       const bare = piece.replace(/[.,;:?!]+$/, "");
-      if (bare && mathyWord(bare)) run.push(piece);
-      else {
+      if (bare && mathyWord(bare)) {
+        run.push(piece);
+        // A period at a word boundary ends the sentence. Keeping the next
+        // formula in this run would let TeX turn "8. 10 + 8" into "8.10 + 8".
+        // Decimal points inside a word and explicit TeX are unaffected.
+        if (piece.endsWith(".")) flush();
+      } else {
         // Keep trailing whitespace of the run outside the formula.
         const trailing: string[] = [];
         while (run.length && /^\s+$/.test(run[run.length - 1]!))
