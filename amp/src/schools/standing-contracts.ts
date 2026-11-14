@@ -84,11 +84,7 @@ export const standingStudent = z.object({
 });
 export const classStandingResponse = z.object({
   class: z.object({ id: z.uuid(), name: z.string(), org: z.uuid() }),
-  term: z.object({
-    name: z.string(),
-    startsOn: z.string(),
-    endsOn: z.string(),
-  }),
+  term: z.object({ name: z.string(), startsOn: z.string(), endsOn: z.string() }),
   settleAt: count,
   grid: standingGrid,
   grades: z.array(z.number().int()),

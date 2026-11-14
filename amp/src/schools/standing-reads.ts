@@ -121,7 +121,8 @@ export async function readOrgStanding(
     curveOf(
       members.map((entry) => entry.normal),
       members.map((entry) => entry.row.grade),
-      members.filter((entry) => entry.row.answered < PLACEMENT_ATTEMPTS).length,
+      members.filter((entry) => entry.row.answered < PLACEMENT_ATTEMPTS)
+        .length,
       grid,
       seed,
     );

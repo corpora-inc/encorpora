@@ -425,7 +425,7 @@ function exportTables(
       ],
       from: "amp_help_events",
       columns:
-        'to_char("at" AT TIME ZONE \'UTC\',\'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"\') AS at,kind::text AS kind,source::text AS source,skill_id,ref,problem_id,step',
+        "to_char(\"at\" AT TIME ZONE 'UTC','YYYY-MM-DD\"T\"HH24:MI:SS.MS\"Z\"') AS at,kind::text AS kind,source::text AS source,skill_id,ref,problem_id,step",
       key: "to_char(\"at\" AT TIME ZONE 'UTC','YYYY-MM-DD\"T\"HH24:MI:SS.US')||'/'||kind::text||'/'||ref||'/'||COALESCE(problem_id,'')",
     }),
     dayTable(pool, org, {
