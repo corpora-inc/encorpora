@@ -157,6 +157,12 @@ export function SchoolStartScreen() {
           me={account.data}
           embedded
           headingLevel={1}
+          // The email's link comes back to this setup, with its way back.
+          continueTo={
+            from
+              ? `/school/start?from=${encodeURIComponent(from)}`
+              : "/school/start"
+          }
         />
       </PlainPage>
     );
