@@ -655,7 +655,8 @@ try {
     .getByRole("button", { name: "These are mine", exact: true })
     .click();
   await student.waitForURL(`${origin}/practice`);
-  await student.getByRole("button", { name: "Check", exact: true }).waitFor();
+  // A problem is on screen (every kind has Skip; not every kind has Check).
+  await student.getByRole("button", { name: /^Skip this problem/ }).waitFor();
   const ana = (
     await db.query(
       "SELECT p.id FROM amp_people p WHERE p.given_name='Ana' AND p.family_name='Brook'",
@@ -696,12 +697,18 @@ try {
   // A few answers, so the records have something in them: at least one
   // answer is saved, or the journey fails.
   let answered = 0;
-  for (let n = 0; n < 3; n++) {
+  const skip = student.getByRole("button", { name: /^Skip this problem/ });
+  for (let n = 0; n < 10 && answered < 3; n++) {
+    await skip.waitFor();
     const answer = student.getByLabel("Answer", { exact: true });
-    if (!(await answer.count())) break;
-    answered++;
-    await answer.fill("7");
-    await student.getByRole("button", { name: "Check", exact: true }).click();
+    // A problem without a typed answer (pick the statements, drag, plot) is
+    // skipped: this journey types its answers.
+    if (await answer.count()) {
+      answered++;
+      await answer.fill("7");
+      await student.getByRole("button", { name: "Check", exact: true }).click();
+    } else await skip.click();
+    // Then on to the next problem.
     const next = student.getByRole("button", { name: /^(Next|Continue)/ });
     await next
       .first()
@@ -709,7 +716,7 @@ try {
       .catch(() => undefined);
     if (await next.count()) await next.first().click();
     await student
-      .getByRole("button", { name: "Check", exact: true })
+      .locator("button.skip-action:not([disabled])")
       .waitFor({ timeout: 10_000 })
       .catch(() => undefined);
   }
@@ -1222,7 +1229,8 @@ try {
   const paid = await records(created.class_id);
   same(visited, paid, "after payment");
   await student.goto(`${origin}/practice`);
-  await student.getByRole("button", { name: "Check", exact: true }).waitFor();
+  // A problem is on screen (every kind has Skip; not every kind has Check).
+  await student.getByRole("button", { name: /^Skip this problem/ }).waitFor();
   // The paper marks read back after payment: Ana's, on her workbook, by
   // problem.
   const marksAfter = (await (
