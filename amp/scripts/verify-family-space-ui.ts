@@ -60,6 +60,9 @@ async function signedIn(
   await context.route("**/api/v1/events", (route) =>
     route.fulfill({ status: 202, json: {} }),
   );
+  // tsx names the helpers inside page functions (`__name`); the page has
+  // none of its own.
+  await context.addInitScript("window.__name = (f) => f;");
   await context.addInitScript(() => {
     (window as unknown as { __shift: number }).__shift = 0;
     new PerformanceObserver((list) => {

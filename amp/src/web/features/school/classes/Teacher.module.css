@@ -482,13 +482,21 @@ input.finalInput:focus-visible {
   align-items: baseline;
   gap: var(--space-2);
 }
+/* Rows whose names open a skill are 44 px each, touching, never overlapping:
+   the date and the dot sit on the link's middle. */
+.objectives:has(.objectiveLink) {
+  gap: 0;
+}
+.objectives li:has(.objectiveLink) {
+  align-items: center;
+}
 /* A skill opens over the record: the name is the link, with the row's
    quiet hover tint and a 44 px target, never an underline. */
 .objectiveLink {
   display: flex;
   align-items: center;
-  min-height: var(--target-size);
-  margin-block: calc((var(--target-size) - 1.4em) / -2);
+  /* A full 44 px row of its own: neighbours never share a target. */
+  min-height: 44px;
   padding-inline: var(--space-1);
   margin-inline: calc(var(--space-1) * -1);
   border-radius: var(--radius-small);
