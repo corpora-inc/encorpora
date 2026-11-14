@@ -1,0 +1,5029 @@
+{
+ "id": "pay-exact-coins--sp",
+ "title": "Exact payment, fewest coins",
+ "teaches": [],
+ "seed": "line:money-values:pay-exact-coins:1",
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "scene": {
+     "v": 1,
+     "elements": [
+      {
+       "type": "text",
+       "id": "price",
+       "text": "Price: 41¢",
+       "at": [
+        0,
+        47
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "q",
+       "at": [
+        -63.13,
+        15.13
+       ],
+       "coins": [
+        {
+         "coin": "quarter"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "qv",
+       "text": "25¢",
+       "at": [
+        -51,
+        -20
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "d",
+       "at": [
+        -25.955,
+        11.955
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "dv",
+       "text": "10¢",
+       "at": [
+        -17,
+        -20
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "p1",
+       "at": [
+        7.475,
+        12.525
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "p1v",
+       "text": "1¢",
+       "at": [
+        17,
+        -20
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "p6",
+       "at": [
+        44.08,
+        12.525
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "p6v",
+       "text": "1¢",
+       "at": [
+        53.605,
+        -20
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "p2",
+       "at": [
+        -60.525,
+        -27.475
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "p2v",
+       "text": "1¢",
+       "at": [
+        -51,
+        -60
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "p3",
+       "at": [
+        -26.525,
+        -27.475
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "p3v",
+       "text": "1¢",
+       "at": [
+        -17,
+        -60
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "p4",
+       "at": [
+        7.475,
+        -27.475
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "p4v",
+       "text": "1¢",
+       "at": [
+        17,
+        -60
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "p5",
+       "at": [
+        41.475,
+        -27.475
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "p5v",
+       "text": "1¢",
+       "at": [
+        51,
+        -60
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "n",
+       "at": [
+        6.395,
+        13.605
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "nv",
+       "text": "5¢",
+       "at": [
+        17,
+        -20
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "totala",
+       "text": "Value: 25¢",
+       "at": [
+        -24,
+        30
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "needa",
+       "text": "Still needed: 16¢",
+       "at": [
+        0,
+        -76
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "counta",
+       "text": "1 coin",
+       "at": [
+        32.6,
+        30
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "totalb",
+       "text": "Value: 35¢",
+       "at": [
+        -24,
+        30
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "needb",
+       "text": "Still needed: 6¢",
+       "at": [
+        0,
+        -76
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "countb",
+       "text": "2 coins",
+       "at": [
+        30,
+        30
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "totalc",
+       "text": "Value: 41¢",
+       "at": [
+        -24,
+        30
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "needc",
+       "text": "Still needed: 0¢",
+       "at": [
+        0,
+        -76
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "countc",
+       "text": "8 coins",
+       "at": [
+        30,
+        30
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "totale",
+       "text": "Value: 41¢",
+       "at": [
+        -24,
+        30
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "neede",
+       "text": "Still needed: 0¢",
+       "at": [
+        0,
+        -76
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "counte",
+       "text": "4 coins",
+       "at": [
+        30,
+        30
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "tickq",
+       "text": "✓",
+       "at": [
+        -51,
+        -35
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "tickd",
+       "text": "✓",
+       "at": [
+        -17,
+        -35
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "tickn",
+       "text": "✓",
+       "at": [
+        17,
+        -35
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "tickp6",
+       "text": "✓",
+       "at": [
+        53.605,
+        -35
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "padLeft",
+       "text": " ",
+       "at": [
+        -67,
+        0
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "padRight",
+       "text": " ",
+       "at": [
+        67,
+        0
+       ],
+       "font": "sans"
+      }
+     ]
+    }
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "We can pay with quarters, dimes, nickels, and pennies. Paying exactly means matching the price. Fewest means the smallest coin count.",
+     "do": [
+      {
+       "do": "header",
+       "text": "Pay exactly 41¢",
+       "at": "We"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "p1.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "p1v"
+        },
+        {
+         "do": "disappear",
+         "target": "p2.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "p2v"
+        },
+        {
+         "do": "disappear",
+         "target": "p3.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "p3v"
+        },
+        {
+         "do": "disappear",
+         "target": "p4.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "p4v"
+        },
+        {
+         "do": "disappear",
+         "target": "p5.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "p5v"
+        },
+        {
+         "do": "disappear",
+         "target": "totala"
+        },
+        {
+         "do": "disappear",
+         "target": "needa"
+        },
+        {
+         "do": "disappear",
+         "target": "counta"
+        },
+        {
+         "do": "disappear",
+         "target": "totalb"
+        },
+        {
+         "do": "disappear",
+         "target": "needb"
+        },
+        {
+         "do": "disappear",
+         "target": "countb"
+        },
+        {
+         "do": "disappear",
+         "target": "totalc"
+        },
+        {
+         "do": "disappear",
+         "target": "needc"
+        },
+        {
+         "do": "disappear",
+         "target": "countc"
+        },
+        {
+         "do": "disappear",
+         "target": "totale"
+        },
+        {
+         "do": "disappear",
+         "target": "neede"
+        },
+        {
+         "do": "disappear",
+         "target": "counte"
+        },
+        {
+         "do": "disappear",
+         "target": "tickq"
+        },
+        {
+         "do": "disappear",
+         "target": "tickd"
+        },
+        {
+         "do": "disappear",
+         "target": "tickn"
+        },
+        {
+         "do": "disappear",
+         "target": "tickp6"
+        },
+        {
+         "do": "move",
+         "target": "price",
+         "by": [
+          0,
+          -28
+         ]
+        },
+        {
+         "do": "move",
+         "target": "q.coin.0",
+         "by": [
+          0,
+          -28
+         ]
+        },
+        {
+         "do": "move",
+         "target": "qv",
+         "by": [
+          0,
+          -28
+         ]
+        },
+        {
+         "do": "move",
+         "target": "d.coin.0",
+         "by": [
+          0,
+          -28
+         ]
+        },
+        {
+         "do": "move",
+         "target": "dv",
+         "by": [
+          0,
+          -28
+         ]
+        },
+        {
+         "do": "move",
+         "target": "n.coin.0",
+         "by": [
+          0,
+          -28
+         ]
+        },
+        {
+         "do": "move",
+         "target": "nv",
+         "by": [
+          0,
+          -28
+         ]
+        },
+        {
+         "do": "move",
+         "target": "p6.coin.0",
+         "by": [
+          0,
+          -28
+         ]
+        },
+        {
+         "do": "move",
+         "target": "p6v",
+         "by": [
+          0,
+          -28
+         ]
+        }
+       ],
+       "at": "We",
+       "dur": 0.01
+      },
+      {
+       "do": "text",
+       "text": "Exact: match the price",
+       "at": "Paying"
+      },
+      {
+       "do": "text",
+       "text": "Fewest: smallest coin count",
+       "at": "Fewest"
+      },
+      {
+       "do": "scene",
+       "at": "dimes",
+       "dur": 0.25,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "d.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "dv"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "nickels",
+       "dur": 0.25,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "n.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "nv"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "pennies",
+       "dur": 0.25,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "p6.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "p6v"
+        }
+       ]
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "The cent sign means cents. Choose any number of each kind.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "cent",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "price"
+        }
+       ],
+       "dur": 0.4
+      },
+      {
+       "do": "text",
+       "text": "Any number of each kind",
+       "at": "Choose"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Choose a quarter: twenty-five cents, leaving sixteen still needed.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Choose"
+      },
+      {
+       "do": "scene",
+       "at": "Choose",
+       "dur": 0.4,
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "p6.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "nv"
+        },
+        {
+         "do": "disappear",
+         "target": "d.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "p6v"
+        },
+        {
+         "do": "disappear",
+         "target": "n.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "dv"
+        }
+       ]
+      },
+      {
+       "do": "write",
+       "tex": "41-25=16",
+       "note": "\\text{still needed}",
+       "at": "leaving",
+       "fresh": true
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "q.coin.0"
+        }
+       ],
+       "at": "Choose",
+       "dur": 0.5
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "totala"
+        },
+        {
+         "do": "appear",
+         "target": "needa"
+        },
+        {
+         "do": "appear",
+         "target": "counta"
+        }
+       ],
+       "at": "leaving",
+       "dur": 0.5
+      },
+      {
+       "do": "scene",
+       "at": "Choose",
+       "dur": 0.6,
+       "actions": [
+        {
+         "do": "move",
+         "target": "q.coin.0",
+         "by": [
+          51,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "qv",
+         "by": [
+          51,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "d.coin.0",
+         "by": [
+          34,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "dv",
+         "by": [
+          34,
+          0
+         ]
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "Choose",
+       "dur": 0.4,
+       "actions": [
+        {
+         "do": "move",
+         "target": "price",
+         "by": [
+          0,
+          28
+         ]
+        },
+        {
+         "do": "move",
+         "target": "q.coin.0",
+         "by": [
+          0,
+          28
+         ]
+        },
+        {
+         "do": "move",
+         "target": "qv",
+         "by": [
+          0,
+          28
+         ]
+        },
+        {
+         "do": "move",
+         "target": "d.coin.0",
+         "by": [
+          0,
+          28
+         ]
+        },
+        {
+         "do": "move",
+         "target": "dv",
+         "by": [
+          0,
+          28
+         ]
+        },
+        {
+         "do": "move",
+         "target": "n.coin.0",
+         "by": [
+          0,
+          28
+         ]
+        },
+        {
+         "do": "move",
+         "target": "nv",
+         "by": [
+          0,
+          28
+         ]
+        },
+        {
+         "do": "move",
+         "target": "p6.coin.0",
+         "by": [
+          0,
+          28
+         ]
+        },
+        {
+         "do": "move",
+         "target": "p6v",
+         "by": [
+          0,
+          28
+         ]
+        }
+       ]
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "A dime adds ten cents, leaving six still needed.",
+     "do": [
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "d.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "dv"
+        }
+       ],
+       "at": "dime",
+       "dur": 0.5
+      },
+      {
+       "do": "clear",
+       "at": "dime"
+      },
+      {
+       "do": "write",
+       "tex": "16-10=6",
+       "note": "\\text{still needed}",
+       "at": "dime",
+       "fresh": true
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "totala"
+        },
+        {
+         "do": "disappear",
+         "target": "needa"
+        },
+        {
+         "do": "disappear",
+         "target": "counta"
+        },
+        {
+         "do": "appear",
+         "target": "totalb"
+        },
+        {
+         "do": "appear",
+         "target": "needb"
+        },
+        {
+         "do": "appear",
+         "target": "countb"
+        }
+       ],
+       "at": "leaving",
+       "dur": 0.5
+      },
+      {
+       "do": "scene",
+       "at": "dime",
+       "dur": 0.5,
+       "actions": [
+        {
+         "do": "move",
+         "target": "q.coin.0",
+         "by": [
+          -17,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "qv",
+         "by": [
+          -17,
+          0
+         ]
+        }
+       ]
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each penny is worth one cent.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Each"
+      },
+      {
+       "do": "text",
+       "text": "Penny: $1\\text{¢}$",
+       "at": "Each"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "p1.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "p1v"
+        },
+        {
+         "do": "appear",
+         "target": "p2.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "p2v"
+        },
+        {
+         "do": "appear",
+         "target": "p3.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "p3v"
+        },
+        {
+         "do": "appear",
+         "target": "p4.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "p4v"
+        },
+        {
+         "do": "appear",
+         "target": "p5.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "p5v"
+        },
+        {
+         "do": "appear",
+         "target": "p6.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "p6v"
+        },
+        {
+         "do": "disappear",
+         "target": "totalb"
+        },
+        {
+         "do": "disappear",
+         "target": "needb"
+        },
+        {
+         "do": "disappear",
+         "target": "countb"
+        },
+        {
+         "do": "appear",
+         "target": "totalc"
+        },
+        {
+         "do": "appear",
+         "target": "needc"
+        },
+        {
+         "do": "appear",
+         "target": "countc"
+        }
+       ],
+       "at": "penny",
+       "dur": 0.5
+      },
+      {
+       "do": "text",
+       "text": "$35\\text{¢}+6\\text{¢}=41\\text{¢}$",
+       "at": "penny"
+      },
+      {
+       "do": "scene",
+       "at": "penny",
+       "dur": 0.5,
+       "actions": [
+        {
+         "do": "move",
+         "target": "q.coin.0",
+         "by": [
+          -34,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "qv",
+         "by": [
+          -34,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "d.coin.0",
+         "by": [
+          -34,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "dv",
+         "by": [
+          -34,
+          0
+         ]
+        }
+       ]
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "learner",
+     "say": "I need all six pennies. There isn't a shorter way.",
+     "do": [
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "countc"
+        }
+       ],
+       "at": "I",
+       "dur": 0.5
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Your payment is exact. Five pennies equal five cents.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Your"
+      },
+      {
+       "do": "text",
+       "text": "Exact payment: $41\\text{¢}$",
+       "at": "Your"
+      },
+      {
+       "do": "text",
+       "text": "5 pennies: $5\\text{¢}$",
+       "at": "Five"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p1.coin.0"
+        },
+        {
+         "do": "highlight",
+         "target": "p2.coin.0"
+        },
+        {
+         "do": "highlight",
+         "target": "p3.coin.0"
+        },
+        {
+         "do": "highlight",
+         "target": "p4.coin.0"
+        },
+        {
+         "do": "highlight",
+         "target": "p5.coin.0"
+        }
+       ],
+       "at": "Five",
+       "dur": 0.4
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Slide five pennies together. Trade them for one nickel. Keep the other penny.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Slide"
+      },
+      {
+       "do": "text",
+       "text": "Exact payment: $41\\text{¢}$",
+       "at": "Slide"
+      },
+      {
+       "do": "text",
+       "text": "5 pennies = 1 nickel",
+       "at": "nickel"
+      },
+      {
+       "do": "scene",
+       "at": "Slide",
+       "dur": 0.25,
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "p1v"
+        },
+        {
+         "do": "disappear",
+         "target": "p2v"
+        },
+        {
+         "do": "disappear",
+         "target": "p3v"
+        },
+        {
+         "do": "disappear",
+         "target": "p4v"
+        },
+        {
+         "do": "disappear",
+         "target": "p5v"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "five",
+       "dur": 0.9,
+       "actions": [
+        {
+         "do": "move",
+         "target": "p2.coin.0",
+         "by": [
+          60,
+          40
+         ]
+        },
+        {
+         "do": "move",
+         "target": "p3.coin.0",
+         "by": [
+          30,
+          40
+         ]
+        },
+        {
+         "do": "move",
+         "target": "p4.coin.0",
+         "by": [
+          4,
+          40
+         ]
+        },
+        {
+         "do": "move",
+         "target": "p5.coin.0",
+         "by": [
+          -26,
+          40
+         ]
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "p1.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "p2.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "p3.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "p4.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "p5.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "n.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "nv"
+        },
+        {
+         "do": "disappear",
+         "target": "countc"
+        },
+        {
+         "do": "appear",
+         "target": "counte"
+        }
+       ],
+       "at": "nickel",
+       "dur": 0.7
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "One nickel and one penny equal six pennies in value.",
+     "do": [
+      {
+       "do": "text",
+       "text": "$5\\text{¢}+1\\text{¢}=6\\text{¢}$",
+       "at": "One"
+      }
+     ],
+     "pause": 0.2
+    }
+   ]
+  },
+  {
+   "figure": {
+    "scene": {
+     "v": 1,
+     "elements": [
+      {
+       "type": "coins",
+       "id": "q",
+       "at": [
+        -63.13,
+        30.130000000000003
+       ],
+       "coins": [
+        {
+         "coin": "quarter"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "qv",
+       "text": "25¢",
+       "at": [
+        -51,
+        -5
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "d",
+       "at": [
+        -25.955,
+        26.955
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "dv",
+       "text": "10¢",
+       "at": [
+        -17,
+        -5
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "n",
+       "at": [
+        6.395,
+        28.605
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "nv",
+       "text": "5¢",
+       "at": [
+        17,
+        -5
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "p",
+       "at": [
+        44.08,
+        27.525
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "pv",
+       "text": "1¢",
+       "at": [
+        53.605,
+        -5
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "paid",
+       "text": "41¢ · 4 coins",
+       "at": [
+        0,
+        47
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "circle",
+       "id": "slot0",
+       "center": [
+        -34,
+        -45
+       ],
+       "r": 13,
+       "stroke": "muted",
+       "fill": "none"
+      },
+      {
+       "type": "circle",
+       "id": "slot1",
+       "center": [
+        0,
+        -45
+       ],
+       "r": 13,
+       "stroke": "muted",
+       "fill": "none"
+      },
+      {
+       "type": "circle",
+       "id": "slot2",
+       "center": [
+        34,
+        -45
+       ],
+       "r": 13,
+       "stroke": "muted",
+       "fill": "none"
+      },
+      {
+       "type": "text",
+       "id": "need",
+       "text": "Still needed: 16¢",
+       "at": [
+        0,
+        -23
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "slots",
+       "text": "Try 3 coins",
+       "at": [
+        0,
+        -23
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "d0",
+       "at": [
+        -42.955,
+        -27.045
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "d1",
+       "at": [
+        -8.955,
+        -27.045
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "d2",
+       "at": [
+        25.045,
+        -27.045
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "q0",
+       "at": [
+        -46.13,
+        -23.869999999999997
+       ],
+       "coins": [
+        {
+         "coin": "quarter"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "q1",
+       "at": [
+        -12.13,
+        -23.869999999999997
+       ],
+       "coins": [
+        {
+         "coin": "quarter"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "n2",
+       "at": [
+        23.395,
+        -25.394999999999996
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "sum30",
+       "text": "10¢ + 10¢ + 10¢ = 30¢",
+       "at": [
+        0,
+        -76
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "sum25",
+       "text": "25¢",
+       "at": [
+        0,
+        -76
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "sum50",
+       "text": "25¢ + 25¢ = 50¢",
+       "at": [
+        0,
+        -76
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "sum45",
+       "text": "25¢ + 10¢ + 10¢ = 45¢",
+       "at": [
+        0,
+        -76
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "sum40",
+       "text": "25¢ + 10¢ + 5¢ = 40¢",
+       "at": [
+        0,
+        -76
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "done",
+       "text": "3 coins cannot make 41¢",
+       "at": [
+        0,
+        -76
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "padLeft",
+       "text": " ",
+       "at": [
+        -67,
+        0
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "padRight",
+       "text": " ",
+       "at": [
+        67,
+        0
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "dd1",
+       "at": [
+        -8.955,
+        -27.045
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "dd2",
+       "at": [
+        25.045,
+        -27.045
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "dn1",
+       "at": [
+        -8.955,
+        -27.045
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Four coins pay exactly. Can three coins pay forty-one cents?",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Four"
+      },
+      {
+       "do": "header",
+       "text": "Can 3 coins pay 41¢?",
+       "at": "Four"
+      },
+      {
+       "do": "text",
+       "text": "Keep the exact payment above",
+       "at": "Four"
+      },
+      {
+       "do": "scene",
+       "at": "Four",
+       "dur": 0.01,
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "d0.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "d1.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "d2.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "q0.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "q1.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "n2.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "need"
+        },
+        {
+         "do": "disappear",
+         "target": "sum30"
+        },
+        {
+         "do": "disappear",
+         "target": "sum25"
+        },
+        {
+         "do": "disappear",
+         "target": "sum50"
+        },
+        {
+         "do": "disappear",
+         "target": "sum45"
+        },
+        {
+         "do": "disappear",
+         "target": "sum40"
+        },
+        {
+         "do": "disappear",
+         "target": "done"
+        },
+        {
+         "do": "disappear",
+         "target": "slot0"
+        },
+        {
+         "do": "disappear",
+         "target": "slot1"
+        },
+        {
+         "do": "disappear",
+         "target": "slot2"
+        },
+        {
+         "do": "disappear",
+         "target": "slots"
+        },
+        {
+         "do": "disappear",
+         "target": "dd1.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "dd2.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "dn1.coin.0"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "three",
+       "dur": 0.35,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "slot0"
+        },
+        {
+         "do": "appear",
+         "target": "slot1"
+        },
+        {
+         "do": "appear",
+         "target": "slot2"
+        },
+        {
+         "do": "appear",
+         "target": "slots"
+        }
+       ]
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Without a quarter, dimes have the greatest value. Three reach only thirty cents.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Without"
+      },
+      {
+       "do": "text",
+       "text": "No quarter: at most 30¢",
+       "at": "Without"
+      },
+      {
+       "do": "scene",
+       "at": "three",
+       "dur": 0.35,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "d0.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "d1.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "d2.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "sum30"
+        },
+        {
+         "do": "move",
+         "target": "d0.coin.0",
+         "by": [
+          0,
+          -6
+         ]
+        },
+        {
+         "do": "move",
+         "target": "d1.coin.0",
+         "by": [
+          0,
+          -6
+         ]
+        },
+        {
+         "do": "move",
+         "target": "d2.coin.0",
+         "by": [
+          0,
+          -6
+         ]
+        }
+       ]
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "A quarter is the greatest coin that fits, leaving the least still to pay: sixteen cents.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "quarter"
+      },
+      {
+       "do": "text",
+       "text": "$41-25=16$ still needed",
+       "at": "quarter"
+      },
+      {
+       "do": "scene",
+       "at": "quarter",
+       "dur": 0.35,
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "d0.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "d1.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "d2.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "sum30"
+        },
+        {
+         "do": "disappear",
+         "target": "slots"
+        },
+        {
+         "do": "appear",
+         "target": "q0.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "need"
+        },
+        {
+         "do": "appear",
+         "target": "sum25"
+        },
+        {
+         "do": "move",
+         "target": "q0.coin.0",
+         "by": [
+          0,
+          -6
+         ]
+        }
+       ]
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Another quarter is already too much.",
+     "do": [
+      {
+       "do": "text",
+       "text": "Another 25¢ is too much",
+       "at": "Another"
+      },
+      {
+       "do": "scene",
+       "at": "Another",
+       "dur": 0.35,
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "sum25"
+        },
+        {
+         "do": "appear",
+         "target": "q1.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "sum50"
+        },
+        {
+         "do": "move",
+         "target": "q1.coin.0",
+         "by": [
+          0,
+          -6
+         ]
+        }
+       ]
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two dimes make twenty, too much.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Two"
+      },
+      {
+       "do": "text",
+       "text": "Need 16¢ from 2 coins",
+       "at": "Two"
+      },
+      {
+       "do": "text",
+       "text": "$10+10=20$: too much",
+       "at": "Two"
+      },
+      {
+       "do": "scene",
+       "at": "Two",
+       "dur": 0.35,
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "q1.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "sum50"
+        },
+        {
+         "do": "appear",
+         "target": "dd1.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "dd2.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "sum45"
+        },
+        {
+         "do": "move",
+         "target": "dd1.coin.0",
+         "by": [
+          0,
+          -6
+         ]
+        },
+        {
+         "do": "move",
+         "target": "dd2.coin.0",
+         "by": [
+          0,
+          -6
+         ]
+        }
+       ]
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "A dime and nickel make fifteen: one penny short.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "A"
+      },
+      {
+       "do": "text",
+       "text": "Need 16¢ from 2 coins",
+       "at": "A"
+      },
+      {
+       "do": "text",
+       "text": "$10+5=15$: 1¢ short",
+       "at": "A"
+      },
+      {
+       "do": "scene",
+       "at": "A",
+       "dur": 0.35,
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "dd2.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "sum45"
+        },
+        {
+         "do": "appear",
+         "target": "n2.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "sum40"
+        },
+        {
+         "do": "disappear",
+         "target": "dd1.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "dn1.coin.0"
+        },
+        {
+         "do": "move",
+         "target": "n2.coin.0",
+         "by": [
+          0,
+          -6
+         ]
+        },
+        {
+         "do": "move",
+         "target": "dn1.coin.0",
+         "by": [
+          0,
+          -6
+         ]
+        }
+       ]
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Any smaller pair is farther away. Three or fewer cannot work, so four is the fewest.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Any"
+      },
+      {
+       "do": "text",
+       "text": "Smaller pairs fall short too",
+       "at": "Any"
+      },
+      {
+       "do": "scene",
+       "at": "Three",
+       "dur": 0.35,
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "q0.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "dn1.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "n2.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "sum40"
+        },
+        {
+         "do": "appear",
+         "target": "done"
+        },
+        {
+         "do": "disappear",
+         "target": "need"
+        }
+       ]
+      },
+      {
+       "do": "text",
+       "text": "41¢: 4 coins is the fewest",
+       "at": "four"
+      }
+     ],
+     "pause": 0.2
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1.8,
+     -2.3,
+     3.3,
+     2.3
+    ],
+    "points": {
+     "A": [
+      -0.8,
+      1.7
+     ],
+     "B": [
+      0.8,
+      1.7
+     ],
+     "C": [
+      0.8,
+      -1.7
+     ],
+     "D": [
+      0,
+      -1.1
+     ],
+     "E": [
+      -0.8,
+      -1.7
+     ],
+     "H": [
+      0,
+      1.25
+     ],
+     "P": [
+      2,
+      0
+     ]
+    },
+    "parts": [
+     {
+      "id": "bookmark",
+      "poly": [
+       "A",
+       "B",
+       "C",
+       "D",
+       "E"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "hole",
+      "circle": "H",
+      "r": 0.09,
+      "fill": "paper",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "price",
+      "label": "25\\text{¢}",
+      "at": "P",
+      "dir": "c",
+      "size": "xl"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A bookmark costs twenty-five cents. Which set of coins is worth exactly twenty-five cents?",
+     "do": [
+      {
+       "do": "clear",
+       "at": "A"
+      },
+      {
+       "do": "header",
+       "text": "Bookmark: 25¢",
+       "at": "A",
+       "keep": true
+      },
+      {
+       "do": "problem",
+       "text": "A bookmark costs 25¢. Which set of coins is worth exactly 25¢?",
+       "at": "A"
+      },
+      {
+       "do": "show",
+       "target": "price",
+       "at": "twenty-five"
+      }
+     ],
+     "pause": 0.2
+    }
+   ]
+  },
+  {
+   "figure": {
+    "scene": {
+     "v": 1,
+     "elements": [
+      {
+       "type": "text",
+       "id": "tag",
+       "text": "Bookmark: 25¢",
+       "at": [
+        0,
+        47
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "setA",
+       "text": "Set A",
+       "at": [
+        0,
+        30
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "A0",
+       "at": [
+        -44.605,
+        11.955
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "A0v",
+       "text": "10¢",
+       "at": [
+        -35.65,
+        -20
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "A1",
+       "at": [
+        -10.605,
+        13.605
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "A1v",
+       "text": "5¢",
+       "at": [
+        0,
+        -20
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "A2",
+       "at": [
+        23.395,
+        13.605
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "A2v",
+       "text": "5¢",
+       "at": [
+        34,
+        -20
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "A3",
+       "at": [
+        -27.605,
+        -26.395
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "A3v",
+       "text": "5¢",
+       "at": [
+        -17,
+        -60
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "A4",
+       "at": [
+        6.395,
+        -26.395
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "A4v",
+       "text": "5¢",
+       "at": [
+        17,
+        -60
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "sumA",
+       "text": "Value: 30¢",
+       "at": [
+        0,
+        -76
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "setB",
+       "text": "Set B",
+       "at": [
+        0,
+        30
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "B0",
+       "at": [
+        -44.605,
+        11.955
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "B0v",
+       "text": "10¢",
+       "at": [
+        -35.65,
+        -20
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "B1",
+       "at": [
+        -10.605,
+        13.605
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "B1v",
+       "text": "5¢",
+       "at": [
+        0,
+        -20
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "B2",
+       "at": [
+        23.395,
+        13.605
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "B2v",
+       "text": "5¢",
+       "at": [
+        34,
+        -20
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "sumB",
+       "text": "Value: 20¢",
+       "at": [
+        0,
+        -76
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "setC",
+       "text": "Set C",
+       "at": [
+        0,
+        30
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "C0",
+       "at": [
+        -44.605000000000004,
+        13.605
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "C0v",
+       "text": "5¢",
+       "at": [
+        -34,
+        -20
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "C1",
+       "at": [
+        -10.605,
+        13.605
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "C1v",
+       "text": "5¢",
+       "at": [
+        0,
+        -20
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "C2",
+       "at": [
+        23.395,
+        13.605
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "C2v",
+       "text": "5¢",
+       "at": [
+        34,
+        -20
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "C3",
+       "at": [
+        -27.605,
+        -26.395
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "C3v",
+       "text": "5¢",
+       "at": [
+        -17,
+        -60
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "C4",
+       "at": [
+        6.395,
+        -26.395
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "C4v",
+       "text": "5¢",
+       "at": [
+        17,
+        -60
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "sumC",
+       "text": "Value: 25¢",
+       "at": [
+        0,
+        -76
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "quarter",
+       "at": [
+        -12.13,
+        15.13
+       ],
+       "coins": [
+        {
+         "coin": "quarter"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "qvalue",
+       "text": "25¢",
+       "at": [
+        0,
+        -20
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "one",
+       "text": "1 coin",
+       "at": [
+        0,
+        -40
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "padLeft",
+       "text": " ",
+       "at": [
+        -67,
+        0
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "padRight",
+       "text": " ",
+       "at": [
+        67,
+        0
+       ],
+       "font": "sans"
+      }
+     ]
+    }
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Set *A* is thirty cents, too much.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Set"
+      },
+      {
+       "do": "header",
+       "text": "Which set is worth exactly 25¢?",
+       "at": "Set"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "setB"
+        },
+        {
+         "do": "disappear",
+         "target": "sumB"
+        },
+        {
+         "do": "disappear",
+         "target": "B0.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "B0v"
+        },
+        {
+         "do": "disappear",
+         "target": "B1.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "B1v"
+        },
+        {
+         "do": "disappear",
+         "target": "B2.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "B2v"
+        },
+        {
+         "do": "disappear",
+         "target": "setC"
+        },
+        {
+         "do": "disappear",
+         "target": "sumC"
+        },
+        {
+         "do": "disappear",
+         "target": "C0.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "C0v"
+        },
+        {
+         "do": "disappear",
+         "target": "C1.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "C1v"
+        },
+        {
+         "do": "disappear",
+         "target": "C2.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "C2v"
+        },
+        {
+         "do": "disappear",
+         "target": "C3.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "C3v"
+        },
+        {
+         "do": "disappear",
+         "target": "C4.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "C4v"
+        },
+        {
+         "do": "disappear",
+         "target": "quarter.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "qvalue"
+        },
+        {
+         "do": "disappear",
+         "target": "one"
+        }
+       ],
+       "at": "Set",
+       "dur": 0.01
+      },
+      {
+       "do": "text",
+       "text": "Set A: $30\\text{¢}$",
+       "at": "Set"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "sumA"
+        }
+       ],
+       "at": "thirty",
+       "dur": 0.5
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Set *B* is twenty cents, too little.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "setA"
+        },
+        {
+         "do": "disappear",
+         "target": "sumA"
+        },
+        {
+         "do": "disappear",
+         "target": "A0.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "A0v"
+        },
+        {
+         "do": "disappear",
+         "target": "A1.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "A1v"
+        },
+        {
+         "do": "disappear",
+         "target": "A2.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "A2v"
+        },
+        {
+         "do": "disappear",
+         "target": "A3.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "A3v"
+        },
+        {
+         "do": "disappear",
+         "target": "A4.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "A4v"
+        },
+        {
+         "do": "appear",
+         "target": "setB"
+        },
+        {
+         "do": "appear",
+         "target": "sumB"
+        },
+        {
+         "do": "appear",
+         "target": "B0.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "B0v"
+        },
+        {
+         "do": "appear",
+         "target": "B1.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "B1v"
+        },
+        {
+         "do": "appear",
+         "target": "B2.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "B2v"
+        }
+       ],
+       "at": "Set",
+       "dur": 0.5
+      },
+      {
+       "do": "text",
+       "text": "Set B: $20\\text{¢}$",
+       "at": "Set"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Set *C* has five nickels. They make twenty-five cents altogether.",
+     "do": [
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "setB"
+        },
+        {
+         "do": "disappear",
+         "target": "sumB"
+        },
+        {
+         "do": "disappear",
+         "target": "B0.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "B0v"
+        },
+        {
+         "do": "disappear",
+         "target": "B1.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "B1v"
+        },
+        {
+         "do": "disappear",
+         "target": "B2.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "B2v"
+        },
+        {
+         "do": "appear",
+         "target": "setC"
+        },
+        {
+         "do": "appear",
+         "target": "sumC"
+        },
+        {
+         "do": "appear",
+         "target": "C0.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "C0v"
+        },
+        {
+         "do": "appear",
+         "target": "C1.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "C1v"
+        },
+        {
+         "do": "appear",
+         "target": "C2.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "C2v"
+        },
+        {
+         "do": "appear",
+         "target": "C3.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "C3v"
+        },
+        {
+         "do": "appear",
+         "target": "C4.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "C4v"
+        }
+       ],
+       "at": "Set",
+       "dur": 0.5
+      },
+      {
+       "do": "text",
+       "text": "Set C: $25\\text{¢}$",
+       "at": "twenty-five"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Set *C* pays exactly. Trade five nickels for one quarter: fewer coins.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Set"
+      },
+      {
+       "do": "header",
+       "text": "Exact payment: 25¢",
+       "at": "Set"
+      },
+      {
+       "do": "text",
+       "text": "Set C: 5 nickels",
+       "at": "Set"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "move",
+         "target": "C0.coin.0",
+         "by": [
+          34,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "C1.coin.0",
+         "by": [
+          0,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "C2.coin.0",
+         "by": [
+          -34,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "C3.coin.0",
+         "by": [
+          17,
+          40
+         ]
+        },
+        {
+         "do": "move",
+         "target": "C4.coin.0",
+         "by": [
+          -17,
+          40
+         ]
+        },
+        {
+         "do": "disappear",
+         "target": "C0v"
+        },
+        {
+         "do": "disappear",
+         "target": "C1v"
+        },
+        {
+         "do": "disappear",
+         "target": "C2v"
+        },
+        {
+         "do": "disappear",
+         "target": "C3v"
+        },
+        {
+         "do": "disappear",
+         "target": "C4v"
+        }
+       ],
+       "at": "Trade",
+       "dur": 1
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "C0.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "C0v"
+        },
+        {
+         "do": "disappear",
+         "target": "C1.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "C1v"
+        },
+        {
+         "do": "disappear",
+         "target": "C2.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "C2v"
+        },
+        {
+         "do": "disappear",
+         "target": "C3.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "C3v"
+        },
+        {
+         "do": "disappear",
+         "target": "C4.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "C4v"
+        },
+        {
+         "do": "disappear",
+         "target": "setC"
+        },
+        {
+         "do": "appear",
+         "target": "quarter.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "qvalue"
+        },
+        {
+         "do": "appear",
+         "target": "one"
+        }
+       ],
+       "at": "quarter",
+       "dur": 0.6
+      },
+      {
+       "do": "text",
+       "text": "Fewest: 1 quarter",
+       "at": "fewer"
+      }
+     ],
+     "pause": 0.2
+    }
+   ]
+  },
+  {
+   "figure": {
+    "scene": {
+     "v": 1,
+     "elements": [
+      {
+       "type": "text",
+       "id": "pay30price",
+       "text": "Price: 30¢",
+       "at": [
+        0,
+        44
+       ],
+       "font": "sans",
+       "size": "lg"
+      },
+      {
+       "type": "text",
+       "id": "pay30need0",
+       "text": "Still needed: 30¢",
+       "at": [
+        0,
+        -39
+       ],
+       "font": "sans",
+       "size": "md"
+      },
+      {
+       "type": "coins",
+       "id": "pay30coin0",
+       "at": [
+        -29.13,
+        21.13
+       ],
+       "coins": [
+        {
+         "coin": "quarter"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "pay30coin0value",
+       "text": "25¢",
+       "at": [
+        -17.0,
+        -20
+       ],
+       "font": "sans",
+       "size": "md"
+      },
+      {
+       "type": "text",
+       "id": "pay30need1",
+       "text": "Still needed: 5¢",
+       "at": [
+        0,
+        -39
+       ],
+       "font": "sans",
+       "size": "md"
+      },
+      {
+       "type": "coins",
+       "id": "pay30coin1",
+       "at": [
+        6.395,
+        19.605
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "pay30coin1value",
+       "text": "5¢",
+       "at": [
+        17.0,
+        -20
+       ],
+       "font": "sans",
+       "size": "md"
+      },
+      {
+       "type": "text",
+       "id": "pay30need2",
+       "text": "Still needed: 0¢",
+       "at": [
+        0,
+        -39
+       ],
+       "font": "sans",
+       "size": "md"
+      },
+      {
+       "type": "text",
+       "id": "pay17price",
+       "text": "Price: 17¢",
+       "at": [
+        0,
+        44
+       ],
+       "font": "sans",
+       "size": "lg"
+      },
+      {
+       "type": "text",
+       "id": "pay17need0",
+       "text": "Still needed: 17¢",
+       "at": [
+        0,
+        -39
+       ],
+       "font": "sans",
+       "size": "md"
+      },
+      {
+       "type": "coins",
+       "id": "pay17coin0",
+       "at": [
+        -59.955,
+        17.955
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "pay17coin0value",
+       "text": "10¢",
+       "at": [
+        -51.0,
+        -20
+       ],
+       "font": "sans",
+       "size": "md"
+      },
+      {
+       "type": "text",
+       "id": "pay17need1",
+       "text": "Still needed: 7¢",
+       "at": [
+        0,
+        -39
+       ],
+       "font": "sans",
+       "size": "md"
+      },
+      {
+       "type": "coins",
+       "id": "pay17coin1",
+       "at": [
+        -27.605,
+        19.605
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "pay17coin1value",
+       "text": "5¢",
+       "at": [
+        -17.0,
+        -20
+       ],
+       "font": "sans",
+       "size": "md"
+      },
+      {
+       "type": "text",
+       "id": "pay17need2",
+       "text": "Still needed: 2¢",
+       "at": [
+        0,
+        -39
+       ],
+       "font": "sans",
+       "size": "md"
+      },
+      {
+       "type": "coins",
+       "id": "pay17coin2",
+       "at": [
+        7.475,
+        18.525
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "pay17coin2value",
+       "text": "1¢",
+       "at": [
+        17.0,
+        -20
+       ],
+       "font": "sans",
+       "size": "md"
+      },
+      {
+       "type": "text",
+       "id": "pay17need3",
+       "text": "Still needed: 1¢",
+       "at": [
+        0,
+        -39
+       ],
+       "font": "sans",
+       "size": "md"
+      },
+      {
+       "type": "coins",
+       "id": "pay17coin3",
+       "at": [
+        41.475,
+        18.525
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "pay17coin3value",
+       "text": "1¢",
+       "at": [
+        51.0,
+        -20
+       ],
+       "font": "sans",
+       "size": "md"
+      },
+      {
+       "type": "text",
+       "id": "pay17need4",
+       "text": "Still needed: 0¢",
+       "at": [
+        0,
+        -39
+       ],
+       "font": "sans",
+       "size": "md"
+      },
+      {
+       "type": "text",
+       "id": "pay65price",
+       "text": "Price: 65¢",
+       "at": [
+        0,
+        44
+       ],
+       "font": "sans",
+       "size": "lg"
+      },
+      {
+       "type": "text",
+       "id": "pay65need0",
+       "text": "Still needed: 65¢",
+       "at": [
+        0,
+        -39
+       ],
+       "font": "sans",
+       "size": "md"
+      },
+      {
+       "type": "coins",
+       "id": "pay65coin0",
+       "at": [
+        -63.13,
+        21.13
+       ],
+       "coins": [
+        {
+         "coin": "quarter"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "pay65coin0value",
+       "text": "25¢",
+       "at": [
+        -51.0,
+        -20
+       ],
+       "font": "sans",
+       "size": "md"
+      },
+      {
+       "type": "text",
+       "id": "pay65need1",
+       "text": "Still needed: 40¢",
+       "at": [
+        0,
+        -39
+       ],
+       "font": "sans",
+       "size": "md"
+      },
+      {
+       "type": "coins",
+       "id": "pay65coin1",
+       "at": [
+        -29.13,
+        21.13
+       ],
+       "coins": [
+        {
+         "coin": "quarter"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "pay65coin1value",
+       "text": "25¢",
+       "at": [
+        -17.0,
+        -20
+       ],
+       "font": "sans",
+       "size": "md"
+      },
+      {
+       "type": "text",
+       "id": "pay65need2",
+       "text": "Still needed: 15¢",
+       "at": [
+        0,
+        -39
+       ],
+       "font": "sans",
+       "size": "md"
+      },
+      {
+       "type": "coins",
+       "id": "pay65coin2",
+       "at": [
+        8.045,
+        17.955
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "pay65coin2value",
+       "text": "10¢",
+       "at": [
+        17.0,
+        -20
+       ],
+       "font": "sans",
+       "size": "md"
+      },
+      {
+       "type": "text",
+       "id": "pay65need3",
+       "text": "Still needed: 5¢",
+       "at": [
+        0,
+        -39
+       ],
+       "font": "sans",
+       "size": "md"
+      },
+      {
+       "type": "coins",
+       "id": "pay65coin3",
+       "at": [
+        40.395,
+        19.605
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "pay65coin3value",
+       "text": "5¢",
+       "at": [
+        51.0,
+        -20
+       ],
+       "font": "sans",
+       "size": "md"
+      },
+      {
+       "type": "text",
+       "id": "pay65need4",
+       "text": "Still needed: 0¢",
+       "at": [
+        0,
+        -39
+       ],
+       "font": "sans",
+       "size": "md"
+      }
+     ]
+    }
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now try it fast. Thirty cents.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Thirty"
+      },
+      {
+       "do": "header",
+       "text": "Pay exactly 30¢",
+       "at": "Thirty"
+      },
+      {
+       "do": "scene",
+       "at": "Thirty",
+       "dur": 0.2,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "pay30price"
+        },
+        {
+         "do": "appear",
+         "target": "pay30need0"
+        }
+       ]
+      }
+     ],
+     "pause": 0.35
+    },
+    {
+     "speaker": "teacher",
+     "say": "Quarter, nickel.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "quarter",
+       "nth": 1,
+       "dur": 0.28,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "pay30coin0.coin.0"
+        },
+        {
+         "do": "move",
+         "target": "pay30coin0.coin.0",
+         "by": [
+          0,
+          -6
+         ]
+        },
+        {
+         "do": "appear",
+         "target": "pay30coin0value"
+        },
+        {
+         "do": "disappear",
+         "target": "pay30need0"
+        },
+        {
+         "do": "appear",
+         "target": "pay30need1"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "nickel",
+       "nth": 1,
+       "dur": 0.28,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "pay30coin1.coin.0"
+        },
+        {
+         "do": "move",
+         "target": "pay30coin1.coin.0",
+         "by": [
+          0,
+          -6
+         ]
+        },
+        {
+         "do": "appear",
+         "target": "pay30coin1value"
+        },
+        {
+         "do": "disappear",
+         "target": "pay30need1"
+        },
+        {
+         "do": "appear",
+         "target": "pay30need2"
+        }
+       ]
+      }
+     ],
+     "pause": 0.15
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two coins. Three dimes also pay, but that is three.",
+     "do": [
+      {
+       "do": "answer",
+       "tex": "2\\text{ coins}",
+       "at": "Two"
+      },
+      {
+       "do": "text",
+       "text": "3 dimes: 3 coins",
+       "at": "Three",
+       "tone": "muted"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "My turn. Seventeen cents.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Seventeen"
+      },
+      {
+       "do": "header",
+       "text": "Pay exactly 17¢",
+       "at": "Seventeen"
+      },
+      {
+       "do": "scene",
+       "at": "Seventeen",
+       "dur": 0.2,
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "pay30price"
+        },
+        {
+         "do": "disappear",
+         "target": "pay30need2"
+        },
+        {
+         "do": "disappear",
+         "target": "pay30coin0.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "pay30coin0value"
+        },
+        {
+         "do": "disappear",
+         "target": "pay30coin1.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "pay30coin1value"
+        },
+        {
+         "do": "appear",
+         "target": "pay17price"
+        },
+        {
+         "do": "appear",
+         "target": "pay17need0"
+        }
+       ]
+      }
+     ],
+     "pause": 0.35
+    },
+    {
+     "speaker": "learner",
+     "say": "Dime, nickel, penny, penny.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "dime",
+       "nth": 1,
+       "dur": 0.28,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "pay17coin0.coin.0"
+        },
+        {
+         "do": "move",
+         "target": "pay17coin0.coin.0",
+         "by": [
+          0,
+          -6
+         ]
+        },
+        {
+         "do": "appear",
+         "target": "pay17coin0value"
+        },
+        {
+         "do": "disappear",
+         "target": "pay17need0"
+        },
+        {
+         "do": "appear",
+         "target": "pay17need1"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "nickel",
+       "nth": 1,
+       "dur": 0.28,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "pay17coin1.coin.0"
+        },
+        {
+         "do": "move",
+         "target": "pay17coin1.coin.0",
+         "by": [
+          0,
+          -6
+         ]
+        },
+        {
+         "do": "appear",
+         "target": "pay17coin1value"
+        },
+        {
+         "do": "disappear",
+         "target": "pay17need1"
+        },
+        {
+         "do": "appear",
+         "target": "pay17need2"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "penny",
+       "nth": 1,
+       "dur": 0.28,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "pay17coin2.coin.0"
+        },
+        {
+         "do": "move",
+         "target": "pay17coin2.coin.0",
+         "by": [
+          0,
+          -6
+         ]
+        },
+        {
+         "do": "appear",
+         "target": "pay17coin2value"
+        },
+        {
+         "do": "disappear",
+         "target": "pay17need2"
+        },
+        {
+         "do": "appear",
+         "target": "pay17need3"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "penny",
+       "nth": 2,
+       "dur": 0.28,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "pay17coin3.coin.0"
+        },
+        {
+         "do": "move",
+         "target": "pay17coin3.coin.0",
+         "by": [
+          0,
+          -6
+         ]
+        },
+        {
+         "do": "appear",
+         "target": "pay17coin3value"
+        },
+        {
+         "do": "disappear",
+         "target": "pay17need3"
+        },
+        {
+         "do": "appear",
+         "target": "pay17need4"
+        }
+       ]
+      }
+     ],
+     "pause": 0.15
+    },
+    {
+     "speaker": "learner",
+     "say": "Four coins.",
+     "do": [
+      {
+       "do": "answer",
+       "tex": "4\\text{ coins}",
+       "at": "Four"
+      }
+     ],
+     "pause": 0.6
+    },
+    {
+     "speaker": "learner",
+     "say": "Sixty-five cents.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Sixty-five"
+      },
+      {
+       "do": "header",
+       "text": "Pay exactly 65¢",
+       "at": "Sixty-five"
+      },
+      {
+       "do": "scene",
+       "at": "Sixty-five",
+       "dur": 0.2,
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "pay17price"
+        },
+        {
+         "do": "disappear",
+         "target": "pay17need4"
+        },
+        {
+         "do": "disappear",
+         "target": "pay17coin0.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "pay17coin0value"
+        },
+        {
+         "do": "disappear",
+         "target": "pay17coin1.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "pay17coin1value"
+        },
+        {
+         "do": "disappear",
+         "target": "pay17coin2.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "pay17coin2value"
+        },
+        {
+         "do": "disappear",
+         "target": "pay17coin3.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "pay17coin3value"
+        },
+        {
+         "do": "appear",
+         "target": "pay65price"
+        },
+        {
+         "do": "appear",
+         "target": "pay65need0"
+        }
+       ]
+      }
+     ],
+     "pause": 0.35
+    },
+    {
+     "speaker": "learner",
+     "say": "Quarter, quarter, dime, nickel.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "quarter",
+       "nth": 1,
+       "dur": 0.28,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "pay65coin0.coin.0"
+        },
+        {
+         "do": "move",
+         "target": "pay65coin0.coin.0",
+         "by": [
+          0,
+          -6
+         ]
+        },
+        {
+         "do": "appear",
+         "target": "pay65coin0value"
+        },
+        {
+         "do": "disappear",
+         "target": "pay65need0"
+        },
+        {
+         "do": "appear",
+         "target": "pay65need1"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "quarter",
+       "nth": 2,
+       "dur": 0.28,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "pay65coin1.coin.0"
+        },
+        {
+         "do": "move",
+         "target": "pay65coin1.coin.0",
+         "by": [
+          0,
+          -6
+         ]
+        },
+        {
+         "do": "appear",
+         "target": "pay65coin1value"
+        },
+        {
+         "do": "disappear",
+         "target": "pay65need1"
+        },
+        {
+         "do": "appear",
+         "target": "pay65need2"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "dime",
+       "nth": 1,
+       "dur": 0.28,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "pay65coin2.coin.0"
+        },
+        {
+         "do": "move",
+         "target": "pay65coin2.coin.0",
+         "by": [
+          0,
+          -6
+         ]
+        },
+        {
+         "do": "appear",
+         "target": "pay65coin2value"
+        },
+        {
+         "do": "disappear",
+         "target": "pay65need2"
+        },
+        {
+         "do": "appear",
+         "target": "pay65need3"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "nickel",
+       "nth": 1,
+       "dur": 0.28,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "pay65coin3.coin.0"
+        },
+        {
+         "do": "move",
+         "target": "pay65coin3.coin.0",
+         "by": [
+          0,
+          -6
+         ]
+        },
+        {
+         "do": "appear",
+         "target": "pay65coin3value"
+        },
+        {
+         "do": "disappear",
+         "target": "pay65need3"
+        },
+        {
+         "do": "appear",
+         "target": "pay65need4"
+        }
+       ]
+      }
+     ],
+     "pause": 0.15
+    },
+    {
+     "speaker": "learner",
+     "say": "Four coins again!",
+     "do": [
+      {
+       "do": "answer",
+       "tex": "4\\text{ coins}",
+       "at": "Four"
+      }
+     ],
+     "pause": 0.05
+    }
+   ]
+  },
+  {
+   "figure": {
+    "scene": {
+     "v": 1,
+     "elements": [
+      {
+       "type": "text",
+       "id": "price",
+       "text": "Price: 41¢",
+       "at": [
+        0,
+        47
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "q",
+       "at": [
+        -63.13,
+        15.13
+       ],
+       "coins": [
+        {
+         "coin": "quarter"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "qv",
+       "text": "25¢",
+       "at": [
+        -51,
+        -20
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "d",
+       "at": [
+        -25.955,
+        11.955
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "dv",
+       "text": "10¢",
+       "at": [
+        -17,
+        -20
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "p1",
+       "at": [
+        7.475,
+        12.525
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "p1v",
+       "text": "1¢",
+       "at": [
+        17,
+        -20
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "p6",
+       "at": [
+        44.08,
+        12.525
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "p6v",
+       "text": "1¢",
+       "at": [
+        53.605,
+        -20
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "p2",
+       "at": [
+        -60.525,
+        -27.475
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "p2v",
+       "text": "1¢",
+       "at": [
+        -51,
+        -60
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "p3",
+       "at": [
+        -26.525,
+        -27.475
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "p3v",
+       "text": "1¢",
+       "at": [
+        -17,
+        -60
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "p4",
+       "at": [
+        7.475,
+        -27.475
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "p4v",
+       "text": "1¢",
+       "at": [
+        17,
+        -60
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "p5",
+       "at": [
+        41.475,
+        -27.475
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "p5v",
+       "text": "1¢",
+       "at": [
+        51,
+        -60
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "coins",
+       "id": "n",
+       "at": [
+        6.395,
+        13.605
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "nv",
+       "text": "5¢",
+       "at": [
+        17,
+        -20
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "totala",
+       "text": "Value: 25¢",
+       "at": [
+        -27,
+        30
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "needa",
+       "text": "Still needed: 16¢",
+       "at": [
+        0,
+        -76
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "counta",
+       "text": "1 coin",
+       "at": [
+        30,
+        30
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "totalb",
+       "text": "Value: 35¢",
+       "at": [
+        -27,
+        30
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "needb",
+       "text": "Still needed: 6¢",
+       "at": [
+        0,
+        -76
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "countb",
+       "text": "2 coins",
+       "at": [
+        30,
+        30
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "totalc",
+       "text": "Value: 41¢",
+       "at": [
+        -27,
+        30
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "needc",
+       "text": "Still needed: 0¢",
+       "at": [
+        0,
+        -76
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "countc",
+       "text": "8 coins",
+       "at": [
+        30,
+        30
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "totale",
+       "text": "Value: 41¢",
+       "at": [
+        -27,
+        30
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "neede",
+       "text": "Still needed: 0¢",
+       "at": [
+        0,
+        -76
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "counte",
+       "text": "4 coins",
+       "at": [
+        30,
+        30
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "tickq",
+       "text": "✓",
+       "at": [
+        -51,
+        -52
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "tickd",
+       "text": "✓",
+       "at": [
+        -17,
+        -52
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "tickn",
+       "text": "✓",
+       "at": [
+        17,
+        -52
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "tickp6",
+       "text": "✓",
+       "at": [
+        53.605,
+        -52
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "padLeft",
+       "text": " ",
+       "at": [
+        -67,
+        0
+       ],
+       "font": "sans"
+      },
+      {
+       "type": "text",
+       "id": "padRight",
+       "text": " ",
+       "at": [
+        67,
+        0
+       ],
+       "font": "sans"
+      }
+     ]
+    }
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Five pennies slide together and trade for one nickel.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Five"
+      },
+      {
+       "do": "header",
+       "text": "Exact payment, fewest coins",
+       "at": "Five"
+      },
+      {
+       "do": "text",
+       "at": "Five",
+       "text": "$\\mathrlap{5\\text{ pennies}=1\\text{ nickel}}\\phantom{25\\text{¢}+10\\text{¢}+5\\text{¢}+1\\text{¢}=41\\text{¢}}$"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "d.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "dv"
+        },
+        {
+         "do": "appear",
+         "target": "p1.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "p1v"
+        },
+        {
+         "do": "appear",
+         "target": "p2.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "p2v"
+        },
+        {
+         "do": "appear",
+         "target": "p3.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "p3v"
+        },
+        {
+         "do": "appear",
+         "target": "p4.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "p4v"
+        },
+        {
+         "do": "appear",
+         "target": "p5.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "p5v"
+        },
+        {
+         "do": "appear",
+         "target": "p6.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "p6v"
+        },
+        {
+         "do": "disappear",
+         "target": "n.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "nv"
+        },
+        {
+         "do": "disappear",
+         "target": "totala"
+        },
+        {
+         "do": "disappear",
+         "target": "needa"
+        },
+        {
+         "do": "disappear",
+         "target": "counta"
+        },
+        {
+         "do": "disappear",
+         "target": "totalb"
+        },
+        {
+         "do": "disappear",
+         "target": "needb"
+        },
+        {
+         "do": "disappear",
+         "target": "countb"
+        },
+        {
+         "do": "disappear",
+         "target": "totale"
+        },
+        {
+         "do": "disappear",
+         "target": "neede"
+        },
+        {
+         "do": "disappear",
+         "target": "counte"
+        },
+        {
+         "do": "disappear",
+         "target": "tickq"
+        },
+        {
+         "do": "disappear",
+         "target": "tickd"
+        },
+        {
+         "do": "disappear",
+         "target": "tickn"
+        },
+        {
+         "do": "disappear",
+         "target": "tickp6"
+        }
+       ],
+       "at": "Five",
+       "dur": 0.01
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "move",
+         "target": "p1.coin.0",
+         "by": [
+          0,
+          0
+         ]
+        },
+        {
+         "do": "disappear",
+         "target": "p1v"
+        },
+        {
+         "do": "move",
+         "target": "p2.coin.0",
+         "by": [
+          68,
+          40
+         ]
+        },
+        {
+         "do": "disappear",
+         "target": "p2v"
+        },
+        {
+         "do": "move",
+         "target": "p3.coin.0",
+         "by": [
+          34,
+          40
+         ]
+        },
+        {
+         "do": "disappear",
+         "target": "p3v"
+        },
+        {
+         "do": "move",
+         "target": "p4.coin.0",
+         "by": [
+          0,
+          40
+         ]
+        },
+        {
+         "do": "disappear",
+         "target": "p4v"
+        },
+        {
+         "do": "move",
+         "target": "p5.coin.0",
+         "by": [
+          -34,
+          40
+         ]
+        },
+        {
+         "do": "disappear",
+         "target": "p5v"
+        }
+       ],
+       "at": "slide",
+       "dur": 1
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "p1.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "p1v"
+        },
+        {
+         "do": "disappear",
+         "target": "p2.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "p2v"
+        },
+        {
+         "do": "disappear",
+         "target": "p3.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "p3v"
+        },
+        {
+         "do": "disappear",
+         "target": "p4.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "p4v"
+        },
+        {
+         "do": "disappear",
+         "target": "p5.coin.0"
+        },
+        {
+         "do": "disappear",
+         "target": "p5v"
+        },
+        {
+         "do": "appear",
+         "target": "n.coin.0"
+        },
+        {
+         "do": "appear",
+         "target": "nv"
+        },
+        {
+         "do": "disappear",
+         "target": "countc"
+        },
+        {
+         "do": "appear",
+         "target": "counte"
+        }
+       ],
+       "at": "nickel",
+       "dur": 0.6
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Twenty-five cents plus ten cents plus five cents plus one cent equals forty-one cents.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "Twenty-five",
+       "dur": 0.8,
+       "actions": [
+        {
+         "do": "move",
+         "target": "q.coin.0",
+         "by": [
+          0,
+          -17
+         ]
+        },
+        {
+         "do": "move",
+         "target": "qv",
+         "by": [
+          0,
+          -17
+         ]
+        },
+        {
+         "do": "move",
+         "target": "d.coin.0",
+         "by": [
+          0,
+          -17
+         ]
+        },
+        {
+         "do": "move",
+         "target": "dv",
+         "by": [
+          0,
+          -17
+         ]
+        },
+        {
+         "do": "move",
+         "target": "n.coin.0",
+         "by": [
+          0,
+          -17
+         ]
+        },
+        {
+         "do": "move",
+         "target": "nv",
+         "by": [
+          0,
+          -17
+         ]
+        },
+        {
+         "do": "move",
+         "target": "p6.coin.0",
+         "by": [
+          0,
+          -17
+         ]
+        },
+        {
+         "do": "move",
+         "target": "p6v",
+         "by": [
+          0,
+          -17
+         ]
+        }
+       ]
+      },
+      {
+       "do": "text",
+       "at": "Twenty-five",
+       "text": "$\\mathrlap{25\\text{¢}+10\\text{¢}+5\\text{¢}+1\\text{¢}=41\\text{¢}}\\phantom{25\\text{¢}+10\\text{¢}+5\\text{¢}+1\\text{¢}=41\\text{¢}}$"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "qv"
+        }
+       ],
+       "at": "Twenty-five",
+       "dur": 0.3
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "dv"
+        }
+       ],
+       "at": "ten",
+       "dur": 0.3
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "nv"
+        }
+       ],
+       "at": "five",
+       "dur": 0.3
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p6v"
+        }
+       ],
+       "at": "one",
+       "dur": 0.3
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four coins pay forty-one cents. Three cannot, so four is the fewest.",
+     "do": [
+      {
+       "do": "text",
+       "text": "41¢: 4 coins is the fewest",
+       "at": "Four"
+      },
+      {
+       "do": "scene",
+       "at": "Four",
+       "dur": 0.35,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "tickq"
+        },
+        {
+         "do": "appear",
+         "target": "tickd"
+        },
+        {
+         "do": "appear",
+         "target": "tickn"
+        },
+        {
+         "do": "appear",
+         "target": "tickp6"
+        }
+       ]
+      },
+      {
+       "do": "text",
+       "text": "3 coins cannot make 41¢",
+       "at": "Three"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Match the price. For the fewest coins, choose the greatest value that fits what is still needed.",
+     "do": [
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "price"
+        }
+       ],
+       "at": "Match",
+       "dur": 0.3
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "counte"
+        }
+       ],
+       "at": "greatest",
+       "dur": 0.3
+      }
+     ],
+     "pause": 1.2
+    }
+   ]
+  }
+ ]
+}
