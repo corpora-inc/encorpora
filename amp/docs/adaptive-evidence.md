@@ -53,13 +53,15 @@ The local model scheduling reads (`strandResponse`, the area estimates) is uncha
 
 | Synthetic case: born 2016, read in the fall of 2026 |               v4 |               v5 |
 | ------------------------------------------ | ---------------: | ---------------: |
-| Before any answer, overall                 |      4.13 ± 1.99 |      4.00 ± 1.00 |
+| Before any answer, overall                 |      4.13 ± 1.99 |      4.00 ± 1.28 |
 | After 1 right answer (decimals, grade 4)   |             5.55 |             4.36 |
 | After 2 (fraction equivalence, 4 options)  |             5.85 |             4.53 |
-| After 3 (fraction line plot, grade 3)      |      5.97 ± 1.43 |      4.63 ± 0.87 |
+| After 3 (fraction line plot, grade 3)      |      5.97 ± 1.43 |      4.63 ± 1.07 |
 | Areas after 3: decimals, fractions, data   | 6.21, 6.11, 6.03 | 5.33, 5.11, 5.03 |
 
-Shown widths are the reported sd (`frontier-report.ts`). `tests/frontier-early-anchor.test.ts` pins this case and fails under v4.
+Shown widths are the reported sd (`frontier-report.ts`): sd-cal-v1 for v4, as shipped, and sd-cal-v2 for v5. v5's posterior is narrower, but sd-cal-v2 scales it up, because the coverage harness showed sd-cal-v1 left v5's ranges too narrow; the shown range after three answers is still wide (2.9–6.4), which is honest about three answers. `tests/frontier-early-anchor.test.ts` pins this case and fails under v4.
+
+**Reported widths, sd-cal-v2.** The overall readout and the areas now have separate scales of the posterior sd (overall 1.22–1.32, areas 1.09–1.43, no floor), refit with `scripts/frontier/production-calibration.ts` so both cover 68% ± 4 within 1σ and 95% ± 3 within 2σ at 20, 50, 100 and 300 answers on the misspecified synthetic learner. One shared scale (sd-cal-v1) cannot: the overall slope is now flatter than the areas'.
 
 **Retained production answers, replayed.** Retained attempts were exported read-only (no names, emails or account identifiers) and replayed locally under each policy, up to 300 answers per learner; nothing about any learner enters this repository. Lower is better in both tables.
 

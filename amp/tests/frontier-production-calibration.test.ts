@@ -5,7 +5,7 @@ import {
   runProductionCalibration,
 } from "../scripts/frontier/production-calibration";
 
-/** Misspecified coverage after sd-cal-v1, on the seeded population that
+/** Misspecified coverage after sd-cal-v2, on the seeded population that
  * fixed the constants. Quick mode keeps that whole grid (a 40-learner draw
  * misses ±4 by sampling error). */
 const MAE_AT_100 = 0.7;

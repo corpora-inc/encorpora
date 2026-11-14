@@ -48,7 +48,7 @@ export type FrontierObservation = {
 /** Curriculum coordinate, uncertainty width, and evidence counts. `sd` is
  * the posterior width, including a bounded surprise reserve, and it is what
  * scheduling reads. The width stored and shown is `reportedSd`
- * (`frontier-report.ts`, sd-cal-v1), fit to a misspecified synthetic learner.
+ * (`frontier-report.ts`, sd-cal-v2), fit to a misspecified synthetic learner.
  * Item difficulties are not fitted to real students, and there is no external
  * norm. */
 export type Estimate = {

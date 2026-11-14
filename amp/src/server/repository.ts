@@ -819,9 +819,12 @@ export class PgTransaction implements LearnerTransaction {
   async saveLevelDay(frontier: Frontier) {
     // Scheduling has already read the posterior sd. The stored width is the
     // calibrated report, so a level day and the live planner do not share it.
-    const estimate = ({ level, sd, answered, independent }: Estimate) => ({
+    const estimate = (
+      { level, sd, answered, independent }: Estimate,
+      scope: "overall" | "strand",
+    ) => ({
       level,
-      sd: reportedSd(sd, { answered }),
+      sd: reportedSd(sd, { answered, scope }),
       answered,
       independent,
     });
@@ -839,11 +842,11 @@ export class PgTransaction implements LearnerTransaction {
         this.learnerId,
         JSON.stringify({
           sdVersion: REPORTED_SD_VERSION,
-          overall: estimate(frontier.overall),
+          overall: estimate(frontier.overall, "overall"),
           strands: Object.fromEntries(
             Object.entries(frontier.strands).map(([id, e]) => [
               id,
-              estimate(e),
+              estimate(e, "strand"),
             ]),
           ),
         }),

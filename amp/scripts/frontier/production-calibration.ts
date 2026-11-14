@@ -431,7 +431,10 @@ function bandFor(
     scope,
     posterior: metrics(points, (point) => point.sd),
     reported: metrics(points, (point) =>
-      reportedSd(point.sd, { answered: point.answers }),
+      reportedSd(point.sd, {
+        answered: point.answers,
+        scope: point.scope === "overall" ? "overall" : "strand",
+      }),
     ),
   };
 }

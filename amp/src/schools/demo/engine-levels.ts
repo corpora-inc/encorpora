@@ -83,10 +83,10 @@ export type LevelAnswer = {
   day?: string;
 };
 
-function stored(estimate: Estimate) {
+function stored(estimate: Estimate, scope: "overall" | "strand") {
   return {
     level: estimate.level,
-    sd: reportedSd(estimate.sd, { answered: estimate.answered }),
+    sd: reportedSd(estimate.sd, { answered: estimate.answered, scope }),
     answered: estimate.answered,
     independent: estimate.independent,
   };
@@ -117,11 +117,11 @@ export function levelDocuments(options: {
       day,
       frontier: JSON.stringify({
         sdVersion: REPORTED_SD_VERSION,
-        overall: stored(frontier.overall),
+        overall: stored(frontier.overall, "overall"),
         strands: Object.fromEntries(
           Object.entries(frontier.strands).map(([id, estimate]) => [
             id,
-            stored(estimate),
+            stored(estimate, "strand"),
           ]),
         ),
       }),

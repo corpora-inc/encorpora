@@ -1,9 +1,9 @@
 import { levelSdSql } from "./student-sd.js";
 
 /**
- * A stored level day has settled when its reported sd (sd-cal-v1) is at most
- * this. Chosen by the growth-recovery study, seed 20261110: see
- * `docs/engine/growth.md`.
+ * A stored level day has settled when its reported sd is at most this.
+ * Chosen by the growth-recovery study under sd-cal-v1, seed 20261110: see
+ * `docs/engine/growth.md`. Level days now carry sd-cal-v2.
  */
 export const SETTLED_SD = 0.6;
 
