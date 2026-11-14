@@ -1,0 +1,1990 @@
+{
+ "id": "repeating-decimal-to-fraction--sr",
+ "title": "Why repeating decimals are fractions",
+ "teaches": [],
+ "cast": {
+  "teacher": {}
+ },
+ "shots": [
+  {
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A number is rational when it can be written exactly as a fraction, even if its decimal never ends.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "header",
+       "text": "Rational numbers"
+      },
+      {
+       "do": "write",
+       "tex": "0.75=\\frac{75}{100}=\\frac34",
+       "id": "ending",
+       "at": "fraction"
+      },
+      {
+       "do": "show",
+       "target": "ending",
+       "at": "fraction"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Seventy-five hundredths equals seventy-five over one hundred, or three fourths. It is rational.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "text",
+       "text": "Seventy-five hundredths",
+       "at": "Seventy-five"
+      },
+      {
+       "do": "text",
+       "text": "An exact fraction name",
+       "at": "rational"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Rational means one integer divided by another, with a nonzero bottom number.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "tex": "0.75=\\frac34",
+       "label": "Rational"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{\\text{integer}}{\\text{integer}}"
+      },
+      {
+       "do": "text",
+       "text": "Bottom number ≠ 0",
+       "at": "nonzero"
+      },
+      {
+       "do": "highlight",
+       "target": "endingDot",
+       "at": "Rational"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Integers are the whole numbers and their negatives, including zero.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Integers"
+      },
+      {
+       "do": "write",
+       "tex": "\\ldots,-2,-1,0,1,2,\\ldots",
+       "at": "whole"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A decimal that ends is easy: its last place names the fraction.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "0.75=\\frac{75}{100}",
+       "note": "\\text{hundredths}"
+      },
+      {
+       "do": "highlight",
+       "target": "endingDot",
+       "at": "ends"
+      }
+     ]
+    }
+   ],
+   "figure": {
+    "view": [
+     -0.55,
+     -3,
+     10.55,
+     3
+    ],
+    "points": {
+     "N0": [
+      0,
+      0
+     ],
+     "N1": [
+      5,
+      0
+     ],
+     "N2": [
+      10,
+      0
+     ],
+     "T0a": [
+      0,
+      -0.14
+     ],
+     "T0b": [
+      0,
+      0.14
+     ],
+     "T1a": [
+      5,
+      -0.14
+     ],
+     "T1b": [
+      5,
+      0.14
+     ],
+     "T2a": [
+      10,
+      -0.14
+     ],
+     "T2b": [
+      10,
+      0.14
+     ],
+     "endingPoint": [
+      3.75,
+      0
+     ],
+     "endingLabel": [
+      3.75,
+      1.2
+     ],
+     "endingGuide": [
+      3.75,
+      0.78
+     ],
+     "repeatPoint": [
+      3.3333333333333335,
+      0
+     ],
+     "repeatLabel": [
+      3.3333333333333335,
+      -1.4
+     ],
+     "repeatGuide": [
+      3.3333333333333335,
+      -0.9099999999999999
+     ],
+     "rootPoint": [
+      7.0710678118654755,
+      0
+     ],
+     "rootLabel": [
+      7.0710678118654755,
+      1.2
+     ],
+     "rootGuide": [
+      7.0710678118654755,
+      0.78
+     ]
+    },
+    "parts": [
+     {
+      "id": "axis",
+      "seg": [
+       "N0",
+       "N2"
+      ],
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "tick0",
+      "seg": [
+       "T0a",
+       "T0b"
+      ],
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "number0",
+      "label": "0",
+      "at": "N0",
+      "dir": "s",
+      "far": 0.65,
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "tick1",
+      "seg": [
+       "T1a",
+       "T1b"
+      ],
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "number1",
+      "label": "1",
+      "at": "N1",
+      "dir": "s",
+      "far": 0.65,
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "tick2",
+      "seg": [
+       "T2a",
+       "T2b"
+      ],
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "number2",
+      "label": "2",
+      "at": "N2",
+      "dir": "s",
+      "far": 0.65,
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "endingDot",
+      "group": "ending",
+      "dot": "endingPoint",
+      "r": 14,
+      "ink": "blue",
+      "start": false
+     },
+     {
+      "id": "endingStem",
+      "group": "ending",
+      "seg": [
+       "endingPoint",
+       "endingGuide"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "start": false
+     },
+     {
+      "id": "endingName",
+      "group": "ending",
+      "label": "0.75",
+      "at": "endingLabel",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "start": false
+     },
+     {
+      "id": "repeatDot",
+      "group": "repeat",
+      "dot": "repeatPoint",
+      "r": 14,
+      "ink": "accent",
+      "start": false
+     },
+     {
+      "id": "repeatStem",
+      "group": "repeat",
+      "seg": [
+       "repeatPoint",
+       "repeatGuide"
+      ],
+      "ink": "accent",
+      "w": 3,
+      "start": false
+     },
+     {
+      "id": "repeatName",
+      "group": "repeat",
+      "label": "0.666\\ldots",
+      "at": "repeatLabel",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent",
+      "start": false
+     },
+     {
+      "id": "rootDot",
+      "group": "root",
+      "dot": "rootPoint",
+      "r": 14,
+      "ink": "warm",
+      "start": false
+     },
+     {
+      "id": "rootStem",
+      "group": "root",
+      "seg": [
+       "rootPoint",
+       "rootGuide"
+      ],
+      "ink": "warm",
+      "w": 3,
+      "start": false
+     },
+     {
+      "id": "rootName",
+      "group": "root",
+      "label": "\\sqrt2",
+      "at": "rootLabel",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "start": false
+     }
+    ]
+   }
+  },
+  {
+   "figure": {
+    "view": [
+     -0.55,
+     -3,
+     10.55,
+     3
+    ],
+    "points": {
+     "N0": [
+      0,
+      0
+     ],
+     "N1": [
+      5,
+      0
+     ],
+     "N2": [
+      10,
+      0
+     ],
+     "T0a": [
+      0,
+      -0.14
+     ],
+     "T0b": [
+      0,
+      0.14
+     ],
+     "T1a": [
+      5,
+      -0.14
+     ],
+     "T1b": [
+      5,
+      0.14
+     ],
+     "T2a": [
+      10,
+      -0.14
+     ],
+     "T2b": [
+      10,
+      0.14
+     ],
+     "endingPoint": [
+      3.75,
+      0
+     ],
+     "endingLabel": [
+      3.75,
+      1.2
+     ],
+     "endingGuide": [
+      3.75,
+      0.78
+     ],
+     "repeatPoint": [
+      3.3333333333333335,
+      0
+     ],
+     "repeatLabel": [
+      3.3333333333333335,
+      -1.4
+     ],
+     "repeatGuide": [
+      3.3333333333333335,
+      -0.9099999999999999
+     ],
+     "rootPoint": [
+      7.0710678118654755,
+      0
+     ],
+     "rootLabel": [
+      7.0710678118654755,
+      1.2
+     ],
+     "rootGuide": [
+      7.0710678118654755,
+      0.78
+     ]
+    },
+    "parts": [
+     {
+      "id": "axis",
+      "seg": [
+       "N0",
+       "N2"
+      ],
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "tick0",
+      "seg": [
+       "T0a",
+       "T0b"
+      ],
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "number0",
+      "label": "0",
+      "at": "N0",
+      "dir": "s",
+      "far": 0.65,
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "tick1",
+      "seg": [
+       "T1a",
+       "T1b"
+      ],
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "number1",
+      "label": "1",
+      "at": "N1",
+      "dir": "s",
+      "far": 0.65,
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "tick2",
+      "seg": [
+       "T2a",
+       "T2b"
+      ],
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "number2",
+      "label": "2",
+      "at": "N2",
+      "dir": "s",
+      "far": 0.65,
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "endingDot",
+      "group": "ending",
+      "dot": "endingPoint",
+      "r": 14,
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "endingStem",
+      "group": "ending",
+      "seg": [
+       "endingPoint",
+       "endingGuide"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "endingName",
+      "group": "ending",
+      "label": "0.75",
+      "at": "endingLabel",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "repeatDot",
+      "group": "repeat",
+      "dot": "repeatPoint",
+      "r": 14,
+      "ink": "accent",
+      "start": false
+     },
+     {
+      "id": "repeatStem",
+      "group": "repeat",
+      "seg": [
+       "repeatPoint",
+       "repeatGuide"
+      ],
+      "ink": "accent",
+      "w": 3,
+      "start": false
+     },
+     {
+      "id": "repeatName",
+      "group": "repeat",
+      "label": "0.666\\ldots",
+      "at": "repeatLabel",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent",
+      "start": false
+     },
+     {
+      "id": "rootDot",
+      "group": "root",
+      "dot": "rootPoint",
+      "r": 14,
+      "ink": "warm",
+      "start": false
+     },
+     {
+      "id": "rootStem",
+      "group": "root",
+      "seg": [
+       "rootPoint",
+       "rootGuide"
+      ],
+      "ink": "warm",
+      "w": 3,
+      "start": false
+     },
+     {
+      "id": "rootName",
+      "group": "root",
+      "label": "\\sqrt2",
+      "at": "rootLabel",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "start": false
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Zero point six, six, six, continuing forever. The dots mean it continues.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "0.666\\ldots"
+      },
+      {
+       "do": "show",
+       "target": "repeat",
+       "at": "Zero"
+      },
+      {
+       "do": "highlight",
+       "target": "repeatName",
+       "at": "dots"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The bar marks the repeating block. A repeat can also start a few digits in.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "write",
+       "tex": "0.\\overline6",
+       "at": "bar"
+      },
+      {
+       "do": "text",
+       "text": "Repeating block: 6",
+       "at": "block"
+      },
+      {
+       "do": "highlight",
+       "target": "repeatDot",
+       "at": "bar"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1,
+     -2.9,
+     6.1,
+     3.7
+    ],
+    "points": {
+     "LZ": [
+      0,
+      0
+     ],
+     "LP": [
+      0.55,
+      0
+     ],
+     "L1": [
+      1.15,
+      0
+     ],
+     "L2": [
+      2.25,
+      0
+     ],
+     "L3": [
+      3.35,
+      0
+     ],
+     "LE": [
+      4.65,
+      0
+     ],
+     "UZ": [
+      0,
+      0
+     ],
+     "UP": [
+      0.55,
+      0
+     ],
+     "U1": [
+      1.15,
+      0
+     ],
+     "U2": [
+      2.25,
+      0
+     ],
+     "U3": [
+      3.35,
+      0
+     ],
+     "U4": [
+      4.45,
+      2.4
+     ],
+     "UE": [
+      4.65,
+      0
+     ],
+     "BA": [
+      0.85,
+      -0.7
+     ],
+     "BB": [
+      5.25,
+      -0.7
+     ],
+     "BC": [
+      0.85,
+      1.7
+     ],
+     "BD": [
+      5.25,
+      1.7
+     ],
+     "MIN": [
+      -0.65,
+      0
+     ],
+     "RA": [
+      -0.6,
+      -1.6
+     ],
+     "RB": [
+      5.86,
+      -1.6
+     ],
+     "ANS": [
+      0,
+      -2.2
+     ]
+    },
+    "parts": [
+     {
+      "id": "lz",
+      "label": "\\Large{0}",
+      "at": "LZ",
+      "dir": "c",
+      "size": "xl",
+      "start": true,
+      "flies": true
+     },
+     {
+      "id": "lp",
+      "label": "\\Large{.}",
+      "at": "LP",
+      "dir": "c",
+      "size": "xl",
+      "start": true
+     },
+     {
+      "id": "lone",
+      "group": "tails",
+      "label": "\\Large{6}",
+      "at": "L1",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "ltwo",
+      "group": "tails",
+      "label": "\\Large{6}",
+      "at": "L2",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "lthree",
+      "group": "tails",
+      "label": "\\Large{6}",
+      "at": "L3",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "le",
+      "group": "tails",
+      "label": "\\Large{\\ldots}",
+      "at": "LE",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "uz",
+      "label": "\\Large{0}",
+      "at": "UZ",
+      "dir": "c",
+      "size": "xl",
+      "flies": true
+     },
+     {
+      "id": "up",
+      "label": "\\Large{.}",
+      "at": "UP",
+      "dir": "c",
+      "size": "xl",
+      "flies": true
+     },
+     {
+      "id": "uone",
+      "label": "\\Large{6}",
+      "at": "U1",
+      "dir": "c",
+      "size": "xl",
+      "flies": true
+     },
+     {
+      "id": "utwo",
+      "group": "tails",
+      "label": "\\Large{6}",
+      "at": "U2",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true
+     },
+     {
+      "id": "uthree",
+      "group": "tails",
+      "label": "\\Large{6}",
+      "at": "U3",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true
+     },
+     {
+      "id": "ufour",
+      "group": "tails",
+      "label": "\\Large{6}",
+      "at": "U4",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true
+     },
+     {
+      "id": "ue",
+      "group": "tails",
+      "label": "\\Large{\\ldots}",
+      "at": "UE",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true
+     },
+     {
+      "id": "lowerBracket",
+      "dim": [
+       "BA",
+       "BB"
+      ],
+      "side": "s",
+      "tex": "\\large{\\text{same tail}}",
+      "ink": "accent",
+      "far": 0.25
+     },
+     {
+      "id": "upperBracket",
+      "dim": [
+       "BC",
+       "BD"
+      ],
+      "side": "s",
+      "tex": "\\large{\\text{same tail}}",
+      "ink": "accent",
+      "far": 0.25
+     },
+     {
+      "id": "minus",
+      "label": "-",
+      "at": "MIN",
+      "dir": "c",
+      "size": "l",
+      "flies": true
+     },
+     {
+      "id": "rule",
+      "seg": [
+       "RA",
+       "RB"
+      ],
+      "ink": "muted",
+      "w": 4
+     },
+     {
+      "id": "difference",
+      "label": "\\Large{6}",
+      "at": "ANS",
+      "dir": "c",
+      "size": "xl",
+      "ink": "gold",
+      "flies": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Let *x* name this entire number, without rounding.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "tex": "x=0.666\\ldots",
+       "label": "The original",
+       "at": "x"
+      },
+      {
+       "do": "text",
+       "text": "The entire endless decimal",
+       "at": "entire"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Copy the row above it. Multiply that copy by ten.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "show",
+       "target": [
+        "uz",
+        "up",
+        "uone",
+        "utwo",
+        "uthree",
+        "ue"
+       ],
+       "at": "Copy"
+      },
+      {
+       "do": "move",
+       "points": {
+        "UZ": [
+         0,
+         2.4
+        ],
+        "UP": [
+         0.55,
+         2.4
+        ],
+        "U1": [
+         1.15,
+         2.4
+        ],
+        "U2": [
+         2.25,
+         2.4
+        ],
+        "U3": [
+         3.35,
+         2.4
+        ],
+        "UE": [
+         4.65,
+         2.4
+        ]
+       },
+       "at": "Copy",
+       "dur": 1.2
+      },
+      {
+       "do": "text",
+       "text": "Upper row × 10",
+       "at": "Multiply"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each digit moves one place left while the decimal point stays fixed. Each place becomes worth ten times as much.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "10x=6.666\\ldots",
+       "at": "moves"
+      },
+      {
+       "do": "hide",
+       "target": "uz",
+       "at": "moves"
+      },
+      {
+       "do": "show",
+       "target": "ufour",
+       "at": "fixed"
+      },
+      {
+       "do": "move",
+       "points": {
+        "U1": [
+         0,
+         2.4
+        ],
+        "U2": [
+         1.15,
+         2.4
+        ],
+        "U3": [
+         2.25,
+         2.4
+        ],
+        "U4": [
+         3.35,
+         2.4
+        ]
+       },
+       "at": "moves",
+       "dur": 1.6
+      },
+      {
+       "do": "text",
+       "text": "One place left: ×10",
+       "at": "left"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One digit repeats, so one place shifts a whole block. The tails after the decimal points match exactly.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "10x=6.\\ca{666\\ldots}",
+       "fresh": true
+      },
+      {
+       "do": "write",
+       "tex": "x=0.\\ca{666\\ldots}",
+       "at": "place",
+       "fresh": true
+      },
+      {
+       "do": "show",
+       "target": [
+        "lowerBracket",
+        "upperBracket"
+       ],
+       "at": "tails"
+      },
+      {
+       "do": "highlight",
+       "target": "tails",
+       "at": "match"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Subtract the lower equation from the upper. The complete endless tails cancel.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "10x\\!-\\!x=6.\\overline6\\!-\\!0.\\overline6",
+       "at": "Subtract"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "lowerBracket",
+        "upperBracket"
+       ],
+       "at": "Subtract"
+      },
+      {
+       "do": "show",
+       "target": [
+        "minus",
+        "rule"
+       ],
+       "at": "Subtract"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "tails",
+        "lp",
+        "up"
+       ],
+       "at": "cancel",
+       "dur": 1
+      },
+      {
+       "do": "move",
+       "points": {
+        "U1": [
+         2.5,
+         2.4
+        ],
+        "LZ": [
+         2.5,
+         0
+        ],
+        "ANS": [
+         2.5,
+         -2.2
+        ],
+        "MIN": [
+         1.2,
+         0
+        ],
+        "RA": [
+         0.7,
+         -1.6
+        ],
+        "RB": [
+         4.3,
+         -1.6
+        ]
+       },
+       "at": "cancel",
+       "dur": 1
+      },
+      {
+       "do": "show",
+       "target": "difference",
+       "at": "cancel",
+       "dur": 1
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten copies minus one leaves nine copies. Nine *x* equals six.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "10x-x=6"
+      },
+      {
+       "do": "write",
+       "tex": "9x=6",
+       "at": "Nine",
+       "nth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "difference",
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Divide both sides by nine: *x* equals six ninths.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "9x=6"
+      },
+      {
+       "do": "write",
+       "tex": "x=\\frac69",
+       "at": "nine"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Divide top and bottom by three to simplify: two thirds.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac69=\\frac{6\\div3}{9\\div3}",
+       "at": "Divide"
+      },
+      {
+       "do": "write",
+       "tex": "x=\\frac23",
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Calling every endless decimal irrational is a common slip: this one repeats, and its exact fraction is two thirds.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Endless means irrational",
+       "id": "slip"
+      },
+      {
+       "do": "strike",
+       "target": "slip",
+       "at": "repeats"
+      },
+      {
+       "do": "answer",
+       "tex": "0.\\overline6=\\frac23",
+       "at": "repeats"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Every repeating decimal works the same way: shift it until the tails are identical.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "0.\\overline6=\\frac23"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "minus",
+        "rule",
+        "difference"
+       ]
+      },
+      {
+       "do": "move",
+       "points": {
+        "U1": [
+         0,
+         2.4
+        ],
+        "LZ": [
+         0,
+         0
+        ]
+       },
+       "at": "Every",
+       "dur": 0.8
+      },
+      {
+       "do": "show",
+       "target": [
+        "tails",
+        "lp",
+        "up",
+        "lowerBracket",
+        "upperBracket"
+       ],
+       "at": "repeating"
+      },
+      {
+       "do": "text",
+       "text": "Match the tails",
+       "at": "identical"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Subtracting cancels the endless part. So what is left is an exact fraction.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "9x=6",
+       "at": "Subtracting"
+      },
+      {
+       "do": "write",
+       "tex": "x=\\frac69",
+       "at": "So"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Square root of two means the positive number that, multiplied by itself, equals two.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "tex": "\\sqrt2=1.41421356\\ldots"
+      },
+      {
+       "do": "write",
+       "tex": "\\sqrt2\\times\\sqrt2=2",
+       "at": "positive"
+      },
+      {
+       "do": "show",
+       "target": "root",
+       "at": "Square"
+      },
+      {
+       "do": "highlight",
+       "target": "rootDot",
+       "at": "positive"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "It is irrational: it has no exact fraction of integers.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "term",
+       "word": "Irrational",
+       "meaning": "No exact fraction of integers",
+       "at": "irrational"
+      },
+      {
+       "do": "highlight",
+       "target": "rootDot",
+       "at": "irrational"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Its decimal never ends and never falls into a repeating block. A digit showing up again is not a repeating block.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Never ends",
+       "at": "ends"
+      },
+      {
+       "do": "text",
+       "text": "Never falls into a repeating block",
+       "at": "block"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "These few digits cannot prove what happens forever. Square root of two is a known example; its proof comes later.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "A finite display is not a proof",
+       "at": "few"
+      },
+      {
+       "do": "text",
+       "text": "A known irrational number",
+       "at": "known"
+      }
+     ]
+    }
+   ],
+   "figure": {
+    "view": [
+     -0.55,
+     -3,
+     10.55,
+     3
+    ],
+    "points": {
+     "N0": [
+      0,
+      0
+     ],
+     "N1": [
+      5,
+      0
+     ],
+     "N2": [
+      10,
+      0
+     ],
+     "T0a": [
+      0,
+      -0.14
+     ],
+     "T0b": [
+      0,
+      0.14
+     ],
+     "T1a": [
+      5,
+      -0.14
+     ],
+     "T1b": [
+      5,
+      0.14
+     ],
+     "T2a": [
+      10,
+      -0.14
+     ],
+     "T2b": [
+      10,
+      0.14
+     ],
+     "endingPoint": [
+      3.75,
+      0
+     ],
+     "endingLabel": [
+      3.75,
+      1.2
+     ],
+     "endingGuide": [
+      3.75,
+      0.78
+     ],
+     "repeatPoint": [
+      3.3333333333333335,
+      0
+     ],
+     "repeatLabel": [
+      3.3333333333333335,
+      -1.4
+     ],
+     "repeatGuide": [
+      3.3333333333333335,
+      -0.9099999999999999
+     ],
+     "rootPoint": [
+      7.0710678118654755,
+      0
+     ],
+     "rootLabel": [
+      7.0710678118654755,
+      1.2
+     ],
+     "rootGuide": [
+      7.0710678118654755,
+      0.78
+     ]
+    },
+    "parts": [
+     {
+      "id": "axis",
+      "seg": [
+       "N0",
+       "N2"
+      ],
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "tick0",
+      "seg": [
+       "T0a",
+       "T0b"
+      ],
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "number0",
+      "label": "0",
+      "at": "N0",
+      "dir": "s",
+      "far": 0.65,
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "tick1",
+      "seg": [
+       "T1a",
+       "T1b"
+      ],
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "number1",
+      "label": "1",
+      "at": "N1",
+      "dir": "s",
+      "far": 0.65,
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "tick2",
+      "seg": [
+       "T2a",
+       "T2b"
+      ],
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "number2",
+      "label": "2",
+      "at": "N2",
+      "dir": "s",
+      "far": 0.65,
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "endingDot",
+      "group": "ending",
+      "dot": "endingPoint",
+      "r": 14,
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "endingStem",
+      "group": "ending",
+      "seg": [
+       "endingPoint",
+       "endingGuide"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "endingName",
+      "group": "ending",
+      "label": "0.75",
+      "at": "endingLabel",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "repeatDot",
+      "group": "repeat",
+      "dot": "repeatPoint",
+      "r": 14,
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "repeatStem",
+      "group": "repeat",
+      "seg": [
+       "repeatPoint",
+       "repeatGuide"
+      ],
+      "ink": "accent",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "repeatName",
+      "group": "repeat",
+      "label": "0.666\\ldots",
+      "at": "repeatLabel",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "rootDot",
+      "group": "root",
+      "dot": "rootPoint",
+      "r": 14,
+      "ink": "warm",
+      "start": false
+     },
+     {
+      "id": "rootStem",
+      "group": "root",
+      "seg": [
+       "rootPoint",
+       "rootGuide"
+      ],
+      "ink": "warm",
+      "w": 3,
+      "start": false
+     },
+     {
+      "id": "rootName",
+      "group": "root",
+      "label": "\\sqrt2",
+      "at": "rootLabel",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "start": false
+     }
+    ]
+   }
+  },
+  {
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Seventy-five hundredths ends: rational.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Rational and irrational numbers"
+      },
+      {
+       "do": "write",
+       "id": "summaryEnd",
+       "tex": "0.75=\\frac34\\;\\to\\;\\mathrlap{\\ca{\\text{rational}}}\\phantom{\\text{irrational}}",
+       "at": "ends",
+       "fresh": true
+      },
+      {
+       "do": "highlight",
+       "target": "endingDot",
+       "at": "ends"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Zero point six repeating is rational: it repeats.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "write",
+       "id": "summaryRepeat",
+       "tex": "0.\\overline6=\\frac23\\;\\to\\;\\mathrlap{\\ca{\\text{rational}}}\\phantom{\\text{irrational}}",
+       "at": "repeats",
+       "fresh": true
+      },
+      {
+       "do": "highlight",
+       "target": "repeatDot",
+       "at": "repeats"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Square root of two neither ends nor repeats: irrational. The first two have exact fraction names; square root of two has none.",
+     "pause": 3,
+     "do": [
+      {
+       "do": "write",
+       "id": "summaryIrrational",
+       "tex": "\\mathrlap{\\sqrt2}\\phantom{0.75=\\frac34}\\;\\to\\;\\cw{\\text{irrational}}",
+       "at": "neither",
+       "fresh": true
+      },
+      {
+       "do": "highlight",
+       "target": "rootDot",
+       "at": "neither"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "endingName",
+        "repeatName"
+       ],
+       "at": "fraction"
+      },
+      {
+       "do": "show",
+       "target": [
+        "endingFraction",
+        "repeatFraction"
+       ],
+       "at": "fraction"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ends or repeats: rational. Never ends and never repeats: irrational.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "rootDot",
+       "at": "Never"
+      }
+     ]
+    }
+   ],
+   "figure": {
+    "view": [
+     -0.55,
+     -3,
+     10.55,
+     3
+    ],
+    "points": {
+     "N0": [
+      0,
+      0
+     ],
+     "N1": [
+      5,
+      0
+     ],
+     "N2": [
+      10,
+      0
+     ],
+     "T0a": [
+      0,
+      -0.14
+     ],
+     "T0b": [
+      0,
+      0.14
+     ],
+     "T1a": [
+      5,
+      -0.14
+     ],
+     "T1b": [
+      5,
+      0.14
+     ],
+     "T2a": [
+      10,
+      -0.14
+     ],
+     "T2b": [
+      10,
+      0.14
+     ],
+     "endingPoint": [
+      3.75,
+      0
+     ],
+     "endingLabel": [
+      3.75,
+      1.2
+     ],
+     "endingGuide": [
+      3.75,
+      0.78
+     ],
+     "repeatPoint": [
+      3.3333333333333335,
+      0
+     ],
+     "repeatLabel": [
+      3.3333333333333335,
+      -1.4
+     ],
+     "repeatGuide": [
+      3.3333333333333335,
+      -0.9099999999999999
+     ],
+     "rootPoint": [
+      7.0710678118654755,
+      0
+     ],
+     "rootLabel": [
+      7.0710678118654755,
+      1.2
+     ],
+     "rootGuide": [
+      7.0710678118654755,
+      0.78
+     ]
+    },
+    "parts": [
+     {
+      "id": "axis",
+      "seg": [
+       "N0",
+       "N2"
+      ],
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "tick0",
+      "seg": [
+       "T0a",
+       "T0b"
+      ],
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "number0",
+      "label": "0",
+      "at": "N0",
+      "dir": "s",
+      "far": 0.65,
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "tick1",
+      "seg": [
+       "T1a",
+       "T1b"
+      ],
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "number1",
+      "label": "1",
+      "at": "N1",
+      "dir": "s",
+      "far": 0.65,
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "tick2",
+      "seg": [
+       "T2a",
+       "T2b"
+      ],
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "number2",
+      "label": "2",
+      "at": "N2",
+      "dir": "s",
+      "far": 0.65,
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "endingDot",
+      "group": "ending",
+      "dot": "endingPoint",
+      "r": 14,
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "endingStem",
+      "group": "ending",
+      "seg": [
+       "endingPoint",
+       "endingGuide"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "endingName",
+      "group": "ending",
+      "label": "0.75",
+      "at": "endingLabel",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "repeatDot",
+      "group": "repeat",
+      "dot": "repeatPoint",
+      "r": 14,
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "repeatStem",
+      "group": "repeat",
+      "seg": [
+       "repeatPoint",
+       "repeatGuide"
+      ],
+      "ink": "accent",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "repeatName",
+      "group": "repeat",
+      "label": "0.666\\ldots",
+      "at": "repeatLabel",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "rootDot",
+      "group": "root",
+      "dot": "rootPoint",
+      "r": 14,
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "rootStem",
+      "group": "root",
+      "seg": [
+       "rootPoint",
+       "rootGuide"
+      ],
+      "ink": "warm",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "rootName",
+      "group": "root",
+      "label": "\\sqrt2",
+      "at": "rootLabel",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "endingFraction",
+      "label": "\\frac34",
+      "at": "endingLabel",
+      "dir": "n",
+      "size": "l",
+      "ink": "blue",
+      "far": 0.3
+     },
+     {
+      "id": "repeatFraction",
+      "label": "\\frac23",
+      "at": "repeatLabel",
+      "dir": "s",
+      "size": "l",
+      "ink": "accent",
+      "far": 0.3
+     }
+    ]
+   }
+  }
+ ]
+}
