@@ -457,7 +457,7 @@ export function RosterScreen() {
               defaultSort={{ column: "name", direction: "ascending" }}
               cardLayout="list"
               cardsSort={data.students.length > 6}
-              cardEstimate={84}
+              cardEstimate={demo && canManage ? 136 : 84}
               card={(row) => (
                 <div className={styles.card}>
                   <EntityLink
@@ -488,6 +488,13 @@ export function RosterScreen() {
                         : "Not signed in yet"}
                     </span>
                   </span>
+                  {/* A demo's student view, on a phone too: the table's
+                      "Student view" column, on its own line. */}
+                  {demo && canManage && (
+                    <span className={styles.cardPractice}>
+                      <PracticeAs student={row} />
+                    </span>
+                  )}
                 </div>
               )}
             />
