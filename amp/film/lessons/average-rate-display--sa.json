@@ -1,11 +1,8 @@
 {
  "id": "average-rate-display--sa",
  "title": "Average rate of change: the slope between two points",
- "teaches": [
-  "average-rate-formula",
-  "average-rate-table-rounded",
-  "average-rate-steps"
- ],
+ "teaches": ["average-rate-formula", "average-rate-table-rounded", "average-rate-steps"],
+ "skill": "average-rate-change",
  "cast": {
   "teacher": {},
   "learner": {}

@@ -1,6 +1,8 @@
 {
   "id": "linked-division-equations",
   "title": "Choose the linked equations for a two-step sharing story",
+  "teaches": ["story-operation-choice", "multiplication-division-story", "operation-sentence-choice"],
+  "skill": "multiplicative-stories",
   "seed": "film",
   "shots": [
     {

@@ -1,6 +1,8 @@
 {
   "id": "tenths-as-hundredths",
   "title": "Tenths as hundredths",
+  "teaches": ["decimal-grid-read", "decimal-mixed-number-blanks", "decimal-place-value-hundredths"],
+  "skill": "decimal-fractions",
   "seed": "film",
   "shots": [
     {

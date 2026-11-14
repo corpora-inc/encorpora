@@ -1,6 +1,8 @@
 {
   "id": "rectangle-area",
   "title": "Rectangle area",
+  "teaches": ["tile-then-multiply", "define-unit-square", "which-is-a-unit-square"],
+  "skill": "rectangle-area",
   "seed": "film",
   "shots": [
     {

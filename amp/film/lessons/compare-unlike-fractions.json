@@ -1,6 +1,8 @@
 {
   "id": "compare-unlike-fractions",
   "title": "Compare unlike fractions",
+  "teaches": ["compare-fractions", "compare-fractions-symbol-blanks", "fraction-choice-compare", "order-fractions-slots"],
+  "skill": "fraction-comparison",
   "shots": [
     {
       "figure": {

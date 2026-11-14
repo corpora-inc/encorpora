@@ -1,7 +1,7 @@
 {
   "id": "parallel-lines-angle--sp",
   "title": "Eight angles, two sizes",
-  "teaches": [],
+  "teaches": ["parallel-angle-argument", "parallel-angle-reasons"],
   "cast": {
     "teacher": {}
   },

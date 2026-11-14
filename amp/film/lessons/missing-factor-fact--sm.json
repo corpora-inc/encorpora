@@ -2,6 +2,7 @@
   "id": "missing-factor-fact--sm",
   "title": "The number in the box",
   "teaches": ["unknown-dividend"],
+  "skill": "missing-factor",
   "cast": {
     "teacher": {},
     "learner": {}

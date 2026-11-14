@@ -1,9 +1,8 @@
 {
  "id": "ten-more-or-less--st",
  "title": "Change one ten",
- "teaches": [
-  "subtract-whole-tens"
- ],
+ "teaches": ["subtract-whole-tens"],
+ "skill": "ten-more-less",
  "cast": {
   "teacher": {},
   "learner": {}

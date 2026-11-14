@@ -1,7 +1,7 @@
 {
  "id": "line-plot-whole--sl",
  "title": "Reading a line plot",
- "teaches": [],
+ "teaches": ["staar-dot-plot-threshold"],
  "cast": {
   "teacher": {},
   "learner": {}

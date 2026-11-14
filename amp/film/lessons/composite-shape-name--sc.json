@@ -1,11 +1,8 @@
 {
   "id": "composite-shape-name--sc",
   "title": "Shapes made from shapes",
-  "teaches": [
-    "composite-which-pieces",
-    "composite-which-solids",
-    "compose-flat-shape"
-  ],
+  "teaches": ["composite-which-pieces", "composite-which-solids", "compose-flat-shape"],
+  "skill": "composite-shapes",
   "cast": {
     "teacher": {},
     "learner": {}

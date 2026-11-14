@@ -1,7 +1,7 @@
 {
  "id": "solid-parts--ss",
  "title": "Faces, edges, and vertices",
- "teaches": [],
+ "teaches": ["solid-bottom-face-shape"],
  "cast": {
   "teacher": {},
   "learner": {}

@@ -1,6 +1,8 @@
 {
   "id": "two-step-word-problem",
   "title": "Solve a two-step equation story",
+  "teaches": ["two-step-equation", "two-step-equation-model", "arithmetic-algebra-compare", "booth-equation-slots", "equation-after-one-step"],
+  "skill": "two-step-equations",
   "seed": "film-2",
   "shots": [
     {

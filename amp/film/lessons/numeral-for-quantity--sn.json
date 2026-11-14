@@ -1,6 +1,8 @@
 {
  "id": "numeral-for-quantity--sn",
  "title": "Write the number",
+ "teaches": [],
+ "skill": "write-numerals",
  "cast": {
   "teacher": {},
   "learner": {}

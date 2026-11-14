@@ -1,9 +1,8 @@
 {
   "id": "triangle-angle-sum--st",
   "title": "The angles of a triangle make a straight line",
-  "teaches": [
-    "triangle-exterior-angle"
-  ],
+  "teaches": ["triangle-exterior-angle", "triangle-angle-argument"],
+  "skill": "triangle-angle-theorems",
   "cast": {
     "teacher": {}
   },

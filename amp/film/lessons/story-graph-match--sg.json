@@ -1,9 +1,8 @@
 {
   "id": "story-graph-match--sg",
   "title": "Read a graph as a story",
-  "teaches": [
-    "distance-graph-meaning"
-  ],
+  "teaches": ["distance-graph-meaning"],
+  "skill": "qualitative-graphs",
   "cast": {
     "teacher": {}
   },

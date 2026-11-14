@@ -1,10 +1,8 @@
 {
  "id": "compare-function-rates--sk",
  "title": "Compare two functions: the start and the step",
- "teaches": [
-  "mcas-table-intercept-select",
-  "linear-function-choice"
- ],
+ "teaches": ["mcas-table-intercept-select", "linear-function-choice"],
+ "skill": "compare-functions",
  "cast": {
   "teacher": {},
   "learner": {}

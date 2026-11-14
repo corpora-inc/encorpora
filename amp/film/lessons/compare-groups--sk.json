@@ -2,6 +2,7 @@
   "id": "compare-groups--sk",
   "title": "More, fewer or the same",
   "teaches": ["dot-group-compared-to-number"],
+  "skill": "compare-small-groups",
   "cast": { "teacher": {}, "learner": {} },
   "shots": [
     {

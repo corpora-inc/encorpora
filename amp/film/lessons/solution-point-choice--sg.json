@@ -1,10 +1,8 @@
 {
   "id": "solution-point-choice--sg",
   "title": "A graph is every solution, drawn",
-  "teaches": [
-    "solution-coordinate",
-    "intercept-point-choice"
-  ],
+  "teaches": ["solution-coordinate", "intercept-point-choice"],
+  "skill": "graph-solution-sets",
   "cast": {
     "teacher": {}
   },
