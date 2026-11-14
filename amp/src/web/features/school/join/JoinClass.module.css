@@ -91,37 +91,35 @@
   line-height: 1;
 }
 @media (max-width: 559px) {
-  /* The label over the code; the QR on the code's own line, centred on it;
-     New code under the code, its words on the code's edge; then the wide
-     actions on the same column. */
+  /* Two rows of 44 px: the label over the code, New code beside it and the
+     QR at the end; then Copy link and Full screen sharing the row below. */
   .compact {
     display: grid;
     box-sizing: border-box;
     width: 100%;
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-rows: auto auto auto;
     grid-template-areas:
-      "label label"
-      "code icons"
-      "newcode newcode"
-      "wide wide";
+      "label newcode icons"
+      "code newcode icons"
+      "wide wide wide";
     align-items: center;
-    gap: 0 var(--space-2);
+    gap: 0 var(--space-3);
   }
   .codeGroup {
     display: contents;
   }
   .compact .label {
     grid-area: label;
+    align-self: end;
   }
   .compact .code {
     grid-area: code;
+    align-self: start;
   }
   .compact .newCode {
     grid-area: newcode;
     justify-self: start;
-  }
-  .compact .newCodeAct {
-    margin-inline-start: calc(-1 * var(--space-2));
   }
   .compact .icons {
     grid-area: icons;
@@ -129,7 +127,7 @@
   }
   .compact .wide {
     grid-area: wide;
-    margin-top: var(--space-3);
+    margin-top: var(--space-1);
     display: grid;
     grid-auto-columns: minmax(0, 1fr);
     grid-auto-flow: column;

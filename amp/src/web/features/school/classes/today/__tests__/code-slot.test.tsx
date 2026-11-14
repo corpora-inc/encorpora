@@ -8,55 +8,107 @@ import {
   RouterProvider,
 } from "@tanstack/react-router";
 import { useState } from "react";
-import { afterEach, expect, test } from "vitest";
+import { afterEach, expect, test, vi } from "vitest";
 import { queryClient } from "../../../../../lib/query";
-import { CodeSlot } from "../SignInCode";
+import type { useClassAccess } from "../../../pilots/ClassAccess";
+import { PracticeSlot } from "../PracticeSlot";
 
-/* Premium rule 1 on Today: the class code's slot holds one height whether
- * practice is open or not, so practice opening mid-visit moves nothing
- * below it. jsdom lays nothing out, so this holds the structure that makes
- * it true (the same slot, the same hidden height-holder in every state, the
- * feed's first item never re-placed); the pixels are measured in a real
- * browser by scripts/verify-school-spaces-ui.ts at 320, 390, 768 and 1280. */
+/* Premium rule 1 on Today: the header's practice slot is one height in
+ * every state (the Start action, the code, Request seats, waiting, a calm
+ * placeholder), so no transition moves anything below it, and each state
+ * says what to do next. jsdom lays nothing out, so this holds what makes
+ * it true (the same slot, the same hidden height-holder in every state,
+ * nothing re-placed above the feed); the pixels, at 320, 390, 768 and
+ * 1280, and the absence of empty bands, are measured in a real browser by
+ * scripts/verify-school-spaces-ui.ts. */
+type Access = ReturnType<typeof useClassAccess>;
+let access: Access;
+vi.mock("../../../pilots/ClassAccess", async (original) => ({
+  ...(await original<typeof import("../../../pilots/ClassAccess")>()),
+  useClassAccess: () => access,
+}));
+
 afterEach(() => {
   cleanup();
   queryClient.clear();
 });
 
-const place = { org: "o", class: "c" };
-const words = { names: "names", signIn: "sign in", Learners: "Students" };
-let open: (code: string | null) => void = () => {};
+const base: Access = {
+  view: { kind: "none" },
+  pilot: undefined,
+  teaches: true,
+  pending: false,
+  practice: "open",
+  closed: false,
+  checking: false,
+  unavailable: false,
+  retry: () => {},
+};
+const states: Record<string, [Access, string | null]> = {
+  checking: [{ ...base, pending: true, closed: true }, null],
+  start: [
+    {
+      ...base,
+      view: { kind: "start", until: "2026-12-14", joining: false },
+      practice: "waiting",
+      closed: true,
+    },
+    null,
+  ],
+  open: [{ ...base, view: { kind: "active", until: "2026-12-14" } }, "ABCDEF"],
+  ended: [
+    { ...base, view: { kind: "ended" }, practice: "ended", closed: true },
+    null,
+  ],
+  waiting: [
+    {
+      ...base,
+      view: { kind: "waiting" },
+      practice: "waiting",
+      closed: true,
+      teaches: false,
+    },
+    null,
+  ],
+  unavailable: [
+    { ...base, practice: "unknown", closed: true, unavailable: true },
+    null,
+  ],
+};
+let show: (state: string) => void = () => {};
 
-function Today() {
-  const [code, setCode] = useState<string | null>(null);
-  open = setCode;
-  return (
-    <main>
-      <header>
-        <h1>Grade 4 Math</h1>
-        <CodeSlot
-          code={code}
-          closedLine="Practice hasn’t started"
-          place={place}
-          words={words}
-          board={false}
-          manage
-          locked={false}
-        />
-      </header>
-      <ol>
-        <li data-first-item="">Start class</li>
-      </ol>
-    </main>
-  );
-}
-
-test("practice opening swaps the slot's contents and moves nothing below it", async () => {
+test("every state of the slot is the same slot over the same height-holder, and says what to do next", async () => {
   const root = createRootRoute();
   const leaf = createRoute({
     getParentRoute: () => root,
     path: "/",
-    component: Today,
+    component: function Page() {
+      const [state, setState] = useState("checking");
+      show = setState;
+      access = states[state]![0];
+      return (
+        <main>
+          <header>
+            <h1>Grade 4 Math</h1>
+            <PracticeSlot
+              code={states[state]![1]}
+              place={{ org: "o", class: "c" }}
+              words={{
+                names: "names",
+                signIn: "sign in",
+                Learners: "Students",
+              }}
+              board={false}
+              manage
+              locked={false}
+            />
+          </header>
+          <ol>
+            <li data-first-item="">Print cards</li>
+          </ol>
+        </main>
+      );
+    },
   });
   const router = createRouter({
     routeTree: root.addChildren([leaf]),
@@ -73,32 +125,68 @@ test("practice opening swaps the slot's contents and moves nothing below it", as
   await act(async () => {});
   const slot = container.querySelector("[data-code-slot]")!;
   const hold = slot.firstElementChild!;
+  const holdHtml = hold.outerHTML;
   const first = container.querySelector("[data-first-item]")!;
-  const holdBefore = hold.outerHTML;
-  const before = first.getBoundingClientRect();
-  expect(slot.getAttribute("data-code-slot")).toBe("closed");
-  expect(screen.getByText("Practice hasn’t started")).toBeTruthy();
   // Hidden from people and from the keyboard: it only holds the height.
   expect(hold.getAttribute("aria-hidden")).toBe("true");
   expect(hold.hasAttribute("inert")).toBe(true);
-  expect(screen.queryByRole("button", { name: "Copy link" })).toBeNull();
 
-  await act(async () => open("ABCDEF"));
-  // The same slot and the same height-holder, untouched; only the layer
-  // over it changed.
-  expect(container.querySelector("[data-code-slot]")).toBe(slot);
-  expect(slot.firstElementChild).toBe(hold);
-  expect(hold.outerHTML).toBe(holdBefore);
-  expect(slot.children).toHaveLength(2);
-  expect(slot.getAttribute("data-code-slot")).toBe("open");
-  expect(screen.getByRole("button", { name: "Copy link" })).toBeTruthy();
-  expect(screen.queryByText("Practice hasn’t started")).toBeNull();
-  // Nothing was inserted above the feed's first item.
-  expect(container.querySelector("[data-first-item]")).toBe(first);
-  expect(first.getBoundingClientRect()).toEqual(before);
-
-  await act(async () => open(null));
-  expect(slot.firstElementChild).toBe(hold);
-  expect(hold.outerHTML).toBe(holdBefore);
-  expect(slot.getAttribute("data-code-slot")).toBe("closed");
+  const says: Record<string, () => void> = {
+    checking: () =>
+      expect(
+        screen.getByRole("status", { name: "Checking practice" }),
+      ).toBeTruthy(),
+    start: () => {
+      expect(
+        screen.getByRole("heading", { name: "Start practice" }),
+      ).toBeTruthy();
+      expect(screen.getByText(/^30 days, through /)).toBeTruthy();
+      expect(screen.getByRole("button", { name: "Start" })).toBeTruthy();
+    },
+    open: () =>
+      expect(screen.getByRole("button", { name: "Copy link" })).toBeTruthy(),
+    ended: () => {
+      expect(
+        screen.getByRole("heading", { name: "Practice has ended" }),
+      ).toBeTruthy();
+      expect(
+        screen.getByRole("button", { name: "Request seats" }),
+      ).toBeTruthy();
+    },
+    waiting: () =>
+      expect(
+        screen.getByRole("heading", {
+          name: "Waiting for the class’s teacher to start practice",
+        }),
+      ).toBeTruthy(),
+    unavailable: () =>
+      expect(screen.getByRole("button", { name: "Try again" })).toBeTruthy(),
+  };
+  for (const next of [
+    "start",
+    "checking",
+    "open",
+    "ended",
+    "waiting",
+    "unavailable",
+    "open",
+  ]) {
+    await act(async () => show(next));
+    const now = container.querySelector("[data-code-slot]")!;
+    expect(now.getAttribute("data-code-slot")).toBe(next);
+    // The same slot and height-holder, untouched, under one shown layer.
+    expect(now).toBe(slot);
+    expect(now.firstElementChild).toBe(hold);
+    expect(now.children).toHaveLength(2);
+    expect(now.firstElementChild!.outerHTML).toBe(holdHtml);
+    // Copy link is usable only with the code open.
+    expect(screen.queryAllByRole("button", { name: "Copy link" })).toHaveLength(
+      next === "open" ? 1 : 0,
+    );
+    says[next]!();
+    // Nothing was placed above the feed.
+    expect(container.querySelector("header")!.nextElementSibling).toBe(
+      first.parentElement,
+    );
+  }
 });

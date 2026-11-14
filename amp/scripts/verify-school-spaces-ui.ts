@@ -232,6 +232,65 @@ async function noShift(page: Page, what: string, action: () => Promise<void>) {
   assert.ok(moved < 0.01, `${what}: nothing moves (shift ${moved})`);
 }
 
+/** Today's practice slot never shows an empty band: at 320, 390, 768 and
+ * 1280, no run of blank pixel rows across it (top and bottom included) is
+ * taller than 24 px. Decoded on a blank page of its own (the app's content
+ * policy keeps data images out). */
+async function noEmptyBand(page: Page, what: string) {
+  const blank = await page.context().newPage();
+  const size = page.viewportSize()!;
+  try {
+    for (const width of [320, 390, 768, 1280]) {
+      await page.setViewportSize({ width, height: 900 });
+      await settled(page);
+      await page.mouse.move(0, 0);
+      const png = await page
+        .locator("[data-code-slot]")
+        .screenshot({ animations: "disabled" });
+      const band = await blank.evaluate(async (data) => {
+        const image = new Image();
+        image.src = `data:image/png;base64,${data}`;
+        await image.decode();
+        const canvas = document.createElement("canvas");
+        canvas.width = image.width;
+        canvas.height = image.height;
+        const context = canvas.getContext("2d")!;
+        context.drawImage(image, 0, 0);
+        const px = context.getImageData(0, 0, image.width, image.height).data;
+        const bg = [px[0]!, px[1]!, px[2]!];
+        let run = 0;
+        let longest = 0;
+        for (let y = 0; y < image.height; y++) {
+          let empty = true;
+          for (let x = 0; x < image.width && empty; x++) {
+            const i = (y * image.width + x) * 4;
+            if (
+              Math.abs(px[i]! - bg[0]!) +
+                Math.abs(px[i + 1]! - bg[1]!) +
+                Math.abs(px[i + 2]! - bg[2]!) >
+              24
+            )
+              empty = false;
+          }
+          run = empty ? run + 1 : 0;
+          longest = Math.max(longest, run);
+        }
+        return longest;
+      }, png.toString("base64"));
+      const scale = await page.evaluate(() => devicePixelRatio);
+      console.log(`  slot band ${what} at ${width}: ${band / scale} px`);
+      assert.ok(
+        band / scale <= 24,
+        `${what} at ${width}: an empty band of ${band / scale} px in the slot`,
+      );
+    }
+  } finally {
+    await blank.close();
+    await page.setViewportSize(size);
+    await settled(page);
+  }
+}
+
 /** An account, created and signed in on this page. */
 async function signUp(page: Page, email: string, name: string) {
   const created = await page.request.post(`${origin}/api/auth/sign-up/email`, {
@@ -639,32 +698,48 @@ try {
     }
   };
   await closedFor(pilotViewer, "viewer before Start", false);
+  await pilotViewer.goto(`${classUrl}/today`);
+  await pilotViewer
+    .locator('[data-code-slot="waiting"]')
+    .getByRole("heading", {
+      name: "Waiting for the class’s teacher to start practice",
+    })
+    .waitFor();
+  await noEmptyBand(pilotViewer, "waiting for the teacher");
   await closedFor(pilotAide, "aide before Start", false);
   await capture(pilotAide, "aide-board-before-start");
   await teacher.goto(`${classUrl}/today`);
-  // Today's one required item: titled Start practice, its button Start,
-  // and no box to tick.
-  const item = teacher.locator('[data-feed="practice-start"]');
+  // Today's one required step leads the header: Start practice, its
+  // button Start, in the slot the code will take (PracticeSlot), and not
+  // again in the feed.
+  const slot = teacher.locator("[data-code-slot]");
+  const item = teacher.locator('[data-code-slot="start"]');
   await item.getByRole("heading", { name: "Start practice" }).waitFor();
-  assert.equal(await item.getByRole("checkbox").count(), 0);
   const start = item.getByRole("button", { name: "Start", exact: true });
   await start.waitFor();
+  assert.equal(
+    await teacher.locator('[data-feed="practice-start"]').count(),
+    0,
+  );
   assert.equal(await count(teacher, "Start class"), 0, "no Start class yet");
   await capture(teacher, "today-ready");
+  await noEmptyBand(teacher, "Start practice");
   // Practice opens while Today is open, started from another tab: no input
   // on this page, so the browser's own layout-shift score counts every
-  // move. The code's slot already holds its height (CodeSlot): the code
-  // takes it, and the feed's first item stays where it was at every width.
-  const slot = teacher.locator("[data-code-slot]");
-  assert.equal(await slot.getAttribute("data-code-slot"), "closed");
-  const firstItem = teacher.locator("main [data-feed]").first();
+  // move. The slot holds one height (PracticeSlot): the code takes the
+  // Start action's place, and what follows the header stays where it was
+  // at every width.
+  // Where the header ends is where the feed starts (before Start the feed
+  // may have nothing in it yet).
+  const header = teacher.locator("header:has([data-today-title])");
   const widths = [320, 390, 768, 1280] as const;
   const tops = async () => {
     const seen: number[] = [];
     for (const width of widths) {
       await teacher.setViewportSize({ width, height: 900 });
       await settled(teacher);
-      seen.push((await firstItem.boundingBox())!.y);
+      const box = (await header.boundingBox())!;
+      seen.push(box.y + box.height);
     }
     await teacher.setViewportSize({ width: 390, height: 900 });
     await settled(teacher);
@@ -674,7 +749,7 @@ try {
   const other = await teacher.context().newPage();
   await other.goto(`${classUrl}/today`);
   await other
-    .locator('[data-feed="practice-start"]')
+    .locator('[data-code-slot="start"]')
     .getByRole("button", { name: "Start", exact: true })
     .click();
   await other
@@ -699,8 +774,9 @@ try {
   assert.deepEqual(
     await tops(),
     closedTops,
-    "the feed's first item is where it was, at 320, 390, 768 and 1280",
+    "the header ends (and the feed starts) where it did, at 320, 390, 768 and 1280",
   );
+  await noEmptyBand(teacher, "the class code");
   // Started: the board carries the code.
   await teacher.goto(`${classUrl}/start`);
   await teacher.getByText("0 of 4 here").waitFor();
@@ -1069,6 +1145,7 @@ try {
     "no Start class after practice",
   );
   await capture(teacher, "today-expired");
+  await noEmptyBand(teacher, "Practice has ended");
   for (const leaf of ["start", "cards"]) {
     await teacher.goto(`${classUrl}/${leaf}`);
     await teacher
@@ -1124,11 +1201,12 @@ try {
     }),
   );
   await teacher.goto(`${classUrl}/today`);
-  const unknown = teacher.locator('[data-feed="practice-unknown"]');
+  const unknown = teacher.locator('[data-code-slot="unavailable"]');
   await unknown
     .getByRole("heading", { name: "Couldn’t check practice" })
     .waitFor({ timeout: 45_000 });
   await capture(teacher, "today-unknown");
+  await noEmptyBand(teacher, "Couldn’t check practice");
   await teacher.unroute(pilotRoute);
   await unknown.getByRole("button", { name: "Try again" }).click();
   await unknown.waitFor({ state: "detached" });
