@@ -240,15 +240,14 @@ function LearnerMap({ session }: { session: AuthSession }) {
   const notice = me.isPending ? (
     <Loading inline>Loading learners…</Loading>
   ) : me.isError ? (
-    "Learners could not be loaded. Retry to view progress."
-  ) : me.data?.signedIn && learners.length === 0 ? (
-    "Add a learner to see earned skills."
-  ) : !learner ? (
-    "Choose a learner to see earned skills."
+    "Learners didn’t load. Try again."
+  ) : (me.data?.signedIn && learners.length === 0) || !learner ? (
+    // The add link or the learner picker beside it says what to do.
+    ""
   ) : progress.isPending ? (
     <Loading inline>Loading earned skills…</Loading>
   ) : progress.isError ? (
-    "Progress could not be loaded. The map shows the curriculum without earned skills."
+    "Progress didn’t load. Try again."
   ) : (
     // All in: the map says the rest.
     ""
@@ -300,7 +299,7 @@ function LearnerMap({ session }: { session: AuthSession }) {
             !me.isError && <Link to="/start">Add a learner →</Link>}
           {frontier.isError && (
             <p role="status" data-priority="true">
-              The frontier estimate could not be loaded. Retry to refresh it.
+              The level estimate didn’t load. Try again.
             </p>
           )}
           {(me.isError || progress.isError || frontier.isError) && (
@@ -770,8 +769,7 @@ export function MapView({
               <div className="pathways-grade" hidden={!shown && !band}>
                 {!shown && band && (
                   <small>
-                    A curriculum filter is active. Choose All grades to clear
-                    it.
+                    Filtered by grade. Choose All grades to clear.
                   </small>
                 )}
                 <span aria-hidden="true">Grade or course</span>
@@ -871,19 +869,18 @@ export function MapView({
             <p>
               {!threeD
                 ? selected
-                  ? "Cyan: what it builds on · Violet: what it leads to"
-                  : "Rows run from the first skills to precalculus. Brighter gems mark stronger practice."
+                  ? "Cyan: builds on · Violet: leads to"
+                  : "Brighter gems: stronger practice"
                 : selected
-                  ? "Cyan: prerequisites · Violet: next skills · Dotted: related skills"
-                  : "Each point is a skill. Each connection leads from a prerequisite to a skill that uses it."}
+                  ? "Cyan: builds on · Violet: leads to · Dotted: related"
+                  : "Lines lead from a skill to the skills that use it"}
             </p>
             <details className="pathways-note">
               <summary>How skills grow</summary>
               <p>
-                Each correct answer without help fills a skill’s bar by a
-                twentieth. What is earned stays when a skill needs review. The
-                bar records practice; it does not certify a whole grade, and a
-                prerequisite fills only from its own answers.
+                Each correct answer without help fills a twentieth of a
+                skill’s bar. What is earned stays. A bar records practice on
+                that skill only, not a whole grade.
               </p>
               {range && !selected && (
                 <p>
