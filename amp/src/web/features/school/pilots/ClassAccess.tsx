@@ -1,6 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { CopyButton } from "../parts";
-import { useEffect, useState, type FormEvent, type ReactNode } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type FormEvent,
+  type ReactNode,
+} from "react";
 import { z } from "zod";
 import { AGREEMENT_VERSION } from "../../../../schools/agreement";
 import type { PilotState } from "../../../../schools/pilot-contracts";
@@ -91,11 +97,25 @@ export function useClassAccess(place: Place): {
   // open class or open a closed one.
   const remaining = recheckRemaining(year.data);
   const due = remaining !== null && remaining <= 0;
+  // The last ask failed (its answer is older than its failure): the cached
+  // answer is not a fresh one.
+  const failedLast = year.errorUpdatedAt > year.dataUpdatedAt;
+  // Failures in a row since the last answer: they space the next tries.
+  const failures = useRef({ since: 0, count: 0 });
+  if (failures.current.since !== year.dataUpdatedAt)
+    failures.current = { since: year.dataUpdatedAt, count: 0 };
+  const counted = useRef(0);
+  if (failedLast && counted.current !== year.errorUpdatedAt) {
+    counted.current = year.errorUpdatedAt;
+    failures.current.count++;
+  }
   const [wake, setWake] = useState(0);
   useEffect(() => {
     if (remaining === null) return;
     const ask = () => {
-      void year.refetch();
+      // Every screen part watching this class shares one ask: a read in
+      // flight is joined, never cancelled and sent again.
+      void year.refetch({ cancelRefetch: false });
       void queryClient.invalidateQueries({
         predicate: (entry) =>
           entry.queryKey.includes(place.class) &&
@@ -103,9 +123,30 @@ export function useClassAccess(place: Place): {
       });
     };
     if (remaining <= 0) {
-      // Due: ask once now; a failed answer is asked again within the hour.
-      if (!year.isFetching) ask();
-      const again = setTimeout(() => setWake((n) => n + 1), MAX_WAIT_MS);
+      if (year.isFetching) return;
+      // Due: ask now. A failed ask is asked again soon (5 s, 15 s, then
+      // every minute) while the screen says it couldn't check; only an
+      // answer goes back to the hourly measure.
+      if (!failedLast) {
+        ask();
+        return;
+      }
+      const delay =
+        RETRY_MS[Math.min(failures.current.count, RETRY_MS.length) - 1] ??
+        RETRY_MS[0]!;
+      // Several parts of a screen arm this together: the first to fire
+      // asks, the rest see the query moved on and leave it.
+      const key = classYearOptions(session, place.class).queryKey;
+      const armed = [year.errorUpdatedAt, year.dataUpdatedAt];
+      const again = setTimeout(() => {
+        const state = queryClient.getQueryState(key);
+        if (
+          state?.errorUpdatedAt === armed[0] &&
+          state.dataUpdatedAt === armed[1] &&
+          state.fetchStatus === "idle"
+        )
+          ask();
+      }, delay);
       return () => clearTimeout(again);
     }
     // Never armed further than an hour ahead: each wake re-measures and
@@ -120,6 +161,9 @@ export function useClassAccess(place: Place): {
     year.data?.recheckAt,
     year.data?.serverNow,
     year.data?.receivedAt,
+    year.errorUpdatedAt,
+    year.isFetching,
+    due,
     wake,
     place.class,
   ]);
@@ -152,7 +196,12 @@ export function useClassAccess(place: Place): {
   const practice: Practice = read;
   const checking = due && read === "open";
   const unavailable =
-    !pending && (practice === "unknown" || (readable && query.isError));
+    !pending &&
+    (practice === "unknown" ||
+      (readable && query.isError) ||
+      // A due recheck that failed: say so, with Try again, never an
+      // endless "Checking practice".
+      (due && failedLast));
   const view: AccessView = pilot
     ? accessView(pilot, teaches)
     : practice === "ended"
@@ -175,6 +224,8 @@ export function useClassAccess(place: Place): {
 
 /** The longest a screen waits before measuring again. */
 const MAX_WAIT_MS = 60 * 60 * 1000;
+/** How soon a failed recheck is asked again, then every minute. */
+const RETRY_MS = [5_000, 15_000, 60_000] as const;
 
 /** How long until the class should be asked again, in the server's time:
  * its `recheckAt` less its clock at the answer, less what this page's

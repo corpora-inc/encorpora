@@ -1,7 +1,7 @@
 import { SchoolError } from "./contracts.js";
-import type { PoolClient } from "pg";
+import type { Pool, PoolClient } from "pg";
 import type { FreeAllowance } from "../learning/free-allowance.js";
-import { activeToday } from "./principal.js";
+import { activeToday, localDayStart } from "./principal.js";
 
 /** One read shared by practice, student /me and the teacher's workbook view. */
 export async function schoolPilotAccess(
@@ -86,19 +86,22 @@ export async function classPracticeGates(
 }
 
 /** The next moment anything that decides a class's practice, or this
- * reader's access to it, can change (CP-3 r4 H1): a license, a seat or
- * grant, a teacher's pilot, its grace or an extension starting or ending;
- * any of the class's students' enrollments (here, or in a class whose pilot
- * covers them) or student roles starting or ending, at midnight in their
- * school's own time zone; and the reader's own role or enrollment. Not a
- * verdict: a screen left open asks the server again then, and the answer
- * decides. Null for a class never gated (a family's, a demo) or with no
- * dated boundary ahead. */
+ * reader's access to it, can change (CP-3 r4 H1, r5): a license, a valid
+ * seat or a grant, a teacher's pilot, its grace or an extension starting or
+ * ending; any of the class's students' enrollments (here, or in a class
+ * whose pilot covers them) or student roles starting or ending; the
+ * reader's own role and enrollment, and a Clever administrator's bootstrap
+ * authority. A date flips at `localDayStart` (the same comparison the gate
+ * makes), in every time zone the gate could read it in: the role's own
+ * school, and each school the student's classes are in. Over-collecting is
+ * safe: it is a moment to ask again, and the server's answer decides.
+ * Read with the gate in one snapshot (`classPractice`). */
 export async function classRecheckAt(
   db: Pick<PoolClient, "query">,
   classId: string,
   accountId: string | null = null,
 ): Promise<string | null> {
+  const day = localDayStart("dz.d", "dz.tz");
   const row = (
     await db.query<{ exempt: boolean; next: Date | null }>(
       `WITH klass AS (
@@ -107,42 +110,62 @@ export async function classRecheckAt(
        pupils AS (
          SELECT DISTINCT p.id AS person,p.learner_id AS learner FROM amp_enrollments e
          JOIN amp_people p ON p.id=e.person_id AND p.deleted_at IS NULL
-         WHERE e.class_id=$1 AND e.role='student'),
-       -- Every class a student is enrolled in (its pilot may cover them).
+         WHERE e.class_id=$1 AND e.role='student'
+           AND (e.end_on IS NULL OR e.end_on>=current_date-2)),
+       -- Every current class a student is in (its pilot may cover them).
        placed AS (
-         SELECT e.*,o.timezone,c.id AS class FROM amp_enrollments e
-         JOIN pupils u ON u.person=e.person_id
+         SELECT e.person_id AS person,e.begin_on,e.end_on,c.id AS class,o.timezone
+         FROM amp_enrollments e JOIN pupils u ON u.person=e.person_id
          JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL
          JOIN amp_orgs o ON o.id=c.org_id
-         WHERE e.role='student'),
-       times(t) AS (
-         SELECT l.starts_at FROM amp_school_licenses l, klass k WHERE l.org_id=ANY(k.path)
-         UNION ALL SELECT l.ends_at FROM amp_school_licenses l, klass k WHERE l.org_id=ANY(k.path)
-         UNION ALL SELECT x FROM amp_seats s JOIN pupils u ON u.person=s.person_id
-           JOIN amp_school_licenses l ON l.id=s.license_id,
-           LATERAL unnest(ARRAY[l.starts_at,l.ends_at,s.released_at]) x
-         UNION ALL SELECT x FROM amp_grants g JOIN pupils u ON u.learner=g.learner_id,
-           LATERAL unnest(ARRAY[g.starts_at,g.ends_at]) x
-         UNION ALL SELECT x FROM placed e JOIN amp_class_pilots cp ON cp.class_id=e.class
-           JOIN amp_teacher_pilots t ON t.id=cp.pilot_id,
-           LATERAL unnest(ARRAY[t.started_at,t.ends_at,t.grace_ends_at]) x
-         UNION ALL SELECT x.until_at FROM placed e JOIN amp_class_pilots cp ON cp.class_id=e.class
-           JOIN amp_pilot_extensions x ON x.pilot_id=cp.pilot_id
-         UNION ALL SELECT (d::timestamp AT TIME ZONE e.timezone) FROM placed e,
-           LATERAL unnest(ARRAY[e.begin_on,e.end_on]) d
-         UNION ALL SELECT (d::timestamp AT TIME ZONE o.timezone) FROM amp_org_roles r
-           JOIN pupils u ON u.person=r.person_id JOIN amp_orgs o ON o.id=r.org_id,
-           LATERAL unnest(ARRAY[r.begin_on,r.end_on]) d
-           WHERE r.role='student'
-         -- The reader's own role and enrollment here.
-         UNION ALL SELECT (d::timestamp AT TIME ZONE o.timezone) FROM amp_people me
-           JOIN amp_org_roles r ON r.person_id=me.id JOIN amp_orgs o ON o.id=r.org_id, klass k,
-           LATERAL unnest(ARRAY[r.begin_on,r.end_on]) d
-           WHERE me.account_id=$2 AND me.deleted_at IS NULL AND r.org_id=ANY(k.path)
-         UNION ALL SELECT (d::timestamp AT TIME ZONE k.timezone) FROM amp_people me
+         WHERE e.role='student' AND (e.end_on IS NULL OR e.end_on>=current_date-2)),
+       roles AS (
+         SELECT r.person_id AS person,r.begin_on,r.end_on,o.timezone FROM amp_org_roles r
+         JOIN pupils u ON u.person=r.person_id JOIN amp_orgs o ON o.id=r.org_id
+         WHERE r.role='student' AND (r.end_on IS NULL OR r.end_on>=current_date-2)),
+       mine AS (
+         SELECT r.id,r.begin_on,r.end_on,o.timezone FROM amp_people me
+         JOIN amp_org_roles r ON r.person_id=me.id JOIN amp_orgs o ON o.id=r.org_id, klass k
+         WHERE me.account_id=$2 AND me.deleted_at IS NULL AND r.org_id=ANY(k.path)),
+       -- Each date with each zone the gate reads it in: an enrollment in
+       -- its class's school; a student role in its own school (seats) and
+       -- in each school the student's classes are in (pilots); the reader's
+       -- role in its school and the class's; the reader's enrollment here.
+       dz(d,tz) AS (
+         SELECT x,e.timezone FROM placed e, LATERAL unnest(ARRAY[e.begin_on,e.end_on]) x
+         UNION SELECT x,r.timezone FROM roles r, LATERAL unnest(ARRAY[r.begin_on,r.end_on]) x
+         UNION SELECT x,e.timezone FROM roles r JOIN placed e ON e.person=r.person,
+           LATERAL unnest(ARRAY[r.begin_on,r.end_on]) x
+         UNION SELECT x,m.timezone FROM mine m, LATERAL unnest(ARRAY[m.begin_on,m.end_on]) x
+         UNION SELECT x,k.timezone FROM mine m, klass k,
+           LATERAL unnest(ARRAY[m.begin_on,m.end_on]) x
+         UNION SELECT x,k.timezone FROM amp_people me
            JOIN amp_enrollments e ON e.person_id=me.id AND e.class_id=$1, klass k,
-           LATERAL unnest(ARRAY[e.begin_on,e.end_on]) d
-           WHERE me.account_id=$2 AND me.deleted_at IS NULL)
+           LATERAL unnest(ARRAY[e.begin_on,e.end_on]) x
+           WHERE me.account_id=$2 AND me.deleted_at IS NULL),
+       times(t) AS (
+         SELECT ${day} FROM dz WHERE dz.d IS NOT NULL AND dz.d>=current_date-2
+         UNION ALL SELECT x FROM amp_school_licenses l, klass k,
+           LATERAL unnest(ARRAY[l.starts_at,l.ends_at]) x
+           WHERE l.org_id=ANY(k.path) AND l.status='active'
+         -- Only a seat that can be valid: open, on an active license.
+         UNION ALL SELECT x FROM pupils u JOIN amp_seats s
+             ON s.person_id=u.person AND s.released_at IS NULL
+           JOIN amp_school_licenses l ON l.id=s.license_id AND l.status='active',
+           LATERAL unnest(ARRAY[l.starts_at,l.ends_at]) x
+         UNION ALL SELECT x FROM pupils u JOIN amp_grants g
+             ON g.learner_id=u.learner AND g.status='active',
+           LATERAL unnest(ARRAY[g.starts_at,g.ends_at]) x
+         UNION ALL SELECT x FROM (SELECT DISTINCT cp.pilot_id FROM placed e
+             JOIN amp_class_pilots cp ON cp.class_id=e.class) used
+           JOIN amp_teacher_pilots t ON t.id=used.pilot_id,
+           LATERAL unnest(ARRAY[t.started_at,t.ends_at,t.grace_ends_at]) x
+         UNION ALL SELECT x.until_at FROM (SELECT DISTINCT cp.pilot_id FROM placed e
+             JOIN amp_class_pilots cp ON cp.class_id=e.class) used
+           JOIN amp_pilot_extensions x ON x.pilot_id=used.pilot_id
+         -- A Clever administrator's authority ends at its bootstrap's end.
+         UNION ALL SELECT m.bootstrap_valid_until FROM mine
+           JOIN amp_clever_memberships m ON m.local_id=mine.id AND m.kind='org_role')
        SELECT (SELECT exempt FROM klass) AS exempt,
          (SELECT min(t) FROM times WHERE t>now()) AS next`,
       [classId, accountId],
@@ -150,6 +173,39 @@ export async function classRecheckAt(
   ).rows[0];
   if (!row || row.exempt !== false || !row.next) return null;
   return new Date(row.next).toISOString();
+}
+
+/** Where a class stands for one reader, read in one snapshot (CP-3 r5): the
+ * gate, the next moment to ask again and the server's clock all at the same
+ * `now()` (a transaction's), so a boundary falling while the answer is
+ * assembled is never lost between them. */
+export async function classPractice(
+  pool: Pool,
+  classId: string,
+  accountId: string | null,
+): Promise<{
+  gate: PracticeGate | null;
+  recheckAt: string | null;
+  serverNow: string;
+}> {
+  const client = await pool.connect();
+  try {
+    await client.query("BEGIN ISOLATION LEVEL REPEATABLE READ READ ONLY");
+    const gate = await classPracticeGate(client, classId);
+    const recheckAt = await classRecheckAt(client, classId, accountId);
+    const clock = await client.query<{ now: Date }>("SELECT now() AS now");
+    await client.query("COMMIT");
+    return {
+      gate,
+      recheckAt,
+      serverNow: new Date(clock.rows[0]!.now).toISOString(),
+    };
+  } catch (error) {
+    await client.query("ROLLBACK").catch(() => undefined);
+    throw error;
+  } finally {
+    client.release();
+  }
 }
 
 /** Sign-in tools (the class code, the board, printed cards) only while a

@@ -12,7 +12,8 @@ import { queryClient, sessionOptions } from "../../../../lib/query";
 import { orgOptions } from "../../api";
 import { classYearOptions } from "../../org/org-api";
 import { pilotOptions } from "../../pilots/api";
-import { presenceOptions } from "../api";
+import { presenceOptions, useStaffSession } from "../api";
+import { useClassAccess } from "../../pilots/ClassAccess";
 import { StartClassScreen } from "../StartClassScreen";
 
 /* CP-3 r3 H1 and r4: a board left open on the wall while the class reaches
@@ -40,10 +41,21 @@ async function board({
   recheckIn,
   skew,
   after,
+  failing = 0,
+  delayFirst = 0,
+  alone = false,
 }: {
   recheckIn: number;
   skew: number;
   after: "ended" | "open";
+  /** Year reads after the moment that fail (503) before one answers. */
+  failing?: number;
+  /** The first year read (none cached) takes this long to arrive; its
+   * clock is read when it was asked. */
+  delayFirst?: number;
+  /** Only the class's access, without the board's own 4 s poll: a weeks
+   * long wait is then weeks of the access timer alone. */
+  alone?: boolean;
 }) {
   vi.useFakeTimers({
     toFake: [
@@ -57,6 +69,18 @@ async function board({
   });
   // The device's wall clock, wrong by `skew`.
   vi.setSystemTime(SERVER + skew);
+  // Every delay the page arms: a browser fires one past 2^31 − 1 ms
+  // (24.8 days) at once.
+  const delays: number[] = [];
+  const faked = globalThis.setTimeout;
+  vi.spyOn(globalThis, "setTimeout").mockImplementation(((
+    run: () => void,
+    ms?: number,
+    ...rest: unknown[]
+  ) => {
+    delays.push(ms ?? 0);
+    return faked(run, ms, ...rest);
+  }) as typeof setTimeout);
   window.scrollTo = () => {};
   const start = performance.now();
   const serverNow = () => SERVER + (performance.now() - start);
@@ -72,6 +96,24 @@ async function board({
     const ended = serverNow() >= recheckAt && after === "ended";
     if (url.includes("/year")) {
       reads++;
+      if (delayFirst && reads === 1) {
+        const asked = serverNow();
+        await new Promise((resolve) => setTimeout(resolve, delayFirst));
+        return json({
+          past: false,
+          practice: "open",
+          can: ["signin.read", "signin.manage"],
+          recheckAt: new Date(recheckAt).toISOString(),
+          serverNow: new Date(asked).toISOString(),
+        });
+      }
+      if (serverNow() >= recheckAt && failing > 0) {
+        failing--;
+        return new Response(
+          JSON.stringify({ error: "school_service_unavailable" }),
+          { status: 503, headers: { "content-type": "application/json" } },
+        );
+      }
       return json({
         past: false,
         practice: ended ? "ended" : "open",
@@ -119,14 +161,15 @@ async function board({
     teaches: [C],
     can: ["org.read", "classes.read"],
   } as never);
-  queryClient.setQueryData(classYearOptions(auth, C).queryKey, {
-    past: false,
-    practice: "open",
-    can: ["signin.read", "signin.manage"],
-    recheckAt: new Date(recheckAt).toISOString(),
-    serverNow: new Date(SERVER).toISOString(),
-    receivedAt: start,
-  });
+  if (!delayFirst)
+    queryClient.setQueryData(classYearOptions(auth, C).queryKey, {
+      past: false,
+      practice: "open",
+      can: ["signin.read", "signin.manage"],
+      recheckAt: new Date(recheckAt).toISOString(),
+      serverNow: new Date(SERVER).toISOString(),
+      receivedAt: start,
+    });
   queryClient.setQueryData(pilotOptions(auth, C).queryKey, {
     status: "grace",
     startedAt: new Date(SERVER - 40 * 864e5).toISOString(),
@@ -154,7 +197,7 @@ async function board({
   const leaf = createRoute({
     getParentRoute: () => root,
     path: "/school/$org/classes/$class/start",
-    component: StartClassScreen,
+    component: alone ? Access : StartClassScreen,
   });
   const router = createRouter({
     routeTree: root.addChildren([leaf]),
@@ -175,12 +218,23 @@ async function board({
   });
   return {
     reads: () => reads,
+    longest: () => Math.max(0, ...delays),
     code: () => screen.queryByRole("img", { name: /Class code A B C D E F/ }),
     advance: (ms: number) =>
       act(async () => {
         await vi.advanceTimersByTimeAsync(ms);
       }),
   };
+}
+
+/** The class's access alone: its code shows only while practice is open. */
+function Access() {
+  // Every class screen holds the session, as the board does.
+  useStaffSession();
+  const access = useClassAccess({ org: O, class: C });
+  return access.closed ? null : (
+    <span role="img" aria-label="Class code A B C D E F" />
+  );
 }
 
 for (const [name, skew] of [
@@ -216,13 +270,63 @@ test(
   { timeout: 120_000 },
   async () => {
     const days = 30 * 864e5;
-    const page = await board({ recheckIn: days, skew: 0, after: "ended" });
+    const page = await board({
+      recheckIn: days,
+      skew: 0,
+      after: "ended",
+      alone: true,
+    });
     // Days pass, a wake an hour at a time, asking nothing early.
     await page.advance(days - 60_000);
     expect(page.reads()).toBe(0);
+    expect(page.longest()).toBeLessThanOrEqual(2 ** 31 - 1);
     expect(page.code()).toBeTruthy();
     await page.advance(120_000);
     expect(page.reads()).toBeGreaterThan(0);
     expect(page.code()).toBeNull();
   },
 );
+
+test("a recheck that fails says so with Try again, tries again soon, and recovers", async () => {
+  const page = await board({
+    recheckIn: 15_000,
+    skew: 0,
+    after: "open",
+    failing: 2,
+  });
+  await page.advance(16_000);
+  await page.advance(1_000);
+  // Never an endless "Checking practice": it couldn't check, and says so.
+  expect(screen.queryByText("Checking practice")).toBeNull();
+  expect(
+    screen.getByRole("heading", { name: "Couldn’t check practice" }),
+  ).toBeTruthy();
+  expect(screen.getByRole("button", { name: "Try again" })).toBeTruthy();
+  expect(page.code()).toBeNull();
+  const afterFirst = page.reads();
+  // Tried again in 5 s (fails), then 15 s (answers: open).
+  await page.advance(5_500);
+  expect(page.reads()).toBe(afterFirst + 1);
+  await page.advance(16_000);
+  await page.advance(1_000);
+  expect(page.reads()).toBe(afterFirst + 2);
+  expect(page.code()).toBeTruthy();
+});
+
+test("an answer that took a minute to arrive counts its age: the moment is not postponed", async () => {
+  const page = await board({
+    recheckIn: 15_000,
+    skew: 0,
+    after: "ended",
+    delayFirst: 60_000,
+  });
+  // The answer arrives a minute after it was asked, its moment already
+  // passed: the code never shows, and the class is asked again at once.
+  await page.advance(60_500);
+  expect(page.code()).toBeNull();
+  await page.advance(1_000);
+  expect(page.reads()).toBeGreaterThan(1);
+  expect(
+    screen.getByRole("heading", { name: "Practice has ended" }),
+  ).toBeTruthy();
+});

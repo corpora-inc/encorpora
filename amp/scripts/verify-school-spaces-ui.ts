@@ -341,7 +341,7 @@ try {
          FROM amp_attempts a WHERE a.learner_id=p.learner_id),'[]') AS attempts,
        COALESCE((SELECT json_agg(json_build_object('skill',s.skill_id,'digest',md5(s.state::text),
            'attempts',(s.state->>'attempts')::int,
-           'recent',COALESCE((SELECT json_agg(x->>'id') FROM jsonb_array_elements(s.state->'recentOutcomes') x),'[]'))
+           'recent',COALESCE((SELECT json_agg(x->>'id' ORDER BY n) FROM jsonb_array_elements(s.state->'recentOutcomes') WITH ORDINALITY AS r(x, n)),'[]'))
            ORDER BY s.skill_id)
          FROM amp_skill_evidence s WHERE s.learner_id=p.learner_id),'[]') AS evidence,
        COALESCE((SELECT json_agg(json_build_object('day',d.day::text,'surface',d.surface,
@@ -387,6 +387,8 @@ try {
    * are exactly the marks, every earlier answer is unchanged, evidence
    * changes only for the skills the marks practiced, and nothing else of
    * anyone's changes. */
+  /** Answers an evidence window holds (src/server/evidence.ts). */
+  const WINDOW = 5;
   function afterMarks(
     before: Records,
     later: Records,
@@ -434,17 +436,29 @@ try {
           (then?.attempts ?? 0) + marked.length,
           `${skill}: the marks counted on top of the earlier answers`,
         );
-        for (const answer of marked)
-          assert.ok(
-            now.recent.includes(answer.id),
-            `${skill}: the mark is in it`,
-          );
-        const keptEarlier = (then?.recent ?? []).filter((id) =>
-          now.recent.includes(id),
-        ).length;
-        assert.ok(
-          keptEarlier >= (then?.recent.length ?? 0) - marked.length,
-          `${skill}: the earlier answers are kept, but for any the window let go`,
+        // The window holds the last five answers (src/server/evidence.ts):
+        // the newest earlier answers it has room for, in their order, then
+        // exactly the marks.
+        const earlier = then?.recent ?? [];
+        const room = Math.max(0, WINDOW - marked.length);
+        const kept = room === 0 ? [] : earlier.slice(-room);
+        assert.equal(
+          now.recent.length,
+          Math.min(WINDOW, earlier.length + marked.length),
+          `${skill}: the window is as full as it can be`,
+        );
+        assert.deepEqual(
+          now.recent.slice(0, kept.length),
+          kept,
+          `${skill}: the newest earlier answers are kept, in order`,
+        );
+        assert.deepEqual(
+          [...now.recent.slice(kept.length)].sort(),
+          marked
+            .map((entry) => entry.id)
+            .slice(-WINDOW)
+            .sort(),
+          `${skill}: the rest of the window is exactly the marks`,
         );
       }
     }
