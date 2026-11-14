@@ -480,8 +480,8 @@ try {
   await sibling.close();
   await page.setViewportSize({ width: 320, height: 844 });
   await page.goto(`${origin}/pathways?topic=linear`);
-  await page.getByRole("searchbox", { name: "Find a skill" }).waitFor();
-  const search = page.getByRole("searchbox", { name: "Find a skill" });
+  await page.getByRole("searchbox", { name: "Search", exact: true }).waitFor();
+  const search = page.getByRole("searchbox", { name: "Search", exact: true });
   await page
     .getByText(
       "Explore the curriculum. Practice lights up each skill you earn.",

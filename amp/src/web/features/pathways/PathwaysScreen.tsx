@@ -696,12 +696,10 @@ export function MapView({
         }}
       >
         <label className="pathways-search">
-          {" "}
-          <span className="sr-only">Find a skill</span>
           <input
             type="search"
-            aria-label="Search skills, lessons and math words"
-            placeholder="Search skills, lessons, math words…"
+            aria-label="Search"
+            placeholder="Search"
             maxLength={100}
             value={field.text}
             onFocus={() => setBrowse(true)}

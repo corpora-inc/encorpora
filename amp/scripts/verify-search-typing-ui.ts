@@ -106,7 +106,7 @@ const screens: Screen[] = [
   {
     id: "pathways",
     path: "/pathways",
-    label: "Find a skill",
+    label: "Search",
     param: "topic",
   },
   {
