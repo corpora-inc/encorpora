@@ -309,7 +309,6 @@ function NameStep(props: StepProps) {
       kind={kind}
       index={index}
       title="Your name"
-      lede="Invitations and anything you share show it."
       next={
         <Button
           variant="primary"
