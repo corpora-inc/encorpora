@@ -118,10 +118,22 @@ test("CP-2 M1: a refused /me leaves no relationship behind; a failed lookup is f
     });
   expect(render(queries)?.space).toBe("classroom");
   queries.setQueryData(orgOptions(session, SCHOOL).queryKey, org as never);
-  queries
+  const query = queries
     .getQueryCache()
-    .find({ queryKey: orgOptions(session, SCHOOL).queryKey })!
-    .setState({ status: "error", error: new Error("offline") });
+    .find({ queryKey: orgOptions(session, SCHOOL).queryKey })!;
+  // A refetch that failed keeps this session's last answer on screen…
+  query.setState({ status: "error", error: new Error("offline") });
+  const kept = render(queries);
+  expect(kept?.space === "classroom" && kept.status).not.toBe("failed");
+  // …a lookup that never answered is failed (once its retry has failed too).
+  queries.setDefaultOptions({
+    queries: { retry: false, staleTime: Infinity, retryOnMount: false },
+  });
+  query.setState({
+    status: "error",
+    data: undefined,
+    error: new Error("offline"),
+  });
   const failed = render(queries);
   expect(failed?.space === "classroom" && failed.status).toBe("failed");
 });

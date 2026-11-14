@@ -1,4 +1,5 @@
 import { forgetEveryLink } from "../features/links/forget";
+import { settleSwitches } from "../lib/link-carry";
 import { setAnalyticsSession } from "../lib/analytics";
 import { NativeGate } from "../NativeGate";
 import { nativeRuntime } from "../native-runtime";
@@ -95,17 +96,20 @@ function SessionProviders({
         if (previous?.accountId !== session?.accountId) {
           clearOnboardingDraft();
           // A link held for one account never carries to another; a sign-in
-          // from no account keeps the link that started it.
+          // from no account keeps the link that started it, and an account
+          // switch started from a link is an ordinary carry once it arrives.
           if (previous?.accountId) forgetEveryLink();
+          else if (session) settleSwitches();
           setIdentityVersion((version) => version + 1);
           void queryClient.cancelQueries({ queryKey: ["account"] });
           queryClient.removeQueries({ queryKey: ["account"] });
         }
-        // A new session: nothing asked with the old one is sent, read or
-        // cached again, and every mounted screen starts over in it, so no
-        // screen keeps the old session's answers or actions.
-        if (retireSession(previous, session))
-          setIdentityVersion((version) => version + 1);
+        // A new session: nothing asked with the old one is sent, handled or
+        // cached again. The same account's renewal keeps what is on screen,
+        // drafts included; only another account resets it (above), and a
+        // renewal whose account doesn't load keeps the screen out (the
+        // shell's content guard).
+        retireSession(previous, session);
         void queryClient.cancelQueries({ queryKey: sessionOptions.queryKey });
         queryClient.setQueryData(sessionOptions.queryKey, session);
         if (previous?.accountId && previous.accountId !== session?.accountId)

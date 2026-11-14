@@ -8,7 +8,13 @@
  * one's answers or actions, and an old loader can't write into it.
  */
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
-import { act, cleanup, render, screen } from "@testing-library/react";
+import {
+  act,
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+} from "@testing-library/react";
 import { useQuery } from "@tanstack/react-query";
 import {
   createMemoryHistory,
@@ -25,6 +31,7 @@ import { useSettledMatch, useSpace } from "../../features/spaces/useSpace";
 import { useLearningView } from "../../lib/learning-view";
 import { meOptions, queryClient, sessionOptions } from "../../lib/query";
 import { useLearnerStore } from "../../learner-store";
+import { forgetRetiredSessions } from "../../lib/session-generation";
 import {
   classesOptions,
   orgOptions,
@@ -191,6 +198,7 @@ beforeEach(() => {
     dispatchEvent: () => false,
   })) as never;
   queryClient.clear();
+  forgetRetiredSessions();
   localStorage.clear();
   sessionStorage.clear();
   h.renders = [];
@@ -330,9 +338,11 @@ test("CP-2 r3 M1: a new session whose account didn't load shows nothing of the o
     replacement.reject(new Error("replacement /me offline"));
     await pause();
   });
-  expect(
-    queryClient.getQueryData(orgOptions(auth, O).queryKey),
-  ).toBeUndefined();
+  // The old session's late answer was never written. Same-account renewal
+  // keeps the account's earlier answers; the unconfirmed session shows none.
+  const kept = queryClient.getQueryData(orgOptions(auth, O).queryKey) as
+    { name: string } | undefined;
+  expect(kept?.name).not.toBe("OLD LATE RESPONSE");
   expect(screen.queryByRole("link", { name: "Start class" })).toBeNull();
   expect(screen.queryByText(/old screen state/)).toBeNull();
   expect(screen.queryByText(/OLD LATE RESPONSE/)).toBeNull();
@@ -363,6 +373,68 @@ test("CP-2 r3 M1: the real staff screen's management form goes with the old sess
   });
   expect(screen.queryByRole("heading", { name: "Invite someone" })).toBeNull();
   expect(screen.queryByRole("textbox", { name: "Email" })).toBeNull();
+});
+
+test("CP-2 r4 N4: a routine renewal for the same account keeps the staff form's draft", async () => {
+  const { StaffScreen } = await import("../../features/school/StaffScreen");
+  seedSchool();
+  queryClient.setQueryData(staffOptions(auth, O).queryKey, [] as never);
+  const router = await mount(
+    `/school/${O}/staff`,
+    StaffScreen,
+    undefined,
+    "/school/$org/staff",
+  );
+  const email = () =>
+    screen.getByRole("textbox", { name: "Email" }) as HTMLInputElement;
+  fireEvent.change(email(), { target: { value: "colleague@example.test" } });
+  h.request.mockImplementation(async (url: string) =>
+    url === "/me"
+      ? me
+      : url === `/school/orgs/${O}`
+        ? { org }
+        : url.includes("/classes")
+          ? { classes: [] }
+          : url.endsWith("/staff")
+            ? { staff: [] }
+            : {},
+  );
+  await act(async () => {
+    h.changed!({ ...auth, token: "new" });
+    await pause();
+  });
+  expect(router.state.location.pathname).toBe(`/school/${O}/staff`);
+  expect(email().value).toBe("colleague@example.test");
+});
+
+test("CP-2 r4 M1: cancelling the session check during a renewal leaves the old token retired", async () => {
+  const { isRetired } = await import("../../lib/session-generation");
+  await mount("/account/security", () => <div>Account</div>);
+  const gate = deferred();
+  const checking = queryClient
+    .fetchQuery({
+      ...sessionOptions,
+      staleTime: 0,
+      queryFn: () => gate.promise as never,
+    })
+    .catch(() => null);
+  await act(async () => {
+    h.changed!({ ...auth, token: "new" });
+    await pause();
+  });
+  await checking;
+  const calls: string[] = [];
+  h.request.mockImplementation(async (url: string) => {
+    calls.push(url);
+    return {};
+  });
+  const { request } = await import("../../lib/api");
+  const { z } = await import("zod");
+  await expect(
+    request("/probe", z.unknown(), { token: auth.token }),
+  ).rejects.toMatchObject({ code: "session_replaced" });
+  expect(isRetired(auth.token)).toBe(true);
+  expect(calls).toEqual([]);
 });
 
 test("CP-2 r3 M1: an old loader that resumes after a new session neither asks nor writes", async () => {

@@ -3,8 +3,9 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import type { InviteView } from "../../../schools/setup-contracts";
-import { notifyAccountSessionChanged, signOut } from "../../auth";
+import { signOut } from "../../auth";
 import { AppError } from "../../lib/AppError";
+import { linkRefused } from "../../lib/link-carry";
 import { sessionOptions, meOptions } from "../../lib/query";
 import { useLoggedError } from "../../feedback";
 import { Button, buttonClass } from "../../ui/Button";
@@ -15,12 +16,7 @@ import { accountClient } from "../../account-client";
 import { SUPPORT_EMAIL } from "../support/SupportHelp";
 import { refreshSchool, school } from "./api";
 import { roleNames } from "./parts";
-import {
-  forgetInvite,
-  markSchoolSignup,
-  rememberInvite,
-  rememberedInvite,
-} from "./paths";
+import { forgetInvite, rememberInvite, rememberedInvite } from "./paths";
 import { Brand } from "./SchoolFrame";
 import styles from "./School.module.css";
 
@@ -35,8 +31,9 @@ const roleWord = (role: string) =>
   "a teacher";
 
 /** An invitation, opened from mail or a copied link. The token lives only in the
- * URL's fragment, which no server or report ever sees, and in this device's
- * store while its holder signs in. */
+ * URL's fragment, which no server or report ever sees, this page's memory,
+ * and the carry its holder starts by leaving to sign in from it
+ * (`lib/link-carry.ts`). */
 export function InviteScreen() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -59,13 +56,9 @@ export function InviteScreen() {
     queryFn: () => school.lookupInvite(parsed!.token),
   });
   // A link that is over (used, expired, ended) or that the server refuses is
-  // let go here, held and carried alike; a passing network failure is not
-  // (capability-entry.ts).
-  const over =
-    (!!invite.data && invite.data.status !== "open") ||
-    (invite.error instanceof AppError &&
-      (invite.error.status ?? 0) >= 400 &&
-      (invite.error.status ?? 0) < 500);
+  // let go here, held and carried alike; a failure that may pass is not.
+  const refused = linkRefused(invite.error);
+  const over = (!!invite.data && invite.data.status !== "open") || refused;
   useEffect(() => {
     if (over) forgetInvite();
   }, [over]);
@@ -75,14 +68,14 @@ export function InviteScreen() {
   const [error, setError] = useState("");
   const [confirmSent, setConfirmSent] = useState(false);
   useLoggedError(error);
-  // Carry the invitation across sign-in, and the proof to account creation.
+  // The address it was sent to starts the sign-in form. The link itself is
+  // carried only when its holder leaves to sign in (`carry`).
   useEffect(() => {
-    if (!parsed || session) return;
-    const value = fragment.replace(/^#/, "");
-    rememberInvite(value);
-    markSchoolSignup(value);
-    if (invite.data?.email) useAuthDraft.getState().setEmail(invite.data.email);
-  }, [parsed?.token, session, invite.data?.email]);
+    if (!session && invite.data?.email)
+      useAuthDraft.getState().setEmail(invite.data.email);
+  }, [session, invite.data?.email]);
+  const value = fragment.replace(/^#/, "");
+  const carry = () => rememberInvite(value);
   const accept = async () => {
     if (!session || !parsed) return;
     if (!name.trim()) {
@@ -148,23 +141,19 @@ export function InviteScreen() {
     !me.account.emailVerified &&
     !parsed?.proof;
   const useAnother = async () => {
-    // The link stays on this device across the other sign-in, which comes
-    // straight back here.
-    const value = fragment.replace(/^#/, "");
-    rememberInvite(value);
-    markSchoolSignup(value);
-    const result = await accountClient.signOut();
-    if (result.error) {
-      console.error("Signing out didn’t finish", result.error);
+    // This link, and only this one, survives the sign-out; the other
+    // sign-in comes straight back to it (lib/link-carry.ts).
+    rememberInvite(value, { switching: true });
+    try {
+      await signOut("/sign-in?return=school-invite");
+    } catch (failure) {
+      console.error("Signing out didn’t finish", failure);
       setError("Signing out didn’t finish. Try again in a moment.");
-      return;
     }
-    notifyAccountSessionChanged();
-    window.location.assign("/sign-in?return=school-invite");
   };
   const sendConfirmation = async () => {
     if (!email) return;
-    rememberInvite(fragment.replace(/^#/, ""));
+    carry();
     const result = await accountClient.sendVerificationEmail({
       email,
       callbackURL: "/school/invite",
@@ -182,13 +171,36 @@ export function InviteScreen() {
     >
       {/* A family's second parent isn't joining a school. */}
       {!session && <Brand for={view?.secondParent ? null : undefined} />}
-      {!parsed || invite.isError ? (
+      {!parsed ? (
+        <>
+          <h1>Open your invitation from its email</h1>
+          <p>
+            The invitation opens from the link in its email. Open it there to
+            carry on.
+          </p>
+        </>
+      ) : refused ? (
         <>
           <h1>This invitation link isn’t valid</h1>
           <p>
             Open the link from your email again. If it still doesn’t work, ask
             your school’s admin to copy you a new one.
           </p>
+        </>
+      ) : invite.isError ? (
+        <>
+          <h1>The invitation couldn’t be checked</h1>
+          <p>Check your connection, then try again.</p>
+          <div className={styles.inviteActions}>
+            <Button
+              variant="primary"
+              aria-busy={invite.isFetching}
+              disabled={invite.isFetching}
+              onClick={() => void invite.refetch()}
+            >
+              Try again
+            </Button>
+          </div>
         </>
       ) : !view ? (
         <div className={styles.inviteWait} aria-busy="true" />
@@ -279,7 +291,7 @@ export function InviteScreen() {
                 <button
                   type="button"
                   className={styles.inlineAction}
-                  onClick={() => void signOut()}
+                  onClick={() => void useAnother()}
                 >
                   Use another account
                 </button>
@@ -338,6 +350,7 @@ export function InviteScreen() {
               to="/sign-up"
               search={signInSearch}
               className={buttonClass("primary")}
+              onClick={carry}
             >
               Create an account
             </Link>
@@ -345,6 +358,7 @@ export function InviteScreen() {
               to="/sign-in"
               search={signInSearch}
               className={buttonClass("secondary")}
+              onClick={carry}
             >
               I already have one
             </Link>

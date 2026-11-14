@@ -186,7 +186,9 @@ export async function signIn(intent?: "create") {
     );
   await manager.signinRedirect();
 }
-export async function signOut() {
+/** Signs out, then opens `to` (accounts mode; the other modes go where
+ * their provider sends them). */
+export async function signOut(to = "/") {
   if (nativeRuntime) return nativeSignOut();
   if (studentSession()) {
     // A child on their parent's device hands it back to the parent.
@@ -212,7 +214,7 @@ export async function signOut() {
     if (result.error)
       throw new Error(result.error.message ?? "Sign out did not finish");
     notifyAccountSessionChanged();
-    location.assign("/");
+    location.assign(to);
     return;
   }
   if (manager) await manager.signoutRedirect();
