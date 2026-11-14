@@ -856,11 +856,14 @@ export function MapView({
       <LayerHost
         learner={learnerId}
         skillActions={skillActions}
-        lessonActions={(type) =>
-          type !== lesson || readOnly ? null : !lessonSkill || recordLoading ? (
-            // The catalog or the learner is on its way: the action's place
-            // is held, so the film beside it never moves.
-            !catalog.data || recordLoading ? (
+        lessonActions={(type, skill) => {
+          if (type !== lesson || readOnly) return null;
+          // The skill it practices: the one open under it, else its own.
+          const practiced = lessonSkill ?? skill;
+          // The learner is on their way: the action's place is held, so the
+          // film beside it never moves.
+          if (recordLoading)
+            return (
               <span
                 className={buttonClass("primary")}
                 aria-hidden="true"
@@ -869,13 +872,14 @@ export function MapView({
               >
                 Try this problem type
               </span>
-            ) : null
-          ) : canPractice ? (
+            );
+          if (!practiced) return null;
+          return canPractice ? (
             <Link
               className={buttonClass("primary")}
               to="/$"
               params={{ _splat: "practice" }}
-              search={{ skill: lessonSkill, template: type }}
+              search={{ skill: practiced, template: type }}
             >
               Try this problem type
             </Link>
@@ -888,8 +892,8 @@ export function MapView({
             >
               {actionLabel}
             </Link>
-          )
-        }
+          );
+        }}
       />
     </main>
   );
