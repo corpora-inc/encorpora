@@ -74,6 +74,14 @@ const cases = {
     ),
     title: "Solve a system",
   },
+  delimited: {
+    problem: withPrompt("Solve: $x=2$; $y=3$."),
+    title: "Read a system",
+  },
+  repeating: {
+    problem: withPrompt("Write as a fraction: 0.333..."),
+    title: "Write a repeating decimal as a fraction",
+  },
   atomic: {
     problem: withPrompt(
       "Simplify: $\\frac{123x+456y+789z+1234}{234x+567y+890z+4321}$.",
@@ -287,10 +295,21 @@ try {
           });
           assert.match(visible!, /The loose counters are 8\.\s+10/);
           assert.doesNotMatch(visible!, /8\.10/);
+        } else if (name === "repeating") {
+          assert.equal(geometry.displays.length, 0);
+          assert.match(
+            await page.locator(".question").innerText(),
+            /0\.333\.\.\./,
+          );
         } else if (name !== "figure")
           assert.equal(geometry.displays.length, 1, `${name}: display missing`);
         else
           assert.ok(geometry.figures > 0, "figure survives prompt formatting");
+        if (name === "delimited")
+          assert.equal(
+            await page.locator(".question .katex-mathml mtr").count(),
+            2,
+          );
         for (const display of geometry.displays) {
           assert.equal(display.center, "center");
           assert.ok(

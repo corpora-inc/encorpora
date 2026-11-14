@@ -9,6 +9,10 @@ import {
 import { segmentPrintText } from "../src/content/math-typesetting";
 import { MathText } from "../src/web/MathText";
 import { PrintMathText } from "../src/content/PrintMathText";
+import { createRequire } from "node:module";
+const { JSDOM } = createRequire(import.meta.url)("jsdom") as {
+  JSDOM: new (html: string) => { window: { document: Document } };
+};
 
 const examples = [
   ["Evaluate: $2+3.$", "Evaluate:", "$2+3$"],
@@ -99,6 +103,117 @@ test("systems keep all equations together in a stacked display", () => {
   );
   const source = "$\\begin{cases}x+y=2\\\\x-y=4\\end{cases}$";
   assert.equal(trailingDisplayMath(`Solve: ${source}.`)?.source, source);
+});
+
+test("separately delimited and mixed system rows display together in web and print", () => {
+  for (const source of [
+    "$x=2$; $y=3$",
+    String.raw`\(x=2\); \(y=3\)`,
+    "x = 2; $y=3$",
+    "$x=2$; y = 3",
+    "$x=2$;\n$y=3$",
+  ]) {
+    const text = `Solve: ${source}.`;
+    const display = trailingDisplayMath(text);
+    assert.ok(display, text);
+    assert.equal(display.source, source);
+    assert.match(
+      display.tex,
+      /^\\begin\{gathered\}x\s*=\s*2\\\\y\s*=\s*3\\end\{gathered\}$/,
+    );
+    assert.equal(normalizeTrailingMath(text), `Solve: ${source}`);
+    for (const Component of [MathText, PrintMathText]) {
+      const html = renderToStaticMarkup(
+        React.createElement(Component, { text }),
+      );
+      const document = new JSDOM(html).window.document;
+      assert.equal(document.querySelectorAll(".math-display").length, 1, text);
+      assert.equal(
+        document.querySelectorAll(".katex-mathml mtr").length,
+        2,
+        text,
+      );
+      assert.doesNotMatch(html, /katex-error/);
+      assert.match(
+        document.querySelector("annotation")!.textContent!,
+        /x\s*=\s*2\\\\y\s*=\s*3/,
+      );
+    }
+  }
+  assert.match(
+    trailingDisplayMath(String.raw`Solve: $x=2\;a$; $y=3$.`)!.tex,
+    /x=2\\;a\\\\y = 3/,
+    "TeX spacing must not split a system row",
+  );
+});
+
+test("repeating decimals and ellipses survive normalization and both renderers", () => {
+  for (const [text, visible] of [
+    ["Write as a fraction: 0.333...", "0.333..."],
+    ["Solve: x = 0.333...", "0.333..."],
+    ["Solve: x = 0.333…", "0.333…"],
+    ["Evaluate: $0.333...$", "0.333..."],
+    ["Solve: $x=2$...", "..."],
+    ["Evaluate: 1 + 2..", ".."],
+  ]) {
+    assert.equal(normalizeTrailingMath(text!), text);
+    for (const Component of [MathText, PrintMathText]) {
+      const document = new JSDOM(
+        renderToStaticMarkup(React.createElement(Component, { text: text! })),
+      ).window.document;
+      document
+        .querySelectorAll(".katex-mathml")
+        .forEach((node) => node.remove());
+      assert.ok(
+        document.body.textContent!.includes(visible!),
+        `${Component.name}: ${text}`,
+      );
+    }
+  }
+  for (const formula of [
+    String.raw`0.\overline{3}`,
+    String.raw`0.3\ldots`,
+    "0.333...",
+  ]) {
+    const text = `Write as a fraction: $${formula}$.`;
+    assert.equal(normalizeTrailingMath(text), text.slice(0, -1));
+    assert.equal(trailingDisplayMath(text)?.tex, formula);
+    for (const Component of [MathText, PrintMathText]) {
+      const document = new JSDOM(
+        renderToStaticMarkup(React.createElement(Component, { text })),
+      ).window.document;
+      assert.equal(document.querySelector("annotation")?.textContent, formula);
+    }
+  }
+});
+
+test("cleanup preserves abbreviations, money and punctuation other than a single period", () => {
+  for (const text of [
+    "List: 1, 2, etc.",
+    "Read: etc.",
+    "Title: Dr.",
+    "Title: Mr.",
+    "Example: e.g.",
+    "Time: 8 a.m.",
+    "Price: $8.10.",
+    "Prices: $3 and $5.",
+    "Evaluate: $2+3$!",
+    "Evaluate: 2+3?",
+    "Evaluate: 2+3;",
+    "Evaluate: $2+3.$.",
+    "Evaluate: $etc.$",
+  ])
+    assert.equal(normalizeTrailingMath(text), text, text);
+  for (const value of ["-9.1", "8.10", "0.0001"]) {
+    assert.equal(
+      normalizeTrailingMath(`Solve: x = ${value}.`),
+      `Solve: x = ${value}`,
+    );
+    assert.equal(
+      normalizeTrailingMath(`Solve: $x = ${value}.$`),
+      `Solve: $x = ${value}$`,
+    );
+  }
 });
 
 test("factorial operators survive punctuation cleanup, including powers", () => {

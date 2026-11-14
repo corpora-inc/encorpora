@@ -13,6 +13,31 @@ export interface TrailingDisplayMath {
 const command =
   /(?:^|[.!?]\s+)(?:solve(?:\s+for\s+(?:real\s+)?\$?[a-z]\$?)?|(?:expand and |rationalize the denominator and )?simplify|evaluate|factor(?:\s+completely)?|expand|calculate|compute)\s*:?[ \t]*$/i;
 
+function completeMath(source: string): string | null {
+  const parts = segmentPrintText(source);
+  if (parts.length === 1 && parts[0]?.kind === "math") return parts[0].tex;
+  // Bare words can be abbreviations (Dr., Mr., etc.), not implicit products.
+  if (/^[A-Za-z]{2,}$/.test(source)) return null;
+  return expressionToTex(source);
+}
+
+function systemMath(source: string): string | null {
+  if (!source.includes(";")) return null;
+  const rows = [""];
+  for (const part of segmentPrintText(source)) {
+    // A semicolon inside explicit TeX belongs to that formula (e.g. \\;).
+    const pieces =
+      part.kind === "math" ? [part.source] : part.source.split(";");
+    rows[rows.length - 1] += pieces[0];
+    rows.push(...pieces.slice(1));
+  }
+  if (rows.length < 2) return null;
+  const equations = rows.map((row) => completeMath(row.trim()));
+  return equations.every((equation) => equation !== null)
+    ? `\\begin{gathered}${equations.join("\\\\")}\\end{gathered}`
+    : null;
+}
+
 /** A complete formula after a colon or short command is a separate display.
  * Source offsets come from the lossless print tokenizer; decimals, currency,
  * units and mathematics embedded in a sentence must not be cut apart.
@@ -57,32 +82,37 @@ export function trailingDisplayMath(
     if (!lead && !standalone) continue;
     if (lead && !lead.endsWith(":") && !command.test(lead)) continue;
     const suffix = text.slice(start).trim();
-    // In plain notation ! is factorial, not disposable sentence punctuation.
-    // Only outside explicit TeX can an exclamation mark be unambiguously prose.
-    let punctuation = /(?:\$|\\\))[.;!?]+$/.test(suffix)
-      ? (/[.;!?]+$/.exec(suffix)?.[0] ?? "")
-      : (/[.;?]+$/.exec(suffix)?.[0] ?? "");
+    // Remove only one sentence period after a complete formula. A run of dots
+    // can be recurring-decimal notation; ! can be factorial. Neither is prose.
+    let punctuation = /(?<![.\\])\.$/.test(suffix) ? "." : "";
     let source = suffix.slice(0, suffix.length - punctuation.length).trimEnd();
     // A sentence period occasionally sits just inside an explicit math span.
     // Preserve ellipses and escaped TeX spacing; only remove one final dot.
     const insidePeriod = /(?<![.\\])\.(\$|\\\))$/;
     const invisibleDelimiter =
       /\\(?:left|right|middle|[bB]igg?[lr]?)\s*\.(?:\$|\\\))$/;
-    if (insidePeriod.test(source) && !invisibleDelimiter.test(source)) {
-      source = source.replace(insidePeriod, "$1");
-      punctuation = "." + punctuation;
+    if (
+      punctuation &&
+      insidePeriod.test(source) &&
+      !invisibleDelimiter.test(source)
+    )
+      continue;
+    if (
+      !punctuation &&
+      insidePeriod.test(source) &&
+      !invisibleDelimiter.test(source)
+    ) {
+      const candidate = source.replace(insidePeriod, "$1");
+      const inner = candidate.startsWith("$")
+        ? candidate.slice(1, -1)
+        : candidate.slice(2, -2);
+      if (expressionToTex(inner) !== null && !/^[A-Za-z]{2,}$/.test(inner)) {
+        source = candidate;
+        punctuation = ".";
+      }
     }
     if (!source) continue;
-    const explicit = segmentPrintText(source);
-    let tex =
-      explicit.length === 1 && explicit[0]?.kind === "math"
-        ? explicit[0].tex
-        : expressionToTex(source);
-    if (tex === null && source.includes(";")) {
-      const equations = source.split(/;\s*/).map(expressionToTex);
-      if (equations.every((equation) => equation !== null))
-        tex = `\\begin{gathered}${equations.join("\\\\")}\\end{gathered}`;
-    }
+    let tex = completeMath(source) ?? systemMath(source);
     if (tex === null && source.includes("□")) {
       const legacy = segments(source);
       if (legacy.length === 1 && legacy[0]?.math && legacy[0].plain === source)

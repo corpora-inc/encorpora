@@ -64,17 +64,26 @@ test("all template explanations, methods and lesson worked steps preserve numeri
   );
 });
 
-// Independent expectation: a final tokenized formula after a colon/imperative
+// Independent expectation: final tokenized formulas after a colon/imperative
 // must be displayed. This does not ask the formatter whether it supports it.
 function expectedDisplay(text: string) {
   const tokens = segmentPrintText(text);
   if (
     tokens.at(-1)?.kind === "text" &&
-    /^[.!?;\s]*$/.test(tokens.at(-1)!.source)
+    /^\s*\.?\s*$/.test(tokens.at(-1)!.source)
   )
     tokens.pop();
   const last = tokens.pop();
   if (last?.kind !== "math") return false;
+  // Walk every row, including explicit and plain math in the same system.
+  while (
+    tokens.at(-1)?.kind === "text" &&
+    /^\s*;\s*$/.test(tokens.at(-1)!.source) &&
+    tokens.at(-2)?.kind === "math"
+  ) {
+    tokens.pop();
+    tokens.pop();
+  }
   const lead = tokens
     .map((t) => t.source)
     .join("")
@@ -86,6 +95,24 @@ function expectedDisplay(text: string) {
     )
   );
 }
+
+test("display lint recognizes every row of separately delimited systems", () => {
+  for (const text of [
+    "Solve: $x=2$; $y=3$.",
+    "Solve: x = 2; $y=3$.",
+    "Solve $x=2$; y = 3.",
+    String.raw`Solve: \(x=2\); \(y=3\).`,
+    "Solve: $x=2$;\n$y=3$; $z=4$.",
+  ])
+    assert.equal(expectedDisplay(text), true, text);
+  for (const text of [
+    "For $x=2$; $y=3$.",
+    "Solve: $x=2$; $y=3$ in your head.",
+    "Solve: x = 0.333...",
+    "Solve: $x=2$...",
+  ])
+    assert.equal(expectedDisplay(text), false, text);
+});
 
 test("every template generates clean prompt and worked-step displays in web and print", (t) => {
   const affected = new Set<string>();
