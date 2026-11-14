@@ -12,9 +12,35 @@
   display: grid;
   flex: 1 0 auto;
 }
-.lesson :global(.problem-lesson) {
-  max-inline-size: none;
+/* The head and the lesson share the reading column, centred in the sheet.
+   Where the sheet has room, a box (the example, a callout) hangs its
+   padding outside the column, so its text lines up with the prose; on a
+   phone it sits inside. */
+.lesson {
+  inline-size: 100%;
+  /* The column is counted in the body size's characters, as the sheet's
+     width is (ui/Dialog.module.css). */
+  font-size: var(--text-body);
+  max-inline-size: var(--measure-reading);
+  margin-inline: auto;
 }
+@media (min-width: 641px) {
+  /* Each box hangs by its padding and its own left edge (the example's
+     1 px border, a callout's 3 px rule), so its text meets the column. */
+  .lesson :global(.problem-lesson) :global(.lesson-example) {
+    margin-inline: calc(-1 * (var(--space-5) + 1px));
+    padding-inline: var(--space-5);
+  }
+  .lesson :global(.problem-lesson) :global(.lesson-watch) {
+    margin-inline: calc(-1 * (var(--space-5) + 3px)) calc(-1 * var(--space-5));
+    padding-inline: var(--space-5);
+  }
+  .lesson :global(.problem-lesson) :global(.lesson-principle) {
+    margin-inline: calc(-1 * var(--space-5));
+    padding-inline: var(--space-5);
+  }
+}
+
 .head {
   display: grid;
   grid-template-columns: minmax(0, 1fr);

@@ -581,6 +581,11 @@
   --width-rail: 232px;
   --width-content-wide: 1120px;
   --width-sheet: 500px;
+  /* One reading column for a lesson (lesson-reading.css): its prose,
+     headings, example, steps and figures, in characters of the body size.
+     A "0" is wider than an average letter: 62ch holds about 70 letters of
+     running text, and makes the lesson's sheet about 760 px. */
+  --measure-reading: 62ch;
   /* One field style for every input-like control: a text field, a picker's
      trigger, a stepper, a code field (docs/design/ia.md, element finish). */
   --field-height: 48px;

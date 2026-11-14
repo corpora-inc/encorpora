@@ -3,6 +3,7 @@ import { lessonFilms } from "../../../content/lesson-films";
 import type { LessonIndex } from "../../../content/lesson-index-build";
 import { buttonClass } from "../../ui/Button";
 import { Dialog } from "../../ui/Dialog";
+import { useLayerBack } from "../../ui/LayerControls";
 import { FilmLink } from "../films/FilmLink";
 import { LessonBoundary } from "./LessonRecovery";
 // In this chunk, not one of its own: the lesson's wait is drawn in the same
@@ -53,6 +54,8 @@ export default function LessonDialog({
    * given the type's skill. */
   actions?: (skill: string | undefined) => ReactNode;
 }) {
+  // The recovery's way back steps back one layer, as the back row does.
+  const stepBack = useLayerBack();
   return (
     <Dialog
       open={!!lesson}
@@ -71,10 +74,14 @@ export default function LessonDialog({
         <div className={styles.lesson}>
           <LessonHead lesson={lesson} actions={actions} />
           <div className={styles.body}>
-            <LessonBoundary key={lesson} onBack={onClose} backLabel={backLabel}>
+            <LessonBoundary
+              key={lesson}
+              onBack={stepBack ?? onClose}
+              backLabel={backLabel}
+            >
               <SkillLesson
                 templateId={lesson}
-                onBack={onClose}
+                onBack={stepBack ?? onClose}
                 backLabel={backLabel}
               />
             </LessonBoundary>
