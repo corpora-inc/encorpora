@@ -1,7 +1,7 @@
 import { SchoolError } from "./contracts.js";
 import type { Pool, PoolClient } from "pg";
 import type { FreeAllowance } from "../learning/free-allowance.js";
-import { activeToday, localDayStart } from "./principal.js";
+import { localDayStart, studentInClassSql } from "./principal.js";
 
 /** One read shared by practice, student /me and the teacher's workbook view. */
 export async function schoolPilotAccess(
@@ -59,6 +59,12 @@ export async function classPracticeGate(
   return (await classPracticeGates(db, [classId])).get(classId) ?? null;
 }
 
+/** Why a class's practice has ended (CP-3 r7): its school year (session)
+ * is over or the class archived, none of its students can sign in today, or
+ * the coverage ran out. Each has its own next step; only the last is
+ * answered by seats. */
+export type PracticeEnd = "session" | "roster" | "coverage";
+
 /** Each class's gate, in one read (a school's class list). A class missing
  * from the answer has none to report; an archived one, or one whose session
  * is over, has ended. */
@@ -66,6 +72,19 @@ export async function classPracticeGates(
   db: Pick<PoolClient, "query">,
   classIds: readonly string[],
 ): Promise<Map<string, PracticeGate>> {
+  const gates = new Map<string, PracticeGate>();
+  for (const [id, state] of await classPracticeStates(db, classIds))
+    gates.set(id, state.gate);
+  return gates;
+}
+
+/** Each gated class's gate and, once ended, why. Covered students are
+ * students who can enter today (`studentInClassSql`, the predicate `/join`
+ * and student sessions read) and whom a pilot or a valid grant covers. */
+export async function classPracticeStates(
+  db: Pick<PoolClient, "query">,
+  classIds: readonly string[],
+): Promise<Map<string, { gate: PracticeGate; end: PracticeEnd | null }>> {
   if (!classIds.length) return new Map();
   const { rows } = await db.query<{
     id: string;
@@ -73,6 +92,7 @@ export async function classPracticeGates(
     live: boolean;
     licensed: boolean;
     started: boolean;
+    entering: boolean;
     covered: boolean;
   }>(
     `SELECT c.id,o.demo OR o.kind='family' AS exempt,${classLiveSql("c", "o")} AS live,
@@ -80,27 +100,36 @@ export async function classPracticeGates(
         AND l.status='active' AND l.starts_at<=now() AND l.ends_at>now()) AS licensed,
       EXISTS(SELECT 1 FROM amp_class_pilots cp JOIN amp_teacher_pilots t ON t.id=cp.pilot_id
         WHERE cp.class_id=c.id AND t.started_at<=now()) AS started,
-      EXISTS(SELECT 1 FROM amp_enrollments e
-        JOIN amp_people p ON p.id=e.person_id AND p.deleted_at IS NULL AND p.learner_id IS NOT NULL
-        WHERE e.class_id=c.id AND e.role='student' AND ${activeToday("e", "o")}
+      EXISTS(SELECT 1 FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
+        WHERE ${studentInClassSql("e", "p", "c", "o")}) AS entering,
+      EXISTS(SELECT 1 FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
+        WHERE ${studentInClassSql("e", "p", "c", "o")}
           AND (amp_school_pilot_until(p.learner_id)>now() OR EXISTS(
             SELECT 1 FROM amp_grants g WHERE g.learner_id=p.learner_id AND g.status='active'
               AND g.starts_at<=now() AND g.ends_at>now() AND amp_school_grant_valid(g.id)))) AS covered
     FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id WHERE c.id=ANY($1::uuid[])`,
     [classIds],
   );
-  const gates = new Map<string, PracticeGate>();
+  const states = new Map<
+    string,
+    { gate: PracticeGate; end: PracticeEnd | null }
+  >();
   for (const row of rows) {
     // A family's or a demo's class is never gated (a family's session is
     // carried into the next year before its code is read at /join).
     if (row.exempt) continue;
     // Archived, or its session over: no student signs in, whatever covers
     // them (the student's own entry refuses the code).
-    if (!row.live) gates.set(row.id, "ended");
+    if (!row.live) states.set(row.id, { gate: "ended", end: "session" });
     else if (!row.licensed && !row.covered)
-      gates.set(row.id, row.started ? "ended" : "waiting");
+      states.set(
+        row.id,
+        row.started
+          ? { gate: "ended", end: row.entering ? "coverage" : "roster" }
+          : { gate: "waiting", end: null },
+      );
   }
-  return gates;
+  return states;
 }
 
 /** The next moment anything that decides a class's practice, or this
@@ -130,30 +159,42 @@ export async function classRecheckAt(
 
 /** `classRecheckAt`'s one statement, for it and for the plan check that
  * holds its work to the class's roster (tests/school-practice-recheck). It
- * starts from the class's own roster (`pupils`) and follows only those
- * people, and the reader's own roles; nothing is read for anyone else. */
+ * starts from the class's own roster (`pupils`, by the class's index) and
+ * follows each of those people through their own rows by index (fenced
+ * LATERAL reads), plus the reader's own roles and the licenses on the
+ * class's org path: its work grows with the roster and those people's own
+ * enrollments, roles, seats and grants, never with the rest of the
+ * district. */
 export function classRecheckQuery(classId: string, accountId: string | null) {
   const day = localDayStart("dz.d", "dz.tz");
   return {
     text: `WITH klass AS (
          SELECT c.id,c.session_id,o.path,o.timezone,o.demo OR o.kind='family' AS exempt
          FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id WHERE c.id=$1),
+       -- The roster first, by the class's own index. Every dependency below
+       -- is then followed per person (LATERAL ... OFFSET 0: the planner
+       -- can't turn it into a scan of the whole table), so the work is the
+       -- roster's people and their own rows, whatever else the district holds.
        pupils AS MATERIALIZED (
          SELECT DISTINCT p.id AS person,p.learner_id AS learner FROM amp_enrollments e
-         JOIN amp_people p ON p.id=e.person_id AND p.deleted_at IS NULL
+         CROSS JOIN LATERAL (SELECT p.id,p.learner_id FROM amp_people p
+           WHERE p.id=e.person_id AND p.deleted_at IS NULL OFFSET 0) p
          WHERE e.class_id=$1 AND e.role='student'
            AND (e.end_on IS NULL OR e.end_on>=current_date-2)),
        -- Every current class a student is in (its pilot may cover them).
-       placed AS (
-         SELECT e.person_id AS person,e.begin_on,e.end_on,c.id AS class,o.timezone
-         FROM pupils u JOIN amp_enrollments e ON e.person_id=u.person
-         JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL
-         JOIN amp_orgs o ON o.id=c.org_id
-         WHERE e.role='student' AND (e.end_on IS NULL OR e.end_on>=current_date-2)),
-       roles AS (
-         SELECT r.person_id AS person,r.begin_on,r.end_on,o.timezone FROM pupils u
-         JOIN amp_org_roles r ON r.person_id=u.person JOIN amp_orgs o ON o.id=r.org_id
-         WHERE r.role='student' AND (r.end_on IS NULL OR r.end_on>=current_date-2)),
+       placed AS MATERIALIZED (
+         SELECT x.* FROM pupils u CROSS JOIN LATERAL (
+           SELECT e.person_id AS person,e.begin_on,e.end_on,c.id AS class,o.timezone
+           FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL
+           JOIN amp_orgs o ON o.id=c.org_id
+           WHERE e.person_id=u.person AND e.role='student'
+             AND (e.end_on IS NULL OR e.end_on>=current_date-2) OFFSET 0) x),
+       roles AS MATERIALIZED (
+         SELECT x.* FROM pupils u CROSS JOIN LATERAL (
+           SELECT r.person_id AS person,r.begin_on,r.end_on,o.timezone
+           FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
+           WHERE r.person_id=u.person AND r.role='student'
+             AND (r.end_on IS NULL OR r.end_on>=current_date-2) OFFSET 0) x),
        mine AS (
          SELECT r.id,r.role,r.begin_on,r.end_on,o.timezone FROM amp_people me
          JOIN amp_org_roles r ON r.person_id=me.id JOIN amp_orgs o ON o.id=r.org_id, klass k
@@ -183,12 +224,14 @@ export function classRecheckQuery(classId: string, accountId: string | null) {
            LATERAL unnest(ARRAY[l.starts_at,l.ends_at]) x
            WHERE l.org_id=ANY(k.path) AND l.status='active'
          -- Only a seat that can be valid: open, on an active license.
-         UNION ALL SELECT x FROM pupils u JOIN amp_seats s
-             ON s.person_id=u.person AND s.released_at IS NULL
-           JOIN amp_school_licenses l ON l.id=s.license_id AND l.status='active',
+         UNION ALL SELECT x FROM pupils u CROSS JOIN LATERAL (
+             SELECT l.starts_at,l.ends_at FROM amp_seats s
+             JOIN amp_school_licenses l ON l.id=s.license_id AND l.status='active'
+             WHERE s.person_id=u.person AND s.released_at IS NULL OFFSET 0) l,
            LATERAL unnest(ARRAY[l.starts_at,l.ends_at]) x
-         UNION ALL SELECT x FROM pupils u JOIN amp_grants g
-             ON g.learner_id=u.learner AND g.status='active',
+         UNION ALL SELECT x FROM pupils u CROSS JOIN LATERAL (
+             SELECT g.starts_at,g.ends_at FROM amp_grants g
+             WHERE g.learner_id=u.learner AND g.status='active' OFFSET 0) g,
            LATERAL unnest(ARRAY[g.starts_at,g.ends_at]) x
          UNION ALL SELECT x FROM (SELECT DISTINCT cp.pilot_id FROM placed e
              JOIN amp_class_pilots cp ON cp.class_id=e.class) used
@@ -240,14 +283,17 @@ export async function readClassPractice(
   accountId: string | null,
 ): Promise<{
   gate: PracticeGate | null;
+  /** Why it ended, when it has. */
+  end: PracticeEnd | null;
   recheckAt: string | null;
   serverNow: string;
 }> {
-  const gate = await classPracticeGate(db, classId);
+  const state = (await classPracticeStates(db, [classId])).get(classId);
   const recheckAt = await classRecheckAt(db, classId, accountId);
   const clock = await db.query<{ now: Date }>("SELECT now() AS now");
   return {
-    gate,
+    gate: state?.gate ?? null,
+    end: state?.end ?? null,
     recheckAt,
     serverNow: new Date(clock.rows[0]!.now).toISOString(),
   };

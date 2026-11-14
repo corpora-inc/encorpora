@@ -10,7 +10,7 @@ import {
 import { z } from "zod";
 import { AGREEMENT_VERSION } from "../../../../schools/agreement";
 import type { PilotState } from "../../../../schools/pilot-contracts";
-import { AppError, standing } from "../../../lib/AppError";
+import { AppError, refused, standing } from "../../../lib/AppError";
 import { queryClient } from "../../../lib/query";
 import { useLoggedError } from "../../../feedback";
 import { Link } from "@tanstack/react-router";
@@ -58,6 +58,11 @@ export function useClassAccess(place: Place): {
   checking: boolean;
   /** Where the class stands couldn't be checked: say so, with Try again. */
   unavailable: boolean;
+  /** Why practice ended, when the server says (CP-3 r7). */
+  end: "session" | "roster" | "coverage" | null;
+  /** When the server last answered where the class stands (this page's
+   * clock): a code read before it may be stale. */
+  answeredAt: number;
   retry: () => void;
 } {
   const session = currentSession();
@@ -187,6 +192,8 @@ export function useClassAccess(place: Place): {
       closed: false,
       checking: false,
       unavailable: false,
+      end: null,
+      answeredAt: year.dataUpdatedAt,
       retry,
     };
   // Unknown is never open: a failed read, or an answer without the state.
@@ -221,8 +228,27 @@ export function useClassAccess(place: Place): {
     closed: practice !== "open" || checking,
     checking,
     unavailable,
+    end: practice === "ended" ? (answer?.practiceEnd ?? null) : null,
+    answeredAt: year.dataUpdatedAt,
     retry,
   };
+}
+
+/** A read of the class refused (401, 403, 404: this reader lost it): the
+ * class's own state is read again at once, so every screen's cached
+ * answers and capabilities give way to the refusal (`standing`), never
+ * waiting for a later moment (CP-3 r7). A passing failure changes nothing. */
+export function useRevokeOnRefusal(
+  query: { error: unknown; errorUpdatedAt: number },
+  place: Place,
+) {
+  const refusal = refused(query.error) ? query.errorUpdatedAt : 0;
+  useEffect(() => {
+    if (!refusal) return;
+    void queryClient.invalidateQueries({
+      queryKey: classYearOptions(currentSession(), place.class).queryKey,
+    });
+  }, [refusal, place.class]);
 }
 
 /** The longest a screen waits before measuring again. */

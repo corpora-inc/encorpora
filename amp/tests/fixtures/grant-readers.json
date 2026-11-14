@@ -111,8 +111,8 @@
   },
   {
     "path": "src/family/repository.ts",
-    "hash": "f1888988809faf010d35289dccc24e9eb2c98b989ced48e550aa927f91325717",
-    "reason": "Child-only practice-here predicate explicitly excludes adults; deletion financial retention explicitly excludes pilot grants."
+    "hash": "5ed34c9052417187dfe06c60e36afc592672130d264e22c03fe67f616792a031",
+    "reason": "Child-only practice-here predicate explicitly excludes adults; deletion financial retention explicitly excludes pilot grants and counts received funded-invoice payments."
   },
   {
     "path": "src/family/repository.ts",
@@ -251,18 +251,18 @@
   },
   {
     "path": "src/schools/pilot-access.ts",
-    "hash": "59cf864cc7c5f7a0a1dc56cbbf2862d89322ca42b60e514207266d963f651a2d",
-    "reason": "Class practice gate reads grants of the class's student enrollments only (role 'student'), never the separate teacher adult learner."
-  },
-  {
-    "path": "src/schools/pilot-access.ts",
-    "hash": "6a99f0ee39a1d06da2c5bfa0e77b1deff2d52a2f801e4638c88b01dfed4272c8",
-    "reason": "Class practice recheck statement reads grant start and end moments of the class's student enrollments only; it schedules a re-read and never authorizes adult learning."
+    "hash": "75227ba33d35d5e12a3960efe720698e6b68895cb1cea5459d96f4cf4f2a4abc",
+    "reason": "Class practice gate reads grants of the class's entering students only (studentInClassSql: role 'student'), never the separate teacher adult learner."
   },
   {
     "path": "src/schools/pilot-access.ts",
     "hash": "8ef655f80a51775b98632c2f09fe8d03315ab9eeff65d05e691b24afd38552d2",
     "reason": "classRecheckAt executes exactly the classRecheckQuery statement inventoried above (student enrollment grants only, scheduling a re-read)."
+  },
+  {
+    "path": "src/schools/pilot-access.ts",
+    "hash": "be84f2484a50787db1e1ca0ddb858b797e64c7e823517066d57505f989e55087",
+    "reason": "Class practice recheck statement reads grant start and end moments of the class's student enrollments only, per pupil; it schedules a re-read and never authorizes adult learning."
   },
   {
     "path": "src/schools/pilots.ts",
@@ -423,5 +423,20 @@
     "path": "migrations/0106-trend-line-fit-problem-flags.sql",
     "hash": "278a49ae17993e3b11100e47788e4c3bbc2f036c9112ebbe3d52327f6231d2fa",
     "reason": "Dynamic migration DDL preserves and extends the installed problem-flag response-kind CHECK; it reads pg_constraint and alters amp_problem_flags only."
+  },
+  {
+    "path": "scripts/verify-funded-invoice-journey.ts",
+    "hash": "1874878834934838f5e3551d0a93c7d87a596de3215f24dcae63ea04a7872298",
+    "reason": "Browser journey fixture reads the temporary grant row linked to its own funded invoice to verify it; test-only, it never authorizes learning."
+  },
+  {
+    "path": "src/funding-purchase/repository.ts",
+    "hash": "f3adafd4afc4127f95f94d8c2bd8c9d89e75faae86d894a935eb1e5404144a24",
+    "reason": "Funded-invoice presentation reads the one temporary grant linked to this invoice (amp_access_gifts) for its end date and status on the invoice screen; it never authorizes learning."
+  },
+  {
+    "path": "src/funding-purchase/repository.ts",
+    "hash": "33ae203a7303455c3c007a8046dc2c4e1bff321aafcfcd74a3ab4a1b10da2287",
+    "reason": "Cancelling a funded invoice revokes exactly the temporary grant linked to that invoice: a write keyed by the invoice, never an entitlement read."
   }
 ]

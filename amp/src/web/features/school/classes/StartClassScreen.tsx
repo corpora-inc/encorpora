@@ -13,7 +13,12 @@ import { CodeTiles } from "../join/CodeTiles";
 import "../SchoolFrame.module.css";
 import { presenceOptions, useStaffSession } from "./api";
 import styles from "./Start.module.css";
-import { ClosedSignIn, useClassAccess } from "../pilots/ClassAccess";
+import { refused, standing } from "../../../lib/AppError";
+import {
+  ClosedSignIn,
+  useClassAccess,
+  useRevokeOnRefusal,
+} from "../pilots/ClassAccess";
 
 const POLL_MS = 4000;
 /** Sized to the room: fewer students, bigger names. */
@@ -78,16 +83,22 @@ export function StartClassScreen() {
   const session = useStaffSession();
   const presence = useQuery({
     ...presenceOptions(session, { org: params.org, class: params.class }),
-    refetchInterval: POLL_MS,
+    // A refused board stops asking: its reader no longer has the class.
+    refetchInterval: (query) => (refused(query.state.error) ? false : POLL_MS),
     refetchIntervalInBackground: true,
     placeholderData: keepPreviousData,
   });
   // The code reaches students only while practice runs (R14).
   const access = useClassAccess({ org: params.org, class: params.class });
+  // Refused (this reader lost the class): the cached code and names go at
+  // once, and the class's own state is read again (CP-3 r7). A passing
+  // failure keeps the last board while it reconnects.
+  const board = standing(presence);
+  useRevokeOnRefusal(presence, { org: params.org, class: params.class });
   useKeepAwake();
   // The board's own poll can learn first that practice closed: the class's
   // state is read again so every screen agrees.
-  const polled = presence.data?.class.practice;
+  const polled = standing(presence)?.class.practice;
   useEffect(() => {
     if (polled && polled !== "open" && access.practice === "open")
       access.retry();
@@ -98,7 +109,7 @@ export function StartClassScreen() {
     document.addEventListener("fullscreenchange", changed);
     return () => document.removeEventListener("fullscreenchange", changed);
   }, []);
-  const failing = presence.isError && !!presence.data;
+  const failing = presence.isError && !!board;
   const logged = useRef(false);
   useEffect(() => {
     if (failing && !logged.current)
@@ -120,7 +131,15 @@ export function StartClassScreen() {
       Exit
     </Link>
   );
-  if (presence.isError && !presence.data)
+  if (board === null)
+    return (
+      <main className={styles.problem} data-dense>
+        <EmptyState title="This class isn’t open to you" action={exit}>
+          Its code and names are no longer shown here.
+        </EmptyState>
+      </main>
+    );
+  if (presence.isError && !board)
     return (
       <main className={styles.problem} data-dense>
         <EmptyState title="The board didn’t load" action={exit}>
@@ -128,20 +147,20 @@ export function StartClassScreen() {
         </EmptyState>
       </main>
     );
-  if (!presence.data || access.pending) return <LoadingScreen />;
+  if (!board || access.pending) return <LoadingScreen />;
   // The server sends the code only while practice runs.
-  if (access.closed || !presence.data.class.joinCode)
+  if (access.closed || !board.class.joinCode)
     return (
       <main className={styles.problem} data-dense>
         <ClosedSignIn
           place={{ org: params.org, class: params.class }}
           also={exit}
           onRetry={() => void presence.refetch()}
-          known={presence.data.class.practice}
+          known={board.class.practice}
         />
       </main>
     );
-  const { class: shown, students } = presence.data;
+  const { class: shown, students } = board;
   const info = shown;
   const here = students.filter((student) => student.here).length;
   const joinUrl = `${location.origin}/join/${info.joinCode}`;

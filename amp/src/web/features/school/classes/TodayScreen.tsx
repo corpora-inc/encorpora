@@ -77,7 +77,10 @@ function ClassToday({
   // Practice running, but not for everyone, or ending soon: said in the
   // feed beside the code. The rest is the header slot's.
   const practice =
-    headed && !["ending", "partial"].includes(access.view.kind) ? null : entry;
+    headed &&
+    (access.closed || !["ending", "partial"].includes(access.view.kind))
+      ? null
+      : entry;
   const entries = todoEntries({
     // Anything that opens the board ("Start class", students who haven't
     // started) waits for practice: the board would only say it's closed.
@@ -234,7 +237,6 @@ export function TodayScreen() {
                 is an option under the children, not the page's lead. */}
             {headed && (
               <PracticeSlot
-                code={code || null}
                 place={place}
                 words={spaceWords("classroom")}
                 // The bar's Start class opens the board, except in a demo

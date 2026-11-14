@@ -90,6 +90,8 @@ async function board({
   const serverNow = () => SERVER + (performance.now() - start);
   const recheckAt = SERVER + recheckIn;
   let reads = 0;
+  // The board's reader loses the class: every read of it is refused.
+  let revoked = false;
   const json = (body: unknown) =>
     new Response(JSON.stringify(body), {
       status: 200,
@@ -144,6 +146,11 @@ async function board({
         eligible: !ended,
         authorized: true,
         coverage: { students: 1, paid: 0, covered: ended ? 0 : 1 },
+      });
+    if (revoked && (url.includes("/presence") || url.includes("/year")))
+      return new Response(JSON.stringify({ error: "not_found" }), {
+        status: 404,
+        headers: { "content-type": "application/json" },
       });
     if (url.includes("/presence"))
       return json({
@@ -227,6 +234,9 @@ async function board({
   });
   return {
     reads: () => reads,
+    revoke: () => {
+      revoked = true;
+    },
     longest: () => Math.max(0, ...delays),
     code: () => screen.queryByRole("img", { name: /Class code A B C D E F/ }),
     advance: (ms: number) =>
@@ -358,4 +368,20 @@ test("a refusal on any refresh revokes the cached open state, however far off it
   await page.advance(100);
   expect(page.code()).toBeNull();
   expect(screen.queryByText("Checking practice")).toBeNull();
+});
+
+test("a reader refused on the board's next poll loses its code and names at once (CP-3 r7)", async () => {
+  const page = await board({ recheckIn: 30 * 864e5, skew: 0, after: "open" });
+  expect(page.code()).toBeTruthy();
+  expect(screen.getByText("Ana B.")).toBeTruthy();
+  page.revoke();
+  // The next 4 s poll is refused: no cached code, QR or name stays.
+  await page.advance(4_500);
+  await page.advance(100);
+  expect(page.code()).toBeNull();
+  expect(screen.queryByText("Ana B.")).toBeNull();
+  expect(
+    screen.getByRole("heading", { name: "This class isn’t open to you" }),
+  ).toBeTruthy();
+  expect(screen.queryByText(/Reconnecting/)).toBeNull();
 });
