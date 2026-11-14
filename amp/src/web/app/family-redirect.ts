@@ -38,6 +38,13 @@ export async function toFamilyAddress(
   const projection = await queryClient
     .ensureQueryData(familyOptions(session, parent.family))
     .catch(() => null);
+  // A tutor's class with no children of their own: the tutoring group.
+  if (projection && !projection.children.length && projection.teachingPlace)
+    throw redirect({
+      to: `/family/${parent.family}/group`,
+      search: (location.search ?? {}) as never,
+      replace: true,
+    } as never);
   const prefix = `/school/${org}/classes/${classId}`;
   const parts = location.pathname
     .slice(prefix.length)

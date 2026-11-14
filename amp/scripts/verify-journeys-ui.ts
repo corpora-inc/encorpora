@@ -605,16 +605,20 @@ async function parentJourney(
   // The device comes back to the parent, on Today, with both children.
   await page.waitForURL(FAMILY_TODAY);
   await todayTitle(page);
-  await page.getByText("99 free problems left", { exact: true }).waitFor();
+  // Each row says its free problems left: the figure over its label.
+  await page.locator("[data-family-kids]").getByText("free problems left").first().waitFor();
   await page
     .getByRole("button", { name: `Let ${moon.name} practice here` })
     .waitFor();
+  // A child's own device is an option behind "Their own devices", never
+  // Today's headline.
   check(
-    `${label} the class code for a child's own device`,
+    `${label} the class code waits behind their own devices`,
     (await page
       .locator(`[data-class-code="${home.join_code}"]`)
       .filter({ visible: true })
-      .count()) === 1,
+      .count()) === 0 &&
+      (await page.locator("[data-own-devices]").count()) === 1,
   );
   await measured(page, `${label} today`);
   await shot(page, 1, "today", width, theme);
@@ -736,7 +740,7 @@ async function parentJourney(
     (await page.locator("[data-allowance-pause]").count()) === 0,
   );
   await page.goto(`${origin}/`);
-  await page.waitForURL(CLASS_TODAY);
+  await page.waitForURL(FAMILY_TODAY);
   await page.getByRole("button", { name: "Let Rowan practice here" }).waitFor();
   await shot(page, 1, "today-paid", width, theme);
 
@@ -989,8 +993,8 @@ async function tutorJourney(
   await heading(page, "Your class is ready");
   await shot(page, 4, "setup-ready", width, theme);
   await page.getByRole("link", { name: "Go to Today" }).click();
-  await page.waitForURL(CLASS_TODAY);
-  await todayTitle(page);
+  // Other families' children only: the tutoring group, never a family.
+  await page.waitForURL(/\/family\/[0-9a-f-]{36}\/group$/);
   const names = (
     await db.query<{ name: string }>(
       `SELECT p.given_name AS name FROM amp_families f JOIN amp_enrollments e ON e.class_id=f.class_id AND e.role='student'
@@ -1160,7 +1164,7 @@ async function returningJourney(
     if (frame === back.mainFrame()) seen.push(new URL(frame.url()).pathname);
   });
   await signIn(back, email);
-  await back.waitForURL(CLASS_TODAY);
+  await back.waitForURL(FAMILY_TODAY);
   await todayTitle(back);
   await back.getByRole("button", { name: "Let Lena practice here" }).waitFor();
   check(
@@ -1268,12 +1272,12 @@ async function journey7(
   await page.getByRole("button", { name: "Birth year, your child" }).click();
   await page.getByRole("option").first().click();
   await page.getByRole("button", { name: "Continue", exact: true }).click();
-  await page.waitForURL(CLASS_TODAY);
+  await page.waitForURL(FAMILY_TODAY);
   await visit(page, `${origin}/try/map`);
-  await page.waitForURL(CLASS_TODAY);
+  await page.waitForURL(FAMILY_TODAY);
   check(
     `${label} signed in goes home`,
-    CLASS_TODAY.test(new URL(page.url()).pathname),
+    FAMILY_TODAY.test(new URL(page.url()).pathname),
     page.url(),
   );
   await measured(page, `${label} home`);

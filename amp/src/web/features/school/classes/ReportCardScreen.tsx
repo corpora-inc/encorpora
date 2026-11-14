@@ -1,6 +1,7 @@
 import { useCloseClick } from "../../../nav/links";
 import { useQuery } from "@tanstack/react-query";
-import { Link, useParams } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
+import type { ReactNode } from "react";
 import type { ReportCardsResponse } from "../../../../schools/teacher-contracts";
 import { buttonClass } from "../../../ui/Button";
 import { PrintButton } from "../../../ui/PrintButton";
@@ -9,13 +10,8 @@ import { EmptyState } from "../../../ui/EmptyState";
 import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { useStaffSession } from "./api";
 import { gradebookOptions, reportCardsOptions } from "./teacher-api";
-import {
-  classUrl,
-  dayRange,
-  number,
-  useClassSearch,
-  uuidOr,
-} from "./teacher-shared";
+import { useClassHost, type ClassHost } from "./host";
+import { dayRange, number, useClassSearch, uuidOr } from "./teacher-shared";
 import styles from "./ReportCard.module.css";
 
 const gradeWords = (level: number) =>
@@ -28,9 +24,15 @@ const gradeWords = (level: number) =>
 function Card({
   data,
   student,
+  host,
+  print,
 }: {
   data: ReportCardsResponse;
   student: ReportCardsResponse["students"][number];
+  host: ClassHost;
+  /** Its own Print, where the page's would include people this host
+   * doesn't show. */
+  print?: ReactNode;
 }) {
   return (
     <article className={styles.card}>
@@ -46,14 +48,23 @@ function Card({
       </div>
       <h2 className={styles.name}>{student.name}</h2>
       <dl className={styles.people}>
-        <div>
-          <dt>Course</dt>
-          <dd>
-            {data.class.name.includes(data.class.course)
-              ? data.class.name
-              : `${data.class.name}, ${data.class.course}`}
-          </dd>
-        </div>
+        {/* A host that names its own place (a family) shows the course
+            only when it is more than the class's name. */}
+        {(!host.keep ||
+          (!!data.class.course &&
+            !data.class.course.includes(data.class.name) &&
+            !data.class.name.includes(data.class.course))) && (
+          <div>
+            <dt>Course</dt>
+            <dd>
+              {host.keep
+                ? data.class.course
+                : data.class.name.includes(data.class.course)
+                  ? data.class.name
+                  : `${data.class.name}, ${data.class.course}`}
+            </dd>
+          </div>
+        )}
         {data.teachers.length > 0 && (
           <div>
             <dt>{data.teachers.length === 1 ? "Teacher" : "Teachers"}</dt>
@@ -81,7 +92,7 @@ function Card({
           <dd>{number(student.minutes)}</dd>
         </div>
         <div>
-          <dt>Skills shown on their own</dt>
+          <dt>Skills earned</dt>
           <dd>{number(student.objectivesGained)}</dd>
         </div>
         <div>
@@ -94,9 +105,10 @@ function Card({
         </div>
       </dl>
       <p className={styles.note}>
-        Final grades are decided by the teacher. AMP measures growth and time on
-        task, and its evidence is available from the teacher on request.
+        Final grades are decided by {host.decider}. AMP measures growth and time
+        on task, and its evidence is available from {host.decider} on request.
       </p>
+      {print && <div className={styles.cardPrint}>{print}</div>}
     </article>
   );
 }
@@ -104,7 +116,24 @@ function Card({
 /** Report cards for a term: one student's from a link, or the whole class as
  * one printable file, a page each. */
 export function ReportCardScreen() {
-  const place = useParams({ from: "/school/$org/classes/$class/report-cards" });
+  const host = useClassHost();
+  return (
+    <main className={styles.page} data-dense>
+      <ReportCards host={host} />
+    </main>
+  );
+}
+
+/** A term's report cards, for the people a host shows: a toolbar to print
+ * them, then a card each. `framed` hosts keep their own way back. */
+export function ReportCards({
+  host,
+  framed = false,
+}: {
+  host: ClassHost;
+  framed?: boolean;
+}) {
+  const { place, words } = host;
   const session = useStaffSession();
   const [search] = useClassSearch();
   const asked = uuidOr(search.term);
@@ -121,12 +150,12 @@ export function ReportCardScreen() {
   });
   // Back to where it was opened: the gradebook, Settings, a student.
   const closeClick = useCloseClick(
-    `/${classUrl(place.org, place.class, "gradebook")}${term ? `?term=${encodeURIComponent(term)}` : ""}`,
+    `/${host.href("gradebook")}${term ? `?term=${encodeURIComponent(term)}` : ""}`,
   );
-  const back = (
+  const back = framed ? null : (
     <Link
       to="/$"
-      params={{ _splat: classUrl(place.org, place.class, "gradebook") }}
+      params={{ _splat: host.href("gradebook") }}
       search={(term ? { term } : {}) as never}
       className={buttonClass("secondary")}
       onClick={closeClick}
@@ -135,71 +164,115 @@ export function ReportCardScreen() {
     </Link>
   );
   if ((!asked && current.isPending) || (term && cards.isPending))
-    return <LoadingScreen />;
+    return framed ? (
+      <div aria-busy="true" className={styles.wait} />
+    ) : (
+      <LoadingScreen />
+    );
   const data = cards.data;
-  const students = data
-    ? data.students.filter((student) => !only || student.id === only)
+  const all = data
+    ? data.students.filter((student) => !host.keep || host.keep(student.id))
     : [];
+  const students = all.filter((student) => !only || student.id === only);
+  // The class's file holds everyone in it: printed whole only when this
+  // host shows all of them.
+  const whole = !!data && all.length === data.students.length;
   const blank = students.filter((student) => !student.final).length;
+  const pdf = (student?: string) =>
+    downloadPdf({
+      path: `/school/classes/${encodeURIComponent(place.class)}/report-cards.pdf?${new URLSearchParams(
+        {
+          term: term!,
+          ...(student ? { student } : {}),
+          format: paperFormat(),
+        },
+      )}`,
+      token: session!.token,
+      name: "amp-report-cards.pdf",
+    });
+  if (!term || !data)
+    return (
+      <div className={styles.lost}>
+        <EmptyState
+          title={
+            framed && !term
+              ? "No term to report on yet"
+              : "These report cards didn’t load"
+          }
+          action={back}
+        >
+          {framed && !term
+            ? "Set the school year and its terms in Settings, and each term’s report cards show here."
+            : "Open them again from the gradebook."}
+        </EmptyState>
+      </div>
+    );
+  if (students.length === 0)
+    return (
+      <div className={styles.lost}>
+        <EmptyState
+          title={`No ${words.learners} in this term yet`}
+          action={back}
+        />
+      </div>
+    );
   return (
-    <main className={styles.page} data-dense>
-      {!term || !data ? (
-        <div className={styles.lost}>
-          <EmptyState title="These report cards didn’t load" action={back}>
-            Open them again from the gradebook.
-          </EmptyState>
+    <div className={styles.set} data-framed={framed ? "" : undefined}>
+      <div className={styles.toolbar}>
+        <div className={styles.toolbarText}>
+          {framed ? (
+            <h2>{only ? students[0]!.name : data.term.name}</h2>
+          ) : (
+            <h1>
+              {only ? students[0]!.name : `${data.class.name} report cards`}
+            </h1>
+          )}
+          <p>
+            {only || framed ? "" : `${data.term.name}, `}
+            {only
+              ? data.term.name
+              : `${students.length} ${students.length === 1 ? words.learner : words.learners}`}
+            {blank === 0
+              ? ""
+              : only
+                ? ". No final grade entered yet."
+                : `. ${blank === 1 ? "1 card has" : `${blank} cards have`} no final grade yet.`}
+          </p>
         </div>
-      ) : students.length === 0 ? (
-        <div className={styles.lost}>
-          <EmptyState title="No students in this term yet" action={back} />
+        <div className={styles.toolbarActions}>
+          {back}
+          {(whole || only) && (
+            <PrintButton
+              variant="primary"
+              disabled={!session}
+              download={() => pdf(only ?? undefined)}
+            >
+              {only || students.length === 1 ? "Print" : "Print all"}
+            </PrintButton>
+          )}
         </div>
-      ) : (
-        <>
-          <div className={styles.toolbar}>
-            <div className={styles.toolbarText}>
-              <h1>
-                {only ? students[0]!.name : `${data.class.name} report cards`}
-              </h1>
-              <p>
-                {data.term.name}
-                {only ? "" : `, ${students.length} students`}
-                {blank === 0
-                  ? ""
-                  : only
-                    ? ". No final grade entered yet."
-                    : `. ${blank === 1 ? "1 card has" : `${blank} cards have`} no final grade yet.`}
-              </p>
-            </div>
-            <div className={styles.toolbarActions}>
-              {back}
-              <PrintButton
-                variant="primary"
-                disabled={!session}
-                download={() =>
-                  downloadPdf({
-                    path: `/school/classes/${encodeURIComponent(place.class)}/report-cards.pdf?${new URLSearchParams(
-                      {
-                        term,
-                        ...(only ? { student: only } : {}),
-                        format: paperFormat(),
-                      },
-                    )}`,
-                    token: session!.token,
-                    name: "amp-report-cards.pdf",
-                  })
-                }
-              >
-                Print
-              </PrintButton>
-            </div>
-          </div>
-          <div className={styles.cards}>
-            {students.map((student) => (
-              <Card key={student.id} data={data} student={student} />
-            ))}
-          </div>
-        </>
-      )}
-    </main>
+      </div>
+      <div className={styles.cards}>
+        {students.map((student) => (
+          <Card
+            key={student.id}
+            data={data}
+            student={student}
+            host={host}
+            print={
+              !whole && !only ? (
+                <PrintButton
+                  variant="secondary"
+                  disabled={!session}
+                  download={() => pdf(student.id)}
+                >
+                  Print
+                </PrintButton>
+              ) : undefined
+            }
+          />
+        ))}
+      </div>
+    </div>
   );
 }

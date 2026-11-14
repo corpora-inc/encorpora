@@ -73,8 +73,15 @@ export function ClassMap({
   limitStrands,
   action,
   words,
+  name,
+  grades = true,
 }: {
   data: MapResponse;
+  /** Each row's name, linked where the composing screen opens a learner;
+   * by default the learner's record over the page. */
+  name?: (student: MapStudent) => ReactNode;
+  /** A small class's term grade line under each learner. */
+  grades?: boolean;
   /** Who its rows are, in the space's words (features/spaces/words.ts). */
   words: Pick<SpaceWords, "learner">;
   /** On Today the map is a glance, with the areas that have the most work. */
@@ -179,6 +186,8 @@ export function ClassMap({
         center={center}
         starting={starting}
         action={action}
+        name={name}
+        grades={grades}
       />
     );
   return (
@@ -244,13 +253,17 @@ export function ClassMap({
             data-strand={lens === "overall" ? undefined : lens}
           >
             <span role="cell" className={styles.name}>
-              <EntityLink
-                entity={{ kind: "student", id: row.student.id }}
-                className={styles.student}
-                data-map-student={row.student.id}
-              >
-                {row.student.name}
-              </EntityLink>
+              {name ? (
+                name(row.student)
+              ) : (
+                <EntityLink
+                  entity={{ kind: "student", id: row.student.id }}
+                  className={styles.student}
+                  data-map-student={row.student.id}
+                >
+                  {row.student.name}
+                </EntityLink>
+              )}
             </span>
             <span
               role="cell"
@@ -302,17 +315,24 @@ function SmallClassMap({
   center,
   starting,
   action,
+  name,
+  grades: graded,
 }: {
   data: MapResponse;
   center: number;
   starting: boolean;
   action?: ReactNode;
+  name?: (student: MapStudent) => ReactNode;
+  grades: boolean;
 }) {
   // The grade, as a line in each learner's section: a small class needs no
   // separate gradebook.
   const session = currentSession();
   const classPlace = { org: data.class.orgId, class: data.class.id };
-  const book = useQuery(gradebookOptions(session, classPlace, undefined));
+  const book = useQuery({
+    ...gradebookOptions(session, classPlace, undefined),
+    enabled: graded && !!session,
+  });
   const grades = new Map(
     (book.data?.students ?? []).map((row) => [row.id, row]),
   );
@@ -376,13 +396,17 @@ function SmallClassMap({
           >
             <div className={styles.learnerHead}>
               <h2 id={`map-${student.id}`} className={styles.learnerName}>
-                <EntityLink
-                  entity={{ kind: "student", id: student.id }}
-                  className={styles.student}
-                  data-map-student={student.id}
-                >
-                  {student.name}
-                </EntityLink>
+                {name ? (
+                  name(student)
+                ) : (
+                  <EntityLink
+                    entity={{ kind: "student", id: student.id }}
+                    className={styles.student}
+                    data-map-student={student.id}
+                  >
+                    {student.name}
+                  </EntityLink>
+                )}
               </h2>
               {!overall.estimated && (
                 <p className={styles.learnerLevel}>
@@ -403,7 +427,8 @@ function SmallClassMap({
             />
             {/* A term's grade line only once there's work to grade (or a
                 final set): a family's map carries no gradebook leftovers. */}
-            {book.data?.term &&
+            {graded &&
+              book.data?.term &&
               (grades.get(student.id)?.suggestion.status === "ready" ||
                 grades.get(student.id)?.final != null) && (
                 <GradeLine

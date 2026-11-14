@@ -1,0 +1,90 @@
+import { useParams } from "@tanstack/react-router";
+import type { ReactNode } from "react";
+import { ClassFrame } from "./ClassFrame";
+import { classUrl } from "./teacher-shared";
+
+/**
+ * Where a class's record screens (grades, report cards, workbooks, cards) are
+ * composed: in the class itself, or in a space that holds the same class
+ * under its own address and words (a family's Report cards, say). The screen
+ * takes its class, its frame, the addresses of its sibling screens, which of
+ * the class's people it shows and what it calls them from here; it never
+ * asks which space it is in.
+ */
+export type ClassHost = {
+  place: { org: string; class: string };
+  /** The frame around the page. */
+  Frame: (props: {
+    loading: boolean;
+    tab: string;
+    className?: string;
+    children: ReactNode;
+  }) => ReactNode;
+  /** A sibling screen's address, without the leading slash: `gradebook`,
+   * `report-cards`, `workbooks/<date>`, `today`, `settings`, `calendar`. */
+  href: (leaf: string) => string;
+  /** Which of the class's people this host shows (by roster person). */
+  keep?: (person: string) => boolean;
+  /** What the host calls them. */
+  words: {
+    learner: string;
+    learners: string;
+    Learner: string;
+    /** The people as a group: "your students", "your kids". */
+    group: string;
+  };
+  /** Who decides a final grade: "the teacher", "you". */
+  decider: string;
+};
+
+const STUDENT_WORDS: ClassHost["words"] = {
+  learner: "student",
+  learners: "students",
+  Learner: "Student",
+  group: "your students",
+};
+
+/** The class's own frame, from its route. A component of its own (never a
+ * closure made per render), so the page under it is never remounted. */
+function RoutedClassFrame({
+  loading,
+  tab,
+  className,
+  children,
+}: Parameters<ClassHost["Frame"]>[0]) {
+  const params = useParams({ strict: false }) as {
+    org?: string;
+    class?: string;
+  };
+  return (
+    <ClassFrame
+      org={params.org ?? ""}
+      classId={params.class ?? ""}
+      className={className}
+      loading={loading}
+      tab={tab}
+    >
+      {children}
+    </ClassFrame>
+  );
+}
+
+/** The class's own host, from its route: the class's frame and addresses. */
+export function useClassHost(given?: ClassHost): ClassHost {
+  const params = useParams({ strict: false }) as {
+    org?: string;
+    class?: string;
+  };
+  if (given) return given;
+  const place = { org: params.org ?? "", class: params.class ?? "" };
+  return {
+    place,
+    Frame: RoutedClassFrame,
+    href: (leaf) =>
+      leaf === "calendar"
+        ? `school/${place.org}/calendar`
+        : classUrl(place.org, place.class, leaf as never),
+    words: STUDENT_WORDS,
+    decider: "the teacher",
+  };
+}

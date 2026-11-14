@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useParams } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   gradebookColumns,
@@ -24,7 +24,7 @@ import { Stepper } from "../../../ui/Stepper";
 import { Toast } from "../../../ui/Toast";
 import { currentSession, orgOptions } from "../api";
 import { useStaffSession } from "./api";
-import { ClassFrame } from "./ClassFrame";
+import { useClassHost, type ClassHost } from "./host";
 import { EvidenceSheet } from "./EvidenceSheet";
 import { FinalField, Suggested } from "./grade-parts";
 import { CurveSheet, CurveStrip } from "./GradeCurve";
@@ -251,7 +251,7 @@ export function WeeklyTarget({
 
 /** One made-up line of the gradebook, for the empty state: what a suggested
  * range and its four parts look like once there's work. */
-function ExampleGrade() {
+function ExampleGrade({ name }: { name: string }) {
   const parts = [
     ["Course progress", 92],
     ["Growth", 100],
@@ -261,7 +261,7 @@ function ExampleGrade() {
   return (
     <div className={styles.exampleGrade}>
       <div className={styles.exampleGradeTop}>
-        <span className={styles.exampleName}>A student</span>
+        <span className={styles.exampleName}>{name}</span>
         <Suggested
           suggestion={{
             status: "ready",
@@ -289,8 +289,9 @@ function ExampleGrade() {
 
 /** A class's term: a suggested range and four components per student, and a
  * final grade the teacher decides. Every row opens to its evidence. */
-export function GradebookScreen() {
-  const place = useParams({ from: "/school/$org/classes/$class/gradebook" });
+export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
+  const host = useClassHost(given);
+  const place = host.place;
   const session = useStaffSession();
   const [search, set, closeSheet] = useClassSearch();
   const requested = uuidOr(search.term);
@@ -300,6 +301,17 @@ export function GradebookScreen() {
       ...orgOptions(currentSession(), place.org),
       refetchOnMount: false,
     }).data?.kind === "family";
+  // What this page calls the people in it: its host's words, or a family
+  // class's own at its class address.
+  const words =
+    given || !family
+      ? host.words
+      : {
+          learner: "child",
+          learners: "children",
+          Learner: "Child",
+          group: "your children",
+        };
   const close = useCloseTerm(session, place);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -323,7 +335,9 @@ export function GradebookScreen() {
   }, [unknownTerm]);
   const open = uuidOr(search.student);
   const editable = !!data?.canEdit && term?.state === "open";
-  const rows = data?.students ?? [];
+  const rows = (data?.students ?? []).filter(
+    (row) => !host.keep || host.keep(row.id),
+  );
   const entered = rows.filter((row) => row.final).length;
   // Who the sheet showed last, once the URL has already moved on.
   const lastOpen = useRef(open);
@@ -366,7 +380,7 @@ export function GradebookScreen() {
     () => [
       {
         id: "student",
-        header: family ? "Child" : "Student",
+        header: words.Learner,
         width: 160,
         compare: (a, b) => a.name.localeCompare(b.name, "en"),
         cell: name,
@@ -398,7 +412,7 @@ export function GradebookScreen() {
     ],
     // Cells read the current row and term; a row only changes with new data.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [term?.id, editable, session, place.class, family],
+    [term?.id, editable, session, place.class, words.Learner],
   );
   const card = (row: GradeRow) => (
     <div className={styles.gradeCard}>
@@ -440,9 +454,7 @@ export function GradebookScreen() {
       (row) => row.suggestion.status === "not-enough-work" && !row.final,
     );
   return (
-    <ClassFrame
-      org={place.org}
-      classId={place.class}
+    <host.Frame
       className={data?.class.name}
       loading={book.isPending}
       tab="gradebook"
@@ -457,9 +469,10 @@ export function GradebookScreen() {
               to="/$"
               params={{
                 // A family's calendar is a section of its class's Settings.
-                _splat: family
-                  ? classUrl(place.org, place.class, "settings")
-                  : `school/${place.org}/calendar`,
+                _splat:
+                  given || family
+                    ? host.href("settings")
+                    : `school/${place.org}/calendar`,
               }}
               className={buttonClass("primary")}
             >
@@ -499,31 +512,31 @@ export function GradebookScreen() {
               <EmptyState
                 title={`${term.name} starts ${longDay(term.startsOn)}`}
               >
-                Suggested ranges appear here once students have work in this
-                term.
+                Suggested ranges appear here once {words.learners} have work in
+                this term.
               </EmptyState>
             </div>
           ) : rows.length === 0 ? (
             <div className={styles.gradeEmpty}>
               <EmptyState
-                title={
-                  family
-                    ? "No children in this term"
-                    : "No students in this term"
-                }
-                example={<ExampleGrade />}
+                title={`No ${words.learners} in this term`}
+                example={<ExampleGrade name={`A ${words.learner}`} />}
                 action={
                   <Link
                     to="/$"
                     params={{
-                      _splat: family
-                        ? "family/learners"
-                        : classUrl(place.org, place.class, "settings"),
+                      _splat: given
+                        ? host.href("today")
+                        : family
+                          ? "family/learners"
+                          : classUrl(place.org, place.class, "settings"),
                     }}
-                    search={(family ? {} : { add: 1 }) as never}
+                    search={
+                      (given ? { add: 1 } : family ? {} : { add: 1 }) as never
+                    }
                     className={buttonClass("primary")}
                   >
-                    {family ? "Add a child" : "Add students"}
+                    {given || family ? "Add a child" : "Add students"}
                   </Link>
                 }
               />
@@ -532,12 +545,12 @@ export function GradebookScreen() {
             <div className={styles.gradeEmpty}>
               <EmptyState
                 title="Suggested grades appear after a week of work"
-                example={<ExampleGrade />}
+                example={<ExampleGrade name={`A ${words.learner}`} />}
                 action={
                   <Link
                     to="/$"
                     params={{
-                      _splat: classUrl(place.org, place.class, "today"),
+                      _splat: host.href("today"),
                     }}
                     className={buttonClass("primary")}
                   >
@@ -581,7 +594,7 @@ export function GradebookScreen() {
                   <Link
                     to="/$"
                     params={{
-                      _splat: classUrl(place.org, place.class, "report-cards"),
+                      _splat: host.href("report-cards"),
                     }}
                     search={{ term: term.id } as never}
                     // Beside Export, never pulled over it: a start-aligned
@@ -686,7 +699,7 @@ export function GradebookScreen() {
                 This freezes every suggested range with the evidence behind it,
                 and final grades can no longer change.
                 {missing > 0
-                  ? ` ${missing === 1 ? "1 student has" : `${missing} students have`} no final grade yet.`
+                  ? ` ${missing === 1 ? `1 ${words.learner} has` : `${missing} ${words.learners} have`} no final grade yet.`
                   : ""}
               </p>
               <div className={styles.dialogActions}>
@@ -731,6 +744,6 @@ export function GradebookScreen() {
       </span>
       <Toast tone="status" message={message} onDismiss={() => setMessage("")} />
       <Toast message={error} onDismiss={() => setError("")} />
-    </ClassFrame>
+    </host.Frame>
   );
 }
