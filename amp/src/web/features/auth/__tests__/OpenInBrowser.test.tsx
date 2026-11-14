@@ -2,6 +2,7 @@ import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { carryLink } from "../../../lib/link-carry";
 import { OpenInBrowser } from "../OpenInBrowser";
+import { carryLink } from "../../../lib/link-carry";
 
 const token = "a".repeat(43);
 const proof = "b".repeat(43);

@@ -77,9 +77,10 @@ export function LessonDialog({
   );
 }
 
-/** The problem type's title and its one row of actions. Both are known
- * before the lesson lands (the catalog's title, the film catalogue), so the
- * row is drawn whole at once and nothing in it moves. */
+/** The problem type's title and its one row of actions. The film is known
+ * from the bundled catalogue and the page holds its action's place until it
+ * knows it (PathwaysScreen), so the row is drawn whole at once and nothing
+ * in it moves. */
 function LessonHead({
   lesson,
   children,
@@ -89,15 +90,13 @@ function LessonHead({
 }) {
   const catalog = useQuery(skillCatalogOptions);
   const known = catalog.data?.templates.find((t) => t.id === lesson)?.title;
-  // An older catalog without titles: the lesson's own, when it lands.
-  const loaded = useQuery({
-    ...pathwaysLessonOptions(lesson),
-    enabled: !!catalog.data && !known,
-  });
+  // The lesson's own title when it lands first (a cold link), or the
+  // catalog has none: the same request as the lesson under it.
+  const loaded = useQuery(pathwaysLessonOptions(lesson));
   const title = known ?? loaded.data?.lesson.title;
   const film = lessonFilms[lesson];
   return (
-    <header className={styles.head}>
+    <div className={styles.head}>
       <h2 className={styles.title} aria-busy={!title || undefined}>
         {title ?? "\u00a0"}
       </h2>
@@ -107,6 +106,6 @@ function LessonHead({
           {film && <FilmLink templateId={lesson} film={film} button />}
         </div>
       )}
-    </header>
+    </div>
   );
 }

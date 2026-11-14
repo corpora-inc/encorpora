@@ -66,9 +66,18 @@ assert(typesOf(oneFilm.id).length > 1);
 assert(distinctFilms(manyFilms.id) >= 3);
 assert.equal(filmsOf(noFilms.id).length, 0);
 const filmed = filmsOf(oneFilm.id)[0]!.id;
+// One film shared by several problem types.
+const sharedFilm = skills.find((s) => s.id === "name-shapes")!;
+assert(filmsOf(sharedFilm.id).length > distinctFilms(sharedFilm.id));
+// Skills far down the pathway, a phone's several screens from its top.
+const farSkill = skills.find((s) => s.id === "similarity-theorems")!;
+const otherFar = skills.find((s) => s.id === "nonlinear-systems")!;
 const unfilmed = typesOf(oneFilm.id).find((t) => !lessonFilms[t.id])!.id;
 
-async function fixture(page: Page, { holdLessons = 0, holdFrontier = 0 } = {}) {
+async function fixture(
+  page: Page,
+  { holdLessons = 0, holdFrontier = 0, holdCatalog = 0 } = {},
+) {
   await page.addInitScript((learner) => {
     localStorage.setItem(
       "amp.learner",
@@ -77,7 +86,8 @@ async function fixture(page: Page, { holdLessons = 0, holdFrontier = 0 } = {}) {
   }, LEARNER);
   await page.route("**/api/v1/**", async (route) => {
     const pathname = new URL(route.request().url()).pathname;
-    if (pathname.endsWith("/catalog"))
+    if (pathname.endsWith("/catalog")) {
+      if (holdCatalog) await new Promise((r) => setTimeout(r, holdCatalog));
       return route.fulfill({
         json: {
           skills,
@@ -87,6 +97,7 @@ async function fixture(page: Page, { holdLessons = 0, holdFrontier = 0 } = {}) {
           trial: { free: 100, placement: 20 },
         },
       });
+    }
     if (pathname.endsWith("/auth-config"))
       return route.fulfill({
         json: { mode: "accounts", passwords: true, providers: [] },
@@ -384,8 +395,15 @@ for (const width of widths)
     );
     assert(early.title!.y < early.try!.y, `${tag}: title first`);
     if (width <= 640) {
+      // Stacked, each the full width of the lesson's column.
+      const column = (await dialog.locator(".problem-lesson").boundingBox())!;
       assert(early.try!.y + early.try!.height <= early.watch!.y);
-      assert(Math.abs(early.try!.width - early.watch!.width) < 1);
+      for (const button of [early.try!, early.watch!])
+        assert(
+          Math.abs(button.width - column.width) < 1 &&
+            Math.abs(button.x - column.x) < 1,
+          `${tag}: phone actions fill the column (${button.width} of ${column.width})`,
+        );
     } else {
       assert(Math.abs(early.try!.y - early.watch!.y) < 1, `${tag}: one row`);
       assert(early.try!.x < early.watch!.x, `${tag}: Try, then Watch`);
@@ -414,6 +432,101 @@ for (const width of widths)
     await lessonPage.waitForTimeout(300);
     await shot(lessonPage, `q210-lesson-no-film-${tag}`);
     await lessonPage.close();
+
+    // A cold link to a lesson, its catalog slow: Watch holds its place while
+    // Try's is kept for it.
+    const cold = await context.newPage();
+    await fixture(cold, { holdCatalog: 1500 });
+    await cold.goto(`${origin}/pathways?open=lesson:${filmed}`);
+    const coldDialog = cold.getByRole("dialog", {
+      name: "Explore a problem type",
+    });
+    const coldWatch = coldDialog.getByRole("link", { name: /^Watch lesson/ });
+    await coldWatch.waitFor();
+    const held = (await coldWatch.boundingBox())!;
+    await coldDialog
+      .getByRole("link", { name: "Try this problem type", exact: true })
+      .waitFor();
+    assert.deepEqual(
+      await coldWatch.boundingBox(),
+      held,
+      `${tag}: Watch never moves when the catalog arrives`,
+    );
+    await cold.close();
+
+    // A film shared by several problem types: one card, a glyph on each row.
+    const shared = await context.newPage();
+    await fixture(shared);
+    await shared.goto(`${origin}/pathways?open=skill:${sharedFilm.id}`);
+    const sharedSheet = shared.locator(`[data-skill-layer="${sharedFilm.id}"]`);
+    await sharedSheet.locator("[data-film-card]").first().waitFor();
+    assert.equal(
+      await sharedSheet.locator("[data-film-card]").count(),
+      distinctFilms(sharedFilm.id),
+    );
+    assert.equal(
+      await sharedSheet.locator("[data-film-glyph]").count(),
+      filmsOf(sharedFilm.id).length,
+      `${tag}: every filmed problem type says so`,
+    );
+    await shared.close();
+
+    // A skill chosen far down the flat pathway is centred in view, by its
+    // address and from the list, and still there once its sheet closes.
+    const far = await context.newPage();
+    await fixture(far);
+    const inView = async (id: string) =>
+      far.evaluate((skill) => {
+        const plan = document.querySelector(".pathways-plan")!;
+        const head = plan.firstElementChild as HTMLElement;
+        const box = plan.getBoundingClientRect();
+        const top =
+          box.top +
+          (getComputedStyle(head).display === "none" ? 0 : head.offsetHeight);
+        const el = plan
+          .querySelector(`[data-plan-skill="${skill}"]`)!
+          .getBoundingClientRect();
+        return el.top >= top - 1 && el.bottom <= box.bottom + 1;
+      }, id);
+    await far.goto(`${origin}/pathways?open=skill:${farSkill.id}`);
+    await far
+      .getByRole("heading", { name: farSkill.title, exact: true })
+      .waitFor();
+    assert(await inView(farSkill.id), `${tag}: an address's skill is in view`);
+    await far.keyboard.press("Escape");
+    await far
+      .getByRole("heading", { name: farSkill.title, exact: true })
+      .waitFor({ state: "detached" });
+    assert(await inView(farSkill.id), `${tag}: still in view once closed`);
+    await far.goto(`${origin}/pathways`);
+    await far.locator(".pathways-plan").waitFor();
+    await far.getByRole("button", { name: /^Browse/ }).click();
+    await far
+      .locator(`#pathways-browser a[href*="skill%3A${otherFar.id}"]`)
+      .click();
+    await far
+      .getByRole("heading", { name: otherFar.title, exact: true })
+      .waitFor();
+    await far.waitForTimeout(900);
+    assert(
+      await inView(otherFar.id),
+      `${tag}: a skill from the list is in view ${await far.evaluate(
+        (skill) => {
+          const plan = document.querySelector(".pathways-plan")!;
+          const el = plan.querySelector(`[data-plan-skill="${skill}"]`)!;
+          return JSON.stringify({
+            scroll: plan.scrollTop,
+            plan: plan.getBoundingClientRect(),
+            skill: el.getBoundingClientRect(),
+          });
+        },
+        otherFar.id,
+      )}`,
+    );
+    await far.keyboard.press("Escape");
+    await far.waitForTimeout(300);
+    await shot(far, `q208-chosen-skill-in-view-${tag}`);
+    await far.close();
 
     assert.deepEqual(errors, [], `${tag}: page errors`);
     await context.close();
