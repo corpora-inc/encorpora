@@ -317,7 +317,7 @@ export function ExperienceSettings({
       aria-labelledby="setting-teacher-line"
     >
       <div className={styles.rowText}>
-        <h2 id="setting-teacher-line">Show me in my class</h2>
+        <h2 id="setting-teacher-line">Show me in this class</h2>
         <p>
           Shows your own practice as a line on this class’s map and board,
           marked Teacher and never ranked, so students can pass you. Grades and
@@ -326,7 +326,7 @@ export function ExperienceSettings({
       </div>
       <div className={styles.rowControl}>
         <Segmented
-          label="Show me in my class"
+          label="Show me in this class"
           options={[
             { value: "shown", label: "Shown" },
             { value: "hidden", label: "Hidden" },

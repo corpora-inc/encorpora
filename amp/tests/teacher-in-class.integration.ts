@@ -492,7 +492,7 @@ test(
       },
     );
 
-    await t.test("the teacher's switch: Show me in my class", async () => {
+    await t.test("the teacher's switch: Show me in this class", async () => {
       const experience = (account: string) =>
         ok(get(`${CLASS}/experience`, account));
       assert.deepEqual((await experience(rivera)).teacherLine, {

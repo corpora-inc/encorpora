@@ -91,6 +91,87 @@
   box-shadow: 0 0 0 2px var(--color-surface);
 }
 
+/* The dot's full-width track: a drift moves the track, so the dot's own
+   `left` still glides to the first estimate. */
+.track {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+/* ── Not yet measured: the whole scale, a "?" on the dot ─────────────── */
+.unmeasured {
+  --dot: 18px;
+  /* The drifting track is the bar's width, moved: never past the page. */
+  overflow-x: clip;
+}
+.large.unmeasured {
+  --dot: 22px;
+}
+.unmeasured .range {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--level-hue) 12%, transparent),
+    color-mix(in srgb, var(--level-hue) 38%, transparent) 50%,
+    color-mix(in srgb, var(--level-hue) 12%, transparent)
+  );
+}
+.unmeasured .dot {
+  border: 2px solid var(--level-hue);
+  background: var(--color-surface);
+  box-shadow: 0 0 0 3px var(--color-surface);
+}
+/* The "?" sits in the dot; in the hero it rides above it. */
+.mark {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--level-hue);
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+  user-select: none;
+}
+.large .mark {
+  font-size: 13px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  /* Searching: the dot wanders the scale, swinging wide, then narrower,
+     then wide again, while the range breathes. */
+  .moving .track {
+    animation: level-search 9s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  }
+  .moving .range {
+    animation: level-breathe 2.6s ease-in-out infinite alternate;
+  }
+}
+@keyframes level-search {
+  0%,
+  100% {
+    transform: translateX(-30%);
+  }
+  28% {
+    transform: translateX(24%);
+  }
+  52% {
+    transform: translateX(-12%);
+  }
+  76% {
+    transform: translateX(10%);
+  }
+}
+@keyframes level-breathe {
+  from {
+    opacity: 0.55;
+    transform: translateY(-50%) scaleY(0.72);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) scaleY(1);
+  }
+}
+
 /* ── The axis under a column of bars ───────────────────────────────────── */
 .axisFrame {
   display: block;
@@ -474,19 +555,45 @@ h3.caption {
   margin: var(--space-3) 0 0;
   text-align: start;
 }
+/* Room above the bar for the "?" that rides on its dot. */
 .heroBar {
   height: 64px;
+  padding-top: 32px;
 }
 .heroBar .bar {
   --rail: 14px;
   --dot: 26px;
 }
+/* The hero's "?" rides above its dot, in the display face. */
+.heroBar .mark {
+  inset: auto;
+  bottom: calc(100% + var(--space-2));
+  left: 50%;
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 400;
+  transform: translateX(-50%);
+}
+/* The promise, then the premise under it: two lines, never a paragraph. */
+.heroWords {
+  display: grid;
+  gap: var(--space-1);
+  width: 100%;
+  max-width: 46ch;
+}
 .heroBody {
-  max-width: 40ch;
+  margin: 0;
+  color: var(--color-on-surface);
+  font-size: var(--text-body);
+  font-weight: 550;
+  line-height: 1.45;
+  text-wrap: balance;
+}
+.heroPremise {
   margin: 0;
   color: var(--color-muted-text);
-  font-size: var(--text-body);
-  line-height: 1.5;
+  font-size: var(--text-dense);
+  line-height: 1.45;
   text-wrap: balance;
 }
 .heroAction {

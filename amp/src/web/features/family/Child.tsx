@@ -195,7 +195,7 @@ export function ChildScreen() {
                 <h2 id="child-levels">Where {child.name} is</h2>
                 <RecordLevels
                   record={record}
-                  empty={`${child.name}’s levels show after a little practice.`}
+                  empty={`We’ll find ${child.name}’s level in a few minutes of practice.`}
                 />
               </section>
               <section aria-labelledby="child-weeks" className={styles.section}>

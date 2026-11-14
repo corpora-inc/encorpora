@@ -1106,3 +1106,11 @@ label.columnPick {
   color: var(--color-subtle-text);
   font-size: var(--text-table-small);
 }
+/* A level not measured yet: its row and axis, then one line. */
+.levelsNotYet {
+  display: grid;
+  gap: var(--space-3);
+}
+.levelsNotYet > p {
+  margin: 0;
+}

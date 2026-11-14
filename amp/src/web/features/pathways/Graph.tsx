@@ -42,7 +42,7 @@ type Props = {
   frame?: { id: string } | null;
   range: { lo: number; hi: number; level: number } | null;
   rangeStrand?: string;
-  /** The learner's level on the map ("My level"), once estimated. */
+  /** The learner's level on the map ("Where you are"), once estimated. */
   level?: { wide: string[]; close: string[] } | null;
   /** The level is still loading: its control keeps its place. */
   levelLoading?: boolean;
@@ -118,7 +118,7 @@ export function Graph({
   const [orbit, setOrbit] = useState(false);
   const viewport = useRef<HTMLElement>(null);
   const [fullscreen, setFullscreen] = useState(false);
-  // The toolbar appears whole, once it knows whether "My level" belongs in
+  // The toolbar appears whole, once it knows whether "Where you are" belongs in
   // it, so no button ever shifts (at most 1.5 s on a slow estimate).
   const [toolbarReady, setToolbarReady] = useState(!levelLoading);
   useEffect(() => {
@@ -1397,10 +1397,10 @@ export function Graph({
         {level && (
           <button
             disabled={failed}
-            aria-label="My level"
+            aria-label="Where you are"
             onClick={() => home.current(false)}
           >
-            <span className="camera-wide">My level</span>
+            <span className="camera-wide">Where you are</span>
             <svg
               className="camera-narrow"
               viewBox="0 0 20 20"

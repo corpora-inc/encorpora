@@ -138,8 +138,8 @@ export function leaveTarget(me: SignedInMe | null | undefined) {
     ? {
         own: own.id,
         first,
-        label: "Back to my own practice",
-        short: "My practice",
+        label: "Back to your levels",
+        short: "Your levels",
       }
     : { own: null, first, label: "Back", short: "Back" };
 }

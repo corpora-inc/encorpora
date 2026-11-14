@@ -1487,9 +1487,9 @@ export function ImportScreen() {
     (value) => value === search.show,
   ) as Bucket | undefined;
   const defaultClass = classId
-    ? (classes.find((klass) => klass.id === classId)?.name ?? "My class")
+    ? (classes.find((klass) => klass.id === classId)?.name ?? "Math class")
     : org?.solo
-      ? (classes[0]?.name ?? "My class")
+      ? (classes[0]?.name ?? "Math class")
       : (classes[0]?.name ?? "");
   const check = async () => {
     const current = useImport.getState().draft!;

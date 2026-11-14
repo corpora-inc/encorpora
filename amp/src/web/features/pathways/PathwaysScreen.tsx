@@ -283,7 +283,7 @@ export function MapView({
   canPractice?: boolean;
   controls?: ReactNode;
   frontier?: Frontier;
-  /** The learner's estimate or record is on its way: "My level" waits. */
+  /** The learner's estimate or record is on its way: "Where you are" waits. */
   frontierLoading?: boolean;
   /** Whose map it is: a skill opened here shows their work on it. */
   learnerId?: string;

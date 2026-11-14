@@ -4,7 +4,7 @@ import type {
   ProgressRecord,
   StudentTimeResponse,
 } from "../../../../schools/teacher-contracts";
-import { fitScale, LevelRows } from "../../../ui/level-range";
+import { fitScale, LevelRows, WHOLE_SCALE } from "../../../ui/level-range";
 import { StatRow, StatTile } from "../../../ui/StatTile";
 import {
   fullDay,
@@ -22,17 +22,24 @@ import styles from "./Teacher.module.css";
 
 /** Levels on every strand: overall first, then each strand by the work in
  * it, as error bars on one fitted scale (ui/level-range), over the
- * student's own grade when there is one. */
+ * student's own grade when there is one. Before any work, the overall row
+ * is not measured yet: the whole scale, searching, with one line under it. */
 export function RecordLevels({
   record,
   empty,
 }: {
   record: ProgressRecord;
-  /** What shows before there's any work to read a level from. */
+  /** The line under the level before there's any work to read it from. */
   empty: string;
 }) {
   const { level, reference } = record;
-  if (!level) return <p className={styles.quietLine}>{empty}</p>;
+  if (!level)
+    return (
+      <div className={styles.levelsNotYet} data-levels-not-yet>
+        <LevelRows overall={null} areas={[]} scale={WHOLE_SCALE} moving />
+        {empty && <p className={styles.quietLine}>{empty}</p>}
+      </div>
+    );
   const areas = record.strands.flatMap((strand) => {
     const estimate = level.strands[strand.id];
     return estimate ? [{ id: strand.id, label: strand.label, estimate }] : [];

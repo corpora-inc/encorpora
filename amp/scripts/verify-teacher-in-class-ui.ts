@@ -7,7 +7,7 @@
  *   2. A student opens standings: the teacher sits in place by value with no
  *      number, the students' numbers still run 1 to 10, and a colleague below
  *      the list shows after the student's own line.
- *   3. The teacher switches "Show me in my class" off on the Student experience
+ *   3. The teacher switches "Show me in this class" off on the Student experience
  *      tab: nothing on the screen moves, the board drops the line,
  *      a reload keeps the choice, a failed save puts it back and says so, and
  *      switching on brings the line back.
@@ -509,7 +509,7 @@ async function journeys(browser: Browser, engine: string, width: number) {
     await teacher.page.goto(classUrl("experience"));
     await heading(teacher.page, "Student experience").waitFor();
     const group = teacher.page.getByRole("radiogroup", {
-      name: "Show me in my class",
+      name: "Show me in this class",
     });
     await group.waitFor();
     check(
@@ -618,7 +618,7 @@ async function sweep(
     for (const [name, leaf, title, ready] of [
       ["map", "map", "Class map", `${NAMES[0]![0]} ${NAMES[0]![1]}`],
       ["today", "today", /^Good /, `${NAMES[0]![0]} ${NAMES[0]![1]}`],
-      ["experience", "experience", "Student experience", "Show me in my class"],
+      ["experience", "experience", "Student experience", "Show me in this class"],
     ] as const) {
       await teacher.page.goto(classUrl(leaf));
       await heading(teacher.page, title).waitFor();

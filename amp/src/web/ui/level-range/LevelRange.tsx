@@ -10,7 +10,8 @@ import styles from "./LevelRange.module.css";
 export type LevelRangeArea = {
   id: string;
   label: string;
-  estimate: Estimate;
+  /** Null: nothing answered yet (only ever the overall row). */
+  estimate: Estimate | null;
   estimated?: boolean;
 };
 
@@ -32,14 +33,16 @@ const words = {
     `${area}: best guess ${level}, likely ${from} to ${to}`,
   rowUnnumbered: (area: string) =>
     `${area}: a likely range, narrowing with practice`,
-  start: (level: string, who?: string) =>
+  /** Before the first answer: no grade named, only how soon it's known. */
+  notYet: "Level not measured yet: anywhere from kindergarten to precalculus",
+  find: (who?: string) =>
     who
-      ? `AMP starts ${who} near ${level}. Every answer narrows the range.`
-      : `AMP starts near ${level}. Every answer narrows the range.`,
-  startUnnumbered: (who?: string) =>
+      ? `We’ll find ${who}’s level in a few minutes of practice.`
+      : "We’ll find your level in a few minutes. Just start answering.",
+  premise: (who?: string) =>
     who
-      ? `AMP starts from ${who}’s age and narrows the range with every answer.`
-      : "AMP starts from a first guess and narrows the range with every answer.",
+      ? "No planning needed: AMP makes every minute count."
+      : "Spend the time; AMP makes every minute count.",
 };
 
 /**
@@ -89,10 +92,13 @@ export function LevelRange({
 }) {
   const [from, to] = likelyRange(overall);
   const detail = levelDetails(overall);
-  const scale = fitScale([overall, ...areas.map((area) => area.estimate)], {
-    minSpan: 5,
-    include: grade ? [...grade] : [],
-  });
+  const scale = fitScale(
+    [overall, ...areas.flatMap((area) => area.estimate ?? [])],
+    {
+      minSpan: 5,
+      include: grade ? [...grade] : [],
+    },
+  );
   // The path says something once the range has really narrowed; before
   // that it would be a lone segment or a flat band, so it waits.
   const pathShown =
@@ -195,8 +201,10 @@ export function LevelRows({
   decimals = numbers,
   overallEstimated = false,
   axis = true,
+  moving = false,
 }: {
-  overall: Estimate;
+  /** Null before the first answer: the row is not measured yet. */
+  overall: Estimate | null;
   overallLabel?: string;
   areas: readonly LevelRangeArea[];
   scale: RangeScale;
@@ -207,6 +215,9 @@ export function LevelRows({
   /** The overall estimate is a starting guess, drawn dashed. */
   overallEstimated?: boolean;
   axis?: boolean;
+  /** A lone learner's unmeasured row searches (LevelBar's `moving`); a
+   * column of many stays still. */
+  moving?: boolean;
 }) {
   return (
     <>
@@ -222,6 +233,7 @@ export function LevelRows({
           grade={grade}
           numbers={numbers}
           decimals={decimals}
+          moving={moving}
           strong
         />
         {areas.map((area) => (
@@ -253,6 +265,7 @@ function AreaRow({
   numbers,
   decimals,
   strong = false,
+  moving = false,
 }: {
   area: LevelRangeArea;
   scale: RangeScale;
@@ -260,7 +273,31 @@ function AreaRow({
   numbers: boolean;
   decimals: boolean;
   strong?: boolean;
+  moving?: boolean;
 }) {
+  if (!area.estimate)
+    return (
+      <li
+        className={`${styles.row} ${strong ? styles.rowStrong : ""}`}
+        data-strand={area.id || undefined}
+        aria-label={`${area.label}: ${words.notYet}`}
+      >
+        <span className={styles.rowName} aria-hidden="true">
+          {area.label}
+        </span>
+        <span className={styles.rowBar} aria-hidden="true">
+          <LevelBar
+            estimate={null}
+            scale={scale}
+            size={strong ? "large" : "regular"}
+            moving={moving}
+          />
+        </span>
+        <span className={styles.rowNumbers} aria-hidden="true">
+          {numbers ? "Not yet" : ""}
+        </span>
+      </li>
+    );
   const [from, to] = likelyRange(area.estimate);
   return (
     <li
@@ -325,24 +362,23 @@ function Legend({ grade }: { grade: boolean }) {
   );
 }
 
+/** The whole curriculum, kindergarten to precalculus: the scale a level
+ * that isn't measured yet spans. */
+export const WHOLE_SCALE: RangeScale = { lo: 0, hi: 12 };
+
 /**
  * Day 0 (docs/design/ia.md, rule 7): one centred column. One heading, the
- * starting estimate large on its labelled scale, one sentence, the one
- * prominent action, and quiet secondary items below. The range is wide on
- * purpose; every answer narrows it.
+ * level not yet measured (the whole scale, its dot searching with a "?"),
+ * one promise and the premise under it, the one prominent action, and quiet
+ * secondary items below. It names no grade: the first answers find it.
  */
 export function LevelRangeStart({
-  start,
   action,
   title = "Where you are",
   heading = 2,
   secondary,
-  numbers = true,
   who,
-  grade = null,
 }: {
-  /** Where AMP begins: from a birth year, or the start an adult chose. */
-  start: Estimate;
   /** The one prominent action: Start practicing. */
   action?: ReactNode;
   /** The hero's one heading. */
@@ -351,19 +387,9 @@ export function LevelRangeStart({
   heading?: 1 | 2;
   /** Quiet items under the action: the free problems left, a link. */
   secondary?: ReactNode;
-  /** Grade names and numbers; off where a learner's levels are hidden. */
-  numbers?: boolean;
   /** The learner's name when someone else reads it. */
   who?: string;
-  /** The learner's own grade, painted behind the bar. */
-  grade?: readonly [from: number, to: number] | null;
 }) {
-  const [from, to] = likelyRange(start);
-  const scale = fitScale([start], {
-    minSpan: 6,
-    pad: 1,
-    include: grade ? [...grade] : [],
-  });
   const Heading = heading === 1 ? "h1" : "h2";
   return (
     <section
@@ -376,30 +402,15 @@ export function LevelRangeStart({
         {title}
       </Heading>
       <figure className={styles.heroFigure}>
-        <div
-          className={styles.heroBar}
-          role="img"
-          aria-label={
-            numbers
-              ? `Starting estimate: ${gradeName(start.level)}, likely ${gradeName(from)} to ${gradeName(to)}`
-              : "Starting estimate: a wide range that narrows with practice"
-          }
-        >
-          <LevelBar
-            estimate={start}
-            scale={scale}
-            band={grade}
-            estimated
-            size="large"
-          />
+        <div className={styles.heroBar} role="img" aria-label={words.notYet}>
+          <LevelBar estimate={null} scale={WHOLE_SCALE} size="large" moving />
         </div>
-        {numbers && <LevelAxis scale={scale} />}
+        <LevelAxis scale={WHOLE_SCALE} />
       </figure>
-      <p className={styles.heroBody}>
-        {numbers
-          ? words.start(gradeName(start.level), who)
-          : words.startUnnumbered(who)}
-      </p>
+      <div className={styles.heroWords}>
+        <p className={styles.heroBody}>{words.find(who)}</p>
+        <p className={styles.heroPremise}>{words.premise(who)}</p>
+      </div>
       {action && <div className={styles.heroAction}>{action}</div>}
       {secondary && <div className={styles.heroSecondary}>{secondary}</div>}
     </section>

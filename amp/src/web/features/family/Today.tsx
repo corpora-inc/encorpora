@@ -362,11 +362,11 @@ export function FamilyTodayScreen() {
                         title={
                           practiceSelf
                             ? "Practice yourself"
-                            : "Start your own practice"
+                            : "Start practicing yourself"
                         }
                         meta={
                           practiceSelf
-                            ? "Your own levels, in My practice"
+                            ? "Levels, practice and workbooks"
                             : "Free for you, with your children’s plan"
                         }
                         data-practice-self=""

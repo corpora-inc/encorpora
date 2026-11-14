@@ -112,7 +112,7 @@ function addPlaceDetail(me: SignedInMe) {
 
 /**
  * The one way between the places a person works, grouped as Family,
- * Teaching and My practice, the current one marked. It lists only places
+ * Teaching and Practice, the current one marked. It lists only places
  * this account can open, each with its role, then "Add a place" (the
  * starter). Choosing one lands on that place's home, chooses its learner,
  * and remembers it, so `/` opens there next time; nothing else follows them.

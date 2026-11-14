@@ -104,12 +104,12 @@ const places: PlacesResource = {
   more: false,
 };
 
-test("Family, Teaching, My practice: every authorised place with its role", () => {
+test("Family, Teaching, Practice: every authorised place with its role", () => {
   const groups = placeGroups(me, places);
   expect(groups.map((group) => group.label)).toEqual([
     "Family",
     "Teaching",
-    "My practice",
+    "Practice",
   ]);
   const rows = (index: number) =>
     groups[index]!.entries.map((entry) => `${entry.name} · ${entry.detail}`);
@@ -128,7 +128,7 @@ test("Family, Teaching, My practice: every authorised place with its role", () =
     "Room 3 · Teacher",
   ]);
   expect(rows(2)).toEqual([
-    "My practice · Your levels and practice",
+    "Practice · Levels, practice and workbooks",
     "Practice at a level · Any grade, any pace",
   ]);
 });

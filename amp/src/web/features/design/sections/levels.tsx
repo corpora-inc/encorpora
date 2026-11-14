@@ -47,10 +47,11 @@ export function LevelSections() {
             />
           </CurriculumDetailsFixture>
         </Specimen>
-        <Specimen label="Day 0: the starting estimate" wide>
-          <CurriculumDetailsFixture shown>
-            <LevelRangeStart start={{ level: 6, sd: 1.6 }} />
-          </CurriculumDetailsFixture>
+        <Specimen label="Day 0: not measured yet" wide>
+          <LevelRangeStart />
+        </Specimen>
+        <Specimen label="Day 0, read by a parent" wide>
+          <LevelRangeStart who="Maya" />
         </Specimen>
         <Specimen label="Rows on a shared scale" wide>
           <LevelRows overall={frontier.overall} areas={areas} scale={scale} />
