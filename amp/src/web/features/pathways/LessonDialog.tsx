@@ -1,17 +1,18 @@
-import { lazy, Suspense, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { lessonFilms } from "../../../content/lesson-films";
 import type { LessonIndex } from "../../../content/lesson-index-build";
 import { Dialog } from "../../ui/Dialog";
 import { FilmLink } from "../films/FilmLink";
-import { LessonWait } from "./LessonWait";
 import { LessonBoundary } from "./LessonRecovery";
+// In this chunk, not one of its own: the lesson's wait is drawn in the same
+// frame as the head, never a moment later.
+import SkillLesson from "./SkillLesson";
 import index from "./lesson-index.json";
 import styles from "./LessonDialog.module.css";
 /** Every problem type's title and skill, built from the engine
  * (`npm run build:lesson-index`): in this layer's own chunk, so a cold link
  * knows its title before any request. */
 const lessonIndex = index as unknown as LessonIndex;
-const SkillLesson = lazy(() => import("./SkillLesson"));
 
 /** A problem type's id, as `?lesson=` carries it. */
 const LESSON_ID = /^[a-z0-9][a-z0-9-]{0,119}$/;
@@ -70,13 +71,11 @@ export default function LessonDialog({
           <LessonHead lesson={lesson} actions={actions} />
           <div className={styles.body}>
             <LessonBoundary key={lesson} onBack={onClose} backLabel={backLabel}>
-              <Suspense fallback={<LessonWait />}>
-                <SkillLesson
-                  templateId={lesson}
-                  onBack={onClose}
-                  backLabel={backLabel}
-                />
-              </Suspense>
+              <SkillLesson
+                templateId={lesson}
+                onBack={onClose}
+                backLabel={backLabel}
+              />
             </LessonBoundary>
           </div>
         </div>
