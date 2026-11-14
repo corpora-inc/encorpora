@@ -11,9 +11,8 @@ import {
   familyOptions,
   familyPlacesOptions,
   isFamilyId,
-  type FamilyPlaces,
 } from "../features/family/api";
-import { familyPath } from "../features/family/redirects";
+import { familyPath, landingFamily } from "../features/family/redirects";
 import { staffScreen } from "./school-routes";
 
 /*
@@ -23,17 +22,6 @@ import { staffScreen } from "./school-routes";
  * or a chooser when several are theirs. The account's older `/family/<section>`
  * addresses open the account's own screens, at their neutral addresses.
  */
-
-/** The family `/family` opens: the account's own, else the one family it
- * belongs to; null when there are several to choose between, or none. */
-export function landingFamily(places: FamilyPlaces | null | undefined) {
-  const parents = (places?.families ?? []).filter(
-    (family) => family.role !== "co-teacher",
-  );
-  const own = parents.find((family) => family.role === "holder");
-  if (own) return own.familyId;
-  return parents.length === 1 ? parents[0]!.familyId : null;
-}
 
 async function ownFamily(session: AuthSession) {
   const places = await queryClient

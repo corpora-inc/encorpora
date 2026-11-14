@@ -1,4 +1,5 @@
 import type { SignedInMe } from "../../../account/contracts";
+import type { FamilyPlaces } from "../../../family/projection-contracts";
 import {
   OPEN_KEY,
   readStack,
@@ -265,3 +266,15 @@ export function peopleOf(
       if (entry.id === classId) map.set(entry.personId, child.id);
   return map;
 }
+
+/** The family `/family` opens: the account's own, else the one family it
+ * belongs to; null when there are several to choose between, or none. */
+export function landingFamily(places: FamilyPlaces | null | undefined) {
+  const parents = (places?.families ?? []).filter(
+    (family) => family.role !== "co-teacher",
+  );
+  const own = parents.find((family) => family.role === "holder");
+  if (own) return own.familyId;
+  return parents.length === 1 ? parents[0]!.familyId : null;
+}
+

@@ -6,6 +6,7 @@ import { EmptyState } from "../../ui/EmptyState";
 import { LoadingScreen } from "../../ui/LoadingScreen";
 import { RowLink, RowList } from "../../ui/RowList";
 import frame from "../school/SchoolFrame.module.css";
+import { LoadFailed } from "../school/classes/teacher-shared";
 import { familyPlacesOptions } from "./api";
 import { FamilyFrame, familyHref, useFamilyPlace } from "./FamilyFrame";
 
@@ -42,6 +43,8 @@ export function FamilyChooserScreen() {
     <main className={frame.content} data-dense data-narrow="">
       {places.isPending ? (
         <LoadingScreen overlay />
+      ) : places.isError ? (
+        <LoadFailed what="Your families" onRetry={() => void places.refetch()} />
       ) : (
         <div style={{ display: "grid", gap: "var(--space-5)" }}>
           <h1>Your families</h1>

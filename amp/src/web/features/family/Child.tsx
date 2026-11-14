@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useParams, useRouterState } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLearnerStore } from "../../learner-store";
 import { z } from "zod";
 import {
   CHILD_NAME_MAX,
@@ -46,6 +47,12 @@ export function ChildScreen() {
     enabled: !!child?.capabilities.readProgress,
   });
   const { starting, error, clearError, handOver } = useHandOver(session);
+  // This child is the one chosen on this device while their page is open:
+  // their grade numbers (This device) and their learning screens are theirs.
+  const known = !!child;
+  useEffect(() => {
+    if (known) useLearnerStore.getState().select(learner);
+  }, [known, learner]);
   const search = useRouterState({
     select: (state) => state.location.search as Record<string, unknown>,
   });

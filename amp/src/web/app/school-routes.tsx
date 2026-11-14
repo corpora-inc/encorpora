@@ -38,7 +38,7 @@ import {
   setupSteps,
   type SetupStep,
 } from "../features/school/paths";
-import { toFamilyPage } from "./family-redirect";
+import { toFamilyChild, toFamilyPage } from "./family-redirect";
 
 /** Staff screens: signed in, on the web, and not a student's device. A signed-out
  * visitor goes through the usual sign-in and comes straight back here. */
@@ -319,6 +319,8 @@ export function schoolRoutes(root: AnyRoute) {
         beforeLoad: async ({ location, params }) => {
           const session = await staffSession(location);
           const orgId = (params as unknown as { org: string }).org;
+          // A parent's own family org: the family's Today.
+          await toFamilyPage(session, orgId, "today", location as never);
           const org = await queryClient
             .fetchQuery(orgOptions(session, orgId))
             .catch(() => null);
@@ -417,11 +419,19 @@ export function schoolRoutes(root: AnyRoute) {
       getParentRoute: () => root,
       path: "/school/$org/students/$student",
       staticData: { space: "school" },
-      beforeLoad: ({ params, search }) => {
+      beforeLoad: async ({ params, search, location }) => {
         const { org, student } = params as unknown as {
           org: string;
           student: string;
         };
+        // A family's child: their own page.
+        await toFamilyChild(
+          await staffSession(location),
+          org,
+          student,
+          null,
+          location as never,
+        );
         throw redirect({
           to: `/school/${org}/students`,
           search: {
@@ -436,7 +446,7 @@ export function schoolRoutes(root: AnyRoute) {
       getParentRoute: () => root,
       path: "/school/$org/students/$student/work/$work",
       staticData: { space: "school" },
-      beforeLoad: ({ params, search }) => {
+      beforeLoad: async ({ params, search, location }) => {
         const {
           org,
           student,
@@ -446,6 +456,13 @@ export function schoolRoutes(root: AnyRoute) {
           student: string;
           work: string;
         };
+        await toFamilyChild(
+          await staffSession(location),
+          org,
+          student,
+          attempt,
+          location as never,
+        );
         throw redirect({
           to: `/school/${org}/students`,
           search: {

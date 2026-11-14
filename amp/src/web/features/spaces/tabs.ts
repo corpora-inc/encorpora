@@ -154,12 +154,12 @@ export function meTabs(ownLearner: string | null): TabItem[] {
 /** Where the account opens: its sign-in and security. */
 export const ACCOUNT_HOME = "account/security";
 
-/** The account: sign-in, learners, billing and privacy. The account's own
+/** The account: sign-in, billing and privacy. Children are their family's
+ * (its Settings), never the account's. The account's own
  * settings have neutral addresses (`/account/…`); the old `/family/…` ones
  * still open the same screens. */
 export const accountTabs: readonly TabItem[] = [
   tab("security", "Sign-in", "account/security"),
-  tab("learners", "Learners", "family/learners"),
   tab("access", "Billing", "account/billing"),
   tab("privacy", "Privacy", "account/privacy"),
 ];

@@ -76,3 +76,33 @@ export async function toFamilyPage(
   } as never);
 }
 
+
+/** A family child's older school-level address
+ * (`/school/<family>/students/<person>[/work/<attempt>]`): the child's own
+ * page, the answer a layer over it. Anyone else keeps the school's. */
+export async function toFamilyChild(
+  session: AuthSession,
+  org: string,
+  person: string,
+  attempt: string | null,
+  location: Located["location"],
+) {
+  const me = await queryClient
+    .ensureQueryData(meOptions(session))
+    .catch(() => null);
+  const parent = parentFamilyAt(me?.signedIn ? me : null, org);
+  if (!parent) return;
+  const projection = await queryClient
+    .ensureQueryData(familyOptions(session, parent.family))
+    .catch(() => null);
+  throw redirect({
+    ...familyClassTarget({
+      family: parent.family,
+      parts: attempt ? ["map", person, "work", attempt] : ["map", person],
+      search: (location.search ?? {}) as Record<string, unknown>,
+      hash: location.hash || undefined,
+      people: peopleOf(projection?.children ?? [], parent.classId),
+    }),
+    replace: true,
+  } as never);
+}
