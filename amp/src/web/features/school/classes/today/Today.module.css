@@ -321,6 +321,15 @@
 .todo[data-status] .todoActions {
   grid-column: 1;
 }
+/* Wide enough: its action at the end of its line, as every item's is. */
+@container (min-width: 720px) {
+  .todo[data-status] {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .todo[data-status] .todoActions {
+    grid-column: 2;
+  }
+}
 .todo + .todo {
   box-shadow: inset 0 1px 0 var(--color-border);
 }

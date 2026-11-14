@@ -881,6 +881,14 @@ test("a one-class school's admin reaches the school from the class; its own pilo
   expectSpace(pilot, "classroom");
   assert.deepEqual(destinations(pilot), ["Grade 4 Math"]);
   assert.equal(pilot.label, "Grade 4 Math · Alder Grove");
+  // A phone's bar names the class alone; the drawer says its school.
+  assert.equal(pilot.shortLabel, "Grade 4 Math");
+  assert.equal(pilot.destinations[0]?.detail, "Alder Grove");
+  assert.equal(
+    admin.destinations[0]?.detail,
+    undefined,
+    "its School row says it",
+  );
 });
 
 test("an admin or viewer inspecting a class keeps their own role; only teaching makes them its teacher", () => {

@@ -30,6 +30,7 @@ import { StudentSignOut } from "../features/practice/StudentSignOut";
 import { Tabs } from "../ui/Tabs";
 import { Toast } from "../ui/Toast";
 import { AppLogo } from "../ui/AppLogo";
+import { PlaceName } from "../ui/PlaceName";
 import bar from "../ui/AppBar.module.css";
 import styles from "./AppShell.module.css";
 import { secondParentChild } from "../features/second-parent/api";
@@ -180,9 +181,7 @@ function ShellBar({
           }}
         />
         {space.label && (
-          <span className={bar.place} title={space.label} data-place-name>
-            {space.label}
-          </span>
+          <PlaceName name={space.label} short={space.shortLabel} />
         )}
         {demo && <DemoMark />}
         {practice && <ProfileMark />}

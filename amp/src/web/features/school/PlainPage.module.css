@@ -79,11 +79,21 @@
 .field {
   display: grid;
   gap: var(--space-2);
-  margin-bottom: var(--space-3);
+  /* The room a text field keeps under itself for its error line, so the
+     fields below sit on the same rhythm. */
+  margin-bottom: calc(var(--space-2) + 1.4 * var(--text-label));
 }
 .label {
   font-size: var(--text-label);
   font-weight: 600;
+}
+/* A picker among text fields is one of them: their height, type and
+   outline (ui/TextField), so the form reads as one set of inputs. */
+.field :global(.premium-select) {
+  padding-block: var(--space-3);
+  font-size: var(--text-body);
+  font-weight: 600;
+  line-height: 1.6;
 }
 /* A wait that is the page's whole state (an import running). */
 .progress {

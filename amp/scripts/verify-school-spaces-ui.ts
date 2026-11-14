@@ -183,6 +183,21 @@ async function capture(page: Page, name: string) {
               .map((node) => `${node.tagName}.${node.className}`),
       );
       assert.equal(wide, null, `${name} fits ${width}`);
+      // Nothing is cut short with an ellipsis (premium rule 8).
+      const cut = await page.evaluate(() =>
+        [...document.querySelectorAll<HTMLElement>("body *")]
+          .filter((node) => {
+            const style = getComputedStyle(node);
+            return (
+              style.textOverflow === "ellipsis" &&
+              style.visibility !== "hidden" &&
+              node.offsetParent !== null &&
+              node.scrollWidth > node.clientWidth + 1
+            );
+          })
+          .map((node) => node.innerText.slice(0, 40)),
+      );
+      assert.deepEqual(cut, [], `${name} cuts nothing short at ${width}`);
       await page.screenshot({
         path: `${shots}/${name}-${width}-${theme}.png`,
         fullPage: true,
@@ -277,8 +292,27 @@ async function cardsClear(page: Page, what: string) {
   assert.equal(clash, null, `${what}: a roster card's parts never overlap`);
   await page.setViewportSize(start);
 }
-const placeName = (page: Page) =>
-  page.locator("[data-place-name]").first().innerText();
+/** The place the bar names, whole (its title), and checks what it shows:
+ * a phone shows the class alone, and no width ever cuts a name short. */
+async function placeName(page: Page) {
+  const name = page.locator("[data-place-name]").first();
+  await name.waitFor();
+  const whole = (await name.getAttribute("title")) ?? "";
+  const shown = (await name.getAttribute("data-place-name")) ?? "";
+  if ((page.viewportSize()?.width ?? 0) < 768)
+    assert.equal(shown, whole.split(" · ")[0], "a phone's bar: the class");
+  assert.ok(
+    await name.evaluate((node) =>
+      [...node.querySelectorAll("[data-shown]")].every(
+        (option) =>
+          option.getBoundingClientRect().right <=
+          node.getBoundingClientRect().right + 0.5,
+      ),
+    ),
+    `the bar shows "${shown}" whole`,
+  );
+  return whole;
+}
 
 try {
   // ── 1. The revenue path ────────────────────────────────────────────────
@@ -385,11 +419,12 @@ try {
     .getByRole("heading", { name: "Practice hasn’t started" })
     .waitFor();
   await teacher.goto(`${classUrl}/today`);
-  // One name on Today, as on Students and in its sheet.
-  const start = teacher.getByRole("button", {
-    name: "Start practice",
-    exact: true,
-  });
+  // Today's one required item: titled Start practice, its button Start,
+  // and no box to tick.
+  const item = teacher.locator('[data-feed="practice-start"]');
+  await item.getByRole("heading", { name: "Start practice" }).waitFor();
+  assert.equal(await item.getByRole("checkbox").count(), 0);
+  const start = item.getByRole("button", { name: "Start", exact: true });
   await start.waitFor();
   assert.equal(await count(teacher, "Start class"), 0, "no Start class yet");
   await capture(teacher, "today-ready");
@@ -595,6 +630,8 @@ try {
     0,
     "workbooks after practice",
   );
+  // A school's students have no free allowance to have used up.
+  assert.equal(await count(teacher, /free workbooks/i), 0);
   await capture(teacher, "workbooks-expired");
   // A student's next step says so, without a code to retry.
   await student.goto(`${origin}/practice`);
@@ -739,6 +776,12 @@ try {
   await capture(principal.page, "admin-class");
   const adminDrawer = await drawer(principal.page);
   assert.match(adminDrawer, /School/);
+  assert.equal(
+    await principal.page
+      .getByRole("button", { name: /^Start( practice)?$/ })
+      .count(),
+    0,
+  );
   await principal.page.goto(`${lakeClass}/roster`);
   await principal.page.getByRole("heading", { name: "Teachers" }).waitFor();
   await principal.page

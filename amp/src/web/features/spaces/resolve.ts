@@ -160,6 +160,10 @@ type Frame = {
    * practice", a child's name on their learning screens): null when
    * nothing is named. */
   label: string | null;
+  /** A shorter name the bar may show when the whole one doesn't fit, and
+   * always on a phone: a class without its school. The bar never cuts a
+   * name short (AppShell's PlaceName). */
+  shortLabel: string | null;
 };
 
 export type SpaceDescriptor =
@@ -349,6 +353,7 @@ export function resolveSpace(
     words: spaceWords("public"),
     place: null,
     label: null,
+    shortLabel: null,
   };
   const words = (space: Space) => ({ words: spaceWords(space) });
   if (session.kind === "student")
@@ -926,19 +931,23 @@ function teachingSpace(
               label: klass?.name ?? year?.name ?? "Class",
               path: `school/${orgId}/classes/${frame.classId}/today`,
               icon: "class",
+              // Its school, by name, where no School row below says it: a
+              // phone's bar names the class alone.
+              ...(org && !school.length ? { detail: org.name } : {}),
               current: true,
             },
             ...school,
           ],
     place: `class:${orgId}:${frame.classId}`,
-    // The class and its school, by name (R16), a one-class school too.
-    label: (() => {
+    // The class and its school, by name (R16), a one-class school too; the
+    // class alone on a phone or where both don't fit.
+    ...(() => {
       const name = klass?.name ?? year?.name ?? null;
-      return name && status !== "unavailable"
-        ? org
-          ? `${name} · ${org.name}`
-          : name
-        : null;
+      const named = !!name && status !== "unavailable";
+      return {
+        label: named ? (org ? `${name} · ${org.name}` : name) : null,
+        shortLabel: named && org ? name : null,
+      };
     })(),
   };
 }

@@ -151,7 +151,7 @@ export function accessFeedEntry(
   pilot: PilotState | undefined,
   canRequest: boolean,
 ): FeedEntry | null {
-  // Starting is a task; the rest are states, said without a box to tick.
+  // Starting is required, the rest are states: none has a box to tick.
   const entry = (
     title: string,
     detail: string,
@@ -161,7 +161,9 @@ export function accessFeedEntry(
       id: `practice-${view.kind}`,
       title,
       detail,
-      mark: view.kind === "start" ? "plain" : "status",
+      // Practice access is never an optional to-do: no box to tick, the
+      // one required action at the end of its line.
+      mark: "status",
       actions,
     }) as const;
   switch (view.kind) {
@@ -171,8 +173,8 @@ export function accessFeedEntry(
         view.joining
           ? `Through ${practiceDate(view.until)}`
           : `30 days, through ${practiceDate(view.until)}`,
-        // One name for the one action, here, on Students and in its sheet.
-        <StartPracticeButton place={place} pilot={pilot} />,
+        // The title names the action; its button says only Start.
+        <StartPracticeButton place={place} pilot={pilot} label="Start" />,
       );
     case "waiting":
       return entry(
