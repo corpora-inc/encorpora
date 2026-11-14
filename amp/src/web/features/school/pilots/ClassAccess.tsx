@@ -320,6 +320,13 @@ export function RequestSeatsButton({ primary }: { primary: boolean }) {
   );
 }
 
+/** What starting would run to: "30 days, through Dec 14", or a class
+ * joining its teacher's running practice, "Through Dec 14". */
+export const startDetail = (view: Extract<AccessView, { kind: "start" }>) =>
+  view.joining
+    ? `Through ${practiceDate(view.until)}`
+    : `30 days, through ${practiceDate(view.until)}`;
+
 /** Today's feed item for practice access: only while there is something to
  * do about it (start, or arrange seats). Active practice needs no item. */
 export function accessFeedEntry(
@@ -347,9 +354,7 @@ export function accessFeedEntry(
     case "start":
       return entry(
         "Start practice",
-        view.joining
-          ? `Through ${practiceDate(view.until)}`
-          : `30 days, through ${practiceDate(view.until)}`,
+        startDetail(view),
         // The title names the action; its button says only Start.
         <StartPracticeButton place={place} pilot={pilot} label="Start" />,
       );

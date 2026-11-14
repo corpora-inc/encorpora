@@ -11,6 +11,7 @@
    class code beside it from 720 px. */
 .head {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-4);
   align-items: end;
 }
@@ -39,7 +40,7 @@
   min-width: 0;
 }
 .factValue {
-  font-size: var(--text-heading-4);
+  font-size: var(--text-heading-3);
   font-weight: 600;
   font-variant-numeric: var(--numeric);
   line-height: 1.25;
@@ -431,11 +432,13 @@
   max-width: calc(var(--spread-columns) * 32px);
 }
 
-/* The code's slot (CodeSlot): one grid cell holding a hidden copy of the
-   code row on the widest code, with the code or a quiet line over it, so
-   practice opening mid-visit moves nothing below. */
+/* The practice slot (PracticeSlot): one grid cell holding a hidden copy of
+   the code row on the widest code, with the slot's state over it. Every
+   state takes the code row's shape: one row of controls from 560 px, and on
+   a phone two rows (what it is; its action) in the same 92 px. */
 .codeSlot {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   min-width: 0;
 }
 .codeSlotHold,
@@ -446,18 +449,92 @@
 .codeSlotHold {
   visibility: hidden;
 }
-/* At the top of the slot on a phone (where the code's label starts),
-   centred on the code's one row wider up. */
-.codeSlotQuiet {
-  align-self: start;
+.slotLine {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-4);
+  /* Exactly the code row's one line: never a fraction taller. */
+  height: var(--target-size);
+}
+.slotInfo {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  text-align: end;
+}
+.slotTitle {
+  margin: 0;
+  font-size: var(--text-heading-3);
+  line-height: 1.2;
+}
+.slotDetail {
   margin: 0;
   color: var(--color-muted-text);
   font-size: var(--text-table);
+  line-height: 1.3;
 }
-@container (min-width: 720px) {
-  .codeSlotQuiet {
-    align-self: center;
-    justify-self: end;
-    text-align: end;
+.slotAction {
+  display: flex;
+  flex: none;
+}
+/* While the server is asked: the code row's shape, quiet. */
+.slotPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  min-height: var(--target-size);
+}
+.slotPlaceholder span {
+  display: block;
+  width: 9rem;
+  height: var(--target-size);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-sunken);
+}
+.slotPlaceholder span:first-child {
+  width: 7rem;
+  height: 20px;
+  border-radius: var(--radius-small);
+}
+@media (max-width: 559px) {
+  .slotLine {
+    display: grid;
+    grid-template-rows: minmax(var(--target-size), 1fr) var(--target-size);
+    align-items: center;
+    justify-content: stretch;
+    row-gap: var(--space-1);
+    height: 100%;
+    min-height: 0;
+  }
+  .slotInfo {
+    text-align: start;
+  }
+  .slotAction > * {
+    flex: 1;
+  }
+  /* No action: the two lines, larger, in the middle of the slot. */
+  .slotText {
+    grid-template-rows: 1fr;
+    align-content: center;
+  }
+  .slotText .slotTitle {
+    font-size: 24px;
+    line-height: 1.2;
+  }
+  .slotText .slotDetail {
+    font-size: var(--text-body);
+  }
+  .slotPlaceholder {
+    display: grid;
+    grid-template-rows: minmax(var(--target-size), 1fr) var(--target-size);
+    align-items: center;
+    justify-content: stretch;
+    row-gap: var(--space-1);
+    height: 100%;
+  }
+  .slotPlaceholder span {
+    width: 100%;
   }
 }

@@ -20,7 +20,7 @@ import { classUrl, fullDay, LoadFailed } from "./teacher-shared";
 import { FamilyNotice } from "./today/FamilyNotice";
 import { FamilyToday } from "./today/FamilyToday";
 import { Feed } from "./today/Feed";
-import { CodeSlot } from "./today/SignInCode";
+import { PracticeSlot } from "./today/PracticeSlot";
 import { todoEntries, useChecks } from "./today/todo-entries";
 import { WeekFacts } from "./today/WeekFacts";
 import todayStyles from "./today/Today.module.css";
@@ -36,9 +36,13 @@ import {
 function ClassToday({
   data,
   place,
+  headed,
 }: {
   data: TodayResponse;
   place: { org: string; class: string };
+  /** The header's practice slot says where practice stands (PracticeSlot):
+   * starting, waiting, ended and "couldn't check" live there, not here. */
+  headed: boolean;
 }) {
   const [done, setDone] = useChecks(place.class, data.today);
   const { start: canStart } = useSchoolNavigation({
@@ -64,12 +68,16 @@ function ClassToday({
     )?.can ?? [],
   );
   const adds = can.has("class.import") || can.has("students.add");
-  const practice = accessFeedEntry(
+  const entry = accessFeedEntry(
     access.view,
     place,
     access.pilot,
     access.teaches,
   );
+  // Practice running, but not for everyone, or ending soon: said in the
+  // feed beside the code. The rest is the header slot's.
+  const practice =
+    headed && !["ending", "partial"].includes(access.view.kind) ? null : entry;
   const entries = todoEntries({
     // Anything that opens the board ("Start class", students who haven't
     // started) waits for practice: the board would only say it's closed.
@@ -90,7 +98,7 @@ function ClassToday({
   if (practice) entries.unshift(practice);
   // Couldn't check where practice stands: said calmly, with Try again,
   // never a dead closed state.
-  if (access.unavailable)
+  if (access.unavailable && !headed)
     entries.unshift({
       id: "practice-unknown",
       title: "Couldn’t check practice",
@@ -169,11 +177,9 @@ export function TodayScreen() {
   const data = today.data;
   const demo = useDemoOrg(place.org);
   const access = useClassAccess(place);
-  const closed = access.closed;
-  // The code shows whenever the server says practice is open, including a
-  // class that opens during this visit (CP-3 r6), in a slot that holds its
-  // height either way (CodeSlot).
-  const codeShown = !closed;
+  // The header's practice slot (PracticeSlot): the Start action, the code,
+  // Request seats, one height in every state, so practice opening during
+  // this visit moves nothing (CP-3 r6).
   const signInRead = (
     standing(
       useQuery({
@@ -182,6 +188,7 @@ export function TodayScreen() {
       }),
     )?.can ?? []
   ).includes("signin.read");
+  const headed = !family && !!data && data.students.length > 0 && signInRead;
   const loading =
     access.pending ||
     org.isPending ||
@@ -216,16 +223,9 @@ export function TodayScreen() {
             {/* The code waits for a roster, and for practice. A family's
                 children mostly practice on the parent's device: their code
                 is an option under the children, not the page's lead. */}
-            {!family && data.students.length > 0 && signInRead && (
-              <CodeSlot
-                code={(codeShown && code) || null}
-                closedLine={
-                  access.practice === "ended"
-                    ? "Practice has ended"
-                    : access.practice === "waiting"
-                      ? "Practice hasn’t started"
-                      : ""
-                }
+            {headed && (
+              <PracticeSlot
+                code={code || null}
                 place={place}
                 words={spaceWords("classroom")}
                 // The bar's Start class opens the board, except in a demo
@@ -252,7 +252,7 @@ export function TodayScreen() {
             />
           ) : (
             <>
-              <ClassToday data={data} place={place} />
+              <ClassToday data={data} place={place} headed={headed} />
               <AccessSheets place={place} />
             </>
           )}
