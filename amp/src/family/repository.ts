@@ -4,7 +4,11 @@ import {
 } from "../advertising/permission.js";
 import { adultPracticeEnd, adultGrantId } from "../account/adult-access.js";
 import { profilesCovered } from "../account/practice-profiles.js";
-import { practiceHere, syncFamilyGrade } from "./family-class.js";
+import {
+  ensureFamilyClass,
+  practiceHere,
+  syncFamilyGrade,
+} from "./family-class.js";
 import { cancelPendingConsent } from "../parent-consent/lifecycle.js";
 import {
   learningConsentActive,
@@ -382,7 +386,11 @@ export class FamilyRepository {
         ],
       );
       if (!result.rowCount) throw new FamilyError(404, "learner_not_found");
-      // The class roster follows by trigger (migration 0098).
+      // Names follow by trigger (0098); maintain the family's year and roster
+      // on this explicit parent write as well.
+      await ensureFamilyClass(client, this.pool, accountId, {
+        converting: true,
+      });
       await this.audit(client, accountId, "learner.renamed", learnerId, 1);
     });
   }
@@ -407,6 +415,9 @@ export class FamilyRepository {
       ).rows[0];
       if (!learner) throw new FamilyError(404, "learner_not_found");
       if (learner.adult) throw new FamilyError(409, "adult_has_no_birth_year");
+      await ensureFamilyClass(client, this.pool, accountId, {
+        converting: true,
+      });
       if (learner.birth_year === birthYear) return { birthYear };
       await client.query("UPDATE amp_learners SET birth_year=$2 WHERE id=$1", [
         learnerId,

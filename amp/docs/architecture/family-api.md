@@ -74,13 +74,29 @@ Child creation, starter setup and the explicit
 needed family class. An unrostered legacy child remains visible before that action.
 `GET /api/v1/me` reports the persisted class, if any, without creating one.
 
+Family maintenance runs on explicit writes:
+
+| Maintenance | Write path |
+| --- | --- |
+| Expired family academic year | `ensureFamilyClass` advances the class to `yearSession` during child creation, starter setup, practice-here, rename and birth-year edits. POST class-code lookup and picture sign-in call the same helper under the account and family locks before validating the session. School years and archived classes are not reopened by sign-in. |
+| Family class, parent staff roles, child roster/enrollment and conversion notice | The same helper creates missing rows during those writes; `family:convert` provides an explicit migration/repair command. Existing children keep their learner IDs, evidence and consent. |
+| Roster names and birth-year-derived grades | The helper synchronizes owned children in their home family during those writes and class-code sign-in. Name changes also use migration 0098's trigger; birth-year changes call `syncFamilyGrade`, including hosted children in other family tenants. School grades are left to the school. Merely visiting a report does not advance a stored grade. |
+| Adult grant creation, extension and expiry | Online `hasAccess` and the offline transaction both call `PgTransaction.refreshDerivedAccess`, which uses `refreshAdultAccess` and `adultPracticeEnd`. Offline refresh precedes issue, quota checks, request reuse, preflight and reconciliation. An interval change invalidates an existing pack's binding; the client requests a new pack. Adult setup, access assignment and legacy trial adoption also refresh through the same derivation. |
+| Stable family identity | Family creation, parent approval and second-parent acceptance ensure the identity. The migration runner backfills existing eligible accounts; database hooks cover legacy writers. Discovery derives a stable fallback without writing. |
+| Creation audit events and default student-device settings | Family/class/roster creation writes its events and default personal-device setting in the creating transaction. Reads emit no creation events. |
+
+The class validator used by OIDC GET routes stays read-only. The POST class-code
+entry path performs family maintenance; no scheduled family-year job is required.
+Consent/address/advertising reads use their nonlocking variants; their mutations
+retain the existing authorization locks.
+
 These legacy GET side effects are retained for compatibility:
 
 - `GET /api/v1/me` adopts practiced, unexpired owned legacy trials through
   `absorbLiveTrial`. The retired trial screens cannot expose those records; removing
   adoption here without a coordinated sign-in/client change would hide saved work.
   Adoption uses the existing account transaction and can create the child's family
-  class or refresh an adult grant. Accounts without eligible trials skip it.
+  class or refresh an adult grant. Accounts without live unadopted trials skip it.
 - The same `/me` endpoint calls `followDemo`: it records a demo visitor's presence
   or moves them to the replacement nightly demo. Existing clients depend on this
   refresh to avoid opening a retired demo. Non-visitors skip it.
