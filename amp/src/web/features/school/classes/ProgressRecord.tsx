@@ -215,7 +215,11 @@ export function RecordWork({
   workPath?: (attempt: string, item: WorkItem) => string | Entity | undefined;
 }) {
   if (record.work.length === 0)
-    return <p className={styles.quietLine}>No problems yet.</p>;
+    return (
+      <p className={`${styles.quietLine} ${styles.workEmpty}`}>
+        No problems yet.
+      </p>
+    );
   return (
     <WorkList
       work={record.work}

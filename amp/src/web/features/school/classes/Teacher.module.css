@@ -1132,3 +1132,9 @@ label.columnPick {
 .levelsLines > p[data-hidden] {
   visibility: hidden;
 }
+/* No work yet: the line holds the room one answer's row takes, so the first
+   answer fills it and moves nothing below (CP-5 r2 #2). */
+.workEmpty {
+  min-height: 4.75rem;
+  margin: 0;
+}
