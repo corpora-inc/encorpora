@@ -277,7 +277,7 @@ function AreaDetail({
             className={buttonClass("primary", styles.practice)}
             data-area-practice={focus.skill.id}
           >
-            {`Practice ${focus.skill.title}`}
+            {`Practice ${inSentence(focus.skill.title)}`}
           </Link>
         </div>
       )}
@@ -499,3 +499,14 @@ function Sparkline({ points }: { points: readonly PathPoint[] }) {
     </figure>
   );
 }
+
+/** A skill title inside a sentence: its first word lowercased when that is
+ * an ordinary word ("Practice the standard multiplication algorithm"), kept
+ * when it is a name or a symbol ("Practice Pythagorean triples"). */
+export function inSentence(title: string) {
+  const [first = "", ...rest] = title.split(" ");
+  const ordinary =
+    /^[A-Z][a-z]+$/.test(first) && !PROPER.has(first) && rest.length > 0;
+  return ordinary ? [first.toLowerCase(), ...rest].join(" ") : title;
+}
+const PROPER = new Set(["Pythagorean", "Euclidean", "Cartesian", "Roman"]);

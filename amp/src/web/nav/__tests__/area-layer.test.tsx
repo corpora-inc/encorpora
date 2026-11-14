@@ -220,3 +220,15 @@ test("recent work: a row with somewhere to open is one whole link with a chevron
   expect(rows[0]!.querySelector("svg")).not.toBeNull();
   expect(document.querySelector('[data-work-item="f6e5d4c3b2"]')).toBeNull();
 });
+
+test("a skill's title reads inside the practice sentence", async () => {
+  const { inSentence } = await import("../AreaLayer");
+  expect(inSentence("The standard multiplication algorithm")).toBe(
+    "the standard multiplication algorithm",
+  );
+  expect(inSentence("Dividing by a two-digit number")).toBe(
+    "dividing by a two-digit number",
+  );
+  expect(inSentence("Pythagorean triples")).toBe("Pythagorean triples");
+  expect(inSentence("GCF and LCM")).toBe("GCF and LCM");
+});
