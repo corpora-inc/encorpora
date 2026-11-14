@@ -320,10 +320,20 @@ label as the person's name.
 
 Apply migrations 0125–0127 before serving these endpoints. These migrations are
 unpublished branch migrations; never replace the contents of an applied migration
-in a persistent deployment. The runner checks file checksums and commits each
-migration separately. 0126 adds a nullable column without a table rewrite or a
+in a persistent deployment. The runner checks file checksums. Ordinary migrations
+commit separately. 0126 adds a nullable column without a table rewrite or a
 backfill; existing answered learners derive the legacy prior lazily. 0127 builds
-indexes for bounded history probes in its own transaction.
+the history indexes with `CREATE INDEX CONCURRENTLY`, one statement at a time
+outside a transaction, so evidence writes can continue during the builds.
+
+The first-line `-- migrate:concurrent-indexes` directive selects this restricted
+index-only mode. It accepts simple unquoted `amp_` table/index names, column lists
+and optional integer comparisons; other SQL is rejected before any build starts.
+The runner retains its session advisory lock, writes the checksum receipt only
+after all indexes succeed, and retries lock timeouts/deadlocks. If a build fails
+or the process stops, rerun the unchanged migration: valid completed indexes are
+retained and invalid indexes are dropped concurrently before rebuilding. Do not
+wrap this mode in an external transaction.
 
 `amp_course_placement.enabled` defaults to false. Keep it false while any legacy
 learning API or background learning writer can serve a request. Both API versions
@@ -340,11 +350,18 @@ before issuing problems. A later class-band change cannot rebase those answers.
 Birth years and intentional explicit starting choices take precedence; no birthday
 or evidence is fabricated.
 
-Disabling the flag stops new course selection; it does not discard frozen starts.
-After enabling it, an application rollback must retain the new start reader.
-An unmodified legacy estimator cannot read arbitrary exact course priors. A full
-legacy rollback is safe only before course selection has been enabled. This is a
-two-phase deployment requirement, not a per-instance feature flag.
+**Once course placement has been enabled, a full legacy rollback is unsafe.**
+An unmodified legacy estimator ignores frozen course priors and can move a
+learner's frontier even when the flag is false. For example, a saved Grade 4
+course start would be read as the legacy level-2 fallback.
+
+The safe rollback is to set `amp_course_placement.enabled` to false and deploy an
+image that retains the compatible `starting_course_level` reader and writer.
+Keep the database additions, attempt trigger and saved starts intact. Disabling
+the flag stops new course selection; it does not discard or reinterpret frozen
+starts. Prepare that compatible rollback image before enabling course placement.
+A full legacy rollback is safe only before course selection has been enabled.
+This is a two-phase deployment requirement, not a per-instance feature flag.
 
 Family reads select at most 1,000 live owned children (larger legacy households
 receive `409 family_child_limit`), scope authority reads to displayed places, and

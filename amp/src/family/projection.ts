@@ -1,4 +1,7 @@
-import { freeAllowance } from "../learning/free-allowance.js";
+import {
+  familyHasLearnerRoom,
+  freeAllowance,
+} from "../learning/free-allowance.js";
 import { StripeRepository } from "../billing/stripe/repository.js";
 import type { StripeBillingConfig } from "../billing/stripe/config.js";
 import type { Pool } from "pg";
@@ -208,6 +211,9 @@ export async function familyProjection(
   const owned = (
     await pool.query(
       `SELECT l.id,l.name,l.birth_year,l.name_pending,l.free_online_used,l.free_workbooks_used,
+      (NOT EXISTS(SELECT 1 FROM amp_people p WHERE p.learner_id=l.id)
+        OR EXISTS(SELECT 1 FROM amp_people p JOIN amp_orgs o ON o.id=p.tenant_id
+          WHERE p.learner_id=l.id AND p.deleted_at IS NULL AND o.kind='family')) AS family_practice,
       EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id AND g.status='active'
         AND g.starts_at<=now() AND g.ends_at>now()) AS has_access
      FROM amp_learners l WHERE l.account_id=$1 AND l.deleted_at IS NULL AND NOT l.adult
@@ -232,6 +238,7 @@ export async function familyProjection(
       name: child.name as string,
       birthYear: child.birth_year as number | null,
       hasAccess: child.has_access as boolean,
+      familyPractice: child.family_practice as boolean,
       learningAllowed,
       canPractice:
         learningAllowed &&
@@ -331,9 +338,10 @@ export async function familyProjection(
     // Parent-entry naming remains allowed after withdrawal; namingConsentActive
     // determines the evidence basis, not whether the owner can correct a name.
     const names = holder;
-    const practiceHere =
-      child.canPractice === true &&
-      roster.some((member) => member.tenant_kind === "family");
+    // The mutation repairs an unrostered owned child into their home family.
+    // An existing roster person must belong to a family, as its session
+    // predicate requires; displayed enrollments are not that predicate.
+    const practiceHere = child.canPractice === true && child.familyPractice;
     const facts = today.students.find((student) => student.id === child.id)!;
     const capabilities = {
       readProgress: true,
@@ -419,7 +427,10 @@ export async function familyProjection(
     teachingPlace: teachingPlace(row, role, actor),
     capabilities: {
       readFamily: true,
-      addChildren: holder && !consent.withdrawn && children.length < 1000,
+      addChildren:
+        holder &&
+        !consent.withdrawn &&
+        (await familyHasLearnerRoom(pool, row.holder)),
       manageConsent: holder,
       manageBilling: holder,
       inviteSecondParent:
