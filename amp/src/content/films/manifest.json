@@ -1349,6 +1349,27 @@
       }
     ]
   },
+  "dilation-image": {
+    "id": "dilation-image--sd",
+    "version": "f8fd1164400b7ec8b60fd184381aec0e873136d61c7c6394516225e7dbc6c6d5",
+    "title": "Dilations from a center",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/dilation-image--sd/f8fd1164400b7ec8b60fd184381aec0e873136d61c7c6394516225e7dbc6c6d5/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/dilation-image--sd/f8fd1164400b7ec8b60fd184381aec0e873136d61c7c6394516225e7dbc6c6d5/audio.m4a",
+    "duration": 181.45,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/dilation-image--sd/f8fd1164400b7ec8b60fd184381aec0e873136d61c7c6394516225e7dbc6c6d5/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/dilation-image--sd/f8fd1164400b7ec8b60fd184381aec0e873136d61c7c6394516225e7dbc6c6d5/audio.m4a",
+        "version": "f8fd1164400b7ec8b60fd184381aec0e873136d61c7c6394516225e7dbc6c6d5",
+        "duration": 181.45
+      }
+    ]
+  },
   "distance-graph-meaning": {
     "id": "story-graph-match--sg",
     "version": "a4a6cf8f8c3e252ac5bd1eb87755a604bbc361a9dad4d8bf87c43e283a35155f",

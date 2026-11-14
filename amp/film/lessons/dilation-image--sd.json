@@ -1,0 +1,4978 @@
+{
+ "id": "dilation-image--sd",
+ "title": "Dilations from a center",
+ "teaches": [],
+ "cast": {
+  "teacher": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -6,
+     -2,
+     5.2,
+     7
+    ],
+    "points": {
+     "O": [
+      0,
+      0
+     ],
+     "S": [
+      1,
+      1
+     ],
+     "A": [
+      -2,
+      0
+     ],
+     "B": [
+      2,
+      0
+     ],
+     "C": [
+      -2,
+      3
+     ],
+     "Ap": [
+      -2,
+      0
+     ],
+     "Bp": [
+      2,
+      0
+     ],
+     "Cp": [
+      -2,
+      3
+     ],
+     "RA": [
+      -5.6,
+      0
+     ],
+     "RB": [
+      5.1,
+      0
+     ],
+     "RC": [
+      -4.5,
+      6.75
+     ],
+     "SA": [
+      -5.6,
+      -1.2
+     ],
+     "SB": [
+      3.6,
+      -1.6
+     ],
+     "SC": [
+      -5.6,
+      5.4
+     ],
+     "W": [
+      0,
+      5
+     ],
+     "K": [
+      1,
+      0
+     ],
+     "Read": [
+      3.3,
+      6.2
+     ],
+     "H": [
+      -2,
+      0
+     ],
+     "Hp": [
+      -4,
+      0
+     ],
+     "SH": [
+      -2,
+      1
+     ],
+     "SHp": [
+      -5,
+      1
+     ],
+     "GXn5a": [
+      -5,
+      -1.5
+     ],
+     "GXn5b": [
+      -5,
+      6.5
+     ],
+     "GXn4a": [
+      -4,
+      -1.5
+     ],
+     "GXn4b": [
+      -4,
+      6.5
+     ],
+     "GXn3a": [
+      -3,
+      -1.5
+     ],
+     "GXn3b": [
+      -3,
+      6.5
+     ],
+     "GXn2a": [
+      -2,
+      -1.5
+     ],
+     "GXn2b": [
+      -2,
+      6.5
+     ],
+     "GXn1a": [
+      -1,
+      -1.5
+     ],
+     "GXn1b": [
+      -1,
+      6.5
+     ],
+     "GX0a": [
+      0,
+      -1.5
+     ],
+     "GX0b": [
+      0,
+      6.5
+     ],
+     "GX1a": [
+      1,
+      -1.5
+     ],
+     "GX1b": [
+      1,
+      6.5
+     ],
+     "GX2a": [
+      2,
+      -1.5
+     ],
+     "GX2b": [
+      2,
+      6.5
+     ],
+     "GX3a": [
+      3,
+      -1.5
+     ],
+     "GX3b": [
+      3,
+      6.5
+     ],
+     "GX4a": [
+      4,
+      -1.5
+     ],
+     "GX4b": [
+      4,
+      6.5
+     ],
+     "GYn1a": [
+      -5.5,
+      -1
+     ],
+     "GYn1b": [
+      5,
+      -1
+     ],
+     "GY0a": [
+      -5.5,
+      0
+     ],
+     "GY0b": [
+      5,
+      0
+     ],
+     "GY1a": [
+      -5.5,
+      1
+     ],
+     "GY1b": [
+      5,
+      1
+     ],
+     "GY2a": [
+      -5.5,
+      2
+     ],
+     "GY2b": [
+      5,
+      2
+     ],
+     "GY3a": [
+      -5.5,
+      3
+     ],
+     "GY3b": [
+      5,
+      3
+     ],
+     "GY4a": [
+      -5.5,
+      4
+     ],
+     "GY4b": [
+      5,
+      4
+     ],
+     "GY5a": [
+      -5.5,
+      5
+     ],
+     "GY5b": [
+      5,
+      5
+     ],
+     "GY6a": [
+      -5.5,
+      6
+     ],
+     "GY6b": [
+      5,
+      6
+     ]
+    },
+    "parts": [
+     {
+      "id": "gxn5",
+      "seg": [
+       "GXn5a",
+       "GXn5b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gxn4",
+      "seg": [
+       "GXn4a",
+       "GXn4b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gxn3",
+      "seg": [
+       "GXn3a",
+       "GXn3b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gxn2",
+      "seg": [
+       "GXn2a",
+       "GXn2b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gxn1",
+      "seg": [
+       "GXn1a",
+       "GXn1b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gx0",
+      "seg": [
+       "GX0a",
+       "GX0b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gx1",
+      "seg": [
+       "GX1a",
+       "GX1b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gx2",
+      "seg": [
+       "GX2a",
+       "GX2b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gx3",
+      "seg": [
+       "GX3a",
+       "GX3b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gx4",
+      "seg": [
+       "GX4a",
+       "GX4b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gyn1",
+      "seg": [
+       "GYn1a",
+       "GYn1b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gy0",
+      "seg": [
+       "GY0a",
+       "GY0b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gy1",
+      "seg": [
+       "GY1a",
+       "GY1b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gy2",
+      "seg": [
+       "GY2a",
+       "GY2b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gy3",
+      "seg": [
+       "GY3a",
+       "GY3b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gy4",
+      "seg": [
+       "GY4a",
+       "GY4b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gy5",
+      "seg": [
+       "GY5a",
+       "GY5b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gy6",
+      "seg": [
+       "GY6a",
+       "GY6b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "axes",
+      "axes": true,
+      "step": 1,
+      "every": 2,
+      "xrange": [
+       -5.6,
+       5.1
+      ],
+      "yrange": [
+       -1.5,
+       6.5
+      ],
+      "start": true,
+      "ink": "muted",
+      "size": "l"
+     },
+     {
+      "id": "rayA",
+      "vector": [
+       "O",
+       "RA"
+      ],
+      "w": 2,
+      "dash": true,
+      "ink": "muted",
+      "group": "rays"
+     },
+     {
+      "id": "srayA",
+      "vector": [
+       "S",
+       "SA"
+      ],
+      "w": 2,
+      "dash": true,
+      "ink": "muted",
+      "group": "srays"
+     },
+     {
+      "id": "rayB",
+      "vector": [
+       "O",
+       "RB"
+      ],
+      "w": 2,
+      "dash": true,
+      "ink": "muted",
+      "group": "rays"
+     },
+     {
+      "id": "srayB",
+      "vector": [
+       "S",
+       "SB"
+      ],
+      "w": 2,
+      "dash": true,
+      "ink": "muted",
+      "group": "srays"
+     },
+     {
+      "id": "rayC",
+      "vector": [
+       "O",
+       "RC"
+      ],
+      "w": 2,
+      "dash": true,
+      "ink": "muted",
+      "group": "rays"
+     },
+     {
+      "id": "srayC",
+      "vector": [
+       "S",
+       "SC"
+      ],
+      "w": 2,
+      "dash": true,
+      "ink": "muted",
+      "group": "srays"
+     },
+     {
+      "id": "image",
+      "poly": [
+       "Ap",
+       "Bp",
+       "Cp"
+      ],
+      "fill": "none",
+      "ink": "accent",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "original",
+      "poly": [
+       "A",
+       "B",
+       "C"
+      ],
+      "fill": "none",
+      "ink": "blue",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "nameA",
+      "label": "A",
+      "at": "A",
+      "dir": "nw",
+      "ink": "blue",
+      "size": "l",
+      "start": true,
+      "far": 0.15
+     },
+     {
+      "id": "nameAp",
+      "label": "A'",
+      "at": "Ap",
+      "dir": "nw",
+      "ink": "accent",
+      "size": "l",
+      "flies": true,
+      "group": "primeNames",
+      "far": 0.15
+     },
+     {
+      "id": "nameB",
+      "label": "B",
+      "at": "B",
+      "dir": "n",
+      "ink": "blue",
+      "size": "l",
+      "start": true,
+      "far": 0.15
+     },
+     {
+      "id": "nameBp",
+      "label": "B'",
+      "at": "Bp",
+      "dir": "n",
+      "ink": "accent",
+      "size": "l",
+      "flies": true,
+      "group": "primeNames",
+      "far": 0.15
+     },
+     {
+      "id": "nameC",
+      "label": "C",
+      "at": "C",
+      "dir": "w",
+      "ink": "blue",
+      "size": "l",
+      "start": true,
+      "far": 0.15
+     },
+     {
+      "id": "nameCp",
+      "label": "C'",
+      "at": "Cp",
+      "dir": "ne",
+      "ink": "accent",
+      "size": "l",
+      "flies": true,
+      "group": "primeNames",
+      "far": 0.15
+     },
+     {
+      "id": "origin",
+      "dot": "O",
+      "ink": "gold",
+      "r": 9,
+      "start": true
+     },
+     {
+      "id": "originName",
+      "label": "O",
+      "at": "O",
+      "dir": "s",
+      "far": 0.5,
+      "ink": "gold",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "center",
+      "dot": "S",
+      "ink": "gold",
+      "r": 7,
+      "group": "newCenter"
+     },
+     {
+      "id": "centerName",
+      "label": "S(1,1)",
+      "at": "S",
+      "dir": "ne",
+      "ink": "gold",
+      "size": "l",
+      "group": "newCenter",
+      "far": 0.3
+     },
+     {
+      "id": "track",
+      "dot": "Cp",
+      "r": 9,
+      "ink": "gold",
+      "start": true
+     },
+     {
+      "id": "kRead",
+      "label": "k=@x",
+      "at": "Read",
+      "of": "K",
+      "dir": "c",
+      "ink": "accent",
+      "size": "l"
+     },
+     {
+      "id": "wrongDot",
+      "dot": "W",
+      "r": 7,
+      "ink": "warm",
+      "group": "wrong"
+     },
+     {
+      "id": "wrongName",
+      "label": "(0,5)",
+      "at": "W",
+      "dir": "e",
+      "ink": "warm",
+      "size": "l",
+      "group": "wrong"
+     },
+     {
+      "id": "oa",
+      "seg": [
+       "O",
+       "A"
+      ],
+      "ink": "gold",
+      "w": 5
+     },
+     {
+      "id": "oap",
+      "seg": [
+       "O",
+       "Ap"
+      ],
+      "ink": "gold",
+      "w": 5
+     },
+     {
+      "id": "oc",
+      "seg": [
+       "O",
+       "C"
+      ],
+      "ink": "gold",
+      "w": 5
+     },
+     {
+      "id": "ocp",
+      "seg": [
+       "O",
+       "Cp"
+      ],
+      "ink": "gold",
+      "w": 5
+     },
+     {
+      "id": "base",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "gold",
+      "w": 7
+     },
+     {
+      "id": "basep",
+      "seg": [
+       "Ap",
+       "Bp"
+      ],
+      "ink": "gold",
+      "w": 7
+     },
+     {
+      "id": "leg",
+      "seg": [
+       "A",
+       "C"
+      ],
+      "ink": "gold",
+      "w": 7
+     },
+     {
+      "id": "legp",
+      "seg": [
+       "Ap",
+       "Cp"
+      ],
+      "ink": "gold",
+      "w": 7
+     },
+     {
+      "id": "hyp",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "gold",
+      "w": 7
+     },
+     {
+      "id": "hypp",
+      "seg": [
+       "Bp",
+       "Cp"
+      ],
+      "ink": "gold",
+      "w": 7
+     },
+     {
+      "id": "across",
+      "vector": [
+       "O",
+       "H"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "up",
+      "vector": [
+       "H",
+       "C"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "acrossp",
+      "vector": [
+       "O",
+       "Hp"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "upp",
+      "vector": [
+       "Hp",
+       "Cp"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "sAcross",
+      "vector": [
+       "S",
+       "SH"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "sUp",
+      "vector": [
+       "SH",
+       "C"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "sAcrossp",
+      "vector": [
+       "S",
+       "SHp"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "sUpp",
+      "vector": [
+       "SHp",
+       "Cp"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "cornera",
+      "angle": [
+       "B",
+       "A",
+       "C"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 32,
+      "group": "corners",
+      "fill": "gold-fill"
+     },
+     {
+      "id": "cornerb",
+      "angle": [
+       "A",
+       "B",
+       "C"
+      ],
+      "right": false,
+      "ink": "violet",
+      "r": 48,
+      "group": "corners",
+      "fill": "violet-fill"
+     },
+     {
+      "id": "cornerc",
+      "angle": [
+       "A",
+       "C",
+       "B"
+      ],
+      "right": false,
+      "ink": "warm",
+      "r": 44,
+      "group": "corners",
+      "fill": "warm-fill"
+     },
+     {
+      "id": "cornerap",
+      "angle": [
+       "Bp",
+       "Ap",
+       "Cp"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 32,
+      "group": "corners",
+      "fill": "gold-fill"
+     },
+     {
+      "id": "cornerbp",
+      "angle": [
+       "Ap",
+       "Bp",
+       "Cp"
+      ],
+      "right": false,
+      "ink": "violet",
+      "r": 48,
+      "group": "corners",
+      "fill": "violet-fill"
+     },
+     {
+      "id": "cornercp",
+      "angle": [
+       "Ap",
+       "Cp",
+       "Bp"
+      ],
+      "right": false,
+      "ink": "warm",
+      "r": 44,
+      "group": "corners",
+      "fill": "warm-fill"
+     },
+     {
+      "id": "overlap",
+      "poly": [
+       "A",
+       "B",
+       "C"
+      ],
+      "ink": "gold",
+      "w": 5,
+      "fill": "none"
+     },
+     {
+      "id": "len4",
+      "label": "4",
+      "at": "base",
+      "dir": "n",
+      "size": "l",
+      "halo": true,
+      "ink": "gold",
+      "group": "lengths",
+      "far": 0.15
+     },
+     {
+      "id": "len8",
+      "label": "8",
+      "at": "basep",
+      "dir": "s",
+      "size": "l",
+      "halo": true,
+      "ink": "gold",
+      "group": "lengths",
+      "far": 0.15
+     },
+     {
+      "id": "len3",
+      "label": "3",
+      "at": "leg",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "ink": "gold",
+      "group": "lengths"
+     },
+     {
+      "id": "len6",
+      "label": "6",
+      "at": "legp",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "ink": "gold",
+      "group": "lengths"
+     },
+     {
+      "id": "len5",
+      "label": "5",
+      "at": "hyp",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "ink": "gold",
+      "group": "lengths"
+     },
+     {
+      "id": "len10",
+      "label": "10",
+      "at": "hypp",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "ink": "gold",
+      "group": "lengths"
+     },
+     {
+      "id": "left2",
+      "label": "2",
+      "at": "across",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "ink": "gold"
+     },
+     {
+      "id": "up3",
+      "label": "3",
+      "at": "up",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "ink": "gold"
+     },
+     {
+      "id": "left4",
+      "label": "4",
+      "at": "acrossp",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "ink": "gold"
+     },
+     {
+      "id": "up6",
+      "label": "6",
+      "at": "upp",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "ink": "gold"
+     },
+     {
+      "id": "sleft3",
+      "label": "3",
+      "at": "sAcross",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "ink": "gold"
+     },
+     {
+      "id": "sup2",
+      "label": "2",
+      "at": "sUp",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "ink": "gold"
+     },
+     {
+      "id": "sleft6",
+      "label": "6",
+      "at": "sAcrossp",
+      "dir": "n",
+      "size": "l",
+      "halo": true,
+      "ink": "gold",
+      "far": 0.4
+     },
+     {
+      "id": "sup4",
+      "label": "4",
+      "at": "sUpp",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "ink": "gold"
+     },
+     {
+      "id": "coordC",
+      "label": "C(-2,3)",
+      "at": "C",
+      "dir": "nw",
+      "size": "l",
+      "ink": "blue",
+      "far": 0.15
+     },
+     {
+      "id": "coordCp",
+      "label": "C'(-4,6)",
+      "at": "Cp",
+      "dir": "ne",
+      "size": "l",
+      "ink": "accent",
+      "far": 0.15
+     },
+     {
+      "id": "sNameC",
+      "label": "C",
+      "at": "C",
+      "dir": "ne",
+      "far": 0.3,
+      "ink": "blue",
+      "size": "l",
+      "halo": true,
+      "flies": false
+     },
+     {
+      "id": "sNameCp",
+      "label": "C'",
+      "at": "Cp",
+      "dir": "ne",
+      "far": 0.3,
+      "ink": "accent",
+      "size": "l",
+      "halo": true,
+      "flies": true
+     },
+     {
+      "id": "sOriginName",
+      "label": "O",
+      "at": "O",
+      "dir": "se",
+      "far": 0.3,
+      "ink": "gold",
+      "size": "l",
+      "halo": true,
+      "flies": false
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A dilation resizes a figure from a fixed center, keeping its shape.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "header",
+       "text": "Dilations"
+      },
+      {
+       "do": "text",
+       "text": "Resize from a fixed center"
+      },
+      {
+       "do": "move",
+       "points": {
+        "Ap": [
+         -3,
+         0
+        ],
+        "Bp": [
+         3,
+         0
+        ],
+        "Cp": [
+         -3,
+         4.5
+        ],
+        "K": [
+         1.5,
+         0
+        ]
+       },
+       "dur": 3,
+       "at": "dilation"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Our center is *O*, the origin at zero, zero. It stays fixed on this side.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Our"
+      },
+      {
+       "do": "write",
+       "tex": "O=(0,0)",
+       "fresh": true,
+       "at": "origin"
+      },
+      {
+       "do": "text",
+       "text": "The center need not be the middle",
+       "at": "side"
+      },
+      {
+       "do": "highlight",
+       "target": "origin",
+       "at": "fixed"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each point follows a ray that starts at the center and continues straight through the point.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "ray"
+      },
+      {
+       "do": "text",
+       "text": "A straight path from the center",
+       "at": "ray"
+      },
+      {
+       "do": "draw",
+       "target": "rays",
+       "dur": 0.22,
+       "at": "ray"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The scale factor, *k*, is a positive number multiplying each distance from the center.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "scale"
+      },
+      {
+       "do": "text",
+       "text": "Scale factor: a positive multiplier",
+       "at": "scale"
+      },
+      {
+       "do": "write",
+       "tex": "k>0",
+       "fresh": true,
+       "at": "positive"
+      },
+      {
+       "do": "show",
+       "target": "kRead",
+       "at": "k"
+      },
+      {
+       "do": "highlight",
+       "target": "origin",
+       "at": "center"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "With a factor of two, this distance of two units becomes four.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "With"
+      },
+      {
+       "do": "header",
+       "text": "Center at the origin",
+       "at": "With"
+      },
+      {
+       "do": "write",
+       "tex": "k=2",
+       "fresh": true,
+       "at": "two"
+      },
+      {
+       "do": "move",
+       "points": {
+        "Ap": [
+         -4,
+         0
+        ],
+        "Bp": [
+         4,
+         0
+        ],
+        "Cp": [
+         -4,
+         6
+        ],
+        "K": [
+         2,
+         0
+        ]
+       },
+       "dur": 1.2,
+       "at": "two"
+      },
+      {
+       "do": "draw",
+       "target": "oa",
+       "dur": 0.22,
+       "at": "units"
+      },
+      {
+       "do": "hide",
+       "target": "oa",
+       "at": "four"
+      },
+      {
+       "do": "draw",
+       "target": "oap",
+       "dur": 0.22,
+       "at": "four"
+      },
+      {
+       "do": "write",
+       "tex": "OA=2\\;\\longrightarrow\\;OA'=4",
+       "fresh": true,
+       "at": "four"
+      },
+      {
+       "do": "highlight",
+       "target": "origin",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "We call the result the image and name its points with prime marks.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": "oap",
+       "at": "We"
+      },
+      {
+       "do": "clear",
+       "at": "result"
+      },
+      {
+       "do": "text",
+       "text": "Image: the resulting figure",
+       "at": "result"
+      },
+      {
+       "do": "show",
+       "target": "primeNames",
+       "at": "prime"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The coordinates of *C* mean two left and three up from the origin.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "coordinates"
+      },
+      {
+       "do": "write",
+       "tex": "C=(-2,3)",
+       "fresh": true,
+       "at": "C"
+      },
+      {
+       "do": "draw",
+       "target": "across",
+       "dur": 0.22,
+       "at": "left"
+      },
+      {
+       "do": "show",
+       "target": "left2",
+       "at": "left"
+      },
+      {
+       "do": "draw",
+       "target": "up",
+       "dur": 0.22,
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "up3",
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Multiply negative two by two to move four left.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "across",
+        "up",
+        "left2",
+        "up3"
+       ],
+       "at": "Multiply"
+      },
+      {
+       "do": "write",
+       "tex": "-2\\times2=-4",
+       "fresh": true,
+       "at": "Multiply"
+      },
+      {
+       "do": "draw",
+       "target": "acrossp",
+       "dur": 0.22,
+       "at": "four"
+      },
+      {
+       "do": "show",
+       "target": "left4",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Multiply three by two to move six up, reaching negative four, six.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "write",
+       "tex": "3\\times2=6",
+       "fresh": true,
+       "at": "Multiply"
+      },
+      {
+       "do": "draw",
+       "target": "upp",
+       "dur": 0.22,
+       "at": "six"
+      },
+      {
+       "do": "show",
+       "target": "up6",
+       "at": "six"
+      },
+      {
+       "do": "highlight",
+       "target": "track",
+       "at": "six"
+      },
+      {
+       "do": "clear",
+       "at": "reaching"
+      },
+      {
+       "do": "write",
+       "tex": "C(-2,3)\\to C'(-4,6)",
+       "fresh": true,
+       "at": "reaching"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Both coordinates measure from *O*, so both multiply. The arrow means goes to, and *k* *x* means *k* times *x*.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "acrossp",
+        "upp",
+        "left4",
+        "up6"
+       ],
+       "at": "Both"
+      },
+      {
+       "do": "clear",
+       "at": "Both"
+      },
+      {
+       "do": "write",
+       "tex": "(x,y)\\longrightarrow(kx,ky)",
+       "fresh": true,
+       "at": "Both"
+      },
+      {
+       "do": "text",
+       "text": "The arrow means goes to",
+       "at": "arrow"
+      },
+      {
+       "do": "highlight",
+       "target": "origin",
+       "at": "O"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Adding two is a common slip: that puts *C* at zero, five, off its ray; multiply both coordinates to reach negative four, six.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Adding"
+      },
+      {
+       "do": "write",
+       "tex": "C'=(0,5)",
+       "fresh": true,
+       "id": "slip",
+       "at": "Adding"
+      },
+      {
+       "do": "show",
+       "target": "wrong",
+       "at": "puts"
+      },
+      {
+       "do": "highlight",
+       "target": "wrongDot",
+       "at": "zero"
+      },
+      {
+       "do": "draw",
+       "target": "ocp",
+       "dur": 0.22,
+       "at": "off"
+      },
+      {
+       "do": "strike",
+       "target": "slip",
+       "at": "multiply"
+      },
+      {
+       "do": "hide",
+       "target": "wrong",
+       "at": "multiply"
+      },
+      {
+       "do": "write",
+       "tex": "C'=(-4,6)",
+       "fresh": true,
+       "at": "multiply"
+      },
+      {
+       "do": "highlight",
+       "target": "track",
+       "at": "negative"
+      },
+      {
+       "do": "hide",
+       "target": "ocp",
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A side matches its image side. Here, four becomes eight.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "originName",
+        "primeNames"
+       ],
+       "at": "A"
+      },
+      {
+       "do": "clear",
+       "at": "A"
+      },
+      {
+       "do": "header",
+       "text": "Same shape",
+       "at": "A"
+      },
+      {
+       "do": "text",
+       "text": "Matching: a side and its image",
+       "at": "matches"
+      },
+      {
+       "do": "draw",
+       "target": "base",
+       "dur": 0.22,
+       "at": "four"
+      },
+      {
+       "do": "show",
+       "target": "len4",
+       "at": "four"
+      },
+      {
+       "do": "write",
+       "tex": "AB=4\\;\\longrightarrow\\;A'B'=8",
+       "fresh": true,
+       "at": "four"
+      },
+      {
+       "do": "draw",
+       "target": "basep",
+       "dur": 0.22,
+       "at": "eight"
+      },
+      {
+       "do": "show",
+       "target": "len8",
+       "at": "eight"
+      },
+      {
+       "do": "highlight",
+       "target": "len8",
+       "at": "eight"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The other sides double too, from three to six and five to ten.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "base",
+        "basep",
+        "len4",
+        "len8"
+       ],
+       "at": "The"
+      },
+      {
+       "do": "clear",
+       "at": "three"
+      },
+      {
+       "do": "write",
+       "tex": "AC=3\\;\\longrightarrow\\;A'C'=6",
+       "fresh": true,
+       "at": "three"
+      },
+      {
+       "do": "draw",
+       "target": "leg",
+       "dur": 0.22,
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "len3",
+       "at": "three"
+      },
+      {
+       "do": "draw",
+       "target": "legp",
+       "dur": 0.22,
+       "at": "six"
+      },
+      {
+       "do": "show",
+       "target": "len6",
+       "at": "six"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "leg",
+        "legp",
+        "len3",
+        "len6"
+       ],
+       "at": "five"
+      },
+      {
+       "do": "clear",
+       "at": "five"
+      },
+      {
+       "do": "write",
+       "tex": "BC=5\\;\\longrightarrow\\;B'C'=10",
+       "fresh": true,
+       "at": "five"
+      },
+      {
+       "do": "draw",
+       "target": "hyp",
+       "dur": 0.22,
+       "at": "five"
+      },
+      {
+       "do": "show",
+       "target": "len5",
+       "at": "five"
+      },
+      {
+       "do": "draw",
+       "target": "hypp",
+       "dur": 0.22,
+       "at": "ten"
+      },
+      {
+       "do": "show",
+       "target": "len10",
+       "at": "ten"
+      },
+      {
+       "do": "highlight",
+       "target": "len10",
+       "at": "ten"
+      },
+      {
+       "do": "highlight",
+       "target": "len6",
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "As the sides grow, their directions stay unchanged, so the corners never open or close.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "nameA",
+        "nameB",
+        "nameC"
+       ],
+       "at": "As",
+       "dur": 0.12
+      },
+      {
+       "do": "hide",
+       "target": [
+        "hyp",
+        "hypp",
+        "len5",
+        "len10"
+       ],
+       "at": "As"
+      },
+      {
+       "do": "clear",
+       "at": "As"
+      },
+      {
+       "do": "text",
+       "text": "Every side $\\times$ the same factor",
+       "at": "As"
+      },
+      {
+       "do": "show",
+       "target": "corners",
+       "at": "As"
+      },
+      {
+       "do": "move",
+       "points": {
+        "Ap": [
+         -2,
+         0
+        ],
+        "Bp": [
+         2,
+         0
+        ],
+        "Cp": [
+         -2,
+         3
+        ],
+        "K": [
+         1,
+         0
+        ]
+       },
+       "dur": 0.6,
+       "at": "As"
+      },
+      {
+       "do": "move",
+       "points": {
+        "Ap": [
+         -4,
+         0
+        ],
+        "Bp": [
+         4,
+         0
+        ],
+        "Cp": [
+         -4,
+         6
+        ],
+        "K": [
+         2,
+         0
+        ]
+       },
+       "dur": 2.8,
+       "at": "grow"
+      },
+      {
+       "do": "text",
+       "text": "Directions and angles stay unchanged",
+       "at": "directions"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The right angle stays ninety degrees, and the other openings stay unchanged too.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "nameA",
+        "nameB",
+        "nameC"
+       ],
+       "at": "The"
+      },
+      {
+       "do": "write",
+       "tex": "\\angle A=\\angle A'=90^\\circ",
+       "fresh": true,
+       "at": "ninety"
+      },
+      {
+       "do": "highlight",
+       "target": "cornerap",
+       "at": "ninety"
+      },
+      {
+       "do": "highlight",
+       "target": "cornercp",
+       "at": "openings"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "These figures are similar because their shape stays the same.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "These"
+      },
+      {
+       "do": "text",
+       "text": "Similar: same shape",
+       "at": "similar"
+      },
+      {
+       "do": "show",
+       "target": "originName",
+       "at": "These"
+      },
+      {
+       "do": "highlight",
+       "target": "track",
+       "at": "shape"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Congruent figures also have the same size, so our doubled triangle is not congruent.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "text",
+       "text": "Congruent: same shape and size",
+       "at": "Congruent"
+      },
+      {
+       "do": "text",
+       "text": "Doubled: similar, not congruent",
+       "at": "doubled"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Every factor compares with the blue original. Above one, the image grows.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "nameA",
+        "nameB",
+        "nameC"
+       ],
+       "at": "Every",
+       "dur": 0.12
+      },
+      {
+       "do": "clear",
+       "at": "Every"
+      },
+      {
+       "do": "header",
+       "text": "Scale factor",
+       "at": "Every"
+      },
+      {
+       "do": "text",
+       "text": "Compare with the blue original",
+       "at": "Every"
+      },
+      {
+       "do": "move",
+       "points": {
+        "Ap": [
+         -2,
+         0
+        ],
+        "Bp": [
+         2,
+         0
+        ],
+        "Cp": [
+         -2,
+         3
+        ],
+        "K": [
+         1,
+         0
+        ]
+       },
+       "dur": 0.65,
+       "at": "Every"
+      },
+      {
+       "do": "move",
+       "points": {
+        "Ap": [
+         -4,
+         0
+        ],
+        "Bp": [
+         4,
+         0
+        ],
+        "Cp": [
+         -4,
+         6
+        ],
+        "K": [
+         2,
+         0
+        ]
+       },
+       "dur": 2.35,
+       "at": "Above"
+      },
+      {
+       "do": "write",
+       "tex": "k>1\\quad\\text{enlarges}",
+       "fresh": true,
+       "at": "Above"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "It shrinks toward the original, passes through one, and continues to one half.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "shrinks"
+      },
+      {
+       "do": "text",
+       "text": "Pass through $k=1$",
+       "at": "shrinks"
+      },
+      {
+       "do": "move",
+       "points": {
+        "Ap": [
+         -1,
+         0
+        ],
+        "Bp": [
+         1,
+         0
+        ],
+        "Cp": [
+         -1,
+         1.5
+        ],
+        "K": [
+         0.5,
+         0
+        ]
+       },
+       "dur": 4.15,
+       "at": "shrinks"
+      },
+      {
+       "do": "text",
+       "text": "Then $0<k<1$: shrink",
+       "at": "continues"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Both coordinates halve, putting *C* prime at negative one, three halves.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Both"
+      },
+      {
+       "do": "write",
+       "tex": "k=\\frac12",
+       "fresh": true,
+       "at": "Both"
+      },
+      {
+       "do": "write",
+       "tex": "C(-2,3)\\to C'(-1,\\frac32)",
+       "fresh": true,
+       "at": "negative"
+      },
+      {
+       "do": "show",
+       "target": "nameCp",
+       "at": "C"
+      },
+      {
+       "do": "highlight",
+       "target": "track",
+       "at": "halves"
+      },
+      {
+       "do": "show",
+       "target": "nameC",
+       "at": "C"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Above one, it grows again. Back at one, every point returns, making the figures congruent too.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": "nameC",
+       "at": "Above",
+       "dur": 0.12
+      },
+      {
+       "do": "clear",
+       "at": "Above"
+      },
+      {
+       "do": "text",
+       "text": "Every factor compares with the original",
+       "at": "Above"
+      },
+      {
+       "do": "hide",
+       "target": "nameCp",
+       "at": "Above"
+      },
+      {
+       "do": "move",
+       "points": {
+        "Ap": [
+         -4,
+         0
+        ],
+        "Bp": [
+         4,
+         0
+        ],
+        "Cp": [
+         -4,
+         6
+        ],
+        "K": [
+         2,
+         0
+        ]
+       },
+       "at": "Above",
+       "dur": 1.5
+      },
+      {
+       "do": "move",
+       "points": {
+        "Ap": [
+         -2,
+         0
+        ],
+        "Bp": [
+         2,
+         0
+        ],
+        "Cp": [
+         -2,
+         3
+        ],
+        "K": [
+         1,
+         0
+        ]
+       },
+       "at": "Back",
+       "dur": 1.5
+      },
+      {
+       "do": "write",
+       "tex": "k=1\\quad\\text{unchanged}",
+       "fresh": true,
+       "at": "returns"
+      },
+      {
+       "do": "text",
+       "text": "Similar and congruent",
+       "at": "congruent"
+      },
+      {
+       "do": "show",
+       "target": "overlap",
+       "at": "congruent"
+      },
+      {
+       "do": "highlight",
+       "target": "track",
+       "at": "congruent"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Choose *S*, at one, one, as the center where the rays start.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "corners",
+        "overlap",
+        "nameA",
+        "nameB",
+        "nameC",
+        "originName"
+       ],
+       "at": "Choose"
+      },
+      {
+       "do": "clear",
+       "at": "Choose"
+      },
+      {
+       "do": "header",
+       "tex": "S(1,1)",
+       "label": "A different center",
+       "at": "Choose"
+      },
+      {
+       "do": "hide",
+       "target": "rays",
+       "at": "S"
+      },
+      {
+       "do": "show",
+       "target": [
+        "newCenter",
+        "sNameC",
+        "sOriginName"
+       ],
+       "at": "S"
+      },
+      {
+       "do": "draw",
+       "target": "srays",
+       "dur": 0.22,
+       "at": "rays"
+      },
+      {
+       "do": "highlight",
+       "target": "center",
+       "at": "center"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "From *S*, *C* is three left and two up.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\text{From }S:\\;(-3,2)",
+       "fresh": true,
+       "at": "From"
+      },
+      {
+       "do": "draw",
+       "target": "sAcross",
+       "dur": 0.22,
+       "at": "three"
+      },
+      {
+       "do": "draw",
+       "target": "sUp",
+       "dur": 0.22,
+       "at": "two"
+      },
+      {
+       "do": "highlight",
+       "target": "sNameC",
+       "at": "C"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Double those distances to six left and four up, reaching negative five, five.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "sAcross",
+        "sUp"
+       ],
+       "at": "Double"
+      },
+      {
+       "do": "clear",
+       "at": "Double"
+      },
+      {
+       "do": "write",
+       "tex": "\\text{From }S:\\;(-3,2)\\to(-6,4)",
+       "fresh": true,
+       "at": "Double"
+      },
+      {
+       "do": "show",
+       "target": "corners",
+       "at": "Double"
+      },
+      {
+       "do": "move",
+       "points": {
+        "Ap": [
+         -5,
+         -1
+        ],
+        "Bp": [
+         3,
+         -1
+        ],
+        "Cp": [
+         -5,
+         5
+        ],
+        "K": [
+         2,
+         0
+        ]
+       },
+       "dur": 2.3,
+       "at": "Double"
+      },
+      {
+       "do": "show",
+       "target": "sNameCp",
+       "at": "six"
+      },
+      {
+       "do": "draw",
+       "target": "sAcrossp",
+       "dur": 0.22,
+       "at": "six"
+      },
+      {
+       "do": "draw",
+       "target": "sUpp",
+       "dur": 0.22,
+       "at": "four"
+      },
+      {
+       "do": "write",
+       "tex": "C'=(-5,5)",
+       "fresh": true,
+       "at": "negative"
+      },
+      {
+       "do": "highlight",
+       "target": "track",
+       "at": "negative"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Multiply coordinates directly only when the chosen center is the origin.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "sAcrossp",
+        "sUpp",
+        "sNameCp",
+        "corners"
+       ],
+       "at": "Multiply"
+      },
+      {
+       "do": "clear",
+       "at": "Multiply"
+      },
+      {
+       "do": "text",
+       "text": "Measure from the chosen center",
+       "at": "Multiply"
+      },
+      {
+       "do": "move",
+       "points": {
+        "Ap": [
+         -2,
+         0
+        ],
+        "Bp": [
+         2,
+         0
+        ],
+        "Cp": [
+         -2,
+         3
+        ],
+        "K": [
+         1,
+         0
+        ]
+       },
+       "dur": 1.2,
+       "at": "Multiply"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "newCenter",
+        "srays",
+        "sNameC",
+        "sOriginName"
+       ],
+       "at": "origin",
+       "dur": 0.12
+      },
+      {
+       "do": "show",
+       "target": [
+        "rays",
+        "nameA",
+        "nameB",
+        "nameC",
+        "originName"
+       ],
+       "at": "origin",
+       "dur": 0.12
+      },
+      {
+       "do": "move",
+       "points": {
+        "Ap": [
+         -4,
+         0
+        ],
+        "Bp": [
+         4,
+         0
+        ],
+        "Cp": [
+         -4,
+         6
+        ],
+        "K": [
+         2,
+         0
+        ]
+       },
+       "dur": 1.4,
+       "at": "origin"
+      },
+      {
+       "do": "highlight",
+       "target": "origin",
+       "at": "origin"
+      },
+      {
+       "do": "clear",
+       "at": "origin"
+      },
+      {
+       "do": "header",
+       "text": "Center at the origin",
+       "at": "origin"
+      },
+      {
+       "do": "text",
+       "text": "Multiply both coordinates",
+       "at": "origin"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -6,
+     -5.5,
+     6,
+     6
+    ],
+    "points": {
+     "gxn5a": [
+      -5,
+      -5
+     ],
+     "gxn5b": [
+      -5,
+      5.6
+     ],
+     "gyn5a": [
+      -5.6,
+      -5
+     ],
+     "gyn5b": [
+      5.6,
+      -5
+     ],
+     "gxn4a": [
+      -4,
+      -5
+     ],
+     "gxn4b": [
+      -4,
+      5.6
+     ],
+     "gyn4a": [
+      -5.6,
+      -4
+     ],
+     "gyn4b": [
+      5.6,
+      -4
+     ],
+     "gxn3a": [
+      -3,
+      -5
+     ],
+     "gxn3b": [
+      -3,
+      5.6
+     ],
+     "gyn3a": [
+      -5.6,
+      -3
+     ],
+     "gyn3b": [
+      5.6,
+      -3
+     ],
+     "gxn2a": [
+      -2,
+      -5
+     ],
+     "gxn2b": [
+      -2,
+      5.6
+     ],
+     "gyn2a": [
+      -5.6,
+      -2
+     ],
+     "gyn2b": [
+      5.6,
+      -2
+     ],
+     "gxn1a": [
+      -1,
+      -5
+     ],
+     "gxn1b": [
+      -1,
+      5.6
+     ],
+     "gyn1a": [
+      -5.6,
+      -1
+     ],
+     "gyn1b": [
+      5.6,
+      -1
+     ],
+     "gx0a": [
+      0,
+      -5
+     ],
+     "gx0b": [
+      0,
+      5.6
+     ],
+     "gy0a": [
+      -5.6,
+      0
+     ],
+     "gy0b": [
+      5.6,
+      0
+     ],
+     "gx1a": [
+      1,
+      -5
+     ],
+     "gx1b": [
+      1,
+      5.6
+     ],
+     "gy1a": [
+      -5.6,
+      1
+     ],
+     "gy1b": [
+      5.6,
+      1
+     ],
+     "gx2a": [
+      2,
+      -5
+     ],
+     "gx2b": [
+      2,
+      5.6
+     ],
+     "gy2a": [
+      -5.6,
+      2
+     ],
+     "gy2b": [
+      5.6,
+      2
+     ],
+     "gx3a": [
+      3,
+      -5
+     ],
+     "gx3b": [
+      3,
+      5.6
+     ],
+     "gy3a": [
+      -5.6,
+      3
+     ],
+     "gy3b": [
+      5.6,
+      3
+     ],
+     "gx4a": [
+      4,
+      -5
+     ],
+     "gx4b": [
+      4,
+      5.6
+     ],
+     "gy4a": [
+      -5.6,
+      4
+     ],
+     "gy4b": [
+      5.6,
+      4
+     ],
+     "gx5a": [
+      5,
+      -5
+     ],
+     "gx5b": [
+      5,
+      5.6
+     ],
+     "gy5a": [
+      -5.6,
+      5
+     ],
+     "gy5b": [
+      5.6,
+      5
+     ],
+     "outCenter": [
+      -5,
+      -4
+     ],
+     "outP0": [
+      -4,
+      -3
+     ],
+     "outI0": [
+      -4,
+      -3
+     ],
+     "outR0": [
+      -1.8499999999999996,
+      -0.8499999999999996
+     ],
+     "outP1": [
+      -2,
+      -3
+     ],
+     "outI1": [
+      -2,
+      -3
+     ],
+     "outR1": [
+      4.450000000000001,
+      -0.8499999999999996
+     ],
+     "outP2": [
+      -4,
+      -1
+     ],
+     "outI2": [
+      -4,
+      -1
+     ],
+     "outR2": [
+      -1.8499999999999996,
+      5.450000000000001
+     ],
+     "inCenter": [
+      5,
+      -3
+     ],
+     "inP0": [
+      -3,
+      5
+     ],
+     "inI0": [
+      -3,
+      5
+     ],
+     "inR0": [
+      -3.4000000000000004,
+      5.4
+     ],
+     "inP1": [
+      3,
+      5
+     ],
+     "inI1": [
+      3,
+      5
+     ],
+     "inR1": [
+      2.9,
+      5.4
+     ],
+     "inP2": [
+      3,
+      1
+     ],
+     "inI2": [
+      3,
+      1
+     ],
+     "inR2": [
+      2.9,
+      1.2000000000000002
+     ],
+     "inP3": [
+      -3,
+      1
+     ],
+     "inI3": [
+      -3,
+      1
+     ],
+     "inR3": [
+      -3.4000000000000004,
+      1.2000000000000002
+     ],
+     "fixedCenter": [
+      -4,
+      4
+     ],
+     "fixedP0": [
+      -4,
+      4
+     ],
+     "fixedI0": [
+      -4,
+      4
+     ],
+     "fixedP1": [
+      0,
+      3
+     ],
+     "fixedI1": [
+      0,
+      3
+     ],
+     "fixedR1": [
+      4.4,
+      1.9
+     ],
+     "fixedP2": [
+      -3,
+      0
+     ],
+     "fixedI2": [
+      -3,
+      0
+     ],
+     "fixedR2": [
+      -1.9,
+      -4.4
+     ],
+     "yFive": [
+      0,
+      5
+     ],
+     "yMinusFive": [
+      0,
+      -5
+     ]
+    },
+    "parts": [
+     {
+      "id": "gxn5",
+      "seg": [
+       "gxn5a",
+       "gxn5b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gyn5",
+      "seg": [
+       "gyn5a",
+       "gyn5b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gxn4",
+      "seg": [
+       "gxn4a",
+       "gxn4b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gyn4",
+      "seg": [
+       "gyn4a",
+       "gyn4b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gxn3",
+      "seg": [
+       "gxn3a",
+       "gxn3b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gyn3",
+      "seg": [
+       "gyn3a",
+       "gyn3b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gxn2",
+      "seg": [
+       "gxn2a",
+       "gxn2b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gyn2",
+      "seg": [
+       "gyn2a",
+       "gyn2b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gxn1",
+      "seg": [
+       "gxn1a",
+       "gxn1b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gyn1",
+      "seg": [
+       "gyn1a",
+       "gyn1b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gx0",
+      "seg": [
+       "gx0a",
+       "gx0b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gy0",
+      "seg": [
+       "gy0a",
+       "gy0b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gx1",
+      "seg": [
+       "gx1a",
+       "gx1b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gy1",
+      "seg": [
+       "gy1a",
+       "gy1b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gx2",
+      "seg": [
+       "gx2a",
+       "gx2b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gy2",
+      "seg": [
+       "gy2a",
+       "gy2b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gx3",
+      "seg": [
+       "gx3a",
+       "gx3b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gy3",
+      "seg": [
+       "gy3a",
+       "gy3b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gx4",
+      "seg": [
+       "gx4a",
+       "gx4b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gy4",
+      "seg": [
+       "gy4a",
+       "gy4b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gx5",
+      "seg": [
+       "gx5a",
+       "gx5b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gy5",
+      "seg": [
+       "gy5a",
+       "gy5b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "axes",
+      "axes": true,
+      "step": 1,
+      "every": 5,
+      "xrange": [
+       -5.6,
+       5.6
+      ],
+      "yrange": [
+       -5,
+       5.6
+      ],
+      "start": true,
+      "ink": "muted",
+      "size": "l",
+      "yevery": 10
+     },
+     {
+      "id": "outRay0",
+      "vector": [
+       "outCenter",
+       "outR0"
+      ],
+      "ink": "muted",
+      "w": 2,
+      "dash": true
+     },
+     {
+      "id": "outRay1",
+      "vector": [
+       "outCenter",
+       "outR1"
+      ],
+      "ink": "muted",
+      "w": 2,
+      "dash": true
+     },
+     {
+      "id": "outRay2",
+      "vector": [
+       "outCenter",
+       "outR2"
+      ],
+      "ink": "muted",
+      "w": 2,
+      "dash": true
+     },
+     {
+      "id": "outOriginal",
+      "poly": [
+       "outP0",
+       "outP1",
+       "outP2"
+      ],
+      "fill": "none",
+      "ink": "blue",
+      "w": 4
+     },
+     {
+      "id": "outImage",
+      "poly": [
+       "outI0",
+       "outI1",
+       "outI2"
+      ],
+      "fill": "none",
+      "ink": "accent",
+      "w": 5
+     },
+     {
+      "id": "outDot0",
+      "dot": "outI0",
+      "r": 5,
+      "ink": "accent",
+      "group": "outDots"
+     },
+     {
+      "id": "outDot1",
+      "dot": "outI1",
+      "r": 5,
+      "ink": "accent",
+      "group": "outDots"
+     },
+     {
+      "id": "outDot2",
+      "dot": "outI2",
+      "r": 5,
+      "ink": "accent",
+      "group": "outDots"
+     },
+     {
+      "id": "outCenterDot",
+      "dot": "outCenter",
+      "ink": "gold",
+      "r": 9
+     },
+     {
+      "id": "outCenterName",
+      "label": "(-5,-4)",
+      "at": "outCenter",
+      "dir": "e",
+      "far": 0.45,
+      "ink": "gold",
+      "size": "l"
+     },
+     {
+      "id": "inRay0",
+      "vector": [
+       "inCenter",
+       "inR0"
+      ],
+      "ink": "muted",
+      "w": 2,
+      "dash": true
+     },
+     {
+      "id": "inRay1",
+      "vector": [
+       "inCenter",
+       "inR1"
+      ],
+      "ink": "muted",
+      "w": 2,
+      "dash": true
+     },
+     {
+      "id": "inRay2",
+      "vector": [
+       "inCenter",
+       "inR2"
+      ],
+      "ink": "muted",
+      "w": 2,
+      "dash": true
+     },
+     {
+      "id": "inRay3",
+      "vector": [
+       "inCenter",
+       "inR3"
+      ],
+      "ink": "muted",
+      "w": 2,
+      "dash": true
+     },
+     {
+      "id": "inOriginal",
+      "poly": [
+       "inP0",
+       "inP1",
+       "inP2",
+       "inP3"
+      ],
+      "fill": "none",
+      "ink": "blue",
+      "w": 4
+     },
+     {
+      "id": "inImage",
+      "poly": [
+       "inI0",
+       "inI1",
+       "inI2",
+       "inI3"
+      ],
+      "fill": "none",
+      "ink": "accent",
+      "w": 5
+     },
+     {
+      "id": "inDot0",
+      "dot": "inI0",
+      "r": 5,
+      "ink": "accent",
+      "group": "inDots"
+     },
+     {
+      "id": "inDot1",
+      "dot": "inI1",
+      "r": 5,
+      "ink": "accent",
+      "group": "inDots"
+     },
+     {
+      "id": "inDot2",
+      "dot": "inI2",
+      "r": 5,
+      "ink": "accent",
+      "group": "inDots"
+     },
+     {
+      "id": "inDot3",
+      "dot": "inI3",
+      "r": 5,
+      "ink": "accent",
+      "group": "inDots"
+     },
+     {
+      "id": "inCenterDot",
+      "dot": "inCenter",
+      "ink": "gold",
+      "r": 9
+     },
+     {
+      "id": "inCenterName",
+      "label": "(5,-3)",
+      "at": "inCenter",
+      "dir": "w",
+      "far": 0.45,
+      "ink": "gold",
+      "size": "l"
+     },
+     {
+      "id": "fixedRay1",
+      "vector": [
+       "fixedCenter",
+       "fixedR1"
+      ],
+      "ink": "muted",
+      "w": 2,
+      "dash": true
+     },
+     {
+      "id": "fixedRay2",
+      "vector": [
+       "fixedCenter",
+       "fixedR2"
+      ],
+      "ink": "muted",
+      "w": 2,
+      "dash": true
+     },
+     {
+      "id": "fixedOriginal",
+      "poly": [
+       "fixedP0",
+       "fixedP1",
+       "fixedP2"
+      ],
+      "fill": "none",
+      "ink": "blue",
+      "w": 4
+     },
+     {
+      "id": "fixedImage",
+      "poly": [
+       "fixedI0",
+       "fixedI1",
+       "fixedI2"
+      ],
+      "fill": "none",
+      "ink": "accent",
+      "w": 5
+     },
+     {
+      "id": "fixedDot0",
+      "dot": "fixedI0",
+      "r": 5,
+      "ink": "accent",
+      "group": "fixedDots"
+     },
+     {
+      "id": "fixedDot1",
+      "dot": "fixedI1",
+      "r": 5,
+      "ink": "accent",
+      "group": "fixedDots"
+     },
+     {
+      "id": "fixedDot2",
+      "dot": "fixedI2",
+      "r": 5,
+      "ink": "accent",
+      "group": "fixedDots"
+     },
+     {
+      "id": "fixedCenterDot",
+      "dot": "fixedCenter",
+      "ink": "gold",
+      "r": 9
+     },
+     {
+      "id": "fixedCenterName",
+      "label": "(-4,4)",
+      "at": "fixedCenter",
+      "dir": "n",
+      "far": 0.45,
+      "ink": "gold",
+      "size": "l"
+     },
+     {
+      "id": "yFiveName",
+      "label": "5",
+      "at": "yFive",
+      "dir": "w",
+      "far": 0.4,
+      "ink": "muted",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "yMinusFiveName",
+      "label": "-5",
+      "at": "yMinusFive",
+      "dir": "w",
+      "far": 0.4,
+      "ink": "muted",
+      "size": "m",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now three more, fast. Center: negative five, negative four. Factor three.",
+     "pause": 0.1,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Center"
+      },
+      {
+       "do": "header",
+       "tex": "k=3",
+       "label": "Any chosen center",
+       "at": "Center"
+      },
+      {
+       "do": "show",
+       "target": [
+        "outOriginal",
+        "outCenterDot",
+        "outCenterName"
+       ],
+       "at": "Center",
+       "dur": 0.2
+      },
+      {
+       "do": "draw",
+       "target": [
+        "outRay0",
+        "outRay1",
+        "outRay2"
+       ],
+       "at": "Factor",
+       "dur": 0.25
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "outRay0",
+        "outRay1",
+        "outRay2"
+       ],
+       "at": "Factor"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Far from the center moves far.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "outImage",
+        "outDots"
+       ],
+       "at": "Far",
+       "dur": 0.12
+      },
+      {
+       "do": "move",
+       "points": {
+        "outI0": [
+         -2,
+         -1
+        ],
+        "outI1": [
+         4,
+         -1
+        ],
+        "outI2": [
+         -2,
+         5
+        ]
+       },
+       "at": "Far",
+       "dur": 1.7
+      },
+      {
+       "do": "text",
+       "text": "Far from the center moves far",
+       "at": "Far"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Center: five, negative three. Factor one half.",
+     "pause": 0.1,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Center"
+      },
+      {
+       "do": "header",
+       "tex": "k=\\frac12",
+       "label": "Any chosen center",
+       "at": "Center"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "outRay0",
+        "outRay1",
+        "outRay2",
+        "outOriginal",
+        "outImage",
+        "outDot0",
+        "outDot1",
+        "outDot2",
+        "outCenterDot",
+        "outCenterName"
+       ],
+       "at": "Center",
+       "dur": 0.16
+      },
+      {
+       "do": "show",
+       "target": [
+        "inOriginal",
+        "inCenterDot",
+        "inCenterName"
+       ],
+       "at": "Center",
+       "dur": 0.2
+      },
+      {
+       "do": "draw",
+       "target": [
+        "inRay0",
+        "inRay1",
+        "inRay2",
+        "inRay3"
+       ],
+       "at": "Factor",
+       "dur": 0.25
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "inRay0",
+        "inRay1",
+        "inRay2",
+        "inRay3"
+       ],
+       "at": "Factor"
+      },
+      {
+       "do": "hide",
+       "target": "yFiveName",
+       "at": "Center",
+       "dur": 0.16
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Half the distance on every ray.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "inImage",
+        "inDots"
+       ],
+       "at": "Half",
+       "dur": 0.12
+      },
+      {
+       "do": "move",
+       "points": {
+        "inI0": [
+         1,
+         1
+        ],
+        "inI1": [
+         4,
+         1
+        ],
+        "inI2": [
+         4,
+         -1
+        ],
+        "inI3": [
+         1,
+         -1
+        ]
+       },
+       "at": "Half",
+       "dur": 1.7
+      },
+      {
+       "do": "text",
+       "text": "Half the distance on every ray",
+       "at": "Half"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Center: negative four, four, on this corner. Factor two.",
+     "pause": 0.1,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Center"
+      },
+      {
+       "do": "header",
+       "tex": "k=2",
+       "label": "Any chosen center",
+       "at": "Center"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "inRay0",
+        "inRay1",
+        "inRay2",
+        "inRay3",
+        "inOriginal",
+        "inImage",
+        "inDot0",
+        "inDot1",
+        "inDot2",
+        "inDot3",
+        "inCenterDot",
+        "inCenterName"
+       ],
+       "at": "Center",
+       "dur": 0.16
+      },
+      {
+       "do": "show",
+       "target": [
+        "fixedOriginal",
+        "fixedCenterDot",
+        "fixedCenterName"
+       ],
+       "at": "Center",
+       "dur": 0.2
+      },
+      {
+       "do": "draw",
+       "target": [
+        "fixedRay1",
+        "fixedRay2"
+       ],
+       "at": "Factor",
+       "dur": 0.25
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "fixedRay1",
+        "fixedRay2"
+       ],
+       "at": "Factor"
+      },
+      {
+       "do": "show",
+       "target": "yFiveName",
+       "at": "Center",
+       "dur": 0.2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The center never moves; the figure grows away from it.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "fixedImage",
+        "fixedDots"
+       ],
+       "at": "The",
+       "dur": 0.12
+      },
+      {
+       "do": "move",
+       "points": {
+        "fixedI0": [
+         -4,
+         4
+        ],
+        "fixedI1": [
+         4,
+         2
+        ],
+        "fixedI2": [
+         -2,
+         -4
+        ]
+       },
+       "at": "grows",
+       "dur": 1.7
+      },
+      {
+       "do": "text",
+       "text": "The center never moves",
+       "at": "center"
+      },
+      {
+       "do": "highlight",
+       "target": "fixedCenterDot",
+       "at": "never"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -6,
+     -2,
+     5.2,
+     7
+    ],
+    "points": {
+     "O": [
+      0,
+      0
+     ],
+     "S": [
+      1,
+      1
+     ],
+     "A": [
+      -2,
+      0
+     ],
+     "B": [
+      2,
+      0
+     ],
+     "C": [
+      -2,
+      3
+     ],
+     "Ap": [
+      -4,
+      0
+     ],
+     "Bp": [
+      4,
+      0
+     ],
+     "Cp": [
+      -4,
+      6
+     ],
+     "RA": [
+      -5.6,
+      0
+     ],
+     "RB": [
+      5.1,
+      0
+     ],
+     "RC": [
+      -4.5,
+      6.75
+     ],
+     "SA": [
+      -5.6,
+      -1.2
+     ],
+     "SB": [
+      3.6,
+      -1.6
+     ],
+     "SC": [
+      -5.6,
+      5.4
+     ],
+     "W": [
+      0,
+      5
+     ],
+     "K": [
+      2,
+      0
+     ],
+     "Read": [
+      3.3,
+      6.2
+     ],
+     "H": [
+      -2,
+      0
+     ],
+     "Hp": [
+      -4,
+      0
+     ],
+     "SH": [
+      -2,
+      1
+     ],
+     "SHp": [
+      -5,
+      1
+     ],
+     "GXn5a": [
+      -5,
+      -1.5
+     ],
+     "GXn5b": [
+      -5,
+      6.5
+     ],
+     "GXn4a": [
+      -4,
+      -1.5
+     ],
+     "GXn4b": [
+      -4,
+      6.5
+     ],
+     "GXn3a": [
+      -3,
+      -1.5
+     ],
+     "GXn3b": [
+      -3,
+      6.5
+     ],
+     "GXn2a": [
+      -2,
+      -1.5
+     ],
+     "GXn2b": [
+      -2,
+      6.5
+     ],
+     "GXn1a": [
+      -1,
+      -1.5
+     ],
+     "GXn1b": [
+      -1,
+      6.5
+     ],
+     "GX0a": [
+      0,
+      -1.5
+     ],
+     "GX0b": [
+      0,
+      6.5
+     ],
+     "GX1a": [
+      1,
+      -1.5
+     ],
+     "GX1b": [
+      1,
+      6.5
+     ],
+     "GX2a": [
+      2,
+      -1.5
+     ],
+     "GX2b": [
+      2,
+      6.5
+     ],
+     "GX3a": [
+      3,
+      -1.5
+     ],
+     "GX3b": [
+      3,
+      6.5
+     ],
+     "GX4a": [
+      4,
+      -1.5
+     ],
+     "GX4b": [
+      4,
+      6.5
+     ],
+     "GYn1a": [
+      -5.5,
+      -1
+     ],
+     "GYn1b": [
+      5,
+      -1
+     ],
+     "GY0a": [
+      -5.5,
+      0
+     ],
+     "GY0b": [
+      5,
+      0
+     ],
+     "GY1a": [
+      -5.5,
+      1
+     ],
+     "GY1b": [
+      5,
+      1
+     ],
+     "GY2a": [
+      -5.5,
+      2
+     ],
+     "GY2b": [
+      5,
+      2
+     ],
+     "GY3a": [
+      -5.5,
+      3
+     ],
+     "GY3b": [
+      5,
+      3
+     ],
+     "GY4a": [
+      -5.5,
+      4
+     ],
+     "GY4b": [
+      5,
+      4
+     ],
+     "GY5a": [
+      -5.5,
+      5
+     ],
+     "GY5b": [
+      5,
+      5
+     ],
+     "GY6a": [
+      -5.5,
+      6
+     ],
+     "GY6b": [
+      5,
+      6
+     ]
+    },
+    "parts": [
+     {
+      "id": "gxn5",
+      "seg": [
+       "GXn5a",
+       "GXn5b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gxn4",
+      "seg": [
+       "GXn4a",
+       "GXn4b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gxn3",
+      "seg": [
+       "GXn3a",
+       "GXn3b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gxn2",
+      "seg": [
+       "GXn2a",
+       "GXn2b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gxn1",
+      "seg": [
+       "GXn1a",
+       "GXn1b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gx0",
+      "seg": [
+       "GX0a",
+       "GX0b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gx1",
+      "seg": [
+       "GX1a",
+       "GX1b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gx2",
+      "seg": [
+       "GX2a",
+       "GX2b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gx3",
+      "seg": [
+       "GX3a",
+       "GX3b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gx4",
+      "seg": [
+       "GX4a",
+       "GX4b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gyn1",
+      "seg": [
+       "GYn1a",
+       "GYn1b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gy0",
+      "seg": [
+       "GY0a",
+       "GY0b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gy1",
+      "seg": [
+       "GY1a",
+       "GY1b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gy2",
+      "seg": [
+       "GY2a",
+       "GY2b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gy3",
+      "seg": [
+       "GY3a",
+       "GY3b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gy4",
+      "seg": [
+       "GY4a",
+       "GY4b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gy5",
+      "seg": [
+       "GY5a",
+       "GY5b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "gy6",
+      "seg": [
+       "GY6a",
+       "GY6b"
+      ],
+      "ink": "muted",
+      "w": 0.55,
+      "start": true
+     },
+     {
+      "id": "axes",
+      "axes": true,
+      "step": 1,
+      "every": 2,
+      "xrange": [
+       -5.6,
+       5.1
+      ],
+      "yrange": [
+       -1.5,
+       6.5
+      ],
+      "start": true,
+      "ink": "muted",
+      "size": "l"
+     },
+     {
+      "id": "rayA",
+      "vector": [
+       "O",
+       "RA"
+      ],
+      "w": 2,
+      "dash": true,
+      "ink": "muted",
+      "group": "rays",
+      "start": true
+     },
+     {
+      "id": "srayA",
+      "vector": [
+       "S",
+       "SA"
+      ],
+      "w": 2,
+      "dash": true,
+      "ink": "muted",
+      "group": "srays"
+     },
+     {
+      "id": "rayB",
+      "vector": [
+       "O",
+       "RB"
+      ],
+      "w": 2,
+      "dash": true,
+      "ink": "muted",
+      "group": "rays",
+      "start": true
+     },
+     {
+      "id": "srayB",
+      "vector": [
+       "S",
+       "SB"
+      ],
+      "w": 2,
+      "dash": true,
+      "ink": "muted",
+      "group": "srays"
+     },
+     {
+      "id": "rayC",
+      "vector": [
+       "O",
+       "RC"
+      ],
+      "w": 2,
+      "dash": true,
+      "ink": "muted",
+      "group": "rays",
+      "start": true
+     },
+     {
+      "id": "srayC",
+      "vector": [
+       "S",
+       "SC"
+      ],
+      "w": 2,
+      "dash": true,
+      "ink": "muted",
+      "group": "srays"
+     },
+     {
+      "id": "image",
+      "poly": [
+       "Ap",
+       "Bp",
+       "Cp"
+      ],
+      "fill": "none",
+      "ink": "accent",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "original",
+      "poly": [
+       "A",
+       "B",
+       "C"
+      ],
+      "fill": "none",
+      "ink": "blue",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "nameA",
+      "label": "A",
+      "at": "A",
+      "dir": "nw",
+      "ink": "blue",
+      "size": "l",
+      "start": true,
+      "far": 0.15
+     },
+     {
+      "id": "nameAp",
+      "label": "A'",
+      "at": "Ap",
+      "dir": "nw",
+      "ink": "accent",
+      "size": "l",
+      "flies": true,
+      "group": "primeNames",
+      "far": 0.15
+     },
+     {
+      "id": "nameB",
+      "label": "B",
+      "at": "B",
+      "dir": "n",
+      "ink": "blue",
+      "size": "l",
+      "start": true,
+      "far": 0.15
+     },
+     {
+      "id": "nameBp",
+      "label": "B'",
+      "at": "Bp",
+      "dir": "n",
+      "ink": "accent",
+      "size": "l",
+      "flies": true,
+      "group": "primeNames",
+      "far": 0.15
+     },
+     {
+      "id": "nameC",
+      "label": "C",
+      "at": "C",
+      "dir": "w",
+      "ink": "blue",
+      "size": "l",
+      "start": true,
+      "far": 0.15
+     },
+     {
+      "id": "nameCp",
+      "label": "C'",
+      "at": "Cp",
+      "dir": "ne",
+      "ink": "accent",
+      "size": "l",
+      "flies": true,
+      "group": "primeNames",
+      "far": 0.15
+     },
+     {
+      "id": "origin",
+      "dot": "O",
+      "ink": "gold",
+      "r": 9,
+      "start": true
+     },
+     {
+      "id": "originName",
+      "label": "O",
+      "at": "O",
+      "dir": "s",
+      "far": 0.5,
+      "ink": "gold",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "center",
+      "dot": "S",
+      "ink": "gold",
+      "r": 7,
+      "group": "newCenter"
+     },
+     {
+      "id": "centerName",
+      "label": "S(1,1)",
+      "at": "S",
+      "dir": "ne",
+      "ink": "gold",
+      "size": "l",
+      "group": "newCenter",
+      "far": 0.3
+     },
+     {
+      "id": "track",
+      "dot": "Cp",
+      "r": 9,
+      "ink": "gold",
+      "start": true
+     },
+     {
+      "id": "kRead",
+      "label": "k=@x",
+      "at": "Read",
+      "of": "K",
+      "dir": "c",
+      "ink": "accent",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "wrongDot",
+      "dot": "W",
+      "r": 7,
+      "ink": "warm",
+      "group": "wrong"
+     },
+     {
+      "id": "wrongName",
+      "label": "(0,5)",
+      "at": "W",
+      "dir": "e",
+      "ink": "warm",
+      "size": "l",
+      "group": "wrong"
+     },
+     {
+      "id": "oa",
+      "seg": [
+       "O",
+       "A"
+      ],
+      "ink": "gold",
+      "w": 5
+     },
+     {
+      "id": "oap",
+      "seg": [
+       "O",
+       "Ap"
+      ],
+      "ink": "gold",
+      "w": 5
+     },
+     {
+      "id": "oc",
+      "seg": [
+       "O",
+       "C"
+      ],
+      "ink": "gold",
+      "w": 5
+     },
+     {
+      "id": "ocp",
+      "seg": [
+       "O",
+       "Cp"
+      ],
+      "ink": "gold",
+      "w": 5
+     },
+     {
+      "id": "base",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "gold",
+      "w": 7
+     },
+     {
+      "id": "basep",
+      "seg": [
+       "Ap",
+       "Bp"
+      ],
+      "ink": "gold",
+      "w": 7
+     },
+     {
+      "id": "leg",
+      "seg": [
+       "A",
+       "C"
+      ],
+      "ink": "gold",
+      "w": 7
+     },
+     {
+      "id": "legp",
+      "seg": [
+       "Ap",
+       "Cp"
+      ],
+      "ink": "gold",
+      "w": 7
+     },
+     {
+      "id": "hyp",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "gold",
+      "w": 7
+     },
+     {
+      "id": "hypp",
+      "seg": [
+       "Bp",
+       "Cp"
+      ],
+      "ink": "gold",
+      "w": 7
+     },
+     {
+      "id": "across",
+      "vector": [
+       "O",
+       "H"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "up",
+      "vector": [
+       "H",
+       "C"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "acrossp",
+      "vector": [
+       "O",
+       "Hp"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "upp",
+      "vector": [
+       "Hp",
+       "Cp"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "sAcross",
+      "vector": [
+       "S",
+       "SH"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "sUp",
+      "vector": [
+       "SH",
+       "C"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "sAcrossp",
+      "vector": [
+       "S",
+       "SHp"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "sUpp",
+      "vector": [
+       "SHp",
+       "Cp"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "cornera",
+      "angle": [
+       "B",
+       "A",
+       "C"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 32,
+      "group": "corners",
+      "fill": "gold-fill"
+     },
+     {
+      "id": "cornerb",
+      "angle": [
+       "A",
+       "B",
+       "C"
+      ],
+      "right": false,
+      "ink": "violet",
+      "r": 48,
+      "group": "corners",
+      "fill": "violet-fill"
+     },
+     {
+      "id": "cornerc",
+      "angle": [
+       "A",
+       "C",
+       "B"
+      ],
+      "right": false,
+      "ink": "warm",
+      "r": 44,
+      "group": "corners",
+      "fill": "warm-fill"
+     },
+     {
+      "id": "cornerap",
+      "angle": [
+       "Bp",
+       "Ap",
+       "Cp"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 32,
+      "group": "corners",
+      "fill": "gold-fill"
+     },
+     {
+      "id": "cornerbp",
+      "angle": [
+       "Ap",
+       "Bp",
+       "Cp"
+      ],
+      "right": false,
+      "ink": "violet",
+      "r": 48,
+      "group": "corners",
+      "fill": "violet-fill"
+     },
+     {
+      "id": "cornercp",
+      "angle": [
+       "Ap",
+       "Cp",
+       "Bp"
+      ],
+      "right": false,
+      "ink": "warm",
+      "r": 44,
+      "group": "corners",
+      "fill": "warm-fill"
+     },
+     {
+      "id": "overlap",
+      "poly": [
+       "A",
+       "B",
+       "C"
+      ],
+      "ink": "gold",
+      "w": 5,
+      "fill": "none"
+     },
+     {
+      "id": "len4",
+      "label": "4",
+      "at": "base",
+      "dir": "n",
+      "size": "l",
+      "halo": true,
+      "ink": "gold",
+      "group": "lengths",
+      "far": 0.15
+     },
+     {
+      "id": "len8",
+      "label": "8",
+      "at": "basep",
+      "dir": "s",
+      "size": "l",
+      "halo": true,
+      "ink": "gold",
+      "group": "lengths",
+      "far": 0.15
+     },
+     {
+      "id": "len3",
+      "label": "3",
+      "at": "leg",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "ink": "gold",
+      "group": "lengths"
+     },
+     {
+      "id": "len6",
+      "label": "6",
+      "at": "legp",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "ink": "gold",
+      "group": "lengths"
+     },
+     {
+      "id": "len5",
+      "label": "5",
+      "at": "hyp",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "ink": "gold",
+      "group": "lengths"
+     },
+     {
+      "id": "len10",
+      "label": "10",
+      "at": "hypp",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "ink": "gold",
+      "group": "lengths"
+     },
+     {
+      "id": "left2",
+      "label": "2",
+      "at": "across",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "ink": "gold"
+     },
+     {
+      "id": "up3",
+      "label": "3",
+      "at": "up",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "ink": "gold"
+     },
+     {
+      "id": "left4",
+      "label": "4",
+      "at": "acrossp",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "ink": "gold"
+     },
+     {
+      "id": "up6",
+      "label": "6",
+      "at": "upp",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "ink": "gold"
+     },
+     {
+      "id": "sleft3",
+      "label": "3",
+      "at": "sAcross",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "ink": "gold"
+     },
+     {
+      "id": "sup2",
+      "label": "2",
+      "at": "sUp",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "ink": "gold"
+     },
+     {
+      "id": "sleft6",
+      "label": "6",
+      "at": "sAcrossp",
+      "dir": "n",
+      "size": "l",
+      "halo": true,
+      "ink": "gold",
+      "far": 0.4
+     },
+     {
+      "id": "sup4",
+      "label": "4",
+      "at": "sUpp",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "ink": "gold"
+     },
+     {
+      "id": "coordC",
+      "label": "C(-2,3)",
+      "at": "C",
+      "dir": "nw",
+      "size": "l",
+      "ink": "blue",
+      "far": 0.15
+     },
+     {
+      "id": "coordCp",
+      "label": "C'(-4,6)",
+      "at": "Cp",
+      "dir": "ne",
+      "size": "l",
+      "ink": "accent",
+      "far": 0.15
+     },
+     {
+      "id": "sNameC",
+      "label": "C",
+      "at": "C",
+      "dir": "ne",
+      "far": 0.3,
+      "ink": "blue",
+      "size": "l",
+      "halo": true,
+      "flies": false
+     },
+     {
+      "id": "sNameCp",
+      "label": "C'",
+      "at": "Cp",
+      "dir": "ne",
+      "far": 0.3,
+      "ink": "accent",
+      "size": "l",
+      "halo": true,
+      "flies": true
+     },
+     {
+      "id": "sOriginName",
+      "label": "O",
+      "at": "O",
+      "dir": "se",
+      "far": 0.3,
+      "ink": "gold",
+      "size": "l",
+      "halo": true,
+      "flies": false
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Any point *P* and its image, *P* prime, share a ray; the distance multiplies by *k*.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Any"
+      },
+      {
+       "do": "header",
+       "text": "Dilations",
+       "at": "Any"
+      },
+      {
+       "do": "text",
+       "text": "Same ray: $OP'=k\\cdot OP$",
+       "at": "point"
+      },
+      {
+       "do": "draw",
+       "target": "oc",
+       "dur": 0.22,
+       "at": "ray"
+      },
+      {
+       "do": "draw",
+       "target": "ocp",
+       "dur": 0.22,
+       "at": "distance"
+      },
+      {
+       "do": "hide",
+       "target": "oc",
+       "at": "distance"
+      },
+      {
+       "do": "show",
+       "target": "nameCp",
+       "at": "image"
+      },
+      {
+       "do": "highlight",
+       "target": "track",
+       "at": "multiplies"
+      },
+      {
+       "do": "hide",
+       "target": "ocp",
+       "at": "k"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "At the origin, multiply both coordinates.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "text",
+       "text": "Origin: $(x,y)\\to(kx,ky)$",
+       "at": "origin"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "nameC",
+        "nameCp"
+       ],
+       "at": "origin"
+      },
+      {
+       "do": "show",
+       "target": [
+        "coordC",
+        "coordCp"
+       ],
+       "at": "origin"
+      },
+      {
+       "do": "highlight",
+       "target": "track",
+       "at": "coordinates"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A factor of two enlarges; one half shrinks; one leaves the figure unchanged.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "text",
+       "text": "$k=2$: grow; $k=\\frac12$: shrink; $k=1$: stay",
+       "at": "two"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "coordC",
+        "coordCp"
+       ],
+       "at": "A"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "nameA",
+        "nameB",
+        "nameC"
+       ],
+       "at": "A",
+       "dur": 0.12
+      },
+      {
+       "do": "show",
+       "target": "corners",
+       "at": "A"
+      },
+      {
+       "do": "move",
+       "points": {
+        "Ap": [
+         -2,
+         0
+        ],
+        "Bp": [
+         2,
+         0
+        ],
+        "Cp": [
+         -2,
+         3
+        ],
+        "K": [
+         1,
+         0
+        ]
+       },
+       "dur": 0.6,
+       "at": "A"
+      },
+      {
+       "do": "move",
+       "points": {
+        "Ap": [
+         -4,
+         0
+        ],
+        "Bp": [
+         4,
+         0
+        ],
+        "Cp": [
+         -4,
+         6
+        ],
+        "K": [
+         2,
+         0
+        ]
+       },
+       "dur": 0.8,
+       "at": "two"
+      },
+      {
+       "do": "move",
+       "points": {
+        "Ap": [
+         -1,
+         0
+        ],
+        "Bp": [
+         1,
+         0
+        ],
+        "Cp": [
+         -1,
+         1.5
+        ],
+        "K": [
+         0.5,
+         0
+        ]
+       },
+       "dur": 0.7,
+       "at": "half"
+      },
+      {
+       "do": "move",
+       "points": {
+        "Ap": [
+         -2,
+         0
+        ],
+        "Bp": [
+         2,
+         0
+        ],
+        "Cp": [
+         -2,
+         3
+        ],
+        "K": [
+         1,
+         0
+        ]
+       },
+       "dur": 0.9,
+       "at": "one",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": "overlap",
+       "at": "unchanged"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The lengths scale by *k* while the angles stay unchanged.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "text",
+       "text": "Similar: lengths $\\times k$; angles unchanged",
+       "at": "lengths"
+      },
+      {
+       "do": "hide",
+       "target": "overlap",
+       "at": "The"
+      },
+      {
+       "do": "move",
+       "points": {
+        "Ap": [
+         -4,
+         0
+        ],
+        "Bp": [
+         4,
+         0
+        ],
+        "Cp": [
+         -4,
+         6
+        ],
+        "K": [
+         2,
+         0
+        ]
+       },
+       "dur": 1.6,
+       "at": "lengths"
+      },
+      {
+       "do": "draw",
+       "target": "basep",
+       "dur": 0.22,
+       "at": "lengths"
+      },
+      {
+       "do": "hide",
+       "target": "basep",
+       "at": "angles"
+      },
+      {
+       "do": "highlight",
+       "target": "cornercp",
+       "at": "angles"
+      },
+      {
+       "do": "show",
+       "target": [
+        "nameA",
+        "nameB",
+        "nameC"
+       ],
+       "at": "angles"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "From the center, multiply every distance by the same factor. The shape stays the same.",
+     "pause": 1.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "origin",
+       "at": "center"
+      },
+      {
+       "do": "show",
+       "target": "nameCp",
+       "at": "shape"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
