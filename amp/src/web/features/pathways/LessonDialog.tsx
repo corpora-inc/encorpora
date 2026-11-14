@@ -1,13 +1,16 @@
 import { lazy, Suspense, type ReactNode } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { lessonFilms } from "../../../content/lesson-films";
-import { skillCatalogOptions } from "../../lib/learning-view";
+import type { LessonIndex } from "../../../content/lesson-index-build";
 import { Dialog } from "../../ui/Dialog";
 import { FilmLink } from "../films/FilmLink";
 import { LessonWait } from "./LessonWait";
 import { LessonBoundary } from "./LessonRecovery";
-import { pathwaysLessonOptions } from "./lesson-query";
+import index from "./lesson-index.json";
 import styles from "./LessonDialog.module.css";
+/** Every problem type's title and skill, built from the engine
+ * (`npm run build:lesson-index`): in this layer's own chunk, so a cold link
+ * knows its title before any request. */
+const lessonIndex = index as unknown as LessonIndex;
 const SkillLesson = lazy(() => import("./SkillLesson"));
 
 /** A problem type's id, as `?lesson=` carries it. */
@@ -21,17 +24,19 @@ export const lessonParam = (raw: unknown) =>
  * is that screen's with `?lesson=`, so a link, a refresh or Back opens it
  * again, and closing returns to that screen (lib/return-to.ts).
  *
- * Its head comes first and at once: the problem type's title, then one row
- * of what to do with it (the page's Try, then its film), the lesson under.
+ * Everything is in its final place on the first frame: the problem type's
+ * title (this chunk's index), then one row of what to do with it (the page's
+ * Try, then its film, from the film catalogue), then the lesson, or its wait
+ * where the lesson will be.
  */
-export function LessonDialog({
+export default function LessonDialog({
   lesson,
   onClose,
   onCloseAutoFocus,
   backLabel,
   aboveLayers = false,
   back,
-  children,
+  actions,
 }: {
   lesson: string | null;
   onClose: () => void;
@@ -42,8 +47,9 @@ export function LessonDialog({
   aboveLayers?: boolean;
   /** The layer under this one, where X returns. */
   back?: string;
-  /** The page's action with this problem type (try it), first in the row. */
-  children?: ReactNode;
+  /** The page's action with this problem type (try it), first in the row,
+   * given the type's skill. */
+  actions?: (skill: string | undefined) => ReactNode;
 }) {
   return (
     <Dialog
@@ -61,7 +67,7 @@ export function LessonDialog({
     >
       {lesson && (
         <div className={styles.lesson}>
-          <LessonHead lesson={lesson}>{children}</LessonHead>
+          <LessonHead lesson={lesson} actions={actions} />
           <div className={styles.body}>
             <LessonBoundary key={lesson} onBack={onClose} backLabel={backLabel}>
               <Suspense fallback={<LessonWait />}>
@@ -79,33 +85,25 @@ export function LessonDialog({
   );
 }
 
-/** The problem type's title and its one row of actions, drawn whole or not
- * at all. The title comes from the catalog (almost always already here) or
- * the lesson's own request, whichever lands first; until then nothing is
- * drawn, so a title that wraps never pushes a control that was already
- * there. The film is known from the bundled catalogue, and the page holds its
- * own action's place until it knows it (PathwaysScreen). */
+/** The problem type's title and its one row of actions, known at once. */
 function LessonHead({
   lesson,
-  children,
+  actions,
 }: {
   lesson: string;
-  children?: ReactNode;
+  actions?: (skill: string | undefined) => ReactNode;
 }) {
-  const catalog = useQuery(skillCatalogOptions);
-  const known = catalog.data?.templates.find((t) => t.id === lesson)?.title;
-  // The lesson's own title when it lands first (a cold link), or the
-  // catalog has none: the same request as the lesson under it.
-  const loaded = useQuery(pathwaysLessonOptions(lesson));
-  const title = known ?? loaded.data?.lesson.title;
+  const [title, skill] = lessonIndex[lesson] ?? [];
+  const action = actions?.(skill);
   const film = lessonFilms[lesson];
+  // A problem type this build doesn't know: its lesson says why under it.
   if (!title) return null;
   return (
     <div className={styles.head}>
       <h2 className={styles.title}>{title}</h2>
-      {(children || film) && (
+      {(action || film) && (
         <div className={styles.actions}>
-          {children}
+          {action}
           {film && <FilmLink templateId={lesson} film={film} button />}
         </div>
       )}

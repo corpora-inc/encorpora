@@ -457,36 +457,51 @@ for (const width of widths)
     );
     await cold.close();
 
-    // A cold link to a lesson whose title wraps, its catalog and lesson both
-    // slow: the head is drawn whole once its title is known, so Watch is
-    // where it first appears (Astra, CP-6 round 2).
-    const wrapping = await context.newPage();
-    await fixture(wrapping, { holdCatalog: 1500, holdLessons: 1500 });
-    await wrapping.goto(`${origin}/pathways?open=lesson:${longTitle.id}`);
-    const longDialog = wrapping.getByRole("dialog", {
-      name: "Explore a problem type",
-    });
-    const longWatch = longDialog.getByRole("link", { name: /^Watch lesson/ });
-    await longWatch.waitFor();
-    const first = (await longWatch.boundingBox())!;
-    const longHeading = longDialog.getByRole("heading", {
-      name: longTitle.title,
-      exact: true,
-    });
-    assert(
-      (await longHeading.boundingBox())!.height > 40 || width >= 1280,
-      `${tag}: the title wraps`,
-    );
-    await longDialog.locator(".problem-lesson").waitFor();
-    await longDialog
-      .getByRole("link", { name: "Try this problem type", exact: true })
-      .waitFor();
-    assert.deepEqual(
-      await longWatch.boundingBox(),
-      first,
-      `${tag}: Watch never moves under a wrapping title`,
-    );
-    await wrapping.close();
+    // A cold link to a lesson whose title wraps (Astra, CP-6 rounds 2 and
+    // 3): the catalog arrives first, the lesson later. The head, the body
+    // and the wait are in their final places from the first frame.
+    for (const type of [longTitle, templates.find((t) => t.id === filmed)!]) {
+      const wrapping = await context.newPage();
+      await fixture(wrapping, { holdCatalog: 1200, holdLessons: 3000 });
+      await wrapping.goto(`${origin}/pathways?open=lesson:${type.id}`);
+      const longDialog = wrapping.getByRole("dialog", {
+        name: "Explore a problem type",
+      });
+      const parts = async () => {
+        const at = async (selector: string) => {
+          const el = longDialog.locator(selector).first();
+          return (await el.count()) ? el.boundingBox() : null;
+        };
+        return {
+          title: await at("h2:not([id])"),
+          watch: await at("[data-film-link]"),
+          wait: await at("[data-layer-wait]"),
+        };
+      };
+      await longDialog.waitFor();
+      const first = await parts();
+      assert(
+        first.title && first.watch && first.wait,
+        `${tag}: all there at once`,
+      );
+      if (type === longTitle && width < 1280)
+        assert(first.title.height > 40, `${tag}: the title wraps`);
+      // The catalog is in; the lesson is still on its way.
+      await wrapping.waitForTimeout(1600);
+      assert.deepEqual(
+        await parts(),
+        first,
+        `${tag}: nothing moves (${type.id})`,
+      );
+      await longDialog.locator(".problem-lesson").waitFor();
+      const done = await parts();
+      assert.deepEqual(
+        { title: done.title, watch: done.watch },
+        { title: first.title, watch: first.watch },
+        `${tag}: the head holds when the lesson lands (${type.id})`,
+      );
+      await wrapping.close();
+    }
 
     // A film shared by several problem types: one card, a glyph on each row.
     const shared = await context.newPage();
