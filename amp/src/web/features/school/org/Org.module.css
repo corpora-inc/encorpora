@@ -1073,6 +1073,9 @@ button.danger:disabled {
    there is room. */
 .dose {
   display: grid;
+  /* One shrinkable column: a chart measured at a wider width (a rotated
+     tablet, a narrowed window) never holds the page open sideways. */
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-7);
   min-width: 0;
 }
@@ -1084,6 +1087,7 @@ button.danger:disabled {
 }
 .doseFigure {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   align-content: start;
   min-width: 0;
   margin: 0;
