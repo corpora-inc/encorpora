@@ -48,6 +48,9 @@ export const pilotOptions = (session: AuthSession, classId: string) =>
     queryKey: keyFor(session, "class", classId, "pilot"),
     queryFn: ({ signal }) =>
       call(`/classes/${classId}/pilot`, pilotStateSchema, session, { signal }),
+    // A failed read is asked again by Try again or a change, never by each
+    // screen that mounts: a wait that holds a screen would ask forever.
+    retryOnMount: false,
   });
 export async function preloadClassPilot(
   session: AuthSession,

@@ -63,9 +63,13 @@ export function useClassAccess(place: Place): {
   // teacher, or an administrator. A viewer or an aide would only be
   // refused, and a refused read would hold the screen's wait forever.
   const readable = teaches || (org?.can?.includes("pilot.read") ?? false);
+  // A failed read stays failed until Try again (or a change invalidates
+  // it): each screen that mounts must not ask again, or a wait that holds
+  // the screen would ask forever.
   const query = useQuery({
     ...pilotOptions(session, place.class),
     enabled: school && readable,
+    retryOnMount: false,
   });
   // Whether students can practice, for every reader of the class (a viewer
   // and an aide too): the sign-in tools follow the class, never the role.
@@ -73,6 +77,7 @@ export function useClassAccess(place: Place): {
     ...classYearOptions(session, place.class),
     enabled: school,
     refetchOnMount: false,
+    retryOnMount: false,
   });
   const retry = () => {
     void year.refetch();

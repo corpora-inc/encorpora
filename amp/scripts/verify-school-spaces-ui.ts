@@ -322,25 +322,68 @@ async function placeName(page: Page) {
 }
 
 try {
-  /** Every student of a class and what they have: the same people, the same
-   * learners, the same enrollments and their work, compared across expiry
-   * and payment (CP-1 H6): never re-imported, never replaced. */
+  /** Every student of a class and what they have, by the records
+   * themselves (CP-3 r2 M4): the same people, learners and enrollments; each
+   * answer by its id; each skill's evidence; the active time; each workbook
+   * by id and contents; and each final grade by term. Compared across expiry
+   * and payment: never re-imported, never replaced, never changed. */
   async function records(classId: string) {
     const { rows } = await db.query(
       `SELECT p.id AS person,p.learner_id AS learner,e.id AS enrollment,
-       (SELECT count(*)::int FROM amp_attempts a WHERE a.learner_id=p.learner_id) AS attempts,
-       (SELECT count(*)::int FROM amp_workbooks w WHERE w.learner_id=p.learner_id) AS workbooks
+       ARRAY(SELECT a.id FROM amp_attempts a WHERE a.learner_id=p.learner_id ORDER BY a.id) AS attempts,
+       ARRAY(SELECT s.skill_id||':'||md5(s.state::text) FROM amp_skill_evidence s
+             WHERE s.learner_id=p.learner_id ORDER BY s.skill_id) AS evidence,
+       (SELECT COALESCE(sum(d.active_ms),0)::bigint FROM amp_active_days d WHERE d.learner_id=p.learner_id) AS "activeMs",
+       ARRAY(SELECT w.id||':'||md5(w.spec::text) FROM amp_workbooks w
+             WHERE w.learner_id=p.learner_id ORDER BY w.id) AS workbooks,
+       ARRAY(SELECT g.session_id||':'||g.final_value FROM amp_term_grades g
+             WHERE g.person_id=p.id AND g.class_id=e.class_id AND g.final_value IS NOT NULL
+             ORDER BY g.session_id) AS grades
      FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
      WHERE e.class_id=$1 AND e.role='student' ORDER BY p.id`,
       [classId],
     );
-    return rows as {
+    return rows.map((row) => ({ ...row, activeMs: Number(row.activeMs) })) as {
       person: string;
       learner: string;
       enrollment: string;
-      attempts: number;
-      workbooks: number;
+      attempts: string[];
+      evidence: string[];
+      activeMs: number;
+      workbooks: string[];
+      grades: string[];
     }[];
+  }
+  type Records = Awaited<ReturnType<typeof records>>;
+  /** `later` keeps every record of `before`: the same identities, every
+   * answer (new ones may join), the same workbooks and grades, no less time. */
+  function kept(before: Records, later: Records, when: string) {
+    assert.deepEqual(
+      later.map(({ person, learner, enrollment }) => ({
+        person,
+        learner,
+        enrollment,
+      })),
+      before.map(({ person, learner, enrollment }) => ({
+        person,
+        learner,
+        enrollment,
+      })),
+      `${when}: the same students, learners and enrollments`,
+    );
+    for (const [index, row] of later.entries()) {
+      const was = before[index]!;
+      for (const id of was.attempts)
+        assert.ok(row.attempts.includes(id), `${when}: answer ${id} kept`);
+      assert.deepEqual(row.workbooks, was.workbooks, `${when}: workbooks kept`);
+      assert.deepEqual(row.grades, was.grades, `${when}: grades kept`);
+      assert.ok(row.activeMs >= was.activeMs, `${when}: active time kept`);
+      for (const skill of was.evidence.map((entry) => entry.split(":")[0]))
+        assert.ok(
+          row.evidence.some((entry) => entry.startsWith(`${skill}:`)),
+          `${when}: evidence for ${skill} kept`,
+        );
+    }
   }
 
   /** A staff member of a school, signed in on a device of their own. */
@@ -692,6 +735,67 @@ try {
   assert.equal(graded.status(), 200, "a final grade is entered");
   const before = await records(created.class_id);
   assert.equal(before.length, 4);
+  const anaBefore = before.find((row) => row.person === ana)!;
+  assert.ok(anaBefore.attempts.length > 0, "answers recorded");
+  assert.ok(anaBefore.evidence.length > 0, "skill evidence recorded");
+  assert.equal(anaBefore.workbooks.length, 1, "the issued workbook");
+  assert.equal(
+    anaBefore.grades.length,
+    1,
+    "the final grade, bound to the student, the class and the term",
+  );
+  assert.ok(anaBefore.grades[0]!.endsWith(":B+"));
+
+  // A second class, not started, where one student is already covered (by
+  // the first class's practice): the server says its students can practice,
+  // and the screens say so too: its code and board, no "hasn't started"
+  // (CP-3 r2 H2). Starting a pilot is never a prerequisite for a student
+  // who already has access.
+  // Her second class, as a teacher adds one (the school's agreement covers
+  // it), with a student of its own whom nothing covers yet.
+  const second = await teacher.request.post(`${origin}/api/v1/school/start`, {
+    headers: { Origin: origin },
+    data: {
+      requestId: randomUUID(),
+      schoolName: "Birchwood Elementary",
+      orgId: created.org_id,
+      className: "Math support",
+      timezone: "UTC",
+      signerName: "Rosa Lindqvist",
+      signerTitle: "Teacher",
+      agreementVersion: AGREEMENT_VERSION,
+      authorized: true,
+      names: ["Zed Imani"],
+      courseBands: ["4"],
+    },
+  });
+  assert.ok(second.ok(), `the second class: ${second.status()}`);
+  const support = {
+    id: ((await second.json()) as { classId: string }).classId,
+  };
+  // And Ana, whom the first class's practice covers.
+  await schools.transaction(async (client) => {
+    const today = new Date().toISOString().slice(0, 10);
+    await schools.enroll(client, support.id, ana, "student", today);
+  });
+  const supportCode = (
+    await db.query("SELECT join_code FROM amp_classes WHERE id=$1", [
+      support.id,
+    ])
+  ).rows[0].join_code as string;
+  const supportUrl = `${origin}/school/${created.org_id}/classes/${support.id}`;
+  await teacher.goto(`${supportUrl}/start`);
+  await teacher.getByText(/^[0-2] of 2 here$/).waitFor();
+  assert.equal(
+    await count(teacher, "Practice hasn’t started"),
+    0,
+    "an open class's board is open",
+  );
+  await capture(teacher, "partial-ready-board");
+  await teacher.goto(`${supportUrl}/today`);
+  await teacher
+    .getByText(`${supportCode.slice(0, 3)}-${supportCode.slice(3)}`)
+    .waitFor();
   // The records: the map, grades, report cards, time, workbooks.
   for (const leaf of [
     "map",
@@ -791,6 +895,43 @@ try {
       .waitFor();
   }
   await capture(teacher, "board-expired");
+  // Where practice stands can't be checked: a calm Try again, never a dead
+  // closed screen (CP-3 r2 M1). An answer without the state…
+  const yearRoute = `**/api/v1/school/classes/${created.class_id}/year`;
+  await teacher.route(yearRoute, async (route) => {
+    const response = await route.fetch();
+    const body = (await response.json()) as Record<string, unknown>;
+    delete body.practice;
+    await route.fulfill({ response, json: body });
+  });
+  await teacher.goto(`${classUrl}/start`);
+  await teacher
+    .getByRole("heading", { name: "Couldn’t check practice" })
+    .waitFor();
+  await teacher.getByRole("link", { name: "Exit" }).waitFor();
+  await noCode("the board that couldn't check");
+  await capture(teacher, "board-unknown");
+  await teacher.unroute(yearRoute);
+  await teacher.getByRole("button", { name: "Try again" }).click();
+  await teacher.getByRole("heading", { name: "Practice has ended" }).waitFor();
+  // …and a failed pilot read.
+  const pilotRoute = `**/api/v1/school/classes/${created.class_id}/pilot`;
+  await teacher.route(pilotRoute, (route) =>
+    route.fulfill({
+      status: 503,
+      json: { error: "school_service_unavailable" },
+    }),
+  );
+  await teacher.goto(`${classUrl}/today`);
+  const unknown = teacher.locator('[data-feed="practice-unknown"]');
+  await unknown
+    .getByRole("heading", { name: "Couldn’t check practice" })
+    .waitFor({ timeout: 45_000 });
+  await capture(teacher, "today-unknown");
+  await teacher.unroute(pilotRoute);
+  await unknown.getByRole("button", { name: "Try again" }).click();
+  await unknown.waitFor({ state: "detached" });
+  await teacher.getByRole("heading", { name: "Practice has ended" }).waitFor();
   await closedFor(pilotViewer, "viewer after practice", true);
   await closedFor(pilotAide, "aide after practice", true);
   await capture(pilotViewer, "viewer-board-expired");
@@ -799,28 +940,55 @@ try {
     `${classApi}/students/${ana}/workbooks/${workbook}/pdf`,
   );
   assert.equal(pdf.status(), 200, "an issued workbook prints after practice");
-  const marked = await teacher.request.post(
-    `${classApi}/students/${ana}/workbooks/${workbook}/marks`,
-    {
-      headers: { Origin: origin },
-      data: { entries: [{ n: 1, mark: "right" }] },
-    },
-  );
-  assert.equal(marked.status(), 200, "paper results go in after practice");
-  assert.deepEqual(
-    (await records(created.class_id)).map(
-      ({ person, learner, enrollment }) => ({
-        person,
-        learner,
-        enrollment,
-      }),
-    ),
-    before.map(({ person, learner, enrollment }) => ({
-      person,
-      learner,
-      enrollment,
-    })),
-    "the same students, learners and enrollments after practice",
+  const mark = async (entries: { n: number; mark: "right" | "not-yet" }[]) => {
+    const response = await teacher.request.post(
+      `${classApi}/students/${ana}/workbooks/${workbook}/marks`,
+      { headers: { Origin: origin }, data: { entries } },
+    );
+    assert.equal(response.status(), 200, "paper results go in after practice");
+    return (await response.json()) as {
+      recorded: number;
+      problems: { n: number; mark: string | null }[];
+    };
+  };
+  const first = await mark([{ n: 1, mark: "right" }]);
+  assert.equal(first.recorded, 1);
+  // A recorded mark is evidence: it stays as it was (immutable), and the
+  // next problem's goes in beside it.
+  const again = await mark([
+    { n: 1, mark: "not-yet" },
+    { n: 2, mark: "not-yet" },
+  ]);
+  assert.equal(again.recorded, 1, "only the new problem's mark is recorded");
+  const markOf = (problems: { n: number; mark: string | null }[], n: number) =>
+    problems.find((problem) => problem.n === n)?.mark;
+  assert.equal(markOf(again.problems, 1), "right");
+  assert.equal(markOf(again.problems, 2), "not-yet");
+  // The student can't practice: the server refuses new problems (402).
+  const denied = await student.evaluate(async (learner) => {
+    const saved = JSON.parse(
+      sessionStorage.getItem("amp.student") ??
+        localStorage.getItem("amp.student") ??
+        "null",
+    ) as { token: string } | null;
+    const response = await fetch(`/api/v1/learners/${learner}/batches`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${saved?.token ?? ""}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ count: 1 }),
+    });
+    return response.status;
+  }, anaLearner);
+  assert.equal(denied, 402, "no new problems after practice ends");
+  const expired = await records(created.class_id);
+  kept(before, expired, "after practice");
+  const anaExpired = expired.find((row) => row.person === ana)!;
+  assert.equal(
+    anaExpired.attempts.length,
+    anaBefore.attempts.length + 2,
+    "the two paper marks are answers of the student's own",
   );
   // Exports answer after practice ends (docs/schools.md, "When a school
   // pays"): the gradebook's CSV and the time CSV.
@@ -883,6 +1051,7 @@ try {
     .getByRole("heading", { name: "2 of 4 students have practice access" })
     .waitFor();
   await capture(teacher, "today-partial");
+  kept(expired, await records(created.class_id), "after partial payment");
   // Then the whole class.
   const license = (
     await db.query(
@@ -918,24 +1087,24 @@ try {
   await student.getByRole("button", { name: "Check", exact: true }).waitFor();
   // Every student, learner, enrollment and record is the same one: paid
   // coverage lands on the pilot's records, with nothing re-imported.
-  const after = await records(created.class_id);
+  const paid = await records(created.class_id);
+  kept(expired, paid, "after payment");
   assert.deepEqual(
-    after.map(({ person, learner, enrollment }) => ({
-      person,
-      learner,
-      enrollment,
-    })),
-    before.map(({ person, learner, enrollment }) => ({
-      person,
-      learner,
-      enrollment,
-    })),
-    "the same students after payment",
+    paid.map((row) => row.attempts),
+    expired.map((row) => row.attempts),
+    "payment changes no answer",
   );
-  for (const [index, row] of after.entries()) {
-    assert.ok(row.attempts >= before[index]!.attempts, "answers kept");
-    assert.equal(row.workbooks, before[index]!.workbooks, "workbooks kept");
-  }
+  // The paper marks read back after payment, as entered.
+  const marksAfter = (await (
+    await teacher.request.get(
+      `${classApi}/workbooks/marks?date=${stack.today}&set=1`,
+    )
+  ).json()) as unknown;
+  const marksText = JSON.stringify(marksAfter);
+  assert.ok(
+    marksText.includes('"right"') && marksText.includes('"not-yet"'),
+    "the paper marks read back after payment",
+  );
   assert.equal(
     (
       await db.query(
@@ -943,11 +1112,21 @@ try {
         [created.org_id],
       )
     ).rows[0].n,
-    4,
-    "no student was imported twice",
+    5,
+    "no student was imported twice (four, and Math support's Zed)",
   );
-  const grade = await teacher.request.get(`${classApi}/gradebook`);
-  assert.ok((await grade.text()).includes("B+"), "the final grade is kept");
+  const grade = (await (
+    await teacher.request.get(`${classApi}/gradebook`)
+  ).json()) as {
+    term: { id: string } | null;
+    students: { id: string; final: string | null }[];
+  };
+  assert.equal(grade.term?.id, termRead.term!.id, "the same term");
+  assert.equal(
+    grade.students.find((row) => row.id === ana)?.final,
+    "B+",
+    "Ana's final grade in that term, kept",
+  );
 
   // ── 2. Roles at a licensed school ──────────────────────────────────────
   const lakeside = await schools.createOrg(
@@ -1048,6 +1227,18 @@ try {
     "an admin is never offered the teacher's Start practice",
   );
   await capture(principal.page, "admin-class");
+  // A licensed school's empty class is open (the server says so): its
+  // board has the code, waiting for students (CP-3 r2 H2).
+  const eight = await schools.createClass(lakeside.id, {
+    name: "Grade 8 Math",
+  });
+  await principal.page.goto(`${school}/classes/${eight.id}/start`);
+  await principal.page.getByText("0 of 0 here").waitFor();
+  assert.equal(
+    await count(principal.page, "Add your students first"),
+    0,
+    "a licensed class's board is open",
+  );
   const adminDrawer = await drawer(principal.page);
   assert.match(adminDrawer, /School/);
   assert.equal(
@@ -1134,9 +1325,18 @@ try {
   const invited = await device();
   await signUp(invited, "nora@lakeside.example.test", "Nora Quinn");
   await invited.goto(`${origin}/start/school`);
-  await invited.evaluate(() =>
-    localStorage.setItem("amp.school-invite", "A".repeat(43)),
-  );
+  // As a sign-in carries it (lib/link-carry.ts): the fragment and how
+  // long it is held.
+  const carry = (fragment: string) =>
+    invited.evaluate(
+      (value) =>
+        localStorage.setItem(
+          "amp.school-invite",
+          JSON.stringify({ value, until: Date.now() + 3_600_000 }),
+        ),
+      fragment,
+    );
+  await carry("A".repeat(43));
   await invited.reload();
   await invited.locator("[data-school-next=none]").waitFor();
   await invited.waitForFunction(
@@ -1161,12 +1361,33 @@ try {
   const people = Array.isArray(listed) ? listed : (listed.staff ?? []);
   const link = people.find((person) => person.inviteUrl)?.inviteUrl;
   assert.ok(link, "the invitation's link");
-  await invited.evaluate(
-    (fragment) => localStorage.setItem("amp.school-invite", fragment),
-    new URL(link).hash.slice(1),
-  );
+  await carry(new URL(link).hash.slice(1));
   await invited.reload();
   await invited.locator("[data-school-next=invited]").waitFor();
+  await invited
+    .getByRole("link", { name: "Join Lakeside Middle", exact: true })
+    .waitFor();
+  // A failed lookup (the service, not a refusal) keeps the invitation, with
+  // the account's own step and a way to try again (CP-3 r2 M2).
+  const lookup = "**/api/v1/school/invites/lookup";
+  await invited.route(lookup, (route) =>
+    route.fulfill({
+      status: 503,
+      json: { error: "school_service_unavailable" },
+    }),
+  );
+  await invited.reload();
+  await invited.locator("[data-school-next=none]").waitFor();
+  await invited.locator("[data-invite-retry]").waitFor();
+  assert.ok(
+    await invited.evaluate(() => !!localStorage.getItem("amp.school-invite")),
+    "the invitation is kept through a failed lookup",
+  );
+  await invited.unroute(lookup);
+  await invited
+    .locator("[data-invite-retry]")
+    .getByRole("button", { name: "Try again" })
+    .click();
   await invited
     .getByRole("link", { name: "Join Lakeside Middle", exact: true })
     .waitFor();
