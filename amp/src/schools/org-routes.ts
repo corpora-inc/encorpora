@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { actorPerson, can, rosterScope } from "./authz.js";
 import { activityPeople, readActivity } from "./activity.js";
-import { SchoolError } from "./contracts.js";
+import { SchoolError, schoolActions } from "./contracts.js";
 import { recordEvent } from "./events.js";
 import { fileSlug } from "./exports.js";
 import {
@@ -121,9 +121,25 @@ export function defineOrgRoutes(define: typeof defineSchoolRoute) {
     action: "classes.read",
     target: ({ params }) =>
       ({ kind: "class", classId: params.class! }) as const,
-    handler: async ({ target, pool }) => ({
-      past: await classIsPast(pool, target.classId),
-    }),
+    // The class's year, and what binds it to a place: its org, the path
+    // above it, its name, and what this person may do in it (the same `can`
+    // as every route). The shell frames a class only under its own org
+    // (docs/architecture/spaces.md).
+    handler: async ({ actor, target, pool }) => {
+      const [past, named] = await Promise.all([
+        classIsPast(pool, target.classId),
+        pool.query("SELECT name FROM amp_classes WHERE id=$1", [
+          target.classId,
+        ]),
+      ]);
+      return {
+        past,
+        orgId: target.orgId,
+        path: target.path,
+        name: (named.rows[0]?.name as string | undefined) ?? null,
+        can: schoolActions.filter((action) => can(actor, action, target)),
+      };
+    },
   });
   define({
     method: "GET",

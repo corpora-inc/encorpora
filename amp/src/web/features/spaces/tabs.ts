@@ -127,10 +127,24 @@ export function learnerTabs(): TabItem[] {
 }
 
 /** An adult's own practice: practice, where they are, and their workbooks on
- * a phone; their map, inventory and practice profiles under More. Their own
- * learner's screens need that learner. */
-export function meTabs(ownLearner: string | null): TabItem[] {
-  // Their own learner, in the address of every shared learning screen.
+ * a phone; their map, inventory and practice profiles under More. Every
+ * learning tab names whose it is: their own learner, or the practice
+ * profile they are practicing as (which has its own levels, and no
+ * workbooks). */
+export function meTabs(
+  ownLearner: string | null,
+  profile: string | null = null,
+): TabItem[] {
+  if (profile) {
+    const as = { search: { profile } };
+    return [
+      { ...tab("practice", "Practice", "practice", true), ...as },
+      tab("levels", "Levels", `me/profiles/${profile}`, true),
+      { ...tab("pathways", "Pathways", "pathways", true), ...as },
+      { ...tab("inventory", "Inventory", "inventory"), ...as },
+      tab("profiles", "Profiles", "me/profiles"),
+    ];
+  }
   const own = ownLearner ? { search: { learner: ownLearner } } : {};
   return [
     ...(ownLearner

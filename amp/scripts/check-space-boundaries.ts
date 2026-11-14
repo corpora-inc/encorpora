@@ -4,23 +4,27 @@
  * space screen that composes them, so a family never reads "student" and a
  * class never reads "your children" because a widget guessed.
  *
- * Inside the shared modules below this fails on:
- *   - a branch on an org's kind or a space (`kind === "family"`, `isFamily`,
- *     `space === …`, a `family` flag prop);
- *   - reading the account's places (`familyClass`, `secondParentOf`,
- *     `staffOf`) or the shell's place heuristics (`teachingHere`);
- *   - importing the composition layers: the space resolver, the shell's
- *     navigation, onboarding's place logic, the second-parent API.
- * Words come in as props, typed by `SpaceWords` (features/spaces/words.ts),
- * the one import from features/spaces a shared module may make.
- *
- * Everything else (the space screens, the shell, route adapters) composes
- * and may branch; the server still decides every permission.
+ * Read from the TypeScript syntax tree (never line by line), a shared
+ * module fails when it:
+ *   - compares or switches on an org's kind or a space (`org.kind ===
+ *     "family"`, `org["kind"]`, `switch (org.kind) { case "school": … }`,
+ *     `space !== "me"`), however the expression is split across lines;
+ *   - takes or passes a `family` flag, or reads the account's places
+ *     (`familyClass`, `secondParentOf`, `staffOf`) or the shell's place
+ *     heuristics (`teachingHere`, `isFamily`);
+ *   - chooses its own words (`spaceWords(…)`) or space (`spaceOfPath(…)`);
+ *   - imports, re-exports or dynamically imports, directly or through any
+ *     module it imports, a composition layer: the space resolver and its
+ *     hooks, the shell's navigation, onboarding's place logic or the
+ *     second-parent API. `SpaceWords` may be imported as a type, so words
+ *     arrive as props.
+ * Each exception below is named with its reason; anything new fails.
  *
  *   npx tsx scripts/check-space-boundaries.ts
  */
-import { readdirSync, readFileSync, statSync } from "node:fs";
-import { join, relative } from "node:path";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
+import { dirname, join, relative, resolve } from "node:path";
+import ts from "typescript";
 
 const ROOT = new URL("../src/web/", import.meta.url).pathname;
 
@@ -44,37 +48,42 @@ export const SHARED = [
   /^features\/continue\/AllowancePause\.tsx$/,
 ];
 
-export const BRANCHES: [RegExp, string][] = [
-  [
-    // An org's kind; `network` is also a failure's kind, which is not one.
-    /(?<!(?:error|failure|problem)\.)\bkind\s*[!=]==?\s*["'](family|school|district)["']|["'](family|school|district)["']\s*[!=]==?\s*[\w.]*\bkind\b|\b(org|place|school|target)\w*\.kind\s*[!=]==?\s*["']network["']/,
-    "branches on an org's kind",
-  ],
-  [/\bspace\s*[!=]==?\s*["']/, "branches on a space"],
-  [/\bisFamily\b|\bfamilyOrg\b/, "branches on a family flag"],
-  [
-    /\bfamily\s*\??:\s*boolean|\bfamily=\{|\bfamily\s*[,)]\s*$/,
-    "takes a family flag",
-  ],
-  [
-    /\bfamilyClass\b|\bsecondParentOf\b|\bstaffOf\b/,
-    "reads the account's places",
-  ],
-  [/\bteachingHere\b/, "infers the place on screen"],
+/** Composition layers a shared module never reaches, by path from src/web. */
+export const FORBIDDEN = [
+  /^features\/spaces\/(?!words\.ts$)/,
+  /^features\/navigation\//,
+  /^features\/onboarding\/guard\.ts$/,
+  /^features\/second-parent\/api\.ts$/,
 ];
+/** `features/spaces/words.ts`: its type only. */
+const WORDS = "features/spaces/words.ts";
 
-export const IMPORTS: [RegExp, string][] = [
-  [
-    /features\/spaces\/(resolve|useSpace|places)|\.\.?\/(\.\.\/)*spaces\/(resolve|useSpace|places)/,
-    "the space resolver",
+/** Named exceptions: importer → the composition module it may import, why. */
+export const ALLOWED: Record<string, [string, string][]> = {
+  "ui/ScreenTitle.tsx": [
+    [
+      "features/navigation/shell-frame.ts",
+      "whether the open tab already names the screen: read from the address, no place, no space",
+    ],
   ],
-  [
-    /navigation\/(school-navigation|PlaceSwitcher|DrawerContents)/,
-    "the shell's navigation",
+  "ui/PageFrame.tsx": [
+    [
+      "features/navigation/NavigationDrawer.tsx",
+      "the frame of screens outside the app frame: a shell, which carries the drawer, not a widget",
+    ],
   ],
-  [/onboarding\/guard/, "onboarding's place logic"],
-  [/second-parent\/api/, "the second-parent API"],
-];
+};
+
+const KINDS = new Set(["family", "school", "district", "network"]);
+const PLACE_NAMES = new Set([
+  "familyClass",
+  "secondParentOf",
+  "staffOf",
+  "teachingHere",
+  "isFamily",
+  "familyOrg",
+]);
+const CHOOSERS = new Set(["spaceWords", "spaceOfPath", "resolveSpace"]);
 
 function files(dir: string): string[] {
   return readdirSync(dir).flatMap((name) => {
@@ -85,29 +94,210 @@ function files(dir: string): string[] {
   });
 }
 
-/** Every finding in one shared module's source. */
+const parse = (file: string, source: string) =>
+  ts.createSourceFile(
+    file,
+    source,
+    ts.ScriptTarget.Latest,
+    true,
+    file.endsWith(".tsx") ? ts.ScriptKind.TSX : ts.ScriptKind.TS,
+  );
+
+/** `kind` read from anything: `a.kind`, `a?.kind`, `a["kind"]`, `kind`. */
+function readsKind(node: ts.Node): string | null {
+  const expr = ts.isParenthesizedExpression(node) ? node.expression : node;
+  if (ts.isPropertyAccessExpression(expr) && expr.name.text === "kind")
+    return expr.expression.getText();
+  if (
+    ts.isElementAccessExpression(expr) &&
+    ts.isStringLiteralLike(expr.argumentExpression) &&
+    expr.argumentExpression.text === "kind"
+  )
+    return expr.expression.getText();
+  if (ts.isIdentifier(expr) && expr.text === "kind") return "";
+  return null;
+}
+const readsSpace = (node: ts.Node) =>
+  (ts.isIdentifier(node) && node.text === "space") ||
+  (ts.isPropertyAccessExpression(node) && node.name.text === "space");
+/** A failure's kind (`error.kind === "network"`) is not an org's. */
+const failure = (owner: string) => /error|failure|problem|result/i.test(owner);
+const literal = (node: ts.Node) =>
+  ts.isStringLiteralLike(node) ? node.text : null;
+
+/** Every branch on a space in one module's source. */
 export function findings(file: string, source: string): string[] {
   const found: string[] = [];
-  let comment = false;
-  source.split("\n").forEach((line, index) => {
-    const text = line.trim();
-    if (comment) {
-      if (text.includes("*/")) comment = false;
-      return;
+  const tree = parse(file, source);
+  const report = (node: ts.Node, why: string) => {
+    const { line } = tree.getLineAndCharacterOfPosition(node.getStart());
+    found.push(
+      `${file}:${line + 1}: ${why}: ${node.getText().split("\n")[0]!.trim()}`,
+    );
+  };
+  const compares = (side: ts.Node, other: ts.Node) => {
+    const value = literal(other);
+    if (value === null) return false;
+    const owner = readsKind(side);
+    if (owner !== null && KINDS.has(value) && !failure(owner)) return true;
+    return readsSpace(side);
+  };
+  const visit = (node: ts.Node) => {
+    if (
+      ts.isBinaryExpression(node) &&
+      [
+        ts.SyntaxKind.EqualsEqualsEqualsToken,
+        ts.SyntaxKind.ExclamationEqualsEqualsToken,
+        ts.SyntaxKind.EqualsEqualsToken,
+        ts.SyntaxKind.ExclamationEqualsToken,
+      ].includes(node.operatorToken.kind) &&
+      (compares(node.left, node.right) || compares(node.right, node.left))
+    )
+      report(node, "branches on an org's kind or a space");
+    if (ts.isSwitchStatement(node)) {
+      const owner = readsKind(node.expression);
+      const cases = node.caseBlock.clauses
+        .filter(ts.isCaseClause)
+        .map((clause) => literal(clause.expression));
+      if (
+        (owner !== null &&
+          !failure(owner) &&
+          cases.some((value) => value && KINDS.has(value))) ||
+        readsSpace(node.expression)
+      )
+        report(node.expression, "switches on an org's kind or a space");
     }
-    if (text.startsWith("/*") && !text.includes("*/")) {
-      comment = true;
-      return;
+    if (ts.isIdentifier(node) && PLACE_NAMES.has(node.text))
+      report(node, "reads the account's places or guesses the place");
+    if (
+      (ts.isParameter(node) ||
+        ts.isPropertySignature(node) ||
+        ts.isBindingElement(node)) &&
+      node.name &&
+      ts.isIdentifier(node.name) &&
+      node.name.text === "family"
+    )
+      report(node, "takes a family flag");
+    if (ts.isJsxAttribute(node) && node.name.getText() === "family")
+      report(node, "passes a family flag");
+    if (
+      ts.isCallExpression(node) &&
+      ts.isIdentifier(node.expression) &&
+      CHOOSERS.has(node.expression.text)
+    )
+      report(node, "chooses its own space or words");
+    ts.forEachChild(node, visit);
+  };
+  visit(tree);
+  return found;
+}
+
+/** What one module imports, re-exports or loads: specifier, and whether
+ * only types come from it. */
+function imports(file: string, source: string) {
+  const out: { specifier: string; typeOnly: boolean; node: string }[] = [];
+  const tree = parse(file, source);
+  const visit = (node: ts.Node) => {
+    if (
+      (ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) &&
+      node.moduleSpecifier &&
+      ts.isStringLiteralLike(node.moduleSpecifier)
+    ) {
+      let typeOnly = false;
+      if (ts.isImportDeclaration(node)) {
+        const clause = node.importClause;
+        typeOnly =
+          !!clause &&
+          (clause.isTypeOnly ||
+            (!clause.name &&
+              !!clause.namedBindings &&
+              ts.isNamedImports(clause.namedBindings) &&
+              clause.namedBindings.elements.length > 0 &&
+              clause.namedBindings.elements.every((item) => item.isTypeOnly)));
+      } else typeOnly = node.isTypeOnly;
+      out.push({
+        specifier: node.moduleSpecifier.text,
+        typeOnly,
+        node: node.getText().replace(/\s+/g, " "),
+      });
     }
-    if (/^(\/\/|\*|\/\*)/.test(text)) return;
-    const code = line.replace(/\/\/.*$/, "");
-    const rules = /^\s*(import|export)\b.*\bfrom\b|^\s*\}\s*from\b/.test(code)
-      ? IMPORTS
-      : BRANCHES;
-    for (const [pattern, why] of rules)
-      if (pattern.test(code))
-        found.push(`${file}:${index + 1}: ${why}: ${text}`);
-  });
+    if (
+      ts.isCallExpression(node) &&
+      (node.expression.kind === ts.SyntaxKind.ImportKeyword ||
+        (ts.isIdentifier(node.expression) &&
+          node.expression.text === "require")) &&
+      node.arguments[0] &&
+      ts.isStringLiteralLike(node.arguments[0])
+    )
+      out.push({
+        specifier: node.arguments[0].text,
+        typeOnly: false,
+        node: node.getText(),
+      });
+    ts.forEachChild(node, visit);
+  };
+  visit(tree);
+  return out;
+}
+
+/** A relative specifier as a module path from the root, or null. */
+function resolveModule(root: string, from: string, specifier: string) {
+  if (!specifier.startsWith(".")) return null;
+  const base = resolve(dirname(join(root, from)), specifier).replace(
+    /\.js$/,
+    "",
+  );
+  for (const candidate of [
+    base,
+    `${base}.ts`,
+    `${base}.tsx`,
+    join(base, "index.ts"),
+    join(base, "index.tsx"),
+  ])
+    if (existsSync(candidate) && statSync(candidate).isFile())
+      return relative(root, candidate);
+  return null;
+}
+
+type Reader = (path: string) => string;
+
+/** Every composition module a shared module reaches through its imports. */
+export function reaches(
+  file: string,
+  root = ROOT,
+  read: Reader = (path) => readFileSync(join(root, path), "utf8"),
+): string[] {
+  const found: string[] = [];
+  const seen = new Set<string>([file]);
+  const queue: [string, string[]][] = [[file, [file]]];
+  const allowed = (from: string, to: string) =>
+    (ALLOWED[from] ?? []).some(([target]) => target === to);
+  while (queue.length) {
+    const [current, chain] = queue.shift()!;
+    for (const entry of imports(current, read(current))) {
+      const target = resolveModule(root, current, entry.specifier);
+      if (!target) continue;
+      // A type has no runtime: only the words rule looks at one.
+      if (entry.typeOnly && target !== WORDS) continue;
+      if (target === WORDS) {
+        if (!entry.typeOnly)
+          found.push(
+            `${chain.join(" → ")}: takes words as a value (only the SpaceWords type): ${entry.node}`,
+          );
+        continue;
+      }
+      if (FORBIDDEN.some((pattern) => pattern.test(target))) {
+        if (!allowed(current, target))
+          found.push(
+            `${[...chain, target].join(" → ")}: reaches a composition layer: ${entry.node}`,
+          );
+        continue;
+      }
+      if (seen.has(target)) continue;
+      seen.add(target);
+      queue.push([target, [...chain, target]]);
+    }
+  }
   return found;
 }
 
@@ -119,8 +309,9 @@ export function check(root = ROOT) {
     if (!SHARED.some((pattern) => pattern.test(file))) continue;
     checked++;
     all.push(...findings(file, readFileSync(path, "utf8")));
+    all.push(...reaches(file, root));
   }
-  return { checked, found: all };
+  return { checked, found: [...new Set(all)] };
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

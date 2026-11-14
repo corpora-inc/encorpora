@@ -91,9 +91,8 @@ import {
 } from "../nav/entities";
 import {
   adoptPracticeMode,
+  carriedKeys,
   isLearningPath,
-  LEARNER_KEY,
-  MODE_KEYS,
 } from "../features/profiles/practice-mode";
 const searchSchema = z
   .object({
@@ -738,9 +737,9 @@ const inventory = createRoute({
   path: "/inventory",
   staticData: { space: "learner" },
   // A learning record belongs to an account: signed out, sign in first.
-  beforeLoad: async ({ location }) => {
+  beforeLoad: async ({ location, preload }) => {
     await framedScreen();
-    await adoptPracticeMode(location);
+    await adoptPracticeMode(location, preload);
     if (!queryClient.getQueryData(sessionOptions.queryKey))
       throw redirect({
         to: "/sign-in",
@@ -807,13 +806,13 @@ const pathways = createRoute({
   getParentRoute: () => root,
   path: "/pathways",
   staticData: { space: "learner" },
-  beforeLoad: async ({ location }) => {
+  beforeLoad: async ({ location, preload }) => {
     lessonAsLayer(location);
     const { skill } = location.search as { skill?: unknown };
     if (skill !== undefined && location.pathname === "/pathways")
       skillAsLayer(location, skill);
     await framedScreen();
-    await adoptPracticeMode(location);
+    await adoptPracticeMode(location, preload);
   },
   // The curriculum and the learner's record arrive with it: one paint. A
   // problem type's short lesson (a layer, `?open=lesson:<type>`) needs
@@ -1565,7 +1564,7 @@ const fallback = createRoute({
   getParentRoute: () => appScreen,
   path: "/$",
   // The address says who practices (features/profiles/practice-mode.ts).
-  beforeLoad: ({ location }) => adoptPracticeMode(location),
+  beforeLoad: ({ location, preload }) => adoptPracticeMode(location, preload),
   // The app screen is rendered by the layout, so load its chunk here, as the
   // route's own component would have been. The Overview's level too, so it
   // paints in its final layout (a learner's first day has its own).
@@ -1791,53 +1790,25 @@ if (import.meta.env.DEV) {
   router.buildLocation = ((options: Parameters<typeof build>[0]) => {
     const next = build(options);
     const here = router.state.location;
-    // A practice mode (practicing as a profile) goes with the reader
-    // between learning screens: Overview, Pathways, a lesson. An explicit
-    // profile key also allows a caller to clear the mode when leaving it.
-    const mode = here.search as Record<string, unknown>;
-    const explicitMode =
-      typeof options.search === "object" &&
-      options.search !== null &&
-      "profile" in options.search;
-    // So does the learner a learning screen names (`?learner=`), unless
-    // the destination names its own or a profile.
-    const nextSearch = next.search as Record<string, unknown>;
-    if (
-      typeof mode[LEARNER_KEY] === "string" &&
-      typeof mode.profile !== "string" &&
-      nextSearch[LEARNER_KEY] === undefined &&
-      nextSearch.profile === undefined &&
-      !(
-        typeof options.search === "object" &&
-        options.search !== null &&
-        LEARNER_KEY in options.search
-      ) &&
-      isLearningPath(here.pathname) &&
-      isLearningPath(next.pathname)
-    )
+    // Who a learning screen is for, and where adding a place returns, go
+    // with the reader (features/profiles/practice-mode.ts, `carriedKeys`).
+    const identity = carriedKeys(
+      {
+        pathname: here.pathname,
+        search: here.search as Record<string, unknown>,
+      },
+      {
+        pathname: next.pathname,
+        search: next.search as Record<string, unknown>,
+      },
+      typeof options.search === "object" && options.search !== null
+        ? Object.keys(options.search)
+        : [],
+    );
+    if (identity)
       return build({
         ...options,
-        search: { ...nextSearch, [LEARNER_KEY]: mode[LEARNER_KEY] },
-      } as never);
-    if (
-      !explicitMode &&
-      typeof mode.profile === "string" &&
-      isLearningPath(here.pathname) &&
-      isLearningPath(next.pathname) &&
-      (next.search as Record<string, unknown>).profile === undefined
-    )
-      return build({
-        ...options,
-        search: {
-          ...next.search,
-          ...Object.fromEntries(
-            MODE_KEYS.filter(
-              (key) =>
-                mode[key] !== undefined &&
-                (next.search as Record<string, unknown>)[key] === undefined,
-            ).map((key) => [key, mode[key]]),
-          ),
-        },
+        search: { ...(next.search as object), ...identity },
       } as never);
     if (!overList(here.pathname, next.pathname)) return next;
     const from = here.search as Record<string, unknown>;

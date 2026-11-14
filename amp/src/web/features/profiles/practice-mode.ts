@@ -1,5 +1,6 @@
 import type { SignedInMe } from "../../../account/contracts";
 import { useLearnerStore } from "../../learner-store";
+import { AppError } from "../../lib/AppError";
 import { hasHome } from "../onboarding/guard";
 import { returnTarget } from "../../lib/return-to";
 import { rootRedirect } from "../../nav/root";
@@ -89,10 +90,15 @@ export function modeReturnLabel(
  *   a demo school's admin) goes from practice screens to its place: never
  *   family setup.
  */
-export async function adoptPracticeMode(location: {
-  pathname: string;
-  search: Record<string, unknown>;
-}) {
+export async function adoptPracticeMode(
+  location: {
+    pathname: string;
+    search: Record<string, unknown>;
+  },
+  /** A preload (hover, focus): look, change nothing. Whose screen is on view
+   * changes only when one is opened. */
+  preloading = false,
+) {
   if (studentSession() || !isLearningPath(location.pathname)) return;
   const session = await queryClient.ensureQueryData(sessionOptions);
   if (!session) return;
@@ -103,29 +109,40 @@ export async function adoptPracticeMode(location: {
   const store = useLearnerStore.getState();
   const named = location.search.profile;
   const profile = me.practiceProfiles?.find((entry) => entry.id === named);
+  // A profile is a mode and outranks `?learner=` (docs/architecture/
+  // spaces.md, "Learning screens"); the resolver and the address builder
+  // follow the same order.
   if (profile) {
-    if (store.learnerId !== profile.id) store.select(profile.id);
+    if (!preloading && store.learnerId !== profile.id) store.select(profile.id);
     const [, org] = PLACE.exec(modeFrom(location.search) ?? "") ?? [];
     if (org) await preload(classesOptions(session, org));
     return;
   }
   const own = me.adultPractice?.learner?.id ?? null;
   // `?learner=` names whose record this is (docs/architecture/spaces.md):
-  // a refresh, Back or a second tab keeps that person. Only a learner this
-  // account reads is ever chosen from an address.
-  const whose = location.search.learner;
-  if (
-    typeof whose === "string" &&
-    (whose === own ||
+  // a refresh, Back or a second tab keeps that person. A learner this
+  // account doesn't read is unavailable, never the previous one instead.
+  const whose = location.search[LEARNER_KEY];
+  if (typeof whose === "string") {
+    const reads =
+      whose === own ||
       me.learners.some((learner) => learner.id === whose) ||
       (me.secondParentOf ?? []).some((family) =>
         family.learners.some((learner) => learner.id === whose),
-      ))
-  ) {
-    if (store.learnerId !== whose) store.select(whose);
+      );
+    if (!reads)
+      throw new AppError(
+        "permission",
+        "This learner isn’t available to your account. Choose someone from the menu.",
+        false,
+      );
+    if (!preloading && store.learnerId !== whose) store.select(whose);
     return;
   }
-  if (me.practiceProfiles?.some((entry) => entry.id === store.learnerId))
+  if (
+    !preloading &&
+    me.practiceProfiles?.some((entry) => entry.id === store.learnerId)
+  )
     store.select(own ?? me.learners[0]?.id ?? null);
   if (
     !own &&
@@ -134,4 +151,51 @@ export async function adoptPracticeMode(location: {
     PRACTICE_ONLY.test(location.pathname)
   )
     throw rootRedirect();
+}
+
+type Place = { pathname: string; search: Record<string, unknown> };
+const START = /^\/start(?:\/|$)/;
+
+/**
+ * The address keys a move carries from here to there, or null (one rule,
+ * docs/architecture/spaces.md, "Learning screens"):
+ * - between the starter's steps, where adding a place returns (`from`);
+ * - between learning screens, whose they are: a practice profile (with its
+ *   `from`), which outranks `?learner=`, or else the learner named here.
+ * A destination that names its own learner or profile (`explicit`, the keys
+ * the caller set) replaces the one here; a profile and a learner never
+ * travel together.
+ */
+export function carriedKeys(
+  here: Place,
+  next: Place,
+  explicit: readonly string[],
+): Record<string, unknown> | null {
+  const from = here.search.from;
+  if (
+    typeof from === "string" &&
+    START.test(here.pathname) &&
+    START.test(next.pathname) &&
+    next.search.from === undefined &&
+    !explicit.includes("from")
+  )
+    return { from };
+  if (!isLearningPath(here.pathname) || !isLearningPath(next.pathname))
+    return null;
+  if (
+    explicit.includes("profile") ||
+    explicit.includes(LEARNER_KEY) ||
+    next.search.profile !== undefined ||
+    next.search[LEARNER_KEY] !== undefined
+  )
+    return null;
+  if (typeof here.search.profile === "string")
+    return Object.fromEntries(
+      MODE_KEYS.filter((key) => here.search[key] !== undefined).map((key) => [
+        key,
+        here.search[key],
+      ]),
+    );
+  const learner = here.search[LEARNER_KEY];
+  return typeof learner === "string" ? { [LEARNER_KEY]: learner } : null;
 }

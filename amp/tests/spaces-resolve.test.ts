@@ -842,3 +842,136 @@ test("every space has its words, and a family's never say student", () => {
   const room = Object.values(spaceWords("classroom")).join(" ").toLowerCase();
   assert.ok(!/\b(child|children|kids)\b/.test(room));
 });
+
+test("CP-2 H2: one learner per address, the same order as adoption", () => {
+  // A profile outranks ?learner=: the frame is the profile's, not Pip's.
+  const both = resolveSpace(
+    at("/practice", { search: { profile: "profile-4", learner: "pip" } }),
+    adult(power, "wren"),
+  );
+  expectSpace(both, "me");
+  assert.equal(both.mode, "profile");
+  assert.equal(both.learner?.id, "profile-4");
+  // A profile's tabs are the profile's own: its levels, its address.
+  const tabs = resolveSpace(
+    at("/pathways", { search: { profile: "profile-4" } }),
+    adult(power, "pip"),
+  );
+  assert.deepEqual(
+    tabs.tabs.map((tab) => [tab.id, tab.path, tab.search ?? null]),
+    [
+      ["practice", "practice", { profile: "profile-4" }],
+      ["levels", "me/profiles/profile-4", null],
+      ["pathways", "pathways", { profile: "profile-4" }],
+      ["inventory", "inventory", { profile: "profile-4" }],
+      ["profiles", "me/profiles", null],
+    ],
+  );
+  // A learner this account doesn't read is unavailable, never another.
+  const foreign = resolveSpace(
+    at("/practice", { search: { learner: "stranger" } }),
+    adult(power, "wren"),
+  );
+  expectSpace(foreign, "me");
+  assert.equal(foreign.status, "unavailable");
+  assert.equal(foreign.learner, null);
+  assert.deepEqual(foreign.tabs, []);
+});
+
+test("CP-2 H4: their own child hosted in another family's class stays theirs", () => {
+  const hosted = me({ learners: [child("pip", "Pip")] });
+  const space = resolveSpace(
+    at("/overview", { search: { learner: "pip" } }),
+    adult(hosted, null),
+  );
+  expectSpace(space, "family");
+  assert.equal(space.learner?.id, "pip");
+  assert.equal(space.label, "Pip");
+  assert.equal(space.family.id, null);
+  assert.deepEqual(
+    space.learners.map((learner) => learner.id),
+    ["pip"],
+  );
+});
+
+test("CP-2 H4: a class is framed only under its own org", () => {
+  const resources = (year: SpaceResources["year"]): SpaceResources => ({
+    org: school({ roles: ["admin"] }),
+    classes: [],
+    year,
+  });
+  // The server says the class belongs elsewhere: unavailable, no tabs.
+  const elsewhere = resolveSpace(
+    at(classPath(SCHOOL, ROOM)),
+    adult(staffOnly),
+    resources({ past: false, orgId: DISTRICT, path: [DISTRICT] }),
+  );
+  expectSpace(elsewhere, "classroom");
+  assert.equal(elsewhere.status, "unavailable");
+  assert.deepEqual(elsewhere.tabs, []);
+  assert.equal(elsewhere.label, null);
+  // Its own org, or one above it: ready, named by the server's answer even
+  // past the first page of the class list.
+  const own = resolveSpace(
+    at(classPath(SCHOOL, ROOM)),
+    adult(staffOnly),
+    resources({
+      past: false,
+      orgId: SCHOOL,
+      path: [DISTRICT, SCHOOL],
+      name: "Grade 4 Math",
+      can: ["classes.read", "signin.read", "grades.write"],
+    }),
+  );
+  expectSpace(own, "classroom");
+  assert.equal(own.status, "ready");
+  assert.equal(own.class.name, "Grade 4 Math");
+  // Its capabilities are the class's own, beside the org's.
+  assert.deepEqual(
+    own.capabilities.map((entry) => entry.target),
+    [
+      { kind: "org", id: SCHOOL },
+      { kind: "class", id: ROOM },
+    ],
+  );
+  assert.deepEqual(own.capabilities[1]!.can, [
+    "classes.read",
+    "signin.read",
+    "grades.write",
+  ]);
+  // A family co-teacher's class in another org is unavailable too.
+  const family = resolveSpace(
+    at(classPath(TUTOR_FAMILY, TUTOR_CLASS)),
+    adult(adultOnly),
+    {
+      org: familyOrg(TUTOR_FAMILY, "Lund co-op"),
+      year: { past: false, orgId: SCHOOL, path: [SCHOOL] },
+    },
+  );
+  expectSpace(family, "family");
+  assert.equal(family.status, "unavailable");
+  assert.deepEqual(family.tabs, []);
+});
+
+test("CP-2 H4: a role from above reads as what it may do here; Start needs the board", () => {
+  const inherited = (can: string[]) =>
+    resolveSpace(at(classPath(SCHOOL, ROOM)), adult(staffOnly), {
+      org: school({ roles: [], can: can as OrgResource["can"] }),
+      classes: [klass(ROOM, SCHOOL, "Grade 4 Math")],
+      year: { past: false, orgId: SCHOOL, path: [SCHOOL] },
+    });
+  const admin = inherited(["org.read", "overview.read", "staff.manage"]);
+  expectSpace(admin, "classroom");
+  assert.equal(admin.role, "admin");
+  const viewer = inherited(["org.read", "overview.read"]);
+  expectSpace(viewer, "classroom");
+  assert.equal(viewer.role, "viewer");
+  // Practice is running, but this person can't open its sign-in board.
+  const noBoard = resolveSpace(at(classPath(SCHOOL, ROOM)), adult(staffOnly), {
+    org: school({ teaches: [ROOM] }),
+    classes: [klass(ROOM, SCHOOL, "Grade 4 Math")],
+    year: { past: false, orgId: SCHOOL, path: [SCHOOL], can: ["classes.read"] },
+    covered: 3,
+  });
+  assert.deepEqual(noBoard.actions, []);
+});

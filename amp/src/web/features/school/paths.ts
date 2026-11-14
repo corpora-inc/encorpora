@@ -1,3 +1,4 @@
+import { dropCapability } from "../../capability-entry";
 import type { OrgResource } from "../../../schools/contracts";
 
 /** Where each staff screen lives, without the leading slash. */
@@ -43,6 +44,7 @@ export function rememberedInvite() {
   }
 }
 export function forgetInvite() {
+  dropCapability("/school/invite");
   try {
     localStorage.removeItem(PENDING_INVITE);
   } catch {

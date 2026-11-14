@@ -17,6 +17,7 @@ import {
   type ActivityKind,
   type RolloverInput,
 } from "../../../../schools/org-contracts";
+import { schoolActions } from "../../../../schools/contracts";
 import type { AuthSession } from "../../../auth";
 import { AppError } from "../../../lib/AppError";
 import { call, keyFor } from "../api";
@@ -49,18 +50,24 @@ export const yearsOptions = (session: AuthSession, orgId: string) =>
         (data) => data.years,
       ),
   });
+/** A class's year and what binds it to a place (its org, the orgs above
+ * it, its name, this person's actions there). The binding is optional: an
+ * older server answers the year alone. */
+export const classYearResource = z.object({
+  past: z.boolean(),
+  orgId: z.uuid().optional(),
+  path: z.array(z.uuid()).optional(),
+  name: z.string().nullable().optional(),
+  can: z.array(z.enum(schoolActions)).optional(),
+});
+export type ClassYear = z.infer<typeof classYearResource>;
 export const classYearOptions = (session: AuthSession, classId: string) =>
   queryOptions({
     queryKey: keyFor(session, "class-year", classId),
     queryFn: ({ signal }) =>
-      call(
-        `/classes/${classId}/year`,
-        z.object({ past: z.boolean() }),
-        session,
-        {
-          signal,
-        },
-      ),
+      call(`/classes/${classId}/year`, classYearResource, session, {
+        signal,
+      }),
   });
 export const rolloverOptions = (session: AuthSession, orgId: string) =>
   queryOptions({

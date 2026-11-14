@@ -1,5 +1,9 @@
 import { can, rosterScope, type Actor } from "./authz.js";
-import { PLACES_LIMIT, type PlacesResource } from "./contracts.js";
+import {
+  PLACES_LIMIT,
+  type OrgResource,
+  type PlacesResource,
+} from "./contracts.js";
 import type { SchoolRepository } from "./repository.js";
 import { YEAR_IN_USE } from "./years.js";
 
@@ -16,7 +20,41 @@ export async function readPlaces(
   actor: Actor,
   limit = PLACES_LIMIT,
 ): Promise<PlacesResource> {
-  const mine = await repository.myOrgs(actor.accountId);
+  // The orgs this account holds a current staff role at, decided by the
+  // same live predicate as every school route: the actor's roles (dated, not
+  // removed, and not a lapsed or revoked provider authority), each read
+  // allowed by `can`. Limited in the database, one past the page to say more.
+  const held = actor.roles.filter((role) =>
+    can(actor, "org.read", { kind: "org", orgId: role.orgId, path: role.path }),
+  );
+  const ids = [...new Set(held.map((role) => role.orgId))];
+  const mine: OrgResource[] = ids.length
+    ? (
+        await repository.pool.query(
+          `SELECT o.id,o.kind,o.name,o.parent_id AS "parentId",o.timezone,o.solo,
+             o.demo AND o.created_by LIKE 'amp-demo:%' AS "sharedDemo",
+             o.setup_pending AS "setupPending",o.demo
+           FROM amp_orgs o
+           WHERE o.id=ANY($1::uuid[]) AND (o.kind<>'family' OR o.created_by<>$2)
+           ORDER BY o.name,o.id LIMIT $3`,
+          [ids, actor.accountId, limit + 1],
+        )
+      ).rows.map(({ sharedDemo, ...row }) => {
+        const roles = [
+          ...new Set(
+            held
+              .filter((role) => role.orgId === row.id)
+              .map((role) => role.role),
+          ),
+        ].sort();
+        // A shared demo is "just my class" for its visitors, not its admins.
+        return {
+          ...row,
+          solo: sharedDemo ? !roles.includes("admin") : row.solo,
+          roles,
+        } as OrgResource;
+      })
+    : [];
   const orgs = mine.slice(0, limit);
   // A school with one class shows as that class (docs/design/ia.md). Only a
   // solo school can be one, so only those are counted, as the caller sees them.
