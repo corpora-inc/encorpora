@@ -1,31 +1,41 @@
 /**
  * Sessions this tab has left behind (docs/architecture/spaces.md, "Session
- * identity"). When a session ends or is replaced, its token is retired: a
- * request with it is refused before it is sent, and an answer to one sent
- * earlier is refused before anything reads or caches it. So an old loader
- * that resumes after a new sign-in can neither ask with the old session
- * nor write its answer where the new session reads.
+ * identity"). A session ends when another replaces it (sign-out, another
+ * account, a new token for the same account): its token is retired, and a
+ * request carrying it is refused when it is asked and as soon as it is
+ * answered, before anything handles the answer (a late 401 included), so
+ * nothing the old session asked can act in the new one. The list is never
+ * trimmed: a tab changes session a handful of times. A token is current
+ * again only when its session explicitly is again (`changeSession`: a
+ * parent's, after a child's handover), never because a cache changed.
+ *
+ * A session is confirmed once its own `/me` has answered: until then the
+ * shell knows only that the account is the same.
  */
 const retired = new Set<string>();
-const KEPT = 32;
+const confirmed = new Set<string>();
 
-export function retireToken(token: string | null | undefined) {
-  if (!token) return;
-  retired.add(token);
-  // Only the last few: a tab rarely changes session more than that.
-  while (retired.size > KEPT) retired.delete(retired.values().next().value!);
+/** The session on screen changed from `previous` to `next`. */
+export function changeSession(
+  previous: string | null | undefined,
+  next: string | null | undefined,
+) {
+  if (previous && previous !== next) retired.add(previous);
+  if (next) retired.delete(next);
 }
 
 export const isRetired = (token: string | null | undefined) =>
   !!token && retired.has(token);
 
-/** A session that is current again (a parent's, back after a child's
- * handover on this device): its own requests are its own again. */
-export function reviveToken(token: string | null | undefined) {
-  if (token) retired.delete(token);
+/** This session's own `/me` answered. */
+export function confirmSession(token: string | null | undefined) {
+  if (token) confirmed.add(token);
 }
+export const isConfirmed = (token: string | null | undefined) =>
+  !!token && confirmed.has(token);
 
 /** For tests that reuse one synthetic token across sessions. */
 export function forgetRetiredSessions() {
   retired.clear();
+  confirmed.clear();
 }

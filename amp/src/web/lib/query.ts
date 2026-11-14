@@ -1,7 +1,7 @@
 import { QueryClient, queryOptions } from "@tanstack/react-query";
 import { meSchema } from "../../account/contracts";
 import type { AuthSession } from "../auth";
-import { retireToken, reviveToken } from "./session-generation";
+import { changeSession, confirmSession } from "./session-generation";
 import { accessSession, authConfig } from "../auth";
 import { request } from "./api";
 import { setAnalyticsSession } from "./analytics";
@@ -22,20 +22,15 @@ export const queryClient = new QueryClient({
     },
     mutations: { retry: false },
   },
-});// The session on screen is never a retired one: whatever sets it (a sign-in,
-// a handback to the parent after a child's session), its own requests are
-// its own (lib/session-generation.ts).
-queryClient.getQueryCache().subscribe((event) => {
-  if (event.type !== "updated" || event.query.queryKey[0] !== "session") return;
-  const session = event.query.state.data as AuthSession | null | undefined;
-  reviveToken(session?.token);
 });
-
 export const sessionOptions = queryOptions({
   queryKey: ["session"],
   queryFn: async ({ signal }) => {
     const session = await accessSession();
     signal.throwIfAborted();
+    // A completed (never a cancelled) check says which session is this
+    // tab's: its token is current.
+    changeSession(undefined, session?.token);
     setAnalyticsSession(session);
     return session;
   },
@@ -61,6 +56,8 @@ export const meOptions = (session: AuthSession) =>
         token: session.token,
         signal,
       });
+      // This session's own account answered (lib/session-generation.ts).
+      confirmSession(session.token);
       return me;
     },
     // Navigation owns account freshness. Consumers share its snapshot even
@@ -71,23 +68,21 @@ export const meOptions = (session: AuthSession) =>
     refetchOnWindowFocus: "always",
   });
 /**
- * A new session for the same account (a new token behind the same keys)
- * retires everything the old one asked: in-flight requests are cancelled, so
- * their answers are discarded, and every cached answer is removed. What the
- * cache holds afterwards was asked with the new session
- * (docs/architecture/spaces.md, "Generations"). Another account is retired
- * by the caller's own account change.
+ * The session on screen changed (docs/architecture/spaces.md, "Session
+ * identity"). The one it replaced is retired: nothing it asked is sent,
+ * handled or cached from now on (`lib/session-generation.ts`). For the same
+ * account with a new token (a renewal), what is on screen stays (its
+ * answers are the same account's, and a half-written form is kept): its
+ * in-flight requests are cancelled back to what they had, and everything is
+ * asked again with the new session. Another account is reset by the caller.
+ * Returns whether this was a same-account renewal.
  */
 export function retireSession(
   previous: AuthSession | null | undefined,
   next: AuthSession | null,
   client = queryClient,
 ) {
-  // Any session left behind, by sign-out, another account or a new token:
-  // nothing it asked is sent, read or cached from now on.
-  if (previous?.token && previous.token !== next?.token)
-    retireToken(previous.token);
-  reviveToken(next?.token);
+  changeSession(previous?.token, next?.token);
   if (
     !previous ||
     !next ||
@@ -96,7 +91,6 @@ export function retireSession(
   )
     return false;
   void client.cancelQueries({ queryKey: ["account", previous.accountId] });
-  client.removeQueries({ queryKey: ["account", previous.accountId] });
   return true;
 }
 export function invalidateAccount(identity: string) {

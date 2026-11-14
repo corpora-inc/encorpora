@@ -3,6 +3,7 @@ import { useLocation, useRouterState } from "@tanstack/react-router";
 import { useMemo, useRef } from "react";
 import { useLearnerStore } from "../../learner-store";
 import { AppError } from "../../lib/AppError";
+import { isConfirmed } from "../../lib/session-generation";
 import { meOptions, sessionOptions } from "../../lib/query";
 import { classesOptions, orgOptions } from "../school/api";
 import { classYearOptions } from "../school/org/org-api";
@@ -96,15 +97,24 @@ type Answer<T> = {
   isError: boolean;
 };
 /** A resource as the resolver reads it: undefined until answered (or after a
- * failed lookup, which `failed` reports), null once refused. Everything
- * cached was asked in this session: a new session for the same account
- * retires the old one's (`retireSession`). */
+ * failed lookup, which `failed` reports), null once refused. Nothing a
+ * replaced session asked is ever cached (`retireSession`); a same-account
+ * renewal keeps the account's answers until its own `/me` fails
+ * (`unconfirmed`). */
 function current<T>(query: Answer<T>): T | null | undefined {
-  if (!query.isError) return query.data;
-  return refused(query.error) ? null : undefined;
+  // A refused lookup is no answer; a refetch that failed otherwise keeps the
+  // last answer on screen.
+  return query.isError && refused(query.error) ? null : query.data;
 }
+/** A request its own session no longer stands behind (it was replaced on
+ * the way) is no answer at all: what was there stays. */
+const replaced = (error: unknown) =>
+  error instanceof AppError && error.code === "session_replaced";
 const failedLookup = (query: Answer<unknown>) =>
-  query.isError && !refused(query.error);
+  query.isError &&
+  query.data === undefined &&
+  !refused(query.error) &&
+  !replaced(query.error);
 
 export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
   const session = useQuery(sessionOptions).data ?? null;
@@ -161,13 +171,21 @@ export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
     // A `/me` that failed with nothing to show for this session (a new
     // sign-in whose account didn't load) fails the place too: its
     // relationships are unknown.
-    failed:
-      [org, classes, year].some(failedLookup) ||
-      (meQuery.data === undefined && failedLookup(meQuery)),
+    failed: [org, classes, year, meQuery].some(failedLookup),
+    // `/me` failed, and this session has no answer of its own from it (a
+    // renewal whose account didn't load): what the screen shows is the old
+    // session's, so none of it shows.
+    unconfirmed:
+      !!session &&
+      meQuery.isError &&
+      !refused(meQuery.error) &&
+      !replaced(meQuery.error) &&
+      !isConfirmed(session.token),
     org: orgNow,
     classes: current(classes) ?? null,
     year: current(year),
     // Practice that can't be confirmed running offers nothing to start.
-    covered: current(pilot)?.coverage?.covered ?? 0,
+    // Coverage that can't be confirmed counts nobody as covered.
+    covered: pilot.isError ? 0 : (pilot.data?.coverage?.covered ?? 0),
   });
 }

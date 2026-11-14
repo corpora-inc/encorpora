@@ -101,11 +101,12 @@ function SessionProviders({
           void queryClient.cancelQueries({ queryKey: ["account"] });
           queryClient.removeQueries({ queryKey: ["account"] });
         }
-        // A new session: nothing asked with the old one is sent, read or
-        // cached again, and every mounted screen starts over in it, so no
-        // screen keeps the old session's answers or actions.
-        if (retireSession(previous, session))
-          setIdentityVersion((version) => version + 1);
+        // A new session: nothing asked with the old one is sent, handled or
+        // cached again. The same account's renewal keeps what is on screen,
+        // drafts included; only another account resets it (above), and a
+        // renewal whose account doesn't load keeps the screen out (the
+        // shell's content guard).
+        retireSession(previous, session);
         void queryClient.cancelQueries({ queryKey: sessionOptions.queryKey });
         queryClient.setQueryData(sessionOptions.queryKey, session);
         if (previous?.accountId && previous.accountId !== session?.accountId)

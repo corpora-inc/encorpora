@@ -89,6 +89,9 @@ export type SpaceResources = {
   covered?: number;
   /** A lookup failed without a refusal (the network, a server error). */
   failed?: boolean;
+  /** This session's own `/me` failed before it ever answered: whatever is
+   * on screen belongs to an earlier session. */
+  unconfirmed?: boolean;
 };
 
 export type SpaceAction =
@@ -385,11 +388,13 @@ export function resolveSpace(
   resources: SpaceResources = {},
 ): SpaceDescriptor {
   const resolved = resolveOnce(match, session, resources);
-  // What is still unanswered because a lookup failed is `failed`: nothing of
-  // it shows until it is asked again.
-  return resources.failed &&
-    "status" in resolved &&
-    resolved.status === "loading"
+  // What is still unanswered because a lookup failed, or a place shown to a
+  // session whose own account never answered, is `failed`: nothing of it
+  // shows until it is asked again.
+  return "status" in resolved &&
+    resolved.status !== "unavailable" &&
+    (resources.unconfirmed ||
+      (resources.failed && resolved.status === "loading"))
     ? { ...resolved, status: "failed", tabs: [], actions: [], destinations: [] }
     : resolved;
 }

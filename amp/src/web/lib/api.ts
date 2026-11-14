@@ -236,6 +236,15 @@ async function send<T>(
       options.signal.throwIfAborted();
     }
   };
+  // A session that ended while this was on its way: its answer, success or
+  // failure, is nobody's now. Checked before any handler (a 401's sign-out
+  // included) can act on it in the session on screen.
+  const checkSession = () => {
+    if (isRetired(options.token)) {
+      observe("cancelled");
+      throw replacedSession();
+    }
+  };
   let response: Response;
   try {
     response = await fetch(`/api/v1${path}`, {
@@ -253,6 +262,7 @@ async function send<T>(
         : { body: JSON.stringify(options.body) }),
     });
   } catch (cause) {
+    checkSession();
     if (options.signal?.aborted) {
       observe("cancelled");
       throw cause;
@@ -268,6 +278,7 @@ async function send<T>(
   }
   const requestId = response.headers.get("x-request-id");
   const data: unknown = await response.json().catch(() => null);
+  checkSession();
   checkAborted();
   // A tab running an older release than the API: a missing route or a
   // rejected sign-in reloads into the current release rather than reporting a
@@ -346,6 +357,7 @@ async function send<T>(
     error.log();
     throw error;
   }
+  checkSession();
   checkAborted();
   observe("succeeded");
   return parsed.data;
