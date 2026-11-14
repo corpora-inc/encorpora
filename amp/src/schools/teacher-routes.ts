@@ -504,6 +504,7 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
       ).rows[0]?.today as string;
       const { html, footer } = progressReportHtml({
         paper: format,
+        crossCutting: true,
         name: record.student.name,
         first: record.student.first,
         subtitle: record.classes

@@ -4,9 +4,9 @@ import { learnerSkillOptions, skillCatalogOptions } from "../lib/learning-view";
 import { sessionOptions } from "../lib/query";
 import {
   bandLabel,
+  areas,
+  areaSlot,
   illumination,
-  neighborhood,
-  neighborhoods,
 } from "../features/pathways/model";
 import { FilmCards } from "../features/films/FilmCards";
 import { skillFilms } from "../features/films/skill-films";
@@ -93,7 +93,7 @@ export function SkillLayer({
       // Geometry course reads "Geometry · Data & probability".
       description={
         found
-          ? `${bandLabel(found.gradeBand)} · ${neighborhoods[neighborhood(found)]!.title}`
+          ? `${bandLabel(found.gradeBand)} · ${areas[areaSlot(found)]!.title}`
           : undefined
       }
     >
@@ -114,7 +114,7 @@ export function SkillLayer({
           {films.length > 0 && (
             <section className={styles.films} data-skill-films={films.length}>
               <h3 className={styles.heading}>Watch</h3>
-              <FilmCards films={films} area={neighborhood(found)} />
+              <FilmCards films={films} area={areaSlot(found)} />
             </section>
           )}
           {student ? (

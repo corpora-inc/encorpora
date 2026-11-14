@@ -752,3 +752,22 @@ h3.caption {
   color: var(--color-muted-text);
   font-size: var(--text-label);
 }
+
+/* The five areas of math over their strands' rows (by-area.ts): the area's
+   name as a quiet label, its rows set in under it. An area has no level of
+   its own, so its label holds no bar. */
+.rows .groupHead {
+  padding: var(--space-3) 0 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-weight: 650;
+  line-height: 1.3;
+}
+.rows .rowNested .rowName {
+  padding-inline-start: var(--space-3);
+}
+@media (max-width: 599.98px) {
+  .rows .rowNested .rowName {
+    padding-inline-start: 0;
+  }
+}

@@ -20,9 +20,10 @@ import { useHeroAction } from "../../lib/shell-slots";
 import {
   bandLabel,
   bands,
+  areaParam,
+  areas,
+  areaSlot,
   illumination,
-  neighborhood,
-  neighborhoods,
   type Evidence,
   type MapSkill,
 } from "../pathways/model";
@@ -48,7 +49,7 @@ const filters: { id: Filter; label: string }[] = [
 ];
 const areaOptions: ListboxOption[] = [
   { value: "", label: "Every math area" },
-  ...neighborhoods.map((n) => ({ value: n.title, label: n.title })),
+  ...areas.map((a) => ({ value: a.id, label: a.title })),
 ];
 /** Older links named the earned collection "illuminated". */
 const readFilter = (value: unknown): Filter | null =>
@@ -91,11 +92,8 @@ export function InventoryScreen() {
     update({ topic: topic || undefined }, true),
   );
   const query = useDeferredValue(field.text.trim());
-  const area =
-    typeof search.area === "string" &&
-    neighborhoods.some((n) => n.title === search.area)
-      ? search.area
-      : "";
+  // The math area, as Pathways names it (`?area=geometry`).
+  const area = areaParam(search.area) ?? "";
   const evidence = useMemo(
     () => new Map(view.evidence?.skills.map((e) => [e.skillId, e]) ?? []),
     [view.evidence],
@@ -104,7 +102,7 @@ export function InventoryScreen() {
   // Counts follow the chosen math area and the search, so every number
   // matches the list it opens.
   const inArea = area
-    ? allSkills.filter((s) => neighborhoods[neighborhood(s)]?.title === area)
+    ? allSkills.filter((s) => areas[areaSlot(s)]?.id === area)
     : allSkills;
   const needle = query.trim().toLowerCase();
   const matching = needle
@@ -285,11 +283,11 @@ export function InventoryScreen() {
                   : "No skills here yet."}
             </p>
           ) : (
-            neighborhoods.map((n, i) => {
-              const rows = visible.filter((s) => neighborhood(s) === i);
+            areas.map((n, i) => {
+              const rows = visible.filter((s) => areaSlot(s) === i);
               if (!rows.length) return null;
               return (
-                <section className={styles.group} key={n.title}>
+                <section className={styles.group} key={n.id}>
                   <div className={styles.groupHeading}>
                     <h2>{n.title}</h2>
                     <span>{plural(rows.length, "skill")}</span>

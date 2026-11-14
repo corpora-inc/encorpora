@@ -11,7 +11,7 @@
   --atlas-border: var(--color-border);
   --atlas-accent: var(--color-primary);
   --atlas-on-accent: var(--color-on-primary);
-  /* Neighborhood hues, toward the ink so they read on either surface. */
+  /* The five areas' hues, toward the ink so they read on either surface. */
   --atlas-area-0: color-mix(
     in srgb,
     var(--atlas-scene-area-0) 72%,
@@ -35,11 +35,6 @@
   --atlas-area-4: color-mix(
     in srgb,
     var(--atlas-scene-area-4) 72%,
-    var(--color-on-surface)
-  );
-  --atlas-area-5: color-mix(
-    in srgb,
-    var(--atlas-scene-area-5) 72%,
     var(--color-on-surface)
   );
   min-height: calc(100dvh - var(--shell-bar, 0px));
@@ -66,7 +61,6 @@
   --atlas-area-2: var(--atlas-scene-area-2);
   --atlas-area-3: var(--atlas-scene-area-3);
   --atlas-area-4: var(--atlas-scene-area-4);
-  --atlas-area-5: var(--atlas-scene-area-5);
   --color-focus-ring: var(--atlas-scene-accent);
   color-scheme: dark;
   color: var(--atlas-on-surface);
@@ -1101,4 +1095,9 @@
 }
 .pathways .pathways-legend[hidden] {
   display: none;
+}
+/* One area chosen (`?area=`): the other areas' names step back with their
+   skills. */
+.pathways-map-labels .area-label[data-dim] {
+  opacity: 0.4;
 }

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import type { ParentView } from "../../../schools/share-contracts";
 import { shareToken, takeShareFragment } from "../../share-entry";
 import { Button } from "../../ui/Button";
-import { fitScale, LevelRows } from "../../ui/level-range";
+import { byArea, fitScale, LevelRows } from "../../ui/level-range";
 import { LoadingScreen } from "../../ui/LoadingScreen";
 import { WaveMark } from "../../ui/NavigationSheet";
 import { LinkEnded, readParentView } from "./api";
@@ -58,10 +58,13 @@ function Levels({ view }: { view: ParentView }) {
         This fills in once {view.student.first} has done some work.
       </p>
     );
-  const areas = view.strands.flatMap((strand) => {
-    const estimate = level.strands[strand.id];
-    return estimate ? [{ id: strand.id, label: strand.label, estimate }] : [];
-  });
+  // Every strand under its area of math (ui/level-range `byArea`).
+  const areas = byArea(
+    view.strands.flatMap((strand) => {
+      const estimate = level.strands[strand.id];
+      return estimate ? [{ id: strand.id, label: strand.label, estimate }] : [];
+    }),
+  );
   const grade = reference ? ([reference.from, reference.to] as const) : null;
   // The same level rows a teacher and a learner read (ui/level-range).
   const scale = fitScale(

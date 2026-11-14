@@ -60,6 +60,7 @@ export function StudentSections({
           record={data}
           empty={`We’ll find ${first}’s level in a few minutes of practice.`}
           openAreas
+          crossCutting
           holdFirst={openedUnmeasured.current}
         />
       </section>

@@ -13,6 +13,7 @@ import { currentSession } from "../api";
 import { FinalField, Suggested } from "./grade-parts";
 import { gradebookOptions } from "./teacher-api";
 import {
+  byArea,
   fitScale,
   LevelAxis,
   LevelBar,
@@ -23,7 +24,6 @@ import {
   type RangeScale,
   WHOLE_SCALE,
 } from "../../../ui/level-range";
-import { strandNames } from "../../../BirthYearPrompt";
 import { Menu, MenuItem } from "../../../ui/Menu";
 import { classUrl, parseSort, useClassSearch } from "./teacher-shared";
 import styles from "./ClassMap.module.css";
@@ -103,8 +103,12 @@ export function ClassMap({
   words,
   name,
   grades = true,
+  crossCutting = false,
 }: {
   data: MapResponse;
+  /** A teacher's map: modeling and reasoning too, after the five areas
+   * (ui/level-range `byArea`). A family's map leaves them out. */
+  crossCutting?: boolean;
   /** Each row's name, linked where the composing screen opens a learner;
    * by default the learner's record over the page. */
   name?: (student: MapStudent) => ReactNode;
@@ -120,7 +124,7 @@ export function ClassMap({
   const [search, set] = useClassSearch();
   const strands = limitStrands
     ? data.strands.slice(0, limitStrands)
-    : data.strands;
+    : byArea(data.strands, { crossCutting });
   const lens =
     typeof search.lens === "string" &&
     strands.some((strand) => strand.id === search.lens)
@@ -193,6 +197,7 @@ export function ClassMap({
         action={action}
         name={name}
         grades={grades}
+        crossCutting={crossCutting}
       />
     );
   return (
@@ -317,8 +322,6 @@ export function ClassMap({
 const NOT_STARTED = "Not started";
 /** Up to this many learners, the map shows each one whole. */
 const SMALL_CLASS = 6;
-/** The curriculum's order of areas, for each learner's rows. */
-const AREA_ORDER = Object.keys(strandNames);
 
 /**
  * A small class (a family, a tutor's group): a section per learner, with
@@ -332,9 +335,11 @@ function SmallClassMap({
   action,
   name,
   grades: graded,
+  crossCutting,
 }: {
   data: MapResponse;
   starting: boolean;
+  crossCutting: boolean;
   action?: ReactNode;
   name?: (student: MapStudent) => ReactNode;
   grades: boolean;
@@ -351,11 +356,8 @@ function SmallClassMap({
     (book.data?.students ?? []).map((row) => [row.id, row]),
   );
   const [message, setMessage] = useState("");
-  const areas = [...data.strands].sort(
-    (a, b) =>
-      (AREA_ORDER.indexOf(a.id) + 1 || 99) -
-      (AREA_ORDER.indexOf(b.id) + 1 || 99),
-  );
+  // Every strand under its area of math, in the five areas' order.
+  const areas = byArea(data.strands, { crossCutting });
   const learners = data.students.map((student) => ({
     student,
     overall: place(student, "overall"),
@@ -365,6 +367,8 @@ function SmallClassMap({
           return {
             id: area.id,
             label: area.label,
+            heading: area.heading,
+            nested: area.nested,
             estimate: row.estimate,
             estimated: row.estimated,
           };

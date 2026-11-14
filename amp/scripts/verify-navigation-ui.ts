@@ -780,25 +780,19 @@ try {
     [
       "Every math area:true",
       "Number & operations:false",
-      "Algebra & ratios:false",
-      "Functions & trigonometry:false",
-      "Geometry & measurement:false",
+      "Algebra:false",
+      "Geometry:false",
+      "Measurement:false",
       "Data & probability:false",
-      "Modeling & reasoning:false",
     ],
   );
   await fits("math area list open");
   await page.keyboard.press("End");
   await page.keyboard.press("Enter");
-  await page.waitForURL(
-    (url) => url.searchParams.get("area") === "Modeling & reasoning",
-  );
+  await page.waitForURL((url) => url.searchParams.get("area") === "data");
   await areaList.waitFor({ state: "detached" });
   assert(await areaPicker.evaluate((el) => el === document.activeElement));
-  assert.equal(
-    await areaPicker.getAttribute("data-value"),
-    "Modeling & reasoning",
-  );
+  assert.equal(await areaPicker.getAttribute("data-value"), "data");
   assert.deepEqual(
     await pageBox(),
     areaPickerBox,
@@ -813,12 +807,10 @@ try {
   await page.waitForURL((url) => !url.searchParams.has("area"));
   assert.equal(await areaPicker.getAttribute("data-value"), "");
   await page.goForward();
-  await page.waitForURL(
-    (url) => url.searchParams.get("area") === "Modeling & reasoning",
-  );
+  await page.waitForURL((url) => url.searchParams.get("area") === "data");
   await page.reload();
   await page
-    .getByRole("button", { name: "Math area Modeling & reasoning" })
+    .getByRole("button", { name: "Math area Data & probability" })
     .waitFor();
   await areaPicker.click();
   await areaList.getByRole("option", { name: "Every math area" }).click();

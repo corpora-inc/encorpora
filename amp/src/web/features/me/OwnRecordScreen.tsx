@@ -13,6 +13,7 @@ import { freeLeft, freeProblemsLeft } from "../../lib/free-allowance";
 import { AllowancePause } from "../continue/AllowancePause";
 import { levelTrendOptions } from "../level/api";
 import {
+  byArea,
   LevelRange,
   LevelRangeStart,
   type LevelRangeArea,
@@ -50,24 +51,26 @@ function OwnPage({ children }: { children: ReactNode }) {
   );
 }
 
-/** The areas they have practiced, in the curriculum's order, then any the
- * catalog adds later. */
+/** The strands they have practiced, under their areas of math, in the five
+ * areas' order (ui/level-range `byArea`). */
 function levelAreas(frontier: Frontier, data: OwnPractice): LevelRangeArea[] {
   const known = Object.keys(strandNames);
   const label = (id: string) =>
     strandNames[id] ??
     data.record.strands.find((strand) => strand.id === id)?.label ??
     id;
-  return [
-    ...known,
-    ...Object.keys(frontier.strands).filter((id) => !known.includes(id)),
-  ]
-    .filter((id) => measured(frontier.strands[id]))
-    .map((id) => ({
-      id,
-      label: label(id),
-      estimate: strandEstimate(frontier, id),
-    }));
+  return byArea(
+    [
+      ...known,
+      ...Object.keys(frontier.strands).filter((id) => !known.includes(id)),
+    ]
+      .filter((id) => measured(frontier.strands[id]))
+      .map((id) => ({
+        id,
+        label: label(id),
+        estimate: strandEstimate(frontier, id),
+      })),
+  );
 }
 
 /** `/me`: the adult's own practice, mathematics first. Their level leads the

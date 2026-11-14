@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { Fragment, useState, type ReactNode } from "react";
 import { gradeName, levelDetails } from "../../../learning/level-check";
 import { LevelAxis, LevelBar, LevelNotStarted } from "./LevelBar";
 import { LevelPath, type PathPoint } from "./LevelPath";
@@ -13,6 +13,10 @@ export type LevelRangeArea = {
   /** Null: nothing answered yet (only ever the overall row). */
   estimate: Estimate | null;
   estimated?: boolean;
+  /** The area of math over this row (`byArea`): its name above the group's
+   * first row, and the group's rows set in under it. */
+  heading?: string;
+  nested?: boolean;
 };
 
 /** What a row hands its link: the page decides where an area opens (a
@@ -322,16 +326,22 @@ export function LevelRows({
           strong
         />
         {areas.map((area) => (
-          <AreaRow
-            key={area.id}
-            area={area}
-            scale={scale}
-            grade={grade}
-            numbers={numbers}
-            decimals={decimals}
-            rowLink={rowLink}
-            point={point}
-          />
+          <Fragment key={area.id}>
+            {area.heading && (
+              <li className={styles.groupHead} data-level-group="">
+                {area.heading}
+              </li>
+            )}
+            <AreaRow
+              area={area}
+              scale={scale}
+              grade={grade}
+              numbers={numbers}
+              decimals={decimals}
+              rowLink={rowLink}
+              point={point}
+            />
+          </Fragment>
         ))}
       </ul>
       {numbers && axis && (
@@ -384,7 +394,7 @@ function AreaRow({
   rowLink?: RowLink;
   point: { enter: (id: string) => void; leave: (id: string) => void };
 }) {
-  const rowClass = `${styles.row} ${strong ? styles.rowStrong : ""}`;
+  const rowClass = `${styles.row} ${strong ? styles.rowStrong : ""} ${area.nested ? styles.rowNested : ""}`;
   const size = strong ? "large" : "regular";
   const estimate = area.estimate;
   const range = estimate ? likelyRange(estimate) : null;

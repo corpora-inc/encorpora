@@ -324,6 +324,7 @@ export function MapScreen() {
           <ClassMap
             data={map.data}
             words={words}
+            crossCutting
             action={
               start ? (
                 <Link
