@@ -174,7 +174,23 @@ test("a written blank (__) is the answer box, including before punctuation", () 
   body.querySelectorAll(".katex-mathml").forEach((node) => node.remove());
   assert.doesNotMatch(body.textContent!, /\\|__/);
   assert.equal(html.match(/<menclose/g)?.length, 5);
-  assert.equal(toTex("the slope is ___"), "the slope is \\boxed{\\phantom{0}}");
+  assert.equal(toTex("4x = ____"), "4x = \\boxed{\\phantom{0}}");
+  // A blank standing alone in a sentence is written prose, as in print.
+  for (const sentence of [
+    "Complete: the slope is ___, and the intercept is ___.",
+    "there are __ times as many __ as __.",
+    "Each y is the x above it ___ ___': 'increased by 24'",
+  ]) {
+    assert.ok(
+      segments(sentence).every((s) => !s.math || !s.text.includes("_")),
+      sentence,
+    );
+    const body = new JSDOM(
+      renderToStaticMarkup(React.createElement(MathText, { text: sentence })),
+    ).window.document.body;
+    body.querySelectorAll(".katex-mathml").forEach((node) => node.remove());
+    assert.doesNotMatch(body.textContent!, /\\/, sentence);
+  }
   // A subscript or an identifier with underscores is unchanged.
   assert.equal(toTex("x_1"), "x_1");
   assert.equal(toTex("log_2 8"), "\\log_{2} 8");

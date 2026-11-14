@@ -116,8 +116,11 @@ export function segments(text: string, displayLead = false): Segment[] {
       const formula = run.join("").trim();
       const lead = run.join("").match(/^\s*/)![0];
       const parts = formulaClauses(formula);
+      // A written blank on its own ("the slope is ___,") is prose, as in
+      // print; inside a formula it is the answer box (see toTex).
       if (
         formula &&
+        !/^_+$/.test(formula) &&
         (OPERATION.test(formula) ||
           parts.some((part) => COORDINATE_PAIR.test(part)))
       ) {
