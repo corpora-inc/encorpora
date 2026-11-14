@@ -18,6 +18,7 @@ import { useLearnerStore } from "../learner-store";
 import { useShellSlots } from "../lib/shell-slots";
 import { usePlaces } from "../features/navigation/PlaceSwitcher";
 import type { SpaceDescriptor } from "../features/spaces/resolve";
+import { holdFrame, nextHeld, type Held } from "../features/spaces/hold";
 import { useSettledMatch, useSpace } from "../features/spaces/useSpace";
 import { DemoMark } from "../features/school/demo/DemoMark";
 import { DemoSetupAction } from "../features/school/demo/DemoPlace";
@@ -65,7 +66,19 @@ export function AppShell({ children }: { children: ReactNode }) {
   // The space of the screen on view (features/spaces): its bar, tabs,
   // actions, drawer and words all come from this one description.
   const resolved = useSpace(nativeRuntime ? null : match);
-  const space = session.data && resolved?.bar ? resolved : null;
+  // The same place asked again for the same account keeps its frame while
+  // it answers (features/spaces/hold.ts).
+  const held = useRef<Held>(null);
+  const account = session.data?.accountId ?? null;
+  const steady = holdFrame(held.current, resolved, account);
+  const refusedHere =
+    !!steady && "status" in steady && steady.status === "unavailable";
+  held.current = refusedHere
+    ? null
+    : (nextHeld(steady, account) ?? held.current);
+  if (!account || (held.current && held.current.account !== account))
+    held.current = null;
+  const space = session.data && steady?.bar ? steady : null;
   const pathname = match?.pathname ?? "";
   const setDrawerOpen = useShellSlots((state) => state.setDrawerOpen);
   // A screen change closes the drawer (a link inside it, or Back).

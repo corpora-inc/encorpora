@@ -7,7 +7,7 @@ import { meOptions, sessionOptions } from "../../../lib/query";
 import { orgOptions } from "../../school/api";
 import { classYearOptions } from "../../school/org/org-api";
 import { pilotOptions } from "../../school/pilots/api";
-import { sessionGeneration, useSpace } from "../useSpace";
+import { useSpace } from "../useSpace";
 
 afterEach(cleanup);
 const SCHOOL = "33333333-3333-4333-8333-333333333333";
@@ -44,8 +44,7 @@ const client = () =>
 test("CP-2 M1: a new session for the same account never reads the old one's answers", () => {
   const queries = client();
   const first = { accountId: "amp|gen-1", token: "first" };
-  sessionGeneration(first, 1_000);
-  queries.setQueryData(sessionOptions.queryKey, first);
+  queries.setQueryData(sessionOptions.queryKey, first, { updatedAt: 1_000 });
   queries.setQueryData(orgOptions(first, SCHOOL).queryKey, org as never, {
     updatedAt: 2_000,
   });
@@ -58,8 +57,7 @@ test("CP-2 M1: a new session for the same account never reads the old one's answ
   // Signed in again as the same account: same keys, a new generation. The
   // answers from before stay unread until they are asked again.
   const second = { accountId: "amp|gen-1", token: "second" };
-  sessionGeneration(second, 3_000);
-  queries.setQueryData(sessionOptions.queryKey, second);
+  queries.setQueryData(sessionOptions.queryKey, second, { updatedAt: 3_000 });
   const after = render(queries);
   expect(after?.space === "classroom" && after.status).toBe("loading");
   expect(after?.tabs).toEqual([]);

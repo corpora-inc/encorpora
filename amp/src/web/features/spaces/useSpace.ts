@@ -87,27 +87,10 @@ export function useLocationMatch(): SpaceMatch {
  * snapshot, never a cached grant.
  */
 /**
- * When this account's current session began, by account: a sign-in again
- * as the same account (a new token) starts a new generation, and every
- * answer from before it is quarantined until it is asked again. The first
- * session a tab sees keeps what it already has.
+ * The session's generation is when it was established: a sign-in again as
+ * the same account (a new token, the same query keys) starts a new one, and
+ * every answer from before it stays unread until it is asked again.
  */
-const generations = new Map<string, { token: string; since: number }>();
-export function sessionGeneration(
-  session: { accountId: string; token: string } | null,
-  now = Date.now(),
-) {
-  if (!session) return 0;
-  const known = generations.get(session.accountId);
-  if (!known) {
-    generations.set(session.accountId, { token: session.token, since: 0 });
-    return 0;
-  }
-  if (known.token !== session.token)
-    generations.set(session.accountId, { token: session.token, since: now });
-  return generations.get(session.accountId)!.since;
-}
-
 /** An answer the server refused: the place is gone for this person (a
  * revoked role, a removed class), unlike a passing network failure. */
 const refused = (error: unknown) =>
@@ -128,8 +111,9 @@ function current<T>(query: Answer<T>, since: number): T | null | undefined {
 }
 
 export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
-  const session = useQuery(sessionOptions).data ?? null;
-  const since = sessionGeneration(session);
+  const sessionQuery = useQuery(sessionOptions);
+  const session = sessionQuery.data ?? null;
+  const since = sessionQuery.dataUpdatedAt;
   const auth = session ?? { accountId: "", token: "" };
   const student = !!session?.accountId.startsWith("school:");
   const meQuery = useQuery({ ...meOptions(auth), enabled: !!session });
