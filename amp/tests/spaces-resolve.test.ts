@@ -582,7 +582,10 @@ test("shared learning routes: the route's learner, a profile, then yourself", ()
   );
   expectSpace(profile, "me");
   assert.equal(profile.mode, "profile");
-  assert.equal(profile.label, "Grade 4");
+  // The bar names no place in Me (Q-204): its "Practicing as" mark names the
+  // profile.
+  assert.equal(profile.label, "");
+  assert.equal(profile.learner?.id, "profile-4");
   // A learner who isn't this account's is nobody's here: never another child.
   const foreign = resolveSpace(
     at("/overview", { search: { learner: "stranger" } }),
@@ -639,9 +642,10 @@ test("power user: each place looks right on its own terms, and nothing follows t
     "Practice",
     "Levels",
     "Workbooks",
+    "Practice at a level",
     "Profiles",
   ]);
-  // Audit #8: My practice never carries the family's class or a child.
+  // Audit #8: Me never carries the family's class or a child.
   assert.ok(!JSON.stringify(mine.destinations).includes(FAMILY));
   assert.equal(mine.learner?.id, "jonah");
   const family = resolveSpace(
