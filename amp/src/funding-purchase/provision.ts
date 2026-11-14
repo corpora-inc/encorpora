@@ -302,9 +302,12 @@ export async function provisionFundingRequest(
       );
       // The exclusive account lock is acquired before request/order/learner locks.
       // It serializes this bounded operator import with other grant and privacy writers.
+      // `access` was read before the unpaid bridge was revoked just above:
+      // that bridge is being replaced, never an overlap.
       const overlap = access.grants.some(
         (g) =>
           g.status === "active" &&
+          !g.id.startsWith("funded-pending:") &&
           g.starts_at.getTime() < Date.parse(order.license.endsAt) &&
           g.ends_at.getTime() > Date.parse(order.license.startsAt),
       );
