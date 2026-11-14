@@ -2,17 +2,18 @@
  * A family's second parent (docs/families.md), in real browsers on the real
  * API in accounts mode and a real database. Everyone here is synthetic.
  *
- *   1. The account holder, a parent whose child has access, adds a second
- *      parent on the class's Today: an email, Send. The row waits, masked,
- *      with Copy link, Send again and Remove; Account → Family shows it too.
+ *   1. The account holder, a parent whose child has access, opens the
+ *      family (`/family/<family>`), then its People and adds a second
+ *      parent: an email, Send. The row waits, masked, with Copy link, Send
+ *      again and Remove, and the action to invite is gone.
  *   2. Another account opens the mailed link and is told, on one calm screen,
  *      which address the invitation is for, with Use another account.
  *   3. The invited parent opens the link in a second browser, creates an
- *      account with that address and joins as a parent: the class's Today
+ *      account with that address and joins as a parent: the family's Today
  *      with "Let Maya practice here", and nothing that is the holder's.
- *   4. Through the place switcher she reads Maya's Overview and Pathways,
- *      then starts her own practice.
- *   5. The holder sees her joined: the action to invite is gone.
+ *   4. From Today she reads Maya's page, Pathways and Inventory, then
+ *      through the place switcher starts her own practice.
+ *   5. The holder sees her joined on People: the action to invite is gone.
  *
  * Consent and the child's access are written straight in the database, as a
  * verified purchase writes them. Chromium at 390 and 1280 in light and dark,
@@ -111,7 +112,9 @@ await registerSchoolRoutes(app, {
 });
 await app.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
-  cacheDir: "node_modules/.vite-second-parent",
+  // Its own dependency cache, never a shared node_modules.
+  cacheDir:
+    process.env.AMP_VITE_CACHE_DIR ?? "node_modules/.vite-second-parent",
   server: {
     host: "127.0.0.1",
     port: webPort,
@@ -127,7 +130,8 @@ const check = (label: string, ok: boolean, detail: unknown = "") => {
 };
 const PASSWORD = "synthetic long fixture passphrase";
 const last: { page: Page | null } = { page: null };
-const CLASS_TODAY = /\/school\/[0-9a-f-]{36}\/classes\/[0-9a-f-]{36}\/today$/;
+/** A family's Today: its own address (docs/architecture/spaces.md). */
+const FAMILY_TODAY = /\/family\/[0-9a-f-]{36}$/;
 const path = (page: Page) => new URL(page.url()).pathname;
 
 /** Opens a URL; a client-side redirect still under way (WebKit reports it
@@ -210,7 +214,11 @@ async function measured(page: Page, label: string) {
     geometry.midWordWraps,
   );
   const { cls, shifts } = await shellRecord(page);
-  check(`${label} CLS`, cls <= 0.01, { cls, shifts });
+  // Which elements moved, as the browser scored them.
+  const sources = await page.evaluate(
+    () => (window as unknown as { __shiftSources?: string[] }).__shiftSources,
+  );
+  check(`${label} CLS`, cls <= 0.01, { cls, shifts, sources });
 }
 async function newContext(
   browser: Browser,
@@ -223,20 +231,32 @@ async function newContext(
     timezoneId: "America/Chicago",
   });
   await context.addInitScript(shiftRecorder);
+  await context.addInitScript(`(() => {
+    const w = window; w.__shiftSources = [];
+    try {
+      new PerformanceObserver((list) => {
+        for (const e of list.getEntries()) {
+          if (e.hadRecentInput || w.__shiftSources.length > 20) continue;
+          for (const s of e.sources || []) {
+            const n = s.node, el = n && n.nodeType === 1 ? n : n && n.parentElement;
+            const name = el ? el.tagName + (el.getAttribute("class") ? "." + el.getAttribute("class").split(" ")[0] : "") + (el.getAttribute("role") ? "[" + el.getAttribute("role") + "]" : "") + ":" + (el.textContent || "").trim().slice(0, 30) : "?";
+            w.__shiftSources.push(e.value.toFixed(3) + " " + name + " " + Math.round(s.previousRect.y) + "->" + Math.round(s.currentRect.y) + " h" + Math.round(s.previousRect.height) + "->" + Math.round(s.currentRect.height));
+          }
+        }
+      }).observe({ type: "layout-shift", buffered: true });
+    } catch {}
+  })()`);
   return context;
 }
 /** The holder's family: consent and a child with access, as a purchase
- * leaves them. */
+ * leaves them. The child is added as the product adds one, so the family's
+ * class (where its second parent joins) exists. */
 async function family(account: string) {
   await db.query(
     "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES($1,'fixture','verified','synthetic')",
     [account],
   );
-  const id = randomUUID();
-  await db.query(
-    "INSERT INTO amp_learners(id,account_id,name,birth_year) VALUES($1,$2,'Maya',2016)",
-    [id, account],
-  );
+  const { id } = await repository.create(account, "Maya", 2016);
   await db.query(
     "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES($1,$2,'stripe',$1,'active',now()-interval '1 day',now()+interval '300 days')",
     [`fixture-${id}`, id],
@@ -248,27 +268,34 @@ const menuButton = (page: Page) =>
     .getByRole("button", { name: "Open AMP menu" })
     .filter({ visible: true })
     .first();
-/** The place switcher, in the shared drawer. */
-async function openSwitcher(page: Page, from: string) {
+/** The place switcher, in the shared drawer, named by the place it is on. */
+async function openSwitcher(page: Page) {
   await menuButton(page).click();
   await page.getByRole("dialog").waitFor();
-  await page
-    .getByRole("button", { name: new RegExp(`^${from}: switch place$`) })
+  const trigger = page
+    .getByRole("button", { name: /: switch place$/ })
     .filter({ visible: true })
-    .first()
-    .click();
+    .first();
+  const name = (await trigger.getAttribute("aria-label")) ?? "";
+  await trigger.click();
   const menu = page.getByRole("menu");
   await menu.waitFor();
-  return menu;
+  return { menu, from: name.replace(/: switch place$/, "") };
 }
 
-/** A family's own class sends no parent links, whoever teaches it. */
-async function noParentLinks(page: Page, classUrl: string, label: string) {
-  await go(page, classUrl.replace(/\/today$/, "/roster"));
-  await page.getByRole("heading", { name: "Class code" }).waitFor();
+/** A family's People is its parents: never a roster, parent links or a
+ * co-teacher, whoever reads it. Its old class address opens it. */
+async function familyPeople(page: Page, familyUrl: string, label: string) {
+  await go(page, `${familyUrl}/people`);
+  await heading(page, "People");
+  for (const name of ["Parent links", "Invite a co-teacher"])
+    check(
+      `${label} no ${name} on a family's People`,
+      (await page.getByRole("button", { name }).count()) === 0,
+    );
   check(
-    `${label} no Parent links on a family's Students tab`,
-    (await page.getByRole("button", { name: "Parent links" }).count()) === 0,
+    `${label} no class code on a family's People`,
+    (await page.getByRole("heading", { name: "Class code" }).count()) === 0,
   );
 }
 
@@ -296,13 +323,23 @@ async function journey(
   ]);
   const maya = await family(holderAccount);
   await go(holder, `${origin}/`);
-  await holder.waitForURL(CLASS_TODAY);
+  await holder.waitForURL(FAMILY_TODAY);
   await todayTitle(holder);
-  const classUrl = holder.url();
-  const add = holder.getByRole("button", { name: "Add a second parent" });
-  await add.waitFor();
+  const familyUrl = holder.url();
+  check(
+    `${label} the holder's Today offers no second-parent invitation (People does)`,
+    (await holder
+      .getByRole("button", { name: "Add a second parent" })
+      .count()) === 0,
+  );
   await measured(holder, `${label} holder today`);
   await shot(holder, "holder-today", width, theme, engine);
+  await go(holder, `${familyUrl}/people`);
+  await heading(holder, "People");
+  const add = holder.getByRole("button", { name: "Add a second parent" });
+  await add.waitFor();
+  await measured(holder, `${label} holder people`);
+  await shot(holder, "holder-people", width, theme, engine);
   await add.click();
   const rowanEmail = `rowan-${tag}@example.test`;
   const field = holder.getByLabel("Their email");
@@ -316,12 +353,8 @@ async function journey(
   await measured(holder, `${label} invitation sent`);
   await shot(holder, "holder-sent", width, theme, engine);
   await holder.getByRole("button", { name: "Done" }).click();
-  // Today's offer is gone; the row lives with the class's people.
-  await holder
-    .locator('[data-feed="second-parent"]')
-    .waitFor({ state: "detached" });
-  await go(holder, holder.url().replace(/\/today$/, "/roster"));
-  await heading(holder, "People");
+  await holder.getByRole("dialog").waitFor({ state: "detached" });
+  // The row waits on People, in place of the action.
   const waiting = holder.locator('[data-second-parent-row="invited"]');
   await waiting.getByText("Waiting for r…@…").waitFor();
   for (const name of [/Copy link/, /^Send again$/, /^Remove$/])
@@ -339,18 +372,16 @@ async function journey(
   );
   await measured(holder, `${label} waiting`);
   await shot(holder, "holder-waiting", width, theme, engine);
-  // Account → Family shows the same row.
+  // The account's old Family page opens the family's own screens.
   await go(holder, `${origin}/family/learners`);
-  const accountRow = holder.locator('[data-second-parent-row="invited"]');
-  await accountRow.getByText("Waiting for r…@…").waitFor();
-  await measured(holder, `${label} account family`);
-  // After the learner, in the list that scrolls on a phone.
-  await accountRow.scrollIntoViewIfNeeded();
-  await shot(holder, "holder-account-family", width, theme, engine);
+  await holder.waitForURL((address) =>
+    address.href.startsWith(`${familyUrl}/settings`),
+  );
   const mailed = mail.find((sent) => sent.to === rowanEmail);
   check(`${label} the invitation was mailed`, !!mailed, mail);
   if (!mailed) return;
   const link = mailed.url;
+  const joinFamily = /^Join Fern/;
 
   // 2. Another account opens the link.
   const otherContext = await newContext(browser, width, theme);
@@ -358,7 +389,7 @@ async function journey(
   other.setDefaultTimeout(30_000);
   last.page = other;
   await other.goto(link);
-  await heading(other, "Join Fern’s class");
+  await heading(other, joinFamily);
   await other.getByText(`sign in with ${rowanEmail} to accept`).waitFor();
   await measured(other, `${label} link signed out`);
   await shot(other, "link-signed-out", width, theme, engine);
@@ -386,12 +417,12 @@ async function journey(
   rowan.setDefaultTimeout(30_000);
   last.page = rowan;
   await rowan.goto(link);
-  await heading(rowan, "Join Fern’s class");
+  await heading(rowan, joinFamily);
   await rowan.getByRole("link", { name: "Create an account" }).click();
   await rowan.waitForURL(/\/sign-up/);
   await createAccount(rowan, rowanEmail);
   await rowan.waitForURL(/\/school\/invite/);
-  await heading(rowan, "Join Fern’s class");
+  await heading(rowan, joinFamily);
   const rowanAccount = await accountOf(rowan);
   await rowan
     .getByLabel("Your name, as your children will see it")
@@ -399,10 +430,10 @@ async function journey(
   await measured(rowan, `${label} join`);
   await shot(rowan, "join", width, theme, engine);
   await rowan.getByRole("button", { name: "Join as a parent" }).click();
-  await rowan.waitForURL(CLASS_TODAY);
+  await rowan.waitForURL(FAMILY_TODAY);
   check(
-    `${label} she lands on the family's class`,
-    rowan.url() === classUrl,
+    `${label} she lands on the family's Today`,
+    rowan.url() === familyUrl,
     rowan.url(),
   );
   await todayTitle(rowan);
@@ -414,6 +445,7 @@ async function journey(
     "Add a second parent",
     "Invite a co-teacher",
     "Add a child from another family",
+    "Add your kids",
   ])
     check(
       `${label} the second parent isn't offered ${name}`,
@@ -426,61 +458,67 @@ async function journey(
   );
   await measured(rowan, `${label} second parent today`);
   await shot(rowan, "second-parent-today", width, theme, engine);
-  await noParentLinks(rowan, classUrl, `${label} second parent`);
-  await go(rowan, classUrl);
+  await familyPeople(rowan, familyUrl, `${label} second parent`);
+  check(
+    `${label} the second parent's People invites no one`,
+    (await rowan
+      .getByRole("button", { name: "Add a second parent" })
+      .count()) === 0,
+  );
+  await go(rowan, familyUrl);
   await todayTitle(rowan);
 
-  // 4. Maya's progress, then her own practice.
-  const toMaya = await openSwitcher(rowan, "Fern’s class");
-  const places = await toMaya.getByRole("menuitem").allInnerTexts();
-  check(
-    `${label} the switcher lists the class, Maya and her own practice`,
-    places.some((item) => item.includes("Fern’s class")) &&
-      places.some((item) => /^Maya/.test(item)) &&
-      places.some((item) => /Start my own practice/.test(item)),
-    places,
-  );
-  await shot(rowan, "switcher", width, theme, engine);
-  await toMaya
-    .getByRole("menuitem")
-    .filter({ has: rowan.locator(`[data-place="learner:${maya}"]`) })
-    .click();
-  await rowan.waitForURL(/\/overview$/);
+  // 4. Maya's page, Pathways and Inventory, then her own practice.
+  await rowan.locator(`[data-child-link="${maya}"]`).click();
+  await rowan.waitForURL(new RegExp(`/kids/${maya}$`));
   await heading(rowan, "Maya");
   await rowan.getByRole("button", { name: "Let Maya practice here" }).waitFor();
-  check(
-    `${label} the family's decisions aren't offered`,
-    (await rowan.getByRole("button", { name: "Change birth year" }).count()) ===
-      0,
-  );
-  await measured(rowan, `${label} child overview`);
-  await shot(rowan, "child-overview", width, theme, engine);
+  for (const name of ["Change birth year", "Continue with AMP"])
+    check(
+      `${label} the family's decisions aren't offered: ${name}`,
+      (await rowan.getByRole("button", { name }).count()) +
+        (await rowan.getByRole("link", { name }).count()) ===
+        0,
+    );
+  await measured(rowan, `${label} child page`);
+  await shot(rowan, "child-page", width, theme, engine);
   await rowan
     .getByRole("link", { name: "Pathways", exact: true })
     .filter({ visible: true })
     .first()
     .click();
-  await rowan.waitForURL(/\/pathways/);
-  await heading(rowan, "Pathways");
-  // Maya's record: her name in the learner picker, the record's line loaded.
+  await rowan.waitForURL(new RegExp(`/kids/${maya}/pathways`));
+  // Maya's record: the map's own line, loaded.
+  // Her count, in the 3D map and the flat grades view alike.
   await rowan
-    .locator(".pathways-learner")
-    .getByText("Maya")
-    .waitFor({ state: "attached" });
-  await rowan
-    .getByText(/^Skills grow with independent successes/)
+    .getByText(/^0 of \d+ skills earned/)
+    .first()
     .waitFor({ state: "attached" });
   await measured(rowan, `${label} child pathways`);
   await shot(rowan, "child-pathways", width, theme, engine);
-  await rowan
-    .getByRole("link", { name: "Inventory", exact: true })
-    .filter({ visible: true })
-    .first()
-    .click();
-  await rowan.waitForURL(/\/inventory/);
+  await go(rowan, `${familyUrl}/kids/${maya}/inventory`);
   await settle(rowan, 600);
+  check(
+    `${label} Maya's inventory opens`,
+    new URL(rowan.url()).pathname ===
+      `${new URL(familyUrl).pathname}/kids/${maya}/inventory`,
+    rowan.url(),
+  );
   await measured(rowan, `${label} child inventory`);
-  const own = await openSwitcher(rowan, "Maya");
+  const { menu: own, from } = await openSwitcher(rowan);
+  check(
+    `${label} the switcher is on the family, named as its holder named it`,
+    /Fern|family/i.test(from),
+    from,
+  );
+  const places = await own.getByRole("menuitem").allInnerTexts();
+  check(
+    `${label} the switcher lists the family as a second parent, and her own practice`,
+    places.some((item) => /Second parent/.test(item)) &&
+      places.some((item) => /Practice yourself/.test(item)),
+    places,
+  );
+  await shot(rowan, "switcher", width, theme, engine);
   await own
     .getByRole("menuitem")
     .filter({ has: rowan.locator('[data-place="me"]') })
@@ -499,11 +537,12 @@ async function journey(
     })
   ).json();
   check(
-    `${label} her practice is free while Maya has access`,
-    me.family?.learners?.some(
-      (l: { adult?: true; hasAccess?: boolean }) => l.adult && l.hasAccess,
-    ),
-    me.family?.learners,
+    `${label} her practice is covered while Maya has access`,
+    me.adultPractice?.learner?.hasAccess === true ||
+      me.family?.learners?.some(
+        (l: { adult?: true; hasAccess?: boolean }) => l.adult && l.hasAccess,
+      ),
+    { adultPractice: me.adultPractice, family: me.family?.learners },
   );
   check(
     `${label} Maya stays the holder's`,
@@ -514,8 +553,7 @@ async function journey(
 
   // 5. The holder sees her joined.
   last.page = holder;
-  await go(holder, classUrl.replace(/\/today$/, "/roster"));
-  await heading(holder, "People");
+  await familyPeople(holder, familyUrl, `${label} holder`);
   const active = holder.locator('[data-second-parent-row="active"]');
   await active.getByText("Rowan Fixture").waitFor();
   check(
@@ -529,7 +567,6 @@ async function journey(
   );
   await measured(holder, `${label} holder active`);
   await shot(holder, "holder-active", width, theme, engine);
-  await noParentLinks(holder, classUrl, `${label} holder`);
   await holderContext.close();
   void rowanAccount;
 }
