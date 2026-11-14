@@ -612,6 +612,114 @@ test(
     );
 
     await t.test(
+      "released hosted children keep an actionable practice path without a repairing read",
+      async () => {
+        const parent = await user("Released child's parent");
+        await consent(parent.account);
+        const hosted = await ok(
+          post("/api/v1/family/class/students", a.account, {
+            nickname: "Hosted",
+            birthYear: 2017,
+          }),
+          201,
+        );
+        const approval = await ok(
+          post("/api/v1/family/approvals", a.account, {
+            personId: hosted.personId,
+            parentEmail: parent.email,
+          }),
+          201,
+        );
+        const invitation = (
+          await ok(get("/api/v1/family/approvals", a.account))
+        ).approvals.find((entry: { id: string }) => entry.id === approval.id);
+        await ok(
+          post(
+            "/api/v1/family/approvals/open",
+            parent.account,
+            fragment(invitation.inviteUrl),
+          ),
+        );
+        await ok(
+          post(
+            `/api/v1/family/approvals/${approval.id}/approve`,
+            parent.account,
+            { name: "Child" },
+          ),
+        );
+        const stable = (await ok(get("/api/v1/families", parent.account)))
+          .families[0].familyId;
+        await ok(
+          post(`/api/v1/family/approvals/${approval.id}/remove`, a.account),
+        );
+        // No /me or other roster-repairing read between release and projection.
+        const child = (await family(stable, parent.account)).children[0];
+        assert.equal(child.id, hosted.learnerId);
+        assert.equal(child.access.canPractice, true);
+        const path = `/api/v1/family/learners/${hosted.learnerId}/practice-here`;
+        assert.equal((await post(path, parent.account)).statusCode, 201);
+        assert.equal(child.capabilities.practiceHere, true);
+        assert.equal(child.paths.practiceHere, path);
+        const repaired = (await family(stable, parent.account)).children[0];
+        assert.ok(
+          repaired.classes.every(
+            (entry: { orgId: string }) => entry.orgId !== fa.org_id,
+          ),
+        );
+      },
+    );
+    await t.test(
+      "addChildren counts the adult and practice profiles, excluding deleted learners",
+      async () => {
+        const parent = await user("Capacity parent");
+        await consent(parent.account);
+        await ok(
+          post("/api/v1/learners", parent.account, {
+            name: "Child",
+            birthYear: 2017,
+          }),
+          201,
+        );
+        await db.query(
+          "INSERT INTO amp_learners(id,account_id,name,adult,simulation) SELECT gen_random_uuid()::text,$1,'Adult '||n,true,n>1 FROM generate_series(1,999) n",
+          [parent.account],
+        );
+        const home = await familyOf(parent.account);
+        const full = await family(home.org_id, parent.account);
+        assert.equal(full.children.length, 1);
+        assert.equal(
+          (
+            await post("/api/v1/learners", parent.account, {
+              name: "Extra",
+              birthYear: 2017,
+            })
+          ).statusCode,
+          403,
+        );
+        assert.equal(full.capabilities.addChildren, false);
+        await db.query(
+          "UPDATE amp_learners SET deleted_at=now() WHERE id=(SELECT id FROM amp_learners WHERE account_id=$1 AND simulation LIMIT 1)",
+          [parent.account],
+        );
+        assert.equal(
+          (await family(home.org_id, parent.account)).capabilities.addChildren,
+          true,
+        );
+        await ok(
+          post("/api/v1/learners", parent.account, {
+            name: "Extra",
+            birthYear: 2017,
+          }),
+          201,
+        );
+        assert.equal(
+          (await family(home.org_id, parent.account)).capabilities.addChildren,
+          false,
+        );
+      },
+    );
+
+    await t.test(
       "REVIEW: last-name-only and cleared names do not invent a map teacher name",
       async () => {
         await db.query(

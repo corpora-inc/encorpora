@@ -1,6 +1,28 @@
 import { createDatabasePool } from "../src/server/database.js";
 import { readFile, readdir } from "node:fs/promises";
 import { createHash } from "node:crypto";
+
+/** Opt-in, index-only migrations. The restricted grammar deliberately excludes
+ * functions, quoted identifiers and arbitrary SQL; splitting their statements
+ * would require a SQL parser. Ordinary migrations keep their atomic transaction. */
+export function concurrentIndexes(sql: string) {
+  if (!sql.startsWith("-- migrate:concurrent-indexes\n")) return null;
+  const statements = sql
+    .replace(/^--[^\n]*/gm, "")
+    .split(";")
+    .map((statement) => statement.trim())
+    .filter(Boolean);
+  if (!statements.length) throw new Error("Empty concurrent index migration");
+  return statements.map((statement) => {
+    const match =
+      /^CREATE INDEX CONCURRENTLY (amp_[a-z0-9_]+) ON amp_[a-z0-9_]+\s*\([a-z0-9_,\s]+\)(?: WHERE [a-z0-9_]+\s*(?:>=|<=|>|<|=)\s*\d+)?$/i.exec(
+        statement,
+      );
+    if (!match)
+      throw new Error(`Unsupported concurrent index statement: ${statement}`);
+    return { name: match[1]!.toLowerCase(), statement };
+  });
+}
 export async function migrate(connectionString: string) {
   for (let attempt = 0; ; attempt++) {
     try {
@@ -39,14 +61,33 @@ async function migrateOnce(connectionString: string) {
           throw new Error(`Applied migration changed: ${name}`);
         continue;
       }
-      await client.query("BEGIN");
-      await client.query("SET LOCAL lock_timeout='5s'");
-      await client.query(sql);
+      const indexes = concurrentIndexes(sql);
+      if (indexes) {
+        // Keep the session advisory lock across every autocommit statement.
+        // A failed build can leave an INVALID index, and a crash can leave a
+        // valid prefix without the migration receipt. Retry both safely.
+        for (const index of indexes) {
+          const existing = await client.query(
+            "SELECT indisvalid FROM pg_index WHERE indexrelid=to_regclass($1)",
+            [index.name],
+          );
+          if (existing.rows[0]?.indisvalid) continue;
+          if (existing.rows.length)
+            await client.query(`DROP INDEX CONCURRENTLY ${index.name}`);
+          // One query per index: multiple statements in a single query would
+          // create an implicit transaction, even without BEGIN.
+          await client.query(index.statement);
+        }
+      } else {
+        await client.query("BEGIN");
+        await client.query("SET LOCAL lock_timeout='5s'");
+        await client.query(sql);
+      }
       await client.query("INSERT INTO amp_migrations VALUES($1,$2)", [
         name,
         checksum,
       ]);
-      await client.query("COMMIT");
+      if (!indexes) await client.query("COMMIT");
     }
   } catch (error) {
     await client.query("ROLLBACK");

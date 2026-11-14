@@ -1,3 +1,4 @@
+import { applyFixtureMigration } from "./helpers/fixture-migration.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
@@ -541,7 +542,8 @@ test(
             name.endsWith(".sql") && name > "0072-acquisition-outreach.sql",
         )
         .sort())
-        await pool.query(
+        await applyFixtureMigration(
+          pool,
           await readFile(
             new URL(`../migrations/${name}`, import.meta.url),
             "utf8",

@@ -1,3 +1,4 @@
+import { applyFixtureMigration } from "./helpers/fixture-migration.js";
 import assert from "node:assert/strict";
 import { createHash, randomUUID } from "node:crypto";
 import { readFile, readdir } from "node:fs/promises";
@@ -50,7 +51,7 @@ for (const upgrade of [false, true]) {
           .filter((name) => name.endsWith(".sql") && name !== markingMigration)
           .sort()) {
           const sql = await readFile(new URL(name, directory), "utf8");
-          await db.query(sql);
+          await applyFixtureMigration(db, sql);
           await db.query("INSERT INTO amp_migrations VALUES($1,$2)", [
             name,
             createHash("sha256").update(sql).digest("hex"),
