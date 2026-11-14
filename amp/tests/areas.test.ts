@@ -3,11 +3,13 @@ import test from "node:test";
 import { skills } from "../src/curriculum/catalog";
 import { templates } from "../src/math/engine";
 import {
+  ACROSS_AREAS,
   areaIds,
   areaOf,
   areas,
   crossCuttingAreas,
   crossCuttingStrands,
+  byArea,
   easiestFirst,
   strandAreas,
 } from "../src/curriculum/areas";
@@ -97,4 +99,38 @@ test("every skill has a difficulty on the engine's scale", () => {
     const value = skillDifficulty(skill.id, templates, nodes);
     assert(Number.isFinite(value), skill.id);
   }
+});
+
+test("level rows: strands under their areas, families never see modeling or reasoning", () => {
+  const rows = [
+    "modeling",
+    "probability",
+    "measurement",
+    "fractions",
+    "ratio",
+    "number",
+    "reasoning",
+    "algebra",
+  ].map((id) => ({ id }));
+  const family = byArea(rows);
+  assert.deepEqual(
+    family.map((row) => [row.id, row.heading ?? "", !!row.nested]),
+    [
+      ["number", "Number & operations", true],
+      ["fractions", "", true],
+      ["algebra", "Algebra", true],
+      ["ratio", "", true],
+      // An area whose one row is its namesake needs no heading over it.
+      ["measurement", "", false],
+      ["probability", "Data & probability", true],
+    ],
+  );
+  const teacher = byArea(rows, { crossCutting: true });
+  assert.deepEqual(
+    teacher.slice(-2).map((row) => [row.id, row.heading ?? ""]),
+    [
+      ["modeling", ACROSS_AREAS],
+      ["reasoning", ""],
+    ],
+  );
 });
