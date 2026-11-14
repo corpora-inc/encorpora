@@ -249,3 +249,40 @@ test("make ten splits the jump at 10, and area models split by place value", () 
     "Join the parts: 34 × 6 = 180 + 24",
   );
 });
+
+/** The opacity of the first drawn item of a part (a part's items share its id as a prefix); 1 when untouched. */
+const shown = (frame: ReturnType<typeof frameAt>, part: string) => {
+  const hit = Object.entries(frame).find(([id]) => id === part || id.startsWith(part + "."));
+  return hit?.[1].opacity ?? 1;
+};
+const one = (...actions: { do: string; target: string }[]) => ({ caption: " ", actions });
+
+test("taking away a hidden part and bringing in a showing part never flash it", () => {
+  const layout = layoutScene(hopScene, { reveal: true });
+  const mark = "nl.mark.0", hop = "nl.hop.0";
+  // the hop enters at the second step, so it is hidden from the start: clearing it first must not show it
+  const cleared = stepsSchema.parse([one({ do: "disappear", target: hop }), one({ do: "appear", target: hop })]);
+  for (const p of [0, 0.5, 1]) assert.equal(shown(frameAt(layout, cleared, 0, p), hop), 0);
+  assert.equal(shown(frameAt(layout, cleared, 1, 0), hop), 0);
+  assert.equal(shown(frameAt(layout, cleared, 1, 1), hop), 1);
+  // a part that is already hidden stays hidden through a second disappear
+  const twice = stepsSchema.parse([one({ do: "disappear", target: mark }), one({ do: "disappear", target: mark })]);
+  assert.equal(shown(frameAt(layout, twice, 0, 0), mark), 1);
+  assert.equal(shown(frameAt(layout, twice, 0, 1), mark), 0);
+  for (const p of [0, 0.5, 1]) assert.equal(shown(frameAt(layout, twice, 1, p), mark), 0);
+});
+
+test("a step that swaps parts takes the old out before it brings the new in", () => {
+  const layout = layoutScene(hopScene, { reveal: true });
+  const mark = "nl.mark.0", hop = "nl.hop.0";
+  const swap = stepsSchema.parse([one({ do: "disappear", target: mark }, { do: "appear", target: hop })]);
+  const at = (p: number) => { const f = frameAt(layout, swap, 0, p); return [shown(f, mark), shown(f, hop)]; };
+  assert.deepEqual(at(0), [1, 0]);
+  assert.deepEqual(at(0.25), [0.5, 0]);
+  assert.deepEqual(at(0.5), [0, 0]); // never both half-shown in one place
+  assert.deepEqual(at(0.75), [0, 0.5]);
+  assert.deepEqual(at(1), [0, 1]);
+  // a step that only fades one way keeps its whole duration
+  const out = stepsSchema.parse([one({ do: "disappear", target: mark })]);
+  assert.equal(shown(frameAt(layout, out, 0, 0.5), mark), 0.5);
+});
