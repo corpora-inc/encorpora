@@ -20,7 +20,7 @@ import { classUrl, fullDay, LoadFailed } from "./teacher-shared";
 import { FamilyNotice } from "./today/FamilyNotice";
 import { FamilyToday } from "./today/FamilyToday";
 import { Feed } from "./today/Feed";
-import { SignInCode } from "./today/SignInCode";
+import { CodeSlot } from "./today/SignInCode";
 import { todoEntries, useChecks } from "./today/todo-entries";
 import { WeekFacts } from "./today/WeekFacts";
 import todayStyles from "./today/Today.module.css";
@@ -171,8 +171,17 @@ export function TodayScreen() {
   const access = useClassAccess(place);
   const closed = access.closed;
   // The code shows whenever the server says practice is open, including a
-  // class that opens during this visit (CP-3 r6).
+  // class that opens during this visit (CP-3 r6), in a slot that holds its
+  // height either way (CodeSlot).
   const codeShown = !closed;
+  const signInRead = (
+    standing(
+      useQuery({
+        ...classYearOptions(account, place.class),
+        refetchOnMount: false,
+      }),
+    )?.can ?? []
+  ).includes("signin.read");
   const loading =
     access.pending ||
     org.isPending ||
@@ -207,11 +216,18 @@ export function TodayScreen() {
             {/* The code waits for a roster, and for practice. A family's
                 children mostly practice on the parent's device: their code
                 is an option under the children, not the page's lead. */}
-            {code && codeShown && !family && data.students.length > 0 && (
-              <SignInCode
-                code={code}
+            {!family && data.students.length > 0 && signInRead && (
+              <CodeSlot
+                code={(codeShown && code) || null}
+                closedLine={
+                  access.practice === "ended"
+                    ? "Practice has ended"
+                    : access.practice === "waiting"
+                      ? "Practice hasn’t started"
+                      : ""
+                }
                 place={place}
-                words={spaceWords(family ? "family" : "classroom")}
+                words={spaceWords("classroom")}
                 // The bar's Start class opens the board, except in a demo
                 // (its bar leads to the real class).
                 board={demo}

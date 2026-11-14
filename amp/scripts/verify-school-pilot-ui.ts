@@ -257,7 +257,12 @@ try {
   await page.goto(page.url().replace(/\/roster$/, "/today"));
   await page.getByRole("heading", { name: "Practice has ended" }).waitFor();
   // Nothing that leads nowhere: no class code, no cards, no Start.
-  assert.equal(await page.getByText("Copy link").count(), 0);
+  // (The code's slot keeps a hidden height-holder: only what can be used
+  // counts.)
+  assert.equal(
+    await page.getByRole("button", { name: "Copy link" }).count(),
+    0,
+  );
   assert.equal(await page.getByRole("button", { name: /Start/ }).count(), 0);
   await page
     .getByRole("button", { name: "Request seats", exact: true })

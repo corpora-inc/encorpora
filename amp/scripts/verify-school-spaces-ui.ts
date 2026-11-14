@@ -651,13 +651,56 @@ try {
   await start.waitFor();
   assert.equal(await count(teacher, "Start class"), 0, "no Start class yet");
   await capture(teacher, "today-ready");
-  await noShift(teacher, "Start practice on Today", async () => {
-    await start.click();
+  // Practice opens while Today is open, started from another tab: no input
+  // on this page, so the browser's own layout-shift score counts every
+  // move. The code's slot already holds its height (CodeSlot): the code
+  // takes it, and the feed's first item stays where it was at every width.
+  const slot = teacher.locator("[data-code-slot]");
+  assert.equal(await slot.getAttribute("data-code-slot"), "closed");
+  const firstItem = teacher.locator("main [data-feed]").first();
+  const widths = [320, 390, 768, 1280] as const;
+  const tops = async () => {
+    const seen: number[] = [];
+    for (const width of widths) {
+      await teacher.setViewportSize({ width, height: 900 });
+      await settled(teacher);
+      seen.push((await firstItem.boundingBox())!.y);
+    }
+    await teacher.setViewportSize({ width: 390, height: 900 });
+    await settled(teacher);
+    return seen;
+  };
+  const closedTops = await tops();
+  const other = await teacher.context().newPage();
+  await other.goto(`${classUrl}/today`);
+  await other
+    .locator('[data-feed="practice-start"]')
+    .getByRole("button", { name: "Start", exact: true })
+    .click();
+  await other
+    .getByRole("link", { name: "Start class", exact: true })
+    .first()
+    .waitFor();
+  await other.close();
+  await noShift(teacher, "practice opening while Today is open", async () => {
+    await teacher.bringToFront();
+    // Coming back to the tab: the page reads again (its focus refetch
+    // listens for the document becoming visible).
+    await teacher.evaluate(() =>
+      window.dispatchEvent(new Event("visibilitychange")),
+    );
+    await teacher.getByText(`${code.slice(0, 3)}-${code.slice(3)}`).waitFor();
     await teacher
       .getByRole("link", { name: "Start class", exact: true })
       .first()
       .waitFor();
   });
+  assert.equal(await slot.getAttribute("data-code-slot"), "open");
+  assert.deepEqual(
+    await tops(),
+    closedTops,
+    "the feed's first item is where it was, at 320, 390, 768 and 1280",
+  );
   // Started: the board carries the code.
   await teacher.goto(`${classUrl}/start`);
   await teacher.getByText("0 of 4 here").waitFor();
