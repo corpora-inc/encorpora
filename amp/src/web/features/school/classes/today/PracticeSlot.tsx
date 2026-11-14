@@ -3,13 +3,15 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 import { standing } from "../../../../lib/AppError";
 import { Button, buttonClass } from "../../../../ui/Button";
-import { currentSession, orgOptions } from "../../api";
+import { currentSession } from "../../api";
 import { orgPath } from "../../paths";
 import {
   RequestSeatsButton,
   StartPracticeButton,
   startDetail,
   useClassAccess,
+  useBackoffRetry,
+  useEndedStep,
   useRevokeOnRefusal,
 } from "../../pilots/ClassAccess";
 import { presenceOptions } from "../api";
@@ -36,15 +38,15 @@ export function PracticeSlot(props: CodeProps) {
   const presence = useQuery({
     ...presenceOptions(session, place),
     refetchOnMount: false,
+    // A failed read is asked again on a backoff, never by mounting.
+    retryOnMount: false,
   });
+  useBackoffRetry(presence);
   // Refused: no cached code stands, and the class is read again.
   const read = standing(presence);
   useRevokeOnRefusal(presence, place);
   const code = read?.class.joinCode || null;
-  const rollover = !!useQuery({
-    ...orgOptions(session, place.org),
-    refetchOnMount: false,
-  }).data?.can?.includes("year.rollover");
+  const ended = useEndedStep(place);
   // The server said practice opened after the code was read: read the code
   // again (CP-3 r7). Once per answer; "Checking" never outlives the reads.
   const stale =
@@ -102,33 +104,30 @@ export function PracticeSlot(props: CodeProps) {
     shown = <Placeholder />;
   } else if (access.practice === "ended") {
     state = `ended-${access.end ?? "coverage"}`;
-    shown =
-      access.end === "session" ? (
-        // The school year is over: seats can't reopen it. The next year
-        // is the school's to set up.
-        rollover ? (
-          <Line
-            title="This class’s school year is over"
-            action={
-              <Link
-                to="/$"
-                params={{ _splat: orgPath(place.org, "year") }}
-                className={buttonClass("primary")}
-              >
-                Set up next year
-              </Link>
-            }
-          />
-        ) : (
-          <Line
-            title="This class’s school year is over"
-            detail="Its reports and grades stay here."
-          />
-        )
-      ) : access.end === "roster" ? (
-        <Line
-          title="None of its students can sign in today"
-          action={
+    // The step that answers why (useEndedStep, shared with the board,
+    // the cards and Students): only an action that succeeds.
+    shown = (
+      <Line
+        title={ended.title}
+        detail={
+          ended.action
+            ? undefined
+            : access.end === "session"
+              ? "Its reports and grades stay here."
+              : "The class’s teacher can request seats."
+        }
+        action={
+          ended.action === "seats" ? (
+            <RequestSeatsButton primary />
+          ) : ended.action === "year" ? (
+            <Link
+              to="/$"
+              params={{ _splat: orgPath(place.org, "year") }}
+              className={buttonClass("primary")}
+            >
+              Set up next year
+            </Link>
+          ) : ended.action === "students" ? (
             <Link
               to="/school/$org/classes/$class/roster"
               params={place}
@@ -136,19 +135,10 @@ export function PracticeSlot(props: CodeProps) {
             >
               See students
             </Link>
-          }
-        />
-      ) : access.teaches ? (
-        <Line
-          title="Practice has ended"
-          action={<RequestSeatsButton primary />}
-        />
-      ) : (
-        <Line
-          title="Practice has ended"
-          detail="The class’s teacher can request seats."
-        />
-      );
+          ) : undefined
+        }
+      />
+    );
   } else if (view.kind === "start") {
     state = "start";
     shown = (

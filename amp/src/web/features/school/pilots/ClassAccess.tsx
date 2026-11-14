@@ -22,6 +22,7 @@ import { Stepper } from "../../../ui/Stepper";
 import { TextArea } from "../../../ui/TextField";
 import { Toast } from "../../../ui/Toast";
 import { currentSession, orgOptions, refreshSchool } from "../api";
+import { orgPath } from "../paths";
 import { classYearOptions } from "../org/org-api";
 import { useClassSearch } from "../classes/teacher-shared";
 import type { FeedEntry } from "../classes/today/Feed";
@@ -234,6 +235,35 @@ export function useClassAccess(place: Place): {
   };
 }
 
+/** What ended practice's next step is, for this reader (CP-3 r7, r8): the
+ * school year over is the school's next year to set up (seats can't reopen
+ * it), none of its students able to sign in is the roster to look at, and
+ * coverage run out is seats, which only its teacher requests. Every surface
+ * that shows ended practice (Today, the board, the cards, Students) takes
+ * its action from here, so none offers one that can't succeed. */
+export type EndedStep = {
+  title: string;
+  action: "seats" | "year" | "students" | null;
+};
+export function useEndedStep(place: Place): EndedStep {
+  const { end, teaches } = useClassAccess(place);
+  const rollover = !!useQuery({
+    ...orgOptions(currentSession(), place.org),
+    refetchOnMount: false,
+  }).data?.can?.includes("year.rollover");
+  if (end === "session")
+    return {
+      title: "This class’s school year is over",
+      action: rollover ? "year" : null,
+    };
+  if (end === "roster")
+    return {
+      title: "None of its students can sign in today",
+      action: "students",
+    };
+  return { title: "Practice has ended", action: teaches ? "seats" : null };
+}
+
 /** A read of the class refused (401, 403, 404: this reader lost it): the
  * class's own state is read again at once, so every screen's cached
  * answers and capabilities give way to the refusal (`standing`), never
@@ -254,7 +284,39 @@ export function useRevokeOnRefusal(
 /** The longest a screen waits before measuring again. */
 const MAX_WAIT_MS = 60 * 60 * 1000;
 /** How soon a failed recheck is asked again, then every minute. */
-const RETRY_MS = [5_000, 15_000, 60_000] as const;
+export const RETRY_MS = [5_000, 15_000, 60_000] as const;
+
+/** A failed read (not a refusal) is asked again on the practice recheck's
+ * own spacing, 5 s, 15 s, then every minute, never in a burst (CP-3 r8).
+ * The count starts over at the next answer. */
+export function useBackoffRetry(query: {
+  isError: boolean;
+  isFetching: boolean;
+  error: unknown;
+  errorUpdatedAt: number;
+  dataUpdatedAt: number;
+  refetch: (options?: { cancelRefetch?: boolean }) => unknown;
+}) {
+  const failures = useRef({ since: query.dataUpdatedAt, seen: 0, count: 0 });
+  if (failures.current.since !== query.dataUpdatedAt)
+    failures.current = { since: query.dataUpdatedAt, seen: 0, count: 0 };
+  if (query.isError && failures.current.seen !== query.errorUpdatedAt) {
+    failures.current.seen = query.errorUpdatedAt;
+    failures.current.count++;
+  }
+  const waiting = query.isError && !refused(query.error) && !query.isFetching;
+  useEffect(() => {
+    if (!waiting) return;
+    const delay =
+      RETRY_MS[Math.min(failures.current.count, RETRY_MS.length) - 1] ??
+      RETRY_MS[0]!;
+    const again = setTimeout(
+      () => void query.refetch({ cancelRefetch: false }),
+      delay,
+    );
+    return () => clearTimeout(again);
+  }, [waiting, query.errorUpdatedAt]);
+}
 
 /** How long until the class should be asked again, in the server's time:
  * its `recheckAt` less its clock at the answer, less what this page's
@@ -360,6 +422,8 @@ export function accessFeedEntry(
   place: Place,
   pilot: PilotState | undefined,
   canRequest: boolean,
+  /** The ended step (`useEndedStep`): seats only where seats answer it. */
+  ended?: EndedStep,
 ): FeedEntry | null {
   // Starting is required, the rest are states: none has a box to tick.
   const entry = (
@@ -398,9 +462,11 @@ export function accessFeedEntry(
       );
     case "ended":
       return entry(
-        "Practice has ended",
+        ended?.title ?? "Practice has ended",
         "",
-        canRequest ? <RequestSeatsButton primary /> : null,
+        canRequest && (!ended || ended.action === "seats") ? (
+          <RequestSeatsButton primary />
+        ) : null,
       );
     case "partial":
       return entry(
@@ -427,10 +493,12 @@ export function AccessHeaderAction({
   place: Place;
   pilot: PilotState | undefined;
 }) {
-  const { teaches } = useClassAccess(place);
+  const ended = useEndedStep(place);
   if (view.kind === "start")
     return <StartPracticeButton place={place} pilot={pilot} />;
-  if (view.kind === "ended" && teaches) return <RequestSeatsButton primary />;
+  // Seats only where seats are the answer (not an ended school year).
+  if (view.kind === "ended" && ended.action === "seats")
+    return <RequestSeatsButton primary />;
   return null;
 }
 
@@ -815,7 +883,8 @@ export function ClosedSignIn({
   known?: Practice;
 }) {
   const access = useClassAccess(place);
-  const { view, pilot, teaches, retry } = access;
+  const { view, pilot, retry } = access;
+  const ended = useEndedStep(place);
   // The fresher answer wins over a cached open or unknown one.
   const practice =
     known &&
@@ -911,13 +980,29 @@ export function ClosedSignIn({
     );
   return (
     <EmptyState
-      title="Practice has ended"
+      title={ended.title}
       action={actions(
-        teaches
-          ? to("Request seats", { seats: 1 })
-          : also
-            ? null
-            : to("Back to Today"),
+        ended.action === "seats" ? (
+          to("Request seats", { seats: 1 })
+        ) : ended.action === "year" ? (
+          <Link
+            to="/$"
+            params={{ _splat: orgPath(place.org, "year") }}
+            className={buttonClass("primary")}
+          >
+            Set up next year
+          </Link>
+        ) : ended.action === "students" ? (
+          <Link
+            to="/school/$org/classes/$class/roster"
+            params={place}
+            className={buttonClass("primary")}
+          >
+            See students
+          </Link>
+        ) : also ? null : (
+          to("Back to Today")
+        ),
       )}
     >
       Reports, exports and workbooks stay with the class.

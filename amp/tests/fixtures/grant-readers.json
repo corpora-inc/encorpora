@@ -256,12 +256,12 @@
   },
   {
     "path": "src/schools/pilot-access.ts",
-    "hash": "8ef655f80a51775b98632c2f09fe8d03315ab9eeff65d05e691b24afd38552d2",
+    "hash": "dbd25a383707c709e8a853d4f833d107b64768499986847d17b81b7e8807ca63",
     "reason": "classRecheckAt executes exactly the classRecheckQuery statement inventoried above (student enrollment grants only, scheduling a re-read)."
   },
   {
     "path": "src/schools/pilot-access.ts",
-    "hash": "be84f2484a50787db1e1ca0ddb858b797e64c7e823517066d57505f989e55087",
+    "hash": "3324086f50167604b289db68b501f498ea225004077fe7641e653d2b6e6801b4",
     "reason": "Class practice recheck statement reads grant start and end moments of the class's student enrollments only, per pupil; it schedules a re-read and never authorizes adult learning."
   },
   {

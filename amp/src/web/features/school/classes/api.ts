@@ -7,6 +7,7 @@ import {
 import { useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { z } from "zod";
+import { keepRefusal } from "../../../lib/AppError";
 import {
   issuedCardsResource,
   orgResource,
@@ -42,16 +43,22 @@ export function useStaffSession() {
   return session.data ?? null;
 }
 
-export const presenceOptions = (session: Session, place: Place) =>
-  queryOptions({
-    queryKey: key(session, place, "presence"),
+export const presenceOptions = (session: Session, place: Place) => {
+  const queryKey = key(session, place, "presence");
+  return queryOptions({
+    queryKey,
     enabled: !!session,
+    // A refusal stands until a successful read (CP-3 r8): a later 503
+    // never brings back the code and names it cleared.
     queryFn: ({ signal }) =>
-      request(`${classPath(place)}/presence`, presenceResource, {
-        token: session?.token,
-        signal,
-      }),
+      keepRefusal(queryKey, () =>
+        request(`${classPath(place)}/presence`, presenceResource, {
+          token: session?.token,
+          signal,
+        }),
+      ),
   });
+};
 export const rosterOptions = (session: Session, place: Place) =>
   queryOptions({
     queryKey: key(session, place, "roster"),

@@ -27,6 +27,7 @@ import todayStyles from "./today/Today.module.css";
 import styles from "./Teacher.module.css";
 import {
   accessFeedEntry,
+  useEndedStep,
   AccessSheets,
   useClassAccess,
 } from "../pilots/ClassAccess";
@@ -68,11 +69,13 @@ function ClassToday({
     )?.can ?? [],
   );
   const adds = can.has("class.import") || can.has("students.add");
+  const ended = useEndedStep(place);
   const entry = accessFeedEntry(
     access.view,
     place,
     access.pilot,
     access.teaches,
+    ended,
   );
   // Practice running, but not for everyone, or ending soon: said in the
   // feed beside the code. The rest is the header slot's.
@@ -196,7 +199,9 @@ export function TodayScreen() {
     access.pending ||
     org.isPending ||
     today.isPending ||
-    presence.isPending ||
+    // A class's code has its own place (PracticeSlot), loading or failing
+    // there without holding the page: only a family's Today waits for it.
+    (family && presence.isPending) ||
     (holder && secondParent.isPending);
   return (
     <ClassFrame

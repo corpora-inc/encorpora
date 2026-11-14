@@ -15,7 +15,7 @@ import {
 } from "../../../schools/setup-contracts";
 import type { RosterRow } from "../../../schools/sources/rows";
 import type { AuthSession } from "../../auth";
-import { AppError } from "../../lib/AppError";
+import { AppError, keepRefusal } from "../../lib/AppError";
 import { request } from "../../lib/api";
 import {
   invalidateAccount,
@@ -111,14 +111,19 @@ export const orgsOptions = (session: AuthSession) =>
         signal,
       }).then((data) => data.orgs),
   });
-export const orgOptions = (session: AuthSession, orgId: string) =>
-  queryOptions({
-    queryKey: keyFor(session, "org", orgId),
+export const orgOptions = (session: AuthSession, orgId: string) => {
+  const queryKey = keyFor(session, "org", orgId);
+  return queryOptions({
+    queryKey,
+    // A refusal stands until a successful read (CP-3 r8).
     queryFn: ({ signal }) =>
-      call(`/orgs/${orgId}`, z.object({ org: orgResource }), session, {
-        signal,
-      }).then((data) => data.org),
+      keepRefusal(queryKey, () =>
+        call(`/orgs/${orgId}`, z.object({ org: orgResource }), session, {
+          signal,
+        }),
+      ).then((data) => data.org),
   });
+};
 export const setupOptions = (session: AuthSession, orgId: string) =>
   queryOptions({
     queryKey: keyFor(session, "org", orgId, "setup"),

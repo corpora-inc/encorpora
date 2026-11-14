@@ -783,6 +783,39 @@ try {
   await teacher.goto(`${classUrl}/today`);
   await teacher.getByText(`${code.slice(0, 3)}-${code.slice(3)}`).waitFor();
   await capture(teacher, "today-active");
+  // The code's first read fails (CP-3 r8): Today keeps its frame and feed,
+  // says so in its slot with Try again, and asks again on the practice
+  // recheck's spacing (5 s, 15 s, then a minute), never in a burst; a
+  // failed Try again says so again; a working one shows the code.
+  const failingPresence = `**/api/v1/school/classes/${created.class_id}/presence`;
+  let presenceReads = 0;
+  await teacher.route(failingPresence, (route) => {
+    presenceReads++;
+    return route.fulfill({
+      status: 503,
+      json: { error: "school_service_unavailable" },
+    });
+  });
+  await teacher.reload();
+  const failedSlot = teacher.locator('[data-code-slot="unavailable"]');
+  await failedSlot.getByText("Couldn’t load the class code").waitFor();
+  await teacher.locator("[data-today-title]").waitFor();
+  await teacher.waitForTimeout(16_000);
+  assert.ok(
+    presenceReads >= 2 && presenceReads <= 4,
+    `a failed code read is asked again on a backoff, not in a burst: ${presenceReads} reads in 16 s`,
+  );
+  assert.equal(await teacher.locator(".app-loading").count(), 0);
+  await teacher.locator("[data-today-title]").waitFor();
+  const beforeRetry = presenceReads;
+  await failedSlot.getByRole("button", { name: "Try again" }).click();
+  await teacher.waitForTimeout(1_000);
+  assert.ok(presenceReads > beforeRetry, "Try again reads the code");
+  await failedSlot.getByRole("button", { name: "Try again" }).waitFor();
+  await capture(teacher, "today-code-failed");
+  await teacher.unroute(failingPresence);
+  await failedSlot.getByRole("button", { name: "Try again" }).click();
+  await teacher.getByText(`${code.slice(0, 3)}-${code.slice(3)}`).waitFor();
 
   // A student: from the code to a first problem.
   const student = await device();

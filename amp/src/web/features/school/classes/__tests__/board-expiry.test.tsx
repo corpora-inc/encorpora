@@ -43,12 +43,15 @@ async function board({
   after,
   failing = 0,
   refused = false,
+  end,
   delayFirst = 0,
   alone = false,
 }: {
   recheckIn: number;
   skew: number;
   after: "ended" | "open";
+  /** Why practice ended, when the server says (CP-3 r7). */
+  end?: "session" | "roster" | "coverage";
   /** Year reads after the moment that fail (503) before one answers. */
   failing?: number;
   /** Every year read from now on is refused (404): the reader lost the
@@ -90,8 +93,10 @@ async function board({
   const serverNow = () => SERVER + (performance.now() - start);
   const recheckAt = SERVER + recheckIn;
   let reads = 0;
-  // The board's reader loses the class: every read of it is refused.
+  // The board's reader loses the class: every read of it is refused; or
+  // the service is down: every read of it fails.
   let revoked = false;
+  let down = false;
   const json = (body: unknown) =>
     new Response(JSON.stringify(body), {
       status: 200,
@@ -128,6 +133,7 @@ async function board({
       return json({
         past: false,
         practice: ended ? "ended" : "open",
+        ...(ended && end ? { practiceEnd: end } : {}),
         can: ["signin.read", "signin.manage"],
         recheckAt: ended
           ? null
@@ -147,6 +153,11 @@ async function board({
         authorized: true,
         coverage: { students: 1, paid: 0, covered: ended ? 0 : 1 },
       });
+    if (down && (url.includes("/presence") || url.includes("/year")))
+      return new Response(
+        JSON.stringify({ error: "school_service_unavailable" }),
+        { status: 503, headers: { "content-type": "application/json" } },
+      );
     if (revoked && (url.includes("/presence") || url.includes("/year")))
       return new Response(JSON.stringify({ error: "not_found" }), {
         status: 404,
@@ -237,6 +248,22 @@ async function board({
     revoke: () => {
       revoked = true;
     },
+    /** The service fails (503), or answers again for this reader. */
+    serve: (state: "down" | "ok") => {
+      down = state === "down";
+      revoked = false;
+    },
+    /** The class is read again (a focus, a visibility change). */
+    refresh: () =>
+      act(async () => {
+        await queryClient
+          .refetchQueries({
+            predicate: (query) =>
+              query.queryKey.includes("presence") ||
+              query.queryKey.includes("class-year"),
+          })
+          .catch(() => undefined);
+      }),
     longest: () => Math.max(0, ...delays),
     code: () => screen.queryByRole("img", { name: /Class code A B C D E F/ }),
     advance: (ms: number) =>
@@ -384,4 +411,43 @@ test("a reader refused on the board's next poll loses its code and names at once
     screen.getByRole("heading", { name: "This class isn’t open to you" }),
   ).toBeTruthy();
   expect(screen.queryByText(/Reconnecting/)).toBeNull();
+});
+
+test("a refusal stands through later failures: only a successful read brings the board back (CP-3 r8)", async () => {
+  const page = await board({ recheckIn: 30 * 864e5, skew: 0, after: "open" });
+  expect(page.code()).toBeTruthy();
+  page.revoke();
+  await page.advance(4_500);
+  await page.advance(100);
+  expect(page.code()).toBeNull();
+  // The service fails; the screens read again: the refused code and
+  // names stay gone (a 503 is no answer for this reader).
+  page.serve("down");
+  await page.refresh();
+  await page.advance(100);
+  expect(page.code()).toBeNull();
+  expect(screen.queryByText("Ana B.")).toBeNull();
+  expect(screen.queryByText(/Reconnecting/)).toBeNull();
+  // A successful read for this session says otherwise: back.
+  page.serve("ok");
+  await page.refresh();
+  await page.advance(100);
+  await page.refresh();
+  await page.advance(100);
+  expect(page.code()).toBeTruthy();
+});
+
+test("a school year that's over offers no seats on the board (CP-3 r8)", async () => {
+  await board({ recheckIn: 15_000, skew: 0, after: "ended", end: "session" });
+  await act(async () => {
+    await vi.advanceTimersByTimeAsync(16_000);
+  });
+  await act(async () => {
+    await vi.advanceTimersByTimeAsync(1_000);
+  });
+  expect(
+    screen.getByRole("heading", { name: "This class’s school year is over" }),
+  ).toBeTruthy();
+  expect(screen.queryByRole("link", { name: "Request seats" })).toBeNull();
+  expect(screen.queryByRole("button", { name: "Request seats" })).toBeNull();
 });

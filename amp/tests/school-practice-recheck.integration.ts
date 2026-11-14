@@ -855,6 +855,26 @@ test(
     );
     await crowd(other, 20_000, "unrelated");
     const big = await crowd(orgId, 1_000, "big");
+    // And the district's own history: 20,000 unrelated classes, each with
+    // its teacher's pilot and an extension, and 20,000 licenses.
+    await db.query(
+      `WITH made AS (SELECT gen_random_uuid() AS class,gen_random_uuid() AS pilot,g FROM generate_series(1,20000) g),
+       c AS (INSERT INTO amp_classes(id,org_id,name,join_code,session_id)
+         SELECT class,$1,'History '||g,'HIST-'||g,$2 FROM made),
+       t AS (INSERT INTO amp_teacher_pilots(id,account_id,started_at,ends_at,grace_ends_at)
+         SELECT pilot,'history-'||g,now()-interval '60 days',now()-interval '30 days',now()-interval '20 days' FROM made),
+       cp AS (INSERT INTO amp_class_pilots(class_id,pilot_id,activated_by)
+         SELECT class,pilot,(SELECT id FROM amp_people LIMIT 1) FROM made)
+       INSERT INTO amp_pilot_extensions(id,pilot_id,until_at,reason,operator_reference)
+       SELECT gen_random_uuid(),pilot,now()-interval '10 days','history','history' FROM made`,
+      [other, session],
+    );
+    await db.query(
+      `INSERT INTO amp_school_licenses(id,org_id,seats,starts_at,ends_at,status)
+       SELECT gen_random_uuid(),$1,10,now()-interval '400 days',now()-interval '30 days','active'
+       FROM generate_series(1,20000)`,
+      [other],
+    );
     const connection = randomUUID();
     const run = randomUUID();
     await db.query(
@@ -881,15 +901,29 @@ test(
       givenName: "Vera",
       accountId: reader,
     });
-    /** Rows each relation was read for, filtered ones included. */
+    /** Rows each relation, and each intermediate result (a CTE read
+     * again), was read for, filtered ones included; and the median
+     * execution time of three runs. */
     const visited = async (klass: string) => {
-      const { text, values } = classRecheckQuery(klass, reader);
-      const plan = (
-        await db.query(`EXPLAIN (ANALYZE, FORMAT JSON) ${text}`, values)
-      ).rows[0]["QUERY PLAN"][0].Plan;
+      const { text, values } = await classRecheckQuery(db, klass, reader);
+      const runs: {
+        Plan: Record<string, unknown>;
+        "Execution Time": number;
+      }[] = [];
+      for (let run = 0; run < 3; run++)
+        runs.push(
+          (await db.query(`EXPLAIN (ANALYZE, FORMAT JSON) ${text}`, values))
+            .rows[0]["QUERY PLAN"][0],
+        );
+      const ms = runs
+        .map((run) => run["Execution Time"])
+        .sort((a, b) => a - b)[1]!;
+      const plan = runs[1]!.Plan;
       const rows = new Map<string, number>();
       const walk = (node: Record<string, unknown>) => {
-        const relation = node["Relation Name"] as string | undefined;
+        const relation =
+          (node["Relation Name"] as string | undefined) ??
+          (node["CTE Name"] ? `cte ${node["CTE Name"] as string}` : undefined);
         if (relation)
           rows.set(
             relation,
@@ -903,20 +937,28 @@ test(
           walk(child);
       };
       walk(plan);
-      return rows;
+      return { rows, ms };
     };
     // Each relation is read for a few rows per pupil (their enrollment,
     // role, person, learner's grants), never for the district's 20,000.
-    for (const [klass, pupils] of [
-      [classId, 2],
-      [big, 1_000],
+    // And it is quick: a class of a thousand in well under 100 ms (the
+    // set-based round 7 read took ~31 ms here; a join of every pupil's rows
+    // against every other's took ~740).
+    for (const [klass, pupils, budget] of [
+      [classId, 2, 20],
+      [big, 1_000, 100],
     ] as const) {
-      const rows = await visited(klass);
+      const { rows, ms } = await visited(klass);
       for (const [relation, count] of rows)
         assert.ok(
-          count <= 4 * pupils + 50,
+          count <= 8 * pupils + 50,
           `${relation}: ${count} rows read for a class of ${pupils} (${JSON.stringify([...rows])})`,
         );
+      assert.ok(
+        ms < budget,
+        `a class of ${pupils}: ${ms} ms, over its ${budget} ms budget`,
+      );
+      console.log(`  recheck for a class of ${pupils}: ${ms.toFixed(2)} ms`);
     }
   },
 );

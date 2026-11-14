@@ -19,7 +19,7 @@ import {
 } from "../../../../schools/org-contracts";
 import { schoolActions } from "../../../../schools/contracts";
 import type { AuthSession } from "../../../auth";
-import { AppError } from "../../../lib/AppError";
+import { AppError, keepRefusal } from "../../../lib/AppError";
 import { call, keyFor } from "../api";
 
 export const overviewOptions = (session: AuthSession, orgId: string) =>
@@ -74,19 +74,24 @@ export const classYearResource = z.object({
   receivedAt: z.number().optional(),
 });
 export type ClassYear = z.infer<typeof classYearResource>;
-export const classYearOptions = (session: AuthSession, classId: string) =>
-  queryOptions({
-    queryKey: keyFor(session, "class-year", classId),
+export const classYearOptions = (session: AuthSession, classId: string) => {
+  const queryKey = keyFor(session, "class-year", classId);
+  return queryOptions({
+    queryKey,
     queryFn: ({ signal }) => {
       // Anchored when asked, not when answered: the server's clock was
       // read after this, so counting from here never postpones a moment
       // by however long the answer took (CP-3 r5).
       const asked = performance.now();
-      return call(`/classes/${classId}/year`, classYearResource, session, {
-        signal,
-      }).then((year): ClassYear => ({ ...year, receivedAt: asked }));
+      // A refusal stands until a successful read (CP-3 r8).
+      return keepRefusal(queryKey, () =>
+        call(`/classes/${classId}/year`, classYearResource, session, {
+          signal,
+        }),
+      ).then((year): ClassYear => ({ ...year, receivedAt: asked }));
     },
   });
+};
 export const rolloverOptions = (session: AuthSession, orgId: string) =>
   queryOptions({
     queryKey: keyFor(session, "org", orgId, "year"),
