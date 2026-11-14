@@ -1,6 +1,17 @@
-import { useQueries } from "@tanstack/react-query";
+import { useQueries, useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
-import { useEffect, useMemo, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
+import type { GradingKind } from "../../../schools/contracts";
+import { AppError } from "../../lib/AppError";
+import { Toast } from "../../ui/Toast";
+import {
+  classesOptions,
+  orgOptions,
+  refreshSchool,
+  school,
+} from "../school/api";
+import { divisionLabels } from "../../../schools/calendar";
+import { YearCalendar } from "../school/CalendarScreen";
 import type { MapResponse } from "../../../schools/teacher-contracts";
 import { downloadPdf, paperFormat } from "../../lib/pdf-download";
 import { buttonClass } from "../../ui/Button";
@@ -42,6 +53,7 @@ const WORDS: ClassHost["words"] = {
   learners: "children",
   Learner: "Child",
   group: "your kids",
+  taughtBy: "Taught by",
 };
 
 /** A class screen's sibling, at the family's own address. */
@@ -92,6 +104,13 @@ function useFamilyHost(place: FamilyPlace): ClassHost | null {
     keep: (person) => people.has(person),
     words: WORDS,
     decider: "the parent",
+    // Other families' children in the same class: whatever acts on the
+    // whole class is the tutoring group's, never the family's.
+    shared: !!data?.teachingPlace,
+    record: (person) => {
+      const learner = people.get(person);
+      return learner ? familyHref(family, `kids/${learner}`) : null;
+    },
   };
 }
 
@@ -567,11 +586,94 @@ export function FamilyReportsScreen() {
                   <ReportCards host={host} framed />
                 </section>
               )}
+              {graded && host && place.own && (
+                <GradingPeriods place={place} shared={!!host.shared} />
+              )}
             </>
           )}
         </div>
       )}
     </FamilyFrame>
+  );
+}
+
+/**
+ * The family's grading periods: the school year, or the year in semesters,
+ * trimesters or quarters, with their dates. A report card is one per period.
+ * A class that also holds other families' children keeps its periods with
+ * its tutoring group: the choice changes everyone's.
+ */
+function GradingPeriods({
+  place,
+  shared,
+}: {
+  place: FamilyPlace;
+  shared: boolean;
+}) {
+  const own = place.own!;
+  const { session } = place;
+  const org = useQuery(orgOptions(session, own.org)).data;
+  const classes = useQuery(classesOptions(session, own.org));
+  const klass = classes.data?.find((entry) => entry.id === own.id);
+  const [notice, setNotice] = useState("");
+  const [error, setError] = useState("");
+  if (!org?.can?.includes("calendar.read") || !klass) return null;
+  const canEdit =
+    !shared &&
+    (org.can.includes("classes.update") || !!org.teaches?.includes(own.id));
+  const pick = (gradingKind: GradingKind) =>
+    void school
+      .updateClass(session, own.org, own.id, { gradingKind })
+      .then(() => refreshSchool(session))
+      .then(() =>
+        setNotice(
+          gradingKind === "year" || gradingKind === "custom"
+            ? "Report cards cover the whole school year."
+            : `A report card for each ${divisionLabels[gradingKind].one.toLowerCase()}.`,
+        ),
+      )
+      .catch((failure) => {
+        console.error("The grading periods didn’t save", failure);
+        setError(
+          failure instanceof AppError
+            ? failure.message
+            : "That change didn’t save. Try again.",
+        );
+      });
+  return (
+    <section aria-labelledby="reports-periods" className={styles.section}>
+      <div className={styles.settingText}>
+        <h2 id="reports-periods">Grading periods</h2>
+        <p className={styles.footnote}>
+          {shared
+            ? "Your tutoring group shares one school year and its grading periods, so they’re set with the group."
+            : "One report card for each period. Their dates are yours to change."}
+        </p>
+      </div>
+      {shared ? (
+        // The whole group's calendar: changed with the group, never here.
+        <Link
+          to="/$"
+          params={{ _splat: `school/${own.org}/classes/${own.id}/settings` }}
+          className={buttonClass("secondary")}
+          style={{ justifySelf: "start" }}
+        >
+          Open the group’s calendar
+        </Link>
+      ) : (
+        <YearCalendar
+          orgId={own.org}
+          compact
+          grading={{
+            value: klass.gradingKind,
+            onChange: pick,
+            disabled: !canEdit,
+          }}
+        />
+      )}
+      <Toast tone="status" message={notice} onDismiss={() => setNotice("")} />
+      <Toast message={error} onDismiss={() => setError("")} />
+    </section>
   );
 }
 

@@ -24,7 +24,13 @@ import { Stepper } from "../../../ui/Stepper";
 import { Toast } from "../../../ui/Toast";
 import { currentSession, orgOptions } from "../api";
 import { useStaffSession } from "./api";
-import { useClassHost, type ClassHost } from "./host";
+import {
+  keptPerson,
+  offersWholeClass,
+  useClassHost,
+  wholeClass,
+  type ClassHost,
+} from "./host";
 import { EvidenceSheet } from "./EvidenceSheet";
 import { FinalField, Suggested } from "./grade-parts";
 import { CurveSheet, CurveStrip } from "./GradeCurve";
@@ -85,6 +91,8 @@ function ExportSheet({
   term,
   onMessage,
   onError,
+  words,
+  school,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -93,9 +101,17 @@ function ExportSheet({
   term: TermResource;
   onMessage: (message: string) => void;
   onError: (message: string) => void;
+  /** What the page calls the people in it. */
+  words: ClassHost["words"];
+  /** A school's class: its SIS ID and a OneRoster file. Elsewhere, a plain
+   * spreadsheet of the grades. */
+  school: boolean;
 }) {
+  const offered = gradebookColumns.filter(
+    (column) => school || column !== "sis",
+  );
   const [columns, setColumns] = useState<ReadonlySet<GradebookColumn>>(
-    () => new Set(gradebookColumns),
+    () => new Set(offered),
   );
   const [busy, setBusy] = useState<"csv" | "zip" | null>(null);
   const run = (kind: "csv" | "zip") => {
@@ -105,7 +121,7 @@ function ExportSheet({
           session,
           place,
           term.id,
-          gradebookColumns.filter((column) => columns.has(column)),
+          offered.filter((column) => columns.has(column)),
         )
       : downloadOneRoster(session, place, term.id)
     )
@@ -132,13 +148,14 @@ function ExportSheet({
     >
       <div className={styles.exportSheet}>
         <section>
-          <h3>Gradebook CSV</h3>
+          <h3>{school ? "Gradebook CSV" : "A spreadsheet of the grades"}</h3>
           <p className={styles.exportHint}>
-            A column for each thing your gradebook or SIS needs. Blend it with
-            the rest of the course grade however your school does.
+            {school
+              ? "A column for each thing your gradebook or SIS needs. Blend it with the rest of the course grade however your school does."
+              : `A row for each ${words.learner}, with the columns you choose: for a portfolio or a program’s records.`}
           </p>
           <div className={styles.columnPicks}>
-            {gradebookColumns.map((column) => (
+            {offered.map((column) => (
               <label key={column} className={styles.columnPick}>
                 <CheckboxControl
                   checked={columns.has(column)}
@@ -149,7 +166,11 @@ function ExportSheet({
                     setColumns(next);
                   }}
                 />
-                <span>{COLUMN_LABELS[column]}</span>
+                <span>
+                  {column === "name"
+                    ? `${words.Learner} name`
+                    : COLUMN_LABELS[column]}
+                </span>
               </label>
             ))}
           </div>
@@ -168,21 +189,23 @@ function ExportSheet({
             </p>
           )}
         </section>
-        <section>
-          <h3>OneRoster 1.2</h3>
-          <p className={styles.exportHint}>
-            A ZIP with lineItems.csv and results.csv, for an SIS that imports
-            OneRoster. Only final grades you’ve entered are sent.
-          </p>
-          <Button
-            variant="secondary"
-            aria-busy={busy === "zip" || undefined}
-            disabled={busy !== null}
-            onClick={() => run("zip")}
-          >
-            Download ZIP
-          </Button>
-        </section>
+        {school && (
+          <section>
+            <h3>OneRoster 1.2</h3>
+            <p className={styles.exportHint}>
+              A ZIP with lineItems.csv and results.csv, for an SIS that imports
+              OneRoster. Only final grades you’ve entered are sent.
+            </p>
+            <Button
+              variant="secondary"
+              aria-busy={busy === "zip" || undefined}
+              disabled={busy !== null}
+              onClick={() => run("zip")}
+            >
+              Download ZIP
+            </Button>
+          </section>
+        )}
       </div>
     </Sheet>
   );
@@ -317,7 +340,9 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
   const [error, setError] = useState("");
   const [closingHere, setClosing] = useState(false);
   // Settings of a small class opens this with `?close=1`.
-  const closing = closingHere || search.close === 1 || search.close === "1";
+  const closing =
+    (closingHere || search.close === 1 || search.close === "1") &&
+    offersWholeClass(host);
   const stopClosing = () => {
     setClosing(false);
     if (search.close) set({ close: undefined });
@@ -333,11 +358,18 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
     // `set` changes each render; this is about the failure.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [unknownTerm]);
-  const open = uuidOr(search.student);
+  // Only a person this page shows ever opens, whatever the address says.
+  const open = keptPerson(host, uuidOr(search.student));
   const editable = !!data?.canEdit && term?.state === "open";
   const rows = (data?.students ?? []).filter(
     (row) => !host.keep || host.keep(row.id),
   );
+  // Whatever acts on the whole class (export, closing the term, the curve)
+  // is offered only where this page shows the whole class, so what it says
+  // it will change is exactly what the server changes.
+  const whole = wholeClass(host, rows.length, data?.students.length ?? 0);
+  // The curve and every figure read the people shown, never the others.
+  const shown = data && host.keep ? { ...data, students: rows } : data;
   const entered = rows.filter((row) => row.final).length;
   // Who the sheet showed last, once the URL has already moved on.
   const lastOpen = useRef(open);
@@ -445,7 +477,7 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
     rows.length > 1 &&
     !rows.some((row) => row.suggestion.status === "facts-only");
   const curveOpen =
-    curved && editable && (search.curve === 1 || search.curve === "1");
+    curved && editable && whole && (search.curve === 1 || search.curve === "1");
   // Nobody has a week's work yet: what a grade will look like, not a table of
   // dashes.
   const waiting =
@@ -463,24 +495,31 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
         <LoadFailed what="The gradebook" onRetry={() => void book.refetch()} />
       ) : !term ? (
         <EmptyState
-          title="This class has no grading periods yet"
+          title={
+            given
+              ? "No grading periods yet"
+              : "This class has no grading periods yet"
+          }
           action={
             <Link
               to="/$"
               params={{
                 // A family's calendar is a section of its class's Settings.
-                _splat:
-                  given || family
+                _splat: given
+                  ? host.href("report-cards")
+                  : family
                     ? host.href("settings")
                     : `school/${place.org}/calendar`,
               }}
               className={buttonClass("primary")}
             >
-              Open the calendar
+              {given ? "Set grading periods" : "Open the calendar"}
             </Link>
           }
         >
-          Add the school year and its terms, and suggested ranges appear here.
+          {given
+            ? "Set the school year and its grading periods under Report cards, and suggested ranges appear here."
+            : "Add the school year and its terms, and suggested ranges appear here."}
         </EmptyState>
       ) : (
         <div className={styles.gradePage} aria-busy={book.isFetching}>
@@ -588,9 +627,11 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
                     : `${entered} of ${rows.length} final grades entered`}
                 </span>
                 <div className={styles.toolbarActions}>
-                  <Button variant="quiet" onClick={() => set({ export: 1 })}>
-                    Export
-                  </Button>
+                  {whole && (
+                    <Button variant="quiet" onClick={() => set({ export: 1 })}>
+                      Export
+                    </Button>
+                  )}
                   <Link
                     to="/$"
                     params={{
@@ -604,7 +645,7 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
                   >
                     Report cards
                   </Link>
-                  {editable && (
+                  {editable && whole && (
                     <Button
                       variant="secondary"
                       onClick={() => setClosing(true)}
@@ -616,9 +657,9 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
               </div>
               {curved && (
                 <CurveStrip
-                  book={data}
+                  book={shown!}
                   term={term}
-                  onEdit={editable ? () => set({ curve: 1 }) : null}
+                  onEdit={editable && whole ? () => set({ curve: 1 }) : null}
                 />
               )}
               <DataGrid
@@ -661,9 +702,18 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
             onClose={() => closeSheet("student")}
             onError={setError}
             onSaved={setAnnouncement}
+            links={
+              given && host.record
+                ? {
+                    record: host.record,
+                    reportCard: host.href("report-cards"),
+                  }
+                : undefined
+            }
           />
-          {curved && editable && (
+          {curved && editable && whole && (
             <CurveSheet
+              words={words}
               open={curveOpen}
               onOpenChange={(next) => {
                 if (!next) closeSheet("curve");
@@ -676,17 +726,21 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
               onError={setError}
             />
           )}
-          <ExportSheet
-            open={search.export === 1 || search.export === "1"}
-            onOpenChange={(next) => {
-              if (!next) closeSheet("export");
-            }}
-            session={session}
-            place={place}
-            term={term}
-            onMessage={setMessage}
-            onError={setError}
-          />
+          {whole && (
+            <ExportSheet
+              words={words}
+              school={!given && !family}
+              open={search.export === 1 || search.export === "1"}
+              onOpenChange={(next) => {
+                if (!next) closeSheet("export");
+              }}
+              session={session}
+              place={place}
+              term={term}
+              onMessage={setMessage}
+              onError={setError}
+            />
+          )}
           <Dialog
             open={closing}
             onOpenChange={(next) => {

@@ -1,7 +1,9 @@
 import { useParams } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import type { HostScope } from "./host-scope";
 import { ClassFrame } from "./ClassFrame";
 import { classUrl } from "./teacher-shared";
+export { keptPerson, offersWholeClass, wholeClass } from "./host-scope";
 
 /**
  * Where a class's record screens (grades, report cards, workbooks, cards) are
@@ -11,7 +13,7 @@ import { classUrl } from "./teacher-shared";
  * the class's people it shows and what it calls them from here; it never
  * asks which space it is in.
  */
-export type ClassHost = {
+export type ClassHost = HostScope & {
   place: { org: string; class: string };
   /** The frame around the page. */
   Frame: (props: {
@@ -23,8 +25,6 @@ export type ClassHost = {
   /** A sibling screen's address, without the leading slash: `gradebook`,
    * `report-cards`, `workbooks/<date>`, `today`, `settings`, `calendar`. */
   href: (leaf: string) => string;
-  /** Which of the class's people this host shows (by roster person). */
-  keep?: (person: string) => boolean;
   /** What the host calls them. */
   words: {
     learner: string;
@@ -32,9 +32,15 @@ export type ClassHost = {
     Learner: string;
     /** The people as a group: "your students", "your kids". */
     group: string;
+    /** Who teaches them, over the names on a report card; a class says
+     * "Teacher" or "Teachers". */
+    taughtBy?: string;
   };
   /** Who decides a final grade: "the teacher", "you". */
   decider: string;
+  /** A person's own page in this host (a family's child page), when it
+   * has one: their record opens there, never as a class's student layer. */
+  record?: (person: string) => string | null;
 };
 
 const STUDENT_WORDS: ClassHost["words"] = {

@@ -390,8 +390,10 @@ function Stack({
       return here?.note
         ? `${ready} of ${printable} ready. ${here.note}`
         : `Stopped at ${ready} of ${printable}.`;
-    if (!eligible.length) return "No student here can get a new workbook.";
-    if (!selected) return "Choose at least one student.";
+    if (!eligible.length)
+      return `No ${who === "child" ? "child" : "student"} here can get a new workbook.`;
+    if (!selected)
+      return `Choose at least one ${who === "child" ? "child" : "student"}.`;
     return `About ${minutes} minutes each.${reprint ? " The same ones as last time." : ""}`;
   })();
   const firstFile = here?.files[0];

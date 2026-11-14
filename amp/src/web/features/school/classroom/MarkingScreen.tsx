@@ -688,7 +688,8 @@ function PhoneSheet({
         <div className={styles.phoneWho}>
           <strong>{student.name}</strong>
           <span>
-            Student {index + 1} of {students.length}
+            {who.learner[0]!.toUpperCase() + who.learner.slice(1)} {index + 1}{" "}
+            of {students.length}
           </span>
         </div>
         <Button
@@ -705,12 +706,12 @@ function PhoneSheet({
       </div>
       {!student.workbook ? (
         <p className={styles.phoneNone}>
-          No workbook for this student in this set.
+          No workbook for this {who.learner} in this set.
         </p>
       ) : student.workbook.stale ? (
         <p className={styles.phoneNone}>
           Some of these problems have changed since this sheet was printed.
-          Print a new set for this student.
+          Print a new set for this {who.learner}.
         </p>
       ) : (
         <>

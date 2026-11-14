@@ -10,7 +10,7 @@ import { EmptyState } from "../../../ui/EmptyState";
 import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { useStaffSession } from "./api";
 import { gradebookOptions, reportCardsOptions } from "./teacher-api";
-import { useClassHost, type ClassHost } from "./host";
+import { keptPerson, useClassHost, wholeClass, type ClassHost } from "./host";
 import { dayRange, number, useClassSearch, uuidOr } from "./teacher-shared";
 import styles from "./ReportCard.module.css";
 
@@ -67,7 +67,10 @@ function Card({
         )}
         {data.teachers.length > 0 && (
           <div>
-            <dt>{data.teachers.length === 1 ? "Teacher" : "Teachers"}</dt>
+            <dt>
+              {host.words.taughtBy ??
+                (data.teachers.length === 1 ? "Teacher" : "Teachers")}
+            </dt>
             <dd>{data.teachers.join(", ")}</dd>
           </div>
         )}
@@ -143,7 +146,8 @@ export function ReportCards({
     enabled: !!session && !asked,
   });
   const term = asked ?? current.data?.term?.id ?? null;
-  const only = uuidOr(search.student);
+  // One person's card from a link, only if this page shows them.
+  const only = keptPerson(host, uuidOr(search.student));
   const cards = useQuery({
     ...reportCardsOptions(session, place, term ?? ""),
     enabled: !!session && !!term,
@@ -176,7 +180,7 @@ export function ReportCards({
   const students = all.filter((student) => !only || student.id === only);
   // The class's file holds everyone in it: printed whole only when this
   // host shows all of them.
-  const whole = !!data && all.length === data.students.length;
+  const whole = !!data && wholeClass(host, all.length, data.students.length);
   const blank = students.filter((student) => !student.final).length;
   const pdf = (student?: string) =>
     downloadPdf({

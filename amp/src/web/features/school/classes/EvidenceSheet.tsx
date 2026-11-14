@@ -27,11 +27,18 @@ export function EvidenceSheet({
   onClose,
   onError,
   onSaved,
+  links,
 }: {
   place: Place;
   session: AuthSession | null;
   term: string;
   student: string | undefined;
+  /** Where the person's own record and report card are, from the page that
+   * composes this sheet; without them, the class's own. */
+  links?: {
+    record: (person: string) => string | null;
+    reportCard: string;
+  };
   /** The row this opened from, for when the sheet came from a shared link. */
   returnFocus: string | undefined;
   onClose: () => void;
@@ -165,16 +172,30 @@ export function EvidenceSheet({
             student={data.student.id}
           />
           <div className={styles.sheetLinks}>
-            <EntityLink
-              entity={{ kind: "student", id: data.student.id }}
-              className={buttonClass("quiet", "", "start")}
-            >
-              Open {data.student.first}’s record
-            </EntityLink>
+            {links ? (
+              links.record(data.student.id) && (
+                <Link
+                  to="/$"
+                  params={{ _splat: links.record(data.student.id)! }}
+                  className={buttonClass("quiet", "", "start")}
+                >
+                  Open {data.student.first}’s page
+                </Link>
+              )
+            ) : (
+              <EntityLink
+                entity={{ kind: "student", id: data.student.id }}
+                className={buttonClass("quiet", "", "start")}
+              >
+                Open {data.student.first}’s record
+              </EntityLink>
+            )}
             <Link
               to="/$"
               params={{
-                _splat: classUrl(place.org, place.class, "report-cards"),
+                _splat:
+                  links?.reportCard ??
+                  classUrl(place.org, place.class, "report-cards"),
               }}
               search={{ term, student: data.student.id } as never}
               className={buttonClass("quiet")}
