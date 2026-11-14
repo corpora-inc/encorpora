@@ -518,40 +518,42 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
                   onChange={(value) => set({ period: value })}
                 />
               </div>
-              {/* Nothing to export yet: the export holds its place unseen. */}
-              <div
-                className={styles.export}
-                style={{
-                  visibility:
-                    !whole ||
-                    data.students.length === 0 ||
-                    data.students.every((row) => row.minutes === 0)
-                      ? "hidden"
-                      : undefined,
-                }}
-              >
-                <Button
-                  variant="secondary"
-                  aria-busy={busy || undefined}
-                  disabled={busy}
-                  onClick={() => {
-                    setBusy(true);
-                    downloadTime(session, place, period)
-                      .then((name) => setMessage(`Downloaded ${name}.`))
-                      .catch((failure) =>
-                        setError(
-                          failureMessage(
-                            failure,
-                            "That file didn’t download. Check your connection and try again.",
-                          ),
-                        ),
-                      )
-                      .finally(() => setBusy(false));
+              {/* Nothing to export yet: the export holds its place unseen.
+                  A host that never offers it (a shared class) has none. */}
+              {whole && (
+                <div
+                  className={styles.export}
+                  style={{
+                    visibility:
+                      data.students.length === 0 ||
+                      data.students.every((row) => row.minutes === 0)
+                        ? "hidden"
+                        : undefined,
                   }}
                 >
-                  Export
-                </Button>
-              </div>
+                  <Button
+                    variant="secondary"
+                    aria-busy={busy || undefined}
+                    disabled={busy}
+                    onClick={() => {
+                      setBusy(true);
+                      downloadTime(session, place, period)
+                        .then((name) => setMessage(`Downloaded ${name}.`))
+                        .catch((failure) =>
+                          setError(
+                            failureMessage(
+                              failure,
+                              "That file didn’t download. Check your connection and try again.",
+                            ),
+                          ),
+                        )
+                        .finally(() => setBusy(false));
+                    }}
+                  >
+                    Export
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
           {data.students.length === 0 || totalMinutes === 0 ? (
