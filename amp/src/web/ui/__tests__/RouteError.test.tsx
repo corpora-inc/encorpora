@@ -1,19 +1,14 @@
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
-import {
-  act,
-  cleanup,
-  fireEvent,
-  render,
-  screen,
-} from "@testing-library/react";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 
 const recovery = vi.hoisted(() => ({
-  stale: false,
-  reload: vi.fn(() => new Promise<never>(() => {})),
+  recover: vi.fn(() => true),
+  dismiss: vi.fn(),
 }));
-vi.mock("../../lib/app-recovery", () => ({
-  buildIsStale: () => Promise.resolve(recovery.stale),
-  reloadIntoCurrentRelease: recovery.reload,
+vi.mock("../../lib/chunk-recovery", () => ({
+  recoverChunkError: recovery.recover,
+  chunkReloading: () => false,
+  dismissChunkNotice: recovery.dismiss,
 }));
 import { RouteError } from "../LoadingScreen";
 
@@ -22,8 +17,7 @@ const cssFailure = new Error(
 );
 let reload: ReturnType<typeof vi.fn>;
 beforeEach(() => {
-  recovery.stale = false;
-  recovery.reload.mockClear();
+  recovery.recover.mockClear();
   reload = vi.fn();
   vi.stubGlobal("location", {
     ...window.location,
@@ -38,21 +32,12 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
-test("a tab whose release was replaced loads the current one, showing only the wave", async () => {
-  recovery.stale = true;
-  render(<RouteError error={cssFailure} reset={() => {}} />);
-  await act(() => Promise.resolve());
-  expect(recovery.reload).toHaveBeenCalledTimes(1);
-  expect(screen.getByRole("status", { name: "Loading AMP" })).toBeTruthy();
-  expect(screen.queryByText("This screen could not be loaded.")).toBeNull();
-});
-
 test("a file that failed on the current release offers a reload, not a retry in place", async () => {
   const reset = vi.fn();
   render(<RouteError error={cssFailure} reset={reset} />);
   await screen.findByText("This screen could not be loaded.");
-  expect(recovery.reload).not.toHaveBeenCalled();
-  fireEvent.click(screen.getByRole("button", { name: "Try again" }));
+  expect(recovery.recover).toHaveBeenCalledWith(cssFailure, false);
+  fireEvent.click(screen.getByRole("button", { name: "Reload" }));
   expect(reload).toHaveBeenCalledTimes(1);
   expect(reset).not.toHaveBeenCalled();
 });

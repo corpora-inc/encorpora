@@ -1,3 +1,4 @@
+import { autoReloadBlock } from "./reload-guard";
 import { nativeRuntime } from "../native-runtime";
 
 /** Recovery for a tab that outlived its release or its sign-in. A page left
@@ -54,20 +55,12 @@ export function buildIsStale(maxAgeMs = 30_000): Promise<boolean> {
 /** Whether a check has already found this tab stale (no request). */
 export const knownStale = () => stale;
 
-const RELOAD_KEY = "amp.release-reload";
 /** Reloads the page at its current URL. The returned promise never settles,
  * so the caller shows nothing while the page is replaced. Returns null, and
- * does not reload, when this tab already reloaded for a release in the last
- * minute: a "/" that keeps naming another release (a rollout, a cache) must
- * not reload the page forever. */
+ * does not reload, when input/payment state needs protection or the recovery
+ * guard is active. A rollout or cache must not reload the page forever. */
 export function reloadIntoCurrentRelease(): Promise<never> | null {
-  try {
-    if (Date.now() - Number(sessionStorage.getItem(RELOAD_KEY)) < 60_000)
-      return null;
-    sessionStorage.setItem(RELOAD_KEY, String(Date.now()));
-  } catch {
-    return null;
-  }
+  if (autoReloadBlock()) return null;
   location.reload();
   return new Promise<never>(() => {});
 }
@@ -75,7 +68,7 @@ export function reloadIntoCurrentRelease(): Promise<never> | null {
 const AWAY_BEFORE_CHECK_MS = 5 * 60_000;
 /** Returning to a tab after a while checks for a new release. A stale tab is
  * not reloaded under the visitor (an answer or form would be lost); its next
- * navigation loads the current release instead (see the root route). */
+ * safe navigation loads the current release instead (see the root route). */
 export function watchForNewRelease() {
   if (nativeRuntime) return;
   let hiddenAt = document.visibilityState === "hidden" ? Date.now() : 0;

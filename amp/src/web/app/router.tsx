@@ -58,6 +58,7 @@ import { chosenPlan } from "../lib/pending-trial";
 import { hasInitialConsentChallenge } from "../consent-entry";
 import { hasPurchaseReturn } from "../purchase-return";
 import { knownStale, onSignedOut } from "../lib/app-recovery";
+import { autoReloadBlock } from "../lib/reload-guard";
 import {
   clearStudentDevice,
   studentSession,
@@ -215,7 +216,14 @@ const root = createRootRoute({
   // until the new page paints, so no loading screen shows in between.
   beforeLoad: async ({ location, preload }) => {
     if (nativeRuntime) return;
-    if (knownStale()) {
+    if (
+      knownStale() &&
+      !preload &&
+      !autoReloadBlock({
+        pathname: location.pathname,
+        search: location.searchStr,
+      })
+    ) {
       window.location.assign(location.href);
       return new Promise<never>(() => {});
     }

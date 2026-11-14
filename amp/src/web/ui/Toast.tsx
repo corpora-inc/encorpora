@@ -11,8 +11,10 @@ export function Toast({
   title,
   placement,
   takeFocus = false,
+  action,
 }: {
   message: string;
+  action?: { label: string; onClick: () => void };
   onDismiss: () => void;
   tone?: "alert" | "status";
   title?: string;
@@ -53,6 +55,11 @@ export function Toast({
             {message}
           </RadixToast.Description>
         </div>
+        {action && (
+          <button className={styles.action} onClick={action.onClick}>
+            {action.label}
+          </button>
+        )}
         <RadixToast.Close aria-label="Dismiss message">×</RadixToast.Close>
       </RadixToast.Root>
       {/* A confirmation shows at the top, clear of the actions at the bottom. */}
