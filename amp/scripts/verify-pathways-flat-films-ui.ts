@@ -268,6 +268,12 @@ for (const width of widths)
       `${tag}: the level's arrival never moves a skill in the pathway`,
     );
     assert.equal(await page.locator("canvas").count(), 0, `${tag}: canvas`);
+    // No dead option: without WebGL there is no choice of view.
+    assert.equal(
+      await page.getByRole("radiogroup", { name: "Map view" }).count(),
+      0,
+      `${tag}: no view toggle without WebGL`,
+    );
     assert.equal(await page.locator(".pathways-camera").count(), 0);
     assert.doesNotMatch(
       await page.evaluate(() =>
@@ -623,6 +629,90 @@ for (const width of widths)
     console.log(`${tag}: passed`);
   }
 await browser.close();
+
+// Q-212: Grades | 3D, where WebGL is there. Grades by default; the choice is
+// in the address and remembered on the device; the map keeps its size; a
+// skill's sheet stays open across a switch; context loss leaves no toggle.
+const glBrowser = await chromium.launch();
+for (const width of [390, 1280]) {
+  const tag = `${width}-toggle`;
+  const context = await glBrowser.newContext({
+    viewport: { width, height: width >= 768 ? 900 : 844 },
+  });
+  context.setDefaultTimeout(90_000);
+  const page = await context.newPage();
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  await fixture(page);
+  await page.goto(`${origin}/pathways`);
+  const toggle = page.getByRole("radiogroup", { name: "Map view" });
+  await toggle.waitFor();
+  const grades = toggle.getByRole("radio", { name: "Grades" });
+  const threeD = toggle.getByRole("radio", { name: "3D" });
+  assert.equal(await grades.getAttribute("aria-checked"), "true");
+  await page.locator(".pathways-plan").waitFor();
+  assert.equal(await page.locator("canvas").count(), 0, `${tag}: grades first`);
+  for (const radio of [grades, threeD])
+    assert((await radio.boundingBox())!.height >= 44, `${tag}: 44 px target`);
+  const area = await page.locator(".pathways-workspace").boundingBox();
+  await shot(page, `q212-grades-${tag}`);
+  await threeD.click();
+  await page.locator(".pathways-canvas canvas").waitFor();
+  assert.match(page.url(), /[?&]view=3d\b/, `${tag}: the address says 3D`);
+  assert.equal(await page.locator(".pathways-plan").count(), 0);
+  assert.deepEqual(
+    await page.locator(".pathways-workspace").boundingBox(),
+    area,
+    `${tag}: the map keeps its size`,
+  );
+  await noOverflow(page, `${tag} 3D`);
+  await page.waitForTimeout(600);
+  await shot(page, `q212-3d-${tag}`);
+  // A refresh, and a fresh visit on this device, keep 3D.
+  await page.reload();
+  await page.locator(".pathways-canvas canvas").waitFor();
+  await page.goto(`${origin}/pathways`);
+  await page.locator(".pathways-canvas canvas").waitFor();
+  assert.equal(await threeD.getAttribute("aria-checked"), "true");
+  // The address wins over the device's choice, and is shareable.
+  await page.goto(`${origin}/pathways?view=grades`);
+  await page.locator(".pathways-plan").waitFor();
+  assert.equal(await grades.getAttribute("aria-checked"), "true");
+  // A skill open over either view stays open, centred under it.
+  await page.goto(`${origin}/pathways?view=grades&open=skill:${farSkill.id}`);
+  const heading = page.getByRole("heading", {
+    name: farSkill.title,
+    exact: true,
+  });
+  await heading.waitFor();
+  await page.goto(`${origin}/pathways?view=3d&open=skill:${farSkill.id}`);
+  await heading.waitFor();
+  await page.locator(".pathways-canvas canvas").waitFor();
+  await page.keyboard.press("Escape");
+  await heading.waitFor({ state: "detached" });
+  await grades.click();
+  await page.locator(".pathways-plan").waitFor();
+  assert.match(page.url(), /[?&]view=grades\b/);
+  assert.deepEqual(
+    await page.locator(".pathways-workspace").boundingBox(),
+    area,
+    `${tag}: the map keeps its size back in grades`,
+  );
+  // A context lost in 3D: the grades view, and no toggle left.
+  await threeD.click();
+  await page.locator(".pathways-canvas canvas").waitFor();
+  await page
+    .locator(".pathways-canvas canvas")
+    .evaluate((el) =>
+      el.dispatchEvent(new Event("webglcontextlost", { cancelable: true })),
+    );
+  await page.locator(".pathways-plan").waitFor();
+  assert.equal(await toggle.count(), 0, `${tag}: no toggle after a lost map`);
+  assert.deepEqual(errors, [], `${tag}: page errors`);
+  await context.close();
+  console.log(`${tag}: passed`);
+}
+await glBrowser.close();
 await vite.close();
 console.log(
   "Pathways flat pathway, lesson head and skill films: every width and theme passed.",

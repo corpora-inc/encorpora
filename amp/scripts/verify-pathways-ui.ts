@@ -110,6 +110,8 @@ async function fixture(
   await page.addInitScript(
     ({ signedIn, selectedLearnerId }) => {
       (window as any).pathwaysAccount = signedIn ? "parent-one" : null;
+      // This proof is of the 3D map: the grades view is the default (Q-212).
+      localStorage.setItem("amp.pathways-view", "3d");
       localStorage.setItem(
         "amp.learner",
         JSON.stringify({ state: { learnerId: selectedLearnerId }, version: 1 }),
