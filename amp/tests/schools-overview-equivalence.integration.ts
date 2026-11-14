@@ -322,7 +322,9 @@ test(
             .filter((member) => member.class === row.id)
             .map((member) => member.person),
         );
-        const { id: _id, name: _name, teachers: _teachers, ...shown } = row;
+        const { id: _id, name: _name, teachers, teacherNames, ...shown } = row;
+        assert.ok(teacherNames);
+        assert.deepEqual(teachers, teacherNames.filter(name => name !== null));
         assert.deepEqual(
           shown,
           freshUsage(

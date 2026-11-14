@@ -153,6 +153,7 @@ export type MapStudent = z.infer<typeof mapStudentResource>;
  * on the map, marked as the teacher, never one of its students. */
 export const mapTeacherResource = z.object({
   id,
+  adultName: z.string().nullable().optional(),
   name: z.string(),
   first: z.string(),
   /** The line is the reader's own, so it opens their own record. */
@@ -426,6 +427,7 @@ export const reportCardsResponse = z.object({
   class: z.object({ name: z.string(), course: z.string() }),
   term: termResource,
   teachers: z.array(z.string()),
+  teacherNames: z.array(z.string().nullable()).optional(),
   students: z.array(
     z.object({
       id,

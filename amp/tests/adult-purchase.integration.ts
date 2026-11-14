@@ -1,3 +1,4 @@
+import { applyFixtureMigration } from "./helpers/fixture-migration.js";
 import assert from "node:assert/strict";
 import test from "node:test";
 import { randomUUID } from "node:crypto";
@@ -39,7 +40,10 @@ test(
       for (const file of (await readdir(dir))
         .filter((file) => file.endsWith(".sql"))
         .sort())
-        await pool.query(await readFile(new URL(file, dir), "utf8"));
+        await applyFixtureMigration(
+          pool,
+          await readFile(new URL(file, dir), "utf8"),
+        );
       const learner = (id: string, account: string, adult = false) =>
         pool.query(
           "INSERT INTO amp_learners(id,account_id,name,adult) VALUES($1,$2,'Synthetic learner',$3)",

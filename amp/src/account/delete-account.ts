@@ -109,6 +109,7 @@ export const ACCOUNT_TABLES: Record<string, TableHandling> = {
   amp_commerce_orders: "financial",
   amp_consent_outbox: "consent-evidence",
   amp_consent_policy: "none",
+  amp_course_placement: "none",
   amp_consent_requests: "consent-evidence",
   amp_content_releases: "none",
   amp_data_agreements: "place",
@@ -121,6 +122,8 @@ export const ACCOUNT_TABLES: Record<string, TableHandling> = {
   amp_export_tickets: "account",
   amp_external_refs: "place",
   amp_families: "place",
+  amp_family_spaces: "account",
+  amp_account_profiles: "account",
   amp_family_approvals: "account",
   amp_frontier_states: "learner",
   amp_funded_activation_outbox: "financial",
@@ -691,6 +694,8 @@ export async function deleteAccount(
       }
       for (const sql of [
         "DELETE FROM amp_family_approvals WHERE account_id=$1",
+        "DELETE FROM amp_family_spaces WHERE account_id=$1",
+        "DELETE FROM amp_account_profiles WHERE account_id=$1",
         "DELETE FROM amp_demo_visitors WHERE account_id=$1",
         "DELETE FROM amp_export_tickets WHERE account_id=$1",
         "DELETE FROM amp_privacy_events WHERE account_id=$1",

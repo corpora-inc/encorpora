@@ -1,3 +1,4 @@
+import { adultNameSql } from "../account/profile.js";
 import { randomUUID, createHash, createHmac } from "node:crypto";
 import type { PoolClient } from "pg";
 import { z } from "zod";
@@ -620,7 +621,7 @@ export async function requestSchoolPurchase(
     const existing = (
       await client.query(
         `SELECT r.id,r.account_id,r.org_id,r.class_ids,r.seats,r.note,
-          COALESCE(NULLIF(p.display_name,''),NULLIF(concat_ws(' ',p.given_name,p.family_name),''),'Teacher') AS holder_name
+          ${adultNameSql()} AS holder_name
         FROM amp_school_purchase_requests r JOIN amp_orgs o ON o.id=r.org_id
         LEFT JOIN amp_people p ON p.tenant_id=o.path[1] AND p.account_id=r.account_id AND p.deleted_at IS NULL
         WHERE r.class_ids && $1::uuid[] AND r.status<>'closed' AND r.token_expires_at>now()
@@ -637,7 +638,7 @@ export async function requestSchoolPurchase(
         undefined,
         conflicts.map((row) => ({
           requestId: row.id as string,
-          holderName: row.holder_name as string,
+          holderName: row.holder_name as string | null,
           classIds: ids.filter((id) => row.class_ids.includes(id)),
         })),
       );
@@ -750,7 +751,7 @@ export async function buyerHandoff(
   const request = (
     await db.query(
       `SELECT r.id,r.class_ids,r.seats,r.status,r.note,o.name,
-        COALESCE(NULLIF(p.display_name,''),NULLIF(concat_ws(' ',p.given_name,p.family_name),'')) AS teacher
+        ${adultNameSql()} AS teacher
       FROM amp_school_purchase_requests r JOIN amp_orgs o ON o.id=r.org_id
       LEFT JOIN amp_people p ON p.tenant_id=o.path[1] AND p.account_id=r.account_id AND p.deleted_at IS NULL
       WHERE r.buyer_token_hash=$1 AND r.token_expires_at>now() AND r.status<>'closed'`,

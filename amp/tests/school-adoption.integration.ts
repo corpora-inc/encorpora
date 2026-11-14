@@ -168,14 +168,13 @@ test(
             assert.equal(reviewed.learners, 1);
             assert.equal(reviewed.sourcePeople.length, 2);
             assert.equal(reviewed.sourceClasses[0]?.id, f.klass.id);
-            assert.deepEqual(reviewed.sourceClasses[0]?.teacherNames, [
-              "Teacher",
-            ]);
+            // A role label is not a supplied adult name (R12).
+            assert.deepEqual(reviewed.sourceClasses[0]?.teacherNames, []);
             assert.equal(reviewed.sourceClasses[0]?.grade, "4");
             const sourceLearner = reviewed.sourcePeople.find((p) => p.student)!;
             assert.equal(sourceLearner.grade, "4");
             assert.deepEqual(sourceLearner.classNames, ["Existing Class"]);
-            assert.deepEqual(sourceLearner.teacherNames, ["Teacher"]);
+            assert.deepEqual(sourceLearner.teacherNames, []);
             for (const origin of [undefined, "https://other.example.test"]) {
               const blocked = await app.inject({
                 method: "POST",

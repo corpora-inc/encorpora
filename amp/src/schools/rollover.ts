@@ -1,3 +1,4 @@
+import { adultNameSql } from "../account/profile.js";
 import { randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import {
@@ -91,9 +92,12 @@ export async function rolloverOptions(
   const [classes, grades, schools] = await Promise.all([
     pool.query(
       `SELECT c.id,c.name,o.name AS school,
-         ARRAY(SELECT ${PERSON_NAME} FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
+         array_remove(ARRAY(SELECT ${adultNameSql()} FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
            WHERE e.class_id=c.id AND e.role='teacher' AND p.deleted_at IS NULL AND ${activeToday("e", "o")}
-           ORDER BY e.begin_on,p.id) AS teachers,
+           ORDER BY e.begin_on,p.id),NULL) AS teachers,
+           ARRAY(SELECT ${adultNameSql()} FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
+           WHERE e.class_id=c.id AND e.role='teacher' AND p.deleted_at IS NULL AND ${activeToday("e", "o")}
+           ORDER BY e.begin_on,p.id) AS "teacherNames",
          (SELECT count(*)::int FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
            WHERE e.class_id=c.id AND e.role='student' AND p.deleted_at IS NULL AND ${activeToday("e", "o")}) AS students
        FROM ${CURRENT_CLASSES} ORDER BY lower(o.name),lower(c.name),c.id`,

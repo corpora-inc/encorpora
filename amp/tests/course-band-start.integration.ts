@@ -1,0 +1,300 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { randomUUID } from "node:crypto";
+import { Pool } from "pg";
+import { migrate } from "../scripts/migrate.js";
+import { SchoolRepository } from "../src/schools/repository.js";
+import { PostgresRepository } from "../src/server/repository.js";
+import { buildApp } from "../src/server/app.js";
+import { templates, generateProblem } from "../src/math/engine.js";
+
+test(
+  "a rostered child without a birth year begins at the class course band",
+  { skip: !process.env.AMP_TEST_DATABASE_URL },
+  async (t) => {
+    const url = process.env.AMP_TEST_DATABASE_URL!;
+    const schema = `amp_course_${randomUUID().replaceAll("-", "")}`;
+    const admin = new Pool({ connectionString: url });
+    const scoped = new URL(url);
+    scoped.searchParams.set("options", `-c search_path=${schema}`);
+    await admin.query(`CREATE SCHEMA ${schema}`);
+    await migrate(scoped.href);
+    const learning = new PostgresRepository(scoped.href);
+    await learning.pool.query("UPDATE amp_course_placement SET enabled=true");
+    const schools = new SchoolRepository(learning.pool);
+    let account = "";
+    const app = buildApp({
+      repository: learning,
+      authenticate: async () => account,
+    });
+    t.after(async () => {
+      await app.close();
+      await learning.close();
+      await admin.query(`DROP SCHEMA ${schema} CASCADE`);
+      await admin.end();
+    });
+    const org = await schools.createOrg(
+      { kind: "school", name: "Course fixture", timezone: "UTC" },
+      { version: "fixture", signerName: "Fixture", signerTitle: "Head" },
+    );
+    await schools.issueLicense({
+      orgId: org.id,
+      seats: 10,
+      endsAt: new Date(Date.now() + 86400000 * 30).toISOString(),
+    });
+    const klass = await schools.createClass(org.id, {
+      name: "Grade 4 Math",
+      courseBands: ["4"],
+    });
+    const child = await schools.provisionStudent(org.id, {
+      givenName: "Learner",
+      classId: klass.id,
+    });
+    account = `school:${child.personId}`;
+    const row = (
+      await learning.pool.query(
+        "SELECT birth_year FROM amp_learners WHERE id=$1",
+        [child.learnerId],
+      )
+    ).rows[0];
+    assert.equal(
+      row.birth_year,
+      null,
+      "a course must not fabricate a birth year",
+    );
+    const response = await app.inject({
+      method: "POST",
+      url: `/api/v1/learners/${child.learnerId}/batches`,
+      payload: { count: 1 },
+    });
+    assert.equal(response.statusCode, 200, response.body);
+    const problem = response.json().problems[0];
+    const template = templates.find(
+      (entry) => entry.id === problem.templateId,
+    )!;
+    assert.notEqual(
+      template.gradeBand,
+      "K–2",
+      "Grade 4's first problem must not be early arithmetic",
+    );
+    const start = (
+      await learning.pool.query(
+        "SELECT starting_course_level FROM amp_learners WHERE id=$1",
+        [child.learnerId],
+      )
+    ).rows[0];
+    assert.equal(start.starting_course_level, 4);
+    const initial = await learning.transaction(account, child.learnerId, (tx) =>
+      tx.frontier(),
+    );
+    await learning.pool.query(
+      "UPDATE amp_classes SET course_bands=ARRAY['9'] WHERE id=$1",
+      [klass.id],
+    );
+    const unchanged = await learning.transaction(
+      account,
+      child.learnerId,
+      (tx) => tx.frontier(),
+    );
+    assert.equal(
+      unchanged.overall.level,
+      initial.overall.level,
+      "changing classes does not change a saved course prior",
+    );
+    await learning.transaction(account, child.learnerId, (tx) =>
+      tx.setStartingPoint("6–8"),
+    );
+    const explicit = await learning.transaction(
+      account,
+      child.learnerId,
+      (tx) => tx.frontier(),
+    );
+    assert.ok(
+      explicit.overall.level >= 6.5 && explicit.overall.level <= 7.5,
+      "an explicit middle-school starting choice takes precedence",
+    );
+    const date = new Date();
+    const schoolYear = date.getUTCFullYear() - (date.getUTCMonth() < 7 ? 1 : 0);
+    const born = await schools.provisionStudent(org.id, {
+      givenName: "Known year",
+      birthYear: schoolYear - 7,
+      classId: klass.id,
+    });
+    const birthStart = await learning.transaction(
+      `school:${born.personId}`,
+      born.learnerId,
+      (tx) => tx.frontier(),
+    );
+    const reference = await schools.provisionStudent(org.id, {
+      givenName: "Same known year",
+      birthYear: schoolYear - 7,
+    });
+    const referenceStart = await learning.transaction(
+      `school:${reference.personId}`,
+      reference.learnerId,
+      (tx) => tx.frontier(),
+    );
+    assert.deepEqual(
+      birthStart.overall,
+      referenceStart.overall,
+      "a class's course cannot override the estimate supplied by a known birth year",
+    );
+
+    await t.test(
+      "REVIEW: giving an established learner a course does not rebase their evidence",
+      async () => {
+        const unbanded = await schools.createClass(org.id, {
+          name: "Initially unbanded",
+        });
+        const existing = await schools.provisionStudent(org.id, {
+          givenName: "Already answered",
+          classId: unbanded.id,
+        });
+        account = `school:${existing.personId}`;
+        const batch = await app.inject({
+          method: "POST",
+          url: `/api/v1/learners/${existing.learnerId}/batches`,
+          payload: { count: 1 },
+        });
+        assert.equal(batch.statusCode, 200, batch.body);
+        const problem = batch.json().problems[0];
+        const answered = await app.inject({
+          method: "POST",
+          url: `/api/v1/learners/${existing.learnerId}/attempts`,
+          payload: {
+            problemId: problem.id,
+            requestId: randomUUID(),
+            response: generateProblem(problem.templateId, problem.seed).answer,
+          },
+        });
+        assert.equal(answered.statusCode, 200, answered.body);
+        const before = await learning.transaction(
+          account,
+          existing.learnerId,
+          (tx) => tx.frontier(),
+        );
+        const original = await learning.pool.query(
+          "SELECT outcome FROM amp_attempts WHERE learner_id=$1",
+          [existing.learnerId],
+        );
+        await learning.pool.query(
+          "UPDATE amp_classes SET course_bands=ARRAY['4'] WHERE id=$1",
+          [unbanded.id],
+        );
+        const after = await learning.transaction(
+          account,
+          existing.learnerId,
+          (tx) => tx.frontier(),
+        );
+        const prior = (
+          await learning.pool.query(
+            "SELECT starting_course_level FROM amp_learners WHERE id=$1",
+            [existing.learnerId],
+          )
+        ).rows[0].starting_course_level;
+        assert.deepEqual(
+          (
+            await learning.pool.query(
+              "SELECT outcome FROM amp_attempts WHERE learner_id=$1",
+              [existing.learnerId],
+            )
+          ).rows,
+          original.rows,
+        );
+        console.log("REVIEW existing evidence rebased", {
+          before: before.overall.level,
+          after: after.overall.level,
+          answered: after.overall.answered,
+          prior,
+        });
+        assert.equal(after.overall.level, before.overall.level);
+      },
+    );
+    await t.test(
+      "mixed-version rollout freezes old-writer fallback and lazy pre-upgrade evidence",
+      async () => {
+        await learning.pool.query(
+          "UPDATE amp_course_placement SET enabled=false",
+        );
+        const mixed = await schools.createClass(org.id, {
+          name: "Mixed rollout",
+          courseBands: ["4"],
+        });
+        const child = await schools.provisionStudent(org.id, {
+          givenName: "Legacy writer",
+          classId: mixed.id,
+        });
+        account = `school:${child.personId}`;
+        const batch = await app.inject({
+          method: "POST",
+          url: `/api/v1/learners/${child.learnerId}/batches`,
+          payload: { count: 1 },
+        });
+        assert.equal(batch.statusCode, 200, batch.body);
+        const p = batch.json().problems[0];
+        // The old API writes only these five columns; no call to the new start resolver.
+        await learning.pool.query(
+          `INSERT INTO amp_attempts(id,learner_id,problem_id,request_id,outcome)
+        VALUES($1,$2,$3,$4,$5)`,
+          [
+            randomUUID(),
+            child.learnerId,
+            p.id,
+            randomUUID(),
+            JSON.stringify({
+              correct: true,
+              assisted: false,
+              skillId: p.skillId,
+              templateId: p.templateId,
+              createdAt: new Date().toISOString(),
+            }),
+          ],
+        );
+        assert.equal(
+          (
+            await learning.pool.query(
+              "SELECT starting_course_level FROM amp_learners WHERE id=$1",
+              [child.learnerId],
+            )
+          ).rows[0].starting_course_level,
+          2,
+        );
+        const before = await learning.transaction(
+          account,
+          child.learnerId,
+          (tx) => tx.frontier(),
+        );
+        // Emulate a learner answered before the additive column existed.
+        await learning.pool.query(
+          "UPDATE amp_learners SET starting_course_level=NULL WHERE id=$1",
+          [child.learnerId],
+        );
+        await learning.pool.query(
+          "UPDATE amp_course_placement SET enabled=true",
+        );
+        const after = await learning.transaction(
+          account,
+          child.learnerId,
+          (tx) => tx.frontier(),
+        );
+        assert.deepEqual(after, before);
+        assert.equal(
+          (
+            await learning.pool.query(
+              "SELECT starting_course_level FROM amp_learners WHERE id=$1",
+              [child.learnerId],
+            )
+          ).rows[0].starting_course_level,
+          2,
+        );
+        await migrate(scoped.href);
+        assert.deepEqual(
+          await learning.transaction(account, child.learnerId, (tx) =>
+            tx.frontier(),
+          ),
+          after,
+        );
+      },
+    );
+  },
+);

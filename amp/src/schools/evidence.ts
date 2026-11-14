@@ -281,11 +281,13 @@ export async function levels(
   if (!roster.length) return [];
   const rows = (
     await pool.query(
-      `SELECT DISTINCT ON (r.person_id) r.person_id AS "personId",d.day::text AS day,
+      `SELECT r.person_id AS "personId",d.day::text AS day,
          d.policy_version AS "policyVersion",d.frontier
        FROM unnest($3::uuid[],$1::text[]) AS r(person_id,learner_id)
-       JOIN amp_level_days d ON d.learner_id=r.learner_id AND ($2::date IS NULL OR d.day<=$2::date)
-       ORDER BY r.person_id,d.day DESC`,
+       CROSS JOIN LATERAL (SELECT day,policy_version,frontier FROM amp_level_days
+         WHERE learner_id=r.learner_id AND ($2::date IS NULL OR day<=$2::date)
+         ORDER BY day DESC LIMIT 1) d
+       ORDER BY r.person_id`,
       [
         roster.map((m) => m.learnerId),
         on ?? null,

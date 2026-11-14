@@ -1,3 +1,4 @@
+import { adultNameSql } from "../account/profile.js";
 import type { PoolClient } from "pg";
 import { skills } from "../curriculum/catalog.js";
 import type { GradeBand } from "../curriculum/types.js";
@@ -50,8 +51,8 @@ import { DEFAULT_WEEKLY_TARGET_MINUTES } from "./practice-rules.js";
 type Database = Pick<PoolClient, "query">;
 const catalog = new Map(skills.map((skill) => [skill.id, skill]));
 /** SQL: a student's name for staff, and how a sentence calls them. */
-export const PERSON_NAME = `COALESCE(p.display_name,p.given_name||COALESCE(' '||p.family_name,''))`;
-export const PERSON_FIRST = `COALESCE(p.display_name,p.given_name)`;
+export const PERSON_NAME = `CASE WHEN p.learner_id IS NULL THEN COALESCE(${adultNameSql()},'') ELSE COALESCE(p.display_name,p.given_name||COALESCE(' '||p.family_name,'')) END`;
+export const PERSON_FIRST = `CASE WHEN p.learner_id IS NULL THEN COALESCE(${adultNameSql()},'') ELSE COALESCE(p.display_name,p.given_name) END`;
 
 export type ClassContext = {
   id: string;

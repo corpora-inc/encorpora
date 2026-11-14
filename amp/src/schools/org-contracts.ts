@@ -88,6 +88,7 @@ export const overviewResponse = z.object({
         id: z.uuid(),
         name: z.string(),
         teachers: z.array(z.string()),
+        teacherNames: z.array(z.string().nullable()).optional(),
       }),
     )
     .nullable(),
@@ -252,6 +253,7 @@ export const rolloverOptionsResponse = z.object({
       name: z.string(),
       school: z.string(),
       teachers: z.array(z.string()),
+      teacherNames: z.array(z.string().nullable()).optional(),
       students: count,
     }),
   ),

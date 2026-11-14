@@ -1,3 +1,17 @@
+import type { StripeBillingConfig } from "../billing/stripe/config.js";
+import {
+  familyPlacesSchema,
+  familyProjectionSchema,
+  familyChildProgressSchema,
+  familyTeachingSchema,
+} from "./projection-contracts.js";
+import {
+  familyProjection,
+  familyChildProgress,
+  familyTeaching,
+  listFamilies,
+} from "./projection.js";
+import { profileInput, setAccountProfile } from "../account/profile.js";
 import {
   changeOwnStart,
   ownStartSchema,
@@ -69,6 +83,7 @@ export interface FamilyRouteOptions {
   development?: boolean;
   /** Stripe namespace of the configured billing, for paid-purchase routing. */
   billingNamespace?: string | null;
+  billingConfig?: StripeBillingConfig | null;
   /** Approval links for another family's child (docs/families.md, step 5):
    * the key that derives them, where they point and the account mail path.
    * Absent: no approval links. */
@@ -126,6 +141,56 @@ export async function registerFamilyRoutes(
         repository,
         account,
         options.billingNamespace ?? null,
+      );
+    });
+    const familyParams = z.strictObject({ family: z.uuid() });
+    scope.get("/api/v1/families", async (request) => {
+      const account = await options.authenticate(request);
+      const { after } = z
+        .strictObject({ after: z.uuid().optional() })
+        .parse(request.query);
+      return familyPlacesSchema.parse(
+        await listFamilies(options.pool, account, after),
+      );
+    });
+    scope.get("/api/v1/families/:family", async (request) => {
+      const account = await options.authenticate(request);
+      const { family } = familyParams.parse(request.params);
+      return familyProjectionSchema.parse(
+        await familyProjection(
+          options.pool,
+          account,
+          family,
+          options.development,
+          options.billingConfig,
+        ),
+      );
+    });
+    scope.get("/api/v1/families/:family/teaching", async (request) => {
+      const account = await options.authenticate(request);
+      const { family } = familyParams.parse(request.params);
+      return familyTeachingSchema.parse(
+        await familyTeaching(options.pool, account, family),
+      );
+    });
+    scope.get(
+      "/api/v1/families/:family/children/:learner/progress",
+      async (request) => {
+        const account = await options.authenticate(request);
+        const { family, learner } = familyParams
+          .extend({ learner: z.string().min(1).max(200) })
+          .parse(request.params);
+        return familyChildProgressSchema.parse(
+          await familyChildProgress(options.pool, account, family, learner),
+        );
+      },
+    );
+    scope.patch("/api/v1/me/profile", { bodyLimit: 2048 }, async (request) => {
+      const account = await options.authenticate(request);
+      return setAccountProfile(
+        options.pool,
+        account,
+        profileInput.parse(request.body),
       );
     });
     // The adult's own practice: their record, starting it, and their time.
