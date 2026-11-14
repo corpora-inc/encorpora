@@ -116,7 +116,9 @@
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  min-width: 0;
+  /* A short name ("Jo") is still a 44 px target on its own; the row-wide
+     ::after below covers the rest of its row, which starts at the name. */
+  min-width: 44px;
   border-radius: var(--radius-small);
   color: inherit;
   font-size: var(--text-table);

@@ -247,6 +247,13 @@
   gap: 2px;
   min-width: 0;
 }
+/* A switch row is a padded button (ui/Switch): in a settings list its words
+   start where every other row's do, and its padding, hover and focus ring
+   hang outside the column; its track ends where the other rows' actions do. */
+.settingText > :is([role="switch"], [data-switch-wait]) {
+  width: calc(100% + 2 * var(--space-2));
+  margin-inline: calc(-1 * var(--space-2));
+}
 .settingAction {
   display: flex;
   flex-wrap: wrap;
