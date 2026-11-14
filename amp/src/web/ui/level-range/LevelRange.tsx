@@ -71,6 +71,13 @@ const words = {
     who
       ? `We’ll find ${who}’s level in a few minutes of practice.`
       : "We’ll find your level in a few minutes. Just start answering.",
+  found: (best: string, from: string, to: string) =>
+    from === to
+      ? `Best guess ${best}.`
+      : `Best guess ${best}, likely ${from} to ${to}.`,
+  foundLabel: (best: string, from: string, to: string) =>
+    `Best guess ${best}, likely ${from} to ${to}`,
+  answeredSoFar: (n: number) => `${problems(n)} answered. Keep going.`,
   premise: (who?: string) =>
     who
       ? "No planning needed: AMP makes every minute count."
@@ -499,6 +506,7 @@ export function LevelRangeStart({
   heading = 2,
   secondary,
   who,
+  found = null,
 }: {
   /** The one prominent action: Start practicing. */
   action?: ReactNode;
@@ -510,27 +518,70 @@ export function LevelRangeStart({
   secondary?: ReactNode;
   /** The learner's name when someone else reads it. */
   who?: string;
+  /** The first answers came in while this hero was on screen: the same bar
+   * glides from the whole scale to the estimate, in place, and the words
+   * say what was found. Nothing moves (Q-201, CP-5 #5). */
+  found?: { estimate: Estimate; answered: number } | null;
 }) {
   const Heading = heading === 1 ? "h1" : "h2";
+  const range = found ? likelyRange(found.estimate) : null;
   return (
     <section
       className={styles.hero}
       aria-labelledby="level-start-title"
       data-level-view
       data-level-start
+      data-level-found={found ? "" : undefined}
     >
       <Heading id="level-start-title" className={styles.heroTitle}>
         {title}
       </Heading>
       <figure className={styles.heroFigure}>
-        <div className={styles.heroBar} role="img" aria-label={words.notYet}>
-          <LevelBar estimate={null} scale={WHOLE_SCALE} size="large" moving />
+        <div
+          className={styles.heroBar}
+          role="img"
+          aria-label={
+            found && range
+              ? words.foundLabel(
+                  gradeName(found.estimate.level),
+                  gradeName(range[0]),
+                  gradeName(range[1]),
+                )
+              : words.notYet
+          }
+        >
+          <LevelBar
+            estimate={found?.estimate ?? null}
+            scale={WHOLE_SCALE}
+            size="large"
+            moving
+          />
         </div>
         <LevelAxis scale={WHOLE_SCALE} />
       </figure>
+      {/* Both sets of words share one cell, so the change between them
+          moves nothing. */}
       <div className={styles.heroWords}>
-        <p className={styles.heroBody}>{words.find(who)}</p>
-        <p className={styles.heroPremise}>{words.premise(who)}</p>
+        <div className={styles.heroWordsSet} aria-hidden={!!found || undefined}>
+          <p className={styles.heroBody}>{words.find(who)}</p>
+          <p className={styles.heroPremise}>{words.premise(who)}</p>
+        </div>
+        {/* The words before the first answer stay, hidden, holding the
+            cell: what was found is never longer. */}
+        {found && range && (
+          <div className={styles.heroWordsSet} data-found-words>
+            <p className={styles.heroBody}>
+              {words.found(
+                gradeName(found.estimate.level),
+                gradeName(range[0]),
+                gradeName(range[1]),
+              )}
+            </p>
+            <p className={styles.heroPremise}>
+              {words.answeredSoFar(found.answered)}
+            </p>
+          </div>
+        )}
       </div>
       {action && <div className={styles.heroAction}>{action}</div>}
       {secondary && <div className={styles.heroSecondary}>{secondary}</div>}

@@ -1,4 +1,5 @@
 import type { SpaceWords } from "../../spaces/words";
+import { measured } from "../../../../learning/level-check";
 import { EntityLink } from "../../../nav/links";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo, useState, type ReactNode } from "react";
@@ -38,6 +39,9 @@ type Placed = {
 };
 
 function place(student: MapStudent, lens: string): Placed {
+  // No answers yet: not measured, whatever a served batch stored (Q-201).
+  if (!measured(student.level?.overall))
+    return { student, estimate: null, estimated: true };
   const known =
     lens === "overall"
       ? student.level?.overall
@@ -54,11 +58,14 @@ function place(student: MapStudent, lens: string): Placed {
 }
 
 /** The scale for a set of placed rows: every measured row's whole likely
- * range and every own-grade stripe; before anyone is measured, the whole
- * curriculum, as a level not yet measured spans it. */
-function placedScale(rows: readonly Placed[], minSpan: number): RangeScale {
-  const measured = rows.flatMap((row) => row.estimate ?? []);
-  if (!measured.length) return WHOLE_SCALE;
+ * range and every own-grade stripe. While anyone on it is not measured yet,
+ * the whole curriculum: their "?" means anywhere from K to Precalculus, so
+ * the axis under it must say so (Q-201, CP-5 #4). */
+export function placedScale(
+  rows: readonly Pick<Placed, "estimate" | "estimated" | "student">[],
+  minSpan: number,
+): RangeScale {
+  if (!rows.length || rows.some((row) => !row.estimate)) return WHOLE_SCALE;
   return fitScale(
     rows.flatMap((row) =>
       row.estimate && (!row.estimated || row.estimate.sd <= UNKNOWN_SD)

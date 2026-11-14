@@ -675,9 +675,20 @@ h3.caption {
 /* The promise, then the premise under it: two lines, never a paragraph. */
 .heroWords {
   display: grid;
-  gap: var(--space-1);
   width: 100%;
   max-width: 46ch;
+}
+/* Before and after the first answer: one cell, the shown set on top. */
+.heroWordsSet {
+  display: grid;
+  grid-area: 1 / 1;
+  align-content: start;
+  gap: var(--space-1);
+  transition: opacity var(--motion-fast) var(--ease-standard);
+}
+.heroWordsSet[aria-hidden="true"] {
+  visibility: hidden;
+  opacity: 0;
 }
 .heroBody {
   margin: 0;

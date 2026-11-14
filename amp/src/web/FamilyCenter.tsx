@@ -1278,7 +1278,7 @@ export function FamilyCenter({
           </div>
           <div className="family-actions">
             <button disabled={busy} onClick={() => setConfirmation(null)}>
-              Keep my settings
+              Keep these settings
             </button>
             <button
               className="family-danger"

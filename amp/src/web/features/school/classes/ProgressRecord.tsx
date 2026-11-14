@@ -1,4 +1,5 @@
 import { EntityLink } from "../../../nav/links";
+import { measured } from "../../../../learning/level-check";
 import type { Entity } from "../../../nav/entities";
 import type {
   ProgressRecord,
@@ -52,7 +53,7 @@ export function RecordLevels({
   openAreas?: boolean;
 }) {
   const { level, reference } = record;
-  if (!level)
+  if (!level || !measured(level.overall))
     return (
       <div className={styles.levelsNotYet} data-levels-not-yet>
         <LevelRows overall={null} areas={[]} scale={WHOLE_SCALE} moving />

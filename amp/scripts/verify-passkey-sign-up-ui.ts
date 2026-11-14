@@ -276,7 +276,7 @@ try {
         fullPage: true,
       });
       const confirm = page.getByRole("button", {
-        name: "I confirmed my email",
+        name: "I’ve confirmed it",
       });
       const resend = page.getByRole("button", { name: "Send another email" });
       await resend.scrollIntoViewIfNeeded();
@@ -312,13 +312,13 @@ try {
   await page.setViewportSize({ width: 390, height: 844 });
   // Not yet confirmed: the answer appears in place.
   const before = await page
-    .getByRole("button", { name: "I confirmed my email" })
+    .getByRole("button", { name: "I’ve confirmed it" })
     .boundingBox();
-  await page.getByRole("button", { name: "I confirmed my email" }).click();
+  await page.getByRole("button", { name: "I’ve confirmed it" }).click();
   await page.getByRole("alert").or(page.getByRole("status")).first().waitFor();
   assert.deepEqual(
     await page
-      .getByRole("button", { name: "I confirmed my email" })
+      .getByRole("button", { name: "I’ve confirmed it" })
       .boundingBox(),
     before,
     "the message stays beside the address; nothing moves",
@@ -336,7 +336,7 @@ try {
   const inbox = await context.newPage();
   await inbox.goto(link!);
   await inbox.close();
-  await page.getByRole("button", { name: "I confirmed my email" }).click();
+  await page.getByRole("button", { name: "I’ve confirmed it" }).click();
   await page
     .getByRole("heading", { name: "Confirm your email" })
     .waitFor({ state: "detached" });

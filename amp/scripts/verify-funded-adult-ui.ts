@@ -306,7 +306,7 @@ try {
           fullPage: true,
         });
         if (asks) {
-          const child = page.getByRole("link", { name: "For my child" });
+          const child = page.getByRole("link", { name: "For a child" });
           const before = await child.boundingBox();
           await page.getByRole("button", { name: "For me" }).focus();
           assert.deepEqual(
