@@ -48,11 +48,13 @@ const EARLY_RENEWAL_LIMIT_MS = 366 * 86_400_000;
  * learner's access already runs past it (a month paid early), the moment
  * that access ends, following back-to-back terms. Access that runs more than
  * a year ahead isn't followed: the term starts at activation and provisioning
- * reports the overlap for an operator to reconcile. */
+ * reports the overlap for an operator to reconcile. Captures the dates on
+ * pending requests using the caller's transaction; does not write grant rows. */
 export async function fundedTermStart(
   db: Pick<PoolClient, "query">,
   learnerId: string,
   activatedAt: string,
+  requestId?: string,
 ): Promise<string> {
   const access = await accessGrantsFor(db, [learnerId]);
   let start = activatedAt;
@@ -72,9 +74,25 @@ export async function fundedTermStart(
     if (!covering) break;
     start = covering.ends_at.toISOString();
   }
-  return Date.parse(start) - Date.parse(activatedAt) > EARLY_RENEWAL_LIMIT_MS
-    ? activatedAt
-    : start;
+  if (Date.parse(start) - Date.parse(activatedAt) > EARLY_RENEWAL_LIMIT_MS)
+    start = activatedAt;
+  // A retry must not reconstruct this decision from today's entitlement.
+  // Save it with the pending financial request in this transaction. Callers
+  // that only know the learner capture the same basis for its pending quotes;
+  // provider callers name their exact request. No grant is materialized.
+  await db.query(
+    `UPDATE amp_funding_requests SET scheduled_term=$3::jsonb
+     WHERE ($1::text IS NULL OR id=$1) AND learner_id=$2
+       AND order_id IS NULL AND status<>'cancelled'
+       AND created_at<=$4::timestamptz AND expires_at>now()`,
+    [
+      requestId ?? null,
+      learnerId,
+      JSON.stringify({ activatedAt, startsAt: start }),
+      activatedAt,
+    ],
+  );
+  return start;
 }
 /** Staff-only, no HTTP endpoint. Explicit evidence events provision one complete license atomically. */
 export async function provisionFundingRequest(
@@ -204,19 +222,39 @@ export async function provisionFundingRequest(
       )
         throw new FundingPurchaseError(409, "order_quote_mismatch");
       const access = await accessGrantsFor(client, [request.learnerId]);
-      // A term scheduled after activation is a month (or year) paid early:
-      // it must start exactly when the learner's current access ends.
+      // A captured scheduling decision survives expiry, shortening or
+      // revocation of the preceding coverage. It grants no current access;
+      // the live resolver below still rejects any overlapping replacement.
+      // Complete saved provider payloads also preserve pre-migration schedules.
+      const savedSchedule =
+        (row.scheduled_term?.activatedAt === activation.occurredAt &&
+          row.scheduled_term?.startsAt === term.startsAt) ||
+        (checkout?.provisioning_payload != null &&
+          canonicalCommercePayload(checkout.provisioning_payload) ===
+            canonicalCommercePayload(data)) ||
+        Boolean(
+          (
+            await client.query(
+              `SELECT 1 FROM amp_classwallet_payments
+           WHERE invoice_id=$1 AND order_id=$2 AND stopped_at IS NULL
+             AND conversion_payload=$3::jsonb`,
+              [request.id, created.orderId, JSON.stringify(data)],
+            )
+          ).rowCount,
+        );
+      // Unsaved operator imports must still agree with a live grant's end.
       if (
         order.license.startsAt !== activation.occurredAt &&
         (Date.parse(order.license.startsAt) -
           Date.parse(activation.occurredAt) >
           EARLY_RENEWAL_LIMIT_MS ||
-          !access.grants.some(
-            (g) =>
-              g.status === "active" &&
-              g.ends_at.getTime() === Date.parse(order.license.startsAt) &&
-              g.starts_at.getTime() < Date.parse(order.license.startsAt),
-          ))
+          (!savedSchedule &&
+            !access.grants.some(
+              (g) =>
+                g.status === "active" &&
+                g.ends_at.getTime() === Date.parse(order.license.startsAt) &&
+                g.starts_at.getTime() < Date.parse(order.license.startsAt),
+            )))
       )
         throw new FundingPurchaseError(409, "funded_term_start_unsupported");
       // The exclusive account lock is acquired before request/order/learner locks.

@@ -10,7 +10,10 @@ import type {
 } from "../src/funding-purchase/contracts.js";
 import { FundingPurchaseRepository } from "../src/funding-purchase/repository.js";
 import { FundingInvoiceRepository } from "../src/funding-purchase/invoice-intents.js";
-import { provisionFundingRequest } from "../src/funding-purchase/provision.js";
+import {
+  fundedTermStart,
+  provisionFundingRequest,
+} from "../src/funding-purchase/provision.js";
 import { deliverFundedActivationMail } from "../src/funding-purchase/activation-mail.js";
 import { installConsentPolicy } from "../src/parent-consent/policy.js";
 import type {
@@ -24,6 +27,10 @@ import {
 } from "../src/funding-purchase/classwallet-staging.js";
 import type { ClassWalletConfig } from "../src/funding-purchase/classwallet.js";
 import { AccessGiftRepository } from "../src/access-grants/repository.js";
+import {
+  accessGrantsFor,
+  refreshAdultAccess,
+} from "../src/account/adult-access.js";
 import { testFundingOffer } from "./funding-purchase.fixture.js";
 
 /* An adult student paying month to month from her own education-funds
@@ -800,4 +807,173 @@ test(
       );
       assert.deepEqual(await grants(pool, "child"), []);
     }),
+);
+
+// Capture the scheduling decision while coverage is live; provision the exact
+// payload after its source ends, without an intervening account GET.
+test("scheduled funded terms survive ended adult coverage", enabled, () =>
+  fixture(async (pool) => {
+    for (const mode of [
+      "missing",
+      "materialized",
+      "revoked",
+      "shortened",
+      "extended",
+      "legacy-checkout",
+      "legacy-payment",
+    ] as const) {
+      const learner = `scheduled-${mode}`;
+      const account = `amp|scheduled-${mode}`;
+      await pool.query(
+        "INSERT INTO amp_learners(id,account_id,name,adult) VALUES($1,$2,'Adult',true),($3,$2,'Child',false)",
+        [learner, account, `${learner}-child`],
+      );
+      const repo = new FundingPurchaseRepository(pool, offers);
+      const request = await repo.create(account, {
+        offerId: monthly.id,
+        offerRevision: monthly.revision,
+        learnerId: learner,
+        idempotencyKey: randomUUID(),
+        studentBillingName: "Fixture Student",
+      });
+      const sourceEnd = new Date(
+        Date.now() +
+          (mode === "revoked" || mode === "shortened" ? 60_000 : 1500),
+      ).toISOString();
+      await pool.query(
+        "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES($1,$2,'esa',$1,'active',now()-interval '1 day',$3)",
+        [`${learner}-source`, `${learner}-child`, sourceEnd],
+      );
+      if (mode === "materialized")
+        await repo.transaction(
+          account,
+          (db) => refreshAdultAccess(db, account, learner),
+          true,
+        );
+      const activatedAt = await justNow();
+      const startsAt = await repo.transaction(
+        account,
+        (db) =>
+          fundedTermStart(
+            db,
+            learner,
+            activatedAt,
+            mode === "missing" || mode === "materialized"
+              ? undefined
+              : request.id,
+          ),
+        true,
+      );
+      assert.equal(startsAt, sourceEnd);
+      const input = settlement(request, {
+        activatedAt,
+        startsAt,
+        endsAt: monthAfter(startsAt),
+      });
+      // Older saved provider payloads predate the scheduling-evidence column.
+      if (mode === "legacy-checkout" || mode === "legacy-payment") {
+        await pool.query(
+          "UPDATE amp_funding_requests SET scheduled_term=NULL WHERE id=$1",
+          [request.id],
+        );
+        if (mode === "legacy-checkout")
+          await pool.query(
+            "INSERT INTO amp_classwallet_checkouts(request_id,vendor_fingerprint,callback_status,provisioning_payload) VALUES($1,'fixture','complete',$2)",
+            [request.id, JSON.stringify(input)],
+          );
+        else
+          await pool.query(
+            "INSERT INTO amp_classwallet_payments(order_id,invoice_id,report_sha256,payment_row,verified_config,conversion_payload) VALUES($1,$2,$3,'{}','{}',$4)",
+            [
+              input.events[0]!.orderId,
+              request.id,
+              "0".repeat(64),
+              JSON.stringify(input),
+            ],
+          );
+      }
+      const before = (
+        await pool.query(
+          "SELECT * FROM amp_grants WHERE learner_id=ANY($1::text[]) ORDER BY id",
+          [[learner, `${learner}-child`]],
+        )
+      ).rows;
+      if (mode === "revoked")
+        await pool.query("UPDATE amp_grants SET status='revoked' WHERE id=$1", [
+          `${learner}-source`,
+        ]);
+      else if (mode === "shortened")
+        await pool.query(
+          "UPDATE amp_grants SET ends_at=now()-interval '1 millisecond' WHERE id=$1",
+          [`${learner}-source`],
+        );
+      else if (mode === "extended")
+        await pool.query(
+          "UPDATE amp_grants SET ends_at=ends_at+interval '1 day' WHERE id=$1",
+          [`${learner}-source`],
+        );
+      else {
+        await new Promise((resolve) =>
+          setTimeout(
+            resolve,
+            Math.max(0, Date.parse(sourceEnd) - Date.now() + 50),
+          ),
+        );
+        assert.deepEqual(
+          (
+            await pool.query(
+              "SELECT * FROM amp_grants WHERE learner_id=ANY($1::text[]) ORDER BY id",
+              [[learner, `${learner}-child`]],
+            )
+          ).rows,
+          before,
+        );
+      }
+      if (mode === "extended") {
+        await assert.rejects(
+          provisionFundingRequest(pool, input, offers),
+          /overlapping_learning_access/,
+        );
+        continue;
+      }
+      const current = await repo.transaction(account, (db) =>
+        accessGrantsFor(db, [learner]),
+      );
+      assert.equal(
+        current.grants.some(
+          (g) => g.status === "active" && g.ends_at > current.now,
+        ),
+        false,
+      );
+      // The receipt supports only the captured date, not an arbitrary delay.
+      const wrongStart = new Date(Date.parse(startsAt) + 1000).toISOString();
+      await assert.rejects(
+        provisionFundingRequest(
+          pool,
+          settlement(request, {
+            activatedAt,
+            startsAt: wrongStart,
+            endsAt: monthAfter(wrongStart),
+          }),
+          offers,
+        ),
+        /funded_term_start_unsupported/,
+      );
+      await provisionFundingRequest(pool, input, offers);
+      await provisionFundingRequest(pool, input, offers);
+      const paid = (
+        await pool.query(
+          "SELECT starts_at,ends_at FROM amp_grants WHERE learner_id=$1 AND channel='esa'",
+          [learner],
+        )
+      ).rows;
+      assert.deepEqual(
+        paid.map((g) => ({
+          startsAt: g.starts_at.toISOString(),
+          endsAt: g.ends_at.toISOString(),
+        })),
+        [{ startsAt, endsAt: monthAfter(startsAt) }],
+      );
+    }
+  }),
 );
