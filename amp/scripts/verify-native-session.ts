@@ -18,6 +18,8 @@ import { ApiError, PostgresRepository } from "../src/server/repository.js";
 import { verifyAccessToken } from "../src/server/auth.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { migrate } from "./migrate.js";
+import { clientResponseCapabilities } from "../src/web/lib/batch-capability-fallback.js";
+import { figureCapabilities } from "../src/math/contracts.js";
 import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 
 const database = process.env.AMP_TEST_DATABASE_URL;
@@ -489,12 +491,19 @@ try {
     request: { kind: "batch", learnerId: learnerB.id, body: { count: 1 } },
   });
   assert.equal(denied.status, 404);
+  // The app names what it can draw, as LegacyApp's batch request does; the
+  // server serves only what the client can draw (#2112).
   const batch = await rpc("request", {
     handle: session.token,
     request: {
       kind: "batch",
       learnerId: learnerA.id,
-      body: { templateId: "add-within-20", count: 1 },
+      body: {
+        templateId: "add-within-20",
+        count: 1,
+        responseCapabilities: [...clientResponseCapabilities],
+        figureCapabilities: [...figureCapabilities],
+      },
     },
   });
   assert.equal(batch.status, 200);
