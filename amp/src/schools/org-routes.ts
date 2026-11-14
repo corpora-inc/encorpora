@@ -150,6 +150,9 @@ export function defineOrgRoutes(define: typeof defineSchoolRoute) {
         // Whether students can practice: the sign-in tools follow it for
         // every reader of the class, not only those who read its pilot.
         practice: gate ?? "open",
+        // Why it ended, when it has: the school year, the roster or the
+        // coverage (CP-3 r7). Each has its own next step.
+        practiceEnd: state.end,
         orgId: target.orgId,
         path: target.path,
         name: (named.rows[0]?.name as string | undefined) ?? null,

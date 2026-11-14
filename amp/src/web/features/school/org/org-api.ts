@@ -65,6 +65,9 @@ export const classYearResource = z.object({
   /** When anything deciding practice can next change (null: nothing
    * dated ahead): ask again then. */
   recheckAt: z.string().nullable().optional(),
+  /** Why practice ended, when it has (CP-3 r7): the school year, the
+   * roster, or the coverage. Older servers don't say. */
+  practiceEnd: z.enum(["session", "roster", "coverage"]).nullable().optional(),
   /** The server's clock at this answer: the device's is never trusted. */
   serverNow: z.string().optional(),
   /** When this answer was asked for, on this page's monotonic clock. */

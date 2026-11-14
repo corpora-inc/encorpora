@@ -27,7 +27,7 @@ import {
 } from "./contracts.js";
 import { enrollmentSettings } from "./enrollment-settings.js";
 import { recordEvent } from "./events.js";
-import { activeToday } from "./principal.js";
+import { activeToday, studentInClassSql } from "./principal.js";
 import { generateJoinCode, type SchoolRepository } from "./repository.js";
 import { studentDeviceMode } from "./settings.js";
 
@@ -87,11 +87,9 @@ export const STUDENT_LABEL = `CASE WHEN count(*) OVER (PARTITION BY lower(${STUD
   WHEN count(*) OVER (PARTITION BY lower(${FULL_NAME}))=1 THEN ${FULL_NAME}
   ELSE ${FULL_NAME}||CASE WHEN row_number() OVER (PARTITION BY lower(${FULL_NAME}) ORDER BY p.created_at,p.id)>1
     THEN ' ('||row_number() OVER (PARTITION BY lower(${FULL_NAME}) ORDER BY p.created_at,p.id)||')' ELSE '' END END`;
-/** SQL: `p` is a live student of class `c`, whose org is `o`, today. */
-const IN_CLASS = `e.class_id=c.id AND e.role='student' AND ${activeToday("e", "o")}
-  AND p.deleted_at IS NULL AND p.learner_id IS NOT NULL
-  AND EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs ro ON ro.id=r.org_id
-    WHERE r.person_id=p.id AND r.role='student' AND ${activeToday("r", "ro")})`;
+/** SQL: `p` is a live student of class `c`, whose org is `o`, today (the
+ * one predicate the practice gate reads too). */
+const IN_CLASS = studentInClassSql("e", "p", "c", "o");
 const STUDENTS_OF_CLASS = `amp_classes c JOIN amp_orgs o ON o.id=c.org_id
   JOIN amp_enrollments e ON e.class_id=c.id
   JOIN amp_people p ON p.id=e.person_id`;

@@ -786,7 +786,7 @@ test(
  * the reader's own roles: rows of unrelated people, classes and Clever
  * memberships are never visited, however many there are. */
 test(
-  "the recheck read visits only the class's own people",
+  "the recheck read's work is bounded by the roster, for a class of two and a class of a thousand",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
   async (t) => {
     const url = process.env.AMP_TEST_DATABASE_URL!;
@@ -817,41 +817,44 @@ test(
       names: ["Ana Brook", "Ben Cole"],
     });
     await activateClassPilot(schools, teacher, classId);
-    // A large district beside it: 20,000 unrelated people, each enrolled in
-    // an unrelated class with a student role, a released seat and a grant,
-    // and 20,000 unrelated Clever memberships.
-    const N = 20_000;
+    const session = (
+      await db.query("SELECT session_id FROM amp_classes WHERE id=$1", [
+        classId,
+      ])
+    ).rows[0].session_id as string;
+    /** `n` students in a new class of `org`: each a learner, a person, an
+     * enrollment, a student role and a grant. */
+    const crowd = async (org: string, n: number, tag: string) => {
+      const klass = randomUUID();
+      await db.query(
+        "INSERT INTO amp_classes(id,org_id,name,join_code,session_id) VALUES($1,$2,$3,$4,$5)",
+        [klass, org, tag, `PLAN-${tag}`, session],
+      );
+      await db.query(
+        `WITH made AS (SELECT gen_random_uuid() AS person,'plan-'||$2||'-'||g AS learner FROM generate_series(1,$1) g),
+         l AS (INSERT INTO amp_learners(id,account_id,name) SELECT learner,'school:'||person,'Pupil' FROM made),
+         p AS (INSERT INTO amp_people(id,tenant_id,given_name,handle,timezone,learner_id)
+           SELECT person,$3,'Pupil',$2||'-'||learner,'UTC',learner FROM made),
+         e AS (INSERT INTO amp_enrollments(id,person_id,class_id,role,begin_on)
+           SELECT gen_random_uuid(),person,$4,'student',current_date-30 FROM made),
+         r AS (INSERT INTO amp_org_roles(id,person_id,org_id,role,begin_on)
+           SELECT gen_random_uuid(),person,$3,'student',current_date-30 FROM made)
+         INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at)
+         SELECT 'plan-'||learner,learner,'stripe','plan-'||learner,'active',now()-interval '1 day',now()+interval '30 days' FROM made`,
+        [n, tag, org, klass],
+      );
+      return klass;
+    };
+    // A large district beside it: 20,000 unrelated students, each with a
+    // learner, an enrollment, a student role and a grant, and 20,000
+    // unrelated owned Clever memberships.
+    const other = randomUUID();
     await db.query(
-      `WITH other AS (
-         INSERT INTO amp_orgs(id,kind,name,timezone,path)
-         SELECT gen_random_uuid(),'school','Unrelated','UTC','{}' RETURNING id)
-       UPDATE amp_orgs o SET path=ARRAY[o.id] FROM other WHERE o.id=other.id`,
-    );
-    const other = (
-      await db.query("SELECT id FROM amp_orgs WHERE name='Unrelated'")
-    ).rows[0].id as string;
-    const otherClass = randomUUID();
-    await db.query(
-      `INSERT INTO amp_classes(id,org_id,name,join_code,session_id)
-       SELECT $1,$2,'Unrelated class','UNRELATED-PLAN',session_id FROM amp_classes WHERE id=$3`,
-      [otherClass, other, classId],
-    );
-    await db.query(
-      `INSERT INTO amp_people(id,tenant_id,given_name,family_name,handle,timezone)
-       SELECT gen_random_uuid(),$1,'Unrelated',g::text,'unrelated-'||g,'UTC'
-       FROM generate_series(1,$2) g`,
-      [other, N],
-    );
-    await db.query(
-      `INSERT INTO amp_enrollments(id,person_id,class_id,role,begin_on)
-       SELECT gen_random_uuid(),id,$1,'student',current_date-30 FROM amp_people WHERE given_name='Unrelated'`,
-      [otherClass],
-    );
-    await db.query(
-      `INSERT INTO amp_org_roles(id,person_id,org_id,role,begin_on)
-       SELECT gen_random_uuid(),id,$1,'student',current_date-30 FROM amp_people WHERE given_name='Unrelated'`,
+      "INSERT INTO amp_orgs(id,kind,name,timezone,path) VALUES($1,'school','Unrelated','UTC',ARRAY[$1::uuid])",
       [other],
     );
+    await crowd(other, 20_000, "unrelated");
+    const big = await crowd(orgId, 1_000, "big");
     const connection = randomUUID();
     const run = randomUUID();
     await db.query(
@@ -864,44 +867,211 @@ test(
     );
     await db.query(
       `INSERT INTO amp_clever_memberships(connection_id,kind,source_key,local_id,owned,last_seen_run_id,bootstrap_valid_until)
-       SELECT $1,'org_role',r.id::text,r.id,g%2=0,$2,now()+interval '1 day'
-       FROM amp_org_roles r, generate_series(0,0) g WHERE r.org_id=$3`,
+       SELECT $1,'org_role',r.id::text,r.id,true,$2,now()+interval '1 day'
+       FROM amp_org_roles r WHERE r.org_id=$3`,
       [connection, run, other],
     );
     await db.query("ANALYZE");
-    // An administrator of the school reads it (their own Clever
+    // An administrator of the school reads them (their own Clever
     // membership is the one that can matter).
-    const viewer = "fixture-plan-admin";
+    const reader = "fixture-plan-admin";
     await schools.addStaff({
       orgId,
       role: "admin",
       givenName: "Vera",
-      accountId: viewer,
+      accountId: reader,
     });
-    const { text, values } = classRecheckQuery(classId, viewer);
-    const plan = (
-      await db.query(`EXPLAIN (ANALYZE, FORMAT JSON) ${text}`, values)
-    ).rows[0]["QUERY PLAN"][0].Plan;
-    // Rows each relation was read for, filtered ones included.
-    const visited = new Map<string, number>();
-    const walk = (node: Record<string, unknown>) => {
-      const relation = node["Relation Name"] as string | undefined;
-      if (relation) {
-        const rows =
-          ((node["Actual Rows"] as number) +
-            ((node["Rows Removed by Filter"] as number) ?? 0) +
-            ((node["Rows Removed by Index Recheck"] as number) ?? 0)) *
-          ((node["Actual Loops"] as number) ?? 1);
-        visited.set(relation, (visited.get(relation) ?? 0) + rows);
-      }
-      for (const child of (node.Plans as Record<string, unknown>[]) ?? [])
-        walk(child);
+    /** Rows each relation was read for, filtered ones included. */
+    const visited = async (klass: string) => {
+      const { text, values } = classRecheckQuery(klass, reader);
+      const plan = (
+        await db.query(`EXPLAIN (ANALYZE, FORMAT JSON) ${text}`, values)
+      ).rows[0]["QUERY PLAN"][0].Plan;
+      const rows = new Map<string, number>();
+      const walk = (node: Record<string, unknown>) => {
+        const relation = node["Relation Name"] as string | undefined;
+        if (relation)
+          rows.set(
+            relation,
+            (rows.get(relation) ?? 0) +
+              ((node["Actual Rows"] as number) +
+                ((node["Rows Removed by Filter"] as number) ?? 0) +
+                ((node["Rows Removed by Index Recheck"] as number) ?? 0)) *
+                ((node["Actual Loops"] as number) ?? 1),
+          );
+        for (const child of (node.Plans as Record<string, unknown>[]) ?? [])
+          walk(child);
+      };
+      walk(plan);
+      return rows;
     };
-    walk(plan);
-    for (const [relation, rows] of visited)
-      assert.ok(
-        rows < 1_000,
-        `${relation}: ${rows} rows read for a class of two (${JSON.stringify([...visited])})`,
-      );
+    // Each relation is read for a few rows per pupil (their enrollment,
+    // role, person, learner's grants), never for the district's 20,000.
+    for (const [klass, pupils] of [
+      [classId, 2],
+      [big, 1_000],
+    ] as const) {
+      const rows = await visited(klass);
+      for (const [relation, count] of rows)
+        assert.ok(
+          count <= 4 * pupils + 50,
+          `${relation}: ${count} rows read for a class of ${pupils} (${JSON.stringify([...rows])})`,
+        );
+    }
+  },
+);
+/* CP-3 r7 M2: the gate counts a student as covered only if they can enter
+ * today exactly as `/join` and student sessions read it (their student
+ * role current in its own org's zone). Pupils whose UTC district roles end
+ * at midnight UTC leave a New York class's practice at that same instant:
+ * never four hours of an open code with an empty roster. */
+test(
+  "the gate and student entry read one population, in one time zone",
+  { skip: !process.env.AMP_TEST_DATABASE_URL },
+  async (t) => {
+    const fixture = await clockedSchema("recheck_entry");
+    const app = await clockedApp(fixture);
+    t.after(async () => {
+      await app.close();
+      await fixture.close();
+    });
+    const { db } = fixture;
+    const schools = new SchoolRepository(db);
+    const teacher = "fixture-entry-teacher";
+    await fixture.clock("2027-03-14T12:00:00Z");
+    const { orgId, classId } = await startSchoolClass(schools, teacher, {
+      requestId: randomUUID(),
+      schoolName: "Birchwood Elementary",
+      className: "Grade 4 Math",
+      timezone: "America/New_York",
+      signerName: "Rosa Lindqvist",
+      signerTitle: "Teacher",
+      agreementVersion: AGREEMENT_VERSION,
+      authorized: true,
+      names: ["Ana Brook", "Ben Cole"],
+    });
+    await activateClassPilot(schools, teacher, classId);
+    await db.query(
+      "UPDATE amp_teacher_pilots SET started_at='2027-01-01T00:00:00Z',ends_at='2027-02-01T00:00:00Z',grace_ends_at='2027-04-15T00:00:00Z'",
+    );
+    await db.query(
+      "UPDATE amp_academic_sessions SET starts_on='2026-08-01',ends_on='2027-07-31' WHERE org_id=$1",
+      [orgId],
+    );
+    // The school is a UTC district's; its pupils' student roles are the
+    // district's, ending March 15.
+    const district = randomUUID();
+    await db.query(
+      "INSERT INTO amp_orgs(id,kind,name,timezone,path) VALUES($1,'district','Lake District','UTC',ARRAY[$1::uuid])",
+      [district],
+    );
+    await db.query(
+      "UPDATE amp_orgs SET parent_id=$1,path=ARRAY[$1::uuid,id] WHERE id=$2",
+      [district, orgId],
+    );
+    await db.query("UPDATE amp_enrollments SET begin_on='2026-01-01'");
+    await db.query(
+      "UPDATE amp_org_roles SET begin_on='2026-01-01' WHERE role<>'student'",
+    );
+    await db.query(
+      "UPDATE amp_org_roles SET org_id=$1,begin_on='2026-01-01',end_on='2027-03-15' WHERE role='student'",
+      [district],
+    );
+    const code = (
+      await db.query("SELECT join_code FROM amp_classes WHERE id=$1", [classId])
+    ).rows[0].join_code as string;
+    const pupil = (
+      await db.query(
+        "SELECT person_id FROM amp_org_roles WHERE role='student' LIMIT 1",
+      )
+    ).rows[0].person_id as string;
+    const read = async (path: string) => {
+      const reply = await app.inject({
+        method: "GET",
+        url: `/api/v1/school/classes/${classId}/${path}`,
+        headers: { authorization: `Bearer ${teacher}` },
+      });
+      assert.equal(reply.statusCode, 200, reply.body);
+      return reply.json();
+    };
+    const signIn = new SchoolSignIn(schools);
+
+    await fixture.clock("2027-03-14T23:59:59Z");
+    let year = await read("year");
+    assert.equal(year.practice, "open");
+    assert.equal(year.recheckAt, "2027-03-15T00:00:00.000Z", "UTC midnight");
+    assert.equal((await signIn.lookup({ code })).students.length, 2);
+    assert.ok(await signIn.signInPerson(pupil));
+
+    await fixture.clock("2027-03-15T00:00:00Z");
+    assert.equal((await signIn.lookup({ code })).students.length, 0);
+    assert.equal(await signIn.signInPerson(pupil), null);
+    year = await read("year");
+    assert.equal(year.practice, "ended", "the gate closes with entry");
+    assert.equal(year.practiceEnd, "roster", "no student can sign in");
+    const presence = (await read("presence")).class;
+    assert.equal(presence.joinCode, "");
+    assert.equal(presence.codeAvailable, false);
+  },
+);
+
+/* CP-3 r7: an academic session over says so (`practiceEnd: "session"`),
+ * not as a coverage shortage seats could answer. */
+test(
+  "a session that's over is reported as the school year, not coverage",
+  { skip: !process.env.AMP_TEST_DATABASE_URL },
+  async (t) => {
+    const fixture = await clockedSchema("recheck_end");
+    const app = await clockedApp(fixture);
+    t.after(async () => {
+      await app.close();
+      await fixture.close();
+    });
+    const { db } = fixture;
+    const schools = new SchoolRepository(db);
+    const teacher = "fixture-end-teacher";
+    await fixture.clock("2027-03-14T12:00:00Z");
+    const { orgId, classId } = await startSchoolClass(schools, teacher, {
+      requestId: randomUUID(),
+      schoolName: "Birchwood Elementary",
+      className: "Grade 4 Math",
+      timezone: "UTC",
+      signerName: "Rosa Lindqvist",
+      signerTitle: "Teacher",
+      agreementVersion: AGREEMENT_VERSION,
+      authorized: true,
+      names: ["Ana Brook"],
+    });
+    await activateClassPilot(schools, teacher, classId);
+    await db.query(
+      "UPDATE amp_teacher_pilots SET started_at='2027-01-01T00:00:00Z',ends_at='2027-02-01T00:00:00Z',grace_ends_at='2027-04-15T00:00:00Z'",
+    );
+    await db.query("UPDATE amp_enrollments SET begin_on='2026-01-01'");
+    await db.query("UPDATE amp_org_roles SET begin_on='2026-01-01'");
+    await db.query(
+      "UPDATE amp_academic_sessions SET starts_on='2026-08-01',ends_on='2027-03-14' WHERE org_id=$1",
+      [orgId],
+    );
+    await fixture.clock("2027-03-15T00:00:00Z");
+    const reply = await app.inject({
+      method: "GET",
+      url: `/api/v1/school/classes/${classId}/year`,
+      headers: { authorization: `Bearer ${teacher}` },
+    });
+    assert.equal(reply.json().practice, "ended");
+    assert.equal(reply.json().practiceEnd, "session");
+    // Coverage running out instead says so.
+    await db.query(
+      "UPDATE amp_academic_sessions SET ends_on='2027-07-31' WHERE org_id=$1",
+      [orgId],
+    );
+    await fixture.clock("2027-04-15T00:00:00Z");
+    const later = await app.inject({
+      method: "GET",
+      url: `/api/v1/school/classes/${classId}/year`,
+      headers: { authorization: `Bearer ${teacher}` },
+    });
+    assert.equal(later.json().practice, "ended");
+    assert.equal(later.json().practiceEnd, "coverage");
   },
 );
