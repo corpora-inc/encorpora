@@ -118,7 +118,7 @@ export function shellFrame(
   // level…" and a profile's levels are steps with their own way back.
   if (path === "/me/profiles") return { kind: "progress", active: "profiles" };
   if (under(path, "/me/profiles")) return { kind: "plain" };
-  if (path === "/overview" || path === "/me")
+  if (path === "/overview" || path === "/me" || path === "/me/time")
     return { kind: "progress", active: "overview" };
   // Changing the birth year belongs to the Overview it is opened from.
   if (path === "/profile/birth-year")

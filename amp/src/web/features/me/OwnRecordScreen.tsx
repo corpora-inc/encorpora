@@ -19,10 +19,15 @@ import {
 import { strandEstimate } from "../../../learning/frontier";
 import "../school/SchoolFrame.module.css";
 import {
+  areaRowLink,
   RecordObjectives,
-  RecordWeeks,
   RecordWork,
 } from "../school/classes/ProgressRecord";
+import { LayerHost } from "../../nav/LayerHost";
+import type { AreaSource } from "../../nav/AreaLayer";
+import { skillCatalogOptions } from "../../lib/learning-view";
+import { PrintButton } from "../../ui/PrintButton";
+import { downloadPdf, paperFormat } from "../../lib/pdf-download";
 import teacher from "../school/classes/Teacher.module.css";
 import type { OwnPractice } from "../../../account/adult-contracts";
 import type { Frontier } from "../pathways/model";
@@ -80,6 +85,8 @@ export function OwnRecordScreen() {
     enabled: !!data,
   });
   const answered = frontier.data?.overall.answered ?? 0;
+  // Recent work opens each answer's skill, by the catalog's titles.
+  const catalog = useQuery(skillCatalogOptions);
   const trend = useQuery({
     ...levelTrendOptions(session, learnerId),
     enabled: !!data && answered > 0,
@@ -170,71 +177,127 @@ export function OwnRecordScreen() {
                 </Link>
               ) : undefined
             }
-            secondary={freeLine}
+            secondary={
+              <>
+                {freeLine}
+                <AtALevel />
+              </>
+            }
           />
         </div>
       </OwnPage>
     );
-  const side = shown.week || shown.objectives;
+  const areas = levelAreas(level, data);
+  const area: AreaSource = {
+    overall: level.overall,
+    areas,
+    objectives: data.record.objectives,
+    path: trend.data ?? null,
+    practice: data.learner.active,
+  };
+  // An answer's skill, by its title in the catalog; a title two skills share
+  // opens neither.
+  const skillOf = new Map<string, string | null>();
+  for (const skill of catalog.data?.skills ?? [])
+    skillOf.set(skill.title, skillOf.has(skill.title) ? null : skill.id);
   return (
     <OwnPage>
-      <div
-        className={styles.stack}
-        data-own-page
-        data-wide={side ? "" : undefined}
-      >
-        {/* The title alone: where you are. Workbooks and Practicing as
-            someone else are in the drawer under Practice (docs/design/ia.md),
-            the page prints itself (Cmd+P), and the bar holds the one
-            Practice. The free count is one quiet line. */}
-        <header className={styles.titleRow}>
-          <h1 id="me-title">Where you are</h1>
-          {freeLine && <span className={styles.titleTools}>{freeLine}</span>}
+      <div className={styles.stack} data-own-page data-wide="">
+        {/* The title, then one quiet line: this week (opening their time)
+            and the free problems left. Practicing at a level and the
+            printed report sit beside the title; the bar holds the one
+            Practice. */}
+        <header className={styles.head}>
+          <div className={styles.titleRow}>
+            <h1 id="me-title">Where you are</h1>
+            <div className={styles.titleTools}>
+              <AtALevel />
+              <PrintButton
+                variant="quiet"
+                download={() =>
+                  downloadPdf({
+                    path: `/me/practice/report.pdf?format=${paperFormat()}`,
+                    token: session.token,
+                    name: "amp-progress-report.pdf",
+                  })
+                }
+              >
+                Progress report
+              </PrintButton>
+            </div>
+          </div>
+          <p className={styles.meta}>
+            <Link to="/me/time" className={styles.weekLink} data-this-week="">
+              {shown.week ? (
+                <>
+                  <span className={styles.weekLabel}>This week</span>
+                  {` · ${shown.week}`}
+                </>
+              ) : (
+                <span className={styles.weekLabel}>Time, by week</span>
+              )}
+              <svg viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M6 3.5 10.5 8 6 12.5" />
+              </svg>
+            </Link>
+            {freeLine}
+          </p>
         </header>
         {pause}
-        {/* From 1024 px with something beside it: the level on the left,
-            this week and objectives on the right; one column otherwise. */}
-        <div className={styles.columns}>
-          <LevelRange
-            title={null}
-            labelledBy="me-title"
-            overall={level.overall}
-            answered={level.overall.answered}
-            areas={levelAreas(level, data)}
-            path={trend.data ?? null}
-            pathState={
-              trend.isError ? "failed" : trend.data ? "ready" : "loading"
-            }
-            decimals={numbersShown}
-          />
-          {side && (
-            <div className={styles.side}>
-              {/* Their time and work, each part only once it has something
-                  to say. Never an empty chart. */}
-              {shown.week && (
-                <section className={teacher.recordSection} data-this-week>
-                  <h2>This week</h2>
-                  <p className={styles.weekLine}>{shown.week}</p>
-                  {shown.weeks && <RecordWeeks record={data.record} />}
-                </section>
-              )}
-              {shown.objectives && (
-                <section className={teacher.recordSection}>
-                  <h2>Skills shown on their own</h2>
-                  <RecordObjectives record={data.record} />
-                </section>
-              )}
-            </div>
-          )}
-        </div>
+        <LevelRange
+          title={null}
+          labelledBy="me-title"
+          overall={level.overall}
+          answered={level.overall.answered}
+          areas={areas}
+          path={trend.data ?? null}
+          pathState={
+            trend.isError ? "failed" : trend.data ? "ready" : "loading"
+          }
+          decimals={numbersShown}
+          rowLink={areaRowLink}
+        />
+        {shown.objectives && (
+          <section className={teacher.recordSection}>
+            <h2>Skills shown on their own</h2>
+            <RecordObjectives record={data.record} openSkills />
+          </section>
+        )}
         {shown.work && (
           <section className={teacher.recordSection}>
             <h2>Recent work</h2>
-            <RecordWork record={data.record} reader="self" />
+            <RecordWork
+              record={data.record}
+              reader="self"
+              // No replay of one's own answer exists yet (the replay is a
+              // staff read): a row opens its skill, with the latest answers
+              // on it.
+              workPath={(_attempt, item) => {
+                const id = skillOf.get(item.skill);
+                return id ? { kind: "skill", id } : undefined;
+              }}
+            />
           </section>
         )}
       </div>
+      {/* Details over the page (?open=): an area of the level, a skill. */}
+      <LayerHost learner={data.learner.id} area={area} />
     </OwnPage>
+  );
+}
+
+/** Practicing at a level (`/me/level`): a grade and a pace, then the main
+ * loop there. One quiet link, the same on day 0 and after. */
+function AtALevel() {
+  return (
+    <Link
+      to="/$"
+      params={{ _splat: "me/level" }}
+      className={styles.quietLink}
+      data-at-a-level=""
+    >
+      Practice at a level
+    </Link>
   );
 }
 
@@ -254,7 +317,9 @@ export function activityShown(data: Pick<OwnPractice, "record" | "time">) {
     week:
       minutes > 0 || problems > 0
         ? [
-            count(minutes, "minute", "minutes"),
+            // A day of answers too quick to count as minutes says no
+            // "0 min".
+            ...(minutes > 0 ? [`${minutes} min`] : []),
             count(days.length, "day", "days"),
             count(problems, "problem", "problems"),
           ].join(" · ")
