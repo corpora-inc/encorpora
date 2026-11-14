@@ -1,0 +1,9669 @@
+{
+ "id": "equal-tray-total--se",
+ "title": "Multiplication counts equal groups",
+ "teaches": [],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "points": {
+     "t1V0": [
+      -3.125,
+      2.825
+     ],
+     "t1V1": [
+      -0.475,
+      2.825
+     ],
+     "t1V2": [
+      -0.475,
+      1.175
+     ],
+     "t1V3": [
+      -3.125,
+      1.175
+     ],
+     "t1cookie1P": [
+      -2.6,
+      2.38
+     ],
+     "t1cookie1chipP0": [
+      -2.69,
+      2.45
+     ],
+     "t1cookie1chipP1": [
+      -2.5,
+      2.41
+     ],
+     "t1cookie1chipP2": [
+      -2.61,
+      2.26
+     ],
+     "t1cookie2P": [
+      -1.8,
+      2.38
+     ],
+     "t1cookie2chipP0": [
+      -1.89,
+      2.45
+     ],
+     "t1cookie2chipP1": [
+      -1.7,
+      2.41
+     ],
+     "t1cookie2chipP2": [
+      -1.81,
+      2.26
+     ],
+     "t1cookie3P": [
+      -1.0,
+      2.38
+     ],
+     "t1cookie3chipP0": [
+      -1.09,
+      2.45
+     ],
+     "t1cookie3chipP1": [
+      -0.9,
+      2.41
+     ],
+     "t1cookie3chipP2": [
+      -1.01,
+      2.26
+     ],
+     "t1cookie4P": [
+      -2.2,
+      1.62
+     ],
+     "t1cookie4chipP0": [
+      -2.29,
+      1.69
+     ],
+     "t1cookie4chipP1": [
+      -2.1,
+      1.65
+     ],
+     "t1cookie4chipP2": [
+      -2.21,
+      1.5
+     ],
+     "t1cookie5P": [
+      -1.4,
+      1.62
+     ],
+     "t1cookie5chipP0": [
+      -1.49,
+      1.69
+     ],
+     "t1cookie5chipP1": [
+      -1.3,
+      1.65
+     ],
+     "t1cookie5chipP2": [
+      -1.41,
+      1.5
+     ],
+     "five1P": [
+      -2.5,
+      -2.3
+     ],
+     "t2V0": [
+      0.475,
+      2.825
+     ],
+     "t2V1": [
+      3.125,
+      2.825
+     ],
+     "t2V2": [
+      3.125,
+      1.175
+     ],
+     "t2V3": [
+      0.475,
+      1.175
+     ],
+     "t2cookie1P": [
+      1.0,
+      2.38
+     ],
+     "t2cookie1chipP0": [
+      0.91,
+      2.45
+     ],
+     "t2cookie1chipP1": [
+      1.1,
+      2.41
+     ],
+     "t2cookie1chipP2": [
+      0.99,
+      2.26
+     ],
+     "t2cookie2P": [
+      1.8,
+      2.38
+     ],
+     "t2cookie2chipP0": [
+      1.71,
+      2.45
+     ],
+     "t2cookie2chipP1": [
+      1.9,
+      2.41
+     ],
+     "t2cookie2chipP2": [
+      1.79,
+      2.26
+     ],
+     "t2cookie3P": [
+      2.6,
+      2.38
+     ],
+     "t2cookie3chipP0": [
+      2.51,
+      2.45
+     ],
+     "t2cookie3chipP1": [
+      2.7,
+      2.41
+     ],
+     "t2cookie3chipP2": [
+      2.59,
+      2.26
+     ],
+     "t2cookie4P": [
+      1.4,
+      1.62
+     ],
+     "t2cookie4chipP0": [
+      1.31,
+      1.69
+     ],
+     "t2cookie4chipP1": [
+      1.5,
+      1.65
+     ],
+     "t2cookie4chipP2": [
+      1.39,
+      1.5
+     ],
+     "t2cookie5P": [
+      2.2,
+      1.62
+     ],
+     "t2cookie5chipP0": [
+      2.11,
+      1.69
+     ],
+     "t2cookie5chipP1": [
+      2.3,
+      1.65
+     ],
+     "t2cookie5chipP2": [
+      2.19,
+      1.5
+     ],
+     "five2P": [
+      0,
+      -2.3
+     ],
+     "t3V0": [
+      -1.325,
+      0.325
+     ],
+     "t3V1": [
+      1.325,
+      0.325
+     ],
+     "t3V2": [
+      1.325,
+      -1.325
+     ],
+     "t3V3": [
+      -1.325,
+      -1.325
+     ],
+     "t3cookie1P": [
+      -0.8,
+      -0.12
+     ],
+     "t3cookie1chipP0": [
+      -0.89,
+      -0.05
+     ],
+     "t3cookie1chipP1": [
+      -0.7,
+      -0.09
+     ],
+     "t3cookie1chipP2": [
+      -0.81,
+      -0.24
+     ],
+     "t3cookie2P": [
+      0.0,
+      -0.12
+     ],
+     "t3cookie2chipP0": [
+      -0.09,
+      -0.05
+     ],
+     "t3cookie2chipP1": [
+      0.1,
+      -0.09
+     ],
+     "t3cookie2chipP2": [
+      -0.01,
+      -0.24
+     ],
+     "t3cookie3P": [
+      0.8,
+      -0.12
+     ],
+     "t3cookie3chipP0": [
+      0.71,
+      -0.05
+     ],
+     "t3cookie3chipP1": [
+      0.9,
+      -0.09
+     ],
+     "t3cookie3chipP2": [
+      0.79,
+      -0.24
+     ],
+     "t3cookie4P": [
+      -0.4,
+      -0.88
+     ],
+     "t3cookie4chipP0": [
+      -0.49,
+      -0.81
+     ],
+     "t3cookie4chipP1": [
+      -0.3,
+      -0.85
+     ],
+     "t3cookie4chipP2": [
+      -0.41,
+      -1.0
+     ],
+     "t3cookie5P": [
+      0.4,
+      -0.88
+     ],
+     "t3cookie5chipP0": [
+      0.31,
+      -0.81
+     ],
+     "t3cookie5chipP1": [
+      0.5,
+      -0.85
+     ],
+     "t3cookie5chipP2": [
+      0.39,
+      -1.0
+     ],
+     "five3P": [
+      2.5,
+      -2.3
+     ],
+     "plus1P": [
+      -1.25,
+      -2.3
+     ],
+     "plus2P": [
+      1.25,
+      -2.3
+     ]
+    },
+    "parts": [
+     {
+      "id": "t1rim",
+      "group": "t1",
+      "poly": [
+       "t1V0",
+       "t1V1",
+       "t1V2",
+       "t1V3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t1cookie1",
+      "group": "t1",
+      "circle": "t1cookie1P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie1chip0",
+      "group": "t1",
+      "circle": "t1cookie1chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie1chip1",
+      "group": "t1",
+      "circle": "t1cookie1chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie1chip2",
+      "group": "t1",
+      "circle": "t1cookie1chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie2",
+      "group": "t1",
+      "circle": "t1cookie2P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie2chip0",
+      "group": "t1",
+      "circle": "t1cookie2chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie2chip1",
+      "group": "t1",
+      "circle": "t1cookie2chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie2chip2",
+      "group": "t1",
+      "circle": "t1cookie2chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie3",
+      "group": "t1",
+      "circle": "t1cookie3P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie3chip0",
+      "group": "t1",
+      "circle": "t1cookie3chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie3chip1",
+      "group": "t1",
+      "circle": "t1cookie3chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie3chip2",
+      "group": "t1",
+      "circle": "t1cookie3chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie4",
+      "group": "t1",
+      "circle": "t1cookie4P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie4chip0",
+      "group": "t1",
+      "circle": "t1cookie4chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie4chip1",
+      "group": "t1",
+      "circle": "t1cookie4chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie4chip2",
+      "group": "t1",
+      "circle": "t1cookie4chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie5",
+      "group": "t1",
+      "circle": "t1cookie5P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie5chip0",
+      "group": "t1",
+      "circle": "t1cookie5chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie5chip1",
+      "group": "t1",
+      "circle": "t1cookie5chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie5chip2",
+      "group": "t1",
+      "circle": "t1cookie5chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "five1",
+      "label": "5",
+      "at": "five1P",
+      "dir": "c",
+      "ink": "gold",
+      "size": "xl",
+      "start": false,
+      "flies": true
+     },
+     {
+      "id": "t2rim",
+      "group": "t2",
+      "poly": [
+       "t2V0",
+       "t2V1",
+       "t2V2",
+       "t2V3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t2cookie1",
+      "group": "t2",
+      "circle": "t2cookie1P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie1chip0",
+      "group": "t2",
+      "circle": "t2cookie1chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie1chip1",
+      "group": "t2",
+      "circle": "t2cookie1chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie1chip2",
+      "group": "t2",
+      "circle": "t2cookie1chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie2",
+      "group": "t2",
+      "circle": "t2cookie2P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie2chip0",
+      "group": "t2",
+      "circle": "t2cookie2chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie2chip1",
+      "group": "t2",
+      "circle": "t2cookie2chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie2chip2",
+      "group": "t2",
+      "circle": "t2cookie2chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie3",
+      "group": "t2",
+      "circle": "t2cookie3P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie3chip0",
+      "group": "t2",
+      "circle": "t2cookie3chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie3chip1",
+      "group": "t2",
+      "circle": "t2cookie3chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie3chip2",
+      "group": "t2",
+      "circle": "t2cookie3chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie4",
+      "group": "t2",
+      "circle": "t2cookie4P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie4chip0",
+      "group": "t2",
+      "circle": "t2cookie4chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie4chip1",
+      "group": "t2",
+      "circle": "t2cookie4chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie4chip2",
+      "group": "t2",
+      "circle": "t2cookie4chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie5",
+      "group": "t2",
+      "circle": "t2cookie5P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie5chip0",
+      "group": "t2",
+      "circle": "t2cookie5chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie5chip1",
+      "group": "t2",
+      "circle": "t2cookie5chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie5chip2",
+      "group": "t2",
+      "circle": "t2cookie5chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "five2",
+      "label": "5",
+      "at": "five2P",
+      "dir": "c",
+      "ink": "gold",
+      "size": "xl",
+      "start": false,
+      "flies": true
+     },
+     {
+      "id": "t3rim",
+      "group": "t3",
+      "poly": [
+       "t3V0",
+       "t3V1",
+       "t3V2",
+       "t3V3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t3cookie1",
+      "group": "t3",
+      "circle": "t3cookie1P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie1chip0",
+      "group": "t3",
+      "circle": "t3cookie1chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie1chip1",
+      "group": "t3",
+      "circle": "t3cookie1chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie1chip2",
+      "group": "t3",
+      "circle": "t3cookie1chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie2",
+      "group": "t3",
+      "circle": "t3cookie2P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie2chip0",
+      "group": "t3",
+      "circle": "t3cookie2chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie2chip1",
+      "group": "t3",
+      "circle": "t3cookie2chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie2chip2",
+      "group": "t3",
+      "circle": "t3cookie2chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie3",
+      "group": "t3",
+      "circle": "t3cookie3P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie3chip0",
+      "group": "t3",
+      "circle": "t3cookie3chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie3chip1",
+      "group": "t3",
+      "circle": "t3cookie3chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie3chip2",
+      "group": "t3",
+      "circle": "t3cookie3chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie4",
+      "group": "t3",
+      "circle": "t3cookie4P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie4chip0",
+      "group": "t3",
+      "circle": "t3cookie4chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie4chip1",
+      "group": "t3",
+      "circle": "t3cookie4chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie4chip2",
+      "group": "t3",
+      "circle": "t3cookie4chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie5",
+      "group": "t3",
+      "circle": "t3cookie5P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie5chip0",
+      "group": "t3",
+      "circle": "t3cookie5chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie5chip1",
+      "group": "t3",
+      "circle": "t3cookie5chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie5chip2",
+      "group": "t3",
+      "circle": "t3cookie5chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "five3",
+      "label": "5",
+      "at": "five3P",
+      "dir": "c",
+      "ink": "gold",
+      "size": "xl",
+      "start": false,
+      "flies": true
+     },
+     {
+      "id": "plus1",
+      "label": "+",
+      "at": "plus1P",
+      "dir": "c",
+      "ink": "ink",
+      "size": "xl",
+      "start": false,
+      "flies": true
+     },
+     {
+      "id": "plus2",
+      "label": "+",
+      "at": "plus2P",
+      "dir": "c",
+      "ink": "ink",
+      "size": "xl",
+      "start": false,
+      "flies": true
+     }
+    ],
+    "view": [
+     -3.5,
+     -3.1,
+     3.5,
+     3.5
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Three trays of cookies. How many cookies altogether?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "header",
+       "text": "How many cookies?"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "One cookie, two cookies, three cookies...",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "t1cookie1",
+       "at": "One"
+      },
+      {
+       "do": "highlight",
+       "target": "t1cookie2",
+       "at": "two"
+      },
+      {
+       "do": "highlight",
+       "target": "t1cookie3",
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each tray holds five. Equal groups have the same number in each group.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "five1",
+        "five2",
+        "five3"
+       ],
+       "at": "five"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "t1cookie1",
+        "t1cookie2",
+        "t1cookie3",
+        "t1cookie4",
+        "t1cookie5"
+       ],
+       "at": "five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Count whole trays: five, ten, fifteen.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "t1",
+       "at": "five"
+      },
+      {
+       "do": "highlight",
+       "target": "t2",
+       "at": "ten"
+      },
+      {
+       "do": "highlight",
+       "target": "t3",
+       "at": "fifteen"
+      },
+      {
+       "do": "show",
+       "target": [
+        "plus1",
+        "plus2"
+       ],
+       "at": "five"
+      },
+      {
+       "do": "write",
+       "tex": "5+5+5=15",
+       "fresh": true,
+       "at": "fifteen"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Three fives make fifteen.",
+     "pause": 0.05,
+     "do": []
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "t1V0": [
+      -4.825,
+      4.325
+     ],
+     "t1V1": [
+      -2.175,
+      4.325
+     ],
+     "t1V2": [
+      -2.175,
+      2.675
+     ],
+     "t1V3": [
+      -4.825,
+      2.675
+     ],
+     "t1cookie1P": [
+      -4.3,
+      3.88
+     ],
+     "t1cookie1chipP0": [
+      -4.39,
+      3.95
+     ],
+     "t1cookie1chipP1": [
+      -4.2,
+      3.91
+     ],
+     "t1cookie1chipP2": [
+      -4.31,
+      3.76
+     ],
+     "t1cookie2P": [
+      -3.5,
+      3.88
+     ],
+     "t1cookie2chipP0": [
+      -3.59,
+      3.95
+     ],
+     "t1cookie2chipP1": [
+      -3.4,
+      3.91
+     ],
+     "t1cookie2chipP2": [
+      -3.51,
+      3.76
+     ],
+     "t1cookie3P": [
+      -2.7,
+      3.88
+     ],
+     "t1cookie3chipP0": [
+      -2.79,
+      3.95
+     ],
+     "t1cookie3chipP1": [
+      -2.6,
+      3.91
+     ],
+     "t1cookie3chipP2": [
+      -2.71,
+      3.76
+     ],
+     "t1cookie4P": [
+      -3.9,
+      3.12
+     ],
+     "t1cookie4chipP0": [
+      -3.9899999999999998,
+      3.19
+     ],
+     "t1cookie4chipP1": [
+      -3.8,
+      3.15
+     ],
+     "t1cookie4chipP2": [
+      -3.9099999999999997,
+      3.0
+     ],
+     "t1cookie5P": [
+      -3.1,
+      3.12
+     ],
+     "t1cookie5chipP0": [
+      -3.19,
+      3.19
+     ],
+     "t1cookie5chipP1": [
+      -3,
+      3.15
+     ],
+     "t1cookie5chipP2": [
+      -3.11,
+      3.0
+     ],
+     "five1P": [
+      -3.5,
+      2.35
+     ],
+     "t2V0": [
+      -1.325,
+      4.325
+     ],
+     "t2V1": [
+      1.325,
+      4.325
+     ],
+     "t2V2": [
+      1.325,
+      2.675
+     ],
+     "t2V3": [
+      -1.325,
+      2.675
+     ],
+     "t2cookie1P": [
+      -0.8,
+      3.88
+     ],
+     "t2cookie1chipP0": [
+      -0.89,
+      3.95
+     ],
+     "t2cookie1chipP1": [
+      -0.7000000000000001,
+      3.91
+     ],
+     "t2cookie1chipP2": [
+      -0.81,
+      3.76
+     ],
+     "t2cookie2P": [
+      0,
+      3.88
+     ],
+     "t2cookie2chipP0": [
+      -0.09,
+      3.95
+     ],
+     "t2cookie2chipP1": [
+      0.1,
+      3.91
+     ],
+     "t2cookie2chipP2": [
+      -0.01,
+      3.76
+     ],
+     "t2cookie3P": [
+      0.8,
+      3.88
+     ],
+     "t2cookie3chipP0": [
+      0.7100000000000001,
+      3.95
+     ],
+     "t2cookie3chipP1": [
+      0.9,
+      3.91
+     ],
+     "t2cookie3chipP2": [
+      0.79,
+      3.76
+     ],
+     "t2cookie4P": [
+      -0.4,
+      3.12
+     ],
+     "t2cookie4chipP0": [
+      -0.49,
+      3.19
+     ],
+     "t2cookie4chipP1": [
+      -0.30000000000000004,
+      3.15
+     ],
+     "t2cookie4chipP2": [
+      -0.41000000000000003,
+      3.0
+     ],
+     "t2cookie5P": [
+      0.4,
+      3.12
+     ],
+     "t2cookie5chipP0": [
+      0.31000000000000005,
+      3.19
+     ],
+     "t2cookie5chipP1": [
+      0.5,
+      3.15
+     ],
+     "t2cookie5chipP2": [
+      0.39,
+      3.0
+     ],
+     "five2P": [
+      0,
+      2.35
+     ],
+     "t3V0": [
+      2.175,
+      4.325
+     ],
+     "t3V1": [
+      4.825,
+      4.325
+     ],
+     "t3V2": [
+      4.825,
+      2.675
+     ],
+     "t3V3": [
+      2.175,
+      2.675
+     ],
+     "t3cookie1P": [
+      2.7,
+      3.88
+     ],
+     "t3cookie1chipP0": [
+      2.6100000000000003,
+      3.95
+     ],
+     "t3cookie1chipP1": [
+      2.8000000000000003,
+      3.91
+     ],
+     "t3cookie1chipP2": [
+      2.6900000000000004,
+      3.76
+     ],
+     "t3cookie2P": [
+      3.5,
+      3.88
+     ],
+     "t3cookie2chipP0": [
+      3.41,
+      3.95
+     ],
+     "t3cookie2chipP1": [
+      3.6,
+      3.91
+     ],
+     "t3cookie2chipP2": [
+      3.49,
+      3.76
+     ],
+     "t3cookie3P": [
+      4.3,
+      3.88
+     ],
+     "t3cookie3chipP0": [
+      4.21,
+      3.95
+     ],
+     "t3cookie3chipP1": [
+      4.3999999999999995,
+      3.91
+     ],
+     "t3cookie3chipP2": [
+      4.29,
+      3.76
+     ],
+     "t3cookie4P": [
+      3.1,
+      3.12
+     ],
+     "t3cookie4chipP0": [
+      3.0100000000000002,
+      3.19
+     ],
+     "t3cookie4chipP1": [
+      3.2,
+      3.15
+     ],
+     "t3cookie4chipP2": [
+      3.0900000000000003,
+      3.0
+     ],
+     "t3cookie5P": [
+      3.9,
+      3.12
+     ],
+     "t3cookie5chipP0": [
+      3.81,
+      3.19
+     ],
+     "t3cookie5chipP1": [
+      4,
+      3.15
+     ],
+     "t3cookie5chipP2": [
+      3.89,
+      3.0
+     ],
+     "five3P": [
+      3.5,
+      2.35
+     ],
+     "t4V0": [
+      -4.825,
+      1.625
+     ],
+     "t4V1": [
+      -2.175,
+      1.625
+     ],
+     "t4V2": [
+      -2.175,
+      -0.025
+     ],
+     "t4V3": [
+      -4.825,
+      -0.025
+     ],
+     "t4cookie1P": [
+      -4.3,
+      1.18
+     ],
+     "t4cookie1chipP0": [
+      -4.39,
+      1.25
+     ],
+     "t4cookie1chipP1": [
+      -4.2,
+      1.21
+     ],
+     "t4cookie1chipP2": [
+      -4.31,
+      1.06
+     ],
+     "t4cookie2P": [
+      -3.5,
+      1.18
+     ],
+     "t4cookie2chipP0": [
+      -3.59,
+      1.25
+     ],
+     "t4cookie2chipP1": [
+      -3.4,
+      1.21
+     ],
+     "t4cookie2chipP2": [
+      -3.51,
+      1.06
+     ],
+     "t4cookie3P": [
+      -2.7,
+      1.18
+     ],
+     "t4cookie3chipP0": [
+      -2.79,
+      1.25
+     ],
+     "t4cookie3chipP1": [
+      -2.6,
+      1.21
+     ],
+     "t4cookie3chipP2": [
+      -2.71,
+      1.06
+     ],
+     "t4cookie4P": [
+      -3.9,
+      0.42
+     ],
+     "t4cookie4chipP0": [
+      -3.9899999999999998,
+      0.49
+     ],
+     "t4cookie4chipP1": [
+      -3.8,
+      0.45
+     ],
+     "t4cookie4chipP2": [
+      -3.9099999999999997,
+      0.3
+     ],
+     "t4cookie5P": [
+      -3.1,
+      0.42
+     ],
+     "t4cookie5chipP0": [
+      -3.19,
+      0.49
+     ],
+     "t4cookie5chipP1": [
+      -3,
+      0.45
+     ],
+     "t4cookie5chipP2": [
+      -3.11,
+      0.3
+     ],
+     "five4P": [
+      -3.5,
+      -0.35
+     ],
+     "t5V0": [
+      -1.325,
+      1.625
+     ],
+     "t5V1": [
+      1.325,
+      1.625
+     ],
+     "t5V2": [
+      1.325,
+      -0.025
+     ],
+     "t5V3": [
+      -1.325,
+      -0.025
+     ],
+     "t5cookie1P": [
+      -0.8,
+      1.18
+     ],
+     "t5cookie1chipP0": [
+      -0.89,
+      1.25
+     ],
+     "t5cookie1chipP1": [
+      -0.7000000000000001,
+      1.21
+     ],
+     "t5cookie1chipP2": [
+      -0.81,
+      1.06
+     ],
+     "t5cookie2P": [
+      0,
+      1.18
+     ],
+     "t5cookie2chipP0": [
+      -0.09,
+      1.25
+     ],
+     "t5cookie2chipP1": [
+      0.1,
+      1.21
+     ],
+     "t5cookie2chipP2": [
+      -0.01,
+      1.06
+     ],
+     "t5cookie3P": [
+      0.8,
+      1.18
+     ],
+     "t5cookie3chipP0": [
+      0.7100000000000001,
+      1.25
+     ],
+     "t5cookie3chipP1": [
+      0.9,
+      1.21
+     ],
+     "t5cookie3chipP2": [
+      0.79,
+      1.06
+     ],
+     "t5cookie4P": [
+      -0.4,
+      0.42
+     ],
+     "t5cookie4chipP0": [
+      -0.49,
+      0.49
+     ],
+     "t5cookie4chipP1": [
+      -0.30000000000000004,
+      0.45
+     ],
+     "t5cookie4chipP2": [
+      -0.41000000000000003,
+      0.3
+     ],
+     "t5cookie5P": [
+      0.4,
+      0.42
+     ],
+     "t5cookie5chipP0": [
+      0.31000000000000005,
+      0.49
+     ],
+     "t5cookie5chipP1": [
+      0.5,
+      0.45
+     ],
+     "t5cookie5chipP2": [
+      0.39,
+      0.3
+     ],
+     "five5P": [
+      0,
+      -0.35
+     ],
+     "t6V0": [
+      2.175,
+      1.625
+     ],
+     "t6V1": [
+      4.825,
+      1.625
+     ],
+     "t6V2": [
+      4.825,
+      -0.025
+     ],
+     "t6V3": [
+      2.175,
+      -0.025
+     ],
+     "t6cookie1P": [
+      2.7,
+      1.18
+     ],
+     "t6cookie1chipP0": [
+      2.6100000000000003,
+      1.25
+     ],
+     "t6cookie1chipP1": [
+      2.8000000000000003,
+      1.21
+     ],
+     "t6cookie1chipP2": [
+      2.6900000000000004,
+      1.06
+     ],
+     "t6cookie2P": [
+      3.5,
+      1.18
+     ],
+     "t6cookie2chipP0": [
+      3.41,
+      1.25
+     ],
+     "t6cookie2chipP1": [
+      3.6,
+      1.21
+     ],
+     "t6cookie2chipP2": [
+      3.49,
+      1.06
+     ],
+     "t6cookie3P": [
+      4.3,
+      1.18
+     ],
+     "t6cookie3chipP0": [
+      4.21,
+      1.25
+     ],
+     "t6cookie3chipP1": [
+      4.3999999999999995,
+      1.21
+     ],
+     "t6cookie3chipP2": [
+      4.29,
+      1.06
+     ],
+     "t6cookie4P": [
+      3.1,
+      0.42
+     ],
+     "t6cookie4chipP0": [
+      3.0100000000000002,
+      0.49
+     ],
+     "t6cookie4chipP1": [
+      3.2,
+      0.45
+     ],
+     "t6cookie4chipP2": [
+      3.0900000000000003,
+      0.3
+     ],
+     "t6cookie5P": [
+      3.9,
+      0.42
+     ],
+     "t6cookie5chipP0": [
+      3.81,
+      0.49
+     ],
+     "t6cookie5chipP1": [
+      4,
+      0.45
+     ],
+     "t6cookie5chipP2": [
+      3.89,
+      0.3
+     ],
+     "five6P": [
+      3.5,
+      -0.35
+     ],
+     "t7V0": [
+      -1.3250000000000002,
+      -1.075
+     ],
+     "t7V1": [
+      1.3250000000000002,
+      -1.075
+     ],
+     "t7V2": [
+      1.3250000000000002,
+      -2.725
+     ],
+     "t7V3": [
+      -1.3250000000000002,
+      -2.725
+     ],
+     "t7cookie1P": [
+      -0.7999999999999998,
+      -1.52
+     ],
+     "t7cookie1chipP0": [
+      -0.8899999999999997,
+      -1.45
+     ],
+     "t7cookie1chipP1": [
+      -0.7000000000000002,
+      -1.49
+     ],
+     "t7cookie1chipP2": [
+      -0.8099999999999996,
+      -1.64
+     ],
+     "t7cookie2P": [
+      0,
+      -1.52
+     ],
+     "t7cookie2chipP0": [
+      -0.08999999999999986,
+      -1.45
+     ],
+     "t7cookie2chipP1": [
+      0.10000000000000009,
+      -1.49
+     ],
+     "t7cookie2chipP2": [
+      -0.009999999999999787,
+      -1.64
+     ],
+     "t7cookie3P": [
+      0.7999999999999998,
+      -1.52
+     ],
+     "t7cookie3chipP0": [
+      0.71,
+      -1.45
+     ],
+     "t7cookie3chipP1": [
+      0.8999999999999999,
+      -1.49
+     ],
+     "t7cookie3chipP2": [
+      0.79,
+      -1.64
+     ],
+     "t7cookie4P": [
+      -0.3999999999999999,
+      -2.28
+     ],
+     "t7cookie4chipP0": [
+      -0.48999999999999977,
+      -2.21
+     ],
+     "t7cookie4chipP1": [
+      -0.2999999999999998,
+      -2.25
+     ],
+     "t7cookie4chipP2": [
+      -0.4099999999999997,
+      -2.4
+     ],
+     "t7cookie5P": [
+      0.3999999999999999,
+      -2.28
+     ],
+     "t7cookie5chipP0": [
+      0.31000000000000005,
+      -2.21
+     ],
+     "t7cookie5chipP1": [
+      0.5,
+      -2.25
+     ],
+     "t7cookie5chipP2": [
+      0.3900000000000001,
+      -2.4
+     ],
+     "plus1P": [
+      -3.6,
+      -4.4
+     ],
+     "plus2P": [
+      -1.8,
+      -4.4
+     ],
+     "plus3P": [
+      0.0,
+      -4.4
+     ],
+     "plus4P": [
+      1.8000000000000003,
+      -4.4
+     ],
+     "plus5P": [
+      3.6,
+      -4.4
+     ],
+     "timesP": [
+      -1.4,
+      -4.4
+     ],
+     "equalsP": [
+      1.4,
+      -4.4
+     ],
+     "thirtyP": [
+      3.2,
+      -4.4
+     ],
+     "sevenP": [
+      -2.8,
+      -4.4
+     ],
+     "thirtyfiveP": [
+      3.2,
+      -4.4
+     ],
+     "finalSixP": [
+      3.5,
+      -1.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "t1rim",
+      "group": "t1",
+      "poly": [
+       "t1V0",
+       "t1V1",
+       "t1V2",
+       "t1V3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t1cookie1",
+      "group": "t1",
+      "circle": "t1cookie1P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie1chip0",
+      "group": "t1",
+      "circle": "t1cookie1chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie1chip1",
+      "group": "t1",
+      "circle": "t1cookie1chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie1chip2",
+      "group": "t1",
+      "circle": "t1cookie1chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie2",
+      "group": "t1",
+      "circle": "t1cookie2P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie2chip0",
+      "group": "t1",
+      "circle": "t1cookie2chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie2chip1",
+      "group": "t1",
+      "circle": "t1cookie2chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie2chip2",
+      "group": "t1",
+      "circle": "t1cookie2chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie3",
+      "group": "t1",
+      "circle": "t1cookie3P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie3chip0",
+      "group": "t1",
+      "circle": "t1cookie3chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie3chip1",
+      "group": "t1",
+      "circle": "t1cookie3chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie3chip2",
+      "group": "t1",
+      "circle": "t1cookie3chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie4",
+      "group": "t1",
+      "circle": "t1cookie4P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie4chip0",
+      "group": "t1",
+      "circle": "t1cookie4chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie4chip1",
+      "group": "t1",
+      "circle": "t1cookie4chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie4chip2",
+      "group": "t1",
+      "circle": "t1cookie4chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie5",
+      "group": "t1",
+      "circle": "t1cookie5P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie5chip0",
+      "group": "t1",
+      "circle": "t1cookie5chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie5chip1",
+      "group": "t1",
+      "circle": "t1cookie5chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie5chip2",
+      "group": "t1",
+      "circle": "t1cookie5chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "five1",
+      "label": "5",
+      "at": "five1P",
+      "dir": "c",
+      "ink": "gold",
+      "size": "xl",
+      "start": false,
+      "flies": true,
+      "far": 0
+     },
+     {
+      "id": "t2rim",
+      "group": "t2",
+      "poly": [
+       "t2V0",
+       "t2V1",
+       "t2V2",
+       "t2V3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t2cookie1",
+      "group": "t2",
+      "circle": "t2cookie1P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie1chip0",
+      "group": "t2",
+      "circle": "t2cookie1chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie1chip1",
+      "group": "t2",
+      "circle": "t2cookie1chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie1chip2",
+      "group": "t2",
+      "circle": "t2cookie1chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie2",
+      "group": "t2",
+      "circle": "t2cookie2P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie2chip0",
+      "group": "t2",
+      "circle": "t2cookie2chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie2chip1",
+      "group": "t2",
+      "circle": "t2cookie2chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie2chip2",
+      "group": "t2",
+      "circle": "t2cookie2chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie3",
+      "group": "t2",
+      "circle": "t2cookie3P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie3chip0",
+      "group": "t2",
+      "circle": "t2cookie3chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie3chip1",
+      "group": "t2",
+      "circle": "t2cookie3chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie3chip2",
+      "group": "t2",
+      "circle": "t2cookie3chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie4",
+      "group": "t2",
+      "circle": "t2cookie4P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie4chip0",
+      "group": "t2",
+      "circle": "t2cookie4chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie4chip1",
+      "group": "t2",
+      "circle": "t2cookie4chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie4chip2",
+      "group": "t2",
+      "circle": "t2cookie4chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie5",
+      "group": "t2",
+      "circle": "t2cookie5P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie5chip0",
+      "group": "t2",
+      "circle": "t2cookie5chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie5chip1",
+      "group": "t2",
+      "circle": "t2cookie5chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie5chip2",
+      "group": "t2",
+      "circle": "t2cookie5chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "five2",
+      "label": "5",
+      "at": "five2P",
+      "dir": "c",
+      "ink": "gold",
+      "size": "xl",
+      "start": false,
+      "flies": true,
+      "far": 0
+     },
+     {
+      "id": "t3rim",
+      "group": "t3",
+      "poly": [
+       "t3V0",
+       "t3V1",
+       "t3V2",
+       "t3V3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t3cookie1",
+      "group": "t3",
+      "circle": "t3cookie1P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie1chip0",
+      "group": "t3",
+      "circle": "t3cookie1chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie1chip1",
+      "group": "t3",
+      "circle": "t3cookie1chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie1chip2",
+      "group": "t3",
+      "circle": "t3cookie1chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie2",
+      "group": "t3",
+      "circle": "t3cookie2P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie2chip0",
+      "group": "t3",
+      "circle": "t3cookie2chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie2chip1",
+      "group": "t3",
+      "circle": "t3cookie2chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie2chip2",
+      "group": "t3",
+      "circle": "t3cookie2chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie3",
+      "group": "t3",
+      "circle": "t3cookie3P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie3chip0",
+      "group": "t3",
+      "circle": "t3cookie3chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie3chip1",
+      "group": "t3",
+      "circle": "t3cookie3chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie3chip2",
+      "group": "t3",
+      "circle": "t3cookie3chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie4",
+      "group": "t3",
+      "circle": "t3cookie4P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie4chip0",
+      "group": "t3",
+      "circle": "t3cookie4chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie4chip1",
+      "group": "t3",
+      "circle": "t3cookie4chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie4chip2",
+      "group": "t3",
+      "circle": "t3cookie4chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie5",
+      "group": "t3",
+      "circle": "t3cookie5P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie5chip0",
+      "group": "t3",
+      "circle": "t3cookie5chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie5chip1",
+      "group": "t3",
+      "circle": "t3cookie5chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie5chip2",
+      "group": "t3",
+      "circle": "t3cookie5chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "five3",
+      "label": "5",
+      "at": "five3P",
+      "dir": "c",
+      "ink": "gold",
+      "size": "xl",
+      "start": false,
+      "flies": true,
+      "far": 0
+     },
+     {
+      "id": "t4rim",
+      "group": "t4",
+      "poly": [
+       "t4V0",
+       "t4V1",
+       "t4V2",
+       "t4V3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "solid": true,
+      "start": false
+     },
+     {
+      "id": "t4cookie1",
+      "group": "t4",
+      "circle": "t4cookie1P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": false
+     },
+     {
+      "id": "t4cookie1chip0",
+      "group": "t4",
+      "circle": "t4cookie1chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t4cookie1chip1",
+      "group": "t4",
+      "circle": "t4cookie1chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t4cookie1chip2",
+      "group": "t4",
+      "circle": "t4cookie1chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t4cookie2",
+      "group": "t4",
+      "circle": "t4cookie2P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": false
+     },
+     {
+      "id": "t4cookie2chip0",
+      "group": "t4",
+      "circle": "t4cookie2chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t4cookie2chip1",
+      "group": "t4",
+      "circle": "t4cookie2chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t4cookie2chip2",
+      "group": "t4",
+      "circle": "t4cookie2chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t4cookie3",
+      "group": "t4",
+      "circle": "t4cookie3P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": false
+     },
+     {
+      "id": "t4cookie3chip0",
+      "group": "t4",
+      "circle": "t4cookie3chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t4cookie3chip1",
+      "group": "t4",
+      "circle": "t4cookie3chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t4cookie3chip2",
+      "group": "t4",
+      "circle": "t4cookie3chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t4cookie4",
+      "group": "t4",
+      "circle": "t4cookie4P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": false
+     },
+     {
+      "id": "t4cookie4chip0",
+      "group": "t4",
+      "circle": "t4cookie4chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t4cookie4chip1",
+      "group": "t4",
+      "circle": "t4cookie4chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t4cookie4chip2",
+      "group": "t4",
+      "circle": "t4cookie4chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t4cookie5",
+      "group": "t4",
+      "circle": "t4cookie5P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": false
+     },
+     {
+      "id": "t4cookie5chip0",
+      "group": "t4",
+      "circle": "t4cookie5chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t4cookie5chip1",
+      "group": "t4",
+      "circle": "t4cookie5chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t4cookie5chip2",
+      "group": "t4",
+      "circle": "t4cookie5chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "five4",
+      "label": "5",
+      "at": "five4P",
+      "dir": "c",
+      "ink": "gold",
+      "size": "xl",
+      "start": false,
+      "flies": true,
+      "far": 0
+     },
+     {
+      "id": "t5rim",
+      "group": "t5",
+      "poly": [
+       "t5V0",
+       "t5V1",
+       "t5V2",
+       "t5V3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "solid": true,
+      "start": false
+     },
+     {
+      "id": "t5cookie1",
+      "group": "t5",
+      "circle": "t5cookie1P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": false
+     },
+     {
+      "id": "t5cookie1chip0",
+      "group": "t5",
+      "circle": "t5cookie1chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t5cookie1chip1",
+      "group": "t5",
+      "circle": "t5cookie1chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t5cookie1chip2",
+      "group": "t5",
+      "circle": "t5cookie1chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t5cookie2",
+      "group": "t5",
+      "circle": "t5cookie2P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": false
+     },
+     {
+      "id": "t5cookie2chip0",
+      "group": "t5",
+      "circle": "t5cookie2chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t5cookie2chip1",
+      "group": "t5",
+      "circle": "t5cookie2chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t5cookie2chip2",
+      "group": "t5",
+      "circle": "t5cookie2chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t5cookie3",
+      "group": "t5",
+      "circle": "t5cookie3P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": false
+     },
+     {
+      "id": "t5cookie3chip0",
+      "group": "t5",
+      "circle": "t5cookie3chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t5cookie3chip1",
+      "group": "t5",
+      "circle": "t5cookie3chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t5cookie3chip2",
+      "group": "t5",
+      "circle": "t5cookie3chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t5cookie4",
+      "group": "t5",
+      "circle": "t5cookie4P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": false
+     },
+     {
+      "id": "t5cookie4chip0",
+      "group": "t5",
+      "circle": "t5cookie4chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t5cookie4chip1",
+      "group": "t5",
+      "circle": "t5cookie4chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t5cookie4chip2",
+      "group": "t5",
+      "circle": "t5cookie4chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t5cookie5",
+      "group": "t5",
+      "circle": "t5cookie5P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": false
+     },
+     {
+      "id": "t5cookie5chip0",
+      "group": "t5",
+      "circle": "t5cookie5chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t5cookie5chip1",
+      "group": "t5",
+      "circle": "t5cookie5chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t5cookie5chip2",
+      "group": "t5",
+      "circle": "t5cookie5chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "five5",
+      "label": "5",
+      "at": "five5P",
+      "dir": "c",
+      "ink": "gold",
+      "size": "xl",
+      "start": false,
+      "flies": true,
+      "far": 0
+     },
+     {
+      "id": "t6rim",
+      "group": "t6",
+      "poly": [
+       "t6V0",
+       "t6V1",
+       "t6V2",
+       "t6V3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "solid": true,
+      "start": false
+     },
+     {
+      "id": "t6cookie1",
+      "group": "t6",
+      "circle": "t6cookie1P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": false
+     },
+     {
+      "id": "t6cookie1chip0",
+      "group": "t6",
+      "circle": "t6cookie1chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t6cookie1chip1",
+      "group": "t6",
+      "circle": "t6cookie1chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t6cookie1chip2",
+      "group": "t6",
+      "circle": "t6cookie1chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t6cookie2",
+      "group": "t6",
+      "circle": "t6cookie2P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": false
+     },
+     {
+      "id": "t6cookie2chip0",
+      "group": "t6",
+      "circle": "t6cookie2chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t6cookie2chip1",
+      "group": "t6",
+      "circle": "t6cookie2chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t6cookie2chip2",
+      "group": "t6",
+      "circle": "t6cookie2chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t6cookie3",
+      "group": "t6",
+      "circle": "t6cookie3P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": false
+     },
+     {
+      "id": "t6cookie3chip0",
+      "group": "t6",
+      "circle": "t6cookie3chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t6cookie3chip1",
+      "group": "t6",
+      "circle": "t6cookie3chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t6cookie3chip2",
+      "group": "t6",
+      "circle": "t6cookie3chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t6cookie4",
+      "group": "t6",
+      "circle": "t6cookie4P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": false
+     },
+     {
+      "id": "t6cookie4chip0",
+      "group": "t6",
+      "circle": "t6cookie4chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t6cookie4chip1",
+      "group": "t6",
+      "circle": "t6cookie4chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t6cookie4chip2",
+      "group": "t6",
+      "circle": "t6cookie4chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t6cookie5",
+      "group": "t6",
+      "circle": "t6cookie5P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": false
+     },
+     {
+      "id": "t6cookie5chip0",
+      "group": "t6",
+      "circle": "t6cookie5chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t6cookie5chip1",
+      "group": "t6",
+      "circle": "t6cookie5chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t6cookie5chip2",
+      "group": "t6",
+      "circle": "t6cookie5chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "five6",
+      "label": "5",
+      "at": "five6P",
+      "dir": "c",
+      "ink": "gold",
+      "size": "xl",
+      "start": false,
+      "flies": true,
+      "far": 0
+     },
+     {
+      "id": "t7rim",
+      "group": "t7",
+      "poly": [
+       "t7V0",
+       "t7V1",
+       "t7V2",
+       "t7V3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "solid": true,
+      "start": false
+     },
+     {
+      "id": "t7cookie1",
+      "group": "t7",
+      "circle": "t7cookie1P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": false
+     },
+     {
+      "id": "t7cookie1chip0",
+      "group": "t7",
+      "circle": "t7cookie1chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t7cookie1chip1",
+      "group": "t7",
+      "circle": "t7cookie1chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t7cookie1chip2",
+      "group": "t7",
+      "circle": "t7cookie1chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t7cookie2",
+      "group": "t7",
+      "circle": "t7cookie2P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": false
+     },
+     {
+      "id": "t7cookie2chip0",
+      "group": "t7",
+      "circle": "t7cookie2chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t7cookie2chip1",
+      "group": "t7",
+      "circle": "t7cookie2chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t7cookie2chip2",
+      "group": "t7",
+      "circle": "t7cookie2chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t7cookie3",
+      "group": "t7",
+      "circle": "t7cookie3P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": false
+     },
+     {
+      "id": "t7cookie3chip0",
+      "group": "t7",
+      "circle": "t7cookie3chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t7cookie3chip1",
+      "group": "t7",
+      "circle": "t7cookie3chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t7cookie3chip2",
+      "group": "t7",
+      "circle": "t7cookie3chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t7cookie4",
+      "group": "t7",
+      "circle": "t7cookie4P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": false
+     },
+     {
+      "id": "t7cookie4chip0",
+      "group": "t7",
+      "circle": "t7cookie4chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t7cookie4chip1",
+      "group": "t7",
+      "circle": "t7cookie4chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t7cookie4chip2",
+      "group": "t7",
+      "circle": "t7cookie4chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t7cookie5",
+      "group": "t7",
+      "circle": "t7cookie5P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": false
+     },
+     {
+      "id": "t7cookie5chip0",
+      "group": "t7",
+      "circle": "t7cookie5chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t7cookie5chip1",
+      "group": "t7",
+      "circle": "t7cookie5chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "t7cookie5chip2",
+      "group": "t7",
+      "circle": "t7cookie5chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": false
+     },
+     {
+      "id": "plus1",
+      "label": "+",
+      "at": "plus1P",
+      "dir": "c",
+      "ink": "ink",
+      "size": "xl",
+      "start": false,
+      "flies": true,
+      "far": 0
+     },
+     {
+      "id": "plus2",
+      "label": "+",
+      "at": "plus2P",
+      "dir": "c",
+      "ink": "ink",
+      "size": "xl",
+      "start": false,
+      "flies": true,
+      "far": 0
+     },
+     {
+      "id": "plus3",
+      "label": "+",
+      "at": "plus3P",
+      "dir": "c",
+      "ink": "ink",
+      "size": "xl",
+      "start": false,
+      "flies": true,
+      "far": 0
+     },
+     {
+      "id": "plus4",
+      "label": "+",
+      "at": "plus4P",
+      "dir": "c",
+      "ink": "ink",
+      "size": "xl",
+      "start": false,
+      "flies": true,
+      "far": 0
+     },
+     {
+      "id": "plus5",
+      "label": "+",
+      "at": "plus5P",
+      "dir": "c",
+      "ink": "ink",
+      "size": "xl",
+      "start": false,
+      "flies": true,
+      "far": 0
+     },
+     {
+      "id": "times",
+      "label": "\\times",
+      "at": "timesP",
+      "dir": "c",
+      "ink": "ink",
+      "size": "xl",
+      "start": false,
+      "flies": true,
+      "far": 0
+     },
+     {
+      "id": "equals",
+      "label": "=",
+      "at": "equalsP",
+      "dir": "c",
+      "ink": "ink",
+      "size": "xl",
+      "start": false,
+      "flies": true,
+      "far": 0
+     },
+     {
+      "id": "thirty",
+      "label": "30",
+      "at": "thirtyP",
+      "dir": "c",
+      "ink": "accent",
+      "size": "xl",
+      "start": false,
+      "flies": true,
+      "far": 0
+     },
+     {
+      "id": "seven",
+      "label": "7",
+      "at": "sevenP",
+      "dir": "c",
+      "ink": "blue",
+      "size": "xl",
+      "start": false,
+      "flies": true,
+      "far": 0
+     },
+     {
+      "id": "thirtyfive",
+      "label": "35",
+      "at": "thirtyfiveP",
+      "dir": "c",
+      "ink": "accent",
+      "size": "xl",
+      "start": false,
+      "flies": true,
+      "far": 0
+     },
+     {
+      "id": "finalSix",
+      "label": "6",
+      "at": "finalSixP",
+      "dir": "c",
+      "ink": "blue",
+      "size": "xl",
+      "flies": true,
+      "start": false,
+      "far": 0
+     }
+    ],
+    "view": [
+     -6.0,
+     -5.5,
+     6.0,
+     5.1
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Another tray, another five.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "One five for each tray"
+      },
+      {
+       "do": "show",
+       "target": "five1",
+       "at": "Another"
+      },
+      {
+       "do": "move",
+       "points": {
+        "five1P": [
+         -4.5,
+         -4.4
+        ]
+       },
+       "at": "Another",
+       "dur": 1.4
+      },
+      {
+       "do": "show",
+       "target": "five2",
+       "at": "Another"
+      },
+      {
+       "do": "move",
+       "points": {
+        "five2P": [
+         -2.7,
+         -4.4
+        ]
+       },
+       "at": "Another",
+       "dur": 1.4
+      },
+      {
+       "do": "show",
+       "target": "five3",
+       "at": "Another"
+      },
+      {
+       "do": "move",
+       "points": {
+        "five3P": [
+         -0.8999999999999999,
+         -4.4
+        ]
+       },
+       "at": "Another",
+       "dur": 1.4
+      },
+      {
+       "do": "show",
+       "target": [
+        "plus1",
+        "plus2"
+       ],
+       "at": "Another"
+      },
+      {
+       "do": "show",
+       "target": "t4",
+       "at": "tray"
+      },
+      {
+       "do": "show",
+       "target": [
+        "five4",
+        "plus3"
+       ],
+       "at": "five"
+      },
+      {
+       "do": "move",
+       "points": {
+        "five4P": [
+         0.9,
+         -4.4
+        ]
+       },
+       "at": "five",
+       "dur": 1.4
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "And another. And another.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "t5",
+       "at": "another"
+      },
+      {
+       "do": "show",
+       "target": [
+        "five5",
+        "plus4"
+       ],
+       "at": "another"
+      },
+      {
+       "do": "move",
+       "points": {
+        "five5P": [
+         2.7,
+         -4.4
+        ]
+       },
+       "dur": 1.4,
+       "at": "another"
+      },
+      {
+       "do": "show",
+       "target": "t6",
+       "at": "another",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": [
+        "five6",
+        "plus5"
+       ],
+       "at": "another",
+       "nth": 2
+      },
+      {
+       "do": "move",
+       "points": {
+        "five6P": [
+         4.5,
+         -4.4
+        ]
+       },
+       "dur": 1.4,
+       "at": "another",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "That's a lot of fives to write!",
+     "pause": 0.05,
+     "do": []
+    },
+    {
+     "speaker": "teacher",
+     "say": "Count the trays: one, two, three, four, five, six.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "t1",
+       "at": "one"
+      },
+      {
+       "do": "highlight",
+       "target": "t2",
+       "at": "two"
+      },
+      {
+       "do": "highlight",
+       "target": "t3",
+       "at": "three"
+      },
+      {
+       "do": "highlight",
+       "target": "t4",
+       "at": "four"
+      },
+      {
+       "do": "highlight",
+       "target": "t5",
+       "at": "five"
+      },
+      {
+       "do": "highlight",
+       "target": "t6",
+       "at": "six"
+      },
+      {
+       "do": "show",
+       "target": "finalSix",
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Six groups, with five in every group.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "t1rim",
+        "t2rim",
+        "t3rim",
+        "t4rim",
+        "t5rim",
+        "t6rim"
+       ],
+       "at": "Six"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "five1",
+        "five2",
+        "five3",
+        "five4",
+        "five5",
+        "five6"
+       ],
+       "at": "five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "We have six fives. Write the five just once.",
+     "pause": 1.4,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "five1P": [
+         0,
+         -4.4
+        ],
+        "five2P": [
+         0,
+         -4.4
+        ],
+        "five3P": [
+         0,
+         -4.4
+        ],
+        "five4P": [
+         0,
+         -4.4
+        ],
+        "five5P": [
+         0,
+         -4.4
+        ],
+        "five6P": [
+         0,
+         -4.4
+        ],
+        "plus1P": [
+         0,
+         -4.4
+        ],
+        "plus2P": [
+         0,
+         -4.4
+        ],
+        "plus3P": [
+         0,
+         -4.4
+        ],
+        "plus4P": [
+         0,
+         -4.4
+        ],
+        "plus5P": [
+         0,
+         -4.4
+        ]
+       },
+       "at": "Write",
+       "dur": 3
+      },
+      {
+       "do": "hide",
+       "target": [
+        "plus1",
+        "plus2",
+        "plus3",
+        "plus4",
+        "plus5"
+       ],
+       "at": "Write",
+       "dur": 2.5
+      },
+      {
+       "do": "hide",
+       "target": [
+        "five2",
+        "five3",
+        "five4",
+        "five5",
+        "five6"
+       ],
+       "at": "once",
+       "dur": 1.5
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "And write how many of them: six.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "finalSixP": [
+         -2.8,
+         -4.4
+        ]
+       },
+       "at": "how",
+       "dur": 1.8
+      },
+      {
+       "do": "show",
+       "target": "times",
+       "at": "six",
+       "dur": 0.7
+      },
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Multiplication",
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Six groups of five. We read this as six times five.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "finalSix",
+       "at": "Six"
+      },
+      {
+       "do": "highlight",
+       "target": "five1",
+       "at": "five"
+      },
+      {
+       "do": "highlight",
+       "target": "times",
+       "at": "times"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Same cookies. A shorter sentence!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "equals",
+        "thirty"
+       ],
+       "at": "Same"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{6}\\times\\cg{5}=30",
+       "fresh": true,
+       "at": "Same"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One more tray. Seven groups. Still five in each.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "t7",
+       "at": "tray"
+      },
+      {
+       "do": "hide",
+       "target": "finalSix",
+       "at": "Seven"
+      },
+      {
+       "do": "show",
+       "target": "seven",
+       "at": "Seven"
+      },
+      {
+       "do": "highlight",
+       "target": "five1",
+       "at": "five"
+      },
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{7}\\times\\cg{5}=35",
+       "fresh": true,
+       "at": "Seven"
+      },
+      {
+       "do": "hide",
+       "target": "thirty",
+       "at": "Seven"
+      },
+      {
+       "do": "show",
+       "target": "thirtyfive",
+       "at": "Seven"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "One more five! Thirty becomes thirty-five.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "t7cookie1",
+        "t7cookie2",
+        "t7cookie3",
+        "t7cookie4",
+        "t7cookie5"
+       ],
+       "at": "five"
+      },
+      {
+       "do": "write",
+       "tex": "30+5=35",
+       "fresh": true,
+       "at": "becomes"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "t1V0": [
+      -3.325,
+      2.425
+     ],
+     "t1V1": [
+      -0.675,
+      2.425
+     ],
+     "t1V2": [
+      -0.675,
+      0.7750000000000001
+     ],
+     "t1V3": [
+      -3.325,
+      0.7750000000000001
+     ],
+     "t1cookie1P": [
+      -2.8,
+      1.98
+     ],
+     "t1cookie1chipP0": [
+      -2.8899999999999997,
+      2.05
+     ],
+     "t1cookie1chipP1": [
+      -2.6999999999999997,
+      2.01
+     ],
+     "t1cookie1chipP2": [
+      -2.8099999999999996,
+      1.8599999999999999
+     ],
+     "t1cookie2P": [
+      -2,
+      1.98
+     ],
+     "t1cookie2chipP0": [
+      -2.09,
+      2.05
+     ],
+     "t1cookie2chipP1": [
+      -1.9,
+      2.01
+     ],
+     "t1cookie2chipP2": [
+      -2.01,
+      1.8599999999999999
+     ],
+     "t1cookie3P": [
+      -1.2,
+      1.98
+     ],
+     "t1cookie3chipP0": [
+      -1.29,
+      2.05
+     ],
+     "t1cookie3chipP1": [
+      -1.0999999999999999,
+      2.01
+     ],
+     "t1cookie3chipP2": [
+      -1.21,
+      1.8599999999999999
+     ],
+     "t1cookie4P": [
+      -2.8,
+      1.2200000000000002
+     ],
+     "t1cookie4chipP0": [
+      -2.8899999999999997,
+      1.2900000000000003
+     ],
+     "t1cookie4chipP1": [
+      -2.6999999999999997,
+      1.2500000000000002
+     ],
+     "t1cookie4chipP2": [
+      -2.8099999999999996,
+      1.1
+     ],
+     "t1cookie5P": [
+      -2,
+      1.2200000000000002
+     ],
+     "t1cookie5chipP0": [
+      -2.09,
+      1.2900000000000003
+     ],
+     "t1cookie5chipP1": [
+      -1.9,
+      1.2500000000000002
+     ],
+     "t1cookie5chipP2": [
+      -2.01,
+      1.1
+     ],
+     "t1cookie6P": [
+      -1.2,
+      1.2200000000000002
+     ],
+     "t1cookie6chipP0": [
+      -1.29,
+      1.2900000000000003
+     ],
+     "t1cookie6chipP1": [
+      -1.0999999999999999,
+      1.2500000000000002
+     ],
+     "t1cookie6chipP2": [
+      -1.21,
+      1.1
+     ],
+     "t3V0": [
+      -3.325,
+      -0.375
+     ],
+     "t3V1": [
+      -0.675,
+      -0.375
+     ],
+     "t3V2": [
+      -0.675,
+      -2.025
+     ],
+     "t3V3": [
+      -3.325,
+      -2.025
+     ],
+     "t3cookie1P": [
+      -2.8,
+      -0.82
+     ],
+     "t3cookie1chipP0": [
+      -2.8899999999999997,
+      -0.75
+     ],
+     "t3cookie1chipP1": [
+      -2.6999999999999997,
+      -0.7899999999999999
+     ],
+     "t3cookie1chipP2": [
+      -2.8099999999999996,
+      -0.94
+     ],
+     "t3cookie2P": [
+      -2,
+      -0.82
+     ],
+     "t3cookie2chipP0": [
+      -2.09,
+      -0.75
+     ],
+     "t3cookie2chipP1": [
+      -1.9,
+      -0.7899999999999999
+     ],
+     "t3cookie2chipP2": [
+      -2.01,
+      -0.94
+     ],
+     "t3cookie3P": [
+      -1.2,
+      -0.82
+     ],
+     "t3cookie3chipP0": [
+      -1.29,
+      -0.75
+     ],
+     "t3cookie3chipP1": [
+      -1.0999999999999999,
+      -0.7899999999999999
+     ],
+     "t3cookie3chipP2": [
+      -1.21,
+      -0.94
+     ],
+     "t3cookie4P": [
+      -2.8,
+      -1.58
+     ],
+     "t3cookie4chipP0": [
+      -2.8899999999999997,
+      -1.51
+     ],
+     "t3cookie4chipP1": [
+      -2.6999999999999997,
+      -1.55
+     ],
+     "t3cookie4chipP2": [
+      -2.8099999999999996,
+      -1.7000000000000002
+     ],
+     "t3cookie5P": [
+      -2,
+      -1.58
+     ],
+     "t3cookie5chipP0": [
+      -2.09,
+      -1.51
+     ],
+     "t3cookie5chipP1": [
+      -1.9,
+      -1.55
+     ],
+     "t3cookie5chipP2": [
+      -2.01,
+      -1.7000000000000002
+     ],
+     "t3cookie6P": [
+      -1.2,
+      -1.58
+     ],
+     "t3cookie6chipP0": [
+      -1.29,
+      -1.51
+     ],
+     "t3cookie6chipP1": [
+      -1.0999999999999999,
+      -1.55
+     ],
+     "t3cookie6chipP2": [
+      -1.21,
+      -1.7000000000000002
+     ],
+     "t2V0": [
+      0.675,
+      2.425
+     ],
+     "t2V1": [
+      3.325,
+      2.425
+     ],
+     "t2V2": [
+      3.325,
+      0.7750000000000001
+     ],
+     "t2V3": [
+      0.675,
+      0.7750000000000001
+     ],
+     "t2cookie1P": [
+      1.2,
+      1.98
+     ],
+     "t2cookie1chipP0": [
+      1.1099999999999999,
+      2.05
+     ],
+     "t2cookie1chipP1": [
+      1.3,
+      2.01
+     ],
+     "t2cookie1chipP2": [
+      1.19,
+      1.8599999999999999
+     ],
+     "t2cookie2P": [
+      2,
+      1.98
+     ],
+     "t2cookie2chipP0": [
+      1.91,
+      2.05
+     ],
+     "t2cookie2chipP1": [
+      2.1,
+      2.01
+     ],
+     "t2cookie2chipP2": [
+      1.99,
+      1.8599999999999999
+     ],
+     "t2cookie3P": [
+      2.8,
+      1.98
+     ],
+     "t2cookie3chipP0": [
+      2.71,
+      2.05
+     ],
+     "t2cookie3chipP1": [
+      2.9,
+      2.01
+     ],
+     "t2cookie3chipP2": [
+      2.79,
+      1.8599999999999999
+     ],
+     "t2cookie4P": [
+      1.2,
+      1.2200000000000002
+     ],
+     "t2cookie4chipP0": [
+      1.1099999999999999,
+      1.2900000000000003
+     ],
+     "t2cookie4chipP1": [
+      1.3,
+      1.2500000000000002
+     ],
+     "t2cookie4chipP2": [
+      1.19,
+      1.1
+     ],
+     "t2cookie5P": [
+      2,
+      1.2200000000000002
+     ],
+     "t2cookie5chipP0": [
+      1.91,
+      1.2900000000000003
+     ],
+     "t2cookie5chipP1": [
+      2.1,
+      1.2500000000000002
+     ],
+     "t2cookie5chipP2": [
+      1.99,
+      1.1
+     ],
+     "t2cookie6P": [
+      2.8,
+      1.2200000000000002
+     ],
+     "t2cookie6chipP0": [
+      2.71,
+      1.2900000000000003
+     ],
+     "t2cookie6chipP1": [
+      2.9,
+      1.2500000000000002
+     ],
+     "t2cookie6chipP2": [
+      2.79,
+      1.1
+     ],
+     "t4V0": [
+      0.675,
+      -0.375
+     ],
+     "t4V1": [
+      3.325,
+      -0.375
+     ],
+     "t4V2": [
+      3.325,
+      -2.025
+     ],
+     "t4V3": [
+      0.675,
+      -2.025
+     ],
+     "t4cookie1P": [
+      1.2,
+      -0.82
+     ],
+     "t4cookie1chipP0": [
+      1.1099999999999999,
+      -0.75
+     ],
+     "t4cookie1chipP1": [
+      1.3,
+      -0.7899999999999999
+     ],
+     "t4cookie1chipP2": [
+      1.19,
+      -0.94
+     ],
+     "t4cookie2P": [
+      2,
+      -0.82
+     ],
+     "t4cookie2chipP0": [
+      1.91,
+      -0.75
+     ],
+     "t4cookie2chipP1": [
+      2.1,
+      -0.7899999999999999
+     ],
+     "t4cookie2chipP2": [
+      1.99,
+      -0.94
+     ],
+     "t4cookie3P": [
+      2.8,
+      -0.82
+     ],
+     "t4cookie3chipP0": [
+      2.71,
+      -0.75
+     ],
+     "t4cookie3chipP1": [
+      2.9,
+      -0.7899999999999999
+     ],
+     "t4cookie3chipP2": [
+      2.79,
+      -0.94
+     ],
+     "t4cookie4P": [
+      1.2,
+      -1.58
+     ],
+     "t4cookie4chipP0": [
+      1.1099999999999999,
+      -1.51
+     ],
+     "t4cookie4chipP1": [
+      1.3,
+      -1.55
+     ],
+     "t4cookie4chipP2": [
+      1.19,
+      -1.7000000000000002
+     ],
+     "t4cookie5P": [
+      2,
+      -1.58
+     ],
+     "t4cookie5chipP0": [
+      1.91,
+      -1.51
+     ],
+     "t4cookie5chipP1": [
+      2.1,
+      -1.55
+     ],
+     "t4cookie5chipP2": [
+      1.99,
+      -1.7000000000000002
+     ],
+     "t4cookie6P": [
+      2.8,
+      -1.58
+     ],
+     "t4cookie6chipP0": [
+      2.71,
+      -1.51
+     ],
+     "t4cookie6chipP1": [
+      2.9,
+      -1.55
+     ],
+     "t4cookie6chipP2": [
+      2.79,
+      -1.7000000000000002
+     ]
+    },
+    "parts": [
+     {
+      "id": "t1rim",
+      "group": "t1",
+      "poly": [
+       "t1V0",
+       "t1V1",
+       "t1V2",
+       "t1V3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t1cookie1",
+      "group": "t1",
+      "circle": "t1cookie1P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie1chip0",
+      "group": "t1",
+      "circle": "t1cookie1chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie1chip1",
+      "group": "t1",
+      "circle": "t1cookie1chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie1chip2",
+      "group": "t1",
+      "circle": "t1cookie1chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie2",
+      "group": "t1",
+      "circle": "t1cookie2P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie2chip0",
+      "group": "t1",
+      "circle": "t1cookie2chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie2chip1",
+      "group": "t1",
+      "circle": "t1cookie2chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie2chip2",
+      "group": "t1",
+      "circle": "t1cookie2chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie3",
+      "group": "t1",
+      "circle": "t1cookie3P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie3chip0",
+      "group": "t1",
+      "circle": "t1cookie3chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie3chip1",
+      "group": "t1",
+      "circle": "t1cookie3chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie3chip2",
+      "group": "t1",
+      "circle": "t1cookie3chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie4",
+      "group": "t1",
+      "circle": "t1cookie4P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie4chip0",
+      "group": "t1",
+      "circle": "t1cookie4chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie4chip1",
+      "group": "t1",
+      "circle": "t1cookie4chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie4chip2",
+      "group": "t1",
+      "circle": "t1cookie4chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie5",
+      "group": "t1",
+      "circle": "t1cookie5P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie5chip0",
+      "group": "t1",
+      "circle": "t1cookie5chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie5chip1",
+      "group": "t1",
+      "circle": "t1cookie5chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie5chip2",
+      "group": "t1",
+      "circle": "t1cookie5chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie6",
+      "group": "t1",
+      "circle": "t1cookie6P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie6chip0",
+      "group": "t1",
+      "circle": "t1cookie6chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie6chip1",
+      "group": "t1",
+      "circle": "t1cookie6chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie6chip2",
+      "group": "t1",
+      "circle": "t1cookie6chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3rim",
+      "group": "t3",
+      "poly": [
+       "t3V0",
+       "t3V1",
+       "t3V2",
+       "t3V3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t3cookie1",
+      "group": "t3",
+      "circle": "t3cookie1P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie1chip0",
+      "group": "t3",
+      "circle": "t3cookie1chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie1chip1",
+      "group": "t3",
+      "circle": "t3cookie1chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie1chip2",
+      "group": "t3",
+      "circle": "t3cookie1chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie2",
+      "group": "t3",
+      "circle": "t3cookie2P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie2chip0",
+      "group": "t3",
+      "circle": "t3cookie2chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie2chip1",
+      "group": "t3",
+      "circle": "t3cookie2chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie2chip2",
+      "group": "t3",
+      "circle": "t3cookie2chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie3",
+      "group": "t3",
+      "circle": "t3cookie3P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie3chip0",
+      "group": "t3",
+      "circle": "t3cookie3chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie3chip1",
+      "group": "t3",
+      "circle": "t3cookie3chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie3chip2",
+      "group": "t3",
+      "circle": "t3cookie3chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie4",
+      "group": "t3",
+      "circle": "t3cookie4P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie4chip0",
+      "group": "t3",
+      "circle": "t3cookie4chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie4chip1",
+      "group": "t3",
+      "circle": "t3cookie4chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie4chip2",
+      "group": "t3",
+      "circle": "t3cookie4chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie5",
+      "group": "t3",
+      "circle": "t3cookie5P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie5chip0",
+      "group": "t3",
+      "circle": "t3cookie5chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie5chip1",
+      "group": "t3",
+      "circle": "t3cookie5chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie5chip2",
+      "group": "t3",
+      "circle": "t3cookie5chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie6",
+      "group": "t3",
+      "circle": "t3cookie6P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie6chip0",
+      "group": "t3",
+      "circle": "t3cookie6chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie6chip1",
+      "group": "t3",
+      "circle": "t3cookie6chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie6chip2",
+      "group": "t3",
+      "circle": "t3cookie6chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2rim",
+      "group": "t2",
+      "poly": [
+       "t2V0",
+       "t2V1",
+       "t2V2",
+       "t2V3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t2cookie1",
+      "group": "t2",
+      "circle": "t2cookie1P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie1chip0",
+      "group": "t2",
+      "circle": "t2cookie1chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie1chip1",
+      "group": "t2",
+      "circle": "t2cookie1chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie1chip2",
+      "group": "t2",
+      "circle": "t2cookie1chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie2",
+      "group": "t2",
+      "circle": "t2cookie2P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie2chip0",
+      "group": "t2",
+      "circle": "t2cookie2chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie2chip1",
+      "group": "t2",
+      "circle": "t2cookie2chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie2chip2",
+      "group": "t2",
+      "circle": "t2cookie2chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie3",
+      "group": "t2",
+      "circle": "t2cookie3P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie3chip0",
+      "group": "t2",
+      "circle": "t2cookie3chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie3chip1",
+      "group": "t2",
+      "circle": "t2cookie3chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie3chip2",
+      "group": "t2",
+      "circle": "t2cookie3chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie4",
+      "group": "t2",
+      "circle": "t2cookie4P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie4chip0",
+      "group": "t2",
+      "circle": "t2cookie4chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie4chip1",
+      "group": "t2",
+      "circle": "t2cookie4chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie4chip2",
+      "group": "t2",
+      "circle": "t2cookie4chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie5",
+      "group": "t2",
+      "circle": "t2cookie5P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie5chip0",
+      "group": "t2",
+      "circle": "t2cookie5chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie5chip1",
+      "group": "t2",
+      "circle": "t2cookie5chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie5chip2",
+      "group": "t2",
+      "circle": "t2cookie5chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie6",
+      "group": "t2",
+      "circle": "t2cookie6P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie6chip0",
+      "group": "t2",
+      "circle": "t2cookie6chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie6chip1",
+      "group": "t2",
+      "circle": "t2cookie6chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie6chip2",
+      "group": "t2",
+      "circle": "t2cookie6chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4rim",
+      "group": "t4",
+      "poly": [
+       "t4V0",
+       "t4V1",
+       "t4V2",
+       "t4V3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t4cookie1",
+      "group": "t4",
+      "circle": "t4cookie1P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t4cookie1chip0",
+      "group": "t4",
+      "circle": "t4cookie1chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie1chip1",
+      "group": "t4",
+      "circle": "t4cookie1chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie1chip2",
+      "group": "t4",
+      "circle": "t4cookie1chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie2",
+      "group": "t4",
+      "circle": "t4cookie2P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t4cookie2chip0",
+      "group": "t4",
+      "circle": "t4cookie2chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie2chip1",
+      "group": "t4",
+      "circle": "t4cookie2chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie2chip2",
+      "group": "t4",
+      "circle": "t4cookie2chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie3",
+      "group": "t4",
+      "circle": "t4cookie3P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t4cookie3chip0",
+      "group": "t4",
+      "circle": "t4cookie3chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie3chip1",
+      "group": "t4",
+      "circle": "t4cookie3chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie3chip2",
+      "group": "t4",
+      "circle": "t4cookie3chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie4",
+      "group": "t4",
+      "circle": "t4cookie4P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t4cookie4chip0",
+      "group": "t4",
+      "circle": "t4cookie4chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie4chip1",
+      "group": "t4",
+      "circle": "t4cookie4chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie4chip2",
+      "group": "t4",
+      "circle": "t4cookie4chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie5",
+      "group": "t4",
+      "circle": "t4cookie5P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t4cookie5chip0",
+      "group": "t4",
+      "circle": "t4cookie5chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie5chip1",
+      "group": "t4",
+      "circle": "t4cookie5chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie5chip2",
+      "group": "t4",
+      "circle": "t4cookie5chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie6",
+      "group": "t4",
+      "circle": "t4cookie6P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t4cookie6chip0",
+      "group": "t4",
+      "circle": "t4cookie6chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie6chip1",
+      "group": "t4",
+      "circle": "t4cookie6chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie6chip2",
+      "group": "t4",
+      "circle": "t4cookie6chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Try four trays with six cookies on each.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "4 trays · 6 on each"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Four and six... ten?",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "write",
+       "tex": "4+6=10",
+       "fresh": true,
+       "at": "ten"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "aV0": [
+      -3.325,
+      1.825
+     ],
+     "aV1": [
+      -0.675,
+      1.825
+     ],
+     "aV2": [
+      -0.675,
+      0.17500000000000004
+     ],
+     "aV3": [
+      -3.325,
+      0.17500000000000004
+     ],
+     "acookie1P": [
+      -2.4,
+      1.38
+     ],
+     "acookie1chipP0": [
+      -2.4899999999999998,
+      1.45
+     ],
+     "acookie1chipP1": [
+      -2.3,
+      1.41
+     ],
+     "acookie1chipP2": [
+      -2.4099999999999997,
+      1.2599999999999998
+     ],
+     "acookie2P": [
+      -1.6,
+      1.38
+     ],
+     "acookie2chipP0": [
+      -1.6900000000000002,
+      1.45
+     ],
+     "acookie2chipP1": [
+      -1.5,
+      1.41
+     ],
+     "acookie2chipP2": [
+      -1.61,
+      1.2599999999999998
+     ],
+     "acookie3P": [
+      -2.4,
+      0.62
+     ],
+     "acookie3chipP0": [
+      -2.4899999999999998,
+      0.69
+     ],
+     "acookie3chipP1": [
+      -2.3,
+      0.65
+     ],
+     "acookie3chipP2": [
+      -2.4099999999999997,
+      0.5
+     ],
+     "acookie4P": [
+      -1.6,
+      0.62
+     ],
+     "acookie4chipP0": [
+      -1.6900000000000002,
+      0.69
+     ],
+     "acookie4chipP1": [
+      -1.5,
+      0.65
+     ],
+     "acookie4chipP2": [
+      -1.61,
+      0.5
+     ],
+     "bV0": [
+      0.675,
+      1.825
+     ],
+     "bV1": [
+      3.325,
+      1.825
+     ],
+     "bV2": [
+      3.325,
+      0.17500000000000004
+     ],
+     "bV3": [
+      0.675,
+      0.17500000000000004
+     ],
+     "bcookie1P": [
+      1.2,
+      1.38
+     ],
+     "bcookie1chipP0": [
+      1.1099999999999999,
+      1.45
+     ],
+     "bcookie1chipP1": [
+      1.3,
+      1.41
+     ],
+     "bcookie1chipP2": [
+      1.19,
+      1.2599999999999998
+     ],
+     "bcookie2P": [
+      2,
+      1.38
+     ],
+     "bcookie2chipP0": [
+      1.91,
+      1.45
+     ],
+     "bcookie2chipP1": [
+      2.1,
+      1.41
+     ],
+     "bcookie2chipP2": [
+      1.99,
+      1.2599999999999998
+     ],
+     "bcookie3P": [
+      2.8,
+      1.38
+     ],
+     "bcookie3chipP0": [
+      2.71,
+      1.45
+     ],
+     "bcookie3chipP1": [
+      2.9,
+      1.41
+     ],
+     "bcookie3chipP2": [
+      2.79,
+      1.2599999999999998
+     ],
+     "bcookie4P": [
+      1.2,
+      0.62
+     ],
+     "bcookie4chipP0": [
+      1.1099999999999999,
+      0.69
+     ],
+     "bcookie4chipP1": [
+      1.3,
+      0.65
+     ],
+     "bcookie4chipP2": [
+      1.19,
+      0.5
+     ],
+     "bcookie5P": [
+      2,
+      0.62
+     ],
+     "bcookie5chipP0": [
+      1.91,
+      0.69
+     ],
+     "bcookie5chipP1": [
+      2.1,
+      0.65
+     ],
+     "bcookie5chipP2": [
+      1.99,
+      0.5
+     ],
+     "bcookie6P": [
+      2.8,
+      0.62
+     ],
+     "bcookie6chipP0": [
+      2.71,
+      0.69
+     ],
+     "bcookie6chipP1": [
+      2.9,
+      0.65
+     ],
+     "bcookie6chipP2": [
+      2.79,
+      0.5
+     ],
+     "fourP": [
+      -2,
+      -0.65
+     ],
+     "plusP": [
+      0,
+      -0.65
+     ],
+     "sixP": [
+      2,
+      -0.65
+     ]
+    },
+    "parts": [
+     {
+      "id": "arim",
+      "group": "a",
+      "poly": [
+       "aV0",
+       "aV1",
+       "aV2",
+       "aV3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "acookie1",
+      "group": "a",
+      "circle": "acookie1P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "acookie1chip0",
+      "group": "a",
+      "circle": "acookie1chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "acookie1chip1",
+      "group": "a",
+      "circle": "acookie1chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "acookie1chip2",
+      "group": "a",
+      "circle": "acookie1chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "acookie2",
+      "group": "a",
+      "circle": "acookie2P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "acookie2chip0",
+      "group": "a",
+      "circle": "acookie2chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "acookie2chip1",
+      "group": "a",
+      "circle": "acookie2chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "acookie2chip2",
+      "group": "a",
+      "circle": "acookie2chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "acookie3",
+      "group": "a",
+      "circle": "acookie3P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "acookie3chip0",
+      "group": "a",
+      "circle": "acookie3chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "acookie3chip1",
+      "group": "a",
+      "circle": "acookie3chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "acookie3chip2",
+      "group": "a",
+      "circle": "acookie3chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "acookie4",
+      "group": "a",
+      "circle": "acookie4P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "acookie4chip0",
+      "group": "a",
+      "circle": "acookie4chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "acookie4chip1",
+      "group": "a",
+      "circle": "acookie4chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "acookie4chip2",
+      "group": "a",
+      "circle": "acookie4chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "brim",
+      "group": "b",
+      "poly": [
+       "bV0",
+       "bV1",
+       "bV2",
+       "bV3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "bcookie1",
+      "group": "b",
+      "circle": "bcookie1P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "bcookie1chip0",
+      "group": "b",
+      "circle": "bcookie1chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bcookie1chip1",
+      "group": "b",
+      "circle": "bcookie1chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bcookie1chip2",
+      "group": "b",
+      "circle": "bcookie1chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bcookie2",
+      "group": "b",
+      "circle": "bcookie2P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "bcookie2chip0",
+      "group": "b",
+      "circle": "bcookie2chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bcookie2chip1",
+      "group": "b",
+      "circle": "bcookie2chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bcookie2chip2",
+      "group": "b",
+      "circle": "bcookie2chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bcookie3",
+      "group": "b",
+      "circle": "bcookie3P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "bcookie3chip0",
+      "group": "b",
+      "circle": "bcookie3chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bcookie3chip1",
+      "group": "b",
+      "circle": "bcookie3chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bcookie3chip2",
+      "group": "b",
+      "circle": "bcookie3chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bcookie4",
+      "group": "b",
+      "circle": "bcookie4P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "bcookie4chip0",
+      "group": "b",
+      "circle": "bcookie4chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bcookie4chip1",
+      "group": "b",
+      "circle": "bcookie4chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bcookie4chip2",
+      "group": "b",
+      "circle": "bcookie4chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bcookie5",
+      "group": "b",
+      "circle": "bcookie5P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "bcookie5chip0",
+      "group": "b",
+      "circle": "bcookie5chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bcookie5chip1",
+      "group": "b",
+      "circle": "bcookie5chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bcookie5chip2",
+      "group": "b",
+      "circle": "bcookie5chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bcookie6",
+      "group": "b",
+      "circle": "bcookie6P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "bcookie6chip0",
+      "group": "b",
+      "circle": "bcookie6chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bcookie6chip1",
+      "group": "b",
+      "circle": "bcookie6chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bcookie6chip2",
+      "group": "b",
+      "circle": "bcookie6chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "four",
+      "label": "4",
+      "at": "fourP",
+      "dir": "c",
+      "ink": "gold",
+      "size": "xl",
+      "start": true,
+      "flies": true
+     },
+     {
+      "id": "plus",
+      "label": "+",
+      "at": "plusP",
+      "dir": "c",
+      "ink": "ink",
+      "size": "xl",
+      "start": true,
+      "flies": true
+     },
+     {
+      "id": "six",
+      "label": "6",
+      "at": "sixP",
+      "dir": "c",
+      "ink": "gold",
+      "size": "xl",
+      "start": true,
+      "flies": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Four plus six counts this picture: four cookies beside six cookies.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "4+6=10",
+       "fresh": true
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "acookie1",
+        "acookie2",
+        "acookie3",
+        "acookie4"
+       ],
+       "at": "four"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "bcookie1",
+        "bcookie2",
+        "bcookie3",
+        "bcookie4",
+        "bcookie5",
+        "bcookie6"
+       ],
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten cookies, on two unequal trays.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "arim",
+        "brim"
+       ],
+       "at": "unequal"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "t1V0": [
+      -3.325,
+      2.625
+     ],
+     "t1V1": [
+      -0.675,
+      2.625
+     ],
+     "t1V2": [
+      -0.675,
+      0.9750000000000001
+     ],
+     "t1V3": [
+      -3.325,
+      0.9750000000000001
+     ],
+     "t1cookie1P": [
+      -2.8,
+      2.18
+     ],
+     "t1cookie1chipP0": [
+      -2.8899999999999997,
+      2.25
+     ],
+     "t1cookie1chipP1": [
+      -2.6999999999999997,
+      2.21
+     ],
+     "t1cookie1chipP2": [
+      -2.8099999999999996,
+      2.06
+     ],
+     "t1cookie2P": [
+      -2,
+      2.18
+     ],
+     "t1cookie2chipP0": [
+      -2.09,
+      2.25
+     ],
+     "t1cookie2chipP1": [
+      -1.9,
+      2.21
+     ],
+     "t1cookie2chipP2": [
+      -2.01,
+      2.06
+     ],
+     "t1cookie3P": [
+      -1.2,
+      2.18
+     ],
+     "t1cookie3chipP0": [
+      -1.29,
+      2.25
+     ],
+     "t1cookie3chipP1": [
+      -1.0999999999999999,
+      2.21
+     ],
+     "t1cookie3chipP2": [
+      -1.21,
+      2.06
+     ],
+     "t1cookie4P": [
+      -2.8,
+      1.42
+     ],
+     "t1cookie4chipP0": [
+      -2.8899999999999997,
+      1.49
+     ],
+     "t1cookie4chipP1": [
+      -2.6999999999999997,
+      1.45
+     ],
+     "t1cookie4chipP2": [
+      -2.8099999999999996,
+      1.2999999999999998
+     ],
+     "t1cookie5P": [
+      -2,
+      1.42
+     ],
+     "t1cookie5chipP0": [
+      -2.09,
+      1.49
+     ],
+     "t1cookie5chipP1": [
+      -1.9,
+      1.45
+     ],
+     "t1cookie5chipP2": [
+      -2.01,
+      1.2999999999999998
+     ],
+     "t1cookie6P": [
+      -1.2,
+      1.42
+     ],
+     "t1cookie6chipP0": [
+      -1.29,
+      1.49
+     ],
+     "t1cookie6chipP1": [
+      -1.0999999999999999,
+      1.45
+     ],
+     "t1cookie6chipP2": [
+      -1.21,
+      1.2999999999999998
+     ],
+     "six1P": [
+      -2,
+      0.3
+     ],
+     "t2V0": [
+      0.675,
+      2.625
+     ],
+     "t2V1": [
+      3.325,
+      2.625
+     ],
+     "t2V2": [
+      3.325,
+      0.9750000000000001
+     ],
+     "t2V3": [
+      0.675,
+      0.9750000000000001
+     ],
+     "t2cookie1P": [
+      1.2,
+      2.18
+     ],
+     "t2cookie1chipP0": [
+      1.1099999999999999,
+      2.25
+     ],
+     "t2cookie1chipP1": [
+      1.3,
+      2.21
+     ],
+     "t2cookie1chipP2": [
+      1.19,
+      2.06
+     ],
+     "t2cookie2P": [
+      2,
+      2.18
+     ],
+     "t2cookie2chipP0": [
+      1.91,
+      2.25
+     ],
+     "t2cookie2chipP1": [
+      2.1,
+      2.21
+     ],
+     "t2cookie2chipP2": [
+      1.99,
+      2.06
+     ],
+     "t2cookie3P": [
+      2.8,
+      2.18
+     ],
+     "t2cookie3chipP0": [
+      2.71,
+      2.25
+     ],
+     "t2cookie3chipP1": [
+      2.9,
+      2.21
+     ],
+     "t2cookie3chipP2": [
+      2.79,
+      2.06
+     ],
+     "t2cookie4P": [
+      1.2,
+      1.42
+     ],
+     "t2cookie4chipP0": [
+      1.1099999999999999,
+      1.49
+     ],
+     "t2cookie4chipP1": [
+      1.3,
+      1.45
+     ],
+     "t2cookie4chipP2": [
+      1.19,
+      1.2999999999999998
+     ],
+     "t2cookie5P": [
+      2,
+      1.42
+     ],
+     "t2cookie5chipP0": [
+      1.91,
+      1.49
+     ],
+     "t2cookie5chipP1": [
+      2.1,
+      1.45
+     ],
+     "t2cookie5chipP2": [
+      1.99,
+      1.2999999999999998
+     ],
+     "t2cookie6P": [
+      2.8,
+      1.42
+     ],
+     "t2cookie6chipP0": [
+      2.71,
+      1.49
+     ],
+     "t2cookie6chipP1": [
+      2.9,
+      1.45
+     ],
+     "t2cookie6chipP2": [
+      2.79,
+      1.2999999999999998
+     ],
+     "six2P": [
+      2,
+      0.3
+     ],
+     "t3V0": [
+      -3.325,
+      -0.375
+     ],
+     "t3V1": [
+      -0.675,
+      -0.375
+     ],
+     "t3V2": [
+      -0.675,
+      -2.025
+     ],
+     "t3V3": [
+      -3.325,
+      -2.025
+     ],
+     "t3cookie1P": [
+      -2.8,
+      -0.82
+     ],
+     "t3cookie1chipP0": [
+      -2.8899999999999997,
+      -0.75
+     ],
+     "t3cookie1chipP1": [
+      -2.6999999999999997,
+      -0.7899999999999999
+     ],
+     "t3cookie1chipP2": [
+      -2.8099999999999996,
+      -0.94
+     ],
+     "t3cookie2P": [
+      -2,
+      -0.82
+     ],
+     "t3cookie2chipP0": [
+      -2.09,
+      -0.75
+     ],
+     "t3cookie2chipP1": [
+      -1.9,
+      -0.7899999999999999
+     ],
+     "t3cookie2chipP2": [
+      -2.01,
+      -0.94
+     ],
+     "t3cookie3P": [
+      -1.2,
+      -0.82
+     ],
+     "t3cookie3chipP0": [
+      -1.29,
+      -0.75
+     ],
+     "t3cookie3chipP1": [
+      -1.0999999999999999,
+      -0.7899999999999999
+     ],
+     "t3cookie3chipP2": [
+      -1.21,
+      -0.94
+     ],
+     "t3cookie4P": [
+      -2.8,
+      -1.58
+     ],
+     "t3cookie4chipP0": [
+      -2.8899999999999997,
+      -1.51
+     ],
+     "t3cookie4chipP1": [
+      -2.6999999999999997,
+      -1.55
+     ],
+     "t3cookie4chipP2": [
+      -2.8099999999999996,
+      -1.7000000000000002
+     ],
+     "t3cookie5P": [
+      -2,
+      -1.58
+     ],
+     "t3cookie5chipP0": [
+      -2.09,
+      -1.51
+     ],
+     "t3cookie5chipP1": [
+      -1.9,
+      -1.55
+     ],
+     "t3cookie5chipP2": [
+      -2.01,
+      -1.7000000000000002
+     ],
+     "t3cookie6P": [
+      -1.2,
+      -1.58
+     ],
+     "t3cookie6chipP0": [
+      -1.29,
+      -1.51
+     ],
+     "t3cookie6chipP1": [
+      -1.0999999999999999,
+      -1.55
+     ],
+     "t3cookie6chipP2": [
+      -1.21,
+      -1.7000000000000002
+     ],
+     "six3P": [
+      -2,
+      -2.7
+     ],
+     "t4V0": [
+      0.675,
+      -0.375
+     ],
+     "t4V1": [
+      3.325,
+      -0.375
+     ],
+     "t4V2": [
+      3.325,
+      -2.025
+     ],
+     "t4V3": [
+      0.675,
+      -2.025
+     ],
+     "t4cookie1P": [
+      1.2,
+      -0.82
+     ],
+     "t4cookie1chipP0": [
+      1.1099999999999999,
+      -0.75
+     ],
+     "t4cookie1chipP1": [
+      1.3,
+      -0.7899999999999999
+     ],
+     "t4cookie1chipP2": [
+      1.19,
+      -0.94
+     ],
+     "t4cookie2P": [
+      2,
+      -0.82
+     ],
+     "t4cookie2chipP0": [
+      1.91,
+      -0.75
+     ],
+     "t4cookie2chipP1": [
+      2.1,
+      -0.7899999999999999
+     ],
+     "t4cookie2chipP2": [
+      1.99,
+      -0.94
+     ],
+     "t4cookie3P": [
+      2.8,
+      -0.82
+     ],
+     "t4cookie3chipP0": [
+      2.71,
+      -0.75
+     ],
+     "t4cookie3chipP1": [
+      2.9,
+      -0.7899999999999999
+     ],
+     "t4cookie3chipP2": [
+      2.79,
+      -0.94
+     ],
+     "t4cookie4P": [
+      1.2,
+      -1.58
+     ],
+     "t4cookie4chipP0": [
+      1.1099999999999999,
+      -1.51
+     ],
+     "t4cookie4chipP1": [
+      1.3,
+      -1.55
+     ],
+     "t4cookie4chipP2": [
+      1.19,
+      -1.7000000000000002
+     ],
+     "t4cookie5P": [
+      2,
+      -1.58
+     ],
+     "t4cookie5chipP0": [
+      1.91,
+      -1.51
+     ],
+     "t4cookie5chipP1": [
+      2.1,
+      -1.55
+     ],
+     "t4cookie5chipP2": [
+      1.99,
+      -1.7000000000000002
+     ],
+     "t4cookie6P": [
+      2.8,
+      -1.58
+     ],
+     "t4cookie6chipP0": [
+      2.71,
+      -1.51
+     ],
+     "t4cookie6chipP1": [
+      2.9,
+      -1.55
+     ],
+     "t4cookie6chipP2": [
+      2.79,
+      -1.7000000000000002
+     ],
+     "six4P": [
+      2,
+      -2.7
+     ],
+     "factorGroupsP": [
+      -3,
+      -4.3
+     ],
+     "timesP": [
+      -1.5,
+      -4.3
+     ],
+     "factorSizeP": [
+      0,
+      -4.3
+     ],
+     "equalsP": [
+      1.5,
+      -4.3
+     ],
+     "totalP": [
+      3.2,
+      -4.3
+     ]
+    },
+    "parts": [
+     {
+      "id": "t1rim",
+      "group": "t1",
+      "poly": [
+       "t1V0",
+       "t1V1",
+       "t1V2",
+       "t1V3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t1cookie1",
+      "group": "t1",
+      "circle": "t1cookie1P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie1chip0",
+      "group": "t1",
+      "circle": "t1cookie1chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie1chip1",
+      "group": "t1",
+      "circle": "t1cookie1chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie1chip2",
+      "group": "t1",
+      "circle": "t1cookie1chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie2",
+      "group": "t1",
+      "circle": "t1cookie2P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie2chip0",
+      "group": "t1",
+      "circle": "t1cookie2chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie2chip1",
+      "group": "t1",
+      "circle": "t1cookie2chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie2chip2",
+      "group": "t1",
+      "circle": "t1cookie2chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie3",
+      "group": "t1",
+      "circle": "t1cookie3P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie3chip0",
+      "group": "t1",
+      "circle": "t1cookie3chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie3chip1",
+      "group": "t1",
+      "circle": "t1cookie3chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie3chip2",
+      "group": "t1",
+      "circle": "t1cookie3chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie4",
+      "group": "t1",
+      "circle": "t1cookie4P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie4chip0",
+      "group": "t1",
+      "circle": "t1cookie4chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie4chip1",
+      "group": "t1",
+      "circle": "t1cookie4chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie4chip2",
+      "group": "t1",
+      "circle": "t1cookie4chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie5",
+      "group": "t1",
+      "circle": "t1cookie5P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie5chip0",
+      "group": "t1",
+      "circle": "t1cookie5chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie5chip1",
+      "group": "t1",
+      "circle": "t1cookie5chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie5chip2",
+      "group": "t1",
+      "circle": "t1cookie5chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie6",
+      "group": "t1",
+      "circle": "t1cookie6P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie6chip0",
+      "group": "t1",
+      "circle": "t1cookie6chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie6chip1",
+      "group": "t1",
+      "circle": "t1cookie6chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie6chip2",
+      "group": "t1",
+      "circle": "t1cookie6chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "six1",
+      "label": "6",
+      "at": "six1P",
+      "dir": "c",
+      "ink": "gold",
+      "size": "xl",
+      "start": false,
+      "flies": true
+     },
+     {
+      "id": "t2rim",
+      "group": "t2",
+      "poly": [
+       "t2V0",
+       "t2V1",
+       "t2V2",
+       "t2V3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t2cookie1",
+      "group": "t2",
+      "circle": "t2cookie1P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie1chip0",
+      "group": "t2",
+      "circle": "t2cookie1chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie1chip1",
+      "group": "t2",
+      "circle": "t2cookie1chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie1chip2",
+      "group": "t2",
+      "circle": "t2cookie1chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie2",
+      "group": "t2",
+      "circle": "t2cookie2P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie2chip0",
+      "group": "t2",
+      "circle": "t2cookie2chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie2chip1",
+      "group": "t2",
+      "circle": "t2cookie2chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie2chip2",
+      "group": "t2",
+      "circle": "t2cookie2chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie3",
+      "group": "t2",
+      "circle": "t2cookie3P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie3chip0",
+      "group": "t2",
+      "circle": "t2cookie3chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie3chip1",
+      "group": "t2",
+      "circle": "t2cookie3chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie3chip2",
+      "group": "t2",
+      "circle": "t2cookie3chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie4",
+      "group": "t2",
+      "circle": "t2cookie4P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie4chip0",
+      "group": "t2",
+      "circle": "t2cookie4chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie4chip1",
+      "group": "t2",
+      "circle": "t2cookie4chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie4chip2",
+      "group": "t2",
+      "circle": "t2cookie4chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie5",
+      "group": "t2",
+      "circle": "t2cookie5P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie5chip0",
+      "group": "t2",
+      "circle": "t2cookie5chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie5chip1",
+      "group": "t2",
+      "circle": "t2cookie5chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie5chip2",
+      "group": "t2",
+      "circle": "t2cookie5chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie6",
+      "group": "t2",
+      "circle": "t2cookie6P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie6chip0",
+      "group": "t2",
+      "circle": "t2cookie6chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie6chip1",
+      "group": "t2",
+      "circle": "t2cookie6chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie6chip2",
+      "group": "t2",
+      "circle": "t2cookie6chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "six2",
+      "label": "6",
+      "at": "six2P",
+      "dir": "c",
+      "ink": "gold",
+      "size": "xl",
+      "start": false,
+      "flies": true
+     },
+     {
+      "id": "t3rim",
+      "group": "t3",
+      "poly": [
+       "t3V0",
+       "t3V1",
+       "t3V2",
+       "t3V3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t3cookie1",
+      "group": "t3",
+      "circle": "t3cookie1P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie1chip0",
+      "group": "t3",
+      "circle": "t3cookie1chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie1chip1",
+      "group": "t3",
+      "circle": "t3cookie1chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie1chip2",
+      "group": "t3",
+      "circle": "t3cookie1chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie2",
+      "group": "t3",
+      "circle": "t3cookie2P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie2chip0",
+      "group": "t3",
+      "circle": "t3cookie2chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie2chip1",
+      "group": "t3",
+      "circle": "t3cookie2chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie2chip2",
+      "group": "t3",
+      "circle": "t3cookie2chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie3",
+      "group": "t3",
+      "circle": "t3cookie3P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie3chip0",
+      "group": "t3",
+      "circle": "t3cookie3chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie3chip1",
+      "group": "t3",
+      "circle": "t3cookie3chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie3chip2",
+      "group": "t3",
+      "circle": "t3cookie3chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie4",
+      "group": "t3",
+      "circle": "t3cookie4P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie4chip0",
+      "group": "t3",
+      "circle": "t3cookie4chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie4chip1",
+      "group": "t3",
+      "circle": "t3cookie4chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie4chip2",
+      "group": "t3",
+      "circle": "t3cookie4chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie5",
+      "group": "t3",
+      "circle": "t3cookie5P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie5chip0",
+      "group": "t3",
+      "circle": "t3cookie5chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie5chip1",
+      "group": "t3",
+      "circle": "t3cookie5chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie5chip2",
+      "group": "t3",
+      "circle": "t3cookie5chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie6",
+      "group": "t3",
+      "circle": "t3cookie6P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie6chip0",
+      "group": "t3",
+      "circle": "t3cookie6chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie6chip1",
+      "group": "t3",
+      "circle": "t3cookie6chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie6chip2",
+      "group": "t3",
+      "circle": "t3cookie6chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "six3",
+      "label": "6",
+      "at": "six3P",
+      "dir": "c",
+      "ink": "gold",
+      "size": "xl",
+      "start": false,
+      "flies": true
+     },
+     {
+      "id": "t4rim",
+      "group": "t4",
+      "poly": [
+       "t4V0",
+       "t4V1",
+       "t4V2",
+       "t4V3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t4cookie1",
+      "group": "t4",
+      "circle": "t4cookie1P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t4cookie1chip0",
+      "group": "t4",
+      "circle": "t4cookie1chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie1chip1",
+      "group": "t4",
+      "circle": "t4cookie1chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie1chip2",
+      "group": "t4",
+      "circle": "t4cookie1chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie2",
+      "group": "t4",
+      "circle": "t4cookie2P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t4cookie2chip0",
+      "group": "t4",
+      "circle": "t4cookie2chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie2chip1",
+      "group": "t4",
+      "circle": "t4cookie2chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie2chip2",
+      "group": "t4",
+      "circle": "t4cookie2chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie3",
+      "group": "t4",
+      "circle": "t4cookie3P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t4cookie3chip0",
+      "group": "t4",
+      "circle": "t4cookie3chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie3chip1",
+      "group": "t4",
+      "circle": "t4cookie3chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie3chip2",
+      "group": "t4",
+      "circle": "t4cookie3chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie4",
+      "group": "t4",
+      "circle": "t4cookie4P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t4cookie4chip0",
+      "group": "t4",
+      "circle": "t4cookie4chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie4chip1",
+      "group": "t4",
+      "circle": "t4cookie4chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie4chip2",
+      "group": "t4",
+      "circle": "t4cookie4chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie5",
+      "group": "t4",
+      "circle": "t4cookie5P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t4cookie5chip0",
+      "group": "t4",
+      "circle": "t4cookie5chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie5chip1",
+      "group": "t4",
+      "circle": "t4cookie5chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie5chip2",
+      "group": "t4",
+      "circle": "t4cookie5chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie6",
+      "group": "t4",
+      "circle": "t4cookie6P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t4cookie6chip0",
+      "group": "t4",
+      "circle": "t4cookie6chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie6chip1",
+      "group": "t4",
+      "circle": "t4cookie6chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t4cookie6chip2",
+      "group": "t4",
+      "circle": "t4cookie6chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "six4",
+      "label": "6",
+      "at": "six4P",
+      "dir": "c",
+      "ink": "gold",
+      "size": "xl",
+      "start": false,
+      "flies": true
+     },
+     {
+      "id": "factorGroups",
+      "label": "4",
+      "at": "factorGroupsP",
+      "dir": "c",
+      "ink": "blue",
+      "size": "xl",
+      "start": false,
+      "flies": true
+     },
+     {
+      "id": "times",
+      "label": "\\times",
+      "at": "timesP",
+      "dir": "c",
+      "ink": "ink",
+      "size": "xl",
+      "start": false,
+      "flies": true
+     },
+     {
+      "id": "factorSize",
+      "label": "6",
+      "at": "factorSizeP",
+      "dir": "c",
+      "ink": "gold",
+      "size": "xl",
+      "start": false,
+      "flies": true
+     },
+     {
+      "id": "equals",
+      "label": "=",
+      "at": "equalsP",
+      "dir": "c",
+      "ink": "ink",
+      "size": "xl",
+      "start": false,
+      "flies": true
+     },
+     {
+      "id": "total",
+      "label": "24",
+      "at": "totalP",
+      "dir": "c",
+      "ink": "accent",
+      "size": "xl",
+      "start": false,
+      "flies": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here are four trays of six. Count a six for every tray.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Four groups of six"
+      },
+      {
+       "do": "show",
+       "target": [
+        "six1",
+        "six2",
+        "six3",
+        "six4"
+       ],
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Six, twelve, eighteen, twenty-four.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "t1",
+       "at": "Six"
+      },
+      {
+       "do": "highlight",
+       "target": "t2",
+       "at": "twelve"
+      },
+      {
+       "do": "highlight",
+       "target": "t3",
+       "at": "eighteen"
+      },
+      {
+       "do": "highlight",
+       "target": "t4",
+       "at": "twenty-four"
+      },
+      {
+       "do": "write",
+       "tex": "\\begin{gathered}6+6+6+6\\\\=24\\end{gathered}",
+       "fresh": true,
+       "at": "twenty-four"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The four counts trays! It means four sixes.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "t1rim",
+        "t2rim",
+        "t3rim",
+        "t4rim"
+       ],
+       "at": "trays"
+      },
+      {
+       "do": "show",
+       "target": [
+        "factorGroups",
+        "times",
+        "factorSize",
+        "equals",
+        "total"
+       ],
+       "at": "four"
+      },
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{4}\\times\\cg{6}=24",
+       "fresh": true,
+       "at": "four"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "bike1rear": [
+      -4.45,
+      1
+     ],
+     "bike1front": [
+      -2.75,
+      1
+     ],
+     "bike1saddle": [
+      -3.95,
+      1.95
+     ],
+     "bike1crank": [
+      -3.63,
+      1
+     ],
+     "bike1stem": [
+      -3.08,
+      2.02
+     ],
+     "bike1handle": [
+      -2.73,
+      2.25
+     ],
+     "bike1seatA": [
+      -4.19,
+      2.02
+     ],
+     "bike1seatB": [
+      -3.72,
+      2.02
+     ],
+     "two1P": [
+      -3.6,
+      -0.6
+     ],
+     "bike2rear": [
+      -0.85,
+      1
+     ],
+     "bike2front": [
+      0.85,
+      1
+     ],
+     "bike2saddle": [
+      -0.35,
+      1.95
+     ],
+     "bike2crank": [
+      -0.03,
+      1
+     ],
+     "bike2stem": [
+      0.52,
+      2.02
+     ],
+     "bike2handle": [
+      0.87,
+      2.25
+     ],
+     "bike2seatA": [
+      -0.59,
+      2.02
+     ],
+     "bike2seatB": [
+      -0.12,
+      2.02
+     ],
+     "two2P": [
+      0,
+      -0.6
+     ],
+     "bike3rear": [
+      2.75,
+      1
+     ],
+     "bike3front": [
+      4.45,
+      1
+     ],
+     "bike3saddle": [
+      3.25,
+      1.95
+     ],
+     "bike3crank": [
+      3.5700000000000003,
+      1
+     ],
+     "bike3stem": [
+      4.12,
+      2.02
+     ],
+     "bike3handle": [
+      4.47,
+      2.25
+     ],
+     "bike3seatA": [
+      3.0100000000000002,
+      2.02
+     ],
+     "bike3seatB": [
+      3.48,
+      2.02
+     ],
+     "two3P": [
+      3.6,
+      -0.6
+     ],
+     "factorGroupsP": [
+      -3,
+      -2.4
+     ],
+     "timesP": [
+      -1.5,
+      -2.4
+     ],
+     "factorSizeP": [
+      0,
+      -2.4
+     ],
+     "equalsP": [
+      1.5,
+      -2.4
+     ],
+     "totalP": [
+      3.2,
+      -2.4
+     ]
+    },
+    "parts": [
+     {
+      "id": "wheel1_0",
+      "group": "bike1",
+      "circle": "bike1rear",
+      "r": 0.56,
+      "fill": "paper",
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "wheel1_1",
+      "group": "bike1",
+      "circle": "bike1front",
+      "r": 0.56,
+      "fill": "paper",
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "bike1line0",
+      "group": "bike1",
+      "seg": [
+       "bike1rear",
+       "bike1saddle"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "bike1line1",
+      "group": "bike1",
+      "seg": [
+       "bike1saddle",
+       "bike1crank"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "bike1line2",
+      "group": "bike1",
+      "seg": [
+       "bike1crank",
+       "bike1rear"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "bike1line3",
+      "group": "bike1",
+      "seg": [
+       "bike1saddle",
+       "bike1stem"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "bike1line4",
+      "group": "bike1",
+      "seg": [
+       "bike1stem",
+       "bike1crank"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "bike1line5",
+      "group": "bike1",
+      "seg": [
+       "bike1stem",
+       "bike1front"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "bike1line6",
+      "group": "bike1",
+      "seg": [
+       "bike1stem",
+       "bike1handle"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "bike1line7",
+      "group": "bike1",
+      "seg": [
+       "bike1seatA",
+       "bike1seatB"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "two1",
+      "label": "2",
+      "at": "two1P",
+      "dir": "c",
+      "ink": "gold",
+      "size": "xl",
+      "start": false,
+      "flies": true
+     },
+     {
+      "id": "wheel2_0",
+      "group": "bike2",
+      "circle": "bike2rear",
+      "r": 0.56,
+      "fill": "paper",
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "wheel2_1",
+      "group": "bike2",
+      "circle": "bike2front",
+      "r": 0.56,
+      "fill": "paper",
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "bike2line0",
+      "group": "bike2",
+      "seg": [
+       "bike2rear",
+       "bike2saddle"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "bike2line1",
+      "group": "bike2",
+      "seg": [
+       "bike2saddle",
+       "bike2crank"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "bike2line2",
+      "group": "bike2",
+      "seg": [
+       "bike2crank",
+       "bike2rear"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "bike2line3",
+      "group": "bike2",
+      "seg": [
+       "bike2saddle",
+       "bike2stem"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "bike2line4",
+      "group": "bike2",
+      "seg": [
+       "bike2stem",
+       "bike2crank"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "bike2line5",
+      "group": "bike2",
+      "seg": [
+       "bike2stem",
+       "bike2front"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "bike2line6",
+      "group": "bike2",
+      "seg": [
+       "bike2stem",
+       "bike2handle"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "bike2line7",
+      "group": "bike2",
+      "seg": [
+       "bike2seatA",
+       "bike2seatB"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "two2",
+      "label": "2",
+      "at": "two2P",
+      "dir": "c",
+      "ink": "gold",
+      "size": "xl",
+      "start": false,
+      "flies": true
+     },
+     {
+      "id": "wheel3_0",
+      "group": "bike3",
+      "circle": "bike3rear",
+      "r": 0.56,
+      "fill": "paper",
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "wheel3_1",
+      "group": "bike3",
+      "circle": "bike3front",
+      "r": 0.56,
+      "fill": "paper",
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "bike3line0",
+      "group": "bike3",
+      "seg": [
+       "bike3rear",
+       "bike3saddle"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "bike3line1",
+      "group": "bike3",
+      "seg": [
+       "bike3saddle",
+       "bike3crank"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "bike3line2",
+      "group": "bike3",
+      "seg": [
+       "bike3crank",
+       "bike3rear"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "bike3line3",
+      "group": "bike3",
+      "seg": [
+       "bike3saddle",
+       "bike3stem"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "bike3line4",
+      "group": "bike3",
+      "seg": [
+       "bike3stem",
+       "bike3crank"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "bike3line5",
+      "group": "bike3",
+      "seg": [
+       "bike3stem",
+       "bike3front"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "bike3line6",
+      "group": "bike3",
+      "seg": [
+       "bike3stem",
+       "bike3handle"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "bike3line7",
+      "group": "bike3",
+      "seg": [
+       "bike3seatA",
+       "bike3seatB"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "two3",
+      "label": "2",
+      "at": "two3P",
+      "dir": "c",
+      "ink": "gold",
+      "size": "xl",
+      "start": false,
+      "flies": true
+     },
+     {
+      "id": "factorGroups",
+      "label": "3",
+      "at": "factorGroupsP",
+      "dir": "c",
+      "ink": "blue",
+      "size": "xl",
+      "start": false,
+      "flies": true
+     },
+     {
+      "id": "times",
+      "label": "\\times",
+      "at": "timesP",
+      "dir": "c",
+      "ink": "ink",
+      "size": "xl",
+      "start": false,
+      "flies": true
+     },
+     {
+      "id": "factorSize",
+      "label": "2",
+      "at": "factorSizeP",
+      "dir": "c",
+      "ink": "gold",
+      "size": "xl",
+      "start": false,
+      "flies": true
+     },
+     {
+      "id": "equals",
+      "label": "=",
+      "at": "equalsP",
+      "dir": "c",
+      "ink": "ink",
+      "size": "xl",
+      "start": false,
+      "flies": true
+     },
+     {
+      "id": "total",
+      "label": "6",
+      "at": "totalP",
+      "dir": "c",
+      "ink": "accent",
+      "size": "xl",
+      "start": false,
+      "flies": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Groups needn't be trays. Three bicycles, two wheels each.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Equal groups"
+      },
+      {
+       "do": "show",
+       "target": [
+        "two1",
+        "two2",
+        "two3"
+       ],
+       "at": "two"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "wheel1_0",
+        "wheel1_1"
+       ],
+       "at": "wheels"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Three groups of two. Six wheels!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "factorGroups",
+        "times",
+        "factorSize",
+        "equals",
+        "total"
+       ],
+       "at": "Three"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{3}\\times\\cg{2}=6",
+       "fresh": true,
+       "at": "Six"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "wheel1_0",
+        "wheel1_1",
+        "wheel2_0",
+        "wheel2_1",
+        "wheel3_0",
+        "wheel3_1"
+       ],
+       "at": "Six"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "t1V0": [
+      -4.725,
+      1.825
+     ],
+     "t1V1": [
+      -2.075,
+      1.825
+     ],
+     "t1V2": [
+      -2.075,
+      0.17500000000000004
+     ],
+     "t1V3": [
+      -4.725,
+      0.17500000000000004
+     ],
+     "t1cookie1P": [
+      -4.2,
+      1.38
+     ],
+     "t1cookie1chipP0": [
+      -4.29,
+      1.45
+     ],
+     "t1cookie1chipP1": [
+      -4.1000000000000005,
+      1.41
+     ],
+     "t1cookie1chipP2": [
+      -4.21,
+      1.2599999999999998
+     ],
+     "t1cookie2P": [
+      -3.4,
+      1.38
+     ],
+     "t1cookie2chipP0": [
+      -3.4899999999999998,
+      1.45
+     ],
+     "t1cookie2chipP1": [
+      -3.3,
+      1.41
+     ],
+     "t1cookie2chipP2": [
+      -3.4099999999999997,
+      1.2599999999999998
+     ],
+     "t1cookie3P": [
+      -2.5999999999999996,
+      1.38
+     ],
+     "t1cookie3chipP0": [
+      -2.6899999999999995,
+      1.45
+     ],
+     "t1cookie3chipP1": [
+      -2.4999999999999996,
+      1.41
+     ],
+     "t1cookie3chipP2": [
+      -2.6099999999999994,
+      1.2599999999999998
+     ],
+     "t1cookie4P": [
+      -3.8,
+      0.62
+     ],
+     "t1cookie4chipP0": [
+      -3.8899999999999997,
+      0.69
+     ],
+     "t1cookie4chipP1": [
+      -3.6999999999999997,
+      0.65
+     ],
+     "t1cookie4chipP2": [
+      -3.8099999999999996,
+      0.5
+     ],
+     "t1cookie5P": [
+      -3,
+      0.62
+     ],
+     "t1cookie5chipP0": [
+      -3.09,
+      0.69
+     ],
+     "t1cookie5chipP1": [
+      -2.9,
+      0.65
+     ],
+     "t1cookie5chipP2": [
+      -3.01,
+      0.5
+     ],
+     "t2V0": [
+      -1.325,
+      1.825
+     ],
+     "t2V1": [
+      1.325,
+      1.825
+     ],
+     "t2V2": [
+      1.325,
+      0.17500000000000004
+     ],
+     "t2V3": [
+      -1.325,
+      0.17500000000000004
+     ],
+     "t2cookie1P": [
+      -0.8,
+      1.38
+     ],
+     "t2cookie1chipP0": [
+      -0.89,
+      1.45
+     ],
+     "t2cookie1chipP1": [
+      -0.7000000000000001,
+      1.41
+     ],
+     "t2cookie1chipP2": [
+      -0.81,
+      1.2599999999999998
+     ],
+     "t2cookie2P": [
+      0,
+      1.38
+     ],
+     "t2cookie2chipP0": [
+      -0.09,
+      1.45
+     ],
+     "t2cookie2chipP1": [
+      0.1,
+      1.41
+     ],
+     "t2cookie2chipP2": [
+      -0.01,
+      1.2599999999999998
+     ],
+     "t2cookie3P": [
+      0.8,
+      1.38
+     ],
+     "t2cookie3chipP0": [
+      0.7100000000000001,
+      1.45
+     ],
+     "t2cookie3chipP1": [
+      0.9,
+      1.41
+     ],
+     "t2cookie3chipP2": [
+      0.79,
+      1.2599999999999998
+     ],
+     "t2cookie4P": [
+      -0.4,
+      0.62
+     ],
+     "t2cookie4chipP0": [
+      -0.49,
+      0.69
+     ],
+     "t2cookie4chipP1": [
+      -0.30000000000000004,
+      0.65
+     ],
+     "t2cookie4chipP2": [
+      -0.41000000000000003,
+      0.5
+     ],
+     "t2cookie5P": [
+      0.4,
+      0.62
+     ],
+     "t2cookie5chipP0": [
+      0.31000000000000005,
+      0.69
+     ],
+     "t2cookie5chipP1": [
+      0.5,
+      0.65
+     ],
+     "t2cookie5chipP2": [
+      0.39,
+      0.5
+     ],
+     "t3V0": [
+      2.075,
+      1.825
+     ],
+     "t3V1": [
+      4.725,
+      1.825
+     ],
+     "t3V2": [
+      4.725,
+      0.17500000000000004
+     ],
+     "t3V3": [
+      2.075,
+      0.17500000000000004
+     ],
+     "t3cookie1P": [
+      2.5999999999999996,
+      1.38
+     ],
+     "t3cookie1chipP0": [
+      2.51,
+      1.45
+     ],
+     "t3cookie1chipP1": [
+      2.6999999999999997,
+      1.41
+     ],
+     "t3cookie1chipP2": [
+      2.59,
+      1.2599999999999998
+     ],
+     "t3cookie2P": [
+      3.4,
+      1.38
+     ],
+     "t3cookie2chipP0": [
+      3.31,
+      1.45
+     ],
+     "t3cookie2chipP1": [
+      3.5,
+      1.41
+     ],
+     "t3cookie2chipP2": [
+      3.39,
+      1.2599999999999998
+     ],
+     "t3cookie3P": [
+      4.2,
+      1.38
+     ],
+     "t3cookie3chipP0": [
+      4.11,
+      1.45
+     ],
+     "t3cookie3chipP1": [
+      4.3,
+      1.41
+     ],
+     "t3cookie3chipP2": [
+      4.19,
+      1.2599999999999998
+     ],
+     "t3cookie4P": [
+      3,
+      0.62
+     ],
+     "t3cookie4chipP0": [
+      2.91,
+      0.69
+     ],
+     "t3cookie4chipP1": [
+      3.1,
+      0.65
+     ],
+     "t3cookie4chipP2": [
+      2.99,
+      0.5
+     ],
+     "t3cookie5P": [
+      3.8,
+      0.62
+     ],
+     "t3cookie5chipP0": [
+      3.71,
+      0.69
+     ],
+     "t3cookie5chipP1": [
+      3.9,
+      0.65
+     ],
+     "t3cookie5chipP2": [
+      3.79,
+      0.5
+     ],
+     "factorGroupsP": [
+      -3,
+      -1.3
+     ],
+     "timesP": [
+      -1.5,
+      -1.3
+     ],
+     "factorSizeP": [
+      0,
+      -1.3
+     ],
+     "equalsP": [
+      1.5,
+      -1.3
+     ],
+     "totalP": [
+      3.2,
+      -1.3
+     ]
+    },
+    "parts": [
+     {
+      "id": "t1rim",
+      "group": "t1",
+      "poly": [
+       "t1V0",
+       "t1V1",
+       "t1V2",
+       "t1V3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t1cookie1",
+      "group": "t1",
+      "circle": "t1cookie1P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie1chip0",
+      "group": "t1",
+      "circle": "t1cookie1chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie1chip1",
+      "group": "t1",
+      "circle": "t1cookie1chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie1chip2",
+      "group": "t1",
+      "circle": "t1cookie1chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie2",
+      "group": "t1",
+      "circle": "t1cookie2P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie2chip0",
+      "group": "t1",
+      "circle": "t1cookie2chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie2chip1",
+      "group": "t1",
+      "circle": "t1cookie2chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie2chip2",
+      "group": "t1",
+      "circle": "t1cookie2chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie3",
+      "group": "t1",
+      "circle": "t1cookie3P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie3chip0",
+      "group": "t1",
+      "circle": "t1cookie3chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie3chip1",
+      "group": "t1",
+      "circle": "t1cookie3chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie3chip2",
+      "group": "t1",
+      "circle": "t1cookie3chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie4",
+      "group": "t1",
+      "circle": "t1cookie4P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie4chip0",
+      "group": "t1",
+      "circle": "t1cookie4chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie4chip1",
+      "group": "t1",
+      "circle": "t1cookie4chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie4chip2",
+      "group": "t1",
+      "circle": "t1cookie4chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie5",
+      "group": "t1",
+      "circle": "t1cookie5P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t1cookie5chip0",
+      "group": "t1",
+      "circle": "t1cookie5chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie5chip1",
+      "group": "t1",
+      "circle": "t1cookie5chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t1cookie5chip2",
+      "group": "t1",
+      "circle": "t1cookie5chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2rim",
+      "group": "t2",
+      "poly": [
+       "t2V0",
+       "t2V1",
+       "t2V2",
+       "t2V3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t2cookie1",
+      "group": "t2",
+      "circle": "t2cookie1P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie1chip0",
+      "group": "t2",
+      "circle": "t2cookie1chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie1chip1",
+      "group": "t2",
+      "circle": "t2cookie1chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie1chip2",
+      "group": "t2",
+      "circle": "t2cookie1chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie2",
+      "group": "t2",
+      "circle": "t2cookie2P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie2chip0",
+      "group": "t2",
+      "circle": "t2cookie2chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie2chip1",
+      "group": "t2",
+      "circle": "t2cookie2chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie2chip2",
+      "group": "t2",
+      "circle": "t2cookie2chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie3",
+      "group": "t2",
+      "circle": "t2cookie3P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie3chip0",
+      "group": "t2",
+      "circle": "t2cookie3chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie3chip1",
+      "group": "t2",
+      "circle": "t2cookie3chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie3chip2",
+      "group": "t2",
+      "circle": "t2cookie3chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie4",
+      "group": "t2",
+      "circle": "t2cookie4P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie4chip0",
+      "group": "t2",
+      "circle": "t2cookie4chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie4chip1",
+      "group": "t2",
+      "circle": "t2cookie4chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie4chip2",
+      "group": "t2",
+      "circle": "t2cookie4chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie5",
+      "group": "t2",
+      "circle": "t2cookie5P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t2cookie5chip0",
+      "group": "t2",
+      "circle": "t2cookie5chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie5chip1",
+      "group": "t2",
+      "circle": "t2cookie5chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t2cookie5chip2",
+      "group": "t2",
+      "circle": "t2cookie5chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3rim",
+      "group": "t3",
+      "poly": [
+       "t3V0",
+       "t3V1",
+       "t3V2",
+       "t3V3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t3cookie1",
+      "group": "t3",
+      "circle": "t3cookie1P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie1chip0",
+      "group": "t3",
+      "circle": "t3cookie1chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie1chip1",
+      "group": "t3",
+      "circle": "t3cookie1chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie1chip2",
+      "group": "t3",
+      "circle": "t3cookie1chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie2",
+      "group": "t3",
+      "circle": "t3cookie2P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie2chip0",
+      "group": "t3",
+      "circle": "t3cookie2chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie2chip1",
+      "group": "t3",
+      "circle": "t3cookie2chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie2chip2",
+      "group": "t3",
+      "circle": "t3cookie2chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie3",
+      "group": "t3",
+      "circle": "t3cookie3P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie3chip0",
+      "group": "t3",
+      "circle": "t3cookie3chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie3chip1",
+      "group": "t3",
+      "circle": "t3cookie3chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie3chip2",
+      "group": "t3",
+      "circle": "t3cookie3chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie4",
+      "group": "t3",
+      "circle": "t3cookie4P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie4chip0",
+      "group": "t3",
+      "circle": "t3cookie4chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie4chip1",
+      "group": "t3",
+      "circle": "t3cookie4chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie4chip2",
+      "group": "t3",
+      "circle": "t3cookie4chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie5",
+      "group": "t3",
+      "circle": "t3cookie5P",
+      "r": 0.29,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "t3cookie5chip0",
+      "group": "t3",
+      "circle": "t3cookie5chipP0",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie5chip1",
+      "group": "t3",
+      "circle": "t3cookie5chipP1",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "t3cookie5chip2",
+      "group": "t3",
+      "circle": "t3cookie5chipP2",
+      "r": 0.033,
+      "fill": "walnut",
+      "ink": "wood",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "factorGroups",
+      "label": "3",
+      "at": "factorGroupsP",
+      "dir": "c",
+      "ink": "blue",
+      "size": "xl",
+      "start": true,
+      "flies": true
+     },
+     {
+      "id": "times",
+      "label": "\\times",
+      "at": "timesP",
+      "dir": "c",
+      "ink": "ink",
+      "size": "xl",
+      "start": true,
+      "flies": true
+     },
+     {
+      "id": "factorSize",
+      "label": "5",
+      "at": "factorSizeP",
+      "dir": "c",
+      "ink": "gold",
+      "size": "xl",
+      "start": true,
+      "flies": true
+     },
+     {
+      "id": "equals",
+      "label": "=",
+      "at": "equalsP",
+      "dir": "c",
+      "ink": "ink",
+      "size": "xl",
+      "start": true,
+      "flies": true
+     },
+     {
+      "id": "total",
+      "label": "15",
+      "at": "totalP",
+      "dir": "c",
+      "ink": "accent",
+      "size": "xl",
+      "start": true,
+      "flies": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Three times five is fifteen cookies altogether.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "total",
+        "t1cookie1",
+        "t1cookie2",
+        "t1cookie3",
+        "t1cookie4",
+        "t1cookie5",
+        "t2cookie1",
+        "t2cookie2",
+        "t2cookie3",
+        "t2cookie4",
+        "t2cookie5",
+        "t3cookie1",
+        "t3cookie2",
+        "t3cookie3",
+        "t3cookie4",
+        "t3cookie5"
+       ],
+       "at": "altogether"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The first number counts the groups.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "factorGroups",
+        "t1rim",
+        "t2rim",
+        "t3rim"
+       ],
+       "at": "first"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{3}\\text{ groups}",
+       "fresh": true,
+       "at": "groups"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The second counts how many are in each equal group.",
+     "pause": 1.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "factorSize",
+        "t2cookie1",
+        "t2cookie2",
+        "t2cookie3",
+        "t2cookie4",
+        "t2cookie5"
+       ],
+       "at": "second"
+      },
+      {
+       "do": "write",
+       "tex": "\\cg{5}\\text{ in each group}",
+       "fresh": true,
+       "at": "each"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
