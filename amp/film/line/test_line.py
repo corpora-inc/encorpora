@@ -303,3 +303,16 @@ def test_make_binds_a_learner_voice_only_when_the_cast_has_a_learner(tmp_path, m
         return [command[i + 1].split('=')[0] for i, part in enumerate(command) if part == '--voice']
     assert voices({'teacher': {}, 'learner': {}}) == ['teacher', 'learner']
     assert voices({'teacher': {}}) == ['teacher']
+
+
+def test_display_script_bares_marked_letters_so_emitted_payloads_compare_equal():
+    from state import display_script
+    raw = {'id': 't', 'cast': {'teacher': {}}, 'shots': [{'figure': {'points': {}}, 'beats': [
+        {'speaker': 'teacher', 'say': 'Subtract two *x* from both sides at point *A*.', 'do': [{'do': 'write', 'tex': 'x*2'}]},
+        {'speaker': 'teacher', 'say': 'Three times four.'}]}]}
+    shown = display_script(raw)
+    assert [beat['say'] for beat in shown['shots'][0]['beats']] == ['Subtract two x from both sides at point A.', 'Three times four.']
+    # only spoken text changes; actions, figures and the original are untouched
+    assert shown['shots'][0]['beats'][0]['do'] == raw['shots'][0]['beats'][0]['do']
+    assert raw['shots'][0]['beats'][0]['say'].count('*') == 4
+    assert display_script(shown) == shown

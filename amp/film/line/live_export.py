@@ -9,7 +9,7 @@ import subprocess
 import urllib.request
 
 from providers import clean_environment, now, write_json
-from state import shared_lock, read_json
+from state import display_script, shared_lock, read_json
 
 NAMES = {'XescS24CsOySAkKrLAO3': 'Madeline', 'J3Ei0Lj6fAobhIqY5ySH': 'Paul', 'SYXbTJsLE7zmSjr1DchT': 'Champ'}
 ALLOWED = {'id', 'title', 'problemType', 'skill', 'skillTitle', 'grade', 'strand', 'standards', 'script', 'timing', 'figure'}
@@ -85,7 +85,7 @@ def export_worker(config, row, workspace):
     if result.returncode:
         raise RuntimeError(result.stderr[-6000:] or result.stdout[-6000:])
     emitted = read_json(stage/(row['id']+'.json'))
-    if emitted['script'] != read_json(Path(workspace)/'screenplay.json'):
+    if emitted['script'] != display_script(read_json(Path(workspace)/'screenplay.json')):
         raise RuntimeError('Export does not contain the checked screenplay')
     assigned = {'teacher': row['teacher'], 'learner': 'SYXbTJsLE7zmSjr1DchT'}
     expected = {role: assigned[role] for role in emitted['script'].get('cast', {})}

@@ -15,7 +15,7 @@ import threading
 import time
 
 from providers import clean_environment, now, redact, write_json
-from state import read_json
+from state import display_script, read_json
 
 TEACHERS = {'XescS24CsOySAkKrLAO3', 'J3Ei0Lj6fAobhIqY5ySH'}
 CHAMP = 'SYXbTJsLE7zmSjr1DchT'
@@ -311,7 +311,7 @@ def check_worker(config, row, workspace):
         from prod_runtime import capture_worker
         source = Path(workspace)/'check-output'/row['id']/'line-payload.json'
         payload = read_json(source)
-        if not payload or payload.get('timing_source') != 'estimated' or payload.get('script') != read_json(Path(workspace)/'screenplay.json'):
+        if not payload or payload.get('timing_source') != 'estimated' or payload.get('script') != display_script(read_json(Path(workspace)/'screenplay.json')):
             raise RuntimeError('No current estimated payload for installed-player authoring boards')
         identifier = row['id']+'-author'
         previous = Path(config['root'])/'boards'/identifier

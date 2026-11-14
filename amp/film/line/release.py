@@ -2,7 +2,7 @@
 from pathlib import Path
 
 from providers import now, write_json
-from state import read_json
+from state import display_script, read_json
 from pages import board, line_page, queue_page, queue_location
 
 
@@ -31,7 +31,7 @@ def release_film(config, identifier, level):
             raise ValueError('Export this film before release')
     payload = read_json(data/(identifier+'.json'))
     # Playback binds voices; all other screenplay fields must match the checked cut.
-    current = read_json(workspace/'screenplay.json')
+    current = display_script(read_json(workspace/'screenplay.json'))
     if {**payload['script'], 'cast': current['cast']} != current:
         raise ValueError('Export the current screenplay before release')
     row = {'id': identifier, 'title': payload['title'], 'level': level.strip(),

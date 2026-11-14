@@ -8,6 +8,8 @@ figure and beats. Each beat has speaker, say, optional pause, and a do action ar
 Use cast {"teacher": {}, "learner": {}} and explicitly name a speaker on each beat.
 Both roles speak. Production binds the voices; do not supply voice IDs or names.
 Write spoken math as words in say; use TeX in tex fields and $math$ in prose fields.
+A letter that is spoken by its name is marked in say: "Find *x*", "point *A*". The
+marks tell the voice to say the letter; they never show on screen.
 
 A figure can be {"example": true}, using the app's written-lesson example for the
 root seed (default "film"), or a custom geometry object with points and parts.
