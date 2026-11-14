@@ -3,11 +3,13 @@ import {
   familyPlacesSchema,
   familyProjectionSchema,
   familyChildProgressSchema,
+  familyChildTimeSchema,
   familyTeachingSchema,
 } from "./projection-contracts.js";
 import {
   familyProjection,
   familyChildProgress,
+  familyChildTime,
   familyTeaching,
   listFamilies,
 } from "./projection.js";
@@ -28,6 +30,8 @@ import {
   startPlace,
 } from "../account/starter.js";
 import { isSchoolAccount, studentBearer } from "../schools/principal.js";
+import { timeQuerySchema } from "../schools/teacher-contracts.js";
+import { timeCsv, fileSlug } from "../schools/exports.js";
 import { HEARTBEAT_BODY_LIMIT } from "../schools/evidence.js";
 import {
   createProfile,
@@ -185,6 +189,43 @@ export async function registerFamilyRoutes(
         );
       },
     );
+    for (const csv of [false, true]) {
+      scope.get(
+        `/api/v1/families/:family/children/:learner/${csv ? "time.csv" : "time"}`,
+        async (request, reply) => {
+          const account = await options.authenticate(request);
+          const { family, learner } = familyParams
+            .extend({ learner: z.string().min(1).max(200) })
+            .parse(request.params);
+          const { period, from } = timeQuerySchema.parse(request.query);
+          const time = await familyChildTime(
+            options.pool,
+            account,
+            family,
+            learner,
+            period,
+            from,
+          );
+          if (!csv) return familyChildTimeSchema.parse(time);
+          return reply
+            .type("text/csv; charset=utf-8")
+            .header(
+              "Content-Disposition",
+              `attachment; filename="${fileSlug(time.name, "time", time.range.from, "to", time.range.to)}.csv"`,
+            )
+            .send(
+              timeCsv(
+                time.days.map((day) => ({
+                  identifier: null,
+                  name: time.name,
+                  ...day,
+                })),
+                time.group,
+              ),
+            );
+        },
+      );
+    }
     scope.get(
       "/api/v1/families/:family/children/:learner/progress.pdf",
       async (request, reply) => {

@@ -236,11 +236,12 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     action: "students.read",
     target: classParam,
     handler: async ({ request, target, pool, services }) => {
-      const { period } = timeQuerySchema.parse(request.query);
+      const { period, from } = timeQuerySchema.parse(request.query);
       return readTime(
         pool,
         await classContext(pool, target.classId, services.now?.()),
         period,
+        from,
       );
     },
   });
@@ -250,13 +251,14 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     action: "students.read",
     target: classParam,
     handler: async ({ request, target, pool, services }) => {
-      const { period } = timeQuerySchema.parse(request.query);
+      const { period, from } = timeQuerySchema.parse(request.query);
       const { student } = request.params as { student: string };
       const time = await readStudentTime(
         pool,
         await classContext(pool, target.classId, services.now?.()),
         period,
         student,
+        from,
       );
       if (!time) throw new SchoolError(404, "not_found");
       return time;
@@ -360,13 +362,13 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     action: "students.read",
     target: classParam,
     handler: async ({ request, reply, target, pool, services }) => {
-      const { period } = timeQuerySchema.parse(request.query);
+      const { period, from } = timeQuerySchema.parse(request.query);
       const context = await classContext(
         pool,
         target.classId,
         services.now?.(),
       );
-      const range = await periodRange(pool, context, period);
+      const range = await periodRange(pool, context, period, from);
       const students = await termRoster(pool, context.id, range);
       const days = await perDay(
         pool,
