@@ -158,10 +158,10 @@
 /* Request seats: one height for its form, its link and its wait (the
    editing form's, the tallest). */
 .seatsBody {
-  min-height: 345px;
+  min-height: 375px;
 }
 @media (min-width: 641px) {
   .seatsBody {
-    min-height: 321px;
+    min-height: 351px;
   }
 }

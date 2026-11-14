@@ -109,10 +109,19 @@ export function AdoptionMatching({
                       setActive({ kind, id: record.id });
                     }}
                   >
-                    {indexes[kind].get(records.values[record.id])?.label ??
-                      (kind === "people"
-                        ? "Choose the same person"
-                        : "Choose the same class")}
+                    {/* Matched: only what the row doesn't already say. */}
+                    {(() => {
+                      const chosen = indexes[kind].get(
+                        records.values[record.id],
+                      );
+                      if (!chosen)
+                        return kind === "people"
+                          ? "Choose the same person"
+                          : "Choose the same class";
+                      return chosen.label === record.label
+                        ? "Matched · Change"
+                        : chosen.label;
+                    })()}
                   </Button>
                 </li>
               ))}

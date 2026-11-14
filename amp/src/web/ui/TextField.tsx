@@ -32,11 +32,14 @@ export function TextArea({
   label,
   maxLength,
   value,
+  hint,
   ...props
 }: TextareaHTMLAttributes<HTMLTextAreaElement> & {
   label: string;
   maxLength: number;
   value: string;
+  /** One quiet line under the field: who reads it, what to leave out. */
+  hint?: string;
 }) {
   const id = useId();
   return (
@@ -55,7 +58,13 @@ export function TextArea({
         value={value}
         maxLength={maxLength}
         className={`${styles.input} ${styles.textarea}`}
+        aria-describedby={hint ? `${id}-hint` : undefined}
       />
+      {hint && (
+        <span id={`${id}-hint`} className={styles.fieldHint}>
+          {hint}
+        </span>
+      )}
     </label>
   );
 }

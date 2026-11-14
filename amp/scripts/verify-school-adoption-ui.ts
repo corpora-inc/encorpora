@@ -292,8 +292,12 @@ try {
   );
   await leaderPage.reload();
   await leaderPage.getByText("Match to Clever (optional)").click();
-  await choose("Clever connection", "River District");
-  await choose("School in Clever", "Birch School");
+  await choose("Clever district", "River District");
+  // The district's one Clever school is named, not picked.
+  await leaderPage
+    .getByText("Birch School", { exact: true })
+    .last()
+    .waitFor();
   await choose("Clever match for Alex Lee · Grade 3 · Oak · Pat Rivera");
   await choose("Clever match for Alex Lee · Grade 4 · Elm · Jo Kim");
   await choose("Clever match for Math · Grade 3 · Pat Rivera");
@@ -354,8 +358,12 @@ try {
   );
   await leaderPage.reload();
   await leaderPage.getByText("Match to Clever (optional)").click();
-  await choose("Clever connection", "River District");
-  await choose("School in Clever", "Birch School");
+  await choose("Clever district", "River District");
+  // The district's one Clever school is named, not picked.
+  await leaderPage
+    .getByText("Birch School", { exact: true })
+    .last()
+    .waitFor();
   await leaderPage
     .locator(`[data-match-source="${largeSource[500].id}"]`)
     .waitFor();

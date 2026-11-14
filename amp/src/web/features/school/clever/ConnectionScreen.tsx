@@ -251,7 +251,10 @@ export function ConnectionScreen() {
                 >
                   Link Clever
                 </Button>
-                <a href={startUrl} className={buttonClass("quiet")}>
+                <a
+                  href={startUrl}
+                  className={buttonClass("quiet", "", "start")}
+                >
                   Another Clever account
                 </a>
               </>

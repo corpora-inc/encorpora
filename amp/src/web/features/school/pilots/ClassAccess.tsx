@@ -467,6 +467,7 @@ function RequestSeatsSheet({
               />
               <TextArea
                 label="Note for the buyer (optional)"
+              hint="The buyer sees this. Leave out students’ names."
                 value={note}
                 onChange={(event) => setNote(event.target.value)}
                 maxLength={1000}

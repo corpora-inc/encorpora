@@ -557,6 +557,7 @@ function People({
                 ) : (
                   <YearField
                     label={`Birth year, ${row.label}`}
+                    placeholder="Choose"
                     value={row.year}
                     disabled={disabled}
                     invalid={needsYear}

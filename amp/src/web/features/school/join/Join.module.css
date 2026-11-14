@@ -475,3 +475,18 @@
   color: inherit;
   font-weight: 600;
 }
+/* A class's name in a sentence stays on one line. */
+.nowrap {
+  white-space: nowrap;
+}
+/* The practice gate where practice would be, for a student already signed
+   in: the same centred message as /join, in the screen's middle. */
+/* Its height on an inner block: the app shell resets its main's. */
+.gateMain {
+  padding: var(--space-6) var(--space-4);
+}
+.gateFill {
+  display: grid;
+  align-content: center;
+  min-height: calc(100dvh - 2 * var(--target-size) - 2 * var(--space-6));
+}

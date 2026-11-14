@@ -19,7 +19,13 @@ export function forgedPost(
   origin: string | undefined,
   strict = false,
 ): boolean {
-  if (request.method !== "POST" || request.headers.authorization) return false;
+  // Only a bearer token is the request's own credential: a browser sends
+  // cached HTTP Basic credentials by itself, alongside the cookies.
+  if (
+    request.method !== "POST" ||
+    /^bearer\s/i.test(request.headers.authorization ?? "")
+  )
+    return false;
   if (request.headers["sec-fetch-site"] === "cross-site") return true;
   const from = request.headers.origin;
   if (!origin) return strict && !!request.headers.cookie;

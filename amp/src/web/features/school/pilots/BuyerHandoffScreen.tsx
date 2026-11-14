@@ -87,21 +87,13 @@ export function BuyerHandoffScreen() {
         <Lead>
           {purchased
             ? `Your seats are confirmed.${covered ? " Students have access." : ""}`
-            : `${data.classCount === 1 ? "A class is" : `${data.classCount} classes are`} ready for AMP: counting to precalculus, every student at their own level.`}
+            : `${data.classCount === 1 ? "A class is" : `${data.classCount} classes are`} ready for AMP: counting to precalculus, every student at their own level.${practicing ? ` Practice runs through ${practiceDate(practicing)}.` : ""}`}
         </Lead>
         {/* Each number once: the seats asked for, the classes, and who is
             practicing now. */}
         <StatRow label="This request">
           <StatTile label="Seats" value={data.seats.toLocaleString()} />
-          <StatTile
-            label="Classes"
-            value={data.classCount.toLocaleString()}
-            detail={
-              practicing
-                ? `Practice through ${practiceDate(practicing)}`
-                : undefined
-            }
-          />
+          <StatTile label="Classes" value={data.classCount.toLocaleString()} />
           {data.participating > 0 && (
             <StatTile
               label="Practicing"

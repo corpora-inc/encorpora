@@ -1473,6 +1473,13 @@ export function ImportScreen() {
   // A roster is children's names, held in memory only: a refresh past the
   // first step comes back here, calmly, with the class kept.
   const [lost] = useState(() => !draft && asked !== "source");
+  const [lostKind] = useState(() => {
+    try {
+      return sessionStorage.getItem("amp.import.kind");
+    } catch {
+      return null;
+    }
+  });
   useEffect(() => {
     if (step !== asked) goTo(step, true);
   }, [step, asked]);
@@ -1551,6 +1558,16 @@ export function ImportScreen() {
   /** A teacher's paste or file whose columns are plain goes straight to the
    * students it adds; the columns stay one Back away. */
   const loaded = async (next: Draft) => {
+    // Only how the roster came (pasted or a file), never what it holds, so a
+    // refresh can say which to do again.
+    try {
+      sessionStorage.setItem(
+        "amp.import.kind",
+        next.fileName === "Pasted rows" ? "paste" : "file",
+      );
+    } catch (failure) {
+      console.warn("How the roster came isn't kept", failure);
+    }
     setDraft({
       ...next,
       ...(classId ? { classId, fallbackClass: defaultClass } : {}),
@@ -1610,7 +1627,13 @@ export function ImportScreen() {
           classScope={!!classId}
           checking={checking}
           onLoaded={(next) => void loaded(next)}
-          notice={lost ? "Choose the file again to review it." : ""}
+          notice={
+            lost
+              ? lostKind === "paste"
+                ? "Paste the names again to review them."
+                : "Choose the file again to review it."
+              : ""
+          }
         />
       )}
       {step === "map" && draft && (

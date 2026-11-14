@@ -75,9 +75,27 @@
 .tabs .moreActive {
   color: var(--color-on-surface);
 }
-.tab[aria-current="page"]::before,
-.tabs .moreActive::before {
+.tab[aria-current="page"]::before {
   background: var(--color-primary);
+}
+/* More holding the open tab: the line sits under the name it shows, not
+   under the room it keeps for longer ones. */
+.moreLabel > span {
+  position: relative;
+}
+.tabs .moreActive .moreLabel > [data-shown]::after,
+.tabs[data-more-narrow] .moreActive .moreLabel > [data-more]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc((1em - 44px) / 2);
+  height: 2px;
+  border-radius: 1px;
+  background: var(--color-primary);
+}
+.tabs[data-more-narrow] .moreActive .moreLabel > [data-shown]::after {
+  content: none;
 }
 /* The row under the logo (a phone): its first label on the content's
    gutter, its last on the far gutter, the tabs evenly between. */
@@ -90,6 +108,8 @@
   }
   .tabs[data-phone] {
     justify-content: space-between;
+    overflow: hidden;
+    mask-image: none;
   }
 }
 /* A row that would otherwise scroll keeps every label in view: Tabs.tsx
@@ -156,6 +176,14 @@
   visibility: hidden;
 }
 .moreLabel > [data-shown] {
+  visibility: visible;
+}
+/* Too narrow for any name but its own: More says only "More" (marked as the
+   open tab when it holds it), and keeps no room for the others. */
+.tabs[data-more-narrow] .moreLabel > span:not([data-more]) {
+  display: none;
+}
+.tabs[data-more-narrow] .moreLabel > [data-more] {
   visibility: visible;
 }
 .tabs .more:focus-visible {

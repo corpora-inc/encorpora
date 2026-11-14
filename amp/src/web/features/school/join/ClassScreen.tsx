@@ -11,7 +11,7 @@ import { Avatar } from "../../../ui/Avatar";
 import { buttonClass } from "../../../ui/Button";
 import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { ProviderMark } from "../../auth/ProviderButtons";
-import { studentWaitingWords } from "../../practice/StudentWaiting";
+import { PracticeGate } from "../../practice/StudentWaiting";
 import { joinRosterOptions } from "./api";
 import { JoinFrame } from "./JoinFrame";
 import styles from "./Join.module.css";
@@ -88,18 +88,10 @@ export function ClassScreen() {
   if (roster.data.practice)
     return (
       <JoinFrame lead={<BackLink to="/join" label="Back to class code" />}>
-        <div
-          className={styles.column}
-          data-centered
-          data-join-practice={roster.data.practice}
-        >
-          <h1 className={styles.title}>
-            {
-              studentWaitingWords(roster.data.practice, roster.data.class.name)
-                .title
-            }
-          </h1>
-        </div>
+        <PracticeGate
+          gate={roster.data.practice}
+          className={roster.data.class.name}
+        />
       </JoinFrame>
     );
   return (

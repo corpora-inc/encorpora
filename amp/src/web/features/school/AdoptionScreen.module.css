@@ -84,3 +84,9 @@ button.matchButton {
   justify-content: flex-end;
   gap: var(--space-2);
 }
+
+/* The one choice there is, said rather than picked. */
+.only {
+  margin: 0;
+  font-weight: 600;
+}

@@ -17,6 +17,7 @@ import {
   readTable,
 } from "../src/schools/sources/csv.js";
 import type { RosterRow } from "../src/schools/sources/rows.js";
+import { STUDENT_LABEL } from "../src/schools/sign-in.js";
 
 const csv = (text: string) => {
   const table = readTable(text);
@@ -382,6 +383,17 @@ test(
           (await apply(org, twins, undefined, twinsScope)).map((r) => r.status),
           ["unchanged", "unchanged"],
         );
+        // On the class's lists (the board, /join, the roster) the two are
+        // told apart: the whole name, then the order they joined.
+        const listed = (
+          await db.query(
+            `SELECT ${STUDENT_LABEL} AS name FROM amp_enrollments e
+             JOIN amp_people p ON p.id=e.person_id AND p.deleted_at IS NULL
+             WHERE e.class_id=$1 AND e.role='student' ORDER BY p.created_at,p.id`,
+            [twinsScope.classId],
+          )
+        ).rows.map((row) => row.name);
+        assert.deepEqual(listed, ["Cal Rivers", "Cal Rivers (2)"]);
         await assert.rejects(
           apply(
             org,

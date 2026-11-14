@@ -397,17 +397,23 @@ function SmallClassMap({
                   : null
               }
             />
-            {book.data?.term && (
-              <GradeLine
-                session={session}
-                place={classPlace}
-                term={book.data.term}
-                editable={book.data.canEdit && book.data.term.state === "open"}
-                row={grades.get(student.id)}
-                student={student}
-                onMessage={setMessage}
-              />
-            )}
+            {/* A term's grade line only once there's work to grade (or a
+                final set): a family's map carries no gradebook leftovers. */}
+            {book.data?.term &&
+              (grades.get(student.id)?.suggestion.status === "ready" ||
+                grades.get(student.id)?.final != null) && (
+                <GradeLine
+                  session={session}
+                  place={classPlace}
+                  term={book.data.term}
+                  editable={
+                    book.data.canEdit && book.data.term.state === "open"
+                  }
+                  row={grades.get(student.id)}
+                  student={student}
+                  onMessage={setMessage}
+                />
+              )}
           </section>
         );
       })}

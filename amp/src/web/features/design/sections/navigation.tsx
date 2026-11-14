@@ -1,7 +1,8 @@
-import type { MouseEvent } from "react";
+import type { MouseEvent, ReactNode } from "react";
 import { AppLogo } from "../../../ui/AppLogo";
 import { QrCode } from "../../../ui/QrCode";
 import { Tabs, type TabItem } from "../../../ui/Tabs";
+import { classTabs } from "../../navigation/shell-frame";
 import { WaveMark } from "../../../ui/WaveMark";
 import { Section, Specimen } from "../Gallery";
 import bar from "../../../ui/AppBar.module.css";
@@ -75,3 +76,68 @@ export function NavigationSections() {
     </Section>
   );
 }
+
+/** A group's tabs in the app bar's own row, alone in the viewport, for the
+ * phone-width check (scripts/verify-tab-row-ui.ts): the longest label sets
+ * each kind of place has, with the open tab shown or held under More. */
+const placeTabs = (labels: readonly (readonly [string, string])[]): TabItem[] =>
+  labels.map(([id, label]) => ({ id, label, path: `design/${id}` }));
+const tabRows = {
+  teacher: { label: "Class", items: classTabs("org", "class") },
+  family: { label: "Class", items: classTabs("org", "class", false, true, 3) },
+  tutor: { label: "Class", items: classTabs("org", "class", false, true, 12) },
+  admin: {
+    label: "School",
+    items: placeTabs([
+      ["overview", "Overview"],
+      ["classes", "Classes"],
+      ["staff", "Staff"],
+      ["activity", "Activity"],
+      ["settings", "Settings"],
+    ]),
+  },
+  district: {
+    label: "School",
+    items: placeTabs([
+      ["overview", "Overview"],
+      ["schools", "Schools"],
+      ["classes", "Classes"],
+      ["staff", "Staff"],
+      ["activity", "Activity"],
+      ["settings", "Settings"],
+    ]),
+  },
+} as const;
+function TabRow({ kind, open }: { kind: keyof typeof tabRows; open: string }) {
+  const row = tabRows[kind];
+  return (
+    <div onClickCapture={stay}>
+      <header
+        className={bar.bar}
+        data-tabs=""
+        data-tab-row={kind}
+        data-app-bar="class"
+      >
+        <div className={bar.logoCell}>
+          <AppLogo aria-label="Open AMP menu" />
+        </div>
+        <div className={bar.tabsCell}>
+          <Tabs label={row.label} items={row.items} active={open} />
+        </div>
+        <div className={bar.tools} />
+        <div className={bar.action} />
+      </header>
+    </div>
+  );
+}
+export const tabRowSpecimens: Record<string, () => ReactNode> =
+  Object.fromEntries(
+    (Object.keys(tabRows) as (keyof typeof tabRows)[]).flatMap((kind) =>
+      [tabRows[kind].items[0]!.id, tabRows[kind].items.at(-1)!.id].map(
+        (open) => [
+          `tab-row-${kind}-${open}`,
+          () => <TabRow kind={kind} open={open} />,
+        ],
+      ),
+    ),
+  );

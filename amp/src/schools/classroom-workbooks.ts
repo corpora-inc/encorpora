@@ -27,7 +27,7 @@ import type {
 } from "./classroom-contracts.js";
 import { SchoolError } from "./contracts.js";
 import { activeToday } from "./principal.js";
-import { STUDENT_NAME } from "./sign-in.js";
+import { STUDENT_LABEL, STUDENT_NAME } from "./sign-in.js";
 import { freeAllowance } from "../learning/free-allowance.js";
 import { learningConsentActive } from "../server/account-access.js";
 
@@ -67,7 +67,7 @@ async function stackRoster(
 ): Promise<StackStudent[]> {
   return (
     await pool.query(
-      `SELECT p.id,p.learner_id,l.account_id,l.free_online_used,l.free_workbooks_used,${STUDENT_NAME} AS name,
+      `SELECT p.id,p.learner_id,l.account_id,l.free_online_used,l.free_workbooks_used,${STUDENT_LABEL} AS name,
          EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=p.learner_id AND g.status='active'
            AND g.starts_at<=now() AND g.ends_at>now() AND amp_school_grant_valid(g.id)) AS seated
        FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id JOIN amp_orgs o ON o.id=c.org_id

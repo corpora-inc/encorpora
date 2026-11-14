@@ -66,6 +66,7 @@ export function Tabs({
       strip.removeAttribute("data-fit");
       strip.removeAttribute("data-overflow");
       strip.removeAttribute("data-phone");
+      strip.removeAttribute("data-more-narrow");
       for (const tab of tabs) tab.removeAttribute("data-hidden");
       for (const step of FIT_STEPS) {
         if (!over()) break;
@@ -76,20 +77,55 @@ export function Tabs({
       // the rest, so a family's and a teacher's rows read alike. The open
       // tab may be under More; More then wears its name.
       if (window.matchMedia(PHONE).matches && tabs.length > PHONE_TABS) {
-        const shown = new Set(phoneTabs(items).map((item) => item.id));
+        // Never a strip that scrolls or fades on a phone: whole tabs that
+        // fit, and More. In order, the first that fits: every tab when More
+        // would hold only one; the four phone tabs and a More wide enough for
+        // any name it takes; the same with More saying only "More" (marked
+        // when it holds the open tab); then three and More. Each tries the
+        // type steps before giving up.
         strip.removeAttribute("data-fit");
-        strip.setAttribute("data-overflow", "");
         strip.setAttribute("data-phone", "");
-        hidden = tabs
-          .filter((tab) => !shown.has(tab.dataset.tab!))
-          .map((tab) => {
-            tab.setAttribute("data-hidden", "");
-            return tab.dataset.tab!;
-          });
-        for (const step of FIT_STEPS) {
-          if (!over()) break;
-          strip.setAttribute("data-fit", step);
-        }
+        const phone = phoneTabs(items).map((item) => item.id);
+        const current = items.find((item) => item.id === active)?.id;
+        const show = (
+          ids: readonly string[],
+          more: "wide" | "narrow" | null,
+        ) => {
+          strip.removeAttribute("data-fit");
+          strip.toggleAttribute("data-overflow", more !== null);
+          strip.toggleAttribute("data-more-narrow", more === "narrow");
+          const keep = new Set(ids);
+          hidden = [];
+          for (const tab of tabs) {
+            const out = !keep.has(tab.dataset.tab!);
+            tab.toggleAttribute("data-hidden", out);
+            if (out) hidden.push(tab.dataset.tab!);
+          }
+          for (const step of [null, ...FIT_STEPS]) {
+            if (step) strip.setAttribute("data-fit", step);
+            if (!over()) return true;
+          }
+          return false;
+        };
+        // Three and More keeps the open tab among the three when it can.
+        const three =
+          current && phone.slice(0, 3).includes(current)
+            ? phone.slice(0, 3)
+            : current && phone.includes(current)
+              ? [...phone.slice(0, 2), current]
+              : phone.slice(0, 3);
+        const fitted =
+          (tabs.length === PHONE_TABS + 1 &&
+            show(
+              tabs.map((tab) => tab.dataset.tab!),
+              null,
+            )) ||
+          show(phone, "wide") ||
+          show(phone, "narrow") ||
+          show(three, "narrow");
+        if (!fitted) console.warn("The tab row is wider than a phone", label);
+        strip.scrollLeft = 0;
+      } else if (over()) {
       } else if (over()) {
         // Still too wide at the tightest padding: whole tabs, then More. The
         // room is the strip's cell, which never changes with what it shows.
@@ -132,7 +168,8 @@ export function Tabs({
           });
       }
       setRest((was) => (was.join() === hidden.join() ? was : hidden));
-      const scrolls = over();
+      // A phone's row never scrolls or fades (it fits by construction).
+      const scrolls = !strip.hasAttribute("data-phone") && over();
       if (scrolls !== strip.hasAttribute("data-more"))
         strip.toggleAttribute("data-more", scrolls);
       // A row that fits starts at its start; one that scrolls brings the
@@ -214,6 +251,7 @@ export function Tabs({
               ].map((name) => (
                 <span
                   key={name}
+                  data-more={name === "More" || undefined}
                   data-shown={
                     name === (hiddenActive?.label ?? "More") || undefined
                   }

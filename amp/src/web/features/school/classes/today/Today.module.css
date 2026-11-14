@@ -310,6 +310,17 @@
   row-gap: var(--space-3);
   padding-block: var(--space-5);
 }
+/* A state (practice has ended), not a task: no box column, its words on
+   the page's own edge like the title above. */
+.todo[data-status] {
+  grid-template-columns: minmax(0, 1fr);
+}
+.todo[data-status] .todoCheck {
+  display: none;
+}
+.todo[data-status] .todoActions {
+  grid-column: 1;
+}
 .todo + .todo {
   box-shadow: inset 0 1px 0 var(--color-border);
 }

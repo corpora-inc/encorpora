@@ -60,3 +60,27 @@ test("strict refuses a cookie sign-in when AMP's origin isn't known", () => {
   assert.equal(forgedPost(post({ cookie: "a=b" }), "", true), true);
   assert.equal(forgedPost(post({ cookie: "a=b" }), ""), false);
 });
+
+test("only a bearer token exempts a request: Basic rides along like a cookie", () => {
+  assert.equal(
+    forgedPost(
+      post({
+        authorization: "Basic Zml4dHVyZTpmaXh0dXJl",
+        cookie: "a=b",
+        origin: "https://evil.example.test",
+      }),
+      AMP,
+    ),
+    true,
+  );
+  assert.equal(
+    forgedPost(
+      post({
+        authorization: "bearer st_fixture",
+        origin: "https://phone.example.test",
+      }),
+      AMP,
+    ),
+    false,
+  );
+});

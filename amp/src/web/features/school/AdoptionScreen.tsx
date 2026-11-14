@@ -33,6 +33,7 @@ import { Actions, Lead, PlainPage } from "./PlainPage";
 import { adoptionLabels } from "./adoption-labels";
 import { AdoptionMatching } from "./AdoptionMatching";
 import styles from "./AdoptionScreen.module.css";
+import plainStyles from "./PlainPage.module.css";
 
 const day = (value: string) =>
   new Intl.DateTimeFormat(undefined, { month: "short", day: "numeric" }).format(
@@ -332,6 +333,12 @@ function ReviewDecision({
       cleverSchoolId || undefined,
     ),
   );
+  // A district with one school in Clever: that school, without a pick.
+  const onlySchool =
+    preview.data?.schools.length === 1 ? preview.data.schools[0]!.id : "";
+  useEffect(() => {
+    if (onlySchool && !cleverSchoolId) setCleverSchoolId(onlySchool);
+  }, [onlySchool, cleverSchoolId]);
   const blocked =
     data.conflicts.some((c) => c.code !== "account_already_in_district") ||
     data.staffMatches.some((match) => !match.allowed);
@@ -444,23 +451,28 @@ function ReviewDecision({
           {data.cleverConnections.length > 0 && (
             <Disclosure summary="Match to Clever (optional)">
               <div className={styles.section}>
-                <Select
-                  aria-label="Clever connection"
-                  value={connectionId}
-                  onValueChange={(value) => {
-                    setConnectionId(value);
-                    setCleverSchoolId("");
-                    setPeople({});
-                    setClasses({});
-                  }}
-                >
-                  <option value="">Keep the existing roster</option>
-                  {data.cleverConnections.map((c) => (
-                    <option key={c.id} value={c.id}>
-                      {c.districtName}
-                    </option>
-                  ))}
-                </Select>
+                <div className={plainStyles.field}>
+                  <span className={plainStyles.label} aria-hidden="true">
+                    Clever district
+                  </span>
+                  <Select
+                    aria-label="Clever district"
+                    value={connectionId}
+                    onValueChange={(value) => {
+                      setConnectionId(value);
+                      setCleverSchoolId("");
+                      setPeople({});
+                      setClasses({});
+                    }}
+                  >
+                    <option value="">Keep the existing roster</option>
+                    {data.cleverConnections.map((c) => (
+                      <option key={c.id} value={c.id}>
+                        {c.districtName}
+                      </option>
+                    ))}
+                  </Select>
+                </div>
                 {connectionId &&
                   (preview.isPending ? (
                     <div className={styles.wait} aria-busy="true" />
@@ -469,22 +481,38 @@ function ReviewDecision({
                   ) : (
                     preview.data && (
                       <>
-                        <Select
-                          aria-label="School in Clever"
-                          value={cleverSchoolId}
-                          onValueChange={(value) => {
-                            setCleverSchoolId(value);
-                            setPeople({});
-                            setClasses({});
-                          }}
-                        >
-                          <option value="">Choose a school</option>
-                          {preview.data.schools.map((s) => (
-                            <option key={s.id} value={s.id}>
-                              {s.name}
-                            </option>
-                          ))}
-                        </Select>
+                        {/* One school in the district: it is the one, named
+                            rather than picked. */}
+                        <div className={plainStyles.field}>
+                          <span
+                            className={plainStyles.label}
+                            aria-hidden="true"
+                          >
+                            School in Clever
+                          </span>
+                          {preview.data.schools.length === 1 ? (
+                            <p className={styles.only}>
+                              {preview.data.schools[0]!.name}
+                            </p>
+                          ) : (
+                            <Select
+                              aria-label="School in Clever"
+                              value={cleverSchoolId}
+                              onValueChange={(value) => {
+                                setCleverSchoolId(value);
+                                setPeople({});
+                                setClasses({});
+                              }}
+                            >
+                              <option value="">Choose a school</option>
+                              {preview.data.schools.map((s) => (
+                                <option key={s.id} value={s.id}>
+                                  {s.name}
+                                </option>
+                              ))}
+                            </Select>
+                          )}
+                        </div>
                         {cleverSchoolId && (
                           <AdoptionMatching
                             people={{

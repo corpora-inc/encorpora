@@ -44,6 +44,7 @@ function FeedItem({
     <li
       className={styles.todo}
       data-done={done || undefined}
+      data-status={entry.mark === "status" || undefined}
       data-feed={entry.id}
     >
       {/* One treatment for every item: a box to tick off. An offer that can

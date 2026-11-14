@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { ScreenTitle } from "../../../ui/ScreenTitle";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
@@ -135,6 +136,13 @@ export function TodayScreen() {
   const demo = useDemoOrg(place.org);
   const access = useClassAccess(place);
   const closed = practiceClosed(access.view);
+  // Practice started from this page: the code waits for the next visit
+  // rather than pushing the feed down under the teacher's finger (rule 1).
+  // The new first item, Start class, opens the board with the code.
+  const closedOnArrival = useRef<boolean | null>(null);
+  if (closedOnArrival.current === null && !access.pending)
+    closedOnArrival.current = closed;
+  const codeShown = !closed && !closedOnArrival.current;
   const loading =
     access.pending ||
     org.isPending ||
@@ -169,7 +177,7 @@ export function TodayScreen() {
             {/* The code waits for a roster, and for practice. A family's
                 children mostly practice on the parent's device: their code
                 is an option under the children, not the page's lead. */}
-            {code && !closed && !family && data.students.length > 0 && (
+            {code && codeShown && !family && data.students.length > 0 && (
               <SignInCode
                 code={code}
                 place={place}

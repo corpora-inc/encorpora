@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { practiceFixtures, type PracticeFixtureId } from "./fixtures";
 import { ControlSections } from "./sections/controls";
 import { LevelSections } from "./sections/levels";
-import { NavigationSections } from "./sections/navigation";
+import { NavigationSections, tabRowSpecimens } from "./sections/navigation";
 import { OverlaySections, overlaySpecimens } from "./sections/overlays";
 import { PatternSections } from "./sections/patterns";
 import { PracticeSection, PracticeSpecimen } from "./sections/practice";
@@ -111,4 +111,5 @@ export const specimens: Record<string, () => ReactNode> = {
   ),
   ...stateSpecimens,
   ...overlaySpecimens,
+  ...tabRowSpecimens,
 };

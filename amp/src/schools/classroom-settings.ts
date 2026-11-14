@@ -27,7 +27,7 @@ import {
   type ScopeRef,
   type SettingsScope,
 } from "./settings.js";
-import { STUDENT_NAME } from "./sign-in.js";
+import { STUDENT_LABEL, STUDENT_NAME } from "./sign-in.js";
 import { clearStandingsCache } from "./standings.js";
 import { classTeachers, TEACHERS_HIDDEN_KEY } from "./teacher-line.js";
 
@@ -169,7 +169,7 @@ async function classRows(
 ) {
   const left = leftOffIn(here);
   const rows = await db.query(
-    `SELECT p.id,${STUDENT_NAME} AS name FROM amp_enrollments e
+    `SELECT p.id,${STUDENT_LABEL} AS name FROM amp_enrollments e
      JOIN amp_classes c ON c.id=e.class_id JOIN amp_orgs o ON o.id=c.org_id
      JOIN amp_people p ON p.id=e.person_id AND p.deleted_at IS NULL
      WHERE e.class_id=$1 AND e.role='student' AND ${activeToday("e", "o")}
