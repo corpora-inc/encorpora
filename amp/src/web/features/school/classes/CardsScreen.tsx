@@ -14,6 +14,11 @@ import { WaveMark } from "../../../ui/NavigationSheet";
 import "../SchoolFrame.module.css";
 import { rosterOptions, useIssueCards, useStaffSession } from "./api";
 import styles from "./Cards.module.css";
+import {
+  ClosedSignIn,
+  practiceClosed,
+  useClassAccess,
+} from "../pilots/ClassAccess";
 
 const PER_PAGE = 8;
 function pages<T>(items: readonly T[]) {
@@ -69,6 +74,7 @@ export function CardsScreen() {
   const place = { org: params.org, class: params.class };
   const session = useStaffSession();
   const roster = useQuery(rosterOptions(session, place));
+  const access = useClassAccess(place);
   const issue = useIssueCards(session, place);
   const [issued, setIssued] = useState<IssuedCards | null>(null);
   // Back to where it was opened: the roster, Today, sign-in help.
@@ -98,7 +104,14 @@ export function CardsScreen() {
         </EmptyState>
       </main>
     );
-  if (!roster.data) return <LoadingScreen />;
+  if (!roster.data || access.pending) return <LoadingScreen />;
+  // A card leads nowhere until practice runs: never print one before.
+  if (practiceClosed(access.view))
+    return (
+      <main className={styles.center} data-dense>
+        <ClosedSignIn place={place} />
+      </main>
+    );
   const { class: info, students, canManage } = roster.data;
   const chosen = student ? students.filter((s) => s.id === student) : students;
   if (!canManage || !chosen.length)

@@ -13,6 +13,11 @@ import { CodeTiles } from "../join/CodeTiles";
 import "../SchoolFrame.module.css";
 import { presenceOptions, useStaffSession } from "./api";
 import styles from "./Start.module.css";
+import {
+  ClosedSignIn,
+  practiceClosed,
+  useClassAccess,
+} from "../pilots/ClassAccess";
 
 const POLL_MS = 4000;
 /** Sized to the room: fewer students, bigger names. */
@@ -81,6 +86,8 @@ export function StartClassScreen() {
     refetchIntervalInBackground: true,
     placeholderData: keepPreviousData,
   });
+  // The code reaches students only while practice runs (R14).
+  const access = useClassAccess({ org: params.org, class: params.class });
   useKeepAwake();
   const [fullscreen, setFullscreen] = useState(false);
   useEffect(() => {
@@ -118,7 +125,16 @@ export function StartClassScreen() {
         </EmptyState>
       </main>
     );
-  if (!presence.data) return <LoadingScreen />;
+  if (!presence.data || access.pending) return <LoadingScreen />;
+  if (practiceClosed(access.view))
+    return (
+      <main className={styles.problem} data-dense>
+        <ClosedSignIn
+          place={{ org: params.org, class: params.class }}
+          also={exit}
+        />
+      </main>
+    );
   const { class: info, students } = presence.data;
   const here = students.filter((student) => student.here).length;
   const joinUrl = `${location.origin}/join/${info.joinCode}`;

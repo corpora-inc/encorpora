@@ -1,13 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import { CopyButton } from "../parts";
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, type ReactNode } from "react";
 import { z } from "zod";
 import { AGREEMENT_VERSION } from "../../../../schools/agreement";
 import type { PilotState } from "../../../../schools/pilot-contracts";
 import { AppError } from "../../../lib/AppError";
 import { queryClient } from "../../../lib/query";
 import { useLoggedError } from "../../../feedback";
-import { Button } from "../../../ui/Button";
+import { Link } from "@tanstack/react-router";
+import { Button, buttonClass } from "../../../ui/Button";
+import { EmptyState } from "../../../ui/EmptyState";
 import { Loading } from "../../../ui/Loading";
 import { Sheet } from "../../../ui/Sheet";
 import { Stepper } from "../../../ui/Stepper";
@@ -103,7 +105,7 @@ function useStartPractice(place: Place, pilot: PilotState | undefined) {
 export function StartPracticeButton({
   place,
   pilot,
-  label = "Start",
+  label = "Start practice",
 }: {
   place: Place;
   pilot: PilotState | undefined;
@@ -165,6 +167,7 @@ export function accessFeedEntry(
         view.joining
           ? `Through ${practiceDate(view.until)}`
           : `30 days, through ${practiceDate(view.until)}`,
+        // One name for the one action, here, on Students and in its sheet.
         <StartPracticeButton place={place} pilot={pilot} />,
       );
     case "waiting":
@@ -212,9 +215,7 @@ export function AccessHeaderAction({
 }) {
   const { teaches } = useClassAccess(place);
   if (view.kind === "start")
-    return (
-      <StartPracticeButton place={place} pilot={pilot} label="Start practice" />
-    );
+    return <StartPracticeButton place={place} pilot={pilot} />;
   if (view.kind === "ended" && teaches) return <RequestSeatsButton primary />;
   return null;
 }
@@ -467,7 +468,7 @@ function RequestSeatsSheet({
               />
               <TextArea
                 label="Note for the buyer (optional)"
-              hint="The buyer sees this. Leave out students’ names."
+                hint="The buyer sees this. Leave out students’ names."
                 value={note}
                 onChange={(event) => setNote(event.target.value)}
                 maxLength={1000}
@@ -571,12 +572,98 @@ function AuthorizeSheet({
               aria-busy={busy}
               disabled={busy || !authorized || !name.trim() || !title.trim()}
             >
-              Start
+              Start practice
             </Button>
           </div>
         </form>
       </Sheet>
       <Toast message={error} onDismiss={() => setError("")} />
     </>
+  );
+}
+
+/** In place of a sign-in tool (the board, cards) while no student of the
+ * class can practice: the code reaches students only once practice runs, so
+ * this says where the class stands and offers the one next step that works.
+ * Null while practice runs, or for a class without a pilot (a family's). */
+export function ClosedSignIn({
+  place,
+  also,
+}: {
+  place: Place;
+  /** A way back beside the next step (the board's Exit). */
+  also?: ReactNode;
+}) {
+  const { view, pilot, teaches } = useClassAccess(place);
+  if (!practiceClosed(view)) return null;
+  const actions = (next: ReactNode) => (
+    <div className={styles.sheetActions}>
+      {next}
+      {also}
+    </div>
+  );
+  const today = `/school/${place.org}/classes/${place.class}/today`;
+  const to = (label: string, search: Record<string, number> = {}) => (
+    <Link
+      to={today as never}
+      search={search as never}
+      className={buttonClass("primary")}
+    >
+      {label}
+    </Link>
+  );
+  if (view.kind === "empty")
+    return (
+      <EmptyState
+        title="Add your students first"
+        action={actions(
+          <Link
+            to={`/school/${place.org}/classes/${place.class}/import` as never}
+            className={buttonClass("primary")}
+          >
+            Add students
+          </Link>,
+        )}
+      />
+    );
+  if (view.kind === "start")
+    return (
+      <EmptyState
+        title="Practice hasn’t started"
+        action={actions(
+          // Starting may first need the authorization sheet, which Today
+          // holds; an authorized class starts right here.
+          pilot?.authorized ? (
+            <StartPracticeButton place={place} pilot={pilot} />
+          ) : (
+            to("Start practice", { authorize: 1 })
+          ),
+        )}
+      >
+        {view.joining
+          ? `Through ${practiceDate(view.until)}`
+          : `30 days, through ${practiceDate(view.until)}`}
+      </EmptyState>
+    );
+  if (view.kind === "waiting")
+    return (
+      <EmptyState
+        title="Waiting for the class’s teacher to start practice"
+        action={actions(also ? null : to("Back to Today"))}
+      />
+    );
+  return (
+    <EmptyState
+      title="Practice has ended"
+      action={actions(
+        teaches
+          ? to("Request seats", { seats: 1 })
+          : also
+            ? null
+            : to("Back to Today"),
+      )}
+    >
+      Reports, exports and workbooks stay with the class.
+    </EmptyState>
   );
 }

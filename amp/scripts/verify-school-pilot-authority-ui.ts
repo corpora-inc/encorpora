@@ -171,10 +171,8 @@ try {
     await page.goto(`${origin}/school/${school.id}/classes/${klass.id}/${tab}`);
     await page.reload();
     await page
-      .getByRole("button", {
-        name: tab === "today" ? "Start" : "Start practice",
-        exact: true,
-      })
+      // One name for the action on Today and on Students (R14).
+      .getByRole("button", { name: "Start practice", exact: true })
       .waitFor();
     assert.equal(
       await page.getByRole("heading", { name: waiting, exact: true }).count(),
