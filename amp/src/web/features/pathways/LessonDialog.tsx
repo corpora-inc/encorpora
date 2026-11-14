@@ -2,6 +2,7 @@ import { lazy, Suspense, type ReactNode } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { lessonFilms } from "../../../content/lesson-films";
 import { skillCatalogOptions } from "../../lib/learning-view";
+import { buttonClass } from "../../ui/Button";
 import { Dialog } from "../../ui/Dialog";
 import { FilmLink } from "../films/FilmLink";
 import { LessonWait } from "./LessonWait";
@@ -106,7 +107,13 @@ function LessonHead({
       {(children || film) && (
         <div className={styles.actions}>
           {children}
-          {film && <FilmLink templateId={lesson} film={film} button />}
+          {film && (
+            <FilmLink
+              templateId={lesson}
+              film={film}
+              button={buttonClass("secondary", "lesson-film-button")}
+            />
+          )}
         </div>
       )}
     </div>
