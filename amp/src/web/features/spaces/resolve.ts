@@ -989,8 +989,11 @@ function teachingSpace(
     org && lone ? (schoolTabs(org, { lone })[0]?.path ?? null) : null;
   // A teacher of a school with several classes reaches its Classes (their
   // other classes, earlier years) the same way, without the admin screens.
+  // A family's tutoring group has no school above it: its classroom is
+  // the whole place.
   const school: Destination[] =
     status !== "unavailable" &&
+    !(onClass && org?.kind === "family") &&
     (!onClass || oversees || (!lone && can.has("classes.read")))
       ? [
           {
