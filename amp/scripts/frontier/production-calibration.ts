@@ -28,7 +28,10 @@ import {
   productionSuccessProbability,
 } from "../../src/learning/frontier";
 import { DEFAULT_FRONTIER_POLICY } from "../../src/learning/frontier-policy";
-import { reportedSd, reportFrontier } from "../../src/learning/frontier-report";
+import {
+  REPORTED_SD_VERSION,
+  reportFrontier,
+} from "../../src/learning/frontier-report";
 import { RANGE_SD_MULTIPLIER } from "../../src/learning/level-check";
 import {
   formatGrowthStudy,
@@ -314,11 +317,12 @@ export function simulateLearner(job: LearnerJob): CalibrationPoint[] {
     points.push({
       ...base,
       scope: "overall",
-      mean: after.overall.level,
-      sd: after.overall.sd,
+      // The readout's own estimate (an age-anchored learner's), as shown.
+      mean: (after.readout ?? after.overall).level,
+      sd: (after.readout ?? after.overall).sd,
       shown: shown.overall.level,
       shownSd: shown.overall.sd,
-      counted: after.overall.answered,
+      counted: (after.readout ?? after.overall).answered,
       truth: overallTruth,
     });
     for (const [name, estimate] of Object.entries(after.strands))
@@ -605,14 +609,13 @@ export function simulateGrowthLearner(job: GrowthJob): GrowthSeries {
       ]);
     }
     const at = CALIBRATION_EPOCH + day * DAY_MS + count * 1000;
-    const after = readLearnerFrontier(state, at);
+    // A level day as stored: what the learner is shown.
+    const shown = reportFrontier(readLearnerFrontier(state, at)).overall;
     days.push({
       day,
-      answers: after.overall.answered,
-      level: after.overall.level,
-      reportedSd: reportedSd(after.overall.sd, {
-        answered: after.overall.answered,
-      }),
+      answers: shown.answered,
+      level: shown.level,
+      reportedSd: shown.sd,
       truth: theta0 + growth * (day / termDays),
     });
   }
@@ -924,7 +927,7 @@ export function formatCalibration(report: CalibrationReport) {
   const header = [
     `# Production frontier coverage (seed ${report.seed}, ${report.quick ? "quick" : "full"})`,
     "",
-    `Policy \`${report.policy}\`. Reported sd is sd-cal-v1. ${report.learners} learners, checkpoints ${report.checkpoints.join(", ")}.`,
+    `Policy \`${report.policy}\`. Shown as reportFrontier shows it: reported sd ${REPORTED_SD_VERSION}, own answer counts, display rule. ${report.learners} learners, checkpoints ${report.checkpoints.join(", ")}.`,
     "",
   ];
   return (

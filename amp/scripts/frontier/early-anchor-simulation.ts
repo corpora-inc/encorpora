@@ -47,7 +47,12 @@ import {
   PREVIOUS_FRONTIER_POLICY,
   type FrontierPolicy,
 } from "../../src/learning/frontier-policy";
-import { reportFrontier } from "../../src/learning/frontier-report";
+import {
+  LEGACY_REPORTED_SD_VERSION,
+  legacyReportFrontier,
+  REPORTED_SD_VERSION,
+  reportFrontier,
+} from "../../src/learning/frontier-report";
 import { RANGE_SD_MULTIPLIER } from "../../src/learning/level-check";
 import { MISSPECIFIED_RESPONSE } from "../../src/learning/synthetic-response";
 import {
@@ -76,9 +81,26 @@ const AREA_SD = 0.5;
 const AT_LEVEL = 0.6;
 const FLOOR = 0.04;
 
-export const POLICIES: Record<string, FrontierPolicy> = {
-  v4: PREVIOUS_FRONTIER_POLICY,
-  v5: DEFAULT_FRONTIER_POLICY,
+/** Each compared version: its estimator policy and the reporter that turned
+ * its frontier into what was shown (v4 shipped with sd-cal-v1). */
+export const POLICIES: Record<
+  string,
+  {
+    policy: FrontierPolicy;
+    report: (f: Frontier) => Frontier;
+    reporter: string;
+  }
+> = {
+  v4: {
+    policy: PREVIOUS_FRONTIER_POLICY,
+    report: legacyReportFrontier,
+    reporter: LEGACY_REPORTED_SD_VERSION,
+  },
+  v5: {
+    policy: DEFAULT_FRONTIER_POLICY,
+    report: reportFrontier,
+    reporter: REPORTED_SD_VERSION,
+  },
 };
 export const AGES = [
   { id: "grade-1", grade: 1 },
@@ -186,18 +208,20 @@ export type EarlyRun = {
 
 function shownReading(
   frontier: Frontier,
+  report: (f: Frontier) => Frontier,
   theta: number,
   areaTruth: (strand: string) => number,
 ): Reading {
-  const shown = reportFrontier(frontier);
+  const shown = report(frontier);
+  const overallEstimate = frontier.readout ?? frontier.overall;
   return {
     overall: {
       level: shown.overall.level,
       sd: shown.overall.sd,
       answered: shown.overall.answered,
       truth: theta,
-      estimate: frontier.overall.level,
-      posteriorSd: frontier.overall.sd,
+      estimate: overallEstimate.level,
+      posteriorSd: overallEstimate.sd,
     },
     areas: Object.entries(shown.strands).map(([strand, estimate]) => ({
       level: estimate.level,
@@ -221,9 +245,9 @@ export function simulateEarly(job: {
   itemOffsets: Record<string, number>;
 }): EarlyRun {
   const policies = job.policies.map((id) => {
-    const policy = POLICIES[id];
-    if (!policy) throw new Error(`Unknown policy ${id}`);
-    return [id, policy] as const;
+    const version = POLICIES[id];
+    if (!version) throw new Error(`Unknown policy ${id}`);
+    return [id, version.policy, version.report] as const;
   });
   const rng = mulberry32(
     mix([
@@ -278,10 +302,9 @@ export function simulateEarly(job: {
   );
   const path: Record<string, number[]> = {};
   const readings: Record<string, Record<number, Reading>> = {};
-  for (const [id, policy] of policies) {
+  for (const [id, policy, report] of policies) {
     path[id] = [
-      reportFrontier(readFrontierState(states.get(id)!, EPOCH, policy)).overall
-        .level,
+      report(readFrontierState(states.get(id)!, EPOCH, policy)).overall.level,
     ];
     readings[id] = {};
   }
@@ -338,7 +361,7 @@ export function simulateEarly(job: {
       answer: "",
       createdAt,
     });
-    for (const [id, policy] of policies) {
+    for (const [id, policy, report] of policies) {
       const state = states.get(id)!;
       advanceFrontierState(
         state,
@@ -348,9 +371,14 @@ export function simulateEarly(job: {
         STRAND_FREEZE,
       );
       const after = readFrontierState(state, at, policy);
-      path[id]!.push(reportFrontier(after).overall.level);
+      path[id]!.push(report(after).overall.level);
       if (wanted.has(index + 1))
-        readings[id]![index + 1] = shownReading(after, theta, areaTruth);
+        readings[id]![index + 1] = shownReading(
+          after,
+          report,
+          theta,
+          areaTruth,
+        );
     }
   }
   return {
@@ -428,140 +456,128 @@ const inside = (shown: Shown, k: number) =>
 
 export function formatEarly(runs: readonly EarlyRun[]) {
   const policies = Object.keys(runs[0]?.path ?? {});
-  const lines: string[] = [];
+  const [first, second] = [policies[1] ?? policies[0]!, policies[0]!];
+  const lines: string[] = [
+    `Shown through each version's own reporter: ${policies
+      .map((id) => `${id} ${POLICIES[id]?.reporter}`)
+      .join(", ")}. Cells read ${first} → ${second}.`,
+    "",
+  ];
   const children = runs.filter((run) => run.age !== "adult");
   const adults = runs.filter((run) => run.age === "adult");
+  const by = (profiles: readonly string[]) =>
+    children.filter((run) => profiles.includes(run.profile));
+  const groups: [string, readonly EarlyRun[]][] = [
+    ["Children drawn from national norms", by(["population"])],
+    ["On level", by(["0"])],
+    ["One grade off", by(["-1", "+1"])],
+    ["Two grades off", by(["-2", "+2"])],
+    ["Three or four off", by(["-3", "+3", "-4", "+4"])],
+    ["Uneven areas", by(["uneven"])],
+    ["Adults (chosen start), −4…+4", adults],
+  ];
+  const reading = (run: EarlyRun, policy: string, n: number) =>
+    run.readings[policy]![n]!;
+  const pair = (
+    pool: readonly EarlyRun[],
+    value: (run: EarlyRun, policy: string, n: number) => number[],
+    show: (x: number) => string,
+    n: number,
+  ) =>
+    `${show(mean(pool.flatMap((run) => value(run, first, n))))} → ${show(
+      mean(pool.flatMap((run) => value(run, second, n))),
+    )}`;
   const table = (
     title: string,
-    groups: [string, readonly EarlyRun[]][],
-    cell: (run: EarlyRun, policy: string, n: number) => number,
-    show: (value: number) => string = (value) => fixed(value),
+    pools: [string, readonly EarlyRun[]][],
+    value: (run: EarlyRun, policy: string, n: number) => number[],
+    show: (x: number) => string = (x) => fixed(x),
   ) => {
     lines.push(`### ${title}`, "");
     lines.push(
-      `| Learners | n | Policy | ${CHECKPOINTS.join(" | ")} |`,
-      `|---|---:|---|${CHECKPOINTS.map(() => "---:").join("|")}|`,
+      `| Learners | n | ${CHECKPOINTS.join(" | ")} |`,
+      `|---|---:|${CHECKPOINTS.map(() => "---:").join("|")}|`,
     );
-    for (const [label, group] of groups)
-      for (const policy of policies)
-        lines.push(
-          `| ${label} | ${group.length} | ${policy} | ${CHECKPOINTS.map((n) =>
-            show(mean(group.map((run) => cell(run, policy, n)))),
-          ).join(" | ")} |`,
-        );
+    for (const [label, pool] of pools)
+      lines.push(
+        `| ${label} | ${pool.length} | ${CHECKPOINTS.map((n) =>
+          pair(pool, value, show, n),
+        ).join(" | ")} |`,
+      );
     lines.push("");
   };
-  const by = (pool: readonly EarlyRun[], profile: Profile) =>
-    pool.filter((run) => run.profile === profile);
-  const groups: [string, readonly EarlyRun[]][] = [
-    ["Children, drawn from national norms", by(children, "population")],
-    ...PROFILES.filter((p) => p !== "population").map(
-      (p) =>
-        [
-          p === "uneven" ? "Children, uneven areas" : `Children, ${p}`,
-          by(children, p),
-        ] as [string, readonly EarlyRun[]],
-    ),
-    ["Adults (chosen start), all offsets", adults],
-  ];
-  const overall = (run: EarlyRun, policy: string, n: number) =>
-    run.readings[policy]![n]!.overall;
+  table("Overall: mean |shown − true| (grades)", groups, (run, p, n) => [
+    Math.abs(reading(run, p, n).overall.level - run.theta),
+  ]);
   table(
-    "Shown overall level: mean |shown − true| (grades)",
+    "Overall shown a grade or more from the truth",
     groups,
-    (run, policy, n) => Math.abs(overall(run, policy, n).level - run.theta),
-  );
-  table(
-    "Shown overall level: mean shown − true (grades)",
-    groups,
-    (run, policy, n) => overall(run, policy, n).level - run.theta,
-  );
-  table(
-    "Shown overall level a grade or more from the truth (share)",
-    groups,
-    (run, policy, n) =>
-      Math.abs(overall(run, policy, n).level - run.theta) >= 1 ? 1 : 0,
-    percent,
-  );
-  const onLevel = [...by(children, "population"), ...by(children, "0")].filter(
-    (run) => Math.abs(run.theta - run.start) < 0.5,
-  );
-  table(
-    "Children truly within half a grade of their age: shown a grade or more above it (share)",
-    [["Population draws and on-level", onLevel]],
-    (run, policy, n) =>
-      overall(run, policy, n).level - run.start >= 1 ? 1 : 0,
-    percent,
-  );
-  const envelope = (
-    pool: readonly EarlyRun[],
-    pick: (reading: Reading) => Shown[],
-    k: number,
-  ) =>
-    CHECKPOINTS.map((n) =>
-      policies.map((policy) => {
-        const shown = pool.flatMap((run) => pick(run.readings[policy]![n]!));
-        return [
-          shown.filter((s) => inside(s, k)).length / shown.length,
-          shown.length,
-        ];
-      }),
-    );
-  lines.push(
-    `### Shown range (±${RANGE_SD_MULTIPLIER} reported sd) covers the truth (target about 90%)`,
-    "",
-    `| Estimate | Learners | Policy | ${CHECKPOINTS.join(" | ")} |`,
-    `|---|---|---|${CHECKPOINTS.map(() => "---:").join("|")}|`,
-  );
-  for (const [label, pool] of [
-    ["Children, norms draws", by(children, "population")],
-    ["Children, all profiles", children],
-    ["Adults", adults],
-  ] as [string, readonly EarlyRun[]][])
-    for (const [what, pick] of [
-      ["Overall", (r: Reading) => [r.overall]],
-      ["Areas (own answer counts)", (r: Reading) => r.areas],
-    ] as [string, (r: Reading) => Shown[]][]) {
-      const cover = envelope(pool, pick, RANGE_SD_MULTIPLIER);
-      policies.forEach((policy, p) =>
-        lines.push(
-          `| ${what} | ${label} | ${policy} | ${cover
-            .map((row) => percent(row[p]![0]!))
-            .join(" | ")} |`,
-        ),
-      );
-    }
-  lines.push("");
-  lines.push(
-    "### Far from their age: answers until the shown level stays within 0.75 of the truth",
-    "",
-    "| Learners | Policy | Median | 75th percentile |",
-    "|---|---|---:|---:|",
-  );
-  for (const profile of ["-4", "-3", "-2", "+2", "+3", "+4"] as Profile[])
-    for (const policy of policies) {
-      const settled = by(children, profile)
-        .map((run) => settledAt(run, policy, 0.75) ?? Infinity)
-        .sort((a, b) => a - b);
-      const q = (x: number) => {
-        const v = settled[Math.floor(x * (settled.length - 1))]!;
-        return Number.isFinite(v) ? String(v) : "> 200";
-      };
-      lines.push(
-        `| Children, ${profile} | ${policy} | ${q(0.5)} | ${q(0.75)} |`,
-      );
-    }
-  lines.push("");
-  table(
-    "Areas: mean |shown − true| (grades)",
-    [
-      ["Children, norms draws", by(children, "population")],
-      ["Children, uneven areas", by(children, "uneven")],
+    (run, p, n) => [
+      Math.abs(reading(run, p, n).overall.level - run.theta) >= 1 ? 1 : 0,
     ],
-    (run, policy, n) =>
-      mean(
-        run.readings[policy]![n]!.areas.map((a) => Math.abs(a.level - a.truth)),
+    percent,
+  );
+  const onAge = children.filter((run) => Math.abs(run.theta - run.start) < 0.5);
+  table(
+    "Children within half a grade of their age: shown a grade or more above it",
+    [
+      ["Overall", onAge],
+      ["Any area", onAge],
+    ],
+    (run, p, n) => [reading(run, p, n).overall.level - run.start >= 1 ? 1 : 0],
+    percent,
+  );
+  // The "Any area" row above repeats the overall; replace it with areas.
+  lines.splice(
+    lines.length - 2,
+    1,
+    `| Any area | ${onAge.length} | ${CHECKPOINTS.map((n) =>
+      pair(
+        onAge,
+        (run, p) =>
+          reading(run, p, n).areas.map((a) =>
+            a.level - run.start >= 1 ? 1 : 0,
+          ),
+        percent,
+        n,
       ),
+    ).join(" | ")} |`,
+  );
+  table("Areas: mean |shown − true| (grades)", groups, (run, p, n) =>
+    reading(run, p, n).areas.map((a) => Math.abs(a.level - a.truth)),
+  );
+  table(
+    `Shown range (±${RANGE_SD_MULTIPLIER} reported sd, unclipped) covers the truth: overall`,
+    [
+      ["Children drawn from national norms", by(["population"])],
+      ["Children, every profile", children],
+      ["Adults", adults],
+    ],
+    (run, p, n) => [
+      inside(reading(run, p, n).overall, RANGE_SD_MULTIPLIER) ? 1 : 0,
+    ],
+    percent,
+  );
+  table(
+    `Shown range (±${RANGE_SD_MULTIPLIER} reported sd, unclipped) covers the truth: areas`,
+    [
+      ["Children drawn from national norms", by(["population"])],
+      ["Children, every profile", children],
+      ["Adults", adults],
+    ],
+    (run, p, n) =>
+      reading(run, p, n).areas.map((a) =>
+        inside(a, RANGE_SD_MULTIPLIER) ? 1 : 0,
+      ),
+    percent,
+  );
+  table(
+    "Shown overall sd (mean)",
+    [
+      ["Children", children],
+      ["Adults", adults],
+    ],
+    (run, p, n) => [reading(run, p, n).overall.sd],
   );
   const differs = runs.reduce((sum, run) => sum + run.practiceDiffers, 0);
   lines.push(

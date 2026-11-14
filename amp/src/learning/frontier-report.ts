@@ -1,4 +1,9 @@
-import type { AgeAnchor, Estimate, Frontier } from "./frontier.js";
+import {
+  estimateFrontier,
+  type AgeAnchor,
+  type Estimate,
+  type Frontier,
+} from "./frontier.js";
 
 /**
  * Reported uncertainty for stored level days and the level a person is shown:
@@ -132,8 +137,9 @@ export function shownAreaLevel(
  * `adaptive` stays the posterior: selection reads it, and this copy is for
  * display. */
 export function reportFrontier(frontier: Frontier): Frontier {
+  const { readout, ...rest } = frontier;
   const reported = {
-    ...frontier,
+    ...rest,
     overall: reportEstimate(frontier.overall),
     strands: Object.fromEntries(
       Object.entries(frontier.strands).map(([id, estimate]) => [
@@ -143,22 +149,28 @@ export function reportFrontier(frontier: Frontier): Frontier {
     ),
   };
   const anchor = frontier.anchor;
-  if (!anchor) return reported;
+  if (!anchor || !readout) return reported;
+  // The age-anchored readout: its own fold, held near the age band early.
   const level = shownLevel(
-    frontier.overall.level,
-    startingWeight(frontier.overall.answered, anchor),
+    readout.level,
+    startingWeight(readout.answered, anchor),
     anchor,
   );
+  const shownReadout = reportEstimate(readout);
   const overall = {
-    ...reported.overall,
+    ...shownReadout,
     level,
-    sd: shownWidth(reported.overall.sd, level - frontier.overall.level),
+    sd: shownWidth(shownReadout.sd, level - readout.level),
   };
+  const restarted = new Set(frontier.restarted ?? []);
   return {
     ...reported,
     overall,
     strands: Object.fromEntries(
       Object.entries(frontier.strands).map(([id, estimate]) => {
+        // An area restarted from a level someone chose shows as estimated,
+        // like any chosen start.
+        if (restarted.has(id)) return [id, reported.strands[id]!];
         // A blend of the overall shown estimate and the area's own, so its
         // width blends the same way.
         const share = Math.min(1, estimate.answered / anchor.areaAnswers);
@@ -168,7 +180,7 @@ export function reportFrontier(frontier: Frontier): Frontier {
             ...reported.strands[id]!,
             level: shownAreaLevel(
               estimate,
-              { estimate: frontier.overall.level, shown: level },
+              { estimate: readout.level, shown: level },
               anchor,
             ),
             sd: hundredths(
@@ -177,6 +189,64 @@ export function reportFrontier(frontier: Frontier): Frontier {
           },
         ];
       }),
+    ),
+  };
+}
+
+/** What a learner is shown before any answer, where no level has been
+ * stored: the same `reportFrontier` estimate their own Starting view reads,
+ * from their start alone (`initialLevel`, and whether a birth year set it). */
+export function startingShown(start: number, fromAge: boolean): Estimate {
+  return reportFrontier(
+    estimateFrontier({
+      start,
+      fromAge,
+      observations: [],
+      gradeOf: () => undefined,
+      strandOf: (id) => id,
+      guessOf: () => 0,
+    }),
+  ).overall;
+}
+
+/** sd-cal-v1, the reporter production used with grade-frontier-v4: one
+ * scale of the posterior sd by each estimate's own answers, a 0.20 floor,
+ * and levels shown as estimated. Kept for paired comparisons only. */
+export const LEGACY_REPORTED_SD_VERSION = "sd-cal-v1";
+const LEGACY_FACTORS: readonly (readonly [answered: number, factor: number])[] =
+  [
+    [20, 0.76],
+    [50, 0.83],
+    [100, 0.94],
+    [300, 0.9],
+  ];
+export function legacyReportedSd(posteriorSd: number, answered: number) {
+  const knots = LEGACY_FACTORS;
+  let factor = knots[knots.length - 1]![1];
+  if (answered <= knots[0]![0]) factor = knots[0]![1];
+  else
+    for (let index = 1; index < knots.length; index++) {
+      const [leftN, leftK] = knots[index - 1]!;
+      const [rightN, rightK] = knots[index]!;
+      if (answered <= rightN) {
+        const t = Math.log(answered / leftN) / Math.log(rightN / leftN);
+        factor = leftK + (rightK - leftK) * t;
+        break;
+      }
+    }
+  return Math.round((0.2 + factor * posteriorSd) * 100) / 100;
+}
+export function legacyReportFrontier(frontier: Frontier): Frontier {
+  const { readout: _readout, ...rest } = frontier;
+  const report = (estimate: Estimate) => ({
+    ...estimate,
+    sd: legacyReportedSd(estimate.sd, estimate.answered),
+  });
+  return {
+    ...rest,
+    overall: report(frontier.overall),
+    strands: Object.fromEntries(
+      Object.entries(frontier.strands).map(([id, e]) => [id, report(e)]),
     ),
   };
 }

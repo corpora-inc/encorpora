@@ -85,6 +85,8 @@ function replayed(
 function assertClose(stored: Frontier, full: Frontier, label: string) {
   assert.deepEqual(stored.overall, full.overall, `${label}: overall`);
   assert.deepEqual(stored.anchor, full.anchor, `${label}: age anchor`);
+  assert.deepEqual(stored.readout, full.readout, `${label}: readout`);
+  assert.deepEqual(stored.restarted, full.restarted, `${label}: restarted`);
   assert.deepEqual(stored.adaptive, full.adaptive, `${label}: adaptive`);
   assert.deepEqual(
     stored.confirmation,
@@ -238,14 +240,19 @@ test("one pass gives the same trend as estimating each prefix", () => {
         counts,
       ),
       counts.map((answered) => {
-        const { level, sd } = estimateFrontier({
+        const frontier = estimateFrontier({
           start: 4,
           fromAge,
           observations: observations.slice(0, answered),
           now,
           ...frontierCatalog,
-        }).overall;
-        return { answered, level, sd };
+        });
+        const {
+          level,
+          sd,
+          answered: counted,
+        } = frontier.readout ?? frontier.overall;
+        return { answered, level, sd, counted };
       }),
     );
 });

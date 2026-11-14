@@ -231,6 +231,9 @@ export function applyStrandRestart(
   local: Frontier,
 ) {
   frontier.strands[strand] = local.strands[strand] ?? local.overall;
+  frontier.restarted = [
+    ...new Set([...(frontier.restarted ?? []), strand]),
+  ].sort();
   if (frontier.confirmation)
     frontier.confirmation[strand] = {
       ...(local.confirmation?.[strand] ?? {
@@ -357,6 +360,7 @@ const encodeState = (
 ) => ({
   start: state.start,
   ...(state.fromAge ? { fromAge: true } : {}),
+  ...(state.readout ? { readout: encodeFold(state.readout) } : {}),
   observed: state.observed,
   lastAt: state.lastAt,
   overall: encodeFold(state.overall),
@@ -379,6 +383,7 @@ const decodeState = (
 ): FrontierState => ({
   start: encoded.start,
   ...(encoded.fromAge ? { fromAge: true } : {}),
+  ...(encoded.readout ? { readout: decodeFold(encoded.readout) } : {}),
   observed: encoded.observed,
   lastAt: encoded.lastAt,
   overall: decodeFold(encoded.overall),

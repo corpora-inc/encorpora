@@ -24,7 +24,8 @@ import { Menu, MenuItem } from "../../../ui/Menu";
 import { classUrl, parseSort, useClassSearch } from "./teacher-shared";
 import styles from "./ClassMap.module.css";
 
-/** Before any work, a wide band around where they should be, drawn dashed. */
+/** Before any work and without a starting estimate, a wide band around where
+ * they should be, drawn dashed. */
 const UNKNOWN_SD = 0.9;
 const middleOf = (reference: MapStudent["reference"]) =>
   reference ? (reference.from + reference.to) / 2 : null;
@@ -51,7 +52,9 @@ function place(student: MapStudent, lens: string, center: number): Placed {
       }
     : {
         student,
-        estimate: {
+        // Before any work: the starting estimate the learner's own view
+        // shows, or, without one, a wide band around where they should be.
+        estimate: student.start ?? {
           level: middleOf(student.reference) ?? center,
           sd: UNKNOWN_SD,
         },

@@ -698,6 +698,27 @@ function workbookRow(row: Record<string, unknown>): WorkbookRecord {
     createdAt: (row.createdAt as Date).toISOString(),
   };
 }
+/** A level day as stored: exactly what the learner is shown
+ * (`reportFrontier`: the display rule's level and the reported width), so the
+ * map, the record and the live readout agree. Scheduling reads the posterior
+ * from the frontier itself, never this. */
+export function levelDayDocument(frontier: Frontier) {
+  const shown = reportFrontier(frontier);
+  const estimate = ({ level, sd, answered, independent }: Estimate) => ({
+    level,
+    sd,
+    answered,
+    independent,
+  });
+  return {
+    sdVersion: REPORTED_SD_VERSION,
+    overall: estimate(shown.overall),
+    strands: Object.fromEntries(
+      Object.entries(shown.strands).map(([id, e]) => [id, estimate(e)]),
+    ),
+  };
+}
+
 export class PgTransaction implements LearnerTransaction {
   private settingsCache?: Promise<PracticeSettings>;
   practiceSettings(): Promise<PracticeSettings> {
@@ -825,17 +846,6 @@ export class PgTransaction implements LearnerTransaction {
     return (await this.learner())?.name_pending === true;
   }
   async saveLevelDay(frontier: Frontier) {
-    // Scheduling has already read the posterior sd. The stored width is the
-    // calibrated report, so a level day and the live planner do not share it.
-    // Stored as shown (`reportFrontier`): the display rule's level and the
-    // reported width, so the map and the live readout agree.
-    const shown = reportFrontier(frontier);
-    const estimate = ({ level, sd, answered, independent }: Estimate) => ({
-      level,
-      sd,
-      answered,
-      independent,
-    });
     // A school student's day is the school's; an adult's is their own.
     await this.db.query(
       `INSERT INTO amp_level_days(learner_id,day,frontier,policy_version)
@@ -848,17 +858,12 @@ export class PgTransaction implements LearnerTransaction {
        ON CONFLICT(learner_id,day) DO UPDATE SET frontier=EXCLUDED.frontier,policy_version=EXCLUDED.policy_version`,
       [
         this.learnerId,
-        JSON.stringify({
-          sdVersion: REPORTED_SD_VERSION,
-          overall: estimate(shown.overall),
-          strands: Object.fromEntries(
-            Object.entries(shown.strands).map(([id, e]) => [id, estimate(e)]),
-          ),
-        }),
+        JSON.stringify(levelDayDocument(frontier)),
         DEFAULT_FRONTIER_POLICY.version,
       ],
     );
   }
+
   /** The level now, from the stored state plus any answers since it was saved. */
   private async currentFrontier(now: number): Promise<Frontier> {
     const settings = await this.practiceSettings();
@@ -966,14 +971,14 @@ export class PgTransaction implements LearnerTransaction {
     return overallTrend(
       { start, fromAge, observations, now, ...frontierCatalog },
       trendCounts(observations.length, trendStep(observations.length, points)),
-    ).map(({ answered, level, sd }) => {
+    ).map(({ answered, level, sd, counted }) => {
       const shown = anchor
-        ? shownLevel(level, startingWeight(answered, anchor), anchor)
+        ? shownLevel(level, startingWeight(counted, anchor), anchor)
         : level;
       return {
         answered,
         level: shown,
-        sd: shownWidth(reportedSd(sd, { answered }), shown - level),
+        sd: shownWidth(reportedSd(sd, { answered: counted }), shown - level),
       };
     });
   }

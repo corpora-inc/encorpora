@@ -46,23 +46,31 @@ Production selection reasons describe a prerequisite, revisit after an error or 
 
 Under v4, a ten-year-old who answers three on-grade problems right is shown about grade 6, overall and in every area. The prior causes this, not the answers. Every learner starts with a flat 2.5-grade prior. Three right answers only rule out the low end, so the posterior mean lands in the prior's upper tail, about 0.8 of a prior sd above the start.
 
-v5 (`DEFAULT_FRONTIER_POLICY`) changes what is shown and how wide it is drawn. It does not change what is practised. v4 is kept as `PREVIOUS_FRONTIER_POLICY` for paired replays.
+v5 (`DEFAULT_FRONTIER_POLICY`) changes what is shown and how wide it is drawn. It does not change what is practised, online or on paper. v4 is kept as `PREVIOUS_FRONTIER_POLICY` for paired replays.
 
-- **Overall readout: national-norms prior.** For a start set by a birth year, the overall readout's prior is as wide as that age is spread nationally. This is `NORMS_PRIOR_SD`, the "AMP prior sd" column of the [norms prior](engine/norms-prior.md): 0.7 at K, 1.6 at grade 4, capped at 2.5 from grade 6.
+- **Overall readout: national-norms prior.** For a start set by a birth year, a separate readout fold (`Frontier.readout`) is kept whose prior is as wide as that age is spread nationally. This is `NORMS_PRIOR_SD`, the "AMP prior sd" column of the [norms prior](engine/norms-prior.md): 0.7 at K, 1.6 at grade 4, capped at 2.5 from grade 6.
   - It is a provisional, external prior, not fitted to AMP learners.
+  - `overall`, which selection and workbooks read, keeps the flat prior, so the whole frontier practice reads is v4's.
 - **Display rule** (`frontier-policy.ts` `display`; `frontier-report.ts`). For an age-anchored learner, the shown overall level is held to the half-grade band around their age, then released by a tenth of the way to the estimate per answer. From ten answers on, it is the estimate.
   - Each area is shown at the overall shown level, plus its own answers ÷ 10 of its difference from the overall estimate. An area with few answers of its own sits near the learner's level.
-  - Stored level days and the trend show the same.
-  - Display only: nothing that selects problems reads it.
+  - Display only: nothing that selects problems or composes a workbook reads it.
+  - An area restarted from a chosen level is not blended: it shows as estimated, like any chosen start.
 - **Shown widths (sd-cal-v2).** The reported width is 0.2 + a factor × the posterior sd, read by each estimate's own answer count (an area's own answers, as production stores them).
   - Overall: 1.01 up to 10 answers, 0.80 from 20.
   - Areas: 0.85 up to 10 answers, 0.95 from 20.
   - When the shown overall level sits off the estimate, its width adds that distance ÷ 1.64, so the shown range always holds the estimate's own range.
   - An area's width is the same blend of the overall shown width and its own as its level.
-- **Selection is unchanged.** Selection's pooled estimate keeps 2.5 for every start. The area estimates, the climb and both response curves are v4's.
-  - `tests/frontier-early-anchor.test.ts` checks that selection reads identical values and plans identical problems.
-  - The simulation below counts no problem that would differ in 158,400.
+- **Practice is unchanged.** Every estimate practice reads is v4's: the pooled estimate, `overall`, the areas, the climb and both response curves.
+  - `tests/frontier-early-anchor.test.ts` checks that the raw frontier, the planned problems and the composed workbook are identical to v4's.
+  - The simulation below counts no online problem that would differ in 158,400.
 - **Chosen starts.** An adult's start, a family band or a restarted area is estimated and shown at v4's levels. Only its widths follow sd-cal-v2.
+- **One value everywhere.** Every view of a learner's level reads the same estimate, through `reportFrontier`. That covers the learner's own readout, their Starting view, the level trend, the stored level day, the class map, Today, and the teacher's record.
+  - A rostered learner's or an adult's level day is stored after each answer, not only when the next problems are fetched. A teacher reads what the learner last saw, even if they stopped there.
+  - The class map's starting estimate, for a learner with nothing stored yet, is the same one their own Starting view shows (`startingShown`).
+  - The trend releases the display rule on the answers the estimate counted, so a family the catalog no longer knows does not count towards it.
+  - `scripts/refresh-level-days.ts` rewrites each learner's latest day still stored under an older estimator, so the current level matches. It runs dry by default and journals and can revert with `--apply`; it is run once after deploying a new estimator.
+  - Earlier days stay as they were shown, each labelled with its own `policy_version`. Term and growth reads treat them as that record. Growth reads only settled days, past ten answers, where the two versions agree within sampling noise.
+  - `tests/level-consistency.integration.ts` asserts the same level, overall and by area, across these views before any answer, after answers that stop without fetching more, and after a refresh.
 
 | Constructed case: born 2016, read in the fall of 2026, three right answers | v4 | v5 |
 |---|---:|---:|
@@ -74,7 +82,7 @@ v5 (`DEFAULT_FRONTIER_POLICY`) changes what is shown and how wide it is drawn. I
 
 Behind v5's shown 4.71, the readout's own estimate is 5.19: the narrower prior moves it 1.2 grades from 4, not 2. `tests/frontier-early-anchor.test.ts` pins the case. It fails under v4.
 
-**Simulation.** `scripts/frontier/early-anchor-simulation.ts` runs the production planner and display path for 200 answers on both policies, along one answer sequence.
+**Simulation.** `scripts/frontier/early-anchor-simulation.ts` runs the production planner and display path for 200 answers on both policies, along one answer sequence. Each version is shown through its own reporter: v4 through sd-cal-v1 (`legacyReportFrontier`, main's reporter), and v5 through sd-cal-v2. Coverage is of the unclipped ±1.64 envelope; the chart clamps its bounds to [0, 13].
 
 - Truth comes from external norms, not from AMP data or the demo school. Children aged grade 1, 2, 4, 6 and 8 are drawn from N(age, the national spread), with areas N(0, 0.5²) apart.
 - Fixed offsets cover −4 … +4 grades, plus learners on level with areas alternately one grade above and below.
@@ -131,7 +139,7 @@ Overall shown level, mean |shown − true| in grades, v4 → v5:
 - practice profiles;
 - internal accounts.
 
-This leaves a few dozen learners and a few hundred answers, most learners with fewer than ten. That is too few to measure accuracy, so the replay is descriptive only.
+This leaves a few dozen learners and a few hundred answers, most learners with fewer than ten. A private cohort manifest records the exclusions; the export never enters the repository. That is too few to measure accuracy, so the replay is descriptive only.
 
 - After three answers, v4 showed a fifth of the birth-year learners more than a grade above their age start; v5 showed none.
 - Learners with a chosen start are shown identically.
