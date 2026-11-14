@@ -1,5 +1,5 @@
 import { Component, Suspense, type ReactNode } from "react";
-import { cleanup, render, screen } from "@testing-library/react";
+import { act, cleanup, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { lazyRouteComponent } from "../lazy-route-component";
 
@@ -67,12 +67,14 @@ test("preload shares the import with rendering and preserves named-export props"
   }));
   const Route = lazyRouteComponent(importer, "Screen");
   await Promise.all([Route.preload?.(), Route.preload?.()]);
+  const Pending = vi.fn(() => <p>Waiting</p>);
   render(
-    <Suspense fallback="Waiting">
+    <Suspense fallback={<Pending />}>
       <Route label="Loaded screen" />
     </Suspense>,
   );
-  await screen.findByText("Loaded screen");
+  expect(screen.getByText("Loaded screen")).toBeTruthy();
+  expect(Pending).not.toHaveBeenCalled();
   expect(importer).toHaveBeenCalledOnce();
 });
 
@@ -84,11 +86,37 @@ test("a failed speculative preload can retry before rendering", async () => {
   const Route = lazyRouteComponent(importer);
   await Route.preload?.();
   await Route.preload?.();
+  const Pending = vi.fn(() => <p>Waiting</p>);
+  render(
+    <Suspense fallback={<Pending />}>
+      <Route />
+    </Suspense>,
+  );
+  expect(screen.getByText("Retried screen")).toBeTruthy();
+  expect(Pending).not.toHaveBeenCalled();
+  expect(importer).toHaveBeenCalledTimes(2);
+});
+
+test("an unresolved import suspends, then renders without another import", async () => {
+  let finish!: (module: { default: () => ReactNode }) => void;
+  const importer = vi.fn(
+    () =>
+      new Promise<{ default: () => ReactNode }>((resolve) => {
+        finish = resolve;
+      }),
+  );
+  const Route = lazyRouteComponent(importer);
   render(
     <Suspense fallback="Waiting">
       <Route />
     </Suspense>,
   );
-  await screen.findByText("Retried screen");
-  expect(importer).toHaveBeenCalledTimes(2);
+  expect(screen.getByText("Waiting")).toBeTruthy();
+  await act(async () => {
+    await Promise.resolve();
+    finish({ default: () => <p>Loaded screen</p> });
+  });
+  expect(screen.getByText("Loaded screen")).toBeTruthy();
+  expect(screen.queryByText("Waiting")).toBeNull();
+  expect(importer).toHaveBeenCalledOnce();
 });

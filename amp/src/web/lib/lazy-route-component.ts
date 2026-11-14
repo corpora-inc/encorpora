@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import { createElement, lazy, type ComponentType } from "react";
 import type { AsyncRouteComponent } from "@tanstack/react-router";
 
 /** Lazy routes share an import with speculative preloading. React forwards
@@ -10,9 +10,14 @@ export function lazyRouteComponent<
   TKey extends keyof T = "default",
 >(importer: () => Promise<T>, exportName?: TKey) {
   let pending: Promise<T> | undefined;
+  let resolved: ComponentType<any> | undefined;
   const load = () => {
     pending ??= Promise.resolve()
       .then(importer)
+      .then((module) => {
+        resolved = module[exportName ?? "default"];
+        return module;
+      })
       .catch((error: unknown) => {
         // A failed speculative preload must not prevent a later import retry.
         pending = undefined;
@@ -20,9 +25,13 @@ export function lazyRouteComponent<
       });
     return pending;
   };
-  const component = lazy(async () => ({
+  const unloaded = lazy(async () => ({
     default: (await load())[exportName ?? "default"],
   }));
+  // React.lazy suspends on its first render even after the import resolves.
+  // Render completed preloads synchronously so the router's delayed pending UI
+  // only appears while navigation is actually waiting for code or data.
+  const component = (props: any) => createElement(resolved ?? unloaded, props);
   return Object.assign(component, {
     // Speculation has no error UI; a rendered failure reaches the boundary.
     preload: () =>
