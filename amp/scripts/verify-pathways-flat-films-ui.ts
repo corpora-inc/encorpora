@@ -51,35 +51,57 @@ const browser = await chromium.launch({
 });
 
 const LEARNER = "parent-one-a";
-// One film of two problem types, every type filmed, and none.
-const oneFilm = skills.find((s) => s.id === "count-to-20")!;
-const manyFilms = skills.find((s) => s.id === "line-plots")!;
-const noFilms = skills.find((s) => s.id === "volume-cubes")!;
 const typesOf = (skill: string) => templates.filter((t) => t.skillId === skill);
 const filmsOf = (skill: string) =>
   typesOf(skill).filter((t) => lessonFilms[t.id]);
 /** A skill's distinct films: one film can teach several of its types. */
 const distinctFilms = (skill: string) =>
   new Set(filmsOf(skill).map((t) => lessonFilms[t.id]!.id)).size;
-assert.equal(filmsOf(oneFilm.id).length, 1);
-assert(typesOf(oneFilm.id).length > 1);
-assert(distinctFilms(manyFilms.id) >= 3);
-assert.equal(filmsOf(noFilms.id).length, 0);
+/** The first skill, in the catalog's order, that is a case to prove: picked
+ * from the catalogue, so publishing a film never breaks the proof. */
+const first = (what: string, test: (skill: string) => boolean) => {
+  const found = skills.find((s) => test(s.id));
+  assert(found, `No skill with ${what} in the catalogue`);
+  return found;
+};
+// One film among several problem types, several distinct films, and none.
+const oneFilm = first(
+  "one film among several types",
+  (s) => filmsOf(s).length === 1 && typesOf(s).length > 1,
+);
+const manyFilms = first("three distinct films", (s) => distinctFilms(s) >= 3);
+const noFilms = first(
+  "no film",
+  (s) => typesOf(s).length > 0 && filmsOf(s).length === 0,
+);
 const filmed = filmsOf(oneFilm.id)[0]!.id;
+const unfilmed = typesOf(oneFilm.id).find((t) => !lessonFilms[t.id])!.id;
 // One film shared by several problem types.
-const sharedFilm = skills.find((s) => s.id === "name-shapes")!;
-assert(filmsOf(sharedFilm.id).length > distinctFilms(sharedFilm.id));
+const sharedFilm = first(
+  "a shared film",
+  (s) => filmsOf(s).length > distinctFilms(s),
+);
 // A filmed problem type whose title wraps on a phone.
-const longTitle = templates.find((t) => t.id === "grouped-both-sides-steps")!;
-assert(lessonFilms[longTitle.id] && longTitle.title.length > 60);
+const longTitle = templates.find(
+  (t) => lessonFilms[t.id] && t.title.length > 70,
+)!;
+assert(longTitle, "No filmed problem type with a long title");
 // Skills far down the pathway, a phone's several screens from its top.
 const farSkill = skills.find((s) => s.id === "similarity-theorems")!;
 const otherFar = skills.find((s) => s.id === "nonlinear-systems")!;
-const unfilmed = typesOf(oneFilm.id).find((t) => !lessonFilms[t.id])!.id;
+console.log(
+  `Cases: one film ${oneFilm.id}, several ${manyFilms.id}, none ${noFilms.id}, shared ${sharedFilm.id}, long title ${longTitle.id}`,
+);
 
 async function fixture(
   page: Page,
-  { holdLessons = 0, holdFrontier = 0, holdCatalog = 0 } = {},
+  {
+    holdLessons = 0,
+    holdFrontier = 0,
+    holdCatalog = 0,
+    catalogGate = Promise.resolve(),
+    lessonGate = Promise.resolve(),
+  } = {},
 ) {
   await page.addInitScript((learner) => {
     localStorage.setItem(
@@ -91,6 +113,7 @@ async function fixture(
     const pathname = new URL(route.request().url()).pathname;
     if (pathname.endsWith("/catalog")) {
       if (holdCatalog) await new Promise((r) => setTimeout(r, holdCatalog));
+      await catalogGate;
       return route.fulfill({
         json: {
           skills,
@@ -137,6 +160,7 @@ async function fixture(
       return route.fulfill({ json: defaultPracticeSettings() });
     if (pathname.includes("/problem-lessons/")) {
       if (holdLessons) await new Promise((r) => setTimeout(r, holdLessons));
+      await lessonGate;
       return route.fulfill({
         json: {
           lesson: problemLesson(pathname.split("/").pop()!, "flat-proof"),
@@ -224,6 +248,8 @@ for (const width of widths)
       viewport: { width, height: width >= 768 ? 900 : 844 },
       colorScheme,
     });
+    // A loaded machine (several builders at once) is slow, not broken.
+    context.setDefaultTimeout(90_000);
     const page = await context.newPage();
     const errors: string[] = [];
     page.on("pageerror", (error) => errors.push(error.message));
@@ -462,7 +488,14 @@ for (const width of widths)
     // and the wait are in their final places from the first frame.
     for (const type of [longTitle, templates.find((t) => t.id === filmed)!]) {
       const wrapping = await context.newPage();
-      await fixture(wrapping, { holdCatalog: 1200, holdLessons: 3000 });
+      // Each response waits until the test lets it go, however slow the
+      // machine.
+      let releaseCatalog!: () => void;
+      let releaseLesson!: () => void;
+      await fixture(wrapping, {
+        catalogGate: new Promise<void>((r) => (releaseCatalog = r)),
+        lessonGate: new Promise<void>((r) => (releaseLesson = r)),
+      });
       await wrapping.goto(`${origin}/pathways?open=lesson:${type.id}`);
       const longDialog = wrapping.getByRole("dialog", {
         name: "Explore a problem type",
@@ -480,19 +513,26 @@ for (const width of widths)
       };
       await longDialog.waitFor();
       const first = await parts();
+      if (!first.wait) await shot(wrapping, `debug-no-wait-${tag}`);
       assert(
         first.title && first.watch && first.wait,
-        `${tag}: all there at once`,
+        `${tag}: all there at once ${JSON.stringify(first)}`,
       );
       if (type === longTitle && width < 1280)
         assert(first.title.height > 40, `${tag}: the title wraps`);
       // The catalog is in; the lesson is still on its way.
-      await wrapping.waitForTimeout(1600);
+      const catalogIn = wrapping.waitForResponse((r) =>
+        r.url().endsWith("/api/v1/catalog"),
+      );
+      releaseCatalog();
+      await catalogIn;
+      await wrapping.waitForTimeout(500);
       assert.deepEqual(
         await parts(),
         first,
         `${tag}: nothing moves (${type.id})`,
       );
+      releaseLesson();
       await longDialog.locator(".problem-lesson").waitFor();
       const done = await parts();
       assert.deepEqual(
