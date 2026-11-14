@@ -9,6 +9,11 @@
   justify-content: space-between;
   gap: var(--space-3) var(--space-5);
 }
+/* Nothing to show in the header (the tab names the screen, and a viewer
+   or an aide has no actions): it takes no row of its own. */
+.head:not(:has(.actions > *)):not(:has(.count)) {
+  margin-bottom: calc(-1 * var(--space-5));
+}
 .count {
   margin-top: var(--space-1);
   color: var(--color-muted-text);
@@ -114,6 +119,11 @@
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: var(--space-1) var(--space-3);
+}
+/* Read-only (a viewer, an aide): no Manage, so the name and its facts take
+   the whole row rather than a column beside an empty one. */
+.card:not(:has(.cardAction)) {
+  grid-template-columns: minmax(0, 1fr);
 }
 .cardName {
   font-weight: 600;

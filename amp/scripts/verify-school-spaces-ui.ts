@@ -248,6 +248,35 @@ async function places(page: Page) {
   await page.getByRole("button", { name: "Open AMP menu" }).waitFor();
   return text;
 }
+/** No two text boxes of a roster card overlap, at the narrowest width. */
+async function cardsClear(page: Page, what: string) {
+  const start = page.viewportSize()!;
+  await page.setViewportSize({ width: 320, height: 900 });
+  await settled(page);
+  const clash = await page.evaluate(() => {
+    for (const card of document.querySelectorAll("[class*=card_]")) {
+      const parts = [...card.children].map((node) =>
+        node.getBoundingClientRect(),
+      );
+      for (let a = 0; a < parts.length; a++)
+        for (let b = a + 1; b < parts.length; b++) {
+          const [p, q] = [parts[a]!, parts[b]!];
+          if (
+            p.width &&
+            q.width &&
+            p.left < q.right - 1 &&
+            q.left < p.right - 1 &&
+            p.top < q.bottom - 1 &&
+            q.top < p.bottom - 1
+          )
+            return (card as HTMLElement).innerText.slice(0, 40);
+        }
+    }
+    return null;
+  });
+  assert.equal(clash, null, `${what}: a roster card's parts never overlap`);
+  await page.setViewportSize(start);
+}
 const placeName = (page: Page) =>
   page.locator("[data-place-name]").first().innerText();
 
@@ -739,6 +768,7 @@ try {
       0,
       `a viewer has no ${action}`,
     );
+  await cardsClear(viewer.page, "viewer");
   await capture(viewer.page, "viewer-class");
 
   // An aide in one class: that class's records, no roster changes.
@@ -753,6 +783,7 @@ try {
     0,
     "an aide adds no students",
   );
+  await cardsClear(aide.page, "aide");
   await capture(aide.page, "aide-class");
 
   // A teacher here who also runs the pilot at Birchwood: both places, each
