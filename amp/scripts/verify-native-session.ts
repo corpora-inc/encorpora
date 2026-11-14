@@ -535,8 +535,15 @@ try {
     "UPDATE amp_parent_consents SET withdrawn_at=NULL WHERE account_id=$1",
     [accounts[0]],
   );
+  // Without a license a learner has the free allowance, as on the web
+  // (#2082, #2110); once it is spent, the native identity supplies no
+  // entitlement of its own.
   await repository.pool.query(
     "UPDATE amp_grants SET status='revoked' WHERE learner_id=$1",
+    [learnerA.id],
+  );
+  await repository.pool.query(
+    "UPDATE amp_learners SET free_online_used=100 WHERE id=$1",
     [learnerA.id],
   );
   const unlicensed = await rpc("request", {
@@ -545,8 +552,12 @@ try {
   });
   assert.equal(
     unlicensed.status,
-    403,
+    402,
     "Verified native identity must not supply a learning entitlement",
+  );
+  await repository.pool.query(
+    "UPDATE amp_learners SET free_online_used=0 WHERE id=$1",
+    [learnerA.id],
   );
   await repository.pool.query(
     "UPDATE amp_grants SET status='active' WHERE learner_id=$1",
