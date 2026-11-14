@@ -57,6 +57,8 @@
 
 /* The list: title and lede, the two actions at the end of the row. */
 .listHead {
+  /* Its content's height, never the legacy page header's fixed one. */
+  height: auto;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
@@ -66,6 +68,19 @@
 .listTitle {
   flex: 1 1 320px;
   min-width: 0;
+}
+/* Until the actions fit beside the title with room to spare, they take
+   their own line under it: the same line while the list loads (its
+   skeleton) and after, whether one action lands or two. */
+@media (max-width: 899.98px) {
+  .listHead {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+  }
+  .listTitle {
+    flex: none;
+  }
 }
 .listActions {
   display: flex;
@@ -78,6 +93,16 @@
 .today {
   min-height: var(--target-size);
   padding-inline: var(--space-5);
+}
+/* Today's workbook while the list loads: the button's own size. */
+.actionSkeleton {
+  display: flex;
+}
+.actionSkeleton > span {
+  display: block;
+  width: 190px;
+  height: var(--target-size);
+  border-radius: var(--radius-control);
 }
 .past {
   display: grid;
@@ -92,6 +117,11 @@ h2.sectionTitle {
   font-weight: 650;
   letter-spacing: 0;
 }
+/* None made yet: the empty state sits just under the title, as the list
+   would. */
+.empty > section {
+  padding-block: var(--space-3) var(--space-6);
+}
 .emptyPanel {
   display: flex;
   flex-wrap: wrap;
@@ -101,6 +131,10 @@ h2.sectionTitle {
 }
 .emptyPanel p {
   margin: 0;
+}
+/* Its quiet Try again lines its words up with the message. */
+.emptyPanel .retry {
+  margin-inline: calc(-1 * var(--space-2));
 }
 /* Rows separated by a hairline, on the page (docs/design/ia.md). */
 .list {
@@ -123,9 +157,21 @@ h2.sectionTitle {
 .row + .row {
   border-top: 1px solid var(--color-border);
 }
+/* A row's place while the list loads: its height, as a soft block. */
+.listSkeleton {
+  gap: var(--space-3);
+  padding-block: var(--space-3);
+}
 .listSkeleton .row {
   display: block;
-  border-radius: 0;
+  min-height: 0;
+  height: 68px;
+  margin: 0;
+  padding: 0;
+  border-radius: var(--radius-control);
+}
+.listSkeleton .row + .row {
+  border-top: 0;
 }
 /* The workbook's day as a calendar leaf. */
 .tile {
@@ -505,7 +551,9 @@ h3.optionsTitle {
   .row {
     grid-template-columns: auto minmax(0, 1fr);
     align-items: start;
-    padding: var(--space-4) 0;
+    /* Block only: the row's inline inset (its hover tint) keeps the text on
+       the page's own edge. */
+    padding-block: var(--space-4);
   }
   .rowActions {
     grid-column: 1 / -1;

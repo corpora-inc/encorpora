@@ -74,6 +74,15 @@ function memory() {
             return record;
           },
           setWorkbookPaper: async () => undefined,
+          paperResultCounts: async () => {
+            const counts = new Map<string, number>();
+            for (const { requestId } of attempts) {
+              const [kind, id] = requestId.split(":");
+              if (kind === "paper" && id)
+                counts.set(id, (counts.get(id) ?? 0) + 1);
+            }
+            return counts;
+          },
           attemptByRequest: async (requestId: string) =>
             attempts.find((a) => a.requestId === requestId),
           attemptByProblem: async (problemId: string) =>
@@ -116,6 +125,10 @@ test("results are graded by the app's grader, stored as paper evidence, and idem
       payload: { date: today, minutes: 45, paper: "letter" },
     })
   ).json();
+  // The history says how many results are entered: none yet.
+  const entered = async () =>
+    (await app.inject({ url, headers })).json().workbooks[0].entered;
+  assert.equal(await entered(), 0);
   const view = await app.inject({ url: `${url}/${made.id}/results`, headers });
   assert.equal(view.statusCode, 200, view.body);
   const body = view.json();
@@ -167,6 +180,7 @@ test("results are graded by the app's grader, stored as paper evidence, and idem
   assert.equal(saved.statusCode, 200, saved.body);
   assert.equal(saved.json().recorded, entries.length);
   assert.equal(attempts.length, entries.length);
+  assert.equal(await entered(), entries.length);
   const byN = (n: number) =>
     attempts.find((a) => a.requestId === `paper:${made.id}:${n}`)!;
   const graded = byN(typed + 1);

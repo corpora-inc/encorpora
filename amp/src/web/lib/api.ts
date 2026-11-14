@@ -119,45 +119,113 @@ const messages: Record<string, string> = {
     "Too many requests from this network. Wait a few minutes, then try again.",
 };
 /** What a request was for, so a failure without its own message still says
- * what failed: what didn't load, or what didn't go through. */
-const areas: [RegExp, string, string][] = [
-  [/^\/billing\/(prices|offer)/, "The plans", "Choosing a plan"],
-  [/^\/billing\/status\//, "This learner’s plan", "Checking the plan"],
-  [/^\/billing\/checkout/, "Checkout", "Opening checkout"],
-  [/^\/billing\//, "Billing", "The billing change"],
-  [/^\/family\/second-parent/, "The second parent", "The invitation"],
-  [/^\/family\/approvals/, "The approval", "The approval"],
-  [
-    /^\/family\/learners\/[^/]+\/birth-year/,
-    "Family details",
-    "The birth year change",
-  ],
-  [/^\/family\//, "Family details", "The family change"],
-  [/^\/me\/profiles/, "Practice profiles", "The profile change"],
-  [/^\/me\/practice\/birth-year/, "Your practice", "The change to your start"],
-  [/^\/me\/practice/, "Your practice", "Starting your practice"],
-  [/^\/me(\/|$)/, "Your account", "The account change"],
-  [/^\/start/, "Getting started", "Getting started"],
-  [/^\/school\//, "School details", "The school change"],
-  [/^\/learners\/[^/]+\/workbooks/, "Workbooks", "The workbook"],
-  [/^\/learners\//, "This learner", "The learner change"],
-  [/^\/(problems|practice|attempts|batches)/, "Practice", "Your answer"],
-  [/^\/access/, "Your access", "Activating access"],
-  [/^\/(funding|invoices)/, "The funding request", "The funding request"],
+ * what failed, as one plain sentence: "Couldn’t load <what it reads>." or
+ * "Couldn’t <what it does>." Each part is written to follow those words, so
+ * a plural ("your workbooks") never meets a singular verb. */
+export const failureAreas: readonly {
+  path: RegExp;
+  /** What a read loads, after "Couldn’t load": "your workbooks". */
+  load: string;
+  /** What a change does, after "Couldn’t": "make the workbook". */
+  change: string;
+}[] = [
+  {
+    path: /^\/billing\/(prices|offer)/,
+    load: "the plans",
+    change: "choose that plan",
+  },
+  {
+    path: /^\/billing\/status\//,
+    load: "this learner’s plan",
+    change: "check the plan",
+  },
+  { path: /^\/billing\/checkout/, load: "checkout", change: "open checkout" },
+  { path: /^\/billing\//, load: "billing", change: "save the billing change" },
+  {
+    path: /^\/family\/second-parent/,
+    load: "the invitation",
+    change: "send the invitation",
+  },
+  {
+    path: /^\/family\/approvals/,
+    load: "the approval",
+    change: "save the approval",
+  },
+  {
+    path: /^\/family\/learners\/[^/]+\/birth-year/,
+    load: "the family details",
+    change: "save the birth year",
+  },
+  {
+    path: /^\/family\//,
+    load: "the family details",
+    change: "save the family change",
+  },
+  {
+    path: /^\/me\/profiles/,
+    load: "the practice profiles",
+    change: "save the profile change",
+  },
+  {
+    path: /^\/me\/practice\/birth-year/,
+    load: "your practice",
+    change: "save the change to your start",
+  },
+  {
+    path: /^\/me\/practice/,
+    load: "your practice",
+    change: "start your practice",
+  },
+  {
+    path: /^\/me(\/|$)/,
+    load: "your account",
+    change: "save the account change",
+  },
+  { path: /^\/start/, load: "the setup", change: "finish getting started" },
+  {
+    path: /^\/school\//,
+    load: "the school details",
+    change: "save the school change",
+  },
+  {
+    path: /^\/learners\/[^/]+\/workbooks\/[^/]+\/results/,
+    load: "the workbook’s results",
+    change: "save the results",
+  },
+  {
+    path: /^\/learners\/[^/]+\/workbooks/,
+    load: "the workbooks",
+    change: "make the workbook",
+  },
+  {
+    path: /^\/learners\//,
+    load: "this learner",
+    change: "save the learner change",
+  },
+  {
+    path: /^\/(problems|practice|attempts|batches)/,
+    load: "the next problem",
+    change: "send your answer",
+  },
+  { path: /^\/access/, load: "your access", change: "activate your access" },
+  {
+    path: /^\/(funding|invoices)/,
+    load: "the funding request",
+    change: "send the funding request",
+  },
 ];
-/** The message for a failure the server gave no known code for. */
+/** The message for a failure the server gave no known code for: what
+ * failed, then what to do. */
 export function failureMessage(path: string, method: string, status: number) {
-  const read = method === "GET";
-  const [, thing, change] = areas.find(([pattern]) => pattern.test(path)) ?? [
-    null,
-    "This page",
-    "That change",
-  ];
-  if (status >= 500)
-    return `${read ? thing : change} isn’t available right now. Try again in a moment.`;
-  return read
-    ? `${thing} didn’t load. Try again.`
-    : `${change} didn’t go through. Check what you entered, then try again.`;
+  const area = failureAreas.find(({ path: pattern }) => pattern.test(path));
+  const failed =
+    method === "GET"
+      ? `Couldn’t load ${area?.load ?? "this page"}.`
+      : `Couldn’t ${area?.change ?? "make that change"}.`;
+  if (status >= 500) return `${failed} Try again in a moment.`;
+  return method === "GET"
+    ? `${failed} Try again.`
+    : `${failed} Check what you entered, then try again.`;
 }
 const errorCode = (data: unknown) =>
   data &&

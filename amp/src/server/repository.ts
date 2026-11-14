@@ -255,6 +255,8 @@ export interface LearnerTransaction {
   setWorkbookPaper(id: string, paper: WorkbookRecord["paper"]): Promise<void>;
   /** The workbook printed with this code (newest when codes repeat). */
   workbookByCode(code: string): Promise<WorkbookRecord | undefined>;
+  /** Results entered from paper so far, by workbook id (none: absent). */
+  paperResultCounts(): Promise<Map<string, number>>;
   /** Workbooks made in the last day, whose problems mixed practice holds back. */
   recentWorkbooks(): Promise<WorkbookRecord[]>;
 }
@@ -1265,6 +1267,19 @@ export class PgTransaction implements LearnerTransaction {
       [this.learnerId, code],
     );
     return result.rows[0] ? workbookRow(result.rows[0]) : undefined;
+  }
+  async paperResultCounts() {
+    // Paper results are attempts with request ids `paper:<workbook>:<n>`
+    // (workbook/results.ts), read with the learner's own index.
+    const result = await this.db.query(
+      `SELECT split_part(request_id,':',2) AS id,count(*)::int AS entered
+        FROM amp_attempts WHERE learner_id=$1 AND request_id LIKE 'paper:%'
+        GROUP BY 1`,
+      [this.learnerId],
+    );
+    return new Map(
+      result.rows.map((row) => [row.id as string, row.entered as number]),
+    );
   }
   async recentWorkbooks() {
     const result = await this.db.query(
