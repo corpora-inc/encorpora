@@ -199,8 +199,12 @@ function SettingRow<K extends ExperienceKey>({
                 }
               : undefined
           }
-        >
-          {experience.canLock && !lockedAbove && (
+        />
+        {/* The lock on a line of its own, always there for whoever can
+            lock: beside "Use …" it would not fit the action column, and a
+            label that wraps or a row that grows moves the controls. */}
+        {experience.canLock && !lockedAbove && (
+          <div className={styles.lockRow}>
             <Button
               variant="quiet"
               className={styles.lock}
@@ -213,8 +217,8 @@ function SettingRow<K extends ExperienceKey>({
                 ? "Locked for everyone below"
                 : "Lock for everyone below"}
             </Button>
-          )}
-        </SettingMeta>
+          </div>
+        )}
       </div>
     </section>
   );
