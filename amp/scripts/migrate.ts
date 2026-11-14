@@ -24,6 +24,19 @@ export function concurrentIndexes(sql: string) {
     return { name: match[1]!.toLowerCase(), statement };
   });
 }
+/** Renumbered before release, so production never applied the earlier names.
+ * A development or preview database that did keeps its schema: the receipt
+ * moves to the new name when the file's content is unchanged. */
+export const renamedMigrations: Readonly<Record<string, string>> = {
+  "0126-family-spaces.sql": "0125-family-spaces.sql",
+  "0127-course-start.sql": "0126-course-start.sql",
+  "0128-family-history-indexes.sql": "0127-family-history-indexes.sql",
+  "0129-family-display-name.sql": "0128-family-display-name.sql",
+  "0130-family-identity-fallback.sql": "0129-family-identity-fallback.sql",
+  "0131-family-discovery-index.sql": "0130-family-discovery-index.sql",
+  "0132-funded-term-schedule.sql": "0131-funded-term-schedule.sql",
+  "0133-level-practice.sql": "0132-level-practice.sql",
+};
 export async function migrate(connectionString: string) {
   for (let attempt = 0; ; attempt++) {
     try {
@@ -56,6 +69,15 @@ async function migrateOnce(connectionString: string) {
       .sort()) {
       const sql = await readFile(new URL(name, directory), "utf8");
       const checksum = createHash("sha256").update(sql).digest("hex");
+      const earlier = renamedMigrations[name];
+      // Applied under its earlier name: adopt that receipt. Its checksum is
+      // still compared below, so a changed file fails as before.
+      if (earlier)
+        await client.query(
+          `UPDATE amp_migrations SET name=$1 WHERE name=$2
+             AND NOT EXISTS (SELECT 1 FROM amp_migrations WHERE name=$1)`,
+          [name, earlier],
+        );
       const old = await client.query(
         "SELECT checksum FROM amp_migrations WHERE name=$1",
         [name],

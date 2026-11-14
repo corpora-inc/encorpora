@@ -509,9 +509,9 @@ label as the person's name.
 
 ## First course placement and deployment
 
-Run `npm run db:migrate` before serving these endpoints. Migrations 0125–0130
+Run `npm run db:migrate` before serving these endpoints. Migrations 0126–0131
 install the identity/name schema, deterministic identity hooks and concurrent
-class-to-family lookup index. Migration 0131 adds nullable funded-term scheduling
+class-to-family lookup index. Migration 0132 adds nullable funded-term scheduling
 evidence to the financial request; apply it before running the funding workers.
 The runner automatically performs the family identity
 data migration after committing all schema transactions. No separate operator
