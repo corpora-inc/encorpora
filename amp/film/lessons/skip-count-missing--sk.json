@@ -1,6 +1,8 @@
 {
   "id": "skip-count-missing--sk",
   "title": "Skip-counting: watch the digit that moves",
+  "teaches": [],
+  "skill": "skip-counting",
   "cast": {
     "teacher": {},
     "learner": {}

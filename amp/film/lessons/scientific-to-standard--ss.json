@@ -1,9 +1,8 @@
 {
   "id": "scientific-to-standard--ss",
   "title": "Scientific notation",
-  "teaches": [
-    "mcas-sci-notation-select"
-  ],
+  "teaches": ["mcas-sci-notation-select", "standard-to-scientific"],
+  "skill": "scientific-notation",
   "cast": {
     "teacher": {}
   },

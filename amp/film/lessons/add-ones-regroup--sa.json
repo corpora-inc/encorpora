@@ -1,6 +1,8 @@
 {
   "id": "add-ones-regroup--sa",
   "title": "Ten ones make a new ten",
+  "teaches": [],
+  "skill": "add-two-digit",
   "cast": {
     "teacher": {},
     "learner": {}

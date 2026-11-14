@@ -1,7 +1,8 @@
 {
   "id": "linear-model-equation--sm",
   "title": "From a story to a linear equation",
-  "teaches": ["interpret-linear-parameters", "fee-rule-choice"],
+  "teaches": ["interpret-linear-parameters", "fee-rule-choice", "linear-model-value"],
+  "skill": "linear-equation-modeling",
   "cast": {"teacher":{}},
   "shots": [
     {

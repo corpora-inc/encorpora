@@ -1,7 +1,8 @@
 {
  "id": "repeating-decimal-to-fraction--sr",
  "title": "Why repeating decimals are fractions",
- "teaches": [],
+ "teaches": ["classify-real-number"],
+ "skill": "irrational-numbers",
  "cast": {
   "teacher": {}
  },

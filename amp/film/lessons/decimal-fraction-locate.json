@@ -1,6 +1,7 @@
 {
   "id": "decimal-fraction-locate",
   "title": "Locate a decimal or a fraction",
+  "teaches": ["decimal-line-point"],
   "seed": "film",
   "shots": [
     {

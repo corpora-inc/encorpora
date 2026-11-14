@@ -1,6 +1,8 @@
 {
   "id": "mental-ten-hundred--sm",
   "title": "Ten or a hundred more or less",
+  "teaches": [],
+  "skill": "mental-tens-hundreds",
   "cast": {
     "teacher": {},
     "learner": {}

@@ -2,6 +2,7 @@
   "id": "cylinder-volume--sc",
   "title": "A cylinder is a circle, stacked",
   "teaches": ["cylinder-volume-slots"],
+  "skill": "curved-solid-volume",
   "cast": {
     "teacher": {}
   },

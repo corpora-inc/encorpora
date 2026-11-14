@@ -1,6 +1,8 @@
 {
   "id": "quadratic-vertex",
   "title": "Quadratic minimum",
+  "teaches": [],
+  "skill": "quadratic-minimum",
   "seed": "film",
   "shots": [
     {

@@ -1,7 +1,8 @@
 {
   "id": "solid-bottom-face-shape--ss",
   "title": "Name a solid by its faces",
-  "teaches": [],
+  "teaches": ["solid-figure-select", "solid-property-select", "solid-parts"],
+  "skill": "polygon-properties",
   "cast": {
     "teacher": {},
     "learner": {}

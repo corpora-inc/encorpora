@@ -1,10 +1,8 @@
 {
   "id": "compare-two-digit--sc",
   "title": "Tens first",
-  "teaches": [
-    "open-number-line-to-120",
-    "two-digit-symbol"
-  ],
+  "teaches": ["open-number-line-to-120", "two-digit-symbol"],
+  "skill": "compare-two-digit",
   "cast": {
     "teacher": {},
     "learner": {}

@@ -1,9 +1,8 @@
 {
   "id": "tens-ones-model--st",
   "title": "Tens and ones",
-  "teaches": [
-    "continue-count-to-120"
-  ],
+  "teaches": ["continue-count-to-120"],
+  "skill": "tens-and-ones",
   "cast": {
     "teacher": {},
     "learner": {}
