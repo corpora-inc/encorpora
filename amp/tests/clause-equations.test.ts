@@ -1,3 +1,4 @@
+import { normalizeTrailingMath } from "../src/content/prompt-structure";
 import assert from "node:assert/strict";
 import test from "node:test";
 import { generateProblem, gradeAnswer } from "../src/math/engine";
@@ -17,7 +18,7 @@ function chosen(problem: ReturnType<typeof generateProblem>, blank: string) {
   return row.options.find((o) => o.id === key[blank])!.label;
 }
 
-test("classic clause draws match version 1 byte for byte", () => {
+test("classic clause draws preserve version 1 content apart from display punctuation", () => {
   for (const id of [
     "unknown-addend-story",
     "substitution-match-table",
@@ -28,9 +29,17 @@ test("classic clause draws match version 1 byte for byte", () => {
     for (const seed of seeds(80, `classic-${id}`)) {
       const current = generateProblem(id, seed);
       if (current.variant?.axes && "clause" in current.variant.axes) continue;
-      // The same problem; each records the version it was generated at.
+      // Frozen text retains its punctuation; current prompts omit it after a
+      // display. Compare every other byte, recording the same version.
+      const frozen = generateProblem(id, seed, 1);
       assert.deepEqual(
-        generateProblem(id, seed, 1),
+        {
+          ...frozen,
+          public: {
+            ...frozen.public,
+            prompt: normalizeTrailingMath(frozen.public.prompt),
+          },
+        },
         asRecorded(current, 1),
         `${id} ${seed}`,
       );
