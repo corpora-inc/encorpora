@@ -42,13 +42,17 @@ export function useClassAccess(place: Place): {
     refetchOnMount: false,
   }).data;
   const school = org?.kind === "school" && !org.demo;
+  const teaches = org?.teaches?.includes(place.class) ?? false;
+  // Only someone the server lets read the class's pilot asks for it: its
+  // teacher, or an administrator. A viewer or an aide would only be
+  // refused, and a refused read would hold the screen's wait forever.
+  const readable = teaches || (org?.can?.includes("pilot.read") ?? false);
   const query = useQuery({
     ...pilotOptions(session, place.class),
-    enabled: school,
+    enabled: school && readable,
   });
   const pilot = query.data;
-  const teaches = org?.teaches?.includes(place.class) ?? false;
-  const pending = !org || (school && query.isPending);
+  const pending = !org || (school && readable && query.isPending);
   if (!school || !pilot)
     return { view: { kind: "none" }, pilot, teaches, pending };
   return {

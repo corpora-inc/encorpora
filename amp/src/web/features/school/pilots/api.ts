@@ -55,8 +55,14 @@ export async function preloadClassPilot(
   classId: string,
 ) {
   const org = (await preload(orgOptions(session, orgId))) as
-    { kind?: string; demo?: boolean } | undefined;
-  if (org?.kind === "school" && !org.demo)
+    | { kind?: string; demo?: boolean; teaches?: string[]; can?: string[] }
+    | undefined;
+  // As `useClassAccess`: only for someone the server lets read it.
+  if (
+    org?.kind === "school" &&
+    !org.demo &&
+    (org.teaches?.includes(classId) || org.can?.includes("pilot.read"))
+  )
     await preload(pilotOptions(session, classId));
 }
 const purchaseRequestSchema = z.object({
