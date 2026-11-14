@@ -24,33 +24,21 @@ import styles from "./Family.module.css";
 type Levels = Experience["settings"]["levels"]["value"];
 type Devices = Experience["settings"]["deviceMode"]["value"];
 
-const LEVELS: { value: Levels; label: string; detail: string }[] = [
-  {
-    value: "hidden",
-    label: "Hidden",
-    detail: "No child sees a grade level while they practice.",
-  },
-  {
-    value: "choice",
-    label: "Their choice",
-    detail: "Each child decides whether to see their own level.",
-  },
-  {
-    value: "shown",
-    label: "Shown",
-    detail: "Each child sees their own working level as it grows.",
-  },
+const LEVELS: { value: Levels; label: string }[] = [
+  { value: "hidden", label: "Hidden" },
+  { value: "choice", label: "Their choice" },
+  { value: "shown", label: "Shown" },
 ];
 const DEVICES: { value: Devices; label: string; detail: string }[] = [
   {
     value: "shared",
     label: "Shared",
-    detail: "On a shared device a child is signed out after 30 idle minutes.",
+    detail: "Signs out after 30 idle minutes",
   },
   {
     value: "personal",
     label: "Their own",
-    detail: "On their own device a child stays signed in for 90 days.",
+    detail: "Stays signed in for 90 days",
   },
 ];
 
@@ -122,7 +110,7 @@ export function FamilyPracticeDefaults({ place }: { place: FamilyPlace }) {
       <h2 id="family-practice">Practice</h2>
       <p className={styles.footnote} data-practice-scope="">
         {shared
-          ? "Your tutoring group shares these, so they’re set with the group, for everyone in it."
+          ? "Your tutoring group shares these."
           : practiceScopeLine(
               inClass.map((child) => child.name),
               elsewhere.map((child) => child.name),
@@ -250,9 +238,6 @@ export function ChildPracticeSettings({
             <div className={switches.row} aria-busy="true" data-switch-wait="">
               <span className={switches.text}>
                 <span>Working together</span>
-                <small className={switches.detail}>
-                  A grown-up is helping {child.name} with these problems
-                </small>
               </span>
               {/* The moving wave where the switch will be, the same width. */}
               <span className={switches.track} data-switch-loading="">
@@ -262,7 +247,6 @@ export function ChildPracticeSettings({
           ) : (
             <Switch
               label="Working together"
-              detail={`A grown-up is helping ${child.name} with these problems`}
               checked={data.workingTogether}
               busy={busy}
               onChange={(on) => void change({ kind: "together", enabled: on })}
@@ -274,7 +258,6 @@ export function ChildPracticeSettings({
         <div className={styles.setting}>
           <div className={styles.settingText}>
             <dt>Focused practice</dt>
-            <dd>One skill at a time, until it’s cleared</dd>
           </div>
           <div className={styles.settingAction}>
             <button

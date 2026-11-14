@@ -303,10 +303,7 @@ export function FamilyTodayScreen() {
                     Add your kids
                   </Button>
                 }
-              >
-                Each child gets their own place to start, their own map and
-                their own record.
-              </EmptyState>
+              />
             ) : (
               <EmptyState title="No children here yet">
                 The parent who invited you adds the children.
@@ -380,7 +377,7 @@ export function FamilyTodayScreen() {
                         meta={
                           practiceSelf
                             ? "Levels, practice and workbooks"
-                            : "Free for you, with your children’s plan"
+                            : "Free with your children’s plan"
                         }
                         data-practice-self=""
                         onClick={() =>

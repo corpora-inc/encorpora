@@ -514,7 +514,6 @@ function ChildSettings({
           <div className={styles.setting}>
             <div className={styles.settingText}>
               <dt>Consent</dt>
-              <dd>What you agreed to for your children, and withdrawing it</dd>
             </div>
             <div className={styles.settingAction}>
               <Link

@@ -99,9 +99,7 @@ function YourName({ place }: { place: FamilyPlace }) {
       <div className={styles.settingText}>
         <dt>{known ?? "Your name"}</dt>
         <dd>
-          {known
-            ? "You. Other parents see this name."
-            : "Other parents see it when you invite them."}
+          {known ? "Your name" : "Other parents see it."}
         </dd>
       </div>
       <div className={styles.settingAction}>
@@ -135,8 +133,7 @@ function SecondParentSection({ place }: { place: FamilyPlace }) {
       </h2>
       {second.isSuccess && !second.data && (
         <p className={people.lead}>
-          The other parent sees each child’s progress, lets them practice here
-          and practices free.
+          They see each child’s progress and practice free.
         </p>
       )}
       <ul className={`${rowStyles.children} ${people.rows}`}>
@@ -216,7 +213,6 @@ export function FamilyPeopleScreen() {
                 <div className={styles.setting}>
                   <div className={styles.settingText}>
                     <dt>Each child’s progress</dt>
-                    <dd>Their levels, their weeks and their work, on Today</dd>
                   </div>
                   <div className={styles.settingAction}>
                     <Link
@@ -233,7 +229,7 @@ export function FamilyPeopleScreen() {
                     <dt>Practice on this device</dt>
                     <dd>
                       {data.children[0]
-                        ? `“Let ${data.children[0].name} practice here” on Today starts them here`
+                        ? `“Let ${data.children[0].name} practice here” on Today`
                         : "Each child starts from Today"}
                     </dd>
                   </div>
@@ -242,7 +238,7 @@ export function FamilyPeopleScreen() {
                   <div className={styles.setting}>
                     <div className={styles.settingText}>
                       <dt>Your own practice</dt>
-                      <dd>Free for you, with the family’s plan</dd>
+                      <dd>Free with the family’s plan</dd>
                     </div>
                     <div className={styles.settingAction}>
                       <Link
@@ -335,8 +331,8 @@ function SchoolYear({ place }: { place: FamilyPlace }) {
       </dl>
       <p className={styles.footnote}>
         {shared
-          ? "Your tutoring group shares this year, so its dates are changed with the group, for everyone in it."
-          : "Report cards and the time records count from the first day."}
+          ? "Your tutoring group shares these dates."
+          : "Report cards and time count from the first day."}
       </p>
       {shared && org.data.can.includes("calendar.write") && (
         <Link
@@ -404,8 +400,7 @@ function FamilyCode({ place }: { place: FamilyPlace }) {
       </dl>
       {shared && (
         <p className={styles.footnote} data-shared-code="">
-          This code is your tutoring group’s too. A new one is made there, for
-          everyone in the group.
+          Your tutoring group shares this code. Replace it there.
         </p>
       )}
     </section>
@@ -479,31 +474,12 @@ export function FamilySettingsScreen() {
           <FamilyPracticeDefaults place={place} />
           <section className={styles.section} aria-labelledby="family-account">
             <h2 id="family-account">Your account</h2>
-            <p className={styles.footnote}>
-              These cover everything you do in AMP, not only this family.
-            </p>
             <RowList label="Your account">
               {data.capabilities.manageBilling && (
-                <RowLink
-                  title="Billing"
-                  meta="Plans, payments and receipts"
-                  to="account/billing"
-                />
+                <RowLink title="Billing" to="account/billing" />
               )}
-              <RowLink
-                title="Privacy"
-                meta={
-                  data.capabilities.manageConsent
-                    ? "Consent, your data and deleting it"
-                    : "Your data and deleting it"
-                }
-                to="account/privacy"
-              />
-              <RowLink
-                title="Sign-in"
-                meta="Your email, password and passkeys"
-                to="account/security"
-              />
+              <RowLink title="Privacy" to="account/privacy" />
+              <RowLink title="Sign-in" to="account/security" />
             </RowList>
           </section>
           {add && consented && (
@@ -574,9 +550,6 @@ export function TutoringGroupScreen() {
         <div className={styles.page} data-tutoring-group="">
           <header className={styles.head}>
             <h1>{t.class.name}</h1>
-            <p className={styles.sub}>
-              The whole group, including other families’ children
-            </p>
           </header>
           {/* One list: each student once, another family's child with where
               their parent's approval stands and its one action. */}
