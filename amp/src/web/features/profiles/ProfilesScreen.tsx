@@ -87,11 +87,8 @@ export function ProfilesScreen() {
               </li>
             ))}
           </ul>
-        ) : (
-          <p className={styles.listEmpty}>
-            Saved levels appear here, so you can come back to them.
-          </p>
-        )}
+        ) : // None saved yet: the line above already says what goes here.
+        null}
       </div>
     </main>
   );
