@@ -20,12 +20,16 @@ export function OptionList<V extends string>({
   value,
   onChange,
   disabled = false,
+  busy = false,
 }: {
   label: string;
   options: readonly Option<V>[];
   value: V | null;
   onChange: (value: V) => void;
   disabled?: boolean;
+  /** A choice is saving: the list takes no new one, but keeps the focus
+   * where it is (never a native disable, which would drop it). */
+  busy?: boolean;
 }) {
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
   const chosen = options.findIndex((option) => option.value === value);
@@ -44,6 +48,7 @@ export function OptionList<V extends string>({
             : (at + step + options.length) % options.length;
     if (next === null) return;
     event.preventDefault();
+    if (busy) return;
     refs.current[next]?.focus();
     onChange(options[next]!.value);
   };
@@ -52,6 +57,7 @@ export function OptionList<V extends string>({
       role="radiogroup"
       aria-label={label}
       aria-disabled={disabled || undefined}
+      aria-busy={busy || undefined}
       className={styles.list}
     >
       {options.map((option, index) => (
@@ -66,7 +72,9 @@ export function OptionList<V extends string>({
           tabIndex={index === stop ? 0 : -1}
           disabled={disabled}
           className={styles.option}
-          onClick={() => onChange(option.value)}
+          onClick={() => {
+            if (!busy && option.value !== value) onChange(option.value);
+          }}
           onKeyDown={(event) => move(event, index)}
         >
           <span className={styles.mark} aria-hidden="true" />

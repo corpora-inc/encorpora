@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { EntityLink } from "../../../nav/links";
 import { ScreenTitle } from "../../../ui/ScreenTitle";
 import { useQuery } from "@tanstack/react-query";
@@ -323,7 +324,26 @@ function DaySheet({
 
 /** Minutes per student over days or weeks, as one grid of one hue: who's working
  * and when reads at a glance, with the numbers a hover away and in the export. */
-export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
+/** What a host adds to Time beyond its class: people of its own who practice
+ * elsewhere (a family's child in another group), for the same range, with
+ * their minutes in the page's totals. */
+export type TimeExtra = (range: {
+  period: TimePeriod;
+  from: string;
+  to: string;
+}) => {
+  node: ReactNode;
+  /** Their active minutes over the range. */
+  minutes: number;
+  /** How many of them, and how many practiced in the range. */
+  count: number;
+  working: number;
+};
+
+export function TimeScreen({
+  host: given,
+  extra,
+}: { host?: ClassHost; extra?: TimeExtra } = {}) {
   // The class's own Time, or a host's (a family's own children, in its
   // words): the same range, measure, day sheet and export.
   const host = useClassHost(given);
@@ -474,11 +494,16 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
     0,
   );
   const working = (data?.students ?? []).filter((row) => row.minutes > 0);
+  // A host's own people elsewhere, over this same range: in the totals too.
+  const more = data
+    ? extra?.({ period, from: data.range.from, to: data.range.to })
+    : undefined;
+  const allMinutes = totalMinutes + (more?.minutes ?? 0);
   const facts = data && (
     <StatRow>
-      <StatTile value={number(totalMinutes)} label="active minutes" />
+      <StatTile value={number(allMinutes)} label="active minutes" />
       <StatTile
-        value={`${working.length} of ${data.students.length}`}
+        value={`${working.length + (more?.working ?? 0)} of ${data.students.length + (more?.count ?? 0)}`}
         label={
           family ? "children with active time" : "students with active time"
         }
@@ -556,30 +581,33 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
               )}
             </div>
           </div>
-          {data.students.length === 0 || totalMinutes === 0 ? (
-            <div className={styles.gradeEmpty}>
-              <EmptyState
-                title={
-                  period === "week"
-                    ? "No practice time this week yet"
-                    : "No practice time yet"
-                }
-                example={<ExampleTime />}
-                action={
-                  <Link
-                    to="/$"
-                    params={{
-                      _splat: family
-                        ? host.href("today")
-                        : classUrl(place.org, place.class, "start"),
-                    }}
-                    className={buttonClass("primary")}
-                  >
-                    {family ? "Back to Today" : "Start class"}
-                  </Link>
-                }
-              />
-            </div>
+          {data.students.length === 0 || allMinutes === 0 ? (
+            <>
+              <div className={styles.gradeEmpty}>
+                <EmptyState
+                  title={
+                    period === "week"
+                      ? "No practice time this week yet"
+                      : "No practice time yet"
+                  }
+                  example={<ExampleTime />}
+                  action={
+                    <Link
+                      to="/$"
+                      params={{
+                        _splat: family
+                          ? host.href("today")
+                          : classUrl(place.org, place.class, "start"),
+                      }}
+                      className={buttonClass("primary")}
+                    >
+                      {family ? "Back to Today" : "Start class"}
+                    </Link>
+                  }
+                />
+              </div>
+              {more?.node}
+            </>
           ) : (
             <>
               <div className={styles.timeFacts}>
@@ -686,6 +714,7 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
                   )}
                 />
               </TipZone>
+              {more?.node}
               {whole && data.skills.some((skill) => skill.minutes > 0) && (
                 <section className={styles.timeSkills}>
                   <h2>Where the time went</h2>

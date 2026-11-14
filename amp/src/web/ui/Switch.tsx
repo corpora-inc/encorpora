@@ -13,6 +13,7 @@ export function Switch({
   label,
   detail,
   disabled = false,
+  busy = false,
 }: {
   checked: boolean;
   onChange: (checked: boolean) => void;
@@ -20,6 +21,9 @@ export function Switch({
   /** One quiet line under the label. */
   detail?: ReactNode;
   disabled?: boolean;
+  /** Its change is saving: it takes no new one but keeps the focus (a
+   * native disable would drop it). */
+  busy?: boolean;
 }) {
   const id = useId();
   return (
@@ -31,7 +35,10 @@ export function Switch({
       aria-label={label}
       aria-describedby={detail ? `${id}-detail` : undefined}
       disabled={disabled}
-      onClick={() => onChange(!checked)}
+      aria-busy={busy || undefined}
+      onClick={() => {
+        if (!busy) onChange(!checked);
+      }}
     >
       <span className={styles.text} aria-hidden="true">
         <span>{label}</span>

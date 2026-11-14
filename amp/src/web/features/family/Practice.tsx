@@ -7,6 +7,7 @@ import { buttonClass } from "../../ui/Button";
 import { Button } from "../../ui/Button";
 import { OptionList } from "./OptionList";
 import switches from "../../ui/Switch.module.css";
+import { Loading } from "../../ui/Loading";
 import { Switch } from "../../ui/Switch";
 import { Toast } from "../../ui/Toast";
 import {
@@ -141,13 +142,19 @@ export function FamilyPracticeDefaults({ place }: { place: FamilyPlace }) {
             <>
               <div>
                 <h3 className={styles.label} id="practice-levels">
-                  Grade levels
+                  Grade levels{" "}
+                  {/* The saved choices are on their way: the wave beside the
+                      heading, the lists already in their places. */}
+                  {experience.isPending && (
+                    <Loading inline>Reading what’s saved</Loading>
+                  )}
                 </h3>
                 <OptionList
                   label="Grade levels"
                   options={LEVELS}
                   value={levels}
-                  disabled={!editable || write.isPending}
+                  disabled={!editable}
+                  busy={write.isPending}
                   onChange={(value) => set("levels", value)}
                 />
               </div>
@@ -159,7 +166,8 @@ export function FamilyPracticeDefaults({ place }: { place: FamilyPlace }) {
                   label="Devices"
                   options={DEVICES}
                   value={devices}
-                  disabled={!editable || write.isPending}
+                  disabled={!editable}
+                  busy={write.isPending}
                   onChange={(value) => set("deviceMode", value)}
                 />
               </div>
@@ -245,7 +253,7 @@ export function ChildPracticeSettings({
               label="Working together"
               detail={`A grown-up is helping ${child.name} with these problems`}
               checked={data.workingTogether}
-              disabled={busy}
+              busy={busy}
               onChange={(on) => void change({ kind: "together", enabled: on })}
             />
           )}

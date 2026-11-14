@@ -365,3 +365,32 @@ export function landingFamily(places: FamilyPlaces | null | undefined) {
   if (own) return own.familyId;
   return parents.length === 1 ? parents[0]!.familyId : null;
 }
+
+/** The family's own children who aren't in its own class: each practices
+ * in another family's group, so the class's own reports never read them. */
+export function childrenElsewhere<
+  T extends { classes: readonly { id: string }[] },
+>(children: readonly T[], classId: string | null): T[] {
+  return children.filter(
+    (child) => !classId || !child.classes.some((entry) => entry.id === classId),
+  );
+}
+
+/** A child's active minutes over a range, from their weeks (each week
+ * counted when it starts within the range). */
+export function minutesIn(
+  weeks: readonly { week: string; minutes: number }[],
+  range: { from: string; to: string },
+): number {
+  return weeks
+    .filter(
+      (entry) => entry.week >= weekStart(range.from) && entry.week <= range.to,
+    )
+    .reduce((sum, entry) => sum + entry.minutes, 0);
+}
+/** The Monday that starts the week a day is in. */
+function weekStart(day: string): string {
+  const at = new Date(`${day}T00:00:00Z`);
+  const back = (at.getUTCDay() + 6) % 7;
+  return new Date(at.getTime() - back * 86_400_000).toISOString().slice(0, 10);
+}

@@ -10,7 +10,11 @@ import {
 import { shellFrame } from "../src/web/features/navigation/shell-frame.js";
 import { spaceOfPath } from "../src/web/features/spaces/space.js";
 import { placeGroups } from "../src/web/features/spaces/places.js";
-import { landingFamily } from "../src/web/features/family/redirects.js";
+import {
+  childrenElsewhere,
+  landingFamily,
+  minutesIn,
+} from "../src/web/features/family/redirects.js";
 import { sharedAccessOf } from "../src/web/features/family/access.js";
 
 /*
@@ -599,4 +603,49 @@ test("one access line only when every child's access ends the same printed day, 
     ),
     null,
   );
+});
+
+test("Family Time reads every owned child: the class's, and each one practicing elsewhere", () => {
+  const local = kid("local", "Local", {
+    classes: [
+      {
+        id: A_CLASS,
+        name: "Pell class",
+        orgId: A,
+        personId: ID(90),
+        hostedByFamily: true,
+        canOpen: true,
+      },
+    ],
+  });
+  const hosted = kid("hosted", "Hosted", {
+    classes: [
+      {
+        id: B_CLASS,
+        name: "Tutor's class",
+        orgId: B,
+        personId: ID(91),
+        hostedByFamily: false,
+        canOpen: false,
+      },
+    ],
+  });
+  assert.deepEqual(
+    childrenElsewhere([local, hosted], A_CLASS).map((child) => child.id),
+    ["hosted"],
+  );
+  // Without a class of its own, every child is elsewhere.
+  assert.deepEqual(
+    childrenElsewhere([local, hosted], null).map((child) => child.id),
+    ["local", "hosted"],
+  );
+  // Their minutes over the page's range, by the week each started in.
+  const weeks = [
+    { week: "2026-10-12", minutes: 5 },
+    { week: "2026-10-19", minutes: 7 },
+    { week: "2026-11-09", minutes: 16 },
+  ];
+  assert.equal(minutesIn(weeks, { from: "2026-11-09", to: "2026-11-14" }), 16);
+  assert.equal(minutesIn(weeks, { from: "2026-10-21", to: "2026-11-14" }), 23);
+  assert.equal(minutesIn(weeks, { from: "2026-01-01", to: "2026-11-14" }), 28);
 });
