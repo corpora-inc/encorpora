@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import {
   Component,
   lazy,
@@ -15,17 +15,10 @@ import type { SignedInMe } from "../../account/contracts";
 import { nativeRuntime } from "../native-runtime";
 import { meOptions, sessionOptions } from "../lib/query";
 import { useLearnerStore } from "../learner-store";
-import { practicingAsAdult } from "../lib/adult-learner";
 import { useShellSlots } from "../lib/shell-slots";
-import {
-  accountTabs,
-  progressTabs,
-  shellFrame,
-  type ProgressContext,
-  type ShellFrame,
-} from "../features/navigation/shell-frame";
-import { usePlaceEntries } from "../features/navigation/PlaceSwitcher";
-import { useSchoolNavigation } from "../features/navigation/school-navigation";
+import { usePlaces } from "../features/navigation/PlaceSwitcher";
+import type { SpaceDescriptor } from "../features/spaces/resolve";
+import { useSettledMatch, useSpace } from "../features/spaces/useSpace";
 import { DemoMark } from "../features/school/demo/DemoMark";
 import { DemoSetupAction } from "../features/school/demo/DemoPlace";
 import {
@@ -68,78 +61,37 @@ const preloadScreens = () =>
 export function AppShell({ children }: { children: ReactNode }) {
   const triggerRef = useRef<HTMLButtonElement>(null);
   const session = useQuery(sessionOptions);
-  const settled = useRouterState({
-    select: (state) => {
-      const leaf = state.matches.at(-1);
-      if (!leaf || leaf.status !== "success") return null;
-      return leaf.pathname;
-    },
-  });
-  const last = useRef<string | null>(null);
-  if (settled !== null) last.current = settled;
-  const shown = settled ?? last.current;
-  const pathname = shown ?? "";
-  const fromClass = useRouterState({
-    select: (state) => {
-      const value = (state.location.search as Record<string, unknown>).class;
-      return typeof value === "string" ? value : undefined;
-    },
-  });
-  const pathFrame =
-    !nativeRuntime && session.data && shown
-      ? shellFrame(pathname, fromClass)
-      : null;
+  const match = useSettledMatch();
+  // The space of the screen on view (features/spaces): its bar, tabs,
+  // actions, drawer and words all come from this one description.
+  const resolved = useSpace(nativeRuntime ? null : match);
+  const space = session.data && resolved?.bar ? resolved : null;
+  const pathname = match?.pathname ?? "";
   const setDrawerOpen = useShellSlots((state) => state.setDrawerOpen);
   // A screen change closes the drawer (a link inside it, or Back).
   useEffect(() => setDrawerOpen(false), [pathname, setDrawerOpen]);
-  const context = useProgressContext(!!pathFrame);
-  // The adult's own workbooks are a place of their own, under Practice in
-  // the drawer (docs/design/ia.md): the plain bar with its Practice, no
-  // Progress tabs. A child's keep their Progress frame.
-  const ownId = context.me?.adultPractice?.learner?.id;
-  const frame: ShellFrame | null =
-    pathFrame?.kind === "progress" &&
-    ownId &&
-    (pathname === `/learners/${ownId}/workbooks` ||
-      pathname.startsWith(`/learners/${ownId}/workbooks/`))
-      ? { kind: "plain", practice: true }
-      : pathFrame;
   const framed = useRef(false);
-  if (frame) framed.current = true;
+  if (space) framed.current = true;
   useEffect(() => {
-    if (frame) void preloadScreens();
-  }, [!!frame]);
+    if (space) void preloadScreens();
+  }, [!!space]);
   return (
     <div
-      className={frame ? styles.frame : styles.bare}
-      data-app-frame={frame?.kind}
-      data-tabs={
-        frame?.kind === "progress" ||
-        frame?.kind === "account" ||
-        frame?.kind === "class" ||
-        frame?.kind === "school"
-          ? ""
-          : undefined
-      }
+      className={space ? styles.frame : styles.bare}
+      data-app-frame={space?.space}
+      data-tabs={space?.bar === "tabs" ? "" : undefined}
     >
-      {frame && (
-        <ShellBar
-          frame={frame}
-          context={context.kind}
-          me={context.me}
-          triggerRef={triggerRef}
-        />
-      )}
+      {space && <ShellBar space={space} triggerRef={triggerRef} />}
       <div
-        className={frame ? styles.content : styles.bare}
-        data-shell-content={frame ? "" : undefined}
+        className={space ? styles.content : styles.bare}
+        data-shell-content={space ? "" : undefined}
       >
         {children}
       </div>
       {framed.current && (
         <DrawerRecovery>
           <Suspense fallback={null}>
-            <ShellDrawer frame={frame} triggerRef={triggerRef} />
+            <ShellDrawer space={space} triggerRef={triggerRef} />
           </Suspense>
         </DrawerRecovery>
       )}
@@ -147,88 +99,57 @@ export function AppShell({ children }: { children: ReactNode }) {
   );
 }
 
-/** Whose progress the Progress group shows, from what is already known: the
- * account and the chosen learner. */
-function useProgressContext(active: boolean) {
-  const session = useQuery(sessionOptions);
-  const me = useQuery({
-    ...meOptions(session.data ?? { accountId: "", token: "" }),
-    enabled: active && !!session.data,
-  });
-  const learnerId = useLearnerStore((state) => state.learnerId);
-  const account =
-    me.data?.signedIn && me.data.account.id === session.data?.accountId
-      ? me.data
-      : null;
-  const own = practicingAsAdult(account, learnerId);
-  const kind: ProgressContext = own ? "own" : "learner";
-  return { kind, me: account };
-}
-
 function ShellBar({
   triggerRef,
-  frame,
-  context,
-  me,
+  space,
 }: {
-  frame: ShellFrame;
+  space: SpaceDescriptor;
   triggerRef: RefObject<HTMLButtonElement | null>;
-  context: ProgressContext;
-  me: SignedInMe | null;
 }) {
   const open = useShellSlots((state) => state.drawerOpen);
   const setDrawerOpen = useShellSlots((state) => state.setDrawerOpen);
   const setTools = useShellSlots((state) => state.setTools);
-  // A student's (or a child's) session: Sign out is the bar's action, at
-  // the edge, so the device passes on in one tap.
-  const student =
-    useQuery(sessionOptions).data?.accountId.startsWith("school:") === true;
-  const school = useSchoolNavigation(frame);
-  // Prepare every place before opening the menu: later class responses must
-  // not insert destinations under the pointer. The logo keeps its fixed box.
-  const { loading: placesLoading } = usePlaceEntries(
-    me,
-    frame.kind === "class" || frame.kind === "school" ? frame.org : undefined,
-  );
-  const [pendingFrame, setPendingFrame] = useState<string | null>(null);
-  const frameKey = JSON.stringify(frame);
-  const opening = pendingFrame === frameKey;
+  const me = useAccount();
+  // Prepare every place before opening the menu: a later answer must not
+  // insert places under the pointer. The logo keeps its fixed box.
+  const { loading: placesLoading } = usePlaces(me);
+  const [pending, setPending] = useState<string | null>(null);
+  const key = `${space.space}:${space.place ?? ""}`;
+  const opening = pending === key;
   useEffect(() => {
-    if (pendingFrame && (!opening || !placesLoading)) {
-      setPendingFrame(null);
+    if (pending && (!opening || !placesLoading)) {
+      setPending(null);
       if (opening) setDrawerOpen(true);
     }
-  }, [pendingFrame, opening, placesLoading, setDrawerOpen]);
-  const progress =
-    frame.kind === "progress"
-      ? progressTabs(context, me?.adultPractice?.learner?.id)
-      : [];
+  }, [pending, opening, placesLoading, setDrawerOpen]);
+  const practice = space.bar === "practice";
+  const demo =
+    (space.space === "classroom" || space.space === "school") && space.org.demo;
+  const board =
+    (space.space === "classroom" || space.space === "family") &&
+    space.class?.board === true;
+  const today = space.active === "today" && !board;
   const tabs =
-    frame.kind === "progress" ? (
+    space.bar === "tabs" ? (
       <Tabs
-        label="Progress"
-        items={progress}
-        // A child's workbooks keep the Overview marked: theirs has no tab.
+        label={space.words.tabs}
+        items={space.tabs}
+        // A tab of another row (a child's workbooks under Overview) keeps
+        // its row's first tab marked.
         active={
-          progress.some((tab) => tab.id === frame.active)
-            ? frame.active
-            : "overview"
+          space.tabs.some((tab) => tab.id === space.active)
+            ? space.active
+            : (space.tabs[0]?.id ?? null)
         }
-      />
-    ) : frame.kind === "account" ? (
-      <Tabs label="Account" items={accountTabs} active={frame.active} />
-    ) : frame.kind === "class" || frame.kind === "school" ? (
-      <Tabs
-        label={frame.kind === "class" ? "Class" : "School"}
-        items={school.tabs}
-        active={frame.active}
       />
     ) : null;
   return (
     <header
       className={bar.bar}
       data-tabs={tabs ? "" : undefined}
-      data-app-bar={frame.kind}
+      data-app-bar={space.space}
+      data-space={space.space}
+      data-bar={space.bar ?? undefined}
     >
       <div className={bar.logoCell}>
         <AppLogo
@@ -240,70 +161,104 @@ function ShellBar({
           data-navigation-trigger
           aria-busy={opening || undefined}
           onClick={() => {
-            if (opening) setPendingFrame(null);
-            else if (!open && placesLoading) setPendingFrame(frameKey);
+            if (opening) setPending(null);
+            else if (!open && placesLoading) setPending(key);
             else setDrawerOpen(!open);
           }}
         />
-        {school.demo && <DemoMark />}
-        {frame.kind === "practice" && <ProfileMark />}
+        {space.label && (
+          <span className={bar.place} title={space.label} data-place-name>
+            {space.label}
+          </span>
+        )}
+        {demo && <DemoMark />}
+        {practice && <ProfileMark />}
       </div>
       {tabs && <div className={bar.tabsCell}>{tabs}</div>}
       {/* A screen's own tools (practice's topic and calculator) portal here. */}
       <div
         className={bar.tools}
-        ref={frame.kind === "practice" ? setTools : undefined}
-        data-shell-tools={frame.kind === "practice" ? "" : undefined}
+        ref={practice ? setTools : undefined}
+        data-shell-tools={practice ? "" : undefined}
       />
       <div className={bar.action}>
-        {school.demo && <DemoSetupAction school={!school.solo} />}
-        {frame.kind === "class" && school.start && !school.demo && (
-          <Link
-            to="/$"
-            params={{
-              _splat: `school/${frame.org}/classes/${frame.classId}/start`,
-            }}
-            className={bar.actionLink}
-            aria-label="Start class"
-            data-shell-action
-            aria-hidden={frame.active !== "today" || frame.board || undefined}
-            tabIndex={frame.active !== "today" || frame.board ? -1 : undefined}
-            style={{
-              visibility:
-                frame.active === "today" && !frame.board ? "visible" : "hidden",
-            }}
-          >
-            <svg viewBox="0 0 16 16" aria-hidden="true">
-              <path d="M4.5 2.8v10.4L13 8 4.5 2.8Z" />
-            </svg>
-            <span className={bar.actionLabel}>Start class</span>
-          </Link>
-        )}
-        {(frame.kind === "progress" ||
-          (frame.kind === "plain" && frame.practice)) && (
-          <ProgressAction context={context} me={me} />
-        )}
-        {/* Practicing as a profile: the way back, always one tap away. */}
-        {frame.kind === "practice" &&
-          (student ? <StudentSignOut inBar /> : <ProfileBackAction />)}
+        {space.actions.map((action) => {
+          switch (action) {
+            case "demo-setup":
+              return (
+                <DemoSetupAction
+                  key={action}
+                  school={
+                    space.space === "school" || space.space === "classroom"
+                      ? !space.org.lone
+                      : false
+                  }
+                />
+              );
+            case "start-class":
+              return space.space === "classroom" ? (
+                <Link
+                  key={action}
+                  to="/$"
+                  params={{
+                    _splat: `school/${space.org.id}/classes/${space.class.id}/start`,
+                  }}
+                  className={bar.actionLink}
+                  aria-label="Start class"
+                  data-shell-action
+                  aria-hidden={!today || undefined}
+                  tabIndex={today ? undefined : -1}
+                  style={{ visibility: today ? "visible" : "hidden" }}
+                >
+                  <svg viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M4.5 2.8v10.4L13 8 4.5 2.8Z" />
+                  </svg>
+                  <span className={bar.actionLabel}>Start class</span>
+                </Link>
+              ) : null;
+            case "practice":
+              return (
+                <ProgressAction
+                  key={action}
+                  own={space.space === "me"}
+                  me={me}
+                />
+              );
+            case "sign-out":
+              return <StudentSignOut key={action} inBar />;
+            case "profile-back":
+              return <ProfileBackAction key={action} />;
+          }
+        })}
       </div>
     </header>
   );
 }
 
+/** This account's `/me`, once loaded, and never another account's. */
+function useAccount(): SignedInMe | null {
+  const session = useQuery(sessionOptions).data;
+  const me = useQuery({
+    ...meOptions(session ?? { accountId: "", token: "" }),
+    enabled: !!session,
+  }).data;
+  return me?.signedIn && me.account.id === session?.accountId ? me : null;
+}
+
 /** One way to practice from every Progress tab, decided from the account
  * already loaded: it holds its place, unlabelled, until that is known. */
 function ProgressAction({
-  context,
+  own,
   me,
 }: {
-  context: ProgressContext;
+  /** The adult's own practice, rather than a child's. */
+  own: boolean;
   me: SignedInMe | null;
 }) {
   const learnerId = useLearnerStore((state) => state.learnerId);
   // A day-0 hero on the screen is its one Practice; the bar's holds its place.
   const hero = useShellSlots((state) => state.heroAction);
-  const target = practiceTarget(context, me, learnerId);
+  const target = practiceTarget(own, me, learnerId);
   if (target === undefined || (hero && target))
     return (
       <span
@@ -345,13 +300,13 @@ function ProgressAction({
 /** Where practice is for this context: `undefined` while the account loads,
  * `null` when there is no next step from here. */
 function practiceTarget(
-  context: ProgressContext,
+  own: boolean,
   me: SignedInMe | null,
   learnerId: string | null,
 ): { path: string; label: string } | null | undefined {
   if (!me) return undefined;
   // Practice, where the one pause shows once the free problems are used.
-  if (context === "own")
+  if (own)
     return me.adultPractice?.learner
       ? { path: "/practice", label: "Practice" }
       : null;

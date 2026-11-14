@@ -1,3 +1,4 @@
+import { spaceWords } from "../../../spaces/words";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
 import type { SignedInMe } from "../../../../../account/contracts";
@@ -252,7 +253,11 @@ export function FamilyToday({
           />
         </section>
       )}
-      <WeekFacts week={data.week} family target={data.weeklyTargetMinutes} />
+      <WeekFacts
+        week={data.week}
+        words={spaceWords("family")}
+        target={data.weeklyTargetMinutes}
+      />
       {code && (
         <Sheet
           open={joining}
@@ -264,7 +269,7 @@ export function FamilyToday({
           <JoinClass
             code={code}
             place={place}
-            family
+            words={spaceWords("family")}
             heading={false}
             manage={manage}
             locked={locked}

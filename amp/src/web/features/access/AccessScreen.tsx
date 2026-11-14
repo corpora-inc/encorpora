@@ -256,7 +256,7 @@ export function AccessScreen() {
                 </p>
                 <Link
                   to="/$"
-                  params={{ _splat: "family/security" }}
+                  params={{ _splat: "account/security" }}
                   className={buttonClass("secondary")}
                 >
                   Manage your account

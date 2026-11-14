@@ -179,7 +179,8 @@ export function MenuItem({
   selected,
 }: {
   children: ReactNode;
-  onSelect: () => void;
+  /** `event.preventDefault()` keeps the menu open (a row that shows more). */
+  onSelect: (event: Event) => void;
   disabled?: boolean;
   /** The menu's current choice, when it picks one: the accent tint. */
   selected?: boolean;

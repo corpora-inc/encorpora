@@ -3,7 +3,7 @@ import { Chevron } from "./BillingList";
 import pages from "./AccountPages.module.css";
 
 /** Account → Sign-in's last row: "Delete my account", which opens its own
- * screen (`/family/security/delete`). `continues` when it follows Sign-in's
+ * screen (`/account/security/delete`). `continues` when it follows Sign-in's
  * own rows, so one hairline sits between them. */
 export function DeleteAccountEntry({
   continues = false,
@@ -17,7 +17,7 @@ export function DeleteAccountEntry({
     >
       <li className={pages.linkItem}>
         <Link
-          to="/family/security/delete"
+          to="/account/security/delete"
           className={pages.linkRow}
           data-delete-account-entry
         >

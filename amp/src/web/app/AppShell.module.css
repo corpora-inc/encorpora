@@ -10,7 +10,7 @@
   background: var(--color-surface);
   color: var(--color-on-surface);
 }
-@media (max-width: 639px) {
+@media (max-width: 1023px) {
   .frame[data-tabs] {
     --shell-bar: calc(56px + 48px + env(safe-area-inset-top, 0px));
   }
@@ -26,7 +26,7 @@
 :global(html:has([data-app-frame])) {
   scroll-padding-top: calc(56px + env(safe-area-inset-top, 0px));
 }
-@media (max-width: 639px) {
+@media (max-width: 1023px) {
   :global(html:has([data-app-frame][data-tabs])) {
     scroll-padding-top: calc(56px + 48px + env(safe-area-inset-top, 0px));
   }

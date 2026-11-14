@@ -3,7 +3,7 @@ import { NavigationSheet, SheetClose } from "../../ui/NavigationSheet";
 import { AppLogo } from "../../ui/AppLogo";
 import { useShellSlots } from "../../lib/shell-slots";
 import DrawerContents, { DrawerFooter } from "./DrawerContents";
-import type { ShellFrame } from "./shell-frame";
+import type { SpaceDescriptor } from "../spaces/resolve";
 import bar from "../../ui/AppBar.module.css";
 
 /**
@@ -12,10 +12,10 @@ import bar from "../../ui/AppBar.module.css";
  * Escape, the scrim, or any link inside.
  */
 export default function ShellDrawer({
-  frame,
+  space,
   triggerRef,
 }: {
-  frame: ShellFrame | null;
+  space: SpaceDescriptor | null;
   triggerRef: RefObject<HTMLButtonElement | null>;
 }) {
   const open = useShellSlots((state) => state.drawerOpen);
@@ -23,7 +23,7 @@ export default function ShellDrawer({
   const close = () => setOpen(false);
   return (
     <NavigationSheet
-      open={open && !!frame}
+      open={open && !!space}
       onOpenChange={setOpen}
       onCloseAutoFocus={(event) => {
         // The shared bar owns the trigger outside Dialog.Root.
@@ -45,7 +45,7 @@ export default function ShellDrawer({
       }
       footer={<DrawerFooter close={close} />}
     >
-      <DrawerContents close={close} frame={frame} />
+      <DrawerContents close={close} space={space} />
     </NavigationSheet>
   );
 }

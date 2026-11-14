@@ -1,3 +1,4 @@
+import { spaceWords } from "../spaces/words";
 import { EntityLink } from "../../nav/links";
 import {
   ClassList,
@@ -721,7 +722,7 @@ export function ClassScreen() {
             <JoinClass
               code={klass.joinCode}
               place={{ org: orgId, class: classId }}
-              family={family}
+              words={spaceWords(family ? "family" : "classroom")}
               manage={
                 org?.can?.includes("signin.manage") ||
                 org?.teaches?.includes(classId)

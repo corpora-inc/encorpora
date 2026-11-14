@@ -20,6 +20,8 @@ import { classesOptions, preload } from "../school/api";
 
 /** The address keys that hold the practice mode. */
 export const MODE_KEYS = ["profile", "from"] as const;
+/** The address key that names whose learning screens these are. */
+export const LEARNER_KEY = "learner";
 
 /** Learning screens: where a practice mode goes with the reader. */
 const LEARNING = [
@@ -108,6 +110,21 @@ export async function adoptPracticeMode(location: {
     return;
   }
   const own = me.adultPractice?.learner?.id ?? null;
+  // `?learner=` names whose record this is (docs/architecture/spaces.md):
+  // a refresh, Back or a second tab keeps that person. Only a learner this
+  // account reads is ever chosen from an address.
+  const whose = location.search.learner;
+  if (
+    typeof whose === "string" &&
+    (whose === own ||
+      me.learners.some((learner) => learner.id === whose) ||
+      (me.secondParentOf ?? []).some((family) =>
+        family.learners.some((learner) => learner.id === whose),
+      ))
+  ) {
+    if (store.learnerId !== whose) store.select(whose);
+    return;
+  }
   if (me.practiceProfiles?.some((entry) => entry.id === store.learnerId))
     store.select(own ?? me.learners[0]?.id ?? null);
   if (

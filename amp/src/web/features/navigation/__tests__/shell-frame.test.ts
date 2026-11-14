@@ -1,13 +1,13 @@
 import { expect, test } from "vitest";
+import { shellFrame } from "../shell-frame";
+import { phoneTabs } from "../../../ui/Tabs";
 import {
   accountTabs,
-  classTabs,
+  classroomTabs,
+  familyTabs,
+  learnerTabs,
   schoolTabs,
-  overviewPath,
-  progressTabs,
-  shellFrame,
-} from "../shell-frame";
-import { phoneTabs } from "../../../ui/Tabs";
+} from "../../spaces/tabs";
 
 test("each group's screens share one frame and name their tab", () => {
   expect(shellFrame("/overview")).toEqual({
@@ -85,21 +85,30 @@ test("screens with frames of their own stay outside it", () => {
     expect(shellFrame(path), path).toBeNull();
 });
 
-test("the Overview tab follows whose progress it is; the URLs never move", () => {
-  expect(progressTabs("learner").map((tab) => tab.path)).toEqual([
+test("a learner's record and the account each have one row of tabs; the URLs never move", () => {
+  expect(learnerTabs().map((tab) => tab.path)).toEqual([
     "overview",
     "pathways",
     "inventory",
   ]);
-  expect(progressTabs("own")[0]!.path).toBe("me");
-
-  expect(overviewPath("learner")).toBe("/overview");
   expect(accountTabs.map((tab) => tab.label)).toEqual([
     "Sign-in",
     "Learners",
     "Billing",
     "Privacy",
   ]);
+  // The account's own settings are at neutral addresses, the old ones still
+  // open the same tab.
+  for (const [path, active] of [
+    ["/account/security", "security"],
+    ["/account/billing/records", "access"],
+    ["/account/privacy/export", "privacy"],
+  ])
+    expect(shellFrame(path), path).toEqual({ kind: "account", active });
+  expect(shellFrame("/me/profiles")).toEqual({
+    kind: "progress",
+    active: "profiles",
+  });
 });
 
 test("class sub-screens retain their tab and existing URLs", () => {
@@ -120,17 +129,11 @@ test("class sub-screens retain their tab and existing URLs", () => {
       active,
     });
   }
-  expect(classTabs("org", "class").map((tab) => tab.label)).toEqual([
-    "Today",
-    "Map",
-    "Grades",
-    "Time",
-    "Workbooks",
-    "Students",
-    "Settings",
-  ]);
-  // A learner's workbooks open from Overview, so their pages keep the
-  // Progress tabs with Overview marked (ia.md: no Workbooks tab).
+  expect(shellFrame("/school/org/classes/class/report-cards")).toMatchObject({
+    leaf: "report-cards",
+  });
+  // A learner's workbooks open from Overview: the record's tabs, Overview
+  // marked (the adult's own are My practice's Workbooks tab).
   for (const path of [
     "/learners/child/workbooks",
     "/learners/child/workbooks/2026-11-09",
@@ -140,52 +143,30 @@ test("class sub-screens retain their tab and existing URLs", () => {
       kind: "progress",
       active: "overview",
     });
-  // A family's or tutor's class: Grades only past six learners.
-  expect(
-    classTabs("org", "class", false, true, 12).map((tab) => tab.label),
-  ).toEqual([
-    "Today",
-    "Map",
-    "Grades",
-    "Time",
-    "Workbooks",
-    "People",
-    "Settings",
-  ]);
-  expect(
-    classTabs("org", "class", false, true, 2).map((tab) => tab.label),
-  ).toEqual(["Today", "Map", "Time", "Workbooks", "People", "Settings"]);
   // A student's record opened from a class keeps that class's tabs.
   expect(shellFrame("/school/org/students/kai", "class")).toEqual({
     kind: "class",
     org: "org",
     classId: "class",
     active: "map",
+    leaf: "map",
     board: false,
   });
   expect(shellFrame("/school/org/students/kai")).toMatchObject({
     kind: "school",
   });
-  expect(progressTabs("own", "adult-1").map((tab) => tab.label)).toEqual([
-    "Overview",
-    "Pathways",
-    "Inventory",
-  ]);
-  expect(progressTabs("learner", "adult-1")).toHaveLength(3);
 });
 
-test("school sub-screens map to their tabs and respect capabilities", () => {
-  // One Settings home (ia.md): the year, terms, experience, license,
-  // privacy and integrations are all its sections or sub-pages.
+test("school sub-screens map to their own tabs", () => {
   for (const [leaf, active] of [
     ["import", "classes"],
     ["students/id", "classes"],
     ["experience", "settings"],
-    ["integrations", "settings"],
     ["year", "settings"],
-    ["calendar", "settings"],
-    ["license", "settings"],
-    ["privacy", "settings"],
+    ["integrations", "integrations"],
+    ["calendar", "calendar"],
+    ["license", "license"],
+    ["privacy", "privacy"],
     ["schools", "schools"],
   ]) {
     expect(shellFrame(`/school/org/${leaf}`)).toMatchObject({
@@ -193,55 +174,20 @@ test("school sub-screens map to their tabs and respect capabilities", () => {
       active,
     });
   }
-  const org = {
-    id: "org",
-    name: "School",
-    kind: "school" as const,
-    parentId: null,
-    timezone: "UTC",
-    roles: [],
-    can: ["classes.read", "calendar.read"] as const,
-  };
-  expect(
-    schoolTabs({ ...org, can: [...org.can] }, 2).map((tab) => tab.label),
-  ).toEqual(["Classes", "Settings"]);
-  const family = {
-    ...org,
-    kind: "family" as const,
-    can: ["classes.read", "calendar.read", "staff.read"] as const,
-  };
-  expect(
-    schoolTabs({ ...family, can: [...family.can] }, 1).map((tab) => tab.label),
-  ).toEqual(["Classes"]);
-  expect(classTabs("org", "class", true).map((tab) => tab.id)).toEqual([
-    "gradebook",
-    "time",
-  ]);
 });
 
 test.each(["district", "network"] as const)(
   "review regression: %s has its own Schools tab when overview is permitted",
   (kind) => {
-    const org = {
-      id: "org",
-      name: "District",
-      kind,
-      parentId: null,
-      timezone: "UTC",
-      roles: [],
-      can: ["overview.read"] as ["overview.read"],
-    };
-    expect(schoolTabs(org, 2)).toContainEqual({
+    const org = { id: "org", kind, can: ["overview.read" as const] };
+    expect(schoolTabs(org)).toContainEqual({
       id: "schools",
       label: "Schools",
       path: "school/org/schools",
     });
-    expect(shellFrame("/school/org/schools")).toMatchObject({
-      active: "schools",
-    });
-    expect(schoolTabs({ ...org, can: [] }, 2)).toEqual([]);
+    expect(schoolTabs({ ...org, can: [] })).toEqual([]);
     expect(
-      schoolTabs({ ...org, kind: "school" }, 2).some(
+      schoolTabs({ ...org, kind: "school" }).some(
         (tab) => tab.id === "schools",
       ),
     ).toBe(false);
@@ -251,55 +197,62 @@ test.each(["district", "network"] as const)(
 test("review regression: a lone school hides Overview, Staff and Activity", () => {
   const org = {
     id: "org",
-    name: "Just my class",
     kind: "school" as const,
-    parentId: null,
-    timezone: "UTC",
-    roles: ["admin"] as ["admin"],
-    solo: true,
     can: [
       "overview.read",
       "staff.read",
       "activity.read",
       "calendar.read",
       "privacy.read",
-    ] as [
-      "overview.read",
-      "staff.read",
-      "activity.read",
-      "calendar.read",
-      "privacy.read",
-    ],
+    ] as (
+      | "overview.read"
+      | "staff.read"
+      | "activity.read"
+      | "calendar.read"
+      | "privacy.read"
+    )[],
   };
-  expect(schoolTabs(org, 1).map((tab) => tab.id)).toEqual(["settings"]);
-  expect(schoolTabs(org, 2).map((tab) => tab.id)).toEqual([
+  expect(schoolTabs(org, { lone: true }).map((tab) => tab.id)).toEqual([
+    "calendar",
+    "privacy",
+  ]);
+  expect(schoolTabs(org).map((tab) => tab.id)).toEqual([
     "overview",
     "staff",
+    "calendar",
+    "privacy",
     "activity",
-    "settings",
   ]);
 });
 
-test("a phone shows the same four class tabs in every place", () => {
+test("a phone's tabs: each space's own four", () => {
   const ids = (items: readonly { id: string }[]) => items.map((tab) => tab.id);
-  expect(ids(phoneTabs(classTabs("org", "class")))).toEqual([
+  expect(ids(phoneTabs(classroomTabs("org", "class")))).toEqual([
     "today",
     "map",
     "gradebook",
     "roster",
   ]);
-  expect(ids(phoneTabs(classTabs("org", "class", false, true, 3)))).toEqual([
+  expect(ids(phoneTabs(familyTabs("org", "class", { learners: 3 })))).toEqual([
     "today",
     "map",
-    "time",
     "workbooks",
+    "time",
   ]);
-  // A tutor's larger class has Grades, still under More on a phone.
-  expect(ids(phoneTabs(classTabs("org", "class", false, true, 12)))).toEqual([
+  // A tutor's larger group has Grades, under More on a phone.
+  expect(ids(phoneTabs(familyTabs("org", "class", { learners: 12 })))).toEqual([
     "today",
     "map",
-    "time",
     "workbooks",
+    "time",
+  ]);
+  expect(ids(familyTabs("org", "class", { past: true }))).toEqual([
+    "time",
+    "report-cards",
+  ]);
+  expect(ids(classroomTabs("org", "class", { past: true }))).toEqual([
+    "gradebook",
+    "time",
   ]);
   // A group that marks none shows its first four.
   expect(ids(phoneTabs(accountTabs))).toEqual(ids(accountTabs));

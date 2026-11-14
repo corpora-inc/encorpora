@@ -91,6 +91,7 @@ import {
 import {
   adoptPracticeMode,
   isLearningPath,
+  LEARNER_KEY,
   MODE_KEYS,
 } from "../features/profiles/practice-mode";
 const searchSchema = z
@@ -381,11 +382,13 @@ async function retiredTrial({ search }: { search: Record<string, unknown> }) {
 const tryStart = createRoute({
   getParentRoute: () => root,
   path: "/try",
+  staticData: { space: "public" },
   beforeLoad: retiredTrial,
 });
 const tryAnything = createRoute({
   getParentRoute: () => root,
   path: "/try/$",
+  staticData: { space: "public" },
   beforeLoad: retiredTrial,
 });
 const appScreen = createRoute({
@@ -396,6 +399,7 @@ const appScreen = createRoute({
 const home = createRoute({
   getParentRoute: () => appScreen,
   path: "/",
+  staticData: { space: "learner" },
   loaderDeps: ({ search }) => ({ program: search.program }),
   loader: async ({ deps }) => {
     const shown = showsPitch(queryClient.getQueryData(sessionOptions.queryKey));
@@ -449,7 +453,7 @@ const home = createRoute({
         if ("security" in search)
           throw redirect({
             to: "/$",
-            params: { _splat: "family/security" },
+            params: { _splat: "account/security" },
             replace: true,
           });
         if (
@@ -507,18 +511,21 @@ export const homeRouteId = () => home.id;
 const signIn = createRoute({
   getParentRoute: () => root,
   path: "/sign-in",
+  staticData: { space: "public" },
   loader: loadAuthConfig,
   component: auth,
 });
 const signUp = createRoute({
   getParentRoute: () => root,
   path: "/sign-up",
+  staticData: { space: "public" },
   loader: loadAuthConfig,
   component: auth,
 });
 const accessGift = createRoute({
   getParentRoute: () => root,
   path: "/access",
+  staticData: { space: "account" },
   component: lazyRouteComponent(
     () => import("../features/access/AccessScreen"),
     "AccessScreen",
@@ -527,6 +534,7 @@ const accessGift = createRoute({
 const accountReady = createRoute({
   getParentRoute: () => root,
   path: "/account/ready",
+  staticData: { space: "account" },
   loader: async () => {
     const session = await queryClient.ensureQueryData(sessionOptions);
     // Leave a failed lookup to the screen's inline retry instead of replacing
@@ -546,7 +554,8 @@ const accountReady = createRoute({
 const deleteAccountScreens = () => import("../features/account/DeleteAccount");
 const deleteAccount = createRoute({
   getParentRoute: () => root,
-  path: "/family/security/delete",
+  path: "/account/security/delete",
+  staticData: { space: "account" },
   beforeLoad: async () => {
     notForStudents();
     const session = await queryClient.ensureQueryData(sessionOptions);
@@ -565,14 +574,26 @@ const deleteAccount = createRoute({
   },
   component: lazyRouteComponent(deleteAccountScreens, "DeleteAccountScreen"),
 });
+/** Its address before the account had its own (`/account/…`): the same
+ * screen, so older links and returns keep working. */
+const deleteAccountAlias = createRoute({
+  getParentRoute: () => root,
+  path: "/family/security/delete",
+  staticData: { space: "account" },
+  beforeLoad: deleteAccount.options.beforeLoad,
+  loader: deleteAccount.options.loader,
+  component: lazyRouteComponent(deleteAccountScreens, "DeleteAccountScreen"),
+});
 const accountDeleted = createRoute({
   getParentRoute: () => root,
   path: "/account/deleted",
+  staticData: { space: "account" },
   component: lazyRouteComponent(deleteAccountScreens, "AccountDeletedScreen"),
 });
 const signInStep = createRoute({
   getParentRoute: () => root,
   path: "/sign-in/$step",
+  staticData: { space: "public" },
   loader: loadAuthConfig,
   component: auth,
   params: {
@@ -584,6 +605,7 @@ const signInStep = createRoute({
 const reset = createRoute({
   getParentRoute: () => root,
   path: "/reset-password",
+  staticData: { space: "public" },
   loader: loadAuthConfig,
   component: auth,
 });
@@ -605,12 +627,14 @@ const starter = lazyRouteComponent(
 const starterIndex = createRoute({
   getParentRoute: () => root,
   path: "/start",
+  staticData: { space: "account" },
   beforeLoad: beforeStarter,
   component: starter,
 });
 const starterChoice = createRoute({
   getParentRoute: () => root,
   path: "/start/$choice",
+  staticData: { space: "account" },
   beforeLoad: beforeStarter,
   component: starter,
 });
@@ -620,6 +644,7 @@ const starterChoice = createRoute({
 const starterStep = createRoute({
   getParentRoute: () => root,
   path: "/start/$choice/$step",
+  staticData: { space: "account" },
   beforeLoad: beforeStarter,
   component: lazyRouteComponent(
     () => import("../features/onboarding/Starter"),
@@ -632,6 +657,7 @@ const starterStep = createRoute({
 const startPlan = createRoute({
   getParentRoute: () => root,
   path: "/start/plan",
+  staticData: { space: "account" },
   beforeLoad: beforeStart,
   component: start,
 });
@@ -640,6 +666,7 @@ const startPlan = createRoute({
 const continueWithAmp = createRoute({
   getParentRoute: () => root,
   path: "/continue/$learnerId",
+  staticData: { space: "learner" },
   validateSearch: (search: Record<string, unknown>) =>
     search.interval === "year" || search.interval === "month"
       ? { interval: search.interval as "year" | "month" }
@@ -659,30 +686,35 @@ const continueWithAmp = createRoute({
 const startPurchase = createRoute({
   getParentRoute: () => root,
   path: "/start/purchase",
+  staticData: { space: "account" },
   beforeLoad: beforeStart,
   component: start,
 });
 const startName = createRoute({
   getParentRoute: () => root,
   path: "/start/name",
+  staticData: { space: "account" },
   beforeLoad: beforeStart,
   component: start,
 });
 const startYear = createRoute({
   getParentRoute: () => root,
   path: "/start/birth-year",
+  staticData: { space: "account" },
   beforeLoad: beforeStart,
   component: start,
 });
 const startConsent = createRoute({
   getParentRoute: () => root,
   path: "/start/consent",
+  staticData: { space: "account" },
   beforeLoad: beforeStart,
   component: start,
 });
 const startVerify = createRoute({
   getParentRoute: () => root,
   path: "/start/verify-email",
+  staticData: { space: "account" },
   beforeLoad: beforeStart,
   component: start,
 });
@@ -701,6 +733,7 @@ async function framedScreen() {
 const inventory = createRoute({
   getParentRoute: () => root,
   path: "/inventory",
+  staticData: { space: "learner" },
   // A learning record belongs to an account: signed out, sign in first.
   beforeLoad: async ({ location }) => {
     await framedScreen();
@@ -770,6 +803,7 @@ function skillAsLayer(
 const pathways = createRoute({
   getParentRoute: () => root,
   path: "/pathways",
+  staticData: { space: "learner" },
   beforeLoad: async ({ location }) => {
     lessonAsLayer(location);
     const { skill } = location.search as { skill?: unknown };
@@ -804,6 +838,7 @@ const pathwaysIndex = createRoute({
 const lessonsHome = createRoute({
   getParentRoute: () => root,
   path: "/lessons",
+  staticData: { space: "learner" },
   beforeLoad: ({ location }) => {
     const params = new URLSearchParams(location.searchStr);
     const query = params.get("q")?.trim();
@@ -856,6 +891,7 @@ async function beforeWorkbooks<Params extends { learnerId: string }>({
 const workbookHistory = createRoute({
   getParentRoute: () => root,
   path: "/learners/$learnerId/workbooks",
+  staticData: { space: "learner" },
   beforeLoad: beforeWorkbooks,
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookHistoryScreen"),
@@ -865,6 +901,7 @@ const workbookHistory = createRoute({
 const workbookDay = createRoute({
   getParentRoute: () => root,
   path: "/learners/$learnerId/workbooks/$date",
+  staticData: { space: "learner" },
   validateSearch: (search) => workbookSearchSchema.parse(search),
   beforeLoad: beforeWorkbooks,
   component: lazyRouteComponent(
@@ -875,6 +912,7 @@ const workbookDay = createRoute({
 const workbookResults = createRoute({
   getParentRoute: () => root,
   path: "/learners/$learnerId/workbooks/$workbookId/results",
+  staticData: { space: "learner" },
   beforeLoad: beforeWorkbooks,
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookResultsScreen"),
@@ -884,6 +922,7 @@ const workbookResults = createRoute({
 const funded = createRoute({
   getParentRoute: () => root,
   path: "/purchase/arkansas-efa",
+  staticData: { space: "account" },
   beforeLoad: () => {
     if (nativeRuntime) throw redirect({ to: "/" });
   },
@@ -895,6 +934,7 @@ const funded = createRoute({
 const fundedNewHampshire = createRoute({
   getParentRoute: () => root,
   path: "/purchase/new-hampshire-efa",
+  staticData: { space: "account" },
   beforeLoad: () => {
     if (nativeRuntime) throw redirect({ to: "/" });
   },
@@ -906,6 +946,7 @@ const fundedNewHampshire = createRoute({
 const fundedArizona = createRoute({
   getParentRoute: () => root,
   path: "/purchase/arizona-esa",
+  staticData: { space: "account" },
   beforeLoad: () => {
     if (nativeRuntime) throw redirect({ to: "/" });
   },
@@ -921,16 +962,19 @@ const invoiceForm = lazyRouteComponent(
 const invoiceArkansas = createRoute({
   getParentRoute: () => root,
   path: "/invoice/arkansas-efa",
+  staticData: { space: "account" },
   component: invoiceForm,
 });
 const invoiceArizona = createRoute({
   getParentRoute: () => root,
   path: "/invoice/arizona-esa",
+  staticData: { space: "account" },
   component: invoiceForm,
 });
 const invoiceNewHampshire = createRoute({
   getParentRoute: () => root,
   path: "/invoice/new-hampshire-efa",
+  staticData: { space: "account" },
   component: invoiceForm,
 });
 /** Where a student signs in, and where an ended sign-in lands. */
@@ -939,6 +983,7 @@ const joinScreens = () => import("../features/school/join");
 const join = createRoute({
   getParentRoute: () => root,
   path: "/join",
+  staticData: { space: "student" },
   component: lazyRouteComponent(joinScreens, "JoinScreen"),
 });
 /** Back from a school account's sign-in. The session is in the fragment, which
@@ -946,16 +991,19 @@ const join = createRoute({
 const joinContinue = createRoute({
   getParentRoute: () => root,
   path: "/join/continue",
+  staticData: { space: "student" },
   component: lazyRouteComponent(joinScreens, "ContinueScreen"),
 });
 const joinClass = createRoute({
   getParentRoute: () => root,
   path: "/join/$code",
+  staticData: { space: "student" },
   component: lazyRouteComponent(joinScreens, "ClassScreen"),
 });
 const joinPictures = createRoute({
   getParentRoute: () => root,
   path: "/join/$code/$person",
+  staticData: { space: "student" },
   component: lazyRouteComponent(joinScreens, "PicturesScreen"),
 });
 /** A printed card's link. Its secret is in the fragment, which `card-entry`
@@ -963,6 +1011,7 @@ const joinPictures = createRoute({
 const signInCard = createRoute({
   getParentRoute: () => root,
   path: "/c",
+  staticData: { space: "student" },
   component: lazyRouteComponent(joinScreens, "CardScreen"),
 });
 /** A class's staff screens. Each is its own child, and the API decides who
@@ -971,6 +1020,7 @@ const classScreens = () => import("../features/school/classes");
 const schoolClass = createRoute({
   getParentRoute: () => root,
   path: "/school/$org/classes/$class",
+  staticData: { space: "classroom" },
   beforeLoad: staffScreen,
   loader: ({ context, params }) =>
     Promise.all([
@@ -1158,6 +1208,7 @@ const schoolClassImport = createRoute({
 const schoolStart = createRoute({
   getParentRoute: () => root,
   path: "/school/start",
+  staticData: { space: "account" },
   beforeLoad: staffScreen,
   validateSearch: (search: Record<string, unknown>): { org?: string } =>
     z.uuid().safeParse(search.org).success ? { org: String(search.org) } : {},
@@ -1178,6 +1229,7 @@ const schoolStart = createRoute({
 const schoolConnect = createRoute({
   getParentRoute: () => root,
   path: "/school/connect",
+  staticData: { space: "account" },
   validateSearch: (search: Record<string, unknown>): { error?: string } =>
     ["clever_identity_already_linked", "clever_link_expired"].includes(
       String(search.error),
@@ -1208,6 +1260,7 @@ const schoolConnect = createRoute({
 const schoolAdopt = createRoute({
   getParentRoute: () => root,
   path: "/school/adopt",
+  staticData: { space: "account" },
   validateSearch: (
     search: Record<string, unknown>,
   ): { district?: string; manage?: 1 } => ({
@@ -1231,6 +1284,7 @@ const schoolAdopt = createRoute({
 const schoolsContinue = createRoute({
   getParentRoute: () => root,
   path: "/schools/continue",
+  staticData: { space: "public" },
   beforeLoad: () => {
     prepareBuyerHandoff();
   },
@@ -1289,6 +1343,7 @@ const schoolClassMarks = createRoute({
 const standings = createRoute({
   getParentRoute: () => root,
   path: "/standings",
+  staticData: { space: "student" },
   validateSearch: standingsSearchSchema,
   beforeLoad: () => {
     if (!studentSession()) throw redirect({ to: "/", replace: true });
@@ -1325,6 +1380,7 @@ async function ownPractice() {
 const ownRecord = createRoute({
   getParentRoute: () => root,
   path: "/me",
+  staticData: { space: "me" },
   beforeLoad: async () => {
     const { me, session } = await ownPractice();
     const own = me.adultPractice?.learner;
@@ -1349,6 +1405,7 @@ const ownRecord = createRoute({
 const ownStart = createRoute({
   getParentRoute: () => root,
   path: "/me/start",
+  staticData: { space: "me" },
   beforeLoad: async () => {
     const { me } = await ownPractice();
     if (me.adultPractice?.learner)
@@ -1363,6 +1420,7 @@ const profileScreens = () => import("../features/profiles");
 const profiles = createRoute({
   getParentRoute: () => root,
   path: "/me/profiles",
+  staticData: { space: "me" },
   beforeLoad: async () => {
     await ownPractice();
   },
@@ -1371,6 +1429,7 @@ const profiles = createRoute({
 const newProfile = createRoute({
   getParentRoute: () => root,
   path: "/me/profiles/new",
+  staticData: { space: "me" },
   beforeLoad: async () => {
     await ownPractice();
   },
@@ -1379,6 +1438,7 @@ const newProfile = createRoute({
 const editProfile = createRoute({
   getParentRoute: () => root,
   path: "/me/profiles/$profileId",
+  staticData: { space: "me" },
   beforeLoad: async () => {
     await ownPractice();
   },
@@ -1416,6 +1476,7 @@ const notInTheApp = () => {
 const schoolsHome = createRoute({
   getParentRoute: () => root,
   path: "/schools",
+  staticData: { space: "public" },
   beforeLoad: notInTheApp,
   loader: loadCurriculum,
   component: lazyRouteComponent(schoolsPublic, "SchoolsScreen"),
@@ -1423,6 +1484,7 @@ const schoolsHome = createRoute({
 const schoolsScope = createRoute({
   getParentRoute: () => root,
   path: "/schools/scope-and-sequence",
+  staticData: { space: "public" },
   beforeLoad: notInTheApp,
   loader: loadScope,
   component: lazyRouteComponent(schoolsPublic, "ScopeScreen"),
@@ -1430,6 +1492,7 @@ const schoolsScope = createRoute({
 const schoolsTrust = createRoute({
   getParentRoute: () => root,
   path: "/schools/trust",
+  staticData: { space: "public" },
   beforeLoad: notInTheApp,
   component: lazyRouteComponent(schoolsPublic, "TrustScreen"),
 });
@@ -1438,6 +1501,7 @@ const schoolsTrust = createRoute({
 const familyLink = createRoute({
   getParentRoute: () => root,
   path: "/p",
+  staticData: { space: "public" },
   component: lazyRouteComponent(
     () => import("../features/schools/ParentScreen"),
     "ParentScreen",
@@ -1448,6 +1512,7 @@ const familyLink = createRoute({
 const familyApprove = createRoute({
   getParentRoute: () => root,
   path: "/family/approve",
+  staticData: { space: "public" },
   beforeLoad: () => {
     if (nativeRuntime || studentSession())
       throw redirect({ to: "/", replace: true });
@@ -1460,6 +1525,7 @@ const familyApprove = createRoute({
 const familyApproval = createRoute({
   getParentRoute: () => root,
   path: "/family/approvals/$approvalId",
+  staticData: { space: "public" },
   beforeLoad: async () => {
     notForStudents();
     if (nativeRuntime) throw redirect({ to: "/", replace: true });
@@ -1476,6 +1542,7 @@ const familyApproval = createRoute({
 const design = createRoute({
   getParentRoute: () => root,
   path: "/design",
+  staticData: { space: "public" },
   validateSearch: (search) => designSearchSchema.parse(search),
   beforeLoad: () => {
     if (!designAllowed()) throw redirect({ to: "/", replace: true });
@@ -1506,6 +1573,7 @@ const fallback = createRoute({
 const lessonFilm = createRoute({
   getParentRoute: () => appScreen,
   path: "/lessons/$templateId/watch",
+  staticData: { space: "learner" },
   validateSearch: (search): { from: string | undefined; problem?: string } => {
     /** The problem the film was opened from, so watching it is help for it. */
     const problem = z
@@ -1534,6 +1602,7 @@ const devPersonas = import.meta.env.DEV
   ? createRoute({
       getParentRoute: () => root,
       path: "/dev/personas",
+      staticData: { space: "public" },
       component: lazyRouteComponent(
         () => import("../features/dev/PersonaSwitcher"),
         "PersonaSwitcher",
@@ -1602,6 +1671,7 @@ export const router = createRouter({
     signUp,
     accountReady,
     deleteAccount,
+    deleteAccountAlias,
     accountDeleted,
     accessGift,
     signInStep,
@@ -1719,6 +1789,26 @@ if (import.meta.env.DEV) {
       typeof options.search === "object" &&
       options.search !== null &&
       "profile" in options.search;
+    // So does the learner a learning screen names (`?learner=`), unless
+    // the destination names its own or a profile.
+    const nextSearch = next.search as Record<string, unknown>;
+    if (
+      typeof mode[LEARNER_KEY] === "string" &&
+      typeof mode.profile !== "string" &&
+      nextSearch[LEARNER_KEY] === undefined &&
+      nextSearch.profile === undefined &&
+      !(
+        typeof options.search === "object" &&
+        options.search !== null &&
+        LEARNER_KEY in options.search
+      ) &&
+      isLearningPath(here.pathname) &&
+      isLearningPath(next.pathname)
+    )
+      return build({
+        ...options,
+        search: { ...nextSearch, [LEARNER_KEY]: mode[LEARNER_KEY] },
+      } as never);
     if (
       !explicitMode &&
       typeof mode.profile === "string" &&

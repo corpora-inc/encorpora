@@ -9,6 +9,7 @@ import { sessionOptions } from "../../../lib/query";
 import { useRotateCode } from "../classes/api";
 import { CopyButton } from "../parts";
 import styles from "./JoinClass.module.css";
+import type { SpaceWords } from "../../spaces/words";
 
 /** A class code as people read and type it: RCV-VFD. */
 export const formatJoinCode = (code: string) =>
@@ -57,7 +58,7 @@ function Glyph({ kind }: { kind: keyof typeof GLYPHS | "more" }) {
 export function JoinClass({
   code,
   place,
-  family,
+  words,
   compact = false,
   cards = true,
   boardLink = true,
@@ -68,7 +69,9 @@ export function JoinClass({
 }: {
   code: string;
   place: { org: string; class: string };
-  family: boolean;
+  /** Whose names and how they sign in, in the space's words
+   * (features/spaces/words.ts). */
+  words: Pick<SpaceWords, "names" | "signIn" | "Learners">;
   compact?: boolean;
   /** Offer printing sign-in cards. */
   cards?: boolean;
@@ -87,7 +90,7 @@ export function JoinClass({
   const shown = formatJoinCode(code);
   const [qrOpen, setQrOpen] = useState(false);
   const newCode = manage && (
-    <NewCode place={place} code={shown} family={family} locked={locked} />
+    <NewCode place={place} code={shown} words={words} locked={locked} />
   );
   if (compact)
     return (
@@ -136,10 +139,7 @@ export function JoinClass({
               label={`Join ${shown}`}
               className={styles.qrLarge}
             />
-            <p>
-              Scan it with a camera to open{" "}
-              {family ? "your children’s" : "the class’s"} names.
-            </p>
+            <p>Scan it with a camera to open {words.names} names.</p>
           </div>
         </Dialog>
       </section>
@@ -148,12 +148,12 @@ export function JoinClass({
     <section
       className={styles.join}
       aria-labelledby={heading ? "join-class" : undefined}
-      aria-label={heading ? undefined : "Sign in on their own device"}
+      aria-label={heading ? undefined : words.signIn}
     >
       <div className={styles.text}>
         {heading && (
           <h2 id="join-class" className={styles.title}>
-            {family ? "Sign in on their own device" : "Students sign in"}
+            {words.signIn}
           </h2>
         )}
         <p className={styles.lead}>
@@ -215,12 +215,12 @@ export function JoinClass({
 function NewCode({
   place,
   code,
-  family,
+  words,
   locked,
 }: {
   place: { org: string; class: string };
   code: string;
-  family: boolean;
+  words: Pick<SpaceWords, "Learners">;
   locked: boolean;
 }) {
   const session = useQuery(sessionOptions).data ?? null;
@@ -275,9 +275,8 @@ function NewCode({
           }}
         >
           <span className={styles.confirmText}>
-            The old code and link stop working.{" "}
-            {family ? "Children" : "Students"} already in the class aren’t
-            affected.
+            The old code and link stop working. {words.Learners} already in the
+            class aren’t affected.
           </span>
           <span className={styles.confirmActions}>
             <Button

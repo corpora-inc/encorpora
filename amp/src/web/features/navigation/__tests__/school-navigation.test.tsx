@@ -79,6 +79,7 @@ function navigation({
         org: "org",
         classId: "current",
         active: "today",
+        leaf: "today",
         board: false,
       }),
     {
@@ -94,15 +95,16 @@ function navigation({
 }
 
 test.each([["admin", "teacher"], ["teacher"]] as OrgResource["roles"][])(
-  "a family's class row, for roles %j: no Grades, no Calendar tab and no Start class",
+  "a family's class row, for roles %j: the family's tabs, no Grades, no Start class",
   (...roles) => {
     const { tabs, start } = navigation({ kind: "family", roles });
     // The fixture's class has no students yet: a small family class.
     expect(tabs.map((tab) => tab.id)).toEqual([
       "today",
       "map",
-      "time",
       "workbooks",
+      "time",
+      "report-cards",
       "roster",
       "settings",
     ]);
@@ -110,10 +112,10 @@ test.each([["admin", "teacher"], ["teacher"]] as OrgResource["roles"][])(
   },
 );
 
-test("a small family's past year keeps its time", () => {
+test("a small family's past year keeps its time and report cards", () => {
   expect(
     navigation({ kind: "family", past: true }).tabs.map((tab) => tab.id),
-  ).toEqual(["time"]);
+  ).toEqual(["time", "report-cards"]);
   expect(navigation().tabs.some((tab) => tab.id === "calendar")).toBe(false);
 });
 
@@ -123,9 +125,9 @@ test("review regression: a current class beyond the first 500 keeps its tabs and
     "today",
     "map",
     "gradebook",
+    "roster",
     "time",
     "workbooks",
-    "roster",
     "settings",
   ]);
   expect(result.start).toBe(true);

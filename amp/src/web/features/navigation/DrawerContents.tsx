@@ -11,15 +11,16 @@ import { useLearnerStore } from "../../learner-store";
 import { useShellSlots } from "../../lib/shell-slots";
 import { FeedbackPreferences } from "../practice/FeedbackPreferences";
 import { ChoicePicker, Listbox, type ListboxOption } from "../../ui/Listbox";
-import { PlaceSwitcher, usePlaceEntries } from "./PlaceSwitcher";
-import { overviewPath, shellFrame, type ShellFrame } from "./shell-frame";
+import { PlaceSwitcher, usePlaces } from "./PlaceSwitcher";
+import type { SpaceDescriptor } from "../spaces/resolve";
+import { useLocationMatch, useSpace } from "../spaces/useSpace";
+import { ACCOUNT_HOME } from "../spaces/tabs";
 import { clearInitialConsentChallenge } from "../../consent-entry";
 import {
   clearOwnedPurchaseReturn,
   clearPurchaseReturn,
 } from "../../purchase-return";
 import styles from "./Navigation.module.css";
-import { secondParentChild } from "../second-parent/api";
 import { ProfilePlace } from "../profiles/ProfileBar";
 
 type Icon =
@@ -61,53 +62,35 @@ function NavIcon({ kind }: { kind: Icon }) {
 }
 
 /**
- * The drawer: where you are at the top (place and learner), one link for each
- * group of screens, the screen's own settings, and — pinned at the foot, in
- * `DrawerFooter` — who is signed in and Sign out. Everything here comes from
- * data the screen behind it already loaded, so it opens complete.
+ * The drawer, from the space on screen (features/spaces): first the space's
+ * own destinations (and, in a family, which child), then the place switcher,
+ * then the account; who is signed in and Sign out are pinned at the foot, in
+ * `DrawerFooter`. It never shows another space's learners or destinations.
+ * Everything here comes from data the screen behind it already loaded, so
+ * it opens complete.
  */
 export default function DrawerContents({
   close,
   practiceControls,
-  frame,
+  space: given,
 }: {
   close: () => void;
   practiceControls?: ReactNode;
-  /** The app frame's group on screen, when the drawer belongs to it. */
-  frame?: ShellFrame | null;
+  /** The app frame's space, when the drawer belongs to it. */
+  space?: SpaceDescriptor | null;
 }) {
   const view = useLearningView({ records: false });
   const navigate = useNavigate();
   const location = useLocation();
   const setDrawerSettings = useShellSlots((state) => state.setDrawerSettings);
-  const { account, learner } = view;
+  // Outside the app frame (sign-in cards, a student's standings), the
+  // drawer reads the space of the address itself.
+  const address = useLocationMatch();
+  const here = useSpace(given ? null : address);
+  const space = given ?? here;
+  const { account } = view;
   const student = account?.account.kind === "student";
-  const own = view.ownPractice;
-  // Practicing as one of their profiles: someone else's level, their own
-  // practice (features/profiles).
-  const profile = view.profile;
-  const here =
-    frame ??
-    shellFrame(
-      location.pathname,
-      typeof (location.search as Record<string, unknown>).class === "string"
-        ? ((location.search as Record<string, unknown>).class as string)
-        : undefined,
-    );
-  const context = own ? "own" : "learner";
-  const learnerChoices: ListboxOption[] = view.learners.map((l) => ({
-    value: l.id,
-    label: l.name,
-  }));
-  // The adult's own workbooks: a way to practise (on paper, at their level),
-  // so an item of its own under Practice (docs/design/ia.md).
-  const ownLearnerId = account?.adultPractice?.learner?.id;
-  const ownWorkbooks = ownLearnerId
-    ? `/learners/${ownLearnerId}/workbooks`
-    : null;
-  // Exactly one item is current: the most specific match for this route.
-  // Practice as someone else and the adult's workbooks sit beside My
-  // practice, so they outrank Progress there; never two fills at once.
+  const { groups, more } = usePlaces(account);
   // Opening the drawer is the intent: each item's screen (its code and
   // data) loads now, so the one a tap chooses renders whole, at once.
   const router = useRouter();
@@ -120,34 +103,28 @@ export default function DrawerContents({
       });
     }
   }, [router]);
-  const currentItem = location.pathname.startsWith("/me/profiles")
-    ? "someone"
-    : ownWorkbooks &&
-        (location.pathname === ownWorkbooks ||
-          location.pathname.startsWith(`${ownWorkbooks}/`))
-      ? "workbooks"
-      : (here?.kind ?? null);
   const nav = (
     href: string,
     title: string,
     kind: Icon,
     {
       detail,
-      search,
       current = false,
+      search,
     }: {
       detail?: string;
-      search?: Record<string, unknown>;
       current?: boolean;
+      search?: Record<string, string>;
     } = {},
   ) => (
     <Link
+      key={href}
       className={styles.navLink}
       to="/$"
-      params={{ _splat: href.slice(1) }}
+      params={{ _splat: href.replace(/^\//, "") }}
       search={search ?? {}}
-      // The drawer decides the one current item (`currentItem`); the
-      // router's own prefix match would mark /me current on /me/profiles.
+      // The space decides the one current item; the router's own prefix
+      // match would mark /me current on /me/profiles.
       activeOptions={{ exact: true, includeSearch: false }}
       activeProps={{}}
       aria-label={detail ? `${title}, ${detail}` : title}
@@ -161,176 +138,42 @@ export default function DrawerContents({
       </span>
     </Link>
   );
+  const kind = space?.space ?? null;
+  const learners =
+    kind === "family" && space?.space === "family" ? space.learners : [];
+  const chosen =
+    space?.space === "family" || space?.space === "student"
+      ? space.learner
+      : null;
   function chooseLearner(id: string) {
     useLearnerStore.getState().select(id);
     const at = location.pathname;
-    // Progress screens stay on the same tab for the new learner; anywhere
-    // else, practice (with the pause, once their free problems are used).
-    const destination =
-      at === "/progress"
-        ? "/progress"
-        : at === "/inventory"
-          ? "/inventory"
-          : at.startsWith("/pathways")
-            ? "/pathways"
-            : at === "/overview"
-              ? "/overview"
-              : // A second parent's family's child: their progress.
-                secondParentChild(account, id)
-                ? "/overview"
-                : "/practice";
-    void navigate({ to: "/$", params: { _splat: destination.slice(1) } });
+    // Progress screens stay on the same tab for the new child; anywhere
+    // else, their practice, or a second parent's child's progress.
+    const destination = ["/progress", "/inventory", "/overview"].includes(at)
+      ? at
+      : at.startsWith("/pathways")
+        ? "/pathways"
+        : space?.space === "family" && space.relation !== "holder"
+          ? "/overview"
+          : "/practice";
+    void navigate({
+      to: "/$",
+      params: { _splat: destination.slice(1) },
+      search: { learner: id } as never,
+    });
     close();
   }
-  const { entries: places, classHere } = usePlaceEntries(
-    account,
-    here?.kind === "class" || here?.kind === "school" ? here.org : undefined,
-    here?.kind === "class" ? here.classId : undefined,
-  );
-  const currentClass =
-    here?.kind === "class"
-      ? (`class:${here.org}:${here.classId}` as const)
-      : null;
-  // The drawer holds the place on screen: its class, and the school it
-  // belongs to (docs/design/ia.md). Never a class because it was the last
-  // one opened; every other place is one step away in the switcher. A
-  // family's class is its home, so it stays.
-  const inSchool = here?.kind === "school" || here?.kind === "class";
-  const classPlace =
-    places.find((place) => place.id === currentClass) ??
-    classHere ??
-    (!inSchool
-      ? places.find((place) => place.id === "home" && account?.familyClass)
-      : undefined);
-  const schoolPlace = inSchool
-    ? places.find((place) => place.id === `school:${here.org}`)
-    : undefined;
-  const workbookLearner = location.pathname.match(
-    /^\/learners\/([^/]+)\/workbooks/,
-  );
-  const profileScreen = location.pathname.match(/^\/me\/profiles\/([^/]+)/);
-  const currentPlace = profileScreen
-    ? profileScreen[1] === "new"
-      ? ("try-level" as const)
-      : (`profile:${profileScreen[1]}` as const)
-    : workbookLearner
-      ? workbookLearner[1] === account?.adultPractice?.learner?.id
-        ? "me"
-        : (`learner:${workbookLearner[1]}` as const)
-      : here?.kind === "class"
-        ? account?.familyClass?.classId === here.classId
-          ? "home"
-          : currentClass
-        : here?.kind === "school"
-          ? (`school:${here.org}` as const)
-          : profile && here?.kind === "practice"
-            ? (`profile:${profile.id}` as const)
-            : own && !profile
-              ? "me"
-              : learner &&
-                  (here?.kind === "progress" || here?.kind === "practice")
-                ? (`learner:${learner.id}` as const)
-                : "home";
-  // A class this person doesn't teach isn't a place in the switcher; it
-  // names the school, and the Class item names the class.
-  // A lone teacher's one-class school is listed as its class.
-  const switcherPlace = places.some((place) => place.id === currentPlace)
-    ? currentPlace
-    : (schoolPlace?.id ??
-      (inSchool
-        ? places.find((place) => place.id.startsWith(`class:${here.org}:`))?.id
-        : undefined) ??
-      currentPlace);
-  // Teaching here (a school's class or the school itself, not the family's
-  // own class): the drawer is the place's, never the family's. No learner,
-  // no Practice or Progress, no per-learner settings; the switcher goes back
-  // to the family (docs/design/ia.md).
-  const teachingHere =
-    inSchool &&
-    !(here?.kind === "class" && account?.familyClass?.classId === here.classId);
-  const learnerName = teachingHere
-    ? ""
-    : own
-      ? (view.learner?.name ?? "")
-      : (learner?.name ?? "");
-  // Get started is the first run only: once a person has any place (a
-  // school, a class, a family, their own practice), starting something new
-  // lives in the switcher's "Add a place".
-  const hasPlace =
-    !!account &&
-    ((account.staffOf?.length ?? 0) > 0 ||
-      !!account.familyClass ||
-      (account.learners?.length ?? 0) > 0 ||
-      !!account.adultPractice?.learner);
-  const practiceLabel = view.learner || student ? "Practice" : "Get started";
-  const showPractice =
-    !teachingHere && (!!view.learner || student || !hasPlace);
-  const practiceHref = view.practiceHref;
-  const hasProgress = !teachingHere && !!view.learner;
+  const learnerChoices: ListboxOption[] = learners.map((learner) => ({
+    value: learner.id,
+    label: learner.name,
+  }));
+  const learning = kind === "family" || kind === "me" || kind === "student";
+  // Their own family's account screens; anyone else's account is theirs.
+  const familyAccount =
+    space?.space === "family" && space.relation === "holder";
   return (
     <>
-      {/* One place still shows the switcher: it is where another place is
-          added (docs/design/ia.md). */}
-      {(places.length > 0 ||
-        (!teachingHere && learnerChoices.length > 1) ||
-        (!!learnerName && !own)) && (
-        <section className={styles.switcher} aria-label="Where you are">
-          {account && places.length > 0 && (
-            <PlaceSwitcher
-              me={account}
-              current={switcherPlace}
-              entries={places}
-              onNavigate={close}
-            />
-          )}
-          {teachingHere ? null : profile ? (
-            <ProfilePlace onNavigate={close} />
-          ) : learnerChoices.length > 1 && !own ? (
-            // A few learners are quiet rows, the chosen one marked; a long
-            // list folds behind one button.
-            learnerChoices.length <= 6 ? (
-              <div className={styles.learnerChoice}>
-                <span className={styles.kicker}>Learner</span>
-                <Listbox
-                  label="Current learner"
-                  className={styles.learnerList}
-                  options={learnerChoices}
-                  value={learner?.id ?? null}
-                  onChange={chooseLearner}
-                />
-              </div>
-            ) : (
-              <ChoicePicker
-                label="Current learner"
-                placeholder="Choose a learner"
-                options={learnerChoices}
-                value={learner?.id ?? null}
-                onChange={chooseLearner}
-              />
-            )
-          ) : (
-            // Their own practice is named by the place above; the drawer
-            // never names a person to themselves.
-            learnerName &&
-            !own && (
-              <div
-                className={styles.current}
-                data-learner={(own ? view.learner?.id : learner?.id) ?? ""}
-              >
-                <span className={styles.kicker}>Learner</span>
-                <strong>{learnerName}</strong>
-                {student && account?.school && (
-                  <span className={styles.context}>
-                    {account.school.orgName}
-                    {account.school.className &&
-                      ` · ${account.school.className}`}
-                  </span>
-                )}
-              </div>
-            )
-          )}
-        </section>
-      )}
       {(view.error || view.identityError) && (
         <div className={styles.error} role="alert">
           {view.identityError
@@ -339,86 +182,116 @@ export default function DrawerContents({
           <button onClick={view.retry}>Try again</button>
         </div>
       )}
+      {/* Which child, in a family: only that family's own children. */}
+      {space?.space === "me" && space.mode === "profile" ? (
+        <section className={styles.switcher} aria-label="Who is practicing">
+          <ProfilePlace onNavigate={close} />
+        </section>
+      ) : learnerChoices.length > 1 ? (
+        <section className={styles.switcher} aria-label="Who is practicing">
+          {learnerChoices.length <= 6 ? (
+            <div className={styles.learnerChoice}>
+              <span className={styles.kicker}>
+                {space!.words.learner === "child" ? "Child" : "Learner"}
+              </span>
+              <Listbox
+                label="Current learner"
+                className={styles.learnerList}
+                options={learnerChoices}
+                value={chosen?.id ?? null}
+                onChange={chooseLearner}
+              />
+            </div>
+          ) : (
+            <ChoicePicker
+              label="Current learner"
+              placeholder="Choose a learner"
+              options={learnerChoices}
+              value={chosen?.id ?? null}
+              onChange={chooseLearner}
+            />
+          )}
+        </section>
+      ) : chosen && (kind === "family" || kind === "student") ? (
+        <section className={styles.switcher} aria-label="Who is practicing">
+          <div className={styles.current} data-learner={chosen.id}>
+            <span className={styles.kicker}>
+              {kind === "student" ? "Signed in as" : "Child"}
+            </span>
+            <strong>{chosen.name}</strong>
+            {student && account?.school && (
+              <span className={styles.context}>
+                {account.school.orgName}
+                {account.school.className && ` · ${account.school.className}`}
+              </span>
+            )}
+          </div>
+        </section>
+      ) : null}
       <nav
         ref={navRef}
         aria-label="AMP navigation"
         className={styles.navigation}
       >
-        {/* A second parent's family's child practices from its class
-            ("Let … practice here"), which is the Class link below. */}
-        {!view.viewOnly &&
-          showPractice &&
-          nav(practiceHref, practiceLabel, "learn", {
-            current: currentItem === "practice",
-          })}
-        {own &&
-          !teachingHere &&
-          !profile &&
-          ownWorkbooks &&
-          nav(ownWorkbooks, "Workbooks", "workbooks", {
-            current: currentItem === "workbooks",
-          })}
-        {/* A profile's progress is its practice; its levels are its editor. */}
-        {hasProgress &&
-          !profile &&
-          nav(overviewPath(context), "Progress", "level", {
-            current: currentItem === "progress",
-          })}
-        {/* Practicing at another grade and pace: a page of its own, never a
-            place in the switcher (docs/design/ia.md). */}
-        {own &&
-          !teachingHere &&
-          !profile &&
-          nav("/me/profiles", "Practice as someone else", "someone", {
-            current: currentItem === "someone",
-          })}
-        {/* Lessons are reached from Pathways, practice and search, never
-            as a destination of their own (docs/design/ia.md). */}
-        {classPlace &&
-          !student &&
-          nav(`/${classPlace.path}`, "Class", "class", {
-            // The place switcher above already names the place on screen.
-            detail:
-              classPlace.id === switcherPlace ||
-              (classPlace.id === currentClass && switcherPlace === "home")
-                ? undefined
-                : classPlace.name,
-            current: currentItem === "class",
-          })}
-        {schoolPlace &&
-          !student &&
-          nav(`/${schoolPlace.path}`, "School", "school", {
-            detail: schoolPlace.name,
-            current: currentItem === "school",
-          })}
-        {student &&
-          account?.school?.standings &&
-          !location.pathname.startsWith("/practice") &&
-          nav("/standings", "Standings", "standings", {
-            detail: "Your class’s board",
-          })}
+        {space?.destinations.map((destination) =>
+          view.viewOnly && destination.id === "practice"
+            ? null
+            : nav(`/${destination.path}`, destination.label, destination.icon, {
+                detail: destination.detail,
+                current: destination.current,
+                search: destination.search,
+              }),
+        )}
+        {/* Before any place: the one way in. */}
+        {!student &&
+          !!account &&
+          !groups.length &&
+          !space?.destinations.length &&
+          nav("/start", "Get started", "learn")}
+      </nav>
+      {learning && (
+        <div className={styles.settings}>
+          {practiceControls}
+          {/* The screen's own settings (practice adjustments) portal here. */}
+          <div ref={setDrawerSettings} data-drawer-settings />
+          {/* Grade numbers are a learner's setting: not a class's. */}
+          <CurriculumDetailsControl variant="row" />
+        </div>
+      )}
+      {account && !student && groups.length > 0 && (
+        <section className={styles.switcher} aria-label="Your places">
+          <PlaceSwitcher
+            me={account}
+            current={space?.place ?? null}
+            groups={groups}
+            more={more}
+            label={
+              space?.space === "classroom"
+                ? (space.class.name ?? undefined)
+                : space?.space === "school"
+                  ? (space.org.name ?? undefined)
+                  : undefined
+            }
+            onNavigate={close}
+          />
+        </section>
+      )}
+      <nav aria-label="Account" className={styles.navigation}>
         {account?.availableAccessGrant &&
           !student &&
           nav("/access", "Your gift of AMP", "plans", {
             detail: `${account.availableAccessGrant.months === 12 ? "A year" : "A month"} of access is ready`,
           })}
-        {/* A family's learners, purchases and consent are a tab of Account:
-            a parent in the family class opens Account there, one row. */}
         {view.session.data &&
           !student &&
-          (here?.kind === "class" &&
-          account?.familyClass?.classId === here.classId
+          (familyAccount
             ? nav("/family", "Family & account", "settings")
-            : nav("/family/security", "Account", "settings", {
-                current: currentItem === "account",
+            : nav(`/${ACCOUNT_HOME}`, "Account", "settings", {
+                current: kind === "account",
               }))}
       </nav>
       <div className={styles.settings}>
-        {!teachingHere && practiceControls}
-        {/* The screen's own settings (practice adjustments) portal here. */}
-        <div ref={setDrawerSettings} data-drawer-settings />
-        {/* Grade numbers are a learner's setting: not a class's. */}
-        {!teachingHere && <CurriculumDetailsControl variant="row" />}
+        {!learning && <div ref={setDrawerSettings} data-drawer-settings />}
         <FeedbackPreferences />
       </div>
     </>

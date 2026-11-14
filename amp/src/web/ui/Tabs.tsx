@@ -126,7 +126,6 @@ export function Tabs({
         if (!fitted) console.warn("The tab row is wider than a phone", label);
         strip.scrollLeft = 0;
       } else if (over()) {
-      } else if (over()) {
         // Still too wide at the tightest padding: whole tabs, then More. The
         // room is the strip's cell, which never changes with what it shows.
         // The tabs that stay get their room back: never the tightest

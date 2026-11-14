@@ -1,3 +1,4 @@
+import type { SpaceWords } from "../../../spaces/words";
 import { JoinClass } from "../../join/JoinClass";
 
 /** Today's header: the compact form of the one Join element (the code, Copy
@@ -6,14 +7,14 @@ import { JoinClass } from "../../join/JoinClass";
 export function SignInCode({
   code,
   place,
-  family,
+  words,
   board,
   manage,
   locked,
 }: {
   code: string;
   place: { org: string; class: string };
-  family: boolean;
+  words: Pick<SpaceWords, "names" | "signIn" | "Learners">;
   /** Offer the full-screen code here: the bar doesn't. */
   board: boolean;
   manage: boolean;
@@ -24,7 +25,7 @@ export function SignInCode({
       compact
       code={code}
       place={place}
-      family={family}
+      words={words}
       boardLink={board}
       manage={manage}
       locked={locked}

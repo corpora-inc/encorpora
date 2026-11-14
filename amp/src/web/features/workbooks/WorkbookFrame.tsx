@@ -107,7 +107,7 @@ export function WorkbookFrame({
         </p>
         <Link
           to="/$"
-          params={{ _splat: "family/access" }}
+          params={{ _splat: "account/billing" }}
           className={buttonClass("primary")}
         >
           Review access

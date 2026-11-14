@@ -1,3 +1,4 @@
+import type { SpaceWords } from "../../spaces/words";
 import { EntityLink } from "../../../nav/links";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo, useState, type ReactNode } from "react";
@@ -71,8 +72,11 @@ export function ClassMap({
   data,
   limitStrands,
   action,
+  words,
 }: {
   data: MapResponse;
+  /** Who its rows are, in the space's words (features/spaces/words.ts). */
+  words: Pick<SpaceWords, "learner">;
   /** On Today the map is a glance, with the areas that have the most work. */
   limitStrands?: number;
   /** Before anyone has practiced: the one step that starts it. */
@@ -202,12 +206,12 @@ export function ClassMap({
       <div
         className={styles.table}
         role="table"
-        aria-label={`Class map, ${label(lens)}`}
+        aria-label={`Map, ${label(lens)}`}
       >
         <div className={styles.head} role="row">
           <span role="columnheader" aria-sort={byName ? direction : "none"}>
             <SortButton
-              label="Student"
+              label={capital(words.learner)}
               active={byName}
               direction={direction}
               onClick={() => sortBy("student")}
@@ -523,23 +527,23 @@ function SortButton({
   );
 }
 
+const capital = (word: string) => word[0]!.toUpperCase() + word.slice(1);
+
 /** What the marks mean. */
 export function MapKey({
   data,
-  family = false,
+  words,
 }: {
   data: MapResponse;
-  /** A family's class: its learners are children. */
-  family?: boolean;
+  /** The key's words in this space (features/spaces/words.ts). */
+  words: Pick<SpaceWords, "ownGrade">;
 }) {
   const { course } = data.class;
   return (
     <div className={styles.key}>
       <span className={styles.keyItem}>
         <span className={styles.keyCourse} />
-        {course
-          ? `${course.label}, this course`
-          : `Each ${family ? "child" : "student"}’s own grade`}
+        {course ? `${course.label}, this course` : words.ownGrade}
       </span>
       <span className={styles.keyItem}>
         <span className={styles.keyBand}>

@@ -1,19 +1,32 @@
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
-import { Link, Navigate, useNavigate, useParams } from "@tanstack/react-router";
+import {
+  Link,
+  Navigate,
+  useLocation,
+  useNavigate,
+  useParams,
+  useRouter,
+} from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { create } from "zustand";
 import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
 import { track } from "../../lib/analytics";
 import { ownPracticeAllowed } from "../../../learning/starting-point";
-import { authConfigOptions, sessionOptions } from "../../lib/query";
+import { authConfigOptions, meOptions, sessionOptions } from "../../lib/query";
+import { closeTo, returnTarget } from "../../lib/return-to";
 import { cleverEnabled } from "../school/clever/enabled";
 import { chosenPlan } from "../../lib/pending-trial";
 import { Button, buttonClass } from "../../ui/Button";
 import { Toast } from "../../ui/Toast";
 import { loadCurriculum } from "../schools/api";
 import { TalkToUs } from "../schools/TalkToUs";
-import { isStarterChoice, type StarterChoice } from "./guard";
+import {
+  hasHome,
+  isStarterChoice,
+  placesFor,
+  type StarterChoice,
+} from "./guard";
 import {
   deviceTimeZone,
   useStartDemo,
@@ -132,11 +145,30 @@ export function StarterStep() {
 function StarterScreen({ session }: { session: AuthSession }) {
   const params = useParams({ strict: false }) as { choice?: string };
   const choice = isStarterChoice(params.choice) ? params.choice : null;
+  const router = useRouter();
+  const from = returnTarget(
+    (useLocation().search as Record<string, unknown>).from,
+  );
+  const me = useQuery(meOptions(session)).data;
+  const account = me?.signedIn ? me : null;
+  // Adding a place (docs/architecture/spaces.md): only what the account
+  // doesn't have yet, never "I'm a parent" to a parent, and a way back.
+  const adding = !!account && placesFor(account).length > 0;
+  const has = (id: StarterChoice) =>
+    !!account &&
+    (id === "myself"
+      ? !!account.adultPractice?.learner
+      : id === "parent" || id === "tutor"
+        ? hasHome(account)
+        : false);
+  const shown = choices.filter((entry) => !has(entry.id));
   return (
     <main className={styles.page} data-starter={choice ?? ""}>
-      <h1 className={styles.title}>What brings you to AMP?</h1>
+      <h1 className={styles.title}>
+        {adding ? "Add a place" : "What brings you to AMP?"}
+      </h1>
       <ul className={styles.choices}>
-        {choices.map((entry) => {
+        {shown.map((entry) => {
           const content = (
             <>
               <svg
@@ -178,6 +210,16 @@ function StarterScreen({ session }: { session: AuthSession }) {
           );
         })}
       </ul>
+      {adding && (
+        <div>
+          <Button
+            variant="secondary"
+            onClick={() => closeTo(router, from ?? "/")}
+          >
+            Cancel
+          </Button>
+        </div>
+      )}
     </main>
   );
 }

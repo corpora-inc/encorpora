@@ -612,7 +612,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       accountRef.current === null &&
       identity?.startsWith("amp|") &&
       new URLSearchParams(location.search).has("security");
-    if (openingSecurity) navigate("/family/security", { replace: true });
+    if (openingSecurity) navigate("/account/security", { replace: true });
 
     setFamilyLearnerId("");
     setPurchaseFocus(undefined);
@@ -668,7 +668,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     setConsentChallenge(null);
     // Back to where consent was opened (Privacy, or a funded purchase's
     // step), else Privacy's consent section.
-    closeTo(router, "/family/privacy/consent");
+    closeTo(router, "/account/privacy/consent");
     setConsentReturn(true);
   }
   useEffect(() => {
@@ -809,7 +809,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           navigation === navigationEpoch.current &&
           parsePurchaseReturn(context)
         ) {
-          navigate("/family/access");
+          navigate("/account/billing");
           setError(
             "This purchase return could not be matched to your account. Open Annual subscription to check your learner’s access.",
           );
@@ -1037,7 +1037,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     setPurchaseReturn(null);
     closeTo(
       router,
-      purchaseView === "choose" ? "/family/access" : "/family/access/purchases",
+      purchaseView === "choose"
+        ? "/account/billing"
+        : "/account/billing/purchases",
     );
     setError("");
     void action(loadFamily);

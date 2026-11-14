@@ -46,14 +46,15 @@
   background: var(--color-surface);
   flex-wrap: nowrap;
 }
-/* Tabs follow the logo on one row from 640 px; below that they take a row
-   of their own under it, so neither the logo nor a tab ever moves. */
+/* Tabs follow the logo and the place's name on one row from 1024 px; below
+   that they take a row of their own under it, so neither the logo nor a tab
+   ever moves, and a tablet's tabs have the whole width. */
 .bar[data-tabs] {
   grid-template-columns: auto minmax(0, max-content) minmax(0, 1fr) auto;
   grid-template-areas: "logo tabs tools action";
   column-gap: var(--space-5);
 }
-@media (max-width: 639px) {
+@media (max-width: 1023px) {
   .bar[data-tabs] {
     grid-template-columns: auto minmax(0, 1fr) auto;
     grid-template-areas:
@@ -76,7 +77,7 @@
   align-items: center;
   min-width: 0;
 }
-@media (max-width: 639px) {
+@media (max-width: 1023px) {
   /* The strip keeps the bar's inset at both ends, so no tab ever meets the
      screen's edge: the open tab's fill starts where the logo does. */
   .tabsCell {
@@ -111,7 +112,7 @@
   grid-template-columns: auto minmax(0, max-content) minmax(0, 1fr);
   grid-template-areas: "logo tabs tools";
 }
-@media (max-width: 639px) {
+@media (max-width: 1023px) {
   .bar[data-tabs]:has(> .action:empty) {
     grid-template-columns: auto minmax(0, 1fr);
     grid-template-areas:
@@ -272,6 +273,39 @@
     justify-content: flex-end;
   }
   .tools :global(.workspace-toolbar[data-in-frame] .workspace-topic) {
+    display: none;
+  }
+}
+
+/* The place on screen, named beside the logo (docs/architecture/spaces.md):
+   "Grade 4 Math · Alder Grove", a family, "My practice", or whose record a
+   learning screen shows. One line, cut with an ellipsis, never wrapping. */
+.place {
+  overflow: hidden;
+  min-width: 0;
+  max-width: min(36ch, 42vw);
+  padding-inline-start: var(--space-3);
+  border-inline-start: 1px solid var(--color-border);
+  color: var(--color-muted-text);
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* Beside a row of tabs, the name gives way first: the tabs keep their room. */
+@media (min-width: 1024px) {
+  .bar[data-tabs] .place {
+    max-width: min(32ch, 18vw);
+  }
+}
+@media (max-width: 639px) {
+  .place {
+    max-width: 50vw;
+  }
+  /* Practice's own topic needs a phone's row: only a child's name (whose
+     practice it is) stays. */
+  .bar[data-bar="practice"]:not([data-space="family"]) .place {
     display: none;
   }
 }

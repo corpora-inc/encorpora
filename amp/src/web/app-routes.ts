@@ -2,6 +2,25 @@ import { useLocation, useRouter } from "@tanstack/react-router";
 import { useRef } from "react";
 export type FamilySection = "learners" | "access" | "privacy" | "security";
 export type PurchaseScreen = "choose" | "annual" | "funded";
+
+/** The account's own settings, at their neutral addresses
+ * (docs/architecture/spaces.md, "Account"). */
+export const ACCOUNT_SECTIONS = {
+  security: "/account/security",
+  access: "/account/billing",
+  privacy: "/account/privacy",
+} as const;
+const ALIAS: Record<string, FamilySection> = {
+  security: "security",
+  billing: "access",
+  privacy: "privacy",
+};
+/** Path parts read as the screens they open: `/account/billing/records` is
+ * Family's access section, as `/family/access/records` always was. */
+export function accountParts(parts: string[]): string[] {
+  const section = parts[0] === "account" ? ALIAS[parts[1] ?? ""] : undefined;
+  return section ? ["family", section, ...parts.slice(2)] : parts;
+}
 /** URLs own screen identity. Private consent challenges live only in memory. */
 export function useAppRoute() {
   const live = useLocation(),
@@ -32,7 +51,9 @@ export function useAppRoute() {
       resetScroll: options.resetScroll,
     });
   };
-  const parts = location.pathname.split("/").filter(Boolean);
+  // The account's own settings (`/account/security|billing|privacy`) and
+  // their older addresses under `/family/…` open the same screens.
+  const parts = accountParts(location.pathname.split("/").filter(Boolean));
   const familySection: FamilySection = [
     "access",
     "privacy",

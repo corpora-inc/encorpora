@@ -1,4 +1,5 @@
 import { closeSearch } from "../../lib/return-to";
+import { OrgFrame } from "./OrgFrame";
 import { useQuery } from "@tanstack/react-query";
 import {
   Link,
@@ -447,18 +448,26 @@ export function CalendarScreen() {
   if (!org) return null;
   const small = org.kind === "family" || org.solo === true;
   if (small && !classes) return null;
+  // A school's year and terms are its Calendar tab; a one-class school's
+  // or a family's are its class's Settings.
+  if (!small)
+    return (
+      <OrgFrame orgId={orgId} nav="calendar" title="Calendar" narrow>
+        <div className={styles.settingsPage}>
+          <YearCalendar orgId={orgId} section />
+        </div>
+      </OrgFrame>
+    );
   return (
     <Navigate
       to={"/$" as never}
       params={
         {
-          _splat:
-            small && classes?.[0]
-              ? `school/${orgId}/classes/${classes[0].id}/settings`
-              : `school/${orgId}/settings`,
+          _splat: classes?.[0]
+            ? `school/${orgId}/classes/${classes[0].id}/settings`
+            : `school/${orgId}/settings`,
         } as never
       }
-      hash={small ? undefined : "school-year"}
       replace
     />
   );

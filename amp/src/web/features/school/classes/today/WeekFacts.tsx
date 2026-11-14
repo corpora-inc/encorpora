@@ -5,6 +5,7 @@ import { HeatCell, HeatLegend, StatsLine } from "../../practice/heat";
 import { InfoPopover } from "../../../../ui/InfoPopover";
 import { number, TipZone } from "../teacher-shared";
 import styles from "./Today.module.css";
+import type { SpaceWords } from "../../../spaces/words";
 
 /** A class's week reads in the thousands; a smaller count says nothing. */
 const PROBLEMS_WORTH_STATING = 1000;
@@ -15,12 +16,13 @@ const PROBLEMS_WORTH_STATING = 1000;
  * saying "Not yet", never a row of zeros. */
 export function WeekFacts({
   week,
-  family,
+  words,
   target = null,
   students,
 }: {
   week: TodayResponse["week"];
-  family: boolean;
+  /** Who practiced, in the space's words (features/spaces/words.ts). */
+  words: Pick<SpaceWords, "learner" | "learners">;
   /** The weekly target for each learner, set in Settings. */
   target?: number | null;
   /** A class's students, for the spread of the week. */
@@ -61,14 +63,14 @@ export function WeekFacts({
           </div>
         )}
         <div>
-          <dt>{family ? "children practiced" : "students practiced"}</dt>
+          <dt>{words.learners} practiced</dt>
           <dd>
             {week.working} of {week.students}
           </dd>
         </div>
       </dl>
       {students && students.length > 1 && target !== null && (
-        <Spread students={students} target={target} />
+        <Spread students={students} target={target} words={words} />
       )}
     </section>
   );
@@ -78,8 +80,10 @@ export function WeekFacts({
 function Spread({
   students,
   target,
+  words,
 }: {
   students: NonNullable<TodayResponse["students"]>;
+  words: Pick<SpaceWords, "learner" | "learners">;
   target: number;
 }) {
   const sorted = [...students].sort(
@@ -90,17 +94,19 @@ function Spread({
     <div className={styles.spread}>
       {/* The spread's n, median, mean and sd, a tap away. */}
       <InfoPopover
-        title="Active minutes by student, the numbers"
+        title={`Active minutes by ${words.learner}, the numbers`}
         details={<StatsLine label="Minutes" {...stats} />}
       >
-        <h3 className={styles.spreadTitle}>Active minutes by student</h3>
+        <h3 className={styles.spreadTitle}>
+          Active minutes by {words.learner}
+        </h3>
       </InfoPopover>
       <TipZone>
         <span
           className={styles.spreadStrip}
           style={{ "--spread-columns": sorted.length } as CSSProperties}
           role="img"
-          aria-label={`${sorted.length} students: median ${Math.round(stats.median)}, mean ${Math.round(stats.mean)} active minutes this week.`}
+          aria-label={`${sorted.length} ${words.learners}: median ${Math.round(stats.median)}, mean ${Math.round(stats.mean)} active minutes this week.`}
         >
           {sorted.map((student) => (
             <HeatCell

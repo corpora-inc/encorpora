@@ -1,3 +1,4 @@
+import { spaceWords } from "../../spaces/words";
 import { EntityLink } from "../../../nav/links";
 import { ScreenTitle } from "../../../ui/ScreenTitle";
 import { SMALL_CLASS } from "../../navigation/shell-frame";
@@ -108,6 +109,7 @@ export function RosterScreen() {
     org: params.org,
     classId: params.class,
     active: "roster",
+    leaf: "roster",
     board: false,
   });
   const access = useClassAccess(place);
@@ -416,7 +418,7 @@ export function RosterScreen() {
                 compact
                 code={data.class.joinCode}
                 place={params}
-                family={family}
+                words={spaceWords(family ? "family" : "classroom")}
                 boardLink={family}
                 label={false}
                 manage={data.canNewCode ?? canManage}

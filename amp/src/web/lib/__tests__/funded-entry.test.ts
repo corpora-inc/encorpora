@@ -80,7 +80,7 @@ test("authentication returns only to fixed internal paths", () => {
   ).toBe(
     "/purchase/arkansas-efa?utm_campaign=ar-efa-launch&utm_source=facebook&utm_medium=paid-social",
   );
-  expect(continuationUrl({ return: "security" })).toBe("/family/security");
+  expect(continuationUrl({ return: "security" })).toBe("/account/security");
 });
 
 test("purchase continuation belongs to one account, expires, and rechecks privacy", () => {
@@ -253,9 +253,11 @@ test("only a path inside staff screens survives a school sign-in", () => {
 });
 
 test("security sign-in only returns to the validated deletion page", () => {
-  expect(
-    continuationUrl({ return: "security", next: "/family/security/delete" }),
-  ).toBe("/family/security/delete");
+  // Its own address, and the older one, which continues at the new one.
+  for (const next of ["/account/security/delete", "/family/security/delete"])
+    expect(continuationUrl({ return: "security", next })).toBe(
+      "/account/security/delete",
+    );
   for (const next of [
     "https://example.test",
     "//example.test",
@@ -267,7 +269,7 @@ test("security sign-in only returns to the validated deletion page", () => {
       return: "security",
     });
     expect(continuationUrl({ return: "security", next })).toBe(
-      "/family/security",
+      "/account/security",
     );
   }
 });

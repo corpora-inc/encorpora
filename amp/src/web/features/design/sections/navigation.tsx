@@ -2,7 +2,7 @@ import type { MouseEvent, ReactNode } from "react";
 import { AppLogo } from "../../../ui/AppLogo";
 import { QrCode } from "../../../ui/QrCode";
 import { Tabs, type TabItem } from "../../../ui/Tabs";
-import { classTabs } from "../../navigation/shell-frame";
+import { classroomTabs, familyTabs } from "../../spaces/tabs";
 import { WaveMark } from "../../../ui/WaveMark";
 import { Section, Specimen } from "../Gallery";
 import bar from "../../../ui/AppBar.module.css";
@@ -83,9 +83,15 @@ export function NavigationSections() {
 const placeTabs = (labels: readonly (readonly [string, string])[]): TabItem[] =>
   labels.map(([id, label]) => ({ id, label, path: `design/${id}` }));
 const tabRows = {
-  teacher: { label: "Class", items: classTabs("org", "class") },
-  family: { label: "Class", items: classTabs("org", "class", false, true, 3) },
-  tutor: { label: "Class", items: classTabs("org", "class", false, true, 12) },
+  teacher: { label: "Class", items: classroomTabs("org", "class") },
+  family: {
+    label: "Family",
+    items: familyTabs("org", "class", { learners: 3 }),
+  },
+  tutor: {
+    label: "Family",
+    items: familyTabs("org", "class", { learners: 12 }),
+  },
   admin: {
     label: "School",
     items: placeTabs([

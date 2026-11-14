@@ -342,7 +342,8 @@ function backLabel(href: string) {
   const path = href.split("?")[0]!;
   if (path === "/practice") return "Back to practice";
   if (path === "/me") return "Back to your progress";
-  if (path.startsWith("/family/access")) return "Back to billing";
+  if (path.startsWith("/family/access") || path.startsWith("/account/billing"))
+    return "Back to billing";
   if (/\/classes\/[^/]+\/today$/.test(path)) return "Back to Today";
   return "Back";
 }

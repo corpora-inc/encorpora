@@ -1,3 +1,4 @@
+import { spaceWords } from "../../spaces/words";
 import { useRef } from "react";
 import { ScreenTitle } from "../../../ui/ScreenTitle";
 import { useQuery } from "@tanstack/react-query";
@@ -45,6 +46,7 @@ function ClassToday({
     org: place.org,
     classId: place.class,
     active: "today",
+    leaf: "today",
     board: false,
   });
   const access = useClassAccess(place);
@@ -99,7 +101,7 @@ function ClassToday({
       />
       <WeekFacts
         week={data.week}
-        family={false}
+        words={spaceWords("classroom")}
         target={data.weeklyTargetMinutes}
         students={data.students}
       />
@@ -181,7 +183,7 @@ export function TodayScreen() {
               <SignInCode
                 code={code}
                 place={place}
-                family={family}
+                words={spaceWords(family ? "family" : "classroom")}
                 // The bar's Start class opens the board, except in a demo
                 // (its bar leads to the real class).
                 board={demo}
@@ -230,6 +232,7 @@ export function MapScreen() {
       ...orgOptions(currentSession(), place.org),
       refetchOnMount: false,
     }).data?.kind === "family";
+  const words = spaceWords(family ? "family" : "classroom");
   // The class's code board, where students join; offered as the map's one
   // step only where the bar would offer it (a current class).
   const { start } = useSchoolNavigation({
@@ -237,6 +240,7 @@ export function MapScreen() {
     org: place.org,
     classId: place.class,
     active: "map",
+    leaf: "map",
     board: false,
   });
   return (
@@ -251,17 +255,18 @@ export function MapScreen() {
         <LoadFailed what="The class map" onRetry={() => void map.refetch()} />
       ) : map.data.students.length === 0 ? (
         <div className={styles.page}>
-          <ScreenTitle>Class map</ScreenTitle>
+          <ScreenTitle>{family ? "Map" : "Class map"}</ScreenTitle>
           <EmptyMap org={place.org} classId={place.class} />
         </div>
       ) : (
         <div>
           <div className={styles.mapHead}>
-            <ScreenTitle>Class map</ScreenTitle>
-            <MapKey data={map.data} family={family} />
+            <ScreenTitle>{family ? "Map" : "Class map"}</ScreenTitle>
+            <MapKey data={map.data} words={words} />
           </div>
           <ClassMap
             data={map.data}
+            words={words}
             action={
               start ? (
                 <Link

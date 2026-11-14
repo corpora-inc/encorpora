@@ -142,8 +142,10 @@ export function continuationSearch(
       ? { return: search.return }
       : {}),
     ...(search.return === "security" &&
-    returnTarget(search.next) === "/family/security/delete"
-      ? { next: "/family/security/delete" }
+    ["/account/security/delete", "/family/security/delete"].includes(
+      returnTarget(search.next) ?? "",
+    )
+      ? { next: "/account/security/delete" }
       : {}),
     ...(search.return === "school" && safeSchoolPath(search.next)
       ? { next: safeSchoolPath(search.next) }
@@ -156,7 +158,7 @@ export function continuationUrl(
   fallback = "/start",
 ) {
   const safe = continuationSearch(search);
-  if (safe.return === "security") return safe.next ?? "/family/security";
+  if (safe.return === "security") return safe.next ?? "/account/security";
   if (safe.return === "school") return safe.next ?? "/school";
   if (safe.return === "school-invite") {
     const invite = pendingInvite();

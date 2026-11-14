@@ -109,7 +109,7 @@ export function FamilyCenter({
   const paymentHistoryOpen = route.parts[2] === "records";
   const setPaymentHistoryOpen = (open: boolean) =>
     route.navigate(
-      open ? "/family/access/records" : "/family/access/purchases",
+      open ? "/account/billing/records" : "/account/billing/purchases",
     );
   const paymentTrigger = useRef<HTMLButtonElement>(null);
   const paymentWasOpen = useRef(false);
@@ -128,7 +128,7 @@ export function FamilyCenter({
   const accessTrigger = useRef<HTMLElement | null>(null);
   const purchaseChooser = route.parts[2] === "purchases";
   const setPurchaseChooser = (open: boolean) => {
-    if (open) route.navigate("/family/access/purchases");
+    if (open) route.navigate("/account/billing/purchases");
   };
   const privacy =
     section === "privacy" &&
@@ -139,7 +139,7 @@ export function FamilyCenter({
           "export" | "consent" | "delete" | "retention" | "measurement")
       : null;
   const setPrivacy = (value: typeof privacy) => {
-    if (value) route.navigate(`/family/privacy/${value}`);
+    if (value) route.navigate(`/account/privacy/${value}`);
   };
   // Family is about the family's learners; the adult's own learner is its
   // own place.
@@ -222,7 +222,7 @@ export function FamilyCenter({
     chooserWasOpen.current = purchaseChooser;
   }, [purchaseChooser]);
   function closeChooser() {
-    route.navigate("/family/access");
+    route.navigate("/account/billing");
   }
   useLayoutEffect(() => {
     if (purchaseChooser && !returnFocus)
@@ -493,7 +493,7 @@ export function FamilyCenter({
   const back = purchaseChooser
     ? { label: "Billing", go: closeChooser }
     : section === "privacy" && privacy
-      ? { label: "Privacy", go: () => route.navigate("/family/privacy") }
+      ? { label: "Privacy", go: () => route.navigate("/account/privacy") }
       : null;
   const addChild = () =>
     consentActive ? setAdding(true) : route.navigate("/start/parent");

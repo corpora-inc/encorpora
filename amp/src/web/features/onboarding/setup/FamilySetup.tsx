@@ -1,3 +1,4 @@
+import { spaceWords } from "../../spaces/words";
 import { useQuery } from "@tanstack/react-query";
 import { Link, Navigate, useNavigate } from "@tanstack/react-router";
 import { useId, useState, type ReactNode } from "react";
@@ -664,7 +665,7 @@ function JoinStep({ session, me, kind, index }: StepProps) {
               <JoinClass
                 code={data.class.joinCode}
                 place={{ org: place.orgId, class: place.classId }}
-                family={parent}
+                words={spaceWords(parent ? "family" : "classroom")}
               />
             )}
           </QueryBlock>

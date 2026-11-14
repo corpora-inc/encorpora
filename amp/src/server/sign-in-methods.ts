@@ -71,6 +71,7 @@ export function methodList(methods: readonly SignInMethod[]) {
 const RETURN_PATHS: Record<string, string> = {
   "/access": "access",
   "/family/security": "security",
+  "/account/security": "security",
 };
 const SAFE_VALUE = /^[a-z0-9-]{1,40}$/;
 

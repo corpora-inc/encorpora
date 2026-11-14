@@ -213,7 +213,7 @@ function DeleteAccount({ session }: { session: AuthSession }) {
       <div className={pages.column}>
         <BackRow
           onClick={() =>
-            void navigate({ to: "/$", params: { _splat: "family/security" } })
+            void navigate({ to: "/$", params: { _splat: "account/security" } })
           }
         >
           Sign-in
@@ -235,7 +235,7 @@ function DeleteAccount({ session }: { session: AuthSession }) {
                 to="/sign-in"
                 search={{
                   return: "security",
-                  next: returnTarget("/family/security/delete"),
+                  next: returnTarget("/account/security/delete"),
                 }}
               >
                 Sign in again to delete

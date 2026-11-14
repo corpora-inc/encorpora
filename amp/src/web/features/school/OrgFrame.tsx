@@ -109,13 +109,7 @@ export function OrgFrame({
             ["staff", "All staff", "staff.read"],
             ["sign-in-help", "Sign-in help", "staff.read"],
           ]
-        : nav === "settings" || nav === "privacy" || nav === "integrations"
-          ? [
-              ["settings", "General", "classes.read"],
-              ["privacy", "Privacy and data", "privacy.read"],
-              ["integrations", "Integrations", "integrations.read"],
-            ]
-          : [];
+        : [];
   // The group's screens as one row of sub-tabs, the open one marked, so the
   // row never changes shape between them. The top tab names the area; the
   // first sub-tab names its own page, never the area again.
@@ -133,7 +127,9 @@ export function OrgFrame({
         narrow ||
         nav === "settings" ||
         nav === "privacy" ||
-        nav === "integrations"
+        nav === "integrations" ||
+        nav === "license" ||
+        nav === "calendar"
           ? ""
           : undefined
       }

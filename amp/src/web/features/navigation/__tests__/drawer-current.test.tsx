@@ -1,94 +1,48 @@
-import { afterEach, expect, test, vi } from "vitest";
-import { cleanup, render, screen } from "@testing-library/react";
-import type { ReactNode } from "react";
+import "./drawer-harness";
+import { afterEach, expect, test } from "vitest";
+import { cleanup, render } from "@testing-library/react";
+import type { SignedInMe } from "../../../../account/contracts";
 import DrawerContents from "../DrawerContents";
-
-const { learningView, pathname } = vi.hoisted(() => ({
-  learningView: vi.fn(),
-  pathname: { value: "/me/profiles" },
-}));
-vi.mock("../../../lib/learning-view", () => ({
-  useLearningView: learningView,
-}));
-vi.mock("@tanstack/react-router", () => ({
-  useLocation: () => ({ pathname: pathname.value, search: {} }),
-  useNavigate: () => vi.fn(),
-  useRouter: () => ({ preloadRoute: () => Promise.resolve() }),
-  Link: ({
-    children,
-    params,
-    "aria-label": label,
-    "aria-current": current,
-  }: {
-    children: ReactNode;
-    params: { _splat: string };
-    "aria-label"?: string;
-    "aria-current"?: "page";
-  }) => (
-    <a href={`/${params._splat}`} aria-label={label} aria-current={current}>
-      {children}
-    </a>
-  ),
-}));
-vi.mock("../../curriculum/CurriculumDetails", () => ({
-  CurriculumDetailsControl: () => null,
-}));
-vi.mock("../../practice/FeedbackPreferences", () => ({
-  FeedbackPreferences: () => null,
-}));
-vi.mock("../PlaceSwitcher", () => ({
-  PlaceSwitcher: () => null,
-  placeEntries: () => [],
-  usePlaceEntries: () => ({ entries: [], loading: false }),
-}));
+import { resolveSpace } from "../../spaces/resolve";
+import { harness } from "./drawer-harness";
 
 afterEach(cleanup);
 
-const adult = () => {
-  const learner = { id: "me", name: "Me" };
-  learningView.mockReturnValue({
-    account: {
-      account: { kind: "adult" },
-      adultPractice: { learner: { id: "me" } },
-    },
-    learner,
-    learners: [learner],
-    ownPractice: true,
-    session: { data: {} },
-    canPractice: true,
-    practiceHref: "/practice",
-  });
-};
-const currentLinks = () =>
-  [...document.querySelectorAll('a[aria-current="page"]')].map((link) =>
-    link.getAttribute("aria-label"),
+const account = {
+  signedIn: true,
+  account: { id: "amp|r", email: null, emailVerified: true },
+  learners: [],
+  family: { learners: [] },
+  adultPractice: {
+    eligible: true,
+    learner: { id: "me", name: "Me", active: true },
+  },
+} as unknown as SignedInMe;
+harness.learningView.mockReturnValue({
+  account,
+  session: { data: {} },
+  viewOnly: false,
+});
+const current = (pathname: string, learner?: string) => {
+  const space = resolveSpace(
+    { pathname, ...(learner ? { learner } : {}) },
+    { kind: "adult", me: account, learnerId: "me" },
   );
+  render(<DrawerContents close={() => {}} space={space} />);
+  const names = [...document.querySelectorAll('a[aria-current="page"]')].map(
+    (link) => link.getAttribute("aria-label"),
+  );
+  cleanup();
+  return names;
+};
 
-test("founder note: on Practice as someone else, only that item is current, never Progress too", () => {
-  adult();
-  pathname.value = "/me/profiles";
-  render(<DrawerContents close={() => {}} />);
-  expect(
-    screen.getByRole("link", { name: "Practice as someone else" }),
-  ).toBeTruthy();
-  expect(screen.getByRole("link", { name: "Progress" })).toBeTruthy();
-  expect(currentLinks()).toEqual(["Practice as someone else"]);
-});
-
-test("on Progress, only Progress is current", () => {
-  adult();
-  pathname.value = "/me";
-  render(<DrawerContents close={() => {}} />);
-  expect(currentLinks()).toEqual(["Progress"]);
-});
-
-test("founder note: the adult's own workbooks sit under Practice, the one current item there", () => {
-  adult();
-  pathname.value = "/learners/me/workbooks/2026-11-10";
-  render(<DrawerContents close={() => {}} />);
-  const names = [
-    ...document.querySelectorAll('nav[aria-label="AMP navigation"] a'),
-  ].map((link) => link.getAttribute("aria-label"));
-  expect(names.slice(0, 3)).toEqual(["Practice", "Workbooks", "Progress"]);
-  expect(currentLinks()).toEqual(["Workbooks"]);
+test("exactly one item is current, the most specific for the route", () => {
+  expect(current("/me/profiles")).toEqual(["Profiles"]);
+  expect(current("/me")).toEqual(["Levels"]);
+  expect(current("/practice")).toEqual(["Practice"]);
+  expect(current("/learners/me/workbooks/2026-11-10", "me")).toEqual([
+    "Workbooks",
+  ]);
+  // A step with its own way back (trying a level) marks none.
+  expect(current("/me/profiles/new")).toEqual([]);
 });

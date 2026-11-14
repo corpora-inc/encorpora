@@ -1,281 +1,77 @@
-import { useQueries, useQuery } from "@tanstack/react-query";
-import { sessionOptions } from "../../lib/query";
-import { classesOptions, orgOptions, orgsOptions } from "../school/api";
-import { schoolsOptions } from "../school/org/org-api";
-import { useNavigate } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
+import { useLocation, useNavigate } from "@tanstack/react-router";
+import { useState } from "react";
 import type { SignedInMe } from "../../../account/contracts";
 import { useLearnerStore } from "../../learner-store";
+import { sessionOptions } from "../../lib/query";
 import { Menu, MenuItem, MenuLabel } from "../../ui/Menu";
-import { familyClassPath, placesFor, type PlaceId } from "../onboarding/guard";
 import { rememberPlace } from "../onboarding/place-memory";
 import { DemoMark } from "../school/demo/DemoMark";
+import {
+  currentPlace,
+  FIRST_PAGE,
+  placeGroups,
+  placesOptions,
+  type PlaceEntry,
+  type PlaceGroup,
+} from "../spaces/places";
 import styles from "./PlaceSwitcher.module.css";
 
-const roleNames = {
-  admin: "Admin",
-  teacher: "Teacher",
-  aide: "Aide",
-  viewer: "Viewer",
-} as const;
+export type { PlaceEntry } from "../spaces/places";
 
-export type PlaceEntry = {
-  id:
-    | PlaceId
-    | `class:${string}:${string}`
-    | `learner:${string}`
-    | `profile:${string}`
-    | "try-level";
-  name: string;
-  /** The role here, or what's next. */
-  detail: string;
-  /** Its URL path, without the leading slash: `/` decides the family side. */
-  path: string;
-  /** A demo place: made-up students, there to explore. */
-  demo?: true;
-};
-
-/** Every place this account can open, named for the switcher: places only
- * (docs/design/ia.md). Practice profiles live on /me/profiles; children and
- * students are reached from their class. */
-export function placeEntries(me: SignedInMe): PlaceEntry[] {
-  // Their own practice shows once it exists; starting it is an option of
-  // "Add a place", not a row of its own.
-  return placesFor(me)
-    .filter((id) => id !== "me" || !!me.adultPractice?.learner)
-    .map((id) => place(me, id));
-}
-
-function place(me: SignedInMe, id: PlaceId): PlaceEntry {
-  // A family's side is its class, which the parent teaches.
-  if (id === "home" && me.familyClass)
-    return {
-      id,
-      name: me.familyClass.className,
-      detail:
-        me.learners.length === 1
-          ? me.learners[0]!.name
-          : `${me.learners.length} students`,
-      path: familyClassPath(me.familyClass).replace(/^\//, ""),
-    };
-  if (id === "home")
-    return {
-      id,
-      name: "Family and practice",
-      detail:
-        me.learners.length === 1
-          ? me.learners[0]!.name
-          : me.learners.length > 1
-            ? `${me.learners.length} learners`
-            : "Getting started",
-      path: "",
-    };
-  if (id === "me") {
-    // Their own learner, by their name; or the way to start one.
-    const own = me.adultPractice?.learner;
-    return own
-      ? {
-          id,
-          name: "My practice",
-          // Never their own name back to them (docs/design/ia.md).
-          detail: "Your practice and progress",
-          path: "me",
-        }
-      : {
-          id,
-          name: "Start my own practice",
-          detail: "Free for you",
-          path: "me/start",
-        };
-  }
-  const org = me.staffOf!.find((entry) => `school:${entry.orgId}` === id)!;
-  return {
-    id,
-    name: org.orgName,
-    detail: org.setupPending ? "Finish setting up" : roleNames[org.role],
-    path: `school/${org.orgId}`,
-    ...(org.demo ? { demo: true as const } : {}),
-  };
-}
-
-/** The same switcher also lists the classes returned by each permitted org. */
-export function usePlaceEntries(
-  me: SignedInMe | null,
-  currentOrg?: string,
-  /** The class on screen: the drawer names it even for an admin who
-   * doesn't teach it, while the switcher lists only taught classes. */
-  currentClass?: string,
-) {
+/** Every place this account can open, grouped by space, from one bounded
+ * request (no request per school or class). */
+export function usePlaces(me: SignedInMe | null) {
   const session = useQuery(sessionOptions).data;
-  const auth = session ?? { accountId: "", token: "" };
-  const orgsQuery = useQuery({
-    ...orgsOptions(auth),
-    enabled:
-      !!session && !!me?.staffOf?.length && me.account.kind !== "student",
+  const staff =
+    !!me &&
+    me.account.kind !== "student" &&
+    !!session &&
+    !session.accountId.startsWith("school:") &&
+    !!me.staffOf?.length;
+  const places = useQuery({
+    ...placesOptions(session ?? { accountId: "", token: "" }),
+    enabled: staff,
     refetchOnMount: false,
   });
-  const schools = orgsQuery.data ?? [];
-  const currentQuery = useQuery({
-    ...orgOptions(auth, currentOrg ?? ""),
-    enabled: !!session && !!currentOrg,
-    refetchOnMount: false,
-  });
-  const current = currentQuery.data;
-  const districts = schools.filter(
-    (org) => org.kind === "district" || org.kind === "network",
-  );
-  const permissions = useQueries({
-    queries: districts.map((org) => ({
-      ...orgOptions(auth, org.id),
-      refetchOnMount: false,
-    })),
-  });
-  const descendantQueries = useQueries({
-    queries: districts.map((org, index) => ({
-      ...schoolsOptions(auth, org.id),
-      enabled:
-        permissions[index]?.data?.can?.includes("overview.read") === true,
-      refetchOnMount: false,
-    })),
-  });
-  const descendants = descendantQueries.flatMap(
-    (result) => result.data?.schools ?? [],
-  );
-  const namedSchools = [
-    ...schools.filter((org) => org.kind !== "family"),
-    ...(current && current.kind !== "family" ? [current] : []),
-    ...descendants,
-  ];
-  const classOrgs =
-    current && !schools.some((org) => org.id === current.id)
-      ? [current, ...schools]
-      : schools;
-  const lists = useQueries({
-    queries: classOrgs.map((org) => ({
-      ...classesOptions(auth, org.id),
-      enabled: !!session,
-      refetchOnMount: false,
-    })),
-  });
-  // A class is a place of its own only for someone who teaches it; a
-  // school's admin reaches every class from the school.
-  const reads = useQueries({
-    queries: classOrgs.map((org) => ({
-      ...orgOptions(auth, org.id),
-      enabled: !!session,
-      refetchOnMount: false,
-    })),
-  });
-  const entries =
-    me && me.account.kind !== "student"
-      ? placeEntries(me).filter(
-          (entry) =>
-            !schools.some(
-              (org) => org.kind === "family" && entry.id === `school:${org.id}`,
-            ),
-        )
-      : [];
-  for (const org of namedSchools) {
-    if (!entries.some((entry) => entry.id === `school:${org.id}`))
-      entries.push({
-        id: `school:${org.id}`,
-        name: org.name,
-        detail: "School",
-        path: `school/${org.id}`,
-        ...("demo" in org && org.demo ? { demo: true as const } : {}),
-      });
-  }
-  const classes: PlaceEntry[] = [];
-  let classHere: PlaceEntry | undefined;
-  for (const [index, org] of classOrgs.entries()) {
-    const taught = new Set(reads[index]?.data?.teaches ?? []);
-    for (const klass of lists[index]?.data ?? []) {
-      const id = `class:${klass.orgId}:${klass.id}` as const;
-      const entry: PlaceEntry = {
-        id,
-        name: klass.name,
-        detail:
-          namedSchools.find((school) => school.id === klass.orgId)?.name ??
-          org.name,
-        path: `school/${klass.orgId}/classes/${klass.id}/today`,
-        ...(org.demo ? { demo: true as const } : {}),
-      };
-      if (klass.id === currentClass) classHere = entry;
-      if (
-        !taught.has(klass.id) ||
-        klass.id === me?.familyClass?.classId ||
-        classes.some((known) => known.id === id)
-      )
-        continue;
-      classes.push(entry);
-    }
-  }
-  // A lone teacher's school with one class is that class: the school layer
-  // stays out of sight, as it does in the drawer and the class's tabs. A
-  // second class brings the school back (docs/design/ia.md).
-  const places = [...entries];
-  for (const [index, org] of classOrgs.entries()) {
-    const lone =
-      reads[index]?.data?.solo === true &&
-      (lists[index]?.data?.length ?? 0) <= 1;
-    const klass = classes.findIndex((entry) =>
-      entry.id.startsWith(`class:${org.id}:`),
-    );
-    const school = places.findIndex((entry) => entry.id === `school:${org.id}`);
-    if (!lone || klass < 0 || school < 0) continue;
-    // They teach it: its own school's "Admin" says nothing they'd recognise.
-    places.splice(school, 1, { ...classes[klass]!, detail: "Teacher" });
-    classes.splice(klass, 1);
-  }
+  if (places.isError) console.warn("Your places did not load", places.error);
   return {
-    entries: orderPlaces(places, classes),
-    classHere,
-    currentOrg: current,
-    loading:
-      orgsQuery.isLoading ||
-      currentQuery.isLoading ||
-      [...permissions, ...descendantQueries, ...lists, ...reads].some(
-        (query) => query.isLoading,
-      ),
+    groups:
+      me && me.account.kind !== "student"
+        ? placeGroups(me, staff ? (places.data ?? null) : null)
+        : [],
+    more: places.data?.more === true,
+    loading: staff && places.isLoading,
   };
 }
 
-/** The switcher's order (docs/design/ia.md): their own practice, their
- * family, then each school followed by the classes they teach there. */
-export function orderPlaces(
-  places: readonly PlaceEntry[],
-  classes: readonly PlaceEntry[],
-): PlaceEntry[] {
-  const first = (["me", "home"] as const).flatMap((id) =>
-    places.filter((entry) => entry.id === id),
-  );
-  const schools = places.filter(
-    (entry) => entry.id !== "me" && entry.id !== "home",
-  );
-  const orgOf = (entry: PlaceEntry) => entry.id.split(":")[1];
-  const placed = new Set<string>();
-  const ordered = [...first];
-  for (const school of schools) {
-    ordered.push(school);
-    for (const klass of classes)
-      if (orgOf(klass) === orgOf(school)) {
-        ordered.push(klass);
-        placed.add(klass.id);
-      }
-  }
-  return [...ordered, ...classes.filter((klass) => !placed.has(klass.id))];
+/** The places of an account without the places read: its family, its own
+ * practice and the schools `/me` names. For a screen outside the frame. */
+export function placeEntries(me: SignedInMe): PlaceEntry[] {
+  return placeGroups(me, null).flatMap((group) => group.entries);
 }
 
-/** Choosing a place chooses its learner: the adult's own for their practice,
- * and the family's first for the family side, unless one of theirs already is. */
-export function choosePlaceLearner(me: SignedInMe, place: PlaceId) {
+/** Choosing a place chooses its learner: the adult's own for their
+ * practice, one of the family's children for a family (unless one already
+ * is), and nobody for a class or school, where no learner belongs. */
+export function choosePlaceLearner(me: SignedInMe, place: PlaceEntry["id"]) {
   const store = useLearnerStore.getState();
   const own = me.adultPractice?.learner?.id ?? null;
-  if (place === "me" && own) store.select(own);
-  else if (
-    place === "home" &&
-    !me.learners.some((learner) => learner.id === store.learnerId)
-  )
-    store.select(me.learners[0]?.id ?? null);
+  const shared = /^family:(.+)$/.exec(place)?.[1];
+  const children =
+    place === "home"
+      ? me.learners
+      : shared
+        ? (me.secondParentOf?.find((family) => family.orgId === shared)
+            ?.learners ?? [])
+        : null;
+  if (place === "me") {
+    if (own) store.select(own);
+  } else if (children) {
+    if (!children.some((learner) => learner.id === store.learnerId))
+      store.select(children[0]?.id ?? null);
+  } else if (place.startsWith("school:") || place.startsWith("class:"))
+    store.select(null);
 }
 
 /** What "Add a place" can still add: never a place the account has. */
@@ -293,33 +89,55 @@ function addPlaceDetail(me: SignedInMe) {
 }
 
 /**
- * The one way between the places a person works: their family and practice
- * side, their own practice, and each school with their role there. It lists
- * only places this account can open, then "Add a place" (the starter).
- * Choosing a place remembers it, so `/` opens there next time.
+ * The one way between the places a person works, grouped as Family,
+ * Teaching and My practice, the current one marked. It lists only places
+ * this account can open, each with its role, then "Add a place" (the
+ * starter). Choosing one lands on that place's home, chooses its learner,
+ * and remembers it, so `/` opens there next time; nothing else follows them.
  */
 export function PlaceSwitcher({
   me,
   current,
   label,
   onNavigate,
-  entries,
+  groups: given,
+  more = false,
 }: {
   me: SignedInMe;
-  /** The place on screen now. */
-  current: PlaceEntry["id"] | null;
-  entries?: PlaceEntry[];
-  /** The trigger's text, when the screen names its place more exactly (a
-   * school within the district this person works for, say). */
+  /** The place on screen now (`SpaceDescriptor.place`). */
+  current: string | null;
+  groups?: PlaceGroup[];
+  /** The places read stopped at its limit: `/school` lists them all. */
+  more?: boolean;
+  /** The trigger's text when the screen isn't one of the places (a class
+   * this admin doesn't teach, a school below their district). */
   label?: string;
   onNavigate?: () => void;
 }) {
   const navigate = useNavigate();
-  const places = entries ?? placeEntries(me);
+  const origin = useLocation({ select: (location) => location.href });
+  const [expanded, setExpanded] = useState(false);
+  const groups = given ?? placeGroups(me, null);
+  const all = groups.flatMap((group) => group.entries);
   // One place still shows the menu: it is where another place is added.
-  if (!places.length) return null;
-  const here = places.find((place) => place.id === current);
-  const name = label ?? here?.name ?? "Your places";
+  if (!all.length) return null;
+  const here = currentPlace(groups, current);
+  const name = here?.name ?? label ?? "Your places";
+  const choose = (place: PlaceEntry) => {
+    if (place.id === here?.id) return;
+    choosePlaceLearner(me, place.id);
+    // A place `/` can return to; starting or trying a level is a step.
+    if (place.id === "home" || (place.id === "me" && place.path === "me"))
+      rememberPlace(me.account.id, place.id);
+    else if (place.id.startsWith("school:"))
+      rememberPlace(me.account.id, place.id as `school:${string}`);
+    else if (place.id.startsWith("family:"))
+      rememberPlace(me.account.id, `school:${place.id.slice(7)}`);
+    onNavigate?.();
+    void navigate(
+      place.path ? { to: "/$", params: { _splat: place.path } } : { to: "/" },
+    );
+  };
   return (
     <Menu
       align="start"
@@ -334,68 +152,65 @@ export function PlaceSwitcher({
         </span>
       }
     >
-      <MenuLabel>Your places</MenuLabel>
-      {places.map((place) => {
-        const isHere = place.id === current;
-        return (
-          <MenuItem
-            key={place.id}
-            onSelect={() => {
-              if (isHere) return;
-              if (place.id.startsWith("learner:"))
-                useLearnerStore.getState().select(place.id.slice(8));
-              // A profile is practiced as; trying a level is a step on the
-              // way to one. Neither is a place `/` returns to.
-              else if (place.id.startsWith("profile:"))
-                useLearnerStore.getState().select(place.id.slice(8));
-              else if (
-                place.id !== "try-level" &&
-                !place.id.startsWith("class:")
-              )
-                choosePlaceLearner(me, place.id as PlaceId);
-              // Starting is a step on the way there; the place is theirs once
-              // they have it.
-              if (
-                place.path !== "me/start" &&
-                place.id !== "try-level" &&
-                !place.id.startsWith("profile:") &&
-                !place.id.startsWith("learner:") &&
-                !place.id.startsWith("class:")
-              )
-                rememberPlace(me.account.id, place.id as PlaceId);
-              onNavigate?.();
-              void navigate(
-                place.path
-                  ? { to: "/$", params: { _splat: place.path } }
-                  : { to: "/" },
-              );
-            }}
-          >
-            <span className={styles.item} data-place={place.id}>
-              <span className={styles.nameLine}>
-                <span className={styles.name}>{place.name}</span>
-                {place.demo && <DemoMark />}
-              </span>
-              <span className={styles.detail}>
-                {place.detail}
-                {isHere && <span className={styles.hidden}>, open now</span>}
-              </span>
-            </span>
-            <svg
-              className={styles.check}
-              viewBox="0 0 16 16"
-              aria-hidden="true"
-              data-here={isHere || undefined}
-            >
-              <path d="m3.5 8.5 3 3 6-7" />
-            </svg>
-          </MenuItem>
-        );
+      {groups.map((group) => {
+        const cut =
+          group.id === "teaching" &&
+          !expanded &&
+          group.entries.length > FIRST_PAGE + 1;
+        // The open place always shows, even past the first page.
+        const shown = cut
+          ? group.entries.filter(
+              (entry, index) => index < FIRST_PAGE || entry.id === here?.id,
+            )
+          : group.entries;
+        return [
+          <MenuLabel key={`${group.id}-label`}>{group.label}</MenuLabel>,
+          ...shown.map((place) => (
+            <MenuItem key={place.id} onSelect={() => choose(place)}>
+              <PlaceRow place={place} here={place.id === here?.id} />
+            </MenuItem>
+          )),
+          ...(cut
+            ? [
+                <MenuItem
+                  key={`${group.id}-more`}
+                  onSelect={(event) => {
+                    event.preventDefault();
+                    setExpanded(true);
+                  }}
+                >
+                  <span className={styles.item} data-place="more">
+                    <span className={styles.name}>More places</span>
+                    <span className={styles.detail}>
+                      {group.entries.length - shown.length} more
+                    </span>
+                  </span>
+                </MenuItem>,
+              ]
+            : []),
+          ...(group.id === "teaching" && more && (expanded || !cut)
+            ? [
+                <MenuItem
+                  key="all-schools"
+                  onSelect={() => {
+                    onNavigate?.();
+                    void navigate({ to: "/$", params: { _splat: "school" } });
+                  }}
+                >
+                  <span className={styles.item} data-place="all">
+                    <span className={styles.name}>All your schools</span>
+                    <span className={styles.detail}>Every place you work</span>
+                  </span>
+                </MenuItem>,
+              ]
+            : []),
+        ];
       })}
       <MenuItem
         onSelect={() => {
           onNavigate?.();
-          void navigate({ to: "/start" });
+          // Adding a place returns to here if they change their mind.
+          void navigate({ to: "/start", search: { from: origin } as never });
         }}
       >
         <span className={styles.item} data-place="add">
@@ -404,5 +219,30 @@ export function PlaceSwitcher({
         </span>
       </MenuItem>
     </Menu>
+  );
+}
+
+function PlaceRow({ place, here }: { place: PlaceEntry; here: boolean }) {
+  return (
+    <>
+      <span className={styles.item} data-place={place.id}>
+        <span className={styles.nameLine}>
+          <span className={styles.name}>{place.name}</span>
+          {place.demo && <DemoMark />}
+        </span>
+        <span className={styles.detail}>
+          {place.detail}
+          {here && <span className={styles.hidden}>, open now</span>}
+        </span>
+      </span>
+      <svg
+        className={styles.check}
+        viewBox="0 0 16 16"
+        aria-hidden="true"
+        data-here={here || undefined}
+      >
+        <path d="m3.5 8.5 3 3 6-7" />
+      </svg>
+    </>
   );
 }

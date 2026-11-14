@@ -17,7 +17,7 @@ import { queryClient, meOptions, refreshMe } from "../src/web/lib/query";
 import { useAppRoute } from "../src/web/app-routes";
 import { FamilyCenter } from "../src/web/FamilyCenter";
 import { Tabs } from "../src/web/ui/Tabs";
-import { accountTabs } from "../src/web/features/navigation/shell-frame";
+import { accountTabs } from "../src/web/features/spaces/tabs";
 import "../src/web/ui/tokens.css";
 const Content = createContext<React.ReactNode>(null);
 export function FixtureRouter({

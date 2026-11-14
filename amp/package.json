@@ -55,7 +55,7 @@
     "demo:terms": "tsx scripts/demo-terms.ts",
     "test:contrast": "tsx scripts/verify-contrast.ts --strict",
     "build": "npm run lint:controls && npm run lint:navigation && npm run tsc && vite build && npm run build:public-pathways",
-    "lint:navigation": "tsx scripts/check-navigation.ts",
+    "lint:navigation": "tsx scripts/check-navigation.ts && tsx scripts/check-space-boundaries.ts",
     "build:public-pathways": "tsx scripts/build-public-pathways.ts && tsx scripts/build-site-icons.ts && tsx scripts/build-home-document.ts",
     "build:server": "tsx scripts/build-server.ts",
     "build:search": "tsx scripts/build-search-index.ts",
