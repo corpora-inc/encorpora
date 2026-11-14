@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { z } from "zod";
+import * as recoveryHandlers from "../app-recovery";
 import { request } from "../api";
 import { onSignedOut, resetAppRecoveryForTest } from "../app-recovery";
 import { queryClient, retireSession, sessionOptions } from "../query";
@@ -36,11 +37,55 @@ beforeEach(() => {
   );
 });
 afterEach(() => {
+  document.head.innerHTML = "";
   queryClient.clear();
   forgetRetiredSessions();
   vi.unstubAllGlobals();
   vi.restoreAllMocks();
 });
+
+test.each([
+  { status: 401, stale: false },
+  { status: 401, stale: true },
+  { status: 404, stale: true },
+])(
+  "retirement during a release check prevents recovery ($status, stale=$stale)",
+  async ({ status, stale }) => {
+    document.head.innerHTML =
+      '<script type="module" src="/assets/app-synthetic.js"></script>';
+    const build = deferred<Response>();
+    const started = deferred<void>();
+    vi.mocked(fetch).mockImplementation((url) => {
+      if (url === "/") {
+        started.resolve();
+        return build.promise;
+      }
+      return Promise.resolve(
+        new Response('{"error":"sign_in_required"}', { status }),
+      );
+    });
+    const signedOut = vi.fn(() => false);
+    onSignedOut(signedOut);
+    const reload = vi
+      .spyOn(recoveryHandlers, "reloadIntoCurrentRelease")
+      .mockReturnValue(null);
+    const old = request("/probe-mutation", z.unknown(), {
+      token: parent.token,
+      body: {},
+    }).catch((error: unknown) => error);
+    await started.promise;
+    become(parent, next);
+    build.resolve(
+      new Response(
+        `<script type="module" src="/assets/app-${stale ? "replacement" : "synthetic"}.js"></script>`,
+      ),
+    );
+    const result = await old;
+    expect(signedOut).not.toHaveBeenCalled();
+    expect(reload).not.toHaveBeenCalled();
+    expect(result).toMatchObject({ code: "session_replaced" });
+  },
+);
 
 test("the current session and a parent handed back to both work", async () => {
   await expect(

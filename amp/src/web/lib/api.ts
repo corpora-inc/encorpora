@@ -284,12 +284,16 @@ async function send<T>(
   // rejected sign-in reloads into the current release rather than reporting a
   // failure the visitor didn't cause. Other errors still show, so a filled-in
   // form is never wiped by a reload.
-  if (
-    (response.status === 401 || response.status === 404) &&
-    (await buildIsStale())
-  ) {
-    const reloading = reloadIntoCurrentRelease();
-    if (reloading) return reloading;
+  if (response.status === 401 || response.status === 404) {
+    const stale = await buildIsStale();
+    // The release lookup is another async boundary: this request's session
+    // may have ended while it waited, even though its API response arrived.
+    checkSession();
+    checkAborted();
+    if (stale) {
+      const reloading = reloadIntoCurrentRelease();
+      if (reloading) return reloading;
+    }
   }
   // The demo school was rebuilt overnight: this link was into yesterday's.
   // The visitor's place is already in today's, so open it there instead of
