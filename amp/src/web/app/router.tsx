@@ -37,6 +37,7 @@ import type { Me } from "../../account/contracts";
 import { useLearnerStore } from "../learner-store";
 import { practicingAsAdult, practicingAsProfile } from "../lib/adult-learner";
 import { LoadingScreen, RouteError } from "../ui/LoadingScreen";
+import { childAddress, childPath } from "../features/spaces/identity";
 import { closeAllPopovers } from "../ui/popover-owner";
 import {
   homePlace,
@@ -140,7 +141,19 @@ const searchSchema = z
   .passthrough();
 function RouterError({ error }: { error: unknown }) {
   const router = useRouter();
-  return <RouteError error={error} reset={() => void router.invalidate()} />;
+  // A family's child's map fails at its own address: "Back to map" is it.
+  const child = childAddress(window.location.pathname);
+  return (
+    <RouteError
+      error={error}
+      reset={() => void router.invalidate()}
+      map={
+        child?.screen === "pathways"
+          ? childPath(child.family, child.learner, "pathways")
+          : null
+      }
+    />
+  );
 }
 /** "Add Child 2's name", once "Continue with AMP" has made access active. Its
  * chunk loads only on the screen the purchase returned to. */

@@ -49,3 +49,26 @@ test("any other failure retries in place", () => {
   expect(reset).toHaveBeenCalledTimes(1);
   expect(reload).not.toHaveBeenCalled();
 });
+
+test("a family child's map that fails offers its own map back and a reload, never a retry", () => {
+  const family = "5b9f0f70-3d8e-45e4-a5f1-bbb98ee213d5";
+  vi.stubGlobal("location", {
+    ...window.location,
+    pathname: `/family/${family}/kids/pip/pathways`,
+    reload,
+  });
+  const reset = vi.fn();
+  render(
+    <RouteError
+      error={new TypeError("x is undefined")}
+      reset={reset}
+      map={`/family/${family}/kids/pip/pathways`}
+    />,
+  );
+  expect(
+    screen.getByRole("link", { name: "Back to map" }).getAttribute("href"),
+  ).toBe(`/family/${family}/kids/pip/pathways`);
+  fireEvent.click(screen.getByRole("button", { name: "Reload page" }));
+  expect(reload).toHaveBeenCalledTimes(1);
+  expect(screen.queryByRole("button", { name: "Try again" })).toBeNull();
+});
