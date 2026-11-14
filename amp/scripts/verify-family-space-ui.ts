@@ -84,58 +84,89 @@ async function settle(page: Page) {
 
 /** The page's checks once settled: overflow, shift since `mark`, targets,
  * words. */
-async function check(page: Page, where: string, words = true) {
-  const result = await page.evaluate(() => {
-    const overflow = document.documentElement.scrollWidth - window.innerWidth;
-    // The effective target, measured by hit testing: 44 px across both
-    // ways through the control's centre must land on the control itself (a
-    // drawn-out ::after counts only if it really takes the pointer).
-    const controls = [
-      ...document.querySelectorAll<HTMLElement>(
-        "main button, main a[href], header button, header a[href], [role=switch], [role=dialog] button, [role=dialog] a[href]",
-      ),
-    ].filter((element) => {
+/** The page's controls whose effective target is under 44 × 44 px: the
+ * box itself, or a drawn-out ::after that really takes the pointer, at
+ * least 44 px both ways, and hit testing 21 px each way from the centre
+ * landing on the control itself. Self-contained: it runs in the page. */
+function smallTargets(selector: string): string[] {
+  // The effective target, measured by hit testing: 44 px across both
+  // ways through the control's centre must land on the control itself (a
+  // drawn-out ::after counts only if it really takes the pointer).
+  const controls = [...document.querySelectorAll<HTMLElement>(selector)].filter(
+    (element) => {
       const box = element.getBoundingClientRect();
       return (
         box.width > 0 &&
         box.height > 0 &&
         !element.closest("[aria-hidden=true]")
       );
+    },
+  );
+  const small: string[] = [];
+  for (const element of controls) {
+    element.scrollIntoView({
+      block: "center",
+      inline: "center",
+      behavior: "instant",
     });
-    const small: string[] = [];
-    for (const element of controls) {
-      element.scrollIntoView({ block: "center", inline: "center" });
-      const box = element.getBoundingClientRect();
-      const x = box.left + box.width / 2;
-      const y = box.top + box.height / 2;
-      const owns = (px: number, py: number) => {
-        const hit = document.elementFromPoint(px, py);
-        return !!hit && (hit === element || element.contains(hit));
-      };
-      const reach = 21.5;
-      if (!(
+    const box = element.getBoundingClientRect();
+    const x = box.left + box.width / 2;
+    const y = box.top + box.height / 2;
+    const owns = (px: number, py: number) => {
+      const hit = document.elementFromPoint(px, py);
+      return !!hit && (hit === element || element.contains(hit));
+    };
+    // Its size: the box itself, or a drawn-out ::after that really takes
+    // the pointer, 44 px or more both ways.
+    const after = getComputedStyle(element, "::after");
+    const drawn =
+      after.position === "absolute" &&
+      after.content !== "none" &&
+      after.pointerEvents !== "none";
+    const wide = Math.max(box.width, drawn ? parseFloat(after.width) || 0 : 0);
+    const tall = Math.max(
+      box.height,
+      drawn ? parseFloat(after.height) || 0 : 0,
+    );
+    // And it is the control's own: 21 px each way from its centre lands
+    // on it (half of 44, less the half pixel hit testing rounds by).
+    const reach = 21;
+    if (
+      wide < 43.5 ||
+      tall < 43.5 ||
+      !(
         owns(x, y - reach) &&
         owns(x, y + reach) &&
         owns(x - reach, y) &&
         owns(x + reach, y)
-      ))
-        small.push(
-          (element.textContent ?? element.getAttribute("aria-label") ?? "")
-            .trim()
-            .slice(0, 40),
-        );
-    }
-    window.scrollTo(0, 0);
+      )
+    )
+      small.push(
+        (element.textContent ?? element.getAttribute("aria-label") ?? "")
+          .trim()
+          .slice(0, 40),
+      );
+  }
+  window.scrollTo(0, 0);
+  return small;
+}
+const CONTROLS =
+  "main button, main a[href], header button, header a[href], [role=switch], [role=dialog] button, [role=dialog] a[href]";
+
+async function check(page: Page, where: string, words = true) {
+  const result = await page.evaluate(() => {
+    const overflow = document.documentElement.scrollWidth - window.innerWidth;
     const text = [
       document.querySelector("header")?.textContent ?? "",
       document.querySelector("main")?.textContent ?? "",
     ].join(" ");
-    return { overflow, small, text };
+    return { overflow, text };
   });
   if (result.overflow > 0)
     fail(where, `scrolls sideways by ${result.overflow}px`);
-  if (result.small.length)
-    fail(where, `targets under 44px: ${result.small.slice(0, 5).join(" | ")}`);
+  const small = await page.evaluate(smallTargets, CONTROLS);
+  if (small.length)
+    fail(where, `targets under 44px: ${small.slice(0, 5).join(" | ")}`);
   if (words && NEVER.test(result.text))
     fail(where, `says "${NEVER.exec(result.text)![0]}"`);
 }
@@ -230,6 +261,25 @@ async function switchTo(page: Page, place: string) {
 }
 
 const browser = await chromium.launch();
+// The checker itself: a 44 × 44 button passes; a 2 × 44 one and a 44 × 20
+// one whose 44 px ::after takes no pointer both fail.
+{
+  const page = await browser.newPage();
+  await page.addInitScript("window.__name = (f) => f;");
+  await page.setContent(`<main>
+    <style>button{display:block;margin:40px;padding:0;border:0}
+    .wide::after{content:"";position:absolute;inset:-12px 0;pointer-events:none}
+    .wide{position:relative}</style>
+    <button id="ok" style="width:44px;height:44px">ok</button>
+    <button id="thin" style="width:2px;height:44px">thin</button>
+    <button id="wide" class="wide" style="width:44px;height:20px">wide</button>
+  </main>`);
+  await page.evaluate("window.__name = (f) => f;");
+  const flagged = await page.evaluate(smallTargets, "main button");
+  if (flagged.join(",") !== "thin,wide")
+    fail("target-checker", `flagged ${JSON.stringify(flagged)}`);
+  await page.close();
+}
 try {
   for (const width of WIDTHS)
     for (const scheme of SCHEMES) {
