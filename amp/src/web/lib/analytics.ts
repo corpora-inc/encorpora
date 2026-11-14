@@ -1,4 +1,3 @@
-import { errorDetails } from "../../analytics/error-details";
 import {
   entryContext as captureEntryContext,
   type EntryContext,
@@ -308,6 +307,7 @@ export function trackOnce<E extends ClientEvent>(
 /** Fetch acknowledges delivery; keepalive also permits navigation-time sends.
  * A blocked/offline/overloaded collector retries with the same event IDs. */
 export function flush(unloading = false): void {
+  flushExternalRuntimeErrors();
   if (timer) clearTimeout(timer);
   timer = null;
   if (!analyticsAllowed()) {
@@ -404,24 +404,35 @@ function listen(): void {
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "hidden") flush(true);
   });
-  // Fixed categories and app bundle coordinates; no error text or private URLs.
-  window.addEventListener("error", (event) => {
-    // Resize observers skipping a frame is a notice, not a failure.
-    if (!event.error && /^ResizeObserver loop/.test(String(event.message)))
-      return;
-    trackClientError({
-      ...errorDetails(event.error, event, location.origin),
-      kind: "error",
-      screen: screenOf(location.pathname),
-    });
-  });
-  window.addEventListener("unhandledrejection", (event) =>
-    trackClientError({
-      ...errorDetails(event.reason, undefined, location.origin),
-      kind: "unhandled_rejection",
-      screen: screenOf(location.pathname),
-    }),
-  );
+}
+
+// Coalesce bridge polling errors into counts, outside the client_error stream.
+const externalCounts = new Map<
+  string,
+  {
+    browser: ReturnType<typeof currentBrowserKind>;
+    screen: ReturnType<typeof screenOf>;
+    count: number;
+  }
+>();
+let externalTimer: ReturnType<typeof setTimeout> | undefined;
+export function countExternalRuntimeError() {
+  if (!analyticsAllowed()) return;
+  const browser = currentBrowserKind(),
+    screen = screenOf(location.pathname);
+  const key = `${browser}:${screen}`;
+  const entry = externalCounts.get(key) ?? { browser, screen, count: 0 };
+  entry.count = Math.min(1_000_000, entry.count + 1);
+  externalCounts.set(key, entry);
+  listen();
+  externalTimer ??= setTimeout(flushExternalRuntimeErrors, flushDelayMs);
+}
+function flushExternalRuntimeErrors() {
+  clearTimeout(externalTimer);
+  externalTimer = undefined;
+  const entries = [...externalCounts.values()];
+  externalCounts.clear();
+  for (const entry of entries) track("external_runtime_error", entry);
 }
 
 /** Per page load: the first few of each error (kind, origin and position) are
@@ -435,6 +446,7 @@ export function trackClientError(
 ): void {
   const key = JSON.stringify([
     props.kind,
+    props.code,
     props.source,
     props.asset,
     props.line,
@@ -513,4 +525,7 @@ export function resetAnalyticsForTests(): void {
   entryContext = undefined;
   pitchShown = false;
   errorCounts.clear();
+  externalCounts.clear();
+  clearTimeout(externalTimer);
+  externalTimer = undefined;
 }

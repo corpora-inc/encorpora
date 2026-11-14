@@ -2,6 +2,8 @@
 import { createHash } from "node:crypto";
 import { parseArgs } from "node:util";
 import { z } from "zod";
+import { skills } from "../src/curriculum/catalog";
+import { templates } from "../src/math/engine";
 import { semanticFigureSchema, type SemanticFigure } from "../src/math/contracts";
 import { scriptSchema, type Script } from "./schema";
 import { displayScript } from "./letters";
@@ -252,12 +254,15 @@ export type Publication = {
   templateId: string;
   /** Further problem types the film is linked from: the screenplay's `teaches`. */
   teaches: string[];
+  skill?: string;
   film: LessonFilm;
   data: Buffer;
   audio: Buffer;
 };
-/** `teaches` only routes the film. It is not part of what was reviewed or what is published. */
-const filmContent = ({ teaches: _teaches, ...content }: Script) => content;
+/** Routing fields are not part of the reviewed content or published media. */
+const filmContent = ({ teaches: _teaches, skill: _skill, ...content }: Script) => content;
+const knownSkills = new Set(skills.map((skill) => skill.id));
+const templateSkills = new Map(templates.map((type) => [type.id, type.skillId]));
 /** Older review exports embedded voice labels in role declarations. Timing owns those bindings. */
 export function screenplayFromExport(value: unknown) {
   const source = z
@@ -326,6 +331,12 @@ export function planFilm(
     if (teaches.indexOf(type) !== i)
       throw new Error(`Problem type ${type} listed twice in teaches: ${id}`);
   });
+  if (committed.skill !== undefined) {
+    if (!knownSkills.has(committed.skill))
+      throw new Error(`Unknown skill ${committed.skill} in skill: ${id}`);
+    if (templateSkills.get(templateId) !== committed.skill)
+      throw new Error(`Problem type ${templateId} does not belong to skill ${committed.skill}: ${id}`);
+  }
   if (canonical(filmContent(source.script)) !== canonical(script))
     throw new Error(`Export differs from committed screenplay: ${id}`);
   if (source.title !== script.title)
@@ -397,6 +408,7 @@ export function planFilm(
   return {
     templateId,
     teaches,
+    ...(committed.skill === undefined ? {} : { skill: committed.skill }),
     data,
     audio,
     film: {
@@ -415,24 +427,38 @@ export function planFilm(
 
 /**
  * Problem type → film. A film is listed under its own problem type and under
- * each one it teaches. A film made for a problem type wins over one that only
- * teaches it. A problem type that several films only teach is reported in
- * `conflicts` and gets no film until one screenplay drops it.
+ * each one it teaches, then fills gaps with the skill's uniquely claimed film.
+ * Conflicting teaches or skill claims are reported and do not supply that route.
  */
 export function filmManifest(plans: readonly Publication[]) {
+  const conflicts: string[] = [];
+  const claimed = new Map<string, Publication[]>();
+  for (const plan of plans)
+    if (plan.skill !== undefined)
+      claimed.set(plan.skill, [...(claimed.get(plan.skill) ?? []), plan]);
+  const skillFilms = new Map<string, LessonFilm>();
+  for (const [skill, claimants] of claimed) {
+    if (claimants.length === 1)
+      skillFilms.set(skill, { ...claimants[0]!.film, skill });
+    else
+      conflicts.push(
+        `Multiple approved films claim skill ${skill} (${claimants.map((plan) => plan.film.id).join(", ")}); none is linked as its skill film until one screenplay drops the skill claim`,
+      );
+  }
+  const routedFilm = (plan: Publication) =>
+    (plan.skill === undefined ? undefined : skillFilms.get(plan.skill)) ?? plan.film;
   const manifest: Record<string, LessonFilm> = {};
   for (const plan of plans) {
     if (manifest[plan.templateId])
       throw new Error(
         `Multiple approved editions for ${plan.templateId}; choose one on the review page`,
       );
-    manifest[plan.templateId] = plan.film;
+    manifest[plan.templateId] = routedFilm(plan);
   }
   const taught = new Map<string, LessonFilm[]>();
   for (const plan of plans)
     for (const type of plan.teaches)
-      if (!manifest[type]) taught.set(type, [...(taught.get(type) ?? []), plan.film]);
-  const conflicts: string[] = [];
+      if (!manifest[type]) taught.set(type, [...(taught.get(type) ?? []), routedFilm(plan)]);
   for (const [type, films] of taught) {
     if (films.length === 1) manifest[type] = films[0]!;
     else
@@ -440,11 +466,21 @@ export function filmManifest(plans: readonly Publication[]) {
         `Multiple approved films teach ${type} (${films.map((film) => film.id).join(", ")}); none is linked there until one screenplay drops it from teaches`,
       );
   }
+  let skillProblemTypes = 0;
+  for (const [type, skill] of templateSkills) {
+    const film = skillFilms.get(skill);
+    if (!manifest[type] && film) {
+      manifest[type] = film;
+      skillProblemTypes++;
+    }
+  }
   return {
     manifest: Object.fromEntries(
       Object.entries(manifest).sort(([a], [b]) => a.localeCompare(b)),
     ),
     conflicts,
+    skillFilms: skillFilms.size,
+    skillProblemTypes,
   };
 }
 

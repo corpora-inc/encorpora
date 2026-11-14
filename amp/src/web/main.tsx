@@ -4,6 +4,8 @@ import "./lib/zod-config";
 import { errorDetails } from "../analytics/error-details";
 import { screenOf, trackClientError } from "./lib/analytics";
 import "./consent-entry";
+import { startRuntimeRecovery } from "./lib/chunk-recovery";
+import { ChunkRecoveryNotice } from "./ui/ChunkRecoveryNotice";
 import { createRoot } from "react-dom/client";
 import { RouterView } from "./app/RouterView";
 import { Providers } from "./app/providers";
@@ -19,6 +21,7 @@ import {
 import { watchForNewRelease } from "./lib/app-recovery";
 import { trackSessionStart, trackGooglePage } from "./lib/analytics";
 // After consent-entry has removed any private fragment from the URL.
+startRuntimeRecovery();
 captureOpenAIEntry();
 const engagement = startEngagement({ awaitRoute: true });
 const studentActivity = startStudentActivity();
@@ -57,5 +60,6 @@ createRoot(document.getElementById("root")!, {
     }}
   >
     <RouterView />
+    <ChunkRecoveryNotice />
   </Providers>,
 );
