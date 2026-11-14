@@ -75,6 +75,7 @@ function expectedDisplay(text: string) {
     tokens.pop();
   const last = tokens.pop();
   if (last?.kind !== "math") return false;
+  const rows = [last.source];
   // Walk every row, including explicit and plain math in the same system.
   while (
     tokens.at(-1)?.kind === "text" &&
@@ -82,8 +83,12 @@ function expectedDisplay(text: string) {
     tokens.at(-2)?.kind === "math"
   ) {
     tokens.pop();
-    tokens.pop();
+    rows.push(tokens.pop()!.source);
   }
+  // A slash beside ÷ has different implicit grouping in the legacy web and
+  // print notations. Only unambiguous formulas are eligible for conversion.
+  if (rows.some((row) => /(?:÷|\\div\b)/.test(row) && row.includes("/")))
+    return false;
   const lead = tokens
     .map((t) => t.source)
     .join("")
@@ -175,4 +180,34 @@ test("every template generates clean prompt and worked-step displays in web and 
       renderedSurfaces: rendered.size,
     }),
   );
+});
+
+test("fractional unit rates and similar-triangle divisors retain their inline grouping", () => {
+  let checked = 0;
+  for (const id of ["fraction-unit-rate", "similar-triangle-side"])
+    for (const prefix of ["typography", "display"])
+      for (let seed = 0; seed < 20; seed++) {
+        const problem = generateProblem(id, `${prefix}-${seed}`, 1);
+        for (const text of problem.explanation) {
+          if (!text.includes("÷") || !text.includes("/") || !text.includes(":"))
+            continue;
+          assert.equal(trailingDisplayMath(text), null, text);
+          const element = document.createElement("div");
+          element.innerHTML = renderToStaticMarkup(
+            React.createElement(MathText, { text }),
+          );
+          for (const numerator of element.querySelectorAll(
+            "mfrac > :first-child",
+          ))
+            assert.doesNotMatch(numerator.textContent!, /÷/, text);
+          for (const Component of [MathText, PrintMathText])
+            assert.doesNotMatch(
+              renderToStaticMarkup(React.createElement(Component, { text })),
+              /class="math-display"/,
+              text,
+            );
+          checked++;
+        }
+      }
+  assert.ok(checked >= 40, `expected mixed-division coverage, got ${checked}`);
 });

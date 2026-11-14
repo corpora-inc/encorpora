@@ -13,6 +13,12 @@ blank boxes. Semicolon-separated equations form a stacked system, including
 rows with separate TeX delimiters or mixed plain and delimited notation. A formula on
 its own in a choice or label keeps that surface's layout.
 
+Complete expressions mixing `÷` (or `\div`) with slash notation stay inline.
+Legacy web and print notation can assign different groups to `2 ÷ 1/6`;
+converting it to a shared display must not silently pick one. Use explicit TeX
+such as `2 \div \frac{1}{6}` to display an unambiguous fractional divisor.
+The separate legacy blank-box (`□`) fallback retains its web notation.
+
 `polishProblem` removes a sentence period from final display mathematics after the
 shared copy-edit pass, including clause variants that preserve their authored
 algebra. Frozen versions retain their original payloads for reproducible reprints.
@@ -29,7 +35,8 @@ allocating writing space; standalone lesson publications fit after fonts load.
 Print keeps white paper under either system colour scheme.
 
 Cold font loading can change formula widths and line wrapping before the final
-fit. The app preloads common math fonts, but does not guarantee zero layout shift.
+fit. The HTML head preloads common math fonts before the application module runs.
+The app also requests them when embedded without that head, but does not guarantee zero layout shift.
 Reserving one line's height cannot prevent a long equation from changing its
 line count. The browser geometry checks below wait for fonts to load; they verify
 settled layout, not cold-load stability.
@@ -67,3 +74,18 @@ equivalent reading with terminal sentence punctuation for prose parsers.
 Answers, option labels and mathematical operators are preserved. Print audits
 read each formula’s authored source through `data-plain`; browser checks verify
 the visible display and punctuation.
+
+`tests/math-postfix-binding.test.ts` compares explicitly scoped MathML with both
+renderers for factorials, percentages, primes, grouped powers and absolute values.
+A parenthesized function argument closes before an outer postfix operator:
+`√(9)!` renders as `\sqrt{9}!`, while `√(9!)` renders as `\sqrt{9!}`.
+Plain primes are outside the conservative expression grammar; explicit TeX primes
+retain their authored scope.
+
+Run `node --import tsx scripts/compare-template-math.ts origin/main report.json`
+for a baseline comparison. It extracts the specified Git revision into an isolated
+temporary directory and renders every sampled learner surface through both web
+and print components, including current and version-one template samples.
+It compares MathML structure, preserving operands of roots, fractions and scripts,
+and writes every difference to the report. It does not use an exception list or
+silently treat a failed comparison as a pass.
