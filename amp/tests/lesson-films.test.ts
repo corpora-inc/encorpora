@@ -11,6 +11,7 @@ import {
   FILM_CAPABILITY,
   lessonFilmFor,
   lessonFilms,
+  skillFilm,
 } from "../src/content/lesson-films";
 import {
   approvedIds,
@@ -354,9 +355,11 @@ test("committed manifest resolves real problem types, committed screenplays and 
     );
     assert.equal(committed.id, film.id);
     assert.equal(committed.title, film.title);
-    // Listed under its own problem type, or one its screenplay teaches.
+    // Listed under its own problem type, one it teaches, or its claimed skill.
     assert.ok(
-      templateOf(film.id).template === id || committed.teaches?.includes(id),
+      templateOf(film.id).template === id || committed.teaches?.includes(id) ||
+        (film.skill !== undefined && committed.skill === film.skill &&
+          templates.find((type) => type.id === id)?.skillId === film.skill),
       `${id} → ${film.id}`,
     );
     assert.equal(lessonFilmFor(id), undefined);
@@ -386,6 +389,34 @@ test("committed manifest resolves real problem types, committed screenplays and 
     }),
   );
   assert.equal(canonical({ a: 1, b: 2 }), canonical({ b: 2, a: 1 }));
+});
+test("the manifest reader accepts and types skill; skillFilm returns the film's own problem type", () => {
+  const film = skillPlan("compare-groups--sk").film;
+  const parsed = filmManifestSchema.parse({
+    "dot-group-compared-to-number": { ...film, skill: "compare-small-groups" },
+    "count-objects": plan().film,
+  });
+  const skill: string | undefined = parsed["dot-group-compared-to-number"]!.skill;
+  assert.equal(skill, "compare-small-groups");
+  assert.equal(JSON.stringify(parsed["count-objects"]), JSON.stringify(plan().film));
+  for (const invalid of ["", "Compare Groups", null, [skill]])
+    assert.throws(() => filmManifestSchema.parse({ "compare-groups": { ...film, skill: invalid } }));
+  const saved = { ...lessonFilms };
+  try {
+    for (const key of Object.keys(lessonFilms)) delete lessonFilms[key];
+    // Only an alias is present: the helper must not return the manifest's routing key.
+    Object.assign(lessonFilms, parsed);
+    assert.deepEqual(skillFilm("compare-small-groups"), {
+      film: parsed["dot-group-compared-to-number"], templateId: "compare-groups",
+    });
+    assert.equal(skillFilm("count-to-20"), undefined);
+    assert.equal(skillFilm("no-such-skill"), undefined);
+    lessonFilms["count-out-objects"] = { ...plan().film, skill: "count-to-20" };
+    assert.equal(skillFilm("count-to-20")?.templateId, "count-objects");
+  } finally {
+    for (const key of Object.keys(lessonFilms)) delete lessonFilms[key];
+    Object.assign(lessonFilms, saved);
+  }
 });
 test("a film with a shot's own app figure is published for v3 players only", () => {
   const v2 = plan().film;

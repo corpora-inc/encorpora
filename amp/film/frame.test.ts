@@ -14,7 +14,7 @@ import { createServer, type ViteDevServer } from "vite";
 import { afterAll, beforeAll, expect, test } from "vitest";
 import { secureChromium } from "../browser-security.mjs";
 import { resolveCast, runsOf, TURN_GAP, voiceBindings } from "./cast";
-import { scriptSchema, type Script, type Timing } from "./schema";
+import { scriptSchema, type Part, type Script, type Timing } from "./schema";
 import { highlightHeld } from "./stage";
 import { SCENE_FILM_ID, sceneFilm } from "./fixtures/scene-shot";
 
@@ -186,6 +186,50 @@ const headerFilm = { id: HEADER_FILM_ID, title: headerScript.title, script: head
 const headerCue = (beat: number, word: string) => headerFilm.timing.shots[0]![beat]!.words.find((w) => w.text.replace(/\W/g, "") === word)!.start;
 /** Films built here rather than exported: shots that draw a scene spec of their own. */
 const BUILT: Record<string, unknown> = { [SCENE_FILM_ID]: sceneFilm(), [CARD_FILM_ID]: cardFilm, [STRIKE_FILM_ID]: struckFilm, [PLAIN_FILM_ID]: strikeFilm(PLAIN_FILM_ID, false), [HEADER_FILM_ID]: headerFilm };
+const LINE_PARTS: Part[] = [
+  { id: "seg", seg: ["A", "B"] },
+  { id: "ray", seg: ["A", "B"], extend: [0, 1], ticks: 2, tickAt: [0.25, 0.75], arrows: 1 },
+  { id: "vector", vector: ["A", "B"] },
+  { id: "dim", dim: ["A", "B"], side: "s", tex: "5" },
+  { id: "curve", curve: ["A", "C", "B"] },
+  { id: "plot", plot: "x/2+1", from: 2, to: 6 },
+  { id: "axes", axes: true, xrange: [0, 6], yrange: [0, 6] },
+  { id: "poly", poly: ["A", "B", "C"], ink: "accent", fill: "accent-fill" },
+];
+for (const part of LINE_PARTS) {
+  const script = scriptSchema.parse({
+    id: `lit-line-${part.id}`, title: "Highlight geometry",
+    shots: [{
+      figure: { view: [-2, -2, 10, 10], points: { A: [2, 2], B: [6, 4], C: [4, 6] }, parts: [{ ...part, start: true }] },
+      beats: [{ say: "Wait while the picture settles, then highlight this part.", do: [{ do: "highlight", target: part.id, at: "highlight" }] }],
+    }],
+  });
+  BUILT[script.id] = { id: script.id, title: script.title, script, timing: dryTiming(script), figure: null };
+}
+// Equal trays at the edges and centre of a card. Only the action grouping differs.
+const EQUAL_IDS = ["t1", "t2", "t3", "t4", "t5", "t6"];
+for (const mode of ["together", "separate", "same-time", "single"] as const) {
+  const points: Record<string, number[]> = {};
+  const parts = EQUAL_IDS.map((id, i) => {
+    const x = (i % 3 - 1) * 3.5, y = i < 3 ? 3.5 : 0.8;
+    const poly = [[-1.325, 0.825], [1.325, 0.825], [1.325, -0.825], [-1.325, -0.825]].map(([dx, dy], j) => {
+      const name = `${id}p${j}`;
+      points[name] = [x + dx!, y + dy!];
+      return name;
+    });
+    return { id, poly, ink: "blue", fill: "blue-fill", w: 2, solid: true, start: true };
+  });
+  const script = scriptSchema.parse({
+    id: `equal-grow-${mode}`, title: "Six equal trays",
+    shots: [{ figure: { view: [-5.4, -5.2, 5.4, 4.8], points: { ...points, B: [0, -4.4] }, parts: [...parts, { id: "bottom", label: "6\\times5", at: "B", dir: "c", size: "xl", start: true }] }, beats: [{
+      say: "Center waits while the edge lights up beside it.",
+      do: mode === "together" ? [{ do: "highlight", target: EQUAL_IDS, at: "Center" }]
+        : [{ do: "highlight", target: mode === "same-time" ? ["t2", "t5"] : "t2", at: "Center" },
+          ...(mode === "single" ? [] : [{ do: "highlight", target: mode === "same-time" ? ["t1", "t4"] : "t1", at: mode === "same-time" ? "Center" : "edge" }])],
+    }] }],
+  });
+  BUILT[script.id] = { id: script.id, title: script.title, script, timing: dryTiming(script), figure: null };
+}
 const lessonOf = (id: string) => (BUILT[id] ?? JSON.parse(readFileSync(path.join(FIX, `${id}.json`), "utf8")));
 const FILMS = ["frequency-table-build--pr", "line-slope", "bar-chart-total", "decimal-line-point", "count-out-objects--things", SCENE_FILM_ID];
 const STABLE = [...FILMS, "divide-facts--pf", "count-sequence-missing--fn", "flat-or-solid-name--md", "pick-flat-or-solid--as"];
@@ -257,6 +301,96 @@ afterAll(async () => {
   await browser?.close();
   await server?.close();
 }, 30_000);
+
+test.each(LINE_PARTS)("lit line geometry: $id", async (part) => {
+  const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+  try {
+    const id = `lit-line-${part.id}`, beat = lessonOf(id).timing.shots[0][0];
+    const cue = beat.words.find((w: { text: string }) => w.text === "highlight").start;
+    await page.goto(`${origin}/live.html?id=${id}`);
+    await page.waitForSelector(".live.ready");
+    const sample = (t: number) => page.evaluate((time) => {
+      const scrub = document.querySelector<HTMLInputElement>(".live-scrub")!;
+      scrub.value = String(time);
+      scrub.dispatchEvent(new Event("input", { bubbles: true }));
+      return [...document.querySelectorAll<SVGPathElement>("#film .film-geo path")]
+        .filter((el) => !el.closest("defs, clipPath") && el.getTotalLength() > 0)
+        .map((el) => {
+          const matrix = el.getScreenCTM()!;
+          const points = [0, 0.25, 0.5, 0.75, 1].map((f) => {
+            const p = el.getPointAtLength(el.getTotalLength() * f).matrixTransform(matrix);
+            return { x: p.x, y: p.y };
+          });
+          const box = el.getBoundingClientRect(), style = getComputedStyle(el);
+          return { points, width: box.width, height: box.height, stroke: style.stroke, thickness: parseFloat(style.strokeWidth) * Math.hypot(matrix.a, matrix.b) };
+        });
+    }, t);
+    const unlit = await sample(cue - 0.1);
+    const lit = await sample(highlightHeld(cue, beat.end));
+    expect(unlit.length).toBeGreaterThan(0);
+    expect(lit).toHaveLength(unlit.length);
+    for (let i = 0; i < lit.length; i++) {
+      const a = unlit[i]!, b = lit[i]!;
+      expect(b.thickness).toBeGreaterThan(a.thickness);
+      expect(b.stroke).not.toBe(a.stroke);
+      if (part.id === "poly") {
+        expect(b.width).toBeGreaterThan(a.width * 1.05);
+        expect(b.height).toBeGreaterThan(a.height * 1.05);
+      } else {
+        for (let j = 0; j < a.points.length; j++) {
+          expect(Math.hypot(b.points[j]!.x - a.points[j]!.x, b.points[j]!.y - a.points[j]!.y)).toBeLessThan(0.1);
+        }
+      }
+    }
+    expect(await sample(cue - 0.1)).toEqual(unlit); // Seeking backward restores the resting ink too.
+  } finally {
+    await page.close();
+  }
+}, 60_000);
+
+test("one highlight shares the smallest tray scale; separate actions keep independent limits", async () => {
+  const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+  try {
+    const samples: Record<string, { scale: number; width: number; height: number }[]> = {};
+    for (const mode of ["together", "separate", "same-time", "single"]) {
+      const id = `equal-grow-${mode}`;
+      const film = lessonOf(id);
+      const beat = film.timing.shots[0][0];
+      const edge = beat.words.find((w: { text: string }) => w.text === "edge").start;
+      await page.goto(`${origin}/live.html?id=${id}`);
+      await page.waitForSelector(".live.ready");
+      const measure = (t: number) => page.evaluate(({ t, ids }) => {
+        const scrub = document.querySelector<HTMLInputElement>(".live-scrub")!;
+        scrub.value = String(t);
+        scrub.dispatchEvent(new Event("input", { bubbles: true }));
+        return ids.map((id) => {
+          const el = document.querySelector<SVGGraphicsElement>(`#film [data-part="${id}"]`)!;
+          const box = el.getBoundingClientRect();
+          const scale = Number(el.getAttribute("transform")?.match(/scale\(([\d.]+)\)/)?.[1] ?? 1);
+          return { scale, width: box.width, height: box.height };
+        });
+      }, { t, ids: EQUAL_IDS });
+      const before = await measure(edge - 0.1);
+      const after = await measure(highlightHeld(edge, beat.end));
+      samples[mode] = after;
+      if (mode === "separate") {
+        expect(after[1]!.scale).toBe(before[1]!.scale);
+        expect(after[0]!.scale).toBeLessThan(after[1]!.scale);
+      }
+    }
+    expect(samples.single![1]!.scale).toBeGreaterThan(1);
+    expect(samples.separate![1]!.scale).toBe(samples.single![1]!.scale);
+    expect(samples["same-time"]![0]!.scale).toBeLessThan(samples["same-time"]![1]!.scale);
+    const together = samples.together!;
+    expect(together[0]!.scale).toBeGreaterThan(1);
+    expect(together[0]!.scale).toBeLessThan(samples.single![1]!.scale);
+    expect(new Set(together.map((x) => x.scale)).size).toBe(1);
+    expect(Math.max(...together.map((x) => x.width)) - Math.min(...together.map((x) => x.width))).toBeLessThan(0.1);
+    expect(Math.max(...together.map((x) => x.height)) - Math.min(...together.map((x) => x.height))).toBeLessThan(0.1);
+  } finally {
+    await page.close();
+  }
+}, 120_000);
 
 async function measure(page: Page, t: number) {
   return page.evaluate((time) => {

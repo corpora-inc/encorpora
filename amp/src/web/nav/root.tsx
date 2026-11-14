@@ -1,5 +1,6 @@
 import { Link, redirect, useNavigate } from "@tanstack/react-router";
 import type { ComponentProps } from "react";
+import type { FundedProgram } from "../lib/funded-entry";
 
 /**
  * The root (docs/design/ia.md, "Navigation", rule 6). `/` is no screen of
@@ -12,10 +13,14 @@ import type { ComponentProps } from "react";
 export const ROOT = "/";
 
 /** A link to the root: a logo or "Not now" on a screen outside any place. */
-export function RootLink(
-  props: Omit<ComponentProps<typeof Link>, "to" | "params" | "search">,
-) {
-  return <Link {...props} to="/" />;
+export function RootLink({
+  program,
+  ...props
+}: Omit<ComponentProps<typeof Link>, "to" | "params" | "search"> & {
+  /** Preserve the funding choice when returning to the public pitch. */
+  program?: FundedProgram["id"];
+}) {
+  return <Link {...props} to="/" search={program ? { program } : undefined} />;
 }
 
 /** Goes to the root from code (a signed-in buyer on the pitch). */

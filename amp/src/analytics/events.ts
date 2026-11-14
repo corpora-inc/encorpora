@@ -50,6 +50,7 @@ export const FUNNEL_EVENTS = [
   "problem_rendered",
   "learning_request",
   "client_error",
+  "external_runtime_error",
   "account_session",
   "auth_request",
   "pitch_view",
@@ -202,7 +203,16 @@ export const funnelPropsSchemas = {
       ])
       .optional(),
   }),
+  external_runtime_error: z.strictObject({
+    browser: z.enum(BROWSER_KINDS),
+    screen: z.enum(SCREENS),
+    count: z.number().int().min(1).max(1_000_000),
+  }),
   client_error: z.strictObject({
+    code: z.enum(["chunk_reload", "chunk_reload_blocked"]).optional(),
+    reloadBlock: z
+      .enum(["recent", "storage", "payment", "input", "native"])
+      .optional(),
     ...errorDetailsSchema.shape,
     kind: z.enum(["error", "unhandled_rejection", "render"]),
     screen: z.enum(SCREENS),

@@ -68,6 +68,8 @@ const money = (minor: number) =>
 const termLabel = (offer: Pick<PublicFundingOffer, "termMonths">) =>
   offer.termMonths === 1 ? "1 month" : "12 months";
 function status(request: PublicFundingRequest) {
+  if (request.fundedPending?.status === "funded-pending")
+    return `Access active · payment pending until ${new Date(request.fundedPending.endsAt).toLocaleDateString()}`;
   return request.orderId
     ? request.accessStatus === "active"
       ? "Learning access active"
@@ -412,6 +414,22 @@ export function FundingPurchaseCenter({
           Back
         </button>
       </header>
+      {!consentActive &&
+        requests.some(
+          (item) =>
+            !item.orderId &&
+            item.status !== "cancelled" &&
+            item.learnerId !== ownLearnerId,
+        ) && (
+          <p className="funding-notice">
+            <a
+              href={`/start/consent${program ? `?return=${({ "az-esa": "arizona-esa", "ar-efa": "arkansas-efa", "nh-efa": "new-hampshire-efa" } as Record<string, string>)[program.id] ?? ""}` : ""}`}
+            >
+              Complete parent consent
+            </a>{" "}
+            to confirm your child's paid term.
+          </p>
+        )}
       <div ref={body} className="funding-body">
         <p>
           AMP (Adaptive Math Pathways) is a product of Corpora Inc, an
