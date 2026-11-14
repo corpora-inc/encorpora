@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useSearch } from "@tanstack/react-router";
+import { appReturn } from "../../spaces/returns";
 import { useState } from "react";
 import { create } from "zustand";
 import { AGREEMENT_VERSION } from "../../../../schools/agreement";
@@ -79,7 +80,12 @@ export function SchoolStartScreen() {
   const session = currentSession();
   const account = useQuery(meOptions(session));
   const orgs = useQuery(orgsOptions(session));
-  const search = useSearch({ strict: false }) as { org?: string };
+  const search = useSearch({ strict: false }) as {
+    org?: string;
+    from?: string;
+  };
+  // Adding a place from somewhere: Cancel goes back there.
+  const from = appReturn(search.from);
   const schools = (orgs.data ?? []).filter(
     (org) => org.kind === "school" && !org.demo,
   );
@@ -145,7 +151,7 @@ export function SchoolStartScreen() {
     return <LoadingScreen overlay />;
   if (account.data?.signedIn && account.data.account.confirmationRequired)
     return (
-      <PlainPage back="/start">
+      <PlainPage back={from ?? "/start"} backLabel={from ? "Cancel" : "Back"}>
         <VerifyEmailStep
           session={session}
           me={account.data}
@@ -221,7 +227,8 @@ export function SchoolStartScreen() {
   return (
     <PlainPage
       title="Set up your class"
-      back={schools.length ? "/school" : "/start"}
+      back={from ?? (schools.length ? "/school" : "/start")}
+      backLabel={from ? "Cancel" : "Back"}
     >
       <form
         className={plainStyles.form}
