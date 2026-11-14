@@ -227,19 +227,22 @@ export function FamilyMapScreen() {
         <div className={styles.page}>
           {children.length === 0 ? (
             <>
-              <ScreenTitle>Map</ScreenTitle>
+              <ScreenTitle>Family map</ScreenTitle>
               <NoChildren place={place} />
             </>
           ) : (
             <div className={styles.mapPage}>
               <div className={styles.mapHead}>
-                <ScreenTitle>Map</ScreenTitle>
+                {/* Named as a class's map is ("Class map"): more than the tab
+                    says, so it shows, and the page starts with its title. */}
+                <ScreenTitle>Family map</ScreenTitle>
                 <MapKey data={map} words={place.words} />
               </div>
               <ClassMap
                 data={map}
                 words={place.words}
                 grades={false}
+                plain
                 name={(student) => childLink(family, student)}
               />
             </div>

@@ -7,6 +7,8 @@ export {
   LevelRows,
   type LevelRangeArea,
   plainLevel,
+  likelyInWords,
+  rangeWords,
   type RowLink,
   type RowLinkProps,
   WHOLE_SCALE,

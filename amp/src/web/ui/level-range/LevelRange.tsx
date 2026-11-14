@@ -2,7 +2,13 @@ import { Fragment, useState, type ReactNode } from "react";
 import { gradeName, levelDetails } from "../../../learning/level-check";
 import { LevelAxis, LevelBar, LevelNotStarted } from "./LevelBar";
 import { LevelPath, type PathPoint } from "./LevelPath";
-import { fitScale, likelyRange, type Estimate, type RangeScale } from "./scale";
+import {
+  fitScale,
+  likelyRange,
+  shortGrade,
+  type Estimate,
+  type RangeScale,
+} from "./scale";
 import styles from "./LevelRange.module.css";
 
 /** One area of the curriculum as the view draws it. `id` is its strand, for
@@ -47,6 +53,20 @@ export function plainLevel(estimate: Estimate) {
   return low === high
     ? `Most likely ${best}`
     : `Most likely ${best} · somewhere between ${low} and ${high}`;
+}
+
+/** A likely range in short grade words ("K–Gr 1", "Gr 8–Alg 2"), for a
+ * reader to whom the scale's decimals mean nothing (a parent). */
+export function rangeWords([from, to]: readonly [number, number]) {
+  const low = shortGrade(from),
+    high = shortGrade(to);
+  return low === high ? low : `${low}–${high}`;
+}
+
+/** A likely range as the Overall sentence says it: "Likely Kindergarten
+ * to Grade 1". */
+export function likelyInWords([from, to]: readonly [number, number]) {
+  return words.likely(proseGrade(from), proseGrade(to));
 }
 
 /** Whole sentences with named slots, so each translates as a unit. `who`
@@ -252,6 +272,7 @@ export function LevelRows({
   grade = null,
   numbers = true,
   decimals = numbers,
+  wordRanges = false,
   overallEstimated = false,
   axis = true,
   moving = false,
@@ -271,6 +292,8 @@ export function LevelRows({
   numbers?: boolean;
   /** Each row's likely range in numbers, at the row's end. */
   decimals?: boolean;
+  /** Those ranges in short grade words ("K–Gr 1") instead: for a parent. */
+  wordRanges?: boolean;
   /** The overall estimate is a starting guess, drawn dashed. */
   overallEstimated?: boolean;
   axis?: boolean;
@@ -303,7 +326,13 @@ export function LevelRows({
       [overallArea, ...areas].every(
         (area) => area.estimate && !area.estimated,
       ));
-  const bare = silent ? styles.rowsSilent : decimals ? "" : styles.rowsBare;
+  const bare = silent
+    ? styles.rowsSilent
+    : !decimals
+      ? styles.rowsBare
+      : wordRanges
+        ? styles.rowsWords
+        : "";
   const rowClass = `${styles.rows} ${bare}`;
   const point = {
     enter: (id: string) => setPointed(id),
@@ -319,6 +348,7 @@ export function LevelRows({
           grade={grade}
           numbers={numbers}
           decimals={decimals}
+          wordRanges={wordRanges}
           moving={moving}
           notStarted={notStarted}
           rowLink={rowLink}
@@ -338,6 +368,7 @@ export function LevelRows({
               grade={grade}
               numbers={numbers}
               decimals={decimals}
+              wordRanges={wordRanges}
               rowLink={rowLink}
               point={point}
             />
@@ -377,6 +408,7 @@ function AreaRow({
   grade,
   numbers,
   decimals,
+  wordRanges = false,
   strong = false,
   moving = false,
   rowLink,
@@ -384,6 +416,7 @@ function AreaRow({
   notStarted,
 }: {
   notStarted?: string;
+  wordRanges?: boolean;
   area: LevelRangeArea;
   scale: RangeScale;
   grade: readonly [number, number] | null;
@@ -441,9 +474,11 @@ function AreaRow({
               ? strong
                 ? "Starting"
                 : "Not yet"
-              : decimals
-                ? `${range[0].toFixed(1)}–${range[1].toFixed(1)}`
-                : ""}
+              : !decimals
+                ? ""
+                : wordRanges
+                  ? rangeWords(range)
+                  : `${range[0].toFixed(1)}–${range[1].toFixed(1)}`}
       </span>
     </>
   );

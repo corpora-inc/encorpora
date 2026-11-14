@@ -574,6 +574,8 @@ function resolveOnce(
         selected: chosen.id,
         learnerOnly: true,
         child: { id: chosen.id, name: chosen.name },
+        // A child's workbooks are the family's Workbooks, opened on them.
+        workbooks: /^\/learners\/[^/]+\/workbooks(?:\/|$)/.test(match.pathname),
       });
     return meSpace(
       { ...base, ...words("me") },
@@ -765,6 +767,7 @@ function familySpace(
     selected,
     learnerOnly = false,
     child,
+    workbooks = false,
   }: {
     orgId: string | null;
     relation: "holder" | "second-parent" | null;
@@ -774,6 +777,9 @@ function familySpace(
     learnerOnly?: boolean;
     /** The child a learning screen names, already found to be theirs. */
     child?: { id: string; name: string };
+    /** A child's workbooks (`/learners/<child>/workbooks…`): the family's
+     * Workbooks tab, in the family's bar, never the child's record tabs. */
+    workbooks?: boolean;
   },
 ): SpaceDescriptor {
   const onClass = frame?.kind === "class" || frame?.kind === "school";
@@ -827,11 +833,14 @@ function familySpace(
               ? { can: resources.year?.can ?? [] }
               : {}),
           })
-        : frame?.kind === "progress" && learner && orgId
-          ? childTabs(orgId, learner.id)
-          : [];
-  const active =
-    frame?.kind === "class" && frame.leaf === "report-cards"
+        : workbooks && orgId
+          ? familyPlaceTabs(orgId)
+          : frame?.kind === "progress" && learner && orgId
+            ? childTabs(orgId, learner.id)
+            : [];
+  const active = workbooks
+    ? "workbooks"
+    : frame?.kind === "class" && frame.leaf === "report-cards"
       ? "report-cards"
       : base.active;
   // A parent's family opens at its own address; a co-teacher's class is
@@ -916,9 +925,10 @@ function familySpace(
           : `school:${orgId}`,
     // A child's learning screens name the child; the family's own screens
     // name the family.
-    label: learnerOnly
-      ? (learner?.name ?? null)
-      : (org?.name ?? family?.name ?? null),
+    label:
+      learnerOnly && !workbooks
+        ? (learner?.name ?? null)
+        : (org?.name ?? family?.name ?? null),
   };
 }
 

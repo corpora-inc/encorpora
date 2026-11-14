@@ -3,12 +3,15 @@ import { schoolShellReview, classShellJourney } from "./school-shell-review";
  * Families as classes in real browsers, on the real API in accounts mode and a
  * real database (docs/families.md, steps 3 and 4). Everyone here is synthetic.
  *
- *   1. A family from before families had classes: the parent signs in, `/`
- *      converts the family and lands in its class, with one line about how
- *      the children sign in now. Dismissing it keeps it gone after a reload.
+ *   1. A family whose two children have access: the parent signs in and `/`
+ *      opens the family's Today (`/family/<family>`), each child with "Let …
+ *      practice here", the access they share, and "Their own devices" (the
+ *      class code, a QR code or a printed card). Its People is its parents:
+ *      never a roster, a class code or a co-teacher (a co-teacher belongs to
+ *      a tutoring group).
  *   2. "Let Maya practice here" starts Maya's own session on the parent's
  *      device, straight into practice; signing out hands the device back to
- *      the parent's class.
+ *      the family's Today.
  *   3. On a second device, Theo joins by the class code, his name and three
  *      pictures, and practices.
  *
@@ -104,7 +107,8 @@ await registerSchoolRoutes(app, {
 });
 await app.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
-  cacheDir: "node_modules/.vite-family-class",
+  // Its own dependency cache, never a shared node_modules.
+  cacheDir: process.env.AMP_VITE_CACHE_DIR ?? "node_modules/.vite-family-class",
   server: {
     host: "127.0.0.1",
     port: webPort,
@@ -120,7 +124,8 @@ const check = (label: string, ok: boolean, detail: unknown = "") => {
 };
 const PASSWORD = "synthetic long fixture passphrase";
 const last: { page: Page | null } = { page: null };
-const CLASS_TODAY = /\/school\/[0-9a-f-]{36}\/classes\/[0-9a-f-]{36}\/today$/;
+/** A family's Today: its own address (docs/architecture/spaces.md). */
+const FAMILY_TODAY = /\/family\/[0-9a-f-]{36}$/;
 
 async function signUp(page: Page, email: string, name: string) {
   const fallback = page.getByRole("button", {
@@ -224,8 +229,9 @@ async function practicing(page: Page) {
   await page.waitForURL(/\/practice/);
   await page.locator("[data-problem-id]").first().waitFor({ timeout: 30_000 });
 }
-/** A family from before: two children with access, made straight in the
- * database as they were, with no roster rows. */
+/** A family of two children with access: consent, then each child added
+ * as the product adds one (into the family's class), then a purchase's
+ * grant. */
 async function existingFamily(account: string) {
   await db.query(
     "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES($1,'fixture','verified','synthetic')",
@@ -236,11 +242,7 @@ async function existingFamily(account: string) {
     ["Maya", 2016],
     ["Theo", 2018],
   ] as const) {
-    const id = randomUUID();
-    await db.query(
-      "INSERT INTO amp_learners(id,account_id,name,birth_year,created_at) VALUES($1,$2,$3,$4,now()-interval '90 days')",
-      [id, account, name, born],
-    );
+    const { id } = await repository.create(account, name, born);
     await db.query(
       "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES($1,$2,'stripe',$1,'active',now()-interval '90 days',now()+interval '275 days')",
       [`fixture-${id}`, id],
@@ -269,19 +271,21 @@ async function family(
   );
   await existingFamily(account);
 
-  // 1. `/` converts the family and opens its class, with one calm line.
+  // 1. `/` opens the family's Today.
   await page.goto(`${origin}/`);
-  await page.waitForURL(CLASS_TODAY);
+  await page.waitForURL(FAMILY_TODAY);
   await todayTitle(page);
-  const notice = page.getByText(
-    /Your children now sign in on their own devices/,
-  );
-  await notice.waitFor();
+  const familyUrl = page.url();
   const maya = page.getByRole("button", { name: "Let Maya practice here" });
   await maya.waitFor();
+  await page.getByRole("button", { name: "Let Theo practice here" }).waitFor();
   check(
-    `${label} each child's access is dated`,
-    (await page.getByText("access through", { exact: true }).count()) === 2,
+    `${label} the children's shared access is dated once`,
+    (await page.getByText(/^Both have AMP through /).count()) === 1,
+  );
+  check(
+    `${label} their own devices are one tap away`,
+    (await page.locator("[data-own-devices]").count()) === 1,
   );
   check(
     `${label} the class is named for the parent`,
@@ -292,47 +296,62 @@ async function family(
       )
     ).rows[0]?.name === "Marisol’s class",
   );
-  await measured(page, `${label} class with the line`);
-  await shot(page, "class-notice", width, theme);
-  await page.getByRole("button", { name: "Dismiss" }).click();
-  await notice.waitFor({ state: "detached" });
+  await measured(page, `${label} family today`);
+  await shot(page, "class", width, theme);
   await page.reload();
   await todayTitle(page);
   await maya.waitFor();
-  check(`${label} the line stays dismissed`, (await notice.count()) === 0);
-  await measured(page, `${label} class`);
-  await shot(page, "class", width, theme);
   await schoolShellReview(page);
-  await classShellJourney(page);
+  // Tab by tab, the bar kept. On a phone the open tab may sit under More,
+  // which then wears its name (ui/Tabs.tsx); the shared journey waits for
+  // the open tab itself to be visible, so it walks the wider rows only.
+  if (width >= 768) await classShellJourney(page);
 
-  // The parent invites a co-teacher from People; "Copy link" stays on the row.
-  const classUrl = page.url();
-  await page.goto(classUrl.replace(/\/today$/, "/roster"));
-  await heading(page, "People");
-  await page.getByRole("button", { name: "Invite a co-teacher" }).click();
-  await page.getByLabel("Email").fill("rafael@vega.example");
-  await shot(page, "co-teacher-invite", width, theme);
-  await page.getByRole("button", { name: "Send invitation" }).click();
-  await page.getByText("rafael@vega.example").waitFor();
-  // The Grown-ups list; the Join element above has a Copy link of its own.
-  const grownUps = page.getByRole("region", { name: "Grown-ups" });
-  await grownUps
-    .getByRole("button", { name: "Copy link", exact: true })
-    .waitFor();
-  check(
-    `${label} the co-teacher's link is always there`,
-    (await grownUps.getByRole("button", { name: "Copy link" }).count()) === 1,
-  );
-  await measured(page, `${label} class with a co-teacher`);
-  await shot(page, "co-teacher-invited", width, theme);
-  await page.goto(classUrl);
+  // Their own devices: the class code, from Today.
+  await page.goto(familyUrl);
   await todayTitle(page);
+  await page.locator("[data-own-devices]").click();
+  const devices = page.getByRole("dialog");
+  await devices.waitFor();
   const code = (
     await db.query(
       "SELECT c.join_code FROM amp_families f JOIN amp_classes c ON c.id=f.class_id WHERE f.account_id=$1",
       [account],
     )
   ).rows[0].join_code as string;
+  const sheet = page.locator("[data-devices-sheet]");
+  await sheet.waitFor();
+  await page.waitForFunction(
+    (expected) =>
+      (document.querySelector("[data-devices-sheet]")?.textContent ?? "")
+        .replace(/[^A-Z0-9]/gi, "")
+        .includes(expected),
+    code.replace(/[^A-Z0-9]/gi, ""),
+  );
+  await measured(page, `${label} their own devices`);
+  await shot(page, "own-devices", width, theme);
+  await page.keyboard.press("Escape");
+  await devices.waitFor({ state: "detached" });
+
+  // People is the family's parents: no roster, class code or co-teacher.
+  await page.goto(`${familyUrl}/people`);
+  await heading(page, "People");
+  for (const name of ["Invite a co-teacher", "Parent links"])
+    check(
+      `${label} a family's People offers no ${name}`,
+      (await page.getByRole("button", { name }).count()) === 0,
+    );
+  check(
+    `${label} a family's People shows no class code`,
+    !(await page.locator("main").innerText())
+      .replace(/[^A-Z0-9]/gi, "")
+      .includes(code.replace(/[^A-Z0-9]/gi, "")),
+  );
+  await measured(page, `${label} family people`);
+  await shot(page, "people", width, theme);
+  await page.goto(familyUrl);
+  await todayTitle(page);
+  await maya.waitFor();
 
   // 2. Maya practices on this device as herself; signing out hands it back.
   await maya.click();
@@ -368,11 +387,11 @@ async function family(
     .first()
     .click();
   await page.getByRole("button", { name: "Sign out" }).click();
-  await page.waitForURL(CLASS_TODAY);
+  await page.waitForURL(FAMILY_TODAY);
   await todayTitle(page);
-  check(`${label} back in the parent's class`, page.url() === classUrl, [
+  check(`${label} back on the family's Today`, page.url() === familyUrl, [
     page.url(),
-    classUrl,
+    familyUrl,
   ]);
   check(
     `${label} Maya's sign-in is gone`,

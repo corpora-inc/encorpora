@@ -19,7 +19,9 @@ import {
   LevelBar,
   LevelNotStarted,
   LevelRows,
+  likelyInWords,
   likelyRange,
+  rangeWords,
   type Estimate,
   type RangeScale,
   WHOLE_SCALE,
@@ -104,11 +106,14 @@ export function ClassMap({
   name,
   grades = true,
   crossCutting = false,
+  plain = false,
 }: {
   data: MapResponse;
   /** A teacher's map: modeling and reasoning too, after the five areas
    * (ui/level-range `byArea`). A family's map leaves them out. */
   crossCutting?: boolean;
+  /** A parent reads it: ranges in grade words, not the scale's decimals. */
+  plain?: boolean;
   /** Each row's name, linked where the composing screen opens a learner;
    * by default the learner's record over the page. */
   name?: (student: MapStudent) => ReactNode;
@@ -184,7 +189,9 @@ export function ClassMap({
         : from > reference.to
           ? ", past this course"
           : ", around this course";
-    return `likely grade ${from.toFixed(1)} to ${to.toFixed(1)}${where}`;
+    return plain
+      ? `${likelyInWords([from, to]).toLowerCase()}${where}`
+      : `likely grade ${from.toFixed(1)} to ${to.toFixed(1)}${where}`;
   };
   const lenses = ["overall", ...strands.map((strand) => strand.id)];
   // A family or a small group: each learner's whole picture, every area,
@@ -198,6 +205,7 @@ export function ClassMap({
         name={name}
         grades={grades}
         crossCutting={crossCutting}
+        plain={plain}
       />
     );
   return (
@@ -305,6 +313,8 @@ export function ClassMap({
                       ? "Starting"
                       : "Not enough work"}
                 </span>
+              ) : plain ? (
+                rangeWords(likelyRange(row.estimate))
               ) : (
                 likelyRange(row.estimate)
                   .map((value) => value.toFixed(1))
@@ -336,6 +346,7 @@ function SmallClassMap({
   name,
   grades: graded,
   crossCutting,
+  plain,
 }: {
   data: MapResponse;
   starting: boolean;
@@ -343,6 +354,7 @@ function SmallClassMap({
   action?: ReactNode;
   name?: (student: MapStudent) => ReactNode;
   grades: boolean;
+  plain: boolean;
 }) {
   // The grade, as a line in each learner's section: a small class needs no
   // separate gradebook.
@@ -420,7 +432,9 @@ function SmallClassMap({
               </h2>
               {overall.estimate && !overall.estimated && (
                 <p className={styles.learnerLevel}>
-                  Likely {from.toFixed(1)}–{to.toFixed(1)}
+                  {plain
+                    ? likelyInWords([from, to])
+                    : `Likely ${from.toFixed(1)}–${to.toFixed(1)}`}
                 </p>
               )}
             </div>
@@ -432,6 +446,7 @@ function SmallClassMap({
               overallEstimated={overall.estimated}
               areas={learner.areas}
               scale={scale}
+              wordRanges={plain}
               grade={
                 student.reference
                   ? [student.reference.from, student.reference.to]

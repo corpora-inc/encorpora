@@ -516,6 +516,21 @@ test(
           );
           assert.deepEqual(skills, { "": 0, add: 4, mul: 3, sub: 3 });
 
+          // The day the batches stored was planned with no counted answer
+          // (the seeded answers use fixture templates the engine doesn't
+          // replay): an estimate with no answer behind it is not a level
+          // (Q-201, CP-5 69ed8aeef), so the class has none yet.
+          const unmeasured = await get(
+            `/api/v1/school/classes/${period.id}/levels`,
+            teacher,
+          );
+          assert.equal(unmeasured.statusCode, 200);
+          assert.deepEqual(unmeasured.json().students, []);
+          // Once that day carries an answer, it is the student's level.
+          await db.query(
+            "UPDATE amp_level_days SET frontier=jsonb_set(frontier,'{overall,answered}','1') WHERE learner_id=$1",
+            [student.learnerId],
+          );
           const levels = await get(
             `/api/v1/school/classes/${period.id}/levels`,
             teacher,

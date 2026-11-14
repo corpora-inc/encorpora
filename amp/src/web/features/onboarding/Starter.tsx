@@ -70,7 +70,7 @@ const choices: {
   {
     id: "myself",
     label: "I’m learning for myself",
-    detail: "Practice at your level, or for someone you help",
+    detail: "Practice at your level, or help anyone at their level",
     icon: (
       <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4.5 20a7.5 7.5 0 0 1 15 0" />
     ),
@@ -100,7 +100,7 @@ const choices: {
   {
     id: "school",
     label: "I run a school",
-    detail: "Classes and teachers across your school",
+    detail: "Manage classes, teachers, and students for your school",
     icon: <path d="M3 20h18M5 20V9l7-5 7 5v11M10 20v-5h4v5M12 9.5h.01" />,
   },
 ];

@@ -53,11 +53,14 @@ export function RecordLevels({
   holdFirst = false,
   found,
   crossCutting = false,
+  plain = false,
 }: {
   record: ProgressRecord;
   /** A teacher's record: modeling and reasoning too, after the five areas
    * (ui/level-range `byArea`). A family's leaves them out. */
   crossCutting?: boolean;
+  /** A parent reads it: each row's range in grade words, not decimals. */
+  plain?: boolean;
   /** The line under the level before there's any work to read it from. */
   empty: string;
   /** Each row opens its area over the page (the page hosts the layer). */
@@ -123,6 +126,7 @@ export function RecordLevels({
       areas={areas}
       scale={scale}
       grade={grade}
+      wordRanges={plain}
       rowLink={openAreas ? areaRowLink : undefined}
     />
   );

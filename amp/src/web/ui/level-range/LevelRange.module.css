@@ -461,6 +461,13 @@ h3.caption {
 .rowsSilent {
   --numbers-column: 0px;
 }
+/* Short grade words ("Gr 8–Alg 2"): a little more room, never wrapped. */
+.rowsWords {
+  --numbers-column: 104px;
+}
+.rowsWords .rowNumbers {
+  white-space: nowrap;
+}
 /* Two classes deep, so a page's own list rules never reach the rows. */
 .rows,
 .areas .rows {

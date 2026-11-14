@@ -107,7 +107,14 @@ test("program names are the purchase flow's, for every pitch program", () => {
 
 test("private screens and the skill map keep their existing titles", () => {
   assert.equal(appPageTitle("/practice"), "Math Practice | AMP");
-  assert.equal(appPageTitle("/start/parent"), "What Brings You to AMP? | AMP");
+  // Each setup step by its own question (D-10), never two names in turn.
+  assert.equal(appPageTitle("/start"), "What Brings You to AMP? | AMP");
+  assert.equal(appPageTitle("/start/parent/name"), "Your Name | AMP");
+  assert.equal(appPageTitle("/start/parent"), "Add Your Kids | AMP");
+  assert.equal(
+    appPageTitle("/start/parent/ready"),
+    "Who’s Practicing First? | AMP",
+  );
   assert.equal(appPageTitle("/plans"), "Plans | AMP");
   assert.equal(appPageTitle("/pathways"), undefined);
   assert.equal(appPageTitle("/pathways/count-to-20"), undefined);
@@ -118,10 +125,18 @@ test("private screens and the skill map keep their existing titles", () => {
     ),
     undefined,
   );
-  assert.equal(
-    appPageTitle("/family/5b9f0f70-3d8e-45e4-a5f1-bbb98ee213d5/kids/pip"),
-    "Your Learners | AMP",
-  );
+  // A family's screens by their names (D-1, D-10), never "Your Learners".
+  const family = "/family/5b9f0f70-3d8e-45e4-a5f1-bbb98ee213d5";
+  for (const [path, title] of [
+    [family, "Today | AMP"],
+    [`${family}/map`, "Map | AMP"],
+    [`${family}/workbooks/2026-11-09`, "Workbooks | AMP"],
+    [`${family}/reports/grades`, "Report Cards | AMP"],
+    [`${family}/kids/pip`, "Your Child | AMP"],
+    [`${family}/kids/pip/inventory`, "Inventory | AMP"],
+    ["/family/learners", "Your Family | AMP"],
+  ])
+    assert.equal(appPageTitle(path), title);
 });
 
 test("the public school pages have titles, and a family's link is never public", () => {
