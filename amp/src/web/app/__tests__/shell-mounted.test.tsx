@@ -39,6 +39,7 @@ import {
 } from "../../features/school/api";
 import { classYearOptions } from "../../features/school/org/org-api";
 import { pilotOptions } from "../../features/school/pilots/api";
+import { StaffScreen } from "../../features/school/StaffScreen";
 
 const h = vi.hoisted(() => ({
   changed: null as null | ((session: unknown) => void),
@@ -75,6 +76,11 @@ vi.mock("../../ui/Toast", () => ({
     <div data-testid="toast">{message}</div>
   ),
 }));
+
+// Load the large screen graph as a fixture, outside each interaction test's
+// timeout. Cold transforms under a full run can consume that entire budget.
+const { LegacyApp: RealLegacyApp } =
+  await vi.importActual<typeof import("../LegacyApp")>("../LegacyApp");
 
 const O = "11111111-1111-4111-8111-111111111111";
 const C = "22222222-2222-4222-8222-222222222222";
@@ -118,7 +124,8 @@ const year = {
   name: "Class",
   can: ["classes.read", "students.read", "signin.read"],
 };
-const pause = () => new Promise((resolve) => setTimeout(resolve, 25));
+// Drain Query observer notifications inside act without racing the host CPU.
+const flushUpdates = () => vi.advanceTimersByTimeAsync(0);
 function deferred<T = unknown>() {
   let resolve!: (value: T) => void;
   let reject!: (error: unknown) => void;
@@ -177,11 +184,12 @@ async function mount(
       <RouterProvider router={router} />
     </Providers>,
   );
-  await act(pause);
+  await act(flushUpdates);
   return router;
 }
 
 beforeEach(() => {
+  vi.useFakeTimers();
   globalThis.ResizeObserver = class {
     observe() {}
     unobserve() {}
@@ -212,6 +220,8 @@ afterEach(() => {
   queryClient.clear();
   vi.restoreAllMocks();
   vi.unstubAllGlobals();
+  vi.clearAllTimers();
+  vi.useRealTimers();
 });
 
 test("CP-2 r3 H2: a navigation still loading, or abandoned, changes nobody", async () => {
@@ -238,7 +248,7 @@ test("CP-2 r3 H2: a navigation still loading, or abandoned, changes nobody", asy
       search: { learner: "pip" },
     } as never);
     void router.load();
-    await pause();
+    await flushUpdates();
   });
   expect(started).toBe(true);
   // Pending: the shell, the content and the device's choice are all Wren's.
@@ -255,13 +265,13 @@ test("CP-2 r3 H2: a navigation still loading, or abandoned, changes nobody", asy
       params: { _splat: "overview" },
       search: { learner: "wren" },
     } as never);
-    await pause();
+    await flushUpdates();
   });
   expect(useLearnerStore.getState().learnerId).toBe("wren");
   gate.resolve(undefined);
   await act(async () => {
     await navigation.catch(() => undefined);
-    await pause();
+    await flushUpdates();
   });
   expect(useLearnerStore.getState().learnerId).toBe("wren");
   // Committed: the shell then makes Pip the choice.
@@ -271,7 +281,7 @@ test("CP-2 r3 H2: a navigation still loading, or abandoned, changes nobody", asy
       params: { _splat: "practice" },
       search: { learner: "pip" },
     } as never);
-    await pause();
+    await flushUpdates();
   });
   expect(useLearnerStore.getState().learnerId).toBe("pip");
   expect(h.renders.at(-1)).toMatchObject({ learner: "pip", frame: "pip" });
@@ -286,7 +296,7 @@ test("H2: the named learner removed while open keeps the screen out, choosing no
       learners: [kid("wren")],
       family: { learners: [kid("wren")] },
     } as never);
-    await pause();
+    await flushUpdates();
   });
   expect(screen.queryByTestId("learning")).toBeNull();
   expect(document.querySelector("[data-space-blocked]")).toBeTruthy();
@@ -331,13 +341,13 @@ test("CP-2 r3 M1: a new session whose account didn't load shows nothing of the o
   );
   await act(async () => {
     h.changed!({ ...auth, token: "new" });
-    await pause();
+    await flushUpdates();
   });
   await act(async () => {
     old.resolve({ ...org, name: "OLD LATE RESPONSE" });
     await late;
     replacement.reject(new Error("replacement /me offline"));
-    await pause();
+    await flushUpdates();
   });
   // The old session's late answer was never written. Same-account renewal
   // keeps the account's earlier answers; the unconfirmed session shows none.
@@ -350,7 +360,6 @@ test("CP-2 r3 M1: a new session whose account didn't load shows nothing of the o
 });
 
 test("CP-2 r3 M1: the real staff screen's management form goes with the old session", async () => {
-  const { StaffScreen } = await import("../../features/school/StaffScreen");
   seedSchool();
   queryClient.setQueryData(staffOptions(auth, O).queryKey, [] as never);
   await mount(
@@ -366,18 +375,17 @@ test("CP-2 r3 M1: the real staff screen's management form goes with the old sess
   );
   await act(async () => {
     h.changed!({ ...auth, token: "new" });
-    await pause();
+    await flushUpdates();
   });
   await act(async () => {
     replacement.reject(new Error("offline"));
-    await pause();
+    await flushUpdates();
   });
   expect(screen.queryByRole("heading", { name: "Invite someone" })).toBeNull();
   expect(screen.queryByRole("textbox", { name: "Email" })).toBeNull();
 });
 
 test("CP-2 r4 N4: a routine renewal for the same account keeps the staff form's draft", async () => {
-  const { StaffScreen } = await import("../../features/school/StaffScreen");
   seedSchool();
   queryClient.setQueryData(staffOptions(auth, O).queryKey, [] as never);
   const router = await mount(
@@ -402,13 +410,13 @@ test("CP-2 r4 N4: a routine renewal for the same account keeps the staff form's 
   );
   await act(async () => {
     h.changed!({ ...auth, token: "new" });
-    await pause();
+    await flushUpdates();
   });
   expect(router.state.location.pathname).toBe(`/school/${O}/staff`);
   expect(email().value).toBe("colleague@example.test");
   await act(async () => {
     fireEvent.click(screen.getByRole("button", { name: "Send invitation" }));
-    await pause();
+    await flushUpdates();
   });
   const invites = h.request.mock.calls.filter(([url]) =>
     url.endsWith("/invites"),
@@ -421,7 +429,6 @@ test("CP-2 r4 N4: a routine renewal for the same account keeps the staff form's 
 });
 
 test("a pending renewal refuses staff invitations while keeping the editable draft mounted", async () => {
-  const { StaffScreen } = await import("../../features/school/StaffScreen");
   seedSchool();
   queryClient.setQueryData(staffOptions(auth, O).queryKey, []);
   await mount(
@@ -440,7 +447,7 @@ test("a pending renewal refuses staff invitations while keeping the editable dra
   );
   await act(async () => {
     h.changed!({ ...auth, token: "new-pending" });
-    await pause();
+    await flushUpdates();
   });
   expect(screen.getByRole("textbox", { name: "Email" })).toBe(email);
   expect(email.value).toBe("colleague@example.test");
@@ -449,7 +456,7 @@ test("a pending renewal refuses staff invitations while keeping the editable dra
   await act(async () => {
     fireEvent.change(email, { target: { value: "edited@example.test" } });
     fireEvent.submit(email.closest("form")!);
-    await pause();
+    await flushUpdates();
   });
   expect(
     h.request.mock.calls.filter(([url]) => url.endsWith("/invites")),
@@ -458,14 +465,13 @@ test("a pending renewal refuses staff invitations while keeping the editable dra
   expect(email.value).toBe("edited@example.test");
   await act(async () => {
     replacement.reject(new Error("replacement /me offline"));
-    await pause();
+    await flushUpdates();
   });
   expect(screen.queryByRole("textbox", { name: "Email" })).toBeNull();
   expect(document.querySelector("[data-space-blocked]")).toBeTruthy();
 });
 
 test("an edited draft survives refused submissions and submits after renewal confirms", async () => {
-  const { StaffScreen } = await import("../../features/school/StaffScreen");
   seedSchool();
   queryClient.setQueryData(staffOptions(auth, O).queryKey, []);
   await mount(
@@ -484,7 +490,7 @@ test("an edited draft survives refused submissions and submits after renewal con
   );
   await act(async () => {
     h.changed!({ ...auth, token: "new-pending" });
-    await pause();
+    await flushUpdates();
   });
   expect(screen.getByRole("textbox", { name: "Email" })).toBe(email);
   expect(email.value).toBe("colleague@example.test");
@@ -493,7 +499,7 @@ test("an edited draft survives refused submissions and submits after renewal con
   await act(async () => {
     fireEvent.change(email, { target: { value: "edited@example.test" } });
     fireEvent.submit(email.closest("form")!);
-    await pause();
+    await flushUpdates();
   });
   expect(
     h.request.mock.calls.filter(([url]) => url.endsWith("/invites")),
@@ -502,7 +508,7 @@ test("an edited draft survives refused submissions and submits after renewal con
   expect(email.value).toBe("edited@example.test");
   await act(async () => {
     fireEvent.submit(email.closest("form")!);
-    await pause();
+    await flushUpdates();
   });
   expect(
     h.request.mock.calls.filter(([url]) => url.endsWith("/invites")),
@@ -520,13 +526,13 @@ test("an edited draft survives refused submissions and submits after renewal con
   );
   await act(async () => {
     replacement.resolve(me);
-    await pause();
+    await flushUpdates();
   });
   expect(screen.getByRole("textbox", { name: "Email" })).toBe(email);
   expect(email.value).toBe("edited@example.test");
   await act(async () => {
     fireEvent.submit(email.closest("form")!);
-    await pause();
+    await flushUpdates();
   });
   const invites = h.request.mock.calls.filter(([url]) =>
     url.endsWith("/invites"),
@@ -551,7 +557,7 @@ test("CP-2 r4 M1: cancelling the session check during a renewal leaves the old t
     .catch(() => null);
   await act(async () => {
     h.changed!({ ...auth, token: "new" });
-    await pause();
+    await flushUpdates();
   });
   await checking;
   const calls: string[] = [];
@@ -599,7 +605,7 @@ test("CP-2 r3 M1: an old loader that resumes after a new session neither asks no
       pathname: "/pathways",
       search: { learner: "pip" },
     });
-    await pause();
+    await flushUpdates();
   });
   expect(
     calls.filter((call) => call.token === "old" && call.url !== "/me"),
@@ -674,9 +680,7 @@ test("the real LegacyApp consent route refuses withdrawal until replacement /me 
     },
   };
   queryClient.setQueryData(meOptions(auth).queryKey, consentMe as never);
-  const { LegacyApp } =
-    await vi.importActual<typeof import("../LegacyApp")>("../LegacyApp");
-  await mount("/consent", LegacyApp);
+  await mount("/consent", RealLegacyApp);
   const button = screen.getByRole("button", { name: "Withdraw consent" });
   const replacement = deferred();
   h.request.mockImplementation((url: string) =>
@@ -684,7 +688,7 @@ test("the real LegacyApp consent route refuses withdrawal until replacement /me 
   );
   await act(async () => {
     h.changed!({ ...auth, token: "consent-pending" });
-    await pause();
+    await flushUpdates();
   });
   expect(isConfirmed("consent-pending")).toBe(false);
   expect(isRenewing("consent-pending")).toBe(true);
@@ -694,18 +698,18 @@ test("the real LegacyApp consent route refuses withdrawal until replacement /me 
   expect(document.querySelector("[data-space-blocked]")).toBeNull();
   await act(async () => {
     fireEvent.click(button);
-    await pause();
+    await flushUpdates();
   });
   expect(withdrawn).not.toHaveBeenCalled();
   expect(screen.getByText("One moment, confirming your sign-in")).toBeTruthy();
   await act(async () => {
     replacement.resolve(consentMe);
-    await pause();
+    await flushUpdates();
   });
   expect(isConfirmed("consent-pending")).toBe(true);
   await act(async () => {
     fireEvent.click(screen.getByRole("button", { name: "Withdraw consent" }));
-    await pause();
+    await flushUpdates();
   });
   expect(withdrawn).toHaveBeenCalledOnce();
   expect(withdrawn.mock.calls[0]![0]).toMatchObject({
