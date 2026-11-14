@@ -77,7 +77,7 @@
 .pathways a {
   color: var(--atlas-accent);
 }
-.pathways button,
+.pathways button:where(:not([role="radio"])),
 .pathways input {
   font: inherit;
   min-height: 44px;
@@ -90,10 +90,12 @@
 .pathways button {
   cursor: pointer;
 }
-.pathways button:hover {
+/* The view picker (ui/Segmented) keeps its own design: these frame styles
+   are for the map's own buttons. */
+.pathways button:where(:not([role="radio"])):hover {
   border-color: var(--atlas-muted);
 }
-.pathways button:disabled {
+.pathways button:where(:not([role="radio"])):disabled {
   opacity: 0.4;
   cursor: default;
 }
@@ -229,7 +231,7 @@
   align-items: center;
   margin: 4px 0 12px;
 }
-.pathways-toolbar button {
+.pathways-toolbar > button {
   font-size: 12px;
 }
 .pathways-search {
@@ -577,7 +579,7 @@
   .pathways-search {
     width: 100%;
   }
-  .pathways-toolbar button {
+  .pathways-toolbar > button {
     flex: 1;
     padding: 8px;
     font-size: 12px;
@@ -864,7 +866,7 @@
   .pathways .pathways-toolbar .toolbar-narrow {
     display: inline;
   }
-  .pathways .pathways-toolbar button {
+  .pathways .pathways-toolbar > button {
     min-width: 0;
     padding: 8px 4px;
   }
@@ -998,17 +1000,17 @@
 /* The search field and Browse are one matched pair: the same height, the
    same weight of type. */
 .pathways .pathways-toolbar input,
-.pathways .pathways-toolbar button {
+.pathways .pathways-toolbar > button {
   box-sizing: border-box;
   height: var(--target-size);
   min-height: var(--target-size);
 }
-.pathways .pathways-toolbar button {
+.pathways .pathways-toolbar > button {
   font-size: var(--text-label);
   font-weight: 600;
 }
 @media (min-width: 651px) {
-  .pathways .pathways-toolbar button {
+  .pathways .pathways-toolbar > button {
     padding-inline: var(--space-4);
   }
 }
@@ -1046,4 +1048,27 @@
 }
 .pathways .pathways-results li a:hover {
   background: var(--color-surface-hover);
+}
+
+/* Grades | 3D: at the end of the search row; on a phone, beside Browse. The
+   map below keeps its size whichever is chosen. */
+.pathways-view {
+  flex: none;
+  margin-left: auto;
+}
+.pathways-view [role="radiogroup"] {
+  grid-template-columns: repeat(2, minmax(4.5rem, 1fr));
+}
+/* A phone: its own row under the search, the two views sharing the width
+   (the toolbar is a two-column grid there). */
+@media (max-width: 650px) {
+  .pathways .pathways-view {
+    grid-column: 1 / -1;
+    margin-left: 0;
+  }
+  /* Its row comes out of the map's height, so the map still ends on the
+     first screen. */
+  .pathways:has(.pathways-view) .pathways-workspace {
+    height: max(320px, calc(100dvh - 296px));
+  }
 }

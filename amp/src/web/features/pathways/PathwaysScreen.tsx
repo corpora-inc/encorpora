@@ -49,6 +49,7 @@ import {
   type Evidence,
 } from "./model";
 import { ListboxDisclosure, type ListboxOption } from "../../ui/Listbox";
+import { Segmented } from "../../ui/Segmented";
 import { LayerHost } from "../../nav/LayerHost";
 import { EntityLink, useLayers } from "../../nav/links";
 import { OPEN_KEY, pushLayer } from "../../nav/entities";
@@ -72,6 +73,21 @@ import { childAddress, childPath } from "../spaces/identity";
 import { childFamily } from "../spaces/learner-urls";
 import { familyPlacesOptions } from "../family/api";
 const emptyEvidence: Evidence[] = [];
+/** How the map is drawn: by grade (the default, everywhere) or in 3D. */
+type MapMode = "grades" | "3d";
+const VIEW_KEY = "amp.pathways-view";
+const viewOptions = [
+  { value: "grades" as const, label: "Grades" },
+  { value: "3d" as const, label: "3D" },
+];
+/** This device's last choice of view; the grades view until there is one. */
+function savedView(): MapMode {
+  try {
+    return localStorage.getItem(VIEW_KEY) === "3d" ? "3d" : "grades";
+  } catch {
+    return "grades";
+  }
+}
 const bandOptions: ListboxOption[] = [
   { value: "", label: "All grades & courses" },
   ...bands.map((b) => ({ value: b, label: bandLabel(b) })),
@@ -363,8 +379,32 @@ export function MapView({
   const navigate = useNavigate();
   const { shown } = useCurriculumDetails();
   // A browser that can't draw the 3D map (or loses its context while it is
-  // open) gets the flat pathway in its place: no canvas, no camera controls.
+  // open) gets the flat pathway in its place: no canvas, no camera controls,
+  // and no choice of view.
   const [drawn, setDrawn] = useState(canDrawMap);
+  // The grades view, or 3D: the address's (`?view=`), else this device's
+  // last choice. Either keeps the skill open over it.
+  const [remembered, setRemembered] = useState(savedView);
+  const view: MapMode =
+    search.view === "3d" || search.view === "grades" ? search.view : remembered;
+  const threeD = drawn && view === "3d";
+  const chooseView = (next: MapMode) => {
+    try {
+      localStorage.setItem(VIEW_KEY, next);
+    } catch {
+      // This device keeps no choice; the address still carries it.
+    }
+    setRemembered(next);
+    void navigate({
+      to: ".",
+      search: ((current: Record<string, unknown>) => ({
+        ...current,
+        view: next,
+      })) as never,
+      replace: true,
+      resetScroll: false,
+    });
+  };
   // Arriving with a search (a link, or /lessons?q=) opens its results.
   // A shared search opens its results, unless the link names a skill: then
   // the skill is what it shows, its search kept in the field.
@@ -697,6 +737,18 @@ export function MapView({
             {browse ? "Close" : "Browse"}
           </span>
         </button>
+        {drawn && (
+          <div className="pathways-view">
+            <Segmented
+              label="Map view"
+              options={viewOptions}
+              value={view}
+              onChange={chooseView}
+              compact
+              dense
+            />
+          </div>
+        )}
       </div>
       {catalog.isError ? (
         <div role="alert">
@@ -779,7 +831,7 @@ export function MapView({
                 <p>No matching skills. Try another grade.</p>
               )}
             </section>
-            {drawn ? (
+            {threeD ? (
               <Graph
                 skills={skills}
                 evidence={evidence}
@@ -815,7 +867,7 @@ export function MapView({
               ))}
             </div>
             <p>
-              {!drawn
+              {!threeD
                 ? selected
                   ? "Cyan: what it builds on · Violet: what it leads to"
                   : "Rows run from the first skills to precalculus. Brighter gems mark stronger practice."
@@ -833,13 +885,13 @@ export function MapView({
               </p>
               {range && !selected && (
                 <p>
-                  {shown && drawn ? (
+                  {shown && threeD ? (
                     <>
                       Overall frontier: {gradeName(range.lo)} to{" "}
                       {gradeName(range.hi)} · estimated range shown by faint
                       outlines.
                     </>
-                  ) : drawn ? (
+                  ) : threeD ? (
                     "Faint outlines show the estimated range of skills to practice."
                   ) : (
                     "“Where you are” marks the range of skills to practice next."
