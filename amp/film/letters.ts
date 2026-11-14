@@ -2,26 +2,22 @@
 import type { Script, WordTime } from "./schema";
 
 const LETTER = /\*([a-z])\*/gi;
-const RESPELLINGS: Record<string, string> = { a: "ay" };
+/**
+ * What the voice is sent for a marked letter. A capital "A" is read as the letter's name;
+ * the respelling "ay" was often read as two letters ("A, Y"), and a bare "a" as the article.
+ */
+const RESPELLINGS: Record<string, string> = { a: "A" };
+/** Bumped when RESPELLINGS changes, so takes voiced with an older respelling are not reused. */
+const RESPELLING_VERSION = "letters-2";
+/** Part of a take's cache key when the text has a marked letter the voice is sent respelled. */
+export const respellingKey = (text: string): string | undefined =>
+  [...text.matchAll(LETTER)].some(([, letter]) => RESPELLINGS[letter!.toLowerCase()]) ? RESPELLING_VERSION : undefined;
 const LETTER_AFTER = new Set(["and", "or", "plus", "minus", "times", "squared", "cubed", "equals", "over"]);
 const LETTER_BEFORE = new Set(["side", "leg", "point", "angle", "length", "letter"]);
 export const MIN_LETTER_HOLD = 0.12;
 
 export const displayText = (text: string) => text.replace(LETTER, "$1");
 export const voiceText = (text: string) => text.replace(LETTER, (_, letter: string) => RESPELLINGS[letter.toLowerCase()] ?? letter);
-/**
- * A transcriber may write a respelled letter the way it was sent ("AY is one, one").
- * For a script with marked letters, read such a word back as its letter before comparing.
- */
-export function heardLetters(script: string): (word: string) => string {
-  const back = new Map<string, string>();
-  for (const [, letter] of script.matchAll(LETTER)) {
-    const sent = RESPELLINGS[letter!.toLowerCase()];
-    if (sent) back.set(sent, letter!.toLowerCase());
-  }
-  if (!back.size) return (word) => word;
-  return (word) => word.replace(/[a-z]+/gi, (run) => back.get(run.toLowerCase()) ?? run);
-}
 export const displayScript = (script: Script): Script => ({
   ...script,
   shots: script.shots.map((shot) => ({ ...shot, beats: shot.beats.map((beat) => ({ ...beat, say: displayText(beat.say) })) })),

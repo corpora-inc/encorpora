@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { describe, expect, it, vi } from "vitest";
 import { captionText } from "./captions";
-import { MODEL, NARRATOR_ID, neighbours, resolveCast, runsOf, spokenText } from "./cast";
+import { MODEL, NARRATOR_ID, neighbours, resolveCast, runsOf, spokenText, takeKeyParts } from "./cast";
 import { displayScript, displayText, heldLetterFaults, letterNotes, MIN_LETTER_HOLD } from "./letters";
 import { scriptSchema, type Timing } from "./schema";
 import { heldHighlights } from "./stage";
@@ -38,13 +38,13 @@ const timing = (say: string): Timing => {
 describe("letter names", () => {
   it("respells only marked a, preserves case for other letters, and treats context the same", () => {
     const voice = { id: NARRATOR_ID, tag: "[energetic]" };
-    expect(spokenText(voice, "Make *a* longer and *B* shorter. *A*, *x*, a square.")).toBe("[energetic] Make ay longer and B shorter. ay, x, a square.");
+    expect(spokenText(voice, "Make *a* longer and *B* shorter. *A*, *x*, a square.")).toBe("[energetic] Make A longer and B shorter. A, x, a square.");
     expect(displayText("Make *a* longer and *B* shorter.")).toBe("Make a longer and B shorter.");
     const s = script("Side *a*.");
     s.shots.push({ beats: [{ say: "Then *b*." }] }, { beats: [{ say: "Back to *A*." }] });
     const runs = runsOf(s, resolveCast(s)), context = neighbours(runs, 1);
-    expect(spokenText(voice, context.prev!)).toBe("[energetic] Side ay.");
-    expect(spokenText(voice, context.next!)).toBe("[energetic] Back to ay.");
+    expect(spokenText(voice, context.prev!)).toBe("[energetic] Side A.");
+    expect(spokenText(voice, context.next!)).toBe("[energetic] Back to A.");
   });
 
   it("keeps every unmarked cache key and changes the key when any mark changes", () => {
@@ -53,6 +53,9 @@ describe("letter names", () => {
     expect(takeKey(voice, line)).toBe(old);
     const lines = [line, "Make *a* longer and b shorter.", "Make *a* longer and *b* shorter."];
     expect(new Set(lines.map((text) => takeKey(voice, text))).size).toBe(3);
+    // a take voiced with an older respelling of a marked letter is not reused; other marked letters keep their key
+    expect(takeKeyParts({ id: NARRATOR_ID }, "Side *a*.")).toEqual([NARRATOR_ID, MODEL, "Side *a*.", "letters-2"]);
+    expect(takeKeyParts({ id: NARRATOR_ID }, "Side *b*.")).toEqual([NARRATOR_ID, MODEL, "Side *b*."]);
   });
 
   it("compares the hearing against bare letters", () => {
@@ -60,21 +63,19 @@ describe("letter names", () => {
     const text = "Make A longer and B shorter.";
     const heard = { text, words: text.split(" ").map((text, start) => ({ text, start, end: start + 0.24, type: "word" })) };
     expect(differences("Make *a* longer and *b* shorter.", heard)).toEqual([]);
-    expect(differences("Make ay longer and b shorter.", heard)).not.toEqual([]);
-    // the transcriber sometimes writes the respelling it heard: that is the letter, not a fault
-    const respelled = { text: "AY is one, one.", words: ["AY", "is", "one,", "one."].map((text, i) => ({ text, start: i, end: i + 0.5, type: "word" })) };
-    expect(differences("*A* is one, one.", respelled)).toEqual([]);
-    expect(differences("A is one, one.", respelled)).not.toEqual([]);
+    // a letter read out as two letters ("A, Y": the founder heard "A why is one, one") is a fault of the take
+    const spelled = { text: "AY is one, one.", words: ["AY", "is", "one,", "one."].map((text, i) => ({ text, start: i, end: i + 0.5, type: "word" })) };
+    expect(differences("*A* is one, one.", spelled)).not.toEqual([]);
   });
 
   it("restores alignment words one for one, including punctuation and split hyphenated words", () => {
-    const a = alignment("[energetic] Twenty three: ay, B. ay!");
+    const a = alignment("[energetic] Twenty three: A, B. A!");
     const raw = wordsOf(a), restored = wordsOf(a, "Twenty-three: *a*, *B*. *A*!");
     expect(restored.map((w) => w.text)).toEqual(["Twenty", "three:", "a,", "B.", "A!"]);
     expect(restored.map(({ start, end }) => [start, end])).toEqual(raw.map(({ start, end }) => [start, end]));
     expect(wordsOf(a)).toEqual(raw);
-    expect(() => wordsOf(alignment("a square ay"), "A square and *a*")).toThrow(/alignment does not match/);
-    expect(wordsOf(alignment("Say ay and ay."), "Say ay and *a*.").map((w) => w.text)).toEqual(["Say", "ay", "and", "a."]);
+    expect(() => wordsOf(alignment("a square A"), "A square and *a*")).toThrow(/alignment does not match/);
+    expect(wordsOf(alignment("Say A and A."), "Say A and *a*.").map((w) => w.text)).toEqual(["Say", "A", "and", "a."]);
   });
 
   it("shows bare letters in captions, transcript and storyboard script without changing the source", () => {
@@ -102,17 +103,17 @@ describe("letter names", () => {
   });
 
   it("faults only a marked a held below the threshold, ignoring punctuation's pause", () => {
-    expect(heldLetterFaults("*a*.", wordsOf(alignment("ay.", 0.04, 60.1))))
+    expect(heldLetterFaults("*a*.", wordsOf(alignment("A.", 0.04, 60.1))))
       .toEqual(['at 60.1 s the letter "a" was read as a word, not as a letter']);
-    expect(heldLetterFaults("*A*.", wordsOf(alignment("ay.", 0.119, 60.1)))).toHaveLength(1);
-    expect(heldLetterFaults("*a*.", wordsOf(alignment("ay.", MIN_LETTER_HOLD, 60.1)))).toEqual([]);
+    expect(heldLetterFaults("*A*.", wordsOf(alignment("A.", 0.119, 60.1)))).toHaveLength(1);
+    expect(heldLetterFaults("*a*.", wordsOf(alignment("A.", MIN_LETTER_HOLD, 60.1)))).toEqual([]);
     expect(heldLetterFaults("a *b*.", wordsOf(alignment("a b.", 0.04)))).toEqual([]);
   });
 
   it("judges a short letter as a fault and retries a synthetic cached take", async () => {
     const text = "*a*.", key = takeKey({ id: NARRATOR_ID }, text);
-    const short = { audio: Buffer.alloc(44100 * 2).toString("base64"), alignment: alignment("ay.", 0.04) };
-    const held = { ...short, alignment: alignment("ay.", 0.24) };
+    const short = { audio: Buffer.alloc(44100 * 2).toString("base64"), alignment: alignment("A.", 0.04) };
+    const held = { ...short, alignment: alignment("A.", 0.24) };
     const heard = JSON.stringify({ text: "A.", words: [{ text: "A.", start: 0, end: 0.24, type: "word" }] });
     cache.set(`/takes/${key}.json`, JSON.stringify(short));
     cache.set(`/takes/${key}.1.json`, JSON.stringify(held));

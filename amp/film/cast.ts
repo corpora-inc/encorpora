@@ -9,7 +9,7 @@
  * (and free of node modules, so the stage can import it in the browser).
  */
 import type { Script } from "./schema";
-import { voiceText } from "./letters";
+import { respellingKey, voiceText } from "./letters";
 import { isRoleKind, NARRATOR_ID, VOICES, voicesFor, type RoleKind, type VoiceSpec } from "./voices";
 
 export { NARRATOR_ID };
@@ -171,6 +171,8 @@ export const spokenText = (voice: Voice, text: string) => (voice.tag ? `${voice.
 export function takeKeyParts(voice: Voice, text: string): unknown[] {
   const parts: unknown[] = [voice.id, MODEL, text];
   if (voice.tag) parts.push(voice.tag);
+  const respelled = respellingKey(text);
+  if (respelled) parts.push(respelled);
   return parts;
 }
 
