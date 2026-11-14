@@ -111,9 +111,7 @@ export function FilmScreen() {
               closeTo(router, back, filmFrom(search.from));
             }}
           >
-            {back.startsWith("/practice")
-              ? "Back to problem"
-              : "Back to lesson"}
+            {back.startsWith("/practice") ? "Back to problem" : "Back to lesson"}
           </a>
         </div>
       )}
