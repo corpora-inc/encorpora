@@ -146,14 +146,14 @@ A one-class school (`solo`, one class) is its class: no Overview or Activity. It
 
 `/start/school` (the starter's school answer) offers the one next step for what the account already has, and a signed-in `/school/new` with nothing to set up opens it (never the public `/schools` with its Sign in):
 
-| The account has                                                    | Next step                                                                                      |
-| ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
-| An invitation kept on this device that the server says is open     | Join that school (a used, expired or unknown one is dropped, and the next row that fits shows) |
-| A school to finish setting up (its admin)                          | Finish setting up                                                                              |
-| A school it administers or views                                   | Open it                                                                                        |
-| A school its admin is still setting up (a viewer, teacher or aide) | It waits, by name; setup itself is only its admin's                                            |
-| Its own teacher pilot                                              | Open the class; Send to your school's buyer (`?seats=1`)                                       |
-| Nothing at a school (a demo doesn't count)                         | Start with your class (`/school/start`, the self-serve pilot); explore the demo; Talk to us    |
+| The account has                                                    | Next step                                                                                                                                                       |
+| ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| An invitation kept on this device that the server says is open     | Join that school (one it refuses, 400/403/404/410, or calls used or expired is dropped; a failed lookup keeps it, with Try again beside the next row that fits) |
+| A school to finish setting up (its admin)                          | Finish setting up                                                                                                                                               |
+| A school it administers or views                                   | Open it                                                                                                                                                         |
+| A school its admin is still setting up (a viewer, teacher or aide) | It waits, by name; setup itself is only its admin's                                                                                                             |
+| Its own teacher pilot                                              | Open the class; Send to your school's buyer (`?seats=1`)                                                                                                        |
+| Nothing at a school (a demo doesn't count)                         | Start with your class (`/school/start`, the self-serve pilot); explore the demo; Talk to us                                                                     |
 
 Clever is offered only where it is turned on.
 
@@ -161,7 +161,7 @@ Clever is offered only where it is turned on.
 
 Start practice names starting practice everywhere: Today's required item (its button says Start), Students' header and the authorization sheet. The class code, the board and the cards reach students only while practice runs: before it, the board and cards say "Practice hasn't started" and offer Start practice; after it, "Practice has ended", with Request seats for the class's teacher. Reports, exports, issued workbooks and paper results stay after practice ends.
 
-The server holds this, not only the screens: while a school class's students can't practice (`classPracticeGates` in `src/schools/pilot-access.ts`: before Start, after practice ends, with no seat or other coverage), its presence, roster and class list send no code, and a new code, new cards and a cards PDF are refused (`practice_closed`). Every reader of the class learns the state from its year read (`practice`), so a viewer's or an aide's screens close the same way as its teacher's. A family's class, a demo and a licensed school are never gated. Today offers only what the class's own `can` allows: adding students needs `class.import` or `students.add`, printing cards `signin.manage`.
+The server holds this, not only the screens: while a school class's students can't practice (`classPracticeGates` in `src/schools/pilot-access.ts`: before Start, after practice ends, with no seat or other coverage), its presence, roster, class list and a newly created class send an empty `joinCode` with `codeAvailable: false` (still a string, so an earlier web build reads the class whole), and a new code, new cards and a cards PDF are refused (`practice_closed`). Every reader of the class learns the state from its year read (`practice`), and the screens follow it exactly: a partly paid class that was never started is open, and a licensed school's empty class is open; the pilot only says what to do next. A state that can't be read (a failed read, an answer without it) is never open and never a dead end: "Couldn't check practice" with Try again, and the board keeps its Exit. A family's class, a demo and a licensed school are never gated. Today offers only what the class's own `can` allows: adding students needs `class.import` or `students.add`, printing cards `signin.manage`.
 
 ## Vocabulary
 
