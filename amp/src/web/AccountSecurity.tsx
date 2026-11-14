@@ -263,9 +263,6 @@ export function AccountSecurity() {
                   <div className="security-panel-body" id={`security-${id}`}>
                     {id === "passkeys" && (
                       <>
-                        <p>
-                          Use a passkey saved on your device or security key.
-                        </p>
                         {summary.passkeys.map((key) => (
                           <div className="security-method" key={key.id}>
                             {rename === key.id ? (
@@ -437,9 +434,8 @@ export function AccountSecurity() {
                     {id === "totp" && (
                       <>
                         <p>
-                          An authenticator supplies a six-digit code when you
-                          sign in with a password. Passkeys and linked providers
-                          use their own sign-in checks.
+                          Asks for a six-digit code when you sign in with a
+                          password.
                         </p>
                         {!summary.hasPassword || !summary.passwords ? (
                           <p>
