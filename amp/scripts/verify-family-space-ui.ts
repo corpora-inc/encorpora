@@ -152,6 +152,41 @@ async function familyId(context: BrowserContext) {
     .familyId;
 }
 
+/** Jonah as the power user: his own family, a tutoring group (another
+ * family's child added to his family's class) and his own practice. Made
+ * once through the real API; a rerun finds them made. */
+async function powerUser(context: BrowserContext) {
+  const places = (await (
+    await context.request.get(`${origin}/api/v1/families`)
+  ).json()) as { families: { role: string; teachingPlace: unknown }[] };
+  if (!places.families.some((family) => family.teachingPlace)) {
+    const added = await context.request.post(
+      `${origin}/api/v1/family/class/students`,
+      { headers: { Origin: origin }, data: { nickname: "JR", birthYear: 2015 } },
+    );
+    if (!added.ok()) throw new Error(`tutored child ${added.status()}`);
+  }
+  const me = (await (await context.request.get(`${origin}/api/v1/me`)).json()) as {
+    adultPractice?: { learner: unknown };
+  };
+  if (!me.adultPractice?.learner) {
+    const started = await context.request.post(`${origin}/api/v1/me/practice`, {
+      headers: { Origin: origin },
+      data: { timezone: "America/New_York" },
+    });
+    if (!started.ok()) throw new Error(`own practice ${started.status()}`);
+  }
+}
+
+/** Choose a place in the drawer's switcher, by its id. */
+async function switchTo(page: Page, place: string) {
+  await page.click("[data-navigation-trigger]");
+  await page.waitForTimeout(500);
+  await page.getByRole("button", { name: /switch place/ }).click();
+  await page.click(`[role=menuitem]:has([data-place="${place}"])`);
+  await settle(page);
+}
+
 const browser = await chromium.launch();
 try {
   for (const width of WIDTHS)
@@ -224,6 +259,36 @@ try {
         fail(`second-parent-today-${tag}`, "offers Continue with AMP");
       await page.close();
       await second.close();
+      // The power user: Family ↔ Teaching ↔ My practice, each place whole on
+      // its own terms, nothing following them between places.
+      const power = await signedIn("family", width, scheme);
+      await powerUser(power);
+      const tour = await power.newPage();
+      await tour.goto(`${origin}/family/${id}`);
+      await settle(tour);
+      await switchTo(tour, `group:${id}`);
+      if (!tour.url().endsWith(`/family/${id}/group`))
+        fail(`power-group-${tag}`, `landed on ${tour.url()}`);
+      await check(tour, `power-group-${tag}`, false);
+      await shoot(tour, `power-group-${tag}`);
+      const group = (await tour.textContent("main")) ?? "";
+      if (!/JR/.test(group)) fail(`power-group-${tag}`, "the tutored child is missing");
+      await switchTo(tour, "me");
+      if (!new URL(tour.url()).pathname.startsWith("/me"))
+        fail(`power-me-${tag}`, `landed on ${tour.url()}`);
+      await check(tour, `power-me-${tag}`);
+      await shoot(tour, `power-me-${tag}`);
+      await switchTo(tour, "home");
+      if (!tour.url().endsWith(`/family/${id}`))
+        fail(`power-family-${tag}`, `landed on ${tour.url()}`);
+      const kids = await tour.$$eval("[data-family-kids] > li", (items) =>
+        items.map((item) => item.textContent ?? ""),
+      );
+      if (kids.some((text) => /JR/.test(text)))
+        fail(`power-family-${tag}`, "a tutored child shows in the family");
+      await check(tour, `power-family-${tag}`);
+      await shoot(tour, `power-family-${tag}`);
+      await power.close();
     }
 } finally {
   await browser.close();
