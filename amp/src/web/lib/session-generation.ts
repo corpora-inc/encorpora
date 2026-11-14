@@ -13,6 +13,9 @@
  * shell knows only that the account is the same. A renewal keeps the
  * account's drafts visible, but cannot send mutations until confirmed.
  */
+let currentToken: string | null | undefined;
+export const currentSessionToken = () => currentToken;
+
 const retired = new Set<string>();
 const confirmed = new Set<string>();
 const renewing = new Set<string>();
@@ -22,6 +25,7 @@ export function changeSession(
   previous: string | null | undefined,
   next: string | null | undefined,
 ) {
+  currentToken = next;
   if (previous && previous !== next) retired.add(previous);
   if (next) retired.delete(next);
 }
@@ -49,6 +53,7 @@ export const isConfirmed = (token: string | null | undefined) =>
 
 /** For tests that reuse one synthetic token across sessions. */
 export function forgetRetiredSessions() {
+  currentToken = undefined;
   retired.clear();
   confirmed.clear();
   renewing.clear();

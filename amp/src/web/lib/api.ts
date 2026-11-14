@@ -1,8 +1,19 @@
+import {
+  requestWith,
+  requestMethod,
+  replacedSession,
+  type RequestOptions,
+} from "./request-transport";
+export {
+  requestWith,
+  requestFetch,
+  SessionUnconfirmedError,
+} from "./request-transport";
 import { observeLearningRequest } from "./learning-analytics";
 import { observePurchaseRequest } from "./purchase-analytics";
 import type { z } from "zod";
 import { AppError } from "./AppError";
-import { isRenewing, isRetired } from "./session-generation";
+import { isRetired } from "./session-generation";
 import { validationPaths } from "./batch-capability-fallback";
 import {
   buildIsStale,
@@ -155,61 +166,12 @@ const errorCode = (data: unknown) =>
   typeof data.error === "string"
     ? data.error
     : "";
-type RequestOptions = {
-  token?: string | null;
-  body?: unknown;
-  signal?: AbortSignal;
-  method?: string;
-  headers?: Record<string, string>;
-};
-const requestMethod = (options: RequestOptions) =>
-  (
-    options.method ?? (options.body === undefined ? "GET" : "POST")
-  ).toUpperCase();
-
-/** A request from a session this tab has left (lib/session-generation.ts):
- * refused, so neither the asking nor the answer reaches the new session. */
-function replacedSession() {
-  return new AppError(
-    "authentication",
-    "This was asked by a sign-in that has since changed.",
-    false,
-    null,
-    "session_replaced",
-  );
-}
-
 export function request<T>(
   path: string,
   schema: z.ZodType<T>,
   options: RequestOptions = {},
 ): Promise<T> {
   return requestWith(() => send(path, schema, options), options);
-}
-
-/** A request's session checks around its sending: checked when it is
- * asked, and again when it answers, so a session retired in between never
- * has its answer read or cached. During renewal, reads can confirm the
- * session; mutations wait for its own `/me`, even with cached authority. */
-export async function requestWith<T>(
-  sending: () => Promise<T>,
-  options: RequestOptions,
-): Promise<T> {
-  if (isRetired(options.token)) throw replacedSession();
-  if (
-    isRenewing(options.token) &&
-    !["GET", "HEAD", "OPTIONS"].includes(requestMethod(options))
-  )
-    throw new AppError(
-      "authentication",
-      "Your sign-in is being checked. Try again in a moment.",
-      true,
-      null,
-      "session_unconfirmed",
-    );
-  const answer = await sending();
-  if (isRetired(options.token)) throw replacedSession();
-  return answer;
 }
 
 async function send<T>(

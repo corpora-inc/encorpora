@@ -202,6 +202,7 @@ export async function signOut(to = "/") {
   const configuration = await authConfig();
   if (configuration.mode === "accounts") {
     if (configuration.clever) {
+      // Recovery must be available while the replacement /me is pending.
       const provider = await fetch("/api/v1/provider/sign-out", {
         method: "POST",
         credentials: "same-origin",

@@ -1,3 +1,4 @@
+import { requestFetch } from "./request-transport";
 import { EngagementClock } from "../../analytics/engagement";
 import { screenForPath } from "../../analytics/engagement";
 import type { Me } from "../../account/contracts";
@@ -185,7 +186,7 @@ export function startActivity(
     const takenAt = performance.now();
     const events = help.take(takenAt);
     try {
-      const response = await fetch(target.url, {
+      const response = await requestFetch(target.url, {
         method: "POST",
         keepalive: leaving,
         credentials: "same-origin",

@@ -1,3 +1,4 @@
+import { requestFetch } from "../lib/request-transport";
 import { PracticeControls } from "../features/practice/PracticeControls";
 import {
   practiceSettingsOptions,
@@ -1463,7 +1464,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       throw new Error("PDF downloads require the configured web application.");
     if (!learner || !token) return;
     const epoch = authEpoch.current;
-    const result = await fetch(
+    const result = await requestFetch(
       `/api/v1/learners/${learner.id}/books/${id}/download`,
       {
         method: "POST",

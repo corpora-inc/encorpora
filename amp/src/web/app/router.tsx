@@ -1,3 +1,4 @@
+import { requestFetch } from "../lib/request-transport";
 import { signupEntrySchema } from "../../parent-followup/contracts";
 import {
   createRootRoute,
@@ -370,7 +371,7 @@ async function retiredTrial({ search }: { search: Record<string, unknown> }) {
   }
   // A follow-up email's way back, now signed in: the follow-up is done.
   if (search.return === "free-practice")
-    void fetch("/api/v1/parent-followup/complete", {
+    void requestFetch("/api/v1/parent-followup/complete", {
       signal: AbortSignal.timeout(10000),
       method: "POST",
       credentials: "same-origin",

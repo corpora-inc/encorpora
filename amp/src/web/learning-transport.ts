@@ -1,3 +1,4 @@
+import { requestFetch, requestWith } from "./lib/request-transport";
 import { observeLearningRequest } from "./lib/learning-analytics";
 import { invoke } from "@tauri-apps/api/core";
 import { nativeRuntime } from "./native-runtime";
@@ -54,7 +55,17 @@ function nativeRequest(path: string, body?: unknown): NativeRequest {
     return { kind: kinds[action], learnerId, body };
   throw new Error("This action is unavailable in the native app.");
 }
-export async function learningRequest(
+export function learningRequest(
+  path: string,
+  token: string | null,
+  body?: unknown,
+) {
+  return requestWith(() => sendLearningRequest(path, token, body), {
+    token,
+    body,
+  });
+}
+async function sendLearningRequest(
   path: string,
   token: string | null,
   body?: unknown,
@@ -63,7 +74,7 @@ export async function learningRequest(
     const method = body === undefined ? "GET" : "POST";
     const observe = observeLearningRequest(path, method);
     try {
-      const response = await fetch(`/api/v1${path}`, {
+      const response = await requestFetch(`/api/v1${path}`, {
         method,
         headers: {
           "content-type": "application/json",

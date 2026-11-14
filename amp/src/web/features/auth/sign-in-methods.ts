@@ -1,3 +1,4 @@
+import { requestFetch } from "../../lib/request-transport";
 import { isProvider, providerNames, type Provider } from "./ProviderButtons";
 
 export type SignInMethod = Provider | "passkey" | "password";
@@ -9,7 +10,7 @@ export async function lookUpSignInMethods(
   email: string,
 ): Promise<SignInMethod[] | null> {
   try {
-    const response = await fetch("/api/auth/sign-in-methods", {
+    const response = await requestFetch("/api/auth/sign-in-methods", {
       method: "POST",
       credentials: "same-origin",
       signal: AbortSignal.timeout(8000),

@@ -1,7 +1,12 @@
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { z } from "zod";
 import * as recoveryHandlers from "../app-recovery";
-import { request } from "../api";
+import {
+  request,
+  requestWith,
+  requestFetch,
+  SessionUnconfirmedError,
+} from "../api";
 import { onSignedOut, resetAppRecoveryForTest } from "../app-recovery";
 import { queryClient, retireSession, sessionOptions } from "../query";
 import {
@@ -109,6 +114,9 @@ test.each([
   { method: "PUT", body: {} },
   { method: "patch", body: {} },
   { method: "DELETE" },
+  { method: "HEAD" },
+  { method: "OPTIONS" },
+  { method: "CUSTOM" },
 ])(
   "renewal refuses mutations before transport until confirmed: %j",
   async (options) => {
@@ -170,4 +178,119 @@ test("CP-2 r4 M1: a session replaced long ago stays replaced", async () => {
   await expect(
     request("/probe", z.unknown(), { token: parent.token }),
   ).rejects.toMatchObject({ code: "session_replaced" });
+});
+
+// Cookie-backed callers and callers with an omitted or unrelated bearer token
+// cannot opt out of the current session's renewal boundary.
+test.each([undefined, null, "unrelated-token"])(
+  "requestWith gates the current renewal with token %s",
+  async (token) => {
+    become(parent, next);
+    const send = vi.fn(async () => "saved");
+    const error = await requestWith(send, { token, method: "POST" }).catch(
+      (error: unknown) => error,
+    );
+    expect(error).toBeInstanceOf(SessionUnconfirmedError);
+    expect(error).toMatchObject({
+      code: "session_unconfirmed",
+      retry: true,
+      message: "One moment, confirming your sign-in",
+    });
+    expect(send).not.toHaveBeenCalled();
+    confirmSession(next.token);
+    await expect(requestWith(send, { token, method: "POST" })).resolves.toBe(
+      "saved",
+    );
+    expect(send).toHaveBeenCalledOnce();
+  },
+);
+
+test.each(["POST", "put", "PATCH", "DELETE", "HEAD", "OPTIONS", "CUSTOM"])(
+  "raw transport refuses %s then succeeds after confirmation",
+  async (method) => {
+    become(parent, next);
+    for (const headers of [
+      undefined,
+      { authorization: `Bearer ${next.token}` },
+    ]) {
+      await expect(
+        requestFetch("/api/v1/probe", { method, headers }),
+      ).rejects.toBeInstanceOf(SessionUnconfirmedError);
+    }
+    expect(fetch).not.toHaveBeenCalled();
+    await expect(requestFetch("/api/v1/me")).resolves.toBeInstanceOf(Response);
+    confirmSession(next.token);
+    await expect(
+      requestFetch("/api/v1/probe", { method }),
+    ).resolves.toBeInstanceOf(Response);
+    expect(fetch).toHaveBeenCalledTimes(2);
+  },
+);
+
+test("raw transport derives the method and bearer from a Request object", async () => {
+  become(parent, next);
+  const input = new Request("https://example.test/api/v1/probe", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${next.token}` },
+  });
+  await expect(requestFetch(input)).rejects.toBeInstanceOf(
+    SessionUnconfirmedError,
+  );
+  expect(fetch).not.toHaveBeenCalled();
+  confirmSession(next.token);
+  await expect(requestFetch(input)).resolves.toBeInstanceOf(Response);
+});
+
+test("legacy learning, purchase, PDF and keepalive transports preserve the typed refusal", async () => {
+  const { learningRequest } = await import("../../learning-transport");
+  const { purchaseFetch } = await import("../purchase-analytics");
+  const { downloadPdf } = await import("../pdf-download");
+  const { keepaliveFetch } = await import("../keepalive");
+  become(parent, next);
+  for (const send of [
+    () => learningRequest("/learners/synthetic/attempts", next.token, {}),
+    () => purchaseFetch("/api/v1/billing/checkout", { method: "POST" }),
+    () =>
+      downloadPdf({
+        path: "/probe.pdf",
+        token: next.token,
+        body: {},
+        name: "probe.pdf",
+      }),
+    () => keepaliveFetch("/api/v1/events", { method: "POST" }),
+  ]) {
+    await expect(send()).rejects.toBeInstanceOf(SessionUnconfirmedError);
+  }
+  expect(fetch).not.toHaveBeenCalled();
+  confirmSession(next.token);
+  await expect(
+    learningRequest("/learners/synthetic/attempts", next.token, {}),
+  ).resolves.toMatchObject({ ok: true });
+  await expect(
+    purchaseFetch("/api/v1/billing/checkout", { method: "POST" }),
+  ).resolves.toBeInstanceOf(Response);
+  await expect(
+    keepaliveFetch("/api/v1/events", { method: "POST" }),
+  ).resolves.toBeInstanceOf(Response);
+  expect(fetch).toHaveBeenCalledTimes(3);
+});
+
+test("the account SDK gates cookie-authenticated settings but keeps sign-out available", async () => {
+  const { accountClient } = await import("../../account-client");
+  become(parent, next);
+  const change = () =>
+    accountClient.changePassword({
+      currentPassword: "synthetic-old",
+      newPassword: "synthetic-new",
+    });
+  await expect(change()).rejects.toBeInstanceOf(SessionUnconfirmedError);
+  expect(fetch).not.toHaveBeenCalled();
+  await accountClient.signOut();
+  expect(fetch).toHaveBeenCalledOnce();
+  expect(String(vi.mocked(fetch).mock.calls[0]![0])).toContain(
+    "/api/auth/sign-out",
+  );
+  confirmSession(next.token);
+  await change();
+  expect(fetch).toHaveBeenCalledTimes(2);
 });

@@ -211,6 +211,7 @@ afterEach(() => {
   cleanup();
   queryClient.clear();
   vi.restoreAllMocks();
+  vi.unstubAllGlobals();
 });
 
 test("CP-2 r3 H2: a navigation still loading, or abandoned, changes nobody", async () => {
@@ -453,9 +454,7 @@ test("a pending renewal refuses staff invitations while keeping the editable dra
   expect(
     h.request.mock.calls.filter(([url]) => url.endsWith("/invites")),
   ).toEqual([]);
-  expect(
-    screen.getByText("Your sign-in is being checked. Try again in a moment."),
-  ).toBeTruthy();
+  expect(screen.getByText("One moment, confirming your sign-in")).toBeTruthy();
   expect(email.value).toBe("edited@example.test");
   await act(async () => {
     replacement.reject(new Error("replacement /me offline"));
@@ -463,6 +462,80 @@ test("a pending renewal refuses staff invitations while keeping the editable dra
   });
   expect(screen.queryByRole("textbox", { name: "Email" })).toBeNull();
   expect(document.querySelector("[data-space-blocked]")).toBeTruthy();
+});
+
+test("an edited draft survives refused submissions and submits after renewal confirms", async () => {
+  const { StaffScreen } = await import("../../features/school/StaffScreen");
+  seedSchool();
+  queryClient.setQueryData(staffOptions(auth, O).queryKey, []);
+  await mount(
+    `/school/${O}/staff`,
+    StaffScreen,
+    undefined,
+    "/school/$org/staff",
+  );
+  const email = screen.getByRole("textbox", {
+    name: "Email",
+  }) as HTMLInputElement;
+  fireEvent.change(email, { target: { value: "colleague@example.test" } });
+  const replacement = deferred();
+  h.request.mockImplementation((url: string) =>
+    url === "/me" ? replacement.promise : never(),
+  );
+  await act(async () => {
+    h.changed!({ ...auth, token: "new-pending" });
+    await pause();
+  });
+  expect(screen.getByRole("textbox", { name: "Email" })).toBe(email);
+  expect(email.value).toBe("colleague@example.test");
+  // Editing makes the submit closure read the replacement token; an old
+  // closure's retirement rejection must not be the only protection.
+  await act(async () => {
+    fireEvent.change(email, { target: { value: "edited@example.test" } });
+    fireEvent.submit(email.closest("form")!);
+    await pause();
+  });
+  expect(
+    h.request.mock.calls.filter(([url]) => url.endsWith("/invites")),
+  ).toEqual([]);
+  expect(screen.getByText("One moment, confirming your sign-in")).toBeTruthy();
+  expect(email.value).toBe("edited@example.test");
+  await act(async () => {
+    fireEvent.submit(email.closest("form")!);
+    await pause();
+  });
+  expect(
+    h.request.mock.calls.filter(([url]) => url.endsWith("/invites")),
+  ).toEqual([]);
+  h.request.mockImplementation(async (url: string) =>
+    url === "/me"
+      ? me
+      : url === `/school/orgs/${O}`
+        ? { org }
+        : url.includes("/classes")
+          ? { classes: [] }
+          : url.endsWith("/staff")
+            ? { staff: [] }
+            : {},
+  );
+  await act(async () => {
+    replacement.resolve(me);
+    await pause();
+  });
+  expect(screen.getByRole("textbox", { name: "Email" })).toBe(email);
+  expect(email.value).toBe("edited@example.test");
+  await act(async () => {
+    fireEvent.submit(email.closest("form")!);
+    await pause();
+  });
+  const invites = h.request.mock.calls.filter(([url]) =>
+    url.endsWith("/invites"),
+  );
+  expect(invites).toHaveLength(1);
+  expect(invites[0]![2]).toMatchObject({
+    token: "new-pending",
+    body: { email: "edited@example.test", role: "teacher" },
+  });
 });
 
 test("CP-2 r4 M1: cancelling the session check during a renewal leaves the old token retired", async () => {
@@ -534,4 +607,112 @@ test("CP-2 r3 M1: an old loader that resumes after a new session neither asks no
   expect(
     queryClient.getQueryData(["account", auth.accountId, "pathways", "pip"]),
   ).toBeUndefined();
+});
+
+test("the real LegacyApp consent route refuses withdrawal until replacement /me confirms", async () => {
+  const { isConfirmed, isRenewing } =
+    await import("../../lib/session-generation");
+  const consent = {
+    available: true,
+    consentActive: true,
+    notice: null,
+    noticeDigest: null,
+    confirmationDelayHours: 24,
+    request: {
+      id: "synthetic-request",
+      phase: "active",
+      createdAt: "2026-11-14T00:00:00Z",
+      expiresAt: "2026-11-15T00:00:00Z",
+      confirmationAfter: null,
+      delivery: "accepted",
+    },
+  };
+  const withdrawn = vi.fn();
+  const network = vi.fn(async (url: string, init?: RequestInit) => {
+    if (url === "/api/v1/catalog")
+      return Response.json({
+        templates: [],
+        lessons: [],
+        skills: [],
+        mode: "synthetic",
+      });
+    if (url === "/api/v1/auth-config")
+      return Response.json({
+        mode: "accounts",
+        passwords: true,
+        providers: [],
+      });
+    if (url.includes("glossary")) return Response.json({ entries: [] });
+    if (url === "/api/v1/consent") return Response.json(consent);
+    if (url === "/api/v1/family/consent/withdraw") {
+      withdrawn(init);
+      return Response.json({});
+    }
+    if (url.startsWith("/api/v1/events"))
+      return new Response(null, { status: 204 });
+    throw new Error(`Unexpected synthetic request ${url}`);
+  });
+  vi.stubGlobal("fetch", network);
+  const consentMe = {
+    ...me,
+    consent: { status: "active", method: null },
+    family: {
+      ...me.family,
+      consent: {
+        status: "active",
+        policyVersion: null,
+        recordedAt: null,
+        withdrawnAt: null,
+      },
+      learners: [],
+      retained: {
+        identity: "",
+        financial: "",
+        backups: "",
+        privacyAuditDays: 0,
+      },
+    },
+  };
+  queryClient.setQueryData(meOptions(auth).queryKey, consentMe as never);
+  const { LegacyApp } =
+    await vi.importActual<typeof import("../LegacyApp")>("../LegacyApp");
+  await mount("/consent", LegacyApp);
+  const button = screen.getByRole("button", { name: "Withdraw consent" });
+  const replacement = deferred();
+  h.request.mockImplementation((url: string) =>
+    url === "/me" ? replacement.promise : never(),
+  );
+  await act(async () => {
+    h.changed!({ ...auth, token: "consent-pending" });
+    await pause();
+  });
+  expect(isConfirmed("consent-pending")).toBe(false);
+  expect(isRenewing("consent-pending")).toBe(true);
+  expect(queryClient.getQueryState(meOptions(auth).queryKey)?.fetchStatus).toBe(
+    "fetching",
+  );
+  expect(document.querySelector("[data-space-blocked]")).toBeNull();
+  await act(async () => {
+    fireEvent.click(button);
+    await pause();
+  });
+  expect(withdrawn).not.toHaveBeenCalled();
+  expect(screen.getByText("One moment, confirming your sign-in")).toBeTruthy();
+  await act(async () => {
+    replacement.resolve(consentMe);
+    await pause();
+  });
+  expect(isConfirmed("consent-pending")).toBe(true);
+  await act(async () => {
+    fireEvent.click(screen.getByRole("button", { name: "Withdraw consent" }));
+    await pause();
+  });
+  expect(withdrawn).toHaveBeenCalledOnce();
+  expect(withdrawn.mock.calls[0]![0]).toMatchObject({
+    method: "POST",
+    body: "{}",
+  });
+  expect(
+    new Headers(withdrawn.mock.calls[0]![0].headers).get("authorization"),
+  ).toBe("Bearer consent-pending");
 });
