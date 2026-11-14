@@ -63,6 +63,11 @@
 .kidName {
   grid-area: name;
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  /* 44 px to touch, whatever the name's length. */
+  min-height: 44px;
+  box-sizing: border-box;
   justify-self: start;
   min-width: 0;
   max-width: 100%;
@@ -75,12 +80,6 @@
   line-height: 1.25;
   overflow-wrap: anywhere;
   text-decoration: none;
-}
-/* Small to look at, 44 px to touch. */
-.kidName::after {
-  content: "";
-  position: absolute;
-  inset: -6px -4px;
 }
 .kidName:hover {
   background: var(--color-surface-hover);
