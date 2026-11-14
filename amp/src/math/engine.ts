@@ -26,6 +26,7 @@ import { historicalEqualFactorFamily } from "./multiselect-number-practice";
 import { sceneCapabilitiesIn } from "./scene/capability";
 import { buildCountObjects } from "./count-objects-variants";
 import {
+  generatingVersion,
   versionGatedAxes,
   withClientFigures,
   withTemplateVersion,
@@ -440,6 +441,7 @@ import { clauseVariantProblem } from "./clause-gap";
 import { createHash } from "node:crypto";
 import { makeTenHops } from "./scene/explanations";
 import { mathLabel, polish } from "./polish";
+import { normalizeTrailingMath } from "../content/prompt-structure";
 import type {
   GeneratedProblem,
   ProblemVariant,
@@ -1050,6 +1052,24 @@ export function generateProblemFor(
 }
 /** Apply the legacy count copy-edit without changing authored algebra notation. */
 export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
+  const formatted = polishAuthoredProblem(problem);
+  const version = generatingVersion();
+  const current = templateById.get(problem.public.templateId)?.version;
+  // Frozen versions reproduce their original payloads. The shared renderers
+  // apply display formatting to saved text without rewriting its evidence.
+  if (version !== null && current !== undefined && version < current)
+    return formatted;
+  return {
+    ...formatted,
+    public: {
+      ...formatted.public,
+      prompt: normalizeTrailingMath(formatted.public.prompt),
+    },
+    explanation: formatted.explanation.map(normalizeTrailingMath),
+    hint: normalizeTrailingMath(formatted.hint),
+  };
+}
+function polishAuthoredProblem(problem: GeneratedProblem): GeneratedProblem {
   if (problem.variant?.axes?.clause) return problem;
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
