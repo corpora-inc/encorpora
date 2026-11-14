@@ -42,7 +42,7 @@ const WIDTHS =
     : [320, 390, 768, 1280];
 const SCHEMES = ["light", "dark"] as const;
 const PASSWORD = "design pass persona passphrase";
-/** `--only day0,answer,level,family,live,served,levelmode`: some parts. */
+/** `--only day0,answer,level,family,live,served,levelmode,maps`: parts. */
 const onlyArg = process.argv.indexOf("--only");
 const ONLY =
   onlyArg > 0 ? new Set(process.argv[onlyArg + 1]!.split(",")) : null;
@@ -554,6 +554,83 @@ if (part("levelmode")) {
     .catch(() =>
       fail("level mode", `its editor address stays at ${page.url()}`),
     );
+  await context.close();
+}
+
+// 8. Maps (CP-5 #4, revised): among measured children a child not started
+// is a calm pill and the axis stays fitted to the measured; before anyone
+// has answered, every row is a "?" across the whole scale.
+if (part("maps")) {
+  for (const width of [390, 1280])
+    for (const scheme of SCHEMES) {
+      const context = await reader(width, scheme);
+      await signIn(context, "family@personas.amp.test");
+      const me = await api<{ learners: { id: string; name: string }[] }>(
+        context.request,
+        "GET",
+        "/me",
+      );
+      if (!me.learners.some((learner) => learner.name === "Sol"))
+        await api(context.request, "POST", "/learners", {
+          name: "Sol",
+          birthYear: new Date().getFullYear() - 7,
+        });
+      const page = await context.newPage();
+      await page.goto(`${origin}/family`, { waitUntil: "load" });
+      await page.getByRole("link", { name: "Map" }).first().click();
+      await page
+        .locator("[data-level-not-started]")
+        .first()
+        .waitFor({ timeout: 30000 });
+      await settle(page);
+      const where = `family map, one not started ${width} ${scheme}`;
+      const state = await page.evaluate(() => {
+        const sections = [...document.querySelectorAll("section")];
+        const sol = sections.find((section) =>
+          section.querySelector("h2")?.textContent?.includes("Sol"),
+        );
+        const labels = [
+          ...document.querySelectorAll("[data-level-axis-label]"),
+        ].map((label) => label.textContent);
+        return {
+          pill: !!sol?.querySelector("[data-level-not-started]"),
+          bar: !!sol?.querySelector("[data-level-bar]"),
+          others: document.querySelectorAll(
+            "[data-level-bar]:not([data-unmeasured])",
+          ).length,
+          first: labels[0],
+          last: labels.at(-1),
+        };
+      });
+      if (!state.pill) fail(where, "Sol has no Not started pill");
+      if (state.bar) fail(where, "Sol has a bar on the others' scale");
+      if (!state.others) fail(where, "the measured children lost their bars");
+      if (state.first === "K" && state.last === "Precalc")
+        fail(where, "the axis spans the whole curriculum for one new child");
+      await check(page, where, "other");
+      await page.screenshot({
+        path: join(shots, `family-map-not-started-${width}-${scheme}.png`),
+        fullPage: true,
+      });
+      await context.close();
+    }
+  const context = await reader(390, "light");
+  await signIn(context, "parent-new@personas.amp.test");
+  const page = await context.newPage();
+  await page.goto(`${origin}/family`, { waitUntil: "load" });
+  await page.getByRole("link", { name: "Map" }).first().click();
+  await page.locator("[data-unmeasured]").first().waitFor({ timeout: 30000 });
+  await settle(page);
+  const state = await page.evaluate(() => ({
+    unmeasured: document.querySelectorAll("[data-unmeasured]").length,
+    pills: document.querySelectorAll("[data-level-not-started]").length,
+  }));
+  if (state.unmeasured < 2 || state.pills)
+    fail("family map, nobody started", JSON.stringify(state));
+  await page.screenshot({
+    path: join(shots, "family-map-nobody-started-390.png"),
+    fullPage: true,
+  });
   await context.close();
 }
 

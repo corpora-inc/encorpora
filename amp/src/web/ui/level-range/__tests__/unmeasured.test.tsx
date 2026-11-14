@@ -142,3 +142,22 @@ test("one predicate decides measured, for every reader", async () => {
   // A level from a server that never sends the count stored none unanswered.
   expect(measured({})).toBe(true);
 });
+
+test("among measured learners, one not started is a pill, never a bar", () => {
+  const { container } = render(
+    <LevelRows
+      overall={null}
+      areas={[]}
+      scale={{ lo: 3, hi: 7 }}
+      notStarted="Not started"
+    />,
+  );
+  expect(container.querySelector("[data-level-bar]")).toBeNull();
+  const pill = container.querySelector("[data-level-not-started]")!;
+  expect(pill.textContent).toBe("?Not started");
+  expect(container.querySelector("li")?.getAttribute("aria-label")).toBe(
+    "Overall: Not started",
+  );
+  // The row keeps a bar's height: the pill sits in the bar's own box.
+  expect(pill.className).toMatch(/bar/);
+});

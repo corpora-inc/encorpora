@@ -16,6 +16,7 @@ import {
   fitScale,
   LevelAxis,
   LevelBar,
+  LevelNotStarted,
   LevelRows,
   likelyRange,
   type Estimate,
@@ -58,14 +59,17 @@ function place(student: MapStudent, lens: string): Placed {
 }
 
 /** The scale for a set of placed rows: every measured row's whole likely
- * range and every own-grade stripe. While anyone on it is not measured yet,
- * the whole curriculum: their "?" means anywhere from K to Precalculus, so
- * the axis under it must say so (Q-201, CP-5 #4). */
+ * range and every measured learner's own-grade stripe. Before anyone is
+ * measured, the whole curriculum, each row a "?" across it. Once someone is,
+ * the scale fits them: a learner not started yet shows a pill, never a bar,
+ * so one new student never flattens everyone else's (CP-5 #4). */
 export function placedScale(
   rows: readonly Pick<Placed, "estimate" | "estimated" | "student">[],
   minSpan: number,
 ): RangeScale {
-  if (!rows.length || rows.some((row) => !row.estimate)) return WHOLE_SCALE;
+  const measured = rows.filter((row) => row.estimate);
+  if (!measured.length) return WHOLE_SCALE;
+  rows = measured;
   return fitScale(
     rows.flatMap((row) =>
       row.estimate && (!row.estimated || row.estimate.sd <= UNKNOWN_SD)
@@ -133,6 +137,9 @@ export function ClassMap({
   // its band against an end, with its dot inside.
   const scale = useMemo(() => placedScale(placed, 4), [placed]);
   const starting = placed.every((row) => row.estimated);
+  // Before anyone has answered, each row is a "?" across the whole scale;
+  // after, a learner not started yet is a pill on a scale fitted to the rest.
+  const nobody = placed.every((row) => !row.estimate);
   const sort = parseSort(search.sort);
   const byName = sort?.column === "student";
   const direction = sort?.direction ?? (byName ? "ascending" : "descending");
@@ -268,19 +275,24 @@ export function ClassMap({
               className={styles.bar}
               aria-label={`${row.student.first}: ${reading(row)}`}
             >
-              <LevelBar
-                estimate={row.estimate}
-                scale={scale}
-                band={
-                  row.student.reference
-                    ? [row.student.reference.from, row.student.reference.to]
-                    : null
-                }
-                estimated={row.estimated}
-              />
+              {!row.estimate && !nobody ? (
+                <LevelNotStarted label={NOT_STARTED} />
+              ) : (
+                <LevelBar
+                  estimate={row.estimate}
+                  scale={scale}
+                  band={
+                    row.student.reference
+                      ? [row.student.reference.from, row.student.reference.to]
+                      : null
+                  }
+                  estimated={row.estimated}
+                />
+              )}
             </span>
             <span role="cell" className={styles.numbers}>
-              {!row.estimate || row.estimated ? (
+              {!row.estimate && !nobody ? null : !row.estimate ||
+                row.estimated ? (
                 <span className={styles.notYet}>
                   {!row.estimate
                     ? "Not yet"
@@ -301,6 +313,8 @@ export function ClassMap({
   );
 }
 
+/** A learner with no answers among measured ones, in place of a bar. */
+const NOT_STARTED = "Not started";
 /** Up to this many learners, the map shows each one whole. */
 const SMALL_CLASS = 6;
 /** The curriculum's order of areas, for each learner's rows. */
@@ -357,6 +371,7 @@ function SmallClassMap({
         })
       : [],
   }));
+  const nobody = learners.every((learner) => !learner.overall.estimate);
   const scale: RangeScale = placedScale(
     learners.flatMap((learner) => [
       learner.overall,
@@ -407,6 +422,9 @@ function SmallClassMap({
             </div>
             <LevelRows
               overall={overall.estimate}
+              notStarted={nobody ? undefined : NOT_STARTED}
+              // A pill needs no scale under it.
+              axis={!!overall.estimate || nobody}
               overallEstimated={overall.estimated}
               areas={learner.areas}
               scale={scale}

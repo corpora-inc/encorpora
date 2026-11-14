@@ -11,7 +11,7 @@ export {
   type RowLinkProps,
   WHOLE_SCALE,
 } from "./LevelRange";
-export { LevelAxis, LevelBar } from "./LevelBar";
+export { LevelAxis, LevelBar, LevelNotStarted } from "./LevelBar";
 export { LevelPath, type PathPoint } from "./LevelPath";
 export {
   fitScale,
