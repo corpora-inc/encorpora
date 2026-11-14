@@ -33,10 +33,20 @@ const server = await preview({
 const origin = "http://127.0.0.1:4850";
 const browser = await secureChromium(rawChromium).launch();
 type Recorded = { event: string; props: Record<string, unknown> };
-async function fixture(context: BrowserContext, failCss = false) {
+async function fixture(
+  context: BrowserContext,
+  failCss = false,
+  failAsset?: (pathname: string, documents: number) => boolean,
+) {
   const events: Recorded[] = [];
   const receivedIds = new Set<string>();
-  const state = { failCss, documents: 0, events };
+  const state = {
+    failCss,
+    failAsset,
+    documents: 0,
+    events,
+    aborted: [] as string[],
+  };
   await context.route("**/*", async (route) => {
     const request = route.request(),
       url = new URL(request.url());
@@ -65,6 +75,10 @@ async function fixture(context: BrowserContext, failCss = false) {
     if (url.pathname === "/api/auth/get-session")
       return route.fulfill({ json: null });
     if (url.pathname.startsWith("/api/")) return route.fulfill({ status: 204 });
+    if (state.failAsset?.(url.pathname, state.documents)) {
+      state.aborted.push(url.pathname);
+      return route.abort();
+    }
     if (
       state.failCss &&
       /\/assets\/SignInScreen-[^/]+\.css$/.test(url.pathname)
@@ -136,7 +150,143 @@ async function injectChunk(
       if (!/Execution context was destroyed/.test(String(error))) throw error;
     });
 }
-try {
+// Real imports exercise the route loader's rejection path, including any reload
+// it might attempt independently of Vite and the application's recovery guard.
+async function verifyRouteImports() {
+  const failures: unknown[] = [];
+  for (const mode of [
+    "payment",
+    "recent",
+    "mixed",
+    "input",
+    "storage",
+    "plain",
+  ] as const) {
+    const context = await browser.newContext({
+      viewport: { width: 390, height: 900 },
+    });
+    try {
+      const state = await fixture(context, false, (pathname, documents) => {
+        if (mode === "payment")
+          return /\/assets\/LegacyApp-[^/]+\.js$/.test(pathname);
+        if (mode === "input")
+          return /\/assets\/AccessScreen-[^/]+\.js$/.test(pathname);
+        if (mode === "mixed" && documents === 1)
+          return /\/assets\/SignInScreen-[^/]+\.css$/.test(pathname);
+        return /\/assets\/SignInScreen-[^/]+\.js$/.test(pathname);
+      });
+      if (mode === "recent")
+        await context.addInitScript(() => {
+          sessionStorage.setItem("amp.release-reload", String(Date.now()));
+        });
+      if (mode === "storage")
+        await context.addInitScript(() => {
+          Object.defineProperty(window, "sessionStorage", {
+            get() {
+              throw new DOMException("disabled", "SecurityError");
+            },
+          });
+        });
+      const page = await context.newPage();
+      await page.goto(
+        `${origin}${
+          mode === "payment"
+            ? "/?billing=processing&purchase=00000000-0000-4000-8000-000000000001"
+            : "/sign-up"
+        }`,
+      );
+      if (mode === "input") {
+        const input = page.locator('input[type="email"]');
+        await input.fill("synthetic@example.test");
+        // Navigate through browser history without replacing the document.
+        // The guard must protect edits even after the control unmounts.
+        await page.evaluate(() => {
+          history.pushState({}, "", "/access");
+          dispatchEvent(new PopStateEvent("popstate"));
+        });
+      }
+      // Allow an independent reload to settle before checking the count.
+      await page.waitForTimeout(2500);
+      assert(
+        state.aborted.some((path) => path.endsWith(".js")),
+        `${mode}: aborted real JS`,
+      );
+      if (mode === "mixed")
+        assert(state.aborted.some((path) => path.endsWith(".css")));
+      assert.equal(
+        state.documents,
+        mode === "mixed" || mode === "plain" ? 2 : 1,
+        `${mode}: guarded document count`,
+      );
+      await page.getByRole("button", { name: "Reload", exact: true }).waitFor();
+      // Storage exceptions must not replace the chunk error with "Try again".
+      assert.equal(
+        await page
+          .getByRole("button", { name: "Try again", exact: true })
+          .count(),
+        0,
+      );
+      await page
+        .locator(".app-loading-body")
+        .getByRole("button", { name: "Reload", exact: true })
+        .waitFor();
+      await checkGeometry(page);
+      await diagnostics(page);
+      const blocked = mode === "mixed" || mode === "plain" ? "recent" : mode;
+      assert(
+        state.events.some(
+          (event) =>
+            event.props.code === "chunk_reload_blocked" &&
+            event.props.reloadBlock === blocked,
+        ),
+        `${mode}: blocked diagnostic`,
+      );
+      assert.equal(
+        state.events.filter((event) => event.props.code === "chunk_reload")
+          .length,
+        mode === "mixed" || mode === "plain" ? 1 : 0,
+      );
+      assert.doesNotMatch(
+        JSON.stringify(state.events),
+        /synthetic@example|00000000-0000|stack|message|https?:/,
+      );
+      await page.screenshot({ path: join(shots, `route-js-${mode}.png`) });
+      if (mode === "input") {
+        await page.goBack();
+        const input = page.locator('input[type="email"]');
+        await input.waitFor();
+        assert.equal(
+          await input.inputValue(),
+          "synthetic@example.test",
+          "draft survives failed route and Back",
+        );
+        assert.equal(state.documents, 1);
+      } else {
+        state.failAsset = undefined;
+        await page.getByRole("button", { name: "Reload", exact: true }).click();
+        if (mode === "payment")
+          await page
+            .getByRole("button", { name: "Reload", exact: true })
+            .waitFor({ state: "hidden" });
+        else await page.locator('input[type="email"]').waitFor();
+        assert.equal(
+          state.documents,
+          mode === "mixed" || mode === "plain" ? 3 : 2,
+          `${mode}: manual recovery`,
+        );
+      }
+      console.log(`real route import / ${mode}: passed`);
+    } catch (error) {
+      console.error(`real route import / ${mode}: FAILED`, error);
+      failures.push(error);
+    } finally {
+      await context.close();
+    }
+  }
+  if (failures.length)
+    throw new AggregateError(failures, "Real route import regressions");
+}
+async function verifyOtherRecovery() {
   // A real failed Vite CSS chunk reloads once and then settles on calm recovery.
   for (const colorScheme of ["light", "dark"] as const)
     for (const width of [320, 390, 768, 1280]) {
@@ -351,6 +501,11 @@ try {
       await context.close();
     }
   }
+}
+try {
+  await verifyRouteImports();
+  if (!process.argv.includes("--route-imports-only"))
+    await verifyOtherRecovery();
 } finally {
   await browser.close();
   await new Promise<void>((resolve) =>

@@ -5,7 +5,6 @@ import {
   createRouter,
   createBrowserHistory,
   createMemoryHistory,
-  lazyRouteComponent,
   Outlet,
   redirect,
   retainSearchParams,
@@ -13,6 +12,7 @@ import {
   useRouter,
   useRouterState,
 } from "@tanstack/react-router";
+import { lazyRouteComponent } from "../lib/lazy-route-component";
 import { z } from "zod";
 import { useQuery } from "@tanstack/react-query";
 import { lazy, Suspense, useEffect, useRef } from "react";
@@ -410,9 +410,7 @@ const home = createRoute({
     setPitchShown(shown);
     if (!shown) await legacy.preload?.();
     else {
-      // The lazy screen's own chunk too: rendering it before it has loaded
-      // suspends inside TanStack's Lazy with `use()`, which React then
-      // reports as a conditional use() once it resolves.
+      // Preload the route component alongside its data before showing the pitch.
       const [{ loadPitch }] = await Promise.all([
         import("../features/pitch/PitchScreen"),
         pitch.preload?.(),
