@@ -1,3 +1,4 @@
+import { TimeScreen } from "../school/classes/TimeScreen";
 import { familyDisplayName } from "../spaces/resolve";
 import { useQueries, useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
@@ -242,6 +243,17 @@ export function FamilyMapScreen() {
  */
 export function FamilyTimeScreen() {
   const place = useFamilyPlace();
+  const host = useFamilyHost(place);
+  // A family with its own class: the class's Time for the family's own
+  // children, with its range, measure, each child's days and (for a class
+  // wholly the family's) its export.
+  if (host) return <TimeScreen host={host} />;
+  return <ChildrenTime place={place} />;
+}
+
+/** Time for a family whose children are all hosted elsewhere: each child's
+ * weeks, from their own record. */
+function ChildrenTime({ place }: { place: FamilyPlace }) {
   const { data, family } = place;
   const children = data?.children ?? [];
   const records = useRecords(place, children);

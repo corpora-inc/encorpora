@@ -61,7 +61,7 @@ const CARRIED: Record<string, readonly string[]> = {
   map: ["skill", "lens", "sort"],
   "reports/grades": ["term", "year", "student"],
   reports: ["term", "year", "student"],
-  time: ["week", "from", "to", "student"],
+  time: ["week", "to", "sort"],
   people: ["devices"],
   settings: [],
 };
@@ -220,15 +220,9 @@ export function familyClassTarget({
       familyPath(family, `kids/${learner}`),
       withOpen(pick(search, ["skill"]), rest),
     );
-  // One child's view, named by their roster person: their time is their
-  // page's weeks; their card prints on its own.
+  // One child's card, named by their roster person, prints on its own.
   const selected =
     typeof search.student === "string" ? people.get(search.student) : undefined;
-  if (target.leaf === "time" && selected)
-    return viaReturn(
-      familyPath(family, `kids/${selected}`),
-      withOpen({}, rest),
-    );
   if (target.cards && typeof search.student === "string" && selected)
     return viaReturn(familyPath(family, "cards"), {
       student: search.student,
@@ -247,12 +241,9 @@ export function familyClassTarget({
   const opens: Search = {
     ...(devices && target.leaf !== "settings" ? { devices: 1 } : {}),
     ...(target.leaf.startsWith("workbooks") ? workbookIdentity(search) : {}),
-    // A time range's start: a day, typed (a bare `from` is a return).
-    ...(target.leaf === "time" &&
-    typeof search.from === "string" &&
-    DAY.test(search.from)
-      ? { from: search.from }
-      : {}),
+    // Time's own working view: its range, its measure and one of the
+    // family's own children's days, typed (a bare `from` is a return).
+    ...(target.leaf === "time" ? timeView(search, people) : {}),
   };
   const result = viaReturn(
     familyPath(family, target.leaf),
@@ -274,6 +265,24 @@ const SETTINGS_SECTIONS = new Set([
 ]);
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
+
+/** Time's working view in an old address: the range (`period`), the measure
+ * (`chart=problems`), one of the family's own children's days (`student`,
+ * their roster person) and a typed range start. */
+export function timeView(search: Search, people: PersonMap): Search {
+  return {
+    ...(["week", "month", "term"].includes(String(search.period))
+      ? { period: String(search.period) }
+      : {}),
+    ...(search.chart === "problems" ? { chart: "problems" } : {}),
+    ...(typeof search.student === "string" && people.has(search.student)
+      ? { student: search.student }
+      : {}),
+    ...(typeof search.from === "string" && DAY.test(search.from)
+      ? { from: search.from }
+      : {}),
+  };
+}
 
 /** A workbook's own identity in an old address: the set printed on a day
  * (its QR code names it), and a stack's day, minutes, paper and children. */

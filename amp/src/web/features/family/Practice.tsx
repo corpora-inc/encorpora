@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Experience } from "../../../schools/classroom-contracts";
 import { AppError } from "../../lib/AppError";
 import { buttonClass } from "../../ui/Button";
-import { Segmented } from "../../ui/Segmented";
+import { Button } from "../../ui/Button";
+import { OptionList } from "./OptionList";
+import switches from "../../ui/Switch.module.css";
 import { Switch } from "../../ui/Switch";
 import { Toast } from "../../ui/Toast";
 import {
@@ -49,6 +51,19 @@ const DEVICES: { value: Devices; label: string; detail: string }[] = [
   },
 ];
 
+/** A setting's saved value didn't load: said in place, with the way to try
+ * again, and logged. Never a control showing a value that isn't known. */
+function ReadFailed({ what, onRetry }: { what: string; onRetry: () => void }) {
+  return (
+    <div className={styles.readFailed} role="alert" data-read-failed="">
+      <p>{what} didn’t load. Check your connection, then try again.</p>
+      <Button variant="secondary" onClick={onRetry}>
+        Try again
+      </Button>
+    </div>
+  );
+}
+
 const failed = (failure: unknown, fallback: string) =>
   failure instanceof AppError && failure.message ? failure.message : fallback;
 
@@ -68,6 +83,13 @@ export function FamilyPracticeDefaults({ place }: { place: FamilyPlace }) {
   });
   const write = useExperienceWrite(place.session, scope);
   const [error, setError] = useState("");
+  useEffect(() => {
+    if (experience.isError)
+      console.error(
+        "The family's practice settings didn't load",
+        experience.error,
+      );
+  }, [experience.isError, experience.error]);
   if (!own) return null;
   const shared = !!place.data?.teachingPlace;
   const data = experience.data;
@@ -104,29 +126,45 @@ export function FamilyPracticeDefaults({ place }: { place: FamilyPlace }) {
           Open the group’s settings
         </Link>
       ) : (
-        // Both groups hold their size while the settings load: nothing
-        // below them moves when they arrive.
-        <div className={styles.form} aria-busy={!data || undefined}>
-          <div>
-            <h3 className={styles.label}>Grade levels</h3>
-            <Segmented
-              label="Grade levels"
-              options={LEVELS}
-              value={levels}
-              disabled={!editable || write.isPending}
-              onChange={(value) => set("levels", value)}
+        <div
+          className={styles.form}
+          aria-busy={experience.isPending || undefined}
+          data-practice-choices=""
+        >
+          {experience.isError ? (
+            // The saved choices aren't known: no option claims to be one.
+            <ReadFailed
+              what="Your practice settings"
+              onRetry={() => void experience.refetch()}
             />
-          </div>
-          <div>
-            <h3 className={styles.label}>Devices</h3>
-            <Segmented
-              label="Devices"
-              options={DEVICES}
-              value={devices}
-              disabled={!editable || write.isPending}
-              onChange={(value) => set("deviceMode", value)}
-            />
-          </div>
+          ) : (
+            <>
+              <div>
+                <h3 className={styles.label} id="practice-levels">
+                  Grade levels
+                </h3>
+                <OptionList
+                  label="Grade levels"
+                  options={LEVELS}
+                  value={levels}
+                  disabled={!editable || write.isPending}
+                  onChange={(value) => set("levels", value)}
+                />
+              </div>
+              <div>
+                <h3 className={styles.label} id="practice-devices">
+                  Devices
+                </h3>
+                <OptionList
+                  label="Devices"
+                  options={DEVICES}
+                  value={devices}
+                  disabled={!editable || write.isPending}
+                  onChange={(value) => set("deviceMode", value)}
+                />
+              </div>
+            </>
+          )}
         </div>
       )}
       <Toast message={error} onDismiss={() => setError("")} />
@@ -170,17 +208,47 @@ export function ChildPracticeSettings({
     }
   };
   const data = settings.data;
+  useEffect(() => {
+    if (settings.isError)
+      console.error(
+        `${child.name}'s practice settings didn't load`,
+        settings.error,
+      );
+  }, [settings.isError, settings.error, child.name]);
   return (
     <>
       <div className={styles.setting} data-child-practice="">
         <div className={styles.settingText} style={{ gridColumn: "1 / -1" }}>
-          <Switch
-            label="Working together"
-            detail={`A grown-up is helping ${child.name} with these problems`}
-            checked={data?.workingTogether ?? false}
-            disabled={!data || busy}
-            onChange={(on) => void change({ kind: "together", enabled: on })}
-          />
+          {settings.isError ? (
+            // Whether a grown-up is working with them isn't known: no switch
+            // says it is or isn't.
+            <ReadFailed
+              what={`${child.name}’s practice settings`}
+              onRetry={() => void settings.refetch()}
+            />
+          ) : !data ? (
+            // Until it is read, its place is held and no state is claimed.
+            <div className={switches.row} aria-busy="true" data-switch-wait="">
+              <span className={switches.text}>
+                <span>Working together</span>
+                <small className={switches.detail}>
+                  A grown-up is helping {child.name} with these problems
+                </small>
+              </span>
+              <span
+                className={switches.track}
+                style={{ visibility: "hidden" }}
+              />
+            </div>
+          ) : (
+            <Switch
+              label="Working together"
+              detail={`A grown-up is helping ${child.name} with these problems`}
+              checked={data.workingTogether}
+              disabled={busy}
+              onChange={(on) => void change({ kind: "together", enabled: on })}
+            />
+          )}
         </div>
       </div>
       {data?.focusSkillId && (

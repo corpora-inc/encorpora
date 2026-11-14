@@ -1,7 +1,7 @@
 import { EntityLink } from "../../../nav/links";
 import { ScreenTitle } from "../../../ui/ScreenTitle";
 import { useQuery } from "@tanstack/react-query";
-import { Link, useParams } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { useMemo, useRef, useState, type CSSProperties } from "react";
 import {
   timePeriods,
@@ -29,7 +29,7 @@ import {
   type HeatMeasure,
 } from "../practice/heat";
 import { useStaffSession } from "./api";
-import { ClassFrame } from "./ClassFrame";
+import { useClassHost, wholeClass, type ClassHost } from "./host";
 import { TimeDetail } from "./ProgressRecord";
 import { HelpUsed } from "./HelpUsed";
 import {
@@ -255,10 +255,14 @@ function DaySheet({
   student,
   returnFocus,
   onClose,
+  record,
 }: {
   place: Place;
   period: TimePeriod;
   student: string | undefined;
+  /** The person's own page in this host, if it has one (a family's child
+   * page): their record opens there. */
+  record?: (person: string) => string | null;
   returnFocus: string | undefined;
   onClose: () => void;
 }) {
@@ -295,12 +299,22 @@ function DaySheet({
       ) : (
         <div className={styles.evidence}>
           <TimeDetail time={data} who={data.student.name} />
-          <EntityLink
-            entity={{ kind: "student", id: data.student.id }}
-            className={buttonClass("quiet", "", "start")}
-          >
-            Open {data.student.first}’s record
-          </EntityLink>
+          {record?.(data.student.id) ? (
+            <Link
+              to="/$"
+              params={{ _splat: record(data.student.id)! }}
+              className={buttonClass("quiet", "", "start")}
+            >
+              Open {data.student.first}’s page
+            </Link>
+          ) : (
+            <EntityLink
+              entity={{ kind: "student", id: data.student.id }}
+              className={buttonClass("quiet", "", "start")}
+            >
+              Open {data.student.first}’s record
+            </EntityLink>
+          )}
         </div>
       )}
     </Sheet>
@@ -309,21 +323,37 @@ function DaySheet({
 
 /** Minutes per student over days or weeks, as one grid of one hue: who's working
  * and when reads at a glance, with the numbers a hover away and in the export. */
-export function TimeScreen() {
-  const place = useParams({ from: "/school/$org/classes/$class/time" });
+export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
+  // The class's own Time, or a host's (a family's own children, in its
+  // words): the same range, measure, day sheet and export.
+  const host = useClassHost(given);
+  const place = host.place;
   const session = useStaffSession();
   const [search, set, close] = useClassSearch();
   const period = timePeriods.find((entry) => entry === search.period) ?? "term";
   const measure = measureOf(search.chart);
   const time = useQuery(timeOptions(session, place, period));
-  // A family-kind class reached at its class address is a tutoring group: a
-  // parent's own family class opens at /family, so this is the classroom
-  // composition, the whole group, in a classroom's words.
-  const family = false;
+  // A host's people only, and their totals recomputed from them: never a
+  // class total with someone else's minutes in it.
+  const family = !!given && given.words.learner !== "student";
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
-  const data = time.data;
+  const raw = time.data;
+  const data = useMemo(
+    () =>
+      raw && host.keep
+        ? { ...raw, students: raw.students.filter((row) => host.keep!(row.id)) }
+        : raw,
+    [raw, host.keep],
+  );
+  // What reads the whole class (where its time went, help used) and its
+  // export: only where this page shows the whole class.
+  const whole = wholeClass(
+    host,
+    data?.students.length ?? 0,
+    raw?.students.length ?? 0,
+  );
   const student =
     typeof search.student === "string" &&
     data?.students.some((row) => row.id === search.student)
@@ -460,9 +490,7 @@ export function TimeScreen() {
     ...(data?.skills ?? []).map((s) => s.minutes),
   );
   return (
-    <ClassFrame
-      org={place.org}
-      classId={place.class}
+    <host.Frame
       className={data?.class.name}
       loading={time.isPending}
       tab="time"
@@ -495,6 +523,7 @@ export function TimeScreen() {
                 className={styles.export}
                 style={{
                   visibility:
+                    !whole ||
                     data.students.length === 0 ||
                     data.students.every((row) => row.minutes === 0)
                       ? "hidden"
@@ -538,11 +567,9 @@ export function TimeScreen() {
                   <Link
                     to="/$"
                     params={{
-                      _splat: classUrl(
-                        place.org,
-                        place.class,
-                        family ? "today" : "start",
-                      ),
+                      _splat: family
+                        ? host.href("today")
+                        : classUrl(place.org, place.class, "start"),
                     }}
                     className={buttonClass("primary")}
                   >
@@ -557,7 +584,7 @@ export function TimeScreen() {
                 {perStudent ? (
                   // The spread per student is a tap away from the totals.
                   <InfoPopover
-                    title="Per student, the numbers"
+                    title={`Per ${family ? "child" : "student"}, the numbers`}
                     details={
                       <StatsLine
                         label={`${measure === "minutes" ? "Active minutes" : "Problems"} a week per ${family ? "child" : "student"}`}
@@ -606,7 +633,7 @@ export function TimeScreen() {
               </div>
               <TipZone>
                 <DataGrid
-                  label="Active minutes by student"
+                  label={`Active minutes by ${family ? "child" : "student"}`}
                   columns={gridColumns}
                   rows={data.students}
                   rowKey={(row) => row.id}
@@ -657,7 +684,7 @@ export function TimeScreen() {
                   )}
                 />
               </TipZone>
-              {data.skills.some((skill) => skill.minutes > 0) && (
+              {whole && data.skills.some((skill) => skill.minutes > 0) && (
                 <section className={styles.timeSkills}>
                   <h2>Where the time went</h2>
                   <ul className={styles.skillBars}>
@@ -684,7 +711,9 @@ export function TimeScreen() {
                   </ul>
                 </section>
               )}
-              <HelpUsed weeks={data.help} className={styles.timeSkills} />
+              {whole && (
+                <HelpUsed weeks={data.help} className={styles.timeSkills} />
+              )}
             </>
           )}
         </div>
@@ -695,9 +724,10 @@ export function TimeScreen() {
         student={student}
         returnFocus={lastOpen.current}
         onClose={() => close("student")}
+        record={host.record}
       />
       <Toast tone="status" message={message} onDismiss={() => setMessage("")} />
       <Toast message={error} onDismiss={() => setError("")} />
-    </ClassFrame>
+    </host.Frame>
   );
 }

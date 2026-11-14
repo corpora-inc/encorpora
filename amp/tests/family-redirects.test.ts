@@ -281,10 +281,31 @@ test("only a parent of that family is redirected; a co-teacher keeps the class",
   assert.equal(parentFamilyAt(null, F), null);
 });
 
-test("one child's time, by their roster person, is their page's weeks", () => {
+test("Time keeps its working view: range, measure, one child's days and the range start", () => {
   assert.deepEqual(
-    go(["time"], { period: "month", chart: "problems", student: P_WREN }),
-    { to: `/family/${F}/kids/wren`, search: {} },
+    go(["time"], {
+      period: "month",
+      chart: "problems",
+      student: P_WREN,
+      from: "2026-10-01",
+      sort: "minutes:descending",
+    }),
+    {
+      to: `/family/${F}/time`,
+      search: {
+        sort: "minutes:descending",
+        period: "month",
+        chart: "problems",
+        student: P_WREN,
+        from: "2026-10-01",
+      },
+    },
+  );
+  // Another family's child's days are never opened in a family's Time;
+  // malformed views are dropped.
+  assert.deepEqual(
+    go(["time"], { period: "year", chart: "pie", student: P_ZED }),
+    { to: `/family/${F}/time`, search: {} },
   );
 });
 

@@ -367,3 +367,22 @@
   color: var(--color-muted-text);
   font-size: var(--text-table);
 }
+
+/* A setting whose saved value didn't load: what happened and the way on,
+   in its own place. */
+.readFailed {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+  min-height: 56px;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface-sunken);
+  font-size: var(--text-table);
+}
+.readFailed > button {
+  min-height: 44px;
+}

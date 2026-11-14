@@ -95,6 +95,8 @@ function smallTargets(selector: string): string[] {
   const controls = [...document.querySelectorAll<HTMLElement>(selector)].filter(
     (element) => {
       const box = element.getBoundingClientRect();
+      // A control held in place but not shown takes no pointer: not a target.
+      if (getComputedStyle(element).visibility === "hidden") return false;
       return (
         box.width > 0 &&
         box.height > 0 &&
@@ -150,6 +152,56 @@ function smallTargets(selector: string): string[] {
   window.scrollTo(0, 0);
   return small;
 }
+/** Text that runs into other text on the page (a label wider than its
+ * control, a description through a neighbour): every pair of visible text
+ * lines in `main` whose boxes overlap by more than a pixel. Self-contained:
+ * it runs in the page. */
+function textCollisions(): string[] {
+  const boxes: { text: string; rect: DOMRect; node: Node }[] = [];
+  const walker = document.createTreeWalker(
+    document.querySelector("main") ?? document.body,
+    NodeFilter.SHOW_TEXT,
+  );
+  for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+    const text = (node.textContent ?? "").trim();
+    const parent = node.parentElement;
+    if (!text || !parent) continue;
+    const style = getComputedStyle(parent);
+    if (style.visibility === "hidden" || style.display === "none") continue;
+    if (parent.closest("[aria-hidden=true], svg")) continue;
+    // Text for screen readers only (clipped to nothing) is never seen.
+    let clipped = false;
+    for (
+      let at: Element | null = parent;
+      at && at !== document.body;
+      at = at.parentElement
+    ) {
+      const css = getComputedStyle(at);
+      if (css.clipPath === "inset(50%)" || (css.clip && css.clip !== "auto")) {
+        clipped = true;
+        break;
+      }
+    }
+    if (clipped) continue;
+    const range = document.createRange();
+    range.selectNodeContents(node);
+    for (const rect of range.getClientRects())
+      if (rect.width > 1 && rect.height > 1)
+        boxes.push({ text: text.slice(0, 30), rect, node });
+  }
+  const hits: string[] = [];
+  for (let a = 0; a < boxes.length; a++)
+    for (let b = a + 1; b < boxes.length; b++) {
+      if (boxes[a]!.node === boxes[b]!.node) continue;
+      const one = boxes[a]!.rect;
+      const two = boxes[b]!.rect;
+      const x = Math.min(one.right, two.right) - Math.max(one.left, two.left);
+      const y = Math.min(one.bottom, two.bottom) - Math.max(one.top, two.top);
+      if (x > 1 && y > 1) hits.push(`${boxes[a]!.text} × ${boxes[b]!.text}`);
+    }
+  return hits.slice(0, 5);
+}
+
 const CONTROLS =
   "main button, main a[href], header button, header a[href], [role=switch], [role=dialog] button, [role=dialog] a[href]";
 
@@ -164,6 +216,9 @@ async function check(page: Page, where: string, words = true) {
   });
   if (result.overflow > 0)
     fail(where, `scrolls sideways by ${result.overflow}px`);
+  const collisions = await page.evaluate(textCollisions);
+  if (collisions.length)
+    fail(where, `text runs into text: ${collisions.join(" | ")}`);
   const small = await page.evaluate(smallTargets, CONTROLS);
   if (small.length)
     fail(where, `targets under 44px: ${small.slice(0, 5).join(" | ")}`);
@@ -278,6 +333,17 @@ const browser = await chromium.launch();
   const flagged = await page.evaluate(smallTargets, "main button");
   if (flagged.join(",") !== "thin,wide")
     fail("target-checker", `flagged ${JSON.stringify(flagged)}`);
+  // And the collision check: a label running through its neighbour is
+  // caught; side-by-side words and screen-reader text are not.
+  await page.setContent(`<main>
+    <div style="display:flex;width:200px"><span style="white-space:nowrap;width:60px;display:block">Their choice of words</span><span>Shown</span></div>
+    <div style="display:flex;gap:8px"><span>Hidden</span><span>Shown</span></div>
+    <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)">Settings</h1><p>For your family.</p>
+  </main>`);
+  await page.evaluate("window.__name = (f) => f;");
+  const collided = await page.evaluate(textCollisions);
+  if (collided.length !== 1 || !collided[0]!.includes("Shown"))
+    fail("collision-checker", `found ${JSON.stringify(collided)}`);
   await page.close();
 }
 try {
@@ -319,6 +385,25 @@ try {
         );
         await page.close();
       }
+      // The family's Time keeps its working view: range, measure, one child's days.
+      const time = await visit(
+        family,
+        `/family/${id}/time?period=month&chart=problems`,
+        `family-time-${tag}`,
+      );
+      const timeText = (await time.textContent("main")) ?? "";
+      if (!/Problems/.test(timeText))
+        fail(`family-time-${tag}`, "the problems measure isn't shown");
+      const range = await time.$$eval(
+        "[role=radio][aria-checked=true]",
+        (nodes) => nodes.map((node) => (node.textContent ?? "").trim()),
+      );
+      if (!range.includes("4 weeks"))
+        fail(
+          `family-time-${tag}`,
+          `the month range isn't chosen: ${range.join(", ")}`,
+        );
+      await time.close();
       await today.click("[data-navigation-trigger]");
       await today.waitForTimeout(700);
       const drawer = (await today.textContent("[role=dialog]")) ?? "";
@@ -360,6 +445,62 @@ try {
       )
         fail(`family-old-workbook-${tag}`, `landed on ${old.url()}`);
       await old.close();
+      // The family's own Settings: its practice defaults, each choice's
+      // words inside its own row, at every width.
+      const settings = await visit(
+        pure,
+        `/family/${pureId}/settings`,
+        `family-settings-${tag}`,
+      );
+      if (!(await settings.$("[data-practice-defaults] [role=radiogroup]")))
+        fail(`family-settings-${tag}`, "no practice defaults");
+      await settings.close();
+      // A failed read says so with Try again, and claims no saved value.
+      if (width === WIDTHS[0] && scheme === "light") {
+        const failing = await pure.newPage();
+        await failing.route("**/api/v1/school/classes/*/experience", (route) =>
+          route.request().method() === "GET"
+            ? route.fulfill({ status: 503, json: { error: "unavailable" } })
+            : route.continue(),
+        );
+        await failing.goto(`${origin}/family/${pureId}/settings`);
+        await settle(failing);
+        if (
+          !(await failing.$(
+            "[data-practice-defaults] [data-read-failed] button",
+          ))
+        )
+          fail("practice-defaults-failed", "no error with Try again");
+        if (await failing.$("[data-practice-defaults] [aria-checked=true]"))
+          fail(
+            "practice-defaults-failed",
+            "claims a saved choice it doesn't know",
+          );
+        await shoot(failing, "family-settings-read-failed");
+        const kidsOf = (await (
+          await pure.request.get(`${origin}/api/v1/families/${pureId}`)
+        ).json()) as { children: { id: string }[] };
+        await failing.route("**/api/v1/learners/*/practice-state", (route) =>
+          route.request().method() === "GET"
+            ? route.fulfill({ status: 503, json: { error: "unavailable" } })
+            : route.continue(),
+        );
+        await failing.goto(
+          `${origin}/family/${pureId}/kids/${kidsOf.children[0]!.id}`,
+        );
+        await settle(failing);
+        if (
+          !(await failing.$("[data-child-practice] [data-read-failed] button"))
+        )
+          fail("child-practice-failed", "no error with Try again");
+        if (await failing.$("[data-child-practice] [role=switch]"))
+          fail(
+            "child-practice-failed",
+            "shows a switch whose state isn't known",
+          );
+        await shoot(failing, "child-practice-read-failed");
+        await failing.close();
+      }
       await pure.close();
       await family.close();
       // The second parent: the same children, nothing she can't do.
