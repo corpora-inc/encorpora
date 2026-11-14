@@ -37,8 +37,20 @@ test("once the screen shows: the named learner, the profile first, /me's own, a 
   );
   expect(committedChoice(me, "/me", {}, "wren")).toBe("jonah");
   expect(committedChoice(me, "/pathways", {}, "grade-4")).toBe("jonah");
-  // Nobody named, or someone not theirs: the device's choice stands.
-  expect(committedChoice(me, "/pathways", {}, "wren")).toBeUndefined();
+  // Q-209: an unnamed shared learning screen is the adult's own (self).
+  expect(committedChoice(me, "/pathways", {}, "wren")).toBe("jonah");
+  expect(committedChoice(me, "/practice", {}, "jonah")).toBeUndefined();
+  // A family's child, by their own address.
+  const family = "52050f4a-8e35-877c-a381-66a9dd6829e2";
+  expect(
+    committedChoice(me, `/family/${family}/kids/pip/pathways`, {}, "wren"),
+  ).toBe("pip");
+  // An account with no practice of its own has no self: the choice stands.
+  const parent = { ...me, adultPractice: { eligible: true, learner: null } };
+  expect(
+    committedChoice(parent as SignedInMe, "/pathways", {}, "wren"),
+  ).toBeUndefined();
+  // Someone not theirs: the device's choice stands.
   expect(
     committedChoice(me, "/practice", { learner: "stranger" }, "wren"),
   ).toBeUndefined();

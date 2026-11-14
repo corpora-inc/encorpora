@@ -93,6 +93,7 @@ import {
 } from "../nav/entities";
 import {
   adoptPracticeMode,
+  canonicalLearnerAddress,
   carriedKeys,
   isLearningPath,
 } from "../features/profiles/practice-mode";
@@ -745,6 +746,7 @@ const inventory = createRoute({
   // A learning record belongs to an account: signed out, sign in first.
   beforeLoad: async ({ location }) => {
     await framedScreen();
+    await canonicalLearnerAddress(location);
     await adoptPracticeMode(location);
     if (!queryClient.getQueryData(sessionOptions.queryKey))
       throw redirect({
@@ -822,6 +824,7 @@ const pathways = createRoute({
     if (skill !== undefined && location.pathname === "/pathways")
       skillAsLayer(location, skill);
     await framedScreen();
+    await canonicalLearnerAddress(location);
     await adoptPracticeMode(location);
   },
   // The curriculum and the learner's record arrive with it: one paint. A
@@ -1617,7 +1620,10 @@ const fallback = createRoute({
   getParentRoute: () => appScreen,
   path: "/$",
   // The address says who practices (features/profiles/practice-mode.ts).
-  beforeLoad: ({ location }) => adoptPracticeMode(location),
+  beforeLoad: async ({ location }) => {
+    await canonicalLearnerAddress(location);
+    await adoptPracticeMode(location);
+  },
   // The app screen is rendered by the layout, so load its chunk here, as the
   // route's own component would have been. The Overview's level too, so it
   // paints in its final layout (a learner's first day has its own).

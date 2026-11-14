@@ -13,7 +13,12 @@ import {
   type ReactNode,
 } from "react";
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
-import { Link, useNavigate, useSearch } from "@tanstack/react-router";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useSearch,
+} from "@tanstack/react-router";
 import { meOptions, sessionOptions } from "../../lib/query";
 import { skillCatalogOptions } from "../../lib/learning-view";
 import { request } from "../../lib/api";
@@ -56,6 +61,10 @@ import {
   profileLearner,
 } from "../../lib/adult-learner";
 import { secondParentChild, secondParentChildren } from "../second-parent/api";
+import { useAddressedIdentity } from "../spaces/useAddressed";
+import { childAddress, childPath } from "../spaces/identity";
+import { childFamily } from "../spaces/learner-urls";
+import { familyPlacesOptions } from "../family/api";
 const emptyEvidence: Evidence[] = [];
 const bandOptions: ListboxOption[] = [
   { value: "", label: "All grades & courses" },
@@ -130,7 +139,17 @@ function GuestMap() {
 
 function LearnerMap({ session }: { session: AuthSession }) {
   const me = useQuery(meOptions(session));
-  const { learnerId, select } = useLearnerStore();
+  const { learnerId: chosenId, select } = useLearnerStore();
+  // Whose map the address names (features/spaces/identity.ts): yourself at
+  // /pathways, a family's child at /family/<family>/kids/<learner>/pathways,
+  // a practice profile by `?profile=`. Unnamed, a parent with no practice of
+  // their own was sent to their child's address before this showed.
+  const addressed = useAddressedIdentity();
+  const learnerId = addressed?.id ?? chosenId;
+  const navigate = useNavigate();
+  const places = useQuery(familyPlacesOptions(session));
+  const pathname = useLocation({ select: (location) => location.pathname });
+  const childMap = !!childAddress(pathname);
   const account = me.data?.signedIn ? me.data : null;
   // The adult's own pathways, when their own learner is the one chosen: the
   // family's learners aren't theirs to switch to here.
@@ -144,14 +163,27 @@ function LearnerMap({ session }: { session: AuthSession }) {
     ? adultLearner(account)
     : (profileLearner(account, learnerId) ?? solo);
   useEffect(() => {
-    if (solo && own === solo && learnerId !== solo.id) select(solo.id);
+    if (!addressed && solo && own === solo && learnerId !== solo.id)
+      select(solo.id);
   }, [solo?.id, learnerId]);
+  /** Another child's map is their own address. */
+  const openChild = (id: string) => {
+    const family = account ? childFamily(account, id, places.data) : null;
+    if (!family) return;
+    void navigate({
+      to: "/$",
+      params: { _splat: childPath(family, id, "pathways").slice(1) },
+    });
+  };
   // A second parent's family's children follow the family's own: their
   // progress, read-only.
   const learners = own
     ? [own]
     : [...(account?.learners ?? []), ...secondParentChildren(account)];
-  const viewOnly = !own && !!secondParentChild(account, learnerId);
+  // A child's map is theirs to read: their practice is their own session,
+  // from their page or the family's Today, never this adult's /practice.
+  const viewOnly =
+    (!own && !!secondParentChild(account, learnerId)) || (childMap && !own);
   const learner = learners.find((l) => l.id === learnerId);
   const progress = useQuery({
     queryKey: ["account", session.accountId, "pathways", learner?.id],
@@ -231,7 +263,7 @@ function LearnerMap({ session }: { session: AuthSession }) {
                 align="end"
                 options={learners.map((l) => ({ value: l.id, label: l.name }))}
                 value={learner?.id ?? null}
-                onChange={select}
+                onChange={openChild}
               />
             </div>
           )}
@@ -355,7 +387,7 @@ export function MapView({
             id: skillOf(result),
           })!,
         );
-      return `/pathways${params.size ? `?${params}` : ""}`;
+      return `${window.location.pathname}${params.size ? `?${params}` : ""}`;
     };
     return {
       href,
@@ -409,7 +441,8 @@ export function MapView({
     replace = false,
   ) =>
     void navigate({
-      to: "/pathways",
+      // This map's own address: yours, or a child's.
+      to: ".",
       search: ((current: Record<string, unknown>) => {
         const next: Record<string, unknown> = {
           ...current,

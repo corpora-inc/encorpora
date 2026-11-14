@@ -11,10 +11,15 @@ import type {
 } from "../../../family/projection-contracts";
 import type { TabItem } from "../../ui/Tabs";
 import { shellFrame, type ShellFrame } from "../navigation/shell-frame";
-import { addressedIdentity, type AddressedIdentity } from "./identity";
+import {
+  childAddress,
+  learningIdentity,
+  type AddressedIdentity,
+} from "./identity";
 import { spaceOfPath, type RouteSpace, type Space } from "./space";
 import {
   accountTabs,
+  childTabs,
   classroomTabs,
   familyPlaceTabs,
   familyTabs,
@@ -125,9 +130,6 @@ export type Destination = {
   /** Without the leading slash. */
   path: string;
   icon: DestinationIcon;
-  /** The learner a learning screen is for, in its address: a refresh or a
-   * shared link never changes whose record it is. */
-  search?: { learner: string };
   detail?: string;
   current: boolean;
 };
@@ -536,10 +538,15 @@ function resolveOnce(
     }
   }
   if (route === "learner" || route === "me" || route === "family") {
+    // An unnamed shared learning screen is the adult's own (self).
     const named =
       route === "me"
         ? null
-        : addressedIdentity(match.pathname, match.search ?? {});
+        : learningIdentity(
+            match.pathname,
+            match.search ?? {},
+            me?.adultPractice?.learner?.id,
+          );
     const chosen =
       route === "me" ? null : chosenLearner(me, named, session.learnerId);
     // The address named someone this account doesn't read: unavailable,
@@ -663,13 +670,11 @@ function meSpace(
     label: string,
     path: string,
     icon: DestinationIcon,
-    search?: { learner: string },
   ): Destination => ({
     id,
     label,
     path,
     icon,
-    ...(search ? { search } : {}),
     current: id === active && (tabbed || frame?.kind === "practice"),
   });
   return {
@@ -701,9 +706,7 @@ function meSpace(
           : [],
     destinations: own
       ? [
-          destination("practice", "Practice", "practice", "learn", {
-            learner: own.id,
-          }),
+          destination("practice", "Practice", "practice", "learn"),
           destination("levels", "Levels", "me", "level"),
           destination("workbooks", "Workbooks", workbooks!, "workbooks"),
           destination(
@@ -806,10 +809,8 @@ function familySpace(
               ? { can: resources.year?.can ?? [] }
               : {}),
           })
-        : frame?.kind === "progress"
-          ? learnerTabs().map((item) =>
-              learner ? { ...item, search: { learner: learner.id } } : item,
-            )
+        : frame?.kind === "progress" && learner && orgId
+          ? childTabs(orgId, learner.id)
           : [];
   const active =
     frame?.kind === "class" && frame.leaf === "report-cards"
@@ -863,11 +864,13 @@ function familySpace(
     tabs,
     bar: frame?.kind === "account" ? "plain" : base.bar,
     active,
+    // A child's practice is their own session, from their page or the
+    // family's Today ("Let Pip practice here"): an unnamed /practice from
+    // here would be the adult's own.
     actions:
       frame?.kind === "practice"
         ? ["profile-back"]
-        : frame?.kind === "progress" ||
-            (frame?.kind === "plain" && frame.practice)
+        : frame?.kind === "plain" && frame.practice && !learnerOnly
           ? ["practice"]
           : [],
     destinations:
@@ -1133,6 +1136,13 @@ function familyPlaceSpace(
   const learner = kid
     ? (learners.find((entry) => entry.id === kid) ?? null)
     : null;
+  // A child's Pathways and Inventory (`kids/<learner>/pathways`): the
+  // child's record, its tabs at the child's own addresses, the bar naming
+  // them. A child who isn't this family's is unavailable, never another.
+  const record = childAddress(`/family/${frame.family}/${frame.leaf}`);
+  const onRecord = !!record && record.screen !== "overview";
+  const shown: Resolution =
+    onRecord && status === "ready" && !learner ? "unavailable" : status;
   const own = ownClassOf(me, frame.family, data);
   const home = `family/${frame.family}`;
   const workbooks = children.length
@@ -1141,7 +1151,7 @@ function familyPlaceSpace(
   return {
     ...base,
     space: "family",
-    status,
+    status: shown,
     family: {
       id: frame.family,
       name: data ? familyDisplayName(data) : null,
@@ -1166,12 +1176,16 @@ function familyPlaceSpace(
         ]
       : [],
     tabs:
-      status === "ready" ? familyPlaceTabs(frame.family, { workbooks }) : [],
+      shown !== "ready"
+        ? []
+        : onRecord && learner
+          ? childTabs(frame.family, learner.id)
+          : familyPlaceTabs(frame.family, { workbooks }),
     bar: "tabs",
-    active: frame.active,
+    active: onRecord ? record.screen : frame.active,
     actions: [],
     destinations:
-      status === "unavailable"
+      shown === "unavailable"
         ? []
         : [
             {
@@ -1190,12 +1204,17 @@ function familyPlaceSpace(
             })),
           ],
     place:
-      status === "unavailable"
+      shown === "unavailable"
         ? null
         : data?.role === "holder"
           ? "home"
           : `family:${frame.family}`,
-    label: data ? familyDisplayName(data) : null,
+    label:
+      onRecord && learner
+        ? learner.name
+        : data && shown !== "unavailable"
+          ? familyDisplayName(data)
+          : null,
   };
 }
 
