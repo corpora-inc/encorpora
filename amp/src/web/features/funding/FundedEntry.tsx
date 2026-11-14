@@ -27,10 +27,6 @@ const availabilitySchema = z.object({
     z.object({ programId: z.string(), jurisdiction: z.string() }),
   ),
 });
-const consentHistorySchema = z.object({
-  request: z.object({ id: z.string() }).nullable(),
-});
-
 /** Parent entry point. Readiness, consent and learner ownership stay server-owned. */
 export function FundedEntry() {
   const { data: session } = useSuspenseQuery(sessionOptions);
@@ -72,23 +68,6 @@ function SignedInEntry({
   const step = me.data
     ? startDestination(me.data, "/start", false, program.slug)
     : null;
-  // /me reports verified consent; an email consent request can be in progress
-  // before that record exists. Resolve it before asking who's learning.
-  const checkConsentHistory =
-    me.data?.signedIn === true &&
-    step === program.path &&
-    !me.data.learners.length &&
-    !me.data.adultPractice?.learner;
-  const consentHistory = useQuery({
-    queryKey: ["account", session.accountId, "funded-consent-history"],
-    queryFn: ({ signal }) =>
-      request("/consent", consentHistorySchema, {
-        token: session.token,
-        signal,
-      }),
-    enabled: checkConsentHistory,
-    refetchOnMount: "always",
-  });
   const offers = useQuery({
     queryKey: ["account", session.accountId, "funding-availability"],
     queryFn: ({ signal }) =>
@@ -99,14 +78,13 @@ function SignedInEntry({
   });
   const selectedLearner = useLearnerStore((state) => state.learnerId);
   if (location.pathname !== program.path) return <LoadingScreen />;
-  if (me.error || offers.error || (checkConsentHistory && consentHistory.error))
+  if (me.error || offers.error)
     return (
       <RouteError
-        error={me.error ?? offers.error ?? consentHistory.error}
+        error={me.error ?? offers.error}
         reset={() => {
           void me.refetch();
           void offers.refetch();
-          if (checkConsentHistory) void consentHistory.refetch();
         }}
       />
     );
@@ -140,16 +118,10 @@ function SignedInEntry({
         </section>
       </PageFrame>
     );
-  // The program's own steps: confirm the email, consent, then a learner.
+  // The program's own steps preserve email verification and learning permission.
   // (`/start` is "What brings you to AMP?", which would drop the program.)
   if (step && step !== program.path)
     return <Navigate {...startNavigation(step)} search={search} replace />;
-  if (checkConsentHistory) {
-    if (!consentHistory.isFetchedAfterMount || !consentHistory.data)
-      return <LoadingScreen />;
-    if (consentHistory.data.request)
-      return <Navigate to="/start/consent" search={search} replace />;
-  }
   // The account holder's own adult learner is bought for like a child, but
   // needs no parental consent: she acts for herself.
   const own = me.data.adultPractice?.learner ?? null;

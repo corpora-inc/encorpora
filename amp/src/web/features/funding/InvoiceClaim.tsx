@@ -1,4 +1,7 @@
-import { Link, useLocation } from "@tanstack/react-router";
+import { useLearnerStore } from "../../learner-store";
+import { refreshMe } from "../../lib/query";
+import { Loading } from "../../ui/Loading";
+import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { z } from "zod";
@@ -65,9 +68,8 @@ function invoiceLearner(
 /**
  * Connects an invoice made out before sign-in to a learner: the account
  * holder's own ("Me", started here if she has none yet) or one of her
- * children. Buying for herself needs no parental consent; a child does, so a
- * child chosen without it leads to the consent step instead of a claim that
- * would fail. Without a learner or an unambiguous invoice recipient, it asks
+ * children. An adult acts for herself. A child can use the existing restricted
+ * first-run permission for temporary access; other children need consent. Without a learner or an unambiguous invoice recipient, it asks
  * who's learning first.
  */
 export function InvoiceClaim({
@@ -83,7 +85,7 @@ export function InvoiceClaim({
   session: AuthSession;
   program: FundedProgram;
   /** The account's children. */
-  learners: readonly { id: string; name: string }[];
+  learners: readonly { id: string; name: string; namePending?: boolean }[];
   /** The account holder's own adult learner, when she has one. */
   own: { id: string; name: string } | null;
   accountEmail: string | null;
@@ -92,6 +94,7 @@ export function InvoiceClaim({
   children: React.ReactNode;
 }) {
   const location = useLocation();
+  const navigate = useNavigate();
   const search = {
     ...continuationSearch(location.search),
     return: program.slug,
@@ -131,12 +134,13 @@ export function InvoiceClaim({
   // Once started, "Me" is the account holder's learner itself.
   const value = selected === NEW_OWN && own ? own.id : selected;
   const forChild = learners.some((l) => l.id === value);
-  const needsConsent = forChild && !consentActive;
+  const restrictedChild = learners.some((l) => l.id === value && l.namePending);
+  const needsConsent = forChild && !consentActive && !restrictedChild;
   if (invoices.isPending)
     return (
       <PageFrame centered>
         <section className={frameCard}>
-          <p role="status">Checking your invoices…</p>
+          <Loading>Checking your invoices</Loading>
         </section>
       </PageFrame>
     );
@@ -170,10 +174,7 @@ export function InvoiceClaim({
       <PageFrame centered>
         <section className={frameCard}>
           <h1>Who’s learning?</h1>
-          <p>
-            Buy {program.name} access for yourself, or for your child. A child
-            needs a parent’s consent first.
-          </p>
+          <p>Connect your {program.name} invoice to yourself or your child.</p>
           <div className={styles.who}>
             <Button
               variant="primary"
@@ -195,7 +196,11 @@ export function InvoiceClaim({
               For me
             </Button>
             <Link
-              to={consentActive ? "/start/name" : "/start/consent"}
+              to={
+                pending.length || consentActive
+                  ? "/start/name"
+                  : "/start/consent"
+              }
               search={search}
               className={buttonClass("secondary")}
             >
@@ -212,8 +217,8 @@ export function InvoiceClaim({
       <section className={frameCard}>
         <h1>Connect your invoice</h1>
         <p id="invoice-learner">
-          Who is this {program.name} invoice for? This does not make another
-          payment.
+          Choose your learner and start today. Your {program.name} payment stays
+          pending until it is confirmed.
         </p>
         <TileChoice
           className={styles.choices}
@@ -251,7 +256,22 @@ export function InvoiceClaim({
                       z.object({ id: z.string() }),
                       { token: session.token, body: { learnerId } },
                     );
-                    await invoices.refetch();
+                    useLearnerStore.getState().select(learnerId);
+                    const fresh = await refreshMe(session);
+                    const active =
+                      fresh.signedIn &&
+                      (fresh.learners.some(
+                        (item) =>
+                          item.id === learnerId && item.entitlement.active,
+                      ) ||
+                        (fresh.adultPractice?.learner?.id === learnerId &&
+                          fresh.adultPractice.learner.active));
+                    if (active)
+                      await navigate({
+                        to: "/$",
+                        params: { _splat: "practice" },
+                      });
+                    else await invoices.refetch();
                   } catch (reason) {
                     console.error("Invoice claim failed", reason);
                     setError(

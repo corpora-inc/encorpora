@@ -1,8 +1,10 @@
+import { FrameBrand } from "../../ui/PageFrame";
+import { Loading } from "../../ui/Loading";
 import { recordPurchaseAction } from "../../lib/purchase-analytics";
 import { analyticsVisitorHeaders } from "../../lib/analytics";
 import { SupportHelp } from "../support/SupportHelp";
 import { useQuery } from "@tanstack/react-query";
-import { useLocation } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 import {
   useEffect,
   useLayoutEffect,
@@ -109,6 +111,7 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
         }),
       );
     } catch (reason) {
+      console.error("Invoice preparation failed", reason);
       setError(
         reason instanceof Error
           ? reason.message
@@ -135,16 +138,37 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
     );
   return (
     <main className={styles.panel}>
+      <header className={styles.header}>
+        <FrameBrand expanded />
+        <Link to="/" search={{ program: program.id }} className={styles.back}>
+          Back to AMP
+        </Link>
+      </header>
       <p className={styles.eyebrow}>{program.name}</p>
       <h1>{result ? "Your invoice is ready" : "Get your AMP invoice"}</h1>
       {!result && (
         <>
           <p className={styles.summary}>
-            Create the PDF for your program payment request. No card or AMP
-            account needed.
+            Your child can start today. No card needed.
           </p>
+          <ol className={styles.introSteps} aria-label="How it works">
+            <li>
+              <strong>Create your invoice.</strong> We email the PDF and these
+              steps.
+            </li>
+            <li>
+              <strong>Upload it in ClassWallet.</strong> Choose Pay Vendor, then
+              Corpora Inc.
+            </li>
+            <li>
+              <strong>Start practicing.</strong> Set up your learner while
+              payment is reviewed. We email you when your purchase is confirmed.
+            </li>
+          </ol>
           {offers.isPending ? (
-            <p role="status">Loading the offer…</p>
+            <div className={styles.offerWait}>
+              <Loading>Loading your offer</Loading>
+            </div>
           ) : offers.error ? (
             <div role="alert">
               <p>The offer could not be loaded.</p>
@@ -253,8 +277,9 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
                 {error}
               </p>
               <p className={styles.notice}>
-                We use these details for your invoice and to match it to your
-                AMP account later. This does not create a learning profile.{" "}
+                We email your invoice and reserve access for this email. Sign in
+                and set up your learner to start. Access while payment is
+                pending lasts up to 30 days.{" "}
                 <a
                   href="https://corpora.inc/legal/privacy/"
                   target="_blank"
@@ -269,7 +294,23 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
       )}
       {result && (
         <>
-          <p className={styles.status}>Unpaid invoice. No card charged.</p>
+          <p className={styles.status}>
+            Your invoice and steps are queued for email.
+          </p>
+          <p className={styles.summary}>
+            Start practicing today while your program reviews payment.
+          </p>
+          <a
+            className={buttonClass("primary")}
+            href={program.path}
+            onClick={() => recordPurchaseAction("amp_setup_open")}
+          >
+            Set up learner and start
+          </a>
+          <p className={styles.notice}>
+            Sign in with the email below. Funded-pending access lasts until{" "}
+            {new Date(result.expiresAt).toLocaleDateString()}. No card charged.
+          </p>
           <p className={styles.notice}>
             AMP account email: <strong>{email.trim()}</strong>
             <br />
@@ -292,7 +333,7 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
             <li>
               <strong>Save your invoice.</strong>
               <a
-                className={buttonClass("primary")}
+                className={buttonClass("secondary")}
                 href={pdfUrl || undefined}
                 download={result.filename}
                 onClick={() => {
@@ -327,30 +368,13 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
                 </Button>
               </div>
               <a
-                className={buttonClass("primary")}
+                className={buttonClass("secondary")}
                 href={result.destinationUrl}
                 onClick={() => recordPurchaseAction("funding_provider_open")}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Continue to ClassWallet
-              </a>
-            </li>
-            <li>
-              <strong>Set up your AMP learner.</strong>
-              <p>
-                Sign in with the same email. We match your invoice to the
-                program payment before starting paid access. Do not also pay by
-                card.
-              </p>
-              <a
-                className={buttonClass("secondary")}
-                href={program.path}
-                onClick={() => recordPurchaseAction("amp_setup_open")}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Continue AMP setup
               </a>
             </li>
           </ol>

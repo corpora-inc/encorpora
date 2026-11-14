@@ -259,16 +259,13 @@ test.each(["active", "pending", "withdrawn"] as const)(
 );
 
 test.each(["awaiting-initial", "awaiting-confirmation", "expired"])(
-  "a %s consent request resumes consent even when /me has no consent record",
+  "a %s consent request permits choosing restricted parent-entry setup",
   async (phase) => {
     invoices = [];
     state.consentRequest = { id: "consent-request", phase };
     const router = await open("/purchase/arizona-esa");
-    await screen.findByRole("heading", { name: "Learning consent" });
-    expect(router.state.location.pathname).toBe("/start/consent");
-    expect(
-      screen.queryByRole("heading", { name: "Who’s learning?" }),
-    ).toBeNull();
+    await screen.findByRole("heading", { name: "Who’s learning?" });
+    expect(router.state.location.pathname).toBe("/purchase/arizona-esa");
     expect(state.posts).toEqual([]);
   },
 );
