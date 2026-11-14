@@ -70,6 +70,11 @@ A mixed lesson teaches reading:
 
 A **shot** is one figure and the words over it. A shot without a figure gives the work the whole frame. Prefer one shot per idea.
 
+Optional `teaches` lists other problem type IDs that link to this film unless they have an approved film of their own.
+Optional `skill` names an existing skill containing the film's own problem type; its film fills every type without an own-type or unique `teaches` film.
+Only one approved film may claim a skill; conflicting claims are reported and supply no skill film, while own-type and `teaches` links keep working.
+Like `teaches`, changing `skill` changes only routing and needs no new review or export.
+
 A **beat** is one spoken phrase and what starts as it is spoken:
 
 ```json
