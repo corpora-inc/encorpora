@@ -530,6 +530,16 @@ try {
         )
       )
         fail(`power-group-${tag}`, `landed on ${tour.url()}`);
+      // The bar names the place once the new place has painted.
+      await tour
+        .waitForFunction(
+          () =>
+            document.querySelector("[data-place-name]")?.textContent ===
+            "Tutoring group",
+          undefined,
+          { timeout: 10_000 },
+        )
+        .catch(() => undefined);
       const bar = (await tour.textContent("[data-place-name]")) ?? "";
       if (bar !== "Tutoring group")
         fail(`power-group-${tag}`, `bar says ${bar}`);

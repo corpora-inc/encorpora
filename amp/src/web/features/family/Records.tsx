@@ -1,6 +1,7 @@
 import { TimeScreen } from "../school/classes/TimeScreen";
 import { Loading } from "../../ui/Loading";
 import { childrenElsewhere } from "./redirects";
+import { childTimeCsvPath, childTimeOptions } from "./api";
 import { familyDisplayName } from "../spaces/resolve";
 import { useQueries, useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
@@ -115,6 +116,18 @@ function useFamilyHost(place: FamilyPlace): ClassHost | null {
       const learner = people.get(person);
       return learner ? familyHref(family, `kids/${learner}`) : null;
     },
+    // The family's own children in another family's group: Time reads
+    // them for the class's dates and counts them with it.
+    others: childrenElsewhere(data?.children ?? [], own.id)
+      .filter((child) => child.capabilities.readProgress)
+      .map((child) => ({
+        id: child.id,
+        name: child.name,
+        page: familyHref(family, `kids/${child.id}`),
+        time: (period, from) =>
+          childTimeOptions(place.session, family, child.id, period, from),
+        csv: (period, from) => childTimeCsvPath(family, child.id, period, from),
+      })),
   };
 }
 
@@ -247,132 +260,11 @@ export function FamilyTimeScreen() {
   const place = useFamilyPlace();
   const host = useFamilyHost(place);
   // A family with its own class: the class's Time for the family's own
-  // children, with its range, measure, each child's days and (for a class
-  // wholly the family's) its export.
-  // Children of the family's own who practice in another family's group:
-  // their own weeks, in the same view and the same totals.
-  const elsewhere = childrenElsewhere(
-    place.data?.children ?? [],
-    place.own?.id ?? null,
-  );
-  const records = useRecords(place, host ? elsewhere : []);
-  if (host) {
-    const inClass = (place.data?.children ?? []).filter(
-      (child) => !elsewhere.includes(child),
-    );
-    return (
-      <TimeScreen
-        host={host}
-        extra={
-          elsewhere.length
-            ? {
-                scope: `For ${names(inClass)}, in your family’s class. ${
-                  elsewhere.length === 1 ? elsewhere[0]!.name : names(elsewhere)
-                } ${elsewhere.length === 1 ? "practices" : "practice"} in another group, below.`,
-                node: (
-                  <ElsewhereTime
-                    place={place}
-                    children={elsewhere}
-                    records={records}
-                  />
-                ),
-              }
-            : undefined
-        }
-      />
-    );
-  }
+  // children, with the family's children in another group read for the same
+  // dates (the host's `others`): one range, one measure, one total, one
+  // export, each child labelled by their group.
+  if (host) return <TimeScreen host={host} />;
   return <ChildrenTime place={place} />;
-}
-
-/** "Pip", "Pip and Wren", "Pip, Wren and Theo". */
-const names = (children: readonly { name: string }[]) =>
-  children.length <= 1
-    ? (children[0]?.name ?? "")
-    : `${children
-        .slice(0, -1)
-        .map((child) => child.name)
-        .join(", ")} and ${children.at(-1)!.name}`;
-
-/**
- * The family's children who practice in another family's group, under the
- * class's Time: their own scope, said. This week's minutes are the server's
- * (the same as Today's); the chart is their last twelve weeks of minutes,
- * from their record. Neither is the class's dates or measure, and neither is
- * in the class's totals or export. A read that fails says so with Try again
- * and is never a zero.
- */
-function ElsewhereTime({
-  place,
-  children,
-  records,
-}: {
-  place: FamilyPlace;
-  children: readonly FamilyChild[];
-  records: ReturnType<typeof useRecords>;
-}) {
-  const failed = records.filter((record) => record.isError).length;
-  useEffect(() => {
-    if (failed)
-      console.error(`${failed} child’s weeks didn’t load in Family Time`);
-  }, [failed]);
-  return (
-    <section
-      aria-labelledby="time-elsewhere"
-      className={styles.section}
-      data-time-elsewhere=""
-    >
-      <div className={styles.head}>
-        <h2 id="time-elsewhere">In another group</h2>
-        <p className={styles.sub}>
-          Their own weeks, in active minutes: not the dates or the measure
-          above, and not in its totals or its export.
-        </p>
-      </div>
-      {children.map((child, index) => {
-        const record = records[index];
-        return (
-          <div
-            key={child.id}
-            className={styles.section}
-            data-time-child={child.id}
-          >
-            <div className={styles.sectionHead}>
-              <h3>{childLink(place.family, child)}</h3>
-              <span className={styles.sub}>
-                {child.week.minutes > 0
-                  ? `${number(child.week.minutes)} active minutes this week`
-                  : "No time yet this week"}
-              </span>
-            </div>
-            {record?.data ? (
-              <>
-                <p className={styles.footnote}>The last twelve weeks</p>
-                <RecordWeeks record={record.data} />
-              </>
-            ) : record?.isError ? (
-              <div
-                className={styles.readFailed}
-                role="alert"
-                data-read-failed=""
-              >
-                <p>Couldn’t load {child.name}’s weeks.</p>
-                <button
-                  type="button"
-                  className={buttonClass("secondary")}
-                  onClick={() => void record.refetch()}
-                >
-                  Try again
-                </button>
-              </div>
-            ) : (
-              <Loading>Reading {child.name}’s weeks</Loading>
-            )}
-          </div>
-        );
-      })}
-    </section>
-  );
 }
 
 /** Time for a family whose children are all hosted elsewhere: each child's

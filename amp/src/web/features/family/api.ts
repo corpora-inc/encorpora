@@ -1,6 +1,7 @@
 import { queryOptions } from "@tanstack/react-query";
 import { z } from "zod";
 import {
+  familyChildTimeSchema,
   familyChildProgressSchema,
   familyPlacesSchema,
   familyProjectionSchema,
@@ -134,3 +135,35 @@ export async function childPagePath(
   }
   return null;
 }
+
+const timePeriod = (period: "week" | "month" | "term") =>
+  period === "month" ? "weeks" : period;
+
+/** One child's daily time over a period, from a given first day: the same
+ * aggregation and calendar as the family class's Time, so the two sum. */
+export const childTimeOptions = (
+  session: AuthSession,
+  family: string,
+  learner: string,
+  period: "week" | "month" | "term",
+  from: string,
+) =>
+  ({
+    queryKey: key(session, family, "children", learner, "time", period, from),
+    enabled: adult(session) && !!from,
+    queryFn: ({ signal }: { signal: AbortSignal }) =>
+      request(
+        `/families/${encodeURIComponent(family)}/children/${encodeURIComponent(learner)}/time?period=${timePeriod(period)}&from=${from}`,
+        familyChildTimeSchema,
+        { token: session.token, signal },
+      ),
+  }) as const;
+
+/** The address of one child's time export, for the same period and day. */
+export const childTimeCsvPath = (
+  family: string,
+  learner: string,
+  period: "week" | "month" | "term",
+  from: string,
+) =>
+  `/families/${encodeURIComponent(family)}/children/${encodeURIComponent(learner)}/time.csv?period=${timePeriod(period)}&from=${from}`;

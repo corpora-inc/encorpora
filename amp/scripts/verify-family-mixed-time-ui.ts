@@ -4,9 +4,11 @@
  * persona adds a child to their group; the scratch database then gives that
  * child to the `parent-day1` persona, as an approved transfer of ownership
  * would (the fixture is the transfer's outcome, not its consent flow). The
- * parent's Time must show both: the class's own child in its range and
- * measure, and the other child's weeks under "In another group", with both in
- * the totals; and never the tutor's other children.
+ * parent's Time counts both in one report: the class's dates and measure,
+ * the other child's days read for exactly those dates, the page's total the
+ * class's plus theirs to the minute, and one export with a Group column; and
+ * never the tutor's other children. A failed read says so in place and
+ * leaves the totals the class's alone, saying that too.
  *
  *   AMP_PREVIEW_ORIGIN=http://127.0.0.1:4940 \
  *   AMP_PREVIEW_DATABASE_URL=postgres://amp:amp@127.0.0.1:55490/<scratch> \
@@ -94,99 +96,181 @@ try {
     after.children.some((child) => child.id === hosted!.id),
     "the projection holds the child practicing elsewhere",
   );
-  const minutesShown = async (page: import("playwright").Page) =>
-    (
-      await page.$$eval("[data-stat-value], strong, dd", (nodes) =>
-        nodes.map((node) => (node.textContent ?? "").trim()),
+  // Practice time for both children: today, in the family's class and in
+  // the tutor's group. Fractions of a minute, so the sum is checked exactly.
+  const own = after.children.find((child) => child.id !== hosted!.id);
+  const fixture = async (learner: string, ms: number) =>
+    pool.query(
+      `INSERT INTO amp_active_days(learner_id,day,surface,skill_id,active_ms)
+       VALUES($1,current_date,'practice','',$2)
+       ON CONFLICT (learner_id,day,surface,skill_id) DO UPDATE SET active_ms=EXCLUDED.active_ms`,
+      [learner, ms],
+    );
+  await fixture(hosted.id, 7 * 60_000 + 17_000);
+  if (own) await fixture(own.id, 12 * 60_000 + 21_000);
+  const classId = (
+    (await (await parent.request.get(`${origin}/api/v1/me`)).json()) as {
+      familyClass: { classId: string };
+    }
+  ).familyClass.classId;
+  type Days = { days: { minutes: number }[] };
+  const dayMinutes = (rows: Days[]) =>
+    rows.reduce(
+      (sum, row) => sum + row.days.reduce((days, day) => days + day.minutes, 0),
+      0,
+    );
+  /** What the page must show: the class's time and the child's, read for the
+   * class's own first day, summed, then rounded once. */
+  const expected = async (period: string) => {
+    const classTime = (await (
+      await parent.request.get(
+        `${origin}/api/v1/school/classes/${classId}/time?period=${period}`,
       )
-    ).join("|");
+    ).json()) as { range: { from: string }; students: Days[] };
+    const from = classTime.range.from;
+    const child = (await (
+      await parent.request.get(
+        `${origin}/api/v1/families/${family}/children/${hosted!.id}/time?period=${period}&from=${from}`,
+      )
+    ).json()) as Days & { range: { from: string }; group: string };
+    assert.equal(
+      child.range.from,
+      from,
+      "the child's time starts on the class's day",
+    );
+    const classMinutes = dayMinutes(classTime.students);
+    const childMinutes = dayMinutes([child]);
+    assert.ok(childMinutes > 0, "the fixture gave the child elsewhere time");
+    return {
+      both: Math.round(classMinutes + childMinutes),
+      classOnly: Math.round(classMinutes),
+      group: child.group,
+    };
+  };
+  const totalShown = async (page: import("playwright").Page) =>
+    (
+      await page
+        .locator("dl > div", {
+          has: page.locator("dt", { hasText: /^active minutes$/ }),
+        })
+        .locator("dd")
+        .first()
+        .textContent()
+    )?.trim() ?? "";
+  const timeRoute = /\/families\/[^/]+\/children\/[^/]+\/time\?/;
   for (const width of [390, 1280]) {
     const context = await signedIn("parent-day1", width);
     const page = await context.newPage();
-    await page.goto(`${origin}/family/${family}/time?period=term`);
-    await page.waitForSelector("[data-time-elsewhere]", { timeout: 30_000 });
-    await page.waitForLoadState("networkidle").catch(() => undefined);
-    await page.waitForTimeout(1000);
-    const text = (await page.textContent("main")) ?? "";
-    assert.match(
-      text,
-      /Elsewhere Kid/,
-      "the child elsewhere is in Family Time",
-    );
-    assert.match(text, /In another group/);
-    assert.ok(!/Student \d/.test(text), "a tutor's other child appeared");
-    // M14/M15: the dates, totals and export are the class's, and say whose;
-    // the child elsewhere has their own labelled scope, outside them.
-    const scope = (await page.textContent("[data-time-scope]")) ?? "";
-    assert.match(scope, /in your family’s class/, `scope: ${scope}`);
-    assert.match(scope, /Elsewhere Kid practices in another group/);
-    assert.ok(
-      !/Elsewhere Kid/.test(scope.split(".")[0]!),
-      "the class scope names the child elsewhere",
-    );
-    const elsewhere = (await page.textContent("[data-time-elsewhere]")) ?? "";
-    assert.match(
-      elsewhere,
-      /not the dates or the measure above, and not in its totals or its export/,
-    );
-    const classTotal = (await (
-      await context.request.get(
-        `${origin}/api/v1/school/classes/${(await (await context.request.get(`${origin}/api/v1/me`)).json()).familyClass.classId}/time?period=term`,
-      )
-    ).json()) as { students: { minutes: number }[] };
-    const sum = classTotal.students.reduce(
-      (total, row) => total + row.minutes,
-      0,
-    );
-    if (sum > 0) {
-      const shown = await minutesShown(page);
-      assert.ok(
-        shown.includes(String(sum)),
-        `the total is the class's ${sum}: ${shown}`,
+    for (const period of width === 1280 ? ["term", "week"] : ["term"]) {
+      const want = await expected(period);
+      await page.goto(`${origin}/family/${family}/time?period=${period}`);
+      await page.waitForSelector(`a[data-student="${hosted.id}"]`, {
+        timeout: 30_000,
+      });
+      await page.waitForLoadState("networkidle").catch(() => undefined);
+      const text = (await page.textContent("main")) ?? "";
+      assert.ok(!/Student \d/.test(text), "a tutor's other child appeared");
+      assert.equal(
+        await page.locator("[data-time-scope], [data-time-elsewhere]").count(),
+        0,
+        "one report: no separate scope or second section",
+      );
+      const name =
+        (await page.textContent(`a[data-student="${hosted.id}"]`)) ?? "";
+      assert.match(name, /Elsewhere Kid/);
+      assert.ok(name.includes(want.group), `the row names its group: ${name}`);
+      assert.equal(
+        await totalShown(page),
+        want.both.toLocaleString("en-US"),
+        `${period}: the total is the class's plus the child's`,
+      );
+      assert.notEqual(want.both, want.classOnly);
+      console.log(
+        `${width} ${period}: total ${want.both} = class ${want.classOnly} + Elsewhere Kid`,
       );
     }
+    await page.goto(`${origin}/family/${family}/time?period=term`);
+    await page.waitForSelector(`a[data-student="${hosted.id}"]`, {
+      timeout: 30_000,
+    });
     await page.screenshot({
       path: join(shots, `mixed-time-${width}.png`),
       fullPage: true,
     });
-    // M16: the child elsewhere's read fails: "Couldn't load", Try again, and
-    // never a zero, with the class's totals unchanged.
-    const before = await minutesShown(page);
-    await page.route("**/api/v1/families/*/children/*/progress", (route) =>
+    // One export: the class's lines and the child's, each with its group.
+    const want = await expected("term");
+    const [file] = await Promise.all([
+      page.waitForEvent("download", { timeout: 30_000 }),
+      page.getByRole("button", { name: "Export" }).click(),
+    ]);
+    const csv = await (await file.createReadStream()).toArray();
+    const text = Buffer.concat(csv as Buffer[]).toString("utf8");
+    const lines = text
+      .replace(/^\uFEFF/, "")
+      .trim()
+      .split(/\r\n/);
+    assert.equal(lines[0], "SIS ID,Student,Date,Active minutes,Problems,Group");
+    const elsewhere = lines.filter((line) => line.includes("Elsewhere Kid"));
+    assert.ok(elsewhere.length > 0, "the export holds the child elsewhere");
+    assert.ok(
+      elsewhere.every(
+        (line) =>
+          line.endsWith(`,${want.group}`) || line.endsWith(`,"${want.group}"`),
+      ),
+      `the child's lines name their group: ${elsewhere.join(" | ")}`,
+    );
+    assert.ok(
+      lines.slice(1).every((line) => line.split(",").length >= 6),
+      "every line has a group",
+    );
+    // A part of the export failing saves nothing and says so.
+    await page.route(/\/children\/[^/]+\/time\.csv/, (route) =>
+      route.fulfill({ status: 503, json: { error: "unavailable" } }),
+    );
+    let saved = false;
+    page.on("download", () => (saved = true));
+    await page.getByRole("button", { name: "Export" }).click();
+    await page.getByText(/didn’t download/).waitFor({ timeout: 15_000 });
+    await page.waitForTimeout(500);
+    assert.ok(!saved, "a partial export was saved");
+    await page.unroute(/\/children\/[^/]+\/time\.csv/);
+    // The child elsewhere's read fails: "Couldn't load", Try again, and the
+    // totals the class's alone, saying so; never a zero for them.
+    await page.route(timeRoute, (route) =>
       route.fulfill({ status: 503, json: { error: "unavailable" } }),
     );
     await page.reload();
-    await page.waitForSelector(
-      "[data-time-elsewhere] [data-read-failed] button",
-      {
-        timeout: 30_000,
-      },
-    );
-    await page.waitForTimeout(800);
-    const failed = (await page.textContent("[data-time-elsewhere]")) ?? "";
-    assert.match(failed, /Couldn’t load Elsewhere Kid’s weeks/);
-    assert.ok(
-      !/No time in these dates|0 active minutes in/.test(failed),
-      "a failed read shows as zero",
+    await page.waitForSelector("[data-time-missing] button", {
+      timeout: 30_000,
+    });
+    const missing = (await page.textContent("[data-time-missing]")) ?? "";
+    assert.match(missing, /Couldn’t load Elsewhere Kid’s time/);
+    assert.match(missing, /these totals leave it out/);
+    assert.equal(
+      await totalShown(page),
+      want.classOnly.toLocaleString("en-US"),
+      "a failed read leaves the class's total",
     );
     assert.equal(
-      await minutesShown(page),
-      before,
-      "the totals changed when the read failed",
+      await page.locator(`a[data-student="${hosted.id}"]`).count(),
+      0,
+      "a failed read shows the child as a zero",
     );
     await page.screenshot({
       path: join(shots, `mixed-time-failed-${width}.png`),
       fullPage: true,
     });
     // Try again recovers.
-    await page.unroute("**/api/v1/families/*/children/*/progress");
-    await page.click("[data-time-elsewhere] [data-read-failed] button");
-    await page.waitForSelector("[data-time-elsewhere] [role=img]", {
+    await page.unroute(timeRoute);
+    await page.click("[data-time-missing] button");
+    await page.waitForSelector(`a[data-student="${hosted.id}"]`, {
       timeout: 30_000,
     });
+    assert.equal(await totalShown(page), want.both.toLocaleString("en-US"));
+    assert.equal(await page.locator("[data-time-missing]").count(), 0);
     await context.close();
     console.log(
-      `${width}: Family Time scopes the class and the child elsewhere; a failed read says so and recovers`,
+      `${width}: one report and one export; a failed read says so and recovers`,
     );
   }
   await tutor.close();

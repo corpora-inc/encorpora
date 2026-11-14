@@ -13,7 +13,38 @@ export { keptPerson, offersWholeClass, wholeClass } from "./host-scope";
  * the class's people it shows and what it calls them from here; it never
  * asks which space it is in.
  */
+/** Someone of the host's own who isn't in this class (a family's child in
+ * another family's group): Time reads them for the same dates and puts them
+ * in its rows, totals and export, labelled by their group. */
+/** Someone's time over a range, in their own group. */
+export type OtherTime = {
+  group: string;
+  minutes: number;
+  problems: number;
+  range: { from: string; to: string };
+  days: { day: string; minutes: number; problems: number }[];
+};
+export type OtherLearner = {
+  id: string;
+  name: string;
+  /** Their own page in this host. */
+  page: string;
+  /** Their time over the class's period, from its first day (`from`). */
+  time: (
+    period: "week" | "month" | "term",
+    from: string,
+  ) => {
+    queryKey: readonly unknown[];
+    enabled: boolean;
+    queryFn: (context: { signal: AbortSignal }) => Promise<OtherTime>;
+  };
+  /** Their time export's address for the same period and first day. */
+  csv: (period: "week" | "month" | "term", from: string) => string;
+};
+
 export type ClassHost = HostScope & {
+  /** The host's own people outside this class (Time reads them too). */
+  others?: readonly OtherLearner[];
   place: { org: string; class: string };
   /** The frame around the page. */
   Frame: (props: {
