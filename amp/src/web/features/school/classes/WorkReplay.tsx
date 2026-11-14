@@ -130,9 +130,12 @@ export function WorkReplay({
   const covered = layer ? layer.covered : readStack(raw[OPEN_KEY]).length > 0;
   // The reader's own answer (`/me`) reads from their own practice; a
   // student's from their record.
+  // One shape for both: the same response, under each one's own key.
   const options = (id: string) =>
     own
-      ? ownWorkReplayOptions(session, id, skill)
+      ? (ownWorkReplayOptions(session, id, skill) as unknown as ReturnType<
+          typeof workReplayOptions
+        >)
       : workReplayOptions(session, student, id, skill);
   const entityOf = (id: string) => (own ? ownWork(id) : work(student, id));
   const query = useQuery(options(attempt));
