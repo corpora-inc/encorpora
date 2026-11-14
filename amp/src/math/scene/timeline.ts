@@ -150,23 +150,38 @@ export function frameAt(
   for (let k = 0; k <= Math.min(step, steps.length - 1); k++) {
     const p = k < step ? 1 : clamp(progress);
     const current = k === step;
+    // A step that takes parts away and brings others in does it in turn: out
+    // during its first half, in during its second. Two labels crossing in one
+    // place would otherwise read as one garbled label for the length of the fade.
+    const swap =
+      steps[k]!.actions.some((a) => a.do === "disappear") &&
+      steps[k]!.actions.some((a) => a.do === "appear");
+    const pOut = swap ? clamp(p * 2) : p,
+      pIn = swap ? clamp(p * 2 - 1) : p;
     for (const a of steps[k]!.actions) {
       const hit = items.filter((d) => matches(d.id, a.target));
       hit.forEach((d, i) => {
         const st = get(d.id);
-        let q = p;
+        let q = a.do === "appear" ? pIn : a.do === "disappear" ? pOut : p;
         if (a.do === "appear" && a.stagger && hit.length > 1) {
           const span = 0.4,
             start = (i / (hit.length - 1)) * (1 - span);
-          q = clamp((p - start) / span);
+          q = clamp((pIn - start) / span);
         }
         switch (a.do) {
-          case "appear":
-            st.opacity = q;
+          // Both fade from where the part already is: bringing in a part that
+          // is showing leaves it showing, and taking away a part that is
+          // hidden leaves it hidden. Neither flashes it.
+          case "appear": {
+            const from = st.opacity ?? 1;
+            st.opacity = from + (1 - from) * q;
             break;
-          case "disappear":
-            st.opacity = 1 - q;
+          }
+          case "disappear": {
+            const from = st.opacity ?? 1;
+            st.opacity = from * (1 - q);
             break;
+          }
           case "trace":
             if (d.k === "line" || (d.k === "path" && d.fill === "none")) {
               st.opacity = q > 0 ? 1 : 0;

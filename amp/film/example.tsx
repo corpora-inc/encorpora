@@ -17,6 +17,17 @@ export type MountedFigure = {
 };
 
 /**
+ * True when the first thing a shot does to its scene is clear parts away (a scene
+ * action of `disappear`s only, on the shot's first cue): those parts were never meant to be seen.
+ */
+export function startsCleared(list: { a: Action; t0: number }[]): boolean {
+  const first = list.find((e) => e.a.do === "scene");
+  if (!first || first.a.do !== "scene") return false;
+  const start = Math.min(...list.map((e) => e.t0));
+  return first.t0 <= start + 0.05 && first.a.actions.length > 0 && first.a.actions.every((x) => x.do === "disappear");
+}
+
+/**
  * A shot with figure {scene: ...} shows that scene; {example: true} shows the
  * template's own figure (`figure`). `scene` actions drive their parts.
  */
@@ -51,15 +62,18 @@ export function mountExample(figure: any, host: HTMLElement, shot: Shot, list: {
       s.style.maxWidth = "none";
       s.style.maxHeight = "none";
     };
-    draw(steps.length ? frameAt(layout, steps, 0, 0) : undefined);
+    // A shot whose very first action only takes parts away begins without them:
+    // drawn at progress 0 they would show until the first word and then vanish.
+    const cleared = startsCleared(list);
+    draw(steps.length ? frameAt(layout, steps, 0, cleared ? 1 : 0) : undefined);
     fit();
     const seek = (t: number) => {
       if (!steps.length) return;
       let i = -1;
       for (let k = 0; k < acts.length; k++) if (t >= acts[k]!.t0) i = k;
       const step = Math.max(0, i);
-      const u = i < 0 ? 0 : Math.min(1, (t - acts[step]!.t0) / acts[step]!.dur);
-      draw(frameAt(layout, steps, step, u));
+      const u = i < 0 ? (cleared ? 1 : 0) : Math.min(1, (t - acts[step]!.t0) / acts[step]!.dur);
+      draw(frameAt(layout, steps, step, step === 0 && cleared ? 1 : u));
       fit();
     };
     return { seek, issues, notes };
