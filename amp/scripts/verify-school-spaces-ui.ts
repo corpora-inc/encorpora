@@ -157,6 +157,8 @@ async function settled(page: Page) {
 
 /** Every width and theme: nothing scrolls sideways, and a shot of each. */
 async function capture(page: Page, name: string) {
+  // The pointer off the page, so no control is shot in its hover state.
+  await page.mouse.move(0, 0);
   await settled(page);
   const start = page.viewportSize()!;
   for (const width of WIDTHS) {
