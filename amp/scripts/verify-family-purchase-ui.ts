@@ -19,6 +19,7 @@ import { mkdirSync } from "node:fs";
 import { join } from "node:path";
 import pg from "pg";
 import { chromium } from "playwright";
+import { analyticsSelfTest, stubAnalytics } from "./analytics-stub";
 
 const origin = process.env.AMP_PREVIEW_ORIGIN ?? "http://127.0.0.1:4940";
 const database = process.env.AMP_PREVIEW_DATABASE_URL ?? "";
@@ -47,10 +48,9 @@ try {
       },
     );
     assert.ok(signIn.ok(), `sign-in ${signIn.status()}`);
-    // Product measurement is not under test and never sent from here.
-    await context.route("**/api/v1/events", (route) =>
-      route.fulfill({ status: 202, json: {} }),
-    );
+    // Product measurement is not under test and never leaves the page, even
+    // as a page closes (scripts/analytics-stub.ts).
+    await stubAnalytics(context);
     const places = (await (
       await context.request.get(`${origin}/api/v1/families`)
     ).json()) as {
@@ -62,6 +62,17 @@ try {
     const projection = (await (
       await context.request.get(`${origin}/api/v1/families/${family}`)
     ).json()) as { children: { id: string; access: { hasAccess: boolean } }[] };
+    if (width === 390) {
+      const sent = await analyticsSelfTest(
+        context,
+        origin,
+        [`/family/${family}`, `/family/${family}/settings`],
+        pool,
+      );
+      console.log(
+        `analytics: ${sent} sends stubbed in the page; none reached the server`,
+      );
+    }
     const child = projection.children.find((entry) => !entry.access.hasAccess);
     if (!child) {
       console.log(`${width}: every child already has access; reseed to rerun`);
