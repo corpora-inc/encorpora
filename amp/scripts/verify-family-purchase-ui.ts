@@ -56,12 +56,22 @@ try {
     ).json()) as {
       families: { familyId: string; role: string }[];
     };
-    const family = places.families.find(
-      (entry) => entry.role === "holder",
-    )!.familyId;
+    // The family this account holds; a second parent's family is the one
+    // they were invited to (only its holder buys, so it is checked below).
+    const entry =
+      places.families.find((place) => place.role === "holder") ??
+      places.families[0];
+    assert.ok(entry, "the persona has a family");
+    const family = entry.familyId;
     const projection = (await (
       await context.request.get(`${origin}/api/v1/families/${family}`)
-    ).json()) as { children: { id: string; access: { hasAccess: boolean } }[] };
+    ).json()) as {
+      children: {
+        id: string;
+        access: { hasAccess: boolean };
+        capabilities: { continuePurchase: boolean };
+      }[];
+    };
     if (width === 390) {
       const sent = await analyticsSelfTest(
         context,
@@ -73,7 +83,29 @@ try {
         `analytics: ${sent} sends stubbed in the page; none reached the server`,
       );
     }
-    const child = projection.children.find((entry) => !entry.access.hasAccess);
+    const waiting = projection.children.filter(
+      (child) => !child.access.hasAccess,
+    );
+    // Only the family's holder is offered a purchase: no button for anyone
+    // else, so nothing for this persona to buy.
+    if (entry.role !== "holder") {
+      for (const child of waiting) {
+        assert.equal(child.capabilities.continuePurchase, false);
+        const page = await context.newPage();
+        await page.goto(`${origin}/family/${family}/kids/${child.id}`);
+        await page.waitForSelector("[data-child-page]");
+        assert.equal(
+          await page.locator(`[data-continue="${child.id}"]`).count(),
+          0,
+          "a second parent is never offered a purchase that would fail",
+        );
+        await page.close();
+      }
+      console.log(`${width}: ${entry.role} is not offered a purchase`);
+      await context.close();
+      continue;
+    }
+    const child = waiting[0];
     if (!child) {
       console.log(`${width}: every child already has access; reseed to rerun`);
       await context.close();
