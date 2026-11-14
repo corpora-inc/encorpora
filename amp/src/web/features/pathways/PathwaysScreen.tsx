@@ -26,7 +26,8 @@ import { useUrlSearchText } from "../../lib/url-search-text";
 import { useLearnerStore } from "../../learner-store";
 import type { AuthSession } from "../../auth";
 import { gradeName } from "../../Home";
-import { fitScale, LevelRows } from "../../ui/level-range";
+import { fitScale, LevelRows, WHOLE_SCALE } from "../../ui/level-range";
+import { measured } from "../../../learning/level-check";
 import { useLessonSearch, type SearchResult } from "../../lib/lesson-search";
 import { SearchResults, type SearchActions } from "../search/SearchResults";
 import { useSearchCorpus } from "../search/search-corpus";
@@ -63,7 +64,10 @@ import {
   profileLearner,
 } from "../../lib/adult-learner";
 import { secondParentChild, secondParentChildren } from "../second-parent/api";
-import { useAddressedIdentity } from "../spaces/useAddressed";
+import {
+  useAddressedIdentity,
+  useAddressedRecordsReadable,
+} from "../spaces/useAddressed";
 import { childAddress, childPath } from "../spaces/identity";
 import { childFamily } from "../spaces/learner-urls";
 import { familyPlacesOptions } from "../family/api";
@@ -188,7 +192,10 @@ function LearnerMap({ session }: { session: AuthSession }) {
   // from their page or the family's Today, never this adult's /practice.
   const viewOnly =
     (!own && !!secondParentChild(account, learnerId)) || (childMap && !own);
-  const learner = learners.find((l) => l.id === learnerId);
+  const readable = useAddressedRecordsReadable();
+  const learner = readable
+    ? learners.find((l) => l.id === learnerId)
+    : undefined;
   const progress = useQuery({
     queryKey: ["account", session.accountId, "pathways", learner?.id],
     enabled: !!learner,
@@ -881,12 +888,15 @@ function PathwayLevels({
   frontier,
 }: {
   frontier: {
-    overall: { level: number; sd: number };
+    overall: { level: number; sd: number; answered?: number };
     strands: Record<string, { level: number; sd: number; answered?: number }>;
   };
 }) {
+  // Before the first answer: not measured yet, the whole scale (Q-201).
+  if (!measured(frontier.overall))
+    return <LevelRows overall={null} areas={[]} scale={WHOLE_SCALE} moving />;
   const areas = Object.entries(frontier.strands)
-    .filter(([, estimate]) => (estimate.answered ?? 1) > 0)
+    .filter(([, estimate]) => measured(estimate))
     .map(([id, estimate]) => ({
       id,
       label: strandNames[id] ?? id,

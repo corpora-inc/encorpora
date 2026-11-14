@@ -201,8 +201,11 @@ export async function practiceAtLevel(
   });
 }
 
-/** Every strand starts again at `levels` from the next problem: a new
- * revision for all of them, and no focus left from before. */
+/** A fresh simulation at `levels` from the next problem: a new epoch, so
+ * the overall estimate, recent answers and skips start empty and an answer
+ * to a problem served before (another tab) never counts toward it; and every
+ * strand starting there, with no focus left from before. Usage counters
+ * (the free allowance) live on the learner and are kept. */
 function startsAt(
   previous: PracticeSettings,
   levels: ProfileLevels,
@@ -211,6 +214,7 @@ function startsAt(
   return {
     ...previous,
     revision,
+    epoch: previous.epoch + 1,
     focusSkillId: null,
     strandStarts: Object.fromEntries(
       profileStrands.map((strand) => [
@@ -267,8 +271,11 @@ export async function updateProfile(
 ): Promise<PracticeProfile> {
   return families.transaction(accountId, async (client) => {
     const found = await client.query<{ band: StartingChoice | null }>(
+      // Practice at a level's profile is never renamed or adjusted as a
+      // saved one: its level is chosen again (practiceAtLevel).
       `SELECT starting_band AS band FROM amp_learners
-       WHERE id=$1 AND account_id=$2 AND simulation AND deleted_at IS NULL FOR UPDATE`,
+       WHERE id=$1 AND account_id=$2 AND simulation AND level_practice IS NULL
+         AND deleted_at IS NULL FOR UPDATE`,
       [learnerId, accountId],
     );
     if (!found.rowCount) throw new FamilyError(404, "profile_not_found");

@@ -305,6 +305,48 @@ test(
             revision: restarted.revision,
           });
 
+        // Two tabs: one has a problem open at grade 4 when the other
+        // chooses grade 9. The new choice is a fresh simulation: nothing
+        // answered before counts toward it, and the old tab's answer, given
+        // after, never does either.
+        const oldTab = await send(
+          "POST",
+          `/api/v1/learners/${id}/batches`,
+          helper,
+          { count: 1 },
+        );
+        assert.equal(oldTab.statusCode, 200, oldTab.body);
+        const stale = oldTab.json().problems[0];
+        const ninth = await choose(9, "on-level");
+        assert.equal(ninth.json().learnerId, id);
+        const frontierOf = async () => {
+          const response = await send(
+            "GET",
+            `/api/v1/learners/${id}/frontier`,
+            helper,
+          );
+          assert.equal(response.statusCode, 200, response.body);
+          return response.json();
+        };
+        const fresh = await frontierOf();
+        assert.equal(fresh.overall.answered, 0, "nothing carries over");
+        const late = await send(
+          "POST",
+          `/api/v1/learners/${id}/attempts`,
+          helper,
+          { problemId: stale.id, requestId: randomUUID(), response: "1" },
+        );
+        assert.ok([200, 409].includes(late.statusCode), late.body);
+        const afterLate = await frontierOf();
+        assert.equal(
+          afterLate.overall.answered,
+          0,
+          "the old tab's answer is not counted",
+        );
+        assert.equal(afterLate.overall.level, fresh.overall.level);
+        await practice(helper, id);
+        assert.equal((await frontierOf()).overall.answered, 1);
+
         // A new choice reuses it, named by the choice, never a person.
         const algebra = await choose(9, "on-level");
         assert.equal(algebra.json().learnerId, id);
@@ -337,6 +379,16 @@ test(
           ).rows[0].n,
           1,
         );
+
+        // It is never renamed or adjusted as a saved profile: that would
+        // be lost at the next choice.
+        const renamed = await send(
+          "PATCH",
+          `/api/v1/me/profiles/${id}`,
+          helper,
+          { label: "Niece Fixture" },
+        );
+        assert.equal(renamed.statusCode, 404, renamed.body);
 
         // Another account's level profile is its own; nothing crosses.
         const other = await user("Remy Fixture");

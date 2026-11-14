@@ -42,7 +42,7 @@ const WIDTHS =
     : [320, 390, 768, 1280];
 const SCHEMES = ["light", "dark"] as const;
 const PASSWORD = "design pass persona passphrase";
-/** `--only day0,answer,level,family`: some parts of the journey. */
+/** `--only day0,answer,level,family,live,served,levelmode`: some parts. */
 const onlyArg = process.argv.indexOf("--only");
 const ONLY =
   onlyArg > 0 ? new Set(process.argv[onlyArg + 1]!.split(",")) : null;
@@ -403,6 +403,159 @@ if (part("family"))
       });
       await context.close();
     }
+
+// 4. The first answer while /me is open (CP-5 #5): the same bar takes the
+// estimate in place. Its element and box never change, and nothing shifts.
+if (part("live")) {
+  const live = await newAdult();
+  const context = await reader(390, "light", "reduce");
+  await signIn(context, live.email);
+  const page = await context.newPage();
+  await page.goto(`${origin}/me`, { waitUntil: "load" });
+  await page.locator("[data-level-start] [data-unmeasured]").waitFor();
+  await settle(page);
+  const bar = await page
+    .locator("[data-level-start] [data-level-bar]")
+    .elementHandle();
+  const before = await bar!.boundingBox();
+  const mark = await shift(page);
+  const batch = await api<{ problems: { id: string }[] }>(
+    context.request,
+    "POST",
+    `/learners/${live.learnerId}/batches`,
+    { count: 1 },
+  );
+  await api(context.request, "POST", `/learners/${live.learnerId}/attempts`, {
+    problemId: batch.problems[0]!.id,
+    requestId: randomUUID(),
+    response: "1",
+  });
+  // Back to the tab: the account's data refreshes, as it does on focus.
+  await page.evaluate(() => {
+    window.dispatchEvent(new Event("visibilitychange"));
+    document.dispatchEvent(new Event("visibilitychange"));
+  });
+  await page.locator("[data-level-found]").waitFor({ timeout: 30000 });
+  await page.waitForTimeout(800);
+  const after = await bar!.boundingBox();
+  if (!(await bar!.evaluate((node) => node.isConnected)))
+    fail("live first answer", "the bar was replaced");
+  if (await bar!.evaluate((node) => node.hasAttribute("data-unmeasured")))
+    fail("live first answer", "the bar still reads not measured");
+  if (
+    !before ||
+    !after ||
+    Math.abs(before.x - after.x) > 0.5 ||
+    Math.abs(before.y - after.y) > 0.5 ||
+    Math.abs(before.width - after.width) > 0.5 ||
+    Math.abs(before.height - after.height) > 0.5
+  )
+    fail(
+      "live first answer",
+      `the bar moved: ${JSON.stringify(before)} → ${JSON.stringify(after)}`,
+    );
+  const moved = (await shift(page)) - mark;
+  if (moved > 0.001)
+    fail("live first answer", `layout shift ${moved.toFixed(4)}`);
+  await page.screenshot({
+    path: join(shots, "me-live-first-answer-390.png"),
+    fullPage: true,
+  });
+  await context.close();
+}
+
+// 5. Served but unanswered is not measured (CP-5 #3): a new adult's
+// Pathways, and a family child with a batch served and nothing answered.
+if (part("served")) {
+  const fresh = await newAdult();
+  const context = await reader(1280, "light");
+  await signIn(context, fresh.email);
+  await api(context.request, "POST", `/learners/${fresh.learnerId}/batches`, {
+    count: 1,
+  });
+  const page = await context.newPage();
+  await page.goto(`${origin}/pathways`, { waitUntil: "load" });
+  await settle(page);
+  const details = page.locator("[data-unmeasured]");
+  await details
+    .first()
+    .waitFor({ state: "attached", timeout: 30000 })
+    .catch(() => undefined);
+  if (!(await details.count()))
+    fail("pathways day 0", "a served batch reads as a level");
+  await context.close();
+
+  const parent = await reader(390, "light");
+  await signIn(parent, "parent-new@personas.amp.test");
+  const child = await parent.newPage();
+  await child.goto(`${origin}/family`, { waitUntil: "load" });
+  await child
+    .getByRole("link", { name: /^Child 2/ })
+    .first()
+    .click();
+  await child.waitForURL(/\/kids\//);
+  const learner = child.url().split("/kids/")[1]!.split(/[/?#]/)[0]!;
+  await api(parent.request, "POST", `/learners/${learner}/batches`, {
+    count: 1,
+  });
+  await child.reload({ waitUntil: "load" });
+  await child
+    .locator("[data-levels-not-yet] [data-unmeasured]")
+    .waitFor({ timeout: 30000 })
+    .catch(() =>
+      fail("family child served", "a served batch reads as a level"),
+    );
+  await child.screenshot({
+    path: join(shots, "family-child-served-390.png"),
+    fullPage: true,
+  });
+
+  // 6. Another family's address asks nothing about this child (CP-5 #6).
+  const asked: string[] = [];
+  child.on("request", (request) => {
+    if (/\/api\/v1\/learners\/[^/]+\/(progress|frontier)\b/.test(request.url()))
+      asked.push(request.url());
+  });
+  await child.goto(
+    `${origin}/family/00000000-0000-4000-8000-000000000000/kids/${learner}/pathways`,
+    { waitUntil: "load" },
+  );
+  await settle(child);
+  if (asked.length) fail("wrong family", `asked ${asked[0]}`);
+  await parent.close();
+}
+
+// 7. Practice at a level's Level tab and drawer go back to /me/level, never
+// a saved profile's editor (CP-5 #2).
+if (part("levelmode")) {
+  const context = await reader(1280, "light");
+  await signIn(context, "adult-3wk@personas.amp.test");
+  const page = await context.newPage();
+  await page.goto(`${origin}/me/level?grade=4&pace=on-level`, {
+    waitUntil: "load",
+  });
+  await page.getByRole("button", { name: "Start practicing" }).click();
+  await page.waitForURL(/\/practice\?profile=/);
+  const profile = new URL(page.url()).searchParams.get("profile")!;
+  await page.goto(`${origin}/pathways?profile=${profile}`, {
+    waitUntil: "load",
+  });
+  await settle(page);
+  const hrefs = await page
+    .locator("a[href]")
+    .evaluateAll((links) =>
+      links.map((link) => link.getAttribute("href") ?? ""),
+    );
+  if (hrefs.some((href) => href.includes(`me/profiles/${profile}`)))
+    fail("level mode", "a link opens the saved-profile editor");
+  await page.goto(`${origin}/me/profiles/${profile}`, { waitUntil: "load" });
+  await page
+    .waitForURL(/\/me\/level/, { timeout: 30000 })
+    .catch(() =>
+      fail("level mode", `its editor address stays at ${page.url()}`),
+    );
+  await context.close();
+}
 
 await browser.close();
 if (failures.length) {

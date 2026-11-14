@@ -58,9 +58,7 @@ export function WeekFacts({
         )}
         {week.objectives > 0 && (
           <div>
-            <dt>
-              {week.objectives === 1 ? earned[0] : earned[1]}
-            </dt>
+            <dt>{week.objectives === 1 ? earned[0] : earned[1]}</dt>
             <dd>{number(week.objectives)}</dd>
           </div>
         )}

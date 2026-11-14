@@ -156,13 +156,27 @@ export function familyRoutes(root: AnyRoute) {
     createRoute({
       getParentRoute: () => family,
       path,
-      loader: ({ location }) =>
-        import("../lib/learning-view").then((view) =>
-          view.preloadLearningView({
-            pathname: location.pathname,
-            search: location.search as Record<string, unknown>,
-          }),
-        ),
+      // The family's own projection decides first, as the screen does:
+      // nothing of a child's is asked unless this family holds them and
+      // this reader may read their progress (CP-5 #6). Loaders of a parent
+      // and a child run side by side, so this one waits on it itself.
+      loader: async ({ context, params, location }) => {
+        const { session } = context as unknown as { session: AuthSession };
+        const { family: id, learner } = params as {
+          family: string;
+          learner: string;
+        };
+        const data = await queryClient
+          .ensureQueryData(familyOptions(session, id))
+          .catch(() => null);
+        const child = data?.children.find((entry) => entry.id === learner);
+        if (!child?.capabilities.readProgress) return;
+        const view = await import("../lib/learning-view");
+        await view.preloadLearningView({
+          pathname: location.pathname,
+          search: location.search as Record<string, unknown>,
+        });
+      },
       component: lazyRouteComponent(load as never, name as never),
     });
   return [

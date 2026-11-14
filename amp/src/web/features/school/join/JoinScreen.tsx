@@ -179,7 +179,7 @@ export function JoinScreen() {
             ) : (
               <>
                 <CardMark />
-                Scan my card
+                Scan your card
               </>
             )}
           </Button>
