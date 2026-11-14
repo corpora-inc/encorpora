@@ -14,6 +14,9 @@ export const startSchoolClassSchema = z.strictObject({
   authorized: z.literal(true),
   names: z.array(plainName).max(500).default([]),
   gradeLevel: gradeLevelSchema.optional(),
+  /** The class's course ("4", "algebra-1"): where a rostered student with
+   * no birth year begins (SPEC R14). None: each student's own grade. */
+  courseBands: z.array(z.string().trim().min(1).max(40)).max(1).optional(),
 });
 export type StartSchoolClass = z.infer<typeof startSchoolClassSchema>;
 export const pilotStateSchema = z.object({

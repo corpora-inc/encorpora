@@ -79,28 +79,8 @@ import {
 import { SMALL_CLASS } from "../navigation/shell-frame";
 import { meOptions } from "../../lib/query";
 import styles from "./School.module.css";
+import { COURSE_OPTIONS, courseLabel } from "./courses";
 
-const COURSE_OPTIONS: readonly (readonly [string, string])[] = [
-  ["", "Each student’s own grade"],
-  ["K", "Kindergarten"],
-  ...Array.from(
-    { length: 8 },
-    (_, index) => [String(index + 1), `Grade ${index + 1}`] as const,
-  ),
-  ["algebra-1", "Algebra 1"],
-  ["geometry", "Geometry"],
-  ["algebra-2", "Algebra 2"],
-  ["precalculus", "Precalculus"],
-];
-const courseLabel = (bands: readonly string[]) =>
-  bands.length
-    ? bands
-        .map(
-          (band) =>
-            COURSE_OPTIONS.find(([value]) => value === band)?.[1] ?? band,
-        )
-        .join(", ")
-    : "Own grades";
 const GRADING: GradingKind[] = ["year", "semester", "trimester", "quarter"];
 const gradingLabel = (kind: GradingKind) =>
   kind === "year"

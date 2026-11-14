@@ -18,6 +18,7 @@ import { currentSession, orgsOptions, refreshSchool } from "../api";
 import { Actions, Aside, PlainPage, plainStyles } from "../PlainPage";
 import { Authorization } from "./Authorization";
 import { classAuthorizationOptions, pilotApi } from "./api";
+import { COURSE_OPTIONS, courseFromName } from "../courses";
 
 const NEW = "new";
 type Draft = {
@@ -30,6 +31,8 @@ type Draft = {
   signerTitle: string;
   signerChanged: boolean;
   authorized: boolean;
+  /** The course the teacher chose; null follows the class's name. */
+  course: string | null;
 };
 const blank: Omit<Draft, "owner"> = {
   originOrg: null,
@@ -40,6 +43,7 @@ const blank: Omit<Draft, "owner"> = {
   signerTitle: "Teacher",
   signerChanged: false,
   authorized: false,
+  course: null,
 };
 /** What's typed survives a trip to the agreement or the demo and back. */
 const useDraft = create<
@@ -122,7 +126,10 @@ export function SchoolStartScreen() {
       (!!reused && !(mine && draft.signerChanged)) ||
       (mine && draft.authorized),
     signerChanged: mine && draft.signerChanged,
+    course: mine ? draft.course : null,
   };
+  // The class's course, suggested by its name until the teacher picks one.
+  const course = value.course ?? courseFromName(value.className) ?? "";
   const edit = (change: Partial<Draft>) =>
     draft.set(session.accountId, {
       ...value,
@@ -169,6 +176,7 @@ export function SchoolStartScreen() {
       agreementVersion: AGREEMENT_VERSION,
       authorized: value.authorized,
       names: [],
+      ...(course ? { courseBands: [course] } : {}),
     });
     if (!parsed.success) {
       const errors: typeof fieldErrors = {};
@@ -278,6 +286,25 @@ export function SchoolStartScreen() {
           error={fieldErrors.className}
           disabled={busy}
         />
+        {/* Where its students begin: a grade 4 class starts at grade 4,
+            never at the bottom of the curriculum (R14). */}
+        <div className={plainStyles.field}>
+          <span className={plainStyles.label} aria-hidden="true">
+            Course
+          </span>
+          <Select
+            aria-label="Course"
+            value={course}
+            onValueChange={(next) => edit({ course: next })}
+            disabled={busy}
+          >
+            {COURSE_OPTIONS.map(([option, label]) => (
+              <option key={option} value={option}>
+                {label}
+              </option>
+            ))}
+          </Select>
+        </div>
         <Authorization
           key={school?.id ?? NEW}
           acceptedAt={reused?.acceptedAt}

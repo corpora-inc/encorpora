@@ -133,7 +133,13 @@ export async function startSchoolClass(
     const klass = await repo.createClassIn(
       client,
       orgId,
-      { name: input.className, gradingKind: "year" },
+      {
+        name: input.className,
+        gradingKind: "year",
+        ...(input.courseBands?.length
+          ? { courseBands: input.courseBands }
+          : {}),
+      },
       personId,
     );
     const org = await repo.org(client, orgId);
