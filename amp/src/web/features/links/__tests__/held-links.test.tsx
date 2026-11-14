@@ -1,5 +1,5 @@
 import { QueryClientProvider } from "@tanstack/react-query";
-import { act, cleanup, render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import {
   createMemoryHistory,
   createRootRoute,
@@ -8,11 +8,10 @@ import {
 } from "@tanstack/react-router";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import {
-  dropAllCapabilities,
   heldCapability,
   takeCapabilityFragment,
 } from "../../../capability-entry";
-import { queryClient, sessionOptions } from "../../../lib/query";
+import { meOptions, queryClient, sessionOptions } from "../../../lib/query";
 import { AppError } from "../../../lib/AppError";
 import {
   approvals,
@@ -33,13 +32,13 @@ beforeEach(() => {
   queryClient.clear();
   localStorage.clear();
   sessionStorage.clear();
-  dropAllCapabilities();
+  forgetEveryLink();
   window.scrollTo = () => {};
 });
 afterEach(() => {
   cleanup();
   queryClient.clear();
-  dropAllCapabilities();
+  forgetEveryLink();
   vi.restoreAllMocks();
 });
 
@@ -53,10 +52,14 @@ test("CP-2 r3 N2: an opened link leaves nothing another tab could copy", () => {
 });
 
 async function approvalScreen() {
-  queryClient.setQueryData(sessionOptions.queryKey, {
+  const session = {
     accountId: "amp|terminal",
     token: "synthetic",
-  } as never);
+  };
+  queryClient.setQueryData(sessionOptions.queryKey, session);
+  // This screen can inspect a link before the account check succeeds. Keep
+  // that check local instead of letting an unrelated real /me request race.
+  queryClient.setQueryData(meOptions(session).queryKey, { signedIn: false });
   const router = createRouter({
     routeTree: createRootRoute({ component: ApproveLinkScreen }),
     history: createMemoryHistory({ initialEntries: ["/"] }),
@@ -67,7 +70,8 @@ async function approvalScreen() {
       <RouterProvider router={router} />
     </QueryClientProvider>,
   );
-  await act(() => new Promise((resolve) => setTimeout(resolve, 25)));
+  // A fixed sleep can finish before Query's notification under CPU load.
+  await screen.findByRole("heading", { level: 1 });
 }
 
 test.each(["used", "expired", "ended"])(
@@ -94,6 +98,9 @@ test("CP-2 r3 N2: a passing network failure keeps the link to try again", async 
   );
   hold();
   await approvalScreen();
+  expect(
+    screen.getByRole("heading", { name: "The link couldn’t be checked" }),
+  ).toBeTruthy();
   expect(heldCapability("/family/approve")).toBe(TOKEN);
 });
 

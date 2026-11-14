@@ -20,6 +20,11 @@ import {
 } from "@tanstack/react-router";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { Providers } from "../../../app/providers";
+import { forgetRetiredSessions } from "../../../lib/session-generation";
+import { forgetEveryLink } from "../forget";
+
+// Link lifetime and account carry assertions do not exercise analytics.
+vi.mock("../../../lib/analytics");
 import {
   dropAllCapabilities,
   heldCapability,
@@ -68,7 +73,8 @@ const approval = {
   className: "Class",
   teachers: ["Teacher"],
 };
-const pause = () => new Promise((resolve) => setTimeout(resolve, 30));
+// Flush observer updates without depending on a real-time sleep.
+const flushUpdates = () => vi.advanceTimersByTimeAsync(0);
 const hold = (path: "/school/invite" | "/family/approve") =>
   takeCapabilityFragment(
     { pathname: path, search: "", hash: `#${TOKEN}` },
@@ -85,7 +91,7 @@ async function mount(component: () => React.ReactNode, path: string) {
       <RouterProvider router={router} />
     </Providers>,
   );
-  await act(pause);
+  await act(flushUpdates);
 }
 function signIn(session: typeof parent, email: string) {
   queryClient.setQueryData(sessionOptions.queryKey, session);
@@ -110,21 +116,35 @@ const screens = {
 };
 
 beforeEach(() => {
+  vi.useFakeTimers();
+  forgetRetiredSessions();
   queryClient.clear();
   localStorage.clear();
   sessionStorage.clear();
-  dropAllCapabilities();
+  forgetEveryLink();
   h.signedOutTo = [];
   window.scrollTo = () => {};
   queryClient.setQueryData(sessionOptions.queryKey, null);
+  // Account refreshes during a switch stay in this test, too.
+  vi.stubGlobal(
+    "fetch",
+    vi.fn(async (url: string) => {
+      if (url === "/api/v1/me") return Response.json({ signedIn: false });
+      throw new Error(`Unexpected synthetic request ${url}`);
+    }),
+  );
   vi.spyOn(school, "lookupInvite").mockResolvedValue(invite as never);
   vi.spyOn(approvals, "lookup").mockResolvedValue(approval as never);
 });
 afterEach(() => {
   cleanup();
   queryClient.clear();
-  dropAllCapabilities();
+  forgetEveryLink();
+  forgetRetiredSessions();
   vi.restoreAllMocks();
+  vi.unstubAllGlobals();
+  vi.clearAllTimers();
+  vi.useRealTimers();
 });
 
 test.each(["invite", "approval"] as const)(
@@ -148,7 +168,9 @@ test("CP-2 r4 N2: a carried invitation lasts as long as the page's hold", async 
   expect(continuationUrl({ return: "school-invite" })).toBe(
     `/school/invite#${TOKEN}`,
   );
-  vi.spyOn(Date, "now").mockReturnValue(now + HELD_FOR_MS + 100);
+  // The carry is created on click. A fixed clock makes the expiry boundary
+  // independent of the time the host takes to mount the invitation screen.
+  vi.setSystemTime(now + HELD_FOR_MS + 100);
   cleanup();
   dropAllCapabilities();
   expect(continuationUrl({ return: "school-invite" })).toBe("/school/invite");
@@ -210,7 +232,7 @@ test("CP-2 r4 N2: a rate limit keeps the link to try again; a refusal lets it go
   );
   await act(async () => {
     fireEvent.click(screen.getByRole("button", { name: "Try again" }));
-    await pause();
+    await flushUpdates();
   });
   expect(heldCapability("/family/approve")).toBeNull();
   expect(
@@ -226,7 +248,7 @@ test("CP-2 r4 N3: “Use another account” keeps its invitation through that si
     fireEvent.click(
       screen.getByRole("button", { name: "Use another account" }),
     );
-    await pause();
+    await flushUpdates();
   });
   // The provider saw the account leave before the document did.
   expect(queryClient.getQueryData(sessionOptions.queryKey)).toBeNull();
@@ -239,13 +261,13 @@ test("CP-2 r4 N3: “Use another account” keeps its invitation through that si
   const other = { accountId: "amp|carry-other", token: "other" };
   await act(async () => {
     h.changed!(other);
-    await pause();
+    await flushUpdates();
   });
   expect(rememberedInvite()).toBe(TOKEN);
   // From here it is an ordinary carry: the next account change clears it.
   await act(async () => {
     h.changed!({ accountId: "amp|carry-third", token: "third" });
-    await pause();
+    await flushUpdates();
   });
   expect(rememberedInvite()).toBeNull();
 });
@@ -260,7 +282,7 @@ test("CP-2 r4 N3: an approval's “Use another account” returns to the approva
     fireEvent.click(
       screen.getByRole("button", { name: "Use another account" }),
     );
-    await pause();
+    await flushUpdates();
   });
   expect(h.signedOutTo).toEqual(["/sign-in?return=family-approval"]);
   expect(rememberedApproval()).toBe(TOKEN);
