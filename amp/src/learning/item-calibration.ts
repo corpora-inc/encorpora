@@ -84,31 +84,6 @@ export function templateCalibration(
         : base.guess,
   };
 }
-/** How hard a skill is on the engine's own scale: the mean calibrated
- * difficulty of its problem types, or, with none yet, what a new problem
- * type of it would get. Orders a grade's skills (curriculum/areas.ts
- * `easiestFirst`); never a level or a learner estimate. */
-export function skillDifficulty(
-  skillId: string,
-  templates: readonly TemplateMetadata[],
-  nodes: ReadonlyMap<string, Node>,
-): number | undefined {
-  const own = templates.filter((template) => template.skillId === skillId);
-  if (own.length)
-    return (
-      own.reduce(
-        (sum, template) =>
-          sum + templateCalibration(template, nodes).difficulty,
-        0,
-      ) / own.length
-    );
-  const node = nodes.get(skillId);
-  if (!node?.gradeBand) return undefined;
-  return (
-    gradeCalibration(gradeNumber[node.gradeBand]).difficulty +
-    Math.min(4, node.prerequisites?.length ?? 0) * 0.04
-  );
-}
 export function itemSuccess(theta: number, item: ItemCalibration): number {
   return (
     item.guess +

@@ -49,7 +49,6 @@ import {
 } from "../math/engine";
 import { skills } from "../curriculum/catalog";
 import { areaOf } from "../curriculum/areas";
-import { skillDifficulty } from "../learning/item-calibration";
 import { auditCurriculum } from "../curriculum/audit";
 import {
   ApiError,
@@ -59,7 +58,7 @@ import {
 } from "./repository";
 import { answerHelpKinds, type AnswerHelp } from "../schools/help-events.js";
 import type { Authenticator } from "./auth";
-import { planMixedPractice } from "./mixed-practice";
+import { planMixedPractice, skillDifficulty } from "./mixed-practice";
 import { SKIP_USES_FREE_PROBLEM } from "../learning/skip";
 import { isTrialAccount, trialLimits } from "./trials";
 import { isSchoolAccount, studentBearer } from "../schools/principal.js";

@@ -13,7 +13,7 @@ import {
   easiestFirst,
   strandAreas,
 } from "../src/curriculum/areas";
-import { skillDifficulty } from "../src/learning/item-calibration";
+import { skillDifficulty } from "../src/server/mixed-practice";
 
 test("the five areas, in the founder's order", () => {
   assert.deepEqual(
