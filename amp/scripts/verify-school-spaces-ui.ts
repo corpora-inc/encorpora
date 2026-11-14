@@ -157,8 +157,12 @@ async function settled(page: Page) {
 
 /** Every width and theme: nothing scrolls sideways, and a shot of each. */
 async function capture(page: Page, name: string) {
-  // The pointer off the page, so no control is shot in its hover state.
+  // The pointer off the page, so no control is shot in its hover state,
+  // and no colour caught mid-transition between the themes.
   await page.mouse.move(0, 0);
+  await page.addStyleTag({
+    content: "*, *::before, *::after { transition: none !important; }",
+  });
   await settled(page);
   const start = page.viewportSize()!;
   for (const width of WIDTHS) {
