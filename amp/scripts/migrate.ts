@@ -19,9 +19,8 @@ async function migrateOnce(connectionString: string) {
   const pool = createDatabasePool({ connectionString });
   const client = await pool.connect();
   try {
-    await client.query("BEGIN");
-    await client.query("SET LOCAL lock_timeout='5s'");
-    await client.query("SELECT pg_advisory_xact_lock(91347022)");
+    await client.query("SET lock_timeout='5s'");
+    await client.query("SELECT pg_advisory_lock(91347022)");
     await client.query(
       "CREATE TABLE IF NOT EXISTS amp_migrations (name text PRIMARY KEY, checksum text NOT NULL)",
     );
@@ -40,17 +39,20 @@ async function migrateOnce(connectionString: string) {
           throw new Error(`Applied migration changed: ${name}`);
         continue;
       }
+      await client.query("BEGIN");
+      await client.query("SET LOCAL lock_timeout='5s'");
       await client.query(sql);
       await client.query("INSERT INTO amp_migrations VALUES($1,$2)", [
         name,
         checksum,
       ]);
+      await client.query("COMMIT");
     }
-    await client.query("COMMIT");
   } catch (error) {
     await client.query("ROLLBACK");
     throw error;
   } finally {
+    await client.query("SELECT pg_advisory_unlock(91347022)");
     client.release();
     await pool.end();
   }

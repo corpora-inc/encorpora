@@ -109,6 +109,7 @@ export const ACCOUNT_TABLES: Record<string, TableHandling> = {
   amp_commerce_orders: "financial",
   amp_consent_outbox: "consent-evidence",
   amp_consent_policy: "none",
+  amp_course_placement: "none",
   amp_consent_requests: "consent-evidence",
   amp_content_releases: "none",
   amp_data_agreements: "place",

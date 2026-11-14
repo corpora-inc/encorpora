@@ -1,7 +1,7 @@
+import { adultNameSql } from "../account/profile.js";
 import type { PoolClient } from "pg";
 import { activeToday } from "./principal.js";
 import { visibleToSql } from "./demo/sql.js";
-import { PERSON_FIRST, PERSON_NAME } from "./term-grades.js";
 
 /* The teacher in their class (docs/families.md): a teacher of a class who
    practices on their own adult learner is a line on that class's map and board,
@@ -19,6 +19,7 @@ export type ClassTeacher = {
   personId: string;
   learnerId: string;
   accountId: string;
+  adultName: string | null;
   name: string;
   first: string;
   /** Off only when this teacher chose not to show in this class. */
@@ -36,9 +37,9 @@ export async function classTeachers(
   viewer: string | null = null,
 ): Promise<ClassTeacher[]> {
   const { rows } = await db.query(
-    `SELECT DISTINCT ON (lower(${PERSON_NAME}),p.id)
+    `SELECT DISTINCT ON (lower(COALESCE(${adultNameSql()},'')),p.id)
        p.id AS "personId",l.id AS "learnerId",p.account_id AS "accountId",
-       ${PERSON_NAME} AS name,${PERSON_FIRST} AS first,
+       ${adultNameSql()} AS "adultName",COALESCE(${adultNameSql()},'') AS name,COALESCE(${adultNameSql()},'') AS first,
        NOT EXISTS(SELECT 1 FROM amp_scope_settings s WHERE s.scope_kind='class' AND s.scope_id=c.id
          AND s."values"->'${TEACHERS_HIDDEN_KEY}' ? p.id::text) AS shown
      FROM amp_enrollments e
@@ -50,7 +51,7 @@ export async function classTeachers(
        AND ${visibleToSql("p", "$2::text")}
        AND EXISTS(SELECT 1 FROM amp_org_roles r WHERE r.person_id=p.id AND r.role<>'student'
          AND r.org_id=ANY(o.path) AND ${activeToday("r", "o")})
-     ORDER BY lower(${PERSON_NAME}),p.id`,
+     ORDER BY lower(COALESCE(${adultNameSql()},'')),p.id`,
     [classId, viewer],
   );
   return rows;

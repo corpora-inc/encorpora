@@ -1,5 +1,8 @@
 import { parseDocumentProfile } from "../evidence/profile.js";
-import { learningConsentActive } from "../../server/account-access.js";
+import {
+  learningConsentActive,
+  parentAddressConfirmed,
+} from "../../server/account-access.js";
 import { randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import {
@@ -158,6 +161,69 @@ export class StripeRepository {
     );
     return paid.rowCount ? "extra" : "full";
   }
+  /** Shared checkout blockers, batched for Family and rechecked under billing locks. */
+  async checkoutBlockers(
+    db: Pick<PoolClient, "query">,
+    accountId: string,
+    ids: string[],
+  ) {
+    const table = (
+      await db.query(
+        "SELECT to_regclass('amp_account_entitlements') AS relation",
+      )
+    ).rows[0].relation;
+    const unassigned =
+      table &&
+      !!(
+        await db.query(
+          `SELECT 1 FROM amp_account_entitlements e JOIN amp_stripe_checkouts c ON c.id=e.checkout_id
+       WHERE c.account_id=$1 AND e.namespace=$2 AND c.learner_id IS NULL AND c.assigned_learner_id IS NULL
+         AND e.status='active' AND e.ends_at>now() LIMIT 1`,
+          [accountId, this.namespace],
+        )
+      ).rowCount;
+    const licensed = new Set(
+      (
+        await db.query<{ id: string }>(
+          `SELECT l.id FROM unnest($1::text[]) l(id) WHERE EXISTS(SELECT 1 FROM amp_grants g
+       WHERE g.learner_id=l.id AND g.status='active' AND g.ends_at>now())`,
+          [ids],
+        )
+      ).rows.map((row) => row.id),
+    );
+    return new Map(
+      ids.map((id) => [
+        id,
+        licensed.has(id)
+          ? "learner_already_licensed"
+          : unassigned
+            ? "license_ready_for_assignment"
+            : null,
+      ]),
+    );
+  }
+  /** Whether a new annual checkout can be reserved for an owned child.
+   * Submission still rechecks consent and blockers in the account transaction. */
+  async ownedCheckoutEligibility(
+    db: Pick<PoolClient, "query">,
+    accountId: string,
+    ids: string[],
+  ) {
+    if (
+      !(await parentAddressConfirmed(db, accountId)) ||
+      !(await this.purchaseConsentActive(db, accountId))
+    )
+      return new Set<string>();
+    const owned = (
+      await db.query<{ id: string }>(
+        `SELECT id FROM amp_learners WHERE account_id=$1 AND id=ANY($2::text[])
+       AND deleted_at IS NULL AND NOT adult AND NOT simulation`,
+        [accountId, ids],
+      )
+    ).rows.map((row) => row.id);
+    const blockers = await this.checkoutBlockers(db, accountId, owned);
+    return new Set(owned.filter((id) => !blockers.get(id)));
+  }
   async reserve(
     accountId: string,
     learnerId: string,
@@ -181,27 +247,10 @@ export class StripeRepository {
         "SELECT pg_advisory_xact_lock(hashtextextended($1,1))",
         [`${this.namespace}:${learnerId}`],
       );
-      const grants = await client.query(
-        "SELECT 1 FROM amp_grants WHERE learner_id=$1 AND status='active' AND ends_at>now() LIMIT 1",
-        [learnerId],
-      );
-      if (grants.rowCount) throw new BillingError("learner_already_licensed");
-      // A plan already paid for and held by no learner is assigned, never
-      // bought twice.
-      // (Older test schemas predate unassigned plans.)
-      const entitlements = (
-        await client.query(
-          "SELECT to_regclass('amp_account_entitlements') AS relation",
-        )
-      ).rows[0].relation;
-      const unassigned = entitlements
-        ? await client.query(
-            "SELECT 1 FROM amp_account_entitlements e JOIN amp_stripe_checkouts c ON c.id=e.checkout_id WHERE c.account_id=$1 AND e.namespace=$2 AND c.learner_id IS NULL AND c.assigned_learner_id IS NULL AND e.status='active' AND e.ends_at>now() LIMIT 1",
-            [accountId, this.namespace],
-          )
-        : { rowCount: 0 };
-      if (unassigned.rowCount)
-        throw new BillingError("license_ready_for_assignment");
+      const blocker = (
+        await this.checkoutBlockers(client, accountId, [learnerId])
+      ).get(learnerId);
+      if (blocker) throw new BillingError(blocker);
       const retry = await client.query(
         "SELECT id,learner_id,closed,billing_interval,price_tier FROM amp_stripe_checkouts WHERE namespace=$1 AND account_id=$2 AND request_id=$3",
         [this.namespace, accountId, requestId],

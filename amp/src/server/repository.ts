@@ -927,6 +927,28 @@ export class PgTransaction implements LearnerTransaction {
     ) {
       if (learner.starting_course_level != null)
         return Number(learner.starting_course_level);
+      // Legacy writers can have recorded evidence after the schema migration.
+      // This indexed existence check also handles pre-migration learners lazily.
+      const answered = (
+        await this.db.query(
+          "SELECT 1 FROM amp_attempts WHERE learner_id=$1 LIMIT 1",
+          [this.learnerId],
+        )
+      ).rowCount;
+      if (answered) {
+        await this.db.query(
+          "UPDATE amp_learners SET starting_course_level=2 WHERE id=$1",
+          [this.learnerId],
+        );
+        learner.starting_course_level = 2;
+        return 2;
+      }
+      const enabled = (
+        await this.db.query(
+          "SELECT enabled FROM amp_course_placement WHERE singleton",
+        )
+      ).rows[0]?.enabled;
+      if (!enabled) return 2;
       const classes = await this.db.query<{ course_bands: string[] }>(
         `SELECT c.course_bands FROM amp_people p
          JOIN amp_enrollments e ON e.person_id=p.id AND e.role='student'
@@ -941,13 +963,14 @@ export class PgTransaction implements LearnerTransaction {
       const course = classes.rows
         .map((row) => courseBand(row.course_bands))
         .find(Boolean);
-      if (course) {
+      {
+        const level = course?.level ?? 2;
         await this.db.query(
           "UPDATE amp_learners SET starting_course_level=$2 WHERE id=$1",
-          [this.learnerId, course.level],
+          [this.learnerId, level],
         );
-        learner.starting_course_level = course.level;
-        return course.level;
+        learner.starting_course_level = level;
+        return level;
       }
     }
     return initialLevel({

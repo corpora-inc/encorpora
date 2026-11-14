@@ -40,10 +40,12 @@ A co-teacher belongs in Teaching. `teachingPlace` additionally identifies the
 holder's or second parent's mixed tutoring class. Its presence, rather than
 `readTeaching` alone, determines whether to show that separate place.
 
-An existing family's ID equals its org ID. A parent whose children are all
+A family ID is an opaque, stable URL key. It need not equal the class's org ID. A parent whose children are all
 hosted elsewhere receives a persisted `amp_family_spaces.id` on the first places
-read. This creates no class, staff role or enrollment. If a local class is later
-needed, it uses the same ID. An adult without children or a family class receives
+read. This creates no class, staff role or enrollment. A local class created by a compatible API uses that ID for its org. A legacy
+API can allocate a different org ID; projections resolve that association through
+the holder account. Authorization always uses the actual org, and the public
+family ID never changes. A database hook registers families created by legacy APIs. An adult without children or a family class receives
 no new Family place merely because they teach elsewhere.
 
 ## Family projection
@@ -119,7 +121,9 @@ type WeekFacts = {
 };
 ```
 
-Dates in week facts are `YYYY-MM-DD`; grant dates are ISO timestamps. The week
+Dates in week facts are `YYYY-MM-DD`; grant dates are ISO timestamps. Each child's `grants` is a preview of at most
+20 records, newest start date first; `hasAccess` independently checks all live
+grants. Account export supplies complete grant history. The week
 starts Monday. `lastPracticed` is the latest activity date, including activity
 before the current week. `students` is the shared read model's count field; it
 counts only the projection's children. Family tasks use **learner IDs** in
@@ -160,7 +164,9 @@ and workbook paths do not grant host-class access.
 
 Capabilities describe the viewer's permitted action on this resource. Mutations
 recheck permission and their submitted parameters. `purchase` additionally
-requires confirmed email and purchase consent; `continuePurchase` permits the
+requires configured Stripe billing, confirmed email, consent for the configured
+billing policy, no active learner license, and no paid unassigned plan. Billing
+and this projection share the consent and license predicates; `continuePurchase` permits the
 holder to enter the existing setup/consent/purchase journey. Parent-entry naming
 permits the holder to correct a child's name after consent withdrawal, without
 resuming learning. A second parent cannot buy, rename, delete, change the birth
@@ -280,7 +286,8 @@ full name can supply `displayName`, but does not supply separately confirmed
 given/family fields. An explicitly cleared profile has three null fields.
 Updates synchronize the auth display name, linked adult roster identities and
 the real adult learner, without renaming simulation profiles. The account export
-includes the profile and family identity; account deletion removes both.
+includes the profile and family identity; account deletion removes both. A database trigger on the existing deletion
+journal enforces this for both API versions, including after application rollback.
 
 Other adult-name payloads expose:
 
@@ -292,19 +299,56 @@ Other adult-name payloads expose:
 - Second-parent reads: nullable `name`, and full known holder names in invitations.
 - Report cards: `teacherNames: (string | null)[]` and the known-name `teachers` array.
 - Today: nullable `teacherName`. Buyer pages and conflicts use nullable teacher names.
+- Map and standings teacher lines: nullable `adultName`; legacy `name` (and map
+  `first`) is empty when the name is missing. Client types allow omission of
+  `adultName` for compatibility with older responses; this server always emits it.
+- Class lists, org overview and year rollover expose `teacherNames` with nullable
+  entries and legacy `teachers` containing only known names. Staffing counts use
+  enrollment, including adults with missing names. The caller's org `personName`
+  is nullable.
+- Activity actors/person filters and adoption staff/roster previews use the same
+  nullable resolver. Legacy string fields use an empty string for an unknown
+  name, and legacy name arrays omit missing names; neither a role label nor a
+  roster display override substitutes for the account profile.
 
 The nullable fields are the display source for interfaces that ask an adult to
 supply a missing name. School roster storage retains its required role label
 when no given name is supplied; the public name resolver never presents that
 label as the person's name.
 
-## First course placement
+## First course placement and deployment
 
-A child without a birth year or explicit starting choice uses the lowest known
-course band of their earliest current class (enrollment date, then class ID).
-Grade 4 supplies initial level 4. Unknown bands and absent classes retain the
-existing fallback. The first course-derived estimate is stored in
-`starting_course_level`; later class changes do not reset it. Birth year and
-explicit starting choice take precedence. The migration preserves the previous
-implicit level 2 for children with existing attempts, so their evidence is not
-replayed from a new prior. No birthday, mastery or answer evidence is fabricated.
+Apply migrations 0125–0127 before serving these endpoints. These migrations are
+unpublished branch migrations; never replace the contents of an applied migration
+in a persistent deployment. The runner checks file checksums and commits each
+migration separately. 0126 adds a nullable column without a table rewrite or a
+backfill; existing answered learners derive the legacy prior lazily. 0127 builds
+indexes for bounded history probes in its own transaction.
+
+`amp_course_placement.enabled` defaults to false. Keep it false while any legacy
+learning API or background learning writer can serve a request. Both API versions
+then use the existing placement rules. An insert trigger freezes the implicit
+level 2 when a legacy writer records evidence. The new reader also detects
+pre-migration evidence and freezes that same prior without a bulk backfill.
+
+After every learning reader and writer supports `starting_course_level`, enable
+course selection by setting the singleton's `enabled` field to true. A child
+without a birth year, explicit start, or established evidence then uses the lowest
+known course band of their earliest current class (enrollment date, then class
+ID). Grade 4 supplies level 4. The first read saves the chosen course or fallback
+before issuing problems. A later class-band change cannot rebase those answers.
+Birth years and intentional explicit starting choices take precedence; no birthday
+or evidence is fabricated.
+
+Disabling the flag stops new course selection; it does not discard frozen starts.
+After enabling it, an application rollback must retain the new start reader.
+An unmodified legacy estimator cannot read arbitrary exact course priors. A full
+legacy rollback is safe only before course selection has been enabled. This is a
+two-phase deployment requirement, not a per-instance feature flag.
+
+Family reads select at most 1,000 live owned children (larger legacy households
+receive `409 family_child_limit`), scope authority reads to displayed places, and
+batch account consent. Last activity and level use indexed latest-row probes;
+Today facts retain their ownership-selected, date-bounded computation. Teaching
+approval history is capped at 1,000 rows, with consent fetched in one batch for
+active approvals only.

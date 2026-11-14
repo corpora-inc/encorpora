@@ -1,3 +1,4 @@
+import { PERSON_NAME } from "./term-grades.js";
 import { createHash, createHmac, randomBytes, randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import { z } from "zod";
@@ -445,7 +446,7 @@ export async function reviewSchoolAdoption(
   const staff = staffIds.length
     ? (
         await db.query(
-          `SELECT p.id,COALESCE(p.display_name,concat_ws(' ',p.given_name,p.family_name)) AS name,
+          `SELECT p.id,${PERSON_NAME} AS name,
       p.learner_id IS NULL AND p.deleted_at IS NULL AND NOT EXISTS(SELECT 1 FROM amp_org_roles WHERE person_id=p.id AND role='student')
       AND NOT EXISTS(SELECT 1 FROM amp_enrollments WHERE person_id=p.id AND role='student') AS allowed
       FROM amp_people p WHERE id=ANY($1::uuid[])`,
@@ -824,14 +825,14 @@ export async function revokeSchoolAdoption(
 }
 
 const distinctNames = (values: string[]) =>
-  [...new Set(values)].sort((a, b) => a.localeCompare(b));
+  [...new Set(values.filter(Boolean))].sort((a, b) => a.localeCompare(b));
 const displayedGrade = (grade: number | null) =>
   grade === 0 ? "Kindergarten" : grade == null ? null : String(grade);
 
 async function sourceRoster(db: Database, schoolId: string) {
   const people = (
     await db.query(
-      `SELECT p.id,COALESCE(p.display_name,concat_ws(' ',p.given_name,p.family_name)) AS name,
+      `SELECT p.id,${PERSON_NAME} AS name,
     p.identifier,p.grade_level, p.learner_id IS NOT NULL AS student FROM amp_people p WHERE p.tenant_id=$1 AND p.deleted_at IS NULL
     AND EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
       WHERE r.person_id=p.id AND ${activeToday("r", "o")}) ORDER BY p.learner_id IS NOT NULL,p.given_name,p.id`,

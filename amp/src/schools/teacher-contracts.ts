@@ -153,6 +153,7 @@ export type MapStudent = z.infer<typeof mapStudentResource>;
  * on the map, marked as the teacher, never one of its students. */
 export const mapTeacherResource = z.object({
   id,
+  adultName: z.string().nullable().optional(),
   name: z.string(),
   first: z.string(),
   /** The line is the reader's own, so it opens their own record. */

@@ -6,7 +6,7 @@ import { migrate } from "../scripts/migrate.js";
 import { SchoolRepository } from "../src/schools/repository.js";
 import { PostgresRepository } from "../src/server/repository.js";
 import { buildApp } from "../src/server/app.js";
-import { templates } from "../src/math/engine.js";
+import { templates, generateProblem } from "../src/math/engine.js";
 
 test(
   "a rostered child without a birth year begins at the class course band",
@@ -20,6 +20,7 @@ test(
     await admin.query(`CREATE SCHEMA ${schema}`);
     await migrate(scoped.href);
     const learning = new PostgresRepository(scoped.href);
+    await learning.pool.query("UPDATE amp_course_placement SET enabled=true");
     const schools = new SchoolRepository(learning.pool);
     let account = "";
     const app = buildApp({
@@ -137,6 +138,163 @@ test(
       birthStart.overall,
       referenceStart.overall,
       "a class's course cannot override the estimate supplied by a known birth year",
+    );
+
+    await t.test(
+      "REVIEW: giving an established learner a course does not rebase their evidence",
+      async () => {
+        const unbanded = await schools.createClass(org.id, {
+          name: "Initially unbanded",
+        });
+        const existing = await schools.provisionStudent(org.id, {
+          givenName: "Already answered",
+          classId: unbanded.id,
+        });
+        account = `school:${existing.personId}`;
+        const batch = await app.inject({
+          method: "POST",
+          url: `/api/v1/learners/${existing.learnerId}/batches`,
+          payload: { count: 1 },
+        });
+        assert.equal(batch.statusCode, 200, batch.body);
+        const problem = batch.json().problems[0];
+        const answered = await app.inject({
+          method: "POST",
+          url: `/api/v1/learners/${existing.learnerId}/attempts`,
+          payload: {
+            problemId: problem.id,
+            requestId: randomUUID(),
+            response: generateProblem(problem.templateId, problem.seed).answer,
+          },
+        });
+        assert.equal(answered.statusCode, 200, answered.body);
+        const before = await learning.transaction(
+          account,
+          existing.learnerId,
+          (tx) => tx.frontier(),
+        );
+        const original = await learning.pool.query(
+          "SELECT outcome FROM amp_attempts WHERE learner_id=$1",
+          [existing.learnerId],
+        );
+        await learning.pool.query(
+          "UPDATE amp_classes SET course_bands=ARRAY['4'] WHERE id=$1",
+          [unbanded.id],
+        );
+        const after = await learning.transaction(
+          account,
+          existing.learnerId,
+          (tx) => tx.frontier(),
+        );
+        const prior = (
+          await learning.pool.query(
+            "SELECT starting_course_level FROM amp_learners WHERE id=$1",
+            [existing.learnerId],
+          )
+        ).rows[0].starting_course_level;
+        assert.deepEqual(
+          (
+            await learning.pool.query(
+              "SELECT outcome FROM amp_attempts WHERE learner_id=$1",
+              [existing.learnerId],
+            )
+          ).rows,
+          original.rows,
+        );
+        console.log("REVIEW existing evidence rebased", {
+          before: before.overall.level,
+          after: after.overall.level,
+          answered: after.overall.answered,
+          prior,
+        });
+        assert.equal(after.overall.level, before.overall.level);
+      },
+    );
+    await t.test(
+      "mixed-version rollout freezes old-writer fallback and lazy pre-upgrade evidence",
+      async () => {
+        await learning.pool.query(
+          "UPDATE amp_course_placement SET enabled=false",
+        );
+        const mixed = await schools.createClass(org.id, {
+          name: "Mixed rollout",
+          courseBands: ["4"],
+        });
+        const child = await schools.provisionStudent(org.id, {
+          givenName: "Legacy writer",
+          classId: mixed.id,
+        });
+        account = `school:${child.personId}`;
+        const batch = await app.inject({
+          method: "POST",
+          url: `/api/v1/learners/${child.learnerId}/batches`,
+          payload: { count: 1 },
+        });
+        assert.equal(batch.statusCode, 200, batch.body);
+        const p = batch.json().problems[0];
+        // The old API writes only these five columns; no call to the new start resolver.
+        await learning.pool.query(
+          `INSERT INTO amp_attempts(id,learner_id,problem_id,request_id,outcome)
+        VALUES($1,$2,$3,$4,$5)`,
+          [
+            randomUUID(),
+            child.learnerId,
+            p.id,
+            randomUUID(),
+            JSON.stringify({
+              correct: true,
+              assisted: false,
+              skillId: p.skillId,
+              templateId: p.templateId,
+              createdAt: new Date().toISOString(),
+            }),
+          ],
+        );
+        assert.equal(
+          (
+            await learning.pool.query(
+              "SELECT starting_course_level FROM amp_learners WHERE id=$1",
+              [child.learnerId],
+            )
+          ).rows[0].starting_course_level,
+          2,
+        );
+        const before = await learning.transaction(
+          account,
+          child.learnerId,
+          (tx) => tx.frontier(),
+        );
+        // Emulate a learner answered before the additive column existed.
+        await learning.pool.query(
+          "UPDATE amp_learners SET starting_course_level=NULL WHERE id=$1",
+          [child.learnerId],
+        );
+        await learning.pool.query(
+          "UPDATE amp_course_placement SET enabled=true",
+        );
+        const after = await learning.transaction(
+          account,
+          child.learnerId,
+          (tx) => tx.frontier(),
+        );
+        assert.deepEqual(after, before);
+        assert.equal(
+          (
+            await learning.pool.query(
+              "SELECT starting_course_level FROM amp_learners WHERE id=$1",
+              [child.learnerId],
+            )
+          ).rows[0].starting_course_level,
+          2,
+        );
+        await migrate(scoped.href);
+        assert.deepEqual(
+          await learning.transaction(account, child.learnerId, (tx) =>
+            tx.frontier(),
+          ),
+          after,
+        );
+      },
     );
   },
 );
