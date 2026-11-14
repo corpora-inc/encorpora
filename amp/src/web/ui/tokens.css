@@ -543,6 +543,10 @@
   --radius-control: 12px;
   --radius-panel: 20px;
   --target-size: 48px;
+  /* A record's date column: its width, and the room after it before the
+     row's content (recent work, skills earned). */
+  --record-date-width: 56px;
+  --record-date-gap: var(--space-3);
   --motion-fast: 150ms;
   /* Figure timelines: one step, a traced stroke, the pause between steps. */
   --motion-step: 900ms;

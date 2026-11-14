@@ -68,7 +68,11 @@ export function workbookMessage(error: unknown, fallback: string): string {
     error instanceof AppError &&
     error.code &&
     error.code !== "Invalid request" &&
-    [400, 403, 404, 409, 410, 503].includes(error.status ?? 0)
+    ([400, 403, 404, 409, 410].includes(error.status ?? 0) ||
+      // A service that is down says so in a sentence of its own ("Your
+      // workbook is being prepared; …"); a bare status phrase ("Service
+      // Unavailable") keeps the shared message.
+      (error.status === 503 && /[.!?]$/.test(error.code)))
   )
     return error.code;
   return error instanceof Error && error.message ? error.message : fallback;

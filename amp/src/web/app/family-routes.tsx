@@ -142,6 +142,29 @@ export function familyRoutes(root: AnyRoute) {
       path,
       component: screen(name),
     });
+  /** A child's learning screen at the child's own address
+   * (`kids/<learner>/pathways`): the shared screen, for that child. The
+   * address names them (features/spaces/identity.ts): a child who isn't the
+   * family's is unavailable (the space's content guard), never another
+   * learner, and nothing of theirs is asked. Its record and level arrive
+   * with it. */
+  const childScreen = (
+    path: string,
+    load: () => Promise<Record<string, unknown>>,
+    name: string,
+  ) =>
+    createRoute({
+      getParentRoute: () => family,
+      path,
+      loader: ({ location }) =>
+        import("../lib/learning-view").then((view) =>
+          view.preloadLearningView({
+            pathname: location.pathname,
+            search: location.search as Record<string, unknown>,
+          }),
+        ),
+      component: lazyRouteComponent(load as never, name as never),
+    });
   return [
     landing,
     ...accountAlias("/family/security", "/account/security"),
@@ -152,6 +175,16 @@ export function familyRoutes(root: AnyRoute) {
     family.addChildren([
       leaf("/", "FamilyTodayScreen"),
       leaf("kids/$learner", "ChildScreen"),
+      childScreen(
+        "kids/$learner/pathways",
+        () => import("../features/pathways/PathwaysScreen"),
+        "PathwaysScreen",
+      ),
+      childScreen(
+        "kids/$learner/inventory",
+        () => import("../features/inventory/InventoryScreen"),
+        "InventoryScreen",
+      ),
       leaf("map", "FamilyMapScreen"),
       leaf("workbooks", "FamilyWorkbooksScreen"),
       leaf("workbooks/$date", "FamilyMarkingScreen"),

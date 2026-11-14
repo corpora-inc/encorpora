@@ -11,6 +11,7 @@ import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
 import { meOptions, sessionOptions } from "../../lib/query";
 import { LayerHost } from "../../nav/LayerHost";
+import type { AreaSource } from "../../nav/AreaLayer";
 import { OPEN_KEY, workParts, type Entity } from "../../nav/entities";
 import { familyOrgTarget, peopleOf } from "./redirects";
 import { Button, buttonClass } from "../../ui/Button";
@@ -105,9 +106,12 @@ export function FamilyFrame({
   place,
   loading = false,
   narrow = false,
+  area,
   children,
 }: {
   place: FamilyPlace;
+  /** The level the screen shows (a child's), for an area opened over it. */
+  area?: AreaSource;
   /** The screen's own data is still on its way. */
   loading?: boolean;
   /** One focused, centred column (Settings, People). */
@@ -132,6 +136,7 @@ export function FamilyFrame({
         <LayerHost
           org={place.own?.org}
           allow={(entity) => ownLayer(place, entity)}
+          area={area}
         />
       )}
     </main>

@@ -260,7 +260,9 @@ type Props = {
    * replay of a student's work): nothing is recorded or answered, the
    * sheet's sentences name `who`, and `actions` stand where Next would. */
   review?: {
-    who: string;
+    /** Whose answer: a name, or null for the reader's own (an adult's
+     * replay of their own work), which reads "You chose". */
+    who: string | null;
     actions: ReactNode;
     /** What surrounded the answer, at the end of the feedback (it scrolls
      * with the explanation where the sheet is short). */
@@ -1351,7 +1353,7 @@ export function PracticeWorkspace(props: Props) {
                       outcome.answer,
                     )}
                     <span className="sr-only">
-                      . {review ? `${review.who}’s` : "Your"} last line:{" "}
+                      . {review?.who ? `${review.who}’s` : "Your"} last line:{" "}
                       {spokenMath(displayResponse(outcome.response))}
                     </span>
                     {support && `, ${support}`}
@@ -1362,7 +1364,7 @@ export function PracticeWorkspace(props: Props) {
                   <small>
                     {partsSummary(parts, outcome)}
                     <span className="sr-only">
-                      . {review ? `${review.who} chose` : "You chose"}:{" "}
+                      . {review?.who ? `${review.who} chose` : "You chose"}:{" "}
                       {spokenMath(displayResponse(outcome.response))}
                     </span>
                     {support && `, ${support}`}
@@ -1370,7 +1372,7 @@ export function PracticeWorkspace(props: Props) {
                 ) : equalAddends ? (
                   <small>
                     <span className="sr-only">
-                      {review ? `${review.who} entered` : "You entered"}{" "}
+                      {review?.who ? `${review.who} entered` : "You entered"}{" "}
                       {displayResponse(outcome.response)}.
                     </span>
                     {support && capitalize(support)}
@@ -1382,7 +1384,9 @@ export function PracticeWorkspace(props: Props) {
                       : `Show groups of ${counterKey.groups[0]} and ${counterKey.groups[1]}.`}
                     <span className="sr-only">
                       {" "}
-                      {review ? `${review.who} entered` : "You entered"}{" "}
+                      {review?.who
+                        ? `${review.who} entered`
+                        : "You entered"}{" "}
                       {displayResponse(outcome.response)}.
                     </span>
                     {support && ` ${capitalize(support)}.`}

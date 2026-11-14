@@ -13,6 +13,8 @@ import { sessionOptions } from "../lib/query";
 import { staffOnly, workParts, type Entity } from "./entities";
 import { useLayers } from "./links";
 import { SkillLayer } from "./SkillLayer";
+import { AreaLayer, areaSourceOf, OVERALL, type AreaSource } from "./AreaLayer";
+import { strandNames } from "../BirthYearPrompt";
 
 /**
  * The layers open over a page (`?open=`, nav/entities.ts), drawn in order:
@@ -30,8 +32,12 @@ export function LayerHost({
   lessonActions,
   skillActions,
   allow,
+  area,
 }: {
   org?: string;
+  /** The level the page shows, for an area opened over it
+   * (`area:<strand>`); over a student's record, theirs instead. */
+  area?: AreaSource;
   /** Which of the address's layers this page may open (a family's own
    * children's records, never another family's): others are not drawn. */
   allow?: (entity: Entity) => boolean;
@@ -60,7 +66,7 @@ export function LayerHost({
     .map((entity, index) => (
       <Layer
         key={
-          entity.kind === "work"
+          entity.kind === "work" || entity.kind === "own-work"
             ? `${index}:work`
             : `${index}:${entity.kind}:${entity.id}`
         }
@@ -72,6 +78,7 @@ export function LayerHost({
         close={close}
         lessonActions={lessonActions}
         skillActions={skillActions}
+        area={area}
       />
     ));
 }
@@ -85,6 +92,7 @@ function Layer({
   close,
   lessonActions,
   skillActions,
+  area,
 }: {
   entity: Entity;
   below: Entity[];
@@ -94,6 +102,7 @@ function Layer({
   close: () => void;
   lessonActions?: (lesson: string) => ReactNode;
   skillActions?: (skill: string) => ReactNode;
+  area?: AreaSource;
 }) {
   const classId = (useParams({ strict: false }) as { class?: string }).class;
   const search = useSearch({ strict: false }) as { skill?: unknown };
@@ -101,7 +110,9 @@ function Layer({
   const back = useLayerTitle(below.at(-1));
   // A replayed answer fills the screen: a sheet under it waits closed
   // (Back reopens it), so only one thing ever holds focus.
-  const underAnswer = above.some((layer) => layer.kind === "work");
+  const underAnswer = above.some(
+    (layer) => layer.kind === "work" || layer.kind === "own-work",
+  );
   switch (entity.kind) {
     case "student":
       return (
@@ -146,6 +157,39 @@ function Layer({
           {lessonActions?.(entity.id)}
         </LessonDialog>
       );
+    case "area": {
+      // Opened from a student's record: their level; else the page's.
+      const from = below.filter((layer) => layer.kind === "student").at(-1);
+      if (from && org)
+        return (
+          <StudentArea
+            student={from.id}
+            area={entity.id}
+            open={!underAnswer}
+            onClose={close}
+            back={back}
+          />
+        );
+      return area ? (
+        <AreaLayer
+          area={entity.id}
+          source={area}
+          open={!underAnswer}
+          onClose={close}
+          back={back}
+        />
+      ) : null;
+    }
+    case "own-work":
+      return (
+        <WorkReplaySlot
+          own
+          student=""
+          attempt={entity.id}
+          skill={workSkill(search.skill)}
+          layer={{ close, covered: above.length > 0 }}
+        />
+      );
     case "work": {
       const { student, attempt } = workParts(entity.id);
       return (
@@ -158,6 +202,38 @@ function Layer({
       );
     }
   }
+}
+
+/** An area of a student's level, from their record (already read by the
+ * student's layer under it). */
+function StudentArea({
+  student,
+  area,
+  open,
+  onClose,
+  back,
+}: {
+  student: string;
+  area: string;
+  open: boolean;
+  onClose: () => void;
+  back?: string;
+}) {
+  const session = useQuery(sessionOptions).data ?? null;
+  const record = useQuery({
+    ...studentRecordOptions(session, student),
+    enabled: !!session,
+  });
+  if (!record.data) return null;
+  return (
+    <AreaLayer
+      area={area}
+      source={areaSourceOf(record.data)}
+      open={open}
+      onClose={onClose}
+      back={back}
+    />
+  );
 }
 
 /** A layer's name, as the one over it shows where X returns: a student's
@@ -182,6 +258,10 @@ export function useLayerTitle(entity: Entity | undefined) {
     case "lesson":
       return catalog.data?.templates.find((type) => type.id === entity.id)
         ?.title;
+    case "area":
+      return entity.id === OVERALL
+        ? "Overall"
+        : (strandNames[entity.id] ?? undefined);
     default:
       return undefined;
   }

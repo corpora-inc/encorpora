@@ -49,6 +49,15 @@ test("a place keeps its view, never its fragment or other keys", () => {
     ),
   ).toBe("/school/11111111-1111-4111-8111-111111111111/students");
   expect(appReturn("/account/security")).toBe("/account/security");
+  // Practice at a level is a place to come back to, with its choice; so is
+  // the adult's own time.
+  expect(appReturn("/me/level?grade=4&pace=behind")).toBe(
+    "/me/level?grade=4&pace=behind",
+  );
+  expect(
+    appReturn(`/practice?profile=p1&from=${encodeURIComponent("/me/level")}`),
+  ).toBe(`/practice?profile=p1&from=${encodeURIComponent("/me/level")}`);
+  expect(appReturn("/me/time")).toBe("/me/time");
   expect(appReturn(`/me?x=${"y".repeat(3000)}`)).toBeUndefined();
 });
 

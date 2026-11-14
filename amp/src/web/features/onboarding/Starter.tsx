@@ -165,7 +165,7 @@ function StarterScreen({ session }: { session: AuthSession }) {
       : id === "parent" || id === "tutor"
         ? hasHome(account)
         : false);
-  // Tutoring is practice at a level in My practice (R8): its answer is no
+  // Tutoring is practice at a level, in Practice (R8): its answer is no
   // longer offered, and `/start/tutor` keeps working for links in flight.
   const shown = choices.filter(
     (entry) => entry.id !== "tutor" && !has(entry.id),
@@ -403,6 +403,14 @@ function Myself({
         labelledBy="starter-myself"
         disabled={busy}
       />
+      {/* Helping someone (a niece, a student): straight to a grade and a
+          pace, never their birth year (SPEC R5, R8). */}
+      <p className={styles.helping}>
+        Helping someone else?{" "}
+        <Link to="/$" params={{ _splat: "me/level" }} data-level-practice-link>
+          Practice at a level
+        </Link>
+      </p>
     </StepFrame>
   );
 }

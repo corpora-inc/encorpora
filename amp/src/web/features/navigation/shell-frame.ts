@@ -114,11 +114,13 @@ export function shellFrame(
   // quiet button (docs/design/ia.md): the Progress tabs stay, Overview marked.
   if (/^\/learners\/[^/]+\/workbooks(?:\/|$)/.test(path))
     return { kind: "progress", active: "overview" };
-  // Practicing as someone else: the profiles are a tab of their own; "Try a
-  // level…" and a profile's levels are steps with their own way back.
+  // Practicing as someone else: the profiles are a tab of their own; a new
+  // profile and a profile's levels are steps with their own way back.
   if (path === "/me/profiles") return { kind: "progress", active: "profiles" };
+  // Practice at a level: one step, then practice; its way back is the bar's.
+  if (path === "/me/level") return { kind: "plain" };
   if (under(path, "/me/profiles")) return { kind: "plain" };
-  if (path === "/overview" || path === "/me")
+  if (path === "/overview" || path === "/me" || path === "/me/time")
     return { kind: "progress", active: "overview" };
   // Changing the birth year belongs to the Overview it is opened from.
   if (path === "/profile/birth-year")

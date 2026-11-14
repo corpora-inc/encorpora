@@ -546,8 +546,10 @@ test("role loss: the same route with the role gone keeps no tab and no action", 
   assert.deepEqual(ids(after), []);
 });
 
-test("shared learning routes: the route's learner, a profile, then the device's choice", () => {
-  // Explicit in the address: whoever another tab chose.
+test("shared learning routes: the route's learner, a profile, then yourself", () => {
+  // Explicit in the address (an older `?learner=` link, before its route
+  // redirects it): whoever another tab chose. Its tabs are the child's own
+  // addresses, never `?learner=` (Q-209).
   const named = resolveSpace(
     at("/pathways", { search: { learner: "pip" } }),
     adult(power, "wren"),
@@ -556,8 +558,12 @@ test("shared learning routes: the route's learner, a profile, then the device's 
   assert.equal(named.learner?.id, "pip");
   assert.equal(named.label, "Pip");
   assert.deepEqual(
-    named.tabs.map((tab) => tab.search),
-    [{ learner: "pip" }, { learner: "pip" }, { learner: "pip" }],
+    named.tabs.map((tab) => [tab.path, tab.search]),
+    [
+      [`family/${FAMILY}/kids/pip`, undefined],
+      [`family/${FAMILY}/kids/pip/pathways`, undefined],
+      [`family/${FAMILY}/kids/pip/inventory`, undefined],
+    ],
   );
   // The route's own `$learnerId`.
   const workbooks = resolveSpace(
@@ -574,7 +580,10 @@ test("shared learning routes: the route's learner, a profile, then the device's 
   );
   expectSpace(profile, "me");
   assert.equal(profile.mode, "profile");
-  assert.equal(profile.label, "Grade 4");
+  // The bar names no place in Me (Q-204): its "Practicing as" mark names the
+  // profile.
+  assert.equal(profile.label, "");
+  assert.equal(profile.learner?.id, "profile-4");
   // A learner who isn't this account's is nobody's here: never another child.
   const foreign = resolveSpace(
     at("/overview", { search: { learner: "stranger" } }),
@@ -583,8 +592,16 @@ test("shared learning routes: the route's learner, a profile, then the device's 
   expectSpace(foreign, "me");
   assert.equal(foreign.learner, null);
   assert.deepEqual(foreign.tabs, []);
-  // Without any: the device's choice.
-  const chosen = resolveSpace(at("/overview"), adult(power, "wren"));
+  // Without any: yourself (Q-209), whatever this device chose.
+  const self = resolveSpace(at("/overview"), adult(power, "wren"));
+  expectSpace(self, "me");
+  assert.equal(self.learner?.id, "jonah");
+  assert.ok(self.tabs.every((tab) => tab.search === undefined));
+  // An account with no practice of its own has no self: the device's
+  // choice, as before (its route sends Pathways, Inventory and the Overview
+  // to that child's own address).
+  const parent = { ...power, adultPractice: { eligible: true, learner: null } };
+  const chosen = resolveSpace(at("/practice"), adult(parent, "wren"));
   expectSpace(chosen, "family");
   assert.equal(chosen.learner?.id, "wren");
 });
@@ -609,7 +626,8 @@ test("Back and two tabs: the same inputs always describe the same place", () => 
 test("power user: each place looks right on its own terms, and nothing follows them", () => {
   const mine = resolveSpace(at("/me"), adult(power, "pip"));
   expectSpace(mine, "me");
-  assert.equal(mine.label, "My practice");
+  // No "My" in product chrome (Q-204): the tabs say whose this is.
+  assert.equal(mine.label, "");
   assert.deepEqual(ids(mine), [
     "practice",
     "levels",
@@ -622,9 +640,10 @@ test("power user: each place looks right on its own terms, and nothing follows t
     "Practice",
     "Levels",
     "Workbooks",
+    "Practice at a level",
     "Profiles",
   ]);
-  // Audit #8: My practice never carries the family's class or a child.
+  // Audit #8: Me never carries the family's class or a child.
   assert.ok(!JSON.stringify(mine.destinations).includes(FAMILY));
   assert.equal(mine.learner?.id, "jonah");
   const family = resolveSpace(

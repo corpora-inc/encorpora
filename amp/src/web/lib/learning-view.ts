@@ -3,7 +3,7 @@ import { queryOptions, skipToken, useQuery } from "@tanstack/react-query";
 import { meOptions, queryClient, sessionOptions } from "./query";
 import { useLearnerStore } from "../learner-store";
 import {
-  addressedIdentity,
+  learningIdentity,
   type AddressedIdentity,
 } from "../features/spaces/identity";
 import { useAddressedIdentity } from "../features/spaces/useAddressed";
@@ -169,7 +169,13 @@ export async function preloadOverviewLevel(location?: {
   const { learner } = chooseLearner(
     account as SignedIn | null,
     useLearnerStore.getState().learnerId,
-    location ? addressedIdentity(location.pathname, location.search) : null,
+    location
+      ? learningIdentity(
+          location.pathname,
+          location.search,
+          account?.adultPractice?.learner?.id,
+        )
+      : null,
   );
   if (learner)
     await queryClient
@@ -208,7 +214,13 @@ export async function preloadLearningView(location?: {
   const { learner } = chooseLearner(
     account as SignedIn | null,
     useLearnerStore.getState().learnerId,
-    location ? addressedIdentity(location.pathname, location.search) : null,
+    location
+      ? learningIdentity(
+          location.pathname,
+          location.search,
+          account?.adultPractice?.learner?.id,
+        )
+      : null,
   );
   await Promise.all([
     catalog,

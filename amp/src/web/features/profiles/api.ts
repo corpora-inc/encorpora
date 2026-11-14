@@ -4,6 +4,7 @@ import { z } from "zod";
 import type { SignedInMe } from "../../../account/contracts";
 import {
   practiceProfileSchema,
+  type LevelChoice,
   type ProfileLevels,
 } from "../../../learning/practice-profiles";
 import type { AuthSession } from "../../auth";
@@ -197,4 +198,23 @@ export function usePracticingProfile() {
       closeTo(router, ROOT);
     },
   };
+}
+
+/** "Practice at a level" (SPEC R5): the account's one level profile, started
+ * again at this grade and pace, then the learner practicing. */
+export function usePracticeAtLevel(session: AuthSession) {
+  return useMutation({
+    mutationFn: async (choice: LevelChoice) => {
+      const { learnerId } = await request("/me/practice-at-level", created, {
+        token: session.token,
+        body: choice,
+        method: "PUT",
+      });
+      await refreshMe(session);
+      choosePracticeProfile(learnerId);
+      return learnerId;
+    },
+    onError: (error) =>
+      console.error("Practice at a level didn’t start", error),
+  });
 }
