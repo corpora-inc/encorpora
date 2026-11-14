@@ -1,6 +1,8 @@
-import { useEffect, useLayoutEffect, useMemo, useRef } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import { EntityLink } from "../../nav/links";
+import { Disclosure } from "../../ui/Disclosure";
+import { Loading } from "../../ui/Loading";
 import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
 import {
   bandLabel,
@@ -9,22 +11,54 @@ import {
   neighborhood,
   neighborhoods,
   planRows,
-  skillLight,
+  skillState,
   type Evidence,
   type MapSkill,
+  type SkillState,
 } from "./model";
 import styles from "./PathwayPlan.module.css";
 
+const BANDS_KEY = "amp.pathways-bands";
+/** The bands this device has opened or folded by choice; a band with no
+ * choice is open when it is the learner's own. */
+function savedChoices(): Record<string, boolean> {
+  try {
+    const saved = JSON.parse(localStorage.getItem(BANDS_KEY) ?? "{}");
+    return saved && typeof saved === "object" && !Array.isArray(saved)
+      ? Object.fromEntries(
+          Object.entries(saved).filter(
+            (entry): entry is [string, boolean] =>
+              typeof entry[1] === "boolean",
+          ),
+        )
+      : {};
+  } catch {
+    return {};
+  }
+}
+function saveChoices(choices: Record<string, boolean>) {
+  try {
+    localStorage.setItem(BANDS_KEY, JSON.stringify(choices));
+  } catch {
+    // Kept for this visit only.
+  }
+}
+const STATE_WORDS: Record<SkillState, string> = {
+  earned: "earned",
+  progress: "in progress",
+  new: "not started",
+};
+
 /**
- * The curriculum map, flat: for a browser that can't draw the 3D map. The
- * same skills and the same record, a row per grade band from the first steps
- * down to precalculus, a column per area (one flowing list on a phone).
- * Each skill opens its layer, as on the map; brighter gems are stronger
- * practice, and "Where you are" marks the learner's estimated range.
+ * The curriculum by grade: a section per grade band, first steps to
+ * precalculus, each folded under its name and how much of it is earned, the
+ * learner's own band marked "Where you are". Open, a band holds its skills
+ * by area (a column per area on a wide screen). Each skill opens its layer;
+ * its dot is solid once earned, half while in progress, an outline before.
  *
- * It opens on the learner's level (or a skill the address names); a skill
- * found by the search or the list scrolls into view. Only the pathway's own
- * box scrolls, never the page.
+ * It flows in the page. Bands start folded and stay as this device left
+ * them; a skill chosen anywhere (its address, the search, the list, a
+ * sheet's link) opens its band and is centred on the screen.
  */
 export function PathwayPlan({
   skills,
@@ -32,6 +66,7 @@ export function PathwayPlan({
   selected,
   frame = null,
   here,
+  levelLoading = false,
 }: {
   skills: MapSkill[];
   evidence: Evidence[];
@@ -39,8 +74,14 @@ export function PathwayPlan({
   frame?: { id: string } | null;
   /** The learner's overall estimate, in grade bands; null until there is one. */
   here: { lo: number; hi: number; level: number } | null;
+  /** The estimate is on its way: the bands wait for it (1.5 s at most), so
+   * the learner's own band is open from the start, never opening later. */
+  levelLoading?: boolean;
 }) {
-  const { shown } = useCurriculumDetails();
+  const { shown, decided } = useCurriculumDetails();
+  // The grades view names its grades, unless a school has chosen not to
+  // show levels: then its bands are numbered.
+  const named = shown || !decided;
   const box = useRef<HTMLElement>(null);
   const rows = useMemo(() => planRows(skills), [skills]);
   const stats = useMemo(
@@ -55,75 +96,92 @@ export function PathwayPlan({
     () => (here ? bandsHere(here, rows) : new Set<number>()),
     [here?.lo, here?.hi, here?.level, rows],
   );
-  const firstHere = rows.find((row) => hereBands.has(row.index))?.index;
-  /** The visible part of the box, under its sticky area header. */
-  const view = () => {
-    const el = box.current!;
-    const outer = el.getBoundingClientRect();
-    const head = el.querySelector<HTMLElement>(`.${styles.areas}`);
-    const top = outer.top + (head?.offsetHeight ?? 0);
-    return { el, top, bottom: outer.bottom };
-  };
-  /** Brings a band's row to the top of the box (never the page). */
-  const revealRow = (target: HTMLElement | null | undefined) => {
-    if (!box.current || !target) return;
-    const { el, top } = view();
-    el.scrollTo({
-      top: Math.max(0, target.getBoundingClientRect().top - top + el.scrollTop),
-      behavior: "auto",
+  const firstHere = rows.find((row) => hereBands.has(row.index))?.band;
+  const [ready, setReady] = useState(!levelLoading);
+  useEffect(() => {
+    if (!levelLoading) return setReady(true);
+    const timer = setTimeout(() => setReady(true), 1500);
+    return () => clearTimeout(timer);
+  }, [levelLoading]);
+  // The learner's own band opens with the view, once; after that only a
+  // person's choice (or a skill chosen in it) opens or folds a band.
+  const [ownBand, setOwnBand] = useState<string | undefined>();
+  useEffect(() => {
+    if (ready && ownBand === undefined) setOwnBand(firstHere ?? "");
+  }, [ready, firstHere]);
+  const [choices, setChoices] = useState(savedChoices);
+  const isOpen = (band: string) => choices[band] ?? band === ownBand;
+  const choose = (band: string, open: boolean) =>
+    setChoices((current) => {
+      if ((current[band] ?? band === ownBand) === open) return current;
+      const next = { ...current, [band]: open };
+      saveChoices(next);
+      return next;
     });
-  };
+  /** The band a skill sits in on this view (an unknown band sits with the
+   * first, as `planRows` places it). */
+  const bandOf = (id: string) =>
+    rows.find((row) => row.areas.some((list) => list.some((s) => s.id === id)))
+      ?.band;
   const skillEl = (id: string) =>
     box.current?.querySelector<HTMLElement>(
       `[data-plan-skill="${CSS.escape(id)}"]`,
     );
-  /** Centres a skill in the box, unless it is already in full view: a skill
-   * chosen anywhere (its address, the search, the list, a sheet's link) is
-   * where the pathway shows, so closing its sheet finds it there. */
-  const revealSkill = (id: string) => {
-    const target = skillEl(id);
-    if (!box.current || !target) return;
-    const { el, top, bottom } = view();
-    const inner = target.getBoundingClientRect();
-    if (inner.top >= top && inner.bottom <= bottom) return;
-    el.scrollTo({
-      top: Math.max(
-        0,
-        el.scrollTop + inner.top - top - (bottom - top - inner.height) / 2,
-      ),
+  /** The skill to bring into view once its band is open. */
+  const pending = useRef<string | null>(null);
+  /** The frame that centres it again once the page has settled. */
+  const settle = useRef(0);
+  const reveal = (id: string) => {
+    const band = bandOf(id);
+    if (!band) return;
+    pending.current = id;
+    choose(band, true);
+  };
+  useLayoutEffect(() => {
+    if (selected && ready) reveal(selected);
+  }, [selected, skills, ready]);
+  useEffect(() => {
+    if (frame) reveal(frame.id);
+  }, [frame]);
+  /** Centres a skill on the screen, under the app bar and the sticky area
+   * names, unless it is already in view. */
+  const centre = (target: HTMLElement) => {
+    if (!target.isConnected || !target.getClientRects().length) return;
+    const head = box.current?.querySelector<HTMLElement>(`.${styles.areas}`);
+    const bar =
+      parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) ||
+      0;
+    const sticky =
+      head && getComputedStyle(head).position === "sticky"
+        ? head.offsetHeight
+        : 0;
+    const top = bar + sticky;
+    const rect = target.getBoundingClientRect();
+    if (rect.top >= top && rect.bottom <= innerHeight) return;
+    window.scrollTo({
+      top: scrollY + rect.top - top - (innerHeight - top - rect.height) / 2,
       behavior: "auto",
     });
   };
-  /** Until the person scrolls or a skill is chosen, the first view may follow
-   * the level as it arrives; once only. */
-  const placed = useRef(false);
+  // Once its band is open and drawn: centre the skill, and again once the
+  // page has settled (an arrival's own scroll to the top comes after this).
   useLayoutEffect(() => {
-    if (selected) {
-      // A cut, never a glide: a long glide down a phone's pathway is cut
-      // short by the page's own scroll to the map (showMap).
-      revealSkill(selected);
-      placed.current = true;
-    } else if (!placed.current && firstHere !== undefined) {
-      placed.current = true;
-      revealRow(
-        box.current?.querySelector<HTMLElement>(
-          `[data-plan-band="${firstHere}"]`,
-        ),
-      );
-    }
-  }, [selected, firstHere]);
-  useEffect(() => {
-    if (!frame) return;
-    placed.current = true;
-    revealSkill(frame.id);
-  }, [frame]);
+    const id = pending.current;
+    const target = id ? skillEl(id) : null;
+    if (!target || !target.getClientRects().length) return;
+    pending.current = null;
+    centre(target);
+    settle.current = requestAnimationFrame(() => {
+      settle.current = requestAnimationFrame(() => centre(target));
+    });
+  });
+  useEffect(() => () => cancelAnimationFrame(settle.current), []);
+  if (!ready) return <Loading>Loading the curriculum…</Loading>;
   return (
     <section
       ref={box}
       className={`pathways-plan ${styles.plan}`}
-      aria-label="Curriculum pathway"
-      onPointerDown={() => (placed.current = true)}
-      onWheel={() => (placed.current = true)}
+      aria-label="Curriculum by grade"
     >
       <div className={styles.areas} aria-hidden="true">
         {neighborhoods.map((area, index) => (
@@ -133,64 +191,99 @@ export function PathwayPlan({
         ))}
       </div>
       <ol className={styles.rows}>
-        {rows.map((row) => {
-          const isHere = hereBands.has(row.index);
+        {rows.map((row, order) => {
+          const all = row.areas.flat();
+          const earned = all.filter(
+            (skill) => skillState(stats.get(skill.id)) === "earned",
+          ).length;
+          const current = row.band === firstHere;
           return (
             <li
               key={row.band}
               className={styles.row}
               data-plan-band={row.index}
-              data-here={isHere || undefined}
+              data-here={hereBands.has(row.index) || undefined}
             >
-              {/* The row's head line is always there, so the level's tag
-                  arriving never moves a skill. */}
-              <div className={styles.head}>
-                {shown && <span>{bandLabel(row.band)}</span>}
-                {row.index === firstHere && (
-                  <strong className={styles.here}>Where you are</strong>
-                )}
-              </div>
-              <div className={styles.cells}>
-                {row.areas.map((list, area) => (
-                  <ul key={area} className={styles.cell}>
-                    {list.map((skill) => {
-                      const light = skillLight(stats.get(skill.id));
-                      return (
-                        <li key={skill.id}>
-                          <EntityLink
-                            entity={{ kind: "skill", id: skill.id }}
-                            className={styles.skill}
-                            data-plan-skill={skill.id}
-                            data-near={
-                              near?.prerequisites.has(skill.id)
-                                ? "before"
-                                : near?.dependents.has(skill.id)
-                                  ? "after"
-                                  : undefined
-                            }
-                            aria-current={
-                              selected === skill.id ? "page" : undefined
-                            }
-                            style={areaColor(neighborhood(skill))}
-                          >
-                            <i
-                              className={styles.gem}
-                              data-stage={light.stage}
-                              aria-hidden="true"
-                            />
-                            <span>
-                              {skill.title}
-                              {light.stage > 0 && (
-                                <span className="sr-only"> · earned</span>
-                              )}
-                            </span>
-                          </EntityLink>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                ))}
-              </div>
+              <Disclosure
+                className={styles.band}
+                open={isOpen(row.band)}
+                onOpenChange={(next) => choose(row.band, next)}
+                summary={
+                  // One line at a fixed height: nothing in it moves as the
+                  // record or the level arrives.
+                  <span className={styles.head}>
+                    <strong className={styles.name}>
+                      {named ? bandLabel(row.band) : `Stage ${order + 1}`}
+                    </strong>
+                    {current && (
+                      <span className={styles.here}>Where you are</span>
+                    )}
+                    <span className={styles.count}>
+                      <span aria-hidden="true">{`${earned} / ${all.length}`}</span>
+                      <span className="sr-only">{`${earned} of ${all.length} earned`}</span>
+                    </span>
+                    <span
+                      className={styles.bar}
+                      aria-hidden="true"
+                      style={
+                        {
+                          "--share": all.length ? earned / all.length : 0,
+                        } as CSSProperties
+                      }
+                    />
+                  </span>
+                }
+              >
+                <div className={styles.cells}>
+                  {row.areas.map((list, area) => (
+                    <ul key={area} className={styles.cell}>
+                      {list.map((skill) => {
+                        const state = skillState(stats.get(skill.id));
+                        return (
+                          <li key={skill.id}>
+                            <EntityLink
+                              entity={{ kind: "skill", id: skill.id }}
+                              className={styles.skill}
+                              data-plan-skill={skill.id}
+                              data-near={
+                                near?.prerequisites.has(skill.id)
+                                  ? "before"
+                                  : near?.dependents.has(skill.id)
+                                    ? "after"
+                                    : undefined
+                              }
+                              aria-current={
+                                selected === skill.id ? "page" : undefined
+                              }
+                              style={areaColor(neighborhood(skill))}
+                            >
+                              <span
+                                className={styles.check}
+                                data-state={state}
+                                aria-hidden="true"
+                              >
+                                {state === "earned" && (
+                                  <svg viewBox="0 0 16 16">
+                                    <path d="m4 8.4 2.6 2.6L12 5.6" />
+                                  </svg>
+                                )}
+                              </span>
+                              <span className={styles.title}>
+                                {skill.title}
+                                {state !== "new" && (
+                                  <span className="sr-only">
+                                    {` · ${STATE_WORDS[state]}`}
+                                  </span>
+                                )}
+                              </span>
+                            </EntityLink>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  ))}
+                </div>
+              </Disclosure>
             </li>
           );
         })}

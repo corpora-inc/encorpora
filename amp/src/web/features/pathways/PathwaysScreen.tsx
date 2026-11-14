@@ -251,7 +251,8 @@ function LearnerMap({ session }: { session: AuthSession }) {
   ) : progress.isError ? (
     "Progress could not be loaded. The map shows the curriculum without earned skills."
   ) : (
-    "Skills grow with independent successes. Brighter means stronger recorded practice."
+    // All in: the map says the rest.
+    ""
   );
   if (me.data && !me.data.signedIn) return <GuestMap />;
   return (
@@ -623,7 +624,9 @@ export function MapView({
     );
   };
   return (
-    <main className={`pathways ${browse ? "is-browsing" : ""}`}>
+    <main
+      className={`pathways ${browse ? "is-browsing" : ""} ${threeD ? "" : "is-flow"}`}
+    >
       {/* Signed in, the app frame's bar holds the logo, the Progress tabs and
           the way to practice. A visitor gets the map's own header. */}
       {guestMode && (
@@ -647,17 +650,6 @@ export function MapView({
         <div>
           <ScreenTitle>Pathways</ScreenTitle>
         </div>
-        {/* The counts paint once, when both the map and the learner's
-            record are in: their line is held until then, never rewritten. */}
-        <p
-          className="pathways-summary"
-          aria-busy={!countsReady}
-          style={countsReady ? undefined : { visibility: "hidden" }}
-        >
-          {guestMode
-            ? `${skills?.length ?? 335} skills, kindergarten through precalculus`
-            : `${earned} of ${skills?.length ?? 335} skills earned · kindergarten through precalculus`}
-        </p>
       </div>
       {guestMode && (
         <div className="pathways-guest-intro">
@@ -750,6 +742,17 @@ export function MapView({
           </div>
         )}
       </div>
+      {/* The counts paint once, when both the map and the learner's
+          record are in: their line is held until then, never rewritten. */}
+      <p
+        className="pathways-summary"
+        aria-busy={!countsReady}
+        style={countsReady ? undefined : { visibility: "hidden" }}
+      >
+        {guestMode
+          ? `${skills?.length ?? 335} skills, kindergarten through precalculus`
+          : `${earned} of ${skills?.length ?? 335} skills earned · kindergarten through precalculus`}
+      </p>
       {catalog.isError ? (
         <div role="alert">
           The skill map could not be loaded.{" "}
@@ -851,11 +854,13 @@ export function MapView({
                 selected={selectedId}
                 frame={frame}
                 here={level ? overall : null}
+                levelLoading={frontierLoading}
               />
             )}
           </div>
           <footer className="pathways-footer">
-            <div className="pathways-legend">
+            {/* The grades view names its areas at its top. */}
+            <div className="pathways-legend" hidden={!threeD}>
               {neighborhoods.map((n, i) => (
                 <span key={n.title}>
                   <i

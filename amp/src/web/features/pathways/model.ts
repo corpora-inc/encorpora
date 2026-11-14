@@ -379,3 +379,12 @@ export function bandsHere(
   );
   return new Set([nearest.index]);
 }
+
+/** A skill on the grades view, in the summary's own words: earned (an
+ * independent success), in progress (answered, not yet on its own), or not
+ * started. */
+export type SkillState = "earned" | "progress" | "new";
+export function skillState(evidence?: Evidence): SkillState {
+  if (evidence?.independentCorrect) return "earned";
+  return evidence?.attempts ? "progress" : "new";
+}
