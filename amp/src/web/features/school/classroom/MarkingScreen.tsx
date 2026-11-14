@@ -119,7 +119,7 @@ export function MarkingScreen({ host: given }: { host?: ClassHost } = {}) {
           title={dateLabel(params.date)}
           detail={
             data?.set
-              ? "Tap a problem for right or not yet, then save. Saved marks stay as they are."
+              ? "Tap a problem for right or not yet, then save."
               : "Mark the workbooks printed for this day."
           }
         />
@@ -147,9 +147,7 @@ export function MarkingScreen({ host: given }: { host?: ClassHost } = {}) {
                 Print workbooks
               </Link>
             }
-          >
-            Print a set first, and its sheets show here to mark.
-          </EmptyState>
+          />
         ) : (
           <Marks
             key={`${params.class}:${params.date}:${data.set}`}
