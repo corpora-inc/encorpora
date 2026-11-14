@@ -1,4 +1,4 @@
-import { dropCapability, heldCapability } from "../../capability-entry";
+import { heldCapability } from "../../capability-entry";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
@@ -58,11 +58,17 @@ export function InviteScreen() {
     retry: false,
     queryFn: () => school.lookupInvite(parsed!.token),
   });
-  // A link the server refuses (used, expired, not found) is let go here, so
-  // it never opens again from this tab (capability-entry.ts).
+  // A link that is over (used, expired, ended) or that the server refuses is
+  // let go here, held and carried alike; a passing network failure is not
+  // (capability-entry.ts).
+  const over =
+    (!!invite.data && invite.data.status !== "open") ||
+    (invite.error instanceof AppError &&
+      (invite.error.status ?? 0) >= 400 &&
+      (invite.error.status ?? 0) < 500);
   useEffect(() => {
-    if (invite.isError) dropCapability("/school/invite");
-  }, [invite.isError]);
+    if (over) forgetInvite();
+  }, [over]);
   const [name, setName] = useState("");
   const [nameError, setNameError] = useState("");
   const [busy, setBusy] = useState(false);

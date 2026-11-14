@@ -11,129 +11,61 @@ import { prepareBuyerHandoff } from "./features/school/pilots/buyer-session";
  * history. Only `main.tsx` imports this for its effect; `/c` and
  * `/join/continue` have `card-entry.ts`, `/p` has `share-entry.ts`.
  *
- * An invitation or approval is held:
- * - in this page's memory first, so a storage failure never loses the link
- *   just opened, and never lets an older held one stand in for it;
- * - in this tab's `sessionStorage`, so a reload of the same tab keeps it,
- *   bound to this tab by `window.name` (a tab opened from this one starts
- *   with a copy of `sessionStorage` but its own name, and reads nothing);
- * - for two hours at most, and never past an account change, a student's
- *   session on this device, or the link being accepted or ended.
+ * An invitation or approval is held in this page's memory only, for two
+ * hours at most. Nothing is written where another tab, or a later page, could
+ * read it: a tab opened from this one, or this one reloaded, has nothing
+ * held, and opens the link from the email again. The one deliberate carry is
+ * a sign-in the person starts from the link (the screens' own
+ * `rememberInvite`/`rememberApproval`), which `forgetEveryLink` clears.
  */
-const HELD: Record<HeldPath, string> = {
-  "/school/invite": "amp.capability.invite",
-  "/family/approve": "amp.capability.approval",
-};
 type HeldPath = "/school/invite" | "/family/approve";
+const PATHS: readonly HeldPath[] = ["/school/invite", "/family/approve"];
 export const HELD_FOR_MS = 2 * 60 * 60 * 1000;
+/** Where an earlier version kept them: removed whenever a link is taken. */
+const RETIRED_KEYS = ["amp.capability.invite", "amp.capability.approval"];
 
 type Place = Pick<Location, "pathname" | "search" | "hash">;
-type Store = Pick<Storage, "getItem" | "setItem" | "removeItem">;
-type Tab = { name: string };
-type Entry = { value: string; tab: string; until: number };
-
-const session = (): Store | null => {
-  try {
-    return sessionStorage;
-  } catch {
-    return null;
-  }
-};
-const browserTab = (): Tab | null =>
-  typeof window === "undefined" ? null : window;
-
-const memory = new Map<HeldPath, string>();
-
-/** This tab's own mark: kept across its reloads, never given to a tab it
- * opens. */
-function tabMark(tab: Tab | null) {
-  if (!tab) return "";
-  if (!tab.name.startsWith("amp-tab-"))
-    tab.name = `amp-tab-${Math.random().toString(36).slice(2, 12)}`;
-  return tab.name;
-}
+const memory = new Map<HeldPath, { value: string; until: number }>();
 
 export function takeCapabilityFragment(
   location: Place = window.location,
   history: Pick<History, "replaceState" | "state"> = window.history,
-  store: Store | null = session(),
-  tab: Tab | null = browserTab(),
   now = Date.now(),
 ) {
   const path = (location.pathname.replace(/\/+$/, "") || "/") as HeldPath;
-  const key = HELD[path];
-  if (!key || location.hash.length < 2) return;
-  const value = location.hash.slice(1);
-  // Memory first: whatever storage does, this is the link just opened.
-  memory.set(path, value);
+  if (!PATHS.includes(path) || location.hash.length < 2) return;
+  memory.set(path, { value: location.hash.slice(1), until: now + HELD_FOR_MS });
   try {
-    store?.setItem(
-      key,
-      JSON.stringify({
-        value,
-        tab: tabMark(tab),
-        until: now + HELD_FOR_MS,
-      } satisfies Entry),
-    );
-  } catch (error) {
-    console.warn("The link couldn’t be kept for a reload of this tab", error);
-    // An older held link must never stand in for this one.
-    try {
-      store?.removeItem(key);
-    } catch {
-      // Memory holds the link for this page.
-    }
+    for (const key of RETIRED_KEYS) sessionStorage.removeItem(key);
+  } catch {
+    // Nothing kept there, then.
   }
   history.replaceState(history.state, "", location.pathname + location.search);
 }
 
-/** The invitation or approval this tab opened, without its leading `#`. */
+/** The invitation or approval this page opened, without its leading `#`. */
 export function heldCapability(
   path: HeldPath,
-  store: Store | null = session(),
-  tab: Tab | null = browserTab(),
   now = Date.now(),
 ): string | null {
-  const kept = memory.get(path);
-  if (kept) return kept;
-  try {
-    const raw = store?.getItem(HELD[path]);
-    if (!raw) return null;
-    const entry = JSON.parse(raw) as Partial<Entry>;
-    if (
-      typeof entry.value !== "string" ||
-      typeof entry.until !== "number" ||
-      entry.until <= now ||
-      !tab ||
-      entry.tab !== tab.name
-    ) {
-      store?.removeItem(HELD[path]);
-      return null;
-    }
-    return entry.value;
-  } catch {
+  const held = memory.get(path);
+  if (!held) return null;
+  if (held.until <= now) {
+    memory.delete(path);
     return null;
   }
+  return held.value;
 }
 
-/** Done with it: accepted, declined, or ended. */
-export function dropCapability(
-  path: HeldPath,
-  store: Store | null = session(),
-) {
+/** Done with it: accepted, refused, ended or expired. */
+export function dropCapability(path: HeldPath) {
   memory.delete(path);
-  try {
-    store?.removeItem(HELD[path]);
-  } catch {
-    // Nothing was held.
-  }
 }
 
-/** Every held link goes: another account signed in or out, or a student's
- * session began or ended on this device. */
-export function dropAllCapabilities(store: Store | null = session()) {
-  for (const path of Object.keys(HELD) as HeldPath[])
-    dropCapability(path, store);
+/** Every link this page holds goes (`forgetEveryLink` also clears the
+ * screens' sign-in carry). */
+export function dropAllCapabilities() {
+  memory.clear();
 }
 
 if (typeof window !== "undefined") {
