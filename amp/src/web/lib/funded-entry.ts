@@ -210,6 +210,20 @@ export function continuationUrl(
   return path + (params.size ? `?${params}` : "");
 }
 
+/** Moving authentication to another browser must establish its own invitation
+ * state first. Carry only a complete token/optional proof in the canonical
+ * link's fragment; never put bearer values in the query string. */
+export function browserHandoffUrl(href: string) {
+  const current = new URL(href);
+  const target = current.searchParams.get("return");
+  if (target !== "school-invite" && target !== "family-approval") return href;
+  const continuation = continuationUrl({ return: target });
+  const fragment = continuation.slice(continuation.indexOf("#") + 1);
+  if (!fragment || !/^[A-Za-z0-9_-]{43}(\.[A-Za-z0-9_-]{43})?$/.test(fragment))
+    return href;
+  return new URL(continuation, current.origin).href;
+}
+
 /** Recheck privacy at the moment the parent prepares the financial request. */
 export function fundedAttribution(
   search: Record<string, unknown>,
