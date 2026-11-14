@@ -5,12 +5,14 @@ import type {
   OrgResource,
   StaffRole,
 } from "../../../schools/contracts";
+import type { FamilyProjection } from "../../../family/projection-contracts";
 import type { TabItem } from "../../ui/Tabs";
 import { shellFrame, type ShellFrame } from "../navigation/shell-frame";
 import { spaceOfPath, type RouteSpace, type Space } from "./space";
 import {
   accountTabs,
   classroomTabs,
+  familyPlaceTabs,
   familyTabs,
   learnerTabs,
   meTabs,
@@ -76,12 +78,16 @@ export type SpaceResources = {
   year?: { past: boolean } | null;
   /** Students covered by the class's running practice. */
   covered?: number;
+  /** The family a `/family/<family>/…` address names: its own children and
+   * what this reader may do with each (docs/architecture/family-api.md). */
+  family?: FamilyProjection | null;
 };
 
 export type SpaceAction =
   "start-class" | "demo-setup" | "practice" | "sign-out" | "profile-back";
 
 export type DestinationIcon =
+  | "child"
   | "learn"
   | "level"
   | "workbooks"
@@ -344,6 +350,10 @@ export function resolveSpace(
       actions: frame?.kind === "plain" && frame.practice ? ["practice"] : [],
       label: frame?.kind === "account" ? "Account" : null,
     };
+  if (frame?.kind === "family")
+    return frame.leaf === "group" || frame.leaf.startsWith("group/")
+      ? groupSpace({ ...base, ...words("classroom") }, frame, resources)
+      : familyPlaceSpace({ ...base, ...words("family") }, frame, me, resources);
   if (route === "classroom" || route === "school") {
     const orgId =
       frame?.kind === "class" || frame?.kind === "school" ? frame.org : null;
@@ -614,15 +624,16 @@ function familySpace(
     frame?.kind === "class" && frame.leaf === "report-cards"
       ? "report-cards"
       : base.active;
+  // A parent's family opens at its own address; a co-teacher's class is
+  // the class's Today.
   const home =
-    status !== "unavailable" && orgId && classId
-      ? `school/${orgId}/classes/${classId}/today`
-      : null;
-  const practices =
-    !!learner &&
-    relation === "holder" &&
-    me?.family.learners.find((entry) => entry.id === learner.id)
-      ?.learningAllowed !== false;
+    status === "unavailable" || !orgId
+      ? null
+      : relation === "holder" || relation === "second-parent"
+        ? `family/${orgId}`
+        : classId
+          ? `school/${orgId}/classes/${classId}/today`
+          : null;
   return {
     ...base,
     space: "family",
@@ -672,33 +683,16 @@ function familySpace(
                   },
                 ]
               : []),
-            // A second parent's children practice from the family's Today
-            // ("Let … practice here"), never as hers.
-            ...(practices
-              ? [
-                  {
-                    // Never "Practice": that is the adult's own, in My
-                    // practice. This is the child's, as on Today.
-                    id: "practice",
-                    label: `Let ${learner!.name} practice`,
-                    path: "practice",
-                    icon: "learn" as const,
-                    search: { learner: learner!.id },
-                    current: frame?.kind === "practice",
-                  },
-                ]
-              : []),
-            ...(learner
-              ? [
-                  {
-                    id: "progress",
-                    label: `${learner.name}’s progress`,
-                    path: "overview",
-                    icon: "level" as const,
-                    search: { learner: learner.id },
-                    current: frame?.kind === "progress",
-                  },
-                ]
+            // The family's children, each opening their page. A co-teacher's
+            // class has none of its children as theirs.
+            ...(orgId && (relation === "holder" || relation === "second-parent")
+              ? learners.map((child) => ({
+                  id: `child:${child.id}`,
+                  label: child.name,
+                  path: `family/${orgId}/kids/${child.id}`,
+                  icon: "child" as const,
+                  current: false,
+                }))
               : []),
           ],
     place: !orgId
@@ -839,5 +833,174 @@ function teachingSpace(
         ? klass.name
         : `${klass.name} · ${org.name}`
       : null,
+  };
+}
+
+type FamilyFrame = Extract<ShellFrame, { kind: "family" }>;
+
+/** The family's own class, when it has one: the holder's, or the one this
+ * second parent shares. A family whose children are all hosted elsewhere
+ * has none. */
+export function ownClassOf(
+  me: SignedInMe | null,
+  family: string,
+): { id: string; name: string } | null {
+  if (me?.familyClass?.orgId === family)
+    return { id: me.familyClass.classId, name: me.familyClass.className };
+  const shared = me?.secondParentOf?.find((entry) => entry.orgId === family);
+  return shared ? { id: shared.classId, name: shared.className } : null;
+}
+
+/** The capabilities a family projection grants, by name, for one target. */
+function familyCan(data: FamilyProjection): string[] {
+  return Object.entries(data.capabilities)
+    .filter(([, allowed]) => allowed)
+    .map(([name]) => name);
+}
+
+/**
+ * A family's own screens (`/family/<family>/…`), from the family projection
+ * that address names: its children (owned, or this second parent's family's,
+ * never a class's other students), its tabs, and the children as the drawer's
+ * rows. A projection for another family is never read; a refused or missing
+ * one is unavailable.
+ */
+function familyPlaceSpace(
+  base: Frame,
+  frame: FamilyFrame,
+  me: SignedInMe | null,
+  resources: SpaceResources,
+): SpaceDescriptor {
+  const data =
+    resources.family === null
+      ? null
+      : resources.family?.familyId === frame.family
+        ? resources.family
+        : undefined;
+  const status: Resolution =
+    data === null ? "unavailable" : data === undefined ? "loading" : "ready";
+  const children = data?.children ?? [];
+  const learners = children.map(({ id, name }) => ({ id, name }));
+  const kid = /^kids\/([^/]+)/.exec(frame.leaf)?.[1] ?? null;
+  const learner = kid
+    ? (learners.find((entry) => entry.id === kid) ?? null)
+    : null;
+  const own = ownClassOf(me, frame.family);
+  const home = `family/${frame.family}`;
+  const workbooks = children.length
+    ? children.some((child) => child.capabilities.readWorkbooks)
+    : data?.role === "holder";
+  return {
+    ...base,
+    space: "family",
+    status,
+    family: {
+      id: frame.family,
+      name: data?.displayName ?? null,
+      demo: false,
+    },
+    relation: data?.role ?? null,
+    class: own
+      ? { id: own.id, name: own.name, past: false, board: false, start: false }
+      : null,
+    learner,
+    learners,
+    capabilities: data
+      ? [{ target: { kind: "org", id: frame.family }, can: familyCan(data) }]
+      : [],
+    tabs: status === "ready" ? familyPlaceTabs(frame.family, { workbooks }) : [],
+    bar: "tabs",
+    active: frame.active,
+    actions: [],
+    destinations:
+      status === "unavailable"
+        ? []
+        : [
+            {
+              id: "today",
+              label: "Today",
+              path: home,
+              icon: "class",
+              current: frame.leaf === "",
+            },
+            ...learners.map((child) => ({
+              id: `child:${child.id}`,
+              label: child.name,
+              path: `${home}/kids/${child.id}`,
+              icon: "child" as const,
+              current: kid === child.id,
+            })),
+          ],
+    place:
+      status === "unavailable"
+        ? null
+        : data?.role === "holder"
+          ? "home"
+          : `family:${frame.family}`,
+    label: data?.displayName ?? null,
+  };
+}
+
+/**
+ * A tutoring group (`/family/<family>/group`): a family-kind class that holds
+ * other families' children, presented as a teaching place of its own, the
+ * whole class in a classroom's words. It is never mixed into the family.
+ */
+function groupSpace(
+  base: Frame,
+  frame: FamilyFrame,
+  resources: SpaceResources,
+): SpaceDescriptor {
+  const data =
+    resources.family === null
+      ? null
+      : resources.family?.familyId === frame.family
+        ? resources.family
+        : undefined;
+  const place = data?.teachingPlace ?? null;
+  const status: Resolution =
+    data === null || (data && !place)
+      ? "unavailable"
+      : data === undefined
+        ? "loading"
+        : "ready";
+  return {
+    ...base,
+    space: "classroom",
+    status,
+    org: {
+      id: frame.family,
+      name: data?.displayName ?? null,
+      kind: "family",
+      demo: false,
+      lone: true,
+    },
+    class: {
+      id: place?.classId ?? "",
+      name: place?.displayName ?? null,
+      past: false,
+      board: false,
+      start: false,
+    },
+    role: data ? "teacher" : null,
+    capabilities: [],
+    tabs: [],
+    bar: "tabs",
+    active: null,
+    actions: [],
+    destinations:
+      status === "unavailable"
+        ? []
+        : [
+            {
+              id: "group",
+              label: "Tutoring group",
+              path: `family/${frame.family}/group`,
+              icon: "class",
+              current: true,
+            },
+          ],
+    place: `group:${frame.family}`,
+    label: place ? `Tutoring group · ${place.displayName}` : "Tutoring group",
   };
 }

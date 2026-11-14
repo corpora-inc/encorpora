@@ -19,7 +19,11 @@ export function WeekFacts({
   words,
   target = null,
   students,
+  earned = ["skill shown twice on its own", "skills shown twice on their own"],
 }: {
+  /** What a skill earned this week is called, one and several, in the
+   * space's words. */
+  earned?: readonly [string, string];
   week: TodayResponse["week"];
   /** Who practiced, in the space's words (features/spaces/words.ts). */
   words: Pick<SpaceWords, "learner" | "learners">;
@@ -55,9 +59,7 @@ export function WeekFacts({
         {week.objectives > 0 && (
           <div>
             <dt>
-              {week.objectives === 1
-                ? "skill shown twice on its own"
-                : "skills shown twice on their own"}
+              {week.objectives === 1 ? earned[0] : earned[1]}
             </dt>
             <dd>{number(week.objectives)}</dd>
           </div>

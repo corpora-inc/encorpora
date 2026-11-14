@@ -1,3 +1,4 @@
+import { familyPlacesOptions } from "../family/api";
 import { useQuery } from "@tanstack/react-query";
 import { useLocation, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
@@ -34,14 +35,30 @@ export function usePlaces(me: SignedInMe | null) {
     enabled: staff,
     refetchOnMount: false,
   });
+  const adult =
+    !!me &&
+    me.account.kind !== "student" &&
+    !!session &&
+    !session.accountId.startsWith("school:");
+  const families = useQuery({
+    ...familyPlacesOptions(session ?? { accountId: "", token: "" }),
+    enabled: adult,
+    refetchOnMount: false,
+  });
   if (places.isError) console.warn("Your places did not load", places.error);
+  if (families.isError)
+    console.warn("Your families did not load", families.error);
   return {
     groups:
       me && me.account.kind !== "student"
-        ? placeGroups(me, staff ? (places.data ?? null) : null)
+        ? placeGroups(
+            me,
+            staff ? (places.data ?? null) : null,
+            adult ? (families.data ?? null) : null,
+          )
         : [],
     more: places.data?.more === true,
-    loading: staff && places.isLoading,
+    loading: (staff && places.isLoading) || (adult && families.isLoading),
   };
 }
 
@@ -70,7 +87,11 @@ export function choosePlaceLearner(me: SignedInMe, place: PlaceEntry["id"]) {
   } else if (children) {
     if (!children.some((learner) => learner.id === store.learnerId))
       store.select(children[0]?.id ?? null);
-  } else if (place.startsWith("school:") || place.startsWith("class:"))
+  } else if (
+    place.startsWith("school:") ||
+    place.startsWith("class:") ||
+    place.startsWith("group:")
+  )
     store.select(null);
 }
 

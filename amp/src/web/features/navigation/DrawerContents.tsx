@@ -1,5 +1,5 @@
 import { CurriculumDetailsControl } from "../curriculum/CurriculumDetails";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { Fragment, useEffect, useRef, useState, type ReactNode } from "react";
 import {
   Link,
   useLocation,
@@ -22,8 +22,10 @@ import {
 } from "../../purchase-return";
 import styles from "./Navigation.module.css";
 import { ProfilePlace } from "../profiles/ProfileBar";
+import { ThisDevice } from "./ThisDevice";
 
 type Icon =
+  | "child"
   | "learn"
   | "level"
   | "workbooks"
@@ -37,6 +39,8 @@ type Icon =
 function NavIcon({ kind }: { kind: Icon }) {
   const paths: Record<Icon, string> = {
     learn: "m9 5 10 7-10 7V5Z",
+    // One person: a child of the family.
+    child: "M12 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-6.5 9a6.5 6.5 0 0 1 13 0",
     level: "M5 19h14M7 15v-3m5 3V8m5 7V4",
     // A person and an arrow: practicing as someone else.
     someone:
@@ -139,6 +143,7 @@ export default function DrawerContents({
     </Link>
   );
   const kind = space?.space ?? null;
+  const storeLearner = useLearnerStore((state) => state.learnerId);
   const learners =
     kind === "family" && space?.space === "family" ? space.learners : [];
   const chosen =
@@ -169,11 +174,9 @@ export default function DrawerContents({
     label: learner.name,
   }));
   // A learner's settings, only where there is a learner whose they are.
-  const learning =
-    (kind === "family" && !!chosen) || kind === "me" || kind === "student";
-  // Their own family's account screens; anyone else's account is theirs.
-  const familyAccount =
-    space?.space === "family" && space.relation === "holder";
+  // A family's device preferences are one quiet section at the foot.
+  const learning = kind === "me" || kind === "student";
+  const family = kind === "family";
   return (
     <>
       {(view.error || view.identityError) && (
@@ -189,7 +192,7 @@ export default function DrawerContents({
         <section className={styles.switcher} aria-label="Who is practicing">
           <ProfilePlace onNavigate={close} />
         </section>
-      ) : learnerChoices.length > 1 ? (
+      ) : kind !== "family" && learnerChoices.length > 1 ? (
         <section className={styles.switcher} aria-label="Who is practicing">
           {learnerChoices.length <= 6 ? (
             <div className={styles.learnerChoice}>
@@ -214,7 +217,7 @@ export default function DrawerContents({
             />
           )}
         </section>
-      ) : chosen && (kind === "family" || kind === "student") ? (
+      ) : chosen && kind === "student" ? (
         <section className={styles.switcher} aria-label="Who is practicing">
           <div className={styles.current} data-learner={chosen.id}>
             <span className={styles.kicker}>
@@ -235,14 +238,25 @@ export default function DrawerContents({
         aria-label="AMP navigation"
         className={styles.navigation}
       >
-        {space?.destinations.map((destination) =>
-          view.viewOnly && destination.id === "practice"
-            ? null
-            : nav(`/${destination.path}`, destination.label, destination.icon, {
+        {space?.destinations.map((destination, index, all) =>
+          view.viewOnly && destination.id === "practice" ? null : (
+            <Fragment key={destination.id}>
+              {/* A family's children, as rows under their own heading. */}
+              {destination.icon === "child" &&
+                all[index - 1]?.icon !== "child" && (
+                  <span className={`${styles.kicker} ${styles.groupLabel}`} data-drawer-kids="">
+                    {all.filter((entry) => entry.icon === "child").length === 1
+                      ? "Your child"
+                      : "Your kids"}
+                  </span>
+                )}
+              {nav(`/${destination.path}`, destination.label, destination.icon, {
                 detail: destination.detail,
                 current: destination.current,
                 search: destination.search,
-              }),
+              })}
+            </Fragment>
+          ),
         )}
         {/* Before any place: the one way in. */}
         {!student &&
@@ -251,6 +265,10 @@ export default function DrawerContents({
           !space?.destinations.length &&
           nav("/start", "Get started", "learn")}
       </nav>
+      {family && (
+        // The screen's own settings (practice adjustments) portal here.
+        <div ref={setDrawerSettings} data-drawer-settings />
+      )}
       {learning && (
         <div className={styles.settings}>
           {practiceControls}
@@ -286,15 +304,22 @@ export default function DrawerContents({
           })}
         {view.session.data &&
           !student &&
-          (familyAccount
-            ? nav("/family", "Family & account", "settings")
-            : nav(`/${ACCOUNT_HOME}`, "Account", "settings", {
-                current: kind === "account",
-              }))}
+          nav(`/${ACCOUNT_HOME}`, "Account", "settings", {
+            current: kind === "account",
+          })}
       </nav>
       <div className={styles.settings}>
-        {!learning && <div ref={setDrawerSettings} data-drawer-settings />}
-        <FeedbackPreferences />
+        {!learning && !family && (
+          <div ref={setDrawerSettings} data-drawer-settings />
+        )}
+        {family ? (
+          <ThisDevice
+            gradeNumbers={!!chosen && storeLearner === chosen.id}
+            learner={chosen?.name}
+          />
+        ) : (
+          <FeedbackPreferences />
+        )}
       </div>
     </>
   );

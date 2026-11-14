@@ -38,6 +38,7 @@ import {
   setupSteps,
   type SetupStep,
 } from "../features/school/paths";
+import { toFamilyPage } from "./family-redirect";
 
 /** Staff screens: signed in, on the web, and not a student's device. A signed-out
  * visitor goes through the usual sign-in and comes straight back here. */
@@ -86,6 +87,8 @@ const familyEquivalent =
       org: string;
       class?: string;
     };
+    // A parent's own family: its own screen, everything in the address kept.
+    await toFamilyPage(session, orgId, leaf, location as never);
     const org = await queryClient
       .ensureQueryData(orgOptions(session, orgId))
       .catch(() => null);

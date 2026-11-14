@@ -46,6 +46,26 @@ export function familyTabs(
     : items;
 }
 
+/** A family's own screens (`/family/<family>/…`): its children's
+ * day-to-day on a phone, their records, its people and its settings under
+ * More. Workbooks show where this reader may make them. */
+export function familyPlaceTabs(
+  family: string,
+  { workbooks = true }: { workbooks?: boolean } = {},
+): TabItem[] {
+  const at = (leaf: string) =>
+    leaf ? `family/${family}/${leaf}` : `family/${family}`;
+  return [
+    tab("today", "Today", at(""), true),
+    tab("map", "Map", at("map"), true),
+    ...(workbooks ? [tab("workbooks", "Workbooks", at("workbooks"), true)] : []),
+    tab("time", "Time", at("time"), true),
+    tab("reports", "Report cards", at("reports")),
+    tab("people", "People", at("people")),
+    tab("settings", "Settings", at("settings")),
+  ];
+}
+
 /** A school's class: a teacher's day-to-day on a phone. A past year keeps
  * its grades and time. */
 export function classroomTabs(

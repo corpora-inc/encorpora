@@ -229,3 +229,9 @@
   background: var(--color-secondary);
   color: var(--color-on-secondary);
 }
+/* A heading over a run of the drawer's rows (a family's children), at the
+   rows' own inset. */
+.groupLabel {
+  margin: var(--space-3) 0 var(--space-1);
+  padding-inline: var(--space-2);
+}

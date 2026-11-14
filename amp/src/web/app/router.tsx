@@ -37,7 +37,6 @@ import { practicingAsAdult, practicingAsProfile } from "../lib/adult-learner";
 import { LoadingScreen, RouteError } from "../ui/LoadingScreen";
 import { closeAllPopovers } from "../ui/popover-owner";
 import {
-  familyClassPath,
   homePlace,
   isStarterChoice,
   placeOfPath,
@@ -72,6 +71,8 @@ import { approvalsOptions } from "../features/family-approval/api";
 import { secondParentOptions } from "../features/second-parent/api";
 import { classYearOptions } from "../features/school/org/org-api";
 import { frameData, schoolRoutes, staffScreen } from "./school-routes";
+import { familyRoutes } from "./family-routes";
+import { toFamilyAddress } from "./family-redirect";
 import { loadCurriculum, loadScope } from "../features/schools/api";
 import {
   marksSearchSchema,
@@ -474,12 +475,14 @@ const home = createRoute({
             throw redirect({ to: "/me", replace: true } as never);
           // A family's side is its class, once a child can practice; until
           // then first-run routing below guides the parent there.
-          if (place === "home" && me.familyClass && me.next === "practice")
-            throw redirect({
-              to: "/$",
-              params: { _splat: familyClassPath(me.familyClass) },
-              replace: true,
-            });
+          if (
+            place === "home" &&
+            me.next === "practice" &&
+            (me.familyClass ||
+              me.learners.length > 0 ||
+              !!me.secondParentOf?.length)
+          )
+            throw redirect({ to: "/family", replace: true } as never);
           if (place !== "home")
             throw redirect({
               to: "/$",
@@ -1021,7 +1024,13 @@ const schoolClass = createRoute({
   getParentRoute: () => root,
   path: "/school/$org/classes/$class",
   staticData: { space: "classroom" },
-  beforeLoad: staffScreen,
+  // A parent's family lived at its class before it had an address of its
+  // own: each old leaf opens the family's matching screen.
+  beforeLoad: async (context) => {
+    const result = await staffScreen(context);
+    await toFamilyAddress(result.session, context);
+    return result;
+  },
   loader: ({ context, params }) =>
     Promise.all([
       frameData((context as { session: AuthSession }).session, params.org),
@@ -1703,6 +1712,7 @@ export const router = createRouter({
     // Linked to through the splat route, as every staff screen is, so their
     // URLs stay out of the typed route table.
     ...(schoolRoutes(root) as unknown as []),
+    ...(familyRoutes(root) as unknown as []),
     ...((devPersonas ? [devPersonas] : []) as unknown as []),
   ]),
   history,

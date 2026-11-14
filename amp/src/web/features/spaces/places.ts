@@ -6,6 +6,7 @@ import {
   type StaffRole,
 } from "../../../schools/contracts";
 import type { AuthSession } from "../../auth";
+import type { FamilyPlaces } from "../../../family/projection-contracts";
 import { call, keyFor } from "../school/api";
 import { spaceWords } from "./words";
 
@@ -25,6 +26,7 @@ export type PlaceId =
   | "level"
   | `school:${string}`
   | `family:${string}`
+  | `group:${string}`
   | `class:${string}:${string}`;
 
 export type PlaceEntry = {
@@ -82,9 +84,7 @@ function ownFamily(me: SignedInMe): PlaceEntry | null {
         : children.length > 1
           ? count(children.length, words.learner, words.learners)
           : "Getting started",
-    path: me.familyClass
-      ? `school/${me.familyClass.orgId}/classes/${me.familyClass.classId}/today`
-      : "",
+    path: "family",
   };
 }
 
@@ -99,21 +99,68 @@ function ownFamily(me: SignedInMe): PlaceEntry | null {
 export function placeGroups(
   me: SignedInMe,
   places: PlacesResource | null,
+  /** The families this account belongs to (`GET /families`), when read:
+   * each named as the family is, never by its class. */
+  families: FamilyPlaces | null = null,
 ): PlaceGroup[] {
   const family: PlaceEntry[] = [];
-  const own = ownFamily(me);
-  if (own) family.push(own);
-  for (const shared of me.secondParentOf ?? [])
-    family.push({
-      id: `family:${shared.orgId}`,
-      name: shared.className,
-      detail: "Second parent",
-      path: `school/${shared.orgId}/classes/${shared.classId}/today`,
-    });
+  const groups: PlaceEntry[] = [];
   const known = new Set<string>([
     ...(me.familyClass ? [me.familyClass.orgId] : []),
     ...(me.secondParentOf ?? []).map((shared) => shared.orgId),
   ]);
+  if (families) {
+    const words = spaceWords("family");
+    const children = me.learners;
+    for (const entry of families.families) {
+      known.add(entry.familyId);
+      if (entry.role === "co-teacher") {
+        // Someone else's family class this account teaches: a teaching
+        // place, its children never theirs.
+        groups.push({
+          id: `school:${entry.familyId}`,
+          name: entry.teachingPlace?.displayName ?? entry.displayName,
+          detail: "Co-teacher",
+          path: entry.teachingPlace
+            ? `school/${entry.familyId}/classes/${entry.teachingPlace.classId}/today`
+            : `school/${entry.familyId}`,
+        });
+        continue;
+      }
+      family.push({
+        id: entry.role === "holder" ? "home" : `family:${entry.familyId}`,
+        name: entry.displayName,
+        detail:
+          entry.role === "second-parent"
+            ? "Second parent"
+            : children.length === 1
+              ? children[0]!.name
+              : children.length > 1
+                ? count(children.length, words.learner, words.learners)
+                : "Getting started",
+        path: `family/${entry.familyId}`,
+      });
+      // Other families' children in this family's class: a tutoring group,
+      // a teaching place of its own, never mixed into the family.
+      if (entry.teachingPlace)
+        groups.push({
+          id: `group:${entry.familyId}`,
+          name: "Tutoring group",
+          detail: entry.teachingPlace.displayName,
+          path: `family/${entry.familyId}/group`,
+        });
+    }
+  } else {
+    const own = ownFamily(me);
+    if (own) family.push(own);
+    for (const shared of me.secondParentOf ?? [])
+      family.push({
+        id: `family:${shared.orgId}`,
+        name: shared.className,
+        detail: "Second parent",
+        path: `family/${shared.orgId}`,
+      });
+  }
   const orgs =
     places?.orgs ??
     (me.staffOf ?? []).map((org) => ({
@@ -125,7 +172,7 @@ export function placeGroups(
       ...(org.setupPending ? { setupPending: true } : {}),
       ...(org.demo ? { demo: true as const } : {}),
     }));
-  const teaching: PlaceEntry[] = [];
+  const teaching: PlaceEntry[] = [...groups];
   const classes = [...(places?.classes ?? [])];
   for (const org of orgs) {
     if (known.has(org.id)) continue;
