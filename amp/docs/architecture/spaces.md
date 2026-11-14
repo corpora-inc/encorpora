@@ -76,6 +76,79 @@ Capabilities are the server's, named by target (`{ target: { kind: "org", id }, 
 - **Drawer**: the space's own destinations (and in a family, which of its children), then the place switcher, then the account. It never shows another space's learners or destinations.
 - **Place switcher**: one bounded request, `GET /api/v1/school/places` (`src/schools/places.ts`): the orgs this account holds a staff role at, the schools below a district it oversees, and the classes it teaches or aides this year, each list stopping at 40 with `more` set. Grouped as **Family** (their own, second-parent families, co-teaching), **Teaching** (each school with its role, its classes, viewer and aide included) and **My practice** (their own, Practice at a level). Six teaching places show before "More places"; past the server's limit, "All your schools" opens `/school`. Choosing a place lands on its home, chooses a learner who belongs there (none for a class or school), and remembers it for `/` only.
 
+## Classroom and School: every action, and where it lives
+
+Full power in both spaces (SPEC R7): every retained action has a URL, a tab or a sheet opened by the address (`?seats=1`, `?authorize=1`, `?export=1`, `?close=1`, `?add=1`, an `open` layer), and is at most two taps from the space's navigation. A tap on More, or opening the drawer, is part of the navigation; so "Grades → Report cards" is two taps on any width. Each row is offered only to someone the server lets do it (`can`, `teaches`, `canManage`, `canEdit`); the rest see the screen read-only or not at all.
+
+### Classroom (`/school/<org>/classes/<class>/…`)
+
+| Action                                                                                                    | Where                                                                                | Taps |
+| --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ---- |
+| Today: who needs you, the week, the class code (only while practice runs)                                 | `today`                                                                              | 1    |
+| Start practice (the pilot; authorization first when the class has none)                                   | Today's first item and Students' header, one name; the sheet `?authorize=1`          | 1    |
+| Start class (the sign-in board)                                                                           | the bar's action while practice runs; `start`                                        | 1    |
+| Class map, a student's record and its layers (answers, skills, lessons)                                   | `map`, `?open=student:<id>` and deeper `open` layers                                 | 2    |
+| Grades: suggested ranges, finals, each row's evidence                                                     | `gradebook`, `?student=<id>`                                                         | 1    |
+| Close a term                                                                                              | Grades › Close term (`?close=1`)                                                     | 2    |
+| Report cards, print or PDF                                                                                | Grades › Report cards (`report-cards?term=`)                                         | 2    |
+| Exports (OneRoster, CSV)                                                                                  | Grades › Export (`?export=1`)                                                        | 2    |
+| Previous years' classes, their grades and time                                                            | the drawer's School › Classes (`?year=`), then the past class (Grades, Time)         | 2    |
+| Time                                                                                                      | `time` (More on a phone)                                                             | 1–2  |
+| Workbooks: generate, the day, marking and correction                                                      | `workbooks`, `workbooks/<date>`                                                      | 1–2  |
+| Students: roster, pictures reset, sign out everywhere                                                     | `roster`, a row's Manage                                                             | 2    |
+| Cards (all, or one student's)                                                                             | Students › Print cards (`cards`, `cards?student=`)                                   | 2    |
+| New class code                                                                                            | Today's code, Students' code (More › New code)                                       | 2    |
+| Roster import (paste, CSV, Excel)                                                                         | Students › Add students (`import`)                                                   | 2    |
+| Parent links                                                                                              | Students › Parent links                                                              | 2    |
+| Teachers of the class; invite a co-teacher (staff managers)                                               | the foot of Students; Staff with the class chosen (`/school/<org>/staff?class=<id>`) | 2    |
+| Student experience (levels, standings opt-in, devices)                                                    | `settings`                                                                           | 1–2  |
+| Practice status, Request seats (the buyer handoff)                                                        | Settings › Practice; Today's item; the sheet `?seats=1`                              | 2    |
+| The school above (license, staff, calendar, settings) for someone who oversees it, a one-class school too | the drawer's School                                                                  | 2    |
+
+Not offered: reopening a closed term. A closed term is frozen with its evidence; no endpoint reopens it.
+
+### School (`/school/<org>/…`)
+
+| Action                                                       | Where                                                             | Taps |
+| ------------------------------------------------------------ | ----------------------------------------------------------------- | ---- |
+| Overview: practice, growth, where students stand, classes    | `/school/<org>`                                                   | 1    |
+| Aggregate standing curves, one class's drill                 | Overview › Where students stand (`standing`, `standing/<class>`)  | 2    |
+| Classes, and earlier years                                   | `classes`, `classes?year=`                                        | 1    |
+| Org-wide students, transfer and share from a student's layer | Classes › Students (`students`, `?open=student:<id>`)             | 2    |
+| Import students                                              | Classes › Import students (`import`)                              | 2    |
+| Staff, invite, roles and classes                             | `staff`                                                           | 1    |
+| Sign-in help                                                 | Staff › Sign-in help (`sign-in-help`)                             | 2    |
+| License, seats                                               | `license`                                                         | 1    |
+| Calendar, terms; year rollover                               | `calendar` (More on a phone); Calendar › the next year (`year`)   | 2    |
+| Settings and locks (weekly target, student experience)       | `settings`                                                        | 1–2  |
+| Privacy, agreements                                          | `privacy`                                                         | 1–2  |
+| Activity                                                     | `activity`                                                        | 1–2  |
+| Integrations (Clever stays off until #2275)                  | `integrations`                                                    | 1–2  |
+| A district's or network's schools; invite a school           | `schools`; Settings › Invite a school (`/school/adopt?district=`) | 1–2  |
+| A class, with the viewer's real rights                       | Classes › the class                                               | 2    |
+
+An admin or viewer drilling into a class gets the classroom composition with their own role (`role: "admin" | "viewer"`): the class's tabs and records, the actions the server grants them, and nothing that makes them its teacher. Start practice belongs to the class's enrolled teacher (`teaches`); someone else reads "Waiting for the class's teacher to start practice".
+
+A one-class school (`solo`, one class) is its class: no Overview or Activity. Its Staff, License, Calendar, Privacy, Settings and Integrations stay, for whoever the server lets read them, behind the drawer's School.
+
+### School first runs
+
+`/start/school` (the starter's school answer) offers the one next step for what the account already has, and a signed-in `/school/new` with nothing to set up opens it (never the public `/schools` with its Sign in):
+
+| The account has                                                      | Next step                                                                                   |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| An invitation kept on this device (`/school/invite` through sign-in) | Join that school                                                                            |
+| A school to finish setting up (its admin)                            | Finish setting up                                                                           |
+| A school it administers or views                                     | Open it                                                                                     |
+| Its own teacher pilot                                                | Open the class; Send to your school's buyer (`?seats=1`)                                    |
+| Nothing at a school (a demo doesn't count)                           | Start with your class (`/school/start`, the self-serve pilot); explore the demo; Talk to us |
+
+Clever is offered only where it is turned on.
+
+### A class's first day
+
+Start practice is the one name for starting practice, on Today, on Students and in the authorization sheet. The class code, the board and the cards reach students only while practice runs: before it, the board and cards say "Practice hasn't started" and offer Start practice; after it, "Practice has ended", with Request seats for the class's teacher. Reports, exports, issued workbooks and paper results stay after practice ends.
+
 ## Vocabulary
 
 `spaceWords(space)` (`words.ts`) is a typed table of every noun that differs by space: the learner and learners, whose names a sign-in list shows, the group, the people screen, a map key's own-grade line, how sign-in is introduced, the switcher's heading and the tab row's name. Shared widgets take these as props; a family never reads "student" and a class never reads "your children".

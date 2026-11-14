@@ -775,8 +775,11 @@ function teachingSpace(
   ).some((permission) => can.has(permission));
   const schoolHome =
     org && lone ? (schoolTabs(org, { lone })[0]?.path ?? null) : null;
+  // A teacher of a school with several classes reaches its Classes (their
+  // other classes, earlier years) the same way, without the admin screens.
   const school: Destination[] =
-    status !== "unavailable" && (!onClass || oversees)
+    status !== "unavailable" &&
+    (!onClass || oversees || (!lone && can.has("classes.read")))
       ? [
           {
             id: "school",

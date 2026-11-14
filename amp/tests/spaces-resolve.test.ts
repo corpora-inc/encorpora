@@ -652,7 +652,8 @@ test("power user: each place looks right on its own terms, and nothing follows t
   expectSpace(room, "classroom");
   assert.ok(!("learner" in room));
   assert.ok(!JSON.stringify(room).includes("Pip"));
-  assert.deepEqual(destinations(room), ["Grade 4 Math"]);
+  // Their class, and the school's classes (other classes, earlier years).
+  assert.deepEqual(destinations(room), ["Grade 4 Math", "School"]);
   const other = resolveSpace(
     at(classPath(OTHER_FAMILY, OTHER_FAMILY_CLASS)),
     adult(power, "pip"),
