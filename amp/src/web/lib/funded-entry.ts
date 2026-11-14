@@ -80,8 +80,18 @@ export type FundedSearch = CampaignSearch & {
   entry?: SignupIntent["entry"];
   next?: string;
 };
-/** Where a sign-in to a place continues: the one return contract. */
-export const safeSchoolPath = (value: unknown) => appReturn(value);
+/** A school's own setup steps, which a sign-in must come back to (an
+ * invitation's `/school/new?org=…`): never another site, no `..`. */
+const schoolStep = (value: unknown) =>
+  typeof value === "string" &&
+  value.length <= 300 &&
+  /^\/school\/(new|start|connect|adopt)(\?[\w=&%-]*)?$/.test(value)
+    ? value
+    : undefined;
+/** Where a sign-in continues: any place, by the one return contract
+ * (`appReturn`), or a school's own setup step. */
+export const safeSchoolPath = (value: unknown) =>
+  appReturn(value) ?? schoolStep(value);
 /** An invitation being carried across sign-in on this device. Its token never
  * goes in a query string, which a server or report could see. */
 const stored = (key: string) => {
@@ -144,8 +154,8 @@ export function continuationSearch(
       : {}),
     // A signed-out visit to any place (a family, a class, a school) signs
     // in and comes back to it, by the one return contract.
-    ...(search.return === "school" && appReturn(search.next)
-      ? { next: appReturn(search.next) }
+    ...(search.return === "school" && safeSchoolPath(search.next)
+      ? { next: safeSchoolPath(search.next) }
       : {}),
   };
 }

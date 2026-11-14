@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import type { SignedInMe } from "../src/account/contracts.js";
 import type { FamilyProjection } from "../src/family/projection-contracts.js";
-import { resolveSpace } from "../src/web/features/spaces/resolve.js";
+import { canOn, resolveSpace } from "../src/web/features/spaces/resolve.js";
 import { shellFrame } from "../src/web/features/navigation/shell-frame.js";
 import { spaceOfPath } from "../src/web/features/spaces/space.js";
 import { placeGroups } from "../src/web/features/spaces/places.js";
@@ -23,7 +23,9 @@ const B = ID(3);
 const B_CLASS = ID(4);
 const HOSTED = ID(5);
 
-const caps = (over: Partial<FamilyProjection["children"][number]["capabilities"]> = {}) => ({
+const caps = (
+  over: Partial<FamilyProjection["children"][number]["capabilities"]> = {},
+) => ({
   readProgress: true,
   readWorkbooks: true,
   createWorkbook: true,
@@ -124,7 +126,12 @@ const power = me({
     { id: "pip", name: "Pip" },
     { id: "wren", name: "Wren" },
   ] as SignedInMe["learners"],
-  familyClass: { orgId: A, classId: A_CLASS, className: "Pell class", notice: false },
+  familyClass: {
+    orgId: A,
+    classId: A_CLASS,
+    className: "Pell class",
+    notice: false,
+  },
   secondParentOf: [
     {
       orgId: B,
@@ -136,14 +143,19 @@ const power = me({
 });
 const adult = (account: SignedInMe) =>
   ({ kind: "adult", me: account, learnerId: null }) as const;
-const familyA = projection(A, "holder", [kid("pip", "Pip"), kid("wren", "Wren")], {
-  teachingPlace: {
-    classId: A_CLASS,
-    displayName: "Pell class",
-    scope: "whole-class",
-    path: `/api/v1/families/${A}/teaching`,
+const familyA = projection(
+  A,
+  "holder",
+  [kid("pip", "Pip"), kid("wren", "Wren")],
+  {
+    teachingPlace: {
+      classId: A_CLASS,
+      displayName: "Pell class",
+      scope: "whole-class",
+      path: `/api/v1/families/${A}/teaching`,
+    },
   },
-});
+);
 
 test("a family's address is its own frame, Today at its root and a child's page under it", () => {
   assert.equal(spaceOfPath(`/family/${A}`), "family");
@@ -167,9 +179,13 @@ test("a family's address is its own frame, Today at its root and a child's page 
 });
 
 test("holder: the family's own children only, its tabs, its name, its children as rows", () => {
-  const space = resolveSpace({ pathname: `/family/${A}`, space: "family" }, adult(power), {
-    family: familyA,
-  });
+  const space = resolveSpace(
+    { pathname: `/family/${A}`, space: "family" },
+    adult(power),
+    {
+      family: familyA,
+    },
+  );
   assert.equal(space.space, "family");
   if (space.space !== "family") return;
   assert.equal(space.status, "ready");
@@ -213,7 +229,10 @@ test("a child's page marks that child, and only one of the family's own", () => 
   );
   if (space.space !== "family") throw new Error(space.space);
   assert.equal(space.learner?.id, "wren");
-  assert.equal(space.destinations.find((entry) => entry.current)?.label, "Wren");
+  assert.equal(
+    space.destinations.find((entry) => entry.current)?.label,
+    "Wren",
+  );
   const stranger = resolveSpace(
     { pathname: `/family/${A}/kids/zed`, space: "family" },
     adult(power),
@@ -223,33 +242,90 @@ test("a child's page marks that child, and only one of the family's own", () => 
   assert.equal(stranger.learner, null);
 });
 
+test("each child's rights are a learner target of their own", () => {
+  const space = resolveSpace(
+    { pathname: `/family/${B}`, space: "family" },
+    adult(power),
+    {
+      family: projection(B, "second-parent", [
+        kid("kai", "Kai", {
+          capabilities: caps({
+            rename: false,
+            purchase: false,
+            continuePurchase: false,
+            manageConsent: false,
+            delete: false,
+          }),
+        }),
+      ]),
+    },
+  );
+  assert.ok(canOn(space, { kind: "learner", id: "kai" }, "practiceHere"));
+  assert.ok(!canOn(space, { kind: "learner", id: "kai" }, "rename"));
+  assert.ok(!canOn(space, { kind: "learner", id: "kai" }, "purchase"));
+  assert.ok(!canOn(space, { kind: "learner", id: "pip" }, "practiceHere"));
+  const holder = resolveSpace(
+    { pathname: `/family/${A}`, space: "family" },
+    adult(power),
+    {
+      family: familyA,
+    },
+  );
+  assert.ok(canOn(holder, { kind: "learner", id: "pip" }, "rename"));
+  assert.ok(canOn(holder, { kind: "org", id: A }, "inviteSecondParent"));
+});
+
 test("second parent of B: B's children, B's name, never A's children or A's class", () => {
-  const space = resolveSpace({ pathname: `/family/${B}`, space: "family" }, adult(power), {
-    family: projection(B, "second-parent", [
-      kid("kai", "Kai", { capabilities: caps({ readWorkbooks: false, continuePurchase: false, purchase: false, rename: false, delete: false, manageConsent: false }) }),
-    ]),
-  });
+  const space = resolveSpace(
+    { pathname: `/family/${B}`, space: "family" },
+    adult(power),
+    {
+      family: projection(B, "second-parent", [
+        kid("kai", "Kai", {
+          capabilities: caps({
+            readWorkbooks: false,
+            continuePurchase: false,
+            purchase: false,
+            rename: false,
+            delete: false,
+            manageConsent: false,
+          }),
+        }),
+      ]),
+    },
+  );
   if (space.space !== "family") throw new Error(space.space);
   assert.equal(space.relation, "second-parent");
   assert.equal(space.place, `family:${B}`);
   assert.equal(space.label, "Lund family");
-  assert.deepEqual(space.learners.map((child) => child.id), ["kai"]);
+  assert.deepEqual(
+    space.learners.map((child) => child.id),
+    ["kai"],
+  );
   assert.equal(space.class?.id, B_CLASS);
   // Workbooks are the holder's to make: no tab that would be refused.
   assert.ok(!space.tabs.some((tab) => tab.id === "workbooks"));
 });
 
 test("a late, refused or other family's projection never describes this family", () => {
-  const loading = resolveSpace({ pathname: `/family/${B}`, space: "family" }, adult(power), {
-    family: familyA,
-  });
+  const loading = resolveSpace(
+    { pathname: `/family/${B}`, space: "family" },
+    adult(power),
+    {
+      family: familyA,
+    },
+  );
   if (loading.space !== "family") throw new Error(loading.space);
   assert.equal(loading.status, "loading");
   assert.deepEqual(loading.learners, []);
   assert.deepEqual(loading.tabs, []);
-  const refused = resolveSpace({ pathname: `/family/${B}`, space: "family" }, adult(power), {
-    family: null,
-  });
+  const refused = resolveSpace(
+    { pathname: `/family/${B}`, space: "family" },
+    adult(power),
+    {
+      family: null,
+    },
+  );
   if (refused.space !== "family") throw new Error(refused.space);
   assert.equal(refused.status, "unavailable");
   assert.deepEqual(refused.destinations, []);
@@ -257,26 +333,51 @@ test("a late, refused or other family's projection never describes this family",
 });
 
 test("a hosted-only parent: their children, no class, no devices", () => {
-  const hosted = me({ learners: [{ id: "ivy", name: "Ivy" }] as SignedInMe["learners"] });
-  const space = resolveSpace({ pathname: `/family/${HOSTED}`, space: "family" }, adult(hosted), {
-    family: projection(HOSTED, "holder", [kid("ivy", "Ivy", { capabilities: caps({ manageDevices: false, readGrades: false, editGrades: false }) })]),
+  const hosted = me({
+    learners: [{ id: "ivy", name: "Ivy" }] as SignedInMe["learners"],
   });
+  const space = resolveSpace(
+    { pathname: `/family/${HOSTED}`, space: "family" },
+    adult(hosted),
+    {
+      family: projection(HOSTED, "holder", [
+        kid("ivy", "Ivy", {
+          capabilities: caps({
+            manageDevices: false,
+            readGrades: false,
+            editGrades: false,
+          }),
+        }),
+      ]),
+    },
+  );
   if (space.space !== "family") throw new Error(space.space);
   assert.equal(space.status, "ready");
   assert.equal(space.class, null);
-  assert.deepEqual(space.learners.map((child) => child.id), ["ivy"]);
+  assert.deepEqual(
+    space.learners.map((child) => child.id),
+    ["ivy"],
+  );
 });
 
 test("a tutoring group is a teaching place of its own, never the family", () => {
-  const space = resolveSpace({ pathname: `/family/${A}/group`, space: "family" }, adult(power), {
-    family: familyA,
-  });
+  const space = resolveSpace(
+    { pathname: `/family/${A}/group`, space: "family" },
+    adult(power),
+    {
+      family: familyA,
+    },
+  );
   assert.equal(space.space, "classroom");
   assert.equal(space.place, `group:${A}`);
   assert.match(space.label ?? "", /^Tutoring group/);
-  const none = resolveSpace({ pathname: `/family/${B}/group`, space: "family" }, adult(power), {
-    family: projection(B, "second-parent", []),
-  });
+  const none = resolveSpace(
+    { pathname: `/family/${B}/group`, space: "family" },
+    adult(power),
+    {
+      family: projection(B, "second-parent", []),
+    },
+  );
   if (none.space !== "classroom") throw new Error(none.space);
   assert.equal(none.status, "unavailable");
 });
@@ -284,7 +385,18 @@ test("a tutoring group is a teaching place of its own, never the family", () => 
 test("a student's session on a parent's device never resolves a family", () => {
   const space = resolveSpace(
     { pathname: `/family/${A}`, space: "family" },
-    { kind: "student", me: me({ account: { id: "school:p", email: null, emailVerified: false, kind: "student" } as SignedInMe["account"], learners: [{ id: "pip", name: "Pip" }] as SignedInMe["learners"] }) },
+    {
+      kind: "student",
+      me: me({
+        account: {
+          id: "school:p",
+          email: null,
+          emailVerified: false,
+          kind: "student",
+        } as SignedInMe["account"],
+        learners: [{ id: "pip", name: "Pip" }] as SignedInMe["learners"],
+      }),
+    },
     { family: familyA },
   );
   assert.equal(space.space, "student");
@@ -293,8 +405,20 @@ test("a student's session on a parent's device never resolves a family", () => {
 test("the switcher names each family as the family, with a tutoring group under Teaching", () => {
   const groups = placeGroups(power, null, {
     families: [
-      { familyId: A, displayName: "Pell family", role: "holder", teachingPlace: familyA.teachingPlace, capabilities: { readFamily: true, readTeaching: true } },
-      { familyId: B, displayName: "Lund family", role: "second-parent", teachingPlace: null, capabilities: { readFamily: true, readTeaching: false } },
+      {
+        familyId: A,
+        displayName: "Pell family",
+        role: "holder",
+        teachingPlace: familyA.teachingPlace,
+        capabilities: { readFamily: true, readTeaching: true },
+      },
+      {
+        familyId: B,
+        displayName: "Lund family",
+        role: "second-parent",
+        teachingPlace: null,
+        capabilities: { readFamily: true, readTeaching: false },
+      },
     ],
     next: null,
   });
@@ -316,16 +440,37 @@ test("the switcher names each family as the family, with a tutoring group under 
 });
 
 test("/family opens the holder's own family, else the one they belong to, else a chooser", () => {
-  const place = (familyId: string, role: "holder" | "second-parent" | "co-teacher") => ({
+  const place = (
+    familyId: string,
+    role: "holder" | "second-parent" | "co-teacher",
+  ) => ({
     familyId,
     displayName: "",
     role,
     teachingPlace: null,
     capabilities: { readFamily: role !== "co-teacher", readTeaching: false },
   });
-  assert.equal(landingFamily({ families: [place(B, "second-parent"), place(A, "holder")], next: null }), A);
-  assert.equal(landingFamily({ families: [place(B, "second-parent")], next: null }), B);
-  assert.equal(landingFamily({ families: [place(B, "second-parent"), place(HOSTED, "second-parent")], next: null }), null);
-  assert.equal(landingFamily({ families: [place(B, "co-teacher")], next: null }), null);
+  assert.equal(
+    landingFamily({
+      families: [place(B, "second-parent"), place(A, "holder")],
+      next: null,
+    }),
+    A,
+  );
+  assert.equal(
+    landingFamily({ families: [place(B, "second-parent")], next: null }),
+    B,
+  );
+  assert.equal(
+    landingFamily({
+      families: [place(B, "second-parent"), place(HOSTED, "second-parent")],
+      next: null,
+    }),
+    null,
+  );
+  assert.equal(
+    landingFamily({ families: [place(B, "co-teacher")], next: null }),
+    null,
+  );
   assert.equal(landingFamily(null), null);
 });

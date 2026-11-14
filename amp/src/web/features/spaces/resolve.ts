@@ -122,7 +122,9 @@ export type Destination = {
 
 /** What the server said one target allows this person. */
 export type TargetCapabilities = {
-  target: { kind: "org" | "class"; id: string };
+  /** A learner target is one child of a family: naming, consent, purchase
+   * and the rest are that child's, never the family's at large. */
+  target: { kind: "org" | "class" | "learner"; id: string };
   can: readonly string[];
 };
 
@@ -994,9 +996,19 @@ function familyPlaceSpace(
     learner,
     learners,
     capabilities: data
-      ? [{ target: { kind: "org", id: frame.family }, can: familyCan(data) }]
+      ? [
+          { target: { kind: "org", id: frame.family }, can: familyCan(data) },
+          // Each child's own rights, as the projection grants them.
+          ...data.children.map((child) => ({
+            target: { kind: "learner" as const, id: child.id },
+            can: Object.entries(child.capabilities)
+              .filter(([, allowed]) => allowed)
+              .map(([name]) => name),
+          })),
+        ]
       : [],
-    tabs: status === "ready" ? familyPlaceTabs(frame.family, { workbooks }) : [],
+    tabs:
+      status === "ready" ? familyPlaceTabs(frame.family, { workbooks }) : [],
     bar: "tabs",
     active: frame.active,
     actions: [],
@@ -1092,4 +1104,20 @@ function groupSpace(
     place: `group:${frame.family}`,
     label: "Tutoring group",
   };
+}
+
+/** What the space's descriptor says this person may do with one target:
+ * the server's own list, never inferred from a space or a role. */
+export function canOn(
+  space: SpaceDescriptor | null | undefined,
+  target: TargetCapabilities["target"],
+  capability: string,
+): boolean {
+  if (!space || !("capabilities" in space)) return false;
+  return space.capabilities.some(
+    (entry) =>
+      entry.target.kind === target.kind &&
+      entry.target.id === target.id &&
+      entry.can.includes(capability),
+  );
 }
