@@ -22,7 +22,12 @@ const account = {
   signedIn: true,
   account: { id: "amp|j", email: null, emailVerified: true },
   learners: [kid("pip", "Pip"), kid("wren", "Wren")],
-  family: { learners: [] },
+  family: {
+    learners: [
+      { id: "pip", canPractice: true },
+      { id: "wren", canPractice: true },
+    ],
+  },
   familyClass: {
     orgId: FAMILY,
     classId: CLASS,
@@ -64,7 +69,17 @@ test("Family: its own children and destinations, then the switcher, then the acc
         roles: [],
         can: [],
       },
-      year: { past: false },
+      year: {
+        past: false,
+        path: [FAMILY, SCHOOL],
+        can: [
+          "students.read",
+          "grades.read",
+          "workbooks.read",
+          "settings.read",
+          "signin.read",
+        ],
+      },
     },
   );
   render(<DrawerContents close={() => {}} space={space} />);
@@ -117,7 +132,17 @@ test("Classroom: the class, no family learner, no practice settings", () => {
           teachers: [],
         },
       ],
-      year: { past: false },
+      year: {
+        past: false,
+        path: [FAMILY, SCHOOL],
+        can: [
+          "students.read",
+          "grades.read",
+          "workbooks.read",
+          "settings.read",
+          "signin.read",
+        ],
+      },
     },
   );
   render(<DrawerContents close={() => {}} space={space} />);

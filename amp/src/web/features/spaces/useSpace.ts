@@ -86,11 +86,6 @@ export function useLocationMatch(): SpaceMatch {
  * of them changes (a sign-out, an ended role, a refetch): it is a render
  * snapshot, never a cached grant.
  */
-/**
- * The session's generation is when it was established: a sign-in again as
- * the same account (a new token, the same query keys) starts a new one, and
- * every answer from before it stays unread until it is asked again.
- */
 /** An answer the server refused: the place is gone for this person (a
  * revoked role, a removed class), unlike a passing network failure. */
 const refused = (error: unknown) =>
@@ -101,29 +96,26 @@ type Answer<T> = {
   data: T | undefined;
   error: unknown;
   isError: boolean;
-  dataUpdatedAt: number;
 };
-/** A resource as the resolver reads it: undefined until answered in this
- * session's generation, null once refused or failed. */
-function current<T>(query: Answer<T>, since: number): T | null | undefined {
-  if (query.isError) return null;
-  return query.dataUpdatedAt >= since ? query.data : undefined;
+/** A resource as the resolver reads it: undefined until answered (or after a
+ * failed lookup, which `failed` reports), null once refused. Everything
+ * cached was asked in this session: a new session for the same account
+ * retires the old one's (`retireSession`). */
+function current<T>(query: Answer<T>): T | null | undefined {
+  if (!query.isError) return query.data;
+  return refused(query.error) ? null : undefined;
 }
+const failedLookup = (query: Answer<unknown>) =>
+  query.isError && !refused(query.error);
 
 export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
-  const sessionQuery = useQuery(sessionOptions);
-  const session = sessionQuery.data ?? null;
-  const since = sessionQuery.dataUpdatedAt;
+  const session = useQuery(sessionOptions).data ?? null;
   const auth = session ?? { accountId: "", token: "" };
   const student = !!session?.accountId.startsWith("school:");
   const meQuery = useQuery({ ...meOptions(auth), enabled: !!session });
   // A refused `/me` means no relationships; a passing failure keeps the
   // last answer from this session.
-  const me = refused(meQuery.error)
-    ? undefined
-    : meQuery.dataUpdatedAt >= since
-      ? meQuery.data
-      : undefined;
+  const me = refused(meQuery.error) ? undefined : meQuery.data;
   const account =
     me?.signedIn && me.account.id === session?.accountId ? me : null;
   const learnerId = useLearnerStore((state) => state.learnerId);
@@ -154,7 +146,7 @@ export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
     enabled: !!classId,
     refetchOnMount: false,
   });
-  const orgNow = current(org, since);
+  const orgNow = current(org);
   // Only a real school's class has practice to start.
   const pilot = useQuery({
     ...pilotOptions(auth, classId),
@@ -168,10 +160,11 @@ export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
       ? { kind: "student", me: account }
       : { kind: "adult", me: account, learnerId };
   return resolveSpace(match, spaceSession, {
+    failed: [org, classes, year].some(failedLookup),
     org: orgNow,
-    classes: current(classes, since) ?? null,
-    year: current(year, since),
+    classes: current(classes) ?? null,
+    year: current(year),
     // Practice that can't be confirmed running offers nothing to start.
-    covered: current(pilot, since)?.coverage?.covered ?? 0,
+    covered: current(pilot)?.coverage?.covered ?? 0,
   });
 }

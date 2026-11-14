@@ -61,6 +61,30 @@ export const meOptions = (session: AuthSession) =>
     refetchOnMount: (query) => query.state.isInvalidated,
     refetchOnWindowFocus: "always",
   });
+/**
+ * A new session for the same account (a new token behind the same keys)
+ * retires everything the old one asked: in-flight requests are cancelled, so
+ * their answers are discarded, and every cached answer is removed. What the
+ * cache holds afterwards was asked with the new session
+ * (docs/architecture/spaces.md, "Generations"). Another account is retired
+ * by the caller's own account change.
+ */
+export function retireSession(
+  previous: AuthSession | null | undefined,
+  next: AuthSession | null,
+  client = queryClient,
+) {
+  if (
+    !previous ||
+    !next ||
+    previous.accountId !== next.accountId ||
+    previous.token === next.token
+  )
+    return false;
+  void client.cancelQueries({ queryKey: ["account", previous.accountId] });
+  client.removeQueries({ queryKey: ["account", previous.accountId] });
+  return true;
+}
 export function invalidateAccount(identity: string) {
   return queryClient.invalidateQueries({ queryKey: ["account", identity] });
 }

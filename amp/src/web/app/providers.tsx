@@ -1,3 +1,4 @@
+import { dropAllCapabilities } from "../capability-entry";
 import { setAnalyticsSession } from "../lib/analytics";
 import { NativeGate } from "../NativeGate";
 import { nativeRuntime } from "../native-runtime";
@@ -13,7 +14,13 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Fragment, useEffect, useState, type ReactNode } from "react";
 import { onSessionChanged, signOut, type AuthSession } from "../auth";
 import { watchStudentIdle } from "../lib/student-device";
-import { meKey, meOptions, queryClient, sessionOptions } from "../lib/query";
+import {
+  meKey,
+  meOptions,
+  queryClient,
+  retireSession,
+  sessionOptions,
+} from "../lib/query";
 export function Providers({
   children,
   onAccountExit,
@@ -87,10 +94,15 @@ function SessionProviders({
         }
         if (previous?.accountId !== session?.accountId) {
           clearOnboardingDraft();
+          // A link held for one account never carries to another.
+          dropAllCapabilities();
           setIdentityVersion((version) => version + 1);
           void queryClient.cancelQueries({ queryKey: ["account"] });
           queryClient.removeQueries({ queryKey: ["account"] });
         }
+        // The same account, a new session: nothing asked with the old one
+        // is read again.
+        retireSession(previous, session);
         void queryClient.cancelQueries({ queryKey: sessionOptions.queryKey });
         queryClient.setQueryData(sessionOptions.queryKey, session);
         if (previous?.accountId && previous.accountId !== session?.accountId)
