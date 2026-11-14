@@ -18,7 +18,7 @@
  * $AMP_SHOTS.
  *
  *   AMP_PREVIEW_ORIGIN=http://127.0.0.1:4970 AMP_SHOTS=<dir> \
- *     npx tsx scripts/verify-me-space-ui.ts [--widths 390,1280]
+ *     npx tsx scripts/verify-me-space-ui.ts [--widths 390,1280] [--only level]
  */
 import { mkdirSync } from "node:fs";
 import { randomUUID } from "node:crypto";
@@ -42,6 +42,11 @@ const WIDTHS =
     : [320, 390, 768, 1280];
 const SCHEMES = ["light", "dark"] as const;
 const PASSWORD = "design pass persona passphrase";
+/** `--only day0,answer,level,family`: some parts of the journey. */
+const onlyArg = process.argv.indexOf("--only");
+const ONLY =
+  onlyArg > 0 ? new Set(process.argv[onlyArg + 1]!.split(",")) : null;
+const part = (name: string) => !ONLY || ONLY.has(name);
 /** Words the Me space never shows in its chrome. */
 const NEVER_ME =
   /\b(family|kids|children|students?|roster|class code)\b|\bMy [A-Z]/;
@@ -221,34 +226,35 @@ async function unmeasured(
 
 // 1. A brand-new adult: /me before and after the first answer.
 const adult = await newAdult();
-for (const width of WIDTHS)
-  for (const scheme of SCHEMES) {
-    const where = `/me day 0 ${width} ${scheme}`;
-    const context = await reader(width, scheme);
-    await signIn(context, adult.email);
-    const page = await context.newPage();
-    const errors: string[] = [];
-    page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
-    await page.goto(`${origin}/me`, { waitUntil: "load" });
-    await page.locator("[data-level-start]").waitFor();
-    await settle(page);
-    const mark = await shift(page);
-    await unmeasured(page, where, "[data-level-start]", "moving");
-    await check(page, where, "me");
-    await page.waitForTimeout(1500);
-    const moved = (await shift(page)) - mark;
-    // The searching dot is transform-only: it never shifts the layout.
-    if (moved > 0.001) fail(where, `layout shift ${moved.toFixed(3)}`);
-    await page.screenshot({
-      path: join(shots, `me-day0-${width}-${scheme}.png`),
-      fullPage: true,
-    });
-    if (errors.length) fail(where, `console: ${errors[0]}`);
-    await context.close();
-  }
+if (part("day0"))
+  for (const width of WIDTHS)
+    for (const scheme of SCHEMES) {
+      const where = `/me day 0 ${width} ${scheme}`;
+      const context = await reader(width, scheme);
+      await signIn(context, adult.email);
+      const page = await context.newPage();
+      const errors: string[] = [];
+      page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
+      await page.goto(`${origin}/me`, { waitUntil: "load" });
+      await page.locator("[data-level-start]").waitFor();
+      await settle(page);
+      const mark = await shift(page);
+      await unmeasured(page, where, "[data-level-start]", "moving");
+      await check(page, where, "me");
+      await page.waitForTimeout(1500);
+      const moved = (await shift(page)) - mark;
+      // The searching dot is transform-only: it never shifts the layout.
+      if (moved > 0.001) fail(where, `layout shift ${moved.toFixed(3)}`);
+      await page.screenshot({
+        path: join(shots, `me-day0-${width}-${scheme}.png`),
+        fullPage: true,
+      });
+      if (errors.length) fail(where, `console: ${errors[0]}`);
+      await context.close();
+    }
 
 // Reduced motion: the full range and the "?" stand still.
-{
+if (part("day0")) {
   const context = await reader(390, "light", "reduce");
   await signIn(context, adult.email);
   const page = await context.newPage();
@@ -264,7 +270,7 @@ for (const width of WIDTHS)
 }
 
 // Start → practice → the first answer → the normal estimate.
-{
+if (part("answer")) {
   const context = await reader(390, "light");
   await signIn(context, adult.email);
   const page = await context.newPage();
@@ -315,7 +321,7 @@ for (const width of WIDTHS)
 }
 
 // 2. Practice at a level: K, 4 and Algebra, as one reused level profile.
-{
+if (part("level")) {
   const ids = new Set<string>();
   for (const [grade, name, title] of [
     [0, "K", "Kindergarten"],
@@ -346,17 +352,18 @@ for (const width of WIDTHS)
           await page.waitForURL(/\/practice\?profile=/);
           const profile = new URL(page.url()).searchParams.get("profile")!;
           ids.add(profile);
-          // Every area starts at the grade (the overall blends in the
-          // scale's floor, so it reads each area's own start).
+          // The area that grade is about starts there: Numbers below high
+          // school, Algebra from it (an area with no work at a grade starts
+          // at its own first).
           const frontier = await api<{
             strands: Record<string, { level: number }>;
           }>(context.request, "GET", `/learners/${profile}/frontier`);
-          const starts = Object.values(frontier.strands)
-            .map((strand) => strand.level)
-            .sort((a, b) => a - b);
-          const middle = starts[Math.floor(starts.length / 2)] ?? -1;
-          if (Math.abs(middle - grade) > 0.75)
-            fail(where, `areas start near ${middle}, not ${grade}`);
+          const area = grade >= 9 ? "algebra" : "number";
+          const at = frontier.strands[area]?.level ?? -1;
+          // The estimator's floor sits above K = 0: a K start reads up to
+          // about grade 1.5 before any answer (its problems are K's).
+          if (Math.abs(at - grade) > (grade === 0 ? 1.5 : 0.75))
+            fail(where, `${area} starts at ${at}, not ${grade}`);
           await page.waitForTimeout(2500);
           await check(page, `${where} practice`, "me");
           await page.screenshot({
@@ -370,31 +377,32 @@ for (const width of WIDTHS)
 }
 
 // 3. A family's child with no answers: the same unmeasured level.
-for (const width of WIDTHS)
-  for (const scheme of SCHEMES) {
-    const where = `family child day 0 ${width} ${scheme}`;
-    const context = await reader(width, scheme);
-    await signIn(context, "parent-new@personas.amp.test");
-    const page = await context.newPage();
-    await page.goto(`${origin}/family`, { waitUntil: "load" });
-    await page
-      .getByRole("link", { name: /^Child 1/ })
-      .first()
-      .click();
-    await page.locator("[data-levels-not-yet]").waitFor();
-    await settle(page);
-    const mark = await shift(page);
-    await unmeasured(page, where, "[data-levels-not-yet]", "moving");
-    await check(page, where, "other");
-    await page.waitForTimeout(1200);
-    const moved = (await shift(page)) - mark;
-    if (moved > 0.001) fail(where, `layout shift ${moved.toFixed(3)}`);
-    await page.screenshot({
-      path: join(shots, `family-child-day0-${width}-${scheme}.png`),
-      fullPage: true,
-    });
-    await context.close();
-  }
+if (part("family"))
+  for (const width of WIDTHS)
+    for (const scheme of SCHEMES) {
+      const where = `family child day 0 ${width} ${scheme}`;
+      const context = await reader(width, scheme);
+      await signIn(context, "parent-new@personas.amp.test");
+      const page = await context.newPage();
+      await page.goto(`${origin}/family`, { waitUntil: "load" });
+      await page
+        .getByRole("link", { name: /^Child 1/ })
+        .first()
+        .click();
+      await page.locator("[data-levels-not-yet]").waitFor();
+      await settle(page);
+      const mark = await shift(page);
+      await unmeasured(page, where, "[data-levels-not-yet]", "moving");
+      await check(page, where, "other");
+      await page.waitForTimeout(1200);
+      const moved = (await shift(page)) - mark;
+      if (moved > 0.001) fail(where, `layout shift ${moved.toFixed(3)}`);
+      await page.screenshot({
+        path: join(shots, `family-child-day0-${width}-${scheme}.png`),
+        fullPage: true,
+      });
+      await context.close();
+    }
 
 await browser.close();
 if (failures.length) {
