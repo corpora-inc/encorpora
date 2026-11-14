@@ -7,6 +7,7 @@ import { createServer } from "vite";
 import { chromium as rawChromium } from "playwright";
 import { secureChromium } from "../browser-security.mjs";
 import { generateProblem } from "../src/math/engine";
+import { family as multiplicationClause } from "../src/families/multiplication-clause";
 import { normalizeTrailingMath } from "../src/content/prompt-structure";
 import { workbookHtml } from "../src/workbook/render";
 import { printWorkbookPdf, waitForWorkbookLayout } from "../src/workbook/pdf";
@@ -43,7 +44,38 @@ const withPrompt = (prompt: string) => ({
     prompt: normalizeTrailingMath(prompt),
   },
 });
-const cases = {
+const polynomial = generateProblem("polynomial-multiplication", "display-4", 1);
+assert.ok(
+  polynomial.explanation.some((step) => step.startsWith("Products with x:")),
+  "the polynomial fixture must introduce a display with a variable",
+);
+const clauseExample = multiplicationClause.lessons[0]!.workedExample!;
+const clauseLesson = {
+  ...linear,
+  public: {
+    ...linear.public,
+    prompt: clauseExample.prompt,
+  },
+  explanation: clauseExample.steps,
+};
+const allCases = {
+  frequency: {
+    problem: generateProblem("frequency-table-build", "display-1"),
+    title: "Build a frequency table",
+    surface: "review",
+    displays: 0,
+  },
+  polynomial: {
+    problem: polynomial,
+    title: "Multiply polynomials",
+    surface: "review",
+  },
+  clause: {
+    problem: clauseLesson,
+    title: "Models for multiplication and division",
+    surface: "review",
+    displays: 0,
+  },
   counters: {
     problem: counters,
     title: "Count out 18 counters",
@@ -91,6 +123,14 @@ const cases = {
   lesson: { problem: linear, title: "Worked example", surface: "lesson" },
   review: { problem: linear, title: "Review your answer", surface: "review" },
 };
+// DISPLAY_REVIEW_CASES / DISPLAY_REVIEW_WIDTHS (comma-separated) narrow a run.
+const only = process.env.DISPLAY_REVIEW_CASES?.split(",");
+const cases = Object.fromEntries(
+  Object.entries(allCases).filter(([name]) => !only || only.includes(name)),
+) as Partial<typeof allCases>;
+const widths = (process.env.DISPLAY_REVIEW_WIDTHS ?? "320,360,390,768,1280")
+  .split(",")
+  .map(Number);
 const spec: WorkbookSpec = {
   version: 2,
   date: "2026-11-14",
@@ -145,7 +185,7 @@ const server = await createServer({
           }
           if (url.pathname === "/__display-case") {
             const value =
-              cases[url.searchParams.get("case") as keyof typeof cases];
+              allCases[url.searchParams.get("case") as keyof typeof allCases];
             res.setHeader("Content-Type", "application/json");
             res.end(JSON.stringify(value));
             return;
@@ -183,11 +223,14 @@ try {
   });
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
-  for (const width of [320, 360, 390, 768, 1280])
+  for (const width of widths)
     for (const theme of ["light", "dark"] as const) {
       await page.setViewportSize({ width, height: 900 });
       await page.emulateMedia({ colorScheme: theme });
-      for (const [name, fixture] of Object.entries(cases)) {
+      for (const [name, fixture] of Object.entries(cases) as [
+        string,
+        (typeof allCases)[keyof typeof allCases],
+      ][]) {
         await page.goto(`${origin}/__display?case=${name}`);
         await page
           .locator(
@@ -295,16 +338,53 @@ try {
           });
           assert.match(visible!, /The loose counters are 8\.\s+10/);
           assert.doesNotMatch(visible!, /8\.10/);
+        } else if (name === "frequency") {
+          // No list value is cut from its label, in choices or worked steps.
+          assert.equal(await page.locator("main .math-display").count(), 0);
+          assert.match(
+            await page.locator(".display-steps").innerText(),
+            /The matching table is 0: \d+, 1: \d+[^\n]*, 6: \d+/,
+          );
+        } else if (name === "polynomial") {
+          const step = page.locator(".display-steps li", {
+            hasText: "Products with x",
+          });
+          // The lead's variable is typeset, followed by the displayed products.
+          assert.equal(
+            await step.evaluate(
+              (li) =>
+                li.querySelector(".math:not(.math-display) mi")?.textContent,
+            ),
+            "x",
+          );
+          assert.equal(await step.locator(".math-display").count(), 1);
+        } else if (name === "clause") {
+          const visible = await page
+            .locator(".lesson-example-prompt")
+            .evaluate((element) => {
+              const clone = element.cloneNode(true) as HTMLElement;
+              clone
+                .querySelectorAll(".katex-mathml")
+                .forEach((node) => node.remove());
+              return clone.textContent!;
+            });
+          assert.doesNotMatch(visible, /\\|__/, "raw TeX in the lesson");
+          assert.equal(
+            await page.locator(".lesson-example-prompt .fbox").count(),
+            5,
+          );
         } else if (name === "repeating") {
           assert.equal(geometry.displays.length, 0);
           assert.match(
             await page.locator(".question").innerText(),
             /0\.333\.\.\./,
           );
-        } else if (name !== "figure")
+        } else if (name !== "figure" && !("displays" in fixture))
           assert.equal(geometry.displays.length, 1, `${name}: display missing`);
         else
           assert.ok(geometry.figures > 0, "figure survives prompt formatting");
+        if ("displays" in fixture)
+          assert.equal(geometry.displays.length, fixture.displays, name);
         if (name === "delimited")
           assert.equal(
             await page.locator(".question .katex-mathml mtr").count(),
@@ -362,9 +442,9 @@ try {
   await writeFile(join(out, "geometry.json"), JSON.stringify(results, null, 2));
   console.log(
     JSON.stringify({
-      screenshots: results.length + 10,
+      screenshots: results.length + widths.length * 2,
       cases: Object.keys(cases).length + 1,
-      widths: [320, 360, 390, 768, 1280],
+      widths,
       themes: ["light", "dark"],
       workbookLayoutFailures: failures,
       browserErrors: errors,

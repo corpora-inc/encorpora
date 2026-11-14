@@ -122,9 +122,8 @@ type SearchFound = {
  * top back into view (a cut under reduced motion). */
 function showMap() {
   requestAnimationFrame(() => {
-    const map = document.querySelector<HTMLElement>(
-      ".pathways-viewport, .pathways-plan",
-    );
+    // The 3D map only: the grades view centres the chosen skill itself.
+    const map = document.querySelector<HTMLElement>(".pathways-viewport");
     if (!map || !matchMedia("(max-width: 650px)").matches) return;
     const margin = parseFloat(getComputedStyle(map).scrollMarginTop) || 0;
     if (map.getBoundingClientRect().top >= margin) return;
@@ -697,12 +696,10 @@ export function MapView({
         }}
       >
         <label className="pathways-search">
-          {" "}
-          <span className="sr-only">Find a skill</span>
           <input
             type="search"
-            aria-label="Search skills, lessons and math words"
-            placeholder="Search skills, lessons, math words…"
+            aria-label="Search"
+            placeholder="Search"
             maxLength={100}
             value={field.text}
             onFocus={() => setBrowse(true)}

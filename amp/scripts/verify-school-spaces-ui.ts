@@ -836,9 +836,7 @@ try {
     }),
   );
   await student.goto(`${origin}/join`);
-  await student
-    .getByRole("heading", { name: "Type your class code" })
-    .waitFor();
+  await student.getByRole("heading", { name: "Type your code" }).waitFor();
   await student.locator("input").first().fill(code);
   await student.getByRole("heading", { name: "Tap your name" }).waitFor();
   await capture(student, "student-names");

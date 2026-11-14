@@ -11,6 +11,9 @@ import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { approvalsOptions } from "../family-approval/api";
 import { calendarOptions, orgOptions } from "../school/api";
+import { presenceOptions } from "../school/classes/api";
+import { formatJoinCode } from "../school/join/JoinClass";
+import { ReplaceCode } from "../school/join/ReplaceCode";
 import { EditSheet } from "../school/CalendarScreen";
 import { FamilyPracticeDefaults } from "./Practice";
 import {
@@ -359,6 +362,56 @@ function SchoolYear({ place }: { place: FamilyPlace }) {
   );
 }
 
+/** The family code, and replacing it: a setting, apart from "Their own
+ * devices", where the way in is. With other families' children in the class
+ * the code is the tutoring group's, so it is replaced there. */
+function FamilyCode({ place }: { place: FamilyPlace }) {
+  const { session } = place;
+  const where = place.own ? { org: place.own.org, class: place.own.id } : null;
+  const presence = useQuery({
+    ...presenceOptions(session, where ?? { org: "", class: "" }),
+    enabled: !!where,
+  });
+  // Known before the code loads, so the section holds its place.
+  const manage = !!place.data?.children.some(
+    (child) => child.capabilities.manageDevices,
+  );
+  if (!where || !manage || presence.data?.canManage === false) return null;
+  const code = presence.data?.class.joinCode;
+  const shared = !!place.data?.teachingPlace;
+  const locked = !!presence.data?.class.joinLockedUntil;
+  return (
+    <section className={styles.section} aria-labelledby="family-code">
+      <h2 id="family-code">{place.words.Code}</h2>
+      <dl className={styles.settings}>
+        <div className={styles.setting} data-family-code="">
+          <div className={styles.settingText}>
+            <dt className={styles.codeValue}>
+              {code ? formatJoinCode(code) : "\u00a0"}
+            </dt>
+            <dd>
+              {locked
+                ? "Sign-in is paused after many wrong pictures. A new code opens it now."
+                : "Children use it to sign in on their own devices."}
+            </dd>
+          </div>
+          {!shared && (
+            <div className={styles.settingAction}>
+              <ReplaceCode place={where} words={place.words} locked={locked} />
+            </div>
+          )}
+        </div>
+      </dl>
+      {shared && (
+        <p className={styles.footnote} data-shared-code="">
+          This code is your tutoring group’s too. A new one is made there, for
+          everyone in the group.
+        </p>
+      )}
+    </section>
+  );
+}
+
 /**
  * The family's Settings (`/family/<family>/settings`): only what belongs to
  * this family. Its children, each opening their page and settings; adding
@@ -422,6 +475,7 @@ export function FamilySettingsScreen() {
             )}
           </section>
           <SchoolYear place={place} />
+          <FamilyCode place={place} />
           <FamilyPracticeDefaults place={place} />
           <section className={styles.section} aria-labelledby="family-account">
             <h2 id="family-account">Your account</h2>

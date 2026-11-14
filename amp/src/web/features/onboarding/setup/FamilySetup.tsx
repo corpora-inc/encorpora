@@ -33,7 +33,9 @@ import { approvalsOptions } from "../../family-approval/api";
 import { presenceOptions } from "../../school/classes/api";
 import { useFinishSignIn } from "../../school/join/api";
 import { useStartPlace } from "../starter-api";
-import { saveProfile } from "../../family/api";
+import { familyPlacesOptions, saveProfile } from "../../family/api";
+import { DevicesSheet } from "../../family/Devices";
+import { useFamilyPlaceOf } from "../../family/FamilyFrame";
 import { StepFrame } from "./StepFrame";
 import { appReturn } from "../../spaces/returns";
 import styles from "./Setup.module.css";
@@ -910,6 +912,7 @@ function ReadyStep(props: StepProps) {
   const children = parent ? me.learners : [];
   const [starting, setStarting] = useState<string | null>(null);
   const [error, setError] = useState("");
+  const [devices, setDevices] = useSearchFlag("devices");
   const today = parent ? FAMILY_TODAY : todayUrl(place);
   const begin = async (learnerId: string) => {
     if (starting) return;
@@ -968,6 +971,21 @@ function ReadyStep(props: StepProps) {
             />
           ))}
         </RowList>
+        {/* The shortcut to the children's own devices: the same sheet as
+            Today's, ready before any practice. */}
+        <RowList label="Other ways to practice">
+          <RowButton
+            title="On their own devices"
+            data-own-devices=""
+            onClick={() => setDevices(true)}
+          />
+        </RowList>
+        <SetupDevices
+          session={session}
+          place={place}
+          open={devices}
+          onOpenChange={setDevices}
+        />
         <Toast message={error} onDismiss={() => setError("")} />
       </Frame>
     );
@@ -986,5 +1004,64 @@ function ReadyStep(props: StepProps) {
     >
       <Toast message={error} onDismiss={() => setError("")} />
     </Frame>
+  );
+}
+
+/** A boolean address key (`?devices=1`): an opened sheet is a history
+ * entry, so Back closes it and a refresh keeps it open. */
+function useSearchFlag(key: string) {
+  const navigate = useNavigate();
+  const on = useLocation({
+    select: (location) => {
+      const value = (location.search as Record<string, unknown>)[key];
+      return value === 1 || value === "1";
+    },
+  });
+  const set = (open: boolean) =>
+    void navigate({
+      to: ".",
+      search: ((current: Record<string, unknown>) => {
+        const next = { ...current };
+        if (open) next[key] = 1;
+        else delete next[key];
+        return next;
+      }) as never,
+      replace: !open,
+    });
+  return [on, set] as const;
+}
+
+/** "Their own devices" from setup: the family's own sheet, for the family
+ * this parent holds. */
+function SetupDevices({
+  session,
+  place,
+  open,
+  onOpenChange,
+}: {
+  session: AuthSession;
+  place: { orgId: string; classId: string; className: string };
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}) {
+  const places = useQuery(familyPlacesOptions(session));
+  const family =
+    places.data?.families.find((entry) => entry.role === "holder")?.familyId ??
+    "";
+  const found = useFamilyPlaceOf(family);
+  return (
+    <DevicesSheet
+      place={{
+        ...found,
+        own: found.own ?? {
+          id: place.classId,
+          org: place.orgId,
+          name: place.className,
+        },
+      }}
+      classId={place.classId}
+      open={open}
+      onOpenChange={onOpenChange}
+    />
   );
 }

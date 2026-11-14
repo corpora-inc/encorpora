@@ -29,7 +29,16 @@ function App() {
             <MathText text={data.problem.public.prompt} />
           )}
         </p>
-        <ol>
+        {data.problem.public.response.kind === "choice" && (
+          <ol type="A" className="display-choices">
+            {data.problem.public.response.options.map((option) => (
+              <li key={option.id}>
+                <MathText text={option.label} />
+              </li>
+            ))}
+          </ol>
+        )}
+        <ol className="display-steps">
           {data.problem.explanation.map((text, i) => (
             <li key={i}>
               <MathText text={text} />

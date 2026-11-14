@@ -9,6 +9,7 @@ import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { publicOrigin } from "../../../app/route-head";
 import { QrCode } from "../../../ui/QrCode";
 import { CodeTiles } from "../join/CodeTiles";
+import { joinLink } from "../join/JoinClass";
 // The reset for the legacy global element rules, under `data-dense`.
 import "../SchoolFrame.module.css";
 import { presenceOptions, useStaffSession } from "./api";
@@ -163,7 +164,7 @@ export function StartClassScreen() {
   const { class: shown, students } = board;
   const info = shown;
   const here = students.filter((student) => student.here).length;
-  const joinUrl = `${location.origin}/join/${info.joinCode}`;
+  const joinUrl = joinLink(info.joinCode);
   return (
     <main className={styles.board} data-dense>
       <header className={styles.bar}>

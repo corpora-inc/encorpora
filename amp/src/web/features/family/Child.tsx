@@ -21,6 +21,7 @@ import { Button, buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
 import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
+import { ActionRow } from "../../ui/ActionRow";
 import { YearField } from "../../ui/YearField";
 import { TryAsStudent } from "../profiles/TryAsStudent";
 import { PrintButton } from "../../ui/PrintButton";
@@ -134,7 +135,7 @@ export function ChildScreen() {
                 <p className={styles.sub}>Born {child.birthYear}</p>
               )}
             </div>
-            <div className={styles.childActions}>
+            <ActionRow>
               <ChildAction
                 child={child}
                 family={family}
@@ -185,7 +186,7 @@ export function ChildScreen() {
                   label={`Try problems as ${child.name}`}
                 />
               )}
-            </div>
+            </ActionRow>
           </header>
           <section aria-labelledby="child-week" className={styles.section}>
             <h2 id="child-week" className={styles.label}>

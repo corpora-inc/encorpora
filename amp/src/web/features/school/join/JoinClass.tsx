@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useId, useState } from "react";
-import { Button } from "../../../ui/Button";
+import { Button, buttonClass } from "../../../ui/Button";
 import { Dialog } from "../../../ui/Dialog";
 import { QrCode } from "../../../ui/QrCode";
 import { Toast } from "../../../ui/Toast";
@@ -10,13 +10,10 @@ import { useRotateCode } from "../classes/api";
 import { CopyButton } from "../parts";
 import styles from "./JoinClass.module.css";
 import type { SpaceWords } from "../../spaces/words";
+import { formatJoinCode } from "../../../../schools/contracts";
+import { joinLink, JoinWays } from "./JoinWays";
 
-/** A class code as people read and type it: RCV-VFD. */
-export const formatJoinCode = (code: string) =>
-  code.length === 6 ? `${code.slice(0, 3)}-${code.slice(3)}` : code;
-/** The direct way in: the class's name list, the code already filled. */
-export const joinLink = (code: string) =>
-  `${location.origin}/join/${formatJoinCode(code)}`;
+export { formatJoinCode, joinLink };
 
 const GLYPHS = {
   copy: "M9 9h10v10H9V9Zm-4 6V5h10",
@@ -47,13 +44,11 @@ function Glyph({ kind }: { kind: keyof typeof GLYPHS | "more" }) {
 }
 
 /**
- * One way to get children into a class, everywhere it is offered (the setup
- * step, class Settings, Today, People, the Start class board): the code in
- * one face, a direct link with Copy, a QR code for that link that opens the
- * class's name list, the full-screen sign-in board, and printing sign-in
- * cards as a quiet extra. `compact` is the one-line form for a header: the
- * code, then one group of equal controls (Copy link, Full screen, the QR,
- * and More, which holds New code).
+ * One way to get children into a class or a family, everywhere it is
+ * offered (the setup step, class Settings, a family's Today): JoinWays, the
+ * QR and its link first and the rest under Other ways. `compact` is the
+ * one-line form for a teacher's header: the code, then one group of equal
+ * controls (Copy link, Full screen, the QR, and New code).
  */
 export function JoinClass({
   code,
@@ -71,7 +66,7 @@ export function JoinClass({
   place: { org: string; class: string };
   /** Whose names and how they sign in, in the space's words
    * (features/spaces/words.ts). */
-  words: Pick<SpaceWords, "names" | "signIn" | "Learners">;
+  words: Pick<SpaceWords, "names" | "signIn" | "Learners" | "Code">;
   compact?: boolean;
   /** Offer printing sign-in cards. */
   cards?: boolean;
@@ -144,66 +139,48 @@ export function JoinClass({
         </Dialog>
       </section>
     );
+  // Everywhere else, the one shared path (JoinWays): the QR and its link
+  // first, the code, cards and the board under Other ways. A new code is a
+  // setting (ReplaceCode), never beside the way in.
   return (
     <section
-      className={styles.join}
+      className={styles.full}
       aria-labelledby={heading ? "join-class" : undefined}
       aria-label={heading ? undefined : words.signIn}
     >
-      <div className={styles.text}>
-        {heading && (
-          <h2 id="join-class" className={styles.title}>
-            {words.signIn}
-          </h2>
-        )}
-        <p className={styles.lead}>
-          Scan the code or open the link, then tap a name and three pictures.
-        </p>
-        <div className={styles.codeRow}>
-          <span className={styles.label}>Class code</span>
-          <strong className={styles.code} data-class-code={code}>
-            {shown}
-          </strong>
-          {newCode}
-        </div>
-        <div className={`${styles.group} ${styles.linkRow}`}>
-          <span className={styles.link}>
-            {link.replace(/^https?:\/\//, "")}
-          </span>
-          <CopyButton
-            text={link}
-            label="Copy link"
-            copied="Link copied"
-            className={`${styles.act} ${styles.copyAct}`}
-            icon={<Glyph kind="copy" />}
-          />
-        </div>
-        <div className={`${styles.group} ${styles.actions}`}>
-          {boardLink && (
-            <Link
-              to="/school/$org/classes/$class/start"
-              params={place}
-              className={styles.act}
-            >
-              <Glyph kind="expand" />
-              Open the sign-in board
-            </Link>
-          )}
-          {cards && (
+      {heading && (
+        <h2 id="join-class" className={styles.title}>
+          {words.signIn}
+        </h2>
+      )}
+      <JoinWays
+        code={code}
+        words={words}
+        cards={
+          cards && (
             <Link
               to="/school/$org/classes/$class/cards"
               params={place}
-              className={styles.act}
+              className={buttonClass("secondary")}
+              style={{ justifySelf: "start" }}
             >
               Print sign-in cards
             </Link>
-          )}
-        </div>
-        <p className={styles.fallback}>
-          Or open {location.host}/join and type the code.
-        </p>
-      </div>
-      <QrCode value={link} label={`Join ${shown}`} className={styles.qr} />
+          )
+        }
+        more={
+          boardLink && (
+            <Link
+              to="/school/$org/classes/$class/start"
+              params={place}
+              className={buttonClass("secondary")}
+              style={{ justifySelf: "start" }}
+            >
+              Open the sign-in board
+            </Link>
+          )
+        }
+      />
     </section>
   );
 }

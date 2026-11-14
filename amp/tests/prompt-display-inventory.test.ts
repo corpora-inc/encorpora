@@ -67,6 +67,8 @@ test("all template explanations, methods and lesson worked steps preserve numeri
 // Independent expectation: final tokenized formulas after a colon/imperative
 // must be displayed. This does not ask the formatter whether it supports it.
 function expectedDisplay(text: string) {
+  // A list's last value stays with its label (checked separately below).
+  if (listTail(text) !== null) return false;
   const tokens = segmentPrintText(text);
   if (
     tokens.at(-1)?.kind === "text" &&
@@ -117,6 +119,80 @@ test("display lint recognizes every row of separately delimited systems", () => 
     "Solve: $x=2$...",
   ])
     assert.equal(expectedDisplay(text), false, text);
+});
+
+// Independent of the formatter's guard: a list's last value would be cut from
+// its label when the text ends "…label: number, label: number" and the
+// formula shown on its own line is that bare number.
+const NUMBER = /^\$?[+−-]?\d[\d,]*(?:\.\d+)?%?\$?$/;
+function listTail(text: string) {
+  const body = text.trim().replace(/(?<!\.)\.$/, "");
+  const colon = body.lastIndexOf(":");
+  if (colon < 0 || !NUMBER.test(body.slice(colon + 1).trim())) return null;
+  const clauses = body.slice(0, colon).split(/[,;.]\s+/);
+  const label = clauses.at(-1)!.trim();
+  const previous = clauses.at(-2)?.split(":");
+  if (!previous || previous.length < 2) return null;
+  return NUMBER.test(previous.at(-1)!.trim()) && label.split(/\s+/).length <= 5
+    ? body.slice(colon + 1).trim()
+    : null;
+}
+function assertListStaysInline(text: string, label: string) {
+  if (listTail(text) === null) return false;
+  assert.equal(trailingDisplayMath(text), null, label);
+  assert.equal(trailingDisplayMath(text, true), null, label);
+  return true;
+}
+
+test("list detection is independent of the display formatter", () => {
+  for (const text of [
+    "Oak: 4, Pine: 12, Maple: 7.",
+    "0: 1, 1: 2, 2: 2",
+    "Tally: 7 inches: 1; 8 inches: 2.",
+    "Ones: 6. Tenths: 2.",
+  ])
+    assert.ok(listTail(text), text);
+  for (const text of [
+    "Count them: 6.",
+    "Hawks: 98 ÷ 7 = 14. Owls: 56 ÷ 7 = 8.",
+    "The first is in the tens place: 20. The second is in the ones place: 2.",
+  ])
+    assert.equal(listTail(text), null, text);
+});
+
+test("no label: value list displays its last value on its own line", () => {
+  let lists = 0;
+  for (const { text, owner, where } of learnerTexts())
+    if (assertListStaysInline(text, `${owner}/${where}: ${text}`)) lists++;
+  for (const template of templates)
+    for (const version of new Set([1, template.version]))
+      for (let seed = 0; seed < 20; seed++) {
+        const problem = generateProblem(
+          template.id,
+          `display-${seed}`,
+          version,
+        );
+        const response = problem.public.response;
+        for (const text of [
+          problem.public.prompt,
+          problem.hint,
+          ...problem.explanation,
+          response.label ?? "",
+          ...(response.kind === "choice"
+            ? response.options.map((option) => option.label)
+            : []),
+          ...Object.values(problem.choiceFeedback ?? {}),
+        ])
+          if (
+            assertListStaysInline(
+              text,
+              `${template.id}@${version}/${seed}: ${text}`,
+            )
+          )
+            lists++;
+      }
+  // Frequency tables, bar and line graphs, tallies and histograms.
+  assert.ok(lists > 300, `expected label: value lists, found ${lists}`);
 });
 
 test("every template generates clean prompt and worked-step displays in web and print", (t) => {

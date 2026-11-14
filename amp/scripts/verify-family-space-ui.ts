@@ -441,7 +441,7 @@ try {
       await shoot(today, `family-drawer-${tag}`);
       await today.keyboard.press("Escape");
       await today.click("[data-own-devices]");
-      await today.waitForSelector("[data-devices-sheet] [data-class-code]");
+      await today.waitForSelector("[data-devices-sheet] [data-join-link]");
       await today.waitForTimeout(500);
       await shoot(today, `family-devices-${tag}`);
       const sheet = (await today.textContent("[role=dialog]")) ?? "";

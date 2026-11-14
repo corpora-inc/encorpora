@@ -28,6 +28,10 @@
   gap: var(--space-3);
   padding: var(--space-4) var(--space-3) var(--space-3) var(--space-5);
 }
+/* Under the back row: the title starts its own line. */
+.header.under {
+  padding-top: 0;
+}
 .heading {
   flex: 1;
   min-width: 0;
@@ -46,63 +50,6 @@
   color: var(--color-muted-text);
   font-size: var(--text-table);
   line-height: 1.4;
-}
-button.close {
-  display: grid;
-  flex: none;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  border: 0;
-  border-radius: var(--radius-control);
-  background: transparent;
-  color: var(--color-muted-text);
-  cursor: pointer;
-}
-button.close:hover:not(:disabled) {
-  filter: none;
-  background: var(--color-surface-raised-hover);
-  color: var(--color-on-surface-raised);
-}
-button.close:focus-visible {
-  outline: 3px solid var(--color-focus-ring);
-  outline-offset: -3px;
-}
-.close svg {
-  width: 20px;
-  height: 20px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.7;
-  stroke-linecap: round;
-}
-/* Over another layer: the close names where it returns, on the cross's
-   own 44 px line, quiet and never wider than a third of the header. */
-button.close.back {
-  display: flex;
-  gap: 2px;
-  width: auto;
-  max-width: min(14rem, 50%);
-  padding: 0 var(--space-2) 0 var(--space-1);
-  font: inherit;
-  font-size: var(--text-table);
-  line-height: 1.2;
-}
-.back svg {
-  flex: none;
-  width: 18px;
-  height: 18px;
-  stroke-linejoin: round;
-}
-.back span {
-  min-width: 0;
-  overflow: hidden;
-  overflow-wrap: anywhere;
-  text-align: left;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
 }
 .body {
   flex: 1;

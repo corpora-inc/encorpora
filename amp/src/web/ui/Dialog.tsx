@@ -1,6 +1,7 @@
 import * as RadixDialog from "@radix-ui/react-dialog";
 import { useRef, type ReactNode } from "react";
 import styles from "./Dialog.module.css";
+import { CloseControl, LayerTopRow, useLayerBack } from "./LayerControls";
 /** A modal reading sheet: fixed overlay, scrollable body, never moves the page. */
 export function Dialog({
   open,
@@ -38,6 +39,7 @@ export function Dialog({
   initialFocus?: string;
 }) {
   const opener = useRef<HTMLElement | null>(null);
+  const stepBack = useLayerBack();
   const content = useRef<HTMLDivElement | null>(null);
   return (
     <RadixDialog.Root open={open} onOpenChange={onOpenChange}>
@@ -70,24 +72,17 @@ export function Dialog({
               target.focus({ preventScroll: true });
           }}
         >
-          <header className={styles.header}>
+          {back && (
+            <LayerTopRow
+              back={back}
+              onBack={stepBack ?? (() => onOpenChange(false))}
+            />
+          )}
+          <header className={`${styles.header} ${back ? styles.under : ""}`}>
             <RadixDialog.Title className={styles.title}>
               {title}
             </RadixDialog.Title>
-            {back ? (
-              <RadixDialog.Close
-                className={`${styles.close} ${styles.back}`}
-                aria-label={`Close, back to ${back}`}
-                data-layer-back={back}
-              >
-                <span aria-hidden="true">‹</span>
-                <span>{back}</span>
-              </RadixDialog.Close>
-            ) : (
-              <RadixDialog.Close className={styles.close} aria-label="Close">
-                ×
-              </RadixDialog.Close>
-            )}
+            {!back && <CloseControl />}
           </header>
           <div className={styles.body}>{children}</div>
         </RadixDialog.Content>

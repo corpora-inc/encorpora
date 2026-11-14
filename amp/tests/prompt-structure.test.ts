@@ -273,3 +273,95 @@ test("mixed division keeps its inline notation until the divisor is explicit", (
     );
   }
 });
+
+test("the last value of a label: value list stays with its label", () => {
+  const lists = [
+    "Oak: 4, Pine: 12, Maple: 7.",
+    "The matching table is 0: 2, 1: 1, 2: 2, 3: 3, 4: 1, 5: 2, 6: 2.",
+    "0: 1, 1: 2, 2: 2, 3: 3, 4: 1, 5: 2, 6: 2",
+    "Running totals of the frequencies: 3: 3, 5: 11, 7: 14, 9: 21.",
+    "The points read Hour 1: 90, Hour 2: 70, Hour 3: 60.",
+    "Tally means count each length: 7 inches: 1; 8 inches: 2; 10 inches: 1.",
+    "Fewer than 60 means the bars below 60: 20 to 29: 2; 50 to 59: 8.",
+    "Read off one digit per place. Ones: 6. Tenths: 2. Thousandths: 1.",
+    "Week 1 to Week 2: −10; Week 4 to Week 5: +50; Week 5 to Week 6: −20.",
+    "Area below 125: $0.8944$. Area below 113.5: $0.0401$.",
+    "Savings: 1,200, Rent: 3,450.",
+  ];
+  for (const text of lists) {
+    assert.equal(trailingDisplayMath(text), null, text);
+    assert.equal(normalizeTrailingMath(text), text, text);
+    for (const Component of [MathText, PrintMathText])
+      assert.doesNotMatch(
+        renderToStaticMarkup(React.createElement(Component, { text })),
+        /class="math-display"/,
+        `${Component.name}: ${text}`,
+      );
+  }
+  // A single result after its explanation, or an equation, is still a display.
+  for (const [text, source] of [
+    ["Count all that were there: 6.", "6"],
+    ["Oak: 4, Pine: 12. Add them: 4 + 12 = 16.", "4 + 12 = 16"],
+    ["Hawks: 98 ÷ 7 = 14. Owls: 56 ÷ 7 = 8.", "56 ÷ 7 = 8"],
+    [
+      "The first 6 is in the ten thousands place: 60,000. The second is in the hundreds place: 600.",
+      "600",
+    ],
+    ["At least 30 means the bars from 30 up: 30 to 34: 9.", "9"],
+  ])
+    assert.equal(trailingDisplayMath(text!)?.source, source, text);
+});
+
+test("a ratio written with a spaced colon is not cut into a display", () => {
+  for (const text of [
+    "So the simplest ratio is 2 : 3.",
+    "The ratio of boys to girls is 12 : 15.",
+  ])
+    assert.equal(trailingDisplayMath(text), null, text);
+});
+
+test("a variable in a display's introduction is typeset on the web as in print", () => {
+  const text = "Products with x: (x)(3x) = 3x²; (x)(2) = 2x.";
+  for (const Component of [MathText, PrintMathText]) {
+    const element = new JSDOM(
+      renderToStaticMarkup(React.createElement(Component, { text })),
+    ).window.document.body;
+    const display = element.querySelector(".math-display")!;
+    assert.ok(display, Component.name);
+    const lead = [...element.querySelectorAll("math")].filter(
+      (math) => !display.contains(math),
+    );
+    assert.deepEqual(
+      lead.map((math) => math.querySelector("mi")?.textContent),
+      ["x"],
+      Component.name,
+    );
+    // Without the typeset mathematics, only the introduction's prose remains
+    // (the web sets the colon with its formula).
+    element.querySelectorAll(".katex").forEach((node) => node.remove());
+    assert.match(
+      element.textContent!.trim(),
+      /^Products with\s*:?$/,
+      Component.name,
+    );
+  }
+});
+
+test("a label letter before explicit TeX stays prose, as in the whole sentence", () => {
+  for (const text of [
+    "Plan A: $y=4x+10$. Plan B: $y=6x+4$.",
+    "B must happen given A: $P(A \\text{ and } B) = P(A) \\times P(B \\mid A)$.",
+  ]) {
+    const element = new JSDOM(
+      renderToStaticMarkup(React.createElement(MathText, { text })),
+    ).window.document.body;
+    element.querySelector(".math-display")!.remove();
+    element.querySelectorAll(".katex-mathml").forEach((node) => node.remove());
+    assert.match(element.textContent!, /[AB]:\s*$/, text);
+    assert.equal(
+      element.querySelectorAll(".katex").length,
+      text.startsWith("Plan") ? 1 : 0,
+      text,
+    );
+  }
+});

@@ -406,9 +406,9 @@ async function family(
   device.setDefaultTimeout(30_000);
   last.page = device;
   await device.goto(`${origin}/join`);
-  await heading(device, "Type your class code");
-  await device.getByLabel("Class code").fill(code);
-  await device.waitForURL(`**/join/${code}`);
+  await heading(device, "Type your code");
+  await device.getByLabel("Code", { exact: true }).fill(code);
+  await device.waitForURL(`**/join/${code.slice(0, 3)}-${code.slice(3)}`);
   await heading(device, "Tap your name");
   await measured(device, `${label} Theo's class`);
   await shot(device, "join-names", width, theme);

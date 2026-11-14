@@ -4,8 +4,10 @@
  * (another site can't send that header without a CORS preflight AMP never
  * grants, nor know our token), so it passes whatever
  * its origin: a student's heartbeat from a phone on a private preview host,
- * a native app's own origin. `strict` refuses a cookie sign-in outright when
- * AMP's origin isn't configured. */
+ * a native app's own origin. AMP's pages may be served from more than one
+ * origin (a private preview host beside the configured one); `origins` is
+ * every one of them, the same set sign-in trusts. `strict` refuses a cookie
+ * sign-in outright when no origin is configured. */
 export function forgedPost(
   request: {
     method: string;
@@ -16,7 +18,7 @@ export function forgedPost(
       "sec-fetch-site"?: string | string[];
     };
   },
-  origin: string | undefined,
+  origins: string | readonly string[] | undefined,
   strict = false,
 ): boolean {
   // Only a bearer token is the request's own credential: a browser sends
@@ -27,9 +29,23 @@ export function forgedPost(
   )
     return false;
   if (request.headers["sec-fetch-site"] === "cross-site") return true;
+  const allowed = (
+    typeof origins === "string" ? [origins] : (origins ?? [])
+  ).filter(Boolean);
+  if (!allowed.length) return strict && !!request.headers.cookie;
   const from = request.headers.origin;
-  if (!origin) return strict && !!request.headers.cookie;
-  return (
-    (!!from && from !== origin) || (!!request.headers.cookie && from !== origin)
+  const ours = !!from && allowed.includes(from);
+  return (!!from && !ours) || (!!request.headers.cookie && !ours);
+}
+
+/** Every origin AMP's own pages are served from: the configured one and the
+ * ones sign-in also trusts (AMP_ACCOUNTS_TRUSTED_ORIGINS). The school guards
+ * accept exactly this set, so a page that can sign in can also post. */
+export function pageOrigins(
+  config: { baseURL: string; trustedOrigins: readonly string[] } | null,
+): string[] {
+  if (!config) return [];
+  return [...new Set([config.baseURL, ...config.trustedOrigins])].filter(
+    Boolean,
   );
 }

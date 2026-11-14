@@ -2496,6 +2496,29 @@
     ],
     "skill": "arrays"
   },
+  "equal-factor-truth-select": {
+    "id": "multiplication-division-equation-truth--sm",
+    "version": "22ec1a420ba347118bedacf8702a0ec96d955bb1bc3620034ee1f8eef412fbb2",
+    "title": "The same amount on both sides",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-equation-truth--sm/22ec1a420ba347118bedacf8702a0ec96d955bb1bc3620034ee1f8eef412fbb2/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-equation-truth--sm/22ec1a420ba347118bedacf8702a0ec96d955bb1bc3620034ee1f8eef412fbb2/audio.m4a",
+    "duration": 123.56993197278912,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-equation-truth--sm/22ec1a420ba347118bedacf8702a0ec96d955bb1bc3620034ee1f8eef412fbb2/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-equation-truth--sm/22ec1a420ba347118bedacf8702a0ec96d955bb1bc3620034ee1f8eef412fbb2/audio.m4a",
+        "version": "22ec1a420ba347118bedacf8702a0ec96d955bb1bc3620034ee1f8eef412fbb2",
+        "duration": 123.56993197278912
+      }
+    ],
+    "skill": "multiplication-division-equality"
+  },
   "equal-tray-total": {
     "id": "equal-tray-total--se",
     "version": "6ecffe9f071680236246937be29bb892f071158fbd1805c14d14caa752e5fc1f",
@@ -2653,12 +2676,12 @@
     "skill": "hundreds-place-value"
   },
   "exponent-quotient-slots": {
-    "id": "product-of-powers-exponent--sp",
-    "version": "7384e7fb1afdffe01338c96386cd74890316445de90f7b5fa6788efdd4fc1e0f",
-    "title": "Multiply powers: follow the factors",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/product-of-powers-exponent--sp/7384e7fb1afdffe01338c96386cd74890316445de90f7b5fa6788efdd4fc1e0f/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/product-of-powers-exponent--sp/7384e7fb1afdffe01338c96386cd74890316445de90f7b5fa6788efdd4fc1e0f/audio.m4a",
-    "duration": 167.12,
+    "id": "quotient-of-powers-exponent--sq",
+    "version": "9179886bde6f398e1f147103a8f8d33644a7ad3655785d8137f95eca70cb5621",
+    "title": "Cancel in pairs",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/quotient-of-powers-exponent--sq/9179886bde6f398e1f147103a8f8d33644a7ad3655785d8137f95eca70cb5621/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/quotient-of-powers-exponent--sq/9179886bde6f398e1f147103a8f8d33644a7ad3655785d8137f95eca70cb5621/audio.m4a",
+    "duration": 154.06,
     "teacher": "Paul",
     "capability": "lesson-film-v4",
     "editions": [
@@ -2666,13 +2689,35 @@
         "voices": {
           "teacher": "J3Ei0Lj6fAobhIqY5ySH"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/product-of-powers-exponent--sp/7384e7fb1afdffe01338c96386cd74890316445de90f7b5fa6788efdd4fc1e0f/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/product-of-powers-exponent--sp/7384e7fb1afdffe01338c96386cd74890316445de90f7b5fa6788efdd4fc1e0f/audio.m4a",
-        "version": "7384e7fb1afdffe01338c96386cd74890316445de90f7b5fa6788efdd4fc1e0f",
-        "duration": 167.12
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/quotient-of-powers-exponent--sq/9179886bde6f398e1f147103a8f8d33644a7ad3655785d8137f95eca70cb5621/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/quotient-of-powers-exponent--sq/9179886bde6f398e1f147103a8f8d33644a7ad3655785d8137f95eca70cb5621/audio.m4a",
+        "version": "9179886bde6f398e1f147103a8f8d33644a7ad3655785d8137f95eca70cb5621",
+        "duration": 154.06
+      }
+    ]
+  },
+  "fact-equation-truth-select": {
+    "id": "multiplication-division-equation-truth--sm",
+    "version": "22ec1a420ba347118bedacf8702a0ec96d955bb1bc3620034ee1f8eef412fbb2",
+    "title": "The same amount on both sides",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-equation-truth--sm/22ec1a420ba347118bedacf8702a0ec96d955bb1bc3620034ee1f8eef412fbb2/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-equation-truth--sm/22ec1a420ba347118bedacf8702a0ec96d955bb1bc3620034ee1f8eef412fbb2/audio.m4a",
+    "duration": 123.56993197278912,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-equation-truth--sm/22ec1a420ba347118bedacf8702a0ec96d955bb1bc3620034ee1f8eef412fbb2/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-equation-truth--sm/22ec1a420ba347118bedacf8702a0ec96d955bb1bc3620034ee1f8eef412fbb2/audio.m4a",
+        "version": "22ec1a420ba347118bedacf8702a0ec96d955bb1bc3620034ee1f8eef412fbb2",
+        "duration": 123.56993197278912
       }
     ],
-    "skill": "exponent-laws"
+    "skill": "multiplication-division-equality"
   },
   "facts-to-five": {
     "id": "facts-to-five--sf",
@@ -4782,6 +4827,29 @@
       }
     ]
   },
+  "multiplication-division-equation-truth": {
+    "id": "multiplication-division-equation-truth--sm",
+    "version": "22ec1a420ba347118bedacf8702a0ec96d955bb1bc3620034ee1f8eef412fbb2",
+    "title": "The same amount on both sides",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-equation-truth--sm/22ec1a420ba347118bedacf8702a0ec96d955bb1bc3620034ee1f8eef412fbb2/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-equation-truth--sm/22ec1a420ba347118bedacf8702a0ec96d955bb1bc3620034ee1f8eef412fbb2/audio.m4a",
+    "duration": 123.56993197278912,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-equation-truth--sm/22ec1a420ba347118bedacf8702a0ec96d955bb1bc3620034ee1f8eef412fbb2/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-equation-truth--sm/22ec1a420ba347118bedacf8702a0ec96d955bb1bc3620034ee1f8eef412fbb2/audio.m4a",
+        "version": "22ec1a420ba347118bedacf8702a0ec96d955bb1bc3620034ee1f8eef412fbb2",
+        "duration": 123.56993197278912
+      }
+    ],
+    "skill": "multiplication-division-equality"
+  },
   "multiplication-division-story": {
     "id": "linked-division-equations",
     "version": "00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0",
@@ -4803,6 +4871,52 @@
       }
     ],
     "skill": "multiplicative-stories"
+  },
+  "multiplication-fact-grid-select": {
+    "id": "multiply-facts--st",
+    "version": "49363559c32fe93080161fd4bff9c2a8c6f630a08631cb8978a5e5dbacccbe1e",
+    "title": "The multiplication table, 1 to 12",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-facts--st/49363559c32fe93080161fd4bff9c2a8c6f630a08631cb8978a5e5dbacccbe1e/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-facts--st/49363559c32fe93080161fd4bff9c2a8c6f630a08631cb8978a5e5dbacccbe1e/audio.m4a",
+    "duration": 280.17995464852606,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-facts--st/49363559c32fe93080161fd4bff9c2a8c6f630a08631cb8978a5e5dbacccbe1e/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-facts--st/49363559c32fe93080161fd4bff9c2a8c6f630a08631cb8978a5e5dbacccbe1e/audio.m4a",
+        "version": "49363559c32fe93080161fd4bff9c2a8c6f630a08631cb8978a5e5dbacccbe1e",
+        "duration": 280.17995464852606
+      }
+    ],
+    "skill": "multiplication-facts"
+  },
+  "multiply-facts": {
+    "id": "multiply-facts--st",
+    "version": "49363559c32fe93080161fd4bff9c2a8c6f630a08631cb8978a5e5dbacccbe1e",
+    "title": "The multiplication table, 1 to 12",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-facts--st/49363559c32fe93080161fd4bff9c2a8c6f630a08631cb8978a5e5dbacccbe1e/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-facts--st/49363559c32fe93080161fd4bff9c2a8c6f630a08631cb8978a5e5dbacccbe1e/audio.m4a",
+    "duration": 280.17995464852606,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-facts--st/49363559c32fe93080161fd4bff9c2a8c6f630a08631cb8978a5e5dbacccbe1e/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-facts--st/49363559c32fe93080161fd4bff9c2a8c6f630a08631cb8978a5e5dbacccbe1e/audio.m4a",
+        "version": "49363559c32fe93080161fd4bff9c2a8c6f630a08631cb8978a5e5dbacccbe1e",
+        "duration": 280.17995464852606
+      }
+    ],
+    "skill": "multiplication-facts"
   },
   "name-cut-shape-pieces": {
     "id": "solid-bottom-face-shape--ss",
@@ -6159,12 +6273,12 @@
     "skill": "quadratic-minimum"
   },
   "quotient-of-powers-exponent": {
-    "id": "product-of-powers-exponent--sp",
-    "version": "7384e7fb1afdffe01338c96386cd74890316445de90f7b5fa6788efdd4fc1e0f",
-    "title": "Multiply powers: follow the factors",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/product-of-powers-exponent--sp/7384e7fb1afdffe01338c96386cd74890316445de90f7b5fa6788efdd4fc1e0f/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/product-of-powers-exponent--sp/7384e7fb1afdffe01338c96386cd74890316445de90f7b5fa6788efdd4fc1e0f/audio.m4a",
-    "duration": 167.12,
+    "id": "quotient-of-powers-exponent--sq",
+    "version": "9179886bde6f398e1f147103a8f8d33644a7ad3655785d8137f95eca70cb5621",
+    "title": "Cancel in pairs",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/quotient-of-powers-exponent--sq/9179886bde6f398e1f147103a8f8d33644a7ad3655785d8137f95eca70cb5621/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/quotient-of-powers-exponent--sq/9179886bde6f398e1f147103a8f8d33644a7ad3655785d8137f95eca70cb5621/audio.m4a",
+    "duration": 154.06,
     "teacher": "Paul",
     "capability": "lesson-film-v4",
     "editions": [
@@ -6172,13 +6286,12 @@
         "voices": {
           "teacher": "J3Ei0Lj6fAobhIqY5ySH"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/product-of-powers-exponent--sp/7384e7fb1afdffe01338c96386cd74890316445de90f7b5fa6788efdd4fc1e0f/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/product-of-powers-exponent--sp/7384e7fb1afdffe01338c96386cd74890316445de90f7b5fa6788efdd4fc1e0f/audio.m4a",
-        "version": "7384e7fb1afdffe01338c96386cd74890316445de90f7b5fa6788efdd4fc1e0f",
-        "duration": 167.12
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/quotient-of-powers-exponent--sq/9179886bde6f398e1f147103a8f8d33644a7ad3655785d8137f95eca70cb5621/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/quotient-of-powers-exponent--sq/9179886bde6f398e1f147103a8f8d33644a7ad3655785d8137f95eca70cb5621/audio.m4a",
+        "version": "9179886bde6f398e1f147103a8f8d33644a7ad3655785d8137f95eca70cb5621",
+        "duration": 154.06
       }
-    ],
-    "skill": "exponent-laws"
+    ]
   },
   "radical-side-entry": {
     "id": "right-triangle--sr",
@@ -9223,6 +9336,72 @@
       }
     ],
     "skill": "two-step-equations"
+  },
+  "two-way-association-choice": {
+    "id": "two-way-row-percent--st",
+    "version": "be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7",
+    "title": "Two-way tables",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-way-row-percent--st/be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-way-row-percent--st/be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7/audio.m4a",
+    "duration": 177.29,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-way-row-percent--st/be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-way-row-percent--st/be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7/audio.m4a",
+        "version": "be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7",
+        "duration": 177.29
+      }
+    ],
+    "skill": "two-way-tables"
+  },
+  "two-way-missing": {
+    "id": "two-way-row-percent--st",
+    "version": "be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7",
+    "title": "Two-way tables",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-way-row-percent--st/be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-way-row-percent--st/be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7/audio.m4a",
+    "duration": 177.29,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-way-row-percent--st/be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-way-row-percent--st/be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7/audio.m4a",
+        "version": "be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7",
+        "duration": 177.29
+      }
+    ],
+    "skill": "two-way-tables"
+  },
+  "two-way-row-percent": {
+    "id": "two-way-row-percent--st",
+    "version": "be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7",
+    "title": "Two-way tables",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-way-row-percent--st/be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-way-row-percent--st/be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7/audio.m4a",
+    "duration": 177.29,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-way-row-percent--st/be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-way-row-percent--st/be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7/audio.m4a",
+        "version": "be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7",
+        "duration": 177.29
+      }
+    ],
+    "skill": "two-way-tables"
   },
   "unequal-step-rate": {
     "id": "graphed-line-slope--sl",

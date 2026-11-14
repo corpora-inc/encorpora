@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { forgedPost } from "../src/schools/request-origin.js";
+import { forgedPost, pageOrigins } from "../src/schools/request-origin.js";
 
 /* The school routes' CSRF guard (src/schools/request-origin.ts). A request
    with its own bearer credential is never a forgery, whatever its origin: a
@@ -83,4 +83,30 @@ test("only a bearer token exempts a request: Basic rides along like a cookie", (
     ),
     false,
   );
+});
+
+/* The preview is reached at a private host that sign-in already trusts
+   (AMP_ACCOUNTS_TRUSTED_ORIGINS). Every child's code lookup from it was
+   refused with 403 request_origin_invalid, and the join screen said "AMP
+   isn't answering". The school guard accepts what sign-in accepts. */
+test("a cookie or plain post from any origin sign-in trusts passes", () => {
+  const PREVIEW = "https://preview.example.test:8443";
+  const origins = pageOrigins({ baseURL: AMP, trustedOrigins: [PREVIEW] });
+  assert.deepEqual(origins, [AMP, PREVIEW]);
+  for (const from of [AMP, PREVIEW]) {
+    assert.equal(forgedPost(post({ origin: from }), origins), false, from);
+    assert.equal(
+      forgedPost(post({ origin: from, cookie: "a=b" }), origins, true),
+      false,
+      from,
+    );
+  }
+  assert.equal(
+    forgedPost(post({ origin: "https://evil.example.test" }), origins),
+    true,
+  );
+  assert.equal(forgedPost(post({ cookie: "a=b" }), origins), true);
+  assert.equal(forgedPost(post({ cookie: "a=b" }), [], true), true);
+  assert.equal(forgedPost(post({ cookie: "a=b" }), []), false);
+  assert.deepEqual(pageOrigins(null), []);
 });

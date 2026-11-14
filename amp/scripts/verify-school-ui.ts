@@ -468,9 +468,9 @@ async function journey(browser: Browser, engine: string, width: number) {
     const pictures = await phone();
     last = pictures;
     await pictures.goto(`${origin}/join`);
-    await heading(pictures, "Type your class code");
-    await pictures.getByLabel("Class code").fill(code);
-    await pictures.waitForURL(`**/join/${code}`);
+    await heading(pictures, "Type your code");
+    await pictures.getByLabel("Code", { exact: true }).fill(code);
+    await pictures.waitForURL(`**/join/${code.slice(0, 3)}-${code.slice(3)}`);
     await heading(pictures, "Tap your name");
     await pictures
       .getByRole("link", { name: new RegExp(`^${BY_PICTURE} `) })

@@ -17,11 +17,14 @@ export { segments, toTex } from "../content/math-segments";
 export function MathText({
   text,
   sourceText = text,
+  displayLead = false,
 }: {
   text: string;
   sourceText?: string;
+  /** The text introduces a displayed formula (set by MathText itself). */
+  displayLead?: boolean;
 }) {
-  const parts = segments(text);
+  const parts = segments(text, displayLead);
   const glossary = useContext(GlossaryContext);
   const block = useContext(GlossaryBlockContext);
   const display = trailingDisplayMath(text);
@@ -55,7 +58,13 @@ export function MathText({
       <>
         {display.lead && (
           <>
-            <MathText text={display.lead} sourceText={sourceText} />{" "}
+            <MathText
+              text={display.lead}
+              sourceText={sourceText}
+              // In the whole sentence, a letter before the colon shares a
+              // formula run only with plain notation, never with $…$ TeX.
+              displayLead={!/^(?:\$|\\\()/.test(display.source)}
+            />{" "}
           </>
         )}
         <DisplayMath tex={display.tex} source={display.source} />

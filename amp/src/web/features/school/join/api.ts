@@ -23,9 +23,18 @@ const messages: Record<string, string> = {
   card_expired:
     "This card doesn’t work anymore. Ask your teacher for a new one.",
   too_many_requests: "Too many tries right now. Wait a minute, then try again.",
+  request_origin_invalid:
+    "AMP can’t sign in from this address. Ask a grown-up for the link.",
 };
 const OFFLINE = "AMP can’t connect. Check the Wi-Fi, then try again.";
 const UNAVAILABLE = "AMP isn’t answering right now. Try again in a minute.";
+/** AMP answered and said no, for a reason this screen has no words for. */
+const REFUSED = "AMP couldn’t open this. Ask a grown-up for help.";
+
+/** What a failed answer means here: AMP answered, so only a 5xx (or a
+ * garbled answer) is "isn't answering"; any other refusal says so. */
+export const joinMessage = (status: number, code: string | null) =>
+  (code && messages[code]) ?? (status >= 500 ? UNAVAILABLE : REFUSED);
 
 export class JoinError extends AppError {
   constructor(
@@ -81,7 +90,7 @@ async function post<T>(
   if (!response.ok) {
     const code = typeof data?.error === "string" ? data.error : null;
     const failure = new JoinError(
-      (code && messages[code]) ?? UNAVAILABLE,
+      joinMessage(response.status, code),
       response.status >= 500 || response.status === 429,
       code,
       response.status,
