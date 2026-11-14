@@ -36,8 +36,11 @@ export async function deliverFundingInvoiceMail(
       await currentPolicy(db, policy);
       const row = (
         await db.query(`SELECT o.*,i.parent_email,i.offer_snapshot,i.expires_at,i.state,i.received_payment_at,
+        r.status AS request_status,g.revoked_at AS reservation_revoked_at,g.id AS reservation_id,
         o.first_dispatch_at+interval '23 hours'<=clock_timestamp()+interval '15 seconds' AS window_ended
       FROM amp_funding_invoice_outbox o JOIN amp_funding_invoice_intents i ON i.id=o.invoice_id
+      LEFT JOIN amp_funding_requests r ON r.id=i.claimed_request_id
+      LEFT JOIN amp_access_gifts g ON g.funding_invoice_id=i.id
       WHERE o.accepted_at IS NULL AND o.stopped_at IS NULL AND o.available_at<=now()
         AND (o.lease_until IS NULL OR o.lease_until<=now())
       ORDER BY o.available_at,o.invoice_id LIMIT 1 FOR UPDATE OF o SKIP LOCKED`)
@@ -80,6 +83,10 @@ export async function deliverFundingInvoiceMail(
       const binding = digest({ transport: transport.binding, mail });
       const reason =
         row.state === "cancelled" ||
+        row.request_status === "cancelled" ||
+        row.received_payment_at ||
+        row.reservation_revoked_at ||
+        !row.reservation_id ||
         new Date(row.expires_at).getTime() <= Date.now()
           ? "invoice-unavailable"
           : row.delivery_binding && row.delivery_binding !== binding
@@ -118,11 +125,19 @@ export async function deliverFundingInvoiceMail(
           `SELECT EXTRACT(EPOCH FROM
         (LEAST(o.lease_until,o.first_dispatch_at+interval '23 hours',i.expires_at)-clock_timestamp()))*1000 AS remaining
       FROM amp_funding_invoice_outbox o JOIN amp_funding_invoice_intents i ON i.id=o.invoice_id
+      LEFT JOIN amp_funding_requests r ON r.id=i.claimed_request_id
+      LEFT JOIN amp_access_gifts g ON g.funding_invoice_id=i.id
       WHERE o.invoice_id=$1 AND o.lease_id=$2 AND o.stopped_at IS NULL
-        AND i.state<>'cancelled' AND i.received_payment_at IS NULL AND i.parent_email=$3`,
+        AND i.state<>'cancelled' AND i.received_payment_at IS NULL AND i.parent_email=$3
+        AND (r.status IS NULL OR r.status<>'cancelled') AND g.id IS NOT NULL AND g.revoked_at IS NULL`,
           [claimed.row.invoice_id, claimed.lease, claimed.mail.recipient],
         )
       ).rows[0];
+      if (!row)
+        await db.query(
+          "UPDATE amp_funding_invoice_outbox SET stopped_at=now(),stopped_reason='invoice-unavailable',lease_id=NULL,lease_until=NULL WHERE invoice_id=$1 AND lease_id=$2 AND stopped_at IS NULL",
+          [claimed.row.invoice_id, claimed.lease],
+        );
       return row
         ? Math.min(
             Number(row.remaining),

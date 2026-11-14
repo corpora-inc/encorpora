@@ -343,15 +343,22 @@ export async function activateGiftInTransaction(
   }
   const pending = gift.source === "funded-pending";
   const ends = pending ? new Date(gift.claim_by) : giftEnd(now, gift.months);
-  // One unpaid bridge per learner; another invoice never restarts its clock.
+  // Consume the adult's eligibility atomically with the grant. Unique account
+  // and normalized-email keys serialize concurrent claims, including siblings.
+  // This record has no child reference and survives individual learning deletion.
+  if (pending) {
+    const consumed = await db.query(
+      `INSERT INTO amp_funded_pending_eligibility(account_id,recipient_email,program_id)
+       SELECT $1,$2,offer_snapshot->>'programId' FROM amp_funding_invoice_intents WHERE id=$3
+       ON CONFLICT DO NOTHING RETURNING account_id`,
+      [accountId, email, options.fundingInvoiceId],
+    );
+    if (!consumed.rowCount) return null;
+  }
+  // Each invoice owns its bridge; eligibility, not a learner UUID, limits use.
   const grantId = pending
-    ? `funded-pending:${learnerId}`
+    ? `funded-pending:${gift.id}`
     : `email-gift:${gift.id}`;
-  if (
-    pending &&
-    (await db.query("SELECT 1 FROM amp_grants WHERE id=$1", [grantId])).rowCount
-  )
-    return null;
   await db.query(
     `INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at)
      VALUES($1,$2,'pilot',$1,'active',$3,$4)`,

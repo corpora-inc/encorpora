@@ -1,3 +1,4 @@
+import { timelyClassWalletPayment } from "./timely-settlement.js";
 import { activateGiftInTransaction } from "../access-grants/repository.js";
 import {
   linkFundedVisitor,
@@ -230,10 +231,26 @@ export class FundingInvoiceRepository {
     return this.funding.transaction(account, async (client) => {
       const email = await this.verifiedEmail(client, account);
       const rows = await client.query(
-        "SELECT * FROM amp_funding_invoice_intents WHERE parent_email=$1 AND (claimed_account_id IS NULL OR claimed_account_id=$2) AND state<>'cancelled' ORDER BY created_at DESC LIMIT 100",
+        "SELECT i.*,r.status AS request_status FROM amp_funding_invoice_intents i LEFT JOIN amp_funding_requests r ON r.id=i.claimed_request_id WHERE i.parent_email=$1 AND (i.claimed_account_id IS NULL OR i.claimed_account_id=$2) AND i.state<>'cancelled' ORDER BY i.created_at DESC LIMIT 100",
         [email, account],
       );
-      return rows.rows.map((row) => rowIntent(row));
+      const intents = [];
+      for (const row of rows.rows) {
+        const intent = rowIntent(row);
+        const payment =
+          row.received_payment_at && row.request_status !== "cancelled"
+            ? await timelyClassWalletPayment(client, intent)
+            : null;
+        const paymentVerified =
+          !!payment &&
+          this.offers(new Date(payment.settledAt)).some(
+            (offer) =>
+              canonicalCommercePayload(offer) ===
+              canonicalCommercePayload(intent.offer),
+          );
+        intents.push({ ...intent, paymentVerified });
+      }
+      return intents;
     });
   }
   async discard(account: string, id: string): Promise<void> {
@@ -347,13 +364,14 @@ export class FundingInvoiceRepository {
             throw new FundingPurchaseError(409, "invoice_already_claimed");
           return fundingRequestRow(existing.rows[0]);
         }
-        if (
-          intent.state !== "prepared" ||
-          Date.parse(intent.expiresAt) <= at.getTime()
-        )
+        const expired = Date.parse(intent.expiresAt) <= at.getTime();
+        const payment = expired
+          ? await timelyClassWalletPayment(client, intent)
+          : null;
+        if (intent.state !== "prepared" || (expired && !payment))
           throw new FundingPurchaseError(409, "invoice_unavailable");
         if (
-          !this.offers(at).some(
+          !this.offers(payment ? new Date(payment.settledAt) : at).some(
             (o) =>
               canonicalCommercePayload(o) ===
               canonicalCommercePayload(intent.offer),
@@ -406,7 +424,7 @@ export class FundingInvoiceRepository {
           "UPDATE amp_funding_invoice_intents SET state='claimed',claimed_account_id=$2,claimed_request_id=id WHERE id=$1",
           [id, account],
         );
-        if (pendingGift)
+        if (pendingGift && !expired)
           await activateGiftInTransaction(client, account, learnerId, {
             giftId: pendingGift.id,
             fundingInvoiceId: id,

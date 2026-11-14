@@ -63,6 +63,7 @@ export type TableHandling =
 export const ACCOUNT_TABLES: Record<string, TableHandling> = {
   amp_academic_sessions: "place",
   amp_access_gifts: "account",
+  amp_funded_pending_eligibility: "account",
   amp_account_classification_events: "sign-in",
   amp_account_classifications: "sign-in",
   amp_account_deletions: "journal",
@@ -717,6 +718,11 @@ export async function deleteAccount(
       await client.query(
         "DELETE FROM amp_access_gifts WHERE account_id=$1 OR ($2::text IS NOT NULL AND lower(recipient_email)=lower($2))",
         [accountId, plan.email],
+      );
+
+      await client.query(
+        "DELETE FROM amp_funded_pending_eligibility WHERE account_id=$1",
+        [accountId],
       );
 
       // 6. The sign-in: sessions, passkeys, linked providers and sign-up

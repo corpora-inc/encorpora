@@ -137,7 +137,7 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
     return (
       <main className={styles.panel}>
         <h1>Choose a funding program</h1>
-        <SupportHelp context="invoice" />
+        <SupportHelp context="invoice" feedback={false} />
       </main>
     );
   return (
@@ -283,16 +283,7 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
                 {error}
               </p>
               <p className={styles.notice}>
-                We email your invoice and reserve access for this email. Sign in
-                and set up your learner to start. Access while payment is
-                pending lasts up to 30 days.{" "}
-                <a
-                  href="https://corpora.inc/legal/privacy/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Privacy
-                </a>
+                Access while payment is pending lasts up to 30 days.
               </p>
             </form>
           )}
@@ -394,6 +385,7 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
         </>
       )}
       <SupportHelp
+        feedback={false}
         context="invoice"
         program={
           program?.id === "ar-efa" ||

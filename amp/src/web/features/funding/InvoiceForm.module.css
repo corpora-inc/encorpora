@@ -110,6 +110,8 @@
   margin-bottom: 1rem;
 }
 .back {
+  flex-shrink: 0;
+  white-space: nowrap;
   display: inline-flex;
   align-items: center;
   min-height: 44px;

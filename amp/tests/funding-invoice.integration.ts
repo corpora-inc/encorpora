@@ -1,3 +1,4 @@
+import { PostgresRepository } from "../src/server/repository.js";
 import { deleteAccount } from "../src/account/delete-account.js";
 import {
   AccessGiftRepository,
@@ -213,7 +214,10 @@ test(
       const grant = (
         await pool.query("SELECT * FROM amp_grants WHERE learner_id='child'")
       ).rows[0];
-      assert.equal(grant.id, "funded-pending:child");
+      assert.equal(
+        grant.id,
+        `funded-pending:${(await pool.query("SELECT id FROM amp_access_gifts WHERE funding_invoice_id=$1", [intent.id])).rows[0].id}`,
+      );
       assert.equal(grant.status, "active");
       assert.equal(grant.ends_at.toISOString(), intent.expiresAt);
       const status = await invoices.funding.present("amp|owner", claimed);
@@ -1018,6 +1022,291 @@ test(
       assert.equal(
         (await pool.query("SELECT count(*)::int n FROM amp_access_gifts"))
           .rows[0].n,
+        0,
+      );
+    }),
+);
+
+for (const retry of [false, true])
+  test(
+    `cancelled claimed invoice sends no payment instructions ${retry ? "on ambiguous retry" : "before first send"}`,
+    enabled,
+    () =>
+      fixture(async (pool, invoices) => {
+        await installConsentPolicy(pool, invoicePolicy);
+        await eligibleParent(pool);
+        const invoice = await invoices.create(input());
+        await invoices.claim("amp|owner", invoice.id, "child");
+        const sent: ConsentMail[] = [];
+        const transport = invoiceTransport(async (mail) => {
+          sent.push(mail);
+          return { kind: "unknown" };
+        });
+        if (retry)
+          await deliverFundingInvoiceMail(pool, transport, invoicePolicy);
+        await new FundingPurchaseRepository(pool, [offer]).update(
+          "amp|owner",
+          invoice.id,
+          "cancelled",
+        );
+        await pool.query(
+          "UPDATE amp_funding_invoice_outbox SET available_at=now()",
+        );
+        await deliverFundingInvoiceMail(pool, transport, invoicePolicy);
+        assert.equal(sent.length, retry ? 1 : 0);
+        assert.equal(
+          (
+            await pool.query(
+              "SELECT stopped_reason FROM amp_funding_invoice_outbox",
+            )
+          ).rows[0].stopped_reason,
+          "invoice-unavailable",
+        );
+      }),
+  );
+
+for (const replace of [false, true])
+  test(
+    `pending eligibility survives ${replace ? "learner deletion and recreation" : "adding a sibling"}`,
+    enabled,
+    () =>
+      fixture(async (pool, invoices) => {
+        const learners = new PostgresRepository(pool.options.connectionString!);
+        try {
+          const first = await learners.create(
+            "amp|owner",
+            "Synthetic Child",
+            2017,
+          );
+          const invoice = await invoices.create(input());
+          await invoices.claim("amp|owner", invoice.id, first.id);
+          if (replace) {
+            await new FamilyRepository(pool).deleteLearning(
+              "amp|owner",
+              first.id,
+            );
+            assert.equal(
+              (
+                await pool.query("SELECT 1 FROM amp_learners WHERE id=$1", [
+                  first.id,
+                ])
+              ).rowCount,
+              0,
+            );
+          }
+          const next = await learners.create(
+            "amp|owner",
+            "Synthetic Child",
+            2017,
+          );
+          const other = await invoices.create(input());
+          await invoices.claim("amp|owner", other.id, next.id);
+          assert.equal(
+            (
+              await pool.query("SELECT 1 FROM amp_grants WHERE learner_id=$1", [
+                next.id,
+              ])
+            ).rowCount,
+            0,
+          );
+          // The sibling can still claim a payable invoice; only unpaid eligibility is consumed.
+          assert.equal(
+            (
+              await pool.query(
+                "SELECT status FROM amp_funding_requests WHERE id=$1",
+                [other.id],
+              )
+            ).rows[0].status,
+            "prepared",
+          );
+        } finally {
+          await learners.pool.end();
+        }
+      }),
+  );
+
+for (const change of [
+  "same-account-new-email",
+  "same-email-new-account",
+  "concurrent-siblings",
+  "different-program",
+] as const)
+  test(
+    `pending eligibility is scoped to account, email and program: ${change}`,
+    enabled,
+    () =>
+      fixture(async (pool, invoices) => {
+        await eligibleParent(pool);
+        await pool.query(
+          "INSERT INTO amp_learners(id,account_id,name) VALUES('sibling','amp|owner','Synthetic Sibling')",
+        );
+        const first = await invoices.create(input());
+        if (change === "concurrent-siblings") {
+          const second = await invoices.create(input());
+          await Promise.all([
+            invoices.claim("amp|owner", first.id, "child"),
+            invoices.claim("amp|owner", second.id, "sibling"),
+          ]);
+          assert.equal(
+            (
+              await pool.query(
+                "SELECT count(*)::int n FROM amp_grants WHERE status='active'",
+              )
+            ).rows[0].n,
+            1,
+          );
+          return;
+        }
+        await invoices.claim("amp|owner", first.id, "child");
+        let account = "amp|owner",
+          email = input().parentEmail,
+          secondOffer = offer;
+        if (change === "same-account-new-email") {
+          email = "changed@example.test";
+          await pool.query(
+            "UPDATE amp_auth_users SET email=$1 WHERE id='owner'",
+            [email],
+          );
+        } else if (change === "same-email-new-account") {
+          await pool.query(
+            "UPDATE amp_auth_users SET email='changed@example.test' WHERE id='owner'",
+          );
+          await pool.query(
+            "UPDATE amp_auth_users SET email=$1 WHERE id='other'",
+            [email],
+          );
+          account = "amp|other";
+          await pool.query(
+            "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES('amp|other','test','verified','test')",
+          );
+          await pool.query(
+            "UPDATE amp_learners SET account_id=$1 WHERE id='sibling'",
+            [account],
+          );
+        } else {
+          secondOffer = { ...offer, id: "second-program", programId: "ar-efa" };
+        }
+        const otherInvoices = new FundingInvoiceRepository(
+          new FundingPurchaseRepository(pool, [secondOffer]),
+        );
+        const second = await otherInvoices.create({
+          ...input(),
+          parentEmail: email,
+          offerId: secondOffer.id,
+        });
+        await otherInvoices.claim(account, second.id, "sibling");
+        assert.equal(
+          (
+            await pool.query(
+              "SELECT count(*)::int n FROM amp_grants WHERE learner_id='sibling' AND status='active'",
+            )
+          ).rows[0].n,
+          change === "different-program" ? 1 : 0,
+        );
+      }),
+  );
+
+for (const condition of ["cancelled-request", "revoked-reservation"] as const)
+  test(
+    `invoice mail rechecks ${condition} between leasing and dispatch`,
+    enabled,
+    () =>
+      fixture(async (pool, invoices) => {
+        await installConsentPolicy(pool, invoicePolicy);
+        await eligibleParent(pool);
+        const invoice = await invoices.create(input());
+        await invoices.claim("amp|owner", invoice.id, "child");
+        // A transaction-boundary fixture: invalidation commits with the lease, so
+        // the second read must reject even though the first read allowed delivery.
+        await pool.query(`CREATE FUNCTION invalidate_on_dispatch() RETURNS trigger LANGUAGE plpgsql AS $$
+      BEGIN
+        IF NEW.lease_id IS NOT NULL AND OLD.lease_id IS NULL THEN
+          ${
+            condition === "cancelled-request"
+              ? "UPDATE amp_funding_requests SET status='cancelled' WHERE id=NEW.invoice_id;"
+              : "UPDATE amp_access_gifts SET revoked_at=now() WHERE funding_invoice_id=NEW.invoice_id;"
+          }
+        END IF;
+        RETURN NEW;
+      END; $$;
+      CREATE TRIGGER invalidate_on_dispatch AFTER UPDATE ON amp_funding_invoice_outbox
+      FOR EACH ROW EXECUTE FUNCTION invalidate_on_dispatch();`);
+        let sent = 0;
+        await deliverFundingInvoiceMail(
+          pool,
+          invoiceTransport(async () => {
+            sent++;
+            return { kind: "accepted", receipt: "synthetic" };
+          }),
+          invoicePolicy,
+        );
+        assert.equal(sent, 0);
+        assert.equal(
+          (
+            await pool.query(
+              "SELECT stopped_reason FROM amp_funding_invoice_outbox",
+            )
+          ).rows[0].stopped_reason,
+          "invoice-unavailable",
+        );
+      }),
+  );
+
+test(
+  "deleting a reused-email account preserves the original account's consumed eligibility",
+  enabled,
+  () =>
+    fixture(async (pool, invoices) => {
+      await eligibleParent(pool);
+      const invoice = await invoices.create(input());
+      await invoices.claim("amp|owner", invoice.id, "child");
+      await pool.query(
+        "UPDATE amp_auth_users SET email='changed@example.test' WHERE id='owner'",
+      );
+      await pool.query(
+        "UPDATE amp_auth_users SET email='parent@example.com' WHERE id='other'",
+      );
+      await deleteAccount(pool, {
+        accountId: "amp|other",
+        via: "self",
+        commit: true,
+      });
+      await new FamilyRepository(pool).deleteLearning("amp|owner", "child");
+      await pool.query(
+        "INSERT INTO amp_learners(id,account_id,name) VALUES('replacement','amp|owner','Synthetic')",
+      );
+      const next = await invoices.create({
+        ...input(),
+        parentEmail: "changed@example.test",
+      });
+      await invoices.claim("amp|owner", next.id, "replacement");
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT 1 FROM amp_grants WHERE learner_id='replacement'",
+          )
+        ).rowCount,
+        0,
+      );
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int n FROM amp_funded_pending_eligibility",
+          )
+        ).rows[0].n,
+        1,
+      );
+      await deleteAccount(pool, {
+        accountId: "amp|owner",
+        via: "self",
+        commit: true,
+      });
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int n FROM amp_funded_pending_eligibility",
+          )
+        ).rows[0].n,
         0,
       );
     }),

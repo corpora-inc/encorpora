@@ -100,7 +100,15 @@ await registerParentFollowupRoutes(app, {
 await registerFundingPurchaseRoutes(app, {
   pool: db,
   authenticate,
-  offers: [offer],
+  offers: [
+    offer,
+    {
+      ...offer,
+      id: "fixture-monthly",
+      termMonths: 1,
+      termPolicy: "one-month-from-verified-provisioning",
+    },
+  ],
 });
 await registerConsentRoutes(app, {
   authenticate,
@@ -171,6 +179,30 @@ try {
           "invoice actions have 44px targets",
         );
       }
+      const back = page.getByRole("link", { name: "Back to AMP" });
+      assert.equal(
+        await back.evaluate((el) => {
+          const range = document.createRange();
+          range.selectNodeContents(el);
+          return range.getClientRects().length;
+        }),
+        1,
+        "back label stays on one line",
+      );
+      assert.equal(
+        await page
+          .getByRole("button", { name: "Share parent feedback" })
+          .count(),
+        0,
+      );
+      assert.equal(
+        await page
+          .getByText("Access while payment is pending lasts up to 30 days.", {
+            exact: true,
+          })
+          .count(),
+        1,
+      );
       const email = `parent-${width}-${theme}@example.test`;
       await page.getByLabel(/Email for/).fill(email);
       await page

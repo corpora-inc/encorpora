@@ -33,3 +33,14 @@ CREATE TABLE amp_funding_invoice_outbox (
 );
 CREATE INDEX amp_funding_invoice_mail_due ON amp_funding_invoice_outbox(available_at)
  WHERE accepted_at IS NULL AND stopped_at IS NULL;
+
+-- Eligibility belongs to the adult and program, never a disposable child record.
+-- Learning-data deletion must not restart it; account deletion erases it.
+CREATE TABLE amp_funded_pending_eligibility (
+ account_id text NOT NULL,
+ recipient_email text NOT NULL CHECK (recipient_email=lower(btrim(recipient_email))),
+ program_id text NOT NULL,
+ used_at timestamptz NOT NULL DEFAULT now(),
+ PRIMARY KEY (account_id,program_id),
+ UNIQUE (recipient_email,program_id)
+);

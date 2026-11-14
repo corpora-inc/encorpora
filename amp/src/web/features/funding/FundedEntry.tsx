@@ -1,4 +1,4 @@
-import { InvoiceClaim } from "./InvoiceClaim";
+import { InvoiceClaim, invoiceOptions } from "./InvoiceClaim";
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import {
   Link,
@@ -76,24 +76,39 @@ function SignedInEntry({
         signal,
       }),
   });
+  const invoices = useQuery({
+    ...invoiceOptions(session),
+    enabled:
+      me.data?.signedIn === true && !me.data.account.confirmationRequired,
+  });
   const selectedLearner = useLearnerStore((state) => state.learnerId);
   if (location.pathname !== program.path) return <LoadingScreen />;
-  if (me.error || offers.error)
+  if (step === "/start/verify-email")
+    return <Navigate {...startNavigation(step)} search={search} replace />;
+  if (me.error || offers.error || invoices.error)
     return (
       <RouteError
-        error={me.error ?? offers.error}
+        error={me.error ?? offers.error ?? invoices.error}
         reset={() => {
           void me.refetch();
           void offers.refetch();
+          void invoices.refetch();
         }}
       />
     );
   if (!me.data || !offers.data) return <LoadingScreen />;
   if (!me.data.signedIn)
     return <Navigate to="/sign-in" search={search} replace />;
+  if (!invoices.data) return <LoadingScreen />;
   // Do not send parents through consent or learner setup for a missing offer.
   if (
     (me.data.consent.status !== "active" || !me.data.learners.length) &&
+    !invoices.data.invoices.some(
+      (invoice) =>
+        invoice.offer.programId === program.id &&
+        invoice.state !== "cancelled" &&
+        invoice.paymentVerified,
+    ) &&
     !offers.data.offers.some(
       (offer) =>
         offer.programId === program.id &&

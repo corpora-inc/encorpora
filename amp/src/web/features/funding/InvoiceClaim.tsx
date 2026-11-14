@@ -22,10 +22,20 @@ const invoicesSchema = z.object({
       parentEmail: z.string().optional(),
       state: z.enum(["prepared", "claimed", "cancelled"]),
       expiresAt: z.string(),
+      paymentVerified: z.boolean().optional(),
       offer: z.object({ programId: z.string() }),
     }),
   ),
 });
+export const invoiceOptions = (session: AuthSession) => ({
+  queryKey: ["account", session.accountId, "invoice-intents"],
+  queryFn: ({ signal }: { signal: AbortSignal }) =>
+    request("/funding/invoices", invoicesSchema, {
+      token: session.token,
+      signal,
+    }),
+});
+
 /** The account holder's own learner, before it exists: started on use. */
 const NEW_OWN = "own:new";
 
@@ -45,7 +55,7 @@ function invoiceLearner(
     if (
       !invoice.parentEmail ||
       normalized(invoice.parentEmail) !== normalized(accountEmail) ||
-      !(Date.parse(invoice.expiresAt) > Date.now())
+      !(invoice.paymentVerified || Date.parse(invoice.expiresAt) > Date.now())
     )
       return null;
     const ids = new Set(
@@ -99,14 +109,7 @@ export function InvoiceClaim({
     ...continuationSearch(location.search),
     return: program.slug,
   };
-  const invoices = useQuery({
-    queryKey: ["account", session.accountId, "invoice-intents"],
-    queryFn: ({ signal }) =>
-      request("/funding/invoices", invoicesSchema, {
-        token: session.token,
-        signal,
-      }),
-  });
+  const invoices = useQuery(invoiceOptions(session));
   const startOwn = useStartOwnPractice(session);
   const choices = [
     { value: own?.id ?? NEW_OWN, label: "Me" },
@@ -235,7 +238,8 @@ export function InvoiceClaim({
         {pending.map((invoice) => (
           <div key={invoice.id}>
             <h2>{invoice.studentBillingName}</h2>
-            {Date.parse(invoice.expiresAt) <= Date.now() ? (
+            {!invoice.paymentVerified &&
+            Date.parse(invoice.expiresAt) <= Date.now() ? (
               <p>
                 This invoice needs a billing review. Contact support with
                 invoice {invoice.id}; do not pay again.
@@ -287,33 +291,35 @@ export function InvoiceClaim({
                 {busy ? "Connecting…" : "Use this invoice"}
               </Button>
             )}
-            <Button
-              variant="quiet"
-              disabled={busy}
-              onClick={async () => {
-                setBusy(true);
-                setError("");
-                try {
-                  await request(
-                    `/funding/invoices/${invoice.id}/discard`,
-                    z.object({ discarded: z.boolean() }),
-                    { token: session.token, body: { notSubmitted: true } },
-                  );
-                  await invoices.refetch();
-                } catch (reason) {
-                  console.error("Invoice discard failed", reason);
-                  setError(
-                    reason instanceof Error
-                      ? reason.message
-                      : "The invoice could not be discarded.",
-                  );
-                } finally {
-                  setBusy(false);
-                }
-              }}
-            >
-              Not submitted? Discard this invoice
-            </Button>
+            {!invoice.paymentVerified && (
+              <Button
+                variant="quiet"
+                disabled={busy}
+                onClick={async () => {
+                  setBusy(true);
+                  setError("");
+                  try {
+                    await request(
+                      `/funding/invoices/${invoice.id}/discard`,
+                      z.object({ discarded: z.boolean() }),
+                      { token: session.token, body: { notSubmitted: true } },
+                    );
+                    await invoices.refetch();
+                  } catch (reason) {
+                    console.error("Invoice discard failed", reason);
+                    setError(
+                      reason instanceof Error
+                        ? reason.message
+                        : "The invoice could not be discarded.",
+                    );
+                  } finally {
+                    setBusy(false);
+                  }
+                }}
+              >
+                Not submitted? Discard this invoice
+              </Button>
+            )}
           </div>
         ))}
         <p role="alert">{error}</p>

@@ -728,8 +728,12 @@ test(
         /verified_consent_required/,
       );
       const remaining = await grants(pool, "child");
-      assert.equal(remaining.length, 1, "only the temporary bridge was issued");
-      assert.equal(remaining[0]!.endsAt, childInvoice.expiresAt);
+      assert.equal(
+        remaining.length,
+        0,
+        "the account's bridge was already used by its adult learner",
+      );
+      assert.equal((await grants(pool, "parent-own")).length, 1);
       assert.equal(
         await learningConsentActive(pool, "amp|parent", false, "child"),
         false,
