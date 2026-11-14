@@ -1,7 +1,11 @@
 import { ensureFamilyClass } from "../family/family-class.js";
 import { lockLearningAccount } from "../server/account-access.js";
 import { touchDemoOfPersonSql } from "./demo/sql.js";
-import { assertSignInOpen, classPracticeGate } from "./pilot-access.js";
+import {
+  assertSignInOpen,
+  classLiveSql,
+  classPracticeGate,
+} from "./pilot-access.js";
 import {
   createHash,
   randomBytes,
@@ -112,7 +116,8 @@ export class SchoolSignIn {
     return this.schools.pool;
   }
 
-  /** A class a student can still join: not archived, term not over. */
+  /** A class a student can still join: not archived, term not over (the
+   * same `classLiveSql` the practice gate and its recheck read). */
   async liveClass(
     code: string,
     db: Pick<PoolClient, "query"> = this.pool,
@@ -122,9 +127,7 @@ export class SchoolSignIn {
         `SELECT c.id,c.name,c.org_id,o.path,o.sign_in_providers,
            GREATEST(0,CEIL(EXTRACT(EPOCH FROM c.join_locked_until-now())))::int AS locked_for
          FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
-         JOIN amp_academic_sessions s ON s.id=c.session_id
-         WHERE c.join_code=$1 AND c.archived_at IS NULL
-           AND s.ends_on>=(now() AT TIME ZONE o.timezone)::date`,
+         WHERE c.join_code=$1 AND ${classLiveSql("c", "o")}`,
         [code],
       )
     ).rows[0] as LiveClass | undefined;

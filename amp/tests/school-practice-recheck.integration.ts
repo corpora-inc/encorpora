@@ -6,7 +6,12 @@ import { migrate } from "../scripts/migrate.js";
 import { assertTestDatabaseTarget } from "../scripts/test-database-preflight.js";
 import { AGREEMENT_VERSION } from "../src/schools/agreement.js";
 import { activateClassPilot, startSchoolClass } from "../src/schools/pilots.js";
-import { classPractice } from "../src/schools/pilot-access.js";
+import {
+  assertSignInOpen,
+  classPractice,
+  classRecheckQuery,
+} from "../src/schools/pilot-access.js";
+import { SchoolSignIn } from "../src/schools/sign-in.js";
 import { SchoolRepository } from "../src/schools/repository.js";
 import { registerSchoolRoutes } from "../src/schools/routes.js";
 import { buildApp } from "../src/server/app.js";
@@ -350,10 +355,15 @@ test(
     );
 
     // A day that begins twice: Havana falls back at midnight on
-    // 2027-11-07. Her enrollment ends that day; nothing else sooner.
+    // 2027-11-07. Her enrollment ends that day; nothing else sooner (the
+    // class's session runs on past it).
     await db.query(
       "UPDATE amp_orgs SET timezone='America/Havana' WHERE id=$1",
       [school.id],
+    );
+    await db.query(
+      "UPDATE amp_academic_sessions SET ends_on='2028-06-30' WHERE id=(SELECT session_id FROM amp_classes WHERE id=$1)",
+      [klass.id],
     );
     await db.query("UPDATE amp_org_roles SET end_on=NULL WHERE person_id=$1", [
       pupil.personId,
@@ -400,12 +410,20 @@ test(
       "INSERT INTO amp_clever_sync_runs(id,connection_id,mode,status) VALUES($1,$2,'full','succeeded')",
       [run, connection],
     );
+    // Their Clever account still says district administrator: the
+    // bootstrap's end is what can end their authority.
+    await db.query(
+      `INSERT INTO amp_clever_bindings(connection_id,kind,clever_id,local_id,record,metadata,last_seen_run_id)
+       SELECT $1,'user','fixture-zones-admin',p.id,'{}','{"roles":["district_admin"]}',$2
+       FROM amp_people p WHERE p.account_id=$3`,
+      [connection, run, cleverAdmin],
+    );
     const bootstrapEnd = new Date(
       Math.floor((Date.now() + 3_600_000) / 1000) * 1000,
     );
     await db.query(
       `INSERT INTO amp_clever_memberships(connection_id,kind,source_key,local_id,owned,last_seen_run_id,bootstrap_valid_until)
-       SELECT $1,'org_role','fixture',r.id,false,$2,$3 FROM amp_org_roles r
+       SELECT $1,'org_role','fixture',r.id,true,$2,$3 FROM amp_org_roles r
        JOIN amp_people p ON p.id=r.person_id WHERE p.account_id=$4 AND r.role='admin'`,
       [connection, run, bootstrapEnd, cleverAdmin],
     );
@@ -488,5 +506,402 @@ test(
       "the moment is no later than the pilot's end",
     );
     assert.ok(Date.parse(state.serverNow) < Date.parse(state.recheckAt!));
+  },
+);
+
+/** A schema whose `now()` (and `current_date`) is a clock the test sets:
+ * a `now()` in the schema, ahead of pg_catalog on the search path, reading
+ * one row. Column defaults keep the real clock (bound when migrated). A
+ * repeatable-read snapshot sees the clock as it was at its first read. */
+async function clockedSchema(prefix: string) {
+  const url = process.env.AMP_TEST_DATABASE_URL!;
+  assertTestDatabaseTarget(url);
+  const schema = `${prefix}_${randomUUID().replaceAll("-", "")}`;
+  const admin = new Pool({ connectionString: url, max: 1 });
+  const plain = new URL(url);
+  plain.searchParams.set("options", `-c search_path=${schema}`);
+  await admin.query(`CREATE SCHEMA ${schema}`);
+  await migrate(plain.href);
+  await admin.query(
+    `CREATE TABLE ${schema}.test_clock(at timestamptz NOT NULL);
+     INSERT INTO ${schema}.test_clock VALUES(now());
+     CREATE FUNCTION ${schema}.now() RETURNS timestamptz LANGUAGE sql STABLE
+       AS $$ SELECT at FROM ${schema}.test_clock $$;`,
+  );
+  const clocked = new URL(url);
+  clocked.searchParams.set("options", `-c search_path=${schema},pg_catalog`);
+  const learning = new PostgresRepository(clocked.href);
+  const db = learning.pool;
+  // `current_date` is a keyword, not a function: read it from the clock.
+  const timed = (text: unknown) =>
+    typeof text === "string"
+      ? text.replace(
+          /\bcurrent_date\b/gi,
+          "(now() AT TIME ZONE current_setting('TimeZone'))::date",
+        )
+      : text;
+  const listeners: ((text: string) => Promise<void>)[] = [];
+  const watch = (target: { query: (...args: never[]) => unknown }) => {
+    const raw = target.query.bind(target) as (...args: unknown[]) => unknown;
+    return async (text: unknown, ...rest: unknown[]) => {
+      const result = await raw(timed(text), ...rest);
+      for (const listener of listeners) await listener(String(text));
+      return result;
+    };
+  };
+  (db as { query: unknown }).query = watch(db as never);
+  const connect = db.connect.bind(db) as (callback?: unknown) => unknown;
+  // pg's own pool.query connects with a callback: that path is left alone
+  // (its statement was already rewritten above).
+  (db as { connect: unknown }).connect = (callback?: unknown) => {
+    if (callback) return connect(callback);
+    return (connect() as Promise<object>).then((client) => {
+      const query = watch(client as never);
+      return new Proxy(client, {
+        get(target, key) {
+          if (key === "query") return query;
+          const value = Reflect.get(target, key);
+          return typeof value === "function" ? value.bind(target) : value;
+        },
+      });
+    });
+  };
+  return {
+    learning,
+    db,
+    /** Set from outside every snapshot. */
+    clock: (at: string) =>
+      admin.query(`UPDATE ${schema}.test_clock SET at=$1`, [at]),
+    /** Runs after each statement the app sends. */
+    afterQuery: (listener: (text: string) => Promise<void>) =>
+      listeners.push(listener),
+    close: async () => {
+      await learning.close();
+      await admin.query(`DROP SCHEMA ${schema} CASCADE`);
+      await admin.end();
+    },
+  };
+}
+
+async function clockedApp(fixture: Awaited<ReturnType<typeof clockedSchema>>) {
+  const authenticate = refuseStudentTokens(async (request) => {
+    const header = request.headers.authorization;
+    if (header?.startsWith("Bearer ")) return header.slice(7);
+    throw new ApiError(401, "Sign in to continue");
+  });
+  const app = buildApp({ repository: fixture.learning, authenticate });
+  await registerSchoolRoutes(app, { pool: fixture.db, authenticate });
+  await app.ready();
+  return app;
+}
+
+/* CP-3 r6 H2: the class's academic session ending closes sign-in for its
+ * students (`/join` refuses the code), and so the gate, the code, the cards
+ * and the recheck moment all say so at that same instant. */
+test(
+  "a class whose session ends closes its code at the moment /join refuses it",
+  { skip: !process.env.AMP_TEST_DATABASE_URL },
+  async (t) => {
+    const fixture = await clockedSchema("recheck_session");
+    const app = await clockedApp(fixture);
+    t.after(async () => {
+      await app.close();
+      await fixture.close();
+    });
+    const { db } = fixture;
+    const schools = new SchoolRepository(db);
+    const teacher = "fixture-session-teacher";
+    const { orgId, classId } = await startSchoolClass(schools, teacher, {
+      requestId: randomUUID(),
+      schoolName: "Birchwood Elementary",
+      className: "Grade 4 Math",
+      timezone: "UTC",
+      signerName: "Rosa Lindqvist",
+      signerTitle: "Teacher",
+      agreementVersion: AGREEMENT_VERSION,
+      authorized: true,
+      names: ["Ana Brook", "Ben Cole"],
+    });
+    await activateClassPilot(schools, teacher, classId);
+    // The pilot covers its students through April 15; the class's session
+    // ends March 14.
+    await fixture.clock("2027-03-14T12:00:00Z");
+    await db.query(
+      "UPDATE amp_teacher_pilots SET started_at='2027-01-01T00:00:00Z',ends_at='2027-02-01T00:00:00Z',grace_ends_at='2027-04-15T00:00:00Z'",
+    );
+    await db.query("UPDATE amp_enrollments SET begin_on='2026-01-01'");
+    await db.query("UPDATE amp_org_roles SET begin_on='2026-01-01'");
+    await db.query(
+      "UPDATE amp_academic_sessions SET starts_on='2026-08-01',ends_on='2027-03-14' WHERE org_id=$1",
+      [orgId],
+    );
+    const read = async (path: string) => {
+      const reply = await app.inject({
+        method: "GET",
+        url: `/api/v1/school/classes/${classId}/${path}`,
+        headers: { authorization: `Bearer ${teacher}` },
+      });
+      assert.equal(reply.statusCode, 200, reply.body);
+      return reply.json();
+    };
+    const code = (
+      await db.query("SELECT join_code FROM amp_classes WHERE id=$1", [classId])
+    ).rows[0].join_code as string;
+    const signIn = new SchoolSignIn(schools);
+
+    await fixture.clock("2027-03-14T23:59:59Z");
+    let year = await read("year");
+    assert.equal(year.practice, "open");
+    assert.equal(year.recheckAt, "2027-03-15T00:00:00.000Z", "the session end");
+    let presence = (await read("presence")).class;
+    assert.equal(presence.joinCode, code);
+    assert.equal(presence.codeAvailable, true);
+    await signIn.liveClass(code);
+    await assertSignInOpen(db, classId);
+
+    await fixture.clock("2027-03-15T00:00:00Z");
+    await assert.rejects(signIn.liveClass(code), {
+      statusCode: 404,
+      code: "class_not_found",
+    });
+    year = await read("year");
+    assert.equal(year.practice, "ended", "the gate closes with /join");
+    presence = (await read("presence")).class;
+    assert.equal(presence.joinCode, "");
+    assert.equal(presence.codeAvailable, false);
+    await assert.rejects(assertSignInOpen(db, classId), {
+      statusCode: 409,
+      code: "practice_closed",
+    });
+  },
+);
+
+/* CP-3 r6 H1: the reader's authority is read in the same snapshot as the
+ * class's practice. A Clever administrator's bootstrap ends at 12:00:15;
+ * the clock reaches it just after their roles are read. The answer is
+ * either all before (their authority, with that moment to ask again) or
+ * all after (refused): never their authority with a later moment. */
+test(
+  "the reader's authority, the gate and the recheck moment come from one snapshot",
+  { skip: !process.env.AMP_TEST_DATABASE_URL },
+  async (t) => {
+    const fixture = await clockedSchema("recheck_authority");
+    const app = await clockedApp(fixture);
+    t.after(async () => {
+      await app.close();
+      await fixture.close();
+    });
+    const { db } = fixture;
+    const schools = new SchoolRepository(db);
+    await fixture.clock("2027-03-14T12:00:00Z");
+    const { orgId, classId } = await startSchoolClass(
+      schools,
+      "fixture-authority-teacher",
+      {
+        requestId: randomUUID(),
+        schoolName: "Birchwood Elementary",
+        className: "Grade 4 Math",
+        timezone: "UTC",
+        signerName: "Rosa Lindqvist",
+        signerTitle: "Teacher",
+        agreementVersion: AGREEMENT_VERSION,
+        authorized: true,
+        names: ["Ana Brook"],
+      },
+    );
+    await activateClassPilot(schools, "fixture-authority-teacher", classId);
+    await db.query(
+      "UPDATE amp_teacher_pilots SET started_at='2027-01-01T00:00:00Z',ends_at='2027-02-01T00:00:00Z',grace_ends_at='2027-04-15T00:00:00Z'",
+    );
+    await db.query("UPDATE amp_enrollments SET begin_on='2026-01-01'");
+    await db.query(
+      "UPDATE amp_academic_sessions SET starts_on='2026-08-01',ends_on='2027-07-31' WHERE org_id=$1",
+      [orgId],
+    );
+    const cleverAdmin = "fixture-authority-clever-admin";
+    await schools.addStaff({
+      orgId,
+      role: "admin",
+      givenName: "Ines",
+      accountId: cleverAdmin,
+    });
+    await db.query("UPDATE amp_org_roles SET begin_on='2026-01-01'");
+    const connection = randomUUID();
+    const run = randomUUID();
+    await db.query(
+      "INSERT INTO amp_clever_connections(id,environment,district_id,tenant_id) VALUES($1,'sandbox',$2,$3)",
+      [connection, "b".repeat(24), orgId],
+    );
+    await db.query(
+      "INSERT INTO amp_clever_sync_runs(id,connection_id,mode,status) VALUES($1,$2,'full','succeeded')",
+      [run, connection],
+    );
+    await db.query(
+      `INSERT INTO amp_clever_bindings(connection_id,kind,clever_id,local_id,record,metadata,last_seen_run_id)
+       SELECT $1,'user','fixture-admin',p.id,'{}','{"roles":["district_admin"]}',$2
+       FROM amp_people p WHERE p.account_id=$3`,
+      [connection, run, cleverAdmin],
+    );
+    await db.query(
+      `INSERT INTO amp_clever_memberships(connection_id,kind,source_key,local_id,owned,last_seen_run_id,bootstrap_valid_until)
+       SELECT $1,'org_role','fixture',r.id,true,$2,'2027-03-14T12:00:15Z' FROM amp_org_roles r
+       JOIN amp_people p ON p.id=r.person_id WHERE p.account_id=$3 AND r.role='admin'`,
+      [connection, run, cleverAdmin],
+    );
+    const year = () =>
+      app.inject({
+        method: "GET",
+        url: `/api/v1/school/classes/${classId}/year`,
+        headers: { authorization: `Bearer ${cleverAdmin}` },
+      });
+    await fixture.clock("2027-03-14T12:00:14Z");
+    let reply = await year();
+    assert.equal(reply.statusCode, 200, reply.body);
+    assert.equal(reply.json().recheckAt, "2027-03-14T12:00:15.000Z");
+    // The clock reaches the bootstrap's end right after the reader's roles
+    // are read, before anything of the class's.
+    let crossed = false;
+    fixture.afterQuery(async (text) => {
+      if (!crossed && text.includes("amp_school_role_current")) {
+        crossed = true;
+        await fixture.clock("2027-03-14T12:00:15Z");
+      }
+    });
+    reply = await year();
+    assert.ok(crossed);
+    if (reply.statusCode === 200)
+      assert.equal(
+        reply.json().recheckAt,
+        "2027-03-14T12:00:15.000Z",
+        "authority read before the end asks again at the end",
+      );
+    else assert.equal(reply.statusCode, 404);
+    // Read again after the end: refused.
+    reply = await year();
+    assert.equal(reply.statusCode, 404);
+  },
+);
+
+/* CP-3 r6 M1: the recheck read's work is bounded by the class's roster and
+ * the reader's own roles: rows of unrelated people, classes and Clever
+ * memberships are never visited, however many there are. */
+test(
+  "the recheck read visits only the class's own people",
+  { skip: !process.env.AMP_TEST_DATABASE_URL },
+  async (t) => {
+    const url = process.env.AMP_TEST_DATABASE_URL!;
+    assertTestDatabaseTarget(url);
+    const schema = `recheck_plan_${randomUUID().replaceAll("-", "")}`;
+    const admin = new Pool({ connectionString: url, max: 1 });
+    const scoped = new URL(url);
+    scoped.searchParams.set("options", `-c search_path=${schema}`);
+    await admin.query(`CREATE SCHEMA ${schema}`);
+    await migrate(scoped.href);
+    const db = new Pool({ connectionString: scoped.href, max: 1 });
+    t.after(async () => {
+      await db.end();
+      await admin.query(`DROP SCHEMA ${schema} CASCADE`);
+      await admin.end();
+    });
+    const schools = new SchoolRepository(db);
+    const teacher = "fixture-plan-teacher";
+    const { orgId, classId } = await startSchoolClass(schools, teacher, {
+      requestId: randomUUID(),
+      schoolName: "Birchwood Elementary",
+      className: "Grade 4 Math",
+      timezone: "UTC",
+      signerName: "Rosa Lindqvist",
+      signerTitle: "Teacher",
+      agreementVersion: AGREEMENT_VERSION,
+      authorized: true,
+      names: ["Ana Brook", "Ben Cole"],
+    });
+    await activateClassPilot(schools, teacher, classId);
+    // A large district beside it: 20,000 unrelated people, each enrolled in
+    // an unrelated class with a student role, a released seat and a grant,
+    // and 20,000 unrelated Clever memberships.
+    const N = 20_000;
+    await db.query(
+      `WITH other AS (
+         INSERT INTO amp_orgs(id,kind,name,timezone,path)
+         SELECT gen_random_uuid(),'school','Unrelated','UTC','{}' RETURNING id)
+       UPDATE amp_orgs o SET path=ARRAY[o.id] FROM other WHERE o.id=other.id`,
+    );
+    const other = (
+      await db.query("SELECT id FROM amp_orgs WHERE name='Unrelated'")
+    ).rows[0].id as string;
+    const otherClass = randomUUID();
+    await db.query(
+      `INSERT INTO amp_classes(id,org_id,name,join_code,session_id)
+       SELECT $1,$2,'Unrelated class','UNRELATED-PLAN',session_id FROM amp_classes WHERE id=$3`,
+      [otherClass, other, classId],
+    );
+    await db.query(
+      `INSERT INTO amp_people(id,tenant_id,given_name,family_name,handle,timezone)
+       SELECT gen_random_uuid(),$1,'Unrelated',g::text,'unrelated-'||g,'UTC'
+       FROM generate_series(1,$2) g`,
+      [other, N],
+    );
+    await db.query(
+      `INSERT INTO amp_enrollments(id,person_id,class_id,role,begin_on)
+       SELECT gen_random_uuid(),id,$1,'student',current_date-30 FROM amp_people WHERE given_name='Unrelated'`,
+      [otherClass],
+    );
+    await db.query(
+      `INSERT INTO amp_org_roles(id,person_id,org_id,role,begin_on)
+       SELECT gen_random_uuid(),id,$1,'student',current_date-30 FROM amp_people WHERE given_name='Unrelated'`,
+      [other],
+    );
+    const connection = randomUUID();
+    const run = randomUUID();
+    await db.query(
+      "INSERT INTO amp_clever_connections(id,environment,district_id,tenant_id) VALUES($1,'sandbox',$2,$3)",
+      [connection, "c".repeat(24), other],
+    );
+    await db.query(
+      "INSERT INTO amp_clever_sync_runs(id,connection_id,mode,status) VALUES($1,$2,'full','succeeded')",
+      [run, connection],
+    );
+    await db.query(
+      `INSERT INTO amp_clever_memberships(connection_id,kind,source_key,local_id,owned,last_seen_run_id,bootstrap_valid_until)
+       SELECT $1,'org_role',r.id::text,r.id,g%2=0,$2,now()+interval '1 day'
+       FROM amp_org_roles r, generate_series(0,0) g WHERE r.org_id=$3`,
+      [connection, run, other],
+    );
+    await db.query("ANALYZE");
+    // An administrator of the school reads it (their own Clever
+    // membership is the one that can matter).
+    const viewer = "fixture-plan-admin";
+    await schools.addStaff({
+      orgId,
+      role: "admin",
+      givenName: "Vera",
+      accountId: viewer,
+    });
+    const { text, values } = classRecheckQuery(classId, viewer);
+    const plan = (
+      await db.query(`EXPLAIN (ANALYZE, FORMAT JSON) ${text}`, values)
+    ).rows[0]["QUERY PLAN"][0].Plan;
+    // Rows each relation was read for, filtered ones included.
+    const visited = new Map<string, number>();
+    const walk = (node: Record<string, unknown>) => {
+      const relation = node["Relation Name"] as string | undefined;
+      if (relation) {
+        const rows =
+          ((node["Actual Rows"] as number) +
+            ((node["Rows Removed by Filter"] as number) ?? 0) +
+            ((node["Rows Removed by Index Recheck"] as number) ?? 0)) *
+          ((node["Actual Loops"] as number) ?? 1);
+        visited.set(relation, (visited.get(relation) ?? 0) + rows);
+      }
+      for (const child of (node.Plans as Record<string, unknown>[]) ?? [])
+        walk(child);
+    };
+    walk(plan);
+    for (const [relation, rows] of visited)
+      assert.ok(
+        rows < 1_000,
+        `${relation}: ${rows} rows read for a class of two (${JSON.stringify([...visited])})`,
+      );
   },
 );

@@ -10,7 +10,7 @@ import {
 import { z } from "zod";
 import { AGREEMENT_VERSION } from "../../../../schools/agreement";
 import type { PilotState } from "../../../../schools/pilot-contracts";
-import { AppError } from "../../../lib/AppError";
+import { AppError, standing } from "../../../lib/AppError";
 import { queryClient } from "../../../lib/query";
 import { useLoggedError } from "../../../feedback";
 import { Link } from "@tanstack/react-router";
@@ -95,7 +95,10 @@ export function useClassAccess(place: Place): {
   // (CP-3 r4). Time is measured in the server's clock, from its answer and
   // this page's monotonic clock: a device clock set wrong can't close an
   // open class or open a closed one.
-  const remaining = recheckRemaining(year.data);
+  // The answer as it stands: a refusal (401, 403, 404) revokes the cached
+  // one, whatever it said and however far off its moment (CP-3 r6).
+  const answer = standing(year) ?? undefined;
+  const remaining = recheckRemaining(answer);
   const due = remaining !== null && remaining <= 0;
   // The last ask failed (its answer is older than its failure): the cached
   // answer is not a fresh one.
@@ -158,9 +161,9 @@ export function useClassAccess(place: Place): {
     );
     return () => clearTimeout(timer);
   }, [
-    year.data?.recheckAt,
-    year.data?.serverNow,
-    year.data?.receivedAt,
+    answer?.recheckAt,
+    answer?.serverNow,
+    answer?.receivedAt,
     year.errorUpdatedAt,
     year.isFetching,
     due,
@@ -187,8 +190,8 @@ export function useClassAccess(place: Place): {
       retry,
     };
   // Unknown is never open: a failed read, or an answer without the state.
-  const read: Practice = year.data
-    ? (year.data.practice ?? "unknown")
+  const read: Practice = answer
+    ? (answer.practice ?? "unknown")
     : year.isError
       ? "unknown"
       : "waiting";

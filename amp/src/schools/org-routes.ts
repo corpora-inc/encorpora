@@ -1,4 +1,4 @@
-import { classPractice } from "./pilot-access.js";
+import { readClassPractice } from "./pilot-access.js";
 import { randomUUID } from "node:crypto";
 import { actorPerson, can, rosterScope } from "./authz.js";
 import { activityPeople, readActivity } from "./activity.js";
@@ -122,20 +122,23 @@ export function defineOrgRoutes(define: typeof defineSchoolRoute) {
     action: "classes.read",
     target: ({ params }) =>
       ({ kind: "class", classId: params.class! }) as const,
+    // The reader's authority, the gate, the next moment to ask again and
+    // the clock, in one snapshot: they can't disagree (CP-3 r5, r6).
+    snapshot: true,
     // The class's year, and what binds it to a place: its org, the path
     // above it, its name, and what this person may do in it (the same `can`
     // as every route). The shell frames a class only under its own org
     // (docs/architecture/spaces.md).
-    handler: async ({ actor, target, pool }) => {
-      const [past, named, state] = await Promise.all([
-        classIsPast(pool, target.classId),
-        pool.query("SELECT name FROM amp_classes WHERE id=$1", [
-          target.classId,
-        ]),
-        // The gate, the next moment to ask again and the clock, in one
-        // snapshot: they can't disagree (CP-3 r5).
-        classPractice(pool, target.classId, actor.accountId),
+    handler: async ({ actor, target, db }) => {
+      const past = await classIsPast(db, target.classId);
+      const named = await db.query("SELECT name FROM amp_classes WHERE id=$1", [
+        target.classId,
       ]);
+      const state = await readClassPractice(
+        db,
+        target.classId,
+        actor.accountId,
+      );
       const gate = state.gate;
       return {
         past,

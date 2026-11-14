@@ -42,6 +42,7 @@ async function board({
   skew,
   after,
   failing = 0,
+  refused = false,
   delayFirst = 0,
   alone = false,
 }: {
@@ -50,6 +51,9 @@ async function board({
   after: "ended" | "open";
   /** Year reads after the moment that fail (503) before one answers. */
   failing?: number;
+  /** Every year read from now on is refused (404): the reader lost the
+   * class, long before its moment. */
+  refused?: boolean;
   /** The first year read (none cached) takes this long to arrive; its
    * clock is read when it was asked. */
   delayFirst?: number;
@@ -107,6 +111,11 @@ async function board({
           serverNow: new Date(asked).toISOString(),
         });
       }
+      if (refused)
+        return new Response(JSON.stringify({ error: "not_found" }), {
+          status: 404,
+          headers: { "content-type": "application/json" },
+        });
       if (serverNow() >= recheckAt && failing > 0) {
         failing--;
         return new Response(
@@ -329,4 +338,24 @@ test("an answer that took a minute to arrive counts its age: the moment is not p
   expect(
     screen.getByRole("heading", { name: "Practice has ended" }),
   ).toBeTruthy();
+});
+
+test("a refusal on any refresh revokes the cached open state, however far off its moment", async () => {
+  const page = await board({
+    recheckIn: 30 * 864e5,
+    skew: 0,
+    after: "open",
+    refused: true,
+  });
+  expect(page.code()).toBeTruthy();
+  // A refresh (focus, Try again, another screen) is refused: the cached
+  // open answer and its far moment no longer stand.
+  await act(async () => {
+    await queryClient
+      .refetchQueries({ queryKey: classYearOptions(auth, C).queryKey })
+      .catch(() => undefined);
+  });
+  await page.advance(100);
+  expect(page.code()).toBeNull();
+  expect(screen.queryByText("Checking practice")).toBeNull();
 });

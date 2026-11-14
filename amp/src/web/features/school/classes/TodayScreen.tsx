@@ -1,5 +1,5 @@
 import { spaceWords } from "../../spaces/words";
-import { useRef } from "react";
+import { standing } from "../../../lib/AppError";
 import { ScreenTitle } from "../../../ui/ScreenTitle";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
@@ -56,10 +56,12 @@ function ClassToday({
   // or an aide reads the class; adding students and printing cards are
   // its teacher's and its school's).
   const can = new Set(
-    useQuery({
-      ...classYearOptions(currentSession(), place.class),
-      refetchOnMount: false,
-    }).data?.can ?? [],
+    standing(
+      useQuery({
+        ...classYearOptions(currentSession(), place.class),
+        refetchOnMount: false,
+      }),
+    )?.can ?? [],
   );
   const adds = can.has("class.import") || can.has("students.add");
   const practice = accessFeedEntry(
@@ -168,13 +170,9 @@ export function TodayScreen() {
   const demo = useDemoOrg(place.org);
   const access = useClassAccess(place);
   const closed = access.closed;
-  // Practice started from this page: the code waits for the next visit
-  // rather than pushing the feed down under the teacher's finger (rule 1).
-  // The new first item, Start class, opens the board with the code.
-  const closedOnArrival = useRef<boolean | null>(null);
-  if (closedOnArrival.current === null && !access.pending)
-    closedOnArrival.current = closed;
-  const codeShown = !closed && !closedOnArrival.current;
+  // The code shows whenever the server says practice is open, including a
+  // class that opens during this visit (CP-3 r6).
+  const codeShown = !closed;
   const loading =
     access.pending ||
     org.isPending ||
@@ -324,10 +322,12 @@ function EmptyMap({ org, classId }: { org: string; classId: string }) {
       refetchOnMount: false,
     }).data?.kind === "family";
   const can =
-    useQuery({
-      ...classYearOptions(currentSession(), classId),
-      refetchOnMount: false,
-    }).data?.can ?? [];
+    standing(
+      useQuery({
+        ...classYearOptions(currentSession(), classId),
+        refetchOnMount: false,
+      }),
+    )?.can ?? [];
   const adds =
     family || can.includes("class.import") || can.includes("students.add");
   return (
