@@ -111,6 +111,17 @@ test("private screens and the skill map keep their existing titles", () => {
   assert.equal(appPageTitle("/plans"), "Plans | AMP");
   assert.equal(appPageTitle("/pathways"), undefined);
   assert.equal(appPageTitle("/pathways/count-to-20"), undefined);
+  // A family's child's map is the same screen: it owns its head too.
+  assert.equal(
+    appPageTitle(
+      "/family/5b9f0f70-3d8e-45e4-a5f1-bbb98ee213d5/kids/pip/pathways",
+    ),
+    undefined,
+  );
+  assert.equal(
+    appPageTitle("/family/5b9f0f70-3d8e-45e4-a5f1-bbb98ee213d5/kids/pip"),
+    "Your Learners | AMP",
+  );
 });
 
 test("the public school pages have titles, and a family's link is never public", () => {

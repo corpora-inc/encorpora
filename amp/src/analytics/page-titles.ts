@@ -151,8 +151,14 @@ export function appPageTitle(
   home: HomeScreen = "pitch",
 ): string | undefined {
   const { path: clean } = splitLocation(location);
-  // The public catalog owns its richer skill-specific metadata.
-  if (clean === "/pathways" || clean.startsWith("/pathways/")) return;
+  // The public catalog owns its richer skill-specific metadata, on a
+  // family's child's map as on /pathways: the same screen, one owner.
+  if (
+    clean === "/pathways" ||
+    clean.startsWith("/pathways/") ||
+    /^\/family\/[^/]+\/kids\/[^/]+\/pathways$/.test(clean)
+  )
+    return;
   if (clean === "/" && home === "app") return appHomeTitle;
   const title = publicAppPageTitle(location, home);
   if (title) return title;
