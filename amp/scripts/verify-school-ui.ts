@@ -308,7 +308,9 @@ async function journey(browser: Browser, engine: string, width: number) {
     await head.getByRole("button", { name: "Continue" }).click();
     await heading(head, "Accept the data agreement");
     await head.getByLabel("Your name").fill("Ruth Adeyemi");
-    await head.getByLabel("Your title").fill("Head of School");
+    // The shared authorization (pilots/Authorization): a role, and the tick.
+    await head.getByLabel("Your role").fill("Head of School");
+    await head.getByRole("checkbox").check();
     await head.getByRole("button", { name: "Accept" }).click();
     await heading(head, "Add your students");
     await head.getByRole("button", { name: /Import a roster/ }).click();
