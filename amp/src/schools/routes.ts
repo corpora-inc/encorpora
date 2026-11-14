@@ -16,6 +16,7 @@ import {
 } from "./authz.js";
 import { pageSchema, SchoolError, type SchoolAction } from "./contracts.js";
 import { classesQuerySchema, studentsQuerySchema } from "./org-contracts.js";
+import { readPlaces } from "./places.js";
 import { SchoolRepository } from "./repository.js";
 import { defineSignInRoutes, registerJoinRoutes } from "./sign-in-routes.js";
 import { defineTeacherRoutes } from "./teacher-routes.js";
@@ -383,6 +384,14 @@ defineSchoolRoute({
   handler: async ({ actor, repository }) => ({
     orgs: await repository.myOrgs(actor.accountId),
   }),
+});
+/** The place switcher's one bounded read (docs/architecture/spaces.md). */
+defineSchoolRoute({
+  method: "GET",
+  url: "/api/v1/school/places",
+  action: "orgs.list",
+  target: () => ({ kind: "self" }) as const,
+  handler: async ({ actor, repository }) => readPlaces(repository, actor),
 });
 defineSchoolRoute({
   method: "GET",

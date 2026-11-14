@@ -407,6 +407,51 @@ export const studentResource = z.object({
   /** How many students match, across all pages. */
   total: z.number().int().optional(),
 });
+/** Every place one account works, for the place switcher in one bounded
+ * read (docs/architecture/spaces.md): the orgs it holds a staff role at, the
+ * schools below a district or network it oversees, and the classes it teaches
+ * or aides in this year. Each list stops at `PLACES_LIMIT`; `more` says one
+ * did, and the full lists stay on their own screens. */
+export const PLACES_LIMIT = 40;
+export const placesResource = z.object({
+  orgs: z.array(
+    orgResource
+      .pick({
+        id: true,
+        kind: true,
+        name: true,
+        parentId: true,
+        roles: true,
+        solo: true,
+        setupPending: true,
+        demo: true,
+      })
+      .extend({
+        /** "Just my class" with at most one class: the class is the place. */
+        lone: z.boolean(),
+      }),
+  ),
+  schools: z.array(
+    z.object({
+      id: z.uuid(),
+      name: z.string(),
+      parentId: z.uuid().nullable(),
+      demo: z.literal(true).optional(),
+    }),
+  ),
+  classes: z.array(
+    z.object({
+      id: z.uuid(),
+      orgId: z.uuid(),
+      orgName: z.string(),
+      name: z.string(),
+      role: z.enum(["teacher", "aide"]),
+      demo: z.literal(true).optional(),
+    }),
+  ),
+  more: z.boolean(),
+});
+export type PlacesResource = z.infer<typeof placesResource>;
 export type OrgResource = z.infer<typeof orgResource>;
 export type ClassResource = z.infer<typeof classResource>;
 export type StudentResource = z.infer<typeof studentResource>;
