@@ -721,6 +721,28 @@
       }
     ]
   },
+  "compare-money-sets": {
+    "id": "compare-money-sets--sc",
+    "version": "32a1fe2b4a82200d52f858e243c552148f1d50ba40a2aa296e4fced701fc03f3",
+    "title": "Compare money by value",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-money-sets--sc/32a1fe2b4a82200d52f858e243c552148f1d50ba40a2aa296e4fced701fc03f3/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-money-sets--sc/32a1fe2b4a82200d52f858e243c552148f1d50ba40a2aa296e4fced701fc03f3/audio.m4a",
+    "duration": 126.77997732426304,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v5",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-money-sets--sc/32a1fe2b4a82200d52f858e243c552148f1d50ba40a2aa296e4fced701fc03f3/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-money-sets--sc/32a1fe2b4a82200d52f858e243c552148f1d50ba40a2aa296e4fced701fc03f3/audio.m4a",
+        "version": "32a1fe2b4a82200d52f858e243c552148f1d50ba40a2aa296e4fced701fc03f3",
+        "duration": 126.77997732426304
+      }
+    ]
+  },
   "compare-three-digit": {
     "id": "compare-three-digit--sc",
     "version": "e11c59616b92691f060594c5a52aaa5cf82c06ebb5023298cd29b41afe88adb8",
@@ -980,6 +1002,27 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/tens-ones-model--st/de619b0a7fcfafec8eb4b298a62b8fbf0f337211af81db017126623c0b989b8f/audio.m4a",
         "version": "de619b0a7fcfafec8eb4b298a62b8fbf0f337211af81db017126623c0b989b8f",
         "duration": 91.26
+      }
+    ]
+  },
+  "coordinate-distance": {
+    "id": "coordinate-distance--sc",
+    "version": "4990a587ff670013741f9f6838072c2b6bec485ed9c237b7c963a9f2f41c034c",
+    "title": "Distance between two points",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/coordinate-distance--sc/4990a587ff670013741f9f6838072c2b6bec485ed9c237b7c963a9f2f41c034c/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/coordinate-distance--sc/4990a587ff670013741f9f6838072c2b6bec485ed9c237b7c963a9f2f41c034c/audio.m4a",
+    "duration": 146.80997732426303,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/coordinate-distance--sc/4990a587ff670013741f9f6838072c2b6bec485ed9c237b7c963a9f2f41c034c/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/coordinate-distance--sc/4990a587ff670013741f9f6838072c2b6bec485ed9c237b7c963a9f2f41c034c/audio.m4a",
+        "version": "4990a587ff670013741f9f6838072c2b6bec485ed9c237b7c963a9f2f41c034c",
+        "duration": 146.80997732426303
       }
     ]
   },
@@ -2045,6 +2088,27 @@
       }
     ]
   },
+  "identify-rigid-motion": {
+    "id": "identify-rigid-motion--si",
+    "version": "4e1e75db2ecbe9e55df92318c6360d996486297f677fdd7bf293871dad533e18",
+    "title": "Translation, reflection, rotation",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/identify-rigid-motion--si/4e1e75db2ecbe9e55df92318c6360d996486297f677fdd7bf293871dad533e18/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/identify-rigid-motion--si/4e1e75db2ecbe9e55df92318c6360d996486297f677fdd7bf293871dad533e18/audio.m4a",
+    "duration": 163.25,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/identify-rigid-motion--si/4e1e75db2ecbe9e55df92318c6360d996486297f677fdd7bf293871dad533e18/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/identify-rigid-motion--si/4e1e75db2ecbe9e55df92318c6360d996486297f677fdd7bf293871dad533e18/audio.m4a",
+        "version": "4e1e75db2ecbe9e55df92318c6360d996486297f677fdd7bf293871dad533e18",
+        "duration": 163.25
+      }
+    ]
+  },
   "independence-test": {
     "id": "independence-test",
     "version": "3f44dadadd4117e82cfe519f3dbbad1aa2e1828fd2e663972b815462abe57a88",
@@ -2235,6 +2299,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/line-plot-build--sl/e1607d5dc746d4911e45168c6353cf755d40636a38d9a5f026f7f394765dbb16/audio.m4a",
         "version": "e1607d5dc746d4911e45168c6353cf755d40636a38d9a5f026f7f394765dbb16",
         "duration": 116.98997732426304
+      }
+    ]
+  },
+  "line-plot-whole": {
+    "id": "line-plot-whole--sl",
+    "version": "7dcf9c148b7a8c9406c833996a563e93bba3672700043733aa3a1fe97a3135fd",
+    "title": "Reading a line plot",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/line-plot-whole--sl/7dcf9c148b7a8c9406c833996a563e93bba3672700043733aa3a1fe97a3135fd/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/line-plot-whole--sl/7dcf9c148b7a8c9406c833996a563e93bba3672700043733aa3a1fe97a3135fd/audio.m4a",
+    "duration": 129.37,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/line-plot-whole--sl/7dcf9c148b7a8c9406c833996a563e93bba3672700043733aa3a1fe97a3135fd/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/line-plot-whole--sl/7dcf9c148b7a8c9406c833996a563e93bba3672700043733aa3a1fe97a3135fd/audio.m4a",
+        "version": "7dcf9c148b7a8c9406c833996a563e93bba3672700043733aa3a1fe97a3135fd",
+        "duration": 129.37
       }
     ]
   },
@@ -2584,10 +2670,10 @@
   },
   "mcas-sci-notation-select": {
     "id": "scientific-to-standard--ss",
-    "version": "e8664efb15d725bb679f496686074fabf3520d4b9eed70fe9634c527ae236ace",
+    "version": "71a50f321dea38e8f0a21b773887b9b5ac04b918b7b8390176d6b45f7fcdcc0f",
     "title": "Scientific notation",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scientific-to-standard--ss/e8664efb15d725bb679f496686074fabf3520d4b9eed70fe9634c527ae236ace/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scientific-to-standard--ss/e8664efb15d725bb679f496686074fabf3520d4b9eed70fe9634c527ae236ace/audio.m4a",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scientific-to-standard--ss/71a50f321dea38e8f0a21b773887b9b5ac04b918b7b8390176d6b45f7fcdcc0f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scientific-to-standard--ss/71a50f321dea38e8f0a21b773887b9b5ac04b918b7b8390176d6b45f7fcdcc0f/audio.m4a",
     "duration": 165.83,
     "teacher": "Paul",
     "capability": "lesson-film-v4",
@@ -2596,9 +2682,9 @@
         "voices": {
           "teacher": "J3Ei0Lj6fAobhIqY5ySH"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scientific-to-standard--ss/e8664efb15d725bb679f496686074fabf3520d4b9eed70fe9634c527ae236ace/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scientific-to-standard--ss/e8664efb15d725bb679f496686074fabf3520d4b9eed70fe9634c527ae236ace/audio.m4a",
-        "version": "e8664efb15d725bb679f496686074fabf3520d4b9eed70fe9634c527ae236ace",
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scientific-to-standard--ss/71a50f321dea38e8f0a21b773887b9b5ac04b918b7b8390176d6b45f7fcdcc0f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scientific-to-standard--ss/71a50f321dea38e8f0a21b773887b9b5ac04b918b7b8390176d6b45f7fcdcc0f/audio.m4a",
+        "version": "71a50f321dea38e8f0a21b773887b9b5ac04b918b7b8390176d6b45f7fcdcc0f",
         "duration": 165.83
       }
     ]
@@ -3950,10 +4036,10 @@
   },
   "scientific-to-standard": {
     "id": "scientific-to-standard--ss",
-    "version": "e8664efb15d725bb679f496686074fabf3520d4b9eed70fe9634c527ae236ace",
+    "version": "71a50f321dea38e8f0a21b773887b9b5ac04b918b7b8390176d6b45f7fcdcc0f",
     "title": "Scientific notation",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scientific-to-standard--ss/e8664efb15d725bb679f496686074fabf3520d4b9eed70fe9634c527ae236ace/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scientific-to-standard--ss/e8664efb15d725bb679f496686074fabf3520d4b9eed70fe9634c527ae236ace/audio.m4a",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scientific-to-standard--ss/71a50f321dea38e8f0a21b773887b9b5ac04b918b7b8390176d6b45f7fcdcc0f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scientific-to-standard--ss/71a50f321dea38e8f0a21b773887b9b5ac04b918b7b8390176d6b45f7fcdcc0f/audio.m4a",
     "duration": 165.83,
     "teacher": "Paul",
     "capability": "lesson-film-v4",
@@ -3962,9 +4048,9 @@
         "voices": {
           "teacher": "J3Ei0Lj6fAobhIqY5ySH"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scientific-to-standard--ss/e8664efb15d725bb679f496686074fabf3520d4b9eed70fe9634c527ae236ace/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scientific-to-standard--ss/e8664efb15d725bb679f496686074fabf3520d4b9eed70fe9634c527ae236ace/audio.m4a",
-        "version": "e8664efb15d725bb679f496686074fabf3520d4b9eed70fe9634c527ae236ace",
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scientific-to-standard--ss/71a50f321dea38e8f0a21b773887b9b5ac04b918b7b8390176d6b45f7fcdcc0f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scientific-to-standard--ss/71a50f321dea38e8f0a21b773887b9b5ac04b918b7b8390176d6b45f7fcdcc0f/audio.m4a",
+        "version": "71a50f321dea38e8f0a21b773887b9b5ac04b918b7b8390176d6b45f7fcdcc0f",
         "duration": 165.83
       }
     ]
