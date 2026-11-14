@@ -15,11 +15,11 @@ import {
 import { reportFrontier } from "../src/learning/frontier-report";
 import { frontierCatalog } from "../src/server/learner-frontier";
 
-/* The founder's phone QA, 2026-11-13: a ten-year-old (born 2016) answers
-   three problems right, and the map guessed grade 6 overall and in every
-   area. Three answers must not carry an age-anchored start that far. */
-const now = Date.parse("2026-11-13T15:00:00Z");
-const founderCase = [
+/* A ten-year-old (born 2016, read in the fall of 2026) answers three
+   on-grade problems right. Under v4 the map guessed grade 6 overall and in
+   every area; three answers must not carry an age-anchored start that far. */
+const now = Date.parse("2026-10-15T15:00:00Z");
+const threeRight = [
   "compare-decimals-hundredths",
   "fraction-equivalence-choice",
   "fraction-line-plot",
@@ -51,10 +51,10 @@ const shown = (
     }),
   );
 
-test("the founder's case: the catalog facts it rests on", () => {
+test("the three-answer case: the catalog facts it rests on", () => {
   assert.equal(initialLevel({ birthYear: 2016, now }), 4);
   assert.deepEqual(
-    founderCase.map((id) => [
+    threeRight.map((id) => [
       frontierCatalog.gradeOf(id),
       frontierCatalog.strandOf(id),
       frontierCatalog.guessOf(id),
@@ -68,10 +68,10 @@ test("the founder's case: the catalog facts it rests on", () => {
 });
 
 test("three right answers keep a ten-year-old within a grade of their age", () => {
-  const before = shown(answers(founderCase), PREVIOUS_FRONTIER_POLICY);
-  // What the founder saw: about grade 6 overall and in every area.
+  const before = shown(answers(threeRight), PREVIOUS_FRONTIER_POLICY);
+  // What v4 showed: about grade 6 overall and in every area.
   assert.ok(before.overall.level > 5.8, String(before.overall.level));
-  const after = shown(answers(founderCase));
+  const after = shown(answers(threeRight));
   // Up, because three right answers are evidence; under a grade, because
   // three answers are not much of it.
   assert.ok(
@@ -111,7 +111,7 @@ test("a ten-year-old who is truly two grades ahead is shown there with evidence"
   assert.ok(level(30) > 5.6, String(level(30)));
 });
 
-test("a start someone chose keeps the wide prior; the adult default is unchanged", () => {
+test("a start someone chose keeps the wide prior; the adult prior is unchanged", () => {
   const adult = initialLevel({ adult: true });
   assert.equal(adult, 7);
   assert.equal(

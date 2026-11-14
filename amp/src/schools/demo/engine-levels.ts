@@ -100,9 +100,11 @@ export function levelDocuments(options: {
   days: readonly string[];
 }): { day: string; frontier: string }[] {
   const wanted = new Set(options.days);
+  // Demo students have birth years (`build.ts`), so their start is age's.
   const state = newLearnerFrontier({
     epoch: 0,
     start: options.start,
+    fromAge: true,
     strandStarts: {},
   });
   const rows: { day: string; frontier: string }[] = [];

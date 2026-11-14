@@ -11,7 +11,7 @@ Each skill has a durable summary: attempts, independent correct answers, the lat
 
 Retrieval intervals are six hours, one day, three days, seven days, fourteen days and thirty days. Independent success advances spacing only after six hours since the last credited retrieval. Errors and assistance reset it. Response speed does not affect this scheduling rule.
 
-The frontier estimates a curriculum-grade coordinate: kindergarten is 0, grades 1–8 use their numbers, and Algebra 1, Geometry, Algebra 2 and Precalculus occupy 9–12. This ordering is a scheduling convenience, not proof that courses have equivalent difficulty. The prior starts from age or a selected grade band. A start set by a birth year is only as wide as learners of that age are spread on this scale (about 0.7 of a grade at K–2, 1.05 at grade 4, 1.65 at grade 7, 2.5 from grade 9; `AGE_PRIOR_SD`, fitted to retained answers, see [the norms prior](engine/norms-prior.md)). A start someone chose, such as an adult's start or a family band, keeps the wider 2.5, so the adult default of grade 7 is unchanged. **A working grade is not mastery of that grade or a population percentile.** The readout shows hundredths so small changes are visible; hundredths do not establish that degree of measurement accuracy.
+The frontier estimates a curriculum-grade coordinate: kindergarten is 0, grades 1–8 use their numbers, and Algebra 1, Geometry, Algebra 2 and Precalculus occupy 9–12. This ordering is a scheduling convenience, not proof that courses have equivalent difficulty. The prior starts from age or a selected grade band. A start set by a birth year is only as wide as learners of that age are spread on this scale (about 0.7 of a grade at K–2, 1.05 at grade 4, 1.65 at grade 7, 2.5 from grade 9; `AGE_PRIOR_SD`, fitted to retained answers, see [the norms prior](engine/norms-prior.md)). A start someone chose, such as an adult's start or a family band, keeps the wider 2.5, so the adult prior (default start grade 7) is unchanged. **A working grade is not mastery of that grade or a population percentile.** The readout shows hundredths so small changes are visible; hundredths do not establish that degree of measurement accuracy.
 
 The versioned, validated `src/learning/frontier-policy.ts` separates two jobs:
 
@@ -44,14 +44,14 @@ Production selection reasons describe a prerequisite, revisit after an error or 
 
 ## Early placement (grade-frontier-v5, 2026-11-13)
 
-A ten-year-old who answered three problems right was shown about grade 6 overall and in every area. The cause was the prior, not the answers: a flat 2.5-grade prior on a learner whose age says grade 4, multiplied by three right answers, which only rule out the low end. The posterior mean then sits in the prior's upper tail, about 0.8 of a prior sd above the start. v5 (`DEFAULT_FRONTIER_POLICY`; v4 is kept as `PREVIOUS_FRONTIER_POLICY` for paired replays) changes two things, both fitted to retained production answers:
+Under v4, a ten-year-old who answers three on-grade problems right is shown about grade 6, overall and in every area. The cause was the prior, not the answers: a flat 2.5-grade prior on a learner whose age says grade 4, multiplied by three right answers, which only rule out the low end. The posterior mean then sits in the prior's upper tail, about 0.8 of a prior sd above the start. v5 (`DEFAULT_FRONTIER_POLICY`; v4 is kept as `PREVIOUS_FRONTIER_POLICY` for paired replays) changes two things, both fitted to retained production answers:
 
 - **The age prior.** A birth-year start uses `AGE_PRIOR_SD` (0.7 at K–2, 1.05 at grade 4, 1.65 at grade 7, 2.5 from grade 9). These are the upper ends of the 95% profile-likelihood intervals of the population spread, fitted by marginal maximum likelihood to learners' first 30 answers ([norms prior](engine/norms-prior.md)). Chosen starts keep 2.5.
 - **The overall slope.** 1.15 logits a grade instead of 1.7. Fitted the same way, it is stable across answer windows (10, 30 and 60 answers: 1.11, 1.14, 1.20) and on half the learners (1.09). Part of the flatness is real variation between a learner's areas, which the overall readout pools.
 
 The local model scheduling reads (`strandResponse`, the area estimates) is unchanged apart from starting from the narrower age prior.
 
-| The founder's case (born 2016, 2026-11-13) |               v4 |               v5 |
+| Synthetic case: born 2016, read in the fall of 2026 |               v4 |               v5 |
 | ------------------------------------------ | ---------------: | ---------------: |
 | Before any answer, overall                 |      4.13 ± 1.99 |      4.00 ± 1.00 |
 | After 1 right answer (decimals, grade 4)   |             5.55 |             4.36 |

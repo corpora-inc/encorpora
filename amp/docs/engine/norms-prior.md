@@ -49,7 +49,7 @@ A student whose practice has opened is drawn from the estimator's own prior, bel
 
 ## The estimator's age prior (grade-frontier-v5, 2026-11-13)
 
-A start set by a birth year now has a prior as wide as learners of that age are spread on AMP's own scale (`AGE_PRIOR_SD` in `src/learning/frontier-policy.ts`). A start someone chose (an adult's start, a family band, a restarted area) is a coarser guess and keeps the former flat 2.5, so the adult default (grade 7) is unchanged.
+A start set by a birth year now has a prior as wide as learners of that age are spread on AMP's own scale (`AGE_PRIOR_SD` in `src/learning/frontier-policy.ts`). A start someone chose (an adult's start, a family band, a restarted area) is a coarser guess and keeps the former flat 2.5, so the adult prior (default start grade 7) is unchanged; only the overall slope, which applies to everyone, differs.
 
 The width comes from AMP's learners, bounded by these norms:
 
