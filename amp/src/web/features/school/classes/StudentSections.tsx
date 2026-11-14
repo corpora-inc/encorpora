@@ -53,6 +53,7 @@ export function StudentSections({
         <RecordLevels
           record={data}
           empty={`We’ll find ${first}’s level in a few minutes of practice.`}
+          openAreas
         />
       </section>
       {data.grades.length > 0 && (

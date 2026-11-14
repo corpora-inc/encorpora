@@ -415,7 +415,9 @@ export function WorkList({
   href?: (item: WorkItem) =>
     | { path: string; search?: Record<string, string> }
     /** A layer over this page (nav/entities.ts). */
-    | { entity: Entity };
+    | { entity: Entity }
+    /** This row opens nothing. */
+    | undefined;
 }) {
   return (
     <ul className={styles.problems}>
