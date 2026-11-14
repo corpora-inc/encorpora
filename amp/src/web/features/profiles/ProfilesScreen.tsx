@@ -35,8 +35,7 @@ export function ProfilesScreen() {
           <div>
             <h1>Profiles</h1>
             <p>
-              Levels saved under a name, to come back to. Your own levels never
-              change.
+              Your own levels don’t change.
             </p>
           </div>
           <div className={styles.listActions}>

@@ -1385,7 +1385,7 @@ try {
   });
   await fixture(empty, { learnerCount: 0 });
   await empty.goto(`${origin}/pathways`);
-  await empty.getByText("Add a learner to see earned skills.").waitFor();
+  await empty.getByRole("link", { name: "Add a learner →" }).waitFor();
   assert.equal(
     await empty.getByRole("button", { name: /^Learner/ }).count(),
     0,
@@ -1583,7 +1583,8 @@ try {
     await fixture(unselected, { learnerCount, selectedLearnerId: null });
     await unselected.goto(`${origin}/pathways`);
     await unselected
-      .getByText("Choose a learner to see earned skills.")
+      .getByRole("button", { name: /^Learner/ })
+      .filter({ hasText: "Choose learner" })
       .waitFor();
     assert.equal(
       await unselected.getByRole("button", { name: /^Learner/ }).count(),
@@ -1636,7 +1637,8 @@ try {
     window.dispatchEvent(new Event("pathways-session"));
   });
   await page
-    .getByText("Choose a learner to see earned skills.", { exact: true })
+    .getByRole("button", { name: /^Learner/ })
+    .filter({ hasText: "Choose learner" })
     .waitFor();
   assert.equal(
     await page.locator(".pathways-summary").textContent(),

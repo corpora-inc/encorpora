@@ -174,8 +174,8 @@ export function AnswerFeedback({
           )}
           {details && (
             <p className={styles.intro}>
-              Grades describe each skill’s curriculum placement, not your
-              estimated level.
+              Grades place each skill in the curriculum. They aren’t your
+              level.
             </p>
           )}
           <ul className={styles.choices}>

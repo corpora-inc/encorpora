@@ -422,7 +422,7 @@ function MenuUnavailable() {
     <Toast
       message={
         open
-          ? "Your menu could not be loaded. Reload the page to try again."
+          ? "The menu didn’t load. Reload the page to try again."
           : ""
       }
       onDismiss={() => setOpen(false)}

@@ -183,8 +183,8 @@ export default function DrawerContents({
       {(view.error || view.identityError) && (
         <div className={styles.error} role="alert">
           {view.identityError
-            ? "Account details could not be loaded."
-            : "Learning details could not be loaded."}{" "}
+            ? "Your account didn’t load."
+            : "Your learning details didn’t load."}{" "}
           <button onClick={view.retry}>Try again</button>
         </div>
       )}

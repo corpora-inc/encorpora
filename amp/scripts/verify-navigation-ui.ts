@@ -512,7 +512,7 @@ try {
         await page.waitForFunction(() => !location.search.includes("area="));
       }
       const searchBox = await page
-        .getByRole("searchbox", { name: "Find a skill" })
+        .getByRole("searchbox", { name: "Search", exact: true })
         .evaluate((el) => {
           const box = el.closest("label")!.getBoundingClientRect();
           return { y: box.y, height: box.height };
@@ -738,10 +738,10 @@ try {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.reload();
   await page.locator('[data-strength="Strong"]').first().waitFor();
-  await page.getByRole("searchbox", { name: "Find a skill" }).fill("L");
-  await page.getByRole("searchbox", { name: "Find a skill" }).fill("");
+  await page.getByRole("searchbox", { name: "Search", exact: true }).fill("L");
+  await page.getByRole("searchbox", { name: "Search", exact: true }).fill("");
   assert.equal(
-    await page.getByRole("searchbox", { name: "Find a skill" }).inputValue(),
+    await page.getByRole("searchbox", { name: "Search", exact: true }).inputValue(),
     "",
   );
   await page.getByRole("button", { name: /^Strong/ }).click();
@@ -824,7 +824,7 @@ try {
   await page.reload();
   await page
     .getByRole("alert")
-    .filter({ hasText: "Your skills didn’t load" })
+    .filter({ hasText: "Skills didn’t load" })
     .waitFor();
   failProgress = false;
   await page.getByRole("button", { name: "Try again", exact: true }).click();
@@ -864,12 +864,12 @@ try {
   await failedMenu.getByRole("button", { name: "Open AMP menu" }).click();
   await failedMenu
     .getByRole("alert")
-    .filter({ hasText: "Your menu could not be loaded" })
+    .filter({ hasText: "The menu didn’t load" })
     .waitFor();
   await failedMenu.getByRole("button", { name: "Dismiss message" }).click();
   await failedMenu
     .getByRole("alert")
-    .filter({ hasText: "Your menu could not be loaded" })
+    .filter({ hasText: "The menu didn’t load" })
     .waitFor({ state: "detached" });
   assert.equal(
     await failedMenu.locator(".problem-stage .question").textContent(),

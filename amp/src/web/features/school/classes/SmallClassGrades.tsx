@@ -35,9 +35,6 @@ export function SmallClassGrades({
       <div className={styles.calendarSectionHead}>
         <div>
           <h2 id="grades">Grades</h2>
-          <p className={styles.quiet}>
-            Each child’s grade is a line on the Map.
-          </p>
         </div>
         {term && term.state !== "upcoming" && (
           <Menu label="Report cards and export">

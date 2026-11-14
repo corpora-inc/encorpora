@@ -259,7 +259,7 @@ export function ActivityScreen() {
         >
           {filtered
             ? "Try a wider date range, or another kind of change."
-            : "Each change anyone makes here appears in this list."}
+            : undefined}
         </EmptyState>
       ) : (
         <div className={styles.log}>

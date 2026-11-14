@@ -75,8 +75,7 @@ class MenuRecovery extends Component<
       this.props.quiet ? null : (
         <div role="alert">
           <p>
-            Your menu could not be loaded. Close it to keep learning, or reload
-            to try again.
+            The menu didn’t load. Reload to try again.
           </p>
           <button onClick={() => location.reload()}>Reload</button>
         </div>

@@ -73,7 +73,6 @@ export function PracticeControls({
         <label className={settings.toggle}>
           <span className={settings.toggleText}>
             Working together
-            <small>A grown-up is helping with these problems.</small>
           </span>
           <CheckboxControl
             disabled={disabled}
@@ -90,7 +89,7 @@ export function PracticeControls({
       )}
       {state.data?.workingTogether && (
         <p className={settings.note}>
-          Helped answers count as practice, not independent assessment.
+          Helped answers count as practice, not assessment.
         </p>
       )}
       {state.data?.focusSkillId && (

@@ -3,7 +3,7 @@ import { nameList, practiceScopeLine } from "../practice-scope";
 
 test("a family wholly in its own class: every child", () => {
   expect(practiceScopeLine(["Pip", "Wren"], [])).toBe(
-    "For every child in the family, and each child you add. The math is the same either way.",
+    "For every child in the family, and each child you add.",
   );
 });
 

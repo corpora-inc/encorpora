@@ -502,8 +502,8 @@ function Library({
               ref={input}
               type="search"
               className={styles.input}
-              aria-label="Search lessons"
-              placeholder="Search lessons and math words"
+              aria-label="Search"
+              placeholder="Search"
               maxLength={80}
               value={text}
               autoComplete="off"

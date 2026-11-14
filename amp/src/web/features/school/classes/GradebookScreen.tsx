@@ -149,11 +149,6 @@ function ExportSheet({
       <div className={styles.exportSheet}>
         <section>
           <h3>{school ? "Gradebook CSV" : "A spreadsheet of the grades"}</h3>
-          <p className={styles.exportHint}>
-            {school
-              ? "A column for each thing your gradebook or SIS needs. Blend it with the rest of the course grade however your school does."
-              : `A row for each ${words.learner}, with the columns you choose: for a portfolio or a program’s records.`}
-          </p>
           <div className={styles.columnPicks}>
             {offered.map((column) => (
               <label key={column} className={styles.columnPick}>
@@ -193,8 +188,7 @@ function ExportSheet({
           <section>
             <h3>OneRoster 1.2</h3>
             <p className={styles.exportHint}>
-              A ZIP with lineItems.csv and results.csv, for an SIS that imports
-              OneRoster. Only final grades you’ve entered are sent.
+              Only final grades you’ve entered are sent.
             </p>
             <Button
               variant="secondary"
@@ -518,8 +512,8 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
           }
         >
           {given
-            ? "Set the school year and its grading periods under Report cards, and suggested ranges appear here."
-            : "Add the school year and its terms, and suggested ranges appear here."}
+            ? "Set the grading periods under Report cards."
+            : "Add the school year and its terms."}
         </EmptyState>
       ) : (
         <div className={styles.gradePage} aria-busy={book.isFetching}>

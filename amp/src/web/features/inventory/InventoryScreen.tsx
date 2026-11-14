@@ -191,7 +191,7 @@ export function InventoryScreen() {
       </div>
       {failure ? (
         <section className={styles.notice} role="alert">
-          <p>Your skills didn’t load. Try again to see the saved progress.</p>
+          <p>Skills didn’t load. Try again.</p>
           <button
             className={buttonClass("secondary")}
             onClick={() => {
@@ -209,7 +209,7 @@ export function InventoryScreen() {
       ) : !view.active ? (
         <p className={styles.lead}>
           {view.learners.length > 1
-            ? "Choose a learner from the AMP menu to see their skills."
+            ? "Choose a learner in the menu."
             : "Skills appear here once someone practices."}
         </p>
       ) : (
@@ -219,12 +219,7 @@ export function InventoryScreen() {
               {/* Earned and strong are counted once, on their filters. */}
               <Stat value={xp} label="XP" />
             </section>
-          ) : (
-            <p className={styles.lead}>
-              Every skill from counting to precalculus. Each one fills in as
-              it’s answered without help.
-            </p>
-          )}
+          ) : null}
           <div className={styles.filters}>
             <label className={styles.search}>
               <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -233,8 +228,8 @@ export function InventoryScreen() {
               </svg>
               <input
                 type="search"
-                aria-label="Find a skill"
-                placeholder="Find a skill…"
+                aria-label="Search"
+                placeholder="Search"
                 value={field.text}
                 maxLength={100}
                 onChange={(e) => field.change(e.target.value)}
@@ -276,7 +271,7 @@ export function InventoryScreen() {
               {query || area
                 ? "No skills match. Try another search or math area."
                 : filter === "strong"
-                  ? "No strong skills yet. A skill turns strong after a run of correct answers without help."
+                  ? "No strong skills yet."
                   : "No skills here yet."}
             </p>
           ) : (
@@ -305,15 +300,14 @@ export function InventoryScreen() {
           )}
           <div className={styles.footer}>
             <details className={styles.explainer}>
-              <summary>How XP and skill progress work</summary>
+              <summary>How XP works</summary>
               <p>
-                Each correct answer without help earns 1 XP and fills that
-                skill’s bar by a twentieth. XP and filled bars stay.
+                Each correct answer without help earns 1 XP and fills a
+                twentieth of the skill’s bar. Both stay.
               </p>
               <p>
-                Strong means a strong record on the skill lately; it can go back
-                to Building when the skill is due for review. Grade labels give
-                the skill’s place in the curriculum, not the learner’s level.
+                Strong skills go back to Building when they’re due for review.
+                Grade labels place a skill in the curriculum, not the learner.
               </p>
             </details>
           </div>
@@ -427,7 +421,7 @@ function InventoryHero({
       <h1 id="inventory-title">Your skills fill in as you practice</h1>
       <p>
         All {total.toLocaleString("en-US")} skills, from counting to
-        precalculus. Each one fills as it’s answered without help.
+        precalculus.
       </p>
       <Link
         to="/$"
