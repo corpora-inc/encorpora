@@ -632,6 +632,13 @@ async function beforeStarter({ params }: { params: { choice?: string } }) {
   if (!session) throw redirect({ to: "/sign-in" });
   if (params.choice !== undefined && !isStarterChoice(params.choice))
     throw redirect({ to: "/start", replace: true });
+  // Which question this is ("What brings you to AMP?" or "Add a place") and
+  // which answers it offers are the account's: known before the first paint,
+  // so neither changes under the reader. A failed read leaves the screen's
+  // own state.
+  await queryClient
+    .ensureQueryData(meOptions(session))
+    .catch((error) => console.warn("The account didn’t load ahead", error));
   // The school answer's next step depends on the account's schools: there
   // before the page paints, so its buttons never arrive late.
   if (params.choice === "school") {
