@@ -1,6 +1,7 @@
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { OpenInBrowser } from "../OpenInBrowser";
+import { carryLink } from "../../../lib/link-carry";
 
 const token = "a".repeat(43);
 const proof = "b".repeat(43);
@@ -32,7 +33,8 @@ for (const [kind, path] of flows) {
   for (const fragment of [token, `${token}.${proof}`]) {
     test(`${kind} copies its canonical link with token and optional proof`, async () => {
       history.replaceState(null, "", `/sign-up?return=${kind}`);
-      localStorage.setItem(`amp.${kind}`, fragment);
+      // Carried across sign-in on this device, as lib/link-carry.ts keeps it.
+      carryLink(path, fragment);
       expect(await copy()).toBe(`${location.origin}${path}#${fragment}`);
     });
   }
@@ -46,13 +48,13 @@ for (const [kind, path] of flows) {
   ]) {
     test(`${kind} does not export missing or malformed stored fragments: ${fragment?.length}`, async () => {
       history.replaceState(null, "", `/sign-in?return=${kind}`);
-      if (fragment) localStorage.setItem(`amp.${kind}`, fragment);
+      if (fragment) carryLink(path, fragment);
       expect(await copy()).toBe(location.href);
     });
   }
 }
 test("Try/Buy and ordinary routes ignore unrelated invitation storage", async () => {
-  localStorage.setItem("amp.school-invite", `${token}.${proof}`);
+  carryLink("/school/invite", `${token}.${proof}`);
   for (const path of [
     "/try?entry=pitch-try&return=free-practice",
     "/sign-up?entry=pitch-buy",

@@ -56,10 +56,6 @@ export function PathwayPlan({
     [here?.lo, here?.hi, here?.level, rows],
   );
   const firstHere = rows.find((row) => hereBands.has(row.index))?.index;
-  const motion = (smooth: boolean): ScrollBehavior =>
-    smooth && !matchMedia("(prefers-reduced-motion: reduce)").matches
-      ? "smooth"
-      : "auto";
   /** The visible part of the box, under its sticky area header. */
   const view = () => {
     const el = box.current!;
@@ -84,7 +80,7 @@ export function PathwayPlan({
   /** Centres a skill in the box, unless it is already in full view: a skill
    * chosen anywhere (its address, the search, the list, a sheet's link) is
    * where the pathway shows, so closing its sheet finds it there. */
-  const revealSkill = (id: string, smooth: boolean) => {
+  const revealSkill = (id: string) => {
     const target = skillEl(id);
     if (!box.current || !target) return;
     const { el, top, bottom } = view();
@@ -95,7 +91,7 @@ export function PathwayPlan({
         0,
         el.scrollTop + inner.top - top - (bottom - top - inner.height) / 2,
       ),
-      behavior: motion(smooth),
+      behavior: "auto",
     });
   };
   /** Until the person scrolls or a skill is chosen, the first view may follow
@@ -103,8 +99,9 @@ export function PathwayPlan({
   const placed = useRef(false);
   useLayoutEffect(() => {
     if (selected) {
-      // Arriving at a skill's address cuts to it; choosing one later glides.
-      revealSkill(selected, placed.current);
+      // A cut, never a glide: a long glide down a phone's pathway is cut
+      // short by the page's own scroll to the map (showMap).
+      revealSkill(selected);
       placed.current = true;
     } else if (!placed.current && firstHere !== undefined) {
       placed.current = true;
@@ -118,7 +115,7 @@ export function PathwayPlan({
   useEffect(() => {
     if (!frame) return;
     placed.current = true;
-    revealSkill(frame.id, true);
+    revealSkill(frame.id);
   }, [frame]);
   return (
     <section

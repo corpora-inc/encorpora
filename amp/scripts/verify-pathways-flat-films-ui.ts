@@ -510,7 +510,18 @@ for (const width of widths)
     await far.waitForTimeout(900);
     assert(
       await inView(otherFar.id),
-      `${tag}: a skill from the list is in view`,
+      `${tag}: a skill from the list is in view ${await far.evaluate(
+        (skill) => {
+          const plan = document.querySelector(".pathways-plan")!;
+          const el = plan.querySelector(`[data-plan-skill="${skill}"]`)!;
+          return JSON.stringify({
+            scroll: plan.scrollTop,
+            plan: plan.getBoundingClientRect(),
+            skill: el.getBoundingClientRect(),
+          });
+        },
+        otherFar.id,
+      )}`,
     );
     await far.keyboard.press("Escape");
     await far.waitForTimeout(300);
