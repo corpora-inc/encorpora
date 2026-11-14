@@ -18,6 +18,14 @@ const out =
   join(homedir(), ".config/corpora/amp-qa/reports/fix-display-equations");
 await mkdir(out, { recursive: true });
 const linear = generateProblem("two-step-equation", "display-0", 1);
+const counters = Array.from({ length: 100 }, (_, i) =>
+  generateProblem("count-out-objects", `display-${i}`, 1),
+).find((problem) =>
+  problem.explanation.some((step) =>
+    step.includes("The loose counters are 8."),
+  ),
+);
+assert.ok(counters, "Q-210 fixture must show eight loose counters");
 linear.public.prompt = normalizeTrailingMath(
   "Solve for $k$: $2.5k - 4.1 = -9.1$.",
 );
@@ -36,6 +44,11 @@ const withPrompt = (prompt: string) => ({
   },
 });
 const cases = {
+  counters: {
+    problem: counters,
+    title: "Count out 18 counters",
+    surface: "lesson",
+  },
   linear: { problem: linear, title: "Solve a two-step equation" },
   inequality: {
     problem: generateProblem("affine-linear-inequality", "display-0", 1),
@@ -162,7 +175,7 @@ try {
   });
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
-  for (const width of [320, 390, 768, 1280])
+  for (const width of [320, 360, 390, 768, 1280])
     for (const theme of ["light", "dark"] as const) {
       await page.setViewportSize({ width, height: 900 });
       await page.emulateMedia({ colorScheme: theme });
@@ -170,9 +183,7 @@ try {
         await page.goto(`${origin}/__display?case=${name}`);
         await page
           .locator(
-            name === "lesson" || name === "review"
-              ? ".math-display"
-              : ".question",
+            "surface" in fixture ? ".lesson-example-prompt" : ".question",
           )
           .first()
           .waitFor();
@@ -207,6 +218,34 @@ try {
             };
           });
           return {
+            keys: [
+              ...document.querySelectorAll<HTMLButtonElement>(
+                ".math-keypad button",
+              ),
+            ].map((button) => {
+              const box = button.getBoundingClientRect();
+              const style = getComputedStyle(button);
+              const range = document.createRange();
+              range.selectNodeContents(button);
+              const label = range.getBoundingClientRect();
+              return {
+                text: button.textContent,
+                width: box.width,
+                height: box.height,
+                labelLeft: label.left,
+                labelRight: label.right,
+                contentLeft:
+                  box.left +
+                  parseFloat(style.borderLeftWidth) +
+                  parseFloat(style.paddingLeft),
+                contentRight:
+                  box.right -
+                  parseFloat(style.borderRightWidth) -
+                  parseFloat(style.paddingRight),
+                scrollWidth: button.scrollWidth,
+                clientWidth: button.clientWidth,
+              };
+            }),
             documentWidth: document.documentElement.scrollWidth,
             width: innerWidth,
             questionTop: bounds.top,
@@ -220,7 +259,35 @@ try {
           geometry.documentWidth <= width + 1,
           `${name}/${width}: document overflow`,
         );
-        if (name !== "figure")
+        if (name === "long" && width <= 390)
+          assert.equal(
+            geometry.keys.length,
+            15,
+            "the narrow viewport must exercise every keypad key",
+          );
+        for (const key of geometry.keys) {
+          assert.ok(
+            key.width >= 44 && key.height >= 44,
+            `${name}/${width}: undersized key ${key.text}`,
+          );
+          assert.ok(
+            key.labelLeft >= key.contentLeft - 1 &&
+              key.labelRight <= key.contentRight + 1 &&
+              key.scrollWidth <= key.clientWidth,
+            `${name}/${width}: clipped key label ${JSON.stringify(key)}`,
+          );
+        }
+        if (name === "counters") {
+          const visible = await page.locator("ol").evaluate((element) => {
+            const clone = element.cloneNode(true) as HTMLElement;
+            clone
+              .querySelectorAll(".katex-mathml")
+              .forEach((node) => node.remove());
+            return clone.textContent;
+          });
+          assert.match(visible!, /The loose counters are 8\.\s+10/);
+          assert.doesNotMatch(visible!, /8\.10/);
+        } else if (name !== "figure")
           assert.equal(geometry.displays.length, 1, `${name}: display missing`);
         else
           assert.ok(geometry.figures > 0, "figure survives prompt formatting");
@@ -276,9 +343,9 @@ try {
   await writeFile(join(out, "geometry.json"), JSON.stringify(results, null, 2));
   console.log(
     JSON.stringify({
-      screenshots: results.length + 8,
+      screenshots: results.length + 10,
       cases: Object.keys(cases).length + 1,
-      widths: [320, 390, 768, 1280],
+      widths: [320, 360, 390, 768, 1280],
       themes: ["light", "dark"],
       workbookLayoutFailures: failures,
       browserErrors: errors,

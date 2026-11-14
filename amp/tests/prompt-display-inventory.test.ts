@@ -7,6 +7,62 @@ import { trailingDisplayMath } from "../src/content/prompt-structure";
 import { segmentPrintText } from "../src/content/math-typesetting";
 import { MathText } from "../src/web/MathText";
 import { PrintMathText } from "../src/content/PrintMathText";
+import { createRequire } from "node:module";
+import { learnerTexts } from "./fixtures/math-typography";
+const { JSDOM } = createRequire(import.meta.url)("jsdom") as {
+  JSDOM: new (html: string) => { window: { document: Document } };
+};
+
+const document = new JSDOM("").window.document;
+function assertSentenceBoundaries(text: string, label: string) {
+  const boundaries = text.match(/\d\.\s+\d/g);
+  if (!boundaries) return false;
+  for (const Component of [MathText, PrintMathText]) {
+    const element = document.createElement("div");
+    element.innerHTML = renderToStaticMarkup(
+      React.createElement(Component, { text }),
+    );
+    for (const formula of element.querySelectorAll("[data-plain]"))
+      assert.doesNotMatch(
+        formula.getAttribute("data-plain")!,
+        /\d\.\s+\d/,
+        label,
+      );
+    // Inspect the visible notation once, excluding its accessible MathML twin.
+    element.querySelectorAll(".katex-mathml").forEach((node) => node.remove());
+    const visible = element.textContent!.replace(/[\u200b-\u200d\ufeff]/g, "");
+    // Fraction DOM order can place a denominator before its numerator. Count
+    // preserved sentence spaces without assuming linear glyph order in math.
+    assert.equal(
+      (visible.match(/\d\.\s+\d/g) ?? []).length,
+      boundaries.length,
+      `${Component.name}: ${label}\nRendered: ${visible}`,
+    );
+  }
+  return true;
+}
+
+test("all template explanations, methods and lesson worked steps preserve numeric sentence boundaries", (t) => {
+  const texts = learnerTexts();
+  const owners = new Set(texts.map((item) => item.owner));
+  for (const template of templates)
+    assert.ok(owners.has(template.id), template.id);
+  let boundaries = 0;
+  for (const { text, owner, where } of texts)
+    if (assertSentenceBoundaries(text, `${owner}/${where}: ${text}`))
+      boundaries++;
+  assert.ok(
+    boundaries > 0,
+    "the corpus must exercise numeric sentence boundaries",
+  );
+  t.diagnostic(
+    JSON.stringify({
+      templates: templates.length,
+      texts: texts.length,
+      boundaryTexts: boundaries,
+    }),
+  );
+});
 
 // Independent expectation: a final tokenized formula after a colon/imperative
 // must be displayed. This does not ask the formatter whether it supports it.
@@ -54,6 +110,7 @@ test("every template generates clean prompt and worked-step displays in web and 
           problem.hint,
         ].entries()) {
           const label = `${template.id}@${version}/${seed}/${index}: ${text}`;
+          assertSentenceBoundaries(text, label);
           const display = trailingDisplayMath(text);
           if (expectedDisplay(text)) assert.ok(display, label);
           const standalone = trailingDisplayMath(text, true);

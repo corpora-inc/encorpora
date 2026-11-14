@@ -1190,7 +1190,13 @@ export function PracticeWorkspace(props: Props) {
                 type="button"
                 key={value}
                 disabled={locked}
-                className={value === "0" ? "zero-key" : ""}
+                className={
+                  value === "0"
+                    ? "zero-key"
+                    : value === "clear"
+                      ? "clear-key"
+                      : ""
+                }
                 aria-label={
                   value === "backspace"
                     ? "Delete"
