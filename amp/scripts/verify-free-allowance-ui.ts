@@ -655,9 +655,16 @@ async function adultJourney(
     .getByRole("link", { name: "Workbooks", exact: true })
     .click();
   await page.waitForURL(`**/learners/${learnerId}/workbooks`);
+  // None made yet: the empty list, and no results to enter by code.
   await page
-    .getByRole("button", { name: "Enter results with a code" })
+    .getByRole("heading", { name: "No workbooks yet", exact: true })
     .waitFor();
+  check(
+    `${label} no results by code before a workbook exists`,
+    (await page
+      .getByRole("button", { name: "Enter results with a code" })
+      .count()) === 0,
+  );
   await settle(page, 300);
   await workbooksUsed(page, `${label} workbooks`, "Continue with AMP");
   await measured(page, `${label} workbooks`);

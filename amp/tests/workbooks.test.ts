@@ -72,6 +72,7 @@ function memoryRepository(
           rows.push({ ...record, learnerId: id });
           return { ...record };
         },
+        paperResultCounts: async () => new Map<string, number>(),
         setWorkbookPaper: async (
           workbookId: string,
           paper: WorkbookRecord["paper"],
