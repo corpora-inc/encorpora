@@ -1101,3 +1101,8 @@ label.columnPick {
   color: var(--color-subtle-text);
   font-size: var(--text-table-small);
 }
+/* A term longer than Time reads at once: said beside its dates. */
+.gradeTitle p.timeLimit {
+  color: var(--color-subtle-text);
+  font-size: var(--text-table-small);
+}

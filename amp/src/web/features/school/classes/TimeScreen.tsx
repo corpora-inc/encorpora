@@ -39,7 +39,15 @@ import { useStaffSession } from "./api";
 import { useClassHost, wholeClass, type ClassHost } from "./host";
 import { TimeDetail } from "./ProgressRecord";
 import { HelpUsed } from "./HelpUsed";
+import { AppError } from "../../../lib/AppError";
 import { mergeTimeCsv } from "./time-csv";
+import {
+  TIME_SPAN_DAYS,
+  boundedFrom,
+  latestFrom,
+  localDay,
+  tooLong,
+} from "./time-range";
 import {
   downloadTime,
   fetchCsv,
@@ -121,13 +129,15 @@ function columnsOf(data: TimeResponse): {
     return { columns: days, days: true };
   }
   // A month's first week is labelled, unless the last label is too close to
-  // leave it room (a range starting days before a month turns).
+  // leave it room (a range starting days before a month turns, or a long
+  // range's narrow weeks).
+  const room = Math.max(3, Math.ceil(data.weeks.length / 12));
   let labelled = -Infinity;
   const weeks = data.weeks.map((week, index, all) => {
     const shown =
       index === 0 ||
       (week.slice(5, 7) !== all[index - 1]!.slice(5, 7) &&
-        index - labelled >= 3);
+        index - labelled >= room);
     if (shown) labelled = index;
     return {
       from: week,
@@ -213,7 +223,9 @@ function Heat({
                 : before
                   ? {
                       title: `${row.first} · ${when}`,
-                      note: "Not in this class",
+                      note: row.group
+                        ? `Not in ${row.group} yet`
+                        : "Not in this class",
                     }
                   : {
                       title: `${row.first} · ${when}${!isDay && column.from === current ? ", so far" : ""}`,
@@ -275,6 +287,7 @@ function ExampleTime() {
 function DaySheet({
   place,
   period,
+  from,
   student,
   returnFocus,
   onClose,
@@ -282,6 +295,8 @@ function DaySheet({
 }: {
   place: Place;
   period: TimePeriod;
+  /** The report's own start: the sheet reads the same days. */
+  from: string | undefined;
   student: string | undefined;
   /** The person's own page in this host, if it has one (a family's child
    * page): their record opens there. */
@@ -291,7 +306,7 @@ function DaySheet({
 }) {
   const session = useStaffSession();
   const time = useQuery({
-    ...studentTimeOptions(session, place, period, student ?? ""),
+    ...studentTimeOptions(session, place, period, student ?? "", from),
     enabled: !!session && !!student,
   });
   const data = student ? time.data : undefined;
@@ -415,7 +430,19 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
   const [search, set, close] = useClassSearch();
   const period = timePeriods.find((entry) => entry === search.period) ?? "term";
   const measure = measureOf(search.chart);
-  const time = useQuery(timeOptions(session, place, period));
+  const first = useQuery(timeOptions(session, place, period));
+  // A term longer than Time reads at once: its latest stretch, said so
+  // beside its dates; never a failed read with nothing to try.
+  const long = tooLong(first.error);
+  const latest = useQuery({
+    ...timeOptions(session, place, period, latestFrom(localDay())),
+    enabled: !!session && long,
+  });
+  const time = long ? latest : first;
+  const unreadable =
+    tooLong(time.error) ||
+    (time.error instanceof AppError &&
+      time.error.code === "invalid_time_range");
   // A host's people only, and their totals recomputed from them: never a
   // class total with someone else's minutes in it.
   const family = !!given && given.words.learner !== "student";
@@ -426,7 +453,7 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
   // The host's own people in another group, read for exactly this class's
   // dates (its first day and its end, its calendar), so they sum with it.
   const others = host.others ?? [];
-  const from = raw?.range.from ?? "";
+  const from = raw ? boundedFrom(raw.range.from, raw.range.to) : "";
   const otherTimes = useQueries({
     queries: others.map((other) => {
       const read = other.time(period, from);
@@ -448,6 +475,8 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
             minutes: read.minutes,
             problems: read.problems,
             days: read.days,
+            // Hatched before they joined the group, as the class's own.
+            ...(read.joined && read.joined > from ? { from: read.joined } : {}),
             group: read.group,
             page: other.page,
           },
@@ -652,16 +681,41 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
       tab="time"
     >
       {!data ? (
-        <LoadFailed
-          what="The time report"
-          onRetry={() => void time.refetch()}
-        />
+        // A range the server won't read (too long, or not a range) has a
+        // step that works instead of a Try again that can't.
+        unreadable && period !== "month" ? (
+          <EmptyState
+            title="This range is too long to show"
+            action={
+              <Button
+                variant="primary"
+                onClick={() => set({ period: "month" })}
+              >
+                Show 4 weeks
+              </Button>
+            }
+          >
+            Time shows up to {TIME_SPAN_DAYS} days at once.
+          </EmptyState>
+        ) : (
+          <LoadFailed
+            what="The time report"
+            onRetry={() => void time.refetch()}
+          />
+        )
       ) : (
         <div className={styles.gradePage} aria-busy={time.isFetching}>
           <div className={styles.gradeHead}>
             <div className={styles.gradeTitle}>
               <ScreenTitle>Time</ScreenTitle>
               <p>{dayRange(data.range.from, data.range.to)}</p>
+              {long && (
+                <p className={styles.timeLimit} data-time-limit="">
+                  The term’s latest{" "}
+                  {daysBetween(data.range.from, data.range.to)} days. Time shows
+                  up to {TIME_SPAN_DAYS} at once.
+                </p>
+              )}
             </div>
             <div className={styles.gradeControls}>
               <div className={styles.period}>
@@ -695,7 +749,7 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
                       setBusy(true);
                       (others.length
                         ? exportTime()
-                        : downloadTime(session, place, period)
+                        : downloadTime(session, place, period, from)
                       )
                         .then((name) => setMessage(`Downloaded ${name}.`))
                         .catch((failure) =>
@@ -715,7 +769,20 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
               )}
             </div>
           </div>
-          {data.students.length === 0 || allMinutes === 0 ? (
+          {/* A read that failed is said whatever else is known: never an
+              empty "no practice" over time that didn't load. */}
+          {failedOthers.length > 0 && (
+            <TimeMissing
+              names={failedOthers.map((other) => other.name)}
+              onRetry={() => {
+                for (const [index] of others.entries())
+                  if (otherTimes[index]?.isError)
+                    void otherTimes[index]?.refetch();
+              }}
+            />
+          )}
+          {(data.students.length === 0 || allMinutes === 0) &&
+          failedOthers.length === 0 ? (
             <>
               <div className={styles.gradeEmpty}>
                 <EmptyState
@@ -761,16 +828,7 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
                   facts
                 )}
               </div>
-              {failedOthers.length > 0 && (
-                <TimeMissing
-                  names={failedOthers.map((other) => other.name)}
-                  onRetry={() => {
-                    for (const [index] of others.entries())
-                      if (otherTimes[index]?.isError)
-                        void otherTimes[index]?.refetch();
-                  }}
-                />
-              )}
+
               <div className={styles.timeScale}>
                 {midpoint !== null && (
                   <HeatLegend
@@ -884,7 +942,15 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
                 </section>
               )}
               {whole && (
-                <HelpUsed weeks={data.help} className={styles.timeSkills} />
+                <HelpUsed
+                  weeks={data.help}
+                  className={styles.timeSkills}
+                  title={
+                    others.length
+                      ? `Help used in ${data.class.name}`
+                      : undefined
+                  }
+                />
               )}
             </>
           )}
@@ -893,6 +959,7 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
       <DaySheet
         place={place}
         period={period}
+        from={from || undefined}
         student={student}
         returnFocus={lastOpen.current}
         onClose={() => close("student")}

@@ -91,18 +91,23 @@ export const evidenceOptions = (
       evidenceResponse,
     ),
   });
+/** `&from=` for a read that names its start, never more than the limit
+ * before its end. */
+const fromQuery = (from?: string) => (from ? `&from=${from}` : "");
 export const timeOptions = (
   session: Session,
   place: Place,
   period: TimePeriod,
+  /** A start, for a range whose own would be too long to read. */
+  from?: string,
 ) =>
   queryOptions({
-    queryKey: [...classKey(session, place), "time", period],
+    queryKey: [...classKey(session, place), "time", period, from ?? null],
     enabled: !!session,
     placeholderData: keepPreviousData,
     queryFn: read(
       session,
-      `${CLASS(place)}/time?period=${period}`,
+      `${CLASS(place)}/time?period=${period}${fromQuery(from)}`,
       timeResponse,
     ),
   });
@@ -111,13 +116,21 @@ export const studentTimeOptions = (
   place: Place,
   period: TimePeriod,
   student: string,
+  /** The class report's own start, so the two read the same days. */
+  from?: string,
 ) =>
   queryOptions({
-    queryKey: [...classKey(session, place), "student-time", period, student],
+    queryKey: [
+      ...classKey(session, place),
+      "student-time",
+      period,
+      student,
+      from ?? null,
+    ],
     enabled: !!session,
     queryFn: read(
       session,
-      `${CLASS(place)}/students/${student}/time?period=${period}`,
+      `${CLASS(place)}/students/${student}/time?period=${period}${fromQuery(from)}`,
       studentTimeResponse,
     ),
   });
@@ -358,7 +371,7 @@ export const saveCsv = (name: string, text: string) =>
 /** A class's time export's address, for a range that may start on a given
  * day (`from`). */
 export const timeCsvPath = (place: Place, period: TimePeriod, from?: string) =>
-  `${CLASS(place)}/exports/time.csv?period=${period}${from ? `&from=${from}` : ""}`;
+  `${CLASS(place)}/exports/time.csv?period=${period}${fromQuery(from)}`;
 export const downloadGradebook = (
   session: Session,
   place: Place,
@@ -378,4 +391,5 @@ export const downloadTime = (
   session: Session,
   place: Place,
   period: TimePeriod,
-) => download(session, `${CLASS(place)}/exports/time.csv?period=${period}`);
+  from?: string,
+) => download(session, timeCsvPath(place, period, from));

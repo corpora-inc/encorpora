@@ -19,6 +19,9 @@ export { keptPerson, offersWholeClass, wholeClass } from "./host-scope";
 /** Someone's time over a range, in their own group. */
 export type OtherTime = {
   group: string;
+  /** When they joined that group, if within reach: weeks before are
+   * hatched, as the class's own roster starts are. */
+  joined: string | null;
   minutes: number;
   problems: number;
   range: { from: string; to: string };

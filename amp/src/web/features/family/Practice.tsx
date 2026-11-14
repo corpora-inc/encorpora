@@ -6,6 +6,8 @@ import { AppError } from "../../lib/AppError";
 import { buttonClass } from "../../ui/Button";
 import { Button } from "../../ui/Button";
 import { OptionList } from "./OptionList";
+import { practiceScopeLine } from "./practice-scope";
+import { childrenElsewhere } from "./redirects";
 import switches from "../../ui/Switch.module.css";
 import { Loading } from "../../ui/Loading";
 import { Switch } from "../../ui/Switch";
@@ -26,7 +28,7 @@ const LEVELS: { value: Levels; label: string; detail: string }[] = [
   {
     value: "hidden",
     label: "Hidden",
-    detail: "Your kids never see a grade level while they practice.",
+    detail: "No child sees a grade level while they practice.",
   },
   {
     value: "choice",
@@ -93,6 +95,12 @@ export function FamilyPracticeDefaults({ place }: { place: FamilyPlace }) {
   }, [experience.isError, experience.error]);
   if (!own) return null;
   const shared = !!place.data?.teachingPlace;
+  // The defaults are the family's own class's: its children, not the
+  // family's children practicing in another group.
+  const elsewhere = childrenElsewhere(place.data?.children ?? [], own.id);
+  const inClass = (place.data?.children ?? []).filter(
+    (child) => !elsewhere.includes(child),
+  );
   const data = experience.data;
   const editable = !!data?.canEdit && !shared;
   const set = (key: "levels" | "deviceMode", value: string) =>
@@ -112,10 +120,13 @@ export function FamilyPracticeDefaults({ place }: { place: FamilyPlace }) {
       data-practice-defaults=""
     >
       <h2 id="family-practice">Practice</h2>
-      <p className={styles.footnote}>
+      <p className={styles.footnote} data-practice-scope="">
         {shared
           ? "Your tutoring group shares these, so they’re set with the group, for everyone in it."
-          : "For every child in the family, and each child you add. The math is the same either way."}
+          : practiceScopeLine(
+              inClass.map((child) => child.name),
+              elsewhere.map((child) => child.name),
+            )}
       </p>
       {shared ? (
         <Link

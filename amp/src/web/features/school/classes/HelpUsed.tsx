@@ -33,9 +33,12 @@ const minutesText = (minutes: number) =>
 export function HelpUsed({
   weeks,
   className,
+  title = "Help used",
 }: {
   weeks: readonly HelpWeek[];
   className?: string;
+  /** Whose help, where a page also counts people from another group. */
+  title?: string;
 }) {
   const shown = weeks.filter(used).reverse();
   if (!shown.length) return null;
@@ -50,7 +53,7 @@ export function HelpUsed({
   ).filter(([, count]) => count > 0);
   return (
     <section className={className} data-help-used>
-      <h2>Help used</h2>
+      <h2>{title}</h2>
       <table className={styles.table}>
         <thead>
           <tr>

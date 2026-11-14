@@ -268,10 +268,161 @@ try {
     });
     assert.equal(await totalShown(page), want.both.toLocaleString("en-US"));
     assert.equal(await page.locator("[data-time-missing]").count(), 0);
+    // With no time of the class's own, a failed read still says so: never
+    // "No practice time" over time that didn't load (M16).
+    if (own) await fixture(own.id, 0);
+    await page.route(timeRoute, (route) =>
+      route.fulfill({ status: 503, json: { error: "unavailable" } }),
+    );
+    await page.goto(`${origin}/family/${family}/time?period=week`);
+    await page.waitForSelector("[data-time-missing] button", {
+      timeout: 30_000,
+    });
+    await page.waitForLoadState("networkidle").catch(() => undefined);
+    const zero = (await page.textContent("main")) ?? "";
+    assert.ok(
+      !/No practice time/.test(zero),
+      "a failed read under zero local time claims no practice",
+    );
+    assert.match(zero, /Couldn’t load Elsewhere Kid’s time/);
+    assert.equal(await totalShown(page), "0");
+    await page.screenshot({
+      path: join(shots, `mixed-time-zero-failed-${width}.png`),
+      fullPage: true,
+    });
+    await page.unroute(timeRoute);
+    await page.click("[data-time-missing] button");
+    await page.waitForSelector(`a[data-student="${hosted.id}"]`, {
+      timeout: 30_000,
+    });
+    const recovered = await expected("week");
+    assert.equal(
+      await totalShown(page),
+      recovered.both.toLocaleString("en-US"),
+      "Try again brings the child's time back",
+    );
+    if (own) await fixture(own.id, 12 * 60_000 + 21_000);
+    // The family's practice defaults say whom they govern: the child in
+    // another group has that group's settings (M17).
+    await page.goto(`${origin}/family/${family}/settings`);
+    const scope =
+      (await (
+        await page.waitForSelector("[data-practice-scope]", {
+          timeout: 30_000,
+        })
+      ).textContent()) ?? "";
+    assert.match(
+      scope,
+      /Elsewhere Kid practices in another group, which sets theirs/,
+    );
+    assert.ok(
+      !/every child in the family/.test(scope),
+      `the defaults claim every child: ${scope}`,
+    );
     await context.close();
     console.log(
       `${width}: one report and one export; a failed read says so and recovers`,
     );
+  }
+  // The weeks before the child joined their group are hatched, as the
+  // class's own roster starts are (the child read's `joined`).
+  {
+    const context = await signedIn("parent-day1", 1280);
+    const page = await context.newPage();
+    await page.goto(`${origin}/family/${family}/time?period=term`);
+    await page.waitForSelector(`a[data-student="${hosted.id}"]`, {
+      timeout: 30_000,
+    });
+    await page.waitForLoadState("networkidle").catch(() => undefined);
+    const cells = await page.evaluate((id) => {
+      let node: Element | null = document.querySelector(
+        `a[data-student="${id}"]`,
+      );
+      while (node && !node.querySelector("[data-empty], [data-current]"))
+        node = node.parentElement;
+      const strip = node?.querySelectorAll(
+        "[data-current], [data-empty], [data-future]",
+      );
+      return {
+        empty: node?.querySelectorAll("[data-empty]").length ?? 0,
+        all: strip?.length ?? 0,
+      };
+    }, hosted.id);
+    assert.ok(
+      cells.empty > 0,
+      `the weeks before the child joined are hatched: ${JSON.stringify(cells)}`,
+    );
+    console.log(`hatched ${cells.empty} weeks before Elsewhere Kid joined`);
+
+    // A term longer than Time reads at once: its latest stretch, said so;
+    // no read ever asks for more than 400 days; the export still works.
+    const session = (
+      await pool.query(
+        "SELECT c.session_id AS id, s.starts_on::text AS starts FROM amp_classes c JOIN amp_academic_sessions s ON s.id=c.session_id WHERE c.id=$1",
+        [classId],
+      )
+    ).rows[0] as { id: string; starts: string };
+    await pool.query(
+      "UPDATE amp_academic_sessions SET starts_on=current_date - 520 WHERE id=$1",
+      [session.id],
+    );
+    try {
+      const asked: string[] = [];
+      const refused: string[] = [];
+      page.on("request", (request) => {
+        const from = new URL(request.url()).searchParams.get("from");
+        if (from) asked.push(from);
+      });
+      page.on("response", (response) => {
+        if (response.status() === 400) refused.push(response.url());
+      });
+      await page.goto(`${origin}/family/${family}/time?period=term`);
+      const limit = await page.waitForSelector("[data-time-limit]", {
+        timeout: 30_000,
+      });
+      const line = (await limit.textContent()) ?? "";
+      const days = Number(/latest (\d+) days/.exec(line)?.[1]);
+      assert.ok(days > 390 && days <= 400, `the limit line: ${line}`);
+      await page.waitForSelector(`a[data-student="${hosted.id}"]`, {
+        timeout: 30_000,
+      });
+      await page.waitForLoadState("networkidle").catch(() => undefined);
+      const today = new Date();
+      const earliest = new Date(today.getTime() - 401 * 86_400_000)
+        .toISOString()
+        .slice(0, 10);
+      assert.ok(asked.length > 0, "the reads named their start");
+      assert.ok(
+        asked.every((from) => from >= earliest),
+        `a read asked for more than 400 days: ${asked.join(", ")}`,
+      );
+      assert.ok(
+        refused.every((url) => !/[?&]from=/.test(url)),
+        `a bounded read was refused: ${refused.join(", ")}`,
+      );
+      assert.ok(
+        !/didn’t load|Couldn’t load/.test(
+          (await page.textContent("main")) ?? "",
+        ),
+        "the long term read as a failure",
+      );
+      await page.screenshot({
+        path: join(shots, "mixed-time-long-term-1280.png"),
+        fullPage: true,
+      });
+      const [file] = await Promise.all([
+        page.waitForEvent("download", { timeout: 30_000 }),
+        page.getByRole("button", { name: "Export" }).click(),
+      ]);
+      assert.ok(file.suggestedFilename().endsWith(".csv"));
+      console.log(`a long term shows its latest ${days} days and exports`);
+    } finally {
+      await pool.query(
+        "UPDATE amp_academic_sessions SET starts_on=$2 WHERE id=$1",
+        [session.id, session.starts],
+      );
+    }
+    await context.close();
   }
   await tutor.close();
   await parent.close();
