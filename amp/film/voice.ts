@@ -20,7 +20,7 @@ import { join } from "node:path";
 import { EDGE, envelope, even, SR } from "./audio";
 import { isTagWord, MODEL, NARRATOR_ID, requireVoices, resolveCast, runsOf, spokenText, takeKeyParts, type Voice } from "./cast";
 import { FILM_VOICES } from "./paths";
-import { displayText, heldLetterFaults, scriptWords } from "./letters";
+import { displayText, heardLetters, heldLetterFaults, scriptWords } from "./letters";
 import type { WordTime } from "./schema";
 import { describe, strayPlan, type TimedWord } from "./strays";
 
@@ -132,7 +132,8 @@ export function differences(script: string, heard: Heard) {
   const want = spoken(script).join("");
   let got = "";
   const at: number[] = [];
-  for (const x of spokenWords(heard.words.filter((w) => w.type === "word").map((w) => ({ text: w.text, t: w.start })))) {
+  const asLetter = heardLetters(script);
+  for (const x of spokenWords(heard.words.filter((w) => w.type === "word").map((w) => ({ text: asLetter(w.text), t: w.start })))) {
     got += x.w;
     for (const _ of x.w) at.push(x.t);
   }
