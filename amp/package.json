@@ -146,6 +146,7 @@
     "coverage:items": "tsx scripts/coverage-items.ts",
     "families:index": "tsx scripts/gen-family-index.ts",
     "test:pathways-ui": "tsx scripts/verify-pathways-ui.ts",
+    "test:pathways-flat-films-ui": "tsx scripts/verify-pathways-flat-films-ui.ts",
     "test:smooth-load-ui": "tsx scripts/verify-smooth-load-ui.ts",
     "test:pathway-connections-ui": "tsx scripts/verify-pathway-connections-ui.ts",
     "dev:content": "tsx watch scripts/content-review.ts",

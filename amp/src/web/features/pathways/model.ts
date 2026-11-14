@@ -337,3 +337,45 @@ export function levelRegion(
   if (!wide.length) return null;
   return { wide, close: work[top]! > 0 && close.length ? close : wide };
 }
+
+/** One grade band of the flat pathway (PathwayPlan): its skills by area, a
+ * list per neighborhood, in catalog order. */
+export type PlanRow = { band: string; index: number; areas: MapSkill[][] };
+/**
+ * The curriculum as a flat pathway, for a browser that can't draw the 3D
+ * map: a row per grade band, first steps to precalculus, each holding its
+ * skills by area. A band with no skills has no row; a skill of an unknown
+ * band sits with the first, as the 3D layout places it.
+ */
+export function planRows(skills: readonly MapSkill[]): PlanRow[] {
+  const rows = bands.map((band, index) => ({
+    band,
+    index,
+    areas: neighborhoods.map((): MapSkill[] => []),
+  }));
+  for (const skill of skills)
+    rows[Math.max(0, bands.indexOf(skill.gradeBand))]!.areas[
+      neighborhood(skill)
+    ]!.push(skill);
+  return rows.filter((row) => row.areas.some((area) => area.length));
+}
+/**
+ * The bands "Where you are" covers on the flat pathway: those inside the
+ * estimated range, else the one nearest the estimate (past either end of
+ * the curriculum). Only bands that have a row count.
+ */
+export function bandsHere(
+  range: { lo: number; hi: number; level: number },
+  rows: readonly Pick<PlanRow, "index">[],
+): Set<number> {
+  const inside = rows
+    .map((row) => row.index)
+    .filter((index) => index >= range.lo && index <= range.hi);
+  if (inside.length || !rows.length) return new Set(inside);
+  const nearest = rows.reduce((best, row) =>
+    Math.abs(row.index - range.level) < Math.abs(best.index - range.level)
+      ? row
+      : best,
+  );
+  return new Set([nearest.index]);
+}

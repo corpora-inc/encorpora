@@ -7,16 +7,19 @@ export function Meter({
   value,
   label,
   max = 100,
+  bare = false,
 }: {
   value: number;
   /** What it measures, for assistive technology. */
   label: string;
   max?: number;
+  /** The bar alone, for a value with no unit a reader would know. */
+  bare?: boolean;
 }) {
   const share = Math.min(1, Math.max(0, value / max));
   return (
     <span
-      className={styles.meter}
+      className={`${styles.meter} ${bare ? styles.bare : ""}`}
       role="meter"
       aria-label={label}
       aria-valuemin={0}
@@ -29,7 +32,9 @@ export function Meter({
           style={{ "--share": share.toFixed(4) } as CSSProperties}
         />
       </span>
-      <span className={styles.value}>{value.toLocaleString("en-US")}</span>
+      {!bare && (
+        <span className={styles.value}>{value.toLocaleString("en-US")}</span>
+      )}
     </span>
   );
 }

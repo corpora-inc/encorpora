@@ -1157,9 +1157,11 @@ try {
         .getByRole("heading", { name: target.title, exact: true })
         .waitFor();
       assert.equal(await searchField(page).inputValue(), target.title);
-      // With grade numbers on, the skill names its area's estimated range.
+      // No estimate jargon on a skill (Q-211), grade numbers on or off.
       assert.equal(
-        await page.getByText("Algebra frontier:", { exact: false }).count(),
+        await skillLayer(page)
+          .getByText(/frontier|estimated range/)
+          .count(),
         0,
       );
       await page.keyboard.press("Escape");
@@ -1173,9 +1175,13 @@ try {
         .getByRole("button", { name: "Close browser", exact: true })
         .click();
       await page.goForward();
-      await skillLayer(page)
-        .getByText("Algebra frontier:", { exact: false })
-        .waitFor();
+      await skillLayer(page).waitFor();
+      assert.equal(
+        await skillLayer(page)
+          .getByText(/frontier|estimated range/)
+          .count(),
+        0,
+      );
       await page.keyboard.press("Escape");
       await skillLayer(page).waitFor({ state: "detached" });
       await page.getByRole("button", { name: "Zoom in", exact: true }).click();
@@ -1327,7 +1333,7 @@ try {
   await lessonRow(linked).click();
   await linked
     .getByRole("dialog")
-    .getByRole("link", { name: "Try this problem type →", exact: true })
+    .getByRole("link", { name: "Try this problem type", exact: true })
     .click();
   await linked.locator("#problem-prompt").waitFor();
   assert.equal(
@@ -1752,9 +1758,11 @@ try {
     } as any;
   });
   await fallback.goto(`${origin}/pathways?skill=${target.id}`);
-  await fallback
-    .getByText("3D is unavailable on this device.", { exact: false })
-    .waitFor();
+  // No canvas and no camera controls: the flat pathway in the map's place.
+  await fallback.locator(".pathways-plan").waitFor();
+  assert.equal(await fallback.locator("canvas").count(), 0);
+  assert.equal(await fallback.locator(".pathways-camera").count(), 0);
+  assert.equal(await fallback.getByText(/3D|device/).count(), 0);
   await fallback
     .getByRole("heading", { name: target.title, exact: true })
     .waitFor();
@@ -1787,8 +1795,13 @@ try {
     .evaluate((el) =>
       el.dispatchEvent(new Event("webglcontextlost", { cancelable: true })),
     );
+  await lost.locator(".pathways-plan").waitFor();
+  assert.equal(await lost.locator("canvas").count(), 0);
+  assert.equal(await lost.locator(".pathways-camera").count(), 0);
+  // Every skill still opens its layer.
+  await lost.locator(`.pathways-plan [data-plan-skill="${target.id}"]`).click();
   await lost
-    .getByText("3D is unavailable on this device.", { exact: false })
+    .getByRole("heading", { name: target.title, exact: true })
     .waitFor();
   await lost.waitForTimeout(350);
   assert.equal(
