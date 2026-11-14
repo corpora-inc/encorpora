@@ -14,6 +14,8 @@
 import { mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { chromium, type BrowserContext, type Page } from "playwright";
+import pg from "pg";
+import { analyticsSelfTest, stubAnalytics } from "./analytics-stub";
 
 const origin = process.env.AMP_PREVIEW_ORIGIN ?? "http://127.0.0.1:4940";
 if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(origin))
@@ -55,11 +57,9 @@ async function signedIn(
   );
   if (!response.ok())
     throw new Error(`${persona} sign-in ${response.status()}`);
-  // Product measurement is not under test: the harness never sends it, so
-  // its rate limit can't fail a page (and nothing is measured).
-  await context.route("**/api/v1/events", (route) =>
-    route.fulfill({ status: 202, json: {} }),
-  );
+  // Product measurement is not under test and never leaves the page, even
+  // as a page closes (scripts/analytics-stub.ts).
+  await stubAnalytics(context);
   // tsx names the helpers inside page functions (`__name`); the page has
   // none of its own.
   await context.addInitScript("window.__name = (f) => f;");
@@ -347,6 +347,35 @@ const browser = await chromium.launch();
   await page.close();
 }
 try {
+  {
+    // The measurement stub holds through navigation and close; with the
+    // scratch database named, the server is shown to have recorded nothing.
+    const database = process.env.AMP_PREVIEW_DATABASE_URL;
+    if (
+      database &&
+      !/^postgres:\/\/[^@]+@127\.0\.0\.1:\d+\/amp_scratch_/.test(database)
+    )
+      throw new Error("A loopback amp_scratch_ database only");
+    const pool = database
+      ? new pg.Pool({ connectionString: database, max: 1 })
+      : undefined;
+    try {
+      const context = await signedIn("family", 390, "light");
+      const id = await familyId(context);
+      const sent = await analyticsSelfTest(
+        context,
+        origin,
+        [`/family/${id}`, `/family/${id}/time`, `/family/${id}/settings`],
+        pool,
+      );
+      console.log(
+        `analytics: ${sent} sends stubbed in the page${pool ? "; none reached the server" : ""}`,
+      );
+      await context.close();
+    } finally {
+      await pool?.end();
+    }
+  }
   for (const width of WIDTHS)
     for (const scheme of SCHEMES) {
       const tag = `${width}-${scheme}`;

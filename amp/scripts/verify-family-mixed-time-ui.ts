@@ -19,6 +19,7 @@ import { mkdirSync } from "node:fs";
 import { join } from "node:path";
 import pg from "pg";
 import { chromium, type BrowserContext } from "playwright";
+import { analyticsSelfTest, stubAnalytics } from "./analytics-stub";
 
 const origin = process.env.AMP_PREVIEW_ORIGIN ?? "http://127.0.0.1:4940";
 const database = process.env.AMP_PREVIEW_DATABASE_URL ?? "";
@@ -29,6 +30,10 @@ if (!/^postgres:\/\/[^@]+@127\.0\.0\.1:\d+\/amp_scratch_/.test(database))
 const shots = process.env.AMP_SHOTS ?? "artifacts/family-mixed-time";
 mkdirSync(shots, { recursive: true });
 
+/** Words a family's own pages never use (verify-family-space-ui.ts). */
+const NEVER = /\b(students?|roster|seats?|standings|co-teacher|gradebook)\b/i;
+const assertFamilyWords = (text: string, where: string) =>
+  assert.ok(!NEVER.test(text), `${where} says "${NEVER.exec(text)?.[0]}"`);
 const browser = await chromium.launch();
 const pool = new pg.Pool({ connectionString: database, max: 1 });
 async function signedIn(persona: string, width = 390): Promise<BrowserContext> {
@@ -46,9 +51,9 @@ async function signedIn(persona: string, width = 390): Promise<BrowserContext> {
     },
   );
   assert.ok(response.ok(), `${persona} sign-in ${response.status()}`);
-  await context.route("**/api/v1/events", (route) =>
-    route.fulfill({ status: 202, json: {} }),
-  );
+  // Product measurement is not under test and never leaves the page, even
+  // as a page closes (scripts/analytics-stub.ts).
+  await stubAnalytics(context);
   return context;
 }
 try {
@@ -67,6 +72,17 @@ try {
   const family = families.families.find(
     (entry) => entry.role === "holder",
   )!.familyId;
+  {
+    const sent = await analyticsSelfTest(
+      parent,
+      origin,
+      [`/family/${family}`, `/family/${family}/time`],
+      pool,
+    );
+    console.log(
+      `analytics: ${sent} sends stubbed in the page; none reached the server`,
+    );
+  }
   const before = (await (
     await parent.request.get(`${origin}/api/v1/families/${family}`)
   ).json()) as {
@@ -170,6 +186,7 @@ try {
       await page.waitForLoadState("networkidle").catch(() => undefined);
       const text = (await page.textContent("main")) ?? "";
       assert.ok(!/Student \d/.test(text), "a tutor's other child appeared");
+      assertFamilyWords(text, `${width} ${period} Time`);
       assert.equal(
         await page.locator("[data-time-scope], [data-time-elsewhere]").count(),
         0,
@@ -405,6 +422,15 @@ try {
           (await page.textContent("main")) ?? "",
         ),
         "the long term read as a failure",
+      );
+      assertFamilyWords(
+        (await page.textContent("main")) ?? "",
+        "long-term Time",
+      );
+      assert.match(
+        (await page.textContent("main")) ?? "",
+        /Before they joined/,
+        "the hatching is named in the family's words",
       );
       await page.screenshot({
         path: join(shots, "mixed-time-long-term-1280.png"),
