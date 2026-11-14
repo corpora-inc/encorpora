@@ -62,25 +62,29 @@ export function LessonDialog({
       {lesson && (
         <div className={styles.lesson}>
           <LessonHead lesson={lesson}>{children}</LessonHead>
-          <LessonBoundary key={lesson} onBack={onClose} backLabel={backLabel}>
-            <Suspense fallback={<LessonWait />}>
-              <SkillLesson
-                templateId={lesson}
-                onBack={onClose}
-                backLabel={backLabel}
-              />
-            </Suspense>
-          </LessonBoundary>
+          <div className={styles.body}>
+            <LessonBoundary key={lesson} onBack={onClose} backLabel={backLabel}>
+              <Suspense fallback={<LessonWait />}>
+                <SkillLesson
+                  templateId={lesson}
+                  onBack={onClose}
+                  backLabel={backLabel}
+                />
+              </Suspense>
+            </LessonBoundary>
+          </div>
         </div>
       )}
     </Dialog>
   );
 }
 
-/** The problem type's title and its one row of actions. The film is known
- * from the bundled catalogue and the page holds its action's place until it
- * knows it (PathwaysScreen), so the row is drawn whole at once and nothing
- * in it moves. */
+/** The problem type's title and its one row of actions, drawn whole or not
+ * at all. The title comes from the catalog (almost always already here) or
+ * the lesson's own request, whichever lands first; until then nothing is
+ * drawn, so a title that wraps never pushes a control that was already
+ * there. The film is known from the bundled catalogue, and the page holds its
+ * own action's place until it knows it (PathwaysScreen). */
 function LessonHead({
   lesson,
   children,
@@ -95,11 +99,10 @@ function LessonHead({
   const loaded = useQuery(pathwaysLessonOptions(lesson));
   const title = known ?? loaded.data?.lesson.title;
   const film = lessonFilms[lesson];
+  if (!title) return null;
   return (
     <div className={styles.head}>
-      <h2 className={styles.title} aria-busy={!title || undefined}>
-        {title ?? "\u00a0"}
-      </h2>
+      <h2 className={styles.title}>{title}</h2>
       {(children || film) && (
         <div className={styles.actions}>
           {children}

@@ -11,22 +11,29 @@ export type SkillFilm = {
 
 /**
  * Every film a skill has, from the film catalogue (content/films), in the
- * order its sheet offers them: by its problem types, in the catalog's order.
- * One film teaches several problem types at times: it is offered once, under
- * its own title, and plays from the first of them. Films are made per
- * problem type; a film of a whole skill would come first, once the
- * catalogue can name one.
+ * order its sheet offers them: the skill's own film first (a film that
+ * claims the whole skill, `skill`), then each problem type's, in the
+ * catalog's order of its types. One film teaches several problem types at
+ * times: it is offered once, under its own title, and plays from the first
+ * of them.
  */
 export function skillFilms(
   types: readonly { id: string; title?: string }[],
   films: Readonly<
-    Record<string, Pick<LessonFilm, "id" | "title" | "duration">>
+    Record<string, Pick<LessonFilm, "id" | "title" | "duration" | "skill">>
   > = lessonFilms,
+  skill?: string,
 ): SkillFilm[] {
+  type Film = (typeof films)[string];
   const byFilm = new Map<
     string,
-    { film: (typeof films)[string]; types: (typeof types)[number][] }
+    { film: Film; types: (typeof types)[number][]; whole?: true }
   >();
+  // The skill's own film: under its own title, from the type it was made for.
+  const whole = skill
+    ? Object.values(films).find((film) => film.skill === skill)
+    : undefined;
+  if (whole) byFilm.set(whole.id, { film: whole, types: [], whole: true });
   for (const type of types) {
     const film = films[type.id];
     if (!film) continue;
@@ -34,9 +41,18 @@ export function skillFilms(
     entry.types.push(type);
     byFilm.set(film.id, entry);
   }
-  return [...byFilm.values()].map(({ film, types: taught }) => ({
-    templateId: taught[0]!.id,
-    title: taught.length === 1 ? (taught[0]!.title ?? film.title) : film.title,
-    duration: film.duration,
-  }));
+  return [...byFilm.values()].flatMap(({ film, types: taught, whole }) => {
+    const from = taught[0]?.id ?? film.id.split("--")[0]!;
+    if (whole && films[from]?.id !== film.id) return [];
+    return [
+      {
+        templateId: from,
+        title:
+          !whole && taught.length === 1
+            ? (taught[0]!.title ?? film.title)
+            : film.title,
+        duration: film.duration,
+      },
+    ];
+  });
 }

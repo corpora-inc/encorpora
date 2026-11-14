@@ -47,6 +47,32 @@ test("a film that teaches several types is offered once, under its own title", (
   ]);
 });
 
+test("the skill's own film comes first, under its title, and only once", () => {
+  const whole = { ...film("fw", "Counting to twenty", 200), skill: "count" };
+  const films = {
+    // The skill film's own problem type, and another type it fills.
+    "count-out": whole,
+    "count-more": whole,
+    "count-objects": film("fc", "Count objects"),
+  };
+  expect(
+    skillFilms(
+      [
+        { id: "count-objects", title: "Count objects" },
+        { id: "count-out", title: "Count out" },
+        { id: "count-more", title: "Count more" },
+      ],
+      films,
+      "count",
+    ),
+  ).toEqual([
+    { templateId: "count-out", title: "Counting to twenty", duration: 200 },
+    { templateId: "count-objects", title: "Count objects", duration: 90 },
+  ]);
+  // Another skill's film never shows here.
+  expect(skillFilms([{ id: "x", title: "X" }], films, "other")).toEqual([]);
+});
+
 test("the real catalogue: a skill's cards are its distinct films", () => {
   const types = templates.filter((t) => t.skillId === "count-to-20");
   const cards = skillFilms(types);
