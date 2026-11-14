@@ -6,7 +6,7 @@ import { Pool } from "pg";
 import { migrate } from "../scripts/migrate.js";
 
 test(
-  "0126 adds metadata without rewriting or backfilling the locked learner table",
+  "0127 adds metadata without rewriting or backfilling the locked learner table",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
   async () => {
     const db = new Pool({
@@ -31,7 +31,7 @@ test(
       ).rows[0];
       await client.query(
         await readFile(
-          new URL("../migrations/0126-course-start.sql", import.meta.url),
+          new URL("../migrations/0127-course-start.sql", import.meta.url),
           "utf8",
         ),
       );
@@ -59,7 +59,7 @@ test(
   },
 );
 
-// Run the real migration runner and exact 0127 file against small evidence
+// Run the real migration runner and exact 0128 file against small evidence
 // tables. Earlier migrations are recorded as applied, isolating this upgrade.
 async function historyFixture() {
   const url = process.env.AMP_TEST_DATABASE_URL!;
@@ -76,7 +76,7 @@ async function historyFixture() {
     CREATE TABLE amp_active_days(learner_id text,day date,active_ms int);
     CREATE TABLE amp_family_approvals(id text,class_id text,created_at timestamptz)`);
   const directory = new URL("../migrations/", import.meta.url);
-  const name = "0127-family-history-indexes.sql";
+  const name = "0128-family-history-indexes.sql";
   for (const file of (await readdir(directory)).filter(
     (f) => f.endsWith(".sql") && f !== name,
   )) {
@@ -103,7 +103,7 @@ async function historyFixture() {
 }
 
 test(
-  "0127 permits evidence writes while an index build waits for an existing writer",
+  "0128 permits evidence writes while an index build waits for an existing writer",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
   async () => {
     const fixture = await historyFixture();
@@ -182,7 +182,7 @@ test(
 );
 
 test(
-  "0127 resumes a partial build, replaces an invalid index and preserves checksums",
+  "0128 resumes a partial build, replaces an invalid index and preserves checksums",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
   async () => {
     const fixture = await historyFixture();
@@ -267,7 +267,7 @@ test(
       );
       await assert.rejects(
         migrate(fixture.url),
-        /Applied migration changed: 0127/,
+        /Applied migration changed: 0128/,
       );
     } finally {
       await fixture.close();
@@ -347,6 +347,50 @@ test(
     } finally {
       await blocker.query("ROLLBACK");
       blocker.release();
+      await db.end();
+      await admin.query(`DROP SCHEMA ${schema} CASCADE`);
+      await admin.end();
+    }
+  },
+);
+
+test(
+  "a database migrated under the earlier spaces numbers adopts its receipts and keeps its schema",
+  { skip: !process.env.AMP_TEST_DATABASE_URL },
+  async () => {
+    const { renamedMigrations } = await import("../scripts/migrate.js");
+    const url = process.env.AMP_TEST_DATABASE_URL!;
+    const admin = new Pool({ connectionString: url });
+    const schema = `amp_renamed_${randomUUID().replaceAll("-", "")}`;
+    await admin.query(`CREATE SCHEMA ${schema}`);
+    const scoped = new URL(url);
+    scoped.searchParams.set("options", `-c search_path=${schema}`);
+    await migrate(scoped.href);
+    const db = new Pool({ connectionString: scoped.href });
+    try {
+      const receipts = async () =>
+        (await db.query("SELECT name,checksum FROM amp_migrations ORDER BY 1"))
+          .rows;
+      const current = await receipts();
+      for (const [name, earlier] of Object.entries(renamedMigrations))
+        await db.query("UPDATE amp_migrations SET name=$2 WHERE name=$1", [
+          name,
+          earlier,
+        ]);
+      // Every renamed DDL would fail if it ran again (CREATE TABLE, triggers).
+      await migrate(scoped.href);
+      assert.deepEqual(await receipts(), current);
+      // A changed file is still refused under its adopted name.
+      const [name, earlier] = Object.entries(renamedMigrations)[0]!;
+      await db.query(
+        "UPDATE amp_migrations SET name=$2,checksum='changed' WHERE name=$1",
+        [name, earlier],
+      );
+      await assert.rejects(
+        migrate(scoped.href),
+        new RegExp(`Applied migration changed: ${name}`),
+      );
+    } finally {
       await db.end();
       await admin.query(`DROP SCHEMA ${schema} CASCADE`);
       await admin.end();
