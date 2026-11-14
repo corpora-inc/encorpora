@@ -72,8 +72,18 @@ export type SpaceResources = {
   org?: OrgResource | null;
   /** The org's classes in use, as this person reads them. */
   classes?: readonly ClassResource[] | null;
-  /** The class's year: the server's answer for this one class. */
-  year?: { past: boolean } | null;
+  /** The server's answer for the one class the route names: its year, and
+   * (from a current server) what binds it to a place and what this person
+   * may do in it. */
+  year?: {
+    past: boolean;
+    /** The class's own org. */
+    orgId?: string;
+    /** The orgs from the top down to the class's own. */
+    path?: readonly string[];
+    name?: string | null;
+    can?: readonly string[];
+  } | null;
   /** Students covered by the class's running practice. */
   covered?: number;
 };
@@ -208,6 +218,18 @@ export type SpaceDescriptor =
     });
 
 const text = (value: unknown) => (typeof value === "string" ? value : null);
+
+/** The class the server answered for belongs to the org the route names
+ * (its own org, or one above it). An older server says nothing: unknown. */
+const boundTo = (year: SpaceResources["year"], orgId: string) =>
+  !year?.path || year.path.includes(orgId);
+
+/** The class's own capabilities, when the server sent them. */
+const classTarget = (
+  classId: string,
+  year: SpaceResources["year"],
+): TargetCapabilities[] =>
+  year?.can ? [{ target: { kind: "class", id: classId }, can: year.can }] : [];
 
 type FamilyPlace = {
   orgId: string;
@@ -618,8 +640,12 @@ function familySpace(
   // names that isn't the family's is unavailable, never swapped for another.
   const classId =
     frame?.kind === "class" ? frame.classId : (family?.classId ?? null);
+  // The named class must be the family's (by relationship) and must belong
+  // to the org the route names (by the server's answer for it).
   const mismatch =
-    frame?.kind === "class" && !!family && family.classId !== frame.classId;
+    frame?.kind === "class" &&
+    ((!!family && family.classId !== frame.classId) ||
+      (!!orgId && !boundTo(resources.year, orgId)));
   const klass = (resources.classes ?? []).find((entry) => entry.id === classId);
   const status: Resolution = learnerOnly
     ? "ready"
@@ -682,7 +708,7 @@ function familySpace(
     class: classId
       ? {
           id: classId,
-          name: klass?.name ?? family?.name ?? null,
+          name: klass?.name ?? resources.year?.name ?? family?.name ?? null,
           past,
           board: frame?.kind === "class" && frame.board,
           start: false,
@@ -690,9 +716,14 @@ function familySpace(
       : null,
     learner: learner ? { id: learner.id, name: learner.name } : null,
     learners: learners.map(({ id, name }) => ({ id, name })),
-    capabilities: org
-      ? [{ target: { kind: "org", id: org.id }, can: org.can ?? [] }]
-      : [],
+    capabilities: [
+      ...(org
+        ? [{ target: { kind: "org" as const, id: org.id }, can: org.can ?? [] }]
+        : []),
+      ...(classId && frame?.kind === "class"
+        ? classTarget(classId, resources.year)
+        : []),
+    ],
     tabs,
     bar: frame?.kind === "account" ? "plain" : base.bar,
     active,
@@ -777,7 +808,8 @@ function teachingSpace(
   const year = resources.year;
   const past = year?.past === true;
   const status: Resolution =
-    resources.org === null || (onClass && year === null)
+    resources.org === null ||
+    (onClass && (year === null || !boundTo(year, orgId)))
       ? "unavailable"
       : !org || (onClass && year === undefined)
         ? "loading"
@@ -785,10 +817,12 @@ function teachingSpace(
   const klass = onClass
     ? classes.find((entry) => entry.id === frame.classId)
     : undefined;
+  // Starting needs the class's sign-in board, where the server says so.
   const start =
     onClass &&
     status === "ready" &&
     !past &&
+    (!year?.can || year.can.includes("signin.read")) &&
     (demo || (resources.covered ?? 0) > 0);
   const tabs =
     status !== "ready" || !org
@@ -805,9 +839,12 @@ function teachingSpace(
     demo,
     lone,
   };
-  const capabilities: TargetCapabilities[] = org
-    ? [{ target: { kind: "org", id: org.id }, can: org.can ?? [] }]
-    : [];
+  const capabilities: TargetCapabilities[] = [
+    ...(org
+      ? [{ target: { kind: "org" as const, id: org.id }, can: org.can ?? [] }]
+      : []),
+    ...(onClass ? classTarget(frame.classId, year) : []),
+  ];
   const actions: SpaceAction[] = [
     ...(demo ? (["demo-setup"] as const) : []),
     ...(start && !demo ? (["start-class"] as const) : []),
@@ -845,20 +882,22 @@ function teachingSpace(
     org: orgRef,
     class: {
       id: frame.classId,
-      name: klass?.name ?? null,
+      name: klass?.name ?? year?.name ?? null,
       past,
       board: frame.board,
       start,
     },
     // How they reach this class: teaching it, or from above it. A viewer or
     // an admin inspecting it is never offered a teacher's controls by this.
+    // A role from above (a district's admin or viewer) shows in what the
+    // server lets them do here, not in a role held at this org.
     role: !org
       ? null
       : org.teaches?.includes(frame.classId)
         ? "teacher"
-        : roles.has("admin")
+        : roles.has("admin") || can.has("staff.manage")
           ? "admin"
-          : roles.has("viewer")
+          : roles.has("viewer") || can.has("overview.read")
             ? "viewer"
             : roles.has("aide")
               ? "aide"
@@ -872,7 +911,7 @@ function teachingSpace(
         : [
             {
               id: "class",
-              label: klass?.name ?? "Class",
+              label: klass?.name ?? year?.name ?? "Class",
               path: `school/${orgId}/classes/${frame.classId}/today`,
               icon: "class",
               current: true,
@@ -880,10 +919,13 @@ function teachingSpace(
             ...school,
           ],
     place: `class:${orgId}:${frame.classId}`,
-    label: klass
-      ? lone || !org
-        ? klass.name
-        : `${klass.name} · ${org.name}`
-      : null,
+    label: (() => {
+      const name = klass?.name ?? year?.name ?? null;
+      return name && status !== "unavailable"
+        ? lone || !org
+          ? name
+          : `${name} · ${org.name}`
+        : null;
+    })(),
   };
 }
