@@ -45,30 +45,26 @@ Display only (`src/schools/norms-prior.ts`):
 - **A rostered student with no stored level at all.** Their curve is N(age-expected grade − rostered grade, sd(grade)). Until practice opens there is nothing else to draw.
 - **The dashed "typical national spread"** on every standing curve. This is the mixture of N(0, sd(gᵢ)) over the group's students. A group's own curve can be read against it.
 
-A student whose practice has opened is drawn from the estimator's own prior, below.
+A student whose practice has opened is drawn from what the estimator shows (below).
 
-## The estimator's age prior (grade-frontier-v5, 2026-11-13)
+## The estimator's age prior (grade-frontier-v5)
 
-A start set by a birth year now has a prior as wide as learners of that age are spread on AMP's own scale (`AGE_PRIOR_SD` in `src/learning/frontier-policy.ts`). A start someone chose (an adult's start, a family band, a restarted area) is a coarser guess and keeps the former flat 2.5, so the adult prior (default start grade 7) is unchanged; only the overall slope, which applies to everyone, differs.
+The overall readout of a learner whose start comes from a birth year now uses this table's **AMP prior sd** as its prior width, held at 2.5 from grade 6 up, the former flat width (`NORMS_PRIOR_SD` in `src/learning/frontier-policy.ts`):
 
-The width comes from AMP's learners, bounded by these norms:
+| Start | K | 1 | 2 | 3 | 4 | 5 | 6 and up |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Prior sd | 0.7 | 0.8 | 1.0 | 1.1 | 1.6 | 1.9 | 2.5 |
 
-| Starting grade |    AMP fit (MML) | 95% upper bound |   **Prior sd used** | Norms table above |
-| -------------- | ---------------: | --------------: | ------------------: | ----------------: |
-| K–2            |             0.54 |            0.69 |             **0.7** |           0.7–1.0 |
-| 3–5            |             0.88 |            1.05 | **1.05** at grade 4 |           1.1–1.9 |
-| 6–8            |             1.31 |            1.65 | **1.65** at grade 7 |           2.5–3.5 |
-| 9 and up       | too few learners |               — |             **2.5** |           4 (cap) |
-
-- **The fit.** Marginal maximum likelihood on the first 30 independent answers of every school-age learner with a birth year (retained production answers, exported read-only; no learner data enters the repository): each learner's level is integrated over N(start + μ, σ²) on a grid, through the overall response curve. Adaptive selection depends only on earlier answers, so it does not bias this likelihood. Grades between knots interpolate linearly.
-- **Why the upper bound.** It is the widest spread the answers cannot reject at 95%. A narrower prior anchors more, but a learner who really is two grades ahead then takes longer to be shown there.
-- **Why not the norms.** NWEA and Bloom/Hill measure spread in their own vertical scales' grade-years. AMP's scale is fixed by its own items and its 60% anchor. On retained answers, the norms prior predicts each next answer slightly worse than the AMP fit and the later level less well (docs/adaptive-evidence.md).
-- **What the same fit says about the centre.** The fitted mean is 0.4 of a grade below the start (answers mostly from August to November), which is what item 2 below expects in the fall. The start is not moved yet: see item 2.
+- **A provisional, external prior.** These widths come from national norms on other vertical scales, not from AMP learners. AMP has too few real learners to fit a population spread, and its school demo learners are generated at 0.6 × these widths (`src/schools/demo/truth.ts`), so they cannot be used for this either.
+- **Not scaled by 1/0.9** for a school-independent learner, as the first draft of this page proposed. Wider would move a three-answer readout further, which is the behaviour this change exists to stop. The display rule (docs/adaptive-evidence.md) carries the rest.
+- **Chosen starts are unchanged.** A start someone chose (an adult's start, a family band, a restarted area) is a coarser guess and keeps 2.5.
+- **Selection is unchanged.** It keeps 2.5 for every start: its pooled estimate, the areas and the climb do not read this table.
+- **The cap.** The norms are wider than 2.5 from grade 6, but no start moves faster than it did under v4.
 
 ## What we would still change
 
-1. ~~Make the overall prior sd depend on grade.~~ Done in grade-frontier-v5, from AMP's own learners (above).
-2. **Centre the prior on the time of year.** Expected position runs from g − 0.5 in the fall to g + 0.5 in the spring (the grade model already assumes this, `grade-policy.ts`). AMP's answers agree: the fitted fall centre is start − 0.4. The start also sets the first problems and the climb's floor, so this needs its own change.
+1. ~~Make the overall prior sd depend on grade.~~ Done for the overall readout in grade-frontier-v5 (above). Selection keeps the flat 2.5 until a change to it shows a gain in practice.
+2. **Centre the prior on the time of year.** Expected position runs from g − 0.5 in the fall to g + 0.5 in the spring (the grade model already assumes this, `grade-policy.ts`). The overview's "within their grade" band could follow it too.
 3. **Set the drift from growth spread.** Between answers the posterior widens by a variance of 0.02 a day (`frontier-policy.ts`, capped at 30 days). For a learner who practises daily that adds up to 7.3 grade² a year, an sd of about 2.7 grades. The between-student spread of a year's growth here is 0.4–1.0 of a year. Once per-answer sds are calibrated, the drift should come down toward the norms.
 4. **Check coverage against these spreads.** A school whose placed students show a much narrower sd than the "typical" curve is either a tracked class or an over-confident estimator. The second is the calibration worker's check (coverage of μ ± 2σ on synthetic learners).
 

@@ -153,13 +153,10 @@ test("a learner far ahead of their age climbs to their frontier within a dozen p
   assert.ok(frontier.overall.level >= 6, String(frontier.overall.level));
 });
 
-test("a learner missing basics descends as far as counting within a dozen problems", () => {
-  // Nearly four grades below age is far out in the age prior (sd 1.05 at
-  // grade 4, grade-frontier-v5), so the descent takes a problem or two more
-  // than it did from the flat 2.5.
+test("a learner missing basics descends as far as counting within a few problems", () => {
   const { shown, frontier } = simulate(2016, () => 0.3);
   assert.ok(
-    shown.slice(4, 12).some((entry) => entry.grade === 0),
+    shown.slice(4, 10).some((entry) => entry.grade === 0),
     JSON.stringify(shown),
   );
   assert.ok(shown.slice(10).every((entry) => entry.grade <= 3));

@@ -1,28 +1,33 @@
 /**
- * Early placement: how far the shown level moves on the first answers, and
- * how fast it still reaches a learner who is truly ahead or behind.
+ * Early placement: what a learner is shown on their first answers, and how
+ * fast the shown level still reaches a learner who is far from their age.
  *
- * Synthetic learners have a known working grade (overall, and per area for
- * the uneven profile). Problems come from the production planner
- * (`planMixedPractice`); the estimate comes from `createFrontierState` /
- * `advanceFrontierState` / `readFrontierState` under the policy being
- * compared, so selection follows each policy's own frontier, as it would in
- * production. Correctness is sampled; the problem text is not generated.
+ * Each synthetic learner answers 200 problems chosen by the production
+ * planner (`planMixedPractice`). Both policies read the same answers through
+ * the production estimator (`createFrontierState` / `advanceFrontierState` /
+ * `readFrontierState`) and the production display path (`reportFrontier`:
+ * the shown level and the reported width for each estimate's own answer
+ * count). The planner reads the first policy's frontier; at every answer the
+ * harness also asks it with the second's and counts any problem that would
+ * differ, so "practice is unchanged" is measured, not assumed.
  *
- *   npx tsx scripts/frontier/early-anchor-simulation.ts            # full
+ * Truth is drawn from external norms, not from AMP's data or its demo school:
+ * - `population`: a learner's offset from the age start is drawn from
+ *   N(0, sd²), sd the national within-grade spread at that start
+ *   (`NORMS_PRIOR_SD`), and each area sits N(0, 0.5²) off that.
+ * - fixed offsets −4 … +4 grades, and `uneven` (on level, areas alternately
+ *   one grade above and below).
+ * - the adult default (a chosen start of grade 7), with the same offsets.
+ * Answers come from a misspecified curve on the estimator's scale (60% typed
+ * success at an item's true grade): each item's true difficulty is off its
+ * catalog grade by N(0, 0.5²), each learner has their own slip in
+ * [0.03, 0.15] and guess in [0, 0.25], and the slope is 1.7 (`steep`) or 1.15
+ * (`flat`) a grade.
+ *
+ *   npx tsx scripts/frontier/early-anchor-simulation.ts --seed 1 --reps 2
  *   npx tsx scripts/frontier/early-anchor-simulation.ts --quick
- *   npx tsx scripts/frontier/early-anchor-simulation.ts --policies v4,v5
  *
- * Two truth models, so no candidate wins by sharing the estimator's curve.
- * Both draw each item's true difficulty off its catalog grade by N(0, 0.5²)
- * and give each learner their own slip in [0.03, 0.15] and guess in
- * [0, 0.25] (`synthetic-response.ts`). A learner's level means what the
- * estimator's does: 60% typed success on items of that grade.
- * - `steep`: slope 1.7 a grade, the estimator's former overall curve.
- * - `flat`: slope 1.15, fitted to retained production answers
- *   (docs/adaptive-evidence.md).
- *
- * Markdown goes to stdout; JSON to artifacts/early-anchor/ (gitignored).
+ * Markdown to stdout; JSON to artifacts/early-anchor/ (gitignored).
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -32,15 +37,18 @@ import {
   advanceFrontierState,
   createFrontierState,
   initialLevel,
+  overallPriorSd,
   readFrontierState,
   STRAND_FREEZE,
+  type Frontier,
 } from "../../src/learning/frontier";
 import {
   DEFAULT_FRONTIER_POLICY,
-  LEGACY_FRONTIER_POLICY,
   PREVIOUS_FRONTIER_POLICY,
   type FrontierPolicy,
 } from "../../src/learning/frontier-policy";
+import { reportFrontier } from "../../src/learning/frontier-report";
+import { RANGE_SD_MULTIPLIER } from "../../src/learning/level-check";
 import { MISSPECIFIED_RESPONSE } from "../../src/learning/synthetic-response";
 import {
   clientCanDraw,
@@ -56,32 +64,22 @@ import {
 } from "../../src/server/mixed-practice";
 import type { Outcome } from "../../src/server/repository";
 
-export const EARLY_SEED = 20261113;
-const EPOCH = Date.parse("2026-11-13T15:00:00Z");
-export const EARLY_CHECKPOINTS = [3, 5, 10, 20, 50, 200] as const;
-const ANSWERS = EARLY_CHECKPOINTS[EARLY_CHECKPOINTS.length - 1]!;
-/** Two minutes an answer, forty a day: a steady learner. */
+const EPOCH = Date.parse("2026-10-15T15:00:00Z");
+export const CHECKPOINTS = [3, 5, 10, 20, 50, 200] as const;
+const ANSWERS = CHECKPOINTS[CHECKPOINTS.length - 1]!;
+/** Two minutes an answer, forty a day. */
 const ANSWER_MS = 120_000;
 const DAY_ANSWERS = 40;
+/** How far an area sits from the learner's level in the population draw. */
+const AREA_SD = 0.5;
+/** The scale's anchor: typed success at an item's own grade, and the floor. */
+const AT_LEVEL = 0.6;
+const FLOOR = 0.04;
 
 export const POLICIES: Record<string, FrontierPolicy> = {
-  legacy: LEGACY_FRONTIER_POLICY,
   v4: PREVIOUS_FRONTIER_POLICY,
   v5: DEFAULT_FRONTIER_POLICY,
 };
-
-/** Where the learner truly is, relative to the grade for their age. */
-export const PROFILES = {
-  "behind-2": { offset: -2, uneven: false },
-  "behind-1": { offset: -1, uneven: false },
-  "on-level": { offset: 0, uneven: false },
-  "ahead-1": { offset: 1, uneven: false },
-  "ahead-2": { offset: 2, uneven: false },
-  /** On level overall, one grade apart by area: half +1, half −1. */
-  uneven: { offset: 0, uneven: true },
-} as const;
-export type Profile = keyof typeof PROFILES;
-/** A grade-for-age start from a birth year, or the unchosen adult start. */
 export const AGES = [
   { id: "grade-1", grade: 1 },
   { id: "grade-2", grade: 2 },
@@ -90,11 +88,22 @@ export const AGES = [
   { id: "grade-8", grade: 8 },
   { id: "adult", grade: null },
 ] as const;
+export type Age = (typeof AGES)[number];
+export const PROFILES = [
+  "population",
+  "-4",
+  "-3",
+  "-2",
+  "-1",
+  "0",
+  "+1",
+  "+2",
+  "+3",
+  "+4",
+  "uneven",
+] as const;
+export type Profile = (typeof PROFILES)[number];
 export const TRUTHS = { steep: 1.7, flat: 1.15 } as const;
-/** The scale's anchor: typed success at an item's own grade, and the typed
- * floor. Truth and estimator share the ruler, not the curve. */
-const AT_LEVEL = 0.6;
-const FLOOR = 0.04;
 export type Truth = keyof typeof TRUTHS;
 
 const nodes = new Map(skills.map((skill) => [skill.id, skill]));
@@ -148,41 +157,79 @@ function birthYearForGrade(grade: number, now: number) {
   return schoolYear - grade - 6;
 }
 
+/** One estimate as shown, with the truth it should show. */
+export type Shown = {
+  level: number;
+  sd: number;
+  answered: number;
+  truth: number;
+  /** The estimator's own level and posterior sd, before display. */
+  estimate: number;
+  posteriorSd: number;
+};
+export type Reading = { overall: Shown; areas: Shown[] };
 export type EarlyRun = {
-  policy: string;
   truth: Truth;
   age: string;
   profile: Profile;
   rep: number;
   start: number;
-  /** True overall level. */
   theta: number;
-  /** Shown overall level after each answer, index 0 = before any. */
-  shown: number[];
-  /** Mean absolute area error over the areas answered, at each checkpoint. */
-  strandError: Record<number, number>;
+  /** Shown overall level after each answer, per policy; index 0 = none. */
+  path: Record<string, number[]>;
+  /** The full shown frontier at each checkpoint, per policy. */
+  readings: Record<string, Record<number, Reading>>;
+  /** Answers at which the second policy's frontier would have served a
+   * different problem. */
+  practiceDiffers: number;
 };
 
-/** One learner under one policy: `ANSWERS` production problems. */
+function shownReading(
+  frontier: Frontier,
+  theta: number,
+  areaTruth: (strand: string) => number,
+): Reading {
+  const shown = reportFrontier(frontier);
+  return {
+    overall: {
+      level: shown.overall.level,
+      sd: shown.overall.sd,
+      answered: shown.overall.answered,
+      truth: theta,
+      estimate: frontier.overall.level,
+      posteriorSd: frontier.overall.sd,
+    },
+    areas: Object.entries(shown.strands).map(([strand, estimate]) => ({
+      level: estimate.level,
+      sd: estimate.sd,
+      answered: estimate.answered,
+      truth: areaTruth(strand),
+      estimate: frontier.strands[strand]!.level,
+      posteriorSd: frontier.strands[strand]!.sd,
+    })),
+  };
+}
+
+/** One learner: `ANSWERS` production problems, read under every policy. */
 export function simulateEarly(job: {
-  policy: string;
+  policies: readonly string[];
   truth: Truth;
-  age: (typeof AGES)[number];
+  age: Age;
   profile: Profile;
   rep: number;
   seed: number;
   itemOffsets: Record<string, number>;
 }): EarlyRun {
-  const policy = POLICIES[job.policy];
-  if (!policy) throw new Error(`Unknown policy ${job.policy}`);
-  const profile = PROFILES[job.profile];
-  // The learner is drawn from the seed, never the policy: every policy meets
-  // the same person, and the same luck on the same problem.
+  const policies = job.policies.map((id) => {
+    const policy = POLICIES[id];
+    if (!policy) throw new Error(`Unknown policy ${id}`);
+    return [id, policy] as const;
+  });
   const rng = mulberry32(
     mix([
       job.seed,
       AGES.indexOf(job.age),
-      Object.keys(PROFILES).indexOf(job.profile),
+      PROFILES.indexOf(job.profile),
       job.rep,
       job.truth === "steep" ? 1 : 2,
     ]),
@@ -193,58 +240,90 @@ export function simulateEarly(job: {
   const guess =
     MISSPECIFIED_RESPONSE.guessMin +
     rng() * (MISSPECIFIED_RESPONSE.guessMax - MISSPECIFIED_RESPONSE.guessMin);
-  const strandOffset = new Map<string, number>();
+  const fromAge = job.age.grade !== null;
+  const start = fromAge
+    ? initialLevel({
+        birthYear: birthYearForGrade(job.age.grade!, EPOCH),
+        now: EPOCH,
+      })
+    : initialLevel({ adult: true });
+  const spread = overallPriorSd(start, DEFAULT_FRONTIER_POLICY, fromAge);
+  const offset =
+    job.profile === "population"
+      ? gaussian(rng) * spread
+      : job.profile === "uneven"
+        ? 0
+        : Number(job.profile);
+  const theta = Math.max(-1, Math.min(13, start + offset));
+  const areaOffset = new Map<string, number>();
   strandNames.forEach((strand, index) =>
-    strandOffset.set(strand, profile.uneven ? (index % 2 ? 1 : -1) : 0),
+    areaOffset.set(
+      strand,
+      job.profile === "uneven"
+        ? index % 2
+          ? 1
+          : -1
+        : job.profile === "population"
+          ? gaussian(rng) * AREA_SD
+          : 0,
+    ),
   );
-  const start =
-    job.age.grade === null
-      ? initialLevel({ adult: true })
-      : initialLevel({
-          birthYear: birthYearForGrade(job.age.grade, EPOCH),
-          now: EPOCH,
-        });
-  const theta = Math.max(-1, start + profile.offset);
-  const state = createFrontierState(start, policy, job.age.grade !== null);
-  const attempts: Outcome[] = [];
-  const shown = [readFrontierState(state, EPOCH, policy).overall.level];
-  const strandError: Record<number, number> = {};
-  const wanted = new Set<number>(EARLY_CHECKPOINTS);
-  // Per-answer luck is fixed by position, so two policies that ask the same
-  // problem at the same point get the same answer.
+  const areaTruth = (strand: string) =>
+    Math.max(-1, Math.min(13, theta + (areaOffset.get(strand) ?? 0)));
+  const states = new Map(
+    policies.map(([id, policy]) => [
+      id,
+      createFrontierState(start, policy, fromAge),
+    ]),
+  );
+  const path: Record<string, number[]> = {};
+  const readings: Record<string, Record<number, Reading>> = {};
+  for (const [id, policy] of policies) {
+    path[id] = [
+      reportFrontier(readFrontierState(states.get(id)!, EPOCH, policy)).overall
+        .level,
+    ];
+    readings[id] = {};
+  }
+  const wanted = new Set<number>(CHECKPOINTS);
   const luck = Array.from({ length: ANSWERS }, () => rng());
   const slope = TRUTHS[job.truth];
+  const anchor = Math.log((AT_LEVEL - FLOOR) / (1 - slip - AT_LEVEL)) / slope;
+  const attempts: Outcome[] = [];
+  let practiceDiffers = 0;
   for (let index = 0; index < ANSWERS; index++) {
     const at =
       EPOCH +
       Math.floor(index / DAY_ANSWERS) * 86_400_000 +
       (index % DAY_ANSWERS) * ANSWER_MS;
-    const frontier = readFrontierState(state, at, policy);
-    const [choice] = planMixedPractice({
-      templates: webTemplates,
-      skills,
-      attempts: attempts.slice(-12),
-      evidence: projectSkillEvidence(attempts),
-      frontier,
-      count: 1,
-      seed: `early:${job.age.id}:${job.profile}:${job.rep}:${index}`,
-      now: at,
-      learnerKey: `early:${job.age.id}:${job.profile}:${job.rep}`,
-    });
+    const plan = (frontier: Frontier) =>
+      planMixedPractice({
+        templates: webTemplates,
+        skills,
+        attempts: attempts.slice(-12),
+        evidence: projectSkillEvidence(attempts),
+        frontier,
+        count: 1,
+        seed: `early:${job.age.id}:${job.profile}:${job.rep}:${index}`,
+        now: at,
+        learnerKey: `early:${job.age.id}:${job.profile}:${job.rep}`,
+      })[0];
+    const frontiers = policies.map(([id, policy]) =>
+      readFrontierState(states.get(id)!, at, policy),
+    );
+    const choice = plan(frontiers[0]!);
     if (!choice) throw new Error(`No problem at ${index}`);
+    for (const other of frontiers.slice(1))
+      if (plan(other)?.template.id !== choice.template.id) practiceDiffers += 1;
     const template = choice.template;
     const strand = strandOf.get(template.id) ?? choice.strand;
     const grade = gradeOf.get(template.id)!;
-    const truth = theta + (strandOffset.get(strand) ?? 0);
     const itemGuess = Math.max(guess, guessChanceOf(template.id));
     const difficulty = grade + (job.itemOffsets[template.id] ?? 0);
-    // On the estimator's scale: a learner at an item's true grade answers it
-    // typed 60% of the time, whatever their own slip.
-    const anchor = Math.log((AT_LEVEL - FLOOR) / (1 - slip - AT_LEVEL)) / slope;
-    const latent = 1 / (1 + Math.exp(-slope * (truth - difficulty + anchor)));
+    const latent =
+      1 / (1 + Math.exp(-slope * (areaTruth(strand) - difficulty + anchor)));
     const typed = FLOOR + (1 - FLOOR - slip) * latent;
-    const probability = itemGuess + (1 - itemGuess) * typed;
-    const correct = luck[index]! < probability;
+    const correct = luck[index]! < itemGuess + (1 - itemGuess) * typed;
     const createdAt = new Date(at).toISOString();
     attempts.push({
       id: `a${index}`,
@@ -259,34 +338,31 @@ export function simulateEarly(job: {
       answer: "",
       createdAt,
     });
-    advanceFrontierState(
-      state,
-      { templateId: template.id, correct, assisted: false, createdAt },
-      catalog,
-      policy,
-      STRAND_FREEZE,
-    );
-    const after = readFrontierState(state, at, policy);
-    shown.push(after.overall.level);
-    if (wanted.has(index + 1)) {
-      const errors = Object.entries(after.strands).map(([name, estimate]) =>
-        Math.abs(estimate.level - (theta + (strandOffset.get(name) ?? 0))),
+    for (const [id, policy] of policies) {
+      const state = states.get(id)!;
+      advanceFrontierState(
+        state,
+        { templateId: template.id, correct, assisted: false, createdAt },
+        catalog,
+        policy,
+        STRAND_FREEZE,
       );
-      strandError[index + 1] =
-        errors.reduce((sum, value) => sum + value, 0) /
-        Math.max(1, errors.length);
+      const after = readFrontierState(state, at, policy);
+      path[id]!.push(reportFrontier(after).overall.level);
+      if (wanted.has(index + 1))
+        readings[id]![index + 1] = shownReading(after, theta, areaTruth);
     }
   }
   return {
-    policy: job.policy,
     truth: job.truth,
     age: job.age.id,
     profile: job.profile,
     rep: job.rep,
     start,
     theta,
-    shown,
-    strandError,
+    path,
+    readings,
+    practiceDiffers,
   };
 }
 
@@ -301,33 +377,30 @@ function itemOffsets(seed: number) {
 export function runEarly(options: {
   policies: readonly string[];
   reps: number;
-  seed?: number;
-  ages?: readonly (typeof AGES)[number][];
+  seed: number;
+  ages?: readonly Age[];
   profiles?: readonly Profile[];
   truths?: readonly Truth[];
   onRun?: (run: EarlyRun) => void;
 }): EarlyRun[] {
-  const seed = options.seed ?? EARLY_SEED;
-  const offsets = itemOffsets(seed);
+  const offsets = itemOffsets(options.seed);
   const runs: EarlyRun[] = [];
   for (const truth of options.truths ?? (Object.keys(TRUTHS) as Truth[]))
     for (const age of options.ages ?? AGES)
-      for (const profile of options.profiles ??
-        (Object.keys(PROFILES) as Profile[]))
-        for (let rep = 0; rep < options.reps; rep++)
-          for (const policy of options.policies) {
-            const run = simulateEarly({
-              policy,
-              truth,
-              age,
-              profile,
-              rep,
-              seed,
-              itemOffsets: offsets,
-            });
-            runs.push(run);
-            options.onRun?.(run);
-          }
+      for (const profile of options.profiles ?? PROFILES)
+        for (let rep = 0; rep < options.reps; rep++) {
+          const run = simulateEarly({
+            policies: options.policies,
+            truth,
+            age,
+            profile,
+            rep,
+            seed: options.seed,
+            itemOffsets: offsets,
+          });
+          runs.push(run);
+          options.onRun?.(run);
+        }
   return runs;
 }
 
@@ -335,160 +408,166 @@ const mean = (values: readonly number[]) =>
   values.length
     ? values.reduce((sum, value) => sum + value, 0) / values.length
     : NaN;
+const fixed = (value: number, digits = 2) =>
+  Number.isFinite(value) ? value.toFixed(digits) : "—";
+const percent = (value: number) =>
+  Number.isFinite(value) ? `${Math.round(value * 100)}%` : "—";
 
 /** First answer count after which the shown level stays within `within`. */
-export function settledAt(run: EarlyRun, within = 0.5): number | null {
+export function settledAt(run: EarlyRun, policy: string, within: number) {
+  const path = run.path[policy]!;
   let last = -1;
-  run.shown.forEach((level, index) => {
+  path.forEach((level, index) => {
     if (Math.abs(level - run.theta) > within) last = index;
   });
   return last + 1 > ANSWERS ? null : last + 1;
 }
 
-export type EarlySummary = {
-  policy: string;
-  profile: string;
-  n: number;
-  /** Mean signed error (shown − true) at each checkpoint. */
-  bias: Record<number, number>;
-  mae: Record<number, number>;
-  /** Share of learners shown a grade or more away from the truth. */
-  offByOne: Record<number, number>;
-  strandMae: Record<number, number>;
-  /** Median answers until the shown level stays within half a grade. */
-  settledMedian: number | null;
-  /** Mean of |change| in the shown level per answer over answers 1–20. */
-  jitter: number;
-  /** Mean of the largest |shown − start| over answers 1–5. */
-  earlySwing: number;
-};
-
-export function summarize(
-  runs: readonly EarlyRun[],
-  key: (run: EarlyRun) => string,
-): EarlySummary[] {
-  const groups = new Map<string, EarlyRun[]>();
-  for (const run of runs) {
-    const id = `${run.policy}|${key(run)}`;
-    groups.set(id, [...(groups.get(id) ?? []), run]);
-  }
-  return [...groups].map(([id, group]) => {
-    const [policy, profile] = id.split("|") as [string, string];
-    const at = (answers: number, f: (run: EarlyRun) => number) =>
-      mean(group.map(f));
-    const record = (f: (run: EarlyRun, answers: number) => number) =>
-      Object.fromEntries(
-        EARLY_CHECKPOINTS.map((answers) => [
-          answers,
-          at(answers, (run) => f(run, answers)),
-        ]),
-      );
-    const settled = group
-      .map((run) => settledAt(run) ?? Infinity)
-      .sort((a, b) => a - b);
-    const middle = settled[Math.floor(settled.length / 2)]!;
-    return {
-      policy,
-      profile,
-      n: group.length,
-      bias: record((run, n) => run.shown[n]! - run.theta),
-      mae: record((run, n) => Math.abs(run.shown[n]! - run.theta)),
-      offByOne: record((run, n) =>
-        Math.abs(run.shown[n]! - run.theta) >= 1 ? 1 : 0,
-      ),
-      strandMae: record((run, n) => run.strandError[n] ?? NaN),
-      settledMedian: Number.isFinite(middle) ? middle : null,
-      jitter: mean(
-        group.map((run) =>
-          mean(
-            run.shown
-              .slice(1, 21)
-              .map((level, index) => Math.abs(level - run.shown[index]!)),
-          ),
-        ),
-      ),
-      earlySwing: mean(
-        group.map((run) =>
-          Math.max(
-            ...run.shown
-              .slice(1, 6)
-              .map((level) => Math.abs(level - run.start)),
-          ),
-        ),
-      ),
-    };
-  });
-}
-
-const fixed = (value: number, digits = 2) =>
-  Number.isFinite(value) ? value.toFixed(digits) : "—";
+const inside = (shown: Shown, k: number) =>
+  Math.abs(shown.level - shown.truth) <= k * shown.sd;
 
 export function formatEarly(runs: readonly EarlyRun[]) {
+  const policies = Object.keys(runs[0]?.path ?? {});
   const lines: string[] = [];
-  const policies = [...new Set(runs.map((run) => run.policy))];
+  const children = runs.filter((run) => run.age !== "adult");
+  const adults = runs.filter((run) => run.age === "adult");
   const table = (
     title: string,
-    rows: EarlySummary[],
-    cell: (row: EarlySummary, n: number) => string,
+    groups: [string, readonly EarlyRun[]][],
+    cell: (run: EarlyRun, policy: string, n: number) => number,
+    show: (value: number) => string = (value) => fixed(value),
   ) => {
     lines.push(`### ${title}`, "");
     lines.push(
-      `| Profile | Policy | ${EARLY_CHECKPOINTS.join(" | ")} |`,
-      `|---|---|${EARLY_CHECKPOINTS.map(() => "---:").join("|")}|`,
+      `| Learners | n | Policy | ${CHECKPOINTS.join(" | ")} |`,
+      `|---|---:|---|${CHECKPOINTS.map(() => "---:").join("|")}|`,
     );
-    const profiles = [...new Set(rows.map((row) => row.profile))];
-    for (const profile of profiles)
-      for (const policy of policies) {
-        const row = rows.find(
-          (r) => r.profile === profile && r.policy === policy,
-        );
-        if (!row) continue;
+    for (const [label, group] of groups)
+      for (const policy of policies)
         lines.push(
-          `| ${profile} | ${policy} | ${EARLY_CHECKPOINTS.map((n) => cell(row, n)).join(" | ")} |`,
+          `| ${label} | ${group.length} | ${policy} | ${CHECKPOINTS.map((n) =>
+            show(mean(group.map((run) => cell(run, policy, n)))),
+          ).join(" | ")} |`,
         );
-      }
     lines.push("");
   };
-  const byProfile = summarize(runs, (run) => run.profile);
-  const all = summarize(runs, () => "all");
-  table("Shown − true, mean (grades)", byProfile, (row, n) =>
-    fixed(row.bias[n]!),
-  );
-  table("|Shown − true|, mean (grades)", [...byProfile, ...all], (row, n) =>
-    fixed(row.mae[n]!),
+  const by = (pool: readonly EarlyRun[], profile: Profile) =>
+    pool.filter((run) => run.profile === profile);
+  const groups: [string, readonly EarlyRun[]][] = [
+    ["Children, drawn from national norms", by(children, "population")],
+    ...PROFILES.filter((p) => p !== "population").map(
+      (p) =>
+        [
+          p === "uneven" ? "Children, uneven areas" : `Children, ${p}`,
+          by(children, p),
+        ] as [string, readonly EarlyRun[]],
+    ),
+    ["Adults (chosen start), all offsets", adults],
+  ];
+  const overall = (run: EarlyRun, policy: string, n: number) =>
+    run.readings[policy]![n]!.overall;
+  table(
+    "Shown overall level: mean |shown − true| (grades)",
+    groups,
+    (run, policy, n) => Math.abs(overall(run, policy, n).level - run.theta),
   );
   table(
-    "Shown a grade or more from the truth (share)",
-    [...byProfile, ...all],
-    (row, n) => fixed(row.offByOne[n]!),
+    "Shown overall level: mean shown − true (grades)",
+    groups,
+    (run, policy, n) => overall(run, policy, n).level - run.theta,
   );
   table(
-    "Area |estimate − true|, mean (grades)",
-    [...byProfile, ...all],
-    (row, n) => fixed(row.strandMae[n]!),
+    "Shown overall level a grade or more from the truth (share)",
+    groups,
+    (run, policy, n) =>
+      Math.abs(overall(run, policy, n).level - run.theta) >= 1 ? 1 : 0,
+    percent,
   );
-  lines.push("### Settling and stability", "");
-  lines.push(
-    "| Profile | Policy | Median answers to stay within ½ grade | Mean step, answers 1–20 | Largest move from start, answers 1–5 |",
-    "|---|---|---:|---:|---:|",
+  const onLevel = [...by(children, "population"), ...by(children, "0")].filter(
+    (run) => Math.abs(run.theta - run.start) < 0.5,
   );
-  for (const row of [...byProfile, ...all].sort((a, b) =>
-    a.profile === b.profile ? 0 : a.profile < b.profile ? -1 : 1,
-  ))
-    lines.push(
-      `| ${row.profile} | ${row.policy} | ${row.settledMedian ?? "> 200"} | ${fixed(row.jitter, 3)} | ${fixed(row.earlySwing)} |`,
+  table(
+    "Children truly within half a grade of their age: shown a grade or more above it (share)",
+    [["Population draws and on-level", onLevel]],
+    (run, policy, n) =>
+      overall(run, policy, n).level - run.start >= 1 ? 1 : 0,
+    percent,
+  );
+  const envelope = (
+    pool: readonly EarlyRun[],
+    pick: (reading: Reading) => Shown[],
+    k: number,
+  ) =>
+    CHECKPOINTS.map((n) =>
+      policies.map((policy) => {
+        const shown = pool.flatMap((run) => pick(run.readings[policy]![n]!));
+        return [
+          shown.filter((s) => inside(s, k)).length / shown.length,
+          shown.length,
+        ];
+      }),
     );
+  lines.push(
+    `### Shown range (±${RANGE_SD_MULTIPLIER} reported sd) covers the truth (target about 90%)`,
+    "",
+    `| Estimate | Learners | Policy | ${CHECKPOINTS.join(" | ")} |`,
+    `|---|---|---|${CHECKPOINTS.map(() => "---:").join("|")}|`,
+  );
+  for (const [label, pool] of [
+    ["Children, norms draws", by(children, "population")],
+    ["Children, all profiles", children],
+    ["Adults", adults],
+  ] as [string, readonly EarlyRun[]][])
+    for (const [what, pick] of [
+      ["Overall", (r: Reading) => [r.overall]],
+      ["Areas (own answer counts)", (r: Reading) => r.areas],
+    ] as [string, (r: Reading) => Shown[]][]) {
+      const cover = envelope(pool, pick, RANGE_SD_MULTIPLIER);
+      policies.forEach((policy, p) =>
+        lines.push(
+          `| ${what} | ${label} | ${policy} | ${cover
+            .map((row) => percent(row[p]![0]!))
+            .join(" | ")} |`,
+        ),
+      );
+    }
   lines.push("");
   lines.push(
-    "### By age, all profiles: |shown − true| at 3, 10 and 50 answers",
+    "### Far from their age: answers until the shown level stays within 0.75 of the truth",
+    "",
+    "| Learners | Policy | Median | 75th percentile |",
+    "|---|---|---:|---:|",
+  );
+  for (const profile of ["-4", "-3", "-2", "+2", "+3", "+4"] as Profile[])
+    for (const policy of policies) {
+      const settled = by(children, profile)
+        .map((run) => settledAt(run, policy, 0.75) ?? Infinity)
+        .sort((a, b) => a - b);
+      const q = (x: number) => {
+        const v = settled[Math.floor(x * (settled.length - 1))]!;
+        return Number.isFinite(v) ? String(v) : "> 200";
+      };
+      lines.push(
+        `| Children, ${profile} | ${policy} | ${q(0.5)} | ${q(0.75)} |`,
+      );
+    }
+  lines.push("");
+  table(
+    "Areas: mean |shown − true| (grades)",
+    [
+      ["Children, norms draws", by(children, "population")],
+      ["Children, uneven areas", by(children, "uneven")],
+    ],
+    (run, policy, n) =>
+      mean(
+        run.readings[policy]![n]!.areas.map((a) => Math.abs(a.level - a.truth)),
+      ),
+  );
+  const differs = runs.reduce((sum, run) => sum + run.practiceDiffers, 0);
+  lines.push(
+    `Practice: ${differs} of ${runs.length * ANSWERS} problems would have differed between ${policies.join(" and ")}.`,
     "",
   );
-  lines.push("| Age | Policy | 3 | 10 | 50 |", "|---|---|---:|---:|---:|");
-  for (const row of summarize(runs, (run) => run.age))
-    lines.push(
-      `| ${row.profile} | ${row.policy} | ${fixed(row.mae[3]!)} | ${fixed(row.mae[10]!)} | ${fixed(row.mae[50]!)} |`,
-    );
-  lines.push("");
   return lines.join("\n");
 }
 
@@ -499,9 +578,9 @@ function argument(name: string) {
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const quick = process.argv.includes("--quick");
-  const policies = (argument("--policies") ?? "v4,v5").split(",");
-  const reps = Number(argument("--reps") ?? (quick ? 2 : 6));
-  const seed = Number(argument("--seed") ?? EARLY_SEED);
+  const policies = (argument("--policies") ?? "v5,v4").split(",");
+  const reps = Number(argument("--reps") ?? (quick ? 1 : 4));
+  const seed = Number(argument("--seed") ?? 1);
   const started = Date.now();
   let done = 0;
   const runs = runEarly({
@@ -510,9 +589,9 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
     seed,
     onRun: () => {
       done += 1;
-      if (done % 20 === 0)
+      if (done % 25 === 0)
         process.stderr.write(
-          `  ${done} runs, ${((Date.now() - started) / 1000).toFixed(0)}s\n`,
+          `  ${done} learners, ${((Date.now() - started) / 1000).toFixed(0)}s\n`,
         );
     },
   });
@@ -522,7 +601,7 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   );
   mkdirSync(directory, { recursive: true });
   writeFileSync(
-    join(directory, `early-${quick ? "quick" : "full"}-${seed}.json`),
+    join(directory, `early-seed${seed}-reps${reps}.json`),
     JSON.stringify({ seed, reps, policies, runs }),
   );
   process.stdout.write(

@@ -10,7 +10,7 @@ import type { Estimate } from "../../learning/frontier.js";
 import { DEFAULT_FRONTIER_POLICY } from "../../learning/frontier-policy.js";
 import {
   REPORTED_SD_VERSION,
-  reportedSd,
+  reportFrontier,
 } from "../../learning/frontier-report.js";
 import {
   MISSPECIFIED_RESPONSE,
@@ -83,10 +83,10 @@ export type LevelAnswer = {
   day?: string;
 };
 
-function stored(estimate: Estimate, scope: "overall" | "strand") {
+function stored(estimate: Estimate) {
   return {
     level: estimate.level,
-    sd: reportedSd(estimate.sd, { answered: estimate.answered, scope }),
+    sd: estimate.sd,
     answered: estimate.answered,
     independent: estimate.independent,
   };
@@ -113,15 +113,17 @@ export function levelDocuments(options: {
   const snapshot = (day: string) => {
     if (!wanted.has(day)) return;
     const frontier = readLearnerFrontier(state, Date.parse(`${day}T23:00:00Z`));
+    // Stored as shown, like a live level day (`saveLevelDay`).
+    const shown = reportFrontier(frontier);
     rows.push({
       day,
       frontier: JSON.stringify({
         sdVersion: REPORTED_SD_VERSION,
-        overall: stored(frontier.overall, "overall"),
+        overall: stored(shown.overall),
         strands: Object.fromEntries(
-          Object.entries(frontier.strands).map(([id, estimate]) => [
+          Object.entries(shown.strands).map(([id, estimate]) => [
             id,
-            stored(estimate, "strand"),
+            stored(estimate),
           ]),
         ),
       }),

@@ -14,10 +14,6 @@ import {
 
 const PROBLEMS = 30;
 const TARGET = 15;
-/** The shown level may take a little longer than practice: since
- * grade-frontier-v5 the overall readout weighs each answer by the slope
- * fitted to real answers (1.15 a grade), flatter than this learner's. */
-const ESTIMATE_TARGET = 18;
 const trace = (run: ClimbRun) =>
   run.steps
     .map(
@@ -25,8 +21,8 @@ const trace = (run: ClimbRun) =>
         `${i + 1}:${step.grade}${step.correct ? "✓" : "✗"}→${step.level}`,
     )
     .join(" ");
-/** Practice works near the level within the target, and the estimate has
- * come within half a grade of it soon after. */
+/** Practice works near the level, and the estimate has come within half a
+ * grade of it, within the target. */
 function assertReaches(run: ClimbRun, level: number) {
   const served = answersToServe(run);
   const estimated = answersToEstimate(run, level, 0.5, 1);
@@ -34,18 +30,18 @@ function assertReaches(run: ClimbRun, level: number) {
     served !== null &&
       served <= TARGET &&
       estimated !== null &&
-      estimated <= ESTIMATE_TARGET,
+      estimated <= TARGET,
     `near level from problem ${served}, estimate within ±0.5 after ${estimated}: ${trace(run)}`,
   );
 }
 
-test("an adult working at grade 10 who starts at grade 2 is practicing at their level within 15 problems", () => {
+test("an adult working at grade 10 who starts at grade 2 reaches their level within 15 problems", () => {
   const run = simulateClimb({ level: 10 }, { seed: "adult", count: PROBLEMS });
   assert.equal(run.start, 2);
   assertReaches(run, 10);
 });
 
-test("a struggling 7th grader working at grade 4 is practicing at their level within 15 problems", () => {
+test("a struggling 7th grader working at grade 4 comes down to their level within 15 problems", () => {
   const run = simulateClimb(
     { level: 4, birthYear: 2013 },
     { seed: "seventh", count: PROBLEMS },

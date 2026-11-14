@@ -11,11 +11,11 @@ Each skill has a durable summary: attempts, independent correct answers, the lat
 
 Retrieval intervals are six hours, one day, three days, seven days, fourteen days and thirty days. Independent success advances spacing only after six hours since the last credited retrieval. Errors and assistance reset it. Response speed does not affect this scheduling rule.
 
-The frontier estimates a curriculum-grade coordinate: kindergarten is 0, grades 1–8 use their numbers, and Algebra 1, Geometry, Algebra 2 and Precalculus occupy 9–12. This ordering is a scheduling convenience, not proof that courses have equivalent difficulty. The prior starts from age or a selected grade band. A start set by a birth year is only as wide as learners of that age are spread on this scale (about 0.7 of a grade at K–2, 1.05 at grade 4, 1.65 at grade 7, 2.5 from grade 9; `AGE_PRIOR_SD`, fitted to retained answers, see [the norms prior](engine/norms-prior.md)). A start someone chose, such as an adult's start or a family band, keeps the wider 2.5, so the adult prior (default start grade 7) is unchanged. **A working grade is not mastery of that grade or a population percentile.** The readout shows hundredths so small changes are visible; hundredths do not establish that degree of measurement accuracy.
+The frontier estimates a curriculum-grade coordinate: kindergarten is 0, grades 1–8 use their numbers, and Algebra 1, Geometry, Algebra 2 and Precalculus occupy 9–12. This ordering is a scheduling convenience, not proof that courses have equivalent difficulty. The prior starts from age or a selected grade band; for a start set by age, the overall readout's prior is only as wide as that age is spread nationally ([early placement](#early-placement-grade-frontier-v5)). **A working grade is not mastery of that grade or a population percentile.** The readout shows hundredths so small changes are visible; hundredths do not establish that degree of measurement accuracy.
 
 The versioned, validated `src/learning/frontier-policy.ts` separates two jobs:
 
-- **Overall working level:** a steadier pooled estimate, using a provisional 60% unassisted typed-success anchor at the same grade, a 4% typed guess floor and an 8% slip ceiling allowance. Four-choice chance guessing raises the modeled same-grade observed success to 70%. The slope is 1.15 logits a grade, fitted to retained production answers ([early placement](#early-placement-grade-frontier-v5-2026-11-13)); the anchor, floor and slip remain editorial.
+- **Overall working level:** a steadier pooled estimate, using a provisional 60% unassisted typed-success anchor at the same grade, a 4% typed guess floor and an 8% slip ceiling allowance. Four-choice chance guessing raises the modeled same-grade observed success to 70%. These are editorial parameters, not student norms.
 - **Local selection:** responsive subject estimates and a responsive pooled prior for unpracticed areas. This retains the local response model's roughly 68% typed-success anchor and 4% slip allowance. Each observed area uses its own answers. The broad pooled prior shares information across areas but does not demonstrate a skill there. The two estimates have different purposes and are not expected to be identical.
 
 Recency remains active in both: before each answer, process variance lets older evidence fade. The overall variance per answer is 0.003 grade²; local estimates use 0.03. Both allow 0.02 grade² per elapsed day, with each gap capped at 30 days. Surprising independent successes can reopen an estimate that has become too certain. Local estimates also widen after surprising failures, allowing the scheduler to react promptly to gaps.
@@ -42,77 +42,101 @@ Production aims near `level − 0.5 + 0.3 × uncertainty`. Due reviews, errors a
 
 Production selection reasons describe a prerequisite, revisit after an error or assistance, scheduled review, work in a skill with recorded evidence (`frontier`), or an unobserved skill (`explore`).
 
-## Early placement (grade-frontier-v5, 2026-11-13)
+## Early placement (grade-frontier-v5)
 
-Under v4, a ten-year-old who answers three on-grade problems right is shown about grade 6, overall and in every area. The cause was the prior, not the answers: a flat 2.5-grade prior on a learner whose age says grade 4, multiplied by three right answers, which only rule out the low end. The posterior mean then sits in the prior's upper tail, about 0.8 of a prior sd above the start. v5 (`DEFAULT_FRONTIER_POLICY`; v4 is kept as `PREVIOUS_FRONTIER_POLICY` for paired replays) changes two things, both fitted to retained production answers:
+Under v4, a ten-year-old who answers three on-grade problems right is shown about grade 6, overall and in every area. The prior causes this, not the answers. Every learner starts with a flat 2.5-grade prior. Three right answers only rule out the low end, so the posterior mean lands in the prior's upper tail, about 0.8 of a prior sd above the start.
 
-- **The age prior.** A birth-year start uses `AGE_PRIOR_SD` (0.7 at K–2, 1.05 at grade 4, 1.65 at grade 7, 2.5 from grade 9). These are the upper ends of the 95% profile-likelihood intervals of the population spread, fitted by marginal maximum likelihood to learners' first 30 answers ([norms prior](engine/norms-prior.md)). Chosen starts keep 2.5.
-- **The overall slope.** 1.15 logits a grade instead of 1.7. Fitted the same way, it is stable across answer windows (10, 30 and 60 answers: 1.11, 1.14, 1.20) and on half the learners (1.09). Part of the flatness is real variation between a learner's areas, which the overall readout pools.
+v5 (`DEFAULT_FRONTIER_POLICY`) changes what is shown and how wide it is drawn. It does not change what is practised. v4 is kept as `PREVIOUS_FRONTIER_POLICY` for paired replays.
 
-The local model scheduling reads (`strandResponse`, the area estimates) is unchanged apart from starting from the narrower age prior.
+- **Overall readout: national-norms prior.** For a start set by a birth year, the overall readout's prior is as wide as that age is spread nationally. This is `NORMS_PRIOR_SD`, the "AMP prior sd" column of the [norms prior](engine/norms-prior.md): 0.7 at K, 1.6 at grade 4, capped at 2.5 from grade 6.
+  - It is a provisional, external prior, not fitted to AMP learners.
+- **Display rule** (`frontier-policy.ts` `display`; `frontier-report.ts`). For an age-anchored learner, the shown overall level is held to the half-grade band around their age, then released by a tenth of the way to the estimate per answer. From ten answers on, it is the estimate.
+  - Each area is shown at the overall shown level, plus its own answers ÷ 10 of its difference from the overall estimate. An area with few answers of its own sits near the learner's level.
+  - Stored level days and the trend show the same.
+  - Display only: nothing that selects problems reads it.
+- **Shown widths (sd-cal-v2).** The reported width is 0.2 + a factor × the posterior sd, read by each estimate's own answer count (an area's own answers, as production stores them).
+  - Overall: 1.01 up to 10 answers, 0.80 from 20.
+  - Areas: 0.85 up to 10 answers, 0.95 from 20.
+  - When the shown overall level sits off the estimate, its width adds that distance ÷ 1.64, so the shown range always holds the estimate's own range.
+  - An area's width is the same blend of the overall shown width and its own as its level.
+- **Selection is unchanged.** Selection's pooled estimate keeps 2.5 for every start. The area estimates, the climb and both response curves are v4's.
+  - `tests/frontier-early-anchor.test.ts` checks that selection reads identical values and plans identical problems.
+  - The simulation below counts no problem that would differ in 158,400.
+- **Chosen starts.** An adult's start, a family band or a restarted area is estimated and shown at v4's levels. Only its widths follow sd-cal-v2.
 
-| Synthetic case: born 2016, read in the fall of 2026 |               v4 |               v5 |
-| ------------------------------------------ | ---------------: | ---------------: |
-| Before any answer, overall                 |      4.13 ± 1.99 |      4.00 ± 1.28 |
-| After 1 right answer (decimals, grade 4)   |             5.55 |             4.36 |
-| After 2 (fraction equivalence, 4 options)  |             5.85 |             4.53 |
-| After 3 (fraction line plot, grade 3)      |      5.97 ± 1.43 |      4.63 ± 1.07 |
-| Areas after 3: decimals, fractions, data   | 6.21, 6.11, 6.03 | 5.33, 5.11, 5.03 |
+| Constructed case: born 2016, read in the fall of 2026, three right answers | v4 | v5 |
+|---|---:|---:|
+| Before any answer, overall | 4.13, range 0.8–7.4 | 4.00, range 1.0–7.0 |
+| After 1 (decimals, grade 4, typed) | 5.55 | 4.54 |
+| After 2 (angles, grade 4, four options) | 5.85 | 4.62 |
+| After 3 (bar graph, grade 3, typed) | 5.97, range 3.6–8.3 | 4.71, range 2.0–7.4 |
+| Areas after 3: decimals, geometry, data | 6.21, 6.11, 6.03 | 4.81, 4.80, 4.79 (each ± 1.62) |
 
-Shown widths are the reported sd (`frontier-report.ts`): sd-cal-v1 for v4, as shipped, and sd-cal-v2 for v5. v5's posterior is narrower, but sd-cal-v2 scales it up, because the coverage harness showed sd-cal-v1 left v5's ranges too narrow; the shown range after three answers is still wide (2.9–6.4), which is honest about three answers. `tests/frontier-early-anchor.test.ts` pins this case and fails under v4.
+Behind v5's shown 4.71, the readout's own estimate is 5.19: the narrower prior moves it 1.2 grades from 4, not 2. `tests/frontier-early-anchor.test.ts` pins the case. It fails under v4.
 
-**Reported widths, sd-cal-v2.** The overall readout and the areas now have separate scales of the posterior sd (overall 1.22–1.32, areas 1.09–1.43, no floor), refit with `scripts/frontier/production-calibration.ts` so both cover 68% ± 4 within 1σ and 95% ± 3 within 2σ at 20, 50, 100 and 300 answers on the misspecified synthetic learner. One shared scale (sd-cal-v1) cannot: the overall slope is now flatter than the areas'.
+**Simulation.** `scripts/frontier/early-anchor-simulation.ts` runs the production planner and display path for 200 answers on both policies, along one answer sequence.
 
-**Retained production answers, replayed.** Retained attempts were exported read-only (no names, emails or account identifiers) and replayed locally under each policy, up to 300 answers per learner; nothing about any learner enters this repository. Lower is better in both tables.
+- Truth comes from external norms, not from AMP data or the demo school. Children aged grade 1, 2, 4, 6 and 8 are drawn from N(age, the national spread), with areas N(0, 0.5²) apart.
+- Fixed offsets cover −4 … +4 grades, plus learners on level with areas alternately one grade above and below.
+- Adults on the grade-7 default have the same offsets.
+- Answers come from a misspecified curve on the estimator's scale (item difficulty off its catalog grade by N(0, 0.5²), own slip and guess) at slopes 1.7 and 1.15.
+- The display rule was chosen on seed 1 from nine candidates, and the widths were fit on seed 1 and on the calibration grid at seed 20261110. The tables below are seed 2, untouched by either. Seed 1 agrees.
 
-| Policy                                   | Next-answer log loss, all answers | First 20 answers | Held-out half of learners |
-| ---------------------------------------- | --------------------------------: | ---------------: | ------------------------: |
-| v4                                       |                            0.5687 |           0.6341 |                    0.5649 |
-| v4 prior from national norms, slope 1.15 |                            0.5627 |           0.6152 |                    0.5596 |
-| **v5**                                   |                        **0.5622** |       **0.6112** |                **0.5591** |
-| v5 with v4's slope 1.7                   |                            0.5670 |           0.6139 |                    0.5632 |
+Overall shown level, mean |shown − true| in grades, v4 → v5:
 
-How well the level shown early predicts the level after 150 answers (learners with at least 150), as mean signed / mean absolute difference in grades:
+| Learners (seed 2) | n | 3 answers | 5 | 10 | 20 | 50 | 200 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Children drawn from national norms | 30 | 1.32 → 1.40 | 1.17 → 1.23 | 0.85 → 0.79 | 0.63 → 0.57 | 0.43 → 0.42 | 0.31 → 0.31 |
+| On level | 30 | 1.16 → **0.52** | 1.02 → **0.56** | 0.69 → **0.54** | 0.56 → 0.51 | 0.38 → 0.37 | 0.25 → 0.25 |
+| One grade off | 60 | 1.02 → **0.63** | 0.89 → **0.55** | 0.63 → 0.56 | 0.54 → 0.48 | 0.33 → 0.32 | 0.25 → 0.25 |
+| Two grades off | 60 | 0.75 → 1.42 | 0.90 → 1.22 | 0.75 → 0.85 | 0.62 → 0.65 | 0.39 → 0.39 | 0.32 → 0.32 |
+| Three or four off | 120 | 1.76 → 2.67 | 1.24 → 2.27 | 1.00 → 1.16 | 0.59 → 0.70 | 0.52 → 0.51 | 0.29 → 0.29 |
+| Uneven areas | 30 | 1.30 → **0.49** | 1.00 → **0.59** | 1.07 → **0.89** | 0.77 → 0.67 | 0.58 → 0.54 | 0.63 → 0.63 |
+| Adults, −4 … +4 | 66 | 1.17 → 1.17 | 1.05 → 1.05 | 0.77 → 0.77 | 0.59 → 0.59 | 0.44 → 0.44 | 0.28 → 0.28 |
 
-| Policy               |          After 3 |                5 |               10 |               20 |               50 |
-| -------------------- | ---------------: | ---------------: | ---------------: | ---------------: | ---------------: |
-| v4                   |     +0.33 / 0.90 |     +0.22 / 0.92 |     −0.01 / 0.69 |     −0.05 / 0.56 |     −0.15 / 0.42 |
-| national-norms prior |     +0.21 / 0.63 |     +0.13 / 0.65 |     −0.02 / 0.59 |     −0.04 / 0.51 |     −0.12 / 0.40 |
-| **v5**               | **+0.14 / 0.60** | **+0.10 / 0.58** | **−0.01 / 0.53** | **−0.03 / 0.47** | **−0.12 / 0.38** |
+**Learners within half a grade of their age.** Shown a grade or more above their age after 3 answers: 51% under v4, 2% under v5. Named two grades up (shown ≥ 1.5 above): 49% → 0%. After 10 answers, 32% → 22%.
 
-Learners shown more than a grade above their age start after three answers: 26% under v4, 1% under v5; more than a grade below: 20% and 4%. After 50 answers the two policies differ by more than half a grade for no learner, and by 0.03 on average.
+**The cost is the far tails, for the first ten to twenty answers.**
 
-Caveats: the age table and slope were fitted on the same retained answers that are replayed (the held-out column refits the slope on the other half only); the population is AMP's, which may include test accounts and is not a national sample; the 150-answer reference is itself an estimate.
+- Two grades from their age, the shown level is a grade or more off:
+  - after 3 answers, 25% → 93%;
+  - after 10, 22% → 35%;
+  - after 20, 18% → 17%.
+- Three or four off:
+  - after 10, 39% → 48%;
+  - after 20, 17% → 23%.
+- From 50 answers on, the two differ by no more than sampling noise.
+- Practice reaches these learners exactly as before.
 
-**Synthetic learners.** `scripts/frontier/early-anchor-simulation.ts` runs the production planner against each policy's own frontier for 200 answers, for six ages (grades 1, 2, 4, 6 and 8 by birth year, and the adult default), six profiles (two and one grade behind, on level, one and two ahead, and uneven by area), two truth curves (slope 1.7 and 1.15, each item's true difficulty off its catalog grade by N(0, 0.5²), each learner with their own slip and guess) and six replicates.
+**Areas.** Mean |shown − true| for children drawn from national norms: 1.04 → 0.87 at 10 answers, 0.95 → 0.70 at 20, 0.82 → 0.65 at 50. On-level learners: 1.47 → 0.57 at 3 answers.
 
-Both truth curves pooled (72 learners a profile), mean |shown − true| in grades:
+**Shown range coverage.** How often the shown ±1.64-width range covers the truth (target 90%), sd-cal-v1 → sd-cal-v2:
 
-| Profile                     | Policy |  After 3 |        5 |       10 |       20 |   50 |  200 |
-| --------------------------- | ------ | -------: | -------: | -------: | -------: | ---: | ---: |
-| On level                    | v4     |     1.01 |     0.96 |     0.78 |     0.52 | 0.39 | 0.29 |
-| On level                    | v5     | **0.48** | **0.56** | **0.52** |     0.53 | 0.39 | 0.26 |
-| One behind                  | v4     |     1.33 |     1.09 |     0.72 |     0.53 | 0.40 | 0.30 |
-| One behind                  | v5     | **1.02** | **0.92** |     0.69 |     0.59 | 0.37 | 0.29 |
-| One ahead                   | v4     |     0.92 |     0.89 |     0.74 |     0.56 | 0.39 | 0.23 |
-| One ahead                   | v5     | **0.80** | **0.63** | **0.57** | **0.40** | 0.33 | 0.29 |
-| Two behind                  | v4     |     1.24 |     0.83 |     0.76 |     0.57 | 0.36 | 0.29 |
-| Two behind                  | v5     |     1.31 |     1.10 |     0.95 |     0.68 | 0.40 | 0.29 |
-| Two ahead                   | v4     |     0.44 |     0.66 |     0.77 |     0.57 | 0.38 | 0.32 |
-| Two ahead                   | v5     |     1.27 |     1.15 |     0.99 |     0.62 | 0.37 | 0.30 |
-| Uneven by area              | v4     |     1.27 |     1.19 |     1.06 |     0.71 | 0.58 | 0.60 |
-| Uneven by area              | v5     | **0.58** | **0.66** | **0.74** |     0.57 | 0.44 | 0.53 |
-| Weighted by a spread of 0.9 | v4     |     1.02 |     0.94 |     0.73 |     0.50 | 0.37 | 0.28 |
-| Weighted by a spread of 0.9 | v5     | **0.67** | **0.65** | **0.55** |     0.48 | 0.35 | 0.28 |
-| Weighted by a spread of 1.6 | v4     |     0.99 |     0.90 |     0.73 |     0.51 | 0.37 | 0.28 |
-| Weighted by a spread of 1.6 | v5     | **0.84** | **0.77** | **0.65** |     0.52 | 0.35 | 0.28 |
+| Learners (seed 2) | Estimate | 3 answers | 5 | 10 | 20 | 50 | 200 |
+|---|---|---:|---:|---:|---:|---:|---:|
+| Children drawn from national norms | overall | 80% → 97% | 80% → 97% | 80% → 97% | 83% → 83% | 100% → 100% | 100% → 100% |
+| Children drawn from national norms | areas | 73% → 90% | 80% → 93% | 84% → 89% | 89% → 86% | 88% → 93% | 91% → 94% |
+| Children, every profile | overall | 86% → 78% | 87% → 82% | 84% → 89% | 88% → 87% | 94% → 92% | 99% → 98% |
+| Adults | overall | 92% → 94% | 91% → 97% | 94% → 94% | 91% → 94% | 92% → 92% | 98% → 98% |
+| Adults | areas | 89% → 91% | 88% → 89% | 92% → 93% | 94% → 96% | 92% → 93% | 93% → 96% |
 
-The weighted rows weight the five offsets by a normal population of that spread (0.9 is AMP's fitted spread at grades 3–5; 1.6 is the national norm at grade 4), school ages only.
+- On the validation set (seed 2 plus the calibration grid at seed 20261115), the estimate's own ±1.64 range covers 88–95% in every own-answer band, overall and areas.
+- Early ranges are wider than before: an adult's overall sd after 3 answers goes from 1.37 to 1.76, after 20 from 0.78 to 0.82, and after 200 from 0.65 to 0.59.
+- Children far from their age are under-covered in the first five answers (78–82% across every profile). The age prior puts little weight there.
+- `tests/frontier-production-calibration.test.ts` now checks the shown ±1.64 range on the fitted seed. That is a reproducibility check; the seeds above are the evidence.
 
-- **Steadier.** The mean step of the shown level over answers 1–20 falls from 0.34 to 0.22 grades, and the largest move from the start in the first five answers from 1.94 to 1.09.
-- **The cost is the far tails, for about fifteen answers.** A learner truly two grades ahead is shown a grade or more short after 10 answers 51% of the time (v4: 32%), after 20 answers 18% (13%), after 50 answers 6% (8%). Two behind: 42% (22%) at 10, 25% (17%) at 20, 1% (1%) at 50. The median answers until the shown level stays within 0.75 of the truth fall for both (two ahead 55 → 35, two behind 50 → 29), because v5 moves less once it gets there.
-- **Practice is unaffected.** Mean area error is 1.19 → 1.06 after 3 answers, 0.87 → 0.89 after 20, 0.78 → 0.77 after 50, 0.62 → 0.62 after 200. The climb (`placedAfterMisses`, the ceilings) reads demonstrated success, not the prior.
-- **Adults are unchanged** (chosen start): 1.13 → 1.11, 0.96 → 0.95, 0.50 → 0.48 at 3, 10 and 50 answers.
+**Real learners.** Retained answers were exported read-only, excluding:
+
+- demo-school learners;
+- practice profiles;
+- internal accounts.
+
+This leaves a few dozen learners and a few hundred answers, most learners with fewer than ten. That is too few to measure accuracy, so the replay is descriptive only.
+
+- After three answers, v4 showed a fifth of the birth-year learners more than a grade above their age start; v5 showed none.
+- Learners with a chosen start are shown identically.
+
+No parameter here is fitted to AMP data. The demo school's learners are generated at 0.6 × the national spread (`src/schools/demo/truth.ts`), so they can validate nothing about it.
 
 ## Isolated experimental model
 
@@ -151,8 +175,11 @@ npx tsx scripts/compare-frontier.ts 86dfa922c development frozen-v1
 npx tsx scripts/compare-frontier.ts 86dfa922c evaluation frozen-v1
 npx tsx scripts/compare-frontier.ts 86dfa922c audit frozen-v1
 npx tsx scripts/compare-frontier.ts 86dfa922c stress frozen-v1
-# Early placement: v4 against v5 on synthetic learners (about 40 minutes)
-npx tsx scripts/frontier/early-anchor-simulation.ts --policies v4,v5
+# Early placement: both policies, seeds 1 and 2 (about 15 minutes each)
+npx tsx scripts/frontier/early-anchor-simulation.ts --seed 1 --reps 3
+npx tsx scripts/frontier/early-anchor-simulation.ts --seed 2 --reps 3
+# Shown-range coverage on the calibration grid at another seed
+npx tsx scripts/frontier/production-calibration.ts --quick --model misspecified --seed 20261115
 # Regression checks
 npx tsx --test tests/frontier-calibration.test.ts tests/frontier-isolation.test.ts tests/frontier-early-anchor.test.ts
 ```

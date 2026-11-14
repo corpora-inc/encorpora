@@ -5,9 +5,12 @@ import {
   runProductionCalibration,
 } from "../scripts/frontier/production-calibration";
 
-/** Misspecified coverage after sd-cal-v2, on the seeded population that
- * fixed the constants. Quick mode keeps that whole grid (a 40-learner draw
- * misses ±4 by sampling error). */
+/** Misspecified coverage as shown (sd-cal-v2: the shown level, and the
+ * reported width for each estimate's own answer count), on the seeded
+ * population that, with early-anchor seed 1, fixed the constants. A
+ * reproducibility check, not the calibration's evidence: that is the
+ * validation on other seeds in docs/adaptive-evidence.md. Quick mode keeps
+ * the whole grid (a 40-learner draw misses by sampling error). */
 const MAE_AT_100 = 0.7;
 /** The harness's own work, in CPU time across its worker threads: about
  * 310 s on a developer Mac and 473 s on a GitHub ubuntu runner (2026-11-11),
@@ -37,15 +40,12 @@ test(
     assert.equal(bands.length, 8);
     for (const band of bands) {
       const label = `${band.scope} at ${band.answers}`;
-      const { coverage1, coverage2, n } = band.reported;
+      const { coverageShown, n } = band.reported;
       assert.ok(n >= 100, `${label}: n=${n}`);
+      // The range the app draws, ±1.64 reported sd, aims at 90%.
       assert.ok(
-        coverage1 >= 0.64 && coverage1 <= 0.72,
-        `${label}: ±1σ ${(coverage1 * 100).toFixed(1)}%`,
-      );
-      assert.ok(
-        coverage2 >= 0.92 && coverage2 <= 0.98,
-        `${label}: ±2σ ${(coverage2 * 100).toFixed(1)}%`,
+        coverageShown >= 0.85 && coverageShown <= 0.96,
+        `${label}: ±1.64σ ${(coverageShown * 100).toFixed(1)}%`,
       );
     }
     const at100 = bands.find(

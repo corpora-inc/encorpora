@@ -356,6 +356,7 @@ const encodeState = (
   position: ReadonlyMap<string, number>,
 ) => ({
   start: state.start,
+  ...(state.fromAge ? { fromAge: true } : {}),
   observed: state.observed,
   lastAt: state.lastAt,
   overall: encodeFold(state.overall),
@@ -377,6 +378,7 @@ const decodeState = (
   families: readonly string[],
 ): FrontierState => ({
   start: encoded.start,
+  ...(encoded.fromAge ? { fromAge: true } : {}),
   observed: encoded.observed,
   lastAt: encoded.lastAt,
   overall: decodeFold(encoded.overall),

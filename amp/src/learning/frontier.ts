@@ -66,6 +66,10 @@ export type Frontier = {
   /** Responsive pooled prior for local selection, separate from the displayed
    * working grade. Optional for older clients and stored snapshots. */
   adaptive?: Estimate;
+  /** A start set by age, and how the shown level is held near it while the
+   * evidence is thin (`ageAnchor`, `frontier-report.ts`). Absent for a start
+   * someone chose. */
+  anchor?: AgeAnchor;
   /** Preserve the injected prior when looking up an untouched strand. */
   strandPriorSd?: number;
   /** A scheduling ceiling supported by independent, varied success: the
@@ -179,6 +183,28 @@ function responseModel(response: FrontierPolicy["response"]): ResponseModel {
 }
 function prior(mean: number, sd: number) {
   return GRID.map((theta) => -(((theta - mean) / sd) ** 2) / 2);
+}
+/** The age a start came from, for display: the age-expected grade and the
+ * policy's display rule (`frontier-policy.ts`, `display`). */
+export type AgeAnchor = {
+  level: number;
+  band: number;
+  startingAnswers: number;
+  areaAnswers: number;
+};
+export function ageAnchor(
+  start: number,
+  policy: FrontierPolicy,
+  fromAge: boolean,
+): AgeAnchor | undefined {
+  const rule = policy.display;
+  if (!fromAge || !rule) return undefined;
+  return {
+    level: start,
+    band: rule.ageBand,
+    startingAnswers: rule.startingAnswers,
+    areaAnswers: rule.areaAnswers,
+  };
 }
 /** How wide the overall prior is for a learner who starts at `start`: for a
  * start set by age, the policy's grade table (`prior.sdByStart`); otherwise
@@ -422,6 +448,8 @@ export type FrontierStrandState =
  * than by how many answers it has seen. */
 export type FrontierState = {
   start: number;
+  /** The start came from a birth year (`createFrontierState`). */
+  fromAge?: boolean;
   observed: number;
   lastAt: number | null;
   overall: FrontierFold;
@@ -440,20 +468,21 @@ const emptyConfirmation = (): FrontierConfirmationState => ({
 });
 
 /** `fromAge`: the start comes from a birth year (`initialLevel`), so the
- * prior is only as wide as learners of that age are spread
- * (`prior.sdByStart`). */
+ * overall readout's prior is only as wide as that age is spread
+ * (`prior.sdByStart`). Selection's pooled estimate (`adaptive`) keeps
+ * `overallSd` whatever the start, so practice does not depend on it. */
 export function createFrontierState(
   start: number,
   policy: FrontierPolicy = DEFAULT_FRONTIER_POLICY,
   fromAge = false,
 ): FrontierState {
-  const sd = overallPriorSd(start, policy, fromAge);
   return {
     start,
+    ...(fromAge ? { fromAge } : {}),
     observed: 0,
     lastAt: null,
-    overall: startFold(prior(start, sd)),
-    adaptive: startFold(prior(start, sd)),
+    overall: startFold(prior(start, overallPriorSd(start, policy, fromAge))),
+    adaptive: startFold(prior(start, policy.prior.overallSd)),
     strands: {},
     confirmation: {},
     pooled: emptyConfirmation(),
@@ -720,6 +749,7 @@ export function readFrontierState(
       policy,
       policy.strand,
     );
+  const anchor = ageAnchor(state.start, policy, state.fromAge === true);
   if (!policy.confirmation.enabled)
     return {
       expected: state.start,
@@ -727,6 +757,7 @@ export function readFrontierState(
       adaptive,
       strands,
       strandPriorSd: policy.prior.strandSd,
+      ...(anchor ? { anchor } : {}),
     };
   const c = policy.confirmation;
   const shown = demonstrated(state.pooled, policy);
@@ -759,6 +790,7 @@ export function readFrontierState(
     adaptive,
     strands,
     strandPriorSd: policy.prior.strandSd,
+    ...(anchor ? { anchor } : {}),
     confirmation,
     unconfirmedCeiling: Math.max(floor, (shown ?? -Infinity) + rise),
     foundationLevel: foundation,

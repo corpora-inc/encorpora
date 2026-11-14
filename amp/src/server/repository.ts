@@ -23,6 +23,7 @@ import { recordPrint } from "../schools/help-events.js";
 import { readLearnerSkill } from "../schools/teacher-reads.js";
 import type { StudentSkillResponse } from "../schools/teacher-contracts.js";
 import {
+  ageAnchor,
   estimateFrontier,
   initialLevel,
   overallTrend,
@@ -31,7 +32,14 @@ import {
   type FrontierObservation,
 } from "../learning/frontier";
 import { DEFAULT_FRONTIER_POLICY } from "../learning/frontier-policy";
-import { REPORTED_SD_VERSION, reportedSd } from "../learning/frontier-report";
+import {
+  REPORTED_SD_VERSION,
+  reportedSd,
+  reportFrontier,
+  shownLevel,
+  shownWidth,
+  startingWeight,
+} from "../learning/frontier-report";
 import {
   advanceLearnerFrontier,
   applyStrandRestart,
@@ -819,12 +827,12 @@ export class PgTransaction implements LearnerTransaction {
   async saveLevelDay(frontier: Frontier) {
     // Scheduling has already read the posterior sd. The stored width is the
     // calibrated report, so a level day and the live planner do not share it.
-    const estimate = (
-      { level, sd, answered, independent }: Estimate,
-      scope: "overall" | "strand",
-    ) => ({
+    // Stored as shown (`reportFrontier`): the display rule's level and the
+    // reported width, so the map and the live readout agree.
+    const shown = reportFrontier(frontier);
+    const estimate = ({ level, sd, answered, independent }: Estimate) => ({
       level,
-      sd: reportedSd(sd, { answered, scope }),
+      sd,
       answered,
       independent,
     });
@@ -842,12 +850,9 @@ export class PgTransaction implements LearnerTransaction {
         this.learnerId,
         JSON.stringify({
           sdVersion: REPORTED_SD_VERSION,
-          overall: estimate(frontier.overall, "overall"),
+          overall: estimate(shown.overall),
           strands: Object.fromEntries(
-            Object.entries(frontier.strands).map(([id, e]) => [
-              id,
-              estimate(e, "strand"),
-            ]),
+            Object.entries(shown.strands).map(([id, e]) => [id, estimate(e)]),
           ),
         }),
         DEFAULT_FRONTIER_POLICY.version,
@@ -956,13 +961,21 @@ export class PgTransaction implements LearnerTransaction {
   async frontierTrend(points?: number): Promise<TrendPoint[]> {
     const now = Date.now();
     const { start, fromAge, observations } = await this.frontierInputs(now);
+    // Each point as it was shown then (`showEstimate`).
+    const anchor = ageAnchor(start, DEFAULT_FRONTIER_POLICY, fromAge);
     return overallTrend(
       { start, fromAge, observations, now, ...frontierCatalog },
       trendCounts(observations.length, trendStep(observations.length, points)),
-    ).map((point) => ({
-      ...point,
-      sd: reportedSd(point.sd, { answered: point.answered }),
-    }));
+    ).map(({ answered, level, sd }) => {
+      const shown = anchor
+        ? shownLevel(level, startingWeight(answered, anchor), anchor)
+        : level;
+      return {
+        answered,
+        level: shown,
+        sd: shownWidth(reportedSd(sd, { answered }), shown - level),
+      };
+    });
   }
   async recentAttempts() {
     const settings = await this.practiceSettings();
