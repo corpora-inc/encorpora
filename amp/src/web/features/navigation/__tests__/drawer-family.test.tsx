@@ -148,3 +148,71 @@ test("My practice: never the family's class or a child (audit #8)", () => {
   expect(screen.queryByRole("link", { name: /class/i })).toBeNull();
   expect(screen.queryByRole("link", { name: "Family & account" })).toBeNull();
 });
+
+test("School: the school itself, no learner, the switcher names it", () => {
+  const space = resolveSpace(
+    { pathname: `/school/${SCHOOL}` },
+    { kind: "adult", me: account, learnerId: "pip" },
+    {
+      org: {
+        id: SCHOOL,
+        kind: "school",
+        name: "Alder Grove",
+        parentId: null,
+        timezone: "UTC",
+        roles: ["admin"],
+        can: ["org.read", "overview.read", "classes.read"],
+      },
+      classes: [],
+    },
+  );
+  render(<DrawerContents close={() => {}} space={space} />);
+  expect(links()).toEqual(["Alder Grove"]);
+  expect(screen.queryByText("Pip")).toBeNull();
+  expect(screen.getByTestId("switcher").dataset.current).toBe(
+    `school:${SCHOOL}`,
+  );
+});
+
+test("Account: no space's destinations, the switcher and the account", () => {
+  const space = resolveSpace(
+    { pathname: "/account/security" },
+    { kind: "adult", me: account, learnerId: "pip" },
+  );
+  render(<DrawerContents close={() => {}} space={space} />);
+  expect(links()).toEqual([]);
+  expect(
+    screen.getByRole("link", { name: "Account" }).getAttribute("aria-current"),
+  ).toBe("page");
+  expect(screen.queryByTestId("curriculum")).toBeNull();
+});
+
+test("Student: their practice and board, never a parent's switcher or account", () => {
+  const student = {
+    ...account,
+    account: {
+      id: "school:ana",
+      email: null,
+      emailVerified: false,
+      kind: "student",
+    },
+    learners: [kid("ana", "Ana")],
+    school: { orgName: "Alder Grove", levels: "shown", standings: true },
+  } as unknown as SignedInMe;
+  harness.learningView.mockReturnValueOnce({
+    account: student,
+    session: { data: {} },
+    viewOnly: false,
+  });
+  harness.groups.value = [];
+  const space = resolveSpace(
+    { pathname: "/overview" },
+    { kind: "student", me: student },
+  );
+  render(<DrawerContents close={() => {}} space={space} />);
+  expect(links()).toEqual(["Practice", "Standings, Your class’s board"]);
+  expect(screen.getByText("Ana")).toBeTruthy();
+  expect(screen.queryByTestId("switcher")).toBeNull();
+  expect(screen.queryByRole("link", { name: /account/i })).toBeNull();
+  harness.groups.value = [{ id: "family", label: "Family", entries: [] }];
+});
