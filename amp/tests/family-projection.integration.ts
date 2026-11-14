@@ -293,6 +293,13 @@ test(
               const student = klass.students.find(
                 (row: any) => row.id === approved.personId,
               );
+              assert.equal(child.joined, today);
+              assert.equal(
+                student.from,
+                child.joined > child.range.from
+                  ? child.joined
+                  : child.range.from,
+              );
               assert.deepEqual(child.days, student.days);
               assert.equal(child.minutes, student.minutes);
               assert.equal(child.problems, student.problems);
@@ -306,6 +313,7 @@ test(
                   "id",
                   "name",
                   "group",
+                  "joined",
                   "timezone",
                   "period",
                   "range",
@@ -352,6 +360,31 @@ test(
               );
             }
           }
+          // Every shared Time route rejects excessive spans as JSON errors, including CSV.
+          const routes = [
+            [`${base}/time`, external.account],
+            [`${base}/time.csv`, external.account],
+            [`${classBase}/time`, a.account],
+            [`${classBase}/students/${approved.personId}/time`, a.account],
+            [`${classBase}/exports/time.csv`, a.account],
+          ];
+          for (const [route, actor] of routes) {
+            const boundary = await get(
+              `${route}?period=week&from=${schoolDay(-399)}`,
+              actor!,
+            );
+            assert.equal(boundary.statusCode, 200, boundary.body);
+            for (const from of [schoolDay(-400), "0001-01-01"]) {
+              const rejected = await get(
+                `${route}?period=week&from=${from}`,
+                actor!,
+              );
+              assert.equal(rejected.statusCode, 400, rejected.body);
+              assert.deepEqual(rejected.json(), {
+                error: "time_range_too_long",
+              });
+            }
+          }
           // Exact starts include and exclude historical evidence at the same boundary.
           const earlier = schoolDay(-8);
           const enrollment = (
@@ -384,6 +417,13 @@ test(
               const student = klass.students.find(
                 (row: any) => row.id === approved.personId,
               );
+              assert.equal(child.joined, earlier);
+              assert.equal(
+                student.from,
+                child.joined > child.range.from
+                  ? child.joined
+                  : child.range.from,
+              );
               assert.deepEqual(child.range, klass.range);
               assert.deepEqual(child.days, student.days);
               assert.equal(child.problems, from === earlier ? 50 : 47);
@@ -401,6 +441,52 @@ test(
             await db.query(
               "DELETE FROM amp_skill_days WHERE learner_id=$1 AND day=$2",
               [approved.learnerId, earlier],
+            );
+          }
+          // The first overlapping enrollment wins over a later rejoin.
+          const historyId = randomUUID();
+          await db.query(
+            `INSERT INTO amp_enrollments(id,class_id,person_id,role,begin_on,end_on)
+             VALUES($1,$2,$3,'student',$4,$5)`,
+            [
+              historyId,
+              fa.class_id,
+              approved.personId,
+              schoolDay(-14),
+              schoolDay(-7),
+            ],
+          );
+          try {
+            const historical = await ok(
+              get(`${base}/time?from=${schoolDay(-21)}`, external.account),
+            );
+            const klass = await ok(
+              get(`${classBase}/time?from=${schoolDay(-21)}`, a.account),
+            );
+            assert.equal(historical.joined, schoolDay(-14));
+            assert.equal(
+              klass.students.find((s: any) => s.id === approved.personId).from,
+              historical.joined,
+            );
+            const recent = await ok(
+              get(`${base}/time?from=${schoolDay(-6)}`, external.account),
+            );
+            assert.equal(recent.joined, today);
+            // No current group: joined is unknown, while owned evidence stays visible.
+            await db.query("UPDATE amp_enrollments SET end_on=$2 WHERE id=$1", [
+              enrollment.id,
+              today,
+            ]);
+            const ungrouped = await ok(get(`${base}/time`, external.account));
+            assert.equal(ungrouped.joined, null);
+            assert.equal(ungrouped.problems, 47);
+          } finally {
+            await db.query("DELETE FROM amp_enrollments WHERE id=$1", [
+              historyId,
+            ]);
+            await db.query(
+              "UPDATE amp_enrollments SET end_on=NULL WHERE id=$1",
+              [enrollment.id],
             );
           }
           for (const suffix of ["time", "time.csv"]) {
