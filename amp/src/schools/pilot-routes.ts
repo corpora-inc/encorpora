@@ -86,8 +86,15 @@ export function definePilotRoutes(define: typeof defineSchoolRoute) {
     url: "/api/v1/school/start-school",
     action: "school.start",
     target: () => ({ kind: "self" }),
-    handler: ({ repository, actor, request }) =>
-      startSchool(repository, actor.accountId, request.body),
+    handler: async ({ repository, pool, actor, request }) => {
+      // Making their own school is the school persona.
+      await recordActivation(pool, {
+        accountId: actor.accountId,
+        step: "persona_chosen",
+        persona: "school",
+      });
+      return startSchool(repository, actor.accountId, request.body);
+    },
   });
   define({
     method: "GET",
