@@ -1356,16 +1356,12 @@ export function Graph({
   useEffect(() => {
     if (frame) focus.current(frame.id, firstView.current ? "cut" : "glide");
   }, [frame]);
-  // Arriving with nothing selected, the map opens on the learner's level; if
-  // the estimate arrives a moment later, it glides there, unless the person
-  // has already moved the map or chosen a skill.
+  // Arriving with nothing selected, the map opens on the whole map, framed
+  // (Q-9): the learner's level stays marked where it is, and "Where you are"
+  // goes to it on request, never on its own.
   useEffect(() => {
-    const first = firstView.current;
     firstView.current = false;
-    if (!level || touched.current || answered.current) return;
-    // Once only: a later change in the estimate never moves the map.
-    if (home.current(first)) touched.current = true;
-  }, [level]);
+  }, []);
   return (
     <section
       ref={viewport}
