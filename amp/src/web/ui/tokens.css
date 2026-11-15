@@ -543,6 +543,8 @@
   --radius-control: 12px;
   --radius-panel: 20px;
   --target-size: 48px;
+  /* The least a control may be to touch, both ways (a dense row, a name). */
+  --target-min: 44px;
   /* A record's date column: its width, and the room after it before the
      row's content (recent work, skills earned). */
   --record-date-width: 56px;

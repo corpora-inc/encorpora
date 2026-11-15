@@ -199,9 +199,17 @@ h2.sectionTitle {
   line-height: 1.1;
 }
 .rowText {
+  position: relative;
   display: grid;
   min-width: 0;
   gap: 2px;
+}
+/* The title's target is its row's words (title, size, code), never the 26 px
+   line of the title alone. */
+.rowTitle::after {
+  content: "";
+  position: absolute;
+  inset: calc(-1 * var(--space-2)) 0;
 }
 .rowTitle {
   display: inline-flex;

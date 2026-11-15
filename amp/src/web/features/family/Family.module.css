@@ -344,6 +344,8 @@
    44 px to touch. */
 .recordName {
   position: relative;
+  display: inline-block;
+  min-width: var(--target-min);
   color: inherit;
   text-decoration: none;
   border-radius: var(--radius-small);
@@ -351,7 +353,8 @@
 .recordName::after {
   content: "";
   position: absolute;
-  inset: -8px -4px;
+  /* At least 44 px tall, whatever the name's line height. */
+  inset: min(-8px, calc((100% - var(--target-min)) / 2)) -4px;
 }
 .recordName:hover {
   color: var(--color-primary);

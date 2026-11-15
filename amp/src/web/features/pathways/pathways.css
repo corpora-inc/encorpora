@@ -1102,3 +1102,34 @@
 .pathways-map-labels .skill-label[data-dim] {
   opacity: 0.4;
 }
+
+/* A phone or a small tablet scrolls once: the page. Browsing (the skill list,
+   or the search's results: skills, lessons, math words) flows in the page
+   above the map, the column's full width, every result reachable by the
+   page's own scroll; never a box with a scroll of its own over the map. The
+   map keeps its size below it. */
+@media (max-width: 768px) {
+  .pathways.is-browsing {
+    height: auto;
+    min-height: calc(100dvh - var(--shell-bar, 0px));
+    overflow: visible;
+  }
+  .pathways.is-browsing .pathways-workspace {
+    flex-direction: column;
+    flex: none;
+    height: auto;
+    min-height: 0;
+  }
+  .pathways.is-browsing .pathways-browser,
+  .pathways.is-browsing .pathways-browser:has(.pathways-results) {
+    position: static;
+    width: 100%;
+    max-height: none;
+    overflow: visible;
+    box-shadow: none;
+  }
+  .pathways.is-browsing:not(.is-flow) .pathways-viewport {
+    flex: none;
+    height: max(320px, calc(100dvh - 296px));
+  }
+}

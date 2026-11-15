@@ -45,6 +45,7 @@
     "test:security-headers-ui": "tsx scripts/verify-security-headers-ui.ts",
     "test:loading-ui": "tsx scripts/verify-loading-ui.ts && tsx scripts/verify-loading-ui.ts --engine webkit",
     "audit:app-shell": "tsx scripts/audit-app-shell-ui.ts",
+    "test:layout-sweep": "tsx scripts/verify-layout-sweep.ts",
     "test:search-typing-ui": "tsx scripts/verify-search-typing-ui.ts",
     "tsc": "node --max-old-space-size=6144 node_modules/typescript/bin/tsc --noEmit",
     "workbook:samples": "tsx scripts/workbook-samples.ts",
