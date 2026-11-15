@@ -84,6 +84,9 @@ export function ClassScreen() {
       void navigate({
         to: "/join/$code",
         params: { code: shown },
+        // Keep why a school sign-in stopped (`?sso=`): the server returns
+        // here with the code as typed, and the reason must survive.
+        search: (previous: Record<string, unknown>) => previous,
         replace: true,
       });
   }, [code, shown, params.code, navigate]);

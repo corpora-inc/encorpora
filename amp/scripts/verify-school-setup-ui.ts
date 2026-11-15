@@ -117,6 +117,8 @@ await app.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
   cacheDir: "node_modules/.vite-school-setup",
   server: {
+    // Other work edits the source while a check runs: no live reloads mid-check.
+    hmr: false,
     host: "127.0.0.1",
     port: webPort,
     strictPort: true,
@@ -719,7 +721,8 @@ async function loneTeacher(
   await shot(page, "class-landing", width, theme);
   // Adding one more, from the class's settings.
   await page.goto(page.url().replace(/\/today$/, "/settings"));
-  await page.getByRole("heading", { name: "Math class", level: 1 }).waitFor();
+  // The screen's one h1 is what it is; the class is named in the bar.
+  await page.getByRole("heading", { name: "Settings", level: 1 }).waitFor();
   await page.getByText("Noor Haddad").waitFor();
   await pause(page);
   await page.getByRole("button", { name: "Add student" }).click();
@@ -822,14 +825,12 @@ async function teacherWhoIsAParent(browser: Browser, width: number) {
     .getByRole("menu")
     .locator('[data-place="home"], [data-place^="school:"]')
     .allInnerTexts();
-  await page
-    .getByRole("menu")
-    .locator(`[data-place="learner:${jordan.id}"]`)
-    .waitFor();
+  // The switcher holds places only (no learners): the family is one place,
+  // "Your family", whose children are its own rows.
   check(
     `${label} the switcher lists the family and both schools`,
     places.length === 3 &&
-      /Jordan/.test(places[0]!) &&
+      /^Your family/.test(places[0]!) &&
       /Alder Street School\s+Admin/.test(places[1]!) &&
       /Birch Road School\s+Admin/.test(places[2]!),
     places,
@@ -980,7 +981,8 @@ async function sweep(
     [
       "class",
       `/school/${orgId}/classes/${classes.classId}/settings`,
-      "Grade 5 Math",
+      // The screen's one h1 is what it is; the class is named in the bar.
+      "Settings",
     ],
     ["students", `/school/${orgId}/students`, "Students"],
     ["staff", `/school/${orgId}/staff`, "Staff"],
@@ -1012,7 +1014,12 @@ async function sweep(
       }
       await setupPage.goto(`${origin}${setupPath("students", "&by=names")}`);
       await heading(setupPage, "Who’s in your class?");
-      await measure(setupPage, `${label} setup names`, width);
+      // Names, then the class's grade tiles: the page runs under its pinned
+      // Back / Add class bar mid-scroll, as it should; nothing overlaps at
+      // its end.
+      await measure(setupPage, `${label} setup names`, width, {
+        atBottom: true,
+      });
       // A failed save says so where the person is looking, and moves nothing.
       await setupPage.goto(`${origin}${setupPath("calendar")}`);
       await heading(setupPage, "When does your school year run?");

@@ -236,10 +236,26 @@ test("sessions: none is public, a student always wins, an adult resolves the rou
     const space = resolveSpace(at(path), { kind: "student", me: student });
     expectSpace(space, "student");
     assert.equal(space.learner?.name, "Ana");
-    // Nothing of a parent's or a class's.
+    // Nothing of a parent's or a class's: practice, their own record, and
+    // the class's board when it is on.
     for (const destination of space.destinations)
-      assert.ok(["practice", "standings"].includes(destination.id));
+      assert.ok(["practice", "progress", "standings"].includes(destination.id));
   }
+  // During a problem the board is hidden, so their record is the way to it.
+  assert.deepEqual(
+    resolveSpace(at("/practice"), {
+      kind: "student",
+      me: student,
+    }).destinations.map((destination) => destination.id),
+    ["practice", "progress"],
+  );
+  assert.deepEqual(
+    resolveSpace(at("/overview"), {
+      kind: "student",
+      me: student,
+    }).destinations.map((destination) => destination.id),
+    ["practice", "progress", "standings"],
+  );
   assert.deepEqual(
     resolveSpace(at("/practice"), { kind: "student", me: student }).actions,
     ["sign-out"],

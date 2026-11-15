@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { reportable } from "../../../learning/level-check";
 import { Link } from "@tanstack/react-router";
 import { Button } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
@@ -42,7 +43,8 @@ export function OwnTimeScreen() {
           </Link>
           <div className={styles.titleRow}>
             <h1>Time</h1>
-            {data && (
+            {/* A progress report once there is progress to report. */}
+            {reportable(data?.record.level) && (
               <div className={styles.titleTools}>
                 <PrintButton
                   variant="quiet"

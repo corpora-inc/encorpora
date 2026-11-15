@@ -207,18 +207,21 @@ export function OwnRecordScreen() {
             <h1 id="me-title">Where you are</h1>
             <div className={styles.titleTools}>
               <AtALevel />
-              <PrintButton
-                variant="quiet"
-                download={() =>
-                  downloadPdf({
-                    path: `/me/practice/report.pdf?format=${paperFormat()}`,
-                    token: session.token,
-                    name: "amp-progress-report.pdf",
-                  })
-                }
-              >
-                Progress report
-              </PrintButton>
+              {/* A progress report once there is progress to report. */}
+              {started && (
+                <PrintButton
+                  variant="quiet"
+                  download={() =>
+                    downloadPdf({
+                      path: `/me/practice/report.pdf?format=${paperFormat()}`,
+                      token: session.token,
+                      name: "amp-progress-report.pdf",
+                    })
+                  }
+                >
+                  Progress report
+                </PrintButton>
+              )}
             </div>
           </div>
           <p className={styles.meta}>

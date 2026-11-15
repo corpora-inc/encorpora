@@ -35,6 +35,16 @@ export function measured(
   );
 }
 
+/** Whether a learner has progress to report (a printed progress report is
+ * offered): a stored level with at least one answer behind it. Before that
+ * there is nothing to report, and no report is offered. */
+export function reportable(
+  level:
+    { overall: { answered?: number } | null | undefined } | null | undefined,
+): boolean {
+  return !!level && measured(level.overall);
+}
+
 /** Display envelope around a provisional estimate, not a norm-referenced
  * confidence interval. Surprise reserves can widen the overall uncertainty. */
 export const RANGE_SD_MULTIPLIER = 1.64;

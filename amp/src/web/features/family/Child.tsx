@@ -6,7 +6,7 @@ import {
   useRouterState,
 } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { measured } from "../../../learning/level-check";
+import { reportable } from "../../../learning/level-check";
 import { useLearnerStore } from "../../learner-store";
 import { z } from "zod";
 import {
@@ -69,10 +69,9 @@ export function ChildScreen() {
   // Opened before the first answer: this visit keeps the level held, so its
   // bar takes the first estimate in place (CP-5 r2 #2).
   const openedUnmeasured = useRef<boolean | null>(null);
-  if (progress.data)
-    openedUnmeasured.current ??= !(
-      progress.data.level && measured(progress.data.level.overall)
-    );
+  // Something to report: a level with an answer behind it (Q-201).
+  const hasReport = reportable(progress.data?.level);
+  if (progress.data) openedUnmeasured.current ??= !hasReport;
   // This child is the one chosen on this device while their page is open:
   // their learning screens are theirs.
   const known = !!child;
@@ -165,20 +164,27 @@ export function ChildScreen() {
                     Continue with AMP
                   </Link>
                 )}
-              {child.capabilities.readProgress && (
-                <PrintButton
-                  variant="secondary"
-                  download={() =>
-                    downloadPdf({
-                      path: `${child.paths.progress.replace(/^\/api\/v1/, "")}.pdf?format=${paperFormat()}`,
-                      token: session.token,
-                      name: `amp-progress-report-${child.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}.pdf`,
-                    })
-                  }
-                >
-                  Progress report
-                </PrintButton>
-              )}
+              {/* A progress report once there is progress to report; the
+                  record arrives with the page (family-routes), so it never
+                  appears late. */}
+              {/* Decided when the page opens: a first answer while it is
+                  open takes the bar in place and adds nothing above it. */}
+              {child.capabilities.readProgress &&
+                hasReport &&
+                openedUnmeasured.current === false && (
+                  <PrintButton
+                    variant="secondary"
+                    download={() =>
+                      downloadPdf({
+                        path: `${child.paths.progress.replace(/^\/api\/v1/, "")}.pdf?format=${paperFormat()}`,
+                        token: session.token,
+                        name: `amp-progress-report-${child.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}.pdf`,
+                      })
+                    }
+                  >
+                    Progress report
+                  </PrintButton>
+                )}
               {person && (
                 <TryAsStudent
                   session={session}

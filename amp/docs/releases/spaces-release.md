@@ -12,50 +12,60 @@ does ([deployment](../deployment.md)). It applies, in this order:
 
 | File | What it does | Lock profile |
 |---|---|---|
-| `0126-family-spaces.sql` | Family identity (`amp_family_spaces`) and account names (`amp_account_profiles`); erase hook on account deletion; legacy class creation publishes an identity | New tables, one copy from `amp_families` |
-| `0127-course-start.sql` | `amp_learners.starting_course_level` (nullable, no default) and the `amp_course_placement` flag, off | Metadata only, no rewrite, no backfill |
-| `0128-family-history-indexes.sql` | Four history indexes | `CREATE INDEX CONCURRENTLY`, writes continue |
-| `0129-family-display-name.sql` | `amp_family_spaces.display_name` (nullable) | Metadata only |
-| `0130-family-identity-fallback.sql` | Deterministic family identity function and hooks | Functions and triggers |
-| `0131-family-discovery-index.sql` | Class-to-family lookup index | `CREATE INDEX CONCURRENTLY` |
-| `0132-funded-term-schedule.sql` | `amp_funding_requests.scheduled_term` (nullable) | Metadata only |
-| `0133-level-practice.sql` | `amp_learners.level_practice` and its one-per-account index | Metadata, one index build |
+| `0128-family-spaces.sql` | Family identity (`amp_family_spaces`) and account names (`amp_account_profiles`); erase hook on account deletion; legacy class creation publishes an identity | New tables, one copy from `amp_families` |
+| `0129-course-start.sql` | `amp_learners.starting_course_level` (nullable, no default) and the `amp_course_placement` flag, off | Metadata only, no rewrite, no backfill |
+| `0130-family-history-indexes.sql` | Four history indexes | `CREATE INDEX CONCURRENTLY`, writes continue |
+| `0131-family-display-name.sql` | `amp_family_spaces.display_name` (nullable) | Metadata only |
+| `0132-family-identity-fallback.sql` | Deterministic family identity function and hooks | Functions and triggers |
+| `0133-family-discovery-index.sql` | Class-to-family lookup index | `CREATE INDEX CONCURRENTLY` |
+| `0134-funded-term-schedule.sql` | `amp_funding_requests.scheduled_term` (nullable) | Metadata only |
+| `0135-level-practice.sql` | `amp_learners.level_practice` and its one-per-account index | Metadata, one index build |
 
-They follow main's highest number (`0125`). Production has applied none of
-them, so production needs no renaming. The order does not matter relative to
-main's two `0125` migrations: a schema-only dump of a database migrated in the
-old order (family spaces between them) is identical to one migrated in this
-order. `tests/migration-names.test.ts` fails if a new migration reuses a number.
+They follow main's highest number, `0127` (main shipped two:
+`0127-acquisition-contact-due-at-signup`, #2339, and
+`0127-consent-policy-no-review-expiry`, #2340; main also added
+`0126-consent-single-response`, #2333).
+Production has applied none of them, so production needs no renaming. They do
+not depend on their order relative to main's `0125`, `0126` and `0127`
+migrations: main's touch funnel events, funded invoices, consent requests and
+policy, and acquisition contacts, none of the
+spaces tables or columns, and a schema-only dump of a database migrated with
+the spaces files before main's `0125-funded-pending-invoices` is identical to
+one migrated in this order. `tests/migration-names.test.ts` fails if a new
+migration reuses a number.
 
 Funded activation (`src/funding-purchase/provision.ts`, used by the API and
 the funding workers) writes and reads `scheduled_term`. Both run from the image
 deployed after the migration job, so no extra ordering step is needed. Never
-start a worker from this release against a database that has not run `0132`.
+start a worker from this release against a database that has not run `0134`.
 
 ### Development and preview databases
 
-These migrations were numbered `0125`-`0132` while the branch was built. A
-database that applied the earlier names needs no action: the runner adopts each
-receipt under its new name when the file is unchanged
-(`renamedMigrations` in `scripts/migrate.ts`). To rename the rows by hand
-instead, with the API stopped:
+These migrations were numbered `0125`-`0132`, then `0126`-`0133`, then
+`0127`-`0134`, while the branch was built. A database that applied any of
+those names needs no action: the runner adopts each receipt under its new name
+when the file is unchanged (`renamedMigrations` in `scripts/migrate.ts`). To
+rename the rows by hand instead, with the API stopped, from the latest earlier
+names (`0127-family-spaces.sql` …):
 
 ```sql
 BEGIN;
 UPDATE amp_migrations SET name = v.new FROM (VALUES
-  ('0125-family-spaces.sql',          '0126-family-spaces.sql'),
-  ('0126-course-start.sql',           '0127-course-start.sql'),
-  ('0127-family-history-indexes.sql', '0128-family-history-indexes.sql'),
-  ('0128-family-display-name.sql',    '0129-family-display-name.sql'),
-  ('0129-family-identity-fallback.sql','0130-family-identity-fallback.sql'),
-  ('0130-family-discovery-index.sql', '0131-family-discovery-index.sql'),
-  ('0131-funded-term-schedule.sql',   '0132-funded-term-schedule.sql'),
-  ('0132-level-practice.sql',         '0133-level-practice.sql')
+  ('0127-family-spaces.sql',            '0128-family-spaces.sql'),
+  ('0128-course-start.sql',             '0129-course-start.sql'),
+  ('0129-family-history-indexes.sql',   '0130-family-history-indexes.sql'),
+  ('0130-family-display-name.sql',      '0131-family-display-name.sql'),
+  ('0131-family-identity-fallback.sql', '0132-family-identity-fallback.sql'),
+  ('0132-family-discovery-index.sql',   '0133-family-discovery-index.sql'),
+  ('0133-funded-term-schedule.sql',     '0134-funded-term-schedule.sql'),
+  ('0134-level-practice.sql',           '0135-level-practice.sql')
 ) AS v(old, new) WHERE amp_migrations.name = v.old;
 COMMIT;
 ```
 
-The checksums do not change: only the file names did.
+(A database on an older set shifts each name by two or three the same way.)
+The checksums do not change: only the file names did. Main's `0126` and two `0127` migrations then apply on the next migrate as new
+migrations.
 
 ## 2. Backfill (automatic)
 
@@ -91,7 +101,8 @@ with the current list price. Nothing to change for this release.
 
 1. `GET /api/v1/health` reports the merged commit.
 2. `SELECT name FROM amp_migrations WHERE name >= '0126' ORDER BY name;` lists
-   `0126`-`0133` and `data:family-identities-v1`.
+   `0126-consent-single-response`, both `0127` migrations, `0128`-`0135` and
+   `data:family-identities-v1`.
 3. A brand-new account opens `/start` on "What brings you to AMP?".
 4. An existing parent opens `/` on Family and sees each child, with a week of
    Time or the empty state for a child with no practice.
@@ -103,3 +114,46 @@ with the current list price. Nothing to change for this release.
    (Stripe test mode is never used in production: stop at the checkout page).
 9. After step 3 of this page, a new child without a birth year in a class with a
    grade band starts at that band's level.
+
+## 6. If something is wrong: fail forward
+
+Production is the trunk ([deployment](../deployment.md)). A deploy that fails
+its own smoke checks is rolled back automatically by the deploy workflow and
+held until a newer green commit arrives. Anything found after a healthy deploy
+is fixed by another small PR to `main` through the same gates, not by
+reverting the merge:
+
+- The migrations only add tables, nullable columns, indexes, functions and
+  triggers; the previous image runs against the new schema. Never edit or
+  remove an applied migration.
+- Before step 3 (the course placement flag), redeploying the previous image is
+  safe. After it, set `amp_course_placement.enabled` back to `false` and stay
+  on an image that reads `starting_course_level` (step 3).
+- The family identity backfill writes only new identity rows; it never rewrites
+  a published id, so it needs no undo.
+
+## Next (deferred: not correctness, security, data or visible breakage)
+
+- Responsive round's open items (reports/spaces/responsive/ledger.md, "Next"):
+  the work replay's feedback panel clips rather than scrolls at 600 px; replay
+  feedback steps scroll inside their panel at 320–768 px; the school Students
+  grid and a class's workbook set grid scroll inside the page at 768 px;
+  workbook row titles and figure tips (standings, a district's Schools list growth) are short hit targets at
+  768 px and up; the practice stage scrolls between its toolbar and dock on
+  phones; math in prompts can break at an operator at 320 px; the 769–1000 px
+  Pathways browser is an overlay with its own scroll.
+- A stored level is saved when a batch is planned, so stored-level readers
+  (`/me/practice`, records, maps) say "not measured" until the batch after a
+  learner's first answer (older than spaces; CP-5 makes it visible).
+- At 844x390 phone landscape, Billing's "Purchases and records" row sits below
+  a page that cannot scroll (landscape phones are a smoke check only).
+- A class's term report cards ("Print all") are offered before anyone in it is
+  measured (the per-learner progress report now waits).
+- The entry chunk is 16 KB gzip larger than main's (the shell's space
+  resolver, which frames every screen).
+- `renamedMigrations` in `scripts/migrate.ts` can go once no development or
+  preview database still holds the earlier spaces migration names.
+- A second parent's bar on a family child's workbooks shows the family's
+  org name rather than "<holder>'s family".
+- From the classroom round: an empty roster misses the class's own future
+  pilot start in the recheck; a pre-existing lockout code mismatch.

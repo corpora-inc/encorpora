@@ -48,6 +48,17 @@ const DAY = 86_400_000;
 const ZONE = "America/New_York";
 const thisYear = new Date().getUTCFullYear();
 const todayIso = new Date(Date.now() - 5 * 3600_000).toISOString().slice(0, 10);
+/** The preview's local hour: today's practice is seeded only in waking
+ * hours (8:00 to 21:00), so a seed run at night never shows a child's work
+ * at 3 AM; earlier days' sittings are mid-morning. */
+const localHour = Number(
+  new Intl.DateTimeFormat("en-US", {
+    timeZone: ZONE,
+    hour: "numeric",
+    hourCycle: "h23",
+  }).format(new Date()),
+);
+const workToday = localHour >= 8 && localHour < 21;
 const daysAgo = (n: number) =>
   new Date(Date.parse(`${todayIso}T12:00:00Z`) - n * DAY)
     .toISOString()
@@ -160,7 +171,7 @@ async function history(
       gradeLevel: grade,
       weekShape: shape,
       now: Date.now(),
-      workToday: true,
+      workToday,
       model: "persona",
     });
     await alignPersonaEnrollments(

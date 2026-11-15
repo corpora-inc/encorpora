@@ -255,7 +255,13 @@ test("Student: their practice and board, never a parent's switcher or account", 
     { kind: "student", me: student },
   );
   render(<DrawerContents close={() => {}} space={space} />);
-  expect(links()).toEqual(["Practice", "Standings, Your class’s board"]);
+  // Their own record is the way out of a problem to the board (standings
+  // never show during one).
+  expect(links()).toEqual([
+    "Practice",
+    "Progress",
+    "Standings, Your class’s board",
+  ]);
   expect(screen.getByText("Ana")).toBeTruthy();
   expect(screen.queryByTestId("switcher")).toBeNull();
   expect(screen.queryByRole("link", { name: /account/i })).toBeNull();

@@ -509,9 +509,9 @@ label as the person's name.
 
 ## First course placement and deployment
 
-Run `npm run db:migrate` before serving these endpoints. Migrations 0126–0131
+Run `npm run db:migrate` before serving these endpoints. Migrations 0128–0133
 install the identity/name schema, deterministic identity hooks and concurrent
-class-to-family lookup index. Migration 0132 adds nullable funded-term scheduling
+class-to-family lookup index. Migration 0134 adds nullable funded-term scheduling
 evidence to the financial request; apply it before running the funding workers.
 The runner automatically performs the family identity
 data migration after committing all schema transactions. No separate operator
@@ -534,8 +534,8 @@ hosted-only parents. `scripts/backfill-family-identities.ts` is also an idempote
 repair command; discovery does not depend on its manual execution.
 
 Never replace the contents of an applied migration in a persistent deployment. The runner checks file checksums. Ordinary migrations
-commit separately. 0127 adds a nullable column without a table rewrite or a
-backfill; existing answered learners derive the legacy prior lazily. 0128 builds
+commit separately. 0129 adds a nullable column without a table rewrite or a
+backfill; existing answered learners derive the legacy prior lazily. 0130 builds
 the history indexes with `CREATE INDEX CONCURRENTLY`, one statement at a time
 outside a transaction, so evidence writes can continue during the builds.
 

@@ -118,6 +118,8 @@ await api.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
   cacheDir: "node_modules/.vite-schools-public",
   server: {
+    // Other work edits the source while a check runs: no live reloads mid-check.
+    hmr: false,
     host: "127.0.0.1",
     port: webPort,
     strictPort: true,
@@ -664,7 +666,9 @@ async function journeys(browser: Browser, engine: string) {
         .getByRole("link", { name: "Start a class" })
         .count()) === 0,
     );
-    await visitor.page.goto(`${origin}/school/new`);
+    // The app redirects while the page loads: wait for the redirect, not
+    // for the first document's load (WebKit reports it interrupted).
+    await visitor.page.goto(`${origin}/school/new`, { waitUntil: "commit" });
     await visitor.page.waitForURL(`${origin}/schools`);
     await heading(visitor.page, /complete math curriculum/).waitFor();
 
@@ -803,8 +807,12 @@ async function journeys(browser: Browser, engine: string) {
     await teacher.page
       .getByText("Group sheet: each workbook leans on")
       .waitFor();
+    // The students chosen: Print says how many (the stack has no count
+    // heading; the boxes show who).
     await teacher.page
-      .getByRole("heading", { name: "3 of 4 students" })
+      .getByRole("button", {
+        name: `Print ${fixture.others.length} workbooks`,
+      })
       .waitFor();
 
     // Device mode: one control at class scope, and a lock from above shows.
@@ -814,7 +822,12 @@ async function journeys(browser: Browser, engine: string) {
     const devices = teacher.page.getByRole("radiogroup", { name: "Devices" });
     await devices.waitFor();
     await devices.getByRole("radio", { name: "Personal" }).click();
-    await teacher.page.getByText("Set by Grade 5 Math").last().waitFor();
+    // Chosen here: a quiet way back to what it would follow, never a
+    // "Set by" naming this class itself (SettingMeta).
+    await teacher.page
+      .getByRole("button", { name: /^Use (?!Personal)/ })
+      .first()
+      .waitFor();
     const principal = await start({ account: fixture.orgAdmin });
     await principal.page.goto(`${origin}/school/${fixture.org.id}/experience`);
     const orgDevices = principal.page.getByRole("radiogroup", {

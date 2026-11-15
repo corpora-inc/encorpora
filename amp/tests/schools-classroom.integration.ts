@@ -394,7 +394,9 @@ test(
                 headers: as(both.token),
               })
             ).json().school.levels,
-            "choice",
+            // A stored "choice" shows grades on a student's own screens
+            // (e2ac70597).
+            "shown",
           );
           await db.query(
             "UPDATE amp_enrollments SET end_on=begin_on WHERE person_id=$1",

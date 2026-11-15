@@ -112,13 +112,14 @@ try {
     after.children.some((child) => child.id === hosted!.id),
     "the projection holds the child practicing elsewhere",
   );
-  // Practice time for both children: today, in the family's class and in
-  // the tutor's group. Fractions of a minute, so the sum is checked exactly.
+  // Practice time for both children: today in the learner's own zone (in the
+  // evening the database's UTC date is already tomorrow), in the family's
+  // class and in the tutor's group. Fractions of a minute, so the sum is checked exactly.
   const own = after.children.find((child) => child.id !== hosted!.id);
   const fixture = async (learner: string, ms: number) =>
     pool.query(
       `INSERT INTO amp_active_days(learner_id,day,surface,skill_id,active_ms)
-       VALUES($1,current_date,'practice','',$2)
+       VALUES($1,(now() AT TIME ZONE COALESCE((SELECT timezone FROM amp_learners WHERE id=$1),'America/New_York'))::date,'practice','',$2)
        ON CONFLICT (learner_id,day,surface,skill_id) DO UPDATE SET active_ms=EXCLUDED.active_ms`,
       [learner, ms],
     );

@@ -8,12 +8,14 @@ import type { AuthSession } from "../auth";
 import { meOptions, queryClient } from "../lib/query";
 import { preload } from "../features/school/api";
 import {
+  childProgressOptions,
   familyOptions,
   familyPlacesOptions,
   isFamilyId,
 } from "../features/family/api";
 import { familyPath, landingFamily } from "../features/family/redirects";
 import { staffScreen } from "./school-routes";
+import { ownClassOf } from "../features/spaces/resolve";
 import { groupAddress } from "./family-redirect";
 
 /*
@@ -188,7 +190,27 @@ export function familyRoutes(root: AnyRoute) {
     learners("/family/learners/new", "", { add: 1 }),
     family.addChildren([
       leaf("/", "FamilyTodayScreen"),
-      leaf("kids/$learner", "ChildScreen"),
+      // A child's page paints whole: its record (levels, and whether there
+      // is anything to report yet) arrives with it, once the family's own
+      // projection says this reader may read it.
+      createRoute({
+        getParentRoute: () => family,
+        path: "kids/$learner",
+        loader: async ({ context, params }) => {
+          const { session } = context as unknown as { session: AuthSession };
+          const { family: id, learner } = params as {
+            family: string;
+            learner: string;
+          };
+          const data = await queryClient
+            .ensureQueryData(familyOptions(session, id))
+            .catch(() => null);
+          const child = data?.children.find((entry) => entry.id === learner);
+          if (child?.capabilities.readProgress)
+            await preload(childProgressOptions(session, id, learner));
+        },
+        component: screen("ChildScreen"),
+      }),
       childScreen(
         "kids/$learner/pathways",
         () => import("../features/pathways/PathwaysScreen"),
@@ -203,10 +225,68 @@ export function familyRoutes(root: AnyRoute) {
       leaf("workbooks", "FamilyWorkbooksScreen"),
       leaf("workbooks/$date", "FamilyMarkingScreen"),
       leaf("time", "FamilyTimeScreen"),
-      leaf("reports", "FamilyReportsScreen"),
+      // Each child's progress report waits for something to report: their
+      // records arrive with the screen, so no Print appears late.
+      createRoute({
+        getParentRoute: () => family,
+        path: "reports",
+        loader: async ({ context, params }) => {
+          const { session } = context as unknown as { session: AuthSession };
+          const id = (params as { family: string }).family;
+          const data = await queryClient
+            .ensureQueryData(familyOptions(session, id))
+            .catch(() => null);
+          await Promise.all(
+            (data?.children ?? [])
+              .filter((child) => child.capabilities.readProgress)
+              .map((child) =>
+                preload(childProgressOptions(session, id, child.id)),
+              ),
+          );
+        },
+        component: screen("FamilyReportsScreen"),
+      }),
       leaf("reports/grades", "FamilyGradesScreen"),
       leaf("people", "FamilyPeopleScreen"),
-      leaf("settings", "FamilySettingsScreen"),
+      // Settings paints whole: the school year, the family code and the
+      // practice defaults read the family's own class before the screen
+      // shows, so no section arrives late and pushes the others down.
+      createRoute({
+        getParentRoute: () => family,
+        path: "settings",
+        loader: async ({ context, params }) => {
+          const { session } = context as unknown as { session: AuthSession };
+          const id = (params as { family: string }).family;
+          const [data, me] = await Promise.all([
+            queryClient
+              .ensureQueryData(familyOptions(session, id))
+              .catch(() => null),
+            queryClient.ensureQueryData(meOptions(session)).catch(() => null),
+          ]);
+          const own = ownClassOf(me?.signedIn ? me : null, id, data);
+          if (!own) return;
+          const [
+            { orgOptions, calendarOptions },
+            { presenceOptions },
+            { experienceOptions },
+          ] = await Promise.all([
+            import("../features/school/api"),
+            import("../features/school/classes/api"),
+            import("../features/school/classroom/api"),
+          ]);
+          const org = await queryClient
+            .ensureQueryData(orgOptions(session, own.org))
+            .catch(() => null);
+          await Promise.all([
+            org?.can?.includes("calendar.read")
+              ? preload(calendarOptions(session, own.org))
+              : null,
+            preload(presenceOptions(session, { org: own.org, class: own.id })),
+            preload(experienceOptions(session, { kind: "class", id: own.id })),
+          ]);
+        },
+        component: screen("FamilySettingsScreen"),
+      }),
       leaf("cards", "FamilyCardsScreen"),
       // The tutoring group is its class's classroom: this address opens it.
       createRoute({

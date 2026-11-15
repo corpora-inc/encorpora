@@ -36,6 +36,7 @@ import { registerUnavailableBilling } from "../src/billing/stripe/routes";
 import { registerFamilyRoutes } from "../src/family/routes";
 import { SchoolRepository } from "../src/schools/repository";
 import { registerSchoolRoutes } from "../src/schools/routes";
+import { classTerm } from "../src/schools/standings";
 import { buildApp } from "../src/server/app";
 import { refuseStudentTokens } from "../src/server/auth";
 import { ApiError, PostgresRepository } from "../src/server/repository";
@@ -160,13 +161,16 @@ await schools.addStaff({
   familyName: "Okafor",
   accountId: ACCOUNTS.admin,
 });
+const CLASS_NAME = "Grade 5 Math";
 const klass = await schools.createClass(school.id, {
-  name: "Grade 5 Math",
+  name: CLASS_NAME,
   courseBands: ["5"],
 });
-for (const [account, given, family, shown] of [
-  [ACCOUNTS.teacher, "Elena", "Rivera", "Ms. Rivera"],
-  [ACCOUNTS.colleague, "Daniel", "Chen", "Mr. Chen"],
+// An adult reads by their own name everywhere (given and family names; no
+// staff display name is shown).
+for (const [account, given, family] of [
+  [ACCOUNTS.teacher, "Elena", "Rivera"],
+  [ACCOUNTS.colleague, "Daniel", "Chen"],
 ] as const) {
   await schools.addStaff({
     orgId: school.id,
@@ -176,17 +180,16 @@ for (const [account, given, family, shown] of [
     accountId: account,
     classId: klass.id,
   });
-  await db.query("UPDATE amp_people SET display_name=$2 WHERE account_id=$1", [
-    account,
-    shown,
-  ]);
 }
 
 const day = (back: number) =>
   new Date(Date.now() - back * 86_400_000).toISOString().slice(0, 10);
 const STRANDS = ["number", "fractions", "geometry", "measurement", "data"];
-/** A term of independent work and stored levels: started at `start`, up
- * `points` hundredths of a grade by yesterday, each strand a little apart. */
+/** A term of independent work and stored levels on a straight line, each
+ * strand a little apart. A board's term growth is the settled pace times the
+ * term's elapsed days (schools/growth.ts), so the line's pace is `points`
+ * hundredths of a grade over the class's term: any two of its days give the
+ * same figure. */
 async function worked(
   learnerId: string,
   {
@@ -229,12 +232,16 @@ async function worked(
       day(30),
       frontier(start),
       day(9),
-      frontier(start + (points * 0.6) / 100),
+      frontier(start + (21 * points) / 100 / termDays),
       day(1),
-      frontier(start + points / 100),
+      frontier(start + (29 * points) / 100 / termDays),
     ],
   );
 }
+
+// The class's term, as its board reads it (standings.ts classTerm).
+const term = await classTerm(db, klass.id);
+const termDays = (Date.parse(term.to) - Date.parse(term.from)) / 86_400_000;
 
 type Student = Awaited<ReturnType<typeof schools.provisionStudent>>;
 const roster: Student[] = [];
@@ -245,6 +252,13 @@ for (const [index, [given, family, points]] of NAMES.entries()) {
     gradeLevel: 5,
     classId: klass.id,
   });
+  // On the roster since the term began: a student's growth window opens
+  // the day they joined (standings.ts termStartSql), so a student added
+  // today would have no settled days on this board yet.
+  await db.query(
+    "UPDATE amp_org_roles SET begin_on=$2::date WHERE person_id=$1 AND role='student'",
+    [student.personId, term.from],
+  );
   await worked(student.learnerId, {
     start: 4.3 + ((index * 5) % 11) / 10,
     points,
@@ -425,7 +439,7 @@ const heading = (page: Page, name: string | RegExp) =>
 const mapNames = async (page: Page) => {
   await page.evaluate("globalThis.__name ??= (f) => f");
   return page
-    .getByRole("table", { name: /^Class map/ })
+    .getByRole("table", { name: /^Map, / })
     .locator("[role=row] [role=cell]:first-child")
     .evaluateAll((cells) =>
       cells.map((cell) => (cell.textContent ?? "").replace(/\s+/g, " ").trim()),
@@ -488,13 +502,13 @@ async function journeys(browser: Browser, engine: string, width: number) {
       `${label} the teacher sits between 97 and 88, unranked`,
       lines[3]?.teacher === true &&
         lines[3].rank === "" &&
-        /^Ms\. Rivera/.test(lines[3].name),
+        /^Elena Rivera/.test(lines[3].name),
       lines,
     );
     check(
       `${label} the colleague under the list follows your own line`,
       (await child.page
-        .getByRole("region", { name: "Mr. Chen, teacher" })
+        .getByRole("region", { name: "Daniel Chen, teacher" })
         .count()) === 1 &&
         (
           await child.page
@@ -502,7 +516,7 @@ async function journeys(browser: Browser, engine: string, width: number) {
             .evaluateAll((sections) =>
               sections.map((section) => section.getAttribute("aria-label")),
             )
-        ).join("|") === "Your line|Mr. Chen, teacher",
+        ).join("|") === "Your line|Daniel Chen, teacher",
     );
 
     // 3. The switch: off, nothing moves, the line goes everywhere.
@@ -617,8 +631,15 @@ async function sweep(
   try {
     for (const [name, leaf, title, ready] of [
       ["map", "map", "Class map", `${NAMES[0]![0]} ${NAMES[0]![1]}`],
-      ["today", "today", /^Good /, `${NAMES[0]![0]} ${NAMES[0]![1]}`],
-      ["experience", "experience", "Student experience", "Show me in this class"],
+      // Today is titled by the class, never a greeting (today-title.ts), and
+      // names students by first name only: its week is the settled mark.
+      ["today", "today", CLASS_NAME, "students practiced"],
+      [
+        "experience",
+        "experience",
+        "Student experience",
+        "Show me in this class",
+      ],
     ] as const) {
       await teacher.page.goto(classUrl(leaf));
       await heading(teacher.page, title).waitFor();

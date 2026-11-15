@@ -14,7 +14,7 @@ import {
   RouterProvider,
 } from "@tanstack/react-router";
 import { queryClient, meOptions, refreshMe } from "../src/web/lib/query";
-import { useAppRoute } from "../src/web/app-routes";
+import { accountParts, useAppRoute } from "../src/web/app-routes";
 import { FamilyCenter } from "../src/web/FamilyCenter";
 import { Tabs } from "../src/web/ui/Tabs";
 import { accountTabs } from "../src/web/features/spaces/tabs";
@@ -63,7 +63,9 @@ export function FamilyFixture({
       generation.current++;
     };
   }, [identity]);
-  const section = location.pathname.split("/")[2];
+  // The tabs open /account/<tab>; older /family/<section> addresses read
+  // the same (app-routes.ts).
+  const section = accountParts(location.pathname.split("/").filter(Boolean))[1];
   // In the app the frame's bar carries these tabs (app/AppShell.tsx); the
   // harness draws the same tabs above the settings.
   return (
@@ -72,21 +74,28 @@ export function FamilyFixture({
       style={{
         display: "grid",
         gridTemplateRows: "auto minmax(0, 1fr)",
+        // One column the width of the page, as the app frame's bar is: its
+        // tab strip scrolls within it, never past the page.
+        gridTemplateColumns: "minmax(0, 1fr)",
         height: "100dvh",
       }}
     >
       <style>{`[data-family-harness] > .family-center { height: auto; }`}</style>
-      <Tabs
-        label="Account"
-        items={accountTabs}
-        active={
-          section === "access" ||
-          section === "privacy" ||
-          section === "security"
-            ? section
-            : "learners"
-        }
-      />
+      {/* The bar's tab cell sits on the content's gutter; a phone's strip
+          reaches its labels out to that gutter (Tabs.module.css). */}
+      <div style={{ display: "flex", minWidth: 0, paddingInline: 16 }}>
+        <Tabs
+          label="Account"
+          items={accountTabs}
+          active={
+            section === "access" ||
+            section === "privacy" ||
+            section === "security"
+              ? section
+              : "learners"
+          }
+        />
+      </div>
       <FamilyCenter
         token={token}
         identity={identity}

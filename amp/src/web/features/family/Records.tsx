@@ -22,6 +22,7 @@ import { downloadPdf, paperFormat } from "../../lib/pdf-download";
 import { buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
 import { PrintButton } from "../../ui/PrintButton";
+import { reportable } from "../../../learning/level-check";
 import { RowLink, RowList } from "../../ui/RowList";
 import { ScreenTitle } from "../../ui/ScreenTitle";
 import { CardsScreen } from "../school/classes/CardsScreen";
@@ -550,6 +551,9 @@ export function FamilyReportsScreen() {
   const graded =
     !!host && children.some((child) => child.capabilities.readGrades);
   const edits = children.some((child) => child.capabilities.editGrades);
+  // A progress report once a child has a level with an answer behind it;
+  // the records arrive with the screen (family-routes).
+  const records = useRecords(place, children);
   return (
     <FamilyFrame place={place}>
       {data && (
@@ -565,21 +569,28 @@ export function FamilyReportsScreen() {
               >
                 <h2 id="reports-progress">Progress reports</h2>
                 <dl className={styles.settings}>
-                  {children.map((child) => (
-                    <div key={child.id} className={styles.setting}>
-                      <div className={styles.settingText}>
-                        <dt>{child.name}</dt>
-                        <dd>
-                          {child.week.lastPracticed
-                            ? `${number(child.week.minutes)} active minutes this week`
-                            : "Not started yet"}
-                        </dd>
+                  {children.map((child, index) => {
+                    const hasReport = reportable(records[index]?.data?.level);
+                    return (
+                      <div key={child.id} className={styles.setting}>
+                        <div className={styles.settingText}>
+                          <dt>{child.name}</dt>
+                          <dd>
+                            {!hasReport
+                              ? "Nothing to report yet"
+                              : child.week.lastPracticed
+                                ? `${number(child.week.minutes)} active minutes this week`
+                                : "No practice this week"}
+                          </dd>
+                        </div>
+                        {hasReport && (
+                          <div className={styles.settingAction}>
+                            <ProgressReport place={place} child={child} />
+                          </div>
+                        )}
                       </div>
-                      <div className={styles.settingAction}>
-                        <ProgressReport place={place} child={child} />
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </dl>
               </section>
               {graded && host && (

@@ -176,6 +176,8 @@ await api.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
   cacheDir: "node_modules/.vite-school-org",
   server: {
+    // Other work edits the source while a check runs: no live reloads mid-check.
+    hmr: false,
     host: "127.0.0.1",
     port: webPort,
     strictPort: true,
@@ -189,11 +191,6 @@ const agreement = (signerName: string, signerTitle: string) => ({
   signerName,
   signerTitle,
 });
-const asTitled = (personId: string, name: string) =>
-  db.query("UPDATE amp_people SET display_name=$2 WHERE id=$1", [
-    personId,
-    name,
-  ]);
 const yearAhead = new Date(Date.now() + 300 * DAY).toISOString();
 
 /* One school, full of a term's practice: what a head sees. */
@@ -218,7 +215,6 @@ async function buildSchool() {
     familyName: "Adeyemi",
     accountId: ACCOUNT,
   });
-  await asTitled(head.personId, "Dr. Adeyemi");
   const client = await db.connect();
   const year = await seedCalendar(client, org.id).finally(() =>
     client.release(),
@@ -266,7 +262,6 @@ async function buildDistrict() {
     familyName: "Ruiz",
     accountId: ACCOUNT,
   });
-  await asTitled(head.personId, "Dr. Ruiz");
   const license = await schools.issueLicense({
     orgId: org.id,
     seats: 10_250,
@@ -492,7 +487,8 @@ async function sweep(
   let releasePlaces: (() => void) | undefined;
   try {
     const { school, district, districtSchool } = places;
-    const otherClasses = `**/api/v1/school/orgs/${district}/classes?*`;
+    // The switcher's places are one read now (features/spaces/places.ts).
+    const otherClasses = "**/api/v1/school/places*";
     const placesGate = new Promise<void>((resolve) => {
       releasePlaces = resolve;
     });
@@ -536,9 +532,11 @@ async function sweep(
     releasePlaces!();
     const readyDrawer = page.getByRole("dialog");
     await readyDrawer.waitFor();
-    // The drawer names the place on screen: a school shows its School item,
-    // never a class (docs/design/ia.md).
-    await readyDrawer.getByRole("link", { name: /^School,/ }).waitFor();
+    // The drawer names the place on screen: a school's own destination,
+    // named by the school (features/spaces/resolve.ts), never a class.
+    await readyDrawer
+      .locator(`a[href="/school/${school}"][aria-current="page"]`)
+      .waitFor();
     await readyDrawer.getByRole("button", { name: /switch place$/ }).click();
     await settled(page);
     const menuBefore = await boxes(page, '[role="menu"]');
@@ -577,7 +575,8 @@ async function sweep(
     check(
       `${label} inherited school keeps its group destination`,
       (await drawer
-        .getByRole("link", { name: /^School,/ })
+        .locator('a[aria-current="page"]')
+        .first()
         .getAttribute("href")) === `/school/${districtSchool}`,
     );
     await drawer.getByRole("button", { name: /switch place$/ }).click();
@@ -585,6 +584,10 @@ async function sweep(
     await placeMenu
       .locator(`[data-place="school:${districtSchool}"]`)
       .waitFor();
+    // The switcher is one bounded read (features/spaces/places.ts): past its
+    // first places, "More places" opens the rest in place.
+    const more = placeMenu.locator('[data-place="more"]');
+    if (await more.count()) await more.click();
     await placeMenu
       .locator('[data-place^="school:"]')
       .filter({ hasText: "Harbor View Middle School" })
@@ -761,7 +764,6 @@ async function journey(browser: Browser, engine: string) {
       familyName: "Ruiz",
       accountId: ACCOUNT,
     });
-    await asTitled(person.personId, "Dr. Ruiz");
     await schools.issueLicense({
       orgId: district.id,
       seats: 20,
@@ -841,7 +843,9 @@ async function journey(browser: Browser, engine: string) {
     await page.waitForURL(`**/school/${solo.id}/classes**`);
     await heading(page, "Classes").waitFor();
     await settled(page);
-    for (const name of ["Overview", "Staff", "Activity"])
+    // Its Staff stays (the co-teacher to invite, the aide to add:
+    // features/spaces/tabs.ts); the overview's weight goes.
+    for (const name of ["Overview", "Activity"])
       check(
         `${engine} a lone teacher has no ${name} link`,
         (await page.getByRole("link", { name, exact: true }).count()) === 0,
@@ -963,9 +967,7 @@ async function journey(browser: Browser, engine: string) {
       .getByRole("radiogroup", { name: "Google sign-in" })
       .getByRole("radio", { name: "On" })
       .click();
-    await page
-      .getByText("Google sign-in is on.", { exact: true })
-      .waitFor();
+    await page.getByText("Google sign-in is on.", { exact: true }).waitFor();
     const student = await browser.newContext({
       viewport: { width: 390, height: 844 },
     });
@@ -1080,12 +1082,14 @@ async function journey(browser: Browser, engine: string) {
     await page.goto(`${origin}/school/${district.id}/activity`);
     await heading(page, "Activity").waitFor();
     for (const sentence of [
-      /Dr\. Ruiz moved Amara Osei from South Campus to North Campus/,
-      /Dr\. Ruiz started /,
-      /Dr\. Ruiz turned on Google sign-in/,
-      /Dr\. Ruiz asked to set up Clever/,
-      /Dr\. Ruiz exported all student data for North Campus/,
-      /Dr\. Ruiz removed a student and deleted their learning data/,
+      // An adult's own name (account profile, else the roster's given and
+      // family names); a school sets no staff display name.
+      /Dana Ruiz moved Amara Osei from South Campus to North Campus/,
+      /Dana Ruiz started /,
+      /Dana Ruiz turned on Google sign-in/,
+      /Dana Ruiz asked to set up Clever/,
+      /Dana Ruiz exported all student data for North Campus/,
+      /Dana Ruiz removed a student and deleted their learning data/,
     ])
       await page.getByText(sentence).first().waitFor();
     // Filters live in the URL, and survive a reload.

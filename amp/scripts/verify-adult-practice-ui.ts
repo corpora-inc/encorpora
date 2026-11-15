@@ -392,27 +392,31 @@ async function teacherStarts(
     accountId: account,
     classId: klass.id,
   });
-  // The school's root redirects teachers to Classes. Wait for that settled
-  // screen before testing another navigation, including the remembered `/`.
+  // The school's root opens a teacher's one class on its Today (never a
+  // list of one). Wait for that settled screen before testing another
+  // navigation, including the remembered `/`.
   async function schoolReady() {
-    await page.waitForURL(`${origin}/school/${org.id}/classes`);
-    await heading(page, "Classes");
+    await page.waitForURL(
+      `${origin}/school/${org.id}/classes/${klass.id}/today`,
+    );
+    await todayTitle(page);
   }
 
   // `/` opens their school; its switcher offers their own practice.
   await page.goto(`${origin}/`);
   await schoolReady();
-  const fromSchool = await openSwitcher(page, school, true);
+  // Inside a class, the switcher is named for the class it is in.
+  const fromSchool = await openSwitcher(page, "Grade 8 Math", true);
   const items = await fromSchool.getByRole("menuitem").allInnerTexts();
   check(
     `${label} the switcher offers their own practice`,
-    items.some((item) => /Start my own practice/.test(item)) &&
+    items.some((item) => /Practice yourself/.test(item)) &&
       items.some((item) => item.includes(school)),
     items,
   );
   await measured(page, `${label} school switcher`);
   await shot(page, "switcher-start", width, theme, engine);
-  await choose(page, fromSchool, /Start my own practice/);
+  await choose(page, fromSchool, /Practice yourself/);
   // The year is all it asks (founder: birth year is always enough).
   await heading(page, "What year were you born?");
   check(`${label} start has a URL`, path(page) === "/me/start", path(page));
@@ -449,7 +453,7 @@ async function teacherStarts(
   check(
     `${label} the drawer names their own practice`,
     // The drawer's kicker is set in capitals, which innerText reflects.
-    /Your own practice/i.test(drawerText) && /Dana Okafor/.test(drawerText),
+    /^Practice$/im.test(drawerText) && /Dana Okafor/.test(drawerText),
     drawerText.slice(0, 400),
   );
   // Their levels are always on their record (`/me`), never a toggle here.
@@ -475,16 +479,18 @@ async function teacherStarts(
   await history(context, learnerId);
   await page.goto(`${origin}/`);
   await page.waitForURL(`${origin}/me`);
-  await heading(page, "Dana Okafor");
+  // Their record is titled by what it shows; the place is named for them
+  // in the app bar and the switcher.
+  await heading(page, "Where you are");
   const record = await page.locator("main").innerText();
   check(
     `${label} the record is a teacher's record of themselves`,
+    // Their levels, this week's time (its days and weeks at /me/time),
+    // what they have shown on their own, and their work.
     /Where you are/.test(record) &&
-      /Time, last 12 weeks/.test(record) &&
-      /Time by day and skill/.test(record) &&
+      /This week/.test(record) &&
       /Skills shown on their own/.test(record) &&
-      /Recent work/.test(record) &&
-      /Began at Algebra/.test(record),
+      /Recent work/.test(record),
     record.slice(0, 600),
   );
   await measured(page, `${label} record`);
@@ -498,7 +504,7 @@ async function teacherStarts(
     .click();
   await practicing(page);
   await page.goBack();
-  await heading(page, "Dana Okafor");
+  await heading(page, "Where you are");
   check(`${label} Back reopens the record`, path(page) === "/me", path(page));
   await page.goForward();
   await practicing(page);
@@ -506,19 +512,21 @@ async function teacherStarts(
   await practicing(page);
   check(`${label} reload keeps practice`, path(page) === "/practice");
   await page.goto(`${origin}/me`);
-  await heading(page, "Dana Okafor");
+  await heading(page, "Where you are");
   await page.reload();
-  await heading(page, "Dana Okafor");
+  await heading(page, "Where you are");
 
   // The switcher goes both ways, and `/` follows where they last were.
   // Their own place is on the app frame: its switcher is in the drawer at
   // every width.
-  const fromOwn = await openSwitcher(page, "My practice", true);
+  // Their own place is named for them in the switcher.
+  const fromOwn = await openSwitcher(page, "Dana Okafor", true);
   const ownItems = await fromOwn.getByRole("menuitem").allInnerTexts();
   check(
     `${label} their own place is named for them`,
     ownItems.some(
-      (item) => /My practice/.test(item) && /Dana Okafor/.test(item),
+      (item) =>
+        /Dana Okafor/.test(item) && /Levels, practice and workbooks/.test(item),
     ),
     ownItems,
   );
@@ -528,9 +536,9 @@ async function teacherStarts(
   await schoolReady();
   await page.goto(`${origin}/`);
   await schoolReady();
-  const back = await openSwitcher(page, school, true);
-  await choose(page, back, /My practice/);
-  await heading(page, "Dana Okafor");
+  const back = await openSwitcher(page, "Grade 8 Math", true);
+  await choose(page, back, /Dana Okafor/);
+  await heading(page, "Where you are");
   await page.goto(`${origin}/`);
   await page.waitForURL(`${origin}/me`);
   check(`${label} no uncaught errors`, errors.length === 0, errors);
@@ -563,15 +571,11 @@ async function parentStarts(
     "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES($1,$2,'stripe',$1,'active',now()-interval '1 day',now()+interval '300 days')",
     [`fixture-${child.id}`, child.id],
   );
-  // The family's side is its class (docs/families.md), which the parent
-  // teaches; their own practice sits beside it in the switcher.
-  const family = (
-    await db.query(
-      "SELECT c.name FROM amp_families f JOIN amp_classes c ON c.id=f.class_id WHERE f.account_id=$1",
-      [account],
-    )
-  ).rows[0].name as string;
-  const inClass = /\/school\/[^/]+\/classes\/[^/]+\/today$/;
+  // The family's side is the Family space, at its own address; their own
+  // practice sits beside it in the switcher. A family without a chosen name
+  // is the reader's own: "Your family" (features/spaces/places.ts).
+  const family = "Your family";
+  const inClass = /\/family\/[0-9a-f-]{36}$/;
   await page.goto(`${origin}/`);
   await page.waitForURL(inClass);
   await todayTitle(page);
@@ -580,23 +584,23 @@ async function parentStarts(
   check(
     `${label} the family switcher offers their own practice`,
     /Rowan/.test(items[0] ?? "") &&
-      /Start my own practice/.test(items[1] ?? ""),
+      items.some((item) => /Practice yourself/.test(item)),
     items,
   );
   await measured(page, `${label} family switcher`);
   await shot(page, "family-switcher", width, theme);
-  await choose(page, fromHome, /Start my own practice/);
+  await choose(page, fromHome, /Practice yourself/);
   await heading(page, "What year were you born?");
   await page.getByRole("radio", { name: "Adult", exact: true }).click();
   await page.getByRole("button", { name: "Start practicing" }).click();
   await practicing(page);
   // Back to the family: its class, with the child in it.
-  const fromOwn = await openSwitcher(page, "My practice", true);
+  const fromOwn = await openSwitcher(page, "Avery Lind", true);
   await choose(page, fromOwn, new RegExp(family));
   await page.waitForURL(inClass);
   await todayTitle(page);
   check(
-    `${label} the family side is the child's class`,
+    `${label} the family side has the child`,
     (await page
       .getByRole("button", { name: "Let Rowan practice here" })
       .count()) === 1,

@@ -100,6 +100,8 @@ await workbookWorker().warm();
 const vite = await createServer({
   cacheDir: "node_modules/.vite-school-demo-ui",
   server: {
+    // Other work edits the source while a check runs: no live reloads mid-check.
+    hmr: false,
     host: "127.0.0.1",
     port: webPort,
     strictPort: true,
@@ -217,6 +219,9 @@ async function demo(
     .request.post(`${origin}/api/v1/school/demo`, {
       headers: { authorization: `Bearer ${token}` },
       data: { kind: "class", timezone: "America/Chicago" },
+      // Its time is only logged here (see below); a loaded machine must
+      // not fail the journey on it.
+      timeout: 120_000,
     });
   const elapsed = Math.round(performance.now() - started);
   check(`${label} demo made`, made.status() === 201, made.status());
@@ -242,9 +247,15 @@ async function demo(
       .filter({ visible: true })
       .count()) === 0,
   );
+  // The board is on Today, with the class code (PracticeSlot: the code's
+  // "Full screen" opens the sign-in board where the bar doesn't).
   check(
-    `${label} Start class on Today`,
-    await page.getByRole("link", { name: "Start class" }).isVisible(),
+    `${label} the board on Today`,
+    await page
+      .locator('main a[href$="/start"]')
+      .filter({ hasText: "Full screen", visible: true })
+      .first()
+      .isVisible(),
   );
   // A phone shows a short word on the action, not only an arrow.
   const actionText = (
@@ -345,9 +356,11 @@ async function demo(
     `${label} the action names the real class`,
     (await action.getAttribute("aria-label")) === "Set up your real class",
   );
+  // A teacher's real class is set up by the teacher (pilots, #2282); a
+  // school's demo is the one that starts with a person (Talk to us).
   await action.click();
-  await page.waitForURL(/\/schools#talk$/);
-  await page.getByRole("heading", { name: "Talk to us." }).waitFor();
+  await page.waitForURL(/\/school\/start$/);
+  await page.getByRole("heading", { name: "Set up your class" }).waitFor();
   await shot(page, "real-setup", label);
 
   // A demo school, once: the overview a head presents.
@@ -358,7 +371,13 @@ async function demo(
         headers: { authorization: `Bearer ${token}` },
         data: { kind: "school", timezone: "America/Chicago" },
       });
-    check(`${label} demo school made`, school.status() === 201);
+    // The zone's one shared demo school (#2214): joined (201), or this
+    // person's place in it returned (200) when the class demo joined it.
+    check(
+      `${label} demo school made`,
+      [200, 201].includes(school.status()),
+      school.status(),
+    );
     const { orgId } = (await school.json()).demo as { orgId: string };
     await page.goto(`${origin}/school/${orgId}`);
     await page.getByText("Grade 3 Math").first().waitFor();

@@ -21,6 +21,8 @@ const shippedDuplicates = [
   "0106-trend-line-fit-problem-flags.sql",
   "0125-external-runtime-errors.sql",
   "0125-funded-pending-invoices.sql",
+  "0127-acquisition-contact-due-at-signup.sql",
+  "0127-consent-policy-no-review-expiry.sql",
 ];
 
 test("every new migration takes its own number", () => {
@@ -39,6 +41,7 @@ test("every new migration takes its own number", () => {
 test("each renumbered migration exists under its new name only", () => {
   for (const [name, earlier] of Object.entries(renamedMigrations)) {
     assert.ok(names.includes(name), `${name} exists`);
-    assert.ok(!names.includes(earlier), `${earlier} is gone`);
+    for (const old of earlier)
+      assert.ok(!names.includes(old), `${old} is gone`);
   }
 });
