@@ -437,3 +437,64 @@ test(
     );
   },
 );
+
+test(
+  "the invoice funnel counts each program's browsers by step, without staff or automation",
+  database,
+  async (t) => {
+    const { db } = await fixture(t);
+    const sql = await readFile(
+      new URL("../scripts/invoice-funnel.sql", import.meta.url),
+      "utf8",
+    );
+    const visit = async (
+      traffic: string,
+      steps: { step: string; error?: string }[],
+    ) => {
+      const visitor = randomUUID();
+      await db.query(
+        `INSERT INTO amp_funnel_visitors(visitor_id,first_seen,last_seen,traffic_kind)
+         VALUES($1,current_date,current_date,$2)`,
+        [visitor, traffic],
+      );
+      for (const props of steps)
+        await db.query(
+          `INSERT INTO amp_funnel_events(visitor_id,event,props,occurred_on)
+           VALUES($1,'invoice_step',$2,current_date)`,
+          [visitor, { program: "az-esa", ...props }],
+        );
+    };
+    await visit("external", [
+      { step: "view" },
+      { step: "email" },
+      { step: "student" },
+      { step: "submit" },
+      { step: "success" },
+    ]);
+    await visit("external", [
+      { step: "view" },
+      { step: "email" },
+      { step: "submit" },
+      { step: "error", error: "network" },
+    ]);
+    await visit("automated", [{ step: "view" }]);
+    const rows = (await db.query(sql)).rows.filter(
+      (row) => row.program === "az-esa",
+    );
+    assert.deepEqual(
+      rows.map((row) => [row.step, row.count, row.of_prev]),
+      [
+        ["view", 2, null],
+        ["term", 0, "0.0"],
+        ["email", 2, "100.0"],
+        ["student", 1, "50.0"],
+        ["submit", 2, "200.0"],
+        ["error", 1, "50.0"],
+        ["success", 1, "50.0"],
+        ["invoice created", 0, "0.0"],
+        ["claimed by an account", 0, null],
+        ["payment received", 0, null],
+      ],
+    );
+  },
+);

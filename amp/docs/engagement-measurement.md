@@ -180,6 +180,14 @@ consent and GPC rules as every client event: `setup_step` (persona, step,
 then `view`, `term`, `email`, `student`, `submit`, `error` with a category, or
 `success`) for the ESA/EFA invoice form. Neither carries what was typed.
 
+The ESA/EFA invoice funnel by program (form steps from browsers, then the
+invoices created, claimed and paid from the server's records) is the same
+kind of file:
+
+```sh
+psql "$AMP_DATABASE_URL" -f amp/scripts/invoice-funnel.sql
+```
+
 ## Google Analytics traffic reports
 
 The production marketing and parent purchase pages also send page views and a fixed set of purchase-flow actions to GA4. The shared Google tag is in `src/analytics/google-analytics.ts`; it contains a public measurement ID, not a credential. Preview domains, native apps, known staff browsers, WebDriver sessions, Do Not Track and Global Privacy Control are excluded. Google advertising personalization and Google signals are disabled. Analytics storage defaults to denied in the EEA, UK and Switzerland.
