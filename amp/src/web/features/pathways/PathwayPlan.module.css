@@ -94,8 +94,8 @@
 .plan .name {
   flex: 0 1 auto;
   min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  text-wrap: balance;
   color: var(--color-on-surface);
   font-size: var(--text-label);
   font-weight: 700;
@@ -133,6 +133,16 @@
 @container (min-width: 440px) {
   .plan .bar {
     display: block;
+  }
+}
+@container (max-width: 399px) {
+  .plan .here {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 }
 .plan .cells {

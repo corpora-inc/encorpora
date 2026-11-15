@@ -115,8 +115,8 @@
 .student {
   display: inline-flex;
   align-items: center;
-  min-height: 44px;
-  min-width: 0;
+  min-height: var(--target-min);
+  min-width: var(--target-min);
   border-radius: var(--radius-small);
   color: inherit;
   font-size: var(--text-table);

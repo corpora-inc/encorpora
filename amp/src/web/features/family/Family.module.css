@@ -327,6 +327,8 @@
    44 px to touch. */
 .recordName {
   position: relative;
+  display: inline-block;
+  min-width: var(--target-min);
   color: inherit;
   text-decoration: none;
   border-radius: var(--radius-small);

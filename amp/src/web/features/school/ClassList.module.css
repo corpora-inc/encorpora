@@ -59,9 +59,8 @@
 }
 .link,
 .detail {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
 }
 .link {
   color: inherit;
