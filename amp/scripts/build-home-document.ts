@@ -96,8 +96,9 @@ if (fonts !== 3)
 // The app's own script and the chunks it preloads are what the pitch doesn't
 // wait for: the home entry imports the app once the pitch is up.
 const appScript =
-  /<script type="module" crossorigin src="\/assets\/index-[^"]+\.js"><\/script>/;
-if (!appScript.test(shell))
+  /<script type="module" crossorigin src="(\/assets\/index-[^"]+\.js)"><\/script>/;
+const appEntry = appScript.exec(shell)?.[1];
+if (!appEntry)
   throw new Error("build-home-document: the shell has no app script");
 const [home$, ...homeImports] = closure;
 const stylesheets = new Set(
@@ -115,7 +116,10 @@ const home = shell
   .replace(/<link rel="modulepreload"[^>]*>\s*/g, "")
   .replace(
     appScript,
-    `<script type="module" crossorigin src="/${home$!.file}"></script>`,
+    // The release this document runs is named by the app's entry, as every
+    // other document's script names it (src/web/lib/app-recovery.ts).
+    `<meta name="amp-app-entry" content="${appEntry}" />
+    <script type="module" crossorigin src="/${home$!.file}"></script>`,
   )
   .replace(
     "</head>",

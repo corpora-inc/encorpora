@@ -120,3 +120,35 @@ test("a release reload never repeats within a minute", async () => {
   ).rejects.toMatchObject({ kind: "validation" });
   expect(reload).not.toHaveBeenCalled();
 });
+
+// `/` is the pitch's own document (home.html): its script is the light home
+// entry, and it names the app's entry it loads.
+const home = (entry: string) =>
+  `<!doctype html><html><head><meta name="amp-app-entry" content="${entry}" /><script type="module" src="/assets/home-light.js"></script></head><body><div id="root"></div></body></html>`;
+function serveHome(apiStatus: number, appEntry: string, body: object) {
+  const fetch = vi.fn((input: string) =>
+    Promise.resolve(
+      input === "/"
+        ? new Response(home(appEntry), { status: 200 })
+        : new Response(JSON.stringify(body), { status: apiStatus }),
+    ),
+  );
+  vi.stubGlobal("fetch", fetch);
+  return fetch;
+}
+
+test("an app tab is current while `/`, the pitch's document, names its entry", async () => {
+  serveHome(404, "/assets/index-loaded.js", { error: "Not Found" });
+  await expect(
+    request("/learners/gone", z.unknown(), { token: "t" }),
+  ).rejects.toMatchObject({ kind: "validation" });
+  expect(reload).not.toHaveBeenCalled();
+});
+
+test("a tab opened on `/` knows its release by the app entry it names", async () => {
+  document.head.innerHTML = `<meta name="amp-app-entry" content="/assets/index-loaded.js" /><script type="module" src="/assets/home-light.js"></script>`;
+  serveHome(404, "/assets/index-current.js", { error: "Not Found" });
+  const result = request("/learners", z.unknown(), { token: "t" });
+  expect(await settled(result)).toBe(pending);
+  expect(reload).toHaveBeenCalledOnce();
+});
