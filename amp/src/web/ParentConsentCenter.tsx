@@ -1,3 +1,4 @@
+import { requestFetch } from "./lib/request-transport";
 import { CheckboxControl } from "./ui/Checkbox";
 import {
   pendingFundedPurchase,
@@ -57,7 +58,7 @@ export function ParentConsentCenter({
     setBusy(true);
     setError("");
     try {
-      const response = await fetch("/api/v1/consent", {
+      const response = await requestFetch("/api/v1/consent", {
         headers: { Authorization: `Bearer ${tokenRef.current}` },
         signal: abort.signal,
       });
@@ -135,7 +136,7 @@ export function ParentConsentCenter({
         path = "/api/v1/consent/acknowledge";
         body = { ...challenge, parentAttestation: attest };
       }
-      const response = await fetch(path, {
+      const response = await requestFetch(path, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${tokenRef.current}`,
@@ -394,7 +395,7 @@ export function ParentConsentCenter({
             disabled={busy || !attest || !email.includes("@")}
             onClick={() => void act("begin")}
           >
-            {busy ? "Saving…" : "Email my privacy notice"}
+            {busy ? "Saving…" : "Email the privacy notice"}
           </button>
         ) : view?.request?.delivery === "stopped-unknown" &&
           phase !== "withdrawn" ? (

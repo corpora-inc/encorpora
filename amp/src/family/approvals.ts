@@ -1,3 +1,6 @@
+import { accessGrantsFor, grantInForce } from "../account/adult-access.js";
+import { ensureFamilyIdentity } from "./identity.js";
+import { adultNameSql } from "../account/profile.js";
 import { createHash, createHmac, randomUUID } from "node:crypto";
 import { childNameSchema } from "../learning/nickname.js";
 import type { Pool, PoolClient } from "pg";
@@ -113,14 +116,15 @@ const lockFamily = (client: Database, familyAccountId: string) =>
   client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
     `family-class:${familyAccountId}`,
   ]);
-const activeGrant = async (db: Database, learnerId: string) =>
-  (
-    await db.query<{ ends_at: Date }>(
-      `SELECT max(ends_at) AS ends_at FROM amp_grants WHERE learner_id=$1 AND status='active'
-       AND starts_at<=now() AND ends_at>now()`,
-      [learnerId],
-    )
-  ).rows[0]?.ends_at ?? null;
+const activeGrant = async (db: Database, learnerId: string) => {
+  const access = await accessGrantsFor(db, [learnerId]);
+  return (
+    access.grants
+      .filter((g) => grantInForce(g, access.now))
+      .sort((a, b) => b.ends_at.getTime() - a.ends_at.getTime())[0]?.ends_at ??
+    null
+  );
+};
 
 async function transaction<T>(
   pool: Pool,
@@ -348,7 +352,13 @@ export async function listApprovals(
     }
     const client = await pool.connect();
     try {
-      const consent = await learningConsentActive(client, row.account_id!);
+      const consent = await learningConsentActive(
+        client,
+        row.account_id!,
+        false,
+        undefined,
+        false,
+      );
       const ends = await activeGrant(client, row.learner_id!);
       // Without a plan, their own free problems still count down here.
       const used = ends
@@ -489,14 +499,22 @@ export async function removeApproval(
 /** Who teaches the class, by the names the class shows. */
 async function teachers(db: Database, classId: string) {
   return (
-    await db.query<{ name: string }>(
-      `SELECT concat_ws(' ',p.given_name,p.family_name) AS name FROM amp_enrollments e
+    await db.query<{ name: string | null }>(
+      `SELECT ${adultNameSql()} AS name FROM amp_enrollments e
        JOIN amp_people p ON p.id=e.person_id AND p.deleted_at IS NULL
        WHERE e.class_id=$1 AND e.role='teacher' AND e.end_on IS NULL
        ORDER BY e.created_at,p.id LIMIT 4`,
       [classId],
     )
   ).rows.map((row) => row.name);
+}
+
+async function teacherNames(db: Database, classId: string) {
+  const names = await teachers(db, classId);
+  return {
+    teacherNames: names,
+    teachers: names.filter((name): name is string => name !== null),
+  };
 }
 
 /** What the link's holder sees before signing in: the child, the class and
@@ -531,7 +549,7 @@ export async function lookupApproval(pool: Pool, raw: unknown) {
     status,
     childName: status === "open" ? row.child_name : null,
     className: row.class_name,
-    teachers: await teachers(pool, row.class_id),
+    ...(await teacherNames(pool, row.class_id)),
   };
 }
 
@@ -666,13 +684,14 @@ export async function readApproval(
       accountId,
       development,
       here ? row.learner_id! : undefined,
+      false,
     );
     return {
       id,
       status,
       childName: here ? row.given_name : (row.child_name ?? null),
       className: row.class_name,
-      teachers: await teachers(client, row.class_id),
+      ...(await teacherNames(client, row.class_id)),
       consentActive,
       canPractice:
         consentActive && (!!ends || (allowance?.problems.remaining ?? 0) > 0),
@@ -753,6 +772,7 @@ async function approveInside(
       )
     ).rows[0]?.learner_id;
     if (!learner) throw new FamilyError(410, "approval_ended");
+    await ensureFamilyIdentity(client, accountId);
     return { learnerId: learner };
   }
   if (row.expires_at <= new Date())
@@ -825,6 +845,7 @@ async function approveInside(
   // The approving family's gift in force covers this child too, whether
   // they were just added or moved in from a school's unnamed roster.
   await coverWithFamilyGift(client, accountId, learnerId);
+  await ensureFamilyIdentity(client, accountId);
   await client.query(
     "UPDATE amp_family_approvals SET approved_at=now(),person_id=$2,child_name=NULL,parent_email=NULL WHERE id=$1",
     [id, personId],

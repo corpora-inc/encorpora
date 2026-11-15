@@ -1,19 +1,34 @@
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
-import { Link, Navigate, useNavigate, useParams } from "@tanstack/react-router";
+import {
+  Link,
+  Navigate,
+  useLocation,
+  useNavigate,
+  useParams,
+  useRouter,
+} from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { create } from "zustand";
 import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
 import { track } from "../../lib/analytics";
 import { ownPracticeAllowed } from "../../../learning/starting-point";
-import { authConfigOptions, sessionOptions } from "../../lib/query";
+import { authConfigOptions, meOptions, sessionOptions } from "../../lib/query";
+import { closeTo } from "../../lib/return-to";
+import { appReturn } from "../spaces/returns";
 import { cleverEnabled } from "../school/clever/enabled";
 import { chosenPlan } from "../../lib/pending-trial";
 import { Button, buttonClass } from "../../ui/Button";
+import { SchoolNext } from "../school/pilots/SchoolNext";
 import { Toast } from "../../ui/Toast";
 import { loadCurriculum } from "../schools/api";
 import { TalkToUs } from "../schools/TalkToUs";
-import { isStarterChoice, type StarterChoice } from "./guard";
+import {
+  hasHome,
+  isStarterChoice,
+  placesFor,
+  type StarterChoice,
+} from "./guard";
 import {
   deviceTimeZone,
   useStartDemo,
@@ -55,7 +70,7 @@ const choices: {
   {
     id: "myself",
     label: "I’m learning for myself",
-    detail: "Practice for you, at your level",
+    detail: "Practice at your level, or help anyone at their level",
     icon: (
       <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4.5 20a7.5 7.5 0 0 1 15 0" />
     ),
@@ -63,7 +78,7 @@ const choices: {
   {
     id: "parent",
     label: "I’m a parent",
-    detail: "Your children practice, and you see their progress",
+    detail: "Your kids practice, and you see their progress",
     icon: (
       <path d="M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM2.5 20a6.5 6.5 0 0 1 13 0M17 13a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM16 15.2a5 5 0 0 1 5.5 4.8" />
     ),
@@ -85,7 +100,7 @@ const choices: {
   {
     id: "school",
     label: "I run a school",
-    detail: "Classes and teachers across your school",
+    detail: "Manage classes, teachers, and students for your school",
     icon: <path d="M3 20h18M5 20V9l7-5 7 5v11M10 20v-5h4v5M12 9.5h.01" />,
   },
 ];
@@ -132,11 +147,37 @@ export function StarterStep() {
 function StarterScreen({ session }: { session: AuthSession }) {
   const params = useParams({ strict: false }) as { choice?: string };
   const choice = isStarterChoice(params.choice) ? params.choice : null;
+  const router = useRouter();
+  const from = appReturn(
+    (useLocation().search as Record<string, unknown>).from,
+  );
+  const me = useQuery(meOptions(session)).data;
+  const account = me?.signedIn ? me : null;
+  // Adding a place (docs/architecture/spaces.md): only what the account
+  // doesn't have yet, never "I'm a parent" to a parent, and a way back.
+  // A new account (`next: "start"`) is answering for the first time, even
+  // when it may already start its own practice.
+  const adding =
+    !!account && account.next !== "start" && placesFor(account).length > 0;
+  const has = (id: StarterChoice) =>
+    !!account &&
+    (id === "myself"
+      ? !!account.adultPractice?.learner
+      : id === "parent" || id === "tutor"
+        ? hasHome(account)
+        : false);
+  // Tutoring is practice at a level, in Practice (R8): its answer is no
+  // longer offered, and `/start/tutor` keeps working for links in flight.
+  const shown = choices.filter(
+    (entry) => entry.id !== "tutor" && !has(entry.id),
+  );
   return (
     <main className={styles.page} data-starter={choice ?? ""}>
-      <h1 className={styles.title}>What brings you to AMP?</h1>
+      <h1 className={styles.title}>
+        {adding ? "Add a place" : "What brings you to AMP?"}
+      </h1>
       <ul className={styles.choices}>
-        {choices.map((entry) => {
+        {shown.map((entry) => {
           const content = (
             <>
               <svg
@@ -157,6 +198,8 @@ function StarterScreen({ session }: { session: AuthSession }) {
               {entry.id === "teacher" ? (
                 <Link
                   to="/school/start"
+                  // Its way back, if this is adding a place.
+                  search={(from ? { from } : {}) as never}
                   className={styles.choice}
                   data-choice={entry.id}
                   onClick={() => track("starter_choice", { answer: entry.id })}
@@ -167,6 +210,8 @@ function StarterScreen({ session }: { session: AuthSession }) {
                 <Link
                   to="/start/$choice"
                   params={{ choice: entry.id }}
+                  // Adding a place keeps where it was added from.
+                  search={(from ? { from } : {}) as never}
                   className={styles.choice}
                   data-choice={entry.id}
                   onClick={() => track("starter_choice", { answer: entry.id })}
@@ -178,6 +223,16 @@ function StarterScreen({ session }: { session: AuthSession }) {
           );
         })}
       </ul>
+      {adding && (
+        <div>
+          <Button
+            variant="secondary"
+            onClick={() => closeTo(router, from ?? "/")}
+          >
+            Cancel
+          </Button>
+        </div>
+      )}
     </main>
   );
 }
@@ -279,6 +334,7 @@ function SchoolStep({ session }: { session: AuthSession }) {
   return (
     <>
       <School
+        session={session}
         exploring={demo.isPending && demo.variables === "school"}
         onExplore={explore}
       />
@@ -349,16 +405,32 @@ function Myself({
         labelledBy="starter-myself"
         disabled={busy}
       />
+      {/* Helping someone (a niece, a student): straight to a grade and a
+          pace, never their birth year (SPEC R5, R8). */}
+      <p className={styles.helping}>
+        Helping someone else?{" "}
+        <Link to="/$" params={{ _splat: "me/level" }} data-level-practice-link>
+          Practice at a level
+        </Link>
+      </p>
     </StepFrame>
   );
 }
 
+const FACTS = [
+  ["objectives", "objectives mapped to Common Core standards"],
+  ["problemTypes", "problem types that write new problems"],
+  ["lessons", "lessons, with a hint and an explanation for every problem"],
+] as const;
+
 /** The school pitch: a demo school to explore now, and a person to set up
  * the real one with. */
 function School({
+  session,
   exploring,
   onExplore,
 }: {
+  session: AuthSession;
   exploring: boolean;
   onExplore: () => void;
 }) {
@@ -376,47 +448,33 @@ function School({
       back="/start"
       title="AMP for your school"
       lede="Every student works at their own level in every area of math, from counting to precalculus, with unlimited problems and personalized workbooks. Teachers see who needs them today, and they decide every grade."
-      next={
-        <div className={styles.actions}>
-          <Button
-            variant="primary"
-            aria-busy={exploring || undefined}
-            disabled={exploring}
-            onClick={onExplore}
-          >
-            Explore a demo school
-          </Button>
-          {clever && (
-            <Link to="/school/connect" className={buttonClass("secondary")}>
-              Use Clever
-            </Link>
-          )}
-        </div>
-      }
     >
+      {/* The next step first: what this account can do now, by what it
+          already has (an invitation, a school, its own class's pilot). */}
+      <SchoolNext
+        session={session}
+        className={styles.actions}
+        clever={clever}
+        exploring={exploring}
+        onExplore={onExplore}
+      />
+      {/* The words are always there; only each number waits for the
+          catalog, in its own line box, so nothing moves when it arrives. */}
       <ul className={styles.facts} aria-busy={summary.isPending || undefined}>
-        {summary.data ? (
-          <>
-            <li>
-              <strong>{count(summary.data.objectives)}</strong>
-              <span>objectives mapped to Common Core standards</span>
-            </li>
-            <li>
-              <strong>{count(summary.data.problemTypes)}</strong>
-              <span>problem types that write new problems</span>
-            </li>
-            <li>
-              <strong>{count(summary.data.lessons)}</strong>
-              <span>
-                lessons, with a hint and an explanation for every problem
-              </span>
-            </li>
-          </>
-        ) : (
-          [0, 1, 2].map((index) => (
-            <li key={index} className="amp-skeleton" aria-hidden="true" />
-          ))
-        )}
+        {FACTS.map(([key, label]) => (
+          <li key={key}>
+            <strong>
+              {summary.data ? (
+                count(summary.data[key])
+              ) : (
+                <i className={`amp-skeleton ${styles.pending}`}>
+                  <span />
+                </i>
+              )}
+            </strong>
+            <span>{label}</span>
+          </li>
+        ))}
       </ul>
       <section className={styles.talk} aria-labelledby="starter-talk">
         <h2 id="starter-talk">Talk to us</h2>

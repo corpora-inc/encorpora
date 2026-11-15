@@ -207,7 +207,7 @@ export function InvoiceClaim({
               search={search}
               className={buttonClass("secondary")}
             >
-              For my child
+              For a child
             </Link>
           </div>
           <p role="alert">{error}</p>

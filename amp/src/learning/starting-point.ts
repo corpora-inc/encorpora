@@ -27,6 +27,18 @@ export const adultStartNames: Record<AdultStart, string> = {
   "algebra-2": "Algebra 2",
   precalculus: "Precalculus",
 };
+/** The same start as an adult reads it in a sentence: the mathematics they
+ * began with, never a grade they were placed in ("Began with middle-school
+ * math", not "Starts at Middle school"). */
+export const adultStartPhrases: Record<AdultStart, string> = {
+  counting: "counting",
+  elementary: "elementary math",
+  "middle-school": "middle-school math",
+  "algebra-1": "algebra",
+  geometry: "geometry",
+  "algebra-2": "Algebra 2",
+  precalculus: "precalculus",
+};
 export type StartingChoice = StartingBand | AdultStart;
 /** The youngest age at which an account holder practices as themselves;
  * anyone younger starts with a parent. A birth year alone can't rule out a

@@ -505,7 +505,7 @@ try {
         await stable(resend, box, "email failure controls stay in place");
         await page.getByRole("button", { name: "Dismiss message" }).click();
         await page
-          .getByRole("button", { name: "I confirmed my email" })
+          .getByRole("button", { name: "I’ve confirmed it" })
           .click();
         await page
           .getByText(

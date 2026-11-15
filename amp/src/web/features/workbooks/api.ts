@@ -21,6 +21,26 @@ export const workbookPath = (learnerId: string) =>
 export const workbooksKey = (session: AuthSession, learnerId: string) =>
   ["account", session.accountId, "workbooks", learnerId] as const;
 
+/** A history read that is only slow waits, as the skeleton: a failure the
+ * server or network may recover from is asked again quietly, and only a
+ * read still failing after that, or one that has not answered in this long,
+ * is said (calmly) in the list's place. */
+export const HISTORY_PATIENCE_MS = 15_000;
+const HISTORY_RETRIES = 2;
+export const historyTooSlow = () =>
+  new AppError(
+    "unavailable",
+    "Your workbooks are taking longer than usual. Try again in a moment.",
+    true,
+    null,
+    "history_slow",
+  );
+export const historyRetry = (failures: number, error: Error) =>
+  failures < HISTORY_RETRIES &&
+  error instanceof AppError &&
+  error.retry &&
+  error.code !== "history_slow";
+
 export const workbookHistoryOptions = (
   session: AuthSession,
   learnerId: string,
@@ -28,13 +48,31 @@ export const workbookHistoryOptions = (
 ) =>
   queryOptions({
     queryKey: [...workbooksKey(session, learnerId), "history", date ?? null],
-    queryFn: ({ signal }) =>
-      request(
-        `${workbookPath(learnerId)}${date ? `?date=${date}` : ""}`,
-        workbookHistorySchema,
-        { token: session.token, signal },
-      ),
+    queryFn: async ({ signal }) => {
+      const patience = AbortSignal.timeout(HISTORY_PATIENCE_MS);
+      try {
+        return await request(
+          `${workbookPath(learnerId)}${date ? `?date=${date}` : ""}`,
+          workbookHistorySchema,
+          { token: session.token, signal: AbortSignal.any([signal, patience]) },
+        );
+      } catch (error) {
+        if (!signal.aborted && patience.aborted) {
+          const slow = historyTooSlow();
+          slow.log();
+          throw slow;
+        }
+        throw error;
+      }
+    },
+    retry: historyRetry,
+    retryDelay: (failures) => 800 * 2 ** failures,
   });
+
+/** Whether any stored workbook still has results to enter from paper. A
+ * server that does not say counts every workbook as waiting. */
+export const awaitingResults = (workbooks: readonly WorkbookSummary[]) =>
+  workbooks.some((workbook) => (workbook.entered ?? 0) < workbook.problems);
 
 /** The areas a parent can choose for this learner. */
 export const workbookAreasOptions = (session: AuthSession, learnerId: string) =>

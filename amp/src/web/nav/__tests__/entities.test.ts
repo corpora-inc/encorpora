@@ -1,5 +1,6 @@
 import { expect, test } from "vitest";
 import {
+  closeDepth,
   layerKeysLeft,
   popLayer,
   pushLayer,
@@ -83,4 +84,19 @@ test("a lesson opens over any stack, and an old `?lesson=` becomes one", () => {
     { kind: "lesson", id: "a-type" },
   ]);
   expect(readStack("lesson:Not A Slug")).toEqual([]);
+});
+
+test("closing puts the stack away, except back to an answer replay below", () => {
+  const stack = readStack(
+    `student:${S1},work:${S1}.${A},lesson:count-objects,skill:count-to-20`,
+  );
+  expect(stack).toHaveLength(4);
+  // The student sheet and the replay close back to the page.
+  expect(closeDepth(stack, 0)).toBe(0);
+  expect(closeDepth(stack, 1)).toBe(0);
+  // A lesson (and anything over it) closes back to the replay.
+  expect(closeDepth(stack, 2)).toBe(2);
+  expect(closeDepth(stack, 3)).toBe(2);
+  // With no replay in the stack, everything closes to the page.
+  expect(closeDepth(readStack("skill:a,lesson:b"), 1)).toBe(0);
 });

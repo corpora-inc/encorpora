@@ -1,3 +1,5 @@
+import type { SpaceWords } from "../../spaces/words";
+import { measured } from "../../../../learning/level-check";
 import { EntityLink } from "../../../nav/links";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo, useState, type ReactNode } from "react";
@@ -11,32 +13,38 @@ import { currentSession } from "../api";
 import { FinalField, Suggested } from "./grade-parts";
 import { gradebookOptions } from "./teacher-api";
 import {
+  byArea,
   fitScale,
   LevelAxis,
   LevelBar,
+  LevelNotStarted,
   LevelRows,
+  likelyInWords,
   likelyRange,
+  rangeWords,
   type Estimate,
   type RangeScale,
+  WHOLE_SCALE,
 } from "../../../ui/level-range";
-import { strandNames } from "../../../BirthYearPrompt";
 import { Menu, MenuItem } from "../../../ui/Menu";
 import { classUrl, parseSort, useClassSearch } from "./teacher-shared";
 import styles from "./ClassMap.module.css";
 
-/** Before any work, a wide band around where they should be, drawn dashed. */
+/** A provisional guess wider than this rests against an end of the scale. */
 const UNKNOWN_SD = 0.9;
-const middleOf = (reference: MapStudent["reference"]) =>
-  reference ? (reference.from + reference.to) / 2 : null;
 
 type Placed = {
   student: MapStudent;
-  estimate: Estimate;
+  /** Null before any work: not measured yet (the whole scale, a "?"). */
+  estimate: Estimate | null;
   /** Too little work to place: a starting guess, drawn dashed. */
   estimated: boolean;
 };
 
-function place(student: MapStudent, lens: string, center: number): Placed {
+function place(student: MapStudent, lens: string): Placed {
+  // No answers yet: not measured, whatever a served batch stored (Q-201).
+  if (!measured(student.level?.overall))
+    return { student, estimate: null, estimated: true };
   const known =
     lens === "overall"
       ? student.level?.overall
@@ -49,14 +57,37 @@ function place(student: MapStudent, lens: string, center: number): Placed {
           student.provisional ||
           (lens !== "overall" && !student.level?.strands[lens]),
       }
-    : {
-        student,
-        estimate: {
-          level: middleOf(student.reference) ?? center,
-          sd: UNKNOWN_SD,
-        },
-        estimated: true,
-      };
+    : { student, estimate: null, estimated: true };
+}
+
+/** The scale for a set of placed rows: every measured row's whole likely
+ * range and every measured learner's own-grade stripe. Before anyone is
+ * measured, the whole curriculum, each row a "?" across it. Once someone is,
+ * the scale fits them: a learner not started yet shows a pill, never a bar,
+ * so one new student never flattens everyone else's (CP-5 #4). */
+export function placedScale(
+  rows: readonly Pick<Placed, "estimate" | "estimated" | "student">[],
+  minSpan: number,
+): RangeScale {
+  const measured = rows.filter((row) => row.estimate);
+  if (!measured.length) return WHOLE_SCALE;
+  rows = measured;
+  return fitScale(
+    rows.flatMap((row) =>
+      row.estimate && (!row.estimated || row.estimate.sd <= UNKNOWN_SD)
+        ? [row.estimate]
+        : [],
+    ),
+    {
+      minSpan,
+      include: rows.flatMap((row) => [
+        ...(row.estimate ? [row.estimate.level] : []),
+        ...(row.student.reference
+          ? [row.student.reference.from, row.student.reference.to]
+          : []),
+      ]),
+    },
+  );
 }
 
 /**
@@ -71,8 +102,25 @@ export function ClassMap({
   data,
   limitStrands,
   action,
+  words,
+  name,
+  grades = true,
+  crossCutting = false,
+  plain = false,
 }: {
   data: MapResponse;
+  /** A teacher's map: modeling and reasoning too, after the five areas
+   * (ui/level-range `byArea`). A family's map leaves them out. */
+  crossCutting?: boolean;
+  /** A parent reads it: ranges in grade words, not the scale's decimals. */
+  plain?: boolean;
+  /** Each row's name, linked where the composing screen opens a learner;
+   * by default the learner's record over the page. */
+  name?: (student: MapStudent) => ReactNode;
+  /** A small class's term grade line under each learner. */
+  grades?: boolean;
+  /** Who its rows are, in the space's words (features/spaces/words.ts). */
+  words: Pick<SpaceWords, "learner">;
   /** On Today the map is a glance, with the areas that have the most work. */
   limitStrands?: number;
   /** Before anyone has practiced: the one step that starts it. */
@@ -81,7 +129,7 @@ export function ClassMap({
   const [search, set] = useClassSearch();
   const strands = limitStrands
     ? data.strands.slice(0, limitStrands)
-    : data.strands;
+    : byArea(data.strands, { crossCutting });
   const lens =
     typeof search.lens === "string" &&
     strands.some((strand) => strand.id === search.lens)
@@ -89,41 +137,18 @@ export function ClassMap({
       : "overall";
   const label = (id: string) =>
     data.strands.find((strand) => strand.id === id)?.label ?? "Overall";
-  const center = useMemo(() => {
-    const course = data.class.course?.level;
-    if (course !== undefined) return course;
-    const middles = data.students
-      .map((student) => middleOf(student.reference))
-      .filter((value): value is number => value !== null)
-      .sort((a, b) => a - b);
-    return middles[Math.floor(middles.length / 2)] ?? 5;
-  }, [data]);
   const placed = useMemo(
-    () => data.students.map((student) => place(student, lens, center)),
-    [data, lens, center],
+    () => data.students.map((student) => place(student, lens)),
+    [data, lens],
   );
   // Every whole likely range and every own-grade stripe, so nobody's bar
   // runs off an end; only a provisional guess too wide to mean much rests
   // its band against an end, with its dot inside.
-  const scale = useMemo(
-    () =>
-      fitScale(
-        placed
-          .filter((row) => !row.estimated || row.estimate.sd <= UNKNOWN_SD)
-          .map((row) => row.estimate),
-        {
-          minSpan: 4,
-          include: placed.flatMap((row) => [
-            row.estimate.level,
-            ...(row.student.reference
-              ? [row.student.reference.from, row.student.reference.to]
-              : []),
-          ]),
-        },
-      ),
-    [placed],
-  );
+  const scale = useMemo(() => placedScale(placed, 4), [placed]);
   const starting = placed.every((row) => row.estimated);
+  // Before anyone has answered, each row is a "?" across the whole scale;
+  // after, a learner not started yet is a pill on a scale fitted to the rest.
+  const nobody = placed.every((row) => !row.estimate);
   const sort = parseSort(search.sort);
   const byName = sort?.column === "student";
   const direction = sort?.direction ?? (byName ? "ascending" : "descending");
@@ -135,7 +160,7 @@ export function ClassMap({
       // Who has too little work to place goes after everyone who has.
       if (a.estimated !== b.estimated) return a.estimated ? 1 : -1;
       return (
-        sign * (a.estimate.level - b.estimate.level) ||
+        sign * ((a.estimate?.level ?? 0) - (b.estimate?.level ?? 0)) ||
         a.student.name.localeCompare(b.student.name, "en")
       );
     });
@@ -153,6 +178,7 @@ export function ClassMap({
     set({ sort: `${column}:${next}` }, { replace: true });
   };
   const reading = (row: Placed) => {
+    if (!row.estimate) return "not measured yet";
     if (row.estimated) return "not enough work yet";
     const [from, to] = likelyRange(row.estimate);
     const reference = row.student.reference;
@@ -163,7 +189,9 @@ export function ClassMap({
         : from > reference.to
           ? ", past this course"
           : ", around this course";
-    return `likely grade ${from.toFixed(1)} to ${to.toFixed(1)}${where}`;
+    return plain
+      ? `${likelyInWords([from, to]).toLowerCase()}${where}`
+      : `likely grade ${from.toFixed(1)} to ${to.toFixed(1)}${where}`;
   };
   const lenses = ["overall", ...strands.map((strand) => strand.id)];
   // A family or a small group: each learner's whole picture, every area,
@@ -172,9 +200,12 @@ export function ClassMap({
     return (
       <SmallClassMap
         data={data}
-        center={center}
         starting={starting}
         action={action}
+        name={name}
+        grades={grades}
+        crossCutting={crossCutting}
+        plain={plain}
       />
     );
   return (
@@ -202,12 +233,12 @@ export function ClassMap({
       <div
         className={styles.table}
         role="table"
-        aria-label={`Class map, ${label(lens)}`}
+        aria-label={`Map, ${label(lens)}`}
       >
         <div className={styles.head} role="row">
           <span role="columnheader" aria-sort={byName ? direction : "none"}>
             <SortButton
-              label="Student"
+              label={capital(words.learner)}
               active={byName}
               direction={direction}
               onClick={() => sortBy("student")}
@@ -240,35 +271,50 @@ export function ClassMap({
             data-strand={lens === "overall" ? undefined : lens}
           >
             <span role="cell" className={styles.name}>
-              <EntityLink
-                entity={{ kind: "student", id: row.student.id }}
-                className={styles.student}
-                data-map-student={row.student.id}
-              >
-                {row.student.name}
-              </EntityLink>
+              {name ? (
+                name(row.student)
+              ) : (
+                <EntityLink
+                  entity={{ kind: "student", id: row.student.id }}
+                  className={styles.student}
+                  data-map-student={row.student.id}
+                >
+                  {row.student.name}
+                </EntityLink>
+              )}
             </span>
             <span
               role="cell"
               className={styles.bar}
               aria-label={`${row.student.first}: ${reading(row)}`}
             >
-              <LevelBar
-                estimate={row.estimate}
-                scale={scale}
-                band={
-                  row.student.reference
-                    ? [row.student.reference.from, row.student.reference.to]
-                    : null
-                }
-                estimated={row.estimated}
-              />
+              {!row.estimate && !nobody ? (
+                <LevelNotStarted label={NOT_STARTED} />
+              ) : (
+                <LevelBar
+                  estimate={row.estimate}
+                  scale={scale}
+                  band={
+                    row.student.reference
+                      ? [row.student.reference.from, row.student.reference.to]
+                      : null
+                  }
+                  estimated={row.estimated}
+                />
+              )}
             </span>
             <span role="cell" className={styles.numbers}>
-              {row.estimated ? (
+              {!row.estimate && !nobody ? null : !row.estimate ||
+                row.estimated ? (
                 <span className={styles.notYet}>
-                  {starting ? "Starting" : "Not enough work"}
+                  {!row.estimate
+                    ? "Not yet"
+                    : starting
+                      ? "Starting"
+                      : "Not enough work"}
                 </span>
+              ) : plain ? (
+                rangeWords(likelyRange(row.estimate))
               ) : (
                 likelyRange(row.estimate)
                   .map((value) => value.toFixed(1))
@@ -282,10 +328,10 @@ export function ClassMap({
   );
 }
 
+/** A learner with no answers among measured ones, in place of a bar. */
+const NOT_STARTED = "Not started";
 /** Up to this many learners, the map shows each one whole. */
 const SMALL_CLASS = 6;
-/** The curriculum's order of areas, for each learner's rows. */
-const AREA_ORDER = Object.keys(strandNames);
 
 /**
  * A small class (a family, a tutor's group): a section per learner, with
@@ -295,65 +341,63 @@ const AREA_ORDER = Object.keys(strandNames);
  */
 function SmallClassMap({
   data,
-  center,
   starting,
   action,
+  name,
+  grades: graded,
+  crossCutting,
+  plain,
 }: {
   data: MapResponse;
-  center: number;
   starting: boolean;
+  crossCutting: boolean;
   action?: ReactNode;
+  name?: (student: MapStudent) => ReactNode;
+  grades: boolean;
+  plain: boolean;
 }) {
   // The grade, as a line in each learner's section: a small class needs no
   // separate gradebook.
   const session = currentSession();
   const classPlace = { org: data.class.orgId, class: data.class.id };
-  const book = useQuery(gradebookOptions(session, classPlace, undefined));
+  const book = useQuery({
+    ...gradebookOptions(session, classPlace, undefined),
+    enabled: graded && !!session,
+  });
   const grades = new Map(
     (book.data?.students ?? []).map((row) => [row.id, row]),
   );
   const [message, setMessage] = useState("");
-  const areas = [...data.strands].sort(
-    (a, b) =>
-      (AREA_ORDER.indexOf(a.id) + 1 || 99) -
-      (AREA_ORDER.indexOf(b.id) + 1 || 99),
-  );
+  // Every strand under its area of math, in the five areas' order.
+  const areas = byArea(data.strands, { crossCutting });
   const learners = data.students.map((student) => ({
     student,
-    overall: place(student, "overall", center),
+    overall: place(student, "overall"),
     areas: student.level
       ? areas.map((area) => {
-          const row = place(student, area.id, center);
+          const row = place(student, area.id);
           return {
             id: area.id,
             label: area.label,
+            heading: area.heading,
+            nested: area.nested,
             estimate: row.estimate,
             estimated: row.estimated,
           };
         })
       : [],
   }));
-  const scale: RangeScale = fitScale(
-    learners.flatMap((learner) =>
-      [
-        learner.overall,
-        ...learner.areas.map((area) => ({
-          estimate: area.estimate,
-          estimated: !!area.estimated,
-        })),
-      ]
-        .filter((row) => !row.estimated || row.estimate.sd <= UNKNOWN_SD)
-        .map((row) => row.estimate),
-    ),
-    {
-      minSpan: 6,
-      include: learners.flatMap((learner) => [
-        learner.overall.estimate.level,
-        ...(learner.student.reference
-          ? [learner.student.reference.from, learner.student.reference.to]
-          : []),
-      ]),
-    },
+  const nobody = learners.every((learner) => !learner.overall.estimate);
+  const scale: RangeScale = placedScale(
+    learners.flatMap((learner) => [
+      learner.overall,
+      ...learner.areas.map((area) => ({
+        student: learner.student,
+        estimate: area.estimate,
+        estimated: !!area.estimated,
+      })),
+    ]),
+    6,
   );
   return (
     <div className={styles.map}>
@@ -363,7 +407,9 @@ function SmallClassMap({
       {starting && action && <div className={styles.starting}>{action}</div>}
       {learners.map((learner) => {
         const { student, overall } = learner;
-        const [from, to] = likelyRange(overall.estimate);
+        const [from, to] = overall.estimate
+          ? likelyRange(overall.estimate)
+          : [0, 0];
         return (
           <section
             key={student.id}
@@ -372,25 +418,35 @@ function SmallClassMap({
           >
             <div className={styles.learnerHead}>
               <h2 id={`map-${student.id}`} className={styles.learnerName}>
-                <EntityLink
-                  entity={{ kind: "student", id: student.id }}
-                  className={styles.student}
-                  data-map-student={student.id}
-                >
-                  {student.name}
-                </EntityLink>
+                {name ? (
+                  name(student)
+                ) : (
+                  <EntityLink
+                    entity={{ kind: "student", id: student.id }}
+                    className={styles.student}
+                    data-map-student={student.id}
+                  >
+                    {student.name}
+                  </EntityLink>
+                )}
               </h2>
-              {!overall.estimated && (
+              {overall.estimate && !overall.estimated && (
                 <p className={styles.learnerLevel}>
-                  Likely {from.toFixed(1)}–{to.toFixed(1)}
+                  {plain
+                    ? likelyInWords([from, to])
+                    : `Likely ${from.toFixed(1)}–${to.toFixed(1)}`}
                 </p>
               )}
             </div>
             <LevelRows
               overall={overall.estimate}
+              notStarted={nobody ? undefined : NOT_STARTED}
+              // A pill needs no scale under it.
+              axis={!!overall.estimate || nobody}
               overallEstimated={overall.estimated}
               areas={learner.areas}
               scale={scale}
+              wordRanges={plain}
               grade={
                 student.reference
                   ? [student.reference.from, student.reference.to]
@@ -399,7 +455,8 @@ function SmallClassMap({
             />
             {/* A term's grade line only once there's work to grade (or a
                 final set): a family's map carries no gradebook leftovers. */}
-            {book.data?.term &&
+            {graded &&
+              book.data?.term &&
               (grades.get(student.id)?.suggestion.status === "ready" ||
                 grades.get(student.id)?.final != null) && (
                 <GradeLine
@@ -523,23 +580,23 @@ function SortButton({
   );
 }
 
+const capital = (word: string) => word[0]!.toUpperCase() + word.slice(1);
+
 /** What the marks mean. */
 export function MapKey({
   data,
-  family = false,
+  words,
 }: {
   data: MapResponse;
-  /** A family's class: its learners are children. */
-  family?: boolean;
+  /** The key's words in this space (features/spaces/words.ts). */
+  words: Pick<SpaceWords, "ownGrade">;
 }) {
   const { course } = data.class;
   return (
     <div className={styles.key}>
       <span className={styles.keyItem}>
         <span className={styles.keyCourse} />
-        {course
-          ? `${course.label}, this course`
-          : `Each ${family ? "child" : "student"}’s own grade`}
+        {course ? `${course.label}, this course` : words.ownGrade}
       </span>
       <span className={styles.keyItem}>
         <span className={styles.keyBand}>

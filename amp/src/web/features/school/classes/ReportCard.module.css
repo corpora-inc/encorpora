@@ -166,3 +166,27 @@ h2.name {
     break-after: auto;
   }
 }
+
+/* A card's own Print, where the page prints only some of the class. */
+.cardPrint {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--space-4);
+}
+/* While a framed host's cards load: the space a card takes. */
+.wait {
+  min-height: 480px;
+}
+@media print {
+  .cardPrint {
+    display: none;
+  }
+}
+/* Cards inside another page's frame start at its edge, as its sections do. */
+.set[data-framed] .toolbar {
+  max-width: none;
+  margin-inline: 0;
+}
+.set[data-framed] .cards {
+  justify-content: start;
+}

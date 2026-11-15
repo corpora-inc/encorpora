@@ -200,7 +200,10 @@ test(
       assert.equal(sent.mailed, true);
       assert.equal(mailed.length, 1);
       assert.equal(mailed[0]!.to, rowanEmail);
-      assert.match(mailed[0]!.subject, /Fern invited you to Fern’s class/);
+      assert.match(
+        mailed[0]!.subject,
+        /Fern Fixture invited you to Fern’s class/,
+      );
       link = mailed[0]!.url;
       assert.match(
         link,
@@ -256,7 +259,12 @@ test(
         );
         assert.equal(invite.status, "open");
         assert.equal(invite.email, rowanEmail);
-        assert.deepEqual(invite.secondParent, { className: "Fern’s class" });
+        assert.equal(invite.role, "teacher");
+        assert.deepEqual(invite.secondParent, {
+          className: "Fern’s class",
+          familyDisplayName: null,
+          inviterName: "Fern Fixture",
+        });
       },
     );
 
@@ -552,7 +560,18 @@ test(
             `fixture:${maya}`,
           ])
         ).rows[0];
-        assert.equal(grant.ends_at.getTime(), child.ends_at.getTime());
+        assert.equal(grant, undefined, "GET does not create a derived grant");
+        const snapshot = await me(rowan);
+        const own = snapshot.family.learners.find(
+          (l: { id: string }) => l.id === snapshot.adultPractice.learner.id,
+        );
+        assert.equal(
+          Date.parse(
+            own.access.find((g: { channel: string }) => g.channel === "pilot")
+              .endsAt,
+          ),
+          child.ends_at.getTime(),
+        );
         await lapse(maya);
         assert.equal(await adultHasAccess(rowan), false);
         await paid(maya);

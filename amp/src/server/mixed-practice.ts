@@ -620,6 +620,25 @@ export function templateGrade(
     throw new Error("Invalid template difficulty offset");
   return (band ? gradeNumber[band] : coarse[template.gradeBand]) + offset;
 }
+/** How hard a skill is on the engine's own scale: the mean grade of its
+ * problem types as the frontier reads them (`templateGrade`: the skill's
+ * grade plus each type's editorial difficulty offset), or its grade with no
+ * problem type yet. Orders a grade's skills (curriculum/areas.ts
+ * `easiestFirst`); never a level or a learner estimate. */
+export function skillDifficulty(
+  skillId: string,
+  templates: readonly TemplateMetadata[],
+  nodes: ReadonlyMap<string, { gradeBand?: GradeBand }>,
+): number | undefined {
+  const own = templates.filter((template) => template.skillId === skillId);
+  if (own.length)
+    return (
+      own.reduce((sum, template) => sum + templateGrade(template, nodes), 0) /
+      own.length
+    );
+  const band = nodes.get(skillId)?.gradeBand;
+  return band === undefined ? undefined : gradeNumber[band];
+}
 const coarse: Record<TemplateMetadata["gradeBand"], number> = {
   "K–2": 1,
   "3–5": 4,

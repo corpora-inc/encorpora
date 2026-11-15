@@ -21,39 +21,75 @@
   max-width: 760px;
   margin-inline: auto;
 }
-.columns,
-.side {
-  display: grid;
-  gap: var(--space-6);
-  align-content: start;
-  min-width: 0;
-}
-/* From 1024 px, with this week or objectives to show: two columns across
-   the content width, the level on the left (2fr), the rest beside it. */
-@media (min-width: 1024px) {
-  .stack[data-wide] {
-    max-width: var(--width-content-wide);
-  }
-  .stack[data-wide] .columns {
-    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-    gap: var(--space-7);
-  }
+/* Measured: the level takes the whole content width, so its grades have
+   room; the record follows under it. */
+.stack[data-wide] {
+  max-width: var(--width-content-wide);
 }
 @media (max-width: 599.98px) {
-  .stack,
-  .columns,
-  .side {
+  .stack {
     gap: var(--space-5);
   }
 }
-/* Just the title; on a wide screen the free count rides quietly at the end
-   of its line, on a phone it isn't there at all. */
+/* The title with its two quiet tools, then one quiet line under it: this
+   week (opening their time) and the free problems left. */
+.head {
+  display: grid;
+  /* A bare header's global flex rules leave a grid track unstretched. */
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-1);
+}
 .titleRow {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: var(--space-2) var(--space-4);
+}
+.titleRow h1 {
+  margin: 0;
+}
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--space-4);
+  margin: 0;
+}
+.weekLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: 44px;
+  margin-inline: calc(-1 * var(--space-2));
+  padding-inline: var(--space-2);
+  border-radius: var(--radius-small);
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
+}
+.weekLabel {
+  color: var(--color-on-surface);
+  font-weight: 650;
+}
+.weekLink svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.weekLink:hover,
+.quietLink:hover {
+  background: var(--color-surface-hover);
+}
+.weekLink:focus-visible,
+.quietLink:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
 }
 .free {
   color: var(--color-muted-text);
@@ -61,10 +97,18 @@
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
-@media (max-width: 599.98px) {
-  .titleRow .free {
-    display: none;
-  }
+/* A quiet text link at the size of a target. */
+.quietLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: var(--space-3);
+  border-radius: var(--radius-small);
+  color: var(--color-primary);
+  font-size: var(--text-label);
+  font-weight: 650;
+  text-decoration: none;
+  white-space: nowrap;
 }
 /* Day 0's action: prominent, its natural width. */
 .start {
@@ -103,9 +147,14 @@
   .stack {
     max-width: none;
   }
-  .stack a[href],
-  .stack button,
-  .free {
+  /* The tools and the quiet line are for the screen; a row that opens
+     something prints as the row, without its chevron. */
+  .titleTools,
+  .meta,
+  .stack button {
+    display: none;
+  }
+  .stack a[href] > svg {
     display: none;
   }
   .stack section {
@@ -113,12 +162,14 @@
   }
 }
 
-/* Beside the title: the free count (wide screens) and Workbooks. */
+/* Beside the title: practicing at a level and the printed report. */
 .titleTools {
   display: inline-flex;
   flex: 0 0 auto;
+  flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-1);
+  margin-inline-end: calc(-1 * var(--space-3));
 }
 
 /* Account → Learners: "What year were you born?" to correct the start. */
@@ -132,4 +183,43 @@
   color: var(--color-muted-text);
   font-size: var(--text-small);
   line-height: 1.45;
+}
+
+/* `/me/time`'s way back to the level. */
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  justify-self: start;
+  min-height: 44px;
+  margin-inline: calc(-1 * var(--space-2));
+  padding-inline: var(--space-2);
+  border-radius: var(--radius-small);
+  color: var(--color-primary);
+  font-size: var(--text-label);
+  font-weight: 650;
+  text-decoration: none;
+}
+.backLink svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.backLink:hover {
+  background: var(--color-surface-hover);
+}
+.backLink:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+}
+
+/* On a phone the tools wrap under the title: their text lines up with it. */
+@media (max-width: 599.98px) {
+  .titleTools {
+    margin-inline: calc(-1 * var(--space-3));
+  }
 }

@@ -1,5 +1,12 @@
+import { ensureFamilyClass } from "../family/family-class.js";
+import { lockLearningAccount } from "../server/account-access.js";
+import { familyDisplayNameSql } from "../family/identity.js";
 import { touchDemoOfPersonSql } from "./demo/sql.js";
-import { classPracticeGate } from "./pilot-access.js";
+import {
+  assertSignInOpen,
+  classLiveSql,
+  classPracticeGate,
+} from "./pilot-access.js";
 import {
   createHash,
   randomBytes,
@@ -21,7 +28,7 @@ import {
 } from "./contracts.js";
 import { enrollmentSettings } from "./enrollment-settings.js";
 import { recordEvent } from "./events.js";
-import { activeToday } from "./principal.js";
+import { activeToday, studentInClassSql } from "./principal.js";
 import { generateJoinCode, type SchoolRepository } from "./repository.js";
 import { studentDeviceMode } from "./settings.js";
 
@@ -81,11 +88,9 @@ export const STUDENT_LABEL = `CASE WHEN count(*) OVER (PARTITION BY lower(${STUD
   WHEN count(*) OVER (PARTITION BY lower(${FULL_NAME}))=1 THEN ${FULL_NAME}
   ELSE ${FULL_NAME}||CASE WHEN row_number() OVER (PARTITION BY lower(${FULL_NAME}) ORDER BY p.created_at,p.id)>1
     THEN ' ('||row_number() OVER (PARTITION BY lower(${FULL_NAME}) ORDER BY p.created_at,p.id)||')' ELSE '' END END`;
-/** SQL: `p` is a live student of class `c`, whose org is `o`, today. */
-const IN_CLASS = `e.class_id=c.id AND e.role='student' AND ${activeToday("e", "o")}
-  AND p.deleted_at IS NULL AND p.learner_id IS NOT NULL
-  AND EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs ro ON ro.id=r.org_id
-    WHERE r.person_id=p.id AND r.role='student' AND ${activeToday("r", "ro")})`;
+/** SQL: `p` is a live student of class `c`, whose org is `o`, today (the
+ * one predicate the practice gate reads too). */
+const IN_CLASS = studentInClassSql("e", "p", "c", "o");
 const STUDENTS_OF_CLASS = `amp_classes c JOIN amp_orgs o ON o.id=c.org_id
   JOIN amp_enrollments e ON e.class_id=c.id
   JOIN amp_people p ON p.id=e.person_id`;
@@ -95,6 +100,9 @@ const ROSTER_LIMIT = 1000;
 export type LiveClass = {
   id: string;
   name: string;
+  /** A family's own name ("Achterberg family"); null outside a family. */
+  family_name: string | null;
+  is_family: boolean;
   org_id: string;
   path: string[];
   locked_for: number;
@@ -110,16 +118,20 @@ export class SchoolSignIn {
     return this.schools.pool;
   }
 
-  /** A class a student can still join: not archived, term not over. */
-  async liveClass(code: string): Promise<LiveClass> {
+  /** A class a student can still join: not archived, term not over (the
+   * same `classLiveSql` the practice gate and its recheck read). */
+  async liveClass(
+    code: string,
+    db: Pick<PoolClient, "query"> = this.pool,
+  ): Promise<LiveClass> {
     const found = (
-      await this.pool.query(
-        `SELECT c.id,c.name,c.org_id,o.path,o.sign_in_providers,
+      await db.query(
+        `SELECT c.id,c.name,c.org_id,o.path,o.sign_in_providers,o.kind='family' AS is_family,
+           CASE WHEN o.kind='family' THEN (SELECT ${familyDisplayNameSql("f.account_id")}
+             FROM amp_families f WHERE f.org_id=o.id LIMIT 1) END AS family_name,
            GREATEST(0,CEIL(EXTRACT(EPOCH FROM c.join_locked_until-now())))::int AS locked_for
          FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
-         JOIN amp_academic_sessions s ON s.id=c.session_id
-         WHERE c.join_code=$1 AND c.archived_at IS NULL
-           AND s.ends_on>=(now() AT TIME ZONE o.timezone)::date`,
+         WHERE c.join_code=$1 AND ${classLiveSql("c", "o")}`,
         [code],
       )
     ).rows[0] as LiveClass | undefined;
@@ -129,13 +141,39 @@ export class SchoolSignIn {
     return found;
   }
 
+  /** POST class-code entry maintains the family before testing its year.
+   * Keep liveClass read-only: OIDC GET routes also use that validator. */
+  private async prepareClass(code: string): Promise<LiveClass> {
+    return this.schools.transaction(async (client) => {
+      const family = (
+        await client.query<{ account_id: string }>(
+          `SELECT f.account_id FROM amp_families f
+         JOIN amp_classes c ON c.id=f.class_id
+         JOIN amp_orgs o ON o.id=c.org_id AND o.kind='family'
+         WHERE c.join_code=$1 AND c.archived_at IS NULL`,
+          [code],
+        )
+      ).rows[0];
+      if (family) {
+        await lockLearningAccount(client, family.account_id);
+        await ensureFamilyClass(client, this.pool, family.account_id, {
+          converting: true,
+        });
+      }
+      return this.liveClass(code, client);
+    });
+  }
+
   async lookup({ code }: { code: string }): Promise<JoinRoster> {
-    const found = await this.liveClass(code);
+    const found = await this.prepareClass(code);
+    // A family is its family, never a class: "Achterberg family".
+    const place: JoinRoster["class"] = found.is_family
+      ? { name: found.family_name ?? "Your family", kind: "family" }
+      : { name: found.name, kind: "class" };
     // Practice isn't open for this class: say so before anyone picks a name
     // and three pictures for nothing.
     const practice = await classPracticeGate(this.pool, found.id);
-    if (practice)
-      return { class: { name: found.name }, practice, students: [] };
+    if (practice) return { class: place, practice, students: [] };
     const { rows } = await this.pool.query(
       `SELECT p.id,${STUDENT_LABEL} AS name,
          EXISTS(SELECT 1 FROM amp_person_credentials k
@@ -145,7 +183,7 @@ export class SchoolSignIn {
       [found.id],
     );
     return {
-      class: { name: found.name },
+      class: place,
       signIn: found.sign_in_providers as JoinRoster["signIn"],
       students: rows,
     };
@@ -157,7 +195,7 @@ export class SchoolSignIn {
     pictures: SchoolPicture[];
     set?: boolean;
   }): Promise<StudentGrant> {
-    const found = await this.liveClass(input.code);
+    const found = await this.prepareClass(input.code);
     const student = await this.pool.query(
       `SELECT p.id FROM ${STUDENTS_OF_CLASS} WHERE c.id=$1 AND p.id=$2 AND ${IN_CLASS}`,
       [found.id, input.personId],
@@ -361,7 +399,15 @@ export class SchoolSignIn {
       | { id: string; name: string; joinCode: string; lockedUntil: Date | null }
       | undefined;
     if (!found) throw new SchoolError(404, "not_found");
-    return found;
+    // The code reaches staff, and through them students, only while
+    // practice runs (SPEC R14); records stay readable either way.
+    const gate = await classPracticeGate(this.pool, classId);
+    return {
+      ...found,
+      joinCode: gate ? "" : found.joinCode,
+      codeAvailable: !gate,
+      practice: gate ?? ("open" as const),
+    };
   }
   private async assertStudent(classId: string, personId: string) {
     const found =
@@ -393,6 +439,8 @@ export class SchoolSignIn {
         name: found.name,
         joinCode: found.joinCode,
         joinLockedUntil: found.lockedUntil?.toISOString() ?? null,
+        codeAvailable: found.codeAvailable,
+        practice: found.practice,
       },
       canManage,
       students: rows,
@@ -423,6 +471,8 @@ export class SchoolSignIn {
         name: found.name,
         joinCode: found.joinCode,
         joinLockedUntil: found.lockedUntil?.toISOString() ?? null,
+        codeAvailable: found.codeAvailable,
+        practice: found.practice,
       },
       canManage,
       canShare,
@@ -441,6 +491,7 @@ export class SchoolSignIn {
     target: { classId: string; orgId: string },
     actorPersonId: string | null,
   ) {
+    await assertSignInOpen(this.pool, target.classId);
     return this.schools.transaction(async (client) => {
       for (let attempt = 0; attempt < 6; attempt++) {
         const joinCode = generateJoinCode();
@@ -525,6 +576,7 @@ export class SchoolSignIn {
     cards: readonly { personId: string; token: string }[],
   ): Promise<{ className: string; cards: { name: string; token: string }[] }> {
     const found = await this.classInfo(classId);
+    await assertSignInOpen(this.pool, classId);
     if (cards.some((card) => !CARD_TOKEN.test(card.token)))
       throw new SchoolError(410, "card_replaced");
     const { rows } = await this.pool.query(
@@ -561,6 +613,7 @@ export class SchoolSignIn {
   ): Promise<IssuedCards> {
     const input = issueCardsSchema.parse(raw ?? {});
     const found = await this.classInfo(target.classId);
+    await assertSignInOpen(this.pool, target.classId);
     return this.schools.transaction(async (client) => {
       const { rows: students } = await client.query(
         `SELECT p.id,${STUDENT_NAME} AS name FROM ${STUDENTS_OF_CLASS}

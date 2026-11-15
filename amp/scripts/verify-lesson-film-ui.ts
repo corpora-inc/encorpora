@@ -13,7 +13,7 @@ const argument = (key: string) => {
 const shots = argument("shots") ?? "artifacts/lesson-films";
 await mkdir(shots, { recursive: true });
 const fixture = await startShellFixture({
-  webPort: 4991,
+  webPort: Number(argument("port") ?? 4991),
   production: process.argv.includes("--production"),
 });
 const browser = await secureChromium(rawChromium).launch();
@@ -132,7 +132,7 @@ try {
       });
       // An old short-lesson link: it opens the lesson in Pathways.
       await page.goto(`${fixture.origin}/lessons?topic=count-objects`);
-      await page.waitForURL(/\/pathways\?lesson=count-objects/);
+      await page.waitForURL(/\/pathways\?open=lesson%3Acount-objects/);
       const watch = page.getByRole("link", { name: /Watch lesson/ });
       await watch.waitFor();
       assert.equal(
@@ -191,9 +191,12 @@ try {
         "Returning must dispose narration",
       );
       if ([390, 1280].includes(viewport.width)) {
-        await page.goBack();
-        await ready(page);
+        // Closing the film goes back where it was opened (one close path,
+        // return-to.ts): the film is the forward entry, and Back from it is
+        // the lesson again.
         await page.goForward();
+        await ready(page);
+        await page.goBack();
         await watch.waitFor();
         await watch.click();
         await ready(page);
@@ -202,10 +205,20 @@ try {
         await page
           .getByRole("link", { name: "Back to lesson", exact: true })
           .click();
-        // The short lesson (Pathways' sheet, its own address) practises it.
-        await page
-          .getByRole("link", { name: /^Try this problem type/ })
-          .click();
+        // A parent reads a child's map: the child's practice is their own
+        // session (PathwaysScreen readOnly), so the lesson offers no Try.
+        // Practice the same problem type at the address Try opens.
+        await watch.waitFor();
+        assert.equal(
+          await page
+            .getByRole("link", { name: /^Try this problem type/ })
+            .count(),
+          0,
+          "A child's map offers the adult no practice of its own",
+        );
+        await page.goto(
+          `${fixture.origin}/practice?skill=count-to-20&template=count-objects`,
+        );
         await page.waitForURL(/\/practice/);
         const problem = page.locator("[data-problem-id]");
         await problem.waitFor();

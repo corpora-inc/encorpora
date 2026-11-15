@@ -35,7 +35,13 @@ export const classSummary = z.object({
 export type ClassSummary = z.infer<typeof classSummary>;
 const person = z.object({ id, name: z.string() });
 
-export const estimateResource = z.object({ level: z.number(), sd: z.number() });
+export const estimateResource = z.object({
+  level: z.number(),
+  sd: z.number(),
+  /** Answers behind it (the overall estimate): none means not measured
+   * yet (`measured`, learning/level-check.ts). */
+  answered: z.number().int().nonnegative().optional(),
+});
 export const studentLevelResource = z.object({
   overall: estimateResource,
   strands: z.record(z.string(), estimateResource),
@@ -153,6 +159,7 @@ export type MapStudent = z.infer<typeof mapStudentResource>;
  * on the map, marked as the teacher, never one of its students. */
 export const mapTeacherResource = z.object({
   id,
+  adultName: z.string().nullable().optional(),
   name: z.string(),
   first: z.string(),
   /** The line is the reader's own, so it opens their own record. */
@@ -387,7 +394,7 @@ export const timeResponse = z.object({
       minutes: z.number(),
       problems: z.number(),
       /** In this class over these days: before `from`, not on its roster. */
-      from: day.optional(),
+      from: day.refine((value) => value >= "0001-01-01").optional(),
       to: day.optional(),
       days: z.array(
         z.object({ day, minutes: z.number(), problems: z.number().default(0) }),
@@ -422,10 +429,17 @@ export const studentTimeResponse = z.object({
 export type StudentTimeResponse = z.infer<typeof studentTimeResponse>;
 
 export const reportCardsResponse = z.object({
+  family: z
+    .object({
+      displayName: z.string().nullable(),
+      parentName: z.string().nullable(),
+    })
+    .optional(),
   school: z.string(),
   class: z.object({ name: z.string(), course: z.string() }),
   term: termResource,
   teachers: z.array(z.string()),
+  teacherNames: z.array(z.string().nullable()).optional(),
   students: z.array(
     z.object({
       id,
@@ -468,12 +482,23 @@ export const studentRecordResponse = progressRecordResource.extend({
   }),
   orgName: z.string(),
   classes: z.array(
-    z.object({ id, name: z.string(), course: courseResource.nullable() }),
+    z.object({
+      id,
+      name: z.string(),
+      course: courseResource.nullable(),
+      familyDisplayName: z.string().nullable().optional(),
+    }),
   ),
   grades: z.array(
     z.object({
       classId: id,
       className: z.string(),
+      family: z
+        .object({
+          displayName: z.string().nullable(),
+          parentName: z.string().nullable(),
+        })
+        .optional(),
       termId: id,
       termName: z.string(),
       state: z.enum(["open", "closed"]),
@@ -519,7 +544,11 @@ export const evidenceQuerySchema = z.strictObject({
   offset: z.coerce.number().int().min(0).max(100_000).default(0),
 });
 export const timeQuerySchema = z.strictObject({
-  period: z.enum(timePeriods).default("month"),
+  period: z
+    .enum([...timePeriods, "weeks"])
+    .default("month")
+    .transform((period) => (period === "weeks" ? ("month" as const) : period)),
+  from: day.refine((value) => value >= "0001-01-01").optional(),
 });
 export const gradebookColumns = [
   "sis",

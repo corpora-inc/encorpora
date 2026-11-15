@@ -1,7 +1,7 @@
 import { useCloseClick } from "../../../nav/links";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams, useSearch } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { IssuedCards } from "../../../../schools/contracts";
 import { Button, buttonClass } from "../../../ui/Button";
 import { PrintButton } from "../../../ui/PrintButton";
@@ -13,7 +13,11 @@ import { WaveMark } from "../../../ui/NavigationSheet";
 // The reset for the legacy global element rules, under `data-dense`.
 import "../SchoolFrame.module.css";
 import { rosterOptions, useIssueCards, useStaffSession } from "./api";
+import { useClassHost, type ClassHost } from "./host";
 import styles from "./Cards.module.css";
+import { ClosedSignIn, useClassAccess } from "../pilots/ClassAccess";
+
+const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 const PER_PAGE = 8;
 function pages<T>(items: readonly T[]) {
@@ -63,22 +67,34 @@ function Sheets({ issued }: { issued: IssuedCards }) {
 /** `.../cards`: sign-in cards to print, 8 to a letter page, or one student's.
  * Opening this changes nothing. Only a hash of a card's link is kept, so making
  * cards is a choice with a stated cost, and leaving this page ends them. */
-export function CardsScreen() {
-  const params = useParams({ from: "/school/$org/classes/$class/cards" });
-  const { student } = useSearch({ from: "/school/$org/classes/$class/cards" });
-  const place = { org: params.org, class: params.class };
+export function CardsScreen({ host: given }: { host?: ClassHost } = {}) {
+  const host = useClassHost(given);
+  const place = host.place;
+  const words = host.words;
+  const raw = useSearch({ strict: false }) as { student?: unknown };
+  const student =
+    typeof raw.student === "string" && UUID.test(raw.student)
+      ? raw.student
+      : undefined;
   const session = useStaffSession();
   const roster = useQuery(rosterOptions(session, place));
+  const access = useClassAccess(place);
+  // Cards made while practice ran go when it closes, on a page left open:
+  // they would only lead to a closed class (CP-3 r3 H1).
+  // Only when the server says so: while a recheck is asked, they wait.
+  const closedNow = access.practice !== "open";
+  useEffect(() => {
+    if (closedNow) setIssued(null);
+  }, [closedNow]);
   const issue = useIssueCards(session, place);
   const [issued, setIssued] = useState<IssuedCards | null>(null);
   // Back to where it was opened: the roster, Today, sign-in help.
-  const closeClick = useCloseClick(
-    `/school/${params.org}/classes/${params.class}/roster`,
-  );
+  const home = host.href(given ? "today" : "roster");
+  const closeClick = useCloseClick(`/${home}`);
   const back = (
     <Link
-      to="/school/$org/classes/$class/roster"
-      params={params}
+      to="/$"
+      params={{ _splat: home }}
       className={buttonClass("secondary")}
       onClick={closeClick}
     >
@@ -98,16 +114,26 @@ export function CardsScreen() {
         </EmptyState>
       </main>
     );
-  if (!roster.data) return <LoadingScreen />;
-  const { class: info, students, canManage } = roster.data;
+  if (!roster.data || access.pending) return <LoadingScreen />;
+  // A card leads nowhere until practice runs: never print one before.
+  if (access.closed || access.unavailable)
+    return (
+      <main className={styles.center} data-dense>
+        <ClosedSignIn place={place} />
+      </main>
+    );
+  const { class: info, canManage } = roster.data;
+  const students = roster.data.students.filter(
+    (entry) => !host.keep || host.keep(entry.id),
+  );
   const chosen = student ? students.filter((s) => s.id === student) : students;
   if (!canManage || !chosen.length)
     return (
       <main className={styles.center} data-dense>
         <EmptyState title="There are no cards to make here" action={back}>
           {canManage
-            ? "This student isn’t in this class anymore."
-            : "A teacher of this class can print its sign-in cards."}
+            ? `This ${words.learner} isn’t here anymore.`
+            : `A teacher of this class can print its sign-in cards.`}
         </EmptyState>
       </main>
     );
@@ -132,7 +158,7 @@ export function CardsScreen() {
               disabled={!session}
               download={() =>
                 downloadPdf({
-                  path: `/school/classes/${encodeURIComponent(params.class)}/cards.pdf`,
+                  path: `/school/classes/${encodeURIComponent(place.class)}/cards.pdf`,
                   token: session!.token,
                   body: {
                     format: paperFormat(),
@@ -155,25 +181,36 @@ export function CardsScreen() {
     );
   const holding = chosen.filter((s) => s.cardIssuedAt).length;
   const missing = chosen.length - holding;
-  const personIds = student ? [student] : undefined;
+  // A host that shows only some of the class names them; the class itself
+  // asks for all of them.
+  const personIds = student
+    ? [student]
+    : host.keep
+      ? chosen.map((entry) => entry.id)
+      : undefined;
+  const missingIds = host.keep
+    ? chosen.filter((entry) => !entry.cardIssuedAt).map((entry) => entry.id)
+    : undefined;
   return (
     <main className={styles.center} data-dense>
       <section className={styles.prepare}>
         <h1>
           {student
             ? `Print a card for ${chosen[0]!.name}`
-            : `Print cards for ${info.name}`}
+            : host.keep
+              ? `Print sign-in cards for ${words.group}`
+              : `Print cards for ${info.name}`}
         </h1>
         <p>
           {student
-            ? "The card signs this student in with no code and no pictures."
-            : "Each card signs one student in with no code and no pictures."}
+            ? `The card signs this ${words.learner} in with no code and no pictures.`
+            : `Each card signs one ${words.learner} in with no code and no pictures.`}
         </p>
         {holding > 0 && (
           <p className={styles.warning}>
             {student
-              ? "The card this student has now stops working."
-              : `${holding === 1 ? "1 student has" : `${holding} students have`} a card already. A new card stops the old one working.`}
+              ? `The card this ${words.learner} has now stops working.`
+              : `${holding === 1 ? `1 ${words.learner} has` : `${holding} ${words.learners} have`} a card already. A new card stops the old one working.`}
           </p>
         )}
         {issue.isError && (
@@ -187,7 +224,13 @@ export function CardsScreen() {
               variant="primary"
               aria-busy={issue.isPending}
               disabled={issue.isPending}
-              onClick={() => void make({ missingOnly: true })}
+              onClick={() =>
+                void make(
+                  missingIds
+                    ? { personIds: missingIds }
+                    : { missingOnly: true },
+                )
+              }
             >
               {missing === 1
                 ? "Make the 1 missing card"

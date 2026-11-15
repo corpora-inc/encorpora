@@ -3,9 +3,11 @@
  * approves (docs/families.md, step 5), in real browsers on the real API in
  * accounts mode and a real database. Everyone here is synthetic.
  *
- *   1. The teacher, a homeschool parent, adds Ana from another family on
- *      Today: her first name and her parent's address. The link is mailed,
- *      and Ana waits for her parent on the class.
+ *   1. The teacher, a homeschool parent who already tutors a child from
+ *      another family, opens their tutoring group (`/family/<family>/group`,
+ *      its class's classroom: tutoring is a teaching place, never mixed into
+ *      the family) and on its People adds Ana from another family: her
+ *      parent's address. The link is mailed, and Ana waits for her parent.
  *   2. Her parent opens the mailed link signed out, creates an account,
  *      continues, reads about the class and, once consent is recorded,
  *      approves. Ana is their learner and needs access.
@@ -48,6 +50,7 @@ import { probe, settle, shellRecord, shiftRecorder } from "./app-shell-probe";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { todayTitle } from "./today-title";
+import { choose } from "./ui-controls";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -110,11 +113,15 @@ await registerSchoolRoutes(app, {
 });
 await app.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
-  cacheDir: "node_modules/.vite-family-approval",
+  // Its own dependency cache, never a shared node_modules.
+  cacheDir:
+    process.env.AMP_VITE_CACHE_DIR ?? "node_modules/.vite-family-approval",
   server: {
     host: "127.0.0.1",
     port: webPort,
     strictPort: true,
+    // Edits elsewhere in the tree never reload a page mid-check.
+    hmr: false,
     proxy: { "/api": `http://127.0.0.1:${apiPort}` },
   },
 });
@@ -127,6 +134,8 @@ const check = (label: string, ok: boolean, detail: unknown = "") => {
 const PASSWORD = "synthetic long fixture passphrase";
 const last: { page: Page | null } = { page: null };
 const CLASS_TODAY = /\/school\/[0-9a-f-]{36}\/classes\/[0-9a-f-]{36}\/today$/;
+/** A family's Today: its own address (docs/architecture/spaces.md). */
+const FAMILY_TODAY = /\/family\/[0-9a-f-]{36}$/;
 const APPROVAL_PAGE = /\/family\/approvals\/[0-9a-f-]{36}$/;
 
 async function createAccount(page: Page, email: string) {
@@ -188,8 +197,12 @@ async function measured(page: Page, label: string) {
     geometry.midWordWraps.length === 0,
     geometry.midWordWraps,
   );
-  const { cls } = await shellRecord(page);
-  check(`${label} CLS`, cls <= 0.01, cls);
+  const { cls, shifts } = await shellRecord(page);
+  // Which elements moved, as the browser scored them.
+  const sources = await page.evaluate(
+    () => (window as unknown as { __shiftSources?: string[] }).__shiftSources,
+  );
+  check(`${label} CLS`, cls <= 0.01, { cls, shifts, sources });
 }
 async function newContext(
   browser: Browser,
@@ -202,23 +215,42 @@ async function newContext(
     timezoneId: "America/Chicago",
   });
   await context.addInitScript(shiftRecorder);
+  await context.addInitScript(`(() => {
+    const w = window; w.__shiftSources = [];
+    try {
+      new PerformanceObserver((list) => {
+        for (const e of list.getEntries()) {
+          if (e.hadRecentInput || w.__shiftSources.length > 20) continue;
+          for (const s of e.sources || []) {
+            const n = s.node, el = n && n.nodeType === 1 ? n : n && n.parentElement;
+            const name = el ? el.tagName + (el.getAttribute("class") ? "." + el.getAttribute("class").split(" ")[0] : "") + (el.getAttribute("role") ? "[" + el.getAttribute("role") + "]" : "") + ":" + (el.textContent || "").trim().slice(0, 30) : "?";
+            w.__shiftSources.push(e.value.toFixed(3) + " " + name + " " + Math.round(s.previousRect.y) + "->" + Math.round(s.currentRect.y) + " h" + Math.round(s.previousRect.height) + "->" + Math.round(s.currentRect.height));
+          }
+        }
+      }).observe({ type: "layout-shift", buffered: true });
+    } catch {}
+  })()`);
   return context;
 }
-/** The teacher's own family: a child with access, as a purchase leaves it. */
+/** The teacher's own family: a child with access, added as the product
+ * adds one (into the family's class), as a purchase leaves it. */
 async function teacherFamily(account: string) {
   await db.query(
     "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES($1,'fixture','verified','synthetic')",
     [account],
   );
-  const id = randomUUID();
-  await db.query(
-    "INSERT INTO amp_learners(id,account_id,name,birth_year) VALUES($1,$2,'Maya',2016)",
-    [id, account],
-  );
+  const { id } = await repository.create(account, "Maya", 2016);
   await db.query(
     "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES($1,$2,'stripe',$1,'active',now()-interval '1 day',now()+interval '300 days')",
     [`fixture-${id}`, id],
   );
+}
+/** The tutoring group's Students, in a classroom's words: the children
+ * from other families sit at its foot, with the way to add one. */
+async function groupStudents(page: Page) {
+  await page
+    .getByRole("heading", { name: "From other families", level: 2 })
+    .waitFor();
 }
 const anaRow = (page: Page) => page.locator("[data-approval]").first();
 
@@ -241,13 +273,23 @@ async function journey(
   await teacher.waitForURL(/\/account\/ready|\/start/);
   const teacherAccount = await accountOf(teacher, "Marisol Vega");
   await teacherFamily(teacherAccount);
+  // A child they already tutor, from another family (a nickname and a
+  // birth year): the family's class is a tutoring group too.
+  const tutored = await teacherContext.request.post(
+    `${origin}/api/v1/family/class/students`,
+    { headers: { Origin: origin }, data: { nickname: "JR", birthYear: 2015 } },
+  );
+  check(`${label} a tutored child`, tutored.ok(), await tutored.text());
   await teacher.goto(`${origin}/`);
+  await teacher.waitForURL(FAMILY_TODAY);
+  await todayTitle(teacher);
+  // Other families' children live in the tutoring group, never the family.
+  await teacher.goto(`${teacher.url()}/group`);
   await teacher.waitForURL(CLASS_TODAY);
   await todayTitle(teacher);
-  // Children from other families live on People, beside the family’s own.
   const classUrl = teacher.url().replace(/\/today$/, "/roster");
   await teacher.goto(classUrl);
-  await heading(teacher, "People");
+  await groupStudents(teacher);
   await teacher
     .getByRole("button", { name: "Add a child from another family" })
     .click();
@@ -317,6 +359,12 @@ async function journey(
     (await name.inputValue()) === "",
   );
   await name.fill("Ana");
+  // A new learner's start: the year their parent gives (it sets where
+  // practice begins).
+  await choose(
+    parent.getByRole("button", { name: /^Your child’s birth year/ }),
+    "2016",
+  );
   await measured(parent, `${label} approve`);
   await shot(parent, "approve", width, theme);
   await parent
@@ -342,7 +390,7 @@ async function journey(
   ]);
   last.page = teacher;
   await teacher.reload();
-  await heading(teacher, "People");
+  await groupStudents(teacher);
   await anaRow(teacher).getByText("Used the 100 free problems").waitFor();
   await measured(teacher, `${label} Ana approved`);
   await shot(teacher, "teacher-needs-access", width, theme);

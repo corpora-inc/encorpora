@@ -2,15 +2,16 @@
  * One account, several places, in real browsers on the real API in accounts
  * mode and a real database. Everyone here is synthetic.
  *
- *   1. A parent answers the starter for one child, and has their family's
- *      class, when we issue a school to their address. They open the setup
- *      link, signed in, and land in setup at the calendar, the school step
- *      answered. `/` still opens the family's class: a half-finished setup
- *      never takes it. The place switcher, in the class and in setup, goes
- *      both ways, and Back, Forward and reload keep each screen.
+ *   1. A parent answers the starter for one child (their name, their kid,
+ *      then Today), and has their family (`/family/<family>`), when we issue
+ *      a school to their address. They open the setup link, signed in, and
+ *      land in setup at the calendar, the school step answered. `/` still
+ *      opens the family: a half-finished setup never takes it. The place
+ *      switcher, in the family and in setup, goes both ways, and Back,
+ *      Forward and reload keep each screen.
  *   2. A parent whose child practices also runs a school. `/` opens where they
- *      last worked, their family's class at first; Back and Forward between
- *      the school and the class reopen each, and a reload stays.
+ *      last worked, their family at first; Back and Forward between the
+ *      school and the family reopen each, and a reload stays.
  *
  * Chromium at 1280 and 390, WebKit at 390. Screenshots of the switcher and the
  * setup invitation, light and dark, go to docs/reviews/school-places/.
@@ -45,7 +46,6 @@ import { PostgresRepository } from "../src/server/repository";
 import { probe, settle, shellRecord, shiftRecorder } from "./app-shell-probe";
 import { migrate } from "./migrate";
 import { schoolAdmin } from "./school-admin";
-import { choose as chooseOption } from "./ui-controls";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { todayTitle } from "./today-title";
 
@@ -102,11 +102,15 @@ await registerFamilyRoutes(app, { pool: db, authenticate });
 await registerSchoolRoutes(app, { pool: db, authenticate, services });
 await app.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
-  cacheDir: "node_modules/.vite-school-places",
+  // Its own dependency cache, never a shared node_modules.
+  cacheDir:
+    process.env.AMP_VITE_CACHE_DIR ?? "node_modules/.vite-school-places",
   server: {
     host: "127.0.0.1",
     port: webPort,
     strictPort: true,
+    // Edits elsewhere in the tree never reload a page mid-check.
+    hmr: false,
     proxy: { "/api": `http://127.0.0.1:${apiPort}` },
   },
 });
@@ -216,15 +220,15 @@ const menuButton = (page: Page) =>
     .getByRole("button", { name: "Open AMP menu" })
     .filter({ visible: true })
     .first();
-/** Opens the switcher wherever this screen keeps it: the family drawer, the
- * shared app drawer, or setup’s own bar. */
-async function openSwitcher(page: Page, from: string, drawer: boolean) {
+/** Opens the switcher wherever this screen keeps it: the shared app
+ * drawer, or setup’s own bar. Its trigger names the place it is on. */
+async function openSwitcher(page: Page, drawer: boolean) {
   if (drawer) {
     await menuButton(page).click();
     await page.getByRole("dialog").waitFor();
   }
   const trigger = page
-    .getByRole("button", { name: new RegExp(`^${from}: switch place$`) })
+    .getByRole("button", { name: /: switch place$/ })
     .filter({ visible: true })
     .first();
   await trigger.click();
@@ -248,20 +252,48 @@ async function choose(
   await menu.waitFor({ state: "detached" });
 }
 
-/** The family's class, made by the starter, and its address. */
-async function familyClass(account: string) {
-  const family = (
-    await db.query(
-      "SELECT f.org_id,c.name FROM amp_families f JOIN amp_classes c ON c.id=f.class_id WHERE f.account_id=$1",
-      [account],
-    )
-  ).rows[0] as { org_id: string; name: string };
+/** Chooses the family (the holder's `home` place) in an open switcher, and
+ * checks every switcher names it as the family's own screens do. */
+async function chooseFamily(
+  page: Page,
+  menu: ReturnType<Page["getByRole"]>,
+  family: { name: string; named: RegExp },
+  label: string,
+) {
+  const item = menu
+    .getByRole("menuitem")
+    .filter({ has: page.locator('[data-place="home"]') });
+  const text = (await item.innerText()).trim();
+  check(
+    `${label} the switcher names the family ${family.name}`,
+    family.named.test(text),
+    text,
+  );
+  await item.click();
+  await menu.waitFor({ state: "detached" });
+}
+
+/** The family this page is on (`/family/<family>`), by its address, and
+ * the name its switcher entry carries. */
+async function familyOf(page: Page) {
+  const id = new URL(page.url()).pathname.match(
+    /^\/family\/([0-9a-f-]{36})$/,
+  )?.[1];
+  if (!id) throw new Error(`Not a family's Today: ${page.url()}`);
+  const places = (await (
+    await page.context().request.get(`${origin}/api/v1/families`)
+  ).json()) as { families: { familyId: string; displayName?: string }[] };
+  const name =
+    places.families.find((entry) => entry.familyId === id)?.displayName ??
+    "Your family";
   return {
-    ...family,
-    named: new RegExp(family.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
-    inClass: new RegExp(`/school/${family.org_id}/classes/[^/]+/today$`),
+    id,
+    name,
+    named: new RegExp(`^${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`),
+    inFamily: new RegExp(`/family/${id}$`),
   };
 }
+const FAMILY_TODAY = /\/family\/[0-9a-f-]{36}$/;
 
 /** The founder's morning: a child practicing in the family's class, made by
  * the starter, then a school to set up. */
@@ -285,25 +317,32 @@ async function familyThenSchool(
   await page.goto(`${origin}/sign-up`);
   await signUp(page, email);
   await page.waitForURL(/\/account\/ready|\/start/);
-  // "What brings you to AMP?": a parent, one child.
+  // "What brings you to AMP?": a parent, their name, one child, then Today.
   await heading(page, "What brings you to AMP?");
   await page.locator('[data-choice="parent"]').click();
+  await page.waitForURL(`${origin}/start/parent/name`);
+  await page.getByLabel("First name").fill("Ruth");
+  await page.getByLabel("Last name").fill("Adeyemi");
+  await page.getByRole("button", { name: "Next", exact: true }).click();
   await page.waitForURL(`${origin}/start/parent`);
-  await chooseOption(
-    page.getByRole("button", { name: "Birth year, your child" }),
-    "2016",
-  );
-  await page.getByRole("button", { name: "Continue", exact: true }).click();
-  await page.waitForURL(/\/school\/[^/]+\/classes\/[^/]+\/today$/);
+  await heading(page, "Add your kids");
+  await page
+    .getByRole("button", { name: "Birth year, Child 1", exact: true })
+    .click();
+  const years = page.getByRole("dialog", { name: "Birth year, Child 1" });
+  await years.getByRole("radio", { name: "2016", exact: true }).click();
+  await years.waitFor({ state: "hidden" });
+  await page
+    .getByRole("button", { name: "Birth year, Child 1: 2016", exact: true })
+    .waitFor();
+  await page.getByRole("button", { name: "Next", exact: true }).click();
+  await page.waitForURL(`${origin}/start/parent/ready`);
+  await heading(page, "Who’s practicing first?");
+  await page.getByRole("link", { name: "Go to Today" }).click();
+  await page.waitForURL(FAMILY_TODAY);
   await todayTitle(page);
   await settle(page, 300);
-  const account = await accountOf(context);
-  const family = await familyClass(account);
-  check(
-    `${label} the starter opens the family's class`,
-    family.inClass.test(path(page)),
-    path(page),
-  );
+  const family = await familyOf(page);
   const school = "Alder Street School";
   const issued = await issue(school, email);
   check(
@@ -330,27 +369,31 @@ async function familyThenSchool(
   }
   await shot(page, "setup-with-switcher", width, theme);
 
-  // `/` keeps the family's class: a half-finished setup never captures it.
+  // `/` keeps the family: a half-finished setup never captures it.
   await page.goto(`${origin}/`);
-  await page.waitForURL(family.inClass);
-  await page.getByRole("heading", { level: 1 }).first().waitFor();
+  await page.waitForURL(family.inFamily);
+  await todayTitle(page);
   const classPath = path(page);
 
-  // The switcher lists every place and each learner; the school opens its
-  // setup.
-  const fromHome = await openSwitcher(page, family.name, true);
+  // The switcher lists places only (never a learner): the family, the
+  // school still to set up, practice at a level, and Add a place. The
+  // school opens its setup.
+  const fromHome = await openSwitcher(page, true);
   const items = await fromHome.getByRole("menuitem").allInnerTexts();
   check(
-    `${label} the switcher lists the family, own practice, the school and the learner`,
-    items.length === 6 &&
-      items[0]!.includes(family.name) &&
-      /Start my own practice/.test(items[1]!) &&
-      /Try a level/.test(items[2]!) &&
-      items[3]!.includes(school) &&
-      /Finish setting up/.test(items[3]!) &&
-      /\nLearner$/.test(items[4]!) &&
-      /Add a place/.test(items[5]!),
+    `${label} the switcher lists the family, the school and practice at a level`,
+    family.named.test(items[0] ?? "") &&
+      items.some(
+        (item) => item.includes(school) && /Finish setting up/.test(item),
+      ) &&
+      items.some((item) => /Practice at a level/.test(item)) &&
+      /Add a place/.test(items.at(-1) ?? "") &&
+      items.indexOf(items.find((item) => item.includes(school))!) > 0,
     items,
+  );
+  check(
+    `${label} the switcher holds places, never learners`,
+    (await fromHome.locator('[data-place^="learner:"]').count()) === 0,
   );
   await measured(page, `${label} family switcher`);
   await shot(page, "drawer-switcher", width, theme);
@@ -362,12 +405,12 @@ async function familyThenSchool(
     path(page),
   );
 
-  // From setup, the same switcher goes back to the family's class.
-  const fromSetup = await openSwitcher(page, school, false);
+  // From setup, the same switcher goes back to the family.
+  const fromSetup = await openSwitcher(page, false);
   await measured(page, `${label} setup switcher`);
   await shot(page, "setup-switcher", width, theme);
-  await choose(page, fromSetup, family.named);
-  await page.waitForURL(family.inClass);
+  await chooseFamily(page, fromSetup, family, `${label} setup`);
+  await page.waitForURL(family.inFamily);
 
   // Back, Forward and reload each keep their screen.
   await page.goBack();
@@ -377,20 +420,20 @@ async function familyThenSchool(
   await heading(page, "When does your school year run?");
   check(`${label} reload keeps setup`, path(page) === setupPath, path(page));
   await page.goForward();
-  await page.waitForURL(family.inClass);
+  await page.waitForURL(family.inFamily);
   await page.reload();
-  await page.waitForURL(family.inClass);
+  await page.waitForURL(family.inFamily);
   check(
-    `${label} reload keeps the family's class`,
+    `${label} reload keeps the family`,
     path(page) === classPath,
     path(page),
   );
   await page.goBack();
   await heading(page, "When does your school year run?");
 
-  // Having worked in setup, `/` is still the family's class.
+  // Having worked in setup, `/` is still the family.
   await page.goto(`${origin}/`);
-  await page.waitForURL(family.inClass);
+  await page.waitForURL(family.inFamily);
 
   // Setup finished: the school is a place `/` can open.
   const base = `${origin}/api/v1/school/orgs/${issued.orgId}`;
@@ -418,7 +461,7 @@ async function familyThenSchool(
   check(`${label} setup finishes`, finished.ok(), await finished.text());
   await page.reload();
   await page.getByRole("heading", { level: 1 }).first().waitFor();
-  const toSchool = await openSwitcher(page, family.name, true);
+  const toSchool = await openSwitcher(page, true);
   await choose(page, toSchool, new RegExp(school));
   await page.waitForURL(new RegExp(`/school/${issued.orgId}`));
   const schoolPath = path(page);
@@ -426,11 +469,22 @@ async function familyThenSchool(
   // school's own bar, or the drawer opens on the class and closes on arrival.
   await page.locator('header[data-app-bar="school"]').waitFor();
   await page.getByRole("heading", { level: 1 }).first().waitFor();
-  const fromSchool = await openSwitcher(page, school, true);
+  const fromSchool = await openSwitcher(page, true);
+  // The school is a place, with the role held there; its classes are
+  // places only for whoever teaches them (the switcher lists what each
+  // account teaches or aides, docs/architecture/spaces.md).
   await fromSchool
-    .locator('[data-place^="class:"]')
-    .filter({ hasText: "Grade 5 Math" })
+    .getByRole("menuitem")
+    .filter({ has: page.locator(`[data-place="school:${issued.orgId}"]`) })
+    .filter({ hasText: "Admin" })
     .waitFor();
+  check(
+    `${label} a class the admin doesn't teach is not their place`,
+    (await fromSchool
+      .locator('[data-place^="class:"]')
+      .filter({ hasText: "Grade 5 Math" })
+      .count()) === 0,
+  );
   await measured(page, `${label} school switcher`);
   await shot(page, "school-switcher", width, theme);
   await page.keyboard.press("Escape");
@@ -443,13 +497,13 @@ async function familyThenSchool(
     path(page) === schoolPath,
     path(page),
   );
-  const back = await openSwitcher(page, school, true);
-  await choose(page, back, family.named);
-  await page.waitForURL(family.inClass);
+  const back = await openSwitcher(page, true);
+  await chooseFamily(page, back, family, label);
+  await page.waitForURL(family.inFamily);
   await page.goto(`${origin}/`);
-  await page.waitForURL(family.inClass);
+  await page.waitForURL(family.inFamily);
   check(
-    `${label} / returns to the family's class`,
+    `${label} / returns to the family`,
     path(page) === classPath,
     path(page),
   );
@@ -502,28 +556,26 @@ async function practiceAndSchool(browser: Browser, width: number) {
     headers,
   });
 
-  // Nothing remembered yet: `/` is the family's class (docs/families.md).
-  const family = (
-    await db.query(
-      "SELECT f.org_id,c.name FROM amp_families f JOIN amp_classes c ON c.id=f.class_id WHERE f.account_id=$1",
-      [account],
-    )
-  ).rows[0] as { org_id: string; name: string };
-  const inClass = new RegExp(`/school/${family.org_id}/classes/[^/]+/today$`);
+  // Nothing remembered yet: `/` is the family (docs/families.md).
   await page.goto(`${origin}/`);
-  await page.waitForURL(inClass);
-  await page.getByRole("heading", { level: 1 }).first().waitFor();
+  await page.waitForURL(FAMILY_TODAY);
+  await todayTitle(page);
+  const family = await familyOf(page);
+  const inClass = family.inFamily;
   const classPath = path(page);
-  const toSchool = await openSwitcher(page, family.name, true);
+  const toSchool = await openSwitcher(page, true);
   const items = await toSchool.getByRole("menuitem").allInnerTexts();
-  // A parent whose child practices may also start their own practice.
+  // The family's entry names its one child; a parent whose child has access
+  // may also practice free; the school is where they are Admin.
   check(
-    `${label} the family's class names the learner`,
-    items[0]?.includes(family.name) === true &&
+    `${label} the family names its child, then the school and practice`,
+    family.named.test(items[0] ?? "") &&
       /Jordan/.test(items[0] ?? "") &&
-      /Start my own practice/.test(items[1] ?? "") &&
-      /Try a level/.test(items[2] ?? "") &&
-      /Admin/.test(items[3] ?? ""),
+      items.some(
+        (item) => /Birch Road School/.test(item) && /Admin/.test(item),
+      ) &&
+      items.some((item) => /Practice yourself/.test(item)) &&
+      items.some((item) => /Practice at a level/.test(item)),
     items,
   );
   await choose(page, toSchool, /Birch Road School/);
@@ -534,8 +586,8 @@ async function practiceAndSchool(browser: Browser, width: number) {
   await page.goto(`${origin}/`);
   await page.waitForURL(new RegExp(`/school/${issued.orgId}`));
   // Back to the family's class, then Back and Forward between the two.
-  const back = await openSwitcher(page, school, true);
-  await choose(page, back, new RegExp(family.name));
+  const back = await openSwitcher(page, true);
+  await chooseFamily(page, back, family, label);
   await page.waitForURL(inClass);
   await page.goBack();
   await page.waitForURL(new RegExp(`/school/${issued.orgId}`));
@@ -548,14 +600,14 @@ async function practiceAndSchool(browser: Browser, width: number) {
   await page.waitForURL(inClass);
   await page.getByRole("heading", { level: 1 }).first().waitFor();
   check(
-    `${label} Forward reopens the family's class`,
+    `${label} Forward reopens the family`,
     path(page) === classPath,
     path(page),
   );
   await page.reload();
   await page.getByRole("heading", { level: 1 }).first().waitFor();
   check(
-    `${label} reload keeps the family's class`,
+    `${label} reload keeps the family`,
     path(page) === classPath,
     path(page),
   );
@@ -597,17 +649,19 @@ async function noSelfServe(browser: Browser) {
   await page.goto(`${origin}/sign-up`);
   await signUp(page, `visitor-${randomUUID().slice(0, 8)}@example.com`);
   await page.waitForURL(/\/account\/ready|\/start/);
-  for (const target of [
-    "/school/new",
-    "/school/new?step=calendar",
-    "/school",
-  ]) {
+  // Signed in, a school's setup address with nothing to set up opens the
+  // school first run (SPEC R11): never the public page and its Sign in.
+  for (const target of ["/school/new", "/school/new?step=calendar"]) {
     await page.goto(`${origin}${target}`);
-    await page.waitForURL(`${origin}/schools`);
-    await heading(page, /complete math curriculum/);
+    await page.waitForURL(`${origin}/start/school`);
+    await heading(page, "AMP for your school");
     check(
-      `signed in, ${target} is /schools`,
-      path(page) === "/schools",
+      `signed in, ${target} is the school first run`,
+      path(page) === "/start/school" &&
+        (await page
+          .getByRole("link", { name: "Start with your class" })
+          .count()) === 1 &&
+        (await page.getByRole("link", { name: "Sign in" }).count()) === 0,
       path(page),
     );
   }

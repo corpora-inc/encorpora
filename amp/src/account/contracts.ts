@@ -73,6 +73,9 @@ const accountSchema = z.object({
   id: z.string(),
   email: z.string().nullable(),
   emailVerified: z.boolean(),
+  givenName: z.string().nullable().optional(),
+  familyName: z.string().nullable().optional(),
+  displayName: z.string().nullable().optional(),
   /** The parent must confirm the address before consent or purchase. The
    * account works meanwhile: sign-in, the free trial and Family. */
   confirmationRequired: z.boolean().optional(),

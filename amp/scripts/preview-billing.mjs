@@ -1,3 +1,4 @@
+import { accessGrantsFor, grantReserved } from "../src/account/adult-access.ts";
 /**
  * The design preview's prices (scripts/design-preview.sh), development only:
  * with no Stripe account locally, the pitch, Billing and Continue would show
@@ -23,10 +24,15 @@ const offer = (amountMinor, interval, tier) => ({
   tier,
 });
 const offers = [offer(59900, "year", "full"), offer(5900, "month", "full")];
-const extraOffers = [offer(39900, "year", "extra"), offer(3900, "month", "extra")];
+const extraOffers = [
+  offer(39900, "year", "extra"),
+  offer(3900, "month", "extra"),
+];
 
 export function previewBilling(databaseUrl) {
-  const pool = databaseUrl ? new pg.Pool({ connectionString: databaseUrl, max: 2 }) : null;
+  const pool = databaseUrl
+    ? new pg.Pool({ connectionString: databaseUrl, max: 2 })
+    : null;
   const send = (response, body) => {
     response.setHeader("Content-Type", "application/json");
     response.setHeader("Cache-Control", "no-store");
@@ -38,17 +44,31 @@ export function previewBilling(databaseUrl) {
     if (path === "/api/v1/billing/prices")
       return send(response, { available: true, offers, extraOffers });
     if (path === "/api/v1/billing/offer")
-      return send(response, { available: true, offer: offers[0], offers, extraOffers });
+      return send(response, {
+        available: true,
+        offer: offers[0],
+        offers,
+        extraOffers,
+      });
     const status = /^\/api\/v1\/billing\/status\/([^/]+)$/.exec(path);
     if (status && pool) {
       const learnerId = decodeURIComponent(status[1]);
       try {
-        const grant = (
-          await pool.query(
-            "SELECT starts_at,ends_at FROM amp_grants WHERE learner_id=$1 AND status='active' AND ends_at>now() ORDER BY ends_at DESC LIMIT 1",
-            [learnerId],
-          )
-        ).rows[0];
+        const client = await pool.connect();
+        let grant;
+        try {
+          await client.query("BEGIN ISOLATION LEVEL REPEATABLE READ READ ONLY");
+          const access = await accessGrantsFor(client, [learnerId]);
+          grant = access.grants
+            .filter((g) => grantReserved(g, access.now))
+            .sort((a, b) => b.ends_at.getTime() - a.ends_at.getTime())[0];
+          await client.query("COMMIT");
+        } catch (error) {
+          await client.query("ROLLBACK");
+          throw error;
+        } finally {
+          client.release();
+        }
         return send(
           response,
           grant

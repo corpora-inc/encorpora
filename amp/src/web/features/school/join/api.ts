@@ -1,3 +1,4 @@
+import { requestFetch } from "../../../lib/request-transport";
 import { queryOptions } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { useCallback } from "react";
@@ -22,9 +23,18 @@ const messages: Record<string, string> = {
   card_expired:
     "This card doesn’t work anymore. Ask your teacher for a new one.",
   too_many_requests: "Too many tries right now. Wait a minute, then try again.",
+  request_origin_invalid:
+    "AMP can’t sign in from this address. Ask a grown-up for the link.",
 };
 const OFFLINE = "AMP can’t connect. Check the Wi-Fi, then try again.";
 const UNAVAILABLE = "AMP isn’t answering right now. Try again in a minute.";
+/** AMP answered and said no, for a reason this screen has no words for. */
+const REFUSED = "AMP couldn’t open this. Ask a grown-up for help.";
+
+/** What a failed answer means here: AMP answered, so only a 5xx (or a
+ * garbled answer) is "isn't answering"; any other refusal says so. */
+export const joinMessage = (status: number, code: string | null) =>
+  (code && messages[code]) ?? (status >= 500 ? UNAVAILABLE : REFUSED);
 
 export class JoinError extends AppError {
   constructor(
@@ -51,8 +61,8 @@ export class JoinError extends AppError {
   }
 }
 
-/** These answer with what went wrong, not a sign-in that ended, so they don't
- * go through the shared `request` and its redirect to sign-in. */
+/** Keep the child-specific error contract without sign-out recovery,
+ * using the shared transport boundary for the request itself. */
 async function post<T>(
   path: string,
   body: object,
@@ -60,13 +70,14 @@ async function post<T>(
 ): Promise<T> {
   let response: Response;
   try {
-    response = await fetch(`/api/v1/school/join/${path}`, {
+    response = await requestFetch(`/api/v1/school/join/${path}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
       signal: AbortSignal.timeout(15_000),
     });
-  } catch {
+  } catch (error) {
+    if (error instanceof AppError) throw error;
     const failure = new JoinError(OFFLINE, true, null, null, null, null);
     failure.log();
     throw failure;
@@ -79,7 +90,7 @@ async function post<T>(
   if (!response.ok) {
     const code = typeof data?.error === "string" ? data.error : null;
     const failure = new JoinError(
-      (code && messages[code]) ?? UNAVAILABLE,
+      joinMessage(response.status, code),
       response.status >= 500 || response.status === 429,
       code,
       response.status,

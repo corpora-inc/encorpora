@@ -205,6 +205,7 @@ export function CurveSheet({
   term,
   onSaved,
   onError,
+  words = { learner: "student", learners: "students", Learner: "Student" },
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -214,6 +215,8 @@ export function CurveSheet({
   term: TermResource;
   onSaved: (message: string) => void;
   onError: (message: string) => void;
+  /** What the page calls the people it grades. */
+  words?: { learner: string; learners: string; Learner: string };
 }) {
   const save = useSetCurve(session, place);
   const size = book.students.length;
@@ -275,19 +278,18 @@ export function CurveSheet({
       open={open}
       onOpenChange={onOpenChange}
       title="Grade curve"
-      description={`${term.name}, ${size} students`}
+      description={`${term.name}, ${size} ${size === 1 ? words.learner : words.learners}`}
     >
       <div className={styles.editor}>
         <p className={styles.intro}>
-          How many students do you expect at each letter? AMP ranks the class on
-          its composite, and each place takes the letter your curve gives it.
+          How many students do you expect at each letter?
         </p>
         <div className={styles.preview}>
           {odds ? (
             <CurvePicture
               tall
               odds={odds}
-              label={`The curve for ${size} students, highest composite first`}
+              label={`The curve for ${size} ${words.learners}, highest composite first`}
             />
           ) : (
             <div className={styles.previewBlank} aria-hidden="true" />
@@ -300,7 +302,7 @@ export function CurveSheet({
         <div
           className={styles.rows}
           role="group"
-          aria-label="Students at each letter"
+          aria-label={`${words.Learner}s at each letter`}
         >
           <div className={styles.rowHead} aria-hidden="true">
             <span />

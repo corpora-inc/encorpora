@@ -16,6 +16,7 @@ const content = new Set([
   "grammar.test.ts",
   "articles.test.ts",
   "math-typography.test.ts",
+  "prompt-display-inventory.test.ts",
   "publications.test.ts",
   "instance-hints.test.ts",
   "problem-lessons.test.ts",

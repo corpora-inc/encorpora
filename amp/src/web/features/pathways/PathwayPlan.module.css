@@ -1,0 +1,226 @@
+/* The grades view (PathwayPlan.tsx): bands folded under their names, in the
+   page's own flow, in the app's theme. Selectors pair with `.plan` to sit
+   above the Pathways screen's own element styles (`.pathways li a`). */
+.plan {
+  --plan-before: color-mix(
+    in srgb,
+    var(--atlas-prerequisite) 72%,
+    var(--color-on-surface)
+  );
+  --plan-after: color-mix(
+    in srgb,
+    var(--atlas-dependent) 72%,
+    var(--color-on-surface)
+  );
+  container-type: inline-size;
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+}
+/* The key (AreaKey.tsx): the five areas, each showing only itself. On a
+   wide screen it stays under the app bar while the bands scroll. */
+.plan .areas {
+  padding: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  border-radius: 18px 18px 0 0;
+  background: var(--color-surface-raised);
+}
+.plan .rows,
+.plan .cell {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.plan .row + .row {
+  border-top: 1px solid var(--color-border);
+}
+/* The learner's own band: the accent at its edge, its header tinted. */
+.plan .row[data-here] {
+  box-shadow: inset 3px 0 0 var(--color-primary);
+}
+.plan .row[data-here] .band summary {
+  background: color-mix(in srgb, var(--color-primary) 7%, transparent);
+}
+/* A band: the shared Disclosure, its header one 48 px line. */
+.plan .band {
+  border: 0;
+}
+.plan .band summary {
+  min-height: 48px;
+  padding: 0 var(--space-3);
+}
+.plan .band summary > span {
+  flex: 1;
+  min-width: 0;
+}
+.plan .band summary:hover {
+  background: var(--color-surface-hover);
+}
+.plan .band > div {
+  padding: 0 0 var(--space-2);
+}
+.plan .head {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+  white-space: nowrap;
+}
+.plan .name {
+  flex: 0 1 auto;
+  min-width: 0;
+  white-space: normal;
+  text-wrap: balance;
+  color: var(--color-on-surface);
+  font-size: var(--text-label);
+  font-weight: 700;
+}
+.plan .here {
+  flex: none;
+  padding: 2px var(--space-2);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-primary) 16%, transparent);
+  color: var(--color-on-surface);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.plan .count {
+  flex: none;
+  margin-left: auto;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  font-weight: 600;
+  font-variant-numeric: var(--numeric);
+}
+/* How much of the band is earned, as a thin bar: where there is room. */
+.plan .bar {
+  display: none;
+  flex: none;
+  width: 72px;
+  height: 4px;
+  border-radius: 999px;
+  background:
+    linear-gradient(var(--color-meter), var(--color-meter)) 0 0 /
+      calc(var(--share) * 100%) 100% no-repeat,
+    color-mix(in srgb, var(--color-meter) 18%, transparent);
+}
+@container (min-width: 440px) {
+  .plan .bar {
+    display: block;
+  }
+}
+@container (max-width: 399px) {
+  .plan .here {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+.plan .cells {
+  display: grid;
+}
+.plan .cell:empty {
+  display: none;
+}
+/* A skill: one checklist row, the whole row its link. */
+.plan .skill {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--target-size, 44px);
+  margin: 0;
+  padding: var(--space-2) var(--space-3);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-on-surface);
+  font-size: var(--text-dense, 15px);
+  line-height: 1.35;
+  text-decoration: none;
+}
+.plan .skill:hover {
+  background: var(--color-surface-hover);
+}
+.plan .skill:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+}
+.plan .skill[aria-current="page"] {
+  background: var(--color-selected-tint, var(--color-surface-hover));
+  box-shadow: inset 3px 0 0 var(--color-primary);
+}
+.plan .skill[data-near="before"] {
+  box-shadow: inset 3px 0 0 var(--plan-before);
+}
+.plan .skill[data-near="after"] {
+  box-shadow: inset 3px 0 0 var(--plan-after);
+}
+/* Words wrap between words, never inside one. */
+.plan .title {
+  min-width: 0;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+/* Where a skill stands, in its area's colour: an empty ring before it is
+   started, half filled in progress, a filled check once earned. */
+.plan .check {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--area);
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+.plan .check[data-state="progress"] {
+  background: conic-gradient(var(--area) 0 50%, transparent 50% 100%);
+}
+.plan .check[data-state="earned"] {
+  background: var(--area);
+}
+.plan .check svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: var(--color-surface-raised);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* A wide screen: the key stays under the app bar while the bands scroll,
+   and a band's checklist flows in columns, its areas in order. */
+@container (min-width: 720px) {
+  .plan .areas {
+    position: sticky;
+    top: var(--shell-bar, 0px);
+    z-index: 1;
+  }
+  .plan .cells {
+    display: block;
+    columns: 3 240px;
+    column-gap: var(--space-5);
+    padding: 0 var(--space-2);
+  }
+  .plan .cell {
+    display: block;
+  }
+  .plan .cell li {
+    break-inside: avoid;
+  }
+  .plan .skill {
+    padding-inline: var(--space-2);
+    border-radius: var(--radius-small);
+  }
+}

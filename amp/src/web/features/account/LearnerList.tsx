@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import type { FamilyLearner } from "../../../family/contracts.js";
-import { adultStartNames } from "../../../learning/starting-point";
+import { adultStartPhrases } from "../../../learning/starting-point";
 import { Chevron } from "./BillingList";
 import styles from "./AccountPages.module.css";
 
@@ -61,7 +61,7 @@ export function LearnerList({
               <span className={styles.rowTitle}>Your practice</span>
               <span className={styles.rowMeta}>
                 {own.start
-                  ? `Starts at ${adultStartNames[own.start]}`
+                  ? `Began with ${adultStartPhrases[own.start]}`
                   : "Your levels and record"}
               </span>
             </span>

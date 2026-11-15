@@ -369,6 +369,10 @@ nav button {
 .math-keypad .zero-key {
   grid-column: span 2;
 }
+.math-keypad .clear-key {
+  font-size: 16px;
+  padding-inline: 4px;
+}
 .practice-celebration {
   position: absolute;
   inset: 0;

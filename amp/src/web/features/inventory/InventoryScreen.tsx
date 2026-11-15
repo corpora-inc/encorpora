@@ -1,22 +1,26 @@
 import { ScreenTitle } from "../../ui/ScreenTitle";
 import { EntityLink } from "../../nav/links";
 import { LayerHost } from "../../nav/LayerHost";
-import {
-  CurriculumDetailsControl,
-  useCurriculumDetails,
-} from "../curriculum/CurriculumDetails";
+import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
 import { useDeferredValue, useMemo, type CSSProperties } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { useNavigate, useSearch, Link } from "@tanstack/react-router";
+import {
+  useLocation,
+  useNavigate,
+  useSearch,
+  Link,
+} from "@tanstack/react-router";
+import { childAddress } from "../spaces/identity";
 import { skillCatalogOptions, useLearningView } from "../../lib/learning-view";
 import { useUrlSearchText } from "../../lib/url-search-text";
 import { useHeroAction } from "../../lib/shell-slots";
 import {
   bandLabel,
   bands,
+  areaParam,
+  areas,
+  areaSlot,
   illumination,
-  neighborhood,
-  neighborhoods,
   type Evidence,
   type MapSkill,
 } from "../pathways/model";
@@ -42,7 +46,7 @@ const filters: { id: Filter; label: string }[] = [
 ];
 const areaOptions: ListboxOption[] = [
   { value: "", label: "Every math area" },
-  ...neighborhoods.map((n) => ({ value: n.title, label: n.title })),
+  ...areas.map((a) => ({ value: a.id, label: a.title })),
 ];
 /** Older links named the earned collection "illuminated". */
 const readFilter = (value: unknown): Filter | null =>
@@ -70,6 +74,11 @@ const shows = (filter: Filter, e?: Evidence) =>
 
 export function InventoryScreen() {
   const view = useLearningView();
+  // A family's child's inventory (/family/<family>/kids/<learner>/inventory):
+  // theirs to read. Their practice is their own session, never this adult's.
+  const child = !!childAddress(
+    useLocation({ select: (location) => location.pathname }),
+  );
   const { shown } = useCurriculumDetails();
   const catalog = useQuery(skillCatalogOptions);
   const search = useSearch({ strict: false });
@@ -80,11 +89,8 @@ export function InventoryScreen() {
     update({ topic: topic || undefined }, true),
   );
   const query = useDeferredValue(field.text.trim());
-  const area =
-    typeof search.area === "string" &&
-    neighborhoods.some((n) => n.title === search.area)
-      ? search.area
-      : "";
+  // The math area, as Pathways names it (`?area=geometry`).
+  const area = areaParam(search.area) ?? "";
   const evidence = useMemo(
     () => new Map(view.evidence?.skills.map((e) => [e.skillId, e]) ?? []),
     [view.evidence],
@@ -93,7 +99,7 @@ export function InventoryScreen() {
   // Counts follow the chosen math area and the search, so every number
   // matches the list it opens.
   const inArea = area
-    ? allSkills.filter((s) => neighborhoods[neighborhood(s)]?.title === area)
+    ? allSkills.filter((s) => areas[areaSlot(s)]?.id === area)
     : allSkills;
   const needle = query.trim().toLowerCase();
   const matching = needle
@@ -112,7 +118,8 @@ export function InventoryScreen() {
     replace = false,
   ) =>
     void navigate({
-      to: "/inventory",
+      // This inventory's own address: yours, or a child's.
+      to: ".",
       search: {
         topic: field.carry() || undefined,
         collection: search.collection ? filter : undefined,
@@ -150,6 +157,7 @@ export function InventoryScreen() {
     !busy &&
     !failure &&
     view.active &&
+    !child &&
     !triedAnything &&
     !search.collection &&
     !query &&
@@ -183,7 +191,7 @@ export function InventoryScreen() {
       </div>
       {failure ? (
         <section className={styles.notice} role="alert">
-          <p>Your skills didn’t load. Try again to see the saved progress.</p>
+          <p>Skills didn’t load. Try again.</p>
           <button
             className={buttonClass("secondary")}
             onClick={() => {
@@ -201,7 +209,7 @@ export function InventoryScreen() {
       ) : !view.active ? (
         <p className={styles.lead}>
           {view.learners.length > 1
-            ? "Choose a learner from the AMP menu to see their skills."
+            ? "Choose a learner in the menu."
             : "Skills appear here once someone practices."}
         </p>
       ) : (
@@ -211,12 +219,7 @@ export function InventoryScreen() {
               {/* Earned and strong are counted once, on their filters. */}
               <Stat value={xp} label="XP" />
             </section>
-          ) : (
-            <p className={styles.lead}>
-              Every skill from counting to precalculus. Each one fills in as
-              it’s answered without help.
-            </p>
-          )}
+          ) : null}
           <div className={styles.filters}>
             <label className={styles.search}>
               <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -225,8 +228,8 @@ export function InventoryScreen() {
               </svg>
               <input
                 type="search"
-                aria-label="Find a skill"
-                placeholder="Find a skill…"
+                aria-label="Search"
+                placeholder="Search"
                 value={field.text}
                 maxLength={100}
                 onChange={(e) => field.change(e.target.value)}
@@ -268,15 +271,15 @@ export function InventoryScreen() {
               {query || area
                 ? "No skills match. Try another search or math area."
                 : filter === "strong"
-                  ? "No strong skills yet. A skill turns strong after a run of correct answers without help."
+                  ? "No strong skills yet."
                   : "No skills here yet."}
             </p>
           ) : (
-            neighborhoods.map((n, i) => {
-              const rows = visible.filter((s) => neighborhood(s) === i);
+            areas.map((n, i) => {
+              const rows = visible.filter((s) => areaSlot(s) === i);
               if (!rows.length) return null;
               return (
-                <section className={styles.group} key={n.title}>
+                <section className={styles.group} key={n.id}>
                   <div className={styles.groupHeading}>
                     <h2>{n.title}</h2>
                     <span>{plural(rows.length, "skill")}</span>
@@ -296,17 +299,15 @@ export function InventoryScreen() {
             })
           )}
           <div className={styles.footer}>
-            <CurriculumDetailsControl />
             <details className={styles.explainer}>
-              <summary>How XP and skill progress work</summary>
+              <summary>How XP works</summary>
               <p>
-                Each correct answer without help earns 1 XP and fills that
-                skill’s bar by a twentieth. XP and filled bars stay.
+                Each correct answer without help earns 1 XP and fills a
+                twentieth of the skill’s bar. Both stay.
               </p>
               <p>
-                Strong means a strong record on the skill lately; it can go back
-                to Building when the skill is due for review. Grade labels give
-                the skill’s place in the curriculum, not the learner’s level.
+                Strong skills go back to Building when they’re due for review.
+                Grade labels place a skill in the curriculum, not the learner.
               </p>
             </details>
           </div>
@@ -319,6 +320,7 @@ export function InventoryScreen() {
         skillActions={(skill) =>
           view.canPractice &&
           !view.viewOnly &&
+          !child &&
           catalog.data?.templates.some((type) => type.skillId === skill) ? (
             <div className={layers.actions}>
               <Link
@@ -419,7 +421,7 @@ function InventoryHero({
       <h1 id="inventory-title">Your skills fill in as you practice</h1>
       <p>
         All {total.toLocaleString("en-US")} skills, from counting to
-        precalculus. Each one fills as it’s answered without help.
+        precalculus.
       </p>
       <Link
         to="/$"

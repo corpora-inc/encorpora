@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { Wave } from "./Loading";
 import styles from "./RowList.module.css";
@@ -64,6 +65,41 @@ export function RowButton({
           </svg>
         )}
       </button>
+    </li>
+  );
+}
+
+/** A row that goes somewhere: the same row, as a link to an app address
+ * (without its leading slash), so it opens in a new tab and has a URL. */
+export function RowLink({
+  title,
+  meta,
+  to,
+  search,
+  ...data
+}: {
+  title: string;
+  meta?: string;
+  to: string;
+  search?: Record<string, unknown>;
+} & { [key: `data-${string}`]: string | undefined }) {
+  return (
+    <li className={styles.item}>
+      <Link
+        to="/$"
+        params={{ _splat: to }}
+        search={(search ?? {}) as never}
+        className={styles.row}
+        {...data}
+      >
+        <span className={styles.text}>
+          <span className={styles.title}>{title}</span>
+          {meta && <span className={styles.meta}>{meta}</span>}
+        </span>
+        <svg className={styles.chevron} viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m9 6 6 6-6 6" />
+        </svg>
+      </Link>
     </li>
   );
 }

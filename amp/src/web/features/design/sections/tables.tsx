@@ -7,6 +7,7 @@ import { shortDay, WorkList } from "../../school/classes/teacher-shared";
 import { classMap, names, record, roster, type RosterRow } from "../fixtures";
 import { Section, Specimen } from "../Gallery";
 import styles from "../Design.module.css";
+import { spaceWords } from "../../spaces/words";
 
 const columns: DataGridColumn<RosterRow>[] = [
   {
@@ -91,13 +92,17 @@ export function TableSections() {
       >
         <Specimen label="A class against its course" wide>
           <div data-dense>
-            <MapKey data={classMap} />
-            <ClassMap data={classMap} />
+            <MapKey data={classMap} words={spaceWords("classroom")} />
+            <ClassMap data={classMap} words={spaceWords("classroom")} />
           </div>
         </Specimen>
         <Specimen label="Today's glance: two strands" wide>
           <div data-dense>
-            <ClassMap data={classMap} limitStrands={2} />
+            <ClassMap
+              data={classMap}
+              limitStrands={2}
+              words={spaceWords("classroom")}
+            />
           </div>
         </Specimen>
       </Section>

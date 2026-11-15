@@ -1,0 +1,67 @@
+/* The adult's own name in Account (features/account/YourName.tsx): one row,
+   label and value with Change at the end, the form in the row's place.
+   Tokens only; the row keeps its height while the account loads. */
+.section {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-5);
+}
+.title {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-family: inherit;
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+  min-height: 64px;
+  padding-block: var(--space-2);
+  box-shadow:
+    inset 0 1px 0 var(--color-border),
+    inset 0 -1px 0 var(--color-border);
+}
+.text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.name {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.detail {
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  line-height: 1.4;
+}
+.action > * {
+  min-height: 44px;
+}
+.form {
+  display: grid;
+  grid-column: 1 / -1;
+  gap: var(--space-4);
+}
+/* Each field keeps its error line beneath it, so the pair sits close. */
+.fields {
+  display: grid;
+  gap: var(--space-1) var(--space-4);
+}
+@media (min-width: 560px) {
+  .fields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.actions > * {
+  min-height: 44px;
+}

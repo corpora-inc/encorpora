@@ -1,3 +1,5 @@
+import { SchoolError } from "./contracts.js";
+import { adultNameSql } from "../account/profile.js";
 import type { Pool } from "pg";
 import { hasProblemLesson } from "../content/problem-lessons.js";
 import { templates } from "../math/engine.js";
@@ -109,7 +111,7 @@ const teacherOf = async (pool: Pool, personId: string | null) =>
   personId
     ? ((
         await pool.query(
-          `SELECT ${PERSON_NAME} AS name FROM amp_people p WHERE p.id=$1`,
+          `SELECT ${adultNameSql()} AS name FROM amp_people p WHERE p.id=$1`,
           [personId],
         )
       ).rows[0]?.name ?? null)
@@ -142,8 +144,11 @@ export async function readToday(
   pool: Pool,
   context: ClassContext,
   actorPersonId: string | null,
+  /** Authorized ownership projection; IDs key children, not class persons.
+   * Its aggregates and tasks must be computed before any presentation. */
+  projection?: { children: Named[]; weeklyTargetMinutes: number | null },
 ): Promise<Omit<TodayResponse, "canPrint">> {
-  const named = await namedRoster(pool, context.id);
+  const named = projection?.children ?? (await namedRoster(pool, context.id));
   const roster = members(named);
   const policy = DEFAULT_GRADE_POLICY;
   const today = context.today;
@@ -165,7 +170,9 @@ export async function readToday(
     totals(pool, roster, { from: lookback, to: today }),
     totals(pool, roster, { from: today, to: today }),
     levels(pool, roster),
-    weeklyTargetFor(pool, context),
+    projection
+      ? Promise.resolve({ minutes: projection.weeklyTargetMinutes })
+      : weeklyTargetFor(pool, context),
     teacherOf(pool, actorPersonId),
     pool
       .query(
@@ -327,7 +334,11 @@ const mapLevel = (row: StoredLevel | undefined) => ({
   provisional: !row || row.overall.answered < PROVISIONAL_ANSWERS,
   level: row
     ? {
-        overall: { level: row.overall.level, sd: row.overall.sd },
+        overall: {
+          level: row.overall.level,
+          sd: row.overall.sd,
+          answered: row.overall.answered,
+        },
         strands: Object.fromEntries(
           Object.entries(row.strands).map(([id, { level, sd }]) => [
             id,
@@ -383,6 +394,7 @@ export async function readMap(
     teachers: teachers.map((teacher) => ({
       id: teacher.personId,
       name: teacher.name,
+      adultName: teacher.adultName,
       first: teacher.first,
       you: teacher.accountId === readerAccountId,
       ...mapLevel(stored.get(teacher.personId)),
@@ -544,23 +556,42 @@ export async function readEvidence(
   };
 }
 
+/** Inclusive calendar days; shared by every Time JSON and CSV reader. */
+export const MAX_TIME_DAYS = 400;
+
 /** The dates a report covers, in the school's timezone. */
 export async function periodRange(
   pool: Pool,
   context: ClassContext,
   period: TimePeriod,
+  from?: string,
 ): Promise<{ from: string; to: string }> {
   const today = context.today;
-  if (period === "week") return { from: weekStart(today), to: today };
-  if (period === "month")
-    return { from: shift(weekStart(today), -21), to: today };
-  const term = currentTerm(await termsFor(pool, context), today);
-  return term && term.startsOn <= today
-    ? {
-        from: term.startsOn,
-        to: term.endsOn < today ? term.endsOn : today,
-      }
-    : { from: shift(weekStart(today), -21), to: today };
+  let range: { from: string; to: string };
+  if (period === "week") range = { from: weekStart(today), to: today };
+  else if (period === "month")
+    range = { from: shift(weekStart(today), -21), to: today };
+  else {
+    const term = context.sessionId
+      ? currentTerm(await termsFor(pool, context), today)
+      : null;
+    range =
+      term && term.startsOn <= today
+        ? {
+            from: term.startsOn,
+            to: term.endsOn < today ? term.endsOn : today,
+          }
+        : { from: shift(weekStart(today), -21), to: today };
+  }
+  if (from !== undefined) range.from = from;
+  if (range.from > range.to) throw new SchoolError(400, "invalid_time_range");
+  const days =
+    (Date.parse(`${range.to}T00:00:00Z`) -
+      Date.parse(`${range.from}T00:00:00Z`)) /
+      86_400_000 +
+    1;
+  if (days > MAX_TIME_DAYS) throw new SchoolError(400, "time_range_too_long");
+  return range;
 }
 
 function mondays({ from, to }: { from: string; to: string }): string[] {
@@ -576,8 +607,9 @@ export async function readTime(
   pool: Pool,
   context: ClassContext,
   period: TimePeriod,
+  from?: string,
 ): Promise<TimeResponse> {
-  const range = await periodRange(pool, context, period);
+  const range = await periodRange(pool, context, period, from);
   const students = await termRoster(pool, context.id, range);
   const roster = asMembers(students);
   const weeks = mondays(range);
@@ -655,8 +687,9 @@ export async function readStudentTime(
   context: ClassContext,
   period: TimePeriod,
   personId: string,
+  from?: string,
 ): Promise<StudentTimeResponse | null> {
-  const range = await periodRange(pool, context, period);
+  const range = await periodRange(pool, context, period, from);
   const student = (await termRoster(pool, context.id, range)).find(
     (entry) => entry.id === personId,
   );
@@ -699,14 +732,14 @@ export async function teachersOf(
   viewer: string | null = null,
 ) {
   const { rows } = await pool.query(
-    `SELECT ${PERSON_NAME} AS name FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
+    `SELECT ${adultNameSql()} AS name FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
      WHERE e.class_id=$1 AND e.role='teacher' AND p.deleted_at IS NULL
        AND e.begin_on<=$2::date AND (e.end_on IS NULL OR e.end_on>$2::date)
        AND ${visibleToSql("p", "$3::text")}
      ORDER BY e.begin_on,p.id`,
     [context.id, context.today, viewer],
   );
-  return rows.map((row) => row.name as string);
+  return rows.map((row) => row.name as string | null);
 }
 
 export async function readReportCards(
@@ -724,10 +757,19 @@ export async function readReportCards(
   ]);
   const course = courseBand(context.courseBands);
   return {
+    ...(context.orgKind === "family"
+      ? {
+          family: {
+            displayName: context.familyDisplayName ?? null,
+            parentName: context.parentName ?? null,
+          },
+        }
+      : {}),
     school: context.orgName,
     class: { name: context.name, course: course?.label ?? context.name },
     term,
-    teachers,
+    teacherNames: teachers,
+    teachers: teachers.filter((name): name is string => name !== null),
     students: rows.map(({ student, suggestion, final }) => {
       const end = suggestion.inputs.endLevel;
       return {
@@ -799,7 +841,11 @@ export async function readProgress(
   return {
     level: level
       ? {
-          overall: { level: level.overall.level, sd: level.overall.sd },
+          overall: {
+            level: level.overall.level,
+            sd: level.overall.sd,
+            answered: level.overall.answered,
+          },
           strands: Object.fromEntries(
             Object.entries(level.strands).map(([id, { level: at, sd }]) => [
               id,
@@ -917,6 +963,14 @@ export async function readStudentRecord(
                     {
                       classId: context.id,
                       className: context.name,
+                      ...(context.orgKind === "family"
+                        ? {
+                            family: {
+                              displayName: context.familyDisplayName ?? null,
+                              parentName: context.parentName ?? null,
+                            },
+                          }
+                        : {}),
                       termId: term.id,
                       termName: term.name,
                       state: term.state,
@@ -948,6 +1002,9 @@ export async function readStudentRecord(
     classes: contexts.map((context) => ({
       id: context.id,
       name: context.name,
+      ...(context.orgKind === "family"
+        ? { familyDisplayName: context.familyDisplayName ?? null }
+        : {}),
       course: courseBand(context.courseBands),
     })),
     ...progress,

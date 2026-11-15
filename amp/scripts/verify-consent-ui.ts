@@ -147,7 +147,7 @@ try {
     await capture("start");
     await page.getByLabel("Parent email address").fill("parent@");
     await page.getByRole("checkbox").check();
-    await page.getByRole("button", { name: "Email my privacy notice" }).click();
+    await page.getByRole("button", { name: "Email the privacy notice" }).click();
     assert.equal(writes, 0, "invalid email must not be posted");
     await page.getByLabel("Parent email address").fill("parent@example.com");
     await page.getByRole("checkbox").check();
@@ -158,7 +158,7 @@ try {
       await page.getByLabel("Parent email address").inputValue(),
       "parent@example.com",
     );
-    await page.getByRole("button", { name: "Email my privacy notice" }).click();
+    await page.getByRole("button", { name: "Email the privacy notice" }).click();
     await page.getByRole("heading", { name: "Your privacy notice" }).waitFor();
     assert.equal(writes, 1);
     await capture("first-email");
@@ -172,7 +172,7 @@ try {
       .getByRole("button", { name: "Withdraw this request", exact: true })
       .click();
     await page
-      .getByRole("button", { name: "Email my privacy notice" })
+      .getByRole("button", { name: "Email the privacy notice" })
       .waitFor();
     assert.equal(view.request!.phase, "withdrawn");
     view.request!.phase = "awaiting-initial";
@@ -261,7 +261,7 @@ try {
     released = new Promise<void>((resolve) => (release = resolve));
     await page.getByLabel("Parent email address").fill("parent@example.com");
     await page.getByRole("checkbox").check();
-    await page.getByRole("button", { name: "Email my privacy notice" }).click();
+    await page.getByRole("button", { name: "Email the privacy notice" }).click();
     await held;
     await page.evaluate(() =>
       (window as any).consentHarness.render("other", "other", null, "disabled"),

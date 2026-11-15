@@ -450,6 +450,7 @@ async function teacherLines(
         : [
             {
               name: teacher.name,
+              adultName: teacher.adultName,
               value,
               inList: lowest !== undefined && value >= lowest,
             },

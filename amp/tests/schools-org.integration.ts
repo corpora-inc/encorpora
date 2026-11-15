@@ -166,7 +166,9 @@ test(
     const senior = await add(alder.id, "Gia", "Lane", 8, grade5.id);
     const waiting = await add(alder.id, "Wen", "Liu", 4, untaught.id);
     await add(birch.id, "Bo", "Birch", 5, birchClass.id);
-    const rostered = [amara, caleb, senior, waiting].map((student) => student.personId);
+    const rostered = [amara, caleb, senior, waiting].map(
+      (student) => student.personId,
+    );
     await db.query(
       `UPDATE amp_org_roles SET begin_on=$1 WHERE person_id=ANY($2::uuid[])`,
       [iso(-120), rostered],
@@ -295,7 +297,9 @@ test(
           // so they have no growth figure rather than a zero.
           assert.equal(math.placed, 1);
           assert.ok(math.growth > 0.6 && math.growth < 1);
-          assert.ok(math.growthLow < math.growth && math.growthHigh > math.growth);
+          assert.ok(
+            math.growthLow < math.growth && math.growthHigh > math.growth,
+          );
           assert.equal(view.schools, null);
           const ids = view.attention.map((item: { id: string }) => item.id);
           assert.ok(ids.includes("seats"));
@@ -938,6 +942,13 @@ test(
               (reply) => reply.json().past,
             );
           assert.equal(await past(grade5.id), false);
+          // The answer binds the class to its place and names what this
+          // person may do in it (docs/architecture/spaces.md).
+          const year = (await get(`/classes/${grade5.id}/year`, HEAD)).json();
+          assert.equal(year.orgId, grade5.orgId);
+          assert.ok(year.path.includes(grade5.orgId));
+          assert.equal(year.name, grade5.name);
+          assert.ok(year.can.includes("classes.read"));
           const next = (
             await db.query("SELECT id FROM amp_classes WHERE rolled_from=$1", [
               grade5.id,

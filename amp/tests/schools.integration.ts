@@ -650,8 +650,10 @@ test(
           assert.equal(await levels(), "hidden");
           await set("org", orgId, { levels: "shown" });
           assert.equal(await levels(), "shown");
+          // A student's own screens show or hide grades; a stored "choice"
+          // shows them (e2ac70597: the device toggle behind it is gone).
           await set("class", a.id, { levels: "choice" });
-          assert.equal(await levels(), "choice");
+          assert.equal(await levels(), "shown");
           await set("class", b.id, { levels: "hidden" });
           assert.equal(await levels(), "hidden");
           await set("class", b.id, {});

@@ -1,8 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState, type ReactNode } from "react";
-import {
-  useCurriculumDetails,
-} from "./features/curriculum/CurriculumDetails";
+import { useRef, useState, type ReactNode } from "react";
+import { useCurriculumDetails } from "./features/curriculum/CurriculumDetails";
 import { strandNames } from "./BirthYearPrompt";
 
 import {
@@ -10,8 +8,18 @@ import {
   type Frontier,
   type Estimate,
 } from "../learning/frontier";
-import { gradeName, levelDetails, levelRange } from "../learning/level-check";
-import { fitScale, LevelRange, LevelRangeStart } from "./ui/level-range";
+import {
+  gradeName,
+  levelDetails,
+  levelRange,
+  measured,
+} from "../learning/level-check";
+import {
+  byArea,
+  fitScale,
+  LevelRange,
+  LevelRangeStart,
+} from "./ui/level-range";
 import { sessionOptions } from "./lib/query";
 import { useHeroAction } from "./lib/shell-slots";
 import { levelTrendOptions } from "./features/level/api";
@@ -47,18 +55,24 @@ type Props = {
 /** The learner's Overview: their level leads, with the one action beside
  * it. Before any answer, the starting estimate from their age; after, the
  * best guess, the likely range, every area practiced and how it narrowed.
- * Grade numbers follow the learner's setting on this device. */
+ * Grade numbers show unless a grown-up or the child's school hides them
+ * from the child (features/curriculum/CurriculumDetails.tsx). */
 export function Home(props: Props) {
   const { shown } = useCurriculumDetails();
   const f = props.frontier;
-  const measured = !!f && f.overall.answered > 0;
+  const isMeasured = measured(f?.overall);
+  // Opened before the first answer: this visit keeps the hero, whose bar
+  // takes the first estimate in place when it arrives (CP-5 #5).
+  const openedUnmeasured = useRef<boolean | null>(null);
+  if (f) openedUnmeasured.current ??= !isMeasured;
+  const heroLayout = !!f && (!isMeasured || !!openedUnmeasured.current);
   const session = useQuery(sessionOptions).data;
   const trend = useQuery({
     ...levelTrendOptions(
       session ?? { accountId: "", token: "" },
       props.learnerId ?? "",
     ),
-    enabled: !!session && !!props.learnerId && measured,
+    enabled: !!session && !!props.learnerId && isMeasured,
   });
   const who = props.reader === "other" ? props.name : undefined;
   // The grade typical for their age, behind every bar, when it is known.
@@ -70,7 +84,7 @@ export function Home(props: Props) {
   // day 0 the page's own start is the one, and the bar's steps back. A
   // labelled action that isn't Practice (a second parent's "Let … practice
   // here") always stays: the bar has none for it.
-  const ownStart = !!props.go && !props.goLabel && !!f && !measured;
+  const ownStart = !!props.go && !props.goLabel && heroLayout;
   useHeroAction(ownStart);
   const go = props.go && (props.goLabel || ownStart) && (
     <button
@@ -82,14 +96,17 @@ export function Home(props: Props) {
       {props.goLabel ?? (props.resuming ? "Continue" : "Start practicing")}
     </button>
   );
+  // Every strand under its area of math (ui/level-range `byArea`).
   const areas = f
-    ? props.strands
-        .filter((strand) => (f.strands[strand]?.answered ?? 0) > 0)
-        .map((strand) => ({
-          id: strand,
-          label: strandNames[strand] ?? strand,
-          estimate: f.strands[strand]!,
-        }))
+    ? byArea(
+        props.strands
+          .filter((strand) => measured(f.strands[strand]))
+          .map((strand) => ({
+            id: strand,
+            label: strandNames[strand] ?? strand,
+            estimate: f.strands[strand]!,
+          })),
+      )
     : [];
   const freeLine = props.freeLeft != null && (
     <span className="home-free" data-free-left={props.freeLeft}>
@@ -98,7 +115,7 @@ export function Home(props: Props) {
   );
   // Day 0 (docs/design/ia.md, rule 7): one centred hero, its start the only
   // Practice on screen.
-  const dayZero = !!f && !measured;
+  const dayZero = heroLayout;
   return (
     <main className="home">
       {props.navigation}
@@ -127,7 +144,7 @@ export function Home(props: Props) {
             aria-busy="true"
             aria-label="Loading the level"
           />
-        ) : measured ? (
+        ) : !dayZero ? (
           <LevelRange
             title={who ? `Where ${who} is` : null}
             labelledBy={who ? undefined : "home-title"}
@@ -146,18 +163,18 @@ export function Home(props: Props) {
           <LevelRangeStart
             title={who ? `Where ${who} is` : "Where you are"}
             heading={1}
-            start={f.overall}
-            grade={grade}
-            numbers={shown}
             who={who}
+            found={
+              isMeasured
+                ? { estimate: f.overall, answered: f.overall.answered }
+                : null
+            }
             action={go}
             secondary={freeLine}
           />
         )}
       </div>
-      {/* Grade numbers are a setting of the drawer (docs/design/ia.md,
-          "Where settings live"); the birth year, a quiet line under the
-          level, centred with it. */}
+      {/* The birth year, a quiet line under the level, centred with it. */}
       {props.changeBirthYear && (
         <button
           className="text-button home-birth-year"
@@ -169,4 +186,3 @@ export function Home(props: Props) {
     </main>
   );
 }
-

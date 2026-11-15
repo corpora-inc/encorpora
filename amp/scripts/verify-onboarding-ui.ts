@@ -481,7 +481,7 @@ try {
             height: node.getBoundingClientRect().height,
           };
         });
-      const primary = await look("I confirmed my email"),
+      const primary = await look("I’ve confirmed it"),
         secondary = await look("Send another email"),
         // #2157 gives Continue with AMP one Back above its heading.
         back = await look("Back", "link");
@@ -520,7 +520,7 @@ try {
       // Confirmation follows `/me` to the plan, in place: never consent, never
       // a dead end, and the title holds still.
       state.confirm = false;
-      await page.getByRole("button", { name: "I confirmed my email" }).click();
+      await page.getByRole("button", { name: "I’ve confirmed it" }).click();
       const plan = page.getByRole("radiogroup", { name: "Plan" });
       await plan.waitFor();
       assert.match(page.url(), /\/continue\/learner-1$/);

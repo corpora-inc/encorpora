@@ -38,7 +38,7 @@ test("every varied family keeps its template, skill and exposure objective", () 
   }
 });
 
-test("legacy axis values reproduce the pre-axis output byte for byte", () => {
+test("legacy axis values preserve pre-axis content apart from display punctuation", () => {
   const golden = JSON.parse(
     readFileSync(
       new URL(
@@ -61,7 +61,18 @@ test("legacy axis values reproduce the pre-axis output byte for byte", () => {
       if (!Object.values(varied[id]!).every((a) => axes[a.id] === a.legacy))
         return;
       legacy++;
-      const before = legacySurface(problem);
+      // Current polynomial prompts omit the final display-math period. Keep
+      // the historical digest as a check on every other byte of the payload.
+      const before = legacySurface({
+        ...problem,
+        public: {
+          ...problem.public,
+          prompt:
+            id === "polynomial-addition" || id === "polynomial-subtraction"
+              ? problem.public.prompt + "."
+              : problem.public.prompt,
+        },
+      });
       assert.equal(
         createHash("sha256")
           .update(JSON.stringify(before))

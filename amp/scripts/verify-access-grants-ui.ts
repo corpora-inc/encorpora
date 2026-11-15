@@ -345,7 +345,7 @@ try {
   await page.getByText("Verification email sent.", { exact: false }).waitFor();
   assert.equal((s.sends[0] as { callbackURL: string }).callbackURL, "/access");
   s.verified = true;
-  await page.getByRole("button", { name: "I confirmed my email" }).click();
+  await page.getByRole("button", { name: "I’ve confirmed it" }).click();
   await page
     .getByRole("heading", { name: "Your year of AMP is ready." })
     .waitFor();

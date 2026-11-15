@@ -171,6 +171,19 @@ button.preset[aria-pressed="true"]:disabled {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+.lockRow {
+  display: flex;
+  grid-column: 1 / -1;
+  justify-content: flex-end;
+}
+.lockRow button.lock {
+  margin-inline-end: calc(-1 * var(--space-3));
+  min-height: 44px;
+  padding: 2px var(--space-3);
+  font-size: var(--text-table-small);
+  line-height: 1.2;
+  white-space: nowrap;
+}
 button.lock {
   gap: var(--space-1);
 }

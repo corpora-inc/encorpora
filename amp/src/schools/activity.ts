@@ -284,7 +284,7 @@ export async function readActivity(
   const ids = [...others].filter((id) => UUID.test(id));
   const [personRows, nameRows] = await Promise.all([
     pool.query(
-      `SELECT p.id,${PERSON_NAME} AS name FROM amp_people p WHERE p.id=ANY($1::uuid[]) AND p.tenant_id=$2
+      `SELECT p.id,NULLIF(${PERSON_NAME},'') AS name FROM amp_people p WHERE p.id=ANY($1::uuid[]) AND p.tenant_id=$2
          AND ${visibleToSql("p", "$3::text")}`,
       [[...people], org.path[0], viewer],
     ),

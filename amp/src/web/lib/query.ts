@@ -1,6 +1,11 @@
 import { QueryClient, queryOptions } from "@tanstack/react-query";
 import { meSchema } from "../../account/contracts";
 import type { AuthSession } from "../auth";
+import {
+  beginRenewal,
+  changeSession,
+  confirmSession,
+} from "./session-generation";
 import { accessSession, authConfig } from "../auth";
 import { request } from "./api";
 import { setAnalyticsSession } from "./analytics";
@@ -27,6 +32,9 @@ export const sessionOptions = queryOptions({
   queryFn: async ({ signal }) => {
     const session = await accessSession();
     signal.throwIfAborted();
+    // A completed (never a cancelled) check says which session is this
+    // tab's: its token is current.
+    changeSession(undefined, session?.token);
     setAnalyticsSession(session);
     return session;
   },
@@ -52,6 +60,8 @@ export const meOptions = (session: AuthSession) =>
         token: session.token,
         signal,
       });
+      // This session's own account answered (lib/session-generation.ts).
+      confirmSession(session.token);
       return me;
     },
     // Navigation owns account freshness. Consumers share its snapshot even
@@ -61,6 +71,33 @@ export const meOptions = (session: AuthSession) =>
     refetchOnMount: (query) => query.state.isInvalidated,
     refetchOnWindowFocus: "always",
   });
+/**
+ * The session on screen changed (docs/architecture/spaces.md, "Session
+ * identity"). The one it replaced is retired: nothing it asked is sent,
+ * handled or cached from now on (`lib/session-generation.ts`). For the same
+ * account with a new token (a renewal), what is on screen stays (its
+ * answers are the same account's, and a half-written form is kept): its
+ * in-flight requests are cancelled back to what they had, and everything is
+ * asked again with the new session. Another account is reset by the caller.
+ * Returns whether this was a same-account renewal.
+ */
+export function retireSession(
+  previous: AuthSession | null | undefined,
+  next: AuthSession | null,
+  client = queryClient,
+) {
+  changeSession(previous?.token, next?.token);
+  if (
+    !previous ||
+    !next ||
+    previous.accountId !== next.accountId ||
+    previous.token === next.token
+  )
+    return false;
+  beginRenewal(next.token);
+  void client.cancelQueries({ queryKey: ["account", previous.accountId] });
+  return true;
+}
 export function invalidateAccount(identity: string) {
   return queryClient.invalidateQueries({ queryKey: ["account", identity] });
 }

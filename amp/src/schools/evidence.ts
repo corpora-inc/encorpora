@@ -272,7 +272,9 @@ export type LevelDay = {
   strands: Record<string, LevelEstimate>;
 };
 /** Each rostered student's level on the latest day at or before `on`, or the
- * latest stored when `on` is omitted. Students with none stored are absent. */
+ * latest stored when `on` is omitted. A day stored before any answer (a
+ * batch served, nothing answered yet) is not a level: it is skipped, so a
+ * student with no answers is absent, as one with none stored is (Q-201). */
 export async function levels(
   pool: Pool,
   roster: RosterMember[],
@@ -281,11 +283,14 @@ export async function levels(
   if (!roster.length) return [];
   const rows = (
     await pool.query(
-      `SELECT DISTINCT ON (r.person_id) r.person_id AS "personId",d.day::text AS day,
+      `SELECT r.person_id AS "personId",d.day::text AS day,
          d.policy_version AS "policyVersion",d.frontier
        FROM unnest($3::uuid[],$1::text[]) AS r(person_id,learner_id)
-       JOIN amp_level_days d ON d.learner_id=r.learner_id AND ($2::date IS NULL OR d.day<=$2::date)
-       ORDER BY r.person_id,d.day DESC`,
+       CROSS JOIN LATERAL (SELECT day,policy_version,frontier FROM amp_level_days
+         WHERE learner_id=r.learner_id AND ($2::date IS NULL OR day<=$2::date)
+           AND (overall_answered IS NULL OR overall_answered>0)
+         ORDER BY day DESC LIMIT 1) d
+       ORDER BY r.person_id`,
       [
         roster.map((m) => m.learnerId),
         on ?? null,

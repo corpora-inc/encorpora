@@ -13,9 +13,9 @@ The practice loop (one problem at a time, adaptive across strands) is the produc
 
 ## People and sign-in
 
-| Who                           | Signs in with                                                                                                                              | Practices as                                  |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------- |
-| Parent, teacher, tutor, admin | An account: email and password, passkey, Google, Microsoft, Apple, or a verified Clever staff identity                                                                        | Their own **adult learner**, if they have one |
+| Who                           | Signs in with                                                                                                                                 | Practices as                                  |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| Parent, teacher, tutor, admin | An account: email and password, passkey, Google, Microsoft, Apple, or a verified Clever staff identity                                        | Their own **adult learner**, if they have one |
 | Child                         | A class: class code → their name (or "Child 2") → 3 of 16 pictures; or a printed card's QR; or Google, Microsoft or Clever through the school | Their one learner                             |
 
 - **Adults hold several places at once.** A person can be a parent, a teacher at a school, the head of a district and their own learner. The **place switcher**, one shared menu in the app drawer and setup, moves between them. `/` opens where the person last worked. With nothing remembered, it opens the family side if they have learners or a family class, and the school if they are staff only. An account with no place yet answers "What brings you to AMP?" first. A school setup in progress never takes over `/`.
@@ -51,7 +51,7 @@ The practice loop (one problem at a time, adaptive across strands) is the produc
   - **Tutor or co-op:** the family class with students owned by their roster person, each with a nickname or initials (optional) and a birth year, so each one's own parent names them by an approval link; home is the class's Today.
   - **Teacher:** start a real class, connect through Clever, or explore a demo. Real onboarding confirms classroom data authority before importing student names.
   - **School:** start a class, connect the institution, explore a demo school, or contact AMP.
-  Asking again for a place the account already has opens it. Anyone can add another place from the place switcher's "Add a place".
+    Asking again for a place the account already has opens it. Anyone can add another place from the place switcher's "Add a place".
 - **When the allowance ends:** the screen in use shows one pause (`features/continue/AllowancePause.tsx`) naming the learner and the fact, with the one action that works for whoever is looking. A parent or an adult continues with AMP for that learner (`/continue/<learner>`: the plan, with the parent notice when no consent is recorded yet, then Stripe, then back to the same screen with access active, then an optional "Add Child 2's name" for a child still going by their number). A class's teacher, a tutor or a school talks to us. A student is told their grown-up can continue.
 
 Media, videos and ads carry no price; they lead to the Buy button.
@@ -81,8 +81,8 @@ Media, videos and ads carry no price; they lead to the Buy button.
   - `/family/approvals/$id`: a parent approving another family's class.
 - **Adult practice:**
   - `/me/start`: give a birth year to set the starting estimate; adults past school age begin at grade 7.
-  - `/me/profiles/new`: "Try a level…", a grade and pace (`?grade=4&pace=behind`), adjusted by strand and saved under a name; `/me/profiles/$id`: one profile's levels, name and Delete. Both from the place switcher under "My practice"; `/me` has one quiet link. A student's record adds "Try problems as this student".
-  - `/me`: their own practice, mathematics first and never their name: one centred column titled "Where you are" (the free count quietly beside it on a wide screen), then the level view (best guess, likely range, every area with its error bar, and how the range narrowed once it really has; the working-level decimals only with grade numbers on). Before the first problem, the starting estimate and Start practicing, which stands in for the bar's Practice; after, the bar's Practice is the one. Then "This week" as a line (the 12-week strip from two weeks), objectives gained (kept once earned) and recent work, each once it has something. Cmd+P prints it as a report. My practice's tabs are Overview, Pathways, Inventory and Workbooks; "Practice as someone else" is in the drawer.
+  - `/me/level`: "Practice at a level", a grade and pace (`?grade=4&pace=behind`) and straight into practice, nothing saved about anyone (one reusable level profile). `/me/profiles/new`: "New profile", the same choice adjusted by strand and saved under a name; `/me/profiles/$id`: one profile's levels, name and Delete. Practice at a level is in the place switcher's Practice group, the Me drawer and `/me`. A student's record adds "Try problems as this student".
+  - `/me`: their own practice, mathematics first and never their name: one centred column titled "Where you are" (the free count quietly beside it on a wide screen), then the level view (best guess, likely range, every strand under its area of math with its error bar, and how the range narrowed once it really has). Before the first problem, the starting estimate and Start practicing, which stands in for the bar's Practice; after, the bar's Practice is the one. Then "This week" as a line (the 12-week strip from two weeks), objectives gained (kept once earned) and recent work, each once it has something. Cmd+P prints it as a report. My practice's tabs are Overview, Pathways, Inventory and Workbooks; "Practice as someone else" is in the drawer.
   - `/practice` and `/pathways`.
 - **Child:**
   - `/join`, `/join/$code` and `/join/$code/$person`: sign-in.

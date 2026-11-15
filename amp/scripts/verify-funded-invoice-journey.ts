@@ -302,7 +302,7 @@ try {
           [session.user.id],
         );
         await page.goto(`${origin}/purchase/arizona-esa`);
-        await page.getByRole("link", { name: "For my child" }).click();
+        await page.getByRole("link", { name: "For a child" }).click();
         await page.getByLabel("Learner name").fill("Sample Learner");
         await page
           .getByRole("button", { name: "Continue", exact: true })

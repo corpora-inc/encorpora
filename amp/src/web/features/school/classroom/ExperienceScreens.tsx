@@ -24,10 +24,7 @@ export function ClassExperienceScreen() {
       loading={experience.isPending}
       tab="experience"
     >
-      <PageHead
-        title="Student experience"
-        detail="What students in this class see. The math they practice is the same either way."
-      />
+      <PageHead title="Student experience" />
       {experience.data ? (
         <ExperienceSettings
           session={session}
@@ -71,9 +68,6 @@ export function ClassExperienceSection({
       <h2 id="class-experience">
         {family ? "What children see" : "Student experience"}
       </h2>
-      <p className={styles.sectionLead}>
-        The math stays the same whichever you choose.
-      </p>
       {experience.data ? (
         <ExperienceSettings
           session={session}

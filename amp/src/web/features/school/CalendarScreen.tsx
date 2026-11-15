@@ -1,4 +1,5 @@
 import { closeSearch } from "../../lib/return-to";
+import { OrgFrame } from "./OrgFrame";
 import { useQuery } from "@tanstack/react-query";
 import {
   Link,
@@ -50,7 +51,8 @@ const TERM_CHOICES: ("year" | DivisionKind)[] = [
 const message = (failure: unknown, fallback: string) =>
   failure instanceof AppError ? failure.message : fallback;
 
-function EditSheet({
+/** Changing one session's dates (the year, a term): a sheet of two days. */
+export function EditSheet({
   orgId,
   session: entry,
   onClose,
@@ -319,8 +321,7 @@ export function YearCalendar({
                   list={false}
                 />
                 <p className={styles.quiet}>
-                  No terms: classes grade the whole year. A class that grades by
-                  semesters, trimesters or quarters adds them here.
+                  No terms: classes grade the whole year.
                 </p>
               </>
             ) : (
@@ -447,18 +448,28 @@ export function CalendarScreen() {
   if (!org) return null;
   const small = org.kind === "family" || org.solo === true;
   if (small && !classes) return null;
+  // A school's year and terms are its Calendar tab; a one-class school's
+  // or a family's are its class's Settings.
+  if (!small)
+    return (
+      <OrgFrame orgId={orgId} nav="calendar" title="Calendar" narrow>
+        {/* The screen's one h1 (its tab names it, so it isn't shown again). */}
+        <PageHead title="Calendar" />
+        <div className={styles.settingsPage}>
+          <YearCalendar orgId={orgId} section />
+        </div>
+      </OrgFrame>
+    );
   return (
     <Navigate
       to={"/$" as never}
       params={
         {
-          _splat:
-            small && classes?.[0]
-              ? `school/${orgId}/classes/${classes[0].id}/settings`
-              : `school/${orgId}/settings`,
+          _splat: classes?.[0]
+            ? `school/${orgId}/classes/${classes[0].id}/settings`
+            : `school/${orgId}/settings`,
         } as never
       }
-      hash={small ? undefined : "school-year"}
       replace
     />
   );

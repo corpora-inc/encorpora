@@ -57,7 +57,7 @@ it("opens an adult's own practice settings in Account → Learners, with where i
     </QueryClientProvider>,
   );
   const row = screen.getByRole("button", { name: /Your practice/ });
-  expect(row.textContent).toContain("Starts at Middle school");
+  expect(row.textContent).toContain("Began with middle-school math");
   // Alone in the list, its settings are open from the start.
   expect(row.getAttribute("aria-expanded")).toBe("true");
   expect(screen.getByText("Own settings")).toBeTruthy();
@@ -108,6 +108,6 @@ it("a year sets the start again, and the dialog closes on it", async () => {
   expect(JSON.parse(String(init.body))).toEqual({ birthYear: year });
   await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
   expect(
-    await screen.findByText("Your practice now starts at Algebra."),
+    await screen.findByText("Practice now begins with algebra."),
   ).toBeTruthy();
 });

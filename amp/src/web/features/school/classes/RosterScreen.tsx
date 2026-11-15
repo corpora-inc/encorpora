@@ -1,3 +1,4 @@
+import { spaceWords } from "../../spaces/words";
 import { EntityLink } from "../../../nav/links";
 import { ScreenTitle } from "../../../ui/ScreenTitle";
 import { SMALL_CLASS } from "../../navigation/shell-frame";
@@ -25,7 +26,7 @@ import {
 import { ClassFrame } from "./ClassFrame";
 import { PracticeAs, useDemoOrg } from "../demo/DemoPlace";
 import { meOptions } from "../../../lib/query";
-import { currentSession, orgOptions } from "../api";
+import { classesOptions, currentSession, orgOptions } from "../api";
 import { ClassPeople } from "./people/ClassPeople";
 import { canAddStudents } from "../permissions";
 import { classUrl } from "./teacher-shared";
@@ -36,8 +37,6 @@ import { useSchoolNavigation } from "../../navigation/school-navigation";
 import {
   AccessHeaderAction,
   AccessSheets,
-  practiceClosed,
-  practiceEnded,
   useClassAccess,
 } from "../pilots/ClassAccess";
 import { useFlash } from "./flash";
@@ -108,13 +107,14 @@ export function RosterScreen() {
     org: params.org,
     classId: params.class,
     active: "roster",
+    leaf: "roster",
     board: false,
   });
   const access = useClassAccess(place);
   // Practice is over: sign-in tools lead nowhere until seats arrive.
-  const ended = practiceEnded(access.view);
+  const ended = access.practice === "ended";
   // Before practice starts, and after it ends, no one signs in.
-  const closed = practiceClosed(access.view);
+  const closed = access.closed;
   const flash = useFlash((state) => state.message);
   const clearFlash = useFlash((state) => state.clear);
   const navigate = useNavigate();
@@ -151,7 +151,11 @@ export function RosterScreen() {
     ...orgOptions(account, params.org),
     refetchOnMount: false,
   }).data;
-  const family = org?.kind === "family";
+  // A family-kind class at its class address is a tutoring group (a
+  // parent's own family class opens at /family): students in a classroom's
+  // words, with its other families' approvals and co-teachers.
+  const group = org?.kind === "family";
+  const family = false;
   const me = useQuery(meOptions(account)).data;
   const holder = !!me?.signedIn && me.familyClass?.classId === params.class;
   const who = family ? "child" : "student";
@@ -159,8 +163,7 @@ export function RosterScreen() {
   // nothing moves when they arrive, and a list that fails says so in its
   // place rather than holding the page (a query refetched after an error
   // is pending again, which would loop the page through its wait).
-  useQuery({ ...secondParentOptions(account), enabled: holder && family });
-  useQuery({ ...approvalsOptions(account), enabled: holder && family });
+  useQuery({ ...approvalsOptions(account), enabled: holder && group });
   const busy = making || reset.isPending || revoke.isPending;
   const canAdd = !family && !demo && canAddStudents(org, params.class);
   const dayZero = !family && data?.students.length === 0;
@@ -398,7 +401,7 @@ export function RosterScreen() {
           {family && <h2 className={styles.sectionTitle}>Children</h2>}
           {/* Day 0 of a school class is its one step; the code waits for a
               roster, and for practice: none before it starts or after. */}
-          {!dayZero && !closed && (
+          {!dayZero && !closed && data.class.joinCode && (
             <section className={styles.code} aria-label="Class code">
               <div className={styles.codeText}>
                 <h2>Class code</h2>
@@ -416,7 +419,7 @@ export function RosterScreen() {
                 compact
                 code={data.class.joinCode}
                 place={params}
-                family={family}
+                words={spaceWords(family ? "family" : "classroom")}
                 boardLink={family}
                 label={false}
                 manage={data.canNewCode ?? canManage}
@@ -454,7 +457,7 @@ export function RosterScreen() {
               defaultSort={{ column: "name", direction: "ascending" }}
               cardLayout="list"
               cardsSort={data.students.length > 6}
-              cardEstimate={84}
+              cardEstimate={demo && canManage ? 136 : 84}
               card={(row) => (
                 <div className={styles.card}>
                   <EntityLink
@@ -485,6 +488,13 @@ export function RosterScreen() {
                         : "Not signed in yet"}
                     </span>
                   </span>
+                  {/* A demo's student view, on a phone too: the table's
+                      "Student view" column, on its own line. */}
+                  {demo && canManage && (
+                    <span className={styles.cardPractice}>
+                      <PracticeAs student={row} />
+                    </span>
+                  )}
                 </div>
               )}
             />
@@ -514,8 +524,10 @@ export function RosterScreen() {
               Add students
             </Link>
           )}
-          {family && holder && (
+          {!group && <ClassTeachers org={params.org} classId={params.class} />}
+          {group && holder && (
             <ClassPeople
+              secondParent={false}
               session={account}
               orgId={params.org}
               classId={params.class}
@@ -574,5 +586,44 @@ export function RosterScreen() {
       {!family && <AccessSheets place={place} />}
       <Toast message={error} onDismiss={() => setError("")} />
     </ClassFrame>
+  );
+}
+
+/** Who teaches the class, by the names the school knows them by (R12),
+ * and, for someone who manages the school's staff, the way to add a
+ * co-teacher: the school's own invitation, this class already chosen. A
+ * teacher sees their colleagues; inviting is the school's. */
+function ClassTeachers({ org, classId }: { org: string; classId: string }) {
+  const session = currentSession();
+  const school = useQuery({
+    ...orgOptions(session, org),
+    refetchOnMount: false,
+  }).data;
+  const klass = useQuery({
+    ...classesOptions(session, org),
+    refetchOnMount: false,
+  }).data?.find((entry) => entry.id === classId);
+  const invites = !!school?.can?.includes("staff.manage") && !school.demo;
+  if (!klass || (!klass.teachers.length && !invites)) return null;
+  return (
+    <section className={styles.teachers} aria-labelledby="class-teachers">
+      <h2 id="class-teachers">Teachers</h2>
+      {klass.teachers.length > 0 && (
+        <ul>
+          {klass.teachers.map((name) => (
+            <li key={name}>{name}</li>
+          ))}
+        </ul>
+      )}
+      {invites && (
+        <Link
+          to={`/school/${org}/staff` as never}
+          search={{ class: classId } as never}
+          className={buttonClass("quiet", "", "start")}
+        >
+          Invite a co-teacher
+        </Link>
+      )}
+    </section>
   );
 }

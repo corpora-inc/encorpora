@@ -1,3 +1,4 @@
+import { requestFetch } from "../../lib/request-transport";
 import {
   curriculumSummaryResource,
   parentViewResource,
@@ -43,12 +44,12 @@ const failure = () =>
     true,
   );
 
-/** Not the shared `request`: this page has no sign-in to end and reports
- * nothing about how it went. Only a token travels, in the body. */
+/** A custom response contract without sign-out recovery or analytics.
+ * The shared transport still gates its POST during account renewal. */
 export async function readParentView(token: string): Promise<ParentView> {
   let response: Response;
   try {
-    response = await fetch("/api/v1/school/share/view", {
+    response = await requestFetch("/api/v1/school/share/view", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       referrerPolicy: "no-referrer",
@@ -56,6 +57,7 @@ export async function readParentView(token: string): Promise<ParentView> {
       signal: AbortSignal.timeout(15_000),
     });
   } catch (error) {
+    if (error instanceof AppError) throw error;
     console.error("The progress page didn’t load", error);
     throw failure();
   }

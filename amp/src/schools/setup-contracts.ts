@@ -183,6 +183,7 @@ export type SessionResource = z.infer<typeof sessionResource>;
 export const staffResource = z.object({
   id: z.uuid(),
   name: z.string(),
+  adultName: z.string().nullable().optional(),
   email: z.string().nullable(),
   roles: z.array(z.enum(staffRoles)),
   classIds: z.array(z.uuid()),
@@ -197,6 +198,7 @@ export const staffResource = z.object({
 export type StaffResource = z.infer<typeof staffResource>;
 
 export const inviteViewSchema = z.object({
+  inviterName: z.string().nullable().optional(),
   status: z.enum(["open", "used", "expired", "ended"]),
   orgName: z.string(),
   role: z.enum(staffRoles),
@@ -205,7 +207,13 @@ export const inviteViewSchema = z.object({
   setup: z.boolean(),
   /** A family's second parent (docs/families.md), invited to its class. She
    * accepts with the address the invitation went to. */
-  secondParent: z.object({ className: z.string() }).optional(),
+  secondParent: z
+    .object({
+      className: z.string(),
+      familyDisplayName: z.string().nullable().optional(),
+      inviterName: z.string().nullable().optional(),
+    })
+    .optional(),
 });
 export type InviteView = z.infer<typeof inviteViewSchema>;
 

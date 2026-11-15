@@ -1,5 +1,6 @@
 import { strandNames } from "../../../BirthYearPrompt";
 import {
+  byArea,
   fitScale,
   LevelRange,
   LevelRangeStart,
@@ -16,13 +17,15 @@ import {
 import { emptyRecord, frontier, record, strandIds, time } from "../fixtures";
 import { Section, Specimen } from "../Gallery";
 
-const areas = strandIds
-  .filter((id) => frontier.strands[id])
-  .map((id) => ({
-    id,
-    label: strandNames[id] ?? id,
-    estimate: frontier.strands[id]!,
-  }));
+const areas = byArea(
+  strandIds
+    .filter((id) => frontier.strands[id])
+    .map((id) => ({
+      id,
+      label: strandNames[id] ?? id,
+      estimate: frontier.strands[id]!,
+    })),
+);
 const scale = fitScale(
   [frontier.overall, ...areas.map((area) => area.estimate)],
   { minSpan: 5 },
@@ -47,10 +50,11 @@ export function LevelSections() {
             />
           </CurriculumDetailsFixture>
         </Specimen>
-        <Specimen label="Day 0: the starting estimate" wide>
-          <CurriculumDetailsFixture shown>
-            <LevelRangeStart start={{ level: 6, sd: 1.6 }} />
-          </CurriculumDetailsFixture>
+        <Specimen label="Day 0: not measured yet" wide>
+          <LevelRangeStart />
+        </Specimen>
+        <Specimen label="Day 0, read by a parent" wide>
+          <LevelRangeStart who="Maya" />
         </Specimen>
         <Specimen label="Rows on a shared scale" wide>
           <LevelRows overall={frontier.overall} areas={areas} scale={scale} />

@@ -1,3 +1,4 @@
+import { requestFetch } from "../../lib/request-transport";
 import {
   queryOptions,
   useMutation,
@@ -40,7 +41,7 @@ export function useShareChange(session: Session, student: string) {
 /** Every student in the class gets a fresh link, as a file for the school's own
  * mail system. Links made before stop working, so it's asked for on purpose. */
 export async function downloadParentLinks(session: Session, classId: string) {
-  const response = await fetch(
+  const response = await requestFetch(
     `/api/v1/school/classes/${classId}/parent-links`,
     {
       method: "POST",

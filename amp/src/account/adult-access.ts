@@ -1,12 +1,9 @@
 import type { PoolClient } from "pg";
 import { activeToday } from "../schools/principal.js";
 
-/* An adult's own practice (docs/families.md). Every teaching adult practices
-   free: a teacher at a school with a license in force (never a demo's), or a
-   parent of a child with access, the account holder and the family's second
-   parent alike. `hasAccess` still reads only `amp_grants`: one grant per adult
-   learner, refreshed on account reads and learning transactions, carries the
-   latest qualifying end. The separate free allowance creates no grant. */
+/** Adult access is derived from live teaching and family sources. All readers
+ * that can encounter an adult grant use accessGrantsFor on their own database
+ * client. Stored adult grants are offline-pack bindings, not authority. */
 
 type Database = Pick<PoolClient, "query">;
 export const adultGrantId = (learnerId: string) => `adult:${learnerId}`;
@@ -72,21 +69,117 @@ export async function refreshAdultAccess(
   accountId: string,
   learnerId: string,
 ): Promise<Date | null> {
-  const ends = await adultPracticeEnd(db, accountId);
+  const access = await accessGrantsFor(db, [learnerId], accountId);
   const id = adultGrantId(learnerId);
+  const projected = access.grants.find(
+    (g) => g.id === id && grantInForce(g, access.now),
+  );
+  const ends = projected?.ends_at ?? null;
   if (ends)
     await db.query(
       `INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at)
        VALUES($1,$2,'pilot',$1,'active',now(),$3)
-       ON CONFLICT(id) DO UPDATE SET status='active',ends_at=EXCLUDED.ends_at
-       WHERE amp_grants.ends_at IS DISTINCT FROM EXCLUDED.ends_at OR amp_grants.status<>'active'`,
+       ON CONFLICT(id) DO UPDATE SET status='active',ends_at=EXCLUDED.ends_at,
+         starts_at=LEAST(amp_grants.starts_at,EXCLUDED.starts_at)
+       WHERE amp_grants.ends_at IS DISTINCT FROM EXCLUDED.ends_at OR amp_grants.status<>'active' OR amp_grants.starts_at>EXCLUDED.starts_at`,
       [id, learnerId, ends],
     );
   else
     await db.query(
-      `UPDATE amp_grants SET ends_at=GREATEST(now(),starts_at+interval '1 millisecond')
-       WHERE id=$1 AND learner_id=$2 AND ends_at>now()`,
-      [id, learnerId],
+      `UPDATE amp_grants SET status='revoked',ends_at=LEAST(ends_at,GREATEST(now(),starts_at+interval '1 millisecond'))
+       WHERE id=$1 AND learner_id=$2 AND (ends_at>now() OR status<>'revoked')
+         AND EXISTS(SELECT 1 FROM amp_learners l WHERE l.id=$2 AND l.account_id=$3)`,
+      [id, learnerId, accountId],
     );
   return ends;
 }
+
+export interface AccessGrant {
+  id: string;
+  learner_id: string;
+  channel: string;
+  external_order_id: string;
+  status: string;
+  starts_at: Date;
+  ends_at: Date;
+  offline_revision?: string;
+}
+
+/** Current grants, including scheduled direct purchases and historical rows.
+ * Replaces the adult projection in memory; never writes or takes row locks.
+ * Use the reader's transaction client so authorization and access share its
+ * snapshot. The returned clock is PostgreSQL's transaction time.
+ *
+ * Only offline issuance needs a persisted adult grant: refreshAdultAccess uses
+ * the same adultPracticeEnd calculation before checking its signed binding.
+ * A projection's dates are not evidence of historical paid access. */
+export async function accessGrantsFor(
+  db: Database,
+  learnerIds: readonly string[],
+  accountId?: string,
+) {
+  const learners = (
+    await db.query<{
+      id: string;
+      account_id: string;
+      adult: boolean;
+      simulation: boolean;
+      deleted: boolean;
+      at: Date;
+    }>(
+      `SELECT id,account_id,COALESCE((to_jsonb(l)->>'adult')::boolean,false) AS adult,
+      COALESCE((to_jsonb(l)->>'simulation')::boolean,false) AS simulation,
+      (to_jsonb(l)->>'deleted_at') IS NOT NULL AS deleted,now() AS at
+      FROM amp_learners l WHERE id=ANY($1::text[]) AND ($2::text IS NULL OR account_id=$2)`,
+      [learnerIds, accountId ?? null],
+    )
+  ).rows;
+  const now =
+    learners[0]?.at ??
+    (await db.query<{ at: Date }>("SELECT now() AS at")).rows[0]!.at;
+  const stored = (
+    await db.query<AccessGrant>(
+      "SELECT * FROM amp_grants WHERE learner_id=ANY($1::text[]) ORDER BY starts_at,id",
+      [learners.map((l) => l.id)],
+    )
+  ).rows;
+  const grants = stored.filter((g) => !g.id.startsWith("adult:"));
+  for (const learner of learners) {
+    // Keep a stored projection in exported history even for a deleted adult,
+    // but it can never authorize access without a live qualifying learner.
+    const ends =
+      learner.adult && !learner.simulation && !learner.deleted
+        ? await adultPracticeEnd(db, learner.account_id)
+        : null;
+    const id = adultGrantId(learner.id);
+    const previous = stored.find((g) => g.id === id);
+    if (ends)
+      grants.push({
+        ...previous,
+        id,
+        learner_id: learner.id,
+        channel: "pilot",
+        external_order_id: id,
+        status: "active",
+        starts_at:
+          previous && previous.starts_at < now ? previous.starts_at : now,
+        ends_at: ends,
+      });
+    else if (previous)
+      grants.push({
+        ...previous,
+        status: "revoked",
+        ends_at: previous.ends_at > now ? now : previous.ends_at,
+      });
+  }
+  grants.sort(
+    (a, b) =>
+      a.starts_at.getTime() - b.starts_at.getTime() || a.id.localeCompare(b.id),
+  );
+  return { grants, now };
+}
+
+export const grantInForce = (g: AccessGrant, at: Date) =>
+  g.status === "active" && g.starts_at <= at && g.ends_at > at;
+export const grantReserved = (g: AccessGrant, at: Date) =>
+  g.status === "active" && g.ends_at > at;

@@ -75,7 +75,7 @@ function tokens(source: string): Token[] | null {
       /^[A-Za-z]+/.exec(rest)?.[0] ??
       /^[⁰¹²³⁴⁵⁶⁷⁸⁹ⁿᵖ⁻⁺]+/.exec(rest)?.[0] ??
       /^[₀₁₂₃₄₅₆₇₈₉ₙ]+/.exec(rest)?.[0] ??
-      /^[|()+−\-±×*·÷/^_=<>≤≥≠√%]/.exec(rest)?.[0];
+      /^[|()+−\-±×*·÷/^_=<>≤≥≠√%!]/.exec(rest)?.[0];
     if (!value || (/^[A-Za-z]/.test(value) && !isIdentifier(value)))
       return null;
     // Adjacent letters are separate variables, never a word or a function name.
@@ -160,7 +160,8 @@ export function expressionToTex(source: string): string | null {
     } else if (/^[A-Za-z]$/.test(token.value)) {
       value = node(token.value, "variable", token.end);
     } else if (token.value === "√") {
-      // Written parentheses close the radicand before any following outer power.
+      // A closed argument ends the function application. Its outer postfix
+      // operators belong to the root, not to the parenthesized radicand.
       const radicand = peek() === "(" ? atom() : power();
       // Without a written group, a following product has ambiguous radical scope.
       if (radicand.kind !== "group" && startsAtom(peek()))
@@ -189,6 +190,12 @@ export function expressionToTex(source: string): string | null {
     return value;
   }
 
+  function factorial(value: Expression): Expression {
+    while (peek() === "!")
+      value = node(`${value.tex}!`, "factorial", take().end);
+    return value;
+  }
+
   function power(): Expression {
     let base = atom();
     if (peek() === "_" || (peek() && subscripts.includes(peek()![0]!))) {
@@ -208,6 +215,7 @@ export function expressionToTex(source: string): string | null {
         Math.max(base.end, sub.end),
       );
     }
+    base = factorial(base);
     if (peek() === "^" || (peek() && superscripts.includes(peek()![0]!))) {
       const exponent = take();
       let upper: Expression;
@@ -216,7 +224,9 @@ export function expressionToTex(source: string): string | null {
           peek() === "−" || peek() === "-" || peek() === "+"
             ? take().value.replace("−", "-")
             : "";
-        upper = atom();
+        // Factorial binds to the exponent atom, including a written group.
+        // To take the factorial of the power, write (2^3)! instead.
+        upper = factorial(atom());
         // An external sign applies to the whole written exponent group.
         upper = node(
           sign + (sign ? upper.tex : inside(upper)),
@@ -231,9 +241,12 @@ export function expressionToTex(source: string): string | null {
           throw new Error("Unsupported exponent");
         upper = node(text, "exponent", exponent.end);
       }
-      const groupedBase = base.kind === "group" ? `{${base.tex}}` : base.tex;
+      const groupedBase = ["group", "factorial"].includes(base.kind)
+        ? `{${base.tex}}`
+        : base.tex;
       base = node(`${groupedBase}^{${upper.tex}}`, "power", upper.end);
     }
+    base = factorial(base);
     if (peek() === "%") base = node(`${base.tex}\\%`, "percent", take().end);
     return base;
   }
@@ -419,7 +432,9 @@ export function segmentPrintText(text: string): PrintSegment[] {
     const converted = expressionToTex(tex);
     // A command or a braced script is TeX and prints as written.
     const isTex =
-      match[1] !== undefined || /\\[A-Za-z]+|\\[,;:! ]|[\^_]?\{/.test(tex);
+      match[1] !== undefined ||
+      (converted !== null && tex.includes("!")) ||
+      /\\[A-Za-z]+|\\[,;:! ]|[\^_]?\{/.test(tex);
     // Like the app, every \$…\$ span is mathematics, except prose captured
     // between two currency amounts: it has two words in a row, or a space at
     // its edge ("\$3 and a book costs \$"). Generators write money in words.

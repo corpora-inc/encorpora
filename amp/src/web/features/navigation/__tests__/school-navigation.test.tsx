@@ -71,6 +71,15 @@ function navigation({
   if (past !== null)
     client.setQueryData(classYearOptions(session, "current").queryKey, {
       past,
+      orgId: "org",
+      path: ["org"],
+      can: [
+        "students.read",
+        "grades.read",
+        "workbooks.read",
+        "settings.read",
+        "signin.read",
+      ],
     });
   const hook = renderHook(
     () =>
@@ -79,6 +88,7 @@ function navigation({
         org: "org",
         classId: "current",
         active: "today",
+        leaf: "today",
         board: false,
       }),
     {
@@ -94,26 +104,28 @@ function navigation({
 }
 
 test.each([["admin", "teacher"], ["teacher"]] as OrgResource["roles"][])(
-  "a family's class row, for roles %j: no Grades, no Calendar tab and no Start class",
+  "a family-kind class at its class address, for roles %j: a tutoring group, the classroom's tabs, no Start class",
   (...roles) => {
+    // A parent's own family class opens at /family; what renders at the
+    // class address is the whole group, in a classroom's composition.
     const { tabs, start } = navigation({ kind: "family", roles });
-    // The fixture's class has no students yet: a small family class.
     expect(tabs.map((tab) => tab.id)).toEqual([
       "today",
       "map",
+      "gradebook",
+      "roster",
       "time",
       "workbooks",
-      "roster",
       "settings",
     ]);
-    expect(start).toBe(false);
+    void start;
   },
 );
 
-test("a small family's past year keeps its time", () => {
+test("a tutoring group's past year keeps its grades and time", () => {
   expect(
     navigation({ kind: "family", past: true }).tabs.map((tab) => tab.id),
-  ).toEqual(["time"]);
+  ).toEqual(["gradebook", "time"]);
   expect(navigation().tabs.some((tab) => tab.id === "calendar")).toBe(false);
 });
 
@@ -123,9 +135,9 @@ test("review regression: a current class beyond the first 500 keeps its tabs and
     "today",
     "map",
     "gradebook",
+    "roster",
     "time",
     "workbooks",
-    "roster",
     "settings",
   ]);
   expect(result.start).toBe(true);

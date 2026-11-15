@@ -53,7 +53,7 @@ export function overviewCamera(
   };
 }
 
-/** Six readable callouts, anchored to the real neighborhood centers. */
+/** One readable callout per area, anchored to its real center. */
 export function overviewCallouts<T extends { x: number; y: number }>(
   anchors: T[],
   width: number,

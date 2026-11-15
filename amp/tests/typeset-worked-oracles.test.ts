@@ -2,10 +2,12 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { generateProblem } from "../src/math/engine";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
-function python(source: string) {
+function python(source: string, input?: unknown) {
   const result = spawnSync("python3", ["-c", source], {
+    input: input === undefined ? undefined : JSON.stringify(input),
     cwd: root,
     encoding: "utf8",
     maxBuffer: 64 * 1024 * 1024,
@@ -133,4 +135,81 @@ print(json.dumps(results))`);
   assert.ok(result.review_quadratic_structure_mutations > 0);
   assert.ok(result.review_equation_mutations > 0);
   assert.ok(result.review_combinatorics_mutations > 0);
+});
+
+test("display punctuation readings preserve exact answers and option labels", () => {
+  const ids = [
+    "linear-equation",
+    "one-step-equation",
+    "two-step-equation",
+    "negative-coefficient-equation",
+    "polynomial-addition",
+    "affine-linear-inequality",
+    "linear-system-pair",
+    "greatest-monomial-factor",
+    "integer-power",
+    "same-base-equation",
+    "log-equation",
+    "staar-nested-grouping",
+  ];
+  const problems = ids.flatMap((id) =>
+    Array.from({ length: 5 }, (_, i) => generateProblem(id, `display-${i}`)),
+  );
+  python(
+    String.raw`import copy, json, runpy, sys
+from fractions import Fraction
+sys.path.insert(0, 'scripts')
+r = runpy.run_path('scripts/independent-math-review.py')
+def canonical(value):
+    try: return Fraction(str(value))
+    except (ValueError, ZeroDivisionError): return str(value)
+recorded = []
+def check_problem(problem, record=True):
+    solved = r['solve'](problem['public'])
+    r['require'](canonical(solved) == canonical(problem['answer']), 'Mismatch: incorrect key')
+    if record: recorded.append(problem['public']['id'])
+for problem in json.load(sys.stdin):
+    original = copy.deepcopy(problem)
+    solved = r['solve'](problem['public'])
+    assert canonical(solved) == canonical(problem['answer']), problem['public']
+    reading = r['sentence_reading'](problem)
+    assert reading['answer'] == problem['answer']
+    assert reading['public']['response'] == problem['public']['response']
+    assert problem == original
+    before = len(recorded)
+    r['check_generated_case'](problem, check_problem)
+    assert len(recorded) == before + 1
+    wrong = dict(problem, answer='999999')
+    try: r['check_generated_case'](wrong, check_problem)
+    except ValueError as error: assert 'Mismatch' in str(error)
+    else: raise AssertionError('Corrupt key accepted')
+    assert len(recorded) == before + 1
+    assert problem == original
+public = {'templateId':'negative-coefficient-equation', 'prompt':'Solve 2x = 7',
+          'response':{'kind':'fraction', 'label':'x'}}
+assert r['solve'](public) == Fraction(7, 2)
+public['prompt'] = 'Solve 2x = 9'
+assert r['solve'](public) == Fraction(9, 2)
+print('60 display cases retain independent exact solving and reject wrong keys')`,
+    problems,
+  );
+});
+
+test("the sector oracle accepts singular and plural radian units", () => {
+  python(
+    String.raw`import copy, json, runpy, sys
+sys.path.insert(0, 'scripts')
+r = runpy.run_path('scripts/independent-math-review.py')
+problem = json.load(sys.stdin)
+assert '1 radian.' in problem['public']['prompt']
+for unit in ['radian', 'radians']:
+    public = copy.deepcopy(problem['public'])
+    public['prompt'] = public['prompt'].replace('1 radian.', '1 ' + unit + '.')
+    assert r['solve'](public) == problem['answer']
+public['prompt'] = public['prompt'].replace('1 radians.', '1 degree.')
+try: r['solve'](public)
+except (ValueError, AttributeError): pass
+else: raise AssertionError('Wrong angle unit accepted')`,
+    generateProblem("arc-sector-derivation", "independent-89"),
+  );
 });

@@ -125,7 +125,11 @@ try {
     // Today says who starts; Students simply has nothing to start.
     if (tab === "today")
       await page.getByRole("heading", { name: waiting, exact: true }).waitFor();
-    else await page.getByLabel("Class code").waitFor();
+    // Nobody signs in before practice starts, so no class code either.
+    else {
+      await page.getByRole("heading", { name: "Students", level: 1 }).waitFor();
+      assert.equal(await page.getByLabel("Class code").count(), 0);
+    }
     assert.equal(await page.getByRole("button", { name: /^Start/ }).count(), 0);
     assert.equal(
       await page
@@ -171,6 +175,7 @@ try {
     await page.goto(`${origin}/school/${school.id}/classes/${klass.id}/${tab}`);
     await page.reload();
     await page
+      // Today's item is titled Start practice; its button says Start.
       .getByRole("button", {
         name: tab === "today" ? "Start" : "Start practice",
         exact: true,

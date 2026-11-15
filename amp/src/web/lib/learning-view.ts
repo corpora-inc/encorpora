@@ -3,6 +3,14 @@ import { queryOptions, skipToken, useQuery } from "@tanstack/react-query";
 import { meOptions, queryClient, sessionOptions } from "./query";
 import { useLearnerStore } from "../learner-store";
 import {
+  learningIdentity,
+  type AddressedIdentity,
+} from "../features/spaces/identity";
+import {
+  useAddressedIdentity,
+  useAddressedRecordsReadable,
+} from "../features/spaces/useAddressed";
+import {
   adultLearner,
   practiceProfile,
   practicingAsAdult,
@@ -88,7 +96,39 @@ type SignedIn = Extract<
 export function chooseLearner(
   account: SignedIn | null,
   selectedId: string | null,
+  /** The learner or profile the screen's address names: when present it is
+   * the only answer, and one this account doesn't read is nobody (no
+   * fallback to the device's choice or the first child). */
+  addressed: AddressedIdentity | null = null,
 ) {
+  if (addressed) {
+    const learners = account?.learners ?? [];
+    const shared = secondParentChildren(account);
+    const solo =
+      !learners.length && !shared.length ? adultLearner(account) : null;
+    const id = addressed.id;
+    const profile =
+      addressed.kind === "profile" ? practiceProfile(account, id) : null;
+    const own = profile
+      ? profileLearner(account, id)
+      : addressed.kind === "learner" && practicingAsAdult(account, id)
+        ? adultLearner(account)
+        : null;
+    const learner =
+      own ??
+      (addressed.kind === "learner"
+        ? (learners.find((l) => l.id === id) ?? shared.find((l) => l.id === id))
+        : undefined);
+    return {
+      learners,
+      shared,
+      profile,
+      solo,
+      own,
+      learner,
+      unavailable: !learner,
+    };
+  }
   const learners = account?.learners ?? [];
   const shared = secondParentChildren(account);
   const profile = practiceProfile(account, selectedId);
@@ -104,7 +144,7 @@ export function chooseLearner(
     learners.find((l) => l.id === selectedId) ??
     shared.find((l) => l.id === selectedId) ??
     learners[0];
-  return { learners, shared, profile, solo, own, learner };
+  return { learners, shared, profile, solo, own, learner, unavailable: false };
 }
 
 /** A learning screen's data (who, the curriculum, and the chosen learner's
@@ -114,7 +154,10 @@ export function chooseLearner(
 /** The Overview's level only, before it paints: its layout (a learner's
  * first day, or their record) depends on it. Its areas hold their rows while
  * the catalog loads, so the catalog is not needed first. */
-export async function preloadOverviewLevel() {
+export async function preloadOverviewLevel(location?: {
+  pathname: string;
+  search: Record<string, unknown>;
+}) {
   const session = await queryClient
     .ensureQueryData(sessionOptions)
     .catch(() => undefined);
@@ -124,9 +167,18 @@ export async function preloadOverviewLevel() {
     .catch(() => undefined);
   const account =
     me?.signedIn && me.account.id === session.accountId ? me : null;
+  // The address being loaded names its learner; a load never changes this
+  // device's choice.
   const { learner } = chooseLearner(
     account as SignedIn | null,
     useLearnerStore.getState().learnerId,
+    location
+      ? learningIdentity(
+          location.pathname,
+          location.search,
+          account?.adultPractice?.learner?.id,
+        )
+      : null,
   );
   if (learner)
     await queryClient
@@ -136,7 +188,10 @@ export async function preloadOverviewLevel() {
       );
 }
 
-export async function preloadLearningView() {
+export async function preloadLearningView(location?: {
+  pathname: string;
+  search: Record<string, unknown>;
+}) {
   const quiet = <T>(promise: Promise<T>, what: string) =>
     promise.catch((error: unknown) => {
       console.error(`${what} did not preload`, error);
@@ -157,9 +212,18 @@ export async function preloadLearningView() {
   );
   const account =
     me?.signedIn && me.account.id === session.accountId ? me : null;
+  // The address being loaded names its learner; a load never changes this
+  // device's choice.
   const { learner } = chooseLearner(
     account as SignedIn | null,
     useLearnerStore.getState().learnerId,
+    location
+      ? learningIdentity(
+          location.pathname,
+          location.search,
+          account?.adultPractice?.learner?.id,
+        )
+      : null,
   );
   await Promise.all([
     catalog,
@@ -197,15 +261,21 @@ export function useLearningView({
       ? me.data
       : null;
   const selectedId = useLearnerStore((s) => s.learnerId);
-  // The adult's own (or a profile of theirs), the chosen child, a second
-  // parent's family's child (read-only), else the first child, as practice
-  // (LegacyApp) already takes it, so every screen and the drawer agree.
-  const { learners, shared, profile, solo, own, learner } = chooseLearner(
-    account,
-    selectedId,
-  );
+  // The displayed screen's address names whose it is; otherwise the adult's
+  // own (or a profile of theirs), the chosen child, a second parent's
+  // family's child (read-only), else the first child, as practice
+  // (LegacyApp) takes it, so every screen and the drawer agree.
+  const addressed = useAddressedIdentity();
+  // A family's child's records only where that family shows them (CP-5 #6).
+  const readable = useAddressedRecordsReadable();
+  const { learners, shared, profile, solo, own, learner, unavailable } =
+    chooseLearner(account, selectedId, addressed);
   const viewOnly = !own && !!secondParentChild(account, learner?.id);
   useEffect(() => {
+    // A named screen never moves the device's choice from here: the shell
+    // adopts it once the screen shows (AppShell), and a named learner who is
+    // gone is nobody, never another.
+    if (addressed) return;
     if (solo && own === solo && selectedId !== solo.id)
       useLearnerStore.getState().select(solo.id);
     if (own) return;
@@ -214,7 +284,7 @@ export function useLearningView({
       shared.some((l) => l.id === selectedId);
     if (!chosen && learners[0])
       useLearnerStore.getState().select(learners[0].id);
-  }, [account, selectedId]);
+  }, [account, selectedId, addressed?.kind, addressed?.id]);
   const loadingIdentity = session.isPending || (!!session.data && me.isPending);
   // Without records (the drawer), these observe nothing: a disabled observer
   // of the learner's level would still be its last, and unmounting it (the
@@ -227,7 +297,7 @@ export function useLearningView({
             session.data ?? { accountId: "", token: "" },
             learner?.id ?? "",
           ),
-          enabled: !!session.data && !!learner,
+          enabled: !!session.data && !!learner && readable,
         }
       : {
           queryKey: ["learning-view", "no-records", "evidence"],
@@ -241,7 +311,7 @@ export function useLearningView({
             session.data ?? { accountId: "", token: "" },
             learner?.id ?? "",
           ),
-          enabled: !!session.data && !!learner,
+          enabled: !!session.data && !!learner && readable,
         }
       : {
           queryKey: ["learning-view", "no-records", "frontier"],

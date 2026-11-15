@@ -333,12 +333,12 @@ try {
         assert.ok(!callback.includes("must-not-forward"));
         state.confirm = false;
         await page
-          .getByRole("button", { name: "I confirmed my email" })
+          .getByRole("button", { name: "I’ve confirmed it" })
           .click();
         // Who's learning: the buyer herself, or a child (consent first).
         await page.getByRole("heading", { name: "Who’s learning?" }).waitFor();
         await capture(page, `who-${entry.slug}-${width}-${theme}`);
-        await page.getByRole("link", { name: "For my child" }).click();
+        await page.getByRole("link", { name: "For a child" }).click();
         await page
           .getByRole("heading", { name: "Learning consent", exact: true })
           .waitFor();
@@ -535,7 +535,7 @@ try {
     await serve(page, state, faults);
     await page.goto(`${origin}/purchase/arkansas-efa?${campaign}`);
     await page.getByRole("heading", { name: "Who’s learning?" }).waitFor();
-    await page.getByRole("link", { name: "For my child" }).click();
+    await page.getByRole("link", { name: "For a child" }).click();
     await page
       .getByRole("heading", { name: "Learning consent", exact: true })
       .waitFor();

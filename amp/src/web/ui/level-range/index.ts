@@ -6,9 +6,16 @@ export {
   LevelRangeStart,
   LevelRows,
   type LevelRangeArea,
+  plainLevel,
+  likelyInWords,
+  rangeWords,
+  type RowLink,
+  type RowLinkProps,
+  WHOLE_SCALE,
 } from "./LevelRange";
-export { LevelAxis, LevelBar } from "./LevelBar";
+export { LevelAxis, LevelBar, LevelNotStarted } from "./LevelBar";
 export { LevelPath, type PathPoint } from "./LevelPath";
+export { ACROSS_AREAS, byArea } from "./by-area";
 export {
   fitScale,
   likelyRange,

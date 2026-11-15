@@ -28,11 +28,6 @@ export function WorkbookEntry({
     <section className={styles.entry} aria-labelledby={`wb-${learner.id}`}>
       <div>
         <h4 id={`wb-${learner.id}`}>Workbooks</h4>
-        <p>
-          {learner.adult && !learner.simulation
-            ? "Printable practice chosen from your progress, with an answer key."
-            : `Printable practice chosen from ${learner.name}’s progress, with an answer key.`}
-        </p>
       </div>
       <div className={styles.links}>
         {canMakeWorkbook(learner) && (

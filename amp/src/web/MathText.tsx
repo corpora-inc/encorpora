@@ -1,6 +1,8 @@
 import katex from "katex";
 import { useContext } from "react";
 import { segments } from "../content/math-segments";
+import { trailingDisplayMath } from "../content/prompt-structure";
+import { DisplayMath } from "../content/DisplayMath";
 import { linkProse } from "../glossary/scan";
 import type { TermId } from "../glossary/types";
 import { GlossaryBlockContext, GlossaryContext } from "./ui/glossary-context";
@@ -12,13 +14,23 @@ export { segments, toTex } from "../content/math-segments";
  * runs of numbers, single-letter variables and operators that contain an
  * operation (=, +, −, ×, ÷, /, ^, …) are converted to TeX. Prose is untouched,
  * and anything KaTeX cannot parse falls back to the original text. */
-export function MathText({ text }: { text: string }) {
-  const parts = segments(text);
+export function MathText({
+  text,
+  sourceText = text,
+  displayLead = false,
+}: {
+  text: string;
+  sourceText?: string;
+  /** The text introduces a displayed formula (set by MathText itself). */
+  displayLead?: boolean;
+}) {
+  const parts = segments(text, displayLead);
   const glossary = useContext(GlossaryContext);
   const block = useContext(GlossaryBlockContext);
+  const display = trailingDisplayMath(text);
   // Inside a glossary block, prose links the block's first use of each term
   // to its card; formulas are never linked. Elsewhere, text is unchanged.
-  const index = glossary && block ? block.texts.indexOf(text) : -1;
+  const index = glossary && block ? block.texts.indexOf(sourceText) : -1;
   const linked = new Set<TermId>();
   // `run` is the segment as the server's linker read it; the first `cut`
   // characters (punctuation set with the formula before) are not shown.
@@ -41,6 +53,23 @@ export function MathText({ text }: { text: string }) {
       return <Term key={j} id={id} text={piece.text} />;
     });
   };
+  if (display)
+    return (
+      <>
+        {display.lead && (
+          <>
+            <MathText
+              text={display.lead}
+              sourceText={sourceText}
+              // In the whole sentence, a letter before the colon shares a
+              // formula run only with plain notation, never with $…$ TeX.
+              displayLead={!/^(?:\$|\\\()/.test(display.source)}
+            />{" "}
+          </>
+        )}
+        <DisplayMath tex={display.tex} source={display.source} />
+      </>
+    );
   return (
     <>
       {parts.map((segment, i) => {

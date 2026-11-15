@@ -61,13 +61,22 @@ export function ProfilePlace({ onNavigate }: { onNavigate: () => void }) {
       <span className={styles.kicker}>Practicing as</span>
       <strong className={styles.name}>{profile.label}</strong>
       <div className={styles.placeActions}>
+        {/* Practice at a level is changed where it was chosen; a saved
+            profile is adjusted in its editor. */}
         <Link
           to="/$"
-          params={{ _splat: `me/profiles/${profile.id}` }}
+          params={{
+            _splat: profile.level ? "me/level" : `me/profiles/${profile.id}`,
+          }}
+          search={
+            (profile.level
+              ? { grade: profile.level.grade, pace: profile.level.pace }
+              : {}) as never
+          }
           className={styles.placeLink}
           onClick={onNavigate}
         >
-          Adjust levels
+          {profile.level ? "Change level" : "Adjust levels"}
         </Link>
         <button
           type="button"

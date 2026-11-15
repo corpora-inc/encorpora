@@ -1,8 +1,15 @@
+import type { ReactNode } from "react";
 import { EntityLink } from "../../../nav/links";
 import { ScreenTitle } from "../../../ui/ScreenTitle";
-import { useQuery } from "@tanstack/react-query";
-import { Link, useParams } from "@tanstack/react-router";
-import { useMemo, useRef, useState, type CSSProperties } from "react";
+import { keepPreviousData, useQueries, useQuery } from "@tanstack/react-query";
+import { Link } from "@tanstack/react-router";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 import {
   timePeriods,
   type TimePeriod,
@@ -29,11 +36,23 @@ import {
   type HeatMeasure,
 } from "../practice/heat";
 import { useStaffSession } from "./api";
-import { ClassFrame } from "./ClassFrame";
+import { useClassHost, wholeClass, type ClassHost } from "./host";
 import { TimeDetail } from "./ProgressRecord";
 import { HelpUsed } from "./HelpUsed";
+import { AppError } from "../../../lib/AppError";
+import { mergeTimeCsv } from "./time-csv";
+import {
+  TIME_SPAN_DAYS,
+  boundedFrom,
+  latestFrom,
+  localDay,
+  tooLong,
+} from "./time-range";
 import {
   downloadTime,
+  fetchCsv,
+  saveCsv,
+  timeCsvPath,
   failureMessage,
   studentTimeOptions,
   timeOptions,
@@ -53,7 +72,12 @@ import {
 } from "./teacher-shared";
 import styles from "./Teacher.module.css";
 
-type Row = TimeResponse["students"][number];
+/** A row of the report: a class's student, or one of the host's own from
+ * another group (`group` names it, `page` is theirs). */
+type Row = TimeResponse["students"][number] & {
+  group?: string;
+  page?: string;
+};
 const PERIODS: { value: TimePeriod; label: string }[] = [
   { value: "week", label: "Week" },
   { value: "month", label: "4 weeks" },
@@ -104,14 +128,23 @@ function columnsOf(data: TimeResponse): {
     });
     return { columns: days, days: true };
   }
-  const weeks = data.weeks.map((week, index, all) => ({
-    from: week,
-    to: addDays(week, 6),
-    label:
-      index === 0 || week.slice(5, 7) !== all[index - 1]!.slice(5, 7)
-        ? shortDay(week)
-        : "",
-  }));
+  // A month's first week is labelled, unless the last label is too close to
+  // leave it room (a range starting days before a month turns, or a long
+  // range's narrow weeks).
+  const room = Math.max(3, Math.ceil(data.weeks.length / 12));
+  let labelled = -Infinity;
+  const weeks = data.weeks.map((week, index, all) => {
+    const shown =
+      index === 0 ||
+      (week.slice(5, 7) !== all[index - 1]!.slice(5, 7) &&
+        index - labelled >= room);
+    if (shown) labelled = index;
+    return {
+      from: week,
+      to: addDays(week, 6),
+      label: shown ? shortDay(week) : "",
+    };
+  });
   return { columns: weeks, days: false };
 }
 const isWeekend = (iso: string) =>
@@ -190,7 +223,9 @@ function Heat({
                 : before
                   ? {
                       title: `${row.first} · ${when}`,
-                      note: "Not in this class",
+                      note: row.group
+                        ? `Not in ${row.group} yet`
+                        : "Not in this class",
                     }
                   : {
                       title: `${row.first} · ${when}${!isDay && column.from === current ? ", so far" : ""}`,
@@ -252,19 +287,26 @@ function ExampleTime() {
 function DaySheet({
   place,
   period,
+  from,
   student,
   returnFocus,
   onClose,
+  record,
 }: {
   place: Place;
   period: TimePeriod;
+  /** The report's own start: the sheet reads the same days. */
+  from: string | undefined;
   student: string | undefined;
+  /** The person's own page in this host, if it has one (a family's child
+   * page): their record opens there. */
+  record?: (person: string) => string | null;
   returnFocus: string | undefined;
   onClose: () => void;
 }) {
   const session = useStaffSession();
   const time = useQuery({
-    ...studentTimeOptions(session, place, period, student ?? ""),
+    ...studentTimeOptions(session, place, period, student ?? "", from),
     enabled: !!session && !!student,
   });
   const data = student ? time.data : undefined;
@@ -295,12 +337,22 @@ function DaySheet({
       ) : (
         <div className={styles.evidence}>
           <TimeDetail time={data} who={data.student.name} />
-          <EntityLink
-            entity={{ kind: "student", id: data.student.id }}
-            className={buttonClass("quiet", "", "start")}
-          >
-            Open {data.student.first}’s record
-          </EntityLink>
+          {record?.(data.student.id) ? (
+            <Link
+              to="/$"
+              params={{ _splat: record(data.student.id)! }}
+              className={buttonClass("quiet", "", "start")}
+            >
+              Open {data.student.first}’s page
+            </Link>
+          ) : (
+            <EntityLink
+              entity={{ kind: "student", id: data.student.id }}
+              className={buttonClass("quiet", "", "start")}
+            >
+              Open {data.student.first}’s record
+            </EntityLink>
+          )}
         </div>
       )}
     </Sheet>
@@ -309,22 +361,189 @@ function DaySheet({
 
 /** Minutes per student over days or weeks, as one grid of one hue: who's working
  * and when reads at a glance, with the numbers a hover away and in the export. */
-export function TimeScreen() {
-  const place = useParams({ from: "/school/$org/classes/$class/time" });
+/** A student's name: opens their days here, or, for one of the host's own
+ * people from another group, goes to their own page, naming the group. */
+function StudentName({
+  row,
+  onOpen,
+}: {
+  row: Row;
+  onOpen: (next: { student: string }) => void;
+}) {
+  if (row.page)
+    return (
+      <Link
+        to="/$"
+        params={{ _splat: row.page.replace(/^\//, "") }}
+        className={styles.student}
+        data-student={row.id}
+        data-group={row.group}
+      >
+        <span>
+          {row.name}
+          <span className={styles.groupName}>{row.group}</span>
+        </span>
+      </Link>
+    );
+  return (
+    <button
+      type="button"
+      className={styles.student}
+      data-student={row.id}
+      onClick={() => onOpen({ student: row.id })}
+    >
+      <span>{row.name}</span>
+    </button>
+  );
+}
+
+/** Someone's time from another group didn't load: said in place, with the
+ * way to try again. The totals leave them out, and say so. */
+function TimeMissing({
+  names,
+  onRetry,
+}: {
+  names: readonly string[];
+  onRetry: () => void;
+}) {
+  const who = names.join(" and ");
+  return (
+    <div className={styles.timeMissing} role="alert" data-time-missing="">
+      <p>
+        Couldn’t load {who}’s time, so these totals leave{" "}
+        {names.length === 1 ? "it" : "theirs"} out. Check your connection, then
+        try again.
+      </p>
+      <Button variant="secondary" onClick={onRetry}>
+        Try again
+      </Button>
+    </div>
+  );
+}
+
+export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
+  // The class's own Time, or a host's (a family's own children, in its
+  // words): the same range, measure, day sheet and export.
+  const host = useClassHost(given);
+  const place = host.place;
   const session = useStaffSession();
   const [search, set, close] = useClassSearch();
   const period = timePeriods.find((entry) => entry === search.period) ?? "term";
   const measure = measureOf(search.chart);
-  const time = useQuery(timeOptions(session, place, period));
-  const family =
-    useQuery({
-      ...orgOptions(currentSession(), place.org),
-      refetchOnMount: false,
-    }).data?.kind === "family";
+  const first = useQuery(timeOptions(session, place, period));
+  // A term longer than Time reads at once: its latest stretch, said so
+  // beside its dates; never a failed read with nothing to try.
+  const long = tooLong(first.error);
+  const latest = useQuery({
+    ...timeOptions(session, place, period, latestFrom(localDay())),
+    enabled: !!session && long,
+  });
+  const time = long ? latest : first;
+  const unreadable =
+    tooLong(time.error) ||
+    (time.error instanceof AppError &&
+      time.error.code === "invalid_time_range");
+  // A host's people only, and their totals recomputed from them: never a
+  // class total with someone else's minutes in it.
+  const family = !!given && given.words.learner !== "student";
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
-  const data = time.data;
+  const raw = time.data;
+  // The host's own people in another group, read for exactly this class's
+  // dates (its first day and its end, its calendar), so they sum with it.
+  const others = host.others ?? [];
+  const from = raw ? boundedFrom(raw.range.from, raw.range.to) : "";
+  const otherTimes = useQueries({
+    queries: others.map((other) => {
+      const read = other.time(period, from);
+      return {
+        ...read,
+        enabled: read.enabled && !!from,
+        placeholderData: keepPreviousData,
+      };
+    }),
+  });
+  const otherRows: Row[] = others.flatMap((other, index) => {
+    const read = otherTimes[index]?.data;
+    return read && read.range.from === from
+      ? [
+          {
+            id: other.id,
+            name: other.name,
+            first: other.name,
+            minutes: read.minutes,
+            problems: read.problems,
+            days: read.days,
+            // Hatched before they joined the group, as the class's own.
+            ...(read.joined && read.joined > from ? { from: read.joined } : {}),
+            group: read.group,
+            page: other.page,
+          },
+        ]
+      : [];
+  });
+  // A read that failed: said in place, with Try again, and left out of the
+  // totals in so many words; never a zero.
+  const failedOthers = others.filter(
+    (_, index) => otherTimes[index]?.isError && !otherTimes[index]?.data,
+  );
+  const othersPending = others.some(
+    (_, index) =>
+      !!from && otherTimes[index]?.isPending && !otherTimes[index]?.isError,
+  );
+  const data = useMemo(
+    () =>
+      raw
+        ? {
+            ...raw,
+            students: [
+              ...(host.keep
+                ? raw.students.filter((row) => host.keep!(row.id))
+                : raw.students),
+              ...otherRows,
+            ] as Row[],
+          }
+        : raw,
+    // otherRows is rebuilt from these reads each render.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [raw, host.keep, JSON.stringify(otherRows)],
+  );
+  // What reads the whole class (where its time went, help used) and its
+  // export: only where this page shows the whole class.
+  const whole = wholeClass(
+    host,
+    (data?.students.length ?? 0) - otherRows.length,
+    raw?.students.length ?? 0,
+  );
+  const failedKey = failedOthers.map((other) => other.id).join(",");
+  useEffect(() => {
+    for (const [index, other] of others.entries())
+      if (otherTimes[index]?.isError && !otherTimes[index]?.data)
+        console.error(
+          `${other.name}’s time didn’t load`,
+          otherTimes[index]?.error,
+        );
+    // Logged once each time the set of failures changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [failedKey]);
+  /** The class's export, with each of the host's own people elsewhere, as
+   * one file; any part failing saves nothing. */
+  const exportTime = async () => {
+    const [own, ...theirs] = await Promise.all([
+      fetchCsv(session, timeCsvPath(place, period, from)),
+      ...others.map((other) => fetchCsv(session, other.csv(period, from))),
+    ]);
+    if (theirs.length === 0) return saveCsv(own!.name, own!.text);
+    return saveCsv(
+      own!.name,
+      mergeTimeCsv(
+        own!.text,
+        raw?.class.name ?? "",
+        theirs.map((file) => file.text),
+      ),
+    );
+  };
   const student =
     typeof search.student === "string" &&
     data?.students.some((row) => row.id === search.student)
@@ -373,16 +592,7 @@ export function TimeScreen() {
         header: family ? "Child" : "Student",
         width: 160,
         compare: (a, b) => a.name.localeCompare(b.name, "en"),
-        cell: (row) => (
-          <button
-            type="button"
-            className={styles.student}
-            data-student={row.id}
-            onClick={() => set({ student: row.id })}
-          >
-            <span>{row.name}</span>
-          </button>
-        ),
+        cell: (row) => <StudentName row={row} onOpen={set} />,
       },
       {
         id: "minutes",
@@ -440,14 +650,18 @@ export function TimeScreen() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [data, family, measure, midpoint],
   );
-  const totalMinutes = (data?.students ?? []).reduce(
-    (sum, row) => sum + row.minutes,
-    0,
+  // The days summed, then rounded once: class and other groups alike.
+  const totalMinutes = Math.round(
+    (data?.students ?? []).reduce(
+      (sum, row) => sum + row.days.reduce((days, day) => days + day.minutes, 0),
+      0,
+    ),
   );
   const working = (data?.students ?? []).filter((row) => row.minutes > 0);
+  const allMinutes = totalMinutes;
   const facts = data && (
     <StatRow>
-      <StatTile value={number(totalMinutes)} label="active minutes" />
+      <StatTile value={number(allMinutes)} label="active minutes" />
       <StatTile
         value={`${working.length} of ${data.students.length}`}
         label={
@@ -461,24 +675,47 @@ export function TimeScreen() {
     ...(data?.skills ?? []).map((s) => s.minutes),
   );
   return (
-    <ClassFrame
-      org={place.org}
-      classId={place.class}
+    <host.Frame
       className={data?.class.name}
-      loading={time.isPending}
+      loading={time.isPending || othersPending}
       tab="time"
     >
       {!data ? (
-        <LoadFailed
-          what="The time report"
-          onRetry={() => void time.refetch()}
-        />
+        // A range the server won't read (too long, or not a range) has a
+        // step that works instead of a Try again that can't.
+        unreadable && period !== "month" ? (
+          <EmptyState
+            title="This range is too long to show"
+            action={
+              <Button
+                variant="primary"
+                onClick={() => set({ period: "month" })}
+              >
+                Show 4 weeks
+              </Button>
+            }
+          >
+            Time shows up to {TIME_SPAN_DAYS} days at once.
+          </EmptyState>
+        ) : (
+          <LoadFailed
+            what="The time report"
+            onRetry={() => void time.refetch()}
+          />
+        )
       ) : (
         <div className={styles.gradePage} aria-busy={time.isFetching}>
           <div className={styles.gradeHead}>
             <div className={styles.gradeTitle}>
               <ScreenTitle>Time</ScreenTitle>
               <p>{dayRange(data.range.from, data.range.to)}</p>
+              {long && (
+                <p className={styles.timeLimit} data-time-limit="">
+                  The term’s latest{" "}
+                  {daysBetween(data.range.from, data.range.to)} days. Time shows
+                  up to {TIME_SPAN_DAYS} at once.
+                </p>
+              )}
             </div>
             <div className={styles.gradeControls}>
               <div className={styles.period}>
@@ -491,74 +728,93 @@ export function TimeScreen() {
                   onChange={(value) => set({ period: value })}
                 />
               </div>
-              {/* Nothing to export yet: the export holds its place unseen. */}
-              <div
-                className={styles.export}
-                style={{
-                  visibility:
-                    data.students.length === 0 ||
-                    data.students.every((row) => row.minutes === 0)
-                      ? "hidden"
-                      : undefined,
-                }}
-              >
-                <Button
-                  variant="secondary"
-                  aria-busy={busy || undefined}
-                  disabled={busy}
-                  onClick={() => {
-                    setBusy(true);
-                    downloadTime(session, place, period)
-                      .then((name) => setMessage(`Downloaded ${name}.`))
-                      .catch((failure) =>
-                        setError(
-                          failureMessage(
-                            failure,
-                            "That file didn’t download. Check your connection and try again.",
-                          ),
-                        ),
-                      )
-                      .finally(() => setBusy(false));
+              {/* Nothing to export yet: the export holds its place unseen.
+                  A host that never offers it (a shared class) has none. */}
+              {whole && (
+                <div
+                  className={styles.export}
+                  style={{
+                    visibility:
+                      data.students.length === 0 ||
+                      data.students.every((row) => row.minutes === 0)
+                        ? "hidden"
+                        : undefined,
                   }}
                 >
-                  Export
-                </Button>
-              </div>
+                  <Button
+                    variant="secondary"
+                    aria-busy={busy || undefined}
+                    disabled={busy}
+                    onClick={() => {
+                      setBusy(true);
+                      (others.length
+                        ? exportTime()
+                        : downloadTime(session, place, period, from)
+                      )
+                        .then((name) => setMessage(`Downloaded ${name}.`))
+                        .catch((failure) =>
+                          setError(
+                            failureMessage(
+                              failure,
+                              "That file didn’t download. Check your connection and try again.",
+                            ),
+                          ),
+                        )
+                        .finally(() => setBusy(false));
+                    }}
+                  >
+                    Export
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
-          {data.students.length === 0 || totalMinutes === 0 ? (
-            <div className={styles.gradeEmpty}>
-              <EmptyState
-                title={
-                  period === "week"
-                    ? "No practice time this week yet"
-                    : "No practice time yet"
-                }
-                example={<ExampleTime />}
-                action={
-                  <Link
-                    to="/$"
-                    params={{
-                      _splat: classUrl(
-                        place.org,
-                        place.class,
-                        family ? "today" : "start",
-                      ),
-                    }}
-                    className={buttonClass("primary")}
-                  >
-                    {family ? "Back to Today" : "Start class"}
-                  </Link>
-                }
-              />
-            </div>
+          {/* A read that failed is said whatever else is known: never an
+              empty "no practice" over time that didn't load. */}
+          {failedOthers.length > 0 && (
+            <TimeMissing
+              names={failedOthers.map((other) => other.name)}
+              onRetry={() => {
+                for (const [index] of others.entries())
+                  if (otherTimes[index]?.isError)
+                    void otherTimes[index]?.refetch();
+              }}
+            />
+          )}
+          {(data.students.length === 0 || allMinutes === 0) &&
+          failedOthers.length === 0 ? (
+            <>
+              <div className={styles.gradeEmpty}>
+                <EmptyState
+                  title={
+                    period === "week"
+                      ? "No practice time this week yet"
+                      : "No practice time yet"
+                  }
+                  example={<ExampleTime />}
+                  action={
+                    <Link
+                      to="/$"
+                      params={{
+                        _splat: family
+                          ? host.href("today")
+                          : classUrl(place.org, place.class, "start"),
+                      }}
+                      className={buttonClass("primary")}
+                    >
+                      {family ? "Back to Today" : "Start class"}
+                    </Link>
+                  }
+                />
+              </div>
+            </>
           ) : (
             <>
               <div className={styles.timeFacts}>
                 {perStudent ? (
                   // The spread per student is a tap away from the totals.
                   <InfoPopover
-                    title="Per student, the numbers"
+                    title={`Per ${family ? "child" : "student"}, the numbers`}
                     details={
                       <StatsLine
                         label={`${measure === "minutes" ? "Active minutes" : "Problems"} a week per ${family ? "child" : "student"}`}
@@ -572,6 +828,7 @@ export function TimeScreen() {
                   facts
                 )}
               </div>
+
               <div className={styles.timeScale}>
                 {midpoint !== null && (
                   <HeatLegend
@@ -582,6 +839,7 @@ export function TimeScreen() {
                     }
                     midpoint={isDay ? midpoint / 5 : midpoint}
                     midpointWord={measure === "minutes" ? "target" : "median"}
+                    emptyLabel={family ? "Before they joined" : undefined}
                     empty={data.students.some(
                       (row) => (row.from ?? data.range.from) > data.range.from,
                     )}
@@ -607,7 +865,7 @@ export function TimeScreen() {
               </div>
               <TipZone>
                 <DataGrid
-                  label="Active minutes by student"
+                  label={`Active minutes by ${family ? "child" : "student"}`}
                   columns={gridColumns}
                   rows={data.students}
                   rowKey={(row) => row.id}
@@ -623,7 +881,9 @@ export function TimeScreen() {
                       { replace: true },
                     )
                   }
-                  onRowActivate={(row) => set({ student: row.id })}
+                  onRowActivate={(row) =>
+                    row.page ? undefined : set({ student: row.id })
+                  }
                   rules={false}
                   cardLayout="list"
                   cardsSort={data.students.length > 6}
@@ -631,14 +891,7 @@ export function TimeScreen() {
                   card={(row) => (
                     <div className={styles.heatCard}>
                       <div className={styles.heatCardTop}>
-                        <button
-                          type="button"
-                          className={styles.student}
-                          data-student={row.id}
-                          onClick={() => set({ student: row.id })}
-                        >
-                          <span>{row.name}</span>
-                        </button>
+                        <StudentName row={row} onOpen={set} />
                         <span className={styles.heatTotal}>
                           {measure === "minutes"
                             ? `${number(row.minutes)} min`
@@ -658,9 +911,13 @@ export function TimeScreen() {
                   )}
                 />
               </TipZone>
-              {data.skills.some((skill) => skill.minutes > 0) && (
+              {whole && data.skills.some((skill) => skill.minutes > 0) && (
                 <section className={styles.timeSkills}>
-                  <h2>Where the time went</h2>
+                  <h2>
+                    {others.length
+                      ? `Where the time went in ${data.class.name}`
+                      : "Where the time went"}
+                  </h2>
                   <ul className={styles.skillBars}>
                     {data.skills
                       .filter((skill) => skill.minutes > 0)
@@ -685,7 +942,17 @@ export function TimeScreen() {
                   </ul>
                 </section>
               )}
-              <HelpUsed weeks={data.help} className={styles.timeSkills} />
+              {whole && (
+                <HelpUsed
+                  weeks={data.help}
+                  className={styles.timeSkills}
+                  title={
+                    others.length
+                      ? `Help used in ${data.class.name}`
+                      : undefined
+                  }
+                />
+              )}
             </>
           )}
         </div>
@@ -693,12 +960,14 @@ export function TimeScreen() {
       <DaySheet
         place={place}
         period={period}
+        from={from || undefined}
         student={student}
         returnFocus={lastOpen.current}
         onClose={() => close("student")}
+        record={host.record}
       />
       <Toast tone="status" message={message} onDismiss={() => setMessage("")} />
       <Toast message={error} onDismiss={() => setError("")} />
-    </ClassFrame>
+    </host.Frame>
   );
 }

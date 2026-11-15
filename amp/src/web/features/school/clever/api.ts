@@ -1,3 +1,4 @@
+import { requestFetch } from "../../../lib/request-transport";
 import { queryOptions } from "@tanstack/react-query";
 import { z } from "zod";
 import { AGREEMENT_VERSION } from "../../../../schools/agreement";
@@ -111,7 +112,7 @@ async function connectionCall<T>(
     );
   let response: Response;
   try {
-    response = await fetch(`/api/v1/school${path}`, {
+    response = await requestFetch(`/api/v1/school${path}`, {
       method: body === undefined ? "GET" : "POST",
       credentials: credential.onboarding ? "omit" : "same-origin",
       signal: signal
@@ -124,7 +125,7 @@ async function connectionCall<T>(
       ...(body === undefined ? {} : { body: JSON.stringify(body) }),
     });
   } catch (error) {
-    if (signal?.aborted) throw error;
+    if (signal?.aborted || error instanceof AppError) throw error;
     throw new AppError("network", "Check your connection and try again.", true);
   }
   const data: unknown = await response.json().catch(() => null);

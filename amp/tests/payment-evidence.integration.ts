@@ -1,3 +1,4 @@
+import { applyFixtureMigration } from "./helpers/fixture-migration.js";
 import { StripeBilling } from "../src/billing/stripe/service.js";
 import { StripeRepository } from "../src/billing/stripe/repository.js";
 import { registerPaymentEvidenceRoutes } from "../src/billing/evidence/routes.js";
@@ -35,7 +36,10 @@ test(
       for (const file of (await readdir(dir))
         .filter((file) => file.endsWith(".sql"))
         .sort())
-        await pool.query(await readFile(new URL(file, dir), "utf8"));
+        await applyFixtureMigration(
+          pool,
+          await readFile(new URL(file, dir), "utf8"),
+        );
       await pool.query(
         "INSERT INTO amp_learners(id,account_id,name) VALUES('child','parent','Synthetic learner')",
       );

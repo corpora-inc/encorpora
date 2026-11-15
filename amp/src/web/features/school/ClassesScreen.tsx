@@ -1,3 +1,4 @@
+import { spaceWords } from "../spaces/words";
 import { EntityLink } from "../../nav/links";
 import {
   ClassList,
@@ -57,7 +58,8 @@ import {
 import { SettingMeta } from "./classroom/SettingMeta";
 import { OrgFrame } from "./OrgFrame";
 import { YearCalendar } from "./CalendarScreen";
-import { JoinClass } from "./join/JoinClass";
+import { formatJoinCode, JoinClass } from "./join/JoinClass";
+import { ReplaceCode } from "./join/ReplaceCode";
 import { ClassExperienceSection } from "./classroom/ExperienceScreens";
 import {
   FormNote,
@@ -69,37 +71,12 @@ import {
 import { yearsOptions } from "./org/org-api";
 import { classPath, orgPath } from "./paths";
 import { SmallClassGrades } from "./classes/SmallClassGrades";
-import {
-  AccessLine,
-  AccessSheets,
-  practiceClosed,
-  useClassAccess,
-} from "./pilots/ClassAccess";
+import { AccessLine, AccessSheets, useClassAccess } from "./pilots/ClassAccess";
 import { SMALL_CLASS } from "../navigation/shell-frame";
 import { meOptions } from "../../lib/query";
 import styles from "./School.module.css";
+import { COURSE_OPTIONS, courseLabel } from "./courses";
 
-const COURSE_OPTIONS: readonly (readonly [string, string])[] = [
-  ["", "Each student’s own grade"],
-  ["K", "Kindergarten"],
-  ...Array.from(
-    { length: 8 },
-    (_, index) => [String(index + 1), `Grade ${index + 1}`] as const,
-  ),
-  ["algebra-1", "Algebra 1"],
-  ["geometry", "Geometry"],
-  ["algebra-2", "Algebra 2"],
-  ["precalculus", "Precalculus"],
-];
-const courseLabel = (bands: readonly string[]) =>
-  bands.length
-    ? bands
-        .map(
-          (band) =>
-            COURSE_OPTIONS.find(([value]) => value === band)?.[1] ?? band,
-        )
-        .join(", ")
-    : "Own grades";
 const GRADING: GradingKind[] = ["year", "semester", "trimester", "quarter"];
 const gradingLabel = (kind: GradingKind) =>
   kind === "year"
@@ -414,14 +391,10 @@ export function ClassesScreen() {
               </Button>
             </span>
           }
-        >
-          A roster file can bring in every class at once, or add them one at a
-          time.
-        </EmptyState>
+        />
       ) : (
         <EmptyState title="You’re not on a class yet">
-          Your school’s admin adds you to classes from the Staff screen. They’ll
-          appear here as soon as that’s done.
+          Your school’s admin adds you to classes.
         </EmptyState>
       )}
       {canAdd && (
@@ -637,7 +610,7 @@ export function ClassScreen() {
   useLoggedError(error);
   // Before practice starts and after it ends, no one signs in: no code.
   const access = useClassAccess({ org: orgId, class: classId });
-  const closed = practiceClosed(access.view);
+  const closed = access.closed;
   // Before practice starts no one needs a seat yet; while it runs, the
   // students it covers don't.
   const seatsNeeded =
@@ -717,17 +690,30 @@ export function ClassScreen() {
           }
         />
         <section className={styles.classMeta}>
-          {!closed && !access.pending && (
+          {!closed && !access.pending && klass.joinCode && (
             <JoinClass
               code={klass.joinCode}
               place={{ org: orgId, class: classId }}
-              family={family}
-              manage={
-                org?.can?.includes("signin.manage") ||
-                org?.teaches?.includes(classId)
-              }
+              words={spaceWords(family ? "family" : "classroom")}
             />
           )}
+          {/* Replacing the code is a setting, apart from the way in. */}
+          {!closed &&
+            !access.pending &&
+            klass.joinCode &&
+            (org?.can?.includes("signin.manage") ||
+              org?.teaches?.includes(classId)) && (
+              <div className={styles.replaceCode} data-class-code-setting="">
+                <p>
+                  {spaceWords(family ? "family" : "classroom").Code}{" "}
+                  <strong>{formatJoinCode(klass.joinCode)}</strong>
+                </p>
+                <ReplaceCode
+                  place={{ org: orgId, class: classId }}
+                  words={spaceWords(family ? "family" : "classroom")}
+                />
+              </div>
+            )}
           {!small && (
             <ClassGrading
               orgId={orgId}
@@ -762,11 +748,6 @@ export function ClassScreen() {
                 >
                   <span>
                     <strong>{org?.name ?? "School"} settings</strong>
-                    <span className={styles.quiet}>
-                      {small
-                        ? "License, privacy and what students see"
-                        : "School year and terms, license, privacy and what students see"}
-                    </span>
                   </span>
                   <span aria-hidden="true">›</span>
                 </Link>
@@ -820,7 +801,7 @@ export function ClassScreen() {
                 title={family ? "No children yet" : "No students yet"}
               >
                 {family
-                  ? "Add a child in Family and they appear here with their grade."
+                  ? "Add a child in Family."
                   : canAdd
                     ? "Add them one at a time, or import a file."
                     : "Students added to this class appear here."}

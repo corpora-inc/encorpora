@@ -1,3 +1,5 @@
+import { ensureFamilyIdentity } from "./identity.js";
+import { accountProfile } from "../account/profile.js";
 import { randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import { completedGrade } from "../learning/frontier.js";
@@ -211,26 +213,15 @@ export async function syncFamilyGrade(db: Database, learnerId: string) {
 
 /** The parent's own name, for their class and their line on its map. */
 async function parentName(client: Database, accountId: string) {
-  const table = await client.query(
-    "SELECT to_regclass('amp_auth_users') AS relation",
-  );
-  const raw =
-    accountId.startsWith("amp|") && table.rows[0].relation
-      ? ((
-          await client.query("SELECT name FROM amp_auth_users WHERE id=$1", [
-            accountId.slice(4),
-          ])
-        ).rows[0]?.name as string | undefined)
-      : undefined;
-  const words = (raw ?? "")
-    .replace(/[\u0000-\u001f\u007f]/g, "")
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean);
-  const given = words.length ? words[0]!.slice(0, 60) : null;
-  const family =
-    words.length > 1 ? words.slice(1).join(" ").slice(0, 100) : null;
-  return { given, family };
+  const profile = await accountProfile(client, accountId);
+  if (profile.givenName || profile.familyName)
+    return { given: profile.givenName, family: profile.familyName };
+  // Preserve the existing class-title convention for legacy full names.
+  const words = profile.displayName?.split(/\s+/) ?? [];
+  return {
+    given: words[0]?.slice(0, 60) ?? null,
+    family: words.length > 1 ? words.slice(1).join(" ").slice(0, 100) : null,
+  };
 }
 
 async function createFamily(
@@ -240,7 +231,7 @@ async function createFamily(
   converting: boolean,
 ) {
   const { given, family } = await parentName(client, accountId);
-  const orgId = randomUUID();
+  const orgId = await ensureFamilyIdentity(client, accountId);
   await client.query(
     `INSERT INTO amp_orgs(id,kind,path,name,timezone,solo,setup_pending,created_by)
      VALUES($1,'family',$2,$3,$4,true,false,$5)`,

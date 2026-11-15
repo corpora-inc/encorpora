@@ -50,7 +50,7 @@ test("email recovery stays beside its actions and announces a successful resend 
   const step = screen
     .getByRole("heading", { name: "Confirm your email" })
     .closest("section")!;
-  fireEvent.click(screen.getByRole("button", { name: "I confirmed my email" }));
+  fireEvent.click(screen.getByRole("button", { name: "I’ve confirmed it" }));
   expect((await within(step).findByRole("alert")).textContent).toContain(
     "Your email is not confirmed yet",
   );
@@ -64,7 +64,7 @@ test("email recovery stays beside its actions and announces a successful resend 
     callbackURL: "/",
   });
   // Checking again clears the stale success and gives the next useful step.
-  fireEvent.click(screen.getByRole("button", { name: "I confirmed my email" }));
+  fireEvent.click(screen.getByRole("button", { name: "I’ve confirmed it" }));
   expect((await within(step).findByRole("alert")).textContent).toContain(
     "Open the link in your email",
   );

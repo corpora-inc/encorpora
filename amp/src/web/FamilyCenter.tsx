@@ -1,3 +1,4 @@
+import { requestFetch, requestWith } from "./lib/request-transport";
 import { namedByTab as titleNamedByTab } from "./features/navigation/shell-frame";
 import screenTitle from "./ui/ScreenTitle.module.css";
 import { SatMathFocus } from "./features/practice/SatMathFocus";
@@ -11,6 +12,7 @@ import { useAccountCache, useFamilyCache } from "./lib/family-cache";
 import { YearField } from "./ui/YearField";
 import { OwnStartSetting } from "./features/me/OwnStartSetting";
 import { AccountSecurity } from "./AccountSecurity";
+import { YourName } from "./features/account/YourName";
 import { PaymentHistoryCenter } from "./PaymentHistoryCenter";
 import { FocusDialog } from "./PracticeWorkspace";
 import { licenseChannel } from "./family-access";
@@ -109,7 +111,7 @@ export function FamilyCenter({
   const paymentHistoryOpen = route.parts[2] === "records";
   const setPaymentHistoryOpen = (open: boolean) =>
     route.navigate(
-      open ? "/family/access/records" : "/family/access/purchases",
+      open ? "/account/billing/records" : "/account/billing/purchases",
     );
   const paymentTrigger = useRef<HTMLButtonElement>(null);
   const paymentWasOpen = useRef(false);
@@ -128,7 +130,7 @@ export function FamilyCenter({
   const accessTrigger = useRef<HTMLElement | null>(null);
   const purchaseChooser = route.parts[2] === "purchases";
   const setPurchaseChooser = (open: boolean) => {
-    if (open) route.navigate("/family/access/purchases");
+    if (open) route.navigate("/account/billing/purchases");
   };
   const privacy =
     section === "privacy" &&
@@ -139,7 +141,7 @@ export function FamilyCenter({
           "export" | "consent" | "delete" | "retention" | "measurement")
       : null;
   const setPrivacy = (value: typeof privacy) => {
-    if (value) route.navigate(`/family/privacy/${value}`);
+    if (value) route.navigate(`/account/privacy/${value}`);
   };
   // Family is about the family's learners; the adult's own learner is its
   // own place.
@@ -222,7 +224,7 @@ export function FamilyCenter({
     chooserWasOpen.current = purchaseChooser;
   }, [purchaseChooser]);
   function closeChooser() {
-    route.navigate("/family/access");
+    route.navigate("/account/billing");
   }
   useLayoutEffect(() => {
     if (purchaseChooser && !returnFocus)
@@ -264,7 +266,7 @@ export function FamilyCenter({
     signal?: AbortSignal,
   ): Promise<T> {
     const epoch = generation.current;
-    const response = await fetch(`/api/v1${path}`, {
+    const response = await requestFetch(`/api/v1${path}`, {
       method: body === undefined ? "GET" : "POST",
       headers: {
         authorization: `Bearer ${tokenRef.current}`,
@@ -434,10 +436,20 @@ export function FamilyCenter({
       field.name = "ticket";
       field.value = ticket;
       form.append(field);
-      document.body.append(frame, form);
-      form.submit();
-      form.remove();
-      setTimeout(() => frame.remove(), 120_000);
+      // The ticket request and the browser's streaming POST are separate
+      // sends; renewal can begin between them. Gate the actual submission.
+      await requestWith(
+        async () => {
+          document.body.append(frame, form);
+          try {
+            form.submit();
+          } finally {
+            form.remove();
+            setTimeout(() => frame.remove(), 120_000);
+          }
+        },
+        { token: tokenRef.current, method: form.method },
+      );
       setNotice(
         "Download requested. Check your browser’s downloads and keep the file private. If it is interrupted, request a fresh download.",
       );
@@ -493,7 +505,7 @@ export function FamilyCenter({
   const back = purchaseChooser
     ? { label: "Billing", go: closeChooser }
     : section === "privacy" && privacy
-      ? { label: "Privacy", go: () => route.navigate("/family/privacy") }
+      ? { label: "Privacy", go: () => route.navigate("/account/privacy") }
       : null;
   const addChild = () =>
     consentActive ? setAdding(true) : route.navigate("/start/parent");
@@ -745,6 +757,8 @@ export function FamilyCenter({
             </h1>
           </div>
         )}
+        {/* Every adult's own name, as others see it (R9, R12). */}
+        {section === "security" && <YourName />}
         {section === "security" && accountsEnabled && <AccountSecurity />}
         {/* With AMP accounts, the row follows Sign-in's settings once they
             load (AccountSecurity), so nothing below them moves. */}
@@ -962,10 +976,6 @@ export function FamilyCenter({
                       }}
                       title="Is this you?"
                     >
-                      <p className="family-sheet-text">
-                        Your own practice is yours, at your own level, beside
-                        the family’s learners.
-                      </p>
                       <div className="family-sheet-actions">
                         <Button
                           variant="primary"
@@ -1101,8 +1111,7 @@ export function FamilyCenter({
               <section className={`family-section ${pages.section}`}>
                 <p className={pages.prose}>
                   One NDJSON file with {hasChildren ? "your learners’" : "your"}{" "}
-                  problems and answers, plans, orders and privacy activity. It
-                  is a data export, not a printable workbook.
+                  problems and answers, plans, orders and privacy activity.
                 </p>
                 <div className={pages.footActions}>
                   <Button
@@ -1116,10 +1125,6 @@ export function FamilyCenter({
                       : "Download your data"}
                   </Button>
                 </div>
-                <p className={pages.quietLine}>
-                  The file streams straight to your downloads, so a long history
-                  takes a little longer.
-                </p>
               </section>
             )}
             {section === "privacy" &&
@@ -1264,7 +1269,7 @@ export function FamilyCenter({
           </div>
           <div className="family-actions">
             <button disabled={busy} onClick={() => setConfirmation(null)}>
-              Keep my settings
+              Keep these settings
             </button>
             <button
               className="family-danger"

@@ -433,7 +433,12 @@ export async function registerClassWalletPayByRoutes(
                     record,
                     body.PurchaseOrderId,
                     at,
-                    await fundedTermStart(client, record.learnerId, at),
+                    await fundedTermStart(
+                      client,
+                      record.learnerId,
+                      at,
+                      record.id,
+                    ),
                   )
                 : null;
             await client.query(

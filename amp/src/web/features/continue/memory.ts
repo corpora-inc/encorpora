@@ -1,3 +1,4 @@
+import { appReturn } from "../spaces/returns";
 /* "Continue with AMP" for one learner leaves for Stripe and comes back. This
    tab remembers who it was for and the screen it was opened from, so the
    existing checkout returns (`/start/purchase` and `/purchase/annual`) can
@@ -18,11 +19,12 @@ export type Continuation = {
   savedAt: number;
 };
 
-/** Only an app path on this origin: never a full URL or a protocol-relative one. */
+/** Where "Continue with AMP" comes back to, by the one return contract
+ * (`appReturn`, docs/architecture/spaces.md "Returns"): a place this adult
+ * works in, never a step, a link with its own authority or a fragment; else
+ * the root, which settles the purchase and opens their place. */
 export function safeReturnPath(path: string | null | undefined) {
-  if (!path || !path.startsWith("/") || path.startsWith("//")) return "/";
-  if (/^\/(start|continue|sign-in|sign-up)(\/|$|\?)/.test(path)) return "/";
-  return path.slice(0, 500);
+  return appReturn(path) ?? "/";
 }
 
 export function rememberContinuation(

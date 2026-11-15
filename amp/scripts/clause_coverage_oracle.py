@@ -568,7 +568,7 @@ def circle_answer(public):
         scale, s2 = r2 / r1, s1 * r2 / r1
         require(s1 / r1 == s2 / r2, 'Arc/radius proportionality failed')
         return slots(public, [number_equal(scale), equal('\\theta'), number_equal(s2), equal('s_2/r_2=(ks_1)/(kr_1)=s_1/r_1'), equal('the angle'), equal('radians')])
-    radius, theta = re.search(r'check it for radius (\d+) and angle (.*?)(?: radians)?\.$', text).groups()
+    radius, theta = re.search(r'check it for radius (\d+) and angle (.*?)(?: radians?)?\.$', text).groups()
     radius = F(radius)
     degree = 'measured in degrees' in text
     predicates = [equal('\\theta/360' if degree else '\\theta/(2\\pi)'), equal('\\pi r^2'), equal('(\\theta/360)\\pi r^2' if degree else '\\tfrac12 r^2\\theta')]

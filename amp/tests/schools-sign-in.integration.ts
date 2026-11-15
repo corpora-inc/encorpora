@@ -135,7 +135,8 @@ test(
           const response = await join("lookup", { code: shown });
           assert.equal(response.statusCode, 200);
           const body = response.json();
-          assert.deepEqual(body.class, { name: "Period 1" });
+          // The join page names the place and its kind (09431e23b).
+          assert.deepEqual(body.class, { name: "Period 1", kind: "class" });
           assert.deepEqual(
             body.students.map((s: { name: string }) => s.name),
             ["Amara O.", "Theo the Second"],

@@ -1,0 +1,53 @@
+/* The map's key (AreaKey.tsx): All, then the five areas, each a 44 px chip
+   that shows only its area. Chosen, a chip fills (`data-selected`: the
+   router also marks the matching link `aria-current="page"`); weight, border and size
+   stay, so nothing moves. Labels stay on one line; chips wrap whole. */
+/* A nav, so the app's legacy `nav` rules (style.css) are reset here. */
+.key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  border-bottom: 0;
+}
+.key .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  justify-content: center;
+  min-width: var(--target-min);
+  min-height: var(--target-size, 44px);
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-on-surface);
+  font-size: var(--text-label);
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.key .chip:hover {
+  background: var(--color-surface-hover);
+}
+.key .chip:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.key .chip[data-selected] {
+  border-color: var(--color-selected);
+  background: var(--color-selected);
+  color: var(--color-on-selected);
+}
+.key .chip[data-selected]:hover {
+  background: var(--color-selected-hover, var(--color-selected));
+}
+.dot {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--area);
+  box-shadow: 0 0 0 1px var(--color-surface-raised);
+}

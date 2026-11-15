@@ -89,3 +89,88 @@ test("sign-in cards print eight to a page, each with its own link", () => {
   assert.equal(html.match(/<section class="sheet">/g)?.length, 2);
   assert.equal(html.match(/<svg class="qr"/g)?.length, 9);
 });
+
+test("family report composers use family and parent names, escape them, and preserve school wording", () => {
+  const student = {
+    id: "a",
+    name: "Child",
+    identifier: null,
+    final: "A",
+    minutes: 37,
+    objectivesGained: 2,
+    levelFrom: 3,
+    levelTo: 4,
+  };
+  const term = {
+    id: "t",
+    name: "Year",
+    startsOn: "2026-07-01",
+    endsOn: "2027-06-30",
+    state: "open" as const,
+  };
+  for (const parentName of [null, "Ada <b>River</b>"]) {
+    const family = { displayName: "River family", parentName };
+    const { html } = reportCardsHtml({
+      paper: "Letter",
+      today: "2026-11-10",
+      students: [student],
+      data: {
+        family,
+        school: "Generated storage family",
+        class: { name: "Generated class", course: "Generated course" },
+        term,
+        teachers: ["Someone else"],
+        students: [student],
+      },
+    });
+    assert.match(html, /River family/);
+    assert.match(
+      html,
+      parentName
+        ? /decided by Ada &lt;b&gt;River&lt;\/b&gt;/
+        : /decided by the parent/,
+    );
+    assert.doesNotMatch(html, /Generated|Teacher|<b>/);
+    const progress = progressReportHtml({
+      paper: "A4",
+      name: "Child",
+      first: "Child",
+      subtitle: "River family",
+      facts: [],
+      today: "2026-11-10",
+      record,
+      grades: [
+        {
+          classId: "c",
+          className: "Generated class",
+          family,
+          termId: "t",
+          termName: "Year",
+          state: "open",
+          final: "A",
+          suggestion: { letters: "A" } as any,
+        },
+      ],
+    }).html;
+    assert.match(
+      progress,
+      parentName
+        ? /decided by Ada &lt;b&gt;River&lt;\/b&gt;/
+        : /decided by the parent/,
+    );
+    assert.doesNotMatch(progress, /Generated|teacher|<b>/);
+  }
+  const school = reportCardsHtml({
+    paper: "Letter",
+    today: "2026-11-10",
+    students: [student],
+    data: {
+      school: "Oak",
+      class: { name: "Math", course: "Math" },
+      term,
+      teachers: ["Teacher Name"],
+      students: [student],
+    },
+  }).html;
+  assert.match(school, /decided by the teacher/);
+});

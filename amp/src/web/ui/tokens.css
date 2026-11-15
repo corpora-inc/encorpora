@@ -543,6 +543,12 @@
   --radius-control: 12px;
   --radius-panel: 20px;
   --target-size: 48px;
+  /* The least a control may be to touch, both ways (a dense row, a name). */
+  --target-min: 44px;
+  /* A record's date column: its width, and the room after it before the
+     row's content (recent work, skills earned). */
+  --record-date-width: 56px;
+  --record-date-gap: var(--space-3);
   --motion-fast: 150ms;
   /* Figure timelines: one step, a traced stroke, the pause between steps. */
   --motion-step: 900ms;
@@ -577,6 +583,11 @@
   --width-rail: 232px;
   --width-content-wide: 1120px;
   --width-sheet: 500px;
+  /* One reading column for a lesson (lesson-reading.css): its prose,
+     headings, example, steps and figures, in characters of the body size.
+     A "0" is wider than an average letter: 62ch holds about 70 letters of
+     running text, and makes the lesson's sheet about 760 px. */
+  --measure-reading: 62ch;
   /* One field style for every input-like control: a text field, a picker's
      trigger, a stepper, a code field (docs/design/ia.md, element finish). */
   --field-height: 48px;
@@ -603,7 +614,8 @@
 }
 
 /* The curriculum atlas is an immersive dark scene in either application theme.
-   Text/surface roles stay paired; subject hues encode neighborhoods, not results. */
+   Text/surface roles stay paired; subject hues encode the five areas of math
+   (curriculum/areas.ts, in order), not results. */
 :root {
   --atlas-surface: #071019;
   --atlas-on-surface: #edf4fa;
@@ -615,10 +627,9 @@
   --atlas-on-accent: #08231e;
   --atlas-area-0: #62a9ff;
   --atlas-area-1: #ac8bfa;
-  --atlas-area-2: #55e3ed;
-  --atlas-area-3: #f1c779;
+  --atlas-area-2: #f1c779;
+  --atlas-area-3: #ee94bb;
   --atlas-area-4: #73ddba;
-  --atlas-area-5: #ee94bb;
   --atlas-light: #ffffff;
   --atlas-transparent: #ffffff00;
   --atlas-halo-core: #ffffffd9;
@@ -644,5 +655,4 @@
   --atlas-scene-area-2: var(--atlas-area-2);
   --atlas-scene-area-3: var(--atlas-area-3);
   --atlas-scene-area-4: var(--atlas-area-4);
-  --atlas-scene-area-5: var(--atlas-area-5);
 }

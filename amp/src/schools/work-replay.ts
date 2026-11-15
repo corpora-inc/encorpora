@@ -240,6 +240,45 @@ export async function readWorkReplay(
       })
     | undefined;
   if (!found) return null;
+  return replayFrom(pool, found, found.personId, found.first, skill);
+}
+
+/** One of an adult's own answers (`/me`), replayed as they saw it; null
+ * when the attempt isn't their own learner's. The caller names the account's
+ * own learner. */
+export async function readOwnWorkReplay(
+  pool: Pool,
+  learnerId: string,
+  attemptId: string,
+  skill?: string,
+): Promise<WorkReplayResponse | null> {
+  const found = (
+    await pool.query(
+      `SELECT l.name AS first,a.learner_id AS "learnerId",
+         a.id AS "attemptId",a.outcome,i.content,a.evidence_sequence::text AS sequence,
+         ((a.outcome->>'createdAt')::timestamptz AT TIME ZONE COALESCE(l.timezone,'America/New_York'))::date::text AS day
+       FROM amp_learners l
+       JOIN amp_attempts a ON a.learner_id=l.id AND a.id=$2
+       JOIN amp_instances i ON i.id=a.problem_id AND i.learner_id=a.learner_id
+       WHERE l.id=$1 AND l.deleted_at IS NULL`,
+      [learnerId, attemptId],
+    )
+  ).rows[0] as
+    | (StoredWork & { first: string; learnerId: string; sequence: string })
+    | undefined;
+  if (!found) return null;
+  return replayFrom(pool, found, learnerId, found.first, skill);
+}
+
+/** The replay of a found answer: the problem as served, its neighbours, the
+ * time it took and the other tries at the same problem. */
+async function replayFrom(
+  pool: Pool,
+  found: StoredWork & { learnerId: string; sequence: string },
+  id: string,
+  first: string,
+  skill?: string,
+): Promise<WorkReplayResponse> {
   const replay = replayOf(found);
   const seed = replay.origin?.seed ?? null;
   const [neighbours, before, tries] = await Promise.all([
@@ -271,7 +310,7 @@ export async function readWorkReplay(
       : Promise.resolve({ rows: [] }),
   ]);
   return {
-    student: { id: found.personId, first: found.first },
+    student: { id, first },
     ...replay,
     seconds: secondsSince(replay.item.at, before.rows[0]?.at ?? null),
     tries:

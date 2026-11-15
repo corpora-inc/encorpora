@@ -71,12 +71,13 @@ const levelsRow: Row<"levels"> = {
   title: "Show levels to students",
   options: [
     { value: "hidden", label: "Hidden" },
-    { value: "choice", label: "Choice" },
     { value: "shown", label: "Shown" },
   ],
+  // "Choice" was a student's own device toggle; it is gone, and a stored
+  // choice reads as shown (schools/student-me.ts `studentLevels`).
   describe: {
     hidden: "Students never see a grade level.",
-    choice: "Each student decides whether to see theirs.",
+    choice: "Every student sees their own working level.",
     shown: "Every student sees their own working level.",
   },
 };
@@ -199,8 +200,12 @@ function SettingRow<K extends ExperienceKey>({
                 }
               : undefined
           }
-        >
-          {experience.canLock && !lockedAbove && (
+        />
+        {/* The lock on a line of its own, always there for whoever can
+            lock: beside "Use …" it would not fit the action column, and a
+            label that wraps or a row that grows moves the controls. */}
+        {experience.canLock && !lockedAbove && (
+          <div className={styles.lockRow}>
             <Button
               variant="quiet"
               className={styles.lock}
@@ -213,8 +218,8 @@ function SettingRow<K extends ExperienceKey>({
                 ? "Locked for everyone below"
                 : "Lock for everyone below"}
             </Button>
-          )}
-        </SettingMeta>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -317,16 +322,15 @@ export function ExperienceSettings({
       aria-labelledby="setting-teacher-line"
     >
       <div className={styles.rowText}>
-        <h2 id="setting-teacher-line">Show me in my class</h2>
+        <h2 id="setting-teacher-line">Show me in this class</h2>
         <p>
-          Shows your own practice as a line on this class’s map and board,
-          marked Teacher and never ranked, so students can pass you. Grades and
-          the roster never count it.
+          Your practice shows on the map and board, marked Teacher and never
+          ranked. Grades never count it.
         </p>
       </div>
       <div className={styles.rowControl}>
         <Segmented
-          label="Show me in my class"
+          label="Show me in this class"
           options={[
             { value: "shown", label: "Shown" },
             { value: "hidden", label: "Hidden" },

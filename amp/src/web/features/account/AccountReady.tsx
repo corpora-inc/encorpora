@@ -94,7 +94,7 @@ export function AccountReady() {
               <Link
                 className={buttonClass("quiet")}
                 to="/$"
-                params={{ _splat: "family/security" }}
+                params={{ _splat: "account/security" }}
               >
                 Account settings
               </Link>

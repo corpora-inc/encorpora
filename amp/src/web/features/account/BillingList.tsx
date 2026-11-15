@@ -71,8 +71,7 @@ export function BillingList({
     <>
       {!shown.length && (
         <p className={styles.lede}>
-          Nothing is billed yet. A plan shows here once you continue with AMP
-          for a learner.
+          Nothing is billed yet.
         </p>
       )}
       <ul className={styles.list} aria-label="What each learner holds">

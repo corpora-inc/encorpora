@@ -1,6 +1,12 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { segments, toTex, withSeparators } from "../src/web/MathText";
+import { createRequire } from "node:module";
+import React from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { MathText, segments, toTex, withSeparators } from "../src/web/MathText";
+const { JSDOM } = createRequire(import.meta.url)("jsdom") as {
+  JSDOM: new (html: string) => { window: { document: Document } };
+};
 
 // A missing number is part of its equation: one formula, typeset spacing.
 test("a blank and its equation typeset as one formula", () => {
@@ -105,7 +111,6 @@ test("a variable introducing a grouped formula stays typeset", () => {
   );
 });
 
-
 test("explicit numeric coordinate lists wrap between pairs without changing TeX formulas", () => {
   for (const pairs of [
     ["(0,5)", "(1,11)", "(2,37)", "(3,107)"],
@@ -113,10 +118,80 @@ test("explicit numeric coordinate lists wrap between pairs without changing TeX 
   ]) {
     const formula = pairs.join(", ");
     const result = segments(`Observed: $${formula}$.`);
-    assert.deepEqual(result.filter((s) => s.math).map((s) => s.text), pairs);
-    assert.equal(result.map((s) => s.plain ?? s.text).join(""), `Observed: ${formula}.`);
+    assert.deepEqual(
+      result.filter((s) => s.math).map((s) => s.text),
+      pairs,
+    );
+    assert.equal(
+      result.map((s) => s.plain ?? s.text).join(""),
+      `Observed: ${formula}.`,
+    );
   }
-  for (const formula of ["(x, y), (a, b)", "(1,2), x+3", "1,000", "f(x,y)=x+y", "(1,2); (3,4)"]) {
-    assert.deepEqual(segments(`$${formula}$`), [{ text: formula, math: true, plain: formula }]);
+  for (const formula of [
+    "(x, y), (a, b)",
+    "(1,2), x+3",
+    "1,000",
+    "f(x,y)=x+y",
+    "(1,2); (3,4)",
+  ]) {
+    assert.deepEqual(segments(`$${formula}$`), [
+      { text: formula, math: true, plain: formula },
+    ]);
   }
+});
+
+test("sentence-ending numbers stay separate from the next formula", () => {
+  for (const [text, formulas] of [
+    ["The loose counters are 8. 10 + 8 = 18.", ["10 + 8 = 18"]],
+    ["The total is 18.\n10 + 8 = 18.", ["10 + 8 = 18"]],
+    ["2 + 6 = 8. 10 + 8 = 18.", ["2 + 6 = 8", "10 + 8 = 18"]],
+    ["The value is 8.10. 10.5 + 8.1 = 18.6.", ["10.5 + 8.1 = 18.6"]],
+    ["The value is 8. x + 8 = 18.", ["x + 8 = 18"]],
+  ] as const) {
+    const parts = segments(text);
+    assert.deepEqual(
+      parts.filter((s) => s.math).map((s) => s.plain),
+      formulas,
+    );
+    assert.equal(parts.map((s) => s.plain ?? s.text).join(""), text);
+  }
+  assert.deepEqual(segments("$8.10 + 8 = 16.10$"), [
+    { math: true, text: "8.10 + 8 = 16.10", plain: "8.10 + 8 = 16.10" },
+  ]);
+});
+
+test("a written blank (__) is the answer box, including before punctuation", () => {
+  const text =
+    "Use the regions to find 8 × 7. 8 × 5 = __, 8 × 2 = __, so 8 × 7 = __ + __ = __.";
+  const math = segments(text).filter((s) => s.math);
+  assert.deepEqual(
+    math.map((s) => s.plain),
+    ["8 × 7", "8 × 5 = __", "8 × 2 = __", "8 × 7 = __ + __ = __"],
+  );
+  const html = renderToStaticMarkup(React.createElement(MathText, { text }));
+  // KaTeX accepted every formula: no source TeX is shown as text.
+  const body = new JSDOM(html).window.document.body;
+  body.querySelectorAll(".katex-mathml").forEach((node) => node.remove());
+  assert.doesNotMatch(body.textContent!, /\\|__/);
+  assert.equal(html.match(/<menclose/g)?.length, 5);
+  assert.equal(toTex("4x = ____"), "4x = \\boxed{\\phantom{0}}");
+  // A blank standing alone in a sentence is written prose, as in print.
+  for (const sentence of [
+    "Complete: the slope is ___, and the intercept is ___.",
+    "there are __ times as many __ as __.",
+    "Each y is the x above it ___ ___': 'increased by 24'",
+  ]) {
+    assert.ok(
+      segments(sentence).every((s) => !s.math || !s.text.includes("_")),
+      sentence,
+    );
+    const body = new JSDOM(
+      renderToStaticMarkup(React.createElement(MathText, { text: sentence })),
+    ).window.document.body;
+    body.querySelectorAll(".katex-mathml").forEach((node) => node.remove());
+    assert.doesNotMatch(body.textContent!, /\\/, sentence);
+  }
+  // A subscript or an identifier with underscores is unchanged.
+  assert.equal(toTex("x_1"), "x_1");
+  assert.equal(toTex("log_2 8"), "\\log_{2} 8");
 });

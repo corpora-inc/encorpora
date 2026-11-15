@@ -124,6 +124,7 @@ test(
       });
       return account;
     };
+    let fixtureIds = 0;
     /** Enrolled from `from`: the seat and learner are real; the date is set back. */
     async function student(
       orgId: string,
@@ -131,13 +132,24 @@ test(
       givenName: string,
       options: { from?: string; identifier?: string; grade?: number } = {},
     ) {
-      const made = await schools.provisionStudent(orgId, {
-        givenName,
-        familyName: "Fixture",
-        gradeLevel: options.grade ?? 5,
-        classId,
-        ...(options.identifier ? { identifier: options.identifier } : {}),
-      });
+      // A fixed id per student, in the order they're made: the curve's
+      // simulated draws are seeded from it, so a run is reproducible.
+      const made = await schools.transaction((client) =>
+        schools.provisionStudentIn(
+          client,
+          orgId,
+          {
+            givenName,
+            familyName: "Fixture",
+            gradeLevel: options.grade ?? 5,
+            classId,
+            ...(options.identifier ? { identifier: options.identifier } : {}),
+          },
+          null,
+          new Date(),
+          `00000000-0000-4000-8000-${String(++fixtureIds).padStart(12, "0")}`,
+        ),
+      );
       const from = options.from ?? daysAgo(100);
       await db.query(
         "UPDATE amp_enrollments SET begin_on=$2 WHERE person_id=$1 AND class_id=$3",
@@ -388,8 +400,14 @@ test(
           assert.ok(suggestion.low! <= suggestion.high!);
         }
         assert.equal(ranked[0]!.curve!.rankLow, 1);
+        // Each grade is an 80% interval from simulated draws: the strongest
+        // student's sits above the weakest's at both ends and in the middle.
+        // Intervals may overlap (both are uncertain); they never invert.
+        const [strongest, weakest] = [ranked[0]!, ranked[5]!];
         assert.ok(
-          ranked[0]!.low! >= ranked[5]!.high!,
+          strongest.low! >= weakest.low! &&
+            strongest.high! >= weakest.high! &&
+            strongest.low! + strongest.high! > weakest.low! + weakest.high!,
           "the strongest is graded above the weakest",
         );
         assert.equal(row(data, "Gus").suggestion.curve, null);

@@ -168,6 +168,8 @@ const vite = await createServer({
   // Found late, inside the worker, it would otherwise reload the page mid-print.
   optimizeDeps: { include: ["pdf-lib"] },
   server: {
+    // Other work edits the source while a check runs: no live reloads mid-check.
+    hmr: false,
     host: "127.0.0.1",
     port: webPort,
     strictPort: true,
@@ -245,6 +247,12 @@ for (const [given, family] of NAMES)
 async function worked(student: Student, problems: number, gained: number) {
   const day = (back: number) =>
     new Date(Date.now() - back * 86_400_000).toISOString().slice(0, 10);
+  // A term board's growth starts when the student joined (termStartSql in
+  // standings.ts): this term's work was done as a student here.
+  await db.query(
+    "UPDATE amp_org_roles SET begin_on=LEAST(begin_on,$2::date) WHERE person_id=$1 AND role='student'",
+    [student.personId, day(30)],
+  );
   const level = (value: number) =>
     JSON.stringify({
       overall: { level: value, sd: 0.3, answered: 30, independent: 12 },
@@ -444,6 +452,15 @@ const settled = async (page: Page) => {
 };
 const heading = (page: Page, name: string | RegExp) =>
   page.getByRole("heading", { name, level: 1 });
+/** A school's student experience is a section of its Settings
+ * (`/experience` redirects to `settings#student-experience`). */
+const experienceReady = async (page: Page) => {
+  await page.waitForURL(/\/settings#student-experience$/);
+  await heading(page, "Settings").waitFor();
+  await page
+    .getByRole("heading", { name: "Student experience", level: 2 })
+    .waitFor();
+};
 const radio = (page: Page, group: string, name: string) =>
   page.getByRole("radiogroup", { name: group }).getByRole("radio", { name });
 
@@ -567,8 +584,10 @@ async function journeys(browser: Browser, engine: string) {
     // An admin locks levels at the org; the teacher sees the lock.
     const head = await start({ account: adminAccount });
     await head.page.goto(`${origin}/school/${distOrg.id}/experience`);
-    await heading(head.page, "Student experience").waitFor();
-    await head.page.getByText("AMP’s starting point").first().waitFor();
+    await experienceReady(head.page);
+    // At AMP's own default a setting says nothing about where it comes
+    // from (SettingMeta); the controls are the ready signal.
+    await radio(head.page, "Show levels to students", "Hidden").waitFor();
     await settled(head.page);
     await resetRecord(head.page);
     const stable = "h1, h2, [role=radio]";
@@ -643,12 +662,24 @@ async function journeys(browser: Browser, engine: string) {
     await resetRecord(teacher.page);
     const teacherBefore = await boxes(teacher.page, stable);
     await radio(teacher.page, "Standings", "Class").click();
-    await teacher.page.getByText("Set by Grade 5 Math").first().waitFor();
+    // Chosen here: a quiet way back, never a "Set by" naming this class
+    // itself (SettingMeta).
+    await teacher.page
+      .locator("section[aria-labelledby='setting-standings']")
+      .getByRole("button", { name: /^Use / })
+      .waitFor();
     await settled(teacher.page);
+    // Turning standings on reveals the settings that depend on it, directly
+    // under it (ui/Reveal: the one motion, after the person's own choice).
+    // The control chosen and everything above it never move.
+    const chosenEnd = await teacher.page
+      .locator("section[aria-labelledby='setting-standings']")
+      .evaluate((row) => row.getBoundingClientRect().bottom + scrollY);
+    const above = teacherBefore.filter((box) => box.top < chosenEnd).length;
     sameBoxes(
       `${engine} choosing a setting`,
-      teacherBefore,
-      await boxes(teacher.page, stable),
+      teacherBefore.slice(0, above),
+      (await boxes(teacher.page, stable)).slice(0, above),
     );
     const write = await db.query(
       `SELECT detail FROM amp_school_events WHERE action='settings.changed' AND target_id=$1`,
@@ -724,7 +755,7 @@ async function journeys(browser: Browser, engine: string) {
     const levelCheck = async (
       label: string,
       student: Student,
-      expected: { estimated: boolean; control: boolean },
+      expected: { estimated: boolean },
     ) => {
       const viewer = await start({
         width: 1280,
@@ -747,10 +778,10 @@ async function journeys(browser: Browser, engine: string) {
           ? await viewer.page.getByTestId("level-readout").isVisible()
           : (await viewer.page.getByTestId("level-readout").count()) === 0,
       );
+      // No device toggle: a grown-up's switch or the school decides.
       check(
-        `${engine} ${label} choice control`,
-        (await viewer.page.getByText("Show grade numbers").count()) > 0 ===
-          expected.control,
+        `${engine} ${label} no device control`,
+        (await viewer.page.getByText(/grade numbers/i).count()) === 0,
       );
       await viewer.context.close();
       open.splice(open.indexOf(viewer), 1);
@@ -762,21 +793,19 @@ async function journeys(browser: Browser, engine: string) {
     });
     await levelCheck("hidden", await inClass(hiddenClass.id, "Hideo"), {
       estimated: false,
-      control: false,
     });
     await staff(adminAccount, "POST", `classes/${quiet.id}/experience`, {
       values: { levels: "choice" },
     });
+    // A stored "choice" had a device toggle behind it; with none, it shows.
     await levelCheck("choice", await inClass(quiet.id, "Chiara"), {
-      estimated: false,
-      control: true,
+      estimated: true,
     });
     await staff(adminAccount, "POST", `classes/${shownClass.id}/experience`, {
       values: { levels: "shown" },
     });
     await levelCheck("shown", await inClass(shownClass.id, "Sona"), {
       estimated: true,
-      control: false,
     });
     const both = await inClass(shownClass.id, "Bothe");
     await db.query(
@@ -784,9 +813,11 @@ async function journeys(browser: Browser, engine: string) {
        SELECT gen_random_uuid(),$1,person_id,'student',begin_on FROM amp_enrollments WHERE person_id=$2 LIMIT 1`,
       [quiet.id, both.personId],
     );
+    await staff(adminAccount, "POST", `classes/${quiet.id}/experience`, {
+      values: { levels: "hidden" },
+    });
     await levelCheck("most restrictive", both, {
       estimated: false,
-      control: true,
     });
 
     // A stack of 24 with one injected 503 still finishes.
@@ -1168,11 +1199,22 @@ async function schoolBoardSweep(
       .getByRole("listitem")
       .filter({ hasText: "Maya R." });
     assert.equal(await twins.count(), 2);
+    // Tied, they share one rank: one more than everyone above them. (Who
+    // is above depends on the sweep: a student in two classes with boards
+    // joins this one.)
+    const ranks = await student.page
+      .getByRole("list", { name: "Top of the board" })
+      .getByRole("listitem")
+      .evaluateAll((rows) =>
+        rows.map((row) => ({
+          rank: row.getAttribute("data-rank"),
+          twin: (row.textContent ?? "").includes("Maya R."),
+        })),
+      );
+    const first = ranks.findIndex((row) => row.twin);
     assert.deepEqual(
-      await twins.evaluateAll((rows) =>
-        rows.map((row) => row.getAttribute("data-rank")),
-      ),
-      ["2", "2"],
+      ranks.filter((row) => row.twin).map((row) => row.rank),
+      [String(first + 1), String(first + 1)],
     );
     assert.equal(
       await student.page.getByText("Maya R.", { exact: true }).count(),
@@ -1227,7 +1269,7 @@ async function sweep(
     const { page } = admin_;
     // The school's settings, under a district's lock.
     await page.goto(`${origin}/school/${school.id}/experience`);
-    await heading(page, "Student experience").waitFor();
+    await experienceReady(page);
     await page.getByText("Locked by Riverbend District").waitFor();
     await settled(page);
     await geometry(page, `${label} org experience`);

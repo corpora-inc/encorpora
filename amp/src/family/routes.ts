@@ -1,3 +1,19 @@
+import type { StripeBillingConfig } from "../billing/stripe/config.js";
+import {
+  familyPlacesSchema,
+  familyProjectionSchema,
+  familyChildProgressSchema,
+  familyChildTimeSchema,
+  familyTeachingSchema,
+} from "./projection-contracts.js";
+import {
+  familyProjection,
+  familyChildProgress,
+  familyChildTime,
+  familyTeaching,
+  listFamilies,
+} from "./projection.js";
+import { profileInput, setAccountProfile } from "../account/profile.js";
 import {
   changeOwnStart,
   ownStartSchema,
@@ -14,17 +30,22 @@ import {
   startPlace,
 } from "../account/starter.js";
 import { isSchoolAccount, studentBearer } from "../schools/principal.js";
+import { timeQuerySchema } from "../schools/teacher-contracts.js";
+import { timeCsv, fileSlug } from "../schools/exports.js";
 import { HEARTBEAT_BODY_LIMIT } from "../schools/evidence.js";
 import {
   createProfile,
   deleteProfile,
+  practiceAtLevel,
   updateProfile,
 } from "../account/practice-profiles.js";
 import {
   createProfileSchema,
+  practiceAtLevelSchema,
   updateProfileSchema,
 } from "../learning/practice-profiles.js";
 import { studentMe } from "../schools/student-me.js";
+import { readOwnWorkReplay } from "../schools/work-replay.js";
 import { Readable } from "node:stream";
 import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import type { Pool } from "pg";
@@ -59,7 +80,7 @@ import {
 import { SchoolError } from "../schools/contracts.js";
 import { fileName, paperQuery, renderReportPdf } from "../reports/print.js";
 import {
-  adultStartNames,
+  adultStartPhrases,
   progressReportHtml,
 } from "../reports/progress-report.js";
 import type { WorkbookRenderer } from "../workbook/pdf.js";
@@ -69,6 +90,7 @@ export interface FamilyRouteOptions {
   development?: boolean;
   /** Stripe namespace of the configured billing, for paid-purchase routing. */
   billingNamespace?: string | null;
+  billingConfig?: StripeBillingConfig | null;
   /** Approval links for another family's child (docs/families.md, step 5):
    * the key that derives them, where they point and the account mail path.
    * Absent: no approval links. */
@@ -76,6 +98,11 @@ export interface FamilyRouteOptions {
   /** Prints the adult's progress report. Absent: that PDF answers 503. */
   renderer?: WorkbookRenderer | null;
 }
+const ownWorkParams = z.object({
+  attempt: z.string().regex(/^[0-9a-f][0-9a-f-]{7,99}$/i),
+});
+const ownWorkQuery = z.object({ skill: z.string().max(120).optional() });
+
 export async function registerFamilyRoutes(
   app: FastifyInstance,
   options: FamilyRouteOptions,
@@ -128,12 +155,158 @@ export async function registerFamilyRoutes(
         options.billingNamespace ?? null,
       );
     });
+    const familyParams = z.strictObject({ family: z.uuid() });
+    scope.get("/api/v1/families", async (request) => {
+      const account = await options.authenticate(request);
+      const { after } = z
+        .strictObject({ after: z.uuid().optional() })
+        .parse(request.query);
+      return familyPlacesSchema.parse(
+        await listFamilies(options.pool, account, after),
+      );
+    });
+    scope.get("/api/v1/families/:family", async (request) => {
+      const account = await options.authenticate(request);
+      const { family } = familyParams.parse(request.params);
+      return familyProjectionSchema.parse(
+        await familyProjection(
+          options.pool,
+          account,
+          family,
+          options.development,
+          options.billingConfig,
+        ),
+      );
+    });
+    scope.get("/api/v1/families/:family/teaching", async (request) => {
+      const account = await options.authenticate(request);
+      const { family } = familyParams.parse(request.params);
+      return familyTeachingSchema.parse(
+        await familyTeaching(options.pool, account, family),
+      );
+    });
+    scope.get(
+      "/api/v1/families/:family/children/:learner/progress",
+      async (request) => {
+        const account = await options.authenticate(request);
+        const { family, learner } = familyParams
+          .extend({ learner: z.string().min(1).max(200) })
+          .parse(request.params);
+        return familyChildProgressSchema.parse(
+          await familyChildProgress(options.pool, account, family, learner),
+        );
+      },
+    );
+    for (const csv of [false, true]) {
+      scope.get(
+        `/api/v1/families/:family/children/:learner/${csv ? "time.csv" : "time"}`,
+        async (request, reply) => {
+          const account = await options.authenticate(request);
+          const { family, learner } = familyParams
+            .extend({ learner: z.string().min(1).max(200) })
+            .parse(request.params);
+          const { period, from } = timeQuerySchema.parse(request.query);
+          const time = await familyChildTime(
+            options.pool,
+            account,
+            family,
+            learner,
+            period,
+            from,
+          );
+          if (!csv) return familyChildTimeSchema.parse(time);
+          return reply
+            .type("text/csv; charset=utf-8")
+            .header(
+              "Content-Disposition",
+              `attachment; filename="${fileSlug(time.name, "time", time.range.from, "to", time.range.to)}.csv"`,
+            )
+            .send(
+              timeCsv(
+                time.days.map((day) => ({
+                  identifier: null,
+                  name: time.name,
+                  ...day,
+                })),
+                time.group,
+              ),
+            );
+        },
+      );
+    }
+    scope.get(
+      "/api/v1/families/:family/children/:learner/progress.pdf",
+      async (request, reply) => {
+        const account = await options.authenticate(request);
+        const { family, learner } = familyParams
+          .extend({ learner: z.string().min(1).max(200) })
+          .parse(request.params);
+        const { format } = paperQuery.parse(request.query);
+        // Same ownership/second-parent authorization as the individual JSON read.
+        const record = await familyChildProgress(
+          options.pool,
+          account,
+          family,
+          learner,
+        );
+        const { html, footer } = progressReportHtml({
+          paper: format,
+          name: record.name,
+          first: record.name,
+          subtitle: record.familyDisplayName ?? "Your family",
+          facts: [],
+          today: record.today,
+          record,
+        });
+        const pdf = await renderReportPdf(
+          options.renderer,
+          { html, format, footer },
+          request.log,
+          "Progress report",
+        );
+        if (!pdf) throw new FamilyError(503, "report_unavailable");
+        return reply
+          .type("application/pdf")
+          .header(
+            "Content-Disposition",
+            `attachment; filename="${fileName("amp-progress", record.name, record.today)}.pdf"`,
+          )
+          .send(pdf);
+      },
+    );
+    scope.patch("/api/v1/me/profile", { bodyLimit: 2048 }, async (request) => {
+      const account = await options.authenticate(request);
+      return setAccountProfile(
+        options.pool,
+        account,
+        profileInput.parse(request.body),
+      );
+    });
     // The adult's own practice: their record, starting it, and their time.
     scope.get("/api/v1/me/practice", async (request) => {
       const account = await options.authenticate(request);
       const practice = await readOwnPractice(repository, account);
       if (!practice) throw new FamilyError(404, "adult_practice_not_started");
       return practice;
+    });
+    // One of the adult's own answers, replayed as they saw it (/me's Recent
+    // work). Only their own learner's; a profile's or anyone else's is 404.
+    scope.get("/api/v1/me/practice/work/:attempt", async (request) => {
+      const account = await options.authenticate(request);
+      if (isSchoolAccount(account))
+        throw new FamilyError(404, "adult_practice_not_started");
+      const { attempt } = ownWorkParams.parse(request.params);
+      const { skill } = ownWorkQuery.parse(request.query);
+      const own = await options.pool.query<{ id: string }>(
+        "SELECT id FROM amp_learners WHERE account_id=$1 AND adult AND NOT simulation AND deleted_at IS NULL",
+        [account],
+      );
+      const learner = own.rows[0]?.id;
+      const replay = learner
+        ? await readOwnWorkReplay(options.pool, learner, attempt, skill)
+        : null;
+      if (!replay) throw new FamilyError(404, "not_found");
+      return replay;
     });
     // The adult's own record as a printed progress report, rendered for this
     // request and never stored.
@@ -151,7 +324,7 @@ export async function registerFamilyRoutes(
         name: named ? practice.learner.name : null,
         first: practice.learner.first,
         subtitle: practice.learner.start
-          ? `Own practice, began at ${adultStartNames[practice.learner.start]}`
+          ? `Own practice, begun with ${adultStartPhrases[practice.learner.start]}`
           : "Own practice",
         facts: [],
         today,
@@ -210,6 +383,17 @@ export async function registerFamilyRoutes(
         return reply
           .code(201)
           .send(await createProfile(repository, account, input));
+      },
+    );
+    // "Practice at a level" (SPEC R5): the account's one level profile,
+    // started again at this grade and pace.
+    scope.put(
+      "/api/v1/me/practice-at-level",
+      { bodyLimit: 1024 },
+      async (request) => {
+        const account = await profileOwner(request);
+        const input = practiceAtLevelSchema.parse(request.body);
+        return practiceAtLevel(repository, account, input);
       },
     );
     scope.patch(

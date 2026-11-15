@@ -112,14 +112,18 @@ export function LoadingScreen({
 export function RouteError({
   error,
   reset,
+  map,
 }: {
   error: unknown;
   reset: () => void;
+  /** The map this failed screen is (a family's child's, at its own
+   * address), which "Back to map" opens closed; your own is `/pathways`. */
+  map?: string | null;
 }) {
+  const path = window.location.pathname;
   const pathways =
-    window.location.pathname === "/pathways" ||
-    window.location.pathname.startsWith("/pathways/");
-  const mapHref = "/pathways";
+    !!map || path === "/pathways" || path.startsWith("/pathways/");
+  const mapHref = map ?? "/pathways";
   // Keep the loading wave up while attempting guarded chunk recovery.
   const chunk = errorDetails(error).category === "chunk";
   const [checked, setChecked] = useState<unknown>();

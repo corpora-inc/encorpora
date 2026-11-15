@@ -10,6 +10,10 @@ import { RouterProvider } from "@tanstack/react-router";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import type { AuthSession } from "../../../auth";
 
+// Analytics has its own transport tests. Its delayed flush must not outlive
+// a module reset and appear as a claim POST in the next test's fetch fixture.
+vi.mock("../../../lib/analytics");
+
 /* The program page after sign-in, for an invoice made out before it: the
    account holder may connect it to her own learner, with or without one yet,
    and a child still needs the parent's consent first. */
@@ -236,7 +240,7 @@ test("with no invoice and no learner yet, she chooses herself or a child; a chil
     await screen.findByRole("heading", { name: "Who’s learning?" }),
   ).toBeTruthy();
   expect(
-    screen.getByRole("link", { name: "For my child" }).getAttribute("href"),
+    screen.getByRole("link", { name: "For a child" }).getAttribute("href"),
   ).toMatch(/^\/start\/consent\?/);
   fireEvent.click(screen.getByRole("button", { name: "For me" }));
   expect(
@@ -324,7 +328,7 @@ test.each([
     const router = await open("/purchase/arizona-esa");
     await screen.findByRole("heading", { name: "Who’s learning?" });
     expect(state.posts).toEqual([]);
-    fireEvent.click(screen.getByRole("link", { name: "For my child" }));
+    fireEvent.click(screen.getByRole("link", { name: "For a child" }));
     await vi.waitFor(() =>
       expect(router.state.location.pathname).toBe("/start/name"),
     );

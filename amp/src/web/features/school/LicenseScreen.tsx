@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "@tanstack/react-router";
+import { Link, useParams } from "@tanstack/react-router";
 import { useState } from "react";
 import { formatDay, formatLastDay } from "../../../schools/calendar";
 import { AppError } from "../../lib/AppError";
@@ -12,7 +12,8 @@ import { StatRow, StatTile } from "../../ui/StatTile";
 import { Stepper } from "../../ui/Stepper";
 import { TextArea } from "../../ui/TextField";
 import { currentSession, licenseOptions, orgOptions, school } from "./api";
-import { FormNote } from "./parts";
+import { OrgFrame } from "./OrgFrame";
+import { FormNote, PageHead } from "./parts";
 import { orgPath } from "./paths";
 import styles from "./School.module.css";
 
@@ -89,7 +90,7 @@ function RequestSeats({ orgId, waiting }: { orgId: string; waiting: number }) {
 }
 
 /** Seats and dates. Never a price: that conversation happens with a person.
- * A section of the school's Settings (docs/design/ia.md). */
+ * The School's License tab (`LicenseScreen`). */
 export function LicenseSection({ orgId }: { orgId: string }) {
   const session = currentSession();
   const org = useQuery(orgOptions(session, orgId)).data;
@@ -156,5 +157,20 @@ export function LicenseSection({ orgId }: { orgId: string }) {
         </div>
       )}
     </section>
+  );
+}
+
+/** `/school/$org/license`: the license, a tab of its own for those who may
+ * read it (features/spaces/tabs.ts). */
+export function LicenseScreen() {
+  const { org: orgId } = useParams({ strict: false }) as { org: string };
+  return (
+    <OrgFrame orgId={orgId} nav="license" title="License" narrow>
+      {/* The screen's one h1 (its tab names it, so it isn't shown again). */}
+      <PageHead title="License" />
+      <div className={styles.settingsPage}>
+        <LicenseSection orgId={orgId} />
+      </div>
+    </OrgFrame>
   );
 }

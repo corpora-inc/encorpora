@@ -8,6 +8,8 @@ import { useFinishSignIn } from "../../join/api";
 const failures: Record<string, string> = {
   learner_cannot_practice:
     "This child needs access before practicing. Open Family to add it.",
+  // A renewed sign-in not yet confirmed: nothing is sent until it is.
+  session_unconfirmed: "Your sign-in is being checked. Try again in a moment.",
   learner_not_found:
     "That child isn’t in your class now. Refresh and try again.",
 };

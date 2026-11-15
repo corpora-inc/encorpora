@@ -6,7 +6,10 @@ import {
   useSearch,
 } from "@tanstack/react-router";
 import { useEffect } from "react";
-import { normalizeJoinCode } from "../../../../schools/contracts";
+import {
+  formatJoinCode,
+  normalizeJoinCode,
+} from "../../../../schools/contracts";
 import { Avatar } from "../../../ui/Avatar";
 import { buttonClass } from "../../../ui/Button";
 import { LoadingScreen } from "../../../ui/LoadingScreen";
@@ -44,7 +47,7 @@ export function JoinProblem({ message }: { message: string }) {
           <h1 className={styles.title}>{message}</h1>
         </div>
         <Link to="/join" className={buttonClass("primary", styles.bigButton)}>
-          Type a class code
+          Type a code
         </Link>
       </div>
     </JoinFrame>
@@ -65,6 +68,8 @@ const PROVIDER_NAMES = { google: "Google", microsoft: "Microsoft" } as const;
 export function ClassScreen() {
   const params = useParams({ from: "/join/$code" });
   const code = normalizeJoinCode(params.code);
+  // The one address for this code says it as it's shown, dash and all.
+  const shown = formatJoinCode(code);
   const navigate = useNavigate();
   const roster = useQuery(joinRosterOptions(code));
   const { sso } = useSearch({ strict: false }) as { sso?: unknown };
@@ -72,22 +77,36 @@ export function ClassScreen() {
   useEffect(() => {
     if (problem) console.error("School account sign-in stopped", sso);
   }, [problem, sso]);
-  // A shared link's `abc-def` becomes the one address for this class.
+  // `abc-def` or `ABCDEF` becomes the one address, `ABC-DEF`: the form
+  // the code is shown in, and the link that was shared.
   useEffect(() => {
-    if (code && code !== params.code)
+    if (code && shown !== params.code)
       void navigate({
         to: "/join/$code",
-        params: { code },
+        params: { code: shown },
+        // Keep why a school sign-in stopped (`?sso=`): the server returns
+        // here with the code as typed, and the reason must survive.
+        search: (previous: Record<string, unknown>) => previous,
         replace: true,
       });
-  }, [code, params.code, navigate]);
+  }, [code, shown, params.code, navigate]);
+  // The tab names whose code this is: "Achterberg family", or the class.
+  const placeName = roster.data?.class.name;
+  useEffect(() => {
+    if (!placeName) return;
+    const previous = document.title;
+    document.title = `${placeName} | AMP`;
+    return () => {
+      document.title = previous;
+    };
+  }, [placeName]);
   if (roster.isError && !roster.data)
     return <JoinProblem message={roster.error.message} />;
   if (!roster.data) return <LoadingScreen />;
   // Practice isn't open: say so here, before a name and three pictures.
   if (roster.data.practice)
     return (
-      <JoinFrame lead={<BackLink to="/join" label="Back to class code" />}>
+      <JoinFrame lead={<BackLink to="/join" label="Back to the code" />}>
         <PracticeGate
           gate={roster.data.practice}
           className={roster.data.class.name}
@@ -95,7 +114,7 @@ export function ClassScreen() {
       </JoinFrame>
     );
   return (
-    <JoinFrame lead={<BackLink to="/join" label="Back to class code" />}>
+    <JoinFrame lead={<BackLink to="/join" label="Back to the code" />}>
       <div className={styles.wide}>
         <h1 className={styles.title}>Tap your name</h1>
         <p className={styles.subtitle}>{roster.data.class.name}</p>
@@ -128,7 +147,7 @@ export function ClassScreen() {
               <li key={student.id}>
                 <Link
                   to="/join/$code/$person"
-                  params={{ code, person: student.id }}
+                  params={{ code: shown, person: student.id }}
                   className={styles.nameTile}
                 >
                   <Avatar name={student.name} size="fill" />
@@ -139,7 +158,9 @@ export function ClassScreen() {
           </ul>
         ) : (
           <p className={styles.problem}>
-            No names here yet. Ask your teacher to add you.
+            {roster.data.class.kind === "family"
+              ? "No names here yet. Ask a grown-up to add you."
+              : "No names here yet. Ask your teacher to add you."}
           </p>
         )}
       </div>

@@ -1,3 +1,5 @@
+import { classPracticeGates } from "./pilot-access.js";
+import { adultNameSql } from "../account/profile.js";
 import { PERSON_NAME } from "./term-grades.js";
 import { visibleToSql } from "./demo/sql.js";
 import { randomInt, randomUUID } from "node:crypto";
@@ -1004,16 +1006,20 @@ export class SchoolRepository {
     /** The reader: another visitor of a shared demo isn't named. */
     viewer: string | null = null,
   ): Promise<ClassResource[]> {
-    return (
+    const rows = (
       await this.pool.query(
         `SELECT c.id,c.org_id AS "orgId",c.session_id AS "sessionId",c.name,c.course_bands AS "courseBands",
            c.grading_kind AS "gradingKind",c.join_code AS "joinCode",
            (SELECT count(*)::int FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
              WHERE e.class_id=c.id AND e.role='student' AND p.deleted_at IS NULL AND ${activeToday("e", "o")}) AS "studentCount",
-           ARRAY(SELECT ${PERSON_NAME} FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
+           array_remove(ARRAY(SELECT ${adultNameSql()} FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
              WHERE e.class_id=c.id AND e.role='teacher' AND p.deleted_at IS NULL AND ${activeToday("e", "o")}
                AND ${visibleToSql("p", "$6::text")}
-             ORDER BY e.begin_on,p.id) AS teachers
+             ORDER BY e.begin_on,p.id),NULL) AS teachers,
+           ARRAY(SELECT ${adultNameSql()} FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
+             WHERE e.class_id=c.id AND e.role='teacher' AND p.deleted_at IS NULL AND ${activeToday("e", "o")}
+               AND ${visibleToSql("p", "$6::text")}
+             ORDER BY e.begin_on,p.id) AS "teacherNames"
          FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
          JOIN amp_academic_sessions cs ON cs.id=c.session_id
          WHERE o.path @> ARRAY[$1]::uuid[] AND c.archived_at IS NULL
@@ -1022,7 +1028,17 @@ export class SchoolRepository {
          ORDER BY c.name,c.id LIMIT $3 OFFSET $4`,
         [orgId, classIds, page.limit, page.offset, year, viewer],
       )
-    ).rows;
+    ).rows as ClassResource[];
+    // A class's code only while its students can practice (SPEC R14).
+    const gates = await classPracticeGates(
+      this.pool,
+      rows.map((row) => row.id),
+    );
+    return rows.map((row) =>
+      gates.has(row.id)
+        ? { ...row, joinCode: "", codeAvailable: false }
+        : { ...row, codeAvailable: true },
+    );
   }
   /** Active students at this org and below; `classIds` narrows to a teacher's
    * own classes, and only those classes are listed on each student. */

@@ -1,3 +1,4 @@
+import { requestFetch } from "./lib/request-transport";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import "./payment-history.css";
 import { ReceiptDetails } from "./ReceiptDetails.js";
@@ -75,7 +76,7 @@ export function PaymentHistoryCenter({
     setBusy(true);
     setError("");
     try {
-      const response = await fetch(
+      const response = await requestFetch(
         `/api/v1/payments${more && nextCursor ? `?cursor=${encodeURIComponent(nextCursor)}` : ""}`,
         {
           headers: { authorization: `Bearer ${tokenRef.current}` },
@@ -139,7 +140,7 @@ export function PaymentHistoryCenter({
       const suffix = adjustmentId
         ? `adjustments/${encodeURIComponent(adjustmentId)}.pdf`
         : "receipt.pdf";
-      const response = await fetch(
+      const response = await requestFetch(
         `/api/v1/payments/${encodeURIComponent(record.id)}/${suffix}`,
         {
           method: adjustmentId ? "GET" : "POST",

@@ -308,7 +308,9 @@ async function journey(browser: Browser, engine: string, width: number) {
     await head.getByRole("button", { name: "Continue" }).click();
     await heading(head, "Accept the data agreement");
     await head.getByLabel("Your name").fill("Ruth Adeyemi");
-    await head.getByLabel("Your title").fill("Head of School");
+    // The shared authorization (pilots/Authorization): a role, and the tick.
+    await head.getByLabel("Your role").fill("Head of School");
+    await head.getByRole("checkbox").check();
     await head.getByRole("button", { name: "Accept" }).click();
     await heading(head, "Add your students");
     await head.getByRole("button", { name: /Import a roster/ }).click();
@@ -466,9 +468,9 @@ async function journey(browser: Browser, engine: string, width: number) {
     const pictures = await phone();
     last = pictures;
     await pictures.goto(`${origin}/join`);
-    await heading(pictures, "Type your class code");
-    await pictures.getByLabel("Class code").fill(code);
-    await pictures.waitForURL(`**/join/${code}`);
+    await heading(pictures, "Type your code");
+    await pictures.getByLabel("Code", { exact: true }).fill(code);
+    await pictures.waitForURL(`**/join/${code.slice(0, 3)}-${code.slice(3)}`);
     await heading(pictures, "Tap your name");
     await pictures
       .getByRole("link", { name: new RegExp(`^${BY_PICTURE} `) })

@@ -226,7 +226,7 @@ export function AccessScreen() {
                       {paidSetup
                         ? "Finish paid setup →"
                         : meFirst
-                          ? "Set it up for my child"
+                          ? "Set it up for a child"
                           : "Continue setup →"}
                     </Link>
                     {forMe && !meFirst && forMeButton("secondary")}
@@ -256,7 +256,7 @@ export function AccessScreen() {
                 </p>
                 <Link
                   to="/$"
-                  params={{ _splat: "family/security" }}
+                  params={{ _splat: "account/security" }}
                   className={buttonClass("secondary")}
                 >
                   Manage your account

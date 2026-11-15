@@ -1,3 +1,4 @@
+import { accountProfile } from "./profile.js";
 import { followDemo } from "../schools/demo/shared.js";
 import { availableGift } from "../access-grants/repository.js";
 import type { Pool } from "pg";
@@ -159,7 +160,7 @@ export async function accountSummary(
           [accountId],
         )
         .catch(missing("42P01")),
-      // The family's class, which `families.summary` above keeps current. It's
+      // The family's persisted class. Creation belongs to explicit actions. It's
       // this account's family side, so it isn't among the places above; a
       // co-teacher from another account finds it there.
       familyClassOf(pool, accountId),
@@ -206,6 +207,7 @@ export async function accountSummary(
     signedIn: true as const,
     account: {
       id: accountId,
+      ...(await accountProfile(pool, accountId)),
       email,
       emailVerified,
       confirmationRequired:

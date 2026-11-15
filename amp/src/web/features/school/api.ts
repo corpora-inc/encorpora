@@ -15,7 +15,7 @@ import {
 } from "../../../schools/setup-contracts";
 import type { RosterRow } from "../../../schools/sources/rows";
 import type { AuthSession } from "../../auth";
-import { AppError } from "../../lib/AppError";
+import { AppError, keepRefusal } from "../../lib/AppError";
 import { request } from "../../lib/api";
 import {
   invalidateAccount,
@@ -36,6 +36,8 @@ const messages: Record<string, string> = {
   agreement_required: "Accept the data agreement first, then continue.",
   confirm_email: "Confirm your email address, then set up your class.",
   pilot_teacher_required: "Only this class’s teacher can start practice.",
+  practice_closed:
+    "Practice isn’t running for this class, so its code and cards wait. Start practice, or request seats.",
   students_required: "Add students to this class first.",
   school_selection_required: "Choose the school for this class.",
   purchase_scope_conflict: "This class is already on another buyer link.",
@@ -109,14 +111,19 @@ export const orgsOptions = (session: AuthSession) =>
         signal,
       }).then((data) => data.orgs),
   });
-export const orgOptions = (session: AuthSession, orgId: string) =>
-  queryOptions({
-    queryKey: keyFor(session, "org", orgId),
+export const orgOptions = (session: AuthSession, orgId: string) => {
+  const queryKey = keyFor(session, "org", orgId);
+  return queryOptions({
+    queryKey,
+    // A refusal stands until a successful read (CP-3 r8).
     queryFn: ({ signal }) =>
-      call(`/orgs/${orgId}`, z.object({ org: orgResource }), session, {
-        signal,
-      }).then((data) => data.org),
+      keepRefusal(queryKey, () =>
+        call(`/orgs/${orgId}`, z.object({ org: orgResource }), session, {
+          signal,
+        }),
+      ).then((data) => data.org),
   });
+};
 export const setupOptions = (session: AuthSession, orgId: string) =>
   queryOptions({
     queryKey: keyFor(session, "org", orgId, "setup"),

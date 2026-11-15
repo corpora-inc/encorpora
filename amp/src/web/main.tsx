@@ -1,5 +1,6 @@
 import "./card-entry";
 import "./share-entry";
+import "./capability-entry";
 import "./lib/zod-config";
 import { errorDetails } from "../analytics/error-details";
 import { screenOf, trackClientError } from "./lib/analytics";

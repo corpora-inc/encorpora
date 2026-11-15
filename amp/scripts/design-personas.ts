@@ -16,6 +16,7 @@
  * fixture, scripts/verify-smooth-load-ui.ts).
  */
 import pg from "pg";
+import { alignPersonaEnrollments } from "./persona-enrollment";
 import {
   seedClassHistory,
   type DemoStudent,
@@ -47,6 +48,17 @@ const DAY = 86_400_000;
 const ZONE = "America/New_York";
 const thisYear = new Date().getUTCFullYear();
 const todayIso = new Date(Date.now() - 5 * 3600_000).toISOString().slice(0, 10);
+/** The preview's local hour: today's practice is seeded only in waking
+ * hours (8:00 to 21:00), so a seed run at night never shows a child's work
+ * at 3 AM; earlier days' sittings are mid-morning. */
+const localHour = Number(
+  new Intl.DateTimeFormat("en-US", {
+    timeZone: ZONE,
+    hour: "numeric",
+    hourCycle: "h23",
+  }).format(new Date()),
+);
+const workToday = localHour >= 8 && localHour < 21;
 const daysAgo = (n: number) =>
   new Date(Date.parse(`${todayIso}T12:00:00Z`) - n * DAY)
     .toISOString()
@@ -137,10 +149,7 @@ async function grant(learnerId: string, startedDaysAgo = 30) {
  * first session yesterday and nothing since. */
 async function history(
   learners: { learnerId: string; persona: Persona }[],
-  {
-    weeks,
-    grade,
-  }: { weeks: number; grade: number; recentDays?: number },
+  { weeks, grade }: { weeks: number; grade: number; recentDays?: number },
 ) {
   const students: DemoStudent[] = learners.map((learner) => ({
     personId: learner.learnerId,
@@ -162,9 +171,13 @@ async function history(
       gradeLevel: grade,
       weekShape: shape,
       now: Date.now(),
-      workToday: true,
+      workToday,
       model: "persona",
     });
+    await alignPersonaEnrollments(
+      client,
+      learners.map((learner) => learner.learnerId),
+    );
     // The weekly rollups, summed once, as a demo's bulk writer does.
     await sumWeeks(client, "SELECT unnest($1::text[])", [
       learners.map((learner) => learner.learnerId),
@@ -434,6 +447,11 @@ const seeds: Record<string, (session: Session) => Promise<void>> = {
     );
     await pool.query(
       "UPDATE amp_orgs SET demo=false,demo_kind=NULL,demo_seen_at=NULL,name='Alder Street School' WHERE id=$1",
+      [own.orgId],
+    );
+    // A licensed school's data agreement is its own, never AMP's for a demo.
+    await pool.query(
+      "UPDATE amp_data_agreements SET signer_name='Ms. Okafor',signer_title='Head of school' WHERE org_id=$1",
       [own.orgId],
     );
   },

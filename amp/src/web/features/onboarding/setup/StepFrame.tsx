@@ -1,6 +1,8 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation, useRouter } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { buttonClass } from "../../../ui/Button";
+import { closeTo } from "../../../lib/return-to";
+import { Button, buttonClass } from "../../../ui/Button";
+import { appReturn } from "../../spaces/returns";
 import styles from "./Setup.module.css";
 
 /** One step of a first run (docs/design/ia.md): where it sits in the setup,
@@ -31,6 +33,14 @@ export function StepFrame({
   hintLines?: 1 | 2;
   back: string;
 }) {
+  // Adding a place from elsewhere (`?from=`): every step can give up and go
+  // back there (docs/architecture/spaces.md, "Returns").
+  const router = useRouter();
+  const from = appReturn(
+    useLocation({
+      select: (location) => (location.search as Record<string, unknown>).from,
+    }),
+  );
   return (
     <main className={styles.page}>
       {steps.length > 1 && (
@@ -59,9 +69,23 @@ export function StepFrame({
       <div className={styles.body}>{children}</div>
       <div className={styles.foot}>
         <div className={styles.actions}>
-          <Link to={back as never} className={buttonClass("quiet")}>
+          <Link
+            to={back.split("?")[0] as never}
+            // The query apart from the path, so `from` stays a search key.
+            search={
+              Object.fromEntries(
+                new URLSearchParams(back.split("?")[1] ?? ""),
+              ) as never
+            }
+            className={buttonClass("quiet")}
+          >
             Back
           </Link>
+          {from && (
+            <Button variant="quiet" onClick={() => closeTo(router, from)}>
+              Cancel
+            </Button>
+          )}
           {next}
         </div>
         <p

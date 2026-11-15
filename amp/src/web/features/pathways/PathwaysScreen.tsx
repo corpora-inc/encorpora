@@ -1,9 +1,6 @@
 import { ScreenTitle } from "../../ui/ScreenTitle";
 import { FREE_ONLINE_PROBLEMS } from "../../../learning/free-allowance";
-import {
-  CurriculumDetailsControl,
-  useCurriculumDetails,
-} from "../curriculum/CurriculumDetails";
+import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
 import { NavigationDrawer } from "../navigation/NavigationDrawer";
 import {
   useDeferredValue,
@@ -13,7 +10,12 @@ import {
   type ReactNode,
 } from "react";
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
-import { Link, useNavigate, useSearch } from "@tanstack/react-router";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useSearch,
+} from "@tanstack/react-router";
 import { meOptions, sessionOptions } from "../../lib/query";
 import { skillCatalogOptions } from "../../lib/learning-view";
 import { request } from "../../lib/api";
@@ -21,18 +23,23 @@ import { useUrlSearchText } from "../../lib/url-search-text";
 import { useLearnerStore } from "../../learner-store";
 import type { AuthSession } from "../../auth";
 import { gradeName } from "../../Home";
-import { fitScale, LevelRows } from "../../ui/level-range";
+import { byArea, fitScale, LevelRows, WHOLE_SCALE } from "../../ui/level-range";
+import { measured } from "../../../learning/level-check";
 import { useLessonSearch, type SearchResult } from "../../lib/lesson-search";
 import { SearchResults, type SearchActions } from "../search/SearchResults";
 import { useSearchCorpus } from "../search/search-corpus";
 import { strandNames } from "../../BirthYearPrompt";
 import { Graph } from "./Graph";
+import { PathwayPlan } from "./PathwayPlan";
+import { AreaKey } from "./AreaKey";
+import { canDrawMap } from "./drawable";
 import {
+  areas,
   bandLabel,
   bands,
   skillLight,
-  neighborhoods,
-  neighborhood,
+  areaParam,
+  areaSlot,
   progressSchema,
   frontierSchema,
   frontierRange,
@@ -41,6 +48,7 @@ import {
   type Evidence,
 } from "./model";
 import { ListboxDisclosure, type ListboxOption } from "../../ui/Listbox";
+import { Segmented } from "../../ui/Segmented";
 import { LayerHost } from "../../nav/LayerHost";
 import { EntityLink, useLayers } from "../../nav/links";
 import { OPEN_KEY, pushLayer } from "../../nav/entities";
@@ -56,7 +64,29 @@ import {
   profileLearner,
 } from "../../lib/adult-learner";
 import { secondParentChild, secondParentChildren } from "../second-parent/api";
+import {
+  useAddressedIdentity,
+  useAddressedRecordsReadable,
+} from "../spaces/useAddressed";
+import { childAddress, childPath } from "../spaces/identity";
+import { childFamily } from "../spaces/learner-urls";
+import { familyPlacesOptions } from "../family/api";
 const emptyEvidence: Evidence[] = [];
+/** How the map is drawn: by grade (the default, everywhere) or in 3D. */
+type MapMode = "grades" | "3d";
+const VIEW_KEY = "amp.pathways-view";
+const viewOptions = [
+  { value: "grades" as const, label: "Grades" },
+  { value: "3d" as const, label: "3D" },
+];
+/** This device's last choice of view; the grades view until there is one. */
+function savedView(): MapMode {
+  try {
+    return localStorage.getItem(VIEW_KEY) === "3d" ? "3d" : "grades";
+  } catch {
+    return "grades";
+  }
+}
 const bandOptions: ListboxOption[] = [
   { value: "", label: "All grades & courses" },
   ...bands.map((b) => ({ value: b, label: bandLabel(b) })),
@@ -91,6 +121,7 @@ type SearchFound = {
  * top back into view (a cut under reduced motion). */
 function showMap() {
   requestAnimationFrame(() => {
+    // The 3D map only: the grades view centres the chosen skill itself.
     const map = document.querySelector<HTMLElement>(".pathways-viewport");
     if (!map || !matchMedia("(max-width: 650px)").matches) return;
     const margin = parseFloat(getComputedStyle(map).scrollMarginTop) || 0;
@@ -130,7 +161,17 @@ function GuestMap() {
 
 function LearnerMap({ session }: { session: AuthSession }) {
   const me = useQuery(meOptions(session));
-  const { learnerId, select } = useLearnerStore();
+  const { learnerId: chosenId, select } = useLearnerStore();
+  // Whose map the address names (features/spaces/identity.ts): yourself at
+  // /pathways, a family's child at /family/<family>/kids/<learner>/pathways,
+  // a practice profile by `?profile=`. Unnamed, a parent with no practice of
+  // their own was sent to their child's address before this showed.
+  const addressed = useAddressedIdentity();
+  const learnerId = addressed?.id ?? chosenId;
+  const navigate = useNavigate();
+  const places = useQuery(familyPlacesOptions(session));
+  const pathname = useLocation({ select: (location) => location.pathname });
+  const childMap = !!childAddress(pathname);
   const account = me.data?.signedIn ? me.data : null;
   // The adult's own pathways, when their own learner is the one chosen: the
   // family's learners aren't theirs to switch to here.
@@ -144,15 +185,31 @@ function LearnerMap({ session }: { session: AuthSession }) {
     ? adultLearner(account)
     : (profileLearner(account, learnerId) ?? solo);
   useEffect(() => {
-    if (solo && own === solo && learnerId !== solo.id) select(solo.id);
+    if (!addressed && solo && own === solo && learnerId !== solo.id)
+      select(solo.id);
   }, [solo?.id, learnerId]);
+  /** Another child's map is their own address. */
+  const openChild = (id: string) => {
+    const family = account ? childFamily(account, id, places.data) : null;
+    if (!family) return;
+    void navigate({
+      to: "/$",
+      params: { _splat: childPath(family, id, "pathways").slice(1) },
+    });
+  };
   // A second parent's family's children follow the family's own: their
   // progress, read-only.
   const learners = own
     ? [own]
     : [...(account?.learners ?? []), ...secondParentChildren(account)];
-  const viewOnly = !own && !!secondParentChild(account, learnerId);
-  const learner = learners.find((l) => l.id === learnerId);
+  // A child's map is theirs to read: their practice is their own session,
+  // from their page or the family's Today, never this adult's /practice.
+  const viewOnly =
+    (!own && !!secondParentChild(account, learnerId)) || (childMap && !own);
+  const readable = useAddressedRecordsReadable();
+  const learner = readable
+    ? learners.find((l) => l.id === learnerId)
+    : undefined;
   const progress = useQuery({
     queryKey: ["account", session.accountId, "pathways", learner?.id],
     enabled: !!learner,
@@ -182,17 +239,17 @@ function LearnerMap({ session }: { session: AuthSession }) {
   const notice = me.isPending ? (
     <Loading inline>Loading learners…</Loading>
   ) : me.isError ? (
-    "Learners could not be loaded. Retry to view progress."
-  ) : me.data?.signedIn && learners.length === 0 ? (
-    "Add a learner to see earned skills."
-  ) : !learner ? (
-    "Choose a learner to see earned skills."
+    "Learners didn’t load. Try again."
+  ) : (me.data?.signedIn && learners.length === 0) || !learner ? (
+    // The add link or the learner picker beside it says what to do.
+    ""
   ) : progress.isPending ? (
     <Loading inline>Loading earned skills…</Loading>
   ) : progress.isError ? (
-    "Progress could not be loaded. The map shows the curriculum without earned skills."
+    "Progress didn’t load. Try again."
   ) : (
-    "Skills grow with independent successes. Brighter means stronger recorded practice."
+    // All in: the map says the rest.
+    ""
   );
   if (me.data && !me.data.signedIn) return <GuestMap />;
   return (
@@ -231,7 +288,7 @@ function LearnerMap({ session }: { session: AuthSession }) {
                 align="end"
                 options={learners.map((l) => ({ value: l.id, label: l.name }))}
                 value={learner?.id ?? null}
-                onChange={select}
+                onChange={openChild}
               />
             </div>
           )}
@@ -241,7 +298,7 @@ function LearnerMap({ session }: { session: AuthSession }) {
             !me.isError && <Link to="/start">Add a learner →</Link>}
           {frontier.isError && (
             <p role="status" data-priority="true">
-              The frontier estimate could not be loaded. Retry to refresh it.
+              The level estimate didn’t load. Try again.
             </p>
           )}
           {(me.isError || progress.isError || frontier.isError) && (
@@ -283,7 +340,7 @@ export function MapView({
   canPractice?: boolean;
   controls?: ReactNode;
   frontier?: Frontier;
-  /** The learner's estimate or record is on its way: "My level" waits. */
+  /** The learner's estimate or record is on its way: "Where you are" waits. */
   frontierLoading?: boolean;
   /** Whose map it is: a skill opened here shows their work on it. */
   learnerId?: string;
@@ -317,8 +374,37 @@ export function MapView({
     typeof search.filter === "string" && bands.includes(search.filter)
       ? search.filter
       : "";
+  // One area of math (`?area=geometry`), chosen in the key; else all five.
+  const area = areaParam((search as Record<string, unknown>).area);
   const navigate = useNavigate();
   const { shown } = useCurriculumDetails();
+  // A browser that can't draw the 3D map (or loses its context while it is
+  // open) gets the flat pathway in its place: no canvas, no camera controls,
+  // and no choice of view.
+  const [drawn, setDrawn] = useState(canDrawMap);
+  // The grades view, or 3D: the address's (`?view=`), else this device's
+  // last choice. Either keeps the skill open over it.
+  const [remembered, setRemembered] = useState(savedView);
+  const view: MapMode =
+    search.view === "3d" || search.view === "grades" ? search.view : remembered;
+  const threeD = drawn && view === "3d";
+  const chooseView = (next: MapMode) => {
+    try {
+      localStorage.setItem(VIEW_KEY, next);
+    } catch {
+      // This device keeps no choice; the address still carries it.
+    }
+    setRemembered(next);
+    void navigate({
+      to: ".",
+      search: ((current: Record<string, unknown>) => ({
+        ...current,
+        view: next,
+      })) as never,
+      replace: true,
+      resetScroll: false,
+    });
+  };
   // Arriving with a search (a link, or /lessons?q=) opens its results.
   // A shared search opens its results, unless the link names a skill: then
   // the skill is what it shows, its search kept in the field.
@@ -355,7 +441,7 @@ export function MapView({
             id: skillOf(result),
           })!,
         );
-      return `/pathways${params.size ? `?${params}` : ""}`;
+      return `${window.location.pathname}${params.size ? `?${params}` : ""}`;
     };
     return {
       href,
@@ -409,7 +495,8 @@ export function MapView({
     replace = false,
   ) =>
     void navigate({
-      to: "/pathways",
+      // This map's own address: yours, or a child's.
+      to: ".",
       search: ((current: Record<string, unknown>) => {
         const next: Record<string, unknown> = {
           ...current,
@@ -441,9 +528,11 @@ export function MapView({
     skills?.filter(
       (s) =>
         (!band || s.gradeBand === band) &&
+        (!area || areaSlot(s) === areas.findIndex((a) => a.id === area)) &&
         matchesQuery(`${s.title} ${s.description}`, query),
     ) ?? [];
   const range = frontier ? frontierRange(frontier, selected?.strand) : null;
+  const overall = frontier ? frontierRange(frontier) : null;
   const level = useMemo(
     () =>
       skills && !frontierLoading
@@ -459,11 +548,7 @@ export function MapView({
       (t) => t.skillId === skillId,
     );
     const shownFound = found && found.kind !== "term" ? found : null;
-    // With grade numbers on: the estimated range in the skill's area.
-    const strand = skills?.find((s) => s.id === skillId)?.strand;
-    const area =
-      shown && frontier && strand ? frontierRange(frontier, strand) : null;
-    if (!shownFound && !area && (readOnly || !practiced)) return null;
+    if (!shownFound && (readOnly || !practiced)) return null;
     return (
       <>
         {shownFound && (
@@ -535,17 +620,13 @@ export function MapView({
             )}
           </div>
         )}
-        {area && strand && (
-          <p className={layers.note}>
-            {strandNames[strand] ?? strand} frontier: {gradeName(area.lo)} to{" "}
-            {gradeName(area.hi)} · estimated range.
-          </p>
-        )}
       </>
     );
   };
   return (
-    <main className={`pathways ${browse ? "is-browsing" : ""}`}>
+    <main
+      className={`pathways ${browse ? "is-browsing" : ""} ${threeD ? "" : "is-flow"}`}
+    >
       {/* Signed in, the app frame's bar holds the logo, the Progress tabs and
           the way to practice. A visitor gets the map's own header. */}
       {guestMode && (
@@ -569,17 +650,6 @@ export function MapView({
         <div>
           <ScreenTitle>Pathways</ScreenTitle>
         </div>
-        {/* The counts paint once, when both the map and the learner's
-            record are in: their line is held until then, never rewritten. */}
-        <p
-          className="pathways-summary"
-          aria-busy={!countsReady}
-          style={countsReady ? undefined : { visibility: "hidden" }}
-        >
-          {guestMode
-            ? `${skills?.length ?? 335} skills, kindergarten through precalculus`
-            : `${earned} of ${skills?.length ?? 335} skills earned · kindergarten through precalculus`}
-        </p>
       </div>
       {guestMode && (
         <div className="pathways-guest-intro">
@@ -627,12 +697,10 @@ export function MapView({
         }}
       >
         <label className="pathways-search">
-          {" "}
-          <span className="sr-only">Find a skill</span>
           <input
             type="search"
-            aria-label="Search skills, lessons and math words"
-            placeholder="Search skills, lessons, math words…"
+            aria-label="Search"
+            placeholder="Search"
             maxLength={100}
             value={field.text}
             onFocus={() => setBrowse(true)}
@@ -659,7 +727,30 @@ export function MapView({
             {browse ? "Close" : "Browse"}
           </span>
         </button>
+        {drawn && (
+          <div className="pathways-view">
+            <Segmented
+              label="Map view"
+              options={viewOptions}
+              value={view}
+              onChange={chooseView}
+              compact
+              dense
+            />
+          </div>
+        )}
       </div>
+      {/* The counts paint once, when both the map and the learner's
+          record are in: their line is held until then, never rewritten. */}
+      <p
+        className="pathways-summary"
+        aria-busy={!countsReady}
+        style={countsReady ? undefined : { visibility: "hidden" }}
+      >
+        {guestMode
+          ? `${skills?.length ?? 335} skills, kindergarten through precalculus`
+          : `${earned} of ${skills?.length ?? 335} skills earned · kindergarten through precalculus`}
+      </p>
       {catalog.isError ? (
         <div role="alert">
           The skill map could not be loaded.{" "}
@@ -676,12 +767,10 @@ export function MapView({
               aria-label="Find a skill"
               hidden={!browse}
             >
-              <CurriculumDetailsControl />
               <div className="pathways-grade" hidden={!shown && !band}>
                 {!shown && band && (
                   <small>
-                    A curriculum filter is active. Choose All grades to clear
-                    it.
+                    Filtered by grade. Choose All grades to clear.
                   </small>
                 )}
                 <span aria-hidden="true">Grade or course</span>
@@ -719,7 +808,7 @@ export function MapView({
                       <span
                         className={`pathways-gem stage-${skillLight(stats.get(s.id)).stage}`}
                         style={{
-                          color: `var(--atlas-area-${Math.max(0, neighborhood(s))})`,
+                          color: `var(--atlas-area-${areaSlot(s)})`,
                         }}
                         aria-hidden="true"
                       >
@@ -741,57 +830,69 @@ export function MapView({
                 <p>No matching skills. Try another grade.</p>
               )}
             </section>
-            <Graph
-              skills={skills}
-              evidence={evidence}
-              selected={selectedId}
-              onSelect={select}
-              frame={frame}
-              range={range}
-              rangeStrand={selected?.strand}
-              level={level}
-              levelLoading={frontierLoading}
-            />
+            {threeD ? (
+              <Graph
+                skills={skills}
+                evidence={evidence}
+                selected={selectedId}
+                onSelect={select}
+                frame={frame}
+                range={range}
+                rangeStrand={selected?.strand}
+                level={level}
+                levelLoading={frontierLoading}
+                area={area}
+                onUnavailable={() => setDrawn(false)}
+              />
+            ) : (
+              <PathwayPlan
+                skills={skills}
+                evidence={evidence}
+                selected={selectedId}
+                frame={frame}
+                here={level ? overall : null}
+                levelLoading={frontierLoading}
+                area={area}
+              />
+            )}
           </div>
           <footer className="pathways-footer">
-            <div className="pathways-legend">
-              {neighborhoods.map((n, i) => (
-                <span key={n.title}>
-                  <i
-                    className="pathways-dot"
-                    style={{ background: `var(--atlas-area-${i})` }}
-                  />
-                  {n.title}
-                </span>
-              ))}
-            </div>
+            {/* The grades view holds its key at its top. */}
+            {threeD && <AreaKey area={area} className="pathways-legend" />}
             <p>
-              {selected
-                ? "Cyan: prerequisites · Violet: next skills · Dotted: related skills"
-                : "Each point is a skill. Each connection leads from a prerequisite to a skill that uses it."}
+              {!threeD
+                ? selected
+                  ? "Cyan: builds on · Violet: leads to"
+                  : "Brighter gems: stronger practice"
+                : selected
+                  ? "Cyan: builds on · Violet: leads to · Dotted: related"
+                  : "Lines lead from a skill to the skills that use it"}
             </p>
             <details className="pathways-note">
               <summary>How skills grow</summary>
               <p>
-                Each correct answer without help fills a skill’s bar by a
-                twentieth. What is earned stays when a skill needs review. The
-                bar records practice; it does not certify a whole grade, and a
-                prerequisite fills only from its own answers.
+                Each correct answer without help fills a twentieth of a
+                skill’s bar. What is earned stays. A bar records practice on
+                that skill only, not a whole grade.
               </p>
               {range && !selected && (
                 <p>
-                  {shown ? (
+                  {shown && threeD ? (
                     <>
                       Overall frontier: {gradeName(range.lo)} to{" "}
                       {gradeName(range.hi)} · estimated range shown by faint
                       outlines.
                     </>
-                  ) : (
+                  ) : threeD ? (
                     "Faint outlines show the estimated range of skills to practice."
+                  ) : (
+                    "“Where you are” marks the range of skills to practice next."
                   )}
                 </p>
               )}
-              {frontier && <PathwayLevels frontier={frontier} />}
+              {frontier && (
+                <PathwayLevels frontier={frontier} numbers={shown} />
+              )}
             </details>
           </footer>
         </>
@@ -801,18 +902,44 @@ export function MapView({
       <LayerHost
         learner={learnerId}
         skillActions={skillActions}
-        lessonActions={(type) =>
-          canPractice && lessonSkill && type === lesson ? (
+        lessonActions={(type, skill) => {
+          if (type !== lesson || readOnly) return null;
+          // The skill it practices: the one open under it, else its own.
+          const practiced = lessonSkill ?? skill;
+          // The learner is on their way: the action's place is held, so the
+          // film beside it never moves.
+          if (recordLoading)
+            return (
+              <span
+                className={buttonClass("primary")}
+                aria-hidden="true"
+                data-action-wait=""
+                style={{ visibility: "hidden" }}
+              >
+                Try this problem type
+              </span>
+            );
+          if (!practiced) return null;
+          return canPractice ? (
             <Link
-              className="pathways-lesson-practice"
+              className={buttonClass("primary")}
               to="/$"
               params={{ _splat: "practice" }}
-              search={{ skill: lessonSkill, template: type }}
+              search={{ skill: practiced, template: type }}
             >
-              Try this problem type →
+              Try this problem type
             </Link>
-          ) : null
-        }
+          ) : (
+            // Not practicing yet: the way in, as the skill's own layer offers.
+            <Link
+              className={buttonClass("primary")}
+              to="/$"
+              params={{ _splat: start.slice(1) }}
+            >
+              {actionLabel}
+            </Link>
+          );
+        }}
       />
     </main>
   );
@@ -822,22 +949,45 @@ export function MapView({
  * (ui/level-range): the overall estimate, then each area practiced. */
 function PathwayLevels({
   frontier,
+  numbers,
 }: {
+  /** Grade names on the axis: off where the child's grades are hidden. */
+  numbers: boolean;
   frontier: {
-    overall: { level: number; sd: number };
+    overall: { level: number; sd: number; answered?: number };
     strands: Record<string, { level: number; sd: number; answered?: number }>;
   };
 }) {
-  const areas = Object.entries(frontier.strands)
-    .filter(([, estimate]) => (estimate.answered ?? 1) > 0)
-    .map(([id, estimate]) => ({
-      id,
-      label: strandNames[id] ?? id,
-      estimate,
-    }));
+  // Before the first answer: not measured yet, the whole scale (Q-201).
+  if (!measured(frontier.overall))
+    return (
+      <LevelRows
+        overall={null}
+        areas={[]}
+        scale={WHOLE_SCALE}
+        numbers={numbers}
+        moving
+      />
+    );
+  const areas = byArea(
+    Object.entries(frontier.strands)
+      .filter(([, estimate]) => measured(estimate))
+      .map(([id, estimate]) => ({
+        id,
+        label: strandNames[id] ?? id,
+        estimate,
+      })),
+  );
   const scale = fitScale(
     [frontier.overall, ...areas.map((area) => area.estimate)],
     { minSpan: 5 },
   );
-  return <LevelRows overall={frontier.overall} areas={areas} scale={scale} />;
+  return (
+    <LevelRows
+      overall={frontier.overall}
+      areas={areas}
+      scale={scale}
+      numbers={numbers}
+    />
+  );
 }

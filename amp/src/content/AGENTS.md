@@ -60,6 +60,7 @@ Every mathematical symbol, variable, expression or equation a learner reads is t
 - Units are text outside the math (`$r = 4$ m`, `$9\pi$ square centimeters`), or `\text{cm}` inside it, consistently within a text.
 - The article "a", the pronoun "I", and a letter that names an object ("Store A", "Shape B", "an L-shaped face") are prose. The variable $a$, a point $P$, an event $A$, a named segment, line or polygon (segment $AB$, triangle $ABC$) and an angle ($\angle ABC$) are math. Write $x$-coordinate, $y$-axis and $y$-intercept.
 - Generators: wrap an interpolated variable as `$${v}$`, a whole formula as one span (`formula()` in `src/math/polish.ts` sets `1/2x` as `\tfrac{1}{2}x`), and never wrap a helper's TeX fragment twice. A single-letter answer label ("x", "x-coordinate", "sin A") is typeset centrally by `mathLabel()`.
+- A complete equation, expression or inequality introduced by a colon or a short command belongs on a centred display line without final sentence punctuation. Use the shared prompt structure and web/print renderers; keep mathematics inside a sentence inline. See [display mathematics](../../docs/display-math.md) and its full-template lint.
 - A plain formula with an operation ("3 × 4 = 12", "r = 6 ÷ 2") is typeset automatically by MathText and PrintMathText; prefer explicit `$…$` in new text. Never wrap a bare number alone (`$12$` prints as currency).
 - Titles (template, lesson and section) render as plain text: keep them free of TeX and symbols.
 

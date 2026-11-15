@@ -443,7 +443,7 @@ try {
     assert.equal(new URL(page.url()).pathname, "/lessons", failure.error);
     assert.equal(await page.locator(".progress-workspace").count(), 0);
     await page.getByRole("heading", { name: "Lessons", exact: true }).waitFor();
-    await page.getByRole("searchbox", { name: "Search lessons" }).waitFor();
+    await page.getByRole("searchbox", { name: "Search", exact: true }).waitFor();
     await returnToHistory(page);
   }
 

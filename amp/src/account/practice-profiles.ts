@@ -1,7 +1,11 @@
 import { randomUUID } from "node:crypto";
 import type { PoolClient } from "pg";
 import type { z } from "zod";
-import { adultPracticeEnd } from "./adult-access.js";
+import {
+  adultPracticeEnd,
+  accessGrantsFor,
+  grantInForce,
+} from "./adult-access.js";
 import { FamilyError } from "../family/contracts.js";
 import type { FamilyRepository } from "../family/repository.js";
 import { familyHasLearnerRoom } from "../learning/free-allowance.js";
@@ -12,8 +16,12 @@ import {
   type PracticeSettings,
 } from "../learning/practice-settings.js";
 import {
+  levelChoiceSchema,
+  presetLabel,
+  presetLevels,
   profileStrands,
   roundedLevels,
+  type LevelChoice,
   type createProfileSchema,
   type PracticeProfile,
   type ProfileLevels,
@@ -54,14 +62,16 @@ export async function profilesCovered(
   db: Database,
   accountId: string,
 ): Promise<boolean> {
-  const own = await db.query(
-    `SELECT 1 FROM amp_learners a JOIN amp_grants g ON g.learner_id=a.id
-     WHERE a.account_id=$1 AND a.adult AND NOT a.simulation AND a.deleted_at IS NULL
-       AND g.id NOT LIKE 'adult:%'
-       AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now() LIMIT 1`,
+  const own = await db.query<{ id: string }>(
+    `SELECT id FROM amp_learners WHERE account_id=$1 AND adult AND NOT simulation AND deleted_at IS NULL`,
     [accountId],
   );
-  return !!own.rowCount || (await adultPracticeEnd(db, accountId)) !== null;
+  if (!own.rowCount) return (await adultPracticeEnd(db, accountId)) !== null;
+  const access = await accessGrantsFor(
+    db,
+    own.rows.map((row) => row.id),
+  );
+  return access.grants.some((g) => grantInForce(g, access.now));
 }
 
 /** The starting choice closest to a profile's levels, for the overall
@@ -102,8 +112,9 @@ export async function listProfiles(
     name: string;
     band: StartingChoice | null;
     state: unknown;
+    level: unknown;
   }>(
-    `SELECT l.id,l.name,l.starting_band AS band,s.state FROM amp_learners l
+    `SELECT l.id,l.name,l.starting_band AS band,s.state,l.level_practice AS level FROM amp_learners l
      LEFT JOIN amp_practice_settings s ON s.learner_id=l.id
      WHERE l.account_id=$1 AND l.simulation AND l.deleted_at IS NULL
      ORDER BY l.created_at DESC,l.id`,
@@ -113,12 +124,112 @@ export async function listProfiles(
     const settings = row.state
       ? practiceSettingsSchema.safeParse(row.state)
       : null;
+    const level = row.level ? levelChoiceSchema.safeParse(row.level) : null;
     return {
       id: row.id,
       label: row.name,
       levels: levelsOf(settings?.success ? settings.data : null, row.band),
+      ...(level?.success ? { level: level.data } : {}),
     };
   });
+}
+
+/**
+ * "Practice at a level" (SPEC R5): the account's one level profile, a fresh
+ * simulation at every grade and pace. Each choice replaces the previous one
+ * whole: a new learner, so every read keys on it (overall and area levels,
+ * skill evidence and progress, recent answers, skips, the review schedule,
+ * the planner) and nothing of the last choice can reach it. The previous
+ * one is deleted with everything it practiced, as a profile is: it is
+ * nobody's record, and the product promises nothing about anyone is kept.
+ * An answer from a tab still on it changes nothing (its learner is gone).
+ * Its usage counters (the free allowance) carry over, so a new choice never
+ * refills it. Named by the choice ("4th grade · on level"), never a person.
+ */
+export async function practiceAtLevel(
+  families: FamilyRepository,
+  accountId: string,
+  choice: LevelChoice,
+): Promise<{ learnerId: string }> {
+  return families.transaction(accountId, async (client) => {
+    const levels = presetLevels(choice.grade, choice.pace);
+    const found = await client.query<{
+      id: string;
+      online: number;
+      workbooks: number;
+    }>(
+      `SELECT id,free_online_used AS online,free_workbooks_used AS workbooks
+       FROM amp_learners WHERE account_id=$1 AND level_practice IS NOT NULL
+         AND deleted_at IS NULL FOR UPDATE`,
+      [accountId],
+    );
+    const previous = found.rows[0];
+    if (previous) await retire(families, client, accountId, previous.id);
+    else if (!(await familyHasLearnerRoom(client, accountId)))
+      throw new FamilyError(403, "too_many_learners");
+    const learnerId = randomUUID();
+    await client.query(
+      `INSERT INTO amp_learners(id,account_id,name,adult,simulation,starting_band,starting_policy,
+         starting_excluded_strands,level_practice,free_online_used,free_workbooks_used)
+       VALUES($1,$2,$3,true,true,$4,1,ARRAY[]::text[],$5,$6,$7)`,
+      [
+        learnerId,
+        accountId,
+        presetLabel(choice.grade, choice.pace),
+        nearestStart(levels),
+        JSON.stringify(choice),
+        previous?.online ?? 0,
+        previous?.workbooks ?? 0,
+      ],
+    );
+    await client.query(
+      "INSERT INTO amp_practice_settings(learner_id,state) VALUES($1,$2)",
+      [learnerId, JSON.stringify(startsAt(defaultPracticeSettings(), levels))],
+    );
+    return { learnerId };
+  });
+}
+
+/** Deletes a profile and everything it practiced, inside the caller's
+ * transaction. A problem report it filed stays, without its note. */
+async function retire(
+  families: FamilyRepository,
+  client: PoolClient,
+  accountId: string,
+  learnerId: string,
+) {
+  await client.query(
+    "UPDATE amp_problem_flags SET learner_id=NULL,note=NULL WHERE learner_id=$1",
+    [learnerId],
+  );
+  await client.query("DELETE FROM amp_learners WHERE id=$1", [learnerId]);
+  await families.audit(
+    client,
+    accountId,
+    "learner.learning-deleted",
+    learnerId,
+    1,
+  );
+}
+
+/** Every strand starting at `levels` from the first problem, no focus. */
+function startsAt(
+  previous: PracticeSettings,
+  levels: ProfileLevels,
+): PracticeSettings {
+  const revision = previous.revision + 1;
+  return {
+    ...previous,
+    revision,
+    epoch: previous.epoch + 1,
+    focusSkillId: null,
+    strandStarts: Object.fromEntries(
+      profileStrands.map((strand) => [
+        strand,
+        { level: levels[strand], revision },
+      ]),
+    ),
+  };
 }
 
 /** Makes a profile from a label and starting levels. Every strand starts at
@@ -167,8 +278,11 @@ export async function updateProfile(
 ): Promise<PracticeProfile> {
   return families.transaction(accountId, async (client) => {
     const found = await client.query<{ band: StartingChoice | null }>(
+      // Practice at a level's profile is never renamed or adjusted as a
+      // saved one: its level is chosen again (practiceAtLevel).
       `SELECT starting_band AS band FROM amp_learners
-       WHERE id=$1 AND account_id=$2 AND simulation AND deleted_at IS NULL FOR UPDATE`,
+       WHERE id=$1 AND account_id=$2 AND simulation AND level_practice IS NULL
+         AND deleted_at IS NULL FOR UPDATE`,
       [learnerId, accountId],
     );
     if (!found.rowCount) throw new FamilyError(404, "profile_not_found");

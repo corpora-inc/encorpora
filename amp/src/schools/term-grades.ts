@@ -1,3 +1,8 @@
+import {
+  familyDisplayNameSql,
+  holderDisplayNameSql,
+} from "../family/identity.js";
+import { adultNameSql } from "../account/profile.js";
 import type { PoolClient } from "pg";
 import { skills } from "../curriculum/catalog.js";
 import type { GradeBand } from "../curriculum/types.js";
@@ -50,8 +55,8 @@ import { DEFAULT_WEEKLY_TARGET_MINUTES } from "./practice-rules.js";
 type Database = Pick<PoolClient, "query">;
 const catalog = new Map(skills.map((skill) => [skill.id, skill]));
 /** SQL: a student's name for staff, and how a sentence calls them. */
-export const PERSON_NAME = `COALESCE(p.display_name,p.given_name||COALESCE(' '||p.family_name,''))`;
-export const PERSON_FIRST = `COALESCE(p.display_name,p.given_name)`;
+export const PERSON_NAME = `CASE WHEN p.learner_id IS NULL THEN COALESCE(${adultNameSql()},'') ELSE COALESCE(p.display_name,p.given_name||COALESCE(' '||p.family_name,'')) END`;
+export const PERSON_FIRST = `CASE WHEN p.learner_id IS NULL THEN COALESCE(${adultNameSql()},'') ELSE COALESCE(p.display_name,p.given_name) END`;
 
 export type ClassContext = {
   id: string;
@@ -68,6 +73,8 @@ export type ClassContext = {
   hour: number;
   /** The org's kind: a family's class reads for a family. */
   orgKind: string;
+  familyDisplayName?: string | null;
+  parentName?: string | null;
 };
 
 /** What a class is and when "today" is, as of `now`, in one read. */
@@ -80,6 +87,8 @@ export async function classContext(
     await db.query(
       `SELECT c.id,c.org_id AS "orgId",o.path,c.name,c.course_bands AS "courseBands",
          c.grading_kind AS "gradingKind",c.session_id AS "sessionId",o.name AS "orgName",o.timezone,o.kind AS "orgKind",
+         (SELECT ${familyDisplayNameSql("f.account_id")} FROM amp_families f WHERE f.org_id=o.id) AS "familyDisplayName",
+         (SELECT ${holderDisplayNameSql("f.account_id")} FROM amp_families f WHERE f.org_id=o.id) AS "parentName",
          to_char($2::timestamptz AT TIME ZONE o.timezone,'YYYY-MM-DD') AS today,
          extract(hour FROM $2::timestamptz AT TIME ZONE o.timezone)::int AS hour
        FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id WHERE c.id=$1`,

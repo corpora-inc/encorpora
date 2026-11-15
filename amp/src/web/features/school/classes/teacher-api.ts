@@ -91,18 +91,23 @@ export const evidenceOptions = (
       evidenceResponse,
     ),
   });
+/** `&from=` for a read that names its start, never more than the limit
+ * before its end. */
+const fromQuery = (from?: string) => (from ? `&from=${from}` : "");
 export const timeOptions = (
   session: Session,
   place: Place,
   period: TimePeriod,
+  /** A start, for a range whose own would be too long to read. */
+  from?: string,
 ) =>
   queryOptions({
-    queryKey: [...classKey(session, place), "time", period],
+    queryKey: [...classKey(session, place), "time", period, from ?? null],
     enabled: !!session,
     placeholderData: keepPreviousData,
     queryFn: read(
       session,
-      `${CLASS(place)}/time?period=${period}`,
+      `${CLASS(place)}/time?period=${period}${fromQuery(from)}`,
       timeResponse,
     ),
   });
@@ -111,13 +116,21 @@ export const studentTimeOptions = (
   place: Place,
   period: TimePeriod,
   student: string,
+  /** The class report's own start, so the two read the same days. */
+  from?: string,
 ) =>
   queryOptions({
-    queryKey: [...classKey(session, place), "student-time", period, student],
+    queryKey: [
+      ...classKey(session, place),
+      "student-time",
+      period,
+      student,
+      from ?? null,
+    ],
     enabled: !!session,
     queryFn: read(
       session,
-      `${CLASS(place)}/students/${student}/time?period=${period}`,
+      `${CLASS(place)}/students/${student}/time?period=${period}${fromQuery(from)}`,
       studentTimeResponse,
     ),
   });
@@ -151,6 +164,32 @@ export const workReplayOptions = (
     queryFn: read(
       session,
       `/school/students/${student}/work/${encodeURIComponent(attempt)}${
+        skill ? `?skill=${encodeURIComponent(skill)}` : ""
+      }`,
+      workReplayResponse,
+    ),
+  });
+/** One of the adult's own answers replayed (`/me`), under their own
+ * practice's key, so a change to it refreshes this too. */
+export const ownWorkReplayOptions = (
+  session: Session,
+  attempt: string,
+  skill?: string,
+) =>
+  queryOptions({
+    queryKey: [
+      "account",
+      session?.accountId ?? "",
+      "own-practice",
+      "work",
+      attempt,
+      skill ?? null,
+    ],
+    enabled: !!session,
+    staleTime: Infinity,
+    queryFn: read(
+      session,
+      `/me/practice/work/${encodeURIComponent(attempt)}${
         skill ? `?skill=${encodeURIComponent(skill)}` : ""
       }`,
       workReplayResponse,
@@ -301,8 +340,12 @@ export function useCloseTerm(session: Session, place: Place) {
   });
 }
 
-/** A file from the server, carrying the sign-in a plain link couldn't. */
-async function download(session: Session, path: string): Promise<string> {
+/** A file's response from the server, carrying the sign-in a plain link
+ * couldn't; a failure is an error that says what to do. */
+async function fetchFile(
+  session: Session,
+  path: string,
+): Promise<{ name: string; response: Response }> {
   const response = await fetch(`/api/v1${path}`, {
     headers: { Authorization: `Bearer ${session?.token ?? ""}` },
   });
@@ -323,7 +366,11 @@ async function download(session: Session, path: string): Promise<string> {
     /filename="([^"]+)"/.exec(
       response.headers.get("content-disposition") ?? "",
     )?.[1] ?? "export";
-  const url = URL.createObjectURL(await response.blob());
+  return { name, response };
+}
+/** Save a file the browser downloads. */
+function save(name: string, blob: Blob) {
+  const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
   link.download = name;
@@ -331,6 +378,26 @@ async function download(session: Session, path: string): Promise<string> {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
   return name;
 }
+async function download(session: Session, path: string): Promise<string> {
+  const { name, response } = await fetchFile(session, path);
+  return save(name, await response.blob());
+}
+/** A CSV's text and name, without saving it (to combine several). */
+export async function fetchCsv(
+  session: Session,
+  path: string,
+): Promise<{ name: string; text: string }> {
+  const { name, response } = await fetchFile(session, path);
+  return { name, text: await response.text() };
+}
+/** Save text as a CSV file the browser downloads, marked UTF-8 for a
+ * spreadsheet. */
+export const saveCsv = (name: string, text: string) =>
+  save(name, new Blob([`\uFEFF${text}`], { type: "text/csv" }));
+/** A class's time export's address, for a range that may start on a given
+ * day (`from`). */
+export const timeCsvPath = (place: Place, period: TimePeriod, from?: string) =>
+  `${CLASS(place)}/exports/time.csv?period=${period}${fromQuery(from)}`;
 export const downloadGradebook = (
   session: Session,
   place: Place,
@@ -350,4 +417,5 @@ export const downloadTime = (
   session: Session,
   place: Place,
   period: TimePeriod,
-) => download(session, `${CLASS(place)}/exports/time.csv?period=${period}`);
+  from?: string,
+) => download(session, timeCsvPath(place, period, from));

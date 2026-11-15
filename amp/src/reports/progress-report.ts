@@ -1,3 +1,4 @@
+import { byArea } from "../curriculum/areas";
 import { levelRange } from "../learning/level-check";
 import type { AdultStart } from "../learning/starting-point";
 import type {
@@ -39,10 +40,13 @@ export type ProgressReportInput = {
   grades?: StudentRecordResponse["grades"];
   /** The reader's own record: "Where you are", as the screen says. */
   own?: boolean;
+  /** A teacher's copy: modeling and reasoning too, after the five areas of
+   * math (curriculum/areas.ts `byArea`). A family's leaves them out. */
+  crossCutting?: boolean;
 };
 
 /** Where an adult chose to begin, in words. */
-export { adultStartNames } from "../learning/starting-point";
+export { adultStartNames, adultStartPhrases } from "../learning/starting-point";
 
 type Estimate = { level: number; sd: number };
 const fixed = (value: number) => value.toFixed(1);
@@ -69,18 +73,25 @@ function levels(input: ProgressReportInput) {
     estimate: Estimate,
     ink: string,
     lead = false,
+    nested = false,
   ) => {
     const [from, to] = levelRange(estimate);
-    return `<li class="levelRow${lead ? " lead" : ""}" style="--ink-strand:${ink}"><span class="levelName">${esc(label)}</span><span class="track">${lines}${course}<span class="band" style="left:${at(from)};width:calc(${at(to)} - ${at(from)})"></span><span class="dot" style="left:${at(estimate.level)}"></span></span><span class="levelNumbers">${fixed(from)}–${fixed(to)}</span></li>`;
+    return `<li class="levelRow${lead ? " lead" : ""}${nested ? " nested" : ""}" style="--ink-strand:${ink}"><span class="levelName">${esc(label)}</span><span class="track">${lines}${course}<span class="band" style="left:${at(from)};width:calc(${at(to)} - ${at(from)})"></span><span class="dot" style="left:${at(estimate.level)}"></span></span><span class="levelNumbers">${fixed(from)}–${fixed(to)}</span></li>`;
   };
   const [from, to] = levelRange(level.overall);
   const axis = grades
     .map((g) => `<span style="left:${at(g)}">${gradeTick(g)}</span>`)
     .join("");
   return `<div class="readout"><div><span class="label">Likely grade level, overall</span><p class="big display">${fixed(from)}<span class="dash">–</span>${fixed(to)}</p></div><dl class="facts"><div><dt class="label">Best estimate</dt><dd>Grade ${fixed(level.overall.level)}</dd></div>${reference ? `<div><dt class="label">Course</dt><dd>Grade ${fixed(reference.from)}–${fixed(reference.to)}</dd></div>` : ""}<div><dt class="label">Strands read</dt><dd>${strands.length}</dd></div></dl></div>
-<div class="chart"><div class="axisRow"><span></span><span class="axis">${axis}</span><span class="levelNumbers label">Grade</span></div><ul>${row("Overall", level.overall, "var(--accent)", true)}${strands
-    .filter((s) => level.strands[s.id])
-    .map((s) => row(s.label, level.strands[s.id]!, strandInk(s.id)))
+<div class="chart"><div class="axisRow"><span></span><span class="axis">${axis}</span><span class="levelNumbers label">Grade</span></div><ul>${row("Overall", level.overall, "var(--accent)", true)}${byArea(
+    strands.filter((s) => level.strands[s.id]),
+    { crossCutting: input.crossCutting },
+  )
+    .map(
+      (s) =>
+        (s.heading ? `<li class="levelGroup">${esc(s.heading)}</li>` : "") +
+        row(s.label, level.strands[s.id]!, strandInk(s.id), false, s.nested),
+    )
     .join("")}</ul></div>
 <p class="note legend"><span class="key"><span class="keyBand"></span>Likely range</span><span class="key"><span class="keyDot"></span>Best estimate</span>${reference ? `<span class="key"><span class="keyCourse"></span>This course</span>` : ""}<span>Ranges narrow as more work is read.</span></p>`;
 }
@@ -115,10 +126,20 @@ function skills(time: NonNullable<ProgressReportInput["time"]>) {
 
 function grades(list: NonNullable<ProgressReportInput["grades"]>) {
   if (!list.length) return "";
-  return `<section class="section"><div class="sectionHead"><h2>Grades</h2><p>Final grades are the teacher’s</p></div><table class="grades"><thead><tr><th>Class</th><th>Term</th><th>AMP suggests</th><th>Final</th></tr></thead><tbody>${list
+  const deciders = [
+    ...new Set(
+      list.map((g) =>
+        g.family ? (g.family.parentName ?? "the parent") : "the teacher",
+      ),
+    ),
+  ];
+  const decision = list.some((g) => g.family)
+    ? `Final grades are decided by ${deciders.join(" and ")}`
+    : "Final grades are the teacher’s";
+  return `<section class="section"><div class="sectionHead"><h2>Grades</h2><p>${esc(decision)}</p></div><table class="grades"><thead><tr><th>${list.every((g) => g.family) ? "Family" : "Class"}</th><th>Term</th><th>AMP suggests</th><th>Final</th></tr></thead><tbody>${list
     .map(
       (g) =>
-        `<tr><td>${esc(g.className)}</td><td>${esc(g.termName)}${g.state === "closed" ? ' <span class="quiet">(closed)</span>' : ""}</td><td>${g.suggestion.letters ? esc(g.suggestion.letters) : '<span class="quiet">Not enough work yet</span>'}</td><td class="final">${g.final ? esc(g.final) : '<span class="quiet">—</span>'}</td></tr>`,
+        `<tr><td>${esc(g.family ? (g.family.displayName ?? "Your family") : g.className)}</td><td>${esc(g.termName)}${g.state === "closed" ? ' <span class="quiet">(closed)</span>' : ""}</td><td>${g.suggestion.letters ? esc(g.suggestion.letters) : '<span class="quiet">Not enough work yet</span>'}</td><td class="final">${g.final ? esc(g.final) : '<span class="quiet">—</span>'}</td></tr>`,
     )
     .join("")}</tbody></table></section>`;
 }
@@ -157,6 +178,8 @@ const CSS = `
 .levelRow.lead .levelName, .levelRow.lead .levelNumbers { font-weight: 700; }
 .levelRow:last-child { border-bottom: 0.6pt solid var(--grid); }
 .levelName { font-size: 9.5pt; line-height: 1.2; }
+.levelGroup { padding: 0.08in 0 0.03in; border-top: 0.6pt solid var(--grid); font-size: 8pt; font-weight: 700; break-after: avoid; }
+.levelRow.nested .levelName { padding-left: 0.12in; }
 .levelNumbers { font-size: 9pt; text-align: right; white-space: nowrap; }
 .track { position: relative; align-self: stretch; }
 .gridLine { position: absolute; top: 0; bottom: 0; width: 0; border-left: 0.6pt solid var(--grid); }

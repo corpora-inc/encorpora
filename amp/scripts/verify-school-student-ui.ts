@@ -369,7 +369,7 @@ try {
     await close();
   }
   {
-    // A seated student's home: the setting decides the grade numbers.
+    // A seated student's home: their school or grown-up decides grade levels.
     const { page, close } = await open(fresh({ levels: "hidden" }));
     await page.getByRole("button", { name: "Go", exact: true }).waitFor();
     assert.equal(await page.getByText("Change birth year").count(), 0);
@@ -391,11 +391,10 @@ try {
     await close();
   }
   {
+    // An older "choice" had a device toggle behind it; with none, it shows.
     const { page, close } = await open(fresh({ levels: "choice" }));
-    const toggle = page.getByLabel("Show grade numbers");
-    await toggle.first().waitFor();
-    assert.equal(await toggle.first().isChecked(), false);
-    await toggle.first().check();
+    await page.getByRole("button", { name: "Go", exact: true }).waitFor();
+    assert.equal(await page.getByLabel(/grade numbers/i).count(), 0);
     await drawer(page);
     await page.getByRole("link", { name: "Progress", exact: true }).click();
     await page.waitForURL(`${origin}/overview`);
@@ -438,7 +437,7 @@ try {
       slowJoin: 2000,
     });
     await page.waitForURL("**/join");
-    await page.getByRole("heading", { name: "Type your class code" }).waitFor();
+    await page.getByRole("heading", { name: "Type your code" }).waitFor();
     assert.equal(new URL(page.url()).pathname, "/join");
     assert.equal(
       await page.evaluate(() => sessionStorage.getItem("amp.student")),

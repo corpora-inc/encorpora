@@ -4,9 +4,12 @@
  *
  *   class map → a student → their missed answer → its lesson → the film
  *
- * then X on each, back out to the map. The same chain closes the same way
- * with the browser's Back, after a refresh at every step, and from a shared
- * link with no history (each view falls back to its logical parent, never
+ * then X on each, back out to the map. X puts the stack of sheets away, back
+ * to the context it was opened from: the film to its lesson, the lesson to
+ * the answer replay under it (a replay is a base of its own), the replay to
+ * the map. Back steps one layer at a time; after X, Back brings back what
+ * that X put away. The same closes hold after a
+ * refresh at every step and from a shared link with no history (never
  * Pathways or the learner's home). An answer opened from Today closes back
  * to Today.
  *
@@ -151,7 +154,7 @@ async function shows(page: Page, step: keyof Chain, student: string) {
   }
   if (step === "lesson") {
     await lessonDialog(page).waitFor();
-    await page.locator(".lesson-film-link").waitFor();
+    await page.locator("[data-film-link]").waitFor();
     return;
   }
   await lessonDialog(page).waitFor({ state: "hidden" });
@@ -205,7 +208,7 @@ async function open(
   await shows(page, "lesson", miss.student);
   const lesson = here(page);
   if (record) await snap(page, "lesson-over-answer");
-  await lessonDialog(page).locator(".lesson-film-link").click();
+  await lessonDialog(page).locator("[data-film-link]").click();
   await shows(page, "film", miss.student);
   const film = here(page);
   assert.match(film, /^\/lessons\/[^/]+\/watch\?/);
@@ -268,19 +271,15 @@ try {
     await shows(page, "answer", miss.student);
     await snap(page, "x-lesson-answer");
     await closeAnswer(page);
-    await expectAt(page, chain.sheet, "X on the answer returns to the student");
-    await shows(page, "sheet", miss.student);
-    await snap(page, "x-answer-student");
-    await closeSheet(page, miss.student);
-    await expectAt(page, chain.map, "X on the student returns to the map");
+    await expectAt(page, chain.map, "X on the answer returns to the map");
     await shows(page, "map", miss.student);
-    await snap(page, "x-student-map");
-    // Back after the closes never reopens what was closed.
+    await snap(page, "x-answer-map");
+    // Closing the stack is one step in history (nav/links closeAll): Back
+    // brings back what X put away, the answer, never the film.
     await page.goBack();
-    await page.waitForTimeout(500);
-    assert.doesNotMatch(here(page), /open=|\/watch/);
+    await expectAt(page, chain.answer, "Back after X brings the answer back");
     await context.close();
-    console.log(`${width}: X returns along the path`);
+    console.log(`${width}: X returns to each sheet's context`);
   }
 
   // 2. The browser's Back does what X does.
@@ -303,8 +302,7 @@ try {
     const steps = [
       ["film", "lesson", closeFilm],
       ["lesson", "answer", closeLesson],
-      ["answer", "sheet", closeAnswer],
-      ["sheet", "map", (p: Page) => closeSheet(p, miss.student)],
+      ["answer", "map", closeAnswer],
     ] as const;
     for (const [at, to, close] of steps) {
       await page.reload();
@@ -313,12 +311,11 @@ try {
       await expectAt(page, chain[to], `After a refresh, X from the ${at}`);
       await shows(page, to, miss.student);
     }
-    // And Back after them never reopens what was closed.
+    // And Back after them brings back only what the last X put away.
     await page.goBack();
-    await page.waitForTimeout(500);
-    assert.doesNotMatch(here(page), /open=|\/watch/);
+    await expectAt(page, chain.answer, "Back after X brings the answer back");
     await context.close();
-    console.log("After a refresh, X returns along the path");
+    console.log("After a refresh, X returns to each sheet's context");
   }
 
   // 4. A shared link, with no history: each view closes to its logical
@@ -333,7 +330,7 @@ try {
     for (const [at, to, close] of [
       ["film", "lesson", closeFilm],
       ["lesson", "answer", closeLesson],
-      ["answer", "sheet", closeAnswer],
+      ["answer", "map", closeAnswer],
       ["sheet", "map", (p: Page) => closeSheet(p, miss.student)],
     ] as const) {
       const { context, page } = await fresh(1280);
@@ -360,20 +357,9 @@ try {
     await link.click();
     await replayLayer(page).waitFor();
     await closeAnswer(page);
-    await page.locator("[data-map-student-record]").waitFor();
-    assert.match(
-      here(page),
-      /\/today\?.*open=student/,
-      "X pops to the student",
-    );
-    await page
-      .locator('[role="dialog"]:has([data-map-student-record])')
-      .getByRole("button", { name: /^Close/ })
-      .first()
-      .click();
-    await expectAt(page, today, "then to Today");
+    await expectAt(page, today, "X on the answer returns to Today");
     await context.close();
-    console.log("A miss opened from Today closes to Today, a layer at a time");
+    console.log("A miss opened from Today closes to Today");
   }
   console.log(`close-context: ok (${shot} screenshots in ${OUT})`);
 } finally {

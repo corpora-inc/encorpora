@@ -57,7 +57,7 @@ test(
 
     const as = (account: string) => ({ authorization: `Bearer ${account}` });
     const send = (
-      method: "GET" | "POST" | "PATCH" | "DELETE",
+      method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE",
       path: string,
       account: string,
       payload?: object,
@@ -270,6 +270,246 @@ test(
         0,
       );
     });
+
+    await t.test(
+      "practice at a level: one unnamed profile, a fresh simulation at every choice",
+      async () => {
+        const helper = await user("Sage Fixture");
+        const choose = async (grade: number, pace: string) => {
+          const response = await send(
+            "PUT",
+            "/api/v1/me/practice-at-level",
+            helper,
+            { grade, pace },
+          );
+          assert.equal(response.statusCode, 200, response.body);
+          return response.json().learnerId as string;
+        };
+        const read = async (id: string, what: "frontier" | "progress") => {
+          const response = await send(
+            "GET",
+            `/api/v1/learners/${id}/${what}`,
+            helper,
+          );
+          assert.equal(response.statusCode, 200, response.body);
+          return response.json();
+        };
+        /** Everything the simulation's practice reads, by learner. */
+        const evidence = async (id: string) =>
+          (
+            await db.query(
+              `SELECT (SELECT count(*) FROM amp_attempts WHERE learner_id=$1)::int AS attempts,
+                 (SELECT count(*) FROM amp_skill_evidence WHERE learner_id=$1)::int AS skills,
+                 (SELECT count(*) FROM amp_level_days WHERE learner_id=$1)::int AS levels,
+                 (SELECT count(*) FROM amp_instances WHERE learner_id=$1)::int AS served`,
+              [id],
+            )
+          ).rows[0];
+        // No child, no consent, no birth year: an adult and a grade.
+        const fourth = await choose(4, "on-level");
+        assert.ok(
+          Math.abs((await read(fourth, "frontier")).overall.level - 4) < 0.75,
+          "it starts at grade 4",
+        );
+        for (let i = 0; i < 3; i++) await practice(helper, fourth);
+        assert.equal((await evidence(fourth)).attempts, 3);
+        const used = (
+          await db.query(
+            "SELECT free_online_used FROM amp_learners WHERE id=$1",
+            [fourth],
+          )
+        ).rows[0].free_online_used as number;
+        assert.ok(used >= 3);
+
+        // Two tabs: one still has a grade-4 problem open when the other
+        // chooses grade 9.
+        const oldTab = await send(
+          "POST",
+          `/api/v1/learners/${fourth}/batches`,
+          helper,
+          { count: 1 },
+        );
+        assert.equal(oldTab.statusCode, 200, oldTab.body);
+        const stale = oldTab.json().problems[0];
+        const ninth = await choose(9, "on-level");
+        assert.notEqual(ninth, fourth, "a new choice is a new simulation");
+        // The last choice is gone whole: its answers, skill evidence,
+        // levels and served problems, so nothing of it reaches the new one.
+        assert.deepEqual(await evidence(fourth), {
+          attempts: 0,
+          skills: 0,
+          levels: 0,
+          served: 0,
+        });
+        const fresh = await read(ninth, "frontier");
+        assert.equal(fresh.overall.answered, 0);
+        assert.ok(Math.abs(fresh.overall.level - 9) < 0.75, "it starts at 9");
+        const progress = await read(ninth, "progress");
+        assert.deepEqual(
+          (progress.skills as { attempts?: number }[]).filter(
+            (skill) => (skill.attempts ?? 0) > 0,
+          ),
+          [],
+          "no skill carries its old work",
+        );
+        // The old tab's answer changes nothing: its practice is gone.
+        const late = await send(
+          "POST",
+          `/api/v1/learners/${fourth}/attempts`,
+          helper,
+          { problemId: stale.id, requestId: randomUUID(), response: "1" },
+        );
+        // Refused, whichever check meets it first (no such practice, or
+        // no learner here to consent for).
+        assert.ok([403, 404].includes(late.statusCode), late.body);
+        assert.deepEqual(await evidence(fourth), {
+          attempts: 0,
+          skills: 0,
+          levels: 0,
+          served: 0,
+        });
+        assert.deepEqual(await evidence(ninth), {
+          attempts: 0,
+          skills: 0,
+          levels: (await evidence(ninth)).levels,
+          served: (await evidence(ninth)).served,
+        });
+        assert.equal((await read(ninth, "frontier")).overall.answered, 0);
+        // The free allowance carries over: a new choice never refills it.
+        assert.equal(
+          (
+            await db.query(
+              "SELECT free_online_used FROM amp_learners WHERE id=$1",
+              [ninth],
+            )
+          ).rows[0].free_online_used,
+          used,
+        );
+        await practice(helper, ninth);
+        assert.equal((await read(ninth, "frontier")).overall.answered, 1);
+
+        // The same grade again is fresh again; one level profile at a time.
+        const again = await choose(9, "on-level");
+        assert.notEqual(again, ninth);
+        assert.equal((await read(again, "frontier")).overall.answered, 0);
+        assert.deepEqual((await me(helper)).practiceProfiles, [
+          {
+            id: again,
+            label: "9th grade · on level",
+            levels: presetLevels(9, "on-level"),
+            level: { grade: 9, pace: "on-level" },
+          },
+        ]);
+        const rows = (
+          await db.query(
+            "SELECT birth_year,adult,simulation FROM amp_learners WHERE account_id=$1",
+            [helper],
+          )
+        ).rows;
+        assert.deepEqual(rows, [
+          { birth_year: null, adult: true, simulation: true },
+        ]);
+
+        // It is never renamed or adjusted as a saved profile: that would
+        // be lost at the next choice.
+        const renamed = await send(
+          "PATCH",
+          `/api/v1/me/profiles/${again}`,
+          helper,
+          { label: "Niece Fixture" },
+        );
+        assert.equal(renamed.statusCode, 404, renamed.body);
+
+        // Another account's level profile is its own; nothing crosses.
+        const other = await user("Remy Fixture");
+        await consent(other);
+        const theirs = await send(
+          "PUT",
+          "/api/v1/me/practice-at-level",
+          other,
+          { grade: 0, pace: "ahead" },
+        );
+        assert.notEqual(theirs.json().learnerId, again);
+        const refused = await send(
+          "POST",
+          `/api/v1/learners/${again}/batches`,
+          other,
+          { count: 1 },
+        );
+        assert.equal(refused.statusCode, 404, refused.body);
+
+        // A grade outside K–12 or an unknown pace is refused, and nothing
+        // changes.
+        for (const body of [
+          { grade: 13, pace: "on-level" },
+          { grade: 4, pace: "fast" },
+          { grade: 4, pace: "on-level", label: "Maya" },
+        ]) {
+          const bad = await send(
+            "PUT",
+            "/api/v1/me/practice-at-level",
+            helper,
+            body,
+          );
+          assert.equal(bad.statusCode, 400, bad.body);
+        }
+        assert.equal((await me(helper)).practiceProfiles[0].id, again);
+      },
+    );
+
+    await t.test(
+      "an adult replays their own answer, and only their own",
+      async () => {
+        const adult = await user("Indigo Fixture");
+        const started = await send("POST", "/api/v1/me/practice", adult, {
+          start: "algebra-1",
+          timezone: "America/Chicago",
+        });
+        assert.equal(started.statusCode, 201, started.body);
+        const own = started.json().learnerId as string;
+        const problem = await practice(adult, own);
+        const attempt = (
+          await db.query(
+            "SELECT id FROM amp_attempts WHERE learner_id=$1 AND problem_id=$2",
+            [own, problem.id],
+          )
+        ).rows[0].id as string;
+        const replay = await send(
+          "GET",
+          `/api/v1/me/practice/work/${attempt}`,
+          adult,
+        );
+        assert.equal(replay.statusCode, 200, replay.body);
+        assert.equal(replay.json().item.id, attempt);
+        assert.equal(replay.json().student.id, own);
+        // Someone else's answer, or a profile's, is not theirs to replay.
+        const level = await send("PUT", "/api/v1/me/practice-at-level", adult, {
+          grade: 3,
+          pace: "on-level",
+        });
+        const profile = level.json().learnerId as string;
+        const asProfile = await practice(adult, profile);
+        const profileAttempt = (
+          await db.query(
+            "SELECT id FROM amp_attempts WHERE learner_id=$1 AND problem_id=$2",
+            [profile, asProfile.id],
+          )
+        ).rows[0].id as string;
+        const stranger = await user("Juno Fixture");
+        for (const [account, id] of [
+          [stranger, attempt],
+          [adult, profileAttempt],
+          [adult, "0123456789abcdef"],
+        ] as const) {
+          const refused = await send(
+            "GET",
+            `/api/v1/me/practice/work/${id}`,
+            account,
+          );
+          assert.equal(refused.statusCode, 404, refused.body);
+        }
+      },
+    );
 
     await t.test(
       "a profile is left out of every real learner's place",

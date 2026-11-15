@@ -19,14 +19,14 @@ import {
 import { Badge } from "../../../ui/Badge";
 import { Loading } from "../../../ui/Loading";
 import { useStaffSession } from "./api";
-import { workReplayOptions } from "./teacher-api";
+import { ownWorkReplayOptions, workReplayOptions } from "./teacher-api";
 import { clockTime, resultLabel, resultTone, shortDay } from "./teacher-shared";
 import styles from "./WorkReplay.module.css";
 import { closeTo } from "../../../lib/return-to";
 import {
   OPEN_KEY,
-  popLayer,
   readStack,
+  ownWork,
   replaceTop,
   work,
 } from "../../../nav/entities";
@@ -102,7 +102,10 @@ export function WorkReplay({
   workPath,
   closePath,
   layer,
+  own = false,
 }: {
+  /** The reader's own answer (`/me`): `student` is unused. */
+  own?: boolean;
   student: string;
   attempt: string;
   /** Narrows Previous and Next to one skill (from Today). */
@@ -124,16 +127,23 @@ export function WorkReplay({
   // its film, comes back to this answer in its class (lib/return-to.ts).
   const raw = useSearch({ strict: false }) as Record<string, unknown>;
   const covered = layer ? layer.covered : readStack(raw[OPEN_KEY]).length > 0;
-  const query = useQuery(workReplayOptions(session, student, attempt, skill));
+  // The reader's own answer (`/me`) reads from their own practice; a
+  // student's from their record.
+  // One shape for both: the same response, under each one's own key.
+  const options = (id: string) =>
+    own
+      ? (ownWorkReplayOptions(session, id, skill) as unknown as ReturnType<
+          typeof workReplayOptions
+        >)
+      : workReplayOptions(session, student, id, skill);
+  const entityOf = (id: string) => (own ? ownWork(id) : work(student, id));
+  const query = useQuery(options(attempt));
   const replay = query.data;
   usePracticeViewport(true);
   // The neighbours are fetched as this one shows, so stepping is instant.
   useEffect(() => {
     for (const id of [replay?.previous, replay?.next])
-      if (id)
-        void client
-          .prefetchQuery(workReplayOptions(session, student, id, skill))
-          .catch(() => undefined);
+      if (id) void client.prefetchQuery(options(id)).catch(() => undefined);
   }, [replay?.previous, replay?.next]);
   const search: Record<string, string> = skill ? { skill } : {};
   // Back to where it was opened: the record, Today, a gradebook's evidence.
@@ -147,7 +157,7 @@ export function WorkReplay({
           to: ".",
           search: ((current: Record<string, unknown>) => ({
             ...current,
-            [OPEN_KEY]: replaceTop(current[OPEN_KEY], work(student, to)),
+            [OPEN_KEY]: replaceTop(current[OPEN_KEY], entityOf(to)),
           })) as never,
           replace: true,
           resetScroll: false,
@@ -180,7 +190,7 @@ export function WorkReplay({
   /** A link to another of their answers, swapping this one. */
   const Answer: AnswerLink = ({ to, children, ...rest }) =>
     layer ? (
-      <EntityLink entity={work(student, to)} replace {...rest}>
+      <EntityLink entity={entityOf(to)} replace {...rest}>
         {children}
       </EntityLink>
     ) : (
@@ -194,15 +204,18 @@ export function WorkReplay({
         {children}
       </Link>
     );
-  const who = replay?.student.first ?? "";
+  // Their own answer never names them back to them (docs/design/ia.md).
+  const who = own ? "" : (replay?.student.first ?? "");
   const closeLink = (
     <Link
       {...((layer
         ? {
             to: ".",
+            // Closing an answer puts the sheets away, back to the page it
+            // was opened over (the layer's close, nav/entities closeDepth).
             search: (current: Record<string, unknown>) => ({
               ...current,
-              [OPEN_KEY]: popLayer(current[OPEN_KEY]),
+              [OPEN_KEY]: undefined,
             }),
           }
         : { to: "/$", params: { _splat: closePath } }) as unknown as {
@@ -214,7 +227,7 @@ export function WorkReplay({
         close();
       }}
       className="workspace-level"
-      aria-label={who ? `Close, back to ${who}` : "Close"}
+      aria-label="Close"
       data-replay-close=""
     >
       <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -250,7 +263,9 @@ export function WorkReplay({
             </h2>
             <p>
               {missing
-                ? "It may belong to a student you can’t see, or the link may be wrong."
+                ? own
+                  ? "The link may be wrong, or the answer was deleted with its practice."
+                  : "It may belong to a student you can’t see, or the link may be wrong."
                 : "Check your connection, then try again."}
             </p>
             {!missing && (
@@ -274,7 +289,7 @@ export function WorkReplay({
       <Frame
         close={closeLink}
         topic={replay.item.skill}
-        status={<When replay={replay} />}
+        status={<When replay={replay} own={own} />}
       >
         <div className={styles.fallback} data-replay-unavailable="">
           <h2>This problem’s original form isn’t available</h2>
@@ -322,9 +337,9 @@ export function WorkReplay({
           exit={close}
           exitHref={`/${closePath}`}
           navigation={closeLink}
-          status={<When replay={replay} />}
+          status={<When replay={replay} own={own} />}
           review={{
-            who,
+            who: own ? null : who,
             actions: steps,
             facts: <Facts replay={replay} Answer={Answer} />,
             support: supportWords(replay.help),
@@ -338,7 +353,11 @@ export function WorkReplay({
       role="dialog"
       aria-modal="true"
       aria-label={
-        replay ? `${who}’s answer: ${replay.item.skill}` : "An answer"
+        replay
+          ? own
+            ? `Your answer: ${replay.item.skill}`
+            : `${who}’s answer: ${replay.item.skill}`
+          : "An answer"
       }
     >
       {body}
@@ -374,11 +393,18 @@ function Frame({
 
 /** Who, when and how it counted, in the bar: "Ana · Nov 10, 2:42 PM"
  * and the result. */
-function When({ replay }: { replay: WorkReplayResponse }) {
+function When({
+  replay,
+  own = false,
+}: {
+  replay: WorkReplayResponse;
+  own?: boolean;
+}) {
   return (
     <span className={styles.status}>
       <span className={styles.when}>
-        {replay.student.first} · {shortDay(replay.item.day)}
+        {own ? "" : `${replay.student.first} · `}
+        {shortDay(replay.item.day)}
         {replay.item.at ? `, ${clockTime(replay.item.at)}` : ""}
         {replay.item.review ? " · Spaced review" : ""}
       </span>

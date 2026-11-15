@@ -1,0 +1,94 @@
+/* Practice at a level: one column, the grade, the pace, Start. */
+.page {
+  box-sizing: border-box;
+  width: min(100%, var(--width-content-wide));
+  margin: 0 auto;
+  padding: var(--space-5) max(var(--space-4), env(safe-area-inset-right)) 0
+    max(var(--space-4), env(safe-area-inset-left));
+}
+.form {
+  display: grid;
+  gap: var(--space-5);
+  max-width: 560px;
+  margin-inline: auto;
+}
+.head {
+  display: block;
+}
+.head h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-title-min), 7vw, var(--text-heading-1));
+  font-weight: 400;
+  line-height: 1.15;
+}
+.head p {
+  max-width: 52ch;
+  margin: var(--space-2) 0 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-body);
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+.field {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
+  container-type: inline-size;
+}
+.label {
+  font-size: var(--text-label);
+  font-weight: 650;
+  line-height: 1.3;
+}
+/* Reserved: the caption never moves what follows. */
+.caption {
+  min-height: 1.4em;
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-5);
+  padding-bottom: max(var(--space-6), env(safe-area-inset-bottom));
+}
+.go {
+  flex: 0 0 auto;
+  min-width: 12rem;
+  transition: opacity var(--motion-fast) var(--ease-standard);
+}
+.go[data-waiting] {
+  opacity: 0.38;
+  filter: none;
+}
+/* A quiet link, a full touch target. */
+.save {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-primary);
+  font-size: var(--text-label);
+  font-weight: 650;
+  text-decoration: none;
+}
+.save:hover {
+  text-decoration: underline;
+}
+.save:focus-visible {
+  border-radius: var(--radius-control);
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+@media (max-width: 599px) {
+  .go {
+    flex: 1 1 100%;
+  }
+  .actions {
+    justify-content: center;
+  }
+}

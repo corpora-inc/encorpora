@@ -72,6 +72,23 @@ One account can be a parent, have a free assessment under way and work at school
 - **The place switcher** (`src/web/features/navigation/PlaceSwitcher.tsx`) is one menu in the family drawer, the school's rail and drawer, and setup's rail and bar. It lists the family side, the adult's own practice ([families](families.md)), and each school with the person's role there, or "Finish setting up", and only places this account can open. Choosing one remembers it.
 - `npm run test:school-places-ui` checks both in real browsers: a trial and a half-finished setup, a parent who runs a school, the switcher everywhere it appears, and Back, Forward and reload between the two sides.
 
+## Time report dates
+
+Class Time, individual-student Time and the class Time CSV export accept
+`period=week|weeks|term` and an optional inclusive `from=YYYY-MM-DD`.
+`week` starts on Monday, `weeks` covers four Monday-based weeks, and `term` uses
+the current or last begun term. The end is today in the class timezone, capped
+at the term end for `term`. `month` is an alias for `weeks`, the default period.
+`from` changes only the start, without rounding to a week boundary. If no term
+has begun, `term` uses the four-week range.
+
+The resolved range may contain at most **400 inclusive calendar days**. Every
+Time JSON and CSV read, including [owned-child Time](architecture/family-api.md#individual-time),
+uses the same bound. Excessive ranges return `400 time_range_too_long` before
+reading evidence or generating weeks; a start after the end returns
+`400 invalid_time_range`. Reports are never silently truncated. Supply a later
+`from` to narrow an oversized term.
+
 ## Student experience is the school's choice
 
 Schools have real philosophies here, and this control is a selling point. Settings cascade **district → school → class → student**. A higher level can lock one, and the screen shows who set it.

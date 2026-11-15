@@ -257,7 +257,12 @@ try {
   await page.goto(page.url().replace(/\/roster$/, "/today"));
   await page.getByRole("heading", { name: "Practice has ended" }).waitFor();
   // Nothing that leads nowhere: no class code, no cards, no Start.
-  assert.equal(await page.getByText("Copy link").count(), 0);
+  // (The code's slot keeps a hidden height-holder: only what can be used
+  // counts.)
+  assert.equal(
+    await page.getByRole("button", { name: "Copy link" }).count(),
+    0,
+  );
   assert.equal(await page.getByRole("button", { name: /Start/ }).count(), 0);
   await page
     .getByRole("button", { name: "Request seats", exact: true })
@@ -418,6 +423,16 @@ try {
       },
     });
   });
+  // The class's own state agrees: its students can practice (the server
+  // gates the code on it, SPEC R14).
+  const yearUrl = `**/api/v1/school/classes/${created.class_id}/year`;
+  await page.route(yearUrl, async (route) => {
+    const response = await route.fetch();
+    await route.fulfill({
+      response,
+      json: { ...(await response.json()), practice: "open" },
+    });
+  });
   await page.goto(
     `${origin}/school/${created.org_id}/classes/${created.class_id}/today`,
   );
@@ -435,6 +450,7 @@ try {
   );
   await capture("partial-coverage");
   await page.unroute(pilotUrl);
+  await page.unroute(yearUrl);
   const guest = await browser.newContext();
   const buyerPage = await guest.newPage();
   await buyerPage.goto(buyer);

@@ -1,4 +1,5 @@
 import { afterEach, expect, test, vi } from "vitest";
+import { forgetRetiredSessions } from "../session-generation";
 import { act, render, cleanup, screen, waitFor } from "@testing-library/react";
 import { Providers } from "../../app/providers";
 import {
@@ -48,6 +49,9 @@ vi.mock("../analytics", async (importOriginal) => ({
 const parent = { token: "synthetic", accountId: "parent-a" };
 const signedOut = { signedIn: false, next: "sign-in" };
 afterEach(() => {
+  // Each test reuses one synthetic token: a session one retires is current
+  // again in the next (lib/session-generation.ts).
+  forgetRetiredSessions();
   cleanup();
   runtime.nativeRuntime = false;
   queryClient.clear();

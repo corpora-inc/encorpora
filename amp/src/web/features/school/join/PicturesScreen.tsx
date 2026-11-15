@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Navigate, useParams, useRouter } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
+  formatJoinCode,
   normalizeJoinCode,
   schoolPictures,
   type SchoolPicture,
@@ -155,7 +156,14 @@ export function PicturesScreen() {
   if (roster.isError && !roster.data)
     return <JoinProblem message={roster.error.message} />;
   if (!roster.data) return <LoadingScreen />;
-  if (!student) return <Navigate to="/join/$code" params={{ code }} replace />;
+  if (!student)
+    return (
+      <Navigate
+        to="/join/$code"
+        params={{ code: formatJoinCode(code) }}
+        replace
+      />
+    );
   const confirming = firstTime && picks.length === PICKS && !busy && !stop;
   const title = stop
     ? stop.message
@@ -169,7 +177,7 @@ export function PicturesScreen() {
       lead={
         <BackLink
           to="/join/$code"
-          params={{ code }}
+          params={{ code: formatJoinCode(code) }}
           label="Back to the names"
         />
       }

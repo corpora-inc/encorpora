@@ -131,3 +131,11 @@ test("the activity log has a sentence for every family link, standings and marki
     "Ms. Okafor marked 12 answers in Amara Osei’s workbook",
   );
 });
+
+test("an enrolled teacher without a name is not reported as an unstaffed class", () => {
+  const items = attentionFor({
+    ...rollup("school"),
+    classes: [{ ...klass("20", north, []), teacherNames: [null] }],
+  } as never);
+  assert.ok(!items.some((item) => item.id === "no-teacher"));
+});

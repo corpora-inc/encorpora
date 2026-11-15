@@ -1,3 +1,6 @@
+import { setupSteps } from "../features/school/paths";
+import { appReturn } from "../features/spaces/returns";
+import { carriedLink } from "./link-carry";
 import { returnTarget } from "./return-to";
 import {
   isPitchEntry,
@@ -79,24 +82,41 @@ export type FundedSearch = CampaignSearch & {
   entry?: SignupIntent["entry"];
   next?: string;
 };
-/** Only a path inside staff screens survives sign-in: never another site, and
- * no protocol or `..` to climb out with. */
-export const safeSchoolPath = (value: unknown) =>
-  typeof value === "string" &&
-  value.length <= 300 &&
-  /^\/school(\/[\w-]+)*(\?[\w=&%-]*)?$/.test(value)
-    ? value
-    : undefined;
-/** An invitation being carried across sign-in on this device. Its token never
- * goes in a query string, which a server or report could see. */
-const stored = (key: string) => {
+/** A school's own setup steps, which a sign-in must come back to (an
+ * invitation's `/school/new?org=…`). Only each step's own fields, each
+ * validated: an org or district id, a setup step, `manage=1`. Nothing else
+ * in the query, and never a fragment. */
+const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const SETUP_STEPS: readonly string[] = setupSteps;
+const schoolStep = (value: unknown) => {
+  if (typeof value !== "string" || value.length > 2048) return undefined;
+  let url: URL;
   try {
-    return localStorage.getItem(key);
+    url = new URL(value, "https://amp.invalid");
   } catch {
-    return null;
+    return undefined;
   }
+  if (url.origin !== "https://amp.invalid") return undefined;
+  const step = /^\/school\/(new|start|connect|adopt)$/.exec(url.pathname)?.[1];
+  if (!step || !value.startsWith("/school/")) return undefined;
+  const kept = new URLSearchParams();
+  const org = url.searchParams.get("org");
+  if ((step === "new" || step === "start") && org && UUID.test(org))
+    kept.set("org", org);
+  const at = url.searchParams.get("step");
+  if (step === "new" && at && SETUP_STEPS.includes(at)) kept.set("step", at);
+  const district = url.searchParams.get("district");
+  if (step === "adopt" && district && UUID.test(district))
+    kept.set("district", district);
+  if (step === "adopt" && url.searchParams.get("manage") === "1")
+    kept.set("manage", "1");
+  const query = kept.toString();
+  return query ? `${url.pathname}?${query}` : url.pathname;
 };
-const pendingInvite = () => stored("amp.school-invite");
+/** Where a sign-in continues: any place, by the one return contract
+ * (`appReturn`), or a school's own setup step. */
+export const safeSchoolPath = (value: unknown) =>
+  appReturn(value) ?? schoolStep(value);
 
 export function measurementOptOut() {
   if (typeof navigator === "undefined") return false;
@@ -142,9 +162,13 @@ export function continuationSearch(
       ? { return: search.return }
       : {}),
     ...(search.return === "security" &&
-    returnTarget(search.next) === "/family/security/delete"
-      ? { next: "/family/security/delete" }
+    ["/account/security/delete", "/family/security/delete"].includes(
+      returnTarget(search.next) ?? "",
+    )
+      ? { next: "/account/security/delete" }
       : {}),
+    // A signed-out visit to any place (a family, a class, a school) signs
+    // in and comes back to it, by the one return contract.
     ...(search.return === "school" && safeSchoolPath(search.next)
       ? { next: safeSchoolPath(search.next) }
       : {}),
@@ -156,14 +180,17 @@ export function continuationUrl(
   fallback = "/start",
 ) {
   const safe = continuationSearch(search);
-  if (safe.return === "security") return safe.next ?? "/family/security";
+  if (safe.return === "security") return safe.next ?? "/account/security";
   if (safe.return === "school") return safe.next ?? "/school";
+  // A link carried across sign-in on this device (lib/link-carry.ts). Its
+  // token goes only in the fragment, never a query string a server or report
+  // could see.
   if (safe.return === "school-invite") {
-    const invite = pendingInvite();
+    const invite = carriedLink("/school/invite");
     return `/school/invite${invite ? `#${invite}` : ""}`;
   }
   if (safe.return === "family-approval") {
-    const approval = stored("amp.family-approval");
+    const approval = carriedLink("/family/approve");
     return `/family/approve${approval ? `#${approval}` : ""}`;
   }
   const path =

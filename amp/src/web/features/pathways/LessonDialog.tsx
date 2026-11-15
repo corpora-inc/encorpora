@@ -1,8 +1,20 @@
-import { lazy, Suspense, type ReactNode } from "react";
+import type { ReactNode } from "react";
+import { lessonFilms } from "../../../content/lesson-films";
+import type { LessonIndex } from "../../../content/lesson-index-build";
+import { buttonClass } from "../../ui/Button";
 import { Dialog } from "../../ui/Dialog";
-import { LessonWait } from "./LessonWait";
+import { useLayerBack } from "../../ui/LayerControls";
+import { FilmLink } from "../films/FilmLink";
 import { LessonBoundary } from "./LessonRecovery";
-const SkillLesson = lazy(() => import("./SkillLesson"));
+// In this chunk, not one of its own: the lesson's wait is drawn in the same
+// frame as the head, never a moment later.
+import SkillLesson from "./SkillLesson";
+import index from "./lesson-index.json";
+import styles from "./LessonDialog.module.css";
+/** Every problem type's title and skill, built from the engine
+ * (`npm run build:lesson-index`): in this layer's own chunk, so a cold link
+ * knows its title before any request. */
+const lessonIndex = index as unknown as LessonIndex;
 
 /** A problem type's id, as `?lesson=` carries it. */
 const LESSON_ID = /^[a-z0-9][a-z0-9-]{0,119}$/;
@@ -14,15 +26,20 @@ export const lessonParam = (raw: unknown) =>
  * A problem type's short lesson, over the screen that opened it. Its address
  * is that screen's with `?lesson=`, so a link, a refresh or Back opens it
  * again, and closing returns to that screen (lib/return-to.ts).
+ *
+ * Everything is in its final place on the first frame: the problem type's
+ * title (this chunk's index), then one row of what to do with it (the page's
+ * Try, then its film, from the film catalogue), then the lesson, or its wait
+ * where the lesson will be.
  */
-export function LessonDialog({
+export default function LessonDialog({
   lesson,
   onClose,
   onCloseAutoFocus,
   backLabel,
   aboveLayers = false,
   back,
-  children,
+  actions,
 }: {
   lesson: string | null;
   onClose: () => void;
@@ -33,9 +50,12 @@ export function LessonDialog({
   aboveLayers?: boolean;
   /** The layer under this one, where X returns. */
   back?: string;
-  /** Actions above the lesson (try this problem type). */
-  children?: ReactNode;
+  /** The page's action with this problem type (try it), first in the row,
+   * given the type's skill. */
+  actions?: (skill: string | undefined) => ReactNode;
 }) {
+  // The recovery's way back steps back one layer, as the back row does.
+  const stepBack = useLayerBack();
   return (
     <Dialog
       open={!!lesson}
@@ -45,22 +65,61 @@ export function LessonDialog({
       title="Explore a problem type"
       fullOnPhone
       tall
+      wide
       aboveNavigation={aboveLayers}
       onCloseAutoFocus={onCloseAutoFocus}
       back={back}
     >
-      {lesson && children}
       {lesson && (
-        <LessonBoundary key={lesson} onBack={onClose} backLabel={backLabel}>
-          <Suspense fallback={<LessonWait />}>
-            <SkillLesson
-              templateId={lesson}
-              onBack={onClose}
+        <div className={styles.lesson}>
+          <LessonHead lesson={lesson} actions={actions} />
+          <div className={styles.body}>
+            <LessonBoundary
+              key={lesson}
+              onBack={stepBack ?? onClose}
               backLabel={backLabel}
-            />
-          </Suspense>
-        </LessonBoundary>
+            >
+              <SkillLesson
+                templateId={lesson}
+                onBack={stepBack ?? onClose}
+                backLabel={backLabel}
+              />
+            </LessonBoundary>
+          </div>
+        </div>
       )}
     </Dialog>
+  );
+}
+
+/** The problem type's title and its one row of actions, known at once. */
+function LessonHead({
+  lesson,
+  actions,
+}: {
+  lesson: string;
+  actions?: (skill: string | undefined) => ReactNode;
+}) {
+  const [title, skill] = lessonIndex[lesson] ?? [];
+  const action = actions?.(skill);
+  const film = lessonFilms[lesson];
+  // A problem type this build doesn't know: its lesson says why under it.
+  if (!title) return null;
+  return (
+    <div className={styles.head}>
+      <h2 className={styles.title}>{title}</h2>
+      {(action || film) && (
+        <div className={styles.actions}>
+          {action}
+          {film && (
+            <FilmLink
+              templateId={lesson}
+              film={film}
+              button={buttonClass("secondary", "lesson-film-button")}
+            />
+          )}
+        </div>
+      )}
+    </div>
   );
 }

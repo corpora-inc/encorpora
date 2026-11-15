@@ -1,0 +1,197 @@
+[
+  {
+    "name": "plain",
+    "path": "src/review-reader.ts",
+    "source": "const q = \"SELECT 1 FROM amp_grants WHERE learner_id=$1\";"
+  },
+  {
+    "name": "changed",
+    "path": "src/account/adult-access.ts",
+    "source": "const q = \"SELECT 2 FROM amp_grants WHERE learner_id=$1\";"
+  },
+  {
+    "name": "duplicate",
+    "path": "src/review-reader.ts",
+    "source": "const q = \"SELECT 1 FROM amp_grants\"; const r = \"SELECT 1 FROM amp_grants\";"
+  },
+  {
+    "name": "quoted",
+    "path": "src/review-reader.ts",
+    "source": "const q = 'SELECT 1 FROM \"amp_grants\"';"
+  },
+  {
+    "name": "qualified",
+    "path": "src/review-reader.ts",
+    "source": "const q = 'SELECT 1 FROM public.amp_grants';"
+  },
+  {
+    "name": "commented",
+    "path": "src/review-reader.ts",
+    "source": "const q = 'SELECT 1 FROM /* active access */ amp_grants';"
+  },
+  {
+    "name": "only",
+    "path": "src/review-reader.ts",
+    "source": "const q = 'SELECT 1 FROM ONLY amp_grants';"
+  },
+  {
+    "name": "table",
+    "path": "src/review-reader.ts",
+    "source": "const q = 'TABLE amp_grants';"
+  },
+  {
+    "name": "concatenated",
+    "path": "src/review-reader.ts",
+    "source": "const q = 'SELECT 1 FROM ' + 'amp_grants';"
+  },
+  {
+    "name": "orm",
+    "path": "src/review-reader.ts",
+    "source": "import { grants } from './server/schema'; const result = db.select().from(grants);"
+  },
+  {
+    "name": "sql_function",
+    "path": "migrations/9999-review-fixture.sql",
+    "source": "CREATE FUNCTION review_direct_grant(learner text) RETURNS boolean LANGUAGE sql STABLE AS $$ SELECT EXISTS(SELECT 1 FROM ONLY amp_grants WHERE learner_id=learner AND status='active' AND ends_at>now()) $$;"
+  },
+  {
+    "name": "sql_view",
+    "path": "migrations/9999-review-fixture.sql",
+    "source": "CREATE VIEW review_direct_grants AS SELECT * FROM /* current */ amp_grants;"
+  },
+  {
+    "name": "qualified-quoted",
+    "path": "src/reader.ts",
+    "source": "const q = 'SELECT * FROM \"public\".\"amp_grants\"';"
+  },
+  {
+    "name": "nested-comment",
+    "path": "src/reader.ts",
+    "source": "const q = \"SELECT 1 FROM /* outer /* inner */ comment */ amp_grants\";"
+  },
+  {
+    "name": "line-comment",
+    "path": "src/reader.ts",
+    "source": "const q = `SELECT 1 FROM -- comment\n amp_grants`;"
+  },
+  {
+    "name": "only-parenthesized",
+    "path": "src/reader.ts",
+    "source": "const q = 'SELECT 1 FROM ONLY (\"public\".\"amp_grants\")';"
+  },
+  {
+    "name": "comma",
+    "path": "src/reader.ts",
+    "source": "const q = \"SELECT g.* FROM amp_learners l, public.amp_grants g\";"
+  },
+  {
+    "name": "split-name",
+    "path": "src/reader.ts",
+    "source": "db.query('SELECT 1 FROM amp_' + 'grants');"
+  },
+  {
+    "name": "variable",
+    "path": "src/reader.ts",
+    "source": "const table = 'amp_grants'; db.query('SELECT 1 FROM ' + table);"
+  },
+  {
+    "name": "alias",
+    "path": "src/reader.ts",
+    "source": "const table = 'amp_grants'; const alias=table; db.query(`SELECT 1 FROM ${alias}`);"
+  },
+  {
+    "name": "tagged-sql",
+    "path": "src/reader.ts",
+    "source": "db.execute(sql`SELECT 1 FROM ${schema.grants}`);"
+  },
+  {
+    "name": "tagged-qualified",
+    "path": "src/reader.ts",
+    "source": "const q = sql`SELECT 1 FROM \"public\".\"amp_grants\" WHERE learner_id=${id}`;"
+  },
+  {
+    "name": "array-join",
+    "path": "src/reader.ts",
+    "source": "db.query(['SELECT * FROM', 'amp_grants'].join(' '));"
+  },
+  {
+    "name": "query-object",
+    "path": "src/reader.ts",
+    "source": "db.query({text: 'SELECT * FROM ' + table});"
+  },
+  {
+    "name": "dynamic",
+    "path": "src/reader.ts",
+    "source": "db.query(makeQuery());"
+  },
+  {
+    "name": "dynamic-template",
+    "path": "src/reader.ts",
+    "source": "db.query(`SELECT * FROM ${chooseTable()}`);"
+  },
+  {
+    "name": "orm-import-alias",
+    "path": "src/reader.ts",
+    "source": "import { grants as ledger } from './server/schema'; db.select().from(ledger);"
+  },
+  {
+    "name": "orm-namespace",
+    "path": "src/reader.ts",
+    "source": "import * as schema from './server/schema'; db.select().from(schema.grants);"
+  },
+  {
+    "name": "orm-local-alias",
+    "path": "src/reader.ts",
+    "source": "const t=schema.grants; db.select().from(t);"
+  },
+  {
+    "name": "orm-bracket",
+    "path": "src/reader.ts",
+    "source": "db.select()[\"from\"](schema[\"grants\"]);"
+  },
+  {
+    "name": "orm-find",
+    "path": "src/reader.ts",
+    "source": "db.query.grants.findMany();"
+  },
+  {
+    "name": "orm-find-first",
+    "path": "src/reader.ts",
+    "source": "db.query.grants.findFirst({where: eq(grants.learnerId,id)});"
+  },
+  {
+    "name": "orm-join",
+    "path": "src/reader.ts",
+    "source": "db.select().from(learners).leftJoin(schema.grants, eq(grants.learnerId, learners.id));"
+  },
+  {
+    "name": "compat-ledger",
+    "path": "src/reader.ts",
+    "source": "db.query(\"SELECT * FROM public.amp_access_grants\");"
+  },
+  {
+    "name": "sql-function-string",
+    "path": "migrations/reader.sql",
+    "source": "CREATE FUNCTION r() RETURNS SETOF amp_grants LANGUAGE sql AS 'TABLE public.amp_grants';"
+  },
+  {
+    "name": "sql-function-dynamic",
+    "path": "migrations/reader.sql",
+    "source": "CREATE FUNCTION r() RETURNS void LANGUAGE plpgsql AS $body$ BEGIN EXECUTE 'SELECT * FROM ONLY public.amp_grants'; END $body$;"
+  },
+  {
+    "name": "dynamic-suffix",
+    "path": "src/reader.ts",
+    "source": "db.query('SELECT * FROM amp_' + suffix());"
+  },
+  {
+    "name": "nested-query",
+    "path": "src/reader.ts",
+    "source": "const page = `results: ${await db.query(\"SELECT * FROM amp_grants\")}`;"
+  },
+  {
+    "name": "sql-function-split-name",
+    "path": "migrations/reader.sql",
+    "source": "CREATE FUNCTION r() RETURNS void LANGUAGE plpgsql AS $$ BEGIN EXECUTE 'SELECT * FROM amp_' || 'grants'; END $$;"
+  }
+]

@@ -34,6 +34,7 @@ import {
   setupSteps,
   type SetupStep,
 } from "../features/school/paths";
+import { toFamilyChild, toFamilyPage } from "./family-redirect";
 
 /** Staff screens: signed in, on the web, and not a student's device. A signed-out
  * visitor goes through the usual sign-in and comes straight back here. */
@@ -82,6 +83,8 @@ const familyEquivalent =
       org: string;
       class?: string;
     };
+    // A parent's own family: its own screen, by the one return contract.
+    await toFamilyPage(session, orgId, leaf, location as never, classId);
     const org = await queryClient
       .ensureQueryData(orgOptions(session, orgId))
       .catch(() => null);
@@ -89,8 +92,13 @@ const familyEquivalent =
     const classes = await queryClient.ensureQueryData(
       classesOptions(session, orgId),
     );
-    const klass =
-      classes.find((entry) => entry.id === classId) ?? classes.at(0);
+    // The class the address names, or the family's one class; never the
+    // first of several.
+    const klass = classId
+      ? classes.find((entry) => entry.id === classId)
+      : classes.length === 1
+        ? classes[0]
+        : undefined;
     // A failed or empty class lookup must not redirect back to /classes,
     // which uses this same guard. Let the route's error view offer a retry.
     if (!klass)
@@ -129,6 +137,7 @@ export function schoolRoutes(root: AnyRoute) {
     createRoute({
       getParentRoute: () => root,
       path: `/school/$org${path}`,
+      staticData: { space: "school" },
       beforeLoad: familyEquivalent(family),
       loader: async ({ context, params }) => {
         const { session } = context as unknown as { session: AuthSession };
@@ -143,6 +152,7 @@ export function schoolRoutes(root: AnyRoute) {
   const orgPlace = createRoute({
     getParentRoute: () => root,
     path: "/school/$org",
+    staticData: { space: "school" },
   });
   // Any other address in a school: not found, in the school's frame.
   const missing = screen(
@@ -192,12 +202,17 @@ export function schoolRoutes(root: AnyRoute) {
       () => import("../features/school/SettingsScreen"),
       "OrgSettingsScreen",
     ),
+    license: screen(
+      () => import("../features/school/LicenseScreen"),
+      "LicenseScreen",
+    ),
   };
   /** An address from before Settings: it opens that section of Settings. */
   const toSettings = (path: string, hash: string) =>
     createRoute({
       getParentRoute: () => root,
       path: `/school/$org${path}`,
+      staticData: { space: "school" },
       beforeLoad: ({ params }) => {
         throw redirect({
           to: `/school/${(params as unknown as { org: string }).org}/settings`,
@@ -210,6 +225,7 @@ export function schoolRoutes(root: AnyRoute) {
     createRoute({
       getParentRoute: () => root,
       path: "/school",
+      staticData: { space: "account" },
       beforeLoad: async ({ location }) => {
         const session = await staffSession(location);
         const orgs = await queryClient.fetchQuery(orgsOptions(session));
@@ -225,10 +241,12 @@ export function schoolRoutes(root: AnyRoute) {
     }),
     // Guided setup, for the admin of a school we issued. Their invitation is
     // how they arrive; without one there's nothing to set up, so a visitor
-    // goes to `/schools`, which says how a school starts.
+    // goes to `/schools`, which says how a school starts, and someone signed
+    // in to their school first run.
     createRoute({
       getParentRoute: () => root,
       path: "/school/new",
+      staticData: { space: "account" },
       beforeLoad: async ({ location }) => {
         const search = location.search as unknown as {
           org?: unknown;
@@ -242,13 +260,27 @@ export function schoolRoutes(root: AnyRoute) {
           throw redirect({ to: "/schools", replace: true });
         const session = await staffSession(location);
         const orgs = await queryClient.fetchQuery(orgsOptions(session));
+        // Setup is its admin's: anyone else's address for it is their
+        // first run, never a setup they can't make.
         const requested =
           typeof search.org === "string"
-            ? orgs.find((org) => org.id === search.org)
+            ? orgs.find(
+                (org) =>
+                  org.id === search.org &&
+                  (!org.setupPending || org.roles.includes("admin")),
+              )
             : orgs.find(
                 (org) => org.setupPending && org.roles.includes("admin"),
               );
-        if (!requested) throw redirect({ to: "/schools", replace: true });
+        // Signed in with nothing to set up: the school first run, which
+        // knows what this account has (an invitation, a school, a pilot)
+        // and offers its next step. Never the public page and its Sign in.
+        if (!requested)
+          throw redirect({
+            to: "/start/$choice",
+            params: { choice: "school" },
+            replace: true,
+          } as never);
         if (!requested.setupPending)
           throw redirect({ ...orgHome(requested), replace: true } as never);
         const [state] = await Promise.all([
@@ -281,6 +313,7 @@ export function schoolRoutes(root: AnyRoute) {
     createRoute({
       getParentRoute: () => root,
       path: "/school/invite",
+      staticData: { space: "public" },
       beforeLoad: () => {
         if (nativeRuntime || studentSession())
           throw redirect({ to: "/", replace: true });
@@ -302,6 +335,8 @@ export function schoolRoutes(root: AnyRoute) {
         beforeLoad: async ({ location, params }) => {
           const session = await staffSession(location);
           const orgId = (params as unknown as { org: string }).org;
+          // A parent's own family org: the family's Today.
+          await toFamilyPage(session, orgId, "today", location as never);
           const org = await queryClient
             .fetchQuery(orgOptions(session, orgId))
             .catch(() => null);
@@ -357,8 +392,11 @@ export function schoolRoutes(root: AnyRoute) {
     createRoute({
       getParentRoute: () => root,
       path: "/school/$org/standing/$class",
-      // A class's drill over the school's curves: it keeps their view.
-      staticData: { overList: true },
+      staticData: {
+        space: "school",
+        // A class's drill over the school's curves: it keeps their view.
+        overList: true,
+      },
       beforeLoad: familyEquivalent("map"),
       loader: async ({ context, params }) => {
         const { session } = context as unknown as { session: AuthSession };
@@ -396,11 +434,20 @@ export function schoolRoutes(root: AnyRoute) {
     createRoute({
       getParentRoute: () => root,
       path: "/school/$org/students/$student",
-      beforeLoad: ({ params, search }) => {
+      staticData: { space: "school" },
+      beforeLoad: async ({ params, search, location }) => {
         const { org, student } = params as unknown as {
           org: string;
           student: string;
         };
+        // A family's child: their own page.
+        await toFamilyChild(
+          await staffSession(location),
+          org,
+          student,
+          null,
+          location as never,
+        );
         throw redirect({
           to: `/school/${org}/students`,
           search: {
@@ -414,7 +461,8 @@ export function schoolRoutes(root: AnyRoute) {
     createRoute({
       getParentRoute: () => root,
       path: "/school/$org/students/$student/work/$work",
-      beforeLoad: ({ params, search }) => {
+      staticData: { space: "school" },
+      beforeLoad: async ({ params, search, location }) => {
         const {
           org,
           student,
@@ -424,6 +472,13 @@ export function schoolRoutes(root: AnyRoute) {
           student: string;
           work: string;
         };
+        await toFamilyChild(
+          await staffSession(location),
+          org,
+          student,
+          attempt,
+          location as never,
+        );
         throw redirect({
           to: `/school/${org}/students`,
           search: {
@@ -458,22 +513,26 @@ export function schoolRoutes(root: AnyRoute) {
       "/settings",
       screens.settings,
       (session, orgId) => [
-        preload(calendarOptions(session, orgId)),
-        // Only a license this person can read: a teacher's own pilot
-        // school has none to show, and asking would only be refused.
-        preload(orgOptions(session, orgId)).then((org) =>
-          (org as { can?: string[] } | undefined)?.can?.includes("license.read")
-            ? preload(licenseOptions(session, orgId))
-            : undefined,
-        ),
         import("../features/school/classroom/api").then(
-          ({ experienceOptions }) =>
-            preload(experienceOptions(session, { kind: "org", id: orgId })),
+          ({ experienceOptions, weeklyTargetOptions }) =>
+            Promise.all([
+              preload(experienceOptions(session, { kind: "org", id: orgId })),
+              // The first section: arriving late, it pushed every one below.
+              preload(weeklyTargetOptions(session, orgId)),
+            ]),
         ),
       ],
       "settings",
     ),
-    toSettings("/license", "license"),
+    // Only a license this person can read: a teacher's own pilot school has
+    // none to show, and asking would only be refused.
+    orgScreen("/license", screens.license, (session, orgId) => [
+      preload(orgOptions(session, orgId)).then((org) =>
+        (org as { can?: string[] } | undefined)?.can?.includes("license.read")
+          ? preload(licenseOptions(session, orgId))
+          : undefined,
+      ),
+    ]),
     orgScreen("/import", screens.importer),
     toSettings("/experience", "student-experience"),
   ];

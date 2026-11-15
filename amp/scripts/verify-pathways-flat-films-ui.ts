@@ -1,0 +1,923 @@
+import { secureChromium } from "../browser-security.mjs";
+import assert from "node:assert/strict";
+import { mkdir, realpath } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
+import { createServer } from "vite";
+import { chromium as rawChromium, type Page } from "playwright";
+import { problemLesson } from "../src/content/problem-lessons";
+import { lessonFilms } from "../src/content/lesson-films";
+import { skills } from "../src/curriculum/catalog";
+import { templates } from "../src/math/engine";
+import { retentionNotice } from "../src/family/contracts";
+import { defaultPracticeSettings } from "../src/learning/practice-settings";
+import { fixtureMe } from "./me-fixture";
+const chromium = secureChromium(rawChromium);
+
+/**
+ * Pathways without WebGL (the flat pathway), the lesson layer's head (title,
+ * then Try and the film in one row) and a skill's films at its top, at
+ * 320/390/768/1280 in light and dark. Synthetic identity and progress; the
+ * real catalog, film catalogue, routes and layout. Chromium runs with WebGL
+ * switched off, as in the founder's automation browser.
+ */
+const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
+const source = `export async function accessSession(){return {token:"parent-one",accountId:"parent-one"};}export function onSessionChanged(){return()=>{};}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
+const vite = await createServer({
+  cacheDir: process.env.AMP_VITE_CACHE_DIR ?? "artifacts/vite-pathways-flat",
+  plugins: [
+    {
+      name: "pathways-flat-auth",
+      enforce: "pre",
+      load(id) {
+        return id.split("?")[0] === authPath ? source : undefined;
+      },
+    },
+  ],
+  server: {
+    host: "127.0.0.1",
+    port: Number(process.env.AMP_WEB_PORT ?? 0),
+    strictPort: true,
+    fs: { allow: [process.cwd(), await realpath("node_modules")] },
+  },
+});
+await vite.listen();
+const address = vite.httpServer!.address();
+assert(address && typeof address !== "string");
+const origin = `http://127.0.0.1:${address.port}`;
+const output = process.env.AMP_SHOTS ?? "artifacts/pathways-flat-films";
+await mkdir(output, { recursive: true });
+const browser = await chromium.launch({
+  args: ["--disable-gpu", "--disable-webgl", "--disable-webgl2"],
+});
+
+const LEARNER = "parent-one-a";
+const typesOf = (skill: string) => templates.filter((t) => t.skillId === skill);
+const filmsOf = (skill: string) =>
+  typesOf(skill).filter((t) => lessonFilms[t.id]);
+/** A skill's distinct films: one film can teach several of its types. */
+const distinctFilms = (skill: string) =>
+  new Set(filmsOf(skill).map((t) => lessonFilms[t.id]!.id)).size;
+/** The first skill, in the catalog's order, that is a case to prove: picked
+ * from the catalogue, so publishing a film never breaks the proof. */
+const first = (what: string, test: (skill: string) => boolean) => {
+  const found = skills.find((s) => test(s.id));
+  assert(found, `No skill with ${what} in the catalogue`);
+  return found;
+};
+// One film among several problem types, several distinct films, and none.
+const oneFilm = first(
+  "one film among several types",
+  (s) => filmsOf(s).length === 1 && typesOf(s).length > 1,
+);
+const manyFilms = first("three distinct films", (s) => distinctFilms(s) >= 3);
+const noFilms = first(
+  "no film",
+  (s) => typesOf(s).length > 0 && filmsOf(s).length === 0,
+);
+const filmed = filmsOf(oneFilm.id)[0]!.id;
+const unfilmed = typesOf(oneFilm.id).find((t) => !lessonFilms[t.id])!.id;
+// One film shared by several problem types.
+const sharedFilm = first(
+  "a shared film",
+  (s) => filmsOf(s).length > distinctFilms(s),
+);
+// A filmed problem type whose title wraps on a phone.
+const longTitle = templates.find(
+  (t) => lessonFilms[t.id] && t.title.length > 70,
+)!;
+assert(longTitle, "No filmed problem type with a long title");
+// Skills far down the pathway, a phone's several screens from its top.
+const farSkill = skills.find((s) => s.id === "similarity-theorems")!;
+const otherFar = skills.find((s) => s.id === "nonlinear-systems")!;
+console.log(
+  `Cases: one film ${oneFilm.id}, several ${manyFilms.id}, none ${noFilms.id}, shared ${sharedFilm.id}, long title ${longTitle.id}`,
+);
+
+async function fixture(
+  page: Page,
+  {
+    holdLessons = 0,
+    holdFrontier = 0,
+    holdCatalog = 0,
+    catalogGate = Promise.resolve(),
+    lessonGate = Promise.resolve(),
+  } = {},
+) {
+  await page.addInitScript((learner) => {
+    localStorage.setItem(
+      "amp.learner",
+      JSON.stringify({ state: { learnerId: learner }, version: 1 }),
+    );
+  }, LEARNER);
+  await page.route("**/api/v1/**", async (route) => {
+    const pathname = new URL(route.request().url()).pathname;
+    if (pathname.endsWith("/catalog")) {
+      if (holdCatalog) await new Promise((r) => setTimeout(r, holdCatalog));
+      await catalogGate;
+      return route.fulfill({
+        json: {
+          skills,
+          templates,
+          lessons: [],
+          mode: "hosted",
+          trial: { free: 100, placement: 20 },
+        },
+      });
+    }
+    if (pathname.endsWith("/auth-config"))
+      return route.fulfill({
+        json: { mode: "accounts", passwords: true, providers: [] },
+      });
+    if (pathname.endsWith("/events"))
+      return route.fulfill({ status: 204, body: "" });
+    if (pathname.endsWith("/me"))
+      return route.fulfill({
+        json: fixtureMe(
+          {
+            consent: {
+              status: "active",
+              policyVersion: "fixture",
+              recordedAt: null,
+              withdrawnAt: null,
+            },
+            learners: [
+              {
+                id: LEARNER,
+                name: "Sample learner",
+                birthYear: 2018,
+                deletedAt: null,
+                access: [],
+                stripeLinked: false,
+                canPractice: true,
+              },
+            ],
+            retained: retentionNotice,
+          },
+          "parent-one",
+        ),
+      });
+    if (pathname.endsWith("/practice-state"))
+      return route.fulfill({ json: defaultPracticeSettings() });
+    if (pathname.includes("/problem-lessons/")) {
+      if (holdLessons) await new Promise((r) => setTimeout(r, holdLessons));
+      await lessonGate;
+      return route.fulfill({
+        json: {
+          lesson: problemLesson(pathname.split("/").pop()!, "flat-proof"),
+        },
+      });
+    }
+    if (pathname.endsWith("/books"))
+      return route.fulfill({ json: { books: [] } });
+    if (pathname.endsWith("/progress"))
+      return route.fulfill({
+        json: {
+          asOf: new Date().toISOString(),
+          skills: [
+            [oneFilm.id, 2, 1, "practicing"],
+            [skills[3]!.id, 8, 6, "practicing"],
+            // Answered, not yet on its own: in progress.
+            [skills[5]!.id, 3, 0, "practicing"],
+            [skills[8]!.id, 25, 20, "review-ready"],
+          ].map(([skillId, attempts, independentCorrect, status]) => ({
+            skillId,
+            attempts,
+            independentCorrect,
+            independentOccasions: 0,
+            status,
+            reviewDueAt: null,
+          })),
+        },
+      });
+    if (/\/learners\/[^/]+\/skills\//.test(pathname)) {
+      const skillId = pathname.split("/").at(-1)!;
+      return route.fulfill({
+        json: {
+          skillId,
+          evidence:
+            skillId === oneFilm.id
+              ? {
+                  attempts: 2,
+                  independentCorrect: 1,
+                  status: "practicing",
+                  lastPracticedAt: null,
+                }
+              : {
+                  attempts: 0,
+                  independentCorrect: 0,
+                  status: "new",
+                  lastPracticedAt: null,
+                },
+          work: [],
+        },
+      });
+    }
+    if (pathname.endsWith("/frontier")) {
+      if (holdFrontier) await new Promise((r) => setTimeout(r, holdFrontier));
+      return route.fulfill({
+        json: {
+          expected: 2,
+          overall: { level: 1.4, sd: 0.4, answered: 30, independent: 24 },
+          strands: {
+            number: { level: 1.4, sd: 0.4, answered: 30, independent: 24 },
+          },
+        },
+      });
+    }
+    return route.fulfill({
+      status: 404,
+      json: { error: "fixture_not_implemented" },
+    });
+  });
+}
+
+async function noOverflow(page: Page, where: string) {
+  const wide = await page.evaluate(
+    () => document.documentElement.scrollWidth > innerWidth + 1,
+  );
+  assert.equal(wide, false, `${where}: horizontal overflow`);
+}
+const shot = (page: Page, name: string) =>
+  page.screenshot({ path: `${output}/${name}.png` });
+
+const widths = (process.env.AMP_WIDTHS ?? "320,390,768,1280")
+  .split(",")
+  .map(Number);
+for (const width of widths)
+  for (const colorScheme of ["light", "dark"] as const) {
+    const tag = `${width}-${colorScheme}`;
+    const context = await browser.newContext({
+      viewport: { width, height: width >= 768 ? 900 : 844 },
+      colorScheme,
+    });
+    // A loaded machine (several builders at once) is slow, not broken.
+    context.setDefaultTimeout(90_000);
+    const page = await context.newPage();
+    const errors: string[] = [];
+    page.on("pageerror", (error) => errors.push(error.message));
+
+    // Q-208: no WebGL: the flat pathway, no canvas, no camera controls.
+    await fixture(page, { holdFrontier: 900 });
+    await page.goto(`${origin}/pathways`);
+    const plan = page.locator(".pathways-plan");
+    // Q-214: a checklist by grade. The bands wait for the level (it is held
+    // here), so the learner's own band is open and marked from the first
+    // frame; every other band is folded.
+    const bands = plan.locator("[data-plan-band]");
+    const headers = plan.locator("[data-plan-band] > details > summary");
+    await headers.first().waitFor();
+    const own = plan.locator(
+      "[data-plan-band]:has(summary :text-is('Where you are'))",
+    );
+    assert.equal(await own.count(), 1, `${tag}: one band is marked at once`);
+    assert.equal(await own.locator("details[open]").count(), 1);
+    assert.equal(
+      await plan.locator("details[open]").count(),
+      1,
+      `${tag}: every other band starts folded`,
+    );
+    for (const height of await headers.evaluateAll((els) =>
+      els.map((el) => el.getBoundingClientRect().height),
+    ))
+      assert(height >= 44 && height < 60, `${tag}: one-line band headers`);
+    assert.match(
+      await headers.first().innerText(),
+      /^(Kindergarten|Grade \d+|Stage \d+)\s+\d+ \/ \d+/,
+      `${tag}: a band's count is numbers`,
+    );
+    // Rows: 44 px, the whole row the link, words never broken.
+    const rowsInfo = await own.locator("[data-plan-skill]").evaluateAll((els) =>
+      els.map((el) => ({
+        height: el.getBoundingClientRect().height,
+        broken: getComputedStyle(el.querySelector("span:last-child")!)
+          .overflowWrap,
+      })),
+    );
+    assert(rowsInfo.length > 0);
+    for (const row of rowsInfo) {
+      assert(row.height >= 44, `${tag}: 44 px rows`);
+      assert.equal(row.broken, "normal", `${tag}: no word broken`);
+    }
+    // The grades view flows in the page: no inner scroll, one key of
+    // areas, no narration, and the count sits under the search row.
+    assert(
+      await plan.evaluate(
+        (el) =>
+          getComputedStyle(el).overflowY === "visible" &&
+          el.scrollHeight <= el.clientHeight + 1,
+      ),
+      `${tag}: no inner scroll box`,
+    );
+    assert.equal(await page.locator(".pathways-legend:visible").count(), 0);
+    assert.equal(
+      await page.getByText("Skills grow with independent successes").count(),
+      0,
+    );
+    if (width > 650)
+      assert(
+        (await page.locator(".pathways-summary").boundingBox())!.y >=
+          (await page.locator(".pathways-toolbar").boundingBox())!.y +
+            (await page.locator(".pathways-toolbar").boundingBox())!.height,
+        `${tag}: the count sits under the search row`,
+      );
+    // Opening a band moves only what is below it; the keyboard opens and
+    // closes it and keeps the focus; the device remembers it.
+    const total = await bands.count();
+    const target = bands.nth(total - 2);
+    // Positions in the page, whatever the window's scroll.
+    const top = (n: number) =>
+      bands
+        .nth(n)
+        .evaluate((el) => el.getBoundingClientRect().top + window.scrollY);
+    await target.locator("summary").focus();
+    const aboveTop = await top(total - 3);
+    const belowTop = await top(total - 1);
+    await page.keyboard.press("Enter");
+    await target.locator("details[open]").waitFor();
+    const bodyHeight = (await target.locator("details > div").boundingBox())!
+      .height;
+    assert.equal(await top(total - 3), aboveTop);
+    assert(
+      Math.abs((await top(total - 1)) - belowTop - bodyHeight) < 1,
+      `${tag}: only the band's own body pushes what follows`,
+    );
+    assert.equal(
+      await page.evaluate(() => document.activeElement?.tagName),
+      "SUMMARY",
+      `${tag}: focus stays on the header`,
+    );
+    // Earned a filled check, in progress half, not started an empty ring.
+    const looks = await plan.evaluate((el) =>
+      ["earned", "progress", "new"].map((state) => {
+        const check = el.querySelector(`[data-state="${state}"]`);
+        if (!check) return null;
+        const style = getComputedStyle(check);
+        return `${style.backgroundImage}|${style.backgroundColor}|${check.innerHTML.length}`;
+      }),
+    );
+    assert.equal(
+      new Set(looks.filter(Boolean)).size,
+      looks.filter(Boolean).length,
+      `${tag}: three distinct check states`,
+    );
+    await page.keyboard.press(" ");
+    await target.locator("details:not([open])").waitFor();
+    await page.keyboard.press("Enter");
+    await target.locator("details[open]").waitFor();
+    await page.reload();
+    await bands
+      .nth(total - 2)
+      .locator("details[open]")
+      .waitFor();
+    assert.equal(
+      await plan.locator("details[open]").count(),
+      2,
+      `${tag}: the device remembers the open band`,
+    );
+    const skillCount = await plan.locator("[data-plan-skill]").count();
+    assert.equal(skillCount, skills.length, `${tag}: every skill is offered`);
+    await noOverflow(page, `${tag} pathway`);
+    await page.waitForTimeout(300);
+    await shot(page, `q214-grades-${tag}`);
+    // A skill in a folded band opens with its band.
+    const oneBand = plan.locator(
+      `[data-plan-band]:has([data-plan-skill="${oneFilm.id}"])`,
+    );
+    if (!(await oneBand.locator("details[open]").count()))
+      await oneBand.locator("summary").click();
+    await plan.locator(`[data-plan-skill="${oneFilm.id}"]`).click();
+    await page
+      .getByRole("heading", { name: oneFilm.title, exact: true })
+      .waitFor();
+    assert.match(page.url(), new RegExp(`open=skill%3A${oneFilm.id}`));
+
+    // Q-211: the skill's films at its top: one card for its one film.
+    const sheet = page.locator(`[data-skill-layer="${oneFilm.id}"]`);
+    await sheet.locator("[data-skill-learner]").waitFor();
+    const cards = sheet.locator("[data-film-card]");
+    assert.equal(await cards.count(), 1, `${tag}: one film, one card`);
+    const poster = await cards.first().locator("span").first().boundingBox();
+    assert(
+      poster && Math.abs(poster.width / poster.height - 16 / 9) < 0.05,
+      `${tag}: the poster keeps 16:9`,
+    );
+    const order = await sheet.evaluate((el) =>
+      [
+        el.querySelector("p"),
+        el.querySelector("a[href*='/practice']"),
+        el.querySelector("[data-skill-films]"),
+      ].map((node) => (node ? el.innerHTML.indexOf(node.outerHTML) : -1)),
+    );
+    assert(
+      order.every((n, i) => n >= 0 && (i === 0 || n > order[i - 1]!)),
+      `${tag}: description, Try, then Watch`,
+    );
+    assert.equal(
+      await sheet.locator("[data-film-glyph]").count(),
+      1,
+      `${tag}: the filmed problem type's row carries the play glyph`,
+    );
+    const facts = await sheet.locator("dl").innerText();
+    assert.doesNotMatch(facts, /\d\.\d/, `${tag}: no raw decimal`);
+    assert.doesNotMatch(
+      await sheet.innerText(),
+      /frontier|estimated range/i,
+      `${tag}: no frontier jargon`,
+    );
+    await noOverflow(page, `${tag} skill`);
+    await page.waitForTimeout(300);
+    await shot(page, `q211-one-film-${tag}`);
+    // The card plays in the lesson player at its own address; Back returns.
+    await cards.first().click();
+    await page.waitForURL(new RegExp(`/lessons/${filmed}/watch`));
+    await page.goBack();
+    await page
+      .getByRole("heading", { name: oneFilm.title, exact: true })
+      .waitFor();
+
+    // Several films: every one, a strip on a phone, a grid on a desktop.
+    await page.goto(`${origin}/pathways?open=skill:${manyFilms.id}`);
+    const many = page.locator(`[data-skill-layer="${manyFilms.id}"]`);
+    await many.locator("[data-film-card]").first().waitFor();
+    assert.equal(
+      await many.locator("[data-film-card]").count(),
+      distinctFilms(manyFilms.id),
+    );
+    const strip = await many.locator("[data-film-cards]").evaluate((el) => ({
+      scrolls: el.scrollWidth > el.clientWidth + 1,
+      overflowX: getComputedStyle(el).overflowX,
+    }));
+    if (width <= 640)
+      assert(strip.scrolls, `${tag}: several films scroll sideways`);
+    else assert(!strip.scrolls, `${tag}: several films fit`);
+    await noOverflow(page, `${tag} many films`);
+    await page.waitForTimeout(300);
+    await shot(page, `q211-several-films-${tag}`);
+
+    // No films: no row and no space.
+    await page.goto(`${origin}/pathways?open=skill:${noFilms.id}`);
+    const none = page.locator(`[data-skill-layer="${noFilms.id}"]`);
+    await none.locator("[data-skill-learner]").waitFor();
+    assert.equal(await none.locator("[data-skill-films]").count(), 0);
+    assert.equal(await none.getByText("Watch", { exact: true }).count(), 0);
+    await page.waitForTimeout(300);
+    await shot(page, `q211-no-films-${tag}`);
+
+    // Q-210: the lesson layer: the title, then one row, Try then Watch.
+    const lessonPage = await context.newPage();
+    await fixture(lessonPage, { holdLessons: 1200 });
+    await lessonPage.goto(
+      `${origin}/pathways?open=skill:${oneFilm.id},lesson:${filmed}`,
+    );
+    const dialog = lessonPage.getByRole("dialog", {
+      name: "Explore a problem type",
+    });
+    const title = dialog.getByRole("heading", {
+      name: templates.find((t) => t.id === filmed)!.title,
+      exact: true,
+    });
+    await title.waitFor();
+    const try_ = dialog.getByRole("link", {
+      name: "Try this problem type",
+      exact: true,
+    });
+    const watch = dialog.getByRole("link", {
+      name: /^Watch lesson · \d+:\d\d$/,
+    });
+    await try_.waitFor();
+    await watch.waitFor();
+    const early = {
+      title: await title.boundingBox(),
+      try: await try_.boundingBox(),
+      watch: await watch.boundingBox(),
+    };
+    await dialog.locator(".problem-lesson").waitFor();
+    assert.deepEqual(
+      {
+        title: await title.boundingBox(),
+        try: await try_.boundingBox(),
+        watch: await watch.boundingBox(),
+      },
+      early,
+      `${tag}: the head never moves when the lesson lands`,
+    );
+    assert.equal(
+      await title.innerText(),
+      templates.find((t) => t.id === filmed)!.title,
+    );
+    assert(early.title!.y < early.try!.y, `${tag}: title first`);
+    if (width <= 640) {
+      // Stacked, each the full width of the lesson's column.
+      const column = (await dialog.locator(".problem-lesson").boundingBox())!;
+      assert(early.try!.y + early.try!.height <= early.watch!.y);
+      for (const button of [early.try!, early.watch!])
+        assert(
+          Math.abs(button.width - column.width) < 1 &&
+            Math.abs(button.x - column.x) < 1,
+          `${tag}: phone actions fill the column (${button.width} of ${column.width})`,
+        );
+    } else {
+      assert(Math.abs(early.try!.y - early.watch!.y) < 1, `${tag}: one row`);
+      assert(early.try!.x < early.watch!.x, `${tag}: Try, then Watch`);
+    }
+    const sheetBox = (await dialog.boundingBox())!;
+    // One reading column: the sheet is the column and its gutters on a
+    // desktop; the example's text lines up with the prose, its box hanging
+    // outside the column (a phone insets it).
+    if (width >= 1280)
+      assert(
+        sheetBox.width >= 680 && sheetBox.width <= 800,
+        `${tag}: lesson sheet ${sheetBox.width}px`,
+      );
+    const edges = await dialog.evaluate((el) => {
+      const prose = el.querySelector(".problem-lesson .lesson-goal");
+      const boxed = el.querySelector(".lesson-example-prompt");
+      const title = el.querySelector("h2:not([id])");
+      return [prose, boxed, title].map((node) =>
+        node ? node.getBoundingClientRect().left : null,
+      );
+    });
+    assert(edges[0] !== null && edges[1] !== null);
+    assert(
+      Math.abs(edges[0]! - edges[2]!) <= 0.5,
+      `${tag}: the title and the prose share the column`,
+    );
+    if (width > 640)
+      assert(
+        Math.abs(edges[0]! - edges[1]!) <= 0.5,
+        `${tag}: the example's text lines up with the prose (${edges[0]} / ${edges[1]})`,
+      );
+    assert.equal(
+      await dialog.locator(".lesson-film-link").count(),
+      0,
+      `${tag}: no film card in the lesson`,
+    );
+    await noOverflow(lessonPage, `${tag} lesson`);
+    await lessonPage.waitForTimeout(300);
+    await shot(lessonPage, `q210-lesson-with-film-${tag}`);
+    // No film: the same row holds Try alone.
+    await lessonPage.goto(
+      `${origin}/pathways?open=skill:${oneFilm.id},lesson:${unfilmed}`,
+    );
+    await dialog.locator(".problem-lesson").waitFor();
+    await try_.waitFor();
+    assert.equal(await dialog.getByRole("link", { name: /^Watch/ }).count(), 0);
+    await lessonPage.waitForTimeout(300);
+    await shot(lessonPage, `q210-lesson-no-film-${tag}`);
+    await lessonPage.close();
+
+    // A cold link to a lesson, its catalog slow: Watch holds its place while
+    // Try's is kept for it.
+    const cold = await context.newPage();
+    await fixture(cold, { holdCatalog: 1500 });
+    await cold.goto(`${origin}/pathways?open=lesson:${filmed}`);
+    const coldDialog = cold.getByRole("dialog", {
+      name: "Explore a problem type",
+    });
+    const coldWatch = coldDialog.getByRole("link", { name: /^Watch lesson/ });
+    await coldWatch.waitFor();
+    const held = (await coldWatch.boundingBox())!;
+    await coldDialog
+      .getByRole("link", { name: "Try this problem type", exact: true })
+      .waitFor();
+    assert.deepEqual(
+      await coldWatch.boundingBox(),
+      held,
+      `${tag}: Watch never moves when the catalog arrives`,
+    );
+    await cold.close();
+
+    // A cold link to a lesson whose title wraps (Astra, CP-6 rounds 2 and
+    // 3): the catalog arrives first, the lesson later. The head, the body
+    // and the wait are in their final places from the first frame.
+    for (const type of [longTitle, templates.find((t) => t.id === filmed)!]) {
+      const wrapping = await context.newPage();
+      // Each response waits until the test lets it go, however slow the
+      // machine.
+      let releaseCatalog!: () => void;
+      let releaseLesson!: () => void;
+      await fixture(wrapping, {
+        catalogGate: new Promise<void>((r) => (releaseCatalog = r)),
+        lessonGate: new Promise<void>((r) => (releaseLesson = r)),
+      });
+      await wrapping.goto(`${origin}/pathways?open=lesson:${type.id}`);
+      const longDialog = wrapping.getByRole("dialog", {
+        name: "Explore a problem type",
+      });
+      const parts = async () => {
+        const at = async (selector: string) => {
+          const el = longDialog.locator(selector).first();
+          return (await el.count()) ? el.boundingBox() : null;
+        };
+        return {
+          title: await at("h2:not([id])"),
+          watch: await at("[data-film-link]"),
+          wait: await at("[data-layer-wait]"),
+        };
+      };
+      await longDialog.waitFor();
+      const first = await parts();
+      // A wait that is missing is the bug: keep its picture.
+      if (!first.wait) await shot(wrapping, `missing-wait-${tag}`);
+      assert(
+        first.title && first.watch && first.wait,
+        `${tag}: all there at once ${JSON.stringify(first)}`,
+      );
+      if (type === longTitle && width < 1280)
+        assert(first.title.height > 40, `${tag}: the title wraps`);
+      // The catalog is in; the lesson is still on its way.
+      const catalogIn = wrapping.waitForResponse((r) =>
+        r.url().endsWith("/api/v1/catalog"),
+      );
+      releaseCatalog();
+      await catalogIn;
+      await wrapping.waitForTimeout(500);
+      assert.deepEqual(
+        await parts(),
+        first,
+        `${tag}: nothing moves (${type.id})`,
+      );
+      releaseLesson();
+      await longDialog.locator(".problem-lesson").waitFor();
+      const done = await parts();
+      assert.deepEqual(
+        { title: done.title, watch: done.watch },
+        { title: first.title, watch: first.watch },
+        `${tag}: the head holds when the lesson lands (${type.id})`,
+      );
+      await wrapping.close();
+    }
+
+    // A film shared by several problem types: one card, a glyph on each row.
+    const shared = await context.newPage();
+    await fixture(shared);
+    await shared.goto(`${origin}/pathways?open=skill:${sharedFilm.id}`);
+    const sharedSheet = shared.locator(`[data-skill-layer="${sharedFilm.id}"]`);
+    await sharedSheet.locator("[data-film-card]").first().waitFor();
+    assert.equal(
+      await sharedSheet.locator("[data-film-card]").count(),
+      distinctFilms(sharedFilm.id),
+    );
+    assert.equal(
+      await sharedSheet.locator("[data-film-glyph]").count(),
+      filmsOf(sharedFilm.id).length,
+      `${tag}: every filmed problem type says so`,
+    );
+    await shared.close();
+
+    // A skill chosen far down the flat pathway is centred in view, by its
+    // address and from the list, and still there once its sheet closes.
+    const far = await context.newPage();
+    await fixture(far);
+    const inView = async (id: string) =>
+      far.evaluate((skill) => {
+        const el = document
+          .querySelector(`[data-plan-skill="${skill}"]`)!
+          .getBoundingClientRect();
+        const bar = parseFloat(
+          getComputedStyle(document.documentElement).scrollPaddingTop,
+        );
+        return (
+          el.height > 0 && el.top >= bar - 1 && el.bottom <= innerHeight + 1
+        );
+      }, id);
+    await far.goto(`${origin}/pathways?open=skill:${farSkill.id}`);
+    await far
+      .getByRole("heading", { name: farSkill.title, exact: true })
+      .waitFor();
+    assert(
+      await inView(farSkill.id),
+      `${tag}: an address's skill is in view ${await far.evaluate(
+        (skill) =>
+          JSON.stringify({
+            y: scrollY,
+            h: document.documentElement.scrollHeight,
+            vh: innerHeight,
+            body: getComputedStyle(document.body).overflow,
+            html: getComputedStyle(document.documentElement).overflow,
+            rect: document
+              .querySelector(`[data-plan-skill="${skill}"]`)!
+              .getBoundingClientRect(),
+          }),
+        farSkill.id,
+      )}`,
+    );
+    await far.keyboard.press("Escape");
+    await far
+      .getByRole("heading", { name: farSkill.title, exact: true })
+      .waitFor({ state: "detached" });
+    assert(await inView(farSkill.id), `${tag}: still in view once closed`);
+    await far.goto(`${origin}/pathways`);
+    await far.locator(".pathways-plan").waitFor();
+    await far.getByRole("button", { name: /^Browse/ }).click();
+    await far
+      .locator(`#pathways-browser a[href*="skill%3A${otherFar.id}"]`)
+      .click();
+    await far
+      .getByRole("heading", { name: otherFar.title, exact: true })
+      .waitFor();
+    await far.waitForTimeout(900);
+    assert(
+      await inView(otherFar.id),
+      `${tag}: a skill from the list is in view ${await far.evaluate(
+        (skill) => {
+          const plan = document.querySelector(".pathways-plan")!;
+          const el = plan.querySelector(`[data-plan-skill="${skill}"]`)!;
+          return JSON.stringify({
+            scroll: plan.scrollTop,
+            plan: plan.getBoundingClientRect(),
+            skill: el.getBoundingClientRect(),
+          });
+        },
+        otherFar.id,
+      )}`,
+    );
+    await far.keyboard.press("Escape");
+    await far.waitForTimeout(300);
+    await shot(far, `q208-chosen-skill-in-view-${tag}`);
+    await far.close();
+
+    // A stack of sheets: each names the one under it on a row of its own
+    // over the title, its chevron on the middle of the name's first line;
+    // back steps one; the cross, Escape and the scrim put the whole stack
+    // away in one step, and Back brings it back.
+    const stacked = await context.newPage();
+    await fixture(stacked);
+    const deep = [noFilms.id, farSkill.id, "compound-probability"];
+    await stacked.goto(
+      `${origin}/pathways?open=${deep.map((id) => `skill:${id}`).join(",")}`,
+    );
+    const topSheet = stacked.locator('[role="dialog"]').last();
+    const backControl = topSheet.locator("[data-layer-back]");
+    await backControl.waitFor();
+    await stacked.waitForTimeout(400);
+    const closeBox = (await topSheet
+      .locator("[data-layer-close]")
+      .boundingBox())!;
+    assert(
+      closeBox.width >= 44 && closeBox.height >= 44,
+      `${tag}: a 44 px close`,
+    );
+    const stackBox = (await topSheet.boundingBox())!;
+    assert(
+      closeBox.x + closeBox.width > stackBox.x + stackBox.width - 24,
+      `${tag}: the close sits at the top right`,
+    );
+    const titleBox = (await topSheet
+      .getByRole("heading")
+      .first()
+      .boundingBox())!;
+    const backBox = (await backControl.boundingBox())!;
+    assert(
+      backBox.y + backBox.height <= titleBox.y + 1,
+      `${tag}: back sits over the title`,
+    );
+    const offset = await backControl.evaluate((button) => {
+      const svg = button.querySelector("svg")!;
+      const label = svg.parentElement!;
+      const probe = document.createElement("span");
+      probe.style.cssText =
+        "display:inline-block;width:0;height:0;vertical-align:baseline";
+      label.insertBefore(probe, svg.nextSibling);
+      const baseline = probe.getBoundingClientRect().bottom;
+      probe.remove();
+      const canvas = document.createElement("canvas").getContext("2d")!;
+      canvas.font = getComputedStyle(label).font;
+      const xHeight = canvas.measureText("x").actualBoundingBoxAscent;
+      const icon = svg.getBoundingClientRect();
+      return icon.top + icon.height / 2 - (baseline - xHeight / 2);
+    });
+    assert(
+      Math.abs(offset) <= 0.5,
+      `${tag}: the chevron is on the middle of the first line (${offset.toFixed(2)} px)`,
+    );
+    await shot(stacked, `sheets-stack-${tag}`);
+    const opened = () => new URL(stacked.url()).searchParams.get("open");
+    await backControl.click();
+    await stacked.waitForURL(
+      (url) => url.searchParams.get("open")?.split(",").length === 2,
+    );
+    // (A shared link's back replaces it: the stack, three deep again.)
+    await stacked.goto(
+      `${origin}/pathways?open=${deep.map((id) => `skill:${id}`).join(",")}`,
+    );
+    await backControl.waitFor();
+    // The scrim, beside or above the sheet.
+    const box = (await topSheet.boundingBox())!;
+    await stacked.mouse.click(
+      box.x > 30 ? box.x / 2 : width / 2,
+      box.x > 30 ? 200 : Math.max(10, box.y / 2),
+    );
+    await stacked.waitForURL((url) => !url.searchParams.has("open"));
+    await stacked
+      .locator('[role="dialog"]')
+      .first()
+      .waitFor({ state: "detached" });
+    await stacked.locator(".pathways-plan").waitFor();
+    // Back brings the whole stack back; Escape and the cross put it away.
+    await stacked.goBack();
+    await backControl.waitFor();
+    assert.equal(opened()?.split(",").length, 3);
+    await stacked.keyboard.press("Escape");
+    await stacked.waitForURL((url) => !url.searchParams.has("open"));
+    await stacked.goBack();
+    await backControl.waitFor();
+    await topSheet.locator("[data-layer-close]").click();
+    await stacked.waitForURL((url) => !url.searchParams.has("open"));
+    await stacked.close();
+
+    assert.deepEqual(errors, [], `${tag}: page errors`);
+    await context.close();
+    console.log(`${tag}: passed`);
+  }
+await browser.close();
+
+// Q-212: Grades | 3D, where WebGL is there. Grades by default; the choice is
+// in the address and remembered on the device; the map keeps its size; a
+// skill's sheet stays open across a switch; context loss leaves no toggle.
+const glBrowser = await chromium.launch();
+for (const width of [390, 1280]) {
+  const tag = `${width}-toggle`;
+  const context = await glBrowser.newContext({
+    viewport: { width, height: width >= 768 ? 900 : 844 },
+  });
+  context.setDefaultTimeout(90_000);
+  const page = await context.newPage();
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  await fixture(page);
+  await page.goto(`${origin}/pathways`);
+  const toggle = page.getByRole("radiogroup", { name: "Map view" });
+  await toggle.waitFor();
+  const grades = toggle.getByRole("radio", { name: "Grades" });
+  const threeD = toggle.getByRole("radio", { name: "3D" });
+  assert.equal(await grades.getAttribute("aria-checked"), "true");
+  await page.locator(".pathways-plan").waitFor();
+  assert.equal(await page.locator("canvas").count(), 0, `${tag}: grades first`);
+  for (const radio of [grades, threeD])
+    assert((await radio.boundingBox())!.height >= 44, `${tag}: 44 px target`);
+  // The grades view flows in the page (Q-214) and 3D keeps the screen: a
+  // switch leaves the map where it starts, at the same width.
+  const where = async () => {
+    const box = (await page.locator(".pathways-workspace").boundingBox())!;
+    return { x: box.x, y: box.y, width: box.width };
+  };
+  const area = await where();
+  await shot(page, `q212-grades-${tag}`);
+  await threeD.click();
+  await page.locator(".pathways-canvas canvas").waitFor();
+  assert.match(page.url(), /[?&]view=3d\b/, `${tag}: the address says 3D`);
+  assert.equal(await page.locator(".pathways-plan").count(), 0);
+  assert.deepEqual(await where(), area, `${tag}: the map starts where it did`);
+  await noOverflow(page, `${tag} 3D`);
+  await page.waitForTimeout(600);
+  await shot(page, `q212-3d-${tag}`);
+  // A refresh, and a fresh visit on this device, keep 3D.
+  await page.reload();
+  await page.locator(".pathways-canvas canvas").waitFor();
+  await page.goto(`${origin}/pathways`);
+  await page.locator(".pathways-canvas canvas").waitFor();
+  assert.equal(await threeD.getAttribute("aria-checked"), "true");
+  // The address wins over the device's choice, and is shareable.
+  await page.goto(`${origin}/pathways?view=grades`);
+  await page.locator(".pathways-plan").waitFor();
+  assert.equal(await grades.getAttribute("aria-checked"), "true");
+  // A skill open over either view stays open, centred under it.
+  await page.goto(`${origin}/pathways?view=grades&open=skill:${farSkill.id}`);
+  const heading = page.getByRole("heading", {
+    name: farSkill.title,
+    exact: true,
+  });
+  await heading.waitFor();
+  await page.goto(`${origin}/pathways?view=3d&open=skill:${farSkill.id}`);
+  await heading.waitFor();
+  await page.locator(".pathways-canvas canvas").waitFor();
+  await page.keyboard.press("Escape");
+  await heading.waitFor({ state: "detached" });
+  await grades.click();
+  await page.locator(".pathways-plan").waitFor();
+  assert.match(page.url(), /[?&]view=grades\b/);
+  assert.deepEqual(
+    await where(),
+    area,
+    `${tag}: the map starts where it did back in grades`,
+  );
+  // A context lost in 3D: the grades view, and no toggle left.
+  await threeD.click();
+  await page.locator(".pathways-canvas canvas").waitFor();
+  await page
+    .locator(".pathways-canvas canvas")
+    .evaluate((el) =>
+      el.dispatchEvent(new Event("webglcontextlost", { cancelable: true })),
+    );
+  await page.locator(".pathways-plan").waitFor();
+  assert.equal(await toggle.count(), 0, `${tag}: no toggle after a lost map`);
+  assert.deepEqual(errors, [], `${tag}: page errors`);
+  await context.close();
+  console.log(`${tag}: passed`);
+}
+await glBrowser.close();
+await vite.close();
+console.log(
+  "Pathways flat pathway, lesson head and skill films: every width and theme passed.",
+);

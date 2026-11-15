@@ -1,3 +1,5 @@
+import { courseBand } from "../schools/term-grades.js";
+import { activeToday } from "../schools/principal.js";
 import type { PoolConfig } from "pg";
 import { schoolPilotAccess, schoolAllowance } from "../schools/pilot-access.js";
 import type { GlossaryCard, GlossaryLexicon } from "../glossary/types";
@@ -77,7 +79,11 @@ import {
   TOO_MANY_LEARNERS,
   type FreeAllowance,
 } from "../learning/free-allowance.js";
-import { refreshAdultAccess } from "../account/adult-access.js";
+import {
+  refreshAdultAccess,
+  accessGrantsFor,
+  grantInForce,
+} from "../account/adult-access.js";
 import { profilesCovered } from "../account/practice-profiles.js";
 import { secondParentOwner } from "../family/second-parent.js";
 import {
@@ -249,6 +255,8 @@ export interface LearnerTransaction {
   setWorkbookPaper(id: string, paper: WorkbookRecord["paper"]): Promise<void>;
   /** The workbook printed with this code (newest when codes repeat). */
   workbookByCode(code: string): Promise<WorkbookRecord | undefined>;
+  /** Results entered from paper so far, by workbook id (none: absent). */
+  paperResultCounts(): Promise<Map<string, number>>;
   /** Workbooks made in the last day, whose problems mixed practice holds back. */
   recentWorkbooks(): Promise<WorkbookRecord[]>;
 }
@@ -916,6 +924,61 @@ export class PgTransaction implements LearnerTransaction {
   }
   private async startingLevel(now: number) {
     const learner = await this.learner();
+    if (
+      learner &&
+      "starting_course_level" in learner &&
+      learner.birth_year == null &&
+      !learner.starting_band &&
+      !learner.adult
+    ) {
+      if (learner.starting_course_level != null)
+        return Number(learner.starting_course_level);
+      // Legacy writers can have recorded evidence after the schema migration.
+      // This indexed existence check also handles pre-migration learners lazily.
+      const answered = (
+        await this.db.query(
+          "SELECT 1 FROM amp_attempts WHERE learner_id=$1 LIMIT 1",
+          [this.learnerId],
+        )
+      ).rowCount;
+      if (answered) {
+        await this.db.query(
+          "UPDATE amp_learners SET starting_course_level=2 WHERE id=$1",
+          [this.learnerId],
+        );
+        learner.starting_course_level = 2;
+        return 2;
+      }
+      const enabled = (
+        await this.db.query(
+          "SELECT enabled FROM amp_course_placement WHERE singleton",
+        )
+      ).rows[0]?.enabled;
+      if (!enabled) return 2;
+      const classes = await this.db.query<{ course_bands: string[] }>(
+        `SELECT c.course_bands FROM amp_people p
+         JOIN amp_enrollments e ON e.person_id=p.id AND e.role='student'
+         JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL
+         JOIN amp_orgs o ON o.id=c.org_id
+         WHERE p.learner_id=$1 AND p.deleted_at IS NULL AND ${activeToday("e", "o")}
+           AND EXISTS(SELECT 1 FROM amp_org_roles r WHERE r.person_id=p.id AND r.role='student'
+             AND r.org_id=ANY(o.path) AND ${activeToday("r", "o")})
+         ORDER BY e.begin_on,c.id`,
+        [this.learnerId],
+      );
+      const course = classes.rows
+        .map((row) => courseBand(row.course_bands))
+        .find(Boolean);
+      {
+        const level = course?.level ?? 2;
+        await this.db.query(
+          "UPDATE amp_learners SET starting_course_level=$2 WHERE id=$1",
+          [this.learnerId, level],
+        );
+        learner.starting_course_level = level;
+        return level;
+      }
+    }
     return initialLevel({
       birthYear: learner?.birth_year as number | null | undefined,
       adult: learner?.adult === true,
@@ -1205,6 +1268,19 @@ export class PgTransaction implements LearnerTransaction {
     );
     return result.rows[0] ? workbookRow(result.rows[0]) : undefined;
   }
+  async paperResultCounts() {
+    // Paper results are attempts with request ids `paper:<workbook>:<n>`
+    // (workbook/results.ts), read with the learner's own index.
+    const result = await this.db.query(
+      `SELECT split_part(request_id,':',2) AS id,count(*)::int AS entered
+        FROM amp_attempts WHERE learner_id=$1 AND request_id LIKE 'paper:%'
+        GROUP BY 1`,
+      [this.learnerId],
+    );
+    return new Map(
+      result.rows.map((row) => [row.id as string, row.entered as number]),
+    );
+  }
   async recentWorkbooks() {
     const result = await this.db.query(
       `SELECT ${workbookColumns} FROM amp_workbooks WHERE learner_id=$1
@@ -1216,20 +1292,31 @@ export class PgTransaction implements LearnerTransaction {
   async trialRemaining() {
     return (await this.trialProgress())?.remaining ?? null;
   }
-  async hasAccess() {
+  /** Shared by online access and offline issue/reuse/preflight/reconcile.
+   * Caller holds the account and learner locks; profiles never get grants. */
+  async refreshDerivedAccess() {
     const learner = await this.learner();
-    // A practice profile has no grant: the account's own access covers it.
-    if (learner?.simulation)
-      return profilesCovered(this.db, learner.account_id as string);
-    if (learner?.adult)
+    if (learner?.adult && !learner.simulation)
       await refreshAdultAccess(
         this.db,
         learner.account_id as string,
         this.learnerId,
       );
+  }
+  async hasAccess() {
+    const learner = await this.learner();
+    // A practice profile has no grant: the account's own access covers it.
+    if (learner?.simulation)
+      return profilesCovered(this.db, learner.account_id as string);
+    await this.refreshDerivedAccess();
+    const access = await accessGrantsFor(this.db, [this.learnerId]);
     const result = await this.db.query(
-      "SELECT 1 FROM amp_grants WHERE learner_id=$1 AND status='active' AND starts_at<=now() AND ends_at>now() AND amp_school_grant_valid(id) LIMIT 1",
-      [this.learnerId],
+      "SELECT 1 FROM unnest($1::text[]) g(id) WHERE amp_school_grant_valid(id) LIMIT 1",
+      [
+        access.grants
+          .filter((g) => grantInForce(g, access.now))
+          .map((g) => g.id),
+      ],
     );
     return (
       !!result.rowCount ||

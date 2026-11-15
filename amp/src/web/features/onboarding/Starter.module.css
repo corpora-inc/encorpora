@@ -139,7 +139,18 @@
   font-weight: 400;
   font-variant-numeric: tabular-nums;
 }
-.facts span {
+.facts .pending {
+  display: inline-block;
+  width: 3.5ch;
+  height: 0.75em;
+  vertical-align: baseline;
+}
+.facts .pending > span {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-small);
+}
+.facts li > span {
   color: var(--color-muted-text);
   font-size: var(--text-label);
   line-height: 1.4;
@@ -166,4 +177,23 @@
   flex-wrap: wrap;
   gap: var(--space-2);
   align-items: center;
+}
+
+/* Under the year: the way in for someone helping another person. */
+.helping {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0 var(--space-1);
+  margin: var(--space-3) 0 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+}
+.helping a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-primary);
+  font-weight: 650;
 }

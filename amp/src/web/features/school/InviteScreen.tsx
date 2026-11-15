@@ -1,9 +1,11 @@
+import { heldCapability } from "../../capability-entry";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import type { InviteView } from "../../../schools/setup-contracts";
-import { notifyAccountSessionChanged, signOut } from "../../auth";
+import { signOut } from "../../auth";
 import { AppError } from "../../lib/AppError";
+import { linkRefused } from "../../lib/link-carry";
 import { sessionOptions, meOptions } from "../../lib/query";
 import { useLoggedError } from "../../feedback";
 import { Button, buttonClass } from "../../ui/Button";
@@ -14,12 +16,7 @@ import { accountClient } from "../../account-client";
 import { SUPPORT_EMAIL } from "../support/SupportHelp";
 import { refreshSchool, school } from "./api";
 import { roleNames } from "./parts";
-import {
-  forgetInvite,
-  markSchoolSignup,
-  rememberInvite,
-  rememberedInvite,
-} from "./paths";
+import { forgetInvite, rememberInvite, rememberedInvite } from "./paths";
 import { Brand } from "./SchoolFrame";
 import styles from "./School.module.css";
 
@@ -34,13 +31,18 @@ const roleWord = (role: string) =>
   "a teacher";
 
 /** An invitation, opened from mail or a copied link. The token lives only in the
- * URL's fragment, which no server or report ever sees, and in this device's
- * store while its holder signs in. */
+ * URL's fragment, which no server or report ever sees, this page's memory,
+ * and the carry its holder starts by leaving to sign in from it
+ * (`lib/link-carry.ts`). */
 export function InviteScreen() {
   const location = useLocation();
   const navigate = useNavigate();
   const client = useQueryClient();
-  const fragment = location.hash || rememberedInvite() || "";
+  const fragment =
+    location.hash ||
+    heldCapability("/school/invite") ||
+    rememberedInvite() ||
+    "";
   const parsed = parseFragment(fragment);
   const session = useQuery(sessionOptions).data;
   const me = useQuery({
@@ -53,20 +55,32 @@ export function InviteScreen() {
     retry: false,
     queryFn: () => school.lookupInvite(parsed!.token),
   });
+  // A link that is over (used, expired, ended) or that the server refuses is
+  // let go here, held and carried alike; a failure that may pass is not.
+  const refused = linkRefused(invite.error);
+  const over = (!!invite.data && invite.data.status !== "open") || refused;
+  useEffect(() => {
+    if (over) forgetInvite();
+  }, [over]);
   const [name, setName] = useState("");
   const [nameError, setNameError] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [confirmSent, setConfirmSent] = useState(false);
   useLoggedError(error);
-  // Carry the invitation across sign-in, and the proof to account creation.
+  // A name this account already gave is the one it joins with.
+  const known = me?.signedIn ? (me.account.displayName ?? "") : "";
   useEffect(() => {
-    if (!parsed || session) return;
-    const value = fragment.replace(/^#/, "");
-    rememberInvite(value);
-    markSchoolSignup(value);
-    if (invite.data?.email) useAuthDraft.getState().setEmail(invite.data.email);
-  }, [parsed?.token, session, invite.data?.email]);
+    if (known) setName((typed) => typed || known);
+  }, [known]);
+  // The address it was sent to starts the sign-in form. The link itself is
+  // carried only when its holder leaves to sign in (`carry`).
+  useEffect(() => {
+    if (!session && invite.data?.email)
+      useAuthDraft.getState().setEmail(invite.data.email);
+  }, [session, invite.data?.email]);
+  const value = fragment.replace(/^#/, "");
+  const carry = () => rememberInvite(value);
   const accept = async () => {
     if (!session || !parsed) return;
     if (!name.trim()) {
@@ -89,13 +103,10 @@ export function InviteScreen() {
       await refreshSchool(session);
       await client.invalidateQueries({ queryKey: ["school-invite"] });
       // A new school's admin carries on into its setup, the school step done;
-      // a family's second parent opens its class.
+      // a family's second parent opens the family (`/family` chooses it).
       await navigate(
         joined.familyClassId && joined.orgId
-          ? ({
-              to: `/school/${joined.orgId}/classes/${joined.familyClassId}/today`,
-              replace: true,
-            } as never)
+          ? ({ to: "/family", replace: true } as never)
           : joined.setup && joined.orgId
             ? ({
                 to: "/school/new",
@@ -118,8 +129,12 @@ export function InviteScreen() {
   const view = invite.data;
   const email = me?.signedIn ? me.account.email : null;
   const signInSearch = { return: "school-invite" } as never;
-  // A family's second parent joins only as the address it was sent to.
-  const family = view?.secondParent;
+  // A family's second parent joins only as the address it was sent to. The
+  // family is named as the family, and its parent by their own name.
+  const family = view?.secondParent
+    ? { ...view.secondParent, name: view.orgName }
+    : undefined;
+  const inviter = view?.inviterName?.trim() || null;
   const otherAccount =
     !!family &&
     !!email &&
@@ -132,23 +147,19 @@ export function InviteScreen() {
     !me.account.emailVerified &&
     !parsed?.proof;
   const useAnother = async () => {
-    // The link stays on this device across the other sign-in, which comes
-    // straight back here.
-    const value = fragment.replace(/^#/, "");
-    rememberInvite(value);
-    markSchoolSignup(value);
-    const result = await accountClient.signOut();
-    if (result.error) {
-      console.error("Signing out didn’t finish", result.error);
+    // This link, and only this one, survives the sign-out; the other
+    // sign-in comes straight back to it (lib/link-carry.ts).
+    rememberInvite(value, { switching: true });
+    try {
+      await signOut("/sign-in?return=school-invite");
+    } catch (failure) {
+      console.error("Signing out didn’t finish", failure);
       setError("Signing out didn’t finish. Try again in a moment.");
-      return;
     }
-    notifyAccountSessionChanged();
-    window.location.assign("/sign-in?return=school-invite");
   };
   const sendConfirmation = async () => {
     if (!email) return;
-    rememberInvite(fragment.replace(/^#/, ""));
+    carry();
     const result = await accountClient.sendVerificationEmail({
       email,
       callbackURL: "/school/invite",
@@ -166,13 +177,36 @@ export function InviteScreen() {
     >
       {/* A family's second parent isn't joining a school. */}
       {!session && <Brand for={view?.secondParent ? null : undefined} />}
-      {!parsed || invite.isError ? (
+      {!parsed ? (
+        <>
+          <h1>Open your invitation from its email</h1>
+          <p>
+            The invitation opens from the link in its email. Open it there to
+            carry on.
+          </p>
+        </>
+      ) : refused ? (
         <>
           <h1>This invitation link isn’t valid</h1>
           <p>
             Open the link from your email again. If it still doesn’t work, ask
             your school’s admin to copy you a new one.
           </p>
+        </>
+      ) : invite.isError ? (
+        <>
+          <h1>The invitation couldn’t be checked</h1>
+          <p>Check your connection, then try again.</p>
+          <div className={styles.inviteActions}>
+            <Button
+              variant="primary"
+              aria-busy={invite.isFetching}
+              disabled={invite.isFetching}
+              onClick={() => void invite.refetch()}
+            >
+              Try again
+            </Button>
+          </div>
         </>
       ) : !view ? (
         <div className={styles.inviteWait} aria-busy="true" />
@@ -187,7 +221,7 @@ export function InviteScreen() {
           </h1>
           <p>
             {family
-              ? `Ask the parent who invited you for a new link${view.status === "used" ? ", or sign in if it was yours." : "."}`
+              ? `Ask ${inviter ?? "the parent who invited you"} for a new link${view.status === "used" ? ", or sign in if it was yours." : "."}`
               : !view.setup
                 ? `Ask ${view.orgName}’s admin for a new link${view.status === "used" ? ", or sign in if it was yours." : "."}`
                 : view.status !== "used"
@@ -205,7 +239,7 @@ export function InviteScreen() {
           <h1>This invitation is for another address</h1>
           <p>
             It was sent to <strong>{view.email}</strong>, and you’re signed in
-            as {email}. To join {family.className} as a parent, sign in with
+            as {email}. To join {family.name} as a parent, sign in with
             that address, or create an account with it.
           </p>
           <div className={styles.inviteActions}>
@@ -219,7 +253,7 @@ export function InviteScreen() {
           <h1>Confirm {email}</h1>
           <p>
             Open the confirmation email we sent to {email}, then open this
-            invitation again to join {family!.className}.
+            invitation again to join {family!.name}.
           </p>
           <div className={styles.inviteActions}>
             <Button
@@ -241,14 +275,14 @@ export function InviteScreen() {
         >
           <h1>
             {family
-              ? `Join ${family.className}`
+              ? `Join ${family.name}`
               : view.setup
                 ? `Set up ${view.orgName}`
                 : `Join ${view.orgName}`}
           </h1>
           <p>
             {family
-              ? "You’re invited as a parent. You’ll see the class and the children’s progress, and your own practice is free."
+              ? `${inviter ? `${inviter} invited you` : "You’re invited"} as the second parent. You’ll see each child’s progress and can let them practice on your device, and your own practice is free.`
               : view.setup
                 ? "AMP for Schools is ready for your school, and you’re its admin."
                 : `You’ve been invited as ${roleWord(view.role)}.`}
@@ -263,7 +297,7 @@ export function InviteScreen() {
                 <button
                   type="button"
                   className={styles.inlineAction}
-                  onClick={() => void signOut()}
+                  onClick={() => void useAnother()}
                 >
                   Use another account
                 </button>
@@ -305,14 +339,14 @@ export function InviteScreen() {
         <>
           <h1>
             {family
-              ? `Join ${family.className}`
+              ? `Join ${family.name}`
               : view.setup
                 ? `Set up ${view.orgName}`
                 : `Join ${view.orgName}`}
           </h1>
           <p>
             {family
-              ? `You’re invited as a parent. Create an account or sign in with ${view.email} to accept: Google, Microsoft, Apple, a password or a passkey.`
+              ? `${inviter ? `${inviter} invited you` : "You’re invited"} as the second parent. Create an account or sign in with ${view.email} to accept: Google, Microsoft, Apple, a password or a passkey.`
               : view.setup
                 ? "AMP for Schools is ready for your school, and you’re its admin. Create an account or sign in to set it up."
                 : `You’ve been invited as ${roleWord(view.role)}. Create an account or sign in to accept.`}
@@ -322,6 +356,7 @@ export function InviteScreen() {
               to="/sign-up"
               search={signInSearch}
               className={buttonClass("primary")}
+              onClick={carry}
             >
               Create an account
             </Link>
@@ -329,6 +364,7 @@ export function InviteScreen() {
               to="/sign-in"
               search={signInSearch}
               className={buttonClass("secondary")}
+              onClick={carry}
             >
               I already have one
             </Link>

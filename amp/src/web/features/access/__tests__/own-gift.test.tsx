@@ -4,6 +4,10 @@ import { RouterProvider } from "@tanstack/react-router";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import type { AuthSession } from "../../../auth";
 
+// Analytics has its own transport tests. Its delayed flush must not outlive
+// a module reset and appear as a gift POST in the next test's fetch fixture.
+vi.mock("../../../lib/analytics");
+
 /* A gift of AMP for an adult on her own: she uses it for herself, with no
    parental consent and no child to set up. A child's gift is unchanged. */
 
@@ -147,7 +151,7 @@ test("an adult on her own uses the gift on her learner, offered first", async ()
   const mine = await screen.findByRole("button", { name: "Use it for me" });
   // Setting it up for a child is still there, second.
   expect(
-    screen.getByRole("link", { name: "Set it up for my child" }),
+    screen.getByRole("link", { name: "Set it up for a child" }),
   ).toBeTruthy();
   fireEvent.click(mine);
   await vi.waitFor(() => expect(state.posts).toHaveLength(1));

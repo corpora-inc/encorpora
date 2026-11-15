@@ -1,8 +1,14 @@
-import type { ReactNode } from "react";
+import { Fragment, useState, type ReactNode } from "react";
 import { gradeName, levelDetails } from "../../../learning/level-check";
-import { LevelAxis, LevelBar } from "./LevelBar";
+import { LevelAxis, LevelBar, LevelNotStarted } from "./LevelBar";
 import { LevelPath, type PathPoint } from "./LevelPath";
-import { fitScale, likelyRange, type Estimate, type RangeScale } from "./scale";
+import {
+  fitScale,
+  likelyRange,
+  shortGrade,
+  type Estimate,
+  type RangeScale,
+} from "./scale";
 import styles from "./LevelRange.module.css";
 
 /** One area of the curriculum as the view draws it. `id` is its strand, for
@@ -10,9 +16,58 @@ import styles from "./LevelRange.module.css";
 export type LevelRangeArea = {
   id: string;
   label: string;
-  estimate: Estimate;
+  /** Null: nothing answered yet (only ever the overall row). */
+  estimate: Estimate | null;
   estimated?: boolean;
+  /** The area of math over this row (`byArea`): its name above the group's
+   * first row, and the group's rows set in under it. */
+  heading?: string;
+  nested?: boolean;
 };
+
+/** What a row hands its link: the page decides where an area opens (a
+ * layer over it, a route); the widget draws the row inside it. */
+export type RowLinkProps = {
+  className: string;
+  "aria-label": string;
+  children: ReactNode;
+  "data-level-row": string;
+  onPointerEnter: () => void;
+  onPointerLeave: () => void;
+  onFocus: () => void;
+  onBlur: () => void;
+};
+/** An area's row as a link: `area` is the strand's id, or `overall`. */
+export type RowLink = (area: string, props: RowLinkProps) => ReactNode;
+
+/** A grade in a sentence: kindergarten by name. */
+const proseGrade = (level: number) =>
+  Math.round(level) <= 0 ? "Kindergarten" : gradeName(level);
+/** An estimate in plain words: "Most likely Grade 8 · somewhere between
+ * Grade 6 and Algebra 2". */
+export function plainLevel(estimate: Estimate) {
+  const [from, to] = likelyRange(estimate);
+  const best = proseGrade(estimate.level);
+  const low = proseGrade(from),
+    high = proseGrade(to);
+  return low === high
+    ? `Most likely ${best}`
+    : `Most likely ${best} · somewhere between ${low} and ${high}`;
+}
+
+/** A likely range in short grade words ("K–Gr 1", "Gr 8–Alg 2"), for a
+ * reader to whom the scale's decimals mean nothing (a parent). */
+export function rangeWords([from, to]: readonly [number, number]) {
+  const low = shortGrade(from),
+    high = shortGrade(to);
+  return low === high ? low : `${low}–${high}`;
+}
+
+/** A likely range as the Overall sentence says it: "Likely Kindergarten
+ * to Grade 1". */
+export function likelyInWords([from, to]: readonly [number, number]) {
+  return words.likely(proseGrade(from), proseGrade(to));
+}
 
 /** Whole sentences with named slots, so each translates as a unit. `who`
  * is a learner's name when someone else reads their level; without it the
@@ -32,14 +87,25 @@ const words = {
     `${area}: best guess ${level}, likely ${from} to ${to}`,
   rowUnnumbered: (area: string) =>
     `${area}: a likely range, narrowing with practice`,
-  start: (level: string, who?: string) =>
+  /** A row that opens its area: what it is, then what opening it shows. */
+  open: (row: string) => `${row}. Open its skills`,
+  /** Before the first answer: no grade named, only how soon it's known. */
+  notYet: "Level not measured yet: anywhere from kindergarten to precalculus",
+  find: (who?: string) =>
     who
-      ? `AMP starts ${who} near ${level}. Every answer narrows the range.`
-      : `AMP starts near ${level}. Every answer narrows the range.`,
-  startUnnumbered: (who?: string) =>
+      ? `We’ll find ${who}’s level in a few minutes of practice.`
+      : "We’ll find your level in a few minutes. Just start answering.",
+  found: (best: string, from: string, to: string) =>
+    from === to
+      ? `Best guess ${best}.`
+      : `Best guess ${best}, likely ${from} to ${to}.`,
+  foundLabel: (best: string, from: string, to: string) =>
+    `Best guess ${best}, likely ${from} to ${to}`,
+  answeredSoFar: (n: number) => `${problems(n)} answered. Keep going.`,
+  premise: (who?: string) =>
     who
-      ? `AMP starts from ${who}’s age and narrows the range with every answer.`
-      : "AMP starts from a first guess and narrows the range with every answer.",
+      ? "No planning needed: AMP makes every minute count."
+      : "Spend the time; AMP makes every minute count.",
 };
 
 /**
@@ -61,6 +127,7 @@ export function LevelRange({
   numbers = true,
   decimals = numbers,
   who,
+  rowLink,
 }: {
   overall: Estimate;
   /** Problems the estimate rests on. */
@@ -86,13 +153,18 @@ export function LevelRange({
   decimals?: boolean;
   /** The learner's name when someone else reads it. */
   who?: string;
+  /** Each row opens its area (and Overall the whole level). */
+  rowLink?: RowLink;
 }) {
   const [from, to] = likelyRange(overall);
   const detail = levelDetails(overall);
-  const scale = fitScale([overall, ...areas.map((area) => area.estimate)], {
-    minSpan: 5,
-    include: grade ? [...grade] : [],
-  });
+  const scale = fitScale(
+    [overall, ...areas.flatMap((area) => area.estimate ?? [])],
+    {
+      minSpan: 5,
+      include: grade ? [...grade] : [],
+    },
+  );
   // The path says something once the range has really narrowed; before
   // that it would be a lone segment or a flat band, so it waits.
   const pathShown =
@@ -151,6 +223,7 @@ export function LevelRange({
           grade={grade}
           numbers={numbers}
           decimals={decimals}
+          rowLink={rowLink}
         />
       </div>
       {pathShown && (
@@ -184,6 +257,12 @@ function narrowed(path: readonly PathPoint[]) {
  * Every area as an error bar on one scale, the overall estimate first and
  * larger, with the grade axis under them. The parts of `LevelRange`, for a
  * place that shows several learners on one shared scale (the class map).
+ *
+ * With `rowLink`, every measured row is a link that opens its area: a 44 px
+ * target with a chevron, and (where a pointer hovers) a reserved line under
+ * the axis that says the hovered or focused row's range in plain words, so
+ * nothing moves. A row not measured yet is never a link: there is nothing
+ * behind it to open.
  */
 export function LevelRows({
   overall,
@@ -193,10 +272,19 @@ export function LevelRows({
   grade = null,
   numbers = true,
   decimals = numbers,
+  wordRanges = false,
   overallEstimated = false,
   axis = true,
+  moving = false,
+  rowLink,
+  notStarted,
 }: {
-  overall: Estimate;
+  /** Null before the first answer: the row is not measured yet. */
+  overall: Estimate | null;
+  /** Others on this scale are measured: an unmeasured row shows this pill
+   * instead of a bar (LevelNotStarted), never a range on their scale.
+   * Without it, the full-scale "?". */
+  notStarted?: string;
   overallLabel?: string;
   areas: readonly LevelRangeArea[];
   scale: RangeScale;
@@ -204,47 +292,115 @@ export function LevelRows({
   numbers?: boolean;
   /** Each row's likely range in numbers, at the row's end. */
   decimals?: boolean;
+  /** Those ranges in short grade words ("K–Gr 1") instead: for a parent. */
+  wordRanges?: boolean;
   /** The overall estimate is a starting guess, drawn dashed. */
   overallEstimated?: boolean;
   axis?: boolean;
+  /** A lone learner's unmeasured row searches (LevelBar's `moving`); a
+   * column of many stays still. */
+  moving?: boolean;
+  /** Each measured row opens its area. */
+  rowLink?: RowLink;
 }) {
+  const overallArea: LevelRangeArea = {
+    id: "",
+    label: overallLabel,
+    estimate: overall,
+    estimated: overallEstimated,
+  };
+  // The row the pointer or focus is on, for the plain-words line.
+  const [pointed, setPointed] = useState<string | null>(null);
+  const interactive =
+    !!rowLink && [overallArea, ...areas].some((area) => area.estimate !== null);
+  const readoutArea = interactive
+    ? ([overallArea, ...areas].find(
+        (area) => (area.id || "overall") === pointed && area.estimate,
+      ) ?? (overall ? overallArea : null))
+    : null;
+  // The end column says only "Not yet" or "Starting" without the range
+  // numbers; with neither to say, it takes no room.
+  const silent =
+    !numbers ||
+    (!decimals &&
+      [overallArea, ...areas].every(
+        (area) => area.estimate && !area.estimated,
+      ));
+  const bare = silent
+    ? styles.rowsSilent
+    : !decimals
+      ? styles.rowsBare
+      : wordRanges
+        ? styles.rowsWords
+        : "";
+  const rowClass = `${styles.rows} ${bare}`;
+  const point = {
+    enter: (id: string) => setPointed(id),
+    leave: (id: string) =>
+      setPointed((current) => (current === id ? null : current)),
+  };
   return (
     <>
-      <ul className={`${styles.rows} ${decimals ? "" : styles.rowsBare}`}>
+      <ul className={rowClass} data-interactive={interactive ? "" : undefined}>
         <AreaRow
-          area={{
-            id: "",
-            label: overallLabel,
-            estimate: overall,
-            estimated: overallEstimated,
-          }}
+          area={overallArea}
           scale={scale}
           grade={grade}
           numbers={numbers}
           decimals={decimals}
+          wordRanges={wordRanges}
+          moving={moving}
+          notStarted={notStarted}
+          rowLink={rowLink}
+          point={point}
           strong
         />
         {areas.map((area) => (
-          <AreaRow
-            key={area.id}
-            area={area}
-            scale={scale}
-            grade={grade}
-            numbers={numbers}
-            decimals={decimals}
-          />
+          <Fragment key={area.id}>
+            {area.heading && (
+              <li className={styles.groupHead} data-level-group="">
+                {area.heading}
+              </li>
+            )}
+            <AreaRow
+              area={area}
+              scale={scale}
+              grade={grade}
+              numbers={numbers}
+              decimals={decimals}
+              wordRanges={wordRanges}
+              rowLink={rowLink}
+              point={point}
+            />
+          </Fragment>
         ))}
       </ul>
       {numbers && axis && (
-        <div className={`${styles.axisRow} ${decimals ? "" : styles.rowsBare}`}>
+        <div
+          className={`${styles.axisRow} ${bare}`}
+          data-interactive={interactive ? "" : undefined}
+        >
           <span />
           <LevelAxis scale={scale} />
           <span />
         </div>
       )}
+      {interactive && numbers && readoutArea?.estimate && (
+        // Reserved for the pointer: the same two lines whatever it says.
+        <p className={styles.readout} data-level-readout="" aria-hidden="true">
+          <span className={styles.readoutName}>{readoutArea.label}</span>{" "}
+          {plainLevel(readoutArea.estimate)}
+        </p>
+      )}
     </>
   );
 }
+
+const chevron = (
+  <svg className={styles.rowChevron} viewBox="0 0 16 16" aria-hidden="true">
+    <path d="M6 3.5 10.5 8 6 12.5" />
+  </svg>
+);
 
 function AreaRow({
   area,
@@ -252,54 +408,120 @@ function AreaRow({
   grade,
   numbers,
   decimals,
+  wordRanges = false,
   strong = false,
+  moving = false,
+  rowLink,
+  point,
+  notStarted,
 }: {
+  notStarted?: string;
+  wordRanges?: boolean;
   area: LevelRangeArea;
   scale: RangeScale;
   grade: readonly [number, number] | null;
   numbers: boolean;
   decimals: boolean;
   strong?: boolean;
+  moving?: boolean;
+  rowLink?: RowLink;
+  point: { enter: (id: string) => void; leave: (id: string) => void };
 }) {
-  const [from, to] = likelyRange(area.estimate);
-  return (
-    <li
-      className={`${styles.row} ${strong ? styles.rowStrong : ""}`}
-      data-strand={area.id || undefined}
-      aria-label={
-        numbers
-          ? words.row(
-              area.label,
-              gradeName(area.estimate.level),
-              gradeName(from),
-              gradeName(to),
-            )
-          : words.rowUnnumbered(area.label)
-      }
-    >
+  const rowClass = `${styles.row} ${strong ? styles.rowStrong : ""} ${area.nested ? styles.rowNested : ""}`;
+  const size = strong ? "large" : "regular";
+  const estimate = area.estimate;
+  const range = estimate ? likelyRange(estimate) : null;
+  const label =
+    !estimate || !range
+      ? `${area.label}: ${notStarted ?? words.notYet}`
+      : numbers
+        ? words.row(
+            area.label,
+            gradeName(estimate.level),
+            gradeName(range[0]),
+            gradeName(range[1]),
+          )
+        : words.rowUnnumbered(area.label);
+  // One shape before and after the first answer, so the same bar element
+  // glides from the whole scale to the estimate (CP-5 r2 #2).
+  const parts = (
+    <>
       <span className={styles.rowName} aria-hidden="true">
         {area.label}
       </span>
       <span className={styles.rowBar} aria-hidden="true">
-        <LevelBar
-          estimate={area.estimate}
-          scale={scale}
-          band={grade}
-          estimated={area.estimated}
-          size={strong ? "large" : "regular"}
-        />
+        {!estimate && notStarted ? (
+          <LevelNotStarted label={notStarted} size={size} />
+        ) : (
+          <LevelBar
+            estimate={estimate}
+            scale={scale}
+            band={estimate ? grade : null}
+            estimated={!!estimate && area.estimated}
+            size={size}
+            moving={!estimate && moving}
+          />
+        )}
       </span>
       <span className={styles.rowNumbers} aria-hidden="true">
         {!numbers
           ? ""
-          : area.estimated
-            ? strong
-              ? "Starting"
+          : !estimate || !range
+            ? notStarted
+              ? ""
               : "Not yet"
-            : decimals
-              ? `${from.toFixed(1)}–${to.toFixed(1)}`
-              : ""}
+            : area.estimated
+              ? strong
+                ? "Starting"
+                : "Not yet"
+              : !decimals
+                ? ""
+                : wordRanges
+                  ? rangeWords(range)
+                  : `${range[0].toFixed(1)}–${range[1].toFixed(1)}`}
       </span>
+    </>
+  );
+  if (!estimate)
+    return (
+      <li
+        className={rowClass}
+        data-strand={area.id || undefined}
+        aria-label={label}
+        data-not-started={notStarted ? "" : undefined}
+      >
+        {parts}
+      </li>
+    );
+  if (rowLink) {
+    const id = area.id || "overall";
+    return (
+      <li className={styles.rowItem} data-strand={area.id || undefined}>
+        {rowLink(id, {
+          className: `${rowClass} ${styles.rowLink}`,
+          "aria-label": words.open(label),
+          "data-level-row": id,
+          onPointerEnter: () => point.enter(id),
+          onPointerLeave: () => point.leave(id),
+          onFocus: () => point.enter(id),
+          onBlur: () => point.leave(id),
+          children: (
+            <>
+              {parts}
+              {chevron}
+            </>
+          ),
+        })}
+      </li>
+    );
+  }
+  return (
+    <li
+      className={rowClass}
+      data-strand={area.id || undefined}
+      aria-label={label}
+    >
+      {parts}
     </li>
   );
 }
@@ -325,24 +547,24 @@ function Legend({ grade }: { grade: boolean }) {
   );
 }
 
+/** The whole curriculum, kindergarten to precalculus: the scale a level
+ * that isn't measured yet spans. */
+export const WHOLE_SCALE: RangeScale = { lo: 0, hi: 12 };
+
 /**
  * Day 0 (docs/design/ia.md, rule 7): one centred column. One heading, the
- * starting estimate large on its labelled scale, one sentence, the one
- * prominent action, and quiet secondary items below. The range is wide on
- * purpose; every answer narrows it.
+ * level not yet measured (the whole scale, its dot searching with a "?"),
+ * one promise and the premise under it, the one prominent action, and quiet
+ * secondary items below. It names no grade: the first answers find it.
  */
 export function LevelRangeStart({
-  start,
   action,
   title = "Where you are",
   heading = 2,
   secondary,
-  numbers = true,
   who,
-  grade = null,
+  found = null,
 }: {
-  /** Where AMP begins: from a birth year, or the start an adult chose. */
-  start: Estimate;
   /** The one prominent action: Start practicing. */
   action?: ReactNode;
   /** The hero's one heading. */
@@ -351,26 +573,22 @@ export function LevelRangeStart({
   heading?: 1 | 2;
   /** Quiet items under the action: the free problems left, a link. */
   secondary?: ReactNode;
-  /** Grade names and numbers; off where a learner's levels are hidden. */
-  numbers?: boolean;
   /** The learner's name when someone else reads it. */
   who?: string;
-  /** The learner's own grade, painted behind the bar. */
-  grade?: readonly [from: number, to: number] | null;
+  /** The first answers came in while this hero was on screen: the same bar
+   * glides from the whole scale to the estimate, in place, and the words
+   * say what was found. Nothing moves (Q-201, CP-5 #5). */
+  found?: { estimate: Estimate; answered: number } | null;
 }) {
-  const [from, to] = likelyRange(start);
-  const scale = fitScale([start], {
-    minSpan: 6,
-    pad: 1,
-    include: grade ? [...grade] : [],
-  });
   const Heading = heading === 1 ? "h1" : "h2";
+  const range = found ? likelyRange(found.estimate) : null;
   return (
     <section
       className={styles.hero}
       aria-labelledby="level-start-title"
       data-level-view
       data-level-start
+      data-level-found={found ? "" : undefined}
     >
       <Heading id="level-start-title" className={styles.heroTitle}>
         {title}
@@ -380,26 +598,48 @@ export function LevelRangeStart({
           className={styles.heroBar}
           role="img"
           aria-label={
-            numbers
-              ? `Starting estimate: ${gradeName(start.level)}, likely ${gradeName(from)} to ${gradeName(to)}`
-              : "Starting estimate: a wide range that narrows with practice"
+            found && range
+              ? words.foundLabel(
+                  gradeName(found.estimate.level),
+                  gradeName(range[0]),
+                  gradeName(range[1]),
+                )
+              : words.notYet
           }
         >
           <LevelBar
-            estimate={start}
-            scale={scale}
-            band={grade}
-            estimated
+            estimate={found?.estimate ?? null}
+            scale={WHOLE_SCALE}
             size="large"
+            moving
           />
         </div>
-        {numbers && <LevelAxis scale={scale} />}
+        <LevelAxis scale={WHOLE_SCALE} />
       </figure>
-      <p className={styles.heroBody}>
-        {numbers
-          ? words.start(gradeName(start.level), who)
-          : words.startUnnumbered(who)}
-      </p>
+      {/* Both sets of words share one cell, so the change between them
+          moves nothing. */}
+      <div className={styles.heroWords}>
+        <div className={styles.heroWordsSet} aria-hidden={!!found || undefined}>
+          <p className={styles.heroBody}>{words.find(who)}</p>
+          <p className={styles.heroPremise}>{words.premise(who)}</p>
+        </div>
+        {/* The words before the first answer stay, hidden, holding the
+            cell: what was found is never longer. */}
+        {found && range && (
+          <div className={styles.heroWordsSet} data-found-words>
+            <p className={styles.heroBody}>
+              {words.found(
+                gradeName(found.estimate.level),
+                gradeName(range[0]),
+                gradeName(range[1]),
+              )}
+            </p>
+            <p className={styles.heroPremise}>
+              {words.answeredSoFar(found.answered)}
+            </p>
+          </div>
+        )}
+      </div>
       {action && <div className={styles.heroAction}>{action}</div>}
       {secondary && <div className={styles.heroSecondary}>{secondary}</div>}
     </section>

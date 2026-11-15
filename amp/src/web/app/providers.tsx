@@ -1,3 +1,5 @@
+import { forgetEveryLink } from "../features/links/forget";
+import { settleSwitches } from "../lib/link-carry";
 import { setAnalyticsSession } from "../lib/analytics";
 import { NativeGate } from "../NativeGate";
 import { nativeRuntime } from "../native-runtime";
@@ -13,7 +15,13 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Fragment, useEffect, useState, type ReactNode } from "react";
 import { onSessionChanged, signOut, type AuthSession } from "../auth";
 import { watchStudentIdle } from "../lib/student-device";
-import { meKey, meOptions, queryClient, sessionOptions } from "../lib/query";
+import {
+  meKey,
+  meOptions,
+  queryClient,
+  retireSession,
+  sessionOptions,
+} from "../lib/query";
 export function Providers({
   children,
   onAccountExit,
@@ -87,10 +95,21 @@ function SessionProviders({
         }
         if (previous?.accountId !== session?.accountId) {
           clearOnboardingDraft();
+          // A link held for one account never carries to another; a sign-in
+          // from no account keeps the link that started it, and an account
+          // switch started from a link is an ordinary carry once it arrives.
+          if (previous?.accountId) forgetEveryLink();
+          else if (session) settleSwitches();
           setIdentityVersion((version) => version + 1);
           void queryClient.cancelQueries({ queryKey: ["account"] });
           queryClient.removeQueries({ queryKey: ["account"] });
         }
+        // A new session: nothing asked with the old one is sent, handled or
+        // cached again. The same account's renewal keeps what is on screen,
+        // drafts included; only another account resets it (above), and a
+        // renewal refuses mutations until its own /me confirms. If that
+        // fails, the shell's content guard keeps the screen out.
+        retireSession(previous, session);
         void queryClient.cancelQueries({ queryKey: sessionOptions.queryKey });
         queryClient.setQueryData(sessionOptions.queryKey, session);
         if (previous?.accountId && previous.accountId !== session?.accountId)

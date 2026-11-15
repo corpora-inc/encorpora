@@ -11,9 +11,8 @@
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 1001;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: auto minmax(0, 1fr);
+  display: flex;
+  flex-direction: column;
   width: min(560px, calc(100vw - 2 * var(--space-4)));
   max-height: calc(100dvh - 2 * var(--space-4));
   margin: 0;
@@ -23,8 +22,12 @@
   color: var(--color-on-surface);
   box-shadow: var(--shadow-overlay);
 }
+/* Its own height, not the page header's (style.css sets every header). */
 .header {
   display: flex;
+  flex: none;
+  height: auto;
+  min-height: calc(var(--target-size, 44px) + 2 * var(--space-3));
   align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
@@ -38,48 +41,14 @@
   font-size: var(--text-body);
   font-weight: 700;
 }
-.close {
-  min-width: var(--target-size);
-  min-height: var(--target-size);
-  border-radius: var(--radius-control);
-  background: transparent;
-  color: var(--color-on-surface);
-  font-size: 24px;
-  line-height: 1;
-}
-/* Over another layer: the close names where it returns, on the cross's
-   own line, quiet and never wider than half of the header; the title
-   keeps the rest, and a long name takes two lines, then an ellipsis. */
-.close.back {
-  display: flex;
-  flex: 0 1 auto;
-  align-items: center;
-  gap: var(--space-1);
-  min-width: 0;
-  max-width: min(14rem, 50%);
-  padding: 0 var(--space-2);
-  color: var(--color-muted-text);
-  font-size: var(--text-table);
-}
-.back span:first-child {
-  font-size: 22px;
-  line-height: 1;
-}
-.back span:last-child {
-  min-width: 0;
-  overflow: hidden;
-  overflow-wrap: anywhere;
-  text-align: left;
-  line-height: 1.2;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
-.close:hover:not(:disabled) {
-  filter: none;
-  background: var(--color-surface-sunken);
+/* Under the back row: the title starts its own line, 44 px tall. */
+.header.under {
+  min-height: calc(var(--target-size, 44px) + var(--space-3));
+  padding-top: 0;
 }
 .body {
+  flex: 1;
+  min-height: 0;
   overflow: auto;
   padding: var(--space-4) var(--space-5) var(--space-5);
   font-size: var(--text-label);
@@ -99,6 +68,15 @@
    from the first frame. */
 .content.tall {
   height: calc(100dvh - 2 * var(--space-4));
+}
+/* A lesson's sheet: its reading column (in the body size's characters)
+   with room for a box to hang its padding outside it, and the gutters. */
+.content.wide {
+  font-size: var(--text-body);
+  width: min(
+    calc(var(--measure-reading) + 4 * var(--space-5)),
+    calc(100vw - 2 * var(--space-4))
+  );
 }
 
 /* A confirmation opened from the navigation sheet must sit above that sheet. */

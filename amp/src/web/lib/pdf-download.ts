@@ -1,3 +1,4 @@
+import { requestFetch } from "./request-transport";
 import { defaultPaper } from "../features/workbooks/model";
 import { AppError } from "./AppError";
 
@@ -35,7 +36,7 @@ export async function downloadPdf({
 }) {
   let response: Response;
   try {
-    response = await fetch(`/api/v1${path}`, {
+    response = await requestFetch(`/api/v1${path}`, {
       method: body === undefined ? "GET" : "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -43,7 +44,8 @@ export async function downloadPdf({
       },
       ...(body === undefined ? {} : { body: JSON.stringify(body) }),
     });
-  } catch {
+  } catch (cause) {
+    if (cause instanceof AppError) throw cause;
     const error = new AppError(
       "network",
       "The PDF didn’t download. Check your connection and try again.",

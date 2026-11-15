@@ -74,7 +74,15 @@ test("a press outside closes it, even on content that stops propagation", () => 
   expect(openNames(container)).toEqual([]);
 });
 
-test("a scroll, a resize, Back and a route change close it", () => {
+const frames = () =>
+  act(
+    () =>
+      new Promise<void>((resolve) =>
+        requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+      ),
+  );
+
+test("a scroll, a resize, Back and a route change close it", async () => {
   const { container, getByText } = render(<Pop name="a" />);
   for (const event of [
     () => fireEvent.scroll(window),
@@ -84,9 +92,21 @@ test("a scroll, a resize, Back and a route change close it", () => {
   ]) {
     press(getByText("a"));
     expect(openNames(container)).toEqual(["a"]);
+    await frames();
     act(event);
     expect(openNames(container)).toEqual([]);
   }
+});
+
+test("the scroll its own opening causes leaves it open; a later one closes it", async () => {
+  const { container, getByText } = render(<Pop name="a" />);
+  press(getByText("a"));
+  // Scroll anchoring as the list lays out: the same frames as the opening.
+  act(() => fireEvent.scroll(window));
+  expect(openNames(container)).toEqual(["a"]);
+  await frames();
+  act(() => fireEvent.scroll(window));
+  expect(openNames(container)).toEqual([]);
 });
 
 test("Escape closes only the top one, and nothing beneath sees it", () => {

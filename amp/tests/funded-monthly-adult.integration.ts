@@ -11,7 +11,10 @@ import type {
 } from "../src/funding-purchase/contracts.js";
 import { FundingPurchaseRepository } from "../src/funding-purchase/repository.js";
 import { FundingInvoiceRepository } from "../src/funding-purchase/invoice-intents.js";
-import { provisionFundingRequest } from "../src/funding-purchase/provision.js";
+import {
+  fundedTermStart,
+  provisionFundingRequest,
+} from "../src/funding-purchase/provision.js";
 import { deliverFundedActivationMail } from "../src/funding-purchase/activation-mail.js";
 import { installConsentPolicy } from "../src/parent-consent/policy.js";
 import type {
@@ -25,6 +28,10 @@ import {
 } from "../src/funding-purchase/classwallet-staging.js";
 import type { ClassWalletConfig } from "../src/funding-purchase/classwallet.js";
 import { AccessGiftRepository } from "../src/access-grants/repository.js";
+import {
+  accessGrantsFor,
+  refreshAdultAccess,
+} from "../src/account/adult-access.js";
 import { testFundingOffer } from "./funding-purchase.fixture.js";
 
 /* An adult student paying month to month from her own education-funds
@@ -818,5 +825,256 @@ test(
         /consent_required/,
       );
       assert.deepEqual(await grants(pool, "child"), []);
+    }),
+);
+
+// Capture the scheduling decision while coverage is live; provision the exact
+// payload after its source ends, without an intervening account GET. Coverage
+// revoked or cut short before the saved start would leave the learner without
+// access until then: an operator reconciles that one.
+test("scheduled funded terms survive ended adult coverage", enabled, () =>
+  fixture(async (pool) => {
+    for (const mode of [
+      "missing",
+      "materialized",
+      "revoked",
+      "shortened",
+      "extended",
+      "legacy-checkout",
+      "legacy-payment",
+    ] as const) {
+      const learner = `scheduled-${mode}`;
+      const account = `amp|scheduled-${mode}`;
+      await pool.query(
+        "INSERT INTO amp_learners(id,account_id,name,adult) VALUES($1,$2,'Adult',true),($3,$2,'Child',false)",
+        [learner, account, `${learner}-child`],
+      );
+      const repo = new FundingPurchaseRepository(pool, offers);
+      const request = await repo.create(account, {
+        offerId: monthly.id,
+        offerRevision: monthly.revision,
+        learnerId: learner,
+        idempotencyKey: randomUUID(),
+        studentBillingName: "Fixture Student",
+      });
+      const sourceEnd = new Date(
+        Date.now() +
+          (mode === "revoked" || mode === "shortened" ? 60_000 : 1500),
+      ).toISOString();
+      await pool.query(
+        "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES($1,$2,'esa',$1,'active',now()-interval '1 day',$3)",
+        [`${learner}-source`, `${learner}-child`, sourceEnd],
+      );
+      if (mode === "materialized")
+        await repo.transaction(
+          account,
+          (db) => refreshAdultAccess(db, account, learner),
+          true,
+        );
+      const activatedAt = await justNow();
+      const startsAt = await repo.transaction(
+        account,
+        (db) =>
+          fundedTermStart(
+            db,
+            learner,
+            activatedAt,
+            mode === "missing" || mode === "materialized"
+              ? undefined
+              : request.id,
+          ),
+        true,
+      );
+      assert.equal(startsAt, sourceEnd);
+      const input = settlement(request, {
+        activatedAt,
+        startsAt,
+        endsAt: monthAfter(startsAt),
+      });
+      // Older saved provider payloads predate the scheduling-evidence column.
+      if (mode === "legacy-checkout" || mode === "legacy-payment") {
+        await pool.query(
+          "UPDATE amp_funding_requests SET scheduled_term=NULL WHERE id=$1",
+          [request.id],
+        );
+        if (mode === "legacy-checkout")
+          await pool.query(
+            "INSERT INTO amp_classwallet_checkouts(request_id,vendor_fingerprint,callback_status,provisioning_payload) VALUES($1,'fixture','complete',$2)",
+            [request.id, JSON.stringify(input)],
+          );
+        else
+          await pool.query(
+            "INSERT INTO amp_classwallet_payments(order_id,invoice_id,report_sha256,payment_row,verified_config,conversion_payload) VALUES($1,$2,$3,'{}','{}',$4)",
+            [
+              input.events[0]!.orderId,
+              request.id,
+              "0".repeat(64),
+              JSON.stringify(input),
+            ],
+          );
+      }
+      const before = (
+        await pool.query(
+          "SELECT * FROM amp_grants WHERE learner_id=ANY($1::text[]) ORDER BY id",
+          [[learner, `${learner}-child`]],
+        )
+      ).rows;
+      if (mode === "revoked")
+        await pool.query("UPDATE amp_grants SET status='revoked' WHERE id=$1", [
+          `${learner}-source`,
+        ]);
+      else if (mode === "shortened")
+        await pool.query(
+          "UPDATE amp_grants SET ends_at=now()-interval '1 millisecond' WHERE id=$1",
+          [`${learner}-source`],
+        );
+      else if (mode === "extended")
+        await pool.query(
+          "UPDATE amp_grants SET ends_at=ends_at+interval '1 day' WHERE id=$1",
+          [`${learner}-source`],
+        );
+      else {
+        await new Promise((resolve) =>
+          setTimeout(
+            resolve,
+            Math.max(0, Date.parse(sourceEnd) - Date.now() + 50),
+          ),
+        );
+        assert.deepEqual(
+          (
+            await pool.query(
+              "SELECT * FROM amp_grants WHERE learner_id=ANY($1::text[]) ORDER BY id",
+              [[learner, `${learner}-child`]],
+            )
+          ).rows,
+          before,
+        );
+      }
+      if (mode === "extended") {
+        await assert.rejects(
+          provisionFundingRequest(pool, input, offers),
+          /overlapping_learning_access/,
+        );
+        continue;
+      }
+      if (mode === "revoked" || mode === "shortened") {
+        await assert.rejects(
+          provisionFundingRequest(pool, input, offers),
+          /funded_term_start_unsupported/,
+        );
+        assert.deepEqual(await grants(pool, learner), []);
+        continue;
+      }
+      const current = await repo.transaction(account, (db) =>
+        accessGrantsFor(db, [learner]),
+      );
+      assert.equal(
+        current.grants.some(
+          (g) => g.status === "active" && g.ends_at > current.now,
+        ),
+        false,
+      );
+      // The receipt supports only the captured date, not an arbitrary delay.
+      const wrongStart = new Date(Date.parse(startsAt) + 1000).toISOString();
+      await assert.rejects(
+        provisionFundingRequest(
+          pool,
+          settlement(request, {
+            activatedAt,
+            startsAt: wrongStart,
+            endsAt: monthAfter(wrongStart),
+          }),
+          offers,
+        ),
+        /funded_term_start_unsupported/,
+      );
+      await provisionFundingRequest(pool, input, offers);
+      await provisionFundingRequest(pool, input, offers);
+      const paid = (
+        await pool.query(
+          "SELECT starts_at,ends_at FROM amp_grants WHERE learner_id=$1 AND channel='esa'",
+          [learner],
+        )
+      ).rows;
+      assert.deepEqual(
+        paid.map((g) => ({
+          startsAt: g.starts_at.toISOString(),
+          endsAt: g.ends_at.toISOString(),
+        })),
+        [{ startsAt, endsAt: monthAfter(startsAt) }],
+      );
+    }
+  }),
+);
+
+// An annual card license ends in seven months; the education-funds year is
+// approved now and scheduled to follow it. The card payment is refunded
+// before ClassWallet settles: granting the saved later start would leave the
+// paid child without access until then, so it goes to an operator instead.
+test(
+  "a saved later start whose preceding license was refunded is reconciled by an operator",
+  enabled,
+  () =>
+    fixture(async (pool, invoices) => {
+      await installConsentPolicy(pool, notificationPolicy);
+      await pool.query(
+        "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES('amp|parent','fixture','verified','private')",
+      );
+      const cardEnd = new Date(Date.now() + 200 * 86400000);
+      cardEnd.setUTCHours(0, 0, 0, 0);
+      await pool.query(
+        "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES('card','child','stripe','card','active',now()-interval '165 days',$1)",
+        [cardEnd],
+      );
+      const request = await invoices.claim(
+        "amp|parent",
+        (await invoiceFor(invoices, "parent@example.com", yearly)).id,
+        "child",
+      );
+      const repo = new FundingPurchaseRepository(pool, offers);
+      const activatedAt = await justNow();
+      const startsAt = await repo.transaction(
+        "amp|parent",
+        (db) => fundedTermStart(db, "child", activatedAt, request.id),
+        true,
+      );
+      assert.equal(startsAt, cardEnd.toISOString());
+      const end = new Date(startsAt);
+      end.setUTCFullYear(end.getUTCFullYear() + 1);
+      const input = settlement(request, {
+        activatedAt,
+        startsAt,
+        endsAt: end.toISOString(),
+      });
+      // ClassWallet stages the exact payload it will provision.
+      await pool.query(
+        "INSERT INTO amp_classwallet_payments(order_id,invoice_id,report_sha256,payment_row,verified_config,conversion_payload) VALUES($1,$2,$3,'{}','{}',$4)",
+        [
+          input.events[0]!.orderId,
+          request.id,
+          "1".repeat(64),
+          JSON.stringify(input),
+        ],
+      );
+      // The card payment is refunded.
+      await pool.query(
+        "UPDATE amp_grants SET status='revoked' WHERE id='card'",
+      );
+      await assert.rejects(
+        provisionFundingRequest(pool, input, offers),
+        /funded_term_start_unsupported/,
+      );
+      assert.deepEqual(await grants(pool, "child"), []);
+      // With the card year still in force, the same payload follows it.
+      await pool.query("UPDATE amp_grants SET status='active' WHERE id='card'");
+      await provisionFundingRequest(pool, input, offers);
+      assert.deepEqual(
+        (
+          await pool.query(
+            "SELECT starts_at,ends_at FROM amp_grants WHERE learner_id='child' AND channel='esa'",
+          )
+        ).rows.map((g) => [g.starts_at.toISOString(), g.ends_at.toISOString()]),
+        [[startsAt, end.toISOString()]],
+      );
     }),
 );

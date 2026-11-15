@@ -1,7 +1,8 @@
+import { readClassPractice } from "./pilot-access.js";
 import { randomUUID } from "node:crypto";
 import { actorPerson, can, rosterScope } from "./authz.js";
 import { activityPeople, readActivity } from "./activity.js";
-import { SchoolError } from "./contracts.js";
+import { SchoolError, schoolActions } from "./contracts.js";
 import { recordEvent } from "./events.js";
 import { fileSlug } from "./exports.js";
 import {
@@ -121,9 +122,43 @@ export function defineOrgRoutes(define: typeof defineSchoolRoute) {
     action: "classes.read",
     target: ({ params }) =>
       ({ kind: "class", classId: params.class! }) as const,
-    handler: async ({ target, pool }) => ({
-      past: await classIsPast(pool, target.classId),
-    }),
+    // The reader's authority, the gate, the next moment to ask again and
+    // the clock, in one snapshot: they can't disagree (CP-3 r5, r6).
+    snapshot: true,
+    // The class's year, and what binds it to a place: its org, the path
+    // above it, its name, and what this person may do in it (the same `can`
+    // as every route). The shell frames a class only under its own org
+    // (docs/architecture/spaces.md).
+    handler: async ({ actor, target, db }) => {
+      const past = await classIsPast(db, target.classId);
+      const named = await db.query("SELECT name FROM amp_classes WHERE id=$1", [
+        target.classId,
+      ]);
+      const state = await readClassPractice(
+        db,
+        target.classId,
+        actor.accountId,
+      );
+      const gate = state.gate;
+      return {
+        past,
+        // When anything deciding practice can change next, and the
+        // server's own clock: a screen left open asks again then, measured
+        // in server time, never the device's (CP-3 r4).
+        recheckAt: state.recheckAt,
+        serverNow: state.serverNow,
+        // Whether students can practice: the sign-in tools follow it for
+        // every reader of the class, not only those who read its pilot.
+        practice: gate ?? "open",
+        // Why it ended, when it has: the school year, the roster or the
+        // coverage (CP-3 r7). Each has its own next step.
+        practiceEnd: state.end,
+        orgId: target.orgId,
+        path: target.path,
+        name: (named.rows[0]?.name as string | undefined) ?? null,
+        can: schoolActions.filter((action) => can(actor, action, target)),
+      };
+    },
   });
   define({
     method: "GET",

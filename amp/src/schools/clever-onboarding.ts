@@ -156,6 +156,8 @@ export async function registerCleverOnboarding(
     worker?: boolean;
     maintenance?: boolean;
     origin?: string;
+    /** Every origin AMP's pages are served from. Absent: `origin` alone. */
+    origins?: readonly string[];
   },
 ) {
   const { pool, config } = options,
@@ -170,7 +172,12 @@ export async function registerCleverOnboarding(
   app.register(async (scope) => {
     scope.addHook("onRequest", async (_request, reply) => {
       reply.header("Cache-Control", "no-store");
-      if (forgedPost(_request, options.origin ?? config?.origin)) {
+      if (
+        forgedPost(
+          _request,
+          options.origins ?? options.origin ?? config?.origin,
+        )
+      ) {
         _request.log.warn(
           { origin: _request.headers.origin ?? null, url: _request.url },
           "Clever request refused: origin",

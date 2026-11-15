@@ -1,10 +1,22 @@
 import { EntityLink } from "../../../nav/links";
+import {
+  gradeName,
+  levelRange as likelyRange,
+  measured,
+} from "../../../../learning/level-check";
 import type { Entity } from "../../../nav/entities";
 import type {
   ProgressRecord,
   StudentTimeResponse,
+  WorkItem,
 } from "../../../../schools/teacher-contracts";
-import { fitScale, LevelRows } from "../../../ui/level-range";
+import {
+  byArea,
+  fitScale,
+  LevelRows,
+  WHOLE_SCALE,
+  type RowLink,
+} from "../../../ui/level-range";
 import { StatRow, StatTile } from "../../../ui/StatTile";
 import {
   fullDay,
@@ -20,42 +32,123 @@ import styles from "./Teacher.module.css";
    an adult's own record are the same parts on the same facts; only who reads
    them differs. */
 
-/** Levels on every strand: overall first, then each strand by the work in
- * it, as error bars on one fitted scale (ui/level-range), over the
- * student's own grade when there is one. */
+/** Each row of a level opens its area as a layer over the page
+ * (`?open=area:<strand>`, nav/AreaLayer.tsx): the one row link every level
+ * view shares. */
+export const areaRowLink: RowLink = (area, { children, ...props }) => (
+  <EntityLink entity={{ kind: "area", id: area }} {...props}>
+    {children}
+  </EntityLink>
+);
+
+/** Levels on every strand: overall first, then each strand under its area
+ * of math, the five in order, as error bars on one fitted scale (ui/level-range), over the
+ * student's own grade when there is one. Before any work, the overall row
+ * is not measured yet: the whole scale, searching, with one line under it,
+ * and nothing opens. With `openAreas`, each measured row opens its area. */
 export function RecordLevels({
   record,
   empty,
+  openAreas = false,
+  holdFirst = false,
+  found,
+  crossCutting = false,
+  plain = false,
 }: {
   record: ProgressRecord;
-  /** What shows before there's any work to read a level from. */
+  /** A teacher's record: modeling and reasoning too, after the five areas
+   * (ui/level-range `byArea`). A family's leaves them out. */
+  crossCutting?: boolean;
+  /** A parent reads it: each row's range in grade words, not decimals. */
+  plain?: boolean;
+  /** The line under the level before there's any work to read it from. */
   empty: string;
+  /** Each row opens its area over the page (the page hosts the layer). */
+  openAreas?: boolean;
+  /** The page opened before the first answer (CP-5 r2 #2): when the level
+   * arrives the same overall bar glides from the whole scale to it, in
+   * place, and the line under it says what was found. The whole record
+   * shows on the next visit. */
+  holdFirst?: boolean;
+  /** What was found, as the line under the held bar says it. */
+  found?: (best: string, from: string, to: string) => string;
 }) {
   const { level, reference } = record;
-  if (!level) return <p className={styles.quietLine}>{empty}</p>;
-  const areas = record.strands.flatMap((strand) => {
-    const estimate = level.strands[strand.id];
-    return estimate ? [{ id: strand.id, label: strand.label, estimate }] : [];
-  });
+  const isMeasured = !!level && measured(level.overall);
+  if (!isMeasured || holdFirst) {
+    const range = isMeasured ? likelyRange(level!.overall) : null;
+    return (
+      <div className={styles.levelsNotYet} data-levels-not-yet>
+        <LevelRows
+          overall={isMeasured ? level!.overall : null}
+          areas={[]}
+          scale={WHOLE_SCALE}
+          moving
+        />
+        {/* Both lines share one cell, so the change moves nothing. */}
+        <div className={styles.levelsLines}>
+          <p
+            className={styles.quietLine}
+            aria-hidden={isMeasured || undefined}
+            data-hidden={isMeasured || undefined}
+          >
+            {empty}
+          </p>
+          {isMeasured && range && (
+            <p className={styles.quietLine} data-levels-found>
+              {(found ?? foundLine)(
+                gradeName(level!.overall.level),
+                gradeName(range[0]),
+                gradeName(range[1]),
+              )}
+            </p>
+          )}
+        </div>
+      </div>
+    );
+  }
+  // Every strand under its area of math, in the five areas' order.
+  const areas = byArea(
+    record.strands.flatMap((strand) => {
+      const estimate = level!.strands[strand.id];
+      return estimate ? [{ id: strand.id, label: strand.label, estimate }] : [];
+    }),
+    { crossCutting },
+  );
   const grade = reference ? ([reference.from, reference.to] as const) : null;
   const scale = fitScale(
-    [level.overall, ...areas.map((area) => area.estimate)],
+    [level!.overall, ...areas.map((area) => area.estimate)],
     { minSpan: 5, include: grade ? [...grade] : [] },
   );
   return (
     <LevelRows
-      overall={level.overall}
+      overall={level!.overall}
       areas={areas}
       scale={scale}
       grade={grade}
+      wordRanges={plain}
+      rowLink={openAreas ? areaRowLink : undefined}
     />
   );
 }
+
+/** The held bar's line once the level is found. */
+const foundLine = (best: string, from: string, to: string) =>
+  from === to
+    ? `Best guess ${best}.`
+    : `Best guess ${best}, likely ${from} to ${to}.`;
 
 /** Active minutes for each of the last 12 weeks. */
 export function RecordWeeks({ record }: { record: ProgressRecord }) {
   const largest = Math.max(1, ...record.weeks.map((week) => week.minutes));
   const total = record.weeks.reduce((sum, week) => sum + week.minutes, 0);
+  // No practice in these weeks: say so, never an empty chart.
+  if (total === 0)
+    return (
+      <p className={styles.quietLine}>
+        No active minutes in the last {record.weeks.length} weeks.
+      </p>
+    );
   return (
     <TipZone>
       <div
@@ -130,12 +223,16 @@ export function RecordWork({
 }: {
   record: ProgressRecord;
   reader?: RecordReader;
-  /** Where one answer's replay lives, without the leading slash. */
-  /** Where a row's replay opens: a path, or a layer over this page. */
-  workPath?: (attempt: string) => string | Entity;
+  /** Where a row opens: a path, a layer over this page, or (undefined)
+   * nowhere. */
+  workPath?: (attempt: string, item: WorkItem) => string | Entity | undefined;
 }) {
   if (record.work.length === 0)
-    return <p className={styles.quietLine}>No problems yet.</p>;
+    return (
+      <p className={`${styles.quietLine} ${styles.workEmpty}`}>
+        No problems yet.
+      </p>
+    );
   return (
     <WorkList
       work={record.work}
@@ -143,10 +240,12 @@ export function RecordWork({
       href={
         workPath &&
         ((item) => {
-          const target = workPath(item.id);
-          return typeof target === "string"
-            ? { path: target }
-            : { entity: target };
+          const target = workPath(item.id, item);
+          return target === undefined
+            ? undefined
+            : typeof target === "string"
+              ? { path: target }
+              : { entity: target };
         })
       }
     />

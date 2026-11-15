@@ -89,7 +89,9 @@ export function AddChildSheet({
       // `/me`, Today, the map and the roster all read it again.
       await invalidateAccount(session.accountId);
       setStatus(
-        `${added.name ?? (value || (child ? "Your child" : "The student"))} is in your class.`,
+        child
+          ? `${added.name ?? (value || "Your child")} is in your family.`
+          : `${added.name ?? (value || "The student")} is in your class.`,
       );
       setName("");
       setYear("");

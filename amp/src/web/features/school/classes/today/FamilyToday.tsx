@@ -1,3 +1,4 @@
+import { spaceWords } from "../../../spaces/words";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
 import type { SignedInMe } from "../../../../../account/contracts";
@@ -46,8 +47,6 @@ export function FamilyToday({
   data,
   place,
   code,
-  manage,
-  locked,
   session,
   me,
   secondParent,
@@ -56,10 +55,6 @@ export function FamilyToday({
   place: { org: string; class: string };
   /** The class code, for the one Join element. */
   code: string | null;
-  /** This reader can make a new code. */
-  manage: boolean;
-  /** Sign-in is paused by guessing: New code is the way on. */
-  locked: boolean;
   session: AuthSession;
   me: SignedInMe | undefined;
   /** The family's second parent; undefined unless this is its holder. */
@@ -252,7 +247,11 @@ export function FamilyToday({
           />
         </section>
       )}
-      <WeekFacts week={data.week} family target={data.weeklyTargetMinutes} />
+      <WeekFacts
+        week={data.week}
+        words={spaceWords("family")}
+        target={data.weeklyTargetMinutes}
+      />
       {code && (
         <Sheet
           open={joining}
@@ -260,14 +259,14 @@ export function FamilyToday({
             if (!open) closeSearch("devices");
           }}
           title="Their own devices"
+          tall
         >
           <JoinClass
             code={code}
             place={place}
-            family
+            words={spaceWords("family")}
             heading={false}
-            manage={manage}
-            locked={locked}
+            boardLink={false}
           />
         </Sheet>
       )}

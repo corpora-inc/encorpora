@@ -616,9 +616,7 @@ export function StudentsScreen() {
               )}
             </span>
           }
-        >
-          A spreadsheet or OneRoster file brings in the whole school at once.
-        </EmptyState>
+        />
       )}
       {open && (
         <StudentSheet

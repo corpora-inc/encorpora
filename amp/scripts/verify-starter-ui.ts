@@ -190,22 +190,40 @@ try {
     await myself(page);
     await page.getByRole("radio", { name: String(thisYear - 9) }).click();
     await page.getByRole("button", { name: "Set up as a parent" }).click();
-    await page.waitForURL(/\/start\/parent$/);
-    await page.getByRole("heading", { name: "Your children" }).waitFor();
+    // A parent with no name on file gives it first (R12).
+    await page.waitForURL(/\/start\/parent\/name$/);
+    await page.getByRole("heading", { name: "Your name" }).waitFor();
     await context.close();
   }
 
   // Last, since the account then has its own practice: an adult's year is
-  // enough, and the first problem comes straight after.
+  // enough, and the first problem comes straight after. Once it has its own
+  // practice, "/start" no longer offers "I'm learning for myself" (only what
+  // the account doesn't have yet), so the dark pass opens that practice.
   for (const theme of ["light", "dark"] as const) {
     const context = await f.context(browser, "new", {
       viewport: { width: 390, height: 900 },
       colorScheme: theme,
     });
     const page = await context.newPage();
-    await myself(page);
-    await page.getByRole("radio", { name: "Adult", exact: true }).click();
-    await page.getByRole("button", { name: "Start practicing" }).click();
+    if (theme === "light") {
+      await myself(page);
+      await page.getByRole("radio", { name: "Adult", exact: true }).click();
+      await page.getByRole("button", { name: "Start practicing" }).click();
+    } else {
+      await page.goto(`${f.origin}/start`);
+      // The account is known before the first paint: adding a place from
+      // the first frame, never the first-run question, and never the
+      // practice it already has.
+      await page.getByRole("heading", { name: "Add a place" }).waitFor();
+      check(
+        "with its own practice, /start no longer offers it",
+        (await page
+          .getByRole("link", { name: /^I’m learning for myself/ })
+          .count()) === 0,
+      );
+      await page.goto(`${f.origin}/practice`);
+    }
     await page.waitForURL(/\/practice$/);
     await page.locator("[data-problem-id]").first().waitFor();
     await settle(page);

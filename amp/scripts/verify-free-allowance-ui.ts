@@ -539,9 +539,11 @@ async function journey(
       external.push(target.hostname);
   });
   await device.goto(`${origin}/join`);
-  await heading(device, "Type your class code");
-  await device.getByLabel("Class code").fill(home.join_code);
-  await device.waitForURL(`**/join/${home.join_code}`);
+  await heading(device, "Type your code");
+  await device.getByLabel("Code", { exact: true }).fill(home.join_code);
+  await device.waitForURL(
+    `**/join/${home.join_code.slice(0, 3)}-${home.join_code.slice(3)}`,
+  );
   await heading(device, "Tap your name");
   await shot(device, "join", width, theme);
   await device.getByRole("link", { name: new RegExp(`^${moon.name}`) }).click();
@@ -655,9 +657,16 @@ async function adultJourney(
     .getByRole("link", { name: "Workbooks", exact: true })
     .click();
   await page.waitForURL(`**/learners/${learnerId}/workbooks`);
+  // None made yet: the empty list, and no results to enter by code.
   await page
-    .getByRole("button", { name: "Enter results with a code" })
+    .getByRole("heading", { name: "No workbooks yet", exact: true })
     .waitFor();
+  check(
+    `${label} no results by code before a workbook exists`,
+    (await page
+      .getByRole("button", { name: "Enter results with a code" })
+      .count()) === 0,
+  );
   await settle(page, 300);
   await workbooksUsed(page, `${label} workbooks`, "Continue with AMP");
   await measured(page, `${label} workbooks`);

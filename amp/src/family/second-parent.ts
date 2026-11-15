@@ -1,3 +1,4 @@
+import { adultNameSql } from "../account/profile.js";
 import type { Pool, PoolClient } from "pg";
 import { z } from "zod";
 import { activeToday } from "../schools/principal.js";
@@ -68,7 +69,7 @@ async function heldFamily(db: Database, holder: string, lock = false) {
       holder_person: string | null;
     }>(
       `SELECT f.org_id,f.class_id,c.name AS class_name,f.second_parent,
-         (SELECT p.given_name FROM amp_people p WHERE p.tenant_id=f.org_id AND p.account_id=f.account_id
+         (SELECT ${adultNameSql()} FROM amp_people p WHERE p.tenant_id=f.org_id AND p.account_id=f.account_id
            AND p.deleted_at IS NULL) AS holder_name,
          (SELECT p.id FROM amp_people p WHERE p.tenant_id=f.org_id AND p.account_id=f.account_id
            AND p.deleted_at IS NULL) AS holder_person
@@ -89,7 +90,7 @@ async function secondParentRow(db: Database, personId: string) {
       name: string;
       invite: { id: string; lookup_hash: string; expires_at: string } | null;
     }>(
-      `SELECT p.id,p.email,p.account_id,concat_ws(' ',p.given_name,p.family_name) AS name,
+      `SELECT p.id,p.email,p.account_id,${adultNameSql()} AS name,
          (SELECT row_to_json(i) FROM (SELECT c.id,c.lookup_hash,c.expires_at FROM amp_person_credentials c
            WHERE c.person_id=p.id AND c.kind='invite' AND c.revoked_at IS NULL
            ORDER BY c.created_at DESC,c.id LIMIT 1) i) AS invite

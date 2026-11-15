@@ -91,7 +91,7 @@ export class SchoolError extends Error {
     /** Open buyer requests overlapping the authorized classes being requested. */
     public readonly conflicts?: {
       requestId: string;
-      holderName: string;
+      holderName: string | null;
       classIds: string[];
     }[],
   ) {
@@ -252,6 +252,12 @@ export const JOIN_CODE_LENGTH = 6;
 /** What a person types or a board shows: any case, with or without a hyphen. */
 export const normalizeJoinCode = (value: string) =>
   value.toUpperCase().replace(/[^A-Z0-9]/g, "");
+/** A code as people read and type it, and as its link says it: 275-XKT.
+ * Either form is accepted on the way in. */
+export const formatJoinCode = (code: string) => {
+  const plain = normalizeJoinCode(code);
+  return plain.length === 6 ? `${plain.slice(0, 3)}-${plain.slice(3)}` : plain;
+};
 const joinCode = z.string().max(40).transform(normalizeJoinCode);
 export const joinLookupSchema = z.strictObject({ code: joinCode });
 export const joinPictureSchema = z.strictObject({
@@ -277,7 +283,12 @@ export const issueCardsSchema = z.strictObject({
 export const ssoProviders = ["google", "microsoft"] as const;
 export type SsoProvider = (typeof ssoProviders)[number];
 export const joinRosterResource = z.object({
-  class: z.object({ name: z.string() }),
+  /** A family's code names the family ("Achterberg family"), a class's the
+   * class. `kind` is absent from an older server: a class. */
+  class: z.object({
+    name: z.string(),
+    kind: z.enum(["family", "class"]).optional(),
+  }),
   /** Practice hasn't started, or has ended: no names to tap. */
   practice: z.enum(["waiting", "ended"]).optional(),
   /** Outside sign-ins this class's school has turned on. */
@@ -297,9 +308,17 @@ export const presenceResource = z.object({
   class: z.object({
     id: z.uuid(),
     name: z.string(),
+    /** Empty while no student can practice: before Start, after it ends
+     * (SPEC R14). The code reaches students only while practice runs. Still
+     * a string, so an older web build's schema reads the resource. */
     joinCode: z.string(),
+    /** False while the code is withheld (an empty `joinCode`). */
+    codeAvailable: z.boolean().optional(),
     /** Sign-in is paused by guessing until then; a new code reopens it. */
     joinLockedUntil: z.string().nullable().optional(),
+    /** Whether students can practice, for anyone who reads the class:
+     * `open`, or why not. */
+    practice: z.enum(["open", "waiting", "ended"]).optional(),
   }),
   /** Whether this person can make a new code (and so offer it). */
   canManage: z.boolean().optional(),
@@ -311,9 +330,12 @@ export const signInRosterResource = z.object({
   class: z.object({
     id: z.uuid(),
     name: z.string(),
+    /** Empty while no student can practice (SPEC R14). */
     joinCode: z.string(),
+    codeAvailable: z.boolean().optional(),
     /** Too many wrong pictures across the class: sign-in is paused until then. */
     joinLockedUntil: z.string().nullable(),
+    practice: z.enum(["open", "waiting", "ended"]).optional(),
   }),
   /** Whether this person can change sign-in, or only read it. */
   canManage: z.boolean(),
@@ -386,10 +408,15 @@ export const classResource = z.object({
   name: z.string(),
   courseBands: z.array(z.string()),
   gradingKind: z.enum(gradingKinds),
+  /** Empty while no student of the class can practice (SPEC R14): a
+   * string still, for older clients. */
   joinCode: z.string(),
+  /** False while the code is withheld. */
+  codeAvailable: z.boolean().optional(),
   studentCount: z.number().int(),
   /** Its teachers today, by name. */
   teachers: z.array(z.string()).default([]),
+  teacherNames: z.array(z.string().nullable()).optional(),
 });
 export const studentResource = z.object({
   id: z.uuid(),
@@ -407,6 +434,51 @@ export const studentResource = z.object({
   /** How many students match, across all pages. */
   total: z.number().int().optional(),
 });
+/** Every place one account works, for the place switcher in one bounded
+ * read (docs/architecture/spaces.md): the orgs it holds a staff role at, the
+ * schools below a district or network it oversees, and the classes it teaches
+ * or aides in this year. Each list stops at `PLACES_LIMIT`; `more` says one
+ * did, and the full lists stay on their own screens. */
+export const PLACES_LIMIT = 40;
+export const placesResource = z.object({
+  orgs: z.array(
+    orgResource
+      .pick({
+        id: true,
+        kind: true,
+        name: true,
+        parentId: true,
+        roles: true,
+        solo: true,
+        setupPending: true,
+        demo: true,
+      })
+      .extend({
+        /** "Just my class" with at most one class: the class is the place. */
+        lone: z.boolean(),
+      }),
+  ),
+  schools: z.array(
+    z.object({
+      id: z.uuid(),
+      name: z.string(),
+      parentId: z.uuid().nullable(),
+      demo: z.literal(true).optional(),
+    }),
+  ),
+  classes: z.array(
+    z.object({
+      id: z.uuid(),
+      orgId: z.uuid(),
+      orgName: z.string(),
+      name: z.string(),
+      role: z.enum(["teacher", "aide"]),
+      demo: z.literal(true).optional(),
+    }),
+  ),
+  more: z.boolean(),
+});
+export type PlacesResource = z.infer<typeof placesResource>;
 export type OrgResource = z.infer<typeof orgResource>;
 export type ClassResource = z.infer<typeof classResource>;
 export type StudentResource = z.infer<typeof studentResource>;

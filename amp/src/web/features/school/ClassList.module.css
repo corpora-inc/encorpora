@@ -59,11 +59,14 @@
 }
 .link,
 .detail {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
 }
 .link {
+  /* Its own box reaches 44 px around the name (the row's ::after is the
+     real target); the negative margin keeps the row's layout. */
+  padding-block: 13px;
+  margin-block: -13px;
   color: inherit;
   font-weight: 600;
   line-height: 1.3;
@@ -102,4 +105,19 @@
 a.cellText {
   display: block;
   line-height: 44px;
+}
+/* The narrowest phones: a name or teacher is never cut short (each wraps
+   between words), so its row grows to hold it. After the rules above. */
+@container (max-width: 360px) {
+  .row {
+    height: auto;
+    min-height: 60px;
+    padding-block: var(--space-2);
+  }
+  .row .link,
+  .row .detail {
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal;
+  }
 }

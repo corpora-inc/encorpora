@@ -11,25 +11,32 @@ import styles from "./PlainPage.module.css";
 export function PlainPage({
   title,
   back,
+  backLabel = "Back",
   wide = false,
   children,
 }: {
   title?: string;
   /** Where Back goes when there is no history to return to. */
   back?: string;
+  /** "Cancel" when the page was opened to add a place, and goes back there. */
+  backLabel?: "Back" | "Cancel";
   wide?: boolean;
   children: ReactNode;
 }) {
   return (
     <main className={styles.page} data-wide={wide || undefined}>
-      {back ? <BackLink to={back} /> : <span className={styles.backSlot} />}
+      {back ? (
+        <BackLink to={back} label={backLabel} />
+      ) : (
+        <span className={styles.backSlot} />
+      )}
       {title && <h1 className={styles.title}>{title}</h1>}
       {children}
     </main>
   );
 }
 
-function BackLink({ to }: { to: string }) {
+function BackLink({ to, label }: { to: string; label: string }) {
   const close = useCloseClick(to);
   return (
     <a
@@ -40,7 +47,7 @@ function BackLink({ to }: { to: string }) {
       <svg viewBox="0 0 16 16" aria-hidden="true">
         <path d="M10 3.5 5.5 8l4.5 4.5" />
       </svg>
-      Back
+      {label}
     </a>
   );
 }

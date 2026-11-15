@@ -1,3 +1,4 @@
+import { childPagePath } from "../family/api";
 import { useMutation, useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { RootLink } from "../../nav/root";
 import {
@@ -58,18 +59,35 @@ function Continue({ session }: { session: AuthSession }) {
   const learner = account?.family.learners.find(
     (entry) => entry.id === learnerId && !entry.deletedAt,
   );
-  // Opened directly (a link, Family): it returns to where the learner is.
+  // Opened directly (a link, a new tab): it returns to where the learner
+  // is, a child to their own page in their family.
   const remembered = readContinuation(session.accountId);
+  const page = useQuery({
+    queryKey: [
+      "account",
+      session.accountId,
+      "families",
+      "child-page",
+      learnerId,
+    ],
+    queryFn: () => childPagePath(session, learnerId),
+    enabled: !!learner && !learner.adult && remembered?.learnerId !== learnerId,
+  });
+  const home = learner?.adult ? "/practice" : (page.data ?? "/");
   const returnTo =
-    remembered?.learnerId === learnerId ? remembered.returnTo : "/";
+    remembered?.learnerId === learnerId ? remembered.returnTo : home;
   useEffect(() => {
-    if (learner && remembered?.learnerId !== learnerId)
+    if (
+      learner &&
+      remembered?.learnerId !== learnerId &&
+      (learner.adult || !page.isPending)
+    )
       rememberContinuation({
         accountId: session.accountId,
         learnerId,
-        returnTo: learner.adult ? "/practice" : "/",
+        returnTo: home,
       });
-  }, [learner?.id]);
+  }, [learner?.id, page.isPending, home]);
   if (me.error && !account)
     return (
       <Page>
@@ -339,7 +357,8 @@ function backLabel(href: string) {
   const path = href.split("?")[0]!;
   if (path === "/practice") return "Back to practice";
   if (path === "/me") return "Back to your progress";
-  if (path.startsWith("/family/access")) return "Back to billing";
+  if (path.startsWith("/family/access") || path.startsWith("/account/billing"))
+    return "Back to billing";
   if (/\/classes\/[^/]+\/today$/.test(path)) return "Back to Today";
   return "Back";
 }

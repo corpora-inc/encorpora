@@ -109,9 +109,13 @@ export function ProblemLesson({
   lesson,
   onWatchFilm,
   help,
+  film = true,
 }: {
   lesson: ProblemLessonView;
   onWatchFilm?: () => void;
+  /** Offer its film at its top; false where the page offers it already
+   * (Pathways' lesson layer, beside Try). */
+  film?: boolean;
   /** Records the lesson as opened, and its time as lesson time. */
   help?: LessonHelp;
 }) {
@@ -140,7 +144,7 @@ export function ProblemLesson({
   return (
     <GlossaryProvider payload={lesson}>
       <article className="problem-lesson">
-        {lesson.film && (
+        {film && lesson.film && (
           <FilmLink
             templateId={lesson.templateId}
             film={lesson.film}

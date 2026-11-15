@@ -305,11 +305,11 @@ async function sweep(
 
     // /join: a wrong code moves nothing.
     await page.goto(`${origin}/join`);
-    await heading(page, "Type your class code").waitFor();
+    await heading(page, "Type your code").waitFor();
     await settled(page);
     await geometry(page, `${label} join`);
     await shoot(page, engine, "join", width, theme);
-    const input = page.getByLabel("Class code");
+    const input = page.getByLabel("Code", { exact: true });
     const layout = "h1, label, button";
     const before = await boxes(page, layout);
     await input.fill("zzz-zzz");
@@ -322,13 +322,15 @@ async function sweep(
     await input.fill("");
     const shown = `${big.joinCode.slice(0, 3).toLowerCase()}-${big.joinCode.slice(3)}`;
     await input.fill(shown);
-    await page.waitForURL(`**/join/${big.joinCode}`);
+    await page.waitForURL(
+      `**/join/${big.joinCode.slice(0, 3)}-${big.joinCode.slice(3)}`,
+    );
     await heading(page, "Tap your name").waitFor();
     await settled(page);
     await geometry(page, `${label} names`);
     await shoot(page, engine, "names", width, theme);
     await page.goBack();
-    await heading(page, "Type your class code").waitFor();
+    await heading(page, "Type your code").waitFor();
     await page.goForward();
     await heading(page, "Tap your name").waitFor();
     await page.reload();
@@ -585,9 +587,11 @@ async function journeys(browser: Browser, engine: string) {
     const first = await open();
     await first.page.goto(`${origin}/join`);
     await first.page
-      .getByLabel("Class code")
+      .getByLabel("Code", { exact: true })
       .fill(cohort.joinCode.toLowerCase());
-    await first.page.waitForURL(`**/join/${cohort.joinCode}`);
+    await first.page.waitForURL(
+      `**/join/${cohort.joinCode.slice(0, 3)}-${cohort.joinCode.slice(3)}`,
+    );
     await first.page.getByRole("link", { name: /Mina P\./ }).click();
     await heading(first.page, /Pick 3 pictures/).waitFor();
     await pick(first.page, MINE);
@@ -684,7 +688,7 @@ async function journeys(browser: Browser, engine: string) {
     const revoked = await open();
     await revoked.page.goto(`${origin}/c#${token}`);
     await heading(revoked.page, /This card doesn’t work anymore/).waitFor();
-    await revoked.page.getByRole("link", { name: "Type a class code" }).click();
+    await revoked.page.getByRole("link", { name: "Type a code" }).click();
     await revoked.page.waitForURL("**/join");
     await revoked.context.close();
 
@@ -824,14 +828,14 @@ async function journeys(browser: Browser, engine: string) {
       ),
     );
     await idle.page.waitForURL("**/join", { timeout: 20_000 });
-    await heading(idle.page, "Type your class code").waitFor();
+    await heading(idle.page, "Type your code").waitFor();
     check(
       `${engine} idle sign-out`,
       await idle.page.evaluate(() => !sessionStorage.getItem("amp.student")),
     );
 
     if (engine === "chromium") {
-      // "Scan my card", in place: a real QR on a camera, read by jsQR here.
+      // "Scan your card", in place: a real QR on a camera, read by jsQR here.
       const scan = await open();
       const { cards } = await staff("POST", `classes/${cohort.id}/cards`, {
         personIds: [jo.personId],
@@ -875,14 +879,14 @@ async function journeys(browser: Browser, engine: string) {
         };
       }, matrix);
       await scan.page.goto(`${origin}/join`);
-      await heading(scan.page, "Type your class code").waitFor();
+      await heading(scan.page, "Type your code").waitFor();
       await settled(scan.page);
       await resetRecord(scan.page);
       await scan.page.route("**/api/v1/school/join/card", async (route) => {
         await new Promise((done) => setTimeout(done, 600));
         await route.continue();
       });
-      await tap(scan.page, "Scan my card");
+      await tap(scan.page, "Scan your card");
       await scan.page.waitForURL("**/practice", { timeout: 25_000 });
       await firstProblem(scan.page);
       const { cls: scanShift } = await shellRecord(scan.page);
@@ -910,7 +914,7 @@ async function journeys(browser: Browser, engine: string) {
           };
         });
         await viewing.page.goto(`${origin}/join`);
-        await heading(viewing.page, "Type your class code").waitFor();
+        await heading(viewing.page, "Type your code").waitFor();
         await settled(viewing.page);
         await resetRecord(viewing.page);
         const title = async () => {
@@ -919,7 +923,7 @@ async function journeys(browser: Browser, engine: string) {
         };
         const titleBefore = await title();
         const buttonBefore = await boxes(viewing.page, "button");
-        await tap(viewing.page, "Scan my card");
+        await tap(viewing.page, "Scan your card");
         await heading(viewing.page, "Hold up your card").waitFor();
         await viewing.page.locator("video").waitFor();
         await settled(viewing.page);
@@ -931,7 +935,7 @@ async function journeys(browser: Browser, engine: string) {
         );
         await shoot(viewing.page, "chromium", "scan", width, "light");
         await tap(viewing.page, "Type a code instead");
-        await heading(viewing.page, "Type your class code").waitFor();
+        await heading(viewing.page, "Type your code").waitFor();
         await settled(viewing.page);
         check(
           "scan closes title",
@@ -953,11 +957,11 @@ async function journeys(browser: Browser, engine: string) {
         };
       });
       await denied.page.goto(`${origin}/join`);
-      await heading(denied.page, "Type your class code").waitFor();
+      await heading(denied.page, "Type your code").waitFor();
       await settled(denied.page);
       await resetRecord(denied.page);
       const beforeDenied = await boxes(denied.page, "h1, label, button");
-      await tap(denied.page, "Scan my card");
+      await tap(denied.page, "Scan your card");
       await denied.page.getByText("The camera is off").waitFor();
       await settled(denied.page);
       sameBoxes(

@@ -1,3 +1,4 @@
+import { requestFetch } from "./lib/request-transport";
 import { useLoggedError } from "./feedback";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { notifyAccountSessionChanged } from "./auth";
@@ -24,7 +25,7 @@ const names: Record<string, string> = {
   github: "GitHub",
 };
 async function security<T>(path: string, body?: object): Promise<T> {
-  const result = await fetch(`/api/auth/security/${path}`, {
+  const result = await requestFetch(`/api/auth/security/${path}`, {
     ...(body && {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -262,9 +263,6 @@ export function AccountSecurity() {
                   <div className="security-panel-body" id={`security-${id}`}>
                     {id === "passkeys" && (
                       <>
-                        <p>
-                          Use a passkey saved on your device or security key.
-                        </p>
                         {summary.passkeys.map((key) => (
                           <div className="security-method" key={key.id}>
                             {rename === key.id ? (
@@ -342,7 +340,7 @@ export function AccountSecurity() {
                               submit(e, async () => {
                                 checked(
                                   await accountClient.passkey.addPasskey({
-                                    name: keyName.trim() || "My passkey",
+                                    name: keyName.trim() || "Passkey",
                                   }),
                                 );
                                 setKeyName("");
@@ -436,9 +434,8 @@ export function AccountSecurity() {
                     {id === "totp" && (
                       <>
                         <p>
-                          An authenticator supplies a six-digit code when you
-                          sign in with a password. Passkeys and linked providers
-                          use their own sign-in checks.
+                          Asks for a six-digit code when you sign in with a
+                          password.
                         </p>
                         {!summary.hasPassword || !summary.passwords ? (
                           <p>

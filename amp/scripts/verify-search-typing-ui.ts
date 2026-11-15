@@ -100,19 +100,19 @@ const screens: Screen[] = [
   {
     id: "lessons",
     path: "/lessons",
-    label: "Search lessons",
+    label: "Search",
     param: "q",
   },
   {
     id: "pathways",
     path: "/pathways",
-    label: "Find a skill",
+    label: "Search",
     param: "topic",
   },
   {
     id: "inventory",
     path: "/inventory",
-    label: "Search your skills",
+    label: "Search",
     param: "topic",
   },
 ];

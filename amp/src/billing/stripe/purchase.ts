@@ -1,3 +1,4 @@
+import { accessGrantsFor, grantReserved } from "../../account/adult-access.js";
 import { createHash } from "node:crypto";
 import {
   BillingError,
@@ -90,10 +91,8 @@ async function learnerPurchaseStatus(
         [learnerId, accountId],
       );
       if (!learner.rowCount) throw new BillingError("learner_not_found", 404);
-      const grants = await client.query(
-        "SELECT starts_at,ends_at FROM amp_grants WHERE learner_id=$1 AND status='active' AND ends_at>now() ORDER BY starts_at LIMIT 1",
-        [learnerId],
-      );
+      const access = await accessGrantsFor(client, [learnerId]);
+      const grant = access.grants.find((g) => grantReserved(g, access.now));
       const checkout = await client.query(
         "SELECT id,session_id,subscription_id,created_at,billing_interval,price_tier FROM amp_stripe_checkouts WHERE namespace=$1 AND (learner_id=$2 OR to_jsonb(amp_stripe_checkouts)->>'assigned_learner_id'=$2) AND account_id=$3 AND NOT closed LIMIT 1",
         [repository.namespace, learnerId, accountId],
@@ -112,7 +111,7 @@ async function learnerPurchaseStatus(
         ));
       return {
         deleted: !!learner.rows[0].deleted_at,
-        grant: grants.rows[0],
+        grant,
         checkout: checkout.rows[0],
         tier,
         // The account's own adult learner buys on its own terms.

@@ -1,3 +1,4 @@
+import { spaceWords } from "../../spaces/words";
 import { useState } from "react";
 import type { AnnualOffer } from "../../../../billing/stripe/purchase-contracts";
 import type { OverviewResponse } from "../../../../schools/org-contracts";
@@ -156,7 +157,7 @@ export function PatternSections() {
             compact
             code="K7M24Q"
             place={{ org: "gallery", class: "gallery" }}
-            family
+            words={spaceWords("family")}
             manage
           />
         </Specimen>
@@ -165,7 +166,7 @@ export function PatternSections() {
             compact
             code="K7M24Q"
             place={{ org: "gallery", class: "gallery" }}
-            family={false}
+            words={spaceWords("classroom")}
             boardLink={false}
             manage
             locked
