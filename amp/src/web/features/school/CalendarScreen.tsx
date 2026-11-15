@@ -454,6 +454,8 @@ export function CalendarScreen() {
   if (!small)
     return (
       <OrgFrame orgId={orgId} nav="calendar" title="Calendar" narrow>
+        {/* The screen's one h1 (its tab names it, so it isn't shown again). */}
+        <PageHead title="Calendar" />
         <div className={styles.settingsPage}>
           <YearCalendar orgId={orgId} section />
         </div>

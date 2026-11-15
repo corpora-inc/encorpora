@@ -13,7 +13,7 @@ import { Stepper } from "../../ui/Stepper";
 import { TextArea } from "../../ui/TextField";
 import { currentSession, licenseOptions, orgOptions, school } from "./api";
 import { OrgFrame } from "./OrgFrame";
-import { FormNote } from "./parts";
+import { FormNote, PageHead } from "./parts";
 import { orgPath } from "./paths";
 import styles from "./School.module.css";
 
@@ -166,6 +166,8 @@ export function LicenseScreen() {
   const { org: orgId } = useParams({ strict: false }) as { org: string };
   return (
     <OrgFrame orgId={orgId} nav="license" title="License" narrow>
+      {/* The screen's one h1 (its tab names it, so it isn't shown again). */}
+      <PageHead title="License" />
       <div className={styles.settingsPage}>
         <LicenseSection orgId={orgId} />
       </div>
