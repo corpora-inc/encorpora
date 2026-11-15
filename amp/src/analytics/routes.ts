@@ -30,7 +30,6 @@ export async function registerAnalyticsRoutes(
   ) => {
     if (
       request.headers["sec-gpc"] === "1" ||
-      request.headers.dnt === "1" ||
       studentBearer(request)
     )
       return reply.code(204).send();
@@ -101,7 +100,6 @@ export async function registerAnalyticsRoutes(
       reply.header("Cache-Control", "no-store");
       if (
         !options.authenticate ||
-        request.headers.dnt === "1" ||
         request.headers["sec-gpc"] === "1"
       )
         return reply.code(204).send();

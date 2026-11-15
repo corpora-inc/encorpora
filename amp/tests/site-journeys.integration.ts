@@ -120,10 +120,10 @@ test(
         },
       ])
         assert.equal((await post(rejected)).statusCode, 400);
-      for (const privacy of [
-        { origin, "sec-gpc": "1" },
-        { origin, dnt: "1" },
-      ] as Record<string, string>[])
+      for (const privacy of [{ origin, "sec-gpc": "1" }] as Record<
+        string,
+        string
+      >[])
         assert.equal((await post(payload, privacy)).statusCode, 204);
       assert.equal(
         (

@@ -34,8 +34,7 @@ export function useMetaPurchaseContext(
       returnedFrom !== checkoutId ||
       location.pathname !== "/start/purchase" ||
       (navigator as Navigator & { globalPrivacyControl?: boolean })
-        .globalPrivacyControl === true ||
-      navigator.doNotTrack === "1"
+        .globalPrivacyControl === true
     )
       return;
     // Let this small, account-bound request finish when the parent continues

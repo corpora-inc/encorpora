@@ -356,7 +356,7 @@ test(
             ).statusCode,
             400,
           );
-        for (const privacy of [{ "sec-gpc": "1" }, { dnt: "1" }]) {
+        for (const privacy of [{ "sec-gpc": "1" }]) {
           const result = await app.inject({
             method: "POST",
             url: "/api/v1/advertising/acquisition",

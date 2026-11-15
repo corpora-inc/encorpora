@@ -182,7 +182,7 @@ export async function registerFundingPurchaseRoutes(
       const account = await options.authenticate(request);
       let body = request.body;
       if (
-        (request.headers["sec-gpc"] === "1" || request.headers.dnt === "1") &&
+        request.headers["sec-gpc"] === "1" &&
         body !== null &&
         typeof body === "object" &&
         !Array.isArray(body)
