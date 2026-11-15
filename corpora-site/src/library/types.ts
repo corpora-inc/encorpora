@@ -6,7 +6,7 @@ export type Section = {
   paragraphs: string[];
   points?: string[];
   example?: { title: string; text: string };
-  diagram?: "loop" | "review" | "strands" | "discovery";
+  diagram?: "loop" | "review" | "strands" | "discovery" | "estimate";
   sources?: Source[];
   shot?: ProductShot;
 };

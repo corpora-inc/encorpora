@@ -3,6 +3,7 @@ import { Math, Sample } from "../product.js";
 import type { SiteConfig } from "../config.js";
 import type { Article, Section, ProductShot as ShotName } from "./types.js";
 import { articleByPath } from "./catalog.js";
+import { estimateExample } from "./estimate-example.js";
 
 const shots: Record<ShotName, {alt: string; caption: string}> = {
   practice: {alt: "AMP fraction practice with an equal-parts model, answer keypad and Hint and Lesson controls", caption: "One clear problem, with a visual model and help within reach."},
@@ -18,6 +19,18 @@ export function ProductShot({name}: {name: ShotName}) {
 }
 
 export function LearningDiagram({ kind }: { kind: NonNullable<Section["diagram"]> }) {
+  if (kind === "estimate") return <figure className="learning-diagram estimate-diagram">
+    <p className="eyebrow">One synthetic learning history</p>
+    {estimateExample.map(point => <div className="estimate-row" key={point.count}>
+      <strong>{point.count === 0 ? "Starting picture" : `After ${point.count} answers`}</strong>
+      <div className="estimate-axis" role="img" aria-label={`Working level ${point.level.toFixed(1)}, model uncertainty plus or minus ${point.sd.toFixed(1)} level units`}>
+        <span className="estimate-range" style={{left: `${Math.max(0,point.level-point.sd)/6*100}%`, width: `${(Math.min(6,point.level+point.sd)-Math.max(0,point.level-point.sd))/6*100}%`}} />
+        <span className="estimate-dot" style={{left:`${point.level/6*100}%`}} />
+      </div>
+    </div>)}
+    <div className="estimate-labels"><span>Earlier mathematics</span><span>Later mathematics</span></div>
+    <figcaption>The dot is the working estimate; the band is one reported uncertainty width on either side. AMP’s actual estimator computes this example from independent answers to Grade 3 tasks, with three correct in each group of four. As the evidence accumulates, the starting picture becomes more focused.</figcaption>
+  </figure>;
   if (kind === "discovery") return <figure className="learning-diagram fraction-discovery">
     <div className="fraction-pair">
       {[2, 4].map((parts) => <div key={parts}>

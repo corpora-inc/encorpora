@@ -79,6 +79,12 @@ try {
     await page.locator(".solution summary").focus();
     await page.keyboard.press("Enter");
     assert.equal(await page.locator(".solution[open]").count(), 1);
+    await page.locator(".site-menu summary").focus();
+    await page.keyboard.press("Enter");
+    const menu = await page.locator(".site-menu-links").boundingBox();
+    assert.ok(menu && menu.x >= 0 && menu.x + menu.width <= width, `Explore menu clipped at ${width}`);
+    await page.keyboard.press("Tab");
+    assert.equal(await page.locator(":focus").getAttribute("href"), "/how-it-works/");
     await page.goto(url + "/samples/");
     await page.emulateMedia({ media: "print" });
     if (width === 1280)
