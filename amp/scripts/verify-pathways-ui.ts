@@ -1,6 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
-import { contrast, type Rgba } from "./color-system";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { mkdir, realpath } from "node:fs/promises";
@@ -721,15 +720,15 @@ async function verifySearchFilters() {
         "Deleting keeps the keyboard focused on search",
       );
       assert.equal(new URL(page.url()).searchParams.get("filter"), "K");
-      const preference = page.getByRole("checkbox", {
-        name: "Show grade numbers",
-      });
-      assert.equal(await preference.isChecked(), false);
+      // A grown-up's view always names grades: no device toggle.
+      assert.equal(
+        await page.getByRole("checkbox", { name: /grade numbers/i }).count(),
+        0,
+      );
       assert(
         await page.locator(".pathways-grade").isVisible(),
-        "an active URL filter remains visible so it can be cleared while details are hidden",
+        "an active URL filter remains visible so it can be cleared",
       );
-      await preference.check();
       const grade = page.getByRole("button", { name: /^Grade or course/ });
       assert.equal(await grade.getAttribute("data-value"), "K");
       const gradeBox = await grade.boundingBox();
@@ -749,50 +748,8 @@ async function verifySearchFilters() {
         await page.locator(".pathways-skill-list a").count(),
         skills.length,
       );
-      await preference.uncheck();
-      assert.equal(
-        await grade.isVisible(),
-        false,
-        "without an active filter, hiding details also hides the grade picker",
-      );
-      const colors = await preference.evaluate((input) => {
-        const label = input.closest("label")!;
-        const marker = input.nextElementSibling!;
-        const panel = input.closest(".pathways-browser")!;
-        const box = input.getBoundingClientRect();
-        return {
-          width: box.width,
-          height: box.height,
-          text: getComputedStyle(label).color,
-          panel: getComputedStyle(panel).backgroundColor,
-          border: getComputedStyle(marker).borderColor,
-          fill: getComputedStyle(marker).backgroundColor,
-        };
-      });
-      const rgba = (value: string): Rgba => {
-        const parts = value.match(/[\d.]+/g)!.map(Number);
-        assert(parts.length >= 3, `Expected computed RGB color: ${value}`);
-        return [parts[0]!, parts[1]!, parts[2]!, parts[3] ?? 1];
-      };
-      assert(
-        colors.width >= 44 && colors.height >= 44,
-        "the compact checkbox keeps its full touch target",
-      );
-      assert(
-        contrast(rgba(colors.text), rgba(colors.panel)) >= 4.5,
-        "display preference text remains readable on the atlas in both themes",
-      );
-      assert(
-        contrast(rgba(colors.border), rgba(colors.panel)) >= 3 &&
-          contrast(rgba(colors.border), rgba(colors.fill)) >= 3,
-        "the unchecked indicator remains visible against its fill and atlas panel",
-      );
-      await preference.focus();
-      await preference.press("Space");
-      assert(
-        (await preference.isChecked()) && (await grade.isVisible()),
-        "keyboard reveal restores the grade picker",
-      );
+      // A grown-up's view names grades, so the grade picker stays.
+      assert(await grade.isVisible(), "the grade picker stays in the browser");
       await input.pressSequentially("linear", { delay: 10 });
       await page.waitForURL(
         (url) => url.searchParams.get("topic") === "linear",
@@ -1159,7 +1116,7 @@ try {
         .getByRole("heading", { name: target.title, exact: true })
         .waitFor();
       assert.equal(await searchField(page).inputValue(), target.title);
-      // No estimate jargon on a skill (Q-211), grade numbers on or off.
+      // No estimate jargon on a skill (Q-211).
       assert.equal(
         await skillLayer(page)
           .getByText(/frontier|estimated range/)
@@ -1169,13 +1126,6 @@ try {
       await page.keyboard.press("Escape");
       await skillLayer(page).waitFor({ state: "detached" });
       assert.deepEqual(openSkills(page), []);
-      await page
-        .getByRole("button", { name: "Browse skills", exact: true })
-        .click();
-      await page.getByRole("checkbox", { name: "Show grade numbers" }).check();
-      await page
-        .getByRole("button", { name: "Close browser", exact: true })
-        .click();
       await page.goForward();
       await skillLayer(page).waitFor();
       assert.equal(
@@ -1435,7 +1385,7 @@ try {
   });
   await fixture(empty, { learnerCount: 0 });
   await empty.goto(`${origin}/pathways`);
-  await empty.getByText("Add a learner to see earned skills.").waitFor();
+  await empty.getByRole("link", { name: "Add a learner →" }).waitFor();
   assert.equal(
     await empty.getByRole("button", { name: /^Learner/ }).count(),
     0,
@@ -1633,7 +1583,8 @@ try {
     await fixture(unselected, { learnerCount, selectedLearnerId: null });
     await unselected.goto(`${origin}/pathways`);
     await unselected
-      .getByText("Choose a learner to see earned skills.")
+      .getByRole("button", { name: /^Learner/ })
+      .filter({ hasText: "Choose learner" })
       .waitFor();
     assert.equal(
       await unselected.getByRole("button", { name: /^Learner/ }).count(),
@@ -1686,7 +1637,8 @@ try {
     window.dispatchEvent(new Event("pathways-session"));
   });
   await page
-    .getByText("Choose a learner to see earned skills.", { exact: true })
+    .getByRole("button", { name: /^Learner/ })
+    .filter({ hasText: "Choose learner" })
     .waitFor();
   assert.equal(
     await page.locator(".pathways-summary").textContent(),

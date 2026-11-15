@@ -462,9 +462,8 @@
   box-shadow: inset 0 -1px 0 var(--color-border);
 }
 .heroPreview li > span:first-child {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  padding-block: var(--space-2);
+  text-wrap: pretty;
 }
 .heroBar {
   height: 6px;

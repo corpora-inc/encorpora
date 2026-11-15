@@ -5,6 +5,9 @@ export const practiceSettingsSchema = z.object({
   epoch: z.number().int().nonnegative(),
   workingTogether: z.boolean(),
   focusSkillId: z.string().nullable(),
+  /** A grown-up's choice for the child: grade levels on the screens they
+   * see as themselves. Off, their levels and Pathways name no grade. */
+  gradeLevelShown: z.boolean().default(true),
   strandStarts: z
     .record(
       z.string(),
@@ -21,6 +24,7 @@ export const defaultPracticeSettings = (): PracticeSettings => ({
   epoch: 0,
   workingTogether: false,
   focusSkillId: null,
+  gradeLevelShown: true,
   strandStarts: {},
 });
 const identity = {
@@ -43,6 +47,9 @@ export const practiceChangeSchema = z.discriminatedUnion("kind", [
       enabled: z.boolean(),
       problemId: z.string().min(1).max(160).optional(),
     })
+    .strict(),
+  z
+    .object({ ...identity, kind: z.literal("gradeLevel"), shown: z.boolean() })
     .strict(),
   z
     .object({

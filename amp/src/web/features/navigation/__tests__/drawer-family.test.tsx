@@ -110,7 +110,8 @@ test("Family: Today and its own children as rows, then the switcher, then the ac
   // Device preferences: one quiet section of switches.
   expect(document.querySelector("[data-this-device]")).toBeTruthy();
   expect(screen.getByRole("switch", { name: "Sound" })).toBeTruthy();
-  expect(screen.queryByText("Show grade numbers")).toBeNull();
+  // Whether a child sees grade levels is on their settings, not a device's.
+  expect(screen.queryByRole("switch", { name: /grade/i })).toBeNull();
 });
 
 test("Classroom: the class, no family learner, no practice settings", () => {
@@ -159,7 +160,6 @@ test("Classroom: the class, no family learner, no practice settings", () => {
   expect(screen.queryByRole("link", { name: /practice/i })).toBeNull();
   // The class, and its school's classes: other classes, earlier years.
   expect(links()).toEqual(["Grade 4 Math", "School, Alder Grove"]);
-  expect(screen.queryByTestId("curriculum")).toBeNull();
   expect(screen.getByTestId("switcher").dataset.current).toBe(
     `class:${SCHOOL}:${ROOM}`,
   );
@@ -230,7 +230,6 @@ test("Account: no space's destinations, the switcher and the account", () => {
   expect(
     screen.getByRole("link", { name: "Account" }).getAttribute("aria-current"),
   ).toBe("page");
-  expect(screen.queryByTestId("curriculum")).toBeNull();
 });
 
 test("Student: their practice and board, never a parent's switcher or account", () => {

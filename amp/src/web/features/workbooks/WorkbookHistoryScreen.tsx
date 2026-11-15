@@ -61,11 +61,6 @@ export function WorkbookHistory({
           <h1 className={styles.title}>
             {who.own ? "Your workbooks" : "Workbooks"}
           </h1>
-          <p className={styles.lede}>
-            {who.own
-              ? "Printable practice chosen from your progress, with an answer key."
-              : `Printable practice chosen from ${learner.name}’s progress, with an answer key.`}
-          </p>
         </div>
         {/* The actions land with the list: the first workbook is made from
             the empty list's own button, and results by code are offered only
@@ -108,11 +103,7 @@ export function WorkbookHistory({
           <EmptyState
             title="No workbooks yet"
             action={canMake ? today("Make a workbook") : undefined}
-          >
-            {who.own
-              ? "Each one you make is kept here, ready to print again."
-              : `Each one you make for ${learner.name} is kept here, ready to print again.`}
-          </EmptyState>
+          />
         </div>
       ) : (
         <section className={styles.past} aria-labelledby="past-workbooks">

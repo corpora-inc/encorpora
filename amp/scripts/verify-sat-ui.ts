@@ -133,7 +133,7 @@ try {
       assert.equal(during?.y, before.y, "Saving moved the toggle");
       release();
       await page
-        .getByText("Practice setting saved. It applies to the next problem.")
+        .getByText("Saved. It applies from the next problem.")
         .waitFor();
       assert.equal(await toggle.isChecked(), true);
       await noOverflow(page);
@@ -165,7 +165,7 @@ try {
       await toggle.click();
       await page
         .getByText(
-          "Could not confirm the practice setting. Refresh your family details and try again.",
+          "The setting didn’t save. Refresh the page and try again.",
         )
         .waitFor();
       assert.equal(await toggle.isChecked(), true);
@@ -208,7 +208,7 @@ try {
       await family(page);
       await toggle.click();
       await page
-        .getByText("Practice setting saved. It applies to the next problem.")
+        .getByText("Saved. It applies from the next problem.")
         .waitFor();
       await leaveSettings(page);
       await navigateApp(page, "Practice");

@@ -59,9 +59,8 @@
 }
 .link,
 .detail {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
 }
 .link {
   /* Its own box reaches 44 px around the name (the row's ::after is the

@@ -602,6 +602,9 @@
 /* Each student's numbers: a table where it fits, two lines a student on a
    phone (DataGrid's list), the estimate leading. */
 .numbersName {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-min);
   color: inherit;
   font-weight: 600;
   text-decoration: none;

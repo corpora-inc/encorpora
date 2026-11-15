@@ -73,7 +73,7 @@ export function ChildScreen() {
   const hasReport = reportable(progress.data?.level);
   if (progress.data) openedUnmeasured.current ??= !hasReport;
   // This child is the one chosen on this device while their page is open:
-  // their grade numbers (This device) and their learning screens are theirs.
+  // their learning screens are theirs.
   const known = !!child;
   useEffect(() => {
     if (known) useLearnerStore.getState().select(learner);
@@ -517,7 +517,6 @@ function ChildSettings({
           <div className={styles.setting}>
             <div className={styles.settingText}>
               <dt>Consent</dt>
-              <dd>What you agreed to for your children, and withdrawing it</dd>
             </div>
             <div className={styles.settingAction}>
               <Link

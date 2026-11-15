@@ -13,6 +13,7 @@ import { freeLeft, freeProblemsLeft } from "../../lib/free-allowance";
 import { AllowancePause } from "../continue/AllowancePause";
 import { levelTrendOptions } from "../level/api";
 import {
+  byArea,
   LevelRange,
   LevelRangeStart,
   type LevelRangeArea,
@@ -33,10 +34,6 @@ import type { OwnPractice } from "../../../account/adult-contracts";
 import type { Frontier } from "../pathways/model";
 import { ownPracticeOptions } from "./api";
 import { useHeroAction } from "../../lib/shell-slots";
-import {
-  useCurriculumDetails,
-  useCurriculumPreferences,
-} from "../curriculum/CurriculumDetails";
 import styles from "./Own.module.css";
 
 /** The adult's own place, under the app frame's bar (logo, the Progress tabs
@@ -50,24 +47,26 @@ function OwnPage({ children }: { children: ReactNode }) {
   );
 }
 
-/** The areas they have practiced, in the curriculum's order, then any the
- * catalog adds later. */
+/** The strands they have practiced, under their areas of math, in the five
+ * areas' order (ui/level-range `byArea`). */
 function levelAreas(frontier: Frontier, data: OwnPractice): LevelRangeArea[] {
   const known = Object.keys(strandNames);
   const label = (id: string) =>
     strandNames[id] ??
     data.record.strands.find((strand) => strand.id === id)?.label ??
     id;
-  return [
-    ...known,
-    ...Object.keys(frontier.strands).filter((id) => !known.includes(id)),
-  ]
-    .filter((id) => measured(frontier.strands[id]))
-    .map((id) => ({
-      id,
-      label: label(id),
-      estimate: strandEstimate(frontier, id),
-    }));
+  return byArea(
+    [
+      ...known,
+      ...Object.keys(frontier.strands).filter((id) => !known.includes(id)),
+    ]
+      .filter((id) => measured(frontier.strands[id]))
+      .map((id) => ({
+        id,
+        label: label(id),
+        estimate: strandEstimate(frontier, id),
+      })),
+  );
 }
 
 /** `/me`: the adult's own practice, mathematics first. Their level leads the
@@ -98,12 +97,6 @@ export function OwnRecordScreen() {
       )
     : undefined;
   const left = freeLeft(own);
-  // An adult always sees their levels by name; the working level's decimals
-  // only when they have switched grade numbers on for this device.
-  const { scope } = useCurriculumDetails();
-  const numbersShown = useCurriculumPreferences(
-    (state) => state.shown[scope] === true,
-  );
   if (record.isPending || (data && frontier.isPending))
     return (
       <OwnPage>
@@ -259,7 +252,6 @@ export function OwnRecordScreen() {
           pathState={
             trend.isError ? "failed" : trend.data ? "ready" : "loading"
           }
-          decimals={numbersShown}
           rowLink={areaRowLink}
         />
         {shown.objectives && (

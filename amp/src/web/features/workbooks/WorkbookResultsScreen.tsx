@@ -117,8 +117,8 @@ function Results({
       </h1>
       <p className={styles.lede}>
         {whose(learner).own
-          ? "Type your answer to have it checked, or mark each problem right or not yet. Saved results update your progress right away."
-          : `Type ${learner.name}’s answer to have it checked, or mark each problem right or not yet. Saved results update progress right away.`}
+          ? "Type each answer, or mark it right or not yet."
+          : `Type each of ${learner.name}’s answers, or mark it right or not yet.`}
       </p>
       {results.error ? (
         <p className={styles.message} role="alert">

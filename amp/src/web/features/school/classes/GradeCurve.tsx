@@ -282,8 +282,7 @@ export function CurveSheet({
     >
       <div className={styles.editor}>
         <p className={styles.intro}>
-          How many students do you expect at each letter? AMP ranks the class on
-          its composite, and each place takes the letter your curve gives it.
+          How many students do you expect at each letter?
         </p>
         <div className={styles.preview}>
           {odds ? (

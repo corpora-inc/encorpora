@@ -71,12 +71,13 @@ const levelsRow: Row<"levels"> = {
   title: "Show levels to students",
   options: [
     { value: "hidden", label: "Hidden" },
-    { value: "choice", label: "Choice" },
     { value: "shown", label: "Shown" },
   ],
+  // "Choice" was a student's own device toggle; it is gone, and a stored
+  // choice reads as shown (schools/student-me.ts `studentLevels`).
   describe: {
     hidden: "Students never see a grade level.",
-    choice: "Each student decides whether to see theirs.",
+    choice: "Every student sees their own working level.",
     shown: "Every student sees their own working level.",
   },
 };
@@ -323,9 +324,8 @@ export function ExperienceSettings({
       <div className={styles.rowText}>
         <h2 id="setting-teacher-line">Show me in this class</h2>
         <p>
-          Shows your own practice as a line on this class’s map and board,
-          marked Teacher and never ranked, so students can pass you. Grades and
-          the roster never count it.
+          Your practice shows on the map and board, marked Teacher and never
+          ranked. Grades never count it.
         </p>
       </div>
       <div className={styles.rowControl}>

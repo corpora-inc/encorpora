@@ -1,9 +1,6 @@
 import { ScreenTitle } from "../../ui/ScreenTitle";
 import { FREE_ONLINE_PROBLEMS } from "../../../learning/free-allowance";
-import {
-  CurriculumDetailsControl,
-  useCurriculumDetails,
-} from "../curriculum/CurriculumDetails";
+import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
 import { NavigationDrawer } from "../navigation/NavigationDrawer";
 import {
   useDeferredValue,
@@ -26,7 +23,7 @@ import { useUrlSearchText } from "../../lib/url-search-text";
 import { useLearnerStore } from "../../learner-store";
 import type { AuthSession } from "../../auth";
 import { gradeName } from "../../Home";
-import { fitScale, LevelRows, WHOLE_SCALE } from "../../ui/level-range";
+import { byArea, fitScale, LevelRows, WHOLE_SCALE } from "../../ui/level-range";
 import { measured } from "../../../learning/level-check";
 import { useLessonSearch, type SearchResult } from "../../lib/lesson-search";
 import { SearchResults, type SearchActions } from "../search/SearchResults";
@@ -34,13 +31,15 @@ import { useSearchCorpus } from "../search/search-corpus";
 import { strandNames } from "../../BirthYearPrompt";
 import { Graph } from "./Graph";
 import { PathwayPlan } from "./PathwayPlan";
+import { AreaKey } from "./AreaKey";
 import { canDrawMap } from "./drawable";
 import {
+  areas,
   bandLabel,
   bands,
   skillLight,
-  neighborhoods,
-  neighborhood,
+  areaParam,
+  areaSlot,
   progressSchema,
   frontierSchema,
   frontierRange,
@@ -240,15 +239,14 @@ function LearnerMap({ session }: { session: AuthSession }) {
   const notice = me.isPending ? (
     <Loading inline>Loading learners…</Loading>
   ) : me.isError ? (
-    "Learners could not be loaded. Retry to view progress."
-  ) : me.data?.signedIn && learners.length === 0 ? (
-    "Add a learner to see earned skills."
-  ) : !learner ? (
-    "Choose a learner to see earned skills."
+    "Learners didn’t load. Try again."
+  ) : (me.data?.signedIn && learners.length === 0) || !learner ? (
+    // The add link or the learner picker beside it says what to do.
+    ""
   ) : progress.isPending ? (
     <Loading inline>Loading earned skills…</Loading>
   ) : progress.isError ? (
-    "Progress could not be loaded. The map shows the curriculum without earned skills."
+    "Progress didn’t load. Try again."
   ) : (
     // All in: the map says the rest.
     ""
@@ -300,7 +298,7 @@ function LearnerMap({ session }: { session: AuthSession }) {
             !me.isError && <Link to="/start">Add a learner →</Link>}
           {frontier.isError && (
             <p role="status" data-priority="true">
-              The frontier estimate could not be loaded. Retry to refresh it.
+              The level estimate didn’t load. Try again.
             </p>
           )}
           {(me.isError || progress.isError || frontier.isError) && (
@@ -376,6 +374,8 @@ export function MapView({
     typeof search.filter === "string" && bands.includes(search.filter)
       ? search.filter
       : "";
+  // One area of math (`?area=geometry`), chosen in the key; else all five.
+  const area = areaParam((search as Record<string, unknown>).area);
   const navigate = useNavigate();
   const { shown } = useCurriculumDetails();
   // A browser that can't draw the 3D map (or loses its context while it is
@@ -528,6 +528,7 @@ export function MapView({
     skills?.filter(
       (s) =>
         (!band || s.gradeBand === band) &&
+        (!area || areaSlot(s) === areas.findIndex((a) => a.id === area)) &&
         matchesQuery(`${s.title} ${s.description}`, query),
     ) ?? [];
   const range = frontier ? frontierRange(frontier, selected?.strand) : null;
@@ -766,12 +767,10 @@ export function MapView({
               aria-label="Find a skill"
               hidden={!browse}
             >
-              <CurriculumDetailsControl />
               <div className="pathways-grade" hidden={!shown && !band}>
                 {!shown && band && (
                   <small>
-                    A curriculum filter is active. Choose All grades to clear
-                    it.
+                    Filtered by grade. Choose All grades to clear.
                   </small>
                 )}
                 <span aria-hidden="true">Grade or course</span>
@@ -809,7 +808,7 @@ export function MapView({
                       <span
                         className={`pathways-gem stage-${skillLight(stats.get(s.id)).stage}`}
                         style={{
-                          color: `var(--atlas-area-${Math.max(0, neighborhood(s))})`,
+                          color: `var(--atlas-area-${areaSlot(s)})`,
                         }}
                         aria-hidden="true"
                       >
@@ -842,6 +841,7 @@ export function MapView({
                 rangeStrand={selected?.strand}
                 level={level}
                 levelLoading={frontierLoading}
+                area={area}
                 onUnavailable={() => setDrawn(false)}
               />
             ) : (
@@ -852,38 +852,28 @@ export function MapView({
                 frame={frame}
                 here={level ? overall : null}
                 levelLoading={frontierLoading}
+                area={area}
               />
             )}
           </div>
           <footer className="pathways-footer">
-            {/* The grades view names its areas at its top. */}
-            <div className="pathways-legend" hidden={!threeD}>
-              {neighborhoods.map((n, i) => (
-                <span key={n.title}>
-                  <i
-                    className="pathways-dot"
-                    style={{ background: `var(--atlas-area-${i})` }}
-                  />
-                  {n.title}
-                </span>
-              ))}
-            </div>
+            {/* The grades view holds its key at its top. */}
+            {threeD && <AreaKey area={area} className="pathways-legend" />}
             <p>
               {!threeD
                 ? selected
-                  ? "Cyan: what it builds on · Violet: what it leads to"
-                  : "Rows run from the first skills to precalculus. Brighter gems mark stronger practice."
+                  ? "Cyan: builds on · Violet: leads to"
+                  : "Brighter gems: stronger practice"
                 : selected
-                  ? "Cyan: prerequisites · Violet: next skills · Dotted: related skills"
-                  : "Each point is a skill. Each connection leads from a prerequisite to a skill that uses it."}
+                  ? "Cyan: builds on · Violet: leads to · Dotted: related"
+                  : "Lines lead from a skill to the skills that use it"}
             </p>
             <details className="pathways-note">
               <summary>How skills grow</summary>
               <p>
-                Each correct answer without help fills a skill’s bar by a
-                twentieth. What is earned stays when a skill needs review. The
-                bar records practice; it does not certify a whole grade, and a
-                prerequisite fills only from its own answers.
+                Each correct answer without help fills a twentieth of a
+                skill’s bar. What is earned stays. A bar records practice on
+                that skill only, not a whole grade.
               </p>
               {range && !selected && (
                 <p>
@@ -900,7 +890,9 @@ export function MapView({
                   )}
                 </p>
               )}
-              {frontier && <PathwayLevels frontier={frontier} />}
+              {frontier && (
+                <PathwayLevels frontier={frontier} numbers={shown} />
+              )}
             </details>
           </footer>
         </>
@@ -957,7 +949,10 @@ export function MapView({
  * (ui/level-range): the overall estimate, then each area practiced. */
 function PathwayLevels({
   frontier,
+  numbers,
 }: {
+  /** Grade names on the axis: off where the child's grades are hidden. */
+  numbers: boolean;
   frontier: {
     overall: { level: number; sd: number; answered?: number };
     strands: Record<string, { level: number; sd: number; answered?: number }>;
@@ -965,17 +960,34 @@ function PathwayLevels({
 }) {
   // Before the first answer: not measured yet, the whole scale (Q-201).
   if (!measured(frontier.overall))
-    return <LevelRows overall={null} areas={[]} scale={WHOLE_SCALE} moving />;
-  const areas = Object.entries(frontier.strands)
-    .filter(([, estimate]) => measured(estimate))
-    .map(([id, estimate]) => ({
-      id,
-      label: strandNames[id] ?? id,
-      estimate,
-    }));
+    return (
+      <LevelRows
+        overall={null}
+        areas={[]}
+        scale={WHOLE_SCALE}
+        numbers={numbers}
+        moving
+      />
+    );
+  const areas = byArea(
+    Object.entries(frontier.strands)
+      .filter(([, estimate]) => measured(estimate))
+      .map(([id, estimate]) => ({
+        id,
+        label: strandNames[id] ?? id,
+        estimate,
+      })),
+  );
   const scale = fitScale(
     [frontier.overall, ...areas.map((area) => area.estimate)],
     { minSpan: 5 },
   );
-  return <LevelRows overall={frontier.overall} areas={areas} scale={scale} />;
+  return (
+    <LevelRows
+      overall={frontier.overall}
+      areas={areas}
+      scale={scale}
+      numbers={numbers}
+    />
+  );
 }

@@ -321,8 +321,7 @@ export function YearCalendar({
                   list={false}
                 />
                 <p className={styles.quiet}>
-                  No terms: classes grade the whole year. A class that grades by
-                  semesters, trimesters or quarters adds them here.
+                  No terms: classes grade the whole year.
                 </p>
               </>
             ) : (

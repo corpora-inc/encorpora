@@ -162,8 +162,8 @@ export function FamilyFrame({
             </Link>
           }
         >
-          If someone sent you this link, ask them to invite this account as a
-          parent, or sign in with the address they invited.
+          Ask whoever sent the link to invite this account, or sign in with the
+          address they invited.
         </EmptyState>
       ) : (
         <EmptyState

@@ -124,7 +124,7 @@ export function YourName() {
                 {account ? (known ?? "Not added yet") : " "}
               </span>
               <span className={styles.detail}>
-                Others see it when you invite them, and on what you share.
+                Others see it when you invite or share.
               </span>
             </div>
             <div className={styles.action}>

@@ -57,8 +57,8 @@ export function OwnStartSetting({
     <>
       <p className={pages.quietLine} data-own-start={start ?? ""}>
         {start
-          ? "Set from the year you were born. Practice adjusts with every answer."
-          : "Give the year you were born to set where practice starts. It adjusts with every answer."}
+          ? "Set from the year you were born."
+          : "Your birth year sets where practice starts."}
       </p>
       <div className={pages.detailActions}>
         <Link to="/me" className={buttonClass("secondary")}>
@@ -86,8 +86,7 @@ export function OwnStartSetting({
       >
         <div className={styles.yearDialog}>
           <p id="own-year-lede" className={pages.quietLine}>
-            Practice starts at the level for your age, then adjusts with every
-            answer. Your answers stay.
+            Practice starts at the level for your age. Your answers stay.
           </p>
           <OwnYearTiles
             value={picked}

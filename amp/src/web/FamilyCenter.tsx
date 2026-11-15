@@ -976,10 +976,6 @@ export function FamilyCenter({
                       }}
                       title="Is this you?"
                     >
-                      <p className="family-sheet-text">
-                        Your own practice is yours, at your own level, beside
-                        the family’s learners.
-                      </p>
                       <div className="family-sheet-actions">
                         <Button
                           variant="primary"
@@ -1115,8 +1111,7 @@ export function FamilyCenter({
               <section className={`family-section ${pages.section}`}>
                 <p className={pages.prose}>
                   One NDJSON file with {hasChildren ? "your learners’" : "your"}{" "}
-                  problems and answers, plans, orders and privacy activity. It
-                  is a data export, not a printable workbook.
+                  problems and answers, plans, orders and privacy activity.
                 </p>
                 <div className={pages.footActions}>
                   <Button
@@ -1130,10 +1125,6 @@ export function FamilyCenter({
                       : "Download your data"}
                   </Button>
                 </div>
-                <p className={pages.quietLine}>
-                  The file streams straight to your downloads, so a long history
-                  takes a little longer.
-                </p>
               </section>
             )}
             {section === "privacy" &&

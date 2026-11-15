@@ -229,12 +229,6 @@ export function TodayScreen() {
               <div className={todayStyles.title}>
                 <h1 data-today-title="">{data.class.name}</h1>
                 <p>{fullDay(data.today)}</p>
-                {/* A tutoring group says its scope: everyone in it. */}
-                {org.data?.kind === "family" && (
-                  <p data-group-scope="">
-                    The whole group, including other families’ children
-                  </p>
-                )}
               </div>
             )}
             {/* The code waits for a roster, and for practice. A family's
@@ -324,6 +318,7 @@ export function MapScreen() {
           <ClassMap
             data={map.data}
             words={words}
+            crossCutting
             action={
               start ? (
                 <Link

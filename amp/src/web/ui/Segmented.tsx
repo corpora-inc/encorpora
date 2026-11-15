@@ -35,10 +35,10 @@ export function Segmented<T extends string>({
 }) {
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
   // Four or more longer names can't share a phone's width in one row: below
-  // 480 px they take two rows instead of spilling over each other.
+  // 480 px they take two rows instead of spilling over each other, in a
+  // dense toolbar group as much as anywhere.
   const crowded =
     compact &&
-    !dense &&
     options.length >= 4 &&
     options.length * Math.max(...options.map((o) => o.label.length)) > 32;
   const current = Math.max(

@@ -138,7 +138,7 @@ export function SecondParentRow({
         <span className={styles.access}>
           {invited
             ? "They join when they accept with that address."
-            : "Sees each child’s progress, lets them practice here and practices free."}
+            : "Sees each child’s progress and practices free."}
         </span>
       </span>
       <span className={styles.rowActions}>
@@ -269,9 +269,8 @@ export function SecondParentInviteSheet({
           }}
         >
           <p className={styles.sheetText}>
-            They see each child’s progress, can let a child practice on their
-            device, and practice free themselves. Buying, consent and the
-            children’s names stay yours.
+            They see each child’s progress and practice free. Buying, consent
+            and the children’s names stay yours.
           </p>
           <TextField
             label="Their email"

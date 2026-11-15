@@ -65,10 +65,10 @@ export function ParentFeedbackForm({
   return (
     <form onSubmit={(e) => void submit(e)} className={styles.form}>
       {sent ? (
-        <p role="status">Thank you. Your feedback helps us improve AMP.</p>
+        <p role="status">Thank you. Your feedback was sent.</p>
       ) : (
         <>
-          <p>How’s AMP working for you? Tell us what would make it better.</p>
+          <p>How’s AMP working for you?</p>
           <TextArea
             label="Your feedback"
             value={message}

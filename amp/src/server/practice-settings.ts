@@ -97,6 +97,9 @@ export async function changePractice(
         await tx.saveProblem(problem);
       }
     }
+  } else if (change.kind === "gradeLevel") {
+    // Display only: practice, levels and evidence are unchanged.
+    next.gradeLevelShown = change.shown;
   } else {
     if (change.skillId && !templates.some((t) => t.skillId === change.skillId))
       throw new ApiError(400, "This skill has no practice problems.");

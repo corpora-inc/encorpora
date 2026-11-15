@@ -158,9 +158,7 @@ function NoChildren({ place }: { place: FamilyPlace }) {
           Add your kids
         </Link>
       }
-    >
-      Each child’s map, time and records show here once they’re added.
-    </EmptyState>
+    />
   ) : (
     <EmptyState title="No children here yet">
       The parent who invited you adds the children.
@@ -361,8 +359,7 @@ function ChildrenTime({ place }: { place: FamilyPlace }) {
 /** What a child's workbooks row says: what's left to print free, or that
  * they print and record. */
 function workbookMeta(child: FamilyChild) {
-  if (child.access.hasAccess)
-    return "Print a workbook, or record one done on paper";
+  if (child.access.hasAccess) return undefined;
   const left = child.access.freeAllowance.workbooks.available;
   return left > 0
     ? `${left} free ${left === 1 ? "workbook" : "workbooks"} to print`
@@ -431,8 +428,7 @@ export function FamilyWorkbooksScreen() {
                     <div className={styles.settingText}>
                       <h2 id="workbooks-several">Print for several</h2>
                       <p className={styles.footnote}>
-                        One print, a different workbook for each child, made
-                        from their own work.
+                        One print, a workbook for each child.
                       </p>
                     </div>
                     <Link
@@ -469,8 +465,7 @@ export function FamilyWorkbooksScreen() {
                   </RowList>
                 ) : (
                   <p className={styles.footnote}>
-                    The parent who manages the children prints and records their
-                    workbooks.
+                    The parent who manages the children prints these.
                   </p>
                 )}
               </section>
@@ -509,8 +504,6 @@ function NoClass({ place, what }: { place: FamilyPlace; what: string }) {
           </Link>
         }
       >
-        Each child’s progress report is in Report cards, and their record is on
-        their page.
       </EmptyState>
     </FamilyFrame>
   );
@@ -574,13 +567,7 @@ export function FamilyReportsScreen() {
                 aria-labelledby="reports-progress"
                 className={styles.section}
               >
-                <div className={styles.settingText}>
-                  <h2 id="reports-progress">Progress reports</h2>
-                  <p className={styles.footnote}>
-                    Where each child is, their weeks and the skills they’ve
-                    earned, printed for a portfolio any day.
-                  </p>
-                </div>
+                <h2 id="reports-progress">Progress reports</h2>
                 <dl className={styles.settings}>
                   {children.map((child, index) => {
                     const hasReport = reportable(records[index]?.data?.level);
@@ -614,9 +601,6 @@ export function FamilyReportsScreen() {
                   <div className={styles.sectionHead}>
                     <div className={styles.settingText}>
                       <h2 id="reports-terms">Report cards</h2>
-                      <p className={styles.footnote}>
-                        A card for each term, with the final grade you give.
-                      </p>
                     </div>
                     {edits && (
                       <Link
@@ -692,11 +676,11 @@ function GradingPeriods({
     <section aria-labelledby="reports-periods" className={styles.section}>
       <div className={styles.settingText}>
         <h2 id="reports-periods">Grading periods</h2>
-        <p className={styles.footnote}>
-          {shared
-            ? "Your tutoring group shares one school year and its grading periods, so they’re set with the group."
-            : "One report card for each period. Their dates are yours to change."}
-        </p>
+        {shared && (
+          <p className={styles.footnote}>
+            Your tutoring group shares these.
+          </p>
+        )}
       </div>
       {shared ? (
         // The whole group's calendar: changed with the group, never here.

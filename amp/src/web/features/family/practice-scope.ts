@@ -15,7 +15,7 @@ export function practiceScopeLine(
   elsewhere: readonly string[],
 ): string {
   if (!elsewhere.length)
-    return "For every child in the family, and each child you add. The math is the same either way.";
+    return "For every child in the family, and each child you add.";
   const theirs =
     elsewhere.length === 1
       ? `${elsewhere[0]} practices in another group, which sets theirs.`
