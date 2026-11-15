@@ -1,3 +1,5 @@
+import { recordActivation } from "../analytics/activation.js";
+import { STARTER_ANSWERS } from "../analytics/events.js";
 import type { StripeBillingConfig } from "../billing/stripe/config.js";
 import {
   familyPlacesSchema,
@@ -84,6 +86,8 @@ import {
   progressReportHtml,
 } from "../reports/progress-report.js";
 import type { WorkbookRenderer } from "../workbook/pdf.js";
+const starterChoiceSchema = z.strictObject({ answer: z.enum(STARTER_ANSWERS) });
+
 export interface FamilyRouteOptions {
   pool: Pool;
   authenticate: Authenticator;
@@ -422,6 +426,25 @@ export async function registerFamilyRoutes(
       async (request) => {
         const account = await options.authenticate(request);
         return startPlace(repository, account, request.body);
+      },
+    );
+    // The answer tapped on "What brings you to AMP?", recorded once as the
+    // account's persona (docs/engagement-measurement.md#activation-milestones).
+    scope.post(
+      "/api/v1/start/choice",
+      {
+        bodyLimit: 256,
+        config: { rateLimit: { max: 60, timeWindow: "1 hour" } },
+      },
+      async (request, reply) => {
+        const account = await options.authenticate(request);
+        const { answer } = starterChoiceSchema.parse(request.body);
+        await recordActivation(repository.pool, {
+          accountId: account,
+          step: "persona_chosen",
+          persona: answer,
+        });
+        return reply.code(204).send();
       },
     );
     // A tutor adds a student from another family to their class: a nickname

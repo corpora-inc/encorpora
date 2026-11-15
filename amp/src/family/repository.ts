@@ -452,6 +452,18 @@ export class FamilyRepository {
         [accountId],
       );
     }
+    // Activation milestones are the same account-linked measurement.
+    if (
+      (
+        await client.query(
+          "SELECT to_regclass('amp_activation_milestones') AS relation",
+        )
+      ).rows[0]?.relation
+    )
+      await client.query(
+        "DELETE FROM amp_activation_milestones WHERE account_id=$1",
+        [accountId],
+      );
     if (!learnerId && (await this.ownedTrialsAvailable(client)))
       await client.query(
         `DELETE FROM amp_learners l USING amp_trials t
@@ -1141,6 +1153,17 @@ export class FamilyRepository {
         datasets.push([
           "journey-event",
           "SELECT jsonb_build_object('event',event,'props',props,'clientAt',client_at,'receivedAt',received_at) AS value FROM amp_visitor_journeys WHERE account_id=$1 ORDER BY client_at,event_id",
+        ]);
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_activation_milestones') AS relation",
+          )
+        ).rows[0]?.relation
+      )
+        datasets.push([
+          "activation-milestone",
+          "SELECT jsonb_build_object('step',step,'persona',persona,'firstAt',first_at) AS value FROM amp_activation_milestones WHERE account_id=$1 ORDER BY first_at,step",
         ]);
       if (
         (

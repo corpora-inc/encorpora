@@ -1,3 +1,4 @@
+import { recordActivation } from "../analytics/activation.js";
 import { accessGrantsFor, grantInForce } from "../account/adult-access.js";
 import { ensureFamilyIdentity } from "./identity.js";
 import { adultNameSql } from "../account/profile.js";
@@ -846,6 +847,7 @@ async function approveInside(
   // they were just added or moved in from a school's unnamed roster.
   await coverWithFamilyGift(client, accountId, learnerId);
   await ensureFamilyIdentity(client, accountId);
+  await recordActivation(client, { accountId, step: "learner_added" });
   await client.query(
     "UPDATE amp_family_approvals SET approved_at=now(),person_id=$2,child_name=NULL,parent_email=NULL WHERE id=$1",
     [id, personId],

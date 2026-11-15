@@ -63,6 +63,7 @@ export type TableHandling =
 export const ACCOUNT_TABLES: Record<string, TableHandling> = {
   amp_academic_sessions: "place",
   amp_access_gifts: "account",
+  amp_activation_milestones: "account",
   amp_funded_pending_eligibility: "account",
   amp_account_classification_events: "sign-in",
   amp_account_classifications: "sign-in",
@@ -703,6 +704,7 @@ export async function deleteAccount(
         "DELETE FROM amp_privacy_events WHERE account_id=$1",
         "DELETE FROM amp_journey_generations WHERE account_id=$1",
         "DELETE FROM amp_visitor_journeys WHERE account_id=$1",
+        "DELETE FROM amp_activation_milestones WHERE account_id=$1",
         "DELETE FROM amp_ad_click_journeys WHERE account_id=$1",
         "DELETE FROM amp_ad_collection_withdrawals WHERE account_id=$1",
         "DELETE FROM amp_ad_order_attribution WHERE account_id=$1",

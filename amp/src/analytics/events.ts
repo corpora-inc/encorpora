@@ -65,6 +65,8 @@ export const FUNNEL_EVENTS = [
   "starter_choice",
   "allowance_pause_view",
   "continue_click",
+  "setup_step",
+  "invoice_step",
 ] as const;
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];
 
@@ -141,6 +143,37 @@ export const STARTER_ANSWERS = [
   "teacher",
   "school",
 ] as const;
+/** The first-run screens after "What brings you to AMP?", by persona
+ * (docs/engagement-measurement.md#activation-milestones). */
+export const SETUP_STEPS = [
+  "choose",
+  "verify-email",
+  "name",
+  "kids",
+  "ready",
+  "students",
+  "join",
+  "year",
+  "school",
+] as const;
+export const SETUP_ACTIONS = ["view", "complete"] as const;
+/** The ESA/EFA invoice form, step by step: the page, each field's first
+ * change, the term chosen, submit, and its outcome. */
+export const INVOICE_STEPS = [
+  "view",
+  "term",
+  "email",
+  "student",
+  "submit",
+  "error",
+  "success",
+] as const;
+export const INVOICE_ERRORS = [
+  "validation",
+  "unavailable",
+  "network",
+  "other",
+] as const;
 /** Who an allowance pause is for. A parent or a child is the family; a
  * teacher looking at a class is the class. */
 export const PAUSE_FOR = ["family", "adult", "class"] as const;
@@ -179,6 +212,24 @@ export const funnelPropsSchemas = {
   }),
   /** "Continue with AMP" on that pause. */
   continue_click: none,
+  /** A first-run screen shown, or its step done, with the persona when the
+   * screen belongs to one ("What brings you to AMP?" and email confirmation
+   * come before or outside a persona). */
+  setup_step: z.strictObject({
+    persona: z.enum(STARTER_ANSWERS).optional(),
+    step: z.enum(SETUP_STEPS),
+    action: z.enum(SETUP_ACTIONS),
+  }),
+  /** The ESA/EFA invoice form, for one program. Never what was typed. */
+  invoice_step: z
+    .strictObject({
+      program: z.enum(PITCH_PROGRAMS),
+      step: z.enum(INVOICE_STEPS),
+      error: z.enum(INVOICE_ERRORS).optional(),
+    })
+    .refine((p) => (p.step === "error") === (p.error !== undefined), {
+      message: "Only an error step carries an error category",
+    }),
   problem_rendered: z.strictObject({ mode: z.enum(["trial", "practice"]) }),
   learning_request: z.strictObject({
     attemptId: z.uuidv4(),

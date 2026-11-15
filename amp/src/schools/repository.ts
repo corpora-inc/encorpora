@@ -1,3 +1,4 @@
+import { recordEnrollmentActivation } from "../analytics/activation.js";
 import { classPracticeGates } from "./pilot-access.js";
 import { adultNameSql } from "../account/profile.js";
 import { PERSON_NAME } from "./term-grades.js";
@@ -311,6 +312,7 @@ export class SchoolRepository {
        ON CONFLICT (class_id,person_id,role) WHERE end_on IS NULL DO NOTHING`,
       [randomUUID(), classId, personId, role, today],
     );
+    await recordEnrollmentActivation(client, classId, personId, role);
   }
 
   /** One transaction: learner, person, role, enrollment if a class is given,
