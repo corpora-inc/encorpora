@@ -2309,7 +2309,7 @@ class GeoStage {
     const shade = this.chainState([`${p.id}.part`], true, t);
     show(v.part, o * shade.o * (plan.part.w > 1e-9 ? 1 : 0));
     v.part.setAttribute("d", this.rectPath(plan.part, map, s));
-    v.part.style.fill = ink; v.part.style.fillOpacity = "0.32";
+    v.part.style.fill = ink;
     const k = (x: number, y: number) => { const a = map([x, y]); return `${a[0].toFixed(2)} ${a[1].toFixed(2)}`; };
     const b = plan.whole, top = b.y + b.h;
     let fine = "", major = "";
@@ -2324,10 +2324,13 @@ class GeoStage {
     const highlight = Math.max(own.em, whole.em, shade.em);
     // The bar itself grows and boldens. The old gold ring was a second shape around it.
     show(v.ring, 0); v.ring.setAttribute("d", this.rectPath(shade.em > 0 ? plan.part : b, map, s));
-    if (highlight > 0.02) {
-      if (own.em > 0.02 || whole.em > 0.02) this.markEm(g, Math.max(own.em, whole.em));
-      else this.markEm(v.part, shade.em);
-    }
+    // The shaded part is a piece of its bar: lit on its own it deepens where it is. Growing it
+    // pulled it out of the bar's outline for the length of a word, which read as a twitch.
+    const lit = own.em > 0.02 || whole.em > 0.02 ? 0 : clamp(shade.em);
+    v.part.style.fillOpacity = (0.32 + 0.3 * lit).toFixed(3);
+    v.part.style.stroke = lit > 0.02 ? ink : "";
+    v.part.style.strokeWidth = lit > 0.02 ? (3 * lit).toFixed(2) : "";
+    if (highlight > 0.02 && lit === 0) this.markEm(g, Math.max(own.em, whole.em));
     const unit = this.chainState([`${p.id}.unit`], false, t);
     show(v.unit, o * unit.o); v.unit.setAttribute("d", this.rectPath(shareBox(spec, 0, 1 / plan.divisions), map, s));
     const values = this.chainState([`${p.id}.values`], false, t);
