@@ -39,6 +39,7 @@ test("every new migration takes its own number", () => {
 test("each renumbered migration exists under its new name only", () => {
   for (const [name, earlier] of Object.entries(renamedMigrations)) {
     assert.ok(names.includes(name), `${name} exists`);
-    assert.ok(!names.includes(earlier), `${earlier} is gone`);
+    for (const old of earlier)
+      assert.ok(!names.includes(old), `${old} is gone`);
   }
 });

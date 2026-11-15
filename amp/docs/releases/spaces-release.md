@@ -12,50 +12,56 @@ does ([deployment](../deployment.md)). It applies, in this order:
 
 | File | What it does | Lock profile |
 |---|---|---|
-| `0126-family-spaces.sql` | Family identity (`amp_family_spaces`) and account names (`amp_account_profiles`); erase hook on account deletion; legacy class creation publishes an identity | New tables, one copy from `amp_families` |
-| `0127-course-start.sql` | `amp_learners.starting_course_level` (nullable, no default) and the `amp_course_placement` flag, off | Metadata only, no rewrite, no backfill |
-| `0128-family-history-indexes.sql` | Four history indexes | `CREATE INDEX CONCURRENTLY`, writes continue |
-| `0129-family-display-name.sql` | `amp_family_spaces.display_name` (nullable) | Metadata only |
-| `0130-family-identity-fallback.sql` | Deterministic family identity function and hooks | Functions and triggers |
-| `0131-family-discovery-index.sql` | Class-to-family lookup index | `CREATE INDEX CONCURRENTLY` |
-| `0132-funded-term-schedule.sql` | `amp_funding_requests.scheduled_term` (nullable) | Metadata only |
-| `0133-level-practice.sql` | `amp_learners.level_practice` and its one-per-account index | Metadata, one index build |
+| `0127-family-spaces.sql` | Family identity (`amp_family_spaces`) and account names (`amp_account_profiles`); erase hook on account deletion; legacy class creation publishes an identity | New tables, one copy from `amp_families` |
+| `0128-course-start.sql` | `amp_learners.starting_course_level` (nullable, no default) and the `amp_course_placement` flag, off | Metadata only, no rewrite, no backfill |
+| `0129-family-history-indexes.sql` | Four history indexes | `CREATE INDEX CONCURRENTLY`, writes continue |
+| `0130-family-display-name.sql` | `amp_family_spaces.display_name` (nullable) | Metadata only |
+| `0131-family-identity-fallback.sql` | Deterministic family identity function and hooks | Functions and triggers |
+| `0132-family-discovery-index.sql` | Class-to-family lookup index | `CREATE INDEX CONCURRENTLY` |
+| `0133-funded-term-schedule.sql` | `amp_funding_requests.scheduled_term` (nullable) | Metadata only |
+| `0134-level-practice.sql` | `amp_learners.level_practice` and its one-per-account index | Metadata, one index build |
 
-They follow main's highest number (`0125`). Production has applied none of
-them, so production needs no renaming. The order does not matter relative to
-main's two `0125` migrations: a schema-only dump of a database migrated in the
-old order (family spaces between them) is identical to one migrated in this
-order. `tests/migration-names.test.ts` fails if a new migration reuses a number.
+They follow main's highest number (`0126-consent-single-response`, #2333).
+Production has applied none of them, so production needs no renaming. They do
+not depend on their order relative to main's `0125` and `0126` migrations:
+main's touch funnel events, funded invoices and consent requests, none of the
+spaces tables or columns, and a schema-only dump of a database migrated with
+the spaces files before main's `0125-funded-pending-invoices` is identical to
+one migrated in this order. `tests/migration-names.test.ts` fails if a new
+migration reuses a number.
 
 Funded activation (`src/funding-purchase/provision.ts`, used by the API and
 the funding workers) writes and reads `scheduled_term`. Both run from the image
 deployed after the migration job, so no extra ordering step is needed. Never
-start a worker from this release against a database that has not run `0132`.
+start a worker from this release against a database that has not run `0133`.
 
 ### Development and preview databases
 
-These migrations were numbered `0125`-`0132` while the branch was built. A
-database that applied the earlier names needs no action: the runner adopts each
-receipt under its new name when the file is unchanged
+These migrations were numbered `0125`-`0132`, then `0126`-`0133`, while the
+branch was built. A database that applied either set of names needs no action:
+the runner adopts each receipt under its new name when the file is unchanged
 (`renamedMigrations` in `scripts/migrate.ts`). To rename the rows by hand
 instead, with the API stopped:
 
 ```sql
 BEGIN;
 UPDATE amp_migrations SET name = v.new FROM (VALUES
-  ('0125-family-spaces.sql',          '0126-family-spaces.sql'),
-  ('0126-course-start.sql',           '0127-course-start.sql'),
-  ('0127-family-history-indexes.sql', '0128-family-history-indexes.sql'),
-  ('0128-family-display-name.sql',    '0129-family-display-name.sql'),
-  ('0129-family-identity-fallback.sql','0130-family-identity-fallback.sql'),
-  ('0130-family-discovery-index.sql', '0131-family-discovery-index.sql'),
-  ('0131-funded-term-schedule.sql',   '0132-funded-term-schedule.sql'),
-  ('0132-level-practice.sql',         '0133-level-practice.sql')
+  ('0126-family-spaces.sql',          '0127-family-spaces.sql'),
+  ('0127-course-start.sql',           '0128-course-start.sql'),
+  ('0128-family-history-indexes.sql', '0129-family-history-indexes.sql'),
+  ('0129-family-display-name.sql',    '0130-family-display-name.sql'),
+  ('0130-family-identity-fallback.sql','0131-family-identity-fallback.sql'),
+  ('0131-family-discovery-index.sql', '0132-family-discovery-index.sql'),
+  ('0132-funded-term-schedule.sql',   '0133-funded-term-schedule.sql'),
+  ('0133-level-practice.sql',         '0134-level-practice.sql')
 ) AS v(old, new) WHERE amp_migrations.name = v.old;
 COMMIT;
 ```
 
-The checksums do not change: only the file names did.
+(A database still on the first names, `0125-family-spaces.sql` and so on,
+shifts each by two the same way.) The checksums do not change: only the file
+names did. Main's `0126-consent-single-response.sql` then applies on the next
+migrate as a new migration.
 
 ## 2. Backfill (automatic)
 
@@ -91,7 +97,7 @@ with the current list price. Nothing to change for this release.
 
 1. `GET /api/v1/health` reports the merged commit.
 2. `SELECT name FROM amp_migrations WHERE name >= '0126' ORDER BY name;` lists
-   `0126`-`0133` and `data:family-identities-v1`.
+   `0126-consent-single-response`, `0127`-`0134` and `data:family-identities-v1`.
 3. A brand-new account opens `/start` on "What brings you to AMP?".
 4. An existing parent opens `/` on Family and sees each child, with a week of
    Time or the empty state for a child with no practice.
