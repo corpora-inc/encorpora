@@ -58,6 +58,39 @@ for (const browser of [
     );
   });
 }
+for (const browser of ["inapp-facebook", "inapp-instagram"] as const)
+  test(`${browser}: a frame in the HTML document itself is the webview's`, () => {
+    // AMP serves no inline script, so the page URL as a script source is a
+    // webview's injected code (seen from the Facebook app in production).
+    for (const file of [
+      `${origin}/`,
+      `${origin}/?fbclid=x`,
+      `${origin}/sign-up`,
+    ])
+      assert(
+        isInjectedRuntimeError(new TypeError("x"), file, origin, browser),
+        file,
+      );
+    assert(
+      isInjectedRuntimeError(
+        { stack: `TypeError: x\n    at ${origin}/?fbclid=x:1:2` },
+        undefined,
+        origin,
+        browser,
+      ),
+    );
+    // An AMP bundle in the same stack still wins.
+    assert(
+      !isInjectedRuntimeError(
+        {
+          stack: `TypeError: x\n    at ${origin}/:1:2\n    at ${origin}/assets/index-ABCdef12.js:3:4`,
+        },
+        undefined,
+        origin,
+        browser,
+      ),
+    );
+  });
 test("standard browsers are never filtered just for an external frame", () => {
   assert(!isInjectedRuntimeError(null, external, origin, "standard"));
 });

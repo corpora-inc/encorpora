@@ -3,6 +3,7 @@ import { FREE_ONLINE_PROBLEMS } from "../../../learning/free-allowance";
 import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
 import { NavigationDrawer } from "../navigation/NavigationDrawer";
 import {
+  Suspense,
   useDeferredValue,
   useMemo,
   useEffect,
@@ -29,7 +30,7 @@ import { useLessonSearch, type SearchResult } from "../../lib/lesson-search";
 import { SearchResults, type SearchActions } from "../search/SearchResults";
 import { useSearchCorpus } from "../search/search-corpus";
 import { strandNames } from "../../BirthYearPrompt";
-import { Graph } from "./Graph";
+import { lazyRouteComponent } from "../../lib/lazy-route-component";
 import { PathwayPlan } from "./PathwayPlan";
 import { AreaKey } from "./AreaKey";
 import { canDrawMap } from "./drawable";
@@ -80,6 +81,18 @@ const viewOptions = [
   { value: "3d" as const, label: "3D" },
 ];
 /** This device's last choice of view; the grades view until there is one. */
+/** The 3D map is three.js (about 140 KB compressed), and the grades view is
+ * the default: the map's code loads when it is chosen, and is fetched while
+ * the browser is idle once Pathways shows, so choosing it is immediate. */
+const Graph = lazyRouteComponent(() => import("./Graph"), "Graph");
+/** The map's box while its code arrives: the same size, the same atlas. */
+const MapWaiting = () => (
+  <section
+    className="pathways-viewport"
+    aria-label="Interactive curriculum map"
+    aria-busy="true"
+  />
+);
 function savedView(): MapMode {
   try {
     return localStorage.getItem(VIEW_KEY) === "3d" ? "3d" : "grades";
@@ -388,6 +401,17 @@ export function MapView({
   const view: MapMode =
     search.view === "3d" || search.view === "grades" ? search.view : remembered;
   const threeD = drawn && view === "3d";
+  // Fetch the map's code once the screen is up, so choosing 3D is immediate.
+  useEffect(() => {
+    if (!drawn) return;
+    const fetchMap = () => void Graph.preload?.();
+    if (typeof requestIdleCallback === "function") {
+      const idle = requestIdleCallback(fetchMap, { timeout: 4000 });
+      return () => cancelIdleCallback(idle);
+    }
+    const timer = setTimeout(fetchMap, 1500);
+    return () => clearTimeout(timer);
+  }, [drawn]);
   const chooseView = (next: MapMode) => {
     try {
       localStorage.setItem(VIEW_KEY, next);
@@ -769,9 +793,7 @@ export function MapView({
             >
               <div className="pathways-grade" hidden={!shown && !band}>
                 {!shown && band && (
-                  <small>
-                    Filtered by grade. Choose All grades to clear.
-                  </small>
+                  <small>Filtered by grade. Choose All grades to clear.</small>
                 )}
                 <span aria-hidden="true">Grade or course</span>
                 <ListboxDisclosure
@@ -831,19 +853,21 @@ export function MapView({
               )}
             </section>
             {threeD ? (
-              <Graph
-                skills={skills}
-                evidence={evidence}
-                selected={selectedId}
-                onSelect={select}
-                frame={frame}
-                range={range}
-                rangeStrand={selected?.strand}
-                level={level}
-                levelLoading={frontierLoading}
-                area={area}
-                onUnavailable={() => setDrawn(false)}
-              />
+              <Suspense fallback={<MapWaiting />}>
+                <Graph
+                  skills={skills}
+                  evidence={evidence}
+                  selected={selectedId}
+                  onSelect={select}
+                  frame={frame}
+                  range={range}
+                  rangeStrand={selected?.strand}
+                  level={level}
+                  levelLoading={frontierLoading}
+                  area={area}
+                  onUnavailable={() => setDrawn(false)}
+                />
+              </Suspense>
             ) : (
               <PathwayPlan
                 skills={skills}
@@ -871,9 +895,9 @@ export function MapView({
             <details className="pathways-note">
               <summary>How skills grow</summary>
               <p>
-                Each correct answer without help fills a twentieth of a
-                skill’s bar. What is earned stays. A bar records practice on
-                that skill only, not a whole grade.
+                Each correct answer without help fills a twentieth of a skill’s
+                bar. What is earned stays. A bar records practice on that skill
+                only, not a whole grade.
               </p>
               {range && !selected && (
                 <p>

@@ -27,7 +27,13 @@ export const queryClient = new QueryClient({
     mutations: { retry: false },
   },
 });
+/** Every first screen waits on the session check and the sign-in
+ * configuration. On a phone's weak network, or an in-app browser resuming,
+ * the first request is often lost; one more ask a second later keeps the
+ * visitor on their screen instead of an error (production, 2026-11-15). */
+const BOOT_RETRY = { retry: 1, retryDelay: 1000 } as const;
 export const sessionOptions = queryOptions({
+  ...BOOT_RETRY,
   queryKey: ["session"],
   queryFn: async ({ signal }) => {
     const session = await accessSession();
@@ -43,6 +49,7 @@ export const sessionOptions = queryOptions({
 /** How this deployment signs parents in (password, configured providers).
  * Loaded before the sign-in screen renders, so its controls never shift. */
 export const authConfigOptions = queryOptions({
+  ...BOOT_RETRY,
   queryKey: ["auth-config"],
   queryFn: () => authConfig(),
   staleTime: Infinity,

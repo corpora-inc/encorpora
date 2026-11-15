@@ -1,7 +1,9 @@
 import type { BrowserKind } from "./browser-kind";
+import { isScriptPath } from "./error-details";
 
 /** Only suppress attributable webview runtime noise. An AMP frame anywhere
- * in the stack wins, even when an injected wrapper is the throwing frame.
+ * in the stack wins, even when an injected wrapper is the throwing frame. A
+ * frame in the HTML document itself is not AMP's: it serves no inline script.
  * Missing/redacted sources stay reportable: absence is not external evidence. */
 export function isInjectedRuntimeError(
   error: unknown,
@@ -25,7 +27,8 @@ export function isInjectedRuntimeError(
     let external = false;
     for (const source of sources) {
       const url = new URL(source, origin);
-      if (url.origin === origin) return false;
+      // An AMP script frame wins; the page's own URL is a webview's injection.
+      if (url.origin === origin && isScriptPath(url.pathname)) return false;
       external = true;
     }
     return external;
