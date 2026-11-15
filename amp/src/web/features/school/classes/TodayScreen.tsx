@@ -231,9 +231,16 @@ export function TodayScreen() {
               <div className={todayStyles.title}>
                 <h1 data-today-title="">{data.class.name}</h1>
                 <p>{fullDay(data.today)}</p>
-                {/* Days left in the pilot or its grace: read before the
-                    page shows (`access.pending`), so it never moves it. */}
-                {pilotNote && <p data-pilot-left="">{pilotNote}</p>}
+                {/* Days left in the pilot or its grace. Its line is always
+                    held, so a pilot starting, its grace or the paywall
+                    never moves the header (premium rule 1). */}
+                <p
+                  data-pilot-left=""
+                  aria-hidden={pilotNote ? undefined : true}
+                  className={pilotNote ? undefined : todayStyles.heldLine}
+                >
+                  {pilotNote ?? "\u00a0"}
+                </p>
               </div>
             )}
             {/* The code waits for a roster, and for practice. A family's
