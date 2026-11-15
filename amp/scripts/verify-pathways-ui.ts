@@ -1953,9 +1953,9 @@ try {
   const lostSkill = lost.locator(
     `.pathways-plan [data-plan-skill="${target.id}"]`,
   );
-  const lostBand = lost
-    .locator(".pathways-plan [data-plan-band]")
-    .filter({ has: lostSkill });
+  const lostBand = lost.locator(".pathways-plan [data-plan-band]").filter({
+    has: lost.locator(`[data-plan-skill="${target.id}"]`),
+  });
   if (!(await lostBand.locator("details[open]").count()))
     await lostBand.locator("summary").first().click();
   await lostSkill.click();
