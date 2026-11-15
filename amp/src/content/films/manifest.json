@@ -4147,8 +4147,7 @@
         "version": "00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0",
         "duration": 114.12
       }
-    ],
-    "skill": "multiplicative-stories"
+    ]
   },
   "linked-time-equations": {
     "id": "two-step-change--st",
@@ -4897,23 +4896,24 @@
     "skill": "multiplication-division-equality"
   },
   "multiplication-division-story": {
-    "id": "linked-division-equations",
-    "version": "00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0",
-    "title": "Choose the linked equations for a two-step sharing story",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linked-division-equations/00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linked-division-equations/00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0/audio.m4a",
-    "duration": 114.12,
+    "id": "multiplication-division-story--sm",
+    "version": "9fc4cfa26b7e99f260fc120250248ec08a6affbf02b38bd0711b962995e4a4e5",
+    "title": "Multiplication and division word problems",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-story--sm/9fc4cfa26b7e99f260fc120250248ec08a6affbf02b38bd0711b962995e4a4e5/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-story--sm/9fc4cfa26b7e99f260fc120250248ec08a6affbf02b38bd0711b962995e4a4e5/audio.m4a",
+    "duration": 289.55995464852606,
     "teacher": "Madeline Brousseaux",
-    "capability": "lesson-film-v2",
+    "capability": "lesson-film-v4",
     "editions": [
       {
         "voices": {
-          "narrator": "XescS24CsOySAkKrLAO3"
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linked-division-equations/00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linked-division-equations/00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0/audio.m4a",
-        "version": "00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0",
-        "duration": 114.12
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-story--sm/9fc4cfa26b7e99f260fc120250248ec08a6affbf02b38bd0711b962995e4a4e5/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-story--sm/9fc4cfa26b7e99f260fc120250248ec08a6affbf02b38bd0711b962995e4a4e5/audio.m4a",
+        "version": "9fc4cfa26b7e99f260fc120250248ec08a6affbf02b38bd0711b962995e4a4e5",
+        "duration": 289.55995464852606
       }
     ],
     "skill": "multiplicative-stories"
@@ -5164,6 +5164,29 @@
       }
     ],
     "skill": "exponent-laws"
+  },
+  "neighbor-product-change": {
+    "id": "times-table-pattern--st",
+    "version": "12a080a0f320077af9c2d353e134522d95162e2bb51f6eccbf44042f122d7083",
+    "title": "Arithmetic patterns",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/times-table-pattern--st/12a080a0f320077af9c2d353e134522d95162e2bb51f6eccbf44042f122d7083/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/times-table-pattern--st/12a080a0f320077af9c2d353e134522d95162e2bb51f6eccbf44042f122d7083/audio.m4a",
+    "duration": 284.82002267573694,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/times-table-pattern--st/12a080a0f320077af9c2d353e134522d95162e2bb51f6eccbf44042f122d7083/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/times-table-pattern--st/12a080a0f320077af9c2d353e134522d95162e2bb51f6eccbf44042f122d7083/audio.m4a",
+        "version": "12a080a0f320077af9c2d353e134522d95162e2bb51f6eccbf44042f122d7083",
+        "duration": 284.82002267573694
+      }
+    ],
+    "skill": "arithmetic-patterns"
   },
   "nested-bag-total": {
     "id": "regions-to-whole--so",
@@ -5463,23 +5486,24 @@
     "skill": "operation-properties"
   },
   "operation-sentence-choice": {
-    "id": "linked-division-equations",
-    "version": "00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0",
-    "title": "Choose the linked equations for a two-step sharing story",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linked-division-equations/00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linked-division-equations/00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0/audio.m4a",
-    "duration": 114.12,
+    "id": "multiplication-division-story--sm",
+    "version": "9fc4cfa26b7e99f260fc120250248ec08a6affbf02b38bd0711b962995e4a4e5",
+    "title": "Multiplication and division word problems",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-story--sm/9fc4cfa26b7e99f260fc120250248ec08a6affbf02b38bd0711b962995e4a4e5/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-story--sm/9fc4cfa26b7e99f260fc120250248ec08a6affbf02b38bd0711b962995e4a4e5/audio.m4a",
+    "duration": 289.55995464852606,
     "teacher": "Madeline Brousseaux",
-    "capability": "lesson-film-v2",
+    "capability": "lesson-film-v4",
     "editions": [
       {
         "voices": {
-          "narrator": "XescS24CsOySAkKrLAO3"
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linked-division-equations/00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linked-division-equations/00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0/audio.m4a",
-        "version": "00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0",
-        "duration": 114.12
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-story--sm/9fc4cfa26b7e99f260fc120250248ec08a6affbf02b38bd0711b962995e4a4e5/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-story--sm/9fc4cfa26b7e99f260fc120250248ec08a6affbf02b38bd0711b962995e4a4e5/audio.m4a",
+        "version": "9fc4cfa26b7e99f260fc120250248ec08a6affbf02b38bd0711b962995e4a4e5",
+        "duration": 289.55995464852606
       }
     ],
     "skill": "multiplicative-stories"
@@ -6812,6 +6836,29 @@
     ],
     "skill": "irrational-numbers"
   },
+  "repeating-shape-pattern": {
+    "id": "times-table-pattern--st",
+    "version": "12a080a0f320077af9c2d353e134522d95162e2bb51f6eccbf44042f122d7083",
+    "title": "Arithmetic patterns",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/times-table-pattern--st/12a080a0f320077af9c2d353e134522d95162e2bb51f6eccbf44042f122d7083/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/times-table-pattern--st/12a080a0f320077af9c2d353e134522d95162e2bb51f6eccbf44042f122d7083/audio.m4a",
+    "duration": 284.82002267573694,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/times-table-pattern--st/12a080a0f320077af9c2d353e134522d95162e2bb51f6eccbf44042f122d7083/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/times-table-pattern--st/12a080a0f320077af9c2d353e134522d95162e2bb51f6eccbf44042f122d7083/audio.m4a",
+        "version": "12a080a0f320077af9c2d353e134522d95162e2bb51f6eccbf44042f122d7083",
+        "duration": 284.82002267573694
+      }
+    ],
+    "skill": "arithmetic-patterns"
+  },
   "rg-exponent-monomial-power": {
     "id": "product-of-powers-exponent--sp",
     "version": "7384e7fb1afdffe01338c96386cd74890316445de90f7b5fa6788efdd4fc1e0f",
@@ -7632,6 +7679,29 @@
     ],
     "skill": "trigonometric-graphs"
   },
+  "situation-pair-table": {
+    "id": "times-table-pattern--st",
+    "version": "12a080a0f320077af9c2d353e134522d95162e2bb51f6eccbf44042f122d7083",
+    "title": "Arithmetic patterns",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/times-table-pattern--st/12a080a0f320077af9c2d353e134522d95162e2bb51f6eccbf44042f122d7083/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/times-table-pattern--st/12a080a0f320077af9c2d353e134522d95162e2bb51f6eccbf44042f122d7083/audio.m4a",
+    "duration": 284.82002267573694,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/times-table-pattern--st/12a080a0f320077af9c2d353e134522d95162e2bb51f6eccbf44042f122d7083/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/times-table-pattern--st/12a080a0f320077af9c2d353e134522d95162e2bb51f6eccbf44042f122d7083/audio.m4a",
+        "version": "12a080a0f320077af9c2d353e134522d95162e2bb51f6eccbf44042f122d7083",
+        "duration": 284.82002267573694
+      }
+    ],
+    "skill": "arithmetic-patterns"
+  },
   "skip-count-missing": {
     "id": "skip-count-missing--sk",
     "version": "7647cb7f05d6a6fe8d26faaf694ab8eec77cd374c6a933e331ba6d088907836b",
@@ -8353,45 +8423,47 @@
     "skill": "qualitative-graphs"
   },
   "story-operation-choice": {
-    "id": "linked-division-equations",
-    "version": "00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0",
-    "title": "Choose the linked equations for a two-step sharing story",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linked-division-equations/00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linked-division-equations/00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0/audio.m4a",
-    "duration": 114.12,
+    "id": "multiplication-division-story--sm",
+    "version": "9fc4cfa26b7e99f260fc120250248ec08a6affbf02b38bd0711b962995e4a4e5",
+    "title": "Multiplication and division word problems",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-story--sm/9fc4cfa26b7e99f260fc120250248ec08a6affbf02b38bd0711b962995e4a4e5/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-story--sm/9fc4cfa26b7e99f260fc120250248ec08a6affbf02b38bd0711b962995e4a4e5/audio.m4a",
+    "duration": 289.55995464852606,
     "teacher": "Madeline Brousseaux",
-    "capability": "lesson-film-v2",
+    "capability": "lesson-film-v4",
     "editions": [
       {
         "voices": {
-          "narrator": "XescS24CsOySAkKrLAO3"
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linked-division-equations/00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linked-division-equations/00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0/audio.m4a",
-        "version": "00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0",
-        "duration": 114.12
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-story--sm/9fc4cfa26b7e99f260fc120250248ec08a6affbf02b38bd0711b962995e4a4e5/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-story--sm/9fc4cfa26b7e99f260fc120250248ec08a6affbf02b38bd0711b962995e4a4e5/audio.m4a",
+        "version": "9fc4cfa26b7e99f260fc120250248ec08a6affbf02b38bd0711b962995e4a4e5",
+        "duration": 289.55995464852606
       }
     ],
     "skill": "multiplicative-stories"
   },
   "story-operations-slots": {
-    "id": "linked-division-equations",
-    "version": "00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0",
-    "title": "Choose the linked equations for a two-step sharing story",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linked-division-equations/00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linked-division-equations/00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0/audio.m4a",
-    "duration": 114.12,
+    "id": "multiplication-division-story--sm",
+    "version": "9fc4cfa26b7e99f260fc120250248ec08a6affbf02b38bd0711b962995e4a4e5",
+    "title": "Multiplication and division word problems",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-story--sm/9fc4cfa26b7e99f260fc120250248ec08a6affbf02b38bd0711b962995e4a4e5/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-story--sm/9fc4cfa26b7e99f260fc120250248ec08a6affbf02b38bd0711b962995e4a4e5/audio.m4a",
+    "duration": 289.55995464852606,
     "teacher": "Madeline Brousseaux",
-    "capability": "lesson-film-v2",
+    "capability": "lesson-film-v4",
     "editions": [
       {
         "voices": {
-          "narrator": "XescS24CsOySAkKrLAO3"
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linked-division-equations/00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linked-division-equations/00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0/audio.m4a",
-        "version": "00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0",
-        "duration": 114.12
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-story--sm/9fc4cfa26b7e99f260fc120250248ec08a6affbf02b38bd0711b962995e4a4e5/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiplication-division-story--sm/9fc4cfa26b7e99f260fc120250248ec08a6affbf02b38bd0711b962995e4a4e5/audio.m4a",
+        "version": "9fc4cfa26b7e99f260fc120250248ec08a6affbf02b38bd0711b962995e4a4e5",
+        "duration": 289.55995464852606
       }
     ],
     "skill": "multiplicative-stories"
@@ -9009,6 +9081,29 @@
       }
     ],
     "skill": "rectangle-area"
+  },
+  "times-table-pattern": {
+    "id": "times-table-pattern--st",
+    "version": "12a080a0f320077af9c2d353e134522d95162e2bb51f6eccbf44042f122d7083",
+    "title": "Arithmetic patterns",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/times-table-pattern--st/12a080a0f320077af9c2d353e134522d95162e2bb51f6eccbf44042f122d7083/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/times-table-pattern--st/12a080a0f320077af9c2d353e134522d95162e2bb51f6eccbf44042f122d7083/audio.m4a",
+    "duration": 284.82002267573694,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/times-table-pattern--st/12a080a0f320077af9c2d353e134522d95162e2bb51f6eccbf44042f122d7083/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/times-table-pattern--st/12a080a0f320077af9c2d353e134522d95162e2bb51f6eccbf44042f122d7083/audio.m4a",
+        "version": "12a080a0f320077af9c2d353e134522d95162e2bb51f6eccbf44042f122d7083",
+        "duration": 284.82002267573694
+      }
+    ],
+    "skill": "arithmetic-patterns"
   },
   "transformation-composition-image": {
     "id": "identify-rigid-motion--si",
