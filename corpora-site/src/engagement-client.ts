@@ -1,4 +1,5 @@
 import { createMarketingDelivery } from "./engagement-delivery";
+import { analyticsPath } from "./navigation";
 import { entryContext } from "../../amp/src/analytics/entry-context";
 import { browserIdentity } from "../../amp/src/analytics/browser-identity";
 import { marketingScreen } from "../../amp/src/analytics/site-categories";
@@ -26,7 +27,7 @@ if (
   let pageId = crypto.randomUUID(),
     day = new Date().toISOString().slice(0, 10),
     ordinal = 0;
-  const screen = marketingScreen(location.pathname);
+  const screen = marketingScreen(analyticsPath(location.pathname));
   const context = identity.context(
     entryContext({
       search: location.search,
