@@ -28,7 +28,6 @@ import {
 } from "../billing";
 import { forgetPlanChoice } from "../../lib/pending-trial";
 import { PlanStep } from "../onboarding/PlanStep";
-import { VerifyEmailStep } from "../onboarding/VerifyEmailStep";
 import {
   continuationPaid,
   readContinuation,
@@ -199,8 +198,6 @@ function Continue({ session }: { session: AuthSession }) {
           learnerId={learner.id}
           interval={interval}
         />
-      ) : account.account.confirmationRequired ? (
-        <VerifyEmailStep session={session} me={account} embedded />
       ) : (
         <PlanStep
           session={session}

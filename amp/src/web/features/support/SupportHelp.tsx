@@ -81,8 +81,8 @@ export function ParentFeedbackForm({
             I’m a parent or adult learner.
           </Checkbox>
           <p>
-            Please leave out names and other private information. We keep
-            feedback for 90 days to improve AMP. Need a reply?{" "}
+            Please leave out names and other private information. We use
+            feedback to improve AMP. Need a reply?{" "}
             <a href={`mailto:${SUPPORT_EMAIL}`}>Email support.</a>
           </p>
           <p role="alert" className={styles.status}>

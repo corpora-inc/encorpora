@@ -6,7 +6,7 @@ import { Pool } from "pg";
 import { migrate } from "../scripts/migrate.js";
 
 test(
-  "0128 adds metadata without rewriting or backfilling the locked learner table",
+  "0129 adds metadata without rewriting or backfilling the locked learner table",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
   async () => {
     const db = new Pool({
@@ -31,7 +31,7 @@ test(
       ).rows[0];
       await client.query(
         await readFile(
-          new URL("../migrations/0128-course-start.sql", import.meta.url),
+          new URL("../migrations/0129-course-start.sql", import.meta.url),
           "utf8",
         ),
       );
@@ -59,7 +59,7 @@ test(
   },
 );
 
-// Run the real migration runner and exact 0129 file against small evidence
+// Run the real migration runner and exact 0130 file against small evidence
 // tables. Earlier migrations are recorded as applied, isolating this upgrade.
 async function historyFixture() {
   const url = process.env.AMP_TEST_DATABASE_URL!;
@@ -76,7 +76,7 @@ async function historyFixture() {
     CREATE TABLE amp_active_days(learner_id text,day date,active_ms int);
     CREATE TABLE amp_family_approvals(id text,class_id text,created_at timestamptz)`);
   const directory = new URL("../migrations/", import.meta.url);
-  const name = "0129-family-history-indexes.sql";
+  const name = "0130-family-history-indexes.sql";
   for (const file of (await readdir(directory)).filter(
     (f) => f.endsWith(".sql") && f !== name,
   )) {
@@ -103,7 +103,7 @@ async function historyFixture() {
 }
 
 test(
-  "0129 permits evidence writes while an index build waits for an existing writer",
+  "0130 permits evidence writes while an index build waits for an existing writer",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
   async () => {
     const fixture = await historyFixture();
@@ -182,7 +182,7 @@ test(
 );
 
 test(
-  "0129 resumes a partial build, replaces an invalid index and preserves checksums",
+  "0130 resumes a partial build, replaces an invalid index and preserves checksums",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
   async () => {
     const fixture = await historyFixture();
@@ -267,7 +267,7 @@ test(
       );
       await assert.rejects(
         migrate(fixture.url),
-        /Applied migration changed: 0129/,
+        /Applied migration changed: 0130/,
       );
     } finally {
       await fixture.close();
@@ -372,7 +372,7 @@ test(
         (await db.query("SELECT name,checksum FROM amp_migrations ORDER BY 1"))
           .rows;
       const current = await receipts();
-      // The oldest names: two renumberings back.
+      // The oldest names: three renumberings back.
       for (const [name, earlier] of Object.entries(renamedMigrations))
         await db.query("UPDATE amp_migrations SET name=$2 WHERE name=$1", [
           name,

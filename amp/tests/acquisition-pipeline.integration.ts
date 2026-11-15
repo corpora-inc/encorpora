@@ -93,12 +93,14 @@ test(
       assert.equal(report.missing_contacts, 0);
       assert.equal(report.unclassifiedAccounts.length, 1);
       assert.equal(report.unclassifiedAccounts[0].email, "staff@example.com");
-      assert.equal(report.contacts[0].next_action, "wait_until_due");
+      // No self-imposed hold: the first contact is due as soon as the
+      // signup is verified.
+      assert.equal(report.contacts[0].next_action, "review_first_contact");
       assert.equal(report.contacts[1].next_action, "await_verification");
       const localDue = await pool.query(
-        "SELECT extract(hour from next_contact_at AT TIME ZONE time_zone)::int AS local_hour, time_zone_basis FROM amp_acquisition_contacts WHERE user_id='first'",
+        "SELECT c.next_contact_at=COALESCE(f.verified_at,f.created_at) AS immediate, c.time_zone_basis FROM amp_acquisition_contacts c JOIN amp_parent_followups f USING(user_id) WHERE user_id='first'",
       );
-      assert.equal(localDue.rows[0].local_hour, 12);
+      assert.equal(localDue.rows[0].immediate, true);
       assert.equal(localDue.rows[0].time_zone_basis, "campaign");
       await pool.query(
         "INSERT INTO amp_parent_followup_outbox(id,user_id,stage) VALUES($1,'first','welcome')",
@@ -139,6 +141,10 @@ test(
       await check(first, "another@example.com");
       await assert.rejects(call(first, claim), /mailbox/);
       await check(first);
+      // A manual hold still blocks a claim until it is released.
+      await pool.query(
+        "UPDATE amp_acquisition_contacts SET next_contact_at=now()+interval '1 day' WHERE user_id='first'",
+      );
       await assert.rejects(call(first, claim), /not due/);
       await call(first, {
         action: "record-event",
