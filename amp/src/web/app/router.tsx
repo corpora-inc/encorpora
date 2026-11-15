@@ -1,8 +1,10 @@
+import { knownDocumentPath } from "./document-routes";
 import { requestFetch } from "../lib/request-transport";
 import { invoiceOffersOptions } from "../features/funding/invoice-offers";
 import { signupEntrySchema } from "../../parent-followup/contracts";
 import {
   createRootRoute,
+  notFound,
   createRoute,
   createRouter,
   createBrowserHistory,
@@ -232,6 +234,9 @@ const root = createRootRoute({
     ],
   },
   errorComponent: RouterError,
+  notFoundComponent: lazyRouteComponent(
+    () => import("../features/not-found/NotFoundScreen"), "NotFoundScreen",
+  ),
   // A tab already found to run an older release turns its next navigation
   // into a full page load of the same URL. The current screen stays painted
   // until the new page paints, so no loading screen shows in between.
@@ -1679,8 +1684,9 @@ const design = createRoute({
 const fallback = createRoute({
   getParentRoute: () => appScreen,
   path: "/$",
-  // The address says who practices (features/profiles/practice-mode.ts).
+  // Reject unknown shapes before adopting a learner or loading the legacy app.
   beforeLoad: async ({ location }) => {
+    if (!knownDocumentPath(location.pathname)) throw notFound();
     await canonicalLearnerAddress(location);
     await adoptPracticeMode(location);
   },

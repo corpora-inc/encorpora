@@ -68,15 +68,15 @@ test("canonical URLs drop campaign, click, program and private parameters", () =
     ],
     [
       "/sign-up?entry=pitch-try&return=free-practice",
-      "https://amp.corpora.inc/sign-up",
+      null,
     ],
     [
       "/purchase/arizona-esa/?token=private",
-      "https://amp.corpora.inc/purchase/arizona-esa",
+      null,
     ],
     [
       "/invoice/arkansas-efa?program=ar-efa",
-      "https://amp.corpora.inc/invoice/arkansas-efa",
+      null,
     ],
   ] as const)
     assert.equal(routeHead(location, "pitch")?.canonical, canonical, location);
@@ -176,4 +176,23 @@ test("route changes rewrite one set of tags and never touch skill-page tags", ()
     content(doc, 'meta[property="og:url"]'),
     "https://amp.corpora.inc/",
   );
+});
+
+
+test("account, learning and auth routes are noindex while public information stays indexable", () => {
+  for (const path of ["/sign-in", "/sign-up", "/reset-password", "/start", "/account/security", "/me", "/family", "/practice", "/purchase", "/invoice/arizona-esa"]) {
+    const head = routeHead(path + "?token=private", "pitch")!;
+    assert.equal(head.robots, "noindex, follow", path);
+    assert.equal(head.canonical, null, path);
+  }
+  const doc = fresh();
+  applyRouteHead(doc, routeHead("/sign-in", "pitch")!);
+  assert.equal(content(doc, 'meta[name="robots"]'), "noindex, follow");
+  for (const path of ["/", "/schools", "/schools/trust", "/schools/scope-and-sequence"]) {
+    const head = routeHead(path, "pitch")!;
+    assert.equal(head.robots, null);
+    assert.equal(head.canonical, "https://amp.corpora.inc" + path);
+    applyRouteHead(doc, head);
+    assert.equal(doc.querySelector('meta[name="robots"]'), null);
+  }
 });

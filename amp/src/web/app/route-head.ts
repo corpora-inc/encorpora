@@ -1,8 +1,8 @@
+import { indexableDocumentPath } from "./document-routes";
 import {
   appPageTitle,
   pitchProgramId,
   programNames,
-  publicAppPageTitle,
   splitLocation,
   type HomeScreen,
 } from "../../analytics/page-titles";
@@ -31,9 +31,11 @@ export type RouteHead = {
   description: string;
   /** Public routes only: the path alone, without campaign, click or program labels. */
   canonical: string | null;
+  robots: "noindex, follow" | null;
+  image?: string | null;
 };
 
-/** Head metadata for an app route, from the same fixed table as GA's titles.
+/** App titles share GA's fixed labels; indexing uses a separate public-document policy.
  * Undefined for the public skill map, whose screens set their own. */
 export function routeHead(
   location: string,
@@ -51,10 +53,9 @@ export function routeHead(
     description:
       schoolDescriptions[path] ??
       pitchDescription(program && programNames[program]),
-    canonical:
-      publicAppPageTitle(location, home) === undefined
-        ? null
-        : new URL(path, publicOrigin).href,
+    canonical: indexableDocumentPath(path) && !(path === "/" && home !== "pitch")
+      ? new URL(path, publicOrigin).href : null,
+    robots: indexableDocumentPath(path) && !(path === "/" && home !== "pitch") ? null : "noindex, follow",
   };
 }
 
@@ -77,6 +78,17 @@ function meta(doc: Document, attribute: "name" | "property", key: string) {
 export function applyRouteHead(doc: Document, head: RouteHead) {
   doc.title = head.title;
   meta(doc, "name", "description").content = head.description;
+  if (head.robots) meta(doc, "name", "robots").content = head.robots;
+  else doc.querySelectorAll(`meta[name="robots"]${own}`).forEach(tag => tag.remove());
+  if (head.image !== undefined || doc.querySelector("[data-pathways-current-image]")) {
+    for (const [attribute, key] of [["property", "og:image"], ["name", "twitter:image"]] as const) {
+      if (head.image) {
+        const tag = meta(doc, attribute, key); tag.content = head.image;
+        tag.setAttribute("data-pathways-current-image", "");
+      } else doc.querySelectorAll(`meta[${attribute}="${key}"]`).forEach(tag => tag.remove());
+    }
+    if (!head.image) doc.querySelectorAll('meta[property="og:image:width"],meta[property="og:image:height"]').forEach(tag => tag.remove());
+  }
   let canonical = doc.head.querySelector<HTMLLinkElement>(
     `link[rel="canonical"]${own}`,
   );
