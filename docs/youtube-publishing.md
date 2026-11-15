@@ -16,11 +16,12 @@ daily workflow, start with the [AMP media pipeline](amp-media-pipeline.md).
 
 ## Standing decisions
 
-- Upload **private**. Target public release about **24 hours after upload**;
-  **12–36 hours** is the normal review window. A render approval is not a request
-  for immediate publication. Processing, caption checks, packaging, and a final
-  watch-through happen during this window. It is a production standard, not a
-  claim that private aging itself boosts ranking.
+- **Publish when ready.** Upload, let YouTube finish processing, and release in
+  the next free cadence slot. There is no private hold: YouTube requires none,
+  and private aging does not help ranking (minimum compliance, founder
+  2026-11-14). The only platform rules are the made-for-kids setting, the
+  altered/synthetic content disclosure where YouTube requires it, and its
+  community and copyright policies.
 - Use YouTube's native scheduling for approved organic releases. Keep an
   existing public video public unless Skylar specifically requests otherwise.
   Correct editable mistakes in place. Preserve its URL, views, and engagement.
@@ -146,9 +147,9 @@ Check the rolling window across midnight and daylight-saving changes, not just
 calendar-day counts. The notification ceiling does not set the publishing cap.
 
 Batch production by visual model and content lane. Maintain a seven-day buffer
-of reviewed, rendered packages. Upload each package about a day before its
-reserved release; if uploading a batch farther ahead, keep it private and spread
-the scheduled releases. Quality failures may extend the private hold. A single
+of reviewed, rendered packages. Upload each package when it is ready; it takes
+the next free slot. If uploading a batch ahead, schedule the releases across
+the free slots. A single
 channel calendar owns all formats and all agents; check existing public and
 scheduled videos before reserving a slot. Record UTC and the named timezone so
 daylight-saving changes do not shift the intended local hour.
@@ -355,7 +356,7 @@ over a meaningful period; newly installed creative is not a proven winner.
 3. Upload private with the intended channel pinned by ID in private configuration.
    Save the returned video ID, upload time, hashes, and policy version immediately.
    Resume by video ID on retry; do not duplicate an upload after a partial failure.
-4. During the hold, verify processed quality, copyright/other platform checks,
+4. Before the slot, verify processed quality, copyright/other platform checks,
    audience, comments/moderation, notifications, caption timing, thumbnail, links,
    playlist, and disclosure decisions. Store a machine-readable check receipt.
    An unknown setting is not a passed check. Complete Studio-only operations in
@@ -373,8 +374,8 @@ over a meaningful period; newly installed creative is not a proven winner.
 The lesson uploader at `amp/scripts/publish-lesson-youtube.py` handles media,
 captions, thumbnail, receipt, and scheduling. The private release plan records
 the browser-verified Studio settings; the uploader cannot independently certify
-controls the Data API does not expose. Its tests reject immediate publication,
-early release, missing checks, and invalid voice IDs. Do not create an ad hoc
+controls the Data API does not expose. Its tests reject past release times,
+missing checks, and invalid voice IDs. Do not create an ad hoc
 publisher that bypasses this contract.
 
 ## Release clerk: the channel runs on a clock
@@ -395,7 +396,7 @@ upload) plus its media. On each tick the clerk does the next due step:
    embedding, license, the planned AI-disclosure value, playlist membership,
    captions, and that every link in the description and CTA loads.
 3. Schedule natively in the next compliant slot from `youtube_policy.py`:
-   the 12-hour hold, four-hour spacing, six per rolling 24 hours, related
+   the next free slot with four-hour spacing, six per rolling 24 hours, related
    editions 24 hours apart, and product offers (lane `ad`) 24 hours apart.
 4. At release, post the CTA comment once. Pinning has no API; the daily
    browser pass pins it.

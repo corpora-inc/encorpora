@@ -42,13 +42,16 @@ class ReleasePolicyTests(unittest.TestCase):
                 self.assertEqual(worker.exitcode, 0)
             self.assertEqual((Path(directory) / "uploads.log").read_text().splitlines(), ["one-upload"])
 
-    def test_24_hour_target_uses_next_local_slot(self):
-        self.assertEqual(release_time(self.uploaded, self.now, []), timestamp("2026-10-31T20:00:00Z"))
+    def test_ready_video_takes_the_next_local_slot(self):
+        # No self-imposed private hold: a ready video releases in the next slot.
+        self.assertEqual(release_time(self.uploaded, self.now, []), timestamp("2026-10-31T00:00:00Z"))
 
-    def test_immediate_or_early_publication_rejected(self):
-        for hours in (0, 1, 11):
-            with self.assertRaises(ValueError):
-                release_time(self.uploaded, self.now, [], requested=(self.now + timedelta(hours=hours)).isoformat())
+    def test_only_past_or_present_requests_are_rejected(self):
+        with self.assertRaises(ValueError):
+            release_time(self.uploaded, self.now, [], requested=self.now.isoformat())
+        for hours in (1, 11):
+            requested = self.now + timedelta(hours=hours)
+            self.assertEqual(release_time(self.uploaded, self.now, [], requested=requested.isoformat()), requested)
 
     def test_rolling_window_and_four_hour_spacing(self):
         candidate = self.now + timedelta(hours=24)
@@ -76,7 +79,8 @@ class ReleasePolicyTests(unittest.TestCase):
         self.assertFalse(allowed_slot(candidate, self.uploaded, self.now, events, ['same-concept']))
 
     def test_dst_keeps_the_named_local_hour(self):
-        uploaded = timestamp("2026-10-31T16:00:00Z")
+        # 10:30 EST on the day DST ends: the next slot is 12:00 EST (17:00Z).
+        uploaded = timestamp("2026-11-01T15:30:00Z")
         self.assertEqual(release_time(uploaded, uploaded, []), timestamp("2026-11-01T17:00:00Z"))
 
     def test_delayed_livestream_counts_its_actual_start(self):
