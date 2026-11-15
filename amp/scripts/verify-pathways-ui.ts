@@ -1931,7 +1931,7 @@ try {
   await fixture(failed, { failProgress: true });
   await failed.goto(`${origin}/pathways`);
   await failed
-    .getByText("Progress could not be loaded.", { exact: false })
+    .getByText("Progress didn’t load.", { exact: false })
     .waitFor();
   await failed.getByRole("button", { name: "Retry", exact: true }).waitFor();
   await noOverflow(failed);
@@ -1950,8 +1950,17 @@ try {
   await lost.locator(".pathways-plan").waitFor();
   assert.equal(await lost.locator("canvas").count(), 0);
   assert.equal(await lost.locator(".pathways-camera").count(), 0);
-  // Every skill still opens its layer.
-  await lost.locator(`.pathways-plan [data-plan-skill="${target.id}"]`).click();
+  // Every skill still opens its layer, its grade band unfolded first (bands
+  // fold; only the learner's own opens by itself).
+  const lostSkill = lost.locator(
+    `.pathways-plan [data-plan-skill="${target.id}"]`,
+  );
+  const lostBand = lost
+    .locator(".pathways-plan [data-plan-band]")
+    .filter({ has: lostSkill });
+  if (!(await lostBand.locator("details[open]").count()))
+    await lostBand.locator("summary").first().click();
+  await lostSkill.click();
   await lost
     .getByRole("heading", { name: target.title, exact: true })
     .waitFor();
