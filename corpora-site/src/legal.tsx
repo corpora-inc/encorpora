@@ -435,11 +435,11 @@ export function Legal({
           <p>
             Parents and adult learners can voluntarily send written product
             feedback. We store the message, purchase-flow section and selected
-            funding program for {RETENTION.parentFeedbackDays} days to improve
-            AMP. We do not attach account, learner, payment or advertising
-            identifiers, or send these messages to advertising platforms. Please
-            leave out names and other private information. For a reply or help
-            with your account, contact <Contact config={config} />.
+            funding program to improve AMP. We do not attach account, learner,
+            payment or advertising identifiers, or send these messages to
+            advertising platforms. Please leave out names and other private
+            information. For a reply or help with your account, contact{" "}
+            <Contact config={config} />.
           </p>
           <h2>Payments and support</h2>
           <p>
