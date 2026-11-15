@@ -112,6 +112,11 @@ export async function purgeConsentRecords(pool: Pool): Promise<number> {
       client.release();
     }
   }
+  // A confirmatory notice that could not go out within the pending period no
+  // longer needs the parent's address; the consent itself stays in effect.
+  await pool.query(
+    "UPDATE amp_consent_requests SET recipient_ciphertext=NULL WHERE phase='active' AND recipient_ciphertext IS NOT NULL AND expires_at<=now()",
+  );
   const candidates = (
     await pool.query(`SELECT DISTINCT account_id FROM amp_consent_requests WHERE
     (completed_at IS NULL AND expires_at<=now()) OR purge_after<=now() LIMIT 100`)

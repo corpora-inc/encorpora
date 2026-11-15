@@ -124,17 +124,15 @@ try {
       if (path.endsWith("/acknowledge")) {
         const body = req.postDataJSON();
         assert.equal(body.requestId, requestId);
-        assert.ok(["initial", "confirmation"].includes(body.stage));
+        assert.equal(body.stage, "initial");
         assert.equal(body.parentAttestation, true);
         const snapshot: ConsentView = {
           ...view,
-          consentActive: body.stage === "confirmation",
+          // The first affirmative response is the consent.
+          consentActive: true,
           request: {
             ...view.request!,
-            phase:
-              body.stage === "confirmation"
-                ? "active"
-                : "awaiting-confirmation",
+            phase: "active",
             confirmationAfter: "2099-01-01T00:00:00.000Z",
           },
         };
@@ -314,17 +312,12 @@ try {
     );
     await page.getByRole("heading", { name: "Review and respond" }).waitFor();
     held = false;
-    view.request!.phase = "awaiting-confirmation";
-    view.request!.confirmationAfter = "2026-01-01T00:00:00.000Z";
-    await page.evaluate(
-      (hash) => {
-        location.hash = hash;
-      },
-      fragment.replace("stage=initial", "stage=confirmation"),
-    );
+    await page.evaluate((hash) => {
+      location.hash = hash;
+    }, fragment);
     await page.getByRole("checkbox").check();
     await page
-      .getByRole("button", { name: "Confirm learning consent", exact: true })
+      .getByRole("button", { name: "Give consent", exact: true })
       .click();
     await page
       .getByRole("heading", { name: "Consent is active", exact: true })
