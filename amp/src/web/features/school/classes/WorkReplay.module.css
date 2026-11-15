@@ -107,9 +107,6 @@ a.step:focus-visible {
 }
 .tries a,
 .lesson {
-  display: inline-flex;
-  align-items: center;
-  min-height: var(--target-min);
   color: var(--color-primary);
   text-underline-offset: 2px;
 }
