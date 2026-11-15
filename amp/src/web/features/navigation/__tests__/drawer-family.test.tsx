@@ -180,7 +180,6 @@ test("Me: never the family's class or a child, no family or class words (audit #
     "Levels",
     "Workbooks",
     "Practice at a level",
-    "Profiles",
   ]);
   expect(
     screen.getByRole("link", { name: "Levels" }).getAttribute("aria-current"),

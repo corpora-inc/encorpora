@@ -37,7 +37,7 @@ const current = (pathname: string, learner?: string) => {
 };
 
 test("exactly one item is current, the most specific for the route", () => {
-  expect(current("/me/profiles")).toEqual(["Profiles"]);
+  expect(current("/me/profiles")).toEqual(["Practice at a level"]);
   expect(current("/me")).toEqual(["Levels"]);
   expect(current("/practice")).toEqual(["Practice"]);
   expect(current("/learners/me/workbooks/2026-11-10", "me")).toEqual([

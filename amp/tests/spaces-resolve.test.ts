@@ -13,6 +13,7 @@ import {
 import { spaceOfPath, SPACES } from "../src/web/features/spaces/space.js";
 import { spaceWords } from "../src/web/features/spaces/words.js";
 import { familyPlaceTabs } from "../src/web/features/spaces/tabs.js";
+import { featureOf, repeatsIn } from "./menu-repeats.js";
 
 /*
  * The resolution truth table (docs/architecture/spaces.md): every session
@@ -654,14 +655,13 @@ test("power user: each place looks right on its own terms, and nothing follows t
     "workbooks",
     "pathways",
     "inventory",
-    "profiles",
   ]);
+  // One entry for Practice at a level and its saved profiles (Q-3).
   assert.deepEqual(destinations(mine), [
     "Practice",
     "Levels",
     "Workbooks",
     "Practice at a level",
-    "Profiles",
   ]);
   // Audit #8: Me never carries the family's class or a child.
   assert.ok(!JSON.stringify(mine.destinations).includes(FAMILY));
@@ -962,7 +962,6 @@ test("CP-2 H2: one learner per address, the same order as adoption", () => {
       ["levels", "me/profiles/profile-4", null],
       ["pathways", "pathways", { profile: "profile-4" }],
       ["inventory", "inventory", { profile: "profile-4" }],
-      ["profiles", "me/profiles", null],
     ],
   );
   // A learner this account doesn't read is unavailable, never another.
@@ -1228,4 +1227,131 @@ test("Start class follows the class's own practice state and board capability, f
     },
   });
   assert.deepEqual(noBoard.actions, []);
+});
+
+test("Q-3: no menu offers one feature twice, for any persona on any screen", () => {
+  // The rule itself: Practice at a level's addresses are one feature.
+  assert.equal(featureOf("me/level"), featureOf("/me/profiles"));
+  assert.equal(featureOf("me/profiles/new"), featureOf("me/profiles/x"));
+  assert.notEqual(featureOf("me"), featureOf("me/level"));
+  const twice = resolveSpace(at("/me"), adult(adultOnly, "rowan"));
+  assert.ok(
+    repeatsIn({
+      ...twice,
+      destinations: [
+        ...twice.destinations,
+        { ...twice.destinations.at(-1)!, label: "Profiles", path: "me/level" },
+      ],
+    }).length > 0,
+  );
+  const levelProfile = me({
+    adultPractice: adultOnly.adultPractice,
+    practiceProfiles: [
+      {
+        id: "level-1",
+        label: "Grade 4",
+        level: { grade: 4, pace: "on-level" },
+      } as NonNullable<SignedInMe["practiceProfiles"]>[number],
+      {
+        id: "saved-1",
+        label: "Niece",
+      } as NonNullable<SignedInMe["practiceProfiles"]>[number],
+    ],
+  });
+  const student = me({
+    account: {
+      id: "school:person",
+      email: null,
+      emailVerified: false,
+      kind: "student",
+    },
+    learners: [child("ana", "Ana")],
+    school: { orgName: "Alder Grove", levels: "shown", standings: true },
+  });
+  const personas: [string, SignedInMe, string | null][] = [
+    ["power", power, "jonah"],
+    ["power, a child chosen", power, "pip"],
+    ["holder", holder, "pip"],
+    ["second parent", secondParent, null],
+    ["own practice", adultOnly, "rowan"],
+    [
+      "not started",
+      me({ adultPractice: { eligible: true, learner: null } }),
+      null,
+    ],
+    ["no practice", me(), null],
+    ["staff", staffOnly, null],
+    ["profiles", levelProfile, "rowan"],
+  ];
+  const own = [
+    "/",
+    "/me",
+    "/me/start",
+    "/me/level",
+    "/me/profiles",
+    "/me/profiles/new",
+    "/me/profiles/saved-1",
+    "/practice",
+    "/overview",
+    "/pathways",
+    "/inventory",
+    "/learners/rowan/workbooks",
+    "/learners/jonah/workbooks",
+    "/account/security",
+    "/account/billing",
+  ];
+  const searches = [
+    undefined,
+    { profile: "level-1" },
+    { profile: "saved-1" },
+    { profile: "profile-4" },
+  ];
+  const places: [string, SpaceResources][] = [
+    [classPath(FAMILY, FAMILY_CLASS), { org: familyOrg(), year: YEAR }],
+    [
+      classPath(SCHOOL, ROOM),
+      {
+        org: school({ roles: ["teacher"], teaches: [ROOM] }),
+        classes: [klass(ROOM, SCHOOL, "Grade 4 Math")],
+        year: YEAR,
+      },
+    ],
+    [
+      `/school/${SCHOOL}`,
+      { org: school(), classes: [klass(ROOM, SCHOOL, "Grade 4 Math")] },
+    ],
+  ];
+  let checked = 0;
+  for (const [who, account, learner] of personas) {
+    for (const pathname of own)
+      for (const search of searches) {
+        const space = resolveSpace(
+          at(pathname, search ? { search } : {}),
+          adult(account, learner),
+        );
+        assert.deepEqual(repeatsIn(space), [], `${who} at ${pathname}`);
+        checked += 1;
+      }
+    for (const [pathname, resources] of places)
+      for (const path of [pathname, `${pathname}/map`, `${pathname}/roster`]) {
+        const space = resolveSpace(
+          at(path),
+          adult(account, learner),
+          resources,
+        );
+        assert.deepEqual(repeatsIn(space), [], `${who} at ${path}`);
+        checked += 1;
+      }
+  }
+  for (const pathname of [
+    "/practice",
+    "/overview",
+    "/pathways",
+    "/standings",
+  ]) {
+    const space = resolveSpace(at(pathname), { kind: "student", me: student });
+    assert.deepEqual(repeatsIn(space), [], `student at ${pathname}`);
+    checked += 1;
+  }
+  assert.ok(checked > 500);
 });

@@ -830,7 +830,9 @@ if (part("profiles")) {
         await signIn(context, owner.email);
         const page = await context.newPage();
         await page.goto(`${origin}/me/profiles`, { waitUntil: "load" });
-        await page.getByRole("heading", { name: "Profiles" }).waitFor();
+        await page
+          .getByRole("heading", { name: "Practice at a level" })
+          .waitFor();
         await settle(page);
         await check(page, where, "me");
         const hits = await page.evaluate(textCollisions);

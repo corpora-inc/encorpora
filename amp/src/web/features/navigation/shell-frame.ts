@@ -7,7 +7,7 @@
  * words, is the space's (features/spaces/resolve.ts): this only places the
  * screen.
  */
-export type ProgressTab = "overview" | "pathways" | "inventory" | "profiles";
+export type ProgressTab = "overview" | "pathways" | "inventory";
 export type AccountTab = "security" | "learners" | "access" | "privacy";
 export type ShellFrame =
   | { kind: "progress"; active: ProgressTab }
@@ -115,10 +115,8 @@ export function shellFrame(
   // quiet button (docs/design/ia.md): the Progress tabs stay, Overview marked.
   if (/^\/learners\/[^/]+\/workbooks(?:\/|$)/.test(path))
     return { kind: "progress", active: "overview" };
-  // Practicing as someone else: the profiles are a tab of their own; a new
-  // profile and a profile's levels are steps with their own way back.
-  if (path === "/me/profiles") return { kind: "progress", active: "profiles" };
-  // Practice at a level: one step, then practice; its way back is the bar's.
+  // Practice at a level: its hub (saved profiles), the level step, a new
+  // profile and a profile's levels; each way back is the bar's.
   if (path === "/me/level") return { kind: "plain" };
   if (under(path, "/me/profiles")) return { kind: "plain" };
   if (path === "/overview" || path === "/me" || path === "/me/time")
@@ -226,7 +224,6 @@ const TAB_NAMES: Record<string, readonly string[]> = {
   reports: ["Report cards"],
   people: ["People"],
   levels: ["Levels"],
-  profiles: ["Profiles"],
 };
 
 /** Whether the bar's open tab already says what this screen is called, so
