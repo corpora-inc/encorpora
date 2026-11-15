@@ -17,7 +17,6 @@ import {
 export const GA_MEASUREMENT_ID = "G-TGEK0ZGHMD";
 const disabledKey = `ga-disable-${GA_MEASUREMENT_ID}`;
 const clickKeys = ["gclid", "gbraid", "wbraid"];
-const publicMarketingPaths = new Set(Object.keys(marketingPageTitles));
 const publicAppPaths = new Set(Object.keys(publicAppPageTitles));
 
 /** A finite public route list. Private routes, fragments and arbitrary parameters
@@ -28,12 +27,13 @@ const publicAppPaths = new Set(Object.keys(publicAppPageTitles));
 export function googlePage(
   input: string,
   home: HomeScreen = "pitch",
+  sitePages: Readonly<Record<string,string>> = marketingPageTitles,
 ): string | undefined {
   const url = new URL(input);
   if (url.protocol !== "https:") return;
   const path = url.pathname.replace(/\/$/, "") || "/";
   let safePath: string | undefined;
-  if (url.hostname === "corpora.inc" && publicMarketingPaths.has(path))
+  if (url.hostname === "corpora.inc" && Object.hasOwn(sitePages,path))
     safePath = path;
   if (url.hostname === "amp.corpora.inc") {
     if (publicAppPaths.has(path) && (path !== "/" || home === "pitch"))
@@ -69,11 +69,12 @@ export function googlePage(
 export function googlePageTitle(
   input: string,
   home: HomeScreen = "pitch",
+  sitePages: Readonly<Record<string,string>> = marketingPageTitles,
 ): string | undefined {
-  const page = googlePage(input, home);
+  const page = googlePage(input, home, sitePages);
   if (!page) return;
   if (new URL(page).hostname === "corpora.inc")
-    return marketingPageTitles[new URL(page).pathname];
+    return sitePages[new URL(page).pathname];
   const url = new URL(input);
   return publicAppPageTitle(url.pathname + url.search, home);
 }
@@ -122,6 +123,8 @@ const buyPlaces = {
 const forwarded: Readonly<Record<string, Forward>> = {
   try_click: same("try_click"),
   workbook_click: same("workbook_click"),
+  workbook_download: same("file_download"),
+  video_complete: same("video_complete"),
   buy_click: ({ path, from }, program) => {
     // Where Buy was pressed: the pitch, or the free trial's toolbar or an
     // invitation. Still a click, never a checkout or a purchase.
@@ -197,6 +200,8 @@ type AnalyticsWindow = Window &
 export function createGoogleAnalytics(
   options: {
     home?: () => HomeScreen;
+    /** Fixed public routes compiled by the static-site build; never DOM or URL input. */
+    sitePages?: Readonly<Record<string,string>>;
     /** A school student's device: nothing is collected, and a document that
      * started as a parent's stays disabled afterwards. */
     blocked?: () => boolean;
@@ -226,7 +231,7 @@ export function createGoogleAnalytics(
   function navigate() {
     try {
       const home = options.home?.() ?? "pitch";
-      const page = permitted() ? googlePage(location.href, home) : undefined;
+      const page = permitted() ? googlePage(location.href, home, options.sitePages) : undefined;
       // ga-disable stops hits but does not reset Google's engagement clock.
       // Once learning starts, keep this document disabled so a later parent
       // screen cannot export time spent learning. A fresh document can resume.
@@ -237,7 +242,7 @@ export function createGoogleAnalytics(
         previous = "";
         return;
       }
-      const title = googlePageTitle(location.href, home);
+      const title = googlePageTitle(location.href, home, options.sitePages);
       if (sameGoogleVisit(previous, page) && title === previousTitle) return;
       const referrer = previous || safeReferrer(document.referrer);
       const pageParams = {
@@ -375,7 +380,7 @@ export function createGoogleAnalytics(
         retired ||
         !permitted() ||
         adOptOut() ||
-        !googlePage(location.href, options.home?.() ?? "pitch")
+        !googlePage(location.href, options.home?.() ?? "pitch", options.sitePages)
       )
         return;
       // Cookieless consent-mode pings cannot become server-side signup events.

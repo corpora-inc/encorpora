@@ -1,0 +1,1192 @@
+[
+  {
+    "slug": "ctcmath",
+    "name": "CTCMath",
+    "category": "Video-led homeschool curriculum",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "CTCMath: How It Works",
+        "url": "https://www.ctcmath.com/how-it-works"
+      },
+      {
+        "title": "CTCMath: Frequently Asked Questions",
+        "url": "https://ctcmath.com/faq"
+      }
+    ],
+    "summary": "Choose the daily routine: short video lessons followed by practice, or an adaptive stream that brings explanations into the problem you are solving.",
+    "approach": "CTCMath organizes learning around short narrated tutorials. AMP starts with a problem and keeps its hint, lesson and worked solution close by.",
+    "practice": "CTCMath provides interactive questions, automated marking and topic diagnostics. AMP selects mixed practice across topics, including review and prerequisite work.",
+    "print": "Both support paper: CTCMath offers worksheets, lesson summaries and worked solutions; AMP offers printable lessons, workbooks and solution keys.",
+    "range": "CTCMath: K–12, with access across grades. AMP: counting to precalculus.",
+    "scenario": "Your child can explain a lesson immediately after watching it, but you want practice to revisit that idea among other topics a few days later.",
+    "ampAngle": "Choose AMP when deciding what to practice next is the work you want the program to handle.",
+    "paragraphs": [
+      "CTCMath gives a homeschool day a recognizable structure: watch a short tutorial, answer interactive questions or use a worksheet, and review the results. Its membership allows movement between grades, so a family can return to earlier material. For a learner who wants a teacher's spoken explanation before attempting a topic, that structure is a practical reason to consider it.",
+      "AMP makes the next problem the center of the routine. Answers inform the continuing mix of new work, prerequisite repair and review; a hint, concise lesson and step-by-step explanation support the current question. Consider a child who handles multiplication but hesitates over fractions: AMP can keep multiplication in review while working on the missing fraction ideas. The parent has less daily topic selection to manage.",
+      "AMP makes paper part of a connected practice routine. CTCMath provides printable summaries, worksheets and worked solutions. AMP's case is the combination of adaptive mixed practice with lessons and printable workbooks in one curriculum. Try the actual practice flow and a printed sample to see whether that combination suits the way your family works."
+    ],
+    "questions": [
+      {
+        "question": "Does CTCMath include worksheets?",
+        "answer": "Yes. CTCMath describes printable worksheets, one-page tutorial summaries and worked solutions. Compare the teaching and practice routine as well as paper availability."
+      },
+      {
+        "question": "When is AMP the stronger fit?",
+        "answer": "When you want the program to choose a continuing mix of practice and review, with an explanation available at the problem and printable work for time away from the screen."
+      }
+    ]
+  },
+  {
+    "slug": "ixl",
+    "name": "IXL",
+    "category": "Adaptive skill practice",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "IXL Math (United States)",
+        "url": "https://www.ixl.com/math"
+      },
+      {
+        "title": "IXL: Getting Started",
+        "url": "https://www.ixl.com/inspiration/get-started"
+      },
+      {
+        "title": "IXL: How Does the SmartScore Work?",
+        "url": "https://www.ixl.com/help-center/article/1272663/how_does_the_smartscore_work"
+      }
+    ],
+    "summary": "Compare a broad skill library with diagnostic recommendations against a practice routine that continually chooses the next problem.",
+    "approach": "IXL combines skills, instructional videos and lessons with personalized recommendations. AMP connects adaptive mixed practice to concise lessons and printable curriculum materials.",
+    "practice": "IXL adapts within skills and uses its SmartScore to represent proficiency. AMP uses answers to select a mix of work across mathematical areas.",
+    "print": "AMP includes printable lessons, workbooks and worked solutions for a regular screen-and-paper routine.",
+    "range": "IXL's US math catalog spans pre-K through calculus. AMP spans counting to precalculus.",
+    "scenario": "A child has several recommended skills available, but your daily challenge is deciding which one to do and when to return to earlier learning.",
+    "ampAngle": "Choose AMP for a direct, problem-first practice flow with review selection and matching paper resources built into the routine.",
+    "paragraphs": [
+      "IXL is a substantial adaptive learning product. Its US catalog includes early mathematics, algebra, geometry, precalculus and calculus, with videos and written lessons as well as practice. Diagnostic results and the recommendations wall help identify suitable skills. A parent who wants to assign a particular classroom skill can use that organization deliberately.",
+      "The useful distinction is how the daily session proceeds. IXL tracks work within a skill using SmartScore, which is not a percentage correct and can rise or fall with responses. AMP's core is a continuing mixture of problems: answers help decide what comes next across areas of mathematics. That is useful when a learner needs both forward progress and regular returns to material that would otherwise be forgotten.",
+      "For a family building a whole math routine, AMP also connects that practice to concise lessons, printable workbooks and worked solutions. Start with a problem, read the explanation when needed, and take related work to paper. Choose AMP when you want those parts organized around the learner's next mathematical step, while keeping the daily sequence simple."
+    ],
+    "questions": [
+      {
+        "question": "Is IXL adaptive?",
+        "answer": "Yes. IXL adapts practice and provides personalized recommendations and diagnostic action plans. AMP's case is its mixed-practice workflow and connected lesson-and-paper curriculum."
+      },
+      {
+        "question": "What does IXL's SmartScore mean?",
+        "answer": "It is IXL's proficiency measure for a skill, not the percentage of questions answered correctly. IXL identifies 80 as proficiency, 90 as excellence and 100 as mastery."
+      }
+    ]
+  },
+  {
+    "slug": "math-academy",
+    "name": "Math Academy",
+    "category": "Adaptive mathematics courses",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "Math Academy: Courses",
+        "url": "https://www.mathacademy.com/courses"
+      },
+      {
+        "title": "Math Academy: How Our AI Works",
+        "url": "https://www.mathacademy.com/how-our-ai-works"
+      },
+      {
+        "title": "Math Academy: FAQ",
+        "url": "https://www.mathacademy.com/faq"
+      }
+    ],
+    "summary": "Both personalize mathematics. The decision turns on the learner's starting point, course destination and the place of printable work in daily study.",
+    "approach": "Math Academy uses prerequisite relationships, diagnostic placement and mastery learning. AMP pairs adaptive mixed practice with concise instruction and printable curriculum materials.",
+    "practice": "Math Academy personalizes practice with interleaving and spaced review.",
+    "print": "AMP provides printable lessons, workbooks and worked solutions; Math Academy encourages working out problems with pencil and paper during online study.",
+    "range": "Math Academy begins at fourth-grade math and extends into university mathematics. AMP covers counting to precalculus.",
+    "scenario": "You want one math routine for children whose starting points range from counting and arithmetic to secondary mathematics.",
+    "ampAngle": "Choose AMP for a curriculum that begins with early number sense and combines adaptive online practice with ready-to-print study materials.",
+    "paragraphs": [
+      "Math Academy and AMP share meaningful ideas: adapt to demonstrated knowledge, revisit learning over time, and mix topics instead of leaving every review decision to the parent. Math Academy describes a prerequisite graph, an adaptive diagnostic, interleaving and spaced repetition. For families, the practical choice is how those ideas shape the learner’s daily work.",
+      "The entry point is a concrete difference. Math Academy's lowest course is fourth-grade mathematics; its stated prerequisites include independent reading and multiplication tables through 12s. Its catalog continues into calculus, linear algebra and other university subjects. AMP begins with counting and develops through precalculus, making it a useful choice for a family that wants to begin earlier and keep a consistent curriculum through school mathematics.",
+      "AMP also makes printed lessons, workbooks and worked solutions part of that choice. A parent can use the adaptive session to guide daily work and use paper to examine a diagram or write out a calculation together. For early learners and families who want that combination, AMP offers a clear reason to choose it. Learners shopping specifically for university courses should compare Math Academy's relevant course offerings."
+    ],
+    "questions": [
+      {
+        "question": "Does Math Academy already include spaced repetition?",
+        "answer": "Yes. Its published approach includes spaced repetition, interleaving and mastery learning. Compare starting level, course scope and daily workflow rather than crediting those ideas only to AMP."
+      },
+      {
+        "question": "Which should I consider for a younger child?",
+        "answer": "AMP starts with counting and early arithmetic. Math Academy states that its entry course requires independent reading and multiplication tables through 12s; use those prerequisites when assessing readiness."
+      }
+    ]
+  },
+  {
+    "slug": "khan-academy",
+    "name": "Khan Academy",
+    "category": "Free lessons and mastery practice",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "Khan Academy: Free Learning",
+        "url": "https://www.khanacademy.org/"
+      },
+      {
+        "title": "Khan Academy: Math",
+        "url": "https://www.khanacademy.org/math"
+      },
+      {
+        "title": "Khan Academy: Mastery Challenges",
+        "url": "https://support.khanacademy.org/hc/en-us/articles/360037494231-What-are-Mastery-Challenges"
+      }
+    ],
+    "summary": "Choose between a free library organized into courses and a connected daily math routine that selects mixed practice for the learner.",
+    "approach": "Khan Academy offers videos, articles and mastery-based practice. AMP puts a problem first, with a concise lesson available when needed.",
+    "practice": "Khan Academy has course challenges and personalized mastery review. AMP continuously selects work across mathematical areas from the learner’s answers.",
+    "print": "AMP includes printable lessons, workbooks and worked solutions for planned work on paper.",
+    "range": "Khan Academy covers early mathematics through college-level topics. AMP covers counting to precalculus.",
+    "scenario": "Your child knows where to find an explanation, but a parent still has to turn a large resource library into a consistent daily routine.",
+    "ampAngle": "Choose AMP when the value you need is a connected practice, explanation and paper workflow.",
+    "paragraphs": [
+      "Khan Academy offers substantial mathematics instruction and practice free to families. Its courses combine explanations with exercises, and Mastery Challenges revisit skills from a course. A learner who wants to look up a particular concept or follow an established course has a strong resource available without a curriculum subscription.",
+      "AMP is useful when the unresolved problem is what to do each day. A child can begin with the next selected problem, use its hint or lesson, and continue into a mix of practice and review. For a learner who is comfortable with whole-number calculations but uncertain about fractions, that routine can keep established skills in use while revisiting the missing foundations. Printable lessons, workbooks and solutions give the parent a related paper activity without assembling a separate curriculum. Try AMP for that organized daily experience, while judging any paid plan against the work it saves your family."
+    ],
+    "questions": [
+      {
+        "question": "Does Khan Academy offer more than videos?",
+        "answer": "Yes. It includes exercises, course mastery and personalized review through Mastery Challenges, alongside instructional content."
+      },
+      {
+        "question": "Why consider AMP when Khan Academy is free?",
+        "answer": "For a daily routine that chooses mixed practice and connects the current problem to explanations and printable work. The decision is whether that organization serves your family better than managing courses and resources yourself."
+      }
+    ]
+  },
+  {
+    "slug": "aleks",
+    "name": "ALEKS",
+    "category": "Adaptive course-based learning",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "ALEKS: Independent Use",
+        "url": "https://www.aleks.com/independent"
+      },
+      {
+        "title": "ALEKS: Independent Use Accounts",
+        "url": "https://www.aleks.com/independent/account"
+      },
+      {
+        "title": "ALEKS: Course Products",
+        "url": "https://www.aleks.com/k12/course_products/print_view"
+      }
+    ],
+    "summary": "Both personalize practice; compare course management and knowledge checks with a continuous mixed-practice routine.",
+    "approach": "ALEKS places students with a Knowledge Check and develops a path through a chosen course. AMP selects work across its counting-to-precalculus curriculum.",
+    "practice": "ALEKS combines learning with recurring Knowledge Checks and feedback. AMP incorporates review and prerequisite work into its continuing problem selection.",
+    "print": "AMP pairs online practice with printable lessons, workbooks and worked solutions.",
+    "range": "ALEKS offers elementary, secondary and higher-education courses; its independent subscription excludes ALEKS Adventure. AMP starts at counting.",
+    "scenario": "Your learner needs different levels of work in different mathematical areas, and you want daily practice without managing changes between courses.",
+    "ampAngle": "Choose AMP for a broad family curriculum with mixed practice and related paper materials in one routine.",
+    "paragraphs": [
+      "ALEKS is an adaptive product, including for independent and homeschool use. It begins a selected course with a Knowledge Check, shows topics through its ALEKS Pie, and returns to Knowledge Checks to confirm retention. Its independent subscription permits switching among standard courses, with one active course at a time. That suits a learner whose goal is to work through a defined course while tracking which topics are secure.",
+      "AMP offers a useful alternative when you want the next task to reflect an uneven mathematical profile without making the course itself the daily organizing unit. A learner can need fraction foundations while making progress in geometry; AMP uses answers to guide that mix and to return to earlier work. Lessons, diagrams and step-by-step solutions support the active problem, and printable workbooks extend the routine to paper. Evaluate AMP by trying a mixed session and checking whether the explanations make the next conversation with your child easier."
+    ],
+    "questions": [
+      {
+        "question": "Can homeschool families buy ALEKS?",
+        "answer": "Yes. ALEKS has an independent-use subscription with student and account-management access. Its standard subscription allows one course at a time and excludes ALEKS Adventure and certain specialty products."
+      },
+      {
+        "question": "What is the AMP reason to choose it over ALEKS?",
+        "answer": "A family-oriented, problem-first curriculum that combines continuing mixed practice with printable lessons and workbooks, beginning with early number skills."
+      }
+    ]
+  },
+  {
+    "slug": "dreambox-math",
+    "name": "DreamBox Math",
+    "category": "Adaptive visual instruction",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "DreamBox Math: Parent Overview",
+        "url": "https://www-media.discoveryeducation.com/wp-content/uploads/2024/07/DreamBox-Overview-for-Parents_Math_English.pdf"
+      },
+      {
+        "title": "DreamBox Math: K–8 Curriculum",
+        "url": "https://info.discoveryeducation.com/rs/063-SDC-839/images/Product%20Factsheet%20DreamBox%20Math-%20K-8%20Curriculum.pdf"
+      }
+    ],
+    "summary": "Compare interactive visual lessons for K–8 with a curriculum that links adaptive problems, explanations and printable work through precalculus.",
+    "approach": "DreamBox uses virtual manipulatives and responds to students’ solution strategies. AMP uses mathematical figures with problem-linked lessons and explanations.",
+    "practice": "DreamBox adjusts lessons and pathways as students work. AMP mixes new work, review and prerequisite practice across its curriculum.",
+    "print": "AMP provides ready-to-print lessons, workbooks and worked solutions alongside online practice.",
+    "range": "DreamBox Math: K–8. AMP: counting to precalculus.",
+    "scenario": "Your child benefits from visual mathematics, and you want to carry that understanding into written calculations and later secondary topics.",
+    "ampAngle": "Choose AMP for continuity from early visual models into algebra and precalculus, with a regular paper option.",
+    "paragraphs": [
+      "DreamBox Math uses interactive lessons and virtual manipulatives to develop mathematical understanding. It responds to how a student solves a problem as well as the answer, and adjusts its K–8 learning path accordingly. That makes it a relevant choice for a learner who benefits from exploring mathematical relationships on screen.",
+      "AMP’s case is the connection between the visual model, the calculation and the wider curriculum. A family can work with a diagram in practice, open the associated explanation, then use a printable lesson or workbook to write the reasoning out. The curriculum continues through precalculus, so the same choice can serve a child moving from fractions into algebra and later functions. Compare a topic your child finds difficult: look for a figure that explains the quantities, a solution you can follow together, and a practice routine that returns to the idea later."
+    ],
+    "questions": [
+      {
+        "question": "Does DreamBox adapt to the learner?",
+        "answer": "Yes. Its published design adjusts both lessons and learning paths using students’ responses and solution strategies."
+      },
+      {
+        "question": "Why choose AMP for a family beyond elementary math?",
+        "answer": "AMP connects early mathematics to algebra and precalculus in one curriculum, with adaptive mixed practice and printable study materials throughout."
+      }
+    ]
+  },
+  {
+    "slug": "i-ready",
+    "name": "i-Ready Mathematics",
+    "category": "School assessment and personalized instruction",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "i-Ready Personalized Instruction for Mathematics",
+        "url": "https://www.curriculumassociates.com/programs/i-ready-learning/personalized-instruction/mathematics"
+      },
+      {
+        "title": "Purchasing i-Ready Personalized Instruction",
+        "url": "https://www.curriculumassociates.com/programs/i-ready-learning/personalized-instruction/purchasing"
+      },
+      {
+        "title": "i-Ready Assessment: Inform",
+        "url": "https://www.curriculumassociates.com/programs/i-ready-assessment/admin-resources/diagnostic"
+      }
+    ],
+    "summary": "Compare a school-managed assessment and instruction system with a math curriculum a family can begin directly.",
+    "approach": "i-Ready Personalized Instruction uses assessment results to assign a lesson path and lets teachers assign lessons. AMP begins with a parent-managed learner and adaptive practice.",
+    "practice": "i-Ready lessons adjust support within instruction. AMP uses responses to select continuing mixed practice and review.",
+    "print": "AMP includes printable lessons, workbooks and solutions for home study.",
+    "range": "i-Ready lists K–8 Personalized Instruction content and K–12 Inform assessment. AMP covers counting to precalculus.",
+    "scenario": "Your child uses i-Ready at school, and you want an independent home math routine you can start and manage yourself.",
+    "ampAngle": "Choose AMP for direct family access and a complete home curriculum through precalculus.",
+    "paragraphs": [
+      "The i-Ready family contains different products. Here the comparison concerns Personalized Instruction for Mathematics, a supplemental digital program guided by i-Ready Inform assessment results. Schools can combine its assigned pathways, teacher-selected lessons and reporting with classroom teaching. Its purchasing page states that Personalized Instruction is not sold for homeschool or private-home use.",
+      "AMP gives a parent a direct way to establish a separate home routine. Create a learner, begin adaptive practice, and use the attached lesson or solution when a question needs explanation. Printed workbooks provide another way to discuss the mathematics together. This is particularly useful when school access follows a teacher’s assignments but your family wants additional work on a different schedule, or when you need a curriculum that continues into secondary mathematics. AMP’s appeal here is practical access and connected daily study."
+    ],
+    "questions": [
+      {
+        "question": "Is this comparison about every i-Ready math product?",
+        "answer": "No. It focuses on i-Ready Personalized Instruction for Mathematics and its assessment connection. Curriculum Associates also sells separate core mathematics and print products."
+      },
+      {
+        "question": "Can I buy i-Ready Personalized Instruction for private home use?",
+        "answer": "Its official purchasing page says it is not sold for homeschool or private-home use. AMP is available directly to families."
+      }
+    ]
+  },
+  {
+    "slug": "zearn",
+    "name": "Zearn",
+    "category": "Digital and paper classroom instruction",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "Zearn: Teacher Materials and Student Supports",
+        "url": "https://help.zearn.org/hc/en-us/articles/22137595108247-Orient-to-teacher-materials-and-student-supports"
+      },
+      {
+        "title": "Zearn: Individual Accounts",
+        "url": "https://help.zearn.org/hc/en-us/articles/236218587-Create-an-Individual-Account"
+      },
+      {
+        "title": "Zearn Math Resources",
+        "url": "https://about.zearn.org/math-resources"
+      }
+    ],
+    "summary": "Both connect digital learning to paper. Compare a grade-level lesson system with a continuously selected mix of mathematical practice.",
+    "approach": "Zearn organizes K–8 digital and print instruction around courses and lessons. AMP organizes the daily learner experience around the next selected problem.",
+    "practice": "Zearn provides digital lessons and assessments with teacher resources. AMP mixes practice, review and prerequisite work from the learner’s answers.",
+    "print": "Zearn has downloadable teacher and student materials. AMP has printable lessons, workbooks and worked solutions.",
+    "range": "Zearn: K–8. AMP: counting to precalculus.",
+    "scenario": "You value paper-and-screen learning but want a family routine that can follow different starting levels and continue through high school mathematics.",
+    "ampAngle": "Choose AMP for an adaptive daily mix and continuity beyond K–8.",
+    "paragraphs": [
+      "Zearn deserves comparison as a connected instructional system. Its K–8 materials include digital lessons, paper activities and assessments, with course guides to support teaching. Individual accounts are available without charge, and printable resources are part of the offering. A family or teacher who wants to organize work around that lesson sequence has substantial materials to use.",
+      "AMP is a useful choice when you want the learner’s responses to organize the next stretch of work across topics. A child moving from arithmetic toward algebra can continue practicing established skills while repairing gaps that show up in new problems. Concise explanations and printable workbooks accompany that practice, and the curriculum extends through precalculus. The deciding question is whether you want to follow and manage a grade-level lesson sequence or use AMP’s continuing mixed-practice routine as the center of the day."
+    ],
+    "questions": [
+      {
+        "question": "Does Zearn already include printed materials?",
+        "answer": "Yes. Zearn provides downloadable teacher and student materials alongside digital instruction. Paper availability alone does not distinguish AMP."
+      },
+      {
+        "question": "When does AMP make particular sense?",
+        "answer": "When you want responses to guide mixed practice across topics and a curriculum that continues from early mathematics through precalculus."
+      }
+    ]
+  },
+  {
+    "slug": "st-math",
+    "name": "ST Math",
+    "category": "Visual puzzle-based mathematics",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "MIND Education: ST Math",
+        "url": "https://www.mindeducation.org/programs/st-math/"
+      },
+      {
+        "title": "ST Math at Home: Assigning Objectives",
+        "url": "https://help.stmath.com/hc/en-us/articles/1500001881082-Assignments-for-ST-Math-at-Home-Assign-any-ST-Math-Objective"
+      }
+    ],
+    "summary": "Compare visual puzzles that develop concepts with a complete curriculum connecting models, notation, explanations and paper practice.",
+    "approach": "ST Math introduces concepts through visual puzzles and immediate feedback. AMP connects mathematical representations to problems and explicit worked explanations.",
+    "practice": "ST Math develops understanding through progressively challenging puzzles; home educators can assign objectives across grades. AMP selects mixed practice from answers.",
+    "print": "AMP offers printable lessons and workbooks to practice written mathematics away from the screen.",
+    "range": "ST Math: PreK–8 supplemental instruction. AMP: counting to precalculus.",
+    "scenario": "Your child can reason through a visual puzzle, and you want that understanding connected to written operations, equations and explanations.",
+    "ampAngle": "Choose AMP when you want the visual model and conventional mathematical work together in the main curriculum.",
+    "paragraphs": [
+      "ST Math builds concepts through visual puzzles before connecting them to symbols and language. Students test an idea, see the mathematical result and try again. MIND Education describes it as a PreK–8 supplemental program. For a learner who benefits from a visual entry into a difficult idea, that format gives a distinct reason to try it.",
+      "AMP is useful when the next need is a coherent route from the model to written mathematics. A fraction picture should explain the same quantities that appear in the calculation; a worked solution should show how the operation follows. AMP brings diagrams, problems, concise lessons and printable work into one counting-to-precalculus curriculum. Choose it when you want that full daily routine, including adaptive review, rather than having to build the rest of the curriculum around a visual supplement."
+    ],
+    "questions": [
+      {
+        "question": "Is ST Math a complete core curriculum?",
+        "answer": "MIND Education describes ST Math as a supplemental PreK–8 program used alongside a core curriculum."
+      },
+      {
+        "question": "Can the programs serve different needs?",
+        "answer": "Yes. ST Math offers visual puzzle exploration. AMP can provide the main adaptive practice, explanations and printable curriculum that connect conceptual models to written mathematics."
+      }
+    ]
+  },
+  {
+    "slug": "prodigy-math",
+    "name": "Prodigy Math",
+    "category": "Adventure-game math practice",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "Prodigy Math",
+        "url": "https://www.prodigygame.com/main-en/prodigy-math"
+      },
+      {
+        "title": "Prodigy: Curriculum Standards",
+        "url": "https://www.prodigygame.com/main-en/math-curriculum-standards"
+      }
+    ],
+    "summary": "Choose whether an adventure game or the mathematics itself should organize the practice session.",
+    "approach": "Prodigy embeds adaptive math questions in a fantasy world of battles and quests. AMP keeps the mathematical problem and its explanation in the active view.",
+    "practice": "Prodigy personalizes questions that help learners progress through its game.",
+    "print": "AMP includes printable lessons, workbooks and worked solutions for study on paper.",
+    "range": "Prodigy Math: grades 1–8. AMP: counting to precalculus.",
+    "scenario": "Your child enjoys game-based practice, but your family wants a direct route from a missed question to an explanation and related paper work.",
+    "ampAngle": "Choose AMP when you want the practice session centered on the problem, with a curriculum extending into high school mathematics.",
+    "paragraphs": [
+      "Prodigy Math combines adaptive questions with a fantasy adventure: students answer mathematics questions as they complete quests and battles. Its published range is grades 1–8. For a child who willingly returns to a game world, that structure can help establish a practice habit, and it should be evaluated as a real instructional design choice.",
+      "AMP fits a different preference: the question, figure, answer and explanation are the main experience. If your child misses a fraction problem, you can open the lesson, inspect the quantities and then print related work to discuss together. The practice mix responds to the learner while the curriculum continues through algebra and precalculus. Choose AMP when you want a focused mathematics routine with visible reasoning and a paper option, especially as a learner moves beyond the elementary and middle-school game format."
+    ],
+    "questions": [
+      {
+        "question": "Is Prodigy only entertainment?",
+        "answer": "No. Its game includes adaptive, curriculum-aligned math practice. The comparison is about the surrounding experience and how it fits your learner."
+      },
+      {
+        "question": "What is the main reason to choose AMP?",
+        "answer": "A direct problem-first session with immediate access to mathematical explanation, printable work and a curriculum through precalculus."
+      }
+    ]
+  },
+  {
+    "slug": "splashlearn",
+    "name": "SplashLearn",
+    "category": "Elementary learning games",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "SplashLearn: What Is SplashLearn?",
+        "url": "https://support.splashlearn.com/hc/en-us/articles/38088508081426-What-is-SplashLearn"
+      },
+      {
+        "title": "SplashLearn: Parent Features",
+        "url": "https://www.splashlearn.com/features/parents"
+      }
+    ],
+    "summary": "Compare an elementary games-and-activities platform with a math curriculum designed to continue through precalculus.",
+    "approach": "SplashLearn combines learning games, personalized pathways and other resources for young learners. AMP centers adaptive problems with concise mathematical explanations.",
+    "practice": "SplashLearn adjusts learning paths to progress. AMP selects mixed work, review and prerequisite practice across its wider mathematical range.",
+    "print": "Both offer printable practice. SplashLearn includes worksheets; AMP includes lessons, workbooks and worked solutions.",
+    "range": "SplashLearn: pre-K–grade 5. AMP: counting to precalculus.",
+    "scenario": "You are choosing for a younger learner but want the same math curriculum to serve siblings or continue into algebra.",
+    "ampAngle": "Choose AMP for continuity across school mathematics and a problem-first screen-and-paper routine.",
+    "paragraphs": [
+      "SplashLearn supports young learners with games, personalized learning paths and printable worksheets. Its US product covers pre-K through fifth grade and also includes reading resources. For a family seeking a broad elementary activity platform, that combination is relevant.",
+      "AMP makes a strong case when you are planning the mathematics beyond those first years. A learner can begin with counting, develop fraction and measurement ideas, and later work with equations and functions in the same curriculum. Adaptive mixed practice chooses the next work, while concise lessons and step-by-step explanations help when an idea needs attention. For a household with different ages, or a child approaching the move to middle-school math, AMP offers a consistent mathematical routine with printable workbooks alongside it."
+    ],
+    "questions": [
+      {
+        "question": "Does SplashLearn provide worksheets?",
+        "answer": "Yes. Its product overview includes printable worksheets alongside learning games and personalized paths."
+      },
+      {
+        "question": "Why choose AMP for an elementary learner?",
+        "answer": "If you want a mathematics curriculum that begins at counting and continues through precalculus, with adaptive mixed practice and explanations that support both screen and paper work."
+      }
+    ]
+  },
+  {
+    "slug": "mathseeds",
+    "name": "Mathseeds",
+    "category": "Early-math lessons and activities",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "Mathseeds: About the Program",
+        "url": "https://mathseeds.com/about/"
+      },
+      {
+        "title": "Mathseeds: Home Subscription Features",
+        "url": "https://mathseeds.com/pricing/"
+      }
+    ],
+    "summary": "Compare a playful early-math lesson journey with an adaptive curriculum that grows into secondary mathematics.",
+    "approach": "Mathseeds uses interactive lessons, characters, games and rewards for early learners. AMP focuses each session on mathematical problems with supporting explanations.",
+    "practice": "Mathseeds allows children to progress at their level and repeat lessons. AMP continually chooses a mix of practice and review from answers.",
+    "print": "Mathseeds includes worksheets corresponding to its lessons. AMP provides printable lessons, workbooks and solution keys.",
+    "range": "Mathseeds: ages 3–9. AMP: counting to precalculus.",
+    "scenario": "Your child is finishing an early-math program, and you want the next curriculum to carry arithmetic into fractions, algebra and later topics.",
+    "ampAngle": "Choose AMP for the transition from early number work into a lasting school-mathematics routine.",
+    "paragraphs": [
+      "Mathseeds is designed around early mathematics for ages 3–9. Its lessons combine interactive activities and games with rewards such as pets and items for an avatar or treehouse. Parents can follow progress, and worksheets connect the digital lessons to paper. That is a coherent choice for a young child who responds to a guided, playful lesson journey.",
+      "AMP is particularly useful when deciding what comes after early arithmetic, or when choosing a curriculum you intend to keep using through later school years. A child who can calculate with whole numbers may need a different pace for fractions or measurement; AMP uses practice responses to guide the mixture of work. The same routine continues into algebra and precalculus, with lessons and worked solutions close to the current problem. Printable workbooks let the family preserve time for handwriting and mathematical conversation as the topics become more demanding."
+    ],
+    "questions": [
+      {
+        "question": "Is Mathseeds limited to screen activities?",
+        "answer": "No. It has printable worksheets corresponding to its online lessons, plus family progress reporting."
+      },
+      {
+        "question": "When should a family consider AMP?",
+        "answer": "When planning the move beyond early mathematics, or when wanting one adaptive curriculum for learners whose needs span counting through precalculus."
+      }
+    ]
+  },
+  {
+    "slug": "doodlemath",
+    "name": "DoodleMath",
+    "category": "Personalized elementary practice",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "DoodleLearning US",
+        "url": "https://doodlelearning.com/us/"
+      },
+      {
+        "title": "DoodleLearning: For Parents",
+        "url": "https://doodlelearning.com/us/for-parents"
+      }
+    ],
+    "summary": "Compare a personalized elementary practice app with an adaptive curriculum that includes lessons and printable work through precalculus.",
+    "approach": "DoodleMath uses placement exercises and a personalized program of activities and games. AMP centers the current problem, its reasoning and the next selected work.",
+    "practice": "DoodleMath adjusts regular elementary practice to the learner.",
+    "print": "AMP includes printable curriculum lessons, workbooks and worked solutions.",
+    "range": "DoodleMath US: K–5. AMP: counting to precalculus.",
+    "scenario": "Short elementary practice has become a habit, and you want to turn it into a complete mathematics routine with deeper written work.",
+    "ampAngle": "Choose AMP to connect personalized practice with a broader curriculum and paper-based reasoning.",
+    "paragraphs": [
+      "DoodleMath’s US product is a K–5 personalized mathematics app. Placement exercises establish a starting point, and the program adjusts practice as the child works. Interactive exercises, games, stars and a parent dashboard support a regular routine. A family seeking an elementary practice companion should consider those features on their own merits.",
+      "AMP is useful when you want that practice routine to carry more of the curriculum. Instead of stopping at an exercise result, the learner can open a concise explanation, see the solution’s steps and use related printable materials. This becomes especially relevant as arithmetic develops into multi-step fraction work and algebra, where writing out a calculation can reveal a misunderstanding. AMP continues through precalculus, so a parent can choose one problem-first routine that grows beyond the elementary years."
+    ],
+    "questions": [
+      {
+        "question": "Is this comparison about the US DoodleMath product?",
+        "answer": "Yes. The US site describes DoodleMath as a K–5 program; international DoodleMaths offerings use different curriculum labels."
+      },
+      {
+        "question": "What does AMP add to the decision?",
+        "answer": "A counting-to-precalculus curriculum that connects adaptive mixed practice to concise lessons, worked explanations and printable workbooks."
+      }
+    ]
+  },
+  {
+    "slug": "freckle-math",
+    "name": "Freckle Math",
+    "category": "Differentiated classroom practice",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "Renaissance Freckle",
+        "url": "https://www.renaissance.com/products/practice-instruction/freckle/"
+      },
+      {
+        "title": "Freckle: Math Practice",
+        "url": "https://frecklehelp.renaissance.com/hc/en-us/articles/10531970929435-What-is-Freckle-Math-Practice"
+      }
+    ],
+    "summary": "Compare teacher-targeted and adaptive classroom practice with a direct family curriculum organized around the learner’s next problem.",
+    "approach": "Freckle combines teacher-assigned skills with individualized practice pathways and assessment connections. AMP connects a learner’s practice to lessons and paper materials.",
+    "practice": "Freckle has adaptive and targeted modes, with domain pre-tests or assessment data informing placement. AMP mixes topics, review and prerequisite work in a continuing session.",
+    "print": "AMP offers printable lessons, workbooks and worked solutions for family study.",
+    "range": "Freckle lists mathematics from kindergarten through Algebra 2. AMP covers counting to precalculus.",
+    "scenario": "Your child has differentiated practice at school, but you want a home routine with its own explanations and printable curriculum.",
+    "ampAngle": "Choose AMP for a complete mathematics routine a parent can manage directly, extending through precalculus.",
+    "paragraphs": [
+      "Freckle gives educators two useful ways to organize practice: target a particular skill or allow an individualized pathway to adapt as a student works. Its current mathematics offering spans kindergarten through Algebra 2, and it can use Renaissance assessment data for placement. This is a practical fit for a classroom matching practice to different students and instructional goals.",
+      "AMP is useful for a parent who wants the home session to be self-contained. Begin with an appropriately selected problem, open the lesson if the idea is unfamiliar, and use the worked solution to discuss an error. Printable workbooks make it possible to continue the same mathematical work away from the device. For a child whose school assignments do not answer the family’s daily “what next?” question, AMP provides an independent curriculum and review routine through precalculus."
+    ],
+    "questions": [
+      {
+        "question": "Does Freckle have adaptive practice?",
+        "answer": "Yes. It offers both adaptive and targeted mathematics practice, with placement supported by pre-tests or connected assessment data."
+      },
+      {
+        "question": "Why might a parent choose AMP separately?",
+        "answer": "To establish a complete home math routine with its own adaptive mixture of work, explanations and printable lessons and workbooks."
+      }
+    ]
+  },
+  {
+    "slug": "mathia",
+    "name": "Carnegie MATHia",
+    "category": "Adaptive secondary mathematics coaching",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "Carnegie Learning: Math Solutions",
+        "url": "https://www.carnegielearning.com/solutions/math"
+      },
+      {
+        "title": "MATHia: Ways Students Can Get Support",
+        "url": "https://support.carnegielearning.com/help-center/math/at-home-resources/at-home-resources-for-families/mathia-reports/leadership-reports/home-connection/mathia-support22/accessing-help-in-mathia/article/ways-to-get-support-when-working-in-mathia/"
+      }
+    ],
+    "summary": "Compare adaptive secondary-math workspaces with a family curriculum that connects early foundations, mixed practice and printable materials.",
+    "approach": "MATHia personalizes secondary mathematics through specialized workspaces and supports each problem with hints and examples. AMP connects the current problem to a concise lesson and worked explanation.",
+    "practice": "MATHia provides on-demand and just-in-time hints. AMP uses responses to plan a mixture of new work, prerequisites and review.",
+    "print": "AMP includes printable lessons, workbooks and solutions. Carnegie Learning also offers separate blended core solutions with print materials.",
+    "range": "MATHia: grades 6–12; MATHia Adventure is a separate K–5 product. AMP: counting to precalculus.",
+    "scenario": "A secondary learner needs algebra practice but also support with earlier number and fraction foundations in a family-managed routine.",
+    "ampAngle": "Choose AMP for one curriculum spanning early foundations through precalculus, with direct home use and paper resources.",
+    "paragraphs": [
+      "MATHia is Carnegie Learning’s adaptive mathematics platform for grades 6–12. Its workspaces offer step-by-step examples, a glossary and hints that respond to a learner’s work. Those features are substantial supports for secondary mathematics. MATHia Adventure and Carnegie Learning’s blended core curriculum are separate offerings, so compare the specific product your school or family is considering.",
+      "AMP is useful when a home mathematics routine needs to reach both backward and forward. A learner working toward algebra may need to rebuild fraction understanding without abandoning progress in other areas. AMP selects mixed practice across its curriculum and keeps the supporting lesson and worked solution close to the problem. Printable lessons and workbooks provide space to write the steps out. Choose AMP when you want that early-foundations-to-precalculus continuity managed directly within the family’s day."
+    ],
+    "questions": [
+      {
+        "question": "Does MATHia already provide detailed help?",
+        "answer": "Yes. Its supports include step-by-step examples, glossary definitions, on-demand hints and just-in-time hints."
+      },
+      {
+        "question": "How is AMP’s scope different?",
+        "answer": "AMP starts with counting and continues through precalculus in one curriculum. The MATHia product compared here serves grades 6–12; Carnegie has a separate elementary product."
+      }
+    ]
+  },
+  {
+    "slug": "teaching-textbooks",
+    "name": "Teaching Textbooks",
+    "category": "Narrated homeschool courses",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "Teaching Textbooks: General FAQs",
+        "url": "https://www.teachingtextbooks.com/faqs"
+      },
+      {
+        "title": "Teaching Textbooks: Course Apps",
+        "url": "https://www.teachingtextbooks.com/downloads"
+      },
+      {
+        "title": "Teaching Textbooks: Product Overview",
+        "url": "https://www.teachingtextbooks.com/home"
+      }
+    ],
+    "summary": "Compare a narrated course with automatic grading against adaptive mixed practice that begins with the next problem.",
+    "approach": "Teaching Textbooks supplies lectures, narrated problems and video solutions. AMP puts concise instruction and a worked explanation beside the active problem.",
+    "practice": "Teaching Textbooks grades answers and records course progress. AMP uses responses to select subsequent practice, review and prerequisites.",
+    "print": "Teaching Textbooks includes a printable eBook. AMP includes printable lessons, workbooks and worked solutions.",
+    "range": "Teaching Textbooks: Math 3 through Pre-Calculus. AMP: counting to precalculus.",
+    "scenario": "Your child can work independently through narrated lessons, but you want review choices to respond continually to what they demonstrate.",
+    "ampAngle": "Choose AMP for adaptive daily selection and a curriculum that also reaches early counting and arithmetic.",
+    "paragraphs": [
+      "Teaching Textbooks provides a structured independent-study course with lectures, immediate grading and a step-by-step video solution for every problem. Its eBook can be printed, and its course apps run from Math 3 through Pre-Calculus. Families seeking a narrated teaching sequence and an automatically maintained gradebook have concrete reasons to consider it.",
+      "AMP is useful when choosing the next work matters more than moving through a fixed set of lessons. A learner may handle today’s equation but need a return to fractions or negative numbers; AMP uses responses to guide a continuing mix across those areas. The learner can open a concise lesson when needed and inspect the reasoning behind the current answer. Printable workbooks preserve paper practice, while the curriculum begins early enough to serve younger siblings as well. Compare which routine makes daily work easier for your family to start and sustain."
+    ],
+    "questions": [
+      {
+        "question": "Does Teaching Textbooks include worked solutions and print?",
+        "answer": "Yes. It provides step-by-step video solutions and an eBook whose pages parents can print."
+      },
+      {
+        "question": "What is the main AMP difference to try?",
+        "answer": "The continuing adaptive mix: answers guide the next problems, including review and prerequisite work, with lessons available in the moment."
+      }
+    ]
+  },
+  {
+    "slug": "mr-d-math",
+    "name": "Mr. D Math",
+    "category": "Live and self-paced homeschool courses",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "Mr. D Math: FAQ",
+        "url": "https://mrdmath.com/FAQ"
+      },
+      {
+        "title": "Mr. D Math: Courses and Services",
+        "url": "https://mrdmath.com/courses-and-services"
+      }
+    ],
+    "summary": "Compare a course with instructor access against an adaptive practice routine you can run at any point in the day.",
+    "approach": "Mr. D Math offers weekly live teaching or self-paced video courses, with extra help sessions. AMP provides problem-linked instruction within adaptive practice.",
+    "practice": "Mr. D Math follows course assignments and supports questions with instructors. AMP selects the next mix of practice from responses.",
+    "print": "AMP supplies printable lessons, workbooks and worked solutions for written practice.",
+    "range": "Mr. D Math’s published sequence runs from Preparing for Pre-Algebra through Pre-Calculus with Trigonometry. AMP starts at counting.",
+    "scenario": "You want a math curriculum that fits irregular family schedules and can respond to gaps without waiting for the next class meeting.",
+    "ampAngle": "Choose AMP for flexible daily practice, broad prerequisites and explanations available at the current problem.",
+    "paragraphs": [
+      "Mr. D Math offers a clear choice between weekly live courses and self-paced video instruction. Both formats include access to extra help sessions, and students can contact instructors with questions. The published sequence leads from preparation for pre-algebra through precalculus with trigonometry. An actual teaching relationship is a meaningful part of this option.",
+      "AMP is a useful choice when the priority is an adaptable daily mathematics routine. A child can practice during a short opening in the day, use a hint or worked solution immediately, and continue with work selected from their answers. Earlier foundations are available within the same counting-to-precalculus curriculum, which matters when an algebra difficulty turns out to involve fractions. Printable lessons and workbooks give the parent a concrete way to sit down and examine that issue. Choose AMP for that flexible practice-and-explanation workflow; choose instructor-led sessions deliberately when direct conversation is the support you need."
+    ],
+    "questions": [
+      {
+        "question": "Does the self-paced Mr. D Math option include human help?",
+        "answer": "Yes. Its FAQ describes extra help sessions and ways to contact instructors for students in its math courses."
+      },
+      {
+        "question": "When does AMP suit a family’s schedule?",
+        "answer": "When practice needs to begin whenever time is available, with explanations at the current problem and an adaptive mixture selected from the learner’s responses."
+      }
+    ]
+  },
+  {
+    "slug": "math-u-see",
+    "name": "Math-U-See",
+    "category": "Mastery-based manipulative curriculum",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "Math-U-See: Products",
+        "url": "https://mathusee.com/products/"
+      },
+      {
+        "title": "Math-U-See: Digital Tools",
+        "url": "https://mathusee.com/digital-tools/"
+      }
+    ],
+    "summary": "Compare mastery organized into focused levels with a continuously selected mixture of mathematical work.",
+    "approach": "Math-U-See uses videos and physical or virtual manipulatives, with placement by mastery. AMP combines mathematical models, explanations and adaptive practice.",
+    "practice": "Math-U-See levels focus on particular skills while reviewing earlier topics. AMP chooses a mixed sequence from performance across mathematical areas.",
+    "print": "Math-U-See offers instructor resources and a worksheet generator. AMP includes printable lessons, workbooks and worked solutions.",
+    "range": "Math-U-See: kindergarten through calculus. AMP: counting to precalculus.",
+    "scenario": "Your child understands an idea with blocks, and you want regular independent practice to show when they can use it in a different setting.",
+    "ampAngle": "Choose AMP to handle the daily mixture and revisit concepts while keeping visual explanations and paper work available.",
+    "paragraphs": [
+      "Math-U-See develops concepts using a distinctive set of manipulatives, supported by video instruction and focused mastery levels. Its placement is based on what the learner knows, rather than a grade label. Earlier concepts return for review within later levels.",
+      "AMP is useful when you want the program to manage the mixture of practice after an idea has been introduced. A child might build equivalent fractions successfully with a model but hesitate when the same relationship appears in a numerical problem. AMP can revisit related skills among other work, with the lesson and solution available to connect the representations. Printable workbooks let you inspect the written reasoning together. Choose AMP for that ongoing selection of practice across topics, while retaining a visual and paper-supported approach to understanding."
+    ],
+    "questions": [
+      {
+        "question": "Does Math-U-See review earlier learning?",
+        "answer": "Yes. Its product description says each level reviews and integrates concepts from previous levels."
+      },
+      {
+        "question": "Can AMP suit a child who benefits from models?",
+        "answer": "Yes. Its mathematical figures and worked explanations connect quantities to operations, while adaptive practice and printable work provide repeated opportunities to use the ideas."
+      }
+    ]
+  },
+  {
+    "slug": "saxon",
+    "name": "Saxon Math",
+    "category": "Incremental textbook curriculum",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "HMH: Saxon Homeschool Scope and Sequence",
+        "url": "https://www.hmhco.com/~/media/sites/home/education/global/pdf/scope-and-sequence/mathematics/k-12/saxon-math-homeschool/shs_ssintroduction.pdf"
+      },
+      {
+        "title": "HMH: Mathematics Programs",
+        "url": "https://www.hmhco.com/classroom-solutions/math"
+      }
+    ],
+    "summary": "Both value cumulative review. Compare a published incremental sequence with review selected from the individual learner’s answers.",
+    "approach": "Saxon develops ideas in small increments across lessons and revisits them throughout the year. AMP uses adaptive mixed practice with concise lesson support.",
+    "practice": "Saxon provides cumulative daily practice. AMP selects the mix and timing of work using the learner’s responses.",
+    "print": "Saxon uses textbook-based materials. AMP combines online practice with printable lessons and workbooks.",
+    "range": "Saxon: K–12 program family. AMP: counting to precalculus.",
+    "scenario": "You like cumulative review but want the balance of familiar and difficult work to respond to your particular child.",
+    "ampAngle": "Choose AMP for individualized selection of review and new work without giving up paper practice.",
+    "paragraphs": [
+      "Saxon’s defining structure is incremental development with continual review. A mathematical idea is introduced in smaller steps and practiced alongside earlier material. That is a meaningful overlap with AMP’s interest in keeping knowledge active over time. A family that likes a stable, published sequence may prefer the predictability of the textbook routine.",
+      "AMP’s advantage for the right learner is that the daily mixture responds to answers. If place value is secure but fraction comparisons are not, the next stretch of practice can reflect that difference instead of asking the parent to adjust a printed assignment manually. Hints, lessons and worked explanations make it easier to examine a missed problem. Printable workbooks keep written calculation in the routine. Choose AMP when you want cumulative practice tailored to the learner’s changing needs rather than managing those adjustments yourself."
+    ],
+    "questions": [
+      {
+        "question": "Does Saxon use mixed review?",
+        "answer": "Yes. Its published approach emphasizes incremental development and cumulative daily practice. Mixed review is not exclusive to AMP."
+      },
+      {
+        "question": "What does AMP change about review?",
+        "answer": "AMP selects work from the learner’s responses, including review and prerequisite practice, while keeping explanations and printable materials available."
+      }
+    ]
+  },
+  {
+    "slug": "singapore-math",
+    "name": "Singapore Math",
+    "category": "Concrete-to-symbolic textbook curriculum",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "Singapore Math Inc.: Homeschool FAQ",
+        "url": "https://www.singaporemath.com/pages/faq"
+      },
+      {
+        "title": "Singapore Math Inc.: School FAQ",
+        "url": "https://www.singaporemath.com/pages/school-faq"
+      }
+    ],
+    "summary": "Compare a carefully sequenced textbook approach with adaptive practice that also connects pictures to mathematical operations.",
+    "approach": "Singapore Math Inc.’s Dimensions Math and Primary Mathematics use concrete, pictorial and abstract representations, including number bonds and bar models. AMP uses visual models with explicit problem explanations.",
+    "practice": "Dimensions Math pairs instructional textbooks with independent-practice workbooks. AMP selects mixed work and review from the learner’s answers.",
+    "print": "Singapore Math’s textbooks and workbooks are central materials. AMP provides printable lessons, workbooks and worked solutions alongside adaptive online practice.",
+    "range": "Dimensions Math spans pre-K–grade 8; other Singapore Math Inc. series have their own scope. AMP covers counting to precalculus.",
+    "scenario": "You value visual reasoning but want the program to handle ongoing practice choices across topics after a lesson.",
+    "ampAngle": "Choose AMP for visual explanation plus automatic selection of mixed practice and a continuous path through precalculus.",
+    "paragraphs": [
+      "“Singapore math” names an approach as well as a family of published programs. This comparison focuses on Singapore Math Inc.’s Dimensions Math and Primary Mathematics. The publisher emphasizes moving among concrete objects, pictures and mathematical symbols, with number bonds and bar models supporting reasoning. Dimensions Math uses textbooks and workbooks together to develop and practice those ideas.",
+      "AMP fits a family that wants mathematical pictures to remain connected to an adaptive daily routine. A bar model should explain the relationship in a word problem; the worked solution should show how that relationship becomes a calculation. AMP brings those explanations into the active problem and uses responses to select what follows, including earlier prerequisites and review. Printable work lets a parent explore the reasoning on paper without separately planning every practice set. Choose AMP when that combination of visual explanation and daily selection is what you need, especially for continuity into later secondary mathematics."
+    ],
+    "questions": [
+      {
+        "question": "Which Singapore Math product is being compared?",
+        "answer": "Singapore Math Inc.’s Dimensions Math and Primary Mathematics. Other publishers and courses using a Singapore approach may have different features and scope."
+      },
+      {
+        "question": "Is a visual approach a reason to choose AMP?",
+        "answer": "Yes, when paired with its adaptive routine: figures explain the actual quantities and operations, while lessons, solutions and printable work support the learner’s next steps."
+      }
+    ]
+  },
+  {
+    "slug": "math-mammoth",
+    "name": "Math Mammoth",
+    "category": "Self-contained math worktexts",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "Math Mammoth: Choosing Materials",
+        "url": "https://www.mathmammoth.com/books"
+      },
+      {
+        "title": "Math Mammoth: Light Blue FAQ",
+        "url": "https://www.mathmammoth.com/faq-lightblue"
+      }
+    ],
+    "summary": "Compare explanations and practice together on the page with a connected digital-and-paper curriculum that selects practice adaptively.",
+    "approach": "Math Mammoth worktexts combine instruction and exercises. AMP links concise lessons and worked explanations to the active problem.",
+    "practice": "Math Mammoth includes tests, cumulative reviews and a worksheet maker. AMP chooses the next mixture of practice using responses.",
+    "print": "Math Mammoth is designed around printable or printed worktexts. AMP includes printable lessons and workbooks alongside online practice.",
+    "range": "Math Mammoth Light Blue: K–8. AMP: counting to precalculus.",
+    "scenario": "You like an explanation beside the written work, but deciding which pages to revisit and checking daily practice take significant parent attention.",
+    "ampAngle": "Choose AMP to keep a paper option while the online practice handles selection and immediate feedback.",
+    "paragraphs": [
+      "Math Mammoth’s Light Blue series is a K–8 curriculum built from worktexts: the instruction and problems appear together rather than in separate student and teacher books. It includes cumulative reviews, tests, answer keys and a worksheet maker. The Blue series reorganizes material by topic, which can be useful when a family already knows the gap it wants to address.",
+      "AMP is a useful alternative when you want to preserve clear explanations and written practice while reducing daily selection work. The learner’s answers inform the next mixture of problems, with feedback and a worked solution available during the session. A parent can then use printable lessons or a workbook for a focused paper activity instead of choosing the whole review sequence manually. The curriculum continues through precalculus, making AMP a strong candidate when the family is also planning beyond middle-school mathematics."
+    ],
+    "questions": [
+      {
+        "question": "Does Math Mammoth already include review?",
+        "answer": "Yes. Its full-curriculum materials include cumulative reviews, tests, answer keys and additional worksheet generation."
+      },
+      {
+        "question": "Why choose AMP if we prefer paper?",
+        "answer": "You can use AMP’s adaptive online practice to guide the routine and keep printed lessons and workbooks for sustained written work and discussion."
+      }
+    ]
+  },
+  {
+    "slug": "rightstart",
+    "name": "RightStart Mathematics",
+    "category": "Abacus and game-based curriculum",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "RightStart Mathematics",
+        "url": "https://rightstartmath.com/"
+      },
+      {
+        "title": "RightStart: Tutoring and Games",
+        "url": "https://rightstartmath.com/our-curriculum/our-products/tutoring-and-games/"
+      },
+      {
+        "title": "RightStart: Sample Lessons",
+        "url": "https://rightstartmath.com/sample-lessons/"
+      }
+    ],
+    "summary": "Compare a hands-on abacus-and-games routine with adaptive practice that a learner can begin independently.",
+    "approach": "RightStart emphasizes visualizing quantities with the Cotter Abacus and learning through strategies and card games. AMP uses mathematical figures with concise explanations and practice.",
+    "practice": "RightStart uses its lesson sequence and games to develop and review skills. AMP selects a mixture of problems from the learner’s responses.",
+    "print": "RightStart has lesson manuals, worksheets and game materials. AMP has printable lessons, workbooks and worked solutions.",
+    "range": "RightStart’s own curriculum covers elementary and middle school. AMP covers counting to precalculus.",
+    "scenario": "Hands-on math works well together, but you also need a daily independent practice routine while you teach a sibling.",
+    "ampAngle": "Choose AMP when the learner needs a clear next task with immediate mathematical help, while preserving paper work together.",
+    "paragraphs": [
+      "RightStart organizes elementary and middle-school mathematics around visualizing quantities, the Cotter Abacus and carefully chosen strategies. Card games provide practice and review in a social setting. For a family that enjoys learning mathematics together through objects and games, these are meaningful parts of the curriculum, not incidental extras.",
+      "AMP offers a useful center for the days when a child needs to begin work while a parent is occupied with another learner. The next mathematical task is selected for them; a hint, lesson and worked solution provide immediate support. A visual explanation can show why an operation works, and printed workbooks give the family material to discuss together later. Choose AMP when you want practice selection and feedback handled in the independent portion of the day, with a curriculum that continues from early quantities through precalculus."
+    ],
+    "questions": [
+      {
+        "question": "What makes RightStart distinctive?",
+        "answer": "Its use of the Cotter Abacus, visualization strategies and card games as central parts of elementary and middle-school mathematics."
+      },
+      {
+        "question": "When is AMP particularly useful alongside a busy household?",
+        "answer": "When a learner needs to start appropriate practice independently, get help at the current problem and return to written work with a parent later."
+      }
+    ]
+  },
+  {
+    "slug": "beast-academy",
+    "name": "Beast Academy",
+    "category": "Challenging elementary problem solving",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "Beast Academy: Curriculum Questions",
+        "url": "https://help.beastacademy.com/a/1799483-frequently-asked-curriculum-questions"
+      },
+      {
+        "title": "Beast Academy: Books FAQ",
+        "url": "https://beastacademy.com/faq/books"
+      },
+      {
+        "title": "Beast Academy: Online FAQ",
+        "url": "https://beastacademy.com/faq/online"
+      }
+    ],
+    "summary": "Compare a challenging comic-and-puzzle curriculum with an adaptive routine that balances new work, prerequisites and review.",
+    "approach": "Beast Academy teaches through comic-style guides, challenging problems and puzzles. AMP places the current mathematical problem beside a concise lesson and worked explanation.",
+    "practice": "Beast Academy offers self-paced books and online learning. AMP selects mixed practice from performance across mathematical areas.",
+    "print": "Beast Academy has printed guide and practice books. AMP includes printable lessons, workbooks and worked solutions.",
+    "range": "Beast Academy: ages 6–13. AMP: counting to precalculus.",
+    "scenario": "Your child enjoys hard puzzles but has uneven foundations, and you want daily work to expose and revisit those gaps.",
+    "ampAngle": "Choose AMP for a consistent practice base that adapts across strengths and gaps and continues into secondary math.",
+    "paragraphs": [
+      "Beast Academy is a full elementary curriculum from Art of Problem Solving, with comic-style guides and challenging problems in printed and online formats. Its emphasis on reasoning and puzzles gives mathematically curious children material worth lingering over. Although designed with accelerated learners in mind, the publisher describes use by children with a range of abilities.",
+      "AMP is useful when the child’s mathematical profile is uneven: inventive problem solving in one area may coexist with uncertain fraction arithmetic or forgotten measurement facts. Its daily mixed practice can keep established skills active while returning to prerequisites, and an explanation is available at the problem that exposes the difficulty. Printable work makes the reasoning easier to discuss together. Choose AMP when you want that reliable adaptive base from counting through precalculus; a child can still enjoy demanding puzzles as a separate part of mathematical life."
+    ],
+    "questions": [
+      {
+        "question": "Is Beast Academy only a supplement?",
+        "answer": "No. It is a full curriculum that can also be used as a supplement, with both books and online options."
+      },
+      {
+        "question": "What is the AMP case for a strong learner?",
+        "answer": "Adaptive mixed practice can keep foundations active while the learner moves ahead, with clear explanations when an unexpected gap appears and a curriculum through precalculus."
+      }
+    ]
+  },
+  {
+    "slug": "aops",
+    "name": "Art of Problem Solving",
+    "category": "Advanced problem-solving courses",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "AoPS: Online School FAQ",
+        "url": "https://artofproblemsolving.com/school/how-school-works/faqs"
+      },
+      {
+        "title": "AoPS: Course Catalog",
+        "url": "https://artofproblemsolving.com/school/catalog"
+      },
+      {
+        "title": "AoPS: Online and Print Books",
+        "url": "https://artofproblemsolving.com/store/online"
+      }
+    ],
+    "summary": "Compare an advanced problem-solving school and textbook pathway with adaptive practice for a learner’s everyday school-math foundations.",
+    "approach": "AoPS offers substantial problem-solving textbooks, live classes, selected self-paced courses and contest preparation. AMP focuses on adaptive mixed practice with problem-linked instruction.",
+    "practice": "AoPS subject courses include readings and problem assignments. AMP selects continuing practice and review from the learner’s answers.",
+    "print": "AoPS offers printed and online textbooks. AMP includes printable lessons, workbooks and worked solutions.",
+    "range": "AoPS school mathematics spans middle and high school, including calculus and contest courses. AMP covers counting to precalculus.",
+    "scenario": "A learner likes difficult mathematics but needs a steadier daily routine for algebra, fractions and prerequisite fluency.",
+    "ampAngle": "Choose AMP to establish an adaptive foundation and review routine without organizing the day around a class or contest course.",
+    "paragraphs": [
+      "Art of Problem Solving offers a demanding mathematical pathway through textbooks, live online classes and selected self-paced courses. Its catalog includes algebra, geometry, counting, number theory, calculus and competition preparation. The main attraction is sustained engagement with challenging mathematics, including subjects that reach beyond a conventional school sequence.",
+      "AMP is useful when the immediate need is dependable daily work at the learner’s actual level. Before a demanding algebra course feels productive, a child may need fractions, negative numbers and equation reasoning to become more secure. AMP can mix those foundations with forward work and revisit them as responses reveal the need. Concise lessons and printable workbooks support explanation and written calculation. Choose AMP when building or maintaining that base is the priority; choose a specific AoPS course when its advanced subject or competition goal is the task you intend to pursue."
+    ],
+    "questions": [
+      {
+        "question": "Is AoPS available only through live classes?",
+        "answer": "No. AoPS also offers textbooks and selected self-paced courses. Its school FAQ identifies which courses have that format."
+      },
+      {
+        "question": "Why choose AMP for a learner interested in advanced math?",
+        "answer": "To maintain a regular, adaptive practice base, repair prerequisites and keep school-math skills active before or alongside deeper subject study."
+      }
+    ]
+  },
+  {
+    "slug": "good-and-beautiful-math",
+    "name": "The Good and the Beautiful Math",
+    "category": "Spiral homeschool course books",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "The Good and the Beautiful: Free Math Curriculum",
+        "url": "https://www.goodandbeautiful.com/pages/free-homeschool-math-curriculum"
+      },
+      {
+        "title": "Simply Good and Beautiful Math: FAQs",
+        "url": "https://www.goodandbeautiful.com/pages/simply-good-and-beautiful-math-faqs"
+      }
+    ],
+    "summary": "Compare a spiral course-book routine with an adaptive daily mixture that responds to each learner.",
+    "approach": "Simply Good and Beautiful Math combines course books, hands-on early learning and later video lessons. AMP connects mathematical problems to concise lessons and solutions.",
+    "practice": "The Good and the Beautiful uses spiral review through its sequence. AMP selects new work and review from the learner’s responses.",
+    "print": "The Good and the Beautiful offers free K–8 curriculum PDFs and physical course sets. AMP includes printable lessons and workbooks alongside online practice.",
+    "range": "The Good and the Beautiful offers K–8 math courses. AMP covers counting to precalculus.",
+    "scenario": "You want to retain written math work but would prefer the program to select review and respond immediately to practice answers.",
+    "ampAngle": "Choose AMP for individualized daily selection and feedback while keeping printed mathematics in the routine.",
+    "paragraphs": [
+      "Simply Good and Beautiful Math uses a spiral sequence, returning to concepts throughout the curriculum. Its publisher offers free K–8 PDF materials as well as physical course sets, with hands-on materials in early grades and video instruction in later grades. AMP adds a responsive practice path and workbooks generated from the learner’s individual levels.",
+      "AMP is useful for the parent who wants less work deciding which page or topic should come next. The learner’s answers inform a mixture of new problems, prerequisite practice and review; hints and explanations are available in the same session. A family can still print a lesson or workbook and write mathematics by hand. This makes AMP a strong choice when children progress differently across topics, or when the family wants one adaptive routine that will continue into algebra and precalculus."
+    ],
+    "questions": [
+      {
+        "question": "Does The Good and the Beautiful include review and printable courses?",
+        "answer": "Yes. It describes a spiral approach and offers free K–8 curriculum PDFs, with physical materials also available."
+      },
+      {
+        "question": "What would make AMP worth choosing?",
+        "answer": "Having practice selection and immediate feedback organized around the learner’s responses, while retaining printed lessons and workbooks and a curriculum through precalculus."
+      }
+    ]
+  },
+  {
+    "slug": "time4learning",
+    "name": "Time4Learning",
+    "category": "Multi-subject homeschool curriculum",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "Time4Learning: FAQ",
+        "url": "https://www.time4learning.com/pages/faq"
+      },
+      {
+        "title": "Time4Learning: Fifth Grade Curriculum",
+        "url": "https://www.time4learning.com/products/fifth-grade-curriculum"
+      }
+    ],
+    "summary": "Compare a multi-subject homeschool platform with a dedicated mathematics curriculum organized around adaptive practice.",
+    "approach": "Time4Learning combines courses across school subjects with planning and reporting tools. AMP focuses its instruction, practice and printable materials on mathematics.",
+    "practice": "Time4Learning automatically grades online work and allows course-level changes. AMP uses math responses to choose continuing mixed practice and review.",
+    "print": "Time4Learning has printable worksheets and parent answer keys. AMP provides printable math lessons, workbooks and worked solutions.",
+    "range": "Time4Learning offers preschool through high-school curricula. AMP’s mathematics runs from counting to precalculus.",
+    "scenario": "You have a plan for reading, science and history, but mathematics needs a more individualized daily routine.",
+    "ampAngle": "Choose AMP when mathematics is the subject you want to personalize independently of the rest of the homeschool day.",
+    "paragraphs": [
+      "Time4Learning is a multi-subject homeschool curriculum with online lessons, automated grading, reports and an activity planner. Families can adjust subject levels, and printable materials support some work away from the screen. If the main purchasing goal is organizing several school subjects through one platform, those capabilities are central to the decision.",
+      "AMP makes a stronger case when mathematics needs its own pace and pattern. A child can read at one grade level while needing earlier fraction work or more advanced geometry; the math routine can respond without reorganizing the rest of the day. AMP selects a continuing mixture of problems and brings the supporting lesson or solution into that session. Printable workbooks provide a focused written activity afterward. Choose AMP when a dedicated adaptive mathematics curriculum fits the plan you already have for the other subjects."
+    ],
+    "questions": [
+      {
+        "question": "Does Time4Learning allow different subject levels?",
+        "answer": "Yes. Its FAQ describes access to multiple grade and course levels, with changes available through the parent’s curriculum management."
+      },
+      {
+        "question": "Why choose a separate math curriculum?",
+        "answer": "It lets mathematics follow the learner’s demonstrated needs while you keep the reading, science and other materials that already work for your family."
+      }
+    ]
+  },
+  {
+    "slug": "power-homeschool",
+    "name": "Acellus / Power Homeschool",
+    "category": "Self-paced multi-subject courses",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "Power Homeschool: FAQ",
+        "url": "https://www.powerhomeschool.org/support/faq/"
+      },
+      {
+        "title": "Power Homeschool: Middle-School Curriculum",
+        "url": "https://www.powerhomeschool.org/middle-school/"
+      }
+    ],
+    "summary": "Compare Acellus courses delivered through Power Homeschool with a dedicated adaptive mathematics routine.",
+    "approach": "Power Homeschool provides Acellus video courses across subjects, with practice, reviews and progress tracking. AMP focuses on math problems with instruction available when needed.",
+    "practice": "Acellus uses diagnostics and targeted instruction within courseware. AMP uses answers to select continuing mixed math practice, review and prerequisites.",
+    "print": "AMP includes printable math lessons, workbooks and worked solutions.",
+    "range": "Power Homeschool offers pre-K–12 courses across subjects. AMP mathematics covers counting to precalculus.",
+    "scenario": "A learner can follow a video lesson, but the family wants daily math work that starts by finding what the child can do independently.",
+    "ampAngle": "Choose AMP for problem-first mathematics with adaptive review and a complete paper companion.",
+    "paragraphs": [
+      "Power Homeschool supplies Acellus courses for families managing their own homeschool. Its courses use video lessons, practice and assessment, with diagnostics and targeted instruction helping adjust the courseware. It is distinct from Acellus Academy, the separate online-school option. That distinction matters when comparing what the family is buying: a curriculum service and an enrolled school are different arrangements.",
+      "AMP is useful when you want the mathematics session to begin with doing a problem. The learner’s response informs what comes next, and an explanation is available at the point where it is needed. This can help a parent distinguish following a demonstration from independently applying the idea, then revisit the relevant prerequisites through mixed practice. Printed lessons and workbooks make it possible to examine the calculation together afterward. Choose AMP when mathematics needs a dedicated, adaptive routine within the family’s wider education plan."
+    ],
+    "questions": [
+      {
+        "question": "Is Power Homeschool the same as Acellus Academy?",
+        "answer": "No. Power Homeschool describes itself as Acellus courses for independent homeschooling and points families seeking its separate accredited online-school option to Acellus Academy."
+      },
+      {
+        "question": "Is Acellus courseware adaptive?",
+        "answer": "Power Homeschool describes diagnostics and targeted instruction that adjust courseware. AMP’s distinct case is its problem-first mixed-practice workflow and connected printable math curriculum."
+      }
+    ]
+  },
+  {
+    "slug": "study-com",
+    "name": "Study.com",
+    "category": "Video-based homeschool courses",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "Study.com: Homeschool Programs",
+        "url": "https://study.com/homeschool/index.html"
+      },
+      {
+        "title": "Study.com: Homeschool FAQ",
+        "url": "https://study.com/homeschool/faq.html"
+      },
+      {
+        "title": "Study.com: Homeschool Hours and Learning Tools",
+        "url": "https://study.com/support/solutions/articles/11000114134-homeschool-hours"
+      }
+    ],
+    "summary": "Compare a broad library of video courses and quizzes with an adaptive math routine that starts at the problem.",
+    "approach": "Study.com offers self-paced video lessons with transcripts, quizzes and other course resources. AMP provides concise mathematical instruction within adaptive practice.",
+    "practice": "Study.com organizes work through lessons and course assessments. AMP selects a continuing mixture of math problems based on responses.",
+    "print": "Study.com provides printable transcripts and other learning resources. AMP includes printable mathematical lessons, workbooks and worked solutions.",
+    "range": "Study.com’s homeschool offering is organized for grades 3–12. AMP mathematics begins at counting and continues through precalculus.",
+    "scenario": "Your learner has access to plenty of explanations but needs more systematic practice applying ideas and revisiting older skills.",
+    "ampAngle": "Choose AMP when the central need is deciding what mathematics to do next, with explanations and paper practice connected to that work.",
+    "paragraphs": [
+      "Study.com offers self-paced homeschool courses built around short videos, quizzes and supporting materials. Printable transcripts and note-taking tools help a learner study the explanation, and the homeschool program spans grades 3–12 across multiple subjects. This format is relevant when a family wants organized course instruction and a way to check understanding after each lesson.",
+      "AMP is useful when the family’s main challenge is turning understanding into independent mathematical performance over time. A child may recognize each step in a video yet need more practice choosing a method without the demonstration in front of them. AMP begins with that attempt, brings in a hint or lesson as needed, and uses responses to organize later work and review. Printable workbooks give the same routine a written component. Choose AMP when you want adaptive mathematics practice to structure the day, with explanations supporting the work as it happens."
+    ],
+    "questions": [
+      {
+        "question": "Does Study.com offer printable learning resources?",
+        "answer": "Yes. Its homeschool support describes printable lesson transcripts and other study tools. AMP’s paper offering centers on math lessons, workbooks and worked solutions."
+      },
+      {
+        "question": "What should I compare in a trial?",
+        "answer": "Have the learner attempt a topic independently, inspect the help after an error, and see how the product directs the next practice. AMP is designed around that continuing problem-and-feedback loop."
+      }
+    ]
+  },
+  {
+    "slug": "kumon",
+    "name": "Kumon Math",
+    "category": "Instructor-planned daily practice",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "Kumon US: Math Program",
+        "url": "https://www.kumon.com/math-program"
+      },
+      {
+        "title": "Kumon: Parent Guide",
+        "url": "https://www.kumon.com/assets/pa-en/pdfs/KUMON_PARENTS_GUIDE.pdf"
+      },
+      {
+        "title": "Kumon: Virtual Classes",
+        "url": "https://www.kumon.com/virtual-classes"
+      }
+    ],
+    "summary": "Compare an instructor-planned practice commitment with an adaptive math routine your family can run at home.",
+    "approach": "Kumon places each learner and develops skills through an instructor-planned sequence of practice. AMP connects adaptive problems with visual lessons and worked explanations.",
+    "practice": "Kumon combines daily practice with scheduled instructor-observed classes, in person or online at participating centers.",
+    "print": "Worksheets are central to Kumon’s published method. AMP includes printable lessons, workbooks and solutions alongside online work.",
+    "range": "Kumon: counting through calculus. AMP: counting to precalculus.",
+    "scenario": "You want regular practice and progress beyond grade labels, with sessions that fit into the day without scheduled appointments.",
+    "ampAngle": "Choose AMP for flexible daily scheduling, immediate feedback and explanations directly connected to the practice.",
+    "paragraphs": [
+      "Kumon builds a daily practice habit around individual placement and an instructor-planned progression from counting through calculus. Scheduled classes provide instructor oversight, with virtual attendance available at participating centers. Assignments keep the practice going between classes.",
+      "AMP gives you control over when and where a math session happens. The program selects the next problems, responds to answers and supplies a lesson or worked explanation right beside the work. A parent can print related practice and discuss the reasoning at a convenient time. Choose AMP for an on-demand routine that brings new learning, useful review and visible explanations into the same session."
+    ],
+    "questions": [
+      {
+        "question": "Is Kumon the same assignment for every child?",
+        "answer": "No. Placement and instructor planning personalize the progression, and students work at their own pace."
+      },
+      {
+        "question": "Why choose AMP for an at-home routine?",
+        "answer": "Start adaptive practice whenever the day permits, receive help at the current problem and use personalized paper work. AMP fits the session around your day without an instructor appointment."
+      }
+    ]
+  },
+  {
+    "slug": "mathnasium",
+    "name": "Mathnasium",
+    "category": "Personalized tutoring",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "Mathnasium: How It Works",
+        "url": "https://www.mathnasium.com/math-centers-landing/"
+      }
+    ],
+    "summary": "Compare direct instruction from a person with an adaptive curriculum for everyday independent practice.",
+    "approach": "Mathnasium uses an assessment to plan face-to-face instruction in a center or online. AMP provides problem-linked lessons and worked solutions during practice.",
+    "practice": "Mathnasium instructors guide a customized learning plan and can support schoolwork. AMP selects mixed practice and review from answers.",
+    "print": "AMP includes printable lessons, workbooks and worked solutions for family use.",
+    "range": "Mathnasium plans are based on the learner’s assessment and goals. AMP’s curriculum covers counting to precalculus.",
+    "scenario": "You want a reliable daily math routine with immediate explanation, and recurring tutoring appointments are not the arrangement your family needs.",
+    "ampAngle": "Choose AMP for flexible independent practice with connected explanations and paper materials.",
+    "paragraphs": [
+      "Mathnasium is a tutoring service built around assessment, a customized learning plan and face-to-face instruction. Students can meet instructors in a center or through live online sessions, and the service includes help with schoolwork. A person who can listen to a child’s explanation and respond directly is a meaningful reason to choose tutoring.",
+      "AMP is useful when the main need is consistent work between conversations, or a complete home routine that does not depend on appointments. The learner begins an adaptive sequence, receives feedback and can open a concise lesson or worked solution. A parent can use the printable material to investigate a sticking point together. Choose AMP when daily availability, independent practice and connected paper work are the priorities. It can also give a learner useful practice between tutoring sessions with explanations and fresh questions ready whenever the learner needs them."
+    ],
+    "questions": [
+      {
+        "question": "Does Mathnasium require travel to a center?",
+        "answer": "Not necessarily. Its official overview includes live online sessions as well as in-center instruction."
+      },
+      {
+        "question": "Can AMP be used between tutoring sessions?",
+        "answer": "Yes. Adaptive mixed practice, explanations and printable work can form the daily routine while tutoring is reserved for the conversations and support your learner needs."
+      }
+    ]
+  },
+  {
+    "slug": "russian-school-of-mathematics",
+    "name": "Russian School of Mathematics",
+    "category": "Teacher-led math enrichment",
+    "checkedDate": "2026-11-15",
+    "officialSources": [
+      {
+        "title": "Russian School of Mathematics: Program and FAQ",
+        "url": "https://www.mathschool.com/"
+      }
+    ],
+    "summary": "Compare a teacher-led enrichment class with an adaptive mathematics routine that runs on your family’s schedule.",
+    "approach": "RSM teaches a continuous K–12 curriculum in classes that encourage students to discuss mathematical ideas. AMP focuses on individual adaptive practice with immediate lesson support.",
+    "practice": "RSM places students into appropriately challenging class levels. AMP updates its practice mixture from each learner’s answers.",
+    "print": "AMP includes printable lessons, workbooks and worked solutions for written work at home.",
+    "range": "RSM: K–12 after-school program. AMP: counting to precalculus.",
+    "scenario": "Your family wants thoughtful math beyond the school assignment, but needs an individual routine that does not depend on an enrichment-class timetable.",
+    "ampAngle": "Choose AMP for daily mathematical progress at the learner’s pace, with explanations and paper work available whenever needed.",
+    "paragraphs": [
+      "Russian School of Mathematics offers a K–12 after-school program with multiple levels per grade. Its classes make room for students to explain and debate ideas, using a continuous curriculum inspired by mathematical schools in the former Soviet Union and adapted for the United States. For a learner who values a teacher and a group of mathematical peers, the classroom experience is a central attraction.",
+      "AMP is useful when the family needs an individual daily path instead of a class-based commitment. A learner can move forward in a strong area while returning to prerequisites elsewhere, with the next work chosen from practice responses. Lessons and worked solutions make the reasoning available during the session; printable workbooks let a parent continue the discussion later. Choose AMP for that flexible, ongoing practice routine, particularly when siblings need different levels or the family schedule makes regular enrichment classes difficult."
+    ],
+    "questions": [
+      {
+        "question": "Does RSM place all children in one grade-level class?",
+        "answer": "No. RSM describes multiple levels per grade to place children into an appropriately challenging class."
+      },
+      {
+        "question": "When is AMP the stronger fit?",
+        "answer": "When the priority is an adaptive individual routine available throughout the week, with explanations and printable work rather than a scheduled group-class experience."
+      }
+    ]
+  }
+]

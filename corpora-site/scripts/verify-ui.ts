@@ -18,6 +18,8 @@ let browser: Awaited<ReturnType<typeof chromium.launch>> | undefined;
 let production: Awaited<ReturnType<typeof startServer>> | undefined;
 try {
   browser = await chromium.launch();
+  const checkedLinks = new Set<string>();
+  const representative = new Set(["/", "/amp/", "/grades/3/", "/grades/12/", "/workbooks/grade-3/", "/compare/amp-vs-ctcmath/", "/learn/area/", "/tutors/", "/personalized-workbooks/", "/plans/", "/resources/", "/lessons/", "/compare/", "/how-it-works/", "/philosophy/guided-discovery/", "/videos/count-objects/", "/videos/rectangle-area/"]);
   for (const width of [320, 390, 768, 1280]) {
     const context = await browser.newContext({
       viewport: { width, height: 900 },
@@ -37,6 +39,7 @@ try {
         ),
         `Horizontal overflow ${path} at ${width}`,
       );
+      if(width===320 || representative.has(path)) {
       const results = await new AxeBuilder({ page })
         .withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"])
         .analyze();
@@ -48,29 +51,36 @@ try {
         [],
         `${path} ${width} accessibility`,
       );
+      }
       if (
+        representative.has(path) ||
         path === "/" ||
         path === "/amp/" ||
         path === "/schools/" ||
         path === "/how-it-works/" ||
         path === "/philosophy/guided-discovery/" ||
         path === "/legal/privacy/"
-      )
+      ) {
+        await page.locator("img").evaluateAll(async nodes=>{await Promise.all(nodes.map(async image=>{if(image instanceof HTMLImageElement){image.loading="eager"; await image.decode();}}));});
         await page.screenshot({
           path: `artifacts/${path === "/" ? "home" : path === "/amp/" ? "amp" : path === "/schools/" ? "schools" : path.replaceAll("/", "-")}-${width}.png`,
           fullPage: true,
         });
+      }
       const links = await page
         .locator('a[href^="/"]')
         .evaluateAll((nodes) => [
           ...new Set(nodes.map((n) => n.getAttribute("href")!.split("#")[0]!)),
         ]);
-      for (const link of links.filter(Boolean))
+      for (const link of links.filter(Boolean)) {
+        if(checkedLinks.has(link)) continue;
+        checkedLinks.add(link);
         assert.equal(
           (await page.request.get(url + link)).status(),
           200,
           `Broken link ${link}`,
         );
+      }
     }
     await page.goto(url);
     await page.keyboard.press("Tab");

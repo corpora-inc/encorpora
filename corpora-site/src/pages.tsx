@@ -1,3 +1,6 @@
+import { resources, resourceByPath } from "./resources/catalog.js";
+import { ResourcePage, resourceStructuredData } from "./resources/page.js";
+import { PlansPage, plansMeta } from "./resources/plans-page.js";
 import { articleByPath, libraryRoutes } from "./library/catalog.js";
 import { ArticlePage, articleStructuredData } from "./library/page.js";
 import { StateIdentity, stateNames } from "./state-identity.js";
@@ -33,6 +36,8 @@ export const routes = [
   "/try/",
   "/samples/",
   ...libraryRoutes,
+  ...resources.map(r=>r.path),
+  plansMeta.path,
   ...Object.keys(legalTitles).map((p) => `/legal/${p}/`),
 ];
 export const routesFor = (config: SiteConfig) => [
@@ -74,8 +79,11 @@ const descriptions: Record<string, string> = {
     "Corpora’s accessibility statement for AMP, and how to report a barrier.",
 };
 export const title = (route: string, config?: SiteConfig) => {
+  const resource = resourceByPath.get(route);
   const article = articleByPath.get(route);
   if (article) return `${article.label} · AMP Mathematics`;
+  if (resource) return `${resource.label} · AMP Mathematics`;
+  if (route===plansMeta.path) return `${plansMeta.label} · Corpora`;
   const funding = config && fundingForPath(route, config);
   if (funding) {
     // Search results cut titles at about 60 characters: drop words, not meaning.
@@ -765,15 +773,18 @@ export function Page({
 }) {
   const funding = fundingForPath(route, config);
   const article = articleByPath.get(route);
-  const structuredData = article ? articleStructuredData(article, config) : funding
+  const resource = resourceByPath.get(route);
+  const structuredData = resource ? resourceStructuredData(resource, config) : article ? articleStructuredData(article, config) : funding
     ? fundingStructuredData(funding, config)
     : route === "/"
       ? siteStructuredData(config)
       : undefined;
   const description =
-    article?.description ?? funding?.page?.summary ?? descriptions[route] ?? descriptions["/"]!;
+    resource?.description ?? (route===plansMeta.path?plansMeta.description:undefined) ?? article?.description ?? funding?.page?.summary ?? descriptions[route] ?? descriptions["/"]!;
   let content: ReactNode;
-  if (article) content = <ArticlePage article={article} config={config} />;
+  if (resource) content = <ResourcePage page={resource} config={config}/>;
+  else if (route===plansMeta.path) content = <PlansPage config={config}/>;
+  else if (article) content = <ArticlePage article={article} config={config} />;
   else if (route === "/") content = <Home config={config} />;
   else if (route === "/amp/") content = <Amp config={config} />;
   else if (route === "/esa/") content = <Esa config={config} />;
@@ -923,6 +934,7 @@ export function Page({
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="stylesheet" href="/assets/site.css" />
         <link rel="stylesheet" href="/assets/library.css" />
+        <link rel="stylesheet" href="/assets/resources.css" />
         <link rel="stylesheet" href="/assets/katex.min.css" />
         {fundingForPath(route, config)?.page?.presentation?.invoiceForm && <script src="/assets/invoice.js" defer />}
         {route === "/samples/" && <script src="/assets/print.js" defer />}
@@ -956,7 +968,10 @@ export function Page({
             <details className="site-menu"><summary>Explore</summary><div className="site-menu-links">
               <a href="/how-it-works/">How AMP works</a><a href="/science/">The science</a>
               <a href="/philosophy/spiraling/">Spiraling &amp; mastery</a><a href="/philosophy/guided-discovery/">Guided discovery</a>
-              <a href="/parents/">Parents’ questions</a><a href="/schools/">Schools</a>
+              <a href="/grades/">Math by grade</a><a href="/resources/">Free resources</a>
+              <a href="/workbooks/">Printable workbooks</a><a href="/compare/">Compare programs</a>
+              <a href="/tutors/">For tutors</a><a href="/adult-learners/">For adult learners</a>
+              <a href="/plans/">Plans and access</a><a href="/parents/">Parents’ questions</a><a href="/schools/">Schools</a>
             </div></details>
             <Try config={config} />
           </nav>
@@ -973,6 +988,10 @@ export function Page({
             <a href="/amp/">AMP Mathematics</a>
             <a href="/how-it-works/">How AMP works</a>
             <a href="/science/">Learning science</a>
+            <a href="/grades/">Math by grade</a><a href="/resources/">Free resources</a>
+            <a href="/lessons/">Math lessons</a><a href="/workbooks/">Free workbooks</a>
+            <a href="/personalized-workbooks/">Personalized workbooks</a><a href="/compare/">Compare programs</a>
+            <a href="/tutors/">Tutors</a><a href="/adult-learners/">Adult learners</a><a href="/plans/">Plans and access</a>
             <a href="/esa/">Education funds</a>
             <a href="/parents/">Parents FAQ</a>
             <a href="/schools/">Schools & districts</a>

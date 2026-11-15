@@ -1,4 +1,4 @@
-import { z } from "zod";
+import * as z from "zod/mini";
 
 export const REFERRER_CATEGORIES = [
   "direct",
@@ -9,16 +9,12 @@ export const REFERRER_CATEGORIES = [
   "other",
 ] as const;
 export const DEVICE_CLASSES = ["phone", "tablet", "desktop"] as const;
-const label = z
-  .string()
-  .trim()
-  .toLowerCase()
-  .regex(/^[a-z0-9._~-]{1,64}$/);
+const label = z.string().check(z.trim(), z.toLowerCase(), z.regex(/^[a-z0-9._~-]{1,64}$/));
 export const entryContextSchema = z.strictObject({
-  utmSource: label.optional(),
-  utmMedium: label.optional(),
-  utmCampaign: label.optional(),
-  utmContent: label.optional(),
+  utmSource: z.optional(label),
+  utmMedium: z.optional(label),
+  utmCampaign: z.optional(label),
+  utmContent: z.optional(label),
   referrer: z.enum(REFERRER_CATEGORIES),
   device: z.enum(DEVICE_CLASSES),
 });

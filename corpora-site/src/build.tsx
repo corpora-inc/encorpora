@@ -1,7 +1,8 @@
+import { printFigureCss, publicationCss } from "../../amp/src/content/print-exercise.js";
 import { mkdir, readFile, writeFile, cp, rm } from "node:fs/promises";
 import React, { renderToStaticMarkup } from "./react.js";
 import type { SiteConfig } from "./config.js";
-import { Page, routesFor } from "./pages.js";
+import { Page, routesFor, title } from "./pages.js";
 import { build as bundle } from "esbuild";
 import { product } from "./product.js";
 import { writeIcons } from "./icons.js";
@@ -20,6 +21,7 @@ export async function buildSite(config: SiteConfig, output: string = "dist") {
     tokens + "\n" + (await readFile("src/site.css", "utf8")),
   );
   await cp("src/library.css", `${output}/assets/library.css`);
+  await writeFile(`${output}/assets/resources.css`, printFigureCss()+"\n"+publicationCss.split("}").filter(rule=>rule.trim().startsWith(".print-")).map(rule=>rule+"}").join("\n")+"\n"+await readFile("src/resources.css","utf8"));
   await cp("public", output, { recursive: true });
   await cp(
     "../amp/node_modules/katex/dist/katex.min.css",
@@ -34,7 +36,7 @@ export async function buildSite(config: SiteConfig, output: string = "dist") {
   );
   await writeIcons(output, config);
   await cp("src/invoice-client.js", `${output}/assets/invoice.js`);
-  await bundle({entryPoints:["src/engagement-client.ts"],bundle:true,format:"iife",platform:"browser",target:"es2022",minify:true,outfile:`${output}/assets/engagement.js`});
+  await bundle({entryPoints:["src/engagement-client.ts"],bundle:true,format:"iife",platform:"browser",target:"es2022",minify:true,define:{__AMP_SITE_PAGES__:JSON.stringify(Object.fromEntries(routes.map(route=>[route.replace(/\/$/,"")||"/",title(route,config)])))},outfile:`${output}/assets/engagement.js`});
   await cp("src/campaign-client.js", `${output}/assets/campaign.js`);
   await cp("src/acquisition-client.js", `${output}/assets/acquisition.js`);
   // Every page gets its own share card, named by content hash so a changed

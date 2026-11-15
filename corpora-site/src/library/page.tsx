@@ -1,3 +1,5 @@
+import { resourceByPath } from "../resources/catalog.js";
+import { plansMeta } from "../resources/plans-page.js";
 import React from "../react.js";
 import { Math, Sample } from "../product.js";
 import type { SiteConfig } from "../config.js";
@@ -64,7 +66,7 @@ export function LearningDiagram({ kind }: { kind: NonNullable<Section["diagram"]
 export function ArticlePage({ article, config }: { article: Article; config: SiteConfig }) {
   const heroDiagram = article.sections.find(s => s.diagram)?.diagram ?? "loop";
   return <article className="library-page">
-    <nav className="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/how-it-works/">How AMP works</a><span aria-hidden="true">/</span><span>{article.label}</span></nav>
+    <nav className="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>{article.path.startsWith("/philosophy/")&&<><a href="/how-it-works/">How AMP works</a><span aria-hidden="true">/</span></>}<span>{article.label}</span></nav>
     <header className="article-hero">
       <div><p className="eyebrow">{article.label}</p><h1>{article.title}</h1><p className="article-deck">{article.introduction}</p>
         <div className="actions"><a className="button" href={config.appUrl ?? "/try/"}>Try AMP free <span aria-hidden="true">↗</span></a><a className="text-link" href="#read">Explore the approach <span aria-hidden="true">↓</span></a></div>
@@ -87,7 +89,7 @@ export function ArticlePage({ article, config }: { article: Article; config: Sit
       </div>
     </div>
     <section className="next-reading"><div><p className="eyebrow">Keep exploring</p><h2>See how the ideas connect.</h2></div><div className="reading-links">{article.related.map(path => {
-      const related = articleByPath.get(path);
+      const related = articleByPath.get(path) ?? resourceByPath.get(path) ?? (path===plansMeta.path?plansMeta:undefined);
       return related ? <a href={path} key={path}><span>{related.label}</span><strong>{related.title}</strong><span aria-hidden="true">↗</span></a> : null;
     })}</div></section>
     <section className="library-cta"><div><p className="eyebrow">Put the approach to work</p><h2>Meet your next math problem.</h2><p>Start free with adaptive practice and printable workbooks. No credit card.</p></div><a className="button" href={config.appUrl ?? "/try/"}>Start learning <span aria-hidden="true">↗</span></a></section>

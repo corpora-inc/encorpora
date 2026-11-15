@@ -1,0 +1,761 @@
+{
+  "date": "2026-11-15",
+  "editions": [
+    {
+      "grade": "K",
+      "slug": "kindergarten",
+      "title": "Kindergarten",
+      "minutes": 42.5,
+      "topics": [
+        "Comparing two groups by matching",
+        "Comparing length, weight, and capacity",
+        "Building and drawing closed shapes",
+        "Sorting and counting",
+        "Counting objects to 20",
+        "Numerals through 20",
+        "Subtracting within 10",
+        "Teen numbers as a ten and ones",
+        "Addition and subtraction facts within 5",
+        "Ordering numbers through 10",
+        "Naming shapes",
+        "Making 10",
+        "Composing shapes"
+      ],
+      "areas": [
+        "number",
+        "measurement",
+        "geometry",
+        "data",
+        "operations"
+      ],
+      "problems": 14,
+      "date": "2026-11-15",
+      "files": [
+        {
+          "paper": "letter",
+          "bytes": 425858,
+          "sha256": "e4f1b167a8efaa823e81079bc391710c9406734c14de3ededf8062810aa27f1a",
+          "pages": 9,
+          "studentPages": 7,
+          "answerKeyPages": 2,
+          "url": "/workbooks/2026-11-15/kindergarten/amp-kindergarten-2026-11-15-letter.pdf"
+        },
+        {
+          "paper": "a4",
+          "bytes": 405558,
+          "sha256": "c897a95eee24201008c6842dab555b3c3f0c28902f125c8a03037d26d2a3ed8a",
+          "pages": 8,
+          "studentPages": 6,
+          "answerKeyPages": 2,
+          "url": "/workbooks/2026-11-15/kindergarten/amp-kindergarten-2026-11-15-a4.pdf"
+        }
+      ],
+      "cover": "/workbooks/2026-11-15/kindergarten/cover.webp",
+      "preview": "/workbooks/2026-11-15/kindergarten/practice.webp",
+      "sourceCommit": "70b9a5957b52400dca2da8e7136557c17b07a52a"
+    },
+    {
+      "grade": "1",
+      "slug": "grade-1",
+      "title": "Grade 1",
+      "minutes": 43,
+      "topics": [
+        "Compare two-digit numbers",
+        "Shapes made by putting shapes together",
+        "Measuring length with equal units",
+        "Adding three numbers",
+        "Turnaround addition facts",
+        "Subtracting within 20",
+        "The meaning of the equal sign",
+        "Ten more and ten less",
+        "Reading and writing tens and ones",
+        "Defining attributes of shapes",
+        "Telling time to the half-hour",
+        "Reading a categorical graph"
+      ],
+      "areas": [
+        "number",
+        "geometry",
+        "measurement",
+        "operations",
+        "algebra",
+        "data"
+      ],
+      "problems": 13,
+      "date": "2026-11-15",
+      "files": [
+        {
+          "paper": "letter",
+          "bytes": 510753,
+          "sha256": "24ccef750e74c5ad54d739816bffec0ff2122a586cba062d694cbc4a8b91f6ba",
+          "pages": 9,
+          "studentPages": 7,
+          "answerKeyPages": 2,
+          "url": "/workbooks/2026-11-15/grade-1/amp-grade-1-2026-11-15-letter.pdf"
+        },
+        {
+          "paper": "a4",
+          "bytes": 507228,
+          "sha256": "e172544af9abd56a4636d0c9aa2f725cf6372ceba8830531910da053893dd706",
+          "pages": 9,
+          "studentPages": 7,
+          "answerKeyPages": 2,
+          "url": "/workbooks/2026-11-15/grade-1/amp-grade-1-2026-11-15-a4.pdf"
+        }
+      ],
+      "cover": "/workbooks/2026-11-15/grade-1/cover.webp",
+      "preview": "/workbooks/2026-11-15/grade-1/practice.webp",
+      "sourceCommit": "082c78842b0d3b0d861ed952d5de3b86e8802118",
+      "generatorSha256": "82fcddd676c843b6151140bc8838258a7a9f9a088cbba06eec419c564985a77e"
+    },
+    {
+      "grade": "2",
+      "slug": "grade-2",
+      "title": "Grade 2",
+      "minutes": 45,
+      "topics": [
+        "Coins and bills",
+        "Line plots of lengths",
+        "Halves, thirds, and quarters",
+        "Explaining why a strategy works",
+        "Odd and even numbers",
+        "Hundreds, tens, and ones",
+        "Rectangular arrays",
+        "Skip-counting",
+        "Telling time to five minutes",
+        "Sides, angles, and faces",
+        "Subtracting within 100",
+        "Picture graphs and bar graphs",
+        "Addition and subtraction facts",
+        "Sums and differences on a number line",
+        "Two-step word problems"
+      ],
+      "areas": [
+        "measurement",
+        "data",
+        "fractions",
+        "operations",
+        "number",
+        "geometry",
+        "modeling"
+      ],
+      "problems": 16,
+      "date": "2026-11-15",
+      "files": [
+        {
+          "paper": "letter",
+          "bytes": 1265562,
+          "sha256": "3a797b92a16fc0cb5edf0b3e53ae3bb39a07f3c57def103f89a6456280ccad63",
+          "pages": 11,
+          "studentPages": 8,
+          "answerKeyPages": 3,
+          "url": "/workbooks/2026-11-15/grade-2/amp-grade-2-2026-11-15-letter.pdf"
+        },
+        {
+          "paper": "a4",
+          "bytes": 1265712,
+          "sha256": "0487096719de2710fc0a9bf97fd701a9869e2d4ff2a7fc26d3dec0af85877f48",
+          "pages": 10,
+          "studentPages": 8,
+          "answerKeyPages": 2,
+          "url": "/workbooks/2026-11-15/grade-2/amp-grade-2-2026-11-15-a4.pdf"
+        }
+      ],
+      "cover": "/workbooks/2026-11-15/grade-2/cover.webp",
+      "preview": "/workbooks/2026-11-15/grade-2/practice.webp",
+      "sourceCommit": "082c78842b0d3b0d861ed952d5de3b86e8802118",
+      "generatorSha256": "82fcddd676c843b6151140bc8838258a7a9f9a088cbba06eec419c564985a77e"
+    },
+    {
+      "grade": "3",
+      "slug": "grade-3",
+      "title": "Grade 3",
+      "minutes": 44,
+      "topics": [
+        "Patterns in the operations",
+        "Area of a rectangle",
+        "Mass and liquid volume",
+        "Reading scaled picture and bar graphs",
+        "Multi-operation word problems",
+        "Rounding whole numbers",
+        "Multiplying by a multiple of 10",
+        "Measuring area by counting squares",
+        "Equal multiplication and division equations",
+        "Comparing fractions",
+        "Division as sharing and grouping",
+        "Perimeter of a polygon",
+        "Missing factors and quotients",
+        "Fractions of an area",
+        "One-digit multiplication facts",
+        "Classifying quadrilaterals",
+        "Finding elapsed time",
+        "Line plots with fractional lengths",
+        "Multiplication and division word problems"
+      ],
+      "areas": [
+        "algebra",
+        "geometry",
+        "measurement",
+        "data",
+        "modeling",
+        "number",
+        "operations",
+        "fractions"
+      ],
+      "problems": 20,
+      "date": "2026-11-15",
+      "files": [
+        {
+          "paper": "letter",
+          "bytes": 663309,
+          "sha256": "0a3d7f73a99d4e0fb6ddd71f18313f24e68cc78743ded341a78d9a5ddd9e1f49",
+          "pages": 11,
+          "studentPages": 8,
+          "answerKeyPages": 3,
+          "url": "/workbooks/2026-11-15/grade-3/amp-grade-3-2026-11-15-letter.pdf"
+        },
+        {
+          "paper": "a4",
+          "bytes": 648867,
+          "sha256": "f28b29702417742b47ca6b1327fb537cc29f9cabc528737ab199596b59304d15",
+          "pages": 10,
+          "studentPages": 7,
+          "answerKeyPages": 3,
+          "url": "/workbooks/2026-11-15/grade-3/amp-grade-3-2026-11-15-a4.pdf"
+        }
+      ],
+      "cover": "/workbooks/2026-11-15/grade-3/cover.webp",
+      "preview": "/workbooks/2026-11-15/grade-3/practice.webp",
+      "sourceCommit": "70b9a5957b52400dca2da8e7136557c17b07a52a"
+    },
+    {
+      "grade": "4",
+      "slug": "grade-4",
+      "title": "Grade 4",
+      "minutes": 44,
+      "topics": [
+        "Converting to a smaller unit",
+        "Additive and multiplicative comparison",
+        "Tenths and hundredths as decimals",
+        "Area and perimeter problems",
+        "Adding and subtracting like fractions",
+        "Place value of large whole numbers",
+        "Measuring angles",
+        "Adding and subtracting mixed numbers",
+        "Patterns that follow a rule",
+        "Adding and subtracting from a line plot",
+        "Adding and subtracting whole numbers",
+        "Generating equivalent fractions",
+        "Frequency tables and scaled bar graphs",
+        "Multiplying with partial products",
+        "Multi-step word problems",
+        "Comparing decimals to hundredths",
+        "Parallel lines, perpendicular lines, and symmetry",
+        "Money with decimals"
+      ],
+      "areas": [
+        "measurement",
+        "modeling",
+        "decimals",
+        "geometry",
+        "fractions",
+        "number",
+        "algebra",
+        "data",
+        "operations"
+      ],
+      "problems": 19,
+      "date": "2026-11-15",
+      "files": [
+        {
+          "paper": "letter",
+          "bytes": 779213,
+          "sha256": "d897d5c308d6c1eb755b1790aba5d634e16be71b3086a911800e021166c3f91a",
+          "pages": 12,
+          "studentPages": 9,
+          "answerKeyPages": 3,
+          "url": "/workbooks/2026-11-15/grade-4/amp-grade-4-2026-11-15-letter.pdf"
+        },
+        {
+          "paper": "a4",
+          "bytes": 778959,
+          "sha256": "0c6ba999f8a39c4b7888cbaa011e9131ed78f053b63c780690ede8e59aacfffb",
+          "pages": 11,
+          "studentPages": 8,
+          "answerKeyPages": 3,
+          "url": "/workbooks/2026-11-15/grade-4/amp-grade-4-2026-11-15-a4.pdf"
+        }
+      ],
+      "cover": "/workbooks/2026-11-15/grade-4/cover.webp",
+      "preview": "/workbooks/2026-11-15/grade-4/practice.webp",
+      "sourceCommit": "70b9a5957b52400dca2da8e7136557c17b07a52a"
+    },
+    {
+      "grade": "5",
+      "slug": "grade-5",
+      "title": "Grade 5",
+      "minutes": 44,
+      "topics": [
+        "Fraction operations on a line plot",
+        "Profit, cost, and taxes",
+        "Categories and subcategories of shapes",
+        "Powers of 10 and place value",
+        "Reading a numerical expression",
+        "Decimal place value through thousandths",
+        "Volume of a rectangular prism",
+        "Volume in unit cubes",
+        "Dividing by a two-digit number",
+        "Converting within one measurement system",
+        "A fraction as division",
+        "The standard multiplication algorithm",
+        "Graphing in the first quadrant",
+        "Two patterns on one graph",
+        "The four operations with decimals",
+        "Adding and subtracting unlike fractions"
+      ],
+      "areas": [
+        "data",
+        "modeling",
+        "geometry",
+        "number",
+        "algebra",
+        "decimals",
+        "operations",
+        "measurement",
+        "fractions"
+      ],
+      "problems": 17,
+      "date": "2026-11-15",
+      "files": [
+        {
+          "paper": "letter",
+          "bytes": 607696,
+          "sha256": "54ac4b1ca223ac55b65784c8971a4d01524103c8842340ab7e7e98bf806f5b08",
+          "pages": 12,
+          "studentPages": 9,
+          "answerKeyPages": 3,
+          "url": "/workbooks/2026-11-15/grade-5/amp-grade-5-2026-11-15-letter.pdf"
+        },
+        {
+          "paper": "a4",
+          "bytes": 653078,
+          "sha256": "4428ee1be07e75772a6375191dc555fd83ad09d2c0779ccd3ebbda4f99e77d9b",
+          "pages": 11,
+          "studentPages": 8,
+          "answerKeyPages": 3,
+          "url": "/workbooks/2026-11-15/grade-5/amp-grade-5-2026-11-15-a4.pdf"
+        }
+      ],
+      "cover": "/workbooks/2026-11-15/grade-5/cover.webp",
+      "preview": "/workbooks/2026-11-15/grade-5/practice.webp",
+      "sourceCommit": "70b9a5957b52400dca2da8e7136557c17b07a52a"
+    },
+    {
+      "grade": "6",
+      "slug": "grade-6",
+      "title": "Grade 6",
+      "minutes": 45,
+      "topics": [
+        "Solving one-step equations",
+        "Mean and median",
+        "Expressions with variables",
+        "Coordinates in four quadrants",
+        "Positive and negative numbers",
+        "Fluent decimal arithmetic",
+        "Percent of a number",
+        "Side lengths from coordinates",
+        "Ordering numbers and absolute value",
+        "Dependent and independent variables",
+        "Understanding ratios",
+        "Fluent whole-number division",
+        "Dot plots, histograms, and box plots",
+        "Volume with fractional edge lengths",
+        "Area of triangles and other polygons",
+        "Greatest common factor and least common multiple",
+        "Dividing fractions",
+        "Equivalent ratios"
+      ],
+      "areas": [
+        "algebra",
+        "data",
+        "geometry",
+        "number",
+        "decimals",
+        "ratio",
+        "operations",
+        "fractions"
+      ],
+      "problems": 19,
+      "date": "2026-11-15",
+      "files": [
+        {
+          "paper": "letter",
+          "bytes": 754524,
+          "sha256": "90ec4fad5af146a0b1c038f4a1ab70f7f3caeb82a4fe2d08ca0c4e9d77a91c6e",
+          "pages": 11,
+          "studentPages": 8,
+          "answerKeyPages": 3,
+          "url": "/workbooks/2026-11-15/grade-6/amp-grade-6-2026-11-15-letter.pdf"
+        },
+        {
+          "paper": "a4",
+          "bytes": 771704,
+          "sha256": "570f5ef7ed32c857dfc3c8aa68523622d02a1e62b46650b768a61daaffa2e04a",
+          "pages": 11,
+          "studentPages": 8,
+          "answerKeyPages": 3,
+          "url": "/workbooks/2026-11-15/grade-6/amp-grade-6-2026-11-15-a4.pdf"
+        }
+      ],
+      "cover": "/workbooks/2026-11-15/grade-6/cover.webp",
+      "preview": "/workbooks/2026-11-15/grade-6/practice.webp",
+      "sourceCommit": "082c78842b0d3b0d861ed952d5de3b86e8802118",
+      "generatorSha256": "82fcddd676c843b6151140bc8838258a7a9f9a088cbba06eec419c564985a77e"
+    },
+    {
+      "grade": "7",
+      "slug": "grade-7",
+      "title": "Grade 7",
+      "minutes": 45,
+      "topics": [
+        "Probability of one event",
+        "Percent increase and decrease",
+        "Word problems with signed numbers",
+        "Simplifying complex fractions",
+        "Cross-sections of solids",
+        "Solving inequalities",
+        "Representing a proportional relationship",
+        "Area and volume of composite figures",
+        "Expanding and factoring linear expressions",
+        "Multiplying and dividing signed numbers",
+        "Probability of compound events",
+        "Samples and the populations they represent",
+        "Circumference and area of a circle",
+        "Adding and subtracting signed numbers",
+        "Unit rates with fractions",
+        "Supplementary, vertical, and adjacent angles",
+        "Solving two-step equations",
+        "Income tax, budgets, and net worth"
+      ],
+      "areas": [
+        "probability",
+        "ratio",
+        "modeling",
+        "fractions",
+        "geometry",
+        "algebra",
+        "number",
+        "data"
+      ],
+      "problems": 19,
+      "date": "2026-11-15",
+      "files": [
+        {
+          "paper": "letter",
+          "bytes": 686545,
+          "sha256": "dd977eea6cc91bdbf70fc2ca3657f07e694059751310103b57f1f7c375d96361",
+          "pages": 12,
+          "studentPages": 8,
+          "answerKeyPages": 4,
+          "url": "/workbooks/2026-11-15/grade-7/amp-grade-7-2026-11-15-letter.pdf"
+        },
+        {
+          "paper": "a4",
+          "bytes": 704086,
+          "sha256": "52e0d08fd33365fde3a059fe8c5eb4a29ce363670fc677f57b5d8db6a0bc6d17",
+          "pages": 11,
+          "studentPages": 8,
+          "answerKeyPages": 3,
+          "url": "/workbooks/2026-11-15/grade-7/amp-grade-7-2026-11-15-a4.pdf"
+        }
+      ],
+      "cover": "/workbooks/2026-11-15/grade-7/cover.webp",
+      "preview": "/workbooks/2026-11-15/grade-7/practice.webp",
+      "sourceCommit": "082c78842b0d3b0d861ed952d5de3b86e8802118",
+      "generatorSha256": "82fcddd676c843b6151140bc8838258a7a9f9a088cbba06eec419c564985a77e"
+    },
+    {
+      "grade": "8",
+      "slug": "grade-8",
+      "title": "Grade 8",
+      "minutes": 42.5,
+      "topics": [
+        "Linear equations with variables on both sides",
+        "Comparing functions",
+        "Volume of cylinders, cones, and spheres",
+        "Linear models of a situation",
+        "Scatter plots and trend lines",
+        "Working in scientific notation",
+        "Approximating roots",
+        "Systems of linear equations",
+        "Reading increase and decrease from a graph",
+        "The Pythagorean theorem",
+        "Two-way tables",
+        "Telling rationals from irrationals",
+        "Laws of exponents",
+        "Translations, reflections, and rotations",
+        "Slope of a line",
+        "What makes a relation a function",
+        "Dilations and similarity",
+        "Angle sums and exterior angles"
+      ],
+      "areas": [
+        "algebra",
+        "functions",
+        "geometry",
+        "modeling",
+        "data",
+        "number"
+      ],
+      "problems": 19,
+      "date": "2026-11-15",
+      "files": [
+        {
+          "paper": "letter",
+          "bytes": 1065548,
+          "sha256": "0793be7622cd7173ed4e7160f45e806ee58a0636e886244fc4d3b17bff68c133",
+          "pages": 11,
+          "studentPages": 8,
+          "answerKeyPages": 3,
+          "url": "/workbooks/2026-11-15/grade-8/amp-grade-8-2026-11-15-letter.pdf"
+        },
+        {
+          "paper": "a4",
+          "bytes": 1039981,
+          "sha256": "bdeb63094456b860d3caa5c2b5c5670e2f4943646dcc3a4d32099cbc08dd6e6f",
+          "pages": 11,
+          "studentPages": 8,
+          "answerKeyPages": 3,
+          "url": "/workbooks/2026-11-15/grade-8/amp-grade-8-2026-11-15-a4.pdf"
+        }
+      ],
+      "cover": "/workbooks/2026-11-15/grade-8/cover.webp",
+      "preview": "/workbooks/2026-11-15/grade-8/practice.webp",
+      "sourceCommit": "70b9a5957b52400dca2da8e7136557c17b07a52a"
+    },
+    {
+      "grade": "algebra-1",
+      "slug": "algebra-1",
+      "title": "Algebra 1",
+      "minutes": 44.5,
+      "topics": [
+        "Reading slope and intercept in context",
+        "Graphs of quadratic functions",
+        "Linear equations with letter coefficients",
+        "Completing the square",
+        "Residuals and correlation",
+        "Domain and range",
+        "The quadratic formula",
+        "Why elimination keeps the same solutions",
+        "Linear equations from constraints",
+        "Association in a two-way table",
+        "Building an exponential model",
+        "Adding, subtracting, and multiplying polynomials",
+        "Average rate of change"
+      ],
+      "areas": [
+        "data",
+        "functions",
+        "algebra",
+        "reasoning",
+        "modeling"
+      ],
+      "problems": 14,
+      "date": "2026-11-15",
+      "files": [
+        {
+          "paper": "letter",
+          "bytes": 706116,
+          "sha256": "10bf9e00cbb42a66c91aec109034d5b66389518dcf832b255a61798f589f2a4b",
+          "pages": 10,
+          "studentPages": 7,
+          "answerKeyPages": 3,
+          "url": "/workbooks/2026-11-15/algebra-1/amp-algebra-1-2026-11-15-letter.pdf"
+        },
+        {
+          "paper": "a4",
+          "bytes": 733091,
+          "sha256": "c0942d92fef5b0c80c95281cc4e4f14eff0defe002dd883b861d118944a21046",
+          "pages": 10,
+          "studentPages": 7,
+          "answerKeyPages": 3,
+          "url": "/workbooks/2026-11-15/algebra-1/amp-algebra-1-2026-11-15-a4.pdf"
+        }
+      ],
+      "cover": "/workbooks/2026-11-15/algebra-1/cover.webp",
+      "preview": "/workbooks/2026-11-15/algebra-1/practice.webp",
+      "sourceCommit": "70b9a5957b52400dca2da8e7136557c17b07a52a"
+    },
+    {
+      "grade": "geometry",
+      "slug": "geometry",
+      "title": "Geometry",
+      "minutes": 45,
+      "topics": [
+        "Precise definitions in geometry",
+        "Writing and critiquing a geometric proof",
+        "Perimeter and area from coordinates",
+        "Independence and mutual exclusion",
+        "Sine, cosine, and tangent",
+        "Arc length and sector area",
+        "Modeling with geometry",
+        "Regular polygons inscribed in a circle",
+        "Unions, intersections, and complements",
+        "Sine and cosine of complementary angles",
+        "Constructions with compass and straightedge",
+        "Finding a conditional probability",
+        "Modeling density",
+        "Congruence criteria for triangles",
+        "The addition rule for probability",
+        "Side ratios of special right triangles",
+        "Constructing the image of a figure"
+      ],
+      "areas": [
+        "geometry",
+        "reasoning",
+        "probability",
+        "trigonometry",
+        "modeling"
+      ],
+      "problems": 18,
+      "date": "2026-11-15",
+      "files": [
+        {
+          "paper": "letter",
+          "bytes": 1017245,
+          "sha256": "2839660a72a76660b3a2bf49031b1a5613db8a047130d98763dc7a6f85988aa0",
+          "pages": 12,
+          "studentPages": 9,
+          "answerKeyPages": 3,
+          "url": "/workbooks/2026-11-15/geometry/amp-geometry-2026-11-15-letter.pdf"
+        },
+        {
+          "paper": "a4",
+          "bytes": 1031088,
+          "sha256": "3189e8b483d211d4706f36e4e96edd5d50e744f07bba6f3ae6759536552a0aff",
+          "pages": 11,
+          "studentPages": 8,
+          "answerKeyPages": 3,
+          "url": "/workbooks/2026-11-15/geometry/amp-geometry-2026-11-15-a4.pdf"
+        }
+      ],
+      "cover": "/workbooks/2026-11-15/geometry/cover.webp",
+      "preview": "/workbooks/2026-11-15/geometry/practice.webp",
+      "sourceCommit": "70b9a5957b52400dca2da8e7136557c17b07a52a"
+    },
+    {
+      "grade": "algebra-2",
+      "slug": "algebra-2",
+      "title": "Algebra 2",
+      "minutes": 45,
+      "topics": [
+        "Equations with one square root",
+        "Operations on rational expressions",
+        "Quadratic, rational, and exponential constraints",
+        "Margin of error and what a sample supports",
+        "Radians and the unit circle",
+        "Using expected value to compare choices",
+        "Shifts, stretches, and reflections of graphs",
+        "Dividing polynomials",
+        "Proving a polynomial identity",
+        "Calculating with complex numbers",
+        "Studies, experiments, and samples",
+        "Logarithms as inverses of exponentials",
+        "Zeros and factors of a polynomial",
+        "Rational exponents and radicals",
+        "A margin of error from simulated samples",
+        "Composition of functions",
+        "Approximating a solution from a graph"
+      ],
+      "areas": [
+        "algebra",
+        "modeling",
+        "data",
+        "trigonometry",
+        "probability",
+        "functions",
+        "reasoning",
+        "number"
+      ],
+      "problems": 18,
+      "date": "2026-11-15",
+      "files": [
+        {
+          "paper": "letter",
+          "bytes": 799887,
+          "sha256": "b5b1ae9d2dc2cd4a38210767b863a6a87f8331b1873c4ea59348b6caae73b324",
+          "pages": 11,
+          "studentPages": 8,
+          "answerKeyPages": 3,
+          "url": "/workbooks/2026-11-15/algebra-2/amp-algebra-2-2026-11-15-letter.pdf"
+        },
+        {
+          "paper": "a4",
+          "bytes": 836654,
+          "sha256": "9deb15e308140693512a10228968c162a0b04879f3a97de108fe9aada69838cc",
+          "pages": 11,
+          "studentPages": 8,
+          "answerKeyPages": 3,
+          "url": "/workbooks/2026-11-15/algebra-2/amp-algebra-2-2026-11-15-a4.pdf"
+        }
+      ],
+      "cover": "/workbooks/2026-11-15/algebra-2/cover.webp",
+      "preview": "/workbooks/2026-11-15/algebra-2/practice.webp",
+      "sourceCommit": "70b9a5957b52400dca2da8e7136557c17b07a52a"
+    },
+    {
+      "grade": "precalculus",
+      "slug": "precalculus",
+      "title": "Precalculus",
+      "minutes": 44.5,
+      "topics": [
+        "Permutations and combinations",
+        "The multiplication rule for probability",
+        "Inverse trigonometric functions",
+        "Data arranged in a matrix",
+        "End behavior of a polynomial",
+        "Exact values at special angles",
+        "Area from two sides and the included angle",
+        "Motion described by a parameter",
+        "The binomial theorem",
+        "The complex plane",
+        "A distribution built from frequencies",
+        "Which matrix rules hold"
+      ],
+      "areas": [
+        "probability",
+        "trigonometry",
+        "number",
+        "functions",
+        "modeling",
+        "algebra",
+        "reasoning"
+      ],
+      "problems": 13,
+      "date": "2026-11-15",
+      "files": [
+        {
+          "paper": "letter",
+          "bytes": 834319,
+          "sha256": "d3ecfc0a3017fc18cb41f1adedd9e95ed588a4b8dc86823d7310cfdbeb59347d",
+          "pages": 11,
+          "studentPages": 8,
+          "answerKeyPages": 3,
+          "url": "/workbooks/2026-11-15/precalculus/amp-precalculus-2026-11-15-letter.pdf"
+        },
+        {
+          "paper": "a4",
+          "bytes": 859130,
+          "sha256": "17897202d751d26f963b62bfb9bad7ba7cb6453b2a0a4ff1fe6e1d370c778eda",
+          "pages": 11,
+          "studentPages": 8,
+          "answerKeyPages": 3,
+          "url": "/workbooks/2026-11-15/precalculus/amp-precalculus-2026-11-15-a4.pdf"
+        }
+      ],
+      "cover": "/workbooks/2026-11-15/precalculus/cover.webp",
+      "preview": "/workbooks/2026-11-15/precalculus/practice.webp",
+      "sourceCommit": "70b9a5957b52400dca2da8e7136557c17b07a52a"
+    }
+  ]
+}
