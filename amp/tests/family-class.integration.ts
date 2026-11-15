@@ -614,8 +614,11 @@ test(
         ).rows[0];
         const expire = () =>
           db.query(
-            `UPDATE amp_academic_sessions SET starts_on=current_date-400,ends_on=current_date-1
-         WHERE id=(SELECT session_id FROM amp_classes WHERE id=$1)`,
+            // Over in the family's own zone (classLiveSql), whatever the
+            // hour: the database's UTC date can already be tomorrow there.
+            `UPDATE amp_academic_sessions s SET starts_on=current_date-400,ends_on=(now() AT TIME ZONE o.timezone)::date-1
+         FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
+         WHERE c.id=$1 AND s.id=c.session_id`,
             [family.id],
           );
         await expire();
@@ -724,7 +727,8 @@ test(
             )
           ).rows[0].session_id;
           await db.query(
-            "UPDATE amp_academic_sessions SET starts_on=current_date-400,ends_on=current_date-1 WHERE id=$1",
+            // Over in the family's own zone, whatever the hour (classLiveSql).
+            "UPDATE amp_academic_sessions s SET starts_on=current_date-400,ends_on=(now() AT TIME ZONE o.timezone)::date-1 FROM amp_orgs o WHERE s.id=$1 AND o.id=s.org_id",
             [before],
           );
           const response = await post(
