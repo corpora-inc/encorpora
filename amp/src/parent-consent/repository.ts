@@ -221,7 +221,7 @@ export class ConsentRepository {
       const p = await this.available(client);
       const row = (
         await client.query(
-          "SELECT *,expires_at>now() AS current,confirmation_after<=now() AS ready FROM amp_consent_requests WHERE id=$1 AND account_id=$2 FOR UPDATE",
+          "SELECT *,expires_at>now() AS current FROM amp_consent_requests WHERE id=$1 AND account_id=$2 FOR UPDATE",
           [body.requestId, account],
         )
       ).rows[0];
@@ -256,30 +256,24 @@ export class ConsentRepository {
         )
       ).rowCount;
       if (!delivered) throw new ConsentError("confirmation_not_ready");
-      if (body.stage === "initial") {
-        if (row.phase !== "awaiting-initial")
-          throw new ConsentError("consent_link_invalid");
-        await client.query(
-          "UPDATE amp_consent_requests SET phase='awaiting-confirmation',initial_at=now(),confirmation_after=now()+($2 * interval '1 hour') WHERE id=$1",
-          [row.id, p.confirmationDelayHours],
-        );
-        await client.query(
-          "INSERT INTO amp_consent_outbox(id,request_id,stage,available_at) SELECT $1,id,'confirmation',confirmation_after FROM amp_consent_requests WHERE id=$2",
-          [randomUUID(), row.id],
-        );
-      } else {
-        if (row.phase !== "awaiting-confirmation" || !row.ready)
-          throw new ConsentError("confirmation_not_ready");
-        await client.query(
-          "UPDATE amp_consent_requests SET phase='active',completed_at=now(),recipient_ciphertext=NULL WHERE id=$1",
-          [row.id],
-        );
-        await client.query(
-          `INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES($1,$2,$3,$4)
+      // FTC email-plus: the parent's affirmative response is the consent. The
+      // delayed confirmatory message carries notice and revocation; it never
+      // needs a reply, and access never waits for it.
+      if (body.stage !== "initial" || row.phase !== "awaiting-initial")
+        throw new ConsentError("consent_link_invalid");
+      await client.query(
+        "UPDATE amp_consent_requests SET phase='active',initial_at=now(),completed_at=now(),confirmation_after=now()+($2 * interval '1 hour') WHERE id=$1",
+        [row.id, p.confirmationDelayHours],
+      );
+      await client.query(
+        "INSERT INTO amp_consent_outbox(id,request_id,stage,available_at) SELECT $1,id,'confirmation',confirmation_after FROM amp_consent_requests WHERE id=$2",
+        [randomUUID(), row.id],
+      );
+      await client.query(
+        `INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES($1,$2,$3,$4)
           ON CONFLICT(account_id) DO UPDATE SET policy_version=$2,verification_method=$3,evidence_reference=$4,recorded_at=now(),withdrawn_at=NULL`,
-          [account, p.notice.version, EMAIL_PLUS_METHOD, row.id],
-        );
-      }
+        [account, p.notice.version, EMAIL_PLUS_METHOD, row.id],
+      );
     });
   }
 }
