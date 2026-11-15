@@ -226,18 +226,9 @@ for (const timing of [
         }
         await consent.begin(account, begin);
         await deliverConsentMail(consent, transport);
-        await consent.acknowledge(account, acknowledge(sent[0]!));
         assert.equal(await learners.hasConsent(account), false);
-        assert.equal(await deliverConsentMail(consent, transport), false);
-        // Advance only the isolated fixture's clock-dependent scheduling records.
-        await pool.query(
-          "UPDATE amp_consent_requests SET confirmation_after=now()-interval '1 minute' WHERE phase='awaiting-confirmation'",
-        );
-        await pool.query(
-          "UPDATE amp_consent_outbox SET available_at=now()-interval '1 minute' WHERE stage='confirmation'",
-        );
-        await deliverConsentMail(consent, transport);
-        await consent.acknowledge(account, acknowledge(sent[1]!));
+        await consent.acknowledge(account, acknowledge(sent[0]!));
+        // The parent's first affirmative response starts access.
         assert.equal(await learners.hasConsent(account), true);
         await invoices.claim(account, invoice.id, learner.id);
         await pool.query(
@@ -276,10 +267,11 @@ for (const timing of [
           await deliverFundedActivationMail(pool, transport, policy),
           false,
         );
-        assert.equal(sent.length, 3);
-        assert.equal(sent[2]!.recipient, "parent@example.com");
-        assert.match(sent[2]!.subject, /access is ready/);
-        assert.ok(!sent[2]!.text.includes("Fixture Student"));
+        // The consent notice, then the activation mail: no second consent response.
+        assert.equal(sent.length, 2);
+        assert.equal(sent[1]!.recipient, "parent@example.com");
+        assert.match(sent[1]!.subject, /access is ready/);
+        assert.ok(!sent[1]!.text.includes("Fixture Student"));
         await new FamilyRepository(pool).withdraw(account);
         assert.equal(await learners.hasConsent(account), false);
         await reconcileClassWalletPayments(pool, [offer]);
