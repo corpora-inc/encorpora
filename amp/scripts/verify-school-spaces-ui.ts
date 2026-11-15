@@ -1041,7 +1041,14 @@ try {
   };
   // And Ana, whom the first class's practice covers.
   await schools.transaction(async (client) => {
-    const today = new Date().toISOString().slice(0, 10);
+    // Today in the school's zone, as enrollments are read (activeToday):
+    // the UTC date runs a day ahead every evening in the Americas.
+    const today = (
+      await client.query(
+        "SELECT to_char((now() AT TIME ZONE o.timezone)::date,'YYYY-MM-DD') AS d FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id WHERE c.id=$1",
+        [support.id],
+      )
+    ).rows[0].d as string;
     await schools.enroll(client, support.id, ana, "student", today);
   });
   const supportCode = (
