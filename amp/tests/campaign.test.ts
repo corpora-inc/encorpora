@@ -100,7 +100,7 @@ test("campaign endpoint requires configured origin and writes only validated agg
       400,
     );
     assert.equal(queries.length, 0);
-    for (const privacy of [{ "sec-gpc": "1" }, { dnt: "1" }]) {
+    for (const privacy of [{ "sec-gpc": "1" }]) {
       assert.equal(
         (
           await app.inject({

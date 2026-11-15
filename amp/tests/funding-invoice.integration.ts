@@ -516,7 +516,7 @@ for (const mode of [
             payload: { learnerId: "child" },
             headers: {
               cookie: `${ACQUISITION_COOKIE}=${later}`,
-              ...(mode === "claim-opt-out" ? { dnt: "1" } : {}),
+              ...(mode === "claim-opt-out" ? { "sec-gpc": "1" } : {}),
             },
           });
           assert.equal(claim.statusCode, 200);

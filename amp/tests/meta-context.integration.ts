@@ -272,7 +272,6 @@ test(
         { "user-agent": "a".repeat(513) },
         { "user-agent": "bad\nagent" },
         { "sec-gpc": "1" },
-        { dnt: "1" },
       ]) {
         assert.equal(
           (await capture(pool, p.checkout, { ...good, ...overrides })).recorded,

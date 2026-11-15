@@ -66,7 +66,7 @@ test(
         pool,
         "amp.parent-signup=" + token,
         id,
-        opts.optout ? { dnt: "1" } : {},
+        opts.optout ? { "sec-gpc": "1" } : {},
       );
       await markSignupVerified(pool, id);
       await completeSignup(pool, "amp.parent-signup=" + token, id);

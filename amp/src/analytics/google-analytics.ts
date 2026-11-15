@@ -209,13 +209,17 @@ export function createGoogleAnalytics(
   let previousTitle: string | undefined;
   let signup: GaSignupContext | undefined;
   const identity = browserIdentity();
+  // Minimum compliance: no US law requires honoring Do Not Track, so it no
+  // longer disables measurement. Global Privacy Control is a legally binding
+  // opt-out of "sharing" for cross-context advertising (Cal. Civ. Code
+  // 1798.135(e); Colorado 4 CCR 904-3 Rule 5), so it denies ad consent and
+  // keeps the GA client ID out of ad conversions, but first-party analytics
+  // is not a sale or share and keeps running.
   const permitted = () =>
-    !options.blocked?.() &&
-    navigator.doNotTrack !== "1" &&
-    !(navigator as Navigator & { globalPrivacyControl?: boolean })
-      .globalPrivacyControl &&
-    !navigator.webdriver &&
-    !identity.internal();
+    !options.blocked?.() && !navigator.webdriver && !identity.internal();
+  const adOptOut = () =>
+    (navigator as Navigator & { globalPrivacyControl?: boolean })
+      .globalPrivacyControl === true;
   function command(..._args: unknown[]) {
     (w.dataLayer ??= []).push(arguments);
   }
@@ -244,14 +248,22 @@ export function createGoogleAnalytics(
       const program = googleProgram(location.href);
       if (!loaded) {
         loaded = true;
+        // Google's EU user consent policy requires default-deny only for the
+        // EEA, UK and Switzerland (listed below). Everywhere else ad storage
+        // and ad user data are granted unless the browser sends GPC.
+        // Remarketing (ad_personalization) stays off: we don't use it.
+        const ads = adOptOut() ? "denied" : "granted";
         command("consent", "default", {
           analytics_storage: "granted",
-          ad_storage: "denied",
-          ad_user_data: "denied",
+          ad_storage: ads,
+          ad_user_data: ads,
           ad_personalization: "denied",
         });
         command("consent", "default", {
           analytics_storage: "denied",
+          ad_storage: "denied",
+          ad_user_data: "denied",
+          ad_personalization: "denied",
           region: [
             "AT",
             "BE",
@@ -362,6 +374,7 @@ export function createGoogleAnalytics(
         !loaded ||
         retired ||
         !permitted() ||
+        adOptOut() ||
         !googlePage(location.href, options.home?.() ?? "pitch")
       )
         return;

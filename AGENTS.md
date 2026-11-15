@@ -34,6 +34,25 @@ channel access configuration stay outside this public repository.
 
 Paid-video production must include Full HD 16:9, 1:1 and 9:16 exports for every new concept; 4:5 is supplemental. Follow the format gate in `docs/youtube-publishing.md`. Keep every active Performance Max asset group Excellent, verify eligible live coverage, and resolve all recommendations within approved budgets and conversion goals. Check after changes and daily; record Pending as unfinished and retain readback evidence.
 
+## Minimum compliance
+
+Do the minimum compliance that a law or a platform contract actually requires,
+and nothing more. Never add a gate, delay, extra confirmation, permission
+prompt, data limit, warning or disclaimer "just to be safe".
+
+- Every compliance step cites its exact requirement (statute and section,
+  regulator guidance, or platform policy) in a code comment and in the PR. No
+  citation, no step. Remove existing steps that have none.
+- Meet real requirements inside the flow with the least friction, and never
+  block access on optional extras. Example: COPPA email-plus needs one parental
+  yes plus a later confirmatory notice. It does not need a second click or a
+  24-hour lockout, and it applies only to children under 13.
+- Do Not Track has no legal force. Global Privacy Control is a binding opt-out
+  of sale/sharing for ads in several states. Consent-mode default-deny applies
+  only to the EEA, UK and Switzerland.
+- Reviews, human and adversarial, reject self-imposed friction the same way
+  they reject bugs.
+
 ## Public repository: protect operational information
 
 This repository, its issues, PRs, review comments, CI logs, screenshots, and

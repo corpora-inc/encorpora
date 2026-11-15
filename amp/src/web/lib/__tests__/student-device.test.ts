@@ -119,7 +119,7 @@ test("clearing is safe with nothing stored", () => {
 });
 
 test("analytics and engagement don't start on a student device", async () => {
-  expect(analyticsAllowed()).toBe(navigator.doNotTrack !== "1");
+  expect(analyticsAllowed()).toBe(true);
   rememberStudentSession(student, "shared");
   expect(analyticsAllowed()).toBe(false);
   const engagement = startEngagement();
