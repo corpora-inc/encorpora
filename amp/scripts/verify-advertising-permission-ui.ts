@@ -112,6 +112,12 @@ try {
         await pool.query("DELETE FROM amp_advertising_permissions");
         await pool.query("DELETE FROM amp_meta_advertising_permissions");
         await pool.query("DELETE FROM amp_openai_advertising_permissions");
+        // Measurement is on by default (US opt-out); start from parents who
+        // opted out so the allow and stop controls are both exercised.
+        await pool.query("DELETE FROM amp_ad_collection_withdrawals");
+        await pool.query(
+          "INSERT INTO amp_ad_collection_withdrawals(account_id,provider) SELECT a,p FROM unnest(ARRAY['amp|parent','amp|other']) a, unnest(ARRAY['google','meta','openai']) p",
+        );
         const page = await browser.newPage({
           viewport: { width, height: 900 },
           colorScheme: theme,

@@ -237,7 +237,7 @@ test(
     }),
 );
 test(
-  "source review, pending refunds and changed email never reach provider",
+  "source review and pending refunds never reach provider; the opt-out default follows the current confirmed email",
   enabled,
   () =>
     fixture(async (pool) => {
@@ -263,14 +263,16 @@ test(
         "ineligible",
       );
       await observation(pool, p.reference.id, []);
+      assert.equal(rt.calls.length, 0);
       await pool.query(
         "UPDATE amp_auth_users SET email='changed@example.invalid' WHERE id='parent'",
       );
       assert.equal(
         await deliverGooglePayment(pool, config, p.id, rt),
-        "ineligible",
+        "accepted",
       );
-      assert.equal(rt.calls.length, 0);
+      assert.equal(rt.calls.length, 1);
+      assert.ok(!JSON.stringify(rt.calls).includes("parent@example.invalid"));
     }),
 );
 test(
