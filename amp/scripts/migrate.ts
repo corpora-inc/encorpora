@@ -15,10 +15,13 @@ export function concurrentIndexes(sql: string) {
     .filter(Boolean);
   if (!statements.length) throw new Error("Empty concurrent index migration");
   return statements.map((statement) => {
-    const match =
-      /^CREATE INDEX CONCURRENTLY (amp_[a-z0-9_]+) ON amp_[a-z0-9_]+\s*\([a-z0-9_,\s]+\)(?: WHERE [a-z0-9_]+\s*(?:>=|<=|>|<|=)\s*\d+)?$/i.exec(
-        statement,
-      );
+    // Optionally UNIQUE; an optional predicate of AND-ed column comparisons
+    // with a number or IS [NOT] NULL tests.
+    const condition = String.raw`[a-z0-9_]+\s*(?:(?:>=|<=|>|<|=)\s*\d+|\s+IS\s+(?:NOT\s+)?NULL)`;
+    const match = new RegExp(
+      String.raw`^CREATE (?:UNIQUE )?INDEX CONCURRENTLY (amp_[a-z0-9_]+) ON amp_[a-z0-9_]+\s*\([a-z0-9_,\s]+\)(?: WHERE ${condition}(?:\s+AND\s+${condition})*)?$`,
+      "i",
+    ).exec(statement);
     if (!match)
       throw new Error(`Unsupported concurrent index statement: ${statement}`);
     return { name: match[1]!.toLowerCase(), statement };
@@ -71,10 +74,28 @@ export const renamedMigrations: Readonly<Record<string, readonly string[]>> = {
     "0132-level-practice.sql",
   ],
 };
-export async function migrate(connectionString: string) {
+/** Applied files rewritten before release, with the checksums a development or
+ * preview database may hold. Each earlier version reached the same schema
+ * once the migrations after it run (0135 once built its index and validated
+ * its check in one locking transaction; 0136 and 0137 now do that without
+ * blocking learners, and are no-ops after it). The receipt takes the
+ * current checksum. */
+export const supersededChecksums: Readonly<Record<string, readonly string[]>> =
+  {
+    "0135-level-practice.sql": [
+      "6df76247b87ee63b1b968d382ac2435479a0553b562e1c9c50fb5e714f50c88d",
+    ],
+  };
+/** `lockTimeoutMs` bounds each transactional migration's wait for a table
+ * lock; a concurrent index build waits for older transactions as long as they
+ * run. Tests shorten it. */
+export async function migrate(
+  connectionString: string,
+  { lockTimeoutMs = 5000 }: { lockTimeoutMs?: number } = {},
+) {
   for (let attempt = 0; ; attempt++) {
     try {
-      return await migrateOnce(connectionString);
+      return await migrateOnce(connectionString, lockTimeoutMs);
     } catch (error) {
       if (
         attempt >= 2 ||
@@ -85,14 +106,14 @@ export async function migrate(connectionString: string) {
     }
   }
 }
-async function migrateOnce(connectionString: string) {
+async function migrateOnce(connectionString: string, lockTimeoutMs: number) {
   const pool = createDatabasePool({
     connectionString,
     connectionTimeoutMillis: 5000,
   });
   const client = await pool.connect();
   try {
-    await client.query("SET lock_timeout='5s'");
+    await client.query(`SET lock_timeout=${Math.trunc(lockTimeoutMs)}`);
     await client.query("SELECT pg_advisory_lock(91347022)");
     await client.query(
       "CREATE TABLE IF NOT EXISTS amp_migrations (name text PRIMARY KEY, checksum text NOT NULL)",
@@ -111,6 +132,10 @@ async function migrateOnce(connectionString: string) {
              AND NOT EXISTS (SELECT 1 FROM amp_migrations WHERE name=$1)`,
           [name, earlier],
         );
+      await client.query(
+        "UPDATE amp_migrations SET checksum=$2 WHERE name=$1 AND checksum=ANY($3::text[])",
+        [name, checksum, supersededChecksums[name] ?? []],
+      );
       const old = await client.query(
         "SELECT checksum FROM amp_migrations WHERE name=$1",
         [name],
@@ -125,6 +150,9 @@ async function migrateOnce(connectionString: string) {
         // Keep the session advisory lock across every autocommit statement.
         // A failed build can leave an INVALID index, and a crash can leave a
         // valid prefix without the migration receipt. Retry both safely.
+        // A concurrent build waits for every older transaction to finish;
+        // those waits are not lock contention to give up on.
+        await client.query("SET lock_timeout=0");
         for (const index of indexes) {
           const existing = await client.query(
             "SELECT indisvalid FROM pg_index WHERE indexrelid=to_regclass($1)",
@@ -137,9 +165,12 @@ async function migrateOnce(connectionString: string) {
           // create an implicit transaction, even without BEGIN.
           await client.query(index.statement);
         }
+        await client.query(`SET lock_timeout=${Math.trunc(lockTimeoutMs)}`);
       } else {
         await client.query("BEGIN");
-        await client.query("SET LOCAL lock_timeout='5s'");
+        await client.query(
+          `SET LOCAL lock_timeout=${Math.trunc(lockTimeoutMs)}`,
+        );
         await client.query(sql);
       }
       await client.query("INSERT INTO amp_migrations VALUES($1,$2)", [
@@ -165,11 +196,23 @@ async function migrateOnce(connectionString: string) {
       ]);
     }
   } catch (error) {
-    await client.query("ROLLBACK");
+    // A dead connection can't roll back or unlock; the server already did
+    // both. Report the original failure, not the cleanup's.
+    await client
+      .query("ROLLBACK")
+      .catch((rollback) =>
+        console.error("Migration rollback failed", rollback),
+      );
     throw error;
   } finally {
-    await client.query("SELECT pg_advisory_unlock(91347022)");
-    client.release();
+    let broken: Error | undefined;
+    try {
+      await client.query("SELECT pg_advisory_unlock(91347022)");
+    } catch (error) {
+      broken = error as Error;
+      console.error("Migration lock release failed", error);
+    }
+    client.release(broken);
     await pool.end();
   }
 }

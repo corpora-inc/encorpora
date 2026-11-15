@@ -19,7 +19,9 @@ does ([deployment](../deployment.md)). It applies, in this order:
 | `0132-family-identity-fallback.sql` | Deterministic family identity function and hooks | Functions and triggers |
 | `0133-family-discovery-index.sql` | Class-to-family lookup index | `CREATE INDEX CONCURRENTLY` |
 | `0134-funded-term-schedule.sql` | `amp_funding_requests.scheduled_term` (nullable) | Metadata only |
-| `0135-level-practice.sql` | `amp_learners.level_practice` and its one-per-account index | Metadata, one index build |
+| `0135-level-practice.sql` | `amp_learners.level_practice` (nullable) and its check, added `NOT VALID` | Metadata only; the exclusive lock lasts no longer than the catalog change |
+| `0136-level-practice-validate.sql` | Validates that check | `SHARE UPDATE EXCLUSIVE`: learner reads and writes continue during the scan |
+| `0137-level-practice-index.sql` | One level practice profile per account (unique partial index) | `CREATE UNIQUE INDEX CONCURRENTLY`, writes continue |
 
 They follow main's highest number, `0127` (main shipped two:
 `0127-acquisition-contact-due-at-signup`, #2339, and
@@ -64,7 +66,14 @@ COMMIT;
 ```
 
 (A database on an older set shifts each name by two or three the same way.)
-The checksums do not change: only the file names did. Main's `0126` and two `0127` migrations then apply on the next migrate as new
+The checksums do not change: only the file names did, with one exception.
+`0135-level-practice.sql` was rewritten before release to add its check
+`NOT VALID`; its index and validation moved to `0136` and `0137`. A database
+that applied the earlier file already has both, so the runner accepts that
+file's earlier checksum (`supersededChecksums` in `scripts/migrate.ts`), takes
+the new one into the receipt, and `0136` and `0137` change nothing there.
+
+Main's `0126` and two `0127` migrations then apply on the next migrate as new
 migrations.
 
 ## 2. Backfill (automatic)
@@ -101,7 +110,7 @@ with the current list price. Nothing to change for this release.
 
 1. `GET /api/v1/health` reports the merged commit.
 2. `SELECT name FROM amp_migrations WHERE name >= '0126' ORDER BY name;` lists
-   `0126-consent-single-response`, both `0127` migrations, `0128`-`0135` and
+   `0126-consent-single-response`, both `0127` migrations, `0128`-`0137` and
    `data:family-identities-v1`.
 3. A brand-new account opens `/start` on "What brings you to AMP?".
 4. An existing parent opens `/` on Family and sees each child, with a week of

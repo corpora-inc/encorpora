@@ -12,8 +12,17 @@ test("only an explicit index-only directive opts out of migration transactions",
     ),
     [{ name: "amp_fixture_idx", statement }],
   );
+  const unique =
+    "CREATE UNIQUE INDEX CONCURRENTLY amp_fixture_one_idx ON amp_fixture(account_id) WHERE profile IS NOT NULL AND deleted_at IS NULL";
+  assert.deepEqual(
+    concurrentIndexes(`-- migrate:concurrent-indexes\n${unique};\n`),
+    [{ name: "amp_fixture_one_idx", statement: unique }],
+  );
   for (const sql of [
     "",
+    "CREATE UNIQUE INDEX CONCURRENTLY amp_fixture_idx ON amp_fixture(id) WHERE a IS NULL OR b IS NULL;",
+    "CREATE UNIQUE INDEX CONCURRENTLY amp_fixture_idx ON amp_fixture(id) WHERE a IS NULL AND;",
+    "CREATE INDEX CONCURRENTLY amp_fixture_idx ON amp_fixture(id) WHERE a = 'x';",
     "BEGIN;",
     "CREATE INDEX amp_fixture_idx ON amp_fixture(id);",
     `${statement}; DROP TABLE amp_fixture;`,
