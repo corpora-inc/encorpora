@@ -56,7 +56,15 @@ export type Estimate = {
   sd: number;
   answered: number;
   independent: number;
+  /** The likely range: the posterior's central `LIKELY_MASS` interval, its
+   * own quantiles rather than level ± z·sd, so an end the answers cannot
+   * bound (all correct, all missed) stays open to the end of the scale.
+   * Absent on estimates stored before the range was kept. */
+  low?: number;
+  high?: number;
 };
+/** The share of the posterior the likely range holds. */
+export const LIKELY_MASS = 0.8;
 export type Frontier = {
   /** The grade a learner of this age is typically working in. */
   expected: number;
@@ -103,6 +111,28 @@ export function initialLevel(options: {
           ? startingLevels[UNCHOSEN_ADULT_START]
           : 2;
   return Math.min(MAX_GRADE, Math.max(0, level));
+}
+
+/** How widely an adult's level may lie around where they start. An adult
+ * without a school-age birth year starts from a guess (`UNCHOSEN_ADULT_START`)
+ * or a choice, which says far less than a child's age: adults practise
+ * anywhere from counting to precalculus and beyond. A prior this wide is
+ * nearly flat over the curriculum (its ends weigh 0.8 of its middle), so the
+ * reported level's range stays open at whatever end the answers have not yet
+ * bounded. Measured in `scripts/frontier/level-interval-study.ts`. */
+export const ADULT_START_SD = 12;
+/** The reported level's prior width for a learner (`createFrontierState`):
+ * `ADULT_START_SD` for an adult with no school-age birth year, and the
+ * policy's (undefined) for everyone whose age or family band places them. */
+export function startingSd(options: {
+  birthYear?: number | null;
+  adult?: boolean;
+  band?: StartingChoice | null;
+}): number | undefined {
+  if (options.birthYear != null) return undefined;
+  const adultBand =
+    !!options.band && (adultStarts as readonly string[]).includes(options.band);
+  return options.adult || adultBand ? ADULT_START_SD : undefined;
 }
 
 /** Where an account holder's own practice begins from the birth year they
@@ -180,23 +210,49 @@ function responseModel(response: FrontierPolicy["response"]): ResponseModel {
 function prior(mean: number, sd: number) {
   return GRID.map((theta) => -(((theta - mean) / sd) ** 2) / 2);
 }
+/** The level below which `p` of the weight lies, each grid point's weight
+ * spread evenly over its own tenth of a grade. */
+function quantile(weights: readonly number[], total: number, p: number) {
+  const step = GRID[1]! - GRID[0]!;
+  let below = 0;
+  for (let i = 0; i < weights.length; i++) {
+    const w = weights[i]!;
+    if (below + w >= p * total) {
+      const within = w > 0 ? (p * total - below) / w : 0.5;
+      return GRID[i]! - step / 2 + within * step;
+    }
+    below += w;
+  }
+  return GRID[GRID.length - 1]! + step / 2;
+}
+const onScale = (value: number) =>
+  Math.round(Math.min(GRID.at(-1)!, Math.max(GRID[0]!, value)) * 100) / 100;
 function summarize(
   log: number[],
   answered: number,
   independent: number,
   extraVariance = 0,
-) {
+): Estimate {
   const top = Math.max(...log);
   const weights = log.map((value) => Math.exp(value - top));
   const total = weights.reduce((sum, w) => sum + w, 0);
   const level = weights.reduce((sum, w, i) => sum + w * GRID[i]!, 0) / total;
   const variance =
     weights.reduce((sum, w, i) => sum + w * (GRID[i]! - level) ** 2, 0) / total;
+  // The reserve for a surprise widens the range as it widens the sd: the
+  // same spread, convolved in.
+  const spread = extraVariance > 0 ? blur(log, extraVariance) : log;
+  const spreadTop = Math.max(...spread);
+  const spreadWeights = spread.map((value) => Math.exp(value - spreadTop));
+  const spreadTotal = spreadWeights.reduce((sum, w) => sum + w, 0);
+  const tail = (1 - LIKELY_MASS) / 2;
   return {
     level: Math.round(level * 100) / 100,
     sd: Math.round(Math.sqrt(variance + extraVariance) * 100) / 100,
     answered,
     independent,
+    low: onScale(quantile(spreadWeights, spreadTotal, tail)),
+    high: onScale(quantile(spreadWeights, spreadTotal, 1 - tail)),
   };
 }
 
@@ -416,15 +472,18 @@ const emptyConfirmation = (): FrontierConfirmationState => ({
   buckets: [],
 });
 
+/** `startSd` widens the reported level's prior where the start says little
+ * (`startingSd`); selection's adaptive estimate keeps the policy's. */
 export function createFrontierState(
   start: number,
   policy: FrontierPolicy = DEFAULT_FRONTIER_POLICY,
+  startSd: number = policy.prior.overallSd,
 ): FrontierState {
   return {
     start,
     observed: 0,
     lastAt: null,
-    overall: startFold(prior(start, policy.prior.overallSd)),
+    overall: startFold(prior(start, startSd)),
     adaptive: startFold(prior(start, policy.prior.overallSd)),
     strands: {},
     confirmation: {},
@@ -744,6 +803,8 @@ export function readFrontierState(
 export function estimateFrontier(
   options: FrontierCatalog & {
     start: number;
+    /** The reported level's prior width (`createFrontierState`). */
+    startSd?: number;
     observations: readonly FrontierObservation[];
     now?: number;
     /** Validated, immutable parameters for reproducible estimator comparisons. */
@@ -752,7 +813,7 @@ export function estimateFrontier(
 ): Frontier {
   const policy = options.policy ?? DEFAULT_FRONTIER_POLICY;
   assertFrontierPolicy(policy);
-  const state = createFrontierState(options.start, policy);
+  const state = createFrontierState(options.start, policy, options.startSd);
   for (const observation of options.observations)
     advanceFrontierState(state, observation, options, policy);
   return readFrontierState(state, options.now ?? state.lastAt ?? 0, policy);
@@ -763,6 +824,7 @@ export function estimateFrontier(
 export function overallTrend(
   options: FrontierCatalog & {
     start: number;
+    startSd?: number;
     observations: readonly FrontierObservation[];
     now: number;
   },
@@ -770,7 +832,9 @@ export function overallTrend(
   policy: FrontierPolicy = DEFAULT_FRONTIER_POLICY,
 ) {
   const model = responseModel(policy.response);
-  const fold = startFold(prior(options.start, policy.prior.overallSd));
+  const fold = startFold(
+    prior(options.start, options.startSd ?? policy.prior.overallSd),
+  );
   const read = new Map<number, Estimate>();
   const wanted = new Set(counts);
   const note = (answered: number) => {
@@ -784,8 +848,8 @@ export function overallTrend(
     note(index + 1);
   });
   return counts.map((answered) => {
-    const { level, sd } = read.get(answered)!;
-    return { answered, level, sd };
+    const { level, sd, low, high } = read.get(answered)!;
+    return { answered, level, sd, low, high };
   });
 }
 

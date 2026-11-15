@@ -1,16 +1,31 @@
-import { levelRange } from "../../../learning/level-check";
+import {
+  levelRange,
+  shownGrades,
+  shownRange,
+  shownSpan,
+} from "../../../learning/level-check";
 
 /** A grade-level estimate: best guess and its uncertainty, on the curriculum
- * scale (K = 0, grades 1–8, Algebra 1 = 9 … Precalculus = 12, 13 beyond). */
-export type Estimate = { level: number; sd: number };
+ * scale (K = 0, grades 1–8, Algebra 1 = 9 … Precalculus = 12, 13 beyond).
+ * `low`/`high` are its likely range where the server sent one. */
+export type Estimate = {
+  level: number;
+  sd: number;
+  low?: number;
+  high?: number;
+};
 /** The stretch of grades an axis spans, in whole grades. */
 export type RangeScale = { lo: number; hi: number };
 
 const FLOOR = 0;
 const CEILING = 13;
 
-/** The likely range of an estimate, as every chart here draws it. */
+/** The likely range of an estimate, in the estimate's own numbers. */
 export const likelyRange = (estimate: Estimate) => levelRange(estimate);
+/** Where a bar draws the likely range: over the whole grades its words name,
+ * an open end past the scale's (`shownSpan`). */
+export const shownLikely = (estimate: Estimate) =>
+  shownSpan(shownRange(estimate));
 
 /**
  * The scale for a set of estimates: whole grades that hold every likely range
@@ -31,14 +46,17 @@ export function fitScale(
     pad?: number;
   } = {},
 ): RangeScale {
-  const lows = [
-    ...estimates.map((estimate) => likelyRange(estimate)[0]),
-    ...include,
-  ];
-  const highs = [
-    ...estimates.map((estimate) => likelyRange(estimate)[1]),
-    ...include,
-  ];
+  // An open end runs to whatever end the scale has; it never widens it.
+  const spans = estimates.map((estimate) => {
+    const range = shownRange(estimate);
+    const [from, to] = shownSpan(range);
+    return [
+      range.openLow ? range.from : from,
+      range.openHigh ? range.to : to,
+    ] as const;
+  });
+  const lows = [...spans.map(([from]) => from), ...include];
+  const highs = [...spans.map(([, to]) => to), ...include];
   if (!lows.length) return { lo: 3, hi: 3 + minSpan };
   let lo = Math.max(FLOOR, Math.floor(Math.min(...lows)) - pad);
   let hi = Math.min(CEILING, Math.ceil(Math.max(...highs)) + pad);
@@ -74,3 +92,13 @@ export function shortGrade(level: number) {
 }
 
 export const percent = (fraction: number) => `${(fraction * 100).toFixed(2)}%`;
+
+/** A likely range in short grade words ("K–Gr 1", "Gr 8–Alg 2", "Gr 6+"),
+ * for a reader to whom the scale's decimals mean nothing (a parent). */
+export function rangeWords(range: readonly [number, number]) {
+  const shown = shownGrades(range);
+  const from = shortGrade(shown.from),
+    to = shortGrade(shown.to);
+  if (shown.openHigh && !shown.openLow) return `${from}+`;
+  return from === to ? from : `${from}–${to}`;
+}

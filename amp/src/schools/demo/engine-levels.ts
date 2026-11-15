@@ -10,7 +10,7 @@ import type { Estimate } from "../../learning/frontier.js";
 import { DEFAULT_FRONTIER_POLICY } from "../../learning/frontier-policy.js";
 import {
   REPORTED_SD_VERSION,
-  reportedSd,
+  storedEstimate,
 } from "../../learning/frontier-report.js";
 import {
   MISSPECIFIED_RESPONSE,
@@ -83,14 +83,7 @@ export type LevelAnswer = {
   day?: string;
 };
 
-function stored(estimate: Estimate) {
-  return {
-    level: estimate.level,
-    sd: reportedSd(estimate.sd, { answered: estimate.answered }),
-    answered: estimate.answered,
-    independent: estimate.independent,
-  };
-}
+const stored = storedEstimate;
 
 /** Level-day documents for the days in `days` that have an answer. The
  * posterior is read at the end of that day, after every earlier answer. */

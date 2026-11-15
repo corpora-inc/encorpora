@@ -7,6 +7,7 @@ export {
   LevelRows,
   type LevelRangeArea,
   plainLevel,
+  foundLevel,
   likelyInWords,
   rangeWords,
   type RowLink,
