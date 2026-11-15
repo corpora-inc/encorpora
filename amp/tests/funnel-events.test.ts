@@ -174,3 +174,42 @@ test("the endpoint holds at most a few database connections", async () => {
   assert.equal((await send()).statusCode, 202);
   await app.close();
 });
+
+test("first-run and invoice steps carry only their fixed choices", () => {
+  assert.ok(
+    batch([
+      { event: "setup_step", at: 1, props: { step: "choose", action: "view" } },
+      {
+        event: "setup_step",
+        at: 2,
+        props: { persona: "parent", step: "kids", action: "complete" },
+      },
+      {
+        event: "invoice_step",
+        at: 3,
+        props: { program: "az-esa", step: "view" },
+      },
+      {
+        event: "invoice_step",
+        at: 4,
+        props: { program: "nh-efa", step: "error", error: "network" },
+      },
+    ]).success,
+  );
+  for (const props of [
+    { persona: "parent", step: "kids", action: "typed", value: "Ada" },
+    { persona: "friend", step: "kids", action: "view" },
+  ])
+    assert.equal(batch([{ event: "setup_step", at: 1, props }]).success, false);
+  for (const props of [
+    { program: "az-esa", step: "error" },
+    { program: "az-esa", step: "success", error: "network" },
+    { program: "az-esa", step: "email", value: "parent@example.test" },
+    { program: "tx-esa", step: "view" },
+  ])
+    assert.equal(
+      batch([{ event: "invoice_step", at: 1, props }]).success,
+      false,
+      JSON.stringify(props),
+    );
+});

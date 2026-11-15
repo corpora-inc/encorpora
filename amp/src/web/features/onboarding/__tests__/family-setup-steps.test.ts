@@ -5,28 +5,15 @@ const named = { account: { givenName: "Ada", familyName: "Okafor" } };
 const unnamed = { account: { givenName: null, familyName: null } };
 const ids = (steps: readonly { id: string }[]) => steps.map((step) => step.id);
 
-test("a parent without a name answers it first, then their kids, then who practices first", () => {
-  expect(ids(setupSteps("parent", unnamed as never))).toEqual([
-    "name",
-    "",
-    "ready",
-  ]);
-});
-
-test("a parent whose name is on file skips the name step", () => {
+test("a parent goes straight to their kids, then who practices first: a name is never a step", () => {
+  // Nothing requires a parent's name before a child practices; it is asked
+  // where it is shown (Account), never as a gate.
+  expect(ids(setupSteps("parent", unnamed as never))).toEqual(["", "ready"]);
   expect(ids(setupSteps("parent", named as never))).toEqual(["", "ready"]);
-  // A blank name is no name.
-  expect(
-    ids(setupSteps("parent", { account: { givenName: "  " } } as never)),
-  ).toEqual(["name", "", "ready"]);
 });
 
-test("once this setup asked the name, the step stays listed after it's saved", () => {
-  expect(ids(setupSteps("parent", named as never, true))).toEqual([
-    "name",
-    "",
-    "ready",
-  ]);
+test("an old name-step link still resolves to the setup", () => {
+  expect(setupStepIds("parent")).toContain("name");
 });
 
 test("the parent path has no code, board or second-parent step", () => {

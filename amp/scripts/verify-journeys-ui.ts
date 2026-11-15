@@ -550,15 +550,8 @@ async function parentJourney(
   await measured(page, `${label} starter`);
   await shot(page, 1, "starter", width, theme);
   await page.getByRole("link", { name: /^I’m a parent/ }).click();
-  // Setup, step by step (R11): the parent's name, their kids, then who
-  // practices first, straight into that child's first problem.
-  await page.waitForURL(/\/start\/parent\/name$/);
-  await heading(page, "Your name");
-  await page.getByLabel("First name").fill("Casey");
-  await page.getByLabel("Last name").fill("Fixture");
-  await measured(page, `${label} name`);
-  await shot(page, 1, "setup-name", width, theme);
-  await page.getByRole("button", { name: "Next" }).click();
+  // Setup, step by step (R11): their kids, then who practices first,
+  // straight into that child's first problem. A name is never a step.
   await page.waitForURL(/\/start\/parent$/);
   await heading(page, "Add your kids");
   await page.getByRole("button", { name: "Add a child" }).click();
@@ -572,11 +565,10 @@ async function parentJourney(
   await page.getByLabel("Name, Child 2").fill("Sam");
   await measured(page, `${label} children`);
   await shot(page, 1, "children", width, theme);
-  // Back and forward keep the same step and what was typed; the name step
-  // stays in the list once answered.
+  // Back and forward keep the same step and what was typed.
   await page.goBack();
-  await page.waitForURL(/\/start\/parent\/name$/);
-  await heading(page, "Your name");
+  await page.waitForURL(/\/start$/);
+  await heading(page, "What brings you to AMP?");
   await page.goForward();
   await page.waitForURL(/\/start\/parent$/);
   await heading(page, "Add your kids");
@@ -1326,16 +1318,21 @@ async function journey7(
   await page.waitForURL(/\/start$/);
   await heading(page, "What brings you to AMP?");
   await page.getByRole("link", { name: /I’m a parent/ }).click();
-  // The parent's setup (R11): their name, one child, then Today.
-  await page.waitForURL(/\/start\/parent\/name$/);
-  await page.getByLabel("First name").fill("Robin");
-  await page.getByLabel("Last name").fill("Fixture");
-  await page.getByRole("button", { name: "Next" }).click();
+  // The parent's setup (R11): one child, straight into their first
+  // problem, then back to the parent on Today.
+  await page.waitForURL(/\/start\/parent$/);
   await heading(page, "Add your kids");
   await pickYear(page, "Birth year, Child 1");
   await page.getByRole("button", { name: "Next", exact: true }).click();
-  await page.waitForURL(/\/start\/parent\/ready$/);
-  await page.getByRole("link", { name: "Go to Today" }).click();
+  // One child practices first: their first problem opens on this device,
+  // and signing out gives it back to the parent, on Today.
+  await page.locator("[data-problem-id]").first().waitFor();
+  await page
+    .getByRole("button", { name: "Open AMP menu" })
+    .filter({ visible: true })
+    .first()
+    .click();
+  await page.getByRole("button", { name: "Sign out" }).click();
   await page.waitForURL(FAMILY_TODAY);
   await visit(page, `${origin}/try/map`);
   await page.waitForURL(FAMILY_TODAY);

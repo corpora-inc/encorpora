@@ -317,13 +317,10 @@ async function familyThenSchool(
   await page.goto(`${origin}/sign-up`);
   await signUp(page, email);
   await page.waitForURL(/\/account\/ready|\/start/);
-  // "What brings you to AMP?": a parent, their name, one child, then Today.
+  // "What brings you to AMP?": a parent, one child, their first problem,
+  // then Today.
   await heading(page, "What brings you to AMP?");
   await page.locator('[data-choice="parent"]').click();
-  await page.waitForURL(`${origin}/start/parent/name`);
-  await page.getByLabel("First name").fill("Ruth");
-  await page.getByLabel("Last name").fill("Adeyemi");
-  await page.getByRole("button", { name: "Next", exact: true }).click();
   await page.waitForURL(`${origin}/start/parent`);
   await heading(page, "Add your kids");
   await page
@@ -336,9 +333,15 @@ async function familyThenSchool(
     .getByRole("button", { name: "Birth year, Child 1: 2016", exact: true })
     .waitFor();
   await page.getByRole("button", { name: "Next", exact: true }).click();
-  await page.waitForURL(`${origin}/start/parent/ready`);
-  await heading(page, "Who’s practicing first?");
-  await page.getByRole("link", { name: "Go to Today" }).click();
+  // One child practices first: their first problem opens on this device,
+  // and signing out gives it back to the parent, on Today.
+  await page.locator("[data-problem-id]").first().waitFor();
+  await page
+    .getByRole("button", { name: "Open AMP menu" })
+    .filter({ visible: true })
+    .first()
+    .click();
+  await page.getByRole("button", { name: "Sign out" }).click();
   await page.waitForURL(FAMILY_TODAY);
   await todayTitle(page);
   await settle(page, 300);
