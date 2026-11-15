@@ -116,6 +116,34 @@ test(
     );
     const today = (await currentSchool(db, ZONE, clock))!;
     assert.ok(today, "the zone has a school");
+
+    /** The latest moment anything in a school happened: answers, help,
+     * active time and level days (each day as its end, midnight after). */
+    const latest = async (orgId: string) =>
+      (
+        await db.query(
+          `WITH l AS (SELECT learner_id AS id FROM amp_people WHERE tenant_id=$1 AND learner_id IS NOT NULL)
+           SELECT (SELECT max(created_at) FROM amp_attempts WHERE learner_id IN (SELECT id FROM l)) AS answer,
+             (SELECT max("at") FROM amp_help_events WHERE learner_id IN (SELECT id FROM l)) AS help,
+             (SELECT max(day)::text FROM amp_active_days WHERE learner_id IN (SELECT id FROM l)) AS active,
+             (SELECT max(day)::text FROM amp_level_days WHERE learner_id IN (SELECT id FROM l)) AS level`,
+          [orgId],
+        )
+      ).rows[0] as { answer: Date; help: Date; active: string; level: string };
+    const nothingLater = async (orgId: string, now: number, label: string) => {
+      const last = await latest(orgId);
+      const localToday = new Intl.DateTimeFormat("en-CA", {
+        timeZone: ZONE,
+      }).format(now);
+      assert.ok(last.answer.getTime() <= now, `${label}: an answer at ${last.answer.toISOString()}`);
+      assert.ok(last.help.getTime() <= now, `${label}: help at ${last.help.toISOString()}`);
+      assert.ok(last.active <= localToday, `${label}: active time on ${last.active}`);
+      assert.ok(last.level <= localToday, `${label}: a level day on ${last.level}`);
+    };
+
+    // The school as written, before any visitor plays in it: nothing in it is
+    // later than the moment it is shown.
+    await nothingLater(today.orgId, clock, "written");
     // A week on: the same weekday, so the same term moved seven days.
     const next = sharedDay(clock + 7 * DAY, ZONE);
 
@@ -653,35 +681,12 @@ test(
       );
     });
 
-    /** The latest moment anything in a school happened: answers, help,
-     * active time and level days (each day as its end, midnight after). */
-    const latest = async (orgId: string) =>
-      (
-        await db.query(
-          `WITH l AS (SELECT learner_id AS id FROM amp_people WHERE tenant_id=$1 AND learner_id IS NOT NULL)
-           SELECT (SELECT max(created_at) FROM amp_attempts WHERE learner_id IN (SELECT id FROM l)) AS answer,
-             (SELECT max("at") FROM amp_help_events WHERE learner_id IN (SELECT id FROM l)) AS help,
-             (SELECT max(day)::text FROM amp_active_days WHERE learner_id IN (SELECT id FROM l)) AS active,
-             (SELECT max(day)::text FROM amp_level_days WHERE learner_id IN (SELECT id FROM l)) AS level`,
-          [orgId],
-        )
-      ).rows[0] as { answer: Date; help: Date; active: string; level: string };
-    const nothingLater = async (orgId: string, now: number, label: string) => {
-      const last = await latest(orgId);
-      const localToday = new Intl.DateTimeFormat("en-CA", {
-        timeZone: ZONE,
-      }).format(now);
-      assert.ok(last.answer.getTime() <= now, `${label}: an answer at ${last.answer.toISOString()}`);
-      assert.ok(last.help.getTime() <= now, `${label}: help at ${last.help.toISOString()}`);
-      assert.ok(last.active <= localToday, `${label}: active time on ${last.active}`);
-      assert.ok(last.level <= localToday, `${label}: a level day on ${last.level}`);
-    };
-
     await t.test("a visitor never sees the future: the school switches when the day's sitting ends", async () => {
-      // The school being shown now has nothing later than now.
+      // The school being shown now has nothing later than now. Visitors
+      // practiced in it above, through the practice API's own clock.
       const served = (await currentSchool(db, ZONE, clock))!;
       assert.equal(served.orgId, today.orgId);
-      await nothingLater(served.orgId, clock, "now");
+      await nothingLater(served.orgId, Date.now(), "now");
       // At 01:00 and 08:59 of the new day, the day before's school is shown:
       // the new one's sitting is still to come.
       const nextOrg = (
