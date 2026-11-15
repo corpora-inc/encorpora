@@ -1,7 +1,9 @@
 /**
  * Bundled money art placed by component-only image primitives. The layout
  * names a coin or bill; CoinFace and BillFace hold the art, so laying out a
- * scene stays pure and drawing one never fetches anything.
+ * scene stays pure. Print and film carry the pictures embedded; the app
+ * serves them as files and decodes them before a money problem shows
+ * (web/scene/money-art.ts).
  */
 export const coinKinds = ["penny", "nickel", "dime", "quarter"] as const;
 export type CoinKind = (typeof coinKinds)[number];

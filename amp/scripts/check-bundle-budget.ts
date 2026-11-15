@@ -22,6 +22,10 @@ const budget = {
   entryCss: 60 * KB,
   /** Pathways' own code; the 3D map (three.js) loads only when chosen. */
   pathwaysJs: 15 * KB,
+  /** Practice's code beyond the entry: the app screen and the practice
+   * workspace with everything they import (2026-11-15: 525 KB; 696 KB
+   * while the coin and bill pictures were inside it). */
+  practiceJs: 540 * KB,
 };
 
 const dist = process.argv[2]
@@ -43,6 +47,29 @@ const assets = readdirSync(new URL("assets/", dist));
 const pathways = assets.find((name) => /^PathwaysScreen-.*\.js$/.test(name));
 if (!pathways) throw new Error("check-bundle-budget: no PathwaysScreen chunk");
 
+/** A chunk and every chunk it imports statically, as built. */
+const closure = (file: string, seen = new Set<string>()) => {
+  if (seen.has(file)) return seen;
+  seen.add(file);
+  for (const [, next] of read(file)
+    .toString()
+    .matchAll(/(?:from|import)\s*"\.\/([^"]+\.js)"/g))
+    closure(`assets/${next}`, seen);
+  return seen;
+};
+const chunk = (pattern: RegExp) => {
+  const name = assets.find((file) => pattern.test(file));
+  if (!name) throw new Error(`check-bundle-budget: no chunk ${pattern}`);
+  return `assets/${name}`;
+};
+const shared = closure(entry);
+const practice = [
+  ...new Set([
+    ...closure(chunk(/^LegacyApp-.*\.js$/)),
+    ...closure(chunk(/^PracticeWorkspace-.*\.js$/)),
+  ]),
+].filter((file) => !shared.has(file));
+
 const failures: string[] = [];
 const check = (name: string, size: number, limit: number) => {
   console.log(
@@ -53,6 +80,20 @@ const check = (name: string, size: number, limit: number) => {
 check("entry JS", gz(entry), budget.entryJs);
 check("entry CSS", gz(css), budget.entryCss);
 check("Pathways JS", gz(`assets/${pathways}`), budget.pathwaysJs);
+check(
+  "practice JS",
+  practice.reduce((sum, file) => sum + gz(file), 0),
+  budget.practiceJs,
+);
+// Coins and bills are files the browser caches (src/web/scene/money-art.ts),
+// never pictures inside the code every deploy re-sends.
+for (const file of assets.filter((name) => name.endsWith(".js")))
+  if (
+    /data:image\/(?:webp|svg\+xml);base64,/.test(
+      read(`assets/${file}`).toString(),
+    )
+  )
+    failures.push(`${file} embeds a picture as a data URL`);
 // The pitch shows no math and needs no math fonts.
 if (/as="font"/.test(home))
   failures.push("the pitch document preloads fonts it doesn't show");

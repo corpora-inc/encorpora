@@ -10,6 +10,7 @@ import { closeShellDrawer, useShellDrawerSettings } from "../lib/shell-slots";
 import { learnerFrontierOptions } from "../lib/learning-view";
 import { createPortal } from "react-dom";
 import { withProblemHints, type HintedProblem } from "../lib/problem-hints";
+import { withMoneyArt } from "../scene/money-art";
 import type { ProblemHint } from "../../math/contracts";
 import {
   refreshMe,
@@ -1176,6 +1177,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       !templateId && !recoveryStrand && !nativeRuntime
         ? openProblem(learnerId)
         : null;
+    // A money problem shows once its coins and bills can paint whole.
     return batchWithCapabilityFallback(
       {
         ...(templateId ? { templateId } : {}),
@@ -1187,7 +1189,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       },
       (body) => api<Batch>(`/learners/${learnerId}/batches`, body),
       () => authEpoch.current === epoch && learnerRef.current === learnerId,
-    ).then(withProblemHints);
+    )
+      .then(withProblemHints)
+      .then(withMoneyArt);
   }
   // The next problem is planned as soon as an answer is recorded, so it adapts
   // to that answer and is already on hand when the learner continues.

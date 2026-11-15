@@ -125,3 +125,18 @@ test("bill ids support entrances, moves and highlights; focus never recolors the
   );
   assert.ok(face.y + states.one!.dy! - IMAGE_EDGE / 2 >= 4 - 1e-8);
 });
+
+// The app's browser build draws from bill-art.files.ts (vite.config.ts):
+// the same SVG files, served as they are.
+test("the browser's bills are the same SVG files, one per value", () => {
+  const source = readFileSync(
+    new URL("../src/web/scene/bill-art.files.ts", import.meta.url),
+    "utf8",
+  );
+  assert.match(source, /import one from "\.\/bill-art\/one\.svg";/);
+  assert.match(source, /import five from "\.\/bill-art\/five\.svg";/);
+  assert.match(
+    source,
+    /billFaceUrl: Record<BillValue, string> = \{ 1: one, 5: five \}/,
+  );
+});
