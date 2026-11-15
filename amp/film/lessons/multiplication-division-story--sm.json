@@ -1,0 +1,7874 @@
+{
+  "id": "multiplication-division-story--sm",
+  "title": "Multiplication and division word problems",
+  "teaches": [
+    "story-operation-choice",
+    "story-operations-slots",
+    "operation-sentence-choice"
+  ],
+  "skill": "multiplicative-stories",
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "points": {
+          "piece0A": [
+            0,
+            2
+          ],
+          "piece0B": [
+            2,
+            2
+          ],
+          "piece0C": [
+            2,
+            0
+          ],
+          "piece0D": [
+            0,
+            0
+          ],
+          "two0P": [
+            1,
+            1
+          ],
+          "ten0P": [
+            1,
+            1
+          ],
+          "piece1A": [
+            2,
+            2
+          ],
+          "piece1B": [
+            4,
+            2
+          ],
+          "piece1C": [
+            4,
+            0
+          ],
+          "piece1D": [
+            2,
+            0
+          ],
+          "two1P": [
+            3,
+            1
+          ],
+          "ten1P": [
+            3,
+            1
+          ],
+          "piece2A": [
+            4,
+            2
+          ],
+          "piece2B": [
+            6,
+            2
+          ],
+          "piece2C": [
+            6,
+            0
+          ],
+          "piece2D": [
+            4,
+            0
+          ],
+          "two2P": [
+            5,
+            1
+          ],
+          "ten2P": [
+            5,
+            1
+          ],
+          "piece3A": [
+            6,
+            2
+          ],
+          "piece3B": [
+            8,
+            2
+          ],
+          "piece3C": [
+            8,
+            0
+          ],
+          "piece3D": [
+            6,
+            0
+          ],
+          "two3P": [
+            7,
+            1
+          ],
+          "ten3P": [
+            7,
+            1
+          ],
+          "piece4A": [
+            8,
+            2
+          ],
+          "piece4B": [
+            10,
+            2
+          ],
+          "piece4C": [
+            10,
+            0
+          ],
+          "piece4D": [
+            8,
+            0
+          ],
+          "two4P": [
+            9,
+            1
+          ],
+          "ten4P": [
+            9,
+            1
+          ],
+          "piece5A": [
+            10,
+            2
+          ],
+          "piece5B": [
+            12,
+            2
+          ],
+          "piece5C": [
+            12,
+            0
+          ],
+          "piece5D": [
+            10,
+            0
+          ],
+          "two5P": [
+            11,
+            1
+          ],
+          "ten5P": [
+            11,
+            1
+          ],
+          "piece6A": [
+            12,
+            2
+          ],
+          "piece6B": [
+            14,
+            2
+          ],
+          "piece6C": [
+            14,
+            0
+          ],
+          "piece6D": [
+            12,
+            0
+          ],
+          "two6P": [
+            13,
+            1
+          ],
+          "ten6P": [
+            13,
+            1
+          ],
+          "bracketA": [
+            0,
+            -0.7
+          ],
+          "bracketB": [
+            14,
+            -0.7
+          ],
+          "leftEndA": [
+            0,
+            -0.3
+          ],
+          "leftEndB": [
+            0,
+            -0.7
+          ],
+          "rightEndA": [
+            14,
+            -0.3
+          ],
+          "rightEndB": [
+            14,
+            -0.7
+          ],
+          "groupsP": [
+            7,
+            3.4
+          ],
+          "wholeNameP": [
+            7,
+            -3.7
+          ],
+          "questionP": [
+            7,
+            -2.1
+          ],
+          "fourteenP": [
+            7,
+            -2.1
+          ],
+          "seventyP": [
+            7,
+            -2.1
+          ],
+          "Each": [
+            1,
+            1
+          ],
+          "washA": [
+            0,
+            2
+          ],
+          "washB": [
+            2,
+            2
+          ],
+          "washC": [
+            2,
+            0
+          ],
+          "washD": [
+            0,
+            0
+          ]
+        },
+        "parts": [
+          {
+            "id": "piece0",
+            "poly": [
+              "piece0A",
+              "piece0B",
+              "piece0C",
+              "piece0D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "two0",
+            "label": "2",
+            "at": "two0P",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "ten0",
+            "label": "10",
+            "at": "ten0P",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "piece1",
+            "poly": [
+              "piece1A",
+              "piece1B",
+              "piece1C",
+              "piece1D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "two1",
+            "label": "2",
+            "at": "two1P",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "ten1",
+            "label": "10",
+            "at": "ten1P",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "piece2",
+            "poly": [
+              "piece2A",
+              "piece2B",
+              "piece2C",
+              "piece2D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "two2",
+            "label": "2",
+            "at": "two2P",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "ten2",
+            "label": "10",
+            "at": "ten2P",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "piece3",
+            "poly": [
+              "piece3A",
+              "piece3B",
+              "piece3C",
+              "piece3D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "two3",
+            "label": "2",
+            "at": "two3P",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "ten3",
+            "label": "10",
+            "at": "ten3P",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "piece4",
+            "poly": [
+              "piece4A",
+              "piece4B",
+              "piece4C",
+              "piece4D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "two4",
+            "label": "2",
+            "at": "two4P",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "ten4",
+            "label": "10",
+            "at": "ten4P",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "piece5",
+            "poly": [
+              "piece5A",
+              "piece5B",
+              "piece5C",
+              "piece5D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "two5",
+            "label": "2",
+            "at": "two5P",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "ten5",
+            "label": "10",
+            "at": "ten5P",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "piece6",
+            "poly": [
+              "piece6A",
+              "piece6B",
+              "piece6C",
+              "piece6D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "two6",
+            "label": "2",
+            "at": "two6P",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "ten6",
+            "label": "10",
+            "at": "ten6P",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "bracket",
+            "seg": [
+              "bracketA",
+              "bracketB"
+            ],
+            "ink": "warm"
+          },
+          {
+            "id": "leftEnd",
+            "seg": [
+              "leftEndA",
+              "leftEndB"
+            ],
+            "ink": "warm"
+          },
+          {
+            "id": "rightEnd",
+            "seg": [
+              "rightEndA",
+              "rightEndB"
+            ],
+            "ink": "warm"
+          },
+          {
+            "id": "groups",
+            "label": "7\\text{ equal pieces}",
+            "at": "groupsP",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue"
+          },
+          {
+            "id": "wholeName",
+            "label": "\\text{Total length (cm)}",
+            "at": "wholeNameP",
+            "dir": "c",
+            "size": "m",
+            "ink": "muted"
+          },
+          {
+            "id": "question",
+            "label": "?",
+            "at": "questionP",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm",
+            "flies": true
+          },
+          {
+            "id": "fourteen",
+            "label": "14",
+            "at": "fourteenP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "warm"
+          },
+          {
+            "id": "seventy",
+            "label": "70",
+            "at": "seventyP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "warm"
+          },
+          {
+            "id": "wash",
+            "poly": [
+              "washA",
+              "washB",
+              "washC",
+              "washD"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "sheer": true
+          },
+          {
+            "id": "focusPiece0",
+            "poly": [
+              "piece0A",
+              "piece0B",
+              "piece0C",
+              "piece0D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusPiece1",
+            "poly": [
+              "piece1A",
+              "piece1B",
+              "piece1C",
+              "piece1D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusPiece2",
+            "poly": [
+              "piece2A",
+              "piece2B",
+              "piece2C",
+              "piece2D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusPiece3",
+            "poly": [
+              "piece3A",
+              "piece3B",
+              "piece3C",
+              "piece3D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusPiece4",
+            "poly": [
+              "piece4A",
+              "piece4B",
+              "piece4C",
+              "piece4D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusPiece5",
+            "poly": [
+              "piece5A",
+              "piece5B",
+              "piece5C",
+              "piece5D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusPiece6",
+            "poly": [
+              "piece6A",
+              "piece6B",
+              "piece6C",
+              "piece6D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusGroups",
+            "label": "7\\text{ equal pieces}",
+            "at": "groupsP",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold"
+          },
+          {
+            "id": "focusTwo0",
+            "label": "2",
+            "at": "two0P",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold"
+          },
+          {
+            "id": "focusQuestion",
+            "label": "?",
+            "at": "questionP",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold",
+            "flies": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A ribbon is cut into seven pieces, each two centimeters long, with none left over. How long was the ribbon?",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Which number is missing?"
+            },
+            {
+              "do": "show",
+              "target": "groups",
+              "at": "seven"
+            },
+            {
+              "do": "show",
+              "target": "two0",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": [
+                "bracket",
+                "leftEnd",
+                "rightEnd",
+                "wholeName",
+                "question"
+              ],
+              "at": "How"
+            },
+            {
+              "do": "text",
+              "text": "7 pieces · 2 cm each",
+              "at": "two"
+            },
+            {
+              "do": "text",
+              "text": "Find the whole length.",
+              "at": "How"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Another ribbon is seventy centimeters long, cut into seven equal pieces. How long is each piece?",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "A second ribbon"
+            },
+            {
+              "do": "hide",
+              "target": "two0",
+              "dur": 0.01
+            },
+            {
+              "do": "show",
+              "target": "seventy",
+              "at": "seventy"
+            },
+            {
+              "do": "move",
+              "points": {
+                "questionP": "Each"
+              },
+              "dur": 1.3,
+              "at": "Another"
+            },
+            {
+              "do": "text",
+              "text": "70 cm in all · 7 equal pieces",
+              "at": "seventy"
+            },
+            {
+              "do": "text",
+              "text": "Find one piece’s length.",
+              "at": "How"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Both stories say cut. Do I divide both?",
+          "pause": 0.05,
+          "do": []
+        },
+        {
+          "speaker": "teacher",
+          "say": "The word cut doesn't decide. Let's return to the first ribbon and put the numbers where they belong.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Three places for numbers"
+            },
+            {
+              "do": "hide",
+              "target": "seventy",
+              "dur": 0.01
+            },
+            {
+              "do": "move",
+              "points": {
+                "questionP": [
+                  7,
+                  -2.1
+                ]
+              },
+              "dur": 1.1,
+              "at": "return"
+            },
+            {
+              "do": "show",
+              "target": "two0",
+              "at": "numbers"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Equal groups have the same amount in every group. Here, each piece is a group.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "text",
+              "text": "Equal groups: the same amount in each."
+            },
+            {
+              "do": "show",
+              "target": [
+                "focusPiece0",
+                "focusPiece1",
+                "focusPiece2",
+                "focusPiece3",
+                "focusPiece4",
+                "focusPiece5",
+                "focusPiece6"
+              ],
+              "dur": 0.16
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "We need three numbers. How many pieces: seven. How long is each: two centimeters. How long altogether: that's missing.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "focusPiece0",
+                "focusPiece1",
+                "focusPiece2",
+                "focusPiece3",
+                "focusPiece4",
+                "focusPiece5",
+                "focusPiece6"
+              ],
+              "dur": 0.16
+            },
+            {
+              "do": "text",
+              "text": "Groups · amount in each · total",
+              "at": "three"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "groups"
+              ],
+              "dur": 0.16,
+              "at": "seven"
+            },
+            {
+              "do": "show",
+              "target": [
+                "focusGroups"
+              ],
+              "dur": 0.16,
+              "at": "seven"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "focusGroups"
+              ],
+              "dur": 0.16,
+              "at": "How",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": [
+                "groups"
+              ],
+              "dur": 0.16,
+              "at": "How",
+              "nth": 2
+            },
+            {
+              "do": "hide",
+              "target": [
+                "two0"
+              ],
+              "dur": 0.16,
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": [
+                "focusTwo0"
+              ],
+              "dur": 0.16,
+              "at": "two"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "focusTwo0"
+              ],
+              "dur": 0.16,
+              "at": "How",
+              "nth": 3
+            },
+            {
+              "do": "show",
+              "target": [
+                "two0"
+              ],
+              "dur": 0.16,
+              "at": "How",
+              "nth": 3
+            },
+            {
+              "do": "hide",
+              "target": [
+                "question"
+              ],
+              "dur": 0.16,
+              "at": "missing"
+            },
+            {
+              "do": "show",
+              "target": [
+                "focusQuestion"
+              ],
+              "dur": 0.16,
+              "at": "missing"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Two centimeters here, and two more here. Every piece adds another two.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "focusQuestion"
+              ],
+              "dur": 0.16
+            },
+            {
+              "do": "show",
+              "target": [
+                "question"
+              ],
+              "dur": 0.16
+            },
+            {
+              "do": "show",
+              "target": "wash",
+              "at": "here"
+            },
+            {
+              "do": "show",
+              "target": "two1",
+              "at": "more"
+            },
+            {
+              "do": "slide",
+              "target": "wash",
+              "by": [
+                2,
+                0
+              ],
+              "dur": 0.7,
+              "at": "more"
+            },
+            {
+              "do": "show",
+              "target": [
+                "two2",
+                "two3",
+                "two4",
+                "two5",
+                "two6"
+              ],
+              "at": "Every"
+            },
+            {
+              "do": "hide",
+              "target": "wash",
+              "dur": 0.01,
+              "at": "Every"
+            },
+            {
+              "do": "slide",
+              "target": "wash",
+              "by": [
+                -2,
+                0
+              ],
+              "dur": 0.4,
+              "at": "Every"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Two, four, six, eight, ten, twelve, fourteen.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "show",
+              "target": "wash",
+              "dur": 0.16,
+              "at": "Two"
+            },
+            {
+              "do": "slide",
+              "target": "wash",
+              "by": [
+                2,
+                0
+              ],
+              "dur": 0.4,
+              "at": "four"
+            },
+            {
+              "do": "slide",
+              "target": "wash",
+              "by": [
+                2,
+                0
+              ],
+              "dur": 0.4,
+              "at": "six"
+            },
+            {
+              "do": "slide",
+              "target": "wash",
+              "by": [
+                2,
+                0
+              ],
+              "dur": 0.4,
+              "at": "eight"
+            },
+            {
+              "do": "slide",
+              "target": "wash",
+              "by": [
+                2,
+                0
+              ],
+              "dur": 0.4,
+              "at": "ten"
+            },
+            {
+              "do": "slide",
+              "target": "wash",
+              "by": [
+                2,
+                0
+              ],
+              "dur": 0.4,
+              "at": "twelve"
+            },
+            {
+              "do": "slide",
+              "target": "wash",
+              "by": [
+                2,
+                0
+              ],
+              "dur": 0.4,
+              "at": "fourteen"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Seven groups of two make fourteen. Multiplication joins the equal lengths to find the total.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Find the total"
+            },
+            {
+              "do": "hide",
+              "target": "wash"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{7}\\times\\ca{2}=?",
+              "at": "two"
+            },
+            {
+              "do": "hide",
+              "target": "question",
+              "at": "fourteen",
+              "dur": 0.01
+            },
+            {
+              "do": "show",
+              "target": "fourteen",
+              "at": "fourteen"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{7}\\times\\ca{2}=\\cw{14}",
+              "at": "fourteen"
+            },
+            {
+              "do": "answer",
+              "tex": "14\\text{ cm in all}",
+              "at": "total"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "For the second ribbon, keep the seven pieces. Its total length is seventy centimeters.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Find the length of one piece"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "two0",
+                "two1",
+                "two2",
+                "two3",
+                "two4",
+                "two5",
+                "two6",
+                "fourteen"
+              ],
+              "dur": 0.01
+            },
+            {
+              "do": "show",
+              "target": "question"
+            },
+            {
+              "do": "show",
+              "target": "seventy",
+              "at": "seventy"
+            },
+            {
+              "do": "move",
+              "points": {
+                "questionP": "Each"
+              },
+              "dur": 1.6,
+              "at": "second"
+            },
+            {
+              "do": "text",
+              "text": "70 cm shared among 7 equal pieces",
+              "at": "seventy"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "The question mark moved inside a piece!",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "question"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Seven times a missing length equals seventy. Division finds that length: seventy divided by seven.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cb{7}\\times\\square=\\cw{70}",
+              "at": "times"
+            },
+            {
+              "do": "write",
+              "tex": "\\cw{70}\\div\\cb{7}=?",
+              "at": "divided"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Ten centimeters in each piece. Seven tens make seventy, so all the ribbon is used.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "hide",
+              "target": "question",
+              "at": "Ten",
+              "dur": 0.01
+            },
+            {
+              "do": "show",
+              "target": "ten0",
+              "at": "Ten"
+            },
+            {
+              "do": "show",
+              "target": [
+                "ten1",
+                "ten2",
+                "ten3",
+                "ten4",
+                "ten5",
+                "ten6"
+              ],
+              "at": "Seven"
+            },
+            {
+              "do": "write",
+              "tex": "70\\div7=10",
+              "at": "centimeters"
+            },
+            {
+              "do": "answer",
+              "tex": "10\\text{ cm per piece}",
+              "at": "each"
+            },
+            {
+              "do": "write",
+              "tex": "7\\times10=70",
+              "fresh": true,
+              "at": "tens"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "We multiplied for the whole length. We divided for one piece's length.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "The missing number decides"
+            },
+            {
+              "do": "write",
+              "tex": "7\\times2=14"
+            },
+            {
+              "do": "write",
+              "tex": "70\\div7=10",
+              "fresh": true,
+              "at": "divided"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "ten0",
+                "ten1",
+                "ten2",
+                "ten3",
+                "ten4",
+                "ten5",
+                "ten6",
+                "seventy"
+              ],
+              "dur": 0.16,
+              "at": "multiplied"
+            },
+            {
+              "do": "show",
+              "target": [
+                "two0",
+                "two1",
+                "two2",
+                "two3",
+                "two4",
+                "two5",
+                "two6",
+                "fourteen"
+              ],
+              "dur": 0.16,
+              "at": "multiplied"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "two0",
+                "two1",
+                "two2",
+                "two3",
+                "two4",
+                "two5",
+                "two6",
+                "fourteen"
+              ],
+              "dur": 0.16,
+              "at": "divided"
+            },
+            {
+              "do": "show",
+              "target": [
+                "ten0",
+                "ten1",
+                "ten2",
+                "ten3",
+                "ten4",
+                "ten5",
+                "ten6",
+                "seventy"
+              ],
+              "dur": 0.16,
+              "at": "divided"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "unknownP": [
+            5.35,
+            4.1
+          ],
+          "sixP": [
+            5.35,
+            4.1
+          ],
+          "wholeP": [
+            5.35,
+            -5.8
+          ],
+          "jug0A": [
+            0,
+            2
+          ],
+          "jug0B": [
+            2.7,
+            2
+          ],
+          "jug0C": [
+            2.7,
+            -0.6000000000000001
+          ],
+          "jug0D": [
+            0,
+            -0.6000000000000001
+          ],
+          "water0A": [
+            0.12,
+            1.6
+          ],
+          "water0B": [
+            2.58,
+            1.6
+          ],
+          "water0C": [
+            2.58,
+            -0.44999999999999973
+          ],
+          "water0D": [
+            0.12,
+            -0.44999999999999973
+          ],
+          "neck0A": [
+            0.65,
+            2.65
+          ],
+          "neck0B": [
+            2.05,
+            2.65
+          ],
+          "four0P": [
+            1.35,
+            0.6499999999999999
+          ],
+          "jug1A": [
+            4,
+            2
+          ],
+          "jug1B": [
+            6.7,
+            2
+          ],
+          "jug1C": [
+            6.7,
+            -0.6000000000000001
+          ],
+          "jug1D": [
+            4,
+            -0.6000000000000001
+          ],
+          "water1A": [
+            4.12,
+            1.6
+          ],
+          "water1B": [
+            6.58,
+            1.6
+          ],
+          "water1C": [
+            6.58,
+            -0.44999999999999973
+          ],
+          "water1D": [
+            4.12,
+            -0.44999999999999973
+          ],
+          "neck1A": [
+            4.65,
+            2.65
+          ],
+          "neck1B": [
+            6.05,
+            2.65
+          ],
+          "four1P": [
+            5.35,
+            0.6499999999999999
+          ],
+          "jug2A": [
+            8,
+            2
+          ],
+          "jug2B": [
+            10.7,
+            2
+          ],
+          "jug2C": [
+            10.7,
+            -0.6000000000000001
+          ],
+          "jug2D": [
+            8,
+            -0.6000000000000001
+          ],
+          "water2A": [
+            8.12,
+            1.6
+          ],
+          "water2B": [
+            10.579999999999998,
+            1.6
+          ],
+          "water2C": [
+            10.579999999999998,
+            -0.44999999999999973
+          ],
+          "water2D": [
+            8.12,
+            -0.44999999999999973
+          ],
+          "neck2A": [
+            8.65,
+            2.65
+          ],
+          "neck2B": [
+            10.05,
+            2.65
+          ],
+          "four2P": [
+            9.35,
+            0.6499999999999999
+          ],
+          "jug3A": [
+            0,
+            -2.0
+          ],
+          "jug3B": [
+            2.7,
+            -2.0
+          ],
+          "jug3C": [
+            2.7,
+            -4.6
+          ],
+          "jug3D": [
+            0,
+            -4.6
+          ],
+          "water3A": [
+            0.12,
+            -2.4
+          ],
+          "water3B": [
+            2.58,
+            -2.4
+          ],
+          "water3C": [
+            2.58,
+            -4.45
+          ],
+          "water3D": [
+            0.12,
+            -4.45
+          ],
+          "neck3A": [
+            0.65,
+            -1.35
+          ],
+          "neck3B": [
+            2.05,
+            -1.35
+          ],
+          "four3P": [
+            1.35,
+            -3.35
+          ],
+          "jug4A": [
+            4,
+            -2.0
+          ],
+          "jug4B": [
+            6.7,
+            -2.0
+          ],
+          "jug4C": [
+            6.7,
+            -4.6
+          ],
+          "jug4D": [
+            4,
+            -4.6
+          ],
+          "water4A": [
+            4.12,
+            -2.4
+          ],
+          "water4B": [
+            6.58,
+            -2.4
+          ],
+          "water4C": [
+            6.58,
+            -4.45
+          ],
+          "water4D": [
+            4.12,
+            -4.45
+          ],
+          "neck4A": [
+            4.65,
+            -1.35
+          ],
+          "neck4B": [
+            6.05,
+            -1.35
+          ],
+          "four4P": [
+            5.35,
+            -3.35
+          ],
+          "jug5A": [
+            8,
+            -2.0
+          ],
+          "jug5B": [
+            10.7,
+            -2.0
+          ],
+          "jug5C": [
+            10.7,
+            -4.6
+          ],
+          "jug5D": [
+            8,
+            -4.6
+          ],
+          "water5A": [
+            8.12,
+            -2.4
+          ],
+          "water5B": [
+            10.579999999999998,
+            -2.4
+          ],
+          "water5C": [
+            10.579999999999998,
+            -4.45
+          ],
+          "water5D": [
+            8.12,
+            -4.45
+          ],
+          "neck5A": [
+            8.65,
+            -1.35
+          ],
+          "neck5B": [
+            10.05,
+            -1.35
+          ],
+          "four5P": [
+            9.35,
+            -3.35
+          ],
+          "jug0V0": [
+            0,
+            2
+          ],
+          "jug0V1": [
+            0.65,
+            2.3
+          ],
+          "jug0V2": [
+            0.65,
+            2.65
+          ],
+          "jug0V3": [
+            2.05,
+            2.65
+          ],
+          "jug0V4": [
+            2.05,
+            2.3
+          ],
+          "jug0V5": [
+            2.7,
+            2
+          ],
+          "jug0V6": [
+            2.7,
+            -0.6000000000000001
+          ],
+          "jug0V7": [
+            0,
+            -0.6000000000000001
+          ],
+          "jug1V0": [
+            4,
+            2
+          ],
+          "jug1V1": [
+            4.65,
+            2.3
+          ],
+          "jug1V2": [
+            4.65,
+            2.65
+          ],
+          "jug1V3": [
+            6.05,
+            2.65
+          ],
+          "jug1V4": [
+            6.05,
+            2.3
+          ],
+          "jug1V5": [
+            6.7,
+            2
+          ],
+          "jug1V6": [
+            6.7,
+            -0.6000000000000001
+          ],
+          "jug1V7": [
+            4,
+            -0.6000000000000001
+          ],
+          "jug2V0": [
+            8,
+            2
+          ],
+          "jug2V1": [
+            8.65,
+            2.3
+          ],
+          "jug2V2": [
+            8.65,
+            2.65
+          ],
+          "jug2V3": [
+            10.05,
+            2.65
+          ],
+          "jug2V4": [
+            10.05,
+            2.3
+          ],
+          "jug2V5": [
+            10.7,
+            2
+          ],
+          "jug2V6": [
+            10.7,
+            -0.6000000000000001
+          ],
+          "jug2V7": [
+            8,
+            -0.6000000000000001
+          ],
+          "jug3V0": [
+            0,
+            -2.0
+          ],
+          "jug3V1": [
+            0.65,
+            -1.7
+          ],
+          "jug3V2": [
+            0.65,
+            -1.35
+          ],
+          "jug3V3": [
+            2.05,
+            -1.35
+          ],
+          "jug3V4": [
+            2.05,
+            -1.7
+          ],
+          "jug3V5": [
+            2.7,
+            -2.0
+          ],
+          "jug3V6": [
+            2.7,
+            -4.6
+          ],
+          "jug3V7": [
+            0,
+            -4.6
+          ],
+          "jug4V0": [
+            4,
+            -2.0
+          ],
+          "jug4V1": [
+            4.65,
+            -1.7
+          ],
+          "jug4V2": [
+            4.65,
+            -1.35
+          ],
+          "jug4V3": [
+            6.05,
+            -1.35
+          ],
+          "jug4V4": [
+            6.05,
+            -1.7
+          ],
+          "jug4V5": [
+            6.7,
+            -2.0
+          ],
+          "jug4V6": [
+            6.7,
+            -4.6
+          ],
+          "jug4V7": [
+            4,
+            -4.6
+          ],
+          "jug5V0": [
+            8,
+            -2.0
+          ],
+          "jug5V1": [
+            8.65,
+            -1.7
+          ],
+          "jug5V2": [
+            8.65,
+            -1.35
+          ],
+          "jug5V3": [
+            10.05,
+            -1.35
+          ],
+          "jug5V4": [
+            10.05,
+            -1.7
+          ],
+          "jug5V5": [
+            10.7,
+            -2.0
+          ],
+          "jug5V6": [
+            10.7,
+            -4.6
+          ],
+          "jug5V7": [
+            8,
+            -4.6
+          ]
+        },
+        "parts": [
+          {
+            "id": "unknown",
+            "label": "?\\text{ jugs}",
+            "at": "unknownP",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue"
+          },
+          {
+            "id": "six",
+            "label": "6\\text{ jugs}",
+            "at": "sixP",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue"
+          },
+          {
+            "id": "whole",
+            "label": "24\\text{ liters in all}",
+            "at": "wholeP",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm"
+          },
+          {
+            "id": "jug0",
+            "poly": [
+              "jug0V0",
+              "jug0V1",
+              "jug0V2",
+              "jug0V3",
+              "jug0V4",
+              "jug0V5",
+              "jug0V6",
+              "jug0V7"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "group": "vessel0"
+          },
+          {
+            "id": "water0",
+            "poly": [
+              "water0A",
+              "water0B",
+              "water0C",
+              "water0D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "vessel0"
+          },
+          {
+            "id": "neck0",
+            "seg": [
+              "neck0A",
+              "neck0B"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "group": "vessel0"
+          },
+          {
+            "id": "four0",
+            "label": "4\\text{ L}",
+            "at": "four0P",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "vessel0"
+          },
+          {
+            "id": "jug1",
+            "poly": [
+              "jug1V0",
+              "jug1V1",
+              "jug1V2",
+              "jug1V3",
+              "jug1V4",
+              "jug1V5",
+              "jug1V6",
+              "jug1V7"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "group": "vessel1"
+          },
+          {
+            "id": "water1",
+            "poly": [
+              "water1A",
+              "water1B",
+              "water1C",
+              "water1D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "vessel1"
+          },
+          {
+            "id": "neck1",
+            "seg": [
+              "neck1A",
+              "neck1B"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "group": "vessel1"
+          },
+          {
+            "id": "four1",
+            "label": "4\\text{ L}",
+            "at": "four1P",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "vessel1"
+          },
+          {
+            "id": "jug2",
+            "poly": [
+              "jug2V0",
+              "jug2V1",
+              "jug2V2",
+              "jug2V3",
+              "jug2V4",
+              "jug2V5",
+              "jug2V6",
+              "jug2V7"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "group": "vessel2"
+          },
+          {
+            "id": "water2",
+            "poly": [
+              "water2A",
+              "water2B",
+              "water2C",
+              "water2D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "vessel2"
+          },
+          {
+            "id": "neck2",
+            "seg": [
+              "neck2A",
+              "neck2B"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "group": "vessel2"
+          },
+          {
+            "id": "four2",
+            "label": "4\\text{ L}",
+            "at": "four2P",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "vessel2"
+          },
+          {
+            "id": "jug3",
+            "poly": [
+              "jug3V0",
+              "jug3V1",
+              "jug3V2",
+              "jug3V3",
+              "jug3V4",
+              "jug3V5",
+              "jug3V6",
+              "jug3V7"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "group": "vessel3"
+          },
+          {
+            "id": "water3",
+            "poly": [
+              "water3A",
+              "water3B",
+              "water3C",
+              "water3D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "vessel3"
+          },
+          {
+            "id": "neck3",
+            "seg": [
+              "neck3A",
+              "neck3B"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "group": "vessel3"
+          },
+          {
+            "id": "four3",
+            "label": "4\\text{ L}",
+            "at": "four3P",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "vessel3"
+          },
+          {
+            "id": "jug4",
+            "poly": [
+              "jug4V0",
+              "jug4V1",
+              "jug4V2",
+              "jug4V3",
+              "jug4V4",
+              "jug4V5",
+              "jug4V6",
+              "jug4V7"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "group": "vessel4"
+          },
+          {
+            "id": "water4",
+            "poly": [
+              "water4A",
+              "water4B",
+              "water4C",
+              "water4D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "vessel4"
+          },
+          {
+            "id": "neck4",
+            "seg": [
+              "neck4A",
+              "neck4B"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "group": "vessel4"
+          },
+          {
+            "id": "four4",
+            "label": "4\\text{ L}",
+            "at": "four4P",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "vessel4"
+          },
+          {
+            "id": "jug5",
+            "poly": [
+              "jug5V0",
+              "jug5V1",
+              "jug5V2",
+              "jug5V3",
+              "jug5V4",
+              "jug5V5",
+              "jug5V6",
+              "jug5V7"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "group": "vessel5"
+          },
+          {
+            "id": "water5",
+            "poly": [
+              "water5A",
+              "water5B",
+              "water5C",
+              "water5D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "vessel5"
+          },
+          {
+            "id": "neck5",
+            "seg": [
+              "neck5A",
+              "neck5B"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "group": "vessel5"
+          },
+          {
+            "id": "four5",
+            "label": "4\\text{ L}",
+            "at": "four5P",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "vessel5"
+          },
+          {
+            "id": "focusFour0",
+            "label": "4\\text{ L}",
+            "at": "four0P",
+            "dir": "c",
+            "size": "m",
+            "ink": "gold"
+          },
+          {
+            "id": "focusWhole",
+            "label": "24\\text{ liters in all}",
+            "at": "wholeP",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold"
+          },
+          {
+            "id": "focusUnknown",
+            "label": "?\\text{ jugs}",
+            "at": "unknownP",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold"
+          },
+          {
+            "id": "focusJug0",
+            "poly": [
+              "jug0V0",
+              "jug0V1",
+              "jug0V2",
+              "jug0V3",
+              "jug0V4",
+              "jug0V5",
+              "jug0V6",
+              "jug0V7"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusJug1",
+            "poly": [
+              "jug1V0",
+              "jug1V1",
+              "jug1V2",
+              "jug1V3",
+              "jug1V4",
+              "jug1V5",
+              "jug1V6",
+              "jug1V7"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusJug2",
+            "poly": [
+              "jug2V0",
+              "jug2V1",
+              "jug2V2",
+              "jug2V3",
+              "jug2V4",
+              "jug2V5",
+              "jug2V6",
+              "jug2V7"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusJug3",
+            "poly": [
+              "jug3V0",
+              "jug3V1",
+              "jug3V2",
+              "jug3V3",
+              "jug3V4",
+              "jug3V5",
+              "jug3V6",
+              "jug3V7"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusJug4",
+            "poly": [
+              "jug4V0",
+              "jug4V1",
+              "jug4V2",
+              "jug4V3",
+              "jug4V4",
+              "jug4V5",
+              "jug4V6",
+              "jug4V7"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusJug5",
+            "poly": [
+              "jug5V0",
+              "jug5V1",
+              "jug5V2",
+              "jug5V3",
+              "jug5V4",
+              "jug5V5",
+              "jug5V6",
+              "jug5V7"
+            ],
+            "ink": "gold",
+            "w": 5
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Twenty-four liters of water go into jugs holding four liters each. How many full jugs?",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Find the number of groups"
+            },
+            {
+              "do": "show",
+              "target": [
+                "whole",
+                "unknown"
+              ]
+            },
+            {
+              "do": "show",
+              "target": "vessel0",
+              "at": "four"
+            },
+            {
+              "do": "text",
+              "text": "4 liters in each · 24 liters total"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "We know each jug's amount and the total. The missing number counts the jugs.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\square\\times4=24",
+              "at": "missing"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "four0"
+              ],
+              "dur": 0.16,
+              "at": "amount"
+            },
+            {
+              "do": "show",
+              "target": [
+                "focusFour0"
+              ],
+              "dur": 0.16,
+              "at": "amount"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "focusFour0"
+              ],
+              "dur": 0.16,
+              "at": "total"
+            },
+            {
+              "do": "show",
+              "target": [
+                "four0"
+              ],
+              "dur": 0.16,
+              "at": "total"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "whole"
+              ],
+              "dur": 0.16,
+              "at": "total"
+            },
+            {
+              "do": "show",
+              "target": [
+                "focusWhole"
+              ],
+              "dur": 0.16,
+              "at": "total"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "focusWhole"
+              ],
+              "dur": 0.16,
+              "at": "missing"
+            },
+            {
+              "do": "show",
+              "target": [
+                "whole"
+              ],
+              "dur": 0.16,
+              "at": "missing"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "unknown"
+              ],
+              "dur": 0.16,
+              "at": "missing"
+            },
+            {
+              "do": "show",
+              "target": [
+                "focusUnknown"
+              ],
+              "dur": 0.16,
+              "at": "missing"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Four liters. Eight. Twelve. Sixteen. Twenty. Twenty-four. All the water fits.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "focusUnknown"
+              ],
+              "dur": 0.16
+            },
+            {
+              "do": "show",
+              "target": [
+                "unknown"
+              ],
+              "dur": 0.16
+            },
+            {
+              "do": "show",
+              "target": "vessel1",
+              "at": "Eight"
+            },
+            {
+              "do": "show",
+              "target": "vessel2",
+              "at": "Twelve"
+            },
+            {
+              "do": "show",
+              "target": "vessel3",
+              "at": "Sixteen"
+            },
+            {
+              "do": "show",
+              "target": "vessel4",
+              "at": "Twenty"
+            },
+            {
+              "do": "show",
+              "target": "vessel5",
+              "at": "Twenty-four"
+            },
+            {
+              "do": "show",
+              "target": [
+                "focusJug0"
+              ],
+              "dur": 0.16,
+              "at": "Four"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "focusJug0"
+              ],
+              "dur": 0.16,
+              "at": "Eight"
+            },
+            {
+              "do": "show",
+              "target": [
+                "focusJug1"
+              ],
+              "dur": 0.16,
+              "at": "Eight"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "focusJug1"
+              ],
+              "dur": 0.16,
+              "at": "Twelve"
+            },
+            {
+              "do": "show",
+              "target": [
+                "focusJug2"
+              ],
+              "dur": 0.16,
+              "at": "Twelve"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "focusJug2"
+              ],
+              "dur": 0.16,
+              "at": "Sixteen"
+            },
+            {
+              "do": "show",
+              "target": [
+                "focusJug3"
+              ],
+              "dur": 0.16,
+              "at": "Sixteen"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "focusJug3"
+              ],
+              "dur": 0.16,
+              "at": "Twenty"
+            },
+            {
+              "do": "show",
+              "target": [
+                "focusJug4"
+              ],
+              "dur": 0.16,
+              "at": "Twenty"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "focusJug4"
+              ],
+              "dur": 0.16,
+              "at": "Twenty-four"
+            },
+            {
+              "do": "show",
+              "target": [
+                "focusJug5"
+              ],
+              "dur": 0.16,
+              "at": "Twenty-four"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "focusJug5"
+              ],
+              "dur": 0.16,
+              "at": "All"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Six jugs. Twenty-four divided by four is six.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "hide",
+              "target": "unknown"
+            },
+            {
+              "do": "show",
+              "target": "six"
+            },
+            {
+              "do": "write",
+              "tex": "24\\div4=6",
+              "at": "divided"
+            },
+            {
+              "do": "answer",
+              "tex": "6\\text{ jugs}",
+              "at": "six",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Six groups of four liters use all twenty-four liters. Division can find the number of groups, too.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "write",
+              "tex": "6\\times4=24",
+              "fresh": true,
+              "at": "Six"
+            },
+            {
+              "do": "highlight",
+              "target": "six",
+              "at": "number"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "a0": [
+            0,
+            0
+          ],
+          "b0": [
+            1,
+            1.35
+          ],
+          "c0": [
+            2,
+            0
+          ],
+          "len0P": [
+            1,
+            2.15
+          ],
+          "a1": [
+            2,
+            0
+          ],
+          "b1": [
+            3,
+            1.35
+          ],
+          "c1": [
+            4,
+            0
+          ],
+          "len1P": [
+            3,
+            2.15
+          ],
+          "a2": [
+            4,
+            0
+          ],
+          "b2": [
+            5,
+            1.35
+          ],
+          "c2": [
+            6,
+            0
+          ],
+          "len2P": [
+            5,
+            2.15
+          ],
+          "countP": [
+            3,
+            3.7
+          ],
+          "landingP": [
+            6,
+            -1.2
+          ],
+          "Traveler": [
+            0,
+            0
+          ],
+          "rise0": [
+            0.4,
+            0.95
+          ],
+          "fall0": [
+            1.6,
+            0.95
+          ],
+          "rise1": [
+            2.4,
+            0.95
+          ],
+          "fall1": [
+            3.6,
+            0.95
+          ],
+          "rise2": [
+            4.4,
+            0.95
+          ],
+          "fall2": [
+            5.6,
+            0.95
+          ]
+        },
+        "parts": [
+          {
+            "id": "axis",
+            "axes": true,
+            "y": false,
+            "xrange": [
+              0,
+              6.6
+            ],
+            "step": 1,
+            "every": 2,
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "jump0",
+            "curve": [
+              "a0",
+              "rise0",
+              "b0",
+              "fall0",
+              "c0"
+            ],
+            "ink": "accent",
+            "w": 4
+          },
+          {
+            "id": "len0",
+            "label": "+2",
+            "at": "len0P",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent"
+          },
+          {
+            "id": "jump1",
+            "curve": [
+              "a1",
+              "rise1",
+              "b1",
+              "fall1",
+              "c1"
+            ],
+            "ink": "accent",
+            "w": 4
+          },
+          {
+            "id": "len1",
+            "label": "+2",
+            "at": "len1P",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent"
+          },
+          {
+            "id": "jump2",
+            "curve": [
+              "a2",
+              "rise2",
+              "b2",
+              "fall2",
+              "c2"
+            ],
+            "ink": "accent",
+            "w": 4
+          },
+          {
+            "id": "len2",
+            "label": "+2",
+            "at": "len2P",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent"
+          },
+          {
+            "id": "count",
+            "label": "3\\text{ equal jumps}",
+            "at": "countP",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue"
+          },
+          {
+            "id": "landing",
+            "label": "n",
+            "at": "landingP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "warm"
+          },
+          {
+            "id": "traveler",
+            "dot": "Traveler",
+            "ink": "warm",
+            "r": 8,
+            "start": true
+          },
+          {
+            "id": "focusLanding",
+            "label": "n",
+            "at": "landingP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "gold"
+          },
+          {
+            "id": "focusJump0",
+            "curve": [
+              "a0",
+              "rise0",
+              "b0",
+              "fall0",
+              "c0"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusJump1",
+            "curve": [
+              "a1",
+              "rise1",
+              "b1",
+              "fall1",
+              "c1"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusJump2",
+            "curve": [
+              "a2",
+              "rise2",
+              "b2",
+              "fall2",
+              "c2"
+            ],
+            "ink": "gold",
+            "w": 5
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Equal groups can be jumps. Start at zero. Make three jumps of two.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "The total can have a name"
+            },
+            {
+              "do": "show",
+              "target": "count",
+              "at": "three"
+            },
+            {
+              "do": "text",
+              "text": "3 jumps · 2 units per jump"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Two. Four. Six.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "draw",
+              "target": "jump0",
+              "at": "Two"
+            },
+            {
+              "do": "show",
+              "target": "len0",
+              "at": "Two"
+            },
+            {
+              "do": "move",
+              "points": {
+                "Traveler": [
+                  2,
+                  0
+                ]
+              },
+              "dur": 0.65,
+              "at": "Two"
+            },
+            {
+              "do": "draw",
+              "target": "jump1",
+              "at": "Four"
+            },
+            {
+              "do": "show",
+              "target": "len1",
+              "at": "Four"
+            },
+            {
+              "do": "move",
+              "points": {
+                "Traveler": [
+                  4,
+                  0
+                ]
+              },
+              "dur": 0.65,
+              "at": "Four"
+            },
+            {
+              "do": "draw",
+              "target": "jump2",
+              "at": "Six"
+            },
+            {
+              "do": "show",
+              "target": "len2",
+              "at": "Six"
+            },
+            {
+              "do": "move",
+              "points": {
+                "Traveler": [
+                  6,
+                  0
+                ]
+              },
+              "dur": 0.65,
+              "at": "Six"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Call the landing number *n*. An equation is a number sentence with an equal sign.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "show",
+              "target": "landing",
+              "at": "n"
+            },
+            {
+              "do": "write",
+              "tex": "3\\times2=n",
+              "at": "n"
+            },
+            {
+              "do": "text",
+              "text": "An equation has an equal sign.",
+              "at": "equation"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Adding two three times gives six. Three times two names that same total.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "2+2+2=6",
+              "at": "Adding"
+            },
+            {
+              "do": "write",
+              "tex": "3\\times2=n",
+              "at": "Three"
+            },
+            {
+              "do": "write",
+              "tex": "n=6",
+              "at": "total"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Two times three also equals six. And the total divided by two must give three jumps.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Different sentences, same total"
+            },
+            {
+              "do": "write",
+              "tex": "2\\times3=n",
+              "at": "times"
+            },
+            {
+              "do": "write",
+              "tex": "n\\div2=3",
+              "at": "divided"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "landing"
+              ],
+              "dur": 0.16,
+              "at": "total"
+            },
+            {
+              "do": "show",
+              "target": [
+                "focusLanding"
+              ],
+              "dur": 0.16,
+              "at": "total"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "focusLanding"
+              ],
+              "dur": 0.16,
+              "at": "divided"
+            },
+            {
+              "do": "show",
+              "target": [
+                "landing"
+              ],
+              "dur": 0.16,
+              "at": "divided"
+            },
+            {
+              "do": "show",
+              "target": [
+                "focusJump0",
+                "focusJump1",
+                "focusJump2"
+              ],
+              "dur": 0.16,
+              "at": "jumps"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "But three times three would use jumps of three. It cannot describe these jumps of two.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "focusJump0",
+                "focusJump1",
+                "focusJump2"
+              ],
+              "dur": 0.16
+            },
+            {
+              "do": "write",
+              "tex": "3\\times3=n",
+              "id": "wrongJump",
+              "at": "three"
+            },
+            {
+              "do": "strike",
+              "target": "wrongJump",
+              "at": "cannot"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "len0",
+                "len1",
+                "len2"
+              ],
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "So I check what each number means, even when the question asks which sentence cannot work.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "text",
+              "text": "Match the groups, each amount, and total."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "boxesP": [
+            6,
+            3.1
+          ],
+          "perP": [
+            6,
+            -8.1
+          ],
+          "box0A": [
+            0,
+            1.5
+          ],
+          "box0B": [
+            3.5,
+            1.5
+          ],
+          "box0C": [
+            3.5,
+            -0.7999999999999998
+          ],
+          "box0D": [
+            0,
+            -0.7999999999999998
+          ],
+          "marker0x0A": [
+            0.5,
+            1.1
+          ],
+          "marker0x0B": [
+            0.5,
+            0.55
+          ],
+          "marker0x1A": [
+            1.3,
+            1.1
+          ],
+          "marker0x1B": [
+            1.3,
+            0.55
+          ],
+          "marker0x2A": [
+            2.1,
+            1.1
+          ],
+          "marker0x2B": [
+            2.1,
+            0.55
+          ],
+          "marker0x3A": [
+            2.9000000000000004,
+            1.1
+          ],
+          "marker0x3B": [
+            2.9000000000000004,
+            0.55
+          ],
+          "marker0x4A": [
+            0.5,
+            0.10000000000000009
+          ],
+          "marker0x4B": [
+            0.5,
+            -0.44999999999999996
+          ],
+          "marker0x5A": [
+            1.3,
+            0.10000000000000009
+          ],
+          "marker0x5B": [
+            1.3,
+            -0.44999999999999996
+          ],
+          "marker0x6A": [
+            2.1,
+            0.10000000000000009
+          ],
+          "marker0x6B": [
+            2.1,
+            -0.44999999999999996
+          ],
+          "marker0x7A": [
+            2.9000000000000004,
+            0.10000000000000009
+          ],
+          "marker0x7B": [
+            2.9000000000000004,
+            -0.44999999999999996
+          ],
+          "box1A": [
+            4.3,
+            1.5
+          ],
+          "box1B": [
+            7.8,
+            1.5
+          ],
+          "box1C": [
+            7.8,
+            -0.7999999999999998
+          ],
+          "box1D": [
+            4.3,
+            -0.7999999999999998
+          ],
+          "marker1x0A": [
+            4.8,
+            1.1
+          ],
+          "marker1x0B": [
+            4.8,
+            0.55
+          ],
+          "marker1x1A": [
+            5.6,
+            1.1
+          ],
+          "marker1x1B": [
+            5.6,
+            0.55
+          ],
+          "marker1x2A": [
+            6.4,
+            1.1
+          ],
+          "marker1x2B": [
+            6.4,
+            0.55
+          ],
+          "marker1x3A": [
+            7.2,
+            1.1
+          ],
+          "marker1x3B": [
+            7.2,
+            0.55
+          ],
+          "marker1x4A": [
+            4.8,
+            0.10000000000000009
+          ],
+          "marker1x4B": [
+            4.8,
+            -0.44999999999999996
+          ],
+          "marker1x5A": [
+            5.6,
+            0.10000000000000009
+          ],
+          "marker1x5B": [
+            5.6,
+            -0.44999999999999996
+          ],
+          "marker1x6A": [
+            6.4,
+            0.10000000000000009
+          ],
+          "marker1x6B": [
+            6.4,
+            -0.44999999999999996
+          ],
+          "marker1x7A": [
+            7.2,
+            0.10000000000000009
+          ],
+          "marker1x7B": [
+            7.2,
+            -0.44999999999999996
+          ],
+          "box2A": [
+            8.6,
+            1.5
+          ],
+          "box2B": [
+            12.1,
+            1.5
+          ],
+          "box2C": [
+            12.1,
+            -0.7999999999999998
+          ],
+          "box2D": [
+            8.6,
+            -0.7999999999999998
+          ],
+          "marker2x0A": [
+            9.1,
+            1.1
+          ],
+          "marker2x0B": [
+            9.1,
+            0.55
+          ],
+          "marker2x1A": [
+            9.9,
+            1.1
+          ],
+          "marker2x1B": [
+            9.9,
+            0.55
+          ],
+          "marker2x2A": [
+            10.7,
+            1.1
+          ],
+          "marker2x2B": [
+            10.7,
+            0.55
+          ],
+          "marker2x3A": [
+            11.5,
+            1.1
+          ],
+          "marker2x3B": [
+            11.5,
+            0.55
+          ],
+          "marker2x4A": [
+            9.1,
+            0.10000000000000009
+          ],
+          "marker2x4B": [
+            9.1,
+            -0.44999999999999996
+          ],
+          "marker2x5A": [
+            9.9,
+            0.10000000000000009
+          ],
+          "marker2x5B": [
+            9.9,
+            -0.44999999999999996
+          ],
+          "marker2x6A": [
+            10.7,
+            0.10000000000000009
+          ],
+          "marker2x6B": [
+            10.7,
+            -0.44999999999999996
+          ],
+          "marker2x7A": [
+            11.5,
+            0.10000000000000009
+          ],
+          "marker2x7B": [
+            11.5,
+            -0.44999999999999996
+          ],
+          "box3A": [
+            0,
+            -1.5
+          ],
+          "box3B": [
+            3.5,
+            -1.5
+          ],
+          "box3C": [
+            3.5,
+            -3.8
+          ],
+          "box3D": [
+            0,
+            -3.8
+          ],
+          "marker3x0A": [
+            0.5,
+            -1.9
+          ],
+          "marker3x0B": [
+            0.5,
+            -2.45
+          ],
+          "marker3x1A": [
+            1.3,
+            -1.9
+          ],
+          "marker3x1B": [
+            1.3,
+            -2.45
+          ],
+          "marker3x2A": [
+            2.1,
+            -1.9
+          ],
+          "marker3x2B": [
+            2.1,
+            -2.45
+          ],
+          "marker3x3A": [
+            2.9000000000000004,
+            -1.9
+          ],
+          "marker3x3B": [
+            2.9000000000000004,
+            -2.45
+          ],
+          "marker3x4A": [
+            0.5,
+            -2.9
+          ],
+          "marker3x4B": [
+            0.5,
+            -3.45
+          ],
+          "marker3x5A": [
+            1.3,
+            -2.9
+          ],
+          "marker3x5B": [
+            1.3,
+            -3.45
+          ],
+          "marker3x6A": [
+            2.1,
+            -2.9
+          ],
+          "marker3x6B": [
+            2.1,
+            -3.45
+          ],
+          "marker3x7A": [
+            2.9000000000000004,
+            -2.9
+          ],
+          "marker3x7B": [
+            2.9000000000000004,
+            -3.45
+          ],
+          "box4A": [
+            4.3,
+            -1.5
+          ],
+          "box4B": [
+            7.8,
+            -1.5
+          ],
+          "box4C": [
+            7.8,
+            -3.8
+          ],
+          "box4D": [
+            4.3,
+            -3.8
+          ],
+          "marker4x0A": [
+            4.8,
+            -1.9
+          ],
+          "marker4x0B": [
+            4.8,
+            -2.45
+          ],
+          "marker4x1A": [
+            5.6,
+            -1.9
+          ],
+          "marker4x1B": [
+            5.6,
+            -2.45
+          ],
+          "marker4x2A": [
+            6.4,
+            -1.9
+          ],
+          "marker4x2B": [
+            6.4,
+            -2.45
+          ],
+          "marker4x3A": [
+            7.2,
+            -1.9
+          ],
+          "marker4x3B": [
+            7.2,
+            -2.45
+          ],
+          "marker4x4A": [
+            4.8,
+            -2.9
+          ],
+          "marker4x4B": [
+            4.8,
+            -3.45
+          ],
+          "marker4x5A": [
+            5.6,
+            -2.9
+          ],
+          "marker4x5B": [
+            5.6,
+            -3.45
+          ],
+          "marker4x6A": [
+            6.4,
+            -2.9
+          ],
+          "marker4x6B": [
+            6.4,
+            -3.45
+          ],
+          "marker4x7A": [
+            7.2,
+            -2.9
+          ],
+          "marker4x7B": [
+            7.2,
+            -3.45
+          ],
+          "box5A": [
+            8.6,
+            -1.5
+          ],
+          "box5B": [
+            12.1,
+            -1.5
+          ],
+          "box5C": [
+            12.1,
+            -3.8
+          ],
+          "box5D": [
+            8.6,
+            -3.8
+          ],
+          "marker5x0A": [
+            9.1,
+            -1.9
+          ],
+          "marker5x0B": [
+            9.1,
+            -2.45
+          ],
+          "marker5x1A": [
+            9.9,
+            -1.9
+          ],
+          "marker5x1B": [
+            9.9,
+            -2.45
+          ],
+          "marker5x2A": [
+            10.7,
+            -1.9
+          ],
+          "marker5x2B": [
+            10.7,
+            -2.45
+          ],
+          "marker5x3A": [
+            11.5,
+            -1.9
+          ],
+          "marker5x3B": [
+            11.5,
+            -2.45
+          ],
+          "marker5x4A": [
+            9.1,
+            -2.9
+          ],
+          "marker5x4B": [
+            9.1,
+            -3.45
+          ],
+          "marker5x5A": [
+            9.9,
+            -2.9
+          ],
+          "marker5x5B": [
+            9.9,
+            -3.45
+          ],
+          "marker5x6A": [
+            10.7,
+            -2.9
+          ],
+          "marker5x6B": [
+            10.7,
+            -3.45
+          ],
+          "marker5x7A": [
+            11.5,
+            -2.9
+          ],
+          "marker5x7B": [
+            11.5,
+            -3.45
+          ],
+          "box6A": [
+            0,
+            -4.5
+          ],
+          "box6B": [
+            3.5,
+            -4.5
+          ],
+          "box6C": [
+            3.5,
+            -6.8
+          ],
+          "box6D": [
+            0,
+            -6.8
+          ],
+          "marker6x0A": [
+            0.5,
+            -4.9
+          ],
+          "marker6x0B": [
+            0.5,
+            -5.45
+          ],
+          "marker6x1A": [
+            1.3,
+            -4.9
+          ],
+          "marker6x1B": [
+            1.3,
+            -5.45
+          ],
+          "marker6x2A": [
+            2.1,
+            -4.9
+          ],
+          "marker6x2B": [
+            2.1,
+            -5.45
+          ],
+          "marker6x3A": [
+            2.9000000000000004,
+            -4.9
+          ],
+          "marker6x3B": [
+            2.9000000000000004,
+            -5.45
+          ],
+          "marker6x4A": [
+            0.5,
+            -5.9
+          ],
+          "marker6x4B": [
+            0.5,
+            -6.45
+          ],
+          "marker6x5A": [
+            1.3,
+            -5.9
+          ],
+          "marker6x5B": [
+            1.3,
+            -6.45
+          ],
+          "marker6x6A": [
+            2.1,
+            -5.9
+          ],
+          "marker6x6B": [
+            2.1,
+            -6.45
+          ],
+          "marker6x7A": [
+            2.9000000000000004,
+            -5.9
+          ],
+          "marker6x7B": [
+            2.9000000000000004,
+            -6.45
+          ],
+          "box7A": [
+            4.3,
+            -4.5
+          ],
+          "box7B": [
+            7.8,
+            -4.5
+          ],
+          "box7C": [
+            7.8,
+            -6.8
+          ],
+          "box7D": [
+            4.3,
+            -6.8
+          ],
+          "marker7x0A": [
+            4.8,
+            -4.9
+          ],
+          "marker7x0B": [
+            4.8,
+            -5.45
+          ],
+          "marker7x1A": [
+            5.6,
+            -4.9
+          ],
+          "marker7x1B": [
+            5.6,
+            -5.45
+          ],
+          "marker7x2A": [
+            6.4,
+            -4.9
+          ],
+          "marker7x2B": [
+            6.4,
+            -5.45
+          ],
+          "marker7x3A": [
+            7.2,
+            -4.9
+          ],
+          "marker7x3B": [
+            7.2,
+            -5.45
+          ],
+          "marker7x4A": [
+            4.8,
+            -5.9
+          ],
+          "marker7x4B": [
+            4.8,
+            -6.45
+          ],
+          "marker7x5A": [
+            5.6,
+            -5.9
+          ],
+          "marker7x5B": [
+            5.6,
+            -6.45
+          ],
+          "marker7x6A": [
+            6.4,
+            -5.9
+          ],
+          "marker7x6B": [
+            6.4,
+            -6.45
+          ],
+          "marker7x7A": [
+            7.2,
+            -5.9
+          ],
+          "marker7x7B": [
+            7.2,
+            -6.45
+          ],
+          "box8A": [
+            8.6,
+            -4.5
+          ],
+          "box8B": [
+            12.1,
+            -4.5
+          ],
+          "box8C": [
+            12.1,
+            -6.8
+          ],
+          "box8D": [
+            8.6,
+            -6.8
+          ],
+          "marker8x0A": [
+            9.1,
+            -4.9
+          ],
+          "marker8x0B": [
+            9.1,
+            -5.45
+          ],
+          "marker8x1A": [
+            9.9,
+            -4.9
+          ],
+          "marker8x1B": [
+            9.9,
+            -5.45
+          ],
+          "marker8x2A": [
+            10.7,
+            -4.9
+          ],
+          "marker8x2B": [
+            10.7,
+            -5.45
+          ],
+          "marker8x3A": [
+            11.5,
+            -4.9
+          ],
+          "marker8x3B": [
+            11.5,
+            -5.45
+          ],
+          "marker8x4A": [
+            9.1,
+            -5.9
+          ],
+          "marker8x4B": [
+            9.1,
+            -6.45
+          ],
+          "marker8x5A": [
+            9.9,
+            -5.9
+          ],
+          "marker8x5B": [
+            9.9,
+            -6.45
+          ],
+          "marker8x6A": [
+            10.7,
+            -5.9
+          ],
+          "marker8x6B": [
+            10.7,
+            -6.45
+          ],
+          "marker8x7A": [
+            11.5,
+            -5.9
+          ],
+          "marker8x7B": [
+            11.5,
+            -6.45
+          ],
+          "leftP": [
+            6,
+            -8.1
+          ]
+        },
+        "parts": [
+          {
+            "id": "boxes",
+            "label": "9\\text{ boxes}",
+            "at": "boxesP",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue"
+          },
+          {
+            "id": "per",
+            "label": "8\\text{ markers in each}",
+            "at": "perP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "box0",
+            "poly": [
+              "box0A",
+              "box0B",
+              "box0C",
+              "box0D"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "marker0x0",
+            "seg": [
+              "marker0x0A",
+              "marker0x0B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers0"
+          },
+          {
+            "id": "marker0x1",
+            "seg": [
+              "marker0x1A",
+              "marker0x1B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers0"
+          },
+          {
+            "id": "marker0x2",
+            "seg": [
+              "marker0x2A",
+              "marker0x2B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers0"
+          },
+          {
+            "id": "marker0x3",
+            "seg": [
+              "marker0x3A",
+              "marker0x3B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers0"
+          },
+          {
+            "id": "marker0x4",
+            "seg": [
+              "marker0x4A",
+              "marker0x4B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers0"
+          },
+          {
+            "id": "marker0x5",
+            "seg": [
+              "marker0x5A",
+              "marker0x5B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers0"
+          },
+          {
+            "id": "marker0x6",
+            "seg": [
+              "marker0x6A",
+              "marker0x6B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers0"
+          },
+          {
+            "id": "marker0x7",
+            "seg": [
+              "marker0x7A",
+              "marker0x7B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers0"
+          },
+          {
+            "id": "box1",
+            "poly": [
+              "box1A",
+              "box1B",
+              "box1C",
+              "box1D"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "marker1x0",
+            "seg": [
+              "marker1x0A",
+              "marker1x0B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers1"
+          },
+          {
+            "id": "marker1x1",
+            "seg": [
+              "marker1x1A",
+              "marker1x1B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers1"
+          },
+          {
+            "id": "marker1x2",
+            "seg": [
+              "marker1x2A",
+              "marker1x2B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers1"
+          },
+          {
+            "id": "marker1x3",
+            "seg": [
+              "marker1x3A",
+              "marker1x3B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers1"
+          },
+          {
+            "id": "marker1x4",
+            "seg": [
+              "marker1x4A",
+              "marker1x4B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers1"
+          },
+          {
+            "id": "marker1x5",
+            "seg": [
+              "marker1x5A",
+              "marker1x5B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers1"
+          },
+          {
+            "id": "marker1x6",
+            "seg": [
+              "marker1x6A",
+              "marker1x6B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers1"
+          },
+          {
+            "id": "marker1x7",
+            "seg": [
+              "marker1x7A",
+              "marker1x7B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers1"
+          },
+          {
+            "id": "box2",
+            "poly": [
+              "box2A",
+              "box2B",
+              "box2C",
+              "box2D"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "marker2x0",
+            "seg": [
+              "marker2x0A",
+              "marker2x0B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers2"
+          },
+          {
+            "id": "marker2x1",
+            "seg": [
+              "marker2x1A",
+              "marker2x1B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers2"
+          },
+          {
+            "id": "marker2x2",
+            "seg": [
+              "marker2x2A",
+              "marker2x2B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers2"
+          },
+          {
+            "id": "marker2x3",
+            "seg": [
+              "marker2x3A",
+              "marker2x3B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers2"
+          },
+          {
+            "id": "marker2x4",
+            "seg": [
+              "marker2x4A",
+              "marker2x4B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers2"
+          },
+          {
+            "id": "marker2x5",
+            "seg": [
+              "marker2x5A",
+              "marker2x5B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers2"
+          },
+          {
+            "id": "marker2x6",
+            "seg": [
+              "marker2x6A",
+              "marker2x6B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers2"
+          },
+          {
+            "id": "marker2x7",
+            "seg": [
+              "marker2x7A",
+              "marker2x7B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers2"
+          },
+          {
+            "id": "box3",
+            "poly": [
+              "box3A",
+              "box3B",
+              "box3C",
+              "box3D"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "marker3x0",
+            "seg": [
+              "marker3x0A",
+              "marker3x0B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers3"
+          },
+          {
+            "id": "marker3x1",
+            "seg": [
+              "marker3x1A",
+              "marker3x1B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers3"
+          },
+          {
+            "id": "marker3x2",
+            "seg": [
+              "marker3x2A",
+              "marker3x2B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers3"
+          },
+          {
+            "id": "marker3x3",
+            "seg": [
+              "marker3x3A",
+              "marker3x3B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers3"
+          },
+          {
+            "id": "marker3x4",
+            "seg": [
+              "marker3x4A",
+              "marker3x4B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers3"
+          },
+          {
+            "id": "marker3x5",
+            "seg": [
+              "marker3x5A",
+              "marker3x5B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers3"
+          },
+          {
+            "id": "marker3x6",
+            "seg": [
+              "marker3x6A",
+              "marker3x6B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers3"
+          },
+          {
+            "id": "marker3x7",
+            "seg": [
+              "marker3x7A",
+              "marker3x7B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers3"
+          },
+          {
+            "id": "box4",
+            "poly": [
+              "box4A",
+              "box4B",
+              "box4C",
+              "box4D"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "marker4x0",
+            "seg": [
+              "marker4x0A",
+              "marker4x0B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers4"
+          },
+          {
+            "id": "marker4x1",
+            "seg": [
+              "marker4x1A",
+              "marker4x1B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers4"
+          },
+          {
+            "id": "marker4x2",
+            "seg": [
+              "marker4x2A",
+              "marker4x2B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers4"
+          },
+          {
+            "id": "marker4x3",
+            "seg": [
+              "marker4x3A",
+              "marker4x3B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers4"
+          },
+          {
+            "id": "marker4x4",
+            "seg": [
+              "marker4x4A",
+              "marker4x4B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers4"
+          },
+          {
+            "id": "marker4x5",
+            "seg": [
+              "marker4x5A",
+              "marker4x5B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers4"
+          },
+          {
+            "id": "marker4x6",
+            "seg": [
+              "marker4x6A",
+              "marker4x6B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers4"
+          },
+          {
+            "id": "marker4x7",
+            "seg": [
+              "marker4x7A",
+              "marker4x7B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers4"
+          },
+          {
+            "id": "box5",
+            "poly": [
+              "box5A",
+              "box5B",
+              "box5C",
+              "box5D"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "marker5x0",
+            "seg": [
+              "marker5x0A",
+              "marker5x0B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers5"
+          },
+          {
+            "id": "marker5x1",
+            "seg": [
+              "marker5x1A",
+              "marker5x1B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers5"
+          },
+          {
+            "id": "marker5x2",
+            "seg": [
+              "marker5x2A",
+              "marker5x2B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers5"
+          },
+          {
+            "id": "marker5x3",
+            "seg": [
+              "marker5x3A",
+              "marker5x3B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers5"
+          },
+          {
+            "id": "marker5x4",
+            "seg": [
+              "marker5x4A",
+              "marker5x4B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers5"
+          },
+          {
+            "id": "marker5x5",
+            "seg": [
+              "marker5x5A",
+              "marker5x5B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers5"
+          },
+          {
+            "id": "marker5x6",
+            "seg": [
+              "marker5x6A",
+              "marker5x6B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers5"
+          },
+          {
+            "id": "marker5x7",
+            "seg": [
+              "marker5x7A",
+              "marker5x7B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers5"
+          },
+          {
+            "id": "box6",
+            "poly": [
+              "box6A",
+              "box6B",
+              "box6C",
+              "box6D"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "marker6x0",
+            "seg": [
+              "marker6x0A",
+              "marker6x0B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers6"
+          },
+          {
+            "id": "marker6x1",
+            "seg": [
+              "marker6x1A",
+              "marker6x1B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers6"
+          },
+          {
+            "id": "marker6x2",
+            "seg": [
+              "marker6x2A",
+              "marker6x2B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers6"
+          },
+          {
+            "id": "marker6x3",
+            "seg": [
+              "marker6x3A",
+              "marker6x3B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers6"
+          },
+          {
+            "id": "marker6x4",
+            "seg": [
+              "marker6x4A",
+              "marker6x4B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers6"
+          },
+          {
+            "id": "marker6x5",
+            "seg": [
+              "marker6x5A",
+              "marker6x5B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers6"
+          },
+          {
+            "id": "marker6x6",
+            "seg": [
+              "marker6x6A",
+              "marker6x6B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers6"
+          },
+          {
+            "id": "marker6x7",
+            "seg": [
+              "marker6x7A",
+              "marker6x7B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers6"
+          },
+          {
+            "id": "box7",
+            "poly": [
+              "box7A",
+              "box7B",
+              "box7C",
+              "box7D"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "marker7x0",
+            "seg": [
+              "marker7x0A",
+              "marker7x0B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers7"
+          },
+          {
+            "id": "marker7x1",
+            "seg": [
+              "marker7x1A",
+              "marker7x1B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers7"
+          },
+          {
+            "id": "marker7x2",
+            "seg": [
+              "marker7x2A",
+              "marker7x2B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers7"
+          },
+          {
+            "id": "marker7x3",
+            "seg": [
+              "marker7x3A",
+              "marker7x3B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers7"
+          },
+          {
+            "id": "marker7x4",
+            "seg": [
+              "marker7x4A",
+              "marker7x4B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers7"
+          },
+          {
+            "id": "marker7x5",
+            "seg": [
+              "marker7x5A",
+              "marker7x5B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers7"
+          },
+          {
+            "id": "marker7x6",
+            "seg": [
+              "marker7x6A",
+              "marker7x6B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers7"
+          },
+          {
+            "id": "marker7x7",
+            "seg": [
+              "marker7x7A",
+              "marker7x7B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers7"
+          },
+          {
+            "id": "box8",
+            "poly": [
+              "box8A",
+              "box8B",
+              "box8C",
+              "box8D"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "marker8x0",
+            "seg": [
+              "marker8x0A",
+              "marker8x0B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers8"
+          },
+          {
+            "id": "marker8x1",
+            "seg": [
+              "marker8x1A",
+              "marker8x1B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers8"
+          },
+          {
+            "id": "marker8x2",
+            "seg": [
+              "marker8x2A",
+              "marker8x2B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers8"
+          },
+          {
+            "id": "marker8x3",
+            "seg": [
+              "marker8x3A",
+              "marker8x3B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers8"
+          },
+          {
+            "id": "marker8x4",
+            "seg": [
+              "marker8x4A",
+              "marker8x4B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers8"
+          },
+          {
+            "id": "marker8x5",
+            "seg": [
+              "marker8x5A",
+              "marker8x5B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers8"
+          },
+          {
+            "id": "marker8x6",
+            "seg": [
+              "marker8x6A",
+              "marker8x6B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers8"
+          },
+          {
+            "id": "marker8x7",
+            "seg": [
+              "marker8x7A",
+              "marker8x7B"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true,
+            "group": "markers8"
+          },
+          {
+            "id": "left",
+            "label": "70\\text{ markers left}",
+            "at": "leftP",
+            "dir": "c",
+            "ink": "warm",
+            "size": "l"
+          },
+          {
+            "id": "focusBox0",
+            "poly": [
+              "box0A",
+              "box0B",
+              "box0C",
+              "box0D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusBox1",
+            "poly": [
+              "box1A",
+              "box1B",
+              "box1C",
+              "box1D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusBox2",
+            "poly": [
+              "box2A",
+              "box2B",
+              "box2C",
+              "box2D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusBox3",
+            "poly": [
+              "box3A",
+              "box3B",
+              "box3C",
+              "box3D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusBox4",
+            "poly": [
+              "box4A",
+              "box4B",
+              "box4C",
+              "box4D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusBox5",
+            "poly": [
+              "box5A",
+              "box5B",
+              "box5C",
+              "box5D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusBox6",
+            "poly": [
+              "box6A",
+              "box6B",
+              "box6C",
+              "box6D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusBox7",
+            "poly": [
+              "box7A",
+              "box7B",
+              "box7C",
+              "box7D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusBox8",
+            "poly": [
+              "box8A",
+              "box8B",
+              "box8C",
+              "box8D"
+            ],
+            "ink": "gold",
+            "w": 5
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Some stories keep going. Nine boxes hold eight markers each. Then two markers are given away. How many are left?",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "tex": "9\\;\\square\\;8\\;\\square\\;2=70",
+              "label": "9 boxes, 8 markers each, give away 2. How many are left?"
+            },
+            {
+              "do": "show",
+              "target": "boxes",
+              "at": "Nine"
+            },
+            {
+              "do": "show",
+              "target": "per",
+              "at": "eight"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "First find all the markers. Nine groups of eight make seventy-two.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "9\\times8=72",
+              "at": "Nine"
+            },
+            {
+              "do": "show",
+              "target": [
+                "focusBox0",
+                "focusBox1",
+                "focusBox2",
+                "focusBox3",
+                "focusBox4",
+                "focusBox5",
+                "focusBox6",
+                "focusBox7",
+                "focusBox8"
+              ],
+              "dur": 0.16,
+              "at": "groups"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Give away two markers, not two boxes. Seventy-two minus two leaves seventy.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "focusBox0",
+                "focusBox1",
+                "focusBox2",
+                "focusBox3",
+                "focusBox4",
+                "focusBox5",
+                "focusBox6",
+                "focusBox7",
+                "focusBox8"
+              ],
+              "dur": 0.16
+            },
+            {
+              "do": "slide",
+              "target": [
+                "marker8x6",
+                "marker8x7"
+              ],
+              "by": [
+                1.3,
+                -1
+              ],
+              "dur": 0.9,
+              "at": "two"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "marker8x6",
+                "marker8x7"
+              ],
+              "at": "Seventy-two"
+            },
+            {
+              "do": "write",
+              "tex": "72-2=70",
+              "at": "minus"
+            },
+            {
+              "do": "answer",
+              "tex": "70\\text{ markers left}",
+              "at": "seventy"
+            },
+            {
+              "do": "hide",
+              "target": "per",
+              "at": "Give"
+            },
+            {
+              "do": "show",
+              "target": "left",
+              "at": "seventy"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Multiply, then subtract.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "9\\times8-2=70",
+              "fresh": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "groupLabelP": [
+            4.6,
+            3.1
+          ],
+          "bag0A": [
+            0,
+            1.8
+          ],
+          "bag0B": [
+            2.6,
+            1.8
+          ],
+          "bag0C": [
+            2.6,
+            -1.2
+          ],
+          "bag0D": [
+            0,
+            -1.2
+          ],
+          "ball0x0": [
+            0.75,
+            0.925
+          ],
+          "ball0x1": [
+            1.85,
+            0.925
+          ],
+          "ball0x2": [
+            0.75,
+            -0.325
+          ],
+          "ball0x3": [
+            1.85,
+            -0.325
+          ],
+          "bag1A": [
+            3.3,
+            1.8
+          ],
+          "bag1B": [
+            5.9,
+            1.8
+          ],
+          "bag1C": [
+            5.9,
+            -1.2
+          ],
+          "bag1D": [
+            3.3,
+            -1.2
+          ],
+          "ball1x0": [
+            4.05,
+            0.925
+          ],
+          "ball1x1": [
+            5.15,
+            0.925
+          ],
+          "ball1x2": [
+            4.05,
+            -0.325
+          ],
+          "ball1x3": [
+            5.15,
+            -0.325
+          ],
+          "bag2A": [
+            6.6,
+            1.8
+          ],
+          "bag2B": [
+            9.2,
+            1.8
+          ],
+          "bag2C": [
+            9.2,
+            -1.2
+          ],
+          "bag2D": [
+            6.6,
+            -1.2
+          ],
+          "ball2x0": [
+            7.35,
+            0.925
+          ],
+          "ball2x1": [
+            8.45,
+            0.925
+          ],
+          "ball2x2": [
+            7.35,
+            -0.325
+          ],
+          "ball2x3": [
+            8.45,
+            -0.325
+          ],
+          "extra0": [
+            3.75,
+            -3
+          ],
+          "extra1": [
+            5.45,
+            -3
+          ]
+        },
+        "parts": [
+          {
+            "id": "groupLabel",
+            "label": "3\\text{ bags of }4",
+            "at": "groupLabelP",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue"
+          },
+          {
+            "id": "bag0",
+            "poly": [
+              "bag0A",
+              "bag0B",
+              "bag0C",
+              "bag0D"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "ball0x0",
+            "circle": "ball0x0",
+            "r": 0.35,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "ball0x1",
+            "circle": "ball0x1",
+            "r": 0.35,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "ball0x2",
+            "circle": "ball0x2",
+            "r": 0.35,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "ball0x3",
+            "circle": "ball0x3",
+            "r": 0.35,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "bag1",
+            "poly": [
+              "bag1A",
+              "bag1B",
+              "bag1C",
+              "bag1D"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "ball1x0",
+            "circle": "ball1x0",
+            "r": 0.35,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "ball1x1",
+            "circle": "ball1x1",
+            "r": 0.35,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "ball1x2",
+            "circle": "ball1x2",
+            "r": 0.35,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "ball1x3",
+            "circle": "ball1x3",
+            "r": 0.35,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "bag2",
+            "poly": [
+              "bag2A",
+              "bag2B",
+              "bag2C",
+              "bag2D"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "ball2x0",
+            "circle": "ball2x0",
+            "r": 0.35,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "ball2x1",
+            "circle": "ball2x1",
+            "r": 0.35,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "ball2x2",
+            "circle": "ball2x2",
+            "r": 0.35,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "ball2x3",
+            "circle": "ball2x3",
+            "r": 0.35,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "extra0",
+            "circle": "extra0",
+            "r": 0.35,
+            "fill": "warm-fill",
+            "ink": "warm"
+          },
+          {
+            "id": "extra1",
+            "circle": "extra1",
+            "r": 0.35,
+            "fill": "warm-fill",
+            "ink": "warm"
+          },
+          {
+            "id": "focusBag0",
+            "poly": [
+              "bag0A",
+              "bag0B",
+              "bag0C",
+              "bag0D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusBag1",
+            "poly": [
+              "bag1A",
+              "bag1B",
+              "bag1C",
+              "bag1D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusBag2",
+            "poly": [
+              "bag2A",
+              "bag2B",
+              "bag2C",
+              "bag2D"
+            ],
+            "ink": "gold",
+            "w": 5
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "If three bags hold four balls each, with two extra loose balls, the groups give twelve.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Extra items are added"
+            },
+            {
+              "do": "show",
+              "target": "groupLabel"
+            },
+            {
+              "do": "show",
+              "target": [
+                "extra0",
+                "extra1"
+              ],
+              "at": "extra"
+            },
+            {
+              "do": "write",
+              "tex": "3\\times4=12",
+              "at": "twelve"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Then add the two extras. Fourteen balls altogether.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "extra0",
+                "extra1"
+              ],
+              "at": "two"
+            },
+            {
+              "do": "write",
+              "tex": "3\\times4+2=14",
+              "at": "Fourteen"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "In these equations, multiplication comes before adding or subtracting. It finds the amount in the equal groups.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "text",
+              "text": "Multiply first; then add or subtract.",
+              "at": "multiplication"
+            },
+            {
+              "do": "show",
+              "target": [
+                "focusBag0",
+                "focusBag1",
+                "focusBag2"
+              ],
+              "dur": 0.16,
+              "at": "groups"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "courtsP": [
+            6.1,
+            4
+          ],
+          "court0A": [
+            0,
+            2.5
+          ],
+          "court0B": [
+            3.8,
+            2.5
+          ],
+          "court0C": [
+            3.8,
+            -2.8
+          ],
+          "court0D": [
+            0,
+            -2.8
+          ],
+          "bag0x0A": [
+            0.5,
+            1.8
+          ],
+          "bag0x0B": [
+            3.3,
+            1.8
+          ],
+          "bag0x0C": [
+            3.3,
+            0.10000000000000009
+          ],
+          "bag0x0D": [
+            0.5,
+            0.10000000000000009
+          ],
+          "b0x0x0": [
+            1.0,
+            1.3
+          ],
+          "b0x0x1": [
+            1.9,
+            1.3
+          ],
+          "b0x0x2": [
+            2.8,
+            1.3
+          ],
+          "b0x0x3": [
+            1.45,
+            0.6
+          ],
+          "b0x0x4": [
+            2.35,
+            0.6
+          ],
+          "bag0x1A": [
+            0.5,
+            -0.40000000000000013
+          ],
+          "bag0x1B": [
+            3.3,
+            -0.40000000000000013
+          ],
+          "bag0x1C": [
+            3.3,
+            -2.1
+          ],
+          "bag0x1D": [
+            0.5,
+            -2.1
+          ],
+          "b0x1x0": [
+            1.0,
+            -0.9
+          ],
+          "b0x1x1": [
+            1.9,
+            -0.9
+          ],
+          "b0x1x2": [
+            2.8,
+            -0.9
+          ],
+          "b0x1x3": [
+            1.45,
+            -1.6
+          ],
+          "b0x1x4": [
+            2.35,
+            -1.6
+          ],
+          "court1A": [
+            4.2,
+            2.5
+          ],
+          "court1B": [
+            8,
+            2.5
+          ],
+          "court1C": [
+            8,
+            -2.8
+          ],
+          "court1D": [
+            4.2,
+            -2.8
+          ],
+          "bag1x0A": [
+            4.7,
+            1.8
+          ],
+          "bag1x0B": [
+            7.5,
+            1.8
+          ],
+          "bag1x0C": [
+            7.5,
+            0.10000000000000009
+          ],
+          "bag1x0D": [
+            4.7,
+            0.10000000000000009
+          ],
+          "b1x0x0": [
+            5.2,
+            1.3
+          ],
+          "b1x0x1": [
+            6.1,
+            1.3
+          ],
+          "b1x0x2": [
+            7.0,
+            1.3
+          ],
+          "b1x0x3": [
+            5.65,
+            0.6
+          ],
+          "b1x0x4": [
+            6.55,
+            0.6
+          ],
+          "bag1x1A": [
+            4.7,
+            -0.40000000000000013
+          ],
+          "bag1x1B": [
+            7.5,
+            -0.40000000000000013
+          ],
+          "bag1x1C": [
+            7.5,
+            -2.1
+          ],
+          "bag1x1D": [
+            4.7,
+            -2.1
+          ],
+          "b1x1x0": [
+            5.2,
+            -0.9
+          ],
+          "b1x1x1": [
+            6.1,
+            -0.9
+          ],
+          "b1x1x2": [
+            7.0,
+            -0.9
+          ],
+          "b1x1x3": [
+            5.65,
+            -1.6
+          ],
+          "b1x1x4": [
+            6.55,
+            -1.6
+          ],
+          "court2A": [
+            8.4,
+            2.5
+          ],
+          "court2B": [
+            12.2,
+            2.5
+          ],
+          "court2C": [
+            12.2,
+            -2.8
+          ],
+          "court2D": [
+            8.4,
+            -2.8
+          ],
+          "bag2x0A": [
+            8.9,
+            1.8
+          ],
+          "bag2x0B": [
+            11.7,
+            1.8
+          ],
+          "bag2x0C": [
+            11.7,
+            0.10000000000000009
+          ],
+          "bag2x0D": [
+            8.9,
+            0.10000000000000009
+          ],
+          "b2x0x0": [
+            9.4,
+            1.3
+          ],
+          "b2x0x1": [
+            10.3,
+            1.3
+          ],
+          "b2x0x2": [
+            11.2,
+            1.3
+          ],
+          "b2x0x3": [
+            9.85,
+            0.6
+          ],
+          "b2x0x4": [
+            10.75,
+            0.6
+          ],
+          "bag2x1A": [
+            8.9,
+            -0.40000000000000013
+          ],
+          "bag2x1B": [
+            11.7,
+            -0.40000000000000013
+          ],
+          "bag2x1C": [
+            11.7,
+            -2.1
+          ],
+          "bag2x1D": [
+            8.9,
+            -2.1
+          ],
+          "b2x1x0": [
+            9.4,
+            -0.9
+          ],
+          "b2x1x1": [
+            10.3,
+            -0.9
+          ],
+          "b2x1x2": [
+            11.2,
+            -0.9
+          ],
+          "b2x1x3": [
+            9.85,
+            -1.6
+          ],
+          "b2x1x4": [
+            10.75,
+            -1.6
+          ]
+        },
+        "parts": [
+          {
+            "id": "courts",
+            "label": "3\\text{ courts}",
+            "at": "courtsP",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue"
+          },
+          {
+            "id": "court0",
+            "poly": [
+              "court0A",
+              "court0B",
+              "court0C",
+              "court0D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "bag0x0",
+            "poly": [
+              "bag0x0A",
+              "bag0x0B",
+              "bag0x0C",
+              "bag0x0D"
+            ],
+            "fill": "paper",
+            "ink": "accent",
+            "w": 2
+          },
+          {
+            "id": "b0x0x0",
+            "circle": "b0x0x0",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "b0x0x1",
+            "circle": "b0x0x1",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "b0x0x2",
+            "circle": "b0x0x2",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "b0x0x3",
+            "circle": "b0x0x3",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "b0x0x4",
+            "circle": "b0x0x4",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "bag0x1",
+            "poly": [
+              "bag0x1A",
+              "bag0x1B",
+              "bag0x1C",
+              "bag0x1D"
+            ],
+            "fill": "paper",
+            "ink": "accent",
+            "w": 2
+          },
+          {
+            "id": "b0x1x0",
+            "circle": "b0x1x0",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "b0x1x1",
+            "circle": "b0x1x1",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "b0x1x2",
+            "circle": "b0x1x2",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "b0x1x3",
+            "circle": "b0x1x3",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "b0x1x4",
+            "circle": "b0x1x4",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "court1",
+            "poly": [
+              "court1A",
+              "court1B",
+              "court1C",
+              "court1D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "bag1x0",
+            "poly": [
+              "bag1x0A",
+              "bag1x0B",
+              "bag1x0C",
+              "bag1x0D"
+            ],
+            "fill": "paper",
+            "ink": "accent",
+            "w": 2
+          },
+          {
+            "id": "b1x0x0",
+            "circle": "b1x0x0",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "b1x0x1",
+            "circle": "b1x0x1",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "b1x0x2",
+            "circle": "b1x0x2",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "b1x0x3",
+            "circle": "b1x0x3",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "b1x0x4",
+            "circle": "b1x0x4",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "bag1x1",
+            "poly": [
+              "bag1x1A",
+              "bag1x1B",
+              "bag1x1C",
+              "bag1x1D"
+            ],
+            "fill": "paper",
+            "ink": "accent",
+            "w": 2
+          },
+          {
+            "id": "b1x1x0",
+            "circle": "b1x1x0",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "b1x1x1",
+            "circle": "b1x1x1",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "b1x1x2",
+            "circle": "b1x1x2",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "b1x1x3",
+            "circle": "b1x1x3",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "b1x1x4",
+            "circle": "b1x1x4",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "court2",
+            "poly": [
+              "court2A",
+              "court2B",
+              "court2C",
+              "court2D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "bag2x0",
+            "poly": [
+              "bag2x0A",
+              "bag2x0B",
+              "bag2x0C",
+              "bag2x0D"
+            ],
+            "fill": "paper",
+            "ink": "accent",
+            "w": 2
+          },
+          {
+            "id": "b2x0x0",
+            "circle": "b2x0x0",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "b2x0x1",
+            "circle": "b2x0x1",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "b2x0x2",
+            "circle": "b2x0x2",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "b2x0x3",
+            "circle": "b2x0x3",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "b2x0x4",
+            "circle": "b2x0x4",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "bag2x1",
+            "poly": [
+              "bag2x1A",
+              "bag2x1B",
+              "bag2x1C",
+              "bag2x1D"
+            ],
+            "fill": "paper",
+            "ink": "accent",
+            "w": 2
+          },
+          {
+            "id": "b2x1x0",
+            "circle": "b2x1x0",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "b2x1x1",
+            "circle": "b2x1x1",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "b2x1x2",
+            "circle": "b2x1x2",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "b2x1x3",
+            "circle": "b2x1x3",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "b2x1x4",
+            "circle": "b2x1x4",
+            "r": 0.22,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "balls"
+          },
+          {
+            "id": "focusBag0x0",
+            "poly": [
+              "bag0x0A",
+              "bag0x0B",
+              "bag0x0C",
+              "bag0x0D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusBag0x1",
+            "poly": [
+              "bag0x1A",
+              "bag0x1B",
+              "bag0x1C",
+              "bag0x1D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusBag1x0",
+            "poly": [
+              "bag1x0A",
+              "bag1x0B",
+              "bag1x0C",
+              "bag1x0D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusBag1x1",
+            "poly": [
+              "bag1x1A",
+              "bag1x1B",
+              "bag1x1C",
+              "bag1x1D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusBag2x0",
+            "poly": [
+              "bag2x0A",
+              "bag2x0B",
+              "bag2x0C",
+              "bag2x0D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusBag2x1",
+            "poly": [
+              "bag2x1A",
+              "bag2x1B",
+              "bag2x1C",
+              "bag2x1D"
+            ],
+            "ink": "gold",
+            "w": 5
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Or there can be groups inside groups. Three courts, two bags at each court, five balls in every bag.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Groups inside groups"
+            },
+            {
+              "do": "show",
+              "target": "courts",
+              "at": "Three"
+            },
+            {
+              "do": "show",
+              "target": [
+                "bag0x0",
+                "bag0x1",
+                "bag1x0",
+                "bag1x1",
+                "bag2x0",
+                "bag2x1"
+              ],
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "balls",
+              "at": "five"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Three times two gives six bags. Each of those six bags holds five balls.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "write",
+              "tex": "3\\times2=6",
+              "at": "six"
+            },
+            {
+              "do": "show",
+              "target": [
+                "focusBag0x0",
+                "focusBag0x1",
+                "focusBag1x0",
+                "focusBag1x1",
+                "focusBag2x0",
+                "focusBag2x1"
+              ],
+              "dur": 0.16,
+              "at": "bags"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "focusBag0x0",
+                "focusBag0x1",
+                "focusBag1x0",
+                "focusBag1x1",
+                "focusBag2x0",
+                "focusBag2x1"
+              ],
+              "dur": 0.16,
+              "at": "Each"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Six times five gives thirty balls. Both missing signs are multiplication signs.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "write",
+              "tex": "6\\times5=30",
+              "at": "thirty"
+            },
+            {
+              "do": "write",
+              "tex": "3\\times2\\times5=30",
+              "fresh": true,
+              "at": "Both"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "sevenP": [
+            6.8,
+            4
+          ],
+          "fourteenP": [
+            6.8,
+            6.5
+          ],
+          "cup0A": [
+            0,
+            0
+          ],
+          "cup0B": [
+            1.6,
+            0
+          ],
+          "cup0C": [
+            1.45,
+            -2
+          ],
+          "cup0D": [
+            0.15,
+            -2
+          ],
+          "p0x0A": [
+            0.475,
+            2.8
+          ],
+          "p0x0B": [
+            0.475,
+            1.8
+          ],
+          "p0x1A": [
+            1.125,
+            2.8
+          ],
+          "p0x1B": [
+            1.125,
+            1.8
+          ],
+          "cup1A": [
+            2,
+            0
+          ],
+          "cup1B": [
+            3.6,
+            0
+          ],
+          "cup1C": [
+            3.45,
+            -2
+          ],
+          "cup1D": [
+            2.15,
+            -2
+          ],
+          "p1x0A": [
+            2.475,
+            2.8
+          ],
+          "p1x0B": [
+            2.475,
+            1.8
+          ],
+          "p1x1A": [
+            3.125,
+            2.8
+          ],
+          "p1x1B": [
+            3.125,
+            1.8
+          ],
+          "cup2A": [
+            4,
+            0
+          ],
+          "cup2B": [
+            5.6,
+            0
+          ],
+          "cup2C": [
+            5.45,
+            -2
+          ],
+          "cup2D": [
+            4.15,
+            -2
+          ],
+          "p2x0A": [
+            4.475,
+            2.8
+          ],
+          "p2x0B": [
+            4.475,
+            1.8
+          ],
+          "p2x1A": [
+            5.125,
+            2.8
+          ],
+          "p2x1B": [
+            5.125,
+            1.8
+          ],
+          "cup3A": [
+            6,
+            0
+          ],
+          "cup3B": [
+            7.6,
+            0
+          ],
+          "cup3C": [
+            7.45,
+            -2
+          ],
+          "cup3D": [
+            6.15,
+            -2
+          ],
+          "p3x0A": [
+            6.475,
+            2.8
+          ],
+          "p3x0B": [
+            6.475,
+            1.8
+          ],
+          "p3x1A": [
+            7.125,
+            2.8
+          ],
+          "p3x1B": [
+            7.125,
+            1.8
+          ],
+          "cup4A": [
+            8,
+            0
+          ],
+          "cup4B": [
+            9.6,
+            0
+          ],
+          "cup4C": [
+            9.45,
+            -2
+          ],
+          "cup4D": [
+            8.15,
+            -2
+          ],
+          "p4x0A": [
+            8.475,
+            2.8
+          ],
+          "p4x0B": [
+            8.475,
+            1.8
+          ],
+          "p4x1A": [
+            9.125,
+            2.8
+          ],
+          "p4x1B": [
+            9.125,
+            1.8
+          ],
+          "cup5A": [
+            10,
+            0
+          ],
+          "cup5B": [
+            11.6,
+            0
+          ],
+          "cup5C": [
+            11.45,
+            -2
+          ],
+          "cup5D": [
+            10.15,
+            -2
+          ],
+          "p5x0A": [
+            10.475,
+            2.8
+          ],
+          "p5x0B": [
+            10.475,
+            1.8
+          ],
+          "p5x1A": [
+            11.125,
+            2.8
+          ],
+          "p5x1B": [
+            11.125,
+            1.8
+          ],
+          "cup6A": [
+            12,
+            0
+          ],
+          "cup6B": [
+            13.6,
+            0
+          ],
+          "cup6C": [
+            13.45,
+            -2
+          ],
+          "cup6D": [
+            12.15,
+            -2
+          ],
+          "p6x0A": [
+            12.475,
+            2.8
+          ],
+          "p6x0B": [
+            12.475,
+            1.8
+          ],
+          "p6x1A": [
+            13.125,
+            2.8
+          ],
+          "p6x1B": [
+            13.125,
+            1.8
+          ],
+          "sixBracketA": [
+            0,
+            -2.8
+          ],
+          "sixBracketB": [
+            11.6,
+            -2.8
+          ],
+          "sixP": [
+            5.8,
+            -4
+          ]
+        },
+        "parts": [
+          {
+            "id": "seven",
+            "label": "7\\text{ cups}",
+            "at": "sevenP",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue"
+          },
+          {
+            "id": "fourteen",
+            "label": "14\\text{ pencils}",
+            "at": "fourteenP",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm"
+          },
+          {
+            "id": "cup0",
+            "poly": [
+              "cup0A",
+              "cup0B",
+              "cup0C",
+              "cup0D"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "p0x0",
+            "seg": [
+              "p0x0A",
+              "p0x0B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "p0x1",
+            "seg": [
+              "p0x1A",
+              "p0x1B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "cup1",
+            "poly": [
+              "cup1A",
+              "cup1B",
+              "cup1C",
+              "cup1D"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "p1x0",
+            "seg": [
+              "p1x0A",
+              "p1x0B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "p1x1",
+            "seg": [
+              "p1x1A",
+              "p1x1B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "cup2",
+            "poly": [
+              "cup2A",
+              "cup2B",
+              "cup2C",
+              "cup2D"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "p2x0",
+            "seg": [
+              "p2x0A",
+              "p2x0B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "p2x1",
+            "seg": [
+              "p2x1A",
+              "p2x1B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "cup3",
+            "poly": [
+              "cup3A",
+              "cup3B",
+              "cup3C",
+              "cup3D"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "p3x0",
+            "seg": [
+              "p3x0A",
+              "p3x0B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "p3x1",
+            "seg": [
+              "p3x1A",
+              "p3x1B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "cup4",
+            "poly": [
+              "cup4A",
+              "cup4B",
+              "cup4C",
+              "cup4D"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "p4x0",
+            "seg": [
+              "p4x0A",
+              "p4x0B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "p4x1",
+            "seg": [
+              "p4x1A",
+              "p4x1B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "cup5",
+            "poly": [
+              "cup5A",
+              "cup5B",
+              "cup5C",
+              "cup5D"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "p5x0",
+            "seg": [
+              "p5x0A",
+              "p5x0B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "p5x1",
+            "seg": [
+              "p5x1A",
+              "p5x1B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "cup6",
+            "poly": [
+              "cup6A",
+              "cup6B",
+              "cup6C",
+              "cup6D"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "p6x0",
+            "seg": [
+              "p6x0A",
+              "p6x0B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "p6x1",
+            "seg": [
+              "p6x1A",
+              "p6x1B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "sixBracket",
+            "seg": [
+              "sixBracketA",
+              "sixBracketB"
+            ],
+            "ink": "accent"
+          },
+          {
+            "id": "six",
+            "label": "6\\text{ cups}",
+            "at": "sixP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "focusCup0",
+            "poly": [
+              "cup0A",
+              "cup0B",
+              "cup0C",
+              "cup0D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusCup1",
+            "poly": [
+              "cup1A",
+              "cup1B",
+              "cup1C",
+              "cup1D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusCup2",
+            "poly": [
+              "cup2A",
+              "cup2B",
+              "cup2C",
+              "cup2D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusCup3",
+            "poly": [
+              "cup3A",
+              "cup3B",
+              "cup3C",
+              "cup3D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusCup4",
+            "poly": [
+              "cup4A",
+              "cup4B",
+              "cup4C",
+              "cup4D"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "focusCup5",
+            "poly": [
+              "cup5A",
+              "cup5B",
+              "cup5C",
+              "cup5D"
+            ],
+            "ink": "gold",
+            "w": 5
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Fourteen pencils are shared equally among seven cups. How many pencils will be in six of the cups?",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Use the answer in the next step"
+            },
+            {
+              "do": "show",
+              "target": [
+                "seven",
+                "fourteen"
+              ]
+            },
+            {
+              "do": "text",
+              "text": "Share among 7 cups; count 6 cups.",
+              "at": "six"
+            },
+            {
+              "do": "show",
+              "target": [
+                "focusCup0",
+                "focusCup1",
+                "focusCup2",
+                "focusCup3",
+                "focusCup4",
+                "focusCup5"
+              ],
+              "dur": 0.16,
+              "at": "six"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "First, one pencil in each cup. Then one more in each. Two pencils per cup.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "focusCup0",
+                "focusCup1",
+                "focusCup2",
+                "focusCup3",
+                "focusCup4",
+                "focusCup5"
+              ],
+              "dur": 0.16
+            },
+            {
+              "do": "slide",
+              "target": "p0x0",
+              "by": [
+                0,
+                -2.3
+              ],
+              "dur": 0.8,
+              "at": "First"
+            },
+            {
+              "do": "slide",
+              "target": "p1x0",
+              "by": [
+                0,
+                -2.3
+              ],
+              "dur": 0.8,
+              "at": "First"
+            },
+            {
+              "do": "slide",
+              "target": "p2x0",
+              "by": [
+                0,
+                -2.3
+              ],
+              "dur": 0.8,
+              "at": "First"
+            },
+            {
+              "do": "slide",
+              "target": "p3x0",
+              "by": [
+                0,
+                -2.3
+              ],
+              "dur": 0.8,
+              "at": "First"
+            },
+            {
+              "do": "slide",
+              "target": "p4x0",
+              "by": [
+                0,
+                -2.3
+              ],
+              "dur": 0.8,
+              "at": "First"
+            },
+            {
+              "do": "slide",
+              "target": "p5x0",
+              "by": [
+                0,
+                -2.3
+              ],
+              "dur": 0.8,
+              "at": "First"
+            },
+            {
+              "do": "slide",
+              "target": "p6x0",
+              "by": [
+                0,
+                -2.3
+              ],
+              "dur": 0.8,
+              "at": "First"
+            },
+            {
+              "do": "slide",
+              "target": "p0x1",
+              "by": [
+                0,
+                -2.3
+              ],
+              "dur": 0.8,
+              "at": "Then"
+            },
+            {
+              "do": "slide",
+              "target": "p1x1",
+              "by": [
+                0,
+                -2.3
+              ],
+              "dur": 0.8,
+              "at": "Then"
+            },
+            {
+              "do": "slide",
+              "target": "p2x1",
+              "by": [
+                0,
+                -2.3
+              ],
+              "dur": 0.8,
+              "at": "Then"
+            },
+            {
+              "do": "slide",
+              "target": "p3x1",
+              "by": [
+                0,
+                -2.3
+              ],
+              "dur": 0.8,
+              "at": "Then"
+            },
+            {
+              "do": "slide",
+              "target": "p4x1",
+              "by": [
+                0,
+                -2.3
+              ],
+              "dur": 0.8,
+              "at": "Then"
+            },
+            {
+              "do": "slide",
+              "target": "p5x1",
+              "by": [
+                0,
+                -2.3
+              ],
+              "dur": 0.8,
+              "at": "Then"
+            },
+            {
+              "do": "slide",
+              "target": "p6x1",
+              "by": [
+                0,
+                -2.3
+              ],
+              "dur": 0.8,
+              "at": "Then"
+            },
+            {
+              "do": "write",
+              "tex": "14\\div7=2",
+              "at": "Two"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Now use that two. Six cups, each holding two pencils.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "sixBracket",
+                "six"
+              ],
+              "at": "Six"
+            },
+            {
+              "do": "write",
+              "tex": "6\\times2=12",
+              "nth": 2,
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": [
+                "focusCup0",
+                "focusCup1",
+                "focusCup2",
+                "focusCup3",
+                "focusCup4",
+                "focusCup5"
+              ],
+              "dur": 0.16,
+              "at": "Six"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Twelve pencils. We found one cup's share before counting six shares.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "focusCup0",
+                "focusCup1",
+                "focusCup2",
+                "focusCup3",
+                "focusCup4",
+                "focusCup5"
+              ],
+              "dur": 0.16
+            },
+            {
+              "do": "answer",
+              "tex": "12\\text{ pencils}"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "You may also see two times six. The two is our first answer. Parentheses show that the sharing step comes first.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Keep the steps linked"
+            },
+            {
+              "do": "write",
+              "tex": "14\\div7=2"
+            },
+            {
+              "do": "write",
+              "tex": "2\\times6=12",
+              "nth": 1,
+              "at": "two"
+            },
+            {
+              "do": "write",
+              "tex": "(14\\div7)\\times6=12",
+              "at": "Parentheses"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "r0p0A": [
+            0,
+            3
+          ],
+          "r0p0B": [
+            2,
+            3
+          ],
+          "r0p0C": [
+            2,
+            1.5
+          ],
+          "r0p0D": [
+            0,
+            1.5
+          ],
+          "r0n0P": [
+            1,
+            2.25
+          ],
+          "r0p1A": [
+            2,
+            3
+          ],
+          "r0p1B": [
+            4,
+            3
+          ],
+          "r0p1C": [
+            4,
+            1.5
+          ],
+          "r0p1D": [
+            2,
+            1.5
+          ],
+          "r0n1P": [
+            3,
+            2.25
+          ],
+          "r0p2A": [
+            4,
+            3
+          ],
+          "r0p2B": [
+            6,
+            3
+          ],
+          "r0p2C": [
+            6,
+            1.5
+          ],
+          "r0p2D": [
+            4,
+            1.5
+          ],
+          "r0n2P": [
+            5,
+            2.25
+          ],
+          "r0p3A": [
+            6,
+            3
+          ],
+          "r0p3B": [
+            8,
+            3
+          ],
+          "r0p3C": [
+            8,
+            1.5
+          ],
+          "r0p3D": [
+            6,
+            1.5
+          ],
+          "r0n3P": [
+            7,
+            2.25
+          ],
+          "r0p4A": [
+            8,
+            3
+          ],
+          "r0p4B": [
+            10,
+            3
+          ],
+          "r0p4C": [
+            10,
+            1.5
+          ],
+          "r0p4D": [
+            8,
+            1.5
+          ],
+          "r0n4P": [
+            9,
+            2.25
+          ],
+          "r0p5A": [
+            10,
+            3
+          ],
+          "r0p5B": [
+            12,
+            3
+          ],
+          "r0p5C": [
+            12,
+            1.5
+          ],
+          "r0p5D": [
+            10,
+            1.5
+          ],
+          "r0n5P": [
+            11,
+            2.25
+          ],
+          "r0p6A": [
+            12,
+            3
+          ],
+          "r0p6B": [
+            14,
+            3
+          ],
+          "r0p6C": [
+            14,
+            1.5
+          ],
+          "r0p6D": [
+            12,
+            1.5
+          ],
+          "r0n6P": [
+            13,
+            2.25
+          ],
+          "groups0P": [
+            7,
+            4.2
+          ],
+          "bracket0A": [
+            0,
+            1
+          ],
+          "bracket0B": [
+            14,
+            1
+          ],
+          "total0P": [
+            7,
+            0
+          ],
+          "r1p0A": [
+            0,
+            -3.5
+          ],
+          "r1p0B": [
+            2,
+            -3.5
+          ],
+          "r1p0C": [
+            2,
+            -5
+          ],
+          "r1p0D": [
+            0,
+            -5
+          ],
+          "r1n0P": [
+            1,
+            -4.25
+          ],
+          "r1p1A": [
+            2,
+            -3.5
+          ],
+          "r1p1B": [
+            4,
+            -3.5
+          ],
+          "r1p1C": [
+            4,
+            -5
+          ],
+          "r1p1D": [
+            2,
+            -5
+          ],
+          "r1n1P": [
+            3,
+            -4.25
+          ],
+          "r1p2A": [
+            4,
+            -3.5
+          ],
+          "r1p2B": [
+            6,
+            -3.5
+          ],
+          "r1p2C": [
+            6,
+            -5
+          ],
+          "r1p2D": [
+            4,
+            -5
+          ],
+          "r1n2P": [
+            5,
+            -4.25
+          ],
+          "r1p3A": [
+            6,
+            -3.5
+          ],
+          "r1p3B": [
+            8,
+            -3.5
+          ],
+          "r1p3C": [
+            8,
+            -5
+          ],
+          "r1p3D": [
+            6,
+            -5
+          ],
+          "r1n3P": [
+            7,
+            -4.25
+          ],
+          "r1p4A": [
+            8,
+            -3.5
+          ],
+          "r1p4B": [
+            10,
+            -3.5
+          ],
+          "r1p4C": [
+            10,
+            -5
+          ],
+          "r1p4D": [
+            8,
+            -5
+          ],
+          "r1n4P": [
+            9,
+            -4.25
+          ],
+          "r1p5A": [
+            10,
+            -3.5
+          ],
+          "r1p5B": [
+            12,
+            -3.5
+          ],
+          "r1p5C": [
+            12,
+            -5
+          ],
+          "r1p5D": [
+            10,
+            -5
+          ],
+          "r1n5P": [
+            11,
+            -4.25
+          ],
+          "r1p6A": [
+            12,
+            -3.5
+          ],
+          "r1p6B": [
+            14,
+            -3.5
+          ],
+          "r1p6C": [
+            14,
+            -5
+          ],
+          "r1p6D": [
+            12,
+            -5
+          ],
+          "r1n6P": [
+            13,
+            -4.25
+          ],
+          "groups1P": [
+            7,
+            -2.3
+          ],
+          "bracket1A": [
+            0,
+            -5.5
+          ],
+          "bracket1B": [
+            14,
+            -5.5
+          ],
+          "total1P": [
+            7,
+            -6.5
+          ]
+        },
+        "parts": [
+          {
+            "id": "r0p0",
+            "poly": [
+              "r0p0A",
+              "r0p0B",
+              "r0p0C",
+              "r0p0D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "r0n0",
+            "label": "2",
+            "at": "r0n0P",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "r0p1",
+            "poly": [
+              "r0p1A",
+              "r0p1B",
+              "r0p1C",
+              "r0p1D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "r0n1",
+            "label": "2",
+            "at": "r0n1P",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "r0p2",
+            "poly": [
+              "r0p2A",
+              "r0p2B",
+              "r0p2C",
+              "r0p2D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "r0n2",
+            "label": "2",
+            "at": "r0n2P",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "r0p3",
+            "poly": [
+              "r0p3A",
+              "r0p3B",
+              "r0p3C",
+              "r0p3D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "r0n3",
+            "label": "2",
+            "at": "r0n3P",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "r0p4",
+            "poly": [
+              "r0p4A",
+              "r0p4B",
+              "r0p4C",
+              "r0p4D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "r0n4",
+            "label": "2",
+            "at": "r0n4P",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "r0p5",
+            "poly": [
+              "r0p5A",
+              "r0p5B",
+              "r0p5C",
+              "r0p5D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "r0n5",
+            "label": "2",
+            "at": "r0n5P",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "r0p6",
+            "poly": [
+              "r0p6A",
+              "r0p6B",
+              "r0p6C",
+              "r0p6D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "r0n6",
+            "label": "2",
+            "at": "r0n6P",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "groups0",
+            "label": "7\\text{ pieces}",
+            "at": "groups0P",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "bracket0",
+            "seg": [
+              "bracket0A",
+              "bracket0B"
+            ],
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "total0",
+            "label": "14\\text{ cm in all}",
+            "at": "total0P",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "r1p0",
+            "poly": [
+              "r1p0A",
+              "r1p0B",
+              "r1p0C",
+              "r1p0D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "r1n0",
+            "label": "10",
+            "at": "r1n0P",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "r1p1",
+            "poly": [
+              "r1p1A",
+              "r1p1B",
+              "r1p1C",
+              "r1p1D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "r1n1",
+            "label": "10",
+            "at": "r1n1P",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "r1p2",
+            "poly": [
+              "r1p2A",
+              "r1p2B",
+              "r1p2C",
+              "r1p2D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "r1n2",
+            "label": "10",
+            "at": "r1n2P",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "r1p3",
+            "poly": [
+              "r1p3A",
+              "r1p3B",
+              "r1p3C",
+              "r1p3D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "r1n3",
+            "label": "10",
+            "at": "r1n3P",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "r1p4",
+            "poly": [
+              "r1p4A",
+              "r1p4B",
+              "r1p4C",
+              "r1p4D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "r1n4",
+            "label": "10",
+            "at": "r1n4P",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "r1p5",
+            "poly": [
+              "r1p5A",
+              "r1p5B",
+              "r1p5C",
+              "r1p5D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "r1n5",
+            "label": "10",
+            "at": "r1n5P",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "r1p6",
+            "poly": [
+              "r1p6A",
+              "r1p6B",
+              "r1p6C",
+              "r1p6D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "r1n6",
+            "label": "10",
+            "at": "r1n6P",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "groups1",
+            "label": "7\\text{ pieces}",
+            "at": "groups1P",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "bracket1",
+            "seg": [
+              "bracket1A",
+              "bracket1B"
+            ],
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "total1",
+            "label": "70\\text{ cm in all}",
+            "at": "total1P",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "focusGroups0",
+            "label": "7\\text{ pieces}",
+            "at": "groups0P",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold"
+          },
+          {
+            "id": "focusGroups1",
+            "label": "7\\text{ pieces}",
+            "at": "groups1P",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold"
+          },
+          {
+            "id": "focusR0n0",
+            "label": "2",
+            "at": "r0n0P",
+            "dir": "c",
+            "size": "m",
+            "ink": "gold"
+          },
+          {
+            "id": "focusR1n0",
+            "label": "10",
+            "at": "r1n0P",
+            "dir": "c",
+            "size": "m",
+            "ink": "gold"
+          },
+          {
+            "id": "focusTotal0",
+            "label": "14\\text{ cm in all}",
+            "at": "total0P",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold"
+          },
+          {
+            "id": "focusTotal1",
+            "label": "70\\text{ cm in all}",
+            "at": "total1P",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Two ribbons. Seven pieces of two centimeters make fourteen centimeters in all.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Which number is missing?"
+            },
+            {
+              "do": "write",
+              "tex": "7\\times2=14"
+            },
+            {
+              "do": "highlight",
+              "target": "total0",
+              "at": "fourteen"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Seventy centimeters in seven equal pieces gives ten centimeters in each.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "write",
+              "tex": "70\\div7=10",
+              "fresh": true
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "r1n0",
+                "r1n1",
+                "r1n2",
+                "r1n3",
+                "r1n4",
+                "r1n5",
+                "r1n6"
+              ],
+              "at": "ten"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A missing total: multiply. A missing group size or number of groups: divide the total by the other known number.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "text",
+              "text": "Missing total → multiply.",
+              "at": "multiply"
+            },
+            {
+              "do": "text",
+              "text": "Missing group size or count → divide.",
+              "at": "divide"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Find the groups, the size of a group, and the total. The one that's missing tells you what to do.",
+          "pause": 1.4,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "groups0",
+                "groups1"
+              ],
+              "dur": 0.16,
+              "at": "groups"
+            },
+            {
+              "do": "show",
+              "target": [
+                "focusGroups0",
+                "focusGroups1"
+              ],
+              "dur": 0.16,
+              "at": "groups"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "focusGroups0",
+                "focusGroups1"
+              ],
+              "dur": 0.16,
+              "at": "size"
+            },
+            {
+              "do": "show",
+              "target": [
+                "groups0",
+                "groups1"
+              ],
+              "dur": 0.16,
+              "at": "size"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "r0n0",
+                "r1n0"
+              ],
+              "dur": 0.16,
+              "at": "size"
+            },
+            {
+              "do": "show",
+              "target": [
+                "focusR0n0",
+                "focusR1n0"
+              ],
+              "dur": 0.16,
+              "at": "size"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "focusR0n0",
+                "focusR1n0"
+              ],
+              "dur": 0.16,
+              "at": "total"
+            },
+            {
+              "do": "show",
+              "target": [
+                "r0n0",
+                "r1n0"
+              ],
+              "dur": 0.16,
+              "at": "total"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "total0",
+                "total1"
+              ],
+              "dur": 0.16,
+              "at": "total"
+            },
+            {
+              "do": "show",
+              "target": [
+                "focusTotal0",
+                "focusTotal1"
+              ],
+              "dur": 0.16,
+              "at": "total"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "focusTotal0",
+                "focusTotal1"
+              ],
+              "dur": 0.16,
+              "at": "one"
+            },
+            {
+              "do": "show",
+              "target": [
+                "total0",
+                "total1"
+              ],
+              "dur": 0.16,
+              "at": "one"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
