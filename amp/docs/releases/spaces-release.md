@@ -103,3 +103,20 @@ with the current list price. Nothing to change for this release.
    (Stripe test mode is never used in production: stop at the checkout page).
 9. After step 3 of this page, a new child without a birth year in a class with a
    grade band starts at that band's level.
+
+## 6. If something is wrong: fail forward
+
+Production is the trunk ([deployment](../deployment.md)). A deploy that fails
+its own smoke checks is rolled back automatically by the deploy workflow and
+held until a newer green commit arrives. Anything found after a healthy deploy
+is fixed by another small PR to `main` through the same gates, not by
+reverting the merge:
+
+- The migrations only add tables, nullable columns, indexes, functions and
+  triggers; the previous image runs against the new schema. Never edit or
+  remove an applied migration.
+- Before step 3 (the course placement flag), redeploying the previous image is
+  safe. After it, set `amp_course_placement.enabled` back to `false` and stay
+  on an image that reads `starting_course_level` (step 3).
+- The family identity backfill writes only new identity rows; it never rewrites
+  a published id, so it needs no undo.
