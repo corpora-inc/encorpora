@@ -199,16 +199,9 @@ export function ParentConsentCenter({
       challenge.noticeDigest === view.noticeDigest &&
       challenge.requestId === view.request?.id &&
       view.request?.delivery !== "stopped-unknown" &&
-      ((challenge.stage === "initial" && phase === "awaiting-initial") ||
-        (challenge.stage === "confirmation" &&
-          phase === "awaiting-confirmation"))
+      challenge.stage === "initial" &&
+      phase === "awaiting-initial"
     );
-  const consumedInitial = !!(
-    challenge?.stage === "initial" &&
-    challenge.requestId === view?.request?.id &&
-    challenge.noticeDigest === view?.noticeDigest &&
-    phase === "awaiting-confirmation"
-  );
   // A funded purchase waiting on consent: its step in this app, carried on
   // in place (never a full reload).
   const fundedReturn = view?.consentActive
@@ -253,15 +246,13 @@ export function ParentConsentCenter({
                   ? "Consent is active"
                   : canStart
                     ? "Your permission comes first"
-                    : phase === "awaiting-confirmation"
-                      ? "One more confirmation"
-                      : "Your privacy notice"}
+                    : "Your privacy notice"}
             </h2>
             {canStart && (
               <>
                 <p>
-                  Use your own email. Two responses are required, at least{" "}
-                  {view.confirmationDelayHours} hours apart.
+                  Use your own email. Open the notice we send while signed in
+                  here, and learning starts as soon as you agree.
                 </p>
                 <label>
                   Email address
@@ -289,23 +280,6 @@ export function ParentConsentCenter({
                       : "Your notice is queued for delivery. Refresh to check its progress."}
               </p>
             )}
-            {phase === "awaiting-confirmation" && !canAck && (
-              <>
-                <p>
-                  Your first response is recorded. Learning access has not
-                  started.
-                </p>
-                <p>
-                  {view.request?.delivery === "accepted"
-                    ? "Open the delayed confirmation email to finish."
-                    : view.request?.delivery === "stopped-unknown"
-                      ? "We could not confirm delivery. Automatic retries have stopped. Withdraw this request before starting again."
-                      : view.request?.delivery === "rejected"
-                        ? "Delivery could not be confirmed. Withdraw this request and start again."
-                        : `The next notice is scheduled no earlier than ${view.request?.confirmationAfter ? new Date(view.request.confirmationAfter).toLocaleString() : "the confirmation time"}.`}
-                </p>
-              </>
-            )}
             {phase === "active" && (
               <p>
                 You can create a learner and use available learning access.
@@ -313,13 +287,7 @@ export function ParentConsentCenter({
                 does not cancel paid renewal.
               </p>
             )}
-            {consumedInitial && (
-              <p>
-                Your first response is already recorded. Use the second
-                confirmation email when it arrives.
-              </p>
-            )}
-            {challenge && !canAck && !consumedInitial && phase !== "active" && (
+            {challenge && !canAck && phase !== "active" && (
               <p>
                 This email link does not match an available request for this
                 account. Request a new notice if needed.
@@ -394,9 +362,8 @@ export function ParentConsentCenter({
           <details>
             <summary>Withdraw this consent or request</summary>
             <p>
-              Withdrawal stops pending confirmation and future learning access.
-              Learning data deletion is available separately in the Privacy
-              workspace.
+              Withdrawal stops future learning access. Learning data deletion is
+              available separately in the Privacy workspace.
             </p>
             <button
               type="button"
@@ -445,11 +412,7 @@ export function ParentConsentCenter({
             disabled={busy || !attest}
             onClick={() => void act("ack")}
           >
-            {busy
-              ? "Saving…"
-              : challenge?.stage === "initial"
-                ? "Record the first response"
-                : "Confirm learning consent"}
+            {busy ? "Saving…" : "Give consent"}
           </button>
         ) : (
           <button type="button" disabled={busy} onClick={() => void load()}>

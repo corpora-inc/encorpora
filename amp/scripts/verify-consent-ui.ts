@@ -90,13 +90,11 @@ try {
       if (path.endsWith("/acknowledge"))
         view = {
           ...view,
-          consentActive: r.postDataJSON().stage === "confirmation",
+          // The first affirmative response is the consent.
+          consentActive: true,
           request: {
             ...view.request!,
-            phase:
-              r.postDataJSON().stage === "initial"
-                ? "awaiting-confirmation"
-                : "active",
+            phase: "active",
             confirmationAfter: "2099-01-01T00:00:00.000Z",
             delivery: "queued",
           },
@@ -213,47 +211,20 @@ try {
     assert(target && target.height >= 44);
 
     await page.getByRole("checkbox").check();
-    await page
-      .getByRole("button", { name: "Record the first response" })
-      .click();
-    await page
-      .getByRole("heading", { name: "One more confirmation" })
-      .waitFor();
-    await capture("delay");
-    await page.evaluate(
-      (c) =>
-        (window as any).consentHarness.render(
-          "parent",
-          "renewed",
-          c,
-          "consumed-initial",
-        ),
-      challenge,
-    );
-    await page
-      .getByText(
-        "Your first response is already recorded. Use the second confirmation email when it arrives.",
-        { exact: true },
-      )
-      .waitFor();
-    assert.equal(
-      await page
-        .getByRole("button", { name: "Record the first response" })
-        .count(),
-      0,
-    );
-
+    await page.getByRole("button", { name: "Give consent" }).click();
+    await page.getByRole("heading", { name: "Consent is active" }).waitFor();
+    await capture("active");
+    // The delayed notice's old confirmation link asks for nothing more.
     await page.evaluate(
       (c) =>
         (window as any).consentHarness.render("parent", "renewed", c, "link2"),
       { ...challenge, stage: "confirmation" },
     );
-    await page.getByRole("checkbox").check();
-    await page
-      .getByRole("button", { name: "Confirm learning consent" })
-      .click();
     await page.getByRole("heading", { name: "Consent is active" }).waitFor();
-    await capture("active");
+    assert.equal(
+      await page.getByRole("button", { name: "Give consent" }).count(),
+      0,
+    );
     await page
       .getByText("Withdraw this consent or request", { exact: true })
       .click();

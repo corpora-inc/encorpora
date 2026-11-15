@@ -78,7 +78,7 @@ function ack(mail: ConsentMail) {
 }
 async function advance(pool: Pool) {
   await pool.query(
-    "UPDATE amp_consent_requests SET confirmation_after=now()-interval '1 minute' WHERE phase='awaiting-confirmation'",
+    "UPDATE amp_consent_requests SET confirmation_after=now()-interval '1 minute' WHERE confirmation_after IS NOT NULL",
   );
   await pool.query(
     "UPDATE amp_consent_outbox SET available_at=now()-interval '1 minute' WHERE stage='confirmation'",
@@ -100,9 +100,6 @@ test(
       await r.begin("parent", begin());
       await deliverConsentMail(r, transport(mails));
       await r.acknowledge("parent", ack(mails[0]!));
-      await advance(pool);
-      await deliverConsentMail(r, transport(mails));
-      await r.acknowledge("parent", ack(mails[1]!));
       assert.equal(await active(pool), true);
       await pool.query(
         "UPDATE amp_parent_consents SET verification_method='internal-email-plus-v999' WHERE account_id='parent'",
@@ -178,7 +175,7 @@ test(
     }),
 );
 test(
-  "two explicit responses, exact replay and account binding; clock and delivery never grant access",
+  "one affirmative response grants consent; the delayed notice needs no reply; exact replay and account binding",
   enabled,
   async () =>
     fixture(async (pool, r, mails) => {
@@ -202,16 +199,21 @@ test(
       assert.equal(mails.length, 1);
       assert.equal(await active(pool), false);
       await assert.rejects(r.acknowledge("foreign", ack(mails[0]!)), /invalid/);
-      await r.acknowledge("parent", ack(mails[0]!));
-      await r.acknowledge("parent", ack(mails[0]!));
+      await Promise.all([
+        r.acknowledge("parent", ack(mails[0]!)),
+        r.acknowledge("parent", ack(mails[0]!)),
+      ]);
+      // Access starts on the parent's first affirmative response.
+      assert.equal(await active(pool), true);
+      assert.equal((await r.view("parent")).request?.phase, "active");
+      // The confirmatory notice waits for its delay, then needs no reply.
       assert.equal(await deliverConsentMail(r, transport(mails)), false);
       await advance(pool);
-      await deliverConsentMail(r, transport(mails));
-      assert.equal(await active(pool), false);
-      await Promise.all([
-        r.acknowledge("parent", ack(mails[1]!)),
-        r.acknowledge("parent", ack(mails[1]!)),
-      ]);
+      assert.equal(await deliverConsentMail(r, transport(mails)), true);
+      assert.equal(mails.length, 2);
+      assert.doesNotMatch(mails[1]!.text, /Review and respond/);
+      assert.match(mails[1]!.text, /revoke/i);
+      assert(mails[1]!.text.includes(p.notice.parentAccountUrl));
       assert.equal(await active(pool), true);
       for (const offline of [
         new ConsentRepository(pool, p, r.secrets, false),
@@ -234,14 +236,14 @@ test(
       const family = new FamilyRepository(pool);
       await family.withdraw("parent");
       assert.equal(await active(pool), false);
-      await assert.rejects(r.acknowledge("parent", ack(mails[1]!)), /invalid/);
+      await assert.rejects(r.acknowledge("parent", ack(mails[0]!)), /invalid/);
       const output = [];
       for await (const line of family.export("parent")) output.push(line);
       const exported = output.join("");
       assert(exported.includes("consent-enrollment"));
       assert(!exported.includes("email_hash"));
       assert(!exported.includes("recipient_ciphertext"));
-      assert(!exported.includes(ack(mails[1]!).token));
+      assert(!exported.includes(ack(mails[0]!).token));
     }),
 );
 test(
@@ -276,6 +278,7 @@ test(
       await r.begin("parent", begin());
       await deliverConsentMail(r, transport(mails));
       await r.acknowledge("parent", ack(mails[1]!));
+      assert.equal(await active(pool), true);
       await new FamilyRepository(pool).deleteLearning("parent");
       await advance(pool);
       assert.equal(await deliverConsentMail(r, transport(mails)), false);
@@ -292,7 +295,6 @@ test(
       await r.acknowledge("parent", ack(mails[0]!));
       await advance(pool);
       await deliverConsentMail(r, transport(mails));
-      await r.acknowledge("parent", ack(mails[1]!));
       await pool.query(
         "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES('manual','v1','verified-video','fixture')",
       );
@@ -327,7 +329,7 @@ test(
 
       await assert.rejects(r.begin("new-parent", begin()), /unavailable/);
       await assert.rejects(
-        r.acknowledge("parent", ack(mails[1]!)),
+        r.acknowledge("parent", ack(mails[0]!)),
         /unavailable/,
       );
       assert.equal(
@@ -468,11 +470,17 @@ test(
         "UPDATE amp_consent_requests SET expires_at=now()-interval '1 second' WHERE phase='awaiting-initial'",
       );
       assert.equal((await r.view("parent")).request?.phase, "expired");
-      await installConsentPolicy(pool, {
-        ...p,
-        review: { ...p.review, expiresAt: "2020-01-01T00:00:00.000Z" },
-      });
-      assert.equal((await r.view("parent")).available, false);
+      // No law sets a review date: a past review date never shuts consent off.
+      await installConsentPolicy(pool, p);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT reviewed_until='infinity'::timestamptz AS forever FROM amp_consent_policy",
+          )
+        ).rows[0].forever,
+        true,
+      );
+      assert.equal((await r.view("parent")).available, true);
     }),
 );
 
@@ -794,5 +802,45 @@ test(
         1,
       );
       assert.equal(await active(pool, "amp|passkey-parent"), false);
+    }),
+);
+
+test(
+  "requests left waiting on a second response complete when the single-response migration runs",
+  enabled,
+  async () =>
+    fixture(async (pool, r, mails) => {
+      await r.begin("parent", begin());
+      await deliverConsentMail(r, transport(mails));
+      await r.acknowledge("parent", ack(mails[0]!));
+      // Reproduce the earlier two-response state: first answer recorded, no consent yet.
+      await pool.query(
+        "UPDATE amp_consent_requests SET phase='awaiting-confirmation',completed_at=NULL",
+      );
+      await pool.query("DELETE FROM amp_parent_consents");
+      await r.begin("expired-parent", begin());
+      await pool.query(
+        "UPDATE amp_consent_requests SET phase='awaiting-confirmation',initial_at=now(),expires_at=now()-interval '1 second' WHERE account_id='expired-parent'",
+      );
+      assert.equal(await active(pool), false);
+      await pool.query(
+        "DELETE FROM amp_migrations WHERE name='0126-consent-single-response.sql'",
+      );
+      await migrate(pool.options.connectionString!);
+      assert.equal(await active(pool), true);
+      assert.equal((await r.view("parent")).request?.phase, "active");
+      assert.equal(await active(pool, "expired-parent"), false);
+      // Its queued confirmatory notice still goes out, as a notice.
+      await advance(pool);
+      assert.equal(await deliverConsentMail(r, transport(mails)), true);
+      assert.doesNotMatch(mails.at(-1)!.text, /Review and respond/);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT recipient_ciphertext FROM amp_consent_requests WHERE account_id='parent'",
+          )
+        ).rows[0].recipient_ciphertext,
+        null,
+      );
     }),
 );

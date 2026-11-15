@@ -29,7 +29,7 @@ export function PurchaseMeasurement({
   const [feedback, setFeedback] = useState("");
   const optedOut =
     (navigator as Navigator & { globalPrivacyControl?: boolean })
-      .globalPrivacyControl === true || navigator.doNotTrack === "1";
+      .globalPrivacyControl === true;
   const mutation = useMutation({
     mutationKey: ["account", identity, "purchase-measurement", provider],
     mutationFn: (body: PermissionChange) =>
@@ -43,7 +43,6 @@ export function PurchaseMeasurement({
         {
           token,
           body,
-          headers: optedOut ? { DNT: "1" } : undefined,
         },
       ),
     onSuccess: (result) => {
@@ -105,7 +104,7 @@ export function PurchaseMeasurement({
                 ? "Review required"
                 : "Off"}
         </strong>
-        {active && view.expiresAt
+        {active && view.expiresAt && view.expiresAt < "9000"
           ? ` until ${new Date(view.expiresAt).toLocaleDateString()}.`
           : "."}
       </p>

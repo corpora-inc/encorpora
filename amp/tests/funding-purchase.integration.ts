@@ -1260,7 +1260,7 @@ test(
         authenticate: async () => "owner",
       });
       try {
-        for (const headers of [{ "sec-gpc": "1" }, { dnt: "1" }]) {
+        for (const headers of [{ "sec-gpc": "1" }]) {
           const result = await app.inject({
             method: "POST",
             url: "/api/v1/funding/requests",

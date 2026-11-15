@@ -36,7 +36,7 @@ test("only complete, fixed labels survive; no arbitrary queries or identifiers",
   });
 });
 test("privacy signals remove measurement without losing the funded destination", () => {
-  for (const privacy of [{ globalPrivacyControl: true }, { doNotTrack: "1" }]) {
+  for (const privacy of [{ globalPrivacyControl: true }]) {
     vi.stubGlobal("navigator", privacy);
     expect(continuationSearch({ ...campaign, return: "arkansas-efa" })).toEqual(
       { return: "arkansas-efa" },

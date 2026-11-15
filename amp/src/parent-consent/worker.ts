@@ -13,6 +13,12 @@ import { ConsentRepository } from "./repository.js";
 /** Resend keeps keys for 24 hours. Leave one hour for provider/clock uncertainty. */
 export const DELIVERY_WINDOW_HOURS = 23;
 export const DELIVERY_TIMEOUT_MS = 10_000;
+/** Consent is complete before its confirmatory notice. Once that notice
+ * reaches a final outcome, the parent's address is no longer needed. */
+const RELEASE_NOTICE_RECIPIENT = `UPDATE amp_consent_requests r SET recipient_ciphertext=NULL
+  WHERE r.id=(SELECT request_id FROM amp_consent_outbox WHERE id=$1) AND r.phase='active'
+  AND EXISTS(SELECT 1 FROM amp_consent_outbox o WHERE o.request_id=r.id AND o.stage='confirmation'
+    AND (o.accepted_at IS NOT NULL OR o.rejected_at IS NOT NULL OR o.stopped_at IS NOT NULL))`;
 /** One job, bounded externally and by database statement/lock deadlines. */
 export async function deliverConsentMail(
   repository: ConsentRepository,
@@ -25,7 +31,7 @@ export async function deliverConsentMail(
     JOIN amp_consent_policy p ON p.singleton AND p.enabled AND p.reviewed_until>now() AND p.digest=r.policy_digest AND p.generation=r.policy_generation
     WHERE o.accepted_at IS NULL AND o.rejected_at IS NULL AND o.stopped_at IS NULL
       AND o.available_at<=now() AND (o.lease_until IS NULL OR o.lease_until<=now())
-      AND r.expires_at>now() AND r.phase=CASE WHEN o.stage='initial' THEN 'awaiting-initial' ELSE 'awaiting-confirmation' END
+      AND r.expires_at>now() AND r.phase=CASE WHEN o.stage='initial' THEN 'awaiting-initial' ELSE 'active' END
     ORDER BY o.available_at,o.id LIMIT 1`)
   ).rows[0];
   if (!candidate) return false;
@@ -47,7 +53,7 @@ export async function deliverConsentMail(
       FROM amp_consent_outbox o JOIN amp_consent_requests r ON r.id=o.request_id
       WHERE o.id=$1 AND o.accepted_at IS NULL AND o.rejected_at IS NULL AND o.stopped_at IS NULL
         AND o.available_at<=now() AND (o.lease_until IS NULL OR o.lease_until<=now())
-        AND r.expires_at>now() AND r.phase=CASE WHEN o.stage='initial' THEN 'awaiting-initial' ELSE 'awaiting-confirmation' END
+        AND r.expires_at>now() AND r.phase=CASE WHEN o.stage='initial' THEN 'awaiting-initial' ELSE 'active' END
       FOR UPDATE OF o,r`,
           [candidate.id],
         )
@@ -90,6 +96,7 @@ export async function deliverConsentMail(
           "UPDATE amp_consent_outbox SET stopped_at=now(),stopped_reason=$2,lease_id=NULL,lease_until=NULL WHERE id=$1",
           [row.outbox_id, reason],
         );
+        await client.query(RELEASE_NOTICE_RECIPIENT, [row.outbox_id]);
         return { stopped: true as const };
       }
       const lease = randomUUID();
@@ -178,6 +185,7 @@ export async function deliverConsentMail(
         claimed.row.phase,
       ],
     );
+    await client.query(RELEASE_NOTICE_RECIPIENT, [candidate.id]);
   });
   return true;
 }

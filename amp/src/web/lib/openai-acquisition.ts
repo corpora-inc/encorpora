@@ -30,10 +30,9 @@ export function captureOpenAIEntry(): void {
         url.pathname + url.search + url.hash,
       );
     }
-    const optedOut =
-      navigator.doNotTrack === "1" ||
-      (navigator as Navigator & { globalPrivacyControl?: boolean })
-        .globalPrivacyControl;
+    const optedOut = (
+      navigator as Navigator & { globalPrivacyControl?: boolean }
+    ).globalPrivacyControl;
     if (optedOut) {
       void keepaliveFetch("/api/v1/advertising/acquisition", {
         method: "POST",

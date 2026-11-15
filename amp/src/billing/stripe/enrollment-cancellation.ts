@@ -44,7 +44,9 @@ export async function queueRejectedEnrollment(
     !!state.revoked_at ||
     !state.enabled ||
     !state.policy_matches ||
-    state.reviewed_until.getTime() <= now ||
+    // reviewed_until is infinity (no law sets a review date); pg parses it as
+    // Infinity, so compare numerically.
+    Number(state.reviewed_until) <= now ||
     payment.paidAt * 1000 > state.expires_at.getTime() ||
     payment.paidAt * 1000 < state.acknowledged_at.getTime() - 1000;
   const rejectedMethod =

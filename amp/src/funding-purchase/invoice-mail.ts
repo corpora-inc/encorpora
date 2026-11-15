@@ -138,12 +138,7 @@ export async function deliverFundingInvoiceMail(
           "UPDATE amp_funding_invoice_outbox SET stopped_at=now(),stopped_reason='invoice-unavailable',lease_id=NULL,lease_until=NULL WHERE invoice_id=$1 AND lease_id=$2 AND stopped_at IS NULL",
           [claimed.row.invoice_id, claimed.lease],
         );
-      return row
-        ? Math.min(
-            Number(row.remaining),
-            Date.parse(policy.review.expiresAt) - Date.now(),
-          )
-        : 0;
+      return row ? Number(row.remaining) : 0;
     },
   );
   const remaining = Math.min(

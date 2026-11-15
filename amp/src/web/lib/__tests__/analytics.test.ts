@@ -220,15 +220,15 @@ test("reduces the landing context to categories", () => {
 });
 
 test("privacy opt-out suppresses session storage and payment attribution headers", () => {
-  Object.defineProperty(navigator, "doNotTrack", {
-    value: "1",
+  Object.defineProperty(navigator, "globalPrivacyControl", {
+    value: true,
     configurable: true,
   });
   trackSessionStart();
   expect(analyticsVisitorHeaders()).toEqual({});
   expect(localStorage.getItem(visitorKey)).toBeNull();
   expect(beacon).not.toHaveBeenCalled();
-  Object.defineProperty(navigator, "doNotTrack", {
+  Object.defineProperty(navigator, "globalPrivacyControl", {
     value: undefined,
     configurable: true,
   });

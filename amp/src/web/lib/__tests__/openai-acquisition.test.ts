@@ -13,7 +13,6 @@ beforeEach(() => {
   vi.stubGlobal("history", { state: { kept: true }, replaceState: replace });
   vi.stubGlobal("navigator", {
     webdriver: false,
-    doNotTrack: "0",
     globalPrivacyControl: false,
   });
   at("https://amp.corpora.inc/?oppref=Opaque%2B%2F%3DCase&utm_source=openai");
@@ -46,7 +45,7 @@ test.each([
     expect(send).not.toHaveBeenCalled();
   },
 );
-test.each([{ doNotTrack: "1" }, { globalPrivacyControl: true }])(
+test.each([{ globalPrivacyControl: true }])(
   "honors privacy and automation: %j",
   (flags) => {
     vi.stubGlobal("navigator", { ...navigator, ...flags });

@@ -107,5 +107,7 @@ export class AdvertisingPermissionError extends Error {
   }
 }
 export function advertisingOptOut(headers: Record<string, unknown>) {
-  return headers["sec-gpc"] === "1" || headers.dnt === "1";
+  // GPC is a binding opt-out of sharing for ads (Cal. Civ. Code 1798.135(e)).
+  // Do Not Track has no legal force anywhere, so it is ignored.
+  return headers["sec-gpc"] === "1";
 }
