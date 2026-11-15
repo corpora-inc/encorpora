@@ -32,8 +32,6 @@ export const RETENTION = {
    * the parent's address, the child's nickname and any legacy name: days after
    * they expired or the teacher withdrew them. */
   familyApprovalDays: 30,
-  /** Voluntary parent product feedback, from submission. */
-  parentFeedbackDays: 90,
   /** Adult purchase measurement preferences after expiry or withdrawal. */
   advertisingPermissionDays: 90,
   /** Meta browser confirmation context: at most seven days after payment. */

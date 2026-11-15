@@ -22,12 +22,13 @@ local paths and account access procedures live in its linked private runbook.
 
 Before any video production, upload, schedule, or settings change, read and follow
 [the shared YouTube operating policy](docs/youtube-publishing.md). It covers AMP
-ads, explanations, tutoring sessions, and future formats. Upload private, target
-release about 24 hours later, keep comments on with Basic moderation, prepare a
-pinned AMP free-trial CTA, and use the shared cadence budget. Do not infer
-made-for-kids from school grade alone. Never publish immediately just because a
-render was approved, bypass the policy with ad hoc upload code, or revert a live
-video to private as a reflex. Apply the settled settings without asking Skylar
+ads, explanations, tutoring sessions, and future formats. Videos publish as soon
+as they are ready, in the next free cadence slot; there is no private hold. Keep
+comments on with Basic moderation, prepare a pinned AMP free-trial CTA, and use
+the shared cadence budget. Set made-for-kids correctly (never from school grade
+alone) and make YouTube's altered/synthetic disclosure where YouTube requires
+it. Never bypass the policy with ad hoc upload code or revert a live video to
+private as a reflex. Apply the settled settings without asking Skylar
 to repeat them; verify actual Studio and viewer behavior. Private receipts and
 channel access configuration stay outside this public repository.
 

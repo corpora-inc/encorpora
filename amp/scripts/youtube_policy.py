@@ -68,7 +68,9 @@ def validate_review(plan, receipt, current, now):
 
 
 def allowed_slot(candidate, uploaded, now, events, related_ids=()):
-    if candidate <= now or candidate < uploaded + timedelta(hours=12):
+    # No private hold: videos publish when ready. Only the cadence spacing
+    # below applies (a channel choice, not a YouTube rule).
+    if candidate <= now:
         return False
     if any(abs(candidate - event["at"]) < MIN_RELEASE_GAP for event in events):
         return False
@@ -89,13 +91,12 @@ def release_time(uploaded, now, events, related_ids=(), requested=None):
     if requested:
         chosen = timestamp(requested)
         if not allowed_slot(chosen, uploaded, now, events, related_ids):
-            raise ValueError("Release violates the 12-hour hold, four-hour spacing, related-edition separation, or six-per-24-hour cap")
+            raise ValueError("Release must be in the future and respect four-hour spacing, related-edition separation and the six-per-24-hour cap")
         return chosen
-    target = uploaded + timedelta(hours=24)
-    start = max(now, target - timedelta(hours=12)).astimezone(TIMEZONE).date()
+    start = now.astimezone(TIMEZONE).date()
     slots = [datetime.combine(start + timedelta(days=d), datetime.min.time(), TIMEZONE).replace(hour=hour).astimezone(timezone.utc)
              for d in range(8) for hour in RELEASE_HOURS]
-    for slot in sorted(slots, key=lambda value: (abs(value - target), value)):
+    for slot in sorted(slots):
         if allowed_slot(slot, uploaded, now, events, related_ids):
             return slot
     raise ValueError("No compliant slot in the next eight days; retain the private upload")
