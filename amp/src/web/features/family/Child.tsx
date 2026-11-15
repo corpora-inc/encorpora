@@ -167,20 +167,24 @@ export function ChildScreen() {
               {/* A progress report once there is progress to report; the
                   record arrives with the page (family-routes), so it never
                   appears late. */}
-              {child.capabilities.readProgress && hasReport && (
-                <PrintButton
-                  variant="secondary"
-                  download={() =>
-                    downloadPdf({
-                      path: `${child.paths.progress.replace(/^\/api\/v1/, "")}.pdf?format=${paperFormat()}`,
-                      token: session.token,
-                      name: `amp-progress-report-${child.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}.pdf`,
-                    })
-                  }
-                >
-                  Progress report
-                </PrintButton>
-              )}
+              {/* Decided when the page opens: a first answer while it is
+                  open takes the bar in place and adds nothing above it. */}
+              {child.capabilities.readProgress &&
+                hasReport &&
+                openedUnmeasured.current === false && (
+                  <PrintButton
+                    variant="secondary"
+                    download={() =>
+                      downloadPdf({
+                        path: `${child.paths.progress.replace(/^\/api\/v1/, "")}.pdf?format=${paperFormat()}`,
+                        token: session.token,
+                        name: `amp-progress-report-${child.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}.pdf`,
+                      })
+                    }
+                  >
+                    Progress report
+                  </PrintButton>
+                )}
               {person && (
                 <TryAsStudent
                   session={session}
