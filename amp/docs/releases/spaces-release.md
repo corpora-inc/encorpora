@@ -141,6 +141,11 @@ reverting the merge:
 - The family identity backfill writes only new identity rows; it never rewrites
   a published id, so it needs no undo.
 
+The release's merge (#2344) held production: the `ci-scripts · tests` job
+outran its 15-minute limit because the AMP CI planner rescanned every source
+once per related script, and the release grew the tree. #2345 scans each source
+once (10 min 18 s to 2 min 6 s locally) and deploys the release with it.
+
 ## Next (deferred: not correctness, security, data or visible breakage)
 
 - Responsive round's open items (reports/spaces/responsive/ledger.md, "Next"):

@@ -113,9 +113,14 @@ def oracle_consumers(path, root):
                     and pattern.search(text)):
                 users.add(name)
                 pending.append(name)
-    patterns = [names(Path(user).stem) for user in users]
+    # One alternation scans each source once, however many users there are:
+    # a pattern per user rescanned every source per user, which grew with
+    # the tree until the planner's tests outran their CI time limit.
+    stems = sorted({Path(user).stem for user in users}, key=len, reverse=True)
+    pattern = re.compile(r'(?<![\w-])(?:' + '|'.join(map(re.escape, stems))
+                         + r')(?![\w-])')
     return sorted(name for name, text in texts.items() if name not in users
-                  and any(pattern.search(text) for pattern in patterns))
+                  and pattern.search(text))
 
 
 def is_review_helper(consumer, root):
