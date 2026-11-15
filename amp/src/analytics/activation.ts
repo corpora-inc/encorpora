@@ -174,6 +174,36 @@ export async function recordEnrollmentActivation(
 }
 
 /**
+ * A real school class that `accountId` teaches now counts as theirs: its
+ * `class_created`, and `student_joined` once it holds a student. For a class
+ * that reached its teacher's account after it was made (a roster or Clever
+ * sync before they signed in), where no enrollment of theirs fired.
+ */
+export async function recordClassActivation(
+  db: Db,
+  accountId: string,
+  classId: string,
+): Promise<void> {
+  if (!accountId.startsWith("amp|")) return;
+  await guarded(db, "class", () =>
+    db.query(
+      `WITH klass AS (
+         SELECT c.id FROM amp_classes c WHERE c.id=$2::uuid AND NOT ${EXCLUDED_ORG("c.org_id", "true")}
+       ), due(step) AS (
+         SELECT 'class_created' FROM klass
+         UNION ALL SELECT 'student_joined' FROM klass k WHERE EXISTS(
+           SELECT 1 FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id AND p.deleted_at IS NULL
+           WHERE e.class_id=k.id AND e.role='student' AND e.end_on IS NULL)
+       )
+       INSERT INTO amp_activation_milestones(account_id,step,persona)
+       SELECT $1,d.step,${CHOSEN("$1::text")} FROM due d
+       ON CONFLICT (account_id,step) DO NOTHING`,
+      [accountId, classId],
+    ),
+  );
+}
+
+/**
  * The milestones a learner's new answer, or new workbook, can complete for
  * the people it counts for: the account that owns the learner (a parent's
  * child, an adult's own practice) and the teacher of a family org's class (a

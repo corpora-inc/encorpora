@@ -8,6 +8,10 @@ import { activeToday } from "./principal.js";
 import { loadActor, can, actorPerson } from "./authz.js";
 import { plainName, SchoolError } from "./contracts.js";
 import { recordEvent } from "./events.js";
+import {
+  recordActivation,
+  recordClassActivation,
+} from "../analytics/activation.js";
 import { SchoolRepository, generateHandle } from "./repository.js";
 
 import {
@@ -240,6 +244,12 @@ export async function startSchool(
       targetKind: "org",
       targetId: orgId,
       detail: { after: { kind: "school", selfServe: true } },
+    });
+    await recordActivation(client, {
+      accountId,
+      step: "school_created",
+      persona: "school",
+      orgId,
     });
     const agreement = await repo.acceptAgreement(
       client,
@@ -519,6 +529,7 @@ export async function joinTeacherPilot(
       targetId: classId,
       detail: { after: { pilotId: pilot } },
     });
+  await recordClassActivation(client, accountId, classId);
   return pilot;
 }
 

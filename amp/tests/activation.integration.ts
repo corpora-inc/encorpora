@@ -8,7 +8,11 @@ import { registerFamilyRoutes } from "../src/family/routes.js";
 import { FamilyRepository } from "../src/family/repository.js";
 import { registerSchoolRoutes } from "../src/schools/routes.js";
 import { SchoolRepository } from "../src/schools/repository.js";
-import { startSchoolClass } from "../src/schools/pilots.js";
+import {
+  startSchool,
+  startSchoolClass,
+  startTeacherPilots,
+} from "../src/schools/pilots.js";
 import { AGREEMENT_VERSION } from "../src/schools/agreement.js";
 import { schoolAccountId } from "../src/schools/principal.js";
 import { buildApp } from "../src/server/app.js";
@@ -496,5 +500,68 @@ test(
         ["payment received", 0, null],
       ],
     );
+  },
+);
+
+test(
+  "a school leader's own school counts as the school persona's, and a synced teacher's class counts at sign-in",
+  database,
+  async (t) => {
+    const { db, user, milestones } = await fixture(t);
+    const schools = new SchoolRepository(db);
+    const leader = await user();
+    const { orgId } = await startSchool(schools, leader, {
+      requestId: randomUUID(),
+      schoolName: "Fixture school",
+      timezone: "America/New_York",
+      signerName: "Fixture Adult",
+      agreementVersion: AGREEMENT_VERSION,
+      authorized: true,
+    });
+    assert.deepEqual(await milestones(leader), {
+      account_created: null,
+      school_created: "school",
+    });
+
+    // A teacher synced from a roster before they ever sign in: their class
+    // and its student arrive with no account to count them for.
+    const teacher = await user();
+    const person = randomUUID();
+    const classId = await schools.transaction(async (client) => {
+      await client.query(
+        `INSERT INTO amp_people(id,tenant_id,given_name,handle,timezone)
+         VALUES($1,$2,'Fixture','fixture-teacher-handle','America/New_York')`,
+        [person, orgId],
+      );
+      const klass = await schools.createClassIn(client, orgId, {
+        name: "Room 2",
+        gradingKind: "year",
+      });
+      const today = await schools.today(client, "America/New_York");
+      await schools.enroll(client, klass.id, person, "teacher", today);
+      await schools.provisionStudentIn(
+        client,
+        orgId,
+        { givenName: "Ada", familyName: "Example", classId: klass.id },
+        null,
+      );
+      return klass.id;
+    });
+    await db.query("UPDATE amp_people SET account_id=$2 WHERE id=$1", [
+      person,
+      teacher,
+    ]);
+    assert.deepEqual(Object.keys(await milestones(teacher)), [
+      "account_created",
+    ]);
+    // Signing in starts the class's pilot, and counts the class and its
+    // first student for its teacher.
+    assert.equal((await startTeacherPilots(schools, teacher)).started, 1);
+    assert.deepEqual(Object.keys(await milestones(teacher)).sort(), [
+      "account_created",
+      "class_created",
+      "student_joined",
+    ]);
+    void classId;
   },
 );
