@@ -514,8 +514,12 @@ export function schoolRoutes(root: AnyRoute) {
       screens.settings,
       (session, orgId) => [
         import("../features/school/classroom/api").then(
-          ({ experienceOptions }) =>
-            preload(experienceOptions(session, { kind: "org", id: orgId })),
+          ({ experienceOptions, weeklyTargetOptions }) =>
+            Promise.all([
+              preload(experienceOptions(session, { kind: "org", id: orgId })),
+              // The first section: arriving late, it pushed every one below.
+              preload(weeklyTargetOptions(session, orgId)),
+            ]),
         ),
       ],
       "settings",
