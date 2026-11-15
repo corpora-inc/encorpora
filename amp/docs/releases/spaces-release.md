@@ -137,7 +137,7 @@ reverting the merge:
   the work replay's feedback panel clips rather than scrolls at 600 px; replay
   feedback steps scroll inside their panel at 320–768 px; the school Students
   grid and a class's workbook set grid scroll inside the page at 768 px;
-  workbook row titles and standings figure tips are short hit targets at
+  workbook row titles and figure tips (standings, a district's Schools list growth) are short hit targets at
   768 px and up; the practice stage scrolls between its toolbar and dock on
   phones; math in prompts can break at an operator at 320 px; the 769–1000 px
   Pathways browser is an overlay with its own scroll.
