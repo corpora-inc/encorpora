@@ -24,7 +24,9 @@
  *
  *   npx tsx scripts/frontier/level-interval-study.ts
  *   npx tsx scripts/frontier/level-interval-study.ts --quick
+ *   npx tsx scripts/frontier/level-interval-study.ts --json readings.json
  */
+import { writeFileSync } from "node:fs";
 import { availableParallelism } from "node:os";
 import { pathToFileURL } from "node:url";
 import { Worker, isMainThread, parentPort } from "node:worker_threads";
@@ -40,10 +42,7 @@ import {
   STRAND_FREEZE,
   type Frontier,
 } from "../../src/learning/frontier";
-import {
-  createFrontierPolicy,
-  DEFAULT_FRONTIER_POLICY,
-} from "../../src/learning/frontier-policy";
+import { DEFAULT_FRONTIER_POLICY } from "../../src/learning/frontier-policy";
 import { reportEstimate } from "../../src/learning/frontier-report";
 import { shownRange } from "../../src/learning/level-check";
 import {
@@ -155,12 +154,6 @@ function birthYearForGrade(grade: number) {
   return schoolYear - grade - 6;
 }
 
-/** The estimator as shipped before: its display likelihood at 1.7. */
-const SHIPPED_POLICY = createFrontierPolicy({
-  ...DEFAULT_FRONTIER_POLICY,
-  version: "grade-frontier-v4-evidence-anchored-climb",
-  response: { ...DEFAULT_FRONTIER_POLICY.response, discrimination: 1.7 },
-});
 /** sd-cal-v1 as shipped: 0.20 + factor × posterior sd. */
 const V1_FACTORS = [
   [20, 0.76],
@@ -214,7 +207,7 @@ export function simulateStudyLearner(job: Job): StudyLearner {
   });
   const before = createFrontierState(
     job.start,
-    SHIPPED_POLICY,
+    DEFAULT_FRONTIER_POLICY,
     BEFORE_PRIOR_SD,
   );
   const attempts: Outcome[] = [];
@@ -240,8 +233,8 @@ export function simulateStudyLearner(job: Job): StudyLearner {
     // where a wider prior could matter.
     if (
       index < 5 &&
-      plan(readFrontierState(before, at, SHIPPED_POLICY))?.template.id !==
-        choice.template.id
+      plan(readFrontierState(before, at, DEFAULT_FRONTIER_POLICY))?.template
+        .id !== choice.template.id
     )
       sameSelection = false;
     const template = choice.template;
@@ -287,7 +280,7 @@ export function simulateStudyLearner(job: Job): StudyLearner {
       before,
       observation,
       frontierCatalog,
-      SHIPPED_POLICY,
+      DEFAULT_FRONTIER_POLICY,
       STRAND_FREEZE,
     );
     const answered = index + 1;
@@ -299,7 +292,7 @@ export function simulateStudyLearner(job: Job): StudyLearner {
       low: shown.low!,
       high: shown.high!,
     });
-    const old = readFrontierState(before, at, SHIPPED_POLICY).overall;
+    const old = readFrontierState(before, at, DEFAULT_FRONTIER_POLICY).overall;
     readings.before.push({
       answered,
       level: old.level,
@@ -578,6 +571,8 @@ export async function runLevelIntervalStudy(
     answers?: number;
     /** Every `sample`th learner of the grid. */
     sample?: number;
+    /** Where to write every learner's readings, for a fit. */
+    json?: string;
   } = {},
 ): Promise<StudyReport> {
   const seed = options.seed ?? STUDY_SEED;
@@ -592,6 +587,7 @@ export async function runLevelIntervalStudy(
     jobs,
     options.concurrency ?? Math.max(1, Math.min(8, availableParallelism() - 1)),
   );
+  if (options.json) writeFileSync(options.json, JSON.stringify(learners));
   return summarizeStudy(learners, { seed, quick });
 }
 
@@ -693,8 +689,10 @@ if (!isMainThread && parentPort) {
   const quick = process.argv.includes("--quick");
   const at = process.argv.indexOf("--adult-sd");
   const adultSd = at > 0 ? Number(process.argv[at + 1]) : undefined;
+  const jsonAt = process.argv.indexOf("--json");
+  const json = jsonAt > 0 ? process.argv[jsonAt + 1] : undefined;
   const started = Date.now();
-  const report = await runLevelIntervalStudy({ quick, adultSd });
+  const report = await runLevelIntervalStudy({ quick, adultSd, json });
   process.stdout.write(`${formatStudy(report)}\n`);
   process.stderr.write(
     `${report.learners} learners in ${((Date.now() - started) / 1000).toFixed(1)}s\n`,

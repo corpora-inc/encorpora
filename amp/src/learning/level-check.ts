@@ -54,10 +54,10 @@ export const RANGE_SD_MULTIPLIER = 1.28;
 export function levelRange(
   estimate: Pick<Estimate, "level" | "sd" | "low" | "high">,
 ) {
-  return unclamped(estimate, 0);
+  return rangeWithin(estimate, 0);
 }
 /** The range's own numbers, kept within `floor`…13. */
-function unclamped(
+function rangeWithin(
   estimate: Pick<Estimate, "level" | "sd" | "low" | "high">,
   floor: number,
 ) {
@@ -161,7 +161,7 @@ export function gradeName(level: number) {
 export function levelDetails(
   estimate: Pick<Estimate, "level" | "sd" | "low" | "high">,
 ) {
-  const [from, to] = unclamped(estimate, -1);
+  const [from, to] = rangeWithin(estimate, -1);
   return {
     point: estimate.level.toFixed(2),
     from: from.toFixed(2),

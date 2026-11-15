@@ -1,5 +1,6 @@
 import {
   levelRange,
+  shownGrades,
   shownRange,
   shownSpan,
 } from "../../../learning/level-check";
@@ -91,3 +92,13 @@ export function shortGrade(level: number) {
 }
 
 export const percent = (fraction: number) => `${(fraction * 100).toFixed(2)}%`;
+
+/** A likely range in short grade words ("K–Gr 1", "Gr 8–Alg 2", "Gr 6+"),
+ * for a reader to whom the scale's decimals mean nothing (a parent). */
+export function rangeWords(range: readonly [number, number]) {
+  const shown = shownGrades(range);
+  const from = shortGrade(shown.from),
+    to = shortGrade(shown.to);
+  if (shown.openHigh && !shown.openLow) return `${from}+`;
+  return from === to ? from : `${from}–${to}`;
+}

@@ -10,7 +10,7 @@ import { LevelPath, type PathPoint } from "./LevelPath";
 import {
   fitScale,
   likelyRange,
-  shortGrade,
+  rangeWords,
   type Estimate,
   type RangeScale,
 } from "./scale";
@@ -77,13 +77,8 @@ export function foundLevel(estimate: Estimate) {
   );
 }
 
-/** A likely range in short grade words ("K–Gr 1", "Gr 8–Alg 2", "Gr 6+"),
- * for a reader to whom the scale's decimals mean nothing (a parent). */
-export function rangeWords(range: readonly [number, number]) {
-  const n = named(shownGrades(range), shortGrade);
-  if (n.range.openHigh && !n.range.openLow) return `${n.from}+`;
-  return n.from === n.to ? n.from : `${n.from}–${n.to}`;
-}
+/** A likely range in short grade words (`scale.ts`). */
+export { rangeWords };
 
 /** A likely range as the Overall sentence says it: "Likely Kindergarten
  * to Grade 1". */
@@ -228,7 +223,9 @@ export function LevelRange({
               {words.likely(likely)}
               {decimals && (
                 <span className={styles.likelyNumbers}>
-                  {detail.from}–{detail.to}
+                  {likely.range.openHigh
+                    ? `${detail.from}+`
+                    : `${detail.from}–${detail.to}`}
                 </span>
               )}
             </p>
@@ -509,7 +506,9 @@ function AreaRow({
                 ? ""
                 : wordRanges
                   ? rangeWords(range)
-                  : `${range[0].toFixed(1)}–${range[1].toFixed(1)}`}
+                  : shownGrades(range).openHigh
+                    ? `${range[0].toFixed(1)}+`
+                    : `${range[0].toFixed(1)}–${range[1].toFixed(1)}`}
       </span>
     </>
   );
