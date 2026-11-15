@@ -12,6 +12,7 @@ import {
   fitScale,
   LevelAxis,
   LevelBar,
+  likelyInWords,
   likelyRange,
   plainLevel,
   scaleAt,
@@ -350,7 +351,7 @@ function SkillField({
   return (
     <figure
       className={styles.field}
-      aria-label={`${placed.earned.length} earned, ${placed.working.length} working on, ${placed.next.length} next up, between ${gradeName(scale.lo)} and ${gradeName(scale.hi)}. Likely ${gradeName(from)} to ${gradeName(to)}.`}
+      aria-label={`${placed.earned.length} earned, ${placed.working.length} working on, ${placed.next.length} next up, between ${gradeName(scale.lo)} and ${gradeName(scale.hi)}. ${likelyInWords([from, to])}.`}
       role="img"
     >
       <div

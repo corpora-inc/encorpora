@@ -48,7 +48,7 @@ test("one lucky guess moves the estimate far less than a typed correct answer", 
   const prior = estimate([]).overall.level;
   const typed = estimate([{ kind: "typed", correct: true }]).overall.level;
   const choice = estimate([{ kind: "choice", correct: true }]).overall.level;
-  assert.ok(typed - prior > 1.8, `typed lift ${typed - prior}`);
+  assert.ok(typed - prior > 1.5, `typed lift ${typed - prior}`);
   assert.ok(choice - prior < 0.8, `choice lift ${choice - prior}`);
   assert.ok(choice - prior < 0.4 * (typed - prior), `${choice} vs ${typed}`);
   // Fewer options, more luck: a correct pick of three says less than of four.

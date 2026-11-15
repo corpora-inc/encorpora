@@ -177,8 +177,21 @@ test("legacy policy replays the former production estimate", () => {
     [...history(40), answer(false), answer(false)],
     LEGACY_FRONTIER_POLICY,
   ).overall;
-  assert.deepEqual(a, { level: 8.86, sd: 0.87, answered: 40, independent: 32 });
-  assert.deepEqual(b, { level: 7.58, sd: 0.83, answered: 42, independent: 32 });
+  // The likely range is new; the estimate it was captured from is not.
+  const { low: _a, high: _b, ...former } = a;
+  const { low: _c, high: _d, ...after } = b;
+  assert.deepEqual(former, {
+    level: 8.86,
+    sd: 0.87,
+    answered: 40,
+    independent: 32,
+  });
+  assert.deepEqual(after, {
+    level: 7.58,
+    sd: 0.83,
+    answered: 42,
+    independent: 32,
+  });
 });
 
 test("policy injection is immutable, validated, and keeps untouched-strand uncertainty", () => {

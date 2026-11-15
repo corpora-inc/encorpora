@@ -1,5 +1,10 @@
 import { Fragment, useState, type ReactNode } from "react";
-import { gradeName, levelDetails } from "../../../learning/level-check";
+import {
+  gradeName,
+  levelDetails,
+  shownGrades,
+  type ShownRange,
+} from "../../../learning/level-check";
 import { LevelAxis, LevelBar, LevelNotStarted } from "./LevelBar";
 import { LevelPath, type PathPoint } from "./LevelPath";
 import {
@@ -43,39 +48,66 @@ export type RowLink = (area: string, props: RowLinkProps) => ReactNode;
 /** A grade in a sentence: kindergarten by name. */
 const proseGrade = (level: number) =>
   Math.round(level) <= 0 ? "Kindergarten" : gradeName(level);
+/** A likely range's grades by name, as the bar draws them (`shownRange`): an
+ * open top is "and above", never a grade the answers have not reached. */
+type Named = { from: string; to: string; range: ShownRange };
+const named = (
+  range: ShownRange,
+  name: (level: number) => string = gradeName,
+): Named => ({ from: name(range.from), to: name(range.to), range });
 /** An estimate in plain words: "Most likely Grade 8 · somewhere between
  * Grade 6 and Algebra 2". */
 export function plainLevel(estimate: Estimate) {
-  const [from, to] = likelyRange(estimate);
+  const n = named(shownGrades(likelyRange(estimate)), proseGrade);
   const best = proseGrade(estimate.level);
-  const low = proseGrade(from),
-    high = proseGrade(to);
-  return low === high
+  if (n.range.openLow && n.range.openHigh)
+    return `Most likely ${best} · anywhere from ${n.from} to ${n.to}`;
+  if (n.range.openHigh) return `Most likely ${best} · ${n.from} or above`;
+  return n.from === n.to
     ? `Most likely ${best}`
-    : `Most likely ${best} · somewhere between ${low} and ${high}`;
+    : `Most likely ${best} · somewhere between ${n.from} and ${n.to}`;
 }
 
-/** A likely range in short grade words ("K–Gr 1", "Gr 8–Alg 2"), for a
- * reader to whom the scale's decimals mean nothing (a parent). */
-export function rangeWords([from, to]: readonly [number, number]) {
-  const low = shortGrade(from),
-    high = shortGrade(to);
-  return low === high ? low : `${low}–${high}`;
+/** What the first answers found, as the line under a level says it: "Best
+ * guess Grade 8, likely Grade 6 and above." */
+export function foundLevel(estimate: Estimate) {
+  return words.found(
+    gradeName(estimate.level),
+    named(shownGrades(likelyRange(estimate))),
+  );
+}
+
+/** A likely range in short grade words ("K–Gr 1", "Gr 8–Alg 2", "Gr 6+"),
+ * for a reader to whom the scale's decimals mean nothing (a parent). */
+export function rangeWords(range: readonly [number, number]) {
+  const n = named(shownGrades(range), shortGrade);
+  if (n.range.openHigh && !n.range.openLow) return `${n.from}+`;
+  return n.from === n.to ? n.from : `${n.from}–${n.to}`;
 }
 
 /** A likely range as the Overall sentence says it: "Likely Kindergarten
  * to Grade 1". */
-export function likelyInWords([from, to]: readonly [number, number]) {
-  return words.likely(proseGrade(from), proseGrade(to));
+export function likelyInWords(range: readonly [number, number]) {
+  return words.likely(named(shownGrades(range), proseGrade));
 }
 
+/** "Likely …" inside a sentence. */
+const lower = (sentence: string) =>
+  sentence.charAt(0).toLowerCase() + sentence.slice(1);
 /** Whole sentences with named slots, so each translates as a unit. `who`
  * is a learner's name when someone else reads their level; without it the
  * sentences speak to the learner. */
 const problems = (n: number) => `${n} ${n === 1 ? "problem" : "problems"}`;
 const words = {
-  likely: (from: string, to: string) =>
-    from === to ? `Likely ${from}` : `Likely ${from} to ${to}`,
+  /** "Likely Grade 5 to Geometry", "Likely Grade 6 and above". */
+  likely: ({ from, to, range }: Named) =>
+    range.openLow && range.openHigh
+      ? `Likely anywhere from ${from} to ${to}`
+      : range.openHigh
+        ? `Likely ${from} and above`
+        : from === to
+          ? `Likely ${from}`
+          : `Likely ${from} to ${to}`,
   /** What the estimate rests on; the likely range above already says where. */
   summary: (answered: number) => `${problems(answered)} answered.`,
   /** With grade numbers hidden: what the bands mean, without a grade. */
@@ -83,8 +115,8 @@ const words = {
     who
       ? `${problems(answered)} answered. Each band is where ${who} is likely working.`
       : `${problems(answered)} answered. Each band is where you’re likely working.`,
-  row: (area: string, level: string, from: string, to: string) =>
-    `${area}: best guess ${level}, likely ${from} to ${to}`,
+  row: (area: string, level: string, likely: Named) =>
+    `${area}: best guess ${level}, ${lower(words.likely(likely))}`,
   rowUnnumbered: (area: string) =>
     `${area}: a likely range, narrowing with practice`,
   /** A row that opens its area: what it is, then what opening it shows. */
@@ -95,12 +127,12 @@ const words = {
     who
       ? `We’ll find ${who}’s level in a few minutes of practice.`
       : "We’ll find your level in a few minutes. Just start answering.",
-  found: (best: string, from: string, to: string) =>
-    from === to
+  found: (best: string, likely: Named) =>
+    likely.from === likely.to && !likely.range.openHigh
       ? `Best guess ${best}.`
-      : `Best guess ${best}, likely ${from} to ${to}.`,
-  foundLabel: (best: string, from: string, to: string) =>
-    `Best guess ${best}, likely ${from} to ${to}`,
+      : `${words.foundLabel(best, likely)}.`,
+  foundLabel: (best: string, likely: Named) =>
+    `Best guess ${best}, ${lower(words.likely(likely))}`,
   answeredSoFar: (n: number) => `${problems(n)} answered. Keep going.`,
   premise: (who?: string) =>
     who
@@ -156,7 +188,7 @@ export function LevelRange({
   /** Each row opens its area (and Overall the whole level). */
   rowLink?: RowLink;
 }) {
-  const [from, to] = likelyRange(overall);
+  const likely = named(shownGrades(likelyRange(overall)));
   const detail = levelDetails(overall);
   const scale = fitScale(
     [overall, ...areas.flatMap((area) => area.estimate ?? [])],
@@ -193,7 +225,7 @@ export function LevelRange({
               )}
             </p>
             <p className={styles.likely}>
-              {words.likely(gradeName(from), gradeName(to))}
+              {words.likely(likely)}
               {decimals && (
                 <span className={styles.likelyNumbers}>
                   {detail.from}–{detail.to}
@@ -438,8 +470,7 @@ function AreaRow({
         ? words.row(
             area.label,
             gradeName(estimate.level),
-            gradeName(range[0]),
-            gradeName(range[1]),
+            named(shownGrades(range)),
           )
         : words.rowUnnumbered(area.label);
   // One shape before and after the first answer, so the same bar element
@@ -581,7 +612,7 @@ export function LevelRangeStart({
   found?: { estimate: Estimate; answered: number } | null;
 }) {
   const Heading = heading === 1 ? "h1" : "h2";
-  const range = found ? likelyRange(found.estimate) : null;
+  const likely = found ? named(shownGrades(likelyRange(found.estimate))) : null;
   return (
     <section
       className={styles.hero}
@@ -598,12 +629,8 @@ export function LevelRangeStart({
           className={styles.heroBar}
           role="img"
           aria-label={
-            found && range
-              ? words.foundLabel(
-                  gradeName(found.estimate.level),
-                  gradeName(range[0]),
-                  gradeName(range[1]),
-                )
+            found && likely
+              ? words.foundLabel(gradeName(found.estimate.level), likely)
               : words.notYet
           }
         >
@@ -625,14 +652,10 @@ export function LevelRangeStart({
         </div>
         {/* The words before the first answer stay, hidden, holding the
             cell: what was found is never longer. */}
-        {found && range && (
+        {found && likely && (
           <div className={styles.heroWordsSet} data-found-words>
             <p className={styles.heroBody}>
-              {words.found(
-                gradeName(found.estimate.level),
-                gradeName(range[0]),
-                gradeName(range[1]),
-              )}
+              {words.found(gradeName(found.estimate.level), likely)}
             </p>
             <p className={styles.heroPremise}>
               {words.answeredSoFar(found.answered)}

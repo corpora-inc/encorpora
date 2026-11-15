@@ -5,7 +5,13 @@ import styles from "./LevelRange.module.css";
 
 /** One point of the estimate's path: after `answered` answers (0 is the
  * starting estimate). */
-export type PathPoint = { answered: number; level: number; sd: number };
+export type PathPoint = {
+  answered: number;
+  level: number;
+  sd: number;
+  low?: number;
+  high?: number;
+};
 
 /**
  * How the overall estimate moved as the answers came in: the best guess as a

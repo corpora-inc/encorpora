@@ -55,6 +55,8 @@ export type StrandStarts = Record<string, { level: number; revision: number }>;
 export type LearnerFrontierKey = {
   epoch: number;
   start: number;
+  /** The reported level's prior width (`startingSd`); absent: the policy's. */
+  startSd?: number;
   strandStarts: StrandStarts;
 };
 export type LearnerFrontierState = LearnerFrontierKey & {
@@ -134,7 +136,7 @@ export function newLearnerFrontier(
     ...key,
     fingerprint: estimatorFingerprint(),
     sequence: "0",
-    main: createFrontierState(key.start),
+    main: createFrontierState(key.start, DEFAULT_FRONTIER_POLICY, key.startSd),
     restarted: Object.fromEntries(
       Object.entries(key.strandStarts).map(([strand, { level }]) => [
         strand,
@@ -165,6 +167,7 @@ export function isCurrentLearnerFrontier(
     state.fingerprint === estimatorFingerprint() &&
     state.epoch === key.epoch &&
     state.start === key.start &&
+    (state.startSd ?? null) === (key.startSd ?? null) &&
     sameStarts(state.strandStarts, key.strandStarts) &&
     state.signature === catalogSignature(state.families)
   );

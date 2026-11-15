@@ -37,7 +37,7 @@ test("a progress report prints its levels, time and name as text", () => {
   selfContained(html);
   assert.match(html, /size: A4/);
   assert.match(html, /Fractions/);
-  assert.match(html, /4\.9–5\.9/);
+  assert.match(html, /5\.0–5\.8/);
   assert.ok(footer.includes("&lt;b&gt;"));
 });
 

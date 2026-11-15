@@ -174,7 +174,7 @@ export const LEGACY_FRONTIER_POLICY = createFrontierPolicy({
  * A surprising miss does not make the next overall answer count extra. */
 export const DEFAULT_FRONTIER_POLICY = createFrontierPolicy({
   ...LEGACY_FRONTIER_POLICY,
-  version: "grade-frontier-v4-evidence-anchored-climb",
+  version: "grade-frontier-v5-honest-range",
   // The start is a guess: the ceiling stands on what the learner has shown
   // anywhere, so a wrong start costs a few problems (founder, 2026-11-10).
   confirmation: {
@@ -192,11 +192,17 @@ export const DEFAULT_FRONTIER_POLICY = createFrontierPolicy({
     distinctFamilies: 2,
     placedAfterMisses: 2,
   },
+  // The reported level's likelihood (the overall fold; selection reads the
+  // strand response). A catalog grade is not an item's true difficulty, and
+  // a learner's areas differ, so one answer says less than a sharp curve
+  // claims: at 1.7 the likely range held the truth 64–71% of the time where it
+  // promised 80% (10–30 answers); at 1.2 it holds 77–86%
+  // (scripts/frontier/level-interval-study.ts).
   response: {
     typedGuess: 0.04,
     slip: 0.08,
     atLevelSuccess: 0.6,
-    discrimination: 1.7,
+    discrimination: 1.2,
   },
   overall: {
     perAnswer: 0.003,

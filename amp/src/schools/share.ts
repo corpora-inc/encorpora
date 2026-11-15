@@ -1,6 +1,7 @@
 import { createHash, createHmac, randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import { SchoolError } from "./contracts.js";
+import { levelAndRange } from "../learning/level-check.js";
 import { levels, perDay } from "./evidence.js";
 import { recordEvent } from "./events.js";
 import { csvCell } from "./exports.js";
@@ -297,11 +298,11 @@ export async function parentView(
     classes: contexts.map((context) => context.name),
     level: level
       ? {
-          overall: { level: level.overall.level, sd: level.overall.sd },
+          overall: levelAndRange(level.overall),
           strands: Object.fromEntries(
-            Object.entries(level.strands).map(([id, { level: at, sd }]) => [
+            Object.entries(level.strands).map(([id, estimate]) => [
               id,
-              { level: at, sd },
+              levelAndRange(estimate),
             ]),
           ),
         }
