@@ -206,3 +206,35 @@ test(
       });
     }),
 );
+
+test(
+  "runners started together on a fresh database all finish: a waiting runner never blocks the concurrent index builds of the one migrating",
+  enabled,
+  async () => {
+    const url = process.env.AMP_TEST_DATABASE_URL!;
+    const admin = new Pool({ connectionString: url, max: 1 });
+    const name = `amp_runner_${randomUUID().replaceAll("-", "")}`;
+    await admin.query(`CREATE SCHEMA ${name}`);
+    const scoped = new URL(url);
+    scoped.searchParams.set("options", `-c search_path=${name}`);
+    try {
+      const results = await Promise.allSettled(
+        Array.from({ length: 4 }, () => migrate(scoped.href)),
+      );
+      const failed = results.filter((r) => r.status === "rejected");
+      assert.deepEqual(
+        failed.map((r) => String((r as PromiseRejectedResult).reason)),
+        [],
+      );
+      const db = new Pool({ connectionString: scoped.href, max: 1 });
+      try {
+        assert.equal((await levelIndex(db))?.indisvalid, true);
+      } finally {
+        await db.end();
+      }
+    } finally {
+      await admin.query(`DROP SCHEMA ${name} CASCADE`);
+      await admin.end();
+    }
+  },
+);

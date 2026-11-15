@@ -106,6 +106,30 @@ export async function migrate(
     }
   }
 }
+/** How long a second runner waits for the first to finish migrating. */
+const MIGRATION_LOCK_WAIT_MS = 15 * 60_000;
+/**
+ * Take the session migration lock without blocking inside a statement.
+ * A runner that holds the lock may be building an index concurrently, and
+ * that build waits for every transaction older than it, including another
+ * runner's statement blocked on `pg_advisory_lock`: each would wait for the
+ * other until Postgres aborts one as a deadlock. Polling with
+ * `pg_try_advisory_lock` leaves no statement open between attempts.
+ */
+async function acquireMigrationLock(client: {
+  query: (sql: string) => Promise<{ rows: { locked: boolean }[] }>;
+}) {
+  const deadline = Date.now() + MIGRATION_LOCK_WAIT_MS;
+  for (let wait = 50; ; wait = Math.min(wait * 2, 1000)) {
+    const { rows } = await client.query(
+      "SELECT pg_try_advisory_lock(91347022) AS locked",
+    );
+    if (rows[0]?.locked) return;
+    if (Date.now() > deadline)
+      throw new Error("Another migration runner held the lock too long");
+    await new Promise((resolve) => setTimeout(resolve, wait));
+  }
+}
 async function migrateOnce(connectionString: string, lockTimeoutMs: number) {
   const pool = createDatabasePool({
     connectionString,
@@ -114,7 +138,7 @@ async function migrateOnce(connectionString: string, lockTimeoutMs: number) {
   const client = await pool.connect();
   try {
     await client.query(`SET lock_timeout=${Math.trunc(lockTimeoutMs)}`);
-    await client.query("SELECT pg_advisory_lock(91347022)");
+    await acquireMigrationLock(client);
     await client.query(
       "CREATE TABLE IF NOT EXISTS amp_migrations (name text PRIMARY KEY, checksum text NOT NULL)",
     );
