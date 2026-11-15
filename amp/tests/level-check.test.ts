@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {
   LEVEL_CHECK_EVERY,
   levelCheckDue,
+  reportable,
   levelRange,
   levelDetails,
   trendCounts,
@@ -72,4 +73,14 @@ test("a long record's level path keeps to about the points asked for", () => {
   assert.ok(long.length <= 49 && long.length >= 40, String(long.length));
   assert.equal(long[0], 0);
   assert.equal(long.at(-1), 2000);
+});
+
+test("a progress report is offered only once there is progress to report", () => {
+  // No stored level, or one stored before any answer (Q-201): nothing yet.
+  assert.equal(reportable(null), false);
+  assert.equal(reportable({ overall: null }), false);
+  assert.equal(reportable({ overall: { answered: 0 } }), false);
+  // One answer behind it, or a level from a server that predates `answered`.
+  assert.equal(reportable({ overall: { answered: 1 } }), true);
+  assert.equal(reportable({ overall: {} }), true);
 });

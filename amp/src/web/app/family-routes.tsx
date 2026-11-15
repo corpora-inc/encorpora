@@ -8,6 +8,7 @@ import type { AuthSession } from "../auth";
 import { meOptions, queryClient } from "../lib/query";
 import { preload } from "../features/school/api";
 import {
+  childProgressOptions,
   familyOptions,
   familyPlacesOptions,
   isFamilyId,
@@ -188,7 +189,27 @@ export function familyRoutes(root: AnyRoute) {
     learners("/family/learners/new", "", { add: 1 }),
     family.addChildren([
       leaf("/", "FamilyTodayScreen"),
-      leaf("kids/$learner", "ChildScreen"),
+      // A child's page paints whole: its record (levels, and whether there
+      // is anything to report yet) arrives with it, once the family's own
+      // projection says this reader may read it.
+      createRoute({
+        getParentRoute: () => family,
+        path: "kids/$learner",
+        loader: async ({ context, params }) => {
+          const { session } = context as unknown as { session: AuthSession };
+          const { family: id, learner } = params as {
+            family: string;
+            learner: string;
+          };
+          const data = await queryClient
+            .ensureQueryData(familyOptions(session, id))
+            .catch(() => null);
+          const child = data?.children.find((entry) => entry.id === learner);
+          if (child?.capabilities.readProgress)
+            await preload(childProgressOptions(session, id, learner));
+        },
+        component: screen("ChildScreen"),
+      }),
       childScreen(
         "kids/$learner/pathways",
         () => import("../features/pathways/PathwaysScreen"),
@@ -203,7 +224,27 @@ export function familyRoutes(root: AnyRoute) {
       leaf("workbooks", "FamilyWorkbooksScreen"),
       leaf("workbooks/$date", "FamilyMarkingScreen"),
       leaf("time", "FamilyTimeScreen"),
-      leaf("reports", "FamilyReportsScreen"),
+      // Each child's progress report waits for something to report: their
+      // records arrive with the screen, so no Print appears late.
+      createRoute({
+        getParentRoute: () => family,
+        path: "reports",
+        loader: async ({ context, params }) => {
+          const { session } = context as unknown as { session: AuthSession };
+          const id = (params as { family: string }).family;
+          const data = await queryClient
+            .ensureQueryData(familyOptions(session, id))
+            .catch(() => null);
+          await Promise.all(
+            (data?.children ?? [])
+              .filter((child) => child.capabilities.readProgress)
+              .map((child) =>
+                preload(childProgressOptions(session, id, child.id)),
+              ),
+          );
+        },
+        component: screen("FamilyReportsScreen"),
+      }),
       leaf("reports/grades", "FamilyGradesScreen"),
       leaf("people", "FamilyPeopleScreen"),
       leaf("settings", "FamilySettingsScreen"),

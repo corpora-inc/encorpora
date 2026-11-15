@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
+import { reportable } from "../../../../learning/level-check";
 import { Button } from "../../../ui/Button";
 import { PrintButton } from "../../../ui/PrintButton";
 import { downloadPdf, paperFormat } from "../../../lib/pdf-download";
@@ -110,18 +111,21 @@ export function StudentLayer({
                 Move to another school
               </Button>
             )}
-            <PrintButton
-              variant="quiet"
-              download={() =>
-                downloadPdf({
-                  path: `/school/students/${encodeURIComponent(data.student.id)}/record.pdf?format=${paperFormat()}`,
-                  token: currentSession().token,
-                  name: "amp-progress-report.pdf",
-                })
-              }
-            >
-              Print progress report
-            </PrintButton>
+            {/* A progress report once there is progress to report. */}
+            {reportable(data.level) && (
+              <PrintButton
+                variant="quiet"
+                download={() =>
+                  downloadPdf({
+                    path: `/school/students/${encodeURIComponent(data.student.id)}/record.pdf?format=${paperFormat()}`,
+                    token: currentSession().token,
+                    name: "amp-progress-report.pdf",
+                  })
+                }
+              >
+                Print progress report
+              </PrintButton>
+            )}
           </div>
           <StudentSections
             data={data}
