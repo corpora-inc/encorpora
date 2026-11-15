@@ -9,6 +9,55 @@
 .layer :global(.shell.app-shell) {
   z-index: 1;
 }
+/* Stacked (phones, portrait tablets), a replay is read, not answered: the
+   problem, the answer with its explanation, the facts and Previous / Next
+   run down one scroll, the layer's own, never a stage and an explanation
+   that each scroll in their own box (premium UI rule 8). Side by side it
+   keeps the practice screen's columns. */
+@media not ((orientation: landscape) and (min-width: 900px) and (min-height: 500px)) {
+  .layer:has(:global(.practice-surface)) {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .layer :global(.shell.immersive) {
+    position: relative;
+    inset: auto;
+    height: auto;
+    min-height: 100%;
+  }
+  .layer :global(.practice-workspace),
+  .layer :global(.practice-surface) {
+    height: auto;
+    overflow: visible;
+  }
+  /* The sheet stands where the answer was, as it does over the dock on the
+     practice screen: the answer form under it is never shown twice. */
+  .layer :global(.practice-surface > .answer-dock) {
+    display: none;
+  }
+  .layer :global(.practice-surface > .problem-stage) {
+    flex: none;
+    min-height: 0;
+    overflow: visible;
+  }
+  .layer :global(.practice-surface > .feedback) {
+    position: relative;
+    inset: auto;
+    width: auto;
+    max-width: 620px;
+    max-height: none;
+    margin: 0 12px 12px;
+    animation: none;
+  }
+  .layer :global(.practice-surface > .feedback > *) {
+    flex-shrink: 0;
+  }
+  .layer :global(.feedback-steps),
+  .layer :global(.feedback [data-replay-facts]) {
+    overflow: visible;
+    mask-image: none;
+  }
+}
 
 /* Who and when, quiet in the bar, then how it counted. */
 /* Who, when and the result: on a narrow bar the words wrap under each
@@ -105,8 +154,19 @@ a.step:focus-visible {
 .tries [aria-current] {
   font-weight: 650;
 }
+/* Each try is a row of its own, the current one too, so the list keeps
+   one rhythm. */
+.tries li {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+/* Links in a dense line still take a whole finger (44 px). */
 .tries a,
 .lesson {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   color: var(--color-primary);
   text-underline-offset: 2px;
 }

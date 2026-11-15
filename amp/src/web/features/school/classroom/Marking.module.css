@@ -64,6 +64,14 @@
   background: var(--color-surface);
   overscroll-behavior: contain;
 }
+/* A phone or a small tablet has one scroll, the page's: the grid is as tall
+   as its students and only scrolls sideways (premium UI rule 8). */
+@media (max-width: 768px) {
+  .grid {
+    max-height: none;
+    overflow-y: hidden;
+  }
+}
 .headRow,
 .row {
   display: contents;
