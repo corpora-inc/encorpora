@@ -41,11 +41,6 @@
   font-size: var(--text-body);
   font-weight: 700;
 }
-/* Under the back row: the title starts its own line, 44 px tall. */
-.header.under {
-  min-height: calc(var(--target-size, 44px) + var(--space-3));
-  padding-top: 0;
-}
 .body {
   flex: 1;
   min-height: 0;

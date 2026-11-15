@@ -1,7 +1,7 @@
 import * as RadixDialog from "@radix-ui/react-dialog";
 import { useRef, type ReactNode } from "react";
 import styles from "./Dialog.module.css";
-import { CloseControl, LayerTopRow, useLayerBack } from "./LayerControls";
+import { CloseControl, useLayerEscape } from "./LayerControls";
 /** A modal reading sheet: fixed overlay, scrollable body, never moves the page. */
 export function Dialog({
   open,
@@ -13,7 +13,6 @@ export function Dialog({
   fullOnPhone = false,
   tall = false,
   wide = false,
-  back,
   initialFocus,
 }: {
   open: boolean;
@@ -31,16 +30,16 @@ export function Dialog({
   /** A reading sheet with figures (a lesson): wider on a desktop, its prose
    * still at a reading measure. */
   wide?: boolean;
-  /** A layer under this one (nav/LayerHost): X returns to it, and says so
-   * quietly in place of the cross ("‹ Adding fractions"). */
+  /** The layer under this one (nav/LayerHost). The cross puts this sheet
+   * down to it; it is not drawn twice (Q-8). */
   back?: string;
   /** A selector inside the sheet to focus, and bring into view, on open (a
    * picker's chosen tile) in place of the first control. */
   initialFocus?: string;
 }) {
   const opener = useRef<HTMLElement | null>(null);
-  const stepBack = useLayerBack();
   const content = useRef<HTMLDivElement | null>(null);
+  const escape = useLayerEscape();
   return (
     <RadixDialog.Root open={open} onOpenChange={onOpenChange}>
       <RadixDialog.Portal>
@@ -50,6 +49,7 @@ export function Dialog({
         <RadixDialog.Content
           className={`${styles.content} ${aboveNavigation ? styles.aboveNavigation : ""} ${fullOnPhone ? styles.fullOnPhone : ""} ${tall ? styles.tall : ""} ${wide ? styles.wide : ""}`}
           aria-describedby={undefined}
+          onEscapeKeyDown={escape}
           // Focus goes back to what opened it, as a sheet's does, also when
           // it closes by its address (a layer popped by Back).
           ref={content}
@@ -72,17 +72,11 @@ export function Dialog({
               target.focus({ preventScroll: true });
           }}
         >
-          {back && (
-            <LayerTopRow
-              back={back}
-              onBack={stepBack ?? (() => onOpenChange(false))}
-            />
-          )}
-          <header className={`${styles.header} ${back ? styles.under : ""}`}>
+          <header className={styles.header}>
             <RadixDialog.Title className={styles.title}>
               {title}
             </RadixDialog.Title>
-            {!back && <CloseControl />}
+            <CloseControl />
           </header>
           <div className={styles.body}>{children}</div>
         </RadixDialog.Content>

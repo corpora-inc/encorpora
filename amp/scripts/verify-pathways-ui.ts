@@ -700,21 +700,15 @@ async function verifyLessonRecovery() {
       await page.close();
       continue;
     }
-    // A problem type's lesson, opened over the skill's layer: its way back
-    // names the skill.
+    // A problem type's lesson, opened over the skill's layer: its one cross
+    // puts it down to the skill (Q-8), with no second "back" control.
     const opener = lessonRow(page);
     await opener.waitFor();
     await opener.click();
     const dialog = page.getByRole("dialog", { name: "Explore a problem type" });
-    // The layer's own back row (ui/LayerControls), named for the skill; the
-    // failure's own way out under it says the same.
-    const backToSkill = dialog.locator(`[data-layer-back="${target.title}"]`);
-    await backToSkill.waitFor();
-    assert.equal(
-      await backToSkill.getAttribute("aria-label"),
-      `Back to ${target.title}`,
-    );
     const close = dialog.getByRole("button", { name: /^Close/ });
+    await close.waitFor();
+    assert.equal(await dialog.locator("[data-layer-back]").count(), 0);
     assert((await close.boundingBox())!.height >= 44);
     assert.equal(
       await dialog
@@ -726,17 +720,11 @@ async function verifyLessonRecovery() {
       path: `${output}/lesson-${failure}-recovery.png`,
       fullPage: true,
     });
-    // The cross puts the whole stack away (ui/LayerControls): the skill
-    // under the lesson goes with it, and the map is all that is left.
+    // The cross puts down the lesson alone (Q-8): the skill under it stays,
+    // focus back on its row.
     await close.click();
     await dialog.waitFor({ state: "detached" });
-    await skillLayer(page).waitFor({ state: "detached" });
-    await page.locator(".pathways-canvas canvas").waitFor();
-    // Back, by contrast, steps one layer: to the skill, focus on its row.
-    await page.goto(`${origin}/pathways?skill=${target.id}`);
-    await opener.click();
-    await backToSkill.click();
-    await dialog.waitFor({ state: "detached" });
+    await skillLayer(page).waitFor();
     assert(
       await opener.evaluate((el) => el === document.activeElement),
       "its way back returns focus to its row",
@@ -1258,9 +1246,8 @@ try {
         name: "Explore a problem type",
       });
       await lesson.getByText("Example", { exact: true }).waitFor();
-      // Back one layer, to the skill (the cross would put the whole stack
-      // away, ui/LayerControls).
-      await lesson.locator("[data-layer-back]").click();
+      // The cross puts the lesson down, back to the skill (Q-8).
+      await lesson.locator("[data-layer-close]").click();
       await lesson.waitFor({ state: "detached" });
       assert.equal(
         await opener.evaluate((el) => el === document.activeElement),
@@ -1275,7 +1262,7 @@ try {
         // The lesson is a real route: Forward opens it again.
         await page.goForward();
         await lesson.getByText("Example", { exact: true }).waitFor();
-        await lesson.locator("[data-layer-back]").click();
+        await lesson.locator("[data-layer-close]").click();
         await lesson.waitFor({ state: "detached" });
         await page
           .getByRole("heading", { name: target.title, exact: true })
@@ -1445,7 +1432,7 @@ try {
       openSkills(linked).join() ===
       `${target.id},nonlinear-intersection-reading`,
   );
-  await linked.locator(`[data-layer-back="${target.title}"]`).waitFor();
+  await linked.locator("[data-layer-close]").last().waitFor();
   await linked.goBack();
   await linked.getByRole("heading", { name: target.title }).waitFor();
   await lessonRow(linked).click();
