@@ -143,6 +143,17 @@ export function pushLayer(raw: unknown, entity: Entity) {
 /** The stack without its top layer. */
 export const popLayer = (raw: unknown) =>
   writeStack(readStack(raw).slice(0, -1));
+/** Where closing a layer returns (Close, the scrim, Escape): the whole stack
+ * goes away, back to the page it was opened over, except that an answer
+ * replay is a base of its own. A layer above a replay (its lesson) closes
+ * back to the replay; the replay closes back to the page. The depth of the
+ * stack to keep: 0 for the page. */
+export function closeDepth(stack: Entity[], index: number): number {
+  for (let at = index - 1; at >= 0; at--)
+    if (stack[at]!.kind === "work" || stack[at]!.kind === "own-work")
+      return at + 1;
+  return 0;
+}
 /** The stack with its top layer swapped (stepping through answers). */
 export const replaceTop = (raw: unknown, entity: Entity) =>
   writeStack([...readStack(raw).slice(0, -1), entity]);

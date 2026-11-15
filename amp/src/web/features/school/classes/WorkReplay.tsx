@@ -25,7 +25,6 @@ import styles from "./WorkReplay.module.css";
 import { closeTo } from "../../../lib/return-to";
 import {
   OPEN_KEY,
-  popLayer,
   readStack,
   ownWork,
   replaceTop,
@@ -212,9 +211,11 @@ export function WorkReplay({
       {...((layer
         ? {
             to: ".",
+            // Closing an answer puts the sheets away, back to the page it
+            // was opened over (the layer's close, nav/entities closeDepth).
             search: (current: Record<string, unknown>) => ({
               ...current,
-              [OPEN_KEY]: popLayer(current[OPEN_KEY]),
+              [OPEN_KEY]: undefined,
             }),
           }
         : { to: "/$", params: { _splat: closePath } }) as unknown as {
@@ -226,7 +227,7 @@ export function WorkReplay({
         close();
       }}
       className="workspace-level"
-      aria-label={who ? `Close, back to ${who}` : "Close"}
+      aria-label="Close"
       data-replay-close=""
     >
       <svg viewBox="0 0 24 24" aria-hidden="true">
