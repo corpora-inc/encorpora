@@ -1,0 +1,7635 @@
+{
+  "id": "regions-to-whole--so",
+  "title": "Properties of multiplication",
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "teaches": [
+    "split-array-part",
+    "which-split",
+    "facts-from-known",
+    "associative-compute",
+    "nested-bag-total",
+    "split-the-dividend",
+    "operation-property-identify"
+  ],
+  "skill": "operation-properties",
+  "shots": [
+    {
+      "figure": {
+        "points": {
+          "leftWasha": [
+            -0.45,
+            0.45
+          ],
+          "leftWashb": [
+            0.55,
+            0.45
+          ],
+          "leftWashc": [
+            0.55,
+            -8.450000000000001
+          ],
+          "leftWashd": [
+            -0.45,
+            -8.450000000000001
+          ],
+          "rightWasha": [
+            0.55,
+            0.45
+          ],
+          "rightWashb": [
+            5.55,
+            0.45
+          ],
+          "rightWashc": [
+            5.55,
+            -8.450000000000001
+          ],
+          "rightWashd": [
+            0.55,
+            -8.450000000000001
+          ],
+          "d0c0": [
+            0,
+            0
+          ],
+          "d0c1": [
+            1,
+            0
+          ],
+          "d0c2": [
+            2,
+            0
+          ],
+          "d0c3": [
+            3,
+            0
+          ],
+          "d0c4": [
+            4,
+            0
+          ],
+          "d0c5": [
+            5,
+            0
+          ],
+          "d1c0": [
+            0,
+            -1
+          ],
+          "d1c1": [
+            1,
+            -1
+          ],
+          "d1c2": [
+            2,
+            -1
+          ],
+          "d1c3": [
+            3,
+            -1
+          ],
+          "d1c4": [
+            4,
+            -1
+          ],
+          "d1c5": [
+            5,
+            -1
+          ],
+          "d2c0": [
+            0,
+            -2
+          ],
+          "d2c1": [
+            1,
+            -2
+          ],
+          "d2c2": [
+            2,
+            -2
+          ],
+          "d2c3": [
+            3,
+            -2
+          ],
+          "d2c4": [
+            4,
+            -2
+          ],
+          "d2c5": [
+            5,
+            -2
+          ],
+          "d3c0": [
+            0,
+            -3
+          ],
+          "d3c1": [
+            1,
+            -3
+          ],
+          "d3c2": [
+            2,
+            -3
+          ],
+          "d3c3": [
+            3,
+            -3
+          ],
+          "d3c4": [
+            4,
+            -3
+          ],
+          "d3c5": [
+            5,
+            -3
+          ],
+          "d4c0": [
+            0,
+            -4
+          ],
+          "d4c1": [
+            1,
+            -4
+          ],
+          "d4c2": [
+            2,
+            -4
+          ],
+          "d4c3": [
+            3,
+            -4
+          ],
+          "d4c4": [
+            4,
+            -4
+          ],
+          "d4c5": [
+            5,
+            -4
+          ],
+          "d5c0": [
+            0,
+            -5
+          ],
+          "d5c1": [
+            1,
+            -5
+          ],
+          "d5c2": [
+            2,
+            -5
+          ],
+          "d5c3": [
+            3,
+            -5
+          ],
+          "d5c4": [
+            4,
+            -5
+          ],
+          "d5c5": [
+            5,
+            -5
+          ],
+          "d6c0": [
+            0,
+            -6
+          ],
+          "d6c1": [
+            1,
+            -6
+          ],
+          "d6c2": [
+            2,
+            -6
+          ],
+          "d6c3": [
+            3,
+            -6
+          ],
+          "d6c4": [
+            4,
+            -6
+          ],
+          "d6c5": [
+            5,
+            -6
+          ],
+          "d7c0": [
+            0,
+            -7
+          ],
+          "d7c1": [
+            1,
+            -7
+          ],
+          "d7c2": [
+            2,
+            -7
+          ],
+          "d7c3": [
+            3,
+            -7
+          ],
+          "d7c4": [
+            4,
+            -7
+          ],
+          "d7c5": [
+            5,
+            -7
+          ],
+          "d8c0": [
+            0,
+            -8
+          ],
+          "d8c1": [
+            1,
+            -8
+          ],
+          "d8c2": [
+            2,
+            -8
+          ],
+          "d8c3": [
+            3,
+            -8
+          ],
+          "d8c4": [
+            4,
+            -8
+          ],
+          "d8c5": [
+            5,
+            -8
+          ],
+          "fenceA": [
+            0.55,
+            0.65
+          ],
+          "fenceB": [
+            0.55,
+            -8.65
+          ],
+          "totalP": [
+            2.5,
+            -9.9
+          ],
+          "RowTop": [
+            -0.7,
+            0.45
+          ],
+          "RowBottom": [
+            -0.7,
+            -8.45
+          ],
+          "ColLeft": [
+            -0.45,
+            0.7
+          ],
+          "ColRight": [
+            5.55,
+            0.7
+          ]
+        },
+        "parts": [
+          {
+            "id": "leftWash",
+            "poly": [
+              "leftWasha",
+              "leftWashb",
+              "leftWashc",
+              "leftWashd"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "rightWash",
+            "poly": [
+              "rightWasha",
+              "rightWashb",
+              "rightWashc",
+              "rightWashd"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "d0c0",
+            "dot": "d0c0",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d0c1",
+            "dot": "d0c1",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d0c2",
+            "dot": "d0c2",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d0c3",
+            "dot": "d0c3",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d0c4",
+            "dot": "d0c4",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d0c5",
+            "dot": "d0c5",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d1c0",
+            "dot": "d1c0",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d1c1",
+            "dot": "d1c1",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d1c2",
+            "dot": "d1c2",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d1c3",
+            "dot": "d1c3",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d1c4",
+            "dot": "d1c4",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d1c5",
+            "dot": "d1c5",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d2c0",
+            "dot": "d2c0",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d2c1",
+            "dot": "d2c1",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d2c2",
+            "dot": "d2c2",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d2c3",
+            "dot": "d2c3",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d2c4",
+            "dot": "d2c4",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d2c5",
+            "dot": "d2c5",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d3c0",
+            "dot": "d3c0",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d3c1",
+            "dot": "d3c1",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d3c2",
+            "dot": "d3c2",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d3c3",
+            "dot": "d3c3",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d3c4",
+            "dot": "d3c4",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d3c5",
+            "dot": "d3c5",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d4c0",
+            "dot": "d4c0",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d4c1",
+            "dot": "d4c1",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d4c2",
+            "dot": "d4c2",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d4c3",
+            "dot": "d4c3",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d4c4",
+            "dot": "d4c4",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d4c5",
+            "dot": "d4c5",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d5c0",
+            "dot": "d5c0",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d5c1",
+            "dot": "d5c1",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d5c2",
+            "dot": "d5c2",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d5c3",
+            "dot": "d5c3",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d5c4",
+            "dot": "d5c4",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d5c5",
+            "dot": "d5c5",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d6c0",
+            "dot": "d6c0",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d6c1",
+            "dot": "d6c1",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d6c2",
+            "dot": "d6c2",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d6c3",
+            "dot": "d6c3",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d6c4",
+            "dot": "d6c4",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d6c5",
+            "dot": "d6c5",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d7c0",
+            "dot": "d7c0",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d7c1",
+            "dot": "d7c1",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d7c2",
+            "dot": "d7c2",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d7c3",
+            "dot": "d7c3",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d7c4",
+            "dot": "d7c4",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d7c5",
+            "dot": "d7c5",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d8c0",
+            "dot": "d8c0",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d8c1",
+            "dot": "d8c1",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d8c2",
+            "dot": "d8c2",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d8c3",
+            "dot": "d8c3",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d8c4",
+            "dot": "d8c4",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d8c5",
+            "dot": "d8c5",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "fence",
+            "seg": [
+              "fenceA",
+              "fenceB"
+            ],
+            "ink": "warm",
+            "start": false,
+            "w": 5
+          },
+          {
+            "id": "total",
+            "label": "54",
+            "at": "totalP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "rows",
+            "dim": [
+              "RowTop",
+              "RowBottom"
+            ],
+            "side": "w",
+            "tex": "9",
+            "ink": "muted"
+          },
+          {
+            "id": "six",
+            "dim": [
+              "ColLeft",
+              "ColRight"
+            ],
+            "side": "n",
+            "tex": "6",
+            "ink": "muted"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Nine times six. What if you don't know it yet?",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Make a hard fact easier"
+            },
+            {
+              "do": "write",
+              "tex": "9\\times6=\\square"
+            },
+            {
+              "do": "show",
+              "target": [
+                "rows",
+                "six"
+              ]
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "We'll use three moves: turn it, regroup it, or split it. Each keeps the total.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "text",
+              "text": "Turn • Regroup • Split"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Start by splitting. Nine rows, six dots in each. This fence separates one column from five.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Split it"
+            },
+            {
+              "do": "show",
+              "target": [
+                "leftWash",
+                "rightWash",
+                "fence"
+              ],
+              "at": "fence"
+            },
+            {
+              "do": "write",
+              "tex": "6=1+5",
+              "at": "separates"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Nine times one is nine. Nine times five is forty-five. Together, fifty-four.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{9\\times1=9}",
+              "at": "one"
+            },
+            {
+              "do": "write",
+              "tex": "\\cg{9\\times5=45}",
+              "at": "five"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb9+\\cg{45}=54",
+              "at": "Together"
+            },
+            {
+              "do": "show",
+              "target": "total",
+              "at": "fifty-four"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Slide the fence. Two columns and four columns: eighteen plus thirty-six. The same fifty-four.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Same dots. Different cut."
+            },
+            {
+              "do": "move",
+              "points": {
+                "leftWashb": [
+                  1.55,
+                  0.45
+                ],
+                "leftWashc": [
+                  1.55,
+                  -8.45
+                ],
+                "rightWasha": [
+                  1.55,
+                  0.45
+                ],
+                "rightWashd": [
+                  1.55,
+                  -8.45
+                ],
+                "fenceA": [
+                  1.55,
+                  0.65
+                ],
+                "fenceB": [
+                  1.55,
+                  -8.65
+                ]
+              },
+              "dur": 1.25,
+              "at": "Slide"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{9\\times2=18}",
+              "at": "Two"
+            },
+            {
+              "do": "write",
+              "tex": "\\cg{9\\times4=36}",
+              "at": "four"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{18}+\\cg{36}=54",
+              "at": "eighteen"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Slide again. Three and three: twenty-seven plus twenty-seven. Still fifty-four.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "move",
+              "points": {
+                "leftWashb": [
+                  2.55,
+                  0.45
+                ],
+                "leftWashc": [
+                  2.55,
+                  -8.45
+                ],
+                "rightWasha": [
+                  2.55,
+                  0.45
+                ],
+                "rightWashd": [
+                  2.55,
+                  -8.45
+                ],
+                "fenceA": [
+                  2.55,
+                  0.65
+                ],
+                "fenceB": [
+                  2.55,
+                  -8.65
+                ]
+              },
+              "dur": 1.25,
+              "at": "Slide"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{9\\times3=27}",
+              "at": "Three"
+            },
+            {
+              "do": "write",
+              "tex": "\\cg{9\\times3=27}",
+              "at": "Three",
+              "nth": 2
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{27}+\\cg{27}=54",
+              "at": "twenty-seven"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Which cut gives you facts you know?",
+          "pause": 0.05,
+          "do": []
+        },
+        {
+          "speaker": "learner",
+          "say": "Five and one! I know nine times five, and one more column adds nine.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "move",
+              "points": {
+                "leftWashb": [
+                  4.55,
+                  0.45
+                ],
+                "leftWashc": [
+                  4.55,
+                  -8.45
+                ],
+                "rightWasha": [
+                  4.55,
+                  0.45
+                ],
+                "rightWashd": [
+                  4.55,
+                  -8.45
+                ],
+                "fenceA": [
+                  4.55,
+                  0.65
+                ],
+                "fenceB": [
+                  4.55,
+                  -8.65
+                ]
+              },
+              "dur": 1.25,
+              "at": "Five"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{9\\times5=45}",
+              "at": "Five"
+            },
+            {
+              "do": "write",
+              "tex": "\\cg{9\\times1=9}",
+              "at": "one"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{45}+\\cg9=54",
+              "at": "adds"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Exactly. One extra dot in every row means nine extra dots. Nothing was added or removed when the fence moved.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "d0c5",
+                "d1c5",
+                "d2c5",
+                "d3c5",
+                "d4c5",
+                "d5c5",
+                "d6c5",
+                "d7c5",
+                "d8c5"
+              ],
+              "at": "nine"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Multiplying each part, then adding, is the distributive property.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Split it"
+            },
+            {
+              "do": "write",
+              "tex": "9\\times(5+1)"
+            },
+            {
+              "do": "write",
+              "tex": "=9\\times5+9\\times1",
+              "at": "each"
+            },
+            {
+              "do": "term",
+              "word": "Distributive property",
+              "meaning": "Multiply each part, then add.",
+              "at": "distributive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "G": [
+            0,
+            0
+          ],
+          "regionAa": [
+            0,
+            0
+          ],
+          "regionAb": [
+            5,
+            0
+          ],
+          "regionAc": [
+            5,
+            -2
+          ],
+          "regionAd": [
+            0,
+            -2
+          ],
+          "regionBa": [
+            0,
+            -2
+          ],
+          "regionBb": [
+            5,
+            -2
+          ],
+          "regionBc": [
+            5,
+            -5
+          ],
+          "regionBd": [
+            0,
+            -5
+          ],
+          "splitA": [
+            0,
+            -2
+          ],
+          "splitB": [
+            5,
+            -2
+          ],
+          "aP": [
+            -0.7,
+            -1
+          ],
+          "bP": [
+            -0.7,
+            -3.5
+          ],
+          "colsP": [
+            2.5,
+            0.9
+          ]
+        },
+        "parts": [
+          {
+            "id": "regionA",
+            "poly": [
+              "regionAa",
+              "regionAb",
+              "regionAc",
+              "regionAd"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "regionB",
+            "poly": [
+              "regionBa",
+              "regionBb",
+              "regionBc",
+              "regionBd"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "grid",
+            "grid": [
+              5,
+              5
+            ],
+            "at": "G",
+            "start": true,
+            "ink": "muted",
+            "w": 2,
+            "fill": "none"
+          },
+          {
+            "id": "split",
+            "seg": [
+              "splitA",
+              "splitB"
+            ],
+            "ink": "warm",
+            "start": true,
+            "w": 5
+          },
+          {
+            "id": "a",
+            "label": "A",
+            "at": "aP",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "b",
+            "label": "B",
+            "at": "bP",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold",
+            "start": true
+          },
+          {
+            "id": "cols",
+            "label": "5\\;\\text{in each row}",
+            "at": "colsP",
+            "dir": "c",
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "This region is one part of the picture. How many squares are in region *A*?",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Count one region"
+            },
+            {
+              "do": "highlight",
+              "target": "regionA",
+              "at": "A"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Two rows of five. Ten squares.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "write",
+              "tex": "2\\times5=10",
+              "at": "Two"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Yes. Count only that region's rows. If all twenty-five squares and those ten are known, the other region has fifteen.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "write",
+              "tex": "25=10+\\square",
+              "at": "If"
+            },
+            {
+              "do": "highlight",
+              "target": "regionA",
+              "at": "ten"
+            },
+            {
+              "do": "write",
+              "tex": "25-10=15",
+              "at": "fifteen"
+            },
+            {
+              "do": "highlight",
+              "target": "regionB",
+              "at": "other"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "d0c0": [
+            0,
+            0
+          ],
+          "d0c1": [
+            1,
+            0
+          ],
+          "d0c2": [
+            2,
+            0
+          ],
+          "d0c3": [
+            3,
+            0
+          ],
+          "d1c0": [
+            0,
+            -1
+          ],
+          "d1c1": [
+            1,
+            -1
+          ],
+          "d1c2": [
+            2,
+            -1
+          ],
+          "d1c3": [
+            3,
+            -1
+          ],
+          "d2c0": [
+            0,
+            -2
+          ],
+          "d2c1": [
+            1,
+            -2
+          ],
+          "d2c2": [
+            2,
+            -2
+          ],
+          "d2c3": [
+            3,
+            -2
+          ],
+          "d3c0": [
+            0,
+            -3
+          ],
+          "d3c1": [
+            1,
+            -3
+          ],
+          "d3c2": [
+            2,
+            -3
+          ],
+          "d3c3": [
+            3,
+            -3
+          ],
+          "d4c0": [
+            0,
+            -4
+          ],
+          "d4c1": [
+            1,
+            -4
+          ],
+          "d4c2": [
+            2,
+            -4
+          ],
+          "d4c3": [
+            3,
+            -4
+          ],
+          "d5c0": [
+            0,
+            -5
+          ],
+          "d5c1": [
+            1,
+            -5
+          ],
+          "d5c2": [
+            2,
+            -5
+          ],
+          "d5c3": [
+            3,
+            -5
+          ],
+          "C": [
+            1.5,
+            -2.5
+          ],
+          "beforeP": [
+            1.5,
+            1.5
+          ],
+          "afterP": [
+            1.5,
+            1.5
+          ],
+          "rowa": [
+            -0.45,
+            0.45
+          ],
+          "rowb": [
+            3.55,
+            0.45
+          ],
+          "rowc": [
+            3.55,
+            -0.45
+          ],
+          "rowd": [
+            -0.45,
+            -0.45
+          ]
+        },
+        "parts": [
+          {
+            "id": "row",
+            "poly": [
+              "rowa",
+              "rowb",
+              "rowc",
+              "rowd"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "d0c0",
+            "dot": "d0c0",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d0c1",
+            "dot": "d0c1",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d0c2",
+            "dot": "d0c2",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d0c3",
+            "dot": "d0c3",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d1c0",
+            "dot": "d1c0",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d1c1",
+            "dot": "d1c1",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d1c2",
+            "dot": "d1c2",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d1c3",
+            "dot": "d1c3",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d2c0",
+            "dot": "d2c0",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d2c1",
+            "dot": "d2c1",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d2c2",
+            "dot": "d2c2",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d2c3",
+            "dot": "d2c3",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d3c0",
+            "dot": "d3c0",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d3c1",
+            "dot": "d3c1",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d3c2",
+            "dot": "d3c2",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d3c3",
+            "dot": "d3c3",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d4c0",
+            "dot": "d4c0",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d4c1",
+            "dot": "d4c1",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d4c2",
+            "dot": "d4c2",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d4c3",
+            "dot": "d4c3",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d5c0",
+            "dot": "d5c0",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d5c1",
+            "dot": "d5c1",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d5c2",
+            "dot": "d5c2",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "d5c3",
+            "dot": "d5c3",
+            "ink": "accent",
+            "group": "d",
+            "start": true,
+            "r": 20
+          },
+          {
+            "id": "before",
+            "label": "6\\;\\text{rows of}\\;4",
+            "at": "beforeP",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "after",
+            "label": "4\\;\\text{rows of}\\;6",
+            "at": "afterP",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": false
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Here is six times four: twenty-four dots. Turn the array a quarter turn.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Turn it"
+            },
+            {
+              "do": "show",
+              "target": "before"
+            },
+            {
+              "do": "write",
+              "tex": "6\\times4=24"
+            },
+            {
+              "do": "turn",
+              "target": "d",
+              "about": "C",
+              "deg": 90,
+              "at": "Turn",
+              "dur": 1.5
+            },
+            {
+              "do": "hide",
+              "target": "before",
+              "at": "Turn"
+            },
+            {
+              "do": "show",
+              "target": "after",
+              "at": "quarter"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Four rows of six! Same twenty-four.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "write",
+              "tex": "4\\times6=24"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Swapping the two numbers in a multiplication is the commutative property.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "term",
+              "word": "Commutative property",
+              "meaning": "Swap the order; keep the product.",
+              "at": "commutative"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Turn back. Twenty-four shared into six equal rows gives four in each. So the multiplication also tells us a division fact.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Use a known fact"
+            },
+            {
+              "do": "hide",
+              "target": "after"
+            },
+            {
+              "do": "turn",
+              "target": "d",
+              "about": "C",
+              "deg": -90,
+              "dur": 1.2
+            },
+            {
+              "do": "show",
+              "target": "before",
+              "at": "six"
+            },
+            {
+              "do": "show",
+              "target": "row",
+              "at": "four"
+            },
+            {
+              "do": "write",
+              "tex": "6\\times4=24"
+            },
+            {
+              "do": "write",
+              "tex": "24\\div6=4",
+              "at": "four"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "blueDots0c0": [
+            0,
+            0
+          ],
+          "blueDots0c1": [
+            1,
+            0
+          ],
+          "blueDots0c2": [
+            2,
+            0
+          ],
+          "blueDots0c3": [
+            3,
+            0
+          ],
+          "blueDots1c0": [
+            0,
+            -1
+          ],
+          "blueDots1c1": [
+            1,
+            -1
+          ],
+          "blueDots1c2": [
+            2,
+            -1
+          ],
+          "blueDots1c3": [
+            3,
+            -1
+          ],
+          "blueDots2c0": [
+            0,
+            -2
+          ],
+          "blueDots2c1": [
+            1,
+            -2
+          ],
+          "blueDots2c2": [
+            2,
+            -2
+          ],
+          "blueDots2c3": [
+            3,
+            -2
+          ],
+          "blueDots3c0": [
+            0,
+            -3
+          ],
+          "blueDots3c1": [
+            1,
+            -3
+          ],
+          "blueDots3c2": [
+            2,
+            -3
+          ],
+          "blueDots3c3": [
+            3,
+            -3
+          ],
+          "blueDots4c0": [
+            0,
+            -4
+          ],
+          "blueDots4c1": [
+            1,
+            -4
+          ],
+          "blueDots4c2": [
+            2,
+            -4
+          ],
+          "blueDots4c3": [
+            3,
+            -4
+          ],
+          "blueDots5c0": [
+            0,
+            -5
+          ],
+          "blueDots5c1": [
+            1,
+            -5
+          ],
+          "blueDots5c2": [
+            2,
+            -5
+          ],
+          "blueDots5c3": [
+            3,
+            -5
+          ],
+          "goldDots0c0": [
+            5,
+            0
+          ],
+          "goldDots0c1": [
+            6,
+            0
+          ],
+          "goldDots0c2": [
+            7,
+            0
+          ],
+          "goldDots0c3": [
+            8,
+            0
+          ],
+          "goldDots0c4": [
+            9,
+            0
+          ],
+          "goldDots1c0": [
+            5,
+            -1
+          ],
+          "goldDots1c1": [
+            6,
+            -1
+          ],
+          "goldDots1c2": [
+            7,
+            -1
+          ],
+          "goldDots1c3": [
+            8,
+            -1
+          ],
+          "goldDots1c4": [
+            9,
+            -1
+          ],
+          "goldDots2c0": [
+            5,
+            -2
+          ],
+          "goldDots2c1": [
+            6,
+            -2
+          ],
+          "goldDots2c2": [
+            7,
+            -2
+          ],
+          "goldDots2c3": [
+            8,
+            -2
+          ],
+          "goldDots2c4": [
+            9,
+            -2
+          ],
+          "goldDots3c0": [
+            5,
+            -3
+          ],
+          "goldDots3c1": [
+            6,
+            -3
+          ],
+          "goldDots3c2": [
+            7,
+            -3
+          ],
+          "goldDots3c3": [
+            8,
+            -3
+          ],
+          "goldDots3c4": [
+            9,
+            -3
+          ],
+          "goldDots4c0": [
+            5,
+            -4
+          ],
+          "goldDots4c1": [
+            6,
+            -4
+          ],
+          "goldDots4c2": [
+            7,
+            -4
+          ],
+          "goldDots4c3": [
+            8,
+            -4
+          ],
+          "goldDots4c4": [
+            9,
+            -4
+          ],
+          "goldDots5c0": [
+            5,
+            -5
+          ],
+          "goldDots5c1": [
+            6,
+            -5
+          ],
+          "goldDots5c2": [
+            7,
+            -5
+          ],
+          "goldDots5c3": [
+            8,
+            -5
+          ],
+          "goldDots5c4": [
+            9,
+            -5
+          ],
+          "leftP": [
+            1.5,
+            1
+          ],
+          "rightP": [
+            7,
+            1
+          ],
+          "wholeP": [
+            4.5,
+            -6
+          ]
+        },
+        "parts": [
+          {
+            "id": "blueDots0c0",
+            "dot": "blueDots0c0",
+            "ink": "blue",
+            "group": "blueDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "blueDots0c1",
+            "dot": "blueDots0c1",
+            "ink": "blue",
+            "group": "blueDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "blueDots0c2",
+            "dot": "blueDots0c2",
+            "ink": "blue",
+            "group": "blueDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "blueDots0c3",
+            "dot": "blueDots0c3",
+            "ink": "blue",
+            "group": "blueDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "blueDots1c0",
+            "dot": "blueDots1c0",
+            "ink": "blue",
+            "group": "blueDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "blueDots1c1",
+            "dot": "blueDots1c1",
+            "ink": "blue",
+            "group": "blueDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "blueDots1c2",
+            "dot": "blueDots1c2",
+            "ink": "blue",
+            "group": "blueDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "blueDots1c3",
+            "dot": "blueDots1c3",
+            "ink": "blue",
+            "group": "blueDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "blueDots2c0",
+            "dot": "blueDots2c0",
+            "ink": "blue",
+            "group": "blueDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "blueDots2c1",
+            "dot": "blueDots2c1",
+            "ink": "blue",
+            "group": "blueDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "blueDots2c2",
+            "dot": "blueDots2c2",
+            "ink": "blue",
+            "group": "blueDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "blueDots2c3",
+            "dot": "blueDots2c3",
+            "ink": "blue",
+            "group": "blueDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "blueDots3c0",
+            "dot": "blueDots3c0",
+            "ink": "blue",
+            "group": "blueDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "blueDots3c1",
+            "dot": "blueDots3c1",
+            "ink": "blue",
+            "group": "blueDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "blueDots3c2",
+            "dot": "blueDots3c2",
+            "ink": "blue",
+            "group": "blueDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "blueDots3c3",
+            "dot": "blueDots3c3",
+            "ink": "blue",
+            "group": "blueDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "blueDots4c0",
+            "dot": "blueDots4c0",
+            "ink": "blue",
+            "group": "blueDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "blueDots4c1",
+            "dot": "blueDots4c1",
+            "ink": "blue",
+            "group": "blueDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "blueDots4c2",
+            "dot": "blueDots4c2",
+            "ink": "blue",
+            "group": "blueDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "blueDots4c3",
+            "dot": "blueDots4c3",
+            "ink": "blue",
+            "group": "blueDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "blueDots5c0",
+            "dot": "blueDots5c0",
+            "ink": "blue",
+            "group": "blueDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "blueDots5c1",
+            "dot": "blueDots5c1",
+            "ink": "blue",
+            "group": "blueDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "blueDots5c2",
+            "dot": "blueDots5c2",
+            "ink": "blue",
+            "group": "blueDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "blueDots5c3",
+            "dot": "blueDots5c3",
+            "ink": "blue",
+            "group": "blueDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots0c0",
+            "dot": "goldDots0c0",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots0c1",
+            "dot": "goldDots0c1",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots0c2",
+            "dot": "goldDots0c2",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots0c3",
+            "dot": "goldDots0c3",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots0c4",
+            "dot": "goldDots0c4",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots1c0",
+            "dot": "goldDots1c0",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots1c1",
+            "dot": "goldDots1c1",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots1c2",
+            "dot": "goldDots1c2",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots1c3",
+            "dot": "goldDots1c3",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots1c4",
+            "dot": "goldDots1c4",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots2c0",
+            "dot": "goldDots2c0",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots2c1",
+            "dot": "goldDots2c1",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots2c2",
+            "dot": "goldDots2c2",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots2c3",
+            "dot": "goldDots2c3",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots2c4",
+            "dot": "goldDots2c4",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots3c0",
+            "dot": "goldDots3c0",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots3c1",
+            "dot": "goldDots3c1",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots3c2",
+            "dot": "goldDots3c2",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots3c3",
+            "dot": "goldDots3c3",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots3c4",
+            "dot": "goldDots3c4",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots4c0",
+            "dot": "goldDots4c0",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots4c1",
+            "dot": "goldDots4c1",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots4c2",
+            "dot": "goldDots4c2",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots4c3",
+            "dot": "goldDots4c3",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots4c4",
+            "dot": "goldDots4c4",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots5c0",
+            "dot": "goldDots5c0",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots5c1",
+            "dot": "goldDots5c1",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots5c2",
+            "dot": "goldDots5c2",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots5c3",
+            "dot": "goldDots5c3",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "goldDots5c4",
+            "dot": "goldDots5c4",
+            "ink": "gold",
+            "group": "goldDots",
+            "start": true,
+            "r": 19
+          },
+          {
+            "id": "left",
+            "label": "6\\times4=24",
+            "at": "leftP",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "right",
+            "label": "6\\times5=30",
+            "at": "rightP",
+            "dir": "c",
+            "size": "m",
+            "ink": "gold",
+            "start": true
+          },
+          {
+            "id": "whole",
+            "label": "6\\times9=54",
+            "at": "wholeP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": false
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Suppose you also know six times five is thirty. These two arrays have the same six rows.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Build from facts you know"
+            },
+            {
+              "do": "write",
+              "tex": "6\\times4=24"
+            },
+            {
+              "do": "write",
+              "tex": "6\\times5=30"
+            },
+            {
+              "do": "highlight",
+              "target": "goldDots",
+              "at": "thirty"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Join them. Four and five make nine dots in every row.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "slide",
+              "target": "blueDots",
+              "by": [
+                0.5,
+                0
+              ],
+              "at": "Join",
+              "dur": 1.2
+            },
+            {
+              "do": "slide",
+              "target": "goldDots",
+              "by": [
+                -0.5,
+                0
+              ],
+              "at": "Join",
+              "dur": 1.2
+            },
+            {
+              "do": "move",
+              "points": {
+                "leftP": [
+                  2,
+                  1
+                ],
+                "rightP": [
+                  6.5,
+                  1
+                ]
+              },
+              "at": "Join",
+              "dur": 1.2
+            },
+            {
+              "do": "write",
+              "tex": "4+5=9",
+              "at": "nine"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Then six times nine is twenty-four plus thirty. Fifty-four!",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "6\\times9=6\\times4+6\\times5"
+            },
+            {
+              "do": "write",
+              "tex": "=24+30=54",
+              "at": "Fifty-four"
+            },
+            {
+              "do": "show",
+              "target": "whole",
+              "at": "Fifty-four"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Choose parts that make the whole nine, and multiply both parts by six.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "text",
+              "text": "4 + 5 = 9; both parts × 6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "crate0a": [
+            -0.7,
+            0.75
+          ],
+          "crate0b": [
+            3.7,
+            0.75
+          ],
+          "crate0c": [
+            3.7,
+            -3.05
+          ],
+          "crate0d": [
+            -0.7,
+            -3.05
+          ],
+          "bag0x0a": [
+            -0.275,
+            0.3
+          ],
+          "bag0x0b": [
+            1.275,
+            0.3
+          ],
+          "bag0x0c": [
+            1.275,
+            -0.9
+          ],
+          "bag0x0d": [
+            -0.275,
+            -0.9
+          ],
+          "ball0x0x0": [
+            0.175,
+            -0.05
+          ],
+          "ball0x0x1": [
+            0.825,
+            -0.05
+          ],
+          "ball0x0x2": [
+            0.175,
+            -0.55
+          ],
+          "bag0x1a": [
+            1.725,
+            0.3
+          ],
+          "bag0x1b": [
+            3.275,
+            0.3
+          ],
+          "bag0x1c": [
+            3.275,
+            -0.9
+          ],
+          "bag0x1d": [
+            1.725,
+            -0.9
+          ],
+          "ball0x1x0": [
+            2.175,
+            -0.05
+          ],
+          "ball0x1x1": [
+            2.825,
+            -0.05
+          ],
+          "ball0x1x2": [
+            2.175,
+            -0.55
+          ],
+          "bag0x2a": [
+            -0.275,
+            -1.4
+          ],
+          "bag0x2b": [
+            1.275,
+            -1.4
+          ],
+          "bag0x2c": [
+            1.275,
+            -2.6
+          ],
+          "bag0x2d": [
+            -0.275,
+            -2.6
+          ],
+          "ball0x2x0": [
+            0.175,
+            -1.75
+          ],
+          "ball0x2x1": [
+            0.825,
+            -1.75
+          ],
+          "ball0x2x2": [
+            0.175,
+            -2.25
+          ],
+          "bag0x3a": [
+            1.725,
+            -1.4
+          ],
+          "bag0x3b": [
+            3.275,
+            -1.4
+          ],
+          "bag0x3c": [
+            3.275,
+            -2.6
+          ],
+          "bag0x3d": [
+            1.725,
+            -2.6
+          ],
+          "ball0x3x0": [
+            2.175,
+            -1.75
+          ],
+          "ball0x3x1": [
+            2.825,
+            -1.75
+          ],
+          "ball0x3x2": [
+            2.175,
+            -2.25
+          ],
+          "crate1a": [
+            4.8,
+            0.75
+          ],
+          "crate1b": [
+            9.2,
+            0.75
+          ],
+          "crate1c": [
+            9.2,
+            -3.05
+          ],
+          "crate1d": [
+            4.8,
+            -3.05
+          ],
+          "bag1x0a": [
+            5.225,
+            0.3
+          ],
+          "bag1x0b": [
+            6.775,
+            0.3
+          ],
+          "bag1x0c": [
+            6.775,
+            -0.9
+          ],
+          "bag1x0d": [
+            5.225,
+            -0.9
+          ],
+          "ball1x0x0": [
+            5.675,
+            -0.05
+          ],
+          "ball1x0x1": [
+            6.325,
+            -0.05
+          ],
+          "ball1x0x2": [
+            5.675,
+            -0.55
+          ],
+          "bag1x1a": [
+            7.225,
+            0.3
+          ],
+          "bag1x1b": [
+            8.775,
+            0.3
+          ],
+          "bag1x1c": [
+            8.775,
+            -0.9
+          ],
+          "bag1x1d": [
+            7.225,
+            -0.9
+          ],
+          "ball1x1x0": [
+            7.675,
+            -0.05
+          ],
+          "ball1x1x1": [
+            8.325,
+            -0.05
+          ],
+          "ball1x1x2": [
+            7.675,
+            -0.55
+          ],
+          "bag1x2a": [
+            5.225,
+            -1.4
+          ],
+          "bag1x2b": [
+            6.775,
+            -1.4
+          ],
+          "bag1x2c": [
+            6.775,
+            -2.6
+          ],
+          "bag1x2d": [
+            5.225,
+            -2.6
+          ],
+          "ball1x2x0": [
+            5.675,
+            -1.75
+          ],
+          "ball1x2x1": [
+            6.325,
+            -1.75
+          ],
+          "ball1x2x2": [
+            5.675,
+            -2.25
+          ],
+          "bag1x3a": [
+            7.225,
+            -1.4
+          ],
+          "bag1x3b": [
+            8.775,
+            -1.4
+          ],
+          "bag1x3c": [
+            8.775,
+            -2.6
+          ],
+          "bag1x3d": [
+            7.225,
+            -2.6
+          ],
+          "ball1x3x0": [
+            7.675,
+            -1.75
+          ],
+          "ball1x3x1": [
+            8.325,
+            -1.75
+          ],
+          "ball1x3x2": [
+            7.675,
+            -2.25
+          ],
+          "crate2a": [
+            -0.7,
+            -4.05
+          ],
+          "crate2b": [
+            3.7,
+            -4.05
+          ],
+          "crate2c": [
+            3.7,
+            -7.85
+          ],
+          "crate2d": [
+            -0.7,
+            -7.85
+          ],
+          "bag2x0a": [
+            -0.275,
+            -4.5
+          ],
+          "bag2x0b": [
+            1.275,
+            -4.5
+          ],
+          "bag2x0c": [
+            1.275,
+            -5.7
+          ],
+          "bag2x0d": [
+            -0.275,
+            -5.7
+          ],
+          "ball2x0x0": [
+            0.175,
+            -4.85
+          ],
+          "ball2x0x1": [
+            0.825,
+            -4.85
+          ],
+          "ball2x0x2": [
+            0.175,
+            -5.35
+          ],
+          "bag2x1a": [
+            1.725,
+            -4.5
+          ],
+          "bag2x1b": [
+            3.275,
+            -4.5
+          ],
+          "bag2x1c": [
+            3.275,
+            -5.7
+          ],
+          "bag2x1d": [
+            1.725,
+            -5.7
+          ],
+          "ball2x1x0": [
+            2.175,
+            -4.85
+          ],
+          "ball2x1x1": [
+            2.825,
+            -4.85
+          ],
+          "ball2x1x2": [
+            2.175,
+            -5.35
+          ],
+          "bag2x2a": [
+            -0.275,
+            -6.2
+          ],
+          "bag2x2b": [
+            1.275,
+            -6.2
+          ],
+          "bag2x2c": [
+            1.275,
+            -7.4
+          ],
+          "bag2x2d": [
+            -0.275,
+            -7.4
+          ],
+          "ball2x2x0": [
+            0.175,
+            -6.55
+          ],
+          "ball2x2x1": [
+            0.825,
+            -6.55
+          ],
+          "ball2x2x2": [
+            0.175,
+            -7.05
+          ],
+          "bag2x3a": [
+            1.725,
+            -6.2
+          ],
+          "bag2x3b": [
+            3.275,
+            -6.2
+          ],
+          "bag2x3c": [
+            3.275,
+            -7.4
+          ],
+          "bag2x3d": [
+            1.725,
+            -7.4
+          ],
+          "ball2x3x0": [
+            2.175,
+            -6.55
+          ],
+          "ball2x3x1": [
+            2.825,
+            -6.55
+          ],
+          "ball2x3x2": [
+            2.175,
+            -7.05
+          ],
+          "crate3a": [
+            4.8,
+            -4.05
+          ],
+          "crate3b": [
+            9.2,
+            -4.05
+          ],
+          "crate3c": [
+            9.2,
+            -7.85
+          ],
+          "crate3d": [
+            4.8,
+            -7.85
+          ],
+          "bag3x0a": [
+            5.225,
+            -4.5
+          ],
+          "bag3x0b": [
+            6.775,
+            -4.5
+          ],
+          "bag3x0c": [
+            6.775,
+            -5.7
+          ],
+          "bag3x0d": [
+            5.225,
+            -5.7
+          ],
+          "ball3x0x0": [
+            5.675,
+            -4.85
+          ],
+          "ball3x0x1": [
+            6.325,
+            -4.85
+          ],
+          "ball3x0x2": [
+            5.675,
+            -5.35
+          ],
+          "bag3x1a": [
+            7.225,
+            -4.5
+          ],
+          "bag3x1b": [
+            8.775,
+            -4.5
+          ],
+          "bag3x1c": [
+            8.775,
+            -5.7
+          ],
+          "bag3x1d": [
+            7.225,
+            -5.7
+          ],
+          "ball3x1x0": [
+            7.675,
+            -4.85
+          ],
+          "ball3x1x1": [
+            8.325,
+            -4.85
+          ],
+          "ball3x1x2": [
+            7.675,
+            -5.35
+          ],
+          "bag3x2a": [
+            5.225,
+            -6.2
+          ],
+          "bag3x2b": [
+            6.775,
+            -6.2
+          ],
+          "bag3x2c": [
+            6.775,
+            -7.4
+          ],
+          "bag3x2d": [
+            5.225,
+            -7.4
+          ],
+          "ball3x2x0": [
+            5.675,
+            -6.55
+          ],
+          "ball3x2x1": [
+            6.325,
+            -6.55
+          ],
+          "ball3x2x2": [
+            5.675,
+            -7.05
+          ],
+          "bag3x3a": [
+            7.225,
+            -6.2
+          ],
+          "bag3x3b": [
+            8.775,
+            -6.2
+          ],
+          "bag3x3c": [
+            8.775,
+            -7.4
+          ],
+          "bag3x3d": [
+            7.225,
+            -7.4
+          ],
+          "ball3x3x0": [
+            7.675,
+            -6.55
+          ],
+          "ball3x3x1": [
+            8.325,
+            -6.55
+          ],
+          "ball3x3x2": [
+            7.675,
+            -7.05
+          ],
+          "allbagsP": [
+            4.25,
+            -9
+          ],
+          "allballsP": [
+            4.25,
+            -9
+          ]
+        },
+        "parts": [
+          {
+            "id": "crate0",
+            "poly": [
+              "crate0a",
+              "crate0b",
+              "crate0c",
+              "crate0d"
+            ],
+            "fill": "wood",
+            "ink": "wood",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "bag0x0",
+            "poly": [
+              "bag0x0a",
+              "bag0x0b",
+              "bag0x0c",
+              "bag0x0d"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true,
+            "group": "bundle0x0"
+          },
+          {
+            "id": "ball0x0x0",
+            "dot": "ball0x0x0",
+            "ink": "accent",
+            "group": "bundle0x0",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball0x0x1",
+            "dot": "ball0x0x1",
+            "ink": "accent",
+            "group": "bundle0x0",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball0x0x2",
+            "dot": "ball0x0x2",
+            "ink": "accent",
+            "group": "bundle0x0",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "bag0x1",
+            "poly": [
+              "bag0x1a",
+              "bag0x1b",
+              "bag0x1c",
+              "bag0x1d"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true,
+            "group": "bundle0x1"
+          },
+          {
+            "id": "ball0x1x0",
+            "dot": "ball0x1x0",
+            "ink": "accent",
+            "group": "bundle0x1",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball0x1x1",
+            "dot": "ball0x1x1",
+            "ink": "accent",
+            "group": "bundle0x1",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball0x1x2",
+            "dot": "ball0x1x2",
+            "ink": "accent",
+            "group": "bundle0x1",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "bag0x2",
+            "poly": [
+              "bag0x2a",
+              "bag0x2b",
+              "bag0x2c",
+              "bag0x2d"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true,
+            "group": "bundle0x2"
+          },
+          {
+            "id": "ball0x2x0",
+            "dot": "ball0x2x0",
+            "ink": "accent",
+            "group": "bundle0x2",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball0x2x1",
+            "dot": "ball0x2x1",
+            "ink": "accent",
+            "group": "bundle0x2",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball0x2x2",
+            "dot": "ball0x2x2",
+            "ink": "accent",
+            "group": "bundle0x2",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "bag0x3",
+            "poly": [
+              "bag0x3a",
+              "bag0x3b",
+              "bag0x3c",
+              "bag0x3d"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true,
+            "group": "bundle0x3"
+          },
+          {
+            "id": "ball0x3x0",
+            "dot": "ball0x3x0",
+            "ink": "accent",
+            "group": "bundle0x3",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball0x3x1",
+            "dot": "ball0x3x1",
+            "ink": "accent",
+            "group": "bundle0x3",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball0x3x2",
+            "dot": "ball0x3x2",
+            "ink": "accent",
+            "group": "bundle0x3",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "crate1",
+            "poly": [
+              "crate1a",
+              "crate1b",
+              "crate1c",
+              "crate1d"
+            ],
+            "fill": "wood",
+            "ink": "wood",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "bag1x0",
+            "poly": [
+              "bag1x0a",
+              "bag1x0b",
+              "bag1x0c",
+              "bag1x0d"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true,
+            "group": "bundle1x0"
+          },
+          {
+            "id": "ball1x0x0",
+            "dot": "ball1x0x0",
+            "ink": "accent",
+            "group": "bundle1x0",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball1x0x1",
+            "dot": "ball1x0x1",
+            "ink": "accent",
+            "group": "bundle1x0",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball1x0x2",
+            "dot": "ball1x0x2",
+            "ink": "accent",
+            "group": "bundle1x0",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "bag1x1",
+            "poly": [
+              "bag1x1a",
+              "bag1x1b",
+              "bag1x1c",
+              "bag1x1d"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true,
+            "group": "bundle1x1"
+          },
+          {
+            "id": "ball1x1x0",
+            "dot": "ball1x1x0",
+            "ink": "accent",
+            "group": "bundle1x1",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball1x1x1",
+            "dot": "ball1x1x1",
+            "ink": "accent",
+            "group": "bundle1x1",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball1x1x2",
+            "dot": "ball1x1x2",
+            "ink": "accent",
+            "group": "bundle1x1",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "bag1x2",
+            "poly": [
+              "bag1x2a",
+              "bag1x2b",
+              "bag1x2c",
+              "bag1x2d"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true,
+            "group": "bundle1x2"
+          },
+          {
+            "id": "ball1x2x0",
+            "dot": "ball1x2x0",
+            "ink": "accent",
+            "group": "bundle1x2",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball1x2x1",
+            "dot": "ball1x2x1",
+            "ink": "accent",
+            "group": "bundle1x2",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball1x2x2",
+            "dot": "ball1x2x2",
+            "ink": "accent",
+            "group": "bundle1x2",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "bag1x3",
+            "poly": [
+              "bag1x3a",
+              "bag1x3b",
+              "bag1x3c",
+              "bag1x3d"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true,
+            "group": "bundle1x3"
+          },
+          {
+            "id": "ball1x3x0",
+            "dot": "ball1x3x0",
+            "ink": "accent",
+            "group": "bundle1x3",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball1x3x1",
+            "dot": "ball1x3x1",
+            "ink": "accent",
+            "group": "bundle1x3",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball1x3x2",
+            "dot": "ball1x3x2",
+            "ink": "accent",
+            "group": "bundle1x3",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "crate2",
+            "poly": [
+              "crate2a",
+              "crate2b",
+              "crate2c",
+              "crate2d"
+            ],
+            "fill": "wood",
+            "ink": "wood",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "bag2x0",
+            "poly": [
+              "bag2x0a",
+              "bag2x0b",
+              "bag2x0c",
+              "bag2x0d"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true,
+            "group": "bundle2x0"
+          },
+          {
+            "id": "ball2x0x0",
+            "dot": "ball2x0x0",
+            "ink": "accent",
+            "group": "bundle2x0",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball2x0x1",
+            "dot": "ball2x0x1",
+            "ink": "accent",
+            "group": "bundle2x0",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball2x0x2",
+            "dot": "ball2x0x2",
+            "ink": "accent",
+            "group": "bundle2x0",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "bag2x1",
+            "poly": [
+              "bag2x1a",
+              "bag2x1b",
+              "bag2x1c",
+              "bag2x1d"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true,
+            "group": "bundle2x1"
+          },
+          {
+            "id": "ball2x1x0",
+            "dot": "ball2x1x0",
+            "ink": "accent",
+            "group": "bundle2x1",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball2x1x1",
+            "dot": "ball2x1x1",
+            "ink": "accent",
+            "group": "bundle2x1",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball2x1x2",
+            "dot": "ball2x1x2",
+            "ink": "accent",
+            "group": "bundle2x1",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "bag2x2",
+            "poly": [
+              "bag2x2a",
+              "bag2x2b",
+              "bag2x2c",
+              "bag2x2d"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true,
+            "group": "bundle2x2"
+          },
+          {
+            "id": "ball2x2x0",
+            "dot": "ball2x2x0",
+            "ink": "accent",
+            "group": "bundle2x2",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball2x2x1",
+            "dot": "ball2x2x1",
+            "ink": "accent",
+            "group": "bundle2x2",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball2x2x2",
+            "dot": "ball2x2x2",
+            "ink": "accent",
+            "group": "bundle2x2",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "bag2x3",
+            "poly": [
+              "bag2x3a",
+              "bag2x3b",
+              "bag2x3c",
+              "bag2x3d"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true,
+            "group": "bundle2x3"
+          },
+          {
+            "id": "ball2x3x0",
+            "dot": "ball2x3x0",
+            "ink": "accent",
+            "group": "bundle2x3",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball2x3x1",
+            "dot": "ball2x3x1",
+            "ink": "accent",
+            "group": "bundle2x3",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball2x3x2",
+            "dot": "ball2x3x2",
+            "ink": "accent",
+            "group": "bundle2x3",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "crate3",
+            "poly": [
+              "crate3a",
+              "crate3b",
+              "crate3c",
+              "crate3d"
+            ],
+            "fill": "wood",
+            "ink": "wood",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "bag3x0",
+            "poly": [
+              "bag3x0a",
+              "bag3x0b",
+              "bag3x0c",
+              "bag3x0d"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true,
+            "group": "bundle3x0"
+          },
+          {
+            "id": "ball3x0x0",
+            "dot": "ball3x0x0",
+            "ink": "accent",
+            "group": "bundle3x0",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball3x0x1",
+            "dot": "ball3x0x1",
+            "ink": "accent",
+            "group": "bundle3x0",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball3x0x2",
+            "dot": "ball3x0x2",
+            "ink": "accent",
+            "group": "bundle3x0",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "bag3x1",
+            "poly": [
+              "bag3x1a",
+              "bag3x1b",
+              "bag3x1c",
+              "bag3x1d"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true,
+            "group": "bundle3x1"
+          },
+          {
+            "id": "ball3x1x0",
+            "dot": "ball3x1x0",
+            "ink": "accent",
+            "group": "bundle3x1",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball3x1x1",
+            "dot": "ball3x1x1",
+            "ink": "accent",
+            "group": "bundle3x1",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball3x1x2",
+            "dot": "ball3x1x2",
+            "ink": "accent",
+            "group": "bundle3x1",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "bag3x2",
+            "poly": [
+              "bag3x2a",
+              "bag3x2b",
+              "bag3x2c",
+              "bag3x2d"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true,
+            "group": "bundle3x2"
+          },
+          {
+            "id": "ball3x2x0",
+            "dot": "ball3x2x0",
+            "ink": "accent",
+            "group": "bundle3x2",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball3x2x1",
+            "dot": "ball3x2x1",
+            "ink": "accent",
+            "group": "bundle3x2",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball3x2x2",
+            "dot": "ball3x2x2",
+            "ink": "accent",
+            "group": "bundle3x2",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "bag3x3",
+            "poly": [
+              "bag3x3a",
+              "bag3x3b",
+              "bag3x3c",
+              "bag3x3d"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "start": true,
+            "group": "bundle3x3"
+          },
+          {
+            "id": "ball3x3x0",
+            "dot": "ball3x3x0",
+            "ink": "accent",
+            "group": "bundle3x3",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball3x3x1",
+            "dot": "ball3x3x1",
+            "ink": "accent",
+            "group": "bundle3x3",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "ball3x3x2",
+            "dot": "ball3x3x2",
+            "ink": "accent",
+            "group": "bundle3x3",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "allbags",
+            "label": "16\\;\\text{bags}",
+            "at": "allbagsP",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "allballs",
+            "label": "48\\;\\text{balls}",
+            "at": "allballsP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": false
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Regrouping helps with groups inside groups. Four crates. Four bags in each crate. Three balls in each bag.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Regroup it"
+            },
+            {
+              "do": "write",
+              "tex": "4\\times4\\times3"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "crate0",
+                "crate1",
+                "crate2",
+                "crate3"
+              ],
+              "at": "crates"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "bag0x0",
+                "bag0x1",
+                "bag0x2",
+                "bag0x3"
+              ],
+              "at": "bags"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "ball0x0x0",
+                "ball0x0x1",
+                "ball0x0x2"
+              ],
+              "at": "balls"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Count bags first. Four times four makes sixteen bags. Each holds three balls.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "crate0",
+                "crate1",
+                "crate2",
+                "crate3"
+              ]
+            },
+            {
+              "do": "slide",
+              "target": "bundle0x0",
+              "by": [
+                0.6,
+                -0.25
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle0x1",
+              "by": [
+                0.7,
+                -0.25
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle0x2",
+              "by": [
+                4.8,
+                1.45
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle0x3",
+              "by": [
+                4.9,
+                1.45
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle1x0",
+              "by": [
+                -4.9,
+                -2.25
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle1x1",
+              "by": [
+                -4.8,
+                -2.25
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle1x2",
+              "by": [
+                -0.7,
+                -0.55
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle1x3",
+              "by": [
+                -0.6,
+                -0.55
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle2x0",
+              "by": [
+                0.6,
+                0.55
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle2x1",
+              "by": [
+                0.7,
+                0.55
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle2x2",
+              "by": [
+                4.8,
+                2.25
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle2x3",
+              "by": [
+                4.9,
+                2.25
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle3x0",
+              "by": [
+                -4.9,
+                -1.45
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle3x1",
+              "by": [
+                -4.8,
+                -1.45
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle3x2",
+              "by": [
+                -0.7,
+                0.25
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle3x3",
+              "by": [
+                -0.6,
+                0.25
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "show",
+              "target": "allbags",
+              "at": "sixteen"
+            },
+            {
+              "do": "write",
+              "tex": "(4\\times4)\\times3",
+              "at": "first"
+            },
+            {
+              "do": "write",
+              "tex": "16\\times3=48",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "allballs",
+              "at": "three"
+            },
+            {
+              "do": "hide",
+              "target": "allbags",
+              "at": "three"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Or keep the crates. Four bags of three make twelve balls per crate.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "hide",
+              "target": "allbags"
+            },
+            {
+              "do": "slide",
+              "target": "bundle0x0",
+              "by": [
+                -0.6,
+                0.25
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle0x1",
+              "by": [
+                -0.7,
+                0.25
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle0x2",
+              "by": [
+                -4.8,
+                -1.45
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle0x3",
+              "by": [
+                -4.9,
+                -1.45
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle1x0",
+              "by": [
+                4.9,
+                2.25
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle1x1",
+              "by": [
+                4.8,
+                2.25
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle1x2",
+              "by": [
+                0.7,
+                0.55
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle1x3",
+              "by": [
+                0.6,
+                0.55
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle2x0",
+              "by": [
+                -0.6,
+                -0.55
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle2x1",
+              "by": [
+                -0.7,
+                -0.55
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle2x2",
+              "by": [
+                -4.8,
+                -2.25
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle2x3",
+              "by": [
+                -4.9,
+                -2.25
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle3x0",
+              "by": [
+                4.9,
+                1.45
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle3x1",
+              "by": [
+                4.8,
+                1.45
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle3x2",
+              "by": [
+                0.7,
+                -0.25
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "slide",
+              "target": "bundle3x3",
+              "by": [
+                0.6,
+                -0.25
+              ],
+              "dur": 1.3
+            },
+            {
+              "do": "show",
+              "target": [
+                "crate0",
+                "crate1",
+                "crate2",
+                "crate3"
+              ],
+              "at": "crates"
+            },
+            {
+              "do": "write",
+              "tex": "4\\times(4\\times3)",
+              "at": "Four"
+            },
+            {
+              "do": "write",
+              "tex": "4\\times12=48",
+              "at": "twelve",
+              "fresh": true
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "ball0x0x0",
+                "ball0x0x1",
+                "ball0x0x2",
+                "ball0x1x0",
+                "ball0x1x1",
+                "ball0x1x2",
+                "ball0x2x0",
+                "ball0x2x1",
+                "ball0x2x2",
+                "ball0x3x0",
+                "ball0x3x1",
+                "ball0x3x2"
+              ],
+              "at": "twelve"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Four crates of twelve. Forty-eight again. Same balls, different grouping.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "48\\text{ balls}",
+              "at": "Forty-eight"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "ball0x0x0",
+                "ball0x0x1",
+                "ball0x0x2",
+                "ball0x1x0",
+                "ball0x1x1",
+                "ball0x1x2",
+                "ball0x2x0",
+                "ball0x2x1",
+                "ball0x2x2",
+                "ball0x3x0",
+                "ball0x3x1",
+                "ball0x3x2",
+                "ball1x0x0",
+                "ball1x0x1",
+                "ball1x0x2",
+                "ball1x1x0",
+                "ball1x1x1",
+                "ball1x1x2",
+                "ball1x2x0",
+                "ball1x2x1",
+                "ball1x2x2",
+                "ball1x3x0",
+                "ball1x3x1",
+                "ball1x3x2",
+                "ball2x0x0",
+                "ball2x0x1",
+                "ball2x0x2",
+                "ball2x1x0",
+                "ball2x1x1",
+                "ball2x1x2",
+                "ball2x2x0",
+                "ball2x2x1",
+                "ball2x2x2",
+                "ball2x3x0",
+                "ball2x3x1",
+                "ball2x3x2",
+                "ball3x0x0",
+                "ball3x0x1",
+                "ball3x0x2",
+                "ball3x1x0",
+                "ball3x1x1",
+                "ball3x1x2",
+                "ball3x2x0",
+                "ball3x2x1",
+                "ball3x2x2",
+                "ball3x3x0",
+                "ball3x3x1",
+                "ball3x3x2"
+              ],
+              "at": "Same"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The curved marks, parentheses, show what to work out first. Changing the grouping is the associative property.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "(4\\times4)\\times3",
+              "at": "parentheses"
+            },
+            {
+              "do": "write",
+              "tex": "4\\times(4\\times3)",
+              "at": "first"
+            },
+            {
+              "do": "term",
+              "word": "Associative property",
+              "meaning": "Change the grouping; keep the product.",
+              "at": "associative"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "box0a": [
+            -0.5,
+            0.5
+          ],
+          "box0b": [
+            2.5,
+            0.5
+          ],
+          "box0c": [
+            2.5,
+            -1.8
+          ],
+          "box0d": [
+            -0.5,
+            -1.8
+          ],
+          "pair0x0a": [
+            -0.25,
+            0.25
+          ],
+          "pair0x0b": [
+            0.75,
+            0.25
+          ],
+          "pair0x0c": [
+            0.75,
+            -1.55
+          ],
+          "pair0x0d": [
+            -0.25,
+            -1.55
+          ],
+          "p0x0a": [
+            0.25,
+            -0.225
+          ],
+          "p0x0b": [
+            0.25,
+            -1.075
+          ],
+          "pair0x1a": [
+            1.25,
+            0.25
+          ],
+          "pair0x1b": [
+            2.25,
+            0.25
+          ],
+          "pair0x1c": [
+            2.25,
+            -1.55
+          ],
+          "pair0x1d": [
+            1.25,
+            -1.55
+          ],
+          "p0x1a": [
+            1.75,
+            -0.225
+          ],
+          "p0x1b": [
+            1.75,
+            -1.075
+          ],
+          "box1a": [
+            3.5,
+            0.5
+          ],
+          "box1b": [
+            6.5,
+            0.5
+          ],
+          "box1c": [
+            6.5,
+            -1.8
+          ],
+          "box1d": [
+            3.5,
+            -1.8
+          ],
+          "pair1x0a": [
+            3.75,
+            0.25
+          ],
+          "pair1x0b": [
+            4.75,
+            0.25
+          ],
+          "pair1x0c": [
+            4.75,
+            -1.55
+          ],
+          "pair1x0d": [
+            3.75,
+            -1.55
+          ],
+          "p1x0a": [
+            4.25,
+            -0.225
+          ],
+          "p1x0b": [
+            4.25,
+            -1.075
+          ],
+          "pair1x1a": [
+            5.25,
+            0.25
+          ],
+          "pair1x1b": [
+            6.25,
+            0.25
+          ],
+          "pair1x1c": [
+            6.25,
+            -1.55
+          ],
+          "pair1x1d": [
+            5.25,
+            -1.55
+          ],
+          "p1x1a": [
+            5.75,
+            -0.225
+          ],
+          "p1x1b": [
+            5.75,
+            -1.075
+          ],
+          "box2a": [
+            -0.5,
+            -3
+          ],
+          "box2b": [
+            2.5,
+            -3
+          ],
+          "box2c": [
+            2.5,
+            -5.3
+          ],
+          "box2d": [
+            -0.5,
+            -5.3
+          ],
+          "pair2x0a": [
+            -0.25,
+            -3.25
+          ],
+          "pair2x0b": [
+            0.75,
+            -3.25
+          ],
+          "pair2x0c": [
+            0.75,
+            -5.05
+          ],
+          "pair2x0d": [
+            -0.25,
+            -5.05
+          ],
+          "p2x0a": [
+            0.25,
+            -3.725
+          ],
+          "p2x0b": [
+            0.25,
+            -4.575
+          ],
+          "pair2x1a": [
+            1.25,
+            -3.25
+          ],
+          "pair2x1b": [
+            2.25,
+            -3.25
+          ],
+          "pair2x1c": [
+            2.25,
+            -5.05
+          ],
+          "pair2x1d": [
+            1.25,
+            -5.05
+          ],
+          "p2x1a": [
+            1.75,
+            -3.725
+          ],
+          "p2x1b": [
+            1.75,
+            -4.575
+          ],
+          "box3a": [
+            3.5,
+            -3
+          ],
+          "box3b": [
+            6.5,
+            -3
+          ],
+          "box3c": [
+            6.5,
+            -5.3
+          ],
+          "box3d": [
+            3.5,
+            -5.3
+          ],
+          "pair3x0a": [
+            3.75,
+            -3.25
+          ],
+          "pair3x0b": [
+            4.75,
+            -3.25
+          ],
+          "pair3x0c": [
+            4.75,
+            -5.05
+          ],
+          "pair3x0d": [
+            3.75,
+            -5.05
+          ],
+          "p3x0a": [
+            4.25,
+            -3.725
+          ],
+          "p3x0b": [
+            4.25,
+            -4.575
+          ],
+          "pair3x1a": [
+            5.25,
+            -3.25
+          ],
+          "pair3x1b": [
+            6.25,
+            -3.25
+          ],
+          "pair3x1c": [
+            6.25,
+            -5.05
+          ],
+          "pair3x1d": [
+            5.25,
+            -5.05
+          ],
+          "p3x1a": [
+            5.75,
+            -3.725
+          ],
+          "p3x1b": [
+            5.75,
+            -4.575
+          ]
+        },
+        "parts": [
+          {
+            "id": "box0",
+            "poly": [
+              "box0a",
+              "box0b",
+              "box0c",
+              "box0d"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "pair0x0",
+            "poly": [
+              "pair0x0a",
+              "pair0x0b",
+              "pair0x0c",
+              "pair0x0d"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "p0x0a",
+            "dot": "p0x0a",
+            "ink": "accent",
+            "group": "dots",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "p0x0b",
+            "dot": "p0x0b",
+            "ink": "accent",
+            "group": "dots",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "pair0x1",
+            "poly": [
+              "pair0x1a",
+              "pair0x1b",
+              "pair0x1c",
+              "pair0x1d"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "p0x1a",
+            "dot": "p0x1a",
+            "ink": "accent",
+            "group": "dots",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "p0x1b",
+            "dot": "p0x1b",
+            "ink": "accent",
+            "group": "dots",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "box1",
+            "poly": [
+              "box1a",
+              "box1b",
+              "box1c",
+              "box1d"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "pair1x0",
+            "poly": [
+              "pair1x0a",
+              "pair1x0b",
+              "pair1x0c",
+              "pair1x0d"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "p1x0a",
+            "dot": "p1x0a",
+            "ink": "accent",
+            "group": "dots",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "p1x0b",
+            "dot": "p1x0b",
+            "ink": "accent",
+            "group": "dots",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "pair1x1",
+            "poly": [
+              "pair1x1a",
+              "pair1x1b",
+              "pair1x1c",
+              "pair1x1d"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "p1x1a",
+            "dot": "p1x1a",
+            "ink": "accent",
+            "group": "dots",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "p1x1b",
+            "dot": "p1x1b",
+            "ink": "accent",
+            "group": "dots",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "box2",
+            "poly": [
+              "box2a",
+              "box2b",
+              "box2c",
+              "box2d"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "pair2x0",
+            "poly": [
+              "pair2x0a",
+              "pair2x0b",
+              "pair2x0c",
+              "pair2x0d"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "p2x0a",
+            "dot": "p2x0a",
+            "ink": "accent",
+            "group": "dots",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "p2x0b",
+            "dot": "p2x0b",
+            "ink": "accent",
+            "group": "dots",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "pair2x1",
+            "poly": [
+              "pair2x1a",
+              "pair2x1b",
+              "pair2x1c",
+              "pair2x1d"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "p2x1a",
+            "dot": "p2x1a",
+            "ink": "accent",
+            "group": "dots",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "p2x1b",
+            "dot": "p2x1b",
+            "ink": "accent",
+            "group": "dots",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "box3",
+            "poly": [
+              "box3a",
+              "box3b",
+              "box3c",
+              "box3d"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "pair3x0",
+            "poly": [
+              "pair3x0a",
+              "pair3x0b",
+              "pair3x0c",
+              "pair3x0d"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "p3x0a",
+            "dot": "p3x0a",
+            "ink": "accent",
+            "group": "dots",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "p3x0b",
+            "dot": "p3x0b",
+            "ink": "accent",
+            "group": "dots",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "pair3x1",
+            "poly": [
+              "pair3x1a",
+              "pair3x1b",
+              "pair3x1c",
+              "pair3x1d"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "p3x1a",
+            "dot": "p3x1a",
+            "ink": "accent",
+            "group": "dots",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "p3x1b",
+            "dot": "p3x1b",
+            "ink": "accent",
+            "group": "dots",
+            "start": true,
+            "r": 24
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Try four times two times two. Group the first two numbers: four times two makes eight pairs.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Which pair first?"
+            },
+            {
+              "do": "write",
+              "tex": "(4\\times2)\\times2"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "box0",
+                "box1",
+                "box2",
+                "box3"
+              ],
+              "at": "eight"
+            },
+            {
+              "do": "write",
+              "tex": "8\\times2=16",
+              "at": "eight"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Group the last two: two times two makes four in each box. Four times four is sixteen.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "show",
+              "target": [
+                "box0",
+                "box1",
+                "box2",
+                "box3"
+              ]
+            },
+            {
+              "do": "hide",
+              "target": [
+                "pair0x0",
+                "pair0x1",
+                "pair1x0",
+                "pair1x1",
+                "pair2x0",
+                "pair2x1",
+                "pair3x0",
+                "pair3x1"
+              ],
+              "at": "four"
+            },
+            {
+              "do": "write",
+              "tex": "4\\times(2\\times2)"
+            },
+            {
+              "do": "write",
+              "tex": "4\\times4=16",
+              "at": "sixteen"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Either way, use all three numbers. Regrouping changes which multiplication you do first.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "text",
+              "text": "Same numbers. Same order. New grouping."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "tray0a": [
+            -0.25,
+            0.4
+          ],
+          "tray0b": [
+            2.45,
+            0.4
+          ],
+          "tray0c": [
+            2.45,
+            -2.2
+          ],
+          "tray0d": [
+            -0.25,
+            -2.2
+          ],
+          "tray1a": [
+            3.25,
+            0.4
+          ],
+          "tray1b": [
+            5.95,
+            0.4
+          ],
+          "tray1c": [
+            5.95,
+            -2.2
+          ],
+          "tray1d": [
+            3.25,
+            -2.2
+          ],
+          "tray2a": [
+            6.75,
+            0.4
+          ],
+          "tray2b": [
+            9.45,
+            0.4
+          ],
+          "tray2c": [
+            9.45,
+            -2.2
+          ],
+          "tray2d": [
+            6.75,
+            -2.2
+          ],
+          "tray3a": [
+            -0.25,
+            -3.0
+          ],
+          "tray3b": [
+            2.45,
+            -3.0
+          ],
+          "tray3c": [
+            2.45,
+            -5.6
+          ],
+          "tray3d": [
+            -0.25,
+            -5.6
+          ],
+          "tray4a": [
+            3.25,
+            -3.0
+          ],
+          "tray4b": [
+            5.95,
+            -3.0
+          ],
+          "tray4c": [
+            5.95,
+            -5.6
+          ],
+          "tray4d": [
+            3.25,
+            -5.6
+          ],
+          "tray5a": [
+            6.75,
+            -3.0
+          ],
+          "tray5b": [
+            9.45,
+            -3.0
+          ],
+          "tray5c": [
+            9.45,
+            -5.6
+          ],
+          "tray5d": [
+            6.75,
+            -5.6
+          ],
+          "q0": [
+            0,
+            4.8
+          ],
+          "q1": [
+            0.7,
+            4.8
+          ],
+          "q2": [
+            1.4,
+            4.8
+          ],
+          "q3": [
+            2.1,
+            4.8
+          ],
+          "q4": [
+            2.8,
+            4.8
+          ],
+          "q5": [
+            3.5,
+            4.8
+          ],
+          "q6": [
+            4.2,
+            4.8
+          ],
+          "q7": [
+            4.9,
+            4.8
+          ],
+          "q8": [
+            5.6,
+            4.8
+          ],
+          "q9": [
+            6.3,
+            4.8
+          ],
+          "q10": [
+            7,
+            4.8
+          ],
+          "q11": [
+            7.7,
+            4.8
+          ],
+          "q12": [
+            0,
+            4.35
+          ],
+          "q13": [
+            0.7,
+            4.35
+          ],
+          "q14": [
+            1.4,
+            4.35
+          ],
+          "q15": [
+            2.1,
+            4.35
+          ],
+          "q16": [
+            2.8,
+            4.35
+          ],
+          "q17": [
+            3.5,
+            4.35
+          ],
+          "q18": [
+            4.2,
+            4.35
+          ],
+          "q19": [
+            4.9,
+            4.35
+          ],
+          "q20": [
+            5.6,
+            4.35
+          ],
+          "q21": [
+            6.3,
+            4.35
+          ],
+          "q22": [
+            7,
+            4.35
+          ],
+          "q23": [
+            7.7,
+            4.35
+          ],
+          "q24": [
+            0,
+            3.9
+          ],
+          "q25": [
+            0.7,
+            3.9
+          ],
+          "q26": [
+            1.4,
+            3.9
+          ],
+          "q27": [
+            2.1,
+            3.9
+          ],
+          "q28": [
+            2.8,
+            3.9
+          ],
+          "q29": [
+            3.5,
+            3.9
+          ],
+          "q30": [
+            4.2,
+            3.9
+          ],
+          "q31": [
+            4.9,
+            3.9
+          ],
+          "q32": [
+            5.6,
+            3.9
+          ],
+          "q33": [
+            6.3,
+            3.9
+          ],
+          "q34": [
+            7,
+            3.9
+          ],
+          "q35": [
+            7.7,
+            3.9
+          ],
+          "q36": [
+            0,
+            3.45
+          ],
+          "q37": [
+            0.7,
+            3.45
+          ],
+          "q38": [
+            1.4,
+            3.45
+          ],
+          "q39": [
+            2.1,
+            3.45
+          ],
+          "q40": [
+            2.8,
+            3.45
+          ],
+          "q41": [
+            3.5,
+            3.45
+          ],
+          "q42": [
+            4.2,
+            3.45
+          ],
+          "q43": [
+            4.9,
+            3.45
+          ],
+          "q44": [
+            5.6,
+            3.45
+          ],
+          "q45": [
+            6.3,
+            3.45
+          ],
+          "q46": [
+            7,
+            3.45
+          ],
+          "q47": [
+            7.7,
+            3.45
+          ],
+          "q48": [
+            0,
+            3
+          ],
+          "q49": [
+            0.7,
+            3
+          ],
+          "q50": [
+            1.4,
+            3
+          ],
+          "q51": [
+            2.1,
+            3
+          ],
+          "q52": [
+            2.8,
+            3
+          ],
+          "q53": [
+            3.5,
+            3
+          ],
+          "q54": [
+            4.2,
+            3
+          ],
+          "q55": [
+            4.9,
+            3
+          ],
+          "q56": [
+            5.6,
+            3
+          ],
+          "q57": [
+            6.3,
+            3
+          ],
+          "q58": [
+            7,
+            3
+          ],
+          "q59": [
+            7.7,
+            3
+          ],
+          "q60": [
+            0,
+            2.3
+          ],
+          "q61": [
+            0.7,
+            2.3
+          ],
+          "q62": [
+            1.4,
+            2.3
+          ],
+          "q63": [
+            2.1,
+            2.3
+          ],
+          "q64": [
+            2.8,
+            2.3
+          ],
+          "q65": [
+            3.5,
+            2.3
+          ],
+          "q66": [
+            4.2,
+            2.3
+          ],
+          "q67": [
+            4.9,
+            2.3
+          ],
+          "q68": [
+            5.6,
+            2.3
+          ],
+          "q69": [
+            6.3,
+            2.3
+          ],
+          "q70": [
+            7,
+            2.3
+          ],
+          "q71": [
+            7.7,
+            2.3
+          ],
+          "sixtyP": [
+            9.2,
+            4
+          ],
+          "twelveP": [
+            9.2,
+            2.3
+          ],
+          "tenEachP": [
+            4.6,
+            -6.5
+          ],
+          "twelveEachP": [
+            4.6,
+            -6.5
+          ]
+        },
+        "parts": [
+          {
+            "id": "tray0",
+            "poly": [
+              "tray0a",
+              "tray0b",
+              "tray0c",
+              "tray0d"
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tray1",
+            "poly": [
+              "tray1a",
+              "tray1b",
+              "tray1c",
+              "tray1d"
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tray2",
+            "poly": [
+              "tray2a",
+              "tray2b",
+              "tray2c",
+              "tray2d"
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tray3",
+            "poly": [
+              "tray3a",
+              "tray3b",
+              "tray3c",
+              "tray3d"
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tray4",
+            "poly": [
+              "tray4a",
+              "tray4b",
+              "tray4c",
+              "tray4d"
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tray5",
+            "poly": [
+              "tray5a",
+              "tray5b",
+              "tray5c",
+              "tray5d"
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "q0",
+            "dot": "q0",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q1",
+            "dot": "q1",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q2",
+            "dot": "q2",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q3",
+            "dot": "q3",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q4",
+            "dot": "q4",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q5",
+            "dot": "q5",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q6",
+            "dot": "q6",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q7",
+            "dot": "q7",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q8",
+            "dot": "q8",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q9",
+            "dot": "q9",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q10",
+            "dot": "q10",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q11",
+            "dot": "q11",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q12",
+            "dot": "q12",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q13",
+            "dot": "q13",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q14",
+            "dot": "q14",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q15",
+            "dot": "q15",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q16",
+            "dot": "q16",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q17",
+            "dot": "q17",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q18",
+            "dot": "q18",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q19",
+            "dot": "q19",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q20",
+            "dot": "q20",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q21",
+            "dot": "q21",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q22",
+            "dot": "q22",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q23",
+            "dot": "q23",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q24",
+            "dot": "q24",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q25",
+            "dot": "q25",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q26",
+            "dot": "q26",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q27",
+            "dot": "q27",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q28",
+            "dot": "q28",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q29",
+            "dot": "q29",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q30",
+            "dot": "q30",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q31",
+            "dot": "q31",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q32",
+            "dot": "q32",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q33",
+            "dot": "q33",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q34",
+            "dot": "q34",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q35",
+            "dot": "q35",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q36",
+            "dot": "q36",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q37",
+            "dot": "q37",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q38",
+            "dot": "q38",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q39",
+            "dot": "q39",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q40",
+            "dot": "q40",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q41",
+            "dot": "q41",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q42",
+            "dot": "q42",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q43",
+            "dot": "q43",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q44",
+            "dot": "q44",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q45",
+            "dot": "q45",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q46",
+            "dot": "q46",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q47",
+            "dot": "q47",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q48",
+            "dot": "q48",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q49",
+            "dot": "q49",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q50",
+            "dot": "q50",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q51",
+            "dot": "q51",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q52",
+            "dot": "q52",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q53",
+            "dot": "q53",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q54",
+            "dot": "q54",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q55",
+            "dot": "q55",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q56",
+            "dot": "q56",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q57",
+            "dot": "q57",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q58",
+            "dot": "q58",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q59",
+            "dot": "q59",
+            "ink": "blue",
+            "group": "loadOne",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q60",
+            "dot": "q60",
+            "ink": "gold",
+            "group": "loadTwo",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q61",
+            "dot": "q61",
+            "ink": "gold",
+            "group": "loadTwo",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q62",
+            "dot": "q62",
+            "ink": "gold",
+            "group": "loadTwo",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q63",
+            "dot": "q63",
+            "ink": "gold",
+            "group": "loadTwo",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q64",
+            "dot": "q64",
+            "ink": "gold",
+            "group": "loadTwo",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q65",
+            "dot": "q65",
+            "ink": "gold",
+            "group": "loadTwo",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q66",
+            "dot": "q66",
+            "ink": "gold",
+            "group": "loadTwo",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q67",
+            "dot": "q67",
+            "ink": "gold",
+            "group": "loadTwo",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q68",
+            "dot": "q68",
+            "ink": "gold",
+            "group": "loadTwo",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q69",
+            "dot": "q69",
+            "ink": "gold",
+            "group": "loadTwo",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q70",
+            "dot": "q70",
+            "ink": "gold",
+            "group": "loadTwo",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "q71",
+            "dot": "q71",
+            "ink": "gold",
+            "group": "loadTwo",
+            "start": true,
+            "r": 12
+          },
+          {
+            "id": "sixty",
+            "label": "60",
+            "at": "sixtyP",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "twelve",
+            "label": "12",
+            "at": "twelveP",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold",
+            "start": true
+          },
+          {
+            "id": "tenEach",
+            "label": "10\\;\\text{each}",
+            "at": "tenEachP",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "twelveEach",
+            "label": "10+2=12\\;\\text{each}",
+            "at": "twelveEachP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": false
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Split for division, too. Share seventy-two dots equally among six trays. Split seventy-two into sixty and twelve.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Share in two loads"
+            },
+            {
+              "do": "write",
+              "tex": "72=60+12",
+              "at": "Split",
+              "nth": 2
+            },
+            {
+              "do": "highlight",
+              "target": "loadOne",
+              "at": "sixty"
+            },
+            {
+              "do": "highlight",
+              "target": "loadTwo",
+              "at": "twelve"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "tray0",
+                "tray1",
+                "tray2",
+                "tray3",
+                "tray4",
+                "tray5"
+              ],
+              "at": "six"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Share sixty first. Ten on every tray.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "q0": [
+                  0.2,
+                  -0.2
+                ],
+                "q1": [
+                  3.7,
+                  -0.2
+                ],
+                "q2": [
+                  7.2,
+                  -0.2
+                ],
+                "q3": [
+                  0.2,
+                  -3.6
+                ],
+                "q4": [
+                  3.7,
+                  -3.6
+                ],
+                "q5": [
+                  7.2,
+                  -3.6
+                ],
+                "q6": [
+                  0.8,
+                  -0.2
+                ],
+                "q7": [
+                  4.3,
+                  -0.2
+                ],
+                "q8": [
+                  7.8,
+                  -0.2
+                ],
+                "q9": [
+                  0.8,
+                  -3.6
+                ],
+                "q10": [
+                  4.3,
+                  -3.6
+                ],
+                "q11": [
+                  7.8,
+                  -3.6
+                ],
+                "q12": [
+                  1.4,
+                  -0.2
+                ],
+                "q13": [
+                  4.9,
+                  -0.2
+                ],
+                "q14": [
+                  8.4,
+                  -0.2
+                ],
+                "q15": [
+                  1.4,
+                  -3.6
+                ],
+                "q16": [
+                  4.9,
+                  -3.6
+                ],
+                "q17": [
+                  8.4,
+                  -3.6
+                ],
+                "q18": [
+                  2.0,
+                  -0.2
+                ],
+                "q19": [
+                  5.5,
+                  -0.2
+                ],
+                "q20": [
+                  9.0,
+                  -0.2
+                ],
+                "q21": [
+                  2.0,
+                  -3.6
+                ],
+                "q22": [
+                  5.5,
+                  -3.6
+                ],
+                "q23": [
+                  9.0,
+                  -3.6
+                ],
+                "q24": [
+                  0.2,
+                  -0.9
+                ],
+                "q25": [
+                  3.7,
+                  -0.9
+                ],
+                "q26": [
+                  7.2,
+                  -0.9
+                ],
+                "q27": [
+                  0.2,
+                  -4.3
+                ],
+                "q28": [
+                  3.7,
+                  -4.3
+                ],
+                "q29": [
+                  7.2,
+                  -4.3
+                ],
+                "q30": [
+                  0.8,
+                  -0.9
+                ],
+                "q31": [
+                  4.3,
+                  -0.9
+                ],
+                "q32": [
+                  7.8,
+                  -0.9
+                ],
+                "q33": [
+                  0.8,
+                  -4.3
+                ],
+                "q34": [
+                  4.3,
+                  -4.3
+                ],
+                "q35": [
+                  7.8,
+                  -4.3
+                ],
+                "q36": [
+                  1.4,
+                  -0.9
+                ],
+                "q37": [
+                  4.9,
+                  -0.9
+                ],
+                "q38": [
+                  8.4,
+                  -0.9
+                ],
+                "q39": [
+                  1.4,
+                  -4.3
+                ],
+                "q40": [
+                  4.9,
+                  -4.3
+                ],
+                "q41": [
+                  8.4,
+                  -4.3
+                ],
+                "q42": [
+                  2.0,
+                  -0.9
+                ],
+                "q43": [
+                  5.5,
+                  -0.9
+                ],
+                "q44": [
+                  9.0,
+                  -0.9
+                ],
+                "q45": [
+                  2.0,
+                  -4.3
+                ],
+                "q46": [
+                  5.5,
+                  -4.3
+                ],
+                "q47": [
+                  9.0,
+                  -4.3
+                ],
+                "q48": [
+                  0.2,
+                  -1.6
+                ],
+                "q49": [
+                  3.7,
+                  -1.6
+                ],
+                "q50": [
+                  7.2,
+                  -1.6
+                ],
+                "q51": [
+                  0.2,
+                  -5.0
+                ],
+                "q52": [
+                  3.7,
+                  -5.0
+                ],
+                "q53": [
+                  7.2,
+                  -5.0
+                ],
+                "q54": [
+                  0.8,
+                  -1.6
+                ],
+                "q55": [
+                  4.3,
+                  -1.6
+                ],
+                "q56": [
+                  7.8,
+                  -1.6
+                ],
+                "q57": [
+                  0.8,
+                  -5.0
+                ],
+                "q58": [
+                  4.3,
+                  -5.0
+                ],
+                "q59": [
+                  7.8,
+                  -5.0
+                ]
+              },
+              "dur": 2.3,
+              "at": "sixty"
+            },
+            {
+              "do": "hide",
+              "target": "sixty",
+              "at": "Ten"
+            },
+            {
+              "do": "write",
+              "tex": "60\\div6=10",
+              "at": "Ten"
+            },
+            {
+              "do": "show",
+              "target": "tenEach",
+              "at": "Ten"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Share the remaining twelve among the same six trays. Two more on every tray.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "q60": [
+                  1.4,
+                  -1.6
+                ],
+                "q61": [
+                  4.9,
+                  -1.6
+                ],
+                "q62": [
+                  8.4,
+                  -1.6
+                ],
+                "q63": [
+                  1.4,
+                  -5.0
+                ],
+                "q64": [
+                  4.9,
+                  -5.0
+                ],
+                "q65": [
+                  8.4,
+                  -5.0
+                ],
+                "q66": [
+                  2.0,
+                  -1.6
+                ],
+                "q67": [
+                  5.5,
+                  -1.6
+                ],
+                "q68": [
+                  9.0,
+                  -1.6
+                ],
+                "q69": [
+                  2.0,
+                  -5.0
+                ],
+                "q70": [
+                  5.5,
+                  -5.0
+                ],
+                "q71": [
+                  9.0,
+                  -5.0
+                ]
+              },
+              "dur": 2.3,
+              "at": "twelve"
+            },
+            {
+              "do": "hide",
+              "target": "twelve",
+              "at": "Two"
+            },
+            {
+              "do": "write",
+              "tex": "12\\div6=2",
+              "at": "Two"
+            },
+            {
+              "do": "hide",
+              "target": "tenEach",
+              "at": "Two"
+            },
+            {
+              "do": "show",
+              "target": "twelveEach",
+              "at": "Two"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Ten plus two is twelve on each tray. So seventy-two divided by six is twelve.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "72\\div6=60\\div6+12\\div6"
+            },
+            {
+              "do": "write",
+              "tex": "=10+2=12",
+              "at": "twelve"
+            },
+            {
+              "do": "answer",
+              "tex": "72\\div6=12",
+              "at": "So"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Keep the same six trays for both loads. Check: six times twelve is seventy-two.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "write",
+              "tex": "6\\times12=72",
+              "at": "check"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A property names the change. Look at these two ways to group six times five times eight.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Name the change"
+            },
+            {
+              "do": "write",
+              "tex": "(6\\times5)\\times8",
+              "at": "Look"
+            },
+            {
+              "do": "write",
+              "tex": "6\\times(5\\times8)",
+              "at": "eight"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "The numbers stay in order. Only the parentheses move. That's regrouping, with multiplication.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "text",
+              "text": "Associative property of multiplication",
+              "at": "multiplication"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Both equal two hundred forty. Match the change and the operation.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "write",
+              "tex": "30\\times8=6\\times40=240"
+            },
+            {
+              "do": "text",
+              "text": "What changed? Which operation?",
+              "at": "Match"
+            },
+            {
+              "do": "overview",
+              "at": "Match"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "four0c0": [
+            0,
+            0
+          ],
+          "four0c1": [
+            1,
+            0
+          ],
+          "four0c2": [
+            2,
+            0
+          ],
+          "four0c3": [
+            3,
+            0
+          ],
+          "five0c0": [
+            5,
+            0
+          ],
+          "five0c1": [
+            6,
+            0
+          ],
+          "five0c2": [
+            7,
+            0
+          ],
+          "five0c3": [
+            8,
+            0
+          ],
+          "five0c4": [
+            9,
+            0
+          ],
+          "sumP": [
+            4.5,
+            -1.5
+          ]
+        },
+        "parts": [
+          {
+            "id": "four0c0",
+            "dot": "four0c0",
+            "ink": "blue",
+            "group": "four",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "four0c1",
+            "dot": "four0c1",
+            "ink": "blue",
+            "group": "four",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "four0c2",
+            "dot": "four0c2",
+            "ink": "blue",
+            "group": "four",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "four0c3",
+            "dot": "four0c3",
+            "ink": "blue",
+            "group": "four",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "five0c0",
+            "dot": "five0c0",
+            "ink": "gold",
+            "group": "five",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "five0c1",
+            "dot": "five0c1",
+            "ink": "gold",
+            "group": "five",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "five0c2",
+            "dot": "five0c2",
+            "ink": "gold",
+            "group": "five",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "five0c3",
+            "dot": "five0c3",
+            "ink": "gold",
+            "group": "five",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "five0c4",
+            "dot": "five0c4",
+            "ink": "gold",
+            "group": "five",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "sum",
+            "label": "9\\;\\text{dots}",
+            "at": "sumP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Swapping also works for addition. Four plus five, or five plus four. Same nine dots.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "The operation matters"
+            },
+            {
+              "do": "write",
+              "tex": "4+5=5+4"
+            },
+            {
+              "do": "slide",
+              "target": "four",
+              "by": [
+                0,
+                1
+              ],
+              "at": "or",
+              "dur": 0.22
+            },
+            {
+              "do": "slide",
+              "target": "four",
+              "by": [
+                6,
+                0
+              ],
+              "at": "five",
+              "nth": 2,
+              "dur": 0.65
+            },
+            {
+              "do": "slide",
+              "target": "four",
+              "by": [
+                0,
+                -1
+              ],
+              "at": "Same",
+              "dur": 0.35
+            },
+            {
+              "do": "slide",
+              "target": "five",
+              "by": [
+                -5,
+                0
+              ],
+              "at": "five",
+              "nth": 2,
+              "dur": 0.65
+            },
+            {
+              "do": "text",
+              "text": "Commutative property of addition",
+              "at": "Same"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "two0c0": [
+            0,
+            0
+          ],
+          "two0c1": [
+            1,
+            0
+          ],
+          "three0c0": [
+            3,
+            0
+          ],
+          "three0c1": [
+            4,
+            0
+          ],
+          "three0c2": [
+            5,
+            0
+          ],
+          "five0c0": [
+            7,
+            0
+          ],
+          "five0c1": [
+            8,
+            0
+          ],
+          "five0c2": [
+            9,
+            0
+          ],
+          "five0c3": [
+            10,
+            0
+          ],
+          "five0c4": [
+            11,
+            0
+          ],
+          "groupa": [
+            -0.5,
+            0.7
+          ],
+          "groupb": [
+            5.5,
+            0.7
+          ],
+          "groupc": [
+            5.5,
+            -0.7
+          ],
+          "groupd": [
+            -0.5,
+            -0.7
+          ]
+        },
+        "parts": [
+          {
+            "id": "two0c0",
+            "dot": "two0c0",
+            "ink": "blue",
+            "group": "two",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "two0c1",
+            "dot": "two0c1",
+            "ink": "blue",
+            "group": "two",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "three0c0",
+            "dot": "three0c0",
+            "ink": "gold",
+            "group": "three",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "three0c1",
+            "dot": "three0c1",
+            "ink": "gold",
+            "group": "three",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "three0c2",
+            "dot": "three0c2",
+            "ink": "gold",
+            "group": "three",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "five0c0",
+            "dot": "five0c0",
+            "ink": "accent",
+            "group": "five",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "five0c1",
+            "dot": "five0c1",
+            "ink": "accent",
+            "group": "five",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "five0c2",
+            "dot": "five0c2",
+            "ink": "accent",
+            "group": "five",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "five0c3",
+            "dot": "five0c3",
+            "ink": "accent",
+            "group": "five",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "five0c4",
+            "dot": "five0c4",
+            "ink": "accent",
+            "group": "five",
+            "start": true,
+            "r": 24
+          },
+          {
+            "id": "group",
+            "poly": [
+              "groupa",
+              "groupb",
+              "groupc",
+              "groupd"
+            ],
+            "fill": "none",
+            "ink": "violet",
+            "w": 2,
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Regrouping works for addition, too. Two plus three first, then five. Or three plus five first, then two. Ten either way.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "(2+3)+5=5+5=10"
+            },
+            {
+              "do": "move",
+              "points": {
+                "groupa": [
+                  2.5,
+                  0.7
+                ],
+                "groupb": [
+                  11.5,
+                  0.7
+                ],
+                "groupc": [
+                  11.5,
+                  -0.7
+                ],
+                "groupd": [
+                  2.5,
+                  -0.7
+                ]
+              },
+              "at": "Or",
+              "dur": 1.2
+            },
+            {
+              "do": "write",
+              "tex": "2+(3+5)=2+8=10",
+              "at": "Or"
+            },
+            {
+              "do": "text",
+              "text": "Associative property of addition",
+              "at": "Ten"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "five0c0": [
+            0,
+            0
+          ],
+          "five0c1": [
+            1,
+            0
+          ],
+          "five0c2": [
+            2,
+            0
+          ],
+          "five0c3": [
+            3,
+            0
+          ],
+          "five0c4": [
+            4,
+            0
+          ],
+          "oneGroupa": [
+            -0.5,
+            0.6
+          ],
+          "oneGroupb": [
+            4.5,
+            0.6
+          ],
+          "oneGroupc": [
+            4.5,
+            -0.6
+          ],
+          "oneGroupd": [
+            -0.5,
+            -0.6
+          ],
+          "emptya": [
+            5.5,
+            0.6
+          ],
+          "emptyb": [
+            7,
+            0.6
+          ],
+          "emptyc": [
+            7,
+            -0.6
+          ],
+          "emptyd": [
+            5.5,
+            -0.6
+          ],
+          "zeroP": [
+            6.25,
+            -1.1
+          ]
+        },
+        "parts": [
+          {
+            "id": "five0c0",
+            "dot": "five0c0",
+            "ink": "accent",
+            "group": "five",
+            "start": true,
+            "r": 28
+          },
+          {
+            "id": "five0c1",
+            "dot": "five0c1",
+            "ink": "accent",
+            "group": "five",
+            "start": true,
+            "r": 28
+          },
+          {
+            "id": "five0c2",
+            "dot": "five0c2",
+            "ink": "accent",
+            "group": "five",
+            "start": true,
+            "r": 28
+          },
+          {
+            "id": "five0c3",
+            "dot": "five0c3",
+            "ink": "accent",
+            "group": "five",
+            "start": true,
+            "r": 28
+          },
+          {
+            "id": "five0c4",
+            "dot": "five0c4",
+            "ink": "accent",
+            "group": "five",
+            "start": true,
+            "r": 28
+          },
+          {
+            "id": "oneGroup",
+            "poly": [
+              "oneGroupa",
+              "oneGroupb",
+              "oneGroupc",
+              "oneGroupd"
+            ],
+            "fill": "none",
+            "ink": "blue",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "empty",
+            "poly": [
+              "emptya",
+              "emptyb",
+              "emptyc",
+              "emptyd"
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "zero",
+            "label": "0",
+            "at": "zeroP",
+            "dir": "c",
+            "size": "l",
+            "ink": "muted",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "One more name: identity. Adding zero leaves five dots. Multiplying five by one leaves one copy of five.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Identity property"
+            },
+            {
+              "do": "write",
+              "tex": "5+0=5",
+              "at": "zero"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "empty",
+                "zero"
+              ],
+              "at": "Multiplying"
+            },
+            {
+              "do": "show",
+              "target": "oneGroup",
+              "at": "one",
+              "nth": 2
+            },
+            {
+              "do": "write",
+              "tex": "5\\times1=5",
+              "at": "Multiplying"
+            },
+            {
+              "do": "slide",
+              "target": [
+                "five",
+                "oneGroup"
+              ],
+              "by": [
+                1.25,
+                0
+              ],
+              "at": "Multiplying",
+              "dur": 1.2
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "For identity of addition, choose the plus zero equation. For multiplication, choose times one.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "text",
+              "text": "Addition: add 0.",
+              "at": "addition"
+            },
+            {
+              "do": "text",
+              "text": "Multiplication: multiply by 1.",
+              "at": "multiplication"
+            },
+            {
+              "do": "highlight",
+              "target": "oneGroup",
+              "at": "multiplication"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "turnDots0c0": [
+            0,
+            0
+          ],
+          "turnDots0c1": [
+            0.7,
+            0
+          ],
+          "turnDots1c0": [
+            0,
+            -0.7
+          ],
+          "turnDots1c1": [
+            0.7,
+            -0.7
+          ],
+          "turnDots2c0": [
+            0,
+            -1.4
+          ],
+          "turnDots2c1": [
+            0.7,
+            -1.4
+          ],
+          "turnC": [
+            0.35,
+            -0.7
+          ],
+          "turnLabelP": [
+            0.35,
+            1
+          ],
+          "miniBag0a": [
+            3,
+            0.2
+          ],
+          "miniBag0b": [
+            3.9,
+            0.2
+          ],
+          "miniBag0c": [
+            3.9,
+            -1.6
+          ],
+          "miniBag0d": [
+            3,
+            -1.6
+          ],
+          "pair00c0": [
+            3.45,
+            -0.25
+          ],
+          "pair01c0": [
+            3.45,
+            -1.05
+          ],
+          "miniBag1a": [
+            4.15,
+            0.2
+          ],
+          "miniBag1b": [
+            5.050000000000001,
+            0.2
+          ],
+          "miniBag1c": [
+            5.050000000000001,
+            -1.6
+          ],
+          "miniBag1d": [
+            4.15,
+            -1.6
+          ],
+          "pair10c0": [
+            4.6,
+            -0.25
+          ],
+          "pair11c0": [
+            4.6,
+            -1.05
+          ],
+          "outera": [
+            2.8,
+            0.4
+          ],
+          "outerb": [
+            5.25,
+            0.4
+          ],
+          "outerc": [
+            5.25,
+            -1.8000000000000003
+          ],
+          "outerd": [
+            2.8,
+            -1.8000000000000003
+          ],
+          "regroupLabelP": [
+            4,
+            1
+          ],
+          "splitDots0c0": [
+            7,
+            0
+          ],
+          "splitDots0c1": [
+            7.7,
+            0
+          ],
+          "splitDots0c2": [
+            8.4,
+            0
+          ],
+          "splitDots1c0": [
+            7,
+            -0.7
+          ],
+          "splitDots1c1": [
+            7.7,
+            -0.7
+          ],
+          "splitDots1c2": [
+            8.4,
+            -0.7
+          ],
+          "splitDots2c0": [
+            7,
+            -1.4
+          ],
+          "splitDots2c1": [
+            7.7,
+            -1.4
+          ],
+          "splitDots2c2": [
+            8.4,
+            -1.4
+          ],
+          "cutA": [
+            7.35,
+            0.3
+          ],
+          "cutB": [
+            7.35,
+            -1.7
+          ],
+          "splitLabelP": [
+            7.7,
+            1
+          ]
+        },
+        "parts": [
+          {
+            "id": "turnDots0c0",
+            "dot": "turnDots0c0",
+            "ink": "blue",
+            "group": "turnDots",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "turnDots0c1",
+            "dot": "turnDots0c1",
+            "ink": "blue",
+            "group": "turnDots",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "turnDots1c0",
+            "dot": "turnDots1c0",
+            "ink": "blue",
+            "group": "turnDots",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "turnDots1c1",
+            "dot": "turnDots1c1",
+            "ink": "blue",
+            "group": "turnDots",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "turnDots2c0",
+            "dot": "turnDots2c0",
+            "ink": "blue",
+            "group": "turnDots",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "turnDots2c1",
+            "dot": "turnDots2c1",
+            "ink": "blue",
+            "group": "turnDots",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "turnLabel",
+            "label": "\\text{Turn}",
+            "at": "turnLabelP",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "miniBag0",
+            "poly": [
+              "miniBag0a",
+              "miniBag0b",
+              "miniBag0c",
+              "miniBag0d"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "pair00c0",
+            "dot": "pair00c0",
+            "ink": "gold",
+            "group": "pair0",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "pair01c0",
+            "dot": "pair01c0",
+            "ink": "gold",
+            "group": "pair0",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "miniBag1",
+            "poly": [
+              "miniBag1a",
+              "miniBag1b",
+              "miniBag1c",
+              "miniBag1d"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "pair10c0",
+            "dot": "pair10c0",
+            "ink": "gold",
+            "group": "pair1",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "pair11c0",
+            "dot": "pair11c0",
+            "ink": "gold",
+            "group": "pair1",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "outer",
+            "poly": [
+              "outera",
+              "outerb",
+              "outerc",
+              "outerd"
+            ],
+            "fill": "none",
+            "ink": "violet",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "regroupLabel",
+            "label": "\\text{Regroup}",
+            "at": "regroupLabelP",
+            "dir": "c",
+            "size": "m",
+            "ink": "violet",
+            "start": true
+          },
+          {
+            "id": "splitDots0c0",
+            "dot": "splitDots0c0",
+            "ink": "accent",
+            "group": "splitDots",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "splitDots0c1",
+            "dot": "splitDots0c1",
+            "ink": "accent",
+            "group": "splitDots",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "splitDots0c2",
+            "dot": "splitDots0c2",
+            "ink": "accent",
+            "group": "splitDots",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "splitDots1c0",
+            "dot": "splitDots1c0",
+            "ink": "accent",
+            "group": "splitDots",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "splitDots1c1",
+            "dot": "splitDots1c1",
+            "ink": "accent",
+            "group": "splitDots",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "splitDots1c2",
+            "dot": "splitDots1c2",
+            "ink": "accent",
+            "group": "splitDots",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "splitDots2c0",
+            "dot": "splitDots2c0",
+            "ink": "accent",
+            "group": "splitDots",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "splitDots2c1",
+            "dot": "splitDots2c1",
+            "ink": "accent",
+            "group": "splitDots",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "splitDots2c2",
+            "dot": "splitDots2c2",
+            "ink": "accent",
+            "group": "splitDots",
+            "start": true,
+            "r": 15
+          },
+          {
+            "id": "cut",
+            "seg": [
+              "cutA",
+              "cutB"
+            ],
+            "ink": "warm",
+            "start": true,
+            "w": 4
+          },
+          {
+            "id": "splitLabel",
+            "label": "\\text{Split}",
+            "at": "splitLabelP",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Three moves. Turn changes the order. Regroup changes the grouping. Split multiplies the parts, then adds.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Turn it, regroup it, split it"
+            },
+            {
+              "do": "text",
+              "text": "Turn: commutative property",
+              "at": "Turn"
+            },
+            {
+              "do": "text",
+              "text": "Regroup: associative property",
+              "at": "Regroup"
+            },
+            {
+              "do": "text",
+              "text": "Split: distributive property",
+              "at": "Split"
+            },
+            {
+              "do": "turn",
+              "target": "turnDots",
+              "about": "turnC",
+              "deg": 90,
+              "dur": 1.3,
+              "at": "Turn"
+            },
+            {
+              "do": "show",
+              "target": "outer",
+              "at": "Regroup"
+            },
+            {
+              "do": "move",
+              "points": {
+                "cutA": [
+                  8.05,
+                  0.3
+                ],
+                "cutB": [
+                  8.05,
+                  -1.7
+                ]
+              },
+              "dur": 1.3,
+              "at": "Split"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Nine times six? Forty-five plus nine. Fifty-four.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "9\\times6=45+9"
+            },
+            {
+              "do": "answer",
+              "tex": "9\\times6=54",
+              "at": "Fifty-four"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "You never face a hard fact alone; turn it, regroup it, or split it.",
+          "pause": 1.5,
+          "do": []
+        }
+      ]
+    }
+  ]
+}
