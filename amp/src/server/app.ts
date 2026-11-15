@@ -48,6 +48,7 @@ import {
   templates,
 } from "../math/engine";
 import { skills } from "../curriculum/catalog";
+import { areaOf } from "../curriculum/areas";
 import { auditCurriculum } from "../curriculum/audit";
 import {
   ApiError,
@@ -57,7 +58,7 @@ import {
 } from "./repository";
 import { answerHelpKinds, type AnswerHelp } from "../schools/help-events.js";
 import type { Authenticator } from "./auth";
-import { planMixedPractice } from "./mixed-practice";
+import { planMixedPractice, skillDifficulty } from "./mixed-practice";
 import { SKIP_USES_FREE_PROBLEM } from "../learning/skip";
 import { isTrialAccount, trialLimits } from "./trials";
 import { isSchoolAccount, studentBearer } from "../schools/principal.js";
@@ -396,6 +397,14 @@ function routes(app: FastifyInstance, options: AppOptions) {
     return sendPublicJson(request, reply, cached);
   });
   let catalogCache: PublicJson | undefined;
+  const catalogSkills = () => {
+    const nodes = new Map(skills.map((skill) => [skill.id, skill]));
+    return skills.map((skill) => ({
+      ...skill,
+      area: areaOf(skill),
+      difficulty: skillDifficulty(skill.id, templates, nodes),
+    }));
+  };
   app.get("/api/v1/catalog", async (request, reply) => {
     // The image ships every lesson's PDFs (scripts/build-pdf-release.ts); a
     // lesson listed here has none on this server, so it offers no print.
@@ -408,7 +417,9 @@ function routes(app: FastifyInstance, options: AppOptions) {
       templates,
       lessons,
       unpublishedLessons,
-      skills,
+      // Each skill's content area and difficulty: how every screen groups
+      // and orders the curriculum (curriculum/areas.ts).
+      skills: catalogSkills(),
       coverage: auditCurriculum(),
       mode: options.development ? "development" : "hosted",
       // The free practice a visitor gets before the paywall.
@@ -536,7 +547,10 @@ function routes(app: FastifyInstance, options: AppOptions) {
     const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
     const change = practiceChangeSchema.parse(request.body);
-    if (change.kind === "reset") assertFamilyManaged(account, request);
+    // A grown-up's choices: never the learner's own session's, nor a
+    // school account's.
+    if (change.kind === "reset" || change.kind === "gradeLevel")
+      assertFamilyManaged(account, request);
     return options.repository.transaction(account, learnerId, (tx) =>
       changePractice(tx, change),
     );

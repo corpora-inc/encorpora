@@ -7,15 +7,16 @@ import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
 import {
   bandLabel,
   bandsHere,
+  areaSlot,
   connections,
-  neighborhood,
-  neighborhoods,
   planRows,
   skillState,
+  type AreaId,
   type Evidence,
   type MapSkill,
   type SkillState,
 } from "./model";
+import { AreaKey } from "./AreaKey";
 import styles from "./PathwayPlan.module.css";
 
 const BANDS_KEY = "amp.pathways-bands";
@@ -53,7 +54,9 @@ const STATE_WORDS: Record<SkillState, string> = {
  * The curriculum by grade: a section per grade band, first steps to
  * precalculus, each folded under its name and how much of it is earned, the
  * learner's own band marked "Where you are". Open, a band holds its skills
- * by area (a column per area on a wide screen). Each skill opens its layer;
+ * by area, the five in order, each easiest to hardest (a column per area on
+ * a wide screen). Its key shows one area at a time (`area`): then each band
+ * lists and counts only that area's skills. Each skill opens its layer;
  * its dot is solid once earned, half while in progress, an outline before.
  *
  * It flows in the page. Bands start folded and stay as this device left
@@ -67,6 +70,7 @@ export function PathwayPlan({
   frame = null,
   here,
   levelLoading = false,
+  area = null,
 }: {
   skills: MapSkill[];
   evidence: Evidence[];
@@ -77,13 +81,15 @@ export function PathwayPlan({
   /** The estimate is on its way: the bands wait for it (1.5 s at most), so
    * the learner's own band is open from the start, never opening later. */
   levelLoading?: boolean;
+  /** One area chosen (`?area=`): only its skills, and its counts. */
+  area?: AreaId | null;
 }) {
-  const { shown, decided } = useCurriculumDetails();
-  // The grades view names its grades, unless a school has chosen not to
-  // show levels: then its bands are numbered.
-  const named = shown || !decided;
+  // The grades view names its grades, unless the child's grown-up or school
+  // has chosen not to show them: then the same bands, in the same order,
+  // are numbered stages.
+  const { shown: named } = useCurriculumDetails();
   const box = useRef<HTMLElement>(null);
-  const rows = useMemo(() => planRows(skills), [skills]);
+  const rows = useMemo(() => planRows(skills, area), [skills, area]);
   const stats = useMemo(
     () => new Map(evidence.map((entry) => [entry.skillId, entry])),
     [evidence],
@@ -197,13 +203,7 @@ export function PathwayPlan({
       className={`pathways-plan ${styles.plan}`}
       aria-label="Curriculum by grade"
     >
-      <div className={styles.areas} aria-hidden="true">
-        {neighborhoods.map((area, index) => (
-          <span key={area.title} style={areaColor(index)}>
-            {area.title}
-          </span>
-        ))}
-      </div>
+      <AreaKey area={area} className={styles.areas} />
       <ol className={styles.rows}>
         {rows.map((row, order) => {
           const all = row.areas.flat();
@@ -269,7 +269,7 @@ export function PathwayPlan({
                               aria-current={
                                 selected === skill.id ? "page" : undefined
                               }
-                              style={areaColor(neighborhood(skill))}
+                              style={areaColor(areaSlot(skill))}
                             >
                               <span
                                 className={styles.check}

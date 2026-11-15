@@ -102,19 +102,6 @@ async function open(
 
 const box = (page: Page, selector: string) =>
   page.locator(selector).first().boundingBox();
-/** Grade numbers are a drawer setting (docs/design/ia.md, "Where settings
- * live"): open the drawer, set it, close it. Returns whether it was on. */
-async function showGradeNumbers(page: Page, on?: boolean) {
-  await page.getByRole("button", { name: "Open AMP menu" }).first().click();
-  const box = page.getByRole("checkbox", { name: "Show grade numbers" });
-  await box.waitFor();
-  const was = await box.isChecked();
-  if (on !== undefined && on !== was) await box.setChecked(on);
-  await page.keyboard.press("Escape");
-  await box.waitFor({ state: "hidden" });
-  return was;
-}
-
 async function verifyShell() {
   // 1. Every screen: no overflow, no overlapping controls, no broken words.
   for (const scenario of shellScenarios(fixture))
@@ -295,7 +282,7 @@ async function verifyShell() {
     );
     await context.close();
   }
-  // The level view (ui/level-range), grade numbers shown from the drawer:
+  // The level view (ui/level-range), grade numbers shown:
   // bars on one scale, axis labels that never collide, and every dot
   // inside the card.
   for (const id of ["starter-overview", "home"])
@@ -305,7 +292,7 @@ async function verifyShell() {
         (await page.locator(".frontier-map [data-level-bar]").count()) > 0,
         `${id} ${width}: the level bars are missing`,
       );
-      await showGradeNumbers(page, true);
+      // A grown-up's view always names grades.
       const geometry = await page.evaluate(() => {
         const labels = [
           ...document.querySelectorAll(".frontier-map [data-level-axis-label]"),
@@ -497,7 +484,6 @@ async function verifyFrontierSwitch() {
     "light",
   );
   const map = page.locator(".frontier-map");
-  await showGradeNumbers(page, true);
   const dots = () =>
     map
       .locator("[data-level-dot]")
@@ -556,22 +542,12 @@ async function verifyFrontierSwitch() {
       0,
       "an unpracticed learner's areas are drawn as estimates",
     );
-    assert.equal(
-      await showGradeNumbers(page),
-      false,
-      "the new learner starts with their own number preference",
-    );
     if (shots)
       await page.screenshot({
         path: `${shots}/${engine}-frontier-switch-loaded.png`,
       });
     await selectHome(fixture.paid.jordan.id);
     await page.locator('.frontier-map[aria-busy="false"]').waitFor();
-    assert.equal(
-      await showGradeNumbers(page),
-      true,
-      "returning restores the original learner's number preference",
-    );
   } finally {
     release();
     await page.unrouteAll({ behavior: "wait" });

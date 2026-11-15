@@ -15,6 +15,7 @@ export {
 } from "./LevelRange";
 export { LevelAxis, LevelBar, LevelNotStarted } from "./LevelBar";
 export { LevelPath, type PathPoint } from "./LevelPath";
+export { ACROSS_AREAS, byArea } from "./by-area";
 export {
   fitScale,
   likelyRange,

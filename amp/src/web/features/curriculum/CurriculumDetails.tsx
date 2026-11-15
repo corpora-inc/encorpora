@@ -1,109 +1,39 @@
 import { createContext, useContext, type ReactNode } from "react";
-import { create } from "zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
 import { isStudentDevice } from "../../lib/student-device";
 import { useCurriculumScope } from "./useCurriculumScope";
-import styles from "./CurriculumDetails.module.css";
-import { CheckboxControl } from "../../ui/Checkbox";
 
-type State = {
-  shown: Record<string, boolean>;
-  set: (scope: string, shown: boolean) => void;
-};
-export const useCurriculumPreferences = create<State>()(
-  persist(
-    (set) => ({
-      shown: {},
-      set: (scope, shown) =>
-        set((state) => ({ shown: { ...state.shown, [scope]: shown } })),
-    }),
-    {
-      name: "amp.curriculum-details",
-      storage: createJSONStorage(() => ({
-        getItem: (key) => {
-          try {
-            return localStorage.getItem(key);
-          } catch {
-            return null;
-          }
-        },
-        setItem: (key, value) => {
-          try {
-            localStorage.setItem(key, value);
-          } catch {
-            /* Session-only when storage is unavailable. */
-          }
-        },
-        removeItem: (key) => {
-          try {
-            localStorage.removeItem(key);
-          } catch {
-            /* Storage unavailable. */
-          }
-        },
-      })),
-      partialize: ({ shown }) => ({ shown }),
-      merge: (saved, current) => {
-        const shown = (saved as Partial<State> | null)?.shown;
-        return {
-          ...current,
-          shown:
-            shown && typeof shown === "object" && !Array.isArray(shown)
-              ? Object.fromEntries(
-                  Object.entries(shown).filter(
-                    ([key, value]) => key.length < 300 && value === true,
-                  ),
-                )
-              : {},
-        };
-      },
-    },
-  ),
-);
 const Details = createContext({
-  shown: false,
+  shown: true,
   ready: false,
   scope: "guest",
-  /** A school decided, so there is nothing for this learner to choose. */
-  decided: false,
-  setShown: (_shown: boolean) => {},
 });
-/** Display only: scoped to the active learner on this device, never a learning setting. */
+/**
+ * Whether grade names and numbers show. Grown-ups' views always show them.
+ * A child's own session (practice, their levels, their Pathways) follows
+ * what `/me` says for them (`me.school.levels`): hidden when a grown-up
+ * switched "Show grade level" off on their settings, or their school hides
+ * levels (schools/student-me.ts `studentLevels`). Display only: never a
+ * learning setting. Until a student device's `/me` answers, hidden.
+ */
 export function CurriculumDetailsProvider({
   children,
 }: {
   children: ReactNode;
 }) {
-  // A student's school decides whether levels show (`me.school.levels`). Until
-  // `/me` answers on a student device, they stay hidden.
   const {
     scope,
     ready,
-    levels = isStudentDevice() ? "hidden" : "choice",
+    levels = isStudentDevice() ? "hidden" : "shown",
   } = useCurriculumScope();
-  const shown = useCurriculumPreferences(
-    (s) => ready && s.shown[scope] === true,
-  );
   return (
-    <Details.Provider
-      value={{
-        shown: levels === "choice" ? shown : levels === "shown",
-        ready,
-        scope,
-        decided: levels !== "choice",
-        setShown: (value) => {
-          if (ready) useCurriculumPreferences.getState().set(scope, value);
-        },
-      }}
-    >
+    <Details.Provider value={{ shown: levels !== "hidden", ready, scope }}>
       {children}
     </Details.Provider>
   );
 }
 export const useCurriculumDetails = () => useContext(Details);
-/** Grade numbers shown or hidden by the caller, with nothing stored: the
- * component gallery (`features/design`) shows both without touching a
- * learner's choice. */
+/** Grade numbers shown or hidden by the caller: the component gallery
+ * (`features/design`) shows both. */
 export function CurriculumDetailsFixture({
   shown,
   children,
@@ -112,43 +42,8 @@ export function CurriculumDetailsFixture({
   children: ReactNode;
 }) {
   return (
-    <Details.Provider
-      value={{
-        shown,
-        ready: true,
-        scope: "design",
-        decided: false,
-        setShown: () => {},
-      }}
-    >
+    <Details.Provider value={{ shown, ready: true, scope: "design" }}>
       {children}
     </Details.Provider>
-  );
-}
-/** `row` sets it as a settings row in the navigation drawer, on the inset
- * its neighbours use; elsewhere it is a quiet control in the page flow. */
-export function CurriculumDetailsControl({
-  variant,
-}: { variant?: "row" } = {}) {
-  const { shown, ready, decided, setShown } = useCurriculumDetails();
-  if (decided) return null;
-  return (
-    <label
-      className={
-        variant === "row" ? `${styles.control} ${styles.row}` : styles.control
-      }
-    >
-      <span className={styles.copy}>
-        <span>Show grade numbers</span>
-        <small>For this learner on this device.</small>
-      </span>
-      <CheckboxControl
-        aria-label="Show grade numbers"
-        aria-description="Remembered for this learner on this device. Practice stays the same."
-        checked={shown}
-        disabled={!ready}
-        onChange={(e) => setShown(e.target.checked)}
-      />
-    </label>
   );
 }

@@ -724,7 +724,7 @@ async function journeys(browser: Browser, engine: string) {
     const levelCheck = async (
       label: string,
       student: Student,
-      expected: { estimated: boolean; control: boolean },
+      expected: { estimated: boolean },
     ) => {
       const viewer = await start({
         width: 1280,
@@ -747,10 +747,10 @@ async function journeys(browser: Browser, engine: string) {
           ? await viewer.page.getByTestId("level-readout").isVisible()
           : (await viewer.page.getByTestId("level-readout").count()) === 0,
       );
+      // No device toggle: a grown-up's switch or the school decides.
       check(
-        `${engine} ${label} choice control`,
-        (await viewer.page.getByText("Show grade numbers").count()) > 0 ===
-          expected.control,
+        `${engine} ${label} no device control`,
+        (await viewer.page.getByText(/grade numbers/i).count()) === 0,
       );
       await viewer.context.close();
       open.splice(open.indexOf(viewer), 1);
@@ -762,21 +762,19 @@ async function journeys(browser: Browser, engine: string) {
     });
     await levelCheck("hidden", await inClass(hiddenClass.id, "Hideo"), {
       estimated: false,
-      control: false,
     });
     await staff(adminAccount, "POST", `classes/${quiet.id}/experience`, {
       values: { levels: "choice" },
     });
+    // A stored "choice" had a device toggle behind it; with none, it shows.
     await levelCheck("choice", await inClass(quiet.id, "Chiara"), {
-      estimated: false,
-      control: true,
+      estimated: true,
     });
     await staff(adminAccount, "POST", `classes/${shownClass.id}/experience`, {
       values: { levels: "shown" },
     });
     await levelCheck("shown", await inClass(shownClass.id, "Sona"), {
       estimated: true,
-      control: false,
     });
     const both = await inClass(shownClass.id, "Bothe");
     await db.query(
@@ -784,9 +782,11 @@ async function journeys(browser: Browser, engine: string) {
        SELECT gen_random_uuid(),$1,person_id,'student',begin_on FROM amp_enrollments WHERE person_id=$2 LIMIT 1`,
       [quiet.id, both.personId],
     );
+    await staff(adminAccount, "POST", `classes/${quiet.id}/experience`, {
+      values: { levels: "hidden" },
+    });
     await levelCheck("most restrictive", both, {
       estimated: false,
-      control: true,
     });
 
     // A stack of 24 with one injected 503 still finishes.

@@ -1,4 +1,13 @@
 import { z } from "zod";
+import {
+  areaIds,
+  areaOf,
+  areas,
+  easiestFirst,
+  strandAreas,
+  type AreaId,
+} from "../../../curriculum/areas";
+export { areas, type AreaId };
 
 export const catalogSchema = z.object({
   trial: z.object({ free: z.number().int().positive() }).optional(),
@@ -9,6 +18,10 @@ export const catalogSchema = z.object({
       description: z.string(),
       gradeBand: z.string(),
       strand: z.string(),
+      /** The skill's content area (curriculum/areas.ts), from the server. */
+      area: z.enum(areaIds as [AreaId, ...AreaId[]]).optional(),
+      /** The engine's calibrated difficulty: orders a grade's skills. */
+      difficulty: z.number().optional(),
       prerequisites: z.array(z.string()),
       connections: z
         .array(
@@ -116,46 +129,27 @@ export function skillLight(evidence?: Evidence) {
     score,
   };
 }
-/** Spatial neighborhoods are visual only; the prerequisite graph owns the connections. */
-export const neighborhoods = [
-  {
-    title: "Number & operations",
-    strands: ["number", "operations", "fractions", "decimals"],
-    color: "--atlas-area-0",
-  },
-  {
-    title: "Algebra & ratios",
-    strands: ["algebra", "ratio"],
-    color: "--atlas-area-1",
-  },
-  {
-    title: "Functions & trigonometry",
-    strands: ["functions", "trigonometry"],
-    color: "--atlas-area-2",
-  },
-  {
-    title: "Geometry & measurement",
-    strands: ["geometry", "measurement"],
-    color: "--atlas-area-3",
-  },
-  {
-    title: "Data & probability",
-    strands: ["data", "probability"],
-    color: "--atlas-area-4",
-  },
-  {
-    title: "Modeling & reasoning",
-    strands: ["modeling", "reasoning"],
-    color: "--atlas-area-5",
-  },
-];
-export function neighborhood(skill: MapSkill) {
-  return Math.max(
-    0,
-    neighborhoods.findIndex((n) => n.strands.includes(skill.strand)),
-  );
+/** A skill's content area: the server's word for it, else the shared
+ * table's (curriculum/areas.ts). A skill neither knows (a catalog newer than
+ * this page) is logged and drawn with the first area. */
+export function skillArea(skill: Pick<MapSkill, "id" | "strand" | "area">) {
+  if (skill.area) return skill.area;
+  try {
+    return areaOf(skill);
+  } catch (error) {
+    console.error(error);
+    return areaIds[0]!;
+  }
 }
-/** Stable per-ID anchors prevent catalog additions from reindexing whole neighborhoods. */
+/** The area's place in the five: its hue (`--atlas-area-<n>`) and column. */
+export function areaSlot(skill: Pick<MapSkill, "id" | "strand" | "area">) {
+  return areaIds.indexOf(skillArea(skill));
+}
+/** `?area=` on a Pathways address: one area, or all. */
+export function areaParam(value: unknown): AreaId | null {
+  return areaIds.includes(value as AreaId) ? (value as AreaId) : null;
+}
+/** Stable per-ID anchors prevent catalog additions from reindexing whole areas. */
 function stableFraction(id: string) {
   let hash = 2166136261;
   for (const character of id)
@@ -170,10 +164,11 @@ function stableFraction(id: string) {
 export function layout(skills: MapSkill[]) {
   const ordered = [...skills].sort((a, b) => a.id.localeCompare(b.id));
   const points = ordered.map((skill) => {
-    const area = Math.max(0, neighborhood(skill));
+    const area = areaSlot(skill);
     const grade = Math.max(0, bands.indexOf(skill.gradeBand));
     const angle =
-      (area * Math.PI) / 3 + (stableFraction(`${skill.id}:angle`) - 0.5) * 0.84;
+      (area * 2 * Math.PI) / areas.length +
+      (stableFraction(`${skill.id}:angle`) - 0.5) * 0.84;
     const radius =
       14 + grade * 5.4 + (stableFraction(`${skill.id}:radius`) - 0.5) * 4;
     return {
@@ -185,7 +180,7 @@ export function layout(skills: MapSkill[]) {
       ] as [number, number, number],
     };
   });
-  // Separate dense neighborhoods without a live force simulation or a jumping map.
+  // Separate dense areas without a live force simulation or a jumping map.
   for (let pass = 0; pass < 36; pass++) {
     for (let i = 0; i < points.length; i++)
       for (let j = i + 1; j < points.length; j++) {
@@ -324,39 +319,49 @@ export function levelRegion(
       ? inRange
       : skills.filter((s) => bands.indexOf(s.gradeBand) === nearest)
   ).concat(skills.filter((s) => earned.has(s.id)));
-  const work = neighborhoods.map(() => 0);
+  const work = areas.map(() => 0);
   for (const [strand, estimate] of Object.entries(frontier.strands)) {
-    const area = neighborhoods.findIndex((n) => n.strands.includes(strand));
+    const area = areaIds.indexOf(strandAreas[strand]!);
     if (area >= 0) work[area]! += estimate.answered;
   }
   const top = work.indexOf(Math.max(...work));
   const unique = (list: MapSkill[]) => [...new Set(list.map((s) => s.id))];
-  const worked = region.filter((s) => work[neighborhood(s)]! > 0);
+  const worked = region.filter((s) => work[areaSlot(s)]! > 0);
   const wide = unique(worked.length ? worked : region);
-  const close = unique(region.filter((s) => neighborhood(s) === top));
+  const close = unique(region.filter((s) => areaSlot(s) === top));
   if (!wide.length) return null;
   return { wide, close: work[top]! > 0 && close.length ? close : wide };
 }
 
 /** One grade band of the flat pathway (PathwayPlan): its skills by area, a
- * list per neighborhood, in catalog order. */
+ * list per area in the five-area order, each easiest to hardest. */
 export type PlanRow = { band: string; index: number; areas: MapSkill[][] };
 /**
- * The curriculum as a flat pathway, for a browser that can't draw the 3D
- * map: a row per grade band, first steps to precalculus, each holding its
- * skills by area. A band with no skills has no row; a skill of an unknown
- * band sits with the first, as the 3D layout places it.
+ * The curriculum as a flat pathway: a row per grade band, first steps to
+ * precalculus, each holding its skills by area, each area's list in
+ * prerequisite order, easiest first (curriculum/areas.ts `easiestFirst`). A
+ * band with no skills has no row; a skill of an unknown band sits with the
+ * first, as the 3D layout places it. With `only`, the other areas' lists
+ * are empty and a band with none of it has no row.
  */
-export function planRows(skills: readonly MapSkill[]): PlanRow[] {
+export function planRows(
+  skills: readonly MapSkill[],
+  only: AreaId | null = null,
+): PlanRow[] {
   const rows = bands.map((band, index) => ({
     band,
     index,
-    areas: neighborhoods.map((): MapSkill[] => []),
+    areas: areas.map((): MapSkill[] => []),
   }));
-  for (const skill of skills)
-    rows[Math.max(0, bands.indexOf(skill.gradeBand))]!.areas[
-      neighborhood(skill)
-    ]!.push(skill);
+  for (const skill of skills) {
+    const area = areaSlot(skill);
+    if (only && areaIds[area] !== only) continue;
+    rows[Math.max(0, bands.indexOf(skill.gradeBand))]!.areas[area]!.push(skill);
+  }
+  for (const row of rows)
+    row.areas = row.areas.map((list) =>
+      easiestFirst(list, skills, (skill) => skill.difficulty ?? Infinity),
+    );
   return rows.filter((row) => row.areas.some((area) => area.length));
 }
 /**

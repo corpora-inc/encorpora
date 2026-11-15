@@ -1,5 +1,6 @@
 import type { GradeBand, Skill, Standard } from "./types.js";
 import { connectionsFor } from "./connections.js";
+import { areaOf } from "./areas.js";
 
 // Original K–8 summaries from the Corpora catalog; identifiers reviewed 2026-09-27.
 const rows: [string, string, string][] = [
@@ -939,8 +940,7 @@ const skillTitles: Record<string, string> = {
   "triangle-circles": "The incircle and the circumcircle",
   "tangent-construction": "A tangent from a point outside a circle",
   "transformation-invariants": "What a transformation keeps",
-  "polygon-symmetries":
-    "Symmetries of a polygon",
+  "polygon-symmetries": "Symmetries of a polygon",
   "transformation-constructions": "Constructing the image of a figure",
   "line-angle-proofs": "Proofs about lines and angles",
   "triangle-proofs": "Proofs about triangles",
@@ -948,8 +948,7 @@ const skillTitles: Record<string, string> = {
   "inscribed-polygons": "Regular polygons inscribed in a circle",
   "measurement-formula-proofs": "Why the circle and solid formulas hold",
   "cavalieri-principle": "Cavalieri's principle",
-  "solid-volume-models":
-    "Volumes of cylinders, cones, pyramids, spheres",
+  "solid-volume-models": "Volumes of cylinders, cones, pyramids, spheres",
   "sections-and-revolutions": "Cross-sections and solids of revolution",
   "parabola-locus": "A parabola as points equally far from a focus and a line",
   "slope-proofs": "Slopes of parallel and perpendicular lines",
@@ -969,8 +968,7 @@ const skillTitles: Record<string, string> = {
   "simulation-model-checks": "Checking a chance model by simulation",
   "sampling-margin-error": "A margin of error from simulated samples",
   "randomization-tests": "Testing a difference by randomization",
-  "statistical-report-critique":
-    "Reading a statistical report critically",
+  "statistical-report-critique": "Reading a statistical report critically",
   "statistical-summary-comparison": "Comparing center, spread, and shape",
   "categorical-association": "Association in a two-way table",
   "regression-interpretation": "Reading slope and intercept in context",
@@ -981,8 +979,7 @@ const skillTitles: Record<string, string> = {
   "fair-random-decisions": "A procedure that gives each outcome a fair chance",
   "decision-strategies": "Comparing uncertain strategies",
   "build-and-draw-shapes": "Building and drawing closed shapes",
-  "represent-join-separate":
-    "Join and separate: pictures, equations",
+  "represent-join-separate": "Join and separate: pictures, equations",
   "composite-shapes": "Shapes made by putting shapes together",
   "turn-around-facts": "Turnaround addition facts",
   "explain-strategies": "Explaining why a strategy works",
@@ -1033,6 +1030,10 @@ export const skills: Skill[] = outline
       facets: [{ id: `${id}.core`, description, status: "planned" }],
     };
   });
+
+// Every skill belongs to one of the five content areas (curriculum/areas.ts):
+// a modeling or reasoning skill without a reviewed area stops the catalog.
+for (const skill of skills) areaOf(skill);
 
 // A state extra with no CCSS code keeps the standards column empty, the same
 // convention as whole-number-equality and multiplication-division-equality.

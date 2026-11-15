@@ -18,6 +18,24 @@ import { enrollmentSettings } from "./enrollment-settings.js";
 import { studentLevelVisibility } from "./settings.js";
 import { hasOpenBoard } from "./standings.js";
 import { goesByNumber } from "../learning/nickname.js";
+import type { LevelVisibility } from "./settings.js";
+
+/**
+ * Whether a student sees grade levels on the screens they see as themselves
+ * (practice, their levels, their Pathways): hidden when a grown-up switched
+ * "Show grade level" off for them, or when their school hides levels. A
+ * family's or tutor's class no longer sets this for its children: the
+ * grown-up's switch on each child does. Grown-ups' own views always show
+ * grades.
+ */
+export function studentLevels(
+  school: LevelVisibility,
+  familyHome: boolean,
+  gradeLevelShown: boolean,
+): "hidden" | "shown" {
+  if (!gradeLevelShown) return "hidden";
+  return !familyHome && school === "hidden" ? "hidden" : "shown";
+}
 
 /** `/me` for a student token, parent-shaped so the existing app runs unchanged.
  * An invalid token answers 401 rather than `signedIn:false`, which is how the
@@ -41,7 +59,7 @@ export async function studentMe(
   ).rows[0];
   const home = (
     await pool.query(
-      `SELECT o.name,o.path FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
+      `SELECT o.name,o.path,o.kind FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
        WHERE r.person_id=$1 AND r.role='student' AND ${activeToday("r", "o")}
        ORDER BY r.begin_on DESC,o.id LIMIT 1`,
       [personId],
@@ -87,6 +105,18 @@ export async function studentMe(
     ? null
     : await studentPracticeGate(pool, pilot, home.path);
   const settings = await enrollmentSettings(pool, personId, home, classes);
+  const practiceState = (
+    await pool.query(
+      "SELECT state FROM amp_practice_settings WHERE learner_id=$1",
+      [learner.id],
+    )
+  ).rows[0]?.state;
+  const levels = studentLevels(
+    studentLevelVisibility(settings).value,
+    home.kind === "family",
+    // Unset (every learner before the switch existed) is on.
+    practiceState?.gradeLevelShown !== false,
+  );
   return meSchema.parse({
     signedIn: true,
     account: {
@@ -154,7 +184,7 @@ export async function studentMe(
     school: {
       orgName: home.name,
       ...(classes[0] ? { className: classes[0].name } : {}),
-      levels: studentLevelVisibility(settings).value,
+      levels,
       ...(practice ? { practice } : {}),
       standings: await hasOpenBoard(pool, personId, classes, settings),
     },

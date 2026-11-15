@@ -479,12 +479,6 @@ try {
         await page
           .getByRole("checkbox", { name: "Haptics", exact: true })
           .check();
-        await page
-          .getByRole("checkbox", {
-            name: "Show grade numbers",
-            exact: true,
-          })
-          .check();
         await page.keyboard.press("Escape");
         await page.reload();
         await page
@@ -510,33 +504,12 @@ try {
         );
       }
       if (width === 390 && theme === "light") {
-        assert(
-          await page
-            .getByRole("checkbox", {
-              name: "Show grade numbers",
-              exact: true,
-            })
-            .isChecked(),
-          "Detail preference survives reload",
-        );
         await page.screenshot({
           path: `${output}/${mode}-${width}-${theme}-menu-details.png`,
         });
-      }
-      if (width === 390 && theme === "light") {
         await page.keyboard.press("Escape");
         await page.goto(`${origin}/`);
-        const details = page.getByRole("checkbox", {
-          name: "Show grade numbers",
-          exact: true,
-        });
-        await details.uncheck();
-        assert.equal(await page.getByTestId("level-readout").count(), 0);
-        await page.screenshot({
-          path: `${output}/${mode}-390-light-progress-hidden.png`,
-          fullPage: true,
-        });
-        await details.check();
+        // A grown-up's view always names grades: no device toggle.
         await page.getByTestId("level-readout").first().waitFor();
         await page.screenshot({
           path: `${output}/${mode}-390-light-progress-details.png`,

@@ -6,8 +6,8 @@ import { skills } from "../src/curriculum/catalog";
 import { templates } from "../src/math/engine";
 import {
   bandLabel,
+  areaSlot,
   layout,
-  neighborhood,
 } from "../src/web/features/pathways/model";
 import {
   neighborLabel,
@@ -66,14 +66,8 @@ function metaDescription(description: string) {
   return `${description.trim().replace(/[.!?]+$/, "")}. Explore this skill and its connections in AMP's free math map.`;
 }
 
-const mapColors = [
-  "#6dbce4",
-  "#a58be3",
-  "#56d7c5",
-  "#efbd74",
-  "#8bd8bb",
-  "#e694bb",
-];
+// The five areas' hues, in order (curriculum/areas.ts).
+const mapColors = ["#6dbce4", "#a58be3", "#efbd74", "#e694bb", "#8bd8bb"];
 const minX = Math.min(...points.map((point) => point.position[0]));
 const maxX = Math.max(...points.map((point) => point.position[0]));
 const minY = Math.min(...points.map((point) => point.position[1]));
@@ -100,7 +94,7 @@ const mapEdges = skills
 const mapNodes = skills
   .map((skill) => {
     const point = project(skill.id);
-    return `<circle cx="${point.x.toFixed(1)}" cy="${point.y.toFixed(1)}" r="2.4" fill="${mapColors[neighborhood(skill)]}" fill-opacity=".7"/>`;
+    return `<circle cx="${point.x.toFixed(1)}" cy="${point.y.toFixed(1)}" r="2.4" fill="${mapColors[areaSlot(skill)]}" fill-opacity=".7"/>`;
   })
   .join("");
 

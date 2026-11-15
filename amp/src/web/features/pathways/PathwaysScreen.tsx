@@ -1,9 +1,6 @@
 import { ScreenTitle } from "../../ui/ScreenTitle";
 import { FREE_ONLINE_PROBLEMS } from "../../../learning/free-allowance";
-import {
-  CurriculumDetailsControl,
-  useCurriculumDetails,
-} from "../curriculum/CurriculumDetails";
+import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
 import { NavigationDrawer } from "../navigation/NavigationDrawer";
 import {
   useDeferredValue,
@@ -26,7 +23,7 @@ import { useUrlSearchText } from "../../lib/url-search-text";
 import { useLearnerStore } from "../../learner-store";
 import type { AuthSession } from "../../auth";
 import { gradeName } from "../../Home";
-import { fitScale, LevelRows, WHOLE_SCALE } from "../../ui/level-range";
+import { byArea, fitScale, LevelRows, WHOLE_SCALE } from "../../ui/level-range";
 import { measured } from "../../../learning/level-check";
 import { useLessonSearch, type SearchResult } from "../../lib/lesson-search";
 import { SearchResults, type SearchActions } from "../search/SearchResults";
@@ -34,13 +31,15 @@ import { useSearchCorpus } from "../search/search-corpus";
 import { strandNames } from "../../BirthYearPrompt";
 import { Graph } from "./Graph";
 import { PathwayPlan } from "./PathwayPlan";
+import { AreaKey } from "./AreaKey";
 import { canDrawMap } from "./drawable";
 import {
+  areas,
   bandLabel,
   bands,
   skillLight,
-  neighborhoods,
-  neighborhood,
+  areaParam,
+  areaSlot,
   progressSchema,
   frontierSchema,
   frontierRange,
@@ -375,6 +374,8 @@ export function MapView({
     typeof search.filter === "string" && bands.includes(search.filter)
       ? search.filter
       : "";
+  // One area of math (`?area=geometry`), chosen in the key; else all five.
+  const area = areaParam((search as Record<string, unknown>).area);
   const navigate = useNavigate();
   const { shown } = useCurriculumDetails();
   // A browser that can't draw the 3D map (or loses its context while it is
@@ -527,6 +528,7 @@ export function MapView({
     skills?.filter(
       (s) =>
         (!band || s.gradeBand === band) &&
+        (!area || areaSlot(s) === areas.findIndex((a) => a.id === area)) &&
         matchesQuery(`${s.title} ${s.description}`, query),
     ) ?? [];
   const range = frontier ? frontierRange(frontier, selected?.strand) : null;
@@ -765,7 +767,6 @@ export function MapView({
               aria-label="Find a skill"
               hidden={!browse}
             >
-              <CurriculumDetailsControl />
               <div className="pathways-grade" hidden={!shown && !band}>
                 {!shown && band && (
                   <small>
@@ -807,7 +808,7 @@ export function MapView({
                       <span
                         className={`pathways-gem stage-${skillLight(stats.get(s.id)).stage}`}
                         style={{
-                          color: `var(--atlas-area-${Math.max(0, neighborhood(s))})`,
+                          color: `var(--atlas-area-${areaSlot(s)})`,
                         }}
                         aria-hidden="true"
                       >
@@ -840,6 +841,7 @@ export function MapView({
                 rangeStrand={selected?.strand}
                 level={level}
                 levelLoading={frontierLoading}
+                area={area}
                 onUnavailable={() => setDrawn(false)}
               />
             ) : (
@@ -850,22 +852,13 @@ export function MapView({
                 frame={frame}
                 here={level ? overall : null}
                 levelLoading={frontierLoading}
+                area={area}
               />
             )}
           </div>
           <footer className="pathways-footer">
-            {/* The grades view names its areas at its top. */}
-            <div className="pathways-legend" hidden={!threeD}>
-              {neighborhoods.map((n, i) => (
-                <span key={n.title}>
-                  <i
-                    className="pathways-dot"
-                    style={{ background: `var(--atlas-area-${i})` }}
-                  />
-                  {n.title}
-                </span>
-              ))}
-            </div>
+            {/* The grades view holds its key at its top. */}
+            {threeD && <AreaKey area={area} className="pathways-legend" />}
             <p>
               {!threeD
                 ? selected
@@ -897,7 +890,9 @@ export function MapView({
                   )}
                 </p>
               )}
-              {frontier && <PathwayLevels frontier={frontier} />}
+              {frontier && (
+                <PathwayLevels frontier={frontier} numbers={shown} />
+              )}
             </details>
           </footer>
         </>
@@ -954,7 +949,10 @@ export function MapView({
  * (ui/level-range): the overall estimate, then each area practiced. */
 function PathwayLevels({
   frontier,
+  numbers,
 }: {
+  /** Grade names on the axis: off where the child's grades are hidden. */
+  numbers: boolean;
   frontier: {
     overall: { level: number; sd: number; answered?: number };
     strands: Record<string, { level: number; sd: number; answered?: number }>;
@@ -962,17 +960,34 @@ function PathwayLevels({
 }) {
   // Before the first answer: not measured yet, the whole scale (Q-201).
   if (!measured(frontier.overall))
-    return <LevelRows overall={null} areas={[]} scale={WHOLE_SCALE} moving />;
-  const areas = Object.entries(frontier.strands)
-    .filter(([, estimate]) => measured(estimate))
-    .map(([id, estimate]) => ({
-      id,
-      label: strandNames[id] ?? id,
-      estimate,
-    }));
+    return (
+      <LevelRows
+        overall={null}
+        areas={[]}
+        scale={WHOLE_SCALE}
+        numbers={numbers}
+        moving
+      />
+    );
+  const areas = byArea(
+    Object.entries(frontier.strands)
+      .filter(([, estimate]) => measured(estimate))
+      .map(([id, estimate]) => ({
+        id,
+        label: strandNames[id] ?? id,
+        estimate,
+      })),
+  );
   const scale = fitScale(
     [frontier.overall, ...areas.map((area) => area.estimate)],
     { minSpan: 5 },
   );
-  return <LevelRows overall={frontier.overall} areas={areas} scale={scale} />;
+  return (
+    <LevelRows
+      overall={frontier.overall}
+      areas={areas}
+      scale={scale}
+      numbers={numbers}
+    />
+  );
 }

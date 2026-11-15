@@ -15,7 +15,7 @@ export function FilmCards({
   area,
 }: {
   films: readonly SkillFilm[];
-  /** The skill's area on the map (model.ts neighborhoods): the poster's hue. */
+  /** The skill's area on the map (pathways/model.ts `areaSlot`): the poster's hue. */
   area: number;
 }) {
   const from = useLocation({ select: (location) => location.href });
