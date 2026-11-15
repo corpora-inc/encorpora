@@ -31,7 +31,15 @@ import {
 } from "../src/advertising/openai-delivery.js";
 import type { PaymentReference } from "../src/advertising/verified-payment.js";
 const config = { enabled: true, pixelId: "synthetic_pixel", sources };
+/** A parent who opted out of the default (the durable opt-out setting). */
+async function optedOut(pool: Pool) {
+  await pool.query(
+    "INSERT INTO amp_ad_collection_withdrawals(account_id,provider) VALUES('amp|parent','openai') ON CONFLICT DO NOTHING",
+  );
+}
+/** An explicit grant row: from the opted-out state, allow. */
 async function grant(pool: Pool) {
+  await optedOut(pool);
   await changeAdvertisingPermission(
     pool,
     "amp|parent",
@@ -211,12 +219,13 @@ test(
     }),
 );
 test(
-  "OpenAI rejects unpaid, unconsented, expired and test purchases; withdrawal stops delivery",
+  "OpenAI rejects unpaid, opted-out, expired and test purchases; withdrawal stops delivery",
   enabled,
   () =>
     fixture(async (pool) => {
       const p = await stripe(pool);
       await bind(pool, p.reference);
+      await optedOut(pool);
       assert.equal(
         (await queueOpenAIPayment(pool, config, p.reference)).outcome,
         "ineligible",

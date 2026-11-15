@@ -6,11 +6,11 @@ export const PURCHASE_MEASUREMENT_NOTICE = {
   title: "Google purchase measurement",
   purpose: "Help AMP understand which Google ads lead to purchases.",
   disclosure:
-    "If you allow this, AMP may send Google an encoded version of your confirmed account email, a random purchase reference, the purchase date, amount and currency. This also includes the Google ad click identifier saved when you visited our marketing page, when available. Google can match the click identifier and encoded email with its records; encoding does not make it anonymous.",
+    "Unless you turn this off, AMP may send Google an encoded version of your confirmed account email, a random purchase reference, the purchase date, amount and currency. This also includes the Google ad click identifier saved when you visited our marketing page, when available. Google can match the click identifier and encoded email with its records; encoding does not make it anonymous.",
   boundary:
     "This permission covers your adult purchase information. Learner names, ages, answers, lessons and progress are excluded. AMP requests measurement without ad personalization.",
   choice:
-    "This is optional and lasts one year. You can withdraw it here at any time. Your choice does not affect pricing, purchasing or learning access. Withdrawal stops future sharing; it does not recall information already received by Google.",
+    "This is on for adult US accounts unless you turn it off. You can turn it off here at any time, and a Global Privacy Control signal turns it off automatically. Your choice does not affect pricing, purchasing or learning access. Turning it off stops future sharing; it does not recall information already received by Google.",
   retention:
     "AMP keeps permission evidence for its duration and up to 90 days after withdrawal or expiry. A minimal opt-out setting is kept until you change it so collection does not resume when evidence expires. Local purchase-measurement records are kept for up to 90 days after the purchase. Google handles received information under its own privacy policy.",
   attestation:
@@ -23,11 +23,11 @@ export const META_PURCHASE_MEASUREMENT_NOTICE = {
   purpose:
     "Help AMP measure Facebook and Instagram ads and improve their delivery.",
   disclosure:
-    "If you allow this, AMP may send Meta an encoded version of your confirmed account email, a random purchase reference, the purchase date, amount and currency. For an eligible website purchase, this also includes the purchase-page address and your browser's user agent. This also includes saved Meta ad click and browser identifiers, when available. Meta can match these identifiers and the encoded email with its records; encoding does not make it anonymous.",
+    "Unless you turn this off, AMP may send Meta an encoded version of your confirmed account email, a random purchase reference, the purchase date, amount and currency. For an eligible website purchase, this also includes the purchase-page address and your browser's user agent. This also includes saved Meta ad click and browser identifiers, when available. Meta can match these identifiers and the encoded email with its records; encoding does not make it anonymous.",
   boundary:
     "Meta can use this information for ad measurement, ad delivery and audience creation. This permission covers your adult purchase information. Learner names, ages, answers, lessons and progress are excluded.",
   choice:
-    "This is optional and lasts one year. You can withdraw it here at any time. Your choice does not affect pricing, purchasing or learning access. Withdrawal stops future sharing; it does not recall information already received by Meta.",
+    "This is on for adult US accounts unless you turn it off. You can turn it off here at any time, and a Global Privacy Control signal turns it off automatically. Your choice does not affect pricing, purchasing or learning access. Turning it off stops future sharing; it does not recall information already received by Meta.",
   retention:
     "AMP keeps permission evidence for its duration and up to 90 days after withdrawal or expiry. A minimal opt-out setting is kept until you change it so collection does not resume when evidence expires. Local purchase-measurement records are kept for up to 90 days after the purchase. Meta handles received information under its own privacy policy.",
   attestation:
@@ -38,11 +38,11 @@ export const OPENAI_PURCHASE_MEASUREMENT_NOTICE = {
   title: "OpenAI purchase measurement",
   purpose: "Help AMP understand which ChatGPT ads lead to purchases.",
   disclosure:
-    "If you allow this, AMP may send OpenAI your saved ad click reference, a random purchase reference, the purchase date, amount and currency. OpenAI can match the click reference with its advertising records.",
+    "Unless you turn this off, AMP may send OpenAI your saved ad click reference, a random purchase reference, the purchase date, amount and currency. OpenAI can match the click reference with its advertising records.",
   boundary:
     "This permission covers your adult purchase only. No email, learner names, ages, answers, lessons or progress are sent. AMP requests measurement without future user-level personalization.",
   choice:
-    "This is optional and lasts one year. You can withdraw it here at any time. Your choice does not affect pricing, purchasing or learning access. Withdrawal stops future sharing; it does not recall information already received by OpenAI.",
+    "This is on for adult US accounts unless you turn it off. You can turn it off here at any time, and a Global Privacy Control signal turns it off automatically. Your choice does not affect pricing, purchasing or learning access. Turning it off stops future sharing; it does not recall information already received by OpenAI.",
   retention:
     "AMP retains local purchase-measurement records for up to 90 days after purchase, and permission evidence for its duration and up to 90 days after withdrawal or expiry. A minimal opt-out setting prevents collection from resuming when evidence expires. OpenAI handles received information under its own privacy policy.",
   attestation:

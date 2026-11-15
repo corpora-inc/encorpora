@@ -126,6 +126,10 @@ test(
           "ineligible",
         );
       }
+      // A parent who opted out is never measured.
+      await changeAdvertisingPermission(pool, "amp|other", {
+        action: "withdraw",
+      });
       const other = await stripe(pool, { account: "amp|other" });
       assert.equal(
         (await queueGooglePayment(pool, destination, sources, other.reference))
@@ -305,7 +309,7 @@ test(
 );
 
 test(
-  "permission withdrawal, changed email, expiry and regrant never revive earlier purchases",
+  "permission withdrawal, changed email and regrant never revive earlier purchases; an expired grant falls back to the opt-out default",
   enabled,
   () =>
     fixture(async (pool) => {
@@ -374,7 +378,7 @@ test(
       assert.equal(
         (await queueGooglePayment(pool, destination, sources, fresh.reference))
           .outcome,
-        "permission_unavailable",
+        "queued",
       );
     }),
 );
