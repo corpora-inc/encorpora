@@ -5,6 +5,7 @@ import Fastify from "fastify";
 import { Pool } from "pg";
 import { migrate } from "../scripts/migrate.js";
 import {
+  DEFAULT_PERMISSION_REVISION,
   changeAdvertisingPermission,
   purchaseMeasurementView,
   purgeAdvertisingPermissions,
@@ -59,7 +60,9 @@ test(
   enabled,
   () =>
     fixture(async (pool) => {
-      assert.equal((await view(pool)).status, "off");
+      // US opt-out default: a never-withdrawn adult account is measured.
+      assert.equal((await view(pool)).status, "active");
+      assert.equal((await view(pool)).revision, DEFAULT_PERMISSION_REVISION);
       for (const account of [
         "amp|unconfirmed",
         "amp|missing",
@@ -85,12 +88,21 @@ test(
             ...extra,
           }),
         );
+      assert.deepEqual(
+        await changeAdvertisingPermission(pool, "amp|parent", allow()),
+        await view(pool),
+      );
+      const optedOut = await changeAdvertisingPermission(pool, "amp|parent", {
+        action: "withdraw",
+      });
+      assert.equal(optedOut.status, "off");
       const granted = await changeAdvertisingPermission(
         pool,
         "amp|parent",
-        allow(),
+        allow(optedOut.revision),
       );
       assert.equal(granted.status, "active");
+      assert.notEqual(granted.revision, DEFAULT_PERMISSION_REVISION);
       assert.equal(
         Date.parse(granted.expiresAt!) - Date.parse(granted.grantedAt!),
         365 * 86400000,
@@ -101,7 +113,10 @@ test(
         allow(granted.revision),
       );
       assert.deepEqual(repeated, granted);
-      assert.equal((await view(pool, "amp|other")).status, "off");
+      assert.equal(
+        (await view(pool, "amp|other")).revision,
+        DEFAULT_PERMISSION_REVISION,
+      );
       const me = await accountSummary(
         pool,
         new FamilyRepository(pool),
@@ -117,7 +132,9 @@ test(
       await pool.query(
         "ALTER TABLE amp_auth_users RENAME TO fixture_auth_users",
       );
-      assert.equal((await view(pool)).status, "review-required");
+      // Without a confirmed address the grant no longer matches, so the
+      // account falls back to the opt-out default (click-only measurement).
+      assert.equal((await view(pool)).revision, DEFAULT_PERMISSION_REVISION);
       await assert.rejects(
         changeAdvertisingPermission(
           pool,
@@ -129,7 +146,7 @@ test(
     }),
 );
 test(
-  "withdrawal, expiry, email changes and notice changes require a fresh explicit grant",
+  "withdrawal stays off until a fresh grant; email, notice and expiry changes fall back to the opt-out default",
   enabled,
   () =>
     fixture(async (pool) => {
@@ -148,7 +165,7 @@ test(
           await pool.query(
             "SELECT email_digest FROM amp_advertising_permissions",
           )
-        ).rows[0].email_digest,
+        ).rows[0]?.email_digest ?? null,
         null,
       );
       assert.deepEqual(
@@ -169,17 +186,20 @@ test(
       await pool.query(
         "UPDATE amp_auth_users SET email='changed@example.invalid' WHERE id='parent'",
       );
-      assert.equal((await view(pool)).status, "review-required");
+      assert.equal(second.status, "active");
+      assert.notEqual(second.revision, DEFAULT_PERMISSION_REVISION);
+      assert.equal((await view(pool)).revision, DEFAULT_PERMISSION_REVISION);
       const changed = await changeAdvertisingPermission(
         pool,
         "amp|parent",
         allow(second.revision),
       );
-      assert.notEqual(changed.revision, second.revision);
+      assert.equal(changed.revision, DEFAULT_PERMISSION_REVISION);
+      assert.equal(changed.status, "active");
       await pool.query(
         "UPDATE amp_advertising_permissions SET notice_version='retired-notice'",
       );
-      assert.equal((await view(pool)).status, "review-required");
+      assert.equal((await view(pool)).status, "active");
       const revised = await changeAdvertisingPermission(
         pool,
         "amp|parent",
@@ -188,14 +208,22 @@ test(
       await pool.query(
         "UPDATE amp_advertising_permissions SET granted_at=now()-interval '400 days',expires_at=now()-interval '35 days'",
       );
-      assert.equal((await view(pool)).status, "expired");
+      assert.equal((await view(pool)).status, "active");
       const renewed = await changeAdvertisingPermission(
         pool,
         "amp|parent",
         allow(revised.revision),
       );
       assert.equal(renewed.status, "active");
-      assert.notEqual(renewed.revision, revised.revision);
+      assert.equal(renewed.revision, DEFAULT_PERMISSION_REVISION);
+      assert.equal(
+        (
+          await changeAdvertisingPermission(pool, "amp|parent", {
+            action: "withdraw",
+          })
+        ).status,
+        "off",
+      );
     }),
 );
 test(
@@ -275,7 +303,10 @@ test(
         });
         assert.equal(injected.statusCode, 400);
         assert.ok(!injected.body.includes("amp|other"));
-        assert.equal((await view(pool, "amp|other")).status, "off");
+        assert.equal(
+          (await view(pool, "amp|other")).revision,
+          DEFAULT_PERMISSION_REVISION,
+        );
       } finally {
         await app.close();
       }
@@ -287,10 +318,13 @@ test(
   () =>
     fixture(async (pool) => {
       const family = new FamilyRepository(pool);
+      const optedOut = await changeAdvertisingPermission(pool, "amp|parent", {
+        action: "withdraw",
+      });
       const granted = await changeAdvertisingPermission(
         pool,
         "amp|parent",
-        allow(),
+        allow(optedOut.revision),
       );
       const rows: string[] = [];
       for await (const row of family.export("amp|parent")) rows.push(row);
@@ -330,9 +364,14 @@ test(
   enabled,
   () =>
     fixture(async (pool) => {
+      const { revision } = await changeAdvertisingPermission(
+        pool,
+        "amp|parent",
+        { action: "withdraw" },
+      );
       const attempts = await Promise.allSettled([
-        changeAdvertisingPermission(pool, "amp|parent", allow()),
-        changeAdvertisingPermission(pool, "amp|parent", allow()),
+        changeAdvertisingPermission(pool, "amp|parent", allow(revision)),
+        changeAdvertisingPermission(pool, "amp|parent", allow(revision)),
       ]);
       assert.equal(attempts.filter((x) => x.status === "fulfilled").length, 1);
       assert.equal(
@@ -566,11 +605,23 @@ test(
         "amp|parent",
         allow(),
       );
-      assert.equal((await metaView(pool)).status, "off");
+      assert.equal(
+        (await metaView(pool)).revision,
+        DEFAULT_PERMISSION_REVISION,
+      );
+      const metaOff = await changeAdvertisingPermission(
+        pool,
+        "amp|parent",
+        { action: "withdraw" },
+        false,
+        "meta",
+      );
+      assert.equal(metaOff.status, "off");
+      assert.deepEqual(await view(pool), google);
       const meta = await changeAdvertisingPermission(
         pool,
         "amp|parent",
-        allowMeta(),
+        allowMeta(metaOff.revision),
         false,
         "meta",
       );
@@ -597,7 +648,10 @@ test(
       );
       assert.equal(me.family.metaPurchaseMeasurement?.status, "active");
       assert.equal(me.consent.status, "none");
-      assert.equal((await metaView(pool, "amp|other")).status, "off");
+      assert.equal(
+        (await metaView(pool, "amp|other")).revision,
+        DEFAULT_PERMISSION_REVISION,
+      );
       await changeAdvertisingPermission(
         pool,
         "amp|parent",
@@ -633,20 +687,20 @@ test(
       await pool.query(
         `UPDATE amp_auth_users SET email='changed@example.invalid' WHERE id='parent'`,
       );
-      assert.equal((await metaView(pool)).status, "review-required");
+      // A grant that no longer matches falls back to the opt-out default.
+      assert.equal(
+        (await metaView(pool)).revision,
+        DEFAULT_PERMISSION_REVISION,
+      );
       for (const update of [
         "UPDATE amp_meta_advertising_permissions SET notice_version='old'",
         "UPDATE amp_meta_advertising_permissions SET granted_at=now()-interval '366 days', expires_at=now()-interval '1 day'",
       ]) {
-        await changeAdvertisingPermission(
-          pool,
-          "amp|parent",
-          allowMeta((await metaView(pool)).revision),
-          false,
-          "meta",
-        );
         await pool.query(update);
-        assert.notEqual((await metaView(pool)).status, "active");
+        assert.equal(
+          (await metaView(pool)).revision,
+          DEFAULT_PERMISSION_REVISION,
+        );
       }
     }),
 );
@@ -764,6 +818,17 @@ test(
         () => family.deleteLearning("amp|parent", "synthetic-child"),
         () => family.deleteLearning("amp|parent"),
       ]) {
+        // Opt out first so the grants below are explicit rows to export.
+        await changeAdvertisingPermission(pool, "amp|parent", {
+          action: "withdraw",
+        });
+        await changeAdvertisingPermission(
+          pool,
+          "amp|parent",
+          { action: "withdraw" },
+          false,
+          "meta",
+        );
         await changeAdvertisingPermission(
           pool,
           "amp|parent",
@@ -808,18 +873,25 @@ test(
   enabled,
   () =>
     fixture(async (pool) => {
+      const { revision } = await changeAdvertisingPermission(
+        pool,
+        "amp|parent",
+        { action: "withdraw" },
+        false,
+        "meta",
+      );
       const attempts = await Promise.allSettled([
         changeAdvertisingPermission(
           pool,
           "amp|parent",
-          allowMeta(),
+          allowMeta(revision),
           false,
           "meta",
         ),
         changeAdvertisingPermission(
           pool,
           "amp|parent",
-          allowMeta(),
+          allowMeta(revision),
           false,
           "meta",
         ),

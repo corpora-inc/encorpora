@@ -29,7 +29,18 @@ import {
 import { META_ENROLLMENT_CONFIRMATION_URL as url } from "../src/advertising/meta-context-contracts.js";
 import { FamilyRepository } from "../src/family/repository.js";
 const account = "amp|parent";
+async function withdrawMeta(pool: Pool) {
+  return changeAdvertisingPermission(
+    pool,
+    account,
+    { action: "withdraw" },
+    false,
+    "meta",
+  );
+}
+/** An explicit grant row: opt out of the default first, then allow. */
 async function grant(pool: Pool, revision: string | null = null) {
+  revision ??= (await withdrawMeta(pool)).revision;
   const view = await changeAdvertisingPermission(
     pool,
     account,
@@ -156,17 +167,18 @@ test(
 );
 
 test(
-  "Google-only, late, withdrawn, changed-email, unconfirmed-email and expired Meta permissions cannot collect context",
+  "opted-out, late and withdrawn Meta permissions cannot collect context; an expired grant falls back to the opt-out default",
   enabled,
   () =>
     fixture(async (pool) => {
       const p = await payment(pool);
+      await withdrawMeta(pool);
       assert.equal(
         (await capture(pool, p.checkout)).recorded,
         false,
-        "Google is not Meta permission",
+        "an opted-out parent is never collected, whatever Google allows",
       );
-      const view = await grant(pool);
+      await grant(pool);
       await pool.query(
         "UPDATE amp_meta_advertising_permissions SET granted_at=clock_timestamp() WHERE account_id=$1",
         [account],
@@ -176,28 +188,11 @@ test(
         "UPDATE amp_meta_advertising_permissions SET granted_at=clock_timestamp()-interval '2 days',expires_at=clock_timestamp()-interval '1 hour' WHERE account_id=$1",
         [account],
       );
-      assert.equal((await capture(pool, p.checkout)).recorded, false);
-      await grant(pool, view.revision);
-      await pool.query(
-        `UPDATE amp_auth_users SET email='changed@example.invalid' WHERE id='parent'`,
-      );
-      assert.equal((await capture(pool, p.checkout)).recorded, false);
-      await pool.query(
-        `UPDATE amp_auth_users SET email='parent@example.invalid',"emailVerified"=false WHERE id='parent'`,
-      );
-      assert.equal((await capture(pool, p.checkout)).recorded, false);
-      await pool.query(
-        `UPDATE amp_auth_users SET "emailVerified"=true WHERE id='parent'`,
-      );
-      await changeAdvertisingPermission(
-        pool,
-        account,
-        { action: "withdraw" },
-        false,
-        "meta",
-      );
-      assert.equal((await capture(pool, p.checkout)).recorded, false);
-      assert.equal((await rows(pool)).length, 0);
+      // Expired, not withdrawn: the opt-out default measures again.
+      assert.equal((await capture(pool, p.checkout)).recorded, true);
+      await withdrawMeta(pool);
+      const later = await payment(pool);
+      assert.equal((await capture(pool, later.checkout)).recorded, false);
     }),
 );
 

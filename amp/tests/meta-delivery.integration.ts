@@ -42,7 +42,17 @@ function runtime(handler?: () => Promise<Response>) {
     }) as typeof fetch,
   };
 }
+/** An explicit grant row: opt out of the default first, then allow. */
 async function grant(pool: Pool, revision: string | null = null) {
+  revision ??= (
+    await changeAdvertisingPermission(
+      pool,
+      account,
+      { action: "withdraw" },
+      false,
+      "meta",
+    )
+  ).revision;
   const view = await changeAdvertisingPermission(
     pool,
     account,
