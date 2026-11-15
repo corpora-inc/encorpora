@@ -25,9 +25,15 @@ export const startSchoolClassSchema = z.strictObject({
   newSchool: z.boolean().default(false),
   className: plainName,
   timezone,
+  /** Who accepts the classroom authorization: the account's own name,
+   * prefilled. No law asks for the signer's title; older clients still send
+   * one, and it is kept when they do. */
   signerName: plainName,
-  signerTitle: plainName,
+  signerTitle: plainName.optional(),
   agreementVersion: z.string(),
+  /** The one in-flow affirmation a classroom needs: the school authorizes
+   * this use, as FTC COPPA FAQ N.1 lets a school consent for students under
+   * 13 in the educational context only (16 CFR 312.5(a); see agreement.ts). */
   authorized: z.literal(true),
   names: z.array(plainName).max(500).default([]),
   gradeLevel: gradeLevelSchema.optional(),
@@ -36,6 +42,20 @@ export const startSchoolClassSchema = z.strictObject({
   courseBands: z.array(z.enum(CLASS_COURSES)).max(1).optional(),
 });
 export type StartSchoolClass = z.infer<typeof startSchoolClassSchema>;
+/** "I run a school": the school, its leader as admin, and the school's
+ * acceptance of the student data agreement, in one short form. */
+export const startSchoolSchema = z.strictObject({
+  requestId: z.uuid(),
+  schoolName: z.string().trim().min(1).max(200),
+  timezone,
+  signerName: plainName,
+  agreementVersion: z.string(),
+  /** FTC COPPA FAQ N.1 (school consent for students under 13, educational
+   * use only) and FERPA 34 CFR 99.31(a)(1)(i)(B) (the school's direct
+   * control of education records, by agreement): one affirmation. */
+  authorized: z.literal(true),
+});
+export type StartSchool = z.infer<typeof startSchoolSchema>;
 export const pilotStateSchema = z.object({
   status: z.enum(["ready", "active", "grace", "expired"]),
   startedAt: z.string().nullable(),

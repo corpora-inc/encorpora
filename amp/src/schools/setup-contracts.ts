@@ -152,7 +152,7 @@ export const setupStateSchema = z.object({
     .object({
       version: z.string(),
       signerName: z.string(),
-      signerTitle: z.string(),
+      signerTitle: z.string().nullable(),
       acceptedAt: z.string(),
     })
     .nullable(),

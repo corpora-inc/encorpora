@@ -2,7 +2,6 @@ import { adultNameSql } from "../account/profile.js";
 import { randomUUID, createHash, createHmac } from "node:crypto";
 import type { PoolClient } from "pg";
 import { z } from "zod";
-import { parentAddressConfirmed } from "../server/account-access.js";
 import { providerEligibilityKeys } from "../identity/provider-principals.js";
 import { AGREEMENT_VERSION } from "./agreement.js";
 import { activeToday } from "./principal.js";
@@ -13,9 +12,15 @@ import { SchoolRepository, generateHandle } from "./repository.js";
 
 import {
   startSchoolClassSchema,
+  startSchoolSchema,
   schoolPurchaseSchema,
 } from "./pilot-contracts.js";
 export { startSchoolClassSchema } from "./pilot-contracts.js";
+
+/** A pilot is free for 30 days from the teacher's first class, then 14 days
+ * of grace, then the paywall (founder ruling 2026-11-15). */
+export const PILOT_DAYS = 30;
+export const GRACE_DAYS = 14;
 
 /** A teacher creates a classroom in a school they belong to, or a new solo
  * school. A name never claims another account’s school or grants admin authority. */
@@ -43,22 +48,9 @@ export async function startSchoolClass(
       )
     ).rows[0];
     if (repeated) return repeated as { orgId: string; classId: string };
-    let verified = await parentAddressConfirmed(client, accountId);
-    if (
-      !verified &&
-      (
-        await client.query(
-          "SELECT to_regclass('amp_provider_principals') IS NOT NULL AS present",
-        )
-      ).rows[0].present
-    )
-      verified = !!(
-        await client.query(
-          "SELECT 1 FROM amp_provider_principals WHERE account_id=$1",
-          [accountId],
-        )
-      ).rowCount;
-    if (!verified) throw new SchoolError(403, "confirm_email");
+    // No confirmed mailbox first: no law or platform contract asks for one
+    // before a classroom starts (founder ruling 2026-11-15). The pilot's
+    // one-per-person rule holds without it (`eligibilityKeys`).
     let orgId = input.orgId;
     if (!orgId) {
       const schools = (
@@ -157,8 +149,10 @@ export async function startSchoolClass(
       accountId,
       personId,
       input.signerName,
-      input.signerTitle,
+      input.signerTitle ?? null,
     );
+    // The pilot starts with the teacher's first class: nothing to press.
+    await joinTeacherPilot(client, accountId, klass.id, personId);
     for (const name of input.names) {
       const words = name.split(/\s+/);
       await repo.provisionStudentIn(
@@ -189,13 +183,89 @@ export async function startSchoolClass(
   });
 }
 
+/** "I run a school": a school leader makes their school, becomes its admin
+ * and accepts the student data agreement for it, in one step. No license,
+ * contract or AMP operator first: classes, teachers and students follow,
+ * and each class starts its pilot when it is made (founder ruling
+ * 2026-11-15). Retries with the same request return the same school. */
+export async function startSchool(
+  repo: SchoolRepository,
+  accountId: string,
+  raw: unknown,
+) {
+  const input = startSchoolSchema.parse(raw);
+  if (input.agreementVersion !== AGREEMENT_VERSION)
+    throw new SchoolError(409, "agreement_changed");
+  if (accountId.startsWith("school:") || accountId.startsWith("trial:"))
+    throw new SchoolError(403, "adult_account_required");
+  return repo.transaction(async (client) => {
+    await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
+      accountId,
+    ]);
+    await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
+      `school-start:${accountId}`,
+    ]);
+    const repeated = (
+      await client.query(
+        'SELECT org_id AS "orgId" FROM amp_school_starts WHERE account_id=$1 AND request_id=$2',
+        [accountId, input.requestId],
+      )
+    ).rows[0];
+    if (repeated) return repeated as { orgId: string };
+    const orgId = randomUUID(),
+      personId = randomUUID();
+    await client.query(
+      "INSERT INTO amp_orgs(id,kind,path,name,timezone,solo,setup_pending) VALUES($1,'school',ARRAY[$1]::uuid[],$2,$3,false,false)",
+      [orgId, input.schoolName, input.timezone],
+    );
+    await client.query(
+      "INSERT INTO amp_people(id,tenant_id,given_name,handle,account_id,timezone) VALUES($1,$2,$3,$4,$5,$6)",
+      [
+        personId,
+        orgId,
+        input.signerName,
+        generateHandle(),
+        accountId,
+        input.timezone,
+      ],
+    );
+    await client.query(
+      "INSERT INTO amp_org_roles(id,person_id,org_id,role,begin_on) VALUES($1,$2,$3,'admin',(now() AT TIME ZONE $4)::date)",
+      [randomUUID(), personId, orgId, input.timezone],
+    );
+    await recordEvent(client, {
+      orgId,
+      actorPersonId: personId,
+      action: "org.created",
+      targetKind: "org",
+      targetId: orgId,
+      detail: { after: { kind: "school", selfServe: true } },
+    });
+    const agreement = await repo.acceptAgreement(
+      client,
+      orgId,
+      { version: AGREEMENT_VERSION, signerName: input.signerName },
+      personId,
+    );
+    await client.query(
+      "UPDATE amp_data_agreements SET signer_account_id=$2 WHERE id=$1",
+      [agreement, accountId],
+    );
+    await client.query(
+      "INSERT INTO amp_school_starts(account_id,request_id,org_id,class_id,created_school) VALUES($1,$2,$3,NULL,true)",
+      [accountId, input.requestId, orgId],
+    );
+    return { orgId };
+  });
+}
+
 async function authorizeClass(
   client: PoolClient,
   classId: string,
   accountId: string,
   personId: string,
   name: string,
-  title: string,
+  title: string | null,
 ) {
   await client.query(
     `INSERT INTO amp_class_authorizations(id,class_id,account_id,signer_person_id,version,signer_name,signer_title)
@@ -247,7 +317,7 @@ export async function previousClassAuthorization(
   return authorization
     ? {
         signerName: authorization.signer_name as string,
-        signerTitle: authorization.signer_title as string,
+        signerTitle: (authorization.signer_title as string | null) ?? null,
         acceptedAt: authorization.accepted_at.toISOString() as string,
         version: authorization.version as string,
       }
@@ -265,7 +335,7 @@ export async function acceptClassAuthorization(
     .strictObject({
       version: z.literal(AGREEMENT_VERSION),
       signerName: plainName,
-      signerTitle: plainName,
+      signerTitle: plainName.optional(),
       authorized: z.literal(true),
     })
     .parse(raw);
@@ -280,8 +350,11 @@ export async function acceptClassAuthorization(
       accountId,
       personId,
       input.signerName,
-      input.signerTitle,
+      input.signerTitle ?? null,
     );
+    // A class that arrived without one (a roster sync) starts its teacher's
+    // pilot as soon as it is authorized.
+    await joinTeacherPilot(client, accountId, classId, personId);
     await recordEvent(client, {
       orgId,
       actorPersonId: personId,
@@ -350,6 +423,9 @@ async function teachingClass(
   };
 }
 
+/** A class without a pilot (one made before pilots started by themselves)
+ * joins the pilot of whoever runs it: a teacher of the class or a school
+ * admin, who may teach it or not. Idempotent. */
 export async function activateClassPilot(
   repo: SchoolRepository,
   accountId: string,
@@ -359,100 +435,142 @@ export async function activateClassPilot(
     await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
       accountId,
     ]);
-    await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
-      `teacher-pilot:${accountId}`,
-    ]);
-    const { orgId, path, personId } = await teachingClass(
-      client,
-      accountId,
-      classId,
-    );
-    const agreement = (
-      await client.query(
-        `SELECT ended_at FROM amp_data_agreements WHERE org_id=ANY($1::uuid[])
-      ORDER BY array_position($1::uuid[],org_id) DESC,accepted_at DESC,id LIMIT 1`,
-        [path],
-      )
-    ).rows[0];
-    const authorization = (
-      await client.query(
-        "SELECT ended_at FROM amp_class_authorizations WHERE class_id=$1 ORDER BY accepted_at DESC,id LIMIT 1",
-        [classId],
-      )
-    ).rows[0];
-    if (
-      agreement?.ended_at ||
-      (!agreement && (!authorization || authorization.ended_at))
-    )
-      throw new SchoolError(409, "agreement_required");
-    const roster = await client.query(
-      `SELECT 1 FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id
-      JOIN amp_orgs o ON o.id=c.org_id JOIN amp_people p ON p.id=e.person_id AND p.deleted_at IS NULL
-      JOIN amp_learners l ON l.id=p.learner_id AND l.deleted_at IS NULL AND NOT l.simulation
-      WHERE e.class_id=$1 AND e.role='student' AND ${activeToday("e", "o")} LIMIT 1`,
-      [classId],
-    );
-    if (!roster.rowCount) throw new SchoolError(409, "students_required");
-    const existing = (
-      await client.query(
-        "SELECT pilot_id FROM amp_class_pilots WHERE class_id=$1",
-        [classId],
-      )
-    ).rows[0];
-    if (!existing) {
-      // A school administrator can prepare a class, but only a teacher in that
-      // class can consume their personal pilot. No administrator-wide trial.
-      const teaches = await client.query(
-        `SELECT 1 FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id
-        JOIN amp_orgs o ON o.id=c.org_id WHERE e.class_id=$1 AND e.person_id=$2
-        AND e.role='teacher' AND ${activeToday("e", "o")}`,
-        [classId, personId],
-      );
-      if (!teaches.rowCount)
-        throw new SchoolError(403, "pilot_teacher_required");
-      const keys = await eligibilityKeys(client, accountId);
-      for (const key of keys)
-        await client.query(
-          "SELECT pg_advisory_xact_lock(hashtextextended($1,0))",
-          [`pilot-identity:${key}`],
-        );
-      let pilot = (
-        await client.query(
-          `SELECT p.id FROM amp_teacher_pilots p WHERE p.account_id=$1
-        OR p.id IN (SELECT pilot_id FROM amp_pilot_eligibility WHERE identity_digest=ANY($2::text[]))
-        ORDER BY p.started_at,p.id LIMIT 1`,
-          [accountId, keys],
-        )
-      ).rows[0];
-      if (!pilot)
-        pilot = (
-          await client.query(
-            `INSERT INTO amp_teacher_pilots(id,account_id,started_at,ends_at,grace_ends_at)
-        VALUES($1,$2,now(),now()+interval '30 days',now()+interval '37 days')
-        ON CONFLICT(account_id) DO UPDATE SET account_id=excluded.account_id RETURNING id`,
-            [randomUUID(), accountId],
-          )
-        ).rows[0];
-      for (const key of keys)
-        await client.query(
-          "INSERT INTO amp_pilot_eligibility(identity_digest,pilot_id) VALUES($1,$2) ON CONFLICT DO NOTHING",
-          [key, pilot.id],
-        );
-      await client.query(
-        "INSERT INTO amp_class_pilots(class_id,pilot_id,activated_by) VALUES($1,$2,$3)",
-        [classId, pilot.id, personId],
-      );
-      await recordEvent(client, {
-        orgId,
-        actorPersonId: personId,
-        action: "pilot.class-activated",
-        targetKind: "class",
-        targetId: classId,
-        detail: { after: { pilotId: pilot.id } },
-      });
-    }
+    const { personId } = await teachingClass(client, accountId, classId);
+    await joinTeacherPilot(client, accountId, classId, personId);
     return classPilotState(client, classId);
   });
+}
+
+/** Puts a class on `accountId`'s pilot: the account's one lifetime window,
+ * made on first use (`PILOT_DAYS`, then `GRACE_DAYS` of grace) and shared, on
+ * those dates, by every class it starts afterwards. Nothing happens for a
+ * family's or a demo's class, a class already on a pilot, or one a current
+ * license covers (a negotiated school's seats need no trial). The caller is
+ * in a transaction and holds the account's lock. Returns the pilot, if any. */
+export async function joinTeacherPilot(
+  client: PoolClient,
+  accountId: string,
+  classId: string,
+  personId: string,
+): Promise<string | null> {
+  if (accountId.startsWith("school:") || accountId.startsWith("trial:"))
+    return null;
+  const klass = (
+    await client.query(
+      `SELECT c.org_id,o.kind,o.demo,
+        EXISTS(SELECT 1 FROM amp_class_pilots cp WHERE cp.class_id=c.id) AS piloted,
+        EXISTS(SELECT 1 FROM amp_school_licenses l WHERE l.org_id=ANY(o.path)
+          AND l.status='active' AND l.starts_at<=now() AND l.ends_at>now()) AS licensed
+      FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
+      WHERE c.id=$1 AND c.archived_at IS NULL`,
+      [classId],
+    )
+  ).rows[0];
+  if (
+    !klass ||
+    klass.kind === "family" ||
+    klass.demo ||
+    klass.piloted ||
+    klass.licensed
+  )
+    return null;
+  await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
+    `teacher-pilot:${accountId}`,
+  ]);
+  const keys = await eligibilityKeys(client, accountId);
+  for (const key of [...keys.confirmed, ...keys.unconfirmed].sort())
+    await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
+      `pilot-identity:${key}`,
+    ]);
+  let pilot = await findPilot(client, accountId, keys);
+  if (!pilot)
+    pilot = (
+      await client.query(
+        `INSERT INTO amp_teacher_pilots(id,account_id,started_at,ends_at,grace_ends_at)
+        VALUES($1,$2,now(),now()+make_interval(days=>$3::int),now()+make_interval(days=>$4::int))
+        ON CONFLICT(account_id) DO UPDATE SET account_id=excluded.account_id RETURNING id`,
+        [randomUUID(), accountId, PILOT_DAYS, PILOT_DAYS + GRACE_DAYS],
+      )
+    ).rows[0].id as string;
+  // A confirmed identity claims its digest, even from an unconfirmed
+  // mailbox's earlier claim; an unconfirmed one only adds where none exists.
+  for (const key of keys.confirmed)
+    await client.query(
+      `INSERT INTO amp_pilot_eligibility(identity_digest,pilot_id,confirmed) VALUES($1,$2,true)
+      ON CONFLICT(identity_digest) DO UPDATE SET pilot_id=excluded.pilot_id,confirmed=true
+      WHERE NOT amp_pilot_eligibility.confirmed`,
+      [key, pilot],
+    );
+  for (const key of keys.unconfirmed)
+    await client.query(
+      "INSERT INTO amp_pilot_eligibility(identity_digest,pilot_id,confirmed) VALUES($1,$2,false) ON CONFLICT DO NOTHING",
+      [key, pilot],
+    );
+  const joined = await client.query(
+    "INSERT INTO amp_class_pilots(class_id,pilot_id,activated_by) VALUES($1,$2,$3) ON CONFLICT DO NOTHING",
+    [classId, pilot, personId],
+  );
+  if (joined.rowCount)
+    await recordEvent(client, {
+      orgId: klass.org_id,
+      actorPersonId: personId,
+      action: "pilot.class-activated",
+      targetKind: "class",
+      targetId: classId,
+      detail: { after: { pilotId: pilot } },
+    });
+  return pilot;
+}
+
+/** Every class this account teaches today that has no pilot joins its
+ * pilot: a Clever teacher's synced sections, the moment they sign in. */
+export async function startTeacherPilots(
+  repo: SchoolRepository,
+  accountId: string,
+) {
+  return repo.transaction(async (client) => {
+    await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
+      accountId,
+    ]);
+    const classes = (
+      await client.query(
+        `SELECT DISTINCT ON (c.id) c.id,p.id AS person_id FROM amp_people p
+        JOIN amp_enrollments e ON e.person_id=p.id AND e.role='teacher'
+        JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL
+        JOIN amp_orgs o ON o.id=c.org_id AND NOT o.demo AND o.kind<>'family'
+        WHERE p.account_id=$1 AND p.deleted_at IS NULL AND ${activeToday("e", "o")}
+          AND NOT EXISTS(SELECT 1 FROM amp_class_pilots cp WHERE cp.class_id=c.id)
+        ORDER BY c.id,p.id`,
+        [accountId],
+      )
+    ).rows as { id: string; person_id: string }[];
+    let started = 0;
+    for (const klass of classes)
+      if (await joinTeacherPilot(client, accountId, klass.id, klass.person_id))
+        started++;
+    return { started };
+  });
+}
+
+/** The pilot an account already has, by itself or by any identity it shares
+ * with another account. Confirmed identities match only confirmed claims;
+ * an unconfirmed mailbox matches any claim on it. */
+async function findPilot(
+  db: Pick<PoolClient, "query">,
+  accountId: string,
+  keys: { confirmed: string[]; unconfirmed: string[] },
+) {
+  return (
+    ((
+      await db.query(
+        `SELECT p.id FROM amp_teacher_pilots p WHERE p.account_id=$1
+        OR p.id IN (SELECT pilot_id FROM amp_pilot_eligibility
+          WHERE (identity_digest=ANY($2::text[]) AND confirmed) OR identity_digest=ANY($3::text[]))
+        ORDER BY p.started_at,p.id LIMIT 1`,
+        [accountId, keys.confirmed, keys.unconfirmed],
+      )
+    ).rows[0]?.id as string | undefined) ?? null
+  );
 }
 
 export async function classPilotState(
@@ -469,16 +587,22 @@ export async function classPilotState(
     )
   ).rows[0];
   const activated = !!row;
-  if (!row && accountId)
-    row = (
-      await db.query(
-        `SELECT t.id,t.started_at,t.ends_at,
+  if (!row && accountId) {
+    const pilot = await findPilot(
+      db,
+      accountId,
+      await eligibilityKeys(db, accountId),
+    );
+    if (pilot)
+      row = (
+        await db.query(
+          `SELECT t.id,t.started_at,t.ends_at,
     greatest(t.grace_ends_at,(SELECT max(x.until_at) FROM amp_pilot_extensions x WHERE x.pilot_id=t.id)) AS grace_ends_at,
-    now() AS observed_at FROM amp_teacher_pilots t WHERE t.account_id=$1 OR t.id IN
-      (SELECT pilot_id FROM amp_pilot_eligibility WHERE identity_digest=ANY($2::text[])) ORDER BY t.started_at,t.id LIMIT 1`,
-        [accountId, await eligibilityKeys(db, accountId)],
-      )
-    ).rows[0];
+    now() AS observed_at FROM amp_teacher_pilots t WHERE t.id=$1`,
+          [pilot],
+        )
+      ).rows[0];
+  }
   const coverage = (
     await db.query(
       `SELECT count(DISTINCT p.id)::int AS students,
@@ -568,24 +692,34 @@ export async function extendTeacherPilot(repo: SchoolRepository, raw: unknown) {
 const hash = (token: string) =>
   createHash("sha256").update(token).digest("hex");
 
+/** The identities one lifetime pilot belongs to: the account, every linked
+ * provider identity, and its mailbox (with its aliases folded). A mailbox
+ * nobody confirmed still counts, so a new unconfirmed account can't restart
+ * the window, but its claim is marked unconfirmed (`findPilot`). */
 async function eligibilityKeys(
   db: Pick<PoolClient, "query">,
   accountId: string,
 ) {
-  const keys = [hash(`amp-pilot-account-v1:${accountId}`)];
-  keys.push(...(await providerEligibilityKeys(db, accountId)));
-  const email = (
+  const confirmed = [hash(`amp-pilot-account-v1:${accountId}`)];
+  confirmed.push(...(await providerEligibilityKeys(db, accountId)));
+  const user = (
     await db.query(
-      'SELECT lower(email) AS email FROM amp_auth_users WHERE id=$1 AND "emailVerified"=true',
+      'SELECT lower(email) AS email,"emailVerified" AS verified FROM amp_auth_users WHERE id=$1',
       [accountId.slice(4)],
     )
-  ).rows[0]?.email;
-  if (email) {
-    // Retain the original digest for old eligibility records as well.
-    keys.push(hash(`amp-pilot-mailbox-v1:${email}`));
-    keys.push(hash(`amp-pilot-mailbox-v1:${normalizePilotEmail(email)}`));
-  }
-  return keys.sort();
+  ).rows[0] as { email: string; verified: boolean } | undefined;
+  const mailbox = user
+    ? [
+        // Retain the original digest for old eligibility records as well.
+        hash(`amp-pilot-mailbox-v1:${user.email}`),
+        hash(`amp-pilot-mailbox-v1:${normalizePilotEmail(user.email)}`),
+      ]
+    : [];
+  const unique = (keys: string[]) => [...new Set(keys)].sort();
+  return {
+    confirmed: unique([...confirmed, ...(user?.verified ? mailbox : [])]),
+    unconfirmed: unique(user?.verified ? [] : mailbox),
+  };
 }
 export function normalizePilotEmail(email: string) {
   const [local, domain] = email.trim().toLowerCase().split("@");

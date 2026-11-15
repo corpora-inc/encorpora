@@ -103,7 +103,8 @@ function Agreement({
       </h2>
       {accepted ? (
         <p className={styles.signed}>
-          Accepted by {accepted.signerName}, {accepted.signerTitle}
+          Accepted by {accepted.signerName}
+          {accepted.signerTitle ? `, ${accepted.signerTitle}` : ""}
           {accepted.signedBy ? `, for ${accepted.signedBy},` : ""} on{" "}
           {formatDay(accepted.acceptedAt.slice(0, 10))}.
         </p>

@@ -43,8 +43,9 @@ export const classLiveSql = (c: string, o: string) =>
   `(${c}.archived_at IS NULL AND EXISTS(SELECT 1 FROM amp_academic_sessions live_s
      WHERE live_s.id=${c}.session_id AND live_s.ends_on>=(now() AT TIME ZONE ${o}.timezone)::date))`;
 
-/** Why a school class's students can't practice, when they can't: their
- * teacher hasn't started practice, or it has ended. `null` when sign-in leads
+/** Why a school class's students can't practice, when they can't: it has
+ * no students yet (or, for a class made before pilots started by
+ * themselves, no pilot), or practice has ended. `null` when sign-in leads
  * somewhere: practice is running, a student is covered (a seat, or another
  * class's practice), the school has seats to give, or the class isn't a
  * school's (a family's, a demo). */
@@ -92,6 +93,7 @@ export async function classPracticeStates(
     live: boolean;
     licensed: boolean;
     started: boolean;
+    rostered: boolean;
     entering: boolean;
     covered: boolean;
   }>(
@@ -100,6 +102,9 @@ export async function classPracticeStates(
         AND l.status='active' AND l.starts_at<=now() AND l.ends_at>now()) AS licensed,
       EXISTS(SELECT 1 FROM amp_class_pilots cp JOIN amp_teacher_pilots t ON t.id=cp.pilot_id
         WHERE cp.class_id=c.id AND t.started_at<=now()) AS started,
+      EXISTS(SELECT 1 FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id AND p.deleted_at IS NULL
+        WHERE e.class_id=c.id AND e.role='student'
+          AND (e.end_on IS NULL OR e.end_on>(now() AT TIME ZONE o.timezone)::date)) AS rostered,
       EXISTS(SELECT 1 FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
         WHERE ${studentInClassSql("e", "p", "c", "o")}) AS entering,
       EXISTS(SELECT 1 FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
@@ -124,7 +129,9 @@ export async function classPracticeStates(
     else if (!row.licensed && !row.covered)
       states.set(
         row.id,
-        row.started
+        // A class whose pilot started with it, before any student: it
+        // waits for its students, never "ended".
+        row.started && row.rostered
           ? { gate: "ended", end: row.entering ? "coverage" : "roster" }
           : { gate: "waiting", end: null },
       );

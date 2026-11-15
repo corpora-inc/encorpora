@@ -207,8 +207,13 @@ test(
       );
       await revokeClassAuthorization(repo, "fixture-teacher", c.classId);
       assert.equal((await classPilotState(db, c.classId)).authorized, false);
+      // Withdrawn consent stops naming students; the pilot's dates are
+      // payment, not consent, and stay as they were.
       await assert.rejects(
-        activateClassPilot(repo, "fixture-teacher", c.classId),
+        repo.provisionStudent(c.orgId, {
+          givenName: "Another",
+          classId: c.classId,
+        }),
         /agreement_required/,
       );
       assert.equal(
