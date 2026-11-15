@@ -74,7 +74,7 @@ test("notice contract separates method eligibility and rejects incomplete operat
     }).success,
   );
 });
-test("full notice repeats in both messages and challenge is only a URL fragment", () => {
+test("full notice repeats in both messages; only the first asks for a response, through a URL fragment", () => {
   for (const stage of ["initial", "confirmation"] as const) {
     const m = consentMail(p, {
       id: "fixture",
@@ -87,6 +87,13 @@ test("full notice repeats in both messages and challenge is only a URL fragment"
     assert(m.text.includes(p.notice.operator.telephone));
     assert(m.text.includes(p.notice.childData[0]!.retention));
     assert(m.text.includes("revoke consent"));
+    if (stage === "confirmation") {
+      // The delayed confirmatory notice needs no reply and carries no token.
+      assert(!m.text.includes("private-token"));
+      assert(!/Review and respond/.test(m.text));
+      assert(m.text.includes("You do not need to do anything"));
+      continue;
+    }
     assert(m.text.includes("Opening the link does not grant consent"));
     const link = m.text.match(/Review and respond: (\S+)/)![1]!,
       url = new URL(link);

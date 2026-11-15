@@ -1,7 +1,6 @@
 import { purgeGaSignups } from "../src/analytics/ga-signups.js";
 import { purgeOpenAIPurchases } from "../src/advertising/openai-delivery.js";
 import { purgeSignupMeasurement } from "../src/advertising/provider-signups.js";
-import { purgeParentFeedback } from "../src/feedback/parent-retention.js";
 import { purgeFamilyApprovals } from "../src/family/approvals.js";
 import { purgeMetaPurchaseContexts } from "../src/advertising/meta-context.js";
 import { purgeAcquisition } from "../src/advertising/acquisition.js";
@@ -48,7 +47,6 @@ try {
       ...(await purgeFunnelEvents(pool)),
       ...(await purgeProblemFlags(pool)),
       ...(await purgeHelpEvents(pool)),
-      expiredParentFeedback: await purgeParentFeedback(pool),
       expiredFamilyApprovals: await purgeFamilyApprovals(pool),
       ...(await purgeIdleDemos(pool)),
       ...(await purgeInactiveLearners(pool)),
