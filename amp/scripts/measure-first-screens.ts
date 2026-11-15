@@ -338,9 +338,20 @@ async function coldLoad(
   if (then) {
     const before = new Set(requests.keys());
     const pressed = Date.now();
-    await page.getByRole("button", { name: then.button }).first().click();
-    await page.locator(then.until).first().waitFor({ timeout: 60_000 });
-    action = Date.now() - pressed;
+    try {
+      // A button or a link: whichever the screen offers.
+      await page
+        .locator("a, button")
+        .filter({ hasText: then.button })
+        .first()
+        .click({ timeout: 15_000 });
+      await page.locator(then.until).first().waitFor({ timeout: 60_000 });
+      action = Date.now() - pressed;
+    } catch (error) {
+      action = -1;
+      console.warn(`${path}: "${then.button}" did not finish`, error);
+      await page.screenshot({ path: "artifacts/first-screens/press.png" });
+    }
     await page.waitForLoadState("networkidle").catch(() => undefined);
     actionJs = [...requests]
       .filter(([id, r]) => !before.has(id) && /\.js(\?|$)/.test(r.url))
