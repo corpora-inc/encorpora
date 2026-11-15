@@ -1,0 +1,137 @@
+[
+  {
+    "id": "practice-desktop",
+    "file": "/product/practice-desktop.webp",
+    "source": "amp/scripts/verify-practice-polish-ui.ts + local capture adapter",
+    "sourceCommit": "70b9a5957b52400dca2da8e7136557c17b07a52a",
+    "alt": "Practice with a place-value model and numeric keypad",
+    "fixture": "synthetic practice profile",
+    "status": "Captured from current source in Chromium with synthetic fixtures; no production learner data",
+    "capturedAt": "2026-11-15T17:09:33.284862+00:00"
+  },
+  {
+    "id": "practice-mobile",
+    "file": "/product/practice-mobile.webp",
+    "source": "amp/scripts/verify-practice-polish-ui.ts + local capture adapter",
+    "sourceCommit": "70b9a5957b52400dca2da8e7136557c17b07a52a",
+    "alt": "Practice on a phone",
+    "fixture": "synthetic practice profile",
+    "status": "Captured from current source in Chromium with synthetic fixtures; no production learner data",
+    "capturedAt": "2026-11-15T17:09:33.286066+00:00"
+  },
+  {
+    "id": "practice-profile-desktop",
+    "file": "/product/practice-profile-desktop.webp",
+    "source": "amp/scripts/verify-practice-polish-ui.ts + local capture adapter",
+    "sourceCommit": "70b9a5957b52400dca2da8e7136557c17b07a52a",
+    "alt": "Choose a practice grade, pace, and levels by area",
+    "fixture": "synthetic practice profile",
+    "status": "Captured from current source in Chromium with synthetic fixtures; no production learner data",
+    "capturedAt": "2026-11-15T17:09:33.286577+00:00"
+  },
+  {
+    "id": "practice-profile-mobile",
+    "file": "/product/practice-profile-mobile.webp",
+    "source": "amp/scripts/verify-practice-polish-ui.ts + local capture adapter",
+    "sourceCommit": "70b9a5957b52400dca2da8e7136557c17b07a52a",
+    "alt": "Choose practice levels on a phone",
+    "fixture": "synthetic practice profile",
+    "status": "Captured from current source in Chromium with synthetic fixtures; no production learner data",
+    "capturedAt": "2026-11-15T17:09:33.287078+00:00"
+  },
+  {
+    "id": "workbook-controls-desktop",
+    "file": "/product/workbook-controls-desktop.webp",
+    "source": "amp/scripts/verify-workbooks-ui.ts + local capture adapter",
+    "sourceCommit": "70b9a5957b52400dca2da8e7136557c17b07a52a",
+    "alt": "Choose workbook duration, paper size, difficulty and math areas",
+    "fixture": "synthetic learner Maya",
+    "status": "Captured from current source in Chromium with synthetic fixtures; no production learner data",
+    "capturedAt": "2026-11-15T17:09:33.288198+00:00"
+  },
+  {
+    "id": "workbook-practice-page",
+    "file": "/product/workbook-practice-page.webp",
+    "source": "amp/scripts/workbook-samples.ts 30 --paper letter --png third-grade",
+    "sourceCommit": "70b9a5957b52400dca2da8e7136557c17b07a52a",
+    "alt": "Printable AMP workbook practice page with working space",
+    "fixture": "synthetic generated workbook",
+    "status": "Fresh current source PDF render; sample workbook passed page layout checks",
+    "capturedAt": "2026-11-15T17:11:10.131704+00:00"
+  },
+  {
+    "id": "workbook-answer-key",
+    "file": "/product/workbook-answer-key.webp",
+    "source": "amp/scripts/workbook-samples.ts 30 --paper letter --png third-grade",
+    "sourceCommit": "70b9a5957b52400dca2da8e7136557c17b07a52a",
+    "alt": "Printable AMP workbook answer key",
+    "fixture": "synthetic generated workbook",
+    "status": "Fresh current source PDF render; sample workbook passed page layout checks",
+    "capturedAt": "2026-11-15T17:11:10.131983+00:00"
+  },
+  {
+    "id": "progress-desktop",
+    "file": "/product/progress-desktop.webp",
+    "source": "amp/scripts/verify-practice-polish-ui.ts + local capture adapter",
+    "sourceCommit": "70b9a5957b52400dca2da8e7136557c17b07a52a",
+    "alt": "Progress by math area and practiced skill",
+    "fixture": "synthetic progress fixture",
+    "status": "Captured from current source in Chromium with synthetic fixtures; no production learner data",
+    "capturedAt": "2026-11-15T17:09:33.288918+00:00"
+  },
+  {
+    "id": "progress-mobile",
+    "file": "/product/progress-mobile.webp",
+    "source": "amp/scripts/verify-practice-polish-ui.ts + local capture adapter",
+    "sourceCommit": "70b9a5957b52400dca2da8e7136557c17b07a52a",
+    "alt": "Progress on a phone",
+    "fixture": "synthetic progress fixture",
+    "status": "Captured from current source in Chromium with synthetic fixtures; no production learner data",
+    "capturedAt": "2026-11-15T17:09:33.289355+00:00"
+  },
+  {
+    "id": "practice-hint-desktop",
+    "file": "/product/practice-hint-desktop.webp",
+    "alt": "A specific hint supports a multiplication problem",
+    "sourceCommit": "70b9a5957b52400dca2da8e7136557c17b07a52a",
+    "source": "Current AMP components, local fixture adapter",
+    "fixture": "Synthetic only",
+    "status": "Captured from current source; no production learner data"
+  },
+  {
+    "id": "practice-solution-mobile",
+    "file": "/product/practice-solution-mobile.webp",
+    "alt": "A worked fraction explanation after answering",
+    "sourceCommit": "70b9a5957b52400dca2da8e7136557c17b07a52a",
+    "source": "Current AMP components, local fixture adapter",
+    "fixture": "Synthetic only",
+    "status": "Captured from current source; no production learner data"
+  },
+  {
+    "id": "workbook-summary-desktop",
+    "file": "/product/workbook-summary-desktop.webp",
+    "alt": "Workbook contents with warm-up, lesson, practice, review and challenge",
+    "sourceCommit": "70b9a5957b52400dca2da8e7136557c17b07a52a",
+    "source": "Current AMP components, local fixture adapter",
+    "fixture": "Synthetic only",
+    "status": "Captured from current source; no production learner data"
+  },
+  {
+    "id": "workbook-controls-mobile",
+    "file": "/product/workbook-controls-mobile.webp",
+    "alt": "Workbook duration, paper size, difficulty and area controls",
+    "sourceCommit": "70b9a5957b52400dca2da8e7136557c17b07a52a",
+    "source": "Current AMP components, local fixture adapter",
+    "fixture": "Synthetic only",
+    "status": "Captured from current source; no production learner data"
+  },
+  {
+    "id": "practice-level-desktop",
+    "file": "/product/practice-level-desktop.webp",
+    "alt": "Choose a grade and pace to try AMP practice",
+    "sourceCommit": "70b9a5957b52400dca2da8e7136557c17b07a52a",
+    "source": "Current AMP components, local fixture adapter",
+    "fixture": "Synthetic only",
+    "status": "Captured from current source; no production learner data"
+  }
+]

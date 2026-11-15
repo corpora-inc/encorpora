@@ -19,6 +19,8 @@ export async function buildSite(config: SiteConfig, output: string = "dist") {
     `${output}/assets/site.css`,
     tokens + "\n" + (await readFile("src/site.css", "utf8")),
   );
+  await cp("src/library.css", `${output}/assets/library.css`);
+  await cp("public", output, { recursive: true });
   await cp(
     "../amp/node_modules/katex/dist/katex.min.css",
     `${output}/assets/katex.min.css`,
