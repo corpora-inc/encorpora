@@ -191,9 +191,12 @@ try {
         "Returning must dispose narration",
       );
       if ([390, 1280].includes(viewport.width)) {
-        await page.goBack();
-        await ready(page);
+        // Closing the film goes back where it was opened (one close path,
+        // return-to.ts): the film is the forward entry, and Back from it is
+        // the lesson again.
         await page.goForward();
+        await ready(page);
+        await page.goBack();
         await watch.waitFor();
         await watch.click();
         await ready(page);
@@ -202,10 +205,20 @@ try {
         await page
           .getByRole("link", { name: "Back to lesson", exact: true })
           .click();
-        // The short lesson (Pathways' sheet, its own address) practises it.
-        await page
-          .getByRole("link", { name: /^Try this problem type/ })
-          .click();
+        // A parent reads a child's map: the child's practice is their own
+        // session (PathwaysScreen readOnly), so the lesson offers no Try.
+        // Practice the same problem type at the address Try opens.
+        await watch.waitFor();
+        assert.equal(
+          await page
+            .getByRole("link", { name: /^Try this problem type/ })
+            .count(),
+          0,
+          "A child's map offers the adult no practice of its own",
+        );
+        await page.goto(
+          `${fixture.origin}/practice?skill=count-to-20&template=count-objects`,
+        );
         await page.waitForURL(/\/practice/);
         const problem = page.locator("[data-problem-id]");
         await problem.waitFor();

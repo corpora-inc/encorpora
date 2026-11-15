@@ -80,12 +80,18 @@ const appScreenTitles: Readonly<Record<string, string>> = {
   "/sign-in/forgot": "Reset Your Password | AMP",
   "/sign-in/check-email": "Check Your Email | AMP",
   "/sign-in/two-factor": "Two-Step Verification | AMP",
+  // "What brings you to AMP?", then each step by its own question.
   "/start": "What Brings You to AMP? | AMP",
-  "/start/myself": "What Brings You to AMP? | AMP",
-  "/start/parent": "What Brings You to AMP? | AMP",
-  "/start/tutor": "What Brings You to AMP? | AMP",
-  "/start/teacher": "What Brings You to AMP? | AMP",
-  "/start/school": "What Brings You to AMP? | AMP",
+  "/start/myself": "What Year Were You Born? | AMP",
+  "/start/parent": "Add Your Kids | AMP",
+  "/start/parent/name": "Your Name | AMP",
+  "/start/parent/ready": "Who’s Practicing First? | AMP",
+  "/start/tutor": "Your Students | AMP",
+  "/start/tutor/name": "Your Name | AMP",
+  "/start/tutor/join": "How They Join | AMP",
+  "/start/tutor/ready": "Start | AMP",
+  "/start/teacher": "Set Up Your Class | AMP",
+  "/start/school": "AMP for Your School | AMP",
   "/start/name": "Set Up Your Learner | AMP",
   "/start/birth-year": "Choose Your Learner’s Birth Year | AMP",
   "/start/consent": "Parent Consent | AMP",
@@ -95,6 +101,32 @@ const appScreenTitles: Readonly<Record<string, string>> = {
   "/p": "Progress from School | AMP",
   "/design": "Components | AMP",
 };
+
+/** A family's own screens (`/family/<family>/…`), named as its tabs and its
+ * screens are, from the path alone (never a family's or a child's name). */
+const familyScreens: Readonly<Record<string, string>> = {
+  "": "Today",
+  map: "Map",
+  workbooks: "Workbooks",
+  time: "Time",
+  reports: "Report Cards",
+  people: "People",
+  settings: "Settings",
+  cards: "Sign-In Cards",
+  group: "Tutoring Group",
+};
+export function familyScreenTitle(path: string): string | undefined {
+  const found =
+    /^\/family\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?:\/(.*))?$/i.exec(
+      path,
+    );
+  if (!found) return;
+  const leaf = found[1] ?? "";
+  // A child's page and its records: whose they are is the screen's to say.
+  if (/^kids\/[^/]+$/.test(leaf)) return "Your Child";
+  if (/^kids\/[^/]+\/inventory$/.test(leaf)) return "Inventory";
+  return familyScreens[leaf.split("/")[0]!];
+}
 
 /** A path with optional query and fragment, as a normalized path and its query. */
 export function splitLocation(location: string): {
@@ -163,9 +195,11 @@ export function appPageTitle(
   const title = publicAppPageTitle(location, home);
   if (title) return title;
   if (Object.hasOwn(appScreenTitles, clean)) return appScreenTitles[clean];
+  const family = familyScreenTitle(clean);
+  if (family) return `${family} | AMP`;
   const category = [
     [/^\/sign-in(?:\/|$)/, "Sign In"],
-    [/^\/family(?:\/|$)/, "Your Learners"],
+    [/^\/family(?:\/|$)/, "Your Family"],
     [/^\/account(?:\/|$)/, "Your Account"],
     [/^\/practice(?:\/|$)/, "Math Practice"],
     [/^\/(?:lesson|lessons)(?:\/|$)/, "Math Lessons"],
@@ -175,7 +209,7 @@ export function appPageTitle(
     [/^\/continue(?:\/|$)/, "Continue with AMP"],
     [/^\/invoice(?:\/|$)/, "Your Invoice"],
     [/^\/consent(?:\/|$)/, "Parent Consent"],
-    [/^\/(?:join|c)(?:\/|$)/, "Join Your Class"],
+    [/^\/(?:join|c)(?:\/|$)/, "Join"],
     [/^\/school(?:\/|$)/, "AMP for Schools"],
   ] as const;
   return `${category.find(([pattern]) => pattern.test(clean))?.[1] ?? "Adaptive Math Pathways"} | AMP`;

@@ -29,6 +29,10 @@ const NO_SESSION: AuthSession = { accountId: "", token: "" };
  * own class when it has one. */
 export function useFamilyPlace() {
   const { family = "" } = useParams({ strict: false }) as { family?: string };
+  return useFamilyPlaceOf(family);
+}
+/** A family by its id, from outside its own pages (setup's last step). */
+export function useFamilyPlaceOf(family: string) {
   const session = useQuery(sessionOptions).data ?? null;
   const auth = session ?? NO_SESSION;
   const query = useQuery({
@@ -52,7 +56,7 @@ export function useFamilyPlace() {
     holder: data?.role === "holder",
   };
 }
-export type FamilyPlace = ReturnType<typeof useFamilyPlace>;
+export type FamilyPlace = ReturnType<typeof useFamilyPlaceOf>;
 
 /** A child of the family's own, by their learner id. */
 export const childOf = (data: FamilyProjection | undefined, id: string) =>

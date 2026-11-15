@@ -1,6 +1,7 @@
 import { useNavigate, useSearch } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
+  formatJoinCode,
   JOIN_CODE_LENGTH,
   normalizeJoinCode,
 } from "../../../../schools/contracts";
@@ -39,9 +40,7 @@ export function JoinScreen() {
   const { sso } = useSearch({ strict: false }) as { sso?: unknown };
   // Back from a school account's sign-in, with no class to return to.
   const [message, setMessage] = useState(
-    sso
-      ? "That sign-in didn’t finish. Type your class code, or scan your card."
-      : "",
+    sso ? "That sign-in didn’t finish. Type your code, or scan your card." : "",
   );
   const [busy, setBusy] = useState(false);
   const [scanning, setScanning] = useState(false);
@@ -61,7 +60,10 @@ export function JoinScreen() {
     setMessage("");
     try {
       await queryClient.fetchQuery(joinRosterOptions(value));
-      await navigate({ to: "/join/$code", params: { code: value } });
+      await navigate({
+        to: "/join/$code",
+        params: { code: formatJoinCode(value) },
+      });
     } catch (failure) {
       fail((failure as Error).message);
       setBusy(false);
@@ -88,7 +90,10 @@ export function JoinScreen() {
       try {
         if (read.kind === "class") {
           await queryClient.fetchQuery(joinRosterOptions(read.code));
-          await navigate({ to: "/join/$code", params: { code: read.code } });
+          await navigate({
+            to: "/join/$code",
+            params: { code: formatJoinCode(read.code) },
+          });
         } else await finish(await signInWithCard(read.token));
       } catch (failure) {
         fail((failure as Error).message);
@@ -103,14 +108,14 @@ export function JoinScreen() {
     <JoinFrame>
       <div className={styles.column}>
         <h1 className={styles.title}>
-          {scanning ? "Hold up your card" : "Type your class code"}
+          {scanning ? "Hold up your card" : "Type your code"}
         </h1>
         <div className={styles.stage}>
           <label
             className={styles.codeField}
             data-hidden={scanning || undefined}
           >
-            <span className={styles.srOnly}>Class code</span>
+            <span className={styles.srOnly}>Code</span>
             <span
               key={shake}
               className={styles.shaker}

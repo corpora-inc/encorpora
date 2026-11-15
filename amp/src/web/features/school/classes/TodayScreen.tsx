@@ -260,8 +260,6 @@ export function TodayScreen() {
               data={data}
               place={place}
               code={code ?? null}
-              manage={presence.data?.canManage ?? false}
-              locked={!!presence.data?.class.joinLockedUntil}
               session={account}
               me={signedIn}
               secondParent={holder ? secondParent.data : undefined}

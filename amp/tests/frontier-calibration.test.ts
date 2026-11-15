@@ -38,7 +38,9 @@ const nodes = new Map(skills.map((skill) => [skill.id, skill]));
  * entry. When a generator changes, re-review its entry: update this pin if
  * the assumption still holds, otherwise drop or revise the entry. */
 const reviewedGenerators: Record<string, string> = {
-  "count-objects@2": "0103f7629159f756",
+  // "One leaves" reworded as counting back one (#18): the same counts and
+  // answers, so the reviewed offset still holds.
+  "count-objects@2": "4d353b147228c503",
   // Display punctuation only; coefficients, responses and calibration are unchanged.
   "linear-equation@1": "97c9e894118dd543",
   "divide-fractions@2": "d82f1d261b1533eb",

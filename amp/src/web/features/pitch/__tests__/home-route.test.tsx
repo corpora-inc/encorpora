@@ -122,10 +122,14 @@ test("a signed-out visitor at / sees the pitch, with ad context kept", async () 
   const { router, analytics } = await open(
     "/?utm_campaign=ar-efa-launch&utm_source=google&utm_medium=cpc&program=ar-efa",
   );
+  // The file's first render imports the whole router and the pitch's lazy
+  // chunk; under a loaded test machine that alone can pass 1 s.
   expect(
-    await screen.findByRole("heading", {
-      name: "See how far your child can go in math.",
-    }),
+    await screen.findByRole(
+      "heading",
+      { name: "See how far your child can go in math." },
+      { timeout: 10_000 },
+    ),
   ).toBeTruthy();
   expect(analytics.screenOf("/")).toBe("pitch");
   const [buy] = screen.getAllByRole("link", {

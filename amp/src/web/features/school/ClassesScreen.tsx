@@ -58,7 +58,8 @@ import {
 import { SettingMeta } from "./classroom/SettingMeta";
 import { OrgFrame } from "./OrgFrame";
 import { YearCalendar } from "./CalendarScreen";
-import { JoinClass } from "./join/JoinClass";
+import { formatJoinCode, JoinClass } from "./join/JoinClass";
+import { ReplaceCode } from "./join/ReplaceCode";
 import { ClassExperienceSection } from "./classroom/ExperienceScreens";
 import {
   FormNote,
@@ -698,12 +699,25 @@ export function ClassScreen() {
               code={klass.joinCode}
               place={{ org: orgId, class: classId }}
               words={spaceWords(family ? "family" : "classroom")}
-              manage={
-                org?.can?.includes("signin.manage") ||
-                org?.teaches?.includes(classId)
-              }
             />
           )}
+          {/* Replacing the code is a setting, apart from the way in. */}
+          {!closed &&
+            !access.pending &&
+            klass.joinCode &&
+            (org?.can?.includes("signin.manage") ||
+              org?.teaches?.includes(classId)) && (
+              <div className={styles.replaceCode} data-class-code-setting="">
+                <p>
+                  {spaceWords(family ? "family" : "classroom").Code}{" "}
+                  <strong>{formatJoinCode(klass.joinCode)}</strong>
+                </p>
+                <ReplaceCode
+                  place={{ org: orgId, class: classId }}
+                  words={spaceWords(family ? "family" : "classroom")}
+                />
+              </div>
+            )}
           {!small && (
             <ClassGrading
               orgId={orgId}

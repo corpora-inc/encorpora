@@ -1,5 +1,6 @@
 import { ensureFamilyClass } from "../family/family-class.js";
 import { lockLearningAccount } from "../server/account-access.js";
+import { familyDisplayNameSql } from "../family/identity.js";
 import { touchDemoOfPersonSql } from "./demo/sql.js";
 import {
   assertSignInOpen,
@@ -99,6 +100,9 @@ const ROSTER_LIMIT = 1000;
 export type LiveClass = {
   id: string;
   name: string;
+  /** A family's own name ("Achterberg family"); null outside a family. */
+  family_name: string | null;
+  is_family: boolean;
   org_id: string;
   path: string[];
   locked_for: number;
@@ -122,7 +126,9 @@ export class SchoolSignIn {
   ): Promise<LiveClass> {
     const found = (
       await db.query(
-        `SELECT c.id,c.name,c.org_id,o.path,o.sign_in_providers,
+        `SELECT c.id,c.name,c.org_id,o.path,o.sign_in_providers,o.kind='family' AS is_family,
+           CASE WHEN o.kind='family' THEN (SELECT ${familyDisplayNameSql("f.account_id")}
+             FROM amp_families f WHERE f.org_id=o.id LIMIT 1) END AS family_name,
            GREATEST(0,CEIL(EXTRACT(EPOCH FROM c.join_locked_until-now())))::int AS locked_for
          FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
          WHERE c.join_code=$1 AND ${classLiveSql("c", "o")}`,
@@ -160,11 +166,14 @@ export class SchoolSignIn {
 
   async lookup({ code }: { code: string }): Promise<JoinRoster> {
     const found = await this.prepareClass(code);
+    // A family is its family, never a class: "Achterberg family".
+    const place: JoinRoster["class"] = found.is_family
+      ? { name: found.family_name ?? "Your family", kind: "family" }
+      : { name: found.name, kind: "class" };
     // Practice isn't open for this class: say so before anyone picks a name
     // and three pictures for nothing.
     const practice = await classPracticeGate(this.pool, found.id);
-    if (practice)
-      return { class: { name: found.name }, practice, students: [] };
+    if (practice) return { class: place, practice, students: [] };
     const { rows } = await this.pool.query(
       `SELECT p.id,${STUDENT_LABEL} AS name,
          EXISTS(SELECT 1 FROM amp_person_credentials k
@@ -174,7 +183,7 @@ export class SchoolSignIn {
       [found.id],
     );
     return {
-      class: { name: found.name },
+      class: place,
       signIn: found.sign_in_providers as JoinRoster["signIn"],
       students: rows,
     };

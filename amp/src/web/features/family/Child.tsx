@@ -205,6 +205,7 @@ export function ChildScreen() {
               >
                 <h2 id="child-levels">Where {child.name} is</h2>
                 <RecordLevels
+                  plain
                   record={record}
                   empty={`We’ll find ${child.name}’s level in a few minutes of practice.`}
                   openAreas

@@ -41,7 +41,7 @@ test("all reference families are deterministic and independently solve from disp
           const settled = /There (?:is|are) (\d+)/.exec(p.prompt);
           if (p.prompt.includes("One more"))
             expected = Number(settled?.[1]) + 1;
-          else if (p.prompt.includes("leaves"))
+          else if (p.prompt.includes("Count back one"))
             expected = Number(settled?.[1]) - 1;
           else if (p.prompt.startsWith("Ana counted")) {
             const labels = /Her labels are ([0-9, ]+)\./.exec(p.prompt);

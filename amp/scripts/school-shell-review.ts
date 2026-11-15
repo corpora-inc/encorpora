@@ -176,9 +176,11 @@ export async function classShellJourney(page: Page) {
         .click();
       await page.getByRole("menuitem", { name: label, exact: true }).click();
     }
+    // The open tab may itself sit in More on a phone (More then wears its
+    // name, ui/Tabs.tsx): present and current is enough.
     await page
       .locator(`[data-app-bar] [data-tab="${id}"][aria-current="page"]`)
-      .waitFor();
+      .waitFor({ state: "attached" });
     assert.deepEqual(
       await snapshot(),
       before,

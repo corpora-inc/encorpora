@@ -30,7 +30,7 @@ import { TextArea, TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { useLoggedError } from "../../feedback";
 import { meOptions } from "../../lib/query";
-import { PlaceSwitcher, placeEntries } from "../navigation/PlaceSwitcher";
+import { PlaceSwitcher, usePlaces } from "../navigation/PlaceSwitcher";
 import {
   currentSession,
   orgsOptions,
@@ -207,12 +207,18 @@ function Frame({
 }) {
   const index = setupSteps.indexOf(step);
   const me = useQuery(meOptions(currentSession())).data;
+  const account = me?.signedIn ? me : null;
+  // The same places, named the same way, as every other switcher: the
+  // places read, never the family's class name from `/me` alone.
+  const { groups, more } = usePlaces(account);
   // A half-finished setup never keeps someone from their other places.
   const switcher =
-    me?.signedIn && placeEntries(me).length > 1 ? (
+    account && groups.flatMap((group) => group.entries).length > 1 ? (
       <PlaceSwitcher
-        me={me}
+        me={account}
         current={`school:${orgId}`}
+        groups={groups}
+        more={more}
         label={state?.org.name}
       />
     ) : null;
