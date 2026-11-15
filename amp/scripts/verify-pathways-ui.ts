@@ -42,6 +42,8 @@ const vite = await createServer({
     host: "127.0.0.1",
     port: Number(process.env.AMP_WEB_PORT ?? 0),
     strictPort: true,
+    // Other work edits src/web while this runs: no reload mid-proof.
+    hmr: false,
     fs: { allow: [process.cwd(), await realpath("node_modules")] },
   },
 });
@@ -60,7 +62,42 @@ const output = process.env.AMP_MAP_OUTPUT ?? "artifacts/pathways";
 await mkdir(output, { recursive: true });
 const target = skills.find((s) => s.id === "nonlinear-systems")!;
 const other = skills.find((s) => s.id === "nonlinear-intersection-count")!;
-function me(account: string, learnerCount = 2) {
+const FAMILY_ID = "5b9f0f70-3d8e-45e4-a5f1-bbb98ee213d5";
+/** The map's address: a signed-in parent's child has their own
+ * (`/family/<family>/kids/<learner>/pathways`, features/spaces/identity.ts);
+ * yourself and a guest have `/pathways`. */
+const assertMap = (pathname: string) =>
+  assert.match(
+    pathname,
+    new RegExp(`^/(?:pathways|family/${FAMILY_ID}/kids/[^/]+/pathways)$`),
+  );
+function me(account: string, learnerCount = 2, self = false) {
+  // Learning for themselves: their own map at /pathways, where they practice
+  // (a parent's child's map is the child's to read, never to practice from).
+  if (self) {
+    const parent = parentMe(account, 1);
+    return {
+      ...parent,
+      // Not a child: the adult's own learner, in the family's practice list
+      // (as the server lists it) and in none of the children.
+      learners: [],
+      family: {
+        ...parent.family,
+        learners: parent.family.learners.map((learner) => ({
+          ...learner,
+          adult: true,
+        })),
+      },
+      next: "practice",
+      adultPractice: {
+        eligible: true,
+        learner: { id: `${account}-a`, name: "Sample learner A", active: true },
+      },
+    };
+  }
+  return parentMe(account, learnerCount);
+}
+function parentMe(account: string, learnerCount: number) {
   return fixtureMe(
     {
       consent: {
@@ -94,6 +131,85 @@ function me(account: string, learnerCount = 2) {
     account,
   );
 }
+/** The family's own projection: each child the family holds, readable. */
+function familyProjection(learnerCount: number) {
+  const capabilities = {
+    readProgress: true,
+    readWorkbooks: false,
+    createWorkbook: false,
+    recordWorkbook: false,
+    practiceHere: false,
+    continuePurchase: false,
+    purchase: false,
+    rename: false,
+    changeBirthYear: false,
+    changePracticeSettings: false,
+    manageConsent: false,
+    delete: false,
+    readGrades: false,
+    editGrades: false,
+    manageDevices: false,
+  };
+  const child = (id: string, name: string, birthYear: number) => ({
+    id,
+    name,
+    birthYear,
+    gradeLevel: null,
+    access: {
+      grants: [],
+      hasAccess: false,
+      canPractice: true,
+      learningAllowed: true,
+      freeAllowance: {
+        problems: { total: 100, used: 0, remaining: 100 },
+        workbooks: { total: 0, earned: 0, made: 0, available: 0, nextAt: null },
+      },
+    },
+    week: { minutes: 0, problems: 0, lastPracticed: null },
+    nextUp: { kind: "adaptive-practice", learnerId: id, task: null },
+    capabilities,
+    classes: [],
+    paths: {
+      progress: `/api/v1/learners/${id}/progress`,
+      workbooks: null,
+      practiceHere: null,
+      continue: null,
+    },
+  });
+  return {
+    familyId: FAMILY_ID,
+    displayName: null,
+    holderName: null,
+    role: "holder",
+    teachingPlace: null,
+    capabilities: {
+      readFamily: true,
+      addChildren: true,
+      manageConsent: true,
+      manageBilling: true,
+      inviteSecondParent: true,
+      manageSecondParent: true,
+      readTeaching: false,
+    },
+    children: [
+      child("parent-one-a", "Sample learner A", 2016),
+      child("parent-one-b", "Sample learner B", 2014),
+    ].slice(0, learnerCount),
+    today: {
+      date: "2026-11-14",
+      tasks: [],
+      week: {
+        from: "2026-11-09",
+        minutes: 0,
+        problems: 0,
+        skills: 0,
+        objectives: 0,
+        working: 0,
+        students: learnerCount,
+      },
+    },
+  };
+}
 async function fixture(
   page: Page,
   {
@@ -102,6 +218,7 @@ async function fixture(
     catalogSkills = skills,
     learnerCount = 2,
     selectedLearnerId = "parent-one-a" as string | null,
+    self = false,
   } = {},
 ) {
   const batches: { templateId?: string }[] = [];
@@ -156,12 +273,35 @@ async function fixture(
       });
     if (pathname.endsWith("/events"))
       return route.fulfill({ status: 204, body: "" });
+    // The parent's family: a child's map is at its own address in it
+    // (/family/<family>/kids/<learner>/pathways), so choosing a learner opens
+    // that address.
+    if (pathname.endsWith("/v1/families"))
+      return route.fulfill({
+        json: {
+          families: [
+            {
+              familyId: FAMILY_ID,
+              displayName: null,
+              classId: null,
+              orgId: null,
+              role: "holder",
+              teachingPlace: null,
+              capabilities: { readFamily: true, readTeaching: false },
+            },
+          ],
+          next: null,
+        },
+      });
+    if (pathname.endsWith(`/v1/families/${FAMILY_ID}`))
+      return route.fulfill({ json: familyProjection(learnerCount) });
     if (pathname.endsWith("/me"))
       return route.fulfill({
         json: me(
           route.request().headers().authorization?.replace("Bearer ", "") ??
             "parent-one",
           learnerCount,
+          self,
         ),
       });
     if (pathname.includes("/problem-lessons/"))
@@ -445,7 +585,7 @@ async function verifySettledLabels(page: Page, animated = false) {
   await page.getByRole("button", { name: "Whole map", exact: true }).click();
   await settled();
   const areas = page.locator(".area-label");
-  assert.equal(await areas.count(), 6);
+  assert.equal(await areas.count(), 5); // five areas of math
   const snapshot = () =>
     areas.evaluateAll((els) =>
       els.map((el) => {
@@ -549,7 +689,11 @@ async function verifyLessonRecovery() {
         0,
       );
       const back = page.getByRole("link", { name: "Back to map", exact: true });
-      assert.equal(await back.getAttribute("href"), "/pathways");
+      // Back to the map that failed: the chosen child's own address.
+      assert.equal(
+        new URL((await back.getAttribute("href"))!, origin).pathname,
+        `/family/${FAMILY_ID}/kids/parent-one-a/pathways`,
+      );
       await page.unroute(modulePattern);
       await back.click();
       await page.locator(".pathways-canvas canvas").waitFor();
@@ -562,10 +706,14 @@ async function verifyLessonRecovery() {
     await opener.waitFor();
     await opener.click();
     const dialog = page.getByRole("dialog", { name: "Explore a problem type" });
-    const backToSkill = `Back to ${target.title}`;
-    await dialog
-      .getByRole("button", { name: backToSkill, exact: true })
-      .waitFor();
+    // The layer's own back row (ui/LayerControls), named for the skill; the
+    // failure's own way out under it says the same.
+    const backToSkill = dialog.locator(`[data-layer-back="${target.title}"]`);
+    await backToSkill.waitFor();
+    assert.equal(
+      await backToSkill.getAttribute("aria-label"),
+      `Back to ${target.title}`,
+    );
     const close = dialog.getByRole("button", { name: /^Close/ });
     assert((await close.boundingBox())!.height >= 44);
     assert.equal(
@@ -578,16 +726,16 @@ async function verifyLessonRecovery() {
       path: `${output}/lesson-${failure}-recovery.png`,
       fullPage: true,
     });
+    // The cross puts the whole stack away (ui/LayerControls): the skill
+    // under the lesson goes with it, and the map is all that is left.
     await close.click();
     await dialog.waitFor({ state: "detached" });
-    assert(
-      await opener.evaluate((el) => el === document.activeElement),
-      "closing the lesson returns focus to its row",
-    );
+    await skillLayer(page).waitFor({ state: "detached" });
+    await page.locator(".pathways-canvas canvas").waitFor();
+    // Back, by contrast, steps one layer: to the skill, focus on its row.
+    await page.goto(`${origin}/pathways?skill=${target.id}`);
     await opener.click();
-    await dialog
-      .getByRole("button", { name: backToSkill, exact: true })
-      .click();
+    await backToSkill.click();
     await dialog.waitFor({ state: "detached" });
     assert(
       await opener.evaluate((el) => el === document.activeElement),
@@ -645,7 +793,13 @@ async function choose(page: Page, label: string, value: string) {
     throw error;
   }
   await list.waitFor({ state: "detached" });
-  assert.equal(await button.getAttribute("data-value"), value);
+  // Another learner is another address: the picker shows the choice once
+  // that map is in.
+  for (let tries = 0; ; tries++) {
+    if ((await button.getAttribute("data-value")) === value) break;
+    assert(tries < 100, `${label} shows ${value}`);
+    await page.waitForTimeout(100);
+  }
 }
 /** The one search's field (docs/design/ia.md): skills, lessons, films and
  * math words, grouped once something is typed. */
@@ -671,6 +825,14 @@ const lessonRow = (page: Page) =>
 /** The search field, read even while a layer hides the page from the
  * accessibility tree. */
 const searchField = (page: Page) => page.locator(".pathways-search input");
+/** A signed-in parent's /pathways is their child's own address: wait for
+ * that before typing, so keys land in the map that stays. */
+async function onCanonicalMap(page: Page, signedIn: boolean) {
+  if (signedIn)
+    await page.waitForURL((url) =>
+      url.pathname.startsWith(`/family/${FAMILY_ID}/kids/`),
+    );
+}
 async function verifySearchFilters() {
   for (const [width, colorScheme] of [
     [320, "light"],
@@ -686,6 +848,7 @@ async function verifySearchFilters() {
     try {
       await fixture(page, { signedIn: width !== 390 });
       await page.goto(`${origin}/pathways?topic=L&filter=K`);
+      await onCanonicalMap(page, width !== 390);
       const input = page.getByRole("searchbox", {
         name: SEARCH,
         exact: true,
@@ -800,7 +963,7 @@ async function verifySearchFilters() {
         "",
         "Clearing the search removes the URL filter",
       );
-      assert.equal(new URL(page.url()).pathname, "/pathways");
+      assertMap(new URL(page.url()).pathname);
       await page.reload();
       await input.waitFor();
       assert.equal(
@@ -809,6 +972,7 @@ async function verifySearchFilters() {
         "The cleared search survives reload",
       );
       await page.goto(`${origin}/pathways?topic=${"L".repeat(101)}&filter=K`);
+      await onCanonicalMap(page, width !== 390);
       await input.waitFor();
       assert.equal(
         await input.inputValue(),
@@ -833,7 +997,7 @@ async function verifySearchFilters() {
       await skillResult(page, "count-to-20").click();
       await page.waitForURL(() => openSkills(page).join() === "count-to-20");
       await skillLayer(page).waitFor();
-      assert.equal(new URL(page.url()).pathname, "/pathways");
+      assertMap(new URL(page.url()).pathname);
       await page.goBack();
       await input.waitFor();
       assert.equal(
@@ -890,6 +1054,7 @@ async function verifySearchTyping() {
       await page.addInitScript({ content: "window.__name = (f) => f;" });
       await fixture(page, { signedIn: true });
       await page.goto(`${origin}/pathways`);
+      await onCanonicalMap(page, true);
       const input = page.getByRole("searchbox", { name: SEARCH, exact: true });
       await input.waitFor();
       await page.locator(".pathways-canvas canvas").waitFor();
@@ -998,15 +1163,23 @@ try {
         .getByText(/^2 of \d+ skills earned/)
         .first()
         .waitFor({ state: "attached" });
-      // The way to practice is the app frame's one action in its bar.
-      const go = page.locator("[data-shell-action]");
-      assert.equal(await go.getAttribute("href"), "/practice");
+      // A parent's child's map (the Family space): the child's practice is
+      // their own session, from their page or Today, so the bar offers no
+      // /practice, which would be the adult's own (resolve.ts).
+      assert.equal(await page.locator("[data-shell-action]").count(), 0);
       await noOverflow(page);
       if (width <= 390) {
         const mapBox = (await page.locator(".pathways-canvas").boundingBox())!;
+        // No hero above the map: only the bar, the learner's row and the
+        // search with the Grades | 3D switch (Q-212), then the map at once,
+        // in the screen's top third.
+        const toolbar = (await page
+          .locator(".pathways-toolbar")
+          .boundingBox())!;
         assert(
-          mapBox.y < 250,
-          "phone overview is visible without scrolling through a hero",
+          mapBox.y - (toolbar.y + toolbar.height) <= 16 &&
+            mapBox.y < page.viewportSize()!.height / 3,
+          `phone overview is visible without scrolling through a hero (map at ${Math.round(mapBox.y)} px, controls end at ${Math.round(toolbar.y + toolbar.height)} px)`,
         );
         // The map opens on the learner's level, named; Whole map shows the areas.
         await page.locator(".skill-label").first().waitFor();
@@ -1014,7 +1187,8 @@ try {
           .getByRole("button", { name: "Whole map", exact: true })
           .click();
         await page.locator(".area-label").first().waitFor();
-        assert.equal(await page.locator(".area-label").count(), 6);
+        // Five areas of math, everywhere (1de420a48).
+        assert.equal(await page.locator(".area-label").count(), 5);
         assert(
           await page
             .locator(".area-label")
@@ -1050,7 +1224,7 @@ try {
       await page
         .getByRole("heading", { name: target.title, exact: true })
         .waitFor();
-      assert.equal(new URL(page.url()).pathname, "/pathways");
+      assertMap(new URL(page.url()).pathname);
       assert.deepEqual(openSkills(page), [target.id]);
       assert.deepEqual(
         await page.locator(".pathways-viewport").boundingBox(),
@@ -1062,11 +1236,11 @@ try {
         `https://amp.corpora.inc/pathways/${target.id}`,
       );
       assert.equal(await page.title(), `${target.title} | AMP Pathways`);
-      assert.match(
-        (await page
-          .getByRole("link", { name: "Try a problem" })
-          .getAttribute("href")) ?? "",
-        /practice\?skill=nonlinear-systems/,
+      // Read, not practiced, here: practicing from the map is a learner's
+      // own (the drill below, learning for themselves).
+      assert.equal(
+        await page.getByRole("link", { name: "Try a problem" }).count(),
+        0,
       );
       assert.equal(
         await page.locator(".pathways-skill-list .stage-3").count(),
@@ -1084,7 +1258,9 @@ try {
         name: "Explore a problem type",
       });
       await lesson.getByText("Example", { exact: true }).waitFor();
-      await lesson.getByRole("button", { name: /^Close/ }).click();
+      // Back one layer, to the skill (the cross would put the whole stack
+      // away, ui/LayerControls).
+      await lesson.locator("[data-layer-back]").click();
       await lesson.waitFor({ state: "detached" });
       assert.equal(
         await opener.evaluate((el) => el === document.activeElement),
@@ -1099,7 +1275,7 @@ try {
         // The lesson is a real route: Forward opens it again.
         await page.goForward();
         await lesson.getByText("Example", { exact: true }).waitFor();
-        await lesson.getByRole("button", { name: /^Close/ }).click();
+        await lesson.locator("[data-layer-back]").click();
         await lesson.waitFor({ state: "detached" });
         await page
           .getByRole("heading", { name: target.title, exact: true })
@@ -1126,16 +1302,6 @@ try {
       await page.keyboard.press("Escape");
       await skillLayer(page).waitFor({ state: "detached" });
       assert.deepEqual(openSkills(page), []);
-      await page.goForward();
-      await skillLayer(page).waitFor();
-      assert.equal(
-        await skillLayer(page)
-          .getByText(/frontier|estimated range/)
-          .count(),
-        0,
-      );
-      await page.keyboard.press("Escape");
-      await skillLayer(page).waitFor({ state: "detached" });
       await page.getByRole("button", { name: "Zoom in", exact: true }).click();
       await noOverflow(page);
       await page.waitForFunction(
@@ -1238,7 +1404,7 @@ try {
   const drill = await browser.newPage({
     viewport: { width: 390, height: 844 },
   });
-  const batches = await fixture(drill);
+  const batches = await fixture(drill, { self: true });
   await drill.goto(`${origin}/pathways?skill=${target.id}`);
   await drill.getByRole("link", { name: "Try a problem", exact: true }).click();
   await drill.locator("#problem-prompt").waitFor();
@@ -1266,7 +1432,7 @@ try {
     viewport: { width: 390, height: 844 },
     reducedMotion: "reduce",
   });
-  const linkedBatches = await fixture(linked);
+  const linkedBatches = await fixture(linked, { self: true });
   await linked.goto(`${origin}/pathways?skill=${target.id}`);
   await linked.getByRole("heading", { name: target.title }).waitFor();
   const related = skillLayer(linked)
@@ -1446,18 +1612,31 @@ try {
         await route.fallback();
       },
     );
-    await choose(pendingPhone, "Learner", "parent-one-b");
+    // Another child's map is their own address (features/spaces/identity.ts):
+    // the router holds this map, whole, until that child's record is in,
+    // then shows theirs. Nothing empty or half-loaded paints between.
+    await pendingPhone.getByRole("button", { name: /^Learner/ }).click();
     await pendingPhone
-      .getByText("Loading earned skills…", { exact: true })
-      .waitFor();
-    await pendingPhone.waitForFunction(() => {
-      const loading = document.querySelector(".pathways-status .amp-loading");
-      return loading && getComputedStyle(loading).opacity === "1";
-    });
+      .getByRole("listbox", { name: "Learner", exact: true })
+      .locator('[role="option"][data-value="parent-one-b"]')
+      .click();
+    await pendingPhone.waitForTimeout(500);
+    assert.equal(
+      await pendingPhone
+        .locator(".pathways-phone-summary", {
+          hasText: /^2 of \d+ skills earned$/,
+        })
+        .count(),
+      1,
+      "the shown map stays whole while the next child's record loads",
+    );
     await pendingPhone.screenshot({
       path: `${output}/progress-switch-pending.png`,
     });
     releaseSwitchedProgress();
+    await pendingPhone.waitForURL((url) =>
+      url.pathname.startsWith(`/family/${FAMILY_ID}/kids/parent-one-b/`),
+    );
     await pendingPhone
       .locator(".pathways-phone-summary", {
         hasText: /^0 of \d+ skills earned$/,
@@ -1472,7 +1651,7 @@ try {
   // A direct lesson opens before the map's catalog resolves. The mounted map
   // and its background route preload must share that in-flight request.
   const once = await browser.newPage({ viewport: { width: 390, height: 844 } });
-  await fixture(once);
+  await fixture(once, { self: true });
   let catalogRequests = 0;
   let catalogAsked!: () => void;
   const asked = new Promise<void>((resolve) => {
@@ -1613,6 +1792,13 @@ try {
       hasText: /^2 of \d+ skills earned/,
     })
     .waitFor({ state: "attached" });
+  // A parent's child's map, at the child's own address in the Family space:
+  // the child's practice is their own session (from their page or Today),
+  // so the bar offers no /practice, which would be the adult's (resolve.ts).
+  await page.waitForURL((url) =>
+    url.pathname.startsWith(`/family/${FAMILY_ID}/kids/parent-one-a/`),
+  );
+  assert.equal(await page.locator("[data-shell-action]").count(), 0);
   await choose(page, "Learner", "parent-one-b");
   await page
     .locator('.pathways-summary[aria-busy="false"]', {
@@ -1626,6 +1812,10 @@ try {
   );
   await page.keyboard.press("Escape");
   await skillLayer(page).waitFor({ state: "detached" });
+  // Escape puts the stack away by address: let that settle before the
+  // picker opens over the map.
+  await page.waitForURL((url) => !url.searchParams.has("open"));
+  await page.waitForTimeout(500);
   await choose(page, "Learner", "parent-one-a");
   await page
     .locator('.pathways-summary[aria-busy="false"]', {
@@ -1659,6 +1849,7 @@ try {
   await evolving.clock.install();
   await fixture(evolving, { catalogSkills: growingCatalog });
   await evolving.goto(`${origin}/pathways`);
+  await onCanonicalMap(evolving, true);
   await evolving.locator(".pathways-canvas canvas").waitFor();
   await evolving.getByRole("button", { name: "Zoom in", exact: true }).click();
   // Found in the list, the skill is framed; its name is the witness.
@@ -1748,6 +1939,7 @@ try {
   const lost = await browser.newPage({ viewport: { width: 390, height: 900 } });
   await fixture(lost);
   await lost.goto(`${origin}/pathways`);
+  await onCanonicalMap(lost, true);
   await lost.locator(".pathways-canvas canvas").waitFor();
   await lost.getByRole("button", { name: "Zoom in", exact: true }).click();
   await lost
@@ -1799,7 +1991,7 @@ try {
         name: new RegExp(`^${skillTitle("event-sets")}`),
       });
       const href = new URL((await application.getAttribute("href"))!, origin);
-      assert.equal(href.pathname, "/pathways");
+      assertMap(href.pathname);
       assert.equal(
         href.searchParams.get("open"),
         "skill:odd-and-even,skill:event-sets",
