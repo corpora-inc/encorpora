@@ -470,11 +470,17 @@ test(
         "UPDATE amp_consent_requests SET expires_at=now()-interval '1 second' WHERE phase='awaiting-initial'",
       );
       assert.equal((await r.view("parent")).request?.phase, "expired");
-      await installConsentPolicy(pool, {
-        ...p,
-        review: { ...p.review, expiresAt: "2020-01-01T00:00:00.000Z" },
-      });
-      assert.equal((await r.view("parent")).available, false);
+      // No law sets a review date: a past review date never shuts consent off.
+      await installConsentPolicy(pool, p);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT reviewed_until='infinity'::timestamptz AS forever FROM amp_consent_policy",
+          )
+        ).rows[0].forever,
+        true,
+      );
+      assert.equal((await r.view("parent")).available, true);
     }),
 );
 
