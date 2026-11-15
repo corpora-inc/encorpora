@@ -1305,6 +1305,17 @@ const schoolStart = createRoute({
     "SchoolStartScreen",
   ),
 });
+/** "I run a school": the school, then its classes (one short form). */
+const schoolCreate = createRoute({
+  getParentRoute: () => root,
+  path: "/school/start/school",
+  staticData: { space: "account" },
+  beforeLoad: staffScreen,
+  component: lazyRouteComponent(
+    () => import("../features/school/pilots/SchoolCreateScreen"),
+    "SchoolCreateScreen",
+  ),
+});
 /** Clever. Without Clever enabled there is nothing to connect here, so the
  * address opens class setup instead (no page that can only fail). */
 const schoolConnect = createRoute({
@@ -1782,6 +1793,7 @@ export const router = createRouter({
     schoolsTrust,
     schoolsContinue,
     schoolStart,
+    schoolCreate,
     schoolConnect,
     schoolAdopt,
     familyLink,

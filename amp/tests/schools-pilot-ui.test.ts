@@ -6,6 +6,7 @@ import {
 } from "../src/schools/pilot-contracts.js";
 import {
   accessView,
+  pilotLeft,
   practiceDate,
 } from "../src/web/features/school/pilots/presentation.js";
 
@@ -126,4 +127,38 @@ test("class setup requires explicit school authorization and bounds student name
     }).success,
     false,
   );
+});
+
+test("a teacher's class needs no title: one tick and a name", () => {
+  const input = {
+    requestId: "11111111-1111-4111-8111-111111111111",
+    schoolName: "School",
+    className: "Math",
+    timezone: "UTC",
+    signerName: "Teacher",
+    agreementVersion: "fixture",
+    authorized: true,
+  };
+  assert.ok(startSchoolClassSchema.safeParse(input).success);
+  assert.equal(
+    startSchoolClassSchema.safeParse({ ...input, signerName: "" }).success,
+    false,
+  );
+});
+
+test("the header says how many pilot or grace days are left, never 0", () => {
+  assert.equal(
+    pilotLeft({ kind: "active", until: "2026-12-06T15:00:00Z" }, now),
+    "Free pilot · 23 days left",
+  );
+  assert.equal(
+    pilotLeft({ kind: "ending", until: "2026-11-14T03:00:00Z" }, now),
+    "Grace period · 1 day left",
+  );
+  assert.equal(
+    pilotLeft({ kind: "ending", until: "2026-11-13T15:00:01Z" }, now),
+    "Grace period · 1 day left",
+  );
+  assert.equal(pilotLeft({ kind: "ended" }, now), null);
+  assert.equal(pilotLeft({ kind: "paid" }, now), null);
 });

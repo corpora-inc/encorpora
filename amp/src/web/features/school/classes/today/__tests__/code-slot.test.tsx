@@ -68,6 +68,7 @@ const base: Access = {
   view: { kind: "none" },
   pilot: undefined,
   teaches: true,
+  requests: true,
   pending: false,
   practice: "open",
   closed: false,

@@ -48,6 +48,9 @@ export function useClassAccess(place: Place): {
   view: AccessView;
   pilot: PilotState | undefined;
   teaches: boolean;
+  /** Can ask for seats for this class: its teacher, or a school admin
+   * (who runs a self-serve school's classes and is its buyer). */
+  requests: boolean;
   /** Still learning where the class stands: screens hold their sign-in
    * tools' place rather than show and then withdraw them. */
   pending: boolean;
@@ -73,6 +76,7 @@ export function useClassAccess(place: Place): {
   }).data;
   const school = org?.kind === "school" && !org.demo;
   const teaches = org?.teaches?.includes(place.class) ?? false;
+  const requests = teaches || (org?.can?.includes("classes.update") ?? false);
   // Only someone the server lets read the class's pilot asks for it: its
   // teacher, or an administrator. A viewer or an aide would only be
   // refused, and a refused read would hold the screen's wait forever.
@@ -188,6 +192,7 @@ export function useClassAccess(place: Place): {
       view: { kind: "none" },
       pilot,
       teaches,
+      requests,
       pending,
       practice: "open",
       closed: false,
@@ -224,6 +229,7 @@ export function useClassAccess(place: Place): {
     view,
     pilot,
     teaches,
+    requests,
     pending,
     practice,
     closed: practice !== "open" || checking,
@@ -246,7 +252,11 @@ export type EndedStep = {
   action: "seats" | "year" | "students" | null;
 };
 export function endedStep(
-  access: { end: "session" | "roster" | "coverage" | null; teaches: boolean },
+  access: {
+    end: "session" | "roster" | "coverage" | null;
+    teaches: boolean;
+    requests?: boolean;
+  },
   /** This reader can set up the school's next year. */
   rollover: boolean,
 ): EndedStep {
@@ -262,7 +272,7 @@ export function endedStep(
     };
   return {
     title: "Practice has ended",
-    action: access.teaches ? "seats" : null,
+    action: (access.requests ?? access.teaches) ? "seats" : null,
   };
 }
 /** Whether this reader can set up its school's next year. */
@@ -517,7 +527,7 @@ export function AccessHeaderAction({
 /** Class Settings: practice, as a section like every other (its heading,
  * one quiet line, and Request seats for its teacher). */
 export function AccessLine({ place }: { place: Place }) {
-  const { view, teaches } = useClassAccess(place);
+  const { view, requests } = useClassAccess(place);
   const [, setSearch] = useClassSearch();
   const text =
     view.kind === "active"
@@ -541,7 +551,7 @@ export function AccessLine({ place }: { place: Place }) {
           <h2 id="class-practice">Practice</h2>
           <p className={school.quiet}>{text}</p>
         </div>
-        {teaches && (
+        {requests && (
           <Button variant="secondary" onClick={() => setSearch({ seats: 1 })}>
             Request seats
           </Button>
@@ -554,11 +564,11 @@ export function AccessLine({ place }: { place: Place }) {
 /** The sheets practice access opens over a class page, by address
  * (`?seats=1`, `?authorize=1`), so Back and refresh keep them. */
 export function AccessSheets({ place }: { place: Place }) {
-  const { view, pilot, teaches } = useClassAccess(place);
+  const { view, pilot, teaches, requests } = useClassAccess(place);
   const [search, , close] = useClassSearch();
   const seats = search.seats === 1 || search.seats === "1";
   const authorize = search.authorize === 1 || search.authorize === "1";
-  if (view.kind === "none" || !teaches) return null;
+  if (view.kind === "none" || !requests) return null;
   return (
     <>
       <RequestSeatsSheet
@@ -568,7 +578,7 @@ export function AccessSheets({ place }: { place: Place }) {
         open={seats}
         onClose={() => close("seats")}
       />
-      {view.kind === "start" && pilot && !pilot.authorized && (
+      {teaches && view.kind === "start" && pilot && !pilot.authorized && (
         <AuthorizeSheet
           place={place}
           until={view.until}
@@ -809,7 +819,6 @@ function AuthorizeSheet({
 }) {
   const session = currentSession();
   const [name, setName] = useState(session.name ?? "");
-  const [title, setTitle] = useState("Teacher");
   const [authorized, setAuthorized] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -823,7 +832,6 @@ function AuthorizeSheet({
       await pilotApi.authorize(session, place.class, {
         version: AGREEMENT_VERSION,
         signerName: name.trim(),
-        signerTitle: title.trim(),
         authorized: true,
       });
       await pilotApi.activate(session, place.class);
@@ -852,10 +860,8 @@ function AuthorizeSheet({
         <form className={styles.sheetBody} onSubmit={submit}>
           <Authorization
             name={name}
-            title={title}
             authorized={authorized}
             onName={setName}
-            onTitle={setTitle}
             onAuthorized={setAuthorized}
             disabled={busy}
           />
@@ -864,7 +870,7 @@ function AuthorizeSheet({
               type="submit"
               variant="primary"
               aria-busy={busy}
-              disabled={busy || !authorized || !name.trim() || !title.trim()}
+              disabled={busy || !authorized || !name.trim()}
             >
               Start practice
             </Button>
