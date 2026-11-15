@@ -57,3 +57,24 @@ export class LessonBoundary extends Component<
     );
   }
 }
+
+/** Around the lesson layer's own chunk (nav/LayerHost): when that chunk
+ * fails to load, its failure stays in the layer, named for where closing
+ * goes, and the page under it stays. Nothing escapes to the route. */
+export class LessonLayerBoundary extends Component<
+  { children: ReactNode; fallback: ReactNode },
+  { failed: boolean }
+> {
+  state = { failed: false };
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+  componentDidCatch() {
+    // Exception messages can contain request details; log only the failed surface.
+    console.error("Pathways lesson layer failed to load.");
+  }
+  render() {
+    // React.lazy retains a rejected import: Reload page is the way to retry.
+    return this.state.failed ? this.props.fallback : this.props.children;
+  }
+}

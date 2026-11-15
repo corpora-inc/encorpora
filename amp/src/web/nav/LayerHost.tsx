@@ -10,6 +10,11 @@ import {
 // A lesson is its own chunk, with every problem type's title: it opens with
 // its head laid out (features/pathways/LessonDialog.tsx).
 const LessonDialog = lazy(() => import("../features/pathways/LessonDialog"));
+import {
+  LessonFailure,
+  LessonLayerBoundary,
+} from "../features/pathways/LessonRecovery";
+import { Dialog } from "../ui/Dialog";
 import { StudentLayer } from "../features/school/classes/StudentLayer";
 import { studentRecordOptions } from "../features/school/classes/teacher-api";
 import {
@@ -164,23 +169,47 @@ function Layer({
         </SkillLayer>
       );
     }
-    case "lesson":
+    case "lesson": {
+      // The recovery's way back names where closing goes: the layer under
+      // it, else the page (in own practice, the map).
+      const backLabel = back ? `Back to ${back}` : org ? "Back" : undefined;
       return (
-        <Suspense fallback={null}>
-          <LessonDialog
-            lesson={entity.id}
-            onClose={close}
-            // The recovery's way back names where closing goes: the layer
-            // under it, else the page (in own practice, the map).
-            backLabel={back ? `Back to ${back}` : org ? "Back" : undefined}
-            back={back}
-            aboveLayers
-            actions={
-              lessonActions && ((skill) => lessonActions(entity.id, skill))
-            }
-          />
-        </Suspense>
+        // The lesson's chunk failing to load is the lesson's failure, in
+        // its own sheet: the page and the layers under it stay.
+        <LessonLayerBoundary
+          key={entity.id}
+          fallback={
+            <Dialog
+              open
+              onOpenChange={(open) => {
+                if (!open) close();
+              }}
+              title="Explore a problem type"
+              fullOnPhone
+              tall
+              wide
+              aboveNavigation
+              back={back}
+            >
+              <LessonFailure onBack={close} backLabel={backLabel} />
+            </Dialog>
+          }
+        >
+          <Suspense fallback={null}>
+            <LessonDialog
+              lesson={entity.id}
+              onClose={close}
+              backLabel={backLabel}
+              back={back}
+              aboveLayers
+              actions={
+                lessonActions && ((skill) => lessonActions(entity.id, skill))
+              }
+            />
+          </Suspense>
+        </LessonLayerBoundary>
       );
+    }
     case "area": {
       // Opened from a student's record: their level; else the page's.
       const from = below.filter((layer) => layer.kind === "student").at(-1);
