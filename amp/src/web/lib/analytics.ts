@@ -228,7 +228,6 @@ export function analyticsAllowed(): boolean {
   return (
     !nativeRuntime &&
     !isStudentDevice() &&
-    navigator.doNotTrack !== "1" &&
     !(navigator as Navigator & { globalPrivacyControl?: boolean })
       .globalPrivacyControl
   );

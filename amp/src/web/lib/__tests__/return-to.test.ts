@@ -10,8 +10,7 @@ import {
 } from "../return-to";
 import { filmFrom, filmReturn } from "../../features/films/FilmScreen";
 
-const answer =
-  "/school/o1/classes/c1/map/s1/work/w1?skill=missing-addend";
+const answer = "/school/o1/classes/c1/map/s1/work/w1?skill=missing-addend";
 
 test("a return target is a path inside the app, normalized", () => {
   expect(returnTarget(answer)).toBe(answer);
@@ -53,9 +52,7 @@ test("a film returns where it was opened, never to a film, else its lesson", () 
   expect(filmFrom(`${answer}&lesson=t1`)).toBe(`${answer}&lesson=t1`);
   expect(filmFrom("/lessons/t1/watch?from=/pathways")).toBeUndefined();
   expect(filmFrom("//evil.example")).toBeUndefined();
-  expect(filmReturn("https://evil.example", "t1")).toBe(
-    "/pathways?lesson=t1",
-  );
+  expect(filmReturn("https://evil.example", "t1")).toBe("/pathways?lesson=t1");
   expect(filmReturn("/practice?skill=a", "t1")).toBe("/practice?skill=a");
 });
 
@@ -81,8 +78,9 @@ test("each pushed entry records the one before it; a replace keeps it", () => {
   expect(stampPrevious({ href: "/map/s1" }, here)).toEqual({
     ampPrevious: "/map",
   });
-  expect(stampPrevious({ href: "/x", replace: true }, { href: "/", state: {} }))
-    .toEqual({});
+  expect(
+    stampPrevious({ href: "/x", replace: true }, { href: "/", state: {} }),
+  ).toEqual({});
 });
 
 test("closing goes Back to where it was opened, else to its parent", () => {
@@ -100,8 +98,9 @@ test("closing goes Back to where it was opened, else to its parent", () => {
   // Signing in is never gone Back to.
   expect(closesBack(at("/map/s1", "/sign-in"), "/map")).toBe(false);
   // A named `from` must be the entry before.
-  expect(closesBack(at("/lessons/t/watch", "/x?lesson=t"), "/p", "/x?lesson=t"))
-    .toBe(true);
+  expect(
+    closesBack(at("/lessons/t/watch", "/x?lesson=t"), "/p", "/x?lesson=t"),
+  ).toBe(true);
   expect(closesBack(at("/lessons/t/watch", "/y"), "/p", "/x?lesson=t")).toBe(
     false,
   );

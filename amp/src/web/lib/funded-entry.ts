@@ -101,7 +101,7 @@ const pendingInvite = () => stored("amp.school-invite");
 export function measurementOptOut() {
   if (typeof navigator === "undefined") return false;
   const privacy = navigator as Navigator & { globalPrivacyControl?: boolean };
-  return privacy.globalPrivacyControl === true || navigator.doNotTrack === "1";
+  return privacy.globalPrivacyControl === true;
 }
 
 /** Fixed labels only. No visitor, click, account or learner identifier. */

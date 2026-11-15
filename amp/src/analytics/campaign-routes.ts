@@ -51,7 +51,7 @@ export async function registerCampaignRoutes(
         },
       },
       async (request, reply) => {
-        if (request.headers["sec-gpc"] === "1" || request.headers.dnt === "1")
+        if (request.headers["sec-gpc"] === "1")
           return reply.code(204).send();
         const parsed = campaignEventSchema.safeParse(request.body);
         if (!parsed.success)

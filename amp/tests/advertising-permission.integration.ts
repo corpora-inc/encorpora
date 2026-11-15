@@ -255,7 +255,7 @@ test(
         await app.inject({
           method: "GET",
           url: "/probe",
-          headers: { ...headers, dnt: "1" },
+          headers: { ...headers, "sec-gpc": "1" },
         });
         assert.equal((await view(pool)).status, "off");
         await app.inject({ method: "GET", url: "/probe", headers });
@@ -263,7 +263,7 @@ test(
         const blocked = await app.inject({
           method: "POST",
           url,
-          headers: { ...headers, dnt: "1" },
+          headers: { ...headers, "sec-gpc": "1" },
           payload: allow((await view(pool)).revision),
         });
         assert.equal(blocked.json().status, "off");
@@ -701,7 +701,7 @@ test(
           false,
           "meta",
         );
-        for (const signal of [{ "sec-gpc": "1" }, { dnt: "1" }]) {
+        for (const signal of [{ "sec-gpc": "1" }]) {
           await changeAdvertisingPermission(
             pool,
             "amp|parent",
