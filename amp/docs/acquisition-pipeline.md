@@ -39,7 +39,8 @@ does not restore its old category. They do not rewrite advertising attribution.
 Active pilot grants, including older operator-issued grants, count as existing
 complimentary access in the report and prevent prospect outreach.
 
-The first review becomes due at noon on the day after verified signup. Arizona and Arkansas
+The first contact is due as soon as the signup is verified; the welcome goes out right
+after signup, while the parent still remembers signing up. Arizona and Arkansas
 campaigns provisionally use Phoenix and Chicago time; other sources use New York
 time. The report labels these assumptions. Due time is a review target, not a
 scheduled send. Unverified addresses, opt-outs, bounces, manual holds, changed
