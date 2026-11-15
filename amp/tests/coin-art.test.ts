@@ -96,3 +96,21 @@ test("money sets draw the same coin faces, each with its value written on it", (
   for (const value of ["25¢", "10¢", "5¢", "1¢", "$1"])
     assert.ok(svg.includes(`>${value}<`), value);
 });
+
+// The app's browser build draws from coin-art.files.ts (vite.config.ts):
+// the same files, served as they are.
+test("the browser's coin faces are the same files, one per coin", () => {
+  const source = readFileSync(
+    new URL("../src/web/scene/coin-art.files.ts", import.meta.url),
+    "utf8",
+  );
+  for (const coin of coinKinds)
+    assert.match(
+      source,
+      new RegExp(`import ${coin} from "\\./coin-art/${coin}\\.webp";`),
+    );
+  assert.match(
+    source,
+    /coinFaceUrl: Record<CoinKind, string> = \{\s*penny,\s*nickel,\s*dime,\s*quarter,\s*\}/,
+  );
+});

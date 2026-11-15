@@ -103,6 +103,7 @@ import {
   playCorrectFeedback,
 } from "./features/practice/feedback-preferences";
 import { Loading } from "./ui/Loading";
+import { prefetchMoneyArt } from "./scene/money-art";
 type ReportSheet = typeof import("./ReportProblemSheet");
 /** The report sheet uses the UI kit's stylesheets, so it loads in the
  * browser on demand (this module also loads under Node). */
@@ -292,6 +293,16 @@ export function PracticeWorkspace(props: Props) {
     pending,
   } = props;
   const review = props.review;
+  // Practice has started: the money pictures arrive while the learner works,
+  // so a later money problem finds them cached (scene/money-art.ts).
+  useEffect(() => {
+    if (typeof requestIdleCallback === "function") {
+      const idle = requestIdleCallback(prefetchMoneyArt, { timeout: 5000 });
+      return () => cancelIdleCallback(idle);
+    }
+    const later = setTimeout(prefetchMoneyArt, 1000);
+    return () => clearTimeout(later);
+  }, []);
   useEffect(() => {
     if (review) return;
     let frame = 0,
