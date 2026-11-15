@@ -1,3 +1,7 @@
+import {
+  recordActivation,
+  recordLearnerActivation,
+} from "../analytics/activation.js";
 import { courseBand } from "../schools/term-grades.js";
 import { activeToday } from "../schools/principal.js";
 import type { PoolConfig } from "pg";
@@ -436,6 +440,8 @@ export class PostgresRepository implements Repository {
       await ensureFamilyClass(client, this.pool, accountId, {
         converting: false,
       });
+      if (!restricted)
+        await recordActivation(client, { accountId, step: "learner_added" });
       if (canName)
         await activateGiftInTransaction(
           client,
@@ -1123,6 +1129,7 @@ export class PgTransaction implements LearnerTransaction {
     );
     if (outcome.evidenceSource !== "paper") await this.chargeFreeOnline();
     await recordTrialMilestones(this.db, this.learnerId, this.limits);
+    await recordLearnerActivation(this.db, this.learnerId, "answer");
   }
   async trialProgress() {
     const result = await this.db.query(
@@ -1247,6 +1254,8 @@ export class PgTransaction implements LearnerTransaction {
         "UPDATE amp_learners SET free_workbooks_used=LEAST(5,free_workbooks_used+1) WHERE id=$1",
         [this.learnerId],
       );
+    if (inserted.rowCount)
+      await recordLearnerActivation(this.db, this.learnerId, "workbook");
     const result = await this.db.query(
       `SELECT ${workbookColumns} FROM amp_workbooks WHERE learner_id=$1
         AND workbook_date=$2 AND number=$3 AND minutes=$4`,

@@ -1,3 +1,4 @@
+import { recordActivation } from "../analytics/activation.js";
 import { randomUUID } from "node:crypto";
 import type { PoolClient } from "pg";
 import {
@@ -59,5 +60,6 @@ export async function insertFamilyChild(
       name ? PARENT_ENTRY.version : null,
     ],
   );
+  await recordActivation(client, { accountId, step: "learner_added" });
   return learner;
 }

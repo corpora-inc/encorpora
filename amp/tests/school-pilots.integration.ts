@@ -88,9 +88,10 @@ test(
         }),
         true,
       );
+      // The pilot started with the class: no Start to press.
       assert.equal(
         (await classPilotState(db, created.classId)).status,
-        "ready",
+        "active",
       );
       await assert.rejects(
         activateClassPilot(repo, other, created.classId),
@@ -107,25 +108,18 @@ test(
         await schoolConsentActive(db, schoolAccountId(first.id)),
         true,
       );
-      assert.equal(
-        (await schoolPilotAccess(db, first.learner_id)).active,
-        false,
-      );
-      // Before Start: sign-in says so, in school terms, before any pictures,
-      // and a student who does sign in waits on their teacher, never on a
-      // family's free problems.
-      assert.equal(await classPracticeGate(db, created.classId), "waiting");
+      assert.equal(await classPracticeGate(db, created.classId), null);
       const signedIn = await repo.issueStudentSession({
         personId: first.id,
         mode: "shared",
       });
-      const waiting = await studentMe(db, signedIn.token, true);
-      assert.equal(waiting.signedIn && waiting.school?.practice, "waiting");
+      const running = await studentMe(db, signedIn.token, true);
+      assert.equal(running.signedIn && running.school?.practice, undefined);
+      // A school's student never spends a family's free problems.
       await learning.transaction(
         schoolAccountId(first.id),
         first.learner_id,
         async (tx) => {
-          assert.equal(await tx.hasAccess(), false);
           assert.equal((await tx.freeAllowance()).problems.remaining, 0);
           assert.equal((await tx.freeAllowance()).workbooks.available, 0);
         },
@@ -136,9 +130,6 @@ test(
         created.classId,
       );
       assert.equal(activation.status, "active");
-      assert.equal(await classPracticeGate(db, created.classId), null);
-      const running = await studentMe(db, signedIn.token, true);
-      assert.equal(running.signedIn && running.school?.practice, undefined);
       assert.deepEqual(
         await activateClassPilot(repo, teacher, created.classId),
         activation,
@@ -149,7 +140,7 @@ test(
       );
       assert.equal(
         Date.parse(activation.graceEndsAt!) - Date.parse(activation.endsAt!),
-        7 * 86400000,
+        14 * 86400000,
       );
       assert.equal(
         (await schoolPilotAccess(db, first.learner_id)).active,
@@ -201,7 +192,7 @@ test(
         1,
       );
       await db.query(
-        "UPDATE amp_teacher_pilots SET started_at=now()-interval '31 days',ends_at=now()-interval '1 day',grace_ends_at=now()+interval '6 days'",
+        "UPDATE amp_teacher_pilots SET started_at=now()-interval '31 days',ends_at=now()-interval '1 day',grace_ends_at=now()+interval '13 days'",
       );
       assert.equal(
         (await classPilotState(db, created.classId)).status,
@@ -212,7 +203,7 @@ test(
         true,
       );
       await db.query(
-        "UPDATE amp_teacher_pilots SET started_at=now()-interval '38 days',ends_at=now()-interval '8 days',grace_ends_at=now()-interval '1 day'",
+        "UPDATE amp_teacher_pilots SET started_at=now()-interval '45 days',ends_at=now()-interval '15 days',grace_ends_at=now()-interval '1 day'",
       );
       assert.equal(
         (await classPilotState(db, created.classId)).status,

@@ -21,6 +21,11 @@ import { registerCleverConnection } from "../src/schools/clever/connection.js";
 import { syncCleverConnection } from "../src/schools/clever/sync.js";
 import { SchoolRepository } from "../src/schools/repository.js";
 import { resolveStudentSession } from "../src/schools/principal.js";
+import { classPilotState } from "../src/schools/pilots.js";
+import {
+  classPractice,
+  classPracticeGate,
+} from "../src/schools/pilot-access.js";
 
 test(
   "production Clever adapter uses real mailbox proofs, source bindings and isolated student sessions",
@@ -390,9 +395,24 @@ test(
       ).statusCode,
       401,
     );
+    // Before the teacher signs in, the synced section has no pilot.
+    const section = (
+      await pool.query(
+        "SELECT c.id FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id WHERE c.name='Math' AND o.path[1]=$1",
+        [org.id],
+      )
+    ).rows[0] as { id: string };
+    assert.equal((await classPilotState(pool, section.id)).status, "ready");
+    assert.equal(await classPracticeGate(pool, section.id), "waiting");
+    // No pilot, no license: this one really does wait for its teacher.
+    assert.equal((await classPractice(pool, section.id, null)).wait, "start");
     subject = teacher;
     const renewed = await finish(await start());
     const renewedCookie = cookieOf(renewed, "amp.provider-session");
+    // Signing in is all a Clever teacher does: their section's pilot runs,
+    // with no license and nothing to press.
+    assert.equal((await classPilotState(pool, section.id)).status, "active");
+    assert.equal(await classPracticeGate(pool, section.id), null);
     const renewedSession = (
       await app.inject({
         method: "GET",

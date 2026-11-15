@@ -52,8 +52,7 @@ const WIDTHS = (
   .split(",")
   .map(Number);
 const SCHEMES = (argument("schemes") ?? "light,dark").split(",") as (
-  | "light"
-  | "dark"
+  "light" | "dark"
 )[];
 /** "signed-out" is the pitch and the schools page without an account. */
 const PEOPLE = (
@@ -83,7 +82,6 @@ const EXTRA: Record<string, string[]> = {
   "signed-up": [
     "/start",
     "/start/parent",
-    "/start/parent/name",
     "/start/myself",
     "/start/school",
     "/school/start",
@@ -150,7 +148,10 @@ function audit(): Failure[] {
         .slice(0, 2);
       if (classes.length) name += `.${classes.join(".")}`;
       for (const attribute of element.getAttributeNames())
-        if (attribute.startsWith("data-") && !attribute.startsWith("data-radix"))
+        if (
+          attribute.startsWith("data-") &&
+          !attribute.startsWith("data-radix")
+        )
           return `${name}[${attribute}]`;
       return name;
     };
@@ -201,8 +202,7 @@ function audit(): Failure[] {
       if (style.position === "fixed" || style.position === "sticky") return at;
       // A panel raised over the page on purpose (practice feedback rising
       // over its problem, a browser over the map).
-      if (style.position === "absolute" && Number(style.zIndex) >= 1)
-        return at;
+      if (style.position === "absolute" && Number(style.zIndex) >= 1) return at;
     }
     return document.documentElement;
   };
@@ -301,7 +301,12 @@ function audit(): Failure[] {
   for (const element of controls) {
     const visible = clipped(element, element.getBoundingClientRect());
     if (visible)
-      boxes.push({ element, control: true, box: visible, layer: layerOf(element) });
+      boxes.push({
+        element,
+        control: true,
+        box: visible,
+        layer: layerOf(element),
+      });
   }
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
   const texts: Text[] = [];
@@ -312,8 +317,7 @@ function audit(): Failure[] {
     if (parent.closest("script, style, noscript, template, title, option"))
       continue;
     if (parent.closest("svg") && !parent.closest("svg text")) continue;
-    if (!shown(parent) || hiddenOnPurpose(parent) || !inScope(parent))
-      continue;
+    if (!shown(parent) || hiddenOnPurpose(parent) || !inScope(parent)) continue;
     if (parent.closest("[inert], [data-decorative]")) continue;
     texts.push(text);
   }
@@ -326,7 +330,13 @@ function audit(): Failure[] {
       if (line.width < 1 || line.height < 1) continue;
       const visible = clipped(parent, line);
       if (!visible) continue;
-      boxes.push({ element: parent, control: false, box: visible, layer, text });
+      boxes.push({
+        element: parent,
+        control: false,
+        box: visible,
+        layer,
+        text,
+      });
       // ---- clipped: a line cut by a container that hides overflow
       const cut =
         visible.right < line.right - 2 ||
@@ -368,7 +378,11 @@ function audit(): Failure[] {
   }
   // Ellipses and line clamps: text the reader can't see.
   for (const element of new Set(texts.map((text) => text.parentElement!))) {
-    for (let at: Element | null = element; at && at !== document.body; at = at.parentElement) {
+    for (
+      let at: Element | null = element;
+      at && at !== document.body;
+      at = at.parentElement
+    ) {
       const style = styleOf(at);
       const html = at as HTMLElement;
       if (
@@ -384,7 +398,11 @@ function audit(): Failure[] {
         break;
       }
       const clamp = style.getPropertyValue("-webkit-line-clamp");
-      if (clamp && clamp !== "none" && html.scrollHeight > html.clientHeight + 1) {
+      if (
+        clamp &&
+        clamp !== "none" &&
+        html.scrollHeight > html.clientHeight + 1
+      ) {
         failures.push({
           kind: "clipped",
           detail: `text is clamped to ${clamp} lines`,
@@ -416,7 +434,11 @@ function audit(): Failure[] {
       const b = sorted[j]!;
       if (b.box.top >= a.box.bottom) break;
       if (a.layer !== b.layer) continue;
-      if (a.element === b.element && (!a.control || !b.control) && a.text === b.text)
+      if (
+        a.element === b.element &&
+        (!a.control || !b.control) &&
+        a.text === b.text
+      )
         continue;
       if (a.element.contains(b.element) || b.element.contains(a.element)) {
         // Two lines of one text, or text in its own control: not an overlap.
@@ -439,8 +461,14 @@ function audit(): Failure[] {
         outer.box.top <= inner.box.top + 1 &&
         outer.box.bottom >= inner.box.bottom - 1;
       if (covers(a, b) || covers(b, a)) continue;
-      const shorter = Math.min(a.box.bottom - a.box.top, b.box.bottom - b.box.top);
-      const narrower = Math.min(a.box.right - a.box.left, b.box.right - b.box.left);
+      const shorter = Math.min(
+        a.box.bottom - a.box.top,
+        b.box.bottom - b.box.top,
+      );
+      const narrower = Math.min(
+        a.box.right - a.box.left,
+        b.box.right - b.box.left,
+      );
       // Glyph boxes of tight lines touch: an overlap is a real share of both.
       if (overlap.height < Math.max(3, shorter * 0.3)) continue;
       if (overlap.width < Math.max(3, Math.min(8, narrower * 0.3))) continue;
@@ -461,7 +489,11 @@ function audit(): Failure[] {
    * lands on it: its real target, whatever draws it (a drawn-out ::after,
    * a padded wrapper). */
   const reaches = (element: Element) => {
-    element.scrollIntoView({ block: "center", inline: "center", behavior: "instant" });
+    element.scrollIntoView({
+      block: "center",
+      inline: "center",
+      behavior: "instant",
+    });
     const box = element.getBoundingClientRect();
     const x = box.left + box.width / 2;
     const y = box.top + box.height / 2;
@@ -471,7 +503,10 @@ function audit(): Failure[] {
     };
     const reach = 21.5;
     return (
-      on(x - reach, y) && on(x + reach, y) && on(x, y - reach) && on(x, y + reach)
+      on(x - reach, y) &&
+      on(x + reach, y) &&
+      on(x, y - reach) &&
+      on(x, y + reach)
     );
   };
   const scrolled = { x: window.scrollX, y: window.scrollY };
@@ -501,7 +536,9 @@ function audit(): Failure[] {
       const own = parseFloat(axis === "x" ? pseudo.width : pseudo.height);
       if (own > 0) return own;
       const [a, b] =
-        axis === "x" ? [pseudo.left, pseudo.right] : [pseudo.top, pseudo.bottom];
+        axis === "x"
+          ? [pseudo.left, pseudo.right]
+          : [pseudo.top, pseudo.bottom];
       return (
         (axis === "x" ? box.width : box.height) -
         (parseFloat(a) || 0) -
@@ -616,7 +653,9 @@ function audit(): Failure[] {
 
 /** Outlines the failures on the page for a screenshot; returns the top of
  * the first. */
-function mark(rects: { x: number; y: number; width: number; height: number }[]) {
+function mark(
+  rects: { x: number; y: number; width: number; height: number }[],
+) {
   document.querySelector("#__sweep-marks")?.remove();
   const layer = document.createElement("div");
   layer.id = "__sweep-marks";
@@ -696,8 +735,7 @@ function shape(url: URL) {
   const path = url.pathname
     .split("/")
     .map((part) =>
-      /^[0-9a-f]{8}-[0-9a-f-]{27}$/i.test(part) ||
-      /^[0-9a-f]{16,}$/i.test(part)
+      /^[0-9a-f]{8}-[0-9a-f-]{27}$/i.test(part) || /^[0-9a-f]{16,}$/i.test(part)
         ? ":id"
         : /^\d{4}-\d{2}-\d{2}$/.test(part)
           ? ":date"

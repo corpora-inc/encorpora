@@ -357,7 +357,7 @@ async function demo(
     (await action.getAttribute("aria-label")) === "Set up your real class",
   );
   // A teacher's real class is set up by the teacher (pilots, #2282); a
-  // school's demo is the one that starts with a person (Talk to us).
+  // school leader sets up their real school (Set up your real school).
   await action.click();
   await page.waitForURL(/\/school\/start$/);
   await page.getByRole("heading", { name: "Set up your class" }).waitFor();

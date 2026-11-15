@@ -45,13 +45,22 @@ function Actions({ className = "" }: { className?: string }) {
           Use Clever
         </Link>
       )}
-      <Link
-        to="/schools"
-        hash="talk"
-        className={buttonClass(clever ? "quiet" : "secondary", styles.action)}
-      >
-        Talk to us
-      </Link>
+      {session ? (
+        <Link
+          to={"/school/start/school" as never}
+          className={buttonClass(clever ? "quiet" : "secondary", styles.action)}
+        >
+          Set up your school
+        </Link>
+      ) : (
+        <Link
+          to="/sign-up"
+          search={{ return: "school", next: "/school/start/school" } as never}
+          className={buttonClass(clever ? "quiet" : "secondary", styles.action)}
+        >
+          Set up your school
+        </Link>
+      )}
     </div>
   );
 }
@@ -91,7 +100,9 @@ export function SchoolsScreen() {
             </p>
             <div className={styles.heroActions}>
               <Actions />
-              <p className={styles.note}>30 days of free practice for your class.</p>
+              <p className={styles.note}>
+                30 days of free practice for your class.
+              </p>
             </div>
           </div>
           {summary && (
@@ -247,9 +258,10 @@ export function SchoolsScreen() {
               <a href={SCOPE_CSV}>CSV</a>.
             </Question>
             <Question question="Who does setup?">
-              A school admin or a single teacher, in one guided flow: school,
-              calendar, data agreement, students. Paste a spreadsheet or import
-              a OneRoster file, and AMP shows every change before it makes one.
+              A teacher or a school leader, on their own, in minutes: the
+              school, one tick for the data agreement, then students. Paste a
+              spreadsheet or import a OneRoster file, and AMP shows every change
+              before it makes one.
             </Question>
             <Question question="Who grades, and who sees student work?">
               Teachers see and grade their own classes. Admins see their whole
@@ -294,8 +306,8 @@ export function SchoolsScreen() {
           <div className={styles.closingHead}>
             <h2 id="schools-talk">Talk to us.</h2>
             <p>
-              Tell us about your school, and we’ll set AMP up with you, from the
-              first class to every school in the district.
+              Seats for a whole school or every school in a district, a quote,
+              or any question.
             </p>
           </div>
           <TalkToUs />

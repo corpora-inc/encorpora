@@ -584,9 +584,7 @@ function ExperienceStep({
       }
     >
       <h1>What should students see?</h1>
-      <p className={styles.lede}>
-        Any class can change this later.
-      </p>
+      <p className={styles.lede}>Any class can change this later.</p>
       <div
         className={styles.cards}
         role="radiogroup"
@@ -656,10 +654,9 @@ function AgreementStep({ state, orgId }: { state: SetupState; orgId: string }) {
   const navigate = useNavigate();
   const accepted = state.agreement;
   const [name, setName] = useState(accepted?.signerName ?? "");
-  const [title, setTitle] = useState(accepted?.signerTitle ?? "");
   const [authorized, setAuthorized] = useState(false);
   const [busy, setBusy] = useState(false);
-  const [errors, setErrors] = useState<{ name?: string; title?: string }>({});
+  const [errors, setErrors] = useState<{ name?: string }>({});
   const [error, setError] = useErrorState();
   const next = () =>
     navigate({
@@ -668,19 +665,15 @@ function AgreementStep({ state, orgId }: { state: SetupState; orgId: string }) {
       search: { org: orgId, step: "students" } as never,
     });
   const accept = async () => {
-    const missing = {
-      ...(name.trim() ? {} : { name: "Enter your name." }),
-      ...(title.trim() ? {} : { title: "Enter your role." }),
-    };
+    const missing = name.trim() ? {} : { name: "Enter your name." };
     setErrors(missing);
-    if (missing.name || missing.title) return;
+    if (missing.name) return;
     setBusy(true);
     setError("");
     try {
       const saved = await school.acceptAgreement(session, orgId, {
         version: AGREEMENT_VERSION,
         signerName: name.trim(),
-        signerTitle: title.trim(),
       });
       client.setQueryData(setupOptions(session, orgId).queryKey, saved);
       await next();
@@ -745,15 +738,10 @@ function AgreementStep({ state, orgId }: { state: SetupState; orgId: string }) {
           scope="school"
           acceptedAt={accepted?.acceptedAt}
           name={name}
-          title={title}
           authorized={!!accepted || authorized}
           onName={(value) => {
             setName(value);
             setErrors((prior) => ({ ...prior, name: undefined }));
-          }}
-          onTitle={(value) => {
-            setTitle(value);
-            setErrors((prior) => ({ ...prior, title: undefined }));
           }}
           onAuthorized={setAuthorized}
           errors={errors}

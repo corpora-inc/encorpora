@@ -89,6 +89,29 @@
     ],
     "skill": "multiple-addends"
   },
+  "add-three-digit": {
+    "id": "add-three-digit--sa",
+    "version": "c1479ccc2b6be20d25a8c8f4b1a053a5fefe2285cccd10b593e7e0d094af08a0",
+    "title": "Adding and subtracting within 1,000",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-three-digit--sa/c1479ccc2b6be20d25a8c8f4b1a053a5fefe2285cccd10b593e7e0d094af08a0/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-three-digit--sa/c1479ccc2b6be20d25a8c8f4b1a053a5fefe2285cccd10b593e7e0d094af08a0/audio.m4a",
+    "duration": 324.9,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-three-digit--sa/c1479ccc2b6be20d25a8c8f4b1a053a5fefe2285cccd10b593e7e0d094af08a0/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-three-digit--sa/c1479ccc2b6be20d25a8c8f4b1a053a5fefe2285cccd10b593e7e0d094af08a0/audio.m4a",
+        "version": "c1479ccc2b6be20d25a8c8f4b1a053a5fefe2285cccd10b593e7e0d094af08a0",
+        "duration": 324.9
+      }
+    ],
+    "skill": "add-subtract-thousands"
+  },
   "add-two-digit-regroup": {
     "id": "add-two-digit-regroup--sa",
     "version": "e829fdccead714494bf58f6ae73800d0df0dde2c7681b579ffdaf654fcdf07d6",
@@ -475,6 +498,29 @@
       }
     ],
     "skill": "average-rate-change"
+  },
+  "bag-totals-chain": {
+    "id": "add-three-digit--sa",
+    "version": "c1479ccc2b6be20d25a8c8f4b1a053a5fefe2285cccd10b593e7e0d094af08a0",
+    "title": "Adding and subtracting within 1,000",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-three-digit--sa/c1479ccc2b6be20d25a8c8f4b1a053a5fefe2285cccd10b593e7e0d094af08a0/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-three-digit--sa/c1479ccc2b6be20d25a8c8f4b1a053a5fefe2285cccd10b593e7e0d094af08a0/audio.m4a",
+    "duration": 324.9,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-three-digit--sa/c1479ccc2b6be20d25a8c8f4b1a053a5fefe2285cccd10b593e7e0d094af08a0/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-three-digit--sa/c1479ccc2b6be20d25a8c8f4b1a053a5fefe2285cccd10b593e7e0d094af08a0/audio.m4a",
+        "version": "c1479ccc2b6be20d25a8c8f4b1a053a5fefe2285cccd10b593e7e0d094af08a0",
+        "duration": 324.9
+      }
+    ],
+    "skill": "add-subtract-thousands"
   },
   "balance-two-step": {
     "id": "two-step-word-problem",
@@ -8556,6 +8602,29 @@
       }
     ],
     "skill": "linear-equations"
+  },
+  "subtract-three-digit": {
+    "id": "add-three-digit--sa",
+    "version": "c1479ccc2b6be20d25a8c8f4b1a053a5fefe2285cccd10b593e7e0d094af08a0",
+    "title": "Adding and subtracting within 1,000",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-three-digit--sa/c1479ccc2b6be20d25a8c8f4b1a053a5fefe2285cccd10b593e7e0d094af08a0/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-three-digit--sa/c1479ccc2b6be20d25a8c8f4b1a053a5fefe2285cccd10b593e7e0d094af08a0/audio.m4a",
+    "duration": 324.9,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-three-digit--sa/c1479ccc2b6be20d25a8c8f4b1a053a5fefe2285cccd10b593e7e0d094af08a0/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-three-digit--sa/c1479ccc2b6be20d25a8c8f4b1a053a5fefe2285cccd10b593e7e0d094af08a0/audio.m4a",
+        "version": "c1479ccc2b6be20d25a8c8f4b1a053a5fefe2285cccd10b593e7e0d094af08a0",
+        "duration": 324.9
+      }
+    ],
+    "skill": "add-subtract-thousands"
   },
   "subtract-through-ten": {
     "id": "subtract-through-ten--ss",

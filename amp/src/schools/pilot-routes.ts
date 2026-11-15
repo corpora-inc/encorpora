@@ -4,8 +4,10 @@ import type { Pool } from "pg";
 import type { defineSchoolRoute } from "./routes.js";
 import { planRoster, applyRoster } from "./reconcile.js";
 import { actorPerson } from "./authz.js";
+import { recordActivation } from "../analytics/activation.js";
 import { syncSsoCredentials } from "./sso-credentials.js";
 import {
+  startSchool,
   startSchoolClass,
   activateClassPilot,
   acceptClassAuthorization,
@@ -69,8 +71,23 @@ export function definePilotRoutes(define: typeof defineSchoolRoute) {
     url: "/api/v1/school/start",
     action: "school.start",
     target: () => ({ kind: "self" }),
+    handler: async ({ repository, pool, actor, request }) => {
+      // Starting a class is the teacher persona, however they arrived.
+      await recordActivation(pool, {
+        accountId: actor.accountId,
+        step: "persona_chosen",
+        persona: "teacher",
+      });
+      return startSchoolClass(repository, actor.accountId, request.body);
+    },
+  });
+  define({
+    method: "POST",
+    url: "/api/v1/school/start-school",
+    action: "school.start",
+    target: () => ({ kind: "self" }),
     handler: ({ repository, actor, request }) =>
-      startSchoolClass(repository, actor.accountId, request.body),
+      startSchool(repository, actor.accountId, request.body),
   });
   define({
     method: "GET",

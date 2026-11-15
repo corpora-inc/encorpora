@@ -141,6 +141,53 @@ fulfillment and problem reports can include testing. These counts must not be
 combined into an ad conversion rate or compared with unlike cost windows to
 claim return on ad spend. Missing campaign mappings and cost imports are visible.
 
+## Activation milestones
+
+The server records the first time each sign-in account reaches a step of its
+first run, where the step happens, so an ad blocker, a closed tab or Global
+Privacy Control cannot drop it (`src/analytics/activation.ts`, table
+`amp_activation_milestones`, one row per account and step; a repeat is a
+no-op). Rows hold the step, the persona and the time: no names, learners or
+answers. Work inside a demo org and simulated learners never count.
+
+| Persona                 | Steps, in order                                                                                                      |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Parent, tutor           | signed up, persona chosen, child or student added, first answer by any of their learners, 20 answers, first workbook |
+| Learning for themselves | signed up, persona chosen, first answer, 20 answers                                                                  |
+| Teacher                 | signed up, persona chosen, a real class, its first student, the first answer in it, 20 answers in it                 |
+| School                  | signed up, persona chosen, demo opened, school set up, first teacher added                                           |
+
+The persona is the first answer tapped on "What brings you to AMP?"
+(`POST /api/v1/start/choice`), or the first place made if that call was lost.
+Accounts from before the table existed were filled from the records they had
+already left. Milestones follow funnel analytics: kept 90 days, included in
+the family export, erased with learning data and with the account.
+
+The weekly funnel by persona, with step-to-step conversion, is one read-only
+`SELECT` that needs no application code (internal staff accounts excluded):
+
+```sh
+psql "$AMP_DATABASE_URL" -f amp/scripts/activation-funnel.sql
+```
+
+Any read-only query runner that takes one statement works the same way with
+the file's text, comment lines removed, for example the operator's production
+query wrapper: `prodq.sh "$(grep -v '^--' amp/scripts/activation-funnel.sql)"`.
+
+The screens themselves are measured in the first-party funnel, under the same
+consent and GPC rules as every client event: `setup_step` (persona, step,
+`view` or `complete`) for each first-run screen, and `invoice_step` (program,
+then `view`, `term`, `email`, `student`, `submit`, `error` with a category, or
+`success`) for the ESA/EFA invoice form. Neither carries what was typed.
+
+The ESA/EFA invoice funnel by program (form steps from browsers, then the
+invoices created, claimed and paid from the server's records) is the same
+kind of file:
+
+```sh
+psql "$AMP_DATABASE_URL" -f amp/scripts/invoice-funnel.sql
+```
+
 ## Google Analytics traffic reports
 
 The production marketing and parent purchase pages also send page views and a fixed set of purchase-flow actions to GA4. The shared Google tag is in `src/analytics/google-analytics.ts`; it contains a public measurement ID, not a credential. Preview domains, native apps, known staff browsers, WebDriver sessions, Do Not Track and Global Privacy Control are excluded. Google advertising personalization and Google signals are disabled. Analytics storage defaults to denied in the EEA, UK and Switzerland.
@@ -159,17 +206,17 @@ Use GA4 Traffic acquisition, Pages and screens, and Realtime for standard visito
 
 The first-party collector forwards a fixed list of actions to GA (`forwarded` in `src/analytics/google-analytics.ts`). Each GA event carries only the parameters below, rebuilt from validated values; other first-party props are dropped. Every forwarded event and page view on a URL with a listed `program` also carries `program`. The same Do Not Track, Global Privacy Control, staff-browser, WebDriver, native-app and learning-route exclusions apply.
 
-| First-party event | GA event | Parameters |
-| --- | --- | --- |
-| `video_play` | `video_start` | none |
-| `video_progress` 25, 50, 75 | `video_progress` | `video_percent` |
-| `video_progress` 100 | `video_complete` | `video_percent` = 100 |
-| `buy_click` card | `buy_click` | `payment_route` = `card` |
-| `buy_click` funded | `buy_click` | `payment_route` = the program id (`ar-efa`, `az-esa`, `nh-efa`), or `funded` if the URL names none |
-| `try_click` | `try_click` | none |
-| `workbook_click` | `workbook_click` | none |
-| `invite_view` (free trial) | `invite_view` | `invite_at` = `map` or `workbook` |
-| `pitch_view` | not sent | GA's `page_view` with the pitch title records it |
+| First-party event           | GA event         | Parameters                                                                                         |
+| --------------------------- | ---------------- | -------------------------------------------------------------------------------------------------- |
+| `video_play`                | `video_start`    | none                                                                                               |
+| `video_progress` 25, 50, 75 | `video_progress` | `video_percent`                                                                                    |
+| `video_progress` 100        | `video_complete` | `video_percent` = 100                                                                              |
+| `buy_click` card            | `buy_click`      | `payment_route` = `card`                                                                           |
+| `buy_click` funded          | `buy_click`      | `payment_route` = the program id (`ar-efa`, `az-esa`, `nh-efa`), or `funded` if the URL names none |
+| `try_click`                 | `try_click`      | none                                                                                               |
+| `workbook_click`            | `workbook_click` | none                                                                                               |
+| `invite_view` (free trial)  | `invite_view`    | `invite_at` = `map` or `workbook`                                                                  |
+| `pitch_view`                | not sent         | GA's `page_view` with the pitch title records it                                                   |
 
 A `buy_click` pressed inside the free trial also carries `from` = `trial-toolbar` or `trial-invite` (`pitch` on the pitch). Video events count each quarter once per tab. `buy_click` is a click on Buy, not a checkout or a purchase; it is never sent as `begin_checkout` or `purchase`.
 
@@ -188,7 +235,6 @@ Registering parameters is an operator step in the GA4 property; deploying the co
 4. In Reports → Pages and screens, use the page title to separate the pitch, each funded-program pitch and each sign-up intent. Use Explore with “Funded program” and “Payment route” for Buy clicks by program.
 
 `npm run test:google-analytics-ui` runs the real Google tag in Chromium and intercepts every collection request. It checks public SPA transitions, duplicate suppression, sanitized payloads, learning-route exclusion and GPC. It also drives the app's collector with the pitch's calls and checks the pitch and sign-up titles, the events and parameters above, the signed-in home exclusion, and that GPC and staff browsers never load the tag. No synthetic collection events are sent to Google by the test.
-
 
 ### Purchase attempts and errors
 
@@ -212,14 +258,12 @@ browsers and deduplicates each attempt/outcome. Missing terminal events can mean
 navigation or failed analytics delivery. Server-verified payment records remain
 the authority for paid conversions.
 
-
 Invoice download, funding-provider handoff, AMP setup and invoice-correction clicks
 use the separate `purchase_action` event. It contains only a random action ID and
 a fixed category. Repeated delivery counts once per browser/action ID. Download
 clicks do not prove the file was saved, and opening ClassWallet does not prove
 submission, approval or payment. Both public invoices and signed-in funded
 purchase screens record these actions. They stay in first-party reporting.
-
 
 ## Individual journeys
 

@@ -1,3 +1,4 @@
+import { recordEnrollmentActivation } from "../analytics/activation.js";
 import { classPracticeGates } from "./pilot-access.js";
 import { adultNameSql } from "../account/profile.js";
 import { PERSON_NAME } from "./term-grades.js";
@@ -213,7 +214,7 @@ export class SchoolRepository {
         input.version,
         signerPersonId,
         input.signerName,
-        input.signerTitle,
+        input.signerTitle ?? null,
       ],
     );
     await recordEvent(client, {
@@ -311,6 +312,7 @@ export class SchoolRepository {
        ON CONFLICT (class_id,person_id,role) WHERE end_on IS NULL DO NOTHING`,
       [randomUUID(), classId, personId, role, today],
     );
+    await recordEnrollmentActivation(client, classId, personId, role);
   }
 
   /** One transaction: learner, person, role, enrollment if a class is given,
@@ -896,6 +898,11 @@ export class SchoolRepository {
     raw: unknown,
     actorPersonId: string | null = null,
     teacherPersonId?: string,
+    /** Runs in the same transaction once the class exists (its pilot). */
+    onCreated?: (
+      client: PoolClient,
+      created: ClassResource,
+    ) => Promise<unknown>,
   ): Promise<ClassResource> {
     const input = createClassSchema.parse(raw);
     return this.transaction(async (client) => {
@@ -905,6 +912,7 @@ export class SchoolRepository {
         input,
         actorPersonId,
       );
+      if (onCreated) await onCreated(client, created);
       if (teacherPersonId) {
         const org = await this.org(client, created.orgId);
         await this.enroll(
