@@ -5,7 +5,7 @@
   let opener;
   document.querySelectorAll("[data-invoice-form='open']").forEach((link) => {
     link.addEventListener("click", (event) => {
-      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      if (link.target === "_blank" || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
       opener = link;
       if (!frame.getAttribute("src")) frame.src = frame.dataset.invoiceSrc;

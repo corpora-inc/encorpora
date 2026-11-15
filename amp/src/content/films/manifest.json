@@ -7414,6 +7414,52 @@
     ],
     "skill": "linear-models"
   },
+  "scaled-bar-graph": {
+    "id": "scaled-picture-graph--ss",
+    "version": "3811102c9afb216eda6a9c200fab4cdcbc4a094bf22101e5071bf2f56aa12738",
+    "title": "Reading scaled picture and bar graphs",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scaled-picture-graph--ss/3811102c9afb216eda6a9c200fab4cdcbc4a094bf22101e5071bf2f56aa12738/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scaled-picture-graph--ss/3811102c9afb216eda6a9c200fab4cdcbc4a094bf22101e5071bf2f56aa12738/audio.m4a",
+    "duration": 228.19997732426305,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scaled-picture-graph--ss/3811102c9afb216eda6a9c200fab4cdcbc4a094bf22101e5071bf2f56aa12738/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scaled-picture-graph--ss/3811102c9afb216eda6a9c200fab4cdcbc4a094bf22101e5071bf2f56aa12738/audio.m4a",
+        "version": "3811102c9afb216eda6a9c200fab4cdcbc4a094bf22101e5071bf2f56aa12738",
+        "duration": 228.19997732426305
+      }
+    ],
+    "skill": "scaled-graphs"
+  },
+  "scaled-picture-graph": {
+    "id": "scaled-picture-graph--ss",
+    "version": "3811102c9afb216eda6a9c200fab4cdcbc4a094bf22101e5071bf2f56aa12738",
+    "title": "Reading scaled picture and bar graphs",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scaled-picture-graph--ss/3811102c9afb216eda6a9c200fab4cdcbc4a094bf22101e5071bf2f56aa12738/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scaled-picture-graph--ss/3811102c9afb216eda6a9c200fab4cdcbc4a094bf22101e5071bf2f56aa12738/audio.m4a",
+    "duration": 228.19997732426305,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scaled-picture-graph--ss/3811102c9afb216eda6a9c200fab4cdcbc4a094bf22101e5071bf2f56aa12738/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scaled-picture-graph--ss/3811102c9afb216eda6a9c200fab4cdcbc4a094bf22101e5071bf2f56aa12738/audio.m4a",
+        "version": "3811102c9afb216eda6a9c200fab4cdcbc4a094bf22101e5071bf2f56aa12738",
+        "duration": 228.19997732426305
+      }
+    ],
+    "skill": "scaled-graphs"
+  },
   "scatter-association-choice": {
     "id": "scatter-association-choice--ss",
     "version": "f9e1a76aaa5492580e9fbef17e812c600de9f9f6770e6aa05f74f8b63f91684f",
