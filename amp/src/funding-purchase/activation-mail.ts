@@ -179,7 +179,6 @@ export async function deliverFundedActivationMail(
         ? Math.min(
             Number(check.remaining),
             Date.parse(check.grant_state.endsAt) - Date.now(),
-            Date.parse(policy.review.expiresAt) - Date.now(),
           )
         : 0;
     },

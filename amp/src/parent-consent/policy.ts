@@ -29,7 +29,10 @@ export async function installConsentPolicy(
       noticeDigest(p),
       p,
       p.enabled,
-      p.review.expiresAt,
+      // No law sets a review date (COPPA asks for new notice and consent only
+      // on material changes, 16 CFR 312.4-312.5(a)), so a policy never
+      // switches itself off on a calendar date.
+      "infinity",
       randomUUID(),
     ],
   );
