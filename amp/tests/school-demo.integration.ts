@@ -36,6 +36,25 @@ const JOIN_MS = Number(process.env.AMP_DEMO_JOIN_MS ?? 1_000);
 const DAY = 86_400_000;
 const ZONE = "America/New_York";
 
+/** Noon in `ZONE` on the latest school day (Monday to Friday) at or before
+ * `wall`. The school a zone shows depends on the hour and the weekday: before
+ * 9:00 it is yesterday's, and a Saturday's or a Sunday's has no sitting, so
+ * nobody practiced "today" and nothing is "here". The suite plays at this
+ * moment, so it reads the same school whenever CI runs it. Never later than
+ * `wall`, so never later than the database's own now(). */
+function schoolNoon(wall: number): number {
+  const local = new Intl.DateTimeFormat("en-CA", { timeZone: ZONE }).format(wall);
+  for (let back = 0; ; back++) {
+    const day = new Date(Date.parse(`${local}T12:00:00Z`) - back * DAY);
+    const noon = zonedInstant(day.toISOString().slice(0, 10), 12, ZONE);
+    if (day.getUTCDay() % 6 !== 0 && noon <= wall) return noon;
+  }
+}
+/** The wall clock, or `AMP_DEMO_NOW` (an ISO instant) to replay a moment. */
+const WALL = process.env.AMP_DEMO_NOW
+  ? Date.parse(process.env.AMP_DEMO_NOW)
+  : Date.now();
+
 test(
   "The shared demo school: joined in under a second, visitors invisible to each other, rewritten each day, never counted",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
@@ -55,8 +74,13 @@ test(
       if (header?.startsWith("Bearer amp|")) return header.slice(7);
       throw new ApiError(401, "Sign in to continue");
     });
-    // The school clock, which the test moves to the next week's night.
-    let clock = Date.now();
+    // The school clock: a school day's noon, which the test moves to the
+    // next week's night.
+    assert.ok(Number.isFinite(WALL), "AMP_DEMO_NOW is an ISO instant");
+    let clock = schoolNoon(WALL);
+    console.log(
+      `  wall ${new Date(WALL).toISOString()}, playing at ${new Date(clock).toISOString()}`,
+    );
     const app = buildApp({ repository: learning, authenticate });
     await registerSchoolRoutes(app, {
       pool: db,
@@ -81,11 +105,16 @@ test(
     // for today's weekday, then today's school in the zone.
     await workbookWorker().warm();
     const warmed = performance.now();
-    await warmDemoSchools(db, { timezones: [ZONE], ahead: 0, learning });
+    await warmDemoSchools(db, {
+      now: clock,
+      timezones: [ZONE],
+      ahead: 0,
+      learning,
+    });
     console.log(
       `  school written from the shipped term in ${Math.round(performance.now() - warmed)} ms`,
     );
-    const today = (await currentSchool(db, ZONE))!;
+    const today = (await currentSchool(db, ZONE, clock))!;
     assert.ok(today, "the zone has a school");
     // A week on: the same weekday, so the same term moved seven days.
     const next = sharedDay(clock + 7 * DAY, ZONE);
@@ -650,8 +679,9 @@ test(
 
     await t.test("a visitor never sees the future: the school switches when the day's sitting ends", async () => {
       // The school being shown now has nothing later than now.
-      const served = (await currentSchool(db, ZONE, Date.now()))!;
-      await nothingLater(served.orgId, Date.now(), "now");
+      const served = (await currentSchool(db, ZONE, clock))!;
+      assert.equal(served.orgId, today.orgId);
+      await nothingLater(served.orgId, clock, "now");
       // At 01:00 and 08:59 of the new day, the day before's school is shown:
       // the new one's sitting is still to come.
       const nextOrg = (
