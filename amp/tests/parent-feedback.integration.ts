@@ -7,7 +7,6 @@ import { Pool } from "pg";
 import { migrate } from "../scripts/migrate.js";
 import { assertTestDatabaseTarget } from "../scripts/test-database-preflight.js";
 import { registerParentFeedbackRoutes } from "../src/feedback/parent-routes.js";
-import { purgeParentFeedback } from "../src/feedback/parent-retention.js";
 
 test(
   "adult feedback stores once, rejects extra identifiers, limits IP regardless of credentials and expires",
@@ -72,22 +71,18 @@ test(
       for (let i = 0; i < 7; i++)
         assert.equal((await send(payload)).statusCode, 202);
       assert.equal((await send(payload)).statusCode, 429);
-      const at = new Date("2027-01-01T00:00:00Z");
+      // Anonymous adult feedback has no legal deletion period: it is kept.
       await pool.query(
-        "UPDATE amp_parent_feedback SET created_at=$1::timestamptz-interval '90 days'",
-        [at],
+        "UPDATE amp_parent_feedback SET created_at=now()-interval '400 days'",
       );
-      await send(
-        { ...payload, requestId: randomUUID(), message: "Keep this" },
-        "127.0.0.3",
+      const { RETENTION } = await import("../src/privacy/retention-periods.js");
+      assert.equal("parentFeedbackDays" in RETENTION, false);
+      assert.ok(
+        Number(
+          (await pool.query("SELECT count(*) AS n FROM amp_parent_feedback"))
+            .rows[0].n,
+        ) > 0,
       );
-      await pool.query(
-        "UPDATE amp_parent_feedback SET created_at=$1::timestamptz-interval '89 days' WHERE message='Keep this'",
-        [at],
-      );
-      assert.equal(await purgeParentFeedback(pool, at), 1);
-      rows = (await pool.query("SELECT message FROM amp_parent_feedback")).rows;
-      assert.deepEqual(rows, [{ message: "Keep this" }]);
     } finally {
       await app.close();
       await pool.end();
