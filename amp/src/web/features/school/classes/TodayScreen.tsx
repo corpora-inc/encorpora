@@ -24,6 +24,7 @@ import { PracticeSlot } from "./today/PracticeSlot";
 import { todoEntries, useChecks } from "./today/todo-entries";
 import { WeekFacts } from "./today/WeekFacts";
 import todayStyles from "./today/Today.module.css";
+import { pilotLeft } from "../pilots/presentation";
 import styles from "./Teacher.module.css";
 import {
   accessFeedEntry,
@@ -74,7 +75,7 @@ function ClassToday({
     access.view,
     place,
     access.pilot,
-    access.teaches,
+    access.requests,
     ended,
   );
   // Practice running, but not for everyone, or ending soon: said in the
@@ -186,6 +187,7 @@ export function TodayScreen() {
   const data = today.data;
   const demo = useDemoOrg(place.org);
   const access = useClassAccess(place);
+  const pilotNote = family ? null : pilotLeft(access.view);
   // The header's practice slot (PracticeSlot): the Start action, the code,
   // Request seats, one height in every state, so practice opening during
   // this visit moves nothing (CP-3 r6).
@@ -229,6 +231,16 @@ export function TodayScreen() {
               <div className={todayStyles.title}>
                 <h1 data-today-title="">{data.class.name}</h1>
                 <p>{fullDay(data.today)}</p>
+                {/* Days left in the pilot or its grace. Its line is always
+                    held, so a pilot starting, its grace or the paywall
+                    never moves the header (premium rule 1). */}
+                <p
+                  data-pilot-left=""
+                  aria-hidden={pilotNote ? undefined : true}
+                  className={pilotNote ? undefined : todayStyles.heldLine}
+                >
+                  {pilotNote ?? "\u00a0"}
+                </p>
               </div>
             )}
             {/* The code waits for a roster, and for practice. A family's

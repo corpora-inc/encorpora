@@ -1,3 +1,4 @@
+import { articleByPath } from "./library/catalog.js";
 import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { Resvg } from "@resvg/resvg-js";
@@ -87,6 +88,8 @@ function headingFor(funding: FundingRoute) {
 }
 
 export function cardSpec(route: string, config: SiteConfig): CardSpec {
+  const article = articleByPath.get(route);
+  if (article) return { label: article.label, heading: article.title, path: route, art: { kind: "problem", sample: article.sample ?? 0 } };
   const funding = fundingForPath(route, config);
   if (funding)
     return {

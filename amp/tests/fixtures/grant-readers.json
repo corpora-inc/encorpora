@@ -251,7 +251,7 @@
   },
   {
     "path": "src/schools/pilot-access.ts",
-    "hash": "75227ba33d35d5e12a3960efe720698e6b68895cb1cea5459d96f4cf4f2a4abc",
+    "hash": "5ac8575012222021f3cb5278f8e94bea61798ccb4e93c18b929363fc8c623df6",
     "reason": "Class practice gate reads grants of the class's entering students only (studentInClassSql: role 'student'), never the separate teacher adult learner."
   },
   {

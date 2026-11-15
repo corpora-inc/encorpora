@@ -157,7 +157,15 @@ export function PracticeSlot(props: CodeProps) {
     );
   } else if (access.practice === "waiting") {
     state = "waiting";
-    shown = <Line title="Waiting for the class’s teacher to start practice" />;
+    shown = (
+      <Line
+        title={
+          view.kind === "empty"
+            ? "No students yet"
+            : "Waiting for the class’s teacher to start practice"
+        }
+      />
+    );
   } else if (presence.isError) {
     // Open, but the code couldn't be read: ask again.
     state = "unavailable";

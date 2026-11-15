@@ -271,9 +271,20 @@ test(
         role: "admin",
         accountId: "admin",
       });
-      await assert.rejects(
-        activateClassPilot(repo, "admin", shared.classId),
-        /pilot_teacher_required/,
+      // The class's pilot started with it, on its teacher's dates: an
+      // administrator's Start changes nothing and spends no pilot of theirs.
+      const before = await classPilotState(db, shared.classId);
+      assert.deepEqual(
+        await activateClassPilot(repo, "admin", shared.classId),
+        before,
+      );
+      assert.equal(
+        (
+          await db.query(
+            "SELECT 1 FROM amp_teacher_pilots WHERE account_id='admin'",
+          )
+        ).rowCount,
+        0,
       );
       await deleteAccount(db, {
         accountId: "teacher-two",

@@ -402,7 +402,7 @@ export const privacyResponse = z.object({
     .object({
       version: z.string(),
       signerName: z.string(),
-      signerTitle: z.string(),
+      signerTitle: z.string().nullable(),
       acceptedAt: z.string(),
       /** The org that signed it, when that's one above this one. */
       signedBy: z.string().nullable(),

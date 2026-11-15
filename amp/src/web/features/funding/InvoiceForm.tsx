@@ -2,7 +2,9 @@ import { RootLink } from "../../nav/root";
 import { FrameBrand } from "../../ui/PageFrame";
 import { Loading } from "../../ui/Loading";
 import { recordPurchaseAction } from "../../lib/purchase-analytics";
-import { analyticsVisitorHeaders } from "../../lib/analytics";
+import { analyticsVisitorHeaders, track } from "../../lib/analytics";
+import { AppError } from "../../lib/AppError";
+import type { INVOICE_STEPS } from "../../../analytics/events";
 import { SupportHelp } from "../support/SupportHelp";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation } from "@tanstack/react-router";
@@ -42,6 +44,35 @@ const currency = (amount: number) =>
     amount / 100,
   );
 
+/** The form step by step, for one program (docs/engagement-measurement.md):
+ * shown, the term changed, each field's first edit, submit, its outcome.
+ * Never what was typed. */
+function invoiceStep(
+  program: "ar-efa" | "az-esa" | "nh-efa",
+  step: Exclude<(typeof INVOICE_STEPS)[number], "error">,
+): void;
+function invoiceStep(
+  program: "ar-efa" | "az-esa" | "nh-efa",
+  step: "error",
+  failure: unknown,
+): void;
+function invoiceStep(
+  program: "ar-efa" | "az-esa" | "nh-efa",
+  step: (typeof INVOICE_STEPS)[number],
+  failure?: unknown,
+) {
+  if (step !== "error") return track("invoice_step", { program, step });
+  const kind = failure instanceof AppError ? failure.kind : null;
+  track("invoice_step", {
+    program,
+    step,
+    error:
+      kind === "validation" || kind === "unavailable" || kind === "network"
+        ? kind
+        : "other",
+  });
+}
+
 /** Public billing form: no account or learning profile is created here. */
 export function InvoiceForm() {
   const location = useLocation();
@@ -60,6 +91,16 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
   );
   const [pdfUrl, setPdfUrl] = useState("");
   const heading = useRef<HTMLHeadingElement>(null);
+  const edited = useRef(new Set<"email" | "student">());
+  const programId = program?.id;
+  useEffect(() => {
+    if (programId) invoiceStep(programId, "view");
+  }, [programId]);
+  const firstEdit = (field: "email" | "student") => {
+    if (!programId || edited.current.has(field)) return;
+    edited.current.add(field);
+    invoiceStep(programId, field);
+  };
   const retry = useRef<{ payload: string; key: string } | null>(null);
   const offers = useQuery({
     ...invoiceOffersOptions(program?.id ?? ""),
@@ -107,6 +148,7 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
       retry.current = { payload, key: crypto.randomUUID() };
     setBusy(true);
     setError("");
+    invoiceStep(program.id, "submit");
     try {
       setResult(
         await request("/funding/invoices", responseSchema, {
@@ -114,8 +156,10 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
           body: { ...fields, idempotencyKey: retry.current.key },
         }),
       );
+      invoiceStep(program.id, "success");
     } catch (reason) {
       console.error("Invoice preparation failed", reason);
+      invoiceStep(program.id, "error", reason);
       setError(
         reason instanceof Error
           ? reason.message
@@ -224,6 +268,7 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
                     onChange={(next) => {
                       setTerm(next);
                       setError("");
+                      invoiceStep(program.id, "term");
                     }}
                     disabled={busy}
                     options={[
@@ -248,7 +293,10 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
                 required
                 maxLength={254}
                 value={email}
-                onChange={(event) => setEmail(event.target.value)}
+                onChange={(event) => {
+                  setEmail(event.target.value);
+                  firstEdit("email");
+                }}
                 disabled={busy}
               />
               <TextField
@@ -257,7 +305,10 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
                 required
                 maxLength={180}
                 value={student}
-                onChange={(event) => setStudent(event.target.value)}
+                onChange={(event) => {
+                  setStudent(event.target.value);
+                  firstEdit("student");
+                }}
                 disabled={busy}
               />
               {/* The point of sale discloses this program's refund terms

@@ -87,6 +87,16 @@ test(
       assert.equal(me.next, "start");
       assert.deepEqual(me.learners, []);
       assert.ok(!("trial" in me));
+      // The sign-up is the account's first activation milestone, once.
+      assert.deepEqual(
+        (
+          await repository.pool.query(
+            "SELECT step FROM amp_activation_milestones WHERE account_id=$1",
+            [me.account.id],
+          )
+        ).rows,
+        [{ step: "account_created" }],
+      );
       const cookies = ([] as string[])
         .concat(signUp.headers["set-cookie"] ?? [])
         .map((c) => c.split(";")[0])

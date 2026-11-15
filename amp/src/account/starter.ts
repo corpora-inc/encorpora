@@ -1,3 +1,4 @@
+import { recordActivation } from "../analytics/activation.js";
 import type { PoolClient } from "pg";
 import { z } from "zod";
 import { ownBirthYear, startAdultPractice } from "./adult.js";
@@ -86,6 +87,12 @@ export async function startPlace(
   if (accountId.startsWith("school:") || accountId.startsWith("trial:"))
     throw new FamilyError(403, "starter_unavailable");
   const input = starterSchema.parse(raw);
+  // The answer is the persona, even when its screen's own record was lost.
+  await recordActivation(families.pool, {
+    accountId,
+    step: "persona_chosen",
+    persona: input.as,
+  });
   // The adult's own learner keeps its own transaction and one-per-account rule.
   if (input.as === "myself") {
     const { learnerId } = await startAdultPractice(families, accountId, {
@@ -191,6 +198,8 @@ async function startTutor(
       { birthYear, nickname, classId: family.classId },
       teacher,
     );
+  if (missing.length)
+    await recordActivation(client, { accountId, step: "learner_added" });
   return {
     home: classToday(family.orgId, family.classId),
     added: missing.length,
@@ -218,6 +227,7 @@ export async function addClassStudent(
       { ...input, classId: family.classId },
       await teacherPerson(client, family.orgId, accountId),
     );
+    await recordActivation(client, { accountId, step: "learner_added" });
     const { name } = (
       await client.query<{ name: string }>(
         "SELECT name FROM amp_learners WHERE id=$1",

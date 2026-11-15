@@ -341,14 +341,16 @@ export async function rememberProviderPilotAliases(
   const pilot = (
     await db.query(
       `SELECT id FROM amp_teacher_pilots WHERE account_id=$1 OR id IN
-    (SELECT pilot_id FROM amp_pilot_eligibility WHERE identity_digest=ANY($2::text[])) ORDER BY started_at,id LIMIT 1`,
+    (SELECT pilot_id FROM amp_pilot_eligibility WHERE identity_digest=ANY($2::text[]) AND confirmed) ORDER BY started_at,id LIMIT 1`,
       [accountId, keys],
     )
   ).rows[0];
   if (pilot)
     for (const key of keys)
       await db.query(
-        "INSERT INTO amp_pilot_eligibility(identity_digest,pilot_id) VALUES($1,$2) ON CONFLICT DO NOTHING",
+        `INSERT INTO amp_pilot_eligibility(identity_digest,pilot_id) VALUES($1,$2)
+        ON CONFLICT(identity_digest) DO UPDATE SET pilot_id=excluded.pilot_id,confirmed=true
+        WHERE NOT amp_pilot_eligibility.confirmed`,
         [key, pilot.id],
       );
 }

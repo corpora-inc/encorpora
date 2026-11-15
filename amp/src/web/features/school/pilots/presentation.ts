@@ -1,7 +1,9 @@
 import type { PilotState } from "../../../../schools/pilot-contracts";
 
-/** A pilot runs this many days from the day a teacher starts it. */
+/** A pilot runs this many days from the teacher's first class, then this
+ * many days of grace (`src/schools/pilots.ts`). */
 export const PILOT_DAYS = 30;
+export const GRACE_DAYS = 14;
 
 /** Where a school class stands on practice, as the screens show it. */
 export type AccessView =
@@ -62,6 +64,20 @@ export function accessView(
   return { kind: "start", joining: false, until: until.toISOString() };
 }
 
+/** Where a class stands for a reader who can't read its pilot (a viewer,
+ * an aide), from the server's practice state alone. A waiting class whose
+ * pilot runs waits only for its students; "waiting for the teacher" is
+ * left for a class with no pilot and no license. */
+export function practiceView(
+  practice: "open" | "waiting" | "ended" | "unknown",
+  wait: "students" | "start" | null,
+): AccessView {
+  if (practice === "ended") return { kind: "ended" };
+  if (practice === "waiting")
+    return wait === "students" ? { kind: "empty" } : { kind: "waiting" };
+  return { kind: "none" };
+}
+
 const short = new Intl.DateTimeFormat(undefined, {
   month: "short",
   day: "numeric",
@@ -75,4 +91,19 @@ const long = new Intl.DateTimeFormat(undefined, {
 export function practiceDate(iso: string, now = new Date()) {
   const date = new Date(iso);
   return (date.getFullYear() === now.getFullYear() ? short : long).format(date);
+}
+
+/** The class header's quiet line while a pilot or its grace runs: "Free
+ * pilot · 23 days left". Null otherwise. Whole days, rounded up: the last
+ * day reads "1 day left", never 0. */
+export function pilotLeft(view: AccessView, now = new Date()): string | null {
+  if (view.kind !== "active" && view.kind !== "ending") return null;
+  const days = Math.max(
+    1,
+    Math.ceil((Date.parse(view.until) - now.getTime()) / 86_400_000),
+  );
+  const left = `${days} ${days === 1 ? "day" : "days"} left`;
+  return view.kind === "active"
+    ? `Free pilot · ${left}`
+    : `Grace period · ${left}`;
 }

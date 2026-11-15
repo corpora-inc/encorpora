@@ -1,4 +1,6 @@
-/** Teacher class setup, scoped import, explicit pilot and buyer handoff against the real API.
+/** Teacher class setup with no confirmation email or Start step, scoped
+ * import, the pilot that starts with the first class, its days left, grace,
+ * the buyer handoff, and a school leader's own school, against the real API.
  * AMP_TEST_DATABASE_URL=... npx tsx scripts/verify-school-pilot-ui.ts [--port 4482]
  */
 import assert from "node:assert/strict";
@@ -82,36 +84,37 @@ page.setDefaultTimeout(30_000);
 page.on("pageerror", (error) => failures.push(error.message));
 const artifacts = "artifacts/school-pilot";
 await mkdir(artifacts, { recursive: true });
-async function capture(name: string) {
-  await page.waitForFunction(
+async function captureOn(target: typeof page, name: string) {
+  await target.waitForFunction(
     () =>
       !document.querySelector(".app-loading") &&
       !document.documentElement.hasAttribute("data-arriving"),
   );
   for (const width of [320, 390, 768, 1280]) {
-    await page.setViewportSize({ width, height: 900 });
-    await page.evaluate(() => window.scrollTo(0, 0));
+    await target.setViewportSize({ width, height: 900 });
+    await target.evaluate(() => window.scrollTo(0, 0));
     for (const theme of ["light", "dark"]) {
-      await page.evaluate((value) => {
+      await target.evaluate((value) => {
         document.documentElement.dataset.theme = value;
       }, theme);
       assert.ok(
-        await page.evaluate(
+        await target.evaluate(
           () => document.documentElement.scrollWidth <= window.innerWidth,
         ),
         `${name} no overflow at ${width}`,
       );
-      await page.screenshot({
+      await target.screenshot({
         path: `${artifacts}/${name}-${width}-${theme}.png`,
         fullPage: true,
       });
     }
   }
-  await page.setViewportSize({ width: 390, height: 900 });
-  await page.evaluate(() => {
+  await target.setViewportSize({ width: 390, height: 900 });
+  await target.evaluate(() => {
     document.documentElement.dataset.theme = "light";
   });
 }
+const capture = (name: string) => captureOn(page, name);
 try {
   // A school teacher can arrive without Clever and create a real verified account.
   await page.goto(`${origin}/schools`);
@@ -136,13 +139,9 @@ try {
   await page
     .getByRole("button", { name: "Create account", exact: true })
     .click();
-  await page
-    .getByRole("heading", { name: /^(Confirm|Check) your email$/ })
-    .waitFor();
-  await capture("verify-teacher-email");
-  assert.ok(mail.length, "The local mail sink received the confirmation");
-  await page.goto(mail.at(-1)!);
+  // Straight to the class: no confirmation email in the way.
   await page.getByRole("heading", { name: "Set up your class" }).waitFor();
+  assert.equal(await page.getByLabel("Your role").count(), 0);
   await page.getByLabel("School name").fill("Alder pilot school");
   await page.getByLabel("Class name").fill("Grade 3 Math");
   if (await page.getByLabel("Your name", { exact: true }).count())
@@ -171,13 +170,14 @@ try {
   const created = (
     await learning.pool.query("SELECT org_id,class_id FROM amp_school_starts")
   ).rows[0];
+  // The pilot started with the class: nothing to press.
   assert.equal(
     (
       await learning.pool.query(
         "SELECT count(*)::int AS n FROM amp_class_pilots",
       )
     ).rows[0].n,
-    0,
+    1,
   );
   // Day 0: one step, nothing else to do.
   await page.getByRole("heading", { name: "Add your students" }).waitFor();
@@ -197,9 +197,12 @@ try {
   await page.getByRole("button", { name: "Add 2 students" }).click();
   await page.waitForURL(/\/roster$/);
   await page.getByText("2 students added", { exact: true }).waitFor();
-  await page
-    .getByRole("button", { name: "Start practice", exact: true })
-    .waitFor();
+  // Students in: the class is open, no Start practice anywhere.
+  await page.getByRole("link", { name: "Start class", exact: true }).waitFor();
+  assert.equal(
+    await page.getByRole("button", { name: "Start practice" }).count(),
+    0,
+  );
   assert.equal(
     (
       await learning.pool.query(
@@ -210,11 +213,12 @@ try {
     1,
   );
   await capture("ready");
-  await page
-    .getByRole("button", { name: "Start practice", exact: true })
-    .click();
-  // The same slot now starts the class: the header never reflows.
-  await page.getByRole("link", { name: "Start class", exact: true }).waitFor();
+  await page.goto(page.url().replace(/\/roster$/, "/today"));
+  assert.equal(
+    await page.locator("[data-pilot-left]").textContent(),
+    "Free pilot · 30 days left",
+  );
+  await capture("today-pilot");
   const first = (
     await learning.pool.query("SELECT id,ends_at FROM amp_teacher_pilots")
   ).rows[0];
@@ -242,19 +246,27 @@ try {
     .click();
   await page.getByRole("button", { name: "Add 1 student" }).click();
   await page.waitForURL(/\/roster$/);
-  await page
-    .getByRole("button", { name: "Start practice", exact: true })
-    .click();
   await page.getByRole("link", { name: "Start class", exact: true }).waitFor();
   assert.deepEqual(
     (await learning.pool.query("SELECT id,ends_at FROM amp_teacher_pilots"))
       .rows,
     [first],
   );
+  // Grace: practice goes on, the days left say so, seats are one press.
   await learning.pool.query(
-    "UPDATE amp_teacher_pilots SET started_at=now()-interval '40 days',ends_at=now()-interval '10 days',grace_ends_at=now()-interval '3 days'",
+    "UPDATE amp_teacher_pilots SET started_at=now()-interval '35 days',ends_at=now()-interval '5 days',grace_ends_at=now()+interval '9 days'",
   );
   await page.goto(page.url().replace(/\/roster$/, "/today"));
+  assert.equal(
+    await page.locator("[data-pilot-left]").textContent(),
+    "Grace period · 9 days left",
+  );
+  await page.getByRole("button", { name: "Request seats" }).first().waitFor();
+  await capture("grace");
+  await learning.pool.query(
+    "UPDATE amp_teacher_pilots SET started_at=now()-interval '45 days',ends_at=now()-interval '15 days',grace_ends_at=now()-interval '1 day'",
+  );
+  await page.reload();
   await page.getByRole("heading", { name: "Practice has ended" }).waitFor();
   // Nothing that leads nowhere: no class code, no cards, no Start.
   // (The code's slot keeps a hidden height-holder: only what can be used
@@ -506,6 +518,50 @@ try {
     0,
   );
   await returning.close();
+  // "I run a school": the school leader's own school, then its classes.
+  const leader = await browser.newContext({
+    viewport: { width: 390, height: 900 },
+  });
+  const lead = await leader.newPage();
+  lead.on("pageerror", (error) => failures.push(error.message));
+  await lead.goto(`${origin}/schools`);
+  await lead
+    .getByRole("link", { name: "Set up your school", exact: true })
+    .first()
+    .click();
+  await lead.waitForURL(/sign-up/);
+  const leaderPassword = lead.getByRole("button", {
+    name: "Use a password instead",
+    exact: true,
+  });
+  if (await leaderPassword.count()) await leaderPassword.click();
+  await lead.getByLabel("Email", { exact: true }).fill("head@example.test");
+  await lead
+    .getByLabel("Password", { exact: true })
+    .fill("fixture-school-password-456");
+  await lead
+    .getByRole("button", { name: "Create account", exact: true })
+    .click();
+  await lead.getByRole("heading", { name: "Set up your school" }).waitFor();
+  await lead.getByLabel("School name").fill("Cedar Academy");
+  if (!(await lead.getByLabel("Your name", { exact: true }).inputValue()))
+    await lead.getByLabel("Your name", { exact: true }).fill("Head Example");
+  assert.equal(await lead.getByLabel("Your role").count(), 0);
+  await lead.getByRole("checkbox").check();
+  await captureOn(lead, "school-create");
+  await lead
+    .getByRole("button", { name: "Create school", exact: true })
+    .click();
+  await lead.waitForURL(/\/school\/[\w-]+\/classes$/);
+  const school = (
+    await learning.pool.query(
+      "SELECT o.id,o.solo,(SELECT count(*)::int FROM amp_data_agreements a WHERE a.org_id=o.id) AS agreements FROM amp_orgs o WHERE o.name='Cedar Academy'",
+    )
+  ).rows[0];
+  assert.equal(school.solo, false);
+  assert.equal(school.agreements, 1);
+  await captureOn(lead, "school-classes");
+  await leader.close();
   assert.deepEqual(failures, []);
   console.info(
     "Self-service retry, class import, one teacher pilot, expiry and private buyer handoff passed.",

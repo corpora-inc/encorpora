@@ -136,7 +136,8 @@ export type CreateOrg = z.infer<typeof createOrgSchema>;
 export const dataAgreementSchema = z.strictObject({
   version: z.string().trim().min(1).max(40),
   signerName: plainName,
-  signerTitle: plainName,
+  /** Not required by any law; kept when an admin flow still asks. */
+  signerTitle: plainName.optional(),
 });
 export type DataAgreement = z.infer<typeof dataAgreementSchema>;
 

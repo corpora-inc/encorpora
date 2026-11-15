@@ -7,7 +7,7 @@ import {
   useParams,
   useRouter,
 } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { create } from "zustand";
 import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
@@ -39,6 +39,7 @@ import {
 import { FamilySetup, type SetupKind } from "./setup/FamilySetup";
 import { OwnYearTiles } from "./OwnYearTiles";
 import { StepFrame } from "./setup/StepFrame";
+import { choosePersona, setupStep } from "./activation";
 import styles from "./Starter.module.css";
 
 /** Unsent answers live only in this tab's memory, per account. */
@@ -171,6 +172,12 @@ function StarterScreen({ session }: { session: AuthSession }) {
   const shown = choices.filter(
     (entry) => entry.id !== "tutor" && !has(entry.id),
   );
+  useEffect(() => setupStep("choose", "view"), []);
+  const choose = (answer: StarterChoice) => {
+    track("starter_choice", { answer });
+    setupStep("choose", "complete", answer);
+    choosePersona(session, answer);
+  };
   return (
     <main className={styles.page} data-starter={choice ?? ""}>
       <h1 className={styles.title}>
@@ -202,7 +209,7 @@ function StarterScreen({ session }: { session: AuthSession }) {
                   search={(from ? { from } : {}) as never}
                   className={styles.choice}
                   data-choice={entry.id}
-                  onClick={() => track("starter_choice", { answer: entry.id })}
+                  onClick={() => choose(entry.id)}
                 >
                   {content}
                 </Link>
@@ -214,7 +221,7 @@ function StarterScreen({ session }: { session: AuthSession }) {
                   search={(from ? { from } : {}) as never}
                   className={styles.choice}
                   data-choice={entry.id}
-                  onClick={() => track("starter_choice", { answer: entry.id })}
+                  onClick={() => choose(entry.id)}
                 >
                   {content}
                 </Link>
@@ -246,7 +253,10 @@ function useExplore(session: AuthSession) {
     if (demo.isPending) return;
     setError("");
     demo.mutate("school", {
-      onSuccess: (home) => void navigate({ href: `/${home}` }),
+      onSuccess: (home) => {
+        setupStep("school", "complete", "school");
+        void navigate({ href: `/${home}` });
+      },
       onError: (failure) => {
         console.error("The demo didn’t open", failure);
         setError(
@@ -275,6 +285,10 @@ function MyselfStep({ session }: { session: AuthSession }) {
   const navigate = useNavigate();
   const start = useStartPlace(session);
   const [error, setError] = useState("");
+  useEffect(() => {
+    setupStep("year", "view", "myself");
+    choosePersona(session, "myself");
+  }, [session]);
   const begin = (own: OwnStart) => {
     if (start.isPending) return;
     setError("");
@@ -285,6 +299,7 @@ function MyselfStep({ session }: { session: AuthSession }) {
     };
     start.mutate(answer, {
       onSuccess: (result) => {
+        setupStep("year", "complete", "myself");
         // A plan chosen on the pitch before signing up opens for the learner
         // just made; otherwise their practice opens on its first problem,
         // and `/me` is where they come back to.
@@ -327,10 +342,14 @@ function MyselfStep({ session }: { session: AuthSession }) {
   );
 }
 
-/** `/start/school`: the school pitch, a demo to explore and a person to set
- * up the real one with. */
+/** `/start/school`: the school pitch, then setting up the real school
+ * yourself; the demo and a person to talk to are options, never steps. */
 function SchoolStep({ session }: { session: AuthSession }) {
   const { explore, demo, error, setError } = useExplore(session);
+  useEffect(() => {
+    setupStep("school", "view", "school");
+    choosePersona(session, "school");
+  }, [session]);
   return (
     <>
       <School
@@ -423,8 +442,7 @@ const FACTS = [
   ["lessons", "lessons, with a hint and an explanation for every problem"],
 ] as const;
 
-/** The school pitch: a demo school to explore now, and a person to set up
- * the real one with. */
+/** The school pitch: set up the school now, explore a demo, or talk to us. */
 function School({
   session,
   exploring,
@@ -479,7 +497,7 @@ function School({
       <section className={styles.talk} aria-labelledby="starter-talk">
         <h2 id="starter-talk">Talk to us</h2>
         <p className={styles.note}>
-          Tell us about your school, and we’ll set AMP up with you.
+          Seats for a whole school or district, or any question.
         </p>
         <TalkToUs />
       </section>

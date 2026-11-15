@@ -9,6 +9,7 @@ import type { defineSchoolRoute } from "../routes.js";
 import { demoKinds } from "./build.js";
 import { removeDemos } from "./remove.js";
 import { joinDemo, leaveDemo } from "./shared.js";
+import { recordActivation } from "../../analytics/activation.js";
 
 const timezone = z
   .string()
@@ -64,6 +65,14 @@ export function registerDemoRoutes(
         options.learning,
         options.now?.().getTime(),
       );
+      // A school's demo is the school persona's; a class's, a teacher's.
+      const persona = input.kind === "school" ? "school" : "teacher";
+      await recordActivation(options.pool, {
+        accountId,
+        step: "persona_chosen",
+        persona,
+      });
+      await recordActivation(options.pool, { accountId, step: "demo_opened" });
       return reply.code(place.created ? 201 : 200).send({
         demo: {
           kind: input.kind,

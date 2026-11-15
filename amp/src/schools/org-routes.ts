@@ -153,6 +153,9 @@ export function defineOrgRoutes(define: typeof defineSchoolRoute) {
         // Why it ended, when it has: the school year, the roster or the
         // coverage (CP-3 r7). Each has its own next step.
         practiceEnd: state.end,
+        // What it waits for, while it waits: its students, or (a class
+        // without a pilot or license) its teacher's Start.
+        practiceWait: state.wait,
         orgId: target.orgId,
         path: target.path,
         name: (named.rows[0]?.name as string | undefined) ?? null,

@@ -15,8 +15,8 @@ import { inviteToken, schoolState } from "./school-state";
  * (SPEC R11): an invitation on this device opens it; a school to finish
  * setting up continues its setup; a school they run opens; a teacher's own
  * pilot opens their class, with the buyer handoff beside it; and someone
- * with none starts with their class today, explores the demo, or talks to
- * us below. Clever is offered only where it is turned on.
+ * with none sets up their school today (no license or call first), explores
+ * the demo, or talks to us below. Clever is offered only where it is on.
  */
 export function SchoolNext({
   session,
@@ -95,7 +95,7 @@ export function SchoolNext({
         ) : (
           <>
             <span className={`amp-skeleton ${buttonClass("primary")}`}>
-              Start with your class
+              Set up your school
             </span>
             <span className={`amp-skeleton ${buttonClass("secondary")}`}>
               Explore a demo school
@@ -184,8 +184,11 @@ export function SchoolNext({
       default:
         return (
           <div className={className} data-school-next="none">
-            <Link to="/school/start" className={buttonClass("primary")}>
-              Start with your class
+            <Link
+              to={"/school/start/school" as never}
+              className={buttonClass("primary")}
+            >
+              Set up your school
             </Link>
             {state.demo ? (
               <Link

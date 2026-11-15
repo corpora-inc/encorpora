@@ -1,4 +1,5 @@
 import { classPracticeGate, inSnapshot } from "./pilot-access.js";
+import { joinTeacherPilot } from "./pilots.js";
 import { adultNameSql } from "../account/profile.js";
 import { forgedPost } from "./request-origin.js";
 import { definePilotRoutes, registerBuyerHandoff } from "./pilot-routes.js";
@@ -465,14 +466,25 @@ defineSchoolRoute({
   target: orgParam,
   bodyLimit: 4096,
   handler: async ({ request, reply, actor, target, repository }) => {
+    const person = actorPerson(actor, target);
     const created = await repository.createClass(
       target.orgId,
       request.body,
-      actorPerson(actor, target),
+      person,
       // Someone who teaches here teaches the class they just made.
       actor.roles.find(
         (role) => role.role === "teacher" && target.path.includes(role.orgId),
       )?.personId,
+      // Its pilot starts with it, on the pilot of whoever made it: no Start
+      // to press (founder ruling 2026-11-15). A licensed school has none.
+      async (client, klass) => {
+        if (!person) return;
+        await client.query(
+          "SELECT pg_advisory_xact_lock(hashtextextended($1,0))",
+          [actor.accountId],
+        );
+        await joinTeacherPilot(client, actor.accountId, klass.id, person);
+      },
     );
     // Its code, like every read's, only while its students can practice
     // (SPEC R14): a new class of an unlicensed school has none to give yet.

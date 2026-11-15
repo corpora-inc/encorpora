@@ -12,10 +12,18 @@ import { TextField } from "../../../ui/TextField";
 import styles from "./Pilot.module.css";
 
 /** Who signs, and one tick that accepts the student data agreement. The
- * agreement opens from its name in that line, and accepting there ticks it. */
+ * agreement opens from its name in that line, and accepting there ticks it.
+ *
+ * The tick is the one compliance step a class needs: the school's
+ * authorization, which FTC COPPA FAQ N.1 lets stand in for a parent's
+ * consent for students under 13 in the educational context only (16 CFR
+ * 312.5(a)), and the agreement that keeps student records under the
+ * school's direct control (FERPA, 34 CFR 99.31(a)(1)(i)(B)). The name comes
+ * prefilled from the account. A role is asked only where `onTitle` is given
+ * (an institution's own setup); no law asks a teacher for one. */
 export function Authorization({
   name,
-  title,
+  title = "",
   authorized,
   onName,
   onTitle,
@@ -26,10 +34,10 @@ export function Authorization({
   acceptedAt,
 }: {
   name: string;
-  title: string;
+  title?: string;
   authorized: boolean;
   onName: (value: string) => void;
-  onTitle: (value: string) => void;
+  onTitle?: (value: string) => void;
   onAuthorized: (value: boolean) => void;
   errors?: { name?: string; title?: string };
   disabled?: boolean;
@@ -78,7 +86,7 @@ export function Authorization({
           </Button>
         </div>
       ) : (
-        <div className={styles.pair}>
+        <div className={onTitle ? styles.pair : undefined}>
           <TextField
             label="Your name"
             value={name}
@@ -88,15 +96,17 @@ export function Authorization({
             error={errors.name}
             disabled={disabled}
           />
-          <TextField
-            label="Your role"
-            value={title}
-            onChange={(event) => onTitle(event.target.value)}
-            autoComplete="organization-title"
-            maxLength={100}
-            error={errors.title}
-            disabled={disabled}
-          />
+          {onTitle && (
+            <TextField
+              label="Your role"
+              value={title}
+              onChange={(event) => onTitle(event.target.value)}
+              autoComplete="organization-title"
+              maxLength={100}
+              error={errors.title}
+              disabled={disabled}
+            />
+          )}
         </div>
       )}
       {(!acceptedAt || editSigner) && (

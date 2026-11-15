@@ -3,7 +3,9 @@
  * accounts (docs/architecture/spaces.md, SPEC §4, R7, R11, R14, R16):
  *
  * 1. The school revenue path: a teacher signs up and sets up a class by
- *    hand, imports a roster, sees no class code until Start practice, a
+ *    hand (no confirmation email first; its pilot starts with it), imports
+ *    a roster, and, for a class without a pilot, sees no class code until
+ *    Start practice, a
  *    student walks from the code to a first problem, the records fill,
  *    the buyer gets a link, and practice runs through active, grace,
  *    expired (reports, exports, workbooks and paper results kept) and paid
@@ -572,9 +574,8 @@ try {
   await teacher
     .getByRole("button", { name: "Create account", exact: true })
     .click();
-  await teacher
-    .getByRole("heading", { name: /^(Confirm|Check) your email$/ })
-    .waitFor();
+  // Straight to her class: no confirmation email in the way.
+  await teacher.getByRole("heading", { name: "Set up your class" }).waitFor();
   await teacher.goto(`${origin}/school/new`);
   await teacher.waitForURL(`${origin}/start/school`);
   await teacher.locator("[data-school-next=none]").waitFor();
@@ -602,6 +603,20 @@ try {
   const created = (
     await db.query("SELECT org_id,class_id FROM amp_school_starts")
   ).rows[0] as { org_id: string; class_id: string };
+  // Its pilot started with it (founder ruling 2026-11-15). The closed states
+  // below are a class's from before pilots started by themselves: one
+  // without a pilot, as a roster sync's class is until its teacher signs in.
+  assert.equal(
+    (
+      await db.query("SELECT 1 FROM amp_class_pilots WHERE class_id=$1", [
+        created.class_id,
+      ])
+    ).rowCount,
+    1,
+  );
+  await db.query("DELETE FROM amp_class_pilots WHERE class_id=$1", [
+    created.class_id,
+  ]);
   const classUrl = `${origin}/school/${created.org_id}/classes/${created.class_id}`;
   const code = (
     await db.query("SELECT join_code FROM amp_classes WHERE id=$1", [

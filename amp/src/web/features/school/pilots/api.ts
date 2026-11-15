@@ -5,6 +5,8 @@ import {
   pilotStateSchema,
   schoolPurchaseSchema,
   startSchoolClassSchema,
+  startSchoolSchema,
+  type StartSchool,
   type StartSchoolClass,
 } from "../../../../schools/pilot-contracts";
 import type { AuthSession } from "../../../auth";
@@ -23,7 +25,7 @@ const classAuthorizationSchema = z.object({
   authorization: z
     .object({
       signerName: z.string(),
-      signerTitle: z.string(),
+      signerTitle: z.string().nullable(),
       acceptedAt: z.string(),
       version: z.string(),
     })
@@ -111,6 +113,10 @@ export const pilotApi = {
     call("/start", z.object({ orgId: z.uuid(), classId: z.uuid() }), session, {
       body: startSchoolClassSchema.parse(body),
     }),
+  startSchool: (session: AuthSession, body: StartSchool) =>
+    call("/start-school", z.object({ orgId: z.uuid() }), session, {
+      body: startSchoolSchema.parse(body),
+    }),
   activate: (session: AuthSession, classId: string) =>
     call(`/classes/${classId}/pilot/activate`, pilotStateSchema, session, {
       body: {},
@@ -121,7 +127,6 @@ export const pilotApi = {
     body: {
       version: string;
       signerName: string;
-      signerTitle: string;
       authorized: true;
     },
   ) =>

@@ -1,3 +1,4 @@
+import { recordActivation } from "../analytics/activation.js";
 import { randomUUID } from "node:crypto";
 import type { PoolClient } from "pg";
 import { AGREEMENT_VERSION } from "./agreement.js";
@@ -416,6 +417,12 @@ export async function finishSetup(
     await client.query("UPDATE amp_orgs SET setup_pending=false WHERE id=$1", [
       orgId,
     ]);
+    await recordActivation(client, {
+      personId: actorPersonId,
+      step: "school_created",
+      orgId,
+      school: true,
+    });
     if (org.setup_pending)
       await recordEvent(client, {
         orgId,

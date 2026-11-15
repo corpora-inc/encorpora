@@ -13,20 +13,11 @@ import {
   createRouter,
   RouterProvider,
 } from "@tanstack/react-router";
-import { afterEach, expect, test, vi } from "vitest";
-import { accountClient } from "../../../../account-client";
+import { afterEach, expect, test } from "vitest";
 import { meOptions, queryClient, sessionOptions } from "../../../../lib/query";
 import { orgsOptions } from "../../api";
 import { SchoolStartScreen } from "../SchoolStartScreen";
 
-vi.mock("../../../../account-client", () => ({
-  accountClient: {
-    sendVerificationEmail: vi.fn(async () => ({
-      data: { status: true },
-      error: null,
-    })),
-  },
-}));
 afterEach(() => {
   cleanup();
   queryClient.clear();
@@ -34,8 +25,15 @@ afterEach(() => {
 const O = "11111111-1111-4111-8111-111111111111";
 const C = "22222222-2222-4222-8222-222222222222";
 
-test("CP-2 r3 M4: a teacher's confirmation email comes back to setup, with its way back", async () => {
-  const auth = { accountId: "amp|teacher", token: "synthetic" };
+/* Founder ruling 2026-11-15: a teacher starts a class with nothing in the
+ * way. No confirmation email first, no role to type: the class, the name the
+ * account already has, and one tick. */
+test("a teacher whose email isn't confirmed sets up a class at once, with the name prefilled and no role", async () => {
+  const auth = {
+    accountId: "amp|teacher",
+    token: "synthetic",
+    name: "Rosa Lindqvist",
+  };
   const from = `/school/${O}/classes/${C}/today?view=week`;
   window.scrollTo = () => {};
   queryClient.setQueryData(sessionOptions.queryKey, auth);
@@ -74,13 +72,27 @@ test("CP-2 r3 M4: a teacher's confirmation email comes back to setup, with its w
   expect(
     screen.getByRole("link", { name: "Cancel" }).getAttribute("href"),
   ).toBe(from);
-  await act(async () => {
-    fireEvent.click(screen.getByRole("button", { name: "Send another email" }));
-  });
-  const sent = vi
-    .mocked(accountClient.sendVerificationEmail)
-    .mock.calls.at(-1)?.[0];
-  expect(sent?.callbackURL).toBe(
-    `/school/start?from=${encodeURIComponent(from)}`,
+  expect(screen.queryByRole("button", { name: "Send another email" })).toBe(
+    null,
   );
+  expect(screen.queryByLabelText("Your role")).toBe(null);
+  expect((screen.getByLabelText("Your name") as HTMLInputElement).value).toBe(
+    "Rosa Lindqvist",
+  );
+  const create = screen.getByRole("button", { name: "Create class" });
+  expect(create.hasAttribute("disabled")).toBe(true);
+  await act(async () => {
+    fireEvent.change(screen.getByLabelText("School name"), {
+      target: { value: "Birchwood Elementary" },
+    });
+    fireEvent.change(screen.getByLabelText("Class name"), {
+      target: { value: "Grade 4 Math" },
+    });
+    fireEvent.click(screen.getByRole("checkbox"));
+  });
+  expect(
+    screen
+      .getByRole("button", { name: "Create class" })
+      .hasAttribute("disabled"),
+  ).toBe(false);
 });

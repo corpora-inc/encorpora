@@ -126,6 +126,9 @@ test(
       names: ["Ana Brook", "Ben Cole"],
     });
     const { orgId, classId } = started;
+    // Its pilot started with it. A class from before pilots started by
+    // themselves has none: the closed state below is that class's.
+    await db.query("DELETE FROM amp_class_pilots WHERE class_id=$1", [classId]);
     const staff = { teacher } as Record<string, string>;
     for (const role of ["admin", "viewer", "aide"] as const) {
       staff[role] = `fixture-gate-${role}`;

@@ -1,0 +1,2758 @@
+{
+ "id": "add-three-digit--sa",
+ "title": "Adding and subtracting within 1,000",
+ "teaches": [
+  "subtract-three-digit",
+  "bag-totals-chain"
+ ],
+ "skill": "add-subtract-thousands",
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "points": {
+     "A": [
+      0,
+      0
+     ],
+     "B": [
+      7,
+      0
+     ]
+    },
+    "parts": [
+     {
+      "id": "addition",
+      "label": "358+225",
+      "at": "A",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "subtraction",
+      "label": "900-758",
+      "at": "B",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Three hundred fifty-eight plus two hundred twenty-five. And nine hundred minus seven hundred fifty-eight.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "header",
+       "text": "Hundreds, tens, and ones"
+      },
+      {
+       "do": "highlight",
+       "target": "addition"
+      },
+      {
+       "do": "highlight",
+       "target": "subtraction",
+       "at": "And"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Ugh. That second one has two zeros!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "subtraction"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Both have a useful picture. We'll join matching places to add. For subtraction, we'll find the distance between the numbers.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "text",
+       "text": "Add: join matching places",
+       "at": "join"
+      },
+      {
+       "do": "text",
+       "text": "Subtract: find the gap",
+       "at": "subtraction"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {},
+    "parts": [
+     {
+      "id": "b",
+      "blocks": [
+       "hundreds",
+       "tens",
+       "ones"
+      ],
+      "rows": [
+       {
+        "id": "n",
+        "pieces": {
+         "hundreds": 9,
+         "tens": 8,
+         "ones": 3
+        },
+        "inks": {
+         "hundreds": "blue",
+         "tens": "accent",
+         "ones": "gold"
+        }
+       }
+      ],
+      "digits": "later",
+      "counts": false,
+      "squares": "rows"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A digit tells how many. Its place tells what kind. Seven hundred twenty-one is seven hundreds, two tens, and one one.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "tex": "721+262"
+      },
+      {
+       "do": "stack",
+       "id": "easy",
+       "rows": [
+        "721",
+        "262"
+       ],
+       "op": "+",
+       "headers": true
+      },
+      {
+       "do": "places",
+       "of": "easy",
+       "place": "hundreds",
+       "at": "hundreds"
+      },
+      {
+       "do": "places",
+       "of": "easy",
+       "place": "tens",
+       "at": "tens"
+      },
+      {
+       "do": "places",
+       "of": "easy",
+       "place": "ones",
+       "at": "and"
+      },
+      {
+       "do": "show",
+       "target": [
+        "b.n.hundreds.1",
+        "b.n.hundreds.2",
+        "b.n.hundreds.3",
+        "b.n.hundreds.4",
+        "b.n.hundreds.5",
+        "b.n.hundreds.6",
+        "b.n.hundreds.7"
+       ],
+       "at": "hundreds"
+      },
+      {
+       "do": "show",
+       "target": [
+        "b.n.tens.1",
+        "b.n.tens.2"
+       ],
+       "at": "tens"
+      },
+      {
+       "do": "show",
+       "target": [
+        "b.n.ones.1"
+       ],
+       "at": "and"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Put ones under ones, tens under tens, and hundreds under hundreds. Add one kind at a time.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "places",
+       "of": "easy",
+       "place": "ones",
+       "at": "ones"
+      },
+      {
+       "do": "places",
+       "of": "easy",
+       "place": "tens",
+       "at": "tens"
+      },
+      {
+       "do": "places",
+       "of": "easy",
+       "place": "hundreds",
+       "at": "hundreds"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One plus two makes three ones.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "column",
+       "of": "easy",
+       "write": "three"
+      },
+      {
+       "do": "show",
+       "target": "b.n.ones",
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "b.digit.ones",
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two tens plus six tens makes eight tens. That's eighty.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "column",
+       "of": "easy",
+       "write": "eight"
+      },
+      {
+       "do": "show",
+       "target": "b.n.tens",
+       "at": "eight"
+      },
+      {
+       "do": "show",
+       "target": "b.digit.tens",
+       "at": "eight"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Seven hundreds plus two hundreds makes nine hundreds. Nine hundred eighty-three.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "column",
+       "of": "easy",
+       "write": "nine"
+      },
+      {
+       "do": "show",
+       "target": "b.n.hundreds",
+       "at": "nine"
+      },
+      {
+       "do": "show",
+       "target": "b.digit.hundreds",
+       "at": "nine"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Nothing reached ten, so we didn't need a trade.",
+     "pause": 0.05,
+     "do": []
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {},
+    "parts": [
+     {
+      "id": "b",
+      "blocks": [
+       "tens",
+       "ones"
+      ],
+      "rows": [
+       {
+        "id": "n",
+        "pieces": {
+         "tens": 7,
+         "ones": 13
+        },
+        "inks": {
+         "tens": "accent",
+         "ones": "gold"
+        },
+        "shown": [
+         "tens",
+         "ones"
+        ]
+       }
+      ],
+      "counts": true,
+      "squares": "stacks"
+     }
+    ],
+    "view": [
+     -1,
+     -3,
+     22.7,
+     15
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Try three hundred fifty-eight plus two hundred twenty-five. Look closely at the tens and ones.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "stack",
+       "id": "trade",
+       "rows": [
+        "358",
+        "225"
+       ],
+       "op": "+",
+       "headers": true
+      },
+      {
+       "do": "places",
+       "of": "trade"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Eight ones and five ones make thirteen ones. The five tens and two tens are waiting here.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "places",
+       "of": "trade",
+       "place": "ones",
+       "at": "Eight"
+      },
+      {
+       "do": "places",
+       "of": "trade",
+       "place": "tens",
+       "at": "tens"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "b.n.ones.1",
+        "b.n.ones.2",
+        "b.n.ones.3",
+        "b.n.ones.4",
+        "b.n.ones.5",
+        "b.n.ones.6",
+        "b.n.ones.7",
+        "b.n.ones.8"
+       ],
+       "at": "Eight"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "b.n.ones.9",
+        "b.n.ones.10",
+        "b.n.ones.11",
+        "b.n.ones.12",
+        "b.n.ones.13"
+       ],
+       "at": "five"
+      },
+      {
+       "do": "highlight",
+       "target": "b.n.tens",
+       "at": "waiting"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten of these ones can become one ten. Watch them join. Three ones stay behind.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "b.n.ones.1",
+        "b.n.ones.2",
+        "b.n.ones.3",
+        "b.n.ones.4",
+        "b.n.ones.5",
+        "b.n.ones.6",
+        "b.n.ones.7",
+        "b.n.ones.8",
+        "b.n.ones.9",
+        "b.n.ones.10"
+       ],
+       "at": "Ten"
+      },
+      {
+       "do": "join",
+       "target": "b.n.ones",
+       "at": "join",
+       "dur": 2
+      },
+      {
+       "do": "column",
+       "of": "trade",
+       "at": "join",
+       "write": "Three"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So that little one above the tens means ten!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "places",
+       "of": "trade",
+       "place": "tens"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Regrouping keeps the amount the same. Seven tens and the new ten: eight tens in all.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "column",
+       "of": "trade",
+       "at": "Seven",
+       "write": "eight"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "b.n.tens.1",
+        "b.n.tens.2",
+        "b.n.tens.3",
+        "b.n.tens.4",
+        "b.n.tens.5",
+        "b.n.tens.6",
+        "b.n.tens.7"
+       ],
+       "at": "Seven"
+      },
+      {
+       "do": "highlight",
+       "target": "b.n.tens.8",
+       "at": "new"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three hundreds plus two hundreds makes five hundreds. Five hundred eighty-three.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "column",
+       "of": "trade",
+       "write": "five"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {},
+    "parts": [
+     {
+      "id": "b",
+      "blocks": [
+       "hundreds",
+       "tens"
+      ],
+      "rows": [
+       {
+        "id": "n",
+        "pieces": {
+         "hundreds": 6,
+         "tens": 11
+        },
+        "inks": {
+         "hundreds": "blue",
+         "tens": "accent"
+        },
+        "shown": [
+         "hundreds",
+         "tens"
+        ]
+       }
+      ],
+      "counts": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "The same trade works with tens. In four hundred ninety-three plus two hundred twenty-three, the ones make six.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "stack",
+       "id": "tentrade",
+       "rows": [
+        "493",
+        "223"
+       ],
+       "op": "+",
+       "headers": true
+      },
+      {
+       "do": "column",
+       "of": "tentrade",
+       "at": "ones",
+       "write": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Nine tens and two more tens: eleven tens. Trade ten of them for one hundred. One ten stays behind.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "b.n.tens",
+       "at": "eleven"
+      },
+      {
+       "do": "join",
+       "target": "b.n.tens",
+       "at": "Trade",
+       "dur": 1.7
+      },
+      {
+       "do": "column",
+       "of": "tentrade",
+       "at": "Nine",
+       "write": "One"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Six hundreds plus the new hundred makes seven hundreds. Seven hundred sixteen.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "column",
+       "of": "tentrade",
+       "write": "seven"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Start at the ones: trades change the next place. Ten hundreds make one thousand.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Start with ones; carry trades left."
+      },
+      {
+       "do": "write",
+       "tex": "10\\text{ hundreds}=1{,}000",
+       "at": "Ten"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "Left": [
+      -0.4,
+      0
+     ],
+     "Right": [
+      12.2,
+      0
+     ],
+     "Note": [
+      5.9,
+      -4.1
+     ],
+     "PlusA": [
+      2.4,
+      -2.5
+     ],
+     "PlusB": [
+      5.02,
+      -2.5
+     ],
+     "Eq": [
+      8.23,
+      -2.5
+     ],
+     "Result": [
+      9.82,
+      -2.5
+     ],
+     "P0": [
+      0,
+      0
+     ],
+     "N0": [
+      0,
+      -0.75
+     ],
+     "P1": [
+      2.7,
+      0
+     ],
+     "N1": [
+      2.7,
+      -0.75
+     ],
+     "P2": [
+      6.4,
+      0
+     ],
+     "N2": [
+      6.4,
+      -0.75
+     ],
+     "P3": [
+      11.8,
+      0
+     ],
+     "N3": [
+      11.8,
+      -0.75
+     ],
+     "H0": [
+      1.35,
+      1.2
+     ],
+     "Q0": [
+      1.35,
+      1.85
+     ],
+     "H1": [
+      4.550000000000001,
+      2
+     ],
+     "Q1": [
+      4.550000000000001,
+      2.65
+     ],
+     "H2": [
+      9.100000000000001,
+      2.8
+     ],
+     "Q2": [
+      9.100000000000001,
+      3.4499999999999997
+     ]
+    },
+    "parts": [
+     {
+      "id": "line",
+      "seg": [
+       "Left",
+       "Right"
+      ],
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "note",
+      "label": "\\text{Hop sketch: not to scale}",
+      "at": "Note",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "plusA",
+      "label": "+",
+      "at": "PlusA",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "plusB",
+      "label": "+",
+      "at": "PlusB",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "equals",
+      "label": "=",
+      "at": "Eq",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "result",
+      "label": "142",
+      "at": "Result",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "dot0",
+      "dot": "P0",
+      "ink": "ink",
+      "r": 5,
+      "start": true
+     },
+     {
+      "id": "n0",
+      "label": "758",
+      "at": "N0",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "dot1",
+      "dot": "P1",
+      "ink": "gold",
+      "r": 5,
+      "start": false
+     },
+     {
+      "id": "n1",
+      "label": "760",
+      "at": "N1",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "dot2",
+      "dot": "P2",
+      "ink": "accent",
+      "r": 5,
+      "start": false
+     },
+     {
+      "id": "n2",
+      "label": "800",
+      "at": "N2",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "dot3",
+      "dot": "P3",
+      "ink": "blue",
+      "r": 5,
+      "start": true
+     },
+     {
+      "id": "n3",
+      "label": "900",
+      "at": "N3",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "hop0",
+      "curve": [
+       "P0",
+       "H0",
+       "P1"
+      ],
+      "ink": "gold",
+      "w": 4
+     },
+     {
+      "id": "amount0",
+      "label": "2",
+      "at": "Q0",
+      "dir": "c",
+      "size": "l",
+      "ink": "gold",
+      "start": false,
+      "flies": true
+     },
+     {
+      "id": "hop1",
+      "curve": [
+       "P1",
+       "H1",
+       "P2"
+      ],
+      "ink": "accent",
+      "w": 4
+     },
+     {
+      "id": "amount1",
+      "label": "40",
+      "at": "Q1",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent",
+      "start": false,
+      "flies": true
+     },
+     {
+      "id": "hop2",
+      "curve": [
+       "P2",
+       "H2",
+       "P3"
+      ],
+      "ink": "blue",
+      "w": 4
+     },
+     {
+      "id": "amount2",
+      "label": "100",
+      "at": "Q2",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "start": false,
+      "flies": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Nine hundred minus seven hundred fifty-eight. Instead of taking away, ask: how far is seven hundred fifty-eight from nine hundred?",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "tex": "900-758=\\square"
+      },
+      {
+       "do": "write",
+       "tex": "758+\\square=900",
+       "at": "how"
+      },
+      {
+       "do": "highlight",
+       "target": "dot0",
+       "at": "seven",
+       "nth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "dot3",
+       "at": "nine",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The gap is what we add to seven hundred fifty-eight to make nine hundred.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "dot0",
+       "at": "seven"
+      },
+      {
+       "do": "highlight",
+       "target": "dot3",
+       "at": "nine"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "We'll count up. This sketch spreads out the stops; read the hop labels.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "note",
+       "at": "sketch"
+      },
+      {
+       "do": "text",
+       "text": "Add the hop sizes.",
+       "at": "labels"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "First, reach the next ten. Add two: seven hundred sixty.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "draw",
+       "target": "hop0",
+       "at": "Add",
+       "dur": 1
+      },
+      {
+       "do": "show",
+       "target": "amount0",
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": [
+        "dot1",
+        "n1"
+       ],
+       "at": "sixty"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now reach the next hundred. Four tens, or forty, takes us to eight hundred.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "draw",
+       "target": "hop1",
+       "at": "Four",
+       "dur": 1.3
+      },
+      {
+       "do": "show",
+       "target": "amount1",
+       "at": "forty"
+      },
+      {
+       "do": "show",
+       "target": [
+        "dot2",
+        "n2"
+       ],
+       "at": "eight"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One hundred more reaches nine hundred.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "draw",
+       "target": "hop2",
+       "at": "One",
+       "dur": 1.5
+      },
+      {
+       "do": "show",
+       "target": "amount2",
+       "at": "hundred"
+      },
+      {
+       "do": "highlight",
+       "target": "dot3",
+       "at": "nine"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two, forty, and one hundred. Add those hop sizes together: one hundred forty-two.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "Q0": [
+         1.39,
+         -2.5
+        ]
+       },
+       "dur": 1.0
+      },
+      {
+       "do": "move",
+       "points": {
+        "Q1": [
+         3.71,
+         -2.5
+        ]
+       },
+       "at": "forty",
+       "dur": 1.0
+      },
+      {
+       "do": "move",
+       "points": {
+        "Q2": [
+         6.63,
+         -2.5
+        ]
+       },
+       "at": "hundred",
+       "dur": 1.0
+      },
+      {
+       "do": "show",
+       "target": [
+        "plusA",
+        "plusB",
+        "equals",
+        "result"
+       ],
+       "at": "together"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Our answer is how far we traveled.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "result"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One hundred forty-two is the missing part.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "answer",
+       "tex": "900-758=142",
+       "at": "missing"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Check by adding back. One hundred forty-two plus seven hundred fifty-eight equals nine hundred.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "142+758=900",
+       "at": "Check"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "hop0",
+        "hop1",
+        "hop2"
+       ],
+       "at": "One"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "A": [
+      0,
+      0
+     ],
+     "B": [
+      7,
+      0
+     ],
+     "C": [
+      9,
+      0
+     ],
+     "Up": [
+      4.5,
+      2.5
+     ],
+     "Back": [
+      8,
+      -1.5
+     ],
+     "LA": [
+      0,
+      -0.8
+     ],
+     "LB": [
+      6.15,
+      -0.8
+     ],
+     "LC": [
+      9.85,
+      -0.8
+     ],
+     "U": [
+      4.5,
+      3.2
+     ],
+     "D": [
+      8,
+      -2.3
+     ],
+     "N": [
+      4.5,
+      -3.4
+     ],
+     "BTick": [
+      7,
+      -0.25
+     ],
+     "CTick": [
+      9,
+      -0.25
+     ]
+    },
+    "parts": [
+     {
+      "id": "line",
+      "seg": [
+       "A",
+       "C"
+      ],
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "a",
+      "label": "171",
+      "at": "LA",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "b",
+      "label": "770",
+      "at": "LB",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent",
+      "start": false
+     },
+     {
+      "id": "c",
+      "label": "771",
+      "at": "LC",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "start": false
+     },
+     {
+      "id": "up",
+      "curve": [
+       "A",
+       "Up",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 4
+     },
+     {
+      "id": "back",
+      "curve": [
+       "C",
+       "Back",
+       "B"
+      ],
+      "ink": "warm",
+      "w": 4
+     },
+     {
+      "id": "six",
+      "label": "+600",
+      "at": "U",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "start": false
+     },
+     {
+      "id": "one",
+      "label": "-1",
+      "at": "D",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm",
+      "start": false
+     },
+     {
+      "id": "note",
+      "label": "\\text{Hop sketch: not to scale}",
+      "at": "N",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "btick",
+      "seg": [
+       "B",
+       "BTick"
+      ],
+      "ink": "accent"
+     },
+     {
+      "id": "ctick",
+      "seg": [
+       "C",
+       "CTick"
+      ],
+      "ink": "blue"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Friendly numbers help with addition, too. One hundred seventy-one plus five hundred ninety-nine.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "tex": "171+599"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five hundred ninety-nine is just one short of six hundred. Add six hundred to reach seven hundred seventy-one.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "599=600-1"
+      },
+      {
+       "do": "draw",
+       "target": "up",
+       "at": "Add",
+       "dur": 1.5
+      },
+      {
+       "do": "show",
+       "target": "six",
+       "at": "Add"
+      },
+      {
+       "do": "show",
+       "target": "c",
+       "at": "reach"
+      },
+      {
+       "do": "write",
+       "tex": "171+600=771",
+       "at": "reach"
+      },
+      {
+       "do": "show",
+       "target": "ctick",
+       "at": "reach"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "We added one too many. Step back one: seven hundred seventy.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "draw",
+       "target": "back",
+       "at": "back"
+      },
+      {
+       "do": "show",
+       "target": "one",
+       "at": "back"
+      },
+      {
+       "do": "show",
+       "target": "b",
+       "at": "seventy"
+      },
+      {
+       "do": "answer",
+       "tex": "171+599=770",
+       "at": "seventy"
+      },
+      {
+       "do": "show",
+       "target": "btick",
+       "at": "seventy"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "AL": [
+      0,
+      2.7
+     ],
+     "AR": [
+      4.5,
+      2.7
+     ],
+     "ABR": [
+      4.5,
+      1.3
+     ],
+     "ABL": [
+      0,
+      1.3
+     ],
+     "BL": [
+      5.2,
+      2.7
+     ],
+     "BR": [
+      12.36,
+      2.7
+     ],
+     "BBR": [
+      12.36,
+      1.3
+     ],
+     "BBL": [
+      5.2,
+      1.3
+     ],
+     "LA": [
+      2.25,
+      3.4
+     ],
+     "LB": [
+      8.78,
+      3.4
+     ],
+     "TL": [
+      0.35,
+      2.7
+     ],
+     "TR": [
+      12.01,
+      2.7
+     ],
+     "BRR": [
+      12.01,
+      1.3
+     ],
+     "BLL": [
+      0.35,
+      1.3
+     ],
+     "CutT": [
+      8.03,
+      2.7
+     ],
+     "CutB": [
+      8.03,
+      1.3
+     ],
+     "Broken": [
+      4.19,
+      2.0
+     ],
+     "Keep": [
+      10.02,
+      2.0
+     ],
+     "Total": [
+      6.18,
+      0.45
+     ]
+    },
+    "parts": [
+     {
+      "id": "bagA",
+      "poly": [
+       "AL",
+       "AR",
+       "ABR",
+       "ABL"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "group": "bagOne",
+      "start": false
+     },
+     {
+      "id": "bagB",
+      "poly": [
+       "BL",
+       "BR",
+       "BBR",
+       "BBL"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "bagTwo",
+      "start": false
+     },
+     {
+      "id": "la",
+      "label": "225",
+      "at": "LA",
+      "dir": "c",
+      "size": "l",
+      "ink": "gold",
+      "start": false,
+      "group": "bagOne"
+     },
+     {
+      "id": "lb",
+      "label": "358",
+      "at": "LB",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "start": false,
+      "group": "bagTwo"
+     },
+     {
+      "id": "broken",
+      "poly": [
+       "TL",
+       "CutT",
+       "CutB",
+       "BLL"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm"
+     },
+     {
+      "id": "keep",
+      "poly": [
+       "CutT",
+       "TR",
+       "BRR",
+       "CutB"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent"
+     },
+     {
+      "id": "total",
+      "label": "583\\text{ in all}",
+      "at": "Total",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "brokenLabel",
+      "label": "384\\text{ broken}",
+      "at": "Broken",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "start": false
+     },
+     {
+      "id": "keepLabel",
+      "label": "?",
+      "at": "Keep",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent",
+      "start": false
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Nia has two bags: two hundred twenty-five beads and three hundred fifty-eight beads. She combines them, then sets aside three hundred eighty-four broken beads. How many are left?",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "tex": "\\text{How many beads are left?}"
+      },
+      {
+       "do": "text",
+       "text": "Join 225 and 358; set aside 384."
+      },
+      {
+       "do": "show",
+       "target": "bagOne",
+       "at": "twenty-five"
+      },
+      {
+       "do": "show",
+       "target": "bagTwo",
+       "at": "fifty-eight"
+      },
+      {
+       "do": "write",
+       "tex": "384\\text{ set aside}",
+       "at": "eighty-four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "First, estimate. About two hundred plus four hundred is six hundred. Take away about four hundred: about two hundred left.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "write",
+       "tex": "200+400=600",
+       "at": "estimate"
+      },
+      {
+       "do": "write",
+       "tex": "600-400=200",
+       "at": "away"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now find the exact total. Two hundred twenty-five plus three hundred fifty-eight is five hundred eighty-three.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "225+358=583"
+      },
+      {
+       "do": "slide",
+       "target": "bagOne",
+       "by": [
+        0.35,
+        0
+       ],
+       "at": "plus",
+       "dur": 1.2
+      },
+      {
+       "do": "slide",
+       "target": "bagTwo",
+       "by": [
+        -0.35,
+        0
+       ],
+       "at": "plus",
+       "dur": 1.2
+      },
+      {
+       "do": "show",
+       "target": "total",
+       "at": "eighty-three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The whole is five hundred eighty-three. Separate the three hundred eighty-four broken beads. The part left is what we want.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "bagOne",
+        "bagTwo"
+       ],
+       "at": "Separate"
+      },
+      {
+       "do": "show",
+       "target": [
+        "broken",
+        "keep",
+        "brokenLabel",
+        "keepLabel"
+       ],
+       "at": "Separate"
+      },
+      {
+       "do": "write",
+       "tex": "583-384=\\square",
+       "at": "left"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "Left": [
+      -0.4,
+      0
+     ],
+     "Right": [
+      12.2,
+      0
+     ],
+     "Note": [
+      5.9,
+      -4.1
+     ],
+     "PlusA": [
+      2.664,
+      -2.5
+     ],
+     "PlusB": [
+      5.883,
+      -2.5
+     ],
+     "Eq": [
+      8.531,
+      -2.5
+     ],
+     "Result": [
+      10.14,
+      -2.5
+     ],
+     "P0": [
+      0,
+      0
+     ],
+     "N0": [
+      0,
+      -0.75
+     ],
+     "P1": [
+      2.7,
+      0
+     ],
+     "N1": [
+      2.7,
+      -0.75
+     ],
+     "P2": [
+      6.4,
+      0
+     ],
+     "N2": [
+      6.4,
+      -0.75
+     ],
+     "P3": [
+      11.8,
+      0
+     ],
+     "N3": [
+      11.8,
+      -0.75
+     ],
+     "H0": [
+      1.35,
+      1.2
+     ],
+     "Q0": [
+      1.35,
+      1.85
+     ],
+     "H1": [
+      4.550000000000001,
+      2
+     ],
+     "Q1": [
+      4.550000000000001,
+      2.65
+     ],
+     "H2": [
+      9.100000000000001,
+      2.8
+     ],
+     "Q2": [
+      9.100000000000001,
+      3.4499999999999997
+     ]
+    },
+    "parts": [
+     {
+      "id": "line",
+      "seg": [
+       "Left",
+       "Right"
+      ],
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "note",
+      "label": "\\text{Hop sketch: not to scale}",
+      "at": "Note",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "plusA",
+      "label": "+",
+      "at": "PlusA",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "plusB",
+      "label": "+",
+      "at": "PlusB",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "equals",
+      "label": "=",
+      "at": "Eq",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "result",
+      "label": "199",
+      "at": "Result",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "dot0",
+      "dot": "P0",
+      "ink": "ink",
+      "r": 5,
+      "start": true
+     },
+     {
+      "id": "n0",
+      "label": "384",
+      "at": "N0",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "dot1",
+      "dot": "P1",
+      "ink": "gold",
+      "r": 5,
+      "start": false
+     },
+     {
+      "id": "n1",
+      "label": "400",
+      "at": "N1",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "dot2",
+      "dot": "P2",
+      "ink": "accent",
+      "r": 5,
+      "start": false
+     },
+     {
+      "id": "n2",
+      "label": "500",
+      "at": "N2",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "dot3",
+      "dot": "P3",
+      "ink": "blue",
+      "r": 5,
+      "start": true
+     },
+     {
+      "id": "n3",
+      "label": "583",
+      "at": "N3",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "hop0",
+      "curve": [
+       "P0",
+       "H0",
+       "P1"
+      ],
+      "ink": "gold",
+      "w": 4
+     },
+     {
+      "id": "amount0",
+      "label": "16",
+      "at": "Q0",
+      "dir": "c",
+      "size": "l",
+      "ink": "gold",
+      "start": false,
+      "flies": true
+     },
+     {
+      "id": "hop1",
+      "curve": [
+       "P1",
+       "H1",
+       "P2"
+      ],
+      "ink": "accent",
+      "w": 4
+     },
+     {
+      "id": "amount1",
+      "label": "100",
+      "at": "Q1",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent",
+      "start": false,
+      "flies": true
+     },
+     {
+      "id": "hop2",
+      "curve": [
+       "P2",
+       "H2",
+       "P3"
+      ],
+      "ink": "blue",
+      "w": 4
+     },
+     {
+      "id": "amount2",
+      "label": "83",
+      "at": "Q2",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "start": false,
+      "flies": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Count up from the part we set aside to the whole. Start at three hundred eighty-four.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "tex": "583-384"
+      },
+      {
+       "do": "write",
+       "tex": "384+\\square=583"
+      },
+      {
+       "do": "highlight",
+       "target": "dot0",
+       "at": "part"
+      },
+      {
+       "do": "highlight",
+       "target": "dot3",
+       "at": "whole"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Sixteen reaches four hundred. Six gets to three hundred ninety, and ten more gets to four hundred.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "draw",
+       "target": "hop0",
+       "dur": 1.2
+      },
+      {
+       "do": "show",
+       "target": "amount0"
+      },
+      {
+       "do": "show",
+       "target": [
+        "dot1",
+        "n1"
+       ],
+       "at": "hundred"
+      },
+      {
+       "do": "write",
+       "tex": "6+10=16",
+       "at": "Six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One hundred reaches five hundred.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "draw",
+       "target": "hop1",
+       "dur": 1.2
+      },
+      {
+       "do": "show",
+       "target": "amount1"
+      },
+      {
+       "do": "show",
+       "target": [
+        "dot2",
+        "n2"
+       ],
+       "at": "five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Eighty-three more reaches five hundred eighty-three. That's our whole.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "draw",
+       "target": "hop2",
+       "dur": 1.5
+      },
+      {
+       "do": "show",
+       "target": "amount2"
+      },
+      {
+       "do": "highlight",
+       "target": "dot3",
+       "at": "whole"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Put the hops together. Sixteen plus one hundred plus eighty-three is one hundred ninety-nine.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "Q0": [
+         1.359,
+         -2.5
+        ]
+       },
+       "dur": 1.0
+      },
+      {
+       "do": "move",
+       "points": {
+        "Q1": [
+         4.27,
+         -2.5
+        ]
+       },
+       "at": "hundred",
+       "dur": 1.0
+      },
+      {
+       "do": "move",
+       "points": {
+        "Q2": [
+         7.203,
+         -2.5
+        ]
+       },
+       "at": "plus",
+       "nth": 2,
+       "dur": 1.0
+      },
+      {
+       "do": "show",
+       "target": [
+        "plusA",
+        "plusB",
+        "equals",
+        "result"
+       ],
+       "at": "together"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "One hundred ninety-nine beads left. That's close to our estimate of two hundred.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "answer",
+       "tex": "199\\text{ beads left}"
+      },
+      {
+       "do": "write",
+       "tex": "199\\approx200",
+       "at": "estimate"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Check: the beads left plus those set aside must make the whole.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "write",
+       "tex": "199+384=583",
+       "at": "whole"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "hop0",
+        "hop1",
+        "hop2"
+       ],
+       "at": "left"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "A": [
+      0,
+      0
+     ],
+     "B": [
+      4.14,
+      0
+     ],
+     "C": [
+      7.96,
+      0
+     ],
+     "D": [
+      10,
+      0
+     ],
+     "E": [
+      0,
+      -1.5
+     ],
+     "F": [
+      4.14,
+      -1.5
+     ],
+     "G": [
+      7.96,
+      -1.5
+     ],
+     "H": [
+      10,
+      -1.5
+     ],
+     "Name": [
+      5,
+      1.3
+     ],
+     "Green": [
+      2.07,
+      -0.75
+     ],
+     "Clear": [
+      6.05,
+      -0.75
+     ],
+     "Striped": [
+      8.98,
+      -0.75
+     ],
+     "Lo": [
+      0,
+      -2.1
+     ],
+     "Hi": [
+      7.96,
+      -2.1
+     ]
+    },
+    "parts": [
+     {
+      "id": "green",
+      "poly": [
+       "A",
+       "B",
+       "F",
+       "E"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "start": false
+     },
+     {
+      "id": "clear",
+      "poly": [
+       "B",
+       "C",
+       "G",
+       "F"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "start": false
+     },
+     {
+      "id": "striped",
+      "poly": [
+       "C",
+       "D",
+       "H",
+       "G"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "start": false
+     },
+     {
+      "id": "whole",
+      "label": "879\\text{ marbles}",
+      "at": "Name",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "g",
+      "label": "364",
+      "at": "Green",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent",
+      "start": false
+     },
+     {
+      "id": "c",
+      "label": "336",
+      "at": "Clear",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "start": false
+     },
+     {
+      "id": "s",
+      "label": "?",
+      "at": "Striped",
+      "dir": "c",
+      "size": "l",
+      "ink": "gold",
+      "start": false
+     },
+     {
+      "id": "known",
+      "dim": [
+       "Lo",
+       "Hi"
+      ],
+      "side": "s",
+      "tex": "700\\text{ known}",
+      "ink": "muted"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "The collection has eight hundred seventy-nine marbles. The green and clear parts are known. How many are striped?",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "tex": "\\text{Find the missing part}"
+      },
+      {
+       "do": "show",
+       "target": [
+        "green",
+        "g"
+       ],
+       "at": "green"
+      },
+      {
+       "do": "show",
+       "target": [
+        "clear",
+        "c"
+       ],
+       "at": "clear"
+      },
+      {
+       "do": "show",
+       "target": [
+        "striped",
+        "s"
+       ],
+       "at": "striped"
+      },
+      {
+       "do": "show",
+       "target": "whole",
+       "at": "eight"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Add the known parts. Three hundred sixty-four plus three hundred thirty-six equals seven hundred.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "off": true
+      },
+      {
+       "do": "stack",
+       "id": "knownParts",
+       "rows": [
+        "364",
+        "336"
+       ],
+       "op": "+",
+       "headers": true
+      },
+      {
+       "do": "column",
+       "of": "knownParts",
+       "at": "Three"
+      },
+      {
+       "do": "column",
+       "of": "knownParts",
+       "at": "plus"
+      },
+      {
+       "do": "column",
+       "of": "knownParts",
+       "at": "equals"
+      },
+      {
+       "do": "show",
+       "target": "known",
+       "at": "hundred",
+       "nth": 3
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So seven hundred are already named. From seven hundred, one hundred reaches eight hundred, and seventy-nine more reaches eight hundred seventy-nine.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "879-(364+336)",
+       "at": "already"
+      },
+      {
+       "do": "write",
+       "tex": "879-700",
+       "at": "named"
+      },
+      {
+       "do": "write",
+       "tex": "100+79=179",
+       "at": "seventy-nine"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One hundred seventy-nine striped marbles. Here, we added known parts to find what to subtract.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "179\\text{ striped}"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "green",
+        "clear",
+        "known"
+       ],
+       "at": "parts"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "Left": [
+      -0.4,
+      0
+     ],
+     "Right": [
+      12.2,
+      0
+     ],
+     "Note": [
+      5.9,
+      -4.1
+     ],
+     "PlusA": [
+      3.4,
+      -2.5
+     ],
+     "PlusB": [
+      6.9,
+      -2.5
+     ],
+     "Eq": [
+      5.9,
+      -2.5
+     ],
+     "Result": [
+      10.7,
+      -2.5
+     ],
+     "P0": [
+      0,
+      0
+     ],
+     "N0": [
+      0,
+      -0.75
+     ],
+     "P1": [
+      2.7,
+      0
+     ],
+     "N1": [
+      2.7,
+      -0.75
+     ],
+     "P2": [
+      6.4,
+      0
+     ],
+     "N2": [
+      6.4,
+      -0.75
+     ],
+     "P3": [
+      11.8,
+      0
+     ],
+     "N3": [
+      11.8,
+      -0.75
+     ],
+     "H0": [
+      1.35,
+      1.2
+     ],
+     "Q0": [
+      1.35,
+      1.85
+     ],
+     "H1": [
+      4.550000000000001,
+      2
+     ],
+     "Q1": [
+      4.550000000000001,
+      2.65
+     ],
+     "H2": [
+      9.100000000000001,
+      2.8
+     ],
+     "Q2": [
+      9.100000000000001,
+      3.4499999999999997
+     ]
+    },
+    "parts": [
+     {
+      "id": "line",
+      "seg": [
+       "Left",
+       "Right"
+      ],
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "note",
+      "label": "\\text{Hop sketch: not to scale}",
+      "at": "Note",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "dot0",
+      "dot": "P0",
+      "ink": "ink",
+      "r": 5,
+      "start": true
+     },
+     {
+      "id": "n0",
+      "label": "758",
+      "at": "N0",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "dot1",
+      "dot": "P1",
+      "ink": "gold",
+      "r": 5,
+      "start": true
+     },
+     {
+      "id": "n1",
+      "label": "760",
+      "at": "N1",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "dot2",
+      "dot": "P2",
+      "ink": "accent",
+      "r": 5,
+      "start": true
+     },
+     {
+      "id": "n2",
+      "label": "800",
+      "at": "N2",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "dot3",
+      "dot": "P3",
+      "ink": "blue",
+      "r": 5,
+      "start": true
+     },
+     {
+      "id": "n3",
+      "label": "900",
+      "at": "N3",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "hop0",
+      "curve": [
+       "P0",
+       "H0",
+       "P1"
+      ],
+      "ink": "gold",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "amount0",
+      "label": "2",
+      "at": "Q0",
+      "dir": "c",
+      "size": "l",
+      "ink": "gold",
+      "start": true,
+      "flies": true
+     },
+     {
+      "id": "hop1",
+      "curve": [
+       "P1",
+       "H1",
+       "P2"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "amount1",
+      "label": "40",
+      "at": "Q1",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent",
+      "start": true,
+      "flies": true
+     },
+     {
+      "id": "hop2",
+      "curve": [
+       "P2",
+       "H2",
+       "P3"
+      ],
+      "ink": "blue",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "amount2",
+      "label": "100",
+      "at": "Q2",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "start": true,
+      "flies": true
+     },
+     {
+      "id": "distance",
+      "label": "900-758=142",
+      "at": "Eq",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "start": false
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Back to where we began: three hundred fifty-eight plus two hundred twenty-five is five hundred eighty-three.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "stack",
+       "id": "last",
+       "rows": [
+        "358",
+        "225"
+       ],
+       "op": "+",
+       "headers": true
+      },
+      {
+       "do": "places",
+       "of": "last"
+      },
+      {
+       "do": "column",
+       "of": "last",
+       "at": "three"
+      },
+      {
+       "do": "column",
+       "of": "last",
+       "at": "plus"
+      },
+      {
+       "do": "column",
+       "of": "last",
+       "at": "is"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "And our subtraction gives one hundred forty-two: the three hops fill the gap.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "distance",
+       "at": "forty-two"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "hop0",
+        "hop1",
+        "hop2"
+       ],
+       "at": "hops"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Add one kind at a time, and trade when a pile reaches ten. To subtract, you can always count up.",
+     "pause": 1.5,
+     "do": [
+      {
+       "do": "places",
+       "of": "last",
+       "place": "ones",
+       "at": "Add"
+      },
+      {
+       "do": "places",
+       "of": "last",
+       "place": "tens",
+       "at": "trade"
+      },
+      {
+       "do": "places",
+       "of": "last",
+       "at": "subtract"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "hop0",
+        "hop1",
+        "hop2"
+       ],
+       "at": "subtract"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
