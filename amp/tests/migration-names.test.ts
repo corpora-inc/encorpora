@@ -21,6 +21,8 @@ const shippedDuplicates = [
   "0106-trend-line-fit-problem-flags.sql",
   "0125-external-runtime-errors.sql",
   "0125-funded-pending-invoices.sql",
+  "0127-acquisition-contact-due-at-signup.sql",
+  "0127-consent-policy-no-review-expiry.sql",
 ];
 
 test("every new migration takes its own number", () => {

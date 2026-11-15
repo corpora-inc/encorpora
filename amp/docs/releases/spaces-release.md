@@ -21,12 +21,14 @@ does ([deployment](../deployment.md)). It applies, in this order:
 | `0134-funded-term-schedule.sql` | `amp_funding_requests.scheduled_term` (nullable) | Metadata only |
 | `0135-level-practice.sql` | `amp_learners.level_practice` and its one-per-account index | Metadata, one index build |
 
-They follow main's highest number (`0127-acquisition-contact-due-at-signup`,
-#2339; main also added `0126-consent-single-response`, #2333).
+They follow main's highest number, `0127` (main shipped two:
+`0127-acquisition-contact-due-at-signup`, #2339, and
+`0127-consent-policy-no-review-expiry`, #2340; main also added
+`0126-consent-single-response`, #2333).
 Production has applied none of them, so production needs no renaming. They do
 not depend on their order relative to main's `0125`, `0126` and `0127`
 migrations: main's touch funnel events, funded invoices, consent requests and
-acquisition contacts, none of the
+policy, and acquisition contacts, none of the
 spaces tables or columns, and a schema-only dump of a database migrated with
 the spaces files before main's `0125-funded-pending-invoices` is identical to
 one migrated in this order. `tests/migration-names.test.ts` fails if a new
@@ -62,9 +64,8 @@ COMMIT;
 ```
 
 (A database on an older set shifts each name by two or three the same way.)
-The checksums do not change: only the file names did. Main's
-`0126-consent-single-response.sql` and `0127-acquisition-contact-due-at-signup.sql`
-then apply on the next migrate as new migrations.
+The checksums do not change: only the file names did. Main's `0126` and two `0127` migrations then apply on the next migrate as new
+migrations.
 
 ## 2. Backfill (automatic)
 
@@ -100,8 +101,8 @@ with the current list price. Nothing to change for this release.
 
 1. `GET /api/v1/health` reports the merged commit.
 2. `SELECT name FROM amp_migrations WHERE name >= '0126' ORDER BY name;` lists
-   `0126-consent-single-response`, `0127-acquisition-contact-due-at-signup`,
-   `0128`-`0135` and `data:family-identities-v1`.
+   `0126-consent-single-response`, both `0127` migrations, `0128`-`0135` and
+   `data:family-identities-v1`.
 3. A brand-new account opens `/start` on "What brings you to AMP?".
 4. An existing parent opens `/` on Family and sees each child, with a week of
    Time or the empty state for a child with no practice.

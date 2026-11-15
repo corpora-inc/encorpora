@@ -231,11 +231,13 @@ const billing = await registerStripeRoutes(app, {
 });
 await app.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
-  cacheDir: "node_modules/.vite-journeys",
+  cacheDir: process.env.AMP_VITE_CACHE_DIR ?? "node_modules/.vite-journeys",
   server: {
     host: "127.0.0.1",
     port: webPort,
     strictPort: true,
+    // Edits elsewhere in the tree never reload a page mid-check.
+    hmr: false,
     proxy: { "/api": `http://127.0.0.1:${apiPort}` },
   },
 });
@@ -250,6 +252,17 @@ const last: { page: Page | null } = { page: null };
 const CLASS_TODAY = /\/school\/[0-9a-f-]{36}\/classes\/[0-9a-f-]{36}\/today$/;
 /** A family's Today, at its own address (spaces P2). */
 const FAMILY_TODAY = /\/family\/[0-9a-f-]{36}$/;
+/** A year from a year field (ui/YearField): its button opens a sheet of
+ * year tiles named like the field. */
+async function pickYear(page: Page, field: string, year?: string) {
+  await page.getByRole("button", { name: field, exact: true }).click();
+  const years = page.getByRole("dialog", { name: field });
+  const tile = year
+    ? years.getByRole("radio", { name: year, exact: true })
+    : years.getByRole("radio").first();
+  await tile.click();
+  await years.waitFor({ state: "hidden" });
+}
 const APPROVAL_PAGE = /\/family\/approvals\/[0-9a-f-]{36}$/;
 
 async function newContext(
@@ -341,8 +354,8 @@ async function measured(page: Page, label: string) {
     geometry.midWordWraps.length === 0,
     geometry.midWordWraps,
   );
-  const { cls } = await shellRecord(page);
-  check(`${label} CLS`, cls <= 0.01, cls);
+  const { cls, shifts } = await shellRecord(page);
+  check(`${label} CLS`, cls <= 0.01, { cls, shifts });
 }
 /** A reload the app may itself interrupt with a replace (WebKit reports
  * "Frame load interrupted"): the page that results is the one under test. */
@@ -553,8 +566,7 @@ async function parentJourney(
     ["Child 1", "2016"],
     ["Child 2", "2018"],
   ] as const) {
-    await page.getByRole("button", { name: `Birth year, ${child}` }).click();
-    await page.getByRole("option", { name: year, exact: true }).click();
+    await pickYear(page, `Birth year, ${child}`, year);
   }
   // One child named by the parent, one left blank ("Child 1").
   await page.getByLabel("Name, Child 2").fill("Sam");
@@ -606,7 +618,11 @@ async function parentJourney(
   await page.waitForURL(FAMILY_TODAY);
   await todayTitle(page);
   // Each row says its free problems left: the figure over its label.
-  await page.locator("[data-family-kids]").getByText("free problems left").first().waitFor();
+  await page
+    .locator("[data-family-kids]")
+    .getByText("free problems left")
+    .first()
+    .waitFor();
   await page
     .getByRole("button", { name: `Let ${moon.name} practice here` })
     .waitFor();
@@ -629,7 +645,9 @@ async function parentJourney(
   await device.goto(`${origin}/join`);
   await heading(device, "Type your code");
   await device.getByLabel("Code", { exact: true }).fill(home.join_code);
-  await device.waitForURL(`**/join/${home.join_code.slice(0, 3)}-${home.join_code.slice(3)}`);
+  await device.waitForURL(
+    `**/join/${home.join_code.slice(0, 3)}-${home.join_code.slice(3)}`,
+  );
   await heading(device, "Tap your name");
   await device.getByRole("link", { name: new RegExp(`^${moon.name}`) }).click();
   await heading(device, /Pick 3 pictures/);
@@ -744,27 +762,40 @@ async function parentJourney(
   await page.getByRole("button", { name: "Let Rowan practice here" }).waitFor();
   await shot(page, 1, "today-paid", width, theme);
 
-  // Family: the parent renames a child in place and adds another, with no
-  // consent step for either name.
+  // Family: the parent renames a child on the child's own page, and adds
+  // another from Today, with no consent step for either name. Their older
+  // address (/family/learners) opens the family's Settings.
   await page.goto(`${origin}/family/learners`);
-  await page.getByRole("button", { name: "Edit name", exact: true }).click();
+  await page.waitForURL(/\/family\/[0-9a-f-]{36}\/settings$/);
+  await page.getByRole("link", { name: /^Rowan/ }).click();
+  await page.waitForURL(/\/family\/[0-9a-f-]{36}\/kids\/[^/]+$/);
+  const settings = page.getByRole("region", { name: "Rowan’s settings" });
+  // The name is the first of the child's settings.
+  await settings
+    .getByRole("button", { name: "Change", exact: true })
+    .first()
+    .click();
   // The field's reason sits inside its label, so match the name's start.
-  const rename = page.getByRole("textbox", { name: /^Name/ });
+  const rename = settings.getByRole("textbox", { name: /^Name/ });
   await rename.fill("rowan@example.com");
-  await page.getByRole("button", { name: "Save name" }).click();
+  await settings.getByRole("button", { name: "Save name" }).click();
   await page.getByText("Use a name, not an email address.").waitFor();
   await measured(page, `${label} rename`);
   await shot(page, 1, "family-rename", width, theme);
   await rename.fill("Ro");
-  await page.getByRole("button", { name: "Save name" }).click();
-  await page.getByRole("heading", { name: "Ro", exact: true }).waitFor();
+  await settings.getByRole("button", { name: "Save name" }).click();
+  await page
+    .getByRole("heading", { name: "Ro", exact: true, level: 1 })
+    .waitFor();
   await page.goto(`${origin}/family/learners/new`);
-  await page.getByText("You’re adding your own children").waitFor();
+  await page.getByRole("dialog", { name: "Add a child" }).waitFor();
   await measured(page, `${label} add learner`);
   await shot(page, 1, "family-add", width, theme);
+  await page.keyboard.press("Escape");
 
-  // The class's Settings adds a child the family way, never the school form,
-  // and the child is on Today and the map at once.
+  // The class's old Settings address opens the family's: it adds a child
+  // the family way, never the school form, and the child is on Today and
+  // the map at once.
   const place = await classOf(account);
   await page.goto(
     `${origin}/school/${place.org_id}/classes/${place.class_id}/settings`,
@@ -777,16 +808,21 @@ async function parentJourney(
     (await sheet.getByText(/Last name|Grade/).count()) === 0,
   );
   await sheet.getByRole("textbox", { name: /^Name/ }).fill("Ivy");
+  // The family's Add a child sheet keeps its list of years (ui/Select).
   await sheet.getByRole("button", { name: "Birth year" }).click();
   await page.getByRole("option", { name: "2019", exact: true }).click();
   await measured(page, `${label} add a child`);
   await shot(page, 1, "settings-add-child", width, theme);
   await sheet.getByRole("button", { name: "Add child" }).click();
-  await sheet.getByText("Ivy is in your class.").waitFor();
+  await sheet.getByText("Ivy is in your family.").waitFor();
   await page.keyboard.press("Escape");
-  await page.goto(`${origin}/school/${place.org_id}/classes/${place.class_id}/today`);
+  await page.goto(
+    `${origin}/school/${place.org_id}/classes/${place.class_id}/today`,
+  );
   await page.getByRole("button", { name: "Let Ivy practice here" }).waitFor();
-  await page.goto(`${origin}/school/${place.org_id}/classes/${place.class_id}/map`);
+  await page.goto(
+    `${origin}/school/${place.org_id}/classes/${place.class_id}/map`,
+  );
   check(
     `${label} the new child is on the map`,
     await page
@@ -829,7 +865,8 @@ async function adultJourney(
     ).rows[0]?.starting_band === "middle-school",
   );
   await page.goto(`${origin}/me`);
-  await heading(page, "Avery Fixture");
+  // Their record is titled by what it shows; the place carries their name.
+  await heading(page, "Where you are");
   await page.getByText("100 free problems left", { exact: true }).waitFor();
   await measured(page, `${label} record`);
   await shot(page, 2, "me", width, theme);
@@ -879,7 +916,7 @@ async function adultJourney(
 /** 3. A teacher: "I’m a teacher" opens a demo class, alive with made-up
  * students’ work, before any agreement or payment. They practice as a demo
  * student, are handed back to the roster, and "Set up your real class" leads
- * to the real onboarding, which begins at "Talk to us" (white-glove). */
+ * to class setup. */
 async function teacherJourney(
   browser: Browser,
   width: number,
@@ -889,17 +926,24 @@ async function teacherJourney(
   const context = await newContext(browser, width, theme);
   const page = await opened(context, label);
   const { account } = await signUp(page, "Dana Fixture");
-  await page.getByRole("button", { name: /^I’m a teacher/ }).click();
+  // "I'm a teacher" opens class setup, whose demo is one tap away.
+  await page.getByRole("link", { name: /^I’m a teacher/ }).click();
+  await page.waitForURL(/\/school\/start$/);
+  await heading(page, "Set up your class");
+  await page.getByRole("button", { name: "Explore a demo first" }).click();
   await page.waitForURL(CLASS_TODAY);
   await todayTitle(page);
   check(
-    `${label} the demo is theirs`,
+    // The shared demo school of their time zone (docs/schools.md#demo-places),
+    // with them in it as its teacher.
+    `${label} the demo has them in it`,
     (
       await db.query(
-        "SELECT count(*)::int AS n FROM amp_orgs WHERE demo AND created_by=$1",
+        `SELECT count(*)::int AS n FROM amp_people p JOIN amp_orgs o ON o.id=p.tenant_id
+         WHERE o.demo AND p.account_id=$1`,
         [account],
       )
-    ).rows[0].n === 1,
+    ).rows[0].n >= 1,
   );
   const classPath = new URL(page.url()).pathname.replace(/\/today$/, "");
   // Alive: made-up students’ work, marked Demo, with the class code and
@@ -915,8 +959,14 @@ async function teacherJourney(
       .filter({ visible: true })
       .count()) >= 1,
   );
-  await page.locator("[data-class-code]").waitFor();
-  await page.getByRole("link", { name: "Start class" }).waitFor();
+  // Today's practice slot: Start practice before it runs, the class code
+  // while it does (PracticeSlot).
+  await page
+    .locator('[data-code-slot="start"], [data-code-slot="open"]')
+    .waitFor();
+  // A demo's bar offers its one action, the real class (below), never
+  // Start class (features/spaces/resolve.ts).
+  await page.locator("[data-demo-action]").filter({ visible: true }).waitFor();
   await measured(page, `${label} demo today`);
   await shot(page, 3, "demo-today", width, theme);
 
@@ -947,9 +997,10 @@ async function teacherJourney(
     `${label} the action names the real class`,
     (await real.getAttribute("aria-label")) === "Set up your real class",
   );
+  // A teacher sets up their real class themselves (#2282): class setup.
   await real.click();
-  await page.waitForURL(/\/schools#talk$/);
-  await page.getByRole("heading", { name: "Talk to us." }).waitFor();
+  await page.waitForURL(/\/school\/start$/);
+  await heading(page, "Set up your class");
   await shot(page, 3, "real-class", width, theme);
   await context.close();
 }
@@ -965,7 +1016,9 @@ async function tutorJourney(
   const context = await newContext(browser, width, theme);
   const page = await opened(context, label);
   const { account } = await signUp(page, "Marisol Fixture");
-  await page.getByRole("link", { name: /^I tutor or run a co-op/ }).click();
+  // Tutoring is no longer a starter answer (practice at a level covers it,
+  // R8); its setup keeps working at its own address for links in flight.
+  await page.goto(`${origin}/start/tutor`);
   await page.waitForURL(/\/start\/tutor$/);
   await heading(page, "Your students");
   await page.getByRole("button", { name: "Add a student" }).click();
@@ -975,10 +1028,7 @@ async function tutorJourney(
     [2, "2016"],
     [3, "2017"],
   ] as const) {
-    await page
-      .getByRole("button", { name: `Birth year, Student ${index}` })
-      .click();
-    await page.getByRole("option", { name: year, exact: true }).click();
+    await pickYear(page, `Birth year, Student ${index}`, year);
   }
   await page.getByLabel("Nickname or initials, Student 1").fill("KJ");
   await measured(page, `${label} students`);
@@ -993,8 +1043,12 @@ async function tutorJourney(
   await heading(page, "Your class is ready");
   await shot(page, 4, "setup-ready", width, theme);
   await page.getByRole("link", { name: "Go to Today" }).click();
-  // Other families' children only: the tutoring group, never a family.
-  await page.waitForURL(/\/family\/[0-9a-f-]{36}\/group$/);
+  // Other families' children only: the tutoring group is its class's
+  // classroom, never a family; its people are the class's Students.
+  await page.waitForURL(CLASS_TODAY);
+  await todayTitle(page);
+  await page.goto(page.url().replace(/\/today$/, "/roster"));
+  await heading(page, "Students");
   const names = (
     await db.query<{ name: string }>(
       `SELECT p.given_name AS name FROM amp_families f JOIN amp_enrollments e ON e.class_id=f.class_id AND e.role='student'
@@ -1098,7 +1152,8 @@ async function schoolJourney(
   await signUp(page, "Ruth Fixture");
   await page.getByRole("link", { name: /^I run a school/ }).click();
   await page.waitForURL(/\/start\/school$/);
-  await heading(page, "AMP for your school", 2);
+  // Each answer is a step page of its own, titled by its question.
+  await heading(page, "AMP for your school");
   await page.getByText("objectives mapped to Common Core standards").waitFor();
   await measured(page, `${label} pitch`);
   await shot(page, 5, "pitch", width, theme);
@@ -1178,27 +1233,29 @@ async function returningJourney(
   );
   await measured(back, `${label} home`);
   await shot(back, 6, "home", width, theme);
-  // Adding an adult in Family asks once whether it is them: their own
-  // practice is their own learner.
-  await back.goto(`${origin}/family/learners`);
+  // An adult's own practice is its own place, never a learner in the
+  // family (the family adds only children): the switcher starts it, and the
+  // year is all it asks.
   await back
-    .getByRole("button", { name: "Add learner", exact: true })
+    .getByRole("button", { name: "Open AMP menu" })
     .filter({ visible: true })
     .first()
     .click();
-  await back.getByLabel("Name", { exact: true }).fill("Sam");
-  await back.getByRole("button", { name: "Birth year" }).click();
-  await back.getByRole("option", { name: "Adult", exact: true }).click();
+  await back.getByRole("dialog").waitFor();
   await back
-    .locator("form.family-add-learner")
-    .getByRole("button", { name: "Add learner", exact: true })
+    .getByRole("button", { name: /: switch place$/ })
+    .filter({ visible: true })
+    .first()
     .click();
-  const askSelf = back.getByRole("dialog", { name: "Is this you?" });
-  await askSelf.waitFor();
-  await shot(back, 6, "is-this-you", width, theme);
-  await askSelf.getByRole("button", { name: "Yes, it’s me" }).click();
-  await back.waitForURL(/\/me$/);
-  await heading(back, "Sam Fixture");
+  const places = back.getByRole("menu");
+  await places.getByRole("menuitem", { name: /Practice yourself/ }).click();
+  await places.waitFor({ state: "detached" });
+  await back.waitForURL(/\/me\/start$/);
+  await heading(back, "What year were you born?");
+  await shot(back, 6, "own-practice-start", width, theme);
+  await back.getByRole("radio", { name: "Adult", exact: true }).click();
+  await back.getByRole("button", { name: "Start practicing" }).click();
+  await practicing(back);
   check(
     `${label} their own learner, not a family one`,
     (
@@ -1269,9 +1326,16 @@ async function journey7(
   await page.waitForURL(/\/start$/);
   await heading(page, "What brings you to AMP?");
   await page.getByRole("link", { name: /I’m a parent/ }).click();
-  await page.getByRole("button", { name: "Birth year, your child" }).click();
-  await page.getByRole("option").first().click();
-  await page.getByRole("button", { name: "Continue", exact: true }).click();
+  // The parent's setup (R11): their name, one child, then Today.
+  await page.waitForURL(/\/start\/parent\/name$/);
+  await page.getByLabel("First name").fill("Robin");
+  await page.getByLabel("Last name").fill("Fixture");
+  await page.getByRole("button", { name: "Next" }).click();
+  await heading(page, "Add your kids");
+  await pickYear(page, "Birth year, Child 1");
+  await page.getByRole("button", { name: "Next", exact: true }).click();
+  await page.waitForURL(/\/start\/parent\/ready$/);
+  await page.getByRole("link", { name: "Go to Today" }).click();
   await page.waitForURL(FAMILY_TODAY);
   await visit(page, `${origin}/try/map`);
   await page.waitForURL(FAMILY_TODAY);
