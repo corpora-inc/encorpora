@@ -829,7 +829,9 @@ test(
 );
 
 // Capture the scheduling decision while coverage is live; provision the exact
-// payload after its source ends, without an intervening account GET.
+// payload after its source ends, without an intervening account GET. Coverage
+// revoked or cut short before the saved start would leave the learner without
+// access until then: an operator reconciles that one.
 test("scheduled funded terms survive ended adult coverage", enabled, () =>
   fixture(async (pool) => {
     for (const mode of [
@@ -955,6 +957,14 @@ test("scheduled funded terms survive ended adult coverage", enabled, () =>
         );
         continue;
       }
+      if (mode === "revoked" || mode === "shortened") {
+        await assert.rejects(
+          provisionFundingRequest(pool, input, offers),
+          /funded_term_start_unsupported/,
+        );
+        assert.deepEqual(await grants(pool, learner), []);
+        continue;
+      }
       const current = await repo.transaction(account, (db) =>
         accessGrantsFor(db, [learner]),
       );
@@ -995,4 +1005,76 @@ test("scheduled funded terms survive ended adult coverage", enabled, () =>
       );
     }
   }),
+);
+
+// An annual card license ends in seven months; the education-funds year is
+// approved now and scheduled to follow it. The card payment is refunded
+// before ClassWallet settles: granting the saved later start would leave the
+// paid child without access until then, so it goes to an operator instead.
+test(
+  "a saved later start whose preceding license was refunded is reconciled by an operator",
+  enabled,
+  () =>
+    fixture(async (pool, invoices) => {
+      await installConsentPolicy(pool, notificationPolicy);
+      await pool.query(
+        "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES('amp|parent','fixture','verified','private')",
+      );
+      const cardEnd = new Date(Date.now() + 200 * 86400000);
+      cardEnd.setUTCHours(0, 0, 0, 0);
+      await pool.query(
+        "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES('card','child','stripe','card','active',now()-interval '165 days',$1)",
+        [cardEnd],
+      );
+      const request = await invoices.claim(
+        "amp|parent",
+        (await invoiceFor(invoices, "parent@example.com", yearly)).id,
+        "child",
+      );
+      const repo = new FundingPurchaseRepository(pool, offers);
+      const activatedAt = await justNow();
+      const startsAt = await repo.transaction(
+        "amp|parent",
+        (db) => fundedTermStart(db, "child", activatedAt, request.id),
+        true,
+      );
+      assert.equal(startsAt, cardEnd.toISOString());
+      const end = new Date(startsAt);
+      end.setUTCFullYear(end.getUTCFullYear() + 1);
+      const input = settlement(request, {
+        activatedAt,
+        startsAt,
+        endsAt: end.toISOString(),
+      });
+      // ClassWallet stages the exact payload it will provision.
+      await pool.query(
+        "INSERT INTO amp_classwallet_payments(order_id,invoice_id,report_sha256,payment_row,verified_config,conversion_payload) VALUES($1,$2,$3,'{}','{}',$4)",
+        [
+          input.events[0]!.orderId,
+          request.id,
+          "1".repeat(64),
+          JSON.stringify(input),
+        ],
+      );
+      // The card payment is refunded.
+      await pool.query(
+        "UPDATE amp_grants SET status='revoked' WHERE id='card'",
+      );
+      await assert.rejects(
+        provisionFundingRequest(pool, input, offers),
+        /funded_term_start_unsupported/,
+      );
+      assert.deepEqual(await grants(pool, "child"), []);
+      // With the card year still in force, the same payload follows it.
+      await pool.query("UPDATE amp_grants SET status='active' WHERE id='card'");
+      await provisionFundingRequest(pool, input, offers);
+      assert.deepEqual(
+        (
+          await pool.query(
+            "SELECT starts_at,ends_at FROM amp_grants WHERE learner_id='child' AND channel='esa'",
+          )
+        ).rows.map((g) => [g.starts_at.toISOString(), g.ends_at.toISOString()]),
+        [[startsAt, end.toISOString()]],
+      );
+    }),
 );

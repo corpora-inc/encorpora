@@ -255,8 +255,8 @@ export async function provisionFundingRequest(
       )
         throw new FundingPurchaseError(409, "order_quote_mismatch");
       const access = await accessGrantsFor(client, [request.learnerId]);
-      // A captured scheduling decision survives expiry, shortening or
-      // revocation of the preceding coverage. It grants no current access;
+      // A captured scheduling decision survives the preceding coverage
+      // ending on time (provisioning after it lapsed). It grants no current access;
       // the live resolver below still rejects any overlapping replacement.
       // Complete saved provider payloads also preserve pre-migration schedules.
       const savedSchedule =
@@ -275,19 +275,31 @@ export async function provisionFundingRequest(
             )
           ).rowCount,
         );
-      // Unsaved operator imports must still agree with a live grant's end.
+      // Unsaved operator imports must still agree with a live grant's end. A
+      // saved schedule whose start is still ahead needs coverage in force now
+      // that reaches it: after a refund or a shortened term, the learner would
+      // otherwise wait without access until the paid term starts, so an
+      // operator reconciles it instead.
+      const start = Date.parse(order.license.startsAt);
+      const followed = savedSchedule
+        ? start <= access.now.getTime() ||
+          access.grants.some(
+            (g) =>
+              g.status === "active" &&
+              !g.id.startsWith("funded-pending:") &&
+              grantInForce(g, access.now) &&
+              g.ends_at.getTime() >= start,
+          )
+        : access.grants.some(
+            (g) =>
+              g.status === "active" &&
+              g.ends_at.getTime() === start &&
+              g.starts_at.getTime() < start,
+          );
       if (
         order.license.startsAt !== activation.occurredAt &&
-        (Date.parse(order.license.startsAt) -
-          Date.parse(activation.occurredAt) >
-          EARLY_RENEWAL_LIMIT_MS ||
-          (!savedSchedule &&
-            !access.grants.some(
-              (g) =>
-                g.status === "active" &&
-                g.ends_at.getTime() === Date.parse(order.license.startsAt) &&
-                g.starts_at.getTime() < Date.parse(order.license.startsAt),
-            )))
+        (start - Date.parse(activation.occurredAt) > EARLY_RENEWAL_LIMIT_MS ||
+          !followed)
       )
         throw new FundingPurchaseError(409, "funded_term_start_unsupported");
       // Replace only this learner's unpaid bridge. Validation and replacement
