@@ -26,6 +26,17 @@ import {
   fundingStructuredData,
 } from "./funding.js";
 import { darkSurface, lightSurface, siteStructuredData } from "./icons.js";
+export function RedirectPage({ destination, config }: { destination: string; config: SiteConfig }) {
+  return <html lang="en"><head>
+    <meta charSet="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>How AMP works · Corpora</title>
+    {config.mode === "preview" && <meta name="robots" content="noindex, nofollow" />}
+    {config.siteUrl && <link rel="canonical" href={new URL(destination, config.siteUrl).href} />}
+    <script dangerouslySetInnerHTML={{ __html: `location.replace(${JSON.stringify(destination)} + location.search + location.hash);` }} />
+    <meta httpEquiv="refresh" content={`0;url=${destination}`} />
+    <link rel="stylesheet" href="/assets/site.css" />
+  </head><body><main id="main"><div className="page-intro"><h1>How AMP works</h1><p><a href={destination}>Continue to the AMP guide →</a></p></div></main></body></html>;
+}
 export const routes = [
   "/",
   "/amp/",
@@ -301,8 +312,9 @@ function Home({ config }: { config: SiteConfig }) {
           </h1>
           <p className="lead">
             AMP is a complete math curriculum, from counting to precalculus,
-            that moves at your child’s pace: ahead as fast as they’re ready,
-            back to fill every gap. Thirty minutes a day, nothing to plan.
+            that chooses the next problem, brings lessons within reach and keeps
+            earlier learning in practice. Fresh problems and personalized
+            workbooks, without the daily planning.
           </p>
           <div className="actions">
             <Try config={config} />
@@ -338,7 +350,7 @@ function Home({ config }: { config: SiteConfig }) {
             Your child presses Next. AMP builds the best next problem every
             time, with the lesson and the paper work attached.
           </p>
-          <a href="/how-it-works/">How AMP works ↗</a>
+          <a href="/amp/how-it-works/">How AMP works ↗</a>
         </div>
         <Steps />
       </section>
@@ -391,8 +403,10 @@ function Amp({ config }: { config: SiteConfig }) {
         heading={pageCopy["/amp/"].heading}
       >
         <p className="lead">
-          AMP moves at your child’s pace: ahead as fast as they’re ready, back
-          to fill every gap. Thirty minutes a day, nothing to plan.
+          A complete math curriculum, from counting to precalculus. AMP chooses
+          the next problem, keeps explanations close and brings earlier ideas
+          back for review. Infinite fresh practice and personalized workbooks,
+          with the daily planning taken care of.
         </p>
         <Try config={config} />
         <p className="fine">{tryFreeNote}</p>
@@ -975,7 +989,7 @@ export function Page({
               Education funds
             </a>
             <details className="site-menu"><summary>Explore</summary><div className="site-menu-links">
-              <a href="/how-it-works/">How AMP works</a><a href="/science/">The science</a>
+              <a href="/amp/how-it-works/">How AMP works</a><a href="/science/">The science</a>
               <a href="/philosophy/spiraling/">Spiraling &amp; mastery</a><a href="/philosophy/guided-discovery/">Guided discovery</a>
               <a href="/grades/">Math by grade</a><a href="/resources/">Free resources</a>
               <a href="/workbooks/">Printable workbooks</a><a href="/compare/">Compare programs</a>
@@ -995,7 +1009,7 @@ export function Page({
           </div>
           <nav aria-label="Footer navigation">
             <a href="/amp/">AMP Mathematics</a>
-            <a href="/how-it-works/">How AMP works</a>
+            <a href="/amp/how-it-works/">How AMP works</a>
             <a href="/science/">Learning science</a>
             <a href="/grades/">Math by grade</a><a href="/resources/">Free resources</a>
             <a href="/lessons/">Math lessons</a><a href="/workbooks/">Free workbooks</a>

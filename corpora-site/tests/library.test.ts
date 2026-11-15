@@ -27,6 +27,8 @@ test("the editorial library exposes readable, connected pages without JavaScript
     for (const match of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(match[1]), `Missing anchor ${match[1]} in ${article.path}`);
     for (const path of article.related) assert.ok(routes.has(path), `Missing related page ${path}`);
     for (const section of article.sections) {
+      for (const link of section.links ?? []) assert.ok(routes.has(link.href), `Missing contextual page ${link.href}`);
+      for (const image of section.images ?? []) assert.ok(existsSync(`public${image.src}`));
       if (section.shot) for (const size of ["desktop", "mobile"]) assert.ok(existsSync(`public/product/${section.shot}-${size}.webp`));
       for (const source of section.sources ?? []) assert.equal(new URL(source.url).protocol, "https:");
     }

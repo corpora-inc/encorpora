@@ -5,7 +5,8 @@ import { printFigureCss, publicationCss } from "../../amp/src/content/print-exer
 import { mkdir, readFile, writeFile, cp, rm } from "node:fs/promises";
 import React, { renderToStaticMarkup } from "./react.js";
 import type { SiteConfig } from "./config.js";
-import { Page, routesFor, title } from "./pages.js";
+import { Page, RedirectPage, routesFor, title } from "./pages.js";
+import { externalLinks, redirects } from "./navigation.js";
 import { build as bundle } from "esbuild";
 import { product } from "./product.js";
 import { writeIcons } from "./icons.js";
@@ -61,16 +62,21 @@ export async function buildSite(config: SiteConfig, output: string = "dist") {
     await writeFile(
       `${dir}index.html`,
       "<!doctype html>" +
-        renderToStaticMarkup(
+        externalLinks(renderToStaticMarkup(
           <Page
             route={route}
             config={config}
             socialImage={{ path: `/assets/social/${card.name}`, alt: card.alt }}
           />,
-        ),
+        ), config.siteUrl),
     );
   }
-  await writeFile(`${output}/404.html`, "<!doctype html>" + renderToStaticMarkup(<Page route="/404/" config={config} />));
+  await writeFile(`${output}/404.html`, "<!doctype html>" + externalLinks(renderToStaticMarkup(<Page route="/404/" config={config} />), config.siteUrl));
+  for (const [previous, destination] of Object.entries(redirects)) {
+    if (!routes.includes(destination) || routes.includes(previous)) throw new Error(`Invalid page redirect: ${previous}`);
+    await mkdir(`${output}${previous}`, { recursive: true });
+    await writeFile(`${output}${previous}index.html`, "<!doctype html>" + renderToStaticMarkup(<RedirectPage destination={destination} config={config} />));
+  }
   await writeDiscovery(output, config, routes);
   await writeFile(
     `${output}/coverage.json`,

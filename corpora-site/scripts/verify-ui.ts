@@ -19,7 +19,7 @@ let production: Awaited<ReturnType<typeof startServer>> | undefined;
 try {
   browser = await chromium.launch();
   const checkedLinks = new Set<string>();
-  const representative = new Set(["/", "/amp/", "/grades/3/", "/grades/12/", "/workbooks/grade-3/", "/compare/amp-vs-ctcmath/", "/learn/area/", "/tutors/", "/personalized-workbooks/", "/plans/", "/resources/", "/lessons/", "/compare/", "/how-it-works/", "/philosophy/guided-discovery/", "/videos/count-objects/", "/videos/rectangle-area/"]);
+  const representative = new Set(["/", "/amp/", "/grades/3/", "/grades/12/", "/workbooks/grade-3/", "/compare/amp-vs-ctcmath/", "/learn/area/", "/tutors/", "/personalized-workbooks/", "/plans/", "/resources/", "/lessons/", "/compare/", "/amp/how-it-works/", "/philosophy/guided-discovery/", "/videos/count-objects/", "/videos/rectangle-area/"]);
   for (const width of [320, 390, 768, 1280]) {
     const context = await browser.newContext({
       viewport: { width, height: 900 },
@@ -33,6 +33,7 @@ try {
     for (const path of paths) {
       assert.equal((await page.goto(url + path))?.status(), 200);
       assert.equal(await page.locator("h1").count(), 1);
+      assert.deepEqual(await page.locator('a[href^="https://"],a[href^="http://"],a[href^="//"]').evaluateAll(links => links.filter(link => link instanceof HTMLAnchorElement && new URL(link.href).origin !== "https://corpora.inc" && (link.target !== "_blank" || !link.relList.contains("noopener"))).map(link => link.getAttribute("href"))), [], `External links must open safely in a new tab: ${path}`);
       assert.ok(
         await page.evaluate(
           () => document.documentElement.scrollWidth <= innerWidth,
@@ -57,7 +58,7 @@ try {
         path === "/" ||
         path === "/amp/" ||
         path === "/schools/" ||
-        path === "/how-it-works/" ||
+        path === "/amp/how-it-works/" ||
         path === "/philosophy/guided-discovery/" ||
         path === "/legal/privacy/"
       ) {
@@ -82,6 +83,21 @@ try {
         );
       }
     }
+    for (const fragment of ["understanding", "paper"]) {
+      await page.goto(`${url}/how-it-works/?utm_source=alias-check#${fragment}`);
+      await page.waitForURL(`${url}/amp/how-it-works/?utm_source=alias-check#${fragment}`);
+      await page.locator(`#${fragment}`).waitFor();
+    }
+    const paper = page.locator("#paper");
+    assert.equal(await paper.locator(".article-gallery img").count(), 2);
+    assert.equal(await paper.locator('a[href="/personalized-workbooks/"]').count(), 1);
+    for (const colorScheme of ["light", "dark"] as const) {
+      await page.emulateMedia({ colorScheme });
+      await paper.locator("img").evaluateAll(async images => { await Promise.all(images.map(image => (image as HTMLImageElement).decode())); });
+      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+      await paper.screenshot({ path: `artifacts/workbook-gallery-${colorScheme}-${width}.png` });
+    }
+    await page.emulateMedia({ colorScheme: "light" });
     await page.goto(url);
     await page.keyboard.press("Tab");
     assert.equal(await page.locator(":focus").innerText(), "Skip to content");
@@ -94,7 +110,7 @@ try {
     const menu = await page.locator(".site-menu-links").boundingBox();
     assert.ok(menu && menu.x >= 0 && menu.x + menu.width <= width, `Explore menu clipped at ${width}`);
     await page.keyboard.press("Tab");
-    assert.equal(await page.locator(":focus").getAttribute("href"), "/how-it-works/");
+    assert.equal(await page.locator(":focus").getAttribute("href"), "/amp/how-it-works/");
     await page.goto(url + "/samples/");
     await page.emulateMedia({ media: "print" });
     if (width === 1280)
@@ -109,6 +125,12 @@ try {
   console.log(
     `All ${paths.length} pages: 320/390/768/1280, no overflow, axe violations, broken internal links, or console errors. Keyboard solution reveal and printable PDF passed.`,
   );
+  const noScript = await browser.newContext({ javaScriptEnabled: false });
+  const noScriptPage = await noScript.newPage();
+  await noScriptPage.goto(url + "/how-it-works/");
+  await noScriptPage.waitForURL(url + "/amp/how-it-works/");
+  assert.equal(await noScriptPage.locator("h1").innerText(), "You put in the time. AMP does the rest.");
+  await noScript.close();
   // Synthetic production configuration exercises indexing, contacts, prices and
   // state guidance without a merchant credential or real commercial data.
   await buildSite(
@@ -220,14 +242,15 @@ try {
     assert.equal(destination.pathname, `/invoice/${slug}`);
     assert.equal(destination.protocol, "https:");
     assert.ok(await fixturePage.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
-    await fixturePage.route(destination.href, route => route.fulfill({ contentType: "text/html", body: '<html><body><label>Student name<input></label><button>Download invoice</button></body></html>' }));
-    await action.click();
-    const dialog = fixturePage.getByRole("dialog");
-    await dialog.waitFor();
-    assert.equal(await dialog.evaluate(el => el.scrollWidth <= el.clientWidth), true);
-    await fixturePage.frameLocator("[data-invoice-dialog] iframe").getByRole("button", { name: "Download invoice" }).waitFor();
-    await fixturePage.screenshot({ path: `artifacts/invoice-form-${slug}-${width}.png`, fullPage: true });
-    await fixturePage.getByRole("button", { name: "Close invoice form" }).click();
+    await fixturePage.context().route(destination.href, route => route.fulfill({ contentType: "text/html", body: '<!doctype html><html><body><label>Student name<input></label><button>Download invoice</button></body></html>' }));
+    assert.equal(await action.getAttribute("target"), "_blank");
+    const [invoiceTab] = await Promise.all([fixturePage.waitForEvent("popup"), action.click()]);
+    await invoiceTab.getByRole("button", { name: "Download invoice" }).waitFor();
+    assert.equal(await invoiceTab.evaluate(() => window.opener), null);
+    assert.equal(fixturePage.url(), production.url + `/esa/${slug}/`);
+    assert.equal(await fixturePage.locator("[data-invoice-dialog][open]").count(), 0);
+    await invoiceTab.screenshot({ path: `artifacts/invoice-form-${slug}-${width}.png` });
+    await invoiceTab.close();
     assert.equal(await action.evaluate(el => el === document.activeElement), true);
   }
   await fixturePage.goto(production.url + "/schools/");
