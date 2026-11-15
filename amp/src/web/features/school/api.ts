@@ -281,7 +281,7 @@ export const school = {
   acceptAgreement: (
     session: AuthSession,
     orgId: string,
-    body: { version: string; signerName: string; signerTitle: string },
+    body: { version: string; signerName: string },
   ) =>
     call(`/orgs/${orgId}/setup/agreement`, setupStateSchema, session, { body }),
   finish: (

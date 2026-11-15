@@ -61,17 +61,13 @@ function Agreement({
   const session = currentSession();
   const [reading, setReading] = useState(false);
   const [name, setName] = useState("");
-  const [title, setTitle] = useState("");
   const [busy, setBusy] = useState(false);
-  const [errors, setErrors] = useState<{ name?: string; title?: string }>({});
+  const [errors, setErrors] = useState<{ name?: string }>({});
   const [error, setError] = useState("");
   useLoggedError(error);
   const accepted = data.agreement;
   const accept = async () => {
-    const missing = {
-      ...(name.trim() ? {} : { name: "Enter your name." }),
-      ...(title.trim() ? {} : { title: "Enter your title." }),
-    };
+    const missing = name.trim() ? {} : { name: "Enter your name." };
     setErrors(missing);
     if (Object.keys(missing).length) return;
     setBusy(true);
@@ -80,7 +76,6 @@ function Agreement({
       await school.acceptAgreement(session, orgId, {
         version: AGREEMENT_VERSION,
         signerName: name.trim(),
-        signerTitle: title.trim(),
       });
       await refreshSchool(session);
     } catch (failure) {
@@ -140,15 +135,6 @@ function Agreement({
             value={name}
             error={errors.name}
             onChange={(event) => setName(event.target.value)}
-          />
-          <TextField
-            label="Your title"
-            autoComplete="organization-title"
-            placeholder="Head of School"
-            maxLength={100}
-            value={title}
-            error={errors.title}
-            onChange={(event) => setTitle(event.target.value)}
           />
           <FormNote error={error} />
           <Button

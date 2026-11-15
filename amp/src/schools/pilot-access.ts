@@ -66,6 +66,11 @@ export async function classPracticeGate(
  * answered by seats. */
 export type PracticeEnd = "session" | "roster" | "coverage";
 
+/** What a waiting class waits for: its students (its pilot runs; nothing
+ * to start), or Start (a class with no pilot and no license, from before
+ * pilots started by themselves). */
+export type PracticeWait = "students" | "start";
+
 /** Each class's gate, in one read (a school's class list). A class missing
  * from the answer has none to report; an archived one, or one whose session
  * is over, has ended. */
@@ -85,7 +90,12 @@ export async function classPracticeGates(
 export async function classPracticeStates(
   db: Pick<PoolClient, "query">,
   classIds: readonly string[],
-): Promise<Map<string, { gate: PracticeGate; end: PracticeEnd | null }>> {
+): Promise<
+  Map<
+    string,
+    { gate: PracticeGate; end: PracticeEnd | null; wait?: PracticeWait }
+  >
+> {
   if (!classIds.length) return new Map();
   const { rows } = await db.query<{
     id: string;
@@ -117,7 +127,7 @@ export async function classPracticeStates(
   );
   const states = new Map<
     string,
-    { gate: PracticeGate; end: PracticeEnd | null }
+    { gate: PracticeGate; end: PracticeEnd | null; wait?: PracticeWait }
   >();
   for (const row of rows) {
     // A family's or a demo's class is never gated (a family's session is
@@ -133,7 +143,11 @@ export async function classPracticeStates(
         // waits for its students, never "ended".
         row.started && row.rostered
           ? { gate: "ended", end: row.entering ? "coverage" : "roster" }
-          : { gate: "waiting", end: null },
+          : {
+              gate: "waiting",
+              end: null,
+              wait: row.started ? "students" : "start",
+            },
       );
   }
   return states;
@@ -319,6 +333,8 @@ export async function readClassPractice(
   gate: PracticeGate | null;
   /** Why it ended, when it has. */
   end: PracticeEnd | null;
+  /** What it waits for, while it waits. */
+  wait: PracticeWait | null;
   recheckAt: string | null;
   serverNow: string;
 }> {
@@ -328,6 +344,7 @@ export async function readClassPractice(
   return {
     gate: state?.gate ?? null,
     end: state?.end ?? null,
+    wait: state?.wait ?? null,
     recheckAt,
     serverNow: new Date(clock.rows[0]!.now).toISOString(),
   };

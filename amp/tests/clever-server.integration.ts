@@ -22,7 +22,10 @@ import { syncCleverConnection } from "../src/schools/clever/sync.js";
 import { SchoolRepository } from "../src/schools/repository.js";
 import { resolveStudentSession } from "../src/schools/principal.js";
 import { classPilotState } from "../src/schools/pilots.js";
-import { classPracticeGate } from "../src/schools/pilot-access.js";
+import {
+  classPractice,
+  classPracticeGate,
+} from "../src/schools/pilot-access.js";
 
 test(
   "production Clever adapter uses real mailbox proofs, source bindings and isolated student sessions",
@@ -401,6 +404,8 @@ test(
     ).rows[0] as { id: string };
     assert.equal((await classPilotState(pool, section.id)).status, "ready");
     assert.equal(await classPracticeGate(pool, section.id), "waiting");
+    // No pilot, no license: this one really does wait for its teacher.
+    assert.equal((await classPractice(pool, section.id, null)).wait, "start");
     subject = teacher;
     const renewed = await finish(await start());
     const renewedCookie = cookieOf(renewed, "amp.provider-session");

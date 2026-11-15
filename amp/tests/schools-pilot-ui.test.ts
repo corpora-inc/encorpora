@@ -8,6 +8,7 @@ import {
   accessView,
   pilotLeft,
   practiceDate,
+  practiceView,
 } from "../src/web/features/school/pilots/presentation.js";
 
 const now = new Date("2026-11-13T15:00:00Z");
@@ -161,4 +162,14 @@ test("the header says how many pilot or grace days are left, never 0", () => {
   );
   assert.equal(pilotLeft({ kind: "ended" }, now), null);
   assert.equal(pilotLeft({ kind: "paid" }, now), null);
+});
+
+test("a class whose pilot runs waits for students, never for its teacher", () => {
+  assert.deepEqual(practiceView("waiting", "students"), { kind: "empty" });
+  // Only a class with no pilot and no license waits for its teacher.
+  assert.deepEqual(practiceView("waiting", "start"), { kind: "waiting" });
+  // An older server that doesn't say keeps the old reading.
+  assert.deepEqual(practiceView("waiting", null), { kind: "waiting" });
+  assert.deepEqual(practiceView("ended", null), { kind: "ended" });
+  assert.deepEqual(practiceView("open", null), { kind: "none" });
 });

@@ -69,6 +69,8 @@ const base: Access = {
   pilot: undefined,
   teaches: true,
   requests: true,
+  wait: null,
+  adds: true,
   pending: false,
   practice: "open",
   closed: false,

@@ -28,7 +28,12 @@ import { useClassSearch } from "../classes/teacher-shared";
 import type { FeedEntry } from "../classes/today/Feed";
 import { Authorization } from "./Authorization";
 import { pilotApi, pilotOptions, purchaseRequestOptions } from "./api";
-import { accessView, practiceDate, type AccessView } from "./presentation";
+import {
+  accessView,
+  practiceDate,
+  practiceView,
+  type AccessView,
+} from "./presentation";
 import styles from "./Pilot.module.css";
 import school from "../School.module.css";
 
@@ -64,6 +69,11 @@ export function useClassAccess(place: Place): {
   unavailable: boolean;
   /** Why practice ended, when the server says (CP-3 r7). */
   end: "session" | "roster" | "coverage" | null;
+  /** What waiting practice waits for: its students (its pilot runs), or
+   * Start (no pilot, no license). Null when not waiting or not said. */
+  wait: "students" | "start" | null;
+  /** This reader can add the class's students (its teacher, its school). */
+  adds: boolean;
   /** When the server last answered where the class stands (this page's
    * clock): a code read before it may be stale. */
   answeredAt: number;
@@ -199,6 +209,8 @@ export function useClassAccess(place: Place): {
       checking: false,
       unavailable: false,
       end: null,
+      wait: null,
+      adds: false,
       answeredAt: year.dataUpdatedAt,
       retry,
     };
@@ -218,13 +230,15 @@ export function useClassAccess(place: Place): {
       // A due recheck that failed: say so, with Try again, never an
       // endless "Checking practice".
       (due && failedLast));
+  const wait = practice === "waiting" ? (answer?.practiceWait ?? null) : null;
+  const adds = !!answer?.can?.some(
+    (action) => action === "class.import" || action === "students.add",
+  );
+  // A class whose pilot runs waits only for its students: never "waiting
+  // for the teacher" (that is a class with no pilot and no license).
   const view: AccessView = pilot
     ? accessView(pilot, teaches)
-    : practice === "ended"
-      ? { kind: "ended" }
-      : practice === "waiting"
-        ? { kind: "waiting" }
-        : { kind: "none" };
+    : practiceView(practice, wait);
   return {
     view,
     pilot,
@@ -236,6 +250,8 @@ export function useClassAccess(place: Place): {
     checking,
     unavailable,
     end: practice === "ended" ? (answer?.practiceEnd ?? null) : null,
+    wait,
+    adds,
     answeredAt: year.dataUpdatedAt,
     retry,
   };
@@ -956,8 +972,10 @@ export function ClosedSignIn({
         The class’s code shows here once it’s clear its students can practice.
       </EmptyState>
     );
+  // No students yet: whoever can add them is offered that; anyone else
+  // reads that the class is empty (never "waiting for the teacher").
   if (practice === "waiting" && view.kind === "empty")
-    return (
+    return access.adds ? (
       <EmptyState
         title="Add your students first"
         action={actions(
@@ -968,6 +986,11 @@ export function ClosedSignIn({
             Add students
           </Link>,
         )}
+      />
+    ) : (
+      <EmptyState
+        title="No students yet"
+        action={actions(also ? null : to("Back to Today"))}
       />
     );
   if (practice === "waiting" && view.kind === "start")

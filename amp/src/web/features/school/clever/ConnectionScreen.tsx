@@ -79,7 +79,6 @@ export function ConnectionScreen() {
   });
   const data = status.data;
   const [name, setName] = useState(""),
-    [title, setTitle] = useState("District administrator"),
     [authorized, setAuthorized] = useState(false),
     [bringExisting, setBringExisting] = useState<boolean | null>(null),
     [busy, setBusy] = useState<"connect" | "sync" | "link" | null>(null),
@@ -145,7 +144,6 @@ export function ConnectionScreen() {
           credential,
           connectInstitutionSchema.parse({
             signerName: name.trim(),
-            signerTitle: title.trim(),
             authorized,
             agreementVersion: AGREEMENT_VERSION,
             timezone: deviceTimeZone(),
@@ -325,10 +323,8 @@ export function ConnectionScreen() {
               )}
               <Authorization
                 name={name}
-                title={title}
                 authorized={authorized}
                 onName={setName}
-                onTitle={setTitle}
                 onAuthorized={setAuthorized}
                 disabled={!!busy}
                 scope="district"
@@ -338,9 +334,7 @@ export function ConnectionScreen() {
                   type="submit"
                   variant="primary"
                   data-primary
-                  disabled={
-                    !!busy || !authorized || !name.trim() || !title.trim()
-                  }
+                  disabled={!!busy || !authorized || !name.trim()}
                   aria-busy={busy === "connect"}
                 >
                   {connection ? "Reconnect district" : "Connect district"}

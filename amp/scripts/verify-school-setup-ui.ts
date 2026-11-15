@@ -461,7 +461,7 @@ async function journey(
   await sheet.getByRole("button", { name: "Close" }).click();
   await sheet.waitFor({ state: "detached" });
   await page.getByLabel("Your name").fill("Grace Okafor");
-  await page.getByLabel("Your role").fill("Head of School");
+  assert.equal(await page.getByLabel("Your role").count(), 0, "no role");
   await page.getByRole("checkbox").check();
   await page.getByRole("button", { name: "Accept" }).click();
   await heading(page, "Add your students");
@@ -705,7 +705,6 @@ async function loneTeacher(
   await page.getByRole("button", { name: "Continue" }).click();
   await heading(page, "Accept the data agreement");
   await page.getByLabel("Your name").fill("Ines Vega");
-  await page.getByLabel("Your role").fill("Teacher");
   await page.getByRole("checkbox").check();
   await page.getByRole("button", { name: "Accept" }).click();
   await heading(page, "Add your students");

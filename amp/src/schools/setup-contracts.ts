@@ -74,7 +74,8 @@ export const experienceSchema = z.strictObject({
 export const acceptAgreementSchema = z.strictObject({
   version: z.string().trim().min(1).max(40),
   signerName: plainName,
-  signerTitle: plainName,
+  /** No law asks for the signer's title; older clients may still send it. */
+  signerTitle: plainName.optional(),
 });
 export const finishSetupSchema = z.strictObject({
   /** A class to start with; a school importing a roster may have none yet. */

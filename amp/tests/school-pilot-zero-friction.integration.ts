@@ -16,7 +16,11 @@ import {
   GRACE_DAYS,
   PILOT_DAYS,
 } from "../src/schools/pilots.js";
-import { classPracticeGate } from "../src/schools/pilot-access.js";
+import {
+  classPractice,
+  classPracticeGate,
+} from "../src/schools/pilot-access.js";
+import { registerCleverOnboarding } from "../src/schools/clever-onboarding.js";
 
 /** Founder ruling 2026-11-15: a teacher signs up, makes a class and runs a
  * free 30-day pilot (then 14 days of grace) with no operator, contract,
@@ -87,8 +91,13 @@ test(
         ).rows[0].signer_title,
         null,
       );
-      // No students yet: the class waits for them, it hasn't "ended".
+      // No students yet: the class waits for them, it hasn't "ended", and
+      // it never waits for its teacher.
       assert.equal(await classPracticeGate(db, created.classId), "waiting");
+      assert.equal(
+        (await classPractice(db, created.classId, teacher)).wait,
+        "students",
+      );
       await repo.provisionStudent(created.orgId, {
         givenName: "Ada",
         classId: created.classId,
@@ -290,5 +299,42 @@ test(
       assert.deepEqual(await startTeacherPilots(repo, teacher), {
         started: 0,
       });
+    }),
+);
+
+test(
+  "asking for a roster connection needs no confirmed mailbox, and asking twice makes one request",
+  enabled,
+  () =>
+    fixture(async (db) => {
+      const teacher = await mailbox(db, "roster.teacher@school.example", false);
+      const app = Fastify();
+      await registerCleverOnboarding(app, {
+        pool: db,
+        authenticate: async () => teacher,
+        config: null,
+        maintenance: false,
+        origin: "https://amp.example",
+      });
+      try {
+        const ask = () =>
+          app.inject({
+            method: "POST",
+            url: "/api/v1/school/connection-requests",
+            headers: { authorization: "Bearer fixture" },
+            payload: {
+              institutionName: "Fixture School",
+              contactEmail: "it@school.example",
+              method: "anyschool",
+            },
+          });
+        const first = await ask();
+        assert.equal(first.statusCode, 202, first.body);
+        const again = await ask();
+        assert.equal(again.statusCode, 202, again.body);
+        assert.equal(again.json().id, first.json().id);
+      } finally {
+        await app.close();
+      }
     }),
 );

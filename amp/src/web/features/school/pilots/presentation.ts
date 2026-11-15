@@ -64,6 +64,20 @@ export function accessView(
   return { kind: "start", joining: false, until: until.toISOString() };
 }
 
+/** Where a class stands for a reader who can't read its pilot (a viewer,
+ * an aide), from the server's practice state alone. A waiting class whose
+ * pilot runs waits only for its students; "waiting for the teacher" is
+ * left for a class with no pilot and no license. */
+export function practiceView(
+  practice: "open" | "waiting" | "ended" | "unknown",
+  wait: "students" | "start" | null,
+): AccessView {
+  if (practice === "ended") return { kind: "ended" };
+  if (practice === "waiting")
+    return wait === "students" ? { kind: "empty" } : { kind: "waiting" };
+  return { kind: "none" };
+}
+
 const short = new Intl.DateTimeFormat(undefined, {
   month: "short",
   day: "numeric",
