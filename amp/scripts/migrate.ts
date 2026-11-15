@@ -85,6 +85,10 @@ export const supersededChecksums: Readonly<Record<string, readonly string[]>> =
     "0135-level-practice.sql": [
       "6df76247b87ee63b1b968d382ac2435479a0553b562e1c9c50fb5e714f50c88d",
     ],
+    // Previews applied it with the event check before the backfill.
+    "0139-activation-milestones.sql": [
+      "09ce2fa07301bbb0e7e379876abca75329c052d3ad16d21f90717f02080db8a5",
+    ],
   };
 /** `lockTimeoutMs` bounds each transactional migration's wait for a table
  * lock; a concurrent index build waits for older transactions as long as they

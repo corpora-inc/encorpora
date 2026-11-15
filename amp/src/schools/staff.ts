@@ -1,3 +1,4 @@
+import { recordActivation } from "../analytics/activation.js";
 import {
   ensureFamilyIdentity,
   familyDisplayNameSql,
@@ -164,6 +165,13 @@ export async function inviteStaffIn(
       const home = await repo.classIn(client, classId, org.path);
       await repo.enroll(client, home.id, personId, input.role, today);
     }
+  if (input.role === "teacher")
+    await recordActivation(client, {
+      personId: actorPersonId,
+      step: "teacher_added",
+      orgId: org.id,
+      school: true,
+    });
   const linked = !!found?.account_id;
   const credentialId = linked
     ? null

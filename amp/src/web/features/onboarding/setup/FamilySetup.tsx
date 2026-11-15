@@ -6,7 +6,7 @@ import {
   useLocation,
   useNavigate,
 } from "@tanstack/react-router";
-import { useId, useState, type ReactNode } from "react";
+import { useEffect, useId, useState, type ReactNode } from "react";
 import { create } from "zustand";
 import { z } from "zod";
 import type { SignedInMe } from "../../../../account/contracts";
@@ -19,6 +19,7 @@ import {
 import { studentGrantResource } from "../../../../schools/contracts";
 import type { AuthSession } from "../../../auth";
 import { request } from "../../../lib/api";
+import { flush } from "../../../lib/analytics";
 import { AppError } from "../../../lib/AppError";
 import { invalidateAccount, meOptions } from "../../../lib/query";
 import { chosenPlan } from "../../../lib/pending-trial";
@@ -27,28 +28,31 @@ import { YearField } from "../../../ui/YearField";
 import { QueryBlock } from "../../../ui/QueryBlock";
 import { RowButton, RowList } from "../../../ui/RowList";
 import { JoinClass } from "../../school/join/JoinClass";
-import { TextField } from "../../../ui/TextField";
 import { Toast } from "../../../ui/Toast";
 import { approvalsOptions } from "../../family-approval/api";
 import { presenceOptions } from "../../school/classes/api";
 import { useFinishSignIn } from "../../school/join/api";
 import { useStartPlace } from "../starter-api";
-import { familyPlacesOptions, saveProfile } from "../../family/api";
+import { familyPlacesOptions } from "../../family/api";
 import { DevicesSheet } from "../../family/Devices";
 import { useFamilyPlaceOf } from "../../family/FamilyFrame";
 import { StepFrame } from "./StepFrame";
+import { choosePersona, setupStep } from "../activation";
 import { appReturn } from "../../spaces/returns";
 import styles from "./Setup.module.css";
 
 /* A parent's or a tutor's first run (docs/product-model.md): a few calm steps,
-   each its own URL. A parent: their name (when we don't have it yet), their
-   kids, then who practices first, straight into that child's first problem.
-   Their own devices and a second parent wait, optional, on Today and People.
+   each its own URL. A parent: their kids, then who practices first, straight
+   into that child's first problem; one child goes straight there. Nothing the
+   law or a platform requires comes between (the restricted basis needs only
+   the child's birth year: docs/parent-consent.md). Their name, their own
+   devices and a second parent wait, optional, in Account, Today and People.
    A tutor's in-flight setup keeps its steps. */
 
 export type SetupKind = "parent" | "tutor";
 type Step = { id: string; label: string };
-const NAME_STEP: Step = { id: "name", label: "Your name" };
+/** The retired name step's id: its links in flight still resolve. */
+const NAME_STEP_ID = "name";
 const STEPS = {
   parent: [
     { id: "", label: "Your kids" },
@@ -61,39 +65,19 @@ const STEPS = {
   ],
 } as const satisfies Record<SetupKind, readonly Step[]>;
 
-/** This tab asked the parent's name in this setup: the step stays in the
- * list once it's answered, so the steps never shift under them. */
-const askedKey = (accountId: string) => `amp.setup.name.${accountId}`;
-function askedName(accountId: string) {
-  try {
-    return sessionStorage.getItem(askedKey(accountId)) === "1";
-  } catch {
-    return false;
-  }
-}
-function markAskedName(accountId: string) {
-  try {
-    sessionStorage.setItem(askedKey(accountId), "1");
-  } catch (error) {
-    console.warn("The setup's steps couldn't be kept in this tab", error);
-  }
-}
-
-/** The steps of this setup: a parent without a name on file answers it
- * first (R12), and it stays listed for the rest of this setup. */
+/** The steps of this setup. A parent's name is never one of them: it is
+ * asked where it is shown, in Account. */
 export function setupSteps(
   kind: SetupKind,
-  me: Pick<SignedInMe, "account">,
-  asked = false,
+  _me?: Pick<SignedInMe, "account">,
 ): readonly Step[] {
-  if (kind !== "parent") return STEPS[kind];
-  return asked || !me.account.givenName?.trim()
-    ? [NAME_STEP, ...STEPS.parent]
-    : STEPS.parent;
+  return STEPS[kind];
 }
+/** Every step id a setup's address may name; an old name-step link
+ * (`/start/parent/name`) resolves to the setup's first step. */
 export const setupStepIds = (kind: SetupKind): readonly string[] =>
   kind === "parent"
-    ? [NAME_STEP.id, ...STEPS.parent.map((step) => step.id)]
+    ? [NAME_STEP_ID, ...STEPS.parent.map((step) => step.id)]
     : STEPS[kind].map((step) => step.id);
 /** A step's address. Adding a place from elsewhere keeps where it was
  * added from (`?from=`, validated by the one return contract) on every
@@ -172,43 +156,30 @@ export function FamilySetup({
   if (!me?.signedIn)
     return (
       <StepFrame
-        steps={kind === "parent" ? [] : STEPS[kind]}
+        steps={STEPS[kind]}
         index={0}
         title={
-          step === "name"
-            ? NAME_STEP.label
-            : step === ""
-              ? kind === "parent"
-                ? "Add your kids"
-                : "Your students"
-              : ""
+          step === "" || step === "name"
+            ? kind === "parent"
+              ? "Add your kids"
+              : "Your students"
+            : ""
         }
         back={withFrom("/start", from)}
       >
         <div className={styles.loading} aria-busy="true" />
       </StepFrame>
     );
-  const steps = setupSteps(
-    kind,
-    me,
-    kind === "parent" && askedName(session.accountId),
-  );
+  const steps = setupSteps(kind, me);
   const index = steps.findIndex((entry) => entry.id === step);
-  // The name step, once the name is on file and this setup never asked it.
+  // An old name-step link opens the setup's first step.
   if (index < 0)
     return <Navigate {...target(stepUrl(kind, "", from))} replace />;
-  if (steps[0]!.id === "name" && step !== "name") {
-    // A parent without a name answers it before anything else.
-    if (!me.account.givenName?.trim())
-      return <Navigate {...target(stepUrl(kind, "name", from))} replace />;
-  }
-  if (step === "name") markAskedName(session.accountId);
   const first = steps.findIndex((entry) => entry.id === "");
   // Every step after the children needs the family step one makes.
   if (index > first && !me.familyClass)
     return <Navigate {...target(stepUrl(kind, "", from))} replace />;
   const props = { session, me, kind, index, steps, from };
-  if (step === "name") return <NameStep {...props} />;
   if (step === "")
     return kind === "parent" ? (
       <ChildrenStep {...props} />
@@ -271,94 +242,42 @@ const why = (failure: unknown, fallback: string) => {
     : fallback;
 };
 
-const NAME_MAX = 100;
-/** A parent's own name, once (R12): it's what another parent, an approval
- * or an invitation shows, never "Parent". Kept in Account after. */
-function NameStep(props: StepProps) {
-  const { session, me, kind, index, steps } = props;
-  const navigate = useNavigate();
-  // A name given at sign-up comes in as the starting text, never saved
-  // unasked.
-  const [first = "", ...rest] = (me.account.displayName ?? "")
-    .trim()
-    .split(/\s+/);
-  const [given, setGiven] = useState(me.account.givenName ?? first);
-  const [family, setFamily] = useState(me.account.familyName ?? rest.join(" "));
-  const [asked, setAsked] = useState(false);
-  const [saving, setSaving] = useState(false);
-  const [error, setError] = useState("");
-  const missing = !given.trim() || !family.trim();
-  const next = async () => {
-    setAsked(true);
-    if (missing || saving) return;
-    setSaving(true);
-    setError("");
-    try {
-      await saveProfile(session, {
-        givenName: given.trim(),
-        familyName: family.trim(),
-      });
-      await navigate(target(nextUrl(props)));
-    } catch (failure) {
-      setError(why(failure, "Your name didn’t save. Try again."));
-    } finally {
-      setSaving(false);
-    }
+/** Each setup screen, measured once per tab: shown, by persona
+ * (docs/engagement-measurement.md#activation-milestones). The persona is
+ * also recorded by the server, once. */
+const SETUP_EVENT_STEP = {
+  parent: { "": "kids", ready: "ready", join: "join" },
+  tutor: { "": "students", ready: "ready", join: "join" },
+} as const;
+const eventStep = (kind: SetupKind, steps: readonly Step[], index: number) =>
+  SETUP_EVENT_STEP[kind][
+    steps[index]!.id as keyof (typeof SETUP_EVENT_STEP)[SetupKind]
+  ];
+function useSetupView({ session, kind, steps, index }: StepProps) {
+  const step = eventStep(kind, steps, index);
+  useEffect(() => {
+    setupStep(step, "view", kind);
+    choosePersona(session, kind);
+  }, [session, kind, step]);
+}
+const setupDone = ({ kind, steps, index }: StepProps) =>
+  setupStep(eventStep(kind, steps, index), "complete", kind);
+
+/** Hands this device to a child: their first problem opens here, and the
+ * parent's view returns when they sign out. Setup's last step is done then,
+ * and measured before the hand-off: a child's session measures nothing. */
+function usePracticeHere(session: AuthSession, kind: SetupKind, today: string) {
+  const finish = useFinishSignIn();
+  return async (learnerId: string) => {
+    const grant = await request(
+      `/family/learners/${learnerId}/practice-here`,
+      studentGrantResource,
+      { token: session.token, body: {} },
+    );
+    setupStep("ready", "complete", kind);
+    flush(true);
+    await finish(grant, true, today);
   };
-  return (
-    <Frame
-      steps={steps}
-      kind={kind}
-      index={index}
-      title="Your name"
-      next={
-        <Button
-          variant="primary"
-          type="submit"
-          form="setup-name"
-          aria-busy={saving || undefined}
-          disabled={saving}
-        >
-          Next
-        </Button>
-      }
-    >
-      <form
-        id="setup-name"
-        className={styles.form}
-        noValidate
-        onSubmit={(event) => {
-          event.preventDefault();
-          void next();
-        }}
-      >
-        <TextField
-          label="First name"
-          autoComplete="given-name"
-          value={given}
-          maxLength={NAME_MAX}
-          error={asked && !given.trim() ? "Enter your first name." : ""}
-          disabled={saving}
-          autoFocus
-          onChange={(event) => setGiven(event.target.value)}
-        />
-        <TextField
-          label="Last name"
-          autoComplete="family-name"
-          value={family}
-          maxLength={NAME_MAX}
-          error={
-            asked && given.trim() && !family.trim()
-              ? "Enter your last name."
-              : ""
-          }
-          disabled={saving}
-          onChange={(event) => setFamily(event.target.value)}
-        />
-      </form>
-      <Toast message={error} onDismiss={() => setError("")} />
-    </Frame>
-  );
 }
 
 /** Step one for a parent: each child's name (optional) and birth year,
@@ -366,8 +285,10 @@ function NameStep(props: StepProps) {
  * their names can change here. */
 function ChildrenStep(props: StepProps) {
   const { session, me, kind, index, steps } = props;
+  useSetupView(props);
   const navigate = useNavigate();
   const start = useStartPlace(session);
+  const practiceHere = usePracticeHere(session, kind, FAMILY_TODAY);
   const draft = useDraft();
   const mine = draft.owner === session.accountId;
   const existing = me.learners;
@@ -447,6 +368,7 @@ function ChildrenStep(props: StepProps) {
             })),
           ],
         });
+        setupDone(props);
         // A plan chosen on the pitch before signing up opens for the first
         // child; setup's next steps wait on Today.
         const plan = chosenPlan();
@@ -459,7 +381,19 @@ function ChildrenStep(props: StepProps) {
           });
           return;
         }
-      }
+        // One child practices first by default: their first problem opens
+        // now, with no "Who's practicing first?" to answer. If it can't (no
+        // access yet), that step says why.
+        if (total === 1 && made.learnerId && !props.from) {
+          draft.set(session.accountId, { rows: [], renames: {}, years: {} });
+          try {
+            await practiceHere(made.learnerId);
+            return;
+          } catch (failure) {
+            console.error("The first child's practice didn't open", failure);
+          }
+        }
+      } else setupDone(props);
       draft.set(session.accountId, { rows: [], renames: {}, years: {} });
       await navigate(target(nextUrl(props)));
     } catch (failure) {
@@ -553,6 +487,7 @@ function ChildrenStep(props: StepProps) {
  * Their own parent names them later, by a link from Today. */
 function StudentsStep(props: StepProps) {
   const { session, me, kind, index, steps } = props;
+  useSetupView(props);
   const navigate = useNavigate();
   const start = useStartPlace(session);
   const draft = useDraft();
@@ -595,6 +530,7 @@ function StudentsStep(props: StepProps) {
             ...(row.name.trim() ? { nickname: row.name.trim() } : {}),
           })),
         });
+      setupDone(props);
       draft.set(session.accountId, { rows: [] });
       await navigate(target(nextUrl(props)));
     } catch (failure) {
@@ -835,6 +771,7 @@ function RemoveRow({
  * class code and three pictures. Cards print a QR for each child. */
 function JoinStep(props: StepProps) {
   const { session, me, kind, index, steps } = props;
+  useSetupView(props);
   const place = me.familyClass!;
   const presence = useQuery(
     presenceOptions(session, { org: place.orgId, class: place.classId }),
@@ -848,7 +785,11 @@ function JoinStep(props: StepProps) {
       index={index}
       title={parent ? "How they practice" : "How they join"}
       next={
-        <Link {...target(nextUrl(props))} className={buttonClass("primary")}>
+        <Link
+          {...target(nextUrl(props))}
+          className={buttonClass("primary")}
+          onClick={() => setupDone(props)}
+        >
           Next
         </Link>
       }
@@ -906,7 +847,7 @@ function JoinStep(props: StepProps) {
  * class's Today. */
 function ReadyStep(props: StepProps) {
   const { session, me, kind, index, steps } = props;
-  const finish = useFinishSignIn();
+  useSetupView(props);
   const place = me.familyClass!;
   const parent = kind === "parent";
   const children = parent ? me.learners : [];
@@ -914,16 +855,12 @@ function ReadyStep(props: StepProps) {
   const [error, setError] = useState("");
   const [devices, setDevices] = useSearchFlag("devices");
   const today = parent ? FAMILY_TODAY : todayUrl(place);
+  const practiceHere = usePracticeHere(session, kind, today);
   const begin = async (learnerId: string) => {
     if (starting) return;
     setStarting(learnerId);
     try {
-      const grant = await request(
-        `/family/learners/${learnerId}/practice-here`,
-        studentGrantResource,
-        { token: session.token, body: {} },
-      );
-      await finish(grant, true, today);
+      await practiceHere(learnerId);
     } catch (failure) {
       setError(why(failure, "Practice didn’t start. Try again in a moment."));
       setStarting(null);
@@ -934,6 +871,7 @@ function ReadyStep(props: StepProps) {
     <Link
       to={today as never}
       className={buttonClass(parent && ready.length ? "secondary" : "primary")}
+      onClick={() => setupDone(props)}
     >
       Go to Today
     </Link>

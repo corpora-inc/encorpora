@@ -56,6 +56,25 @@ export async function purgeFunnelEvents(
     );
     if ((result.rowCount ?? 0) < RETENTION_BATCH.batchSize) break;
   }
+  // Activation milestones are account-linked funnel measurement: the same
+  // 90 days, from when each step was first reached.
+  if (
+    (
+      await pool.query(
+        "SELECT to_regclass('amp_activation_milestones') AS relation",
+      )
+    ).rows[0]?.relation
+  )
+    for (let batch = 0; batch < RETENTION_BATCH.maxBatches; batch++) {
+      const result = await pool.query(
+        `DELETE FROM amp_activation_milestones WHERE (account_id,step) IN (
+        SELECT account_id,step FROM amp_activation_milestones WHERE first_at<=${cutoff}
+        ORDER BY first_at LIMIT $3 FOR UPDATE SKIP LOCKED)`,
+        params,
+      );
+      expiredFunnelEvents += result.rowCount ?? 0;
+      if ((result.rowCount ?? 0) < RETENTION_BATCH.batchSize) break;
+    }
   for (let batch = 0; batch < RETENTION_BATCH.maxBatches; batch++) {
     const result = await pool.query(
       `DELETE FROM amp_engagement_pages WHERE (visitor_id,page_id) IN (

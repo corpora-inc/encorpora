@@ -1,4 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
+import { useEffect } from "react";
+import { setupStep } from "./activation";
 import { RootLink } from "../../nav/root";
 import { Link, useLocation } from "@tanstack/react-router";
 import type { SignedInMe } from "../../../account/contracts";
@@ -21,7 +23,13 @@ const messages = {
 } as const;
 
 /** Confirm the parent's address before consent or a funded purchase: they
- * need it, nothing before them does. One primary action, nothing shifts. */
+ * need it, nothing before them does, and never a child's first problem
+ * (children practice first on the restricted basis, docs/parent-consent.md).
+ * Consent: email-plus is consent given through the parent's own email, with
+ * a later confirmatory notice to it (16 CFR 312.5(b)(2)(vi)), so the address
+ * must be the parent's. A funded purchase: the invoice's paid access goes
+ * only to the account that holds the invoice's address. One primary action,
+ * nothing shifts. */
 export function VerifyEmailStep({
   session,
   me,
@@ -45,6 +53,7 @@ export function VerifyEmailStep({
 }) {
   const email = me.account.email ?? "";
   const location = useLocation();
+  useEffect(() => setupStep("verify-email", "view"), []);
   const verification = useMutation({
     mutationFn: async () => {
       const result = await accountClient.sendVerificationEmail({
@@ -64,9 +73,10 @@ export function VerifyEmailStep({
   const confirmation = useMutation({
     mutationFn: async () => {
       const fresh = await refreshMe(session);
-      return fresh.signedIn && fresh.account.confirmationRequired
-        ? ("unconfirmed" as const)
-        : undefined;
+      if (fresh.signedIn && fresh.account.confirmationRequired)
+        return "unconfirmed" as const;
+      setupStep("verify-email", "complete");
+      return undefined;
     },
     onError: (error) => console.error("Email confirmation check failed", error),
   });

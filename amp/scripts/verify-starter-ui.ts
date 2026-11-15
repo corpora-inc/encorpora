@@ -190,9 +190,9 @@ try {
     await myself(page);
     await page.getByRole("radio", { name: String(thisYear - 9) }).click();
     await page.getByRole("button", { name: "Set up as a parent" }).click();
-    // A parent with no name on file gives it first (R12).
-    await page.waitForURL(/\/start\/parent\/name$/);
-    await page.getByRole("heading", { name: "Your name" }).waitFor();
+    // Straight to their kids: a name is never a step.
+    await page.waitForURL(/\/start\/parent$/);
+    await page.getByRole("heading", { name: "Add your kids" }).waitFor();
     await context.close();
   }
 

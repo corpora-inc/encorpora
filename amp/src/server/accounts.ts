@@ -45,6 +45,7 @@ import { Resend } from "resend";
 import type { FastifyInstance } from "fastify";
 import type { Pool } from "pg";
 import { ApiError } from "./repository";
+import { recordActivation } from "../analytics/activation.js";
 import type { Authenticator } from "./auth";
 import { brand, brandTitle } from "../brand";
 import {
@@ -523,8 +524,13 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
             )
               return { data: { ...user, emailVerified: true } };
           },
-          after: async (user, context) =>
-            enroll(user.id, context?.headers, context?.path),
+          after: async (user, context) => {
+            await recordActivation(pool, {
+              accountId: `${ACCOUNT_PREFIX}${user.id}`,
+              step: "account_created",
+            });
+            await enroll(user.id, context?.headers, context?.path);
+          },
         },
       },
     },
