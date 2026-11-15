@@ -60,7 +60,8 @@ export const consentPolicySchema = z
     confirmationDelayHours: z.number().int().min(24).max(72).default(24),
     review: z.strictObject({
       reference: text.max(500),
-      expiresAt: z.iso.datetime(),
+      /** Informational only: a date never disables consent or checkout. */
+      expiresAt: z.iso.datetime().optional(),
       noDisclosureUnder312_2: z.boolean(),
       paymentNotificationsReviewed: z.boolean().optional(),
       providerContractsReviewed: z.literal(true),
