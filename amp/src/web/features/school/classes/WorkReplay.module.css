@@ -9,54 +9,135 @@
 .layer :global(.shell.app-shell) {
   z-index: 1;
 }
-/* Stacked (phones, portrait tablets), a replay is read, not answered: the
-   problem, the answer with its explanation, the facts and Previous / Next
-   run down one scroll, the layer's own, never a stage and an explanation
-   that each scroll in their own box (premium UI rule 8). Side by side it
-   keeps the practice screen's columns. */
-@media not ((orientation: landscape) and (min-width: 900px) and (min-height: 500px)) {
-  .layer:has(:global(.practice-surface)) {
-    overflow-y: auto;
-    overscroll-behavior: contain;
+/* A replay is read, not answered (Q-4, Q-6). At every width it is one
+   centred reading column, the layer's one scroll: the bar (Close, skill,
+   when and the verdict), the problem from the top, then the answer card at
+   the same width and left edge, its explanation, facts and Previous / Next.
+   The practice screen's own stage and answer columns, docked sheet, scroll
+   boxes and dividing rules are set aside here. */
+.layer:has(:global(.practice-surface)) {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  --replay-column: min(760px, calc(100% - 2 * var(--space-4)));
+}
+.layer.layer :global(.shell.immersive) {
+  position: relative;
+  inset: auto;
+  height: auto;
+  min-height: 100%;
+  padding: 0;
+}
+.layer.layer :global(.shell .practice-workspace) {
+  display: block;
+  height: auto;
+  padding: 0;
+  overflow: visible;
+}
+.layer.layer :global(.shell .practice-surface) {
+  display: flex;
+  flex-direction: column;
+  width: var(--replay-column);
+  height: auto;
+  margin: 0 auto;
+  padding: 0 0 calc(var(--space-6) + env(safe-area-inset-bottom, 0px));
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+/* The bar: Close, the skill and, at the end, when and the verdict. On a
+   phone the skill takes a line of its own under them; Close never goes. */
+.layer.layer :global(.shell .practice-surface > .workspace-toolbar) {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas: "close topic status";
+  align-items: center;
+  column-gap: var(--space-3);
+  row-gap: var(--space-1);
+  min-height: 0;
+  padding: var(--space-3) 0 var(--space-2);
+}
+.layer.layer :global(.workspace-toolbar > .workspace-level) {
+  grid-area: close;
+}
+.layer.layer :global(.workspace-toolbar > .workspace-topic) {
+  grid-area: topic;
+  margin: 0;
+}
+.layer.layer :global(.workspace-toolbar > .workspace-status) {
+  grid-area: status;
+  justify-self: end;
+}
+@media (max-width: 639px) {
+  .layer.layer :global(.shell .practice-surface > .workspace-toolbar) {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas: "close status" "topic topic";
   }
-  .layer :global(.shell.immersive) {
-    position: relative;
-    inset: auto;
-    height: auto;
-    min-height: 100%;
-  }
-  .layer :global(.practice-workspace),
-  .layer :global(.practice-surface) {
-    height: auto;
-    overflow: visible;
-  }
-  /* The sheet stands where the answer was, as it does over the dock on the
-     practice screen: the answer form under it is never shown twice. */
-  .layer :global(.practice-surface > .answer-dock) {
-    display: none;
-  }
-  .layer :global(.practice-surface > .problem-stage) {
-    flex: none;
-    min-height: 0;
-    overflow: visible;
-  }
-  .layer :global(.practice-surface > .feedback) {
-    position: relative;
-    inset: auto;
-    width: auto;
-    max-width: 620px;
-    max-height: none;
-    margin: 0 12px 12px;
-    animation: none;
-  }
-  .layer :global(.practice-surface > .feedback > *) {
-    flex-shrink: 0;
-  }
-  .layer :global(.feedback-steps),
-  .layer :global(.feedback [data-replay-facts]) {
-    overflow: visible;
-    mask-image: none;
-  }
+}
+.layer.layer :global(.shell .practice-surface > .problem-stage) {
+  flex: none;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  background: none;
+}
+/* The problem starts at the top, never centred in a tall band. */
+.layer.layer :global(.problem-stage > .problem-content) {
+  max-width: none;
+  margin: 0;
+  padding: var(--space-4) 0 var(--space-5);
+}
+/* The card stands where the answer was: the answer form under it is never
+   drawn twice. */
+.layer.layer :global(.shell .practice-surface > .answer-dock) {
+  display: none;
+}
+.layer.layer :global(.shell .practice-surface > .feedback) {
+  position: relative;
+  inset: auto;
+  grid-column: auto;
+  grid-row: auto;
+  width: auto;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: var(--space-4);
+  overflow: visible;
+  border-width: 1px;
+  border-radius: 18px;
+  box-shadow: none;
+  animation: none;
+}
+.layer.layer :global(.shell .practice-surface > .feedback > *) {
+  flex-shrink: 0;
+}
+.layer.layer :global(.practice-surface > .feedback > .feedback-head) {
+  min-height: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+  overflow: visible;
+  mask-image: none;
+}
+.layer.layer :global(.practice-surface > .feedback > .feedback-steps) {
+  flex: none;
+  margin: 0;
+  padding-block: 0;
+  overflow: visible;
+  mask-image: none;
+}
+.layer.layer :global(.practice-surface > .feedback > .feedback-steps + *) {
+  padding-top: 0;
+  border-top: 0;
+}
+.layer.layer :global(.practice-surface > .feedback > [data-replay-facts]) {
+  overflow: visible;
+}
+/* Read-only: a blank left empty shows its mark, never a "Choose" control. */
+.layer :global(.multi-part-blank[data-mark] .multi-part-placeholder),
+.layer :global(.multi-part-blank[data-mark] .multi-part-chevron) {
+  visibility: hidden;
 }
 
 /* Who and when, quiet in the bar, then how it counted. */
