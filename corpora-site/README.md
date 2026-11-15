@@ -1,8 +1,8 @@
 # Corpora website
 
-The Corpora site introduces AMP Mathematics with actual problem figures, worked solutions, a lesson excerpt, and a printable sample. It includes product coverage, education-fund guidance, parent questions, support, and draft Terms, Privacy, Refund, and Accessibility pages.
+The Corpora site introduces AMP Mathematics through grade and course guides, comparison pages, learning-science explanations, product screenshots, written lessons, captioned videos and free printable workbooks. Families, tutors, adult learners and schools can explore the mathematics and find the appropriate access or education-fund route.
 
-The output is static HTML and local assets. It needs no running AMP server or database to build or preview. There is no client framework bundle, analytics, ad integration, or external font request. A small first-party script opens the browser print dialog on the printable page; native disclosure controls work without JavaScript.
+The output is static HTML and local assets. It needs no running AMP server or database to build or preview. There is no client framework bundle or external font request. Production pages use the existing AMP first-party engagement and Google Analytics integrations. A small first-party script opens the browser print dialog on the printable page; native disclosure controls work without JavaScript.
 
 ## Build and preview
 
@@ -47,7 +47,7 @@ The strict schema in `src/config.ts` rejects unknown keys. Its fields are:
 
 Production mode requires the two URLs, operator contacts, privacy details, and the legal acknowledgement. The configured prices are presentation data, not checkout authority: keep them synchronized with the merchant's active offer. AMP checkout is authoritative. Missing prices send visitors to AMP to review plans. Guidance with an expired review date fails the build. Schedule rebuilds before review expiry; static output does not update itself. An empty funding list states that guidance is unavailable and makes no eligibility claim.
 
-No analytics or advertising capability is enabled by configuration. Adding either requires implementation, data-flow review, and a matching privacy notice. Do not inject scripts around the built site and assume its privacy statement remains accurate.
+Production engagement uses fixed page categories and actions, with a build-compiled allowlist of public page paths and titles for Google Analytics. Workbook downloads and video starts/completions are measured without learner records or form contents. Browser validation uses Zod Mini to keep server validation machinery out of the public bundle.
 
 ## Validation
 
@@ -56,7 +56,7 @@ node ../amp/scripts/install-browser.mjs
 npm run test:ui
 ```
 
-The browser suite starts its own ephemeral loopback server. It checks every page at 320, 390, and 1280 pixels for overflow, automated accessibility violations, broken internal links, and JavaScript errors. It checks keyboard disclosure and skip-link access, produces screenshots and a printable PDF, and records mobile Lighthouse reports for the home and AMP pages. Lighthouse scores are advisory because shared-runner timing varies; deterministic layout, accessibility, and link checks are required. The product target is at least 95 in each Lighthouse category. Lighthouse uses a separate production build with synthetic configuration; this checks indexing without publishing real merchant data. Actual production indexing needs separate deployment verification. Reports are written to ignored `artifacts/`.
+The browser suite starts its own ephemeral loopback server. It checks every page at 320, 390, 768 and 1280 pixels for overflow, broken internal links and JavaScript errors. It scans every page for automated accessibility violations at 320 pixels and repeats representative page families at the other widths. It checks keyboard disclosure and skip-link access, produces screenshots and a printable PDF, and records mobile Lighthouse reports for the home and AMP pages. Lighthouse scores are advisory because shared-runner timing varies; deterministic layout, accessibility, and link checks are required. The product target is at least 95 in each Lighthouse category. Lighthouse uses a separate production build with synthetic configuration; this checks indexing without publishing real merchant data. Actual production indexing needs separate deployment verification. Reports are written to ignored `artifacts/`.
 
 Automated checks are not an accessibility certification. Review screen-reader math, browser zoom, print output, and the deployed app separately.
 
@@ -83,3 +83,19 @@ A funding entry may include a `page` object to publish `/esa/<slug>/`. Entries w
 Use program-specific facts and distinguish tax benefits from reimbursement or direct payment. Do not publish a purchase recommendation while eligibility is unresolved. Omit unsupported outcomes and approval claims. All text is rendered as plain text, not HTML. Program pages include canonical URLs, descriptive titles, WebPage and breadcrumb structured data, and sitemap entries. This makes the information accessible to readers and crawlers; it does not guarantee indexing or search placement.
 
 The funding directory groups program cards by state and displays the number of published parent guides separately from AMP purchase-status text. Inclusion in the directory does not imply vendor approval. Each card repeats its guide’s purchase status so readers see unresolved eligibility before following a purchase route. State navigation and program links work without JavaScript.
+
+## Resource library and media
+
+`src/resources/catalog.ts` connects the public routes to AMP’s curriculum and lesson sources. Grade labels through Grade 8 map to the curriculum’s grade bands. High-school grade guides offer course choices; they do not assert that a grade has one universal course. Written lessons reuse AMP’s source text and illustrations. Comparisons keep their official sources and review dates in `comparisons.json`.
+
+The public workbook manifest records the edition date, grade/course, actual duration estimate, page counts and SHA-256 for each Letter/A4 PDF. Downloads are anonymous and include a blank name line plus worked answers. Date-stamped URLs identify an immutable edition. The initial files live under `public/workbooks/`; they are actual outputs from the same composer and renderer used by AMP. To prepare another edition, run from `amp/`:
+
+```sh
+npx tsx scripts/regenerate-free-workbooks.ts --out /path/to/output --date YYYY-MM-DD --minutes 45
+```
+
+The generator validates pagination, prompt/answer correspondence and named-grade coverage before recording a PDF. Review the output before updating the public manifest. It uses no learner accounts or database.
+
+`src/resources/videos.json` records the published native MP4, poster, captions, transcript, actual website upload timestamp and content hashes. A watch page publishes VideoObject metadata for that playable asset. Retain a film’s verified narration provenance in the private media records; do not substitute a voice while refreshing a website asset.
+
+Product screenshots use synthetic data. `amp/scripts/capture-public-site-assets.ts` captures actual AMP components with a local fixture and no live account. The public image manifest records dimensions and source revision. Operational media paths, storage access and publication receipts stay outside this repository.

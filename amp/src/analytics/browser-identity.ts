@@ -1,4 +1,4 @@
-import { z } from "zod";
+import * as z from "zod/mini";
 import { entryContextSchema, type EntryContext } from "./entry-context.js";
 /** A first-party analytics identifier, never an authentication credential. */
 export const VISITOR_KEY = "amp.visitor";
@@ -11,7 +11,7 @@ const CONTEXT_KEY = "amp.analytics.entry";
 const storedContextSchema = z.strictObject({
   visitorId: z.uuidv4(),
   context: entryContextSchema,
-  expiresAt: z.number().int().positive().max(Number.MAX_SAFE_INTEGER),
+  expiresAt: z.int().check(z.positive(), z.maximum(Number.MAX_SAFE_INTEGER)),
 });
 const UUID =
   /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;

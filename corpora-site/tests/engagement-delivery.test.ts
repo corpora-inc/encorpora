@@ -1,6 +1,21 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { createMarketingDelivery } from "../src/engagement-delivery.js";
+
+test("resource visits retain identities with an older collector vocabulary", async () => {
+  const requests: {events: {props: Record<string,unknown>}[]}[]=[];
+  const deliver=createMarketingDelivery((async (_url,options)=>{
+    const body=JSON.parse(options!.body as string);requests.push(body);
+    return new Response(null,{status:body.events.some((event:{props:{screen:string}})=>event.props.screen!=="marketing_other")?400:202});
+  }) as typeof fetch);
+  const body=JSON.stringify({visitorId:"public-visitor",events:[{event:"page_engagement",id:"envelope",sessionId:"session",props:{screen:"marketing_grades",pageId:"page",sessionId:"session",activeMs:20,visibleMs:30}},{event:"site_action",id:"envelope-action",props:{screen:"marketing_workbooks",action:"workbook_download",eventId:"stable-action"}}]});
+  assert.equal((await deliver("/site-events",body)).status,202);
+  assert.equal(requests.length,2);
+  assert.equal(requests[1].events[0].props.pageId,"page");
+  assert.equal(requests[1].events[0].props.sessionId,"session");
+  assert.equal(requests[1].events[1].props.eventId,"stable-action");
+  assert.equal(requests[1].events[1].props.action,"navigation_click");
+});
 const payload = JSON.stringify({
   visitorId: "visitor",
   context: { referrer: "direct", device: "phone" },

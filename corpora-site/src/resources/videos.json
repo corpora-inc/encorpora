@@ -1,0 +1,412 @@
+[
+  {
+    "grade": "K",
+    "id": "count-objects",
+    "title": "Count objects",
+    "videoUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/kindergarten/d4a99d65493c3db68fd42a36ec52f107415e0785807b11ee2124770e9d711891/video.mp4",
+    "posterUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/kindergarten/d4a99d65493c3db68fd42a36ec52f107415e0785807b11ee2124770e9d711891/poster.jpg",
+    "captionsUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/kindergarten/d4a99d65493c3db68fd42a36ec52f107415e0785807b11ee2124770e9d711891/captions.vtt",
+    "transcriptUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/kindergarten/d4a99d65493c3db68fd42a36ec52f107415e0785807b11ee2124770e9d711891/transcript.txt",
+    "transcript": "How many dots are shown? Say one number for each dot. Touch each dot once. One. Two. The last number tells how many. There are two dots. How many dots are shown? Start at the top left dot, so you know when to stop. Count the top row: one, two, three, four, five. The top row is five. Do not start again at one. Count on: six, seven, eight. Two boxes are empty. An empty box is not a dot. The last number is eight. There are eight dots. How many dots are shown? The top row is five. Count on: six, seven, eight, nine, ten. Both rows are full. Do not stop at five. The last number is ten. Count this line: one, two, three, four, five, six. The last number is six. Move the dots. No dot came in, and no dot left. There are still six. Every count goes the same way. One: start at the first dot, so you know when to stop. Two: say one number for each dot. Skip an empty box. Do not start over. Three: the last number tells how many.",
+    "durationSeconds": 90.01,
+    "width": 1920,
+    "height": 1080,
+    "sha256": "b5d8c5d1fe0ce272641f0e0a977e5c161b508769de1ce95b21bfa9c1412b4fde",
+    "standards": [
+      {
+        "standardId": "K.CC.B.4",
+        "facet": "Count objects with one count per object and state the total",
+        "basis": "editorial"
+      },
+      {
+        "standardId": "K.CC.B.5",
+        "facet": "Count objects with one count per object and state the total",
+        "basis": "editorial"
+      }
+    ],
+    "standardIds": [
+      "K.CC.B.4",
+      "K.CC.B.5"
+    ],
+    "templateId": "count-objects",
+    "uploadDate": "2026-11-15T17:54:00Z"
+  },
+  {
+    "grade": "1",
+    "id": "make-ten-remainder",
+    "title": "Split an addend to make ten",
+    "videoUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-1/f956cf556be4b7905f4e5ff603194409fd190890332358688bcc450aa743ec4c/video.mp4",
+    "posterUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-1/f956cf556be4b7905f4e5ff603194409fd190890332358688bcc450aa743ec4c/poster.jpg",
+    "captionsUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-1/f956cf556be4b7905f4e5ff603194409fd190890332358688bcc450aa743ec4c/captions.vtt",
+    "transcriptUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-1/f956cf556be4b7905f4e5ff603194409fd190890332358688bcc450aa743ec4c/transcript.txt",
+    "transcript": "Eight plus five. Each frame is a ten-frame. It holds ten, in two rows of five. Ten is easy to add to, so first fill the top frame. Eight needs two more to make ten. Move two from the five: one, two. Now the top frame is a full ten, and three are left below. Ten and three make thirteen. So eight plus five is thirteen. Moving counters from one frame to the other never changes the total. Now the problem. To add seven plus nine, move three from nine to make ten. How much of nine is left? Seven needs three more to make ten. So move three from the nine: one, two, three. The top frame is a full ten. Nine take away three leaves six. So seven plus nine is ten plus six, which is sixteen. But the question asks how much of nine is left. That is six. Answer with the part that is left, not the total. Every problem like this goes the same way. One: find how many the first number needs to make ten. Two: take that many from the second number. Three: what is left of the second number is the answer.",
+    "durationSeconds": 81.066667,
+    "width": 1920,
+    "height": 1080,
+    "sha256": "1f29fd255917eefa36843b8e276cc24a1d1e8799d0c3744a6de925a70fc4898d",
+    "standards": [
+      {
+        "standardId": "1.OA.C.6",
+        "facet": "Add through twenty using decomposition and making ten",
+        "basis": "editorial"
+      }
+    ],
+    "standardIds": [
+      "1.OA.C.6"
+    ],
+    "templateId": "make-ten-remainder",
+    "uploadDate": "2026-11-15T17:54:04Z"
+  },
+  {
+    "grade": "2",
+    "id": "array-add-rows-total--sa",
+    "title": "Rows with the same number",
+    "videoUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-2/08968eeb8677f5e2cd3b9a6748e9de4fc2091f76c9b888fabeb54d0d07561950/video.mp4",
+    "posterUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-2/08968eeb8677f5e2cd3b9a6748e9de4fc2091f76c9b888fabeb54d0d07561950/poster.jpg",
+    "captionsUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-2/08968eeb8677f5e2cd3b9a6748e9de4fc2091f76c9b888fabeb54d0d07561950/captions.vtt",
+    "transcriptUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-2/08968eeb8677f5e2cd3b9a6748e9de4fc2091f76c9b888fabeb54d0d07561950/transcript.txt",
+    "transcript": "An array is things set out in rows, with the same number in every row. This garden bed is an array of flowers. Rows go across. Every row has 4 flowers. Add the rows. How many in all? Add the rows one at a time. One row is four. Two rows, four plus four. Three rows, four plus four plus four. Twelve flowers in all. Every row has 5 books. Add the rows. How many in all? I see four rows and five books. Four plus five is nine. Four is how many rows there are. Each row has five books in it. Five, ten, fifteen, twenty. Twenty books in all. Turn the shelf a quarter turn. Rows become columns, which go up and down. Now there are five rows, with four in each row. Four. Eight. Twelve. Sixteen. Twenty. Twenty again, the same as before. Nothing was added or taken away, so the total stays the same. To partition is to cut into same-size parts. Partition this rectangle into squares the size of the shaded one. How many rows? How many columns? How many squares in all? The marks on the edges show where to cut. Cut down from each mark, and across. Rows go across. There are two. Columns go up and down. There are five. Five squares in the top row. Five more in the bottom row. Five plus five is ten. In an array, every row has the same number. Turn it, and the columns give the same total. Equal rows: add the number in a row once for every row.",
+    "durationSeconds": 109.33,
+    "width": 1920,
+    "height": 1080,
+    "sha256": "7f74863971b0552bb126fcd3ec20550e7c031d103cde846cf5a6fd00ac7dcba0",
+    "standards": [
+      {
+        "standardId": "2.OA.C.4",
+        "facet": "Find an array total by adding equal rows",
+        "basis": "editorial",
+        "sourceUrl": "https://www.thecorestandards.org/Math/Content/2/OA/C/4/"
+      },
+      {
+        "standardId": "2.G.A.2",
+        "facet": "Partition a rectangle into rows and columns of equal squares and count them",
+        "basis": "editorial",
+        "sourceUrl": "https://www.thecorestandards.org/Math/Content/2/G/A/2/"
+      }
+    ],
+    "standardIds": [
+      "2.OA.C.4",
+      "2.G.A.2"
+    ],
+    "templateId": "array-add-rows-total",
+    "uploadDate": "2026-11-15T17:54:09Z"
+  },
+  {
+    "grade": "3",
+    "id": "rectangle-area",
+    "title": "Rectangle area",
+    "videoUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-3/89e325477bfb8bb644963ee32ccdd58845e1781ce0620a127cab2e1f4954da73/video.mp4",
+    "posterUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-3/89e325477bfb8bb644963ee32ccdd58845e1781ce0620a127cab2e1f4954da73/poster.jpg",
+    "captionsUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-3/89e325477bfb8bb644963ee32ccdd58845e1781ce0620a127cab2e1f4954da73/captions.vtt",
+    "transcriptUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-3/89e325477bfb8bb644963ee32ccdd58845e1781ce0620a127cab2e1f4954da73/transcript.txt",
+    "transcript": "Area is how many unit squares cover a rectangle, with no gaps and no overlaps. Each square is one centimeter on a side. That square is one square centimeter. This rectangle is four centimeters wide, so one row holds four squares. It is three centimeters high, so there are three rows. Width times height. Four times three is twelve square centimeters. A rectangle is nine centimeters wide and nine centimeters high. What is its area in square centimeters? The sides are equal, and they meet at a square corner. One row holds nine squares. There are nine rows. Nine times nine is eighty-one. The area is eighty-one square centimeters. Nine plus nine is eighteen. Adding the sides does not count the squares inside. A rectangle is ten centimeters wide and two centimeters high. Two rows of ten squares. Ten times two is twenty. The area is twenty square centimeters. Ten plus two is twelve, and that sum is not the area. Every rectangle goes the same way. One. Count the squares in one row. That is the width. Two. Count the rows. That is the height. Three. Width times height, in square centimeters. Do not add the sides.",
+    "durationSeconds": 90.933333,
+    "width": 1920,
+    "height": 1080,
+    "sha256": "011f016f705adc7b9ec30a45ae9b7616fbdd9a334496fc5b755f536b9fcf684b",
+    "standards": [
+      {
+        "standardId": "3.MD.C.5",
+        "facet": "Explain area as coverage by unit squares without gaps or overlaps",
+        "basis": "editorial",
+        "sourceUrl": "https://www.thecorestandards.org/Math/Content/3/MD/C/5/"
+      },
+      {
+        "standardId": "3.MD.C.6",
+        "facet": "Measure rectangular area by counting square units",
+        "basis": "editorial",
+        "sourceUrl": "https://www.thecorestandards.org/Math/Content/3/MD/C/6/"
+      },
+      {
+        "standardId": "3.MD.C.7",
+        "facet": "Relate a rectangle’s rows of unit squares to the product of its side lengths",
+        "basis": "editorial",
+        "sourceUrl": "https://www.thecorestandards.org/Math/Content/3/MD/C/7/"
+      }
+    ],
+    "standardIds": [
+      "3.MD.C.5",
+      "3.MD.C.6",
+      "3.MD.C.7"
+    ],
+    "templateId": "rectangle-area",
+    "uploadDate": "2026-11-15T17:54:13Z"
+  },
+  {
+    "grade": "4",
+    "id": "compare-unlike-fractions",
+    "title": "Compare unlike fractions",
+    "videoUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-4/35b45b78695e4230ff11a734a38b1383147447f72c1ebae65435fc69a1f98f5b/video.mp4",
+    "posterUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-4/35b45b78695e4230ff11a734a38b1383147447f72c1ebae65435fc69a1f98f5b/poster.jpg",
+    "captionsUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-4/35b45b78695e4230ff11a734a38b1383147447f72c1ebae65435fc69a1f98f5b/captions.vtt",
+    "transcriptUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-4/35b45b78695e4230ff11a734a38b1383147447f72c1ebae65435fc69a1f98f5b/transcript.txt",
+    "transcript": "Which is greater: five eighths or three fourths of the same whole? The numerator counts the shaded pieces. The denominator says how many equal pieces make the whole. Five is more than three. The pieces are different sizes, so the top numbers do not decide it. Make the pieces the same size. Eight is a common denominator. Four and eight both divide eight. Five eighths already counts eighths. It stays five eighths. Cut each fourth into two eighths. The shaded length stays the same. Renaming multiplies the top and the bottom by two. Three fourths equals six eighths. Now the pieces match. Six eighths is more than five eighths, so the greater fraction is three fourths. Which is less: two ninths or one third of the same whole? Two is more than one. The pieces are different sizes, so the top numbers do not decide it. Cut each third into three ninths. Two ninths stays two ninths. Times three, one third equals three ninths. Three ninths is more than two ninths. The question asks which is less, so the answer is two ninths. Which is greater: four thirds or three halves? Each full bar is one whole. Both fractions pass it, so compare the extra pieces. Cut both into sixths. Times two, four thirds equals eight sixths. Times three, three halves equals nine sixths. Nine sixths is more than eight sixths. The greater fraction is three halves. Every comparison like this goes the same way. One: make the pieces the same size. Use a common denominator. Two: rename both fractions. Multiply the top and the bottom by the same number. Three: the pieces match, so the bigger numerator is greater. Enter the fraction the question asks for.",
+    "durationSeconds": 123.4,
+    "width": 1920,
+    "height": 1080,
+    "sha256": "cbc264c54f055c9d61c9fc59b2f5e12e8433fcfba27d29873e7aaf4bc613e776",
+    "standards": [
+      {
+        "standardId": "4.NF.A.2",
+        "facet": "Compare unlike fractions of the same whole by using a common denominator",
+        "basis": "editorial",
+        "sourceUrl": "https://www.thecorestandards.org/Math/Content/4/NF/A/2/"
+      },
+      {
+        "standardId": "3.NF.A.3",
+        "facet": "Explain equivalent fractions using unchanged shaded lengths",
+        "basis": "editorial",
+        "sourceUrl": "https://www.thecorestandards.org/Math/Content/3/NF/A/3/"
+      }
+    ],
+    "standardIds": [
+      "4.NF.A.2",
+      "3.NF.A.3"
+    ],
+    "templateId": "compare-unlike-fractions",
+    "uploadDate": "2026-11-15T17:54:17Z"
+  },
+  {
+    "grade": "5",
+    "id": "fraction-addition.v2",
+    "title": "Add fractions with different denominators",
+    "videoUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-5/d8c38c329f936cbae3da2814aceb8b7f3f3a04e344e8d317f4be99c9256f20b6/video.mp4",
+    "posterUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-5/d8c38c329f936cbae3da2814aceb8b7f3f3a04e344e8d317f4be99c9256f20b6/poster.jpg",
+    "captionsUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-5/d8c38c329f936cbae3da2814aceb8b7f3f3a04e344e8d317f4be99c9256f20b6/captions.vtt",
+    "transcriptUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-5/d8c38c329f936cbae3da2814aceb8b7f3f3a04e344e8d317f4be99c9256f20b6/transcript.txt",
+    "transcript": "How do you add two thirds and one fourth?\n\nEach full strip is one whole. The wholes must be the same size.\n\nThe bottom number tells how many equal pieces make a whole. The top counts the pieces we have.\n\nThirds and fourths are different sizes. First, make the pieces the same size.\n\nMultiply the bottom numbers: three times four is twelve.\n\nSplit each third into four. Multiply both numbers by four: two thirds becomes eight twelfths.\n\nSplit each fourth into three. Multiply both numbers by three: one fourth becomes three twelfths.\n\nNeither amount has changed. We have only divided it into smaller pieces.\n\nNow combine eight twelfths and three twelfths: eleven twelfths.\n\nAdd the top numbers. Keep twelve on the bottom, because the pieces are still twelfths.\n\nThat shared bottom number is called a common denominator.\n\nFinally, simplify if you can divide the top and bottom evenly by the same whole number greater than one. Eleven and twelve have no such number, so eleven twelfths is our answer.",
+    "durationSeconds": 69.033333,
+    "width": 1920,
+    "height": 1080,
+    "sha256": "c718984123ad2a96d9a2f4c6b0e216c4f8fcf350bb6d30232df90b30ff3df1d8",
+    "standards": [
+      {
+        "standardId": "5.NF.A.1",
+        "facet": "Add fractions with unlike denominators by rewriting them as equivalent fractions with a common denominator",
+        "basis": "editorial",
+        "sourceUrl": "https://www.thecorestandards.org/Math/Content/5/NF/A/1/"
+      }
+    ],
+    "standardIds": [
+      "5.NF.A.1"
+    ],
+    "templateId": "add-fractions",
+    "uploadDate": "2026-11-15T17:54:22Z"
+  },
+  {
+    "grade": "6",
+    "id": "triangle-area-base-height",
+    "title": "Triangle area",
+    "videoUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-6/c6dbf1723e9ca28ea083b1bb1c4f2646f53d96d13503f45a571f304e5dda91b8/video.mp4",
+    "posterUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-6/c6dbf1723e9ca28ea083b1bb1c4f2646f53d96d13503f45a571f304e5dda91b8/poster.jpg",
+    "captionsUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-6/c6dbf1723e9ca28ea083b1bb1c4f2646f53d96d13503f45a571f304e5dda91b8/captions.vtt",
+    "transcriptUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-6/c6dbf1723e9ca28ea083b1bb1c4f2646f53d96d13503f45a571f304e5dda91b8/transcript.txt",
+    "transcript": "Area is the flat surface this triangle covers, in square feet. The base is seven feet. It meets the upright side at a right angle. Perpendicular means that square corner. The height is nine feet. A slanted side is not the height. Pin the middle of the slanted side. Turn an identical copy halfway around that point. They lock into a rectangle with the same base and the same height. b is seven and h is nine. Seven times nine is sixty-three. Divide sixty-three by two. The area is thirty-one point five square feet. The area is one half times b times h. The base is twelve inches. The dashed height falls outside and meets the base line at a right angle: fifteen inches. The slanted sides are twenty-five and seventeen inches. Neither is the height. Pin the middle of the long side. Turn an identical copy halfway around that point. They make a parallelogram: facing sides never meet. Same base and height. b is twelve and h is fifteen. Twelve times fifteen is one hundred eighty. One hundred eighty divided by two is ninety square inches. Use the height that meets the base at a right angle, never a slanted side. Inside, the base is sixteen feet and the height is fifteen. The sides of seventeen are not the height. Sixteen times fifteen is two hundred forty. Half of that is one hundred twenty. The area is one hundred twenty square feet. Same steps each time. One. Base and height meet at a right angle. Skip slanted sides. Two. Multiply base times height. Three. Divide by two. The triangle is half.",
+    "durationSeconds": 118.81,
+    "width": 1920,
+    "height": 1080,
+    "sha256": "d6039a76c2b64127779d304e7d51226195f62d2fa0107644f027c6ac49a030b2",
+    "standards": [
+      {
+        "standardId": "6.G.A.1",
+        "facet": "Find triangle area by composing copies into rectangles or parallelograms and using perpendicular height",
+        "basis": "editorial",
+        "sourceUrl": "https://www.thecorestandards.org/Math/Content/6/G/A/1/"
+      }
+    ],
+    "standardIds": [
+      "6.G.A.1"
+    ],
+    "templateId": "triangle-area-base-height",
+    "uploadDate": "2026-11-15T17:54:25Z"
+  },
+  {
+    "grade": "7",
+    "id": "two-step-word-problem",
+    "title": "Solve a two-step equation story",
+    "videoUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-7/b0defe421fc634eab3cabe69b4a099ff06ffad0d0d58da7ef9e2020c7f6b9164/video.mp4",
+    "posterUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-7/b0defe421fc634eab3cabe69b4a099ff06ffad0d0d58da7ef9e2020c7f6b9164/poster.jpg",
+    "captionsUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-7/b0defe421fc634eab3cabe69b4a099ff06ffad0d0d58da7ef9e2020c7f6b9164/captions.vtt",
+    "transcriptUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-7/b0defe421fc634eab3cabe69b4a099ff06ffad0d0d58da7ef9e2020c7f6b9164/transcript.txt",
+    "transcript": "A gym charges a twenty-three dollar sign-up fee plus nineteen dollars per month. Ravi has paid one hundred thirty-seven dollars in all. For how many months has Ravi paid? Let m be the number of months. Nineteen dollars for each of m months is nineteen times m. The fee is paid only once, so it is added once. Together they make one hundred thirty-seven. To solve, undo the steps in reverse order. The fee was added last, so subtract twenty-three from both sides. Nineteen times m is one hundred fourteen, so divide both sides by nineteen. Six nineteens make one hundred fourteen, so m is six. Check it in the story: six months at nineteen dollars is one hundred fourteen, plus the twenty-three dollar fee makes one hundred thirty-seven. Ravi has paid for six months. Here, an amount is taken away each time. A tank holds seventy-two liters of water and drains ten liters each minute, down to forty-two liters. How many minutes does that take? Let t be the number of minutes. Seventy-two, minus ten liters for each of t minutes, leaves forty-two. Add ten t to both sides, then subtract forty-two from both sides. Divide by ten: it takes three minutes. Each of six friends buys one movie ticket and one two-dollar snack. Together they spend one hundred two dollars. What does one ticket cost? Let c be the cost of one ticket. Each friend spends c plus two dollars. Six friends spend six times that. Parentheses keep c plus two together, so the six multiplies all of it. Undo the last step first: divide both sides by six. One share is seventeen. One share is a ticket and a two-dollar snack. Subtract two from both sides: the ticket costs fifteen. Check: six times seventeen is one hundred two. One ticket costs fifteen dollars. The extra can also be taken off. In a sale, every shirt is eleven dollars off its regular price. Four shirts cost eighty-four dollars. What is the regular price? Let s be the regular price. Each shirt costs s minus eleven, and four of them cost eighty-four. Divide both sides by four: each shirt costs twenty-one on sale. Add back the eleven dollars off: the regular price is thirty-two dollars. A perimeter works the same way. A rectangle has a perimeter of forty-eight centimeters and a length of five centimeters. Let w be the width. The perimeter is two widths and two lengths, which is two times the quantity w plus five. Divide both sides by two, then subtract five: the width is nineteen centimeters. Every story like this goes the same way. One: name the unknown with a letter. Two: the repeated amount times the letter, plus or minus the one-time amount, equals the total. Three: undo the steps in reverse order, doing the same to both sides. Four: check the answer in the story.",
+    "durationSeconds": 204.58,
+    "width": 1920,
+    "height": 1080,
+    "sha256": "893441668fe048879722416caaa3ff1dd361938e59a83b5347e802191b879e5c",
+    "standards": [
+      {
+        "standardId": "7.EE.B.4",
+        "facet": "Construct and solve two-step equations",
+        "basis": "editorial"
+      }
+    ],
+    "standardIds": [
+      "7.EE.B.4"
+    ],
+    "templateId": "two-step-word-problem",
+    "uploadDate": "2026-11-15T17:54:29Z"
+  },
+  {
+    "grade": "8",
+    "id": "line-slope",
+    "title": "Slope through two points",
+    "videoUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-8/3634866866f2fa36c769e4c6fa26c594bbcff952996e70bac3d10abf98f37131/video.mp4",
+    "posterUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-8/3634866866f2fa36c769e4c6fa26c594bbcff952996e70bac3d10abf98f37131/poster.jpg",
+    "captionsUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-8/3634866866f2fa36c769e4c6fa26c594bbcff952996e70bac3d10abf98f37131/captions.vtt",
+    "transcriptUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/grade-8/3634866866f2fa36c769e4c6fa26c594bbcff952996e70bac3d10abf98f37131/transcript.txt",
+    "transcript": "Slope measures how steep a line is. Take two points on it: three, two, and five, eight. From the first to the second, x changes by five minus three, which is two. And y changes by eight minus two, which is six. Slope, written m, is the change in y over the change in x: rise over run. Six over two is three. For each step to the right, this line climbs three. Now tilt the line so it falls. Going right, y drops from eight to two. The change in y is negative six, so the slope is negative three. A line that falls has a negative slope. What is the slope of the line through negative four, negative four and three, negative two? Call the first point, point one: x one, y one. The other is point two. Slope is the change in y over the change in x: y two minus y one, over x two minus x one. Put the numbers in. The change in y is negative two minus negative four. Subtracting negative four adds four, so the change in y is two. The change in x, in the same order, is three minus negative four, which is seven. So the slope is two sevenths. One more: the line through negative six, eight and negative four, two. Point one is negative six, eight. Point two is negative four, two. The change in y is two minus eight: negative six. Going right, the line falls. The change in x, in the same order, is negative four minus negative six: two. Negative six over two simplifies to negative three. Keep the same order in both subtractions. Mixing them flips the sign. Every problem like this goes the same way. One: call one point, point one, and the other, point two. Two: rise over run, the change in y over the change in x, subtracting in the same order. Three: divide, and simplify the fraction.",
+    "durationSeconds": 137.11,
+    "width": 1920,
+    "height": 1080,
+    "sha256": "6434b748b66bd557fab7b6690666153592c9c6f561085edafdec5c911e373820",
+    "standards": [
+      {
+        "standardId": "8.F.B.4",
+        "facet": "Determine and interpret a linear function’s rate of change from two points",
+        "basis": "editorial",
+        "sourceUrl": "https://www.thecorestandards.org/Math/Content/8/F/B/4/"
+      }
+    ],
+    "standardIds": [
+      "8.F.B.4"
+    ],
+    "templateId": "line-slope",
+    "uploadDate": "2026-11-15T17:54:34Z"
+  },
+  {
+    "grade": "algebra-1",
+    "id": "quadratic-vertex",
+    "title": "Quadratic minimum",
+    "videoUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/algebra-1/15978facdfc855c9bcb4c4ab60751d2ffcb63e0b9a5fd3b04b059b80a2327c44/video.mp4",
+    "posterUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/algebra-1/15978facdfc855c9bcb4c4ab60751d2ffcb63e0b9a5fd3b04b059b80a2327c44/poster.jpg",
+    "captionsUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/algebra-1/15978facdfc855c9bcb4c4ab60751d2ffcb63e0b9a5fd3b04b059b80a2327c44/captions.vtt",
+    "transcriptUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/algebra-1/15978facdfc855c9bcb4c4ab60751d2ffcb63e0b9a5fd3b04b059b80a2327c44/transcript.txt",
+    "transcript": "For real x, what is the minimum value of f of x, five times the quantity x minus three, squared, plus nine? Real means any number on the number line. The square is zero or more, and zero only when x is three. At five, five minus three is two. Five times two squared, plus nine, equals twenty-nine. Move to three and make the square zero. Three minus three is zero, so five times zero squared, plus nine, equals nine. At one, five times negative two squared, plus nine, is twenty-nine again. Back at three. That low point is the vertex, and nine is the lowest output. a is five, and it is positive. h is three, and k is nine. The minimum value is nine. Three is the input where it happens, not the minimum. A negative a turns the graph over. f of x equals negative two times the quantity x minus four, squared, plus seven. At six, six minus four is two. Negative two times two squared, plus seven, equals negative one. Move to four. Four minus four is zero, so negative two times zero squared, plus seven, equals seven. That highest output is a maximum. a is negative two, h is four, and k is seven. Farther from four, at fourteen. Fourteen minus four is ten. Negative two times ten squared, plus seven, equals negative one hundred ninety-three. The arms keep falling off the window. A negative a makes k a maximum, so there is no minimum. This function hides the square. f of x equals x squared, minus six x, plus eleven. At five, twenty-five minus thirty plus eleven equals six. Complete the square. Half of negative six is negative three, and that squared is nine. Add nine and subtract nine. The value stays the same. x squared minus six x plus nine is the quantity x minus three, squared. Eleven minus nine is two. The square is zero when x is three. f of three equals zero squared plus two, which is two. Three squared, minus six times three, plus eleven. Nine minus eighteen plus eleven equals two. a is one, and it is positive. h is three, k is two, and the minimum value is two. Same three moves. One. Get the square in sight. Complete the square when it is hidden. Two. Make the square zero. The output there is k. Three. A positive a makes k the minimum. A negative a means there is no minimum.",
+    "durationSeconds": 172.68,
+    "width": 1920,
+    "height": 1080,
+    "sha256": "12c86cebcc94b4be91479b80cb73dc2146e2b1765075514aa760cbd11ddf7b30",
+    "standards": [
+      {
+        "standardId": "SAT.advanced-math",
+        "facet": "Identify quadratic minimum and maximum values from equivalent forms",
+        "basis": "editorial",
+        "sourceUrl": "https://satsuite.collegeboard.org/sat/whats-on-the-test/math/types/advanced"
+      },
+      {
+        "standardId": "HSA.SSE.B.3",
+        "facet": "Complete the square to reveal a quadratic function’s minimum or maximum",
+        "basis": "editorial",
+        "sourceUrl": "https://www.thecorestandards.org/Math/Content/HSA/SSE/B/3/"
+      }
+    ],
+    "standardIds": [
+      "SAT.advanced-math",
+      "HSA.SSE.B.3"
+    ],
+    "templateId": "quadratic-vertex",
+    "uploadDate": "2026-11-15T17:54:38Z"
+  },
+  {
+    "grade": "geometry",
+    "id": "fl-trapezoid-consequences",
+    "title": "Trapezoid midsegment, base angles and diagonals",
+    "videoUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/geometry/25f045201a05438cb9a22579219f01a6b0a6881031c84186f143dc62ab5ba000/video.mp4",
+    "posterUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/geometry/25f045201a05438cb9a22579219f01a6b0a6881031c84186f143dc62ab5ba000/poster.jpg",
+    "captionsUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/geometry/25f045201a05438cb9a22579219f01a6b0a6881031c84186f143dc62ab5ba000/captions.vtt",
+    "transcriptUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/geometry/25f045201a05438cb9a22579219f01a6b0a6881031c84186f143dc62ab5ba000/transcript.txt",
+    "transcript": "This orchard ladder narrows as it climbs. The bottom rung is twenty-four inches. The top rung, twelve. How long is the rung exactly halfway up? Each rung is three inches shorter than the last, so the middle one is eighteen: halfway between. That's the average. Add the two, divide by two. The ladder's outline is a trapezoid: four straight sides, with exactly one pair parallel, pointing the same way, never meeting. Those two are the bases. The other two are the legs. Name the corners in order around the shape: A, B, C, D. So AB and DC are the bases. A bar over the letters means the side itself, and this symbol means parallel. Join the midpoints of the legs, the points halfway along them, M and N. That's the midsegment, the middle rung, and its length is always the average of the bases. Slide the top base sideways. The midsegment keeps its length. Here's why. Give an identical copy a half turn about the midpoint of a leg. The two pieces lock into a parallelogram. Its long side is one base plus the other. And straight across the middle, two midsegments make that same length. So one midsegment is the sum of the bases, divided by two. Try one. AB is x plus six. DC is three x plus eight. The midsegment is twenty-five. Find AB. Write the average. On top, x and three x make four x, and six and eight make fourteen. Multiply both sides by two to clear the fraction. Subtract fourteen. Divide by four. x is nine. But they asked for AB, not x. Nine plus six: fifteen. Check: DC is thirty-five, and the average of fifteen and thirty-five is twenty-five. If a base is the unknown, it's the same equation: double the midsegment, then subtract the base you know. Now make the legs equal, shown by these tick marks, or this symbol. That's an isosceles trapezoid. Flip it over its mirror line, and it lands exactly on its own outline. A and B trade places, and so do C and D. So the two angles on the same base are equal. Flip it back, and watch the diagonals, the lines joining opposite corners. They trade places too, so they're equal. The measure of an angle is its size in degrees. Angle D is three x plus ten, and angle C is five x minus thirty. Same base, so set them equal. Collect the x terms on one side, the numbers on the other. Two x is forty, so x is twenty. Angle C is seventy degrees. Diagonals work the same way. AC is four x minus five, and BD is x plus four. Set them equal: x is three, so AC is seven. One more, for every trapezoid. Slide angle D up the leg. The bases are parallel, so its size doesn't change. At the top it sits beside angle A, and together they fill a straight line: one hundred eighty degrees. So if angle D is fifty-seven, angle A is one hundred twenty-three. The midsegment also gives you area. Cut off each corner, and give it a half turn about a midpoint. Now it's a rectangle, as wide as the midsegment. So area is midsegment times height. The same idea works for anything that changes steadily. A train slows steadily from sixty miles an hour to forty, over two hours. Its average speed is the midsegment: fifty. Fifty miles an hour for two hours is a hundred miles: the area of this trapezoid. Slice a curve into thin trapezoids, and the same calculation closes in on the area beneath it. That's the doorway to calculus. Midsegment: average the bases. Isosceles: same-base angles are equal, and so are the diagonals. Same-leg angles always add to one hundred eighty. Set up the equation, solve for x, and answer what they asked.",
+    "durationSeconds": 278.0,
+    "width": 1920,
+    "height": 1080,
+    "sha256": "3ff28106fdbdbfdcf7bd6fa163b53374d117fa065d904718ea7968479c402a1d",
+    "standards": [
+      {
+        "standardId": "MA.912.GR.1.5",
+        "facet": "Justify and apply trapezoid midsegment, base-angle and diagonal properties",
+        "basis": "editorial",
+        "sourceUrl": "https://cpalmsmediaprod.blob.core.windows.net/uploads/docs/standards/best/ma/mathbeststandardsfinal.pdf#page=155"
+      },
+      {
+        "standardId": "7.G.B.5",
+        "facet": "Use supplementary same-leg angles to find an unknown angle",
+        "basis": "editorial",
+        "sourceUrl": "https://www.thecorestandards.org/Math/Content/7/G/B/5/"
+      }
+    ],
+    "standardIds": [
+      "MA.912.GR.1.5",
+      "7.G.B.5"
+    ],
+    "templateId": "fl-trapezoid-consequences",
+    "uploadDate": "2026-11-15T17:54:43Z"
+  },
+  {
+    "grade": "algebra-2",
+    "id": "rational-two-denominators",
+    "title": "Solve a rational equation with two denominators and reject an excluded value",
+    "videoUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/algebra-2/06c12c5b180150be4a16eaf340a8586756f2b8c8e4a171a5bdc9f230dfc87eeb/video.mp4",
+    "posterUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/algebra-2/06c12c5b180150be4a16eaf340a8586756f2b8c8e4a171a5bdc9f230dfc87eeb/poster.jpg",
+    "captionsUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/algebra-2/06c12c5b180150be4a16eaf340a8586756f2b8c8e4a171a5bdc9f230dfc87eeb/captions.vtt",
+    "transcriptUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/algebra-2/06c12c5b180150be4a16eaf340a8586756f2b8c8e4a171a5bdc9f230dfc87eeb/transcript.txt",
+    "transcript": "Here is y equals one over x minus two. When x is four, the bottom is two, so y is one half. Move x toward two. At two and a half, y is two. At two point one, y is ten. At two point oh one, a hundred. As the bottom shrinks toward zero, y grows without end: a thousand, ten thousand, a hundred thousand. At two itself, the bottom is zero. One over zero has no value: no number times zero makes one. So x equals two is an excluded value. It can never be a solution. Now an equation with two fractions. First, the excluded values. The bottoms are x plus five and x minus two, so x cannot be negative five or two. Then multiply every term by the common denominator, x minus two times x plus five. Each bottom cancels, leaving x minus two, plus x times x plus five, equals negative seven. Multiply out and collect like terms. Add seven to both sides. Factor: one and five multiply to five and add to six. A product is zero only when a factor is zero, so x is negative one or negative five. But negative five is excluded: it makes x plus five zero. It is an extraneous solution, so reject it. The solution set is x equals negative one only. One more. This time the root that fails is positive. Excluded values: x minus three and x minus one cannot be zero, so x cannot be three or one. Multiply every term by x minus one times x minus three. Multiply out, then add twelve to both sides. Negative three and negative six multiply to eighteen and add to negative nine. So x is three or six. Three is excluded, so reject it. The solution set is x equals six only. Every problem of this type goes the same way. One: list the excluded values. Two: multiply every term by the common denominator. Three: solve what is left. Four: reject any root that is an excluded value. The roots that remain are the solution set.",
+    "durationSeconds": 146.866667,
+    "width": 1920,
+    "height": 1080,
+    "sha256": "27451e09a3a1f1b65b2749a7c0061fab0f9c0621328e2c4741903277af159392",
+    "standards": [
+      {
+        "standardId": "SAT.advanced-math",
+        "facet": "Solve rational equations and reject excluded values",
+        "basis": "editorial",
+        "sourceUrl": "https://satsuite.collegeboard.org/sat/whats-on-the-test/math/types/advanced"
+      },
+      {
+        "standardId": "HSA.REI.A.2",
+        "facet": "Solve rational equations in one variable and explain why excluded roots are extraneous",
+        "basis": "editorial",
+        "sourceUrl": "https://www.thecorestandards.org/Math/Content/HSA/REI/A/2/"
+      }
+    ],
+    "standardIds": [
+      "SAT.advanced-math",
+      "HSA.REI.A.2"
+    ],
+    "templateId": "rational-two-denominators",
+    "uploadDate": "2026-11-15T17:54:48Z"
+  },
+  {
+    "grade": "precalculus",
+    "id": "complex-plane-forms",
+    "title": "Complex plane, modulus and polar form",
+    "videoUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/precalculus/093fd4e5573b3ffa30b9fd32e14a3acfb411ea2c119562e568a2f4015081c2ee/video.mp4",
+    "posterUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/precalculus/093fd4e5573b3ffa30b9fd32e14a3acfb411ea2c119562e568a2f4015081c2ee/poster.jpg",
+    "captionsUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/precalculus/093fd4e5573b3ffa30b9fd32e14a3acfb411ea2c119562e568a2f4015081c2ee/captions.vtt",
+    "transcriptUrl": "https://d38iwc9748jekz.cloudfront.net/amp/public-site/videos/2026-11-15/precalculus/093fd4e5573b3ffa30b9fd32e14a3acfb411ea2c119562e568a2f4015081c2ee/transcript.txt",
+    "transcript": "A real number lives on a line. A complex number needs two coordinates. The number i is defined by i squared equals negative one. In rectangular form, write z as a plus b i; a and b are real numbers. The real part, a, is horizontal. The imaginary part, b, is vertical. So a plus b i is the point a, b. The coefficient b is a real number; i marks the imaginary direction. In particular, i sits one unit above zero. Point P represents z. Write z in the form a plus b i. Three left: the real part is negative three. Two up: the imaginary part is positive two. Negative three plus two i. Check the choices against the picture: left, then up. P represents z; Q represents w. Choose z plus w. Read each arrow from zero: z is three plus i. w is negative one plus two i. Adding means following both arrows. Slide a copy of w to the tip of z. The copy still goes one left and two up. Its length and direction have not changed. The sum runs from zero to the final tip. Horizontally: three plus negative one is two. Vertically: one plus two is three. Combine matching parts. The answer is two plus three i. The endpoint checks both parts: two right, three up. The modulus of z means its distance from zero. The bars around z name that distance. Across and up form the legs of a right triangle. The direct distance is its hypotenuse. Pythagoras gives the distance squared. Take the nonnegative square root to get the distance. Find the modulus of negative two plus four i, in simplest exact form. The legs have lengths two and four. A negative coordinate does not make a negative length. Call the distance r. Square each coordinate, then add: four plus sixteen is twenty. Take the square root. Twenty is four times five, so a factor of two comes outside. Check: the straight path is longer than four, but shorter than the two-leg path, six. There is another way to locate the same point: distance and direction. The distance r is the radius. Start the angle at the positive real axis, pointing right. Turn counterclockwise. The swept angle is theta, also called the argument. Drop a vertical line to the real axis. The radius becomes the hypotenuse of a right triangle. Cosine is horizontal divided by radius. So the real part is r times cosine theta. Sine is vertical divided by radius. So the imaginary part is r times sine theta. Put those parts into a plus b i, and factor out r. Both forms land on this same point. Rectangular gives the components; polar gives length and direction. Beyond the first quadrant, cosine and sine are signed coordinates. Here, left makes cosine negative; up makes sine positive. For exact values, use the special right triangles. A thirty-degree triangle has hypotenuse two and short leg one. Pythagoras gives the other leg: square root of three. At thirty degrees, cosine is root three over two; sine is one half. At sixty degrees, the opposite and adjacent legs switch roles, so those two values switch. At forty-five degrees, the legs are equal. Legs one and one give hypotenuse square root of two. Both ratios are one over root two, or root two over two. The quadrant supplies the signs. Write this polar number in rectangular form, a plus b i. The radius is four. The angle is five pi over six. Angles here use radians: pi is a half-turn, one hundred eighty degrees. Five pi over six is one hundred fifty degrees. Turn from the positive real axis. The point is left and up. The real part must be negative; the imaginary part, positive. Reject choices in other quadrants. The reference angle is the acute angle to the real axis: thirty degrees. Cosine is negative root three over two. Multiply by four for the horizontal part. Sine is one half. Multiply by four for the vertical part: two. So z is negative two root three plus two i. Check: left and up, with a larger horizontal part. Swapping sine and cosine would miss this point. Call the reference angle alpha. In quadrant one, theta equals alpha. Left and up: quadrant two. Subtract alpha from a half-turn. Left and down: quadrant three. Go past a half-turn by alpha. Right and down: quadrant four. Stop alpha short of a full turn. Write two minus two root three i in polar form. Use positive radius, and an angle from zero up to, but not including, two pi. Reread the signs: right and down. That is quadrant four. First, the radius. Square both parts: four plus twelve is sixteen. The radius is four. Both forms must reach this same circle. Divide each component by four. Cosine is two over four: one half. Sine is negative two root three over four: negative root three over two. Their sizes give a reference angle of pi over three, or sixty degrees. But pi over three points up. We need down. The reference angle alone is not the answer. A full turn is two pi. Stop pi over three short of that full turn. That gives five pi over three, in the requested interval. A clockwise angle of negative pi over three reaches the same point, but falls outside that interval. Use radius four and angle five pi over three in both places. Check by converting back: four times one half is two; four times negative root three over two is negative two root three. Points on the axes work too. A real number has imaginary part zero. A purely imaginary number has real part zero. Its arrow is vertical. The negative real axis is angle pi. Straight down is three pi over two. At zero itself, the modulus is zero. There is no direction, so its argument is undefined. Read what is requested. The picture tells you which quantities matter. Components locate the point. Their signs fix its quadrant. Distance comes from the right triangle. Direction comes from cosine and sine together. Use the requested angle interval. Convert back to check.",
+    "durationSeconds": 497.89,
+    "width": 1920,
+    "height": 1080,
+    "sha256": "b354d10662a41fcadaeb568fb6b7a47ffc28d703287cc90aedf07b44b9b8ee46",
+    "standards": [
+      {
+        "standardId": "HSN.CN.B.4",
+        "facet": "Represent the same complex number in rectangular and polar form",
+        "basis": "editorial",
+        "sourceUrl": "https://www.thecorestandards.org/Math/Content/HSN/CN/B/4/"
+      },
+      {
+        "standardId": "HSN.CN.B.5",
+        "facet": "Add complex numbers geometrically and by combining real and imaginary parts",
+        "basis": "editorial",
+        "sourceUrl": "https://www.thecorestandards.org/Math/Content/HSN/CN/B/5/"
+      }
+    ],
+    "standardIds": [
+      "HSN.CN.B.4",
+      "HSN.CN.B.5"
+    ],
+    "templateId": "complex-plane-forms",
+    "uploadDate": "2026-11-15T17:54:52Z"
+  }
+]

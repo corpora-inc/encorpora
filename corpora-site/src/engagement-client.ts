@@ -1,9 +1,11 @@
 import { createMarketingDelivery } from "./engagement-delivery";
 import { entryContext } from "../../amp/src/analytics/entry-context";
 import { browserIdentity } from "../../amp/src/analytics/browser-identity";
-import { marketingScreen } from "../../amp/src/analytics/site-actions";
-import { EngagementClock } from "../../amp/src/analytics/engagement";
+import { marketingScreen } from "../../amp/src/analytics/site-categories";
+import { EngagementClock } from "../../amp/src/analytics/engagement-clock";
 import { createGoogleAnalytics } from "../../amp/src/analytics/google-analytics";
+
+declare const __AMP_SITE_PAGES__: Readonly<Record<string,string>>;
 
 const script = document.querySelector<HTMLScriptElement>(
   "script[data-engagement-endpoint]",
@@ -14,7 +16,7 @@ if (
   !privacy.globalPrivacyControl &&
   navigator.doNotTrack !== "1"
 ) {
-  const google = createGoogleAnalytics();
+  const google = createGoogleAnalytics({sitePages:__AMP_SITE_PAGES__});
   google.navigate();
   const endpoint = script.dataset.engagementEndpoint;
   const deliver = createMarketingDelivery();
@@ -169,7 +171,8 @@ if (
       event.target instanceof Element ? event.target.closest("a,button") : null;
     if (!target) return;
     let action: string | undefined;
-    if (target.matches('[data-invoice-form="open"]')) action = "invoice_open";
+    if (target.matches('[data-resource-action="workbook_download"]')) action = "workbook_download";
+    else if (target.matches('[data-invoice-form="open"]')) action = "invoice_open";
     else if (target instanceof HTMLAnchorElement) {
       const u = new URL(target.href, location.href);
       if (
@@ -202,5 +205,10 @@ if (
         screen,
       });
     });
+  for (const video of Array.from(document.querySelectorAll<HTMLVideoElement>("video[data-lesson-video]"))) {
+    let started=false, completed=false;
+    video.addEventListener("play",()=>{ if(started) return; started=true; google.event("video_play"); send("site_action",{eventId:crypto.randomUUID(),action:"video_play",screen}); });
+    video.addEventListener("ended",()=>{ if(completed) return; completed=true; google.event("video_complete"); send("site_action",{eventId:crypto.randomUUID(),action:"video_complete",screen}); });
+  }
   snapshot();
 }

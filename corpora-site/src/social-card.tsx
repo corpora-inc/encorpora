@@ -1,3 +1,5 @@
+import { resourceByPath } from "./resources/catalog.js";
+import { plansMeta } from "./resources/plans-page.js";
 import { articleByPath } from "./library/catalog.js";
 import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
@@ -88,8 +90,11 @@ function headingFor(funding: FundingRoute) {
 }
 
 export function cardSpec(route: string, config: SiteConfig): CardSpec {
+  if(route===plansMeta.path) return {label:plansMeta.label,heading:plansMeta.title,path:route,art:{kind:"problem",sample:1}};
+  const resource = resourceByPath.get(route);
+  if(resource) return {label:({hub:"Explore AMP",grade:"Math by grade",workbook:"Free math workbooks",lesson:"A lesson from AMP",comparison:"Compare math programs",video:"A video lesson from AMP"} as const)[resource.kind],heading:resource.title,path:route,art:{kind:"problem",sample:1}};
   const article = articleByPath.get(route);
-  if (article) return { label: article.label, heading: article.title, path: route, art: { kind: "problem", sample: article.sample ?? 0 } };
+  if (article) return { label: article.label.length>30?"Explore AMP":article.label, heading: article.title, path: route, art: { kind: "problem", sample: article.sample===2?1:(article.sample ?? 0) } };
   const funding = fundingForPath(route, config);
   if (funding)
     return {

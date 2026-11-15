@@ -1,0 +1,543 @@
+.resource-hero {
+  padding: 58px 0 64px;
+}
+.resource-hero.with-visual {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  align-items: center;
+  gap: 56px;
+}
+.resource-hero h1 {
+  max-width: 950px;
+  font-size: clamp(2.7rem, 4.7vw, 4.7rem);
+  text-wrap: balance;
+}
+.resource-hero-visual {
+  min-width: 0;
+}
+.resource-section {
+  padding: 58px 0;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 24px;
+}
+.resource-section h2 {
+  font-size: clamp(2.1rem, 3.5vw, 3.2rem);
+  text-wrap: balance;
+}
+.resource-section p {
+  line-height: 1.85;
+}
+.section-deck {
+  max-width: 760px;
+  color: var(--ink-2);
+  font-size: 1.1rem;
+}
+.level-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 24px 0;
+  margin-bottom: 24px;
+  border-block: 1px solid var(--line);
+}
+.level-picker a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 13px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.88rem;
+}
+.level-picker a:hover,
+.level-picker a[aria-current] {
+  background: var(--primary);
+  color: var(--color-on-primary);
+  border-color: var(--primary);
+}
+.split-story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.split-story > * {
+  min-width: 0;
+}
+.theme-list > div {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+.theme-list span {
+  color: var(--primary);
+  font-size: 0.8rem;
+}
+.theme-list h3 {
+  font-size: 1.35rem;
+  margin: 0;
+}
+.level-cards,
+.comparison-directory {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin: 32px 0 56px;
+}
+.level-card,
+.level-cards > a,
+.comparison-directory > a {
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--ink);
+  text-decoration: none;
+  background: var(--surface-2);
+  min-width: 0;
+}
+.level-cards h2,
+.level-cards h3,
+.comparison-directory h2 {
+  font-size: 2rem;
+  margin-bottom: 18px;
+}
+.level-cards h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+.level-card p,
+.comparison-directory p {
+  color: var(--ink-2);
+  line-height: 1.75;
+}
+.level-card-actions {
+  display: grid;
+  gap: 4px;
+  margin-top: 20px;
+}
+.level-card-actions a {
+  display: block;
+  padding: 10px 0;
+  font-size: 0.95rem;
+}
+.cover-link img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--line);
+}
+.resource-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 32px;
+}
+.resource-links > a {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 12px;
+  padding: 24px 0;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+}
+.resource-links > a > span:first-child {
+  color: var(--ink-2);
+  font-size: 0.85rem;
+}
+.resource-links strong {
+  grid-column: 1;
+  font-size: 1.15rem;
+}
+.resource-links > a > span:last-child {
+  grid-column: 2;
+  grid-row: 1/3;
+  align-self: center;
+  color: var(--primary);
+}
+.curriculum-areas details,
+.standards-list {
+  border-bottom: 1px solid var(--line);
+  padding: 8px 0;
+}
+.curriculum-areas summary,
+.standards-list summary {
+  padding: 16px 0;
+  cursor: pointer;
+  font-weight: 600;
+}
+.curriculum-areas summary span {
+  float: right;
+  color: var(--ink-2);
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+.curriculum-areas ul {
+  padding-left: 24px;
+  columns: 2;
+  column-gap: 48px;
+}
+.curriculum-areas li {
+  break-inside: avoid;
+  margin-bottom: 20px;
+  padding-right: 8px;
+}
+.curriculum-areas li p {
+  font-size: 0.88rem;
+  color: var(--ink-2);
+  margin: 5px 0 0;
+}
+.standards-list ul {
+  padding-left: 24px;
+}
+.standards-list li {
+  margin: 16px 0;
+}
+.standards-list li span {
+  display: block;
+  color: var(--ink-2);
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+.feature-band {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 50px;
+}
+.feature-band h2 {
+  font-size: clamp(2.1rem, 3.5vw, 3.2rem);
+}
+.feature-band p {
+  max-width: 900px;
+  line-height: 1.8;
+}
+.feature-note,
+.edition-date {
+  font-size: 0.85rem;
+  color: var(--ink-2);
+}
+.paper-preview {
+  margin: 0;
+}
+.paper-preview img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--line);
+  box-shadow: 0 16px 38px var(--color-shadow);
+}
+.paper-preview figcaption {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+  margin-top: 18px;
+}
+.workbook-cover {
+  max-width: 390px;
+  margin: auto;
+}
+.download-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.download-options .button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  padding: 14px 22px;
+}
+.download-detail {
+  font-size: 0.72rem;
+  font-weight: 400;
+  opacity: 0.85;
+}
+.topic-list {
+  list-style: none;
+  padding: 0;
+}
+.topic-list li {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.reading-steps {
+  padding-left: 24px;
+  line-height: 1.85;
+}
+.reading-steps li {
+  padding: 0 0 20px 10px;
+}
+.comparison-position {
+  padding: 34px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+.comparison-position h2 {
+  font-size: 2.6rem;
+}
+.comparison-position ul {
+  padding-left: 20px;
+  line-height: 1.8;
+}
+.comparison-position li {
+  padding: 8px 0;
+}
+.comparison-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.comparison-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 600px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.comparison-table caption {
+  text-align: left;
+  padding: 16px 22px;
+  color: var(--ink-2);
+  font-size: 0.8rem;
+}
+.comparison-table th,
+.comparison-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 24px;
+  border-top: 1px solid var(--line);
+}
+.comparison-table th:first-child {
+  width: 20%;
+}
+.comparison-table td:nth-child(2),
+.comparison-table th:nth-child(2) {
+  background: var(--surface-2);
+  width: 40%;
+}
+.comparison-source {
+  font-size: 0.8rem;
+  color: var(--ink-2);
+}
+.comparison-reading {
+  max-width: 850px;
+  margin-inline: auto;
+  font-size: 1.08rem;
+}
+.comparison-reading p {
+  margin-bottom: 24px;
+}
+.public-problem {
+  margin: 0;
+  padding: 26px;
+  min-width: 0;
+}
+.public-problem .print-exercise {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.public-problem .print-prompt {
+  font-size: 1.15rem;
+  line-height: 1.65;
+}
+.public-problem .print-number {
+  display: none;
+}
+.public-problem .print-response {
+  margin: 18px 0;
+}
+.public-problem .print-response table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.public-problem .print-response td,
+.public-problem .print-response th {
+  border: 1px solid var(--line);
+  padding: 10px;
+}
+.public-problem .print-response input {
+  max-width: 100%;
+}
+.public-problem svg,
+.lesson-illustration svg,
+.worked-lesson svg {
+  max-width: 100%;
+  height: auto;
+}
+.lesson-objectives {
+  background: var(--surface-2);
+  padding: 28px;
+  border-radius: 12px;
+  margin-bottom: 44px;
+}
+.lesson-objectives h2 {
+  font-size: 1.6rem;
+}
+.lesson-objectives ul,
+.article-body ul,
+.article-body ol {
+  line-height: 1.85;
+  padding-left: 24px;
+}
+.article-body li {
+  margin-bottom: 12px;
+}
+.lesson-illustration {
+  margin: 28px 0;
+  padding: 20px;
+  background: var(--surface-2);
+  border-radius: 12px;
+}
+.lesson-reader .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 6px 0;
+}
+.public-problem .figure {
+  margin: 20px 0;
+}
+@media (max-width: 900px) {
+  .resource-hero.with-visual {
+    gap: 30px;
+  }
+  .split-story {
+    gap: 30px;
+  }
+}
+@media (max-width: 700px) {
+  .resource-hero {
+    padding: 38px 0;
+  }
+  .resource-hero.with-visual,
+  .split-story {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .resource-hero h1 {
+    font-size: 2.8rem;
+  }
+  .resource-section {
+    padding: 38px 0;
+  }
+  .level-cards,
+  .comparison-directory,
+  .resource-links {
+    grid-template-columns: 1fr;
+  }
+  .level-card,
+  .level-cards > a,
+  .comparison-directory > a {
+    padding: 24px;
+  }
+  .feature-band {
+    padding: 26px;
+  }
+  .curriculum-areas ul {
+    columns: 1;
+  }
+  .comparison-position {
+    padding: 26px;
+  }
+  .comparison-position h2 {
+    font-size: 2.2rem;
+  }
+  .public-problem {
+    padding: 20px;
+  }
+  .lesson-illustration {
+    padding: 12px;
+  }
+  .resource-hero-visual .paper-preview {
+    max-width: 440px;
+    margin-inline: auto;
+  }
+}
+
+.public-problem > h2 {
+  font-family: inherit;
+  font-size: 1.25rem;
+  line-height: 1.65;
+  letter-spacing: 0;
+}
+
+.lesson-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  background: #112c29;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.featured-video {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 48px;
+  align-items: center;
+}
+.watch-heading {
+  padding: 36px 0 24px;
+}
+.watch-heading h1 {
+  font-size: clamp(2.6rem, 4.5vw, 4.5rem);
+  margin-bottom: 12px;
+}
+.transcript {
+  max-width: 800px;
+  margin-inline: auto;
+}
+.transcript p {
+  line-height: 1.85;
+}
+.video-card {
+  display: block;
+  text-decoration: none;
+}
+.video-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 12px 0;
+}
+.video-card strong {
+  display: block;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+.video-standards {
+  padding-left: 20px;
+}
+.video-standards p {
+  font-size: 0.9rem;
+  color: var(--ink-2);
+}
+@media (max-width: 700px) {
+  .featured-video {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .watch-heading {
+    padding-top: 28px;
+  }
+}
+
+@media(max-width:600px) {
+  .comparison-table { display:block; min-width:0; }
+  .comparison-table caption { display:block; }
+  .comparison-table thead { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+  .comparison-table tbody { display:block; }
+  .comparison-table tbody tr { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); }
+  .comparison-table tbody th { grid-column:1/-1; width:auto; padding:16px; }
+  .comparison-table tbody td { width:auto; min-width:0; padding:16px; font-size:.9rem; }
+  .comparison-table td::before { content:attr(data-label); display:block; font-weight:700; margin-bottom:10px; }
+}
+
+@media(max-width:600px) { .comparison-table tbody tr>* { width:auto!important; } }

@@ -287,7 +287,8 @@ export const funnelPropsSchemas = {
     ...errorDetailsSchema.pick({ exception: true, category: true }).shape,
   }),
   site_action: siteActionSchema,
-  landing_view: entryContextSchema.extend({
+  landing_view: z.strictObject({
+    ...entryContextSchema.shape,
     browser: z.enum(BROWSER_KINDS).optional(),
   }),
   try_click: none,
@@ -401,7 +402,7 @@ export const eventBatchSchema = z.strictObject({
   visitorId: visitorIdSchema,
   accountScope: z.string().min(1).max(256).optional(),
   accountGeneration: z.union([z.literal("initial"), z.uuidv4()]).optional(),
-  context: entryContextSchema.optional(),
+  context: z.optional(entryContextSchema),
   traffic: z.enum(TRAFFIC_KINDS).optional(),
   trial: z
     .string()

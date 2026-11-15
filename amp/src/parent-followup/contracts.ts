@@ -24,7 +24,7 @@ export const signupIntentSchema = z.strictObject({
   program: z.enum(["ar-efa", "az-esa", "nh-efa"]).optional(),
   campaign: fundedCampaignSchema.optional(),
   newsletter: z.boolean(),
-  analytics: gaSignupContextSchema.optional(),
+  analytics: z.optional(gaSignupContextSchema),
   entry: signupEntrySchema.optional(),
   // Pages loaded before a deploy still send the notice they showed.
   notice: z.enum([explicitNewsletterNotice, signupNotice]),
