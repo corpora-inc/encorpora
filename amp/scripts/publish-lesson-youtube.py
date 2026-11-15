@@ -37,7 +37,10 @@ def main():
 
 def execute(args):
     m = json.loads(args.manifest.read_text())
-    if not m['voiceId'] in VOICES:
+    # A wordless film (music and on-screen math only) declares narration "none"
+    # and has no voice to approve; every narrated film must use an approved voice.
+    wordless = m.get('narration') == 'none' and 'voiceId' not in m
+    if not (wordless or m.get('voiceId') in VOICES):
         raise ValueError('Unapproved voice')
     if not 0 < len(args.title) <= 100:
         raise ValueError('Publication validation failed')
@@ -46,6 +49,8 @@ def execute(args):
         raise ValueError('Publication validation failed')
     files = {}
     for kind in ('video', 'subtitles', 'poster'):
+        if kind == 'subtitles' and wordless and kind not in m['assets']:
+            continue  # nothing is spoken, so there is no caption track to upload
         asset = m['assets'][kind]
         path = args.deliverables / Path(urllib.parse.urlparse(asset['url']).path).name
         if not hashlib.sha256(path.read_bytes()).hexdigest() == asset['sha256']:
@@ -83,7 +88,7 @@ def execute(args):
     else:
         metadata = {'snippet': {'title': args.title, 'description': description, 'categoryId': '27', 'defaultLanguage': 'en', 'defaultAudioLanguage': 'en'}, 'status': status}
         result = upload('videos', metadata, files['video'], 'video/mp4', ',status&notifySubscribers=true')
-        receipt = {'videoId': result['id'], 'channelId': channel, 'sha256': m['assets']['video']['sha256'], 'voiceId': m['voiceId'], 'uploadedAt': datetime.now(timezone.utc).isoformat(), 'policyVersion': POLICY_VERSION}
+        receipt = {'videoId': result['id'], 'channelId': channel, 'sha256': m['assets']['video']['sha256'], 'voiceId': m.get('voiceId'), 'uploadedAt': datetime.now(timezone.utc).isoformat(), 'policyVersion': POLICY_VERSION}
         args.receipt.parent.mkdir(parents=True, exist_ok=True)
         args.receipt.write_text(json.dumps(receipt, indent=2) + '\n')
     video_id = receipt['videoId']
@@ -93,7 +98,7 @@ def execute(args):
     if not (current['snippet']['title'] == args.title and current['snippet']['description'] == description):
         raise ValueError("Metadata differs from receipt's upload")
     captions = request('GET', API + '/captions?part=snippet&videoId=' + video_id)['items']
-    if not any((c['snippet']['name'] == 'English' for c in captions)):
+    if 'subtitles' in files and not any((c['snippet']['name'] == 'English' for c in captions)):
         upload('captions', {'snippet': {'videoId': video_id, 'language': 'en', 'name': 'English', 'isDraft': False}}, files['subtitles'], 'application/octet-stream')
     if not receipt.get('thumbnail'):
         with call('POST', UPLOAD + '/thumbnails/set?videoId=' + video_id + '&uploadType=media', files['poster'].read_bytes(), {'Content-Type': 'image/png'}) as response:
