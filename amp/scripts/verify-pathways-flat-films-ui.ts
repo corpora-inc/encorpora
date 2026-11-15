@@ -111,7 +111,7 @@ async function fixture(
   }, LEARNER);
   await page.route("**/api/v1/**", async (route) => {
     const pathname = new URL(route.request().url()).pathname;
-    if (pathname.endsWith("/catalog")) {
+    if (/\/catalog(?:\/map)?$/.test(pathname)) {
       if (holdCatalog) await new Promise((r) => setTimeout(r, holdCatalog));
       await catalogGate;
       return route.fulfill({

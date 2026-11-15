@@ -115,7 +115,7 @@ try {
             json: { mode: "accounts", passwords: true, providers: [] },
           });
         if (path === "/api/v1/me") return route.fulfill({ json: account });
-        if (path === "/api/v1/catalog")
+        if (/^\/api\/v1\/catalog(?:\/map)?$/.test(path))
           return route.fulfill({
             json: {
               skills,

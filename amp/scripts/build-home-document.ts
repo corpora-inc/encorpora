@@ -52,12 +52,29 @@ const tags = [
   `<link rel="preload" as="image" type="image/webp" href="${asset(/^pitch-poster-wide-.*\.webp$/)}" media="(min-width: 481px)" fetchpriority="high" />`,
   `<link rel="modulepreload" crossorigin href="${asset(/^PitchScreen-.*\.js$/)}" />`,
   `<link rel="preload" as="fetch" crossorigin="anonymous" href="/api/v1/billing/prices" />`,
+  // The two answers `/` waits on to choose the pitch or the app, asked with
+  // the document instead of after the main bundle runs. Each matches its
+  // fetch exactly (src/web/auth.ts): the configuration with same-origin
+  // credentials, the session with the account client's "include".
+  `<link rel="preload" as="fetch" crossorigin="anonymous" href="/api/v1/auth-config" />`,
+  `<link rel="preload" as="fetch" crossorigin="use-credentials" href="/api/auth/get-session" />`,
   // `<` can't appear in the values, but escaping keeps a data block a data block.
   `<script type="application/ld+json">${JSON.stringify(structured).replaceAll("<", "\\u003c")}</script>`,
 ];
 if (!shell.includes("</head>"))
   throw new Error("build-home-document: the shell has no </head>");
-const home = shell.replace("</head>", `${tags.join("\n    ")}\n  </head>`);
+// The pitch shows no math: its math-font preloads (index.html, for problem
+// screens) would take a phone's first seconds of bandwidth from the pitch.
+// main.tsx preloads them once `/` resolves to the app instead.
+const mathFont = /<link\b[^>]*\bas="font"[^>]*KaTeX_[^>]*>\s*/g;
+const fonts = shell.match(mathFont)?.length ?? 0;
+if (fonts !== 3)
+  throw new Error(
+    `build-home-document: expected 3 math font preloads, found ${fonts}`,
+  );
+const home = shell
+  .replace(mathFont, "")
+  .replace("</head>", `${tags.join("\n    ")}\n  </head>`);
 // Every script AMP serves has a URL, so an error report can always say whose
 // code failed: one with no URL ("inline") is a browser's or app's own. The
 // content policy blocks inline scripts too; this keeps the document honest.

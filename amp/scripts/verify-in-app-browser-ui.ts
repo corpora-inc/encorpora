@@ -21,10 +21,15 @@ import type { BrowserKind } from "../src/analytics/browser-kind";
  *
  * - the pitch paints with no horizontal overflow and no layout shift;
  * - the film shows its poster and plays on a tap;
- * - Buy and Try it free reach their sign-up screens, and Back returns;
+ * - scrolling the whole pitch, as a thumb does, moves and breaks nothing;
+ * - Buy and Try it free (at the top and in the closing section) reach their
+ *   sign-up screens, and Back returns;
  * - no error boundary shows and no `client_error` blames our code. The
  *   webview's own errors are still recorded, as external, at most three of a
- *   kind, and every error and landing names the browser it came from.
+ *   kind, and every error and landing names the browser it came from. In
+ *   Facebook, Instagram and TikTok they are counted (`external_runtime_error`),
+ *   including code a webview runs in the page itself (no inline script is
+ *   AMP's), and never reported as AMP's.
  *
  * The API is synthetic; nothing leaves the machine.
  *
@@ -109,7 +114,7 @@ const conditions: Condition[] = [
   {
     name: "facebook",
     browser: "inapp-facebook",
-    hostile: ["autoplay", "keepalive"],
+    hostile: ["inject", "autoplay", "keepalive"],
   },
   { name: "snapchat", browser: "inapp-snapchat", hostile: ["apis"] },
   {
@@ -168,6 +173,16 @@ function hostile(kinds: Hostility[]) {
       const bridge = () => { throw new Error("in-app bridge"); };
       setTimeout(() => { for (let i = 0; i < 6; i++) setTimeout(bridge, 100 * i); }, 1500);
       setTimeout(() => { Promise.reject(new Error("in-app bridge rejected")); }, 1600);
+      // A script the app evaluates in the page reports the page's own URL
+      // (seen from Facebook's app in production, recorded as AMP's).
+      setTimeout(() => {
+        dispatchEvent(new ErrorEvent("error", {
+          error: new TypeError("in-app bridge in the page"),
+          filename: location.href,
+          lineno: 1,
+          colno: 1,
+        }));
+      }, 1650);
       document.addEventListener("DOMContentLoaded", () => {
         for (const [src, cors] of [["http://inapp-cdn.test/bridge.js", false], ["http://inapp-cors.test/bridge.js", true]]) {
           const script = document.createElement("script");
@@ -416,13 +431,41 @@ async function run(
       0,
       `${tag}: no error boundary`,
     );
+    // A thumb's scroll to the end and back, in screen-sized steps.
+    const pageHeight = await page.evaluate(
+      () => document.documentElement.scrollHeight,
+    );
+    const viewport = page.viewportSize()!.height;
+    for (let y = 0; y < pageHeight; y += Math.round(viewport * 0.8)) {
+      await page.mouse.wheel(0, Math.round(viewport * 0.8));
+      await page.waitForTimeout(120);
+    }
+    await page
+      .getByRole("region", { name: "Get started" })
+      .getByRole("button", { name: "Buy AMP" })
+      .waitFor();
+    assert.ok((await overflow()) <= 1, `${tag}: no overflow at the end`);
+    await page.mouse.wheel(0, -pageHeight);
+    await page.waitForTimeout(300);
+    assert.deepEqual(
+      await layout(page),
+      before,
+      `${tag}: scrolling moves nothing`,
+    );
     if (navigate) {
       // Buy and Try both sign up first; Back returns to the same pitch.
-      for (const [name, entry, title] of [
-        ["Buy AMP", "pitch-buy", "Create your account to buy"],
-        ["Try it free", "pitch-try", "Try AMP free"],
+      for (const [name, entry, title, closing] of [
+        ["Buy AMP", "pitch-buy", "Create your account to buy", false],
+        ["Try it free", "pitch-try", "Try AMP free", false],
+        ["Buy AMP", "pitch-buy", "Create your account to buy", true],
       ] as const) {
-        await page.getByRole("button", { name }).first().click();
+        await (
+          closing
+            ? page
+                .getByRole("region", { name: "Get started" })
+                .getByRole("button", { name })
+            : page.getByRole("button", { name }).first()
+        ).click();
         await page.getByRole("heading", { name: title }).waitFor();
         const url = new URL(page.url());
         assert.equal(url.pathname, "/sign-up", `${tag}: ${name} signs up`);
@@ -450,6 +493,14 @@ async function run(
     const errors = events
       .filter((event) => event.event === "client_error")
       .map((event) => event.props);
+    const counted = events
+      .filter((event) => event.event === "external_runtime_error")
+      .reduce((sum, event) => sum + Number(event.props.count), 0);
+    const filtered = [
+      "inapp-facebook",
+      "inapp-instagram",
+      "inapp-tiktok",
+    ].includes(condition.browser);
     const ours = errors.filter(
       (error) => error.source === "app" || error.kind === "render",
     );
@@ -457,6 +508,9 @@ async function run(
     assert.deepEqual(pageErrors, [], `${tag}: no page errors`);
     for (const error of errors)
       assert.equal(error.browser, condition.browser, `${tag}: error browser`);
+    if (condition.hostile.includes("inject") && filtered)
+      assert.ok(counted > 0, `${tag}: the webview's errors counted`);
+    else assert.equal(counted, 0, `${tag}: nothing counted as the webview's`);
     if (condition.hostile.includes("inject")) {
       assert.ok(errors.length > 0, `${tag}: the webview's errors recorded`);
       const kinds = new Map<string, number>();

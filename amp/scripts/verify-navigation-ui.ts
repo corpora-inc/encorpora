@@ -124,7 +124,7 @@ try {
       return failMe
         ? route.fulfill({ status: 503, json: { error: "unavailable" } })
         : route.fulfill({ json: account });
-    if (path === "/api/v1/catalog")
+    if (/^\/api\/v1\/catalog(?:\/map)?$/.test(path))
       return route.fulfill({
         json: {
           skills,
@@ -741,7 +741,9 @@ try {
   await page.getByRole("searchbox", { name: "Search", exact: true }).fill("L");
   await page.getByRole("searchbox", { name: "Search", exact: true }).fill("");
   assert.equal(
-    await page.getByRole("searchbox", { name: "Search", exact: true }).inputValue(),
+    await page
+      .getByRole("searchbox", { name: "Search", exact: true })
+      .inputValue(),
     "",
   );
   await page.getByRole("button", { name: /^Strong/ }).click();

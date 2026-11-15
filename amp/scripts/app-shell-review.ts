@@ -234,7 +234,7 @@ export async function verifyShellReview({
             // A refresh of one lesson: the reader's frame paints at once and
             // the lesson fills it; no page-sized heading in between.
             const lesson = lessons[0]!;
-            await page.route("**/api/v1/catalog", async (route) => {
+            await page.route(/\/api\/v1\/catalog(?:\/map)?$/, async (route) => {
               await held;
               await route.continue();
             });
@@ -285,7 +285,7 @@ export async function verifyShellReview({
             const topicHeld = new Promise<void>((resolve) => {
               releaseTopic = resolve;
             });
-            await page.route("**/api/v1/catalog", async (route) => {
+            await page.route(/\/api\/v1\/catalog(?:\/map)?$/, async (route) => {
               await topicHeld;
               await route.continue();
             });

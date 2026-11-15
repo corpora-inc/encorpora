@@ -18,6 +18,7 @@ import {
 } from "./model";
 
 import { overviewCamera, overviewCallouts } from "./overview";
+import { addColorStops, paintRoles } from "./paint-roles";
 import {
   FOV,
   SKILL_INSETS,
@@ -229,18 +230,23 @@ export function Graph({
     const points = layout(skills);
     const byId = new Map(points.map((p) => [p.skill.id, p]));
     const stats = new Map(evidence.map((s) => [s.skillId, s]));
-    const styles = getComputedStyle(el);
-    const paintRole = (role: string) => styles.getPropertyValue(role).trim();
+    const paintRole = paintRoles(el);
     const colors = areas.map((a) => new THREE.Color(paintRole(a.color)));
     const textures: THREE.Texture[] = [];
     const glowCanvas = document.createElement("canvas");
     glowCanvas.width = glowCanvas.height = 128;
     const ctx = glowCanvas.getContext("2d")!;
     const gradient = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
-    gradient.addColorStop(0, paintRole("--atlas-light"));
-    gradient.addColorStop(0.08, paintRole("--atlas-halo-core"));
-    gradient.addColorStop(0.22, paintRole("--atlas-halo-edge"));
-    gradient.addColorStop(1, paintRole("--atlas-transparent"));
+    addColorStops(
+      gradient,
+      [
+        [0, "--atlas-light"],
+        [0.08, "--atlas-halo-core"],
+        [0.22, "--atlas-halo-edge"],
+        [1, "--atlas-transparent"],
+      ],
+      paintRole,
+    );
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, 128, 128);
     const glowTexture = new THREE.CanvasTexture(glowCanvas);

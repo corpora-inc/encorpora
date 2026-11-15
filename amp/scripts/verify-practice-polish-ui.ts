@@ -199,7 +199,7 @@ async function mockApi(context: BrowserContext, templateId: string) {
     if (path === "/api/v1/auth-config")
       return json({ mode: "accounts", passwords: true, providers: [] });
     if (path === "/api/v1/me") return json(account);
-    if (path === "/api/v1/catalog")
+    if (/^\/api\/v1\/catalog(?:\/map)?$/.test(path))
       return json({
         skills,
         templates,

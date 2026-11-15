@@ -98,6 +98,35 @@ test("an error event without a script URL is never blamed on AMP", () => {
   );
 });
 
+test("an error the browser places in the HTML document is not AMP's code", () => {
+  // AMP serves no inline script (build-home-document refuses one, the content
+  // policy blocks one), so a frame in the page itself is code a webview ran:
+  // production recorded these from the Facebook app as "app" with no asset.
+  const origin = "https://amp.corpora.inc";
+  for (const filename of [
+    "https://amp.corpora.inc/",
+    "https://amp.corpora.inc/?utm_source=facebook",
+    "https://amp.corpora.inc/sign-up",
+    "https://amp.corpora.inc/pathways/count-to-10/",
+  ])
+    assert.equal(
+      errorDetails(new TypeError("x"), { filename, lineno: 1 }, origin).source,
+      "inline",
+      filename,
+    );
+  // Same-origin scripts stay ours: a worker, and Vite's development modules.
+  for (const filename of [
+    "https://amp.corpora.inc/worker.js",
+    "https://amp.corpora.inc/src/web/main.tsx?t=1",
+    "https://amp.corpora.inc/@vite/client",
+  ])
+    assert.equal(
+      errorDetails(new TypeError("x"), { filename, lineno: 1 }, origin).source,
+      "app",
+      filename,
+    );
+});
+
 test("React and rejected-promise stacks retain only a public app frame", () => {
   const origin = "https://amp.example.test";
   for (const frame of [

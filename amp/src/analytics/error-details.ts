@@ -39,6 +39,14 @@ export const errorDetailsSchema = z.strictObject({
   reactCode: z.number().int().min(1).max(9999).optional(),
 });
 
+/** A same-origin URL that names a script: a build asset, a worker, or a
+ * development module. Anything else is a page; AMP serves no inline script
+ * (scripts/build-home-document.ts refuses one, the content policy blocks one),
+ * so a frame in the page itself is code a browser or in-app webview ran. */
+export function isScriptPath(pathname: string): boolean {
+  return /\.(?:[cm]?js|jsx|tsx?)$/.test(pathname) || pathname.startsWith("/@");
+}
+
 /** Read only a public build asset and coordinates. Everything else in a stack
  * stays in the browser. Bounds also limit work on malformed host objects. */
 function appFrame(error: unknown, origin: string) {
@@ -121,7 +129,12 @@ export function errorDetails(
           : "inline";
       if (source.filename && origin) {
         const url = new URL(source.filename);
-        result.source = url.origin === origin ? "app" : "external";
+        result.source =
+          url.origin !== origin
+            ? "external"
+            : isScriptPath(url.pathname)
+              ? "app"
+              : "inline";
         const asset = url.pathname.match(
           /^\/assets\/([A-Za-z0-9_-]{1,80}-[A-Za-z0-9_-]{8,32}\.js)$/,
         )?.[1];

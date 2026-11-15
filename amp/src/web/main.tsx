@@ -12,7 +12,7 @@ import { RouterView } from "./app/RouterView";
 import { Providers } from "./app/providers";
 import { router } from "./app/router";
 import "./app/styles";
-import "./app/preload-math-fonts";
+import { preloadMathFonts } from "./app/preload-math-fonts";
 import { captureOpenAIEntry } from "./lib/openai-acquisition";
 import { startEngagement } from "./lib/engagement";
 import {
@@ -32,6 +32,7 @@ router.subscribe("onResolved", () => {
   studentActivity.navigate(router.state.location.pathname);
   adultActivity.navigate(router.state.location.pathname);
   trackGooglePage();
+  if (screenOf(router.state.location.pathname) !== "pitch") preloadMathFonts();
 });
 trackGooglePage();
 trackSessionStart();

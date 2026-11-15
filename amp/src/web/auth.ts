@@ -89,6 +89,20 @@ function session(user: User): AuthSession {
     accountId: `${authority}|${user.profile.sub}`,
   };
 }
+/** AMP's own accounts: the session token doubles as the API bearer token. */
+async function accountSession(): Promise<AuthSession | null> {
+  const { data, error } = await accountClient.getSession({
+    fetchOptions: { timeout: 10000 },
+  });
+  if (error) throw new Error(error.message ?? "Sign-in could not be checked");
+  return data
+    ? {
+        token: data.session.token,
+        accountId: `amp|${data.user.id}`,
+        ...(data.user.name?.trim() ? { name: data.user.name.trim() } : {}),
+      }
+    : null;
+}
 export async function accessSession(): Promise<AuthSession | null> {
   if (nativeRuntime) return nativeSession();
   const completion = new URLSearchParams(location.hash.slice(1)).get(
@@ -98,14 +112,21 @@ export async function accessSession(): Promise<AuthSession | null> {
   // sign out or a new, explicitly completed Clever staff login replaces it.
   const student = studentSession();
   if (student && !completion) return student;
+  const providerHint = /(?:^|;\s*)amp\.provider=1(?:;|$)/.test(document.cookie);
+  // AMP's own accounts are the deployment's when no external sign-in is
+  // built in. Ask for the session alongside the configuration, not after it:
+  // every first screen waits on both. A school sign-in, completing or hinted,
+  // is checked first below, so it keeps its order.
+  const speculative =
+    !manager && !student && !completion && !providerHint
+      ? accountSession()
+      : undefined;
+  speculative?.catch(() => undefined);
   const configuration = await authConfig();
   if (configuration.mode === "accounts") {
     // Only where a school sign-in exists (its readable hint cookie) or one
     // is completing: never a round trip and a 401 on every boot.
-    if (
-      configuration.clever &&
-      (completion || /(?:^|;\s*)amp\.provider=1(?:;|$)/.test(document.cookie))
-    ) {
+    if (configuration.clever && (completion || providerHint)) {
       const provider = await fetch("/api/v1/provider/session", {
         credentials: "same-origin",
         cache: "no-store",
@@ -134,18 +155,7 @@ export async function accessSession(): Promise<AuthSession | null> {
       }
     }
     if (student) return student;
-    // AMP's own accounts: the session token doubles as the API bearer token.
-    const { data, error } = await accountClient.getSession({
-      fetchOptions: { timeout: 10000 },
-    });
-    if (error) throw new Error(error.message ?? "Sign-in could not be checked");
-    return data
-      ? {
-          token: data.session.token,
-          accountId: `amp|${data.user.id}`,
-          ...(data.user.name?.trim() ? { name: data.user.name.trim() } : {}),
-        }
-      : null;
+    return speculative ?? accountSession();
   }
   if (import.meta.env.DEV && !manager) {
     // Development only: `?signed-out` simulates a visitor without an account
