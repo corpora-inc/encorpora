@@ -1,3 +1,4 @@
+import { writeDiscovery } from "./discovery.js";
 import { createHash } from "node:crypto";
 import { workbookManifest } from "./resources/catalog.js";
 import { printFigureCss, publicationCss } from "../../amp/src/content/print-exercise.js";
@@ -69,6 +70,8 @@ export async function buildSite(config: SiteConfig, output: string = "dist") {
         ),
     );
   }
+  await writeFile(`${output}/404.html`, "<!doctype html>" + renderToStaticMarkup(<Page route="/404/" config={config} />));
+  await writeDiscovery(output, config, routes);
   await writeFile(
     `${output}/coverage.json`,
     // Publishes the curriculum's breadth. The audit's workflow counters track
@@ -100,7 +103,7 @@ export async function buildSite(config: SiteConfig, output: string = "dist") {
     `${output}/robots.txt`,
     config.mode === "preview"
       ? "User-agent: *\nDisallow: /\n"
-      : `User-agent: *\nAllow: /\nSitemap: ${new URL("/sitemap.xml", config.siteUrl).href}\n`,
+      : `User-agent: *\nAllow: /\nSitemap: ${new URL("/sitemap.xml", config.siteUrl).href}\nSitemap: ${new URL("/video-sitemap.xml", config.siteUrl).href}\n`,
   );
   if (config.siteUrl)
     await writeFile(

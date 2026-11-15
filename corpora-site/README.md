@@ -91,11 +91,23 @@ The funding directory groups program cards by state and displays the number of p
 The public workbook manifest records the edition date, grade/course, actual duration estimate, page counts and SHA-256 for each Letter/A4 PDF. Downloads are anonymous and include a blank name line plus worked answers. Date-stamped URLs identify an immutable edition. The initial files live under `public/workbooks/`; they are actual outputs from the same composer and renderer used by AMP. To prepare another edition, run from `amp/`:
 
 ```sh
-npx tsx scripts/regenerate-free-workbooks.ts --out /path/to/output --date YYYY-MM-DD --minutes 45
+npx tsx --tsconfig tsconfig.json scripts/regenerate-free-workbooks.ts --out /path/to/output --date YYYY-MM-DD --minutes 45
 ```
 
-The generator validates pagination, prompt/answer correspondence and named-grade coverage before recording a PDF. Review the output before updating the public manifest. It uses no learner accounts or database.
+The generator validates pagination, prompt/answer correspondence and named-grade coverage before recording a PDF. Review representative output when changing its sources; routine daily editions use the same validation checks. It uses no learner accounts or database.
 
 `src/resources/videos.json` records the published native MP4, poster, captions, transcript, actual website upload timestamp and content hashes. A watch page publishes VideoObject metadata for that playable asset. Retain a film’s verified narration provenance in the private media records; do not substitute a voice while refreshing a website asset.
 
 Product screenshots use synthetic data. `amp/scripts/capture-public-site-assets.ts` captures actual AMP components with a local fixture and no live account. The public image manifest records dimensions and source revision. Operational media paths, storage access and publication receipts stay outside this repository.
+
+## Daily editions and discovery
+
+The website publisher checks for a complete UTC-dated workbook edition on each hourly run. `scripts/refresh-workbooks.ts` generates all thirteen levels through AMP’s composer, validates both paper formats and their worked keys, and captures the actual cover and practice pages. It uploads content-addressed files, verifies their CDN bytes, publishes an immutable manifest, and advances `latest.json` last. A failed refresh retains the last verified edition, with its original date; the workflow reports the failure after publishing the retained edition. The reviewed repository PDFs are the initial fallback.
+
+`CORPORA_WORKBOOK_MANIFEST` selects a schema-validated edition file for a build. Deployment credentials and storage configuration belong in the publisher’s external configuration. No learner account or database participates in public workbook generation. Changes to the composer or public grade mapping should be checked across all thirteen levels before publication; failed pagination or answer correspondence prevents that daily release.
+
+Production builds publish `/sitemap.xml`, `/video-sitemap.xml`, `/resource-catalog.json`, `/workbook-editions.json` and `/llms.txt`. These describe the same visible resources and canonical pages. The text index is an optional reading aid, not a requirement for AI search or a ranking promise. Google’s [AI search guidance](https://developers.google.com/search/docs/appearance/ai-features) uses ordinary crawling, indexing and content-quality requirements. Public crawler access remains open in `robots.txt`; account information lives in the separate application.
+
+Optional `discovery` configuration accepts `indexNowKey`, `googleSiteVerification` and `bingSiteVerification`. Verification values come from the respective webmaster account. The public IndexNow ownership file is generated at the site root. After a successful deployment, `scripts/submit-indexnow.mjs` compares live document hashes with the preceding submission and sends only changed or removed URLs. Its HTTP 200/202 receipt records submission to participating engines; it does not assert that a URL is indexed. [IndexNow documentation](https://www.indexnow.org/documentation) describes those responses.
+
+`404.html` provides useful resource links, a noindex directive and no canonical; GitHub Pages serves it with HTTP 404. It is excluded from the sitemap and submission catalog.

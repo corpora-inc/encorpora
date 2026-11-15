@@ -69,7 +69,7 @@ export function HubPage({
             <section className="feature-band">
               <h2>Download. Print. Start thinking.</h2>
               <p>
-                Every edition has a blank name line, useful mixed practice and a
+                A new free edition each day, with a blank name line, useful mixed practice and a
                 complete worked answer key. Choose Letter or A4. The edition
                 date appears beside each download.
               </p>

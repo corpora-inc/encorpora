@@ -45,6 +45,7 @@ export const routesFor = (config: SiteConfig) => [
   ...config.funding.flatMap((r) => (r.page ? [fundingPath(r.page.slug)] : [])),
 ];
 const titles: Record<string, string> = {
+  "/404/": "Page not found · AMP Mathematics",
   "/": "Corpora · AMP Mathematics",
   "/amp/": "AMP Mathematics · A complete math curriculum",
   "/esa/": "Pay with education funds · Corpora",
@@ -56,6 +57,7 @@ const titles: Record<string, string> = {
 };
 /** What a search result says about each page, in the page's own words. */
 const descriptions: Record<string, string> = {
+  "/404/": "Find AMP’s math curriculum, free lessons and printable workbooks.",
   "/": "A complete math curriculum, from counting to precalculus. AMP finds your child’s level and chooses each next problem, with lessons and printable workbooks.",
   "/amp/":
     "AMP moves at your child’s pace, from counting to precalculus: ahead as fast as they’re ready, back to fill every gap. Thirty minutes a day, nothing to plan.",
@@ -782,7 +784,13 @@ export function Page({
   const description =
     resource?.description ?? (route===plansMeta.path?plansMeta.description:undefined) ?? article?.description ?? funding?.page?.summary ?? descriptions[route] ?? descriptions["/"]!;
   let content: ReactNode;
-  if (resource) content = <ResourcePage page={resource} config={config}/>;
+  if (route === "/404/") content = <>
+    <Intro label="Page not found" heading="Find your next math resource." />
+    <div className="prose"><p>This address does not lead to a page. Explore AMP’s curriculum, free lessons and printable workbooks below.</p><ul>
+      <li><a href="/grades/">Math by grade and course</a></li><li><a href="/workbooks/">Free printable workbooks</a></li><li><a href="/lessons/">Video and written lessons</a></li><li><a href="/compare/">Compare math programs</a></li><li><a href="/support/">Contact Corpora</a></li>
+    </ul></div>
+  </>;
+  else if (resource) content = <ResourcePage page={resource} config={config}/>;
   else if (route===plansMeta.path) content = <PlansPage config={config}/>;
   else if (article) content = <ArticlePage article={article} config={config} />;
   else if (route === "/") content = <Home config={config} />;
@@ -882,17 +890,18 @@ export function Page({
           content={darkSurface}
         />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
-        {config.mode === "preview" && (
-          <meta name="robots" content="noindex, nofollow" />
-        )}
-        {config.siteUrl && (
+        <meta name="robots" content={config.mode === "preview" ? "noindex, nofollow" : route === "/404/" ? "noindex, follow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+        {config.mode === "production" && config.discovery?.googleSiteVerification && <meta name="google-site-verification" content={config.discovery.googleSiteVerification} />}
+        {config.mode === "production" && config.discovery?.bingSiteVerification && <meta name="msvalidate.01" content={config.discovery.bingSiteVerification} />}
+        {config.mode === "production" && <link rel="alternate" type="application/json" title="AMP public resources" href="/resource-catalog.json" />}
+        {config.siteUrl && route !== "/404/" && (
           <link rel="canonical" href={new URL(route, config.siteUrl).href} />
         )}
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Corpora" />
         <meta property="og:title" content={title(route, config)} />
         <meta property="og:description" content={description} />
-        {config.siteUrl && (
+        {config.siteUrl && route !== "/404/" && (
           <meta property="og:url" content={new URL(route, config.siteUrl).href} />
         )}
         <meta name="twitter:card" content="summary_large_image" />
