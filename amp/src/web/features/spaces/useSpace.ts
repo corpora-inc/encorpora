@@ -4,6 +4,7 @@ import { useMemo, useRef } from "react";
 import { useLearnerStore } from "../../learner-store";
 import { AppError, refused, standing } from "../../lib/AppError";
 import { isConfirmed } from "../../lib/session-generation";
+import { hasAccountContext } from "../../lib/account-page";
 import { meOptions, sessionOptions } from "../../lib/query";
 import { classesOptions, orgOptions } from "../school/api";
 import { classYearOptions } from "../school/org/org-api";
@@ -111,7 +112,12 @@ export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
   const session = useQuery(sessionOptions).data ?? null;
   const auth = session ?? { accountId: "", token: "" };
   const student = !!session?.accountId.startsWith("school:");
-  const meQuery = useQuery({ ...meOptions(auth), enabled: !!session });
+  // Public information, sign-in and the gallery never read the account
+  // (lib/account-page.ts): a session that ended can't hold them up.
+  const meQuery = useQuery({
+    ...meOptions(auth),
+    enabled: !!session && !!match && hasAccountContext(match.pathname),
+  });
   // A refused `/me` means no relationships; a passing failure keeps the
   // last answer from this session.
   const me = refused(meQuery.error) ? undefined : meQuery.data;

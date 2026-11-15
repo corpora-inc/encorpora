@@ -32,10 +32,9 @@ export {
  * own and one they are the second parent of. */
 export function FamilyChooserScreen() {
   const session = useQuery(sessionOptions).data;
-  const places = useQuery({
-    ...familyPlacesOptions(session ?? { accountId: "", token: "" }),
-    enabled: !!session,
-  });
+  const places = useQuery(
+    familyPlacesOptions(session ?? { accountId: "", token: "" }),
+  );
   const parents = (places.data?.families ?? []).filter(
     (family) => family.role !== "co-teacher",
   );
@@ -100,8 +99,7 @@ export function FamilyMissingScreen() {
             Back to Today
           </Link>
         }
-      >
-      </EmptyState>
+      ></EmptyState>
     </FamilyFrame>
   );
 }

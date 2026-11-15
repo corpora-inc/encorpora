@@ -17,6 +17,7 @@ import { familyPath, landingFamily } from "../features/family/redirects";
 import { staffScreen } from "./school-routes";
 import { ownClassOf } from "../features/spaces/resolve";
 import { groupAddress } from "./family-redirect";
+import { OPEN_KEY, readStack } from "../nav/entities";
 
 /*
  * A family's own screens (docs/architecture/spaces.md, P2): `/family/<family>`
@@ -174,10 +175,20 @@ export function familyRoutes(root: AnyRoute) {
         const child = data?.children.find((entry) => entry.id === learner);
         if (!child?.capabilities.readProgress) return;
         const view = await import("../lib/learning-view");
-        await view.preloadLearningView({
+        const ready = view.preloadLearningView({
           pathname: location.pathname,
           search: location.search as Record<string, unknown>,
         });
+        // A problem type's short lesson (a layer, `?open=lesson:<type>`)
+        // needs neither the curriculum nor the record: it opens at once over
+        // the map, which fills in under it, as on the learner's own Pathways
+        // (router.tsx).
+        const open = new URLSearchParams(location.searchStr).get(OPEN_KEY);
+        if (!readStack(open).some((layer) => layer.kind === "lesson"))
+          return void (await ready);
+        void ready.catch((error: unknown) =>
+          console.error("The map did not preload", error),
+        );
       },
       component: lazyRouteComponent(load as never, name as never),
     });

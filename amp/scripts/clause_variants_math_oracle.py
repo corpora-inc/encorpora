@@ -800,7 +800,8 @@ def equation_sides(text):
 def solution_count(public):
     """Grouped both-sides equation, solution-count clause: its sides as linear
     expressions, and what is left once the x terms are gathered."""
-    found = re.fullmatch(r"Transform \$(.+)\$ one stage at a time until you reach x = a, a = a, or a = b\. Then say how many solutions it has\.",
+    # The targets are typeset math: "$x = a$, $a = a$, or $a = b$".
+    found = re.fullmatch(r"Transform \$(.+?)\$ one stage at a time until you reach \$x = a\$, \$a = a\$, or \$a = b\$\. Then say how many solutions it has\.",
                          public["prompt"])
     require(found is not None, "A grouped equation to transform")
     (a, b), (c, d) = start = equation_sides(found[1])
@@ -812,7 +813,7 @@ def solution_count(public):
     labels = {"one": ("Exactly one solution", f"One solution, x = {const / net if net else ''}"),
               "none": ("No solution",), "infinite": ("Infinitely many",)}[outcome]
     options = public["response"]["banks"][0]["options"]
-    choice = choose(options, lambda label: label in labels[:2] if outcome == "one" else label.startswith(labels[0]))
+    choice = choose(options, lambda label: plain(label) in labels[:2] if outcome == "one" else label.startswith(labels[0]))
     return {"start": start, "last": last, "choice": choice}
 
 

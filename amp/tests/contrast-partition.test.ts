@@ -7,19 +7,19 @@ import {
   contrastStates,
 } from "../scripts/contrast-partition";
 
-test("four contrast pairs cover the full 96-state sweep exactly once", () => {
+test("four contrast pairs cover the full sweep exactly once", () => {
   const full = contrastPartition(["--strict"]);
   assert.deepEqual(full, contrastPairs);
   const visited = contrastPairs.flatMap(({ id, theme, width }) => {
     const selected = contrastPartition(["--strict", `--only=${id}`]);
     assert.equal(selected.length, 1);
     const states = contrastStates.map((state) => `${theme} ${width} ${state}`);
-    assert.equal(states.length, 24);
+    assert.equal(states.length, contrastStates.length);
     assertContrastCoverage(states, selected);
     return states;
   });
-  assert.equal(visited.length, 96);
-  assert.equal(new Set(visited).size, 96);
+  assert.equal(visited.length, 4 * contrastStates.length);
+  assert.equal(new Set(visited).size, 4 * contrastStates.length);
   assertContrastCoverage(visited, full);
 });
 

@@ -10,6 +10,7 @@ import { PostgresRepository } from "../src/server/repository";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
+import { practiceHere } from "./ui-controls";
 import {
   preparePracticeAnswer,
   trackPracticeProblems,
@@ -139,14 +140,6 @@ try {
         const context = await browser.newContext({
           viewport: { width: 390, height: 844 },
         });
-        await context.addInitScript(
-          (id) =>
-            localStorage.setItem(
-              "amp.learner",
-              JSON.stringify({ state: { learnerId: id }, version: 1 }),
-            ),
-          learnerId,
-        );
         const page = await context.newPage();
         const served = trackPracticeProblems(page);
         const navigations: string[] = [];
@@ -181,7 +174,10 @@ try {
           if (fallback) delete body.hints;
           await route.fulfill({ response, json: body });
         });
-        await page.goto(`${origin}/practice`);
+        // The parent hands the device to the child: their practice is their
+        // own session (features/family/Today.tsx).
+        await page.goto(`${origin}/overview`);
+        await practiceHere(page, learnerId);
         await page
           .locator(".question")
           .waitFor()
@@ -357,7 +353,7 @@ try {
         assert.deepEqual(
           [...learningAuth],
           ["Bearer"],
-          `${name}/${mode}: learning requests use the account's session`,
+          `${name}/${mode}: learning requests use the child's session`,
         );
         await page.unrouteAll({ behavior: "wait" });
         await context.close();

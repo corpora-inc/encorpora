@@ -5,6 +5,9 @@
   container-type: inline-size;
   display: grid;
   gap: var(--space-6);
+  /* A child's nickname is one word of up to 30 letters, in headings, rows
+     and labels: it breaks inside its column, never widens a phone's page. */
+  overflow-wrap: anywhere;
 }
 
 .head {

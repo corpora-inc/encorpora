@@ -97,8 +97,13 @@ export async function studentMe(
     development,
     learner.id,
   );
+  // A family's child on a development server is covered, as the family's
+  // own projection of them is (family/repository.ts); a school's student
+  // still waits on their school.
+  const familyDevelopment = development && home.kind === "family";
   const canPractice =
-    learningAllowed && (covered || allowance.problems.remaining > 0);
+    learningAllowed &&
+    (familyDevelopment || covered || allowance.problems.remaining > 0);
   // A school's student whom nothing covers is waiting on their teacher, never
   // on a family's free problems: the app says which, in school terms.
   const practice = covered

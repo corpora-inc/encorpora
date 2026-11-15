@@ -10,8 +10,8 @@ import { PostgresRepository } from "../src/server/repository";
 import { registerFamilyRoutes } from "../src/family/routes";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
-import { startTopic, exitPractice } from "./ui-practice";
-import { choose, leaveSettings, navigateApp } from "./ui-controls";
+import { startTopic } from "./ui-practice";
+import { chooseLearner, practiceHere, returnToParent } from "./ui-controls";
 import {
   satCompletionTemplates,
   generateSatCompletionProblem,
@@ -70,16 +70,11 @@ async function noOverflow(page: Page) {
     "Horizontal overflow",
   );
 }
+/** The child's settings are on their page in the family; a child's practice
+ * is their own session, which the parent takes back first. */
 async function family(page: Page) {
-  await exitPractice(page);
-  await page
-    .getByRole("button", { name: "Open AMP menu", exact: true })
-    .click();
-  await page.getByRole("link", { name: "Account", exact: true }).click();
-  await page
-    .getByRole("navigation", { name: "Account" })
-    .getByRole("link", { name: "Learners", exact: true })
-    .click();
+  await returnToParent(page);
+  await chooseLearner(page, learner.id);
   await page.getByRole("checkbox", { name: "SAT Math focus" }).waitFor();
 }
 try {
@@ -98,11 +93,8 @@ try {
         learner.id,
         async (tx) => tx.setSatMathFocus(false),
       );
-      await page.goto(`${origin}/family/learners`);
-      await choose(
-        page.getByRole("button", { name: "Family learner", exact: true }),
-        learner.id,
-      );
+      await page.goto(`${origin}/overview`);
+      await chooseLearner(page, learner.id);
       await page.evaluate(
         (t) => document.documentElement.setAttribute("data-theme", t),
         theme,
@@ -126,7 +118,9 @@ try {
       await toggle.click();
       await page.waitForFunction(() =>
         document
-          .querySelector('input[type="checkbox"]')
+          .querySelector(
+            '[aria-label="Practice settings"] input[type="checkbox"]',
+          )
           ?.hasAttribute("disabled"),
       );
       const during = await toggle.boundingBox();
@@ -143,15 +137,17 @@ try {
       });
       await page.reload();
       assert.equal(await toggle.isChecked(), true);
-      await choose(
-        page.getByRole("button", { name: "Family learner", exact: true }),
-        sibling.id,
-      );
-      assert.equal(await toggle.isChecked(), false);
-      await choose(
-        page.getByRole("button", { name: "Family learner", exact: true }),
-        learner.id,
-      );
+      // The focus is the learner's own: a younger sibling's page has no SAT
+      // focus at all (it is for learners 13 and older), and the learner's
+      // stays on.
+      await chooseLearner(page, sibling.id);
+      await page
+        .getByRole("heading", { name: "General example learner", exact: true })
+        .first()
+        .waitFor();
+      assert.equal(await toggle.count(), 0);
+      await chooseLearner(page, learner.id);
+      assert.equal(await toggle.isChecked(), true);
       await page.route(
         "**/practice-settings",
         (route) =>
@@ -170,7 +166,7 @@ try {
         .waitFor();
       assert.equal(await toggle.isChecked(), true);
       await noOverflow(page);
-      await leaveSettings(page);
+      await practiceHere(page, learner.id);
       // Representative symbolic, data, geometry and contextual tasks, all with
       // real client rendering and server-owned grading.
       const ids =
@@ -210,8 +206,7 @@ try {
       await page
         .getByText("Saved. It applies from the next problem.")
         .waitFor();
-      await leaveSettings(page);
-      await navigateApp(page, "Practice");
+      await practiceHere(page, learner.id);
       const resume = page.getByRole("button", { name: /^(Go|Continue)$/ });
       if (await resume.isVisible()) await resume.click();
       assert.equal(await page.locator(".problem-stage").innerText(), prompt);

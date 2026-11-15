@@ -103,8 +103,10 @@ try {
   // Automated is sticky: marking it internal does not relabel previous test activity.
   assert.equal((await engagementReport(pool, 1)).screens.length, 0);
   const context = await browser.newContext();
+  // Global Privacy Control is the binding opt-out (Do Not Track has no legal
+  // force: lib/analytics.ts analyticsAllowed).
   await context.addInitScript(() => {
-    Object.defineProperty(navigator, "doNotTrack", { value: "1" });
+    Object.defineProperty(navigator, "globalPrivacyControl", { value: true });
   });
   const optedOut = await context.newPage();
   let collected = 0;
@@ -117,11 +119,11 @@ try {
   assert.equal(
     collected,
     0,
-    "DNT must disable event and engagement collection",
+    "Global Privacy Control must disable event and engagement collection",
   );
   await context.close();
   console.log(
-    "PASS: live app deep-entry attribution, real SPA routes, database delivery, automation exclusion, DNT",
+    "PASS: live app deep-entry attribution, real SPA routes, database delivery, automation exclusion, Global Privacy Control",
   );
 } finally {
   await browser.close();

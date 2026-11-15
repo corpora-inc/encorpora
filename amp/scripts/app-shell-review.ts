@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import type { Browser, Page } from "playwright";
 import { lessons } from "../src/content/lessons";
 import { templates } from "../src/math/engine";
-import type { startShellFixture } from "./app-shell-fixture";
+import { handOver, type startShellFixture } from "./app-shell-fixture";
 import { settle } from "./app-shell-probe";
 import { choose, navigateApp } from "./ui-controls";
 
@@ -196,6 +196,7 @@ export async function verifyShellReview({
           if (kind === "learner-return") {
             // A new learner back on their Overview after a problem: the map
             // holds its place while it refreshes, and after.
+            await handOver(page, fixture.origin, fixture.starter.learnerId);
             await page.goto(`${fixture.origin}/overview`);
             const map = page.locator(".frontier-map");
             await page.locator('.frontier-map[aria-busy="false"]').waitFor();
@@ -339,6 +340,7 @@ export async function verifyShellReview({
               `${tag}: the full practice title must be visible`,
             );
           } else if (kind === "progress-large-text") {
+            await handOver(page, fixture.origin, fixture.paid.jordan.id);
             await page.goto(`${fixture.origin}/progress`);
             await page.locator(".progress-skill-card").first().waitFor();
             await page.addStyleTag({
@@ -403,6 +405,7 @@ export async function verifyShellReview({
             // Every idea practiced and due: a three-digit review count is the
             // widest label the filter row has to hold.
             const crowded = kind === "progress-filters";
+            await handOver(page, fixture.origin, fixture.paid.jordan.id);
             await page.route("**/api/v1/learners/*/progress", async (route) => {
               await held;
               if (!crowded) return route.continue();

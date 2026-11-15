@@ -6,6 +6,12 @@ import { createServer } from "vite";
 import { chromium as rawChromium, firefox, webkit } from "playwright";
 const chromium = secureChromium(rawChromium);
 import { fixtureMe } from "./me-fixture";
+import {
+  FIXTURE_FAMILY_ID,
+  fixtureChildProgress,
+  fixtureFamilies,
+  fixtureFamilyProjection,
+} from "./family-space-fixture";
 import { retentionNotice } from "../src/family/contracts";
 import { skills } from "../src/curriculum/catalog";
 import { templates, generateProblem } from "../src/math/engine";
@@ -120,6 +126,29 @@ try {
             }
           : null,
       });
+    // The parent's family: its children are the account's learners.
+    const children = account.family.learners.filter((l) => !l.deletedAt);
+    if (path === "/api/v1/families")
+      return route.fulfill({ json: fixtureFamilies() });
+    if (path === `/api/v1/families/${FIXTURE_FAMILY_ID}`)
+      return route.fulfill({
+        json: fixtureFamilyProjection(
+          children.map((l) => ({
+            id: l.id,
+            name: l.name,
+            birthYear: l.birthYear ?? null,
+          })),
+        ),
+      });
+    const record = children.find(
+      (l) =>
+        path ===
+        `/api/v1/families/${FIXTURE_FAMILY_ID}/children/${l.id}/progress`,
+    );
+    if (record)
+      return route.fulfill({
+        json: fixtureChildProgress(record.id, record.name),
+      });
     if (path === "/api/v1/me")
       return failMe
         ? route.fulfill({ status: 503, json: { error: "unavailable" } })
@@ -192,6 +221,56 @@ try {
   page.on("pageerror", (e) => errors.push(e.message));
   const drawer = page.getByRole("dialog", { name: "Adaptive Math Pathways" });
   const trigger = page.getByRole("button", { name: "Open AMP menu" });
+  /** A child's record: their page links to Pathways and Inventory, and
+   * those screens' tabs lead back (Overview) and across. */
+  const recordLink = (name: "Overview" | "Pathways" | "Inventory") =>
+    page
+      .getByRole("link", { name, exact: true })
+      .filter({ visible: true })
+      .first();
+  /** From the open drawer to the family's Today: its link, else its
+   * address. */
+  async function toFamily() {
+    const today = drawer.getByRole("link", { name: "Today", exact: true });
+    if (await today.count()) await today.click();
+    else {
+      // This fixture's account has no family class to name it: the
+      // family's own address (its landing alias) opens it.
+      await page.keyboard.press("Escape");
+      await page.goto(`${origin}/family`);
+    }
+    await page.waitForURL((url) => /^\/family\/[^/]+$/.test(url.pathname));
+    if (await drawer.isVisible()) await page.keyboard.press("Escape");
+    await drawer.waitFor({ state: "detached" });
+  }
+  /** A family's children in the drawer: one row each, in order, the one
+   * on screen marked; 44px targets whose names stay inside them. */
+  async function childRows(label: string, ids: string[]) {
+    const rows = drawer
+      .getByRole("navigation", { name: "AMP navigation" })
+      .locator('a[href*="/kids/"]');
+    await rows.first().waitFor();
+    assert.deepEqual(
+      await rows.evaluateAll((links) =>
+        links.map((link) => link.getAttribute("href")!.split("/kids/")[1]),
+      ),
+      ids,
+      `${label}: the family's children`,
+    );
+    assert(
+      await rows.evaluateAll((links) =>
+        links.every((link) => {
+          const r = link.getBoundingClientRect();
+          return (
+            r.height >= 44 &&
+            r.width >= 44 &&
+            link.scrollWidth <= link.clientWidth + 1
+          );
+        }),
+      ),
+      `${label}: rows are 44px targets whose names stay inside them`,
+    );
+  }
   // Recorded sessions must never show the address: the drawer never
   // renders it (Account holds it).
   async function assertEmailHidden(label: string) {
@@ -325,8 +404,12 @@ try {
       const clip = (await trigger.boundingBox())!;
       await page.keyboard.press("Enter");
       await drawer.waitFor();
+      // Every animation inside it too (the focused logo's ring fades in), so
+      // the two captures below differ only by the toolbar.
       await drawer.evaluate(async (el) => {
-        await Promise.all(el.getAnimations().map((a) => a.finished));
+        await Promise.all(
+          el.getAnimations({ subtree: true }).map((a) => a.finished),
+        );
       });
       const toolbar = page.locator(".workspace-toolbar");
       const covered = await page.screenshot({ clip });
@@ -401,45 +484,17 @@ try {
       });
       await trigger.click();
       await assertEmailHidden(`drawer ${theme} ${width}`);
-      await drawer.getByRole("listbox", { name: "Current learner" }).waitFor();
-      const learners = drawer.getByRole("listbox", {
-        name: "Current learner",
-      });
-      assert.deepEqual(
-        await learners
-          .getByRole("option")
-          .evaluateAll((options) =>
-            options.map(
-              (o) =>
-                `${o.getAttribute("data-value")}:${o.getAttribute("aria-selected")}`,
-            ),
-          ),
-        ["jordan:true", "avery:false"],
-        "the drawer names the chosen learner",
-      );
+      // On practice, a family's drawer offers its places and the account;
+      // its children are rows on the family's own screens.
+      await drawer
+        .getByRole("link", { name: "Today", exact: true })
+        .or(drawer.getByRole("button", { name: /switch place$/ }))
+        .first()
+        .waitFor();
       assert.equal(
         await drawer.locator("select").count(),
         0,
         "no native select in the drawer",
-      );
-      assert(
-        await learners.getByRole("option").evaluateAll((options) =>
-          options.every((o) => {
-            const r = o.getBoundingClientRect();
-            const words = [...o.querySelectorAll("[data-word]")];
-            return (
-              r.height >= 44 &&
-              r.width >= 44 &&
-              words.length > 0 &&
-              words.every(
-                (w) =>
-                  w.getClientRects().length === 1 &&
-                  w.getBoundingClientRect().right <= r.right + 1,
-              )
-            );
-          }),
-        ),
-        `learner rows are 44px targets that never wrap mid-word ${theme} ${width}`,
       );
       await fits(`drawer ${theme} ${width}`);
       await page.screenshot({
@@ -454,19 +509,20 @@ try {
       );
       await trigger.click();
       await assertEmailHidden(`drawer reopened ${theme} ${width}`);
-      // One drawer link per group: Progress opens the learner's Overview,
-      // and the bar's tabs reach the rest of the group.
-      await drawer.getByRole("link", { name: "Progress", exact: true }).click();
-      await page.locator(".frontier-map").waitFor();
-      await page
-        .getByRole("navigation", { name: "Progress" })
-        .getByRole("link", { name: "Inventory", exact: true })
-        .click();
+      // Today, then a child's row opens their own page; its record tabs
+      // reach the rest (docs/architecture/spaces.md).
+      await toFamily();
+      await page.locator("[data-today-title]").first().waitFor();
+      await trigger.click();
+      await childRows(`drawer rows ${theme} ${width}`, ["jordan", "avery"]);
+      await drawer.getByRole("link", { name: "Jordan", exact: true }).click();
+      await page.locator('[data-child-page="jordan"]').waitFor();
+      await recordLink("Inventory").click();
       await page
         .getByRole("heading", { name: "Inventory", exact: true })
         .waitFor();
       await page.locator('[data-strength="Strong"]').first().waitFor();
-      assert.equal(new URL(page.url()).pathname, "/inventory");
+      assert.match(new URL(page.url()).pathname, /\/kids\/jordan\/inventory$/);
       await fits(`inventory ${theme} ${width}`);
       {
         // Every count follows the chosen math area, and choosing one moves
@@ -482,7 +538,13 @@ try {
             ).trim(),
           );
         const row = page.getByRole("group", { name: "Skills to show" });
-        const rowBefore = (await row.boundingBox())!;
+        // Page coordinates: closing the picker may scroll it into view.
+        const pageRow = () =>
+          row.evaluate((el) => {
+            const r = el.getBoundingClientRect();
+            return { y: r.y + scrollY, height: r.height };
+          });
+        const rowBefore = await pageRow();
         const allSkills = await count("All");
         await page.getByRole("button", { name: /^Math area/ }).click();
         await page
@@ -499,7 +561,7 @@ try {
             (await count(name)) <= inArea,
             `${name} counts only the chosen area`,
           );
-        const rowAfter = (await row.boundingBox())!;
+        const rowAfter = await pageRow();
         assert(
           Math.abs(rowAfter.y - rowBefore.y) < 1 &&
             Math.abs(rowAfter.height - rowBefore.height) < 1,
@@ -555,38 +617,32 @@ try {
   ]) {
     await page.setViewportSize({ width, height });
     await page.goto(`${origin}/inventory`);
-    await page
-      .getByRole("navigation", { name: "Progress" })
-      .getByRole("link", { name: "Overview", exact: true })
-      .click();
-    await page.locator(".frontier-map").waitFor();
+    await recordLink("Overview").click();
+    await page.locator('[data-child-page="jordan"]').waitFor();
     await fits(`level view ${width}`);
     await page.screenshot({
       path: `${output}/level-${width}.png`,
       fullPage: true,
     });
-    await page
-      .getByRole("navigation", { name: "Progress" })
-      .getByRole("link", { name: "Pathways", exact: true })
-      .click();
-    await page.locator(".pathways-viewport").waitFor();
+    await recordLink("Pathways").click();
+    // The map opens on its Grades view (Q-212).
+    await page.locator("main.pathways").waitFor();
+    await page.locator(".pathways-toolbar").waitFor();
     await fits(`pathways ${width}`);
-    assert(
-      await page
-        .locator("[data-shell-action]")
-        .evaluate((el) => el.scrollWidth <= el.clientWidth + 1),
-      "the bar's action stays inside its button",
-    );
+    // A child's map offers the parent no practice of its own; any action
+    // the bar shows stays inside its button.
+    for (const action of await page.locator("[data-shell-action]").all())
+      assert(
+        await action.evaluate((el) => el.scrollWidth <= el.clientWidth + 1),
+        "the bar's action stays inside its button",
+      );
     await page.screenshot({
       path: `${output}/pathways-${width}.png`,
       fullPage: true,
     });
-    await page
-      .getByRole("navigation", { name: "Progress" })
-      .getByRole("link", { name: "Inventory", exact: true })
-      .click();
+    await recordLink("Inventory").click();
     await page.locator('[data-strength="Strong"]').first().waitFor();
-    assert.equal(new URL(page.url()).pathname, "/inventory");
+    assert.match(new URL(page.url()).pathname, /\/kids\/jordan\/inventory$/);
   }
   failMe = true;
   await page.goto(`${origin}/inventory`);
@@ -605,44 +661,31 @@ try {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(`${origin}/inventory`);
   await page.locator('[data-strength="Strong"]').first().waitFor();
+  // Another child: their row, their page, their Inventory.
   await trigger.click();
-  await page
-    .getByRole("listbox", { name: "Current learner" })
-    .getByRole("option", { name: "Avery", exact: true })
-    .click();
-  await page
-    .getByRole("heading", { name: "Your collection starts with a problem" })
-    .waitFor();
+  await drawer.getByRole("link", { name: "Avery", exact: true }).click();
+  await page.locator('[data-child-page="avery"]').waitFor();
+  await recordLink("Inventory").click();
+  // A parent reads a child's whole inventory: Avery has tried nothing yet.
+  await page.waitForURL((url) =>
+    url.pathname.endsWith("/kids/avery/inventory"),
+  );
+  await page.getByText("Not tried", { exact: true }).first().waitFor();
   assert.equal(
     await page.locator('[data-strength="Strong"]').count(),
     0,
     "learner switch removes previous learner's skills",
   );
+  // The keyboard reaches a row and Enter opens it.
   await trigger.click();
-  // Keyboard: arrows move the active row without switching; Enter switches.
-  const picker = page.getByRole("listbox", { name: "Current learner" });
-  await picker.focus();
-  const activeRow = () =>
-    picker.evaluate(
-      (el) =>
-        document.getElementById(el.getAttribute("aria-activedescendant")!)
-          ?.dataset.value,
-    );
-  assert.equal(await activeRow(), "avery");
-  await page.keyboard.press("ArrowUp");
-  assert.equal(await activeRow(), "jordan");
-  assert.equal(
-    await picker
-      .getByRole("option", { name: "Avery", exact: true })
-      .getAttribute("aria-selected"),
-    "true",
-    "arrows alone do not switch learners",
-  );
+  const jordanRow = drawer.getByRole("link", { name: "Jordan", exact: true });
+  await jordanRow.focus();
   await page.keyboard.press("Enter");
+  await page.locator('[data-child-page="jordan"]').waitFor();
+  await recordLink("Inventory").click();
   await page.locator('[data-strength="Strong"]').first().waitFor();
-  // Four or more choices fold behind a button whose list overlays the card
-  // below it. Long names wrap between words only; a single word too wide for
-  // the row is the one thing that may break, and it stays inside the row.
+  // A family of four, with long names: every child is a row of its own,
+  // a 44px target whose name stays inside it.
   account = fixtureMe(
     {
       ...twoLearners.family,
@@ -667,71 +710,13 @@ try {
   await page.reload();
   await page.locator('[data-strength="Strong"]').first().waitFor();
   await trigger.click();
-  const card = drawer.getByRole("region", { name: "Where you are" });
-  const learnerButton = card.getByRole("button", {
-    name: /^Current learner\s*Jordan$/,
-  });
-  await learnerButton.waitFor();
-  assert.equal(await learnerButton.getAttribute("aria-haspopup"), "listbox");
-  assert.equal(await learnerButton.getAttribute("aria-expanded"), "false");
-  assert.equal(await card.getByRole("listbox").count(), 0);
-  await drawer.evaluate(async (el) => {
-    await Promise.all(el.getAnimations().map((a) => a.finished));
-  });
-  const cardBox = await card.boundingBox();
-  const navigation = drawer.getByRole("navigation", {
-    name: "AMP navigation",
-  });
-  const statsBox = await navigation.boundingBox();
-  await learnerButton.click();
-  const crowded = card.getByRole("listbox", { name: "Current learner" });
-  await crowded.waitFor();
-  await drawer.evaluate(async (el) => {
-    await Promise.all(el.getAnimations().map((a) => a.finished));
-  });
-  assert.equal(await learnerButton.getAttribute("aria-expanded"), "true");
-  // The four learners (the free-assessment row left with the trial, #2110).
-  assert.equal(await crowded.getByRole("option").count(), 4);
-  assert.deepEqual(await card.boundingBox(), cardBox, "opening shifts card");
-  assert.deepEqual(
-    await navigation.boundingBox(),
-    statsBox,
-    "opening shifts the content below",
-  );
-  assert.deepEqual(
-    await crowded.getByRole("option").evaluateAll((options) =>
-      options.flatMap((o) => {
-        const row = o.getBoundingClientRect();
-        return [...o.querySelectorAll<HTMLElement>("[data-word]")]
-          .filter((w) => {
-            const r = w.getBoundingClientRect();
-            const line = parseFloat(getComputedStyle(w).lineHeight);
-            const fits = w.textContent!.length < 20;
-            return (
-              r.left < row.left - 1 ||
-              r.right > row.right + 1 ||
-              (fits && r.height > line * 1.5)
-            );
-          })
-          .map((w) => w.textContent);
-      }),
-    ),
-    [],
-    "crowded list words wrap whole and stay inside their rows",
-  );
-  await fits("crowded learner list 320");
-  // Escape closes only the list and returns focus to its button.
-  await page.keyboard.press("Escape");
-  await crowded.waitFor({ state: "detached" });
-  assert.equal(await drawer.count(), 1, "Escape kept the drawer open");
-  assert(await learnerButton.evaluate((el) => el === document.activeElement));
-  assert.deepEqual(await navigation.boundingBox(), statsBox);
-  // The keyboard opens it again; Tab moves on and closes it.
-  await page.keyboard.press("ArrowDown");
-  await crowded.waitFor();
-  assert(await crowded.evaluate((el) => el === document.activeElement));
-  await page.keyboard.press("Tab");
-  await crowded.waitFor({ state: "detached" });
+  await childRows("crowded family 320", [
+    "jordan",
+    "avery",
+    "extra-0",
+    "extra-1",
+  ]);
+  await fits("crowded family 320");
   await page.keyboard.press("Escape");
   await drawer.waitFor({ state: "detached" });
   account = twoLearners;

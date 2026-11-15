@@ -5,6 +5,19 @@ import { build } from "esbuild";
 import { chromium as rawChromium } from "playwright";
 const chromium = secureChromium(rawChromium);
 
+/** GA4's collection endpoints. With ad storage granted (US default, #2334)
+ * the tag sends its hits to analytics.google.com rather than a
+ * *.google-analytics.com region host. */
+const gaCollector = (url: URL) =>
+  url.hostname.endsWith("google-analytics.com") ||
+  (url.hostname === "analytics.google.com" && url.pathname === "/g/collect");
+/** The ads-linked pings granted ad storage adds; answered locally, never
+ * counted as GA hits. */
+const googleAdsPing = (url: URL) =>
+  url.hostname === "stats.g.doubleclick.net" ||
+  url.hostname === "analytics.google.com" ||
+  url.hostname === "www.google.com";
+
 test("real Google tag emits sanitized pages/actions and stops on learning routes", async () => {
   const bundle = await build({
     stdin: {
@@ -27,10 +40,12 @@ test("real Google tag emits sanitized pages/actions and stops on learning routes
   await context.route("**/*", async (route) => {
     const request = route.request(),
       url = new URL(request.url());
-    if (url.hostname.endsWith("google-analytics.com")) {
+    if (gaCollector(url)) {
       for (const line of (request.postData() || "").split(/\r?\n/))
         hits.push(new URLSearchParams(url.search.slice(1) + "&" + line));
       await route.fulfill({ status: 204 }); // No synthetic events leave this test.
+    } else if (googleAdsPing(url)) {
+      await route.fulfill({ status: 204 }); // Nor any ad measurement ping.
     } else if (url.hostname === "www.googletagmanager.com") {
       tagLoads++;
       await route.continue(); // Run the actual SDK, not a made-up gtag substitute.
@@ -201,14 +216,37 @@ test("real Google tag emits sanitized pages/actions and stops on learning routes
       count,
       "returning to purchase must not export the learning interval",
     );
-    // Fresh opt-out sessions must not even load Google's script.
+    // Global Privacy Control is an opt-out of sharing for ads (Cal. Civ.
+    // Code 1798.135(e); Colorado 4 CCR 904-3 Rule 5): on its own the tag
+    // denies ad storage and ad user data from its first command, while
+    // first-party measurement runs (#2334). The app's own gate keeps GPC
+    // browsers from loading the tag at all (the pitch test below).
     const optedOut = await context.newPage();
     await optedOut.addInitScript(
       'Object.defineProperty(navigator, "globalPrivacyControl", { get: () => true })',
     );
     await optedOut.goto("https://amp.corpora.inc/");
     await optedOut.waitForTimeout(500);
-    assert.equal(tagLoads, 1);
+    assert.equal(tagLoads, 2);
+    const consent = await optedOut.evaluate(() =>
+      [...((window as any).dataLayer as ArrayLike<unknown>[])]
+        .map((entry) => Array.from(entry))
+        .filter(
+          (entry) =>
+            entry[0] === "consent" &&
+            entry[1] === "default" &&
+            !(entry[2] as { region?: unknown }).region,
+        )
+        .map((entry) => entry[2]),
+    );
+    assert.deepEqual(consent, [
+      {
+        analytics_storage: "granted",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+      },
+    ]);
   } finally {
     await browser.close();
   }
@@ -240,10 +278,12 @@ test("the pitch reaches GA with its titles and video, Buy and try events, saniti
     await context.route("**/*", async (route) => {
       const request = route.request(),
         url = new URL(request.url());
-      if (url.hostname.endsWith("google-analytics.com")) {
+      if (gaCollector(url)) {
         for (const line of (request.postData() || "").split(/\r?\n/))
           hits.push(new URLSearchParams(url.search.slice(1) + "&" + line));
         await route.fulfill({ status: 204 }); // Nothing reaches Google.
+      } else if (googleAdsPing(url)) {
+        await route.fulfill({ status: 204 });
       } else if (url.hostname === "www.googletagmanager.com") {
         tagLoads++;
         await route.continue(); // The actual SDK.

@@ -497,9 +497,13 @@ const home = createRoute({
         // their family side. Back and Forward reopen what `/` showed then,
         // and for a place that is the place again: `/` never shows a
         // place's account its first run (docs/design/ia.md, Navigation).
-        const place = me?.signedIn
-          ? homePlace(me, rememberedPlace(me.account.id))
-          : null;
+        // A school student's device has no place to open: its home is the
+        // student's own learning (a place's guards send a student back to
+        // `/`, so routing one there would never end).
+        const place =
+          me?.signedIn && !studentSession()
+            ? homePlace(me, rememberedPlace(me.account.id))
+            : null;
         if (me?.signedIn && place && (!traversing() || place !== "home")) {
           if (place === "me")
             throw redirect({ to: "/me", replace: true } as never);
@@ -865,6 +869,11 @@ const pathways = createRoute({
     const { skill } = location.search as { skill?: unknown };
     if (skill !== undefined && location.pathname === "/pathways")
       skillAsLayer(location, skill);
+    // A skill's own address (`/pathways/<skill>`) is its layer over the map,
+    // made here, before a parent's map moves to their child's address
+    // (canonicalLearnerAddress), which would otherwise drop the skill.
+    const named = /^\/pathways\/([^/]+)\/?$/.exec(location.pathname)?.[1];
+    if (named) skillAsLayer(location, decodeURIComponent(named));
     await framedScreen();
     await canonicalLearnerAddress(location);
     await adoptPracticeMode(location);

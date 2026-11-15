@@ -113,7 +113,36 @@ def review_problem(problem):
     require(expected == problem['answer'], 'Clause item answer mismatch')
     if public['templateId'] == 'complex-modulus-via-conjugate':
         hint = problem.get('hint', '')
-        require(not re.search(r'\d', hint), 'Modulus hint contains a digit')
+        # The hint is written from this z's own givens (it names z and its
+        # real part) and never states the conjugate, the product or the length.
+        z_text = re.search(r'Let \$z=(.+?)\$', public['prompt'])[1]
+        require(f'$z={z_text}$' in hint, 'Modulus hint names another z')
+        z = num(z_text)
+        product = z * z.conj()
+        root = product.rational()
+        s = 0
+        while s * s < root:
+            s += 1
+        modulus = num(str(s)) if s * s == root else _radical(int(root))
+        for span in re.findall(r'\$([^$]+)\$', hint):
+            if span.startswith('z='):
+                continue
+            try:
+                value = num(span)
+            except ValueError:
+                continue
+            require(value not in (z.conj(), product, modulus), f'Modulus hint gives away {span}')
+        # The same values written without math marks (the reviewer also reads
+        # a hint with its typesetting removed).
+        bare = plain(hint).replace(plain(z_text), '')
+        real, imag = z.parts()
+        a, b = int(real.rational()), int(imag.rational())
+        stated = [str(int(root)), f"{a}{'+' if -b > 0 else '-'}{abs(b)}i"]
+        if s * s == root:
+            stated.append(str(s))
+        for text in stated:
+            require(not re.search(r'(?<![\d.^])' + re.escape(text) + r'(?![\d])', bare),
+                    f'Modulus hint gives away {text}')
         joined = '\n'.join(problem.get('explanation', []))
         require('z\\bar z=|z|^2' in joined, 'Explanation misses the square of the length')
     if public['templateId'] == 'complex-axis-number-plot':
@@ -191,10 +220,18 @@ def self_test():
     problem = {
         'public': modulus,
         'answer': modulus_answer,
-        'hint': 'Flip only the imaginary sign.',
+        'hint': 'For $z=5 - 12i$, the conjugate keeps the real part, $5$, and flips only the sign of the imaginary part.',
         'explanation': ['For any complex number $z$, $z\\bar z=|z|^2$, so the length follows.'],
     }
     review_problem(problem)
+    # A hint that states the conjugate, the product or the length is rejected.
+    for leak in ('$5 + 12i$', '$169$', '$13$'):
+        try:
+            review_problem({**problem, 'hint': problem['hint'] + f' It is {leak}.'})
+        except ValueError as error:
+            require('gives away' in str(error), str(error))
+        else:
+            raise ValueError(f'A modulus hint stating {leak} was accepted')
     return {'fixtures': 3}
 
 

@@ -252,8 +252,20 @@ try {
   );
   const child = started.learnerId as string;
   assert.ok(child, "the starter made the child");
-  // "Continue with AMP" asks for the confirmation first, in place.
+  // "Continue with AMP" opens the plan at once: card checkout's own receipt
+  // is the notice consent needs (16 CFR 312.5(b)(2)(ii)), so no confirmation
+  // link comes first (#2336).
   await page.goto(`${origin}/continue/${child}`);
+  await page.getByRole("heading", { name: "Continue with AMP" }).waitFor();
+  assert.equal(
+    await page.getByRole("heading", { name: "Confirm your email" }).count(),
+    0,
+    "Continue with AMP never waits on a confirmation link",
+  );
+  // A funded program's invoice still starts from a confirmed address
+  // (onboarding/guard.ts): its confirmation step, in place.
+  await page.goto(`${origin}/purchase/arkansas-efa`);
+  await page.waitForURL((url) => url.pathname === "/start/verify-email");
   await page.getByRole("heading", { name: "Confirm your email" }).waitFor();
   await page.getByText(email, { exact: true }).waitFor();
   await check(page, "confirm step");
@@ -317,9 +329,7 @@ try {
   await page.getByRole("button", { name: "I’ve confirmed it" }).click();
   await page.getByRole("alert").or(page.getByRole("status")).first().waitFor();
   assert.deepEqual(
-    await page
-      .getByRole("button", { name: "I’ve confirmed it" })
-      .boundingBox(),
+    await page.getByRole("button", { name: "I’ve confirmed it" }).boundingBox(),
     before,
     "the message stays beside the address; nothing moves",
   );
@@ -340,8 +350,8 @@ try {
   await page
     .getByRole("heading", { name: "Confirm your email" })
     .waitFor({ state: "detached" });
-  assert.equal(new URL(page.url()).pathname, `/continue/${child}`);
-  await page.getByRole("heading", { name: "Continue with AMP" }).waitFor();
+  // Confirmed, the program's own entry continues.
+  await page.waitForURL((url) => url.pathname === "/purchase/arkansas-efa");
 
   // Sign out, then back in with the passkey alone.
   await page.evaluate(() =>

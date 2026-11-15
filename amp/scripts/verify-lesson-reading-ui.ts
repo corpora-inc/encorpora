@@ -300,16 +300,39 @@ const measure = (page: Page) =>
           parseFloat(style.paddingBottom) -
           parseFloat(style.borderTopWidth) -
           parseFloat(style.borderBottomWidth) -
-          // A block label (a callout's "Watch for") is not a line of text.
+          // A block label (a callout's "Watch for") or a displayed formula
+          // is not a line of text. A margin that collapses through the
+          // block's own edge (nothing between the child and an edge without
+          // padding or border) lies outside the block, so it is not counted.
           [...block.children]
             .filter((child) => getComputedStyle(child).display === "block")
             .reduce((sum, child) => {
               const own = getComputedStyle(child);
+              const bare = (
+                side: Node | null,
+                next: "previousSibling" | "nextSibling",
+              ) => {
+                for (let node = side; node; node = node[next])
+                  if (
+                    node.nodeType === Node.ELEMENT_NODE ||
+                    node.textContent?.trim()
+                  )
+                    return false;
+                return true;
+              };
+              const collapsesTop =
+                bare(child.previousSibling, "previousSibling") &&
+                !parseFloat(style.paddingTop) &&
+                !parseFloat(style.borderTopWidth);
+              const collapsesBottom =
+                bare(child.nextSibling, "nextSibling") &&
+                !parseFloat(style.paddingBottom) &&
+                !parseFloat(style.borderBottomWidth);
               return (
                 sum +
                 child.getBoundingClientRect().height +
-                parseFloat(own.marginTop) +
-                parseFloat(own.marginBottom)
+                (collapsesTop ? 0 : parseFloat(own.marginTop)) +
+                (collapsesBottom ? 0 : parseFloat(own.marginBottom))
               );
             }, 0);
         const lines = Math.round(content / line);

@@ -11,6 +11,7 @@ import {
   clearPurchaseReturn,
 } from "../purchase-return";
 import { clearOnboardingDraft } from "../features/onboarding/state";
+import { useLearnerStore } from "../learner-store";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Fragment, useEffect, useState, type ReactNode } from "react";
 import { onSessionChanged, signOut, type AuthSession } from "../auth";
@@ -92,6 +93,9 @@ function SessionProviders({
           clearInitialConsentChallenge();
           clearOwnedPurchaseReturn();
           clearPurchaseReturn();
+          // This device's learner choice was the old account's: another
+          // account starts from its own home, never that learner.
+          if (previous?.accountId) useLearnerStore.getState().select(null);
         }
         if (previous?.accountId !== session?.accountId) {
           clearOnboardingDraft();

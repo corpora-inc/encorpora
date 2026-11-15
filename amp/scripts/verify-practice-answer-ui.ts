@@ -20,7 +20,7 @@ import { panelChoice } from "../src/math/figure-panels";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { answerOne, trackPracticeProblems } from "./ui-practice-answer";
-import { chooseLearner } from "./ui-controls";
+import { practiceHere } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 
 const responseShape = (response: ProblemResponse) =>
@@ -100,7 +100,8 @@ try {
   );
   representatives.set(responseShape(inline.public.response), inline);
   await page.goto("http://127.0.0.1:4954/overview");
-  await chooseLearner(page, learner.id);
+  // The parent hands the device to the child, whose practice is their own.
+  await practiceHere(page, learner.id);
   // Keep exiting menus mounted long enough to exercise the overlap reliably.
   await page.addStyleTag({
     content: ".multi-part-menu { animation-duration: 800ms; }",

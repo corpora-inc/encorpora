@@ -73,6 +73,21 @@ export function clearPurchaseReturn() {
     /* Storage may be disabled. */
   }
 }
+/** At boot: a stored return that is expired or malformed is no handoff, and
+ * leaves storage whichever screen opens (not only practice's, which captures
+ * a live one). */
+export function discardStalePurchaseReturn(now = Date.now()) {
+  try {
+    const raw = sessionStorage.getItem(purchaseReturnSlot);
+    if (
+      raw !== null &&
+      !(raw.length <= 256 && parsePurchaseReturn(JSON.parse(raw), now))
+    )
+      clearPurchaseReturn();
+  } catch {
+    clearPurchaseReturn();
+  }
+}
 /** Check a handoff before choosing an ordinary home destination. No URL/storage writes. */
 export function hasPurchaseReturn(search: string, now = Date.now()): boolean {
   const query = new URLSearchParams(search);

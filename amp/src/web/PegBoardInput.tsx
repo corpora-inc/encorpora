@@ -156,15 +156,34 @@ export function PegBoardInput({
               const [x1, y1] = position(edge[0]),
                 [x2, y2] = position(edge[1]);
               const given = r.given.some((s) => stickKey(s) === stickKey(edge));
+              // A given stick is part of the problem, not an action: a
+              // picture with its name, never a button that does nothing.
+              if (given)
+                return (
+                  <g
+                    key={stickKey(edge)}
+                    data-stick={stickKey(edge)}
+                    role="img"
+                    aria-label={`Placed stick from ${pegName(edge[0])} to ${pegName(edge[1])}`}
+                  >
+                    <line
+                      x1={x1}
+                      y1={y1}
+                      x2={x2}
+                      y2={y2}
+                      className="peg-stick"
+                    />
+                  </g>
+                );
               return (
                 <g
                   key={stickKey(edge)}
                   className="peg-remove"
                   data-stick={stickKey(edge)}
                   role="button"
-                  tabIndex={locked || given ? -1 : 0}
-                  aria-disabled={locked || given}
-                  aria-label={`${given ? "Placed" : "Remove"} stick from ${pegName(edge[0])} to ${pegName(edge[1])}`}
+                  tabIndex={locked ? -1 : 0}
+                  aria-disabled={locked}
+                  aria-label={`Remove stick from ${pegName(edge[0])} to ${pegName(edge[1])}`}
                   onClick={() => remove(edge)}
                   onKeyDown={(event) => {
                     if (event.key === "Enter" || event.key === " ") {

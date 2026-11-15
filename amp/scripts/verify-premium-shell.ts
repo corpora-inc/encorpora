@@ -16,7 +16,7 @@ import { registerFamilyRoutes } from "../src/family/routes";
 import { registerSchoolRoutes } from "../src/schools/routes";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
-import { currentLearner } from "./ui-controls";
+import { chooseLearner, currentLearner } from "./ui-controls";
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url) throw Error("AMP_TEST_DATABASE_URL is required");
 assertTestDatabaseTarget(url);
@@ -101,9 +101,12 @@ async function fits(page: Page) {
     "no horizontal overflow",
   );
 }
-async function choose(page: Page, label: string, value: string) {
+/** A year from the setup's tile picker (ui/YearField). */
+async function pickYear(page: Page, label: string, year: string) {
   await page.getByRole("button", { name: label, exact: true }).click();
-  await page.getByRole("option", { name: value, exact: true }).click();
+  const years = page.getByRole("dialog", { name: label });
+  await years.getByRole("radio", { name: year, exact: true }).click();
+  await years.waitFor({ state: "hidden" });
 }
 async function contrast(page: Page, selector: string) {
   await page.evaluate("window.__name = (fn) => fn");
@@ -208,7 +211,11 @@ try {
         .getByRole("heading", { name: "What brings you to AMP?" })
         .waitFor();
       await page.getByRole("link", { name: /^I’m a parent/ }).click();
-      await choose(page, "Birth year, your child", "2016");
+      // The parent's setup (#2357): their kids, no name step.
+      await page.waitForURL(/\/start\/parent$/);
+      const setupTitle = page.getByRole("heading", { name: "Add your kids" });
+      await setupTitle.waitFor();
+      await pickYear(page, "Birth year, Child 1", "2016");
       await page.screenshot({
         path: `${shots}/guided-start-${width}-${theme}.png`,
       });
@@ -216,30 +223,24 @@ try {
         r.fulfill({ status: 503, json: { error: "temporarily_unavailable" } }),
       );
       // Scroll first, so the click's scroll is not mistaken for a shift.
-      const start = page.getByRole("button", { name: "Continue", exact: true });
+      const start = page.getByRole("button", { name: "Next", exact: true });
       await start.scrollIntoViewIfNeeded();
-      const panel = page.locator("[data-starter] section").first(),
-        box = await panel.boundingBox();
+      const titleBox = await setupTitle.boundingBox(),
+        startBox = await start.boundingBox();
       await start.click();
       await page.getByRole("alert").waitFor();
       await ready(page);
-      await stable(panel, box, "a failed start does not move setup");
-      assert.ok(logs.some((s) => s.includes("The starter didn’t finish")));
+      await stable(setupTitle, titleBox, "a failed start does not move setup");
+      await stable(start, startBox, "a failed start keeps Next in place");
+      assert.ok(logs.some((s) => s.includes("That didn’t save")));
       await page.screenshot({
         path: `${shots}/setup-error-${width}-${theme}.png`,
       });
       await page.unroute("**/api/v1/start");
       await page.getByRole("button", { name: "Dismiss message" }).click();
-      await page.getByRole("button", { name: "Continue", exact: true }).click();
-      await page.waitForURL(
-        /\/school\/[0-9a-f-]+\/classes\/[0-9a-f-]+\/today$/,
-      );
-      // The child practices on this device: their first problem.
-      const first = (
-        await (await context.request.get(`${origin}/api/v1/me`)).json()
-      ).learners[0] as { id: string; name: string };
-      const child = first.name;
-      await page.goto(`${origin}/practice`);
+      await page.getByRole("button", { name: "Next", exact: true }).click();
+      // One child practices first, on this device: their first problem.
+      await page.waitForURL((u) => u.pathname === "/practice");
       await page
         .locator(".problem-stage")
         .waitFor()
@@ -252,7 +253,6 @@ try {
           );
           throw e;
         });
-      assert.ok(page.url().endsWith("/practice"));
       console.log("Signup through first problem auth requests", authRequests);
       await fits(page);
       await contrast(
@@ -280,78 +280,107 @@ try {
             await page.screenshot({ path: `${shots}/reload-failure.png` });
             throw error;
           });
+        assert.equal(new URL(page.url()).pathname, "/practice");
         await fits(page);
       }
+      // Sign out gives the device back to the parent, on the family's Today.
+      await page
+        .getByRole("button", { name: "Open AMP menu" })
+        .filter({ visible: true })
+        .first()
+        .click();
+      await page.getByRole("button", { name: "Sign out", exact: true }).click();
+      await page.waitForURL((u) => /^\/family\/[^/]+$/.test(u.pathname));
+      const familyPath = new URL(page.url()).pathname;
+      await page.locator("[data-today-title]").waitFor();
+      const first = (
+        await (await context.request.get(`${origin}/api/v1/me`)).json()
+      ).learners[0] as { id: string; name: string };
+      const child = first.name;
+      // The family's settings, at its own address (`/family/learners` is an
+      // older one), list the child.
+      const childRow = (name: string) =>
+        page
+          .locator("main")
+          .getByRole("link", { name: new RegExp(`^${name}`) });
       await page.goto(`${origin}/family/learners`);
-      await page.getByRole("heading", { name: child, exact: true }).waitFor();
-      // The Account group's tabs are the app frame's (app/AppShell.tsx).
+      await page.waitForURL(`**${familyPath}/settings`);
+      await page
+        .getByRole("heading", { name: "Settings", exact: true })
+        .waitFor();
+      await childRow(child).waitFor();
+      // The family's tabs are the app frame's (app/AppShell.tsx).
       const tabs = page.locator("[data-app-bar] [data-tabs]"),
         tabBox = await tabs.boundingBox();
-      await tabs.getByRole("link", { name: "Billing", exact: true }).click();
-      assert.ok(page.url().endsWith("/family/access"));
+      await tabs.getByRole("link", { name: "Today", exact: true }).click();
+      await page.waitForURL((u) => u.pathname === familyPath);
       await page.goBack();
-      await page.getByRole("heading", { name: child, exact: true }).waitFor();
+      await page
+        .getByRole("heading", { name: "Settings", exact: true })
+        .waitFor();
       await stable(tabs, tabBox, "family tab navigation keeps frame stable");
       await page.goForward();
-      await page.waitForURL("**/family/access");
+      await page.waitForURL((u) => u.pathname === familyPath);
       await page.goBack();
-      await page.getByRole("heading", { name: child, exact: true }).waitFor();
+      await childRow(child).waitFor();
+      // Add a child: the sheet's year picker, a failed save in place, then
+      // the child, chosen.
       await page
-        .getByRole("button", { name: "Add learner", exact: false })
+        .getByRole("button", { name: "Add a child", exact: true })
         .click();
-      await page.getByPlaceholder("First name or nickname").fill("Jordan");
-      await page
+      const sheet = page.getByRole("dialog", { name: "Add a child" });
+      await sheet.getByLabel("Name", { exact: true }).fill("Jordan");
+      await sheet
         .getByRole("button", { name: "Birth year", exact: true })
         .click();
-      await page.getByRole("dialog", { name: "Birth year" }).waitFor();
-      await contrast(
-        page,
-        ".premium-options-heading button, .premium-options [role=option]",
-      );
+      const years = page.getByRole("dialog", { name: "Birth year" });
+      await years.waitFor();
+      await contrast(page, '[role="dialog"] [role=option]');
       await fits(page);
       await page.screenshot({
         path: `${shots}/year-picker-${width}-${theme}.png`,
       });
-      await page.getByRole("option", { name: "2018", exact: true }).click();
+      await years.getByRole("option", { name: "2018", exact: true }).click();
+      await years.waitFor({ state: "detached" });
+      const add = sheet.getByRole("button", { name: "Add child", exact: true });
       // Scroll before measuring so viewport movement is not mistaken for layout shift.
-      await page
-        .getByRole("button", { name: "Add learner", exact: true })
-        .scrollIntoViewIfNeeded();
-      const form = page.locator(".family-add-learner"),
-        formBox = await form.boundingBox();
+      await add.scrollIntoViewIfNeeded();
+      const formBox = await sheet.locator("form").boundingBox();
       await page.route("**/api/v1/learners", (r) =>
         r.fulfill({ status: 503, json: { error: "temporarily_unavailable" } }),
       );
-      await page
-        .getByRole("button", { name: "Add learner", exact: true })
-        .click();
-      await page.getByRole("alert").waitFor();
+      await add.click();
+      await sheet.getByRole("alert").waitFor();
       await ready(page);
-      await stable(form, formBox, "failed family save does not move form");
+      await stable(
+        sheet.locator("form"),
+        formBox,
+        "failed family save does not move form",
+      );
       await fits(page);
       await page.screenshot({
         path: `${shots}/family-error-${width}-${theme}.png`,
       });
       await page.unroute("**/api/v1/learners");
-      await page.getByRole("button", { name: "Dismiss message" }).click();
-      await page
-        .getByRole("button", { name: "Add learner", exact: true })
-        .click();
-      await page.locator(".family-add-toggle").waitFor();
-      await choose(page, "Family learner", "Jordan");
-      await page
-        .getByRole("heading", { name: "Jordan", exact: true })
-        .waitFor();
-      const selectedLearner = await page
-        .getByRole("button", { name: "Family learner", exact: true })
-        .getAttribute("data-value");
-      assert.ok(selectedLearner);
-      await page.goto(`${origin}/overview`);
-      assert.equal(await currentLearner(page), selectedLearner);
-      await page.goto(`${origin}/family/learners`);
+      const created = page.waitForResponse(
+        (r) =>
+          new URL(r.url()).pathname === "/api/v1/learners" &&
+          r.request().method() === "POST",
+      );
+      await add.click();
+      const jordan = ((await (await created).json()) as { id: string }).id;
+      await sheet.getByText("Jordan is in your family.").waitFor();
+      await page.keyboard.press("Escape");
+      await sheet.waitFor({ state: "detached" });
+      // The new child is in the drawer and on Settings at once.
+      await childRow("Jordan").waitFor();
+      await chooseLearner(page, jordan);
       await page
         .getByRole("heading", { name: "Jordan", exact: true })
         .waitFor();
+      assert.equal(await currentLearner(page), jordan);
+      await page.goto(`${origin}${familyPath}/settings`);
+      await childRow("Jordan").waitFor();
       // Hold a navigation refresh: existing family controls and data stay painted.
       let release!: () => void, entered!: () => void;
       const held = new Promise<void>((resolve) => (release = resolve)),
@@ -362,39 +391,38 @@ try {
         await r.continue();
       });
       const before = await tabs.boundingBox();
-      await page
-        .getByRole("navigation", { name: "Account" })
-        .getByRole("link", { name: "Billing", exact: true })
-        .click();
+      await tabs.getByRole("link", { name: "Today", exact: true }).click();
       await requested;
       await stable(tabs, before, "pending family refresh does not move tabs");
       await page.goBack();
-      await page
-        .getByRole("heading", { name: "Jordan", exact: true })
-        .waitFor();
+      await childRow("Jordan").waitFor();
       release();
       await page.unrouteAll({ behavior: "wait" });
       await ready(page);
       await contrast(
         page,
-        "[data-app-bar] [data-tab],.family-center h2,.family-center h3,.account-label,[data-account-body] button:not(:disabled)",
+        "[data-app-bar] [data-tab],main h1,main h2,main a[href*='/kids/']",
       );
       await page.screenshot({ path: `${shots}/family-${width}-${theme}.png` });
       await fits(page);
-      await page.goto(`${origin}/lessons`);
-      await page.locator(".library-main").waitFor();
-      await fits(page);
-      await page.screenshot({ path: `${shots}/lessons-${width}-${theme}.png` });
-      await page.goto(`${origin}/progress`);
-      await page.locator(".progress-workspace").waitFor();
+      // The child's own pages: their Pathways and their record.
+      await page.goto(`${origin}${familyPath}/kids/${first.id}/pathways`);
+      await page.locator(".pathways-viewport").waitFor();
       await fits(page);
       await page.screenshot({
-        path: `${shots}/progress-${width}-${theme}.png`,
+        path: `${shots}/pathways-${width}-${theme}.png`,
+      });
+      await page.goto(`${origin}${familyPath}/kids/${first.id}`);
+      await page.locator(`[data-child-page="${first.id}"]`).waitFor();
+      await fits(page);
+      await page.screenshot({
+        path: `${shots}/child-${width}-${theme}.png`,
       });
       await page.goto(`${origin}/family/privacy`);
       await page
         .getByRole("heading", { name: "Privacy", exact: true })
         .waitFor();
+      assert.equal(new URL(page.url()).pathname, "/account/privacy");
       await fits(page);
       await page.screenshot({ path: `${shots}/privacy-${width}-${theme}.png` });
       // Cold direct links keep a painted shell while session discovery is delayed.
@@ -414,9 +442,7 @@ try {
       });
       releaseSession();
       await page.unrouteAll({ behavior: "wait" });
-      await page
-        .getByRole("heading", { name: "Jordan", exact: true })
-        .waitFor();
+      await childRow("Jordan").waitFor();
       if (width === 320 && theme === "light") {
         await page.route("**/api/v1/me", (route) =>
           route.fulfill({
@@ -441,9 +467,7 @@ try {
           .getByRole("heading", { name: "Continue with AMP" })
           .waitFor();
         await page.goto(`${origin}/family/learners`);
-        await page
-          .getByRole("heading", { name: "Jordan", exact: true })
-          .waitFor();
+        await childRow("Jordan").waitFor();
       }
       if (width === 320 && theme === "light") {
         // A parent approving another family's child pays for the plan before
@@ -504,9 +528,7 @@ try {
           .waitFor();
         await stable(resend, box, "email failure controls stay in place");
         await page.getByRole("button", { name: "Dismiss message" }).click();
-        await page
-          .getByRole("button", { name: "I’ve confirmed it" })
-          .click();
+        await page.getByRole("button", { name: "I’ve confirmed it" }).click();
         await page
           .getByText(
             "Your email is not confirmed yet. Open the link in your email, then try again.",
@@ -527,9 +549,7 @@ try {
         });
         await page.unrouteAll({ behavior: "wait" });
         await page.goto(`${origin}/family/learners`);
-        await page
-          .getByRole("heading", { name: "Jordan", exact: true })
-          .waitFor();
+        await childRow("Jordan").waitFor();
       }
       // A parent with no child and no consent is offered the starter's next
       // step, never a learner form that consent would refuse.
@@ -564,7 +584,7 @@ try {
       });
       await page.getByRole("button", { name: "Add a child" }).click();
       await page.waitForURL("**/start/parent");
-      await page.getByRole("heading", { name: "How many children?" }).waitFor();
+      await page.getByRole("heading", { name: "Add your kids" }).waitFor();
       await page.unrouteAll({ behavior: "wait" });
       assert.deepEqual(faults, []);
       console.log("Complete viewport fixture auth requests", authRequests);

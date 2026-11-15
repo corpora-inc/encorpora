@@ -378,9 +378,14 @@ function chosenLearner(
       ? { kind: "own", id, name: profile.label, profile: true }
       : null;
   };
-  // Named: that learner or profile, of the kind named, or nobody.
+  // Named: that learner or profile, of the kind named, or nobody. A path
+  // that names a learner may name one of this adult's own practice profiles
+  // (a profile is their learner): its Continue with AMP (`/continue/<id>`)
+  // is the profile's own way on, never "not available".
   if (named)
-    return named.kind === "profile" ? profileOf(named.id) : learnerOf(named.id);
+    return named.kind === "profile"
+      ? profileOf(named.id)
+      : (learnerOf(named.id) ?? profileOf(named.id));
   const chosen = selected ? (learnerOf(selected) ?? profileOf(selected)) : null;
   if (chosen) return chosen;
   const first = me?.learners[0];

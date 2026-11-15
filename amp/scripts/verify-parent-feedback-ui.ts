@@ -12,6 +12,8 @@ import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { registerParentFeedbackRoutes } from "../src/feedback/parent-routes";
 import { presentOffer } from "../src/funding-purchase/contracts";
 import { testFundingOffer } from "../tests/funding-purchase.fixture";
+import { retentionNotice } from "../src/family/contracts";
+import { fixtureMe } from "./me-fixture";
 const url = process.env.AMP_TEST_DATABASE_URL!;
 assertTestDatabaseTarget(url);
 if (!url) throw new Error("Test database required");
@@ -35,6 +37,50 @@ assert(address && typeof address === "object");
 const origin = `http://127.0.0.1:${address.port}`;
 const browser = await chromium.launch({ args: ["--no-proxy-server"] });
 await mkdir("artifacts/parent-feedback", { recursive: true });
+const arkansas = {
+  ...testFundingOffer,
+  id: "ar-fixture",
+  jurisdiction: "AR",
+  programId: "ar-efa",
+  programName: "Arkansas EFA",
+};
+const session = {
+  user: {
+    id: "feedback-parent",
+    email: "parent@example.test",
+    emailVerified: true,
+    name: "Feedback parent",
+  },
+  session: {
+    id: "feedback-session",
+    token: "synthetic-feedback",
+    userId: "feedback-parent",
+    expiresAt: "2099-01-01T00:00:00.000Z",
+  },
+};
+const me = fixtureMe(
+  {
+    consent: {
+      status: "active",
+      policyVersion: "fixture",
+      recordedAt: null,
+      withdrawnAt: null,
+    },
+    learners: [
+      {
+        id: "10720fef-40bf-4e75-8982-208b5e05f84a",
+        name: "Robin",
+        birthYear: 2016,
+        deletedAt: null,
+        access: [],
+        stripeLinked: false,
+        canPractice: true,
+      },
+    ],
+    retained: retentionNotice,
+  },
+  "amp|feedback-parent",
+);
 try {
   for (const colorScheme of ["light", "dark"] as const)
     for (const width of [320, 390, 768, 1280]) {
@@ -53,11 +99,11 @@ try {
           calls++;
           if (requestId) assert.equal(body.requestId, requestId);
           requestId = body.requestId;
-          assert.equal(body.context, "invoice");
+          assert.equal(body.context, "purchase");
           assert.equal(body.program, "ar-efa");
           assert.equal(
             body.message,
-            `Clearer invoice steps ${width} ${colorScheme}`,
+            `Clearer purchase steps ${width} ${colorScheme}`,
           );
           assert.deepEqual(Object.keys(body).sort(), [
             "adult",
@@ -78,24 +124,42 @@ try {
           }
           return route.continue();
         }
-        if (path === "/api/v1/funding/invoice-offers")
+        // A signed-in parent with one child, on the funded purchase screen:
+        // parent feedback lives there (and in plans), never on the invoice
+        // form (#2315), and every other read is synthetic.
+        if (path === "/api/v1/auth-config")
           return route.fulfill({
-            json: {
-              offers: [
-                presentOffer({
-                  ...testFundingOffer,
-                  programId: "ar-efa",
-                  programName: "Arkansas EFA",
-                  documentPolicy: "named-student-invoice",
-                }),
-              ],
-            },
+            json: { mode: "accounts", passwords: true, providers: [] },
           });
+        if (path === "/api/auth/get-session")
+          return route.fulfill({ json: session });
+        if (path === "/api/v1/me") return route.fulfill({ json: me });
+        if (path === "/api/v1/events")
+          return route.fulfill({ status: 202, json: { accepted: 1 } });
+        if (path === "/api/v1/events/context")
+          return route.fulfill({ json: { generation: "initial" } });
+        if (path === "/api/v1/funding/invoices")
+          return route.fulfill({ json: { invoices: [] } });
+        if (path === "/api/v1/funding/classwallet/capabilities")
+          return route.fulfill({ json: { offerIds: [] } });
+        if (path === "/api/v1/funding/offers")
+          return route.fulfill({ json: { offers: [presentOffer(arkansas)] } });
+        if (path === "/api/v1/funding/requests")
+          return route.fulfill({ json: { requests: [] } });
+        if (path === "/api/v1/billing/prices")
+          return route.fulfill({ json: { available: false, offers: [] } });
+        if (path === "/api/v1/catalog")
+          return route.fulfill({ json: { templates: [], skills: [] } });
         return route.fulfill({ json: {} });
       });
-      await page.goto(`${origin}/invoice/arkansas-efa`);
-      await page
-        .getByRole("link", { name: "support@corpora.inc", exact: true })
+      await page.goto(`${origin}/purchase/arkansas-efa`);
+      // The support address beside it, copyable where no mail app is set up.
+      const help = page.getByRole("complementary", {
+        name: "Help and feedback",
+      });
+      await help.getByText("support@corpora.inc", { exact: true }).waitFor();
+      await help
+        .getByRole("button", { name: "Copy support address" })
         .waitFor();
       const trigger = page.getByRole("button", {
         name: "Share parent feedback",
@@ -113,7 +177,7 @@ try {
       assert.equal(calls, 0);
       await page
         .getByLabel("Your feedback")
-        .fill(`Clearer invoice steps ${width} ${colorScheme}`);
+        .fill(`Clearer purchase steps ${width} ${colorScheme}`);
       await page
         .getByRole("checkbox", { name: "I’m a parent or adult learner." })
         .click();
@@ -126,7 +190,7 @@ try {
         .waitFor();
       assert.equal(
         await page.getByLabel("Your feedback").inputValue(),
-        `Clearer invoice steps ${width} ${colorScheme}`,
+        `Clearer purchase steps ${width} ${colorScheme}`,
       );
       assert(
         await page.evaluate(
@@ -174,7 +238,7 @@ try {
     8,
   );
   console.log(
-    "Parent feedback: eight layouts; real API/database; validation, failure, idempotent retry, dismissal, Escape and support link passed.",
+    "Parent feedback: eight layouts; real API/database; validation, failure, idempotent retry, dismissal, Escape and the support address passed.",
   );
 } finally {
   await browser.close();

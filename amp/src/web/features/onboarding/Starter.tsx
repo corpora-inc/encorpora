@@ -160,12 +160,21 @@ function StarterScreen({ session }: { session: AuthSession }) {
   // when it may already start its own practice.
   const adding =
     !!account && account.next !== "start" && placesFor(account).length > 0;
+  // A new account's only "consent" can be a development server's standing
+  // one (never recorded, so no method): that is no family of its own yet,
+  // and "I'm a parent" stays its first answer, as in production.
+  const homeOf = (me: NonNullable<typeof account>) =>
+    hasHome(
+      me.next === "start" && me.consent.method === null
+        ? { ...me, consent: { ...me.consent, status: "none" } }
+        : me,
+    );
   const has = (id: StarterChoice) =>
     !!account &&
     (id === "myself"
       ? !!account.adultPractice?.learner
       : id === "parent" || id === "tutor"
-        ? hasHome(account)
+        ? homeOf(account)
         : false);
   // Tutoring is practice at a level, in Practice (R8): its answer is no
   // longer offered, and `/start/tutor` keeps working for links in flight.

@@ -12,6 +12,15 @@ import { buildApp } from "../src/server/app.js";
 import { PostgresRepository } from "../src/server/repository.js";
 import { registerAnalyticsRoutes } from "../src/analytics/routes.js";
 
+// The site build defines its page titles (corpora-site/src/build.tsx); these
+// bundles define the pages the fixture visits.
+const SITE_PAGES = {
+  __AMP_SITE_PAGES__: JSON.stringify({
+    "/esa/arkansas-efa": "Arkansas EFA",
+    "/amp": "AMP",
+  }),
+};
+
 test(
   "real browser shares marketing and AMP identity, attribution and staff status; privacy opts out",
   {},
@@ -33,6 +42,7 @@ test(
     });
     const marketing = await build({
       entryPoints: ["../corpora-site/src/engagement-client.ts"],
+      define: SITE_PAGES,
       bundle: true,
       write: false,
       format: "iife",
@@ -287,6 +297,7 @@ test(
 test("marketing backlog splits within collector byte limits without blocking navigation", async () => {
   const bundle = await build({
     entryPoints: ["../corpora-site/src/engagement-client.ts"],
+    define: SITE_PAGES,
     bundle: true,
     write: false,
     format: "iife",

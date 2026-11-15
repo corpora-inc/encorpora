@@ -607,10 +607,10 @@ def solve_family(public):
             n = int(settled.group(1))
             require(1 <= n <= 19 and drawn_count(figure) == n + 1, 'One more is not drawn')
             return n + 1
-        if 'leaves' in prompt:
+        if '. Count back one. ' in prompt:
             require(settled is not None, 'The settled count is missing')
             n = int(settled.group(1))
-            require(2 <= n <= 20 and drawn_count(figure) == n, 'The group that loses one is not drawn')
+            require(2 <= n <= 20 and drawn_count(figure) == n, 'The group counted back from is not drawn')
             return n - 1
         if prompt.startswith('Ana counted'):
             labels = re.search(r'Her labels are ([0-9, ]+)\.', prompt)

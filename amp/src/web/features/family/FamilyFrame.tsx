@@ -35,10 +35,9 @@ export function useFamilyPlace() {
 export function useFamilyPlaceOf(family: string) {
   const session = useQuery(sessionOptions).data ?? null;
   const auth = session ?? NO_SESSION;
-  const query = useQuery({
-    ...familyOptions(auth, family),
-    enabled: !!session && !!family,
-  });
+  // Its own guard (api.ts): signed in as a parent, never a child's session
+  // that a handover has just started on this screen.
+  const query = useQuery(familyOptions(auth, family));
   const me = useQuery({ ...meOptions(auth), enabled: !!session }).data;
   const account: SignedInMe | null =
     me?.signedIn && me.account.id === session?.accountId ? me : null;

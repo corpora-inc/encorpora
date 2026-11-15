@@ -22,7 +22,7 @@ import {
 } from "../src/math/trend-line-fit";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
-import { chooseLearner } from "./ui-controls";
+import { practiceHere } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 import { fillTrendLine } from "./ui-trend-line-fit";
 
@@ -141,7 +141,7 @@ try {
       page.setDefaultTimeout(30000);
       page.on("pageerror", (e) => errors.push(e.message));
       await page.goto(`${origin}/overview`);
-      await chooseLearner(page, learner.id);
+      await practiceHere(page, learner.id);
       for (const [variant, base] of fixtures)
         for (const correct of [true, false]) {
           const p = structuredClone(base);

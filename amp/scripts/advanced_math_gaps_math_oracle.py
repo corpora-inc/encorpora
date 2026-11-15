@@ -687,10 +687,13 @@ def review_problem(problem):
     hint = plain(problem.get('hint') or '')
     key = label_text(public['response']['options'], result).strip()
     bare = re.escape(key.strip('$'))
+    # A sentence's closing period still ends the stated value; only a digit
+    # after a point (a longer decimal) or a letter continues it.
+    after = r'(?!\w|\.\d)'
     if re.fullmatch(r'-?\d{1,2}', key.strip('$')):  # short numbers recur in hints; flag only a stated result
-        leaked = re.search(r'(answer|result|total|sum|residual)\s*(is|=|:)\s*\$?' + bare + r'(?![\w.])', hint)
+        leaked = re.search(r'(answer|result|total|sum|residual)\s*(is|=|:)\s*\$?' + bare + after, hint)
     else:
-        leaked = re.search(r'(?<![\w.])' + re.escape(key) + r'(?![\w.])', hint)
+        leaked = re.search(r'(?<![\w.])' + re.escape(key) + after, hint)
     require(leaked is None, 'Hint states the keyed answer')
     template = public['templateId']
     explanation = ' '.join(problem.get('explanation') or [])

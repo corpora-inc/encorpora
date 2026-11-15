@@ -17,7 +17,7 @@ import {
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { assertOpaqueFeedback } from "./feedback-opacity-proof";
-import { chooseLearner } from "./ui-controls";
+import { practiceHere } from "./ui-controls";
 import { openTopicLesson } from "./ui-practice";
 
 const database = process.env.AMP_TEST_DATABASE_URL;
@@ -114,7 +114,7 @@ try {
       page.setDefaultTimeout(20_000);
       page.on("pageerror", (error) => errors.push(error.message));
       await page.goto(`${origin}/overview`);
-      await chooseLearner(page, learner.id);
+      await practiceHere(page, learner.id);
       if (width === 320 && theme === "light")
         await page.route(
           `**/api/v1/learners/${learner.id}/batches`,
@@ -150,9 +150,7 @@ try {
       );
       const [issued] = await Promise.all([
         batch,
-        page
-          .getByRole("link", { name: /^Try this problem type/ })
-          .click(),
+        page.getByRole("link", { name: /^Try this problem type/ }).click(),
       ]);
       assert.equal(issued.status(), 200);
       assert.ok(
@@ -327,7 +325,13 @@ try {
       await page.screenshot({
         path: `${shots}/${width}-${theme}-selected.png`,
       });
-      assert.ok(geometry.optionHeights.every((size) => size >= 52));
+      // Every option is a whole-row touch target: 44 px at least (the
+      // premium input rule); the design sizes rows to their content, 48 px
+      // for one line (46 px on short phones), since #2195.
+      assert.ok(
+        geometry.optionHeights.every((size) => size >= 44),
+        `${width}px option heights ${JSON.stringify(geometry.optionHeights)}`,
+      );
       assert.ok(geometry.overflow <= 0, `${width}px horizontal overflow`);
       assert.ok(
         geometry.submit.top >= 0 && geometry.submit.bottom <= height + 1,
@@ -412,9 +416,7 @@ try {
         );
         const [correctIssued] = await Promise.all([
           correctBatch,
-          page
-            .getByRole("link", { name: /^Try this problem type/ })
-            .click(),
+          page.getByRole("link", { name: /^Try this problem type/ }).click(),
         ]);
         assert.equal(
           (await correctIssued.json()).problems[0]?.id,
@@ -445,9 +447,7 @@ try {
         );
         const [skippedIssued] = await Promise.all([
           skippedBatch,
-          page
-            .getByRole("link", { name: /^Try this problem type/ })
-            .click(),
+          page.getByRole("link", { name: /^Try this problem type/ }).click(),
         ]);
         assert.equal(
           (await skippedIssued.json()).problems[0]?.id,
@@ -497,7 +497,7 @@ try {
     graphPage.setDefaultTimeout(20_000);
     graphPage.on("pageerror", (error) => errors.push(error.message));
     await graphPage.goto(`${origin}/overview`);
-    await chooseLearner(graphPage, learner.id);
+    await practiceHere(graphPage, learner.id);
     await graphPage.route(
       `**/api/v1/learners/${learner.id}/batches`,
       (route) => {
@@ -534,9 +534,7 @@ try {
     );
     const [graphIssued] = await Promise.all([
       graphBatch,
-      graphPage
-        .getByRole("link", { name: /^Try this problem type/ })
-        .click(),
+      graphPage.getByRole("link", { name: /^Try this problem type/ }).click(),
     ]);
     assert.equal(graphIssued.status(), 200);
     assert.equal(
@@ -634,9 +632,7 @@ try {
       response.request().method() === "POST" &&
       response.request().postDataJSON()?.templateId === templateId,
   );
-  await page
-    .getByRole("link", { name: /^Try this problem type/ })
-    .click();
+  await page.getByRole("link", { name: /^Try this problem type/ }).click();
   const draftBatch = await focused;
   assert.ok(
     draftBatch

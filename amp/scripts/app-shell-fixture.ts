@@ -306,7 +306,23 @@ export type Scenario = {
   ready?: (page: Page) => Promise<unknown>;
   /** Interaction after load (open a drawer, expand a section). */
   then?: (page: Page) => Promise<unknown>;
+  /** A learner's own screen, in their session: the parent hands this device
+   * to them first (`handOver`). */
+  child?: string;
 };
+
+/** The parent hands this device to one of their children, as from the
+ * family's Today ("Let … practice here"): the child's own session opens on
+ * their practice (docs/architecture/spaces.md). */
+export async function handOver(page: Page, origin: string, learnerId: string) {
+  await page.goto(`${origin}/`);
+  await page
+    .locator(`[data-practice-here=${JSON.stringify(learnerId)}]`)
+    .first()
+    .click();
+  await page.waitForURL((url) => url.pathname === "/practice");
+  await page.locator(".problem-stage").waitFor();
+}
 
 const heading = (name: RegExp | string) => (page: Page) =>
   page.getByRole("heading", { name }).first().waitFor();
@@ -361,24 +377,42 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       ready: heading(/What brings you to AMP\?/),
     },
     {
-      // A parent's first child, a few problems in: their Overview.
+      // A parent's first child, a few problems in: the child's own
+      // Overview, in their session.
       id: "starter-overview",
       path: "/overview",
       state: "starter",
+      child: f.starter.learnerId,
       ready: (p) => p.locator('.frontier-map[aria-busy="false"]').waitFor(),
     },
     {
-      // The Overview has its own address; `/` opens a family's class.
+      // A practiced child's own Overview, in their session.
       id: "home",
       path: "/overview",
       state: "paid",
+      child: f.paid.jordan.id,
       // The retained chart settles when its actual frontier has loaded.
       ready: (p) => p.locator('.frontier-map[aria-busy="false"]').waitFor(),
+    },
+    {
+      // A parent signs in to their family's Today.
+      id: "family-today",
+      path: "/",
+      state: "paid",
+      ready: (p) => p.locator("[data-today-title]").first().waitFor(),
+    },
+    {
+      // A parent's Overview is their child's page in the family.
+      id: "child-page",
+      path: "/overview",
+      state: "paid",
+      ready: (p) => p.locator("[data-child-page]").waitFor(),
     },
     {
       id: "drawer",
       path: "/overview",
       state: "paid",
+      child: f.paid.jordan.id,
       ready: (p) => p.locator(".frontier-map").waitFor(),
       then: async (p) => {
         await p.locator("[data-navigation-trigger]").click();
@@ -391,9 +425,11 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       id: "progress",
       path: "/progress",
       state: "paid",
+      child: f.paid.jordan.id,
       ready: (p) => p.locator(".progress-skill-card").first().waitFor(),
     },
     {
+      // A parent's map is their child's, at the child's own address.
       id: "pathways",
       path: "/pathways",
       state: "paid",
@@ -403,7 +439,12 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       id: "pathway-skill",
       path: `/pathways/${f.practisedSkill}`,
       state: "paid",
-      ready: (p) => p.getByRole("button", { name: "Close skill" }).waitFor(),
+      // The skill opens as a layer over the map (`?open=skill:<id>`).
+      ready: (p) =>
+        p
+          .getByRole("dialog")
+          .getByRole("button", { name: "Close", exact: true })
+          .waitFor(),
     },
     {
       id: "inventory",
@@ -429,10 +470,11 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       ready: (p) => p.locator(".lesson-reader h2").first().waitFor(),
     },
     {
+      // Children are the family's: their settings are the family's.
       id: "family-learners",
       path: "/family/learners",
       state: "paid",
-      ready: (p) => p.locator("[data-account-body]").waitFor(),
+      ready: (p) => p.locator("[data-family-settings]").waitFor(),
     },
     {
       id: "family-access",

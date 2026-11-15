@@ -18,6 +18,10 @@ import { ApiError, PostgresRepository } from "../src/server/repository.js";
 import { verifyAccessToken } from "../src/server/auth.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { migrate } from "./migrate.js";
+import {
+  figureCapabilities,
+  responseCapabilities,
+} from "../src/math/contracts.js";
 import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 
 const database = process.env.AMP_TEST_DATABASE_URL;
@@ -494,7 +498,14 @@ try {
     request: {
       kind: "batch",
       learnerId: learnerA.id,
-      body: { templateId: "add-within-20", count: 1 },
+      // As the app asks: with every figure and response it can draw (a
+      // template whose figure the client can't draw is refused with 400).
+      body: {
+        templateId: "add-within-20",
+        count: 1,
+        responseCapabilities: [...responseCapabilities],
+        figureCapabilities: [...figureCapabilities],
+      },
     },
   });
   assert.equal(batch.status, 200);

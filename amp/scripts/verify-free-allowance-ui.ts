@@ -117,7 +117,15 @@ const check = (label: string, ok: boolean, detail: unknown = "") => {
 };
 const PASSWORD = "synthetic long fixture passphrase";
 const last: { page: Page | null } = { page: null };
-const CLASS_TODAY = /\/school\/[0-9a-f-]{36}\/classes\/[0-9a-f-]{36}\/today$/;
+// A family's Today is its own address (docs/architecture/spaces.md).
+const FAMILY_TODAY = /\/family\/[0-9a-f-]{36}$/;
+
+/** A child's row on Today: the figure over its label ("99", "free problems
+ * left"), one fact. */
+const freeLeft = (page: Page, left: number) =>
+  page
+    .locator("[data-family-kids] span")
+    .filter({ hasText: new RegExp(`^${left}\\s*free problems left$`) });
 
 async function signUp(page: Page, email: string, name: string) {
   const fallback = page.getByRole("button", {
@@ -259,16 +267,14 @@ async function journey(
   const fox = await repository.create(account, undefined, 2016);
   const moon = await repository.create(account, undefined, 2018);
   await page.goto(`${origin}/`);
-  await page.waitForURL(CLASS_TODAY);
+  await page.waitForURL(FAMILY_TODAY);
   await todayTitle(page);
   await page
     .getByRole("button", { name: `Let ${fox.name} practice here` })
     .waitFor();
   check(
     `${label} free balance visible`,
-    (await page
-      .getByText("100 free problems left", { exact: true })
-      .count()) === 2,
+    (await freeLeft(page, 100).count()) === 2,
   );
   check(
     `${label} no false lack of access`,
@@ -310,8 +316,8 @@ async function journey(
     .first()
     .click();
   await page.getByRole("button", { name: "Sign out" }).click();
-  await page.waitForURL(CLASS_TODAY);
-  await page.getByText("99 free problems left", { exact: true }).waitFor();
+  await page.waitForURL(FAMILY_TODAY);
+  await freeLeft(page, 99).waitFor();
   // Their first free workbook is selectable in the teacher view.
   await page.goto(
     `${origin}/school/${home.org_id}/classes/${home.class_id}/workbooks`,
@@ -321,18 +327,21 @@ async function journey(
   await measured(page, `${label} workbook stack`);
   await shot(page, "workbooks", width, theme);
 
+  // The child's own page hands the device over too ("Let … practice
+  // here"), and Sign out gives it back to the parent's Today.
   await page.goto(`${origin}/overview`);
+  await page.waitForURL(new RegExp(`/kids/${fox.id}$`));
   await page
-    .getByRole("link", { name: "Practice", exact: true })
-    .filter({ visible: true })
-    .first()
-    .waitFor();
+    .getByRole("button", { name: `Let ${fox.name} practice here` })
+    .click();
+  await practicing(page);
   await page
-    .getByRole("link", { name: "Practice", exact: true })
+    .getByRole("button", { name: "Open AMP menu" })
     .filter({ visible: true })
     .first()
     .click();
-  await practicing(page);
+  await page.getByRole("button", { name: "Sign out" }).click();
+  await page.waitForURL(FAMILY_TODAY);
   await page.goto(
     `${origin}/school/${home.org_id}/classes/${home.class_id}/workbooks`,
   );
@@ -390,39 +399,25 @@ async function journey(
     "UPDATE amp_learners SET free_online_used=100,free_workbooks_used=5 WHERE id=ANY($1::text[])",
     [[fox.id, moon.id]],
   );
+  // A family's Workbooks lists its children, one at a time (no class
+  // reprint stack): the exhausted child's own workbooks say why, calmly,
+  // and offer the one thing that works.
   await page.goto(
     `${origin}/school/${home.org_id}/classes/${home.class_id}/workbooks`,
   );
-  await page
-    .getByRole("button", { name: new RegExp(`^${moon.name}`) })
-    .waitFor();
-  assert.equal(
+  await page.waitForURL(/\/family\/[0-9a-f-]{36}\/workbooks$/);
+  for (const child of [fox, moon])
     await page
-      .getByRole("button", { name: new RegExp(`^${moon.name}`) })
-      .isDisabled(),
-    true,
-    "a class reprint cannot issue a new workbook to an exhausted learner",
-  );
-  assert.equal(
-    await page
-      .getByRole("button", { name: new RegExp(`^${fox.name}`) })
-      .isEnabled(),
-    true,
-  );
+      .getByRole("link", { name: new RegExp(`^${child.name}`) })
+      .waitFor();
   const purchase = "Continue with AMP" as const;
-  check(
-    `${label} the exhausted tile says why, calmly`,
-    (
-      await page
-        .getByRole("button", { name: new RegExp(`^${moon.name}`) })
-        .innerText()
-    ).includes("Free workbooks used"),
-  );
-  await workbooksUsed(page, `${label} exhausted reprint`, purchase);
+  await page.getByRole("link", { name: new RegExp(`^${moon.name}`) }).click();
+  await page.waitForURL(new RegExp(`/learners/${moon.id}/workbooks`));
+  await workbooksUsed(page, `${label} exhausted child`, purchase);
   await page.evaluate(() =>
     window.scrollTo({ top: document.documentElement.scrollHeight }),
   );
-  await measured(page, `${label} exhausted reprint`);
+  await measured(page, `${label} exhausted child`);
   await shot(page, "reprint", width, theme);
   await page.goto(`${origin}/learners/${fox.id}/workbooks`);
   await page

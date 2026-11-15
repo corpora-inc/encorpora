@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { polishProblem } from "../math/engine";
 import { radicalPrintCase } from "../math/radical-practice";
 import type { GeneratedProblem } from "../math/contracts";
 
@@ -116,8 +117,11 @@ export function radicalWorksheet(
             ]),
           )
           .digest("hex");
+      // Printed as practice shows it (and as a workbook's results replay it
+      // from its seed): the same display polish, e.g. no period after a
+      // closing display equation.
       return chosen
-        .map((c) => c.problem)
+        .map((c) => polishProblem(c.problem))
         .sort((a, b) => order(a).localeCompare(order(b)));
     }
   }

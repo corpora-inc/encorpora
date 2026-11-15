@@ -1,5 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
-import { chooseLearner } from "./ui-controls";
+import { practiceHere } from "./ui-controls";
 import { spokenMath } from "../src/web/MathText";
 import { startTopic } from "./ui-practice";
 import { measurementTemplates } from "../src/math/measurement-practice.js";
@@ -67,7 +67,7 @@ await mkdir(output, {
 try {
   const page = await browser.newPage({ hasTouch: true });
   await page.goto("http://127.0.0.1:4442/overview");
-  await chooseLearner(page, learner.id);
+  await practiceHere(page, learner.id);
   // Classic scrollbars reserve space even on hosts that default to overlays.
   // Keep the narrow-phone layout representative of the Linux browser runner.
   await page.addStyleTag({
@@ -333,7 +333,7 @@ try {
     );
     // Lesson opens the short lesson for this exact problem type, not a book.
     const opening = page.waitForResponse((response) =>
-      response.url().endsWith("/lesson-support"),
+      new URL(response.url()).pathname.endsWith("/lesson-support"),
     );
     await page.getByRole("button", { name: "Lesson", exact: true }).click();
     const opened = await (await opening).json();
