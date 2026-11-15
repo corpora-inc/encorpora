@@ -1,3 +1,5 @@
+import { articleByPath, libraryRoutes } from "./library/catalog.js";
+import { ArticlePage, articleStructuredData } from "./library/page.js";
 import { StateIdentity, stateNames } from "./state-identity.js";
 import React from "./react.js";
 import type { ReactNode } from "react";
@@ -30,6 +32,7 @@ export const routes = [
   "/support/",
   "/try/",
   "/samples/",
+  ...libraryRoutes,
   ...Object.keys(legalTitles).map((p) => `/legal/${p}/`),
 ];
 export const routesFor = (config: SiteConfig) => [
@@ -71,6 +74,8 @@ const descriptions: Record<string, string> = {
     "Corpora’s accessibility statement for AMP, and how to report a barrier.",
 };
 export const title = (route: string, config?: SiteConfig) => {
+  const article = articleByPath.get(route);
+  if (article) return `${article.label} · AMP Mathematics`;
   const funding = config && fundingForPath(route, config);
   if (funding) {
     // Search results cut titles at about 60 characters: drop words, not meaning.
@@ -323,7 +328,7 @@ function Home({ config }: { config: SiteConfig }) {
             Your child presses Next. AMP builds the best next problem every
             time, with the lesson and the paper work attached.
           </p>
-          <a href="/amp/">How AMP works ↗</a>
+          <a href="/how-it-works/">How AMP works ↗</a>
         </div>
         <Steps />
       </section>
@@ -759,15 +764,17 @@ export function Page({
   socialImage?: SocialImage;
 }) {
   const funding = fundingForPath(route, config);
-  const structuredData = funding
+  const article = articleByPath.get(route);
+  const structuredData = article ? articleStructuredData(article, config) : funding
     ? fundingStructuredData(funding, config)
     : route === "/"
       ? siteStructuredData(config)
       : undefined;
   const description =
-    funding?.page?.summary ?? descriptions[route] ?? descriptions["/"]!;
+    article?.description ?? funding?.page?.summary ?? descriptions[route] ?? descriptions["/"]!;
   let content: ReactNode;
-  if (route === "/") content = <Home config={config} />;
+  if (article) content = <ArticlePage article={article} config={config} />;
+  else if (route === "/") content = <Home config={config} />;
   else if (route === "/amp/") content = <Amp config={config} />;
   else if (route === "/esa/") content = <Esa config={config} />;
   else if (funding) content = <FundingPage funding={funding} supportEmail={config.supportEmail} appUrl={config.appUrl} plans={config.plans} />;
@@ -915,6 +922,7 @@ export function Page({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="stylesheet" href="/assets/site.css" />
+        <link rel="stylesheet" href="/assets/library.css" />
         <link rel="stylesheet" href="/assets/katex.min.css" />
         {fundingForPath(route, config)?.page?.presentation?.invoiceForm && <script src="/assets/invoice.js" defer />}
         {route === "/samples/" && <script src="/assets/print.js" defer />}
@@ -945,12 +953,11 @@ export function Page({
             <a className="nav-secondary" href="/esa/">
               Education funds
             </a>
-            <a className="nav-secondary" href="/parents/">
-              Parents
-            </a>
-            <a className="nav-secondary" href="/schools/">
-              Schools
-            </a>
+            <details className="site-menu"><summary>Explore</summary><div className="site-menu-links">
+              <a href="/how-it-works/">How AMP works</a><a href="/science/">The science</a>
+              <a href="/philosophy/spiraling/">Spiraling &amp; mastery</a><a href="/philosophy/guided-discovery/">Guided discovery</a>
+              <a href="/parents/">Parents’ questions</a><a href="/schools/">Schools</a>
+            </div></details>
             <Try config={config} />
           </nav>
         </header>
@@ -964,6 +971,8 @@ export function Page({
           </div>
           <nav aria-label="Footer navigation">
             <a href="/amp/">AMP Mathematics</a>
+            <a href="/how-it-works/">How AMP works</a>
+            <a href="/science/">Learning science</a>
             <a href="/esa/">Education funds</a>
             <a href="/parents/">Parents FAQ</a>
             <a href="/schools/">Schools & districts</a>
