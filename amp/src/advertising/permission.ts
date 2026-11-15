@@ -59,6 +59,11 @@ export async function confirmedAdvertisingEmail(
     ? row.email
     : null;
 }
+/** Opt-out default: a fixed revision so queued purchases stay bound to it. */
+export const DEFAULT_PERMISSION_REVISION =
+  "00000000-0000-4000-8000-000000000000";
+const DEFAULT_GRANTED_AT = "1970-01-01T00:00:00.000Z";
+const DEFAULT_EXPIRES_AT = "9999-12-31T00:00:00.000Z";
 const fingerprint = (email: string) =>
   createHash("sha256").update(email.trim().toLowerCase()).digest("hex");
 /** Caller holds the account lock. The digest binds permission to the address
@@ -81,6 +86,15 @@ export async function purchaseMeasurementView(
         )
       ).rows[0]
     : null;
+  // Minimum compliance: US law makes ad measurement an opt-out, not an
+  // opt-in (Cal. Civ. Code 1798.120 and 1798.135, including GPC under
+  // 1798.135(e); Colorado and similar state laws). AMP sells in USD through
+  // US programs and its purchase campaigns target the US, so an adult account
+  // that never withdrew is measured by default. A withdrawal, a GPC signal or
+  // a school staff account leaves a durable row in amp_ad_collection_withdrawals,
+  // which turns this off. Google's EU user consent policy (EEA, UK, CH) is met
+  // in the browser by consent mode (analytics/google-analytics.ts). Learners
+  // never purchase and never reach this path.
   const status =
     !row || row.withdrawn_at
       ? "off"
@@ -91,6 +105,26 @@ export async function purchaseMeasurementView(
             row.notice_version !== notice.version
           ? "review-required"
           : "active";
+  if (available && status !== "active" && !row?.withdrawn_at) {
+    const withdrawn = (
+      await client.query(
+        "SELECT to_regclass('amp_ad_collection_withdrawals') IS NOT NULL AND EXISTS(SELECT 1 FROM amp_ad_collection_withdrawals WHERE account_id=$1 AND provider=$2) AS withdrawn",
+        [account, provider],
+      )
+    ).rows[0]?.withdrawn;
+    if (!withdrawn)
+      return {
+        available,
+        eligible: !!email,
+        status: "active",
+        revision: DEFAULT_PERMISSION_REVISION,
+        noticeVersion:
+          provider === "google" ? "google-adult-purchase-v1" : notice.version,
+        currentNoticeVersion: notice.version,
+        grantedAt: DEFAULT_GRANTED_AT,
+        expiresAt: DEFAULT_EXPIRES_AT,
+      };
+  }
   return {
     available,
     eligible: !!email,
@@ -240,6 +274,13 @@ export async function changeAdvertisingPermission(
         403,
         "purchase_measurement_email_required",
       );
+    // An account measured by the opt-out default is already active; an allow
+    // from any client state is the same request.
+    if (
+      current.revision === DEFAULT_PERMISSION_REVISION &&
+      current.status === "active"
+    )
+      return current;
     if (current.revision !== change.revision)
       throw new AdvertisingPermissionError(409, "purchase_measurement_changed");
     if (current.status === "active") return current;
