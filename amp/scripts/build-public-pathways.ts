@@ -382,6 +382,6 @@ const privateBuild = new URL("../artifacts/", import.meta.url);
 await mkdir(privateBuild, { recursive: true });
 await writeFile(
   new URL("pathways-nginx-map.conf", privateBuild),
-  `# Generated catalog whitelist for legacy /pathways?skill= links.\nmap $arg_skill $pathways_document {\n  default /pathways/index.html;\n${skills.map((skill) => `  ${skill.id} /pathways/${skill.id}/index.html;`).join("\n")}\n}\n`,
+  `# Generated catalog whitelist for legacy /pathways?skill= links.\nmap $arg_skill $pathways_document {\n  default /unknown-pathway.html;\n  "" /pathways/index.html;\n${skills.map((skill) => `  ${skill.id} /pathways/${skill.id}/index.html;`).join("\n")}\n}\n`,
 );
 console.log(`Built ${skills.length} public skill pages and a sitemap.`);

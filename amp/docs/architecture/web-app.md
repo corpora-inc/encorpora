@@ -97,6 +97,22 @@ One guard (`features/onboarding/guard.ts`) maps `me.next` to the allowed steps f
 - No settings detours, and no 403 ever reaches the screen.
 - Email-plus consent is offered only to parents who don't pay by card. It's a step in the same flow, with clear "we'll email you" states.
 
+## Public documents and indexing
+
+`app/document-routes.ts` lists registered browser-route shapes and retained
+redirects. The build generates Nginx's SPA fallback map from that list. Add a
+shape when adding a route; `npm run test:document-indexing-ui` compares the
+list with the browser router. Route matching does not grant access to an
+account or resource.
+
+The public home, school information pages and curriculum map are indexable.
+Authentication, purchasing, account and learning screens use `noindex, follow`.
+`route-head.ts` owns browser metadata; the Pathways writer adopts its generated
+head tags and keeps family maps private. `build-public-documents.ts` emits
+initial school metadata and a standalone404 document. Unknown addresses return
+HTTP404; missing pages have no canonical URL. Public curriculum skill pages
+retain their generated metadata and sitemap entries.
+
 ## Errors
 
 **Route-level:** error boundaries render a designed full-screen state. **Mutations:**
