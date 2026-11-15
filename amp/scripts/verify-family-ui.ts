@@ -20,7 +20,7 @@ await writeFile(
 );
 await writeFile(
   new URL("entry.tsx", directory),
-  `import React from 'react';import {createRoot} from 'react-dom/client';import {FixtureRouter,FamilyFixture} from '../../scripts/family-fixture';import '../../src/web/style.css';import '../../src/web/theme.css';import '../../src/web/premium-controls.css';const root=createRoot(document.getElementById('root')!);const harness={events:[] as string[],render(token:string,identity=token){root.render(<FixtureRouter><FamilyFixture token={token} identity={identity} events={harness.events}/></FixtureRouter>);},unmount(){root.render(<p>Different account screen</p>)}};(window as any).familyHarness=harness;harness.render('ui-fixture');`,
+  `import React from 'react';import {createRoot} from 'react-dom/client';import {FixtureRouter,FamilyFixture} from '../../scripts/family-fixture';import '../../src/web/style.css';import '../../src/web/theme.css';import '../../src/web/premium-controls.css';const root=createRoot(document.getElementById('root')!);const harness={events:[] as string[],render(token:string,identity=token){root.render(<FixtureRouter path="/account/billing"><FamilyFixture token={token} identity={identity} events={harness.events}/></FixtureRouter>);},unmount(){root.render(<p>Different account screen</p>)}};(window as any).familyHarness=harness;harness.render('ui-fixture');`,
 );
 let failExport = false,
   exportPosts = 0;
@@ -54,7 +54,13 @@ const vite = await createServer({
     },
   ],
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
-  server: { host: "127.0.0.1", port: familyPort, strictPort: true },
+  server: {
+    host: "127.0.0.1",
+    port: familyPort,
+    strictPort: true,
+    // Edits elsewhere in the tree never reload a page mid-check.
+    hmr: false,
+  },
 });
 await vite.listen();
 const browser = await (
@@ -135,7 +141,7 @@ try {
     await route.fulfill({ json: { withdrawn: true } });
   });
   await page.route(
-    "**/api/v1/family/learners/fixture/delete-learning-data",
+    /\/api\/v1\/family\/(?:learners\/fixture\/)?delete-learning-data$/,
     async (route) => {
       assert.equal(
         route.request().postDataJSON().confirmation,
@@ -178,10 +184,10 @@ try {
   await page
     .getByRole("heading", { name: "Sample learner", exact: true })
     .waitFor();
-  // The Account group's tabs: Family, Billing and Privacy (and Profile &
-  // sign-in), links in the app frame's bar.
+  // The Account group's tabs: Sign-in, Billing and Privacy, links in the
+  // app frame's bar. Each child's name, year and learning data are the
+  // Family space's (its child pages), not the account's.
   const tabNames: Record<string, string> = {
-    Learners: "Learners",
     Access: "Billing",
     Privacy: "Privacy",
   };
@@ -191,11 +197,24 @@ try {
       .getByRole("link", { name: tabNames[name] ?? name, exact: true })
       .click();
   };
+  const billingRows = () =>
+    page.getByRole("list", { name: "What each learner holds" });
+  // Privacy → Delete learning data: its one action reviews the deletion.
+  const reviewDeletion = async () => {
+    await section("Privacy");
+    await page
+      .getByRole("button", { name: "Delete learning data", exact: false })
+      .click();
+    await page
+      .getByRole("button", { name: "Review deletion", exact: true })
+      .click();
+  };
   const privacy = async (name: string) => {
     await section("Privacy");
     await page.getByRole("button", { name, exact: false }).click();
+    // Opening a privacy view moves focus to the screen's title.
     await page.waitForFunction(() =>
-      document.activeElement?.matches(".family-section h2"),
+      document.activeElement?.matches("[data-account-body] h1"),
     );
   };
   for (const [width, height] of [
@@ -206,13 +225,22 @@ try {
     [844, 390],
   ]) {
     await page.setViewportSize({ width, height });
-    assert.equal(
-      await page.evaluate(
-        () => document.documentElement.scrollWidth <= innerWidth,
-      ),
-      true,
+    // No horizontal page scroll; on failure, name what sticks out.
+    const overflow = await page.evaluate(() =>
+      document.documentElement.scrollWidth <= innerWidth
+        ? null
+        : [...document.querySelectorAll("body *")]
+            .filter(
+              (node) => node.getBoundingClientRect().right > innerWidth + 0.5,
+            )
+            .slice(0, 5)
+            .map(
+              (node) =>
+                `${node.tagName}.${node.className} ${Math.round(node.getBoundingClientRect().right)}`,
+            ),
     );
-    for (const name of ["Learners", "Access", "Privacy"]) {
+    assert.equal(overflow, null, `overflow at ${width}: ${overflow}`);
+    for (const name of ["Access", "Privacy"]) {
       await section(name);
       if (isPhoneLandscape([width, height]))
         await assertPhoneLandscapeSmoke(page, `Family ${name}`);
@@ -227,7 +255,7 @@ try {
         path: new URL(`family-${name}-${width}.png`, directory).pathname,
       });
     }
-    await section("Learners");
+    await section("Access");
   }
   // Hover keeps every button readable: a light button never takes the
   // primary fill while its text stays dark.
@@ -241,7 +269,7 @@ try {
       });
     return 0.2126 * r + 0.7152 * g + 0.0722 * b;
   };
-  for (const name of ["Learners", "Access", "Privacy"]) {
+  for (const name of ["Access", "Privacy"]) {
     await section(name);
     for (const button of await page.locator("main button:visible").all()) {
       if (await button.isDisabled()) continue;
@@ -264,7 +292,7 @@ try {
       );
     }
   }
-  await section("Learners");
+  await section("Access");
   family = {
     ...family,
     learners: family.learners.map((learner) => ({
@@ -274,9 +302,7 @@ try {
   };
   await page.reload();
   await page.setViewportSize({ width: 320, height: 568 });
-  await page
-    .getByRole("button", { name: "Delete learning data", exact: true })
-    .click();
+  await reviewDeletion();
   const confirmation = page.getByRole("dialog");
   await confirmation.waitFor();
   assert.ok(
@@ -296,41 +322,15 @@ try {
   });
   await page.keyboard.press("Escape");
   await page.setViewportSize({ width: 390, height: 844 });
-  // Edit name is a quiet outlined action, never a second filled primary
-  // beside the learner's workbook and delete actions.
-  assert.equal(
-    await page
-      .getByRole("button", { name: "Edit name", exact: true })
-      .evaluate((el) => getComputedStyle(el).backgroundColor),
-    "rgba(0, 0, 0, 0)",
-    "Edit name is filled",
-  );
-  await page.getByRole("button", { name: "Edit name", exact: true }).click();
-  await page.getByLabel("Learner display name").fill("Renamed learner");
-  await page.getByRole("button", { name: "Save name", exact: true }).click();
-  await page
-    .getByRole("heading", { name: "Renamed learner", exact: true })
-    .waitFor();
-  await page.waitForFunction(
-    () => document.activeElement?.textContent === "Edit name",
-  );
-  await section("Learners");
-  await page
-    .getByRole("button", { name: "Delete learning data", exact: true })
-    .click();
+  // Closing the confirmation returns focus to what opened it.
+  await reviewDeletion();
   await page.getByRole("dialog").waitFor();
   await page.keyboard.press("Escape");
   await page.waitForFunction(
-    () => document.activeElement?.textContent === "Delete learning data",
-  );
-  assert.equal(
-    await page.evaluate(() => document.activeElement?.textContent),
-    "Delete learning data",
+    () => document.activeElement?.textContent === "Review deletion",
   );
   await privacy("Download your records");
-  await page
-    .getByRole("button", { name: "← Privacy choices", exact: true })
-    .click();
+  await page.getByRole("button", { name: "Privacy", exact: true }).click();
   await page.waitForFunction(
     () =>
       document.activeElement?.getAttribute("data-privacy-choice") === "export",
@@ -369,43 +369,47 @@ try {
   await section("Access");
   assert.equal(
     await page
-      .getByRole("button", { name: "Manage billing and renewal" })
+      .getByRole("button", { name: /^Manage the plan for / })
       .isVisible(),
     true,
   );
-  await section("Learners");
-  await page
-    .getByRole("button", { name: "Delete learning data", exact: true })
-    .click();
+  await reviewDeletion();
   await page
     .getByRole("dialog")
     .getByRole("button", { name: "Delete learning data", exact: true })
     .click();
+  await section("Access");
   await page
-    .getByRole("heading", { name: "Deleted learner · billing reference" })
+    .getByText("Learning data deleted. Billing records kept.")
     .waitFor();
   await section("Access");
   assert.equal(
     await page
-      .getByRole("button", { name: "Manage billing and renewal" })
+      .getByRole("button", { name: /^Manage the plan for / })
       .isVisible(),
     true,
   );
+  // With every child's learning data deleted, the export is the account's.
   await privacy("Download your records");
   assert.equal(
-    await page
-      .getByRole("button", { name: "Download family data" })
-      .isVisible(),
+    await page.getByRole("button", { name: "Download your data" }).isVisible(),
     true,
   );
   // A confirmed privacy mutation stays successful even when its refresh fails.
+  // Consent is offered while the family has a child (FamilyCenter
+  // privacyChoices), so the child is back.
   family = {
     ...family,
     consent: { ...family.consent, status: "active", withdrawnAt: null },
+    learners: family.learners.map((l) => ({
+      ...l,
+      name: "Sample learner",
+      deletedAt: null,
+    })),
   };
   await page.reload();
-  await page
-    .getByRole("heading", { name: "Deleted learner · billing reference" })
+  await billingRows()
+    .getByRole("heading", { name: "Sample learner", exact: true })
     .waitFor();
   await privacy("Learning consent");
   await page
@@ -438,7 +442,7 @@ try {
   );
   assert.equal(
     await page
-      .getByRole("heading", { name: "Deleted learner · billing reference" })
+      .getByText("Learning data deleted. Billing records kept.")
       .count(),
     0,
   );
@@ -453,19 +457,24 @@ try {
       })),
     };
     await page.reload();
-    await page
-      .getByRole("button", { name: "Edit name", exact: true })
-      .waitFor();
+    await billingRows().waitFor();
+    // A confirmed change whose refresh is still out when the account goes
+    // away (or changes) must not report back.
+    await privacy("Learning consent");
     summaryHeld = new Promise((resolve) => {
       held = resolve;
     });
     summaryRelease = new Promise((resolve) => {
       releaseSummary = resolve;
     });
+    await page
+      .getByRole("button", { name: "Withdraw consent", exact: true })
+      .click();
     holdNextSummary = true;
-    await page.getByRole("button", { name: "Edit name", exact: true }).click();
-    await page.getByLabel("Learner display name").fill("Old account changed");
-    await page.getByRole("button", { name: "Save name", exact: true }).click();
+    await page
+      .getByRole("dialog")
+      .getByRole("button", { name: "Withdraw consent", exact: true })
+      .click();
     await summaryHeld;
     if (mode === "unmount")
       await page.evaluate(() => (window as any).familyHarness.unmount());
@@ -480,7 +489,10 @@ try {
       await page.evaluate(() =>
         (window as any).familyHarness.render("new-account-token"),
       );
-      await page
+      // The new account's own family, on Billing (the harness keeps the
+      // address it was on).
+      await section("Access");
+      await billingRows()
         .getByRole("heading", { name: "New account learner", exact: true })
         .waitFor();
     }
@@ -498,16 +510,15 @@ try {
     );
     assert.equal(
       await page
-        .getByRole("heading", { name: "Old account changed", exact: true })
+        .locator(".family-notice")
+        .filter({ hasText: /Consent withdrawn/ })
         .count(),
       0,
     );
   }
   for (const mode of ["switch", "unmount"]) {
     await page.reload();
-    await page
-      .getByRole("button", { name: "Edit name", exact: true })
-      .waitFor();
+    await billingRows().waitFor();
     await privacy("Download your records");
     ticketWaiting = new Promise((resolve) => {
       ticketHeld = resolve;
@@ -537,11 +548,11 @@ try {
   }
   // A renewable token does not change the parent identity or discard a confirmed action.
   await page.reload();
-  await page.getByRole("button", { name: "Edit name", exact: true }).waitFor();
+  await billingRows().waitFor();
   await page.evaluate(() =>
     (window as any).familyHarness.render("first-token", "same-parent"),
   );
-  await page.getByRole("button", { name: "Edit name", exact: true }).waitFor();
+  await billingRows().waitFor();
   await privacy("Download your records");
   await page.evaluate(() =>
     (window as any).familyHarness.render("renewed-token", "same-parent"),
@@ -552,7 +563,7 @@ try {
   await renewedDownload;
   assert.deepEqual(failures, []);
   console.log(
-    "Family UI: rename, confirmation focus, streamed browser download, withdrawal and retained billing passed at320/390/1280px.",
+    "Family UI: account tabs, confirmation focus, streamed browser download, withdrawal, deletion and retained billing passed at 320/390/1280px.",
   );
 } finally {
   await browser.close();
