@@ -120,7 +120,7 @@ async function acquireMigrationLock(client: {
   query: (sql: string) => Promise<{ rows: { locked: boolean }[] }>;
 }) {
   const deadline = Date.now() + MIGRATION_LOCK_WAIT_MS;
-  for (let wait = 50; ; wait = Math.min(wait * 2, 1000)) {
+  for (let wait = 25; ; wait = Math.min(wait * 2, 100)) {
     const { rows } = await client.query(
       "SELECT pg_try_advisory_lock(91347022) AS locked",
     );

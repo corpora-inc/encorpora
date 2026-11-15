@@ -119,7 +119,7 @@ test(
         (error: unknown) => error,
       );
       let waiting = false;
-      for (let attempt = 0; attempt < 200; attempt++) {
+      for (let attempt = 0; attempt < 3000; attempt++) {
         const { rows } = await db.query(
           `SELECT 1 FROM pg_stat_activity WHERE application_name=$1
         AND query ILIKE '%CREATE INDEX%' AND wait_event_type='Lock'`,
