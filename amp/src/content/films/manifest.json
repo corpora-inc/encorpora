@@ -361,6 +361,29 @@
     ],
     "skill": "arrays"
   },
+  "associative-compute": {
+    "id": "regions-to-whole--so",
+    "version": "230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b",
+    "title": "Properties of multiplication",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/audio.m4a",
+    "duration": 291.2299546485261,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/audio.m4a",
+        "version": "230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b",
+        "duration": 291.2299546485261
+      }
+    ],
+    "skill": "operation-properties"
+  },
   "average-rate-display": {
     "id": "average-rate-display--sa",
     "version": "3ed344785a68bcbb25b994e40a492226bb0981ca49c76a621e297f8e7273d23f",
@@ -2718,6 +2741,29 @@
       }
     ],
     "skill": "multiplication-division-equality"
+  },
+  "facts-from-known": {
+    "id": "regions-to-whole--so",
+    "version": "230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b",
+    "title": "Properties of multiplication",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/audio.m4a",
+    "duration": 291.2299546485261,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/audio.m4a",
+        "version": "230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b",
+        "duration": 291.2299546485261
+      }
+    ],
+    "skill": "operation-properties"
   },
   "facts-to-five": {
     "id": "facts-to-five--sf",
@@ -5119,6 +5165,29 @@
     ],
     "skill": "exponent-laws"
   },
+  "nested-bag-total": {
+    "id": "regions-to-whole--so",
+    "version": "230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b",
+    "title": "Properties of multiplication",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/audio.m4a",
+    "duration": 291.2299546485261,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/audio.m4a",
+        "version": "230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b",
+        "duration": 291.2299546485261
+      }
+    ],
+    "skill": "operation-properties"
+  },
   "nonlinear-recursion-term": {
     "id": "arithmetic-distant-term--sq",
     "version": "7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1",
@@ -5369,6 +5438,29 @@
       }
     ],
     "skill": "compare-two-digit"
+  },
+  "operation-property-identify": {
+    "id": "regions-to-whole--so",
+    "version": "230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b",
+    "title": "Properties of multiplication",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/audio.m4a",
+    "duration": 291.2299546485261,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/audio.m4a",
+        "version": "230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b",
+        "duration": 291.2299546485261
+      }
+    ],
+    "skill": "operation-properties"
   },
   "operation-sentence-choice": {
     "id": "linked-division-equations",
@@ -6559,6 +6651,29 @@
       }
     ],
     "skill": "arithmetic-sequences"
+  },
+  "regions-to-whole": {
+    "id": "regions-to-whole--so",
+    "version": "230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b",
+    "title": "Properties of multiplication",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/audio.m4a",
+    "duration": 291.2299546485261,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/audio.m4a",
+        "version": "230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b",
+        "duration": 291.2299546485261
+      }
+    ],
+    "skill": "operation-properties"
   },
   "related-division-sentence": {
     "id": "divide-facts--sd",
@@ -7856,6 +7971,52 @@
       }
     ],
     "skill": "pythagorean-theorem"
+  },
+  "split-array-part": {
+    "id": "regions-to-whole--so",
+    "version": "230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b",
+    "title": "Properties of multiplication",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/audio.m4a",
+    "duration": 291.2299546485261,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/audio.m4a",
+        "version": "230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b",
+        "duration": 291.2299546485261
+      }
+    ],
+    "skill": "operation-properties"
+  },
+  "split-the-dividend": {
+    "id": "regions-to-whole--so",
+    "version": "230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b",
+    "title": "Properties of multiplication",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/audio.m4a",
+    "duration": 291.2299546485261,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/audio.m4a",
+        "version": "230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b",
+        "duration": 291.2299546485261
+      }
+    ],
+    "skill": "operation-properties"
   },
   "split-tiled-count": {
     "id": "rectangle-area",
@@ -9607,6 +9768,29 @@
       }
     ],
     "skill": "rectangle-area"
+  },
+  "which-split": {
+    "id": "regions-to-whole--so",
+    "version": "230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b",
+    "title": "Properties of multiplication",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/audio.m4a",
+    "duration": 291.2299546485261,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/regions-to-whole--so/230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b/audio.m4a",
+        "version": "230ff1609d45b2908b806d78b081b79ec024298b1846d73406263ed7e865e81b",
+        "duration": 291.2299546485261
+      }
+    ],
+    "skill": "operation-properties"
   },
   "your-own-cut": {
     "id": "rectangle-area",
