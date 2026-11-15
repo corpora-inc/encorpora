@@ -1,3 +1,5 @@
+import { createHash } from "node:crypto";
+import { workbookManifest } from "./resources/catalog.js";
 import { printFigureCss, publicationCss } from "../../amp/src/content/print-exercise.js";
 import { mkdir, readFile, writeFile, cp, rm } from "node:fs/promises";
 import React, { renderToStaticMarkup } from "./react.js";
@@ -9,6 +11,13 @@ import { writeIcons } from "./icons.js";
 import { parseTokens, renderCard } from "./social-card.js";
 export async function buildSite(config: SiteConfig, output: string = "dist") {
   const routes = routesFor(config);
+  // A checkout without LFS must fail before publishing pointer text as a PDF.
+  // CDN editions are validated by their publishing job before this manifest is used.
+  for(const edition of workbookManifest.editions) for(const file of edition.files) {
+    if(!file.url.startsWith("/")) continue;
+    const bytes=await readFile(`public${file.url}`);
+    if(bytes.subarray(0,5).toString()!=="%PDF-" || createHash("sha256").update(bytes).digest("hex")!==file.sha256) throw new Error(`Invalid public workbook asset: ${file.url}. Fetch public Git LFS assets before building.`);
+  }
   await rm(output, { recursive: true, force: true });
   await mkdir(`${output}/assets`, { recursive: true });
   // Extract the existing token block; loading the entire app stylesheet would

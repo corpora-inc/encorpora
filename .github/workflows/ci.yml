@@ -2188,6 +2188,8 @@ jobs:
               pathlib.Path(name).unlink()
           PY
       - uses: actions/checkout@v4
+      - name: Fetch public website binary assets
+        run: git -C "$GITHUB_WORKSPACE" lfs pull --include="corpora-site/public/**" --exclude=""
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
