@@ -34,7 +34,10 @@ export async function startServer(root = resolve("dist")) {
       res.setHeader("X-Content-Type-Options", "nosniff");
       res.end(await readFile(file));
     } catch {
-      res.writeHead(404).end("Not found");
+      try {
+        const body = await readFile(resolve(root, "404.html"));
+        res.writeHead(404, { "Content-Type": "text/html; charset=utf-8", "X-Content-Type-Options": "nosniff" }).end(body);
+      } catch { res.writeHead(404).end("Not found"); }
     }
   });
   await new Promise<void>((resolve) => server.listen(0, "127.0.0.1", resolve));

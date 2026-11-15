@@ -423,11 +423,10 @@ try {
       const matches = await correspondence(page, expected);
       const name = `amp-${p.slug}-${date}-${paper}.pdf`;
       writeFileSync(join(dir, name), pdf);
-      if (paper === "letter")
-        await page
-          .locator(".wb-page")
-          .first()
-          .screenshot({ path: join(dir, "cover.png") });
+      if (paper === "letter") {
+        await page.locator(".wb-page--student").first().screenshot({ path: join(dir, "cover.png") });
+        await page.locator(".wb-page--student").filter({ has: page.locator(".wb-item.wb-sec--practice") }).first().screenshot({ path: join(dir, "practice.png") });
+      }
       const validation = {
         layout,
         failures,
@@ -463,6 +462,7 @@ try {
       spec: `${p.slug}/spec.json`,
       answerMap: `${p.slug}/answer-map.json`,
       cover: `${p.slug}/cover.png`,
+      preview: `${p.slug}/practice.png`,
       files,
       provenance: {
         generator: "src/workbook/compose.ts",

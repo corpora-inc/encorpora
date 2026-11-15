@@ -95,6 +95,11 @@ export const configSchema = z
       .max(2)
       .default([]),
     funding: z.array(route).max(100).default([]),
+    discovery: z.strictObject({
+      indexNowKey: z.string().regex(/^[A-Za-z0-9-]{8,128}$/).optional(),
+      googleSiteVerification: z.string().regex(/^[A-Za-z0-9_-]{10,200}$/).optional(),
+      bingSiteVerification: z.string().regex(/^[A-Za-z0-9_-]{10,200}$/).optional(),
+    }).optional(),
   })
   .superRefine((value, ctx) => {
     const slugs = value.funding.flatMap((r) => (r.page ? [r.page.slug] : []));

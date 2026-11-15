@@ -3,7 +3,7 @@ import { templates, generateProblem } from "../../../amp/src/math/engine.js";
 import { lessons } from "../../../amp/src/content/lessons.js";
 import { levels, type Level } from "./levels.js";
 import comparisons from "./comparisons.json";
-import workbookManifest from "./workbooks.json";
+import { workbookManifest } from "./workbook-manifest.js";
 import videos from "./videos.json";
 
 export { levels, comparisons, workbookManifest, videos };
