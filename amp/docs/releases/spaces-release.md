@@ -120,3 +120,29 @@ reverting the merge:
   on an image that reads `starting_course_level` (step 3).
 - The family identity backfill writes only new identity rows; it never rewrites
   a published id, so it needs no undo.
+
+## Next (deferred: not correctness, security, data or visible breakage)
+
+- Responsive round's open items (reports/spaces/responsive/ledger.md, "Next"):
+  the work replay's feedback panel clips rather than scrolls at 600 px; replay
+  feedback steps scroll inside their panel at 320–768 px; the school Students
+  grid and a class's workbook set grid scroll inside the page at 768 px;
+  workbook row titles and standings figure tips are short hit targets at
+  768 px and up; the practice stage scrolls between its toolbar and dock on
+  phones; math in prompts can break at an operator at 320 px; the 769–1000 px
+  Pathways browser is an overlay with its own scroll.
+- A stored level is saved when a batch is planned, so stored-level readers
+  (`/me/practice`, records, maps) say "not measured" until the batch after a
+  learner's first answer (older than spaces; CP-5 makes it visible).
+- At 844x390 phone landscape, Billing's "Purchases and records" row sits below
+  a page that cannot scroll (landscape phones are a smoke check only).
+- A class's term report cards ("Print all") are offered before anyone in it is
+  measured (the per-learner progress report now waits).
+- The entry chunk is 16 KB gzip larger than main's (the shell's space
+  resolver, which frames every screen).
+- `renamedMigrations` in `scripts/migrate.ts` can go once no development or
+  preview database still holds the earlier spaces migration names.
+- A second parent's bar on a family child's workbooks shows the family's
+  org name rather than "<holder>'s family".
+- From the classroom round: an empty roster misses the class's own future
+  pilot start in the recheck; a pre-existing lockout code mismatch.
