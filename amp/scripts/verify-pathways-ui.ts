@@ -257,7 +257,7 @@ async function fixture(
       }
       return route.fulfill({ json: state });
     }
-    if (pathname.endsWith("/catalog"))
+    if (/\/catalog(?:\/map)?$/.test(pathname))
       return route.fulfill({
         json: {
           skills: catalogSkills,
@@ -1658,7 +1658,7 @@ try {
     catalogAsked = resolve;
   });
   once.on("request", (r) => {
-    if (!new URL(r.url()).pathname.endsWith("/catalog")) return;
+    if (!/\/catalog(?:\/map)?$/.test(new URL(r.url()).pathname)) return;
     catalogRequests++;
     catalogAsked();
   });
@@ -1666,7 +1666,7 @@ try {
   const catalogGate = new Promise<void>((resolve) => {
     releaseCatalog = resolve;
   });
-  await once.route("**/api/v1/catalog", async (route) => {
+  await once.route(/\/api\/v1\/catalog(?:\/map)?$/, async (route) => {
     await catalogGate;
     await route.fallback().catch(() => undefined);
   });

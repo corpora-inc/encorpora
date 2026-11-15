@@ -199,7 +199,7 @@ try {
                     : [],
                 },
           });
-    if (path === "/api/v1/catalog")
+    if (/^\/api\/v1\/catalog(?:\/map)?$/.test(path))
       return route.fulfill({
         json: {
           skills,

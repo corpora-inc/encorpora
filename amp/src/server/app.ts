@@ -427,6 +427,24 @@ function routes(app: FastifyInstance, options: AppOptions) {
     });
     return sendPublicJson(request, reply, catalogCache);
   });
+  // The curriculum as the map reads it (web/features/pathways/model.ts
+  // `catalogSchema`): skills with their links, and each problem type's
+  // skill and title. Pathways, the skill and area layers and the inventory
+  // need nothing else, and the full catalog above carries every lesson's
+  // text (1.17 MB compressed): a phone waited seconds for it before the map.
+  let mapCache: PublicJson | undefined;
+  app.get("/api/v1/catalog/map", async (request, reply) => {
+    mapCache ??= publicJson({
+      trial: options.repository.limits ?? trialLimits(),
+      skills: catalogSkills(),
+      templates: templates.map(({ id, skillId, title }) => ({
+        id,
+        skillId,
+        title,
+      })),
+    });
+    return sendPublicJson(request, reply, mapCache);
+  });
   app.get("/api/v1/learners", async (request) => {
     const learners = await options.repository.list(
       await learningAccount(request),

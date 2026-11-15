@@ -11,7 +11,7 @@ export function observeLearningRequest(path: string, method: string) {
   }) as typeof sink;
   path = path.split(/[?#]/)[0];
   let operation: FunnelProps<"learning_request">["operation"] | undefined;
-  if (path === "/catalog") operation = "catalog";
+  if (path === "/catalog" || path === "/catalog/map") operation = "catalog";
   else if (/^\/learners\/[^/]+\/batches$/.test(path)) operation = "problem";
   else if (/^\/learners\/[^/]+\/attempts$/.test(path)) operation = "answer";
   else if (/^\/learners\/[^/]+\/skips$/.test(path)) operation = "skip";

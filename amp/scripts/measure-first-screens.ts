@@ -366,6 +366,11 @@ async function coldLoad(
   await context.close();
   const finished = [...requests.values()].filter((r) => r.end > 0);
   const atMs = (t: number) => (t - navigationStart) * 1000;
+  if (process.argv.includes("--verbose"))
+    for (const r of [...finished].sort((a, b) => a.end - b.end))
+      console.log(
+        `  ${Math.round(atMs(r.start))}-${Math.round(atMs(r.end))} ms ${(r.bytes / 1024).toFixed(1)} KB ${new URL(r.url).pathname}`,
+      );
   const kind = (r: { type: string; url: string }) =>
     r.type === "Script" || /\.js(\?|$)/.test(r.url)
       ? "js"

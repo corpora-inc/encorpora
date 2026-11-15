@@ -140,7 +140,7 @@ async function open(
         ? route.fulfill({ json: me(state) })
         : route.fulfill({ status: 401, json: { error: "sign_in_required" } });
     }
-    if (path === "/api/v1/catalog")
+    if (/^\/api\/v1\/catalog(?:\/map)?$/.test(path))
       return route.fulfill({
         json: { skills: [], templates: [], lessons: [], mode: "hosted" },
       });

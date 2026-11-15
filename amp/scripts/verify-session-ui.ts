@@ -80,7 +80,7 @@ async function fixturePage(family: (token: string) => FamilySummary) {
   page.on("pageerror", (error) => errors.push(error.message));
   await page.route("**/api/v1/**", async (route) => {
     const path = new URL(route.request().url()).pathname;
-    if (path === "/api/v1/catalog")
+    if (/^\/api\/v1\/catalog(?:\/map)?$/.test(path))
       return route.fulfill({
         json: { templates: [], lessons: [], skills: [], mode: "fixture" },
       });

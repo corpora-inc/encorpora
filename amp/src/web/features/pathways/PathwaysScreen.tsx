@@ -80,7 +80,6 @@ const viewOptions = [
   { value: "grades" as const, label: "Grades" },
   { value: "3d" as const, label: "3D" },
 ];
-/** This device's last choice of view; the grades view until there is one. */
 /** The 3D map is three.js (about 140 KB compressed), and the grades view is
  * the default: the map's code loads when it is chosen, and is fetched while
  * the browser is idle once Pathways shows, so choosing it is immediate. */
@@ -93,6 +92,7 @@ const MapWaiting = () => (
     aria-busy="true"
   />
 );
+/** This device's last choice of view; the grades view until there is one. */
 function savedView(): MapMode {
   try {
     return localStorage.getItem(VIEW_KEY) === "3d" ? "3d" : "grades";

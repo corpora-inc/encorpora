@@ -17,6 +17,7 @@ import {
   profileLearner,
 } from "./adult-learner";
 import { request } from "./api";
+import { AppError } from "./AppError";
 import {
   catalogSchema,
   progressSchema,
@@ -29,9 +30,19 @@ import {
   secondParentChildren,
 } from "../features/second-parent/api";
 
+/** The curriculum as the map reads it: skills and problem types, without
+ * the lessons' text (1.17 MB compressed in the full `/catalog`). An API from
+ * before `/catalog/map` existed answers 404; the full catalog still serves. */
 export const skillCatalogOptions = queryOptions({
   queryKey: ["pathways-catalog"],
-  queryFn: ({ signal }) => request("/catalog", catalogSchema, { signal }),
+  queryFn: ({ signal }) =>
+    request("/catalog/map", catalogSchema, { signal }).catch(
+      (error: unknown) => {
+        if (error instanceof AppError && error.status === 404)
+          return request("/catalog", catalogSchema, { signal });
+        throw error;
+      },
+    ),
   staleTime: 60_000,
 });
 export const learnerEvidenceOptions = (

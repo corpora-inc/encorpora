@@ -583,7 +583,7 @@ test("CP-2 r3 M1: an old loader that resumes after a new session neither asks no
       calls.push({ url, token: options?.token });
       return url === "/me"
         ? me
-        : url === "/catalog"
+        : url === "/catalog" || url === "/catalog/map"
           ? { skills: [] }
           : { marker: `answer from ${options?.token}` };
     },
@@ -635,7 +635,7 @@ test("the real LegacyApp consent route refuses withdrawal until replacement /me 
   };
   const withdrawn = vi.fn();
   const network = vi.fn(async (url: string, init?: RequestInit) => {
-    if (url === "/api/v1/catalog")
+    if (url === "/api/v1/catalog" || url === "/api/v1/catalog/map")
       return Response.json({
         templates: [],
         lessons: [],

@@ -109,7 +109,7 @@ try {
   await page.unrouteAll({ behavior: "wait" });
   await page.close();
   const map = await browser.newPage();
-  await map.route("**/api/v1/catalog", (route) =>
+  await map.route(/\/api\/v1\/catalog(?:\/map)?$/, (route) =>
     route.fulfill({
       json: {
         skills,
