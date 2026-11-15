@@ -1,4 +1,3 @@
-import { CurriculumDetailsControl } from "../curriculum/CurriculumDetails";
 import { Fragment, useEffect, useRef, useState, type ReactNode } from "react";
 import {
   Link,
@@ -146,7 +145,6 @@ export default function DrawerContents({
     </Link>
   );
   const kind = space?.space ?? null;
-  const storeLearner = useLearnerStore((state) => state.learnerId);
   const learners =
     kind === "family" && space?.space === "family" ? space.learners : [];
   const chosen =
@@ -185,8 +183,8 @@ export default function DrawerContents({
       {(view.error || view.identityError) && (
         <div className={styles.error} role="alert">
           {view.identityError
-            ? "Account details could not be loaded."
-            : "Learning details could not be loaded."}{" "}
+            ? "Your account didn’t load."
+            : "Your learning details didn’t load."}{" "}
           <button onClick={view.retry}>Try again</button>
         </div>
       )}
@@ -284,8 +282,6 @@ export default function DrawerContents({
           {practiceControls}
           {/* The screen's own settings (practice adjustments) portal here. */}
           <div ref={setDrawerSettings} data-drawer-settings />
-          {/* Grade numbers are a learner's setting: not a class's. */}
-          <CurriculumDetailsControl variant="row" />
         </div>
       )}
       {account && !student && groups.length > 0 && (
@@ -322,14 +318,7 @@ export default function DrawerContents({
         {!learning && !family && (
           <div ref={setDrawerSettings} data-drawer-settings />
         )}
-        {family ? (
-          <ThisDevice
-            gradeNumbers={!!chosen && storeLearner === chosen.id}
-            learner={chosen?.name}
-          />
-        ) : (
-          <FeedbackPreferences />
-        )}
+        {family ? <ThisDevice /> : <FeedbackPreferences />}
       </div>
     </>
   );

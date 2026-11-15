@@ -11,6 +11,7 @@ import type {
   WorkItem,
 } from "../../../../schools/teacher-contracts";
 import {
+  byArea,
   fitScale,
   LevelRows,
   WHOLE_SCALE,
@@ -40,8 +41,8 @@ export const areaRowLink: RowLink = (area, { children, ...props }) => (
   </EntityLink>
 );
 
-/** Levels on every strand: overall first, then each strand by the work in
- * it, as error bars on one fitted scale (ui/level-range), over the
+/** Levels on every strand: overall first, then each strand under its area
+ * of math, the five in order, as error bars on one fitted scale (ui/level-range), over the
  * student's own grade when there is one. Before any work, the overall row
  * is not measured yet: the whole scale, searching, with one line under it,
  * and nothing opens. With `openAreas`, each measured row opens its area. */
@@ -51,9 +52,13 @@ export function RecordLevels({
   openAreas = false,
   holdFirst = false,
   found,
+  crossCutting = false,
   plain = false,
 }: {
   record: ProgressRecord;
+  /** A teacher's record: modeling and reasoning too, after the five areas
+   * (ui/level-range `byArea`). A family's leaves them out. */
+  crossCutting?: boolean;
   /** A parent reads it: each row's range in grade words, not decimals. */
   plain?: boolean;
   /** The line under the level before there's any work to read it from. */
@@ -102,10 +107,14 @@ export function RecordLevels({
       </div>
     );
   }
-  const areas = record.strands.flatMap((strand) => {
-    const estimate = level!.strands[strand.id];
-    return estimate ? [{ id: strand.id, label: strand.label, estimate }] : [];
-  });
+  // Every strand under its area of math, in the five areas' order.
+  const areas = byArea(
+    record.strands.flatMap((strand) => {
+      const estimate = level!.strands[strand.id];
+      return estimate ? [{ id: strand.id, label: strand.label, estimate }] : [];
+    }),
+    { crossCutting },
+  );
   const grade = reference ? ([reference.from, reference.to] as const) : null;
   const scale = fitScale(
     [level!.overall, ...areas.map((area) => area.estimate)],

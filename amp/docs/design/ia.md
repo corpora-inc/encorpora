@@ -26,14 +26,14 @@ One drawer, one place switcher (`PlaceSwitcher`). A person may hold several plac
 - **Practice as someone else** is a page (`/me/profiles`) reached from the drawer under My practice. It holds the saved profiles, recently used ones, and "Try a level…". While practicing as a profile, the bar keeps its way back: to where the mode was started ("Back to Grade 1 Math"), else "Back to my own practice" (see Navigation below).
 - **One tab header per place.** Navigating within a place never swaps in another place's tab bar. A family, a tutor or a lone teacher never lands on a school-level page.
 
-| Place | Who | Tabs | Bar action |
-|---|---|---|---|
-| My practice | an adult learner | Overview · Pathways · Inventory | ▶ Practice |
-| Family | a parent, the second parent | Today · Map · Time · Workbooks · People · Settings | ▶ Practice (picks a child) |
-| Class (tutor, co-op) | a tutor | Today · Map · Time · Workbooks · People · Settings | Start class |
-| Class (school) | a teacher | Today · Map · Grades · Time · Workbooks · Students · Settings | Start class |
-| School | an admin | Overview · Classes · Staff · Activity · Settings | none |
-| Account | everyone, from the drawer | Sign-in · Learners · Billing · Privacy | none |
+| Place                | Who                         | Tabs                                                          | Bar action                 |
+| -------------------- | --------------------------- | ------------------------------------------------------------- | -------------------------- |
+| My practice          | an adult learner            | Overview · Pathways · Inventory                               | ▶ Practice                 |
+| Family               | a parent, the second parent | Today · Map · Time · Workbooks · People · Settings            | ▶ Practice (picks a child) |
+| Class (tutor, co-op) | a tutor                     | Today · Map · Time · Workbooks · People · Settings            | Start class                |
+| Class (school)       | a teacher                   | Today · Map · Grades · Time · Workbooks · Students · Settings | Start class                |
+| School               | an admin                    | Overview · Classes · Staff · Activity · Settings              | none                       |
+| Account              | everyone, from the drawer   | Sign-in · Learners · Billing · Privacy                        | none                       |
 
 - **A place with one class opens on that class's Today**, never on a list of one (teacher demo, family, second parent).
 - **The roster tab is named by the org's kind:** "People" in a family org (a family or a tutor's class), where it holds children, the second parent and co-teachers. It is "Students" in a school's class.
@@ -68,6 +68,7 @@ The founder (Q-67, Q-69, Q-70): "Almost everything should be addressable and lin
 ### Phase 2: the rest of the places
 
 Done:
+
 - Sheets opened by a search key close with `closeSearch`: a gradebook's evidence, curve and export sheets, a Time day sheet, Students' student and add sheets, and Calendar's edit sheet. Settings → Export now comes back to Settings.
 - Pages of their own go Back to where they were opened, else to their logical parent (`useCloseClick`): Report cards, Sign-in cards, the Start-class board, a workbook day and a funded invoice claim. Their labels read "Back" where the opener varies.
 - The lesson reader goes Back to Progress or to the skill it was opened from.
@@ -79,6 +80,7 @@ Done:
 ### Phase 3
 
 Done:
+
 - Pathways' skill panel is the `skill` layer, the learner's view of the entity the school side uses. `/pathways/<skill>` and `?skill=` redirect to it. Inventory opens the same layer over its list.
 - The crawler's page list comes from the route table and the entity registry; unreachable routes are named with a reason.
 - A family org (a family's or a tutor's) has no school-level Students or Standing. Their old addresses open the family's own equivalents in its class: Students → People (`roster`, any open student layer kept), Standing and a class's standing drill → Map. The crawler checks both, and that no family or tutor screen links to them.
@@ -89,28 +91,29 @@ Every setting lives in exactly one place, chosen by its scope: school (or distri
 
 **One home per scope.** For a school or district, that is the Settings tab. For a class, it is the class's Settings tab. For a learner, it is Account → Learners. For the account, it is the Account tabs. For a device, it is the drawer.
 
-| Setting | Scope | Its one home | Elsewhere, only a link |
-|---|---|---|---|
-| School year dates and terms (None · Semesters · Trimesters · Quarters) | school | School Settings → School year and terms | a class's Settings links to the school's |
-| The same, for a family, a tutor or a lone class | class | Class Settings → School year | — |
-| Grading periods a class grades by (Full year · Semesters · Trimesters · Quarters) | class | Class Settings | — |
-| Student experience: levels shown, standings, what a board counts, devices | school default, class override | School Settings → Student experience; Class Settings → Student experience, for what the school leaves open | — |
-| Weekly practice target | class | Class Settings | its progress shows on Today and Time |
-| License and seats | school | School Settings → License | the Overview's seat line |
-| Data agreement, what AMP collects, export, deletion | school | School Settings → Privacy and data | — |
-| Google and Microsoft sign-in, rostering | school | School Settings → Integrations | Staff → Sign-in help |
-| Staff and their roles | school | Staff | — |
-| Class code and join link | class | Class Settings | the Start class board shows it |
-| Roster and sign-in cards | class | Students (school class) or People (family org) | — |
-| Second parent, co-teachers, other families' children | family org | People | — |
-| A learner's name, birth year, SAT focus, deletion | learner | Account → Learners | — |
-| Plan, renewal, receipts | account | Account → Billing | the allowance pause and Continue lead there |
-| Sign-in methods and passkeys | account | Account → Sign-in | — |
-| Consent and the account's own data | account | Account → Privacy | — |
-| Practice profiles | adult | Practice as someone else (`/me/profiles`) | the drawer, under My practice |
-| An adult's own workbooks | adult | Workbooks (`/learners/<own>/workbooks`), its own place | the drawer, directly under Practice |
-| A child's workbooks | family or class | the place's Workbooks tab | — |
-| Show grade numbers, sound, haptics | device | the drawer | — |
+| Setting                                                                           | Scope                          | Its one home                                                                                               | Elsewhere, only a link                                  |
+| --------------------------------------------------------------------------------- | ------------------------------ | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| School year dates and terms (None · Semesters · Trimesters · Quarters)            | school                         | School Settings → School year and terms                                                                    | a class's Settings links to the school's                |
+| The same, for a family, a tutor or a lone class                                   | class                          | Class Settings → School year                                                                               | —                                                       |
+| Grading periods a class grades by (Full year · Semesters · Trimesters · Quarters) | class                          | Class Settings                                                                                             | —                                                       |
+| Student experience: levels shown, standings, what a board counts, devices         | school default, class override | School Settings → Student experience; Class Settings → Student experience, for what the school leaves open | —                                                       |
+| Weekly practice target                                                            | class                          | Class Settings                                                                                             | its progress shows on Today and Time                    |
+| License and seats                                                                 | school                         | School Settings → License                                                                                  | the Overview's seat line                                |
+| Data agreement, what AMP collects, export, deletion                               | school                         | School Settings → Privacy and data                                                                         | —                                                       |
+| Google and Microsoft sign-in, rostering                                           | school                         | School Settings → Integrations                                                                             | Staff → Sign-in help                                    |
+| Staff and their roles                                                             | school                         | Staff                                                                                                      | —                                                       |
+| Class code and join link                                                          | class                          | Class Settings                                                                                             | the Start class board shows it                          |
+| Roster and sign-in cards                                                          | class                          | Students (school class) or People (family org)                                                             | —                                                       |
+| Second parent, co-teachers, other families' children                              | family org                     | People                                                                                                     | —                                                       |
+| A learner's name, birth year, SAT focus, deletion                                 | learner                        | Account → Learners                                                                                         | —                                                       |
+| Plan, renewal, receipts                                                           | account                        | Account → Billing                                                                                          | the allowance pause and Continue lead there             |
+| Sign-in methods and passkeys                                                      | account                        | Account → Sign-in                                                                                          | —                                                       |
+| Consent and the account's own data                                                | account                        | Account → Privacy                                                                                          | —                                                       |
+| Practice profiles                                                                 | adult                          | Practice as someone else (`/me/profiles`)                                                                  | the drawer, under My practice                           |
+| An adult's own workbooks                                                          | adult                          | Workbooks (`/learners/<own>/workbooks`), its own place                                                     | the drawer, directly under Practice                     |
+| A child's workbooks                                                               | family or class                | the place's Workbooks tab                                                                                  | —                                                       |
+| Show grade level (what a child sees as themselves)                                | learner                        | the child's settings, on their page                                                                        | a school's "Show levels to students" can also hide them |
+| Sound, haptics                                                                    | device                         | the drawer                                                                                                 | —                                                       |
 
 **An optional choice always has a way back.** Every segmented control that sets something optional includes None or Off, so a choice can always be undone (terms: None · Semesters · Trimesters · Quarters; standings: Off · Class · School). A picker that only views something (a term in the gradebook, a period on Time) needs no None.
 
@@ -166,6 +169,7 @@ Each of these is that person's own composition of shared components (rule 6). Th
   - a good day.
 
   It ends with a compact This week line. Map is its own tab, so Today has no class map. The class name is the title, with the date under it, and there's no greeting by name.
+
 - **Map:** a wide matrix with one row per student, one area at a time, in a K–12 band. A student opens inside the class (`map/<student>`).
 - **Grades, Time:** full-width tables, with the gradebook as the reference.
 - **Students:** the roster, sign-in cards, and adding a student.
@@ -185,12 +189,12 @@ Each of these is that person's own composition of shared components (rule 6). Th
 
 ### Widths
 
-| Content | Width |
-|---|---|
-| Reading text: lessons, explanations, account settings, forms | a 68-character measure (max 720 px); forms use `--width-form` (480 px) |
-| Dashboards, tables, maps, charts | the content width, `--width-content-wide` (1120 px), with 24 px gutters (16 px on phones) |
-| The class map, gradebook and time grid | can use the full viewport less the gutters once the table needs it |
-| Practice | full screen, edge to edge, no card around the problem |
+| Content                                                      | Width                                                                                     |
+| ------------------------------------------------------------ | ----------------------------------------------------------------------------------------- |
+| Reading text: lessons, explanations, account settings, forms | a 68-character measure (max 720 px); forms use `--width-form` (480 px)                    |
+| Dashboards, tables, maps, charts                             | the content width, `--width-content-wide` (1120 px), with 24 px gutters (16 px on phones) |
+| The class map, gradebook and time grid                       | can use the full viewport less the gutters once the table needs it                        |
+| Practice                                                     | full screen, edge to edge, no card around the problem                                     |
 
 **A single-column page is centred in the viewport:** /me, the account pages, a reading page, a settings form, a lesson. A dashboard or table that uses the content width starts at the content column's left edge. Within a place, every page's title sits at the top of its own column, so moving between tabs never shifts the title vertically.
 

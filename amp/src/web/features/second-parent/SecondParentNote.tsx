@@ -12,10 +12,8 @@ export function SecondParentNote({ me }: { me: SignedInMe }) {
     <section className="family-section" data-second-parent-note>
       <h2 tabIndex={-1}>{family.className}</h2>
       <p>
-        You’re a parent in {family.className}. You see the class and the
-        children’s progress, can let a child practice on your device, and
-        practice free yourself. The parent who invited you manages billing,
-        consent and the children’s names.
+        The parent who invited you manages billing, consent and the
+        children’s names.
       </p>
       <Link
         to="/$"

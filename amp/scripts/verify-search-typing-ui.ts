@@ -100,7 +100,7 @@ const screens: Screen[] = [
   {
     id: "lessons",
     path: "/lessons",
-    label: "Search lessons",
+    label: "Search",
     param: "q",
   },
   {
@@ -112,7 +112,7 @@ const screens: Screen[] = [
   {
     id: "inventory",
     path: "/inventory",
-    label: "Search your skills",
+    label: "Search",
     param: "topic",
   },
 ];

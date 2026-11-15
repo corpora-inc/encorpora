@@ -101,8 +101,6 @@ export function FamilyMissingScreen() {
           </Link>
         }
       >
-        This page isn’t part of a family. Today has everything your kids are
-        working on.
       </EmptyState>
     </FamilyFrame>
   );

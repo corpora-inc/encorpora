@@ -178,7 +178,7 @@ export function IntegrationsScreen() {
               </Row>
               <Row
                 title="Gradebook export"
-                detail="Any class’s grades as a spreadsheet, or as OneRoster results for your SIS, from that class’s gradebook."
+                detail="A spreadsheet or OneRoster results, from each class’s gradebook."
               >
                 {data.firstClass && (
                   <Link

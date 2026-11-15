@@ -106,9 +106,9 @@ export function ClassPeople({
           title={secondParent ? "Grown-ups" : "Co-teachers"}
           lead={
             !secondParent
-              ? "A co-teacher sees the whole group, including other families’ children."
+              ? "A co-teacher sees every child in the group."
               : second.isSuccess && !grownUps
-                ? "A second parent or a co-teacher sees the class and can let a child practice on their device."
+                ? "They see the class and can let a child practice."
                 : undefined
           }
           rows={

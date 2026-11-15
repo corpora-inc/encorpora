@@ -38,13 +38,7 @@ vi.mock("@tanstack/react-router", () => ({
   ),
 }));
 vi.mock("../../curriculum/CurriculumDetails", () => ({
-  CurriculumDetailsControl: () => <span data-testid="curriculum" />,
-  useCurriculumDetails: () => ({
-    shown: false,
-    ready: true,
-    decided: false,
-    setShown: () => {},
-  }),
+  useCurriculumDetails: () => ({ shown: true, ready: true, scope: "test" }),
 }));
 vi.mock("../../practice/FeedbackPreferences", () => ({
   FeedbackPreferences: () => null,

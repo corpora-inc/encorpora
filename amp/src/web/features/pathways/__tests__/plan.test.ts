@@ -3,7 +3,8 @@ import { skills } from "../../../../curriculum/catalog";
 import {
   bands,
   bandsHere,
-  neighborhood,
+  areaParam,
+  areaSlot,
   planRows,
   type MapSkill,
 } from "../model";
@@ -29,7 +30,7 @@ test("the flat pathway holds every skill once, a row per band in order", () => {
     row.areas.forEach((list, area) =>
       list.forEach((s) => {
         expect(s.gradeBand).toBe(row.band);
-        expect(neighborhood(s)).toBe(area);
+        expect(areaSlot(s)).toBe(area);
       }),
     );
 });
@@ -44,7 +45,55 @@ test("a band with no skills has no row; an unknown band sits with the first", ()
   expect(rows.map((row) => row.band)).toEqual(["K", "3", "precalculus"]);
   expect(rows[0]!.areas[4]!.map((s) => s.id)).toEqual(["d"]);
   expect(rows[1]!.areas[0]!.map((s) => s.id)).toEqual(["a"]);
-  expect(rows[1]!.areas[3]!.map((s) => s.id)).toEqual(["b"]);
+  expect(rows[1]!.areas[2]!.map((s) => s.id)).toEqual(["b"]);
+});
+
+test("one area chosen: only its skills, and only the bands that have them", () => {
+  const rows = planRows(
+    [
+      skill("a", "3", "number"),
+      skill("b", "3", "geometry"),
+      skill("c", "precalculus", "trigonometry"),
+      skill("d", "5", "data"),
+    ],
+    "geometry",
+  );
+  expect(rows.map((row) => row.band)).toEqual(["3", "precalculus"]);
+  expect(rows.map((row) => row.areas.flat().map((s) => s.id))).toEqual([
+    ["b"],
+    ["c"],
+  ]);
+});
+
+test("within a band, an area runs easiest to hardest, after its prerequisites", () => {
+  const at = (
+    id: string,
+    prerequisites: string[],
+    difficulty?: number,
+  ): MapSkill => ({ ...skill(id, "4", "geometry"), prerequisites, difficulty });
+  const rows = planRows([
+    at("hard", [], 3.9),
+    at("builds-on-hard", ["hard"], 3.1),
+    at("easy", [], 3.2),
+    // Through another area and back: still after what it builds on.
+    { ...skill("bridge", "4", "number"), prerequisites: ["easy"] },
+    at("after-bridge", ["bridge"], 3.0),
+  ]);
+  expect(rows[0]!.areas[2]!.map((s) => s.id)).toEqual([
+    "easy",
+    "after-bridge",
+    "hard",
+    "builds-on-hard",
+  ]);
+});
+
+test("the address's area: one of the five, anything else is all", () => {
+  expect(areaParam("geometry")).toBe("geometry");
+  expect(areaParam("data")).toBe("data");
+  expect(areaParam("Geometry & measurement")).toBeNull();
+  expect(areaParam("modeling")).toBeNull();
+  expect(areaParam(undefined)).toBeNull();
+  expect(areaParam(["geometry"])).toBeNull();
 });
 
 test("Where you are covers the bands in range, else the nearest band", () => {

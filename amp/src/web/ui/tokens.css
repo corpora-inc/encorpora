@@ -614,7 +614,8 @@
 }
 
 /* The curriculum atlas is an immersive dark scene in either application theme.
-   Text/surface roles stay paired; subject hues encode neighborhoods, not results. */
+   Text/surface roles stay paired; subject hues encode the five areas of math
+   (curriculum/areas.ts, in order), not results. */
 :root {
   --atlas-surface: #071019;
   --atlas-on-surface: #edf4fa;
@@ -626,10 +627,9 @@
   --atlas-on-accent: #08231e;
   --atlas-area-0: #62a9ff;
   --atlas-area-1: #ac8bfa;
-  --atlas-area-2: #55e3ed;
-  --atlas-area-3: #f1c779;
+  --atlas-area-2: #f1c779;
+  --atlas-area-3: #ee94bb;
   --atlas-area-4: #73ddba;
-  --atlas-area-5: #ee94bb;
   --atlas-light: #ffffff;
   --atlas-transparent: #ffffff00;
   --atlas-halo-core: #ffffffd9;
@@ -655,5 +655,4 @@
   --atlas-scene-area-2: var(--atlas-area-2);
   --atlas-scene-area-3: var(--atlas-area-3);
   --atlas-scene-area-4: var(--atlas-area-4);
-  --atlas-scene-area-5: var(--atlas-area-5);
 }

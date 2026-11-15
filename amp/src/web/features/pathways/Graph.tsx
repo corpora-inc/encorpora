@@ -1,5 +1,5 @@
 import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { usePopover } from "../../ui/popover-owner";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
@@ -9,9 +9,10 @@ import {
   connections,
   skillLight,
   layout,
-  neighborhood,
-  neighborhoods,
+  areas,
+  areaSlot,
   relatedSkills,
+  type AreaId,
   type MapSkill,
   type Evidence,
 } from "./model";
@@ -46,6 +47,8 @@ type Props = {
   level?: { wide: string[]; close: string[] } | null;
   /** The level is still loading: its control keeps its place. */
   levelLoading?: boolean;
+  /** One area chosen (`?area=`): the others dim, it stays bright. */
+  area?: AreaId | null;
   /** This browser can't draw the map after all (no context, or it was lost
    * mid-session): the page shows the flat pathway in its place. */
   onUnavailable: () => void;
@@ -84,8 +87,17 @@ export function Graph({
   rangeStrand,
   level = null,
   levelLoading = false,
+  area = null,
   onUnavailable,
 }: Props) {
+  const skillsById = useMemo(
+    () => new Map(skills.map((skill) => [skill.id, skill])),
+    [skills],
+  );
+  const areaShown = useRef(area);
+  areaShown.current = area;
+  /** Paint the chosen area bright and the rest dim, in place. */
+  const dim = useRef<() => void>(() => {});
   const unavailable = useRef(onUnavailable);
   unavailable.current = onUnavailable;
   const host = useRef<HTMLDivElement>(null);
@@ -219,9 +231,7 @@ export function Graph({
     const stats = new Map(evidence.map((s) => [s.skillId, s]));
     const styles = getComputedStyle(el);
     const paintRole = (role: string) => styles.getPropertyValue(role).trim();
-    const colors = neighborhoods.map(
-      (n) => new THREE.Color(paintRole(n.color)),
-    );
+    const colors = areas.map((a) => new THREE.Color(paintRole(a.color)));
     const textures: THREE.Texture[] = [];
     const glowCanvas = document.createElement("canvas");
     glowCanvas.width = glowCanvas.height = 128;
@@ -251,7 +261,7 @@ export function Graph({
       glows: THREE.Sprite[] = [];
     for (const p of points) {
       const earned = skillLight(stats.get(p.skill.id));
-      const color = colors[Math.max(0, neighborhood(p.skill))]!;
+      const color = colors[areaSlot(p.skill)]!;
       const material = new THREE.MeshStandardMaterial({
         color: earned.stage
           ? color
@@ -297,8 +307,9 @@ export function Graph({
       glows.push(sprite);
     }
     const areaCenters: THREE.Vector3[] = [];
-    neighborhoods.forEach((_, i) => {
-      const group = points.filter((p) => neighborhood(p.skill) === i);
+    const clouds: THREE.Sprite[] = [];
+    areas.forEach((_, i) => {
+      const group = points.filter((p) => areaSlot(p.skill) === i);
       const center = group
         .reduce(
           (v, p) => v.add(new THREE.Vector3(...p.position)),
@@ -320,6 +331,7 @@ export function Graph({
       cloud.position.z = -12;
       cloud.scale.set(95, 80, 1);
       scene.add(cloud);
+      clouds.push(cloud);
     });
     const edges: {
       from: string;
@@ -561,7 +573,7 @@ export function Graph({
       const result: Label[] = [];
       areaLabelsShown = !close || fitView;
       if (!close || fitView) {
-        neighborhoods.forEach((area, i) => {
+        areas.forEach((area, i) => {
           const p = project(areaPositions[i]!);
           const anchor = project(areaCenters[i]!);
           result.push({
@@ -661,6 +673,12 @@ export function Graph({
     };
     const recolor = (id: string) => {
       current = id;
+      // One area chosen: the rest of the map dims around it.
+      const chosen = areaShown.current
+        ? areas.findIndex((a) => a.id === areaShown.current)
+        : -1;
+      const inArea = (skill: MapSkill) =>
+        chosen < 0 || areaSlot(skill) === chosen;
       const paths = connections(skills, id);
       const related = relatedSkills(skills, id),
         relatedIds = new Set(related.map((s) => s.id));
@@ -704,12 +722,15 @@ export function Graph({
               : new THREE.Color(paintRole("--atlas-border"))
           : edge.lit
             ? colors[
-                Math.max(0, neighborhood(byId.get(edge.to)!.skill))
+                areaSlot(byId.get(edge.to)!.skill)
               ]!.clone().multiplyScalar(0.25)
             : new THREE.Color(paintRole("--atlas-border")).multiplyScalar(0.8);
+        if (!inArea(byId.get(edge.to)!.skill)) tint.multiplyScalar(0.2);
         for (let k = 0; k < steps * 2; k++)
           colorAttribute.setXYZ(i * steps * 2 + k, tint.r, tint.g, tint.b);
-        const lit = id ? ancestor || descendant : edge.lit;
+        const lit =
+          inArea(byId.get(edge.to)!.skill) &&
+          (id ? ancestor || descendant : edge.lit);
         pulseColor.set(lit ? tint.toArray() : [0, 0, 0], i * 3);
       });
       colorAttribute.needsUpdate = true;
@@ -723,11 +744,33 @@ export function Graph({
           paths.dependents.has(idHere) ||
           relatedIds.has(idHere);
         const earned = skillLight(stats.get(idHere));
-        (mesh.material as THREE.MeshStandardMaterial).emissiveIntensity = active
-          ? earned.intensity
-          : 0.015;
-        glows[i]!.material.opacity = active ? earned.glow : 0.025;
+        const bright = inArea(points[i]!.skill);
+        const material = mesh.material as THREE.MeshStandardMaterial;
+        material.emissiveIntensity =
+          active && bright ? earned.intensity : 0.015;
+        if (material.transparent === bright) {
+          material.transparent = !bright;
+          material.needsUpdate = true;
+        }
+        material.opacity = bright ? 1 : 0.16;
+        glows[i]!.material.opacity = active && bright ? earned.glow : 0.025;
       });
+      clouds.forEach((cloud, i) => {
+        cloud.material.opacity = chosen < 0 || chosen === i ? 0.07 : 0.015;
+      });
+      labelHost.current
+        ?.querySelectorAll<HTMLElement>("[data-area]")
+        .forEach((label) => {
+          label.toggleAttribute(
+            "data-dim",
+            chosen >= 0 && Number(label.dataset.area) !== chosen,
+          );
+        });
+    };
+    dim.current = () => {
+      recolor(current);
+      paint();
+      refreshLabels();
     };
     // Immediate prerequisites and next steps: what a framing tries to keep in view.
     const nextSteps = new Map<string, string[]>();
@@ -1274,6 +1317,7 @@ export function Graph({
       renderer.dispose();
       renderer.domElement.remove();
       focus.current = () => {};
+      dim.current = () => {};
       reset.current = () => {};
       home.current = () => false;
       zoom.current = () => {};
@@ -1300,6 +1344,8 @@ export function Graph({
     rangeStrand,
     orbit,
   ]);
+  // Choosing an area dims the others where they are: the camera stays.
+  useEffect(() => dim.current(), [area]);
   // A skill found by the search or the list glides into view, once.
   useEffect(() => {
     if (frame) focus.current(frame.id, firstView.current ? "cut" : "glide");
@@ -1346,6 +1392,11 @@ export function Graph({
             <span
               className="area-label"
               data-area={l.id.slice(5)}
+              data-dim={
+                area && areas[Number(l.id.slice(5))]?.id !== area
+                  ? ""
+                  : undefined
+              }
               key={l.id}
               style={{ left: l.x, top: l.y }}
             >
@@ -1355,6 +1406,13 @@ export function Graph({
             <span
               key={l.id}
               className="skill-label"
+              data-dim={
+                area &&
+                skillsById.get(l.id) &&
+                areas[areaSlot(skillsById.get(l.id)!)]?.id !== area
+                  ? ""
+                  : undefined
+              }
               style={{ left: l.x, top: l.y }}
             >
               {l.title}

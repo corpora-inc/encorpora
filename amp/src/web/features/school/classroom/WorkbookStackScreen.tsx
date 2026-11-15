@@ -225,8 +225,8 @@ export function WorkbookStackScreen({
           }
         >
           {given || family
-            ? "Add a child, then print a workbook made from their own work."
-            : "Add students to the class, then print a workbook for each of them."}
+            ? "Add a child first."
+            : "Add students first."}
         </EmptyState>
       ) : (
         <Stack
@@ -673,10 +673,6 @@ function Stack({
         onOpenChange={setParts}
         title={`${here?.files.length ?? 0} files, ready to print`}
       >
-        <p className={styles.partsIntro}>
-          A class this size prints as several files, so each one stays quick to
-          open.
-        </p>
         <ul className={styles.parts}>
           {here?.files.map((file, index) => (
             <li key={file.name}>

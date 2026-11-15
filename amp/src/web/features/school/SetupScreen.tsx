@@ -585,7 +585,7 @@ function ExperienceStep({
     >
       <h1>What should students see?</h1>
       <p className={styles.lede}>
-        Practice is the same either way. Any class can change this later.
+        Any class can change this later.
       </p>
       <div
         className={styles.cards}

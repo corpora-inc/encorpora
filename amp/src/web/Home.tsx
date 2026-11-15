@@ -14,7 +14,12 @@ import {
   levelRange,
   measured,
 } from "../learning/level-check";
-import { fitScale, LevelRange, LevelRangeStart } from "./ui/level-range";
+import {
+  byArea,
+  fitScale,
+  LevelRange,
+  LevelRangeStart,
+} from "./ui/level-range";
 import { sessionOptions } from "./lib/query";
 import { useHeroAction } from "./lib/shell-slots";
 import { levelTrendOptions } from "./features/level/api";
@@ -50,7 +55,8 @@ type Props = {
 /** The learner's Overview: their level leads, with the one action beside
  * it. Before any answer, the starting estimate from their age; after, the
  * best guess, the likely range, every area practiced and how it narrowed.
- * Grade numbers follow the learner's setting on this device. */
+ * Grade numbers show unless a grown-up or the child's school hides them
+ * from the child (features/curriculum/CurriculumDetails.tsx). */
 export function Home(props: Props) {
   const { shown } = useCurriculumDetails();
   const f = props.frontier;
@@ -90,14 +96,17 @@ export function Home(props: Props) {
       {props.goLabel ?? (props.resuming ? "Continue" : "Start practicing")}
     </button>
   );
+  // Every strand under its area of math (ui/level-range `byArea`).
   const areas = f
-    ? props.strands
-        .filter((strand) => measured(f.strands[strand]))
-        .map((strand) => ({
-          id: strand,
-          label: strandNames[strand] ?? strand,
-          estimate: f.strands[strand]!,
-        }))
+    ? byArea(
+        props.strands
+          .filter((strand) => measured(f.strands[strand]))
+          .map((strand) => ({
+            id: strand,
+            label: strandNames[strand] ?? strand,
+            estimate: f.strands[strand]!,
+          })),
+      )
     : [];
   const freeLine = props.freeLeft != null && (
     <span className="home-free" data-free-left={props.freeLeft}>
@@ -165,9 +174,7 @@ export function Home(props: Props) {
           />
         )}
       </div>
-      {/* Grade numbers are a setting of the drawer (docs/design/ia.md,
-          "Where settings live"); the birth year, a quiet line under the
-          level, centred with it. */}
+      {/* The birth year, a quiet line under the level, centred with it. */}
       {props.changeBirthYear && (
         <button
           className="text-button home-birth-year"

@@ -15,10 +15,7 @@ import type { TemplateMetadata } from "../math/contracts";
 import type { Lesson } from "../content/lessons";
 import type { GlossaryEntry } from "../glossary/types";
 import { gradeOrder, strandNames } from "./BirthYearPrompt";
-import {
-  CurriculumDetailsControl,
-  useCurriculumDetails,
-} from "./features/curriculum/CurriculumDetails";
+import { useCurriculumDetails } from "./features/curriculum/CurriculumDetails";
 import { bandLabel } from "./features/pathways/model";
 import { Select } from "./ui/Select";
 import { Button } from "./ui/Button";
@@ -223,7 +220,6 @@ export function LessonLibraryPlaceholder({
               <span className={styles.searchSlot} />
               <span className={styles.areaSlot} />
             </div>
-            <CurriculumDetailsControl />
             <p className={styles.summary} role="status">
               <Loading inline>Opening lessons…</Loading>
             </p>
@@ -506,8 +502,8 @@ function Library({
               ref={input}
               type="search"
               className={styles.input}
-              aria-label="Search lessons"
-              placeholder="Search lessons and math words"
+              aria-label="Search"
+              placeholder="Search"
               maxLength={80}
               value={text}
               autoComplete="off"
@@ -562,7 +558,6 @@ function Library({
             ))}
           </Select>
         </div>
-        <CurriculumDetailsControl />
         <p className={styles.summary} role="status" aria-live="polite">
           {summary}
         </p>

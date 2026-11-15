@@ -111,8 +111,7 @@ export function LevelScreen() {
         <header className={styles.head}>
           <h1>Practice at a level</h1>
           <p>
-            Any grade, any pace: for someone you help, or just to see. Nothing
-            about anyone is saved, and your own levels never change.
+            Nothing is saved. Your own levels don’t change.
           </p>
         </header>
         <div className={styles.field}>

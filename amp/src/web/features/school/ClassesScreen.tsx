@@ -391,14 +391,10 @@ export function ClassesScreen() {
               </Button>
             </span>
           }
-        >
-          A roster file can bring in every class at once, or add them one at a
-          time.
-        </EmptyState>
+        />
       ) : (
         <EmptyState title="You’re not on a class yet">
-          Your school’s admin adds you to classes from the Staff screen. They’ll
-          appear here as soon as that’s done.
+          Your school’s admin adds you to classes.
         </EmptyState>
       )}
       {canAdd && (
@@ -752,11 +748,6 @@ export function ClassScreen() {
                 >
                   <span>
                     <strong>{org?.name ?? "School"} settings</strong>
-                    <span className={styles.quiet}>
-                      {small
-                        ? "License, privacy and what students see"
-                        : "School year and terms, license, privacy and what students see"}
-                    </span>
                   </span>
                   <span aria-hidden="true">›</span>
                 </Link>
@@ -810,7 +801,7 @@ export function ClassScreen() {
                 title={family ? "No children yet" : "No students yet"}
               >
                 {family
-                  ? "Add a child in Family and they appear here with their grade."
+                  ? "Add a child in Family."
                   : canAdd
                     ? "Add them one at a time, or import a file."
                     : "Students added to this class appear here."}

@@ -1,8 +1,8 @@
 import {
   skillLight,
   layout,
-  neighborhood,
-  neighborhoods,
+  areas,
+  areaSlot,
   type MapSkill,
   type Evidence,
 } from "./model";
@@ -94,7 +94,7 @@ export async function mapShareImage(
         !!stats.get(p.skill.id)?.independentCorrect;
       ctx.globalAlpha = lit ? 0.65 : 0.42;
       ctx.strokeStyle = lit
-        ? color(neighborhoods[neighborhood(p.skill)]!.color)
+        ? color(areas[areaSlot(p.skill)]!.color)
         : color("--atlas-border");
       ctx.lineWidth = lit ? 0.9 : 0.6;
       ctx.beginPath();
@@ -112,7 +112,7 @@ export async function mapShareImage(
   for (const p of points) {
     const point = project(p.position),
       earned = skillLight(stats.get(p.skill.id)),
-      tint = color(neighborhoods[neighborhood(p.skill)]!.color);
+      tint = color(areas[areaSlot(p.skill)]!.color);
     const radius = earned.stage
       ? (1.6 + earned.stage * 0.7) * (1 + earned.score / 20)
       : 1.2;

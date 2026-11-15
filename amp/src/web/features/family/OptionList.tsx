@@ -4,7 +4,8 @@ import styles from "./OptionList.module.css";
 export type Option<V extends string> = {
   value: V;
   label: string;
-  detail: string;
+  /** One line of what it means, only when the name alone doesn't say. */
+  detail?: string;
 };
 
 /**
@@ -80,7 +81,9 @@ export function OptionList<V extends string>({
           <span className={styles.mark} aria-hidden="true" />
           <span className={styles.text}>
             <span className={styles.label}>{option.label}</span>
-            <span className={styles.detail}>{option.detail}</span>
+            {option.detail && (
+              <span className={styles.detail}>{option.detail}</span>
+            )}
           </span>
         </button>
       ))}
