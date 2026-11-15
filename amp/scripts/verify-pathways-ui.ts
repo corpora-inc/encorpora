@@ -1930,9 +1930,7 @@ try {
   });
   await fixture(failed, { failProgress: true });
   await failed.goto(`${origin}/pathways`);
-  await failed
-    .getByText("Progress didn’t load.", { exact: false })
-    .waitFor();
+  await failed.getByText("Progress didn’t load.", { exact: false }).waitFor();
   await failed.getByRole("button", { name: "Retry", exact: true }).waitFor();
   await noOverflow(failed);
   await failed.close();
