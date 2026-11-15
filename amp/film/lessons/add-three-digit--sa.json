@@ -2661,7 +2661,7 @@
    "beats": [
     {
      "speaker": "teacher",
-     "say": "Our two problems: three hundred fifty-eight plus two hundred twenty-five is five hundred eighty-three.",
+     "say": "Back to where we began: three hundred fifty-eight plus two hundred twenty-five is five hundred eighty-three.",
      "pause": 0.05,
      "do": [
       {
