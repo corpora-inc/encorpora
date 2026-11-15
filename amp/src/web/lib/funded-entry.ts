@@ -97,7 +97,9 @@ const schoolStep = (value: unknown) => {
     return undefined;
   }
   if (url.origin !== "https://amp.invalid") return undefined;
-  const step = /^\/school\/(new|start|connect|adopt)$/.exec(url.pathname)?.[1];
+  const step = /^\/school\/(new|start|start\/school|connect|adopt)$/.exec(
+    url.pathname,
+  )?.[1];
   if (!step || !value.startsWith("/school/")) return undefined;
   const kept = new URLSearchParams();
   const org = url.searchParams.get("org");

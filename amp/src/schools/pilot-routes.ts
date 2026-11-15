@@ -6,6 +6,7 @@ import { planRoster, applyRoster } from "./reconcile.js";
 import { actorPerson } from "./authz.js";
 import { syncSsoCredentials } from "./sso-credentials.js";
 import {
+  startSchool,
   startSchoolClass,
   activateClassPilot,
   acceptClassAuthorization,
@@ -71,6 +72,14 @@ export function definePilotRoutes(define: typeof defineSchoolRoute) {
     target: () => ({ kind: "self" }),
     handler: ({ repository, actor, request }) =>
       startSchoolClass(repository, actor.accountId, request.body),
+  });
+  define({
+    method: "POST",
+    url: "/api/v1/school/start-school",
+    action: "school.start",
+    target: () => ({ kind: "self" }),
+    handler: ({ repository, actor, request }) =>
+      startSchool(repository, actor.accountId, request.body),
   });
   define({
     method: "GET",

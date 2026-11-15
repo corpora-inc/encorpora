@@ -17,13 +17,13 @@ export function useDemoOrg(orgId: string) {
 }
 
 /** The bar's one action in a demo: the way to the real thing, never the demo
- * converted in place. A teacher sets up their real class; a school starts
- * with a person (white-glove). Its full label from 640 px, a short one on a
- * phone, always a 44 px target. */
+ * converted in place. A teacher sets up their real class; a school leader
+ * sets up their real school, on their own. Its full label from 640 px, a
+ * short one on a phone, always a 44 px target. */
 export function DemoSetupAction({ school }: { school: boolean }) {
-  const label = school ? "Talk to us" : "Set up your real class";
+  const label = school ? "Set up your real school" : "Set up your real class";
   // A phone keeps a short word beside the arrow: an arrow alone says nothing.
-  const short = school ? "Talk to us" : "Real class";
+  const short = school ? "Real school" : "Real class";
   const look = {
     className: `${bar.actionLink} ${styles.action}`,
     "aria-label": label,
@@ -48,7 +48,7 @@ export function DemoSetupAction({ school }: { school: boolean }) {
     </>
   );
   return school ? (
-    <Link to="/schools" hash="talk" {...look}>
+    <Link to={"/school/start/school" as never} {...look}>
       {content}
     </Link>
   ) : (

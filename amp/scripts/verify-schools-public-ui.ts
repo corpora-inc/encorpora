@@ -492,10 +492,14 @@ async function journeys(browser: Browser, engine: string) {
       `${label} no mail links`,
       (await visitor.page.locator('a[href^="mailto:"]').count()) === 0,
     );
-    await visitor.page
-      .getByRole("link", { name: "Talk to us" })
-      .first()
-      .click();
+    // Talk to us is the page's close, never its first step.
+    check(
+      `${label} sets up a school before talking`,
+      (await visitor.page
+        .getByRole("link", { name: "Set up your school" })
+        .count()) >= 1,
+    );
+    await visitor.page.goto(`${origin}/schools#talk`);
     await visitor.page.waitForURL("**/schools#talk");
     const talk = visitor.page.locator("#talk");
     const before = await talk.boundingBox();

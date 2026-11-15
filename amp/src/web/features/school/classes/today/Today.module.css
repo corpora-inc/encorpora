@@ -22,6 +22,10 @@
   margin-top: var(--space-1);
   color: var(--color-muted-text);
 }
+/* A line held for what may appear in it (the pilot's days left). */
+.heldLine {
+  visibility: hidden;
+}
 @container (min-width: 720px) {
   .head {
     grid-template-columns: minmax(0, 1fr) auto;

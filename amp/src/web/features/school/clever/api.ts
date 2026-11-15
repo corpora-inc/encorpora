@@ -57,7 +57,6 @@ export const connectionStatusSchema = z.object({
 export type ConnectionStatus = z.infer<typeof connectionStatusSchema>;
 export const connectInstitutionSchema = z.strictObject({
   signerName: plainName,
-  signerTitle: plainName,
   agreementVersion: z.literal(AGREEMENT_VERSION),
   authorized: z.literal(true),
   timezone,

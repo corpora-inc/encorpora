@@ -4,6 +4,8 @@ import type { Pool } from "pg";
 import { z } from "zod";
 import type { Authenticator } from "../server/auth.js";
 import type { StudentGrant } from "./contracts.js";
+import { startTeacherPilots } from "./pilots.js";
+import { SchoolRepository } from "./repository.js";
 import {
   establishProviderPrincipal,
   isCleverAdult,
@@ -326,6 +328,21 @@ export async function registerCleverAuthRoutes(
           cookie(reply, PROVIDER_COOKIE, "", secure, 0);
           return reply.redirect(
             `/school/connect#clever-onboarding=${session.token}`,
+          );
+        }
+        // Signing in is all a Clever teacher does: their synced sections
+        // start their pilot now, licensed district or not (founder ruling
+        // 2026-11-15). A failure here never stops the sign-in; the class
+        // offers Start instead.
+        try {
+          await startTeacherPilots(
+            new SchoolRepository(pool),
+            session.accountId,
+          );
+        } catch (error) {
+          request.log.error(
+            { error: error instanceof Error ? error.message : String(error) },
+            "Clever teacher's pilot didn't start",
           );
         }
         cookie(reply, PROVIDER_COOKIE, session.token, secure, 7200);

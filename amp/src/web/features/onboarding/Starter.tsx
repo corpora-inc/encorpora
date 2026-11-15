@@ -327,8 +327,8 @@ function MyselfStep({ session }: { session: AuthSession }) {
   );
 }
 
-/** `/start/school`: the school pitch, a demo to explore and a person to set
- * up the real one with. */
+/** `/start/school`: the school pitch, then setting up the real school
+ * yourself; the demo and a person to talk to are options, never steps. */
 function SchoolStep({ session }: { session: AuthSession }) {
   const { explore, demo, error, setError } = useExplore(session);
   return (
@@ -423,8 +423,7 @@ const FACTS = [
   ["lessons", "lessons, with a hint and an explanation for every problem"],
 ] as const;
 
-/** The school pitch: a demo school to explore now, and a person to set up
- * the real one with. */
+/** The school pitch: set up the school now, explore a demo, or talk to us. */
 function School({
   session,
   exploring,
@@ -479,7 +478,7 @@ function School({
       <section className={styles.talk} aria-labelledby="starter-talk">
         <h2 id="starter-talk">Talk to us</h2>
         <p className={styles.note}>
-          Tell us about your school, and we’ll set AMP up with you.
+          Seats for a whole school or district, or any question.
         </p>
         <TalkToUs />
       </section>

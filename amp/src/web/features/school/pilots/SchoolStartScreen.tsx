@@ -13,7 +13,6 @@ import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { Select } from "../../../ui/Select";
 import { TextField } from "../../../ui/TextField";
 import { Toast } from "../../../ui/Toast";
-import { VerifyEmailStep } from "../../onboarding/VerifyEmailStep";
 import { deviceTimeZone, useStartDemo } from "../../onboarding/starter-api";
 import { currentSession, orgsOptions, refreshSchool } from "../api";
 import { Actions, Aside, PlainPage, plainStyles } from "../PlainPage";
@@ -29,7 +28,6 @@ type Draft = {
   schoolName: string;
   className: string;
   signerName: string;
-  signerTitle: string;
   signerChanged: boolean;
   authorized: boolean;
   /** The course the teacher chose; null follows the class's name. */
@@ -41,7 +39,6 @@ const blank: Omit<Draft, "owner"> = {
   schoolName: "",
   className: "",
   signerName: "",
-  signerTitle: "Teacher",
   signerChanged: false,
   authorized: false,
   course: null,
@@ -78,8 +75,10 @@ function requestId(accountId: string) {
   }
 }
 
-/** `/school/start`: a teacher's class, in one short form. A teacher who
- * already has a school adds the class to it; the agreement is one tick. */
+/** `/school/start`: a teacher's class, in one short form: no confirmed
+ * mailbox, contract or operator first. A teacher who already has a school
+ * adds the class to it; the agreement is one tick, the name comes from the
+ * account, and the class's 30-day pilot starts as it is made. */
 export function SchoolStartScreen() {
   const session = currentSession();
   const account = useQuery(meOptions(session));
@@ -122,10 +121,6 @@ export function SchoolStartScreen() {
         ? draft.signerName
         : (reused?.signerName ??
           (mine ? draft.signerName : (session.name ?? ""))),
-    signerTitle:
-      mine && draft.signerChanged
-        ? draft.signerTitle
-        : (reused?.signerTitle ?? (mine ? draft.signerTitle : "Teacher")),
     // An agreement this school accepted at the current version already
     // authorizes its classes: no second tick, unless the signer changes.
     authorized:
@@ -147,32 +142,13 @@ export function SchoolStartScreen() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [fieldErrors, setFieldErrors] = useState<
-    Partial<
-      Record<"schoolName" | "className" | "signerName" | "signerTitle", string>
-    >
+    Partial<Record<"schoolName" | "className" | "signerName", string>>
   >({});
   useLoggedError(error);
   useLoggedError(prior.error?.message ?? "");
   useLoggedError(Object.values(fieldErrors).filter(Boolean).join(" "));
   if (account.isPending || orgs.isPending || (school && prior.isPending))
     return <LoadingScreen overlay />;
-  if (account.data?.signedIn && account.data.account.confirmationRequired)
-    return (
-      <PlainPage back={from ?? "/start"} backLabel={from ? "Cancel" : "Back"}>
-        <VerifyEmailStep
-          session={session}
-          me={account.data}
-          embedded
-          headingLevel={1}
-          // The email's link comes back to this setup, with its way back.
-          continueTo={
-            from
-              ? `/school/start?from=${encodeURIComponent(from)}`
-              : "/school/start"
-          }
-        />
-      </PlainPage>
-    );
   async function submit() {
     if (busy) return;
     const parsed = startSchoolClassSchema.safeParse({
@@ -184,7 +160,6 @@ export function SchoolStartScreen() {
       className: value.className,
       timezone: deviceTimeZone(),
       signerName: value.signerName,
-      signerTitle: value.signerTitle,
       agreementVersion: AGREEMENT_VERSION,
       authorized: value.authorized,
       names: [],
@@ -197,8 +172,7 @@ export function SchoolStartScreen() {
         if (
           field === "schoolName" ||
           field === "className" ||
-          field === "signerName" ||
-          field === "signerTitle"
+          field === "signerName"
         )
           errors[field] ??= "Use letters, numbers and spaces.";
       }
@@ -236,8 +210,7 @@ export function SchoolStartScreen() {
     value.authorized &&
     (!!school || !!value.schoolName.trim()) &&
     !!value.className.trim() &&
-    !!value.signerName.trim() &&
-    !!value.signerTitle.trim();
+    !!value.signerName.trim();
   return (
     <PlainPage
       title="Set up your class"
@@ -264,7 +237,6 @@ export function SchoolStartScreen() {
                   school: next,
                   authorized: false,
                   signerName: "",
-                  signerTitle: "Teacher",
                   signerChanged: false,
                 })
               }
@@ -322,7 +294,6 @@ export function SchoolStartScreen() {
           key={school?.id ?? NEW}
           acceptedAt={reused?.acceptedAt}
           name={value.signerName}
-          title={value.signerTitle}
           authorized={value.authorized}
           // Changing who signs asks for the agreement again.
           onName={(signerName) =>
@@ -332,18 +303,8 @@ export function SchoolStartScreen() {
               ...(reused && !value.signerChanged ? { authorized: false } : {}),
             })
           }
-          onTitle={(signerTitle) =>
-            edit({
-              signerTitle,
-              signerChanged: true,
-              ...(reused && !value.signerChanged ? { authorized: false } : {}),
-            })
-          }
           onAuthorized={(authorized) => edit({ authorized })}
-          errors={{
-            name: fieldErrors.signerName,
-            title: fieldErrors.signerTitle,
-          }}
+          errors={{ name: fieldErrors.signerName }}
           disabled={busy}
         />
         <Actions>

@@ -659,7 +659,7 @@ async function noSelfServe(browser: Browser) {
       `signed in, ${target} is the school first run`,
       path(page) === "/start/school" &&
         (await page
-          .getByRole("link", { name: "Start with your class" })
+          .getByRole("link", { name: "Set up your school" })
           .count()) === 1 &&
         (await page.getByRole("link", { name: "Sign in" }).count()) === 0,
       path(page),

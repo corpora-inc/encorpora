@@ -18,7 +18,6 @@ import { safeSyncError } from "./clever/sync.js";
 import { AGREEMENT_VERSION } from "./agreement.js";
 import { plainName, timezone, SchoolError } from "./contracts.js";
 import { SchoolRepository } from "./repository.js";
-import { parentAddressConfirmed } from "../server/account-access.js";
 
 import { can, loadActor } from "./authz.js";
 
@@ -52,7 +51,8 @@ export async function connectCleverInstitution(
   const input = z
     .strictObject({
       signerName: plainName,
-      signerTitle: plainName,
+      // No law asks for the signer's title; older clients may still send it.
+      signerTitle: plainName.optional(),
       agreementVersion: z.literal(AGREEMENT_VERSION),
       authorized: z.literal(true),
       timezone,
@@ -322,12 +322,16 @@ export async function registerCleverOnboarding(
     });
     scope.post(
       "/api/v1/school/connection-requests",
-      { bodyLimit: 8192 },
+      {
+        bodyLimit: 8192,
+        // No confirmed mailbox first: no law asks for one (founder ruling
+        // 2026-11-15). Abuse protection that never blocks a real request:
+        // a signed-in account, one open request per contact address
+        // (below), and a generous rate.
+        config: { rateLimit: { max: 20, timeWindow: "1 hour" } },
+      },
       async (request, reply) => {
         const accountId = await options.authenticate(request);
-        const identity = await verifiedCleverIdentity(pool, request, resolving);
-        if (!identity && !(await parentAddressConfirmed(pool, accountId)))
-          throw new SchoolError(403, "confirm_email");
         const input = z
           .strictObject({
             orgId: z.uuid().optional(),
