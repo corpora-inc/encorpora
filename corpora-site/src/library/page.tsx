@@ -24,8 +24,8 @@ export function LearningDiagram({ kind }: { kind: NonNullable<Section["diagram"]
     {estimateExample.map(point => <div className="estimate-row" key={point.count}>
       <strong>{point.count === 0 ? "Starting picture" : `After ${point.count} answers`}</strong>
       <div className="estimate-axis" role="img" aria-label={`Working level ${point.level.toFixed(1)}, model uncertainty plus or minus ${point.sd.toFixed(1)} level units`}>
-        <span className="estimate-range" style={{left: `${globalThis.Math.max(0,point.level-point.sd)/6*100}%`, width: `${(globalThis.Math.min(6,point.level+point.sd)-globalThis.Math.max(0,point.level-point.sd))/6*100}%`}} />
-        <span className="estimate-dot" style={{left:`${point.level/6*100}%`}} />
+        <span className="estimate-range" style={{left: `${(point.level-point.sd)/7*100}%`, width: `${2*point.sd/7*100}%`}} />
+        <span className="estimate-dot" style={{left:`${point.level/7*100}%`}} />
       </div>
     </div>)}
     <div className="estimate-labels"><span>Earlier mathematics</span><span>Later mathematics</span></div>

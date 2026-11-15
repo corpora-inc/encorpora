@@ -1,4 +1,4 @@
-import { estimateFrontier } from "../../../amp/src/learning/frontier.js";
+import { estimateFrontier, strandEstimate } from "../../../amp/src/learning/frontier.js";
 import { reportEstimate } from "../../../amp/src/learning/frontier-report.js";
 
 // A reproducible synthetic example, computed by the shipped estimator at build
@@ -13,5 +13,5 @@ export const estimateExample = [0, 6, 24].map(count => {
   }));
   const frontier = estimateFrontier({start: 3, observations, now: start + Math.max(0, count - 1) * 60000,
     gradeOf: () => 3, strandOf: () => "fractions", guessOf: () => 0});
-  return {count, ...reportEstimate(frontier.strands.fractions ?? {...frontier.overall, sd: frontier.strandPriorSd ?? frontier.overall.sd})};
+  return {count, ...reportEstimate(strandEstimate(frontier, "fractions"))};
 });

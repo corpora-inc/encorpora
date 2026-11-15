@@ -5,6 +5,14 @@ import React, { renderToStaticMarkup } from "../src/react.js";
 import { articles, articleByPath } from "../src/library/catalog.js";
 import { Page, routesFor } from "../src/pages.js";
 import { configSchema } from "../src/config.js";
+import { estimateExample } from "../src/library/estimate-example.js";
+
+test("the estimator example keeps complete uncertainty bands within the diagram", () => {
+  for (const point of estimateExample) {
+    assert.ok(point.level - point.sd >= 0 && point.level + point.sd <= 7);
+  }
+  assert.ok(estimateExample.at(-1)!.sd < estimateExample[0]!.sd);
+});
 
 test("the editorial library exposes readable, connected pages without JavaScript", () => {
   const config = configSchema.parse({});
