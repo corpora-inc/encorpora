@@ -171,8 +171,8 @@ psql "$AMP_DATABASE_URL" -f amp/scripts/activation-funnel.sql
 ```
 
 Any read-only query runner that takes one statement works the same way with
-the file's text, for example the operator's production query wrapper:
-`prodq.sh "$(cat amp/scripts/activation-funnel.sql)"`.
+the file's text, comment lines removed, for example the operator's production
+query wrapper: `prodq.sh "$(grep -v '^--' amp/scripts/activation-funnel.sql)"`.
 
 The screens themselves are measured in the first-party funnel, under the same
 consent and GPC rules as every client event: `setup_step` (persona, step,
