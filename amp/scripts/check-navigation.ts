@@ -35,7 +35,14 @@ const BANNED = [
  * provider's page, development. Everything else moves with the navigation
  * module (EntityLink, useLayers, closeTo, nav/root.tsx for the root). */
 const ALLOWED: Record<string, [count: number, reason: string]> = {
-  "main.tsx": [1, "sign-out: another account leaves a parent's purchase view"],
+  "app/boot.tsx": [
+    1,
+    "sign-out: another account leaves a parent's purchase view",
+  ],
+  "home-entry.tsx": [
+    1,
+    "the light pitch's way on when the app can't load: a full load of it",
+  ],
   "auth.ts": [3, "sign-in and sign-out hand off with a full load"],
   "lib/api.ts": [1, "an ended session reloads into sign-in"],
   "features/school/clever/link.ts": [

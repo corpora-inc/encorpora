@@ -23,6 +23,7 @@ import { lazy, Suspense, useEffect, useRef } from "react";
 import { readContinuation } from "../features/continue/memory";
 import type { AuthSession } from "../auth";
 import { setPitchShown } from "../lib/analytics";
+import { showsPitch } from "../features/pitch/shows-pitch";
 import { CurriculumDetailsProvider } from "../features/curriculum/CurriculumDetails";
 import { AppShell } from "./AppShell";
 import { nativeRuntime } from "../native-runtime";
@@ -235,7 +236,8 @@ const root = createRootRoute({
   },
   errorComponent: RouterError,
   notFoundComponent: lazyRouteComponent(
-    () => import("../features/not-found/NotFoundScreen"), "NotFoundScreen",
+    () => import("../features/not-found/NotFoundScreen"),
+    "NotFoundScreen",
   ),
   // A tab already found to run an older release turns its next navigation
   // into a full page load of the same URL. The current screen stays painted
@@ -279,17 +281,6 @@ const pitch = lazyRouteComponent(
   () => import("../features/pitch/PitchScreen"),
   "PitchScreen",
 );
-/** A signed-out web visitor at `/` meets the parent pitch. A consent email
- * or a payment return opened signed out keeps the app's sign-in prompt,
- * which resumes it. */
-function showsPitch(session: AuthSession | null | undefined) {
-  return (
-    !nativeRuntime &&
-    session === null &&
-    !hasInitialConsentChallenge() &&
-    !hasPurchaseReturn(window.location.search)
-  );
-}
 /** The pitch or the app. Home (`/`) and every other app path render here, in
  * one layout route, so going between them keeps the same app screen mounted:
  * the current problem, the learner and each tab's place survive a visit to

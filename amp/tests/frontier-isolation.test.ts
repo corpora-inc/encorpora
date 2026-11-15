@@ -39,6 +39,7 @@ test("server, web and offline production import graphs exclude experimental fron
   const imports = importsFrom([
     "src/server/main.ts",
     "src/web/main.tsx",
+    "src/web/home-entry.tsx",
     "src/offline/repository.ts",
   ]);
   assert.ok(imports.has(resolve(root, "src/server/mixed-practice.ts")));
