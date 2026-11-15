@@ -925,10 +925,14 @@ function familySpace(
           : `school:${orgId}`,
     // A child's learning screens name the child; the family's own screens
     // name the family.
+    // A child's workbooks are the family's Workbooks: the bar names the
+    // family as its own screens do (its class's name is not the family's).
     label:
       learnerOnly && !workbooks
         ? (learner?.name ?? null)
-        : (org?.name ?? family?.name ?? null),
+        : workbooks && relation === "holder"
+          ? "Your family"
+          : (org?.name ?? family?.name ?? null),
   };
 }
 

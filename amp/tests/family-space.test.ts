@@ -709,7 +709,7 @@ test("D-8: a child's workbooks stay in the family's bar, its Workbooks tab curre
         `family/${A}/settings`,
       ],
     );
-    assert.notEqual(space.label, "Pip");
+    assert.equal(space.label, "Your family");
   }
   // A child's own record keeps its tabs.
   const record = resolveSpace(
