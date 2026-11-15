@@ -201,7 +201,7 @@ export async function recordLearnerActivation(
 const TARGETS = `
 learner AS (
   SELECT l.id,l.account_id FROM amp_learners l
-  WHERE l.id=$1::text AND l.deleted_at IS NULL AND NOT COALESCE(l.simulation,false)
+  WHERE l.id=$1::text AND l.deleted_at IS NULL AND NOT l.simulation
 ), in_demo AS (
   SELECT EXISTS(SELECT 1 FROM learner l JOIN amp_people p ON p.learner_id=l.id
     JOIN amp_orgs o ON o.id=p.tenant_id JOIN amp_orgs r ON r.id=o.path[1]
@@ -234,10 +234,11 @@ WITH ${TARGETS}, steps AS (
 ), counted AS (
   SELECT o.*, CASE WHEN o.has_twenty THEN 0 WHEN o.class_id IS NULL THEN (
       SELECT count(*) FROM (SELECT 1 FROM amp_learners x JOIN amp_attempts a ON a.learner_id=x.id
-        WHERE x.account_id=o.account_id LIMIT $2) n)
+        WHERE x.account_id=o.account_id AND x.deleted_at IS NULL AND NOT x.simulation LIMIT $2) n)
     ELSE (
+      -- Answers in the class: each student's from when they joined it.
       SELECT count(*) FROM (SELECT 1 FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
-        JOIN amp_attempts a ON a.learner_id=p.learner_id
+        JOIN amp_attempts a ON a.learner_id=p.learner_id AND a.created_at>=e.created_at
         WHERE e.class_id=o.class_id AND e.role='student' LIMIT $2) n)
     END AS answers
   FROM open o WHERE NOT (o.has_first AND o.has_twenty)

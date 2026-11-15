@@ -35,7 +35,7 @@ WITH params AS (
   LEFT JOIN amp_activation_milestones c ON c.account_id=m.account_id AND c.step='persona_chosen'
   CROSS JOIN params
   WHERE m.step='account_created'
-    AND m.first_at>=date_trunc('week',now() AT TIME ZONE 'UTC') - make_interval(weeks=>params.weeks-1)
+    AND m.first_at>=(date_trunc('week',now() AT TIME ZONE 'UTC') - make_interval(weeks=>params.weeks-1)) AT TIME ZONE 'UTC'
     AND NOT EXISTS(SELECT 1 FROM amp_account_classifications k
       WHERE 'amp|'||k.user_id=m.account_id AND k.category='internal')
 ), reached AS (

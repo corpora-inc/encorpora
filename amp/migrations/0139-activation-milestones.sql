@@ -14,10 +14,6 @@ CREATE TABLE amp_activation_milestones (
 -- The weekly report reads one step over a date range.
 CREATE INDEX amp_activation_milestones_step_idx ON amp_activation_milestones(step, first_at);
 
--- First-run screens and the ESA/EFA invoice form, step by step.
-ALTER TABLE amp_funnel_events DROP CONSTRAINT amp_funnel_events_event_check;
-ALTER TABLE amp_funnel_events ADD CONSTRAINT amp_funnel_events_event_check CHECK (event IN ('landing_view','try_click','placement_answer','placement_done','map_view','practice_answer','practice_skip','lesson_open','hint_use','mastery','email_saved','session_start','paywall_view','paywall_dismiss','plan_view','plan_select','checkout_start','checkout_return','purchase','learner_added','paid_practice_first','refund_requested','refund','level_check_view','purchase_attempt','purchase_action','trial_problem_view','auth_failure','page_view','problem_rendered','learning_request','client_error','external_runtime_error','account_session','auth_request','pitch_view','video_play','video_progress','buy_click','workbook_click','invite_view','video_seconds','first_interaction','pitch_buy_seen','starter_choice','allowance_pause_view','continue_click','setup_step','invoice_step'));
-
 -- Accounts that started before this release: each milestone from the durable
 -- record it already left (sign-up, learners, answers, workbooks, classes and
 -- demos), demo orgs and simulated learners excluded. Their persona is the
@@ -45,10 +41,11 @@ WITH real_learner AS (
   WHERE l.account_id LIKE 'amp|%'
   UNION
   SELECT t.account_id,a.id,a.created_at FROM teaching t JOIN class_student s ON s.class_id=t.class_id
-  JOIN amp_attempts a ON a.learner_id=s.learner_id WHERE t.family
+  JOIN amp_attempts a ON a.learner_id=s.learner_id AND a.created_at>=s.created_at WHERE t.family
 ), school_answer AS (
+  -- Answers in the class: from when the student joined it.
   SELECT DISTINCT t.account_id,a.id,a.created_at FROM teaching t JOIN class_student s ON s.class_id=t.class_id
-  JOIN amp_attempts a ON a.learner_id=s.learner_id WHERE NOT t.family
+  JOIN amp_attempts a ON a.learner_id=s.learner_id AND a.created_at>=s.created_at WHERE NOT t.family
 ), family_rank AS (
   SELECT account_id,created_at,row_number() OVER (PARTITION BY account_id ORDER BY created_at,id) AS n FROM family_answer
 ), school_rank AS (
@@ -86,3 +83,8 @@ WITH real_learner AS (
 )
 SELECT f.account_id,f.step,p.persona,f.at FROM first f LEFT JOIN persona p USING (account_id)
 ON CONFLICT (account_id,step) DO NOTHING;
+
+-- First-run screens and the ESA/EFA invoice form, step by step. Last, so the
+-- table's lock is held only for its own check, never through the backfill.
+ALTER TABLE amp_funnel_events DROP CONSTRAINT amp_funnel_events_event_check;
+ALTER TABLE amp_funnel_events ADD CONSTRAINT amp_funnel_events_event_check CHECK (event IN ('landing_view','try_click','placement_answer','placement_done','map_view','practice_answer','practice_skip','lesson_open','hint_use','mastery','email_saved','session_start','paywall_view','paywall_dismiss','plan_view','plan_select','checkout_start','checkout_return','purchase','learner_added','paid_practice_first','refund_requested','refund','level_check_view','purchase_attempt','purchase_action','trial_problem_view','auth_failure','page_view','problem_rendered','learning_request','client_error','external_runtime_error','account_session','auth_request','pitch_view','video_play','video_progress','buy_click','workbook_click','invite_view','video_seconds','first_interaction','pitch_buy_seen','starter_choice','allowance_pause_view','continue_click','setup_step','invoice_step'));

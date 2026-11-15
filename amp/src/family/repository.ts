@@ -452,8 +452,11 @@ export class FamilyRepository {
         [accountId],
       );
     }
-    // Activation milestones are the same account-linked measurement.
+    // Activation milestones are account-linked measurement with no learner
+    // in them: the whole family's learning data takes them; one learner's
+    // leaves the account's first run as it was.
     if (
+      !learnerId &&
       (
         await client.query(
           "SELECT to_regclass('amp_activation_milestones') AS relation",
