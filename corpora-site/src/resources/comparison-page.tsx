@@ -124,7 +124,7 @@ export function ComparisonPage({
             question, so an explanation can immediately lead to another attempt.
           </p>
           <p>
-            <a href="/how-it-works/">See how the practice routine works</a>.
+            <a href="/amp/how-it-works/">See how the practice routine works</a>.
           </p>
         </div>
         <ProductShot name="practice" />

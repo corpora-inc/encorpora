@@ -65,8 +65,9 @@ export function LearningDiagram({ kind }: { kind: NonNullable<Section["diagram"]
 
 export function ArticlePage({ article, config }: { article: Article; config: SiteConfig }) {
   const heroDiagram = article.sections.find(s => s.diagram)?.diagram ?? "loop";
+  const breadcrumbs = articleBreadcrumbs(article);
   return <article className="library-page">
-    <nav className="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>{article.path.startsWith("/philosophy/")&&<><a href="/how-it-works/">How AMP works</a><span aria-hidden="true">/</span></>}<span>{article.label}</span></nav>
+    <nav className="breadcrumbs" aria-label="Breadcrumb">{breadcrumbs.map((item, i) => <React.Fragment key={item.path}>{i > 0 && <span aria-hidden="true">/</span>}{i === breadcrumbs.length - 1 ? <span aria-current="page">{item.label}</span> : <a href={item.path}>{item.label}</a>}</React.Fragment>)}</nav>
     <header className="article-hero">
       <div><p className="eyebrow">{article.label}</p><h1>{article.title}</h1><p className="article-deck">{article.introduction}</p>
         <div className="actions"><a className="button" href={config.appUrl ?? "/try/"}>Try AMP free <span aria-hidden="true">↗</span></a><a className="text-link" href="#read">Explore the approach <span aria-hidden="true">↓</span></a></div>
@@ -82,6 +83,11 @@ export function ArticlePage({ article, config }: { article: Article; config: Sit
         {section.example && <aside className="math-example"><h3>{section.example.title}</h3><p><Math text={section.example.text} /></p></aside>}
         {section.diagram && (article.image || section.diagram !== heroDiagram) && <LearningDiagram kind={section.diagram} />}
         {section.shot && <ProductShot name={section.shot} />}
+        {section.images && <div className="article-gallery">{section.images.map(picture => <figure key={picture.src}>
+          <a href={picture.src} target="_blank" rel="noopener" aria-label={`Open full-size image: ${picture.alt}`}><img src={picture.src} alt={picture.alt} width={picture.width} height={picture.height} loading="lazy" decoding="async" /></a>
+          <figcaption>{picture.caption}</figcaption>
+        </figure>)}</div>}
+        {section.links && <nav className="section-links" aria-label={`Explore: ${section.title}`}>{section.links.map(link => <a key={link.href} href={link.href}>{link.label}<span aria-hidden="true"> →</span></a>)}</nav>}
         {section.sources && <div className="source-notes"><span>Research</span><ul>{section.sources.map(source => <li key={source.url}><a href={source.url}>{source.title} ↗</a></li>)}</ul></div>}
       </section>)}
       {article.sample !== undefined && <section className="article-section"><p className="eyebrow">Inside AMP</p><h2>Try the reasoning.</h2><p>A real AMP problem, with its mathematical explanation. Open the reasoning after thinking through the question.</p><Sample index={article.sample} heading="h3" /></section>}
@@ -96,11 +102,14 @@ export function ArticlePage({ article, config }: { article: Article; config: Sit
   </article>;
 }
 
+function articleBreadcrumbs(article: Article) {
+  return [{ path: "/", label: "Corpora" }, { path: "/amp/", label: "AMP" }, ...(article.path.startsWith("/philosophy/") ? [{ path: "/amp/how-it-works/", label: "How AMP works" }] : []), { path: article.path, label: article.label }];
+}
 export function articleStructuredData(article: Article, config: SiteConfig) {
   if (!config.siteUrl) return undefined;
   const url = new URL(article.path, config.siteUrl).href;
   return { "@context": "https://schema.org", "@graph": [
     { "@type": "Article", "@id": `${url}#article`, url, headline: article.title, description: article.description, inLanguage: "en", author: { "@type": "Organization", name: "Corpora", url: config.siteUrl }, publisher: { "@id": new URL("/#organization", config.siteUrl).href }, mainEntityOfPage: url, citation: [...new Set(article.sections.flatMap(s => s.sources?.map(x => x.url) ?? []))] },
-    { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: config.siteUrl }, { "@type": "ListItem", position: 2, name: article.label, item: url }] },
+    { "@type": "BreadcrumbList", itemListElement: articleBreadcrumbs(article).map((item, i) => ({ "@type": "ListItem", position: i + 1, name: item.label, item: new URL(item.path, config.siteUrl).href })) },
   ] };
 }

@@ -1,5 +1,6 @@
 export type Source = { title: string; url: string };
 export type ProductShot = "practice" | "progress" | "practice-profile" | "workbook-controls";
+export type ArticleImage = { src: string; alt: string; caption: string; width: number; height: number };
 export type Section = {
   id: string;
   title: string;
@@ -9,6 +10,8 @@ export type Section = {
   diagram?: "loop" | "review" | "strands" | "discovery" | "estimate";
   sources?: Source[];
   shot?: ProductShot;
+  images?: ArticleImage[];
+  links?: { href: string; label: string }[];
 };
 export type Article = {
   path: string;
@@ -19,6 +22,6 @@ export type Article = {
   sections: Section[];
   related: string[];
   sample?: number;
-  image?: { src: string; alt: string; caption: string; width: number; height: number };
+  image?: ArticleImage;
   questions?: { question: string; answer: string }[];
 };

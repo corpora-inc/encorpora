@@ -1,4 +1,5 @@
 import type { Article } from "./types.js";
+import { workbookImages } from "./workbook-images.js";
 
 export const productArticles: Article[] = [
   {
@@ -46,6 +47,8 @@ export const productArticles: Article[] = [
       {
         id: "paper",
         title: "Paper is a place to think.",
+        images: workbookImages,
+        links: [{ href: "/workbooks/", label: "Choose a free workbook to print" }],
         paragraphs: [
           "Working space matters. A learner can draw a model, annotate a figure, arrange a calculation and explain a step in their own handwriting. AMP’s page layout gives that work room and keeps mathematical notation readable.",
           "The worked key shows the reasoning as well as the answer. Use it for checking, discussion and teaching, then return to an independent problem to see what the learner can use.",
@@ -54,6 +57,7 @@ export const productArticles: Article[] = [
       {
         id: "results",
         title: "Bring the paper evidence back into the path.",
+        links: [{ href: "/amp/how-it-works/", label: "See how paper fits the complete AMP routine" }],
         paragraphs: [
           "In an account-created workbook, record the paper results in AMP. Entering the learner’s answer lets AMP grade it; parent-marked results also contribute evidence. The system distinguishes those kinds of evidence when choosing later work.",
           "A screen-free session can therefore stay connected to future practice. The learner gets the space of paper and the continuity of an adaptive curriculum.",
@@ -62,6 +66,7 @@ export const productArticles: Article[] = [
       {
         id: "free",
         title: "Start with a workbook you can print today.",
+        links: [{ href: "/workbooks/", label: "Browse free workbooks by grade" }, { href: "/plans/", label: "See free and paid access" }],
         paragraphs: [
           "The free workbook library offers grade and course samples from kindergarten through precalculus, in both Letter and A4. Each includes a worked key and requires no account or email.",
           "Create a free AMP account to try five personalized workbooks as well as online practice. A paid plan opens unlimited fresh workbooks for the learners and practice profiles its access covers.",
