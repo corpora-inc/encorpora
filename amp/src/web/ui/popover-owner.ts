@@ -51,6 +51,8 @@ export type Popover = {
 
 /** Open popovers, the most recent last. */
 const stack: Popover[] = [];
+/** Popovers in the frames their opening lays out (see `moved`). */
+const settling = new WeakSet<Popover>();
 let listening = false;
 
 function closeAt(index: number, reason: CloseReason) {
@@ -88,6 +90,9 @@ function listen() {
     for (let index = stack.length - 1; index >= 0; index--) {
       const popover = stack[index]!;
       if (popover.modal || popover.keepOnScroll?.()) continue;
+      // The scroll its own opening caused (the page's scroll anchoring as it
+      // lays out, a press's scroll still landing) is not the reader moving.
+      if (reason === "scroll" && settling.has(popover)) continue;
       closeAt(index, reason);
     }
   };
@@ -119,6 +124,13 @@ export function openPopover(popover: Popover) {
   if (at >= 0) stack.splice(at, 1);
   closeFrom(holder(popover.anchor?.() ?? null) + 1, "replaced");
   stack.push(popover);
+  // Scrolls dispatched in the frames that lay it out belong to the opening.
+  settling.add(popover);
+  if (typeof requestAnimationFrame === "function")
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => settling.delete(popover)),
+    );
+  else settling.delete(popover);
 }
 
 /** This popover closed by itself (or unmounted): forget it, without calling
