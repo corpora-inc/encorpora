@@ -241,14 +241,17 @@ function audit(): Failure[] {
         element.matches(":modal")),
   );
   // A sheet that covers the window is modal in effect: nothing under it
-  // can be read or touched.
+  // can be read or touched. So is any open sheet while the page under it
+  // takes no pointer (a Radix modal sets `pointer-events: none` on the
+  // body): a control under its scrim is not a target anyone can reach.
+  const blocked = getComputedStyle(document.body).pointerEvents === "none";
   for (const sheet of document.querySelectorAll("[role=dialog]")) {
     const box = sheet.getBoundingClientRect();
     if (
       shown(sheet) &&
       !modals.includes(sheet) &&
-      box.width >= vw * 0.9 &&
-      box.height >= window.innerHeight * 0.85
+      (blocked ||
+        (box.width >= vw * 0.9 && box.height >= window.innerHeight * 0.85))
     )
       modals.push(sheet);
   }

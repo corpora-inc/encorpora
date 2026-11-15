@@ -15,6 +15,7 @@ import {
   landingFamily,
 } from "../src/web/features/family/redirects.js";
 import { sharedAccessOf } from "../src/web/features/family/access.js";
+import { repeatsIn } from "./menu-repeats.js";
 
 /*
  * The Family space at its own address (docs/architecture/spaces.md, P2):
@@ -718,4 +719,28 @@ test("D-8: a child's workbooks stay in the family's bar, its Workbooks tab curre
   );
   if (record.space !== "family") throw new Error(record.space);
   assert.equal(record.tabs[0]?.path, `family/${A}/kids/pip`);
+});
+
+test("Q-3: a family's drawer and tabs never offer one feature twice", () => {
+  for (const leaf of [
+    "",
+    "/map",
+    "/workbooks",
+    "/time",
+    "/reports",
+    "/people",
+    "/settings",
+    "/kids/pip",
+    "/kids/pip/pathways",
+    "/kids/wren/inventory",
+  ]) {
+    const space = resolveSpace(
+      { pathname: `/family/${A}${leaf}`, space: "family" },
+      adult(power),
+      { family: familyA },
+    );
+    assert.equal(space.space, "family", leaf);
+    assert.equal(space.space === "family" && space.status, "ready", leaf);
+    assert.deepEqual(repeatsIn(space), [], `/family/${A}${leaf}`);
+  }
 });

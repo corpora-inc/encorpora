@@ -165,7 +165,8 @@ export function learnerTabs(): TabItem[] {
 }
 
 /** An adult's own practice: practice, where they are, and their workbooks on
- * a phone; their map, inventory and practice profiles under More. Their own
+ * a phone; their map and inventory under More. Practice at a level (with its
+ * saved profiles) is the drawer's one entry, never a tab as well. Their own
  * learning tabs name nobody (self is implicit); a practice profile's name
  * the profile they are practicing as (which has its own levels, and no
  * workbooks). */
@@ -185,7 +186,6 @@ export function meTabs(
         : tab("levels", "Levels", `me/profiles/${profile}`, true),
       { ...tab("pathways", "Pathways", "pathways", true), ...as },
       { ...tab("inventory", "Inventory", "inventory"), ...as },
-      tab("profiles", "Profiles", "me/profiles"),
     ];
   }
   return [
@@ -203,7 +203,6 @@ export function meTabs(
       : []),
     tab("pathways", "Pathways", "pathways"),
     tab("inventory", "Inventory", "inventory"),
-    tab("profiles", "Profiles", "me/profiles"),
   ];
 }
 

@@ -686,15 +686,19 @@ function meSpace(
     !!workbooks &&
     (pathname === `/${workbooks}` || pathname.startsWith(`/${workbooks}/`));
   const tabbed = frame?.kind === "progress";
+  // Practice at a level's hub: saved profiles and the way to a level.
+  const hub = pathname.replace(/\/+$/, "") === "/me/profiles";
   const active = onWorkbooks
     ? "workbooks"
-    : frame?.kind === "progress"
-      ? frame.active === "overview"
-        ? "levels"
-        : frame.active
-      : frame?.kind === "practice"
-        ? "practice"
-        : base.active;
+    : hub
+      ? "profiles"
+      : frame?.kind === "progress"
+        ? frame.active === "overview"
+          ? "levels"
+          : frame.active
+        : frame?.kind === "practice"
+          ? "practice"
+          : base.active;
   const destination = (
     id: string,
     label: string,
@@ -705,7 +709,7 @@ function meSpace(
     label,
     path,
     icon,
-    current: id === active && (tabbed || frame?.kind === "practice"),
+    current: id === active && (tabbed || hub || frame?.kind === "practice"),
   });
   return {
     ...base,
@@ -738,31 +742,20 @@ function meSpace(
           (tabbed && !own) || (frame?.kind === "plain" && frame.practice)
           ? ["practice"]
           : [],
-    destinations: own
-      ? [
-          destination("practice", "Practice", "practice", "learn"),
-          destination("levels", "Levels", "me", "level"),
-          destination("workbooks", "Workbooks", workbooks!, "workbooks"),
-          destination(
-            "level-practice",
-            "Practice at a level",
-            "me/level",
-            "someone",
-          ),
-          destination("profiles", "Profiles", "me/profiles", "someone"),
-        ]
-      : [
-          ...(me?.adultPractice?.eligible
-            ? [destination("start", "Practice yourself", "me/start", "learn")]
-            : []),
-          destination(
-            "level-practice",
-            "Practice at a level",
-            "me/level",
-            "someone",
-          ),
-          destination("profiles", "Profiles", "me/profiles", "someone"),
-        ],
+    // One entry per feature (Q-3): Practice at a level opens its hub, where
+    // a level and the saved profiles both start.
+    destinations: [
+      ...(own
+        ? [
+            destination("practice", "Practice", "practice", "learn"),
+            destination("levels", "Levels", "me", "level"),
+            destination("workbooks", "Workbooks", workbooks!, "workbooks"),
+          ]
+        : me?.adultPractice?.eligible
+          ? [destination("start", "Practice yourself", "me/start", "learn")]
+          : []),
+      destination("profiles", "Practice at a level", "me/profiles", "someone"),
+    ],
     place: "me",
     // No place name (Q-204): the tabs and the screen say whose this is, and
     // a practice profile is named by the bar's own "Practicing as" mark.
