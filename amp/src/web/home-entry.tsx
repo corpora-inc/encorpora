@@ -58,9 +58,12 @@ function showPitch() {
     onCaughtError: reportRender("caught"),
     onUncaughtError: (error) => {
       reportRender("uncaught")(error);
-      // The app's own `/` has its error screens and recovery.
-      root = null;
-      bootApp();
+      // The app's own `/` has its error screens and recovery: it takes the
+      // page once React has finished with this root.
+      setTimeout(() => {
+        close();
+        bootApp();
+      });
     },
   });
   const close = () => {
