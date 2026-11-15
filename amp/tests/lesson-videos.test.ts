@@ -77,6 +77,45 @@ test("publishing rejects an unapproved voice even with Python optimization enabl
   }
 });
 
+test("YouTube uploader accepts a declared wordless film but never a missing voice", () => {
+  const dir = mkdtempSync(join(tmpdir(), "amp-video-wordless-"));
+  try {
+    writeFileSync(join(dir, "description.txt"), "A wordless film.");
+    const run = (manifest: object) => {
+      const path = join(dir, "manifest.json");
+      writeFileSync(path, JSON.stringify(manifest));
+      return spawnSync(
+        "python3",
+        [
+          "-O",
+          new URL("../scripts/publish-lesson-youtube.py", import.meta.url).pathname,
+          path,
+          dir,
+          join(dir, "receipt.json"),
+          "--title",
+          "Example",
+          "--description-file",
+          join(dir, "description.txt"),
+          "--plan",
+          path,
+        ],
+        { encoding: "utf8", timeout: 5000 },
+      );
+    };
+    const assets = {
+      video: { url: "https://local.invalid/missing.mp4", sha256: "0".repeat(64) },
+    };
+    const missing = run({ id: "x", version: 1, assets });
+    assert.match(missing.stderr, /ValueError: Unapproved voice/);
+    const wordless = run({ id: "x", version: 1, narration: "none", assets });
+    assert.equal(wordless.status, 1);
+    assert.doesNotMatch(wordless.stderr, /Unapproved voice/);
+    assert.match(wordless.stderr, /missing\.mp4/);
+  } finally {
+    rmSync(dir, { recursive: true });
+  }
+});
+
 test("video bindings name real families and immutable assets with approved narration", () => {
   const bound = new Set<string>();
   for (const video of lessonVideos) {
