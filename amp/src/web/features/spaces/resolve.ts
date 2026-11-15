@@ -635,6 +635,15 @@ function studentSpace(
         icon: "learn",
         current: frame?.kind === "practice",
       },
+      // Their own record, the way out of a problem: standings never show
+      // during one, so this is where a class's board is reached from.
+      {
+        id: "progress",
+        label: "Progress",
+        path: "overview",
+        icon: "level",
+        current: frame?.kind === "progress",
+      },
       ...(me?.school?.standings && frame?.kind !== "practice"
         ? [
             {
