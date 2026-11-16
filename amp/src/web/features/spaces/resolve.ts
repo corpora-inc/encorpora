@@ -29,7 +29,10 @@ import {
 } from "./tabs";
 import { spaceWords, type SpaceWords } from "./words";
 import { parentHome } from "../family/parent-home";
-import { settingsFamilyOf } from "../family/settings-family";
+import {
+  settingsFamilyOf,
+  usesFamilySettingsFrame,
+} from "../family/settings-family";
 
 /*
  * The resolution truth table (docs/architecture/spaces.md, "Resolution"):
@@ -472,10 +475,7 @@ function resolveOnce(
       space: "public",
       entry: entryOf(match.pathname, route),
     };
-  if (
-    route === "account" &&
-    /^\/account\/(security|billing|privacy)(\/|$)/.test(match.pathname)
-  ) {
+  if (route === "account" && usesFamilySettingsFrame(match.pathname)) {
     const family = settingsFamilyOf(resources.families);
     if (family && resources.family?.familyId === family.familyId)
       return familyPlaceSpace(

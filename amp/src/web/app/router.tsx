@@ -1,5 +1,8 @@
 import { familyOptions, familyPlacesOptions } from "../features/family/api";
-import { settingsFamilyOf } from "../features/family/settings-family";
+import {
+  settingsFamilyOf,
+  usesFamilySettingsFrame,
+} from "../features/family/settings-family";
 import {
   carryFamilyPractice,
   restoreFamilyPractice,
@@ -280,7 +283,7 @@ const root = createRootRoute({
     if (
       session &&
       !session.accountId.startsWith("school:") &&
-      /^\/account\/(security|billing|privacy)(\/|$)/.test(location.pathname)
+      usesFamilySettingsFrame(location.pathname)
     ) {
       // Resolve the frame before committing the screen, so account settings
       // never flash a different tab set while the parent's family loads.

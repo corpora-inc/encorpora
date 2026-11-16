@@ -9,7 +9,10 @@ import { classesOptions, orgOptions } from "../school/api";
 import { classYearOptions } from "../school/org/org-api";
 import { pilotOptions } from "../school/pilots/api";
 import { familyOptions, familyPlacesOptions } from "../family/api";
-import { settingsFamilyOf } from "../family/settings-family";
+import {
+  settingsFamilyOf,
+  usesFamilySettingsFrame,
+} from "../family/settings-family";
 import { shellFrame } from "../navigation/shell-frame";
 import {
   resolveSpace,
@@ -131,9 +134,7 @@ export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
   const orgId =
     frame?.kind === "class" || frame?.kind === "school" ? frame.org : "";
   const classId = frame?.kind === "class" ? frame.classId : "";
-  const accountSettings = /^\/account\/(security|billing|privacy)(\/|$)/.test(
-    match?.pathname ?? "",
-  );
+  const accountSettings = usesFamilySettingsFrame(match?.pathname ?? "");
   const families = useQuery({
     ...familyPlacesOptions(auth),
     enabled: (!!classId || accountSettings) && !!session && !student,

@@ -175,7 +175,7 @@ The server holds this, not only the screens: while a school class's students can
 
 The account's own settings have neutral addresses, and every older one opens the same screen:
 
-A parent opens Billing, Privacy and Sign-in inside the family frame, with Settings selected and a direct return to the family's Settings. The account's own family takes precedence over a family shared by another parent; a teaching-only membership does not supply personal settings context. Adults without a family use the Account frame. The account URLs and authorization remain independent of the surrounding navigation.
+A parent opens Billing, Privacy and Sign-in inside the family frame, with Settings selected and a direct return to the family's Settings. Card checkout and education-fund invoice forms keep that same frame. The account's own family takes precedence over a family shared by another parent; a teaching-only membership does not supply personal settings context. Adults without a family use the Account frame. The account URLs and authorization remain independent of the surrounding navigation.
 
 | Address                                                                              | Older address (same screen)                                            |
 | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------- |

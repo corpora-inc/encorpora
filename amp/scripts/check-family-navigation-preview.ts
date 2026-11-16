@@ -38,10 +38,14 @@ try {
   page.setDefaultTimeout(15000);
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
+  await page.goto(origin + base);
   for (const theme of ["light", "dark"])
     for (const width of [320, 390, 768, 1000, 1280]) {
       await page.setViewportSize({ width, height: 900 });
-      await page.goto(origin + base);
+      // Navigate within the app, as a parent does. Repeated full reloads
+      // would turn a layout sweep into an account-session rate-limit test.
+      const today = page.locator("nav[data-tabs] [data-tab=today]");
+      await today.click();
       await page
         .getByRole("button", {
           name: `Practice with ${child.name}`,
@@ -168,7 +172,8 @@ try {
         ["privacy", "Privacy"],
         ["security", "Profile"],
       ]) {
-        await page.goto(origin + `/account/${path}`);
+        await page.locator(`a[href="/account/${path}"]`).click();
+        await page.waitForURL(origin + `/account/${path}`);
         await page
           .getByRole("heading", { name: title, exact: true })
           .first()
@@ -194,6 +199,22 @@ try {
           .click();
         await page.waitForURL(origin + base + "/settings");
       }
+      await page.goto(origin + "/purchase/funded");
+      await page
+        .getByRole("heading", { name: "Pay with education funds", exact: true })
+        .waitFor();
+      assert.deepEqual(
+        await tabs.locator("[data-tab]:visible").allTextContents(),
+        ["Today", "Progress", "Settings"],
+      );
+      assert.equal(
+        await tabs.locator('[aria-current="page"]').innerText(),
+        "Settings",
+      );
+      await page.getByRole("link", { name: "← Billing", exact: true }).click();
+      await page.waitForURL(origin + "/account/billing");
+      await page.getByRole("link", { name: "‹ Settings", exact: true }).click();
+      await page.waitForURL(origin + base + "/settings");
       await page.getByRole("link", { name: /People & sharing/ }).click();
       await page.waitForURL(origin + base + "/people");
       await page

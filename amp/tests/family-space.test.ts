@@ -192,6 +192,8 @@ test("personal account settings keep a parent's family without adopting a teachi
     "/account/billing/records",
     "/account/privacy",
     "/account/security",
+    "/purchase/funded",
+    "/purchase/annual",
   ]) {
     const space = resolveSpace(
       { pathname: path, space: "account" },
