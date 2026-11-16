@@ -13,6 +13,7 @@ import {
   type Basis,
   type Vec3,
 } from "../src/web/features/pathways/camera";
+import { overviewCamera } from "../src/web/features/pathways/overview";
 
 // The plain top view: the camera looks down -z with y up.
 const basis: Basis = { right: [1, 0, 0], up: [0, 1, 0], back: [0, 0, 1] };
@@ -125,4 +126,43 @@ test("glides take 400 to 700 ms, longer for longer moves", () => {
   assert.equal(glideDuration(10, 1), 700);
   assert(glideDuration(0.5, 1) > 400 && glideDuration(0.5, 1) < 700);
   assert(glideDuration(0, 4) > glideDuration(0, 1.2));
+});
+
+test("Q-9: the first view frames the whole map, centred, with a margin, at every size", () => {
+  // Five areas' worth of skills, spread wide and deep like the real map.
+  const points: Vec3[] = [];
+  for (let area = 0; area < 5; area++)
+    for (let n = 0; n < 40; n++)
+      points.push([
+        (area - 2) * 90 + ((n * 37) % 60) - 30,
+        ((n * 53) % 220) - 110 + area * 6,
+        ((n * 29) % 40) - 20,
+      ]);
+  for (const size of [
+    { width: 320, height: 520 },
+    { width: 390, height: 640 },
+    { width: 768, height: 900 },
+    { width: 1280, height: 640 },
+    { width: 1600, height: 820 },
+    { width: 2400, height: 700 },
+  ]) {
+    const pose = overviewCamera(points, size.width, size.height);
+    const distance = pose.position[2] - pose.target[2];
+    const xs: number[] = [];
+    for (const p of points) {
+      const depth = pose.position[2] - p[2];
+      assert(depth > 0, "every skill is in front of the camera");
+      const unit = size.height / (2 * tangent * depth);
+      const x = size.width / 2 + (p[0] - pose.target[0]) * unit;
+      const y = size.height / 2 - (p[1] - pose.target[1]) * unit;
+      xs.push(x);
+      // Inside the view, clear of its edges, the toolbar and the hint.
+      assert(x >= 16 && x <= size.width - 16, `${size.width}: x ${x}`);
+      assert(y >= 40 && y <= size.height - 16, `${size.width}: y ${y}`);
+    }
+    // Centred across, and zoomed out to the map, not into one area.
+    const middle = (Math.min(...xs) + Math.max(...xs)) / 2;
+    assert(Math.abs(middle - size.width / 2) < size.width * 0.05);
+    assert(distance < pose.maxDistance);
+  }
 });

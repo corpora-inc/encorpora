@@ -1,4 +1,5 @@
 import { dropCapability } from "../../capability-entry";
+import { approvalSignup } from "./signup-cookie";
 import { carriedLink, carryLink, dropCarry } from "../../lib/link-carry";
 import { queryOptions } from "@tanstack/react-query";
 import { z } from "zod";
@@ -83,7 +84,6 @@ export const approvals = {
     ),
 };
 
-const SIGNUP_COOKIE = "amp.family-approval";
 /** Carried while the parent signs in, creates an account or switches account
  * from it (`lib/link-carry.ts`); `null` lets it go, held and carried alike.
  * Only the fragment and this carry hold the token, so it stays out of every
@@ -100,11 +100,5 @@ export function rememberApproval(
   }
   approvalSignup(fragment);
 }
-/** The proof account creation reads, for an hour at most. */
-export function approvalSignup(fragment: string | null) {
-  const secure = location.protocol === "https:" ? "; Secure" : "";
-  document.cookie = fragment
-    ? `${SIGNUP_COOKIE}=${encodeURIComponent(fragment)}; Path=/api/auth; Max-Age=3600; SameSite=Lax${secure}`
-    : `${SIGNUP_COOKIE}=; Path=/api/auth; Max-Age=0; SameSite=Lax${secure}`;
-}
+export { approvalSignup };
 export const rememberedApproval = () => carriedLink("/family/approve");

@@ -29,8 +29,8 @@ One drawer, one place switcher (`PlaceSwitcher`). A person may hold several plac
 | Place                | Who                         | Tabs                                                          | Bar action                 |
 | -------------------- | --------------------------- | ------------------------------------------------------------- | -------------------------- |
 | My practice          | an adult learner            | Overview · Pathways · Inventory                               | ▶ Practice                 |
-| Family               | a parent, the second parent | Today · Map · Time · Workbooks · People · Settings            | ▶ Practice (picks a child) |
-| Class (tutor, co-op) | a tutor                     | Today · Map · Time · Workbooks · People · Settings            | Start class                |
+| Family               | a parent, the second parent | Today · Progress · Settings            | ▶ Practice (picks a child) |
+| Class (tutor, co-op) | a tutor                     | Today · Progress · Settings            | Start class                |
 | Class (school)       | a teacher                   | Today · Map · Grades · Time · Workbooks · Students · Settings | Start class                |
 | School               | an admin                    | Overview · Classes · Staff · Activity · Settings              | none                       |
 | Account              | everyone, from the drawer   | Sign-in · Learners · Billing · Privacy                        | none                       |
@@ -111,7 +111,7 @@ Every setting lives in exactly one place, chosen by its scope: school (or distri
 | Consent and the account's own data                                                | account                        | Account → Privacy                                                                                          | —                                                       |
 | Practice profiles                                                                 | adult                          | Practice as someone else (`/me/profiles`)                                                                  | the drawer, under My practice                           |
 | An adult's own workbooks                                                          | adult                          | Workbooks (`/learners/<own>/workbooks`), its own place                                                     | the drawer, directly under Practice                     |
-| A child's workbooks                                                               | family or class                | the place's Workbooks tab                                                                                  | —                                                       |
+| A child's workbooks                                                               | family or class                | child’s progress page → Workbooks (family), or Workbooks tab (class)                                                                                  | —                                                       |
 | Show grade level (what a child sees as themselves)                                | learner                        | the child's settings, on their page                                                                        | a school's "Show levels to students" can also hide them |
 | Sound, haptics                                                                    | device                         | the drawer                                                                                                 | —                                                       |
 
@@ -141,15 +141,14 @@ Each of these is that person's own composition of shared components (rule 6). Th
 ### Parent (Family)
 
 - **First run:** "Parent" → each child's name (a parent-entered nickname) and birth year → the first child's first problem on this device. Consent and access are steps inside that flow, never a separate page.
-- **Today, day 0:** a centred hero. Each child's name is shown with "Let Pip practice here" as the one prominent action, and the class code sits quietly below for a child's own device.
+- **Today, day 0:** a centred hero. Each child's name is shown with "Practice" as the one prominent action, and the class code sits quietly below for a child's own device.
 - **Today, with data:** the Today feed, led by the children.
-  - First, one row per child: name, this week (minutes, problems, last practiced), and the one action that works now, "Let Pip practice here" or, when the free problems are used, "Continue with AMP". Access dates belong in Billing, not on Today.
+  - First, one row per child: name, this week (minutes, problems, last practiced), and the one action that works now, "Practice" or, when the free problems are used, "Continue with AMP". Access dates belong in Billing, not on Today.
   - Then feed items when there is something to act on: a skill missed three times, no practice in a week, ready for more, the weekly target.
   - Then a compact This week line.
-- **Map:** one full-width panel per child on one K–12 axis, each child at their own level, with a grade line in each panel. A child opens inside the class.
-- **Time, Workbooks:** per child. The workbook builder opens in a sheet.
-- **People:** the children, the second parent, co-teachers, children from other families, and their invitations. None of these are on Today.
-- **Settings:** the class code (the Join element), the school year with None · Semesters · Trimesters · Quarters, the weekly target, and what children see (levels, standings, devices).
+- **Progress:** one child opens directly to their record, with current estimates, daily practice time, earned skills and recent work. Several children share a comparison; each has an explicit View progress link. Detailed practice time and report cards are linked from Progress.
+- **Workbooks:** each child’s printable practice and recorded paper work.
+- **Settings:** children, people and sharing, the class code, the school year, the weekly target, and what children see (levels, standings, devices).
 - **The second parent** sees the same Family screens. She sees no buying, consent, naming or deletion.
 
 ### Tutor (a family org's class of students from other families)

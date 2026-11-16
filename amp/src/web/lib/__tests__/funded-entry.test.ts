@@ -69,7 +69,7 @@ test("authentication returns only to fixed internal paths", () => {
     "/family/private",
     "javascript:alert(1)",
   ])
-    expect(continuationUrl({ return: value })).toBe("/start");
+    expect(continuationUrl({ return: value })).toBe("/");
   expect(
     continuationUrl({
       ...campaign,
@@ -163,7 +163,7 @@ test("gift invitations survive sign-in without sharing a recipient address or to
   expect(continuationUrl({ return: "access" })).toBe("/access");
 });
 
-test("free account sign-in preserves a fixed practice destination and funding context", () => {
+test("free entry resumes account home while preserving funding context", () => {
   expect(
     continuationUrl({
       return: "free-practice",
@@ -171,7 +171,7 @@ test("free account sign-in preserves a fixed practice destination and funding co
       ...campaign,
     }),
   ).toBe(
-    "/start?utm_campaign=ar-efa-launch&utm_source=facebook&utm_medium=paid-social&program=az-esa&return=free-practice",
+    "/?utm_campaign=ar-efa-launch&utm_source=facebook&utm_medium=paid-social&program=az-esa",
   );
   expect(
     continuationSearch({ return: "free-practice", program: "bad" }),
@@ -187,7 +187,7 @@ test("a shared-state card retains its identity without inventing a funding progr
   });
   expect(
     continuationUrl({ return: "free-practice", entry: "openai-math-plans" }),
-  ).toBe("/start?entry=openai-math-plans&return=free-practice");
+  ).toBe("/?entry=openai-math-plans");
   expect(
     continuationSearch({
       return: "free-practice",
@@ -209,7 +209,7 @@ test("NH free practice retains its program and attribution through authenticatio
   };
   expect(continuationSearch(nh)).toEqual(nh);
   expect(continuationUrl(nh)).toBe(
-    "/start?utm_campaign=nh-efa-launch&utm_source=google&utm_medium=cpc&utm_content=nh-efa-adaptive-v1&program=nh-efa&return=free-practice",
+    "/?utm_campaign=nh-efa-launch&utm_source=google&utm_medium=cpc&utm_content=nh-efa-adaptive-v1&program=nh-efa",
   );
   expect(
     fundedAttribution(nh, { programId: "nh-efa", jurisdiction: "NH" }),

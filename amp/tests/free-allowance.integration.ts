@@ -637,54 +637,69 @@ test(
 );
 
 test(
-  "unnamed teens cannot send free text, student sessions stay isolated, and withdrawal stops collection",
+  "a learner 13 or older is outside COPPA: unrestricted, free text allowed, withdrawal stops only the under-13 child",
   database,
   async (t) => {
     const f = await fixture(t);
-    const learner = (
-      await f.post("/api/v1/learners", { birthYear: 2010 })
-    ).json();
+    // Born 2010: 13 or older on every day of this year. Born 2016: a child.
+    const teen = (await f.post("/api/v1/learners", { birthYear: 2010 })).json();
     const sibling = (
       await f.post("/api/v1/learners", { birthYear: 2016 })
     ).json();
-    const base = `/api/v1/learners/${learner.id}`;
-    const problem = generateProblem(
-      "add-within-20",
-      `unnamed-flag:${learner.id}`,
-    );
-    await f.repository.transaction(f.account, learner.id, (tx) =>
-      tx.saveProblems([problem]),
-    );
-    assert.equal(
-      (await f.post(`${base}/skips`, { problemId: problem.public.id }))
-        .statusCode,
-      200,
-    );
-    const report = {
-      problemId: problem.public.id,
-      requestId: randomUUID(),
-      reasons: ["other"],
-      skipped: true,
-      client: { kind: "web", viewport: { width: 390, height: 844 } },
+    // The teen is never on the restricted basis; the child is.
+    assert.equal(teen.namePending, false);
+    assert.equal(sibling.namePending, true);
+    const skipped = async (learnerId: string) => {
+      const problem = generateProblem(
+        "add-within-20",
+        `unnamed-flag:${learnerId}`,
+      );
+      await f.repository.transaction(f.account, learnerId, (tx) =>
+        tx.saveProblems([problem]),
+      );
+      assert.equal(
+        (
+          await f.post(`/api/v1/learners/${learnerId}/skips`, {
+            problemId: problem.public.id,
+          })
+        ).statusCode,
+        200,
+      );
+      return {
+        problemId: problem.public.id,
+        requestId: randomUUID(),
+        reasons: ["other"],
+        skipped: true,
+        client: { kind: "web", viewport: { width: 390, height: 844 } },
+      };
     };
-    const refused = await f.post(`${base}/problem-flags`, {
-      ...report,
+    const teenReport = await skipped(teen.id);
+    const noted = await f.post(`/api/v1/learners/${teen.id}/problem-flags`, {
+      ...teenReport,
       note: "A fixture note",
     });
+    assert.equal(noted.statusCode, 201, noted.body);
+    // Free text from a child under 13 is refused; preset reasons are not.
+    const childReport = await skipped(sibling.id);
+    const refused = await f.post(
+      `/api/v1/learners/${sibling.id}/problem-flags`,
+      { ...childReport, note: "A fixture note" },
+    );
     assert.equal(refused.statusCode, 400, refused.body);
     assert.equal(
-      (await f.post(`${base}/problem-flags`, report)).statusCode,
+      (await f.post(`/api/v1/learners/${sibling.id}/problem-flags`, childReport))
+        .statusCode,
       201,
     );
     const session = await f.post(
-      `/api/v1/family/learners/${learner.id}/practice-here`,
+      `/api/v1/family/learners/${teen.id}/practice-here`,
     );
     assert.equal(session.statusCode, 201);
     const headers = { authorization: `Bearer ${session.json().token}` };
     const children = await f.app.inject({ url: "/api/v1/learners", headers });
     assert.deepEqual(
       children.json().learners.map((row: { id: string }) => row.id),
-      [learner.id],
+      [teen.id],
     );
     assert.equal(
       (
@@ -702,13 +717,15 @@ test(
       "UPDATE amp_parent_consents SET withdrawn_at=now() WHERE account_id=$1",
       [f.account],
     );
+    // Withdrawal stops collection for the child under 13 (16 CFR 312.6(a)(2)).
     assert.equal(
-      (await f.post(`${base}/batches`, { count: 1 })).statusCode,
+      (await f.post(`/api/v1/learners/${sibling.id}/batches`, { count: 1 }))
+        .statusCode,
       403,
     );
     assert.equal(
       (
-        await f.post(`${base}/workbooks`, {
+        await f.post(`/api/v1/learners/${sibling.id}/workbooks`, {
           date: "2026-11-09",
           number: 1,
           paper: "letter",
@@ -720,6 +737,15 @@ test(
     assert.equal(
       (await f.post("/api/v1/learners", { birthYear: 2016 })).statusCode,
       403,
+    );
+    // The teen keeps learning, and another teen can still be added.
+    const teenBatch = await f.post(`/api/v1/learners/${teen.id}/batches`, {
+      count: 1,
+    });
+    assert.equal(teenBatch.statusCode, 200, teenBatch.body);
+    assert.equal(
+      (await f.post("/api/v1/learners", { birthYear: 2011 })).statusCode,
+      201,
     );
   },
 );

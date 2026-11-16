@@ -1,3 +1,5 @@
+import { useQuery } from "@tanstack/react-query";
+import { fundingRecordsOptions } from "../funding/records";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import type { TodayTodo } from "../../../schools/teacher-contracts";
@@ -14,6 +16,9 @@ import { useHandOver } from "../school/classes/today/use-hand-over";
 import { WeekFacts } from "../school/classes/today/WeekFacts";
 import { fullDay } from "../school/classes/teacher-shared";
 import type { FamilyChild } from "./api";
+import { useLearnerStore } from "../../learner-store";
+import { useStartOwnPractice } from "../me/api";
+import { rememberPlace } from "../onboarding/place-memory";
 import { AddKidsSheet } from "./AddKids";
 import { accessUntil, sharedAccessOf } from "./access";
 import { DevicesSheet } from "./Devices";
@@ -59,6 +64,33 @@ export function AccessFact({ child }: { child: FamilyChild }) {
   );
 }
 
+/** Billing stays in the parent's family frame; the child's practice stays primary. */
+function ChildBillingLink({
+  child,
+  pending,
+}: {
+  child: FamilyChild;
+  pending: boolean;
+}) {
+  const label = !child.access.hasAccess
+    ? "Get access"
+    : pending
+      ? "View invoice"
+      : "Manage access";
+  return (
+    <Link
+      to="/account/billing"
+      hash={pending ? "funded-invoices-title" : undefined}
+      className={styles.accessLink}
+      aria-label={`${label} for ${child.name}`}
+      data-child-billing={child.id}
+      onClick={() => useLearnerStore.getState().select(child.id)}
+    >
+      {label}
+    </Link>
+  );
+}
+
 /** The figures of a child's week: minutes, problems and when they last
  * practiced, or that they haven't started. */
 export function WeekFactsOf({
@@ -95,7 +127,7 @@ export function WeekFactsOf({
 
 /**
  * The one action that works for a child now: their practice on this device
- * ("Let Maya practice here"), else, for the parent who buys, "Continue with
+ * ("Practice"), else, for the parent who buys, "Continue with
  * AMP", which returns to the screen it was opened from with access active.
  * Never a button the server would refuse (premium rule 2).
  */
@@ -122,12 +154,13 @@ export function ChildAction({
         aria-busy={starting === child.id || undefined}
         disabled={starting !== null && starting !== child.id}
         onClick={() => onPracticeHere(child.id)}
+        aria-label={`Practice with ${child.name}`}
         data-practice-here={child.id}
       >
         <svg viewBox="0 0 16 16" aria-hidden="true">
           <path d="M4.5 2.8v10.4L13 8 4.5 2.8Z" />
         </svg>
-        Let {child.name} practice here
+        Practice
       </Button>
     );
   if (child.capabilities.continuePurchase && child.paths.continue)
@@ -234,6 +267,12 @@ function familyEntries(
 export function FamilyTodayScreen() {
   const place = useFamilyPlace();
   const { data, family, session, me } = place;
+  const billing = useQuery({
+    ...fundingRecordsOptions(session),
+    enabled:
+      !!data?.capabilities.manageBilling &&
+      data.children.some((child) => child.access.hasAccess),
+  });
   const navigate = useNavigate();
   const search = useRouterState({
     select: (state) => state.location.search as Record<string, unknown>,
@@ -260,6 +299,8 @@ export function FamilyTodayScreen() {
   const manageDevices = children.some(
     (child) => child.capabilities.manageDevices,
   );
+  const startOwn = useStartOwnPractice(session);
+  const [ownError, setOwnError] = useState("");
   const practiceSelf = !!me?.adultPractice?.learner;
   const startSelf = !practiceSelf && me?.adultPractice?.eligible === true;
   const entries = data
@@ -280,13 +321,14 @@ export function FamilyTodayScreen() {
       })
     : [];
   return (
-    <FamilyFrame place={place}>
+    <FamilyFrame
+      place={place}
+      title={
+        data && <span data-today-title="">{fullDay(data.today.date)}</span>
+      }
+    >
       {data && (
         <div className={styles.page}>
-          <header className={styles.head}>
-            {/* The day, never a greeting or the parent's own name. */}
-            <h1 data-today-title="">{fullDay(data.today.date)}</h1>
-          </header>
           {children.length === 0 ? (
             place.holder ? (
               <EmptyState
@@ -342,7 +384,24 @@ export function FamilyTodayScreen() {
                     </Link>
                     <span className={styles.facts}>
                       <WeekFactsOf child={child} today={data.today.date} />
-                      {!sharedAccess && <AccessFact child={child} />}
+                      {(!sharedAccess || data.capabilities.manageBilling) && (
+                        <span className={styles.accessCell}>
+                          {!sharedAccess && <AccessFact child={child} />}
+                          {data.capabilities.manageBilling && (
+                            <ChildBillingLink
+                              child={child}
+                              pending={
+                                billing.data?.requests.some(
+                                  (invoice) =>
+                                    invoice.learnerId === child.id &&
+                                    invoice.fundedPending?.status ===
+                                      "funded-pending",
+                                ) ?? false
+                              }
+                            />
+                          )}
+                        </span>
+                      )}
                     </span>
                     <span className={styles.action}>
                       <ChildAction
@@ -351,12 +410,50 @@ export function FamilyTodayScreen() {
                         accountId={session.accountId}
                         starting={starting}
                         onPracticeHere={(id) => void handOver(id)}
+                        primary
                       />
                     </span>
                   </li>
                 ))}
+                {(practiceSelf || startSelf) && (
+                  <li
+                    className={`${styles.kid} ${styles.self}`}
+                    data-family-self
+                  >
+                    <span className={styles.kidName}>You</span>
+                    <span className={styles.action}>
+                      <Button
+                        variant="secondary"
+                        aria-label="Practice as yourself"
+                        aria-busy={startOwn.isPending || undefined}
+                        onClick={() => {
+                          if (startOwn.isPending) return;
+                          setOwnError("");
+                          void (
+                            practiceSelf
+                              ? Promise.resolve()
+                              : startOwn.mutateAsync(undefined)
+                          )
+                            .then(() => {
+                              rememberPlace(session.accountId, "home");
+                              return navigate({
+                                to: "/$",
+                                params: { _splat: "practice" },
+                                search: { from: `/${familyHref(family)}` },
+                              });
+                            })
+                            .catch(() =>
+                              setOwnError("Practice didn’t start. Try again."),
+                            );
+                        }}
+                      >
+                        Practice
+                      </Button>
+                    </span>
+                  </li>
+                )}
               </ul>
-              {(own && manageDevices) || practiceSelf || startSelf ? (
+              {own && manageDevices ? (
                 <div className={styles.quiet}>
                   <RowList label="More ways to practice">
                     {own && manageDevices && (
@@ -365,26 +462,6 @@ export function FamilyTodayScreen() {
                         meta="A code, a QR code or a printed card"
                         data-own-devices=""
                         onClick={() => setOpen("devices", true)}
-                      />
-                    )}
-                    {(practiceSelf || startSelf) && (
-                      <RowButton
-                        title={
-                          practiceSelf
-                            ? "Practice yourself"
-                            : "Start practicing yourself"
-                        }
-                        meta={
-                          practiceSelf
-                            ? "Levels, practice and workbooks"
-                            : "Free with your children’s plan"
-                        }
-                        data-practice-self=""
-                        onClick={() =>
-                          void navigate({
-                            to: (practiceSelf ? "/me" : "/me/start") as never,
-                          })
-                        }
                       />
                     )}
                   </RowList>
@@ -424,7 +501,13 @@ export function FamilyTodayScreen() {
           )}
         </div>
       )}
-      <Toast message={error} onDismiss={clearError} />
+      <Toast
+        message={error || ownError}
+        onDismiss={() => {
+          clearError();
+          setOwnError("");
+        }}
+      />
     </FamilyFrame>
   );
 }

@@ -1,3 +1,4 @@
+import { workbookFilename } from "../src/workbook/filename";
 import { schoolShellReview } from "./school-shell-review";
 import { secureChromium } from "../browser-security.mjs";
 /**
@@ -494,7 +495,11 @@ try {
       ]);
       assert.equal(
         fallback.suggestedFilename(),
-        `amp-workbook-${today}-2.html`,
+        workbookFilename(
+          rows.find((row) => row.date === today && row.number === 2)!,
+          "Maya",
+          "html",
+        ),
       );
       assert.equal(await page.getByRole("alert").count(), 0);
       assert.deepEqual(await controlBoxes(page), before, `${label}: fallback`);
@@ -530,7 +535,15 @@ try {
         page.waitForEvent("download"),
         page.getByRole("button", { name: "Download workbook" }).click(),
       ]);
-      assert.equal(download.suggestedFilename(), `amp-workbook-${today}-2.pdf`);
+      assert.equal(
+        download.suggestedFilename(),
+        workbookFilename(
+          rows.find((row) => row.date === today && row.number === 2)!,
+          "Maya",
+          "pdf",
+          "Letter",
+        ),
+      );
       await page
         .getByRole("alert")
         .filter({ hasText: "didn't download" })

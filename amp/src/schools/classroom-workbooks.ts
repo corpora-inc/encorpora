@@ -414,7 +414,7 @@ export async function studentWorkbookPdf(
       { html, format: paperFormat, footer: workbookFooter(record.spec) },
       log,
     );
-    return { pdf, record, format: paperFormat };
+    return { pdf, record, format: paperFormat, learnerName: student.name };
   } catch (error) {
     throw explained(error);
   }

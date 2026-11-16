@@ -2,7 +2,8 @@ import {
   linkFundedVisitor,
   recordFundedParentStatus,
 } from "../analytics/funded-journey.js";
-import { canonicalCommercePayload } from "../commerce/ledger.js";
+import { fundingOfferMatchesSnapshot } from "./offer-terms.js";
+import { fundedInvoiceTerm } from "./term.js";
 import { randomUUID } from "node:crypto";
 import {
   incrementFundedCampaign,
@@ -181,12 +182,8 @@ export class FundingPurchaseRepository {
     );
   }
   offerAvailable(request: FundingRequest, at = new Date()): boolean {
-    return availableOffers(this.offers, at).some(
-      (offer) =>
-        offer.id === request.offer.id &&
-        offer.revision === request.offer.revision &&
-        canonicalCommercePayload(offer) ===
-          canonicalCommercePayload(request.offer),
+    return availableOffers(this.offers, at).some((offer) =>
+      fundingOfferMatchesSnapshot(offer, request.offer),
     );
   }
   async present(account: string, request: FundingRequest) {
@@ -251,6 +248,27 @@ export class FundingPurchaseRepository {
         "UPDATE amp_funding_requests SET status=$3 WHERE id=$1 AND account_id=$2",
         [id, account, status],
       );
+      if (status === "parent-reported-submitted") {
+        // Business policy: submission gives the program time to process payment.
+        // The deadline is anchored to the first invoice, so retries never restart it.
+        const term = fundedInvoiceTerm(request);
+        const until = new Date(
+          Math.min(
+            Date.parse(request.createdAt) + 60 * 86400000,
+            term ? Date.parse(term.endsAt) : Infinity,
+          ),
+        ).toISOString();
+        await client.query(
+          `UPDATE amp_grants SET ends_at=LEAST(GREATEST(ends_at,$2::timestamptz),$3::timestamptz)
+          WHERE status='active' AND id IN (SELECT grant_id FROM amp_access_gifts WHERE funding_invoice_id=$1 AND source='funded-pending' AND revoked_at IS NULL)`,
+          [id, until, term?.endsAt ?? null],
+        );
+        await client.query(
+          `UPDATE amp_access_gifts SET ends_at=LEAST(GREATEST(ends_at,$2::timestamptz),$3::timestamptz)
+          WHERE funding_invoice_id=$1 AND source='funded-pending' AND activated_at IS NOT NULL AND revoked_at IS NULL`,
+          [id, until, term?.endsAt ?? null],
+        );
+      }
       if (status === "cancelled") {
         await client.query(
           "UPDATE amp_grants SET status='revoked' WHERE id IN (SELECT grant_id FROM amp_access_gifts WHERE funding_invoice_id=$1)",

@@ -201,21 +201,25 @@ async function shown(page: Page) {
 /** The topmost layer's element, where nested links are looked for. */
 const top = (page: Page) => page.locator('[role="dialog"]:visible').last();
 
-/** A layer over another names the one X returns to, on its close. */
+/** A layer over another has one way down (Q-8): its cross, never a second
+ * "back" control beside it. */
 async function hint(page: Page, what: string) {
   const stack = layers(page);
   const [below, above] = stack.slice(-2);
   if (!below || above?.kind === "work" || below.kind === "work") return;
-  const back = top(page).locator("[data-layer-back]");
-  await back.waitFor({ timeout: 10_000 }).catch(() => undefined);
-  const name = (await back.count())
-    ? await back.getAttribute("data-layer-back")
-    : null;
-  assert.ok(name, `${what}: the top layer names where X returns`);
-  assert.match(
-    (await back.getAttribute("aria-label")) ?? "",
-    /^Back to /,
-    `${what}: the hint steps back`,
+  await top(page)
+    .locator("[data-layer-close]")
+    .waitFor({ timeout: 10_000 })
+    .catch(() => undefined);
+  assert.equal(
+    await top(page).locator("[data-layer-close]").count(),
+    1,
+    `${what}: the top layer has its cross`,
+  );
+  assert.equal(
+    await top(page).locator("[data-layer-back]").count(),
+    0,
+    `${what}: no second control for the same step`,
   );
 }
 
@@ -511,20 +515,17 @@ async function hintFits(skillId: string, templateId: string) {
     await page.goto(
       `${origin}/pathways?${OPEN_KEY}=skill:${skillId},lesson:${templateId}`,
     );
-    const back = top(page).locator("[data-layer-back]");
+    const back = top(page).locator("[data-layer-close]");
     await back.waitFor({ timeout: 15_000 });
     await page.waitForTimeout(500);
     const box = (await back.boundingBox())!;
     const title = (await top(page).locator("header h2").boundingBox())!;
     assert.ok(
       box.x >= 0 && box.x + box.width <= width,
-      `${width}: the hint sits inside the screen (${box.x}..${box.x + box.width})`,
+      `${width}: the cross sits inside the screen (${box.x}..${box.x + box.width})`,
     );
-    assert.ok(box.height >= 44, `${width}: the hint is a 44 px target`);
-    assert.ok(
-      title.x >= 0 && title.y >= box.y + box.height - 1,
-      `${width}: the title is whole, on its own line under the hint`,
-    );
+    assert.ok(box.height >= 44, `${width}: the cross is a 44 px target`);
+    assert.ok(title.x >= 0, `${width}: the title is whole`);
     const spill = await page.evaluate(
       () => document.documentElement.scrollWidth - innerWidth,
     );

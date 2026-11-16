@@ -9,7 +9,7 @@ import {
 import { UserManager, WebStorageStateStore, type User } from "oidc-client-ts";
 import { accountClient } from "./account-client";
 import { AppError } from "./lib/AppError";
-import { measureAuth } from "./lib/auth-measurement";
+import { fetchAuthConfig, type AuthConfig } from "./auth-config";
 import {
   clearStudentDevice,
   handedReturnPath,
@@ -41,33 +41,12 @@ const manager =
     : null;
 const devSignedOut = "amp.dev.signedOut";
 
-/** How this deployment signs parents in, as the API reports it. */
-export type AuthConfig =
-  | {
-      mode: "accounts";
-      passwords: boolean;
-      /** A new parent can create the account with a passkey. */
-      passkeySignup?: boolean;
-      parentFollowup?: boolean;
-      providers: string[];
-      clever?: boolean;
-    }
-  | { mode: "oidc" | "development" | "native" };
-let config: Promise<AuthConfig> | null = null;
+export type { AuthConfig };
 export function authConfig(): Promise<AuthConfig> {
   // The native app signs in through its own session layer, not this API.
   if (nativeRuntime) return Promise.resolve({ mode: "native" });
   const fallback: AuthConfig = { mode: manager ? "oidc" : "development" };
-  config ??= measureAuth("configuration", async () => {
-    const response = await fetch("/api/v1/auth-config", {
-      signal: AbortSignal.timeout(10000),
-    });
-    if (response.ok) return response.json() as Promise<AuthConfig>;
-    throw new Error(`auth-config ${response.status}`);
-  });
-  // A failed lookup is not remembered: the next call asks again.
-  return config.catch(() => {
-    config = null;
+  return fetchAuthConfig().catch(() => {
     if (import.meta.env.DEV) return fallback;
     throw new AppError(
       "unavailable",
@@ -205,7 +184,7 @@ export async function signOut(to = "/") {
     const handed = handedStudentDevice();
     const back = handedReturnPath();
     clearStudentDevice();
-    notifyAccountSessionChanged();
+    notifyDeviceSessionChanged();
     location.assign(handed ? back : "/join");
     return;
   }
@@ -238,10 +217,16 @@ const accountSessionListeners = new Set<
 /** Publish a checked session in this tab before navigation. Cross-tab messages
  * carry no credentials; other tabs check their own session. */
 export function notifyAccountSessionChanged(checked?: AuthSession | null) {
+  notifyDeviceSessionChanged(checked);
+  broadcastAccountChange();
+}
+
+/** A shared-device handoff changes only this tab, not the parent's account
+ * cookies or any other tab. Publish it once, without echoing a broadcast. */
+export function notifyDeviceSessionChanged(checked?: AuthSession | null) {
   if (checked === undefined)
     window.dispatchEvent(new Event("amp-account-session-changed"));
   else for (const listener of accountSessionListeners) listener(checked);
-  broadcastAccountChange();
 }
 
 export function onSessionChanged(

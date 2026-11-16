@@ -1,7 +1,6 @@
 import { closeTo } from "../../lib/return-to";
 import {
   keepPreviousData,
-  useMutation,
   useQuery,
   useQueryClient,
   useSuspenseQuery,
@@ -29,11 +28,11 @@ import {
   type WorkbookSummary,
 } from "../../../workbook/contracts";
 import {
-  anotherWorkbook,
+  issueWorkbook,
   downloadWorkbook,
   workbookAreasOptions,
   workbookHistoryOptions,
-  workbookOptions,
+  workbookPreviewOptions,
   workbooksKey,
   type WorkbookMinutes,
 } from "./api";
@@ -156,143 +155,147 @@ function Today({
   const choices = searchChoices(search);
   const history = useQuery(workbookHistoryOptions(session, learner.id, date));
   const areas = useQuery(workbookAreasOptions(session, learner.id));
-  const latest = history.data?.workbooks.length
-    ? Math.max(...history.data.workbooks.map((w) => w.number))
-    : 1;
-  const number = search.number ?? (history.isSuccess ? latest : undefined);
-  const issuedDefault = history.data?.workbooks.find(
-    (book) => book.number === number,
-  );
-  const minutes = search.minutes ?? issuedDefault?.minutes ?? 45;
+  const [draftId] = useState(() => crypto.randomUUID());
+  const [saving, setSaving] = useState(false);
+  const [message, setMessage] = useState("");
+  const books = history.data?.workbooks ?? [];
+  const latest = books.length
+    ? Math.max(...books.map((w) => w.number))
+    : undefined;
+  const issued = !search.draft
+    ? books.find(
+        (book) =>
+          book.number === (search.number ?? latest) &&
+          (search.minutes === undefined || book.minutes === search.minutes),
+      )
+    : undefined;
+  const minutes = search.minutes ?? issued?.minutes ?? 45;
   const canMake = canMakeWorkbook(learner);
-  const issued = history.data?.workbooks.some(
-    (book) => book.number === number && book.minutes === minutes,
-  );
   const unavailable = history.isSuccess && !issued && !canMake;
+  const input = {
+    date,
+    minutes,
+    paper,
+    choices,
+    requestId: search.draft ?? draftId,
+  };
   const workbook = useQuery({
-    ...workbookOptions(session, learner.id, {
-      date,
-      number: number ?? 1,
-      minutes,
-      paper,
-      choices,
-    }),
-    enabled: number !== undefined && !unavailable,
+    ...workbookPreviewOptions(session, learner.id, input),
+    enabled: history.isSuccess && !issued && !unavailable,
     placeholderData: unavailable ? undefined : keepPreviousData,
-    // A stored workbook never changes; there is nothing to refetch.
     staleTime: Infinity,
     refetchOnWindowFocus: false,
   });
-  const current = workbook.isPlaceholderData ? undefined : workbook.data;
-  // A stored workbook keeps the choices it was made with: the URL follows
-  // it, so the controls always show what this workbook is.
+  const current =
+    issued ?? (workbook.isPlaceholderData ? undefined : workbook.data);
+  // Remember an unissued draft in the URL, including refresh and retries.
+  // Stored books keep their original choices; editing starts another draft.
   useEffect(() => {
-    if (!current || sameChoices(current.choices, choices)) return;
-    client.setQueryData(
-      workbookOptions(session, learner.id, {
-        date,
-        number: current.number,
-        minutes,
-        paper,
-        choices: current.choices,
-      }).queryKey,
-      current,
-    );
-    void navigate({
-      to: ".",
-      search: (prev) => ({ ...prev, ...choicesSearch(current.choices) }),
-      replace: true,
-    });
-  }, [current?.id]);
-  // A workbook made here joins the day's history.
-  useEffect(() => {
-    if (
-      current &&
-      history.data &&
-      !history.data.workbooks.some(
-        (w) => w.id === current.id && w.paper === current.paper,
-      )
-    ) {
-      void client.invalidateQueries({ queryKey: meOptions(session).queryKey });
-      void client.invalidateQueries({
-        queryKey: [...workbooksKey(session, learner.id), "history"],
-      });
-    }
-  }, [current?.id, current?.paper, history.data]);
-  const [message, setMessage] = useState("");
-  const [downloading, setDownloading] = useState(false);
-  // A failed history load means no PDF flag: the printable copy still works.
-  const ready = !!current && (!!history.data || !!history.error);
-  // Roll another, or change a choice: the next workbook for today, made
-  // with these choices. Each is its own URL, so Back returns to the last.
-  const another = useMutation({
-    mutationFn: (next: WorkbookChoicesInput) =>
-      anotherWorkbook(session, learner.id, {
-        date,
-        minutes,
-        paper,
-        choices: next,
-      }),
-    onSuccess: (made) => {
-      client.setQueryData(
-        workbookOptions(session, learner.id, {
-          date,
-          number: made.number,
-          minutes,
-          paper,
-          choices: made.choices,
-        }).queryKey,
-        made,
-      );
+    if (!history.isSuccess) return;
+    if (issued && !sameChoices(issued.choices, choices)) {
       void navigate({
         to: ".",
-        search: (prev) => ({
-          ...prev,
-          number: made.number,
-          ...choicesSearch(made.choices),
-        }),
+        search: (prev) => ({ ...prev, ...choicesSearch(issued.choices) }),
+        replace: true,
       });
-    },
-    onError: (error) =>
-      setMessage(
-        workbookMessage(error, "Another workbook couldn't be made. Try again."),
-      ),
-  });
-  const roll = (next: WorkbookChoicesInput) => {
-    setMessage("");
-    another.mutate(next);
-  };
-  const choosing = !current || another.isPending || !canMake;
+    } else if (!issued && !search.draft) {
+      void navigate({
+        to: ".",
+        search: (prev) => ({ ...prev, number: undefined, draft: draftId }),
+        replace: true,
+      });
+    }
+  }, [history.isSuccess, issued?.id, search.draft]);
+  const ready = !!current && history.isSuccess;
   const areaName = (id: string) => workbookAreaNames[id] ?? id;
+  const choosing = !current || saving || !canMake;
+  const changeDraft = (change: Partial<WorkbookSearch>) => {
+    setMessage("");
+    void navigate({
+      to: ".",
+      search: (prev) => ({
+        ...prev,
+        minutes,
+        paper,
+        ...choicesSearch(choices),
+        ...change,
+        number: undefined,
+        draft: crypto.randomUUID(),
+      }),
+      replace: true,
+    });
+  };
+  const roll = (next: WorkbookChoicesInput) => changeDraft(choicesSearch(next));
   const set = (change: {
     minutes?: WorkbookMinutes;
     paper?: WorkbookPaper;
   }) => {
-    setMessage("");
-    void navigate({
+    if (change.paper && change.minutes === undefined) {
+      // Paper changes the print layout, never the questions or history.
+      void navigate({
+        to: ".",
+        search: (prev) => ({ ...prev, ...change }),
+        replace: true,
+      });
+    } else changeDraft(change);
+  };
+  async function issue() {
+    if (issued) return issued;
+    const made = await issueWorkbook(session, learner.id, input);
+    // Keep this exact issued book visible even when it used the last allowance.
+    client.setQueryData(
+      workbookHistoryOptions(session, learner.id, date).queryKey,
+      (prior: { workbooks: WorkbookSummary[]; pdf: boolean } | undefined) => ({
+        pdf: prior?.pdf ?? false,
+        workbooks: [
+          made,
+          ...(prior?.workbooks ?? []).filter((book) => book.id !== made.id),
+        ],
+      }),
+    );
+    await navigate({
       to: ".",
-      search: (prev) => ({ ...prev, number, ...change }),
+      search: (prev) => ({
+        ...prev,
+        draft: undefined,
+        number: made.number,
+        minutes: made.minutes,
+        ...choicesSearch(made.choices),
+      }),
       replace: true,
     });
-  };
-  async function download() {
-    if (!current) return;
+    void client.invalidateQueries({ queryKey: meOptions(session).queryKey });
+    void client.invalidateQueries({
+      queryKey: [...workbooksKey(session, learner.id), "history"],
+    });
+    return made;
+  }
+  async function commit(action: "download" | "results") {
+    if (!current || saving) return;
     setMessage("");
-    setDownloading(true);
+    setSaving(true);
     try {
-      await downloadWorkbook(
-        session,
-        learner.id,
-        current,
-        paper,
-        history.data?.pdf ?? false,
-      );
+      const made = await issue();
+      if (action === "download") {
+        await downloadWorkbook(
+          session,
+          learner.id,
+          made,
+          paper,
+          history.data?.pdf ?? false,
+        );
+      } else {
+        await navigate({
+          to: "/learners/$learnerId/workbooks/$workbookId/results",
+          params: { learnerId: learner.id, workbookId: made.id },
+        });
+      }
     } catch (error) {
       setMessage(
-        workbookMessage(error, "The workbook didn't download. Try again."),
+        workbookMessage(error, "The workbook couldn't be saved. Try again."),
       );
     } finally {
-      setDownloading(false);
+      setSaving(false);
     }
   }
   // A workbook that can't be made because the free ones are used is not a
@@ -302,6 +305,7 @@ function Today({
     <WorkbookOptions
       canMake={canMake}
       choosing={choosing}
+      saving={saving}
       minutes={minutes}
       paper={paper}
       choices={choices}
@@ -318,7 +322,6 @@ function Today({
           className={styles.another}
           title="Roll another"
           disabled={choosing}
-          aria-busy={another.isPending}
           onClick={() => roll(choices)}
         >
           <svg viewBox="0 0 20 20" aria-hidden="true" className={styles.dice}>
@@ -332,9 +335,9 @@ function Today({
         <Button
           variant="primary"
           className={styles.download}
-          disabled={!ready || downloading}
-          aria-busy={downloading || (!ready && !loadError && !unavailable)}
-          onClick={() => void download()}
+          disabled={!ready || saving}
+          aria-busy={saving || (!ready && !loadError && !unavailable)}
+          onClick={() => void commit("download")}
         >
           <svg
             viewBox="0 0 20 20"
@@ -348,7 +351,10 @@ function Today({
       </div>
       <div className={styles.builder}>
         <Contents
-          workbook={workbook.data}
+          workbook={issued ?? workbook.data}
+          draft={!issued}
+          onResults={() => void commit("results")}
+          busy={saving}
           stale={!current}
           learnerId={learner.id}
           date={date}
@@ -393,13 +399,12 @@ function Today({
   );
 }
 
-/** The choices a workbook is made with. Length and paper change this one;
- * level, today's idea and areas roll a new one with that choice. Areas wrap
- * as whole chips: every one is readable, and they are the panel's last
- * group, so their arrival moves nothing. */
+/** Options prepare an unsaved draft; paper only changes its print layout.
+ * Areas wrap as whole chips and remain the panel's last group. */
 function WorkbookOptions({
   canMake,
   choosing,
+  saving,
   minutes,
   paper,
   choices,
@@ -409,6 +414,7 @@ function WorkbookOptions({
 }: {
   canMake: boolean;
   choosing: boolean;
+  saving: boolean;
   minutes: WorkbookMinutes;
   paper: WorkbookPaper;
   choices: WorkbookChoicesInput;
@@ -422,7 +428,7 @@ function WorkbookOptions({
         <Segmented<"30" | "45" | "60">
           compact
           label="Length"
-          disabled={!canMake}
+          disabled={!canMake || saving}
           value={String(minutes) as "30" | "45" | "60"}
           onChange={(value) =>
             set({ minutes: Number(value) as WorkbookMinutes })
@@ -438,6 +444,7 @@ function WorkbookOptions({
         <Segmented<WorkbookPaper>
           compact
           label="Paper size"
+          disabled={saving}
           value={paper}
           onChange={(value) => set({ paper: value })}
           options={[
@@ -525,7 +532,13 @@ function Contents({
   areaName,
   used,
   failure,
+  draft = false,
+  onResults,
+  busy = false,
 }: {
+  draft?: boolean;
+  onResults?: () => void;
+  busy?: boolean;
   workbook?: WorkbookSummary;
   stale: boolean;
   learnerId: string;
@@ -550,7 +563,7 @@ function Contents({
           <div className={styles.paperHead}>
             <span>{dateLabel(date, "short")}</span>
             <span className={styles.code} aria-label="Workbook code">
-              {workbook.code}
+              {draft ? "Preview" : workbook.code}
             </span>
           </div>
           <div className={styles.contentsHead}>
@@ -587,13 +600,26 @@ function Contents({
             ))}
           </ol>
           <div className={styles.paperFoot}>
-            <Link
-              to="/learners/$learnerId/workbooks/$workbookId/results"
-              params={{ learnerId, workbookId: workbook.id }}
-              className={buttonClass("quiet", styles.resultsButton, "start")}
-            >
-              Enter results
-            </Link>
+            {onResults ? (
+              <Button
+                variant="quiet"
+                className={styles.resultsButton}
+                align="start"
+                disabled={stale || busy}
+                aria-busy={busy}
+                onClick={onResults}
+              >
+                Enter results
+              </Button>
+            ) : (
+              <Link
+                to="/learners/$learnerId/workbooks/$workbookId/results"
+                params={{ learnerId, workbookId: workbook.id }}
+                className={buttonClass("quiet", styles.resultsButton, "start")}
+              >
+                Enter results
+              </Link>
+            )}
           </div>
         </Fragment>
       ) : used ? (

@@ -1,4 +1,4 @@
-import { satPracticeEligible } from "../curriculum/sat";
+import { satPracticeConfiguration } from "../learning/assessment-profile";
 import {
   DEFAULT_PRACTICE_POLICY,
   assertPracticePolicy,
@@ -9,7 +9,6 @@ import type { Pool, PoolClient } from "pg";
 import {
   clientCanDraw,
   generatedProblemSchema,
-  type GeneratedProblem,
   type TemplateMetadata,
 } from "../math/contracts.js";
 import { generateProblemFor, templates } from "../math/engine.js";
@@ -17,7 +16,11 @@ import { responseForClient } from "../math/multi-part-choice.js";
 import { hasEntryPolicy } from "../math/sat-numeric-entry-practice.js";
 import { hasFunctionFormsEntryPolicy } from "../math/sat-function-forms-practice.js";
 import { skills } from "../curriculum/catalog.js";
-import { PgTransaction, ApiError } from "../server/repository.js";
+import {
+  PgTransaction,
+  ApiError,
+  type SavedProblem,
+} from "../server/repository.js";
 import {
   lockLearningAccount,
   learningConsentActive,
@@ -192,15 +195,18 @@ export class OfflineRepository {
         throw new ApiError(403, "offline_consent_required");
       const tx = new PgTransaction(c, learner);
       const satMathFocus = await tx.satMathFocus();
-      const supported = supportedOfflineTemplates(input).filter(
-        (t) => !satMathFocus || satPracticeEligible(t),
-      );
+      const available = supportedOfflineTemplates(input);
+      const sat = satMathFocus
+        ? satPracticeConfiguration(available, this.practicePolicy)
+        : null;
+      const supported = sat?.templates ?? available;
       if (!supported.length)
         throw new ApiError(409, "offline_no_supported_content");
+      const policy = sat?.policy ?? this.practicePolicy;
       const packId = randomUUID();
       const choices = uniquePoolChoices(
         planMixedPractice({
-          policy: this.practicePolicy,
+          policy,
           templates: supported,
           skills,
           attempts: await tx.recentAttempts(),
@@ -209,17 +215,19 @@ export class OfflineRepository {
           count: 5,
           seed: packId,
           now: now.getTime(),
-          strictCeiling: true,
+          // SAT practice adapts inside its mapped pool, including its floor.
+          // General offline practice retains its strict learner ceiling.
+          strictCeiling: !satMathFocus,
           learnerKey: learner,
         }),
       );
       if (!choices.length)
         throw new ApiError(409, "offline_no_eligible_content");
-      const originals: GeneratedProblem[] = [];
+      const originals: SavedProblem[] = [];
       const items: OfflinePack["items"] = [];
       for (let variant = 0; variant < 3; variant++)
         for (const choice of choices) {
-          const problem = generatedProblemSchema.parse(
+          const problem: SavedProblem = generatedProblemSchema.parse(
             generateProblemFor(
               choice.template.id,
               `offline-v1:${packId}:${variant}:${choice.template.id}`,
@@ -232,6 +240,13 @@ export class OfflineRepository {
             problem.public,
             input.responseCapabilities,
           );
+          problem.selection = {
+            reason: choice.reason,
+            strand: choice.strand,
+            practicePolicy: policy.version,
+            practiceFingerprint: policy.fingerprint,
+            trace: choice.selection,
+          };
           originals.push(problem);
           items.push({
             problem: problem.public,
@@ -391,7 +406,9 @@ export class OfflineRepository {
           )
         ).rows[0];
         if (original) {
-          const problem = generatedProblemSchema.parse(original.content);
+          // Serving metadata is private evidence, outside the frozen v1 grader input.
+          const { selection: _selection, ...generated } = original.content;
+          const problem = generatedProblemSchema.parse(generated);
           const existing = (
             await c.query(
               "SELECT 1 FROM amp_offline_attempts WHERE problem_id=$1",

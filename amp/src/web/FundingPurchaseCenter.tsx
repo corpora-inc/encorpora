@@ -22,7 +22,9 @@ import { Loading } from "./ui/Loading";
 interface Props {
   token: string;
   identity: string;
-  learners: readonly { id: string; name: string }[];
+  /** `learningAllowed`: the learner's own basis (an adult, 13 or older, the
+   * restricted basis, or consent); a funded purchase needs no more. */
+  learners: readonly { id: string; name: string; learningAllowed?: boolean }[];
   consentActive: boolean;
   /** The account holder's own adult learner: buying for it needs no
    * parental consent (they act for themselves). */
@@ -36,7 +38,7 @@ interface Props {
 }
 const errors: Record<string, string> = {
   verified_consent_required:
-    "Verified parent consent is needed to prepare a request or activate learning access.",
+    "Learning is paused for this child. Open Family → Privacy to resume it.",
   offer_unavailable:
     "This offer changed or is no longer available. Refresh the purchase options before continuing.",
   idempotency_payload_mismatch:
@@ -108,7 +110,9 @@ export function FundingPurchaseCenter({
     [learnerId, setLearnerId] = useState(""),
     [selected, setSelected] = useState<string | null>(null);
   const consentFor = (learner: string) =>
-    consentActive || (!!ownLearnerId && learner === ownLearnerId);
+    consentActive ||
+    (!!ownLearnerId && learner === ownLearnerId) ||
+    learners.some((entry) => entry.id === learner && entry.learningAllowed);
   const [studentBillingName, setStudentBillingName] = useState("");
   const [classWalletOffers, setClassWalletOffers] = useState<string[]>([]);
   const [programOpened, setProgramOpened] = useState<string | null>(null);
@@ -414,22 +418,6 @@ export function FundingPurchaseCenter({
           Back
         </button>
       </header>
-      {!consentActive &&
-        requests.some(
-          (item) =>
-            !item.orderId &&
-            item.status !== "cancelled" &&
-            item.learnerId !== ownLearnerId,
-        ) && (
-          <p className="funding-notice">
-            <a
-              href={`/start/consent${program ? `?return=${({ "az-esa": "arizona-esa", "ar-efa": "arkansas-efa", "nh-efa": "new-hampshire-efa" } as Record<string, string>)[program.id] ?? ""}` : ""}`}
-            >
-              Complete parent consent
-            </a>{" "}
-            to confirm your child's paid term.
-          </p>
-        )}
       <div ref={body} className="funding-body">
         <p>
           AMP (Adaptive Math Pathways) is a product of Corpora Inc, an
@@ -597,8 +585,8 @@ export function FundingPurchaseCenter({
             )}
             {!consentFor(learnerId) && (
               <p className="funding-notice">
-                Verified parent consent is needed to prepare a new request.
-                Existing requests remain available.
+                Learning is paused for this child. Open Family → Privacy to
+                resume it. Existing requests remain available.
               </p>
             )}
             {offers.length ? (

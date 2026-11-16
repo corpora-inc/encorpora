@@ -1,0 +1,3508 @@
+{
+ "id": "compare-like-numerators--sc",
+ "title": "Comparing fractions",
+ "teaches": [
+  "compare-like-denominators"
+ ],
+ "skill": "compare-fractions",
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     0,
+     -0.7,
+     10,
+     8.9
+    ],
+    "points": {
+     "C3": [
+      2.35,
+      5.5
+     ],
+     "C8": [
+      7.65,
+      5.5
+     ],
+     "T3": [
+      2.35,
+      7.55
+     ],
+     "T8": [
+      7.65,
+      7.55
+     ],
+     "L3": [
+      2.35,
+      3.5
+     ],
+     "L8": [
+      7.65,
+      3.5
+     ],
+     "aC": [
+      2.35,
+      5.5
+     ],
+     "a1": [
+      0.6179,
+      4.5
+     ],
+     "a2": [
+      0.9358,
+      4.0858
+     ],
+     "a3": [
+      1.35,
+      3.7679
+     ],
+     "a4": [
+      1.8324,
+      3.5681
+     ],
+     "a5": [
+      2.35,
+      3.5
+     ],
+     "a6": [
+      2.8676,
+      3.5681
+     ],
+     "a7": [
+      3.35,
+      3.7679
+     ],
+     "a8": [
+      3.7642,
+      4.0858
+     ],
+     "a9": [
+      4.0821,
+      4.5
+     ],
+     "bC": [
+      2.35,
+      5.5
+     ],
+     "b1": [
+      4.0821,
+      4.5
+     ],
+     "b2": [
+      4.2819,
+      4.9824
+     ],
+     "b3": [
+      4.35,
+      5.5
+     ],
+     "b4": [
+      4.2819,
+      6.0176
+     ],
+     "b5": [
+      4.0821,
+      6.5
+     ],
+     "b6": [
+      3.7642,
+      6.9142
+     ],
+     "b7": [
+      3.35,
+      7.2321
+     ],
+     "b8": [
+      2.8676,
+      7.4319
+     ],
+     "b9": [
+      2.35,
+      7.5
+     ],
+     "cC": [
+      2.35,
+      5.5
+     ],
+     "c1": [
+      2.35,
+      7.5
+     ],
+     "c2": [
+      1.8324,
+      7.4319
+     ],
+     "c3": [
+      1.35,
+      7.2321
+     ],
+     "c4": [
+      0.9358,
+      6.9142
+     ],
+     "c5": [
+      0.6179,
+      6.5
+     ],
+     "c6": [
+      0.4181,
+      6.0176
+     ],
+     "c7": [
+      0.35,
+      5.5
+     ],
+     "c8": [
+      0.4181,
+      4.9824
+     ],
+     "c9": [
+      0.6179,
+      4.5
+     ],
+     "w1C": [
+      7.65,
+      5.5
+     ],
+     "w1a": [
+      6.8846,
+      3.6522
+     ],
+     "w1b": [
+      7.65,
+      3.5
+     ],
+     "w1c": [
+      8.4154,
+      3.6522
+     ],
+     "w2C": [
+      7.65,
+      5.5
+     ],
+     "w2a": [
+      8.4154,
+      3.6522
+     ],
+     "w2b": [
+      9.0642,
+      4.0858
+     ],
+     "w2c": [
+      9.4978,
+      4.7346
+     ],
+     "w3C": [
+      7.65,
+      5.5
+     ],
+     "w3a": [
+      9.4978,
+      4.7346
+     ],
+     "w3b": [
+      9.65,
+      5.5
+     ],
+     "w3c": [
+      9.4978,
+      6.2654
+     ],
+     "w4C": [
+      7.65,
+      5.5
+     ],
+     "w4a": [
+      9.4978,
+      6.2654
+     ],
+     "w4b": [
+      9.0642,
+      6.9142
+     ],
+     "w4c": [
+      8.4154,
+      7.3478
+     ],
+     "w5C": [
+      7.65,
+      5.5
+     ],
+     "w5a": [
+      8.4154,
+      7.3478
+     ],
+     "w5b": [
+      7.65,
+      7.5
+     ],
+     "w5c": [
+      6.8846,
+      7.3478
+     ],
+     "w6C": [
+      7.65,
+      5.5
+     ],
+     "w6a": [
+      6.8846,
+      7.3478
+     ],
+     "w6b": [
+      6.2358,
+      6.9142
+     ],
+     "w6c": [
+      5.8022,
+      6.2654
+     ],
+     "w7C": [
+      7.65,
+      5.5
+     ],
+     "w7a": [
+      5.8022,
+      6.2654
+     ],
+     "w7b": [
+      5.65,
+      5.5
+     ],
+     "w7c": [
+      5.8022,
+      4.7346
+     ],
+     "w8C": [
+      7.65,
+      5.5
+     ],
+     "w8a": [
+      5.8022,
+      4.7346
+     ],
+     "w8b": [
+      6.2358,
+      4.0858
+     ],
+     "w8c": [
+      6.8846,
+      3.6522
+     ]
+    },
+    "parts": [
+     {
+      "id": "disc3",
+      "circle": "C3",
+      "r": 2,
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "disc8",
+      "circle": "C8",
+      "r": 2,
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "p3b",
+      "poly": [
+       "bC",
+       "b1",
+       "b2",
+       "b3",
+       "b4",
+       "b5",
+       "b6",
+       "b7",
+       "b8",
+       "b9"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "p3c",
+      "poly": [
+       "cC",
+       "c1",
+       "c2",
+       "c3",
+       "c4",
+       "c5",
+       "c6",
+       "c7",
+       "c8",
+       "c9"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "p8b",
+      "poly": [
+       "w2C",
+       "w2a",
+       "w2b",
+       "w2c"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "p8c",
+      "poly": [
+       "w3C",
+       "w3a",
+       "w3b",
+       "w3c"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "p8d",
+      "poly": [
+       "w4C",
+       "w4a",
+       "w4b",
+       "w4c"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "p8e",
+      "poly": [
+       "w5C",
+       "w5a",
+       "w5b",
+       "w5c"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "p8f",
+      "poly": [
+       "w6C",
+       "w6a",
+       "w6b",
+       "w6c"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "p8g",
+      "poly": [
+       "w7C",
+       "w7a",
+       "w7b",
+       "w7c"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "p8h",
+      "poly": [
+       "w8C",
+       "w8a",
+       "w8b",
+       "w8c"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "sl3",
+      "poly": [
+       "aC",
+       "a1",
+       "a2",
+       "a3",
+       "a4",
+       "a5",
+       "a6",
+       "a7",
+       "a8",
+       "a9"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2.5,
+      "solid": true,
+      "group": "g3"
+     },
+     {
+      "id": "sl8",
+      "poly": [
+       "w1C",
+       "w1a",
+       "w1b",
+       "w1c"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 2.5,
+      "solid": true,
+      "group": "g8"
+     },
+     {
+      "id": "cut3a",
+      "seg": [
+       "aC",
+       "a1"
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "cut3b",
+      "seg": [
+       "aC",
+       "a9"
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "cut3c",
+      "seg": [
+       "aC",
+       "b9"
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "cut8a",
+      "seg": [
+       "w1C",
+       "w1a"
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "cut8b",
+      "seg": [
+       "w1C",
+       "w1c"
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "cut8c",
+      "seg": [
+       "w1C",
+       "w2c"
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "cut8d",
+      "seg": [
+       "w1C",
+       "w3c"
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "cut8e",
+      "seg": [
+       "w1C",
+       "w4c"
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "cut8f",
+      "seg": [
+       "w1C",
+       "w5c"
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "cut8g",
+      "seg": [
+       "w1C",
+       "w6c"
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "cut8h",
+      "seg": [
+       "w1C",
+       "w7c"
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "lf3",
+      "label": "\\text{3 friends}",
+      "at": "T3",
+      "dir": "n",
+      "size": "l"
+     },
+     {
+      "id": "lf8",
+      "label": "\\text{8 friends}",
+      "at": "T8",
+      "dir": "n",
+      "size": "l"
+     },
+     {
+      "id": "lab3",
+      "label": "\\frac{1}{3}",
+      "at": "L3",
+      "dir": "s",
+      "ink": "blue",
+      "size": "xl",
+      "group": "g3"
+     },
+     {
+      "id": "lab8",
+      "label": "\\frac{1}{8}",
+      "at": "L8",
+      "dir": "s",
+      "ink": "violet",
+      "size": "xl",
+      "group": "g8"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here are two pizzas, exactly the same size. Which is more: one third of the same pizza, or one eighth of it?",
+     "do": [
+      {
+       "do": "problem",
+       "text": "Which is more: $\\frac{1}{3}$ or $\\frac{1}{8}$ of the same pizza?"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "disc3",
+        "disc8"
+       ],
+       "at": "pizzas",
+       "until": "Which"
+      },
+      {
+       "do": "highlight",
+       "target": "disc3",
+       "at": "third",
+       "until": "or"
+      },
+      {
+       "do": "highlight",
+       "target": "disc8",
+       "at": "eighth"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "Easy. An eighth! Eight is bigger than three.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "disc8",
+       "at": "eighth"
+      },
+      {
+       "do": "text",
+       "text": "My guess: $\\frac{1}{8}$, since 8 > 3",
+       "at": "Eight"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "That is the trap. In a minute, you will simply see the answer. No measuring needed.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "disc3",
+        "disc8"
+       ],
+       "at": "see"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Share the first pizza among three friends. Three equal slices.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Which is more: $\\frac{1}{3}$ or $\\frac{1}{8}$?"
+      },
+      {
+       "do": "show",
+       "target": "lf3",
+       "at": "three"
+      },
+      {
+       "do": "draw",
+       "target": [
+        "cut3a",
+        "cut3b",
+        "cut3c"
+       ],
+       "at": "Three",
+       "nth": 1
+      },
+      {
+       "do": "show",
+       "target": [
+        "sl3",
+        "p3b",
+        "p3c"
+       ],
+       "at": "slices"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "disc3",
+        "cut3a",
+        "cut3b",
+        "cut3c"
+       ],
+       "at": "slices"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Share the second pizza among eight friends. Eight equal slices.",
+     "do": [
+      {
+       "do": "show",
+       "target": "lf8",
+       "at": "eight"
+      },
+      {
+       "do": "draw",
+       "target": [
+        "cut8a",
+        "cut8b",
+        "cut8c",
+        "cut8d",
+        "cut8e",
+        "cut8f",
+        "cut8g",
+        "cut8h"
+       ],
+       "at": "Eight",
+       "nth": 1
+      },
+      {
+       "do": "show",
+       "target": [
+        "sl8",
+        "p8b",
+        "p8c",
+        "p8d",
+        "p8e",
+        "p8f",
+        "p8g",
+        "p8h"
+       ],
+       "at": "slices"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "disc8",
+        "cut8a",
+        "cut8b",
+        "cut8c",
+        "cut8d",
+        "cut8e",
+        "cut8f",
+        "cut8g",
+        "cut8h"
+       ],
+       "at": "slices"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "One friend takes one slice from the first pizza: one slice out of three.",
+     "do": [
+      {
+       "do": "slide",
+       "target": "g3",
+       "by": [
+        0,
+        -2.6
+       ],
+       "at": "takes",
+       "dur": 1.5
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "That is one third.",
+     "do": [
+      {
+       "do": "show",
+       "target": "lab3",
+       "at": "third"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now one slice from the second pizza: one slice out of eight.",
+     "do": [
+      {
+       "do": "slide",
+       "target": "g8",
+       "by": [
+        0,
+        -2.6
+       ],
+       "at": "Now",
+       "dur": 1.5
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "That is one eighth.",
+     "do": [
+      {
+       "do": "show",
+       "target": "lab8",
+       "at": "eighth"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "Whoa. The eighth is so thin!",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "sl8",
+       "at": "thin"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three friends share: big slices. Eight friends share: thin slices. The more people share, the smaller each share.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "sl3",
+       "at": "big",
+       "until": "Eight"
+      },
+      {
+       "do": "highlight",
+       "target": "sl8",
+       "at": "thin",
+       "until": "more"
+      },
+      {
+       "do": "text",
+       "text": "More sharers, smaller share",
+       "at": "more"
+      }
+     ],
+     "pause": 0.5
+    },
+    {
+     "speaker": "teacher",
+     "say": "Slide the thin slice onto the big one.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "lab8",
+       "at": "Slide"
+      },
+      {
+       "do": "slide",
+       "target": "g8",
+       "by": [
+        -5.3,
+        0
+       ],
+       "at": "onto",
+       "dur": 1.8
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "It fits inside, with room to spare. One third is more than one eighth.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "sl8",
+       "at": "inside",
+       "until": "with"
+      },
+      {
+       "do": "highlight",
+       "target": "sl3",
+       "at": "inside"
+      },
+      {
+       "do": "write",
+       "tex": "\\tfrac{1}{3} > \\tfrac{1}{8}",
+       "at": "third"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "So a bigger bottom number means a smaller slice!",
+     "do": [
+      {
+       "do": "text",
+       "text": "Bigger bottom, smaller slice",
+       "at": "bigger"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "Yes. More cuts, smaller pieces.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "sl3",
+        "sl8"
+       ],
+       "at": "smaller"
+      }
+     ],
+     "pause": 0.3
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     0.5,
+     10,
+     8.4
+    ],
+    "points": {
+     "g2p": [
+      2,
+      7.4
+     ],
+     "g3p": [
+      2,
+      6.1
+     ],
+     "g4p": [
+      2,
+      4.8
+     ],
+     "g6p": [
+      2,
+      3.5
+     ],
+     "g8p": [
+      2,
+      2.2
+     ],
+     "s2TL": [
+      2,
+      7.4
+     ],
+     "s2TR": [
+      5.75,
+      7.4
+     ],
+     "s2BR": [
+      5.75,
+      6.4
+     ],
+     "s2BL": [
+      2,
+      6.4
+     ],
+     "s3TL": [
+      2,
+      6.1
+     ],
+     "s3TR": [
+      4.5,
+      6.1
+     ],
+     "s3BR": [
+      4.5,
+      5.1
+     ],
+     "s3BL": [
+      2,
+      5.1
+     ],
+     "s4TL": [
+      2,
+      4.8
+     ],
+     "s4TR": [
+      3.875,
+      4.8
+     ],
+     "s4BR": [
+      3.875,
+      3.8
+     ],
+     "s4BL": [
+      2,
+      3.8
+     ],
+     "s6TL": [
+      2,
+      3.5
+     ],
+     "s6TR": [
+      3.25,
+      3.5
+     ],
+     "s6BR": [
+      3.25,
+      2.5
+     ],
+     "s6BL": [
+      2,
+      2.5
+     ],
+     "s8TL": [
+      2,
+      2.2
+     ],
+     "s8TR": [
+      2.9375,
+      2.2
+     ],
+     "s8BR": [
+      2.9375,
+      1.2
+     ],
+     "s8BL": [
+      2,
+      1.2
+     ],
+     "q2": [
+      1.75,
+      6.9
+     ],
+     "q3": [
+      1.75,
+      5.6
+     ],
+     "q4": [
+      1.75,
+      4.3
+     ],
+     "q6": [
+      1.75,
+      3
+     ],
+     "q8": [
+      1.75,
+      1.7
+     ],
+     "gT": [
+      2.9375,
+      7.7
+     ],
+     "gB": [
+      2.9375,
+      0.9
+     ]
+    },
+    "parts": [
+     {
+      "id": "st2",
+      "grid": [
+       2,
+       1
+      ],
+      "at": "g2p",
+      "size": [
+       3.75,
+       1
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "st3",
+      "grid": [
+       3,
+       1
+      ],
+      "at": "g3p",
+      "size": [
+       2.5,
+       1
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "st4",
+      "grid": [
+       4,
+       1
+      ],
+      "at": "g4p",
+      "size": [
+       1.875,
+       1
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "st6",
+      "grid": [
+       6,
+       1
+      ],
+      "at": "g6p",
+      "size": [
+       1.25,
+       1
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "st8",
+      "grid": [
+       8,
+       1
+      ],
+      "at": "g8p",
+      "size": [
+       0.9375,
+       1
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "pc2",
+      "poly": [
+       "s2TL",
+       "s2TR",
+       "s2BR",
+       "s2BL"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2.5
+     },
+     {
+      "id": "pc3",
+      "poly": [
+       "s3TL",
+       "s3TR",
+       "s3BR",
+       "s3BL"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2.5
+     },
+     {
+      "id": "pc4",
+      "poly": [
+       "s4TL",
+       "s4TR",
+       "s4BR",
+       "s4BL"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2.5
+     },
+     {
+      "id": "pc6",
+      "poly": [
+       "s6TL",
+       "s6TR",
+       "s6BR",
+       "s6BL"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2.5
+     },
+     {
+      "id": "pc8",
+      "poly": [
+       "s8TL",
+       "s8TR",
+       "s8BR",
+       "s8BL"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 2.5
+     },
+     {
+      "id": "guide",
+      "seg": [
+       "gT",
+       "gB"
+      ],
+      "ink": "violet",
+      "w": 2,
+      "dash": true
+     },
+     {
+      "id": "lq2",
+      "label": "\\tfrac{1}{2}",
+      "at": "q2",
+      "dir": "w",
+      "ink": "accent",
+      "size": "m"
+     },
+     {
+      "id": "lq3",
+      "label": "\\tfrac{1}{3}",
+      "at": "q3",
+      "dir": "w",
+      "ink": "accent",
+      "size": "m"
+     },
+     {
+      "id": "lq4",
+      "label": "\\tfrac{1}{4}",
+      "at": "q4",
+      "dir": "w",
+      "ink": "accent",
+      "size": "m"
+     },
+     {
+      "id": "lq6",
+      "label": "\\tfrac{1}{6}",
+      "at": "q6",
+      "dir": "w",
+      "ink": "accent",
+      "size": "m"
+     },
+     {
+      "id": "lq8",
+      "label": "\\tfrac{1}{8}",
+      "at": "q8",
+      "dir": "w",
+      "ink": "violet",
+      "size": "m"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Fractions can be parts of a rectangle too. Here is one strip, the same whole every time. Cut it in two equal pieces and take one: one half.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "One whole, cut into more pieces",
+       "at": "strip"
+      },
+      {
+       "do": "draw",
+       "target": "st2",
+       "at": "Cut"
+      },
+      {
+       "do": "show",
+       "target": [
+        "pc2",
+        "lq2"
+       ],
+       "at": "half"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "The same whole, cut in three. One third. See how much shorter?",
+     "do": [
+      {
+       "do": "draw",
+       "target": "st3",
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": [
+        "pc3",
+        "lq3"
+       ],
+       "at": "third"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Cut in four. One fourth. Shorter again.",
+     "do": [
+      {
+       "do": "draw",
+       "target": "st4",
+       "at": "four"
+      },
+      {
+       "do": "show",
+       "target": [
+        "pc4",
+        "lq4"
+       ],
+       "at": "fourth"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Cut in six. One sixth.",
+     "do": [
+      {
+       "do": "draw",
+       "target": "st6",
+       "at": "six"
+      },
+      {
+       "do": "show",
+       "target": [
+        "pc6",
+        "lq6"
+       ],
+       "at": "sixth"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Cut in eight. One eighth. A tiny piece.",
+     "do": [
+      {
+       "do": "draw",
+       "target": "st8",
+       "at": "eight"
+      },
+      {
+       "do": "show",
+       "target": [
+        "pc8",
+        "lq8"
+       ],
+       "at": "eighth"
+      }
+     ],
+     "pause": 0.5
+    },
+    {
+     "speaker": "teacher",
+     "say": "Every time the bottom number grows, the single piece shrinks. One eighth fits inside every one of the others.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "pc2",
+        "pc3",
+        "pc4",
+        "pc6",
+        "pc8"
+       ],
+       "at": "shrinks",
+       "until": "One"
+      },
+      {
+       "do": "highlight",
+       "target": "pc8",
+       "at": "eighth",
+       "until": "every",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "pc2",
+        "pc3",
+        "pc4",
+        "pc6"
+       ],
+       "at": "every",
+       "nth": 2
+      },
+      {
+       "do": "draw",
+       "target": "guide",
+       "at": "fits",
+       "dur": 1.2
+      },
+      {
+       "do": "text",
+       "text": "Bigger bottom, smaller piece",
+       "at": "others"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "So with the same top number, fewer cuts wins!",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "pc2",
+       "at": "fewer"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "Right. Same count, so the bigger piece wins, and bigger pieces come from fewer cuts.",
+     "do": [
+      {
+       "do": "text",
+       "text": "Same top number: fewer cuts, bigger pieces, greater fraction",
+       "at": "bigger"
+      }
+     ],
+     "pause": 0.3
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     2.3,
+     10,
+     7.8
+    ],
+    "points": {
+     "gAp": [
+      2,
+      6.6
+     ],
+     "gBp": [
+      2,
+      4.4
+     ],
+     "aT0": [
+      2,
+      6.6
+     ],
+     "aT1": [
+      3.2,
+      6.6
+     ],
+     "aT2": [
+      4.4,
+      6.6
+     ],
+     "aB0": [
+      2,
+      5.2
+     ],
+     "aB1": [
+      3.2,
+      5.2
+     ],
+     "aB2": [
+      4.4,
+      5.2
+     ],
+     "bT0": [
+      2,
+      4.4
+     ],
+     "bT1": [
+      3.2,
+      4.4
+     ],
+     "bT2": [
+      4.4,
+      4.4
+     ],
+     "bT3": [
+      5.6,
+      4.4
+     ],
+     "bT4": [
+      6.8,
+      4.4
+     ],
+     "bT5": [
+      8,
+      4.4
+     ],
+     "bB0": [
+      2,
+      3
+     ],
+     "bB1": [
+      3.2,
+      3
+     ],
+     "bB2": [
+      4.4,
+      3
+     ],
+     "bB3": [
+      5.6,
+      3
+     ],
+     "bB4": [
+      6.8,
+      3
+     ],
+     "bB5": [
+      8,
+      3
+     ],
+     "ca1": {
+      "cell": [
+       "gA",
+       1
+      ]
+     },
+     "ca2": {
+      "cell": [
+       "gA",
+       2
+      ]
+     },
+     "cb1": {
+      "cell": [
+       "gB",
+       1
+      ]
+     },
+     "cb2": {
+      "cell": [
+       "gB",
+       2
+      ]
+     },
+     "cb3": {
+      "cell": [
+       "gB",
+       3
+      ]
+     },
+     "cb4": {
+      "cell": [
+       "gB",
+       4
+      ]
+     },
+     "cb5": {
+      "cell": [
+       "gB",
+       5
+      ]
+     },
+     "rA": [
+      1.75,
+      5.9
+     ],
+     "rB": [
+      1.75,
+      3.7
+     ]
+    },
+    "parts": [
+     {
+      "id": "gA",
+      "grid": [
+       6,
+       1
+      ],
+      "at": "gAp",
+      "size": [
+       1.2,
+       1.4
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "gB",
+      "grid": [
+       6,
+       1
+      ],
+      "at": "gBp",
+      "size": [
+       1.2,
+       1.4
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "pa1",
+      "poly": [
+       "aT0",
+       "aT1",
+       "aB1",
+       "aB0"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2.5
+     },
+     {
+      "id": "pa2",
+      "poly": [
+       "aT1",
+       "aT2",
+       "aB2",
+       "aB1"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2.5
+     },
+     {
+      "id": "pb1",
+      "poly": [
+       "bT0",
+       "bT1",
+       "bB1",
+       "bB0"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2.5
+     },
+     {
+      "id": "pb2",
+      "poly": [
+       "bT1",
+       "bT2",
+       "bB2",
+       "bB1"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2.5
+     },
+     {
+      "id": "pb3",
+      "poly": [
+       "bT2",
+       "bT3",
+       "bB3",
+       "bB2"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2.5
+     },
+     {
+      "id": "pb4",
+      "poly": [
+       "bT3",
+       "bT4",
+       "bB4",
+       "bB3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2.5
+     },
+     {
+      "id": "pb5",
+      "poly": [
+       "bT4",
+       "bT5",
+       "bB5",
+       "bB4"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2.5
+     },
+     {
+      "id": "lrA",
+      "label": "\\frac{2}{6}",
+      "at": "rA",
+      "dir": "w",
+      "ink": "accent",
+      "size": "l"
+     },
+     {
+      "id": "lrB",
+      "label": "\\frac{5}{6}",
+      "at": "rB",
+      "dir": "w",
+      "ink": "accent",
+      "size": "l"
+     },
+     {
+      "id": "na1",
+      "label": "1",
+      "at": "ca1",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink"
+     },
+     {
+      "id": "na2",
+      "label": "2",
+      "at": "ca2",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink"
+     },
+     {
+      "id": "nb1",
+      "label": "1",
+      "at": "cb1",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink"
+     },
+     {
+      "id": "nb2",
+      "label": "2",
+      "at": "cb2",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink"
+     },
+     {
+      "id": "nb3",
+      "label": "3",
+      "at": "cb3",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink"
+     },
+     {
+      "id": "nb4",
+      "label": "4",
+      "at": "cb4",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink"
+     },
+     {
+      "id": "nb5",
+      "label": "5",
+      "at": "cb5",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now two fractions with the same bottom number: two sixths, and five sixths of the same whole.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\tfrac{2}{6}\\ ?\\ \\tfrac{5}{6}",
+       "fresh": true,
+       "at": "Now"
+      },
+      {
+       "do": "draw",
+       "target": "gA",
+       "at": "two",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": "lrA",
+       "at": "two",
+       "nth": 2
+      },
+      {
+       "do": "draw",
+       "target": "gB",
+       "at": "five"
+      },
+      {
+       "do": "show",
+       "target": "lrB",
+       "at": "five"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Both strips are cut into sixths, so every piece is exactly the same size.",
+     "do": [
+      {
+       "do": "text",
+       "text": "Both in sixths: equal pieces",
+       "at": "Both"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "gA",
+        "gB"
+       ],
+       "at": "same"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two sixths means two of those pieces. One, two.",
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "pa1",
+        "na1"
+       ],
+       "at": "One"
+      },
+      {
+       "do": "show",
+       "target": [
+        "pa2",
+        "na2"
+       ],
+       "at": "two",
+       "nth": 3
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five sixths means five pieces. One, two, three, four, five.",
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "pb1",
+        "nb1"
+       ],
+       "at": "One"
+      },
+      {
+       "do": "show",
+       "target": [
+        "pb2",
+        "nb2"
+       ],
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": [
+        "pb3",
+        "nb3"
+       ],
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": [
+        "pb4",
+        "nb4"
+       ],
+       "at": "four"
+      },
+      {
+       "do": "show",
+       "target": [
+        "pb5",
+        "nb5"
+       ],
+       "at": "five",
+       "nth": 3
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "Same size pieces, so five pieces is more than two pieces!",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "pb1",
+        "pb2",
+        "pb3",
+        "pb4",
+        "pb5"
+       ],
+       "at": "five",
+       "until": "than"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "pa1",
+        "pa2"
+       ],
+       "at": "two"
+      },
+      {
+       "do": "text",
+       "text": "5 pieces beat 2 pieces",
+       "at": "five"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "Exactly. Five sixths is more than two sixths. When the bottom numbers match, just count the pieces.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\tfrac{5}{6} > \\tfrac{2}{6}",
+       "at": "Five"
+      },
+      {
+       "do": "text",
+       "text": "Same bottom number: more pieces is more",
+       "at": "count"
+      }
+     ],
+     "pause": 0.3
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     2.3,
+     10,
+     7.8
+    ],
+    "points": {
+     "gAp": [
+      2,
+      6.6
+     ],
+     "gBp": [
+      2,
+      4.4
+     ],
+     "aT0": [
+      2,
+      6.6
+     ],
+     "aT1": [
+      3.8,
+      6.6
+     ],
+     "aT2": [
+      5.6,
+      6.6
+     ],
+     "aT3": [
+      7.4,
+      6.6
+     ],
+     "aB0": [
+      2,
+      5.2
+     ],
+     "aB1": [
+      3.8,
+      5.2
+     ],
+     "aB2": [
+      5.6,
+      5.2
+     ],
+     "aB3": [
+      7.4,
+      5.2
+     ],
+     "bT0": [
+      2,
+      4.4
+     ],
+     "bT1": [
+      2.9,
+      4.4
+     ],
+     "bT2": [
+      3.8,
+      4.4
+     ],
+     "bT3": [
+      4.7,
+      4.4
+     ],
+     "bB0": [
+      2,
+      3
+     ],
+     "bB1": [
+      2.9,
+      3
+     ],
+     "bB2": [
+      3.8,
+      3
+     ],
+     "bB3": [
+      4.7,
+      3
+     ],
+     "ca1": {
+      "cell": [
+       "gA",
+       1
+      ]
+     },
+     "ca2": {
+      "cell": [
+       "gA",
+       2
+      ]
+     },
+     "ca3": {
+      "cell": [
+       "gA",
+       3
+      ]
+     },
+     "cb1": {
+      "cell": [
+       "gB",
+       1
+      ]
+     },
+     "cb2": {
+      "cell": [
+       "gB",
+       2
+      ]
+     },
+     "cb3": {
+      "cell": [
+       "gB",
+       3
+      ]
+     },
+     "rA": [
+      1.75,
+      5.9
+     ],
+     "rB": [
+      1.75,
+      3.7
+     ],
+     "gT": [
+      4.7,
+      7
+     ],
+     "gX": [
+      4.7,
+      2.6
+     ],
+     "gM1": [
+      4.7,
+      6.4
+     ],
+     "gM2": [
+      4.7,
+      5.45
+     ]
+    },
+    "parts": [
+     {
+      "id": "gA",
+      "grid": [
+       4,
+       1
+      ],
+      "at": "gAp",
+      "size": [
+       1.8,
+       1.4
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "gB",
+      "grid": [
+       8,
+       1
+      ],
+      "at": "gBp",
+      "size": [
+       0.9,
+       1.4
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "pa1",
+      "poly": [
+       "aT0",
+       "aT1",
+       "aB1",
+       "aB0"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2.5
+     },
+     {
+      "id": "pa2",
+      "poly": [
+       "aT1",
+       "aT2",
+       "aB2",
+       "aB1"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2.5
+     },
+     {
+      "id": "pa3",
+      "poly": [
+       "aT2",
+       "aT3",
+       "aB3",
+       "aB2"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2.5
+     },
+     {
+      "id": "pb1",
+      "poly": [
+       "bT0",
+       "bT1",
+       "bB1",
+       "bB0"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5
+     },
+     {
+      "id": "pb2",
+      "poly": [
+       "bT1",
+       "bT2",
+       "bB2",
+       "bB1"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5
+     },
+     {
+      "id": "pb3",
+      "poly": [
+       "bT2",
+       "bT3",
+       "bB3",
+       "bB2"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5
+     },
+     {
+      "id": "guide",
+      "seg": [
+       "gT",
+       "gM1"
+      ],
+      "ink": "violet",
+      "w": 2,
+      "dash": true
+     },
+     {
+      "id": "guide2",
+      "seg": [
+       "gM2",
+       "gX"
+      ],
+      "ink": "violet",
+      "w": 2,
+      "dash": true
+     },
+     {
+      "id": "lrA",
+      "label": "\\frac{3}{4}",
+      "at": "rA",
+      "dir": "w",
+      "ink": "accent",
+      "size": "l"
+     },
+     {
+      "id": "lrB",
+      "label": "\\frac{3}{8}",
+      "at": "rB",
+      "dir": "w",
+      "ink": "gold",
+      "size": "l"
+     },
+     {
+      "id": "na1",
+      "label": "1",
+      "at": "ca1",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink"
+     },
+     {
+      "id": "na2",
+      "label": "2",
+      "at": "ca2",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink"
+     },
+     {
+      "id": "na3",
+      "label": "3",
+      "at": "ca3",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink"
+     },
+     {
+      "id": "nb1",
+      "label": "1",
+      "at": "cb1",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink"
+     },
+     {
+      "id": "nb2",
+      "label": "2",
+      "at": "cb2",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink"
+     },
+     {
+      "id": "nb3",
+      "label": "3",
+      "at": "cb3",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now the other way around. Three fourths, and three eighths. The top numbers match: three pieces each.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\tfrac{3}{4}\\ ?\\ \\tfrac{3}{8}",
+       "fresh": true,
+       "at": "Now"
+      },
+      {
+       "do": "draw",
+       "target": "gA",
+       "at": "Three"
+      },
+      {
+       "do": "show",
+       "target": "lrA",
+       "at": "fourths"
+      },
+      {
+       "do": "draw",
+       "target": "gB",
+       "at": "eighths"
+      },
+      {
+       "do": "show",
+       "target": "lrB",
+       "at": "eighths"
+      },
+      {
+       "do": "text",
+       "text": "Same top number: 3 pieces each",
+       "at": "match"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Take three pieces from each. One, two, three.",
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "pa1",
+        "pb1",
+        "na1",
+        "nb1"
+       ],
+       "at": "One"
+      },
+      {
+       "do": "show",
+       "target": [
+        "pa2",
+        "pb2",
+        "na2",
+        "nb2"
+       ],
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": [
+        "pa3",
+        "pb3",
+        "na3",
+        "nb3"
+       ],
+       "at": "three",
+       "nth": 2
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "But the pieces are not the same size this time.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "pa1",
+        "pa2",
+        "pa3",
+        "pb1",
+        "pb2",
+        "pb3"
+       ],
+       "at": "not"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "Right! Fourths are big. Eighths are small. Three big pieces against three small ones.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "pa1",
+        "pa2",
+        "pa3"
+       ],
+       "at": "big",
+       "until": "Eighths"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "pb1",
+        "pb2",
+        "pb3"
+       ],
+       "at": "small",
+       "nth": 1,
+       "until": "Three"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "pa1",
+        "pa2",
+        "pa3"
+       ],
+       "at": "big",
+       "nth": 2,
+       "until": "against"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "pb1",
+        "pb2",
+        "pb3"
+       ],
+       "at": "small",
+       "nth": 2
+      },
+      {
+       "do": "text",
+       "text": "Fourths are big, eighths are small",
+       "at": "Fourths"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Look how soon the small ones run out. Three fourths is more than three eighths.",
+     "do": [
+      {
+       "do": "draw",
+       "target": "guide2",
+       "at": "soon",
+       "dur": 1.2
+      },
+      {
+       "do": "draw",
+       "target": "guide",
+       "at": "out",
+       "dur": 0.5
+      },
+      {
+       "do": "write",
+       "tex": "\\tfrac{3}{4} > \\tfrac{3}{8}",
+       "at": "Three",
+       "nth": 1
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Same top number: the smaller bottom number means bigger pieces, so it wins.",
+     "do": [
+      {
+       "do": "text",
+       "text": "Same top number: fewer cuts, bigger pieces, greater fraction",
+       "at": "smaller"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "pa1",
+        "pa2",
+        "pa3"
+       ],
+       "at": "wins"
+      }
+     ],
+     "pause": 0.3
+    }
+   ]
+  },
+  {
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now let us write what we found. The sign opens its wide mouth toward the bigger fraction.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Comparing with signs"
+      },
+      {
+       "do": "text",
+       "text": "The wide mouth faces the bigger fraction",
+       "at": "wide"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five sixths is greater than two sixths.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\tfrac{5}{6} > \\tfrac{2}{6}",
+       "note": "\\text{greater than}",
+       "fresh": true,
+       "at": "Five"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "One third is greater than one eighth.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\tfrac{1}{3} > \\tfrac{1}{8}",
+       "note": "\\text{greater than}",
+       "fresh": true,
+       "at": "One"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three eighths is less than three fourths.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\tfrac{3}{8} < \\tfrac{3}{4}",
+       "note": "\\text{less than}",
+       "fresh": true,
+       "at": "Three"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "And when two fractions are exactly the same, we use the equals sign. Four sixths equals four sixths.",
+     "do": [
+      {
+       "do": "text",
+       "text": "Exactly the same amount: equals sign",
+       "at": "same"
+      },
+      {
+       "do": "write",
+       "tex": "\\tfrac{4}{6} = \\tfrac{4}{6}",
+       "note": "\\text{equal to}",
+       "fresh": true,
+       "at": "Four"
+      }
+     ],
+     "pause": 0.4
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     1.2,
+     10,
+     8.4
+    ],
+    "points": {
+     "CL": [
+      3,
+      4.6
+     ],
+     "CS": [
+      7.8,
+      4.6
+     ],
+     "TL": [
+      3,
+      6.9
+     ],
+     "TS": [
+      7.8,
+      5.7
+     ],
+     "h1": [
+      3,
+      6.8
+     ],
+     "h2": [
+      2.5708,
+      6.7577
+     ],
+     "h3": [
+      2.1581,
+      6.6326
+     ],
+     "h4": [
+      1.7777,
+      6.4292
+     ],
+     "h5": [
+      1.4444,
+      6.1556
+     ],
+     "h6": [
+      1.1708,
+      5.8223
+     ],
+     "h7": [
+      0.9674,
+      5.4419
+     ],
+     "h8": [
+      0.8423,
+      5.0292
+     ],
+     "h9": [
+      0.8,
+      4.6
+     ],
+     "h10": [
+      0.8423,
+      4.1708
+     ],
+     "h11": [
+      0.9674,
+      3.7581
+     ],
+     "h12": [
+      1.1708,
+      3.3777
+     ],
+     "h13": [
+      1.4444,
+      3.0444
+     ],
+     "h14": [
+      1.7777,
+      2.7708
+     ],
+     "h15": [
+      2.1581,
+      2.5674
+     ],
+     "h16": [
+      2.5708,
+      2.4423
+     ],
+     "h17": [
+      3,
+      2.4
+     ],
+     "k1": [
+      7.8,
+      5.6
+     ],
+     "k2": [
+      7.4173,
+      5.5239
+     ],
+     "k3": [
+      7.0929,
+      5.3071
+     ],
+     "k4": [
+      6.8761,
+      4.9827
+     ],
+     "k5": [
+      6.8,
+      4.6
+     ],
+     "k6": [
+      6.8761,
+      4.2173
+     ],
+     "k7": [
+      7.0929,
+      3.8929
+     ],
+     "k8": [
+      7.4173,
+      3.6761
+     ],
+     "k9": [
+      7.8,
+      3.6
+     ],
+     "HL": [
+      3,
+      2.3
+     ],
+     "HS": [
+      7.8,
+      3.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "big",
+      "circle": "CL",
+      "r": 2.2,
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "small",
+      "circle": "CS",
+      "r": 1,
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "halfBig",
+      "poly": [
+       "h1",
+       "h2",
+       "h3",
+       "h4",
+       "h5",
+       "h6",
+       "h7",
+       "h8",
+       "h9",
+       "h10",
+       "h11",
+       "h12",
+       "h13",
+       "h14",
+       "h15",
+       "h16",
+       "h17"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2.5,
+      "solid": true
+     },
+     {
+      "id": "halfSmall",
+      "poly": [
+       "k1",
+       "k2",
+       "k3",
+       "k4",
+       "k5",
+       "k6",
+       "k7",
+       "k8",
+       "k9"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 2.5,
+      "solid": true,
+      "group": "gs"
+     },
+     {
+      "id": "lbig",
+      "label": "\\text{big pizza}",
+      "at": "TL",
+      "dir": "n",
+      "size": "l"
+     },
+     {
+      "id": "lsmall",
+      "label": "\\text{small pizza}",
+      "at": "TS",
+      "dir": "n",
+      "size": "l"
+     },
+     {
+      "id": "lhb",
+      "label": "\\tfrac{1}{2}",
+      "at": "HL",
+      "dir": "s",
+      "ink": "blue",
+      "size": "l"
+     },
+     {
+      "id": "lhs",
+      "label": "\\tfrac{1}{2}",
+      "at": "HS",
+      "dir": "s",
+      "ink": "violet",
+      "size": "l",
+      "group": "gs"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "One more thing, and it matters. Here is a big pizza and a small pizza.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "show",
+       "target": "lbig",
+       "at": "big"
+      },
+      {
+       "do": "show",
+       "target": "lsmall",
+       "at": "small"
+      },
+      {
+       "do": "text",
+       "text": "One more thing: the whole",
+       "at": "matters"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Take one half of each.",
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "halfBig",
+        "lhb"
+       ],
+       "at": "Take"
+      },
+      {
+       "do": "show",
+       "target": [
+        "halfSmall",
+        "lhs"
+       ],
+       "at": "each"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "Both are one half, so they are equal!",
+     "do": [
+      {
+       "do": "text",
+       "text": "$\\tfrac{1}{2}$ and $\\tfrac{1}{2}$: equal?",
+       "at": "equal"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "Are they? Slide the small half onto the big half.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "lhs",
+       "at": "Slide"
+      },
+      {
+       "do": "slide",
+       "target": "gs",
+       "by": [
+        -4.8,
+        0
+       ],
+       "at": "onto",
+       "dur": 1.8
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "Oh. The small half is much smaller!",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "halfSmall",
+       "at": "smaller"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "A half of a small pizza is not a half of a big one. We can only compare fractions of the same whole.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "halfSmall",
+       "at": "small",
+       "until": "not"
+      },
+      {
+       "do": "highlight",
+       "target": "halfBig",
+       "at": "big",
+       "until": "We"
+      },
+      {
+       "do": "text",
+       "text": "Compare parts of one whole",
+       "at": "only"
+      }
+     ],
+     "pause": 0.4
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     1,
+     10,
+     8.4
+    ],
+    "points": {
+     "g1p": [
+      2,
+      7.7
+     ],
+     "g2p": [
+      2,
+      6.5
+     ],
+     "g3p": [
+      2,
+      4.5
+     ],
+     "g4p": [
+      2,
+      3.3
+     ],
+     "r1T0": [
+      2,
+      7.7
+     ],
+     "r1T1": [
+      3.2,
+      7.7
+     ],
+     "r1T2": [
+      4.4,
+      7.7
+     ],
+     "r1B0": [
+      2,
+      6.8
+     ],
+     "r1B1": [
+      3.2,
+      6.8
+     ],
+     "r1B2": [
+      4.4,
+      6.8
+     ],
+     "r2T0": [
+      2,
+      6.5
+     ],
+     "r2T1": [
+      3.2,
+      6.5
+     ],
+     "r2T2": [
+      4.4,
+      6.5
+     ],
+     "r2T3": [
+      5.6,
+      6.5
+     ],
+     "r2T4": [
+      6.8,
+      6.5
+     ],
+     "r2T5": [
+      8,
+      6.5
+     ],
+     "r2B0": [
+      2,
+      5.6
+     ],
+     "r2B1": [
+      3.2,
+      5.6
+     ],
+     "r2B2": [
+      4.4,
+      5.6
+     ],
+     "r2B3": [
+      5.6,
+      5.6
+     ],
+     "r2B4": [
+      6.8,
+      5.6
+     ],
+     "r2B5": [
+      8,
+      5.6
+     ],
+     "r3T0": [
+      2,
+      4.5
+     ],
+     "r3T1": [
+      3.8,
+      4.5
+     ],
+     "r3T2": [
+      5.6,
+      4.5
+     ],
+     "r3T3": [
+      7.4,
+      4.5
+     ],
+     "r3B0": [
+      2,
+      3.6
+     ],
+     "r3B1": [
+      3.8,
+      3.6
+     ],
+     "r3B2": [
+      5.6,
+      3.6
+     ],
+     "r3B3": [
+      7.4,
+      3.6
+     ],
+     "r4T0": [
+      2,
+      3.3
+     ],
+     "r4T1": [
+      2.9,
+      3.3
+     ],
+     "r4T2": [
+      3.8,
+      3.3
+     ],
+     "r4T3": [
+      4.7,
+      3.3
+     ],
+     "r4B0": [
+      2,
+      2.4
+     ],
+     "r4B1": [
+      2.9,
+      2.4
+     ],
+     "r4B2": [
+      3.8,
+      2.4
+     ],
+     "r4B3": [
+      4.7,
+      2.4
+     ],
+     "r1": [
+      1.75,
+      7.25
+     ],
+     "r2": [
+      1.75,
+      6.05
+     ],
+     "r3": [
+      1.75,
+      4.05
+     ],
+     "r4": [
+      1.75,
+      2.85
+     ]
+    },
+    "parts": [
+     {
+      "id": "f1",
+      "grid": [
+       6,
+       1
+      ],
+      "at": "g1p",
+      "size": [
+       1.2,
+       0.9
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "f2",
+      "grid": [
+       6,
+       1
+      ],
+      "at": "g2p",
+      "size": [
+       1.2,
+       0.9
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "f3",
+      "grid": [
+       4,
+       1
+      ],
+      "at": "g3p",
+      "size": [
+       1.8,
+       0.9
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "f4",
+      "grid": [
+       8,
+       1
+      ],
+      "at": "g4p",
+      "size": [
+       0.9,
+       0.9
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "e1a",
+      "poly": [
+       "r1T0",
+       "r1T1",
+       "r1B1",
+       "r1B0"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2.5
+     },
+     {
+      "id": "e1b",
+      "poly": [
+       "r1T1",
+       "r1T2",
+       "r1B2",
+       "r1B1"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2.5
+     },
+     {
+      "id": "e2a",
+      "poly": [
+       "r2T0",
+       "r2T1",
+       "r2B1",
+       "r2B0"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2.5
+     },
+     {
+      "id": "e2b",
+      "poly": [
+       "r2T1",
+       "r2T2",
+       "r2B2",
+       "r2B1"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2.5
+     },
+     {
+      "id": "e2c",
+      "poly": [
+       "r2T2",
+       "r2T3",
+       "r2B3",
+       "r2B2"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2.5
+     },
+     {
+      "id": "e2d",
+      "poly": [
+       "r2T3",
+       "r2T4",
+       "r2B4",
+       "r2B3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2.5
+     },
+     {
+      "id": "e2e",
+      "poly": [
+       "r2T4",
+       "r2T5",
+       "r2B5",
+       "r2B4"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2.5
+     },
+     {
+      "id": "e3a",
+      "poly": [
+       "r3T0",
+       "r3T1",
+       "r3B1",
+       "r3B0"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5
+     },
+     {
+      "id": "e3b",
+      "poly": [
+       "r3T1",
+       "r3T2",
+       "r3B2",
+       "r3B1"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5
+     },
+     {
+      "id": "e3c",
+      "poly": [
+       "r3T2",
+       "r3T3",
+       "r3B3",
+       "r3B2"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5
+     },
+     {
+      "id": "e4a",
+      "poly": [
+       "r4T0",
+       "r4T1",
+       "r4B1",
+       "r4B0"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5
+     },
+     {
+      "id": "e4b",
+      "poly": [
+       "r4T1",
+       "r4T2",
+       "r4B2",
+       "r4B1"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5
+     },
+     {
+      "id": "e4c",
+      "poly": [
+       "r4T2",
+       "r4T3",
+       "r4B3",
+       "r4B2"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5
+     },
+     {
+      "id": "l1",
+      "label": "\\tfrac{2}{6}",
+      "at": "r1",
+      "dir": "w",
+      "ink": "accent",
+      "size": "m"
+     },
+     {
+      "id": "l2",
+      "label": "\\tfrac{5}{6}",
+      "at": "r2",
+      "dir": "w",
+      "ink": "accent",
+      "size": "m"
+     },
+     {
+      "id": "l3",
+      "label": "\\tfrac{3}{4}",
+      "at": "r3",
+      "dir": "w",
+      "ink": "gold",
+      "size": "m"
+     },
+     {
+      "id": "l4",
+      "label": "\\tfrac{3}{8}",
+      "at": "r4",
+      "dir": "w",
+      "ink": "gold",
+      "size": "m"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "So there are two ways to compare, and you can see both. First, same size pieces.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Two ways to compare",
+       "at": "two"
+      },
+      {
+       "do": "draw",
+       "target": [
+        "f1",
+        "f2"
+       ],
+       "at": "First"
+      },
+      {
+       "do": "show",
+       "target": [
+        "e1a",
+        "e1b",
+        "e2a",
+        "e2b",
+        "e2c",
+        "e2d",
+        "e2e",
+        "l1",
+        "l2"
+       ],
+       "at": "same"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Every piece is the same size, so the strip with more pieces is more.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "e2a",
+        "e2b",
+        "e2c",
+        "e2d",
+        "e2e"
+       ],
+       "at": "more"
+      },
+      {
+       "do": "text",
+       "text": "Same pieces: count them",
+       "at": "more"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Second, the same count of pieces.",
+     "do": [
+      {
+       "do": "draw",
+       "target": [
+        "f3",
+        "f4"
+       ],
+       "at": "Second"
+      },
+      {
+       "do": "show",
+       "target": [
+        "e3a",
+        "e3b",
+        "e3c",
+        "e4a",
+        "e4b",
+        "e4c",
+        "l3",
+        "l4"
+       ],
+       "at": "same"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now the pieces are different sizes. Fewer cuts make bigger pieces, so the bigger piece wins.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "e3a",
+        "e3b",
+        "e3c"
+       ],
+       "at": "bigger",
+       "nth": 2
+      },
+      {
+       "do": "text",
+       "text": "Same count: compare piece sizes",
+       "at": "Fewer"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "And always the same whole. Then eight being bigger than three cannot fool me.",
+     "do": [
+      {
+       "do": "text",
+       "text": "Always the same whole",
+       "at": "always"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "Same pieces? Count them. Same count? Look at the size of a piece.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "e1a",
+        "e1b",
+        "e2a",
+        "e2b",
+        "e2c",
+        "e2d",
+        "e2e"
+       ],
+       "at": "Same",
+       "until": "Same",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "e3a",
+        "e3b",
+        "e3c",
+        "e4a",
+        "e4b",
+        "e4c"
+       ],
+       "at": "Same",
+       "nth": 2
+      }
+     ],
+     "pause": 0.5
+    }
+   ]
+  }
+ ]
+}

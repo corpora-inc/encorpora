@@ -1,5 +1,6 @@
 import { skills } from "../curriculum/catalog";
 import { selectionObjectives } from "../curriculum/selection";
+import { SAT_PROFILE_VERSION, satPracticeEligible } from "../curriculum/sat";
 import type { TemplateMetadata } from "../math/contracts";
 import {
   createPracticePolicy,
@@ -49,6 +50,7 @@ export const satObjectiveDomains: Readonly<Record<string, SatDomain>> = {
   "circles-conics": "geometry",
   "right-triangles": "geometry",
   trigonometry: "geometry",
+  "geometry-proof": "geometry",
 };
 const satSkills = new Set(
   skills
@@ -62,16 +64,19 @@ export function satPracticeConfiguration(
   templates: readonly TemplateMetadata[],
   base: PracticePolicy = DEFAULT_PRACTICE_POLICY,
 ) {
-  const objectives = selectionObjectives.filter(
-    (o) => satObjectiveDomains[o.id] && o.skills.some((s) => satSkills.has(s)),
-  );
-  const eligibleSkills = new Set(
-    objectives.flatMap((o) => o.skills.filter((s) => satSkills.has(s))),
-  );
-  const pool = templates.filter((t) => eligibleSkills.has(t.skillId));
+  const pool = templates.filter(satPracticeEligible);
   const available = new Set(pool.map((t) => t.skillId));
+  const objectives = selectionObjectives.filter((o) =>
+    o.skills.some((s) => available.has(s)),
+  );
+  for (const objective of objectives)
+    if (!satObjectiveDomains[objective.id])
+      throw new Error(`Unmapped SAT objective: ${objective.id}`);
   const parameters = practiceParameters(base);
-  parameters.version = `${base.version}+${SAT_BLUEPRINT.id}`;
+  parameters.version = `${base.version.slice(0, 60)}+${SAT_PROFILE_VERSION}`;
+  // General placement sequences are not SAT-domain draws. The adaptive
+  // planner still uses the learner's frontier, evidence and recovery settings.
+  parameters.placement.scriptedOpeners = false;
   for (const domain of Object.keys(
     SAT_BLUEPRINT.domainPercent,
   ) as SatDomain[]) {
@@ -79,7 +84,9 @@ export function satPracticeConfiguration(
       (o) => satObjectiveDomains[o.id] === domain,
     );
     const total = group.reduce((n, o) => n + o.assessmentEmphasis, 0);
-    if (!total) throw new Error(`Empty SAT domain: ${domain}`);
+    // An older/offline client may render only part of the SAT pool. Retain
+    // that supported pool, never substitute unrelated K–12 material.
+    if (!total) continue;
     for (const o of group)
       parameters.weights.objectives[o.id] =
         (SAT_BLUEPRINT.domainPercent[domain] * o.assessmentEmphasis) / total;
@@ -89,7 +96,7 @@ export function satPracticeConfiguration(
     policy: createPracticePolicy(parameters),
     templates: pool,
     // Presence is not certification of every facet or exam response format.
-    skillsWithoutPractice: [...eligibleSkills]
+    skillsWithoutPractice: [...satSkills]
       .filter((s) => !available.has(s))
       .sort(),
   };

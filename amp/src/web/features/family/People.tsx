@@ -6,7 +6,6 @@ import { formatDay } from "../../../schools/calendar";
 import { Button, buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
 import { RowLink, RowList } from "../../ui/RowList";
-import { ScreenTitle } from "../../ui/ScreenTitle";
 import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { approvalsOptions } from "../family-approval/api";
@@ -98,9 +97,7 @@ function YourName({ place }: { place: FamilyPlace }) {
     <div className={styles.setting} data-your-name={known ? "" : "missing"}>
       <div className={styles.settingText}>
         <dt>{known ?? "Your name"}</dt>
-        <dd>
-          {known ? "Your name" : "Other parents see it."}
-        </dd>
+        <dd>{known ? "Your name" : "Other parents see it."}</dd>
       </div>
       <div className={styles.settingAction}>
         <Link
@@ -143,9 +140,14 @@ function SecondParentSection({ place }: { place: FamilyPlace }) {
           </li>
         ) : second.isError ? (
           <li>
-            <span role="alert">The second parent didn’t load. </span>
-            <Button variant="quiet" onClick={() => void second.refetch()}>
-              Try again
+            <span role="alert">Invitations are temporarily unavailable. </span>
+            <Button
+              variant="quiet"
+              aria-busy={second.isFetching}
+              disabled={second.isFetching}
+              onClick={() => void second.refetch()}
+            >
+              Reload invitations
             </Button>
           </li>
         ) : second.data ? (
@@ -192,10 +194,16 @@ export function FamilyPeopleScreen() {
   const ownPractice = !!me?.adultPractice?.learner;
   const startPractice = !ownPractice && me?.adultPractice?.eligible === true;
   return (
-    <FamilyFrame place={place} narrow>
+    <FamilyFrame place={place} title="People & sharing">
       {data && (
         <div className={styles.page} data-family-people="">
-          <ScreenTitle>People</ScreenTitle>
+          <Link
+            to="/$"
+            params={{ _splat: familyHref(family, "settings") }}
+            className={styles.settingBack}
+          >
+            ‹ Settings
+          </Link>
           <section className={people.list} aria-labelledby="people-you">
             <h2 id="people-you" className={people.title}>
               You
@@ -422,12 +430,9 @@ export function FamilySettingsScreen() {
   const add = !!data?.capabilities.addChildren;
   const consented = me?.consent.status === "active";
   return (
-    <FamilyFrame place={place} narrow>
+    <FamilyFrame place={place} title="Settings">
       {data && (
         <div className={styles.page} data-family-settings="">
-          <header className={styles.head}>
-            <ScreenTitle>Settings</ScreenTitle>
-          </header>
           <section className={styles.section} aria-labelledby="family-children">
             <div className={styles.sectionHead}>
               <h2 id="family-children">Children</h2>
@@ -464,6 +469,13 @@ export function FamilySettingsScreen() {
               <p className={styles.footnote}>No children yet.</p>
             )}
           </section>
+          <RowList label="People and sharing">
+            <RowLink
+              title="People & sharing"
+              meta="Parents, invitations and access"
+              to={familyHref(place.family, "people")}
+            />
+          </RowList>
           <SchoolYear place={place} />
           <FamilyCode place={place} />
           <FamilyPracticeDefaults place={place} />
@@ -474,7 +486,7 @@ export function FamilySettingsScreen() {
                 <RowLink title="Billing" to="account/billing" />
               )}
               <RowLink title="Privacy" to="account/privacy" />
-              <RowLink title="Sign-in" to="account/security" />
+              <RowLink title="Profile & sign-in" to="account/security" />
             </RowList>
           </section>
           {add && consented && (

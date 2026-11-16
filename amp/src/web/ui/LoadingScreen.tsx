@@ -26,7 +26,7 @@ const waveStart =
 
 let arrivalTimer: ReturnType<typeof setTimeout> | undefined;
 /** The wave just left: what replaces it fades in, once (`ui/loading.css`). */
-function markArrival() {
+export function markArrival() {
   const root = document.documentElement;
   root.setAttribute("data-arriving", "");
   clearTimeout(arrivalTimer);

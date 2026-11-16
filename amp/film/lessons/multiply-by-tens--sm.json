@@ -1,0 +1,2937 @@
+{
+ "id": "multiply-by-tens--sm",
+ "title": "Multiplying by a multiple of 10",
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -5,
+     -3.4,
+     5,
+     1.8
+    ],
+    "points": {
+     "A": [
+      0,
+      0
+     ],
+     "B": [
+      0,
+      -2.3
+     ],
+     "Q": [
+      3.3,
+      0.1
+     ]
+    },
+    "parts": [
+     {
+      "id": "big",
+      "label": "6\\times40",
+      "at": "A",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "q",
+      "label": "?",
+      "at": "Q",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm"
+     },
+     {
+      "id": "known",
+      "label": "\\text{a fact you already know}",
+      "at": "B",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here is today's problem: six times forty.",
+     "do": [
+      {
+       "do": "problem",
+       "text": "What is $6\\times40$?",
+       "at": "Six"
+      },
+      {
+       "do": "highlight",
+       "target": "big",
+       "at": "forty"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "Forty? My times tables stop at nine times nine. That one is too big for me!",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "big",
+       "at": "Forty"
+      },
+      {
+       "do": "show",
+       "target": "q",
+       "at": "big"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "It is not too big. Hiding inside six times forty is a fact you already know.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "q",
+       "at": "not"
+      },
+      {
+       "do": "show",
+       "target": "known",
+       "at": "Hiding"
+      },
+      {
+       "do": "text",
+       "text": "Find the fact you know.",
+       "at": "Hiding"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Let's find it. First, what is a ten?",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "known",
+       "at": "find"
+      },
+      {
+       "do": "text",
+       "text": "What is a ten?",
+       "at": "First"
+      }
+     ],
+     "pause": 0.3
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -4,
+     -10.6,
+     6.6,
+     1.4
+    ],
+    "points": {
+     "P1": [
+      0,
+      -1.575
+     ],
+     "P10": [
+      0,
+      -7.875
+     ],
+     "Words": [
+      3.7,
+      -4.725
+     ],
+     "v1": [
+      0,
+      0
+     ],
+     "v2": [
+      0,
+      -1.05
+     ],
+     "v3": [
+      0,
+      -2.1
+     ],
+     "v4": [
+      0,
+      -3.15
+     ],
+     "v5": [
+      0,
+      -4.2
+     ],
+     "v6": [
+      0,
+      -5.25
+     ],
+     "v7": [
+      0,
+      -6.3
+     ],
+     "v8": [
+      0,
+      -7.35
+     ],
+     "v9": [
+      0,
+      -8.4
+     ],
+     "v10": [
+      0,
+      -9.45
+     ]
+    },
+    "parts": [
+     {
+      "id": "stick",
+      "seg": [
+       "P1",
+       "P10"
+      ],
+      "ink": "warm",
+      "w": 38
+     },
+     {
+      "id": "w1",
+      "label": "\\text{ten ones}",
+      "at": "Words",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent"
+     },
+     {
+      "id": "w2",
+      "label": "\\text{one ten}",
+      "at": "Words",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm"
+     },
+     {
+      "id": "o1",
+      "dot": "v1",
+      "group": "ones",
+      "r": 13,
+      "ink": "accent"
+     },
+     {
+      "id": "o2",
+      "dot": "v2",
+      "group": "ones",
+      "r": 13,
+      "ink": "accent"
+     },
+     {
+      "id": "o3",
+      "dot": "v3",
+      "group": "ones",
+      "r": 13,
+      "ink": "accent"
+     },
+     {
+      "id": "o4",
+      "dot": "v4",
+      "group": "ones",
+      "r": 13,
+      "ink": "accent"
+     },
+     {
+      "id": "o5",
+      "dot": "v5",
+      "group": "ones",
+      "r": 13,
+      "ink": "accent"
+     },
+     {
+      "id": "o6",
+      "dot": "v6",
+      "group": "ones",
+      "r": 13,
+      "ink": "accent"
+     },
+     {
+      "id": "o7",
+      "dot": "v7",
+      "group": "ones",
+      "r": 13,
+      "ink": "accent"
+     },
+     {
+      "id": "o8",
+      "dot": "v8",
+      "group": "ones",
+      "r": 13,
+      "ink": "accent"
+     },
+     {
+      "id": "o9",
+      "dot": "v9",
+      "group": "ones",
+      "r": 13,
+      "ink": "accent"
+     },
+     {
+      "id": "o10",
+      "dot": "v10",
+      "group": "ones",
+      "r": 13,
+      "ink": "accent"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A ten is made of ten ones. Here are ten ones, ten little dots.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "A ten is ten ones.",
+       "at": "ten"
+      },
+      {
+       "do": "show",
+       "target": "ones",
+       "at": "Here"
+      },
+      {
+       "do": "show",
+       "target": "w1",
+       "at": "ten",
+       "nth": 3
+      },
+      {
+       "do": "highlight",
+       "target": "ones",
+       "at": "dots"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Push them together, and they lock into one stick: that is one ten.",
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "v1": [
+         0,
+         -1.575
+        ],
+        "v2": [
+         0,
+         -2.275
+        ],
+        "v3": [
+         0,
+         -2.975
+        ],
+        "v4": [
+         0,
+         -3.675
+        ],
+        "v5": [
+         0,
+         -4.375
+        ],
+        "v6": [
+         0,
+         -5.075
+        ],
+        "v7": [
+         0,
+         -5.775
+        ],
+        "v8": [
+         0,
+         -6.475
+        ],
+        "v9": [
+         0,
+         -7.175
+        ],
+        "v10": [
+         0,
+         -7.875
+        ]
+       },
+       "at": "Push",
+       "dur": 1.3
+      },
+      {
+       "do": "show",
+       "target": "stick",
+       "at": "lock",
+       "dur": 0.5
+      },
+      {
+       "do": "hide",
+       "target": "ones",
+       "at": "stick",
+       "dur": 0.4
+      },
+      {
+       "do": "hide",
+       "target": "w1",
+       "at": "One"
+      },
+      {
+       "do": "show",
+       "target": "w2",
+       "at": "One"
+      },
+      {
+       "do": "write",
+       "tex": "10\\text{ ones}=1\\text{ ten}",
+       "at": "ten"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "So a ten is one stick, but it is worth ten dots.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "stick",
+       "at": "stick"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "Yes! One thing, worth ten. Hold on to that.",
+     "pause": 0.4
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -2.8,
+     -10.0,
+     11.4,
+     2.6
+    ],
+    "points": {
+     "LT": [
+      -0.95,
+      0.5
+     ],
+     "LB": [
+      -0.95,
+      -8.0
+     ],
+     "RowL": [
+      -1.9,
+      -3.75
+     ],
+     "TL": [
+      -0.4,
+      1.0
+     ],
+     "TR": [
+      8.5,
+      1.0
+     ],
+     "Top": [
+      4.05,
+      1.8
+     ],
+     "Cap1": [
+      4.05,
+      -9.1
+     ],
+     "Cap2": [
+      4.9,
+      -9.1
+     ],
+     "OneL": [
+      0.85,
+      -0.75
+     ],
+     "a11": [
+      0,
+      0.0
+     ],
+     "a12": [
+      2.7,
+      0.0
+     ],
+     "a13": [
+      5.4,
+      0.0
+     ],
+     "a14": [
+      8.1,
+      0.0
+     ],
+     "a21": [
+      0,
+      -1.5
+     ],
+     "a22": [
+      2.7,
+      -1.5
+     ],
+     "a23": [
+      5.4,
+      -1.5
+     ],
+     "a24": [
+      8.1,
+      -1.5
+     ],
+     "a31": [
+      0,
+      -3.0
+     ],
+     "a32": [
+      2.7,
+      -3.0
+     ],
+     "a33": [
+      5.4,
+      -3.0
+     ],
+     "a34": [
+      8.1,
+      -3.0
+     ],
+     "a41": [
+      0,
+      -4.5
+     ],
+     "a42": [
+      2.7,
+      -4.5
+     ],
+     "a43": [
+      5.4,
+      -4.5
+     ],
+     "a44": [
+      8.1,
+      -4.5
+     ],
+     "a51": [
+      0,
+      -6.0
+     ],
+     "a52": [
+      2.7,
+      -6.0
+     ],
+     "a53": [
+      5.4,
+      -6.0
+     ],
+     "a54": [
+      8.1,
+      -6.0
+     ],
+     "a61": [
+      0,
+      -7.5
+     ],
+     "a62": [
+      2.7,
+      -7.5
+     ],
+     "a63": [
+      5.4,
+      -7.5
+     ],
+     "a64": [
+      8.1,
+      -7.5
+     ],
+     "b11": [
+      0.02,
+      0.0
+     ],
+     "b12": [
+      2.72,
+      0.0
+     ],
+     "b13": [
+      5.42,
+      0.0
+     ],
+     "b14": [
+      8.12,
+      0.0
+     ],
+     "b21": [
+      0.02,
+      -1.5
+     ],
+     "b22": [
+      2.72,
+      -1.5
+     ],
+     "b23": [
+      5.42,
+      -1.5
+     ],
+     "b24": [
+      8.12,
+      -1.5
+     ],
+     "b31": [
+      0.02,
+      -3.0
+     ],
+     "b32": [
+      2.72,
+      -3.0
+     ],
+     "b33": [
+      5.42,
+      -3.0
+     ],
+     "b34": [
+      8.12,
+      -3.0
+     ],
+     "b41": [
+      0.02,
+      -4.5
+     ],
+     "b42": [
+      2.72,
+      -4.5
+     ],
+     "b43": [
+      5.42,
+      -4.5
+     ],
+     "b44": [
+      8.12,
+      -4.5
+     ],
+     "b51": [
+      0.02,
+      -6.0
+     ],
+     "b52": [
+      2.72,
+      -6.0
+     ],
+     "b53": [
+      5.42,
+      -6.0
+     ],
+     "b54": [
+      8.12,
+      -6.0
+     ],
+     "b61": [
+      0.02,
+      -7.5
+     ],
+     "b62": [
+      2.72,
+      -7.5
+     ],
+     "b63": [
+      5.42,
+      -7.5
+     ],
+     "b64": [
+      8.12,
+      -7.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "sideBr",
+      "seg": [
+       "LT",
+       "LB"
+      ],
+      "ink": "blue",
+      "w": 4
+     },
+     {
+      "id": "rowsLbl",
+      "label": "6",
+      "at": "RowL",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue"
+     },
+     {
+      "id": "topBr",
+      "seg": [
+       "TL",
+       "TR"
+      ],
+      "ink": "accent",
+      "w": 4
+     },
+     {
+      "id": "each",
+      "label": "4",
+      "at": "Top",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent"
+     },
+     {
+      "id": "eachTens",
+      "label": "4\\text{ tens}",
+      "at": "Top",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm"
+     },
+     {
+      "id": "cap1",
+      "label": "24\\text{ ones}",
+      "at": "Cap1",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent"
+     },
+     {
+      "id": "cap2",
+      "label": "24\\text{ tens}",
+      "at": "Cap2",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm"
+     },
+     {
+      "id": "oneTen",
+      "label": "\\text{one ten}",
+      "at": "OneL",
+      "dir": "c",
+      "size": "s",
+      "ink": "warm",
+      "halo": true
+     },
+     {
+      "id": "d11",
+      "dot": "a11",
+      "group": "dots",
+      "r": 14,
+      "ink": "accent"
+     },
+     {
+      "id": "d12",
+      "dot": "a12",
+      "group": "dots",
+      "r": 14,
+      "ink": "accent"
+     },
+     {
+      "id": "d13",
+      "dot": "a13",
+      "group": "dots",
+      "r": 14,
+      "ink": "accent"
+     },
+     {
+      "id": "d14",
+      "dot": "a14",
+      "group": "dots",
+      "r": 14,
+      "ink": "accent"
+     },
+     {
+      "id": "d21",
+      "dot": "a21",
+      "group": "dots",
+      "r": 14,
+      "ink": "accent"
+     },
+     {
+      "id": "d22",
+      "dot": "a22",
+      "group": "dots",
+      "r": 14,
+      "ink": "accent"
+     },
+     {
+      "id": "d23",
+      "dot": "a23",
+      "group": "dots",
+      "r": 14,
+      "ink": "accent"
+     },
+     {
+      "id": "d24",
+      "dot": "a24",
+      "group": "dots",
+      "r": 14,
+      "ink": "accent"
+     },
+     {
+      "id": "d31",
+      "dot": "a31",
+      "group": "dots",
+      "r": 14,
+      "ink": "accent"
+     },
+     {
+      "id": "d32",
+      "dot": "a32",
+      "group": "dots",
+      "r": 14,
+      "ink": "accent"
+     },
+     {
+      "id": "d33",
+      "dot": "a33",
+      "group": "dots",
+      "r": 14,
+      "ink": "accent"
+     },
+     {
+      "id": "d34",
+      "dot": "a34",
+      "group": "dots",
+      "r": 14,
+      "ink": "accent"
+     },
+     {
+      "id": "d41",
+      "dot": "a41",
+      "group": "dots",
+      "r": 14,
+      "ink": "accent"
+     },
+     {
+      "id": "d42",
+      "dot": "a42",
+      "group": "dots",
+      "r": 14,
+      "ink": "accent"
+     },
+     {
+      "id": "d43",
+      "dot": "a43",
+      "group": "dots",
+      "r": 14,
+      "ink": "accent"
+     },
+     {
+      "id": "d44",
+      "dot": "a44",
+      "group": "dots",
+      "r": 14,
+      "ink": "accent"
+     },
+     {
+      "id": "d51",
+      "dot": "a51",
+      "group": "dots",
+      "r": 14,
+      "ink": "accent"
+     },
+     {
+      "id": "d52",
+      "dot": "a52",
+      "group": "dots",
+      "r": 14,
+      "ink": "accent"
+     },
+     {
+      "id": "d53",
+      "dot": "a53",
+      "group": "dots",
+      "r": 14,
+      "ink": "accent"
+     },
+     {
+      "id": "d54",
+      "dot": "a54",
+      "group": "dots",
+      "r": 14,
+      "ink": "accent"
+     },
+     {
+      "id": "d61",
+      "dot": "a61",
+      "group": "dots",
+      "r": 14,
+      "ink": "accent"
+     },
+     {
+      "id": "d62",
+      "dot": "a62",
+      "group": "dots",
+      "r": 14,
+      "ink": "accent"
+     },
+     {
+      "id": "d63",
+      "dot": "a63",
+      "group": "dots",
+      "r": 14,
+      "ink": "accent"
+     },
+     {
+      "id": "d64",
+      "dot": "a64",
+      "group": "dots",
+      "r": 14,
+      "ink": "accent"
+     },
+     {
+      "id": "r11",
+      "seg": [
+       "a11",
+       "b11"
+      ],
+      "group": "row1",
+      "ink": "warm",
+      "w": 28
+     },
+     {
+      "id": "r12",
+      "seg": [
+       "a12",
+       "b12"
+      ],
+      "group": "row1",
+      "ink": "warm",
+      "w": 28
+     },
+     {
+      "id": "r13",
+      "seg": [
+       "a13",
+       "b13"
+      ],
+      "group": "row1",
+      "ink": "warm",
+      "w": 28
+     },
+     {
+      "id": "r14",
+      "seg": [
+       "a14",
+       "b14"
+      ],
+      "group": "row1",
+      "ink": "warm",
+      "w": 28
+     },
+     {
+      "id": "r21",
+      "seg": [
+       "a21",
+       "b21"
+      ],
+      "group": "row2",
+      "ink": "warm",
+      "w": 28
+     },
+     {
+      "id": "r22",
+      "seg": [
+       "a22",
+       "b22"
+      ],
+      "group": "row2",
+      "ink": "warm",
+      "w": 28
+     },
+     {
+      "id": "r23",
+      "seg": [
+       "a23",
+       "b23"
+      ],
+      "group": "row2",
+      "ink": "warm",
+      "w": 28
+     },
+     {
+      "id": "r24",
+      "seg": [
+       "a24",
+       "b24"
+      ],
+      "group": "row2",
+      "ink": "warm",
+      "w": 28
+     },
+     {
+      "id": "r31",
+      "seg": [
+       "a31",
+       "b31"
+      ],
+      "group": "row3",
+      "ink": "warm",
+      "w": 28
+     },
+     {
+      "id": "r32",
+      "seg": [
+       "a32",
+       "b32"
+      ],
+      "group": "row3",
+      "ink": "warm",
+      "w": 28
+     },
+     {
+      "id": "r33",
+      "seg": [
+       "a33",
+       "b33"
+      ],
+      "group": "row3",
+      "ink": "warm",
+      "w": 28
+     },
+     {
+      "id": "r34",
+      "seg": [
+       "a34",
+       "b34"
+      ],
+      "group": "row3",
+      "ink": "warm",
+      "w": 28
+     },
+     {
+      "id": "r41",
+      "seg": [
+       "a41",
+       "b41"
+      ],
+      "group": "row4",
+      "ink": "warm",
+      "w": 28
+     },
+     {
+      "id": "r42",
+      "seg": [
+       "a42",
+       "b42"
+      ],
+      "group": "row4",
+      "ink": "warm",
+      "w": 28
+     },
+     {
+      "id": "r43",
+      "seg": [
+       "a43",
+       "b43"
+      ],
+      "group": "row4",
+      "ink": "warm",
+      "w": 28
+     },
+     {
+      "id": "r44",
+      "seg": [
+       "a44",
+       "b44"
+      ],
+      "group": "row4",
+      "ink": "warm",
+      "w": 28
+     },
+     {
+      "id": "r51",
+      "seg": [
+       "a51",
+       "b51"
+      ],
+      "group": "row5",
+      "ink": "warm",
+      "w": 28
+     },
+     {
+      "id": "r52",
+      "seg": [
+       "a52",
+       "b52"
+      ],
+      "group": "row5",
+      "ink": "warm",
+      "w": 28
+     },
+     {
+      "id": "r53",
+      "seg": [
+       "a53",
+       "b53"
+      ],
+      "group": "row5",
+      "ink": "warm",
+      "w": 28
+     },
+     {
+      "id": "r54",
+      "seg": [
+       "a54",
+       "b54"
+      ],
+      "group": "row5",
+      "ink": "warm",
+      "w": 28
+     },
+     {
+      "id": "r61",
+      "seg": [
+       "a61",
+       "b61"
+      ],
+      "group": "row6",
+      "ink": "warm",
+      "w": 28
+     },
+     {
+      "id": "r62",
+      "seg": [
+       "a62",
+       "b62"
+      ],
+      "group": "row6",
+      "ink": "warm",
+      "w": 28
+     },
+     {
+      "id": "r63",
+      "seg": [
+       "a63",
+       "b63"
+      ],
+      "group": "row6",
+      "ink": "warm",
+      "w": 28
+     },
+     {
+      "id": "r64",
+      "seg": [
+       "a64",
+       "b64"
+      ],
+      "group": "row6",
+      "ink": "warm",
+      "w": 28
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now forget the sticks for a moment, and think of six times four. Six rows, with four dots in each row.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "show",
+       "target": "dots",
+       "at": "Six"
+      },
+      {
+       "do": "show",
+       "target": [
+        "sideBr",
+        "rowsLbl"
+       ],
+       "at": "rows"
+      },
+      {
+       "do": "show",
+       "target": [
+        "topBr",
+        "each"
+       ],
+       "at": "four",
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "6\\times4",
+       "at": "six"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "Twenty-four! I know that one. Six times four is twenty-four.",
+     "do": [
+      {
+       "do": "show",
+       "target": "cap1",
+       "at": "Twenty-four"
+      },
+      {
+       "do": "write",
+       "tex": "6\\times4=24",
+       "at": "Six"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "Twenty-four dots, and every dot is a one. Twenty-four ones.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "dots",
+       "at": "dot"
+      },
+      {
+       "do": "highlight",
+       "target": "cap1",
+       "at": "ones"
+      }
+     ],
+     "pause": 0.5
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now watch just one dot. Stretch it into a ten.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "d11",
+       "at": "watch",
+       "until": "Stretch"
+      },
+      {
+       "do": "hide",
+       "target": "d11",
+       "at": "Stretch",
+       "dur": 0.3
+      },
+      {
+       "do": "show",
+       "target": "r11",
+       "at": "Stretch",
+       "dur": 0.3
+      },
+      {
+       "do": "move",
+       "points": {
+        "b11": [
+         1.7,
+         0
+        ]
+       },
+       "at": "Stretch",
+       "dur": 1.4
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "It is still one thing, in the very same place. But now that one thing is worth ten.",
+     "do": [
+      {
+       "do": "show",
+       "target": "oneTen",
+       "at": "still"
+      },
+      {
+       "do": "highlight",
+       "target": "r11",
+       "at": "place"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "So it is a ten, instead of a one!",
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "Do that to every dot.",
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "oneTen",
+        "dots",
+        "cap1",
+        "each"
+       ],
+       "at": "Do",
+       "dur": 0.4
+      },
+      {
+       "do": "show",
+       "target": [
+        "row1",
+        "row2",
+        "row3",
+        "row4",
+        "row5",
+        "row6"
+       ],
+       "at": "Do",
+       "dur": 0.4
+      },
+      {
+       "do": "show",
+       "target": "eachTens",
+       "at": "every"
+      },
+      {
+       "do": "move",
+       "points": {
+        "TR": [
+         10.2,
+         1.0
+        ],
+        "Top": [
+         4.9,
+         1.8
+        ],
+        "b12": [
+         4.4,
+         0.0
+        ],
+        "b13": [
+         7.1,
+         0.0
+        ],
+        "b14": [
+         9.8,
+         0.0
+        ],
+        "b21": [
+         1.7,
+         -1.5
+        ],
+        "b22": [
+         4.4,
+         -1.5
+        ],
+        "b23": [
+         7.1,
+         -1.5
+        ],
+        "b24": [
+         9.8,
+         -1.5
+        ],
+        "b31": [
+         1.7,
+         -3.0
+        ],
+        "b32": [
+         4.4,
+         -3.0
+        ],
+        "b33": [
+         7.1,
+         -3.0
+        ],
+        "b34": [
+         9.8,
+         -3.0
+        ],
+        "b41": [
+         1.7,
+         -4.5
+        ],
+        "b42": [
+         4.4,
+         -4.5
+        ],
+        "b43": [
+         7.1,
+         -4.5
+        ],
+        "b44": [
+         9.8,
+         -4.5
+        ],
+        "b51": [
+         1.7,
+         -6.0
+        ],
+        "b52": [
+         4.4,
+         -6.0
+        ],
+        "b53": [
+         7.1,
+         -6.0
+        ],
+        "b54": [
+         9.8,
+         -6.0
+        ],
+        "b61": [
+         1.7,
+         -7.5
+        ],
+        "b62": [
+         4.4,
+         -7.5
+        ],
+        "b63": [
+         7.1,
+         -7.5
+        ],
+        "b64": [
+         9.8,
+         -7.5
+        ]
+       },
+       "at": "Do",
+       "dur": 1.8
+      }
+     ],
+     "pause": 0.5
+    },
+    {
+     "speaker": "teacher",
+     "say": "Six rows of four tens. Count the things now. Still twenty-four. We added none, and took none away. Only the name changed: ones, then tens.",
+     "do": [
+      {
+       "do": "show",
+       "target": "cap2",
+       "at": "Still"
+      },
+      {
+       "do": "highlight",
+       "target": "cap2",
+       "at": "name"
+      },
+      {
+       "do": "write",
+       "tex": "6\\times4\\text{ tens}=24\\text{ tens}",
+       "at": "Six"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "Twenty-four tens!",
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "And four tens is forty. So six times forty is twenty-four tens.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "6\\times40=24\\text{ tens}",
+       "at": "six"
+      }
+     ],
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {},
+    "parts": [
+     {
+      "id": "b",
+      "blocks": [
+       "hundreds",
+       "tens",
+       "ones"
+      ],
+      "rows": [
+       {
+        "id": "n",
+        "pieces": {
+         "tens": 24
+        },
+        "inks": {
+         "tens": "warm",
+         "hundreds": "blue",
+         "ones": "accent"
+        }
+       }
+      ],
+      "counts": true,
+      "digits": "later",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here are our twenty-four tens, as sticks. How much is that? Let's bundle them.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "24\\text{ tens}",
+       "at": "twenty-four"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten sticks lock into a flat. A flat is one hundred.",
+     "do": [
+      {
+       "do": "join",
+       "target": "b.n.tens",
+       "n": 1,
+       "at": "lock"
+      }
+     ],
+     "pause": 0.5
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten more sticks. Another flat. Another hundred.",
+     "do": [
+      {
+       "do": "join",
+       "target": "b.n.tens",
+       "n": 1,
+       "at": "more"
+      }
+     ],
+     "pause": 0.5
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two hundreds, and four sticks left over. Four tens. Two hundred forty.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "b.n.hundreds",
+       "at": "Two",
+       "until": "and"
+      },
+      {
+       "do": "highlight",
+       "target": "b.n.tens",
+       "at": "Four",
+       "until": "Two",
+       "untilNth": 2
+      },
+      {
+       "do": "show",
+       "target": "b.digits",
+       "at": "forty"
+      },
+      {
+       "do": "write",
+       "tex": "24\\text{ tens}=240",
+       "at": "forty"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "Two hundred forty! But where did the zero come from?",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "b.digits",
+       "at": "forty",
+       "until": "But"
+      },
+      {
+       "do": "highlight",
+       "target": "b.digit.ones",
+       "at": "zero"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "Nobody added it. There are no ones left over, so the ones place says zero. That is how twenty-four tens is written.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "b.digit.ones",
+       "at": "ones",
+       "until": "That"
+      },
+      {
+       "do": "text",
+       "text": "No ones left over, so the ones place says 0.",
+       "at": "no"
+      },
+      {
+       "do": "answer",
+       "tex": "6\\times40=240",
+       "at": "written"
+      }
+     ],
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {},
+    "parts": [
+     {
+      "id": "b",
+      "blocks": [
+       "hundreds",
+       "tens",
+       "ones"
+      ],
+      "rows": [
+       {
+        "id": "n",
+        "pieces": {
+         "hundreds": 7,
+         "tens": 2
+        },
+        "shown": [],
+        "inks": {
+         "tens": "warm",
+         "hundreds": "blue",
+         "ones": "accent"
+        }
+       }
+      ],
+      "digits": "later"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now let's go quickly. Nine times eighty. Eighty is eight tens.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "What is $9\\times80$?",
+       "at": "Nine"
+      },
+      {
+       "do": "write",
+       "tex": "9\\times80=9\\times8\\text{ tens}",
+       "at": "Eighty"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "Nine times eight is seventy-two. So seventy-two tens.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "=72\\text{ tens}",
+       "at": "seventy-two"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "Seventy-two tens. Ten tens make a hundred, so that is seven hundreds, with two tens left over. Seven hundred twenty.",
+     "do": [
+      {
+       "do": "show",
+       "target": "b.n.hundreds",
+       "at": "seven"
+      },
+      {
+       "do": "show",
+       "target": "b.n.tens",
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": "b.digits",
+       "at": "Seven",
+       "nth": 2
+      },
+      {
+       "do": "answer",
+       "tex": "9\\times80=720",
+       "at": "twenty"
+      }
+     ],
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {},
+    "parts": [
+     {
+      "id": "b",
+      "blocks": [
+       "hundreds",
+       "tens",
+       "ones"
+      ],
+      "rows": [
+       {
+        "id": "n",
+        "pieces": {
+         "tens": 30
+        },
+        "inks": {
+         "tens": "warm",
+         "hundreds": "blue",
+         "ones": "accent"
+        }
+       }
+      ],
+      "counts": true,
+      "digits": "later",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now, a tricky one. Five times sixty. Sixty is six tens, so this is five times six tens.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "What is $5\\times60$?",
+       "at": "Five"
+      },
+      {
+       "do": "write",
+       "tex": "5\\times60=5\\times6\\text{ tens}",
+       "at": "Sixty"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five times six is thirty.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "=30",
+       "id": "thirty",
+       "at": "thirty"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "learner",
+     "say": "Thirty! So the answer is thirty.",
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "Wait. Thirty what? Not thirty ones. Thirty tens.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "b.n.tens",
+       "at": "tens"
+      },
+      {
+       "do": "strike",
+       "target": "thirty",
+       "at": "Wait"
+      }
+     ],
+     "pause": 0.5
+    },
+    {
+     "speaker": "teacher",
+     "say": "Slowly, now. Ten sticks, one hundred.",
+     "do": [
+      {
+       "do": "join",
+       "target": "b.n.tens",
+       "n": 1,
+       "at": "Ten"
+      }
+     ],
+     "pause": 0.5
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten sticks, two hundred.",
+     "do": [
+      {
+       "do": "join",
+       "target": "b.n.tens",
+       "n": 1,
+       "at": "Ten"
+      }
+     ],
+     "pause": 0.5
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten sticks, three hundred.",
+     "do": [
+      {
+       "do": "join",
+       "target": "b.n.tens",
+       "n": 1,
+       "at": "Ten"
+      }
+     ],
+     "pause": 0.5
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three hundreds. No tens. No ones. Three hundred.",
+     "do": [
+      {
+       "do": "show",
+       "target": "b.digits",
+       "at": "Three"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "b.n.hundreds",
+        "b.digit.hundreds"
+       ],
+       "at": "Three",
+       "until": "No"
+      },
+      {
+       "do": "answer",
+       "tex": "5\\times60=300",
+       "at": "Three",
+       "nth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "b.digit.tens",
+       "at": "No",
+       "until": "No",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "b.digit.ones",
+       "at": "No",
+       "nth": 2,
+       "until": "Three",
+       "untilNth": 2
+      }
+     ],
+     "pause": 0.5
+    },
+    {
+     "speaker": "teacher",
+     "say": "See? Thirty already ended in a zero, and the answer needs two. Nobody adds zeros. Thirty tens is simply three hundred.",
+     "do": [
+      {
+       "do": "text",
+       "text": "$5\\times6=30$ already ends in 0.",
+       "at": "See"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "b.digit.tens",
+        "b.digit.ones"
+       ],
+       "at": "two",
+       "until": "Nobody"
+      },
+      {
+       "do": "text",
+       "text": "30 tens is 300.",
+       "at": "simply"
+      }
+     ],
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {},
+    "parts": [
+     {
+      "id": "b",
+      "blocks": [
+       "tens",
+       "ones"
+      ],
+      "rows": [
+       {
+        "id": "n",
+        "pieces": {
+         "tens": 6
+        },
+        "inks": {
+         "tens": "warm",
+         "ones": "accent"
+        }
+       }
+      ],
+      "counts": true,
+      "digits": "later",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "And six times ten itself. Ten is one ten, so we need six of them. Six sticks in a row.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "What is $6\\times10$?",
+       "at": "six"
+      },
+      {
+       "do": "write",
+       "tex": "6\\times10=6\\text{ tens}",
+       "at": "six",
+       "nth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "b.n.tens",
+       "at": "sticks"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "That makes sixty!",
+     "do": [
+      {
+       "do": "show",
+       "target": "b.digits",
+       "at": "sixty"
+      },
+      {
+       "do": "answer",
+       "tex": "6\\times10=60",
+       "at": "sixty"
+      }
+     ],
+     "pause": 0.05
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {},
+    "parts": [
+     {
+      "id": "b",
+      "blocks": [
+       "hundreds",
+       "tens",
+       "ones"
+      ],
+      "rows": [
+       {
+        "id": "n",
+        "pieces": {
+         "tens": 21
+        },
+        "inks": {
+         "tens": "warm",
+         "hundreds": "blue",
+         "ones": "accent"
+        }
+       }
+      ],
+      "counts": true,
+      "digits": "later",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "One more, turned around. Thirty times seven.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "What is $30\\times7$?",
+       "at": "Thirty"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "The ten is first this time! Is that different?",
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "No. Seven times thirty and thirty times seven are the same, so turn the array. Thirty is three tens. Seven times three is twenty-one. Twenty-one tens.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "b.n.tens",
+       "at": "Seven",
+       "until": "same"
+      },
+      {
+       "do": "highlight",
+       "target": "b.n.tens",
+       "at": "Twenty-one",
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "30\\times7=7\\times3\\text{ tens}",
+       "at": "turn"
+      },
+      {
+       "do": "write",
+       "tex": "=21\\text{ tens}",
+       "at": "Twenty-one"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Bundle them: two hundreds, one ten. Two hundred ten.",
+     "do": [
+      {
+       "do": "join",
+       "target": "b.n.tens",
+       "n": 2,
+       "at": "Bundle"
+      },
+      {
+       "do": "show",
+       "target": "b.digits",
+       "at": "ten",
+       "nth": 2
+      },
+      {
+       "do": "answer",
+       "tex": "30\\times7=210",
+       "at": "Two",
+       "nth": 2
+      }
+     ],
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.92,
+     -9.1,
+     14.48,
+     2.1
+    ],
+    "points": {
+     "NameL": [
+      1.95,
+      1.4
+     ],
+     "NameR": [
+      9.75,
+      1.4
+     ],
+     "EqL": [
+      1.95,
+      -8.1
+     ],
+     "EqR": [
+      9.75,
+      -8.1
+     ],
+     "l11": [
+      0,
+      0
+     ],
+     "l12": [
+      1.3,
+      0
+     ],
+     "l13": [
+      2.6,
+      0
+     ],
+     "l14": [
+      3.9,
+      0
+     ],
+     "l21": [
+      0,
+      -1.3
+     ],
+     "l22": [
+      1.3,
+      -1.3
+     ],
+     "l23": [
+      2.6,
+      -1.3
+     ],
+     "l24": [
+      3.9,
+      -1.3
+     ],
+     "l31": [
+      0,
+      -2.6
+     ],
+     "l32": [
+      1.3,
+      -2.6
+     ],
+     "l33": [
+      2.6,
+      -2.6
+     ],
+     "l34": [
+      3.9,
+      -2.6
+     ],
+     "l41": [
+      0,
+      -3.9
+     ],
+     "l42": [
+      1.3,
+      -3.9
+     ],
+     "l43": [
+      2.6,
+      -3.9
+     ],
+     "l44": [
+      3.9,
+      -3.9
+     ],
+     "l51": [
+      0,
+      -5.2
+     ],
+     "l52": [
+      1.3,
+      -5.2
+     ],
+     "l53": [
+      2.6,
+      -5.2
+     ],
+     "l54": [
+      3.9,
+      -5.2
+     ],
+     "l61": [
+      0,
+      -6.5
+     ],
+     "l62": [
+      1.3,
+      -6.5
+     ],
+     "l63": [
+      2.6,
+      -6.5
+     ],
+     "l64": [
+      3.9,
+      -6.5
+     ],
+     "a11": [
+      6.2,
+      0
+     ],
+     "a12": [
+      8.2,
+      0
+     ],
+     "a13": [
+      10.2,
+      0
+     ],
+     "a14": [
+      12.2,
+      0
+     ],
+     "a21": [
+      6.2,
+      -1.3
+     ],
+     "a22": [
+      8.2,
+      -1.3
+     ],
+     "a23": [
+      10.2,
+      -1.3
+     ],
+     "a24": [
+      12.2,
+      -1.3
+     ],
+     "a31": [
+      6.2,
+      -2.6
+     ],
+     "a32": [
+      8.2,
+      -2.6
+     ],
+     "a33": [
+      10.2,
+      -2.6
+     ],
+     "a34": [
+      12.2,
+      -2.6
+     ],
+     "a41": [
+      6.2,
+      -3.9
+     ],
+     "a42": [
+      8.2,
+      -3.9
+     ],
+     "a43": [
+      10.2,
+      -3.9
+     ],
+     "a44": [
+      12.2,
+      -3.9
+     ],
+     "a51": [
+      6.2,
+      -5.2
+     ],
+     "a52": [
+      8.2,
+      -5.2
+     ],
+     "a53": [
+      10.2,
+      -5.2
+     ],
+     "a54": [
+      12.2,
+      -5.2
+     ],
+     "a61": [
+      6.2,
+      -6.5
+     ],
+     "a62": [
+      8.2,
+      -6.5
+     ],
+     "a63": [
+      10.2,
+      -6.5
+     ],
+     "a64": [
+      12.2,
+      -6.5
+     ],
+     "b11": [
+      7.3,
+      0
+     ],
+     "b12": [
+      9.3,
+      0
+     ],
+     "b13": [
+      11.3,
+      0
+     ],
+     "b14": [
+      13.3,
+      0
+     ],
+     "b21": [
+      7.3,
+      -1.3
+     ],
+     "b22": [
+      9.3,
+      -1.3
+     ],
+     "b23": [
+      11.3,
+      -1.3
+     ],
+     "b24": [
+      13.3,
+      -1.3
+     ],
+     "b31": [
+      7.3,
+      -2.6
+     ],
+     "b32": [
+      9.3,
+      -2.6
+     ],
+     "b33": [
+      11.3,
+      -2.6
+     ],
+     "b34": [
+      13.3,
+      -2.6
+     ],
+     "b41": [
+      7.3,
+      -3.9
+     ],
+     "b42": [
+      9.3,
+      -3.9
+     ],
+     "b43": [
+      11.3,
+      -3.9
+     ],
+     "b44": [
+      13.3,
+      -3.9
+     ],
+     "b51": [
+      7.3,
+      -5.2
+     ],
+     "b52": [
+      9.3,
+      -5.2
+     ],
+     "b53": [
+      11.3,
+      -5.2
+     ],
+     "b54": [
+      13.3,
+      -5.2
+     ],
+     "b61": [
+      7.3,
+      -6.5
+     ],
+     "b62": [
+      9.3,
+      -6.5
+     ],
+     "b63": [
+      11.3,
+      -6.5
+     ],
+     "b64": [
+      13.3,
+      -6.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "nameL",
+      "label": "24\\text{ ones}",
+      "at": "NameL",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "nameR",
+      "label": "24\\text{ tens}",
+      "at": "NameR",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm"
+     },
+     {
+      "id": "eqL",
+      "label": "6\\times4=24",
+      "at": "EqL",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "eqR",
+      "label": "6\\times40=240",
+      "at": "EqR",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm"
+     },
+     {
+      "id": "e11",
+      "dot": "l11",
+      "group": "ldots",
+      "r": 11,
+      "ink": "accent"
+     },
+     {
+      "id": "e12",
+      "dot": "l12",
+      "group": "ldots",
+      "r": 11,
+      "ink": "accent"
+     },
+     {
+      "id": "e13",
+      "dot": "l13",
+      "group": "ldots",
+      "r": 11,
+      "ink": "accent"
+     },
+     {
+      "id": "e14",
+      "dot": "l14",
+      "group": "ldots",
+      "r": 11,
+      "ink": "accent"
+     },
+     {
+      "id": "e21",
+      "dot": "l21",
+      "group": "ldots",
+      "r": 11,
+      "ink": "accent"
+     },
+     {
+      "id": "e22",
+      "dot": "l22",
+      "group": "ldots",
+      "r": 11,
+      "ink": "accent"
+     },
+     {
+      "id": "e23",
+      "dot": "l23",
+      "group": "ldots",
+      "r": 11,
+      "ink": "accent"
+     },
+     {
+      "id": "e24",
+      "dot": "l24",
+      "group": "ldots",
+      "r": 11,
+      "ink": "accent"
+     },
+     {
+      "id": "e31",
+      "dot": "l31",
+      "group": "ldots",
+      "r": 11,
+      "ink": "accent"
+     },
+     {
+      "id": "e32",
+      "dot": "l32",
+      "group": "ldots",
+      "r": 11,
+      "ink": "accent"
+     },
+     {
+      "id": "e33",
+      "dot": "l33",
+      "group": "ldots",
+      "r": 11,
+      "ink": "accent"
+     },
+     {
+      "id": "e34",
+      "dot": "l34",
+      "group": "ldots",
+      "r": 11,
+      "ink": "accent"
+     },
+     {
+      "id": "e41",
+      "dot": "l41",
+      "group": "ldots",
+      "r": 11,
+      "ink": "accent"
+     },
+     {
+      "id": "e42",
+      "dot": "l42",
+      "group": "ldots",
+      "r": 11,
+      "ink": "accent"
+     },
+     {
+      "id": "e43",
+      "dot": "l43",
+      "group": "ldots",
+      "r": 11,
+      "ink": "accent"
+     },
+     {
+      "id": "e44",
+      "dot": "l44",
+      "group": "ldots",
+      "r": 11,
+      "ink": "accent"
+     },
+     {
+      "id": "e51",
+      "dot": "l51",
+      "group": "ldots",
+      "r": 11,
+      "ink": "accent"
+     },
+     {
+      "id": "e52",
+      "dot": "l52",
+      "group": "ldots",
+      "r": 11,
+      "ink": "accent"
+     },
+     {
+      "id": "e53",
+      "dot": "l53",
+      "group": "ldots",
+      "r": 11,
+      "ink": "accent"
+     },
+     {
+      "id": "e54",
+      "dot": "l54",
+      "group": "ldots",
+      "r": 11,
+      "ink": "accent"
+     },
+     {
+      "id": "e61",
+      "dot": "l61",
+      "group": "ldots",
+      "r": 11,
+      "ink": "accent"
+     },
+     {
+      "id": "e62",
+      "dot": "l62",
+      "group": "ldots",
+      "r": 11,
+      "ink": "accent"
+     },
+     {
+      "id": "e63",
+      "dot": "l63",
+      "group": "ldots",
+      "r": 11,
+      "ink": "accent"
+     },
+     {
+      "id": "e64",
+      "dot": "l64",
+      "group": "ldots",
+      "r": 11,
+      "ink": "accent"
+     },
+     {
+      "id": "r11",
+      "seg": [
+       "a11",
+       "b11"
+      ],
+      "group": "rods",
+      "ink": "warm",
+      "w": 22
+     },
+     {
+      "id": "r12",
+      "seg": [
+       "a12",
+       "b12"
+      ],
+      "group": "rods",
+      "ink": "warm",
+      "w": 22
+     },
+     {
+      "id": "r13",
+      "seg": [
+       "a13",
+       "b13"
+      ],
+      "group": "rods",
+      "ink": "warm",
+      "w": 22
+     },
+     {
+      "id": "r14",
+      "seg": [
+       "a14",
+       "b14"
+      ],
+      "group": "rods",
+      "ink": "warm",
+      "w": 22
+     },
+     {
+      "id": "r21",
+      "seg": [
+       "a21",
+       "b21"
+      ],
+      "group": "rods",
+      "ink": "warm",
+      "w": 22
+     },
+     {
+      "id": "r22",
+      "seg": [
+       "a22",
+       "b22"
+      ],
+      "group": "rods",
+      "ink": "warm",
+      "w": 22
+     },
+     {
+      "id": "r23",
+      "seg": [
+       "a23",
+       "b23"
+      ],
+      "group": "rods",
+      "ink": "warm",
+      "w": 22
+     },
+     {
+      "id": "r24",
+      "seg": [
+       "a24",
+       "b24"
+      ],
+      "group": "rods",
+      "ink": "warm",
+      "w": 22
+     },
+     {
+      "id": "r31",
+      "seg": [
+       "a31",
+       "b31"
+      ],
+      "group": "rods",
+      "ink": "warm",
+      "w": 22
+     },
+     {
+      "id": "r32",
+      "seg": [
+       "a32",
+       "b32"
+      ],
+      "group": "rods",
+      "ink": "warm",
+      "w": 22
+     },
+     {
+      "id": "r33",
+      "seg": [
+       "a33",
+       "b33"
+      ],
+      "group": "rods",
+      "ink": "warm",
+      "w": 22
+     },
+     {
+      "id": "r34",
+      "seg": [
+       "a34",
+       "b34"
+      ],
+      "group": "rods",
+      "ink": "warm",
+      "w": 22
+     },
+     {
+      "id": "r41",
+      "seg": [
+       "a41",
+       "b41"
+      ],
+      "group": "rods",
+      "ink": "warm",
+      "w": 22
+     },
+     {
+      "id": "r42",
+      "seg": [
+       "a42",
+       "b42"
+      ],
+      "group": "rods",
+      "ink": "warm",
+      "w": 22
+     },
+     {
+      "id": "r43",
+      "seg": [
+       "a43",
+       "b43"
+      ],
+      "group": "rods",
+      "ink": "warm",
+      "w": 22
+     },
+     {
+      "id": "r44",
+      "seg": [
+       "a44",
+       "b44"
+      ],
+      "group": "rods",
+      "ink": "warm",
+      "w": 22
+     },
+     {
+      "id": "r51",
+      "seg": [
+       "a51",
+       "b51"
+      ],
+      "group": "rods",
+      "ink": "warm",
+      "w": 22
+     },
+     {
+      "id": "r52",
+      "seg": [
+       "a52",
+       "b52"
+      ],
+      "group": "rods",
+      "ink": "warm",
+      "w": 22
+     },
+     {
+      "id": "r53",
+      "seg": [
+       "a53",
+       "b53"
+      ],
+      "group": "rods",
+      "ink": "warm",
+      "w": 22
+     },
+     {
+      "id": "r54",
+      "seg": [
+       "a54",
+       "b54"
+      ],
+      "group": "rods",
+      "ink": "warm",
+      "w": 22
+     },
+     {
+      "id": "r61",
+      "seg": [
+       "a61",
+       "b61"
+      ],
+      "group": "rods",
+      "ink": "warm",
+      "w": 22
+     },
+     {
+      "id": "r62",
+      "seg": [
+       "a62",
+       "b62"
+      ],
+      "group": "rods",
+      "ink": "warm",
+      "w": 22
+     },
+     {
+      "id": "r63",
+      "seg": [
+       "a63",
+       "b63"
+      ],
+      "group": "rods",
+      "ink": "warm",
+      "w": 22
+     },
+     {
+      "id": "r64",
+      "seg": [
+       "a64",
+       "b64"
+      ],
+      "group": "rods",
+      "ink": "warm",
+      "w": 22
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here are both pictures, side by side. On the left, six times four.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "show",
+       "target": "ldots",
+       "at": "Here"
+      },
+      {
+       "do": "show",
+       "target": [
+        "nameL",
+        "eqL"
+       ],
+       "at": "six"
+      },
+      {
+       "do": "write",
+       "tex": "6\\times4=24\\text{ ones}",
+       "at": "six"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "On the right, the very same array, but every dot is now a ten. Six times forty.",
+     "do": [
+      {
+       "do": "show",
+       "target": "rods",
+       "at": "right"
+      },
+      {
+       "do": "show",
+       "target": [
+        "nameR",
+        "eqR"
+       ],
+       "at": "forty"
+      },
+      {
+       "do": "write",
+       "tex": "6\\times40=24\\text{ tens}=240",
+       "at": "forty"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "It is the same twenty-four. Just a different name!",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "nameL",
+        "nameR"
+       ],
+       "at": "twenty-four"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "Exactly. Twenty-four ones is twenty-four. Twenty-four tens is two hundred forty.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "eqL",
+       "at": "ones",
+       "until": "Twenty-four",
+       "untilNth": 3
+      },
+      {
+       "do": "highlight",
+       "target": "eqR",
+       "at": "tens"
+      }
+     ],
+     "pause": 0.5
+    },
+    {
+     "speaker": "teacher",
+     "say": "So multiply the digits you know, then say what they are: tens.",
+     "do": [
+      {
+       "do": "text",
+       "text": "Multiply the digits you know.",
+       "at": "multiply"
+      },
+      {
+       "do": "text",
+       "text": "Then say what they are: tens.",
+       "at": "then"
+      }
+     ],
+     "pause": 0.5
+    }
+   ]
+  }
+ ],
+ "skill": "multiply-tens"
+}

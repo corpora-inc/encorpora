@@ -13,6 +13,7 @@ import {
 import { spaceOfPath, SPACES } from "../src/web/features/spaces/space.js";
 import { spaceWords } from "../src/web/features/spaces/words.js";
 import { familyPlaceTabs } from "../src/web/features/spaces/tabs.js";
+import { featureOf, repeatsIn } from "./menu-repeats.js";
 
 /*
  * The resolution truth table (docs/architecture/spaces.md): every session
@@ -600,9 +601,8 @@ test("shared learning routes: the route's learner, a profile, then yourself", ()
   );
   expectSpace(profile, "me");
   assert.equal(profile.mode, "profile");
-  // The bar names no place in Me (Q-204): its "Practicing as" mark names the
-  // profile.
-  assert.equal(profile.label, "");
+  // Optional practice preserves the parent’s family context.
+  assert.equal(profile.label, "Your family");
   assert.equal(profile.learner?.id, "profile-4");
   // A learner who isn't this account's is nobody's here: never another child.
   const foreign = resolveSpace(
@@ -646,22 +646,21 @@ test("Back and two tabs: the same inputs always describe the same place", () => 
 test("power user: each place looks right on its own terms, and nothing follows them", () => {
   const mine = resolveSpace(at("/me"), adult(power, "pip"));
   expectSpace(mine, "me");
-  // No "My" in product chrome (Q-204): the tabs say whose this is.
-  assert.equal(mine.label, "");
+  // Parents have a stable family home even when opening their own record.
+  assert.equal(mine.label, "Your family");
   assert.deepEqual(ids(mine), [
     "practice",
     "levels",
     "workbooks",
     "pathways",
     "inventory",
-    "profiles",
   ]);
+  // A parent returns to family; simulation tools are not a primary destination.
   assert.deepEqual(destinations(mine), [
+    "Your family",
     "Practice",
     "Levels",
     "Workbooks",
-    "Practice at a level",
-    "Profiles",
   ]);
   // Audit #8: Me never carries the family's class or a child.
   assert.ok(!JSON.stringify(mine.destinations).includes(FAMILY));
@@ -759,6 +758,18 @@ test("account: its own neutral addresses and the old ones, never family chrome",
   }
 });
 
+test("individual purchase entry keeps the account frame with or without route metadata", () => {
+  const match = at("/continue/rowan");
+  const fallback = resolveSpace(match, adult(adultOnly, "rowan"));
+  assert.equal(fallback.space, "account");
+  assert.equal(fallback.bar, "plain");
+  assert.deepEqual(fallback.tabs, []);
+  assert.deepEqual(
+    fallback,
+    resolveSpace({ ...match, space: "account" }, adult(adultOnly, "rowan")),
+  );
+});
+
 test("links with their own authority are entries, never an ambient workspace", () => {
   for (const [path, entry] of [
     ["/school/invite", "invite"],
@@ -789,7 +800,7 @@ test("every route family has its space", () => {
     ["/lessons/abc", "learner"],
     ["/books/x", "learner"],
     ["/learners/a/workbooks/2026-11-09", "learner"],
-    ["/continue/a", "learner"],
+    ["/continue/a", "account"],
     ["/profile/birth-year", "learner"],
     ["/me", "me"],
     ["/me/start", "me"],
@@ -962,7 +973,6 @@ test("CP-2 H2: one learner per address, the same order as adoption", () => {
       ["levels", "me/profiles/profile-4", null],
       ["pathways", "pathways", { profile: "profile-4" }],
       ["inventory", "inventory", { profile: "profile-4" }],
-      ["profiles", "me/profiles", null],
     ],
   );
   // A learner this account doesn't read is unavailable, never another.
@@ -1228,4 +1238,131 @@ test("Start class follows the class's own practice state and board capability, f
     },
   });
   assert.deepEqual(noBoard.actions, []);
+});
+
+test("Q-3: no menu offers one feature twice, for any persona on any screen", () => {
+  // The rule itself: Practice at a level's addresses are one feature.
+  assert.equal(featureOf("me/level"), featureOf("/me/profiles"));
+  assert.equal(featureOf("me/profiles/new"), featureOf("me/profiles/x"));
+  assert.notEqual(featureOf("me"), featureOf("me/level"));
+  const twice = resolveSpace(at("/me"), adult(adultOnly, "rowan"));
+  assert.ok(
+    repeatsIn({
+      ...twice,
+      destinations: [
+        ...twice.destinations,
+        { ...twice.destinations.at(-1)!, label: "Profiles", path: "me/level" },
+      ],
+    }).length > 0,
+  );
+  const levelProfile = me({
+    adultPractice: adultOnly.adultPractice,
+    practiceProfiles: [
+      {
+        id: "level-1",
+        label: "Grade 4",
+        level: { grade: 4, pace: "on-level" },
+      } as NonNullable<SignedInMe["practiceProfiles"]>[number],
+      {
+        id: "saved-1",
+        label: "Niece",
+      } as NonNullable<SignedInMe["practiceProfiles"]>[number],
+    ],
+  });
+  const student = me({
+    account: {
+      id: "school:person",
+      email: null,
+      emailVerified: false,
+      kind: "student",
+    },
+    learners: [child("ana", "Ana")],
+    school: { orgName: "Alder Grove", levels: "shown", standings: true },
+  });
+  const personas: [string, SignedInMe, string | null][] = [
+    ["power", power, "jonah"],
+    ["power, a child chosen", power, "pip"],
+    ["holder", holder, "pip"],
+    ["second parent", secondParent, null],
+    ["own practice", adultOnly, "rowan"],
+    [
+      "not started",
+      me({ adultPractice: { eligible: true, learner: null } }),
+      null,
+    ],
+    ["no practice", me(), null],
+    ["staff", staffOnly, null],
+    ["profiles", levelProfile, "rowan"],
+  ];
+  const own = [
+    "/",
+    "/me",
+    "/me/start",
+    "/me/level",
+    "/me/profiles",
+    "/me/profiles/new",
+    "/me/profiles/saved-1",
+    "/practice",
+    "/overview",
+    "/pathways",
+    "/inventory",
+    "/learners/rowan/workbooks",
+    "/learners/jonah/workbooks",
+    "/account/security",
+    "/account/billing",
+  ];
+  const searches = [
+    undefined,
+    { profile: "level-1" },
+    { profile: "saved-1" },
+    { profile: "profile-4" },
+  ];
+  const places: [string, SpaceResources][] = [
+    [classPath(FAMILY, FAMILY_CLASS), { org: familyOrg(), year: YEAR }],
+    [
+      classPath(SCHOOL, ROOM),
+      {
+        org: school({ roles: ["teacher"], teaches: [ROOM] }),
+        classes: [klass(ROOM, SCHOOL, "Grade 4 Math")],
+        year: YEAR,
+      },
+    ],
+    [
+      `/school/${SCHOOL}`,
+      { org: school(), classes: [klass(ROOM, SCHOOL, "Grade 4 Math")] },
+    ],
+  ];
+  let checked = 0;
+  for (const [who, account, learner] of personas) {
+    for (const pathname of own)
+      for (const search of searches) {
+        const space = resolveSpace(
+          at(pathname, search ? { search } : {}),
+          adult(account, learner),
+        );
+        assert.deepEqual(repeatsIn(space), [], `${who} at ${pathname}`);
+        checked += 1;
+      }
+    for (const [pathname, resources] of places)
+      for (const path of [pathname, `${pathname}/map`, `${pathname}/roster`]) {
+        const space = resolveSpace(
+          at(path),
+          adult(account, learner),
+          resources,
+        );
+        assert.deepEqual(repeatsIn(space), [], `${who} at ${path}`);
+        checked += 1;
+      }
+  }
+  for (const pathname of [
+    "/practice",
+    "/overview",
+    "/pathways",
+    "/standings",
+  ]) {
+    const space = resolveSpace(at(pathname), { kind: "student", me: student });
+    assert.deepEqual(repeatsIn(space), [], `student at ${pathname}`);
+    checked += 1;
+  }
+  assert.ok(checked > 500);
 });

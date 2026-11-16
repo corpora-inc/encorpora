@@ -1,7 +1,4 @@
-import {
-  learningConsentActive,
-  parentAddressConfirmed,
-} from "../server/account-access.js";
+import { learningConsentActive } from "../server/account-access.js";
 import { randomBytes, randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import {
@@ -142,8 +139,9 @@ export class ConsentRepository {
   async begin(account: string, input: unknown): Promise<void> {
     const body = beginConsentSchema.parse(input);
     await this.transaction(account, async (client) => {
-      if (!(await parentAddressConfirmed(client, account)))
-        throw new ConsentError("email_unconfirmed", 403);
+      // No confirmed-account-email gate: email-plus verifies the address the
+      // parent gives here by their own response to the message sent to it
+      // (16 CFR 312.5(b)(2), email plus); the account's address adds nothing.
       const p = await this.available(client),
         hash = noticeDigest(p);
       if (body.noticeDigest !== hash) throw new ConsentError("notice_changed");

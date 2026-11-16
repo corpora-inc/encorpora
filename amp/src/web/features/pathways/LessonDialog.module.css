@@ -46,14 +46,6 @@
   grid-template-columns: minmax(0, 1fr);
   gap: var(--space-4);
 }
-.title {
-  margin: 0;
-  color: var(--color-on-surface);
-  font-family: var(--font-display);
-  font-size: var(--text-heading-2);
-  font-weight: 400;
-  line-height: 1.2;
-}
 /* One row: the page's Try first (primary), then the film (secondary). */
 .actions {
   display: flex;
@@ -62,14 +54,6 @@
 }
 .actions > * {
   margin: 0;
-}
-/* A desktop: each action one width, whatever its words ("Try it free",
-   "Try this problem type"), so the film never slides when the first
-   settles. */
-@media (min-width: 641px) {
-  .actions > * {
-    min-width: 15rem;
-  }
 }
 .actions :global(.lesson-film-meta) {
   display: inline;

@@ -201,8 +201,9 @@ export function WorkbookStackScreen({
       className={data?.class.name}
       loading={query.isPending}
       tab="workbooks"
+      title={host.frameHeading ? "Workbooks" : undefined}
     >
-      <PageHead title="Workbooks" />
+      {!host.frameHeading && <PageHead title="Workbooks" />}
       {!data ? (
         <EmptyState
           title="These workbooks didn’t load"
@@ -224,9 +225,7 @@ export function WorkbookStackScreen({
                 : "No students in this class yet"
           }
         >
-          {given || family
-            ? "Add a child first."
-            : "Add students first."}
+          {given || family ? "Add a child first." : "Add students first."}
         </EmptyState>
       ) : (
         <Stack
@@ -372,6 +371,7 @@ function Stack({
         number,
         ...(skill ? { skill } : {}),
       },
+      Object.fromEntries(chosen.map((student) => [student.id, student.name])),
     );
   };
   const changeSetting = (change: Partial<StackSearch>) => {

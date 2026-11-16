@@ -97,7 +97,6 @@ export function spaceOfPath(pathname: string): RouteSpace {
       "/books",
       "/learners",
       "/profile",
-      "/continue",
     ].some((root) => under(path, root)) ||
     path === "/"
   )

@@ -13,7 +13,8 @@ import { config, payment } from "./stripe-fixtures.js";
 import { syntheticDocumentProfile } from "./payment-evidence-fixtures.js";
 
 // An adult buys for their own learner on their own terms: no parental consent
-// (docs/families.md). Every other learner still needs the purchaser's consent.
+// (docs/families.md). So is any learner 13 or older, and a child on the
+// restricted basis; only a named child under 13 without consent is refused.
 const settings: StripeBillingConfig = {
   ...config,
   documentProfile: syntheticDocumentProfile,
@@ -170,7 +171,8 @@ test(
         "licensed",
       );
 
-      // The same account's child still needs parental consent.
+      // A named child of unknown age, not on the restricted basis and
+      // without consent, is the one learner a card can't buy for.
       assert.equal(
         (await purchaseStatus(billing, "adult-a", "kid")).phase,
         "consent-required",
@@ -188,6 +190,46 @@ test(
         0,
       );
 
+      // No consent step for anyone else: a child on the restricted basis
+      // (16 CFR 312.5(c)(7)) and a learner 13 or older (312.2) are bought for
+      // on the basis they already learn on, by a parent whose email is not
+      // confirmed yet.
+      await pool.query(
+        `INSERT INTO amp_auth_users(id,name,email,"emailVerified") VALUES('passkey','','passkey@example.test',false)`,
+      );
+      await pool.query(
+        `INSERT INTO amp_learners(id,account_id,name,birth_year,name_pending,label_number,identity_scope) VALUES
+         ('restricted','amp|passkey','Child 1',2017,true,1,'family:amp|passkey'),
+         ('teen','amp|passkey','Teen',2010,false,NULL,NULL)`,
+      );
+      await pool.connect().then(async (client) => {
+        try {
+          assert.deepEqual(
+            [
+              ...(await repository.ownedCheckoutEligibility(
+                client,
+                "amp|passkey",
+                ["restricted", "teen"],
+              )),
+            ].sort(),
+            ["restricted", "teen"],
+          );
+        } finally {
+          client.release();
+        }
+      });
+      for (const id of ["restricted", "teen"]) {
+        assert.equal(
+          (await purchaseStatus(billing, "amp|passkey", id)).phase,
+          "ready",
+        );
+        assert.equal(
+          (await billing.checkout("amp|passkey", id, randomUUID(), "year"))
+            .url,
+          "https://checkout.stripe.com/x",
+        );
+      }
+
       // Another account, consent or not, cannot buy for this adult's learner.
       await assert.rejects(purchaseStatus(billing, "parent-o", "self"), {
         code: "learner_not_found",
@@ -204,7 +246,7 @@ test(
       assert.equal(
         (
           await pool.query(
-            "SELECT count(*)::int AS n FROM amp_stripe_checkouts WHERE account_id<>'adult-a'",
+            "SELECT count(*)::int AS n FROM amp_stripe_checkouts WHERE account_id NOT IN ('adult-a','amp|passkey')",
           )
         ).rows[0].n,
         0,

@@ -22,14 +22,12 @@ const messages = {
   checkFailed: "We could not check your email confirmation. Please try again.",
 } as const;
 
-/** Confirm the parent's address before consent or a funded purchase: they
- * need it, nothing before them does, and never a child's first problem
- * (children practice first on the restricted basis, docs/parent-consent.md).
- * Consent: email-plus is consent given through the parent's own email, with
- * a later confirmatory notice to it (16 CFR 312.5(b)(2)(vi)), so the address
- * must be the parent's. A funded purchase: the invoice's paid access goes
- * only to the account that holds the invoice's address. One primary action,
- * nothing shifts. */
+/** Confirm the account's address where something is addressed to it: a gift
+ * or a funded invoice is made out to an email and found by it, so its access
+ * goes only to the account that has confirmed that address. That binding is
+ * the only reason to ask. Never before consent, a card checkout or a child's
+ * first problem (docs/parent-consent.md). One primary action, nothing
+ * shifts. */
 export function VerifyEmailStep({
   session,
   me,

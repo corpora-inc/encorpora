@@ -1,6 +1,7 @@
 import { forgetEveryLink } from "../features/links/forget";
 import { settleSwitches } from "../lib/link-carry";
 import { setAnalyticsSession } from "../lib/analytics";
+import { noteSignedIn } from "../lib/session-hint";
 import { NativeGate } from "../NativeGate";
 import { nativeRuntime } from "../native-runtime";
 import { Toast } from "../ui/Toast";
@@ -27,7 +28,7 @@ export function Providers({
   onAccountExit,
 }: {
   children: ReactNode;
-  onAccountExit?: () => void;
+  onAccountExit?: (previous: AuthSession) => void;
 }) {
   const session = (
     <SessionProviders onAccountExit={onAccountExit}>
@@ -41,7 +42,7 @@ function SessionProviders({
   onAccountExit,
 }: {
   children: ReactNode;
-  onAccountExit?: () => void;
+  onAccountExit?: (previous: AuthSession) => void;
 }) {
   const [error, setError] = useState("");
   const [identityVersion, setIdentityVersion] = useState(0);
@@ -83,6 +84,7 @@ function SessionProviders({
       (session) => {
         const current = ++generation;
         setAnalyticsSession(session);
+        noteSignedIn(!!session);
         setError("");
         const previous = queryClient.getQueryData(sessionOptions.queryKey);
         if (
@@ -113,7 +115,7 @@ function SessionProviders({
         void queryClient.cancelQueries({ queryKey: sessionOptions.queryKey });
         queryClient.setQueryData(sessionOptions.queryKey, session);
         if (previous?.accountId && previous.accountId !== session?.accountId)
-          onAccountExit?.();
+          onAccountExit?.(previous);
         if (session) {
           if (nativeRuntime)
             void queryClient.invalidateQueries({

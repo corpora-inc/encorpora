@@ -1,0 +1,2712 @@
+{
+ "id": "unit-piece-size--su",
+ "title": "Unit fractions of a whole",
+ "teaches": [
+  "fraction-unit-count",
+  "congruent-fourths-pair"
+ ],
+ "skill": "unit-fractions",
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -0.6,
+     -3.4,
+     10.6,
+     2.1
+    ],
+    "points": {
+     "O": [
+      0,
+      0
+     ]
+    },
+    "parts": [
+     {
+      "id": "W",
+      "bar": "O",
+      "w": 10,
+      "h": 3,
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here is a strip of paper. All of it is one whole.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "W",
+       "at": "strip",
+       "until": "whole"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "I cut it into two equal pieces, and I give you one.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "partition",
+       "target": "W",
+       "into": 2,
+       "at": "two",
+       "dur": 1.2
+      },
+      {
+       "do": "shade",
+       "target": "W",
+       "to": 0.5,
+       "at": "give",
+       "dur": 1
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "How much of the strip did you get?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "problem",
+       "text": "How much of the strip did you get?",
+       "at": "How"
+      },
+      {
+       "do": "show",
+       "target": "W.unit",
+       "at": "much",
+       "dur": 0.25
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Half of it!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "text",
+       "text": "$2$ equal pieces: one piece is half",
+       "at": "Half"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now I cut the very same strip into eight equal pieces, and I give you one.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "W",
+       "at": "same",
+       "until": "eight"
+      },
+      {
+       "do": "partition",
+       "target": "W",
+       "into": 8,
+       "at": "eight",
+       "dur": 1.6
+      },
+      {
+       "do": "shade",
+       "target": "W",
+       "to": 0.125,
+       "at": "give",
+       "dur": 1.6
+      },
+      {
+       "do": "hide",
+       "target": "W.unit",
+       "at": "Now",
+       "dur": 0.25
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "That is tiny! So how much I get depends on how many pieces.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "W.unit",
+       "at": "tiny",
+       "dur": 0.25
+      },
+      {
+       "do": "text",
+       "text": "$8$ equal pieces: one piece is tiny",
+       "at": "depends"
+      },
+      {
+       "do": "hide",
+       "target": "W.unit",
+       "at": "So",
+       "dur": 0.25
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "It does. So a piece needs a name that tells how the whole was cut. Let's find that name.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "text",
+       "text": "The name says how it was cut.",
+       "at": "name"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.6,
+     -3.4,
+     10.6,
+     2.1
+    ],
+    "points": {
+     "O": [
+      0,
+      0
+     ],
+     "Q": {
+      "anchor": [
+       "F",
+       "part"
+      ]
+     }
+    },
+    "parts": [
+     {
+      "id": "F",
+      "bar": "O",
+      "w": 10,
+      "h": 3,
+      "start": true
+     },
+     {
+      "id": "Fq",
+      "label": "\\frac{1}{4}",
+      "at": "Q",
+      "dir": "c",
+      "size": "l",
+      "halo": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Cut the whole into four equal parts. Equal means exactly the same size.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "partition",
+       "target": "F",
+       "into": 4,
+       "at": "four",
+       "dur": 1.4
+      },
+      {
+       "do": "text",
+       "text": "Equal parts: the same size.",
+       "at": "Equal"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four equal parts make up the whole. Take one of them.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "F",
+       "at": "make",
+       "until": "whole"
+      },
+      {
+       "do": "shade",
+       "target": "F",
+       "to": 0.25,
+       "at": "Take",
+       "dur": 1
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "That piece is one fourth. We write it as one over four.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "Fq",
+       "at": "fourth"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{1}{4}",
+       "at": "write"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Is it still one fourth if I take a different part?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "F",
+       "at": "different"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Try it. The second part, the third part, the last part.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "shade",
+       "target": "F",
+       "from": 0.25,
+       "to": 0.5,
+       "at": "second",
+       "dur": 0.9
+      },
+      {
+       "do": "shade",
+       "target": "F",
+       "from": 0.5,
+       "to": 0.75,
+       "at": "third",
+       "dur": 0.9
+      },
+      {
+       "do": "shade",
+       "target": "F",
+       "from": 0.75,
+       "to": 1,
+       "at": "last",
+       "dur": 0.9
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Every one of the four is one fourth, because all four are the same size.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "shade",
+       "target": "F",
+       "from": 0,
+       "to": 0.25,
+       "at": "Every",
+       "dur": 1
+      },
+      {
+       "do": "highlight",
+       "target": "F",
+       "at": "same"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.6,
+     -10.5,
+     12.7,
+     2.8
+    ],
+    "points": {
+     "p0": [
+      0,
+      0
+     ],
+     "p2": [
+      0,
+      -1.8
+     ],
+     "p3": [
+      0,
+      -3.6
+     ],
+     "p4": [
+      0,
+      -5.4
+     ],
+     "p6": [
+      0,
+      -7.2
+     ],
+     "p8": [
+      0,
+      -9.0
+     ],
+     "r2": [
+      10.5,
+      -2.35
+     ],
+     "r3": [
+      10.5,
+      -4.15
+     ],
+     "r4": [
+      10.5,
+      -5.95
+     ],
+     "r6": [
+      10.5,
+      -7.75
+     ],
+     "r8": [
+      10.5,
+      -9.55
+     ]
+    },
+    "parts": [
+     {
+      "id": "B0",
+      "bar": "p0",
+      "w": 10,
+      "h": 1.1,
+      "start": true
+     },
+     {
+      "id": "B2",
+      "bar": "p2",
+      "w": 10,
+      "h": 1.1
+     },
+     {
+      "id": "B3",
+      "bar": "p3",
+      "w": 10,
+      "h": 1.1
+     },
+     {
+      "id": "B4",
+      "bar": "p4",
+      "w": 10,
+      "h": 1.1
+     },
+     {
+      "id": "B6",
+      "bar": "p6",
+      "w": 10,
+      "h": 1.1
+     },
+     {
+      "id": "B8",
+      "bar": "p8",
+      "w": 10,
+      "h": 1.1
+     },
+     {
+      "id": "l2",
+      "label": "\\tfrac{1}{2}",
+      "at": "r2",
+      "dir": "e",
+      "size": "l"
+     },
+     {
+      "id": "l3",
+      "label": "\\tfrac{1}{3}",
+      "at": "r3",
+      "dir": "e",
+      "size": "l"
+     },
+     {
+      "id": "l4",
+      "label": "\\tfrac{1}{4}",
+      "at": "r4",
+      "dir": "e",
+      "size": "l"
+     },
+     {
+      "id": "l6",
+      "label": "\\tfrac{1}{6}",
+      "at": "r6",
+      "dir": "e",
+      "size": "l"
+     },
+     {
+      "id": "l8",
+      "label": "\\tfrac{1}{8}",
+      "at": "r8",
+      "dir": "e",
+      "size": "l"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "learner",
+     "say": "Eight is bigger than four. So one eighth must be a bigger piece than one fourth, right?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "B2.title",
+        "B3.title",
+        "B4.title",
+        "B6.title",
+        "B8.title"
+       ],
+       "dur": 0.01
+      },
+      {
+       "do": "problem",
+       "text": "Is $\\tfrac{1}{8}$ bigger than $\\tfrac{1}{4}$?",
+       "at": "Eight"
+      },
+      {
+       "do": "highlight",
+       "target": "B0",
+       "at": "piece"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Good guess. Let's test it. The strip stays the same size every time. Same whole.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "B0",
+       "at": "strip",
+       "until": "every"
+      },
+      {
+       "do": "highlight",
+       "target": "B0",
+       "at": "same",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Cut it into two equal parts. One part is one half.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "B2",
+       "at": "Cut"
+      },
+      {
+       "do": "partition",
+       "target": "B2",
+       "into": 2,
+       "at": "two"
+      },
+      {
+       "do": "shade",
+       "target": "B2",
+       "to": 0.5,
+       "at": "part"
+      },
+      {
+       "do": "show",
+       "target": "l2",
+       "at": "half"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three equal parts. One part is one third.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "B3",
+       "at": "Three"
+      },
+      {
+       "do": "partition",
+       "target": "B3",
+       "into": 3,
+       "at": "Three"
+      },
+      {
+       "do": "shade",
+       "target": "B3",
+       "to": 0.3333333333,
+       "at": "part"
+      },
+      {
+       "do": "show",
+       "target": "l3",
+       "at": "third"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four equal parts. One part is one fourth.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "B4",
+       "at": "Four"
+      },
+      {
+       "do": "partition",
+       "target": "B4",
+       "into": 4,
+       "at": "Four"
+      },
+      {
+       "do": "shade",
+       "target": "B4",
+       "to": 0.25,
+       "at": "part"
+      },
+      {
+       "do": "show",
+       "target": "l4",
+       "at": "fourth"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Six equal parts. One part is one sixth.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "B6",
+       "at": "Six"
+      },
+      {
+       "do": "partition",
+       "target": "B6",
+       "into": 6,
+       "at": "Six"
+      },
+      {
+       "do": "shade",
+       "target": "B6",
+       "to": 0.1666666667,
+       "at": "part"
+      },
+      {
+       "do": "show",
+       "target": "l6",
+       "at": "sixth"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Eight equal parts. One part is one eighth.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "B8",
+       "at": "Eight"
+      },
+      {
+       "do": "partition",
+       "target": "B8",
+       "into": 8,
+       "at": "Eight"
+      },
+      {
+       "do": "shade",
+       "target": "B8",
+       "to": 0.125,
+       "at": "part"
+      },
+      {
+       "do": "show",
+       "target": "l8",
+       "at": "eighth"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Look! The more parts, the smaller each piece!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "B2.unit",
+        "B8.unit"
+       ],
+       "at": "Look",
+       "dur": 0.25
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One eighth is smaller than one fourth, even though eight is bigger than four.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "hide",
+       "target": "B2.unit",
+       "at": "One",
+       "dur": 0.25
+      },
+      {
+       "do": "hide",
+       "target": "B8.unit",
+       "at": "smaller",
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "target": "B4.unit",
+       "at": "fourth",
+       "dur": 0.25
+      },
+      {
+       "do": "hide",
+       "target": "B4.unit",
+       "at": "even",
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "target": "B8.unit",
+       "at": "eight",
+       "dur": 0.25
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The whole is cut into more parts, so every part has to be smaller.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "B0",
+       "at": "whole",
+       "until": "more"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{1}{2}>\\frac{1}{3}>\\frac{1}{4}>\\frac{1}{6}>\\frac{1}{8}",
+       "at": "smaller"
+      },
+      {
+       "do": "hide",
+       "target": "B8.unit",
+       "at": "The",
+       "dur": 0.25
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Half, third, fourth, sixth, eighth. Each piece is smaller than the one before.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "B2.unit",
+       "at": "Half",
+       "dur": 0.25
+      },
+      {
+       "do": "hide",
+       "target": "B2.unit",
+       "at": "third",
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "target": "B3.unit",
+       "at": "third",
+       "dur": 0.25
+      },
+      {
+       "do": "hide",
+       "target": "B3.unit",
+       "at": "fourth",
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "target": "B4.unit",
+       "at": "fourth",
+       "dur": 0.25
+      },
+      {
+       "do": "hide",
+       "target": "B4.unit",
+       "at": "sixth",
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "target": "B6.unit",
+       "at": "sixth",
+       "dur": 0.25
+      },
+      {
+       "do": "hide",
+       "target": "B6.unit",
+       "at": "eighth",
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "target": "B8.unit",
+       "at": "eighth",
+       "dur": 0.25
+      },
+      {
+       "do": "hide",
+       "target": "B8.unit",
+       "at": "Each",
+       "dur": 0.25
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So the number on the bottom counts the parts. It does not tell you how big a piece is.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "watch",
+       "text": "A bigger number on the bottom means more parts, so each part is smaller."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "TL": [
+      0,
+      4
+     ],
+     "TR": [
+      8,
+      4
+     ],
+     "BR": [
+      8,
+      0
+     ],
+     "BL": [
+      0,
+      0
+     ],
+     "T1": [
+      1.2,
+      4
+     ],
+     "B1": [
+      1.2,
+      0
+     ],
+     "T2": [
+      5,
+      4
+     ],
+     "B2": [
+      5,
+      0
+     ],
+     "T3": [
+      6,
+      4
+     ],
+     "B3": [
+      6,
+      0
+     ],
+     "N": [
+      4,
+      -0.9
+     ],
+     "C1": [
+      1,
+      2
+     ]
+    },
+    "parts": [
+     {
+      "id": "p1",
+      "poly": [
+       "TL",
+       "T1",
+       "B1",
+       "BL"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "p2",
+      "poly": [
+       "T1",
+       "T2",
+       "B2",
+       "B1"
+      ],
+      "fill": "none",
+      "ink": "ink",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "p3",
+      "poly": [
+       "T2",
+       "T3",
+       "B3",
+       "B2"
+      ],
+      "fill": "none",
+      "ink": "ink",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "p4",
+      "poly": [
+       "T3",
+       "TR",
+       "BR",
+       "B3"
+      ],
+      "fill": "none",
+      "ink": "ink",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "notEq",
+      "label": "\\text{4 parts, not equal}",
+      "at": "N",
+      "dir": "s",
+      "ink": "warm",
+      "size": "l"
+     },
+     {
+      "id": "isEq",
+      "label": "\\text{4 equal parts}",
+      "at": "N",
+      "dir": "s",
+      "ink": "accent",
+      "size": "l"
+     },
+     {
+      "id": "oneFourth",
+      "label": "\\frac{1}{4}",
+      "at": "C1",
+      "dir": "c",
+      "size": "xl",
+      "halo": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "But watch out. Four parts is not enough.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+       ],
+       "at": "Four",
+       "until": "enough"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "This whole is cut into four parts. Is the shaded piece one fourth?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "p1",
+       "at": "shaded",
+       "until": "fourth"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "It is one of four parts. But they look different sizes.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "p2",
+        "p3",
+        "p4"
+       ],
+       "at": "different"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "They are. This one is tiny, and that one is huge. The parts are not equal, so none of them is a fourth.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "p1",
+       "at": "tiny",
+       "until": "huge"
+      },
+      {
+       "do": "highlight",
+       "target": "p2",
+       "at": "huge",
+       "until": "equal"
+      },
+      {
+       "do": "show",
+       "target": "notEq",
+       "at": "not"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Slide the cuts until all four parts match.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "hide",
+       "target": "notEq",
+       "at": "Slide",
+       "dur": 0.3
+      },
+      {
+       "do": "move",
+       "points": {
+        "T1": [
+         2,
+         4
+        ],
+        "B1": [
+         2,
+         0
+        ],
+        "T2": [
+         4,
+         4
+        ],
+        "B2": [
+         4,
+         0
+        ],
+        "T3": [
+         6,
+         4
+        ],
+        "B3": [
+         6,
+         0
+        ]
+       },
+       "at": "Slide",
+       "dur": 2.6
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now the parts are equal. Now the shaded piece is one fourth.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "isEq",
+       "at": "equal"
+      },
+      {
+       "do": "show",
+       "target": "oneFourth",
+       "at": "fourth"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So the parts have to be equal first. Then you can name them.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "text",
+       "text": "Equal parts first. Then the name.",
+       "at": "equal"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "aTL": [
+      0,
+      0
+     ],
+     "aTR": [
+      3,
+      0
+     ],
+     "aBR": [
+      3,
+      -3
+     ],
+     "aBL": [
+      0,
+      -3
+     ],
+     "a1t": [
+      0.75,
+      0
+     ],
+     "a1b": [
+      0.75,
+      -3
+     ],
+     "a2t": [
+      1.5,
+      0
+     ],
+     "a2b": [
+      1.5,
+      -3
+     ],
+     "a3t": [
+      2.25,
+      0
+     ],
+     "a3b": [
+      2.25,
+      -3
+     ],
+     "aS": [
+      1.5,
+      -3
+     ],
+     "bTL": [
+      4.4,
+      0
+     ],
+     "bTR": [
+      7.4,
+      0
+     ],
+     "bBR": [
+      7.4,
+      -3
+     ],
+     "bBL": [
+      4.4,
+      -3
+     ],
+     "bTM": [
+      5.9,
+      0
+     ],
+     "bBM": [
+      5.9,
+      -3
+     ],
+     "bML": [
+      4.4,
+      -1.5
+     ],
+     "bMR": [
+      7.4,
+      -1.5
+     ],
+     "bC": [
+      5.9,
+      -1.5
+     ],
+     "bS": [
+      5.9,
+      -3
+     ],
+     "cTL": [
+      0,
+      -5.9
+     ],
+     "cTR": [
+      3,
+      -5.9
+     ],
+     "cBR": [
+      3,
+      -8.9
+     ],
+     "cBL": [
+      0,
+      -8.9
+     ],
+     "cC": [
+      1.5,
+      -7.4
+     ],
+     "cS": [
+      1.5,
+      -8.9
+     ],
+     "dTL": [
+      4.4,
+      -5.9
+     ],
+     "dTR": [
+      7.4,
+      -5.9
+     ],
+     "dBR": [
+      7.4,
+      -8.9
+     ],
+     "dBL": [
+      4.4,
+      -8.9
+     ],
+     "d1t": [
+      5,
+      -5.9
+     ],
+     "d1b": [
+      5,
+      -8.9
+     ],
+     "d2t": [
+      5.6,
+      -5.9
+     ],
+     "d2b": [
+      5.6,
+      -8.9
+     ],
+     "d3t": [
+      6.2,
+      -5.9
+     ],
+     "d3b": [
+      6.2,
+      -8.9
+     ],
+     "dS": [
+      5.9,
+      -8.9
+     ]
+    },
+    "parts": [
+     {
+      "id": "aBox",
+      "poly": [
+       "aTL",
+       "aTR",
+       "aBR",
+       "aBL"
+      ],
+      "fill": "paper",
+      "ink": "ink",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "bBox",
+      "poly": [
+       "bTL",
+       "bTR",
+       "bBR",
+       "bBL"
+      ],
+      "fill": "paper",
+      "ink": "ink",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "cBox",
+      "poly": [
+       "cTL",
+       "cTR",
+       "cBR",
+       "cBL"
+      ],
+      "fill": "paper",
+      "ink": "ink",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "dBox",
+      "poly": [
+       "dTL",
+       "dTR",
+       "dBR",
+       "dBL"
+      ],
+      "fill": "paper",
+      "ink": "ink",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "aShade",
+      "poly": [
+       "aTL",
+       "a1t",
+       "a1b",
+       "aBL"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 3
+     },
+     {
+      "id": "bShade",
+      "poly": [
+       "bTL",
+       "bTM",
+       "bC",
+       "bML"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 3
+     },
+     {
+      "id": "cShade",
+      "poly": [
+       "cBL",
+       "cBR",
+       "cC"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 3
+     },
+     {
+      "id": "dShade",
+      "poly": [
+       "dTL",
+       "d1t",
+       "d1b",
+       "dBL"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 3
+     },
+     {
+      "id": "aGlow",
+      "poly": [
+       "aTL",
+       "a1t",
+       "a1b",
+       "aBL"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 5
+     },
+     {
+      "id": "bGlow",
+      "poly": [
+       "bTL",
+       "bTM",
+       "bC",
+       "bML"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 5
+     },
+     {
+      "id": "cGlow",
+      "poly": [
+       "cBL",
+       "cBR",
+       "cC"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 5
+     },
+     {
+      "id": "a1",
+      "seg": [
+       "a1t",
+       "a1b"
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "a2",
+      "seg": [
+       "a2t",
+       "a2b"
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "a3",
+      "seg": [
+       "a3t",
+       "a3b"
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "b1",
+      "seg": [
+       "bTM",
+       "bBM"
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "b2",
+      "seg": [
+       "bML",
+       "bMR"
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "c1",
+      "seg": [
+       "cTL",
+       "cBR"
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "c2",
+      "seg": [
+       "cTR",
+       "cBL"
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "d1",
+      "seg": [
+       "d1t",
+       "d1b"
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "d2",
+      "seg": [
+       "d2t",
+       "d2b"
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "d3",
+      "seg": [
+       "d3t",
+       "d3b"
+      ],
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "aLab",
+      "label": "\\frac{1}{4}",
+      "at": "aS",
+      "dir": "s",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "bLab",
+      "label": "\\frac{1}{4}",
+      "at": "bS",
+      "dir": "s",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "cLab",
+      "label": "\\frac{1}{4}",
+      "at": "cS",
+      "dir": "s",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "dLab",
+      "label": "\\text{not equal}",
+      "at": "dS",
+      "dir": "s",
+      "size": "m",
+      "ink": "warm"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Equal parts are the same amount of paper. They do not have to be the same shape.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "aBox",
+        "bBox",
+        "cBox",
+        "dBox"
+       ],
+       "at": "amount",
+       "until": "shape"
+      },
+      {
+       "do": "text",
+       "text": "Equal: the same amount, not always the same shape.",
+       "at": "same"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Here are four identical squares. Cut the first into four strips. Shade one.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "aBox",
+        "bBox",
+        "cBox",
+        "dBox"
+       ],
+       "at": "identical",
+       "until": "Cut"
+      },
+      {
+       "do": "draw",
+       "target": [
+        "a1",
+        "a2",
+        "a3"
+       ],
+       "at": "strips",
+       "dur": 1.2
+      },
+      {
+       "do": "show",
+       "target": "aShade",
+       "at": "Shade"
+      },
+      {
+       "do": "show",
+       "target": "aLab",
+       "at": "Shade"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Cut the second into four small squares. Shade one.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "draw",
+       "target": [
+        "b1",
+        "b2"
+       ],
+       "at": "squares",
+       "dur": 1.2
+      },
+      {
+       "do": "show",
+       "target": "bShade",
+       "at": "Shade"
+      },
+      {
+       "do": "show",
+       "target": "bLab",
+       "at": "Shade"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Cut the third corner to corner, into four triangles. Shade one.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "draw",
+       "target": [
+        "c1",
+        "c2"
+       ],
+       "at": "corner",
+       "dur": 1.4
+      },
+      {
+       "do": "show",
+       "target": "cShade",
+       "at": "Shade"
+      },
+      {
+       "do": "show",
+       "target": "cLab",
+       "at": "Shade"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "But a triangle does not look like a strip!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "cGlow",
+        "aGlow"
+       ],
+       "at": "triangle",
+       "dur": 0.25
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "True. But each one is exactly one of four equal parts of the same square. Same amount of paper, different shapes.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "hide",
+       "target": "cGlow",
+       "at": "True",
+       "dur": 0.25
+      },
+      {
+       "do": "hide",
+       "target": "aGlow",
+       "at": "each",
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "target": "bGlow",
+       "at": "each",
+       "dur": 0.25
+      },
+      {
+       "do": "hide",
+       "target": "bGlow",
+       "at": "four",
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "target": "cGlow",
+       "at": "four",
+       "dur": 0.25
+      },
+      {
+       "do": "hide",
+       "target": "cGlow",
+       "at": "square",
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "target": [
+        "aGlow",
+        "bGlow",
+        "cGlow"
+       ],
+       "at": "Same",
+       "dur": 0.25,
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now the last square. Four parts, and one is shaded. But these parts are not equal, so it is not one fourth.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "draw",
+       "target": [
+        "d1",
+        "d2",
+        "d3"
+       ],
+       "at": "Four",
+       "dur": 1.2
+      },
+      {
+       "do": "show",
+       "target": "dShade",
+       "at": "shaded"
+      },
+      {
+       "do": "show",
+       "target": "dLab",
+       "at": "not"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "aGlow",
+        "bGlow",
+        "cGlow"
+       ],
+       "at": "Now",
+       "dur": 0.25
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So with any picture, ask two things. Are the parts equal? And how many make the whole?",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "text",
+       "text": "Are the parts equal?",
+       "at": "Are"
+      },
+      {
+       "do": "text",
+       "text": "How many make the whole?",
+       "at": "many"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "S1": [
+      0,
+      0
+     ],
+     "S2": [
+      0,
+      -2.8
+     ],
+     "k1": [
+      0.833,
+      -0.8
+     ],
+     "k2": [
+      2.5,
+      -0.8
+     ],
+     "k3": [
+      4.167,
+      -0.8
+     ],
+     "k4": [
+      5.833,
+      -0.8
+     ],
+     "k5": [
+      7.5,
+      -0.8
+     ],
+     "k6": [
+      9.167,
+      -0.8
+     ],
+     "k7": [
+      0.833,
+      -3.6
+     ],
+     "k8": [
+      2.5,
+      -3.6
+     ],
+     "k9": [
+      4.167,
+      -3.6
+     ],
+     "k10": [
+      5.833,
+      -3.6
+     ],
+     "w1": [
+      10.4,
+      -0.8
+     ],
+     "w2": [
+      10.4,
+      -3.6
+     ],
+     "D1a": [
+      0,
+      0.35
+     ],
+     "D1b": [
+      10,
+      0.35
+     ],
+     "D2a": [
+      0,
+      -4.9
+     ],
+     "D2b": [
+      6.667,
+      -4.9
+     ]
+    },
+    "parts": [
+     {
+      "id": "W1",
+      "bar": "S1",
+      "w": 10,
+      "h": 1.6,
+      "divisions": 6,
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "W2",
+      "bar": "S2",
+      "w": 10,
+      "h": 1.6,
+      "divisions": 6,
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "n1",
+      "label": "1",
+      "at": "k1",
+      "dir": "c",
+      "size": "m"
+     },
+     {
+      "id": "n2",
+      "label": "2",
+      "at": "k2",
+      "dir": "c",
+      "size": "m"
+     },
+     {
+      "id": "n3",
+      "label": "3",
+      "at": "k3",
+      "dir": "c",
+      "size": "m"
+     },
+     {
+      "id": "n4",
+      "label": "4",
+      "at": "k4",
+      "dir": "c",
+      "size": "m"
+     },
+     {
+      "id": "n5",
+      "label": "5",
+      "at": "k5",
+      "dir": "c",
+      "size": "m"
+     },
+     {
+      "id": "n6",
+      "label": "6",
+      "at": "k6",
+      "dir": "c",
+      "size": "m"
+     },
+     {
+      "id": "n7",
+      "label": "7",
+      "at": "k7",
+      "dir": "c",
+      "size": "m"
+     },
+     {
+      "id": "n8",
+      "label": "8",
+      "at": "k8",
+      "dir": "c",
+      "size": "m"
+     },
+     {
+      "id": "n9",
+      "label": "9",
+      "at": "k9",
+      "dir": "c",
+      "size": "m"
+     },
+     {
+      "id": "n10",
+      "label": "10",
+      "at": "k10",
+      "dir": "c",
+      "size": "m"
+     },
+     {
+      "id": "t1",
+      "label": "\\text{First whole}",
+      "at": "w1",
+      "dir": "e",
+      "size": "m",
+      "ink": "muted"
+     },
+     {
+      "id": "t2",
+      "label": "\\text{Second whole}",
+      "at": "w2",
+      "dir": "e",
+      "size": "m",
+      "ink": "muted"
+     },
+     {
+      "id": "oneWhole",
+      "dim": [
+       "D1a",
+       "D1b"
+      ],
+      "side": "n",
+      "tex": "1\\text{ whole}",
+      "ink": "accent"
+     },
+     {
+      "id": "fourMore",
+      "dim": [
+       "D2a",
+       "D2b"
+      ],
+      "side": "s",
+      "tex": "4\\text{ more sixths}",
+      "ink": "warm"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Pieces can pile up past one whole. Each whole is cut into six equal pieces. How many pieces are shaded?",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Each whole is cut into $6$ equal pieces. How many pieces are shaded?",
+       "at": "Each"
+      },
+      {
+       "do": "show",
+       "target": "t1",
+       "at": "Pieces"
+      },
+      {
+       "do": "show",
+       "target": "t2",
+       "at": "Each"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "W1",
+        "W2"
+       ],
+       "at": "six",
+       "until": "shaded"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Every piece is a sixth. Count the shaded ones. One, two, three, four, five, six. That fills the whole.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "W1",
+       "at": "Every",
+       "until": "Count"
+      },
+      {
+       "do": "shade",
+       "target": "W1",
+       "to": 0.1666666667,
+       "at": "One",
+       "dur": 0.35
+      },
+      {
+       "do": "show",
+       "target": "n1",
+       "at": "One"
+      },
+      {
+       "do": "shade",
+       "target": "W1",
+       "to": 0.3333333333,
+       "at": "two",
+       "dur": 0.35
+      },
+      {
+       "do": "show",
+       "target": "n2",
+       "at": "two"
+      },
+      {
+       "do": "shade",
+       "target": "W1",
+       "to": 0.5,
+       "at": "three",
+       "dur": 0.35
+      },
+      {
+       "do": "show",
+       "target": "n3",
+       "at": "three"
+      },
+      {
+       "do": "shade",
+       "target": "W1",
+       "to": 0.6666666667,
+       "at": "four",
+       "dur": 0.35
+      },
+      {
+       "do": "show",
+       "target": "n4",
+       "at": "four"
+      },
+      {
+       "do": "shade",
+       "target": "W1",
+       "to": 0.8333333333,
+       "at": "five",
+       "dur": 0.35
+      },
+      {
+       "do": "show",
+       "target": "n5",
+       "at": "five"
+      },
+      {
+       "do": "shade",
+       "target": "W1",
+       "to": 1,
+       "at": "six",
+       "dur": 0.35
+      },
+      {
+       "do": "show",
+       "target": "n6",
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Keep going into the next whole. Seven, eight, nine, ten.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "W2",
+       "at": "next",
+       "until": "Seven"
+      },
+      {
+       "do": "shade",
+       "target": "W2",
+       "to": 0.1666666667,
+       "at": "Seven",
+       "dur": 0.35
+      },
+      {
+       "do": "show",
+       "target": "n7",
+       "at": "Seven"
+      },
+      {
+       "do": "shade",
+       "target": "W2",
+       "to": 0.3333333333,
+       "at": "eight",
+       "dur": 0.35
+      },
+      {
+       "do": "show",
+       "target": "n8",
+       "at": "eight"
+      },
+      {
+       "do": "shade",
+       "target": "W2",
+       "to": 0.5,
+       "at": "nine",
+       "dur": 0.35
+      },
+      {
+       "do": "show",
+       "target": "n9",
+       "at": "nine"
+      },
+      {
+       "do": "shade",
+       "target": "W2",
+       "to": 0.6666666667,
+       "at": "ten",
+       "dur": 0.35
+      },
+      {
+       "do": "show",
+       "target": "n10",
+       "at": "ten"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Ten sixths! That is one whole, and four more sixths.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "10",
+       "at": "Ten"
+      },
+      {
+       "do": "text",
+       "text": "$10$ sixths $=$ one whole + $4$ sixths",
+       "at": "whole"
+      },
+      {
+       "do": "show",
+       "target": "oneWhole",
+       "at": "one"
+      },
+      {
+       "do": "show",
+       "target": "fourMore",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Yes. Going into the next whole does not restart the count, because every piece is still one sixth.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "text",
+       "text": "Every piece is still $\\frac{1}{6}$.",
+       "at": "every"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "oneWhole",
+        "fourMore"
+       ],
+       "at": "Yes",
+       "dur": 0.25
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.6,
+     -7.5,
+     10.6,
+     1.5
+    ],
+    "points": {
+     "G": [
+      0,
+      0
+     ],
+     "DT0": [
+      0,
+      0.35
+     ],
+     "DT1": [
+      2.5,
+      0.35
+     ],
+     "DB0": [
+      0,
+      -2.1
+     ],
+     "DB1": [
+      10,
+      -2.1
+     ],
+     "F": [
+      1.3,
+      -6.05
+     ],
+     "NL": [
+      2.3,
+      -5.05
+     ],
+     "DL": [
+      2.3,
+      -6.85
+     ]
+    },
+    "parts": [
+     {
+      "id": "G4",
+      "bar": "G",
+      "w": 10,
+      "h": 1.6,
+      "divisions": 4,
+      "start": true
+     },
+     {
+      "id": "top",
+      "dim": [
+       "DT0",
+       "DT1"
+      ],
+      "side": "n",
+      "tex": "1\\text{ part}",
+      "ink": "warm"
+     },
+     {
+      "id": "bot",
+      "dim": [
+       "DB0",
+       "DB1"
+      ],
+      "side": "s",
+      "tex": "4\\text{ equal parts make the whole}",
+      "ink": "accent"
+     },
+     {
+      "id": "fr",
+      "label": "\\frac{\\cw{1}}{\\ca{4}}",
+      "at": "F",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "numL",
+      "label": "\\leftarrow\\ \\text{numerator: the parts we name}",
+      "at": "NL",
+      "dir": "e",
+      "size": "m",
+      "ink": "warm"
+     },
+     {
+      "id": "denL",
+      "label": "\\leftarrow\\ \\text{denominator: parts in the whole}",
+      "at": "DL",
+      "dir": "e",
+      "size": "m",
+      "ink": "accent"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now let's name the two numbers in a fraction, just once.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": "G4.title",
+       "dur": 0.01
+      },
+      {
+       "do": "shade",
+       "target": "G4",
+       "to": 0.25,
+       "at": "name",
+       "dur": 1
+      },
+      {
+       "do": "show",
+       "target": "fr",
+       "at": "fraction"
+      },
+      {
+       "do": "text",
+       "text": "Two numbers, one fraction.",
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The bottom number tells how many equal parts make the whole. Here, four. It is called the denominator.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "bot",
+       "at": "bottom"
+      },
+      {
+       "do": "highlight",
+       "target": "G4",
+       "at": "equal",
+       "until": "Here"
+      },
+      {
+       "do": "highlight",
+       "target": "bot",
+       "at": "Here",
+       "until": "called"
+      },
+      {
+       "do": "show",
+       "target": "denL",
+       "at": "denominator"
+      },
+      {
+       "do": "term",
+       "word": "denominator",
+       "meaning": "The bottom number: how many equal parts make the whole.",
+       "at": "denominator"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The top number tells how many of those parts we mean. Here, one. It is called the numerator.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "top",
+       "at": "top"
+      },
+      {
+       "do": "show",
+       "target": "G4.unit",
+       "at": "Here",
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "target": "numL",
+       "at": "numerator"
+      },
+      {
+       "do": "term",
+       "word": "numerator",
+       "meaning": "The top number: how many of the equal parts we mean.",
+       "at": "numerator"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So one over four means one of four equal parts!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "fr",
+       "at": "one"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "And a fraction with a one on top is a unit fraction. It is one equal part of the whole.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "term",
+       "word": "unit fraction",
+       "meaning": "A fraction with 1 on top: one equal part of the whole.",
+       "at": "unit"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.6,
+     -10.5,
+     12.7,
+     2.8
+    ],
+    "points": {
+     "p0": [
+      0,
+      0
+     ],
+     "p2": [
+      0,
+      -1.8
+     ],
+     "p3": [
+      0,
+      -3.6
+     ],
+     "p4": [
+      0,
+      -5.4
+     ],
+     "p6": [
+      0,
+      -7.2
+     ],
+     "p8": [
+      0,
+      -9.0
+     ],
+     "r2": [
+      10.5,
+      -2.35
+     ],
+     "r3": [
+      10.5,
+      -4.15
+     ],
+     "r4": [
+      10.5,
+      -5.95
+     ],
+     "r6": [
+      10.5,
+      -7.75
+     ],
+     "r8": [
+      10.5,
+      -9.55
+     ]
+    },
+    "parts": [
+     {
+      "id": "B0",
+      "bar": "p0",
+      "w": 10,
+      "h": 1.1,
+      "start": true
+     },
+     {
+      "id": "B2",
+      "bar": "p2",
+      "w": 10,
+      "h": 1.1,
+      "divisions": 2,
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "B3",
+      "bar": "p3",
+      "w": 10,
+      "h": 1.1,
+      "divisions": 3,
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "B4",
+      "bar": "p4",
+      "w": 10,
+      "h": 1.1,
+      "divisions": 4,
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "B6",
+      "bar": "p6",
+      "w": 10,
+      "h": 1.1,
+      "divisions": 6,
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "B8",
+      "bar": "p8",
+      "w": 10,
+      "h": 1.1,
+      "divisions": 8,
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "l2",
+      "label": "\\tfrac{1}{2}",
+      "at": "r2",
+      "dir": "e",
+      "size": "l"
+     },
+     {
+      "id": "l3",
+      "label": "\\tfrac{1}{3}",
+      "at": "r3",
+      "dir": "e",
+      "size": "l"
+     },
+     {
+      "id": "l4",
+      "label": "\\tfrac{1}{4}",
+      "at": "r4",
+      "dir": "e",
+      "size": "l"
+     },
+     {
+      "id": "l6",
+      "label": "\\tfrac{1}{6}",
+      "at": "r6",
+      "dir": "e",
+      "size": "l"
+     },
+     {
+      "id": "l8",
+      "label": "\\tfrac{1}{8}",
+      "at": "r8",
+      "dir": "e",
+      "size": "l"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here is our strip once more, cut every way we tried, with one piece shaded in each.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "shade",
+       "target": "B2",
+       "to": 0.5,
+       "at": "cut",
+       "dur": 0.8
+      },
+      {
+       "do": "shade",
+       "target": "B3",
+       "to": 0.3333333333,
+       "at": "cut",
+       "dur": 0.8
+      },
+      {
+       "do": "shade",
+       "target": "B4",
+       "to": 0.25,
+       "at": "cut",
+       "dur": 0.8
+      },
+      {
+       "do": "shade",
+       "target": "B6",
+       "to": 0.1666666667,
+       "at": "cut",
+       "dur": 0.8
+      },
+      {
+       "do": "shade",
+       "target": "B8",
+       "to": 0.125,
+       "at": "cut",
+       "dur": 0.8
+      },
+      {
+       "do": "show",
+       "target": [
+        "l2",
+        "l3",
+        "l4",
+        "l6",
+        "l8"
+       ],
+       "at": "every"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Half, third, fourth, sixth, eighth. The pieces shrink as the bottom number grows!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "B2.unit",
+       "at": "Half",
+       "dur": 0.25
+      },
+      {
+       "do": "hide",
+       "target": "B2.unit",
+       "at": "third",
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "target": "B3.unit",
+       "at": "third",
+       "dur": 0.25
+      },
+      {
+       "do": "hide",
+       "target": "B3.unit",
+       "at": "fourth",
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "target": "B4.unit",
+       "at": "fourth",
+       "dur": 0.25
+      },
+      {
+       "do": "hide",
+       "target": "B4.unit",
+       "at": "sixth",
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "target": "B6.unit",
+       "at": "sixth",
+       "dur": 0.25
+      },
+      {
+       "do": "hide",
+       "target": "B6.unit",
+       "at": "eighth",
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "target": "B8.unit",
+       "at": "eighth",
+       "dur": 0.25
+      },
+      {
+       "do": "hide",
+       "target": "B8.unit",
+       "at": "pieces",
+       "dur": 0.25
+      },
+      {
+       "do": "text",
+       "text": "More parts, smaller pieces.",
+       "at": "shrink"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The bottom number says how many equal parts make the whole. One of them is a unit fraction.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "text",
+       "text": "The bottom number: how many equal parts make the whole.",
+       "at": "bottom"
+      },
+      {
+       "do": "show",
+       "target": [
+        "B2.unit",
+        "B3.unit",
+        "B4.unit",
+        "B6.unit",
+        "B8.unit"
+       ],
+       "at": "One",
+       "dur": 0.25
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

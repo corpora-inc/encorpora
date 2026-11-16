@@ -119,7 +119,6 @@ test("the app's own tabs never carry ?learner=", () => {
     "learners/jonah/workbooks",
     "pathways",
     "inventory",
-    "me/profiles",
   ]);
   // A profile's tabs keep the profile: it is the adult's own mode.
   expect(meTabs("jonah", "grade-4")[0]?.search).toEqual({
