@@ -19,11 +19,12 @@ import { rememberStudentSession } from "../../../lib/student-device";
 /** In a child's words: what happened, and what to do. */
 const messages: Record<string, string> = {
   class_not_found: "That code didn’t work. Look at the board and try again.",
-  class_locked: "This class is paused for a few minutes. Ask your teacher.",
-  student_locked: "Ask your teacher",
+  class_locked:
+    "Sign-in is paused for a few minutes. Ask your parent or teacher for help.",
+  student_locked: "Ask your parent or teacher to reset your sign-in pictures.",
   wrong_pictures: "Try again",
   card_expired:
-    "This card doesn’t work anymore. Ask your teacher for a new one.",
+    "This card doesn’t work anymore. Ask your parent or teacher for a new one.",
   too_many_requests: "Too many tries right now. Wait a minute, then try again.",
   request_origin_invalid:
     "AMP can’t sign in from this address. Ask a grown-up for the link.",
