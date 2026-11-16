@@ -36,16 +36,23 @@ export async function deliverFundingReminderMail(
       await currentPolicy(db, policy);
       // Three days before the fixed deadline, and never on the creation day.
       // A request submitted before this job runs needs no submission reminder.
+      // Match fundedInvoiceTerm's UTC calendar-month bounds. Elapsed-hour
+      // windows avoid shifting deadlines when a DB session observes DST.
       await db.query(`INSERT INTO amp_funding_invoice_reminders(invoice_id,kind,deadline_at,available_at)
       SELECT i.id,CASE WHEN r.status='parent-reported-submitted' THEN 'processing' ELSE 'submission' END,
-        d.deadline,GREATEST(i.created_at+interval '1 day',d.deadline-interval '3 days')
+        d.deadline,GREATEST(i.created_at+interval '24 hours',d.deadline-interval '72 hours')
       FROM amp_funding_invoice_intents i
       LEFT JOIN amp_funding_requests r ON r.id=i.claimed_request_id
       JOIN amp_access_gifts g ON g.funding_invoice_id=i.id
-      CROSS JOIN LATERAL (SELECT CASE WHEN r.status='parent-reported-submitted' THEN i.created_at+interval '60 days' ELSE g.claim_by END AS deadline) d
+      CROSS JOIN LATERAL (SELECT CASE WHEN r.status='parent-reported-submitted' THEN
+        LEAST(i.created_at+interval '1440 hours',
+          CASE WHEN i.offer_snapshot->>'termPolicy' IN ('one-month-from-invoice','twelve-months-from-invoice')
+          THEN ((i.created_at AT TIME ZONE 'UTC')+make_interval(months => (i.offer_snapshot->>'termMonths')::int)) AT TIME ZONE 'UTC'
+          END)
+        ELSE g.claim_by END AS deadline) d
       WHERE i.state<>'cancelled' AND i.received_payment_at IS NULL AND r.order_id IS NULL
         AND (r.status IS NULL OR r.status<>'cancelled') AND g.revoked_at IS NULL
-        AND d.deadline>now() AND GREATEST(i.created_at+interval '1 day',d.deadline-interval '3 days')<=now()
+        AND d.deadline>now() AND GREATEST(i.created_at+interval '24 hours',d.deadline-interval '72 hours')<=now()
         AND NOT EXISTS (SELECT 1 FROM amp_funding_invoice_reminders old WHERE old.invoice_id=i.id
           AND old.kind=CASE WHEN r.status='parent-reported-submitted' THEN 'processing' ELSE 'submission' END)
       ORDER BY i.created_at,i.id LIMIT 32

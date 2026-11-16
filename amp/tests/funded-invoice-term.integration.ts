@@ -21,6 +21,7 @@ import type {
   FundingRequest,
 } from "../src/funding-purchase/contracts.js";
 import { legacyInvoiceOffer } from "./funding-offer-terms.fixture.js";
+import { testFundingOffer } from "./funding-purchase.fixture.js";
 
 const day = 86400000;
 const config: ClassWalletConfig = {
@@ -69,9 +70,18 @@ const monthly: FundingOffer = {
   termPolicy: "one-month-from-verified-provisioning",
 };
 
-for (const legacy of [monthly, legacyInvoiceOffer]) {
+const { purchaseReview: _review, ...approvedLegacy } = legacyInvoiceOffer;
+const legacyOffers: FundingOffer[] = [
+  monthly,
+  legacyInvoiceOffer,
+  {
+    ...approvedLegacy,
+    approvals: testFundingOffer.approvals,
+  },
+];
+for (const legacy of legacyOffers) {
   test(
-    `${legacy.termMonths}-month ClassWallet invoices retain fixed service dates through payment, overlapping renewal and legacy replay`,
+    `${legacy.termMonths}-month ${legacy.purchaseReview ?? "approved"} ClassWallet invoices retain fixed service dates through payment, overlapping renewal and legacy replay`,
     { skip: !process.env.AMP_TEST_DATABASE_URL },
     async () => {
       const url = process.env.AMP_TEST_DATABASE_URL!;

@@ -11,11 +11,10 @@ function invoiceRevision(revision: string): string {
   return `${revision.slice(0, 120 - revisionSuffix.length - hash.length - 1)}-${hash}${revisionSuffix}`;
 }
 
-/** Only new, individually reviewed DirectPay invoices adopt invoice-date terms.
- * Stored invoices keep their original snapshot and provisioning policy. */
+/** New named DirectPay invoices use dated terms under individual purchase
+ * review. Stored invoices keep their original terms and approval evidence. */
 export function withInvoiceDateTerms(offer: FundingOffer): FundingOffer {
   if (
-    offer.purchaseReview !== "individual-approval-required" ||
     offer.documentPolicy !== "named-student-invoice" ||
     offer.route !== "direct-pay" ||
     offer.activationPolicy !== "after-settlement" ||
@@ -26,6 +25,7 @@ export function withInvoiceDateTerms(offer: FundingOffer): FundingOffer {
   return {
     ...offer,
     revision: invoiceRevision(offer.revision),
+    purchaseReview: "individual-approval-required",
     termPolicy:
       offer.termMonths === 1
         ? "one-month-from-invoice"

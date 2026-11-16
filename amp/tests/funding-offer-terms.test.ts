@@ -48,12 +48,38 @@ test("compatibility permits only the exact dated-term migration", () => {
       JSON.stringify(changed),
     );
   assert.deepEqual(withInvoiceDateTerms(testFundingOffer), testFundingOffer);
+});
+
+test("a new dated DirectPay offer requests individual review without rewriting its approved predecessor", () => {
+  const { purchaseReview: _review, ...approvedBase } = legacy;
   const approved = fundingOfferSchema.parse({
-    ...legacy,
-    purchaseReview: undefined,
+    ...approvedBase,
     approvals: testFundingOffer.approvals,
   });
-  assert.deepEqual(withInvoiceDateTerms(approved), approved);
+  const before = structuredClone(approved);
+  const current = fundingOfferSchema.parse(withInvoiceDateTerms(approved));
+  assert.equal(current.purchaseReview, "individual-approval-required");
+  assert.equal(current.termPolicy, "twelve-months-from-invoice");
+  assert.deepEqual(current.approvals, approved.approvals);
+  assert.deepEqual(approved, before);
+  assert.equal(fundingOfferMatchesSnapshot(current, approved), true);
+  assert.equal(
+    fundingOfferMatchesSnapshot(
+      { ...current, subtotalMinor: current.subtotalMinor + 1 },
+      approved,
+    ),
+    false,
+  );
+  assert.equal(
+    fundingOfferMatchesSnapshot(
+      {
+        ...current,
+        approvals: { ...current.approvals, annualTermReference: "changed" },
+      },
+      approved,
+    ),
+    false,
+  );
 });
 
 test("long revision identifiers remain valid and distinguish different originals", () => {
