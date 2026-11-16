@@ -322,12 +322,23 @@ test(
             user.name.first = "Updated";
             user.roles.student!.grade = "7";
           }
+          // The school's grade sets the cohort birth year exactly; Clever's
+          // date of birth fills in only for an ungraded student.
+          const studentRole = (id: string) =>
+            source.users.find((u) => u.id === id)!.roles.student!;
+          studentRole(students[10]).birth_year = birthYearForGrade(4) - 1;
+          studentRole(students[12]).grade = "Ungraded";
+          studentRole(students[12]).birth_year = 2015;
           await sync();
           const updated = await person(students[0]),
-            preserved = await person(students[1]);
+            preserved = await person(students[1]),
+            graded = await person(students[10]),
+            ungraded = await person(students[12]);
           assert.equal(updated.learner_id, first.learner_id);
           assert.equal(updated.learner_name, "Updated");
           assert.equal(updated.birth_year, birthYearForGrade(7));
+          assert.equal(graded.birth_year, birthYearForGrade(4));
+          assert.equal(ungraded.birth_year, 2015);
           assert.equal(preserved.learner_id, experienced.learner_id);
           assert.equal(preserved.learner_name, "Classroom nickname");
           assert.equal(preserved.birth_year, experienced.birth_year);
