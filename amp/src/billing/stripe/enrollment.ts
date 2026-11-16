@@ -392,9 +392,11 @@ export async function claimEnrollment(
         [checkoutId],
       )
     ).rows[0];
-    // A fresh, independently verified current consent may authorize assignment
-    // after withdrawal or policy replacement. Never reactivate the old snapshot.
-    if (!(await learningConsentActive(client, account)))
+    // The license goes to its learner on the basis they already learn on
+    // (an adult, 13 or older, the restricted basis of 16 CFR 312.5(c)(7), or
+    // verified consent). After a withdrawal, a named child under 13 needs a
+    // fresh, independently verified consent; the old snapshot never returns.
+    if (!(await learningConsentActive(client, account, false, learnerId)))
       throw new BillingError("purchase_consent_required");
     if (checkout.assigned_learner_id) {
       if (checkout.assigned_learner_id !== learnerId)

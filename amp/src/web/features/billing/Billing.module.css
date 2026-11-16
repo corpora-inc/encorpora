@@ -41,9 +41,9 @@
 .notice {
   display: grid;
   gap: var(--space-1);
-  padding: var(--space-3) var(--space-4);
+  padding: 0;
   border-radius: var(--radius-control);
-  background: var(--color-surface-sunken);
+  background: transparent;
 }
 .notice h2 {
   margin: 0;
@@ -64,3 +64,18 @@
   margin-left: calc(-1 * var(--space-2));
   padding-inline: var(--space-2);
 }
+
+.privacyDetails summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  text-decoration: underline;
+  font-size: var(--text-small);
+}
+.privacyDetails > p {
+  margin-block: 12px;
+}
+
+.notice.notice p { font-size: 14px; line-height: 1.5; }
+.notice.notice h2 { font-size: 15px; }

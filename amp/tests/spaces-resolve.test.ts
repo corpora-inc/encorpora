@@ -601,9 +601,8 @@ test("shared learning routes: the route's learner, a profile, then yourself", ()
   );
   expectSpace(profile, "me");
   assert.equal(profile.mode, "profile");
-  // The bar names no place in Me (Q-204): its "Practicing as" mark names the
-  // profile.
-  assert.equal(profile.label, "");
+  // Optional practice preserves the parent’s family context.
+  assert.equal(profile.label, "Your family");
   assert.equal(profile.learner?.id, "profile-4");
   // A learner who isn't this account's is nobody's here: never another child.
   const foreign = resolveSpace(
@@ -647,8 +646,8 @@ test("Back and two tabs: the same inputs always describe the same place", () => 
 test("power user: each place looks right on its own terms, and nothing follows them", () => {
   const mine = resolveSpace(at("/me"), adult(power, "pip"));
   expectSpace(mine, "me");
-  // No "My" in product chrome (Q-204): the tabs say whose this is.
-  assert.equal(mine.label, "");
+  // Parents have a stable family home even when opening their own record.
+  assert.equal(mine.label, "Your family");
   assert.deepEqual(ids(mine), [
     "practice",
     "levels",
@@ -656,12 +655,12 @@ test("power user: each place looks right on its own terms, and nothing follows t
     "pathways",
     "inventory",
   ]);
-  // One entry for Practice at a level and its saved profiles (Q-3).
+  // A parent returns to family; simulation tools are not a primary destination.
   assert.deepEqual(destinations(mine), [
+    "Your family",
     "Practice",
     "Levels",
     "Workbooks",
-    "Practice at a level",
   ]);
   // Audit #8: Me never carries the family's class or a child.
   assert.ok(!JSON.stringify(mine.destinations).includes(FAMILY));
@@ -759,6 +758,18 @@ test("account: its own neutral addresses and the old ones, never family chrome",
   }
 });
 
+test("individual purchase entry keeps the account frame with or without route metadata", () => {
+  const match = at("/continue/rowan");
+  const fallback = resolveSpace(match, adult(adultOnly, "rowan"));
+  assert.equal(fallback.space, "account");
+  assert.equal(fallback.bar, "plain");
+  assert.deepEqual(fallback.tabs, []);
+  assert.deepEqual(
+    fallback,
+    resolveSpace({ ...match, space: "account" }, adult(adultOnly, "rowan")),
+  );
+});
+
 test("links with their own authority are entries, never an ambient workspace", () => {
   for (const [path, entry] of [
     ["/school/invite", "invite"],
@@ -789,7 +800,7 @@ test("every route family has its space", () => {
     ["/lessons/abc", "learner"],
     ["/books/x", "learner"],
     ["/learners/a/workbooks/2026-11-09", "learner"],
-    ["/continue/a", "learner"],
+    ["/continue/a", "account"],
     ["/profile/birth-year", "learner"],
     ["/me", "me"],
     ["/me/start", "me"],

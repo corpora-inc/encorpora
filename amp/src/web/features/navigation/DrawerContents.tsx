@@ -23,6 +23,7 @@ import {
 } from "../../purchase-return";
 import styles from "./Navigation.module.css";
 import { ProfilePlace } from "../profiles/ProfileBar";
+import { handedStudentDevice } from "../../lib/student-device";
 import { ThisDevice } from "./ThisDevice";
 
 type Icon =
@@ -70,8 +71,8 @@ function NavIcon({ kind }: { kind: Icon }) {
 /**
  * The drawer, from the space on screen (features/spaces): first the space's
  * own destinations (and, in a family, which child), then the place switcher,
- * then the account; who is signed in and Sign out are pinned at the foot, in
- * `DrawerFooter`. It never shows another space's learners or destinations.
+ * then the account. A student's identity appears once above navigation;
+ * `DrawerFooter` holds Sign out. It never shows another space's learners or destinations.
  * Everything here comes from data the screen behind it already loaded, so
  * it opens complete.
  */
@@ -324,11 +325,8 @@ export default function DrawerContents({
   );
 }
 
-/**
- * Sign out at the foot of the drawer, with a student's name above it on a
- * shared device. Its rows are always there, so nothing appears or changes
- * while the drawer is open. They end the drawer's list and scroll with it.
- */
+/** Sign out ends the drawer's list and scrolls with it. The student's
+ * identity is shown above navigation, and named in this action's tooltip. */
 export function DrawerFooter({ close }: { close: () => void }) {
   const view = useLearningView({ records: false });
   const [busy, setBusy] = useState(false);
@@ -354,20 +352,17 @@ export function DrawerFooter({ close }: { close: () => void }) {
   // address never shows here: screen recordings of the menu stay clean, and
   // Account holds it.
   const name = student ? (account?.learners[0]?.name ?? "") : "";
+  const label = student && handedStudentDevice() ? "Back to family" : "Sign out";
   return (
     <section
       className={styles.footer}
       aria-label="Current account"
       data-signed-in
     >
-      {student && (
-        <div className={styles.who}>
-          <span className={styles.kicker}>Signed in as</span>
-          <strong className={styles.email}>{name}</strong>
-        </div>
-      )}
       <div className={styles.signOut}>
         <button
+          aria-label={label === "Sign out" && name ? `Sign out ${name}` : label}
+          title={label === "Sign out" && name ? `Sign out ${name}` : label}
           disabled={busy}
           aria-busy={busy || undefined}
           onClick={() => {
@@ -387,7 +382,7 @@ export function DrawerFooter({ close }: { close: () => void }) {
           }}
         >
           <NavIcon kind="out" />
-          <span>Sign out</span>
+          <span>{label}</span>
         </button>
         <p role={error ? "alert" : undefined}>{error}</p>
       </div>

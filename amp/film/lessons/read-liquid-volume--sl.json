@@ -1,0 +1,4824 @@
+{
+ "id": "read-liquid-volume--sl",
+ "title": "Mass and liquid volume",
+ "teaches": [
+  "balance-mass",
+  "mass-volume-story",
+  "read-thermometer"
+ ],
+ "skill": "mass-volume",
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     0,
+     0,
+     11,
+     10
+    ],
+    "points": {
+     "a0": [
+      4.8,
+      1.5
+     ],
+     "a1": [
+      4.8,
+      2.2
+     ],
+     "a2": [
+      4.8,
+      2.9
+     ],
+     "a3": [
+      4.8,
+      3.6
+     ],
+     "a4": [
+      4.8,
+      4.3
+     ],
+     "a5": [
+      4.8,
+      5.0
+     ],
+     "a6": [
+      4.8,
+      5.7
+     ],
+     "a7": [
+      4.8,
+      6.4
+     ],
+     "a8": [
+      4.8,
+      7.1
+     ],
+     "a9": [
+      4.8,
+      7.8
+     ],
+     "a10": [
+      4.8,
+      8.5
+     ],
+     "b0": [
+      4.0,
+      1.5
+     ],
+     "b1": [
+      4.35,
+      2.2
+     ],
+     "b2": [
+      4.35,
+      2.9
+     ],
+     "b3": [
+      4.35,
+      3.6
+     ],
+     "b4": [
+      4.35,
+      4.3
+     ],
+     "b5": [
+      4.0,
+      5.0
+     ],
+     "b6": [
+      4.35,
+      5.7
+     ],
+     "b7": [
+      4.35,
+      6.4
+     ],
+     "b8": [
+      4.35,
+      7.1
+     ],
+     "b9": [
+      4.35,
+      7.8
+     ],
+     "b10": [
+      4.0,
+      8.5
+     ],
+     "lv": [
+      4.8,
+      7.1
+     ],
+     "c0": [
+      2.0,
+      5.0
+     ],
+     "c5": [
+      5.5,
+      5.0
+     ],
+     "c6": [
+      6.2,
+      5.0
+     ],
+     "c7": [
+      6.9,
+      5.0
+     ],
+     "c8": [
+      7.6,
+      5.0
+     ],
+     "c10": [
+      9.0,
+      5.0
+     ],
+     "J1": [
+      4.8,
+      1.2
+     ],
+     "J2": [
+      8.3,
+      1.2
+     ],
+     "J3": [
+      8.3,
+      9.2
+     ],
+     "J4": [
+      4.8,
+      9.2
+     ],
+     "W3": [
+      8.3,
+      7.1
+     ],
+     "W4": [
+      4.8,
+      7.1
+     ],
+     "H1": [
+      8.3,
+      8.4
+     ],
+     "H2": [
+      9.5,
+      7.8
+     ],
+     "H3": [
+      9.5,
+      5.4
+     ],
+     "H4": [
+      8.3,
+      4.6
+     ],
+     "uP": [
+      3.2,
+      9.4
+     ]
+    },
+    "parts": [
+     {
+      "id": "water",
+      "poly": [
+       "J1",
+       "J2",
+       "W3",
+       "W4"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1,
+      "start": true,
+      "group": "jugg"
+     },
+     {
+      "id": "jug",
+      "poly": [
+       "J1",
+       "J2",
+       "J3",
+       "J4"
+      ],
+      "fill": "none",
+      "ink": "ink",
+      "w": 4,
+      "start": true,
+      "group": "jugg"
+     },
+     {
+      "id": "handle",
+      "curve": [
+       "H1",
+       "H2",
+       "H3",
+       "H4"
+      ],
+      "ink": "ink",
+      "w": 4,
+      "start": true,
+      "group": "jugg"
+     },
+     {
+      "id": "sp",
+      "seg": [
+       "a0",
+       "a10"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t0",
+      "seg": [
+       "a0",
+       "b0"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t1",
+      "seg": [
+       "a1",
+       "b1"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t2",
+      "seg": [
+       "a2",
+       "b2"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t3",
+      "seg": [
+       "a3",
+       "b3"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t4",
+      "seg": [
+       "a4",
+       "b4"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t5",
+      "seg": [
+       "a5",
+       "b5"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t6",
+      "seg": [
+       "a6",
+       "b6"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t7",
+      "seg": [
+       "a7",
+       "b7"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t8",
+      "seg": [
+       "a8",
+       "b8"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t9",
+      "seg": [
+       "a9",
+       "b9"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t10",
+      "seg": [
+       "a10",
+       "b10"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "lvd",
+      "dot": "lv",
+      "ink": "accent",
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "jl0",
+      "label": "0",
+      "at": "b0",
+      "dir": "w",
+      "size": "m",
+      "start": true,
+      "group": "jugg"
+     },
+     {
+      "id": "jl5",
+      "label": "5",
+      "at": "b5",
+      "dir": "w",
+      "size": "m",
+      "start": true,
+      "group": "jugg"
+     },
+     {
+      "id": "jl10",
+      "label": "10",
+      "at": "b10",
+      "dir": "w",
+      "size": "m",
+      "start": true,
+      "group": "jugg"
+     },
+     {
+      "id": "ju",
+      "label": "\\text{liters}",
+      "at": "uP",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true,
+      "group": "jugg"
+     },
+     {
+      "id": "nl0",
+      "label": "0",
+      "at": "c0",
+      "dir": "s",
+      "size": "m",
+      "group": "nlab"
+     },
+     {
+      "id": "nl5",
+      "label": "5",
+      "at": "c5",
+      "dir": "s",
+      "size": "m",
+      "group": "nlab"
+     },
+     {
+      "id": "nl10",
+      "label": "10",
+      "at": "c10",
+      "dir": "s",
+      "size": "m",
+      "group": "nlab"
+     },
+     {
+      "id": "n6",
+      "label": "6",
+      "at": "c6",
+      "dir": "s",
+      "size": "m",
+      "ink": "accent",
+      "group": "nlab"
+     },
+     {
+      "id": "n7",
+      "label": "7",
+      "at": "c7",
+      "dir": "s",
+      "size": "m",
+      "ink": "accent",
+      "group": "nlab"
+     },
+     {
+      "id": "n8",
+      "label": "8",
+      "at": "c8",
+      "dir": "s",
+      "size": "m",
+      "ink": "accent",
+      "group": "nlab"
+     },
+     {
+      "id": "dimA",
+      "dim": [
+       "c0",
+       "c5"
+      ],
+      "side": "n",
+      "tex": "5\\text{ spaces}",
+      "far": 2,
+      "ink": "blue"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "This jug has water in it, and a scale up its side. How many liters of water are in the jug?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "header",
+       "text": "Reading a measure"
+      },
+      {
+       "do": "problem",
+       "text": "How many liters of water are in the jug?",
+       "at": "How"
+      },
+      {
+       "do": "highlight",
+       "target": "water",
+       "at": "water"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The water is almost at the ten. Ten liters!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "t10",
+        "jl10"
+       ],
+       "at": "ten"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Or the five, just below? But the water sits between them, on a mark with no number at all.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "t5",
+        "jl5"
+       ],
+       "at": "five",
+       "until": "But"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "t8",
+        "lvd"
+       ],
+       "at": "mark"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "When marks have no numbers, one question unlocks the scale. What is one mark worth?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "t6",
+        "t7",
+        "t8",
+        "t9"
+       ],
+       "at": "marks"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "How do we find out?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+       ],
+       "at": "find"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Watch. We peel the scale off the jug, and lay it flat. Every measuring tool is a number line, standing up.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "hide",
+       "target": "jugg",
+       "at": "peel"
+      },
+      {
+       "do": "turn",
+       "target": "scale",
+       "about": "a5",
+       "deg": -90,
+       "at": "lay",
+       "dur": 1.6
+      },
+      {
+       "do": "slide",
+       "target": "scale",
+       "by": [
+        0.7,
+        0
+       ],
+       "at": "flat",
+       "dur": 0.8
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Zero, five, and ten are printed. The rest are only marks.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "nl0",
+       "at": "Zero"
+      },
+      {
+       "do": "show",
+       "target": "nl5",
+       "at": "five"
+      },
+      {
+       "do": "show",
+       "target": "nl10",
+       "at": "ten"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Count the spaces from zero to five. One, two, three, four, five.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "dimA",
+       "at": "Count"
+      },
+      {
+       "do": "highlight",
+       "target": "t1",
+       "at": "One"
+      },
+      {
+       "do": "highlight",
+       "target": "t2",
+       "at": "two"
+      },
+      {
+       "do": "highlight",
+       "target": "t3",
+       "at": "three"
+      },
+      {
+       "do": "highlight",
+       "target": "t4",
+       "at": "four"
+      },
+      {
+       "do": "highlight",
+       "target": "t5",
+       "at": "five",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five liters in five equal spaces. Five divided by five is one. So each mark is worth one liter.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "write",
+       "tex": "5\\div5=1",
+       "at": "divided"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now read the water. Start at five, and hop up by ones. Six, seven, eight.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": "dimA",
+       "at": "Now"
+      },
+      {
+       "do": "show",
+       "target": "n6",
+       "at": "Six"
+      },
+      {
+       "do": "show",
+       "target": "n7",
+       "at": "seven"
+      },
+      {
+       "do": "show",
+       "target": "n8",
+       "at": "eight"
+      },
+      {
+       "do": "highlight",
+       "target": "lvd",
+       "at": "eight"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Eight liters! Not ten, and not five.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "5+3\\times1=8",
+       "at": "Eight"
+      },
+      {
+       "do": "answer",
+       "tex": "8\\text{ liters}",
+       "at": "liters"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now stand the line back up on the jug. The top of the water meets the eight. Same line, same reading.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "hide",
+       "target": "nlab",
+       "at": "stand"
+      },
+      {
+       "do": "slide",
+       "target": "scale",
+       "by": [
+        -0.7,
+        0
+       ],
+       "at": "stand",
+       "dur": 0.8
+      },
+      {
+       "do": "turn",
+       "target": "scale",
+       "about": "a5",
+       "deg": 90,
+       "at": "back",
+       "dur": 1.6
+      },
+      {
+       "do": "show",
+       "target": "jugg",
+       "at": "jug"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "water",
+        "lvd"
+       ],
+       "at": "meets"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     0,
+     11,
+     10
+    ],
+    "points": {
+     "a0": [
+      4.8,
+      1.5
+     ],
+     "a1": [
+      4.8,
+      1.97
+     ],
+     "a2": [
+      4.8,
+      2.43
+     ],
+     "a3": [
+      4.8,
+      2.9
+     ],
+     "a4": [
+      4.8,
+      3.37
+     ],
+     "a5": [
+      4.8,
+      3.83
+     ],
+     "a6": [
+      4.8,
+      4.3
+     ],
+     "a7": [
+      4.8,
+      4.77
+     ],
+     "a8": [
+      4.8,
+      5.23
+     ],
+     "a9": [
+      4.8,
+      5.7
+     ],
+     "a10": [
+      4.8,
+      6.17
+     ],
+     "a11": [
+      4.8,
+      6.63
+     ],
+     "a12": [
+      4.8,
+      7.1
+     ],
+     "a13": [
+      4.8,
+      7.57
+     ],
+     "a14": [
+      4.8,
+      8.03
+     ],
+     "a15": [
+      4.8,
+      8.5
+     ],
+     "b0": [
+      4.0,
+      1.5
+     ],
+     "b1": [
+      4.35,
+      1.97
+     ],
+     "b2": [
+      4.35,
+      2.43
+     ],
+     "b3": [
+      4.35,
+      2.9
+     ],
+     "b4": [
+      4.35,
+      3.37
+     ],
+     "b5": [
+      4.0,
+      3.83
+     ],
+     "b6": [
+      4.35,
+      4.3
+     ],
+     "b7": [
+      4.35,
+      4.77
+     ],
+     "b8": [
+      4.35,
+      5.23
+     ],
+     "b9": [
+      4.35,
+      5.7
+     ],
+     "b10": [
+      4.0,
+      6.17
+     ],
+     "b11": [
+      4.35,
+      6.63
+     ],
+     "b12": [
+      4.35,
+      7.1
+     ],
+     "b13": [
+      4.35,
+      7.57
+     ],
+     "b14": [
+      4.35,
+      8.03
+     ],
+     "b15": [
+      4.0,
+      8.5
+     ],
+     "pv": [
+      4.8,
+      5.0
+     ],
+     "lv": [
+      4.8,
+      7.1
+     ],
+     "c0": [
+      2.0,
+      5.0
+     ],
+     "c5": [
+      4.33,
+      5.0
+     ],
+     "c10": [
+      6.67,
+      5.0
+     ],
+     "c11": [
+      7.13,
+      5.2
+     ],
+     "c12": [
+      7.6,
+      5.2
+     ],
+     "c15": [
+      9.0,
+      5.0
+     ],
+     "J1": [
+      4.8,
+      1.2
+     ],
+     "J2": [
+      8.3,
+      1.2
+     ],
+     "J3": [
+      8.3,
+      9.2
+     ],
+     "J4": [
+      4.8,
+      9.2
+     ],
+     "W3": [
+      8.3,
+      7.1
+     ],
+     "W4": [
+      4.8,
+      7.1
+     ],
+     "H1": [
+      8.3,
+      8.4
+     ],
+     "H2": [
+      9.5,
+      7.8
+     ],
+     "H3": [
+      9.5,
+      5.4
+     ],
+     "H4": [
+      8.3,
+      4.6
+     ],
+     "uP": [
+      3.2,
+      9.4
+     ]
+    },
+    "parts": [
+     {
+      "id": "water",
+      "poly": [
+       "J1",
+       "J2",
+       "W3",
+       "W4"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1,
+      "start": true,
+      "group": "jugg"
+     },
+     {
+      "id": "jug",
+      "poly": [
+       "J1",
+       "J2",
+       "J3",
+       "J4"
+      ],
+      "fill": "none",
+      "ink": "ink",
+      "w": 4,
+      "start": true,
+      "group": "jugg"
+     },
+     {
+      "id": "handle",
+      "curve": [
+       "H1",
+       "H2",
+       "H3",
+       "H4"
+      ],
+      "ink": "ink",
+      "w": 4,
+      "start": true,
+      "group": "jugg"
+     },
+     {
+      "id": "sp",
+      "seg": [
+       "a0",
+       "a15"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t0",
+      "seg": [
+       "a0",
+       "b0"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t1",
+      "seg": [
+       "a1",
+       "b1"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t2",
+      "seg": [
+       "a2",
+       "b2"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t3",
+      "seg": [
+       "a3",
+       "b3"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t4",
+      "seg": [
+       "a4",
+       "b4"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t5",
+      "seg": [
+       "a5",
+       "b5"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t6",
+      "seg": [
+       "a6",
+       "b6"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t7",
+      "seg": [
+       "a7",
+       "b7"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t8",
+      "seg": [
+       "a8",
+       "b8"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t9",
+      "seg": [
+       "a9",
+       "b9"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t10",
+      "seg": [
+       "a10",
+       "b10"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t11",
+      "seg": [
+       "a11",
+       "b11"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t12",
+      "seg": [
+       "a12",
+       "b12"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t13",
+      "seg": [
+       "a13",
+       "b13"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t14",
+      "seg": [
+       "a14",
+       "b14"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "t15",
+      "seg": [
+       "a15",
+       "b15"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "lvd",
+      "dot": "lv",
+      "ink": "accent",
+      "start": true,
+      "group": "scale"
+     },
+     {
+      "id": "jl0",
+      "label": "0",
+      "at": "b0",
+      "dir": "w",
+      "size": "m",
+      "start": true,
+      "group": "jugg"
+     },
+     {
+      "id": "jl10",
+      "label": "10",
+      "at": "b5",
+      "dir": "w",
+      "size": "m",
+      "start": true,
+      "group": "jugg"
+     },
+     {
+      "id": "jl20",
+      "label": "20",
+      "at": "b10",
+      "dir": "w",
+      "size": "m",
+      "start": true,
+      "group": "jugg"
+     },
+     {
+      "id": "jl30",
+      "label": "30",
+      "at": "b15",
+      "dir": "w",
+      "size": "m",
+      "start": true,
+      "group": "jugg"
+     },
+     {
+      "id": "ju",
+      "label": "\\text{liters}",
+      "at": "uP",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true,
+      "group": "jugg"
+     },
+     {
+      "id": "nl0",
+      "label": "0",
+      "at": "c0",
+      "dir": "s",
+      "size": "m",
+      "group": "nlab"
+     },
+     {
+      "id": "nl10",
+      "label": "10",
+      "at": "c5",
+      "dir": "s",
+      "size": "m",
+      "group": "nlab"
+     },
+     {
+      "id": "nl20",
+      "label": "20",
+      "at": "c10",
+      "dir": "s",
+      "size": "m",
+      "group": "nlab"
+     },
+     {
+      "id": "nl30",
+      "label": "30",
+      "at": "c15",
+      "dir": "s",
+      "size": "m",
+      "group": "nlab"
+     },
+     {
+      "id": "n22",
+      "label": "22",
+      "at": "c11",
+      "dir": "n",
+      "size": "m",
+      "ink": "accent",
+      "group": "nlab"
+     },
+     {
+      "id": "n24",
+      "label": "24",
+      "at": "c12",
+      "dir": "n",
+      "size": "m",
+      "ink": "accent",
+      "group": "nlab"
+     },
+     {
+      "id": "dimA",
+      "dim": [
+       "c0",
+       "c5"
+      ],
+      "side": "n",
+      "tex": "5\\text{ spaces}",
+      "far": 2,
+      "ink": "blue"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A new jug, the same question. The water is between twenty and thirty.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "A new scale"
+      },
+      {
+       "do": "problem",
+       "text": "How many liters of water are in the jug?",
+       "at": "question"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "t10",
+        "jl20",
+        "t15",
+        "jl30",
+        "lvd"
+       ],
+       "at": "between"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "First, what is one mark worth?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "t6",
+        "t7",
+        "t8",
+        "t9"
+       ],
+       "at": "mark"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Peel it off, and lay it flat. Count the spaces from zero to ten. One, two, three, four, five.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "hide",
+       "target": "jugg",
+       "at": "Peel"
+      },
+      {
+       "do": "turn",
+       "target": "scale",
+       "about": "pv",
+       "deg": -90,
+       "at": "lay",
+       "dur": 1.4
+      },
+      {
+       "do": "slide",
+       "target": "scale",
+       "by": [
+        0.7,
+        0
+       ],
+       "at": "flat",
+       "dur": 0.8
+      },
+      {
+       "do": "show",
+       "target": [
+        "nl0",
+        "nl10",
+        "nl20",
+        "nl30"
+       ],
+       "at": "Count"
+      },
+      {
+       "do": "show",
+       "target": "dimA",
+       "at": "spaces"
+      },
+      {
+       "do": "highlight",
+       "target": "t1",
+       "at": "One"
+      },
+      {
+       "do": "highlight",
+       "target": "t2",
+       "at": "two"
+      },
+      {
+       "do": "highlight",
+       "target": "t3",
+       "at": "three"
+      },
+      {
+       "do": "highlight",
+       "target": "t4",
+       "at": "four"
+      },
+      {
+       "do": "highlight",
+       "target": "t5",
+       "at": "five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten liters in five spaces. Ten divided by five is two. Each mark is worth two liters, not one.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "10\\div5=2",
+       "at": "divided"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So I count by twos. Twenty two, twenty four. Twenty four liters!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": "dimA",
+       "at": "So"
+      },
+      {
+       "do": "show",
+       "target": "n22",
+       "at": "twenty",
+       "nth": 1
+      },
+      {
+       "do": "show",
+       "target": "n24",
+       "at": "twenty",
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "20+2\\times2=24",
+       "at": "twenty",
+       "nth": 3
+      },
+      {
+       "do": "answer",
+       "tex": "24\\text{ liters}",
+       "at": "liters"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Stand it back up, and the water meets twenty four. Different marks, same method.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "hide",
+       "target": "nlab",
+       "at": "Stand"
+      },
+      {
+       "do": "slide",
+       "target": "scale",
+       "by": [
+        -0.7,
+        0
+       ],
+       "at": "Stand",
+       "dur": 0.8
+      },
+      {
+       "do": "turn",
+       "target": "scale",
+       "about": "pv",
+       "deg": 90,
+       "at": "back",
+       "dur": 1.4
+      },
+      {
+       "do": "show",
+       "target": "jugg",
+       "at": "water"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "water",
+        "lvd"
+       ],
+       "at": "meets"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     0,
+     11,
+     10
+    ],
+    "points": {
+     "B1": [
+      1.2,
+      1.8
+     ],
+     "B2": [
+      4.0,
+      1.8
+     ],
+     "B3": [
+      4.0,
+      6.2
+     ],
+     "B4": [
+      3.4,
+      7.2
+     ],
+     "B5": [
+      3.4,
+      8.4
+     ],
+     "B6": [
+      1.8,
+      8.4
+     ],
+     "B7": [
+      1.8,
+      7.2
+     ],
+     "B8": [
+      1.2,
+      6.2
+     ],
+     "C1": [
+      1.7,
+      8.4
+     ],
+     "C2": [
+      3.5,
+      8.4
+     ],
+     "C3": [
+      3.5,
+      8.9
+     ],
+     "C4": [
+      1.7,
+      8.9
+     ],
+     "pL": [
+      2.6,
+      4.4
+     ],
+     "pK": [
+      2.6,
+      1.0
+     ],
+     "hL": [
+      2.6,
+      9.6
+     ],
+     "hH": [
+      8.2,
+      9.6
+     ],
+     "pG": [
+      8.2,
+      1.0
+     ],
+     "K1": [
+      7.75,
+      3.4
+     ],
+     "K2": [
+      7.75,
+      3.762
+     ],
+     "K3": [
+      7.75,
+      4.125
+     ],
+     "K4": [
+      7.75,
+      4.487
+     ],
+     "K5": [
+      7.75,
+      4.85
+     ],
+     "K6": [
+      7.75,
+      5.213
+     ],
+     "K7": [
+      7.75,
+      5.575
+     ],
+     "K8": [
+      7.75,
+      5.938
+     ],
+     "K9": [
+      7.75,
+      6.3
+     ],
+     "K10": [
+      7.767,
+      6.429
+     ],
+     "K11": [
+      7.817,
+      6.55
+     ],
+     "K12": [
+      7.896,
+      6.654
+     ],
+     "K13": [
+      8.0,
+      6.733
+     ],
+     "K14": [
+      8.121,
+      6.783
+     ],
+     "K15": [
+      8.25,
+      6.8
+     ],
+     "K16": [
+      8.379,
+      6.783
+     ],
+     "K17": [
+      8.5,
+      6.733
+     ],
+     "K18": [
+      8.604,
+      6.654
+     ],
+     "K19": [
+      8.683,
+      6.55
+     ],
+     "K20": [
+      8.733,
+      6.429
+     ],
+     "K21": [
+      8.75,
+      6.3
+     ],
+     "K22": [
+      8.75,
+      5.933
+     ],
+     "K23": [
+      8.75,
+      5.567
+     ],
+     "K24": [
+      8.75,
+      5.2
+     ],
+     "K25": [
+      8.75,
+      4.833
+     ],
+     "K26": [
+      8.75,
+      4.467
+     ],
+     "K27": [
+      8.75,
+      4.1
+     ],
+     "K28": [
+      8.75,
+      3.733
+     ],
+     "K29": [
+      8.75,
+      3.367
+     ],
+     "K30": [
+      8.75,
+      3.0
+     ],
+     "K31": [
+      8.726,
+      2.819
+     ],
+     "K32": [
+      8.656,
+      2.65
+     ],
+     "K33": [
+      8.545,
+      2.505
+     ],
+     "K34": [
+      8.4,
+      2.394
+     ],
+     "K35": [
+      8.231,
+      2.324
+     ],
+     "K36": [
+      8.05,
+      2.3
+     ],
+     "K37": [
+      7.869,
+      2.324
+     ],
+     "K38": [
+      7.7,
+      2.394
+     ],
+     "K39": [
+      7.555,
+      2.505
+     ],
+     "K40": [
+      7.444,
+      2.65
+     ],
+     "K41": [
+      7.374,
+      2.819
+     ],
+     "K42": [
+      7.35,
+      3.0
+     ],
+     "K43": [
+      7.35,
+      3.336
+     ],
+     "K44": [
+      7.35,
+      3.673
+     ],
+     "K45": [
+      7.35,
+      4.009
+     ],
+     "K46": [
+      7.35,
+      4.345
+     ],
+     "K47": [
+      7.35,
+      4.682
+     ],
+     "K48": [
+      7.35,
+      5.018
+     ],
+     "K49": [
+      7.35,
+      5.355
+     ],
+     "K50": [
+      7.35,
+      5.691
+     ],
+     "K51": [
+      7.35,
+      6.027
+     ],
+     "K52": [
+      7.35,
+      6.364
+     ],
+     "K53": [
+      7.35,
+      6.7
+     ],
+     "K54": [
+      7.381,
+      6.933
+     ],
+     "K55": [
+      7.471,
+      7.15
+     ],
+     "K56": [
+      7.614,
+      7.336
+     ],
+     "K57": [
+      7.8,
+      7.479
+     ],
+     "K58": [
+      8.017,
+      7.569
+     ],
+     "K59": [
+      8.25,
+      7.6
+     ],
+     "K60": [
+      8.483,
+      7.569
+     ],
+     "K61": [
+      8.7,
+      7.479
+     ],
+     "K62": [
+      8.886,
+      7.336
+     ],
+     "K63": [
+      9.029,
+      7.15
+     ],
+     "K64": [
+      9.119,
+      6.933
+     ],
+     "K65": [
+      9.15,
+      6.7
+     ],
+     "K66": [
+      9.15,
+      6.35
+     ],
+     "K67": [
+      9.15,
+      6.0
+     ],
+     "K68": [
+      9.15,
+      5.65
+     ],
+     "K69": [
+      9.15,
+      5.3
+     ],
+     "K70": [
+      9.15,
+      4.95
+     ],
+     "K71": [
+      9.15,
+      4.6
+     ],
+     "K72": [
+      9.15,
+      4.25
+     ],
+     "K73": [
+      9.15,
+      3.9
+     ]
+    },
+    "parts": [
+     {
+      "id": "bwater",
+      "poly": [
+       "B1",
+       "B2",
+       "B3",
+       "B4",
+       "B7",
+       "B8"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bottle",
+      "poly": [
+       "B1",
+       "B2",
+       "B3",
+       "B4",
+       "B5",
+       "B6",
+       "B7",
+       "B8"
+      ],
+      "fill": "none",
+      "ink": "ink",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "cap",
+      "poly": [
+       "C1",
+       "C2",
+       "C3",
+       "C4"
+      ],
+      "fill": "gold-fill",
+      "ink": "wood",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "clip",
+      "curve": [
+       "K1",
+       "K2",
+       "K3",
+       "K4",
+       "K5",
+       "K6",
+       "K7",
+       "K8",
+       "K9",
+       "K10",
+       "K11",
+       "K12",
+       "K13",
+       "K14",
+       "K15",
+       "K16",
+       "K17",
+       "K18",
+       "K19",
+       "K20",
+       "K21",
+       "K22",
+       "K23",
+       "K24",
+       "K25",
+       "K26",
+       "K27",
+       "K28",
+       "K29",
+       "K30",
+       "K31",
+       "K32",
+       "K33",
+       "K34",
+       "K35",
+       "K36",
+       "K37",
+       "K38",
+       "K39",
+       "K40",
+       "K41",
+       "K42",
+       "K43",
+       "K44",
+       "K45",
+       "K46",
+       "K47",
+       "K48",
+       "K49",
+       "K50",
+       "K51",
+       "K52",
+       "K53",
+       "K54",
+       "K55",
+       "K56",
+       "K57",
+       "K58",
+       "K59",
+       "K60",
+       "K61",
+       "K62",
+       "K63",
+       "K64",
+       "K65",
+       "K66",
+       "K67",
+       "K68",
+       "K69",
+       "K70",
+       "K71",
+       "K72",
+       "K73"
+      ],
+      "ink": "ink",
+      "w": 4
+     },
+     {
+      "id": "hLiq",
+      "label": "\\text{how much liquid}",
+      "at": "hL",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue"
+     },
+     {
+      "id": "hHeavy",
+      "label": "\\text{how heavy}",
+      "at": "hH",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm"
+     },
+     {
+      "id": "lLiter",
+      "label": "1\\text{ liter}",
+      "at": "pL",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "lKg",
+      "label": "\\text{about }1\\text{ kilogram}",
+      "at": "pK",
+      "dir": "c",
+      "size": "m"
+     },
+     {
+      "id": "lGram",
+      "label": "\\text{about }1\\text{ gram}",
+      "at": "pG",
+      "dir": "c",
+      "size": "m"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A quick feel for the units. Liters tell us how much liquid. Grams and kilograms tell us how heavy.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Which unit?"
+      },
+      {
+       "do": "show",
+       "target": "hLiq",
+       "at": "Liters"
+      },
+      {
+       "do": "text",
+       "text": "liters: how much liquid",
+       "at": "Liters"
+      },
+      {
+       "do": "show",
+       "target": "hHeavy",
+       "at": "Grams"
+      },
+      {
+       "do": "text",
+       "text": "grams, kilograms: how heavy",
+       "at": "Grams"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A big bottle of water holds about one liter, and weighs about one kilogram.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "lLiter",
+       "at": "holds"
+      },
+      {
+       "do": "show",
+       "target": "lKg",
+       "at": "weighs"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "bottle",
+        "lLiter"
+       ],
+       "at": "liter",
+       "until": "and"
+      },
+      {
+       "do": "highlight",
+       "target": "lKg",
+       "at": "kilogram"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "And a gram?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "draw",
+       "target": "clip",
+       "at": "gram"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A paper clip weighs about one gram. A thousand of them make a kilogram.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "lGram",
+       "at": "paper"
+      },
+      {
+       "do": "write",
+       "tex": "1000\\text{ g}=1\\text{ kg}",
+       "at": "thousand",
+       "fresh": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     0,
+     11,
+     10
+    ],
+    "points": {
+     "bl": [
+      2.0,
+      8.4
+     ],
+     "br": [
+      9.0,
+      8.4
+     ],
+     "pl1": [
+      0.2,
+      5.8
+     ],
+     "pl2": [
+      3.8,
+      5.8
+     ],
+     "pr1": [
+      7.4,
+      5.8
+     ],
+     "pr2": [
+      10.6,
+      5.8
+     ],
+     "ql1": [
+      0.8,
+      5.4
+     ],
+     "ql2": [
+      3.2,
+      5.4
+     ],
+     "qr1": [
+      8.0,
+      5.4
+     ],
+     "qr2": [
+      10.0,
+      5.4
+     ],
+     "Sp1": [
+      5.5,
+      8.4
+     ],
+     "Sp2": [
+      6.1,
+      3.6
+     ],
+     "Sp3": [
+      4.9,
+      3.6
+     ],
+     "Ba": [
+      3.9,
+      3.6
+     ],
+     "Bb": [
+      7.1,
+      3.6
+     ],
+     "G1": [
+      0.5,
+      5.8
+     ],
+     "G2": [
+      1.9,
+      5.8
+     ],
+     "G3": [
+      2.0,
+      6.8
+     ],
+     "G4": [
+      1.65,
+      7.2
+     ],
+     "G5": [
+      0.75,
+      7.2
+     ],
+     "G6": [
+      0.4,
+      6.8
+     ],
+     "gl": [
+      1.2,
+      6.4
+     ],
+     "M1": [
+      2.2,
+      5.8
+     ],
+     "M2": [
+      3.65,
+      5.8
+     ],
+     "M3": [
+      3.5,
+      6.7
+     ],
+     "M4": [
+      2.35,
+      6.7
+     ],
+     "ml": [
+      2.925,
+      6.25
+     ],
+     "K1": [
+      8.2,
+      5.8
+     ],
+     "K2": [
+      9.8,
+      5.8
+     ],
+     "K3": [
+      9.8,
+      7.4
+     ],
+     "K4": [
+      8.2,
+      7.4
+     ],
+     "kl": [
+      9.0,
+      6.6
+     ],
+     "P0": [
+      1.5,
+      0.5
+     ],
+     "P1": [
+      3.5,
+      0.5
+     ],
+     "P2": [
+      9.5,
+      0.5
+     ],
+     "P3": [
+      9.5,
+      1.4
+     ],
+     "P4": [
+      3.5,
+      1.4
+     ],
+     "P5": [
+      1.5,
+      1.4
+     ],
+     "sm1": [
+      2.5,
+      0.95
+     ],
+     "sm2": [
+      6.5,
+      0.95
+     ]
+    },
+    "parts": [
+     {
+      "id": "post",
+      "poly": [
+       "Sp1",
+       "Sp2",
+       "Sp3"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "base",
+      "seg": [
+       "Ba",
+       "Bb"
+      ],
+      "ink": "wood",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "beam",
+      "seg": [
+       "bl",
+       "br"
+      ],
+      "ink": "wood",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "s1",
+      "seg": [
+       "bl",
+       "pl1"
+      ],
+      "ink": "muted",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "s2",
+      "seg": [
+       "bl",
+       "pl2"
+      ],
+      "ink": "muted",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "s3",
+      "seg": [
+       "br",
+       "pr1"
+      ],
+      "ink": "muted",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "s4",
+      "seg": [
+       "br",
+       "pr2"
+      ],
+      "ink": "muted",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "panL",
+      "poly": [
+       "pl1",
+       "pl2",
+       "ql2",
+       "ql1"
+      ],
+      "fill": "none",
+      "ink": "wood",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "panR",
+      "poly": [
+       "pr1",
+       "pr2",
+       "qr2",
+       "qr1"
+      ],
+      "fill": "none",
+      "ink": "wood",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "bag",
+      "poly": [
+       "G1",
+       "G2",
+       "G3",
+       "G4",
+       "G5",
+       "G6"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "bagq",
+      "label": "?",
+      "at": "gl",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "wt",
+      "poly": [
+       "M1",
+       "M2",
+       "M3",
+       "M4"
+      ],
+      "fill": "gold-fill",
+      "ink": "wood",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "wtl",
+      "label": "250\\text{ g}",
+      "at": "ml",
+      "dir": "c",
+      "size": "s",
+      "start": true
+     },
+     {
+      "id": "kg",
+      "poly": [
+       "K1",
+       "K2",
+       "K3",
+       "K4"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "kgl",
+      "label": "1\\text{ kg}",
+      "at": "kl",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "sa",
+      "poly": [
+       "P0",
+       "P1",
+       "P4",
+       "P5"
+      ],
+      "fill": "gold-fill",
+      "ink": "wood",
+      "w": 2
+     },
+     {
+      "id": "sb",
+      "poly": [
+       "P1",
+       "P2",
+       "P3",
+       "P4"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "sl250",
+      "label": "250",
+      "at": "sm1",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "sq",
+      "label": "?",
+      "at": "sm2",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "s750",
+      "label": "750",
+      "at": "sm2",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "dimK",
+      "dim": [
+       "P5",
+       "P3"
+      ],
+      "side": "n",
+      "tex": "1000\\text{ g}",
+      "far": 0.4,
+      "ink": "blue"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "When a balance is level, both sides weigh exactly the same.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "A level balance"
+      },
+      {
+       "do": "highlight",
+       "target": "beam",
+       "at": "level"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A bag and a weight of two hundred fifty grams on the left. One kilogram on the right. How heavy is the bag?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "problem",
+       "text": "The balance is level. What is the mass of the bag, in grams?",
+       "at": "How"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "bag",
+        "bagq"
+       ],
+       "at": "bag",
+       "until": "and"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "wt",
+        "wtl"
+       ],
+       "at": "weight",
+       "until": "One"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "kg",
+        "kgl"
+       ],
+       "at": "kilogram",
+       "until": "How"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "bag",
+        "bagq"
+       ],
+       "at": "bag",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "One kilogram is a thousand grams!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "kg",
+        "kgl"
+       ],
+       "at": "thousand"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So the bag and the weight make a thousand. Let us draw that as one long bar.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\text{bag}+250=1000",
+       "at": "bag",
+       "fresh": true
+      },
+      {
+       "do": "show",
+       "target": [
+        "sa",
+        "sb",
+        "dimK",
+        "sl250",
+        "sq"
+       ],
+       "at": "draw"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Take away the two hundred fifty, and what is left is the bag. A thousand minus two hundred fifty.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "sa",
+        "wt"
+       ],
+       "at": "Take",
+       "until": "and"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "sb",
+        "bag"
+       ],
+       "at": "left"
+      },
+      {
+       "do": "write",
+       "tex": "1000-250=750",
+       "at": "minus"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Seven hundred fifty grams!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": "sq",
+       "at": "Seven"
+      },
+      {
+       "do": "show",
+       "target": "s750",
+       "at": "Seven"
+      },
+      {
+       "do": "answer",
+       "tex": "750\\text{ grams}",
+       "at": "grams"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     0,
+     11,
+     10
+    ],
+    "points": {
+     "tg": [
+      4.0,
+      8.5
+     ],
+     "LQ1": [
+      4.25,
+      1.5
+     ],
+     "LQ2": [
+      4.75,
+      1.5
+     ],
+     "LQ3": [
+      4.75,
+      6.4
+     ],
+     "LQ4": [
+      4.25,
+      6.4
+     ],
+     "bulb": [
+      4.5,
+      1.1
+     ],
+     "tp": [
+      4.5,
+      6.4
+     ],
+     "t12p": [
+      4.5,
+      2.2
+     ],
+     "m10": [
+      5.3,
+      1.5
+     ],
+     "m20": [
+      5.3,
+      5.0
+     ],
+     "m30": [
+      5.3,
+      8.5
+     ],
+     "uC": [
+      4.5,
+      9.4
+     ],
+     "z0": [
+      4.0,
+      1.5
+     ],
+     "z10": [
+      4.0,
+      5.0
+     ],
+     "zd1": [
+      4.0,
+      2.2
+     ],
+     "zd2": [
+      4.0,
+      6.4
+     ],
+     "q22": [
+      3.8,
+      5.7
+     ],
+     "q24": [
+      3.8,
+      6.4
+     ]
+    },
+    "parts": [
+     {
+      "id": "liq",
+      "poly": [
+       "LQ1",
+       "LQ2",
+       "LQ3",
+       "LQ4"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bulbc",
+      "circle": "bulb",
+      "r": 0.55,
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "tube",
+      "grid": [
+       1,
+       10
+      ],
+      "at": "tg",
+      "size": [
+       1.0,
+       0.7
+      ],
+      "fill": "none",
+      "ink": "ink",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "tl10",
+      "label": "10",
+      "at": "m10",
+      "dir": "e",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "tl20",
+      "label": "20",
+      "at": "m20",
+      "dir": "e",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "tl30",
+      "label": "30",
+      "at": "m30",
+      "dir": "e",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "tu",
+      "label": "^\\circ\\text{C}",
+      "at": "uC",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "tpd",
+      "dot": "tp",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "dimT",
+      "dim": [
+       "z0",
+       "z10"
+      ],
+      "side": "w",
+      "tex": "5\\text{ spaces}",
+      "far": 1,
+      "ink": "blue"
+     },
+     {
+      "id": "l22",
+      "label": "22",
+      "at": "q22",
+      "dir": "w",
+      "size": "m",
+      "ink": "accent"
+     },
+     {
+      "id": "l24",
+      "label": "24",
+      "at": "q24",
+      "dir": "w",
+      "size": "m",
+      "ink": "accent"
+     },
+     {
+      "id": "d12",
+      "dot": "t12p",
+      "ink": "blue"
+     },
+     {
+      "id": "dimM",
+      "dim": [
+       "zd1",
+       "zd2"
+      ],
+      "side": "w",
+      "tex": "12^\\circ",
+      "far": 2.5,
+      "ink": "blue"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A thermometer is a number line standing up. What is one mark worth? From ten to twenty there are five spaces. Ten divided by five is two.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "A thermometer"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "liq",
+        "tpd"
+       ],
+       "at": "thermometer"
+      },
+      {
+       "do": "show",
+       "target": "dimT",
+       "at": "ten"
+      },
+      {
+       "do": "write",
+       "tex": "10\\div5=2",
+       "at": "divided"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So each mark is two degrees. From twenty, I count twenty two, twenty four. Twenty four degrees!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": "dimT",
+       "at": "So"
+      },
+      {
+       "do": "highlight",
+       "target": "tl20",
+       "at": "twenty",
+       "until": "count"
+      },
+      {
+       "do": "show",
+       "target": "l22",
+       "at": "twenty",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": "l24",
+       "at": "twenty",
+       "nth": 3
+      },
+      {
+       "do": "write",
+       "tex": "20+2\\times2=24",
+       "at": "Twenty"
+      },
+      {
+       "do": "answer",
+       "tex": "24^\\circ\\text{C}",
+       "at": "degrees",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two thermometers? Read each, then subtract. If the morning was twelve, the afternoon is twelve degrees warmer.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "l22",
+        "l24"
+       ],
+       "at": "Two"
+      },
+      {
+       "do": "show",
+       "target": "d12",
+       "at": "morning"
+      },
+      {
+       "do": "write",
+       "tex": "24-12=12",
+       "at": "subtract",
+       "fresh": true
+      },
+      {
+       "do": "show",
+       "target": "dimM",
+       "at": "degrees"
+      },
+      {
+       "do": "highlight",
+       "target": "tpd",
+       "at": "afternoon",
+       "until": "twelve",
+       "untilNth": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.6,
+     -2.4,
+     24.6,
+     4.4
+    ],
+    "points": {
+     "z0": [
+      0,
+      0
+     ],
+     "z3": [
+      3,
+      0
+     ],
+     "z4": [
+      4,
+      0
+     ],
+     "z6": [
+      6,
+      0
+     ],
+     "z8": [
+      8,
+      0
+     ],
+     "z9": [
+      9,
+      0
+     ],
+     "z12": [
+      12,
+      0
+     ],
+     "z15": [
+      15,
+      0
+     ],
+     "z16": [
+      16,
+      0
+     ],
+     "z20": [
+      20,
+      0
+     ],
+     "z24": [
+      24,
+      0
+     ],
+     "mA1": [
+      4.5,
+      2.4
+     ],
+     "mA2": [
+      10.5,
+      1.3
+     ],
+     "mB1": [
+      2,
+      1.3
+     ],
+     "mB2": [
+      6,
+      1.3
+     ],
+     "mB3": [
+      10,
+      1.3
+     ],
+     "mB4": [
+      14,
+      1.3
+     ],
+     "mB5": [
+      18,
+      1.3
+     ],
+     "mB6": [
+      22,
+      1.3
+     ],
+     "mC1": [
+      1.5,
+      1.2
+     ],
+     "mC2": [
+      4.5,
+      1.2
+     ],
+     "mC3": [
+      7.5,
+      1.2
+     ],
+     "mC4": [
+      10.5,
+      1.2
+     ],
+     "mC5": [
+      13.5,
+      1.2
+     ]
+    },
+    "parts": [
+     {
+      "id": "ax",
+      "axes": true,
+      "y": false,
+      "step": 1,
+      "every": 100,
+      "ink": "muted",
+      "start": true,
+      "size": "l"
+     },
+     {
+      "id": "hA1",
+      "curve": [
+       "z0",
+       "mA1",
+       "z9"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "group": "gA"
+     },
+     {
+      "id": "lA1",
+      "label": "9",
+      "at": "mA1",
+      "dir": "n",
+      "size": "m",
+      "ink": "accent",
+      "group": "gA"
+     },
+     {
+      "id": "hA2",
+      "curve": [
+       "z9",
+       "mA2",
+       "z12"
+      ],
+      "ink": "blue",
+      "w": 4,
+      "group": "gA"
+     },
+     {
+      "id": "lA2",
+      "label": "3",
+      "at": "mA2",
+      "dir": "n",
+      "size": "m",
+      "ink": "blue",
+      "group": "gA"
+     },
+     {
+      "id": "xA9",
+      "label": "9",
+      "at": "z9",
+      "dir": "s",
+      "size": "m",
+      "group": "gA"
+     },
+     {
+      "id": "xA12",
+      "label": "12",
+      "at": "z12",
+      "dir": "s",
+      "size": "m",
+      "ink": "accent",
+      "group": "gA"
+     },
+     {
+      "id": "hB1",
+      "curve": [
+       "z0",
+       "mB1",
+       "z4"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "group": "gB"
+     },
+     {
+      "id": "hB2",
+      "curve": [
+       "z4",
+       "mB2",
+       "z8"
+      ],
+      "ink": "blue",
+      "w": 4,
+      "group": "gB"
+     },
+     {
+      "id": "hB3",
+      "curve": [
+       "z8",
+       "mB3",
+       "z12"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "group": "gB"
+     },
+     {
+      "id": "hB4",
+      "curve": [
+       "z12",
+       "mB4",
+       "z16"
+      ],
+      "ink": "blue",
+      "w": 4,
+      "group": "gB"
+     },
+     {
+      "id": "hB5",
+      "curve": [
+       "z16",
+       "mB5",
+       "z20"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "group": "gB"
+     },
+     {
+      "id": "hB6",
+      "curve": [
+       "z20",
+       "mB6",
+       "z24"
+      ],
+      "ink": "blue",
+      "w": 4,
+      "group": "gB"
+     },
+     {
+      "id": "lB1",
+      "label": "4",
+      "at": "mB1",
+      "dir": "n",
+      "size": "m",
+      "group": "gB"
+     },
+     {
+      "id": "lB2",
+      "label": "4",
+      "at": "mB2",
+      "dir": "n",
+      "size": "m",
+      "group": "gB"
+     },
+     {
+      "id": "lB3",
+      "label": "4",
+      "at": "mB3",
+      "dir": "n",
+      "size": "m",
+      "group": "gB"
+     },
+     {
+      "id": "lB4",
+      "label": "4",
+      "at": "mB4",
+      "dir": "n",
+      "size": "m",
+      "group": "gB"
+     },
+     {
+      "id": "lB5",
+      "label": "4",
+      "at": "mB5",
+      "dir": "n",
+      "size": "m",
+      "group": "gB"
+     },
+     {
+      "id": "lB6",
+      "label": "4",
+      "at": "mB6",
+      "dir": "n",
+      "size": "m",
+      "group": "gB"
+     },
+     {
+      "id": "xB4",
+      "label": "4",
+      "at": "z4",
+      "dir": "s",
+      "size": "m",
+      "group": "gB"
+     },
+     {
+      "id": "xB8",
+      "label": "8",
+      "at": "z8",
+      "dir": "s",
+      "size": "m",
+      "group": "gB"
+     },
+     {
+      "id": "xB12",
+      "label": "12",
+      "at": "z12",
+      "dir": "s",
+      "size": "m",
+      "group": "gB"
+     },
+     {
+      "id": "xB16",
+      "label": "16",
+      "at": "z16",
+      "dir": "s",
+      "size": "m",
+      "group": "gB"
+     },
+     {
+      "id": "xB20",
+      "label": "20",
+      "at": "z20",
+      "dir": "s",
+      "size": "m",
+      "group": "gB"
+     },
+     {
+      "id": "xB24",
+      "label": "24",
+      "at": "z24",
+      "dir": "s",
+      "size": "m",
+      "ink": "accent",
+      "group": "gB"
+     },
+     {
+      "id": "hC1",
+      "curve": [
+       "z0",
+       "mC1",
+       "z3"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "group": "gC"
+     },
+     {
+      "id": "hC2",
+      "curve": [
+       "z3",
+       "mC2",
+       "z6"
+      ],
+      "ink": "blue",
+      "w": 4,
+      "group": "gC"
+     },
+     {
+      "id": "hC3",
+      "curve": [
+       "z6",
+       "mC3",
+       "z9"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "group": "gC"
+     },
+     {
+      "id": "hC4",
+      "curve": [
+       "z9",
+       "mC4",
+       "z12"
+      ],
+      "ink": "blue",
+      "w": 4,
+      "group": "gC"
+     },
+     {
+      "id": "hC5",
+      "curve": [
+       "z12",
+       "mC5",
+       "z15"
+      ],
+      "ink": "accent",
+      "w": 4,
+      "group": "gC"
+     },
+     {
+      "id": "lC1",
+      "label": "3",
+      "at": "mC1",
+      "dir": "n",
+      "size": "m",
+      "group": "gC"
+     },
+     {
+      "id": "lC2",
+      "label": "3",
+      "at": "mC2",
+      "dir": "n",
+      "size": "m",
+      "group": "gC"
+     },
+     {
+      "id": "lC3",
+      "label": "3",
+      "at": "mC3",
+      "dir": "n",
+      "size": "m",
+      "group": "gC"
+     },
+     {
+      "id": "lC4",
+      "label": "3",
+      "at": "mC4",
+      "dir": "n",
+      "size": "m",
+      "group": "gC"
+     },
+     {
+      "id": "lC5",
+      "label": "3",
+      "at": "mC5",
+      "dir": "n",
+      "size": "m",
+      "group": "gC"
+     },
+     {
+      "id": "xC3",
+      "label": "3",
+      "at": "z3",
+      "dir": "s",
+      "size": "m",
+      "group": "gC"
+     },
+     {
+      "id": "xC6",
+      "label": "6",
+      "at": "z6",
+      "dir": "s",
+      "size": "m",
+      "group": "gC"
+     },
+     {
+      "id": "xC9",
+      "label": "9",
+      "at": "z9",
+      "dir": "s",
+      "size": "m",
+      "group": "gC"
+     },
+     {
+      "id": "xC12",
+      "label": "12",
+      "at": "z12",
+      "dir": "s",
+      "size": "m",
+      "group": "gC"
+     },
+     {
+      "id": "xC15",
+      "label": "15",
+      "at": "z15",
+      "dir": "s",
+      "size": "m",
+      "ink": "accent",
+      "group": "gC"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Once we can read the numbers, stories in one unit are ordinary arithmetic. Add, subtract, multiply or divide.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Stories in one unit"
+      },
+      {
+       "do": "text",
+       "text": "Same unit: just do the arithmetic",
+       "at": "ordinary"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A bucket holds nine liters, and a tub holds three. How many together? Hop nine, then hop three.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "A bucket holds 9 liters of water and a tub holds 3 liters. How many liters do they hold together?",
+       "at": "How"
+      },
+      {
+       "do": "show",
+       "target": [
+        "hA1",
+        "lA1",
+        "xA9"
+       ],
+       "at": "Hop"
+      },
+      {
+       "do": "show",
+       "target": [
+        "hA2",
+        "lA2"
+       ],
+       "at": "then"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Twelve liters!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "xA12",
+       "at": "Twelve"
+      },
+      {
+       "do": "write",
+       "tex": "9+3=12",
+       "at": "Twelve"
+      },
+      {
+       "do": "answer",
+       "tex": "12\\text{ liters}",
+       "at": "liters"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Next, twenty four liters of juice go into jugs that hold four liters each. How many jugs?",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": "gA",
+       "at": "Next"
+      },
+      {
+       "do": "problem",
+       "text": "24 liters of juice are poured equally into jugs of 4 liters. How many jugs?",
+       "at": "How"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Hop by four. Four, eight, twelve, sixteen, twenty, twenty four.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "hB1",
+        "lB1",
+        "xB4"
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "show",
+       "target": [
+        "hB2",
+        "lB2",
+        "xB8"
+       ],
+       "at": "eight"
+      },
+      {
+       "do": "show",
+       "target": [
+        "hB3",
+        "lB3",
+        "xB12"
+       ],
+       "at": "twelve"
+      },
+      {
+       "do": "show",
+       "target": [
+        "hB4",
+        "lB4",
+        "xB16"
+       ],
+       "at": "sixteen"
+      },
+      {
+       "do": "show",
+       "target": [
+        "hB5",
+        "lB5",
+        "xB20"
+       ],
+       "at": "twenty"
+      },
+      {
+       "do": "show",
+       "target": [
+        "hB6",
+        "lB6",
+        "xB24"
+       ],
+       "at": "four",
+       "nth": 3
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Six hops, so six jugs!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "hB1",
+        "hB2",
+        "hB3",
+        "hB4",
+        "hB5",
+        "hB6"
+       ],
+       "at": "Six"
+      },
+      {
+       "do": "write",
+       "tex": "24\\div4=6",
+       "at": "jugs"
+      },
+      {
+       "do": "answer",
+       "tex": "6\\text{ jugs}",
+       "at": "jugs"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five bags of rice, three kilograms each. Three, six, nine, twelve, fifteen.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": "gB",
+       "at": "Five"
+      },
+      {
+       "do": "problem",
+       "text": "Each bag of rice has a mass of 3 kilograms. What is the mass of 5 bags, in kilograms?",
+       "at": "bags"
+      },
+      {
+       "do": "show",
+       "target": [
+        "hC1",
+        "lC1",
+        "xC3"
+       ],
+       "at": "Three",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": [
+        "hC2",
+        "lC2",
+        "xC6"
+       ],
+       "at": "six"
+      },
+      {
+       "do": "show",
+       "target": [
+        "hC3",
+        "lC3",
+        "xC9"
+       ],
+       "at": "nine"
+      },
+      {
+       "do": "show",
+       "target": [
+        "hC4",
+        "lC4",
+        "xC12"
+       ],
+       "at": "twelve"
+      },
+      {
+       "do": "show",
+       "target": [
+        "hC5",
+        "lC5",
+        "xC15"
+       ],
+       "at": "fifteen"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Five threes. Fifteen kilograms!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "5\\times3=15",
+       "at": "Five"
+      },
+      {
+       "do": "answer",
+       "tex": "15\\text{ kilograms}",
+       "at": "kilograms"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     0,
+     11,
+     10
+    ],
+    "points": {
+     "j1": [
+      0.8,
+      7.1
+     ],
+     "j2": [
+      2.6,
+      7.1
+     ],
+     "j3": [
+      2.6,
+      9.7
+     ],
+     "j4": [
+      0.8,
+      9.7
+     ],
+     "jw3": [
+      2.6,
+      9.18
+     ],
+     "jw4": [
+      0.8,
+      9.18
+     ],
+     "r1a": [
+      4.3,
+      8.4
+     ],
+     "r1b": [
+      10.3,
+      8.4
+     ],
+     "u0a": [
+      4.3,
+      8.2
+     ],
+     "u0b": [
+      4.3,
+      8.6
+     ],
+     "u5a": [
+      7.3,
+      8.2
+     ],
+     "u5b": [
+      7.3,
+      8.6
+     ],
+     "u10a": [
+      10.3,
+      8.2
+     ],
+     "u10b": [
+      10.3,
+      8.6
+     ],
+     "p8": [
+      9.1,
+      8.4
+     ],
+     "p8r": [
+      9.1,
+      9.1
+     ],
+     "cp1": [
+      1.7,
+      6.65
+     ],
+     "bm1": [
+      0.7,
+      6.0
+     ],
+     "bm2": [
+      2.7,
+      6.0
+     ],
+     "bpt": [
+      1.7,
+      6.0
+     ],
+     "bps1": [
+      1.35,
+      4.0
+     ],
+     "bps2": [
+      2.05,
+      4.0
+     ],
+     "bb1": [
+      1.0,
+      4.0
+     ],
+     "bb2": [
+      2.4,
+      4.0
+     ],
+     "bpl1": [
+      0.3,
+      5.0
+     ],
+     "bpl2": [
+      1.1,
+      5.0
+     ],
+     "bpr1": [
+      2.3,
+      5.0
+     ],
+     "bpr2": [
+      3.1,
+      5.0
+     ],
+     "bg1": [
+      0.45,
+      5.0
+     ],
+     "bg2": [
+      0.95,
+      5.0
+     ],
+     "bg3": [
+      0.95,
+      5.5
+     ],
+     "bg4": [
+      0.45,
+      5.5
+     ],
+     "bk1": [
+      2.45,
+      5.0
+     ],
+     "bk2": [
+      2.95,
+      5.0
+     ],
+     "bk3": [
+      2.95,
+      5.6
+     ],
+     "bk4": [
+      2.45,
+      5.6
+     ],
+     "r2a": [
+      4.3,
+      5.0
+     ],
+     "r2b": [
+      10.3,
+      5.0
+     ],
+     "v0a": [
+      4.3,
+      4.8
+     ],
+     "v0b": [
+      4.3,
+      5.2
+     ],
+     "v1a": [
+      5.8,
+      4.8
+     ],
+     "v1b": [
+      5.8,
+      5.2
+     ],
+     "v2a": [
+      7.3,
+      4.8
+     ],
+     "v2b": [
+      7.3,
+      5.2
+     ],
+     "v3a": [
+      8.8,
+      4.8
+     ],
+     "v3b": [
+      8.8,
+      5.2
+     ],
+     "v4a": [
+      10.3,
+      4.8
+     ],
+     "v4b": [
+      10.3,
+      5.2
+     ],
+     "p750": [
+      8.8,
+      5.0
+     ],
+     "e1": [
+      8.8,
+      5.15
+     ],
+     "e2": [
+      9.55,
+      5.75
+     ],
+     "e3": [
+      10.3,
+      5.15
+     ],
+     "p750r": [
+      7.6,
+      5.7
+     ],
+     "pe2": [
+      9.55,
+      6.05
+     ],
+     "tb1": [
+      1.4,
+      1.3
+     ],
+     "tb2": [
+      1.9,
+      1.3
+     ],
+     "tb3": [
+      1.9,
+      3.5
+     ],
+     "tb4": [
+      1.4,
+      3.5
+     ],
+     "tl1": [
+      1.5,
+      1.3
+     ],
+     "tl2": [
+      1.8,
+      1.3
+     ],
+     "tl3": [
+      1.8,
+      2.8
+     ],
+     "tl4": [
+      1.5,
+      2.8
+     ],
+     "tbulb": [
+      1.65,
+      1.15
+     ],
+     "r3a": [
+      4.3,
+      1.9
+     ],
+     "r3b": [
+      10.3,
+      1.9
+     ],
+     "w0a": [
+      4.3,
+      1.7
+     ],
+     "w0b": [
+      4.3,
+      2.1
+     ],
+     "w1a": [
+      5.8,
+      1.7
+     ],
+     "w1b": [
+      5.8,
+      2.1
+     ],
+     "w2a": [
+      7.3,
+      1.7
+     ],
+     "w2b": [
+      7.3,
+      2.1
+     ],
+     "w3a": [
+      8.8,
+      1.7
+     ],
+     "w3b": [
+      8.8,
+      2.1
+     ],
+     "w4a": [
+      10.3,
+      1.7
+     ],
+     "w4b": [
+      10.3,
+      2.1
+     ],
+     "p24": [
+      7.9,
+      1.9
+     ],
+     "p24r": [
+      7.9,
+      2.6
+     ],
+     "cp3": [
+      1.65,
+      0.3
+     ]
+    },
+    "parts": [
+     {
+      "id": "jw",
+      "poly": [
+       "j1",
+       "j2",
+       "jw3",
+       "jw4"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1,
+      "start": true,
+      "group": "jugI"
+     },
+     {
+      "id": "jb",
+      "poly": [
+       "j1",
+       "j2",
+       "j3",
+       "j4"
+      ],
+      "fill": "none",
+      "ink": "ink",
+      "w": 4,
+      "start": true,
+      "group": "jugI"
+     },
+     {
+      "id": "ln1",
+      "seg": [
+       "r1a",
+       "r1b"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "group": "row1"
+     },
+     {
+      "id": "k10",
+      "seg": [
+       "u0a",
+       "u0b"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "group": "row1"
+     },
+     {
+      "id": "k15",
+      "seg": [
+       "u5a",
+       "u5b"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "group": "row1"
+     },
+     {
+      "id": "k110",
+      "seg": [
+       "u10a",
+       "u10b"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "group": "row1"
+     },
+     {
+      "id": "x10",
+      "label": "0",
+      "at": "u0a",
+      "dir": "s",
+      "size": "m",
+      "group": "rowN1"
+     },
+     {
+      "id": "x15",
+      "label": "5",
+      "at": "u5a",
+      "dir": "s",
+      "size": "m",
+      "group": "rowN1"
+     },
+     {
+      "id": "x110",
+      "label": "10",
+      "at": "u10a",
+      "dir": "s",
+      "size": "m",
+      "group": "rowN1"
+     },
+     {
+      "id": "d1",
+      "dot": "p8",
+      "ink": "accent",
+      "group": "rowN1"
+     },
+     {
+      "id": "r1",
+      "label": "8\\text{ L}",
+      "at": "p8r",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent",
+      "group": "rowN1"
+     },
+     {
+      "id": "bbeam",
+      "seg": [
+       "bm1",
+       "bm2"
+      ],
+      "ink": "wood",
+      "w": 4,
+      "start": true,
+      "group": "balI"
+     },
+     {
+      "id": "bpost",
+      "poly": [
+       "bpt",
+       "bps1",
+       "bps2"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 1,
+      "start": true,
+      "group": "balI"
+     },
+     {
+      "id": "bbase",
+      "seg": [
+       "bb1",
+       "bb2"
+      ],
+      "ink": "wood",
+      "w": 4,
+      "start": true,
+      "group": "balI"
+     },
+     {
+      "id": "bs1",
+      "seg": [
+       "bm1",
+       "bpl1"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true,
+      "group": "balI"
+     },
+     {
+      "id": "bs2",
+      "seg": [
+       "bm1",
+       "bpl2"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true,
+      "group": "balI"
+     },
+     {
+      "id": "bs3",
+      "seg": [
+       "bm2",
+       "bpr1"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true,
+      "group": "balI"
+     },
+     {
+      "id": "bs4",
+      "seg": [
+       "bm2",
+       "bpr2"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true,
+      "group": "balI"
+     },
+     {
+      "id": "bpl",
+      "seg": [
+       "bpl1",
+       "bpl2"
+      ],
+      "ink": "wood",
+      "w": 4,
+      "start": true,
+      "group": "balI"
+     },
+     {
+      "id": "bpr",
+      "seg": [
+       "bpr1",
+       "bpr2"
+      ],
+      "ink": "wood",
+      "w": 4,
+      "start": true,
+      "group": "balI"
+     },
+     {
+      "id": "bbag",
+      "poly": [
+       "bg1",
+       "bg2",
+       "bg3",
+       "bg4"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true,
+      "group": "balI"
+     },
+     {
+      "id": "bblock",
+      "poly": [
+       "bk1",
+       "bk2",
+       "bk3",
+       "bk4"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true,
+      "group": "balI"
+     },
+     {
+      "id": "ln2",
+      "seg": [
+       "r2a",
+       "r2b"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "group": "row2"
+     },
+     {
+      "id": "k20",
+      "seg": [
+       "v0a",
+       "v0b"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "group": "row2"
+     },
+     {
+      "id": "k21",
+      "seg": [
+       "v1a",
+       "v1b"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "group": "row2"
+     },
+     {
+      "id": "k22",
+      "seg": [
+       "v2a",
+       "v2b"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "group": "row2"
+     },
+     {
+      "id": "k23",
+      "seg": [
+       "v3a",
+       "v3b"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "group": "row2"
+     },
+     {
+      "id": "k24",
+      "seg": [
+       "v4a",
+       "v4b"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "group": "row2"
+     },
+     {
+      "id": "x20",
+      "label": "0",
+      "at": "v0a",
+      "dir": "s",
+      "size": "m",
+      "group": "rowN2"
+     },
+     {
+      "id": "x23",
+      "label": "750",
+      "at": "v3a",
+      "dir": "s",
+      "size": "m",
+      "group": "rowN2"
+     },
+     {
+      "id": "x24",
+      "label": "1000",
+      "at": "v4a",
+      "dir": "s",
+      "size": "m",
+      "group": "rowN2"
+     },
+     {
+      "id": "d2",
+      "dot": "p750",
+      "ink": "accent",
+      "group": "rowN2"
+     },
+     {
+      "id": "r2",
+      "label": "750\\text{ g}",
+      "at": "p750r",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent",
+      "group": "rowN2"
+     },
+     {
+      "id": "hop2",
+      "curve": [
+       "e1",
+       "e2",
+       "e3"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "group": "rowH2"
+     },
+     {
+      "id": "hl2",
+      "label": "+250",
+      "at": "pe2",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "group": "rowH2"
+     },
+     {
+      "id": "tub",
+      "poly": [
+       "tb1",
+       "tb2",
+       "tb3",
+       "tb4"
+      ],
+      "fill": "none",
+      "ink": "ink",
+      "w": 3,
+      "start": true,
+      "group": "thI"
+     },
+     {
+      "id": "tliq",
+      "poly": [
+       "tl1",
+       "tl2",
+       "tl3",
+       "tl4"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1,
+      "start": true,
+      "group": "thI"
+     },
+     {
+      "id": "tbl",
+      "circle": "tbulb",
+      "r": 0.4,
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true,
+      "group": "thI"
+     },
+     {
+      "id": "ln3",
+      "seg": [
+       "r3a",
+       "r3b"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "group": "row3"
+     },
+     {
+      "id": "k30",
+      "seg": [
+       "w0a",
+       "w0b"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "group": "row3"
+     },
+     {
+      "id": "k31",
+      "seg": [
+       "w1a",
+       "w1b"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "group": "row3"
+     },
+     {
+      "id": "k32",
+      "seg": [
+       "w2a",
+       "w2b"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "group": "row3"
+     },
+     {
+      "id": "k33",
+      "seg": [
+       "w3a",
+       "w3b"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "group": "row3"
+     },
+     {
+      "id": "k34",
+      "seg": [
+       "w4a",
+       "w4b"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "group": "row3"
+     },
+     {
+      "id": "x30",
+      "label": "0",
+      "at": "w0a",
+      "dir": "s",
+      "size": "m",
+      "group": "rowN3"
+     },
+     {
+      "id": "x31",
+      "label": "10",
+      "at": "w1a",
+      "dir": "s",
+      "size": "m",
+      "group": "rowN3"
+     },
+     {
+      "id": "x32",
+      "label": "20",
+      "at": "w2a",
+      "dir": "s",
+      "size": "m",
+      "group": "rowN3"
+     },
+     {
+      "id": "x33",
+      "label": "30",
+      "at": "w3a",
+      "dir": "s",
+      "size": "m",
+      "group": "rowN3"
+     },
+     {
+      "id": "x34",
+      "label": "40",
+      "at": "w4a",
+      "dir": "s",
+      "size": "m",
+      "group": "rowN3"
+     },
+     {
+      "id": "d3",
+      "dot": "p24",
+      "ink": "accent",
+      "group": "rowN3"
+     },
+     {
+      "id": "r3",
+      "label": "24^\\circ\\text{C}",
+      "at": "p24r",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent",
+      "group": "rowN3"
+     },
+     {
+      "id": "cap3",
+      "label": "\\text{one mark}=2^\\circ",
+      "at": "cp3",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "group": "rowN3"
+     },
+     {
+      "id": "capJ",
+      "label": "\\text{one mark}=1\\text{ L}",
+      "at": "cp1",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "group": "rowN1"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A jug, a balance, a thermometer. The jug and the thermometer each hide a number line.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Three tools"
+      },
+      {
+       "do": "highlight",
+       "target": "jugI",
+       "at": "jug",
+       "until": "balance"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "bbeam",
+        "bbase",
+        "bs1",
+        "bs2",
+        "bs3",
+        "bs4",
+        "bpl",
+        "bpr",
+        "bbag",
+        "bblock"
+       ],
+       "at": "balance",
+       "until": "thermometer"
+      },
+      {
+       "do": "highlight",
+       "target": "thI",
+       "at": "thermometer",
+       "until": "The"
+      },
+      {
+       "do": "text",
+       "text": "1. What is one mark worth?",
+       "at": "hide"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The jug's scale lies down, zero to ten. One mark is one liter, and the water reads eight.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "draw",
+       "target": "row1",
+       "at": "scale"
+      },
+      {
+       "do": "show",
+       "target": [
+        "x10",
+        "x15",
+        "x110",
+        "capJ"
+       ],
+       "at": "zero"
+      },
+      {
+       "do": "show",
+       "target": [
+        "d1",
+        "r1"
+       ],
+       "at": "eight"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The balance is level, so the bag is seven hundred fifty grams: two hundred fifty more makes a thousand.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "draw",
+       "target": "row2",
+       "at": "balance"
+      },
+      {
+       "do": "show",
+       "target": "rowN2",
+       "at": "bag"
+      },
+      {
+       "do": "draw",
+       "target": "rowH2",
+       "at": "more"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The thermometer: marks worth two degrees, and the liquid reads twenty four.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "draw",
+       "target": "row3",
+       "at": "thermometer"
+      },
+      {
+       "do": "show",
+       "target": [
+        "x30",
+        "x31",
+        "x32",
+        "x33",
+        "x34",
+        "cap3"
+       ],
+       "at": "marks"
+      },
+      {
+       "do": "show",
+       "target": [
+        "d3",
+        "r3"
+       ],
+       "at": "twenty"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "For the jug and the thermometer, find what one mark is worth, then read it like a number line.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "text",
+       "text": "2. Read it like a number line.",
+       "at": "read"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "capJ",
+        "cap3"
+       ],
+       "at": "worth",
+       "until": "then"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "d1",
+        "d2",
+        "d3"
+       ],
+       "at": "read"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A balance has no marks. When it is level, both sides weigh the same.",
+     "pause": 1.0,
+     "do": [
+      {
+       "do": "text",
+       "text": "3. A balance: level means equal.",
+       "at": "level"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "bbeam",
+        "bpl",
+        "bpr"
+       ],
+       "at": "level"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

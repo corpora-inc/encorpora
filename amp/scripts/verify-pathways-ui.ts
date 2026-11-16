@@ -705,7 +705,7 @@ async function verifyLessonRecovery() {
     const opener = lessonRow(page);
     await opener.waitFor();
     await opener.click();
-    const dialog = page.getByRole("dialog", { name: "Explore a problem type" });
+    const dialog = page.getByRole("dialog").last();
     const close = dialog.getByRole("button", { name: /^Close/ });
     await close.waitFor();
     assert.equal(await dialog.locator("[data-layer-back]").count(), 0);
@@ -1242,9 +1242,7 @@ try {
       );
       const opener = lessonRow(page);
       await opener.click();
-      const lesson = page.getByRole("dialog", {
-        name: "Explore a problem type",
-      });
+      const lesson = page.getByRole("dialog").last();
       await lesson.getByText("Example", { exact: true }).waitFor();
       // The cross puts the lesson down, back to the skill (Q-8).
       await lesson.locator("[data-layer-close]").click();

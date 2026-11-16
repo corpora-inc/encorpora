@@ -43,3 +43,11 @@
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
+
+.earlier {
+  display: grid;
+  gap: var(--space-4);
+}
+.otherYear {
+  margin-top: var(--space-3);
+}

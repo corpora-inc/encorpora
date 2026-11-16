@@ -42,8 +42,8 @@ async function staffSession(location: {
   pathname: string;
   searchStr: string;
 }): Promise<AuthSession> {
-  if (nativeRuntime || studentSession())
-    throw redirect({ to: "/", replace: true });
+  if (nativeRuntime) throw redirect({ to: "/", replace: true });
+  if (studentSession()) throw redirect({ to: "/", replace: true });
   const session = await queryClient.ensureQueryData(sessionOptions);
   if (!session) {
     markSchoolSignup("1");

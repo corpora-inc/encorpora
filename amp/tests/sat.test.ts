@@ -7,6 +7,8 @@ import test from "node:test";
 import { spawnSync } from "node:child_process";
 import { templates, generateProblem } from "../src/math/engine";
 import { satCompletionTemplates } from "../src/math/sat-completion-practice";
+import { satPracticeConfiguration } from "../src/learning/assessment-profile";
+import { satTasks } from "../src/curriculum/sat-tasks";
 import { satPracticeEligible } from "../src/curriculum/sat";
 import { buildSatCoverage } from "../src/curriculum/sat-coverage";
 import { planMixedPractice } from "../src/server/mixed-practice";
@@ -27,8 +29,18 @@ test("published SAT demands have runnable families and instruction; every new fa
   for (const t of satCompletionTemplates) assert(included.has(t.id), t.id);
 });
 
-test("SAT focus removes beyond-SAT content while retaining foundations and SAT-adjacent work in shared skills", () => {
+test("SAT focus selects exactly the task-mapped families, including registry extensions", () => {
+  const mapped = new Set(satTasks.flatMap((task) => task.templateIds));
+  assert.deepEqual(
+    templates
+      .filter(satPracticeEligible)
+      .map((t) => t.id)
+      .sort(),
+    [...mapped].sort(),
+  );
   for (const id of [
+    "add-within-20",
+    "multiply-fractions",
     "logarithm-value",
     "exponential-log-solution",
     "log-equation",
@@ -42,8 +54,6 @@ test("SAT focus removes beyond-SAT content while retaining foundations and SAT-a
     assert.equal(satPracticeEligible(template), false, id);
   }
   for (const id of [
-    "add-within-20",
-    "multiply-fractions",
     "same-base-equation",
     "radian-arc-ratio",
     ...satCompletionTemplates.map((t) => t.id),
@@ -55,7 +65,7 @@ test("SAT focus removes beyond-SAT content while retaining foundations and SAT-a
 });
 
 test("focused selection supports weak foundations, mature work, skips, errors, and review without excluded fallback", () => {
-  const supported = templates.filter(satPracticeEligible);
+  const config = satPracticeConfiguration(templates);
   for (const start of [1, 6, 10, 12]) {
     const attempts: Outcome[] = [];
     const forbidden = generateProblem("logarithm-value", `sat-test-${start}`);
@@ -81,7 +91,8 @@ test("focused selection supports weak foundations, mature work, skips, errors, a
     });
     for (let i = 0; i < 30; i++) {
       const choices = planMixedPractice({
-        templates: supported,
+        templates: config.templates,
+        policy: config.policy,
         skills,
         attempts,
         evidence: projectSkillEvidence(attempts),
@@ -97,6 +108,11 @@ test("focused selection supports weak foundations, mature work, skips, errors, a
         ],
       });
       assert.equal(choices.length, 3);
+      assert(
+        choices.every(
+          (c) => c.selection?.policyFingerprint === config.policy.fingerprint,
+        ),
+      );
       assert(choices.every((c) => satPracticeEligible(c.template)));
       if (start === 1)
         assert(choices.every((c) => c.template.gradeBand !== "9–12"));

@@ -51,6 +51,22 @@
   display: grid;
   gap: var(--space-2);
 }
+.heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  width: 100%;
+  gap: var(--space-2);
+}
+.headingRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.heading .title {
+  font-size: clamp(28px, 7.6vw, var(--text-heading-1));
+}
 .title {
   margin: 0;
   color: inherit;
@@ -262,4 +278,30 @@
   gap: var(--space-4);
   font-size: var(--text-label);
   font-weight: 600;
+}
+
+/* Account details share their parent's family page edges and heading. */
+.page[data-family-settings-detail] {
+  --page-top: var(--space-5);
+}
+.page[data-family-settings-detail] .column {
+  max-width: none;
+}
+.settingsReturn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-primary);
+  font-size: var(--text-label);
+  font-weight: 600;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+.settingsReturn:hover {
+  text-decoration: underline;
+}
+@media (max-width: 639px) {
+  .page[data-family-settings-detail] {
+    --page-top: var(--space-4);
+  }
 }

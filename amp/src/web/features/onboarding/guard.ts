@@ -27,9 +27,10 @@ export function isStarterPath(pathname: string) {
 }
 
 /** The steps that remain around the starter: Stripe's enrollment return; the
- * plan a parent approving another family's child pays for first; and the
- * confirmation, consent and learner steps of funded programs, gifts and a
- * paid purchase that no learner holds yet. */
+ * plan a parent approving another family's child pays for first; the learner
+ * steps of funded programs, gifts and a paid purchase that no learner holds
+ * yet; the email confirmation that binds a gift or a funded invoice to the
+ * address it was made out to; and renewed consent after a withdrawal. */
 export const startSteps = [
   "/start/verify-email",
   "/start/plan",
@@ -58,8 +59,14 @@ const learnerSteps: readonly string[] = ["/start/name", "/start/birth-year"];
  * "start" while the account has no place). The starter itself is open to
  * every signed-in adult, to add a place. Stripe's enrollment return always
  * stays. Funded programs, gifts and a paid purchase without a learner keep
- * their confirmation, consent and learner steps; anyone else who opens one of
- * those steps goes where `next` says.
+ * their learner steps; anyone else who opens one of those steps goes where
+ * `next` says.
+ *
+ * No consent step stands before learning. A learner 13 or older is outside
+ * COPPA (16 CFR 312.2), and a child who may be under 13 learns, paid, gifted
+ * or funded, on the restricted internal-operations basis (16 CFR
+ * 312.5(c)(7)). Consent is asked only where a parent collects more (a
+ * family-class approval) or after the parent withdrew it (312.6(a)(2)).
  */
 export function startDestination(
   me: Me,
@@ -69,51 +76,33 @@ export function startDestination(
 ): StartTarget | null {
   if (!me.signedIn) return "/sign-in";
   if (funded) {
-    if (me.account.confirmationRequired)
-      return pathname === "/start/verify-email" ? null : "/start/verify-email";
     const program = fundedPrograms[funded === true ? "arkansas-efa" : funded];
-    const own = !!me.adultPractice?.learner;
-    if (me.consent.status !== "active") {
-      if (pathname === "/start/consent") return null;
-      // Pending invoices use the same restricted parent-entry learning basis
-      // as ordinary first run. Withdrawal still stops setup and access.
-      if (me.consent.status === "none" && me.consent.method === null) {
-        if (learnerSteps.includes(pathname)) return null;
-        if (
-          !me.learners.length ||
-          me.learners.some((learner) => learner.namePending)
-        )
-          return program.path;
-      }
-      // A child's details, or a family of children, need the parent's
-      // consent first. An adult buying for herself doesn't: the program's
-      // page offers her own learner (or starts it) beside any child.
-      const parent =
-        me.learners.length > 0 ||
-        me.consent.status !== "none" ||
-        me.consent.method !== null;
-      return learnerSteps.includes(pathname) || (parent && !own)
-        ? "/start/consent"
-        : program.path;
-    }
-    if (learnerSteps.includes(pathname)) return null;
-    return me.learners.length || own ? program.path : "/start/name";
+    // A funded invoice is made out to an email; its paid access goes only to
+    // an account that has confirmed that address. The invoice page asks for
+    // it in place, when an invoice is to be connected; never up front.
+    if (pathname === "/start/verify-email")
+      return me.account.confirmationRequired ? null : program.path;
+    // The parent withdrew consent: adding a child under 13 resumes
+    // collection they refused, so it needs their renewed consent
+    // (16 CFR 312.6(a)(2)). Nobody else ever sees this step.
+    const withdrawn = me.consent.status === "withdrawn";
+    if (pathname === "/start/consent") return withdrawn ? null : program.path;
+    if (learnerSteps.includes(pathname))
+      return withdrawn ? "/start/consent" : null;
+    return program.path;
   }
   if (isStarterPath(pathname)) return null;
   if (pathname === "/start/purchase") return null;
+  // An invoice or gift page sends an unconfirmed account here to bind it to
+  // its address: the page opens for anyone with an address to confirm.
+  if (pathname === "/start/verify-email" && me.account.confirmationRequired)
+    return null;
   // Approving another family's child: the plan comes before any learner of
   // this account, and paying for it is the consent the approval needs.
   if (
     pathname === "/start/plan" &&
     me.familyApproval &&
     me.consent.status !== "active"
-  )
-    return me.account.confirmationRequired ? "/start/verify-email" : null;
-  if (
-    pathname === "/start/verify-email" &&
-    me.familyApproval &&
-    me.consent.status !== "active" &&
-    me.account.confirmationRequired
   )
     return null;
   return route(me, pathname);
@@ -136,13 +125,12 @@ function route(
     return `/family/approvals/${me.familyApproval.id}`;
   switch (me.next) {
     case "accept-gift":
+      // A gift is found by its recipient's address, so taking it needs that
+      // address confirmed: the binding, not consent.
       if (me.account.confirmationRequired)
         return pathname === "/start/verify-email"
           ? null
           : "/start/verify-email";
-      if (me.consent.status !== "active")
-        return pathname === "/start/consent" ? null : "/access";
-      if (pathname === "/start/consent") return "/start/name";
       return stay(learnerSteps, "/access");
     case "add-learner":
       // Paid before any learner held it: choose or add who it is for.
@@ -215,8 +203,8 @@ export function placesFor(me: SignedInMe): PlaceId[] {
  * work only at schools (`"schools"` to choose between several), then their
  * own practice. A school whose setup this admin hasn't finished never takes
  * `/` from someone with a family side: the switcher is one tap away, and the
- * setup keeps its own URL. Their own practice is remembered only once they
- * have it.
+ * setup keeps its own URL. A parent’s personal practice returns to their
+ * family home; standalone adult learners return to their own record.
  */
 export function homePlace(
   me: SignedInMe,
@@ -225,7 +213,7 @@ export function homePlace(
   const schools = me.staffOf ?? [];
   const home = hasHome(me);
   const own = !!me.adultPractice?.learner;
-  if (remembered === "me" && own) return "me";
+  if (remembered === "me" && own && !home) return "me";
   const last = schools.find((org) => `school:${org.orgId}` === remembered);
   if (last && !(last.setupPending && home)) return `school:${last.orgId}`;
   if (home) return "home";

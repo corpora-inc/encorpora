@@ -48,8 +48,22 @@ export const userSchema = z.object({
   }),
   email: optionalText,
   roles: z.object({
+    // AMP keeps only the cohort year of a student's date of birth; the full
+    // date is dropped here. Already-parsed records (stored snapshots) carry
+    // birth_year, so parsing stays idempotent.
     student: schoolRole
-      .extend({ grade: optionalText, student_number: optionalText })
+      .extend({
+        grade: optionalText,
+        student_number: optionalText,
+        dob: z.unknown().optional(),
+        birth_year: z.number().int().nullable().optional(),
+      })
+      .transform(({ dob, birth_year, ...role }) => {
+        const year = birthYearFromDob(dob) ?? birth_year ?? null;
+        const result: typeof role & { birth_year?: number } = { ...role };
+        if (year !== null) result.birth_year = year;
+        return result;
+      })
       .nullable()
       .optional(),
     teacher: schoolRole
@@ -131,6 +145,32 @@ export const userRoles = (user: User) =>
   Object.entries(user.roles)
     .filter(([, role]) => role != null)
     .map(([role]) => role);
+/** AMP's birth year is a school-year cohort: "born 2016" is in grade 4 in
+ * 2026-27 (`birthYearForGrade`, `completedGrade`), i.e. born between
+ * September 2016 and August 2017. Clever sends dob as M/D/YYYY (sometimes ISO
+ * YYYY-MM-DD); January-August births belong to the previous year's cohort.
+ * Anything malformed, or of another type, yields null. */
+export function birthYearFromDob(value: unknown): number | null {
+  if (typeof value !== "string") return null;
+  const us = value.match(/^(\d{1,2})\/\d{1,2}\/(\d{4})$/),
+    iso = value.match(/^(\d{4})-(\d{2})-\d{2}/);
+  const month = Number(us ? us[1] : iso?.[2]),
+    year = Number(us ? us[2] : iso?.[1]);
+  if (!(month >= 1 && month <= 12)) return null;
+  const cohort = month <= 8 ? year - 1 : year;
+  return cohort >= 1900 && cohort <= 2100 ? cohort : null;
+}
+/** The grade a birth cohort is placed by. Early-childhood grades sit before
+ * Kindergarten (grade 0) and are exact for AMP's cohort birth year even though
+ * AMP stores no grade level for them. */
+const earlyGrades: Record<string, number> = {
+  TransitionalKindergarten: -1,
+  PreKindergarten: -1,
+  Preschool: -2,
+};
+export function cohortGrade(value: string | null | undefined): number | null {
+  return gradeLevel(value) ?? (value ? (earlyGrades[value] ?? null) : null);
+}
 export function gradeLevel(value: string | null | undefined): number | null {
   if (value === "Kindergarten") return 0;
   return value && /^(?:[1-9]|1[0-3])$/.test(value) ? Number(value) : null;

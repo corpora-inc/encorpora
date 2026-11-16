@@ -41,6 +41,16 @@
   font-size: var(--text-body);
   font-weight: 700;
 }
+.header.compact {
+  padding-inline: var(--space-3);
+  gap: var(--space-2);
+}
+.compact .title {
+  font-family: var(--font-display);
+  font-size: var(--text-heading-2);
+  font-weight: 400;
+  line-height: 1.2;
+}
 .body {
   flex: 1;
   min-height: 0;

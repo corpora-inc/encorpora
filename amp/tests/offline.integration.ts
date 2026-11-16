@@ -13,12 +13,23 @@ import {
   verifyPack,
   assertPackAuthorization,
 } from "../src/offline/signing.js";
+import { issueSchema } from "../src/offline/contracts.js";
 import { registerOfflineRoutes } from "../src/offline/routes.js";
-import { OfflineRepository } from "../src/offline/repository.js";
+import { satTasks } from "../src/curriculum/sat-tasks.js";
+import { satPracticeConfiguration } from "../src/learning/assessment-profile.js";
+import {
+  createPracticePolicy,
+  practiceParameters,
+  type PracticePolicy,
+} from "../src/learning/practice-policy.js";
+import {
+  OfflineRepository,
+  supportedOfflineTemplates,
+} from "../src/offline/repository.js";
 import { FamilyRepository } from "../src/family/repository.js";
 import { purgeOfflinePacks } from "../src/offline/retention.js";
 const enabled = { skip: !process.env.AMP_TEST_DATABASE_URL };
-async function fixture() {
+async function fixture(practicePolicy?: PracticePolicy) {
   const url = process.env.AMP_TEST_DATABASE_URL!;
   const schema = `amp_offline_${randomUUID().replaceAll("-", "")}`;
   const admin = new Pool({ connectionString: url, max: 1 });
@@ -35,11 +46,16 @@ async function fixture() {
     "https://offline.example.test/amp",
     new Uint8Array(32).fill(3),
   );
-  const offline = new OfflineRepository(repo.pool, signer);
+  const offline = new OfflineRepository(repo.pool, signer, practicePolicy);
   const authenticate = async (req: { headers: Record<string, unknown> }) =>
     String(req.headers["x-parent"] ?? "parent-a");
-  const app = buildApp({ repository: repo, authenticate });
-  await registerOfflineRoutes(app, { pool: repo.pool, authenticate, signer });
+  const app = buildApp({ repository: repo, authenticate, practicePolicy });
+  await registerOfflineRoutes(app, {
+    pool: repo.pool,
+    authenticate,
+    signer,
+    practicePolicy,
+  });
   const family = new FamilyRepository(repo.pool);
   async function learner(account = "parent-a") {
     await repo.pool.query(
@@ -808,48 +824,109 @@ test(
 );
 
 test(
-  "new offline packs respect SAT focus without rewriting an existing pack",
+  "SAT offline packs use the configured mapped pool at its floor and preserve existing packs and learner level",
   enabled,
   async () => {
-    const f = await fixture();
+    const parameters = practiceParameters();
+    parameters.version = "offline-sat-custom";
+    parameters.target.levelOffset = -0.75;
+    const basePolicy = createPracticePolicy(parameters);
+    const f = await fixture(basePolicy);
     try {
       const learner = await f.learner();
+      const before = await f.repo.transaction(
+        "parent-a",
+        learner,
+        async (tx) => {
+          await tx.setStartingPoint("K–2");
+          return tx.frontier();
+        },
+      );
+      const path = `/api/v1/learners/${learner}/offline-packs`;
+      const mapped = new Set(satTasks.flatMap((task) => task.templateIds));
+      async function issue(requestId = randomUUID()) {
+        const payload = { requestId };
+        const response = await f.app.inject({
+          method: "POST",
+          url: path,
+          payload,
+        });
+        assert.equal(response.statusCode, 200, response.body);
+        const result = response.json<{ packId: string; signedPack: string }>();
+        const pack = await verifyPack(
+          result.signedPack,
+          f.keys.publicKey,
+          "test-only",
+        );
+        const originals = await f.repo.pool.query(
+          "SELECT content FROM amp_offline_instances WHERE pack_id=$1 ORDER BY ordinal",
+          [pack.packId],
+        );
+        return { ...result, pack, originals: originals.rows, payload };
+      }
+      const general = await issue();
+      assert(
+        general.pack.items.some((item) => !mapped.has(item.problem.templateId)),
+      );
+      assert(
+        general.originals.every(
+          (row) =>
+            row.content.selection.practiceFingerprint ===
+            basePolicy.fingerprint,
+        ),
+      );
       await f.repo.transaction("parent-a", learner, async (tx) =>
         tx.setSatMathFocus(true),
       );
-      const path = `/api/v1/learners/${learner}/offline-packs`;
-      const payload = { requestId: randomUUID() };
-      const issued = await f.app.inject({ method: "POST", url: path, payload });
-      assert.equal(issued.statusCode, 200, "Offline pack issue succeeds");
-      const { satPracticeEligible } = await import("../src/curriculum/sat");
-      const { templates } = await import("../src/math/engine");
-      const { signedPack } = issued.json();
-      const verified = await verifyPack(
-        signedPack,
-        f.keys.publicKey,
-        "test-only",
+      const focused = await issue();
+      const config = satPracticeConfiguration(
+        supportedOfflineTemplates(issueSchema.parse(focused.payload)),
+        basePolicy,
       );
-      assert(verified.items.length > 0);
-      for (const entry of verified.items)
-        assert(
-          satPracticeEligible(
-            templates.find((t) => t.id === entry.problem.templateId)!,
-          ),
+      assert(
+        focused.pack.items.length > 0,
+        "A learner below the SAT pool receives its easiest mapped work",
+      );
+      for (const entry of focused.pack.items)
+        assert(mapped.has(entry.problem.templateId), entry.problem.templateId);
+      for (const row of focused.originals) {
+        assert.equal(
+          row.content.selection.practiceFingerprint,
+          config.policy.fingerprint,
         );
-      await f.repo.transaction("parent-a", learner, async (tx) =>
-        tx.setSatMathFocus(false),
-      );
-      const repeated = await f.app.inject({
-        method: "POST",
-        url: path,
-        payload,
+        assert.equal(
+          row.content.selection.trace.policyFingerprint,
+          config.policy.fingerprint,
+        );
+      }
+      await f.repo.transaction("parent-a", learner, async (tx) => {
+        assert.deepEqual(
+          await tx.frontier(),
+          before,
+          "Serving a focused pack does not change the learner's level",
+        );
+        await tx.setSatMathFocus(false);
       });
-      assert.equal(
-        repeated.statusCode,
-        200,
-        "An idempotent reissue returns the saved pack",
+      const repeated = await issue(focused.payload.requestId);
+      assert.equal(repeated.signedPack, focused.signedPack);
+      const original = await issue(general.payload.requestId);
+      assert.equal(original.signedPack, general.signedPack);
+      // Renew access to release the two active-pack slots before another issue.
+      await f.repo.pool.query(
+        "UPDATE amp_grants SET ends_at=ends_at+interval '1 year' WHERE learner_id=$1",
+        [learner],
       );
-      assert.equal(repeated.json().signedPack, signedPack);
+      const off = await issue();
+      assert(
+        off.pack.items.some((item) => !mapped.has(item.problem.templateId)),
+      );
+      assert(
+        off.originals.every(
+          (row) =>
+            row.content.selection.practiceFingerprint ===
+            basePolicy.fingerprint,
+        ),
+      );
     } finally {
       await f.close();
     }

@@ -362,7 +362,7 @@ try {
     .getByRole("button", { name: "Withdraw consent", exact: true })
     .click();
   await page
-    .getByText("Consent is withdrawn. New learning activity is paused.", {
+    .getByText("Consent is withdrawn. New learning activity is paused for children under 13.", {
       exact: true,
     })
     .waitFor();

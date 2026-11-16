@@ -137,10 +137,13 @@ export function shellFrame(
       (
         {
           "": "today",
-          // A child's page is reached from Today, where each child is a row.
-          kids: "today",
-          cards: "people",
-          reports: "reports",
+          kids: "progress",
+          map: "progress",
+          time: "progress",
+          reports: "progress",
+          workbooks: "progress",
+          people: "settings",
+          cards: "settings",
         } as Record<string, string>
       )[first] ?? first;
     return { kind: "family", family: family[1]!.toLowerCase(), active, leaf };
@@ -203,7 +206,7 @@ const TAB_NAMES: Record<string, readonly string[]> = {
   overview: ["Overview"],
   pathways: ["Pathways"],
   inventory: ["Inventory"],
-  security: ["Sign-in"],
+  security: ["Profile"],
   learners: ["Learners"],
   access: ["Billing"],
   privacy: ["Privacy"],

@@ -103,6 +103,10 @@ test("session notifications preserve same-owner entry handoffs and erase them on
     expect(sessionStorage.getItem(purchaseReturnSlot)).not.toBeNull();
     await act(async () => events.update(next));
     expect(onAccountExit).toHaveBeenCalledTimes(exitsBefore + 1);
+    expect(onAccountExit).toHaveBeenLastCalledWith({
+      ...parent,
+      token: "renewed",
+    });
     expect(onAccountExit.mock.results.at(-1)?.value).toEqual(next);
     expect(hasInitialConsentChallenge()).toBe(false);
     expect(readOwnedPurchaseReturn(parent.accountId)).toBeNull();

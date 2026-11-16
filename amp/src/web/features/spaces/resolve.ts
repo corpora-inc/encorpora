@@ -28,6 +28,11 @@ import {
   schoolTabs,
 } from "./tabs";
 import { spaceWords, type SpaceWords } from "./words";
+import { parentHome } from "../family/parent-home";
+import {
+  settingsFamilyOf,
+  usesFamilySettingsFrame,
+} from "../family/settings-family";
 
 /*
  * The resolution truth table (docs/architecture/spaces.md, "Resolution"):
@@ -39,7 +44,7 @@ import { spaceWords, type SpaceWords } from "./words";
  *       family when the org is a family's (holder, second parent or
  *       co-teacher: the relationship is resolved, never assumed)
  *   shared learning route                             → the learner the
- *       route names (`/learners/$id/…`, `/continue/$id`, `?profile=`), else
+ *       route names (`/learners/$id/…`, `?profile=`), else
  *       the one chosen on this device: the adult's own or a profile is me,
  *       a child is that child's family
  *   account, setup, starter and payment steps         → account
@@ -115,7 +120,12 @@ export type SpaceResources = {
 };
 
 export type SpaceAction =
-  "start-class" | "demo-setup" | "practice" | "sign-out" | "profile-back";
+  | "start-class"
+  | "demo-setup"
+  | "practice"
+  | "sign-out"
+  | "profile-back"
+  | "family-back";
 
 export type DestinationIcon =
   | "child"
@@ -465,6 +475,21 @@ function resolveOnce(
       space: "public",
       entry: entryOf(match.pathname, route),
     };
+  if (route === "account" && usesFamilySettingsFrame(match.pathname)) {
+    const family = settingsFamilyOf(resources.families);
+    if (family && resources.family?.familyId === family.familyId)
+      return familyPlaceSpace(
+        { ...base, ...words("family") },
+        {
+          kind: "family",
+          family: family.familyId,
+          leaf: "settings",
+          active: "settings",
+        },
+        me,
+        resources,
+      );
+  }
   if (route === "account")
     return {
       ...base,
@@ -574,7 +599,7 @@ function resolveOnce(
         selected: chosen.id,
         learnerOnly: true,
         child: { id: chosen.id, name: chosen.name },
-        // A child's workbooks are the family's Workbooks, opened on them.
+        // A child's workbooks stay in their family's Progress section.
         workbooks: /^\/learners\/[^/]+\/workbooks(?:\/|$)/.test(match.pathname),
       });
     return meSpace(
@@ -626,7 +651,7 @@ function studentSpace(
       frame?.kind === "school"
         ? "plain"
         : base.bar,
-    actions: frame?.kind === "practice" ? ["sign-out"] : [],
+    actions: ["sign-out"],
     destinations: [
       {
         id: "practice",
@@ -669,6 +694,7 @@ function meSpace(
   /** The route named a learner that isn't this account's. */
   foreign: boolean,
 ): SpaceDescriptor {
+  const familyHome = parentHome(me);
   const own = me?.adultPractice?.learner ?? null;
   const learner =
     !foreign && chosen?.kind === "own"
@@ -730,8 +756,9 @@ function meSpace(
         : [],
     bar: frame?.kind === "account" ? "plain" : base.bar,
     active,
-    actions:
-      frame?.kind === "practice"
+    actions: familyHome
+      ? ["family-back"]
+      : frame?.kind === "practice"
         ? ["profile-back"]
         : // Practice is a tab once there is someone to practice as.
           (tabbed && !own) || (frame?.kind === "plain" && frame.practice)
@@ -740,6 +767,9 @@ function meSpace(
     // One entry per feature (Q-3): Practice at a level opens its hub, where
     // a level and the saved profiles both start.
     destinations: [
+      ...(familyHome
+        ? [destination("family", "Your family", familyHome.slice(1), "class")]
+        : []),
       ...(own
         ? [
             destination("practice", "Practice", "practice", "learn"),
@@ -749,12 +779,21 @@ function meSpace(
         : me?.adultPractice?.eligible
           ? [destination("start", "Practice yourself", "me/start", "learn")]
           : []),
-      destination("profiles", "Practice at a level", "me/profiles", "someone"),
+      ...(!familyHome
+        ? [
+            destination(
+              "profiles",
+              "Practice at a level",
+              "me/profiles",
+              "someone",
+            ),
+          ]
+        : []),
     ],
-    place: "me",
+    place: familyHome ? "home" : "me",
     // No place name (Q-204): the tabs and the screen say whose this is, and
     // a practice profile is named by the bar's own "Practicing as" mark.
-    label: "",
+    label: familyHome ? "Your family" : "",
   };
 }
 
@@ -779,8 +818,7 @@ function familySpace(
     learnerOnly?: boolean;
     /** The child a learning screen names, already found to be theirs. */
     child?: { id: string; name: string };
-    /** A child's workbooks (`/learners/<child>/workbooks…`): the family's
-     * Workbooks tab, in the family's bar, never the child's record tabs. */
+    /** A child's workbooks keep the family's bar, under Progress. */
     workbooks?: boolean;
   },
 ): SpaceDescriptor {
@@ -836,12 +874,14 @@ function familySpace(
               : {}),
           })
         : workbooks && orgId
-          ? familyPlaceTabs(orgId)
+          ? familyPlaceTabs(orgId, {
+              onlyChild: learners.length === 1 ? learners[0]!.id : undefined,
+            })
           : frame?.kind === "progress" && learner && orgId
             ? childTabs(orgId, learner.id)
             : [];
   const active = workbooks
-    ? "workbooks"
+    ? "progress"
     : frame?.kind === "class" && frame.leaf === "report-cards"
       ? "report-cards"
       : base.active;
@@ -1204,9 +1244,6 @@ function familyPlaceSpace(
     onRecord && status === "ready" && !learner ? "unavailable" : status;
   const own = ownClassOf(me, frame.family, data);
   const home = `family/${frame.family}`;
-  const workbooks = children.length
-    ? children.some((child) => child.capabilities.readWorkbooks)
-    : data?.role === "holder";
   return {
     ...base,
     space: "family",
@@ -1239,7 +1276,9 @@ function familyPlaceSpace(
         ? []
         : onRecord && learner
           ? childTabs(frame.family, learner.id)
-          : familyPlaceTabs(frame.family, { workbooks }),
+          : familyPlaceTabs(frame.family, {
+              onlyChild: children.length === 1 ? children[0]!.id : undefined,
+            }),
     bar: "tabs",
     active: onRecord ? record.screen : frame.active,
     actions: [],

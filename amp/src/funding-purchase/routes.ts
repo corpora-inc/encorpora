@@ -68,12 +68,17 @@ export async function registerFundingPurchaseRoutes(
     });
     scope.get("/api/v1/funding/invoice-offers", async (request) => {
       const { program } = z
-        .strictObject({ program: z.string().regex(/^[a-z0-9-]{1,80}$/) })
+        .strictObject({
+          program: z
+            .string()
+            .regex(/^[a-z0-9-]{1,80}$/)
+            .optional(),
+        })
         .parse(request.query);
       return {
         offers: invoices
           .offers()
-          .filter((o) => o.programId === program)
+          .filter((o) => !program || o.programId === program)
           .map(presentOffer),
       };
     });
@@ -252,9 +257,13 @@ export async function registerFundingPurchaseRoutes(
         const invoice = record.offer.documentPolicy === "named-student-invoice";
         if (documentParams.document !== (invoice ? "invoice" : "quote"))
           throw new FundingPurchaseError(404, "request_not_found");
-        // Retain the original invoice for a verified order even after offer expiry.
+        // A retained submitted invoice is a billing record, even while the
+        // program is still processing payment. Downloading it grants no access.
         if (
-          !(invoice && record.orderId) &&
+          !(
+            invoice &&
+            (record.orderId || record.status === "parent-reported-submitted")
+          ) &&
           (!repository.offerAvailable(record) ||
             record.orderId ||
             record.status === "cancelled" ||

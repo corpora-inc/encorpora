@@ -11,6 +11,7 @@ import {
   type FundingOffer,
   type FundingRequest,
 } from "./contracts.js";
+import { fundedInvoiceTerm } from "./term.js";
 
 function displayDate(iso: string): string {
   return (
@@ -22,18 +23,34 @@ function displayDate(iso: string): string {
   );
 }
 
-/** The term an invoice or quote states, for its offer's term. A month may be
- * paid before the current one ends, so it says when such a month starts. */
+export function fundedServicePeriod(request: {
+  createdAt: string;
+  offer: Pick<FundingOffer, "termMonths" | "termPolicy">;
+}): string | null {
+  const term = fundedInvoiceTerm(request);
+  if (!term) return null;
+  const date = (iso: string) =>
+    new Intl.DateTimeFormat("en-US", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      timeZone: "UTC",
+    }).format(new Date(iso));
+  return `${date(term.startsAt)} – ${date(term.endsAt)} (${request.offer.termMonths} calendar ${request.offer.termMonths === 1 ? "month" : "months"})`;
+}
+
+/** The purchased term excludes temporary access while payment is pending.
+ * Both monthly and annual renewals follow the existing paid term. */
 export function fundedTermText(o: Pick<FundingOffer, "termMonths">) {
   return o.termMonths === 1
     ? {
         access:
-          "One learner, 1 month from the day access is activated, or from the end of the learner's current access if that is later. Exact start and end dates must be confirmed with the accepted order.",
+          "One learner, 1 calendar month from license activation, or from the end of existing paid access if later. Temporary access while payment is pending is separate.",
         subtotal: "monthly curriculum access",
       }
     : {
         access:
-          "One learner, 12 months from the day access is activated. Exact start and end dates must be confirmed with the accepted order.",
+          "One learner, 12 calendar months from license activation, or from the end of existing paid access if later. Temporary access while payment is pending is separate.",
         subtotal: "annual curriculum access",
       };
 }
@@ -220,12 +237,12 @@ export async function renderFundingQuotePdf(
   });
   text(
     invoice
-      ? "Unpaid invoice for program review. Access begins after payment is confirmed."
+      ? "Unpaid invoice for payment through your education-funding program. This is not a receipt or confirmation of payment."
       : "For purchase consideration only. This is not an invoice, receipt, funding approval or promise of reimbursement.",
   );
   field(invoice ? "Invoice number" : "Quote reference", request.id);
   field(
-    invoice ? "Issued / submit by" : "Prepared / valid until",
+    invoice ? "Issued / valid until" : "Prepared / valid until",
     `${displayDate(request.createdAt)} / ${displayDate(request.expiresAt)}`,
   );
   field(
@@ -239,7 +256,15 @@ export async function renderFundingQuotePdf(
   );
   field("Product", `${o.productTitle}\nSKU: ${o.sku}\n${o.productDescription}`);
   const term = fundedTermText(o);
-  field("Access term", term.access);
+  const servicePeriod = fundedServicePeriod(request);
+  // NH EFA Provider Handbook p.12 and AZ ESA Parent Handbook 2026–27 p.43
+  // require service dates. The invoice and fulfilled license use the same bounds.
+  if (servicePeriod)
+    field(
+      "Service dates",
+      `${servicePeriod}\nOne learner. The license period begins on the invoice date.`,
+    );
+  else field("License term", term.access);
   const money = (n: number) =>
     new Intl.NumberFormat("en-US", {
       style: "currency",

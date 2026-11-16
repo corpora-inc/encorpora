@@ -252,12 +252,12 @@ test("a month paid early starts when the current term ends, and keeps that start
 test("the invoice states its own term", () => {
   assert.deepEqual(fundedTermText(reviewed), {
     access:
-      "One learner, 12 months from the day access is activated. Exact start and end dates must be confirmed with the accepted order.",
+      "One learner, 12 calendar months from license activation, or from the end of existing paid access if later. Temporary access while payment is pending is separate.",
     subtotal: "annual curriculum access",
   });
   assert.deepEqual(fundedTermText(monthlyRequest.offer), {
     access:
-      "One learner, 1 month from the day access is activated, or from the end of the learner's current access if that is later. Exact start and end dates must be confirmed with the accepted order.",
+      "One learner, 1 calendar month from license activation, or from the end of existing paid access if later. Temporary access while payment is pending is separate.",
     subtotal: "monthly curriculum access",
   });
 });

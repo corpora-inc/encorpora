@@ -12,6 +12,7 @@ import { namingConsentActive } from "../../server/account-access.js";
 import {
   CleverSyncError,
   gradeLevel,
+  cohortGrade,
   userRoles,
   type Kind,
   type RosterRecord,
@@ -289,7 +290,10 @@ export async function applySnapshot(
       email: optional(user.email, 320),
       grade_level: grade,
       needsLearner: !!user.roles.student || !!previous?.needsLearner,
-      birthGrade: grade ?? previous?.birthGrade ?? null,
+      birthGrade:
+        cohortGrade(user.roles.student?.grade) ?? previous?.birthGrade ?? null,
+      sourceBirthYear:
+        user.roles.student?.birth_year ?? previous?.sourceBirthYear ?? null,
       identifier:
         user.roles.student?.student_number ??
         user.roles.student?.sis_id ??
@@ -405,7 +409,10 @@ export async function applySnapshot(
       scope_id: scope,
       person_id: person,
       role,
+      // A hand-granted admin role is never adopted: a school founder keeps
+      // the school they created when Clever later demotes or unshares them.
       adopted:
+        !(kind === "org_role" && role === "admin") &&
         adoptedPeople.has(person) &&
         (kind === "enrollment"
           ? adoptedClasses.has(scope)
@@ -416,10 +423,11 @@ export async function applySnapshot(
   const schoolRoles = (user: User, role: "student" | "teacher" | "staff") => {
     const profile = user.roles[role];
     if (!profile) return;
-    if (
-      role === "staff" &&
-      !user.roles.staff?.roles?.includes("SchoolTechLead")
-    )
+    // Clever v3 "staff" are school administrators (principals, counselors,
+    // tech leads). PortalOnly marks staff a district grants Clever Portal
+    // access only, so they receive no school authority in AMP.
+    // https://dev.clever.com/docs/api-v3-upgrade-guide
+    if (role === "staff" && user.roles.staff?.roles?.includes("PortalOnly"))
       return;
     for (const sourceId of new Set([
       ...(profile.schools ?? []),
@@ -431,7 +439,7 @@ export async function applySnapshot(
           "org_role",
           orgId,
           local("user", user.id)!,
-          role === "staff" ? "viewer" : role,
+          role === "staff" ? "admin" : role,
         );
     }
   };
@@ -570,7 +578,15 @@ type PersonWrite = {
   identifier: string | null;
   needsLearner: boolean;
   birthGrade: number | null;
+  /** From Clever's dob; preferred over the grade estimate. */
+  sourceBirthYear: number | null;
 };
+/** The school's grade gives AMP's cohort birth year exactly. Clever's date of
+ * birth fills in only when there is no placeable grade (Ungraded, Other). */
+const birthYearOf = (p: PersonWrite, now?: Date) =>
+  p.birthGrade === null
+    ? p.sourceBirthYear
+    : birthYearForGrade(p.birthGrade, now);
 
 /** The same privacy and propagation rules as writeStudent, applied in bounded
  * sets. Every account lock precedes every person/learner lock. Pending names
@@ -637,8 +653,8 @@ async function writeRosterPeople(
       return (
         old?.learner_id &&
         old.label_number === null &&
-        p.birthGrade !== null &&
-        old.birth_year !== birthYearForGrade(p.birthGrade)
+        birthYearOf(p) !== null &&
+        old.birth_year !== birthYearOf(p)
       );
     })
     .map((p) => before.get(p.id)!.learner_id!);
@@ -673,8 +689,8 @@ async function writeRosterPeople(
         return true;
       if (
         old.label_number === null &&
-        p.birthGrade !== null &&
-        old.birth_year !== birthYearForGrade(p.birthGrade) &&
+        birthYearOf(p) !== null &&
+        old.birth_year !== birthYearOf(p) &&
         !experienced.has(old.learner_id)
       )
         return true;
@@ -781,10 +797,8 @@ async function writeRosterPeople(
       learner_id: existing?.learner_id ?? (freshLearner ? randomUUID() : null),
       freshLearner,
       name: learnerNameFrom({ ...p, display_name: existing?.display_name }),
-      birth_year:
-        p.birthGrade === null ? null : birthYearForGrade(p.birthGrade),
-      initial_birth_year:
-        p.birthGrade === null ? null : birthYearForGrade(p.birthGrade, now),
+      birth_year: birthYearOf(p),
+      initial_birth_year: birthYearOf(p, now),
     };
   });
   await batches(

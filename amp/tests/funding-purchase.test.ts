@@ -19,7 +19,8 @@ import {
   programMonthlyPriceMinor,
 } from "../src/funding-purchase/program-prices.js";
 import { fundingPrograms } from "../src/funding-purchase/programs.js";
-import { mkdtemp, writeFile } from "node:fs/promises";
+import { mkdtemp, writeFile, rm } from "node:fs/promises";
+import { execFileSync } from "node:child_process";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 const request: FundingRequest = {
@@ -210,6 +211,108 @@ test("standard state invoices fit one Letter page, including a long student name
       1,
       programName,
     );
+  }
+});
+
+test("invoice PDFs and HTML distinguish purchased terms, payment status and document validity", async () => {
+  const { renderFundingQuotePdf } =
+    await import("../src/funding-purchase/quote-pdf.js");
+  const directory = await mkdtemp(join(tmpdir(), "amp-invoice-terms-"));
+  try {
+    for (const termMonths of [1, 12] as const) {
+      const invoice: FundingRequest = {
+        ...request,
+        studentBillingName: "Jordan Example",
+        offer: {
+          ...offer,
+          documentPolicy: "named-student-invoice",
+          termMonths,
+          termPolicy:
+            termMonths === 1
+              ? "one-month-from-verified-provisioning"
+              : "twelve-months-from-verified-provisioning",
+          productTitle: "AMP Mathematics",
+          productDescription: "Adaptive mathematics practice for one learner.",
+        },
+      };
+      const path = join(directory, `invoice-${termMonths}.pdf`);
+      await writeFile(path, await renderFundingQuotePdf(invoice));
+      const pdf = execFileSync("pdftotext", [path, "-"], { encoding: "utf8" });
+      const html = renderFundingQuote(invoice);
+      for (const document of [pdf, html]) {
+        const words = document.replace(/\s+/g, " ");
+        assert.match(words, /Jordan Example/);
+        assert.match(words, /not a receipt or confirmation of payment/);
+        assert.ok(words.includes(`${termMonths} calendar month`));
+        assert.match(words, /existing paid access/);
+        assert.match(
+          words,
+          /Temporary access while payment is pending is separate/,
+        );
+        assert.doesNotMatch(
+          words,
+          /Access begins after payment|submit by|dates must be confirmed/i,
+        );
+        if (termMonths === 1)
+          assert.doesNotMatch(
+            words,
+            /annual curriculum|12 months|12 calendar months/i,
+          );
+      }
+      assert.match(pdf, /Issued \/ valid until/);
+      assert.match(pdf, /\$123\.00/);
+    }
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test("fixed-term invoices print the same dated month or year that is purchased", async () => {
+  const { renderFundingQuotePdf } =
+    await import("../src/funding-purchase/quote-pdf.js");
+  const directory = await mkdtemp(join(tmpdir(), "amp-invoice-dates-"));
+  try {
+    for (const termMonths of [1, 12] as const) {
+      const invoice: FundingRequest = {
+        ...request,
+        createdAt: "2024-01-31T16:30:00.000Z",
+        expiresAt: "2024-02-29T16:30:00.000Z",
+        studentBillingName: "Jordan Example",
+        offer: {
+          ...offer,
+          documentPolicy: "named-student-invoice",
+          route: "direct-pay",
+          purchaseReview: "individual-approval-required",
+          activationPolicy: "after-settlement",
+          termMonths,
+          termPolicy:
+            termMonths === 1
+              ? "one-month-from-invoice"
+              : "twelve-months-from-invoice",
+        },
+      };
+      const path = join(directory, `dated-${termMonths}.pdf`);
+      await writeFile(path, await renderFundingQuotePdf(invoice));
+      const pdf = execFileSync("pdftotext", [path, "-"], { encoding: "utf8" });
+      for (const document of [pdf, renderFundingQuote(invoice)]) {
+        const words = document.replace(/\s+/g, " ");
+        assert.match(words, /Service dates/);
+        assert.ok(
+          words.includes(
+            termMonths === 1
+              ? "01/31/2024 – 02/29/2024"
+              : "01/31/2024 – 01/31/2025",
+          ),
+        );
+        assert.match(words, /license period begins on the invoice date/);
+        assert.doesNotMatch(
+          words,
+          /from license activation|dates must be confirmed/,
+        );
+      }
+    }
+  } finally {
+    await rm(directory, { recursive: true, force: true });
   }
 });
 

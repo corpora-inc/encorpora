@@ -16,7 +16,10 @@ export async function purgeExpiredFundingRequests(
     [at.toISOString(), RETENTION.financialRecordYears],
   );
   const result = await pool.query(
-    "DELETE FROM amp_funding_requests WHERE order_id IS NULL AND expires_at<=$1 AND NOT EXISTS (SELECT 1 FROM amp_funding_invoice_intents i WHERE i.claimed_request_id=amp_funding_requests.id AND i.received_payment_at IS NOT NULL) AND NOT EXISTS (SELECT 1 FROM amp_classwallet_payments p WHERE p.invoice_id=amp_funding_requests.id)",
+    `DELETE FROM amp_funding_requests WHERE order_id IS NULL AND expires_at<=$1
+      AND NOT (status='parent-reported-submitted' AND created_at+interval '60 days'>$1)
+      AND NOT EXISTS (SELECT 1 FROM amp_funding_invoice_intents i WHERE i.claimed_request_id=amp_funding_requests.id AND i.received_payment_at IS NOT NULL)
+      AND NOT EXISTS (SELECT 1 FROM amp_classwallet_payments p WHERE p.invoice_id=amp_funding_requests.id)`,
     [at.toISOString()],
   );
   return (

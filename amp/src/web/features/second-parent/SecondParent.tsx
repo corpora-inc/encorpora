@@ -52,13 +52,15 @@ export function SecondParent({
         </div>
       ) : query.isError ? (
         <p className={styles.access} role="alert">
-          The second parent didn’t load.{" "}
+          Invitations are temporarily unavailable.{" "}
           <button
             type="button"
             className={school.inlineAction}
+            aria-busy={query.isFetching}
+            disabled={query.isFetching}
             onClick={() => void query.refetch()}
           >
-            Try again
+            Reload invitations
           </button>
         </p>
       ) : current ? (

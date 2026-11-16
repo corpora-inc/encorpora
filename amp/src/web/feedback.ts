@@ -8,9 +8,9 @@ export function useLoggedError(message: string) {
 export function requestMessage(code: string, action: string): string {
   const messages: Record<string, string> = {
     consent_required:
-      "Parent consent is required. Continue setup to review the learning notice.",
+      "Learning is paused for this child. Open Family → Privacy to resume it.",
     parental_consent_required:
-      "Parent consent is required. Continue setup to review the learning notice.",
+      "Learning is paused for this child. Open Family → Privacy to resume it.",
     license_required:
       "This learner needs access. Choose an AMP plan to continue.",
     sign_in_required: "Your session ended. Sign in again to continue.",

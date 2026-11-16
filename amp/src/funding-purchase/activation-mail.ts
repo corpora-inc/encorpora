@@ -9,7 +9,7 @@ import type {
 } from "../parent-consent/contracts.js";
 import { currentPolicy } from "../parent-consent/policy.js";
 import { digest } from "../parent-consent/crypto.js";
-import { purchaseConsentSatisfied } from "../server/account-access.js";
+import { fundedLearningAllowed } from "./learning-permission.js";
 import { FundingPurchaseRepository } from "./repository.js";
 
 /** Preserve the reviewed account sender, including a display name. */
@@ -84,7 +84,7 @@ export async function deliverFundedActivationMail(
         (scheduled || Date.parse(grant.startsAt) <= Date.now()) &&
         Date.parse(grant.endsAt) > Date.now() &&
         !row.deleted_at &&
-        (await purchaseConsentSatisfied(
+        (await fundedLearningAllowed(
           client,
           row.account_id,
           row.learner_id,
@@ -170,7 +170,7 @@ export async function deliverFundedActivationMail(
         !check.deleted_at &&
         check.grant_state?.status === "active" &&
         Date.parse(check.grant_state.endsAt) > Date.now() &&
-        (await purchaseConsentSatisfied(
+        (await fundedLearningAllowed(
           client,
           candidate.account_id,
           claimed.row.learner_id,

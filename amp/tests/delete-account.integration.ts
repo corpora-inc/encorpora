@@ -298,10 +298,8 @@ test(
     ).rows[0]!;
 
     // The second parent: her own account and practice, teaching the family.
-    const second = await signUp(
-      `rowan-${randomUUID().slice(0, 8)}@example.test`,
-      "Rowan Fixture",
-    );
+    const secondEmail = `rowan-${randomUUID().slice(0, 8)}@example.test`;
+    const second = await signUp(secondEmail, "Rowan Fixture");
     const secondPerson = await staff(family.org_id, second.account, "teacher");
     await db.query(
       "UPDATE amp_families SET second_parent=$2 WHERE account_id=$1",
@@ -313,6 +311,27 @@ test(
       [secondLearner, second.account],
     );
     await practice(secondLearner);
+
+    // Unpaid invoice reminders follow their invoice's deletion, including an
+    // invoice prepared before sign-up and matched by the verified email.
+    const invoiceWithReminders = async (parentEmail: string, paid = false) => {
+      const invoice = randomUUID();
+      await db.query(
+        `INSERT INTO amp_funding_invoice_intents
+         (id,idempotency_key,parent_email,student_billing_name,offer_snapshot,created_at,expires_at,received_payment_at)
+         VALUES($1,$2,$3,'Fixture learner','{}',now(),now()+interval '14 days',CASE WHEN $4 THEN now() END)`,
+        [invoice, randomUUID(), parentEmail, paid],
+      );
+      await db.query(
+        `INSERT INTO amp_funding_invoice_reminders(invoice_id,kind,deadline_at,available_at)
+         VALUES($1,'submission',now()+interval '14 days',now()+interval '11 days'),
+               ($1,'processing',now()+interval '60 days',now()+interval '57 days')`,
+        [invoice],
+      );
+      return invoice;
+    };
+    const holderInvoice = await invoiceWithReminders(email);
+    const secondInvoice = await invoiceWithReminders(secondEmail);
 
     // A school only the holder runs, with a class and a student.
     const ownSchool = await org("Fixture Owned Academy");
@@ -488,6 +507,13 @@ test(
     };
 
     await t.test("deleting removes everything the account owns", async () => {
+      assert.equal(
+        await count(
+          "SELECT count(*) n FROM amp_funding_invoice_reminders WHERE invoice_id=$1",
+          [holderInvoice],
+        ),
+        2,
+      );
       await ok(
         api("POST", "/account/delete", holder.token, {
           confirmation: "delete-my-account",
@@ -514,6 +540,29 @@ test(
         ids.pupil,
       ]);
       assert.deepEqual(found, { amp_account_deletions: 1 });
+      assert.equal(
+        await count(
+          "SELECT count(*) n FROM amp_funding_invoice_intents WHERE id=$1",
+          [holderInvoice],
+        ),
+        0,
+      );
+      assert.equal(
+        await count(
+          "SELECT count(*) n FROM amp_funding_invoice_reminders WHERE invoice_id=$1",
+          [holderInvoice],
+        ),
+        0,
+        "both reminder kinds cascade with the deleted unpaid invoice",
+      );
+      assert.equal(
+        await count(
+          "SELECT count(*) n FROM amp_funding_invoice_reminders WHERE invoice_id=$1",
+          [secondInvoice],
+        ),
+        2,
+        "the other parent's invoice reminders are untouched",
+      );
       // The journal: who (opaque), when and counts; no name or address.
       const journal = (await db.query("SELECT * FROM amp_account_deletions"))
         .rows[0];
@@ -692,10 +741,9 @@ test(
     await t.test(
       "a renewing plan is cancelled first; payment records stay without a name",
       async () => {
-        const payer = await signUp(
-          `ivy-${randomUUID().slice(0, 8)}@example.test`,
-          "Ivy Fixture",
-        );
+        const payerEmail = `ivy-${randomUUID().slice(0, 8)}@example.test`;
+        const payer = await signUp(payerEmail, "Ivy Fixture");
+        const paidInvoice = await invoiceWithReminders(payerEmail, true);
         const learner = randomUUID();
         await db.query(
           "INSERT INTO amp_learners(id,account_id,name,adult,timezone) VALUES($1,$2,'Own practice',true,'UTC')",
@@ -751,6 +799,22 @@ test(
         );
         // What stays is the payment ledger, under the account's opaque id,
         // and a nameless "Deleted learner" it refers to.
+        assert.equal(
+          await count(
+            "SELECT count(*) n FROM amp_funding_invoice_intents WHERE id=$1",
+            [paidInvoice],
+          ),
+          1,
+          "a paid invoice remains a financial record",
+        );
+        assert.equal(
+          await count(
+            "SELECT count(*) n FROM amp_funding_invoice_reminders WHERE invoice_id=$1",
+            [paidInvoice],
+          ),
+          2,
+          "delivery evidence follows the retained paid invoice",
+        );
         const found = await references([payer.account, learner]);
         for (const table of Object.keys(found))
           assert.ok(

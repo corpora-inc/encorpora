@@ -29,6 +29,7 @@ import { LayerBackProvider } from "../ui/LayerControls";
 import { SkillLayer } from "./SkillLayer";
 import { AreaLayer, areaSourceOf, OVERALL, type AreaSource } from "./AreaLayer";
 import { strandNames } from "../BirthYearPrompt";
+import { CurriculumPractice } from "../features/practice/CurriculumPractice";
 
 /**
  * The layers open over a page (`?open=`, nav/entities.ts), drawn in order:
@@ -145,6 +146,7 @@ function Layer({
   // The layer under this one: where X returns (the lesson's recovery names
   // it; no header draws it twice).
   const back = useLayerTitle(below.at(-1));
+  const title = useLayerTitle(entity);
   // A replayed answer fills the screen: a sheet under it waits closed
   // (Back reopens it), so only one thing ever holds focus.
   const underAnswer = above.some(
@@ -176,7 +178,9 @@ function Layer({
           onClose={close}
           back={back}
         >
-          {skillActions?.(entity.id)}
+          {skillActions?.(entity.id) ?? (
+            <CurriculumPractice filter={{ skill: entity.id }} />
+          )}
         </SkillLayer>
       );
     }
@@ -195,7 +199,8 @@ function Layer({
               onOpenChange={(open) => {
                 if (!open) close();
               }}
-              title="Explore a problem type"
+              title={title ?? "Lesson"}
+              compactHeader
               fullOnPhone
               tall
               wide
@@ -213,8 +218,10 @@ function Layer({
               backLabel={backLabel}
               back={back}
               aboveLayers
-              actions={
-                lessonActions && ((skill) => lessonActions(entity.id, skill))
+              actions={(skill) =>
+                lessonActions?.(entity.id, skill) ?? (
+                  <CurriculumPractice filter={{ skill, template: entity.id }} />
+                )
               }
             />
           </Suspense>

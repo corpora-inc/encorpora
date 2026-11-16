@@ -13,6 +13,7 @@ export function Dialog({
   fullOnPhone = false,
   tall = false,
   wide = false,
+  compactHeader = false,
   initialFocus,
 }: {
   open: boolean;
@@ -30,16 +31,17 @@ export function Dialog({
   /** A reading sheet with figures (a lesson): wider on a desktop, its prose
    * still at a reading measure. */
   wide?: boolean;
-  /** The layer under this one (nav/LayerHost). The cross puts this sheet
-   * down to it; it is not drawn twice (Q-8). */
+  /** The layer under this one. Close returns to that layer. */
   back?: string;
+  /** One compact title row for a reading sheet. */
+  compactHeader?: boolean;
   /** A selector inside the sheet to focus, and bring into view, on open (a
    * picker's chosen tile) in place of the first control. */
   initialFocus?: string;
 }) {
   const opener = useRef<HTMLElement | null>(null);
-  const content = useRef<HTMLDivElement | null>(null);
   const escape = useLayerEscape();
+  const content = useRef<HTMLDivElement | null>(null);
   return (
     <RadixDialog.Root open={open} onOpenChange={onOpenChange}>
       <RadixDialog.Portal>
@@ -72,7 +74,9 @@ export function Dialog({
               target.focus({ preventScroll: true });
           }}
         >
-          <header className={styles.header}>
+          <header
+            className={`${styles.header} ${compactHeader ? styles.compact : ""}`}
+          >
             <RadixDialog.Title className={styles.title}>
               {title}
             </RadixDialog.Title>

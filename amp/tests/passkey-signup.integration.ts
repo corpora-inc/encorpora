@@ -12,11 +12,10 @@ import {
 } from "../src/server/accounts.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { meSchema } from "../src/account/contracts.js";
-import { parentAddressConfirmed } from "../src/server/account-access.js";
 import { softwareAuthenticator } from "./webauthn-fixture.js";
 
 test(
-  "passkey sign-up: atomic account + credential + session, no account without a credential, no takeover, confirmation unlocks consent",
+  "passkey sign-up: atomic account + credential + session, no account without a credential, no takeover, the link confirms the address",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
   async (t) => {
     const url = process.env.AMP_TEST_DATABASE_URL!;
@@ -141,16 +140,12 @@ test(
               /http:\/\/localhost:4310\/api\/auth\/verify-email\?\S+/,
             )?.[0];
           assert.ok(link, "a confirmation link was sent");
-          // Consent and purchase stay closed until the address is confirmed.
-          const client = await repository.pool.connect();
-          try {
-            assert.equal(
-              await parentAddressConfirmed(client, `amp|${parent!.id}`),
-              false,
-            );
-          } finally {
-            client.release();
-          }
+          // Unconfirmed until the link is opened: only a gift or funded
+          // invoice addressed to this email waits for it.
+          const pending = await me(session);
+          assert.ok(pending.signedIn);
+          assert.equal(pending.account.emailVerified, false);
+          assert.equal(pending.account.confirmationRequired, true);
           // Replaying the finished ceremony creates nothing.
           const replay = await post(
             "/passkey-signup/verify",
@@ -159,7 +154,7 @@ test(
           );
           assert.equal(replay.statusCode, 400);
           assert.equal(replay.json().code, "PASSKEY_SIGNUP_EXPIRED");
-          // Opening the link confirms the address; consent can begin.
+          // Opening the link confirms the address.
           const confirm = await app!.inject({
             method: "GET",
             url: new URL(link!).pathname + new URL(link!).search,
