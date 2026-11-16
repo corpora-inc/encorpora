@@ -1,6 +1,7 @@
 import { forgetEveryLink } from "../features/links/forget";
 import { settleSwitches } from "../lib/link-carry";
 import { setAnalyticsSession } from "../lib/analytics";
+import { noteSignedIn } from "../lib/session-hint";
 import { NativeGate } from "../NativeGate";
 import { nativeRuntime } from "../native-runtime";
 import { Toast } from "../ui/Toast";
@@ -84,6 +85,7 @@ function SessionProviders({
       (session) => {
         const current = ++generation;
         setAnalyticsSession(session);
+        noteSignedIn(!!session);
         setError("");
         const previous = queryClient.getQueryData(sessionOptions.queryKey);
         if (

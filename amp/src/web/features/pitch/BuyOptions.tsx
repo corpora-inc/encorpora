@@ -1,14 +1,12 @@
-import { useToRoot } from "../../nav/root";
 import { useQuery } from "@tanstack/react-query";
-import { Link, useNavigate } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import type { AnnualOffer } from "../../../billing/stripe/purchase-contracts";
 import { track } from "../../lib/analytics";
-import { queryClient } from "../../lib/query";
+import { queryClient } from "../../lib/query-client";
 import type { FundedProgram } from "../../lib/funded-entry";
 import { rememberPlanChoice } from "../../lib/pending-trial";
 import { Button, buttonClass, type ButtonVariant } from "../../ui/Button";
-import { PlanChoice } from "../billing";
+import { PlanChoice } from "../billing/PlanChoice";
 import { formatUsd } from "../billing/payment-url";
 import {
   annualInvoiceOffer,
@@ -16,7 +14,8 @@ import {
   offerRefunds,
   type InvoiceOffer,
 } from "../funding/invoice-offers";
-import { pricesOptions } from "../billing/api";
+import { pricesOptions } from "../billing/prices";
+import { PitchLink, usePitchNav } from "./nav";
 import { pitchProgram, pitchTarget } from "./targets";
 import styles from "./Pitch.module.css";
 
@@ -129,8 +128,7 @@ export function BuyOptions({
   interval?: "year" | "month";
   onInterval?: (interval: "year" | "month") => void;
 }) {
-  const navigate = useNavigate();
-  const toRoot = useToRoot();
+  const nav = usePitchNav();
   const [own, setOwn] = useState<"year" | "month">("year");
   const interval = chosen ?? own;
   const choose = onInterval ?? setOwn;
@@ -149,23 +147,19 @@ export function BuyOptions({
     // The plan waits for the learner it is for: after sign-up and "What
     // brings you to AMP?", it opens for them with this plan chosen.
     rememberPlanChoice(next);
-    if (signedIn) {
-      // Signed in: the root opens their place, where the plan waits.
-      toRoot();
-      return;
-    }
-    void navigate(pitchTarget("card", search));
+    // Signed in: the root opens their place, where the plan waits.
+    nav.go(signedIn ? { to: "/" } : pitchTarget("card", search));
   }
   if (program && fundedOffer) {
     const link = (
-      <Link
+      <PitchLink
         className={buttonClass(buttonVariant, className)}
-        {...pitchTarget("funded", search)}
+        place={pitchTarget("funded", search)}
         onClick={() => track("buy_click", { path: "funded", from })}
         aria-label={ariaLabel}
       >
         {label ?? `Buy with ${program.name} funds`}
-      </Link>
+      </PitchLink>
     );
     if (variant === "button") return link;
     return (

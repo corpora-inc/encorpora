@@ -195,6 +195,26 @@ async function serve(page: Page, api: Api) {
             : null,
         },
       });
+    // The two answers the light home entry decides `/` with
+    // (src/web/home-entry.tsx), matching the session above.
+    if (path === "/api/v1/auth-config")
+      return route.fulfill({
+        json: {
+          mode: "accounts",
+          passwords: true,
+          parentFollowup: true,
+          providers: [],
+        },
+      });
+    if (path === "/api/auth/get-session")
+      return route.fulfill({
+        json: api.signedIn
+          ? {
+              session: { token: "synthetic" },
+              user: { id: "pitch-parent" },
+            }
+          : null,
+      });
     if (path === "/api/v1/billing/prices")
       return api.pricesFail
         ? route.fulfill({ status: 503, json: { error: "unavailable" } })
