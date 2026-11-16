@@ -1,0 +1,5712 @@
+{
+ "id": "delivery-then-use--sd",
+ "title": "Two-step word problems",
+ "teaches": [
+  "purchase-change",
+  "delivery-operations-slots",
+  "fl-two-step-story-equation"
+ ],
+ "skill": "multi-operation-stories",
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "points": {
+     "unit1A": [
+      0,
+      1
+     ],
+     "unit1B": [
+      0.5,
+      1
+     ],
+     "unit1C": [
+      0.5,
+      -0.6000000000000001
+     ],
+     "unit1D": [
+      0,
+      -0.6000000000000001
+     ],
+     "pencil1A": [
+      0.25,
+      0.7
+     ],
+     "pencil1B": [
+      0.25,
+      -0.22
+     ],
+     "pencil1C": [
+      0.25,
+      -0.4
+     ],
+     "unit2A": [
+      0.5,
+      1
+     ],
+     "unit2B": [
+      1,
+      1
+     ],
+     "unit2C": [
+      1,
+      -0.6000000000000001
+     ],
+     "unit2D": [
+      0.5,
+      -0.6000000000000001
+     ],
+     "pencil2A": [
+      0.75,
+      0.7
+     ],
+     "pencil2B": [
+      0.75,
+      -0.22
+     ],
+     "pencil2C": [
+      0.75,
+      -0.4
+     ],
+     "unit3A": [
+      1,
+      1
+     ],
+     "unit3B": [
+      1.5,
+      1
+     ],
+     "unit3C": [
+      1.5,
+      -0.6000000000000001
+     ],
+     "unit3D": [
+      1,
+      -0.6000000000000001
+     ],
+     "pencil3A": [
+      1.25,
+      0.7
+     ],
+     "pencil3B": [
+      1.25,
+      -0.22
+     ],
+     "pencil3C": [
+      1.25,
+      -0.4
+     ],
+     "unit4A": [
+      1.5,
+      1
+     ],
+     "unit4B": [
+      2,
+      1
+     ],
+     "unit4C": [
+      2,
+      -0.6000000000000001
+     ],
+     "unit4D": [
+      1.5,
+      -0.6000000000000001
+     ],
+     "pencil4A": [
+      1.75,
+      0.7
+     ],
+     "pencil4B": [
+      1.75,
+      -0.22
+     ],
+     "pencil4C": [
+      1.75,
+      -0.4
+     ],
+     "unit5A": [
+      2,
+      1
+     ],
+     "unit5B": [
+      2.5,
+      1
+     ],
+     "unit5C": [
+      2.5,
+      -0.6000000000000001
+     ],
+     "unit5D": [
+      2,
+      -0.6000000000000001
+     ],
+     "pencil5A": [
+      2.25,
+      0.7
+     ],
+     "pencil5B": [
+      2.25,
+      -0.22
+     ],
+     "pencil5C": [
+      2.25,
+      -0.4
+     ],
+     "unit6A": [
+      2.5,
+      1
+     ],
+     "unit6B": [
+      3,
+      1
+     ],
+     "unit6C": [
+      3,
+      -0.6000000000000001
+     ],
+     "unit6D": [
+      2.5,
+      -0.6000000000000001
+     ],
+     "pencil6A": [
+      2.75,
+      0.7
+     ],
+     "pencil6B": [
+      2.75,
+      -0.22
+     ],
+     "pencil6C": [
+      2.75,
+      -0.4
+     ],
+     "six0P": [
+      1.5,
+      1.8
+     ],
+     "unit7A": [
+      3.3,
+      1
+     ],
+     "unit7B": [
+      3.8,
+      1
+     ],
+     "unit7C": [
+      3.8,
+      -0.6000000000000001
+     ],
+     "unit7D": [
+      3.3,
+      -0.6000000000000001
+     ],
+     "pencil7A": [
+      3.55,
+      0.7
+     ],
+     "pencil7B": [
+      3.55,
+      -0.22
+     ],
+     "pencil7C": [
+      3.55,
+      -0.4
+     ],
+     "unit8A": [
+      3.8,
+      1
+     ],
+     "unit8B": [
+      4.3,
+      1
+     ],
+     "unit8C": [
+      4.3,
+      -0.6000000000000001
+     ],
+     "unit8D": [
+      3.8,
+      -0.6000000000000001
+     ],
+     "pencil8A": [
+      4.05,
+      0.7
+     ],
+     "pencil8B": [
+      4.05,
+      -0.22
+     ],
+     "pencil8C": [
+      4.05,
+      -0.4
+     ],
+     "unit9A": [
+      4.3,
+      1
+     ],
+     "unit9B": [
+      4.8,
+      1
+     ],
+     "unit9C": [
+      4.8,
+      -0.6000000000000001
+     ],
+     "unit9D": [
+      4.3,
+      -0.6000000000000001
+     ],
+     "pencil9A": [
+      4.55,
+      0.7
+     ],
+     "pencil9B": [
+      4.55,
+      -0.22
+     ],
+     "pencil9C": [
+      4.55,
+      -0.4
+     ],
+     "unit10A": [
+      4.8,
+      1
+     ],
+     "unit10B": [
+      5.3,
+      1
+     ],
+     "unit10C": [
+      5.3,
+      -0.6000000000000001
+     ],
+     "unit10D": [
+      4.8,
+      -0.6000000000000001
+     ],
+     "pencil10A": [
+      5.05,
+      0.7
+     ],
+     "pencil10B": [
+      5.05,
+      -0.22
+     ],
+     "pencil10C": [
+      5.05,
+      -0.4
+     ],
+     "unit11A": [
+      5.3,
+      1
+     ],
+     "unit11B": [
+      5.8,
+      1
+     ],
+     "unit11C": [
+      5.8,
+      -0.6000000000000001
+     ],
+     "unit11D": [
+      5.3,
+      -0.6000000000000001
+     ],
+     "pencil11A": [
+      5.55,
+      0.7
+     ],
+     "pencil11B": [
+      5.55,
+      -0.22
+     ],
+     "pencil11C": [
+      5.55,
+      -0.4
+     ],
+     "unit12A": [
+      5.8,
+      1
+     ],
+     "unit12B": [
+      6.3,
+      1
+     ],
+     "unit12C": [
+      6.3,
+      -0.6000000000000001
+     ],
+     "unit12D": [
+      5.8,
+      -0.6000000000000001
+     ],
+     "pencil12A": [
+      6.05,
+      0.7
+     ],
+     "pencil12B": [
+      6.05,
+      -0.22
+     ],
+     "pencil12C": [
+      6.05,
+      -0.4
+     ],
+     "six1P": [
+      4.8,
+      1.8
+     ],
+     "unit13A": [
+      6.6,
+      1
+     ],
+     "unit13B": [
+      7.1,
+      1
+     ],
+     "unit13C": [
+      7.1,
+      -0.6000000000000001
+     ],
+     "unit13D": [
+      6.6,
+      -0.6000000000000001
+     ],
+     "pencil13A": [
+      6.85,
+      0.7
+     ],
+     "pencil13B": [
+      6.85,
+      -0.22
+     ],
+     "pencil13C": [
+      6.85,
+      -0.4
+     ],
+     "unit14A": [
+      7.1,
+      1
+     ],
+     "unit14B": [
+      7.6,
+      1
+     ],
+     "unit14C": [
+      7.6,
+      -0.6000000000000001
+     ],
+     "unit14D": [
+      7.1,
+      -0.6000000000000001
+     ],
+     "pencil14A": [
+      7.35,
+      0.7
+     ],
+     "pencil14B": [
+      7.35,
+      -0.22
+     ],
+     "pencil14C": [
+      7.35,
+      -0.4
+     ],
+     "unit15A": [
+      7.6,
+      1
+     ],
+     "unit15B": [
+      8.1,
+      1
+     ],
+     "unit15C": [
+      8.1,
+      -0.6000000000000001
+     ],
+     "unit15D": [
+      7.6,
+      -0.6000000000000001
+     ],
+     "pencil15A": [
+      7.85,
+      0.7
+     ],
+     "pencil15B": [
+      7.85,
+      -0.22
+     ],
+     "pencil15C": [
+      7.85,
+      -0.4
+     ],
+     "unit16A": [
+      8.1,
+      1
+     ],
+     "unit16B": [
+      8.6,
+      1
+     ],
+     "unit16C": [
+      8.6,
+      -0.6000000000000001
+     ],
+     "unit16D": [
+      8.1,
+      -0.6000000000000001
+     ],
+     "pencil16A": [
+      8.35,
+      0.7
+     ],
+     "pencil16B": [
+      8.35,
+      -0.22
+     ],
+     "pencil16C": [
+      8.35,
+      -0.4
+     ],
+     "unit17A": [
+      8.6,
+      1
+     ],
+     "unit17B": [
+      9.1,
+      1
+     ],
+     "unit17C": [
+      9.1,
+      -0.6000000000000001
+     ],
+     "unit17D": [
+      8.6,
+      -0.6000000000000001
+     ],
+     "pencil17A": [
+      8.85,
+      0.7
+     ],
+     "pencil17B": [
+      8.85,
+      -0.22
+     ],
+     "pencil17C": [
+      8.85,
+      -0.4
+     ],
+     "unit18A": [
+      9.1,
+      1
+     ],
+     "unit18B": [
+      9.6,
+      1
+     ],
+     "unit18C": [
+      9.6,
+      -0.6000000000000001
+     ],
+     "unit18D": [
+      9.1,
+      -0.6000000000000001
+     ],
+     "pencil18A": [
+      9.35,
+      0.7
+     ],
+     "pencil18B": [
+      9.35,
+      -0.22
+     ],
+     "pencil18C": [
+      9.35,
+      -0.4
+     ],
+     "six2P": [
+      8.1,
+      1.8
+     ],
+     "unit19A": [
+      9.899999999999999,
+      1
+     ],
+     "unit19B": [
+      10.399999999999999,
+      1
+     ],
+     "unit19C": [
+      10.399999999999999,
+      -0.6000000000000001
+     ],
+     "unit19D": [
+      9.899999999999999,
+      -0.6000000000000001
+     ],
+     "pencil19A": [
+      10.149999999999999,
+      0.7
+     ],
+     "pencil19B": [
+      10.149999999999999,
+      -0.22
+     ],
+     "pencil19C": [
+      10.149999999999999,
+      -0.4
+     ],
+     "unit20A": [
+      10.399999999999999,
+      1
+     ],
+     "unit20B": [
+      10.899999999999999,
+      1
+     ],
+     "unit20C": [
+      10.899999999999999,
+      -0.6000000000000001
+     ],
+     "unit20D": [
+      10.399999999999999,
+      -0.6000000000000001
+     ],
+     "pencil20A": [
+      10.649999999999999,
+      0.7
+     ],
+     "pencil20B": [
+      10.649999999999999,
+      -0.22
+     ],
+     "pencil20C": [
+      10.649999999999999,
+      -0.4
+     ],
+     "unit21A": [
+      10.899999999999999,
+      1
+     ],
+     "unit21B": [
+      11.399999999999999,
+      1
+     ],
+     "unit21C": [
+      11.399999999999999,
+      -0.6000000000000001
+     ],
+     "unit21D": [
+      10.899999999999999,
+      -0.6000000000000001
+     ],
+     "pencil21A": [
+      11.149999999999999,
+      0.7
+     ],
+     "pencil21B": [
+      11.149999999999999,
+      -0.22
+     ],
+     "pencil21C": [
+      11.149999999999999,
+      -0.4
+     ],
+     "unit22A": [
+      11.399999999999999,
+      1
+     ],
+     "unit22B": [
+      11.899999999999999,
+      1
+     ],
+     "unit22C": [
+      11.899999999999999,
+      -0.6000000000000001
+     ],
+     "unit22D": [
+      11.399999999999999,
+      -0.6000000000000001
+     ],
+     "pencil22A": [
+      11.649999999999999,
+      0.7
+     ],
+     "pencil22B": [
+      11.649999999999999,
+      -0.22
+     ],
+     "pencil22C": [
+      11.649999999999999,
+      -0.4
+     ],
+     "unit23A": [
+      11.899999999999999,
+      1
+     ],
+     "unit23B": [
+      12.399999999999999,
+      1
+     ],
+     "unit23C": [
+      12.399999999999999,
+      -0.6000000000000001
+     ],
+     "unit23D": [
+      11.899999999999999,
+      -0.6000000000000001
+     ],
+     "pencil23A": [
+      12.149999999999999,
+      0.7
+     ],
+     "pencil23B": [
+      12.149999999999999,
+      -0.22
+     ],
+     "pencil23C": [
+      12.149999999999999,
+      -0.4
+     ],
+     "unit24A": [
+      12.399999999999999,
+      1
+     ],
+     "unit24B": [
+      12.899999999999999,
+      1
+     ],
+     "unit24C": [
+      12.899999999999999,
+      -0.6000000000000001
+     ],
+     "unit24D": [
+      12.399999999999999,
+      -0.6000000000000001
+     ],
+     "pencil24A": [
+      12.649999999999999,
+      0.7
+     ],
+     "pencil24B": [
+      12.649999999999999,
+      -0.22
+     ],
+     "pencil24C": [
+      12.649999999999999,
+      -0.4
+     ],
+     "six3P": [
+      11.399999999999999,
+      1.8
+     ],
+     "unit25A": [
+      13.2,
+      1
+     ],
+     "unit25B": [
+      13.7,
+      1
+     ],
+     "unit25C": [
+      13.7,
+      -0.6000000000000001
+     ],
+     "unit25D": [
+      13.2,
+      -0.6000000000000001
+     ],
+     "pencil25A": [
+      13.45,
+      0.7
+     ],
+     "pencil25B": [
+      13.45,
+      -0.22
+     ],
+     "pencil25C": [
+      13.45,
+      -0.4
+     ],
+     "unit26A": [
+      13.7,
+      1
+     ],
+     "unit26B": [
+      14.2,
+      1
+     ],
+     "unit26C": [
+      14.2,
+      -0.6000000000000001
+     ],
+     "unit26D": [
+      13.7,
+      -0.6000000000000001
+     ],
+     "pencil26A": [
+      13.95,
+      0.7
+     ],
+     "pencil26B": [
+      13.95,
+      -0.22
+     ],
+     "pencil26C": [
+      13.95,
+      -0.4
+     ],
+     "unit27A": [
+      14.2,
+      1
+     ],
+     "unit27B": [
+      14.7,
+      1
+     ],
+     "unit27C": [
+      14.7,
+      -0.6000000000000001
+     ],
+     "unit27D": [
+      14.2,
+      -0.6000000000000001
+     ],
+     "pencil27A": [
+      14.45,
+      0.7
+     ],
+     "pencil27B": [
+      14.45,
+      -0.22
+     ],
+     "pencil27C": [
+      14.45,
+      -0.4
+     ],
+     "unit28A": [
+      14.7,
+      1
+     ],
+     "unit28B": [
+      15.2,
+      1
+     ],
+     "unit28C": [
+      15.2,
+      -0.6000000000000001
+     ],
+     "unit28D": [
+      14.7,
+      -0.6000000000000001
+     ],
+     "pencil28A": [
+      14.95,
+      0.7
+     ],
+     "pencil28B": [
+      14.95,
+      -0.22
+     ],
+     "pencil28C": [
+      14.95,
+      -0.4
+     ],
+     "unit29A": [
+      15.2,
+      1
+     ],
+     "unit29B": [
+      15.7,
+      1
+     ],
+     "unit29C": [
+      15.7,
+      -0.6000000000000001
+     ],
+     "unit29D": [
+      15.2,
+      -0.6000000000000001
+     ],
+     "pencil29A": [
+      15.45,
+      0.7
+     ],
+     "pencil29B": [
+      15.45,
+      -0.22
+     ],
+     "pencil29C": [
+      15.45,
+      -0.4
+     ],
+     "unit30A": [
+      15.7,
+      1
+     ],
+     "unit30B": [
+      16.2,
+      1
+     ],
+     "unit30C": [
+      16.2,
+      -0.6000000000000001
+     ],
+     "unit30D": [
+      15.7,
+      -0.6000000000000001
+     ],
+     "pencil30A": [
+      15.95,
+      0.7
+     ],
+     "pencil30B": [
+      15.95,
+      -0.22
+     ],
+     "pencil30C": [
+      15.95,
+      -0.4
+     ],
+     "six4P": [
+      14.7,
+      1.8
+     ],
+     "wholeL": [
+      0.6,
+      2.5
+     ],
+     "wholeR": [
+      15.6,
+      2.5
+     ],
+     "ghostA": [
+      0.6,
+      1
+     ],
+     "ghostB": [
+      15.6,
+      1
+     ],
+     "ghostC": [
+      15.6,
+      -0.6000000000000001
+     ],
+     "ghostD": [
+      0.6,
+      -0.6000000000000001
+     ],
+     "eqAP": [
+      8.1,
+      -2.1
+     ],
+     "eqBP": [
+      8.1,
+      -7
+     ],
+     "usedP": [
+      7.85,
+      -2
+     ],
+     "leftP": [
+      15.35,
+      1.8
+     ],
+     "oneP": [
+      15.35,
+      1.8
+     ],
+     "bf0A": [
+      0,
+      1
+     ],
+     "bf0B": [
+      3,
+      1
+     ],
+     "bf0C": [
+      3,
+      -0.6
+     ],
+     "bf0D": [
+      0,
+      -0.6
+     ],
+     "bf1A": [
+      3.3,
+      1
+     ],
+     "bf1B": [
+      6.3,
+      1
+     ],
+     "bf1C": [
+      6.3,
+      -0.6
+     ],
+     "bf1D": [
+      3.3,
+      -0.6
+     ],
+     "bf2A": [
+      6.6,
+      1
+     ],
+     "bf2B": [
+      9.6,
+      1
+     ],
+     "bf2C": [
+      9.6,
+      -0.6
+     ],
+     "bf2D": [
+      6.6,
+      -0.6
+     ],
+     "bf3A": [
+      9.9,
+      1
+     ],
+     "bf3B": [
+      12.9,
+      1
+     ],
+     "bf3C": [
+      12.9,
+      -0.6
+     ],
+     "bf3D": [
+      9.9,
+      -0.6
+     ],
+     "bf4A": [
+      13.2,
+      1
+     ],
+     "bf4B": [
+      16.2,
+      1
+     ],
+     "bf4C": [
+      16.2,
+      -0.6
+     ],
+     "bf4D": [
+      13.2,
+      -0.6
+     ]
+    },
+    "parts": [
+     {
+      "id": "unit1",
+      "poly": [
+       "unit1A",
+       "unit1B",
+       "unit1C",
+       "unit1D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box0",
+      "start": true
+     },
+     {
+      "id": "pencil1",
+      "seg": [
+       "pencil1A",
+       "pencil1B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box0",
+      "start": true
+     },
+     {
+      "id": "pencil1Tip",
+      "seg": [
+       "pencil1B",
+       "pencil1C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box0",
+      "start": true
+     },
+     {
+      "id": "unit2",
+      "poly": [
+       "unit2A",
+       "unit2B",
+       "unit2C",
+       "unit2D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box0",
+      "start": true
+     },
+     {
+      "id": "pencil2",
+      "seg": [
+       "pencil2A",
+       "pencil2B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box0",
+      "start": true
+     },
+     {
+      "id": "pencil2Tip",
+      "seg": [
+       "pencil2B",
+       "pencil2C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box0",
+      "start": true
+     },
+     {
+      "id": "unit3",
+      "poly": [
+       "unit3A",
+       "unit3B",
+       "unit3C",
+       "unit3D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box0",
+      "start": true
+     },
+     {
+      "id": "pencil3",
+      "seg": [
+       "pencil3A",
+       "pencil3B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box0",
+      "start": true
+     },
+     {
+      "id": "pencil3Tip",
+      "seg": [
+       "pencil3B",
+       "pencil3C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box0",
+      "start": true
+     },
+     {
+      "id": "unit4",
+      "poly": [
+       "unit4A",
+       "unit4B",
+       "unit4C",
+       "unit4D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box0",
+      "start": true
+     },
+     {
+      "id": "pencil4",
+      "seg": [
+       "pencil4A",
+       "pencil4B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box0",
+      "start": true
+     },
+     {
+      "id": "pencil4Tip",
+      "seg": [
+       "pencil4B",
+       "pencil4C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box0",
+      "start": true
+     },
+     {
+      "id": "unit5",
+      "poly": [
+       "unit5A",
+       "unit5B",
+       "unit5C",
+       "unit5D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box0",
+      "start": true
+     },
+     {
+      "id": "pencil5",
+      "seg": [
+       "pencil5A",
+       "pencil5B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box0",
+      "start": true
+     },
+     {
+      "id": "pencil5Tip",
+      "seg": [
+       "pencil5B",
+       "pencil5C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box0",
+      "start": true
+     },
+     {
+      "id": "unit6",
+      "poly": [
+       "unit6A",
+       "unit6B",
+       "unit6C",
+       "unit6D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box0",
+      "start": true
+     },
+     {
+      "id": "pencil6",
+      "seg": [
+       "pencil6A",
+       "pencil6B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box0",
+      "start": true
+     },
+     {
+      "id": "pencil6Tip",
+      "seg": [
+       "pencil6B",
+       "pencil6C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box0",
+      "start": true
+     },
+     {
+      "id": "six0",
+      "label": "6",
+      "at": "six0P",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "start": true,
+      "group": "box0",
+      "flies": true
+     },
+     {
+      "id": "unit7",
+      "poly": [
+       "unit7A",
+       "unit7B",
+       "unit7C",
+       "unit7D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box1",
+      "start": true
+     },
+     {
+      "id": "pencil7",
+      "seg": [
+       "pencil7A",
+       "pencil7B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box1",
+      "start": true
+     },
+     {
+      "id": "pencil7Tip",
+      "seg": [
+       "pencil7B",
+       "pencil7C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box1",
+      "start": true
+     },
+     {
+      "id": "unit8",
+      "poly": [
+       "unit8A",
+       "unit8B",
+       "unit8C",
+       "unit8D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box1",
+      "start": true
+     },
+     {
+      "id": "pencil8",
+      "seg": [
+       "pencil8A",
+       "pencil8B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box1",
+      "start": true
+     },
+     {
+      "id": "pencil8Tip",
+      "seg": [
+       "pencil8B",
+       "pencil8C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box1",
+      "start": true
+     },
+     {
+      "id": "unit9",
+      "poly": [
+       "unit9A",
+       "unit9B",
+       "unit9C",
+       "unit9D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box1",
+      "start": true
+     },
+     {
+      "id": "pencil9",
+      "seg": [
+       "pencil9A",
+       "pencil9B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box1",
+      "start": true
+     },
+     {
+      "id": "pencil9Tip",
+      "seg": [
+       "pencil9B",
+       "pencil9C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box1",
+      "start": true
+     },
+     {
+      "id": "unit10",
+      "poly": [
+       "unit10A",
+       "unit10B",
+       "unit10C",
+       "unit10D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box1",
+      "start": true
+     },
+     {
+      "id": "pencil10",
+      "seg": [
+       "pencil10A",
+       "pencil10B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box1",
+      "start": true
+     },
+     {
+      "id": "pencil10Tip",
+      "seg": [
+       "pencil10B",
+       "pencil10C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box1",
+      "start": true
+     },
+     {
+      "id": "unit11",
+      "poly": [
+       "unit11A",
+       "unit11B",
+       "unit11C",
+       "unit11D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box1",
+      "start": true
+     },
+     {
+      "id": "pencil11",
+      "seg": [
+       "pencil11A",
+       "pencil11B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box1",
+      "start": true
+     },
+     {
+      "id": "pencil11Tip",
+      "seg": [
+       "pencil11B",
+       "pencil11C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box1",
+      "start": true
+     },
+     {
+      "id": "unit12",
+      "poly": [
+       "unit12A",
+       "unit12B",
+       "unit12C",
+       "unit12D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box1",
+      "start": true
+     },
+     {
+      "id": "pencil12",
+      "seg": [
+       "pencil12A",
+       "pencil12B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box1",
+      "start": true
+     },
+     {
+      "id": "pencil12Tip",
+      "seg": [
+       "pencil12B",
+       "pencil12C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box1",
+      "start": true
+     },
+     {
+      "id": "six1",
+      "label": "6",
+      "at": "six1P",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "start": true,
+      "group": "box1",
+      "flies": true
+     },
+     {
+      "id": "unit13",
+      "poly": [
+       "unit13A",
+       "unit13B",
+       "unit13C",
+       "unit13D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box2",
+      "start": true
+     },
+     {
+      "id": "pencil13",
+      "seg": [
+       "pencil13A",
+       "pencil13B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box2",
+      "start": true
+     },
+     {
+      "id": "pencil13Tip",
+      "seg": [
+       "pencil13B",
+       "pencil13C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box2",
+      "start": true
+     },
+     {
+      "id": "unit14",
+      "poly": [
+       "unit14A",
+       "unit14B",
+       "unit14C",
+       "unit14D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box2",
+      "start": true
+     },
+     {
+      "id": "pencil14",
+      "seg": [
+       "pencil14A",
+       "pencil14B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box2",
+      "start": true
+     },
+     {
+      "id": "pencil14Tip",
+      "seg": [
+       "pencil14B",
+       "pencil14C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box2",
+      "start": true
+     },
+     {
+      "id": "unit15",
+      "poly": [
+       "unit15A",
+       "unit15B",
+       "unit15C",
+       "unit15D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box2",
+      "start": true
+     },
+     {
+      "id": "pencil15",
+      "seg": [
+       "pencil15A",
+       "pencil15B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box2",
+      "start": true
+     },
+     {
+      "id": "pencil15Tip",
+      "seg": [
+       "pencil15B",
+       "pencil15C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box2",
+      "start": true
+     },
+     {
+      "id": "unit16",
+      "poly": [
+       "unit16A",
+       "unit16B",
+       "unit16C",
+       "unit16D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box2",
+      "start": true
+     },
+     {
+      "id": "pencil16",
+      "seg": [
+       "pencil16A",
+       "pencil16B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box2",
+      "start": true
+     },
+     {
+      "id": "pencil16Tip",
+      "seg": [
+       "pencil16B",
+       "pencil16C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box2",
+      "start": true
+     },
+     {
+      "id": "unit17",
+      "poly": [
+       "unit17A",
+       "unit17B",
+       "unit17C",
+       "unit17D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box2",
+      "start": true
+     },
+     {
+      "id": "pencil17",
+      "seg": [
+       "pencil17A",
+       "pencil17B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box2",
+      "start": true
+     },
+     {
+      "id": "pencil17Tip",
+      "seg": [
+       "pencil17B",
+       "pencil17C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box2",
+      "start": true
+     },
+     {
+      "id": "unit18",
+      "poly": [
+       "unit18A",
+       "unit18B",
+       "unit18C",
+       "unit18D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box2",
+      "start": true
+     },
+     {
+      "id": "pencil18",
+      "seg": [
+       "pencil18A",
+       "pencil18B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box2",
+      "start": true
+     },
+     {
+      "id": "pencil18Tip",
+      "seg": [
+       "pencil18B",
+       "pencil18C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box2",
+      "start": true
+     },
+     {
+      "id": "six2",
+      "label": "6",
+      "at": "six2P",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "start": true,
+      "group": "box2",
+      "flies": true
+     },
+     {
+      "id": "unit19",
+      "poly": [
+       "unit19A",
+       "unit19B",
+       "unit19C",
+       "unit19D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box3",
+      "start": true
+     },
+     {
+      "id": "pencil19",
+      "seg": [
+       "pencil19A",
+       "pencil19B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box3",
+      "start": true
+     },
+     {
+      "id": "pencil19Tip",
+      "seg": [
+       "pencil19B",
+       "pencil19C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box3",
+      "start": true
+     },
+     {
+      "id": "unit20",
+      "poly": [
+       "unit20A",
+       "unit20B",
+       "unit20C",
+       "unit20D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box3",
+      "start": true
+     },
+     {
+      "id": "pencil20",
+      "seg": [
+       "pencil20A",
+       "pencil20B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box3",
+      "start": true
+     },
+     {
+      "id": "pencil20Tip",
+      "seg": [
+       "pencil20B",
+       "pencil20C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box3",
+      "start": true
+     },
+     {
+      "id": "unit21",
+      "poly": [
+       "unit21A",
+       "unit21B",
+       "unit21C",
+       "unit21D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box3",
+      "start": true
+     },
+     {
+      "id": "pencil21",
+      "seg": [
+       "pencil21A",
+       "pencil21B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box3",
+      "start": true
+     },
+     {
+      "id": "pencil21Tip",
+      "seg": [
+       "pencil21B",
+       "pencil21C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box3",
+      "start": true
+     },
+     {
+      "id": "unit22",
+      "poly": [
+       "unit22A",
+       "unit22B",
+       "unit22C",
+       "unit22D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box3",
+      "start": true
+     },
+     {
+      "id": "pencil22",
+      "seg": [
+       "pencil22A",
+       "pencil22B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box3",
+      "start": true
+     },
+     {
+      "id": "pencil22Tip",
+      "seg": [
+       "pencil22B",
+       "pencil22C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box3",
+      "start": true
+     },
+     {
+      "id": "unit23",
+      "poly": [
+       "unit23A",
+       "unit23B",
+       "unit23C",
+       "unit23D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box3",
+      "start": true
+     },
+     {
+      "id": "pencil23",
+      "seg": [
+       "pencil23A",
+       "pencil23B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box3",
+      "start": true
+     },
+     {
+      "id": "pencil23Tip",
+      "seg": [
+       "pencil23B",
+       "pencil23C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box3",
+      "start": true
+     },
+     {
+      "id": "unit24",
+      "poly": [
+       "unit24A",
+       "unit24B",
+       "unit24C",
+       "unit24D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box3",
+      "start": true
+     },
+     {
+      "id": "pencil24",
+      "seg": [
+       "pencil24A",
+       "pencil24B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box3",
+      "start": true
+     },
+     {
+      "id": "pencil24Tip",
+      "seg": [
+       "pencil24B",
+       "pencil24C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box3",
+      "start": true
+     },
+     {
+      "id": "six3",
+      "label": "6",
+      "at": "six3P",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "start": true,
+      "group": "box3",
+      "flies": true
+     },
+     {
+      "id": "unit25",
+      "poly": [
+       "unit25A",
+       "unit25B",
+       "unit25C",
+       "unit25D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box4",
+      "start": true
+     },
+     {
+      "id": "pencil25",
+      "seg": [
+       "pencil25A",
+       "pencil25B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box4",
+      "start": true
+     },
+     {
+      "id": "pencil25Tip",
+      "seg": [
+       "pencil25B",
+       "pencil25C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box4",
+      "start": true
+     },
+     {
+      "id": "unit26",
+      "poly": [
+       "unit26A",
+       "unit26B",
+       "unit26C",
+       "unit26D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box4",
+      "start": true
+     },
+     {
+      "id": "pencil26",
+      "seg": [
+       "pencil26A",
+       "pencil26B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box4",
+      "start": true
+     },
+     {
+      "id": "pencil26Tip",
+      "seg": [
+       "pencil26B",
+       "pencil26C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box4",
+      "start": true
+     },
+     {
+      "id": "unit27",
+      "poly": [
+       "unit27A",
+       "unit27B",
+       "unit27C",
+       "unit27D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box4",
+      "start": true
+     },
+     {
+      "id": "pencil27",
+      "seg": [
+       "pencil27A",
+       "pencil27B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box4",
+      "start": true
+     },
+     {
+      "id": "pencil27Tip",
+      "seg": [
+       "pencil27B",
+       "pencil27C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box4",
+      "start": true
+     },
+     {
+      "id": "unit28",
+      "poly": [
+       "unit28A",
+       "unit28B",
+       "unit28C",
+       "unit28D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box4",
+      "start": true
+     },
+     {
+      "id": "pencil28",
+      "seg": [
+       "pencil28A",
+       "pencil28B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box4",
+      "start": true
+     },
+     {
+      "id": "pencil28Tip",
+      "seg": [
+       "pencil28B",
+       "pencil28C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box4",
+      "start": true
+     },
+     {
+      "id": "unit29",
+      "poly": [
+       "unit29A",
+       "unit29B",
+       "unit29C",
+       "unit29D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box4",
+      "start": true
+     },
+     {
+      "id": "pencil29",
+      "seg": [
+       "pencil29A",
+       "pencil29B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box4",
+      "start": true
+     },
+     {
+      "id": "pencil29Tip",
+      "seg": [
+       "pencil29B",
+       "pencil29C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box4",
+      "start": true
+     },
+     {
+      "id": "unit30",
+      "poly": [
+       "unit30A",
+       "unit30B",
+       "unit30C",
+       "unit30D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "box4",
+      "start": true
+     },
+     {
+      "id": "pencil30",
+      "seg": [
+       "pencil30A",
+       "pencil30B"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "box4",
+      "start": true
+     },
+     {
+      "id": "pencil30Tip",
+      "seg": [
+       "pencil30B",
+       "pencil30C"
+      ],
+      "ink": "ink",
+      "w": 2,
+      "group": "box4",
+      "start": true
+     },
+     {
+      "id": "six4",
+      "label": "6",
+      "at": "six4P",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "start": true,
+      "group": "box4",
+      "flies": true
+     },
+     {
+      "id": "whole",
+      "dim": [
+       "wholeL",
+       "wholeR"
+      ],
+      "side": "n",
+      "tex": "30\\text{ pencils}",
+      "ink": "ink"
+     },
+     {
+      "id": "ghost",
+      "poly": [
+       "ghostA",
+       "ghostB",
+       "ghostC",
+       "ghostD"
+      ],
+      "fill": "none",
+      "ink": "muted",
+      "w": 1.5
+     },
+     {
+      "id": "eqA",
+      "label": "5\\times6",
+      "at": "eqAP",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink"
+     },
+     {
+      "id": "eqB",
+      "label": "5\\times6-29=r",
+      "at": "eqBP",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink"
+     },
+     {
+      "id": "used",
+      "label": "29\\text{ used}",
+      "at": "usedP",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue"
+     },
+     {
+      "id": "left",
+      "label": "r",
+      "at": "leftP",
+      "dir": "c",
+      "size": "l",
+      "ink": "gold"
+     },
+     {
+      "id": "one",
+      "label": "1",
+      "at": "oneP",
+      "dir": "c",
+      "size": "l",
+      "ink": "gold"
+     },
+     {
+      "id": "bf0",
+      "poly": [
+       "bf0A",
+       "bf0B",
+       "bf0C",
+       "bf0D"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 4
+     },
+     {
+      "id": "bf1",
+      "poly": [
+       "bf1A",
+       "bf1B",
+       "bf1C",
+       "bf1D"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 4
+     },
+     {
+      "id": "bf2",
+      "poly": [
+       "bf2A",
+       "bf2B",
+       "bf2C",
+       "bf2D"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 4
+     },
+     {
+      "id": "bf3",
+      "poly": [
+       "bf3A",
+       "bf3B",
+       "bf3C",
+       "bf3D"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 4
+     },
+     {
+      "id": "bf4",
+      "poly": [
+       "bf4A",
+       "bf4B",
+       "bf4C",
+       "bf4D"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 4
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Some word problems take two steps. The trick is to take them one at a time. Here is one.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "header",
+       "text": "Two steps, one at a time"
+      },
+      {
+       "do": "text",
+       "text": "First one step. Then the next.",
+       "at": "trick"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A class gets five boxes with six pencils in each. It uses twenty-nine pencils. How many are left?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "5 boxes with 6 pencils in each. 29 are used. How many are left?"
+      },
+      {
+       "do": "show",
+       "target": [
+        "bf0",
+        "bf1",
+        "bf2",
+        "bf3",
+        "bf4"
+       ],
+       "at": "five"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "bf0",
+        "bf1",
+        "bf2",
+        "bf3",
+        "bf4"
+       ],
+       "at": "It"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Thirty! Five times six.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "write",
+       "tex": "5\\times6=30"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Thirty arrived. But the story keeps going. Let's make a picture that keeps both steps.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "bf0",
+        "bf1",
+        "bf2",
+        "bf3",
+        "bf4"
+       ],
+       "at": "Thirty"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "bf0",
+        "bf1",
+        "bf2",
+        "bf3",
+        "bf4"
+       ],
+       "at": "But"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each little piece stands for one pencil. Six pieces make one box. Five equal boxes join into one strip.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Each little piece = 1 pencil"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "pencil1",
+        "pencil1Tip",
+        "pencil2",
+        "pencil2Tip",
+        "pencil3",
+        "pencil3Tip",
+        "pencil4",
+        "pencil4Tip",
+        "pencil5",
+        "pencil5Tip",
+        "pencil6",
+        "pencil6Tip",
+        "pencil7",
+        "pencil7Tip",
+        "pencil8",
+        "pencil8Tip",
+        "pencil9",
+        "pencil9Tip",
+        "pencil10",
+        "pencil10Tip",
+        "pencil11",
+        "pencil11Tip",
+        "pencil12",
+        "pencil12Tip",
+        "pencil13",
+        "pencil13Tip",
+        "pencil14",
+        "pencil14Tip",
+        "pencil15",
+        "pencil15Tip",
+        "pencil16",
+        "pencil16Tip",
+        "pencil17",
+        "pencil17Tip",
+        "pencil18",
+        "pencil18Tip",
+        "pencil19",
+        "pencil19Tip",
+        "pencil20",
+        "pencil20Tip",
+        "pencil21",
+        "pencil21Tip",
+        "pencil22",
+        "pencil22Tip",
+        "pencil23",
+        "pencil23Tip",
+        "pencil24",
+        "pencil24Tip",
+        "pencil25",
+        "pencil25Tip",
+        "pencil26",
+        "pencil26Tip",
+        "pencil27",
+        "pencil27Tip",
+        "pencil28",
+        "pencil28Tip",
+        "pencil29",
+        "pencil29Tip",
+        "pencil30",
+        "pencil30Tip"
+       ],
+       "at": "pieces"
+      },
+      {
+       "do": "show",
+       "target": "eqA",
+       "at": "Five"
+      },
+      {
+       "do": "move",
+       "points": {
+        "unit1A": [
+         0.6,
+         1
+        ],
+        "unit1B": [
+         1.1,
+         1
+        ],
+        "unit1C": [
+         1.1,
+         -0.6000000000000001
+        ],
+        "unit1D": [
+         0.6,
+         -0.6000000000000001
+        ],
+        "pencil1A": [
+         0.85,
+         0.7
+        ],
+        "pencil1B": [
+         0.85,
+         -0.22
+        ],
+        "pencil1C": [
+         0.85,
+         -0.4
+        ],
+        "unit2A": [
+         1.1,
+         1
+        ],
+        "unit2B": [
+         1.6,
+         1
+        ],
+        "unit2C": [
+         1.6,
+         -0.6000000000000001
+        ],
+        "unit2D": [
+         1.1,
+         -0.6000000000000001
+        ],
+        "pencil2A": [
+         1.35,
+         0.7
+        ],
+        "pencil2B": [
+         1.35,
+         -0.22
+        ],
+        "pencil2C": [
+         1.35,
+         -0.4
+        ],
+        "unit3A": [
+         1.6,
+         1
+        ],
+        "unit3B": [
+         2.1,
+         1
+        ],
+        "unit3C": [
+         2.1,
+         -0.6000000000000001
+        ],
+        "unit3D": [
+         1.6,
+         -0.6000000000000001
+        ],
+        "pencil3A": [
+         1.85,
+         0.7
+        ],
+        "pencil3B": [
+         1.85,
+         -0.22
+        ],
+        "pencil3C": [
+         1.85,
+         -0.4
+        ],
+        "unit4A": [
+         2.1,
+         1
+        ],
+        "unit4B": [
+         2.6,
+         1
+        ],
+        "unit4C": [
+         2.6,
+         -0.6000000000000001
+        ],
+        "unit4D": [
+         2.1,
+         -0.6000000000000001
+        ],
+        "pencil4A": [
+         2.35,
+         0.7
+        ],
+        "pencil4B": [
+         2.35,
+         -0.22
+        ],
+        "pencil4C": [
+         2.35,
+         -0.4
+        ],
+        "unit5A": [
+         2.6,
+         1
+        ],
+        "unit5B": [
+         3.1,
+         1
+        ],
+        "unit5C": [
+         3.1,
+         -0.6000000000000001
+        ],
+        "unit5D": [
+         2.6,
+         -0.6000000000000001
+        ],
+        "pencil5A": [
+         2.85,
+         0.7
+        ],
+        "pencil5B": [
+         2.85,
+         -0.22
+        ],
+        "pencil5C": [
+         2.85,
+         -0.4
+        ],
+        "unit6A": [
+         3.1,
+         1
+        ],
+        "unit6B": [
+         3.6,
+         1
+        ],
+        "unit6C": [
+         3.6,
+         -0.6000000000000001
+        ],
+        "unit6D": [
+         3.1,
+         -0.6000000000000001
+        ],
+        "pencil6A": [
+         3.35,
+         0.7
+        ],
+        "pencil6B": [
+         3.35,
+         -0.22
+        ],
+        "pencil6C": [
+         3.35,
+         -0.4
+        ],
+        "six0P": [
+         2.1,
+         1.8
+        ]
+       },
+       "at": "join",
+       "dur": 1.1
+      },
+      {
+       "do": "move",
+       "points": {
+        "unit7A": [
+         3.6,
+         1
+        ],
+        "unit7B": [
+         4.1,
+         1
+        ],
+        "unit7C": [
+         4.1,
+         -0.6000000000000001
+        ],
+        "unit7D": [
+         3.6,
+         -0.6000000000000001
+        ],
+        "pencil7A": [
+         3.85,
+         0.7
+        ],
+        "pencil7B": [
+         3.85,
+         -0.22
+        ],
+        "pencil7C": [
+         3.85,
+         -0.4
+        ],
+        "unit8A": [
+         4.1,
+         1
+        ],
+        "unit8B": [
+         4.6,
+         1
+        ],
+        "unit8C": [
+         4.6,
+         -0.6000000000000001
+        ],
+        "unit8D": [
+         4.1,
+         -0.6000000000000001
+        ],
+        "pencil8A": [
+         4.35,
+         0.7
+        ],
+        "pencil8B": [
+         4.35,
+         -0.22
+        ],
+        "pencil8C": [
+         4.35,
+         -0.4
+        ],
+        "unit9A": [
+         4.6,
+         1
+        ],
+        "unit9B": [
+         5.1,
+         1
+        ],
+        "unit9C": [
+         5.1,
+         -0.6000000000000001
+        ],
+        "unit9D": [
+         4.6,
+         -0.6000000000000001
+        ],
+        "pencil9A": [
+         4.85,
+         0.7
+        ],
+        "pencil9B": [
+         4.85,
+         -0.22
+        ],
+        "pencil9C": [
+         4.85,
+         -0.4
+        ],
+        "unit10A": [
+         5.1,
+         1
+        ],
+        "unit10B": [
+         5.6,
+         1
+        ],
+        "unit10C": [
+         5.6,
+         -0.6000000000000001
+        ],
+        "unit10D": [
+         5.1,
+         -0.6000000000000001
+        ],
+        "pencil10A": [
+         5.35,
+         0.7
+        ],
+        "pencil10B": [
+         5.35,
+         -0.22
+        ],
+        "pencil10C": [
+         5.35,
+         -0.4
+        ],
+        "unit11A": [
+         5.6,
+         1
+        ],
+        "unit11B": [
+         6.1,
+         1
+        ],
+        "unit11C": [
+         6.1,
+         -0.6000000000000001
+        ],
+        "unit11D": [
+         5.6,
+         -0.6000000000000001
+        ],
+        "pencil11A": [
+         5.85,
+         0.7
+        ],
+        "pencil11B": [
+         5.85,
+         -0.22
+        ],
+        "pencil11C": [
+         5.85,
+         -0.4
+        ],
+        "unit12A": [
+         6.1,
+         1
+        ],
+        "unit12B": [
+         6.6,
+         1
+        ],
+        "unit12C": [
+         6.6,
+         -0.6000000000000001
+        ],
+        "unit12D": [
+         6.1,
+         -0.6000000000000001
+        ],
+        "pencil12A": [
+         6.35,
+         0.7
+        ],
+        "pencil12B": [
+         6.35,
+         -0.22
+        ],
+        "pencil12C": [
+         6.35,
+         -0.4
+        ],
+        "six1P": [
+         5.1,
+         1.8
+        ]
+       },
+       "at": "join",
+       "dur": 1.1
+      },
+      {
+       "do": "move",
+       "points": {
+        "unit13A": [
+         6.6,
+         1
+        ],
+        "unit13B": [
+         7.1,
+         1
+        ],
+        "unit13C": [
+         7.1,
+         -0.6000000000000001
+        ],
+        "unit13D": [
+         6.6,
+         -0.6000000000000001
+        ],
+        "pencil13A": [
+         6.85,
+         0.7
+        ],
+        "pencil13B": [
+         6.85,
+         -0.22
+        ],
+        "pencil13C": [
+         6.85,
+         -0.4
+        ],
+        "unit14A": [
+         7.1,
+         1
+        ],
+        "unit14B": [
+         7.6,
+         1
+        ],
+        "unit14C": [
+         7.6,
+         -0.6000000000000001
+        ],
+        "unit14D": [
+         7.1,
+         -0.6000000000000001
+        ],
+        "pencil14A": [
+         7.35,
+         0.7
+        ],
+        "pencil14B": [
+         7.35,
+         -0.22
+        ],
+        "pencil14C": [
+         7.35,
+         -0.4
+        ],
+        "unit15A": [
+         7.6,
+         1
+        ],
+        "unit15B": [
+         8.1,
+         1
+        ],
+        "unit15C": [
+         8.1,
+         -0.6000000000000001
+        ],
+        "unit15D": [
+         7.6,
+         -0.6000000000000001
+        ],
+        "pencil15A": [
+         7.85,
+         0.7
+        ],
+        "pencil15B": [
+         7.85,
+         -0.22
+        ],
+        "pencil15C": [
+         7.85,
+         -0.4
+        ],
+        "unit16A": [
+         8.1,
+         1
+        ],
+        "unit16B": [
+         8.6,
+         1
+        ],
+        "unit16C": [
+         8.6,
+         -0.6000000000000001
+        ],
+        "unit16D": [
+         8.1,
+         -0.6000000000000001
+        ],
+        "pencil16A": [
+         8.35,
+         0.7
+        ],
+        "pencil16B": [
+         8.35,
+         -0.22
+        ],
+        "pencil16C": [
+         8.35,
+         -0.4
+        ],
+        "unit17A": [
+         8.6,
+         1
+        ],
+        "unit17B": [
+         9.1,
+         1
+        ],
+        "unit17C": [
+         9.1,
+         -0.6000000000000001
+        ],
+        "unit17D": [
+         8.6,
+         -0.6000000000000001
+        ],
+        "pencil17A": [
+         8.85,
+         0.7
+        ],
+        "pencil17B": [
+         8.85,
+         -0.22
+        ],
+        "pencil17C": [
+         8.85,
+         -0.4
+        ],
+        "unit18A": [
+         9.1,
+         1
+        ],
+        "unit18B": [
+         9.6,
+         1
+        ],
+        "unit18C": [
+         9.6,
+         -0.6000000000000001
+        ],
+        "unit18D": [
+         9.1,
+         -0.6000000000000001
+        ],
+        "pencil18A": [
+         9.35,
+         0.7
+        ],
+        "pencil18B": [
+         9.35,
+         -0.22
+        ],
+        "pencil18C": [
+         9.35,
+         -0.4
+        ],
+        "six2P": [
+         8.1,
+         1.8
+        ]
+       },
+       "at": "join",
+       "dur": 1.1
+      },
+      {
+       "do": "move",
+       "points": {
+        "unit19A": [
+         9.6,
+         1
+        ],
+        "unit19B": [
+         10.1,
+         1
+        ],
+        "unit19C": [
+         10.1,
+         -0.6000000000000001
+        ],
+        "unit19D": [
+         9.6,
+         -0.6000000000000001
+        ],
+        "pencil19A": [
+         9.85,
+         0.7
+        ],
+        "pencil19B": [
+         9.85,
+         -0.22
+        ],
+        "pencil19C": [
+         9.85,
+         -0.4
+        ],
+        "unit20A": [
+         10.1,
+         1
+        ],
+        "unit20B": [
+         10.6,
+         1
+        ],
+        "unit20C": [
+         10.6,
+         -0.6000000000000001
+        ],
+        "unit20D": [
+         10.1,
+         -0.6000000000000001
+        ],
+        "pencil20A": [
+         10.35,
+         0.7
+        ],
+        "pencil20B": [
+         10.35,
+         -0.22
+        ],
+        "pencil20C": [
+         10.35,
+         -0.4
+        ],
+        "unit21A": [
+         10.6,
+         1
+        ],
+        "unit21B": [
+         11.1,
+         1
+        ],
+        "unit21C": [
+         11.1,
+         -0.6000000000000001
+        ],
+        "unit21D": [
+         10.6,
+         -0.6000000000000001
+        ],
+        "pencil21A": [
+         10.85,
+         0.7
+        ],
+        "pencil21B": [
+         10.85,
+         -0.22
+        ],
+        "pencil21C": [
+         10.85,
+         -0.4
+        ],
+        "unit22A": [
+         11.1,
+         1
+        ],
+        "unit22B": [
+         11.6,
+         1
+        ],
+        "unit22C": [
+         11.6,
+         -0.6000000000000001
+        ],
+        "unit22D": [
+         11.1,
+         -0.6000000000000001
+        ],
+        "pencil22A": [
+         11.35,
+         0.7
+        ],
+        "pencil22B": [
+         11.35,
+         -0.22
+        ],
+        "pencil22C": [
+         11.35,
+         -0.4
+        ],
+        "unit23A": [
+         11.6,
+         1
+        ],
+        "unit23B": [
+         12.1,
+         1
+        ],
+        "unit23C": [
+         12.1,
+         -0.6000000000000001
+        ],
+        "unit23D": [
+         11.6,
+         -0.6000000000000001
+        ],
+        "pencil23A": [
+         11.85,
+         0.7
+        ],
+        "pencil23B": [
+         11.85,
+         -0.22
+        ],
+        "pencil23C": [
+         11.85,
+         -0.4
+        ],
+        "unit24A": [
+         12.1,
+         1
+        ],
+        "unit24B": [
+         12.6,
+         1
+        ],
+        "unit24C": [
+         12.6,
+         -0.6000000000000001
+        ],
+        "unit24D": [
+         12.1,
+         -0.6000000000000001
+        ],
+        "pencil24A": [
+         12.35,
+         0.7
+        ],
+        "pencil24B": [
+         12.35,
+         -0.22
+        ],
+        "pencil24C": [
+         12.35,
+         -0.4
+        ],
+        "six3P": [
+         11.1,
+         1.8
+        ]
+       },
+       "at": "join",
+       "dur": 1.1
+      },
+      {
+       "do": "move",
+       "points": {
+        "unit25A": [
+         12.6,
+         1
+        ],
+        "unit25B": [
+         13.1,
+         1
+        ],
+        "unit25C": [
+         13.1,
+         -0.6000000000000001
+        ],
+        "unit25D": [
+         12.6,
+         -0.6000000000000001
+        ],
+        "pencil25A": [
+         12.85,
+         0.7
+        ],
+        "pencil25B": [
+         12.85,
+         -0.22
+        ],
+        "pencil25C": [
+         12.85,
+         -0.4
+        ],
+        "unit26A": [
+         13.1,
+         1
+        ],
+        "unit26B": [
+         13.6,
+         1
+        ],
+        "unit26C": [
+         13.6,
+         -0.6000000000000001
+        ],
+        "unit26D": [
+         13.1,
+         -0.6000000000000001
+        ],
+        "pencil26A": [
+         13.35,
+         0.7
+        ],
+        "pencil26B": [
+         13.35,
+         -0.22
+        ],
+        "pencil26C": [
+         13.35,
+         -0.4
+        ],
+        "unit27A": [
+         13.6,
+         1
+        ],
+        "unit27B": [
+         14.1,
+         1
+        ],
+        "unit27C": [
+         14.1,
+         -0.6000000000000001
+        ],
+        "unit27D": [
+         13.6,
+         -0.6000000000000001
+        ],
+        "pencil27A": [
+         13.85,
+         0.7
+        ],
+        "pencil27B": [
+         13.85,
+         -0.22
+        ],
+        "pencil27C": [
+         13.85,
+         -0.4
+        ],
+        "unit28A": [
+         14.1,
+         1
+        ],
+        "unit28B": [
+         14.6,
+         1
+        ],
+        "unit28C": [
+         14.6,
+         -0.6000000000000001
+        ],
+        "unit28D": [
+         14.1,
+         -0.6000000000000001
+        ],
+        "pencil28A": [
+         14.35,
+         0.7
+        ],
+        "pencil28B": [
+         14.35,
+         -0.22
+        ],
+        "pencil28C": [
+         14.35,
+         -0.4
+        ],
+        "unit29A": [
+         14.6,
+         1
+        ],
+        "unit29B": [
+         15.1,
+         1
+        ],
+        "unit29C": [
+         15.1,
+         -0.6000000000000001
+        ],
+        "unit29D": [
+         14.6,
+         -0.6000000000000001
+        ],
+        "pencil29A": [
+         14.85,
+         0.7
+        ],
+        "pencil29B": [
+         14.85,
+         -0.22
+        ],
+        "pencil29C": [
+         14.85,
+         -0.4
+        ],
+        "unit30A": [
+         15.1,
+         1
+        ],
+        "unit30B": [
+         15.6,
+         1
+        ],
+        "unit30C": [
+         15.6,
+         -0.6000000000000001
+        ],
+        "unit30D": [
+         15.1,
+         -0.6000000000000001
+        ],
+        "pencil30A": [
+         15.35,
+         0.7
+        ],
+        "pencil30B": [
+         15.35,
+         -0.22
+        ],
+        "pencil30C": [
+         15.35,
+         -0.4
+        ],
+        "six4P": [
+         14.1,
+         1.8
+        ]
+       },
+       "at": "join",
+       "dur": 1.1
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five times six is thirty pencils altogether.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "whole",
+       "at": "thirty"
+      },
+      {
+       "do": "write",
+       "tex": "5\\times6=30",
+       "at": "thirty"
+      },
+      {
+       "do": "highlight",
+       "target": "whole",
+       "at": "altogether"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "We want the number left. We don't know it yet, so we give it a name: the letter *r*.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "text",
+       "text": "$r$ = pencils left"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "six0",
+        "six1",
+        "six2",
+        "six3",
+        "six4"
+       ]
+      },
+      {
+       "do": "show",
+       "target": "left",
+       "at": "letter"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Next, the class uses twenty-nine. Take those pieces away from the whole delivery.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "show",
+       "target": "ghost"
+      },
+      {
+       "do": "hide",
+       "target": "eqA",
+       "at": "uses"
+      },
+      {
+       "do": "show",
+       "target": "eqB",
+       "at": "uses"
+      },
+      {
+       "do": "slide",
+       "target": [
+        "unit1",
+        "unit2",
+        "unit3",
+        "unit4",
+        "unit5",
+        "unit6",
+        "unit7",
+        "unit8",
+        "unit9",
+        "unit10",
+        "unit11",
+        "unit12",
+        "unit13",
+        "unit14",
+        "unit15",
+        "unit16",
+        "unit17",
+        "unit18",
+        "unit19",
+        "unit20",
+        "unit21",
+        "unit22",
+        "unit23",
+        "unit24",
+        "unit25",
+        "unit26",
+        "unit27",
+        "unit28",
+        "unit29"
+       ],
+       "by": [
+        0,
+        -4.4
+       ],
+       "at": "Take",
+       "dur": 1.6
+      },
+      {
+       "do": "show",
+       "target": "used",
+       "at": "whole"
+      },
+      {
+       "do": "write",
+       "tex": "5\\times6-29=r",
+       "at": "uses"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "One piece is left! Thirty was only the first step.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": "left"
+      },
+      {
+       "do": "show",
+       "target": "one"
+      },
+      {
+       "do": "highlight",
+       "target": "unit30",
+       "at": "One"
+      },
+      {
+       "do": "answer",
+       "tex": "r=1\\text{ pencil}",
+       "at": "One"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Check its size: twenty-nine is almost all of thirty. We should have very little left.",
+     "pause": 0.1,
+     "do": [
+      {
+       "do": "text",
+       "text": "Almost all used → very little left"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "whole",
+        "used"
+       ],
+       "at": "almost"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One pencil makes sense.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "unit30",
+       "at": "One"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "An equation says two amounts are equal.",
+     "pause": 0.1,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "eqB",
+       "at": "equation"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five times six",
+     "pause": 0,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "whole",
+       "at": "Five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "minus twenty-nine",
+     "pause": 0,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "used",
+       "at": "twenty-nine"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "is the number left, *r*.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "one",
+        "unit30"
+       ],
+       "at": "left"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "book0A": [
+      0,
+      2
+     ],
+     "book0B": [
+      2.1,
+      2
+     ],
+     "book0C": [
+      2.1,
+      0.7
+     ],
+     "book0D": [
+      0,
+      0.7
+     ],
+     "price0P": [
+      1.05,
+      1.35
+     ],
+     "book1A": [
+      2.3,
+      2
+     ],
+     "book1B": [
+      4.4,
+      2
+     ],
+     "book1C": [
+      4.4,
+      0.7
+     ],
+     "book1D": [
+      2.3,
+      0.7
+     ],
+     "price1P": [
+      3.3499999999999996,
+      1.35
+     ],
+     "book2A": [
+      4.6,
+      2
+     ],
+     "book2B": [
+      6.699999999999999,
+      2
+     ],
+     "book2C": [
+      6.699999999999999,
+      0.7
+     ],
+     "book2D": [
+      4.6,
+      0.7
+     ],
+     "price2P": [
+      5.6499999999999995,
+      1.35
+     ],
+     "book3A": [
+      6.8999999999999995,
+      2
+     ],
+     "book3B": [
+      9,
+      2
+     ],
+     "book3C": [
+      9,
+      0.7
+     ],
+     "book3D": [
+      6.8999999999999995,
+      0.7
+     ],
+     "price3P": [
+      7.949999999999999,
+      1.35
+     ],
+     "book4A": [
+      9.2,
+      2
+     ],
+     "book4B": [
+      11.299999999999999,
+      2
+     ],
+     "book4C": [
+      11.299999999999999,
+      0.7
+     ],
+     "book4D": [
+      9.2,
+      0.7
+     ],
+     "price4P": [
+      10.25,
+      1.35
+     ],
+     "book5A": [
+      11.5,
+      2
+     ],
+     "book5B": [
+      13.6,
+      2
+     ],
+     "book5C": [
+      13.6,
+      0.7
+     ],
+     "book5D": [
+      11.5,
+      0.7
+     ],
+     "price5P": [
+      12.55,
+      1.35
+     ],
+     "paymentA": [
+      0,
+      -0.8
+     ],
+     "paymentB": [
+      14.1,
+      -0.8
+     ],
+     "paymentC": [
+      14.1,
+      -2.1
+     ],
+     "paymentD": [
+      0,
+      -2.1
+     ],
+     "paidL": [
+      0,
+      -0.1
+     ],
+     "paidR": [
+      14.1,
+      -0.1
+     ],
+     "changeA": [
+      12.6,
+      -0.8
+     ],
+     "changeB": [
+      14.1,
+      -0.8
+     ],
+     "changeC": [
+      14.1,
+      -2.1
+     ],
+     "changeD": [
+      12.6,
+      -2.1
+     ],
+     "totalCostP": [
+      6.3,
+      -4
+     ],
+     "changeQP": [
+      13.35,
+      -1.45
+     ],
+     "changeFiveP": [
+      13.35,
+      -1.45
+     ]
+    },
+    "parts": [
+     {
+      "id": "book0",
+      "poly": [
+       "book0A",
+       "book0B",
+       "book0C",
+       "book0D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "cost0",
+      "start": true
+     },
+     {
+      "id": "price0",
+      "label": "\\$7",
+      "at": "price0P",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true,
+      "group": "cost0",
+      "flies": true
+     },
+     {
+      "id": "book1",
+      "poly": [
+       "book1A",
+       "book1B",
+       "book1C",
+       "book1D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "cost1",
+      "start": true
+     },
+     {
+      "id": "price1",
+      "label": "\\$7",
+      "at": "price1P",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true,
+      "group": "cost1",
+      "flies": true
+     },
+     {
+      "id": "book2",
+      "poly": [
+       "book2A",
+       "book2B",
+       "book2C",
+       "book2D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "cost2",
+      "start": true
+     },
+     {
+      "id": "price2",
+      "label": "\\$7",
+      "at": "price2P",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true,
+      "group": "cost2",
+      "flies": true
+     },
+     {
+      "id": "book3",
+      "poly": [
+       "book3A",
+       "book3B",
+       "book3C",
+       "book3D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "cost3",
+      "start": true
+     },
+     {
+      "id": "price3",
+      "label": "\\$7",
+      "at": "price3P",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true,
+      "group": "cost3",
+      "flies": true
+     },
+     {
+      "id": "book4",
+      "poly": [
+       "book4A",
+       "book4B",
+       "book4C",
+       "book4D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "cost4",
+      "start": true
+     },
+     {
+      "id": "price4",
+      "label": "\\$7",
+      "at": "price4P",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true,
+      "group": "cost4",
+      "flies": true
+     },
+     {
+      "id": "book5",
+      "poly": [
+       "book5A",
+       "book5B",
+       "book5C",
+       "book5D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "cost5",
+      "start": true
+     },
+     {
+      "id": "price5",
+      "label": "\\$7",
+      "at": "price5P",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true,
+      "group": "cost5",
+      "flies": true
+     },
+     {
+      "id": "payment",
+      "poly": [
+       "paymentA",
+       "paymentB",
+       "paymentC",
+       "paymentD"
+      ],
+      "fill": "none",
+      "ink": "muted",
+      "w": 1.5
+     },
+     {
+      "id": "paid",
+      "dim": [
+       "paidL",
+       "paidR"
+      ],
+      "side": "n",
+      "tex": "\\$47\\text{ paid}",
+      "ink": "ink"
+     },
+     {
+      "id": "change",
+      "poly": [
+       "changeA",
+       "changeB",
+       "changeC",
+       "changeD"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.5
+     },
+     {
+      "id": "totalCost",
+      "label": "\\$42\\text{ cost}",
+      "at": "totalCostP",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue"
+     },
+     {
+      "id": "changeQ",
+      "label": "?",
+      "at": "changeQP",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     },
+     {
+      "id": "changeFive",
+      "label": "\\$5",
+      "at": "changeFiveP",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here is another one. Buy six notebooks at seven dollars each. Pay forty-seven dollars. How much change comes back?",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "6 notebooks at 7 dollars each. You pay 47. How much change?"
+      },
+      {
+       "do": "show",
+       "target": "payment",
+       "at": "Pay"
+      },
+      {
+       "do": "text",
+       "text": "Change = money returned",
+       "at": "change"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "About forty dollars for the notebooks, so I expect a few dollars back. The change should be much less than the payment.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "text",
+       "text": "Estimate: a few dollars back",
+       "at": "expect"
+      },
+      {
+       "do": "highlight",
+       "target": "payment",
+       "at": "payment"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Six notebooks at seven dollars cost forty-two dollars. Now take forty-two away from forty-seven.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "write",
+       "tex": "6\\times7=42",
+       "at": "Six"
+      },
+      {
+       "do": "move",
+       "points": {
+        "book0A": [
+         0,
+         -0.7999999999999998
+        ],
+        "book0B": [
+         2.1,
+         -0.7999999999999998
+        ],
+        "book0C": [
+         2.1,
+         -2.0999999999999996
+        ],
+        "book0D": [
+         0,
+         -2.0999999999999996
+        ],
+        "price0P": [
+         1.05,
+         -1.4499999999999997
+        ]
+       },
+       "at": "Now",
+       "dur": 1.1
+      },
+      {
+       "do": "move",
+       "points": {
+        "book1A": [
+         2.0999999999999996,
+         -0.7999999999999998
+        ],
+        "book1B": [
+         4.2,
+         -0.7999999999999998
+        ],
+        "book1C": [
+         4.2,
+         -2.0999999999999996
+        ],
+        "book1D": [
+         2.0999999999999996,
+         -2.0999999999999996
+        ],
+        "price1P": [
+         3.1499999999999995,
+         -1.4499999999999997
+        ]
+       },
+       "at": "Now",
+       "dur": 1.1
+      },
+      {
+       "do": "move",
+       "points": {
+        "book2A": [
+         4.199999999999999,
+         -0.7999999999999998
+        ],
+        "book2B": [
+         6.299999999999999,
+         -0.7999999999999998
+        ],
+        "book2C": [
+         6.299999999999999,
+         -2.0999999999999996
+        ],
+        "book2D": [
+         4.199999999999999,
+         -2.0999999999999996
+        ],
+        "price2P": [
+         5.249999999999999,
+         -1.4499999999999997
+        ]
+       },
+       "at": "Now",
+       "dur": 1.1
+      },
+      {
+       "do": "move",
+       "points": {
+        "book3A": [
+         6.299999999999999,
+         -0.7999999999999998
+        ],
+        "book3B": [
+         8.4,
+         -0.7999999999999998
+        ],
+        "book3C": [
+         8.4,
+         -2.0999999999999996
+        ],
+        "book3D": [
+         6.299999999999999,
+         -2.0999999999999996
+        ],
+        "price3P": [
+         7.35,
+         -1.4499999999999997
+        ]
+       },
+       "at": "Now",
+       "dur": 1.1
+      },
+      {
+       "do": "move",
+       "points": {
+        "book4A": [
+         8.399999999999999,
+         -0.7999999999999998
+        ],
+        "book4B": [
+         10.499999999999998,
+         -0.7999999999999998
+        ],
+        "book4C": [
+         10.499999999999998,
+         -2.0999999999999996
+        ],
+        "book4D": [
+         8.399999999999999,
+         -2.0999999999999996
+        ],
+        "price4P": [
+         9.45,
+         -1.4499999999999997
+        ]
+       },
+       "at": "Now",
+       "dur": 1.1
+      },
+      {
+       "do": "move",
+       "points": {
+        "book5A": [
+         10.5,
+         -0.7999999999999998
+        ],
+        "book5B": [
+         12.6,
+         -0.7999999999999998
+        ],
+        "book5C": [
+         12.6,
+         -2.0999999999999996
+        ],
+        "book5D": [
+         10.5,
+         -2.0999999999999996
+        ],
+        "price5P": [
+         11.55,
+         -1.4499999999999997
+        ]
+       },
+       "at": "Now",
+       "dur": 1.1
+      },
+      {
+       "do": "show",
+       "target": [
+        "totalCost",
+        "change",
+        "changeQ"
+       ],
+       "at": "take"
+      },
+      {
+       "do": "show",
+       "target": "paid",
+       "at": "take"
+      },
+      {
+       "do": "highlight",
+       "target": "change",
+       "at": "away"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Forty-seven minus forty-two is five. Five dollars come back.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "write",
+       "tex": "47-42=5",
+       "at": "minus"
+      },
+      {
+       "do": "hide",
+       "target": "changeQ",
+       "at": "five"
+      },
+      {
+       "do": "show",
+       "target": "changeFive",
+       "at": "five"
+      },
+      {
+       "do": "answer",
+       "tex": "\\$5\\text{ change}",
+       "at": "five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two steps again. First the whole cost. Then the change.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "totalCost",
+       "at": "cost"
+      },
+      {
+       "do": "highlight",
+       "target": "changeFive",
+       "at": "change"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "startA": [
+      0,
+      1.3
+     ],
+     "startB": [
+      11.4,
+      1.3
+     ],
+     "startC": [
+      11.4,
+      -0.19999999999999996
+     ],
+     "startD": [
+      0,
+      -0.19999999999999996
+     ],
+     "startNP": [
+      5.7,
+      0.55
+     ],
+     "deliveryA": [
+      12.4,
+      1.3
+     ],
+     "deliveryB": [
+      15.600000000000001,
+      1.3
+     ],
+     "deliveryC": [
+      15.600000000000001,
+      -0.19999999999999996
+     ],
+     "deliveryD": [
+      12.4,
+      -0.19999999999999996
+     ],
+     "deliveryNP": [
+      14,
+      0.55
+     ],
+     "allL": [
+      0,
+      2.2
+     ],
+     "allR": [
+      14.6,
+      2.2
+     ],
+     "left47A": [
+      0,
+      1.3
+     ],
+     "left47B": [
+      9.4,
+      1.3
+     ],
+     "left47C": [
+      9.4,
+      -0.19999999999999996
+     ],
+     "left47D": [
+      0,
+      -0.19999999999999996
+     ],
+     "n47P": [
+      4.7,
+      0.55
+     ],
+     "sold26A": [
+      9.4,
+      1.3
+     ],
+     "sold26B": [
+      14.600000000000001,
+      1.3
+     ],
+     "sold26C": [
+      14.600000000000001,
+      -0.19999999999999996
+     ],
+     "sold26D": [
+      9.4,
+      -0.19999999999999996
+     ],
+     "n26soldP": [
+      12,
+      0.55
+     ],
+     "left26A": [
+      0,
+      1.3
+     ],
+     "left26B": [
+      5.2,
+      1.3
+     ],
+     "left26C": [
+      5.2,
+      -0.19999999999999996
+     ],
+     "left26D": [
+      0,
+      -0.19999999999999996
+     ],
+     "n26leftP": [
+      2.6,
+      0.55
+     ],
+     "sold21A": [
+      5.2,
+      1.3
+     ],
+     "sold21B": [
+      9.4,
+      1.3
+     ],
+     "sold21C": [
+      9.4,
+      -0.19999999999999996
+     ],
+     "sold21D": [
+      5.2,
+      -0.19999999999999996
+     ],
+     "n21soldP": [
+      7.3,
+      0.55
+     ],
+     "soldTitleP": [
+      9.8,
+      -4.2
+     ]
+    },
+    "parts": [
+     {
+      "id": "start",
+      "poly": [
+       "startA",
+       "startB",
+       "startC",
+       "startD"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "initial",
+      "start": true
+     },
+     {
+      "id": "startN",
+      "label": "57",
+      "at": "startNP",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "start": true,
+      "group": "initial",
+      "flies": true
+     },
+     {
+      "id": "delivery",
+      "poly": [
+       "deliveryA",
+       "deliveryB",
+       "deliveryC",
+       "deliveryD"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1.5,
+      "group": "new"
+     },
+     {
+      "id": "deliveryN",
+      "label": "16",
+      "at": "deliveryNP",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent",
+      "group": "new",
+      "flies": true
+     },
+     {
+      "id": "all",
+      "dim": [
+       "allL",
+       "allR"
+      ],
+      "side": "n",
+      "tex": "73\\text{ tulips}",
+      "ink": "ink"
+     },
+     {
+      "id": "left47",
+      "poly": [
+       "left47A",
+       "left47B",
+       "left47C",
+       "left47D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5
+     },
+     {
+      "id": "n47",
+      "label": "47",
+      "at": "n47P",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "sold26",
+      "poly": [
+       "sold26A",
+       "sold26B",
+       "sold26C",
+       "sold26D"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1.5,
+      "group": "morning"
+     },
+     {
+      "id": "n26sold",
+      "label": "26",
+      "at": "n26soldP",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm",
+      "group": "morning",
+      "flies": true
+     },
+     {
+      "id": "left26",
+      "poly": [
+       "left26A",
+       "left26B",
+       "left26C",
+       "left26D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5
+     },
+     {
+      "id": "n26left",
+      "label": "26",
+      "at": "n26leftP",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "sold21",
+      "poly": [
+       "sold21A",
+       "sold21B",
+       "sold21C",
+       "sold21D"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.5,
+      "group": "afternoon"
+     },
+     {
+      "id": "n21sold",
+      "label": "21",
+      "at": "n21soldP",
+      "dir": "c",
+      "size": "l",
+      "ink": "gold",
+      "group": "afternoon",
+      "flies": true
+     },
+     {
+      "id": "soldTitle",
+      "label": "\\text{sold}",
+      "at": "soldTitleP",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "One more story. This time, three things happen. A shop has fifty-seven tulips. Sixteen more arrive. Then twenty-six are sold, and later twenty-one more. How many are left?",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "57 tulips. 16 arrive. 26 are sold, then 21 more. How many are left?"
+      },
+      {
+       "do": "show",
+       "target": "new",
+       "at": "Sixteen"
+      },
+      {
+       "do": "text",
+       "text": "One delivery; two sales.",
+       "at": "sold"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each change needs a sign. Does it add tulips, or take them away?",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "write",
+       "tex": "57\\;\\square\\;16\\;\\square\\;26\\;\\square\\;21",
+       "at": "sign"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Plus, minus, minus: one delivery, then two sales. First, fifty-seven plus sixteen is seventy-three.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "+\\ -\\ -",
+       "at": "Plus"
+      },
+      {
+       "do": "slide",
+       "target": "new",
+       "by": [
+        -1,
+        0
+       ],
+       "at": "First",
+       "dur": 1.1
+      },
+      {
+       "do": "write",
+       "tex": "57+16=73",
+       "at": "First"
+      },
+      {
+       "do": "show",
+       "target": "all",
+       "at": "seventy-three"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Take away twenty-six, then twenty-one. Twenty-six tulips left.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "initial",
+        "new"
+       ]
+      },
+      {
+       "do": "show",
+       "target": [
+        "left47",
+        "n47",
+        "morning"
+       ]
+      },
+      {
+       "do": "slide",
+       "target": "morning",
+       "by": [
+        0,
+        -2.3
+       ],
+       "at": "away",
+       "dur": 1.1
+      },
+      {
+       "do": "show",
+       "target": "soldTitle",
+       "at": "away"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "left47",
+        "n47"
+       ],
+       "at": "then"
+      },
+      {
+       "do": "show",
+       "target": [
+        "left26",
+        "n26left",
+        "afternoon"
+       ],
+       "at": "then"
+      },
+      {
+       "do": "slide",
+       "target": "afternoon",
+       "by": [
+        0,
+        -2.3
+       ],
+       "at": "twenty-one",
+       "dur": 1.1
+      },
+      {
+       "do": "write",
+       "tex": "57+16-26-21=26",
+       "at": "then"
+      },
+      {
+       "do": "answer",
+       "tex": "26\\text{ tulips left}",
+       "at": "left"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Round to tens to check: sixty plus twenty, minus thirty, minus twenty is thirty. Twenty-six is close.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "60+20-30-20=30",
+       "at": "sixty"
+      },
+      {
+       "do": "text",
+       "text": "26 is close to 30.",
+       "at": "close"
+      },
+      {
+       "do": "highlight",
+       "target": "left26",
+       "at": "Twenty-six"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "piece0A": [
+      0,
+      1.2
+     ],
+     "piece0B": [
+      0.5,
+      1.2
+     ],
+     "piece0C": [
+      0.5,
+      -0.30000000000000004
+     ],
+     "piece0D": [
+      0,
+      -0.30000000000000004
+     ],
+     "piece1A": [
+      0.5,
+      1.2
+     ],
+     "piece1B": [
+      1,
+      1.2
+     ],
+     "piece1C": [
+      1,
+      -0.30000000000000004
+     ],
+     "piece1D": [
+      0.5,
+      -0.30000000000000004
+     ],
+     "piece2A": [
+      1,
+      1.2
+     ],
+     "piece2B": [
+      1.5,
+      1.2
+     ],
+     "piece2C": [
+      1.5,
+      -0.30000000000000004
+     ],
+     "piece2D": [
+      1,
+      -0.30000000000000004
+     ],
+     "piece3A": [
+      1.5,
+      1.2
+     ],
+     "piece3B": [
+      2,
+      1.2
+     ],
+     "piece3C": [
+      2,
+      -0.30000000000000004
+     ],
+     "piece3D": [
+      1.5,
+      -0.30000000000000004
+     ],
+     "piece4A": [
+      2,
+      1.2
+     ],
+     "piece4B": [
+      2.5,
+      1.2
+     ],
+     "piece4C": [
+      2.5,
+      -0.30000000000000004
+     ],
+     "piece4D": [
+      2,
+      -0.30000000000000004
+     ],
+     "piece5A": [
+      2.5,
+      1.2
+     ],
+     "piece5B": [
+      3,
+      1.2
+     ],
+     "piece5C": [
+      3,
+      -0.30000000000000004
+     ],
+     "piece5D": [
+      2.5,
+      -0.30000000000000004
+     ],
+     "piece6A": [
+      3,
+      1.2
+     ],
+     "piece6B": [
+      3.5,
+      1.2
+     ],
+     "piece6C": [
+      3.5,
+      -0.30000000000000004
+     ],
+     "piece6D": [
+      3,
+      -0.30000000000000004
+     ],
+     "piece7A": [
+      3.5,
+      1.2
+     ],
+     "piece7B": [
+      4,
+      1.2
+     ],
+     "piece7C": [
+      4,
+      -0.30000000000000004
+     ],
+     "piece7D": [
+      3.5,
+      -0.30000000000000004
+     ],
+     "piece8A": [
+      4,
+      1.2
+     ],
+     "piece8B": [
+      4.5,
+      1.2
+     ],
+     "piece8C": [
+      4.5,
+      -0.30000000000000004
+     ],
+     "piece8D": [
+      4,
+      -0.30000000000000004
+     ],
+     "piece9A": [
+      4.5,
+      1.2
+     ],
+     "piece9B": [
+      5,
+      1.2
+     ],
+     "piece9C": [
+      5,
+      -0.30000000000000004
+     ],
+     "piece9D": [
+      4.5,
+      -0.30000000000000004
+     ],
+     "piece10A": [
+      5,
+      1.2
+     ],
+     "piece10B": [
+      5.5,
+      1.2
+     ],
+     "piece10C": [
+      5.5,
+      -0.30000000000000004
+     ],
+     "piece10D": [
+      5,
+      -0.30000000000000004
+     ],
+     "piece11A": [
+      5.5,
+      1.2
+     ],
+     "piece11B": [
+      6,
+      1.2
+     ],
+     "piece11C": [
+      6,
+      -0.30000000000000004
+     ],
+     "piece11D": [
+      5.5,
+      -0.30000000000000004
+     ],
+     "piece12A": [
+      6,
+      1.2
+     ],
+     "piece12B": [
+      6.5,
+      1.2
+     ],
+     "piece12C": [
+      6.5,
+      -0.30000000000000004
+     ],
+     "piece12D": [
+      6,
+      -0.30000000000000004
+     ],
+     "piece13A": [
+      6.5,
+      1.2
+     ],
+     "piece13B": [
+      7,
+      1.2
+     ],
+     "piece13C": [
+      7,
+      -0.30000000000000004
+     ],
+     "piece13D": [
+      6.5,
+      -0.30000000000000004
+     ],
+     "piece14A": [
+      7,
+      1.2
+     ],
+     "piece14B": [
+      7.5,
+      1.2
+     ],
+     "piece14C": [
+      7.5,
+      -0.30000000000000004
+     ],
+     "piece14D": [
+      7,
+      -0.30000000000000004
+     ],
+     "piece15A": [
+      7.5,
+      1.2
+     ],
+     "piece15B": [
+      8,
+      1.2
+     ],
+     "piece15C": [
+      8,
+      -0.30000000000000004
+     ],
+     "piece15D": [
+      7.5,
+      -0.30000000000000004
+     ],
+     "piece16A": [
+      8,
+      1.2
+     ],
+     "piece16B": [
+      8.5,
+      1.2
+     ],
+     "piece16C": [
+      8.5,
+      -0.30000000000000004
+     ],
+     "piece16D": [
+      8,
+      -0.30000000000000004
+     ],
+     "piece17A": [
+      8.5,
+      1.2
+     ],
+     "piece17B": [
+      9,
+      1.2
+     ],
+     "piece17C": [
+      9,
+      -0.30000000000000004
+     ],
+     "piece17D": [
+      8.5,
+      -0.30000000000000004
+     ],
+     "piece18A": [
+      9,
+      1.2
+     ],
+     "piece18B": [
+      9.5,
+      1.2
+     ],
+     "piece18C": [
+      9.5,
+      -0.30000000000000004
+     ],
+     "piece18D": [
+      9,
+      -0.30000000000000004
+     ],
+     "piece19A": [
+      9.5,
+      1.2
+     ],
+     "piece19B": [
+      10,
+      1.2
+     ],
+     "piece19C": [
+      10,
+      -0.30000000000000004
+     ],
+     "piece19D": [
+      9.5,
+      -0.30000000000000004
+     ],
+     "piece20A": [
+      10,
+      1.2
+     ],
+     "piece20B": [
+      10.5,
+      1.2
+     ],
+     "piece20C": [
+      10.5,
+      -0.30000000000000004
+     ],
+     "piece20D": [
+      10,
+      -0.30000000000000004
+     ],
+     "piece21A": [
+      10.5,
+      1.2
+     ],
+     "piece21B": [
+      11,
+      1.2
+     ],
+     "piece21C": [
+      11,
+      -0.30000000000000004
+     ],
+     "piece21D": [
+      10.5,
+      -0.30000000000000004
+     ],
+     "piece22A": [
+      11,
+      1.2
+     ],
+     "piece22B": [
+      11.5,
+      1.2
+     ],
+     "piece22C": [
+      11.5,
+      -0.30000000000000004
+     ],
+     "piece22D": [
+      11,
+      -0.30000000000000004
+     ],
+     "piece23A": [
+      11.5,
+      1.2
+     ],
+     "piece23B": [
+      12,
+      1.2
+     ],
+     "piece23C": [
+      12,
+      -0.30000000000000004
+     ],
+     "piece23D": [
+      11.5,
+      -0.30000000000000004
+     ],
+     "piece24A": [
+      12,
+      1.2
+     ],
+     "piece24B": [
+      12.5,
+      1.2
+     ],
+     "piece24C": [
+      12.5,
+      -0.30000000000000004
+     ],
+     "piece24D": [
+      12,
+      -0.30000000000000004
+     ],
+     "piece25A": [
+      12.5,
+      1.2
+     ],
+     "piece25B": [
+      13,
+      1.2
+     ],
+     "piece25C": [
+      13,
+      -0.30000000000000004
+     ],
+     "piece25D": [
+      12.5,
+      -0.30000000000000004
+     ],
+     "piece26A": [
+      13,
+      1.2
+     ],
+     "piece26B": [
+      13.5,
+      1.2
+     ],
+     "piece26C": [
+      13.5,
+      -0.30000000000000004
+     ],
+     "piece26D": [
+      13,
+      -0.30000000000000004
+     ],
+     "piece27A": [
+      13.5,
+      1.2
+     ],
+     "piece27B": [
+      14,
+      1.2
+     ],
+     "piece27C": [
+      14,
+      -0.30000000000000004
+     ],
+     "piece27D": [
+      13.5,
+      -0.30000000000000004
+     ],
+     "piece28A": [
+      14,
+      1.2
+     ],
+     "piece28B": [
+      14.5,
+      1.2
+     ],
+     "piece28C": [
+      14.5,
+      -0.30000000000000004
+     ],
+     "piece28D": [
+      14,
+      -0.30000000000000004
+     ],
+     "piece29A": [
+      14.5,
+      1.2
+     ],
+     "piece29B": [
+      15,
+      1.2
+     ],
+     "piece29C": [
+      15,
+      -0.30000000000000004
+     ],
+     "piece29D": [
+      14.5,
+      -0.30000000000000004
+     ],
+     "wholeL": [
+      0,
+      2.8
+     ],
+     "wholeR": [
+      15,
+      2.8
+     ],
+     "usedNP": [
+      7.2,
+      -1.45
+     ],
+     "oneP": [
+      14.7,
+      2.2
+     ],
+     "sentenceP": [
+      7.5,
+      -5.7
+     ]
+    },
+    "parts": [
+     {
+      "id": "piece0",
+      "poly": [
+       "piece0A",
+       "piece0B",
+       "piece0C",
+       "piece0D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece1",
+      "poly": [
+       "piece1A",
+       "piece1B",
+       "piece1C",
+       "piece1D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece2",
+      "poly": [
+       "piece2A",
+       "piece2B",
+       "piece2C",
+       "piece2D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece3",
+      "poly": [
+       "piece3A",
+       "piece3B",
+       "piece3C",
+       "piece3D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece4",
+      "poly": [
+       "piece4A",
+       "piece4B",
+       "piece4C",
+       "piece4D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece5",
+      "poly": [
+       "piece5A",
+       "piece5B",
+       "piece5C",
+       "piece5D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece6",
+      "poly": [
+       "piece6A",
+       "piece6B",
+       "piece6C",
+       "piece6D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece7",
+      "poly": [
+       "piece7A",
+       "piece7B",
+       "piece7C",
+       "piece7D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece8",
+      "poly": [
+       "piece8A",
+       "piece8B",
+       "piece8C",
+       "piece8D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece9",
+      "poly": [
+       "piece9A",
+       "piece9B",
+       "piece9C",
+       "piece9D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece10",
+      "poly": [
+       "piece10A",
+       "piece10B",
+       "piece10C",
+       "piece10D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece11",
+      "poly": [
+       "piece11A",
+       "piece11B",
+       "piece11C",
+       "piece11D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece12",
+      "poly": [
+       "piece12A",
+       "piece12B",
+       "piece12C",
+       "piece12D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece13",
+      "poly": [
+       "piece13A",
+       "piece13B",
+       "piece13C",
+       "piece13D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece14",
+      "poly": [
+       "piece14A",
+       "piece14B",
+       "piece14C",
+       "piece14D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece15",
+      "poly": [
+       "piece15A",
+       "piece15B",
+       "piece15C",
+       "piece15D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece16",
+      "poly": [
+       "piece16A",
+       "piece16B",
+       "piece16C",
+       "piece16D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece17",
+      "poly": [
+       "piece17A",
+       "piece17B",
+       "piece17C",
+       "piece17D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece18",
+      "poly": [
+       "piece18A",
+       "piece18B",
+       "piece18C",
+       "piece18D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece19",
+      "poly": [
+       "piece19A",
+       "piece19B",
+       "piece19C",
+       "piece19D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece20",
+      "poly": [
+       "piece20A",
+       "piece20B",
+       "piece20C",
+       "piece20D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece21",
+      "poly": [
+       "piece21A",
+       "piece21B",
+       "piece21C",
+       "piece21D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece22",
+      "poly": [
+       "piece22A",
+       "piece22B",
+       "piece22C",
+       "piece22D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece23",
+      "poly": [
+       "piece23A",
+       "piece23B",
+       "piece23C",
+       "piece23D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece24",
+      "poly": [
+       "piece24A",
+       "piece24B",
+       "piece24C",
+       "piece24D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece25",
+      "poly": [
+       "piece25A",
+       "piece25B",
+       "piece25C",
+       "piece25D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece26",
+      "poly": [
+       "piece26A",
+       "piece26B",
+       "piece26C",
+       "piece26D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece27",
+      "poly": [
+       "piece27A",
+       "piece27B",
+       "piece27C",
+       "piece27D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece28",
+      "poly": [
+       "piece28A",
+       "piece28B",
+       "piece28C",
+       "piece28D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.5,
+      "group": "used",
+      "start": true
+     },
+     {
+      "id": "piece29",
+      "poly": [
+       "piece29A",
+       "piece29B",
+       "piece29C",
+       "piece29D"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "whole",
+      "dim": [
+       "wholeL",
+       "wholeR"
+      ],
+      "side": "n",
+      "tex": "5\\times6=30",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "usedN",
+      "label": "29\\text{ used}",
+      "at": "usedNP",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue"
+     },
+     {
+      "id": "one",
+      "label": "1",
+      "at": "oneP",
+      "dir": "c",
+      "size": "l",
+      "ink": "gold"
+     },
+     {
+      "id": "sentence",
+      "label": "5\\times6-29=r",
+      "at": "sentenceP",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Do what happened first, then what happened next,",
+     "pause": 0,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Two-step stories"
+      },
+      {
+       "do": "text",
+       "text": "1. Do what happened first.",
+       "at": "first"
+      },
+      {
+       "do": "text",
+       "text": "2. Then do what happened next.",
+       "at": "next"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "whole"
+       ],
+       "at": "first"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "and ask whether the answer is the right size.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "text",
+       "text": "3. Check the answer's size.",
+       "at": "size"
+      },
+      {
+       "do": "highlight",
+       "target": "piece29",
+       "at": "size"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
