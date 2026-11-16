@@ -80,6 +80,10 @@ describe("a shot change between two geometry figures", () => {
     const hidden = { ...mark, id: "old" };
     expectDissolve(film(strip(3, [hidden]), strip(3, [mark]), [{ do: "hide", target: "old" }]));
   });
+  it("reads a part named like an object's own property (toString) as a part, not a point", () => {
+    const named = { ...mark, id: "toString" };
+    expectDissolve(film(strip(3, [named]), strip(3, [named, { ...mark, id: "tick", seg: ["b3", "t3"] }])));
+  });
   it("dips when one part is swapped for another", () => {
     expectDip(film(strip(3, [{ ...mark, id: "old" }]), strip(3, [mark])));
   });

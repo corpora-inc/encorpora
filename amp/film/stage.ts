@@ -3915,8 +3915,8 @@ class Board {
 // ------------------------------------------------------------------ the film
 /** An app figure mounted into a shot's card (film/example.tsx): how to draw it at t, and what its checks found. */
 export type FigureMount = { seek?: (t: number) => void; issues?: string[]; notes?: string[] };
-/** How long a shot takes to fade in when it dissolves over the one before (see `Film.seek`). */
-const DISSOLVE_IN = 0.6;
+/** How long a shot takes to fade in when it dissolves over the one before, and to fade out when the next begins (see `Film.seek`). */
+const DISSOLVE_IN = 0.6, FADE_OUT = 0.3;
 /** Figure actions that change how a part looks, not only whether it shows. Moves and glides change points, compared by place. */
 const RESHAPES = new Set(["turn", "flip", "slide", "cut", "split", "join", "zoom", "given", "partition", "shade"]);
 const THING_ACTS = new Set(["arrive", "count", "send", "leave"]);
@@ -3941,18 +3941,19 @@ function reshaped(g: GeoStage, list: Entry[], t: number) {
 /**
  * Whether geometry figure b takes over from a without replacing anything, so dissolving one into
  * the other reads as parts arriving or leaving, never as two pictures printed over each other.
- * It does when b opens on the window a closes on, and from the ink a shows as it leaves to the ink
+ * It does when b opens on the window a closes on, and from the ink a shows while it fades out to the ink
  * b shows once it has faded in, parts are only added or only taken away: every part both show is
  * the same part, untouched by either shot's actions, on points in the same places.
  * A moved point is a change: its label or line would show twice, once where it was and once where it is.
  */
 function geoContinues(a: GeoStage, aList: Entry[], b: GeoStage, bList: Entry[], change: number): boolean {
-  const aEnd = change, bOpen = change + DISSOLVE_IN;
+  // a is still drawn, fading, from the change until it has gone
+  const aLeaving = [change, change + FADE_OUT], bOpen = change + DISSOLVE_IN;
   const near = (p: readonly number[], q: readonly number[]) => p.length === q.length && p.every((x, k) => Math.abs(x - q[k]!) < 1e-6);
-  if (!!a.geo.stretch !== !!b.geo.stretch || !near(a.viewAt(aEnd), b.viewAt(bOpen))) return false;
-  const shown = (g: GeoStage, t: number) => new Map(g.geo.parts.filter((p) => g.opacity(p, t).o > 0.001).map((p) => [p.id, p]));
-  const inA = shown(a, aEnd), inB = shown(b, bOpen);
-  const aTouched = reshaped(a, aList, aEnd), bTouched = reshaped(b, bList, bOpen);
+  if (!!a.geo.stretch !== !!b.geo.stretch || aLeaving.some((t) => !near(a.viewAt(t), b.viewAt(bOpen)))) return false;
+  const shown = (g: GeoStage, ts: number[]) => new Map(g.geo.parts.filter((p) => ts.some((t) => g.opacity(p, t).o > 0.001)).map((p) => [p.id, p]));
+  const inA = shown(a, aLeaving), inB = shown(b, [bOpen]);
+  const aTouched = reshaped(a, aList, change + FADE_OUT), bTouched = reshaped(b, bList, bOpen);
   const names = (v: unknown, out: Set<string>): Set<string> => {
     if (typeof v === "string") out.add(v);
     else if (Array.isArray(v)) v.forEach((x) => names(x, out));
@@ -3962,9 +3963,9 @@ function geoContinues(a: GeoStage, aList: Entry[], b: GeoStage, bList: Entry[], 
   const samePart = (p: Part, q: Part) => {
     if (JSON.stringify(p) !== JSON.stringify(q) || aTouched.has(p.id) || bTouched.has(q.id)) return false;
     for (const n of names(p, new Set())) {
-      const inPa = n in a.geo.points, inPb = n in b.geo.points;
+      const inPa = Object.hasOwn(a.geo.points, n), inPb = Object.hasOwn(b.geo.points, n);
       if (inPa !== inPb) return false;
-      if (inPa && !near(a.at(n, aEnd), b.at(n, bOpen))) return false;
+      if (inPa && aLeaving.some((t) => !near(a.at(n, t), b.at(n, bOpen)))) return false;
     }
     return true;
   };
@@ -4304,7 +4305,7 @@ export class Film {
       // The film, and each shot, eases in. Nothing is fully present on the first frame.
       const inn = i === 0 ? ease(t / 0.7) : s.dip ? ease((t - s.t0 - 0.28) / 0.45) : ease((t - s.t0) / DISSOLVE_IN);
       // the last shot never fades: the film ends on its summary, held
-      const out = s.t1 === Infinity ? 1 : 1 - ease((t - s.t1) / 0.3);
+      const out = s.t1 === Infinity ? 1 : 1 - ease((t - s.t1) / FADE_OUT);
       const o = inn * out;
       const on = o > 0.002;
       s.el.style.visibility = on ? "visible" : "hidden";
