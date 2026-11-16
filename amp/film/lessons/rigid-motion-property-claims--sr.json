@@ -1,0 +1,8229 @@
+{
+  "id": "rigid-motion-property-claims--sr",
+  "title": "Properties of rigid motions",
+  "cast": {
+    "teacher": {}
+  },
+  "teaches": [
+    "rigid-motion-measure-verify",
+    "rigid-motion-image-check",
+    "rigid-motion-image-flaw"
+  ],
+  "skill": "rigid-motion-properties",
+  "shots": [
+    {
+      "figure": {
+        "points": {
+          "A": [
+            0,
+            0
+          ],
+          "B": [
+            4,
+            2
+          ],
+          "C": [
+            1,
+            3
+          ],
+          "D": [
+            -1,
+            2
+          ],
+          "P": [
+            0,
+            -5
+          ],
+          "Q": [
+            5,
+            -3
+          ],
+          "R": [
+            1,
+            -2
+          ],
+          "S": [
+            -1,
+            -3
+          ],
+          "gxn1a": [
+            -1,
+            -6
+          ],
+          "gxn1b": [
+            -1,
+            4
+          ],
+          "gx0a": [
+            0,
+            -6
+          ],
+          "gx0b": [
+            0,
+            4
+          ],
+          "gx1a": [
+            1,
+            -6
+          ],
+          "gx1b": [
+            1,
+            4
+          ],
+          "gx2a": [
+            2,
+            -6
+          ],
+          "gx2b": [
+            2,
+            4
+          ],
+          "gx3a": [
+            3,
+            -6
+          ],
+          "gx3b": [
+            3,
+            4
+          ],
+          "gx4a": [
+            4,
+            -6
+          ],
+          "gx4b": [
+            4,
+            4
+          ],
+          "gx5a": [
+            5,
+            -6
+          ],
+          "gx5b": [
+            5,
+            4
+          ],
+          "gyn5a": [
+            -2,
+            -5
+          ],
+          "gyn5b": [
+            6,
+            -5
+          ],
+          "gyn4a": [
+            -2,
+            -4
+          ],
+          "gyn4b": [
+            6,
+            -4
+          ],
+          "gyn3a": [
+            -2,
+            -3
+          ],
+          "gyn3b": [
+            6,
+            -3
+          ],
+          "gyn2a": [
+            -2,
+            -2
+          ],
+          "gyn2b": [
+            6,
+            -2
+          ],
+          "gyn1a": [
+            -2,
+            -1
+          ],
+          "gyn1b": [
+            6,
+            -1
+          ],
+          "gy0a": [
+            -2,
+            0
+          ],
+          "gy0b": [
+            6,
+            0
+          ],
+          "gy1a": [
+            -2,
+            1
+          ],
+          "gy1b": [
+            6,
+            1
+          ],
+          "gy2a": [
+            -2,
+            2
+          ],
+          "gy2b": [
+            6,
+            2
+          ],
+          "gy3a": [
+            -2,
+            3
+          ],
+          "gy3b": [
+            6,
+            3
+          ],
+          "finish_ablen": [
+            3.2,
+            -1.1
+          ],
+          "finish_pqlen": [
+            3.5,
+            -5.65
+          ]
+        },
+        "parts": [
+          {
+            "id": "axes",
+            "axes": true,
+            "every": 2,
+            "step": 1,
+            "ink": "muted",
+            "start": true,
+            "yevery": 3
+          },
+          {
+            "id": "gy3",
+            "seg": [
+              "gy3a",
+              "gy3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy2",
+            "seg": [
+              "gy2a",
+              "gy2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy1",
+            "seg": [
+              "gy1a",
+              "gy1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy0",
+            "seg": [
+              "gy0a",
+              "gy0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gyn1",
+            "seg": [
+              "gyn1a",
+              "gyn1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gyn2",
+            "seg": [
+              "gyn2a",
+              "gyn2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gyn3",
+            "seg": [
+              "gyn3a",
+              "gyn3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gyn4",
+            "seg": [
+              "gyn4a",
+              "gyn4b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gyn5",
+            "seg": [
+              "gyn5a",
+              "gyn5b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx5",
+            "seg": [
+              "gx5a",
+              "gx5b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx4",
+            "seg": [
+              "gx4a",
+              "gx4b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx3",
+            "seg": [
+              "gx3a",
+              "gx3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx2",
+            "seg": [
+              "gx2a",
+              "gx2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx1",
+            "seg": [
+              "gx1a",
+              "gx1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx0",
+            "seg": [
+              "gx0a",
+              "gx0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gxn1",
+            "seg": [
+              "gxn1a",
+              "gxn1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "shape",
+            "poly": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "AB",
+            "seg": [
+              "A",
+              "B"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "BC",
+            "seg": [
+              "B",
+              "C"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "CD",
+            "seg": [
+              "C",
+              "D"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "DA",
+            "seg": [
+              "D",
+              "A"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "nameA",
+            "label": "A",
+            "at": "A",
+            "dir": "sw",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "nameB",
+            "label": "B",
+            "at": "B",
+            "dir": "e",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "nameC",
+            "label": "C",
+            "at": "C",
+            "dir": "n",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "nameD",
+            "label": "D",
+            "at": "D",
+            "dir": "w",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "candidate",
+            "poly": [
+              "P",
+              "Q",
+              "R",
+              "S"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "PQ",
+            "seg": [
+              "P",
+              "Q"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "QR",
+            "seg": [
+              "Q",
+              "R"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "RS",
+            "seg": [
+              "R",
+              "S"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "SP",
+            "seg": [
+              "S",
+              "P"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "nameP",
+            "label": "P",
+            "at": "P",
+            "dir": "sw",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "nameQ",
+            "label": "Q",
+            "at": "Q",
+            "dir": "e",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "nameR",
+            "label": "R",
+            "at": "R",
+            "dir": "n",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "nameS",
+            "label": "S",
+            "at": "S",
+            "dir": "w",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "ablen",
+            "label": "AB^2=20",
+            "at": "finish_ablen",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "blue"
+          },
+          {
+            "id": "pqlen",
+            "label": "PQ^2=29",
+            "at": "finish_pqlen",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "warm"
+          },
+          {
+            "id": "finishLight1",
+            "poly": [
+              "P",
+              "Q",
+              "R",
+              "S"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "finishLight2",
+            "poly": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 5
+          }
+        ],
+        "view": [
+          -2,
+          -6,
+          6,
+          4
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "These two quadrilaterals look alike. Could the orange one be the blue one, just moved?",
+          "pause": 1.2,
+          "do": [
+            {
+              "do": "header",
+              "text": "Moved, or changed?"
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight1"
+              ],
+              "dur": 0.15,
+              "at": "orange"
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight2"
+              ],
+              "dur": 0.15,
+              "at": "blue"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "finishLight1"
+              ],
+              "at": "blue",
+              "dur": 0.15
+            },
+            {
+              "do": "hide",
+              "target": [
+                "finishLight2"
+              ],
+              "at": "just",
+              "dur": 0.15
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A transformed figure is called its image. We will measure what a slide, a flip, or a turn cannot change.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "finishLight1",
+                "finishLight2"
+              ],
+              "dur": 0.15
+            },
+            {
+              "do": "text",
+              "text": "Image: the transformed figure",
+              "at": "image"
+            },
+            {
+              "do": "text",
+              "text": "Which measurements must match?",
+              "at": "measure"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "A": [
+            0,
+            0
+          ],
+          "B": [
+            4,
+            2
+          ],
+          "C": [
+            1,
+            3
+          ],
+          "D": [
+            -1,
+            2
+          ],
+          "H": [
+            4,
+            0
+          ],
+          "gxn1a": [
+            -1,
+            -1
+          ],
+          "gxn1b": [
+            -1,
+            4
+          ],
+          "gx0a": [
+            0,
+            -1
+          ],
+          "gx0b": [
+            0,
+            4
+          ],
+          "gx1a": [
+            1,
+            -1
+          ],
+          "gx1b": [
+            1,
+            4
+          ],
+          "gx2a": [
+            2,
+            -1
+          ],
+          "gx2b": [
+            2,
+            4
+          ],
+          "gx3a": [
+            3,
+            -1
+          ],
+          "gx3b": [
+            3,
+            4
+          ],
+          "gx4a": [
+            4,
+            -1
+          ],
+          "gx4b": [
+            4,
+            4
+          ],
+          "gy0a": [
+            -2,
+            0
+          ],
+          "gy0b": [
+            5,
+            0
+          ],
+          "gy1a": [
+            -2,
+            1
+          ],
+          "gy1b": [
+            5,
+            1
+          ],
+          "gy2a": [
+            -2,
+            2
+          ],
+          "gy2b": [
+            5,
+            2
+          ],
+          "gy3a": [
+            -2,
+            3
+          ],
+          "gy3b": [
+            5,
+            3
+          ],
+          "finish_four": [
+            2,
+            0.42
+          ]
+        },
+        "parts": [
+          {
+            "id": "axes",
+            "axes": true,
+            "every": 2,
+            "step": 1,
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "gy3",
+            "seg": [
+              "gy3a",
+              "gy3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy2",
+            "seg": [
+              "gy2a",
+              "gy2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy1",
+            "seg": [
+              "gy1a",
+              "gy1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy0",
+            "seg": [
+              "gy0a",
+              "gy0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx4",
+            "seg": [
+              "gx4a",
+              "gx4b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx3",
+            "seg": [
+              "gx3a",
+              "gx3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx2",
+            "seg": [
+              "gx2a",
+              "gx2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx1",
+            "seg": [
+              "gx1a",
+              "gx1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx0",
+            "seg": [
+              "gx0a",
+              "gx0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gxn1",
+            "seg": [
+              "gxn1a",
+              "gxn1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "shape",
+            "poly": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "AB",
+            "seg": [
+              "A",
+              "B"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "BC",
+            "seg": [
+              "B",
+              "C"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "CD",
+            "seg": [
+              "C",
+              "D"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "DA",
+            "seg": [
+              "D",
+              "A"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "nameA",
+            "label": "A",
+            "at": "A",
+            "dir": "sw",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "nameB",
+            "label": "B",
+            "at": "B",
+            "dir": "e",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "nameC",
+            "label": "C",
+            "at": "C",
+            "dir": "n",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "nameD",
+            "label": "D",
+            "at": "D",
+            "dir": "w",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "run",
+            "seg": [
+              "A",
+              "H"
+            ],
+            "ink": "gold",
+            "dash": true
+          },
+          {
+            "id": "rise",
+            "seg": [
+              "H",
+              "B"
+            ],
+            "ink": "gold",
+            "dash": true
+          },
+          {
+            "id": "four",
+            "label": "4",
+            "at": "finish_four",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "gold"
+          },
+          {
+            "id": "two",
+            "label": "2",
+            "at": "rise",
+            "dir": "e",
+            "size": "m",
+            "halo": true,
+            "ink": "gold"
+          },
+          {
+            "id": "alen",
+            "label": "2\\sqrt5",
+            "at": "AB",
+            "dir": "n",
+            "size": "m",
+            "halo": true,
+            "ink": "accent"
+          },
+          {
+            "id": "finishLight3",
+            "seg": [
+              "A",
+              "B"
+            ],
+            "ink": "gold",
+            "w": 5
+          }
+        ],
+        "view": [
+          -2,
+          -1,
+          5,
+          4
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "First, measure a sloping side. From *A*, zero, zero, to *B*, four, two: four across and two up.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Measure the segment"
+            },
+            {
+              "do": "write",
+              "tex": "A=(0,0),\\quad B=(4,2)"
+            },
+            {
+              "do": "draw",
+              "target": "run",
+              "at": "across"
+            },
+            {
+              "do": "show",
+              "target": "four",
+              "at": "across"
+            },
+            {
+              "do": "draw",
+              "target": "rise",
+              "at": "up"
+            },
+            {
+              "do": "show",
+              "target": "two",
+              "at": "up"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Those steps are perpendicular. The straight distance is the hypotenuse, not the sum of the steps.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "text",
+              "text": "Use the right triangle"
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight3"
+              ],
+              "dur": 0.15,
+              "at": "hypotenuse"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "finishLight3"
+              ],
+              "at": "not",
+              "dur": 0.15
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "By the Pythagorean theorem, the length squared is four squared plus two squared: twenty.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "finishLight3"
+              ],
+              "dur": 0.15
+            },
+            {
+              "do": "write",
+              "tex": "AB^2=4^2+2^2=20",
+              "at": "squared"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "So the length is the square root of twenty, or two square roots of five.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "AB=\\sqrt{20}=2\\sqrt5"
+            },
+            {
+              "do": "show",
+              "target": "alen"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "A": [
+            0,
+            0
+          ],
+          "B": [
+            4,
+            2
+          ],
+          "C": [
+            1,
+            3
+          ],
+          "D": [
+            -1,
+            2
+          ],
+          "O": [
+            0,
+            0
+          ],
+          "V": [
+            0,
+            4
+          ],
+          "T": [
+            0.35,
+            1.1
+          ],
+          "Long": [
+            3,
+            -0.6
+          ],
+          "Short": [
+            -2.1,
+            1.8
+          ],
+          "tagA": [
+            -0.3,
+            -0.6
+          ],
+          "tagB": [
+            4.6,
+            1.9
+          ],
+          "tagC": [
+            1,
+            3.6
+          ],
+          "tagD": [
+            -1.6,
+            2.7
+          ],
+          "gxn4a": [
+            -4,
+            -4
+          ],
+          "gxn4b": [
+            -4,
+            5
+          ],
+          "gxn3a": [
+            -3,
+            -4
+          ],
+          "gxn3b": [
+            -3,
+            5
+          ],
+          "gxn2a": [
+            -2,
+            -4
+          ],
+          "gxn2b": [
+            -2,
+            5
+          ],
+          "gxn1a": [
+            -1,
+            -4
+          ],
+          "gxn1b": [
+            -1,
+            5
+          ],
+          "gx0a": [
+            0,
+            -4
+          ],
+          "gx0b": [
+            0,
+            5
+          ],
+          "gx1a": [
+            1,
+            -4
+          ],
+          "gx1b": [
+            1,
+            5
+          ],
+          "gx2a": [
+            2,
+            -4
+          ],
+          "gx2b": [
+            2,
+            5
+          ],
+          "gx3a": [
+            3,
+            -4
+          ],
+          "gx3b": [
+            3,
+            5
+          ],
+          "gx4a": [
+            4,
+            -4
+          ],
+          "gx4b": [
+            4,
+            5
+          ],
+          "gyn3a": [
+            -5,
+            -3
+          ],
+          "gyn3b": [
+            5,
+            -3
+          ],
+          "gyn2a": [
+            -5,
+            -2
+          ],
+          "gyn2b": [
+            5,
+            -2
+          ],
+          "gyn1a": [
+            -5,
+            -1
+          ],
+          "gyn1b": [
+            5,
+            -1
+          ],
+          "gy0a": [
+            -5,
+            0
+          ],
+          "gy0b": [
+            5,
+            0
+          ],
+          "gy1a": [
+            -5,
+            1
+          ],
+          "gy1b": [
+            5,
+            1
+          ],
+          "gy2a": [
+            -5,
+            2
+          ],
+          "gy2b": [
+            5,
+            2
+          ],
+          "gy3a": [
+            -5,
+            3
+          ],
+          "gy3b": [
+            5,
+            3
+          ],
+          "gy4a": [
+            -5,
+            4
+          ],
+          "gy4b": [
+            5,
+            4
+          ]
+        },
+        "parts": [
+          {
+            "id": "axes",
+            "axes": true,
+            "every": 2,
+            "step": 1,
+            "ink": "muted",
+            "start": true,
+            "yevery": 3
+          },
+          {
+            "id": "gy4",
+            "seg": [
+              "gy4a",
+              "gy4b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy3",
+            "seg": [
+              "gy3a",
+              "gy3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy2",
+            "seg": [
+              "gy2a",
+              "gy2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy1",
+            "seg": [
+              "gy1a",
+              "gy1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy0",
+            "seg": [
+              "gy0a",
+              "gy0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gyn1",
+            "seg": [
+              "gyn1a",
+              "gyn1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gyn2",
+            "seg": [
+              "gyn2a",
+              "gyn2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gyn3",
+            "seg": [
+              "gyn3a",
+              "gyn3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx4",
+            "seg": [
+              "gx4a",
+              "gx4b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx3",
+            "seg": [
+              "gx3a",
+              "gx3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx2",
+            "seg": [
+              "gx2a",
+              "gx2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx1",
+            "seg": [
+              "gx1a",
+              "gx1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx0",
+            "seg": [
+              "gx0a",
+              "gx0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gxn1",
+            "seg": [
+              "gxn1a",
+              "gxn1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gxn2",
+            "seg": [
+              "gxn2a",
+              "gxn2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gxn3",
+            "seg": [
+              "gxn3a",
+              "gxn3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gxn4",
+            "seg": [
+              "gxn4a",
+              "gxn4b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "shape",
+            "poly": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 3,
+            "start": true,
+            "group": "rigid"
+          },
+          {
+            "id": "AB",
+            "seg": [
+              "A",
+              "B"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true,
+            "group": "rigid"
+          },
+          {
+            "id": "BC",
+            "seg": [
+              "B",
+              "C"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true,
+            "group": "rigid"
+          },
+          {
+            "id": "CD",
+            "seg": [
+              "C",
+              "D"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true,
+            "group": "rigid"
+          },
+          {
+            "id": "DA",
+            "seg": [
+              "D",
+              "A"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true,
+            "group": "rigid"
+          },
+          {
+            "id": "nameA",
+            "label": "A",
+            "at": "tagA",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true,
+            "group": "rigid"
+          },
+          {
+            "id": "nameB",
+            "label": "B",
+            "at": "tagB",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true,
+            "group": "rigid"
+          },
+          {
+            "id": "nameC",
+            "label": "C",
+            "at": "tagC",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true,
+            "group": "rigid"
+          },
+          {
+            "id": "nameD",
+            "label": "D",
+            "at": "tagD",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true,
+            "group": "rigid"
+          },
+          {
+            "id": "right",
+            "angle": [
+              "D",
+              "A",
+              "B"
+            ],
+            "right": true,
+            "r": 30,
+            "ink": "gold",
+            "start": true,
+            "group": "rigid"
+          },
+          {
+            "id": "anglevalue",
+            "label": "90^\\circ",
+            "at": "T",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "gold",
+            "start": true,
+            "group": "rigid"
+          },
+          {
+            "id": "long",
+            "label": "2\\sqrt5",
+            "at": "Long",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true,
+            "group": "rigid"
+          },
+          {
+            "id": "short",
+            "label": "\\sqrt5",
+            "at": "Short",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true,
+            "group": "rigid"
+          },
+          {
+            "id": "parallelAB",
+            "seg": [
+              "A",
+              "B"
+            ],
+            "arrows": 1,
+            "ink": "accent",
+            "w": 3,
+            "start": true,
+            "group": "rigid"
+          },
+          {
+            "id": "parallelDC",
+            "seg": [
+              "D",
+              "C"
+            ],
+            "arrows": 1,
+            "ink": "accent",
+            "w": 3,
+            "start": true,
+            "group": "rigid"
+          },
+          {
+            "id": "mirror",
+            "seg": [
+              "O",
+              "V"
+            ],
+            "extend": [
+              4,
+              0
+            ],
+            "ink": "gold",
+            "dash": true
+          },
+          {
+            "id": "origin",
+            "dot": "O",
+            "ink": "gold",
+            "r": 5
+          },
+          {
+            "id": "finishLight4",
+            "seg": [
+              "A",
+              "B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "group": "rigid"
+          },
+          {
+            "id": "finishLight5",
+            "seg": [
+              "D",
+              "A"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "group": "rigid"
+          },
+          {
+            "id": "finishLight6",
+            "angle": [
+              "D",
+              "A",
+              "B"
+            ],
+            "right": true,
+            "r": 30,
+            "ink": "accent",
+            "group": "rigid"
+          },
+          {
+            "id": "finishLight7",
+            "seg": [
+              "A",
+              "B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "group": "rigid"
+          },
+          {
+            "id": "finishLight8",
+            "seg": [
+              "D",
+              "A"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "group": "rigid"
+          },
+          {
+            "id": "finishLight9",
+            "dot": "A",
+            "ink": "gold",
+            "r": 5,
+            "group": "rigid"
+          },
+          {
+            "id": "finishLight10",
+            "dot": "B",
+            "ink": "gold",
+            "r": 5,
+            "group": "rigid"
+          },
+          {
+            "id": "finishLight11",
+            "dot": "C",
+            "ink": "gold",
+            "r": 5,
+            "group": "rigid"
+          },
+          {
+            "id": "finishLight12",
+            "dot": "D",
+            "ink": "gold",
+            "r": 5,
+            "group": "rigid"
+          },
+          {
+            "id": "finishLight13",
+            "seg": [
+              "A",
+              "B"
+            ],
+            "arrows": 1,
+            "ink": "gold",
+            "w": 5,
+            "group": "rigid"
+          },
+          {
+            "id": "finishLight14",
+            "seg": [
+              "D",
+              "C"
+            ],
+            "arrows": 1,
+            "ink": "gold",
+            "w": 5,
+            "group": "rigid"
+          },
+          {
+            "id": "finishLight15",
+            "seg": [
+              "A",
+              "B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "group": "rigid"
+          },
+          {
+            "id": "finishLight16",
+            "seg": [
+              "D",
+              "A"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "group": "rigid"
+          },
+          {
+            "id": "finishLight17",
+            "angle": [
+              "D",
+              "A",
+              "B"
+            ],
+            "right": true,
+            "r": 30,
+            "ink": "accent",
+            "group": "rigid"
+          }
+        ],
+        "view": [
+          -5,
+          -4,
+          5,
+          5
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Attach the measurements to the figure: two side lengths and a ninety degree angle. The arrow marks identify parallel sides.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Measurements ride along"
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight4",
+                "finishLight5"
+              ],
+              "dur": 0.15,
+              "at": "lengths"
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight6"
+              ],
+              "dur": 0.15,
+              "at": "ninety"
+            },
+            {
+              "do": "write",
+              "tex": "AB\\parallel DC",
+              "at": "parallel"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "finishLight4",
+                "finishLight5"
+              ],
+              "at": "ninety",
+              "dur": 0.15
+            },
+            {
+              "do": "hide",
+              "target": [
+                "finishLight6"
+              ],
+              "at": "arrow",
+              "dur": 0.15
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Slope is the change in height divided by the change across. Both parallel sides have slope one half.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "finishLight4",
+                "finishLight5",
+                "finishLight6"
+              ],
+              "dur": 0.15
+            },
+            {
+              "do": "text",
+              "text": "Slope = change in $y$ ÷ change in $x$"
+            },
+            {
+              "do": "write",
+              "tex": "m_{AB}=m_{DC}=\\tfrac12",
+              "at": "Both"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A translation is a slide. Move every point two left and one down.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Translation"
+            },
+            {
+              "do": "slide",
+              "target": "rigid",
+              "by": [
+                -2,
+                -1
+              ],
+              "at": "Move",
+              "dur": 3
+            },
+            {
+              "do": "write",
+              "tex": "A:(0,0)\\to(-2,-1)",
+              "at": "Move"
+            },
+            {
+              "do": "write",
+              "tex": "B:(4,2)\\to(2,1)",
+              "at": "down"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "New coordinates. The same lengths, the same angle, and parallel sides.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "write",
+              "tex": "m_{AB}=m_{DC}=\\tfrac12",
+              "at": "parallel"
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight7",
+                "finishLight8"
+              ],
+              "dur": 0.15,
+              "at": "same"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "finishLight7",
+                "finishLight8"
+              ],
+              "at": "angle",
+              "dur": 0.15
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A reflection flips the figure across a line. Here, the vertical axis is the mirror.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "finishLight7",
+                "finishLight8"
+              ],
+              "dur": 0.15
+            },
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Reflection across the y-axis"
+            },
+            {
+              "do": "show",
+              "target": "mirror",
+              "at": "vertical"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Flip it. Each corner lands equally far on the other side. The measurements travel with it.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "flip",
+              "target": "rigid",
+              "over": [
+                "O",
+                "V"
+              ],
+              "at": "Flip",
+              "dur": 3
+            },
+            {
+              "do": "write",
+              "tex": "A:(-2,-1)\\to(2,-1)",
+              "at": "equally"
+            },
+            {
+              "do": "write",
+              "tex": "B:(2,1)\\to(-2,1)",
+              "at": "measurements"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Follow the corners in alphabetical order. They go around the opposite way. Reflection reverses that order, but keeps the angles.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "finishLight9"
+              ],
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight10"
+              ],
+              "dur": 0.15,
+              "at": "corners"
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight11"
+              ],
+              "dur": 0.15,
+              "at": "alphabetical"
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight12"
+              ],
+              "dur": 0.15,
+              "at": "order"
+            },
+            {
+              "do": "write",
+              "tex": "m_{AB}=m_{DC}=-\\tfrac12",
+              "at": "Reflection"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "finishLight9"
+              ],
+              "at": "corners",
+              "dur": 0.15
+            },
+            {
+              "do": "hide",
+              "target": [
+                "finishLight10"
+              ],
+              "at": "alphabetical",
+              "dur": 0.15
+            },
+            {
+              "do": "hide",
+              "target": [
+                "finishLight11"
+              ],
+              "at": "order",
+              "dur": 0.15
+            },
+            {
+              "do": "hide",
+              "target": [
+                "finishLight12"
+              ],
+              "at": "They",
+              "dur": 0.15
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A rotation is a turn around a fixed point. Turn ninety degrees counterclockwise around the origin.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "finishLight9",
+                "finishLight10",
+                "finishLight11",
+                "finishLight12"
+              ],
+              "dur": 0.15
+            },
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Rotation about the origin"
+            },
+            {
+              "do": "hide",
+              "target": "mirror"
+            },
+            {
+              "do": "show",
+              "target": "origin"
+            },
+            {
+              "do": "turn",
+              "target": "rigid",
+              "about": "O",
+              "deg": 90,
+              "at": "Turn",
+              "dur": 3
+            },
+            {
+              "do": "write",
+              "tex": "A:(2,-1)\\to(1,2)",
+              "at": "Turn"
+            },
+            {
+              "do": "write",
+              "tex": "B:(-2,1)\\to(-1,-2)",
+              "at": "origin"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The slopes change together, from negative one half to two. The sides stay parallel to each other.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "write",
+              "tex": "m_{AB}=m_{DC}=2"
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight13",
+                "finishLight14"
+              ],
+              "dur": 0.15,
+              "at": "parallel"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "That is rigid motion: every distance and every angle is preserved. Nothing stretches or bends.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "finishLight13",
+                "finishLight14"
+              ],
+              "dur": 0.15
+            },
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Rigid motion"
+            },
+            {
+              "do": "text",
+              "text": "Every distance stays the same",
+              "at": "distance"
+            },
+            {
+              "do": "text",
+              "text": "Every angle stays the same",
+              "at": "angle"
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight15",
+                "finishLight16",
+                "finishLight17"
+              ],
+              "dur": 0.15,
+              "at": "preserved"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "A": [
+            1,
+            2
+          ],
+          "B": [
+            -1,
+            -2
+          ],
+          "C": [
+            -2,
+            1
+          ],
+          "D": [
+            -1,
+            3
+          ],
+          "VL": [
+            -1,
+            -2
+          ],
+          "VT": [
+            -1,
+            3
+          ],
+          "WR": [
+            1,
+            -2
+          ],
+          "WT": [
+            1,
+            3
+          ],
+          "gxn2a": [
+            -2,
+            -3
+          ],
+          "gxn2b": [
+            -2,
+            4
+          ],
+          "gxn1a": [
+            -1,
+            -3
+          ],
+          "gxn1b": [
+            -1,
+            4
+          ],
+          "gx0a": [
+            0,
+            -3
+          ],
+          "gx0b": [
+            0,
+            4
+          ],
+          "gx1a": [
+            1,
+            -3
+          ],
+          "gx1b": [
+            1,
+            4
+          ],
+          "gx2a": [
+            2,
+            -3
+          ],
+          "gx2b": [
+            2,
+            4
+          ],
+          "gyn2a": [
+            -3,
+            -2
+          ],
+          "gyn2b": [
+            3,
+            -2
+          ],
+          "gyn1a": [
+            -3,
+            -1
+          ],
+          "gyn1b": [
+            3,
+            -1
+          ],
+          "gy0a": [
+            -3,
+            0
+          ],
+          "gy0b": [
+            3,
+            0
+          ],
+          "gy1a": [
+            -3,
+            1
+          ],
+          "gy1b": [
+            3,
+            1
+          ],
+          "gy2a": [
+            -3,
+            2
+          ],
+          "gy2b": [
+            3,
+            2
+          ],
+          "gy3a": [
+            -3,
+            3
+          ],
+          "gy3b": [
+            3,
+            3
+          ]
+        },
+        "parts": [
+          {
+            "id": "axes",
+            "axes": true,
+            "every": 2,
+            "step": 1,
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "gy3",
+            "seg": [
+              "gy3a",
+              "gy3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy2",
+            "seg": [
+              "gy2a",
+              "gy2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy1",
+            "seg": [
+              "gy1a",
+              "gy1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy0",
+            "seg": [
+              "gy0a",
+              "gy0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gyn1",
+            "seg": [
+              "gyn1a",
+              "gyn1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gyn2",
+            "seg": [
+              "gyn2a",
+              "gyn2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx2",
+            "seg": [
+              "gx2a",
+              "gx2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx1",
+            "seg": [
+              "gx1a",
+              "gx1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx0",
+            "seg": [
+              "gx0a",
+              "gx0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gxn1",
+            "seg": [
+              "gxn1a",
+              "gxn1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gxn2",
+            "seg": [
+              "gxn2a",
+              "gxn2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "shape",
+            "poly": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 3,
+            "start": true,
+            "group": "turned"
+          },
+          {
+            "id": "AB",
+            "seg": [
+              "A",
+              "B"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true,
+            "group": "turned"
+          },
+          {
+            "id": "BC",
+            "seg": [
+              "B",
+              "C"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true,
+            "group": "turned"
+          },
+          {
+            "id": "CD",
+            "seg": [
+              "C",
+              "D"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true,
+            "group": "turned"
+          },
+          {
+            "id": "DA",
+            "seg": [
+              "D",
+              "A"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true,
+            "group": "turned"
+          },
+          {
+            "id": "nameA",
+            "label": "A",
+            "at": "A",
+            "dir": "ne",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true,
+            "group": "turned"
+          },
+          {
+            "id": "nameB",
+            "label": "B",
+            "at": "B",
+            "dir": "s",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true,
+            "group": "turned"
+          },
+          {
+            "id": "nameC",
+            "label": "C",
+            "at": "C",
+            "dir": "w",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true,
+            "group": "turned"
+          },
+          {
+            "id": "nameD",
+            "label": "D",
+            "at": "D",
+            "dir": "n",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true,
+            "group": "turned"
+          },
+          {
+            "id": "pab",
+            "seg": [
+              "A",
+              "B"
+            ],
+            "arrows": 1,
+            "ink": "accent",
+            "w": 3,
+            "start": true,
+            "group": "turned"
+          },
+          {
+            "id": "pdc",
+            "seg": [
+              "D",
+              "C"
+            ],
+            "arrows": 1,
+            "ink": "accent",
+            "w": 3,
+            "start": true,
+            "group": "turned"
+          },
+          {
+            "id": "verticalL",
+            "seg": [
+              "VL",
+              "VT"
+            ],
+            "ink": "blue",
+            "w": 4
+          },
+          {
+            "id": "verticalR",
+            "seg": [
+              "WR",
+              "WT"
+            ],
+            "ink": "blue",
+            "w": 4
+          },
+          {
+            "id": "finishLight18",
+            "seg": [
+              "A",
+              "B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "group": "turned"
+          },
+          {
+            "id": "finishLight19",
+            "seg": [
+              "A",
+              "B"
+            ],
+            "arrows": 1,
+            "ink": "gold",
+            "w": 5,
+            "group": "turned"
+          },
+          {
+            "id": "finishLight20",
+            "seg": [
+              "D",
+              "C"
+            ],
+            "arrows": 1,
+            "ink": "gold",
+            "w": 5,
+            "group": "turned"
+          }
+        ],
+        "view": [
+          -3,
+          -3,
+          3,
+          4
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Check the turned figure from its coordinates. For the long side, the changes are negative two across and negative four up.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Verify after the turn"
+            },
+            {
+              "do": "write",
+              "tex": "A=(1,2),\\quad B=(-1,-2)"
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight18"
+              ],
+              "dur": 0.15,
+              "at": "long"
+            },
+            {
+              "do": "write",
+              "tex": "\\Delta x=-2,\\quad\\Delta y=-4",
+              "at": "negative"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Square both changes. Four plus sixteen is twenty, exactly the original length squared.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "finishLight18"
+              ],
+              "dur": 0.15
+            },
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "AB^2=(-2)^2+(-4)^2"
+            },
+            {
+              "do": "write",
+              "tex": "AB^2=4+16=20",
+              "at": "twenty"
+            },
+            {
+              "do": "text",
+              "text": "Before: $20$. After: $20$.",
+              "at": "exactly"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "For slope, divide the change in height by the change across. Negative four over negative two is two.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Parallel does not mean horizontal"
+            },
+            {
+              "do": "write",
+              "tex": "m_{AB}=\\frac{-2-2}{-1-1}",
+              "at": "slope"
+            },
+            {
+              "do": "write",
+              "tex": "m_{AB}=\\frac{-4}{-2}=2",
+              "at": "Negative"
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight19"
+              ],
+              "dur": 0.15,
+              "at": "slope"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "From *D*, negative one, three, to *C*, negative two, one, the slope is also two.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "finishLight19"
+              ],
+              "dur": 0.15
+            },
+            {
+              "do": "write",
+              "tex": "m_{DC}=\\frac{1-3}{-2-(-1)}=2"
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight20"
+              ],
+              "dur": 0.15,
+              "at": "also"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Distinct lines with equal slopes are parallel.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "finishLight20"
+              ],
+              "dur": 0.15
+            },
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "m_{AB}=m_{DC}=2"
+            },
+            {
+              "do": "answer",
+              "tex": "AB\\parallel DC",
+              "at": "parallel"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Two vertical lines are parallel too, although their slopes are undefined.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "hide",
+              "target": "turned"
+            },
+            {
+              "do": "show",
+              "target": [
+                "verticalL",
+                "verticalR"
+              ]
+            },
+            {
+              "do": "text",
+              "text": "Vertical lines: both go straight up"
+            },
+            {
+              "do": "text",
+              "text": "Slope is undefined",
+              "at": "undefined"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "P": [
+            -2,
+            -2
+          ],
+          "Q": [
+            0,
+            0
+          ],
+          "R": [
+            2,
+            2
+          ],
+          "O": [
+            0,
+            0
+          ],
+          "gxn3a": [
+            -3,
+            -4
+          ],
+          "gxn3b": [
+            -3,
+            4
+          ],
+          "gxn2a": [
+            -2,
+            -4
+          ],
+          "gxn2b": [
+            -2,
+            4
+          ],
+          "gxn1a": [
+            -1,
+            -4
+          ],
+          "gxn1b": [
+            -1,
+            4
+          ],
+          "gx0a": [
+            0,
+            -4
+          ],
+          "gx0b": [
+            0,
+            4
+          ],
+          "gx1a": [
+            1,
+            -4
+          ],
+          "gx1b": [
+            1,
+            4
+          ],
+          "gx2a": [
+            2,
+            -4
+          ],
+          "gx2b": [
+            2,
+            4
+          ],
+          "gx3a": [
+            3,
+            -4
+          ],
+          "gx3b": [
+            3,
+            4
+          ],
+          "gyn3a": [
+            -4,
+            -3
+          ],
+          "gyn3b": [
+            4,
+            -3
+          ],
+          "gyn2a": [
+            -4,
+            -2
+          ],
+          "gyn2b": [
+            4,
+            -2
+          ],
+          "gyn1a": [
+            -4,
+            -1
+          ],
+          "gyn1b": [
+            4,
+            -1
+          ],
+          "gy0a": [
+            -4,
+            0
+          ],
+          "gy0b": [
+            4,
+            0
+          ],
+          "gy1a": [
+            -4,
+            1
+          ],
+          "gy1b": [
+            4,
+            1
+          ],
+          "gy2a": [
+            -4,
+            2
+          ],
+          "gy2b": [
+            4,
+            2
+          ],
+          "gy3a": [
+            -4,
+            3
+          ],
+          "gy3b": [
+            4,
+            3
+          ],
+          "finish_nameQ": [
+            -0.7,
+            0.7
+          ]
+        },
+        "parts": [
+          {
+            "id": "axes",
+            "axes": true,
+            "every": 2,
+            "step": 1,
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "gy3",
+            "seg": [
+              "gy3a",
+              "gy3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy2",
+            "seg": [
+              "gy2a",
+              "gy2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy1",
+            "seg": [
+              "gy1a",
+              "gy1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy0",
+            "seg": [
+              "gy0a",
+              "gy0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gyn1",
+            "seg": [
+              "gyn1a",
+              "gyn1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gyn2",
+            "seg": [
+              "gyn2a",
+              "gyn2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gyn3",
+            "seg": [
+              "gyn3a",
+              "gyn3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx3",
+            "seg": [
+              "gx3a",
+              "gx3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx2",
+            "seg": [
+              "gx2a",
+              "gx2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx1",
+            "seg": [
+              "gx1a",
+              "gx1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx0",
+            "seg": [
+              "gx0a",
+              "gx0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gxn1",
+            "seg": [
+              "gxn1a",
+              "gxn1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gxn2",
+            "seg": [
+              "gxn2a",
+              "gxn2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gxn3",
+            "seg": [
+              "gxn3a",
+              "gxn3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "line",
+            "seg": [
+              "P",
+              "R"
+            ],
+            "extend": [
+              1,
+              1
+            ],
+            "ink": "accent",
+            "w": 3,
+            "start": true,
+            "group": "lineGroup"
+          },
+          {
+            "id": "dotP",
+            "dot": "P",
+            "ink": "accent",
+            "start": true,
+            "group": "lineGroup"
+          },
+          {
+            "id": "nameP",
+            "label": "P",
+            "at": "P",
+            "dir": "n",
+            "size": "m",
+            "halo": true,
+            "start": true,
+            "group": "lineGroup"
+          },
+          {
+            "id": "dotQ",
+            "dot": "Q",
+            "ink": "accent",
+            "start": true,
+            "group": "lineGroup"
+          },
+          {
+            "id": "nameQ",
+            "label": "Q",
+            "at": "finish_nameQ",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "start": true,
+            "group": "lineGroup"
+          },
+          {
+            "id": "dotR",
+            "dot": "R",
+            "ink": "accent",
+            "start": true,
+            "group": "lineGroup"
+          },
+          {
+            "id": "nameR",
+            "label": "R",
+            "at": "R",
+            "dir": "n",
+            "size": "m",
+            "halo": true,
+            "start": true,
+            "group": "lineGroup"
+          },
+          {
+            "id": "finishLight21",
+            "dot": "Q",
+            "ink": "gold",
+            "group": "lineGroup",
+            "r": 5
+          }
+        ],
+        "view": [
+          -4,
+          -4,
+          4,
+          4
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A straight line stays straight, too. Turn these three points together.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Lines stay lines"
+            },
+            {
+              "do": "turn",
+              "target": "lineGroup",
+              "about": "O",
+              "deg": 90,
+              "at": "Turn",
+              "dur": 2.5
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "After the turn, both consecutive segments have slope negative one. Because they share the middle point, all three points lie on one line.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "write",
+              "tex": "m_{PQ}=\\frac{0-(-2)}{0-2}=-1",
+              "at": "segments"
+            },
+            {
+              "do": "write",
+              "tex": "m_{QR}=\\frac{2-0}{-2-0}=-1",
+              "at": "middle"
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight21"
+              ],
+              "dur": 0.15,
+              "at": "share"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "A": [
+            0,
+            0
+          ],
+          "B": [
+            4,
+            0
+          ],
+          "C": [
+            4,
+            3
+          ],
+          "D": [
+            0,
+            3
+          ],
+          "O": [
+            0,
+            0
+          ],
+          "Four": [
+            2,
+            -0.65
+          ],
+          "Three": [
+            4.7,
+            1.5
+          ],
+          "tagA": [
+            -0.4,
+            -0.4
+          ],
+          "tagB": [
+            4.45,
+            -0.3
+          ],
+          "tagC": [
+            4.4,
+            3.4
+          ],
+          "tagD": [
+            -0.4,
+            3.4
+          ],
+          "gxn3a": [
+            -3,
+            -1
+          ],
+          "gxn3b": [
+            -3,
+            5
+          ],
+          "gxn2a": [
+            -2,
+            -1
+          ],
+          "gxn2b": [
+            -2,
+            5
+          ],
+          "gxn1a": [
+            -1,
+            -1
+          ],
+          "gxn1b": [
+            -1,
+            5
+          ],
+          "gx0a": [
+            0,
+            -1
+          ],
+          "gx0b": [
+            0,
+            5
+          ],
+          "gx1a": [
+            1,
+            -1
+          ],
+          "gx1b": [
+            1,
+            5
+          ],
+          "gx2a": [
+            2,
+            -1
+          ],
+          "gx2b": [
+            2,
+            5
+          ],
+          "gx3a": [
+            3,
+            -1
+          ],
+          "gx3b": [
+            3,
+            5
+          ],
+          "gx4a": [
+            4,
+            -1
+          ],
+          "gx4b": [
+            4,
+            5
+          ],
+          "gy0a": [
+            -4,
+            0
+          ],
+          "gy0b": [
+            5,
+            0
+          ],
+          "gy1a": [
+            -4,
+            1
+          ],
+          "gy1b": [
+            5,
+            1
+          ],
+          "gy2a": [
+            -4,
+            2
+          ],
+          "gy2b": [
+            5,
+            2
+          ],
+          "gy3a": [
+            -4,
+            3
+          ],
+          "gy3b": [
+            5,
+            3
+          ],
+          "gy4a": [
+            -4,
+            4
+          ],
+          "gy4b": [
+            5,
+            4
+          ],
+          "finish_lenfive": [
+            2.3,
+            0.9
+          ]
+        },
+        "parts": [
+          {
+            "id": "axes",
+            "axes": true,
+            "every": 10,
+            "step": 1,
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "gy4",
+            "seg": [
+              "gy4a",
+              "gy4b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy3",
+            "seg": [
+              "gy3a",
+              "gy3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy2",
+            "seg": [
+              "gy2a",
+              "gy2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy1",
+            "seg": [
+              "gy1a",
+              "gy1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy0",
+            "seg": [
+              "gy0a",
+              "gy0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx4",
+            "seg": [
+              "gx4a",
+              "gx4b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx3",
+            "seg": [
+              "gx3a",
+              "gx3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx2",
+            "seg": [
+              "gx2a",
+              "gx2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx1",
+            "seg": [
+              "gx1a",
+              "gx1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx0",
+            "seg": [
+              "gx0a",
+              "gx0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gxn1",
+            "seg": [
+              "gxn1a",
+              "gxn1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gxn2",
+            "seg": [
+              "gxn2a",
+              "gxn2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gxn3",
+            "seg": [
+              "gxn3a",
+              "gxn3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "shape",
+            "poly": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 3,
+            "start": true,
+            "group": "box"
+          },
+          {
+            "id": "AB",
+            "seg": [
+              "A",
+              "B"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true,
+            "group": "box"
+          },
+          {
+            "id": "BC",
+            "seg": [
+              "B",
+              "C"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true,
+            "group": "box"
+          },
+          {
+            "id": "CD",
+            "seg": [
+              "C",
+              "D"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true,
+            "group": "box"
+          },
+          {
+            "id": "DA",
+            "seg": [
+              "D",
+              "A"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true,
+            "group": "box"
+          },
+          {
+            "id": "nameA",
+            "label": "A",
+            "at": "tagA",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true,
+            "group": "box"
+          },
+          {
+            "id": "nameB",
+            "label": "B",
+            "at": "tagB",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true,
+            "group": "box"
+          },
+          {
+            "id": "nameC",
+            "label": "C",
+            "at": "tagC",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true,
+            "group": "box"
+          },
+          {
+            "id": "nameD",
+            "label": "D",
+            "at": "tagD",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true,
+            "group": "box"
+          },
+          {
+            "id": "corner",
+            "angle": [
+              "A",
+              "B",
+              "C"
+            ],
+            "right": true,
+            "r": 30,
+            "ink": "gold",
+            "start": true,
+            "group": "box"
+          },
+          {
+            "id": "diag",
+            "seg": [
+              "A",
+              "C"
+            ],
+            "ink": "gold",
+            "dash": true,
+            "group": "box"
+          },
+          {
+            "id": "lenfour",
+            "label": "4",
+            "at": "Four",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "start": true,
+            "group": "box"
+          },
+          {
+            "id": "lenthree",
+            "label": "3",
+            "at": "Three",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "start": true,
+            "group": "box"
+          },
+          {
+            "id": "lenfive",
+            "label": "5",
+            "at": "finish_lenfive",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "group": "box"
+          },
+          {
+            "id": "finishLight22",
+            "angle": [
+              "A",
+              "B",
+              "C"
+            ],
+            "right": true,
+            "r": 30,
+            "ink": "accent",
+            "group": "box"
+          },
+          {
+            "id": "finishLight23",
+            "seg": [
+              "A",
+              "C"
+            ],
+            "ink": "gold",
+            "dash": true,
+            "group": "box",
+            "w": 5
+          },
+          {
+            "id": "finishLight24",
+            "angle": [
+              "A",
+              "B",
+              "C"
+            ],
+            "right": true,
+            "r": 30,
+            "ink": "accent",
+            "group": "box"
+          }
+        ],
+        "view": [
+          -4,
+          -1,
+          5,
+          5
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Here is a four by three rectangle. Predict the corner after a ninety degree turn.",
+          "pause": 1.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "The turn is not added to the angle"
+            },
+            {
+              "do": "write",
+              "tex": "\\angle ABC=90^\\circ"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The whole corner turns. Its opening does not grow.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "turn",
+              "target": "box",
+              "about": "O",
+              "deg": 90,
+              "dur": 1.6
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight22"
+              ],
+              "dur": 0.15,
+              "at": "opening"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "To verify that right angle by measuring, compare the three sides of this triangle: three, four, five.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "finishLight22"
+              ],
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": [
+                "diag",
+                "lenfive"
+              ],
+              "at": "triangle"
+            },
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Measure to verify the right angle"
+            },
+            {
+              "do": "write",
+              "tex": "AB^2=16,\\quad BC^2=9"
+            },
+            {
+              "do": "write",
+              "tex": "AC^2=25",
+              "at": "five"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Sixteen plus nine equals twenty-five. By the converse of the Pythagorean theorem, the angle opposite the longest side is ninety degrees.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "write",
+              "tex": "16+9=25"
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight23"
+              ],
+              "dur": 0.15,
+              "at": "converse"
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight24"
+              ],
+              "dur": 0.15,
+              "at": "angle"
+            },
+            {
+              "do": "answer",
+              "tex": "\\angle ABC=90^\\circ",
+              "at": "ninety"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "finishLight23"
+              ],
+              "at": "angle",
+              "dur": 0.15
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "For a claims question, select every true statement: the side is four; the corner is ninety degrees; opposite sides stay parallel.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "finishLight23",
+                "finishLight24"
+              ],
+              "dur": 0.15
+            },
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Which claims must be true?"
+            },
+            {
+              "do": "write",
+              "tex": "AB=4"
+            },
+            {
+              "do": "write",
+              "tex": "\\angle ABC=90^\\circ",
+              "at": "corner"
+            },
+            {
+              "do": "write",
+              "tex": "AB\\parallel DC,\\quad AD\\parallel BC",
+              "at": "parallel"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Area stays the same too: twelve square units.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\text{Area}=4\\times3=12"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "diag",
+                "lenfive"
+              ]
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A turn preserves the order of the corners. A reflection reverses it.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Turn: same order"
+            },
+            {
+              "do": "text",
+              "text": "Reflection: reversed order",
+              "at": "reflection"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "A": [
+            0,
+            0
+          ],
+          "B": [
+            7,
+            0
+          ],
+          "C": [
+            11,
+            3
+          ],
+          "D": [
+            4,
+            3
+          ],
+          "gx0a": [
+            0,
+            -1
+          ],
+          "gx0b": [
+            0,
+            5
+          ],
+          "gx1a": [
+            1,
+            -1
+          ],
+          "gx1b": [
+            1,
+            5
+          ],
+          "gx2a": [
+            2,
+            -1
+          ],
+          "gx2b": [
+            2,
+            5
+          ],
+          "gx3a": [
+            3,
+            -1
+          ],
+          "gx3b": [
+            3,
+            5
+          ],
+          "gx4a": [
+            4,
+            -1
+          ],
+          "gx4b": [
+            4,
+            5
+          ],
+          "gx5a": [
+            5,
+            -1
+          ],
+          "gx5b": [
+            5,
+            5
+          ],
+          "gx6a": [
+            6,
+            -1
+          ],
+          "gx6b": [
+            6,
+            5
+          ],
+          "gx7a": [
+            7,
+            -1
+          ],
+          "gx7b": [
+            7,
+            5
+          ],
+          "gx8a": [
+            8,
+            -1
+          ],
+          "gx8b": [
+            8,
+            5
+          ],
+          "gx9a": [
+            9,
+            -1
+          ],
+          "gx9b": [
+            9,
+            5
+          ],
+          "gx10a": [
+            10,
+            -1
+          ],
+          "gx10b": [
+            10,
+            5
+          ],
+          "gx11a": [
+            11,
+            -1
+          ],
+          "gx11b": [
+            11,
+            5
+          ],
+          "gy0a": [
+            -1,
+            0
+          ],
+          "gy0b": [
+            12,
+            0
+          ],
+          "gy1a": [
+            -1,
+            1
+          ],
+          "gy1b": [
+            12,
+            1
+          ],
+          "gy2a": [
+            -1,
+            2
+          ],
+          "gy2b": [
+            12,
+            2
+          ],
+          "gy3a": [
+            -1,
+            3
+          ],
+          "gy3b": [
+            12,
+            3
+          ],
+          "gy4a": [
+            -1,
+            4
+          ],
+          "gy4b": [
+            12,
+            4
+          ],
+          "finish_nameB": [
+            7,
+            -1.45
+          ],
+          "finish_seven": [
+            3.5,
+            0.65
+          ]
+        },
+        "parts": [
+          {
+            "id": "axes",
+            "axes": true,
+            "every": 2,
+            "step": 1,
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "gy4",
+            "seg": [
+              "gy4a",
+              "gy4b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy3",
+            "seg": [
+              "gy3a",
+              "gy3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy2",
+            "seg": [
+              "gy2a",
+              "gy2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy1",
+            "seg": [
+              "gy1a",
+              "gy1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy0",
+            "seg": [
+              "gy0a",
+              "gy0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx11",
+            "seg": [
+              "gx11a",
+              "gx11b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx10",
+            "seg": [
+              "gx10a",
+              "gx10b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx9",
+            "seg": [
+              "gx9a",
+              "gx9b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx8",
+            "seg": [
+              "gx8a",
+              "gx8b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx7",
+            "seg": [
+              "gx7a",
+              "gx7b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx6",
+            "seg": [
+              "gx6a",
+              "gx6b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx5",
+            "seg": [
+              "gx5a",
+              "gx5b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx4",
+            "seg": [
+              "gx4a",
+              "gx4b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx3",
+            "seg": [
+              "gx3a",
+              "gx3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx2",
+            "seg": [
+              "gx2a",
+              "gx2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx1",
+            "seg": [
+              "gx1a",
+              "gx1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx0",
+            "seg": [
+              "gx0a",
+              "gx0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "shape",
+            "poly": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "AB",
+            "seg": [
+              "A",
+              "B"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "BC",
+            "seg": [
+              "B",
+              "C"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "CD",
+            "seg": [
+              "C",
+              "D"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "DA",
+            "seg": [
+              "D",
+              "A"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "nameA",
+            "label": "A",
+            "at": "A",
+            "dir": "sw",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "nameB",
+            "label": "B",
+            "at": "finish_nameB",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "nameC",
+            "label": "C",
+            "at": "C",
+            "dir": "n",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "nameD",
+            "label": "D",
+            "at": "D",
+            "dir": "w",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "diagonal",
+            "seg": [
+              "B",
+              "D"
+            ],
+            "ink": "gold",
+            "w": 4
+          },
+          {
+            "id": "seven",
+            "label": "7",
+            "at": "finish_seven",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "five",
+            "label": "5",
+            "at": "DA",
+            "dir": "w",
+            "size": "m",
+            "halo": true,
+            "ink": "accent",
+            "start": true
+          }
+        ],
+        "view": [
+          -1,
+          -1,
+          12,
+          5
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "To choose a possible image, match corresponding corners in order: *A* with *P*, *B* with *Q*, and so on.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Which graph could be the image?"
+            },
+            {
+              "do": "write",
+              "tex": "A\\leftrightarrow P,\\quad B\\leftrightarrow Q",
+              "at": "order"
+            },
+            {
+              "do": "write",
+              "tex": "C\\leftrightarrow R,\\quad D\\leftrightarrow S",
+              "at": "on"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "For this parallelogram, the side lengths are seven and five. Both pairs of opposite sides are parallel.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Original measurements"
+            },
+            {
+              "do": "write",
+              "tex": "AB=7,\\quad AD=5",
+              "at": "seven"
+            },
+            {
+              "do": "write",
+              "tex": "AB\\parallel DC,\\quad AD\\parallel BC",
+              "at": "Both"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Also check a diagonal, which joins opposite corners. From *B* to *D*, go three left and three up.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "show",
+              "target": "diagonal",
+              "at": "diagonal"
+            },
+            {
+              "do": "write",
+              "tex": "B=(7,0),\\quad D=(4,3)",
+              "at": "From"
+            },
+            {
+              "do": "write",
+              "tex": "\\Delta x=-3,\\quad\\Delta y=3",
+              "at": "left"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Its length squared is nine plus nine: eighteen.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "write",
+              "tex": "BD^2=9+9=18",
+              "at": "squared"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "P": [
+            0,
+            0
+          ],
+          "Q": [
+            8,
+            0
+          ],
+          "R": [
+            12,
+            3
+          ],
+          "S": [
+            4,
+            3
+          ],
+          "gx0a": [
+            0,
+            -1
+          ],
+          "gx0b": [
+            0,
+            5
+          ],
+          "gx1a": [
+            1,
+            -1
+          ],
+          "gx1b": [
+            1,
+            5
+          ],
+          "gx2a": [
+            2,
+            -1
+          ],
+          "gx2b": [
+            2,
+            5
+          ],
+          "gx3a": [
+            3,
+            -1
+          ],
+          "gx3b": [
+            3,
+            5
+          ],
+          "gx4a": [
+            4,
+            -1
+          ],
+          "gx4b": [
+            4,
+            5
+          ],
+          "gx5a": [
+            5,
+            -1
+          ],
+          "gx5b": [
+            5,
+            5
+          ],
+          "gx6a": [
+            6,
+            -1
+          ],
+          "gx6b": [
+            6,
+            5
+          ],
+          "gx7a": [
+            7,
+            -1
+          ],
+          "gx7b": [
+            7,
+            5
+          ],
+          "gx8a": [
+            8,
+            -1
+          ],
+          "gx8b": [
+            8,
+            5
+          ],
+          "gx9a": [
+            9,
+            -1
+          ],
+          "gx9b": [
+            9,
+            5
+          ],
+          "gx10a": [
+            10,
+            -1
+          ],
+          "gx10b": [
+            10,
+            5
+          ],
+          "gx11a": [
+            11,
+            -1
+          ],
+          "gx11b": [
+            11,
+            5
+          ],
+          "gx12a": [
+            12,
+            -1
+          ],
+          "gx12b": [
+            12,
+            5
+          ],
+          "gy0a": [
+            -1,
+            0
+          ],
+          "gy0b": [
+            13,
+            0
+          ],
+          "gy1a": [
+            -1,
+            1
+          ],
+          "gy1b": [
+            13,
+            1
+          ],
+          "gy2a": [
+            -1,
+            2
+          ],
+          "gy2b": [
+            13,
+            2
+          ],
+          "gy3a": [
+            -1,
+            3
+          ],
+          "gy3b": [
+            13,
+            3
+          ],
+          "gy4a": [
+            -1,
+            4
+          ],
+          "gy4b": [
+            13,
+            4
+          ],
+          "finish_nameQ": [
+            8,
+            -1.45
+          ],
+          "finish_seven": [
+            4.0,
+            0.65
+          ]
+        },
+        "parts": [
+          {
+            "id": "axes",
+            "axes": true,
+            "every": 2,
+            "step": 1,
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "gy4",
+            "seg": [
+              "gy4a",
+              "gy4b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy3",
+            "seg": [
+              "gy3a",
+              "gy3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy2",
+            "seg": [
+              "gy2a",
+              "gy2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy1",
+            "seg": [
+              "gy1a",
+              "gy1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy0",
+            "seg": [
+              "gy0a",
+              "gy0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx12",
+            "seg": [
+              "gx12a",
+              "gx12b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx11",
+            "seg": [
+              "gx11a",
+              "gx11b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx10",
+            "seg": [
+              "gx10a",
+              "gx10b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx9",
+            "seg": [
+              "gx9a",
+              "gx9b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx8",
+            "seg": [
+              "gx8a",
+              "gx8b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx7",
+            "seg": [
+              "gx7a",
+              "gx7b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx6",
+            "seg": [
+              "gx6a",
+              "gx6b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx5",
+            "seg": [
+              "gx5a",
+              "gx5b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx4",
+            "seg": [
+              "gx4a",
+              "gx4b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx3",
+            "seg": [
+              "gx3a",
+              "gx3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx2",
+            "seg": [
+              "gx2a",
+              "gx2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx1",
+            "seg": [
+              "gx1a",
+              "gx1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx0",
+            "seg": [
+              "gx0a",
+              "gx0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "candidate",
+            "poly": [
+              "P",
+              "Q",
+              "R",
+              "S"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "PQ",
+            "seg": [
+              "P",
+              "Q"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "QR",
+            "seg": [
+              "Q",
+              "R"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "RS",
+            "seg": [
+              "R",
+              "S"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "SP",
+            "seg": [
+              "S",
+              "P"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "nameP",
+            "label": "P",
+            "at": "P",
+            "dir": "sw",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "nameQ",
+            "label": "Q",
+            "at": "finish_nameQ",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "nameR",
+            "label": "R",
+            "at": "R",
+            "dir": "n",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "nameS",
+            "label": "S",
+            "at": "S",
+            "dir": "w",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "diagonal",
+            "seg": [
+              "Q",
+              "S"
+            ],
+            "ink": "gold",
+            "w": 4
+          },
+          {
+            "id": "seven",
+            "label": "8",
+            "at": "finish_seven",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "warm"
+          },
+          {
+            "id": "five",
+            "label": "5",
+            "at": "SP",
+            "dir": "w",
+            "size": "m",
+            "halo": true,
+            "ink": "warm"
+          },
+          {
+            "id": "finishLight25",
+            "seg": [
+              "P",
+              "Q"
+            ],
+            "ink": "gold",
+            "w": 5
+          }
+        ],
+        "view": [
+          -1,
+          -1,
+          13,
+          5
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Graph one: this side measures eight, but its matching side measured seven. Reject it.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Graph 1: a length changed"
+            },
+            {
+              "do": "show",
+              "target": "seven"
+            },
+            {
+              "do": "write",
+              "tex": "PQ=8\\ne7=AB"
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight25"
+              ],
+              "dur": 0.15,
+              "at": "eight"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "finishLight25"
+              ],
+              "at": "but",
+              "dur": 0.15
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "P": [
+            0,
+            0
+          ],
+          "Q": [
+            7,
+            0
+          ],
+          "R": [
+            11,
+            4
+          ],
+          "S": [
+            4,
+            3
+          ],
+          "gx0a": [
+            0,
+            -1
+          ],
+          "gx0b": [
+            0,
+            5
+          ],
+          "gx1a": [
+            1,
+            -1
+          ],
+          "gx1b": [
+            1,
+            5
+          ],
+          "gx2a": [
+            2,
+            -1
+          ],
+          "gx2b": [
+            2,
+            5
+          ],
+          "gx3a": [
+            3,
+            -1
+          ],
+          "gx3b": [
+            3,
+            5
+          ],
+          "gx4a": [
+            4,
+            -1
+          ],
+          "gx4b": [
+            4,
+            5
+          ],
+          "gx5a": [
+            5,
+            -1
+          ],
+          "gx5b": [
+            5,
+            5
+          ],
+          "gx6a": [
+            6,
+            -1
+          ],
+          "gx6b": [
+            6,
+            5
+          ],
+          "gx7a": [
+            7,
+            -1
+          ],
+          "gx7b": [
+            7,
+            5
+          ],
+          "gx8a": [
+            8,
+            -1
+          ],
+          "gx8b": [
+            8,
+            5
+          ],
+          "gx9a": [
+            9,
+            -1
+          ],
+          "gx9b": [
+            9,
+            5
+          ],
+          "gx10a": [
+            10,
+            -1
+          ],
+          "gx10b": [
+            10,
+            5
+          ],
+          "gx11a": [
+            11,
+            -1
+          ],
+          "gx11b": [
+            11,
+            5
+          ],
+          "gx12a": [
+            12,
+            -1
+          ],
+          "gx12b": [
+            12,
+            5
+          ],
+          "gy0a": [
+            -1,
+            0
+          ],
+          "gy0b": [
+            13,
+            0
+          ],
+          "gy1a": [
+            -1,
+            1
+          ],
+          "gy1b": [
+            13,
+            1
+          ],
+          "gy2a": [
+            -1,
+            2
+          ],
+          "gy2b": [
+            13,
+            2
+          ],
+          "gy3a": [
+            -1,
+            3
+          ],
+          "gy3b": [
+            13,
+            3
+          ],
+          "gy4a": [
+            -1,
+            4
+          ],
+          "gy4b": [
+            13,
+            4
+          ],
+          "finish_nameQ": [
+            7,
+            -1.45
+          ],
+          "finish_seven": [
+            3.5,
+            0.65
+          ]
+        },
+        "parts": [
+          {
+            "id": "axes",
+            "axes": true,
+            "every": 2,
+            "step": 1,
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "gy4",
+            "seg": [
+              "gy4a",
+              "gy4b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy3",
+            "seg": [
+              "gy3a",
+              "gy3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy2",
+            "seg": [
+              "gy2a",
+              "gy2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy1",
+            "seg": [
+              "gy1a",
+              "gy1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy0",
+            "seg": [
+              "gy0a",
+              "gy0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx12",
+            "seg": [
+              "gx12a",
+              "gx12b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx11",
+            "seg": [
+              "gx11a",
+              "gx11b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx10",
+            "seg": [
+              "gx10a",
+              "gx10b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx9",
+            "seg": [
+              "gx9a",
+              "gx9b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx8",
+            "seg": [
+              "gx8a",
+              "gx8b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx7",
+            "seg": [
+              "gx7a",
+              "gx7b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx6",
+            "seg": [
+              "gx6a",
+              "gx6b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx5",
+            "seg": [
+              "gx5a",
+              "gx5b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx4",
+            "seg": [
+              "gx4a",
+              "gx4b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx3",
+            "seg": [
+              "gx3a",
+              "gx3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx2",
+            "seg": [
+              "gx2a",
+              "gx2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx1",
+            "seg": [
+              "gx1a",
+              "gx1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx0",
+            "seg": [
+              "gx0a",
+              "gx0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "candidate",
+            "poly": [
+              "P",
+              "Q",
+              "R",
+              "S"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "PQ",
+            "seg": [
+              "P",
+              "Q"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "QR",
+            "seg": [
+              "Q",
+              "R"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "RS",
+            "seg": [
+              "R",
+              "S"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "SP",
+            "seg": [
+              "S",
+              "P"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "nameP",
+            "label": "P",
+            "at": "P",
+            "dir": "sw",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "nameQ",
+            "label": "Q",
+            "at": "finish_nameQ",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "nameR",
+            "label": "R",
+            "at": "R",
+            "dir": "n",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "nameS",
+            "label": "S",
+            "at": "S",
+            "dir": "w",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "diagonal",
+            "seg": [
+              "Q",
+              "S"
+            ],
+            "ink": "gold",
+            "w": 4
+          },
+          {
+            "id": "seven",
+            "label": "7",
+            "at": "finish_seven",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "warm"
+          },
+          {
+            "id": "five",
+            "label": "5",
+            "at": "SP",
+            "dir": "w",
+            "size": "m",
+            "halo": true,
+            "ink": "warm"
+          },
+          {
+            "id": "finishLight26",
+            "seg": [
+              "P",
+              "Q"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "finishLight27",
+            "seg": [
+              "R",
+              "S"
+            ],
+            "ink": "gold",
+            "w": 5
+          }
+        ],
+        "view": [
+          -1,
+          -1,
+          13,
+          5
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Graph two: the bottom side has slope zero. The top side rises one unit over seven. Those sides are not parallel. Reject it.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Graph 2: parallel sides lost"
+            },
+            {
+              "do": "write",
+              "tex": "m_{PQ}=0"
+            },
+            {
+              "do": "write",
+              "tex": "m_{SR}=\\frac{4-3}{11-4}=\\frac17",
+              "at": "rises"
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight26"
+              ],
+              "dur": 0.15,
+              "at": "bottom"
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight27"
+              ],
+              "dur": 0.15,
+              "at": "top"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "finishLight26"
+              ],
+              "at": "top",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight26",
+                "finishLight27"
+              ],
+              "at": "Those",
+              "dur": 0.15
+            },
+            {
+              "do": "hide",
+              "target": [
+                "finishLight26",
+                "finishLight27"
+              ],
+              "at": "Reject",
+              "dur": 0.15
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "P": [
+            0,
+            0
+          ],
+          "Q": [
+            7,
+            0
+          ],
+          "R": [
+            10,
+            4
+          ],
+          "S": [
+            3,
+            4
+          ],
+          "gx0a": [
+            0,
+            -1
+          ],
+          "gx0b": [
+            0,
+            5
+          ],
+          "gx1a": [
+            1,
+            -1
+          ],
+          "gx1b": [
+            1,
+            5
+          ],
+          "gx2a": [
+            2,
+            -1
+          ],
+          "gx2b": [
+            2,
+            5
+          ],
+          "gx3a": [
+            3,
+            -1
+          ],
+          "gx3b": [
+            3,
+            5
+          ],
+          "gx4a": [
+            4,
+            -1
+          ],
+          "gx4b": [
+            4,
+            5
+          ],
+          "gx5a": [
+            5,
+            -1
+          ],
+          "gx5b": [
+            5,
+            5
+          ],
+          "gx6a": [
+            6,
+            -1
+          ],
+          "gx6b": [
+            6,
+            5
+          ],
+          "gx7a": [
+            7,
+            -1
+          ],
+          "gx7b": [
+            7,
+            5
+          ],
+          "gx8a": [
+            8,
+            -1
+          ],
+          "gx8b": [
+            8,
+            5
+          ],
+          "gx9a": [
+            9,
+            -1
+          ],
+          "gx9b": [
+            9,
+            5
+          ],
+          "gx10a": [
+            10,
+            -1
+          ],
+          "gx10b": [
+            10,
+            5
+          ],
+          "gx11a": [
+            11,
+            -1
+          ],
+          "gx11b": [
+            11,
+            5
+          ],
+          "gx12a": [
+            12,
+            -1
+          ],
+          "gx12b": [
+            12,
+            5
+          ],
+          "gy0a": [
+            -1,
+            0
+          ],
+          "gy0b": [
+            13,
+            0
+          ],
+          "gy1a": [
+            -1,
+            1
+          ],
+          "gy1b": [
+            13,
+            1
+          ],
+          "gy2a": [
+            -1,
+            2
+          ],
+          "gy2b": [
+            13,
+            2
+          ],
+          "gy3a": [
+            -1,
+            3
+          ],
+          "gy3b": [
+            13,
+            3
+          ],
+          "gy4a": [
+            -1,
+            4
+          ],
+          "gy4b": [
+            13,
+            4
+          ],
+          "finish_nameQ": [
+            7,
+            -1.45
+          ],
+          "finish_seven": [
+            3.5,
+            0.65
+          ],
+          "finish_qcoord": [
+            7,
+            -1.75
+          ]
+        },
+        "parts": [
+          {
+            "id": "axes",
+            "axes": true,
+            "every": 2,
+            "step": 1,
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "gy4",
+            "seg": [
+              "gy4a",
+              "gy4b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy3",
+            "seg": [
+              "gy3a",
+              "gy3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy2",
+            "seg": [
+              "gy2a",
+              "gy2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy1",
+            "seg": [
+              "gy1a",
+              "gy1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy0",
+            "seg": [
+              "gy0a",
+              "gy0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx12",
+            "seg": [
+              "gx12a",
+              "gx12b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx11",
+            "seg": [
+              "gx11a",
+              "gx11b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx10",
+            "seg": [
+              "gx10a",
+              "gx10b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx9",
+            "seg": [
+              "gx9a",
+              "gx9b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx8",
+            "seg": [
+              "gx8a",
+              "gx8b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx7",
+            "seg": [
+              "gx7a",
+              "gx7b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx6",
+            "seg": [
+              "gx6a",
+              "gx6b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx5",
+            "seg": [
+              "gx5a",
+              "gx5b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx4",
+            "seg": [
+              "gx4a",
+              "gx4b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx3",
+            "seg": [
+              "gx3a",
+              "gx3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx2",
+            "seg": [
+              "gx2a",
+              "gx2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx1",
+            "seg": [
+              "gx1a",
+              "gx1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx0",
+            "seg": [
+              "gx0a",
+              "gx0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "candidate",
+            "poly": [
+              "P",
+              "Q",
+              "R",
+              "S"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "PQ",
+            "seg": [
+              "P",
+              "Q"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "QR",
+            "seg": [
+              "Q",
+              "R"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "RS",
+            "seg": [
+              "R",
+              "S"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "SP",
+            "seg": [
+              "S",
+              "P"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "nameP",
+            "label": "P",
+            "at": "P",
+            "dir": "sw",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "nameQ",
+            "label": "Q",
+            "at": "finish_nameQ",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "nameR",
+            "label": "R",
+            "at": "R",
+            "dir": "n",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "nameS",
+            "label": "S",
+            "at": "S",
+            "dir": "w",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "diagonal",
+            "seg": [
+              "Q",
+              "S"
+            ],
+            "ink": "gold",
+            "w": 4
+          },
+          {
+            "id": "seven",
+            "label": "7",
+            "at": "finish_seven",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "warm"
+          },
+          {
+            "id": "five",
+            "label": "5",
+            "at": "SP",
+            "dir": "w",
+            "size": "m",
+            "halo": true,
+            "ink": "warm"
+          },
+          {
+            "id": "qcoord",
+            "label": "Q(7,0)",
+            "at": "finish_qcoord",
+            "dir": "c",
+            "size": "m",
+            "halo": true
+          },
+          {
+            "id": "scoord",
+            "label": "S(3,4)",
+            "at": "S",
+            "dir": "n",
+            "size": "m",
+            "halo": true
+          },
+          {
+            "id": "finishLight28",
+            "seg": [
+              "Q",
+              "S"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "finishLight29",
+            "seg": [
+              "Q",
+              "S"
+            ],
+            "ink": "gold",
+            "w": 5
+          }
+        ],
+        "view": [
+          -1,
+          -1,
+          13,
+          5
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Graph three is more deceptive. Its sides are seven and five, and opposite sides are parallel. Is that enough?",
+          "pause": 1.7,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Graph 3: matching sides"
+            },
+            {
+              "do": "show",
+              "target": [
+                "seven",
+                "five"
+              ],
+              "at": "sides"
+            },
+            {
+              "do": "write",
+              "tex": "PQ=7,\\quad PS=5",
+              "at": "seven"
+            },
+            {
+              "do": "text",
+              "text": "Parallel pairs match",
+              "at": "parallel"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Measure the diagonal. From *Q* to *S*, go four left and four up.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "show",
+              "target": "diagonal",
+              "at": "diagonal"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "seven",
+                "five",
+                "nameQ",
+                "nameS"
+              ]
+            },
+            {
+              "do": "show",
+              "target": [
+                "qcoord",
+                "scoord"
+              ]
+            },
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "One mismatch is enough"
+            },
+            {
+              "do": "write",
+              "tex": "Q=(7,0),\\quad S=(3,4)"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Its length squared is thirty-two, not eighteen. The sides match, but the figure has opened to a different angle.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "write",
+              "tex": "QS^2=(-4)^2+4^2=32"
+            },
+            {
+              "do": "write",
+              "tex": "32\\ne18=BD^2",
+              "at": "eighteen"
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight28"
+              ],
+              "dur": 0.15,
+              "at": "thirty-two"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "finishLight28"
+              ],
+              "at": "sides",
+              "dur": 0.15
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Different squares mean different lengths. One changed distance proves this was not a rigid motion.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "finishLight28"
+              ],
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight29"
+              ],
+              "dur": 0.15,
+              "at": "lengths"
+            },
+            {
+              "do": "answer",
+              "tex": "\\text{Not a rigid image}",
+              "at": "proves"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "P": [
+            0,
+            0
+          ],
+          "Q": [
+            7,
+            0
+          ],
+          "S": {
+            "on": "leftGuide",
+            "deg": 36.86989764584402
+          },
+          "R": {
+            "on": "rightGuide",
+            "deg": 36.86989764584402
+          },
+          "gx0a": [
+            0,
+            -1
+          ],
+          "gx0b": [
+            0,
+            5
+          ],
+          "gx1a": [
+            1,
+            -1
+          ],
+          "gx1b": [
+            1,
+            5
+          ],
+          "gx2a": [
+            2,
+            -1
+          ],
+          "gx2b": [
+            2,
+            5
+          ],
+          "gx3a": [
+            3,
+            -1
+          ],
+          "gx3b": [
+            3,
+            5
+          ],
+          "gx4a": [
+            4,
+            -1
+          ],
+          "gx4b": [
+            4,
+            5
+          ],
+          "gx5a": [
+            5,
+            -1
+          ],
+          "gx5b": [
+            5,
+            5
+          ],
+          "gx6a": [
+            6,
+            -1
+          ],
+          "gx6b": [
+            6,
+            5
+          ],
+          "gx7a": [
+            7,
+            -1
+          ],
+          "gx7b": [
+            7,
+            5
+          ],
+          "gx8a": [
+            8,
+            -1
+          ],
+          "gx8b": [
+            8,
+            5
+          ],
+          "gx9a": [
+            9,
+            -1
+          ],
+          "gx9b": [
+            9,
+            5
+          ],
+          "gx10a": [
+            10,
+            -1
+          ],
+          "gx10b": [
+            10,
+            5
+          ],
+          "gx11a": [
+            11,
+            -1
+          ],
+          "gx11b": [
+            11,
+            5
+          ],
+          "gy0a": [
+            -1,
+            0
+          ],
+          "gy0b": [
+            12,
+            0
+          ],
+          "gy1a": [
+            -1,
+            1
+          ],
+          "gy1b": [
+            12,
+            1
+          ],
+          "gy2a": [
+            -1,
+            2
+          ],
+          "gy2b": [
+            12,
+            2
+          ],
+          "gy3a": [
+            -1,
+            3
+          ],
+          "gy3b": [
+            12,
+            3
+          ],
+          "gy4a": [
+            -1,
+            4
+          ],
+          "gy4b": [
+            12,
+            4
+          ],
+          "finish_nameQ": [
+            7,
+            -1.45
+          ],
+          "finish_seven": [
+            3.5,
+            0.65
+          ]
+        },
+        "parts": [
+          {
+            "id": "axes",
+            "axes": true,
+            "every": 2,
+            "step": 1,
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "gy4",
+            "seg": [
+              "gy4a",
+              "gy4b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy3",
+            "seg": [
+              "gy3a",
+              "gy3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy2",
+            "seg": [
+              "gy2a",
+              "gy2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy1",
+            "seg": [
+              "gy1a",
+              "gy1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy0",
+            "seg": [
+              "gy0a",
+              "gy0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx11",
+            "seg": [
+              "gx11a",
+              "gx11b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx10",
+            "seg": [
+              "gx10a",
+              "gx10b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx9",
+            "seg": [
+              "gx9a",
+              "gx9b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx8",
+            "seg": [
+              "gx8a",
+              "gx8b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx7",
+            "seg": [
+              "gx7a",
+              "gx7b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx6",
+            "seg": [
+              "gx6a",
+              "gx6b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx5",
+            "seg": [
+              "gx5a",
+              "gx5b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx4",
+            "seg": [
+              "gx4a",
+              "gx4b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx3",
+            "seg": [
+              "gx3a",
+              "gx3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx2",
+            "seg": [
+              "gx2a",
+              "gx2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx1",
+            "seg": [
+              "gx1a",
+              "gx1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx0",
+            "seg": [
+              "gx0a",
+              "gx0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "leftGuide",
+            "circle": "P",
+            "r": 5,
+            "ink": "muted"
+          },
+          {
+            "id": "rightGuide",
+            "circle": "Q",
+            "r": 5,
+            "ink": "muted"
+          },
+          {
+            "id": "hinged",
+            "poly": [
+              "P",
+              "Q",
+              "R",
+              "S"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "PQ",
+            "seg": [
+              "P",
+              "Q"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "QR",
+            "seg": [
+              "Q",
+              "R"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "RS",
+            "seg": [
+              "R",
+              "S"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "SP",
+            "seg": [
+              "S",
+              "P"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "nameP",
+            "label": "P",
+            "at": "P",
+            "dir": "sw",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "nameQ",
+            "label": "Q",
+            "at": "finish_nameQ",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "nameR",
+            "label": "R",
+            "at": "R",
+            "dir": "n",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "nameS",
+            "label": "S",
+            "at": "S",
+            "dir": "w",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "diagonal",
+            "seg": [
+              "Q",
+              "S"
+            ],
+            "ink": "gold",
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "seven",
+            "label": "7",
+            "at": "finish_seven",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "five",
+            "label": "5",
+            "at": "SP",
+            "dir": "w",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "finishLight30",
+            "seg": [
+              "Q",
+              "S"
+            ],
+            "ink": "gold",
+            "w": 5
+          }
+        ],
+        "view": [
+          -1,
+          -1,
+          12,
+          5
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Watch why matching sides are not enough. Start with the original shape, and keep all four side lengths fixed.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Same sides. Different angle."
+            },
+            {
+              "do": "write",
+              "tex": "PQ=SR=7",
+              "at": "Start"
+            },
+            {
+              "do": "write",
+              "tex": "PS=QR=5",
+              "at": "four"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Open the angle. The diagonal grows, even though no side stretches. This bends the figure; it is not a rigid motion.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "glide",
+              "point": "S",
+              "deg": 53.13010235415598,
+              "at": "Open",
+              "dur": 4
+            },
+            {
+              "do": "glide",
+              "point": "R",
+              "deg": 53.13010235415598,
+              "at": "Open",
+              "dur": 4
+            },
+            {
+              "do": "write",
+              "tex": "QS^2:\\ 18\\longrightarrow32",
+              "at": "grows"
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight30"
+              ],
+              "dur": 0.15,
+              "at": "diagonal"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "finishLight30"
+              ],
+              "at": "even",
+              "dur": 0.15
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "P": [
+            0,
+            0
+          ],
+          "Q": [
+            7,
+            0
+          ],
+          "R": [
+            11,
+            -3
+          ],
+          "S": [
+            4,
+            -3
+          ],
+          "gx0a": [
+            0,
+            -5
+          ],
+          "gx0b": [
+            0,
+            5
+          ],
+          "gx1a": [
+            1,
+            -5
+          ],
+          "gx1b": [
+            1,
+            5
+          ],
+          "gx2a": [
+            2,
+            -5
+          ],
+          "gx2b": [
+            2,
+            5
+          ],
+          "gx3a": [
+            3,
+            -5
+          ],
+          "gx3b": [
+            3,
+            5
+          ],
+          "gx4a": [
+            4,
+            -5
+          ],
+          "gx4b": [
+            4,
+            5
+          ],
+          "gx5a": [
+            5,
+            -5
+          ],
+          "gx5b": [
+            5,
+            5
+          ],
+          "gx6a": [
+            6,
+            -5
+          ],
+          "gx6b": [
+            6,
+            5
+          ],
+          "gx7a": [
+            7,
+            -5
+          ],
+          "gx7b": [
+            7,
+            5
+          ],
+          "gx8a": [
+            8,
+            -5
+          ],
+          "gx8b": [
+            8,
+            5
+          ],
+          "gx9a": [
+            9,
+            -5
+          ],
+          "gx9b": [
+            9,
+            5
+          ],
+          "gx10a": [
+            10,
+            -5
+          ],
+          "gx10b": [
+            10,
+            5
+          ],
+          "gx11a": [
+            11,
+            -5
+          ],
+          "gx11b": [
+            11,
+            5
+          ],
+          "gx12a": [
+            12,
+            -5
+          ],
+          "gx12b": [
+            12,
+            5
+          ],
+          "gyn4a": [
+            -1,
+            -4
+          ],
+          "gyn4b": [
+            13,
+            -4
+          ],
+          "gyn3a": [
+            -1,
+            -3
+          ],
+          "gyn3b": [
+            13,
+            -3
+          ],
+          "gyn2a": [
+            -1,
+            -2
+          ],
+          "gyn2b": [
+            13,
+            -2
+          ],
+          "gyn1a": [
+            -1,
+            -1
+          ],
+          "gyn1b": [
+            13,
+            -1
+          ],
+          "gy0a": [
+            -1,
+            0
+          ],
+          "gy0b": [
+            13,
+            0
+          ],
+          "A": [
+            0,
+            0
+          ],
+          "B": [
+            7,
+            0
+          ],
+          "C": [
+            11,
+            3
+          ],
+          "D": [
+            4,
+            3
+          ],
+          "X": [
+            0,
+            0
+          ],
+          "Y": [
+            12,
+            0
+          ],
+          "finishGrid2a": [
+            -1,
+            2
+          ],
+          "finishGrid2b": [
+            13,
+            2
+          ],
+          "finishGrid3a": [
+            -1,
+            3
+          ],
+          "finishGrid3b": [
+            13,
+            3
+          ],
+          "finishGrid4a": [
+            -1,
+            4
+          ],
+          "finishGrid4b": [
+            13,
+            4
+          ]
+        },
+        "parts": [
+          {
+            "id": "axes",
+            "axes": true,
+            "every": 3,
+            "step": 1,
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "finishGrid4",
+            "seg": [
+              "finishGrid4a",
+              "finishGrid4b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "finishGrid3",
+            "seg": [
+              "finishGrid3a",
+              "finishGrid3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "finishGrid2",
+            "seg": [
+              "finishGrid2a",
+              "finishGrid2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy0",
+            "seg": [
+              "gy0a",
+              "gy0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gyn1",
+            "seg": [
+              "gyn1a",
+              "gyn1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gyn2",
+            "seg": [
+              "gyn2a",
+              "gyn2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gyn3",
+            "seg": [
+              "gyn3a",
+              "gyn3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gyn4",
+            "seg": [
+              "gyn4a",
+              "gyn4b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx12",
+            "seg": [
+              "gx12a",
+              "gx12b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx11",
+            "seg": [
+              "gx11a",
+              "gx11b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx10",
+            "seg": [
+              "gx10a",
+              "gx10b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx9",
+            "seg": [
+              "gx9a",
+              "gx9b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx8",
+            "seg": [
+              "gx8a",
+              "gx8b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx7",
+            "seg": [
+              "gx7a",
+              "gx7b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx6",
+            "seg": [
+              "gx6a",
+              "gx6b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx5",
+            "seg": [
+              "gx5a",
+              "gx5b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx4",
+            "seg": [
+              "gx4a",
+              "gx4b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx3",
+            "seg": [
+              "gx3a",
+              "gx3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx2",
+            "seg": [
+              "gx2a",
+              "gx2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx1",
+            "seg": [
+              "gx1a",
+              "gx1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx0",
+            "seg": [
+              "gx0a",
+              "gx0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "candidate",
+            "poly": [
+              "P",
+              "Q",
+              "R",
+              "S"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "PQ",
+            "seg": [
+              "P",
+              "Q"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "QR",
+            "seg": [
+              "Q",
+              "R"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "RS",
+            "seg": [
+              "R",
+              "S"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "SP",
+            "seg": [
+              "S",
+              "P"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "nameP",
+            "label": "P",
+            "at": "P",
+            "dir": "nw",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "nameQ",
+            "label": "Q",
+            "at": "Q",
+            "dir": "n",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "nameR",
+            "label": "R",
+            "at": "R",
+            "dir": "se",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "nameS",
+            "label": "S",
+            "at": "S",
+            "dir": "sw",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "diagonal",
+            "seg": [
+              "Q",
+              "S"
+            ],
+            "ink": "gold",
+            "w": 4
+          },
+          {
+            "id": "seven",
+            "label": "7",
+            "at": "PQ",
+            "dir": "s",
+            "size": "m",
+            "halo": true,
+            "ink": "warm"
+          },
+          {
+            "id": "five",
+            "label": "5",
+            "at": "SP",
+            "dir": "w",
+            "size": "m",
+            "halo": true,
+            "ink": "warm"
+          },
+          {
+            "id": "original",
+            "poly": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ],
+            "fill": "none",
+            "ink": "blue",
+            "w": 5,
+            "start": false,
+            "group": "overlay"
+          },
+          {
+            "id": "AB",
+            "seg": [
+              "A",
+              "B"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": false,
+            "group": "overlay"
+          },
+          {
+            "id": "BC",
+            "seg": [
+              "B",
+              "C"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": false,
+            "group": "overlay"
+          },
+          {
+            "id": "CD",
+            "seg": [
+              "C",
+              "D"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": false,
+            "group": "overlay"
+          },
+          {
+            "id": "DA",
+            "seg": [
+              "D",
+              "A"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": false,
+            "group": "overlay"
+          },
+          {
+            "id": "nameA",
+            "label": "A",
+            "at": "A",
+            "dir": "sw",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": false,
+            "group": "overlay"
+          },
+          {
+            "id": "nameB",
+            "label": "B",
+            "at": "B",
+            "dir": "s",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": false,
+            "group": "overlay"
+          },
+          {
+            "id": "nameC",
+            "label": "C",
+            "at": "C",
+            "dir": "n",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": false,
+            "group": "overlay"
+          },
+          {
+            "id": "nameD",
+            "label": "D",
+            "at": "D",
+            "dir": "w",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": false,
+            "group": "overlay"
+          }
+        ],
+        "view": [
+          -1,
+          -5,
+          13,
+          5
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Graph four keeps all four side lengths and both diagonals in the matching order. It can be the image.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Graph 4: every distance matches"
+            },
+            {
+              "do": "write",
+              "tex": "PQ=SR=7"
+            },
+            {
+              "do": "write",
+              "tex": "PS=QR=5"
+            },
+            {
+              "do": "write",
+              "tex": "QS^2=18,\\quad PR^2=130",
+              "at": "diagonals"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Here is the original. Reflect it across the horizontal axis. Every corner lands exactly on its partner.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "show",
+              "target": "overlay"
+            },
+            {
+              "do": "flip",
+              "target": "overlay",
+              "over": [
+                "X",
+                "Y"
+              ],
+              "at": "Reflect",
+              "dur": 3
+            },
+            {
+              "do": "hide",
+              "target": [
+                "nameA",
+                "nameB",
+                "nameC",
+                "nameD"
+              ],
+              "at": "Reflect",
+              "dur": 0.15
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A mirror image qualifies. The letters run the other way, but no measurement changed.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "answer",
+              "tex": "\\text{Graph 4}"
+            },
+            {
+              "do": "text",
+              "text": "Reflection is a rigid motion"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "A": [
+            0,
+            0
+          ],
+          "B": [
+            4,
+            2
+          ],
+          "C": [
+            1,
+            3
+          ],
+          "D": [
+            -1,
+            2
+          ],
+          "P": [
+            0,
+            -5
+          ],
+          "Q": [
+            5,
+            -3
+          ],
+          "R": [
+            1,
+            -2
+          ],
+          "S": [
+            -1,
+            -3
+          ],
+          "gxn1a": [
+            -1,
+            -6
+          ],
+          "gxn1b": [
+            -1,
+            4
+          ],
+          "gx0a": [
+            0,
+            -6
+          ],
+          "gx0b": [
+            0,
+            4
+          ],
+          "gx1a": [
+            1,
+            -6
+          ],
+          "gx1b": [
+            1,
+            4
+          ],
+          "gx2a": [
+            2,
+            -6
+          ],
+          "gx2b": [
+            2,
+            4
+          ],
+          "gx3a": [
+            3,
+            -6
+          ],
+          "gx3b": [
+            3,
+            4
+          ],
+          "gx4a": [
+            4,
+            -6
+          ],
+          "gx4b": [
+            4,
+            4
+          ],
+          "gx5a": [
+            5,
+            -6
+          ],
+          "gx5b": [
+            5,
+            4
+          ],
+          "gyn5a": [
+            -2,
+            -5
+          ],
+          "gyn5b": [
+            6,
+            -5
+          ],
+          "gyn4a": [
+            -2,
+            -4
+          ],
+          "gyn4b": [
+            6,
+            -4
+          ],
+          "gyn3a": [
+            -2,
+            -3
+          ],
+          "gyn3b": [
+            6,
+            -3
+          ],
+          "gyn2a": [
+            -2,
+            -2
+          ],
+          "gyn2b": [
+            6,
+            -2
+          ],
+          "gyn1a": [
+            -2,
+            -1
+          ],
+          "gyn1b": [
+            6,
+            -1
+          ],
+          "gy0a": [
+            -2,
+            0
+          ],
+          "gy0b": [
+            6,
+            0
+          ],
+          "gy1a": [
+            -2,
+            1
+          ],
+          "gy1b": [
+            6,
+            1
+          ],
+          "gy2a": [
+            -2,
+            2
+          ],
+          "gy2b": [
+            6,
+            2
+          ],
+          "gy3a": [
+            -2,
+            3
+          ],
+          "gy3b": [
+            6,
+            3
+          ],
+          "finish_ablen": [
+            3.2,
+            -1.1
+          ],
+          "finish_pqlen": [
+            3.5,
+            -5.65
+          ]
+        },
+        "parts": [
+          {
+            "id": "axes",
+            "axes": true,
+            "every": 2,
+            "step": 1,
+            "ink": "muted",
+            "start": true,
+            "yevery": 3
+          },
+          {
+            "id": "gy3",
+            "seg": [
+              "gy3a",
+              "gy3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy2",
+            "seg": [
+              "gy2a",
+              "gy2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy1",
+            "seg": [
+              "gy1a",
+              "gy1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gy0",
+            "seg": [
+              "gy0a",
+              "gy0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gyn1",
+            "seg": [
+              "gyn1a",
+              "gyn1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gyn2",
+            "seg": [
+              "gyn2a",
+              "gyn2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gyn3",
+            "seg": [
+              "gyn3a",
+              "gyn3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gyn4",
+            "seg": [
+              "gyn4a",
+              "gyn4b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gyn5",
+            "seg": [
+              "gyn5a",
+              "gyn5b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx5",
+            "seg": [
+              "gx5a",
+              "gx5b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx4",
+            "seg": [
+              "gx4a",
+              "gx4b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx3",
+            "seg": [
+              "gx3a",
+              "gx3b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx2",
+            "seg": [
+              "gx2a",
+              "gx2b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx1",
+            "seg": [
+              "gx1a",
+              "gx1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gx0",
+            "seg": [
+              "gx0a",
+              "gx0b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "gxn1",
+            "seg": [
+              "gxn1a",
+              "gxn1b"
+            ],
+            "ink": "muted",
+            "w": 0.35,
+            "start": true
+          },
+          {
+            "id": "shape",
+            "poly": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "AB",
+            "seg": [
+              "A",
+              "B"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "BC",
+            "seg": [
+              "B",
+              "C"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "CD",
+            "seg": [
+              "C",
+              "D"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "DA",
+            "seg": [
+              "D",
+              "A"
+            ],
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "nameA",
+            "label": "A",
+            "at": "A",
+            "dir": "sw",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "nameB",
+            "label": "B",
+            "at": "B",
+            "dir": "e",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "nameC",
+            "label": "C",
+            "at": "C",
+            "dir": "n",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "nameD",
+            "label": "D",
+            "at": "D",
+            "dir": "w",
+            "size": "m",
+            "halo": true,
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "candidate",
+            "poly": [
+              "P",
+              "Q",
+              "R",
+              "S"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "PQ",
+            "seg": [
+              "P",
+              "Q"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "QR",
+            "seg": [
+              "Q",
+              "R"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "RS",
+            "seg": [
+              "R",
+              "S"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "SP",
+            "seg": [
+              "S",
+              "P"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "nameP",
+            "label": "P",
+            "at": "P",
+            "dir": "sw",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "nameQ",
+            "label": "Q",
+            "at": "Q",
+            "dir": "e",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "nameR",
+            "label": "R",
+            "at": "R",
+            "dir": "n",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "nameS",
+            "label": "S",
+            "at": "S",
+            "dir": "w",
+            "size": "m",
+            "halo": true,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "ablen",
+            "label": "AB^2=20",
+            "at": "finish_ablen",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "blue"
+          },
+          {
+            "id": "pqlen",
+            "label": "PQ^2=29",
+            "at": "finish_pqlen",
+            "dir": "c",
+            "size": "m",
+            "halo": true,
+            "ink": "warm"
+          },
+          {
+            "id": "finishLight31",
+            "seg": [
+              "A",
+              "B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "finishLight32",
+            "seg": [
+              "P",
+              "Q"
+            ],
+            "ink": "gold",
+            "w": 5
+          }
+        ],
+        "view": [
+          -2,
+          -6,
+          6,
+          4
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Back to our opening pair. The blue side went four across and two up. The orange side goes five across and two up.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Moved, or changed?"
+            },
+            {
+              "do": "write",
+              "tex": "AB^2=4^2+2^2=20"
+            },
+            {
+              "do": "show",
+              "target": "ablen",
+              "at": "blue"
+            },
+            {
+              "do": "write",
+              "tex": "PQ^2=5^2+2^2=29",
+              "at": "orange"
+            },
+            {
+              "do": "show",
+              "target": "pqlen",
+              "at": "orange"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Twenty and twenty-nine. That one changed length is enough: this pair cannot be related by a rigid motion.",
+          "pause": 0.9,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "20\\ne29"
+            },
+            {
+              "do": "text",
+              "text": "One mismatch proves no",
+              "at": "cannot"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A rigid motion changes where a figure is, while preserving every distance and angle. When in doubt, measure.",
+          "pause": 1.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "When in doubt, measure"
+            },
+            {
+              "do": "text",
+              "text": "Lengths. Angles. Parallel lines.",
+              "at": "preserving"
+            },
+            {
+              "do": "show",
+              "target": [
+                "finishLight31",
+                "finishLight32"
+              ],
+              "dur": 0.15,
+              "at": "measure"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

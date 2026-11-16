@@ -2340,6 +2340,52 @@
     ],
     "skill": "shape-attributes"
   },
+  "delivery-operations-slots": {
+    "id": "delivery-then-use--sd",
+    "version": "0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72",
+    "title": "Two-step word problems",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/audio.m4a",
+    "duration": 157.94,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/audio.m4a",
+        "version": "0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72",
+        "duration": 157.94
+      }
+    ],
+    "skill": "multi-operation-stories"
+  },
+  "delivery-then-use": {
+    "id": "delivery-then-use--sd",
+    "version": "0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72",
+    "title": "Two-step word problems",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/audio.m4a",
+    "duration": 157.94,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/audio.m4a",
+        "version": "0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72",
+        "duration": 157.94
+      }
+    ],
+    "skill": "multi-operation-stories"
+  },
   "derive-line-equation": {
     "id": "derive-line-equation--sd",
     "version": "04ff2ee62a221d152039992063a869e9d1fe9b1711535c2dfab07638f08438d3",
@@ -3150,6 +3196,29 @@
       }
     ],
     "skill": "parallelogram-proofs"
+  },
+  "fl-two-step-story-equation": {
+    "id": "delivery-then-use--sd",
+    "version": "0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72",
+    "title": "Two-step word problems",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/audio.m4a",
+    "duration": 157.94,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/audio.m4a",
+        "version": "0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72",
+        "duration": 157.94
+      }
+    ],
+    "skill": "multi-operation-stories"
   },
   "flat-or-solid-name": {
     "id": "name-flat-shape--sn",
@@ -6308,6 +6377,29 @@
     ],
     "skill": "exponent-laws"
   },
+  "purchase-change": {
+    "id": "delivery-then-use--sd",
+    "version": "0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72",
+    "title": "Two-step word problems",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/audio.m4a",
+    "duration": 157.94,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/audio.m4a",
+        "version": "0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72",
+        "duration": 157.94
+      }
+    ],
+    "skill": "multi-operation-stories"
+  },
   "pythagorean-converse": {
     "id": "pythagorean-converse--sp",
     "version": "bb9fcc42511f37ba2dc79658c8215b933dac5b87f057bdb64cf0e2455bca30f0",
@@ -7083,6 +7175,94 @@
       }
     ],
     "skill": "pythagorean-theorem"
+  },
+  "rigid-motion-image-check": {
+    "id": "rigid-motion-property-claims--sr",
+    "version": "8bd9bc36d3ff0783895881cf8b7451c65d3c4cdf5811580ca9059c53305fbf09",
+    "title": "Properties of rigid motions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/rigid-motion-property-claims--sr/8bd9bc36d3ff0783895881cf8b7451c65d3c4cdf5811580ca9059c53305fbf09/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/rigid-motion-property-claims--sr/8bd9bc36d3ff0783895881cf8b7451c65d3c4cdf5811580ca9059c53305fbf09/audio.m4a",
+    "duration": 352.88,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/rigid-motion-property-claims--sr/8bd9bc36d3ff0783895881cf8b7451c65d3c4cdf5811580ca9059c53305fbf09/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/rigid-motion-property-claims--sr/8bd9bc36d3ff0783895881cf8b7451c65d3c4cdf5811580ca9059c53305fbf09/audio.m4a",
+        "version": "8bd9bc36d3ff0783895881cf8b7451c65d3c4cdf5811580ca9059c53305fbf09",
+        "duration": 352.88
+      }
+    ],
+    "skill": "rigid-motion-properties"
+  },
+  "rigid-motion-image-flaw": {
+    "id": "rigid-motion-property-claims--sr",
+    "version": "8bd9bc36d3ff0783895881cf8b7451c65d3c4cdf5811580ca9059c53305fbf09",
+    "title": "Properties of rigid motions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/rigid-motion-property-claims--sr/8bd9bc36d3ff0783895881cf8b7451c65d3c4cdf5811580ca9059c53305fbf09/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/rigid-motion-property-claims--sr/8bd9bc36d3ff0783895881cf8b7451c65d3c4cdf5811580ca9059c53305fbf09/audio.m4a",
+    "duration": 352.88,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/rigid-motion-property-claims--sr/8bd9bc36d3ff0783895881cf8b7451c65d3c4cdf5811580ca9059c53305fbf09/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/rigid-motion-property-claims--sr/8bd9bc36d3ff0783895881cf8b7451c65d3c4cdf5811580ca9059c53305fbf09/audio.m4a",
+        "version": "8bd9bc36d3ff0783895881cf8b7451c65d3c4cdf5811580ca9059c53305fbf09",
+        "duration": 352.88
+      }
+    ],
+    "skill": "rigid-motion-properties"
+  },
+  "rigid-motion-measure-verify": {
+    "id": "rigid-motion-property-claims--sr",
+    "version": "8bd9bc36d3ff0783895881cf8b7451c65d3c4cdf5811580ca9059c53305fbf09",
+    "title": "Properties of rigid motions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/rigid-motion-property-claims--sr/8bd9bc36d3ff0783895881cf8b7451c65d3c4cdf5811580ca9059c53305fbf09/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/rigid-motion-property-claims--sr/8bd9bc36d3ff0783895881cf8b7451c65d3c4cdf5811580ca9059c53305fbf09/audio.m4a",
+    "duration": 352.88,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/rigid-motion-property-claims--sr/8bd9bc36d3ff0783895881cf8b7451c65d3c4cdf5811580ca9059c53305fbf09/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/rigid-motion-property-claims--sr/8bd9bc36d3ff0783895881cf8b7451c65d3c4cdf5811580ca9059c53305fbf09/audio.m4a",
+        "version": "8bd9bc36d3ff0783895881cf8b7451c65d3c4cdf5811580ca9059c53305fbf09",
+        "duration": 352.88
+      }
+    ],
+    "skill": "rigid-motion-properties"
+  },
+  "rigid-motion-property-claims": {
+    "id": "rigid-motion-property-claims--sr",
+    "version": "8bd9bc36d3ff0783895881cf8b7451c65d3c4cdf5811580ca9059c53305fbf09",
+    "title": "Properties of rigid motions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/rigid-motion-property-claims--sr/8bd9bc36d3ff0783895881cf8b7451c65d3c4cdf5811580ca9059c53305fbf09/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/rigid-motion-property-claims--sr/8bd9bc36d3ff0783895881cf8b7451c65d3c4cdf5811580ca9059c53305fbf09/audio.m4a",
+    "duration": 352.88,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/rigid-motion-property-claims--sr/8bd9bc36d3ff0783895881cf8b7451c65d3c4cdf5811580ca9059c53305fbf09/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/rigid-motion-property-claims--sr/8bd9bc36d3ff0783895881cf8b7451c65d3c4cdf5811580ca9059c53305fbf09/audio.m4a",
+        "version": "8bd9bc36d3ff0783895881cf8b7451c65d3c4cdf5811580ca9059c53305fbf09",
+        "duration": 352.88
+      }
+    ],
+    "skill": "rigid-motion-properties"
   },
   "root-approximation-select": {
     "id": "root-between-integers--sr",
@@ -8448,6 +8628,29 @@
     ],
     "skill": "percentages"
   },
+  "staar-story-model-choice": {
+    "id": "delivery-then-use--sd",
+    "version": "0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72",
+    "title": "Two-step word problems",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/audio.m4a",
+    "duration": 157.94,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/audio.m4a",
+        "version": "0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72",
+        "duration": 157.94
+      }
+    ],
+    "skill": "multi-operation-stories"
+  },
   "standard-to-scientific": {
     "id": "scientific-to-standard--ss",
     "version": "71a50f321dea38e8f0a21b773887b9b5ac04b918b7b8390176d6b45f7fcdcc0f",
@@ -8538,6 +8741,29 @@
       }
     ],
     "skill": "addition-stories"
+  },
+  "story-expression-select": {
+    "id": "delivery-then-use--sd",
+    "version": "0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72",
+    "title": "Two-step word problems",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/audio.m4a",
+    "duration": 157.94,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/audio.m4a",
+        "version": "0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72",
+        "duration": 157.94
+      }
+    ],
+    "skill": "multi-operation-stories"
   },
   "story-for-expression": {
     "id": "share-whole-items--bc",
@@ -8674,6 +8900,29 @@
       }
     ],
     "skill": "addition-stories"
+  },
+  "strip-diagram-match": {
+    "id": "delivery-then-use--sd",
+    "version": "0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72",
+    "title": "Two-step word problems",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/audio.m4a",
+    "duration": 157.94,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/delivery-then-use--sd/0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72/audio.m4a",
+        "version": "0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72",
+        "duration": 157.94
+      }
+    ],
+    "skill": "multi-operation-stories"
   },
   "substitute-into-equation": {
     "id": "linear-system-x--se",
