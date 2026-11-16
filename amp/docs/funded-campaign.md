@@ -10,7 +10,7 @@ The original request keeps its labels across retries. Retrying an unattributed r
 
 | Action | Evidence | Date |
 | --- | --- | --- |
-| `request_prepared` | A new authenticated, consent-authorized funding request with campaign labels | Request creation |
+| `request_prepared` | A new authenticated funding request with campaign labels | Request creation |
 | `order_created` | Verified operator provisioning links an ESA order to that request | Order creation event |
 | `order_settled` | The commerce ledger accepts positive settled payment | Settlement event |
 | `refund_completed` | The ledger accepts a completed positive refund | Refund event |
@@ -73,7 +73,7 @@ Registering a label does not enable an offer, publish an ad or export a conversi
 Keep exact asset hashes and platform IDs in the private campaign registry, and
 assign a new creative label when a materially different asset replaces a variant.
 
-## Parent entry and consent continuation
+## Parent entry
 
 Each entry link opens only the selected program's offers and requests:
 
@@ -83,17 +83,17 @@ Each entry link opens only the selected program's offers and requests:
 | `/purchase/new-hampshire-efa` | `nh-efa` | `NH` |
 | `/purchase/arizona-esa` | `az-esa` | `AZ` |
 
-These links open the authenticated invoice or quote form. They do not send an email request, collect payment or grant access. The server verifies offer availability, consent and learner ownership. An unavailable offer is explained before a new parent is asked for learner details, with a link to that program's purchase help. An existing family can view retained requests even when no new offer is available.
+These links open the authenticated invoice or quote form. They do not send an email request, collect payment or grant access. The server verifies offer availability and learner ownership. An unavailable offer is explained before a new parent is asked for learner details, with a link to that program's purchase help. An existing family can view retained requests even when no new offer is available.
 
-The Arkansas site's free-practice link carries `program=ar-efa`, a functional purchase preference. It survives trial navigation without requiring campaign measurement. The plan page offers **Use Arkansas EFA funds** independently of card checkout availability. Sign-in, email verification and learner setup return to the funded route. Consent must be active before learner setup; this route does not turn on an unavailable consent method or waive its required confirmations.
+The Arkansas site's free-practice link carries `program=ar-efa`, a functional purchase preference. It survives trial navigation without requiring campaign measurement. The plan page offers **Use Arkansas EFA funds** independently of card checkout availability. Sign-in and learner setup return to the funded route. There is no consent or email-confirmation step before learning: a learner 13 or older is outside COPPA ([16 CFR 312.2](https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-312/section-312.2)), and a funded child under 13 learns on the same restricted internal-operations basis as any family child ([16 CFR 312.5(c)(7)](https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-312/section-312.5); [parent consent](parent-consent.md#learning-before-verified-consent)). Only a parent who withdrew consent is asked to renew it before adding a child (16 CFR 312.6(a)(2)).
 
 The router retains only complete, allowlisted campaign labels. GPC and DNT remove them during navigation and immediately before request creation. Authentication callback URLs include only a fixed internal destination and permitted labels. No learner, visitor or click identifier is forwarded.
 
-When consent starts, a pending funded-purchase continuation is stored in this browser for up to seven days, under the authenticated parent account. It contains the allowlisted program destination, permitted campaign labels and an expiration time, never a consent token or learner details. Consent emails opened in another tab on the same device can return that account to the purchase. Another account cannot use the entry; an expired entry is removed when read. Opting out removes retained labels without removing the purchase route. Preparing the quote or leaving the funded consent flow clears the entry. With blocked storage or a different device, use the original tab or reopen the selected program purchase link; campaign attribution may be absent.
+When funded setup starts, a pending funded-purchase continuation is stored in this browser for up to seven days, under the authenticated parent account. It contains the allowlisted program destination, permitted campaign labels and an expiration time, never a token or learner details. An email confirmation link opened in another tab on the same device can return that account to the purchase. Another account cannot use the entry; an expired entry is removed when read. Opting out removes retained labels without removing the purchase route. Preparing the quote clears the entry. With blocked storage or a different device, use the original tab or reopen the selected program purchase link; campaign attribution may be absent.
 
-Public invoice buttons should link to the corresponding app entry after the live offer and consent configuration pass a complete purchase check. A route's existence does not establish live offer readiness. Program selection survives signup, email verification, consent and learner setup; it does not require a card purchase.
+Public invoice buttons should link to the corresponding app entry after the live offer passes a complete purchase check. A route's existence does not establish live offer readiness. Program selection survives signup, email confirmation and learner setup; it does not require a card purchase.
 
-`npm run test:funded-entry-ui` exercises signup, email verification, consent continuation in a separate tab, learner setup, quote retries, privacy signals, unavailable offers and mobile layouts against synthetic services. Funding API database tests verify the actual authorization and financial counters separately.
+`npm run test:funded-entry-ui` exercises signup, email confirmation, learner setup, quote retries, privacy signals, unavailable offers and mobile layouts against synthetic services. Funding API database tests verify the actual authorization and financial counters separately.
 
 ## Payment amounts
 
@@ -122,9 +122,13 @@ exists. Retries require the original random idempotency key and identical billin
 fields. The form keeps its draft in memory, including after a failed request; it
 does not put names, emails or retrieval credentials in URLs or browser storage.
 
-A parent signs in with the same verified email to recover invoices. Linking an
-invoice to a learner requires active learning consent and server-verified learner
-ownership. Linking preserves the original invoice number and offer snapshot. It
+A parent signs in with the same confirmed email to recover invoices. The invoice
+is made out to that address and found by it, so confirming the address is what
+stops anyone else from taking it; it is a binding, not a consent step. Linking an
+invoice to a learner requires server-verified learner ownership and nothing more:
+the learner takes the access on the basis they already learn on (an adult, 13 or
+older, the restricted basis, or consent). Only a withdrawn consent for a named
+child under 13 refuses it. Linking preserves the original invoice number and offer snapshot. It
 does not confirm payment or grant access. Only trusted program payment evidence
 can provision the purchase. Payment received before learner setup must be retained
 by the reconciliation adapter until the invoice is claimed. An expired invoice
@@ -179,7 +183,7 @@ Arkansas routes use `ar-efa-launch` and `/esa/arkansas-efa/`; Arizona routes use
 
 The report separates unclaimed invoices, parent-reported submission, linked orders, program approval, bank settlement, issued grants, current usable access and observed use. A verified provider record waiting for an invoice claim is reported separately; it does not imply a settled order or an active learner. Approval may authorize access before settlement under the offer's delivery policy. Only verified settled money supports a paid conversion.
 
-Current usable access requires the exact learner's current projected grant, an undeleted learner and the same consent decision used by the product. Observed use means at least one retained server-recorded online answer for that learner after the activation evidence and import, within the grant term and before revocation. Pre-access trial work and sibling activity do not qualify. The settled-with-use count can include authorized practice before settlement and can overlap refunded orders; it is not net sales or another conversion. Overlapping grants may share observed activity, so counts do not establish which license caused practice.
+Current usable access requires the exact learner's current projected grant, an undeleted learner and the same per-learner learning decision used by the product. Observed use means at least one retained server-recorded online answer for that learner after the activation evidence and import, within the grant term and before revocation. Pre-access trial work and sibling activity do not qualify. The settled-with-use count can include authorized practice before settlement and can overlap refunded orders; it is not net sales or another conversion. Overlapping grants may share observed activity, so counts do not establish which license caused practice.
 
 Activation mail counts distinguish provider acceptance, pending work, stopped work and issued grants with no mail record. Acceptance does not establish inbox delivery or an open. Waiting ages identify the oldest unclaimed invoice, approved order awaiting settlement and currently usable grant with no retained observed use. Ages are whole hours from the relevant retained creation/approval/activation evidence; null means no qualifying timing evidence.
 

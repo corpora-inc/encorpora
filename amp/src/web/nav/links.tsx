@@ -91,9 +91,12 @@ export function useLayers() {
         href: hrefWith(pushLayer(raw, entity)),
         resetScroll: false,
       }),
-    /** Pops the top layer: Back to where it was opened. */
-    close: () => closeTo(router, hrefWith(popLayer(raw))),
-    /** Puts every layer away (the scrim, Escape, the cross), as one new
+    /** Close only this layer, including after a practice or video detour. */
+    close: () => {
+      const parent = hrefWith(popLayer(raw));
+      closeTo(router, parent, parent);
+    },
+    /** Puts every layer away (the scrim), as one new
      * step in history: Back brings the whole stack back. */
     closeAll: () =>
       void router.navigate({ href: hrefWith(undefined), resetScroll: false }),

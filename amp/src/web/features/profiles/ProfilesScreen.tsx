@@ -10,10 +10,10 @@ import { practiceAs } from "./practice-mode";
 import styles from "./Profiles.module.css";
 
 /**
- * `/me/profiles`: every saved profile, the ones this device used last first,
- * then "Practice at a level" (nothing saved) and "New profile" (saved under
- * a name). The account's one level profile is practice at a level's own,
- * never listed here.
+ * `/me/profiles`, Practice at a level's hub (the drawer's one entry for it,
+ * Q-3): "Choose a level" (nothing saved), "New profile" (saved under a
+ * name), then every saved profile, the ones this device used last first.
+ * The account's one level profile is the level step's own, never listed.
  */
 export function ProfilesScreen() {
   const session = currentSession();
@@ -33,10 +33,8 @@ export function ProfilesScreen() {
       <div className={styles.list}>
         <header className={styles.listHead}>
           <div>
-            <h1>Profiles</h1>
-            <p>
-              Your own levels don’t change.
-            </p>
+            <h1>Practice at a level</h1>
+            <p>Your own levels don’t change.</p>
           </div>
           <div className={styles.listActions}>
             <Link
@@ -44,7 +42,7 @@ export function ProfilesScreen() {
               params={{ _splat: "me/level" }}
               className={buttonClass("primary")}
             >
-              Practice at a level
+              Choose a level
             </Link>
             <Link
               to="/$"

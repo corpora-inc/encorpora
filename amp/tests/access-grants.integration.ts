@@ -47,11 +47,12 @@ test(
         );
       return id;
     };
-    const learner = async (owner: string) => {
+    // A named child under 13 by default; a later year for a learner 13 or older.
+    const learner = async (owner: string, birthYear = 2016) => {
       const id = randomUUID();
       await db.query(
-        "INSERT INTO amp_learners(id,account_id,name,birth_year) VALUES($1,$2,'Fixture learner',2012)",
-        [id, owner],
+        "INSERT INTO amp_learners(id,account_id,name,birth_year) VALUES($1,$2,'Fixture learner',$3)",
+        [id, owner, birthYear],
       );
       return id;
     };
@@ -75,7 +76,7 @@ test(
       await registerAccessGiftRoutes(app, { pool: db, authenticate });
       await registerFamilyRoutes(app, { pool: db, authenticate });
       await t.test(
-        "reserved before signup, hidden until verified; no fake consent; safe issuer retries",
+        "reserved before signup, hidden until verified; no consent step, and a gift is not consent; safe issuer retries",
         async () => {
           const reference = randomUUID();
           const gift = await issue("Invited@example.test", 12, { reference });
@@ -103,22 +104,31 @@ test(
           assert.equal(me.next, "accept-gift");
           assert.equal(me.consent.status, "none");
           assert.match(await exported(owner), new RegExp(gift.id));
+          // A named child under 13 without consent (as after a lapse) is the
+          // one learner a gift can't reach.
           await assert.rejects(
             gifts.activate(owner, gift.id, child),
-            /consent_required/,
-          );
-          // A parent names their own child with no consent step
-          // (docs/parent-consent.md#childrens-names): the child learns on the
-          // restricted basis, and the gift still waits for consent.
-          const named = await learning.create(owner, "No consent", 2015);
-          assert.equal(named.namePending, true);
-          await assert.rejects(
-            gifts.activate(owner, gift.id, named.id),
             /consent_required/,
           );
           assert.equal(
             (await db.query("SELECT count(*) FROM amp_grants")).rows[0].count,
             "0",
+          );
+          // A parent names their own child with no consent step
+          // (docs/parent-consent.md#childrens-names): the child learns on the
+          // restricted basis, and the waiting gift starts for them on it.
+          const named = await learning.create(owner, "No consent", 2015);
+          assert.equal(named.namePending, true);
+          const started = await gifts.activate(owner, gift.id, named.id);
+          assert.equal(started?.learnerId, named.id);
+          // A gift is not consent.
+          assert.equal((await snapshot(owner)).consent.status, "none");
+          // A learner 13 or older takes a gift with no consent at all.
+          const teen = await learner(owner, 2010);
+          const second = await issue("invited@example.test");
+          assert.equal(
+            (await gifts.activate(owner, second.id, teen))?.learnerId,
+            teen,
           );
         },
       );
@@ -241,10 +251,14 @@ test(
           );
           const next = await issue("revoked@example.test");
           await families.withdraw(owner);
+          // Withdrawal stops a child under 13 (16 CFR 312.6(a)(2)); a learner
+          // 13 or older is outside COPPA and still takes the gift.
           await assert.rejects(
             gifts.activate(owner, next.id, id),
             /consent_required/,
           );
+          const teen = await learner(owner, 2010);
+          assert.equal((await gifts.activate(owner, next.id, teen))?.learnerId, teen);
         },
       );
       await t.test(

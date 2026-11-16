@@ -184,7 +184,7 @@ export async function signOut(to = "/") {
     const handed = handedStudentDevice();
     const back = handedReturnPath();
     clearStudentDevice();
-    notifyAccountSessionChanged();
+    notifyDeviceSessionChanged();
     location.assign(handed ? back : "/join");
     return;
   }
@@ -217,10 +217,16 @@ const accountSessionListeners = new Set<
 /** Publish a checked session in this tab before navigation. Cross-tab messages
  * carry no credentials; other tabs check their own session. */
 export function notifyAccountSessionChanged(checked?: AuthSession | null) {
+  notifyDeviceSessionChanged(checked);
+  broadcastAccountChange();
+}
+
+/** A shared-device handoff changes only this tab, not the parent's account
+ * cookies or any other tab. Publish it once, without echoing a broadcast. */
+export function notifyDeviceSessionChanged(checked?: AuthSession | null) {
   if (checked === undefined)
     window.dispatchEvent(new Event("amp-account-session-changed"));
   else for (const listener of accountSessionListeners) listener(checked);
-  broadcastAccountChange();
 }
 
 export function onSessionChanged(

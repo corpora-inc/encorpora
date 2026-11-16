@@ -9,7 +9,8 @@ import type { AuthSession } from "../../../auth";
 vi.mock("../../../lib/analytics");
 
 /* A gift of AMP for an adult on her own: she uses it for herself, with no
-   parental consent and no child to set up. A child's gift is unchanged. */
+   parental consent and no child to set up. A child's gift needs no consent
+   step either. */
 
 const GIFT = "b24d441b-38d5-42ec-ae99-dbe186b1ffba";
 const state = vi.hoisted(() => ({
@@ -158,12 +159,21 @@ test("an adult on her own uses the gift on her learner, offered first", async ()
   expect(state.posts[0]).toMatchObject({ body: { learnerId: "own" } });
 });
 
-test("a parent may still set the gift up for a child, through consent", async () => {
+test("a parent sets the gift up for a child with no consent step", async () => {
   state.children = [{ id: "child", name: "Robin" }];
   await open("/access");
   const child = await screen.findByRole("link", { name: "Continue setup →" });
-  expect(child.getAttribute("href")).toMatch(/^\/start\/consent/);
+  expect(child.getAttribute("href")).toMatch(/^\/start\/name/);
   expect(screen.getByRole("button", { name: "Use it for me" })).toBeTruthy();
+});
+
+test("a family gift starts for every child without consent", async () => {
+  state.covers = "family";
+  state.children = [{ id: "child", name: "Robin" }];
+  await open("/access");
+  expect(
+    await screen.findByRole("button", { name: /Start your family’s/ }),
+  ).toBeTruthy();
 });
 
 test("a family gift is never offered as one adult's own", async () => {

@@ -4,6 +4,7 @@ import {
   useMemo,
   useRef,
   useState,
+  useSyncExternalStore,
   type CSSProperties,
   type KeyboardEvent,
   type MouseEvent,
@@ -38,6 +39,25 @@ export type DataGridColumn<Row> = {
 /** Everything a keyboard can land on inside a cell. */
 const WIDGETS =
   "a[href],button,input,textarea,[role=button],[role=spinbutton],[role=checkbox]";
+/** A phone or a small tablet has one scroll, the page's: a long table there
+ * scrolls with the page, never in a box of its own (premium UI rule 8). */
+const ROOMY = "(min-width: 769px)";
+const queryable = () =>
+  typeof window !== "undefined" && typeof window.matchMedia === "function";
+const roomy = () => !queryable() || window.matchMedia(ROOMY).matches;
+function useRoomy() {
+  return useSyncExternalStore(
+    (change) => {
+      if (!queryable()) return () => undefined;
+      const query = window.matchMedia(ROOMY);
+      query.addEventListener("change", change);
+      return () => query.removeEventListener("change", change);
+    },
+    roomy,
+    () => true,
+  );
+}
+
 const isField = (element: EventTarget | null) =>
   element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement;
 
@@ -263,21 +283,40 @@ function Table<Row>({
   const table = useRef<HTMLTableElement>(null);
   const [active, setActive] = useState({ r: 0, c: 0 });
   const pending = useRef<{ r: number; c: number } | null>(null);
-  const virtualizer = useVirtualizer({
+  // With room, a long table scrolls in its own box under its header; on a
+  // phone or a small tablet it scrolls with the page.
+  const boxed = useRoomy();
+  const [margin, setMargin] = useState(0);
+  useLayoutEffect(() => {
+    if (!virtual || boxed) return;
+    const top = scroller.current?.getBoundingClientRect().top ?? 0;
+    setMargin(top + window.scrollY);
+  }, [virtual, boxed]);
+  const inBox = useVirtualizer({
     count: rows.length,
-    enabled: virtual,
+    enabled: virtual && boxed,
     getScrollElement: () => scroller.current,
     estimateSize: () => rowHeight,
     overscan: 8,
     scrollPaddingStart: 72,
   });
+  const inPage = useWindowVirtualizer({
+    count: rows.length,
+    enabled: virtual && !boxed,
+    estimateSize: () => rowHeight,
+    overscan: 8,
+    scrollMargin: margin,
+    scrollPaddingStart: 72,
+  });
+  const virtualizer = boxed ? inBox : inPage;
+  const offset = boxed ? 0 : margin;
   const items = virtual ? virtualizer.getVirtualItems() : [];
   const shown = virtual
     ? items.map((item) => ({ row: rows[item.index]!, index: item.index }))
     : rows.map((row, index) => ({ row, index }));
-  const before = virtual ? (items[0]?.start ?? 0) : 0;
+  const before = virtual ? (items[0]?.start ?? offset) - offset : 0;
   const after = virtual
-    ? virtualizer.getTotalSize() - (items.at(-1)?.end ?? 0)
+    ? virtualizer.getTotalSize() - ((items.at(-1)?.end ?? offset) - offset)
     : 0;
 
   // One tab stop: the active cell or the first control in it. Runs after every
@@ -316,7 +355,7 @@ function Table<Row>({
     pending.current = target;
     setActive(target);
     if (virtual && target.r > 0) virtualizer.scrollToIndex(target.r - 1);
-    else if (target.r === 0) scroller.current?.scrollTo({ top: 0 });
+    else if (target.r === 0 && boxed) scroller.current?.scrollTo({ top: 0 });
   };
   const onKeyDown = (event: KeyboardEvent<HTMLTableElement>) => {
     const target = event.target as HTMLElement;
@@ -378,7 +417,7 @@ function Table<Row>({
       ref={scroller}
       className={styles.scroller}
       data-scrolls={scrolls || undefined}
-      data-virtual={virtual || undefined}
+      data-virtual={(virtual && boxed) || undefined}
     >
       <table
         ref={table}

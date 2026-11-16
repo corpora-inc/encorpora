@@ -204,12 +204,12 @@ h2.sectionTitle {
   min-width: 0;
   gap: 2px;
 }
-/* The title's target is its row's words (title, size, code), never the 26 px
-   line of the title alone. */
+/* The title's target is its row's words (title, size, code) and the row's
+   padding above and below, never the 26 px line of the title alone. */
 .rowTitle::after {
   content: "";
   position: absolute;
-  inset: calc(-1 * var(--space-2)) 0;
+  inset: calc(-1 * var(--space-3)) 0;
 }
 .rowTitle {
   display: inline-flex;

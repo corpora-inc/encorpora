@@ -36,7 +36,7 @@ export async function deliverFundingInvoiceMail(
       await currentPolicy(db, policy);
       const row = (
         await db.query(`SELECT o.*,i.parent_email,i.offer_snapshot,i.expires_at,i.state,i.received_payment_at,
-        r.status AS request_status,g.revoked_at AS reservation_revoked_at,g.id AS reservation_id,
+        r.status AS request_status,g.revoked_at AS reservation_revoked_at,g.id AS reservation_id,g.claim_by,
         o.first_dispatch_at+interval '23 hours'<=clock_timestamp()+interval '15 seconds' AS window_ended
       FROM amp_funding_invoice_outbox o JOIN amp_funding_invoice_intents i ON i.id=o.invoice_id
       LEFT JOIN amp_funding_requests r ON r.id=i.claimed_request_id
@@ -47,28 +47,17 @@ export async function deliverFundingInvoiceMail(
       ).rows[0];
       if (!row) return null;
       const offer = row.offer_snapshot;
-      const slug = (
-        {
-          "az-esa": "arizona-esa",
-          "ar-efa": "arkansas-efa",
-          "nh-efa": "new-hampshire-efa",
-        } as Record<string, string>
-      )[offer.programId];
-      const setupUrl = slug
-        ? new URL(`/purchase/${slug}`, accountUrl).href
-        : accountUrl.href;
+      const billingUrl = new URL("/account/billing", accountUrl).href;
       const mail: ConsentMail = {
         idempotencyKey: `amp-funding-invoice:${row.invoice_id}`,
         recipient: row.parent_email,
         subject: "Your AMP invoice and next steps",
         text: [
-          "Your invoice PDF is attached. Your child can start today while your program reviews payment.",
-          "1. Save the attached invoice.",
-          `2. Request payment through your program: ${offer.instructions}\n${offer.destinationUrl}`,
-          `3. Sign in with this email and connect your invoice to your learner: ${setupUrl}`,
-          `Funded-pending access is available until ${new Date(row.expires_at).toISOString().slice(0, 10)} (UTC). Complete learner setup and any required parent consent to start practicing.`,
-          `For a child, complete parent consent to confirm the paid term: ${new URL(`/start/consent${slug ? `?return=${slug}` : ""}`, accountUrl).href}`,
-          "We will email you when your purchase is confirmed. Submit the invoice only once; do not also pay by card.",
+          "Your AMP invoice is attached. Your child can start today while you arrange payment through your program.",
+          `Submit the attached PDF through your program: ${offer.instructions}\n${offer.destinationUrl}`,
+          `Submit by ${new Date(row.claim_by ?? row.expires_at).toISOString().slice(0, 10)} to keep learning while your program processes payment.`,
+          `Your invoices, learning access and submission status are in Billing. Sign in with this email:\n${billingUrl}`,
+          "After submitting, choose ‘I’ve submitted it’ in Billing. We’ll email you when payment arrives.",
           `Invoice: ${row.invoice_id}`,
           "Need help with ClassWallet DirectPay? Email support@corpora.inc.",
         ].join("\n\n"),

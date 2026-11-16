@@ -51,7 +51,7 @@
   },
   {
     "path": "src/analytics/funded-cohort.ts",
-    "hash": "3d85562b3a1293fe14bb74e47f5265f97909152ecb3d352c1b3dbc70c87856af",
+    "hash": "5204ffbc5105089b9115d03f6e8109020a4e7313ba3e58a66fc522442a42beac",
     "reason": "Financial report joins exact commerce: order grant IDs, which cannot be derived adult grant IDs."
   },
   {
@@ -438,5 +438,15 @@
     "path": "src/funding-purchase/repository.ts",
     "hash": "33ae203a7303455c3c007a8046dc2c4e1bff321aafcfcd74a3ab4a1b10da2287",
     "reason": "Cancelling a funded invoice revokes exactly the temporary grant linked to that invoice: a write keyed by the invoice, never an entitlement read."
+  },
+  {
+    "path": "src/funding-purchase/repository.ts",
+    "hash": "af4b7f17f79af48d4abd52cdb62c60eb2f7d6a7e86240862a1455b2ed7c53cf3",
+    "reason": "Submission mutates only active, unrevoked funded-pending grants linked to the account-locked invoice. It caps the stored end at the fixed invoice term (legacy terms retain the 60-day submission extension); no adult entitlement is read or authorized."
+  },
+  {
+    "path": "src/funding-purchase/provision.ts",
+    "hash": "f93523f4cc150345319d0f0d9cbb4200aab00a54f847ee1597e584dab13f0abd",
+    "reason": "Provisioning under the exclusive account lock revokes only this owned learner’s funded-pending bridge grants; an expired invoice is further scoped to its own gift-linked grant. Paid and derived adult grants are untouched, and entitlement checks use accessGrantsFor."
   }
 ]

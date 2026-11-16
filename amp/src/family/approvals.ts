@@ -6,10 +6,8 @@ import { createHash, createHmac, randomUUID } from "node:crypto";
 import { childNameSchema } from "../learning/nickname.js";
 import type { Pool, PoolClient } from "pg";
 import { z } from "zod";
-import {
-  learningConsentActive,
-  parentAddressConfirmed,
-} from "../server/account-access.js";
+import { learningConsentActive } from "../server/account-access.js";
+import { pastCoppaAge } from "../privacy/coppa-age.js";
 import { coverWithFamilyGift } from "../access-grants/repository.js";
 import { recordEvent } from "../schools/events.js";
 import { INVITE_DAYS } from "../schools/license.js";
@@ -78,7 +76,7 @@ export const approveSchema = z.strictObject({
     .int()
     .refine((year) => {
       const now = new Date().getUTCFullYear();
-      return year >= now - 21 && year <= now - 2;
+      return year >= 1900 && year <= now - 2;
     }, "A child’s birth year")
     .optional(),
 });
@@ -353,11 +351,12 @@ export async function listApprovals(
     }
     const client = await pool.connect();
     try {
+      // Per learner: one 13 or older needs no parental consent.
       const consent = await learningConsentActive(
         client,
         row.account_id!,
         false,
-        undefined,
+        row.learner_id!,
         false,
       );
       const ends = await activeGrant(client, row.learner_id!);
@@ -698,8 +697,10 @@ export async function readApproval(
         consentActive && (!!ends || (allowance?.problems.remaining ?? 0) > 0),
       freeAllowance: allowance,
       learnerId: here ? row.learner_id : null,
-      // A child new to the class: the parent gives their birth year too.
-      asksBirthYear: status === "open" && !row.person_id,
+      // The parent gives their child's birth year: it sets where practice
+      // starts and, from the parent alone, whether consent applies (13 or
+      // older is outside COPPA, 16 CFR 312.2).
+      asksBirthYear: status === "open",
       access: { active: !!ends, endsAt: ends?.toISOString() ?? null },
     };
   } finally {
@@ -778,9 +779,20 @@ async function approveInside(
   }
   if (row.expires_at <= new Date())
     throw new FamilyError(410, "approval_expired");
-  if (!(await parentAddressConfirmed(client, accountId)))
-    throw new FamilyError(403, "email_unconfirmed");
-  if (!(await learningConsentActive(client, accountId, development)))
+  // Approving names the child to their parent's account and shares that
+  // name with another family's teacher. For a child who may be under 13
+  // that is collection and disclosure beyond the restricted basis, so it
+  // needs the parent's verified consent (16 CFR 312.5(a)(1)). A child whose
+  // birth year shows 13 or older is outside COPPA (16 CFR 312.2): no consent.
+  // No confirmed-email gate: no rule asks for one, and the approval link,
+  // not the account's address, is what ties this parent to the child.
+  // Only the parent's own answer decides the age: a tutor's or a roster's
+  // year is an estimate, so without the parent's year the child may be
+  // under 13.
+  if (
+    !pastCoppaAge(birthYear) &&
+    !(await learningConsentActive(client, accountId, development))
+  )
     throw new FamilyError(409, "consent_required");
   const family = (
     await client.query<{ org_id: string; timezone: string; class_id: string }>(
@@ -809,9 +821,10 @@ async function approveInside(
     ).rows[0];
     if (!existing) throw new FamilyError(410, "approval_ended");
     learnerId = existing.id;
+    // The parent's year, when given, replaces the tutor's estimate.
     await client.query(
-      "UPDATE amp_learners SET account_id=$2,name=$3,name_pending=false WHERE id=$1",
-      [learnerId, accountId, name],
+      "UPDATE amp_learners SET account_id=$2,name=$3,name_pending=false,birth_year=COALESCE($4,birth_year) WHERE id=$1",
+      [learnerId, accountId, name, birthYear ?? null],
     );
     await client.query("UPDATE amp_people SET given_name=$2 WHERE id=$1", [
       personId,

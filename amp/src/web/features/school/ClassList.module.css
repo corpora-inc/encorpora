@@ -63,10 +63,8 @@
   text-wrap: pretty;
 }
 .link {
-  /* Its own box reaches 44 px around the name (the row's ::after is the
-     real target); the negative margin keeps the row's layout. */
-  padding-block: 13px;
-  margin-block: -13px;
+  /* The row's ::after (the whole 60 px row) is its target; its own box is
+     the name alone, never over the teacher's line under it. */
   color: inherit;
   font-weight: 600;
   line-height: 1.3;

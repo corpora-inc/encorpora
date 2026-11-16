@@ -436,7 +436,8 @@ try {
   await page.goto(`${origin}/sign-up?return=free-practice&program=az-esa`);
   await page.getByRole("button", { name: "Continue with Google" }).click();
   await page.waitForURL(
-    /\/start\?return=free-practice&program=az-esa|\/start\?program=az-esa&return=free-practice/,
+    (url) =>
+      url.pathname === "/start" && url.searchParams.get("program") === "az-esa",
   );
   await page
     .getByRole("heading", { name: "What brings you to AMP?" })
@@ -473,6 +474,35 @@ try {
     ),
     "social signup must not be counted as a password attempt",
   );
+  // Once this Google account has a family, either entry button resumes it.
+  const googleSession = await (
+    await page.request.get(`${origin}/api/auth/get-session`)
+  ).json();
+  const family = await page.request.post(`${origin}/api/v1/start`, {
+    headers: {
+      origin,
+      authorization: `Bearer ${googleSession.session.token as string}`,
+    },
+    data: { as: "parent", children: [{ birthYear: 2015 }] },
+  });
+  assert.equal(family.status(), 200);
+  for (const entry of [
+    "/sign-in",
+    "/sign-up?entry=pitch-try&return=free-practice",
+  ]) {
+    await page.request.post(`${origin}/api/auth/sign-out`, {
+      headers: { origin },
+    });
+    await context.clearCookies();
+    await page.goto(`${origin}${entry}`);
+    await page.getByRole("button", { name: "Continue with Google" }).click();
+    await page.waitForURL((url) => /^\/family\/[^/]+$/.test(url.pathname));
+    await page
+      .getByRole("button", { name: /practice here/ })
+      .first()
+      .waitFor();
+    assert.equal(await page.locator("[data-starter]").count(), 0);
+  }
   await page.request.post(`${origin}/api/auth/sign-out`, {
     headers: { origin },
   });
@@ -761,7 +791,7 @@ try {
     [randomUUID(), learnerId],
   );
   async function familyHome(tab: Page) {
-    await tab.waitForURL(/\/school\/[^/]+\/classes\/[^/]+\/today$/);
+    await tab.waitForURL((url) => /^\/family\/[^/]+$/.test(url.pathname));
     await todayTitle(tab);
     await tab
       .getByRole("button", {
@@ -958,6 +988,12 @@ try {
   await page
     .getByRole("heading", { name: "Where Test Learner is", exact: true })
     .waitFor();
+  // The legacy overview resolves to this child's canonical address. An
+  // account switch must refuse that address, not substitute another child.
+  await page.waitForURL((url) =>
+    /^\/family\/[^/]+\/kids\/[^/]+$/.test(url.pathname),
+  );
+  const previousChildPath = new URL(page.url()).pathname;
   await page.unroute(`**/api/v1/billing/purchase/${purchaseId}`);
   let replayedPurchases = 0;
   page.on("request", (request) => {
@@ -989,7 +1025,10 @@ try {
     channel.close();
   });
   await page
-    .getByRole("heading", { name: "Second Learner", exact: true })
+    .getByRole("heading", {
+      name: "This isn’t available to your account",
+      exact: true,
+    })
     .waitFor();
   // Diagnostic batching is independent of the account transition. Wait on
   // product queries, not on the absence of every background request.
@@ -1003,7 +1042,7 @@ try {
     0,
     "a new account cannot inherit a consumed checkout return",
   );
-  assert.equal(new URL(page.url()).pathname, "/overview");
+  assert.equal(new URL(page.url()).pathname, previousChildPath);
   await otherTab.close();
   assert.deepEqual(errors, []);
   await context.close();

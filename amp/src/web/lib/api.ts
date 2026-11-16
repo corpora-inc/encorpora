@@ -58,8 +58,9 @@ const messages: Record<string, string> = {
   offer_unavailable:
     "This offer is unavailable. Refresh to check purchase options.",
   invalid_funding_request: "Check the email and student name, then try again.",
+  // Only a withdrawn or lapsed consent for a child under 13 refuses access.
   verified_consent_required:
-    "Complete the parent notice before connecting your learner.",
+    "Learning is paused for this child. Open Family → Privacy to resume it.",
 
   purchase_measurement_changed:
     "Your preference changed in another request. Review the updated setting and try again.",
@@ -69,8 +70,10 @@ const messages: Record<string, string> = {
     "Your purchase preference could not be saved. Refresh and try again.",
   invalid_purchase_measurement_request:
     "Review the purchase-sharing notice and choose again.",
-  consent_required: "Continue setup to review parent consent.",
-  parental_consent_required: "Continue setup to review parent consent.",
+  consent_required:
+    "Learning is paused for this child. Open Family → Privacy to resume it.",
+  parental_consent_required:
+    "Learning is paused for this child. Open Family → Privacy to resume it.",
   license_required: "Choose a plan for this learner before practicing.",
   sign_in_required: "Your session ended. Sign in again to continue.",
   "Sign in to continue": "Your session ended. Sign in again to continue.",

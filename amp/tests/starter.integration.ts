@@ -515,6 +515,28 @@ test(
 );
 
 test(
+  "a family can include an older learner with their exact birth year",
+  database,
+  async (t) => {
+    const f = await fixture(t);
+    const parent = await f.user("Family Fixture");
+    const result = await f.started(parent, {
+      as: "parent",
+      children: [{ name: "Morgan", birthYear: 1950 }],
+    });
+    const learner = (
+      await f.db.query(
+        "SELECT id,name,birth_year FROM amp_learners WHERE account_id=$1 AND deleted_at IS NULL",
+        [parent],
+      )
+    ).rows[0];
+    assert.equal(result.learnerId, learner.id);
+    assert.equal(learner.name, "Morgan");
+    assert.equal(learner.birth_year, 1950);
+  },
+);
+
+test(
   "refusals: invalid answers, withdrawn consent, and student or trial accounts",
   database,
   async (t) => {
@@ -525,7 +547,7 @@ test(
         as: "parent",
         children: Array.from({ length: 7 }, () => ({ birthYear: year - 8 })),
       },
-      { as: "parent", children: [{ birthYear: 1950 }] },
+      { as: "parent", children: [{ birthYear: 1899 }] },
       { as: "parent", children: [] },
       { as: "tutor", students: [{ birthYear: year - 8, name: "Kai" }] },
       // A teacher or a school starts with a demo, not with the starter.

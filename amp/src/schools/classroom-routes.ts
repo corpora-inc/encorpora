@@ -1,3 +1,4 @@
+import { workbookFilename, workbookDisposition } from "../workbook/filename.js";
 import type { FastifyInstance } from "fastify";
 import type { Pool } from "pg";
 import { z } from "zod";
@@ -203,6 +204,7 @@ export function defineClassroomRoutes(define: typeof defineSchoolRoute) {
         pdf,
         record,
         format: used,
+        learnerName,
       } = await studentWorkbookPdf(
         pool,
         learningFrom(services),
@@ -218,7 +220,9 @@ export function defineClassroomRoutes(define: typeof defineSchoolRoute) {
         .type("application/pdf")
         .header(
           "Content-Disposition",
-          `attachment; filename="amp-workbook-${record.date}-${record.number}-${used}.pdf"`,
+          workbookDisposition(
+            workbookFilename(record, learnerName, "pdf", used),
+          ),
         )
         .send(pdf);
     },

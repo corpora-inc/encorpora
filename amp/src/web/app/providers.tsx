@@ -28,7 +28,7 @@ export function Providers({
   onAccountExit,
 }: {
   children: ReactNode;
-  onAccountExit?: () => void;
+  onAccountExit?: (previous: AuthSession) => void;
 }) {
   const session = (
     <SessionProviders onAccountExit={onAccountExit}>
@@ -42,7 +42,7 @@ function SessionProviders({
   onAccountExit,
 }: {
   children: ReactNode;
-  onAccountExit?: () => void;
+  onAccountExit?: (previous: AuthSession) => void;
 }) {
   const [error, setError] = useState("");
   const [identityVersion, setIdentityVersion] = useState(0);
@@ -115,7 +115,7 @@ function SessionProviders({
         void queryClient.cancelQueries({ queryKey: sessionOptions.queryKey });
         queryClient.setQueryData(sessionOptions.queryKey, session);
         if (previous?.accountId && previous.accountId !== session?.accountId)
-          onAccountExit?.();
+          onAccountExit?.(previous);
         if (session) {
           if (nativeRuntime)
             void queryClient.invalidateQueries({

@@ -168,30 +168,23 @@ test("Classroom: the class, no family learner, no practice settings", () => {
   ).toBe("/account/security");
 });
 
-test("Me: never the family's class or a child, no family or class words (audit #8)", () => {
+test("Parent practice keeps a visible return to the family", () => {
   harness.pathname.value = "/me";
   const space = resolveSpace(
     { pathname: "/me" },
     { kind: "adult", me: account, learnerId: "pip" },
   );
   render(<DrawerContents close={() => {}} space={space} />);
-  expect(links()).toEqual([
-    "Practice",
-    "Levels",
-    "Workbooks",
-    "Practice at a level",
-    "Profiles",
-  ]);
+  expect(links()).toEqual(["Your family", "Practice", "Levels", "Workbooks"]);
   expect(
     screen.getByRole("link", { name: "Levels" }).getAttribute("aria-current"),
   ).toBe("page");
   expect(screen.queryByText("Pip")).toBeNull();
   expect(screen.queryByRole("link", { name: /class/i })).toBeNull();
   expect(screen.queryByRole("link", { name: "Family & account" })).toBeNull();
-  // Me speaks of practice: no family, kid, class or student words, and no
-  // "My …" (Q-204).
+  // Personal practice does not expose another learner or a school roster.
   expect(document.body.textContent).not.toMatch(
-    /\b(family|kids?|children|class|students?|roster)\b|\bMy /i,
+    /\b(kids?|children|class|students?|roster)\b|\bMy /i,
   );
 });
 

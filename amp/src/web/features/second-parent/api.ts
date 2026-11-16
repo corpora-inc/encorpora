@@ -22,6 +22,9 @@ export type SecondParent = z.infer<typeof secondParentSchema>;
 export const secondParentOptions = (session: AuthSession) =>
   queryOptions({
     queryKey: ["account", session.accountId, "second-parent"],
+    retry: (failures, error) =>
+      failures < 2 && error instanceof AppError && error.retry,
+    retryDelay: (failures) => 800 * 2 ** failures,
     queryFn: ({ signal }) =>
       request(
         "/family/second-parent",

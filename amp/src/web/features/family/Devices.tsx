@@ -16,6 +16,7 @@ import {
 import { JoinWays } from "../school/join/JoinWays";
 import { peopleOf } from "./redirects";
 import { familyHref, type FamilyPlace } from "./FamilyFrame";
+import type { FamilyChild } from "./api";
 import styles from "./Family.module.css";
 
 const DAY = new Intl.DateTimeFormat("en-US", {
@@ -24,6 +25,62 @@ const DAY = new Intl.DateTimeFormat("en-US", {
 });
 
 type Pending = { kind: "reset" | "revoke"; person: string; name: string };
+
+/** Picture recovery belongs with the child's settings as well as their cards. */
+export function SignInPictures({
+  place,
+  child,
+}: {
+  place: FamilyPlace;
+  child: FamilyChild;
+}) {
+  const own = place.own;
+  const person = child.classes.find((entry) => entry.id === own?.id)?.personId;
+  const reset = useResetPictures(place.session, {
+    org: own?.org ?? place.family,
+    class: own?.id ?? "",
+  });
+  const [message, setMessage] = useState("");
+  const [failed, setFailed] = useState(false);
+  if (!child.capabilities.manageDevices || !own || !person) return null;
+  const resetPictures = async () => {
+    setMessage("");
+    setFailed(false);
+    try {
+      await reset.mutateAsync(person);
+      setMessage(`${child.name} can choose three new pictures at sign-in.`);
+    } catch (error) {
+      console.error("Sign-in pictures could not be reset", error);
+      setFailed(true);
+      setMessage(
+        error instanceof AppError
+          ? error.message
+          : "The pictures couldn’t be reset. Try again.",
+      );
+    }
+  };
+  return (
+    <div className={styles.setting} data-picture-sign-in="">
+      <div className={styles.settingText}>
+        <dt>Sign-in pictures</dt>
+        <dd role={message ? (failed ? "alert" : "status") : undefined}>
+          {message ||
+            "Forgotten pictures or locked out? Choose new pictures at sign-in."}
+        </dd>
+      </div>
+      <div className={styles.settingAction}>
+        <Button
+          variant="secondary"
+          disabled={reset.isPending}
+          aria-busy={reset.isPending || undefined}
+          onClick={() => void resetPictures()}
+        >
+          Reset pictures
+        </Button>
+      </div>
+    </div>
+  );
+}
 
 /**
  * "Their own devices" (`?devices=1`): for children who practice on a device of

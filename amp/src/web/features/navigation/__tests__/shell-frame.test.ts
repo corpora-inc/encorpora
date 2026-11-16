@@ -92,7 +92,7 @@ test("a learner's record and the account each have one row of tabs; the URLs nev
     "inventory",
   ]);
   expect(accountTabs.map((tab) => tab.label)).toEqual([
-    "Sign-in",
+    "Profile",
     "Billing",
     "Privacy",
   ]);
@@ -104,10 +104,8 @@ test("a learner's record and the account each have one row of tabs; the URLs nev
     ["/account/privacy/export", "privacy"],
   ])
     expect(shellFrame(path), path).toEqual({ kind: "account", active });
-  expect(shellFrame("/me/profiles")).toEqual({
-    kind: "progress",
-    active: "profiles",
-  });
+  // Practice at a level's hub is the drawer's entry, never a tab (Q-3).
+  expect(shellFrame("/me/profiles")).toEqual({ kind: "plain" });
 });
 
 test("class sub-screens retain their tab and existing URLs", () => {

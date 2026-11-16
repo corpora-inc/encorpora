@@ -9,8 +9,8 @@
  *      the family) and on its People adds Ana from another family: her
  *      parent's address. The link is mailed, and Ana waits for her parent.
  *   2. Her parent opens the mailed link signed out, creates an account,
- *      continues, reads about the class and, once consent is recorded,
- *      approves. Ana is their learner and needs access.
+ *      continues, reads about the class and, once consent is recorded
+ *      (Ana is under 13), approves. Ana is their learner and needs access.
  *   3. The teacher sees her approved; once her free problems are used, "Talk
  *      to us"; once access is in,
  *      the parent's page shows it.
@@ -337,8 +337,15 @@ async function journey(
   await parent.waitForURL(APPROVAL_PAGE);
   await heading(parent, "Your child is invited to Marisol’s class");
   await parent.getByText("Marisol Vega", { exact: true }).waitFor();
+  // Under 13, approving needs consent first (16 CFR 312.5(a)(1)): once the
+  // year shows it, the purchase is the way in, in the approve button's place.
+  // 13 or older is approved with no consent (tests/family-approval).
+  await choose(
+    parent.getByRole("button", { name: /^Your child’s birth year/ }),
+    "2016",
+  );
   check(
-    `${label} consent first: the purchase is the way in`,
+    `${label} consent first under 13: the purchase is the way in`,
     (await parent
       .getByRole("link", { name: "Buy a license for your child" })
       .count()) === 1,

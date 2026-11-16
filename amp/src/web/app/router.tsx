@@ -1,3 +1,12 @@
+import { familyOptions, familyPlacesOptions } from "../features/family/api";
+import {
+  settingsFamilyOf,
+  usesFamilySettingsFrame,
+} from "../features/family/settings-family";
+import {
+  carryFamilyPractice,
+  restoreFamilyPractice,
+} from "../lib/family-practice-history";
 import { knownDocumentPath } from "./document-routes";
 import { requestFetch } from "../lib/request-transport";
 import { invoiceOffersOptions } from "../features/funding/invoice-offers";
@@ -57,6 +66,7 @@ import {
   isFundedReturn,
   campaignSearch,
   continuationSearch,
+  continuationUrl,
   type CampaignSearch,
 } from "../lib/funded-entry";
 import { chosenPlan } from "../lib/pending-trial";
@@ -73,6 +83,7 @@ import { workbookSearchSchema } from "../features/workbooks/model";
 import { orgsOptions, preload } from "../features/school/api";
 import { prepareBuyerHandoff } from "../features/school/pilots/buyer-session";
 import { prepareSchoolAdoption } from "../features/school/adoption-session";
+import { finishingSignIn } from "../features/school/join/api";
 import { SMALL_CLASS } from "../features/navigation/shell-frame";
 import { approvalsOptions } from "../features/family-approval/api";
 import { secondParentOptions } from "../features/second-parent/api";
@@ -244,6 +255,7 @@ const root = createRootRoute({
   // until the new page paints, so no loading screen shows in between.
   beforeLoad: async ({ location, preload }) => {
     if (nativeRuntime) return;
+    if (!preload) await restoreFamilyPractice(location);
     if (
       knownStale() &&
       !preload &&
@@ -269,6 +281,24 @@ const root = createRootRoute({
     const session = await queryClient
       .ensureQueryData(sessionOptions)
       .catch(() => undefined);
+    if (
+      session &&
+      !session.accountId.startsWith("school:") &&
+      usesFamilySettingsFrame(location.pathname)
+    ) {
+      // Resolve the frame before committing the screen, so account settings
+      // never flash a different tab set while the parent's family loads.
+      await queryClient
+        .ensureQueryData(familyPlacesOptions(session))
+        .then(async (places) => {
+          const family = settingsFamilyOf(places);
+          if (family)
+            await queryClient.ensureQueryData(
+              familyOptions(session, family.familyId),
+            );
+        })
+        .catch(() => undefined);
+    }
     if (session)
       void queryClient
         .fetchQuery({ ...meOptions(session), staleTime: 0 })
@@ -440,6 +470,14 @@ const home = createRoute({
     return { pitch: shown };
   },
   beforeLoad: async ({ search: rawSearch, location }) => {
+    // A handed device keeps the child's identity through browser history.
+    // Its home is practice, never the parent's remembered family place.
+    if (studentSession())
+      throw redirect({
+        to: "/$",
+        params: { _splat: "practice" },
+        replace: true,
+      });
     const search = searchSchema.parse(rawSearch);
     if ("sign-in" in search)
       throw redirect({
@@ -532,10 +570,28 @@ const home = createRoute({
 /** The pitch/app screen reads what `/` resolved; so does the document head.
  * A route's id exists once the router is built, so this reads it on demand. */
 export const homeRouteId = () => home.id;
+/** An existing session needs no second sign-in or signup. Both entry buttons
+ * resume the account; `/` chooses its place or its first-run question. */
+async function beforeAuthEntry({
+  search,
+}: {
+  search: Record<string, unknown>;
+}) {
+  if (nativeRuntime) return;
+  notForStudents();
+  // Security, school connections and invitation handoffs can require a
+  // fresh sign-in or another identity even with a valid session. Provider
+  // errors must also stay visible on the authentication screen.
+  if (search.error || (search.return && search.return !== "free-practice"))
+    return;
+  const session = await queryClient.ensureQueryData(sessionOptions);
+  if (session) throw redirect({ href: continuationUrl(search), replace: true });
+}
 const signIn = createRoute({
   getParentRoute: () => root,
   path: "/sign-in",
   staticData: { space: "public" },
+  beforeLoad: beforeAuthEntry,
   loader: loadAuthConfig,
   component: auth,
 });
@@ -543,6 +599,7 @@ const signUp = createRoute({
   getParentRoute: () => root,
   path: "/sign-up",
   staticData: { space: "public" },
+  beforeLoad: beforeAuthEntry,
   loader: loadAuthConfig,
   component: auth,
 });
@@ -636,20 +693,43 @@ const reset = createRoute({
 /** "What brings you to AMP?", at `/start` and `/start/<choice>`, the same
  * screen. Any signed-in adult may open it to add a place; an unknown choice
  * opens the question itself. */
-async function beforeStarter({ params }: { params: { choice?: string } }) {
+async function beforeStarter({
+  params,
+  location,
+}: {
+  params: { choice?: string };
+  location: { search: Record<string, unknown> };
+}) {
   notForStudents();
   if (nativeRuntime) throw redirect({ to: "/", replace: true });
   const session = await queryClient.ensureQueryData(sessionOptions);
-  if (!session) throw redirect({ to: "/sign-in" });
+  if (!session)
+    throw redirect({
+      to: "/sign-in",
+      search: continuationSearch(location.search),
+    });
   if (params.choice !== undefined && !isStarterChoice(params.choice))
     throw redirect({ to: "/start", replace: true });
   // Which question this is ("What brings you to AMP?" or "Add a place") and
   // which answers it offers are the account's: known before the first paint,
   // so neither changes under the reader. A failed read leaves the screen's
   // own state.
-  await queryClient
-    .ensureQueryData(meOptions(session))
-    .catch((error) => console.warn("The account didn’t load ahead", error));
+  const resuming =
+    params.choice === undefined &&
+    location.search.return === "free-practice" &&
+    !appReturn(location.search.from);
+  // A place may have been created in another tab. Wait for the fresh read
+  // shared with the root guard; a failed read uses the route's retry UI.
+  const me = resuming
+    ? await queryClient.fetchQuery({ ...meOptions(session), staleTime: 0 })
+    : await queryClient
+        .ensureQueryData(meOptions(session))
+        .catch((error) => console.warn("The account didn’t load ahead", error));
+  // A trial entry resumes an established account through the same home
+  // routing as sign-in. Only an explicit Add a place or setup step should
+  // offer another place to someone who already has one.
+  if (resuming && me?.signedIn && me.next !== "start")
+    throw redirect({ to: "/", replace: true });
   // The school answer's next step depends on the account's schools: there
   // before the page paints, so its buttons never arrive late.
   if (params.choice === "school") {
@@ -705,7 +785,7 @@ const startPlan = createRoute({
 const continueWithAmp = createRoute({
   getParentRoute: () => root,
   path: "/continue/$learnerId",
-  staticData: { space: "learner" },
+  staticData: { space: "account" },
   validateSearch: (search: Record<string, unknown>) =>
     search.interval === "year" || search.interval === "month"
       ? { interval: search.interval as "year" | "month" }
@@ -966,6 +1046,79 @@ const workbookResults = createRoute({
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookResultsScreen"),
     "WorkbookResultsScreen",
+  ),
+});
+const billingPage = createRoute({
+  getParentRoute: () => root,
+  path: "/account/billing",
+  staticData: { space: "account" },
+  validateSearch: z.object({
+    receipt: z.string().max(200).optional().catch(undefined),
+  }),
+  beforeLoad: async () => {
+    if (!finishingSignIn()) notForStudents();
+    await framedScreen();
+  },
+  component: lazyRouteComponent(
+    () => import("../features/account/BillingPage"),
+    "BillingPage",
+  ),
+});
+const billingPurchasesAlias = createRoute({
+  getParentRoute: () => root,
+  path: "/account/billing/purchases",
+  staticData: { space: "account" },
+  beforeLoad: () => {
+    throw redirect({ to: "/account/billing", replace: true });
+  },
+});
+const billingRecordsAlias = createRoute({
+  getParentRoute: () => root,
+  path: "/account/billing/records",
+  staticData: { space: "account" },
+  beforeLoad: () => {
+    throw redirect({
+      to: "/account/billing",
+      hash: "receipts-title",
+      replace: true,
+    });
+  },
+});
+const cardPurchase = createRoute({
+  getParentRoute: () => root,
+  path: "/purchase/annual",
+  staticData: { space: "account" },
+  beforeLoad: async () => {
+    notForStudents();
+    await framedScreen();
+  },
+  component: lazyRouteComponent(
+    () => import("../features/billing/CardPurchasePage"),
+    "CardPurchasePage",
+  ),
+});
+const fundedPurchase = createRoute({
+  getParentRoute: () => root,
+  path: "/purchase/funded",
+  staticData: { space: "account" },
+  validateSearch: z.object({
+    interval: z.enum(["year", "month"]).optional().catch(undefined),
+    // Keep malformed identifiers so invoice recovery shows an error rather
+    // than silently opening a new invoice form.
+    invoice: z.string().min(1).max(200).optional().catch("invalid"),
+    offer: z.string().max(120).optional().catch(undefined),
+    learner: z.string().max(120).optional().catch(undefined),
+    program: z.string().max(80).optional().catch(undefined),
+  }),
+  beforeLoad: () => {
+    // An invoice's Start learning action is handing this tab to the child.
+    // Let that marked practice navigation finish instead of redirecting it.
+    if (!finishingSignIn()) notForStudents();
+    if (nativeRuntime) throw redirect({ to: "/" });
+  },
+  component: lazyRouteComponent(
+    () => import("../features/funding/FundedPurchasePage"),
+    "FundedPurchasePage",
   ),
 });
 const funded = createRoute({
@@ -1824,6 +1977,11 @@ export const router = createRouter({
     workbookHistory,
     workbookDay,
     workbookResults,
+    billingPage,
+    billingPurchasesAlias,
+    billingRecordsAlias,
+    cardPurchase,
+    fundedPurchase,
     funded,
     fundedNewHampshire,
     fundedArizona,
@@ -1892,7 +2050,17 @@ if (import.meta.env.DEV) {
   router.commitLocation = (next) =>
     commit({
       ...next,
-      state: stampPrevious(next, router.history.location) as typeof next.state,
+      state: stampPrevious(
+        {
+          ...next,
+          state: carryFamilyPractice(
+            next.pathname,
+            next.state,
+            router.history.location.state,
+          ),
+        },
+        router.history.location,
+      ) as typeof next.state,
       resetScroll:
         next.resetScroll ??
         (next.pathname === router.state.location.pathname ||

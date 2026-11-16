@@ -176,6 +176,11 @@
   font-size: 17px;
   line-height: 1.35;
 }
+/* Stacked fractions in an answer that wraps: lines far enough apart that a
+   denominator never touches the numerator under it (Q-4). */
+.feedback-title .solution-answer:has(.mfrac) {
+  line-height: 1.75;
+}
 .feedback-title .solution-answer[data-long] strong {
   font-weight: 600;
 }

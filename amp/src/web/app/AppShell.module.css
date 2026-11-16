@@ -76,3 +76,12 @@
   min-height: calc(100dvh - var(--shell-bar, 0px));
   padding: var(--space-6) var(--space-4);
 }
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .frame[data-tabs][data-compact-tabs] {
+    --shell-bar: calc(56px + env(safe-area-inset-top, 0px));
+  }
+  :global(html:has([data-app-frame][data-tabs][data-compact-tabs])) {
+    scroll-padding-top: calc(56px + env(safe-area-inset-top, 0px));
+  }
+}

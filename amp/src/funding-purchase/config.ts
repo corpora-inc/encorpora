@@ -7,6 +7,7 @@ import {
   programMonthlyPriceMinor,
 } from "./program-prices.js";
 import { withMonthlyOffers } from "./monthly-offers.js";
+import { withInvoiceDateTerms } from "./offer-terms.js";
 import {
   fundingOfferSchema,
   availableOffers,
@@ -53,7 +54,7 @@ export async function loadFundingOffers(
     return { ...offer, subtotalMinor: listed };
   });
   // Each funded program also sells a month at a time (monthly-offers.ts).
-  const sold = withMonthlyOffers(priced);
+  const sold = withMonthlyOffers(priced).map(withInvoiceDateTerms);
   availableOffers(sold, new Date());
   await validateQuoteFonts(sold);
   return sold;

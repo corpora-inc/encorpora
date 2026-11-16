@@ -12,7 +12,7 @@ import { retentionNotice } from "../src/family/contracts";
 const port = Number(process.env.AMP_ACCESS_UI_PORT ?? 4386),
   origin = `http://127.0.0.1:${port}`;
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
-const auth = `export async function accessSession(){const id=sessionStorage.getItem('fixture-account')||'amp|fixture';return id==='guest'?null:{token:id,accountId:id};}export function onSessionChanged(){return()=>{};}export async function signIn(){}export async function signOut(){sessionStorage.setItem('fixture-account','guest');location.assign('/access');}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
+const auth = `export async function accessSession(){const id=sessionStorage.getItem('fixture-account')||'amp|fixture';return id==='guest'?null:{token:id,accountId:id};}export function onSessionChanged(){return()=>{};}export async function signIn(){}export async function signOut(){sessionStorage.setItem('fixture-account','guest');location.assign('/access');}export function notifyAccountSessionChanged(){}export function notifyDeviceSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
 const vite = await createServer({
   cacheDir: "node_modules/.vite-access-gifts",
   plugins: [
@@ -146,7 +146,8 @@ async function serve(page: Page, s: State) {
         json: s.failMe ? { error: "family_service_unavailable" } : me(s),
       });
     if (path === "/learners" && req.method() === "POST") {
-      assert.ok(s.consent && s.verified);
+      // No consent step: the gift's address is confirmed, nothing more.
+      assert.ok(s.verified);
       s.creates++;
       // A new learner practices on the free allowance; the gift stays
       // reserved until it is activated for them.
@@ -392,16 +393,14 @@ try {
     path: `${shots}/paid-plan-reserved-gift-390.png`,
     fullPage: true,
   });
-  // Consent remains a separate prerequisite. Opening name directly cannot bypass it.
+  // No consent step: without consent the gift goes straight to the child's
+  // details (the restricted basis, 16 CFR 312.5(c)(7)).
   Object.assign(s, fresh(), { consent: false });
-  await page.goto(`${origin}/start/name`);
-  await page.waitForURL("**/access");
+  await page.goto(`${origin}/access`);
   await page.getByRole("link", { name: "Continue setup" }).click();
-  await page.waitForURL("**/start/consent?return=access");
-  assert.equal(s.creates, 0);
-  s.consent = true;
-  await page.reload();
+  await page.waitForURL("**/start/name?return=access");
   await page.getByLabel("Learner name").waitFor();
+  assert.equal(s.creates, 0);
   // Back/forward restores the invitation and draft step.
   await page.goto(`${origin}/access`);
   await page.getByRole("link", { name: "Continue setup" }).click();
@@ -441,7 +440,7 @@ try {
     await safari.close();
   }
   console.log(
-    "Gift onboarding: 320/390/768/1280, light/dark, Chromium + WebKit; setup, existing learner, family gift, retries, reload, account switch, consent, verification and paid coexistence passed.",
+    "Gift onboarding: 320/390/768/1280, light/dark, Chromium + WebKit; setup, existing learner, family gift, retries, reload, account switch, no consent step, verification and paid coexistence passed.",
   );
 } finally {
   await browser.close();

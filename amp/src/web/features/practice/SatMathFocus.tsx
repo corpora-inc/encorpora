@@ -44,9 +44,7 @@ export function SatMathFocus({
         setNotice("Saved. It applies from the next problem.");
     } catch {
       if (current.current)
-        setError(
-          "The setting didn’t save. Refresh the page and try again.",
-        );
+        setError("The setting didn’t save. Refresh the page and try again.");
     } finally {
       if (current.current) setBusy(false);
     }
@@ -60,9 +58,7 @@ export function SatMathFocus({
       >
         SAT Math focus
       </Checkbox>
-      <p>
-        Skips topics beyond the SAT.
-      </p>
+      <p>Focus on problems likely to appear on the SAT.</p>
       <Toast
         tone={error ? "alert" : "status"}
         message={error || notice || (busy ? "Saving…" : "")}

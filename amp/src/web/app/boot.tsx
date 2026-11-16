@@ -27,6 +27,7 @@ import { authConfigOptions, queryClient, sessionOptions } from "../lib/query";
 import { fetchAuthConfig } from "../auth-config";
 import type { PitchPlace } from "../features/pitch/nav";
 import { startDocumentRuntime } from "./document-runtime";
+import { finishingSignIn } from "../features/school/join/api";
 
 let started = false;
 /** The app's services, once per document. */
@@ -64,11 +65,16 @@ function render() {
       }),
   }).render(
     <Providers
-      onAccountExit={() => {
+      onAccountExit={(previous) => {
         // A purchase view belongs to the parent who opened it. The provider has
         // already cleared that parent's private state and installed the new
-        // session.
-        if (/^\/purchase(?:\/|$)/.test(router.state.location.pathname))
+        // session. Child practice and the parent's return preserve the
+        // invoice origin.
+        if (
+          !previous.accountId.startsWith("school:") &&
+          !finishingSignIn() &&
+          /^\/purchase(?:\/|$)/.test(router.state.location.pathname)
+        )
           void router.navigate({ to: "/", replace: true });
       }}
     >

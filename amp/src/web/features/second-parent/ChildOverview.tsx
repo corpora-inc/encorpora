@@ -43,7 +43,7 @@ export function ChildOverview({
         studentGrantResource,
         { token: session.token, body: {} },
       );
-      await finish(grant, true, `/${child.classPath}`);
+      await finish(grant, true, `/${child.classPath}`, undefined, child.id);
     } catch (failure) {
       console.error("Practice on this device didn’t start", failure);
       setError(
