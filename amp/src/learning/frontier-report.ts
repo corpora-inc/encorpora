@@ -69,7 +69,17 @@ export function reportEstimate(estimate: Estimate): Estimate {
   return {
     ...estimate,
     sd: reportedSd(estimate.sd, { answered: estimate.answered }),
+    ...reportedRange(estimate),
   };
+}
+
+/** What a level day stores of an estimate: the reported one. */
+export function storedEstimate(estimate: Estimate): Estimate {
+  const { level, sd, answered, independent, low, high } =
+    reportEstimate(estimate);
+  return low != null && high != null
+    ? { level, sd, answered, independent, low, high }
+    : { level, sd, answered, independent };
 }
 
 /** A copy whose overall and strand widths are the reported ones. `adaptive`
@@ -85,4 +95,12 @@ export function reportFrontier(frontier: Frontier): Frontier {
       ]),
     ),
   };
+}
+
+/** The likely range to store and show (placeholder: the posterior's own). */
+export function reportedRange(
+  estimate: Estimate,
+): Pick<Estimate, "low" | "high"> {
+  if (estimate.low == null || estimate.high == null) return {};
+  return { low: estimate.low, high: estimate.high };
 }

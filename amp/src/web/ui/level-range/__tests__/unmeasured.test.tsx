@@ -133,6 +133,47 @@ test("the hero takes the first estimate in place: the same bar, the words in one
   expect(sets[1]!.textContent).toContain("1 problem answered.");
 });
 
+test("one right answer leaves the top open: the bar runs to the end and the words say so", () => {
+  // An adult's first answer, right (founder, 2026-11-15): nothing bounds how
+  // far up they go, so the range runs off the top of the scale.
+  const { container } = render(
+    <LevelRangeStart
+      heading={1}
+      found={{
+        estimate: { level: 9.1, sd: 2.2, low: 6.4, high: 12.6 },
+        answered: 1,
+      }}
+    />,
+  );
+  const words = container.querySelector("[data-found-words]")!.textContent;
+  expect(words).toMatch(/^Best guess Algebra 1, likely Grade 6 and above\./);
+  const left = Number.parseFloat(range(container).style.left);
+  const width = Number.parseFloat(range(container).style.width);
+  // Grade 6's half below its tick, on a K–Precalculus axis of 12 grades.
+  expect(left).toBeCloseTo((5.5 / 12) * 100, 1);
+  expect(left + width).toBeCloseTo(100, 5);
+});
+
+test("the bar ends where its words do: whole grades, never a grade past the bar", () => {
+  // 5.3–10.7 used to draw to just past Geometry while the words said
+  // Algebra 2. Now both say Grade 5 to Algebra 2, and the bar covers them.
+  const { container } = render(
+    <LevelRangeStart
+      heading={1}
+      found={{
+        estimate: { level: 8, sd: 1.6, low: 5.3, high: 10.7 },
+        answered: 1,
+      }}
+    />,
+  );
+  const words = container.querySelector("[data-found-words]")!.textContent;
+  expect(words).toMatch(/^Best guess Grade 8, likely Grade 5 to Algebra 2\./);
+  const left = Number.parseFloat(range(container).style.left);
+  const width = Number.parseFloat(range(container).style.width);
+  expect(left).toBeCloseTo((4.5 / 12) * 100, 1);
+  expect(left + width).toBeCloseTo((11.5 / 12) * 100, 1);
+});
+
 test("one predicate decides measured, for every reader", async () => {
   const { measured } = await import("../../../../learning/level-check");
   expect(measured(null)).toBe(false);

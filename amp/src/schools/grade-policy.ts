@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { z } from "zod";
+import { levelAndRange } from "../learning/level-check.js";
 import type { Allocation, GradeCurve } from "./grade-curve.js";
 
 /**
@@ -754,12 +755,8 @@ export function suggestGrade(
     daysActive: activity.daysActive,
     review: activity.review,
     reviewIndependent: activity.reviewIndependent,
-    startLevel: input.start
-      ? { level: input.start.overall.level, sd: input.start.overall.sd }
-      : null,
-    endLevel: input.end
-      ? { level: input.end.overall.level, sd: input.end.overall.sd }
-      : null,
+    startLevel: input.start ? levelAndRange(input.start.overall) : null,
+    endLevel: input.end ? levelAndRange(input.end.overall) : null,
   };
   const ready = hasEnoughWork(input, policy);
   const end = input.end;

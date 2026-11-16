@@ -212,13 +212,13 @@ test("one pass gives the same trend as estimating each prefix", () => {
   assert.deepEqual(
     overallTrend({ start: 4, observations, now, ...frontierCatalog }, counts),
     counts.map((answered) => {
-      const { level, sd } = estimateFrontier({
+      const { level, sd, low, high } = estimateFrontier({
         start: 4,
         observations: observations.slice(0, answered),
         now,
         ...frontierCatalog,
       }).overall;
-      return { answered, level, sd };
+      return { answered, level, sd, low, high };
     }),
   );
 });
