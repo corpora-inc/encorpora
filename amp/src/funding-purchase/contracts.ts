@@ -49,6 +49,8 @@ export const fundingOfferSchema = z
     termPolicy: z.enum([
       "twelve-months-from-verified-provisioning",
       "one-month-from-verified-provisioning",
+      "twelve-months-from-invoice",
+      "one-month-from-invoice",
     ]),
     route: z.enum(["marketplace", "direct-pay"]),
     /** Prepare a vendor invoice for the program's individual purchase review. */
@@ -114,11 +116,23 @@ export const fundingOfferSchema = z
   )
   .refine(
     (v) =>
-      v.termPolicy ===
       (v.termMonths === 1
-        ? "one-month-from-verified-provisioning"
-        : "twelve-months-from-verified-provisioning"),
+        ? ["one-month-from-verified-provisioning", "one-month-from-invoice"]
+        : [
+            "twelve-months-from-verified-provisioning",
+            "twelve-months-from-invoice",
+          ]
+      ).includes(v.termPolicy),
     "An offer's term policy names its term",
+  )
+  .refine(
+    (v) =>
+      !v.termPolicy.endsWith("-from-invoice") ||
+      (v.route === "direct-pay" &&
+        v.documentPolicy === "named-student-invoice" &&
+        v.purchaseReview === "individual-approval-required" &&
+        v.activationPolicy === "after-settlement"),
+    "Invoice-date terms require a named individual-review DirectPay invoice settled before activation",
   )
   .refine(
     (v) => !v.refundPolicy || v.refundPolicy === "none" || !!v.refundSummary,
