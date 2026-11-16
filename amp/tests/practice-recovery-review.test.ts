@@ -144,7 +144,8 @@ test("a persisted focus unsupported by an older client cannot block mixed or exp
           "capability fallback must preserve SAT selection",
         );
     }
-    satFocus = false;
+    // Explicit drills remain available while the automatic mix is SAT-focused.
+    satFocus = true;
     const explicit = await app.inject({
       method: "POST",
       url,

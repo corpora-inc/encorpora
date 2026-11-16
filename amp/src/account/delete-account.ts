@@ -133,6 +133,8 @@ export const ACCOUNT_TABLES: Record<string, TableHandling> = {
   amp_funded_visitor_links: "none",
   amp_funding_invoice_intents: "financial",
   amp_funding_invoice_outbox: "account",
+  // Cascades with the invoice: unpaid drafts go; paid delivery evidence stays.
+  amp_funding_invoice_reminders: "financial",
   amp_funding_requests: "financial",
   amp_funnel_aggregates: "none",
   amp_funnel_checkouts: "financial",

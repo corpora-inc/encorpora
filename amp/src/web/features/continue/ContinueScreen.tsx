@@ -27,6 +27,11 @@ import {
   useClaimEnrollment,
 } from "../billing";
 import { forgetPlanChoice } from "../../lib/pending-trial";
+import {
+  PaymentMethodChoice,
+  paymentMethodHref,
+  type PaymentInterval,
+} from "../billing/PaymentMethodChoice";
 import { PlanStep } from "../onboarding/PlanStep";
 import {
   continuationPaid,
@@ -203,6 +208,13 @@ function Continue({ session }: { session: AuthSession }) {
           session={session}
           embedded
           interval={interval}
+          paymentMethods={(selected, busy) => (
+            <CardPaymentMethods
+              learnerId={learner.id}
+              interval={selected}
+              disabled={busy}
+            />
+          )}
           onCheckout={() =>
             rememberContinuation({
               accountId: session.accountId,
@@ -453,6 +465,30 @@ const statusSchema = z.object({
   tier: z.enum(["full", "extra"]).optional(),
 });
 
+function CardPaymentMethods({
+  learnerId,
+  interval,
+  disabled = false,
+}: {
+  learnerId: string | null;
+  interval: PaymentInterval;
+  disabled?: boolean;
+}) {
+  const navigate = useNavigate();
+  return (
+    <PaymentMethodChoice
+      value="card"
+      disabled={disabled}
+      onChange={(method) => {
+        if (method === "education-funds")
+          void navigate({
+            href: paymentMethodHref(method, interval, learnerId),
+          });
+      }}
+    />
+  );
+}
+
 /** The plan and Stripe for one learner, at the price the server sells this
  * learner (an additional child's, or the full price). */
 function LearnerCheckout({
@@ -468,6 +504,7 @@ function LearnerCheckout({
   prepare?: () => Promise<string>;
   interval?: "year" | "month";
 }) {
+  const navigate = useNavigate();
   const offers = useQuery(offerOptions(session));
   const fetched = useQuery({
     queryKey: ["account", session.accountId, "billing", "status", learnerId],
@@ -597,12 +634,35 @@ function LearnerCheckout({
         </Button>
       </section>
     );
-  if (!offers.data.available || !chosen)
+  const canChooseMethod =
+    phase === "ready" ||
+    phase === "checkout-open" ||
+    phase === "checkout-expired";
+  const methods = canChooseMethod ? (
+    <CardPaymentMethods
+      learnerId={learnerId}
+      interval={chosen?.interval ?? interval ?? "year"}
+      disabled={checkout.isPending || checkout.isSuccess}
+    />
+  ) : null;
+  if (phase === "licensed" || phase === "scheduled")
     return (
       <section className={styles.panel}>
         <p className={styles.text}>
-          Online checkout isn’t open here. No payment can be taken.
+          {phase === "licensed"
+            ? "Your plan is active."
+            : "Your next plan is already paid for."}
         </p>
+        <Link to="/account/billing" className={buttonClass("primary")}>
+          View your plan
+        </Link>
+      </section>
+    );
+  if (!offers.data.available || !chosen)
+    return (
+      <section className={styles.panel}>
+        {methods}
+        <p className={styles.text}>Card checkout isn’t available here.</p>
       </section>
     );
   const waiting =
@@ -613,12 +673,18 @@ function LearnerCheckout({
         message={checkout.error?.message ?? ""}
         onDismiss={() => checkout.reset()}
       />
+      {methods}
       <PlanChoice
         offers={plans}
         interval={chosen.interval}
         disabled={checkout.isPending || waiting}
         onChange={(next) => {
           setInterval(next);
+          if (learnerId)
+            void navigate({
+              href: paymentMethodHref("card", next, learnerId),
+              replace: true,
+            });
           delete requests.current[next];
           checkout.reset();
         }}

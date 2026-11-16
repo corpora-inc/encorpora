@@ -25,6 +25,7 @@ import { ConsentSecrets, noticeDigest } from "../src/parent-consent/crypto";
 import { installConsentPolicy } from "../src/parent-consent/policy";
 import { consentFixture } from "../tests/parent-consent.fixture";
 import { testFundingOffer } from "../tests/funding-purchase.fixture";
+import { withInvoiceDateTerms } from "../src/funding-purchase/offer-terms";
 import {
   config as base,
   payment as basePayment,
@@ -248,33 +249,35 @@ export async function purchasePreview(
     ["nh-efa", "NH", "New Hampshire Education Freedom Account"],
   ];
   const offers = programs.flatMap(([programId, jurisdiction, programName]) =>
-    ([12, 1] as const).map((termMonths) => ({
-      ...testFundingOffer,
-      id: `${programId}-${termMonths}`,
-      programId: programId!,
-      jurisdiction: jurisdiction!,
-      programName: programName!,
-      termMonths,
-      termPolicy:
-        termMonths === 12
-          ? ("twelve-months-from-verified-provisioning" as const)
-          : ("one-month-from-verified-provisioning" as const),
-      subtotalMinor: termMonths === 12 ? 59900 : 5900,
-      productTitle: `AMP Mathematics · ${termMonths === 12 ? "annual" : "monthly"} learner license`,
-      productDescription:
-        "Adaptive math practice, lessons and printable workbooks for one learner.",
-      documentPolicy: "named-student-invoice" as const,
-      route: "direct-pay" as const,
-      activationPolicy: "after-settlement" as const,
-      destinationUrl: "https://app.classwallet.com",
-      instructions:
-        "In ClassWallet choose Pay Vendor, select Corpora Inc and upload your invoice.",
-      merchant: {
-        ...testFundingOffer.merchant,
-        legalName: "Corpora Inc",
-        supportEmail: "support@corpora.inc",
-      },
-    })),
+    ([12, 1] as const).map((termMonths) =>
+      withInvoiceDateTerms({
+        ...testFundingOffer,
+        id: `${programId}-${termMonths}`,
+        programId: programId!,
+        jurisdiction: jurisdiction!,
+        programName: programName!,
+        termMonths,
+        termPolicy:
+          termMonths === 12
+            ? ("twelve-months-from-verified-provisioning" as const)
+            : ("one-month-from-verified-provisioning" as const),
+        subtotalMinor: termMonths === 12 ? 59900 : 5900,
+        productTitle: `AMP Mathematics · ${termMonths === 12 ? "annual" : "monthly"} learner license`,
+        productDescription:
+          "Adaptive math practice, lessons and printable workbooks for one learner.",
+        documentPolicy: "named-student-invoice" as const,
+        route: "direct-pay" as const,
+        activationPolicy: "after-settlement" as const,
+        destinationUrl: "https://app.classwallet.com",
+        instructions:
+          "In ClassWallet choose Pay Vendor, select Corpora Inc and upload your invoice.",
+        merchant: {
+          ...testFundingOffer.merchant,
+          legalName: "Corpora Inc",
+          supportEmail: "support@corpora.inc",
+        },
+      }),
+    ),
   );
   await registerFundingPurchaseRoutes(app, { pool: db, authenticate, offers });
   await registerConsentRoutes(app, {

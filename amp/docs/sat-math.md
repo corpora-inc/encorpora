@@ -2,7 +2,9 @@
 
 AMP practices the published SAT Math testing points through its ordinary adaptive practice: Algebra, Advanced Math, Problem-Solving and Data Analysis, and Geometry and Trigonometry. Problems are original and deterministically generated, with hints, worked solutions, lessons, and printable lesson/workbook support. Reading and Writing, timed test simulation, and SAT score prediction are outside this feature.
 
-In **Account menu → Manage account → Learners**, select a learner and enable **SAT Math focus**. It excludes material beyond the SAT, including logarithms, complex arithmetic, geometric series, function composition/inverses, and advanced trigonometric identities. Foundations remain available, so a learner can repair arithmetic or fraction gaps. The setting does not impose an age or grade jump or reset progress. Turning it off restores the general practice pool.
+In **Family → Settings**, select a learner and enable **SAT Math focus**. Automatic practice draws from problem types mapped to the SAT's published mathematical tasks. The selection weights follow the test's approximate domain shares: 35% Algebra, 35% Advanced Math, 15% Problem-Solving and Data Analysis, and 15% Geometry and Trigonometry. Difficulty, review, and variety adapt to the learner within that pool, so a short session need not match those percentages.
+
+SAT focus does not reset progress or change the learner's recorded starting level. When the learner's estimate is below the available SAT material, practice uses the easiest mapped problems. General arithmetic drills and topics outside the SAT task map are excluded from automatic selection. Turning the setting off restores general adaptive practice.
 
 The setting applies to the next automatically selected problem and to newly issued offline packs. An active problem stays answerable; an already downloaded offline pack keeps its contents. Deliberately selecting a lesson's practice can drill any available topic. Each learner has an independent setting. The web interface provides the setting; the native interface does not provide its editor.
 

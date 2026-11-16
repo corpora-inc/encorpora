@@ -679,6 +679,7 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
       className={data?.class.name}
       loading={time.isPending || othersPending}
       tab="time"
+      title={host.frameHeading ? "Practice time" : undefined}
     >
       {!data ? (
         // A range the server won't read (too long, or not a range) has a
@@ -707,7 +708,7 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
         <div className={styles.gradePage} aria-busy={time.isFetching}>
           <div className={styles.gradeHead}>
             <div className={styles.gradeTitle}>
-              <ScreenTitle>Time</ScreenTitle>
+              {!host.frameHeading && <ScreenTitle>Time</ScreenTitle>}
               <p>{dayRange(data.range.from, data.range.to)}</p>
               {long && (
                 <p className={styles.timeLimit} data-time-limit="">

@@ -35,6 +35,8 @@ const offer = (id: string, termMonths: 1 | 12, totalMinor: number) => ({
   currency: "USD",
   instructions: "Attach the invoice.",
   termMonths,
+  termPolicy:
+    termMonths === 1 ? "one-month-from-invoice" : "twelve-months-from-invoice",
   refundPolicy: "purchase-to-account",
   refundSummary: "Refund terms.",
 });
@@ -100,10 +102,16 @@ test("the invoice offers the year or a month as a designed choice, and invoices 
   expect(year.getAttribute("aria-checked")).toBe("true");
   expect(screen.getByText("$599.00")).toBeTruthy();
   expect(screen.getByText("One learner · one year")).toBeTruthy();
+  expect(
+    screen.getByText(/Your year begins when you create the invoice/),
+  ).toBeTruthy();
   fireEvent.click(month);
   expect(month.getAttribute("aria-checked")).toBe("true");
   expect(screen.getByText("$59.00")).toBeTruthy();
   expect(screen.getByText("One learner · one month")).toBeTruthy();
+  expect(
+    screen.getByText(/Your month begins when you create the invoice/),
+  ).toBeTruthy();
   // One email field that reads right for a parent or an adult student.
   fireEvent.change(
     screen.getByLabelText(
@@ -129,13 +137,14 @@ test("a program that sells only the year shows no choice", async () => {
   expect(screen.queryByRole("radiogroup", { name: "Pay for" })).toBeNull();
 });
 
-test("purchase footer keeps the pending limit concise and omits general parent feedback", async () => {
+test("purchase footer gives the submission deadline and omits general parent feedback", async () => {
   await open("/invoice/arizona-esa");
   await screen.findByRole("button", { name: "Create invoice PDF" });
   expect(
-    screen.getByText("Access while payment is pending lasts up to 30 days.")
-      .textContent,
-  ).toBe("Access while payment is pending lasts up to 30 days.");
+    screen.getByText(
+      "Start learning today. Submit your invoice within 14 days.",
+    ).textContent,
+  ).toBe("Start learning today. Submit your invoice within 14 days.");
   expect(
     screen.queryByRole("button", { name: "Share parent feedback" }),
   ).toBeNull();

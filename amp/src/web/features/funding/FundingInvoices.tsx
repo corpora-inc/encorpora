@@ -12,29 +12,14 @@ import { Button, buttonClass } from "../../ui/Button";
 import { Loading } from "../../ui/Loading";
 import { fundingReturn } from "./setup";
 import { useHandOver } from "../school/classes/today/use-hand-over";
+import {
+  fundingOfferSummarySchema as offer,
+  fundingRecordsKey,
+  fundingRecordsOptions,
+} from "./records";
+export { fundingRecordsKey } from "./records";
 import styles from "../account/BillingPage.module.css";
 
-const offer = z.object({
-  programId: z.string().optional(),
-  programName: z.string(),
-  productTitle: z.string(),
-  totalMinor: z.number(),
-  instructions: z.string(),
-  destinationUrl: z.string().url(),
-  documentPolicy: z.string(),
-});
-const record = z.object({
-  id: z.string(),
-  studentBillingName: z.string().optional(),
-  status: z.enum(["prepared", "parent-reported-submitted", "cancelled"]),
-  orderId: z.string().nullable(),
-  expired: z.boolean(),
-  offer,
-  fundedPending: z
-    .object({ status: z.string(), endsAt: z.string() })
-    .nullable()
-    .optional(),
-});
 const intent = z.object({
   id: z.string(),
   state: z.string(),
@@ -43,11 +28,6 @@ const intent = z.object({
   paymentVerified: z.boolean().optional(),
   offer,
 });
-export const fundingRecordsKey = (id: string) => [
-  "account",
-  id,
-  "funding-records",
-];
 export function FundingInvoices({
   session,
   verified = true,
@@ -89,15 +69,7 @@ export function FundingInvoices({
         ? choices[0]!.id
         : "";
   };
-  const records = useQuery({
-    queryKey: fundingRecordsKey(session.accountId),
-    queryFn: ({ signal }) =>
-      request("/funding/requests", z.object({ requests: z.array(record) }), {
-        token: session.token,
-        signal,
-      }),
-    refetchInterval: 30000,
-  });
+  const records = useQuery(fundingRecordsOptions(session));
   const invoices = useQuery({
     queryKey: ["account", session.accountId, "funding-invoice-history"],
     enabled: verified,
@@ -250,15 +222,17 @@ export function FundingInvoices({
             <strong>{money(r.offer.totalMinor)}</strong>
           </div>
           <p>
-            {r.orderId
+            {r.paymentStatus === "settled"
               ? "Payment received"
               : r.status === "cancelled"
                 ? "Cancelled"
                 : r.status === "parent-reported-submitted"
                   ? "Submitted · waiting for your program’s payment"
-                  : r.expired
-                    ? "Invoice expired"
-                    : "Ready to submit"}
+                  : r.orderId
+                    ? "Awaiting payment"
+                    : r.expired
+                      ? "Invoice expired"
+                      : "Ready to submit"}
             {r.fundedPending?.status === "funded-pending"
               ? ` · Learning access through ${date(r.fundedPending.endsAt)}`
               : ""}
@@ -310,7 +284,7 @@ export function FundingInvoices({
             <p>{i.offer.instructions}</p>
             {expired && (
               <p>
-                This invoice has expired. Create a new invoice below to start
+                This invoice has expired. Create a new invoice to start
                 learning.
               </p>
             )}

@@ -1,5 +1,11 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { Link, Navigate, useSearch } from "@tanstack/react-router";
+import {
+  Link,
+  Navigate,
+  useLocation,
+  useNavigate,
+  useSearch,
+} from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { signOut, type AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
@@ -17,6 +23,11 @@ import {
   refreshEnrollment,
   useEnrollmentCheckout,
 } from "../billing";
+import {
+  PaymentMethodChoice,
+  paymentMethodHref,
+  type PaymentInterval,
+} from "../billing/PaymentMethodChoice";
 import { Progress } from "./Progress";
 import styles from "./Start.module.css";
 import { track } from "../../lib/analytics";
@@ -37,6 +48,7 @@ export function PlanStep({
   embedded = false,
   interval: initialInterval,
   onCheckout,
+  paymentMethods,
 }: {
   session: AuthSession;
   /** Inside another screen, which has the heading and frame. */
@@ -45,7 +57,11 @@ export function PlanStep({
   interval?: "year" | "month";
   /** Just before leaving for Stripe. */
   onCheckout?: () => void;
+  /** Continue supplies its learner-aware method choice; embedded forms do not add another. */
+  paymentMethods?: (interval: PaymentInterval, busy: boolean) => ReactNode;
 }) {
+  const navigate = useNavigate();
+  const location = useLocation();
   const search = useSearch({ strict: false }) as { interval?: unknown };
   const Frame = embedded ? EmbeddedFrame : CardFrame;
   const enrollment = useQuery(enrollmentOptions(session));
@@ -101,6 +117,18 @@ export function PlanStep({
     enrollment.data
   )
     return <Navigate to="/start/purchase" replace />;
+  const methodChoice = (selected: PaymentInterval) =>
+    paymentMethods?.(selected, checkout.isPending || checkout.isSuccess) ??
+    (!embedded ? (
+      <PaymentMethodChoice
+        value="card"
+        disabled={checkout.isPending || checkout.isSuccess}
+        onChange={(method) => {
+          if (method === "education-funds")
+            void navigate({ href: paymentMethodHref(method, selected) });
+        }}
+      />
+    ) : null);
   const failed =
     enrollment.error ?? (available ? offers.error : emailPlus.error);
   if (failed)
@@ -129,6 +157,7 @@ export function PlanStep({
   if (available === false && emailPlus.data)
     return emailPlus.data.available ? (
       <Frame key="email-plus">
+        {methodChoice(interval)}
         <h1>Confirm by email first</h1>
         <p>
           Card enrollment isn’t available for this service. Confirm parent
@@ -147,6 +176,7 @@ export function PlanStep({
     ) : (
       <Frame key="unavailable">
         <Toast message={exit.error ? exitFailed : ""} onDismiss={exit.reset} />
+        {methodChoice(interval)}
         <h1>Enrollment isn’t open yet</h1>
         <p>
           This AMP service isn’t taking new enrollments right now. No payment
@@ -211,6 +241,7 @@ export function PlanStep({
           <p>Adaptive practice, lessons and printable books for one learner.</p>
         </>
       )}
+      {methodChoice(offer.interval)}
       <PlanChoice
         offers={plans}
         extra={offers.data?.extraOffers}
@@ -219,6 +250,12 @@ export function PlanStep({
         onChange={(next) => {
           track("plan_select", { interval: next });
           chooseInterval(next);
+          const query = new URLSearchParams(location.searchStr);
+          query.set("interval", next);
+          void navigate({
+            href: `${location.pathname}?${query}`,
+            replace: true,
+          });
           setChangedPlan(true);
           delete requests.current[next];
           checkout.reset();

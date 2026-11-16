@@ -1,3 +1,7 @@
+import {
+  workbookFilename,
+  attachmentFilename,
+} from "../../../workbook/filename";
 import { queryOptions } from "@tanstack/react-query";
 import type { AuthSession } from "../../auth";
 import { request } from "../../lib/api";
@@ -193,7 +197,10 @@ async function downloadWorkbookFile(
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
-  link.download = `amp-workbook-${workbook.date}-${workbook.number}.${kind}`;
+  link.download = attachmentFilename(
+    response.headers.get("content-disposition"),
+    workbookFilename(workbook, undefined, kind),
+  );
   document.body.append(link);
   link.click();
   link.remove();

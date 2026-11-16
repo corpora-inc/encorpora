@@ -15,7 +15,8 @@ import {
 import { randomUUID } from "node:crypto";
 import { z } from "zod";
 import type { PoolClient } from "pg";
-import { canonicalCommercePayload } from "../commerce/ledger.js";
+import { fundingOfferMatchesSnapshot } from "./offer-terms.js";
+import { fundedInvoiceTerm } from "./term.js";
 import {
   learningConsentActive,
   purchaseConsentSatisfied,
@@ -47,6 +48,8 @@ export interface InvoiceIntent {
   expiresAt: string;
   state: "prepared" | "claimed" | "cancelled";
   claimedRequestId: string | null;
+  /** Sent means accepted by the email provider, not confirmed inbox delivery. */
+  emailStatus?: "queued" | "sent" | "failed";
 }
 interface PrivateInvoiceIntent extends InvoiceIntent {
   parentEmail: string;
@@ -192,6 +195,9 @@ export class FundingInvoiceRepository {
               Math.min(
                 at.getTime() + 14 * 86400000,
                 Date.parse(intent.expiresAt),
+                Date.parse(
+                  fundedInvoiceTerm(intent)?.endsAt ?? intent.expiresAt,
+                ),
               ),
             ).toISOString(),
           ],
@@ -241,7 +247,13 @@ export class FundingInvoiceRepository {
     return this.funding.transaction(account, async (client) => {
       const email = await this.verifiedEmail(client, account);
       const rows = await client.query(
-        "SELECT i.*,r.status AS request_status FROM amp_funding_invoice_intents i LEFT JOIN amp_funding_requests r ON r.id=i.claimed_request_id WHERE i.parent_email=$1 AND (i.claimed_account_id IS NULL OR i.claimed_account_id=$2) AND i.state<>'cancelled' ORDER BY i.created_at DESC LIMIT 100",
+        `SELECT i.*,r.status AS request_status,o.invoice_id AS email_invoice_id,
+         o.accepted_at AS email_accepted_at,o.stopped_at AS email_stopped_at
+         FROM amp_funding_invoice_intents i
+         LEFT JOIN amp_funding_requests r ON r.id=i.claimed_request_id
+         LEFT JOIN amp_funding_invoice_outbox o ON o.invoice_id=i.id
+         WHERE i.parent_email=$1 AND (i.claimed_account_id IS NULL OR i.claimed_account_id=$2)
+           AND i.state<>'cancelled' ORDER BY i.created_at DESC LIMIT 100`,
         [email, account],
       );
       const intents = [];
@@ -253,12 +265,21 @@ export class FundingInvoiceRepository {
             : null;
         const paymentVerified =
           !!payment &&
-          this.offers(new Date(payment.settledAt)).some(
-            (offer) =>
-              canonicalCommercePayload(offer) ===
-              canonicalCommercePayload(intent.offer),
+          this.offers(new Date(payment.settledAt)).some((offer) =>
+            fundingOfferMatchesSnapshot(offer, intent.offer),
           );
-        intents.push({ ...intent, paymentVerified });
+        const emailStatus: InvoiceIntent["emailStatus"] = row.email_invoice_id
+          ? row.email_accepted_at
+            ? "sent"
+            : row.email_stopped_at
+              ? "failed"
+              : "queued"
+          : undefined;
+        intents.push({
+          ...intent,
+          paymentVerified,
+          ...(emailStatus ? { emailStatus } : {}),
+        });
       }
       return intents;
     });
@@ -381,10 +402,8 @@ export class FundingInvoiceRepository {
         if (intent.state !== "prepared" || (expired && !payment))
           throw new FundingPurchaseError(409, "invoice_unavailable");
         if (
-          !this.offers(payment ? new Date(payment.settledAt) : at).some(
-            (o) =>
-              canonicalCommercePayload(o) ===
-              canonicalCommercePayload(intent.offer),
+          !this.offers(payment ? new Date(payment.settledAt) : at).some((o) =>
+            fundingOfferMatchesSnapshot(o, intent.offer),
           )
         )
           throw new FundingPurchaseError(409, "offer_unavailable");

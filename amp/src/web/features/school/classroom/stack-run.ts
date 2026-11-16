@@ -1,3 +1,4 @@
+import { workbookStackFilename } from "../../../../workbook/filename";
 import { create } from "zustand";
 import {
   stackWorkbookResource,
@@ -21,7 +22,12 @@ const MAX_TRIES = 5;
 
 export type TileState =
   "waiting" | "making" | "retrying" | "ready" | "failed" | "seat";
-export type Tile = { state: TileState; problems?: number; message?: string };
+export type Tile = {
+  state: TileState;
+  problems?: number;
+  message?: string;
+  workbookId?: string;
+};
 export type StackFile = {
   url: string;
   name: string;
@@ -36,6 +42,7 @@ export type StackRun = {
   classId: string;
   /** In print order. */
   students: string[];
+  names: Record<string, string>;
   input: StackWorkbookInput;
   status: RunStatus;
   tiles: Record<string, Tile>;
@@ -192,6 +199,7 @@ async function makeOne(
     store.tile(classId, student, {
       state: "ready",
       problems: workbook.problems,
+      workbookId: workbook.id,
     });
   } catch (error) {
     if (signal.aborted) {
@@ -232,9 +240,6 @@ function merge(
   });
 }
 
-const fileName = (run: StackRun, part: number, parts: number) =>
-  `amp-workbooks-${run.input.date}-${run.input.number}${parts > 1 ? `-part-${part}` : ""}.pdf`;
-
 /** Joins what's ready, in class order, into files a printer can take. */
 async function mergeRun(classId: string) {
   const run = current(classId);
@@ -256,7 +261,17 @@ async function mergeRun(classId: string) {
         url: URL.createObjectURL(
           new Blob([bytes as BlobPart], { type: "application/pdf" }),
         ),
-        name: fileName(run, part + 1, parts),
+        name: await workbookStackFilename({
+          date: run.input.date,
+          number: run.input.number,
+          workbooks: slice.map((id) => ({
+            id: run.tiles[id]!.workbookId!,
+            name: run.names[id] ?? "Learner",
+          })),
+          paper: run.input.paper === "a4" ? "A4" : "Letter",
+          part: part + 1,
+          parts,
+        }),
         first: part * STACK_FILE_SIZE + 1,
         last: part * STACK_FILE_SIZE + slice.length,
         pages,
@@ -321,6 +336,7 @@ export function startStack(
   key: string,
   students: string[],
   input: StackWorkbookInput,
+  names: Record<string, string> = {},
 ) {
   const previous = current(classId);
   if (previous && previous.key !== key) buffers.delete(previous.key);
@@ -341,6 +357,7 @@ export function startStack(
         key,
         classId,
         students,
+        names,
         input,
         status: "running",
         tiles,
