@@ -5286,6 +5286,29 @@
     ],
     "skill": "multiplication-facts"
   },
+  "multiply-by-tens": {
+    "id": "multiply-by-tens--sm",
+    "version": "5963521b66a7c860d7eb3b862a9be016024dd8d36f1faf71d44b9607d18bc33f",
+    "title": "Multiplying by a multiple of 10",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-by-tens--sm/5963521b66a7c860d7eb3b862a9be016024dd8d36f1faf71d44b9607d18bc33f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-by-tens--sm/5963521b66a7c860d7eb3b862a9be016024dd8d36f1faf71d44b9607d18bc33f/audio.m4a",
+    "duration": 262.8,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-by-tens--sm/5963521b66a7c860d7eb3b862a9be016024dd8d36f1faf71d44b9607d18bc33f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-by-tens--sm/5963521b66a7c860d7eb3b862a9be016024dd8d36f1faf71d44b9607d18bc33f/audio.m4a",
+        "version": "5963521b66a7c860d7eb3b862a9be016024dd8d36f1faf71d44b9607d18bc33f",
+        "duration": 262.8
+      }
+    ],
+    "skill": "multiply-tens"
+  },
   "multiply-facts": {
     "id": "multiply-facts--st",
     "version": "49363559c32fe93080161fd4bff9c2a8c6f630a08631cb8978a5e5dbacccbe1e",
