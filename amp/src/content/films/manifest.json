@@ -994,6 +994,29 @@
     ],
     "skill": "clock-five-minutes"
   },
+  "clock-elapsed-minutes": {
+    "id": "clock-elapsed-minutes--se",
+    "version": "8ef1d89fc90f890991ebcfc56eca12c82928e140ab85cf507e1068504847509e",
+    "title": "Finding elapsed time",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/clock-elapsed-minutes--se/8ef1d89fc90f890991ebcfc56eca12c82928e140ab85cf507e1068504847509e/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/clock-elapsed-minutes--se/8ef1d89fc90f890991ebcfc56eca12c82928e140ab85cf507e1068504847509e/audio.m4a",
+    "duration": 225,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/clock-elapsed-minutes--se/8ef1d89fc90f890991ebcfc56eca12c82928e140ab85cf507e1068504847509e/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/clock-elapsed-minutes--se/8ef1d89fc90f890991ebcfc56eca12c82928e140ab85cf507e1068504847509e/audio.m4a",
+        "version": "8ef1d89fc90f890991ebcfc56eca12c82928e140ab85cf507e1068504847509e",
+        "duration": 225
+      }
+    ],
+    "skill": "elapsed-time"
+  },
   "clock-hour-read": {
     "id": "read-clock-hour-half--sc",
     "version": "b06b242d8a8ddd67857251d6e33b2ab609cbe0818c47b3b7c3fb50a3aa9b0c7c",
@@ -2495,6 +2518,29 @@
       }
     ],
     "skill": "thirds-and-partitions"
+  },
+  "elapsed-time-hm": {
+    "id": "clock-elapsed-minutes--se",
+    "version": "8ef1d89fc90f890991ebcfc56eca12c82928e140ab85cf507e1068504847509e",
+    "title": "Finding elapsed time",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/clock-elapsed-minutes--se/8ef1d89fc90f890991ebcfc56eca12c82928e140ab85cf507e1068504847509e/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/clock-elapsed-minutes--se/8ef1d89fc90f890991ebcfc56eca12c82928e140ab85cf507e1068504847509e/audio.m4a",
+    "duration": 225,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/clock-elapsed-minutes--se/8ef1d89fc90f890991ebcfc56eca12c82928e140ab85cf507e1068504847509e/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/clock-elapsed-minutes--se/8ef1d89fc90f890991ebcfc56eca12c82928e140ab85cf507e1068504847509e/audio.m4a",
+        "version": "8ef1d89fc90f890991ebcfc56eca12c82928e140ab85cf507e1068504847509e",
+        "duration": 225
+      }
+    ],
+    "skill": "elapsed-time"
   },
   "equal-addends-array": {
     "id": "array-add-rows-total--sa",
