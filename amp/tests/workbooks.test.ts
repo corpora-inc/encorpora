@@ -411,7 +411,7 @@ test("a stored version below reprintsFrom is not reprinted", async () => {
   assert.match(pdf.json().error, /Make today's workbook/);
 });
 
-test("a workbook whose templates changed version is not reprinted as if unchanged", async () => {
+test("a workbook with an unsupported template version is not reprinted as if unchanged", async () => {
   const { repository, rows } = memoryRepository();
   const server = app(repository);
   const made = (
@@ -422,7 +422,9 @@ test("a workbook whose templates changed version is not reprinted as if unchange
       payload: { date: today, minutes: 30, paper: "letter" },
     })
   ).json();
-  rows[0]!.spec.sections[0]!.items[0]!.templateVersion -= 1;
+  // A supported older version may reprint through reprintsFrom. Version 0
+  // predates every published template, regardless of the dated selection.
+  rows[0]!.spec.sections[0]!.items[0]!.templateVersion = 0;
   const pdf = await server.inject({ url: `${url}/${made.id}/pdf`, headers });
   assert.equal(pdf.statusCode, 410);
   assert.match(pdf.json().error, /Make today's workbook/);
