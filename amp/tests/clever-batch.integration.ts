@@ -210,11 +210,25 @@ test(
       );
 
       await t.test(
-        "only SchoolTechLead grants viewer; demotion ends source authority without changing teacher/admin co-roles",
+        "staff administer their schools unless PortalOnly; demotion ends source authority without changing teacher/admin co-roles",
         async () => {
-          assert.deepEqual(await liveRoles(techLead), ["viewer"]);
+          assert.deepEqual(await liveRoles(techLead), ["admin"]);
           assert.deepEqual(await liveRoles(portal), []);
-          assert.deepEqual(await liveRoles(plainStaff), []);
+          assert.deepEqual(await liveRoles(plainStaff), ["admin"]);
+          // The authorization view honours a staff school-admin role, not
+          // only district administrators (migration 0142).
+          for (const id of [techLead, plainStaff])
+            assert.deepEqual(
+              (
+                await db.query(
+                  `SELECT amp_school_role_current(r.id) AS current FROM amp_clever_bindings b
+            JOIN amp_org_roles r ON r.person_id=b.local_id AND r.end_on IS NULL
+            WHERE b.connection_id=$1 AND b.kind='user' AND b.clever_id=$2`,
+                  [connection.id, id],
+                )
+              ).rows.map((r) => r.current),
+              [true],
+            );
           assert.deepEqual(await liveRoles(teacher), ["teacher"]);
           assert.deepEqual(await liveRoles(administrator), ["admin"]);
           source.users.find((u) => u.id === techLead)!.roles.staff!.roles = [

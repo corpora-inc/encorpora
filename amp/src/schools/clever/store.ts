@@ -416,9 +416,13 @@ export async function applySnapshot(
   const schoolRoles = (user: User, role: "student" | "teacher" | "staff") => {
     const profile = user.roles[role];
     if (!profile) return;
+    // Clever v3 "staff" are school administrators (principals, counselors,
+    // tech leads). PortalOnly marks staff a district grants Clever Portal
+    // access only, so they receive no school authority in AMP.
+    // https://dev.clever.com/docs/api-v3-upgrade-guide
     if (
       role === "staff" &&
-      !user.roles.staff?.roles?.includes("SchoolTechLead")
+      user.roles.staff?.roles?.includes("PortalOnly")
     )
       return;
     for (const sourceId of new Set([
@@ -431,7 +435,7 @@ export async function applySnapshot(
           "org_role",
           orgId,
           local("user", user.id)!,
-          role === "staff" ? "viewer" : role,
+          role === "staff" ? "admin" : role,
         );
     }
   };
