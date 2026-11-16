@@ -1318,6 +1318,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
         (tx) =>
           recordProblemFlag(tx, input, {
             trial: isTrialAccount(account),
+            school: isSchoolAccount(account),
             apiCommit: build.commit,
           }),
       );

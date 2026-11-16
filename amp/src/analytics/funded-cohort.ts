@@ -35,6 +35,7 @@ export async function fundedCohortSummary(
     const rows = (
       await client.query<{
         account_id: string | null;
+        learner_id: string | null;
         campaign_attribution: unknown;
         unclaimed: boolean;
         cancelled: boolean;
@@ -79,7 +80,7 @@ export async function fundedCohortSummary(
         JOIN cohort c ON c.order_id=o.id AND c.account_id=o.account_id AND c.learner_id=o.learner_id
         WHERE e.channel='esa' GROUP BY e.order_id
       )
-      SELECT c.account_id,c.campaign_attribution,c.unclaimed,c.status='cancelled' AS cancelled,
+      SELECT c.account_id,c.learner_id,c.campaign_attribution,c.unclaimed,c.status='cancelled' AS cancelled,
         c.status='parent-reported-submitted' AS submitted,c.evidence_before_claim,
         o.id IS NOT NULL AS linked,o.order_state->>'approval'='approved' AS approved,
         o.order_state->>'settlement'='settled' AS settled,
@@ -117,14 +118,30 @@ export async function fundedCohortSummary(
         [window.from, program.programId, program.state],
       )
     ).rows;
-    // Reuse the product's consent decision instead of copying its policy/version
-    // logic into analytics. One lookup per distinct currently entitled account.
+    // Reuse the product's per-learner decision (an adult, 13 or older, the
+    // restricted basis or consent) instead of copying its policy logic into
+    // analytics. One lookup per distinct currently entitled learner.
     const consent = new Map<string, boolean>();
+    const key = (row: {
+      account_id: string | null;
+      learner_id: string | null;
+    }) =>
+      `${row.account_id}\u0000${row.learner_id}`;
     for (const row of rows)
-      if (row.grant_current && row.account_id && !consent.has(row.account_id))
+      if (
+        row.grant_current &&
+        row.account_id &&
+        row.learner_id &&
+        !consent.has(key(row))
+      )
         consent.set(
-          row.account_id,
-          await learningConsentActive(client, row.account_id),
+          key(row),
+          await learningConsentActive(
+            client,
+            row.account_id,
+            false,
+            row.learner_id,
+          ),
         );
     const counts = {
       retained_invoices: rows.length,
@@ -187,7 +204,7 @@ export async function fundedCohortSummary(
       if (r.revoked) counts.revoked_grants++;
       if (r.observed_use) counts.observed_use_during_grant++;
       if (r.settled && r.observed_use) counts.settled_with_observed_use++;
-      if (r.grant_current && r.account_id && consent.get(r.account_id)) {
+      if (r.grant_current && r.account_id && consent.get(key(r))) {
         counts.current_usable_access++;
         if (!r.observed_use) {
           counts.current_access_without_observed_use++;

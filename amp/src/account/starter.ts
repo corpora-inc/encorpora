@@ -10,6 +10,7 @@ import { adultStarts } from "../learning/starting-point.js";
 import { timezone } from "../schools/contracts.js";
 import { SchoolRepository } from "../schools/repository.js";
 import { insertFamilyChild } from "../server/learner-label.js";
+import { pastCoppaAge } from "../privacy/coppa-age.js";
 import { optionalChildName, optionalNickname } from "../learning/nickname.js";
 
 /* "What brings you to AMP?" (docs/product-model.md). One answer, one call, one
@@ -130,12 +131,17 @@ async function startFamily(
   const existing = (await live()).length;
   const missing = children.slice(existing);
   if (missing.length) {
-    // Withdrawal stops collection, named or not (docs/families.md).
-    const withdrawn = await client.query(
-      "SELECT 1 FROM amp_parent_consents WHERE account_id=$1 AND withdrawn_at IS NOT NULL",
-      [accountId],
-    );
-    if (withdrawn.rowCount) throw new FamilyError(403, "consent_withdrawn");
+    // Withdrawal stops collection for a child under 13, named or not
+    // (16 CFR 312.6(a)(2)); a child 13 or older is outside COPPA (312.2).
+    const withdrawn =
+      missing.some(({ birthYear }) => !pastCoppaAge(birthYear)) &&
+      (
+        await client.query(
+          "SELECT 1 FROM amp_parent_consents WHERE account_id=$1 AND withdrawn_at IS NOT NULL",
+          [accountId],
+        )
+      ).rowCount;
+    if (withdrawn) throw new FamilyError(403, "consent_withdrawn");
     const all = (
       await client.query<{ n: number }>(
         "SELECT count(*)::int AS n FROM amp_learners WHERE account_id=$1 AND deleted_at IS NULL",

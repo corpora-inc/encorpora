@@ -696,7 +696,7 @@ test(
 );
 
 test(
-  "a child still needs the parent's verified consent to claim or be provisioned",
+  "a named child under 13 without consent cannot claim or be provisioned; withdrawal stops provisioning",
   enabled,
   () =>
     fixture(async (pool, invoices) => {
@@ -773,7 +773,7 @@ test(
 );
 
 test(
-  "an adult activates a gift for her own learner without parental consent; a child's or a family gift still needs it",
+  "gifts need no parental consent: an adult, a learner 13 or older, a restricted child and a family; only a named child under 13 without consent is refused",
   enabled,
   () =>
     fixture(async (pool) => {
@@ -801,6 +801,8 @@ test(
       assert.equal(own?.learnerId, "own");
       assert.equal((await grants(pool, "own")).length, 1);
 
+      // The fixture's "child" is named, under 13 and without consent (as
+      // after a lapse): the one case that takes no gift (16 CFR 312.5(a)).
       await issue("parent@example.com");
       await assert.rejects(
         gifts.activate(
@@ -811,20 +813,43 @@ test(
         /consent_required/,
       );
       assert.deepEqual(await grants(pool, "child"), []);
-
+      // A child on the restricted basis takes it with no consent step
+      // (16 CFR 312.5(c)(7)), and so does a learner 13 or older (312.2).
       await pool.query(
-        "UPDATE amp_access_gifts SET revoked_at=now() WHERE recipient_email='parent@example.com'",
+        `INSERT INTO amp_learners(id,account_id,name,birth_year,name_pending,label_number,identity_scope) VALUES
+         ('restricted','amp|parent','Child 2',2017,true,2,'family:amp|parent'),
+         ('teen','amp|parent','Teen',2010,false,NULL,NULL)`,
       );
-      await issue("parent@example.com", "family");
-      await assert.rejects(
-        gifts.activate(
+      for (const learner of ["restricted", "teen"]) {
+        if (learner === "teen") await issue("parent@example.com");
+        const started = await gifts.activate(
           "amp|parent",
           await giftId("parent@example.com"),
-          "parent-own",
-        ),
-        /consent_required/,
+          learner,
+        );
+        assert.equal(started?.learnerId, learner);
+        assert.equal((await grants(pool, learner)).length, 1);
+      }
+      assert.equal(
+        await learningConsentActive(pool, "amp|parent", false, "teen"),
+        true,
       );
-      assert.deepEqual(await grants(pool, "child"), []);
+      // A family gift starts for the whole family with no consent either.
+      await issue("parent@example.com", "family");
+      const family = await gifts.activate(
+        "amp|parent",
+        await giftId("parent@example.com"),
+        "parent-own",
+      );
+      assert.ok(family);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int n FROM amp_access_gifts WHERE recipient_email='parent@example.com' AND covers='family' AND activated_at IS NOT NULL",
+          )
+        ).rows[0].n,
+        1,
+      );
     }),
 );
 

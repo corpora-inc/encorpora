@@ -1,4 +1,5 @@
 import { accessGrantsFor, grantReserved } from "../../account/adult-access.js";
+import { purchaseConsentSatisfied } from "../../server/account-access.js";
 import { createHash } from "node:crypto";
 import {
   BillingError,
@@ -114,10 +115,8 @@ async function learnerPurchaseStatus(
         grant,
         checkout: checkout.rows[0],
         tier,
-        // The account's own adult learner buys on its own terms.
-        consent:
-          (await repository.ownAdultLearner(client, accountId, learnerId)) ||
-          (await repository.purchaseConsentActive(client, accountId)),
+        // A learner is bought for on the basis they already learn on.
+        consent: await purchaseConsentSatisfied(client, accountId, learnerId),
       };
     });
   }

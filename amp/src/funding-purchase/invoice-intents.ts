@@ -17,10 +17,7 @@ import { z } from "zod";
 import type { PoolClient } from "pg";
 import { fundingOfferMatchesSnapshot } from "./offer-terms.js";
 import { fundedInvoiceTerm } from "./term.js";
-import {
-  learningConsentActive,
-  purchaseConsentSatisfied,
-} from "../server/account-access.js";
+import { purchaseConsentSatisfied } from "../server/account-access.js";
 import { FundingPurchaseRepository, fundingRequestRow } from "./repository.js";
 import {
   availableOffers,
@@ -229,6 +226,10 @@ export class FundingInvoiceRepository {
     } = rowIntent(result.rows[0]);
     return intent;
   }
+  /** An invoice is made out to an email and found by it, so its paid access
+   * goes only to an account that has confirmed that address. Without this,
+   * signing up with a parent's address would take their program-funded
+   * invoice. This binds the invoice to its parent; it is not consent. */
   private async verifiedEmail(
     client: PoolClient,
     account: string,
@@ -311,20 +312,17 @@ export class FundingInvoiceRepository {
       account,
       async (client) => {
         const email = await this.verifiedEmail(client, account);
-        // A child needs the parent's verified consent; an adult claiming for
-        // their own learner acts for themselves.
+        // The invoice's learner takes its access on the basis they already
+        // learn on (an adult, 13 or older, the restricted basis, or consent):
+        // no consent step for a funded invoice (16 CFR 312.5(c)(7)).
+        if (!(await purchaseConsentSatisfied(client, account, learnerId)))
+          throw new FundingPurchaseError(403, "verified_consent_required");
         const pendingGift = (
           await client.query(
             "SELECT id FROM amp_access_gifts WHERE funding_invoice_id=$1",
             [id],
           )
         ).rows[0];
-        const permitted =
-          (await purchaseConsentSatisfied(client, account, learnerId)) ||
-          (pendingGift &&
-            (await learningConsentActive(client, account, false, learnerId)));
-        if (!permitted)
-          throw new FundingPurchaseError(403, "verified_consent_required");
         const learner = await client.query(
           "SELECT id FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL AND NOT simulation FOR SHARE",
           [learnerId, account],

@@ -1,4 +1,5 @@
 import { useSettingsFamily } from "./features/family/account-settings";
+import { pastCoppaAge } from "../privacy/coppa-age";
 import { LegalDocuments } from "./features/account/LegalDocuments";
 import { AccountPageHeader } from "./features/account/AccountPageHeader";
 import { requestFetch, requestWith } from "./lib/request-transport";
@@ -374,7 +375,7 @@ export function FamilyCenter({
 
         onLearningInvalidated();
         setNotice(
-          "Consent withdrawn. New learning activity is paused. You can still export or delete learning data and manage billing. Renewal has not been canceled.",
+          "Consent withdrawn. New learning activity is paused for children under 13. You can still export or delete learning data and manage billing. Renewal has not been canceled.",
         );
       } else {
         const receipt = await api<DeletionReceipt>(
@@ -542,7 +543,11 @@ export function FamilyCenter({
     const age = learner.birthYear
       ? new Date().getFullYear() - learner.birthYear
       : null;
-    const canName = !learner.namePending || consentActive;
+    // 13 or older is outside COPPA (16 CFR 312.2): named like any learner.
+    const canName =
+      !learner.namePending ||
+      consentActive ||
+      pastCoppaAge(learner.birthYear);
     return (
       <>
         {!nativeRuntime && (age === null || age >= 13) && (
@@ -1144,7 +1149,7 @@ export function FamilyCenter({
                   {family.consent.status === "active"
                     ? "Consent is active."
                     : family.consent.status === "withdrawn"
-                      ? "Consent is withdrawn. New learning activity is paused."
+                      ? "Consent is withdrawn. New learning activity is paused for children under 13."
                       : family.consent.status === "development"
                         ? "Local development access. No verified consent record is present."
                         : "Verified parent consent is not recorded."}
@@ -1152,8 +1157,9 @@ export function FamilyCenter({
                 {family.consent.status === "active" ||
                 family.consent.status === "development" ? (
                   <p className={pages.prose}>
-                    Withdrawing stops new learning activity. It doesn’t delete
-                    existing records or cancel a plan’s renewal.
+                    Withdrawing stops new learning activity for children under
+                    13. It doesn’t delete existing records or cancel a plan’s
+                    renewal.
                   </p>
                 ) : (
                   <p className={pages.prose}>

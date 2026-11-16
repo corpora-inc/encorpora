@@ -14,6 +14,7 @@ import {
   type PracticeChange,
 } from "../learning/practice-settings";
 import { activateGiftInTransaction } from "../access-grants/repository.js";
+import { pastCoppaAge } from "../privacy/coppa-age.js";
 import {
   isLiveTrial,
   masteredSkills,
@@ -386,13 +387,17 @@ export class PostgresRepository implements Repository {
       await client.query("BEGIN");
       await lockLearningAccount(client, accountId);
       // A parent names their own child with or without verified consent
-      // (docs/parent-consent.md#childrens-names). Without it the child learns
-      // on the restricted basis, so a birth year is needed; blank is "Child 2".
-      const canName = await namingConsentActive(
-        client,
-        accountId,
-        this.options.development,
-      );
+      // (docs/parent-consent.md#childrens-names). Without it a child who may
+      // be under 13 learns on the restricted basis, so a birth year is
+      // needed; blank is "Child 2". A child 13 or older is outside COPPA
+      // (16 CFR 312.2): never restricted, never stopped by a withdrawal.
+      const canName =
+        pastCoppaAge(birthYear) ||
+        (await namingConsentActive(
+          client,
+          accountId,
+          this.options.development,
+        ));
       const restricted = !canName || name === undefined;
       if (restricted && birthYear == null)
         throw new ApiError(400, "A birth year is required");
@@ -442,13 +447,15 @@ export class PostgresRepository implements Repository {
       });
       if (!restricted)
         await recordActivation(client, { accountId, step: "learner_added" });
-      if (canName)
-        await activateGiftInTransaction(
-          client,
-          accountId,
-          learner.id,
-          this.options,
-        );
+      // A gift waiting for this account starts for the new child on the
+      // basis they learn on; access is not collection, so consent is not
+      // asked for it.
+      await activateGiftInTransaction(
+        client,
+        accountId,
+        learner.id,
+        this.options,
+      );
       await client.query("COMMIT");
       return learner;
     } catch (error) {

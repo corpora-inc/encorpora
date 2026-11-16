@@ -20,6 +20,7 @@ import { Toast } from "../../ui/Toast";
 import { useClaimEnrollment } from "../billing/api";
 import { Brand } from "../school/SchoolFrame";
 import school from "../school/School.module.css";
+import { pastCoppaAge } from "../../../privacy/coppa-age";
 import { approvalOptions, approvals } from "./api";
 import { teacherLine } from "./ApproveLinkScreen";
 import styles from "./Approval.module.css";
@@ -32,8 +33,6 @@ const DAY = new Intl.DateTimeFormat("en-US", {
 const failures: Record<string, string> = {
   consent_required:
     "Your consent isn’t recorded yet. Buy a license for your child to give it.",
-  email_unconfirmed:
-    "Confirm your email first: open the link we sent you, then approve.",
   approval_expired: "This link has expired. Ask the teacher to send it again.",
   approval_ended: "The teacher withdrew this link.",
 };
@@ -218,7 +217,7 @@ export function ApprovalScreen() {
               </dd>
             </div>
           </dl>
-          {view.consentActive ? (
+          {view.consentActive || view.asksBirthYear ? (
             <form
               className={styles.step}
               onSubmit={(event) => {
@@ -257,14 +256,39 @@ export function ApprovalScreen() {
                   </span>
                 </div>
               )}
-              <Button
-                variant="primary"
-                type="submit"
-                aria-busy={busy}
-                disabled={busy}
-              >
-                Approve {child} joining
-              </Button>
+              {/* Under 13, approving names the child to another family's
+                  teacher: that needs the parent's consent (16 CFR
+                  312.5(a)(1)), which buying their license records. 13 or
+                  older is outside COPPA (312.2): approve now. The button
+                  keeps its place; only its action follows the year. */}
+              {view.consentActive || pastCoppaAge(Number(birthYear) || null) ? (
+                <Button
+                  variant="primary"
+                  type="submit"
+                  aria-busy={busy}
+                  disabled={busy}
+                >
+                  Approve {child} joining
+                </Button>
+              ) : birthYear ? (
+                <Link
+                  to="/start/plan"
+                  className={buttonClass("primary")}
+                  data-buy
+                >
+                  Buy a license for {child}
+                </Link>
+              ) : (
+                <Button variant="primary" type="submit" disabled={busy}>
+                  Approve {child} joining
+                </Button>
+              )}
+              {!view.consentActive && (
+                <p className={controls.fieldHint}>
+                  Under 13, buying {child}’s license records your consent, and
+                  you approve right after.
+                </p>
+              )}
             </form>
           ) : (
             <div className={styles.step}>

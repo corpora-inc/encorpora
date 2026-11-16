@@ -190,8 +190,7 @@ export async function provisionFundingRequest(
             "funded_activation_term_required",
           );
       }
-      // A verified in-window settlement remains payable while consent is
-      // pending. Require the persisted operator import and its exact conversion;
+      // A verified in-window settlement remains payable. Require the persisted operator import and its exact conversion;
       // caller-supplied event timestamps alone cannot waive an expired quote.
       let timelySettlement = false;
       let settlementAt: string | undefined;
@@ -224,8 +223,8 @@ export async function provisionFundingRequest(
         term.endsAt !== fundedTermEnd(term.startsAt, request.offer.termMonths)
       )
         throw new FundingPurchaseError(400, "funded_activation_term_required");
-      // A paid invoice preserves its learner's existing permission, including
-      // restricted parent-entry learning. It never supplies consent.
+      // A paid invoice covers its learner on the basis they already learn on,
+      // including the restricted basis. It never supplies consent.
       const learner = await client.query(
         "SELECT id FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL AND NOT simulation FOR SHARE",
         [request.learnerId, request.accountId],
@@ -235,7 +234,6 @@ export async function provisionFundingRequest(
       if (
         !(await fundedLearningAllowed(
           client,
-          request.id,
           request.accountId,
           request.learnerId,
         ))

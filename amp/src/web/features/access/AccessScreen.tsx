@@ -27,6 +27,8 @@ export function AccessScreen() {
     query.data?.signedIn && query.data.account.id === session.accountId
       ? query.data
       : null;
+  // A gift is found by its recipient's address: confirming it binds the
+  // gift to this account. It is not consent.
   if (me && !me.account.emailVerified)
     return (
       <PageFrame centered>
@@ -39,16 +41,12 @@ export function AccessScreen() {
   const paidSetup = !!me?.unassignedPurchase;
   const active = me?.learners.some((learner) => learner.entitlement.active);
   // A family gift starts here for every child at once; with no child yet,
-  // adding the first one starts it.
-  const startFamily =
-    family &&
-    !paidSetup &&
-    me?.consent.status === "active" &&
-    me.learners.length > 0;
+  // adding the first one starts it. Access is not collection: no consent.
+  const startFamily = family && !paidSetup && (me?.learners.length ?? 0) > 0;
   // A one-learner gift may be the account holder's own: an adult uses it for
-  // herself, with no parental consent and no child to set up (starting her
-  // own learner if she has none). Not when her own learner already has
-  // access: a gift neither replaces nor stacks on it.
+  // herself, with no child to set up (starting her own learner if she has
+  // none). Not when her own learner already has access: a gift neither
+  // replaces nor stacks on it.
   const own = me?.adultPractice?.learner ?? null;
   const ownLicensed = !!me?.family.learners.some(
     (learner) =>
@@ -215,11 +213,7 @@ export function AccessScreen() {
                   <>
                     {meFirst && forMeButton("primary")}
                     <Link
-                      to={
-                        me.consent.status === "active"
-                          ? "/start/name"
-                          : "/start/consent"
-                      }
+                      to="/start/name"
                       search={{ return: "access" }}
                       className={buttonClass(meFirst ? "secondary" : "primary")}
                     >

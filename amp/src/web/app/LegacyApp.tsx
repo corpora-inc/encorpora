@@ -2126,7 +2126,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             }
             reportNote={noteAllowed({
               trial: false,
-              namePending: learner.namePending,
+              schoolRestricted: student && learner.namePending === true,
               birthYear: learner.birthYear,
             })}
             response={response}

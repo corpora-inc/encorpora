@@ -3,6 +3,7 @@ import {
   EMAIL_PLUS_METHOD,
   isEmailPlusMethod,
 } from "../parent-consent/contracts.js";
+import { pastCoppaAgeSql } from "../privacy/coppa-age.js";
 import {
   isSchoolAccount,
   schoolConsentActive,
@@ -18,25 +19,6 @@ export async function lockLearningAccount(
     "SELECT pg_advisory_xact_lock_shared(hashtextextended($1,0))",
     [accountId],
   );
-}
-/** Consent and purchase need an account whose email the parent has
- * confirmed. A passkey sign-up starts unconfirmed; other identities (OIDC,
- * development) are confirmed by their issuer. */
-export async function parentAddressConfirmed(
-  client: Pick<PoolClient, "query">,
-  accountId: string,
-  lock = true,
-): Promise<boolean> {
-  if (!accountId.startsWith("amp|")) return true;
-  const table = await client.query(
-    "SELECT to_regclass('amp_auth_users') IS NOT NULL AS present",
-  );
-  if (!table.rows[0].present) return true;
-  const user = await client.query(
-    `SELECT "emailVerified" FROM amp_auth_users WHERE id=$1${lock ? " FOR SHARE" : ""}`,
-    [accountId.slice(4)],
-  );
-  return user.rows[0]?.emailVerified === true;
 }
 /** The account's own adult learner, live. Account holders are adults by the
  * terms, so this learner learns on the account's own terms: no parental
@@ -54,28 +36,44 @@ export async function isAdultLearner(
     )
   ).rowCount;
 }
-/** Whether a purchase or a gift may be made for this learner: the account
- * holder's own adult learner needs no parental consent (they act for
- * themselves); any other learner, a child, needs the account's verified
- * parental consent. Unlike `learningConsentActive`, an unnamed child's
- * restricted permission never stands in for that consent. */
+/** A family learner outside COPPA: the account's own adult, or a child whose
+ * birth year shows they are 13 or older (src/privacy/coppa-age.ts; a "child"
+ * is under 13, 16 CFR 312.2). They learn, and are bought for, on the
+ * account's own terms: no parental consent applies to them. */
+export async function learnerOutsideCoppa(
+  client: Pick<PoolClient, "query">,
+  accountId: string,
+  learnerId: string,
+): Promise<boolean> {
+  if (await isAdultLearner(client, accountId, learnerId)) return true;
+  // Read through the row, so a database before migration 0014 has none.
+  return !!(
+    await client.query(
+      `SELECT 1 FROM amp_learners l WHERE l.id=$1 AND l.account_id=$2 AND l.deleted_at IS NULL AND ${pastCoppaAgeSql("(to_jsonb(l)->>'birth_year')::int")}`,
+      [learnerId, accountId],
+    )
+  ).rowCount;
+}
+
+/** Whether a purchase, a gift or a funded invoice may be attached to this
+ * learner. Access is not data collection: a learner takes paid or gifted
+ * access on the same basis they already learn on (`learningConsentActive`):
+ * the account's own adult, a learner 13 or older, an unnamed child on the
+ * restricted internal-operations basis (16 CFR 312.5(c)(7)), or verified
+ * parental consent. Only a withdrawn or lapsed consent for a named child
+ * under 13 refuses it. */
 export async function purchaseConsentSatisfied(
   client: Pick<PoolClient, "query">,
   accountId: string,
   learnerId: string,
   development = false,
 ): Promise<boolean> {
-  // A practice profile is marked adult too, but is never bought for.
-  const own = await client.query(
-    "SELECT 1 FROM amp_learners l WHERE l.id=$1 AND l.account_id=$2 AND l.deleted_at IS NULL AND to_jsonb(l)->'adult'='true'::jsonb AND (to_jsonb(l)->'simulation') IS DISTINCT FROM 'true'::jsonb",
-    [learnerId, accountId],
-  );
-  if (own.rowCount) return true;
-  return learningConsentActive(client, accountId, development);
+  return learningConsentActive(client, accountId, development, learnerId);
 }
 /** Whether learning data may be collected. With `learnerId`, for that learner:
- * an adult learns on their own terms, an unnamed child uses the restricted
- * learning permission, and a named child requires naming consent. */
+ * an adult or a learner 13 or older learns on their own terms, an unnamed
+ * child uses the restricted learning permission, and a named child under 13
+ * requires naming consent. */
 export async function learningConsentActive(
   client: Pick<PoolClient, "query">,
   accountId: string,
@@ -92,8 +90,9 @@ export async function learningConsentActive(
   )
     return true;
   if (!learnerId) return false;
+  // Read through the row, so a database before migration 0101 has none.
   const unnamed = await client.query(
-    "SELECT 1 FROM amp_learners WHERE id=$1 AND account_id=$2 AND name_pending AND deleted_at IS NULL",
+    "SELECT 1 FROM amp_learners l WHERE l.id=$1 AND l.account_id=$2 AND (to_jsonb(l)->>'name_pending')::boolean AND l.deleted_at IS NULL",
     [learnerId, accountId],
   );
   if (!unnamed.rowCount) return false;
@@ -120,7 +119,9 @@ export async function namingConsentActive(
   if (isSchoolAccount(accountId)) return schoolConsentActive(client, accountId);
   if (await parentConsentActive(client, accountId, development, lock))
     return true;
-  return !!learnerId && (await isAdultLearner(client, accountId, learnerId));
+  return (
+    !!learnerId && (await learnerOutsideCoppa(client, accountId, learnerId))
+  );
 }
 /** The account's verified parental consent for collecting children's names. */
 async function parentConsentActive(

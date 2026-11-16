@@ -221,7 +221,6 @@ export async function reconcileClassWalletPayments(
         !request.orderId &&
         !(await fundedLearningAllowed(
           client,
-          request.id,
           request.accountId,
           request.learnerId,
         ))
