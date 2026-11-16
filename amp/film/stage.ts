@@ -3892,6 +3892,68 @@ class Board {
 // ------------------------------------------------------------------ the film
 /** An app figure mounted into a shot's card (film/example.tsx): how to draw it at t, and what its checks found. */
 export type FigureMount = { seek?: (t: number) => void; issues?: string[]; notes?: string[] };
+/** How long a shot takes to fade in when it dissolves over the one before (see `Film.seek`). */
+const DISSOLVE_IN = 0.6;
+/** Figure actions that change how a part looks, not only whether it shows. Moves and glides change points, compared by place. */
+const RESHAPES = new Set(["turn", "flip", "slide", "cut", "split", "join", "zoom", "given", "partition", "shade"]);
+const THING_ACTS = new Set(["arrive", "count", "send", "leave"]);
+/** The ids of the parts a shot's actions, up to time t, have changed beyond showing, hiding or lighting them. */
+function reshaped(g: GeoStage, list: Entry[], t: number) {
+  const out = new Set<string>();
+  const add = (target: string) => {
+    const id = target.split(".")[0]!;
+    for (const p of g.geo.parts) if (p.id === id || p.group === id) out.add(p.id);
+  };
+  for (const e of list) {
+    if (e.t0 >= t) continue;
+    const a = e.a as { do: string; target?: string | string[] };
+    const targets = a.target === undefined ? [] : Array.isArray(a.target) ? a.target : [a.target];
+    if (THING_ACTS.has(a.do)) { for (const p of g.geo.parts) if ("things" in p) out.add(p.id); }
+    else if (RESHAPES.has(a.do)) targets.forEach(add);
+    // a table's cell or a mosaic's slab shown or hidden: the part as a whole stays, its inside changes
+    else if (a.do === "show" || a.do === "hide" || a.do === "draw") targets.filter((x) => x.includes(".")).forEach(add);
+  }
+  return out;
+}
+/**
+ * Whether geometry figure b takes over from a without replacing anything, so dissolving one into
+ * the other reads as parts arriving or leaving, never as two pictures printed over each other.
+ * It does when b opens on the window a closes on, and from the ink a shows as it leaves to the ink
+ * b shows once it has faded in, parts are only added or only taken away: every part both show is
+ * the same part, untouched by either shot's actions, on points in the same places.
+ * A moved point is a change: its label or line would show twice, once where it was and once where it is.
+ */
+function geoContinues(a: GeoStage, aList: Entry[], b: GeoStage, bList: Entry[], change: number): boolean {
+  const aEnd = change, bOpen = change + DISSOLVE_IN;
+  const near = (p: readonly number[], q: readonly number[]) => p.length === q.length && p.every((x, k) => Math.abs(x - q[k]!) < 1e-6);
+  if (!!a.geo.stretch !== !!b.geo.stretch || !near(a.viewAt(aEnd), b.viewAt(bOpen))) return false;
+  const shown = (g: GeoStage, t: number) => new Map(g.geo.parts.filter((p) => g.opacity(p, t).o > 0.001).map((p) => [p.id, p]));
+  const inA = shown(a, aEnd), inB = shown(b, bOpen);
+  const aTouched = reshaped(a, aList, aEnd), bTouched = reshaped(b, bList, bOpen);
+  const names = (v: unknown, out: Set<string>): Set<string> => {
+    if (typeof v === "string") out.add(v);
+    else if (Array.isArray(v)) v.forEach((x) => names(x, out));
+    else if (v && typeof v === "object") Object.values(v).forEach((x) => names(x, out));
+    return out;
+  };
+  const samePart = (p: Part, q: Part) => {
+    if (JSON.stringify(p) !== JSON.stringify(q) || aTouched.has(p.id) || bTouched.has(q.id)) return false;
+    for (const n of names(p, new Set())) {
+      const inPa = n in a.geo.points, inPb = n in b.geo.points;
+      if (inPa !== inPb) return false;
+      if (inPa && !near(a.at(n, aEnd), b.at(n, bOpen))) return false;
+    }
+    return true;
+  };
+  let gone = false, come = false;
+  for (const [id, p] of inA) {
+    const q = inB.get(id);
+    if (!q) gone = true;
+    else if (!samePart(p, q)) return false;
+  }
+  for (const id of inB.keys()) if (!inA.has(id)) come = true;
+  return !(gone && come);
+}
 export class Film {
   shots: { el: HTMLElement; t0: number; t1: number; geo?: GeoStage; list: Entry[]; extern?: (t: number) => void; mount?: FigureMount; hasFig: boolean; /** Fades in only after the shot before it has gone (see `seek`). */ dip?: boolean; pose: FigurePose | null; fill: number }[] = [];
   board: Board;
@@ -3930,10 +3992,15 @@ export class Film {
         else mount = mountFigure?.(host, shot, list);
         for (const m of geo?.issues ?? []) this.issues.push(`Shot ${i + 1}: ${m}`);
       }
-      // Two different app figures in a row (coins on a mat, then other coins) are drawn in the same
-      // place: dissolved over each other they read as one garbled picture, so the second waits for the first to go.
+      // Two different figures in a row (coins on a mat, then other coins; halves of a strip, then
+      // thirds of it) are drawn in the same card: dissolved over each other they read as one garbled
+      // picture, labels printed twice, so the second waits for the first to go. A figure carried
+      // unchanged still dissolves, and so does a geometry figure that only gains or only loses
+      // whole parts in place (see geoContinues): both read as no change, where a dip would blink.
       const before = i > 0 ? script.shots[i - 1]!.figure : undefined;
-      const dip = hasFig && !!before && (!!mount || !("parts" in before)) && JSON.stringify(before) !== JSON.stringify(shot.figure);
+      const prev = this.shots[i - 1];
+      const dip = hasFig && !!before && JSON.stringify(before) !== JSON.stringify(shot.figure)
+        && !(prev?.geo && geo && geoContinues(prev.geo, prev.list, geo, list, t0));
       this.shots.push({ el, t0, t1: Infinity, geo, list, extern: mount?.seek, mount, hasFig, dip, pose: null, fill: 0 });
     });
     this.shots.forEach((s, i) => { s.t1 = this.shots[i + 1]?.t0 ?? Infinity; });
@@ -4212,7 +4279,7 @@ export class Film {
   seek(t: number) {
     this.shots.forEach((s, i) => {
       // The film, and each shot, eases in. Nothing is fully present on the first frame.
-      const inn = i === 0 ? ease(t / 0.7) : s.dip ? ease((t - s.t0 - 0.28) / 0.45) : ease((t - s.t0) / 0.6);
+      const inn = i === 0 ? ease(t / 0.7) : s.dip ? ease((t - s.t0 - 0.28) / 0.45) : ease((t - s.t0) / DISSOLVE_IN);
       // the last shot never fades: the film ends on its summary, held
       const out = s.t1 === Infinity ? 1 : 1 - ease((t - s.t1) / 0.3);
       const o = inn * out;
