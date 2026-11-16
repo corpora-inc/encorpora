@@ -21,6 +21,7 @@ import {
 } from "../src/learning/assessment-profile";
 import { selectionDistribution } from "../src/learning/selection-policy";
 import {
+  createPracticePolicy,
   DEFAULT_PRACTICE_POLICY,
   practiceParameters,
 } from "../src/learning/practice-policy";
@@ -155,4 +156,27 @@ test("SAT blueprint shares survive generator duplication and remain an opt-in le
     config.policy,
   );
   assert.ok(mass(adapted, "algebra") > mass(distribution, "algebra"));
+});
+
+test("SAT configuration respects a custom base and a limited client pool without mutating either", () => {
+  const parameters = practiceParameters();
+  parameters.version = "custom-sat-test";
+  parameters.target.levelOffset = -0.73;
+  parameters.weights.families["rectangle-border-length"] = 2;
+  const base = createPracticePolicy(parameters);
+  const before = practiceParameters(base);
+  const available = templates.filter((t) =>
+    ["rectangle-border-length", "count-objects"].includes(t.id),
+  );
+  const config = satPracticeConfiguration(available, base);
+  assert.deepEqual(
+    config.templates.map((t) => t.id),
+    ["rectangle-border-length"],
+  );
+  assert.equal(config.policy.target.levelOffset, -0.73);
+  assert.equal(config.policy.weights.families["rectangle-border-length"], 2);
+  assert.equal(config.policy.placement.scriptedOpeners, false);
+  assert.deepEqual(practiceParameters(base), before);
+  assert.equal(available.length, 2);
+  assert.equal(satPracticeConfiguration([], base).templates.length, 0);
 });
