@@ -176,6 +176,8 @@ type Entry = {
   /** When a count's lights and ticks let go: the end of the speech, or the end of the beat's own pause. */ hold?: number;
   /** Explicit highlight release; scene releases correspond to the nested action indices. */
   highlightEnd?: number; sceneEnds?: (number | undefined)[];
+  /** Part of the shot's opening setup, timed from the shot's start (see `opening`). */
+  setup?: boolean;
 };
 type P = [number, number];
 /** The app's figure roles, as the film's theme tokens: things are drawn in the same paints as in a problem. */
@@ -195,8 +197,29 @@ function wordAfter(beat: BeatTime, word: string, t: number, what: string) {
   return hit.start;
 }
 
-/** Each beat's actions, in time. Actions without `at` start with the beat, slightly staggered. `shotEnd` is when the shot begins to fade out. */
-function entries(shot: Shot, times: BeatTime[], shotEnd = Infinity) {
+/** How long a shot's opening setup takes: it is done before the shot is seen (see `opening`). */
+const SETUP = 0.01;
+/** A move this short is a jump: it places points, it is not a motion to watch. */
+const JUMP = 0.05;
+/**
+ * A shot's setup: an action in its first beat with no `at` word that only sets the state the shot
+ * opens in. Hiding or showing parts, a jump of points (a move of JUMP or less), and clearing the
+ * board. The shot begins, and starts to fade in, half a second before that beat's first word, so
+ * setup timed from the beat would be seen to happen: a bar's title showing and then vanishing, the
+ * last shot's board still beside the new figure. Setup takes effect at the shot's own start
+ * instead. The figure is already in that state when the shot appears (the shot's fade-in is the
+ * only entrance it gets, so its `dur` does not apply), and the board turns to its new column as
+ * the old figure leaves. A cue word, a later beat, and every action that animates are untouched.
+ */
+function opening(a: Action, beat: number): "figure" | "board" | undefined {
+  if (beat !== 0 || a.at) return undefined;
+  if (a.do === "clear") return "board";
+  if (a.do === "hide" || a.do === "show") return "figure";
+  if (a.do === "move" && a.dur !== undefined && a.dur <= JUMP) return "figure";
+  return undefined;
+}
+/** Each beat's actions, in time. Actions without `at` start with the beat, slightly staggered; a shot's setup (see `opening`) at the shot's start `t0`. `shotEnd` is when the shot begins to fade out. */
+function entries(shot: Shot, times: BeatTime[], t0Shot: number, shotEnd = Infinity) {
   const out: Entry[] = [];
   shot.beats.forEach((b, i) => {
     let stagger = 0;
@@ -211,9 +234,11 @@ function entries(shot: Shot, times: BeatTime[], shotEnd = Infinity) {
         out.push({ a, t0: run.times[0]!, dur: a.dur ?? DEFAULT_DUR.count!, beatEnd: t.end, hold, run, words: Object.fromEntries(counted.map((x, k) => [`n${k}`, x])) });
         continue;
       }
-      const t0 = a.at ? wordTime(t, a.at, a.nth) : t.start + stagger;
+      const setup = opening(a, i);
+      // setup keeps its stagger slot, so the beat's other actions keep their times
+      const t0 = setup === "figure" ? t0Shot - SETUP : setup === "board" ? t0Shot : a.at ? wordTime(t, a.at, a.nth) : t.start + stagger;
       if (!a.at) stagger += 0.1;
-      const entry: Entry = { a, t0, dur: a.dur ?? DEFAULT_DUR[a.do] ?? 0.5, beatEnd: t.end };
+      const entry: Entry = { a, t0, dur: setup === "figure" ? SETUP : a.dur ?? DEFAULT_DUR[a.do] ?? 0.5, beatEnd: t.end, ...(setup && { setup: true }) };
       if (a.do === "highlight") entry.highlightEnd = highlightEnd(t, a, t0);
       if (a.do === "scene") entry.sceneEnds = a.actions.map((x) => x.do === "highlight" ? highlightEnd(t, x, t0) : undefined);
       if (a.do === "column") {
@@ -3105,7 +3130,7 @@ class Board {
     this.shotMeta = shots.map((s) => ({ t0: s.t0, hasFig: s.hasFig }));
     const recapList = this.recapList = div("film-recap-list", this.recapCard);
     let col = this.newCol();
-    const events: { t: number; kind: string; item?: BoardItem; shot?: number; col?: number; idx?: number }[] = [];
+    const events: { t: number; kind: string; item?: BoardItem; shot?: number; col?: number; idx?: number; opens?: boolean }[] = [];
     let head: Head | null = null;
     const mixed = new Set<number>();
     shots.forEach((sh, si) => {
@@ -3129,7 +3154,7 @@ class Board {
         }
         if (a.do === "clear") {
           if (this.items.some((i) => i.col === col)) col = this.newCol();
-          events.push({ t: e.t0, kind: "clear", shot: si, col });
+          events.push({ t: e.t0, kind: "clear", shot: si, col, opens: e.setup });
           continue;
         }
         if (a.do === "overview") {
@@ -3587,14 +3612,19 @@ class Board {
     const cy = Math.min(Math.max((top + bot) / 2, visH / 2), Math.max(visH / 2, b - visH / 2));
     return { cx: all.cx, cy, s, win };
   }
-  camera(events: { t: number; kind: string; item?: BoardItem; shot?: number; col?: number; idx?: number }[], shots: { hasFig: boolean }[]) {
+  camera(events: { t: number; kind: string; item?: BoardItem; shot?: number; col?: number; idx?: number; opens?: boolean }[], shots: { hasFig: boolean }[]) {
     let col = 0, bottom = 0, mode: "focus" | "overview" = "focus", recap = false, fig = false, all = false;
     let newest: BoardItem | undefined;
     let cols = new Set<number>([0]);
     const same = (a: Cam, b: Cam) =>
       Math.abs(a.cx - b.cx) < 0.5 && Math.abs(a.cy - b.cy) < 0.5 && Math.abs(a.s - b.s) < 1e-3 && Math.abs((a.hh ?? 0) - (b.hh ?? 0)) < 0.5 &&
       a.win.x === b.win.x && a.win.y === b.win.y && a.win.w === b.win.w && a.win.h === b.win.h;
-    const push = (t: number, to: Cam) => {
+    // A clear that opens a shot turns the board as the shot changes, with the old figure leaving,
+    // even when the move waits to frame the column's first line: the old work never sits beside the new figure.
+    let lead: number | undefined;
+    const push = (when: number, to: Cam) => {
+      const t = lead ?? when;
+      lead = undefined;
       // a key that goes where the camera is already going would restart its ease: a visible hitch
       const last = this.keys[this.keys.length - 1];
       if (last && same(last.to, to) && [...last.cols].join() === [...cols].join()) return;
@@ -3624,6 +3654,7 @@ class Board {
       }
       if (ev.kind === "clear") {
         col = ev.col!; bottom = 0; mode = "focus"; recap = false; cols = new Set([col]); newest = undefined;
+        if (ev.opens) lead = ev.t;
         // the column's first line (or its header) follows at once: one move straight to it, not two
         const nx = events[ei + 1];
         if (nx && ((nx.kind === "item" && nx.item!.col === col) || (nx.kind === "header" && nx.col === col)) && nx.t - ev.t < 1.5) continue;
@@ -4003,9 +4034,9 @@ export class Film {
       const times = timing.shots[i]!;
       // a shot begins to fade half a second before the next shot's first word (its t1, below)
       const next = timing.shots[i + 1]?.[0];
-      const list = entries(shot, times, next ? next.start - 0.5 : timing.duration);
-      const el = div("film-shot", root);
       const t0 = i === 0 ? 0 : times[0]!.start - 0.5;
+      const list = entries(shot, times, t0, next ? next.start - 0.5 : timing.duration);
+      const el = div("film-shot", root);
       const hasFig = !!shot.figure;
       let geo: GeoStage | undefined; let mount: FigureMount | undefined;
       if (hasFig) {
