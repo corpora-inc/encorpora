@@ -32,18 +32,27 @@ export const FLAG_RATE_LIMIT = 30;
  * (16 CFR 312.2), so the note field is offered only to a learner whose birth
  * year shows they are at least 13 on every day of this year
  * (src/privacy/coppa-age.ts). Younger learners (or no birth year) and
- * anonymous trials choose reasons only. A learner 13 or older needs no
- * consent for it. The server enforces the same rule.
+ * anonymous trials choose reasons only. A family learner 13 or older needs no
+ * consent for it. A school's unnamed student (`namePending` in a school
+ * session) has a year from a roster or a tutor, never from a parent, so they
+ * keep reasons only under the school's terms. The server enforces the same
+ * rule.
  */
 export const NOTE_MIN_AGE = COPPA_CHILD_UNDER;
 export function noteAllowed(
   learner: {
     trial: boolean;
     birthYear: number | null | undefined;
+    /** On a school's restricted roster basis. */
+    schoolRestricted?: boolean;
   },
   now = new Date(),
 ): boolean {
-  return !learner.trial && pastCoppaAge(learner.birthYear, now.getUTCFullYear());
+  return (
+    !learner.trial &&
+    !learner.schoolRestricted &&
+    pastCoppaAge(learner.birthYear, now.getUTCFullYear())
+  );
 }
 
 const commit = z.string().regex(/^[0-9a-f]{40}$/);

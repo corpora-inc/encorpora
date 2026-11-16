@@ -211,6 +211,7 @@ export interface LearnerTransaction {
   isAdult(): Promise<boolean>;
   /** Whether this is a practice profile: an adult practicing as someone else. */
   isSimulation(): Promise<boolean>;
+  namePending(): Promise<boolean>;
   recentAttempts(): Promise<Outcome[]>;
   skillEvidence(): Promise<SkillEvidence[]>;
   attemptByRequest(requestId: string): Promise<Outcome | undefined>;
@@ -826,6 +827,9 @@ export class PgTransaction implements LearnerTransaction {
   }
   async isSimulation() {
     return (await this.learner())?.simulation === true;
+  }
+  async namePending() {
+    return (await this.learner())?.name_pending === true;
   }
   async saveLevelDay(frontier: Frontier) {
     // Scheduling has already read the posterior sd. The stored width is the

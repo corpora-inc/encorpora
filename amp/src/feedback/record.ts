@@ -17,7 +17,7 @@ import {
 export async function recordProblemFlag(
   tx: LearnerTransaction,
   input: ProblemFlagInput,
-  context: { trial: boolean; apiCommit: string | null },
+  context: { trial: boolean; school?: boolean; apiCommit: string | null },
 ): Promise<{ id: string; recorded: true }> {
   const retry = await tx.flag({ requestId: input.requestId });
   if (retry) return { id: retry.id, recorded: true };
@@ -35,6 +35,7 @@ export async function recordProblemFlag(
     note &&
     !noteAllowed({
       trial: context.trial,
+      schoolRestricted: !!context.school && (await tx.namePending()),
       birthYear: await tx.birthYear(),
     })
   )

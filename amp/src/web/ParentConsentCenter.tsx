@@ -360,8 +360,9 @@ export function ParentConsentCenter({
           <details>
             <summary>Withdraw this consent or request</summary>
             <p>
-              Withdrawal stops future learning access. Learning data deletion is
-              available separately in the Privacy workspace.
+              Withdrawal stops future learning access for children under 13.
+              Learning data deletion is available separately in the Privacy
+              workspace.
             </p>
             <button
               type="button"

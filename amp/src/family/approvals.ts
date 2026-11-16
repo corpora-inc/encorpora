@@ -647,13 +647,11 @@ export async function readApproval(
         learner_id: string | null;
         deleted_at: Date | null;
         person_id: string | null;
-        birth_year: number | null;
       }>(
         `SELECT a.child_name,a.expires_at,a.approved_at,a.ended_at,a.class_id,c.name AS class_name,
-           p.given_name,p.learner_id,p.deleted_at,a.person_id,l.birth_year
+           p.given_name,p.learner_id,p.deleted_at,a.person_id
          FROM amp_family_approvals a JOIN amp_classes c ON c.id=a.class_id
          LEFT JOIN amp_people p ON p.id=a.person_id
-         LEFT JOIN amp_learners l ON l.id=p.learner_id
          WHERE a.id=$1 AND a.account_id=$2`,
         [id, accountId],
       )
@@ -681,17 +679,13 @@ export async function readApproval(
     const allowance = usage
       ? freeAllowance(usage.free_online_used, usage.free_workbooks_used)
       : undefined;
-    // A student the class already holds whose birth year shows 13 or older
-    // is approved without consent (16 CFR 312.2), so the form opens for them.
-    const consentActive =
-      (status === "open" && pastCoppaAge(row.birth_year)) ||
-      (await learningConsentActive(
-        client,
-        accountId,
-        development,
-        here ? row.learner_id! : undefined,
-        false,
-      ));
+    const consentActive = await learningConsentActive(
+      client,
+      accountId,
+      development,
+      here ? row.learner_id! : undefined,
+      false,
+    );
     return {
       id,
       status,
@@ -703,8 +697,10 @@ export async function readApproval(
         consentActive && (!!ends || (allowance?.problems.remaining ?? 0) > 0),
       freeAllowance: allowance,
       learnerId: here ? row.learner_id : null,
-      // A child new to the class: the parent gives their birth year too.
-      asksBirthYear: status === "open" && !row.person_id,
+      // The parent gives their child's birth year: it sets where practice
+      // starts and, from the parent alone, whether consent applies (13 or
+      // older is outside COPPA, 16 CFR 312.2).
+      asksBirthYear: status === "open",
       access: { active: !!ends, endsAt: ends?.toISOString() ?? null },
     };
   } finally {
@@ -790,16 +786,11 @@ async function approveInside(
   // birth year shows 13 or older is outside COPPA (16 CFR 312.2): no consent.
   // No confirmed-email gate: no rule asks for one, and the approval link,
   // not the account's address, is what ties this parent to the child.
-  const year = row.person_id
-    ? (
-        await client.query<{ birth_year: number | null }>(
-          "SELECT l.birth_year FROM amp_people p JOIN amp_learners l ON l.id=p.learner_id WHERE p.id=$1",
-          [row.person_id],
-        )
-      ).rows[0]?.birth_year
-    : birthYear;
+  // Only the parent's own answer decides the age: a tutor's or a roster's
+  // year is an estimate, so without the parent's year the child may be
+  // under 13.
   if (
-    !pastCoppaAge(year) &&
+    !pastCoppaAge(birthYear) &&
     !(await learningConsentActive(client, accountId, development))
   )
     throw new FamilyError(409, "consent_required");
@@ -830,9 +821,10 @@ async function approveInside(
     ).rows[0];
     if (!existing) throw new FamilyError(410, "approval_ended");
     learnerId = existing.id;
+    // The parent's year, when given, replaces the tutor's estimate.
     await client.query(
-      "UPDATE amp_learners SET account_id=$2,name=$3,name_pending=false WHERE id=$1",
-      [learnerId, accountId, name],
+      "UPDATE amp_learners SET account_id=$2,name=$3,name_pending=false,birth_year=COALESCE($4,birth_year) WHERE id=$1",
+      [learnerId, accountId, name, birthYear ?? null],
     );
     await client.query("UPDATE amp_people SET given_name=$2 WHERE id=$1", [
       personId,
