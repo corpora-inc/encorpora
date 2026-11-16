@@ -15,9 +15,11 @@
  *   target     a control under 44 × 44 px (links inside a sentence excepted)
  *   mid-word   a word broken across lines
  *   nested-scroll  at 768 px or less, a box that scrolls up and down inside
- *              the page (the page itself, a full-screen frame and a modal
- *              sheet's one scroll region excepted; sideways table scrollers
- *              are fine)
+ *              the page (the page itself, a full-screen frame, a fixed
+ *              full-screen frame's one region when the page never scrolls
+ *              and its controls stay in view (practice), and a modal
+ *              sheet's one scroll region excepted; sideways table
+ *              scrollers are fine)
  *
  * Writes `<out>/<label>.json` and one marked screenshot per new failure under
  * `<out>/shots/<label>/`. Exits 1 when anything fails.
@@ -37,6 +39,7 @@ import {
   personaEmail,
 } from "../src/web/features/dev/persona-list";
 import { stubAnalytics } from "./analytics-stub";
+import { frameRegionAllowed } from "./layout-sweep-rules";
 
 const argument = (name: string) => {
   const at = process.argv.indexOf(`--${name}`);
@@ -640,6 +643,38 @@ function audit(): Failure[] {
       );
       if (inside.length === 1) allowed.add(inside[0]!);
     }
+    // A full-screen frame (practice): its one problem-area scroll, when it
+    // is the page's only one and the answer controls stay in view.
+    const pageScrolls =
+      document.scrollingElement!.scrollHeight > window.innerHeight + 1;
+    const frameRule = (
+      window as unknown as {
+        __frameRegionAllowed: (facts: {
+          pageScrolls: boolean;
+          regions: number;
+          controlsInView: boolean;
+        }) => boolean;
+      }
+    ).__frameRegionAllowed;
+    for (const frame of document.body.querySelectorAll("*")) {
+      if (styleOf(frame).position !== "fixed" || !shown(frame)) continue;
+      const box = frame.getBoundingClientRect();
+      if (box.width < vw - 1 || box.height < window.innerHeight * 0.85)
+        continue;
+      const inside = scrollers.filter(
+        (element) => !allowed.has(element) && frame.contains(element),
+      );
+      if (inside.length !== 1) continue;
+      const region = inside[0]!;
+      const controlsInView = [...frame.querySelectorAll(CONTROL)]
+        .filter((control) => shown(control) && !region.contains(control))
+        .every((control) => {
+          const at = control.getBoundingClientRect();
+          return at.top >= -1 && at.bottom <= window.innerHeight + 1;
+        });
+      if (frameRule({ pageScrolls, regions: inside.length, controlsInView }))
+        allowed.add(region);
+    }
     for (const element of scrollers) {
       if (allowed.has(element)) continue;
       const html = element as HTMLElement;
@@ -691,6 +726,10 @@ async function contextFor(person: string): Promise<BrowserContext> {
   });
   await stubAnalytics(context);
   await context.addInitScript("window.__name = (f) => f;");
+  // The rules the audit applies in the page (scripts/layout-sweep-rules.ts).
+  await context.addInitScript(
+    `window.__frameRegionAllowed = ${frameRegionAllowed.toString()};`,
+  );
   if (person !== "signed-out") {
     const response = await context.request.post(
       `${origin}/api/auth/sign-in/email`,
