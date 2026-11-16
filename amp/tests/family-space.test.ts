@@ -203,6 +203,14 @@ test("personal account settings keep a parent's family without adopting a teachi
     );
     assert.equal(space.space, "family", path);
     assert.equal(space.active, "settings", path);
+    assert.deepEqual(
+      resolveSpace({ pathname: path }, adult(power), {
+        families,
+        family: familyA,
+      }),
+      space,
+      path,
+    );
     assert.equal(
       resolveSpace({ pathname: path, space: "account" }, adult(power), {
         families,

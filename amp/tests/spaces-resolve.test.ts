@@ -758,6 +758,18 @@ test("account: its own neutral addresses and the old ones, never family chrome",
   }
 });
 
+test("individual purchase entry keeps the account frame with or without route metadata", () => {
+  const match = at("/continue/rowan");
+  const fallback = resolveSpace(match, adult(adultOnly, "rowan"));
+  assert.equal(fallback.space, "account");
+  assert.equal(fallback.bar, "plain");
+  assert.deepEqual(fallback.tabs, []);
+  assert.deepEqual(
+    fallback,
+    resolveSpace({ ...match, space: "account" }, adult(adultOnly, "rowan")),
+  );
+});
+
 test("links with their own authority are entries, never an ambient workspace", () => {
   for (const [path, entry] of [
     ["/school/invite", "invite"],
@@ -788,7 +800,7 @@ test("every route family has its space", () => {
     ["/lessons/abc", "learner"],
     ["/books/x", "learner"],
     ["/learners/a/workbooks/2026-11-09", "learner"],
-    ["/continue/a", "learner"],
+    ["/continue/a", "account"],
     ["/profile/birth-year", "learner"],
     ["/me", "me"],
     ["/me/start", "me"],

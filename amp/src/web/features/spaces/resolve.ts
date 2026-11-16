@@ -44,7 +44,7 @@ import {
  *       family when the org is a family's (holder, second parent or
  *       co-teacher: the relationship is resolved, never assumed)
  *   shared learning route                             → the learner the
- *       route names (`/learners/$id/…`, `/continue/$id`, `?profile=`), else
+ *       route names (`/learners/$id/…`, `?profile=`), else
  *       the one chosen on this device: the adult's own or a profile is me,
  *       a child is that child's family
  *   account, setup, starter and payment steps         → account
