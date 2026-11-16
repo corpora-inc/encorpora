@@ -184,7 +184,17 @@ export class FundingInvoiceRepository {
         await client.query(
           `INSERT INTO amp_access_gifts(id,recipient_email,months,source,reference,claim_by,funding_invoice_id)
            VALUES($1,$2,1,'funded-pending',$3,$4,$3)`,
-          [randomUUID(), intent.parentEmail, intent.id, intent.expiresAt],
+          [
+            randomUUID(),
+            intent.parentEmail,
+            intent.id,
+            new Date(
+              Math.min(
+                at.getTime() + 14 * 86400000,
+                Date.parse(intent.expiresAt),
+              ),
+            ).toISOString(),
+          ],
         );
         const pdf = Buffer.from(
           await renderFundingQuotePdf(invoiceDocument(intent)),

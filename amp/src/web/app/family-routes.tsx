@@ -221,7 +221,27 @@ export function familyRoutes(root: AnyRoute) {
         () => import("../features/inventory/InventoryScreen"),
         "InventoryScreen",
       ),
-      leaf("map", "FamilyMapScreen"),
+      createRoute({
+        getParentRoute: () => family,
+        path: "map",
+        beforeLoad: async ({ context, params, location }) => {
+          const { session } = context as unknown as { session: AuthSession };
+          const id = (params as { family: string }).family;
+          const data = await queryClient
+            .ensureQueryData(familyOptions(session, id))
+            .catch(() => null);
+          // A list of one adds no comparison. Preserve linked curriculum
+          // layers and replace this alias so Back skips the redundant page.
+          if (data?.children.length === 1)
+            throw redirect({
+              to: familyPath(id, `kids/${data.children[0]!.id}`),
+              search: location.search as never,
+              hash: location.hash,
+              replace: true,
+            } as never);
+        },
+        component: screen("FamilyMapScreen"),
+      }),
       leaf("workbooks", "FamilyWorkbooksScreen"),
       leaf("workbooks/$date", "FamilyMarkingScreen"),
       leaf("time", "FamilyTimeScreen"),

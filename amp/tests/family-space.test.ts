@@ -15,6 +15,9 @@ import {
   landingFamily,
 } from "../src/web/features/family/redirects.js";
 import { sharedAccessOf } from "../src/web/features/family/access.js";
+import { repeatsIn } from "./menu-repeats.js";
+import { settingsFamilyOf } from "../src/web/features/family/settings-family.js";
+import type { FamilyPlaces } from "../src/family/projection-contracts.js";
 
 /*
  * The Family space at its own address (docs/architecture/spaces.md, P2):
@@ -166,6 +169,58 @@ const familyA = projection(
   },
 );
 
+test("personal account settings keep a parent's family without adopting a teaching-only family", () => {
+  const place = (
+    familyId: string,
+    role: FamilyPlaces["families"][number]["role"],
+  ) => ({
+    familyId,
+    role,
+    displayName: "Fixture family",
+    classId: null,
+    orgId: null,
+    teachingPlace: null,
+    capabilities: { readFamily: true, readTeaching: false },
+  });
+  const families: FamilyPlaces = {
+    families: [place(B, "second-parent"), place(A, "holder")],
+    next: null,
+  };
+  assert.equal(settingsFamilyOf(families)?.familyId, A);
+  for (const path of [
+    "/account/billing",
+    "/account/billing/records",
+    "/account/privacy",
+    "/account/security",
+    "/purchase/funded",
+    "/purchase/annual",
+  ]) {
+    const space = resolveSpace(
+      { pathname: path, space: "account" },
+      adult(power),
+      { families, family: familyA },
+    );
+    assert.equal(space.space, "family", path);
+    assert.equal(space.active, "settings", path);
+    assert.equal(
+      resolveSpace({ pathname: path, space: "account" }, adult(power), {
+        families,
+        family: null,
+      }).space,
+      "account",
+    );
+  }
+  assert.equal(
+    settingsFamilyOf({ families: [place(B, "second-parent")], next: null })
+      ?.familyId,
+    B,
+  );
+  assert.equal(
+    settingsFamilyOf({ families: [place(B, "co-teacher")], next: null }),
+    null,
+  );
+});
+
 test("a family's address is its own frame, Today at its root and a child's page under it", () => {
   assert.equal(spaceOfPath(`/family/${A}`), "family");
   assert.equal(spaceOfPath(`/family/${A}/kids/pip`), "family");
@@ -178,11 +233,11 @@ test("a family's address is its own frame, Today at its root and a child's page 
   });
   assert.equal(
     (shellFrame(`/family/${A}/kids/pip`) as { active: string }).active,
-    "today",
+    "progress",
   );
   assert.equal(
     (shellFrame(`/family/${A}/reports/grades`) as { active: string }).active,
-    "reports",
+    "progress",
   );
   assert.equal(shellFrame("/family")?.kind, "plain");
 });
@@ -207,15 +262,15 @@ test("holder: the family's own children only, its tabs, its name, its children a
   );
   assert.deepEqual(
     space.tabs.map((tab) => tab.id),
-    ["today", "map", "workbooks", "time", "reports", "people", "settings"],
+    ["today", "progress", "settings"],
   );
   assert.deepEqual(
     space.tabs.filter((tab) => tab.phone).map((tab) => tab.id),
-    ["today", "map", "workbooks", "time"],
+    ["today", "progress", "settings"],
   );
   assert.deepEqual(
     space.tabs.map((tab) => tab.label),
-    ["Today", "Map", "Workbooks", "Time", "Report cards", "People", "Settings"],
+    ["Today", "Progress", "Settings"],
   );
   assert.deepEqual(
     space.destinations.map((entry) => [entry.label, entry.path]),
@@ -228,6 +283,42 @@ test("holder: the family's own children only, its tabs, its name, its children a
   assert.equal(space.class?.id, A_CLASS);
   // No "Practice" in the bar: the adult's own practice is My practice.
   assert.deepEqual(space.actions, []);
+});
+
+test("one child opens directly from Progress; records and sharing keep their section active", () => {
+  const family = projection(A, "holder", [kid("pip", "Pip")]);
+  for (const [leaf, active] of [
+    ["", "today"],
+    ["kids/pip", "progress"],
+    ["map", "progress"],
+    ["time", "progress"],
+    ["reports", "progress"],
+    ["reports/grades", "progress"],
+    ["people", "settings"],
+    ["cards", "settings"],
+    ["settings", "settings"],
+  ]) {
+    const space = resolveSpace(
+      { pathname: `/family/${A}${leaf ? `/${leaf}` : ""}`, space: "family" },
+      adult(power),
+      { family },
+    );
+    assert.equal(space.active, active, leaf);
+    assert.equal(
+      space.tabs.find((tab) => tab.id === "progress")?.path,
+      `family/${A}/kids/pip`,
+    );
+    assert.equal(space.tabs.length, 3);
+  }
+  const several = resolveSpace(
+    { pathname: `/family/${A}`, space: "family" },
+    adult(power),
+    { family: familyA },
+  );
+  assert.equal(
+    several.tabs.find((tab) => tab.id === "progress")?.path,
+    `family/${A}/map`,
+  );
 });
 
 test("a child's page marks that child, and only one of the family's own", () => {
@@ -367,7 +458,7 @@ test("second parent of B: B's children, B's name, never A's children or A's clas
     ["kai"],
   );
   assert.equal(space.class?.id, B_CLASS);
-  // Workbooks are the holder's to make: no tab that would be refused.
+  // Workbook creation is not a family navigation destination.
   assert.ok(!space.tabs.some((tab) => tab.id === "workbooks"));
 });
 
@@ -684,7 +775,7 @@ test("Family Time reads every owned child: the class's, and each one practicing 
   );
 });
 
-test("D-8: a child's workbooks stay in the family's bar, its Workbooks tab current", () => {
+test("D-8: a child's workbooks stay in the family's Progress section", () => {
   for (const pathname of [
     "/learners/pip/workbooks",
     "/learners/pip/workbooks/2026-11-09",
@@ -695,19 +786,11 @@ test("D-8: a child's workbooks stay in the family's bar, its Workbooks tab curre
     );
     if (space.space !== "family") throw new Error(space.space);
     assert.equal(space.learner?.id, "pip");
-    assert.equal(space.active, "workbooks");
+    assert.equal(space.active, "progress");
     // The family's own tabs, never the child's record (Overview, Pathways…).
     assert.deepEqual(
       space.tabs.map((tab) => tab.path),
-      [
-        `family/${A}`,
-        `family/${A}/map`,
-        `family/${A}/workbooks`,
-        `family/${A}/time`,
-        `family/${A}/reports`,
-        `family/${A}/people`,
-        `family/${A}/settings`,
-      ],
+      [`family/${A}`, `family/${A}/map`, `family/${A}/settings`],
     );
     assert.equal(space.label, "Your family");
   }
@@ -718,4 +801,28 @@ test("D-8: a child's workbooks stay in the family's bar, its Workbooks tab curre
   );
   if (record.space !== "family") throw new Error(record.space);
   assert.equal(record.tabs[0]?.path, `family/${A}/kids/pip`);
+});
+
+test("Q-3: a family's drawer and tabs never offer one feature twice", () => {
+  for (const leaf of [
+    "",
+    "/map",
+    "/workbooks",
+    "/time",
+    "/reports",
+    "/people",
+    "/settings",
+    "/kids/pip",
+    "/kids/pip/pathways",
+    "/kids/wren/inventory",
+  ]) {
+    const space = resolveSpace(
+      { pathname: `/family/${A}${leaf}`, space: "family" },
+      adult(power),
+      { family: familyA },
+    );
+    assert.equal(space.space, "family", leaf);
+    assert.equal(space.space === "family" && space.status, "ready", leaf);
+    assert.deepEqual(repeatsIn(space), [], `/family/${A}${leaf}`);
+  }
 });

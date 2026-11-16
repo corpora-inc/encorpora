@@ -122,7 +122,7 @@
 }
 /* An icon-only control at the edge sits with its mark on the bar's inset,
    as the logo's mark does at the other end; its target reaches past it. */
-.action :global([data-student-sign-out]) {
+.action :global([data-student-sign-out]:not(:has(span))) {
   margin-inline-end: calc((22px - 44px) / 2);
 }
 
@@ -321,5 +321,25 @@
      practice it is) stays. */
   .bar[data-bar="practice"]:not([data-space="family"]) .place {
     display: none;
+  }
+}
+
+/* Short tab groups fit beside the place on tablets and small laptops. */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .bar[data-tabs][data-compact-tabs] {
+    grid-template-columns: auto minmax(0, max-content) minmax(0, 1fr) auto;
+    grid-template-areas: "logo tabs tools action";
+    grid-template-rows: var(--bar-row);
+    column-gap: var(--space-3);
+  }
+  .bar[data-tabs][data-compact-tabs]:has(> .action:empty) {
+    grid-template-columns: auto minmax(0, max-content) minmax(0, 1fr);
+    grid-template-areas: "logo tabs tools";
+  }
+  .bar[data-compact-tabs] .tabsCell {
+    align-items: center;
+  }
+  .bar[data-compact-tabs] .place {
+    max-width: min(32ch, 24vw);
   }
 }

@@ -9,6 +9,7 @@ import type { AuthSession } from "../../auth";
 import type { FamilyPlaces } from "../../../family/projection-contracts";
 import { call, keyFor } from "../school/api";
 import { spaceWords } from "./words";
+import { parentHome } from "../family/parent-home";
 
 /** Every place this account works, in one bounded request (docs/architecture
  * /spaces.md, "Place switcher"). Keyed by the account, so another account's
@@ -310,7 +311,9 @@ export function placeGroups(
   return [
     { id: "family" as const, label: "Family", entries: family },
     { id: "teaching" as const, label: "Teaching", entries: teaching },
-    { id: "practice" as const, label: "Practice", entries: practice },
+    ...(!parentHome(me)
+      ? [{ id: "practice" as const, label: "Practice", entries: practice }]
+      : []),
   ].filter((group) => group.entries.length > 0);
 }
 

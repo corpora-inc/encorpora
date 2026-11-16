@@ -12,7 +12,7 @@ import {
   createRouter,
   RouterProvider,
 } from "@tanstack/react-router";
-import { afterEach, expect, test } from "vitest";
+import { afterEach, expect, test, vi } from "vitest";
 import type { ProgressRecord } from "../../../schools/teacher-contracts";
 import {
   RecordLevels,
@@ -20,10 +20,22 @@ import {
 } from "../../features/school/classes/ProgressRecord";
 import { skillCatalogOptions } from "../../lib/learning-view";
 import { sessionOptions } from "../../lib/query";
-import { areaSkills, areaSourceOf, type AreaSource } from "../AreaLayer";
+import { areaSkills, areaSourceOf } from "../AreaLayer";
 import { LayerHost } from "../LayerHost";
 
-afterEach(cleanup);
+const practice = vi.hoisted(() => ({ allowed: false }));
+vi.mock("../../lib/learning-view", async (original) => ({
+  ...(await original<typeof import("../../lib/learning-view")>()),
+  useLearningView: () => ({
+    session: { data: null },
+    canPractice: practice.allowed,
+    viewOnly: false,
+  }),
+}));
+afterEach(() => {
+  cleanup();
+  practice.allowed = false;
+});
 
 globalThis.ResizeObserver ??= class {
   observe() {}
@@ -146,13 +158,14 @@ test("a level's row opens its area on a real URL; Back closes it", async () => {
   expect(router.state.location.search).toEqual({});
 });
 
-test("the reader who may practice gets one action, focused on the frontier", async () => {
-  const source: AreaSource = { ...areaSourceOf(record), practice: true };
+test("an area offers practice across the area, not only its nearest skill", async () => {
+  practice.allowed = true;
+  const source = areaSourceOf(record);
   renderPage(() => <LayerHost area={source} />, "/?open=area%3Ageometry");
   const action = await screen.findByRole("link", {
-    name: "Practice area of triangles",
+    name: "Practice",
   });
-  expect(action.getAttribute("href")).toBe("/practice?skill=area-of-triangles");
+  expect(action.getAttribute("href")).toBe("/practice?strand=geometry");
 });
 
 test("Overall opens the whole level: every area, each opening in its place", async () => {

@@ -24,7 +24,6 @@ import { EmptyState } from "../../ui/EmptyState";
 import { PrintButton } from "../../ui/PrintButton";
 import { reportable } from "../../../learning/level-check";
 import { RowLink, RowList } from "../../ui/RowList";
-import { ScreenTitle } from "../../ui/ScreenTitle";
 import { CardsScreen } from "../school/classes/CardsScreen";
 import { ClassMap, MapKey } from "../school/classes/ClassMap";
 import { GradebookScreen } from "../school/classes/GradebookScreen";
@@ -172,15 +171,22 @@ const childLink = (family: string, child: { id: string; name: string }) => (
     params={{ _splat: familyHref(family, `kids/${child.id}`) }}
     className={styles.recordName}
     data-map-child={child.id}
+    aria-label={`View ${child.name}’s progress`}
   >
     {child.name}
+    <span className={styles.recordOpen}>
+      View progress
+      <svg viewBox="0 0 16 16" aria-hidden="true">
+        <path d="m6 3 5 5-5 5" />
+      </svg>
+    </span>
   </Link>
 );
 
 /**
- * The Map (`/family/<family>/map`): every child whole, on one scale from
- * kindergarten up, each over their own grade. A child's name opens their
- * page.
+ * Progress comparison (`/family/<family>/map`): each child on one shared
+ * scale, with an explicit link to their record. A one-child family opens
+ * that child’s record directly in the route loader.
  */
 export function FamilyMapScreen() {
   const place = useFamilyPlace();
@@ -223,20 +229,16 @@ export function FamilyMapScreen() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, family, records.map((record) => record.dataUpdatedAt).join()]);
   return (
-    <FamilyFrame place={place} loading={pending}>
+    <FamilyFrame place={place} loading={pending} title="Progress">
       {data && map && (
         <div className={styles.page}>
           {children.length === 0 ? (
             <>
-              <ScreenTitle>Family map</ScreenTitle>
               <NoChildren place={place} />
             </>
           ) : (
             <div className={styles.mapPage}>
               <div className={styles.mapHead}>
-                {/* Named as a class's map is ("Class map"): more than the tab
-                    says, so it shows, and the page starts with its title. */}
-                <ScreenTitle>Family map</ScreenTitle>
                 <MapKey data={map} words={place.words} />
               </div>
               <ClassMap
@@ -281,10 +283,9 @@ function ChildrenTime({ place }: { place: FamilyPlace }) {
   // The family's week, the same figure as Today's.
   const total = data?.today.week.minutes ?? 0;
   return (
-    <FamilyFrame place={place} loading={pending}>
+    <FamilyFrame place={place} loading={pending} title="Practice time">
       {data && (
         <div className={styles.page}>
-          <ScreenTitle>Time</ScreenTitle>
           {children.length === 0 ? (
             <NoChildren place={place} />
           ) : (
@@ -413,10 +414,9 @@ export function FamilyWorkbooksScreen() {
   if (several && (search.several === 1 || search.several === "1") && !kids)
     return <WorkbookStackScreen host={host!} />;
   return (
-    <FamilyFrame place={place} loading={!!kids}>
+    <FamilyFrame place={place} loading={!!kids} title="Workbooks">
       {data && (
         <div className={styles.page}>
-          <ScreenTitle>Workbooks</ScreenTitle>
           {(data.children.length === 0 && <NoChildren place={place} />) || (
             <>
               {several && data.children.length > 1 && (
@@ -503,8 +503,7 @@ function NoClass({ place, what }: { place: FamilyPlace; what: string }) {
             Open report cards
           </Link>
         }
-      >
-      </EmptyState>
+      ></EmptyState>
     </FamilyFrame>
   );
 }
@@ -555,10 +554,9 @@ export function FamilyReportsScreen() {
   // the records arrive with the screen (family-routes).
   const records = useRecords(place, children);
   return (
-    <FamilyFrame place={place}>
+    <FamilyFrame place={place} title="Report cards">
       {data && (
         <div className={styles.page}>
-          <ScreenTitle>Report cards</ScreenTitle>
           {children.length === 0 ? (
             <NoChildren place={place} />
           ) : (
@@ -677,9 +675,7 @@ function GradingPeriods({
       <div className={styles.settingText}>
         <h2 id="reports-periods">Grading periods</h2>
         {shared && (
-          <p className={styles.footnote}>
-            Your tutoring group shares these.
-          </p>
+          <p className={styles.footnote}>Your tutoring group shares these.</p>
         )}
       </div>
       {shared ? (

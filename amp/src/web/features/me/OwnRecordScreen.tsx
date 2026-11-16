@@ -193,7 +193,6 @@ export function OwnRecordScreen() {
     areas,
     objectives: data.record.objectives,
     path: trend.data ?? null,
-    practice: data.learner.active,
   };
   return (
     <OwnPage>

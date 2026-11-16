@@ -63,6 +63,15 @@ export const workbookRequestSchema = z
   .strict();
 export type WorkbookRequest = z.infer<typeof workbookRequestSchema>;
 
+/** A builder preview is not an issued workbook. The request ID follows the
+ * selected draft through issuance and retries; the server assigns its number. */
+export const workbookDraftSchema = workbookRequestSchema
+  .omit({ number: true })
+  .extend({
+    requestId: z.string().uuid(),
+  });
+export type WorkbookDraft = z.infer<typeof workbookDraftSchema>;
+
 export interface WorkbookRecord {
   id: string;
   date: string;

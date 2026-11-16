@@ -41,8 +41,11 @@ const HELP_WORDS: Record<string, string> = {
 };
 
 /** The answer as the practice screen's own outcome, so the problem draws
- * marked exactly as it was after Check. */
+ * marked exactly as it was after Check. A paper mark of right with nothing
+ * typed is drawn as the answer it was marked right for, so the problem never
+ * contradicts its verdict (Q-7). */
 export function replayOutcome(replay: WorkReplayResponse): Outcome {
+  const { paper, correct, response, answer } = replay.outcome;
   return {
     id: replay.item.id,
     problemId: String(replay.problem?.id ?? replay.item.id),
@@ -51,11 +54,28 @@ export function replayOutcome(replay: WorkReplayResponse): Outcome {
     templateId: replay.origin?.templateId ?? "",
     correct: replay.outcome.correct,
     assisted: replay.outcome.assisted,
-    response: replay.outcome.response,
+    response: paper && correct && !response.trim() ? answer : response,
     answer: replay.outcome.answer,
     explanation: replay.outcome.explanation,
     createdAt: replay.item.at,
     ...(replay.outcome.parts ? { parts: replay.outcome.parts } : {}),
+  };
+}
+
+/** The verdict the replay shows, in-app or on paper: a paper mark reads as
+ * Correct or Missed like any answer, with "on paper" said quietly beside the
+ * time (Q-7). */
+export function replayVerdict(
+  replay: Pick<WorkReplayResponse, "item" | "outcome">,
+  own = false,
+): { label: string; tone: ReturnType<typeof resultTone> } {
+  if (replay.item.result === "paper" || replay.outcome.paper)
+    return replay.outcome.correct
+      ? { label: "Correct", tone: "success" }
+      : { label: "Missed", tone: "danger" };
+  return {
+    label: resultLabel(replay.item.result, own ? "self" : "other"),
+    tone: resultTone(replay.item.result),
   };
 }
 
@@ -305,7 +325,7 @@ export function WorkReplay({
               The problem text wasn’t stored.
             </p>
           )}
-          <Facts replay={replay} Answer={Answer} answers />
+          <Facts replay={replay} Answer={Answer} answers own={own} />
           {steps}
         </div>
       </Frame>
@@ -341,7 +361,7 @@ export function WorkReplay({
           review={{
             who: own ? null : who,
             actions: steps,
-            facts: <Facts replay={replay} Answer={Answer} />,
+            facts: <Facts replay={replay} Answer={Answer} own={own} />,
             support: supportWords(replay.help),
           }}
         />
@@ -400,17 +420,17 @@ function When({
   replay: WorkReplayResponse;
   own?: boolean;
 }) {
+  const verdict = replayVerdict(replay, own);
   return (
     <span className={styles.status}>
       <span className={styles.when}>
         {own ? "" : `${replay.student.first} · `}
         {shortDay(replay.item.day)}
         {replay.item.at ? `, ${clockTime(replay.item.at)}` : ""}
+        {replay.outcome.paper ? " · On paper" : ""}
         {replay.item.review ? " · Spaced review" : ""}
       </span>
-      <Badge tone={resultTone(replay.item.result)}>
-        {resultLabel(replay.item.result)}
-      </Badge>
+      <Badge tone={verdict.tone}>{verdict.label}</Badge>
     </span>
   );
 }
@@ -477,10 +497,13 @@ function Facts({
   replay,
   Answer,
   answers = false,
+  own = false,
 }: {
   replay: WorkReplayResponse;
   Answer: AnswerLink;
   answers?: boolean;
+  /** The reader's own answer: its tries speak to them. */
+  own?: boolean;
 }) {
   const { item } = replay;
   const help = helpWords(replay.help, replay.outcome.assisted);
@@ -526,10 +549,12 @@ function Facts({
         <dt>Help</dt>
         <dd>{help}</dd>
       </div>
-      {replay.seconds !== null && (
+      {/* The time on this problem: from the answer before, in one sitting.
+          Paper is entered later, so it has none. */}
+      {replay.seconds !== null && !replay.outcome.paper && (
         <div>
           <dt>Time</dt>
-          <dd>{duration(replay.seconds)} after the answer before</dd>
+          <dd>{duration(replay.seconds)}</dd>
         </div>
       )}
       {replay.tries.length > 1 && (
@@ -538,7 +563,7 @@ function Facts({
           <dd>
             <ol className={styles.tries}>
               {replay.tries.map((entry) => {
-                const label = `${entry.at ? `${shortDay(entry.at.slice(0, 10))}, ${clockTime(entry.at)}` : "Earlier"}: ${resultLabel(entry.result)}`;
+                const label = `${entry.at ? `${shortDay(entry.at.slice(0, 10))}, ${clockTime(entry.at)}` : "Earlier"}: ${entry.result === "paper" ? "On paper" : resultLabel(entry.result, own ? "self" : "other")}`;
                 return (
                   <li key={entry.id}>
                     {entry.id === item.id ? (
@@ -550,24 +575,6 @@ function Facts({
                 );
               })}
             </ol>
-          </dd>
-        </div>
-      )}
-      {replay.outcome.paper && (
-        <div>
-          <dt>Source</dt>
-          <dd>Marked on paper by an adult</dd>
-        </div>
-      )}
-      {replay.source === "rebuilt" && (
-        <div>
-          <dt>Drawn</dt>
-          <dd>
-            Again from its template
-            {replay.origin?.version
-              ? ` (version ${replay.origin.version})`
-              : ""}{" "}
-            and seed
           </dd>
         </div>
       )}

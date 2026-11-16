@@ -534,3 +534,23 @@ test("a tutor's class is their family side before any child of their own", () =>
   expect(placesFor(tutor)).toEqual(["home"]);
   expect(homePlace(tutor, null)).toBe("home");
 });
+
+test("trying personal practice never replaces a parent's family home", () => {
+  const adultPractice = {
+    eligible: false,
+    learner: { id: "own", name: "Student", active: true },
+  };
+  const parent = me({
+    adultPractice,
+    learners: [
+      {
+        id: "child",
+        name: "Child",
+        birthYear: 2016,
+        entitlement: { active: true, plan: "annual", endsAt: null },
+      },
+    ],
+  });
+  expect(homePlace(parent, "me")).toBe("home");
+  expect(homePlace(me({ adultPractice }), "me")).toBe("me");
+});

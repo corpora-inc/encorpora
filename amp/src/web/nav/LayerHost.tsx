@@ -29,12 +29,14 @@ import { LayerBackProvider } from "../ui/LayerControls";
 import { SkillLayer } from "./SkillLayer";
 import { AreaLayer, areaSourceOf, OVERALL, type AreaSource } from "./AreaLayer";
 import { strandNames } from "../BirthYearPrompt";
+import { CurriculumPractice } from "../features/practice/CurriculumPractice";
 
 /**
  * The layers open over a page (`?open=`, nav/entities.ts), drawn in order:
  * each over the one before, the page under them all still mounted. Only
- * the top one takes keys and X; closing it is Back to where it was opened
- * (lib/return-to.ts), and its header names the layer it returns to.
+ * the top one takes keys and X. Its X and Escape put it down, one layer
+ * (Q-8): the one under it shows again, or the page; Back and Forward walk
+ * the same steps (lib/return-to.ts). The scrim puts the whole stack away.
  *
  * A school or class frame passes its `org`: every kind opens. Own practice
  * (Pathways) passes none: a skill and a lesson open, never a student, and a
@@ -63,7 +65,7 @@ export function LayerHost({
   /** In a skill: what this page offers with it (try a problem). */
   skillActions?: (skill: string) => ReactNode;
 }) {
-  const { stack, close, closeAll, closeToDepth } = useLayers();
+  const { stack, close: pop, closeAll, closeToDepth } = useLayers();
   const shown = (
     org ? stack : stack.filter((entity) => !staffOnly(entity.kind))
   ).filter((entity) => !allow || allow(entity));
@@ -77,10 +79,10 @@ export function LayerHost({
       setDepth(Math.max(1, shown.length));
   }, [depth, shown.length]);
   return shown.slice(0, depth).map((entity, index) => (
-    // Each layer's back steps one layer; its close, Escape and scrim put
-    // the whole stack away, back to the page or to an answer replay below.
+    // Each layer's X and Escape step down one layer; its scrim puts the
+    // whole stack away, back to the page or to an answer replay below.
     <LayerBackProvider
-      value={close}
+      value={pop}
       key={
         entity.kind === "work" || entity.kind === "own-work"
           ? `${index}:work`
@@ -98,9 +100,10 @@ export function LayerHost({
         above={shown.slice(index + 1)}
         org={org}
         learner={learner}
+        pop={pop}
         close={() => {
-          // The whole stack away, except over an answer replay: a lesson
-          // opened from the replay closes back to it (closeDepth).
+          // The scrim: the whole stack away, except over an answer replay:
+          // a lesson opened from the replay closes back to it (closeDepth).
           const depth = closeDepth(stack, stack.indexOf(entity));
           if (depth) closeToDepth(depth);
           else closeAll();
@@ -120,6 +123,7 @@ function Layer({
   org,
   learner,
   close,
+  pop,
   lessonActions,
   skillActions,
   area,
@@ -130,15 +134,19 @@ function Layer({
   org?: string;
   learner?: string;
   close: () => void;
+  /** One layer down: an answer replay's own X and Escape. */
+  pop: () => void;
   lessonActions?: (lesson: string, skill?: string) => ReactNode;
   skillActions?: (skill: string) => ReactNode;
   area?: AreaSource;
 }) {
   const classId = (useParams({ strict: false }) as { class?: string }).class;
-  // A replayed answer's own X steps back one layer, as it always has.
+  // A replayed answer's own X steps back one layer, as every layer's does.
   const search = useSearch({ strict: false }) as { skill?: unknown };
-  // Where X returns: the layer under this one, named quietly in its header.
+  // The layer under this one: where X returns (the lesson's recovery names
+  // it; no header draws it twice).
   const back = useLayerTitle(below.at(-1));
+  const title = useLayerTitle(entity);
   // A replayed answer fills the screen: a sheet under it waits closed
   // (Back reopens it), so only one thing ever holds focus.
   const underAnswer = above.some(
@@ -170,7 +178,9 @@ function Layer({
           onClose={close}
           back={back}
         >
-          {skillActions?.(entity.id)}
+          {skillActions?.(entity.id) ?? (
+            <CurriculumPractice filter={{ skill: entity.id }} />
+          )}
         </SkillLayer>
       );
     }
@@ -189,7 +199,8 @@ function Layer({
               onOpenChange={(open) => {
                 if (!open) close();
               }}
-              title="Explore a problem type"
+              title={title ?? "Lesson"}
+              compactHeader
               fullOnPhone
               tall
               wide
@@ -207,8 +218,10 @@ function Layer({
               backLabel={backLabel}
               back={back}
               aboveLayers
-              actions={
-                lessonActions && ((skill) => lessonActions(entity.id, skill))
+              actions={(skill) =>
+                lessonActions?.(entity.id, skill) ?? (
+                  <CurriculumPractice filter={{ skill, template: entity.id }} />
+                )
               }
             />
           </Suspense>
@@ -245,7 +258,7 @@ function Layer({
           student=""
           attempt={entity.id}
           skill={workSkill(search.skill)}
-          layer={{ close, covered: above.length > 0 }}
+          layer={{ close: pop, covered: above.length > 0 }}
         />
       );
     case "work": {
@@ -255,7 +268,7 @@ function Layer({
           student={student}
           attempt={attempt}
           skill={workSkill(search.skill)}
-          layer={{ close, covered: above.length > 0 }}
+          layer={{ close: pop, covered: above.length > 0 }}
         />
       );
     }

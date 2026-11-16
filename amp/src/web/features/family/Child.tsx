@@ -23,7 +23,6 @@ import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { ActionRow } from "../../ui/ActionRow";
 import { YearField } from "../../ui/YearField";
-import { TryAsStudent } from "../profiles/TryAsStudent";
 import { PrintButton } from "../../ui/PrintButton";
 import { downloadPdf, paperFormat } from "../../lib/pdf-download";
 import { SatMathFocus } from "../practice/SatMathFocus";
@@ -32,7 +31,6 @@ import { rememberContinuation } from "../continue/memory";
 import {
   RecordLevels,
   RecordObjectives,
-  RecordWeeks,
   RecordWork,
 } from "../school/classes/ProgressRecord";
 import { useHandOver } from "../school/classes/today/use-hand-over";
@@ -48,6 +46,7 @@ import {
 } from "./FamilyFrame";
 import { AccessFact, ChildAction, WeekFactsOf } from "./Today";
 import styles from "./Family.module.css";
+import { ChildActivity } from "./ChildActivity";
 
 /**
  * A child's page (`/family/<family>/kids/<learner>`): the same record a
@@ -113,7 +112,7 @@ export function ChildScreen() {
         </EmptyState>
       </FamilyFrame>
     );
-  // Their class person, for their answers and a copy of their levels.
+  // The roster person identifies this child's recorded answers.
   const person =
     child && place.own
       ? child.classes.find((entry) => entry.id === place.own!.id)?.personId
@@ -122,78 +121,74 @@ export function ChildScreen() {
   return (
     <FamilyFrame
       place={place}
+      title={child?.name}
+      description={child?.birthYear ? `Born ${child.birthYear}` : undefined}
       loading={!!child?.capabilities.readProgress && progress.isPending}
       area={record ? areaSourceOf(record) : undefined}
     >
       {data && child && (
         <div className={styles.page} data-child-page={child.id}>
-          <header className={styles.childHead}>
-            <div className={styles.head}>
-              <h1>{child.name}</h1>
-              {child.birthYear && (
-                <p className={styles.sub}>Born {child.birthYear}</p>
+          <ActionRow>
+            <ChildAction
+              child={child}
+              family={family}
+              accountId={session.accountId}
+              starting={starting}
+              onPracticeHere={(id) => void handOver(id)}
+              primary
+            />
+            {child.capabilities.readWorkbooks && (
+              <Link
+                to="/learners/$learnerId/workbooks"
+                params={{ learnerId: child.id }}
+                className={buttonClass("secondary")}
+              >
+                Workbooks
+              </Link>
+            )}
+            {/* While free problems remain, the plan is one step away. */}
+            {!child.access.hasAccess &&
+              child.access.canPractice &&
+              child.capabilities.continuePurchase &&
+              child.paths.continue && (
+                <Link
+                  to="/continue/$learnerId"
+                  params={{ learnerId: child.id }}
+                  className={buttonClass("secondary")}
+                  data-continue={child.id}
+                  onClick={() =>
+                    rememberContinuation({
+                      accountId: session.accountId,
+                      learnerId: child.id,
+                      returnTo: `/${familyHref(family, `kids/${child.id}`)}`,
+                    })
+                  }
+                >
+                  Continue with AMP
+                </Link>
               )}
-            </div>
-            <ActionRow>
-              <ChildAction
-                child={child}
-                family={family}
-                accountId={session.accountId}
-                starting={starting}
-                onPracticeHere={(id) => void handOver(id)}
-                primary
-              />
-              {/* While free problems remain, the plan is one step away. */}
-              {!child.access.hasAccess &&
-                child.access.canPractice &&
-                child.capabilities.continuePurchase &&
-                child.paths.continue && (
-                  <Link
-                    to="/continue/$learnerId"
-                    params={{ learnerId: child.id }}
-                    className={buttonClass("secondary")}
-                    data-continue={child.id}
-                    onClick={() =>
-                      rememberContinuation({
-                        accountId: session.accountId,
-                        learnerId: child.id,
-                        returnTo: `/${familyHref(family, `kids/${child.id}`)}`,
-                      })
-                    }
-                  >
-                    Continue with AMP
-                  </Link>
-                )}
-              {/* A progress report once there is progress to report; the
+            {/* A progress report once there is progress to report; the
                   record arrives with the page (family-routes), so it never
                   appears late. */}
-              {/* Decided when the page opens: a first answer while it is
+            {/* Decided when the page opens: a first answer while it is
                   open takes the bar in place and adds nothing above it. */}
-              {child.capabilities.readProgress &&
-                hasReport &&
-                openedUnmeasured.current === false && (
-                  <PrintButton
-                    variant="secondary"
-                    download={() =>
-                      downloadPdf({
-                        path: `${child.paths.progress.replace(/^\/api\/v1/, "")}.pdf?format=${paperFormat()}`,
-                        token: session.token,
-                        name: `amp-progress-report-${child.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}.pdf`,
-                      })
-                    }
-                  >
-                    Progress report
-                  </PrintButton>
-                )}
-              {person && (
-                <TryAsStudent
-                  session={session}
-                  personId={person}
-                  label={`Try problems as ${child.name}`}
-                />
+            {child.capabilities.readProgress &&
+              hasReport &&
+              openedUnmeasured.current === false && (
+                <PrintButton
+                  variant="secondary"
+                  download={() =>
+                    downloadPdf({
+                      path: `${child.paths.progress.replace(/^\/api\/v1/, "")}.pdf?format=${paperFormat()}`,
+                      token: session.token,
+                      name: `amp-progress-report-${child.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}.pdf`,
+                    })
+                  }
+                >
+                  Progress report
+                </PrintButton>
               )}
-            </ActionRow>
-          </header>
+          </ActionRow>
           <section aria-labelledby="child-week" className={styles.section}>
             <h2 id="child-week" className={styles.label}>
               This week
@@ -209,7 +204,7 @@ export function ChildScreen() {
                 aria-labelledby="child-levels"
                 className={styles.section}
               >
-                <h2 id="child-levels">Where {child.name} is</h2>
+                <h2 id="child-levels">Current estimates</h2>
                 <RecordLevels
                   plain
                   record={record}
@@ -218,10 +213,7 @@ export function ChildScreen() {
                   holdFirst={!!openedUnmeasured.current}
                 />
               </section>
-              <section aria-labelledby="child-weeks" className={styles.section}>
-                <h2 id="child-weeks">Time, by week</h2>
-                <RecordWeeks record={record} />
-              </section>
+              <ChildActivity place={place} learner={child.id} record={record} />
               <section
                 aria-labelledby="child-skills"
                 className={styles.section}
@@ -258,15 +250,6 @@ export function ChildScreen() {
               <section aria-labelledby="child-work" className={styles.section}>
                 <div className={styles.sectionHead}>
                   <h2 id="child-work">Recent work</h2>
-                  {child.capabilities.readWorkbooks && (
-                    <Link
-                      to="/learners/$learnerId/workbooks"
-                      params={{ learnerId: child.id }}
-                      className={buttonClass("secondary")}
-                    >
-                      Workbooks
-                    </Link>
-                  )}
                 </div>
                 <RecordWork
                   record={record}
@@ -477,6 +460,7 @@ function ChildSettings({
             <div className={styles.settingAction}>
               <YearField
                 label={`Birth year, ${child.name}`}
+                earlier
                 value={child.birthYear ? String(child.birthYear) : ""}
                 placeholder="Choose a year"
                 disabled={busy || !caps.changeBirthYear}

@@ -1,0 +1,195 @@
+.page {
+  width: min(100%, 760px);
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 32px 24px 48px;
+  color: var(--color-on-surface);
+}
+.back {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  color: var(--color-primary);
+}
+.heading {
+  display: block;
+  margin: 12px 0 24px;
+}
+.heading h1 {
+  font-size: clamp(30px, 4vw, 42px);
+  line-height: 1.15;
+  margin: 0 0 16px;
+}
+.heading p,
+.product p {
+  margin: 0;
+  line-height: 1.55;
+  color: var(--color-muted-text);
+}
+.form {
+  display: grid;
+  gap: 16px;
+}
+.form label {
+  min-width: 0;
+}
+.form select {
+  width: 100%;
+  font: inherit;
+  text-overflow: ellipsis;
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+}
+.form > button {
+  justify-self: start;
+  min-width: 220px;
+}
+.product {
+  display: grid;
+  gap: 16px;
+}
+.product h2 {
+  font-size: 22px;
+  margin: 0;
+}
+.product [role="radiogroup"] {
+  margin: 0;
+}
+.product [role="radio"] {
+  min-width: 0;
+}
+.hint {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-muted-text);
+  margin: -20px 0 0;
+}
+.note {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-muted-text);
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.summary {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  border-top: 1px solid var(--color-border);
+  padding-top: 20px;
+  font-size: 20px;
+}
+.summary p {
+  grid-column: 1 / -1;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-muted-text);
+  margin: 0;
+}
+.feedback {
+  min-height: 1.5em;
+  margin: -12px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.support {
+  border-top: 1px solid var(--color-border);
+  padding-top: 24px;
+  margin: 36px 0 0;
+  font-size: 15px;
+  color: var(--color-muted-text);
+}
+.support a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-primary);
+  user-select: text;
+}
+.ready {
+  display: grid;
+  justify-items: start;
+  gap: 18px;
+}
+.ready h2,
+.ready p,
+.ready h3 {
+  margin: 0;
+  line-height: 1.5;
+}
+.ready h2 {
+  font-size: 28px;
+  scroll-margin-top: 120px;
+}
+.ready h2:focus {
+  outline: none;
+}
+.ready p {
+  overflow-wrap: anywhere;
+}
+.total {
+  font-size: 28px;
+  font-weight: 700;
+}
+.total span {
+  font-size: 16px;
+  font-weight: 400;
+}
+.next {
+  display: grid;
+  justify-items: start;
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border);
+}
+.history {
+  margin-top: 36px;
+  border-top: 1px solid var(--color-border);
+  padding-top: 20px;
+}
+.history h2 {
+  font-size: 24px;
+  margin: 0 0 20px;
+}
+.historyItem {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.historyItem h3 {
+  font-size: 18px;
+  margin: 0;
+}
+.historyItem p {
+  margin: 8px 0;
+  line-height: 1.5;
+}
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.actions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+@media (max-width: 480px) {
+  .page {
+    padding: 16px 16px 32px;
+  }
+  .heading {
+    display: block;
+    margin: 12px 0 24px;
+  }
+  .form > button,
+  .ready > a {
+    width: 100%;
+  }
+  .form {
+    gap: 16px;
+  }
+  .hint {
+    margin-top: -16px;
+  }
+}

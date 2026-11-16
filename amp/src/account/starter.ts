@@ -27,13 +27,14 @@ export type StarterChoice = (typeof starterChoices)[number];
 export const MAX_STARTER_CHILDREN = 6;
 export const MAX_STARTER_STUDENTS = 30;
 
-/** A school-age birth year: the starter's picker offers ages 4 to 19. */
+/** A family learner can be an older child or an adult dependent. The quick
+ * picker offers school years; an earlier year is entered exactly. */
 export const childBirthYear = z
   .number()
   .int()
   .refine((year) => {
     const now = new Date().getUTCFullYear();
-    return year >= now - 21 && year <= now - 2;
+    return year >= 1900 && year <= now - 2;
   }, "A child’s birth year");
 /** A parent's own child: the name the parent enters, or blank. */
 const child = z.strictObject({

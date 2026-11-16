@@ -315,6 +315,15 @@ export async function activateGiftInTransaction(
     };
   }
   const now = new Date();
+  // The temporary access window can end before the invoice's payment window.
+  // Keep an otherwise valid invoice assignable without restarting free access.
+  if (
+    gift.claim_by &&
+    gift.claim_by <= now &&
+    gift.source === "funded-pending" &&
+    options.fundingInvoiceId
+  )
+    return null;
   if (gift.claim_by && gift.claim_by <= now)
     throw new AccessGiftError(409, "gift_unavailable");
   if (gift.covers === "family") {

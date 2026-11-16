@@ -5,7 +5,7 @@ import {
 } from "../account/adult-access.js";
 import { prepareClassWalletProvision } from "./classwallet.js";
 import { timelyClassWalletPayment } from "./timely-settlement.js";
-import { purchaseConsentSatisfied } from "../server/account-access.js";
+import { fundedLearningAllowed } from "./learning-permission.js";
 import { recordFundedCampaignEvent } from "../analytics/funded-campaign.js";
 import type { Pool, PoolClient } from "pg";
 import { z } from "zod";
@@ -219,22 +219,23 @@ export async function provisionFundingRequest(
         term.endsAt !== fundedTermEnd(term.startsAt, request.offer.termMonths)
       )
         throw new FundingPurchaseError(400, "funded_activation_term_required");
-      // A child needs the parent's verified consent; the account holder's own
-      // adult learner learns on their own terms.
+      // A paid invoice preserves its learner's existing permission, including
+      // restricted parent-entry learning. It never supplies consent.
+      const learner = await client.query(
+        "SELECT id FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL AND NOT simulation FOR SHARE",
+        [request.learnerId, request.accountId],
+      );
+      if (!learner.rowCount)
+        throw new FundingPurchaseError(404, "learner_not_found");
       if (
-        !(await purchaseConsentSatisfied(
+        !(await fundedLearningAllowed(
           client,
+          request.id,
           request.accountId,
           request.learnerId,
         ))
       )
         throw new FundingPurchaseError(403, "verified_consent_required");
-      const learner = await client.query(
-        "SELECT id FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL FOR SHARE",
-        [request.learnerId, request.accountId],
-      );
-      if (!learner.rowCount)
-        throw new FundingPurchaseError(404, "learner_not_found");
       if (
         request.status === "cancelled" ||
         (Date.parse(request.expiresAt) <= Date.now() && !timelySettlement)

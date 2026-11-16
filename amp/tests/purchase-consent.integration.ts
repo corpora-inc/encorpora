@@ -93,6 +93,18 @@ async function setup(pool: Pool) {
     return { id: `cs_${id}`, url: `https://checkout.stripe.test/${id}` };
   };
   gateway.checkoutStatus = async (id) => sessions.get(id)!;
+  gateway.client.checkout.sessions.expire = async (id) => {
+    const session = sessions.get(id)!;
+    assert.equal(session.status, "open");
+    assert.equal(session.subscriptionId, undefined);
+    sessions.set(id, { status: "expired", url: null });
+    return {
+      id,
+      status: "expired",
+      livemode: false,
+      subscription: null,
+    } as never;
+  };
   gateway.annualPayment = async (id) => {
     const p = payments.get(id);
     if (!p) throw new Error("unsettled");
@@ -232,6 +244,108 @@ async function setup(pool: Pool) {
     created: () => created,
   };
 }
+
+for (const enrollment of [true, false])
+  test(
+    `switching an abandoned ${enrollment ? "enrollment" : "learner"} checkout expires its old session, preserving completed payments and retry safety`,
+    enabled,
+    () =>
+      fixture(async (f) => {
+        async function open(
+          account: string,
+          interval: "year" | "month",
+          requestId = randomUUID(),
+        ) {
+          const learnerId = enrollment ? null : `${account}-adult`;
+          if (learnerId)
+            await f.pool.query(
+              "INSERT INTO amp_learners(id,account_id,name,adult) VALUES($1,$2,'Adult',true) ON CONFLICT DO NOTHING",
+              [learnerId, account],
+            );
+          await f.billing.checkout(
+            account,
+            learnerId,
+            requestId,
+            interval,
+            enrollment ? f.acknowledge : undefined,
+            undefined,
+            undefined,
+            annualOffer(f.config, interval).id,
+          );
+          return (
+            await f.pool.query(
+              "SELECT * FROM amp_stripe_checkouts WHERE account_id=$1 AND NOT closed",
+              [account],
+            )
+          ).rows[0];
+        }
+        const originalRequest = randomUUID();
+        const original = await open("switch", "year", originalRequest);
+        const [monthly, same] = await Promise.all([
+          open("switch", "month"),
+          open("switch", "month"),
+        ]);
+        assert.equal(monthly.id, same.id);
+        assert.notEqual(monthly.id, original.id);
+        assert.equal(f.sessions.get(original.session_id)?.status, "expired");
+        assert.equal(
+          f.created(),
+          2,
+          "simultaneous plan changes share one replacement",
+        );
+        const annual = await open("switch", "year");
+        assert.equal(f.sessions.get(monthly.session_id)?.status, "expired");
+        assert.equal(f.created(), 3);
+        await assert.rejects(
+          open("switch", "year", originalRequest),
+          /checkout_request_conflict/,
+        );
+        f.settle(annual);
+        await assert.rejects(
+          open("switch", "month"),
+          /subscription_already_started/,
+        );
+        assert.equal(f.created(), 3, "completed payment is never replaced");
+
+        const race = await open("race", "year");
+        const expire = f.gateway.client.checkout.sessions.expire;
+        f.gateway.client.checkout.sessions.expire = async () => {
+          f.settle(race);
+          throw new Error("provider says payment completed during expiry");
+        };
+        await assert.rejects(
+          open("race", "month"),
+          /payment completed during expiry/,
+        );
+        assert.equal(
+          (
+            await f.pool.query(
+              "SELECT closed FROM amp_stripe_checkouts WHERE id=$1",
+              [race.id],
+            )
+          ).rows[0].closed,
+          false,
+        );
+        assert.equal(f.created(), 4);
+
+        f.gateway.client.checkout.sessions.expire = expire;
+        const ambiguous = await open("retry", "year");
+        f.gateway.client.checkout.sessions.expire = async (...args) => {
+          await expire(...args);
+          throw new Error("expiry response lost");
+        };
+        await assert.rejects(open("retry", "month"), /expiry response lost/);
+        assert.equal(f.sessions.get(ambiguous.session_id)?.status, "expired");
+        f.gateway.client.checkout.sessions.expire = expire;
+        const recovered = await open("retry", "month");
+        assert.notEqual(recovered.id, ambiguous.id);
+        assert.equal(
+          f.created(),
+          6,
+          "retry replaces only the provider-expired session",
+        );
+      }),
+  );
 
 test(
   "adult-only purchase: concurrent checkout, no child before settlement, immediate consent, race-safe assignment, replay and monthly contracts",

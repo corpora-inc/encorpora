@@ -70,7 +70,7 @@ test("a lesson whose chunk fails to load fails in its own sheet, and the page st
     </QueryClientProvider>,
   );
   const sheet = await screen.findByRole("dialog", {
-    name: "Explore a problem type",
+    name: "Lesson",
   });
   expect(sheet.textContent).toContain(
     "The lesson could not be opened. Retry it, or reload the page.",

@@ -78,7 +78,7 @@ export const approveSchema = z.strictObject({
     .int()
     .refine((year) => {
       const now = new Date().getUTCFullYear();
-      return year >= now - 21 && year <= now - 2;
+      return year >= 1900 && year <= now - 2;
     }, "A child’s birth year")
     .optional(),
 });

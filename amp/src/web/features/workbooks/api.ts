@@ -4,7 +4,7 @@ import { request } from "../../lib/api";
 import { AppError } from "../../lib/AppError";
 import {
   workbookAreasSchema,
-  type WorkbookChoicesInput,
+  type WorkbookDraft,
   workbookResultsSchema,
   type WorkbookResultEntry,
   workbookHistorySchema,
@@ -86,42 +86,29 @@ export const workbookAreasOptions = (session: AuthSession, learnerId: string) =>
     staleTime: 5 * 60_000,
   });
 
-/** Same date, number and length return the stored workbook, so this is safe
- * to repeat: it reads the workbook, making it the first time (with the
- * choices given; a stored workbook keeps its own). */
-export const workbookOptions = (
+/** Preparing or changing a draft never issues a workbook or spends allowance. */
+export const workbookPreviewOptions = (
   session: AuthSession,
   learnerId: string,
-  input: {
-    date: string;
-    number: number;
-    minutes: WorkbookMinutes;
-    paper: WorkbookPaper;
-    choices: WorkbookChoicesInput;
-  },
+  input: WorkbookDraft,
 ) =>
   queryOptions({
-    queryKey: [...workbooksKey(session, learnerId), "workbook", input],
+    queryKey: [...workbooksKey(session, learnerId), "preview", input],
     queryFn: ({ signal }) =>
-      request(workbookPath(learnerId), workbookSummarySchema, {
+      request(`${workbookPath(learnerId)}/preview`, workbookSummarySchema, {
         token: session.token,
         signal,
         body: input,
       }),
   });
 
-/** The next workbook for the date ("Roll another"), with these choices. */
-export function anotherWorkbook(
+/** Download and Enter results issue the chosen draft once, including retries. */
+export function issueWorkbook(
   session: AuthSession,
   learnerId: string,
-  input: {
-    date: string;
-    minutes: WorkbookMinutes;
-    paper: WorkbookPaper;
-    choices: WorkbookChoicesInput;
-  },
+  input: WorkbookDraft,
 ) {
-  return request(workbookPath(learnerId), workbookSummarySchema, {
+  return request(`${workbookPath(learnerId)}/issue`, workbookSummarySchema, {
     token: session.token,
     body: input,
   });

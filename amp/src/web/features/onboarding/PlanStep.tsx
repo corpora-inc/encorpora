@@ -1,4 +1,3 @@
-import { SupportHelp } from "../support/SupportHelp";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Link, Navigate, useSearch } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
@@ -6,7 +5,6 @@ import { signOut, type AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
 import { chosenPlan, forgetPlanChoice } from "../../lib/pending-trial";
 import { Button, buttonClass } from "../../ui/Button";
-import { Checkbox } from "../../ui/Checkbox";
 import { FrameBrand, frameCard } from "../../ui/PageFrame";
 import { Toast } from "../../ui/Toast";
 import {
@@ -75,8 +73,13 @@ export function PlanStep({
       chosenPlan() ??
       "year",
   );
-  const [acknowledged, setAcknowledged] = useState<string | null>(null);
   const requests = useRef<Partial<Record<"year" | "month", string>>>({});
+  const [changedPlan, setChangedPlan] = useState(
+    !!initialInterval ||
+      search.interval === "month" ||
+      search.interval === "year" ||
+      !!chosenPlan(),
+  );
   useEffect(() => track("plan_view"), []);
   // Back from Stripe restores this page from the browser cache: re-read the
   // enrollment and drop the finished "opening checkout" state.
@@ -189,14 +192,13 @@ export function PlanStep({
         </div>
       </Frame>
     );
-  // An open checkout fixes the plan. With a verified Stripe link it resumes;
-  // without one (Stripe failed after the reservation) the same plan retries.
+  // Keep an abandoned plan selected until the parent chooses another. The
+  // server safely closes its open Stripe session when a new plan is requested.
   const pending = phase === "checkout-open" ? purchase : null;
   const resume = pending?.url ? safeCheckout(pending.url) : null;
-  const open = resume ? pending : null;
-  const chosen = pending?.interval ?? interval;
+  const chosen = changedPlan ? interval : (pending?.interval ?? interval);
+  const open = resume && pending?.interval === chosen ? pending : null;
   const offer = plans.find((entry) => entry.interval === chosen) ?? plans[0]!;
-  const agreed = acknowledged === digest;
   return (
     <Frame key="ready">
       <Toast
@@ -213,10 +215,12 @@ export function PlanStep({
         offers={plans}
         extra={offers.data?.extraOffers}
         interval={offer.interval}
-        disabled={!!pending || checkout.isPending}
+        disabled={checkout.isPending}
         onChange={(next) => {
           track("plan_select", { interval: next });
           chooseInterval(next);
+          setChangedPlan(true);
+          delete requests.current[next];
           checkout.reset();
         }}
       />
@@ -231,7 +235,10 @@ export function PlanStep({
             <Button
               variant="primary"
               onClick={() => {
-                if (resume) window.location.assign(resume);
+                if (resume) {
+                  onCheckout?.();
+                  window.location.assign(resume);
+                }
               }}
             >
               Resume checkout
@@ -240,18 +247,26 @@ export function PlanStep({
         </>
       ) : (
         <>
-          <Checkbox
-            checked={agreed}
-            disabled={checkout.isPending}
-            onChange={(checked) => setAcknowledged(checked ? digest : null)}
-          >
-            I am this learner’s parent or legal guardian. I have read the parent
-            notice and agree to it.
-          </Checkbox>
+          {/* The checkout action is the affirmative response, with the notice
+              visible before it. No separate checkbox is required by
+              16 CFR 312.5(a)(1), (b)(2)(ii); payment verification stays server-owned. */}
+          <p className={styles.fine}>
+            By continuing, I confirm I’m this learner’s parent or guardian and
+            agree to AMP’s use of their learning information described above and
+            the{" "}
+            <a
+              href="https://corpora.inc/legal/terms/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              terms of use
+            </a>
+            .
+          </p>
           <div className={styles.actions}>
             <Button
               variant="primary"
-              disabled={!agreed || checkout.isPending}
+              disabled={checkout.isPending}
               onClick={() => {
                 track("checkout_start", { interval: offer.interval });
                 const requestId = (requests.current[offer.interval] ??=
@@ -274,7 +289,6 @@ export function PlanStep({
                         ["validation", "permission"].includes(error.kind)
                       ) {
                         delete requests.current[offer.interval];
-                        setAcknowledged(null);
                       }
                     },
                   },
@@ -283,7 +297,7 @@ export function PlanStep({
             >
               {checkout.isPending || checkout.isSuccess
                 ? "Opening secure checkout…"
-                : "Continue to secure checkout"}
+                : "Continue to Stripe"}
             </Button>
           </div>
           <p className={styles.fine}>
@@ -293,7 +307,6 @@ export function PlanStep({
           </p>
         </>
       )}
-      <SupportHelp context="plans" contact={false} />
     </Frame>
   );
 }

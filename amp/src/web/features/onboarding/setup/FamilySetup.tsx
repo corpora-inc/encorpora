@@ -276,7 +276,7 @@ function usePracticeHere(session: AuthSession, kind: SetupKind, today: string) {
     );
     setupStep("ready", "complete", kind);
     flush(true);
-    await finish(grant, true, today);
+    await finish(grant, true, today, undefined, learnerId);
   };
 }
 
@@ -710,7 +710,8 @@ function People({
                   <span className={styles.fixedYear}>{row.year || "—"}</span>
                 ) : (
                   <YearField
-                    label={`Birth year, ${row.label}`}
+                    label={`Birth year, ${row.name.trim() || row.label}`}
+                    earlier
                     placeholder="Choose"
                     value={row.year}
                     disabled={disabled}

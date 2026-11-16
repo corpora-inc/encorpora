@@ -1,0 +1,260 @@
+.page {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 808px;
+  margin: 0 auto;
+  padding: 32px 24px 56px;
+  display: grid;
+  gap: 32px;
+  color: var(--color-on-surface);
+}
+.heading {
+  display: grid;
+  gap: 8px;
+}
+.heading h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 44px);
+  font-weight: 400;
+  line-height: 1.15;
+}
+.page p {
+  margin: 0;
+  line-height: 1.5;
+}
+.heading p,
+.muted,
+.support {
+  color: var(--color-muted-text);
+}
+.section {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+.section h2,
+.funding h2 {
+  margin: 0;
+  font-family: inherit;
+  font-size: 21px;
+  font-weight: 650;
+  line-height: 1.3;
+}
+.section h3 {
+  margin: 0;
+  font-size: 17px;
+  font-family: inherit;
+  font-weight: 650;
+  line-height: 1.4;
+}
+.sectionHeading,
+.planRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.plans,
+.receipts,
+.dates {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.plans > li {
+  border-bottom: 1px solid var(--color-border);
+  padding: 20px 0;
+}
+.plans > li:first-child {
+  border-top: 1px solid var(--color-border);
+}
+.planRow > div {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+.planRow p {
+  color: var(--color-muted-text);
+  font-size: 15px;
+}
+.planRow a {
+  flex-shrink: 0;
+}
+.dates {
+  margin-top: 12px;
+  color: var(--color-muted-text);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.funding {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  background: var(--color-surface-sunken);
+}
+.funding > div {
+  display: grid;
+  gap: 8px;
+}
+.funding p {
+  color: var(--color-muted-text);
+  font-size: 15px;
+}
+.receipts li {
+  border-bottom: 1px solid var(--color-border);
+}
+.receipts button {
+  width: 100%;
+  min-height: 76px;
+  padding: 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+.receipts button > span:first-child {
+  display: grid;
+  gap: 4px;
+}
+.receipts button small {
+  font-size: 14px;
+  color: var(--color-muted-text);
+}
+.receipts button > span:last-child {
+  white-space: nowrap;
+}
+.receipts button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+.receiptSummary {
+  display: grid;
+  gap: 8px;
+}
+.receiptSummary .amount {
+  font-size: 32px;
+  font-weight: 650;
+}
+.reimbursement summary {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.reimbursement > section {
+  display: grid;
+  gap: 16px;
+  padding-block: 16px;
+}
+.empty {
+  display: grid;
+  justify-items: start;
+  gap: 16px;
+}
+.support {
+  border-top: 1px solid var(--color-border);
+  padding-top: 24px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.support a {
+  color: var(--color-primary);
+  overflow-wrap: anywhere;
+}
+@media (max-width: 639px) {
+  .page {
+    padding: 24px 16px 40px;
+    gap: 28px;
+  }
+  .funding {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 20px;
+  }
+  .sectionHeading {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 359px) {
+  .planRow {
+    align-items: start;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.invoice {
+  display: grid;
+  gap: 16px;
+  padding: 20px 0;
+  border-top: 1px solid var(--color-border);
+}
+.invoice > p {
+  font-size: 15px;
+  color: var(--color-muted-text);
+}
+.invoiceActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.support {
+  display: block;
+}
+
+.planRow > strong {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.titleRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.settingsReturn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-primary);
+  font-size: var(--text-label);
+  font-weight: 600;
+  text-decoration: none;
+}
+.settingsReturn:hover {
+  text-decoration: underline;
+}
+.page[data-family-settings-detail] {
+  max-width: var(--width-content-wide);
+  padding: var(--space-5) var(--space-4) var(--space-8);
+}
+.page[data-family-settings-detail] .heading h1 {
+  font-size: clamp(28px, 7.6vw, var(--text-heading-1));
+  line-height: 1.12;
+}
+@media (min-width: 768px) {
+  .page[data-family-settings-detail] {
+    padding-inline: var(--space-6);
+  }
+}
+@media (max-width: 639px) {
+  .page[data-family-settings-detail] {
+    padding-top: var(--space-4);
+  }
+}

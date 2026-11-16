@@ -33,6 +33,7 @@ import {
   ProfileMark,
 } from "../features/profiles/ProfileBar";
 import { StudentSignOut } from "../features/practice/StudentSignOut";
+import { FamilyReturn } from "../features/family/FamilyReturn";
 import { Tabs } from "../ui/Tabs";
 import { Toast } from "../ui/Toast";
 import { Button, buttonClass } from "../ui/Button";
@@ -120,6 +121,9 @@ export function AppShell({ children }: { children: ReactNode }) {
       className={space ? styles.frame : styles.bare}
       data-app-frame={space?.space}
       data-tabs={space?.bar === "tabs" ? "" : undefined}
+      data-compact-tabs={
+        space?.bar === "tabs" && space.tabs.length <= 3 ? "" : undefined
+      }
     >
       {space && <ShellBar space={space} triggerRef={triggerRef} />}
       <div
@@ -187,6 +191,7 @@ function ShellBar({
     <header
       className={bar.bar}
       data-tabs={tabs ? "" : undefined}
+      data-compact-tabs={tabs && space.tabs.length <= 3 ? "" : undefined}
       data-app-bar={space.space}
       data-space={space.space}
       data-bar={space.bar ?? undefined}
@@ -206,7 +211,7 @@ function ShellBar({
             else setDrawerOpen(!open);
           }}
         />
-        {space.label && (
+        {space.label && !practice && (
           <PlaceName name={space.label} short={space.shortLabel} />
         )}
         {demo && <DemoMark />}
@@ -266,6 +271,8 @@ function ShellBar({
               return <StudentSignOut key={action} inBar />;
             case "profile-back":
               return <ProfileBackAction key={action} />;
+            case "family-back":
+              return <FamilyReturn key={action} />;
           }
         })}
       </div>
@@ -421,9 +428,7 @@ function MenuUnavailable() {
   return (
     <Toast
       message={
-        open
-          ? "The menu didn’t load. Reload the page to try again."
-          : ""
+        open ? "The menu didn’t load. Reload the page to try again." : ""
       }
       onDismiss={() => setOpen(false)}
     />

@@ -263,3 +263,39 @@
   font-size: var(--text-label);
   font-weight: 600;
 }
+
+/* Account details share their parent's family page edges and heading. */
+.page[data-family-settings-detail] {
+  --page-top: var(--space-5);
+}
+.page[data-family-settings-detail] .column {
+  max-width: none;
+}
+.page[data-family-settings-detail] .head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.page[data-family-settings-detail] .title {
+  font-size: clamp(28px, 7.6vw, var(--text-heading-1));
+  line-height: 1.12;
+}
+.settingsReturn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-primary);
+  font-size: var(--text-label);
+  font-weight: 600;
+  text-decoration: none;
+}
+.settingsReturn:hover {
+  text-decoration: underline;
+}
+@media (max-width: 639px) {
+  .page[data-family-settings-detail] {
+    --page-top: var(--space-4);
+  }
+}

@@ -1,3 +1,12 @@
+import { familyOptions, familyPlacesOptions } from "../features/family/api";
+import {
+  settingsFamilyOf,
+  usesFamilySettingsFrame,
+} from "../features/family/settings-family";
+import {
+  carryFamilyPractice,
+  restoreFamilyPractice,
+} from "../lib/family-practice-history";
 import { knownDocumentPath } from "./document-routes";
 import { requestFetch } from "../lib/request-transport";
 import { invoiceOffersOptions } from "../features/funding/invoice-offers";
@@ -73,6 +82,7 @@ import { workbookSearchSchema } from "../features/workbooks/model";
 import { orgsOptions, preload } from "../features/school/api";
 import { prepareBuyerHandoff } from "../features/school/pilots/buyer-session";
 import { prepareSchoolAdoption } from "../features/school/adoption-session";
+import { finishingSignIn } from "../features/school/join/api";
 import { SMALL_CLASS } from "../features/navigation/shell-frame";
 import { approvalsOptions } from "../features/family-approval/api";
 import { secondParentOptions } from "../features/second-parent/api";
@@ -236,13 +246,15 @@ const root = createRootRoute({
   },
   errorComponent: RouterError,
   notFoundComponent: lazyRouteComponent(
-    () => import("../features/not-found/NotFoundScreen"), "NotFoundScreen",
+    () => import("../features/not-found/NotFoundScreen"),
+    "NotFoundScreen",
   ),
   // A tab already found to run an older release turns its next navigation
   // into a full page load of the same URL. The current screen stays painted
   // until the new page paints, so no loading screen shows in between.
   beforeLoad: async ({ location, preload }) => {
     if (nativeRuntime) return;
+    if (!preload) await restoreFamilyPractice(location);
     if (
       knownStale() &&
       !preload &&
@@ -268,6 +280,24 @@ const root = createRootRoute({
     const session = await queryClient
       .ensureQueryData(sessionOptions)
       .catch(() => undefined);
+    if (
+      session &&
+      !session.accountId.startsWith("school:") &&
+      usesFamilySettingsFrame(location.pathname)
+    ) {
+      // Resolve the frame before committing the screen, so account settings
+      // never flash a different tab set while the parent's family loads.
+      await queryClient
+        .ensureQueryData(familyPlacesOptions(session))
+        .then(async (places) => {
+          const family = settingsFamilyOf(places);
+          if (family)
+            await queryClient.ensureQueryData(
+              familyOptions(session, family.familyId),
+            );
+        })
+        .catch(() => undefined);
+    }
     if (session)
       void queryClient
         .fetchQuery({ ...meOptions(session), staleTime: 0 })
@@ -450,6 +480,14 @@ const home = createRoute({
     return { pitch: shown };
   },
   beforeLoad: async ({ search: rawSearch, location }) => {
+    // A handed device keeps the child's identity through browser history.
+    // Its home is practice, never the parent's remembered family place.
+    if (studentSession())
+      throw redirect({
+        to: "/$",
+        params: { _splat: "practice" },
+        replace: true,
+      });
     const search = searchSchema.parse(rawSearch);
     if ("sign-in" in search)
       throw redirect({
@@ -1018,6 +1056,75 @@ const workbookResults = createRoute({
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookResultsScreen"),
     "WorkbookResultsScreen",
+  ),
+});
+const billingPage = createRoute({
+  getParentRoute: () => root,
+  path: "/account/billing",
+  staticData: { space: "account" },
+  validateSearch: z.object({
+    receipt: z.string().max(200).optional().catch(undefined),
+  }),
+  beforeLoad: async () => {
+    if (!finishingSignIn()) notForStudents();
+    await framedScreen();
+  },
+  component: lazyRouteComponent(
+    () => import("../features/account/BillingPage"),
+    "BillingPage",
+  ),
+});
+const billingPurchasesAlias = createRoute({
+  getParentRoute: () => root,
+  path: "/account/billing/purchases",
+  staticData: { space: "account" },
+  beforeLoad: () => {
+    throw redirect({ to: "/account/billing", replace: true });
+  },
+});
+const billingRecordsAlias = createRoute({
+  getParentRoute: () => root,
+  path: "/account/billing/records",
+  staticData: { space: "account" },
+  beforeLoad: () => {
+    throw redirect({
+      to: "/account/billing",
+      hash: "receipts-title",
+      replace: true,
+    });
+  },
+});
+const cardPurchase = createRoute({
+  getParentRoute: () => root,
+  path: "/purchase/annual",
+  staticData: { space: "account" },
+  beforeLoad: async () => {
+    notForStudents();
+    await framedScreen();
+  },
+  component: lazyRouteComponent(
+    () => import("../features/billing/CardPurchasePage"),
+    "CardPurchasePage",
+  ),
+});
+const fundedPurchase = createRoute({
+  getParentRoute: () => root,
+  path: "/purchase/funded",
+  staticData: { space: "account" },
+  validateSearch: z.object({
+    offer: z.string().max(120).optional().catch(undefined),
+    learner: z.string().max(120).optional().catch(undefined),
+    program: z.string().max(80).optional().catch(undefined),
+  }),
+  beforeLoad: () => {
+    // An invoice's Start learning action is handing this tab to the child.
+    // Let that marked practice navigation finish instead of redirecting it.
+    if (!finishingSignIn()) notForStudents();
+    if (nativeRuntime) throw redirect({ to: "/" });
+  },
+  component: lazyRouteComponent(
+    () => import("../features/funding/FundedPurchasePage"),
+    "FundedPurchasePage",
   ),
 });
 const funded = createRoute({
@@ -1876,6 +1983,11 @@ export const router = createRouter({
     workbookHistory,
     workbookDay,
     workbookResults,
+    billingPage,
+    billingPurchasesAlias,
+    billingRecordsAlias,
+    cardPurchase,
+    fundedPurchase,
     funded,
     fundedNewHampshire,
     fundedArizona,
@@ -1944,7 +2056,17 @@ if (import.meta.env.DEV) {
   router.commitLocation = (next) =>
     commit({
       ...next,
-      state: stampPrevious(next, router.history.location) as typeof next.state,
+      state: stampPrevious(
+        {
+          ...next,
+          state: carryFamilyPractice(
+            next.pathname,
+            next.state,
+            router.history.location.state,
+          ),
+        },
+        router.history.location,
+      ) as typeof next.state,
       resetScroll:
         next.resetScroll ??
         (next.pathname === router.state.location.pathname ||

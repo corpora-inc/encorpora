@@ -14,6 +14,7 @@ import {
 import { composableDate } from "../src/workbook/routes.js";
 import { sampleLearners, simulateLearner } from "../src/workbook/synthetic.js";
 import { freeAllowance } from "../src/learning/free-allowance.js";
+import { randomUUID } from "node:crypto";
 
 const learnerId = "7b8a3c1e-2f4d-4e6a-9b1c-0d2e3f4a5b6c";
 const other = "11111111-2222-4333-8444-555555555555";
@@ -113,6 +114,106 @@ function app(
 }
 const headers = { authorization: "Bearer parent" };
 const url = `/api/v1/learners/${learnerId}/workbooks`;
+
+test("draft options and rolls do not issue workbooks; explicit issue is retry-safe", async () => {
+  const { repository, rows } = memoryRepository();
+  const server = app(repository);
+  try {
+    const draft = {
+      date: today,
+      minutes: 45,
+      paper: "letter",
+      requestId: randomUUID(),
+      choices: { areas: [], lean: "level", lesson: true },
+    };
+    for (const minutes of [45, 30, 60]) {
+      const preview = await server.inject({
+        method: "POST",
+        url: `${url}/preview`,
+        headers,
+        payload: { ...draft, minutes },
+      });
+      assert.equal(preview.statusCode, 200, preview.body);
+      assert.equal(preview.json().minutes, minutes);
+      assert.equal(rows.length, 0);
+    }
+    const chosen = {
+      ...draft,
+      minutes: 60,
+      choices: { areas: ["operations"], lean: "easier", lesson: false },
+    };
+    const preview = await server.inject({
+      method: "POST",
+      url: `${url}/preview`,
+      headers,
+      payload: chosen,
+    });
+    assert.equal(preview.statusCode, 200, preview.body);
+    const rolled = await server.inject({
+      method: "POST",
+      url: `${url}/preview`,
+      headers,
+      payload: { ...chosen, requestId: randomUUID() },
+    });
+    assert.equal(rolled.statusCode, 200, rolled.body);
+    assert.notEqual(rolled.json().code, preview.json().code);
+    assert.deepEqual(
+      (await server.inject({ url, headers })).json().workbooks,
+      [],
+    );
+    const issued = await server.inject({
+      method: "POST",
+      url: `${url}/issue`,
+      headers,
+      payload: chosen,
+    });
+    assert.equal(issued.statusCode, 201, issued.body);
+    assert.equal(issued.json().code, preview.json().code);
+    assert.equal(issued.json().id, draft.requestId);
+    assert.equal(rows.length, 1);
+    const original = structuredClone(rows[0]);
+    const retry = await server.inject({
+      method: "POST",
+      url: `${url}/issue`,
+      headers,
+      payload: chosen,
+    });
+    assert.equal(retry.statusCode, 200, retry.body);
+    assert.equal(retry.json().id, issued.json().id);
+    assert.equal(rows.length, 1);
+    // Preparing another set of options never mutates the saved questions.
+    await server.inject({
+      method: "POST",
+      url: `${url}/preview`,
+      headers,
+      payload: { ...draft, requestId: randomUUID() },
+    });
+    assert.deepEqual(rows[0], original);
+    assert.equal(rows.length, 1);
+    assert.equal(
+      (
+        await server.inject({
+          url: `${url}/${issued.json().id}/document`,
+          headers,
+        })
+      ).statusCode,
+      200,
+    );
+    assert.equal(
+      (
+        await server.inject({
+          method: "POST",
+          url: `${url}/preview`,
+          headers: { authorization: "Bearer stranger" },
+          payload: draft,
+        })
+      ).statusCode,
+      404,
+    );
+  } finally {
+    await server.close();
+  }
+});
 
 test("the same date, number and length return the stored workbook; no number makes another", async () => {
   const { repository, rows } = memoryRepository();

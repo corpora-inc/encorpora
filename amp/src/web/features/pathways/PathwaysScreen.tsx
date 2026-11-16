@@ -1,3 +1,7 @@
+import {
+  CurriculumPractice,
+  PracticeLabel,
+} from "../practice/CurriculumPractice";
 import { ScreenTitle } from "../../ui/ScreenTitle";
 import { FREE_ONLINE_PROBLEMS } from "../../../learning/free-allowance";
 import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
@@ -616,6 +620,9 @@ export function MapView({
             )}
           </div>
         )}
+        {readOnly && practiced && (
+          <CurriculumPractice filter={{ skill: skillId }} />
+        )}
         {!readOnly && practiced && (
           <div className={layers.actions}>
             {canPractice ? (
@@ -631,7 +638,7 @@ export function MapView({
                     : {}),
                 }}
               >
-                Try a problem
+                <PracticeLabel />
               </Link>
             ) : (
               <Link
@@ -940,7 +947,7 @@ export function MapView({
                 data-action-wait=""
                 style={{ visibility: "hidden" }}
               >
-                Try this problem type
+                <PracticeLabel />
               </span>
             );
           if (!practiced) return null;
@@ -951,7 +958,7 @@ export function MapView({
               params={{ _splat: "practice" }}
               search={{ skill: practiced, template: type }}
             >
-              Try this problem type
+              <PracticeLabel />
             </Link>
           ) : (
             // Not practicing yet: the way in, as the skill's own layer offers.

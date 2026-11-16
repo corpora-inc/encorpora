@@ -737,10 +737,8 @@ for (const width of widths)
     await shot(far, `q208-chosen-skill-in-view-${tag}`);
     await far.close();
 
-    // A stack of sheets: each names the one under it on a row of its own
-    // over the title, its chevron on the middle of the name's first line;
-    // back steps one; the cross, Escape and the scrim put the whole stack
-    // away in one step, and Back brings it back.
+    // A stack of sheets (Q-8): each has one cross; it and Escape put down
+    // one layer, the scrim the whole stack, and Back brings it back.
     const stacked = await context.newPage();
     await fixture(stacked);
     const deep = [noFilms.id, farSkill.id, "compound-probability"];
@@ -748,12 +746,15 @@ for (const width of widths)
       `${origin}/pathways?open=${deep.map((id) => `skill:${id}`).join(",")}`,
     );
     const topSheet = stacked.locator('[role="dialog"]').last();
-    const backControl = topSheet.locator("[data-layer-back]");
-    await backControl.waitFor();
+    const cross = topSheet.locator("[data-layer-close]");
+    await cross.waitFor();
     await stacked.waitForTimeout(400);
-    const closeBox = (await topSheet
-      .locator("[data-layer-close]")
-      .boundingBox())!;
+    assert.equal(
+      await topSheet.locator("[data-layer-back]").count(),
+      0,
+      `${tag}: one control puts the sheet down`,
+    );
+    const closeBox = (await cross.boundingBox())!;
     assert(
       closeBox.width >= 44 && closeBox.height >= 44,
       `${tag}: a 44 px close`,
@@ -763,67 +764,38 @@ for (const width of widths)
       closeBox.x + closeBox.width > stackBox.x + stackBox.width - 24,
       `${tag}: the close sits at the top right`,
     );
-    const titleBox = (await topSheet
-      .getByRole("heading")
-      .first()
-      .boundingBox())!;
-    const backBox = (await backControl.boundingBox())!;
-    assert(
-      backBox.y + backBox.height <= titleBox.y + 1,
-      `${tag}: back sits over the title`,
-    );
-    const offset = await backControl.evaluate((button) => {
-      const svg = button.querySelector("svg")!;
-      const label = svg.parentElement!;
-      const probe = document.createElement("span");
-      probe.style.cssText =
-        "display:inline-block;width:0;height:0;vertical-align:baseline";
-      label.insertBefore(probe, svg.nextSibling);
-      const baseline = probe.getBoundingClientRect().bottom;
-      probe.remove();
-      const canvas = document.createElement("canvas").getContext("2d")!;
-      canvas.font = getComputedStyle(label).font;
-      const xHeight = canvas.measureText("x").actualBoundingBoxAscent;
-      const icon = svg.getBoundingClientRect();
-      return icon.top + icon.height / 2 - (baseline - xHeight / 2);
-    });
-    assert(
-      Math.abs(offset) <= 0.5,
-      `${tag}: the chevron is on the middle of the first line (${offset.toFixed(2)} px)`,
-    );
     await shot(stacked, `sheets-stack-${tag}`);
     const opened = () => new URL(stacked.url()).searchParams.get("open");
-    await backControl.click();
-    await stacked.waitForURL(
-      (url) => url.searchParams.get("open")?.split(",").length === 2,
-    );
-    // (A shared link's back replaces it: the stack, three deep again.)
+    const depth = (n: number) =>
+      stacked.waitForURL((url) =>
+        n
+          ? url.searchParams.get("open")?.split(",").length === n
+          : !url.searchParams.has("open"),
+      );
+    await cross.click();
+    await depth(2);
+    await stacked.keyboard.press("Escape");
+    await depth(1);
+    // (A shared link's steps replace it: three deep again.)
     await stacked.goto(
       `${origin}/pathways?open=${deep.map((id) => `skill:${id}`).join(",")}`,
     );
-    await backControl.waitFor();
-    // The scrim, beside or above the sheet.
+    await cross.waitFor();
+    // The scrim, beside or above the sheet: the whole stack away.
     const box = (await topSheet.boundingBox())!;
     await stacked.mouse.click(
       box.x > 30 ? box.x / 2 : width / 2,
       box.x > 30 ? 200 : Math.max(10, box.y / 2),
     );
-    await stacked.waitForURL((url) => !url.searchParams.has("open"));
+    await depth(0);
     await stacked
       .locator('[role="dialog"]')
       .first()
       .waitFor({ state: "detached" });
     await stacked.locator(".pathways-plan").waitFor();
-    // Back brings the whole stack back; Escape and the cross put it away.
     await stacked.goBack();
-    await backControl.waitFor();
+    await cross.waitFor();
     assert.equal(opened()?.split(",").length, 3);
-    await stacked.keyboard.press("Escape");
-    await stacked.waitForURL((url) => !url.searchParams.has("open"));
-    await stacked.goBack();
-    await backControl.waitFor();
-    await topSheet.locator("[data-layer-close]").click();
-    await stacked.waitForURL((url) => !url.searchParams.has("open"));
     await stacked.close();
 
     assert.deepEqual(errors, [], `${tag}: page errors`);

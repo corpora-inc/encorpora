@@ -1,5 +1,5 @@
 import type { FastifyBaseLogger, FastifyInstance } from "fastify";
-import { randomUUID } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 import { z } from "zod";
 import { skills } from "../curriculum/catalog.js";
 import { lessons } from "../content/lessons.js";
@@ -28,6 +28,7 @@ import {
   workbookAreaNames,
   workbookPapers,
   workbookRequestSchema,
+  workbookDraftSchema,
   type WorkbookChoicesInput,
   type WorkbookRecord,
   type WorkbookSummary,
@@ -201,28 +202,39 @@ export async function findOrMakeWorkbook(
     choices?: WorkbookChoicesInput;
     focusSkill?: string;
     seedKey?: { learnerKey: string; date: string };
+    requestId?: string;
   },
   at: number,
   rules: {
     allowed: (date: string) => void;
     beforeMaking?: () => Promise<void>;
+    /** Prepare a summary without a workbook record or allowance use. */
+    preview?: boolean;
   },
 ): Promise<{ status: 200 | 201; record: WorkbookRecord }> {
   const sameDay = await tx.workbooks(input.date);
   const number =
     input.number ?? Math.max(0, ...sameDay.map((w) => w.number)) + 1;
-  if (number > 999)
-    throw new ApiError(409, "This day already has 999 workbooks");
-  const existing = sameDay.find(
-    (w) => w.number === number && w.minutes === input.minutes,
-  );
+  const existing = input.requestId
+    ? await tx.workbook(input.requestId)
+    : sameDay.find((w) => w.number === number && w.minutes === input.minutes);
   if (existing) {
-    if (existing.paper !== input.paper) {
+    if (
+      input.requestId &&
+      (existing.date !== input.date || existing.minutes !== input.minutes)
+    )
+      throw new ApiError(
+        409,
+        "This workbook has already been saved. Make another to change its options.",
+      );
+    if (existing.paper !== input.paper && !rules.preview) {
       await tx.setWorkbookPaper(existing.id, input.paper);
       existing.paper = input.paper;
     }
     return { status: 200, record: existing };
   }
+  if (number > 999)
+    throw new ApiError(409, "This day already has 999 workbooks");
   rules.allowed(input.date);
   await rules.beforeMaking?.();
   const spec = await compose(
@@ -234,12 +246,24 @@ export async function findOrMakeWorkbook(
       number,
       ...(input.choices ? { choices: input.choices } : {}),
       ...(input.focusSkill ? { focusSkill: input.focusSkill } : {}),
-      ...(input.seedKey ? { seedKey: input.seedKey } : {}),
+      ...(input.seedKey
+        ? { seedKey: input.seedKey }
+        : input.requestId
+          ? {
+              seedKey: {
+                learnerKey: createHash("sha256")
+                  .update(`${learnerId}:${input.requestId}`)
+                  .digest("hex")
+                  .slice(0, 32),
+                date: input.date,
+              },
+            }
+          : {}),
     },
     at,
   );
-  const record = await tx.saveWorkbook({
-    id: randomUUID(),
+  const prepared: WorkbookRecord = {
+    id: input.requestId ?? randomUUID(),
     date: input.date,
     number,
     minutes: input.minutes,
@@ -247,8 +271,9 @@ export async function findOrMakeWorkbook(
     spec,
     code: workbookCode(spec),
     createdAt: new Date(at).toISOString(),
-  });
-  return { status: 201, record };
+  };
+  const record = rules.preview ? prepared : await tx.saveWorkbook(prepared);
+  return { status: rules.preview ? 200 : 201, record };
 }
 
 /** The printed workbook as a PDF: rendered for each request, never stored, and
@@ -404,61 +429,70 @@ export function registerWorkbookRoutes(
     });
   });
 
-  /** Same date, number and length: the same workbook, stored the first time.
-   * No number: the next one for that date ("Roll another"). */
-  app.post("/api/v1/learners/:learnerId/workbooks", async (request, reply) => {
-    const { accountId, trial } = await account(request);
-    const { learnerId } = learnerParams.parse(request.params);
-    const input = workbookRequestSchema.parse(request.body);
-    const at = now();
-    const result = await options.repository.transaction(
-      accountId,
-      learnerId,
-      async (tx) => {
-        const progress = await access(tx, trial);
-        const made = await findOrMakeWorkbook(tx, learnerId, input, at, {
-          allowed: (date) => {
-            if (!composableDate(date, at))
-              throw new ApiError(
-                400,
-                "Workbooks can be made for today only. Open today's workbook instead.",
-              );
-          },
-          // A trial makes only the workbooks it has earned. The learner row is
-          // locked for this transaction, so concurrent requests count in turn.
-          beforeMaking: async () => {
-            if (!progress) {
-              if (options.development || (await tx.hasAccess())) return;
-              const allowance = (await tx.freeAllowance()).workbooks;
-              if (allowance.available <= 0)
-                throw new ApiError(
-                  402,
-                  allowance.nextAt
-                    ? `The next free workbook unlocks at ${allowance.nextAt} problems.`
-                    : "free-workbooks-complete",
+  // The builder only previews. Explicit issue actions save a workbook and
+  // consume allowance; older clients retain the original creation endpoint.
+  for (const mode of ["legacy", "preview", "issue"] as const) {
+    const suffix = mode === "legacy" ? "" : `/${mode}`;
+    app.post(
+      `/api/v1/learners/:learnerId/workbooks${suffix}`,
+      async (request, reply) => {
+        const { accountId, trial } = await account(request);
+        const { learnerId } = learnerParams.parse(request.params);
+        const input = (
+          mode === "legacy" ? workbookRequestSchema : workbookDraftSchema
+        ).parse(request.body);
+        const at = now();
+        const result = await options.repository.transaction(
+          accountId,
+          learnerId,
+          async (tx) => {
+            const progress = await access(tx, trial);
+            const made = await findOrMakeWorkbook(tx, learnerId, input, at, {
+              preview: mode === "preview",
+              allowed: (date) => {
+                if (!composableDate(date, at))
+                  throw new ApiError(
+                    400,
+                    "Workbooks can be made for today only. Open today's workbook instead.",
+                  );
+              },
+              // A trial makes only the workbooks it has earned. The learner row is
+              // locked for this transaction, so concurrent requests count in turn.
+              beforeMaking: async () => {
+                if (!progress) {
+                  if (options.development || (await tx.hasAccess())) return;
+                  const allowance = (await tx.freeAllowance()).workbooks;
+                  if (allowance.available <= 0)
+                    throw new ApiError(
+                      402,
+                      allowance.nextAt
+                        ? `The next free workbook unlocks at ${allowance.nextAt} problems.`
+                        : "free-workbooks-complete",
+                    );
+                  return;
+                }
+                const allowance = trialWorkbookAllowance(
+                  progress.totals.answered,
+                  (await tx.workbooks()).length,
+                  progress.free,
                 );
-              return;
-            }
-            const allowance = trialWorkbookAllowance(
-              progress.totals.answered,
-              (await tx.workbooks()).length,
-              progress.free,
-            );
-            if (allowance.available <= 0)
-              throw new ApiError(
-                403,
-                allowance.nextAt
-                  ? `The next free workbook unlocks at ${allowance.nextAt} problems.`
-                  : "All free workbooks are made. Choose a plan to print more.",
-              );
+                if (allowance.available <= 0)
+                  throw new ApiError(
+                    403,
+                    allowance.nextAt
+                      ? `The next free workbook unlocks at ${allowance.nextAt} problems.`
+                      : "All free workbooks are made. Choose a plan to print more.",
+                  );
+              },
+            });
+            return { status: made.status, body: workbookSummary(made.record) };
           },
-        });
-        return { status: made.status, body: workbookSummary(made.record) };
+        );
+        // Answer only after the transaction commits.
+        return reply.code(result.status).send(result.body);
       },
     );
-    // Answer only after the transaction commits.
-    return reply.code(result.status).send(result.body);
-  });
+  }
 
   /** Results entered from the printed workbook: one row per problem. */
   app.get(

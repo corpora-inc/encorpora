@@ -23,22 +23,7 @@ import { Segmented } from "../../ui/Segmented";
 import { TextField } from "../../ui/TextField";
 import styles from "./InvoiceForm.module.css";
 import { invoiceOffersOptions, offerRefunds } from "./invoice-offers";
-const responseSchema = z.object({
-  invoiceId: z.string().uuid(),
-  totalMinor: z.number().int().positive(),
-  merchantName: z.string(),
-  pdfBase64: z.string(),
-  filename: z.string(),
-  destinationUrl: z
-    .string()
-    .url()
-    .refine((value) => {
-      const u = new URL(value);
-      return u.protocol === "https:" && !u.username && !u.password;
-    }),
-  instructions: z.string(),
-  expiresAt: z.string(),
-});
+import { invoiceDocumentSchema as responseSchema } from "./invoice-document";
 const currency = (amount: number) =>
   new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(
     amount / 100,

@@ -1,3 +1,4 @@
+import { PracticeLabel } from "../practice/CurriculumPractice";
 import { ScreenTitle } from "../../ui/ScreenTitle";
 import { EntityLink } from "../../nav/links";
 import { LayerHost } from "../../nav/LayerHost";
@@ -329,7 +330,7 @@ export function InventoryScreen() {
                 params={{ _splat: "practice" }}
                 search={{ skill }}
               >
-                Try a problem
+                <PracticeLabel />
               </Link>
             </div>
           ) : null

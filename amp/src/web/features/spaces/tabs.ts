@@ -67,25 +67,24 @@ export function familyTabs(
   ).filter(allowed(can));
 }
 
-/** A family's own screens (`/family/<family>/…`): its children's
- * day-to-day on a phone, their records, its people and its settings under
- * More. Workbooks show where this reader may make them. */
+/** A family has three destinations at every size. Progress opens the only
+ * child's record directly; several children share a comparison first.
+ * Workbooks, time and reports belong to Progress; sharing to Settings. */
 export function familyPlaceTabs(
   family: string,
-  { workbooks = true }: { workbooks?: boolean } = {},
+  { onlyChild }: { onlyChild?: string } = {},
 ): TabItem[] {
   const at = (leaf: string) =>
     leaf ? `family/${family}/${leaf}` : `family/${family}`;
   return [
     tab("today", "Today", at(""), true),
-    tab("map", "Map", at("map"), true),
-    ...(workbooks
-      ? [tab("workbooks", "Workbooks", at("workbooks"), true)]
-      : []),
-    tab("time", "Time", at("time"), true),
-    tab("reports", "Report cards", at("reports")),
-    tab("people", "People", at("people")),
-    tab("settings", "Settings", at("settings")),
+    tab(
+      "progress",
+      "Progress",
+      at(onlyChild ? `kids/${onlyChild}` : "map"),
+      true,
+    ),
+    tab("settings", "Settings", at("settings"), true),
   ];
 }
 
@@ -165,7 +164,8 @@ export function learnerTabs(): TabItem[] {
 }
 
 /** An adult's own practice: practice, where they are, and their workbooks on
- * a phone; their map, inventory and practice profiles under More. Their own
+ * a phone; their map and inventory under More. Practice at a level (with its
+ * saved profiles) is the drawer's one entry, never a tab as well. Their own
  * learning tabs name nobody (self is implicit); a practice profile's name
  * the profile they are practicing as (which has its own levels, and no
  * workbooks). */
@@ -185,7 +185,6 @@ export function meTabs(
         : tab("levels", "Levels", `me/profiles/${profile}`, true),
       { ...tab("pathways", "Pathways", "pathways", true), ...as },
       { ...tab("inventory", "Inventory", "inventory"), ...as },
-      tab("profiles", "Profiles", "me/profiles"),
     ];
   }
   return [
@@ -203,7 +202,6 @@ export function meTabs(
       : []),
     tab("pathways", "Pathways", "pathways"),
     tab("inventory", "Inventory", "inventory"),
-    tab("profiles", "Profiles", "me/profiles"),
   ];
 }
 
@@ -215,7 +213,7 @@ export const ACCOUNT_HOME = "account/security";
  * settings have neutral addresses (`/account/…`); the old `/family/…` ones
  * still open the same screens. */
 export const accountTabs: readonly TabItem[] = [
-  tab("security", "Sign-in", "account/security"),
+  tab("security", "Profile", "account/security"),
   tab("access", "Billing", "account/billing"),
   tab("privacy", "Privacy", "account/privacy"),
 ];

@@ -1,4 +1,4 @@
-import { useLocation, useRouter } from "@tanstack/react-router";
+import { useRouter, useRouterState } from "@tanstack/react-router";
 import { useRef } from "react";
 export type FamilySection = "learners" | "access" | "privacy" | "security";
 export type PurchaseScreen = "choose" | "annual" | "funded";
@@ -23,12 +23,17 @@ export function accountParts(parts: string[]): string[] {
 }
 /** URLs own screen identity. Private consent challenges live only in memory. */
 export function useAppRoute() {
-  const live = useLocation(),
+  // The outgoing practice screen stays mounted while Back loads another
+  // route. It must not interpret that pending URL and redirect it itself.
+  const { location: live, status } = useRouterState({
+      select: (state) => ({ location: state.location, status: state.status }),
+    }),
     router = useRouter();
   // A routed film covers the legacy screen. Keep its problem, answer draft,
   // scroll position and lesson state mounted until the learner returns.
   const saved = useRef(live);
-  if (!/^\/lessons\/[^/]+\/watch$/.test(live.pathname)) saved.current = live;
+  if (status === "idle" && !/^\/lessons\/[^/]+\/watch$/.test(live.pathname))
+    saved.current = live;
   const current = saved.current;
   const location = {
     ...current,
