@@ -63,10 +63,26 @@ const prepared = (name = "Casey", id = invoiceId) => ({
   id,
   studentBillingName: name,
   state: "prepared",
+  claimedRequestId: null as string | null,
+  emailStatus: "queued",
   expiresAt: "2099-01-01T00:00:00Z",
   offer,
 });
 let invoices: ReturnType<typeof prepared>[] = [];
+const claimed = (learnerId: string, id = invoiceId) => ({
+  id,
+  learnerId,
+  studentBillingName:
+    invoices.find((i) => i.id === id)?.studentBillingName ?? "Casey",
+  status: "prepared",
+  orderId: null as string | null,
+  paymentStatus: "unpaid",
+  expired: false,
+  offer,
+  accessStatus: "funded-pending",
+  fundedPending: { status: "funded-pending", endsAt: "2099-01-01T00:00:00Z" },
+});
+let records: ReturnType<typeof claimed>[] = [];
 const me = () => ({
   signedIn: true,
   account: {
@@ -110,7 +126,14 @@ function respond(url: string, init?: RequestInit) {
     if (path.endsWith("/claim")) {
       if (state.claimFails)
         return Response.json({ error: "service_unavailable" }, { status: 503 });
-      invoices = invoices.filter((i) => !path.includes(i.id));
+      const id = path.split("/").at(-2)!;
+      invoices = invoices.map((i) =>
+        i.id === id ? { ...i, state: "claimed", claimedRequestId: id } : i,
+      );
+      records = [
+        ...records.filter((r) => r.id !== id),
+        claimed(body.learnerId, id),
+      ];
       return Response.json({
         id: invoiceId,
         accessStatus: "pending",
@@ -120,8 +143,18 @@ function respond(url: string, init?: RequestInit) {
         },
       });
     }
+    if (path.endsWith("/status")) {
+      const id = path.split("/").at(-2)!;
+      records = records.map((r) =>
+        r.id === id ? { ...r, status: body.status } : r,
+      );
+      return Response.json(records.find((r) => r.id === id));
+    }
     if (path === "/api/v1/funding/invoices") {
-      invoices = [prepared(body.studentBillingName)];
+      invoices = [
+        ...invoices.filter((i) => i.id !== invoiceId),
+        prepared(body.studentBillingName),
+      ];
       return Response.json({
         invoiceId,
         totalMinor: 12300,
@@ -143,7 +176,13 @@ function respond(url: string, init?: RequestInit) {
       ],
     });
   if (path === "/api/v1/funding/requests")
-    return Response.json({ requests: [] });
+    return Response.json({ requests: records });
+  if (path.startsWith("/api/v1/funding/requests/"))
+    return Response.json(records.find((r) => path.endsWith(r.id)));
+  if (path.endsWith("/pdf"))
+    return new Response("PDF", {
+      headers: { "content-type": "application/pdf" },
+    });
   if (path === "/api/v1/funding/invoices") return Response.json({ invoices });
   return Response.json({});
 }
@@ -160,6 +199,7 @@ beforeEach(() => {
   state.handoffs = [];
   state.posts = [];
   invoices = [];
+  records = [];
   vi.stubGlobal("matchMedia", (query: string) => ({
     matches: false,
     media: query,
@@ -185,6 +225,7 @@ async function open(url = "/purchase/funded?program=az-esa") {
   history.replaceState(null, "", url);
   const { FundedPurchasePage } = await import("../FundedPurchasePage");
   const { FundedEntry } = await import("../FundedEntry");
+  const { FundingInvoices } = await import("../FundingInvoices");
   const { queryClient } = await import("../../../lib/query");
   queryClient.clear();
   const root = createRootRoute({
@@ -192,6 +233,11 @@ async function open(url = "/purchase/funded?program=az-esa") {
     validateSearch: (search) => search,
   });
   const routes = [
+    createRoute({
+      getParentRoute: () => root,
+      path: "/account/billing",
+      component: () => <FundingInvoices session={state.session!} />,
+    }),
     createRoute({
       getParentRoute: () => root,
       path: "/purchase/funded",
@@ -269,19 +315,17 @@ test("an unconfirmed account can create the invoice and has an actionable email 
   expect(state.posts).toHaveLength(1);
 });
 
-test("a new family recovers its prepared invoice above the composer with a program-preserving setup link", async () => {
+test("existing invoices are managed in Billing, outside a new invoice setup", async () => {
   invoices = [prepared()];
   await open();
-  const setup = await screen.findByRole("link", { name: "Set up learner" });
-  expect(setup.getAttribute("href")).toContain(
-    "/start/name?return=arizona-esa",
-  );
+  await screen.findByRole("heading", { name: "New invoice" });
   expect(
-    screen
-      .getByRole("heading", { name: "Education-fund invoices" })
-      .compareDocumentPosition(screen.getByLabelText("Funding program")) &
-      Node.DOCUMENT_POSITION_FOLLOWING,
-  ).toBeTruthy();
+    screen.queryByRole("heading", { name: "Education-fund invoices" }),
+  ).toBeNull();
+  expect(screen.queryByRole("button", { name: "Download invoice" })).toBeNull();
+  expect(
+    screen.getByRole("link", { name: /Billing/ }).getAttribute("href"),
+  ).toBe("/account/billing");
 });
 
 test("returning parents with incomplete consent can type and claim an invoice without a consent dead end", async () => {
@@ -293,7 +337,7 @@ test("returning parents with incomplete consent can type and claim an invoice wi
   fireEvent.click(
     screen.getByRole("button", { name: "Get invoice & start learning" }),
   );
-  await screen.findByRole("heading", { name: "You’re ready to start" });
+  await screen.findByRole("heading", { name: /Invoice for Casey/ });
   expect(state.posts[0]!.body).toMatchObject({
     offerId: "monthly",
     studentBillingName: "Casey Example",
@@ -311,7 +355,7 @@ test("a saved invoice retries access without creating or charging a second invoi
   const retry = await screen.findByRole("button", { name: "Try again" });
   state.claimFails = false;
   fireEvent.click(retry);
-  await screen.findByRole("heading", { name: "You’re ready to start" });
+  await screen.findByRole("heading", { name: /Invoice for Casey/ });
   expect(
     state.posts.filter((p) => p.url === "/api/v1/funding/invoices"),
   ).toHaveLength(1);
@@ -327,7 +371,7 @@ test("prepared invoices select their own matching child rather than sharing one 
     prepared(),
     prepared("Robin", "8b0f7c43-8f87-4b8f-9e1c-6b0a2c3c0b12"),
   ];
-  await open();
+  await open("/account/billing");
   const robin = (await screen.findByRole("heading", { name: "Robin" })).closest(
     "article",
   )!;
@@ -348,11 +392,98 @@ test("prepared invoices select their own matching child rather than sharing one 
   await vi.waitFor(() => expect(state.handoffs).toEqual(["robin"]));
 });
 
+test("creating an invoice for one child stays separate from another child's existing invoice", async () => {
+  state.children = [
+    { id: "casey", name: "Casey" },
+    { id: "robin", name: "Robin" },
+  ];
+  invoices = [prepared("Casey", "8b0f7c43-8f87-4b8f-9e1c-6b0a2c3c0b12")];
+  await open("/purchase/funded?program=az-esa&learner=robin");
+  const form = await screen.findByRole("form", {
+    name: "New invoice for Robin",
+  });
+  expect(
+    screen.queryByRole("region", { name: "Education-fund invoices" }),
+  ).toBeNull();
+  expect(within(form).getByLabelText("Student name on invoice")).toHaveProperty(
+    "value",
+    "Robin",
+  );
+  expect(
+    within(form).queryByRole("button", { name: "Download invoice" }),
+  ).toBeNull();
+  expect(screen.queryByRole("heading", { name: "Casey" })).toBeNull();
+  fireEvent.change(within(form).getByLabelText("Student name on invoice"), {
+    target: { value: "Robin Example" },
+  });
+  fireEvent.click(
+    within(form).getByRole("button", { name: "Get invoice & start learning" }),
+  );
+  await screen.findByRole("heading", { name: "Invoice for Robin Example" });
+  expect(state.posts[0]!.body.studentBillingName).toBe("Robin Example");
+  expect(state.posts[1]!.body).toEqual({ learnerId: "robin" });
+});
+
 test("an expired unpaid invoice keeps its download without a broken Start action", async () => {
   state.children = [{ id: "casey", name: "Casey" }];
   invoices = [{ ...prepared(), expiresAt: "2020-01-01T00:00:00Z" }];
-  await open();
+  await open("/account/billing");
   await screen.findByText(/This invoice has expired/);
   expect(screen.queryByRole("button", { name: "Start learning" })).toBeNull();
   expect(screen.getByRole("button", { name: "Download invoice" })).toBeTruthy();
+});
+
+test("an invoice link restores its recorded child and submission state without creating another invoice", async () => {
+  state.children = [
+    { id: "casey", name: "Casey" },
+    { id: "robin", name: "Robin" },
+  ];
+  invoices = [
+    {
+      ...prepared("Robin Example"),
+      state: "claimed",
+      claimedRequestId: invoiceId,
+      emailStatus: "sent",
+    },
+  ];
+  records = [{ ...claimed("robin"), status: "parent-reported-submitted" }];
+  await open(`/purchase/funded?invoice=${invoiceId}&learner=casey`);
+  await screen.findByRole("heading", { name: "Invoice for Robin Example" });
+  expect(screen.queryByRole("form")).toBeNull();
+  expect(
+    screen.queryByRole("button", { name: "I’ve submitted it" }),
+  ).toBeNull();
+  expect(await screen.findByText(/Invoice emailed to/)).toBeTruthy();
+  expect(screen.getByText(/Submitted · awaiting payment/)).toBeTruthy();
+  expect(state.posts).toHaveLength(0);
+  fireEvent.click(screen.getByRole("button", { name: "Start learning" }));
+  await vi.waitFor(() => expect(state.handoffs).toEqual(["robin"]));
+});
+
+test("an unauthorized invoice link cannot become a new invoice form", async () => {
+  state.children = [{ id: "casey", name: "Casey" }];
+  await open(`/purchase/funded?invoice=${invoiceId}`);
+  expect(await screen.findByRole("alert")).toHaveProperty(
+    "textContent",
+    "This invoice isn’t available to this account. Open Billing to find your invoices.",
+  );
+  expect(screen.queryByRole("form")).toBeNull();
+  expect(state.posts).toHaveLength(0);
+});
+
+test("an approved order awaiting settlement does not display payment received", async () => {
+  state.children = [{ id: "casey", name: "Casey" }];
+  invoices = [{ ...prepared(), state: "claimed", claimedRequestId: invoiceId }];
+  records = [
+    {
+      ...claimed("casey"),
+      status: "parent-reported-submitted",
+      orderId: "pending-order",
+      paymentStatus: "pending",
+    },
+  ];
+  await open(`/purchase/funded?invoice=${invoiceId}`);
+  await screen.findByRole("heading", { name: "Invoice for Casey" });
+  expect(screen.getByText(/Submitted · awaiting payment/)).toBeTruthy();
+  expect(screen.queryByText("Payment received")).toBeNull();
 });
