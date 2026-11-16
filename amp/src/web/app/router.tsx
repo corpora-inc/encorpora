@@ -1115,7 +1115,7 @@ const fundedPurchase = createRoute({
     interval: z.enum(["year", "month"]).optional().catch(undefined),
     // Keep malformed identifiers so invoice recovery shows an error rather
     // than silently opening a new invoice form.
-    invoice: z.string().min(1).max(200).optional(),
+    invoice: z.string().min(1).max(200).optional().catch("invalid"),
     offer: z.string().max(120).optional().catch(undefined),
     learner: z.string().max(120).optional().catch(undefined),
     program: z.string().max(80).optional().catch(undefined),
