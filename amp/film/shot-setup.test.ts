@@ -104,6 +104,19 @@ describe("a shot's opening setup", () => {
     expect(f.board.items.find((i) => i.col === 1)!.t0).toBeCloseTo(beatStart(0) + 0.1);
   });
 
+  it("keeps the old work in a board-only shot until the new column's first line: the screen is never empty", () => {
+    const say = "The next sum is here.";
+    const script = scriptSchema.parse({ id: "t", title: "t", shots: [{ beats: [opener] }, { beats: [{ say, do: [{ do: "clear" }, { do: "write", tex: "2+2=4", at: "sum" }] }] }] });
+    const timing: Timing = { duration: 12, shots: [[said(opener.say, 0.5)], [said(say, 6.5)]] };
+    const root = document.createElement("div");
+    document.body.appendChild(root);
+    const f = new Film(root, script, timing, undefined, { checks: false });
+    const shot = f.shots[1]!;
+    expect(shot.list.find((e) => e.a.do === "clear")!.t0).toBeCloseTo(6.5);
+    const line = timing.shots[1]![0]!.words.find((w) => w.text === "sum")!.start;
+    for (let t = shot.t0; t < line - 0.2; t += 0.02) expect(f.board.colOpacity(0, t)).toBe(1);
+  });
+
   it("clears with the word when the clear on the first beat has one", () => {
     const { f, shot, wordAt } = film([{ say: "Two bars, each one whole.", do: [{ do: "clear", at: "each" }, { do: "write", tex: "\\tfrac12", at: "each" }] }]);
     const cue = wordAt(0, "each");

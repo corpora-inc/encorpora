@@ -209,11 +209,13 @@ const JUMP = 0.05;
  * last shot's board still beside the new figure. Setup takes effect at the shot's own start
  * instead. The figure is already in that state when the shot appears (the shot's fade-in is the
  * only entrance it gets, so its `dur` does not apply), and the board turns to its new column as
- * the old figure leaves. A cue word, a later beat, and every action that animates are untouched.
+ * the old figure leaves (in a shot with a figure; a board-only shot keeps the old work until its
+ * first line). A cue word, a later beat, and every action that animates are untouched.
  */
-function opening(a: Action, beat: number): "figure" | "board" | undefined {
+function opening(a: Action, beat: number, hasFig: boolean): "figure" | "board" | undefined {
   if (beat !== 0 || a.at) return undefined;
-  if (a.do === "clear") return "board";
+  // with no figure coming in, the old work has nothing to sit beside: it stays until the new column's first line
+  if (a.do === "clear") return hasFig ? "board" : undefined;
   if (a.do === "hide" || a.do === "show") return "figure";
   if (a.do === "move" && a.dur !== undefined && a.dur <= JUMP) return "figure";
   return undefined;
@@ -234,7 +236,7 @@ function entries(shot: Shot, times: BeatTime[], t0Shot: number, shotEnd = Infini
         out.push({ a, t0: run.times[0]!, dur: a.dur ?? DEFAULT_DUR.count!, beatEnd: t.end, hold, run, words: Object.fromEntries(counted.map((x, k) => [`n${k}`, x])) });
         continue;
       }
-      const setup = opening(a, i);
+      const setup = opening(a, i, !!shot.figure);
       // setup keeps its stagger slot, so the beat's other actions keep their times
       const t0 = setup === "figure" ? t0Shot - SETUP : setup === "board" ? t0Shot : a.at ? wordTime(t, a.at, a.nth) : t.start + stagger;
       if (!a.at) stagger += 0.1;
