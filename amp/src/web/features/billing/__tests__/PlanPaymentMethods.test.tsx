@@ -31,7 +31,7 @@ afterEach(() => {
 });
 function setup(
   props: Partial<React.ComponentProps<typeof PlanStep>> = {},
-  phase?: string,
+  phase?: "paid" | "processing" | "assigned" | "requires-review",
 ) {
   const session = { token: "synthetic", accountId: "synthetic" };
   const client = new QueryClient({
@@ -41,19 +41,33 @@ function setup(
     available: true,
     notice: consentFixture.notice,
     noticeDigest: "a".repeat(64),
-    purchase: phase ? { phase } : null,
+    purchase: phase
+      ? {
+          phase,
+          id: "1dc64558-2238-45a4-bafb-3e9fc53d5517",
+          interval: "month",
+          learnerId: null,
+          url: null,
+        }
+      : null,
   });
   client.setQueryData(offerOptions(session).queryKey, {
     available: true,
     offers: [
       {
-        id: "annual",
+        id: "a".repeat(64),
+        mode: "test",
+        currency: "USD",
+        learnerCount: 1,
         interval: "year",
         formattedAmount: "$599.00",
         amountMinor: 59900,
       },
       {
-        id: "monthly",
+        id: "b".repeat(64),
+        mode: "test",
+        currency: "USD",
+        learnerCount: 1,
         interval: "month",
         formattedAmount: "$59.00",
         amountMinor: 5900,
@@ -91,7 +105,7 @@ test("Continue supplies exactly one learner-aware method selector", () => {
     screen.getAllByRole("radiogroup", { name: "Payment method" }),
   ).toHaveLength(1);
 });
-test.each(["paid", "processing", "assigned", "requires-review"])(
+test.each(["paid", "processing", "assigned", "requires-review"] as const)(
   "%s enrollment goes to purchase recovery before new method choices",
   (phase) => {
     setup({}, phase);
