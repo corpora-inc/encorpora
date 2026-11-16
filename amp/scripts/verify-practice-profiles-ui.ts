@@ -2,8 +2,8 @@
  * Practice profiles in real browsers, on the real API in accounts mode and a
  * real database (docs/families.md). Everyone here is synthetic.
  *
- *   1. An adult with their own practice opens "Practice as someone else" from
- *      the drawer, picks 4th grade behind, moves Fractions down one, and starts
+ *   1. An adult with their own practice opens Profiles from the drawer, then
+ *      New profile, picks 4th grade behind, moves Fractions down one, and starts
  *      practicing. The picker keeps its choice across a reload, Back and
  *      Forward; the bar names the profile and goes back to their own
  *      practice in one tap. The profile list reopens the saved profile; the
@@ -309,10 +309,10 @@ async function adultTriesALevel(
   await page.goto(`${origin}/me`);
   await heading(page, "Where you are");
   const entry = await openDrawer(page);
-  await entry.getByRole("link", { name: "Practice as someone else" }).click();
-  await heading(page, "Practice as someone else");
-  await page.getByRole("link", { name: "Try a level", exact: true }).click();
-  await heading(page, "Try a level");
+  await entry.getByRole("link", { name: "Profiles", exact: true }).click();
+  await heading(page, "Profiles");
+  await page.getByRole("link", { name: "New profile", exact: true }).click();
+  await heading(page, "New profile");
   check(
     `${label} the picker has a URL`,
     path(page) === "/me/profiles/new",
@@ -395,7 +395,7 @@ async function adultTriesALevel(
 
   // A reload keeps the grade and pace.
   await page.reload();
-  await heading(page, "Try a level");
+  await heading(page, "New profile");
   check(
     `${label} reload keeps the grade`,
     (await page
@@ -431,7 +431,7 @@ async function adultTriesALevel(
   check(
     `${label} the way back is one tap away`,
     (await back.isVisible()) &&
-      (await back.getAttribute("aria-label")) === "Back to my own practice",
+      (await back.getAttribute("aria-label")) === "Back to your levels",
   );
   if (width >= 960)
     check(
@@ -445,7 +445,7 @@ async function adultTriesALevel(
 
   // Back and Forward go through the picker and practice.
   await page.goBack();
-  await heading(page, "Try a level");
+  await heading(page, "New profile");
   check(`${label} back to the picker`, /grade=4/.test(path(page)), path(page));
   await page.goForward();
   await practicing(page);
@@ -469,9 +469,13 @@ async function adultTriesALevel(
   const at = (pattern: RegExp) => items.findIndex((item) => pattern.test(item));
   check(
     `${label} the switcher keeps profiles and actions out of places`,
-    at(/My practice/) >= 0 &&
+    // Their own practice is a place, by their name (Q-204: no "My");
+    // Practice at a level is a place of the Practice group too
+    // (features/spaces/places.ts); a saved profile and New profile aren't.
+    at(/Levels, practice and workbooks/) >= 0 &&
+      at(/Practice at a level/) >= 0 &&
       at(/4th grade · behind/) === -1 &&
-      at(/Try a level/) === -1,
+      at(/New profile/) === -1,
     items,
   );
   await measured(page, `${label} switcher`);
@@ -498,8 +502,8 @@ async function adultTriesALevel(
 
   // The profiles page lists the saved mode and reopens it, then its levels.
   const again = await openDrawer(page);
-  await again.getByRole("link", { name: "Practice as someone else" }).click();
-  await heading(page, "Practice as someone else");
+  await again.getByRole("link", { name: "Profiles", exact: true }).click();
+  await heading(page, "Profiles");
   check(
     `${label} saved profiles offer practice, editing and a new level`,
     (await page
@@ -509,7 +513,7 @@ async function adultTriesALevel(
         .getByRole("link", { name: "Edit 4th grade · behind" })
         .getAttribute("href")) === `/me/profiles/${profile.id}` &&
       (await page
-        .getByRole("link", { name: "Try a level", exact: true })
+        .getByRole("link", { name: "New profile", exact: true })
         .getAttribute("href")) === "/me/profiles/new",
   );
   await page

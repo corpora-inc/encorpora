@@ -21,7 +21,7 @@ import { equalAddendsLesson } from "../src/content/equal-addends-lessons";
 import { publicationHtml } from "../src/content/publications";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
-import { chooseLearner } from "./ui-controls";
+import { practiceHere } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 import { fillEqualAddends } from "./ui-equal-addends";
 
@@ -393,7 +393,7 @@ try {
       page.setDefaultTimeout(20000);
       page.on("pageerror", (e) => errors.push(e.message));
       await page.goto(`${baseUrl}/overview`);
-      await chooseLearner(page, learner.id);
+      await practiceHere(page, learner.id);
       for (const variant of [
         ...equalAddendsVariants,
         ...(width === 320

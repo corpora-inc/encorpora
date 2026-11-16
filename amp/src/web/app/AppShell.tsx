@@ -13,6 +13,7 @@ import {
 } from "react";
 import type { SignedInMe } from "../../account/contracts";
 import { nativeRuntime } from "../native-runtime";
+import { hasAccountContext } from "../lib/account-page";
 import { meOptions, sessionOptions } from "../lib/query";
 import { useLearnerStore } from "../learner-store";
 import { useShellSlots } from "../lib/shell-slots";
@@ -93,7 +94,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const space = session.data && steady?.bar ? steady : null;
   // Once a screen is on view, the learner its address names becomes this
   // device's choice (never during a load or a preload: features/spaces).
-  const me = useAccount();
+  const me = useAccount(!!match && hasAccountContext(match.pathname));
   useEffect(() => {
     if (!me || !match) return;
     const choice = committedChoice(
@@ -280,12 +281,14 @@ function ShellBar({
   );
 }
 
-/** This account's `/me`, once loaded, and never another account's. */
-function useAccount(): SignedInMe | null {
+/** This account's `/me`, once loaded, and never another account's. A
+ * screen without account context (public information, sign-in) never asks
+ * for it (lib/account-page.ts). */
+function useAccount(accountPage = true): SignedInMe | null {
   const session = useQuery(sessionOptions).data;
   const me = useQuery({
     ...meOptions(session ?? { accountId: "", token: "" }),
-    enabled: !!session,
+    enabled: !!session && accountPage,
   }).data;
   return me?.signedIn && me.account.id === session?.accountId ? me : null;
 }

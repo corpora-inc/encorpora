@@ -208,10 +208,15 @@
   }
 }
 
-/* A parent workspace has its own frame; controls never extend the lesson. */
+/* A parent workspace has its own frame; controls never extend the lesson.
+   The frame is fixed to the viewport (practice.css `.shell.app-shell`), so
+   the page scrolls inside it when a short viewport (phone landscape) cannot
+   hold it all. */
 .shell.family-shell > .family-center {
   flex: 1;
   height: auto;
+  min-height: 0;
+  overflow-y: auto;
 }
 
 .family-heading {

@@ -13,7 +13,11 @@ import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { chromium as rawChromium, webkit, type Page } from "playwright";
-import { shellScenarios, startShellFixture } from "./app-shell-fixture";
+import {
+  handOver,
+  shellScenarios,
+  startShellFixture,
+} from "./app-shell-fixture";
 import { todayTitle } from "./today-title";
 
 const argument = (name: string) => {
@@ -130,13 +134,25 @@ const shot = async (page: Page, name: string) => {
 const routes = [
   ...shellScenarios(fixture)
     .filter((scenario) => scenario.state !== "guest")
-    .map(({ id, path, state }) => ({ id, path, state })),
-  { id: "paid-practice", path: "/practice", state: "paid" as const },
-  { id: "starter-practice", path: "/practice", state: "starter" as const },
+    .map(({ id, path, state, child }) => ({ id, path, state, child })),
+  // A child's practice is their own session (handed over from Today).
+  {
+    id: "paid-practice",
+    path: "/practice",
+    state: "paid" as const,
+    child: fixture.paid.jordan.id,
+  },
+  {
+    id: "starter-practice",
+    path: "/practice",
+    state: "starter" as const,
+    child: fixture.starter.learnerId,
+  },
 ];
 for (const route of routes) {
   const context = await fixture.context(browser, route.state, { viewport });
   const page = await context.newPage();
+  if (route.child) await handOver(page, fixture.origin, route.child);
   await slow(page);
   const seen = await watch(page, () =>
     page.goto(`${fixture.origin}${route.path}`),
@@ -190,7 +206,8 @@ async function pressed(page: Page, name: RegExp, id: string) {
   await shot(page, id);
 }
 
-// Sign in, enter practice from the overview, then Skip on a slow connection.
+// Sign in, hand the device to a child from the family's Today, then Skip on
+// a slow connection.
 {
   const context = await browser.newContext({ viewport });
   await context.addInitScript("globalThis.__name ??= (f) => f;");
@@ -204,15 +221,12 @@ async function pressed(page: Page, name: RegExp, id: string) {
   await pressed(page, /^Sign in$/, "sign-in-button");
   const signingIn = await watch(page, () => undefined);
   alive("sign-in", signingIn);
-  await page.waitForURL(/\/school\/[^/]+\/classes\/[^/]+\/today$/);
+  // A parent signs in to their family's Today (docs/architecture/spaces.md).
+  await page.waitForURL((url) => /^\/family\/[^/]+$/.test(url.pathname));
   await todayTitle(page);
-  await page.goto(`${fixture.origin}/overview`);
-  await page.locator('.frontier-map[aria-busy="false"]').waitFor();
-  // A practiced learner's Overview has one Practice, the bar's: a link to
-  // practice, whose own loading shows there.
+  // A child's practice is their own session: "Let Jordan practice here".
   await page
-    .getByRole("link", { name: "Practice", exact: true })
-    .filter({ visible: true })
+    .locator(`[data-practice-here="${fixture.paid.jordan.id}"]`)
     .first()
     .click();
   await page
@@ -231,6 +245,7 @@ async function pressed(page: Page, name: RegExp, id: string) {
 if (shots) {
   const context = await fixture.context(browser, "starter", { viewport });
   const page = await context.newPage();
+  await handOver(page, fixture.origin, fixture.starter.learnerId);
   await slow(page);
   void page.goto(`${fixture.origin}/practice`).catch(() => undefined);
   await page.locator(".app-loading-overlay").waitFor({ timeout: 25_000 });

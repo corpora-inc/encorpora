@@ -7,10 +7,10 @@ import { secureChromium } from "../browser-security.mjs";
  *     npx tsx scripts/verify-app-shell-stability.ts [--engines chromium,webkit]
  *       [--widths 320,390,768,1280] [--shots DIR]
  *
- * For every screen on the frame (Overview, Pathways, Inventory, the four
- * Account tabs, practice, an adult's own record and a new child's Overview,
- * the seven Class tabs and learner workbooks), at 320, 390, 768 and 1280 px,
- * light and dark, in Chromium and WebKit:
+ * For every screen on the frame (the family's seven tabs, a child's page and
+ * their Pathways and Inventory, the three Account tabs, practice, an adult's
+ * own record, a new parent's child and learner workbooks), at 320, 390, 768
+ * and 1280 px, light and dark, in Chromium and WebKit:
  *
  * - the logo's box is identical on every screen;
  * - the logo opens the drawer, which shows the same logo in the same spot,
@@ -53,7 +53,7 @@ const fixture = await startShellFixture({
   webPort: Number(process.env.AMP_SHELL_WEB_PORT ?? 4950),
 });
 const { origin } = fixture;
-let familyClassPath = "";
+let familyPath = "";
 
 /** The paid parent also starts their own practice, so `/me` has a record. */
 {
@@ -77,7 +77,17 @@ let familyClassPath = "";
     })
   ).json();
   if (!me.familyClass) throw Error("Paid family fixture must have a class");
-  familyClassPath = `/school/${me.familyClass.orgId}/classes/${me.familyClass.classId}`;
+  // The family lives at its own address (docs/architecture/spaces.md).
+  const places = await (
+    await context.request.get(`${origin}/api/v1/families`, {
+      headers: { authorization: `Bearer ${session.session.token as string}` },
+    })
+  ).json();
+  const own = places.families.find(
+    (family: { role: string }) => family.role === "holder",
+  );
+  if (!own) throw Error("Paid fixture must hold a family");
+  familyPath = `/family/${own.familyId as string}`;
   await context.close();
   await browser.close();
 }
@@ -86,26 +96,58 @@ type Screen = {
   id: string;
   path: string;
   state: ShellState;
-  group: "progress" | "account" | "practice" | "class" | "plain";
+  group: "family" | "record" | "account" | "practice" | "me" | "plain";
   /** Shown once the screen has its data. */
   ready: (page: Page) => Promise<unknown>;
 };
+/** A family screen has its data once its heading is in the dense frame. */
+const familyReady = (p: Page) =>
+  p.locator("main[data-dense] h1").first().waitFor();
+const jordan = () => `${familyPath}/kids/${fixture.paid.jordan.id}`;
 const screens: Screen[] = [
-  ...[
-    "today",
-    "map",
-    "gradebook",
-    "time",
-    "workbooks",
-    "roster",
-    "settings",
-  ].map((tab): Screen => ({
-    id: `class-${tab}`,
-    path: `${familyClassPath}/${tab}`,
+  // The family's tabs: Today at its root, the rest as leaves.
+  ...["", "map", "workbooks", "time", "reports", "people", "settings"].map(
+    (tab): Screen => ({
+      id: `family-${tab || "today"}`,
+      path: tab ? `${familyPath}/${tab}` : familyPath,
+      state: "paid",
+      group: "family",
+      ready: tab
+        ? familyReady
+        : (p) => p.locator("[data-today-title]").waitFor(),
+    }),
+  ),
+  // A child's page keeps the family's tabs; their map and inventory carry
+  // the record's own (Overview, Pathways, Inventory).
+  {
+    id: "child",
+    path: "",
     state: "paid",
-    group: "class",
-    ready: (p) => p.locator("#school-content").waitFor(),
-  })),
+    group: "family",
+    ready: (p) => p.locator("[data-child-page]").waitFor(),
+  },
+  {
+    id: "child-pathways",
+    path: "",
+    state: "paid",
+    group: "record",
+    // The grades view is the default (the 3D map's code loads on choice):
+    // its count of earned skills is there once the record has loaded.
+    ready: (p) =>
+      p
+        .locator(".pathways-summary, .pathways-phone-summary")
+        .filter({ hasText: /\d+ of \d+ skills earned/ })
+        .first()
+        .waitFor({ state: "attached" }),
+  },
+  {
+    id: "child-inventory",
+    path: "",
+    state: "paid",
+    group: "record",
+    // The totals show once the learner's skills have loaded.
+    ready: (p) => p.locator('section[aria-label="Totals"]').waitFor(),
+  },
   {
     id: "learner-workbooks",
     path: `/learners/${fixture.paid.jordan.id}/workbooks`,
@@ -114,52 +156,23 @@ const screens: Screen[] = [
     ready: (p) => p.locator('main[aria-busy="false"]').waitFor(),
   },
   {
-    id: "overview",
-    path: "/overview",
-    state: "paid",
-    group: "progress",
-    ready: (p) => p.locator('.frontier-map[aria-busy="false"]').waitFor(),
-  },
-  {
-    id: "pathways",
-    path: "/pathways",
-    state: "paid",
-    group: "progress",
-    ready: (p) => p.locator(".pathways-viewport").waitFor(),
-  },
-  {
-    id: "inventory",
-    path: "/inventory",
-    state: "paid",
-    group: "progress",
-    // The totals show once the learner's skills have loaded.
-    ready: (p) => p.locator('section[aria-label="Totals"]').waitFor(),
-  },
-  {
     id: "security",
-    path: "/family/security",
+    path: "/account/security",
     state: "paid",
     group: "account",
     ready: (p) =>
       p.getByRole("heading", { name: "Sign-in", exact: true }).waitFor(),
   },
   {
-    id: "family",
-    path: "/family/learners",
-    state: "paid",
-    group: "account",
-    ready: (p) => p.locator("[data-account-body]").first().waitFor(),
-  },
-  {
     id: "billing",
-    path: "/family/access",
+    path: "/account/billing",
     state: "paid",
     group: "account",
     ready: (p) => p.locator("[data-account-body]").first().waitFor(),
   },
   {
     id: "privacy",
-    path: "/family/privacy",
+    path: "/account/privacy",
     state: "paid",
     group: "account",
     ready: (p) =>
@@ -176,17 +189,22 @@ const screens: Screen[] = [
     id: "me",
     path: "/me",
     state: "paid",
-    group: "progress",
+    group: "me",
     ready: (p) => p.locator("main[data-dense] h1").waitFor(),
   },
+  // A new parent's one child: their page, at their own address.
   {
-    id: "starter-overview",
+    id: "starter-child",
     path: "/overview",
     state: "starter",
-    group: "progress",
-    ready: (p) => p.locator('.frontier-map[aria-busy="false"]').waitFor(),
+    group: "family",
+    ready: (p) => p.locator("[data-child-page]").waitFor(),
   },
 ];
+// The child's addresses need the family the setup above found.
+for (const screen of screens)
+  if (screen.id.startsWith("child"))
+    screen.path = `${jordan()}${screen.id === "child" ? "" : `/${screen.id.slice(6)}`}`;
 
 /** Installed before any page script: the requests the screen makes, and
  * every element whose own visible text changes while nothing was pressed. */
@@ -440,21 +458,13 @@ for (const engine of engines) {
       // Going between a group's tabs keeps the very same bar: never remounted,
       // its tabs never moved.
       for (const [group, path, order] of [
-        ["progress", "/overview", ["pathways", "inventory", "overview"]],
-        ["account", "/family/security", ["learners", "access", "privacy"]],
         [
-          "class",
-          `${familyClassPath}/today`,
-          [
-            "map",
-            "gradebook",
-            "time",
-            "workbooks",
-            "roster",
-            "settings",
-            "today",
-          ],
+          "family",
+          familyPath,
+          ["map", "workbooks", "time", "reports", "people", "settings", "today"],
         ],
+        ["record", `${jordan()}/pathways`, ["inventory", "pathways"]],
+        ["account", "/account/security", ["access", "privacy", "security"]],
       ] as const) {
         const screen = screens.find((s) => s.path === path)!;
         const { context, page, errors, requests } = await open(
@@ -497,16 +507,29 @@ for (const engine of engines) {
             const label = (await tab.textContent())!.trim();
             await page
               .locator("[data-app-bar]")
-              .getByRole("button", { name: /^More .* tabs$/ })
+              // "More …", or "<open tab>, more …" while it holds the open tab.
+              .getByRole("button", { name: /(?:^|, )more .* tabs$/i })
               .click();
             await page
               .getByRole("menuitem", { name: label, exact: true })
               .click();
           }
           await refreshed;
-          await page
-            .locator(`[data-app-bar] [data-tab="${id}"][aria-current="page"]`)
-            .waitFor();
+          // On a phone the open tab may stay under More, which then wears
+          // its name (ui/Tabs.tsx).
+          const open = page.locator(
+            `[data-app-bar] [data-tab="${id}"][aria-current="page"]`,
+          );
+          await open.waitFor({ state: "attached" });
+          if (!(await open.isVisible())) {
+            const label = (await open.textContent())!.trim();
+            await page
+              .locator("[data-app-bar]")
+              .getByRole("button", {
+                name: new RegExp(`^${label}, more .* tabs$`),
+              })
+              .waitFor();
+          }
           await settle(page, 400);
           check(
             requests.filter((r) => r === "GET /api/v1/me").length ===

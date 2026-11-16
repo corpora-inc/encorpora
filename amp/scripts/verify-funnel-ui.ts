@@ -25,6 +25,11 @@ import {
 import { noticeDigest } from "../src/parent-consent/crypto";
 import { consentFixture } from "../tests/parent-consent.fixture";
 import { retentionNotice } from "../src/family/contracts";
+import {
+  FIXTURE_FAMILY_ID,
+  fixtureFamilies,
+  fixtureFamilyProjection,
+} from "./family-space-fixture";
 import { fixtureMe } from "./me-fixture";
 
 /**
@@ -112,6 +117,9 @@ const offers = ["year", "month"].map((interval, i) => ({
 const checkoutVisitors: string[] = [];
 let phase: "ready" | "checkout-open" | "processing" | "paid" | "assigned" =
   "ready";
+/** A new account has no child until the starter adds one: its first
+ * question is "What brings you to AMP?", not "Add a place". */
+let childAdded = false;
 
 async function serve(page: Page, faults: string[]) {
   // This fixture exercises customer reports. Automated exclusion has its own browser test.
@@ -153,7 +161,8 @@ async function serve(page: Page, faults: string[]) {
         body: await forwarded.text(),
       });
     }
-    // The starter's family: one child, practicing on the free allowance.
+    // The starter's family: none yet, then one child, practicing on the
+    // free allowance.
     if (path === "/me")
       return route.fulfill({
         json: fixtureMe(
@@ -164,22 +173,35 @@ async function serve(page: Page, faults: string[]) {
               recordedAt: null,
               withdrawnAt: null,
             },
-            learners: [
-              {
-                id: "funnel-child",
-                name: "Fox",
-                birthYear: 2016,
-                deletedAt: null,
-                access: [],
-                stripeLinked: phase === "assigned",
-                canPractice: true,
-                hasAccess: phase === "assigned",
-              },
-            ],
+            learners: childAdded
+              ? [
+                  {
+                    id: "funnel-child",
+                    name: "Fox",
+                    birthYear: 2016,
+                    deletedAt: null,
+                    access: [],
+                    stripeLinked: phase === "assigned",
+                    canPractice: true,
+                    hasAccess: phase === "assigned",
+                  },
+                ]
+              : [],
             retained: retentionNotice,
           },
           "synthetic-parent",
         ),
+      });
+    // The family the starter made holds the child; a new account has none.
+    if (path === "/families")
+      return route.fulfill({
+        json: childAdded ? fixtureFamilies() : { families: [], next: null },
+      });
+    if (path === `/families/${FIXTURE_FAMILY_ID}`)
+      return route.fulfill({
+        json: fixtureFamilyProjection([
+          { id: "funnel-child", name: "Fox", birthYear: 2016 },
+        ]),
       });
     if (path === "/billing/offer")
       return route.fulfill({
@@ -226,7 +248,8 @@ async function serve(page: Page, faults: string[]) {
     // Screens past the walk (practice, catalog) are not under test.
     if (
       ["/catalog", "/books", "/session"].includes(path) ||
-      path.startsWith("/learners")
+      path.startsWith("/learners") ||
+      path.startsWith(`/families/${FIXTURE_FAMILY_ID}/`)
     )
       return route.fulfill({ status: 503, json: { error: "fixture_end" } });
     faults.push(`unexpected ${req.method()} ${path}`);
@@ -323,6 +346,8 @@ try {
     ["paywall_view", { reason: "limit" }],
   ]);
   await settled(13);
+  // The starter's parent answer added their child, who practiced free.
+  childAdded = true;
   // After free practice the parent continues with AMP for their child.
   await page.goto(`${origin}/continue/funnel-child`);
   await page.getByRole("radio", { name: /Monthly/ }).click();

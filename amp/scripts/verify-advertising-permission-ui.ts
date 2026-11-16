@@ -73,7 +73,9 @@ try {
         name: "synthetic-family-route",
         configureServer(server) {
           server.middlewares.use((request, _response, next) => {
-            if (request.url?.startsWith("/family/"))
+            // Privacy's own address is the account's (/account/privacy/…);
+            // its older /family/privacy/… opens the same screen.
+            if (/^\/(?:family|account)\//.test(request.url ?? ""))
               request.url =
                 "/artifacts/advertising-permission-review/index.html";
             next();
@@ -124,14 +126,15 @@ try {
         });
         const errors: string[] = [];
         page.on("pageerror", (e) => errors.push(e.message));
-        await page.goto(origin + "/family/privacy");
+        // Privacy is the account's own (docs/architecture/spaces.md).
+        await page.goto(origin + "/account/privacy");
         await page
           .getByRole("button", { name: /Purchase measurement/ })
           .click();
         await page.getByRole("heading", { name: title }).waitFor();
         assert.equal(
           new URL(page.url()).pathname,
-          "/family/privacy/measurement",
+          "/account/privacy/measurement",
         );
         const card = page.locator(`[data-purchase-measurement="${provider}"]`);
         const other = page.locator(
@@ -262,7 +265,7 @@ try {
           .waitFor();
         await page.goBack();
         await page
-          .getByRole("heading", { name: "Privacy and records" })
+          .getByRole("heading", { name: "Privacy", exact: true })
           .waitFor();
         await page.goForward();
         await card

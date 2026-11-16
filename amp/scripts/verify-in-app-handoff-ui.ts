@@ -209,9 +209,11 @@ try {
         await q
           .getByRole("link", { name: "Create an account", exact: true })
           .waitFor();
+        // Opening the link holds it in this page's memory only: nothing
+        // another tab or a later page could read (capability-entry.ts).
         assert.equal(
           await q.evaluate((key) => localStorage.getItem(key), `amp.${kind}`),
-          fragment,
+          null,
         );
         await q
           .getByRole("link", {
@@ -219,6 +221,15 @@ try {
             exact: true,
           })
           .click();
+        // Leaving to authenticate carries it, with its lifetime
+        // (lib/link-carry.ts).
+        assert.equal(
+          await q.evaluate(
+            (key) => JSON.parse(localStorage.getItem(key) ?? "null")?.value,
+            `amp.${kind}`,
+          ),
+          fragment,
+        );
         await q.locator('[data-provider="google"]').waitFor();
         await q
           .getByRole("button", {

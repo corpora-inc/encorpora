@@ -794,16 +794,20 @@ export function StructuredWorkInput({
               aria-hidden="true"
             >
               <span className="work-number">{position + 1}</span>
-              {!locked && (
-                <svg viewBox="0 0 12 16" className="work-grip-dots">
-                  <circle cx="4" cy="3" r="1.3" />
-                  <circle cx="8" cy="3" r="1.3" />
-                  <circle cx="4" cy="8" r="1.3" />
-                  <circle cx="8" cy="8" r="1.3" />
-                  <circle cx="4" cy="13" r="1.3" />
-                  <circle cx="8" cy="13" r="1.3" />
-                </svg>
-              )}
+              {/* Kept once locked, unseen: the grip's height is the row's,
+                  so grading never shortens a step. */}
+              <svg
+                viewBox="0 0 12 16"
+                className="work-grip-dots"
+                style={locked ? { visibility: "hidden" } : undefined}
+              >
+                <circle cx="4" cy="3" r="1.3" />
+                <circle cx="8" cy="3" r="1.3" />
+                <circle cx="4" cy="8" r="1.3" />
+                <circle cx="8" cy="8" r="1.3" />
+                <circle cx="4" cy="13" r="1.3" />
+                <circle cx="8" cy="13" r="1.3" />
+              </svg>
             </span>
             <span className="work-fields">
               {row.label && (

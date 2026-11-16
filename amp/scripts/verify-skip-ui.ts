@@ -3,11 +3,7 @@ import AxeBuilder from "@axe-core/playwright";
 import assert from "node:assert/strict";
 import { realpathSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
-import {
-  chromium as rawChromium,
-  type BrowserContext,
-  type Page,
-} from "playwright";
+import { chromium as rawChromium, type Page } from "playwright";
 const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { buildApp } from "../src/server/app";
@@ -16,6 +12,7 @@ import { PostgresRepository } from "../src/server/repository";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { SKIP_USES_FREE_PROBLEM } from "../src/learning/skip";
 import { migrate } from "./migrate";
+import { practiceHere } from "./ui-controls";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 
 /**
@@ -25,7 +22,8 @@ import { assertTestDatabaseTarget } from "./test-database-preflight";
  * no miss mark, no celebration. Nothing on the problem moves (bounding boxes
  * and the browser's layout-shift entries), nothing overflows, axe is clean,
  * no attempt is stored, and Next continues. Each context practices as a new
- * signed-in learner (development auth) at `/practice`. Runs at 384x700,
+ * learner in the development account, handed the device from the family's
+ * Today (their own session at `/practice`). Runs at 384x700,
  * 390x844, both tablet orientations and 1280x800, light and dark, and writes
  * screenshots. `--port` moves the web server (the API takes the next port).
  */
@@ -121,9 +119,9 @@ const observeShifts = () => {
   }).observe({ type: "layout-shift", buffered: true });
 };
 
-/** A new learner in the development account, chosen on this device. */
+/** A new learner in the development account. */
 const learners: string[] = [];
-async function newLearner(context: BrowserContext, birthYear: number) {
+async function newLearner(birthYear: number) {
   const response = await fetch(`http://127.0.0.1:${apiPort}/api/v1/learners`, {
     method: "POST",
     headers: {
@@ -135,14 +133,6 @@ async function newLearner(context: BrowserContext, birthYear: number) {
   assert.equal(response.status, 201, await response.clone().text());
   const { id } = (await response.json()) as { id: string };
   learners.push(id);
-  await context.addInitScript(
-    (learnerId) =>
-      localStorage.setItem(
-        "amp.learner",
-        JSON.stringify({ state: { learnerId }, version: 1 }),
-      ),
-    id,
-  );
   return id;
 }
 
@@ -173,11 +163,13 @@ try {
         colorScheme,
         hasTouch: touch,
       });
-      const learnerId = await newLearner(context, 2014);
+      const learnerId = await newLearner(2014);
       await context.addInitScript(observeShifts);
       const page = await context.newPage();
       page.on("pageerror", (error) => errors.push(error.message));
-      await page.goto(`${origin}/practice`);
+      // The parent hands the device to the child: their own practice.
+      await page.goto(`${origin}/overview`);
+      await practiceHere(page, learnerId);
       await page.locator(".question").waitFor();
       await settle(page);
       const skip = page.getByRole("button", {

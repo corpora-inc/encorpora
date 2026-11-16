@@ -14,6 +14,7 @@ from functools import lru_cache
 PAIR = 'linear-system-pair'
 COUNT = 'linear-system-solution-count'
 LINEAR_SYSTEM = frozenset({PAIR, COUNT})
+TEMPLATE_VERSIONS = {PAIR: {1}, COUNT: {1, 2}}
 COUNT_LABELS = ('Exactly one ordered pair', 'No ordered pairs', 'Infinitely many ordered pairs')
 PROMPTS = {
     PAIR: r'Which ordered pair \$?\(x, y\)\$? satisfies both equations for real \$?x\$? and \$?y\$?: (.+); (.+)\?',
@@ -472,8 +473,12 @@ class LinearSystemReview:
         import hashlib
         import json
         template = public['templateId']
+        # A classic system is stamped with a version its template has had:
+        # practice draws carry the current one (the count family is at 2
+        # since its clause variants), worksheets the version they reprint
+        # from (1). The system's identity digest stays the generator's own.
         require(set(public)=={'id','templateId','templateVersion','seed','skillId','prompt','response'} and
-                public['templateVersion']==1 and public['skillId']=='linear-systems',
+                public['templateVersion'] in TEMPLATE_VERSIONS[template] and public['skillId']=='linear-systems',
                 'Unexpected public system payload or metadata')
         material=json.dumps([template,1,public['seed']],separators=(',',':'),ensure_ascii=False)
         require(public['id']==hashlib.sha256(material.encode()).hexdigest(), 'Incorrect full system identity digest')

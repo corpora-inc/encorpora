@@ -1,6 +1,7 @@
 import { forgetEveryLink } from "../features/links/forget";
 import { settleSwitches } from "../lib/link-carry";
 import { setAnalyticsSession } from "../lib/analytics";
+import { noteSignedIn } from "../lib/session-hint";
 import { NativeGate } from "../NativeGate";
 import { nativeRuntime } from "../native-runtime";
 import { Toast } from "../ui/Toast";
@@ -11,6 +12,7 @@ import {
   clearPurchaseReturn,
 } from "../purchase-return";
 import { clearOnboardingDraft } from "../features/onboarding/state";
+import { useLearnerStore } from "../learner-store";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Fragment, useEffect, useState, type ReactNode } from "react";
 import { onSessionChanged, signOut, type AuthSession } from "../auth";
@@ -83,6 +85,7 @@ function SessionProviders({
       (session) => {
         const current = ++generation;
         setAnalyticsSession(session);
+        noteSignedIn(!!session);
         setError("");
         const previous = queryClient.getQueryData(sessionOptions.queryKey);
         if (
@@ -92,6 +95,9 @@ function SessionProviders({
           clearInitialConsentChallenge();
           clearOwnedPurchaseReturn();
           clearPurchaseReturn();
+          // This device's learner choice was the old account's: another
+          // account starts from its own home, never that learner.
+          if (previous?.accountId) useLearnerStore.getState().select(null);
         }
         if (previous?.accountId !== session?.accountId) {
           clearOnboardingDraft();

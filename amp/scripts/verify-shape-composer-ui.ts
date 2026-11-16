@@ -19,7 +19,7 @@ import { shapeComposerLesson } from "../src/content/shape-composer-lessons";
 import { publicationHtml } from "../src/content/publications";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
-import { chooseLearner } from "./ui-controls";
+import { practiceHere } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 import { fillShapeStage } from "./ui-shape-composer";
 
@@ -178,9 +178,15 @@ async function visibleLayout(page: Page, resolved = false) {
       outlineVisible:
         getComputedStyle(edge).stroke !== "none" &&
         Number.parseFloat(getComputedStyle(edge).strokeWidth) >= 0.05,
+      // Not checked: the stage's measures, so a failure says by how much.
+      stage: [stage.scrollHeight, stage.clientHeight, stage.scrollTop],
+      parts: [...stage.querySelectorAll(".problem-content > *")].map(
+        (n) => `${n.className}:${Math.round(n.getBoundingClientRect().height)}`,
+      ),
     };
   }, resolved);
-  for (const [key, value] of Object.entries(layout))
+  const { stage: _stage, parts: _parts, ...checks } = layout;
+  for (const [key, value] of Object.entries(checks))
     assert.ok(value, `${key}: ${JSON.stringify(layout)}`);
 }
 try {
@@ -206,7 +212,7 @@ try {
       page.setDefaultTimeout(30000);
       page.on("pageerror", (e) => errors.push(e.message));
       await page.goto("http://127.0.0.1:4586/overview");
-      await chooseLearner(page, learner.id);
+      await practiceHere(page, learner.id);
       for (const [tag, base] of fixtures)
         for (const correct of [true, false]) {
           const p = structuredClone(base);

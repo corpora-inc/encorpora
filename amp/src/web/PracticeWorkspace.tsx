@@ -2197,6 +2197,9 @@ export function PracticeWorkspace(props: Props) {
       {reportSheet && (
         <reportSheet.Toast
           tone="status"
+          // At the top on every width: on a phone the foot is the feedback
+          // sheet's Next, which a confirmation must never cover.
+          placement="top"
           message={reportToast}
           onDismiss={() => setReportToast("")}
         />

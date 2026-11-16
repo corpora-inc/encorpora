@@ -126,8 +126,21 @@ try {
     (title) => document.title.includes(title),
     countingTitle,
   );
+  assert.match(await map.title(), new RegExp(countingTitle));
+  // A skill's older address opens it as a layer over the map
+  // (`/pathways?open=skill:<id>`); closing it leaves the map, whose title
+  // drops the skill's.
+  assert.equal(
+    new URL(map.url()).searchParams.get("open"),
+    "skill:count-to-20",
+  );
+  await map.getByRole("button", { name: "Close", exact: true }).click();
+  await map.waitForURL((url) => !url.searchParams.has("open"));
+  await map.waitForFunction(
+    (title) => !document.title.includes(title),
+    countingTitle,
+  );
   const pageTitle = await map.title();
-  assert.match(pageTitle, new RegExp(countingTitle));
   await map.locator(".pathways-brand").click();
   await map.waitForURL("http://127.0.0.1:4394/");
   // Signed out, / is the pitch, with one parameter-free canonical.

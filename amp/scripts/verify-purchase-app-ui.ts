@@ -1,5 +1,11 @@
 import { secureChromium } from "../browser-security.mjs";
 import { fixtureMe } from "./me-fixture";
+import {
+  FIXTURE_FAMILY_ID,
+  fixtureFamilies,
+  fixtureFamilyProjection,
+} from "./family-space-fixture";
+const FAMILY_B = "00000000-0000-4000-8000-00000000fb02";
 import { choose, openMenu } from "./ui-controls";
 import assert from "node:assert/strict";
 import { fileURLToPath } from "node:url";
@@ -24,7 +30,7 @@ window.purchaseReview={emit(next){session=next;for(const listener of listeners)l
 export async function accessSession(){return session;}
 export function onSessionChanged(fn){listeners.add(fn);return()=>listeners.delete(fn);}
 export async function signIn(){sessionStorage.setItem('fixture-signed-in','yes');location.href='/';}
-export async function signOut(){window.purchaseReview.recordAtSignOut=sessionStorage.getItem('amp.purchase-return.v1');window.purchaseReview.emit(null);}export function notifyAccountSessionChanged(){void accessSession().then(session=>window.purchaseReview.emit(session));}export async function authConfig(){return {mode:"oidc"};}
+export async function signOut(){window.purchaseReview.recordAtSignOut=sessionStorage.getItem('amp.purchase-return.v1');sessionStorage.setItem('fixture-record-at-sign-out',JSON.stringify(window.purchaseReview.recordAtSignOut));window.purchaseReview.emit(null);}export function notifyAccountSessionChanged(){void accessSession().then(session=>window.purchaseReview.emit(session));}export async function authConfig(){return {mode:"oidc"};}
 `;
 const vite = await createServer({
   root: fileURLToPath(new URL("../", import.meta.url)),
@@ -111,6 +117,24 @@ async function setup(
         ),
       });
     }
+    // The parent's family and its children (the app frame's places).
+    const familyId = parent === "b" ? FAMILY_B : FIXTURE_FAMILY_ID;
+    if (path === "/api/v1/families")
+      return route.fulfill({ json: fixtureFamilies(familyId) });
+    if (path === `/api/v1/families/${familyId}`)
+      return route.fulfill({
+        json: fixtureFamilyProjection(
+          [1, 2].map((n) => ({
+            id: child(n).id,
+            name: child(n).name,
+            birthYear: 2016,
+          })),
+          familyId,
+        ),
+      });
+    // Another account's family is refused, as the server refuses it.
+    if (/^\/api\/v1\/families\/[^/]+$/.test(path))
+      return route.fulfill({ status: 404, json: { error: "not_found" } });
     if (path.endsWith("/books")) return route.fulfill({ json: { books: [] } });
     if (path.endsWith("/frontier"))
       return route.fulfill({
@@ -267,29 +291,33 @@ async function setup(
   };
 }
 async function openAccess(page: Page) {
-  await page.getByRole("button", { name: "Open AMP menu" }).click();
-  await page.getByRole("link", { name: "Account", exact: true }).click();
+  const drawer = await openMenu(page);
+  await drawer.getByRole("link", { name: "Account", exact: true }).click();
+  await page.waitForURL((url) => url.pathname === "/account/security");
+  // Account's tabs: Sign-in, Billing, Privacy (children are the family's).
   await page
-    .getByRole("navigation", { name: "Account" })
-    .getByRole("link", { name: "Learners", exact: true })
-    .click();
-  await page
-    .getByRole("navigation", { name: "Account" })
     .getByRole("link", { name: "Billing", exact: true })
+    .first()
     .click();
-  await page
-    .getByRole("button", { name: "Purchases & records", exact: true })
-    .click();
+  await page.getByRole("button", { name: /^Purchases and records/ }).click();
   await page.locator('[data-purchase-entry="annual"]').waitFor();
 }
-async function expectCurrentLearner(page: Page, id: string) {
-  const drawer = await openMenu(page);
-  await drawer
-    .getByRole("listbox", { name: "Current learner" })
-    .locator(`[role="option"][aria-selected="true"][data-value="${id}"]`)
-    .waitFor();
-  await page.keyboard.press("Escape");
-  await drawer.waitFor({ state: "detached" });
+/** The account's own home: its family's Today (docs/architecture/spaces.md),
+ * with no other account's learner left chosen on this device
+ * (learner-store.ts). */
+async function expectHome(page: Page, account: "a" | "b") {
+  const family = account === "b" ? FAMILY_B : FIXTURE_FAMILY_ID;
+  await page.waitForURL((url) => url.pathname === `/family/${family}`);
+  await page.locator("[data-today-title]").first().waitFor();
+  const chosen = await page.evaluate(
+    () =>
+      JSON.parse(localStorage.getItem("amp.learner") ?? "{}")?.state
+        ?.learnerId ?? null,
+  );
+  assert.ok(
+    chosen === null || chosen.startsWith(`child-${account}-`),
+    `no other account's learner stays chosen: ${chosen}`,
+  );
 }
 async function visible(page: Page, selector: string) {
   // Phone landscape only has to stay usable; the others must fit.
@@ -345,9 +373,12 @@ try {
     await f.page.screenshot({
       path: `artifacts/purchase-app/access-${width}.png`,
     });
-    await visible(f.page, ".family-learner:first-child");
+    await visible(
+      f.page,
+      '[aria-label="What each learner holds"] > li:first-child',
+    );
     await f.page
-      .getByRole("button", { name: "Purchases & records", exact: true })
+      .getByRole("button", { name: /^Purchases and records/ })
       .click();
     await f.page.locator('[data-purchase-entry="annual"]').click();
     await f.page.getByRole("heading", { name: "Annual access" }).waitFor();
@@ -435,7 +466,7 @@ try {
     purchaseId,
   );
   await expired.page.goto("http://127.0.0.1:4390");
-  await expectCurrentLearner(expired.page, "child-a-1");
+  await expectHome(expired.page, "a");
   assert.equal(expired.started(), false);
   assert.equal(await expired.page.locator(".annual-purchase").count(), 0);
   assert.equal(
@@ -517,33 +548,42 @@ try {
   await returned.page
     .getByRole("button", { name: "Check access", exact: true })
     .click();
-  await returned.page
-    .getByRole("heading", { name: "Access is active.", exact: true })
-    .waitFor();
+  // Verified access opens the paid child's own page (AnnualPurchase.tsx),
+  // never the root.
+  const paidChild = `/family/${FIXTURE_FAMILY_ID}/kids/child-a-2`;
+  await returned.page.waitForURL((url) => url.pathname === paidChild);
+  await returned.page.locator('[data-child-page="child-a-2"]').waitFor();
   await until(
     returned.page,
     () => returned.familyReads() > readsBeforeGrant,
     "verified access refreshes root family metadata",
   );
+  // A same-account session renewal keeps what is on screen.
   await returned.page.evaluate(() =>
     (window as any).purchaseReview.emit({
       token: "renewed-a",
       accountId: "parent-a",
     }),
   );
-  assert.equal(
-    await returned.page
-      .locator(".annual-learner .premium-select")
-      .getAttribute("data-value"),
-    "child-a-2",
-  );
+  await frames(returned.page);
+  assert.equal(new URL(returned.page.url()).pathname, paidChild);
+  await returned.page.locator('[data-child-page="child-a-2"]').waitFor();
   await returned.page.evaluate(() =>
     (window as any).purchaseReview.emit({
       token: "parent-b",
       accountId: "parent-b",
     }),
   );
-  await expectCurrentLearner(returned.page, "child-b-1");
+  // Another account's child's page stays where it is and says so
+  // (docs/architecture/spaces.md); its way on is this account's home.
+  await returned.page
+    .getByText("This isn’t available to your account", { exact: true })
+    .waitFor();
+  await returned.page
+    .getByRole("link", { name: "Go to your places" })
+    .or(returned.page.getByRole("button", { name: "Go to your places" }))
+    .click();
+  await expectHome(returned.page, "b");
   assert.equal(await returned.page.locator(".annual-purchase").count(), 0);
   await returned.page.evaluate(
     (id) =>
@@ -561,14 +601,26 @@ try {
   await returned.page
     .getByRole("button", { name: "Sign out", exact: true })
     .click();
-  await returned.page
-    .getByRole("button", { name: "Parent sign in", exact: true })
-    .waitFor();
+  // Signed out in place (as when another tab signs out), the family's own
+  // guard sends the device to sign in: parent B's family never stays on
+  // screen, and the screen is never left blank. (This fixture's sign-in
+  // returns as parent A.)
+  await returned.page.waitForURL(
+    (url) => url.pathname !== `/family/${FAMILY_B}`,
+  );
+  await returned.page.locator("[data-today-title], h1").first().waitFor();
   assert.equal(
-    await returned.page.evaluate(
-      () => (window as any).purchaseReview.recordAtSignOut,
+    await returned.page.getByText("Learner B 1").count(),
+    0,
+    "the signed-out account's children are gone",
+  );
+  // The purchase record was gone before sign-out ran (kept across the
+  // fixture sign-in's reload).
+  assert.equal(
+    await returned.page.evaluate(() =>
+      sessionStorage.getItem("fixture-record-at-sign-out"),
     ),
-    null,
+    "null",
   );
   assert.deepEqual(returned.faults, []);
   await returned.page.close();
@@ -606,7 +658,7 @@ try {
     );
     await f.releaseAndWait();
     await frames(f.page);
-    await expectCurrentLearner(f.page, "child-b-1");
+    await expectHome(f.page, "b");
     assert.equal(await f.page.locator(".annual-purchase").count(), 0);
     assert.equal(
       await f.page.getByText(/purchase return could not be matched/).count(),
@@ -633,10 +685,9 @@ try {
       .getByRole("navigation", { name: "Account" })
       .getByRole("link", { name: "Billing", exact: true })
       .click();
-    await f.page
-      .getByRole("button", { name: "Continue with AMP", exact: true })
-      .click();
-    await f.page.waitForURL(/\/continue\/child-a-\d$/);
+    // Each learner without a plan has its own Continue with AMP.
+    await f.page.locator('[data-continue-with-amp="child-a-1"]').click();
+    await f.page.waitForURL(/\/continue\/child-a-1$/);
     await f.page.goto("http://127.0.0.1:4390/purchase/choose");
     await f.page
       .getByRole("heading", { name: "Choose your AMP plan" })
@@ -672,10 +723,10 @@ try {
     await f.page
       .getByRole("heading", { name: "Choose your AMP plan" })
       .waitFor();
+    // Back to where it was opened from: Billing, each learner's Continue.
     await f.page.getByRole("button", { name: "Back to family" }).click();
-    await f.page
-      .getByRole("button", { name: "Continue with AMP", exact: true })
-      .waitFor();
+    await f.page.waitForURL((url) => url.pathname === "/account/billing");
+    await f.page.locator('[data-continue-with-amp="child-a-1"]').waitFor();
     assert.deepEqual(f.faults, []);
     await f.page.close();
   }

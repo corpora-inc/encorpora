@@ -15,6 +15,9 @@
   box-sizing: border-box;
   width: 100%;
   max-width: 520px;
+  /* A slot's mark sits 7 px over its corner (.work-slot-mark): the diagram
+     keeps that room inside, so an edge slot never widens the stage. */
+  padding-inline: 7px;
   margin: var(--space-2) auto 0;
 }
 .work-diagram[data-kind="lines"] {

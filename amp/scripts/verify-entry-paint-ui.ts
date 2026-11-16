@@ -9,6 +9,11 @@ import { chromium as rawChromium, webkit, type Page } from "playwright";
 const chromium = secureChromium(rawChromium);
 import { createServer, preview } from "vite";
 import { fixtureMe } from "./me-fixture";
+import {
+  FIXTURE_FAMILY_ID,
+  fixtureFamilies,
+  fixtureFamilyProjection,
+} from "./family-space-fixture";
 import { retentionNotice } from "../src/family/contracts";
 
 // Synthetic API responses exercise real auth, routing and CSS. The same check
@@ -124,7 +129,7 @@ try {
             accountStarted = false,
             failSession = scenario === "error";
           await context.addInitScript(`
-            Object.defineProperty(navigator, 'doNotTrack', {get: function(){return '1';}});
+            Object.defineProperty(navigator, 'globalPrivacyControl', {get: function(){return true;}});
             window.entryPaints = [];
             function sampleEntry(){
               var root = document.getElementById('root');
@@ -188,6 +193,19 @@ try {
                       },
               });
             }
+            // A parent with a child lands on the family's Today.
+            if (path === "/api/v1/families")
+              return route.fulfill({ json: fixtureFamilies() });
+            if (path === `/api/v1/families/${FIXTURE_FAMILY_ID}`)
+              return route.fulfill({
+                json: fixtureFamilyProjection([
+                  {
+                    id: "synthetic-learner",
+                    name: "Test Learner",
+                    birthYear: 2010,
+                  },
+                ]),
+              });
             if (path === "/api/v1/me") {
               accountStarted = true;
               await account.promise;
@@ -264,8 +282,12 @@ try {
               .getByRole("heading", { name: "What brings you to AMP?" })
               .waitFor();
           } else if (scenario === "learner") {
+            await page.waitForURL(`${origin}/family/${FIXTURE_FAMILY_ID}`);
+            await page.locator("[data-today-title]").waitFor();
             await page
-              .getByRole("heading", { name: "Test Learner", exact: true })
+              .getByRole("main")
+              .getByText("Test Learner", { exact: true })
+              .first()
               .waitFor();
           } else {
             await page.locator(".app-loading").waitFor({ state: "detached" });

@@ -1219,10 +1219,23 @@ try {
         mapBox,
         "the map keeps its size and place under the skill",
       );
-      assert.equal(
-        await page.locator('link[rel="canonical"]').getAttribute("href"),
-        `https://amp.corpora.inc/pathways/${target.id}`,
-      );
+      // The catalog's words are shared with the public map; indexing is not
+      // (pathways-metadata.ts): a family's map is never canonical and is
+      // marked noindex, the public map points at the skill's own page.
+      if (/^\/pathways(?:\/|$)/.test(new URL(page.url()).pathname))
+        assert.equal(
+          await page.locator('link[rel="canonical"]').getAttribute("href"),
+          `https://amp.corpora.inc/pathways/${target.id}`,
+        );
+      else {
+        assert.equal(await page.locator('link[rel="canonical"]').count(), 0);
+        assert.equal(
+          await page
+            .locator('meta[name="robots"]')
+            .getAttribute("content"),
+          "noindex, follow",
+        );
+      }
       assert.equal(await page.title(), `${target.title} | AMP Pathways`);
       // Read, not practiced, here: practicing from the map is a learner's
       // own (the drill below, learning for themselves).

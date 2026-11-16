@@ -302,8 +302,9 @@
   .reference-lesson .worked-example .figure {
     margin-block: var(--space-4);
   }
+  /* The answer reads on the lesson's own measure, however wide the reader. */
   .reference-lesson .worked-answer {
-    max-inline-size: none;
+    max-inline-size: var(--lesson-measure);
     margin: var(--space-4) 0 0;
     padding-top: var(--space-4);
     border-top: 1px solid var(--color-border-strong);

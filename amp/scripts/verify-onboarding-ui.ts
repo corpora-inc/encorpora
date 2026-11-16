@@ -1,4 +1,9 @@
 import { secureChromium } from "../browser-security.mjs";
+import {
+  FIXTURE_FAMILY_ID,
+  fixtureFamilies,
+  fixtureFamilyProjection,
+} from "./family-space-fixture";
 import { settleArrival } from "./ui-settle";
 import { META_PURCHASE_MEASUREMENT_NOTICE } from "../src/advertising/permission-contracts";
 import AxeBuilder from "@axe-core/playwright";
@@ -223,6 +228,24 @@ async function serve(page: Page, state: State, faults: string[]) {
       return route.fulfill({ json: { recorded: true } });
     }
     if (path === "/me") return route.fulfill({ json: me(state) });
+    // The starter's family, holding its children: where a parent's screens
+    // go back to.
+    if (path === "/families")
+      return route.fulfill({
+        json: state.learners.length
+          ? fixtureFamilies()
+          : { families: [], next: null },
+      });
+    if (path === `/families/${FIXTURE_FAMILY_ID}`)
+      return route.fulfill({
+        json: fixtureFamilyProjection(
+          state.learners.map(({ id, name, birthYear }) => ({
+            id,
+            name,
+            birthYear,
+          })),
+        ),
+      });
     if (path === "/billing/offer")
       return route.fulfill({
         json: { available: true, offer: offers[0], offers },
@@ -462,44 +485,43 @@ try {
         );
       await fits(page, `${tag} sign-up`);
       // "Continue with AMP" for the child, as the free allowance's pause opens
-      // it: the email is confirmed first.
+      // it: the plan at once. Card-backed consent rests on the card
+      // transaction notifying the account holder (16 CFR 312.5(b)(2)(ii)), so
+      // an unconfirmed email never stands before it (#2336).
       await page.goto(`${origin}/continue/learner-1`);
-      await page.getByRole("heading", { name: "Continue with AMP" }).waitFor();
-      await page.getByRole("heading", { name: "Confirm your email" }).waitFor();
-      await page.getByText("parent@example.test", { exact: true }).waitFor();
-      const title = page.getByRole("heading", { name: "Continue with AMP" }),
-        titleBox = await box(title),
-        verify = await box(page.locator("main section").first());
+      const title = page.getByRole("heading", { name: "Continue with AMP" });
+      await title.waitFor();
+      const plan = page.getByRole("radiogroup", { name: "Plan" });
+      await plan.waitFor();
+      assert.match(page.url(), /\/continue\/learner-1$/);
+      assert.equal(
+        await page.getByRole("heading", { name: "Confirm your email" }).count(),
+        0,
+        `${tag}: no email confirmation before the plan`,
+      );
       const look = (name: string, role: "button" | "link" = "button") =>
         page.getByRole(role, { name, exact: true }).evaluate((node) => {
           const style = getComputedStyle(node);
+          const probe = document.createElement("span");
+          probe.style.color = "var(--color-primary)";
+          document.body.append(probe);
+          const accent = getComputedStyle(probe).color;
+          probe.remove();
           return {
-            background: style.backgroundColor,
-            border: style.borderTopColor,
+            accent,
             color: style.color,
             decoration: style.textDecorationLine,
             height: node.getBoundingClientRect().height,
           };
         });
-      const primary = await look("I’ve confirmed it"),
-        secondary = await look("Send another email"),
-        // #2157 gives Continue with AMP one Back above its heading.
-        back = await look("Back", "link");
+      // #2157 gives Continue with AMP one Back above its heading: opened
+      // directly, it returns to the child's own page in their family.
+      const back = await look("Back", "link");
       assert.equal(
         await page
           .getByRole("link", { name: "Back", exact: true })
           .getAttribute("href"),
-        "/",
-      );
-      assert.notEqual(
-        primary.background,
-        secondary.background,
-        `${tag}: one primary, one secondary`,
-      );
-      assert.equal(
-        secondary.background,
-        "rgba(0, 0, 0, 0)",
-        `${tag}: secondary is not filled`,
+        `/family/${FIXTURE_FAMILY_ID}/kids/learner-1`,
       );
       assert.equal(
         back.decoration,
@@ -508,28 +530,10 @@ try {
       );
       assert.equal(
         back.color,
-        secondary.color,
+        back.accent,
         `${tag}: Back uses the accent token`,
       );
-      for (const control of [primary, secondary, back])
-        assert.ok(control.height >= 44, `${tag}: 44px targets`);
-      await fits(page, `${tag} verify`);
-      if (width === 320 && theme === "light") await axe(page, "verify");
-      await page.screenshot({ path: `${shots}/verify-${tag}.png` });
-
-      // Confirmation follows `/me` to the plan, in place: never consent, never
-      // a dead end, and the title holds still.
-      state.confirm = false;
-      await page.getByRole("button", { name: "I’ve confirmed it" }).click();
-      const plan = page.getByRole("radiogroup", { name: "Plan" });
-      await plan.waitFor();
-      assert.match(page.url(), /\/continue\/learner-1$/);
-      assert.deepEqual(await box(title), titleBox, `${tag}: the title stays`);
-      assert.equal(
-        (await box(plan)).x,
-        verify.x,
-        `${tag}: the plan keeps the step's column`,
-      );
+      assert.ok(back.height >= 44, `${tag}: 44px targets`);
       assert.equal(
         await page.getByText("Enrollment is unavailable").count(),
         0,
@@ -966,7 +970,7 @@ try {
       await context.close();
     }
   console.log(
-    "Onboarding: Continue with AMP for a child: confirm email → plan → acknowledgement → Stripe redirect; return processing → paid → claim for the child → back; every return phase, a paid plan's learner → birth year → claim retry, and unavailable enrollment at 320x568/390x844/768x1024/1280x800 (strict) and 844x390 (phone-landscape smoke) × light/dark; no overflow, stable card geometry, zero layout shift between phases.",
+    "Onboarding: Continue with AMP for a child: plan at once → acknowledgement → Stripe redirect; return processing → paid → claim for the child → back; every return phase, a paid plan's learner → birth year → claim retry, and unavailable enrollment at 320x568/390x844/768x1024/1280x800 (strict) and 844x390 (phone-landscape smoke) × light/dark; no overflow, stable card geometry, zero layout shift between phases.",
   );
 } catch (error) {
   for (const context of browser.contexts())

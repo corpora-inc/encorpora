@@ -52,6 +52,7 @@ import { probe, settle, shellRecord, shiftRecorder } from "./app-shell-probe";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { todayTitle } from "./today-title";
+import { GRADE_5_CLASS } from "../src/schools/demo/personas";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -249,6 +250,10 @@ const check = (label: string, ok: boolean, detail: unknown = "") => {
 };
 const PASSWORD = "synthetic long fixture passphrase";
 const last: { page: Page | null } = { page: null };
+/** The demo class's made-up students (src/schools/demo/personas.ts). */
+const DEMO_CLASS_NAMES = new RegExp(
+  `\\b(?:${GRADE_5_CLASS.map((p) => p.name[0]).join("|")})\\b`,
+);
 const CLASS_TODAY = /\/school\/[0-9a-f-]{36}\/classes\/[0-9a-f-]{36}\/today$/;
 /** A family's Today, at its own address (spaces P2). */
 const FAMILY_TODAY = /\/family\/[0-9a-f-]{36}$/;
@@ -923,7 +928,9 @@ async function teacherJourney(
   await page.waitForURL(/\/school\/start$/);
   await heading(page, "Set up your class");
   await page.getByRole("button", { name: "Explore a demo first" }).click();
-  await page.waitForURL(CLASS_TODAY);
+  // Joining the zone's demo school is timed by tests/school-demo.integration.ts;
+  // here the API shares a busy machine with Vite and the browsers.
+  await page.waitForURL(CLASS_TODAY, { timeout: 90_000 });
   await todayTitle(page);
   check(
     // The shared demo school of their time zone (docs/schools.md#demo-places),
@@ -940,10 +947,9 @@ async function teacherJourney(
   const classPath = new URL(page.url()).pathname.replace(/\/today$/, "");
   // Alive: made-up students’ work, marked Demo, with the class code and
   // Start class on Today, and the bar’s one action to the real class.
-  await page
-    .getByText(/Noor|Diego|Lena/)
-    .first()
-    .waitFor();
+  // Which of its made-up students Today names depends on the day of the
+  // week; one of the class's own always is.
+  await page.getByText(DEMO_CLASS_NAMES).first().waitFor();
   check(
     `${label} says Demo`,
     (await page

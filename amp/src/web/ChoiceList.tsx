@@ -27,6 +27,9 @@ export function ChoiceList({
     // Two across when every option reads in at most two lines at half the
     // width (short measurements, numbers, names); else one statement a row.
     const columns = () => {
+      // Not laid out yet (inside a closed answer dialog): decide when it
+      // opens, so its options never draw in one layout and then the other.
+      if (!el.clientWidth) return;
       el.setAttribute("data-measure", "");
       const style = getComputedStyle(el);
       const inner =
@@ -62,8 +65,11 @@ export function ChoiceList({
     };
     update();
     el.addEventListener("scroll", scrolled, { passive: true });
-    if (typeof ResizeObserver === "undefined")
+    if (typeof ResizeObserver === "undefined") {
+      // No later measure: one statement a row, never left unseen.
+      el.dataset.columns ??= "1";
       return () => el.removeEventListener("scroll", scrolled);
+    }
     const observer = new ResizeObserver(update);
     observer.observe(el);
     for (const option of el.children) observer.observe(option);

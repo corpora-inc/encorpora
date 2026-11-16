@@ -791,6 +791,7 @@ try {
     [randomUUID(), learnerId],
   );
   async function familyHome(tab: Page) {
+    // The family's Today, at its own address (docs/architecture/spaces.md).
     await tab.waitForURL((url) => /^\/family\/[^/]+$/.test(url.pathname));
     await todayTitle(tab);
     await tab
@@ -1024,6 +1025,8 @@ try {
     channel.postMessage("changed");
     channel.close();
   });
+  // The first account's child's page stays where it is and says so
+  // (docs/architecture/spaces.md); its way on is the new account's home.
   await page
     .getByRole("heading", {
       name: "This isn’t available to your account",
@@ -1043,6 +1046,18 @@ try {
     "a new account cannot inherit a consumed checkout return",
   );
   assert.equal(new URL(page.url()).pathname, previousChildPath);
+  await page
+    .getByRole("link", { name: "Go to your places" })
+    .or(page.getByRole("button", { name: "Go to your places" }))
+    .click();
+  await page.getByText("Second Learner", { exact: true }).first().waitFor();
+  assert.equal(
+    await page.getByText("Test Learner", { exact: true }).count(),
+    0,
+    "nothing of the first account shows",
+  );
+  // The new account's own family, never the first account's checkout return.
+  assert.match(new URL(page.url()).pathname, /^\/family\/[^/]+$/);
   await otherTab.close();
   assert.deepEqual(errors, []);
   await context.close();

@@ -21,7 +21,7 @@ import { counterBuilderLesson } from "../src/content/counter-builder-lessons";
 import { publicationHtml } from "../src/content/publications";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
-import { chooseLearner } from "./ui-controls";
+import { practiceHere } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 import { fillCounterBuilder } from "./ui-counter-builder";
 
@@ -225,7 +225,7 @@ try {
       page.setDefaultTimeout(30000);
       page.on("pageerror", (error) => errors.push(error.message));
       await page.goto(`${baseUrl}/overview`);
-      await chooseLearner(page, learner.id);
+      await practiceHere(page, learner.id);
       const compact = height < 600;
       for (const variant of smoke
         ? ["build-join", "build-frame", "story-take"]

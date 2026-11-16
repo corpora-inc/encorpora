@@ -1,5 +1,11 @@
 import { secureChromium } from "../browser-security.mjs";
-import { currentLearner, leaveSettings } from "./ui-controls";
+import { chooseLearner, openMenu } from "./ui-controls";
+import {
+  FIXTURE_FAMILY_ID,
+  fixtureFamilies,
+  fixtureChildProgress,
+  fixtureFamilyProjection,
+} from "./family-space-fixture";
 import { fixtureMe } from "./me-fixture";
 import { defaultPracticeSettings } from "../src/learning/practice-settings";
 import assert from "node:assert/strict";
@@ -64,6 +70,45 @@ function summary(name: string, id = "current-child"): FamilySummary {
     retained: retentionNotice,
   };
 }
+/** Another account's family: the obsolete and old sessions'. */
+const OTHER_FAMILY = "00000000-0000-4000-8000-00000000fa0f";
+const familyOf = (token: string) =>
+  ["Bearer current-token", "Bearer new-token"].includes(token)
+    ? FIXTURE_FAMILY_ID
+    : OTHER_FAMILY;
+/** The family's projection of a summary's children; the parent may rename. */
+function projectionOf(summary: FamilySummary, familyId: string) {
+  const projection = fixtureFamilyProjection(
+    summary.learners.map((learner) => ({
+      id: learner.id,
+      name: learner.name,
+      birthYear: learner.birthYear ?? null,
+    })),
+    familyId,
+  );
+  return {
+    ...projection,
+    children: projection.children.map((child) => ({
+      ...child,
+      capabilities: { ...child.capabilities, rename: true },
+    })),
+  };
+}
+/** The children the drawer lists, by id (a family's rows). */
+async function drawerChildren(page: Page) {
+  const drawer = await openMenu(page);
+  const ids = await drawer
+    .locator('a[href*="/kids/"]')
+    .evaluateAll((links) =>
+      links.map((link) => link.getAttribute("href")!.split("/kids/")[1]),
+    );
+  await page.keyboard.press("Escape");
+  await drawer.waitFor({ state: "detached" });
+  return ids;
+}
+/** A name the screen shows (Today's rows, a child's page). */
+const named = (page: Page, name: string) =>
+  page.getByRole("main").getByText(name, { exact: true });
 async function settledRender(page: Page) {
   // Resolve queued promise continuations and React commits without a fixed sleep.
   await page.evaluate(
@@ -84,6 +129,26 @@ async function fixturePage(family: (token: string) => FamilySummary) {
       return route.fulfill({
         json: { templates: [], lessons: [], skills: [], mode: "fixture" },
       });
+    if (path === "/api/v1/families" || path.startsWith("/api/v1/families/")) {
+      const token = route.request().headers().authorization ?? "";
+      familyTokens.push(token);
+      const id = familyOf(token);
+      if (path === "/api/v1/families")
+        return route.fulfill({ json: fixtureFamilies(id) });
+      if (path === `/api/v1/families/${id}`)
+        return route.fulfill({ json: projectionOf(family(token), id) });
+      const record = path.match(
+        new RegExp(`^/api/v1/families/${id}/children/([^/]+)/progress$`),
+      );
+      const child = family(token).learners.find(
+        (learner) => learner.id === record?.[1],
+      );
+      if (child)
+        return route.fulfill({
+          json: fixtureChildProgress(child.id, child.name),
+        });
+      return route.fulfill({ status: 404, json: { error: "not_found" } });
+    }
     if (path === "/api/v1/me") {
       const token = route.request().headers().authorization ?? "";
       familyTokens.push(token);
@@ -125,8 +190,8 @@ async function fixturePage(family: (token: string) => FamilySummary) {
   });
   return { page, errors, familyTokens };
 }
-async function open(page: Page) {
-  await page.goto(`http://127.0.0.1:${sessionPort}`);
+async function open(page: Page, path = "/") {
+  await page.goto(`http://127.0.0.1:${sessionPort}${path}`);
   await page.waitForFunction(() => (window as any).sessionReview?.ready);
 }
 try {
@@ -145,10 +210,10 @@ try {
           accountId: "current-parent",
         }),
       );
-      // The screen names the current learner (its Overview, or the
-      // birth-year question); the drawer says whose learner it is.
-      await page.getByRole("heading", { name: /Current learner/ }).waitFor();
-      assert.equal(await currentLearner(page), "current-child");
+      // The family's Today names the current account's child; the drawer
+      // lists that family's children only.
+      await named(page, "Current learner").first().waitFor();
+      assert.deepEqual(await drawerChildren(page), ["current-child"]);
       await page.evaluate((result) => {
         const fixture = (window as any).sessionReview;
         if (result === "resolve")
@@ -159,15 +224,9 @@ try {
         else fixture.reject();
       }, outcome);
       await settledRender(page);
-      assert.equal(await currentLearner(page), "current-child");
-      assert.equal(
-        await page.getByRole("heading", { name: /Current learner/ }).count(),
-        1,
-      );
-      assert.equal(
-        await page.getByRole("heading", { name: /Obsolete learner/ }).count(),
-        0,
-      );
+      assert.deepEqual(await drawerChildren(page), ["current-child"]);
+      await named(page, "Current learner").first().waitFor();
+      assert.equal(await named(page, "Obsolete learner").count(), 0);
       assert.ok(
         familyTokens.length > beforeCurrent,
         "the current session performs authenticated account reads",
@@ -289,34 +348,29 @@ try {
         }),
       );
       await page.locator("[data-app-logo]").waitFor();
-      await page.getByRole("button", { name: "Open AMP menu" }).click();
-      await page.getByRole("link", { name: "Account", exact: true }).click();
-      await page
-        .getByRole("navigation", { name: "Account" })
-        .getByRole("link", { name: "Learners", exact: true })
-        .click();
+      // The child's own page holds their name (docs/architecture/spaces.md).
+      await chooseLearner(page, "current-child");
       await held;
       await page
         .getByRole("heading", { name: "Before rename", exact: true })
         .waitFor();
-      await page
-        .getByRole("button", { name: "Edit name", exact: true })
-        .click();
+      await page.getByRole("button", { name: "Change", exact: true }).click();
       await page.getByLabel("Name", { exact: true }).fill("After rename");
       await page
         .getByRole("button", { name: "Save name", exact: true })
         .click();
+      // Its toast says so.
+      await page.getByText("Name saved.", { exact: true }).waitFor();
       await page
-        .getByRole("status")
-        .filter({ hasText: "Name saved." })
+        .getByRole("heading", { name: "After rename", exact: true })
         .waitFor();
-      await leaveSettings(page);
-      await page.getByRole("heading", { name: /After rename/ }).waitFor();
       release();
       await handlerDone;
       console.log(`Held ${outcome} request: ${await networkDone}`);
       await settledRender(page);
-      assert.ok(requests >= 4);
+      // The rename's refresh read /me again after the held read (the child's
+      // name itself comes from the family's projection now).
+      assert.ok(requests >= 3, `account reads: ${requests}`);
       assert.equal(
         await page
           .getByRole("alert")
@@ -325,7 +379,9 @@ try {
         0,
       );
       assert.equal(
-        await page.getByRole("heading", { name: /After rename/ }).count(),
+        await page
+          .getByRole("heading", { name: "After rename", exact: true })
+          .count(),
         1,
       );
       assert.equal(
@@ -353,18 +409,23 @@ try {
     });
     try {
       // A birth year saved for the old account cannot land on the new one.
-      await page.route("**/birth-year", async (route) => {
+      // The API's birth-year write, not the question's own address.
+      await page.route("**/api/v1/learners/*/birth-year", async (route) => {
         arrived();
         await proceed;
         await route.fulfill({ json: { birthYear: 2016 } });
       });
-      await open(page);
+      // The birth-year question has its own address (/profile/birth-year).
+      await open(page, "/profile/birth-year");
       await page.evaluate(() =>
         (window as any).sessionReview.emit({
           token: "old-token",
           accountId: "old-parent",
         }),
       );
+      await page
+        .getByRole("heading", { name: "What year was Old learner born?" })
+        .waitFor();
       await page.getByRole("button", { name: "2016", exact: true }).click();
       await received;
       await page.evaluate(() =>

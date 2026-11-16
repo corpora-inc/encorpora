@@ -384,7 +384,7 @@ try {
     (window as any).paymentHarness.family();
   });
   await page
-    .getByRole("button", { name: "Purchases & records", exact: true })
+    .getByRole("button", { name: /^Purchases and records/ })
     .click();
   await page.locator("[data-payment-history]").click();
   await page
@@ -418,7 +418,7 @@ try {
       (window as any).paymentHarness.family();
     });
     await page
-      .getByRole("button", { name: "Purchases & records", exact: true })
+      .getByRole("button", { name: /^Purchases and records/ })
       .click();
     await page.locator("[data-payment-history]").click();
     await page.getByRole("button", { name: /AMP annual/ }).waitFor();

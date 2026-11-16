@@ -1,7 +1,7 @@
 import { secureChromium } from "../browser-security.mjs";
 import { verifyLandscapeSmokeChecks } from "./verify-ui-viewports";
 import { absoluteValueTemplates } from "../src/math/absolute-value-practice.js";
-import { chooseLearner } from "./ui-controls";
+import { practiceHere } from "./ui-controls";
 import { segments, spokenMath } from "../src/web/MathText";
 import { openTopicLesson } from "./ui-practice";
 import { algebraTemplates } from "../src/math/algebra-practice.js";
@@ -76,7 +76,7 @@ try {
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("http://127.0.0.1:4390/overview");
-  await chooseLearner(page, learner.id);
+  await practiceHere(page, learner.id);
   for (const size of [
     { width: 390, height: 844 },
     { width: 320, height: 568 },

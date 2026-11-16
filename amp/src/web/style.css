@@ -277,7 +277,9 @@ nav button:hover {
    cubes to dots and the place labels below 12 px. */
 .figure[data-kind="base-ten-pair"] {
   height: auto;
-  max-height: none;
+  /* No height cap but the labels' own (FigureTextCap.tsx): a wide stage
+     never draws the place labels above the figure type size. */
+  max-height: var(--figure-cap-height, none);
   min-height: 0;
 }
 .figure[data-kind="base-ten-pair"] .base-ten-label {
