@@ -36,8 +36,6 @@ import {
   continuationSearch,
   continuationUrl,
   fundedAttribution,
-  fundedPrograms,
-  isFundedReturn,
 } from "../../lib/funded-entry";
 import { useAuthDraft } from "./draft";
 import { currentBrowserKind } from "../../../analytics/browser-kind";
@@ -348,8 +346,8 @@ export function SignInScreen() {
     });
   }
   const returnTo = continuationUrl(carry, "/");
-  // A new account answers "What brings you to AMP?" first.
-  const newUserReturn = continuationUrl(carry, "/start");
+  // Sign-in and sign-up resume the same account home. Home asks the role
+  // question only when the account has no place yet.
   const done = async () => {
     const session = await measureAuth("session", accessSession);
     if (!session) throw new Error("Sign-in didn’t finish. Please try again.");
@@ -357,28 +355,7 @@ export function SignInScreen() {
     await continueAfterSignIn();
   };
   async function continueAfterSignIn() {
-    if (schoolEntry || carry.return === "family-approval")
-      await navigate({ href: continuationUrl(carry), replace: true });
-    else if (carry.return === "security")
-      await navigate({
-        href: continuationUrl(carry),
-        replace: true,
-      });
-    else
-      await navigate({
-        to:
-          carry.return === "free-practice"
-            ? "/start"
-            : carry.return === "access"
-              ? "/access"
-              : isFundedReturn(carry.return)
-                ? fundedPrograms[carry.return].path
-                : step === "create"
-                  ? "/start"
-                  : "/",
-        search: carry,
-        replace: true,
-      });
+    await navigate({ href: returnTo, replace: true });
   }
   async function run(
     work: () => Promise<void>,
@@ -485,7 +462,7 @@ export function SignInScreen() {
           name: "",
           email: email.trim(),
           password,
-          callbackURL: newUserReturn,
+          callbackURL: returnTo,
         });
         fail(result);
         // Where email must be confirmed first, no session is issued yet. A
@@ -576,7 +553,7 @@ export function SignInScreen() {
             provider,
             fetchOptions: { timeout: 15_000 },
             callbackURL: returnTo,
-            newUserCallbackURL: newUserReturn,
+            newUserCallbackURL: returnTo,
             errorCallbackURL: `${step === "create" ? "/sign-up" : "/sign-in"}?${new URLSearchParams(
               {
                 provider,

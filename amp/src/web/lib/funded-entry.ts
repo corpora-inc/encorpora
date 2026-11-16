@@ -179,7 +179,7 @@ export function continuationSearch(
 
 export function continuationUrl(
   search: Record<string, unknown>,
-  fallback = "/start",
+  fallback = "/",
 ) {
   const safe = continuationSearch(search);
   if (safe.return === "security") return safe.next ?? "/account/security";
@@ -197,7 +197,7 @@ export function continuationUrl(
   }
   const path =
     safe.return === "free-practice"
-      ? "/start"
+      ? "/"
       : safe.return === "access"
         ? "/access"
         : isFundedReturn(safe.return)
@@ -207,7 +207,6 @@ export function continuationUrl(
     ...campaignSearch(safe),
     ...(safe.program ? { program: safe.program } : {}),
     ...(safe.entry ? { entry: safe.entry } : {}),
-    ...(safe.return === "free-practice" ? { return: safe.return } : {}),
   } as Record<string, string>);
   return path + (params.size ? `?${params}` : "");
 }
