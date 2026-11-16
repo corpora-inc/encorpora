@@ -78,11 +78,12 @@ const FAMILY_LEAF: Record<string, string> = {
  * page under it is never remounted. */
 function FamilyClassFrame({
   loading,
+  title,
   children,
 }: Parameters<ClassHost["Frame"]>[0]) {
   const place = useFamilyPlace();
   return (
-    <FamilyFrame place={place} loading={loading}>
+    <FamilyFrame place={place} loading={loading} title={title}>
       {children}
     </FamilyFrame>
   );
@@ -99,6 +100,7 @@ function useFamilyHost(place: FamilyPlace): ClassHost | null {
   return {
     place: { org: own.org, class: own.id },
     Frame: FamilyClassFrame,
+    frameHeading: true,
     href: (leaf) => {
       const mapped = FAMILY_LEAF[leaf];
       return familyHref(
