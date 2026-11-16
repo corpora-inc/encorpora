@@ -322,12 +322,22 @@ test(
             user.name.first = "Updated";
             user.roles.student!.grade = "7";
           }
+          // Clever's date of birth refines the grade estimate within two
+          // years; a contradictory one falls back to the grade.
+          const studentRole = (id: string) =>
+            source.users.find((u) => u.id === id)!.roles.student!;
+          studentRole(students[10]).birth_year = birthYearForGrade(4) - 1;
+          studentRole(students[12]).birth_year = birthYearForGrade(4) - 13;
           await sync();
           const updated = await person(students[0]),
-            preserved = await person(students[1]);
+            preserved = await person(students[1]),
+            dated = await person(students[10]),
+            contradicted = await person(students[12]);
           assert.equal(updated.learner_id, first.learner_id);
           assert.equal(updated.learner_name, "Updated");
           assert.equal(updated.birth_year, birthYearForGrade(7));
+          assert.equal(dated.birth_year, birthYearForGrade(4) - 1);
+          assert.equal(contradicted.birth_year, birthYearForGrade(4));
           assert.equal(preserved.learner_id, experienced.learner_id);
           assert.equal(preserved.learner_name, "Classroom nickname");
           assert.equal(preserved.birth_year, experienced.birth_year);

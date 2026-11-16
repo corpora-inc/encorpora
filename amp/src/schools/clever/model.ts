@@ -48,8 +48,22 @@ export const userSchema = z.object({
   }),
   email: optionalText,
   roles: z.object({
+    // AMP keeps only the year of a student's date of birth; the full date is
+    // dropped here. Already-parsed records (stored snapshots) carry
+    // birth_year, so parsing stays idempotent.
     student: schoolRole
-      .extend({ grade: optionalText, student_number: optionalText })
+      .extend({
+        grade: optionalText,
+        student_number: optionalText,
+        dob: optionalText,
+        birth_year: z.number().int().nullable().optional(),
+      })
+      .transform(({ dob, birth_year, ...role }) => {
+        const year = birthYearFromDob(dob) ?? birth_year ?? null;
+        const result: typeof role & { birth_year?: number } = { ...role };
+        if (year !== null) result.birth_year = year;
+        return result;
+      })
       .nullable()
       .optional(),
     teacher: schoolRole
@@ -131,6 +145,18 @@ export const userRoles = (user: User) =>
   Object.entries(user.roles)
     .filter(([, role]) => role != null)
     .map(([role]) => role);
+/** Clever sends dob as M/D/YYYY (sometimes ISO YYYY-MM-DD). Anything else,
+ * or an implausible year, yields null and the grade estimate applies. */
+export function birthYearFromDob(
+  value: string | null | undefined,
+): number | null {
+  const match =
+    value?.match(/^\d{1,2}\/\d{1,2}\/(\d{4})$/) ??
+    value?.match(/^(\d{4})-\d{2}-\d{2}/);
+  if (!match) return null;
+  const year = Number(match[1]);
+  return year >= 1900 && year <= new Date().getUTCFullYear() ? year : null;
+}
 export function gradeLevel(value: string | null | undefined): number | null {
   if (value === "Kindergarten") return 0;
   return value && /^(?:[1-9]|1[0-3])$/.test(value) ? Number(value) : null;

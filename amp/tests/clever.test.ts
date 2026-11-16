@@ -63,7 +63,14 @@ test("Clever strips credentials, unknown fields and sensitive demographics", () 
       },
     },
   });
-  assert.deepEqual(parsed, snapshot.users[0]);
+  // Only the year of the date of birth survives; the full date does not.
+  assert.deepEqual(parsed, {
+    ...snapshot.users[0],
+    roles: {
+      student: { ...snapshot.users[0].roles.student!, birth_year: 2000 },
+    },
+  });
+  assert.equal(JSON.stringify(parsed).includes("1/1/2000"), false);
   assert.equal(safeSyncError(new Error("secret")), "clever_sync_failed");
   assert.equal(safeSyncError(new CleverHttpError(403)), "clever_http_403");
 });
@@ -322,4 +329,40 @@ test("Clever Events preserve feed order, are idempotent and do not persist prior
   assert.equal(updated.users[0].name.first, "Final");
   assert.deepEqual(applyEvents(updated, events), updated);
   assert.equal(snapshot.users[0].name.first, "Student");
+});
+
+test("Clever date of birth yields only a birth year, idempotently", async () => {
+  const { userSchema, birthYearFromDob } =
+    await import("../src/schools/clever/model.js");
+  assert.equal(birthYearFromDob("3/14/2015"), 2015);
+  assert.equal(birthYearFromDob("12/1/2009"), 2009);
+  assert.equal(birthYearFromDob("2014-07-04"), 2014);
+  for (const bad of ["", "2015", "14/2015", "1/1/1850", "1/1/9999", null])
+    assert.equal(birthYearFromDob(bad), null, String(bad));
+  const raw = {
+    id: "300000000000000000000001",
+    district: "100000000000000000000001",
+    name: { first: "A" },
+    roles: {
+      student: {
+        school: "200000000000000000000001",
+        grade: "4",
+        dob: "3/14/2015",
+        gender: "X",
+        race: "Y",
+      },
+    },
+  };
+  const parsed = userSchema.parse(raw);
+  assert.deepEqual(parsed.roles.student, {
+    school: "200000000000000000000001",
+    grade: "4",
+    birth_year: 2015,
+  });
+  assert.deepEqual(userSchema.parse(parsed), parsed);
+  const undated = userSchema.parse({
+    ...raw,
+    roles: { student: { school: raw.roles.student.school, grade: "4" } },
+  });
+  assert.equal("birth_year" in undated.roles.student!, false);
 });

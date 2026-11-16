@@ -290,6 +290,8 @@ export async function applySnapshot(
       grade_level: grade,
       needsLearner: !!user.roles.student || !!previous?.needsLearner,
       birthGrade: grade ?? previous?.birthGrade ?? null,
+      sourceBirthYear:
+        user.roles.student?.birth_year ?? previous?.sourceBirthYear ?? null,
       identifier:
         user.roles.student?.student_number ??
         user.roles.student?.sis_id ??
@@ -574,6 +576,19 @@ type PersonWrite = {
   identifier: string | null;
   needsLearner: boolean;
   birthGrade: number | null;
+  /** From Clever's dob; preferred over the grade estimate. */
+  sourceBirthYear: number | null;
+};
+/** Clever's date of birth refines the grade estimate (held back, skipped,
+ * borderline birthdays) but cannot contradict the school's grade: a year more
+ * than two from the grade estimate is treated as a data error. */
+const birthYearOf = (p: PersonWrite, now?: Date) => {
+  const estimate =
+    p.birthGrade === null ? null : birthYearForGrade(p.birthGrade, now);
+  if (p.sourceBirthYear === null) return estimate;
+  if (estimate === null || Math.abs(p.sourceBirthYear - estimate) <= 2)
+    return p.sourceBirthYear;
+  return estimate;
 };
 
 /** The same privacy and propagation rules as writeStudent, applied in bounded
@@ -641,8 +656,8 @@ async function writeRosterPeople(
       return (
         old?.learner_id &&
         old.label_number === null &&
-        p.birthGrade !== null &&
-        old.birth_year !== birthYearForGrade(p.birthGrade)
+        birthYearOf(p) !== null &&
+        old.birth_year !== birthYearOf(p)
       );
     })
     .map((p) => before.get(p.id)!.learner_id!);
@@ -677,8 +692,8 @@ async function writeRosterPeople(
         return true;
       if (
         old.label_number === null &&
-        p.birthGrade !== null &&
-        old.birth_year !== birthYearForGrade(p.birthGrade) &&
+        birthYearOf(p) !== null &&
+        old.birth_year !== birthYearOf(p) &&
         !experienced.has(old.learner_id)
       )
         return true;
@@ -785,10 +800,8 @@ async function writeRosterPeople(
       learner_id: existing?.learner_id ?? (freshLearner ? randomUUID() : null),
       freshLearner,
       name: learnerNameFrom({ ...p, display_name: existing?.display_name }),
-      birth_year:
-        p.birthGrade === null ? null : birthYearForGrade(p.birthGrade),
-      initial_birth_year:
-        p.birthGrade === null ? null : birthYearForGrade(p.birthGrade, now),
+      birth_year: birthYearOf(p),
+      initial_birth_year: birthYearOf(p, now),
     };
   });
   await batches(
