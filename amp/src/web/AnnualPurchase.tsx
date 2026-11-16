@@ -3,7 +3,7 @@ import { purchaseFetch } from "./lib/purchase-analytics";
 import { useFamilyCache } from "./lib/family-cache";
 import { queryClient, meOptions } from "./lib/query";
 import { useLoggedError, requestMessage } from "./feedback";
-import { NativeSelect } from "./ui/NativeSelect";
+import { SelectField } from "./ui/SelectField";
 import { PlanStep } from "./features/onboarding/PlanStep";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import type {
@@ -470,15 +470,15 @@ function PurchasePanel({
       <div className="annual-body">
         {choices.length > 0 && (
           <div className="annual-learner">
-            <NativeSelect
+            <SelectField
               label="Learner"
               value={learnerId}
               disabled={busy}
-              onChange={(event) => {
+              onValueChange={(value) => {
                 revision.current++;
                 setStatus(undefined);
                 setNotice("");
-                setLearnerId(event.target.value);
+                setLearnerId(value);
               }}
             >
               {!learnerId && <option value="">Choose a learner</option>}
@@ -487,7 +487,7 @@ function PurchasePanel({
                   {learner.name}
                 </option>
               ))}
-            </NativeSelect>
+            </SelectField>
           </div>
         )}
         {enrollmentRequired && learnerId ? (

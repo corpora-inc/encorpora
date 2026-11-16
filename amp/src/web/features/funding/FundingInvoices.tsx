@@ -6,7 +6,7 @@ import { request } from "../../lib/api";
 import { requestFetch } from "../../lib/request-transport";
 import { queryClient, refreshMe, meOptions } from "../../lib/query";
 import { Link, useNavigate } from "@tanstack/react-router";
-import { NativeSelect } from "../../ui/NativeSelect";
+import { SelectField } from "../../ui/SelectField";
 import { useLearnerStore } from "../../learner-store";
 import { Button, buttonClass } from "../../ui/Button";
 import { Loading } from "../../ui/Loading";
@@ -315,13 +315,13 @@ export function FundingInvoices({
               </p>
             )}
             {!expired && choices.length > 1 && (
-              <NativeSelect
+              <SelectField
                 label="Learner"
                 value={selected}
-                onChange={(event) =>
+                onValueChange={(value) =>
                   setLearners((current) => ({
                     ...current,
-                    [i.id]: event.target.value,
+                    [i.id]: value,
                   }))
                 }
               >
@@ -331,7 +331,7 @@ export function FundingInvoices({
                     {l.name}
                   </option>
                 ))}
-              </NativeSelect>
+              </SelectField>
             )}
             <div className={styles.invoiceActions}>
               {!expired &&

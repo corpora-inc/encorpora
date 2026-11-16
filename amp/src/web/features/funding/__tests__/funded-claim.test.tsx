@@ -331,9 +331,14 @@ test("prepared invoices select their own matching child rather than sharing one 
   const robin = (await screen.findByRole("heading", { name: "Robin" })).closest(
     "article",
   )!;
-  expect(
-    (within(robin).getByLabelText("Learner") as HTMLSelectElement).value,
-  ).toBe("robin");
+  const picker = within(robin).getByRole("button", { name: "Learner" });
+  expect(picker.getAttribute("data-value")).toBe("robin");
+  fireEvent.click(picker);
+  fireEvent.click(await screen.findByRole("option", { name: "Casey" }));
+  expect(picker.getAttribute("data-value")).toBe("casey");
+  fireEvent.click(picker);
+  fireEvent.click(await screen.findByRole("option", { name: "Robin" }));
+  expect(picker.getAttribute("data-value")).toBe("robin");
   fireEvent.click(
     within(robin).getByRole("button", { name: "Start learning" }),
   );

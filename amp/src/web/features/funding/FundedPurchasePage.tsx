@@ -17,7 +17,7 @@ import {
 import { Button, buttonClass } from "../../ui/Button";
 import { Loading } from "../../ui/Loading";
 import { LoadingScreen, RouteError } from "../../ui/LoadingScreen";
-import { NativeSelect } from "../../ui/NativeSelect";
+import { SelectField } from "../../ui/SelectField";
 import { Segmented } from "../../ui/Segmented";
 import { TextField } from "../../ui/TextField";
 import { invoiceOfferSchema } from "./invoice-offers";
@@ -472,13 +472,12 @@ export function InvoiceComposer({
     );
   return (
     <form onSubmit={(event) => void submit(event)} className={styles.form}>
-      <NativeSelect
+      <SelectField
         label="Funding program"
         value={program}
         required
         disabled={busy}
-        onChange={(event) => {
-          const key = event.target.value;
+        onValueChange={(key) => {
           const next = offers.filter((o) => programKey(o) === key);
           setProgram(key);
           setOfferId(
@@ -497,7 +496,7 @@ export function InvoiceComposer({
             {o.programName}
           </option>
         ))}
-      </NativeSelect>
+      </SelectField>
       {plans.length > 0 && (
         <section className={styles.product}>
           <p>AMP Mathematics · practice, lessons and printable workbooks.</p>
@@ -519,14 +518,12 @@ export function InvoiceComposer({
         </section>
       )}
       {childChoices.length > 1 && (
-        <NativeSelect
+        <SelectField
           label="Learner"
           value={learnerId}
-          onChange={(event) => {
-            setLearnerId(event.target.value);
-            setStudent(
-              childChoices.find((l) => l.id === event.target.value)?.name ?? "",
-            );
+          onValueChange={(value) => {
+            setLearnerId(value);
+            setStudent(childChoices.find((l) => l.id === value)?.name ?? "");
           }}
           disabled={busy}
         >
@@ -535,7 +532,7 @@ export function InvoiceComposer({
               {l.name}
             </option>
           ))}
-        </NativeSelect>
+        </SelectField>
       )}
       <TextField
         label="Student name on invoice"

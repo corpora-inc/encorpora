@@ -141,8 +141,14 @@ try {
   await login("invoice");
   await page.goto(`${origin}/purchase/funded`);
   await page
-    .getByLabel("Funding program")
-    .selectOption({ label: "Arizona Empowerment Scholarship Account" });
+    .getByRole("button", { name: "Funding program", exact: true })
+    .click();
+  await page
+    .getByRole("option", {
+      name: "Arizona Empowerment Scholarship Account",
+      exact: true,
+    })
+    .click();
   await page.getByRole("radio", { name: /Monthly/ }).click();
   await page.getByLabel("Student name on invoice").fill("Casey Example");
   await shots("invoice-form");

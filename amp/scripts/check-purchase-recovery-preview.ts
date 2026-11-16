@@ -177,6 +177,98 @@ try {
     "PASS guest invoice → signup return → learner setup → recovered invoice → child practice → Back/Forward/reload; purchase account switch and sign-out.",
   );
 
+  // Billing uses a framed account guard, unlike the public purchase page.
+  // Recover a prepared invoice there and exercise its own history boundary.
+  {
+    const persona = fixture.personas.find((p) => p.key === "invoice")!;
+    const c = await browser.newContext({
+      viewport: { width: 390, height: 900 },
+    });
+    const p = await c.newPage();
+    p.setDefaultTimeout(20000);
+    const failures: string[] = [];
+    const learnerBatches: string[] = [];
+    p.on("pageerror", (error) => failures.push(error.message));
+    p.on("response", (response) => {
+      const path = new URL(response.url()).pathname;
+      if (response.ok() && /\/learners\/[^/]+\/batches$/.test(path))
+        learnerBatches.push(path.split("/").at(-2)!);
+    });
+    await p.goto(origin + "/purchase/funded");
+    await p
+      .getByRole("button", { name: "Funding program", exact: true })
+      .click();
+    await p
+      .getByRole("option", {
+        name: "Arizona Empowerment Scholarship Account",
+        exact: true,
+      })
+      .click();
+    await p.getByLabel("Student name on invoice").fill("Casey");
+    await p.getByLabel("Your email").fill(persona.email);
+    await p.getByRole("button", { name: "Get invoice", exact: true }).click();
+    await p.getByRole("link", { name: "Download invoice PDF" }).waitFor();
+    await login(c, persona.email);
+    const billingUrl = origin + "/account/billing";
+    await p.goto(billingUrl);
+    const prepared = p.locator("article").filter({
+      has: p.getByRole("heading", { name: "Casey", exact: true }),
+    });
+    await prepared
+      .getByRole("button", { name: "Start learning", exact: true })
+      .click();
+    await p
+      .getByRole("button", { name: "Skip this problem and see its answer" })
+      .waitFor();
+    assert.equal(
+      await p.evaluate(() => !!sessionStorage.getItem("amp.student")),
+      true,
+    );
+    assert.deepEqual(await p.evaluate(() => history.state.ampFamilyPractice), {
+      learnerId: persona.learnerId,
+      returnTo: "/account/billing",
+    });
+    await p.goBack();
+    await p.waitForURL(billingUrl);
+    await p
+      .getByRole("button", { name: "Download invoice", exact: true })
+      .waitFor();
+    assert.equal(
+      await p.evaluate(() => !!sessionStorage.getItem("amp.student")),
+      false,
+    );
+    await p.goForward();
+    await p
+      .getByRole("button", { name: "Skip this problem and see its answer" })
+      .waitFor();
+    assert.equal(
+      await p.evaluate(() => !!sessionStorage.getItem("amp.student")),
+      true,
+    );
+    assert.equal(
+      await p.evaluate(() => history.state.ampFamilyPractice?.learnerId),
+      persona.learnerId,
+    );
+    assert.ok(
+      learnerBatches.length >= 2 &&
+        learnerBatches.every((id) => id === persona.learnerId),
+    );
+    await p.goBack();
+    await p.waitForURL(billingUrl);
+    await p
+      .getByRole("button", { name: "Download invoice", exact: true })
+      .waitFor();
+    assert.equal(
+      await p.evaluate(() => !!sessionStorage.getItem("amp.student")),
+      false,
+    );
+    assert.deepEqual(failures, []);
+    await c.close();
+    console.log(
+      "PASS Billing prepared invoice → correct child practice → exact-origin Back/Forward/Back.",
+    );
+  }
+
   // Both enrollment (no recorded purchase consent) and a normal child purchase
   // may change plans after leaving an unpaid Stripe checkout.
   for (const kind of ["enrollment", "learner"] as const) {
