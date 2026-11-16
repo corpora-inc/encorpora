@@ -115,11 +115,8 @@ for (const timing of [
           noticeDigest: noticeDigest(policy),
           parentAttestation: true,
         };
-        await assert.rejects(
-          consent.begin(account, begin),
-          /email_unconfirmed/,
-        );
-        // Simulate the separate authentication email-confirmation boundary.
+        // The invoice is made out to this address, so connecting it needs the
+        // address confirmed (a binding, not consent). Simulate that boundary.
         await pool.query(
           `UPDATE amp_auth_users SET "emailVerified"=true WHERE id='parent'`,
         );
@@ -308,22 +305,9 @@ for (const timing of [
         assert.match(activated.subject, /access is ready/);
         assert.ok(!activated.text.includes("Fixture Student"));
         if (restrictedPayment) {
+          // Another account never covers this learner.
           assert.equal(
-            await fundedLearningAllowed(
-              pool,
-              request.id,
-              "amp|other",
-              learner.id,
-            ),
-            false,
-          );
-          assert.equal(
-            await fundedLearningAllowed(
-              pool,
-              randomUUID(),
-              account,
-              learner.id,
-            ),
+            await fundedLearningAllowed(pool, "amp|other", learner.id),
             false,
           );
           await pool.query(
@@ -331,7 +315,7 @@ for (const timing of [
             [learner.id],
           );
           assert.equal(
-            await fundedLearningAllowed(pool, request.id, account, learner.id),
+            await fundedLearningAllowed(pool, account, learner.id),
             false,
           );
           await pool.query(
@@ -342,7 +326,7 @@ for (const timing of [
         await new FamilyRepository(pool).withdraw(account);
         assert.equal(await learners.hasConsent(account), false);
         assert.equal(
-          await fundedLearningAllowed(pool, request.id, account, learner.id),
+          await fundedLearningAllowed(pool, account, learner.id),
           false,
         );
         await reconcileClassWalletPayments(pool, [offer]);

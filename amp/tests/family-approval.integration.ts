@@ -664,6 +664,66 @@ test(
       },
     );
 
+    await t.test(
+      "a parent approves a child 13 or older with no consent and no confirmed email; under 13 still needs consent",
+      async () => {
+        await ok(
+          post("/api/v1/family/approvals", teacher, {
+            parentEmail: "teen-parent@neighbor.example",
+          }),
+          201,
+        );
+        // A copied link, without the mailbox's proof: the address stays
+        // unconfirmed, and nothing waits for it.
+        const { token } = fragment(mailed.at(-1)!.url);
+        const parentOfTeen = await user(
+          "Noor Fixture",
+          "teen-parent@neighbor.example",
+        );
+        await db.query(
+          'UPDATE amp_auth_users SET "emailVerified"=false WHERE id=$1',
+          [parentOfTeen.slice(4)],
+        );
+        const opened = await ok(
+          post("/api/v1/family/approvals/open", parentOfTeen, { token }),
+        );
+        // Under 13, approving names the child to another family's teacher:
+        // consent first (16 CFR 312.5(a)(1)).
+        const child = await post(
+          `/api/v1/family/approvals/${opened.id}/approve`,
+          parentOfTeen,
+          { name: "Sami", birthYear: 2016 },
+        );
+        assert.equal(child.statusCode, 409, child.body);
+        assert.equal(child.json().error, "consent_required");
+        // 13 or older is outside COPPA (16 CFR 312.2): approved right away.
+        const approved = await ok(
+          post(`/api/v1/family/approvals/${opened.id}/approve`, parentOfTeen, {
+            name: "Sami",
+            birthYear: 2010,
+          }),
+        );
+        const page = await ok(
+          get(`/api/v1/family/approvals/${opened.id}`, parentOfTeen),
+        );
+        assert.equal(page.approval.status, "approved");
+        assert.equal(page.approval.consentActive, true);
+        assert.equal(
+          (
+            await db.query(
+              "SELECT account_id,name_pending FROM amp_learners WHERE id=$1",
+              [approved.learnerId],
+            )
+          ).rows[0].account_id,
+          parentOfTeen,
+        );
+        assert.equal(
+          (await list(teacher)).find((row) => row.name === "Sami")?.status,
+          "needs-access",
+        );
+      },
+    );
+
     await t.test("a co-teacher sees the class but sends no links", async () => {
       const coTeacher = await user("Rafael Fixture");
       await new SchoolRepository(db).addStaff({

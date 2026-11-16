@@ -22,6 +22,7 @@ import {
   PARENT_ENTRY,
 } from "../learning/nickname.js";
 import { allocateLabel } from "../server/learner-label.js";
+import { pastCoppaAge } from "../privacy/coppa-age.js";
 import { createHash, randomBytes, randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import {
@@ -166,6 +167,7 @@ export class FamilyRepository {
           !row.deleted_at &&
           (row.adult ||
             effectiveConsent ||
+            pastCoppaAge(row.birth_year) ||
             (row.name_pending &&
               (await learningConsentActive(
                 client,
@@ -225,8 +227,8 @@ export class FamilyRepository {
           satMathFocus: row.sat_math_focus,
           deletedAt: iso(row.deleted_at),
           stripeLinked: linked.includes(row.id),
-          // An adult learns on the account's own terms; a child needs the
-          // account's consent.
+          // An adult, or a learner 13 or older, learns on the account's own
+          // terms; a child under 13 on the restricted basis or consent.
           canPractice:
             !row.deleted_at &&
             permitted.has(row.id) &&

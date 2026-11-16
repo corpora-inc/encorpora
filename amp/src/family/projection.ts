@@ -8,6 +8,7 @@ import type { Pool } from "pg";
 import { FamilyError } from "./contracts.js";
 import { familyDisplayNameSql, holderDisplayNameSql } from "./identity.js";
 import { gradeFor } from "./family-class.js";
+import { pastCoppaAge } from "../privacy/coppa-age.js";
 import {
   can,
   loadActor,
@@ -262,8 +263,12 @@ export async function familyProjection(
     )
   ).rows;
   const children = owned.map((child) => {
+    // A child 13 or older is outside COPPA (16 CFR 312.2); one who may be
+    // under 13 learns on the restricted basis or the parent's consent.
     const learningAllowed =
-      consent.active || (child.name_pending && !consent.withdrawn);
+      consent.active ||
+      pastCoppaAge(child.birth_year) ||
+      (child.name_pending && !consent.withdrawn);
     return {
       id: child.id as string,
       name: child.name as string,
@@ -616,7 +621,8 @@ export async function familyTeaching(
     readApprovals
       ? pool.query(
           `SELECT a.id,a.person_id,a.account_id,a.expires_at,a.approved_at,a.ended_at,a.opened_at,
-        (SELECT withdrawn_at FROM amp_parent_consents WHERE account_id=a.account_id) AS withdrawn_at
+        (SELECT withdrawn_at FROM amp_parent_consents WHERE account_id=a.account_id) AS withdrawn_at,
+        (SELECT l.birth_year FROM amp_people p JOIN amp_learners l ON l.id=p.learner_id WHERE p.id=a.person_id) AS birth_year
       FROM amp_family_approvals a WHERE a.class_id=$1 ORDER BY a.created_at,a.id LIMIT 1000`,
           [row.classId],
         )
@@ -630,7 +636,10 @@ export async function familyTeaching(
   );
   const states = [];
   for (const approval of approvals.rows) {
-    const consent = approvalConsents.get(approval.account_id)?.active ?? false;
+    // An approved learner 13 or older needs no parental consent (16 CFR 312.2).
+    const consent =
+      pastCoppaAge(approval.birth_year) ||
+      (approvalConsents.get(approval.account_id)?.active ?? false);
     states.push({
       id: approval.id,
       personId: approval.person_id,

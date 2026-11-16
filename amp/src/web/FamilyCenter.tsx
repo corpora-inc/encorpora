@@ -1,4 +1,5 @@
 import { useSettingsFamily } from "./features/family/account-settings";
+import { pastCoppaAge } from "../privacy/coppa-age";
 import { LegalDocuments } from "./features/account/LegalDocuments";
 import { AccountPageHeader } from "./features/account/AccountPageHeader";
 import { requestFetch, requestWith } from "./lib/request-transport";
@@ -542,7 +543,11 @@ export function FamilyCenter({
     const age = learner.birthYear
       ? new Date().getFullYear() - learner.birthYear
       : null;
-    const canName = !learner.namePending || consentActive;
+    // 13 or older is outside COPPA (16 CFR 312.2): named like any learner.
+    const canName =
+      !learner.namePending ||
+      consentActive ||
+      pastCoppaAge(learner.birthYear);
     return (
       <>
         {!nativeRuntime && (age === null || age >= 13) && (

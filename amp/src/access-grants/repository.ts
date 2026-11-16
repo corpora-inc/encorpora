@@ -3,7 +3,6 @@ import { randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import { refreshAdultAccess } from "../account/adult-access.js";
 import {
-  learningConsentActive,
   lockLearningAccount,
   purchaseConsentSatisfied,
 } from "../server/account-access.js";
@@ -235,32 +234,29 @@ export async function activateGiftInTransaction(
     const covered = await familyCover(db, accountId, learnerId!);
     if (covered) return covered;
   }
+  // A gift is addressed to an email and found by it, so only an account that
+  // has confirmed that address may take it: without this, signing up with
+  // someone else's address would claim their gift. This binds the gift to its
+  // recipient; it is not a consent step.
   const email = await verifiedEmail(db, accountId);
   if (!email) {
     if (options.giftId) throw new AccessGiftError(403, "email_unconfirmed");
     return null;
   }
-  // An adult activating a gift for their own learner acts for themselves; a
-  // child, or a family gift (every child), needs the parent's consent.
-  const consented = await learningConsentActive(
-    db,
-    accountId,
-    options.development,
-  );
-  const ownAdult =
-    !consented &&
+  // Access is not data collection. The learner takes the gift on the basis
+  // they already learn on: the account's own adult, a learner 13 or older, an
+  // unnamed child on the restricted internal-operations basis (16 CFR
+  // 312.5(c)(7)), or verified consent. Only a withdrawn or lapsed consent for
+  // a named child under 13 refuses it (16 CFR 312.6(a)(2)).
+  if (
     learnerId !== undefined &&
-    (await purchaseConsentSatisfied(
+    !(await purchaseConsentSatisfied(
       db,
       accountId,
       learnerId,
       options.development,
-    ));
-  const pendingLearning =
-    options.fundingInvoiceId &&
-    learnerId &&
-    (await learningConsentActive(db, accountId, false, learnerId));
-  if (!consented && !ownAdult && !pendingLearning)
+    ))
+  )
     throw new AccessGiftError(403, "consent_required");
   if (learnerId !== undefined) {
     const learner = await db.query(
@@ -326,10 +322,8 @@ export async function activateGiftInTransaction(
     return null;
   if (gift.claim_by && gift.claim_by <= now)
     throw new AccessGiftError(409, "gift_unavailable");
-  if (gift.covers === "family") {
-    if (!consented) throw new AccessGiftError(403, "consent_required");
+  if (gift.covers === "family")
     return activateFamilyGift(db, accountId, gift, learnerId);
-  }
   if (learnerId === undefined)
     throw new AccessGiftError(400, "invalid_gift_request");
   // Future paid terms also reserve this learner; gifts neither replace nor stack on subscriptions.

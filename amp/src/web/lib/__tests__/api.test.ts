@@ -35,7 +35,8 @@ test("logs a specific safe error with request id, never response bodies", async 
   ).rejects.toBeInstanceOf(AppError);
   expect(log).toHaveBeenCalledWith("AMP action failed", {
     kind: "permission",
-    message: "Continue setup to review parent consent.",
+    message:
+      "Learning is paused for this child. Open Family → Privacy to resume it.",
     requestId: "fixture-request",
     code: "consent_required",
   });

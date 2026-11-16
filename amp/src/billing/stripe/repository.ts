@@ -1,9 +1,9 @@
 import { accessGrantsFor, grantReserved } from "../../account/adult-access.js";
 import { parseDocumentProfile } from "../evidence/profile.js";
+import { pastCoppaAgeSql } from "../../privacy/coppa-age.js";
 import {
   learningConsentActive,
-  parentAddressConfirmed,
-  parentConsentStates,
+  purchaseConsentSatisfied,
 } from "../../server/account-access.js";
 import { randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
@@ -84,24 +84,22 @@ export class StripeRepository {
   async purchaseConsentActive(
     client: Pick<PoolClient, "query">,
     accountId: string,
-    readOnly = false,
   ): Promise<boolean> {
     const consent = await client.query(
       "SELECT 1 FROM amp_parent_consents WHERE account_id=$1 AND policy_version=$2 AND withdrawn_at IS NULL",
       [accountId, this.config.consentPolicyVersion],
     );
     return (
-      !!consent.rowCount &&
-      (readOnly
-        ? (await parentConsentStates(client, [accountId])).get(accountId)
-            ?.active === true
-        : await learningConsentActive(client, accountId))
+      !!consent.rowCount && (await learningConsentActive(client, accountId))
     );
   }
   /**
-   * The purchaser's consent, and a learner they may buy for: one their account
-   * owns, or a child enrolled in a family class they teach (a seat). An adult
-   * buying for their own learner needs no parental consent.
+   * A learner the purchaser may buy for: one their account owns, or a child
+   * enrolled in a family class they teach (a seat). An owned learner is
+   * bought for on the basis they already learn on (`purchaseConsentSatisfied`:
+   * the account's adult, 13 or older, the restricted basis of 16 CFR
+   * 312.5(c)(7), or verified consent); buying access collects nothing more.
+   * A seat, another family's child, needs the purchaser's consent.
    */
   async assertPurchaseAllowed(
     client: PoolClient,
@@ -114,12 +112,11 @@ export class StripeRepository {
       "SELECT account_id FROM amp_learners l WHERE id=$1 AND deleted_at IS NULL AND NOT COALESCE((to_jsonb(l)->>'simulation')::boolean,false) FOR SHARE",
       [learnerId],
     );
+    const own = learner.rows[0]?.account_id === accountId;
     if (
-      !(
-        learner.rows[0]?.account_id === accountId &&
-        (await this.ownAdultLearner(client, accountId, learnerId))
-      ) &&
-      !(await this.purchaseConsentActive(client, accountId))
+      own
+        ? !(await purchaseConsentSatisfied(client, accountId, learnerId))
+        : !(await this.purchaseConsentActive(client, accountId))
     )
       throw new BillingError("parent_consent_required", 403);
     if (learner.rows[0]?.account_id === accountId) return "own";
@@ -213,16 +210,31 @@ export class StripeRepository {
     accountId: string,
     ids: string[],
   ) {
-    if (
-      !(await parentAddressConfirmed(db, accountId, false)) ||
-      !(await this.purchaseConsentActive(db, accountId, true))
-    )
-      return new Set<string>();
+    // No confirmed-email gate: card-backed consent rests on the card
+    // transaction's notice to the account holder (16 CFR 312.5(b)(2)), and
+    // a child is bought for on the basis they already learn on (as
+    // `learningConsentActive` per learner, in one query for every child):
+    // the account's consent, 13 or older, or the restricted basis unless
+    // the parent withdrew.
+    const consented = await learningConsentActive(
+      db,
+      accountId,
+      false,
+      undefined,
+      false,
+    );
+    const withdrawn = !!(
+      await db.query(
+        "SELECT 1 FROM amp_parent_consents WHERE account_id=$1 AND withdrawn_at IS NOT NULL",
+        [accountId],
+      )
+    ).rowCount;
     const owned = (
       await db.query<{ id: string }>(
         `SELECT id FROM amp_learners WHERE account_id=$1 AND id=ANY($2::text[])
-       AND deleted_at IS NULL AND NOT adult AND NOT simulation`,
-        [accountId, ids],
+       AND deleted_at IS NULL AND NOT adult AND NOT simulation
+       AND ($3::boolean OR ${pastCoppaAgeSql("birth_year")} OR (name_pending AND NOT $4::boolean))`,
+        [accountId, ids, consented, withdrawn],
       )
     ).rows.map((row) => row.id);
     const blockers = await this.checkoutBlockers(db, accountId, owned);

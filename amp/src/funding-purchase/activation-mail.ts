@@ -86,7 +86,6 @@ export async function deliverFundedActivationMail(
         !row.deleted_at &&
         (await fundedLearningAllowed(
           client,
-          row.request_id,
           row.account_id,
           row.learner_id,
         ));
@@ -173,7 +172,6 @@ export async function deliverFundedActivationMail(
         Date.parse(check.grant_state.endsAt) > Date.now() &&
         (await fundedLearningAllowed(
           client,
-          candidate.request_id,
           candidate.account_id,
           claimed.row.learner_id,
         ));

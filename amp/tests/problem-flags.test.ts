@@ -10,17 +10,13 @@ import {
 
 const now = new Date("2026-10-20T12:00:00Z");
 
-test("a note is offered only to a consented learner certainly 13 or older", () => {
+test("a note is offered to a learner certainly 13 or older, with or without consent", () => {
   assert.equal(noteAllowed({ trial: false, birthYear: 2012 }, now), true);
   // Born in December 2013, a learner is still 12 in October 2026.
   assert.equal(noteAllowed({ trial: false, birthYear: 2013 }, now), false);
   assert.equal(noteAllowed({ trial: false, birthYear: 2016 }, now), false);
   assert.equal(noteAllowed({ trial: false, birthYear: null }, now), false);
   assert.equal(noteAllowed({ trial: true, birthYear: 1990 }, now), false);
-  assert.equal(
-    noteAllowed({ trial: false, namePending: true, birthYear: 2010 }, now),
-    false,
-  );
 });
 
 test("report labels are short and cover every reason", () => {

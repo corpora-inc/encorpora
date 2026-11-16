@@ -35,7 +35,6 @@ export async function recordProblemFlag(
     note &&
     !noteAllowed({
       trial: context.trial,
-      namePending: await tx.namePending(),
       birthYear: await tx.birthYear(),
     })
   )

@@ -1,4 +1,5 @@
 import { recordActivation } from "../analytics/activation.js";
+import { pastCoppaAge } from "../privacy/coppa-age.js";
 import { randomUUID } from "node:crypto";
 import type { PoolClient } from "pg";
 import {
@@ -26,10 +27,12 @@ export async function allocateLabel(client: PoolClient, scope: LabelScope) {
 
 /** A family's child before verified consent: the name their parent entered,
  * or "Child 2", and a birth year, owned by the parent's account. A name
- * entered here records its basis (`PARENT_ENTRY`). The child learns on the
- * restricted basis (`name_pending`) until consent is verified. The caller
- * holds the account's learning lock and has checked its consent state and
- * learner room, in the same transaction. */
+ * entered here records its basis (`PARENT_ENTRY`). A child who may be under
+ * 13 learns on the restricted basis (`name_pending`) until consent is
+ * verified; one whose birth year shows 13 or older is outside COPPA (16 CFR
+ * 312.2) and is never restricted. The caller holds the account's learning
+ * lock and has checked its consent state and learner room, in the same
+ * transaction. */
 export async function insertFamilyChild(
   client: PoolClient,
   accountId: string,
@@ -41,14 +44,14 @@ export async function insertFamilyChild(
     id: randomUUID(),
     name: name ?? label.name,
     birthYear,
-    namePending: true as const,
+    namePending: !pastCoppaAge(birthYear),
   };
   await client.query(
     // The time it is written, not the transaction's: several children made
     // together keep the order they were given in (learners list by it).
     `INSERT INTO amp_learners(id,account_id,name,birth_year,name_pending,label_number,identity_scope,
        name_basis,name_basis_version,name_basis_at,created_at)
-     VALUES($1,$2,$3,$4,true,$5,$6,$7,$8,CASE WHEN $7::text IS NULL THEN NULL ELSE now() END,clock_timestamp())`,
+     VALUES($1,$2,$3,$4,$9,$5,$6,$7,$8,CASE WHEN $7::text IS NULL THEN NULL ELSE now() END,clock_timestamp())`,
     [
       learner.id,
       accountId,
@@ -58,6 +61,7 @@ export async function insertFamilyChild(
       label.scope,
       name ? PARENT_ENTRY.method : null,
       name ? PARENT_ENTRY.version : null,
+      learner.namePending,
     ],
   );
   await recordActivation(client, { accountId, step: "learner_added" });

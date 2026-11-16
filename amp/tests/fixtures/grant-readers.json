@@ -51,7 +51,7 @@
   },
   {
     "path": "src/analytics/funded-cohort.ts",
-    "hash": "3d85562b3a1293fe14bb74e47f5265f97909152ecb3d352c1b3dbc70c87856af",
+    "hash": "5204ffbc5105089b9115d03f6e8109020a4e7313ba3e58a66fc522442a42beac",
     "reason": "Financial report joins exact commerce: order grant IDs, which cannot be derived adult grant IDs."
   },
   {
