@@ -441,7 +441,12 @@
   },
   {
     "path": "src/funding-purchase/repository.ts",
-    "hash": "69b8b3f934e8a0765c934dc4c7a4cbd812c600d4807506e970f5005e799d4661",
-    "reason": "Extends an invoice-specific funded-pending grant on submission. This is an authorized grant mutation, not an adult entitlement read."
+    "hash": "af4b7f17f79af48d4abd52cdb62c60eb2f7d6a7e86240862a1455b2ed7c53cf3",
+    "reason": "Submission mutates only active, unrevoked funded-pending grants linked to the account-locked invoice. It caps the stored end at the fixed invoice term (legacy terms retain the 60-day submission extension); no adult entitlement is read or authorized."
+  },
+  {
+    "path": "src/funding-purchase/provision.ts",
+    "hash": "f93523f4cc150345319d0f0d9cbb4200aab00a54f847ee1597e584dab13f0abd",
+    "reason": "Provisioning under the exclusive account lock revokes only this owned learner’s funded-pending bridge grants; an expired invoice is further scoped to its own gift-linked grant. Paid and derived adult grants are untouched, and entitlement checks use accessGrantsFor."
   }
 ]
