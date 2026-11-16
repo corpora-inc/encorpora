@@ -5,7 +5,7 @@ from .spec import timeline
 BACKGROUND = '0x071624'  # letterbox colour for `contain` (product UI) shots
 CARD_FADE_IN, CARD_FADE_OUT, END_FADE_IN, FINAL_FADE = 0.25, 0.35, 0.4, 0.25
 VOICE_LUFS, TARGET_LUFS, TARGET_TP = -16.0, -14.0, -1.5
-# Ducking: music drops roughly 8-10 dB while the voice speaks, recovers in 350 ms.
+# Music stays at one level unless a spec sets music.duck to true.
 DUCK = 'sidechaincompress=threshold=0.02:ratio=6:attack=15:release=350:makeup=1'
 STEREO = 'aresample=48000,aformat=sample_fmts=fltp:channel_layouts=stereo'
 SILENCE = f'anullsrc=r=48000:cl=stereo,{STEREO}'
@@ -104,9 +104,11 @@ def _place(src, pieces, total, tag):
 
 def premix_command(spec, voice, music, sfx, voice_gain, music_gain, out, voice_seconds=None, sfx_seconds=()):
     """Voice placed (whole take at voice.start, or per-sentence segments), music
-    bed ducked under it with a sidechain compressor, optional sound effects.
+    at a constant level, optional sound effects. Sidechain ducking happens only
+    when music.duck is true.
     Output is a 48 kHz premix that `loudnorm_command` brings to delivery loudness."""
     total = spec['duration']
+    duck = bool(music and voice and (spec.get('music') or {}).get('duck') is True)
     args = ['ffmpeg', '-hide_banner', '-nostdin', '-n']
     graph, mix = [], []
     k = 0
@@ -117,19 +119,20 @@ def premix_command(spec, voice, music, sfx, voice_gain, music_gain, out, voice_s
             [(0.0, voice_seconds, v['start'])]
         graph.append(f'[{k}:a]{STEREO},volume={voice_gain:.2f}dB[vin]')
         graph += _place('vin', pieces, total, 'vraw')
-        graph.append('[vraw]asplit=2[voice][key]' if music else '[vraw]anull[voice]')
+        graph.append('[vraw]asplit=2[voice][key]' if duck else '[vraw]anull[voice]')
         mix.append('[voice]')
         k += 1
     if music:
         m = spec['music']
         args += ['-ss', _t(m['offset']), '-t', _t(total), '-i', str(music)]
-        graph.append(f'[{k}:a]{STEREO},volume={music_gain:.2f}dB,afade=t=in:st=0:d=0.8,'
-                     f'afade=t=out:st={_t(total - 1.7)}:d=1.7[min]')
+        fade = float(m.get('fade', 0.15))
+        graph.append(f'[{k}:a]{STEREO},volume={music_gain:.2f}dB,afade=t=in:st=0:d={_t(fade)},'
+                     f'afade=t=out:st={_t(max(0.0, total - fade))}:d={_t(fade)}[min]')
         # render.audio refuses an excerpt shorter than the ad, so this piece is exactly `total`.
         graph += _place('min', [(0.0, total, 0.0)], total, 'bed')
-        if voice:
-            graph.append(f'[bed][key]{DUCK}[music]')
-            mix.append('[music]')
+        if duck:
+            graph.append(f'[bed][key]{DUCK}[ducked]')
+            mix.append('[ducked]')
         else:
             mix.append('[bed]')
         k += 1

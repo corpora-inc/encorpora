@@ -1,4 +1,4 @@
-"""Render an ad spec: centered text cards -> ducked, loudness-normalised mix ->
+"""Render an ad spec: centered text cards -> constant-level music, loudness-normalised mix ->
 one video per format -> QC. Every artifact gets a receipt (exact argv, input
 and output SHA-256) and is reused only when its recipe is unchanged."""
 import datetime
@@ -180,7 +180,7 @@ def audio(spec, out, outputs):
     result = loudness(mix)
     premix.unlink()
     outputs.record(receipt, recipe, [mix], voiceGainDb=round(voice_gain, 2), musicGainDb=round(music_gain, 2),
-                   ducking=graph.DUCK if voice and music else None, premixCommand=pre_args,
+                   ducking=graph.DUCK if m and m.get('duck') and v else None, premixCommand=pre_args,
                    loudnormCommand=final_args, measuredPremix=measured, measured=result,
                    transcriptVerified=bool(v and v['transcriptVerified']))
     captions(spec, out)
