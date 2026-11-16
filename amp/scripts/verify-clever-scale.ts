@@ -205,7 +205,7 @@ for (let s = 0; s < schoolCount; s++) {
     });
   }
 }
-const viewerStaff = {
+const adminStaff = {
   school: schoolId(0),
   schools: [schoolId(0)],
   roles: ["SchoolTechLead"],
@@ -219,8 +219,8 @@ snapshot.users.push(
   {
     id: staffId,
     district: districtId,
-    name: { first: "Synthetic School Viewer" },
-    roles: { staff: viewerStaff },
+    name: { first: "Synthetic School Admin" },
+    roles: { staff: adminStaff },
   },
   {
     id: portalStaffId,
@@ -772,8 +772,10 @@ try {
   assert.equal(can(viewer, "students.read", orgTarget(lastSchool)), false);
   assert.equal(
     can(viewer, "grades.write", classTarget(firstClass, firstSchool)),
-    false,
+    true,
   );
+  assert.equal(can(viewer, "staff.manage", orgTarget(firstSchool)), true);
+  assert.equal(can(viewer, "staff.manage", orgTarget(lastSchool)), false);
   assert.deepEqual(rosterScope(viewer, orgTarget(firstSchool)), {
     classIds: null,
   });
@@ -1047,7 +1049,7 @@ try {
           "first import counts and every school's distribution",
           "repeat stable person/learner/membership IDs",
           "teacher class scope",
-          "SchoolTechLead viewer scope and PortalOnly denial",
+          "staff school-admin scope and PortalOnly denial",
           "district admin tenant scope",
           "student denied staff access",
           "Events transfer retains learner and attempt",
