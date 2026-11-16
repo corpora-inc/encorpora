@@ -3216,6 +3216,29 @@
     ],
     "skill": "fractions-number-line"
   },
+  "fraction-model": {
+    "id": "fraction-model--sf",
+    "version": "987ec0fa6ac6934958196d77b8f7fb313310366dbed5fd175d141eedebfb0174",
+    "title": "Fractions shown by a model",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/fraction-model--sf/987ec0fa6ac6934958196d77b8f7fb313310366dbed5fd175d141eedebfb0174/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/fraction-model--sf/987ec0fa6ac6934958196d77b8f7fb313310366dbed5fd175d141eedebfb0174/audio.m4a",
+    "duration": 243.28004535147392,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/fraction-model--sf/987ec0fa6ac6934958196d77b8f7fb313310366dbed5fd175d141eedebfb0174/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/fraction-model--sf/987ec0fa6ac6934958196d77b8f7fb313310366dbed5fd175d141eedebfb0174/audio.m4a",
+        "version": "987ec0fa6ac6934958196d77b8f7fb313310366dbed5fd175d141eedebfb0174",
+        "duration": 243.28004535147392
+      }
+    ],
+    "skill": "fraction-model"
+  },
   "fractional-ruler-length": {
     "id": "shifted-ruler-length--sr",
     "version": "02ae117747c02ccbc92395359bccc562038b8fe6215e24d932cf90b72d96eeac",
