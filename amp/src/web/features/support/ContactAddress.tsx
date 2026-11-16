@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "../../ui/Button";
-import { SUPPORT_EMAIL } from "./SupportHelp";
+import { SUPPORT_EMAIL } from "./SupportAddress";
 import styles from "./Contact.module.css";
 
 /** The support address, shown whole so it can be read and selected, with a

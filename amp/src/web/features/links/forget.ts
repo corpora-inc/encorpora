@@ -1,6 +1,6 @@
 import { dropAllCapabilities } from "../../capability-entry";
 import { forgetCarries } from "../../lib/link-carry";
-import { approvalSignup } from "../family-approval/api";
+import { approvalSignup } from "../family-approval/signup-cookie";
 import { markSchoolSignup } from "../school/paths";
 
 /**

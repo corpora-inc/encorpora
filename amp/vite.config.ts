@@ -84,14 +84,88 @@ const previewPrices: Plugin = {
   },
 };
 
+/** Money art in the browser is files: hashed, cached for good, fetched once
+ * and decoded before a money problem shows (`src/web/scene/money-art.ts`).
+ * Every other renderer (print, the server, film) keeps the embedded copies,
+ * so a document carries its own pictures. */
+const sceneArtFiles: Plugin = {
+  name: "amp-scene-art-files",
+  enforce: "pre",
+  async resolveId(source, importer, options) {
+    if (options?.ssr || !/(?:^|\/)(?:coin|bill)-art(?:\.[jt]s)?$/.test(source))
+      return;
+    const resolved = await this.resolve(source, importer, {
+      ...options,
+      skipSelf: true,
+    });
+    if (
+      resolved &&
+      /\/src\/web\/scene\/(?:coin|bill)-art\.ts$/.test(resolved.id)
+    )
+      return resolved.id.replace(/\.ts$/, ".files.ts");
+  },
+};
+
+/** `/` is the pitch's own document (`home.html` in the build): the shell
+ * with the light home entry (`src/web/home-entry.tsx`) in place of the app's.
+ * The development server serves `/` the same way, so the pitch is built and
+ * verified as visitors get it. */
+const homeEntry = "/src/web/home-entry.tsx";
+const homeDocument: Plugin = {
+  name: "amp-home-document",
+  apply: "serve",
+  configureServer(server) {
+    server.middlewares.use(async (request, response, next) => {
+      const url = new URL(request.url ?? "/", "http://localhost");
+      if (
+        url.pathname !== "/" ||
+        request.method !== "GET" ||
+        !String(request.headers.accept ?? "").includes("text/html")
+      )
+        return next();
+      try {
+        const shell = readFileSync(
+          fileURLToPath(new URL("index.html", import.meta.url)),
+          "utf8",
+        );
+        const app = '<script type="module" src="/src/web/main.tsx"></script>';
+        if (!shell.includes(app))
+          throw new Error("index.html has no app entry to replace");
+        // The build's home.html links the app's stylesheets before the
+        // pitch's (scripts/build-home-document.ts); here they come from
+        // their modules, first.
+        const html = await server.transformIndexHtml(
+          request.url ?? "/",
+          shell.replace(
+            app,
+            `<script type="module" src="/src/web/app/styles.ts"></script>
+    <script type="module" src="${homeEntry}"></script>`,
+          ),
+        );
+        response.setHeader("Content-Type", "text/html");
+        response.end(html);
+      } catch (error) {
+        next(error);
+      }
+    });
+  },
+};
+
 export default defineConfig({
   // A long-running server can keep its prebundled dependencies to itself.
   // Two dev servers sharing one cache rewrite each other's chunks, and pages
   // then load two copies of React.
   cacheDir: process.env.AMP_VITE_CACHE_DIR || undefined,
-  plugins: [serverOnlyCrypto, devFixtures, previewPrices, react()],
+  plugins: [
+    serverOnlyCrypto,
+    devFixtures,
+    previewPrices,
+    sceneArtFiles,
+    homeDocument,
+    react(),
+  ],
   optimizeDeps: {
-    entries: ["index.html"],
+    entries: ["index.html", "src/web/home-entry.tsx"],
     include: [
       "react",
       "react-dom/client",
@@ -119,5 +193,16 @@ export default defineConfig({
       "/api": `http://127.0.0.1:${process.env.AMP_API_PORT ?? 4311}`,
     },
   },
-  build: { outDir: "dist" },
+  build: {
+    outDir: "dist",
+    // The manifest names the home entry's files for home.html
+    // (scripts/build-home-document.ts).
+    manifest: true,
+    rollupOptions: {
+      input: {
+        index: fileURLToPath(new URL("index.html", import.meta.url)),
+        home: fileURLToPath(new URL("src/web/home-entry.tsx", import.meta.url)),
+      },
+    },
+  },
 });

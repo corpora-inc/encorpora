@@ -3,7 +3,8 @@ import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { billValues } from "../src/math/scene/art";
 
-/** Embed the original SVG sources for app, print and film, with no request. */
+/** Embed the original SVG sources for print and film, with no request. The
+ * app's browser build serves the files themselves (`bill-art.files.ts`). */
 const dir = new URL("../src/web/scene/", import.meta.url);
 const entries = billValues.map((value) => {
   const file = value === 1 ? "one" : "five";
