@@ -56,8 +56,7 @@
 }
 
 /* Absorbs the tap that closes the menu so it never presses what lies beneath.
-   A menu opens over the sheet or drawer it was opened from (1000 to 1101), and
-   under toasts and confirmations (1200). */
+   Menu.tsx raises both layers when opened inside a higher dialog. */
 .shield {
   position: fixed;
   inset: 0;

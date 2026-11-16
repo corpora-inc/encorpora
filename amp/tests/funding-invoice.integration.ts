@@ -5,6 +5,7 @@ import {
   availableGift,
 } from "../src/access-grants/repository.js";
 import { deliverFundingInvoiceMail } from "../src/funding-purchase/invoice-mail.js";
+import { deliverFundingReminderMail } from "../src/funding-purchase/reminder-mail.js";
 import { installConsentPolicy } from "../src/parent-consent/policy.js";
 import { consentFixture } from "./parent-consent.fixture.js";
 import type {
@@ -33,6 +34,10 @@ import { FundingPurchaseRepository } from "../src/funding-purchase/repository.js
 import { FundingInvoiceRepository } from "../src/funding-purchase/invoice-intents.js";
 import { registerFundingPurchaseRoutes } from "../src/funding-purchase/routes.js";
 import { purgeExpiredFundingRequests } from "../src/funding-purchase/retention.js";
+import {
+  stageClassWalletPayment,
+  reconcileClassWalletPayments,
+} from "../src/funding-purchase/classwallet-staging.js";
 import { testFundingOffer } from "./funding-purchase.fixture.js";
 const offer = {
   ...testFundingOffer,
@@ -102,7 +107,15 @@ test(
         assert.equal(gift.source, "funded-pending");
         assert.equal(gift.funding_invoice_id, result.invoiceId);
         assert.equal(gift.activated_at, null);
-        assert.equal(new Date(gift.claim_by).toISOString(), result.expiresAt);
+        assert.equal(
+          new Date(gift.claim_by).getTime() -
+            new Date(gift.issued_at).getTime() <
+            14 * 86400000 + 1000,
+          true,
+        );
+        assert.ok(
+          new Date(gift.claim_by).getTime() < Date.parse(result.expiresAt),
+        );
         const outbox = (
           await pool.query("SELECT * FROM amp_funding_invoice_outbox")
         ).rows[0];
@@ -219,11 +232,43 @@ test(
         `funded-pending:${(await pool.query("SELECT id FROM amp_access_gifts WHERE funding_invoice_id=$1", [intent.id])).rows[0].id}`,
       );
       assert.equal(grant.status, "active");
-      assert.equal(grant.ends_at.toISOString(), intent.expiresAt);
+      assert.equal(
+        grant.ends_at.getTime(),
+        Date.parse(intent.createdAt) + 14 * 86400000,
+      );
       const status = await invoices.funding.present("amp|owner", claimed);
       assert.equal(status.paymentStatus, "not-verified");
       assert.equal(status.fundedPending?.status, "funded-pending");
       assert.equal(await availableGift(pool, "amp|owner"), undefined);
+      await invoices.funding.update(
+        "amp|owner",
+        intent.id,
+        "parent-reported-submitted",
+      );
+      const processingEnd = Date.parse(intent.createdAt) + 60 * 86400000;
+      assert.equal(
+        (
+          await pool.query("SELECT ends_at FROM amp_grants WHERE id=$1", [
+            grant.id,
+          ])
+        ).rows[0].ends_at.getTime(),
+        processingEnd,
+      );
+      await invoices.funding.update(
+        "amp|owner",
+        intent.id,
+        "parent-reported-submitted",
+      );
+      assert.equal(
+        (
+          await pool.query("SELECT ends_at FROM amp_grants WHERE id=$1", [
+            grant.id,
+          ])
+        ).rows[0].ends_at.getTime(),
+        processingEnd,
+        "submission retries do not restart the access window",
+      );
+
       assert.equal(
         (await invoices.claim("amp|owner", intent.id, "child")).id,
         intent.id,
@@ -235,6 +280,235 @@ test(
       );
     }),
 );
+
+test(
+  "submitted invoice and access survive retention until the processing deadline",
+  enabled,
+  () =>
+    fixture(async (pool, invoices) => {
+      await eligibleParent(pool);
+      const invoice = await invoices.create(input());
+      await invoices.claim("amp|owner", invoice.id, "child");
+      await invoices.funding.update(
+        "amp|owner",
+        invoice.id,
+        "parent-reported-submitted",
+      );
+      const at = (days: number) =>
+        new Date(Date.parse(invoice.createdAt) + days * 86400000);
+      await purgeExpiredFundingRequests(pool, at(31));
+      assert.ok(await invoices.readInvoiceIntent(invoice.id));
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*) FROM amp_funding_requests WHERE id=$1",
+            [invoice.id],
+          )
+        ).rows[0].count,
+        "1",
+      );
+      assert.ok(
+        (
+          await pool.query(
+            "SELECT pdf_base64 FROM amp_funding_invoice_outbox WHERE invoice_id=$1",
+            [invoice.id],
+          )
+        ).rows[0].pdf_base64,
+      );
+      const grant = (
+        await pool.query("SELECT * FROM amp_grants WHERE learner_id='child'")
+      ).rows[0];
+      assert.equal(grant.status, "active");
+      assert.equal(grant.ends_at.getTime(), at(60).getTime());
+      // Exercise the authenticated download path after the original invoice
+      // expiry, while the submitted request remains a retained billing record.
+      await pool.query(
+        "UPDATE amp_funding_requests SET created_at=now()-interval '31 days',expires_at=now()-interval '1 day' WHERE id=$1",
+        [invoice.id],
+      );
+      const app = Fastify();
+      await registerFundingPurchaseRoutes(app, {
+        pool,
+        offers: [offer],
+        authenticate: async () => "amp|owner",
+      });
+      try {
+        const pdf = await app.inject(
+          `/api/v1/funding/requests/${invoice.id}/invoice`,
+        );
+        assert.equal(pdf.statusCode, 200);
+        assert.ok(pdf.body.startsWith("%PDF"));
+      } finally {
+        await app.close();
+      }
+      await purgeExpiredFundingRequests(pool, at(61));
+      assert.equal(await invoices.readInvoiceIntent(invoice.id), null);
+      assert.equal(
+        (
+          await pool.query("SELECT status FROM amp_grants WHERE id=$1", [
+            grant.id,
+          ])
+        ).rows[0].status,
+        "revoked",
+      );
+    }),
+);
+
+for (const scenario of [
+  { days: 45, submitted: true, accepted: true },
+  { days: 45, submitted: true, accepted: true, usedBridge: true },
+  { days: 45, submitted: false, accepted: false },
+  { days: 61, submitted: true, accepted: false },
+  { days: 61, submitted: true, accepted: false, usedBridge: true },
+])
+  test(
+    `program settlement on day ${scenario.days} of a ${scenario.submitted ? "submitted" : "prepared"} invoice ${"usedBridge" in scenario ? "without a new bridge" : "with a bridge"} respects the processing deadline`,
+    enabled,
+    () =>
+      fixture(async (pool, invoices) => {
+        await eligibleParent(pool);
+        if ("usedBridge" in scenario) {
+          const first = await invoices.create(input());
+          await invoices.claim("amp|owner", first.id, "child");
+        }
+        const invoice = await invoices.create(input());
+        await invoices.claim("amp|owner", invoice.id, "child");
+        if ("usedBridge" in scenario)
+          assert.equal(
+            (
+              await pool.query(
+                "SELECT grant_id FROM amp_access_gifts WHERE funding_invoice_id=$1",
+                [invoice.id],
+              )
+            ).rows[0].grant_id,
+            null,
+            "a second invoice has no new temporary grant",
+          );
+        if (scenario.submitted)
+          await invoices.funding.update(
+            "amp|owner",
+            invoice.id,
+            "parent-reported-submitted",
+          );
+        const createdAt = new Date(Date.now() - scenario.days * 86400000);
+        const expiresAt = new Date(createdAt.getTime() + 30 * 86400000);
+        for (const table of [
+          "amp_funding_requests",
+          "amp_funding_invoice_intents",
+        ])
+          await pool.query(
+            `UPDATE ${table} SET created_at=$2,expires_at=$3 WHERE id=$1`,
+            [invoice.id, createdAt, expiresAt],
+          );
+        // Run retention during the processing period before the report arrives.
+        if (scenario.submitted && scenario.days === 45) {
+          await purgeExpiredFundingRequests(
+            pool,
+            new Date(createdAt.getTime() + 31 * 86400000),
+          );
+          assert.ok(await invoices.readInvoiceIntent(invoice.id));
+        }
+        const now = new Date().toISOString();
+        const stage = () =>
+          stageClassWalletPayment(
+            pool,
+            {
+              "Order ID": "fixture-processing",
+              "Transaction ID": randomUUID(),
+              "Invoice/Quote": invoice.id,
+              Organization: "Fixture",
+              State: "AZ",
+              "Distribution Name": "Fixture",
+              "Payment Amount": "123.00",
+              Total: "120.00",
+              Fee: "3.00",
+              Status: "Settled",
+              "Payment Approval Date": now,
+              "Last Update": now,
+            },
+            {
+              verificationReference: "synthetic-only",
+              currency: "USD",
+              grossColumn: "Payment Amount",
+              netColumn: "Total",
+              dateFormat: "canonical-utc-iso",
+              settledStatus: "Settled",
+              lastUpdateMeaning: "settlement-time-for-settled-rows",
+              programs: [
+                {
+                  organization: "Fixture",
+                  state: "AZ",
+                  distribution: "Fixture",
+                  programId: offer.programId,
+                  channelReference: offer.channelReference,
+                },
+              ],
+            },
+            "a".repeat(64),
+            true,
+          );
+        if (!scenario.accepted) {
+          await assert.rejects(stage(), /payment_after_invoice_expiry/);
+          if ("usedBridge" in scenario) {
+            await purgeExpiredFundingRequests(pool);
+            assert.equal(await invoices.readInvoiceIntent(invoice.id), null);
+          }
+          return;
+        }
+        await stage();
+        assert.deepEqual(await reconcileClassWalletPayments(pool, [offer]), {
+          provisioned: 1,
+          deferred: 0,
+          stopped: 0,
+        });
+        const saved = await invoices.funding.read("amp|owner", invoice.id);
+        assert.ok(
+          saved.orderId,
+          "verified day45 payment provisions the paid term",
+        );
+        const paid = (
+          await pool.query(
+            "SELECT * FROM amp_grants WHERE learner_id='child' AND id LIKE 'commerce:%'",
+          )
+        ).rows[0];
+        assert.equal(paid.status, "active");
+        assert.ok(paid.ends_at.getTime() > Date.now() + 300 * 86400000);
+      }),
+  );
+
+for (const paid of [false, true])
+  test(
+    `a valid ${paid ? "paid" : "unpaid"} invoice remains assignable after temporary access expires`,
+    enabled,
+    () =>
+      fixture(async (pool, invoices) => {
+        await eligibleParent(pool);
+        const invoice = await invoices.create(
+          input(),
+          new Date(Date.now() - 16 * 86400000),
+        );
+        if (paid)
+          await pool.query(
+            "UPDATE amp_funding_invoice_intents SET received_payment_at=now() WHERE id=$1",
+            [invoice.id],
+          );
+        const claimed = await invoices.claim("amp|owner", invoice.id, "child");
+        assert.equal(claimed.id, invoice.id);
+        assert.equal(
+          (await invoices.readInvoiceIntent(invoice.id))?.state,
+          "claimed",
+        );
+        assert.equal(
+          (
+            await pool.query(
+              "SELECT count(*) FROM amp_grants WHERE learner_id='child'",
+            )
+          ).rows[0].count,
+          "0",
+          "late assignment does not restart temporary access or invent a paid grant",
+        );
+      }),
+  );
 
 test(
   "expired unpaid financial data purges; verified payment intent is retained",
@@ -749,6 +1023,202 @@ const invoiceTransport = (
 });
 
 test(
+  "invoice reminders send each fixed stage once with exact PDF and program instructions",
+  enabled,
+  () =>
+    fixture(async (pool, invoices) => {
+      await installConsentPolicy(pool, invoicePolicy);
+      await eligibleParent(pool);
+      const invoice = await invoices.create(
+        input(),
+        new Date(Date.now() - 11 * 86400000),
+      );
+      const sent: ConsentMail[] = [];
+      const transport = invoiceTransport(async (mail) => {
+        sent.push(mail);
+        await new Promise((resolve) => setTimeout(resolve, 20));
+        return { kind: "accepted", receipt: randomUUID() };
+      });
+      await Promise.all(
+        Array.from({ length: 4 }, () =>
+          deliverFundingReminderMail(pool, transport, invoicePolicy),
+        ),
+      );
+      assert.equal(sent.length, 1);
+      assert.ok(sent[0]!.text.includes(offer.instructions));
+      assert.ok(sent[0]!.text.includes(offer.destinationUrl));
+      assert.ok(
+        sent[0]!.text.includes(
+          new Date(Date.parse(invoice.createdAt) + 14 * 86400000)
+            .toISOString()
+            .slice(0, 10),
+        ),
+      );
+      assert.match(sent[0]!.text, /account\/billing/);
+      assert.doesNotMatch(sent[0]!.text, /consent/);
+      assert.ok(
+        Buffer.from(sent[0]!.attachments![0]!.content, "base64")
+          .toString()
+          .startsWith("%PDF"),
+      );
+      await invoices.claim("amp|owner", invoice.id, "child");
+      await invoices.funding.update(
+        "amp|owner",
+        invoice.id,
+        "parent-reported-submitted",
+      );
+      for (const table of [
+        "amp_funding_invoice_intents",
+        "amp_funding_requests",
+      ])
+        await pool.query(
+          `UPDATE ${table} SET created_at=now()-interval '58 days',expires_at=now()-interval '28 days' WHERE id=$1`,
+          [invoice.id],
+        );
+      await Promise.all(
+        Array.from({ length: 3 }, () =>
+          deliverFundingReminderMail(pool, transport, invoicePolicy),
+        ),
+      );
+      assert.equal(sent.length, 2);
+      assert.match(sent[1]!.subject, /awaiting payment/);
+      assert.notEqual(sent[0]!.idempotencyKey, sent[1]!.idempotencyKey);
+      assert.equal(
+        sent[0]!.attachments![0]!.content,
+        sent[1]!.attachments![0]!.content,
+      );
+      assert.equal(
+        await deliverFundingReminderMail(pool, transport, invoicePolicy),
+        false,
+      );
+    }),
+);
+
+test(
+  "invoice reminder retry is identical and submission, verified payment, cancellation and expiry suppress it",
+  enabled,
+  () =>
+    fixture(async (pool, invoices) => {
+      await installConsentPolicy(pool, invoicePolicy);
+      await eligibleParent(pool);
+      const sent: ConsentMail[] = [];
+      const transport = invoiceTransport(async (mail) => {
+        sent.push(mail);
+        return { kind: "unknown" };
+      });
+      const create = () =>
+        invoices.create(input(), new Date(Date.now() - 11 * 86400000));
+      const invoice = await create();
+      await deliverFundingReminderMail(pool, transport, invoicePolicy);
+      await pool.query(
+        "UPDATE amp_funding_invoice_reminders SET available_at=now()",
+      );
+      await deliverFundingReminderMail(pool, transport, invoicePolicy);
+      assert.deepEqual(sent[0], sent[1]);
+      await invoices.claim("amp|owner", invoice.id, "child");
+      await invoices.funding.update(
+        "amp|owner",
+        invoice.id,
+        "parent-reported-submitted",
+      );
+      await pool.query(
+        "UPDATE amp_funding_invoice_reminders SET available_at=now()",
+      );
+      await deliverFundingReminderMail(pool, transport, invoicePolicy);
+      assert.equal(sent.length, 2);
+      for (const stop of ["payment", "cancel", "expiry", "delete"]) {
+        const candidate = await create();
+        await deliverFundingReminderMail(pool, transport, invoicePolicy);
+        const count: number = sent.length;
+        if (stop === "payment")
+          await pool.query(
+            "UPDATE amp_funding_invoice_intents SET received_payment_at=now() WHERE id=$1",
+            [candidate.id],
+          );
+        if (stop === "cancel")
+          await invoices.discard("amp|owner", candidate.id);
+        if (stop === "expiry")
+          await pool.query(
+            "UPDATE amp_funding_invoice_reminders SET deadline_at=now()-interval '1 second' WHERE invoice_id=$1",
+            [candidate.id],
+          );
+        if (stop === "delete")
+          await pool.query(
+            "DELETE FROM amp_funding_invoice_intents WHERE id=$1",
+            [candidate.id],
+          );
+        await pool.query(
+          "UPDATE amp_funding_invoice_reminders SET available_at=now() WHERE invoice_id=$1",
+          [candidate.id],
+        );
+        await deliverFundingReminderMail(pool, transport, invoicePolicy);
+        assert.equal(sent.length, count, `${stop} prevents retry delivery`);
+      }
+    }),
+);
+
+test(
+  "invoice reminder stops ambiguous sends after the provider retry window and rechecks before dispatch",
+  enabled,
+  () =>
+    fixture(async (pool, invoices) => {
+      await installConsentPolicy(pool, invoicePolicy);
+      const invoice = await invoices.create(
+        input(),
+        new Date(Date.now() - 11 * 86400000),
+      );
+      let calls = 0;
+      const transport = invoiceTransport(async () => {
+        calls++;
+        return { kind: "unknown" };
+      });
+      await deliverFundingReminderMail(pool, transport, invoicePolicy);
+      await pool.query(
+        "UPDATE amp_funding_invoice_reminders SET first_dispatch_at=now()-interval '24 hours',available_at=now()",
+      );
+      await deliverFundingReminderMail(pool, transport, invoicePolicy);
+      assert.equal(calls, 1);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT stopped_reason FROM amp_funding_invoice_reminders WHERE invoice_id=$1",
+            [invoice.id],
+          )
+        ).rows[0].stopped_reason,
+        "retry-window-ended",
+      );
+      const next = await invoices.create(
+        input(),
+        new Date(Date.now() - 11 * 86400000),
+      );
+      // Interpose between the committed lease and the worker's second transaction.
+      const connect = pool.connect.bind(pool);
+      let connections = 0;
+      pool.connect = (async () => {
+        const client = await connect();
+        if (++connections === 2) {
+          pool.connect = connect;
+          await client.query(
+            "UPDATE amp_funding_invoice_intents SET received_payment_at=now() WHERE id=$1",
+            [next.id],
+          );
+        }
+        return client;
+      }) as typeof pool.connect;
+      try {
+        await deliverFundingReminderMail(pool, transport, invoicePolicy);
+      } finally {
+        pool.connect = connect;
+      }
+      assert.equal(
+        calls,
+        1,
+        "payment recorded after leasing prevents transport call",
+      );
+    }),
+);
+
+test(
   "invoice email has the PDF, payment steps and setup route; concurrent delivery and creation retries send once",
   enabled,
   () =>
@@ -774,7 +1244,18 @@ test(
       assert.equal(mail.idempotencyKey, `amp-funding-invoice:${intent.id}`);
       assert.match(mail.text, /child can start today/);
       assert.ok(mail.text.includes(offer.instructions));
-      assert.match(mail.text, /https:\/\/example.com\/purchase\/arizona-esa/);
+      assert.match(mail.text, /https:\/\/example.com\/account\/billing/);
+      assert.ok(
+        mail.text.includes(
+          new Date(Date.parse(intent.createdAt) + 14 * 86400000)
+            .toISOString()
+            .slice(0, 10),
+        ),
+      );
+      assert.doesNotMatch(
+        mail.text,
+        /complete parent consent|funded-pending|\/start\/consent/i,
+      );
       assert.ok(
         Buffer.from(mail.attachments![0]!.content, "base64")
           .toString()

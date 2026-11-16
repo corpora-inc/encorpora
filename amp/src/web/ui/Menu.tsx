@@ -9,6 +9,7 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import { usePopover } from "./popover-owner";
+import { buttonClass, type ButtonVariant } from "./Button";
 import styles from "./Menu.module.css";
 
 type Insets = { top: number; right: number; bottom: number; left: number };
@@ -59,6 +60,7 @@ export function Menu({
   align = "end",
   showChevron = true,
   busy = false,
+  variant,
 }: {
   /** The trigger's visible text. */
   label: ReactNode;
@@ -74,6 +76,8 @@ export function Menu({
   showChevron?: boolean;
   /** An action chosen from it is running: the trigger shows the busy wave. */
   busy?: boolean;
+  /** Use the shared action-button appearance for a primary action menu. */
+  variant?: ButtonVariant;
 }) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(false);
   const [padding, setPadding] = useState<Insets>(() =>
@@ -85,6 +89,7 @@ export function Menu({
   // A transparent shield outlives the menu just long enough to absorb that
   // click: a tap outside only closes the menu.
   const [shielded, setShielded] = useState(false);
+  const [layer, setLayer] = useState(1150);
   const outsidePress = useRef(false);
   useEffect(() => {
     if (open || !shielded) return;
@@ -93,6 +98,13 @@ export function Menu({
   }, [open, shielded]);
   const setOpen = (next: boolean) => {
     if (next) {
+      // A menu opened inside a dialog must sit above that dialog, including
+      // a lesson layered over navigation. Its shield shares the same level.
+      const dialog = ownTrigger.current?.closest('[role="dialog"]');
+      const parentLayer = dialog
+        ? Number.parseInt(getComputedStyle(dialog).zIndex, 10) || 0
+        : 0;
+      setLayer(Math.max(1150, parentLayer + 2));
       setPadding(padded(safeAreaInsets()));
       setShielded(true);
     } else if (!outsidePress.current) setShielded(false);
@@ -126,7 +138,8 @@ export function Menu({
           ref={setTrigger}
           aria-label={ariaLabel}
           aria-busy={busy || undefined}
-          className={`${styles.trigger} ${triggerClassName ?? ""}`}
+          disabled={busy}
+          className={`${variant ? buttonClass(variant) : styles.trigger} ${triggerClassName ?? ""}`}
         >
           {label}
           {showChevron && (
@@ -145,6 +158,7 @@ export function Menu({
         createPortal(
           <div
             className={styles.shield}
+            style={{ zIndex: layer - 1 }}
             aria-hidden="true"
             onClick={() => {
               if (!open) setShielded(false);
@@ -156,6 +170,7 @@ export function Menu({
         <DropdownMenu.Content
           ref={content}
           className={styles.content}
+          style={{ zIndex: layer }}
           align={align}
           sideOffset={8}
           collisionPadding={padding}

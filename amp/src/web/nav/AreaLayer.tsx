@@ -1,12 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "@tanstack/react-router";
 import { useState, type CSSProperties, type ReactNode } from "react";
 import type { ProgressRecord } from "../../schools/teacher-contracts";
 import { gradeName } from "../../learning/level-check";
 import { strandNames } from "../BirthYearPrompt";
 import { bands, bandLabel, type MapSkill } from "../features/pathways/model";
 import { skillCatalogOptions } from "../lib/learning-view";
-import { buttonClass } from "../ui/Button";
 import { Sheet } from "../ui/Sheet";
 import {
   fitScale,
@@ -22,6 +20,7 @@ import {
 } from "../ui/level-range";
 import { percent } from "../ui/level-range/scale";
 import { EntityLink } from "./links";
+import { CurriculumPractice } from "../features/practice/CurriculumPractice";
 import { LayerWait } from "./LayerWait";
 import layers from "./layers.module.css";
 import styles from "./AreaLayer.module.css";
@@ -40,8 +39,6 @@ export type AreaSource = {
   objectives: ProgressRecord["objectives"];
   /** How the overall estimate moved; only where the page has it. */
   path?: readonly PathPoint[] | null;
-  /** This reader may start practice for this learner: the one action. */
-  practice?: boolean;
 };
 
 /** A record's level as an area layer reads it, in the record's own order. */
@@ -138,18 +135,23 @@ export function AreaLayer({
       title={label}
       back={back}
     >
-      {!row?.estimate ? (
-        <p className={layers.lede}>No level here yet.</p>
-      ) : overall ? (
-        <OverallDetail source={source} words={plainLevel(row.estimate)} />
-      ) : (
-        <AreaDetail
-          area={area}
-          label={label}
-          estimate={row.estimate}
-          source={source}
-        />
-      )}
+      <div className={layers.layer}>
+        {(overall || strandNames[area]) && (
+          <CurriculumPractice filter={overall ? {} : { strand: area }} />
+        )}
+        {!row?.estimate ? (
+          <p className={layers.lede}>No level here yet.</p>
+        ) : overall ? (
+          <OverallDetail source={source} words={plainLevel(row.estimate)} />
+        ) : (
+          <AreaDetail
+            area={area}
+            label={label}
+            estimate={row.estimate}
+            source={source}
+          />
+        )}
+      </div>
     </Sheet>
   );
 }
@@ -170,18 +172,6 @@ function OverallDetail({
       </p>
       {source.path && source.path.length >= 3 && (
         <Sparkline points={source.path} />
-      )}
-      {source.practice && (
-        <div className={layers.actions}>
-          <Link
-            to="/$"
-            params={{ _splat: "practice" }}
-            className={buttonClass("primary", styles.practice)}
-            data-area-practice=""
-          >
-            Practice
-          </Link>
-        </div>
       )}
       {source.areas.length > 0 && (
         <section>
@@ -255,7 +245,6 @@ function AreaDetail({
       .map((objective) => objective.skillId),
   );
   const placed = areaSkills(catalog.data.skills, area, estimate, earnedIds);
-  const focus = placed.working[0] ?? placed.next[0];
   const skillItem = (entry: Entry) => ({
     id: entry.skill.id,
     title: entry.skill.title,
@@ -268,19 +257,6 @@ function AreaDetail({
         {plainLevel(estimate)}
       </p>
       <SkillField placed={placed} estimate={estimate} />
-      {source.practice && focus && (
-        <div className={layers.actions}>
-          <Link
-            to="/$"
-            params={{ _splat: "practice" }}
-            search={{ skill: focus.skill.id } as never}
-            className={buttonClass("primary", styles.practice)}
-            data-area-practice={focus.skill.id}
-          >
-            {`Practice ${inSentence(focus.skill.title)}`}
-          </Link>
-        </div>
-      )}
       <SkillGroup
         title="Working on"
         entries={placed.working.map(skillItem)}

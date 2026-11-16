@@ -1,3 +1,5 @@
+import { useSettingsFamily } from "./features/family/account-settings";
+import { LegalDocuments } from "./features/account/LegalDocuments";
 import { requestFetch, requestWith } from "./lib/request-transport";
 import { namedByTab as titleNamedByTab } from "./features/navigation/shell-frame";
 import screenTitle from "./ui/ScreenTitle.module.css";
@@ -100,6 +102,7 @@ export function FamilyCenter({
   onChoosePayment,
 }: Props) {
   const route = useAppRoute();
+  const settingsFamily = useSettingsFamily();
   // The family's second parent (docs/families.md): the account holder invites
   // her here; she, with no family of her own, finds hers described instead.
   const session = { accountId: identity, token };
@@ -487,20 +490,20 @@ export function FamilyCenter({
     ? "Purchases and records"
     : privacy
       ? {
-          export: "Download your records",
-          consent: "Learning consent",
+          export: "Download your data",
+          consent: "Learning permissions",
           delete: "Delete learning data",
-          retention: "What is kept",
-          measurement: "Purchase measurement",
+          retention: "Data retention",
+          measurement: "Advertising preferences",
         }[privacy]
       : section === "security"
-        ? "Sign-in"
+        ? "Profile"
         : section === "learners"
           ? "Learners"
           : section === "access"
             ? "Billing"
             : "Privacy";
-  const namedByTab = titleNamedByTab(pathname, title);
+  const namedByTab = !settingsFamily && titleNamedByTab(pathname, title);
   // A step inside a tab says the way back above its title.
   const back = purchaseChooser
     ? { label: "Billing", go: closeChooser }
@@ -602,6 +605,7 @@ export function FamilyCenter({
               <span id={`birth-year-${learner.id}`}>Birth year</span>
               <YearField
                 label={`Birth year, ${learner.name}`}
+                earlier
                 value={learner.birthYear ? String(learner.birthYear) : ""}
                 placeholder="Choose a year"
                 disabled={busy || !canChangeYear}
@@ -658,7 +662,7 @@ export function FamilyCenter({
     ? ([
         [
           "export",
-          "Download your records",
+          "Download your data",
           hasChildren
             ? "A personal copy of your family’s data"
             : "A personal copy of your data",
@@ -669,12 +673,12 @@ export function FamilyCenter({
           : ([
               [
                 "consent",
-                "Learning consent",
-                "Review consent or pause new activity",
+                "Learning permissions",
+                "Manage permission to save your child’s learning activity",
               ],
             ] as const)),
         ["delete", "Delete learning data", "See what is removed first"],
-        ["retention", "What is kept", "Billing, sign-in and backups"],
+        ["retention", "Data retention", "Billing, sign-in and backups"],
         ...((family.purchaseMeasurement?.available ||
           family.metaPurchaseMeasurement?.available ||
           family.openaiPurchaseMeasurement?.available) &&
@@ -682,7 +686,7 @@ export function FamilyCenter({
           ? ([
               [
                 "measurement",
-                "Purchase measurement",
+                "Advertising preferences",
                 "Whether Google, Meta or OpenAI receives purchase details",
               ],
             ] as const)
@@ -691,6 +695,7 @@ export function FamilyCenter({
     : [];
   return (
     <section
+      data-family-settings-detail={settingsFamily ? "" : undefined}
       className={`family-center ${pages.page}`}
       aria-labelledby="family-title"
     >
@@ -755,6 +760,15 @@ export function FamilyCenter({
             >
               {title}
             </h1>
+            {settingsFamily && !back && (
+              <Link
+                to="/$"
+                params={{ _splat: `family/${settingsFamily}/settings` }}
+                className={pages.settingsReturn}
+              >
+                ‹ Settings
+              </Link>
+            )}
           </div>
         )}
         {/* Every adult's own name, as others see it (R9, R12). */}
@@ -944,12 +958,16 @@ export function FamilyCenter({
                     <div className={pages.fieldLabel}>
                       <span>Birth year</span>
                       <YearField
-                        label="Birth year"
+                        label={
+                          newName.trim()
+                            ? `Birth year, ${newName.trim()}`
+                            : "Birth year"
+                        }
                         value={newBirthYear}
                         placeholder="Choose a year"
                         onChange={setNewBirthYear}
                         disabled={busy}
-                        adult
+                        earlier
                       />
                     </div>
                     {/* The birth year sets where practice starts. */}
@@ -1072,6 +1090,7 @@ export function FamilyCenter({
                 </ul>
               </section>
             )}
+            {section === "privacy" && !privacy && <LegalDocuments />}
             {section === "privacy" &&
               privacy === "measurement" &&
               family.purchaseMeasurement?.available &&

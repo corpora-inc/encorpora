@@ -1,4 +1,5 @@
 import { deliverFundingInvoiceMail } from "../src/funding-purchase/invoice-mail.js";
+import { deliverFundingReminderMail } from "../src/funding-purchase/reminder-mail.js";
 import { reconcileClassWalletPayments } from "../src/funding-purchase/classwallet-staging.js";
 import type { Pool } from "pg";
 import { z } from "zod";
@@ -49,6 +50,12 @@ try {
     (await deliverFundingInvoiceMail(pool, transport, policy))
   )
     invoices++;
+  let reminders = 0;
+  while (
+    reminders < 8 &&
+    (await deliverFundingReminderMail(pool, transport, policy))
+  )
+    reminders++;
   const invoiceExceptions = (
     await pool.query(
       "SELECT count(*)::int count FROM amp_funding_invoice_outbox WHERE stopped_at IS NOT NULL",
@@ -64,6 +71,7 @@ try {
       event: "funded-activation-delivery-job",
       processed,
       invoices,
+      reminders,
       invoiceExceptions,
       payments,
       exceptions,

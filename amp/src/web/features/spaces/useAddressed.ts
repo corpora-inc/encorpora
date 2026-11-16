@@ -73,7 +73,6 @@ export function useAddressedRecordsReadable(): boolean {
       session ?? { accountId: "", token: "" },
       child?.family ?? "",
     ),
-    enabled: !!session && !!child,
   });
   if (!child) return true;
   return !!family.data?.children.find((entry) => entry.id === child.learner)

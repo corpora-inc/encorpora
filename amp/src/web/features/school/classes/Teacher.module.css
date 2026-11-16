@@ -223,10 +223,11 @@ span.student[data-teacher] {
   cursor: help;
   -webkit-tap-highlight-color: transparent;
 }
+/* At least 44 px each way around the figure, however small it is set. */
 .figureTip::after {
   content: "";
   position: absolute;
-  inset: max(-12px, calc((100% - 44px) / 2)) -8px;
+  inset: min(0px, calc((100% - 44px) / 2)) min(-8px, calc((100% - 44px) / 2));
 }
 button.figureTip:hover:not(:disabled),
 button.figureTip:active:not(:disabled) {

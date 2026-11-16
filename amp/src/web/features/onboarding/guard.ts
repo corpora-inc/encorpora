@@ -215,8 +215,8 @@ export function placesFor(me: SignedInMe): PlaceId[] {
  * work only at schools (`"schools"` to choose between several), then their
  * own practice. A school whose setup this admin hasn't finished never takes
  * `/` from someone with a family side: the switcher is one tap away, and the
- * setup keeps its own URL. Their own practice is remembered only once they
- * have it.
+ * setup keeps its own URL. A parent’s personal practice returns to their
+ * family home; standalone adult learners return to their own record.
  */
 export function homePlace(
   me: SignedInMe,
@@ -225,7 +225,7 @@ export function homePlace(
   const schools = me.staffOf ?? [];
   const home = hasHome(me);
   const own = !!me.adultPractice?.learner;
-  if (remembered === "me" && own) return "me";
+  if (remembered === "me" && own && !home) return "me";
   const last = schools.find((org) => `school:${org.orgId}` === remembered);
   if (last && !(last.setupPending && home)) return `school:${last.orgId}`;
   if (home) return "home";

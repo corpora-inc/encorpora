@@ -76,12 +76,14 @@ Capabilities are the server's, named by target: `{ target: { kind: "org" | "clas
 
 | Space            | Phone                                                                                                   | More                                                                                                       |
 | ---------------- | ------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| Family           | Today, Map, Workbooks, Time                                                                             | Report cards (Grades inside), People, Settings; Workbooks only where this reader may make them             |
+| Family           | Today, Progress, Settings | Workbooks, time and report cards inside Progress; people and sharing inside Settings. Workbook actions appear where the reader can read them. |
 | Classroom        | Today, Map, Grades, Students                                                                            | Time, Workbooks, Settings                                                                                  |
 | School           | Overview, Classes, Staff, License                                                                       | Calendar, Privacy, Activity, Settings, Integrations (each by capability); district and network add Schools |
 | Me               | Practice, Levels, Workbooks                                                                             | Pathways, Inventory, Profiles                                                                              |
 | A child's record | Overview (their page), Pathways, Inventory, at `/family/<family>/kids/<learner>[/pathways\|/inventory]` | —                                                                                                          |
 | Account          | Sign-in, Billing, Privacy                                                                               | —                                                                                                          |
+
+- **Family progress:** the Progress tab links straight to `kids/<learner>` when the family has one child; `/map` replaces itself with that same address, preserving search and hash. Several children use `/map` for comparison with explicit “View progress” links. Child overview, workbooks, time and reports mark Progress active; people and sign-in cards mark Settings active. The child’s Pathways and Inventory retain their record tabs.
 
 - **Drawer**: the space's own destinations, then the place switcher, then the account. A family's are its Today and each of its own children as a row opening their page; its device preferences (sound, haptics) are one quiet "This device" section of switches. It never shows another space's learners or destinations.
 - **Place switcher**: one bounded request, `GET /api/v1/school/places` (`src/schools/places.ts`): the orgs this account holds a staff role at, the schools below a district it oversees, and the classes it teaches or aides this year, each list stopping at 40 with `more` set. Grouped as **Family** (their own, second-parent families, co-teaching), **Teaching** (each school with its role, its classes, viewer and aide included) and **My practice** (their own, Practice at a level). Six teaching places show before "More places"; past the server's limit, "All your schools" opens `/school`. Choosing a place lands on its home, chooses a learner who belongs there (none for a class or school), and remembers it for `/` only.
@@ -172,6 +174,8 @@ The server holds this, not only the screens: while a school class's students can
 ## Account
 
 The account's own settings have neutral addresses, and every older one opens the same screen:
+
+A parent opens Billing, Privacy and Sign-in inside the family frame, with Settings selected and a direct return to the family's Settings. The account's own family takes precedence over a family shared by another parent; a teaching-only membership does not supply personal settings context. Adults without a family use the Account frame. The account URLs and authorization remain independent of the surrounding navigation.
 
 | Address                                                                              | Older address (same screen)                                            |
 | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------- |

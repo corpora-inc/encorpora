@@ -1,4 +1,5 @@
-import { purchaseConsentSatisfied } from "../server/account-access.js";
+import { fundedLearningAllowed } from "./learning-permission.js";
+import { fundingPaymentDeadline } from "./timely-settlement.js";
 import type { Pool } from "pg";
 import { z } from "zod";
 import { canonicalCommercePayload } from "../commerce/ledger.js";
@@ -111,7 +112,12 @@ export async function stageClassWalletPayment(
       )
         throw new ClassWalletError("previous_payment_mismatch");
     } else if (
-      verified.updated > iso(stored.expires_at) &&
+      verified.updated >
+        fundingPaymentDeadline({
+          createdAt: iso(stored.created_at),
+          expiresAt: iso(stored.expires_at),
+          status: stored.status,
+        }) &&
       !(checkout && stored.order_id)
     )
       throw new ClassWalletError("payment_after_invoice_expiry");
@@ -208,13 +214,14 @@ export async function reconcileClassWalletPayments(
       }
       const stored = requests.rows[0],
         request = fundingRequestRow(stored);
-      // A temporary invoice grant can precede the parent's full consent.
-      // Keep received payment available while they finish it, without spending
+      // Paid access uses the claimed invoice's existing learning permission.
+      // Withdrawal or an unavailable learner defers activation without spending
       // the error-retry budget or fixing the paid term before it can start.
       if (
         !request.orderId &&
-        !(await purchaseConsentSatisfied(
+        !(await fundedLearningAllowed(
           client,
+          request.id,
           request.accountId,
           request.learnerId,
         ))

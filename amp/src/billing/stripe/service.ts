@@ -79,7 +79,8 @@ export class StripeBilling {
         error.code !== "checkout_plan_conflict"
       )
         throw error;
-      // Only provider-confirmed expiry permits replacing another plan's checkout.
+      // Changing plans expires only an abandoned provider checkout. Stripe's
+      // atomic expiry rejects a payment that completed while we were checking.
       await this.repository.transaction(accountId, async (client) => {
         if (learnerId !== null)
           await this.repository.assertPurchaseAllowed(
@@ -88,17 +89,21 @@ export class StripeBilling {
             learnerId,
           );
         const open = await client.query(
-          "SELECT id,session_id FROM amp_stripe_checkouts WHERE namespace=$1 AND learner_id IS NOT DISTINCT FROM $2 AND account_id=$3 AND NOT closed FOR UPDATE",
+          "SELECT id,session_id,subscription_id,billing_interval FROM amp_stripe_checkouts WHERE namespace=$1 AND learner_id IS NOT DISTINCT FROM $2 AND account_id=$3 AND NOT closed FOR UPDATE",
           [this.repository.namespace, learnerId, accountId],
         );
         const row = open.rows[0];
         if (row) {
-          if (
-            !row.session_id ||
-            (await this.gateway.checkoutStatus(row.session_id)).status !==
-              "expired"
-          )
-            throw error;
+          // A simultaneous request may already have switched to this plan.
+          if (row.billing_interval === interval) return;
+          if (!row.session_id || row.subscription_id) throw error;
+          const session = await this.gateway.checkoutStatus(row.session_id);
+          if (session.subscriptionId || session.status === "complete")
+            throw new BillingError("subscription_already_started");
+          if (!["open", "expired"].includes(session.status))
+            throw new BillingError("checkout_requires_reconciliation");
+          if (session.status === "open")
+            await this.gateway.expireCheckout(row.session_id);
           await client.query(
             "UPDATE amp_stripe_checkouts SET closed=true WHERE id=$1",
             [row.id],

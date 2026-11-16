@@ -48,7 +48,7 @@ export default function LessonDialog({
   backLabel?: string;
   /** Over a full-screen layer (an answer's replay), not just the page. */
   aboveLayers?: boolean;
-  /** The layer under this one, where X returns. */
+  /** The layer under this one, where Back returns. */
   back?: string;
   /** The page's action with this problem type (try it), first in the row,
    * given the type's skill. */
@@ -62,7 +62,8 @@ export default function LessonDialog({
       onOpenChange={(open) => {
         if (!open) onClose();
       }}
-      title="Explore a problem type"
+      title={(lesson && lessonIndex[lesson]?.[0]) || "Lesson"}
+      compactHeader
       fullOnPhone
       tall
       wide
@@ -92,7 +93,7 @@ export default function LessonDialog({
   );
 }
 
-/** The problem type's title and its one row of actions, known at once. */
+/** The problem type's practice and film actions, known before its text loads. */
 function LessonHead({
   lesson,
   actions,
@@ -107,7 +108,6 @@ function LessonHead({
   if (!title) return null;
   return (
     <div className={styles.head}>
-      <h2 className={styles.title}>{title}</h2>
       {(action || film) && (
         <div className={styles.actions}>
           {action}

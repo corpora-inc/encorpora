@@ -17,6 +17,7 @@ import {
   reconcileClassWalletPayments,
 } from "../src/funding-purchase/classwallet-staging.js";
 import { deliverFundedActivationMail } from "../src/funding-purchase/activation-mail.js";
+import { fundedLearningAllowed } from "../src/funding-purchase/learning-permission.js";
 import type { ClassWalletConfig } from "../src/funding-purchase/classwallet.js";
 import { consentFixture } from "./parent-consent.fixture.js";
 import { testFundingOffer } from "./funding-purchase.fixture.js";
@@ -28,7 +29,7 @@ for (const timing of [
   "consent-after-offer-expiry",
 ] as const)
   test(
-    `new funded parent completes email consent, claim and activation mail; payment ${timing} claim`,
+    `funded payment and activation mail preserve learning permission: ${timing}`,
     { skip: !process.env.AMP_TEST_DATABASE_URL },
     async () => {
       const url = process.env.AMP_TEST_DATABASE_URL!,
@@ -49,6 +50,7 @@ for (const timing of [
         retention: "Synthetic test",
       });
       const earlyPayment = timing !== "after-consent";
+      const restrictedPayment = timing === "before-consent";
       const offer = {
         ...testFundingOffer,
         programId: earlyPayment ? "ar-efa" : "az-esa",
@@ -169,6 +171,11 @@ for (const timing of [
           "Last Update": now,
         };
         if (earlyPayment) {
+          // A parent-entry name needs no new permission for paid access.
+          // Explicit withdrawal, however, must keep payment deferred until
+          // the parent restores permission, even after invoice expiry.
+          if (!restrictedPayment)
+            await new FamilyRepository(pool).withdraw(account);
           await stageClassWalletPayment(
             pool,
             payment,
@@ -178,8 +185,11 @@ for (const timing of [
           );
           await reconcileClassWalletPayments(pool, [offer]);
           assert.equal(
-            (await pool.query("SELECT count(*)::int n FROM amp_grants")).rows[0]
-              .n,
+            (
+              await pool.query(
+                "SELECT count(*)::int n FROM amp_grants WHERE status='active'",
+              )
+            ).rows[0].n,
             1,
           );
           const deferred = (
@@ -188,9 +198,33 @@ for (const timing of [
             )
           ).rows[0];
           assert.equal(deferred.attempts, 0);
-          assert.equal(deferred.error_code, "awaiting_parent_consent");
+          assert.equal(
+            deferred.error_code,
+            restrictedPayment ? null : "awaiting_parent_consent",
+          );
           assert.equal(deferred.stopped_at, null);
-          assert.equal(deferred.conversion_payload, null);
+          if (restrictedPayment) {
+            assert.ok(deferred.conversion_payload);
+            assert.ok((await funding.read(account, request.id)).orderId);
+            const child = (
+              await pool.query(
+                "SELECT name,name_pending,name_basis FROM amp_learners WHERE id=$1",
+                [learner.id],
+              )
+            ).rows[0];
+            assert.equal(child.name, "Early");
+            assert.equal(child.name_pending, true);
+            assert.equal(child.name_basis, "parent_entry");
+            assert.equal(
+              (
+                await pool.query(
+                  "SELECT count(*)::int n FROM amp_parent_consents WHERE account_id=$1",
+                  [account],
+                )
+              ).rows[0].n,
+              0,
+            );
+          } else assert.equal(deferred.conversion_payload, null);
         }
         if (
           timing === "consent-after-expiry" ||
@@ -224,12 +258,13 @@ for (const timing of [
           }
           await new Promise((resolve) => setTimeout(resolve, 1100));
         }
-        await consent.begin(account, begin);
-        await deliverConsentMail(consent, transport);
-        assert.equal(await learners.hasConsent(account), false);
-        await consent.acknowledge(account, acknowledge(sent[0]!));
-        // The parent's first affirmative response starts access.
-        assert.equal(await learners.hasConsent(account), true);
+        if (!restrictedPayment) {
+          await consent.begin(account, begin);
+          await deliverConsentMail(consent, transport);
+          assert.equal(await learners.hasConsent(account), false);
+          await consent.acknowledge(account, acknowledge(sent[0]!));
+        }
+        assert.equal(await learners.hasConsent(account), !restrictedPayment);
         await invoices.claim(account, invoice.id, learner.id);
         await pool.query(
           "UPDATE amp_classwallet_payments SET next_attempt_at=now() WHERE invoice_id=$1",
@@ -267,13 +302,49 @@ for (const timing of [
           await deliverFundedActivationMail(pool, transport, policy),
           false,
         );
-        // The consent notice, then the activation mail: no second consent response.
-        assert.equal(sent.length, 2);
-        assert.equal(sent[1]!.recipient, "parent@example.com");
-        assert.match(sent[1]!.subject, /access is ready/);
-        assert.ok(!sent[1]!.text.includes("Fixture Student"));
+        assert.equal(sent.length, restrictedPayment ? 1 : 2);
+        const activated = sent.at(-1)!;
+        assert.equal(activated.recipient, "parent@example.com");
+        assert.match(activated.subject, /access is ready/);
+        assert.ok(!activated.text.includes("Fixture Student"));
+        if (restrictedPayment) {
+          assert.equal(
+            await fundedLearningAllowed(
+              pool,
+              request.id,
+              "amp|other",
+              learner.id,
+            ),
+            false,
+          );
+          assert.equal(
+            await fundedLearningAllowed(
+              pool,
+              randomUUID(),
+              account,
+              learner.id,
+            ),
+            false,
+          );
+          await pool.query(
+            "UPDATE amp_learners SET name_pending=false,deleted_at=now() WHERE id=$1",
+            [learner.id],
+          );
+          assert.equal(
+            await fundedLearningAllowed(pool, request.id, account, learner.id),
+            false,
+          );
+          await pool.query(
+            "UPDATE amp_learners SET name_pending=true,deleted_at=NULL WHERE id=$1",
+            [learner.id],
+          );
+        }
         await new FamilyRepository(pool).withdraw(account);
         assert.equal(await learners.hasConsent(account), false);
+        assert.equal(
+          await fundedLearningAllowed(pool, request.id, account, learner.id),
+          false,
+        );
         await reconcileClassWalletPayments(pool, [offer]);
         assert.equal(await learners.hasConsent(account), false);
         assert.equal(

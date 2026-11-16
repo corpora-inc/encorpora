@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useLocation } from "@tanstack/react-router";
 import { studentGrantResource } from "../../../../../schools/contracts";
 import type { AuthSession } from "../../../../auth";
 import { request } from "../../../../lib/api";
 import { AppError } from "../../../../lib/AppError";
 import { useFinishSignIn } from "../../join/api";
+import type { PracticeFilter } from "../../../practice/curriculum-filter";
 
 const failures: Record<string, string> = {
   learner_cannot_practice:
@@ -19,9 +21,15 @@ const failures: Record<string, string> = {
  * out (docs/families.md). `starting` holds the one child it's starting. */
 export function useHandOver(session: AuthSession) {
   const finish = useFinishSignIn();
+  const location = useLocation();
   const [starting, setStarting] = useState<string | null>(null);
   const [error, setError] = useState("");
-  const handOver = async (learnerId: string) => {
+  const handOver = async (
+    learnerId: string,
+    filter?: PracticeFilter,
+    returnTo?: string,
+  ) => {
+    setError("");
     setStarting(learnerId);
     try {
       const grant = await request(
@@ -29,7 +37,7 @@ export function useHandOver(session: AuthSession) {
         studentGrantResource,
         { token: session.token, body: {} },
       );
-      await finish(grant, true);
+      await finish(grant, true, returnTo ?? location.href, filter, learnerId);
     } catch (failure) {
       console.error("Practice on this device didn’t start", failure);
       setError(

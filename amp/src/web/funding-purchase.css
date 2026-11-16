@@ -1,11 +1,11 @@
 .funding-center {
-  height: 100dvh;
+  height: auto;
   min-height: 0;
   width: min(100%, 900px);
   margin: auto;
   padding: 20px;
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-rows: auto;
   gap: 18px;
   color: var(--color-on-surface);
 }
@@ -47,10 +47,8 @@
 }
 .funding-body {
   min-height: 0;
-  overflow: auto;
-  overscroll-behavior: contain;
+  overflow: visible;
   padding: 4px 6px 20px;
-  scrollbar-gutter: stable;
 }
 .funding-body p {
   line-height: 1.55;

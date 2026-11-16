@@ -438,5 +438,10 @@
     "path": "src/funding-purchase/repository.ts",
     "hash": "33ae203a7303455c3c007a8046dc2c4e1bff321aafcfcd74a3ab4a1b10da2287",
     "reason": "Cancelling a funded invoice revokes exactly the temporary grant linked to that invoice: a write keyed by the invoice, never an entitlement read."
+  },
+  {
+    "path": "src/funding-purchase/repository.ts",
+    "hash": "69b8b3f934e8a0765c934dc4c7a4cbd812c600d4807506e970f5005e799d4661",
+    "reason": "Extends an invoice-specific funded-pending grant on submission. This is an authorized grant mutation, not an adult entitlement read."
   }
 ]

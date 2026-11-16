@@ -163,6 +163,17 @@ export class StripeGateway {
       subscriptionId: id(session.subscription),
     };
   }
+  /** Stripe arbitrates a payment racing expiry: only an expired session can
+   * be replaced, never a completed checkout or an existing subscription. */
+  async expireCheckout(sessionId: string): Promise<void> {
+    const session = await this.client.checkout.sessions.expire(sessionId);
+    requireEvidence(
+      session.livemode === this.config.livemode &&
+        session.status === "expired" &&
+        !id(session.subscription),
+      "checkout_expiry_unconfirmed",
+    );
+  }
   async portal(customerId: string): Promise<string> {
     const session = await this.client.billingPortal.sessions.create({
       customer: customerId,

@@ -1,3 +1,7 @@
+import {
+  curriculumFilter,
+  type PracticeFilter,
+} from "../features/practice/curriculum-filter";
 import { requestFetch } from "../lib/request-transport";
 import { PracticeControls } from "../features/practice/PracticeControls";
 import {
@@ -465,6 +469,24 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     [queue, setQueue] = useState<HintedProblem[]>([]),
     [lesson, setLesson] = useState<Lesson | null>(null),
     [lessonSearch, setLessonSearch] = useState("");
+  // Keep the selected curriculum scope in the address for the whole series.
+  const practiceFilter = useRef<PracticeFilter>({});
+  const changingFilter = useRef(false);
+  const filterKey =
+    route.parts[0] === "practice" && catalog
+      ? JSON.stringify(curriculumFilter(route.location.search, catalog))
+      : "{}";
+  useLayoutEffect(() => {
+    practiceFilter.current = JSON.parse(filterKey) as PracticeFilter;
+    if (changingFilter.current) {
+      changingFilter.current = false;
+      return;
+    }
+    setProblem(null);
+    setQueue([]);
+    upcoming.current = null;
+    navigationEpoch.current++;
+  }, [filterKey]);
   // Loaded with the first practice problem (and only then), so a focused
   // skill's "Mixed practice" action is already known when that problem's
   // feedback opens.
@@ -1000,18 +1022,16 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       !paused
     )
       void action(() => {
-        const skillId = new URLSearchParams(route.location.search).get("skill");
-        const requestedType = new URLSearchParams(route.location.search).get(
-          "template",
+        const filter = practiceFilter.current;
+        const search = new URLSearchParams(route.location.search);
+        const requested = ["skill", "template", "strand"].some((key) =>
+          search.has(key),
         );
-        const template = skillId
-          ? catalog?.templates.find(
-              (t) =>
-                t.skillId === skillId &&
-                (!requestedType || t.id === requestedType),
-            )
-          : undefined;
-        return loadBatch(template?.id ?? "");
+        return loadBatch(
+          filter.template ?? "",
+          filter.strand,
+          filter.skill ?? (requested ? null : undefined),
+        );
       });
   }, [
     route.location.pathname,
@@ -1060,6 +1080,10 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   );
   const [purchaseFromChoice, setPurchaseFromChoice] = useState(false);
   function openPurchase(view: "choose" | "annual" | "funded") {
+    if (view === "funded" && !nativeRuntime) {
+      navigate("/purchase/funded");
+      return;
+    }
     clearOwnedPurchaseReturn();
     setPurchaseInterval("year");
     setPurchaseFromChoice(false);
@@ -1163,6 +1187,8 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     hints?: Record<string, ProblemHint>;
   };
   function requestBatch(templateId = family, recoveryStrand?: string) {
+    templateId ||= practiceFilter.current.template ?? "";
+    recoveryStrand ??= practiceFilter.current.strand;
     const learnerId = learner!.id;
     const epoch = authEpoch.current;
     // The problem still open in this tab (a reload, a restored tab, a trip
@@ -1197,14 +1223,16 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   }, [learner?.id, !!learner?.satMathFocus]);
   function applyBatch(data: Batch) {
     if (route.location.pathname !== "/practice") navigate("/practice");
-    if (new URLSearchParams(route.location.search).has("skill"))
-      navigate("/practice", { replace: true });
     showProblem(data.problems[0]);
     setQueue(data.problems.slice(1));
     setLesson(data.lesson);
     setFamily("");
   }
-  async function loadBatch(templateId = family, recoveryStrand?: string) {
+  async function loadBatch(
+    templateId = family,
+    recoveryStrand?: string,
+    focusSkill?: string | null,
+  ) {
     if (!learner) return;
     const capability = familySummary?.learners.find(
       (entry) => entry.id === learner.id,
@@ -1227,11 +1255,12 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     const current = () =>
       navigation === navigationEpoch.current &&
       learnerRef.current === learner.id;
-    if (templateId && !nativeRuntime) {
-      const skillId = catalog?.templates.find(
-        (t) => t.id === templateId,
-      )?.skillId;
-      if (skillId) {
+    if ((templateId || focusSkill !== undefined) && !nativeRuntime) {
+      const skillId =
+        focusSkill !== undefined
+          ? focusSkill
+          : catalog?.templates.find((t) => t.id === templateId)?.skillId;
+      if (skillId !== undefined) {
         const saved = await adjustments.change({ kind: "focus", skillId });
         if (!saved || !current()) return;
       }
@@ -1274,6 +1303,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       upcoming.current = null;
       setQueue([]);
       if (intent.kind !== "together") {
+        practiceFilter.current = {};
+        changingFilter.current = filterKey !== "{}";
+        navigate("/practice", { replace: true });
         setPending(null);
         const strand =
           intent.kind === "easier"
@@ -1819,6 +1851,12 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             setPurchaseFromChoice(true);
           }}
           onFunds={(offerId) => {
+            if (!nativeRuntime) {
+              const search = new URLSearchParams({ offer: offerId });
+              if (learnerId) search.set("learner", learnerId);
+              navigate(`/purchase/funded?${search}`);
+              return;
+            }
             setPurchaseOffer(offerId);
             openPurchase("funded");
             setPurchaseFromChoice(true);
@@ -2031,7 +2069,8 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             exit={() => setExploring(true)}
             exitHref="/"
             returnToMixed={
-              practiceSettings.data?.focusSkillId && !nativeRuntime
+              (practiceSettings.data?.focusSkillId || filterKey !== "{}") &&
+              !nativeRuntime
                 ? () =>
                     void action(() =>
                       adjustPractice({ kind: "focus", skillId: null }),

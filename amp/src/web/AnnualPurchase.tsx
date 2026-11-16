@@ -3,7 +3,8 @@ import { purchaseFetch } from "./lib/purchase-analytics";
 import { useFamilyCache } from "./lib/family-cache";
 import { queryClient, meOptions } from "./lib/query";
 import { useLoggedError, requestMessage } from "./feedback";
-import { Select } from "./PremiumControls";
+import { NativeSelect } from "./ui/NativeSelect";
+import { PlanStep } from "./features/onboarding/PlanStep";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import type {
   AnnualOffer,
@@ -14,11 +15,14 @@ import "./annual-purchase.css";
 import { PlanOptions } from "./PlanOptions";
 import { additionalChildLine } from "./features/billing/PlanChoice";
 import { paymentUrl } from "./features/billing/payment-url";
-import { FocusDialog } from "./PracticeWorkspace";
 import { analyticsVisitorHeaders } from "./lib/analytics";
 import { Loading } from "./ui/Loading";
 import { useNavigate } from "@tanstack/react-router";
-import { continuationPaid, readContinuation } from "./features/continue/memory";
+import {
+  continuationPaid,
+  readContinuation,
+  rememberContinuation,
+} from "./features/continue/memory";
 export interface AnnualPurchaseProps {
   token: string;
   preferredInterval?: "year" | "month";
@@ -75,7 +79,7 @@ const messages: Record<string, string> = {
   offer_currency_unsupported:
     "Online checkout requires a configured US-dollar offer.",
   checkout_plan_conflict:
-    "An existing checkout uses a different plan. Check access to load that plan; let the checkout expire before changing it.",
+    "The previous checkout couldn’t be replaced. Try again to open your selected plan.",
   sign_in_required: "Sign in again to view your family’s billing information.",
 };
 function PurchasePanel({
@@ -95,8 +99,6 @@ function PurchasePanel({
   const alive = useRef(true),
     revision = useRef(0);
   const requestId = useRef<string | undefined>(undefined);
-  const [terms, setTerms] = useState(false);
-  const termsTrigger = useRef<HTMLElement | null>(null);
   const [chosen, setOffer] = useState<AnnualOffer>();
   const [fullOffers, setOffers] = useState<AnnualOffer[]>([]);
   const [extraOffers, setExtraOffers] = useState<AnnualOffer[]>([]);
@@ -400,7 +402,15 @@ function PurchasePanel({
     phase === "checkout-open" ||
     phase === "checkout-expired";
   const linked = family?.learners.some((learner) => learner.stripeLinked);
+  const enrollmentRequired = phase === "consent-required";
   const consentActive = family?.consent.status === "active";
+  const rememberLearner = () => {
+    if (learnerId)
+      rememberContinuation({ accountId: identity, learnerId, returnTo: "/" });
+  };
+  useEffect(() => {
+    if (enrollmentRequired) rememberLearner();
+  }, [enrollmentRequired, learnerId, identity]);
   const date = (value?: string) =>
     value ? new Date(value).toLocaleDateString() : "";
   const statusCopy: Record<string, [string, string]> = {
@@ -442,10 +452,6 @@ function PurchasePanel({
       "Learning profile deleted",
       "Check billing to cancel any existing renewal.",
     ],
-    "consent-required": [
-      "Review parent consent",
-      "Purchases are paused. Billing management is available.",
-    ],
   };
   const copy = statusCopy[phase ?? ""];
   return (
@@ -463,17 +469,16 @@ function PurchasePanel({
       )}
       <div className="annual-body">
         {choices.length > 0 && (
-          <label className="annual-learner">
-            Learner
-            <Select
-              aria-label="Learner"
+          <div className="annual-learner">
+            <NativeSelect
+              label="Learner"
               value={learnerId}
               disabled={busy}
-              onValueChange={(event) => {
+              onChange={(event) => {
                 revision.current++;
                 setStatus(undefined);
                 setNotice("");
-                setLearnerId(event);
+                setLearnerId(event.target.value);
               }}
             >
               {!learnerId && <option value="">Choose a learner</option>}
@@ -482,10 +487,19 @@ function PurchasePanel({
                   {learner.name}
                 </option>
               ))}
-            </Select>
-          </label>
+            </NativeSelect>
+          </div>
         )}
-        {offer && (
+        {enrollmentRequired && learnerId ? (
+          <PlanStep
+            key={learnerId}
+            session={{ accountId: identity, token }}
+            embedded
+            interval={offer?.interval ?? preferredInterval}
+            onCheckout={rememberLearner}
+          />
+        ) : null}
+        {offer && !enrollmentRequired && (
           <div
             className={`annual-plan ${canPurchase ? "annual-plan-ready" : ""}`}
           >
@@ -494,7 +508,7 @@ function PurchasePanel({
                 offers={offers}
                 pending={pricePending}
                 selected={offer.id}
-                disabled={busy || !canPurchase || phase === "checkout-open"}
+                disabled={busy || !canPurchase}
                 onSelect={(next) => {
                   setOffer(next);
                   requestId.current = undefined;
@@ -533,165 +547,129 @@ function PurchasePanel({
             )}
           </div>
         )}
-        <div className="annual-status" aria-live="polite">
-          {error ? (
-            <p role="alert" className="annual-error">
-              {error}
-            </p>
-          ) : checking ? (
-            <p role="status">Checking access…</p>
-          ) : phase === "ready" && returnState !== "canceled" ? null : copy ? (
-            <>
-              <h2>{copy[0]}</h2>
-              <p>{copy[1]}</p>
-            </>
-          ) : available === false ? (
-            <>
-              <h2>Purchases are not available here</h2>
-              <p>No online checkout is configured. No payment can be taken.</p>
-            </>
-          ) : !choices.length && family ? (
-            <>
-              <h2>Add a learner first</h2>
-              <p>Return to Family to create a learner.</p>
-            </>
-          ) : (
-            <Loading>Loading payment plans…</Loading>
-          )}
-          {offer && canPurchase && !consentActive && (
-            <p>Recorded parent consent is required before purchase.</p>
-          )}
-        </div>
-      </div>
-      <footer className="annual-dock">
-        {offer && (canPurchase || pricePending) && consentActive ? (
-          // While the learner's price loads, the checkout action waits in
-          // place, so the dock does not change when it arrives.
-          <button
-            className="annual-primary"
-            type="button"
-            disabled={busy || checking || pricePending}
-            aria-busy={pricePending || undefined}
-            onClick={() => void checkout()}
-          >
-            {busy
-              ? "Opening checkout…"
-              : phase === "checkout-open"
-                ? "Continue secure checkout"
-                : phase === "checkout-expired"
-                  ? "Start again"
-                  : offer.mode === "test"
-                    ? "Open sandbox checkout"
-                    : "Continue to secure checkout"}
-          </button>
-        ) : linked &&
-          [
-            "licensed",
-            "scheduled",
-            "awaiting-payment",
-            "needs-review",
-            "deleted",
-          ].includes(phase ?? "") ? (
-          <button
-            className="annual-primary"
-            type="button"
-            disabled={busy}
-            onClick={() => void portal()}
-          >
-            Manage billing and cancellation
-          </button>
-        ) : learnerId && available ? (
-          <button
-            className="annual-primary"
-            type="button"
-            disabled={busy || checking}
-            onClick={() => void refresh(learnerId, ++revision.current)}
-          >
-            Check access
-          </button>
-        ) : (
-          <button className="annual-primary" type="button" onClick={onClose}>
-            Return to Family
-          </button>
-        )}
-        <div className="annual-secondary">
-          {offer && (
-            <button
-              type="button"
-              onClick={(event) => {
-                termsTrigger.current = event.currentTarget;
-                setTerms(true);
-              }}
-            >
-              Terms &amp; details
-            </button>
-          )}
-          {learnerId &&
-            available &&
-            (canPurchase || pricePending || phase === "awaiting-payment") && (
-              <button
-                type="button"
-                disabled={busy || checking || pricePending}
-                onClick={() => void refresh(learnerId, ++revision.current)}
-              >
-                Check access
-              </button>
+        {!enrollmentRequired && (
+          <div className="annual-status" aria-live="polite">
+            {error ? (
+              <p role="alert" className="annual-error">
+                {error}
+              </p>
+            ) : checking ? (
+              <p role="status">Checking access…</p>
+            ) : phase === "ready" &&
+              returnState !== "canceled" ? null : copy ? (
+              <>
+                <h2>{copy[0]}</h2>
+                <p>{copy[1]}</p>
+              </>
+            ) : available === false ? (
+              <>
+                <h2>Purchases are not available here</h2>
+                <p>
+                  No online checkout is configured. No payment can be taken.
+                </p>
+              </>
+            ) : !choices.length && family ? (
+              <>
+                <h2>Add a learner first</h2>
+                <p>Return to Family to create a learner.</p>
+              </>
+            ) : (
+              <Loading>Loading payment plans…</Loading>
             )}
-          {linked &&
-            ![
+          </div>
+        )}
+      </div>
+      {!enrollmentRequired && (
+        <footer className="annual-dock">
+          {offer && (canPurchase || pricePending) && consentActive ? (
+            // While the learner's price loads, the checkout action waits in
+            // place, so the dock does not change when it arrives.
+            <button
+              className="annual-primary"
+              type="button"
+              disabled={busy || checking || pricePending}
+              aria-busy={pricePending || undefined}
+              onClick={() => void checkout()}
+            >
+              {busy
+                ? "Opening checkout…"
+                : phase === "checkout-open"
+                  ? "Continue secure checkout"
+                  : phase === "checkout-expired"
+                    ? "Start again"
+                    : offer.mode === "test"
+                      ? "Open sandbox checkout"
+                      : "Continue to secure checkout"}
+            </button>
+          ) : linked &&
+            [
               "licensed",
               "scheduled",
               "awaiting-payment",
               "needs-review",
               "deleted",
-            ].includes(phase ?? "") && (
-              <button
-                type="button"
-                disabled={busy}
-                onClick={() => void portal()}
-              >
-                Manage billing
-              </button>
-            )}
-        </div>
-      </footer>
-      {terms && (
-        <FocusDialog
-          title="Subscription details"
-          close={() => setTerms(false)}
-          returnFocus={termsTrigger.current}
-        >
-          <p>
-            {pricePending
-              ? "For one learner."
-              : `${offer?.formattedAmount} USD per ${offer?.interval} for one learner.`}
-            Renews automatically each {offer?.interval} unless canceled.
-          </p>
-          <p>
-            Includes adaptive practice and the available lesson and book
-            library. The learning catalog describes content coverage.
-          </p>
-          <p>
-            Review the final total and applicable tax in checkout before
-            payment.{" "}
-            {offer?.mode === "test"
-              ? "This is sandbox checkout. Use test details only; it does not activate a live subscription."
-              : "Payment details are entered on Stripe’s secure hosted checkout."}
-          </p>
-          <p>
-            Manage cancellation in billing. Cancellation stops future renewal at
-            the end of the paid period; it does not request a refund. Deleting
-            learning data does not cancel renewal.
-          </p>
-          <p>
-            Returning from checkout does not confirm payment. Access starts
-            after payment verification. Request a refund within 30 days of
-            payment through support. A full refund removes access for that
-            payment; cancellation alone does not refund a payment.
-          </p>
-          {notice && <p>{notice}</p>}
-        </FocusDialog>
+            ].includes(phase ?? "") ? (
+            <button
+              className="annual-primary"
+              type="button"
+              disabled={busy}
+              onClick={() => void portal()}
+            >
+              Manage billing and cancellation
+            </button>
+          ) : learnerId && available ? (
+            <button
+              className="annual-primary"
+              type="button"
+              disabled={busy || checking}
+              onClick={() => void refresh(learnerId, ++revision.current)}
+            >
+              Check access
+            </button>
+          ) : (
+            <button className="annual-primary" type="button" onClick={onClose}>
+              Return to Family
+            </button>
+          )}
+          <div className="annual-secondary">
+            {learnerId &&
+              available &&
+              (canPurchase || pricePending || phase === "awaiting-payment") && (
+                <button
+                  type="button"
+                  disabled={busy || checking || pricePending}
+                  onClick={() => void refresh(learnerId, ++revision.current)}
+                >
+                  Check access
+                </button>
+              )}
+            {linked &&
+              ![
+                "licensed",
+                "scheduled",
+                "awaiting-payment",
+                "needs-review",
+                "deleted",
+              ].includes(phase ?? "") && (
+                <button
+                  type="button"
+                  disabled={busy}
+                  onClick={() => void portal()}
+                >
+                  Manage billing
+                </button>
+              )}
+          </div>
+        </footer>
       )}
+      <p className="annual-purchase-note">
+        Cancel renewal in Billing at any time.{" "}
+        <a href="https://corpora.inc/legal/refund/">
+          30-day money-back guarantee
+        </a>
+        . Questions?{" "}
+        <a href="mailto:support@corpora.inc">support@corpora.inc</a>
+      </p>
     </section>
   );
 }

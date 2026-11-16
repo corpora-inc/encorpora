@@ -1,3 +1,5 @@
+import { familyPracticeState } from "../../../lib/family-practice-history";
+import type { PracticeFilter } from "../../practice/curriculum-filter";
 import { requestFetch } from "../../../lib/request-transport";
 import { queryOptions } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
@@ -9,7 +11,7 @@ import {
   type SchoolPicture,
   type StudentGrant,
 } from "../../../../schools/contracts";
-import { notifyAccountSessionChanged } from "../../../auth";
+import { notifyDeviceSessionChanged } from "../../../auth";
 import { AppError } from "../../../lib/AppError";
 import { meOptions, queryClient } from "../../../lib/query";
 import { rememberStudentSession } from "../../../lib/student-device";
@@ -132,17 +134,23 @@ export const signInWithCard = (token: string) =>
 let finishing = false;
 export const finishingSignIn = () => finishing;
 
-/** Straight to the first problem. `replace`: Back goes to the class, not to
- * the pictures that just worked. `handed`: a parent gave their own device to
- * their child, who hands it back by signing out. */
+/** Straight to the first problem. A class sign-in replaces the pictures.
+ * A parent handoff preserves the curriculum entry for browser Back; the
+ * child hands the parent's account back by signing out. */
 export function useFinishSignIn() {
   const navigate = useNavigate();
   return useCallback(
-    async (grant: StudentGrant, handed = false, returnTo?: string) => {
+    async (
+      grant: StudentGrant,
+      handed = false,
+      returnTo?: string,
+      filter?: PracticeFilter,
+      learnerId?: string,
+    ) => {
       const session = { accountId: grant.accountId, token: grant.token };
       finishing = true;
       rememberStudentSession(session, grant.mode, handed, returnTo);
-      notifyAccountSessionChanged(session);
+      notifyDeviceSessionChanged(session);
       // The app remounts for a new identity, and that would cancel a `/me`
       // started during the move. Wait here, so practice opens with it in hand.
       await queryClient
@@ -154,7 +162,12 @@ export function useFinishSignIn() {
         await navigate({
           to: "/$",
           params: { _splat: "practice" },
-          replace: true,
+          search: filter ?? {},
+          replace: !handed,
+          state:
+            learnerId && returnTo
+              ? familyPracticeState({ learnerId, returnTo })
+              : undefined,
         });
       } finally {
         finishing = false;

@@ -7,6 +7,20 @@
   gap: var(--space-6);
 }
 
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  margin-bottom: var(--space-6);
+}
+.pageHeader > .head {
+  flex: 1 1 auto;
+}
+.pageHeader > .recordLinks {
+  margin: 0;
+}
 .head {
   display: grid;
   gap: var(--space-1);
@@ -179,6 +193,12 @@
   }
 }
 
+/* Optional adult practice stays a compact row below the children's actions. */
+.kid.self {
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "name action";
+}
+
 /* Quiet rows under the children: their own devices, practicing yourself. */
 .quiet {
   margin-top: var(--space-4);
@@ -344,24 +364,76 @@
    44 px to touch. */
 .recordName {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
   min-width: var(--target-min);
+  min-height: var(--target-min);
   color: inherit;
   text-decoration: none;
   border-radius: var(--radius-small);
 }
-.recordName::after {
-  content: "";
-  position: absolute;
-  /* At least 44 px tall, whatever the name's line height. */
-  inset: min(-8px, calc((100% - var(--target-min)) / 2)) -4px;
-}
-.recordName:hover {
+.recordOpen {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
   color: var(--color-primary);
+  font-family: system-ui, sans-serif;
+  font-size: var(--text-label);
+  font-weight: 600;
+}
+.recordName:hover,
+.recordLinks a:hover,
+.settingBack:hover {
+  background: transparent;
+  color: var(--color-primary);
+}
+.recordName:hover .recordOpen,
+.recordLinks a:hover,
+.settingBack:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.recordOpen svg,
+.recordBack svg {
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
 }
 .recordName:focus-visible {
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
+}
+.recordLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+  margin: 0 0 var(--space-3);
+  padding: 0;
+  border: 0;
+}
+.recordRelated {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-left: auto;
+}
+.recordLinks a,
+.settingBack {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: var(--target-min);
+  color: var(--color-primary);
+  font-size: var(--text-label);
+  font-weight: 600;
+  text-decoration: none;
+  width: fit-content;
 }
 /* The map: its key beside the title, then each child whole. */
 .mapPage {

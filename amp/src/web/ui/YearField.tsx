@@ -2,6 +2,8 @@ import { useState } from "react";
 import { birthYears } from "../lib/birth-years";
 import { Dialog } from "./Dialog";
 import { TileChoice } from "./TileChoice";
+import { Button } from "./Button";
+import { TextField } from "./TextField";
 import styles from "./YearField.module.css";
 
 /**
@@ -17,6 +19,7 @@ export function YearField({
   disabled = false,
   invalid = false,
   adult = false,
+  earlier = false,
 }: {
   value: string;
   onChange: (year: string) => void;
@@ -27,8 +30,13 @@ export function YearField({
   invalid?: boolean;
   /** Offer "Adult" after the school years. */
   adult?: boolean;
+  /** Enter an exact birth year outside the quick school-year choices. */
+  earlier?: boolean;
 }) {
   const [open, setOpen] = useState(false);
+  const [entering, setEntering] = useState(false);
+  const [typed, setTyped] = useState("");
+  const [error, setError] = useState("");
   const now = new Date().getFullYear();
   const years = birthYears(16, 4);
   const adultYear = now - 25;
@@ -48,7 +56,12 @@ export function YearField({
         aria-invalid={invalid || undefined}
         data-empty={shown ? undefined : ""}
         disabled={disabled}
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          setEntering(earlier && !!value && Number(value) < years[0]!);
+          setTyped(value);
+          setError("");
+          setOpen(true);
+        }}
       >
         <span>{shown ?? placeholder}</span>
         <svg viewBox="0 0 12 12" aria-hidden="true">
@@ -61,25 +74,69 @@ export function YearField({
         title={label}
         fullOnPhone
         // The chosen year (else the first) has focus and is in view.
-        initialFocus='[role="radio"][tabindex="0"]'
+        initialFocus={entering ? "input" : '[role="radio"][tabindex="0"]'}
       >
-        <TileChoice
-          label={label}
-          // Oldest first: "Adult" leads, then the years in reading order.
-          tiles={[
-            ...(adult
-              ? [{ value: adultYear, label: "Adult", span: "row" as const }]
-              : []),
-            ...years.map((year) => ({ value: year, label: String(year) })),
-          ]}
-          value={value ? Number(value) : null}
-          onChange={(year) => {
-            if (year === null) return;
-            onChange(String(year));
-            setOpen(false);
-          }}
-          columns={{ narrow: 4, wide: 4 }}
-        />
+        {entering ? (
+          <form
+            className={styles.earlier}
+            onSubmit={(event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              const year = Number(typed);
+              if (!/^\d{4}$/.test(typed) || year < 1900 || year > now - 2) {
+                setError(`Enter a year from 1900 to ${now - 2}.`);
+                return;
+              }
+              onChange(String(year));
+              setOpen(false);
+            }}
+          >
+            <TextField
+              label="Birth year"
+              autoFocus
+              value={typed}
+              inputMode="numeric"
+              maxLength={4}
+              error={error}
+              onChange={(event) => {
+                setTyped(event.target.value);
+                setError("");
+              }}
+            />
+            <Button type="submit" variant="primary">
+              Use this year
+            </Button>
+          </form>
+        ) : (
+          <>
+            <TileChoice
+              label={label}
+              // Oldest first: "Adult" leads, then the years in reading order.
+              tiles={[
+                ...(adult
+                  ? [{ value: adultYear, label: "Adult", span: "row" as const }]
+                  : []),
+                ...years.map((year) => ({ value: year, label: String(year) })),
+              ]}
+              value={value ? Number(value) : null}
+              onChange={(year) => {
+                if (year === null) return;
+                onChange(String(year));
+                setOpen(false);
+              }}
+              columns={{ narrow: 4, wide: 4 }}
+            />
+            {earlier && (
+              <Button
+                variant="quiet"
+                className={styles.otherYear}
+                onClick={() => setEntering(true)}
+              >
+                Earlier year…
+              </Button>
+            )}
+          </>
+        )}
       </Dialog>
     </>
   );
