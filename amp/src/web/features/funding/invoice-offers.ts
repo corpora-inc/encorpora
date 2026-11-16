@@ -13,6 +13,7 @@ export const invoiceOfferSchema = z.object({
   currency: z.literal("USD"),
   instructions: z.string(),
   termMonths: z.number().int().positive().optional(),
+  termPolicy: z.string().optional(),
   /** The program's public status line, when configured (never inferred). */
   statusLabel: z.string().min(1).max(100).optional(),
   /** Whether the 30-day money-back guarantee can apply (`none`: it can't);

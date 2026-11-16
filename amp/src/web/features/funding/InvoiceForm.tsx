@@ -271,6 +271,13 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
                   />
                 </div>
               )}
+              {offer.termPolicy?.endsWith("-from-invoice") && (
+                <p className={styles.notice}>
+                  Your {offer.termMonths === 1 ? "month" : "year"} begins when
+                  you create the invoice. The PDF includes the start and end
+                  dates.
+                </p>
+              )}
               <TextField
                 label="Email for the AMP account (parent, or the student if 18+)"
                 type="email"
@@ -319,7 +326,7 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
                 {error}
               </p>
               <p className={styles.notice}>
-                Access while payment is pending lasts up to 30 days.
+                Start learning today. Submit your invoice within 14 days.
               </p>
             </form>
           )}
