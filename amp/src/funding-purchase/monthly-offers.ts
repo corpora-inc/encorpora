@@ -1,5 +1,6 @@
 import { fundingOfferSchema, type FundingOffer } from "./contracts.js";
 import { programMonthlyPriceMinor } from "./program-prices.js";
+import { isInvoiceTermPolicy } from "./term.js";
 
 /** "annual" becomes "monthly" in an identifier, or "-monthly" is added. */
 const monthlyId = (value: string) =>
@@ -58,7 +59,9 @@ export function withMonthlyOffers(
         productDescription,
         subtotalMinor: price,
         termMonths: 1,
-        termPolicy: "one-month-from-verified-provisioning",
+        termPolicy: isInvoiceTermPolicy(offer)
+          ? "one-month-from-invoice"
+          : "one-month-from-verified-provisioning",
       }),
     );
   }

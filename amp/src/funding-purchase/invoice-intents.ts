@@ -15,7 +15,8 @@ import {
 import { randomUUID } from "node:crypto";
 import { z } from "zod";
 import type { PoolClient } from "pg";
-import { canonicalCommercePayload } from "../commerce/ledger.js";
+import { fundingOfferMatchesSnapshot } from "./offer-terms.js";
+import { fundedInvoiceTerm } from "./term.js";
 import {
   learningConsentActive,
   purchaseConsentSatisfied,
@@ -192,6 +193,9 @@ export class FundingInvoiceRepository {
               Math.min(
                 at.getTime() + 14 * 86400000,
                 Date.parse(intent.expiresAt),
+                Date.parse(
+                  fundedInvoiceTerm(intent)?.endsAt ?? intent.expiresAt,
+                ),
               ),
             ).toISOString(),
           ],
@@ -253,10 +257,8 @@ export class FundingInvoiceRepository {
             : null;
         const paymentVerified =
           !!payment &&
-          this.offers(new Date(payment.settledAt)).some(
-            (offer) =>
-              canonicalCommercePayload(offer) ===
-              canonicalCommercePayload(intent.offer),
+          this.offers(new Date(payment.settledAt)).some((offer) =>
+            fundingOfferMatchesSnapshot(offer, intent.offer),
           );
         intents.push({ ...intent, paymentVerified });
       }
@@ -381,10 +383,8 @@ export class FundingInvoiceRepository {
         if (intent.state !== "prepared" || (expired && !payment))
           throw new FundingPurchaseError(409, "invoice_unavailable");
         if (
-          !this.offers(payment ? new Date(payment.settledAt) : at).some(
-            (o) =>
-              canonicalCommercePayload(o) ===
-              canonicalCommercePayload(intent.offer),
+          !this.offers(payment ? new Date(payment.settledAt) : at).some((o) =>
+            fundingOfferMatchesSnapshot(o, intent.offer),
           )
         )
           throw new FundingPurchaseError(409, "offer_unavailable");
