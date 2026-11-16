@@ -56,6 +56,7 @@ import {
   isFundedReturn,
   campaignSearch,
   continuationSearch,
+  continuationUrl,
   type CampaignSearch,
 } from "../lib/funded-entry";
 import { chosenPlan } from "../lib/pending-trial";
@@ -541,10 +542,28 @@ const home = createRoute({
 /** The pitch/app screen reads what `/` resolved; so does the document head.
  * A route's id exists once the router is built, so this reads it on demand. */
 export const homeRouteId = () => home.id;
+/** An existing session needs no second sign-in or signup. Both entry buttons
+ * resume the account; `/` chooses its place or its first-run question. */
+async function beforeAuthEntry({
+  search,
+}: {
+  search: Record<string, unknown>;
+}) {
+  if (nativeRuntime) return;
+  notForStudents();
+  // Security, school connections and invitation handoffs can require a
+  // fresh sign-in or another identity even with a valid session. Provider
+  // errors must also stay visible on the authentication screen.
+  if (search.error || (search.return && search.return !== "free-practice"))
+    return;
+  const session = await queryClient.ensureQueryData(sessionOptions);
+  if (session) throw redirect({ href: continuationUrl(search), replace: true });
+}
 const signIn = createRoute({
   getParentRoute: () => root,
   path: "/sign-in",
   staticData: { space: "public" },
+  beforeLoad: beforeAuthEntry,
   loader: loadAuthConfig,
   component: auth,
 });
@@ -552,6 +571,7 @@ const signUp = createRoute({
   getParentRoute: () => root,
   path: "/sign-up",
   staticData: { space: "public" },
+  beforeLoad: beforeAuthEntry,
   loader: loadAuthConfig,
   component: auth,
 });
@@ -645,20 +665,43 @@ const reset = createRoute({
 /** "What brings you to AMP?", at `/start` and `/start/<choice>`, the same
  * screen. Any signed-in adult may open it to add a place; an unknown choice
  * opens the question itself. */
-async function beforeStarter({ params }: { params: { choice?: string } }) {
+async function beforeStarter({
+  params,
+  location,
+}: {
+  params: { choice?: string };
+  location: { search: Record<string, unknown> };
+}) {
   notForStudents();
   if (nativeRuntime) throw redirect({ to: "/", replace: true });
   const session = await queryClient.ensureQueryData(sessionOptions);
-  if (!session) throw redirect({ to: "/sign-in" });
+  if (!session)
+    throw redirect({
+      to: "/sign-in",
+      search: continuationSearch(location.search),
+    });
   if (params.choice !== undefined && !isStarterChoice(params.choice))
     throw redirect({ to: "/start", replace: true });
   // Which question this is ("What brings you to AMP?" or "Add a place") and
   // which answers it offers are the account's: known before the first paint,
   // so neither changes under the reader. A failed read leaves the screen's
   // own state.
-  await queryClient
-    .ensureQueryData(meOptions(session))
-    .catch((error) => console.warn("The account didn’t load ahead", error));
+  const resuming =
+    params.choice === undefined &&
+    location.search.return === "free-practice" &&
+    !appReturn(location.search.from);
+  // A place may have been created in another tab. Wait for the fresh read
+  // shared with the root guard; a failed read uses the route's retry UI.
+  const me = resuming
+    ? await queryClient.fetchQuery({ ...meOptions(session), staleTime: 0 })
+    : await queryClient
+        .ensureQueryData(meOptions(session))
+        .catch((error) => console.warn("The account didn’t load ahead", error));
+  // A trial entry resumes an established account through the same home
+  // routing as sign-in. Only an explicit Add a place or setup step should
+  // offer another place to someone who already has one.
+  if (resuming && me?.signedIn && me.next !== "start")
+    throw redirect({ to: "/", replace: true });
   // The school answer's next step depends on the account's schools: there
   // before the page paints, so its buttons never arrive late.
   if (params.choice === "school") {
