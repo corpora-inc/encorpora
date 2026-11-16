@@ -8,22 +8,10 @@
   gap: 32px;
   color: var(--color-on-surface);
 }
-.heading {
-  display: grid;
-  gap: 8px;
-}
-.heading h1 {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: clamp(32px, 5vw, 44px);
-  font-weight: 400;
-  line-height: 1.15;
-}
 .page p {
   margin: 0;
   line-height: 1.5;
 }
-.heading p,
 .muted,
 .support {
   color: var(--color-muted-text);
@@ -221,32 +209,9 @@
   flex-shrink: 0;
 }
 
-.titleRow {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
-}
-.settingsReturn {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  color: var(--color-primary);
-  font-size: var(--text-label);
-  font-weight: 600;
-  text-decoration: none;
-}
-.settingsReturn:hover {
-  text-decoration: underline;
-}
 .page[data-family-settings-detail] {
   max-width: var(--width-content-wide);
   padding: var(--space-5) var(--space-4) var(--space-8);
-}
-.page[data-family-settings-detail] .heading h1 {
-  font-size: clamp(28px, 7.6vw, var(--text-heading-1));
-  line-height: 1.12;
 }
 @media (min-width: 768px) {
   .page[data-family-settings-detail] {
