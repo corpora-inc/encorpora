@@ -795,7 +795,7 @@ const startPlan = createRoute({
 const continueWithAmp = createRoute({
   getParentRoute: () => root,
   path: "/continue/$learnerId",
-  staticData: { space: "learner" },
+  staticData: { space: "account" },
   validateSearch: (search: Record<string, unknown>) =>
     search.interval === "year" || search.interval === "month"
       ? { interval: search.interval as "year" | "month" }
@@ -1112,6 +1112,10 @@ const fundedPurchase = createRoute({
   path: "/purchase/funded",
   staticData: { space: "account" },
   validateSearch: z.object({
+    interval: z.enum(["year", "month"]).optional().catch(undefined),
+    // Keep malformed identifiers so invoice recovery shows an error rather
+    // than silently opening a new invoice form.
+    invoice: z.string().min(1).max(200).optional(),
     offer: z.string().max(120).optional().catch(undefined),
     learner: z.string().max(120).optional().catch(undefined),
     program: z.string().max(80).optional().catch(undefined),

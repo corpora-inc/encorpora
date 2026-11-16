@@ -13,10 +13,22 @@ import styles from "../account/BillingPage.module.css";
  * Stripe's existing return URL remains valid while a payment is settling. */
 export function CardPurchasePage() {
   const { data: session } = useSuspenseQuery(sessionOptions);
+  const search = useSearch({ strict: false }) as {
+    interval?: "year" | "month";
+    learner?: string;
+  };
+  const query = new URLSearchParams();
+  if (search.interval === "year" || search.interval === "month")
+    query.set("interval", search.interval);
+  if (search.learner) query.set("learner", search.learner);
   return session ? (
     <CardEntry session={session} />
   ) : (
-    <Navigate to="/sign-in" search={{ next: "/purchase/annual" }} replace />
+    <Navigate
+      to="/sign-in"
+      search={{ next: `/purchase/annual${query.size ? `?${query}` : ""}` }}
+      replace
+    />
   );
 }
 function CardEntry({ session }: { session: AuthSession }) {
@@ -58,7 +70,14 @@ function CardEntry({ session }: { session: AuthSession }) {
         replace
       />
     );
-  if (!learners.length) return <Navigate to="/start/plan" replace />;
+  if (!learners.length)
+    return (
+      <Navigate
+        to="/start/plan"
+        search={{ interval: search.interval }}
+        replace
+      />
+    );
   return (
     <main className={styles.page}>
       <header className={styles.heading}>

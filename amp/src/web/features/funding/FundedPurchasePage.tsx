@@ -1,4 +1,10 @@
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type FormEvent,
+  type ReactNode,
+} from "react";
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { RootLink } from "../../nav/root";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
@@ -31,6 +37,11 @@ import {
 export { purchaseOfferSchema } from "./invoice-resume";
 import { invoiceBlobUrl, invoiceDocumentSchema } from "./invoice-document";
 import { fundingReturn } from "./setup";
+import {
+  PaymentMethodChoice,
+  paymentMethodHref,
+  type PaymentInterval,
+} from "../billing/PaymentMethodChoice";
 import { InvoicePractice } from "./InvoicePractice";
 import styles from "./FundedPurchasePage.module.css";
 
@@ -112,6 +123,7 @@ function PurchasePage(account: Account) {
     program?: string;
     learner?: string;
     invoice?: string;
+    interval?: PaymentInterval;
   };
   const setInvoice = (invoice?: string, learner?: string) =>
     void navigate({
@@ -144,6 +156,13 @@ function PurchasePage(account: Account) {
           preferredLearner={search.learner}
           onClear={() => setInvoice()}
         />
+      ) : account.session &&
+        search.learner &&
+        !account.learners.some((learner) => learner.id === search.learner) ? (
+        <p role="alert">
+          This learner isn’t available in your account. Open Billing to choose a
+          learner.
+        </p>
       ) : offers.isPending ? (
         <Loading>Loading programs and plans</Loading>
       ) : offers.error ? (
@@ -169,6 +188,25 @@ function PurchasePage(account: Account) {
           preferredOffer={search.offer}
           preferredProgram={search.program}
           preferredLearner={search.learner}
+          preferredInterval={search.interval}
+          paymentMethods={({ learnerId, interval, busy }) => (
+            <PaymentMethodChoice
+              value="education-funds"
+              disabled={busy}
+              onChange={(method) => {
+                if (method === "card")
+                  void navigate({
+                    href: paymentMethodHref(method, interval, learnerId),
+                  });
+              }}
+            />
+          )}
+          onSelectionChange={({ learnerId, interval, offerId }) => {
+            const query = new URLSearchParams({ interval });
+            if (learnerId) query.set("learner", learnerId);
+            if (offerId) query.set("offer", offerId);
+            void navigate({ href: `/purchase/funded?${query}`, replace: true });
+          }}
           onCreated={(id, learner) => {
             if (account.session) {
               void queryClient.invalidateQueries({
@@ -284,6 +322,9 @@ export function InvoiceComposer({
   preferredOffer,
   preferredProgram,
   preferredLearner,
+  preferredInterval,
+  paymentMethods,
+  onSelectionChange,
   onCreated,
   onClear,
   resumed,
@@ -293,12 +334,28 @@ export function InvoiceComposer({
   preferredOffer?: string;
   preferredProgram?: string;
   preferredLearner?: string;
+  preferredInterval?: PaymentInterval;
+  paymentMethods?: (selection: {
+    learnerId: string;
+    interval: PaymentInterval;
+    busy: boolean;
+  }) => ReactNode;
+  onSelectionChange?: (selection: {
+    learnerId: string;
+    interval: PaymentInterval;
+    offerId?: string;
+  }) => void;
   onCreated: (id: string, learner?: string) => void;
   onClear?: () => void;
   resumed?: ResumedInvoice;
 }) {
   const initial =
     offers.find((o) => o.id === preferredOffer) ??
+    offers.find(
+      (o) =>
+        o.programId === preferredProgram &&
+        o.termMonths === (preferredInterval === "month" ? 1 : 12),
+    ) ??
     offers.find((o) => o.programId === preferredProgram);
   const [program, setProgram] = useState(initial ? programKey(initial) : "");
   const [offerId, setOfferId] = useState(initial?.id ?? "");
@@ -681,7 +738,7 @@ export function InvoiceComposer({
               The email couldn’t be sent to <strong>{result.email}</strong>. You
               can download your PDF here.
             </>
-          ) : emailDelivery.isPending || emailDelivery.data === "queued" ? (
+          ) : emailDelivery.data === "queued" ? (
             <>
               Invoice saved. Sending a copy to <strong>{result.email}</strong>.
             </>
@@ -789,6 +846,16 @@ export function InvoiceComposer({
       className={styles.form}
       aria-labelledby="new-invoice-title"
     >
+      {paymentMethods?.({
+        learnerId,
+        interval:
+          offer?.termMonths === 1
+            ? "month"
+            : offer
+              ? "year"
+              : (preferredInterval ?? "year"),
+        busy,
+      })}
       <h2 id="new-invoice-title" className={styles.composerTitle}>
         {selectedLearner
           ? `New invoice for ${selectedLearner.name === "Me" ? "you" : selectedLearner.name}`
@@ -800,6 +867,16 @@ export function InvoiceComposer({
           value={learnerId}
           onValueChange={(value) => {
             setLearnerId(value);
+            onSelectionChange?.({
+              learnerId: value,
+              offerId: offer?.id,
+              interval:
+                offer?.termMonths === 1
+                  ? "month"
+                  : offer
+                    ? "year"
+                    : (preferredInterval ?? "year"),
+            });
             setStudent(childChoices.find((l) => l.id === value)?.name ?? "");
           }}
           disabled={busy}
@@ -819,13 +896,18 @@ export function InvoiceComposer({
         onValueChange={(key) => {
           const next = offers.filter((o) => programKey(o) === key);
           setProgram(key);
-          setOfferId(
-            (
-              next.find((o) => o.termMonths === offer?.termMonths) ??
-              next.find((o) => o.termMonths === 12) ??
-              next[0]
-            )?.id ?? "",
-          );
+          const selected =
+            next.find(
+              (o) =>
+                o.termMonths ===
+                (offer?.termMonths ?? (preferredInterval === "month" ? 1 : 12)),
+            ) ?? next[0];
+          setOfferId(selected?.id ?? "");
+          onSelectionChange?.({
+            learnerId,
+            offerId: selected?.id,
+            interval: selected?.termMonths === 1 ? "month" : "year",
+          });
           setError("");
         }}
       >
@@ -845,6 +927,14 @@ export function InvoiceComposer({
             disabled={busy}
             onChange={(id) => {
               setOfferId(id);
+              onSelectionChange?.({
+                learnerId,
+                offerId: id,
+                interval:
+                  plans.find((o) => o.id === id)?.termMonths === 1
+                    ? "month"
+                    : "year",
+              });
               setError("");
             }}
             options={plans.map((o) => ({
