@@ -988,6 +988,12 @@ try {
   await page
     .getByRole("heading", { name: "Where Test Learner is", exact: true })
     .waitFor();
+  // The legacy overview resolves to this child's canonical address. An
+  // account switch must refuse that address, not substitute another child.
+  await page.waitForURL((url) =>
+    /^\/family\/[^/]+\/kids\/[^/]+$/.test(url.pathname),
+  );
+  const previousChildPath = new URL(page.url()).pathname;
   await page.unroute(`**/api/v1/billing/purchase/${purchaseId}`);
   let replayedPurchases = 0;
   page.on("request", (request) => {
@@ -1019,7 +1025,10 @@ try {
     channel.close();
   });
   await page
-    .getByRole("heading", { name: "Where Second Learner is", exact: true })
+    .getByRole("heading", {
+      name: "This isn’t available to your account",
+      exact: true,
+    })
     .waitFor();
   // Diagnostic batching is independent of the account transition. Wait on
   // product queries, not on the absence of every background request.
@@ -1033,7 +1042,7 @@ try {
     0,
     "a new account cannot inherit a consumed checkout return",
   );
-  assert.equal(new URL(page.url()).pathname, "/overview");
+  assert.equal(new URL(page.url()).pathname, previousChildPath);
   await otherTab.close();
   assert.deepEqual(errors, []);
   await context.close();
