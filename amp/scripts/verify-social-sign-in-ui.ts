@@ -1019,7 +1019,7 @@ try {
     channel.close();
   });
   await page
-    .getByRole("heading", { name: "Second Learner", exact: true })
+    .getByRole("heading", { name: "Where Second Learner is", exact: true })
     .waitFor();
   // Diagnostic batching is independent of the account transition. Wait on
   // product queries, not on the absence of every background request.
