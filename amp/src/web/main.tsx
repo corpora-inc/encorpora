@@ -25,6 +25,7 @@ import {
 import { watchForNewRelease } from "./lib/app-recovery";
 import { discardStalePurchaseReturn } from "./purchase-return";
 import { trackSessionStart, trackGooglePage } from "./lib/analytics";
+import { finishingSignIn } from "./features/school/join/api";
 // After consent-entry has removed any private fragment from the URL.
 discardStalePurchaseReturn();
 startRuntimeRecovery();
@@ -59,10 +60,15 @@ createRoot(document.getElementById("root")!, {
     }),
 }).render(
   <Providers
-    onAccountExit={() => {
+    onAccountExit={(previous) => {
       // A purchase view belongs to the parent who opened it. The provider has
       // already cleared that parent's private state and installed the new session.
-      if (/^\/purchase(?:\/|$)/.test(router.state.location.pathname))
+      // Child practice and the parent's return preserve the invoice origin.
+      if (
+        !previous.accountId.startsWith("school:") &&
+        !finishingSignIn() &&
+        /^\/purchase(?:\/|$)/.test(router.state.location.pathname)
+      )
         void router.navigate({ to: "/", replace: true });
       // Any other screen stays only if its own guard admits the new session
       // (none, after another tab signed out): never a blank account screen.

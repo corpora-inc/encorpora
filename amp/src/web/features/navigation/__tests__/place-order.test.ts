@@ -104,13 +104,9 @@ const places: PlacesResource = {
   more: false,
 };
 
-test("Family, Teaching, Practice: every authorised place with its role", () => {
+test("Parents keep family and teaching places without a separate practice mode", () => {
   const groups = placeGroups(me, places);
-  expect(groups.map((group) => group.label)).toEqual([
-    "Family",
-    "Teaching",
-    "Practice",
-  ]);
+  expect(groups.map((group) => group.label)).toEqual(["Family", "Teaching"]);
   const rows = (index: number) =>
     groups[index]!.entries.map((entry) => `${entry.name} · ${entry.detail}`);
   expect(rows(0)).toEqual([
@@ -127,10 +123,7 @@ test("Family, Teaching, Practice: every authorised place with its role", () => {
     // A one-class school is its class.
     "Room 3 · Teacher",
   ]);
-  expect(rows(2)).toEqual([
-    "Practice · Levels, practice and workbooks",
-    "Practice at a level · Any grade, any pace",
-  ]);
+  expect(groups.some((group) => group.label === "Practice")).toBe(false);
 });
 
 test("the current place: itself, else its class's school", () => {

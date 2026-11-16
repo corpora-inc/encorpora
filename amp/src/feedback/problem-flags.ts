@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { COPPA_CHILD_UNDER, pastCoppaAge } from "../privacy/coppa-age.js";
 
 /** "Report a problem": the reasons a learner can choose, in display order. */
 export const flagReasons = [
@@ -27,25 +28,31 @@ export const ALREADY_REPORTED = "This problem was already reported";
 export const FLAG_RATE_LIMIT = 30;
 
 /**
- * Free text from a child can carry personal information, so the note field
- * is offered only to a learner in a parent's consented account whose birth
- * year shows they are at least 13 on every day of this year. Anonymous trials
- * and younger learners (or no birth year) choose reasons only. The server
- * enforces the same rule.
+ * Free text from a child under 13 is personal information COPPA reaches
+ * (16 CFR 312.2), so the note field is offered only to a learner whose birth
+ * year shows they are at least 13 on every day of this year
+ * (src/privacy/coppa-age.ts). Younger learners (or no birth year) and
+ * anonymous trials choose reasons only. A family learner 13 or older needs no
+ * consent for it. A school's unnamed student (`namePending` in a school
+ * session) has a year from a roster or a tutor, never from a parent, so they
+ * keep reasons only under the school's terms. The server enforces the same
+ * rule.
  */
-export const NOTE_MIN_AGE = 13;
+export const NOTE_MIN_AGE = COPPA_CHILD_UNDER;
 export function noteAllowed(
   learner: {
     trial: boolean;
-    namePending?: boolean;
     birthYear: number | null | undefined;
+    /** On a school's restricted roster basis. */
+    schoolRestricted?: boolean;
   },
   now = new Date(),
 ): boolean {
-  if (learner.trial || learner.namePending || learner.birthYear == null)
-    return false;
-  // Born late in the year, a learner is a year younger than the difference.
-  return now.getUTCFullYear() - learner.birthYear - 1 >= NOTE_MIN_AGE;
+  return (
+    !learner.trial &&
+    !learner.schoolRestricted &&
+    pastCoppaAge(learner.birthYear, now.getUTCFullYear())
+  );
 }
 
 const commit = z.string().regex(/^[0-9a-f]{40}$/);

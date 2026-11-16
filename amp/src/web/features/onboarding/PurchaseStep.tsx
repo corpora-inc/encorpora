@@ -7,7 +7,7 @@ import {
   useLocation,
   useNavigate,
 } from "@tanstack/react-router";
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { EnrollmentPhase } from "../../../billing/stripe/enrollment-contracts";
 import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
@@ -88,6 +88,7 @@ export function PurchaseStep({
   const continuation = readContinuation(session.accountId);
   const claim = useClaimEnrollment(session);
   const claimed = useRef<string | null>(null);
+  const [claimAttempt, setClaimAttempt] = useState(0);
   const back = (target: string) =>
     void navigate({ href: target, replace: true });
   useEffect(() => {
@@ -109,7 +110,7 @@ export function PurchaseStep({
         },
       );
     }
-  }, [phase, view?.purchase?.id]);
+  }, [phase, view?.purchase?.id, claimAttempt]);
   const plans = continuation
     ? ({
         to: "/continue/$learnerId",
@@ -194,7 +195,7 @@ export function PurchaseStep({
               onClick={() => {
                 claimed.current = null;
                 claim.reset();
-                void enrollment.refetch();
+                setClaimAttempt((attempt) => attempt + 1);
               }}
             >
               Try again

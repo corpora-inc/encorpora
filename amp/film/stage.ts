@@ -164,7 +164,7 @@ const DEFAULT_DUR: Record<string, number> = {
   partition: 1.5, shade: 1.3,
   arrive: 0.5, count: 0.5, send: 0.9, leave: 0.45,
   problem: 0.45, write: 0.75, text: 0.45, term: 0.45, watch: 0.45, answer: 0.6, clear: 0.4, scene: 0.9,
-  strike: 0.35, header: 0.45,
+  strike: 0.6, header: 0.45,
 };
 
 /** The longest one trade of base-ten blocks may take, when a screenplay asks for a slow one. */
@@ -176,6 +176,8 @@ type Entry = {
   /** When a count's lights and ticks let go: the end of the speech, or the end of the beat's own pause. */ hold?: number;
   /** Explicit highlight release; scene releases correspond to the nested action indices. */
   highlightEnd?: number; sceneEnds?: (number | undefined)[];
+  /** Part of the shot's opening setup, timed from the shot's start (see `opening`). */
+  setup?: boolean;
 };
 type P = [number, number];
 /** The app's figure roles, as the film's theme tokens: things are drawn in the same paints as in a problem. */
@@ -195,8 +197,31 @@ function wordAfter(beat: BeatTime, word: string, t: number, what: string) {
   return hit.start;
 }
 
-/** Each beat's actions, in time. Actions without `at` start with the beat, slightly staggered. `shotEnd` is when the shot begins to fade out. */
-function entries(shot: Shot, times: BeatTime[], shotEnd = Infinity) {
+/** How long a shot's opening setup takes: it is done before the shot is seen (see `opening`). */
+const SETUP = 0.01;
+/** A move this short is a jump: it places points, it is not a motion to watch. */
+const JUMP = 0.05;
+/**
+ * A shot's setup: an action in its first beat with no `at` word that only sets the state the shot
+ * opens in. Hiding or showing parts, a jump of points (a move of JUMP or less), and clearing the
+ * board. The shot begins, and starts to fade in, half a second before that beat's first word, so
+ * setup timed from the beat would be seen to happen: a bar's title showing and then vanishing, the
+ * last shot's board still beside the new figure. Setup takes effect at the shot's own start
+ * instead. The figure is already in that state when the shot appears (the shot's fade-in is the
+ * only entrance it gets, so its `dur` does not apply), and the board turns to its new column as
+ * the old figure leaves (in a shot with a figure; a board-only shot keeps the old work until its
+ * first line). A cue word, a later beat, and every action that animates are untouched.
+ */
+function opening(a: Action, beat: number, hasFig: boolean): "figure" | "board" | undefined {
+  if (beat !== 0 || a.at) return undefined;
+  // with no figure coming in, the old work has nothing to sit beside: it stays until the new column's first line
+  if (a.do === "clear") return hasFig ? "board" : undefined;
+  if (a.do === "hide" || a.do === "show") return "figure";
+  if (a.do === "move" && a.dur !== undefined && a.dur <= JUMP) return "figure";
+  return undefined;
+}
+/** Each beat's actions, in time. Actions without `at` start with the beat, slightly staggered; a shot's setup (see `opening`) at the shot's start `t0`. `shotEnd` is when the shot begins to fade out. */
+function entries(shot: Shot, times: BeatTime[], t0Shot: number, shotEnd = Infinity) {
   const out: Entry[] = [];
   shot.beats.forEach((b, i) => {
     let stagger = 0;
@@ -211,9 +236,11 @@ function entries(shot: Shot, times: BeatTime[], shotEnd = Infinity) {
         out.push({ a, t0: run.times[0]!, dur: a.dur ?? DEFAULT_DUR.count!, beatEnd: t.end, hold, run, words: Object.fromEntries(counted.map((x, k) => [`n${k}`, x])) });
         continue;
       }
-      const t0 = a.at ? wordTime(t, a.at, a.nth) : t.start + stagger;
+      const setup = opening(a, i, !!shot.figure);
+      // setup keeps its stagger slot, so the beat's other actions keep their times
+      const t0 = setup === "figure" ? t0Shot - SETUP : setup === "board" ? t0Shot : a.at ? wordTime(t, a.at, a.nth) : t.start + stagger;
       if (!a.at) stagger += 0.1;
-      const entry: Entry = { a, t0, dur: a.dur ?? DEFAULT_DUR[a.do] ?? 0.5, beatEnd: t.end };
+      const entry: Entry = { a, t0, dur: setup === "figure" ? SETUP : a.dur ?? DEFAULT_DUR[a.do] ?? 0.5, beatEnd: t.end, ...(setup && { setup: true }) };
       if (a.do === "highlight") entry.highlightEnd = highlightEnd(t, a, t0);
       if (a.do === "scene") entry.sceneEnds = a.actions.map((x) => x.do === "highlight" ? highlightEnd(t, x, t0) : undefined);
       if (a.do === "column") {
@@ -2971,16 +2998,19 @@ type BoardItem = {
   kind: string; el: HTMLElement; t0: number; dur: number; col: number; shot: number; id?: string;
   top: number; bottom: number; stack?: StackView;
   fly?: { el: HTMLElement; dx: number; dy: number }[]; fresh?: HTMLElement[]; note?: HTMLElement; standalone?: boolean;
-  /** Struck out from t0: the stroke over the line and the text that dims under it (both set when the column is laid out). */
-  struck?: { t0: number; dur: number; shot: number; el?: HTMLElement; ink?: HTMLElement };
+  /** Struck out from t0: the X over the line, its two strokes, and the text that dims under it (all set when the column is laid out). */
+  struck?: { t0: number; dur: number; shot: number; el?: HTMLElement; strokes?: SVGElement[]; ink?: HTMLElement };
 };
 /**
- * A struck line: one stroke through the middle of its text, drawn left to right,
- * reaching STRIKE_PAST of the column's type size past the text at each end and
- * STRIKE_THICK of it thick. The text under it dims to STRUCK. The stroke lies
- * over the line and takes no room, so nothing on the board moves.
+ * A struck line: an X over its text, corner to corner of the text's own box,
+ * reaching STRIKE_PAST of the column's type size past the text at each side and
+ * STRIKE_OVER of it above and below, its strokes STRIKE_THICK of it thick. The
+ * first stroke is drawn from the top left to the bottom right, then the second
+ * from the bottom left to the top right, each over half the strike's time. The
+ * text under it dims to STRUCK. The X lies over the line and takes no room, so
+ * nothing on the board moves.
  */
-export const STRIKE_PAST = 0.12, STRIKE_THICK = 0.065, STRUCK = 0.55;
+export const STRIKE_PAST = 0.12, STRIKE_OVER = 0.08, STRIKE_THICK = 0.065, STRUCK = 0.55;
 /** Board lines a strike can go through: one row of working. A card or a stack is not struck. */
 const STRIKABLE = ["write", "text", "answer"];
 /**
@@ -3102,7 +3132,7 @@ class Board {
     this.shotMeta = shots.map((s) => ({ t0: s.t0, hasFig: s.hasFig }));
     const recapList = this.recapList = div("film-recap-list", this.recapCard);
     let col = this.newCol();
-    const events: { t: number; kind: string; item?: BoardItem; shot?: number; col?: number; idx?: number }[] = [];
+    const events: { t: number; kind: string; item?: BoardItem; shot?: number; col?: number; idx?: number; opens?: boolean }[] = [];
     let head: Head | null = null;
     const mixed = new Set<number>();
     shots.forEach((sh, si) => {
@@ -3126,7 +3156,7 @@ class Board {
         }
         if (a.do === "clear") {
           if (this.items.some((i) => i.col === col)) col = this.newCol();
-          events.push({ t: e.t0, kind: "clear", shot: si, col });
+          events.push({ t: e.t0, kind: "clear", shot: si, col, opens: e.setup });
           continue;
         }
         if (a.do === "overview") {
@@ -3473,9 +3503,9 @@ class Board {
       }
   }
   /**
-   * Lay each strike over its line, through the middle of the text and a little
-   * past both ends. Measured once, when the column is laid out, and placed over
-   * the line: it takes no room and never moves.
+   * Lay each strike's X over its line, over the text's own box and a little
+   * past it on every side. Measured once, when the column is laid out, and
+   * placed over the line: it takes no room and never moves.
    */
   strikes(ci: number, its: BoardItem[]) {
     const type = parseFloat(this.cols[ci]!.style.getPropertyValue("--film-math")) || 84;
@@ -3497,7 +3527,7 @@ class Board {
       const rows = new Set(boxes.map((b) => Math.round((b.top + b.bottom) / type)));
       const broken = math ? ink.dataset.split === "1" || (/\\\\|\\begin\{/.test(ink.dataset.tex ?? "") && ink.dataset.flow !== "1") : rows.size > 1;
       if (broken) {
-        this.issues.push(`Shot ${s.shot + 1}: strike of "${it.id}", but that line takes more than one row. A strike is one stroke through one row: shorten the line.`);
+        this.issues.push(`Shot ${s.shot + 1}: strike of "${it.id}", but that line takes more than one row. A strike is one X over one row: shorten the line.`);
         delete it.struck;
         continue;
       }
@@ -3506,10 +3536,30 @@ class Board {
       const k = it.el.offsetWidth && host.width ? host.width / it.el.offsetWidth : 1;
       const l = Math.min(...boxes.map((b) => b.left)), r = Math.max(...boxes.map((b) => b.right));
       const top = Math.min(...boxes.map((b) => b.top)), bottom = Math.max(...boxes.map((b) => b.bottom));
-      const thick = Math.max(4, Math.round(type * STRIKE_THICK)), past = type * STRIKE_PAST;
+      const thick = Math.max(4, Math.round(type * STRIKE_THICK)), past = type * STRIKE_PAST, over = type * STRIKE_OVER;
       const el = div("film-struck", it.el);
-      if (boxes.length)
-        el.style.cssText = `left:${((l - host.left) / k - it.el.clientLeft - past).toFixed(2)}px;top:${(((top + bottom) / 2 - host.top) / k - it.el.clientTop - thick / 2).toFixed(2)}px;width:${((r - l) / k + 2 * past).toFixed(2)}px;height:${thick}px`;
+      const x = svg("svg");
+      x.setAttribute("aria-hidden", "true");
+      el.append(x);
+      // the first stroke top left to bottom right, the second bottom left to top right; each a dash of the stroke's whole length, drawn by its offset
+      s.strokes = [0, 1].map(() => {
+        const p = svg("path");
+        p.setAttribute("pathLength", "1");
+        p.setAttribute("stroke-dasharray", "1 2");
+        p.setAttribute("stroke-dashoffset", "1");
+        p.setAttribute("stroke-width", String(thick));
+        x.append(p);
+        return p;
+      });
+      if (boxes.length) {
+        const w = (r - l) / k + 2 * past, h = (bottom - top) / k + 2 * over;
+        el.style.cssText = `left:${((l - host.left) / k - it.el.clientLeft - past).toFixed(2)}px;top:${((top - host.top) / k - it.el.clientTop - over).toFixed(2)}px;width:${w.toFixed(2)}px;height:${h.toFixed(2)}px`;
+        x.setAttribute("viewBox", `0 0 ${w.toFixed(2)} ${h.toFixed(2)}`);
+        // the round caps end at the box's edges
+        const a = thick / 2, x0 = a.toFixed(2), y0 = a.toFixed(2), x1 = (w - a).toFixed(2), y1 = (h - a).toFixed(2);
+        s.strokes[0]!.setAttribute("d", `M${x0} ${y0}L${x1} ${y1}`);
+        s.strokes[1]!.setAttribute("d", `M${x0} ${y1}L${x1} ${y0}`);
+      }
       s.el = el; s.ink = ink;
     }
   }
@@ -3564,14 +3614,19 @@ class Board {
     const cy = Math.min(Math.max((top + bot) / 2, visH / 2), Math.max(visH / 2, b - visH / 2));
     return { cx: all.cx, cy, s, win };
   }
-  camera(events: { t: number; kind: string; item?: BoardItem; shot?: number; col?: number; idx?: number }[], shots: { hasFig: boolean }[]) {
+  camera(events: { t: number; kind: string; item?: BoardItem; shot?: number; col?: number; idx?: number; opens?: boolean }[], shots: { hasFig: boolean }[]) {
     let col = 0, bottom = 0, mode: "focus" | "overview" = "focus", recap = false, fig = false, all = false;
     let newest: BoardItem | undefined;
     let cols = new Set<number>([0]);
     const same = (a: Cam, b: Cam) =>
       Math.abs(a.cx - b.cx) < 0.5 && Math.abs(a.cy - b.cy) < 0.5 && Math.abs(a.s - b.s) < 1e-3 && Math.abs((a.hh ?? 0) - (b.hh ?? 0)) < 0.5 &&
       a.win.x === b.win.x && a.win.y === b.win.y && a.win.w === b.win.w && a.win.h === b.win.h;
-    const push = (t: number, to: Cam) => {
+    // A clear that opens a shot turns the board as the shot changes, with the old figure leaving,
+    // even when the move waits to frame the column's first line: the old work never sits beside the new figure.
+    let lead: number | undefined;
+    const push = (when: number, to: Cam) => {
+      const t = lead ?? when;
+      lead = undefined;
       // a key that goes where the camera is already going would restart its ease: a visible hitch
       const last = this.keys[this.keys.length - 1];
       if (last && same(last.to, to) && [...last.cols].join() === [...cols].join()) return;
@@ -3601,6 +3656,7 @@ class Board {
       }
       if (ev.kind === "clear") {
         col = ev.col!; bottom = 0; mode = "focus"; recap = false; cols = new Set([col]); newest = undefined;
+        if (ev.opens) lead = ev.t;
         // the column's first line (or its header) follows at once: one move straight to it, not two
         const nx = events[ei + 1];
         if (nx && ((nx.kind === "item" && nx.item!.col === col) || (nx.kind === "header" && nx.col === col)) && nx.t - ev.t < 1.5) continue;
@@ -3867,11 +3923,11 @@ class Board {
       }
       it.el.style.opacity = String((it.fly || it.fresh ? 1 : u) * dim);
       if (it.struck?.el) {
-        // drawn left to right from its word, then held: the state at t, whichever way the film was sought
-        const k = ease((t - it.struck.t0) / it.struck.dur);
-        it.struck.el.style.transform = `scaleX(${k})`;
-        it.struck.el.style.visibility = k > 0 ? "inherit" : "hidden";
-        it.struck.ink!.style.opacity = String(lerp(1, STRUCK, k));
+        // the X from its word: one stroke over the first half of the strike, the other over the second, then held; the state at t, whichever way the film was sought
+        const u = clamp((t - it.struck.t0) / it.struck.dur);
+        it.struck.strokes!.forEach((p, i) => p.setAttribute("stroke-dashoffset", String(1 - ease(2 * u - i))));
+        it.struck.el.style.visibility = u > 0 ? "inherit" : "hidden";
+        it.struck.ink!.style.opacity = String(lerp(1, STRUCK, ease(u)));
       }
       if (it.stack) drawStack(it.stack, it.t0, t);
     }
@@ -3892,6 +3948,69 @@ class Board {
 // ------------------------------------------------------------------ the film
 /** An app figure mounted into a shot's card (film/example.tsx): how to draw it at t, and what its checks found. */
 export type FigureMount = { seek?: (t: number) => void; issues?: string[]; notes?: string[] };
+/** How long a shot takes to fade in when it dissolves over the one before, and to fade out when the next begins (see `Film.seek`). */
+const DISSOLVE_IN = 0.6, FADE_OUT = 0.3;
+/** Figure actions that change how a part looks, not only whether it shows. Moves and glides change points, compared by place. */
+const RESHAPES = new Set(["turn", "flip", "slide", "cut", "split", "join", "zoom", "given", "partition", "shade"]);
+const THING_ACTS = new Set(["arrive", "count", "send", "leave"]);
+/** The ids of the parts a shot's actions, up to time t, have changed beyond showing, hiding or lighting them. */
+function reshaped(g: GeoStage, list: Entry[], t: number) {
+  const out = new Set<string>();
+  const add = (target: string) => {
+    const id = target.split(".")[0]!;
+    for (const p of g.geo.parts) if (p.id === id || p.group === id) out.add(p.id);
+  };
+  for (const e of list) {
+    if (e.t0 >= t) continue;
+    const a = e.a as { do: string; target?: string | string[] };
+    const targets = a.target === undefined ? [] : Array.isArray(a.target) ? a.target : [a.target];
+    if (THING_ACTS.has(a.do)) { for (const p of g.geo.parts) if ("things" in p) out.add(p.id); }
+    else if (RESHAPES.has(a.do)) targets.forEach(add);
+    // a table's cell or a mosaic's slab shown or hidden: the part as a whole stays, its inside changes
+    else if (a.do === "show" || a.do === "hide" || a.do === "draw") targets.filter((x) => x.includes(".")).forEach(add);
+  }
+  return out;
+}
+/**
+ * Whether geometry figure b takes over from a without replacing anything, so dissolving one into
+ * the other reads as parts arriving or leaving, never as two pictures printed over each other.
+ * It does when b opens on the window a closes on, and from the ink a shows while it fades out to the ink
+ * b shows once it has faded in, parts are only added or only taken away: every part both show is
+ * the same part, untouched by either shot's actions, on points in the same places.
+ * A moved point is a change: its label or line would show twice, once where it was and once where it is.
+ */
+function geoContinues(a: GeoStage, aList: Entry[], b: GeoStage, bList: Entry[], change: number): boolean {
+  // a is still drawn, fading, from the change until it has gone
+  const aLeaving = [change, change + FADE_OUT], bOpen = change + DISSOLVE_IN;
+  const near = (p: readonly number[], q: readonly number[]) => p.length === q.length && p.every((x, k) => Math.abs(x - q[k]!) < 1e-6);
+  if (!!a.geo.stretch !== !!b.geo.stretch || aLeaving.some((t) => !near(a.viewAt(t), b.viewAt(bOpen)))) return false;
+  const shown = (g: GeoStage, ts: number[]) => new Map(g.geo.parts.filter((p) => ts.some((t) => g.opacity(p, t).o > 0.001)).map((p) => [p.id, p]));
+  const inA = shown(a, aLeaving), inB = shown(b, [bOpen]);
+  const aTouched = reshaped(a, aList, change + FADE_OUT), bTouched = reshaped(b, bList, bOpen);
+  const names = (v: unknown, out: Set<string>): Set<string> => {
+    if (typeof v === "string") out.add(v);
+    else if (Array.isArray(v)) v.forEach((x) => names(x, out));
+    else if (v && typeof v === "object") Object.values(v).forEach((x) => names(x, out));
+    return out;
+  };
+  const samePart = (p: Part, q: Part) => {
+    if (JSON.stringify(p) !== JSON.stringify(q) || aTouched.has(p.id) || bTouched.has(q.id)) return false;
+    for (const n of names(p, new Set())) {
+      const inPa = Object.hasOwn(a.geo.points, n), inPb = Object.hasOwn(b.geo.points, n);
+      if (inPa !== inPb) return false;
+      if (inPa && aLeaving.some((t) => !near(a.at(n, t), b.at(n, bOpen)))) return false;
+    }
+    return true;
+  };
+  let gone = false, come = false;
+  for (const [id, p] of inA) {
+    const q = inB.get(id);
+    if (!q) gone = true;
+    else if (!samePart(p, q)) return false;
+  }
+  for (const id of inB.keys()) if (!inA.has(id)) come = true;
+  return !(gone && come);
+}
 export class Film {
   shots: { el: HTMLElement; t0: number; t1: number; geo?: GeoStage; list: Entry[]; extern?: (t: number) => void; mount?: FigureMount; hasFig: boolean; /** Fades in only after the shot before it has gone (see `seek`). */ dip?: boolean; pose: FigurePose | null; fill: number }[] = [];
   board: Board;
@@ -3917,9 +4036,9 @@ export class Film {
       const times = timing.shots[i]!;
       // a shot begins to fade half a second before the next shot's first word (its t1, below)
       const next = timing.shots[i + 1]?.[0];
-      const list = entries(shot, times, next ? next.start - 0.5 : timing.duration);
-      const el = div("film-shot", root);
       const t0 = i === 0 ? 0 : times[0]!.start - 0.5;
+      const list = entries(shot, times, t0, next ? next.start - 0.5 : timing.duration);
+      const el = div("film-shot", root);
       const hasFig = !!shot.figure;
       let geo: GeoStage | undefined; let mount: FigureMount | undefined;
       if (hasFig) {
@@ -3930,10 +4049,15 @@ export class Film {
         else mount = mountFigure?.(host, shot, list);
         for (const m of geo?.issues ?? []) this.issues.push(`Shot ${i + 1}: ${m}`);
       }
-      // Two different app figures in a row (coins on a mat, then other coins) are drawn in the same
-      // place: dissolved over each other they read as one garbled picture, so the second waits for the first to go.
+      // Two different figures in a row (coins on a mat, then other coins; halves of a strip, then
+      // thirds of it) are drawn in the same card: dissolved over each other they read as one garbled
+      // picture, labels printed twice, so the second waits for the first to go. A figure carried
+      // unchanged still dissolves, and so does a geometry figure that only gains or only loses
+      // whole parts in place (see geoContinues): both read as no change, where a dip would blink.
       const before = i > 0 ? script.shots[i - 1]!.figure : undefined;
-      const dip = hasFig && !!before && (!!mount || !("parts" in before)) && JSON.stringify(before) !== JSON.stringify(shot.figure);
+      const prev = this.shots[i - 1];
+      const dip = hasFig && !!before && JSON.stringify(before) !== JSON.stringify(shot.figure)
+        && !(prev?.geo && geo && geoContinues(prev.geo, prev.list, geo, list, t0));
       this.shots.push({ el, t0, t1: Infinity, geo, list, extern: mount?.seek, mount, hasFig, dip, pose: null, fill: 0 });
     });
     this.shots.forEach((s, i) => { s.t1 = this.shots[i + 1]?.t0 ?? Infinity; });
@@ -4212,9 +4336,9 @@ export class Film {
   seek(t: number) {
     this.shots.forEach((s, i) => {
       // The film, and each shot, eases in. Nothing is fully present on the first frame.
-      const inn = i === 0 ? ease(t / 0.7) : s.dip ? ease((t - s.t0 - 0.28) / 0.45) : ease((t - s.t0) / 0.6);
+      const inn = i === 0 ? ease(t / 0.7) : s.dip ? ease((t - s.t0 - 0.28) / 0.45) : ease((t - s.t0) / DISSOLVE_IN);
       // the last shot never fades: the film ends on its summary, held
-      const out = s.t1 === Infinity ? 1 : 1 - ease((t - s.t1) / 0.3);
+      const out = s.t1 === Infinity ? 1 : 1 - ease((t - s.t1) / FADE_OUT);
       const o = inn * out;
       const on = o > 0.002;
       s.el.style.visibility = on ? "visible" : "hidden";

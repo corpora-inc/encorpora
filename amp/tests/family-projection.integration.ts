@@ -1538,7 +1538,7 @@ test(
       },
     );
     await t.test(
-      "billing capability uses configured consent, unassigned plans and email confirmation",
+      "billing capability follows the child's learning basis and unassigned plans, never email confirmation",
       async () => {
         const { StripeRepository } =
           await import("../src/billing/stripe/repository.js");
@@ -1556,7 +1556,9 @@ test(
           (await family(home.org_id, buyer.account)).children.find(
             (c: any) => c.id === child.id,
           ).capabilities.purchase;
-        assert.equal(await canBuy(), false, "outdated policy version");
+        // A child is bought for on the basis they learn on: an older consent
+        // policy version and an unconfirmed email no longer stop a checkout.
+        assert.equal(await canBuy(), true, "eligible on an older policy");
         await db.query(
           "UPDATE amp_parent_consents SET policy_version=$2 WHERE account_id=$1",
           [buyer.account, billingConfig.consentPolicyVersion],
@@ -1566,7 +1568,17 @@ test(
           'UPDATE amp_auth_users SET "emailVerified"=false WHERE id=$1',
           [buyer.account.slice(4)],
         );
-        assert.equal(await canBuy(), false);
+        assert.equal(await canBuy(), true, "no confirmed-email gate");
+        // Only a withdrawn consent for this named child under 13 stops it.
+        await db.query(
+          "UPDATE amp_parent_consents SET withdrawn_at=now() WHERE account_id=$1",
+          [buyer.account],
+        );
+        assert.equal(await canBuy(), false, "withdrawn");
+        await db.query(
+          "UPDATE amp_parent_consents SET withdrawn_at=NULL WHERE account_id=$1",
+          [buyer.account],
+        );
         await db.query(
           'UPDATE amp_auth_users SET "emailVerified"=true WHERE id=$1',
           [buyer.account.slice(4)],

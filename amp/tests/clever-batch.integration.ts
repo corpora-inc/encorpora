@@ -210,11 +210,77 @@ test(
       );
 
       await t.test(
-        "only SchoolTechLead grants viewer; demotion ends source authority without changing teacher/admin co-roles",
+        "staff administer their schools unless PortalOnly; demotion ends source authority without changing teacher/admin co-roles",
         async () => {
-          assert.deepEqual(await liveRoles(techLead), ["viewer"]);
+          assert.deepEqual(await liveRoles(techLead), ["admin"]);
           assert.deepEqual(await liveRoles(portal), []);
-          assert.deepEqual(await liveRoles(plainStaff), []);
+          assert.deepEqual(await liveRoles(plainStaff), ["admin"]);
+          // The authorization view honours a staff school-admin role, not
+          // only district administrators (migration 0142).
+          for (const id of [techLead, plainStaff])
+            assert.deepEqual(
+              (
+                await db.query(
+                  `SELECT amp_school_role_current(r.id) AS current FROM amp_clever_bindings b
+            JOIN amp_org_roles r ON r.person_id=b.local_id AND r.end_on IS NULL
+            WHERE b.connection_id=$1 AND b.kind='user' AND b.clever_id=$2`,
+                  [connection.id, id],
+                )
+              ).rows.map((r) => r.current),
+              [true],
+            );
+          // Each guard the migration adds turns the staff role off on its own.
+          const guard = await db.connect();
+          try {
+            await guard.query("BEGIN");
+            const staffRole = (
+              await guard.query(
+                `SELECT r.id,p.id AS person_id FROM amp_clever_bindings b
+          JOIN amp_people p ON p.id=b.local_id
+          JOIN amp_org_roles r ON r.person_id=p.id AND r.end_on IS NULL AND r.role='admin'
+          WHERE b.connection_id=$1 AND b.kind='user' AND b.clever_id=$2`,
+                [connection.id, plainStaff],
+              )
+            ).rows[0];
+            const current = async () =>
+              (
+                await guard.query(
+                  "SELECT amp_school_role_current($1) AS current",
+                  [staffRole.id],
+                )
+              ).rows[0].current;
+            const attempt = async (label: string, sql: string[]) => {
+              await guard.query("SAVEPOINT guard");
+              for (const statement of sql)
+                await guard.query(
+                  statement,
+                  statement.includes("$1") ? [connection.id] : [],
+                );
+              assert.equal(await current(), false, label);
+              await guard.query("ROLLBACK TO SAVEPOINT guard");
+              assert.equal(await current(), true, `${label} (restored)`);
+            };
+            await attempt("signed-in identity no longer carries staff", [
+              "INSERT INTO amp_provider_principals(account_id) VALUES('amp|staff-guard')",
+              `UPDATE amp_people SET account_id='amp|staff-guard' WHERE id='${staffRole.person_id}'`,
+              `INSERT INTO amp_provider_identities(id,account_id,provider,environment,district_id,subject,claims)
+           VALUES('${randomUUID()}','amp|staff-guard','clever','sandbox','${districtId}','${plainStaff}','{"roles":["teacher"]}')`,
+            ]);
+            await attempt("staff record lists a different school", [
+              `UPDATE amp_clever_bindings SET record=jsonb_set(record,'{roles,staff,school}','"${sourceId(2, 9)}"')
+           WHERE connection_id=$1 AND kind='user' AND clever_id='${plainStaff}'`,
+            ]);
+            await attempt("school binding archived", [
+              "UPDATE amp_clever_bindings SET archived_at=now() WHERE connection_id=$1 AND kind='school'",
+            ]);
+            await attempt("staff marked PortalOnly", [
+              `UPDATE amp_clever_bindings SET record=jsonb_set(record,'{roles,staff,roles}','["PortalOnly"]')
+           WHERE connection_id=$1 AND kind='user' AND clever_id='${plainStaff}'`,
+            ]);
+          } finally {
+            await guard.query("ROLLBACK");
+            guard.release();
+          }
           assert.deepEqual(await liveRoles(teacher), ["teacher"]);
           assert.deepEqual(await liveRoles(administrator), ["admin"]);
           source.users.find((u) => u.id === techLead)!.roles.staff!.roles = [
@@ -256,12 +322,23 @@ test(
             user.name.first = "Updated";
             user.roles.student!.grade = "7";
           }
+          // The school's grade sets the cohort birth year exactly; Clever's
+          // date of birth fills in only for an ungraded student.
+          const studentRole = (id: string) =>
+            source.users.find((u) => u.id === id)!.roles.student!;
+          studentRole(students[10]).birth_year = birthYearForGrade(4) - 1;
+          studentRole(students[12]).grade = "Ungraded";
+          studentRole(students[12]).birth_year = 2015;
           await sync();
           const updated = await person(students[0]),
-            preserved = await person(students[1]);
+            preserved = await person(students[1]),
+            graded = await person(students[10]),
+            ungraded = await person(students[12]);
           assert.equal(updated.learner_id, first.learner_id);
           assert.equal(updated.learner_name, "Updated");
           assert.equal(updated.birth_year, birthYearForGrade(7));
+          assert.equal(graded.birth_year, birthYearForGrade(4));
+          assert.equal(ungraded.birth_year, 2015);
           assert.equal(preserved.learner_id, experienced.learner_id);
           assert.equal(preserved.learner_name, "Classroom nickname");
           assert.equal(preserved.birth_year, experienced.birth_year);

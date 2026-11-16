@@ -1,3 +1,4 @@
+import { attachmentFilename } from "../../workbook/filename";
 import { requestFetch } from "./request-transport";
 import { defaultPaper } from "../features/workbooks/model";
 import { AppError } from "./AppError";
@@ -81,13 +82,13 @@ export async function downloadPdf({
     throw error;
   }
   const blob = await response.blob();
-  const given = /filename="([^"]+)"/.exec(
-    response.headers.get("content-disposition") ?? "",
-  )?.[1];
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
-  link.download = given ?? name;
+  link.download = attachmentFilename(
+    response.headers.get("content-disposition"),
+    name,
+  );
   document.body.append(link);
   link.click();
   link.remove();

@@ -21,6 +21,8 @@ import frame from "../school/SchoolFrame.module.css";
 import { ownClassOf } from "../spaces/resolve";
 import { spaceWords } from "../spaces/words";
 import { familyOptions, type FamilyProjection } from "./api";
+import { FamilyRecordLinks } from "./RecordLinks";
+import styles from "./Family.module.css";
 
 const NO_SESSION: AuthSession = { accountId: "", token: "" };
 
@@ -108,7 +110,8 @@ function useOwnChildLayer(place: FamilyPlace) {
 export function FamilyFrame({
   place,
   loading = false,
-  narrow = false,
+  title,
+  description,
   area,
   children,
 }: {
@@ -117,8 +120,9 @@ export function FamilyFrame({
   area?: AreaSource;
   /** The screen's own data is still on its way. */
   loading?: boolean;
-  /** One focused, centred column (Settings, People). */
-  narrow?: boolean;
+  /** Shared page heading: every family tab starts at the same position. */
+  title?: ReactNode;
+  description?: ReactNode;
   children: ReactNode;
 }) {
   const { query, data } = place;
@@ -130,8 +134,20 @@ export function FamilyFrame({
       className={frame.content}
       data-dense
       data-family-screen=""
-      data-narrow={narrow ? "" : undefined}
     >
+      {data &&
+        !loading &&
+        (title ? (
+          <header className={styles.pageHeader} data-family-heading>
+            <div className={styles.head}>
+              <h1>{title}</h1>
+              {description && <p className={styles.sub}>{description}</p>}
+            </div>
+            <FamilyRecordLinks place={place} />
+          </header>
+        ) : (
+          <FamilyRecordLinks place={place} />
+        ))}
       {body}
       {/* Details opened over the page (?open=): it stays, they stack. A
           family with its own class opens a child's answers too. */}

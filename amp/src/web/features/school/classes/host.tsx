@@ -49,11 +49,14 @@ export type ClassHost = HostScope & {
   /** The host's own people outside this class (Time reads them too). */
   others?: readonly OtherLearner[];
   place: { org: string; class: string };
+  /** The host places the page title beside its own record navigation. */
+  frameHeading?: boolean;
   /** The frame around the page. */
   Frame: (props: {
     loading: boolean;
     tab: string;
     className?: string;
+    title?: ReactNode;
     children: ReactNode;
   }) => ReactNode;
   /** A sibling screen's address, without the leading slash: `gradebook`,

@@ -1,3 +1,4 @@
+import { attachmentFilename } from "../src/workbook/filename";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
@@ -833,6 +834,16 @@ test(
           );
           assert.equal(pdf.statusCode, 200);
           assert.equal(pdf.headers["content-type"], "application/pdf");
+          const filename = attachmentFilename(
+            pdf.headers["content-disposition"] as string,
+            "",
+          );
+          assert.match(filename, /^amp-workbook-student5-/);
+          assert.ok(
+            filename.includes(`-${workbook.date}-${workbook.number}-`),
+            filename,
+          );
+          assert.match(filename, /-[a-z0-9-]+-Letter\.pdf$/);
           assert.match(rendered.at(-1)!.html, /class="wb-qr"/);
           assert.match(rendered.at(-1)!.html, /Workbook for Student5/);
           rendererDown = true;

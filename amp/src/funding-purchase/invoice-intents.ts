@@ -15,11 +15,9 @@ import {
 import { randomUUID } from "node:crypto";
 import { z } from "zod";
 import type { PoolClient } from "pg";
-import { canonicalCommercePayload } from "../commerce/ledger.js";
-import {
-  learningConsentActive,
-  purchaseConsentSatisfied,
-} from "../server/account-access.js";
+import { fundingOfferMatchesSnapshot } from "./offer-terms.js";
+import { fundedInvoiceTerm } from "./term.js";
+import { purchaseConsentSatisfied } from "../server/account-access.js";
 import { FundingPurchaseRepository, fundingRequestRow } from "./repository.js";
 import {
   availableOffers,
@@ -47,6 +45,8 @@ export interface InvoiceIntent {
   expiresAt: string;
   state: "prepared" | "claimed" | "cancelled";
   claimedRequestId: string | null;
+  /** Sent means accepted by the email provider, not confirmed inbox delivery. */
+  emailStatus?: "queued" | "sent" | "failed";
 }
 interface PrivateInvoiceIntent extends InvoiceIntent {
   parentEmail: string;
@@ -184,7 +184,20 @@ export class FundingInvoiceRepository {
         await client.query(
           `INSERT INTO amp_access_gifts(id,recipient_email,months,source,reference,claim_by,funding_invoice_id)
            VALUES($1,$2,1,'funded-pending',$3,$4,$3)`,
-          [randomUUID(), intent.parentEmail, intent.id, intent.expiresAt],
+          [
+            randomUUID(),
+            intent.parentEmail,
+            intent.id,
+            new Date(
+              Math.min(
+                at.getTime() + 14 * 86400000,
+                Date.parse(intent.expiresAt),
+                Date.parse(
+                  fundedInvoiceTerm(intent)?.endsAt ?? intent.expiresAt,
+                ),
+              ),
+            ).toISOString(),
+          ],
         );
         const pdf = Buffer.from(
           await renderFundingQuotePdf(invoiceDocument(intent)),
@@ -213,6 +226,10 @@ export class FundingInvoiceRepository {
     } = rowIntent(result.rows[0]);
     return intent;
   }
+  /** An invoice is made out to an email and found by it, so its paid access
+   * goes only to an account that has confirmed that address. Without this,
+   * signing up with a parent's address would take their program-funded
+   * invoice. This binds the invoice to its parent; it is not consent. */
   private async verifiedEmail(
     client: PoolClient,
     account: string,
@@ -231,7 +248,13 @@ export class FundingInvoiceRepository {
     return this.funding.transaction(account, async (client) => {
       const email = await this.verifiedEmail(client, account);
       const rows = await client.query(
-        "SELECT i.*,r.status AS request_status FROM amp_funding_invoice_intents i LEFT JOIN amp_funding_requests r ON r.id=i.claimed_request_id WHERE i.parent_email=$1 AND (i.claimed_account_id IS NULL OR i.claimed_account_id=$2) AND i.state<>'cancelled' ORDER BY i.created_at DESC LIMIT 100",
+        `SELECT i.*,r.status AS request_status,o.invoice_id AS email_invoice_id,
+         o.accepted_at AS email_accepted_at,o.stopped_at AS email_stopped_at
+         FROM amp_funding_invoice_intents i
+         LEFT JOIN amp_funding_requests r ON r.id=i.claimed_request_id
+         LEFT JOIN amp_funding_invoice_outbox o ON o.invoice_id=i.id
+         WHERE i.parent_email=$1 AND (i.claimed_account_id IS NULL OR i.claimed_account_id=$2)
+           AND i.state<>'cancelled' ORDER BY i.created_at DESC LIMIT 100`,
         [email, account],
       );
       const intents = [];
@@ -243,12 +266,21 @@ export class FundingInvoiceRepository {
             : null;
         const paymentVerified =
           !!payment &&
-          this.offers(new Date(payment.settledAt)).some(
-            (offer) =>
-              canonicalCommercePayload(offer) ===
-              canonicalCommercePayload(intent.offer),
+          this.offers(new Date(payment.settledAt)).some((offer) =>
+            fundingOfferMatchesSnapshot(offer, intent.offer),
           );
-        intents.push({ ...intent, paymentVerified });
+        const emailStatus: InvoiceIntent["emailStatus"] = row.email_invoice_id
+          ? row.email_accepted_at
+            ? "sent"
+            : row.email_stopped_at
+              ? "failed"
+              : "queued"
+          : undefined;
+        intents.push({
+          ...intent,
+          paymentVerified,
+          ...(emailStatus ? { emailStatus } : {}),
+        });
       }
       return intents;
     });
@@ -280,20 +312,17 @@ export class FundingInvoiceRepository {
       account,
       async (client) => {
         const email = await this.verifiedEmail(client, account);
-        // A child needs the parent's verified consent; an adult claiming for
-        // their own learner acts for themselves.
+        // The invoice's learner takes its access on the basis they already
+        // learn on (an adult, 13 or older, the restricted basis, or consent):
+        // no consent step for a funded invoice (16 CFR 312.5(c)(7)).
+        if (!(await purchaseConsentSatisfied(client, account, learnerId)))
+          throw new FundingPurchaseError(403, "verified_consent_required");
         const pendingGift = (
           await client.query(
             "SELECT id FROM amp_access_gifts WHERE funding_invoice_id=$1",
             [id],
           )
         ).rows[0];
-        const permitted =
-          (await purchaseConsentSatisfied(client, account, learnerId)) ||
-          (pendingGift &&
-            (await learningConsentActive(client, account, false, learnerId)));
-        if (!permitted)
-          throw new FundingPurchaseError(403, "verified_consent_required");
         const learner = await client.query(
           "SELECT id FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL AND NOT simulation FOR SHARE",
           [learnerId, account],
@@ -371,10 +400,8 @@ export class FundingInvoiceRepository {
         if (intent.state !== "prepared" || (expired && !payment))
           throw new FundingPurchaseError(409, "invoice_unavailable");
         if (
-          !this.offers(payment ? new Date(payment.settledAt) : at).some(
-            (o) =>
-              canonicalCommercePayload(o) ===
-              canonicalCommercePayload(intent.offer),
+          !this.offers(payment ? new Date(payment.settledAt) : at).some((o) =>
+            fundingOfferMatchesSnapshot(o, intent.offer),
           )
         )
           throw new FundingPurchaseError(409, "offer_unavailable");

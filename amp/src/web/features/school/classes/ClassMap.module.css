@@ -139,8 +139,8 @@
   inset: 0;
   border-radius: var(--radius-small);
 }
-.row:hover,
-.learnerHead:hover {
+.row:has(.student):hover,
+.learnerHead:has(.student):hover {
   background: var(--color-surface-hover);
   cursor: pointer;
 }

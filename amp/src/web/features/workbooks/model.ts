@@ -7,6 +7,7 @@ import {
 } from "../../../workbook/contracts";
 
 export const workbookSearchSchema = z.object({
+  draft: z.string().uuid().optional().catch(undefined),
   minutes: z
     .union([z.literal(30), z.literal(45), z.literal(60)])
     .optional()

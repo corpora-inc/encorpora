@@ -1,12 +1,8 @@
-import { useState } from "react";
 import type { DirectNotice } from "../../../parent-consent/contracts";
-import { Button } from "../../ui/Button";
-import { Dialog } from "../../ui/Dialog";
 import styles from "./Billing.module.css";
 
-/** The direct notice in two lines, with the complete notice one tap away. */
+/** Direct notice before checkout; full details expand within the page. */
 export function NoticeSummary({ notice }: { notice: DirectNotice }) {
-  const [open, setOpen] = useState(false);
   // "Learner nickname" reads as "learner nickname" mid-sentence; acronyms stay.
   const categories = notice.childData.map(({ category }) =>
     /^[A-Z][a-z]/.test(category)
@@ -15,22 +11,17 @@ export function NoticeSummary({ notice }: { notice: DirectNotice }) {
   );
   return (
     <section className={styles.notice} aria-labelledby="parent-notice-title">
-      <h2 id="parent-notice-title">Parent notice</h2>
+      <h2 id="parent-notice-title">Learning and privacy</h2>
       <p>
-        {notice.operator.name} collects{" "}
-        {categories.length > 2
-          ? `${categories.slice(0, 2).join("; ")}; and more`
-          : categories.join("; ")}{" "}
-        to run practice. Your first payment confirms you are the parent.
+        {notice.operator.name} collects {categories.join("; ")} to run practice.
+        You can review or delete your child’s information in Privacy settings.{" "}
+        <a href={notice.privacyUrl} target="_blank" rel="noopener noreferrer">
+          Privacy policy
+        </a>
+        .
       </p>
-      <Button
-        variant="quiet"
-        className={styles.read}
-        onClick={() => setOpen(true)}
-      >
-        Read the full notice
-      </Button>
-      <Dialog open={open} onOpenChange={setOpen} title="Parent notice">
+      <details className={styles.privacyDetails}>
+        <summary>Privacy details</summary>
         <p>
           <strong>{notice.operator.name}</strong>
           <br />
@@ -63,16 +54,15 @@ export function NoticeSummary({ notice }: { notice: DirectNotice }) {
         <h3>How payment confirms consent</h3>
         <p>
           Your card or Link payment for the first subscription period verifies
-          that you are the parent and lets you name your children. Refunds and
-          cancellation do not withdraw consent; withdraw it from Family ›
-          Privacy.
+          parent permission to save learning activity. You can change this
+          permission in Account › Privacy.
         </p>
         <p>
           <a href={notice.privacyUrl} target="_blank" rel="noopener noreferrer">
             Full privacy policy
           </a>
         </p>
-      </Dialog>
+      </details>
     </section>
   );
 }

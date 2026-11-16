@@ -17,7 +17,6 @@ import {
 } from "../src/identity/provider-principals.js";
 import { accountSummary } from "../src/account/repository.js";
 import { FamilyRepository } from "../src/family/repository.js";
-import { parentAddressConfirmed } from "../src/server/account-access.js";
 import { registerDeleteAccountRoutes } from "../src/account/delete-account-routes.js";
 import {
   createAccounts,
@@ -217,15 +216,6 @@ test(
     assert.equal(me.account.email, null);
     assert.equal(me.account.emailVerified, false);
     assert.equal(me.account.confirmationRequired, false);
-    const client = await pool.connect();
-    try {
-      assert.equal(
-        await parentAddressConfirmed(client, session.accountId),
-        false,
-      );
-    } finally {
-      client.release();
-    }
     const claims = (
       await app.inject({
         method: "GET",

@@ -1,17 +1,12 @@
-import { secureChromium } from "../browser-security.mjs";
+/** SAT focus through family settings and a child's real practice session. */
 import assert from "node:assert/strict";
+import { randomUUID } from "node:crypto";
 import { mkdir, writeFile } from "node:fs/promises";
-import { chromium as rawChromium, type Page } from "playwright";
-const chromium = secureChromium(rawChromium);
-import { createServer } from "vite";
-import { buildApp } from "../src/server/app";
-import { developmentAuth } from "../src/server/auth";
-import { PostgresRepository } from "../src/server/repository";
-import { registerFamilyRoutes } from "../src/family/routes";
-import { migrate } from "./migrate";
-import { assertTestDatabaseTarget } from "./test-database-preflight";
-import { startTopic } from "./ui-practice";
-import { chooseLearner, practiceHere, returnToParent } from "./ui-controls";
+import { chromium as rawChromium, type Page, type Response } from "playwright";
+import { secureChromium } from "../browser-security.mjs";
+import { purchasePreview } from "./purchase-preview-fixture";
+import { satTasks } from "../src/curriculum/sat-coverage";
+import { DEFAULT_PRACTICE_POLICY } from "../src/learning/practice-policy";
 import {
   satCompletionTemplates,
   generateSatCompletionProblem,
@@ -19,48 +14,22 @@ import {
 import { satCompletionLessons } from "../src/content/sat-completion-lessons";
 import { publicationHtml } from "../src/content/publications";
 
-const url = process.env.AMP_TEST_DATABASE_URL;
-if (!url) throw new Error("AMP_TEST_DATABASE_URL is required");
-assertTestDatabaseTarget(url);
-await migrate(url);
-const repository = new PostgresRepository(url, { development: true });
-const learner = await repository.create(
-  "development-household",
-  "SAT example learner",
-  2010,
+const fixture = await purchasePreview(
+  Number(process.env.AMP_SAT_PREVIEW_PORT ?? 5070),
 );
-const sibling = await repository.create(
-  "development-household",
-  "General example learner",
-  2016,
-);
-const app = buildApp({
-  repository,
-  authenticate: developmentAuth(),
-  development: true,
-});
-app.get("/api/v1/auth-config", async () => ({ mode: "development" }));
-await registerFamilyRoutes(app, {
-  pool: repository.pool,
-  authenticate: developmentAuth(),
-  development: true,
-});
-const apiOrigin = await app.listen({ host: "127.0.0.1", port: 0 });
-const vite = await createServer({
-  configFile: new URL("../vite.config.ts", import.meta.url).pathname,
-  server: {
-    host: "127.0.0.1",
-    port: 0,
-    proxy: { "/api": { target: apiOrigin } },
-  },
-});
-await vite.listen();
-const address = vite.httpServer!.address();
-assert(address && typeof address !== "string");
-const origin = `http://127.0.0.1:${address.port}`;
-const output = "artifacts/sat-review";
+const browser = await secureChromium(rawChromium).launch();
+const output = process.env.AMP_SAT_UI_OUTPUT ?? "artifacts/sat-review";
 await mkdir(output, { recursive: true });
-const browser = await chromium.launch();
+const parent = fixture.personas.find((entry) => entry.key === "paid")!;
+const learnerId = parent.learnerId;
+const headers = {
+  origin: fixture.origin,
+  authorization: `Bearer ${parent.token}`,
+};
+const taskFamilies = new Set(satTasks.flatMap((task) => task.templateIds));
+const evidence: unknown[] = [];
+const settingsPath = `/api/v1/learners/${learnerId}/practice-settings`;
+
 async function noOverflow(page: Page) {
   assert.equal(
     await page.evaluate(
@@ -70,14 +39,99 @@ async function noOverflow(page: Page) {
     "Horizontal overflow",
   );
 }
-/** The child's settings are on their page in the family; a child's practice
- * is their own session, which the parent takes back first. */
-async function family(page: Page) {
-  await returnToParent(page);
-  await chooseLearner(page, learner.id);
-  await page.getByRole("checkbox", { name: "SAT Math focus" }).waitFor();
+async function shownProblem(page: Page) {
+  const content = page.locator(".problem-stage .problem-content");
+  await content.waitFor();
+  const id = await content.getAttribute("data-problem-id");
+  const template = await content.getAttribute("data-template");
+  assert.ok(id && template, "An actual served problem is visible");
+  return { id, template };
+}
+async function storedPolicy(problemId: string) {
+  const row = (
+    await fixture.db.query(
+      "SELECT content->'selection' AS selection FROM amp_instances WHERE id=$1 AND learner_id=$2",
+      [problemId, learnerId],
+    )
+  ).rows[0];
+  assert.ok(
+    row?.selection,
+    "The rendered problem has a saved selection record",
+  );
+  assert.match(row.selection.practiceFingerprint, /^[a-f0-9]{64}$/);
+  return row.selection.practiceFingerprint as string;
+}
+const isBatch = (response: Response) =>
+  new URL(response.url()).pathname ===
+    `/api/v1/learners/${learnerId}/batches` && response.ok();
+async function nextProblem(page: Page) {
+  const old = await shownProblem(page);
+  const requested = page.waitForResponse(isBatch);
+  await page
+    .getByRole("button", { name: "Skip this problem and see its answer" })
+    .click();
+  await page.getByRole("button", { name: /^Next/ }).click();
+  const response = await requested;
+  await page.waitForFunction((id) => {
+    const shown = document
+      .querySelector(".problem-stage .problem-content")
+      ?.getAttribute("data-problem-id");
+    return !!shown && shown !== id;
+  }, old.id);
+  return { response, problem: await shownProblem(page) };
+}
+async function automatic(response: Response, sat: boolean) {
+  const input = response.request().postDataJSON();
+  assert.equal(
+    input.templateId,
+    undefined,
+    "Practice chooses the problem automatically",
+  );
+  assert.equal(
+    input.recoveryStrand,
+    undefined,
+    "No strand drill masks SAT focus",
+  );
+  const body = await response.json();
+  assert.ok(body.problems.length > 0);
+  if (sat)
+    for (const problem of body.problems)
+      assert.ok(
+        taskFamilies.has(problem.templateId),
+        `Unmapped SAT problem: ${problem.templateId}`,
+      );
+  return body.problems as { id: string; templateId: string }[];
 }
 try {
+  const birthYear = new Date().getFullYear() - 16;
+  const changed = await fixture.app.inject({
+    method: "POST",
+    url: `/api/v1/family/learners/${learnerId}/birth-year`,
+    headers,
+    payload: { birthYear },
+  });
+  assert.equal(changed.statusCode, 200, changed.body);
+  const added = await fixture.app.inject({
+    method: "POST",
+    url: "/api/v1/learners",
+    headers,
+    payload: { name: "General example learner", birthYear },
+  });
+  assert.equal(added.statusCode, 201, added.body);
+  const siblingId = added.json().id as string;
+  const places = await fixture.app.inject({
+    method: "GET",
+    url: "/api/v1/families",
+    headers,
+  });
+  assert.equal(places.statusCode, 200, places.body);
+  const familyId = places
+    .json()
+    .families.find(
+      (entry: { role: string }) => entry.role === "holder",
+    ).familyId;
+  const childPath = `/family/${familyId}/kids/${learnerId}`;
+
   for (const width of [320, 390, 768, 1280])
     for (const theme of ["light", "dark"] as const) {
       const context = await browser.newContext({
@@ -86,132 +140,262 @@ try {
         reducedMotion: "reduce",
       });
       const page = await context.newPage();
+      page.setDefaultTimeout(20_000);
       const errors: string[] = [];
-      page.on("pageerror", (e) => errors.push(e.message));
-      await repository.transaction(
-        "development-household",
-        learner.id,
-        async (tx) => tx.setSatMathFocus(false),
-      );
-      await page.goto(`${origin}/overview`);
-      await chooseLearner(page, learner.id);
-      await page.evaluate(
-        (t) => document.documentElement.setAttribute("data-theme", t),
-        theme,
-      );
-      const toggle = page.getByRole("checkbox", { name: "SAT Math focus" });
-      await toggle.scrollIntoViewIfNeeded();
-      const before = await toggle.boundingBox();
-      assert(before && before.height >= 44);
-      let release!: () => void;
-      const delayed = new Promise<void>((resolve) => {
-        release = resolve;
-      });
-      await page.route(
-        "**/practice-settings",
-        async (route) => {
-          await delayed;
-          await route.continue();
-        },
-        { times: 1 },
-      );
-      await toggle.click();
-      await page.waitForFunction(() =>
-        document
-          .querySelector(
-            '[aria-label="Practice settings"] input[type="checkbox"]',
-          )
-          ?.hasAttribute("disabled"),
-      );
-      const during = await toggle.boundingBox();
-      assert.equal(during?.y, before.y, "Saving moved the toggle");
-      release();
-      await page
-        .getByText("Saved. It applies from the next problem.")
-        .waitFor();
-      assert.equal(await toggle.isChecked(), true);
-      await noOverflow(page);
-      await page.screenshot({
-        path: `${output}/settings-${width}-${theme}.png`,
-        fullPage: true,
-      });
-      await page.reload();
-      assert.equal(await toggle.isChecked(), true);
-      // The focus is the learner's own: a younger sibling's page has no SAT
-      // focus at all (it is for learners 13 and older), and the learner's
-      // stays on.
-      await chooseLearner(page, sibling.id);
-      await page
-        .getByRole("heading", { name: "General example learner", exact: true })
-        .first()
-        .waitFor();
-      assert.equal(await toggle.count(), 0);
-      await chooseLearner(page, learner.id);
-      assert.equal(await toggle.isChecked(), true);
-      await page.route(
-        "**/practice-settings",
-        (route) =>
-          route.fulfill({
-            status: 503,
-            contentType: "application/json",
-            body: '{"error":"unavailable"}',
-          }),
-        { times: 1 },
-      );
-      await toggle.click();
-      await page
-        .getByText(
-          "The setting didn’t save. Refresh the page and try again.",
-        )
-        .waitFor();
-      assert.equal(await toggle.isChecked(), true);
-      await noOverflow(page);
-      await practiceHere(page, learner.id);
-      // Representative symbolic, data, geometry and contextual tasks, all with
-      // real client rendering and server-owned grading.
-      const ids =
-        width === 390 && theme === "light"
-          ? satCompletionTemplates.map((t) => t.id)
-          : [
-              "nonlinear-data-model",
-              "rational-function-representation",
-              "quadratic-context-model",
-              "unit-circle-coordinate",
-            ];
-      for (const id of ids) {
-        await startTopic(page, id);
-        await page.locator(".problem-stage").waitFor();
+      page.on("pageerror", (error) => errors.push(error.message));
+      try {
+        const login = await context.request.post(
+          fixture.origin + "/api/auth/sign-in/email",
+          {
+            headers: { origin: fixture.origin },
+            data: { email: parent.email, password: fixture.password },
+          },
+        );
+        assert.equal(login.status(), 200);
+        const reset = await fixture.app.inject({
+          method: "POST",
+          url: settingsPath,
+          headers,
+          payload: { satMathFocus: false },
+        });
+        assert.equal(reset.statusCode, 200, reset.body);
+        const statePath = `/api/v1/learners/${learnerId}/practice-state`;
+        const state = await fixture.app.inject({
+          method: "GET",
+          url: statePath,
+          headers,
+        });
+        assert.equal(state.statusCode, 200, state.body);
+        const mixed = await fixture.app.inject({
+          method: "POST",
+          url: statePath,
+          headers,
+          payload: {
+            kind: "focus",
+            skillId: null,
+            revision: state.json().revision,
+            requestId: randomUUID(),
+          },
+        });
+        assert.equal(mixed.statusCode, 200, mixed.body);
+        await page.goto(fixture.origin + `/family/${familyId}/settings`);
+        await page.locator(`[data-settings-child="${learnerId}"]`).click();
+        const toggle = page.getByRole("checkbox", {
+          name: "SAT Math focus",
+          exact: true,
+        });
+        await toggle.waitFor();
+        await page
+          .getByText("Focus on problems likely to appear on the SAT.", {
+            exact: true,
+          })
+          .waitFor();
         await page.evaluate(
-          (t) => document.documentElement.setAttribute("data-theme", t),
+          (value) => document.documentElement.setAttribute("data-theme", value),
           theme,
         );
-        await page.evaluate(() => document.fonts.ready);
+        assert.equal(await toggle.isChecked(), false);
+        await toggle.scrollIntoViewIfNeeded();
+        const row = toggle.locator("xpath=ancestor::label");
+        const before = await row.boundingBox();
+        assert.ok(
+          before && before.height >= 44,
+          "SAT setting has a touch-sized row",
+        );
+        let release!: () => void;
+        const delayed = new Promise<void>((resolve) => {
+          release = resolve;
+        });
+        await page.route(
+          `**${settingsPath}`,
+          async (route) => {
+            await delayed;
+            await route.continue();
+          },
+          { times: 1 },
+        );
+        await toggle.click();
+        await page.waitForFunction(() =>
+          document
+            .querySelector(".sat-focus-setting input")
+            ?.hasAttribute("disabled"),
+        );
+        assert.equal(
+          (await row.boundingBox())?.y,
+          before.y,
+          "Saving moved the setting",
+        );
+        release();
+        await page
+          .getByText("Saved. It applies from the next problem.", {
+            exact: true,
+          })
+          .waitFor();
+        assert.equal(await toggle.isChecked(), true);
         await noOverflow(page);
-        // The shared frame places the topic above the problem on phones
-        // and in the bar on wider screens. Check the one shown to the learner.
-        const topic = page
-          .locator(".workspace-topic")
-          .filter({ visible: true });
-        assert.equal(await topic.count(), 1, "One visible practice topic");
-        assert.match(await topic.innerText(), /SAT Math/);
         await page.screenshot({
-          path: `${output}/${id}-${width}-${theme}.png`,
+          path: `${output}/family-settings-${width}-${theme}.png`,
           fullPage: true,
         });
+        await page.reload();
+        await toggle.waitFor();
+        assert.equal(await toggle.isChecked(), true, "Focus survives reload");
+
+        // Each child has a separate setting in the family's Settings.
+        await page.goto(fixture.origin + `/family/${familyId}/settings`);
+        await page.locator(`[data-settings-child="${siblingId}"]`).click();
+        await toggle.waitFor();
+        assert.equal(
+          await toggle.isChecked(),
+          false,
+          "A sibling keeps their own setting",
+        );
+        await page.goto(fixture.origin + `/family/${familyId}/settings`);
+        await page.locator(`[data-settings-child="${learnerId}"]`).click();
+        await toggle.waitFor();
+        assert.equal(await toggle.isChecked(), true);
+        await page.evaluate(
+          (value) => document.documentElement.setAttribute("data-theme", value),
+          theme,
+        );
+        await toggle.scrollIntoViewIfNeeded();
+        await page.route(
+          `**${settingsPath}`,
+          (route) =>
+            route.fulfill({
+              status: 503,
+              contentType: "application/json",
+              body: '{"error":"unavailable"}',
+            }),
+          { times: 1 },
+        );
+        await toggle.click();
+        await page
+          .getByText(
+            "The setting didn’t save. Refresh the page and try again.",
+            { exact: true },
+          )
+          .waitFor();
+        assert.equal(
+          await toggle.isChecked(),
+          true,
+          "Failed saves preserve the persisted setting",
+        );
+        await noOverflow(page);
+        await page.screenshot({
+          path: `${output}/settings-failed-save-${width}-${theme}.png`,
+          fullPage: true,
+        });
+
+        await page.goto(fixture.origin + childPath);
+        const firstBatch = page.waitForResponse(isBatch);
+        await page.locator(`[data-practice-here="${learnerId}"]`).click();
+        const selected = await automatic(await firstBatch, true);
+        const first = await shownProblem(page);
+        assert.ok(selected.some((entry) => entry.id === first.id));
+        assert.notEqual(
+          await storedPolicy(first.id),
+          DEFAULT_PRACTICE_POLICY.fingerprint,
+          "SAT selection uses its derived policy",
+        );
+        await page.evaluate(
+          (value) => document.documentElement.setAttribute("data-theme", value),
+          theme,
+        );
+        await noOverflow(page);
+        assert.match(
+          await page
+            .locator(".workspace-topic")
+            .filter({ visible: true })
+            .innerText(),
+          /SAT Math/,
+        );
+        await page.screenshot({
+          path: `${output}/automatic-sat-${width}-${theme}.png`,
+          fullPage: true,
+        });
+        const next = await nextProblem(page);
+        await automatic(next.response, true);
+        assert.ok(taskFamilies.has(next.problem.template));
+
+        // Parent settings change the next selection, preserving the open question.
+        await page
+          .getByRole("button", { name: "Back to family", exact: true })
+          .click();
+        await toggle.waitFor();
+        await toggle.click();
+        await page
+          .getByText("Saved. It applies from the next problem.", {
+            exact: true,
+          })
+          .waitFor();
+        assert.equal(await toggle.isChecked(), false);
+        await page.locator(`[data-practice-here="${learnerId}"]`).click();
+        assert.deepEqual(
+          await shownProblem(page),
+          next.problem,
+          "Changing focus preserves the open problem",
+        );
+        assert.doesNotMatch(
+          await page
+            .locator(".workspace-topic")
+            .filter({ visible: true })
+            .innerText(),
+          /SAT Math/,
+        );
+        const normal = await nextProblem(page);
+        await automatic(normal.response, false);
+        assert.equal(
+          await storedPolicy(normal.problem.id),
+          DEFAULT_PRACTICE_POLICY.fingerprint,
+          "Off restores the normal adaptive policy",
+        );
+        await noOverflow(page);
+        // Retain the content-rendering sweep separately from the automatic
+        // selection assertions: these URLs deliberately request one family.
+        const examples =
+          width === 390 && theme === "light"
+            ? satCompletionTemplates.map((entry) => entry.id)
+            : [
+                "nonlinear-data-model",
+                "rational-function-representation",
+                "quadratic-context-model",
+                "unit-circle-coordinate",
+              ];
+        for (const template of examples) {
+          await page.goto(`${fixture.origin}/practice?template=${template}`);
+          assert.equal((await shownProblem(page)).template, template);
+          await page.evaluate(async (value) => {
+            document.documentElement.setAttribute("data-theme", value);
+            await document.fonts.ready;
+          }, theme);
+          await noOverflow(page);
+          await page.screenshot({
+            path: `${output}/${template}-${width}-${theme}.png`,
+            fullPage: true,
+          });
+        }
+        assert.deepEqual(errors, []);
+        evidence.push({
+          width,
+          theme,
+          first,
+          next: next.problem,
+          normal: normal.problem,
+          status: "passed",
+        });
+        console.log(
+          `PASS SAT settings and automatic practice: ${width}px ${theme}`,
+        );
+      } catch (error) {
+        await page.screenshot({
+          path: `${output}/failure-${width}-${theme}.png`,
+          fullPage: true,
+        });
+        throw error;
+      } finally {
+        await context.close();
       }
-      // Preserve an already served problem across a focus-setting change.
-      const prompt = await page.locator(".problem-stage").innerText();
-      await family(page);
-      await toggle.click();
-      await page
-        .getByText("Saved. It applies from the next problem.")
-        .waitFor();
-      await practiceHere(page, learner.id);
-      const resume = page.getByRole("button", { name: /^(Go|Continue)$/ });
-      if (await resume.isVisible()) await resume.click();
-      assert.equal(await page.locator(".problem-stage").innerText(), prompt);
-      assert.deepEqual(errors, []);
-      await context.close();
     }
   // Shared print renderer, representative graph and inference lessons in both formats.
   const page = await browser.newPage();
@@ -245,15 +429,10 @@ try {
     ),
   );
   console.log(
-    "SAT settings, persistence, sibling isolation, loading/failure layout, active practice and content checked at 320/390/768/1280 in both themes.",
+    "SAT focus, persistence, sibling isolation, failure layout and automatic practice checked at 320/390/768/1280 in both themes.",
   );
 } finally {
+  await writeFile(`${output}/evidence.json`, JSON.stringify(evidence, null, 2));
   await browser.close();
-  await vite.close();
-  await app.close();
-  await repository.pool.query(
-    "DELETE FROM amp_learners WHERE id=ANY($1::text[])",
-    [[learner.id, sibling.id]],
-  );
-  await repository.close();
+  await fixture.close();
 }

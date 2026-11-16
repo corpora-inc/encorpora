@@ -1,7 +1,8 @@
 import { createHash } from "node:crypto";
 import { z } from "zod";
 import type { FundingRequest } from "./contracts.js";
-import { fundedTermEnd, fundedProvisionSchema } from "./provision.js";
+import { fundedProvisionSchema } from "./provision.js";
+import { fundedInvoiceTerm, fundedTermEnd } from "./term.js";
 
 export const classWalletHeaders = [
   "Order ID",
@@ -183,8 +184,8 @@ export function validateClassWalletPayment(
   const evidence = `classwallet-report:${digest([row["Transaction ID"], row["Order ID"], request.id, programs[0], gross, net, fee, approved])}`;
   return { orderId, gross, approved, updated, now, evidence };
 }
-/** `termStartsAt` is when the learner's current access ends, for a term paid
- * early (`fundedTermStart`); without it the term starts at activation. */
+/** Issued invoice dates are fixed. Legacy activation-based terms may use
+ * `termStartsAt` to follow existing paid access without changing a retry. */
 export function prepareClassWalletProvision(
   row: ClassWalletRow,
   request: FundingRequest,
@@ -203,12 +204,33 @@ export function prepareClassWalletProvision(
   const settled =
     old?.events.find((e) => e.type === "order.settled")?.occurredAt ?? updated;
   const oldCreated = old?.events.find((e) => e.type === "order.created");
+  const invoiceTerm = fundedInvoiceTerm(request);
   const startsAt =
     oldCreated?.type === "order.created"
       ? oldCreated.order.license.startsAt
-      : (termStartsAt ?? activated);
-  if (Date.parse(startsAt) < Date.parse(activated))
+      : (invoiceTerm?.startsAt ?? termStartsAt ?? activated);
+  const endsAt =
+    oldCreated?.type === "order.created"
+      ? oldCreated.order.license.endsAt
+      : (invoiceTerm?.endsAt ??
+        fundedTermEnd(startsAt, request.offer.termMonths));
+  if (
+    invoiceTerm &&
+    (startsAt !== invoiceTerm.startsAt || endsAt !== invoiceTerm.endsAt)
+  )
+    fail("invoice_term_mismatch");
+  if (!invoiceTerm && Date.parse(startsAt) < Date.parse(activated))
     fail("term_starts_before_activation");
+  // Settlement of an elapsed invoice records the purchase as paid without
+  // inventing fresh access or backdating an activation event.
+  const expiredInvoice =
+    invoiceTerm && Date.parse(activated) >= Date.parse(endsAt);
+  const fulfilled =
+    old?.events.find((e) => e.type === "order.fulfilled")?.occurredAt ??
+    activated;
+  const activate = old
+    ? old.events.some((e) => e.type === "license.activated")
+    : !expiredInvoice;
   const envelope = (type: string, occurredAt: string) => ({
     id: `${orderId}:${type}`,
     orderId,
@@ -230,7 +252,7 @@ export function prepareClassWalletProvision(
             learnerId: request.learnerId,
             sku: request.offer.sku,
             startsAt,
-            endsAt: fundedTermEnd(startsAt, request.offer.termMonths),
+            endsAt,
           },
           channel: "esa",
           channelReference: request.offer.channelReference,
@@ -249,15 +271,19 @@ export function prepareClassWalletProvision(
         currency: config.currency,
       },
       {
-        ...envelope("fulfilled", activated),
+        ...envelope("fulfilled", fulfilled),
         type: "order.fulfilled",
         evidence,
       },
-      {
-        ...envelope("activated", activated),
-        type: "license.activated",
-        evidence,
-      },
+      ...(activate
+        ? [
+            {
+              ...envelope("activated", activated),
+              type: "license.activated",
+              evidence,
+            },
+          ]
+        : []),
     ],
   });
 }

@@ -873,14 +873,15 @@ function shotSpans(id: string) {
   return spans;
 }
 
-test("a strike goes through the middle of its line, a little past both ends, and moves nothing", async () => {
+test("a strike crosses out its line with an X over the text, a little past it all round, and moves nothing", async () => {
   type Box = { x: number; y: number; w: number; h: number };
+  type Pt = { x: number; y: number };
   type Shot = {
     error?: string;
     lines: Box[];
-    strokes: { on: boolean; drawn: number; ink: number; paint: string; box: Box; text: Box; board: Box }[];
+    strokes: { on: boolean; drawn: number[]; segs: [Pt, Pt][]; thick: number; ink: number; paint: string[]; box: Box; text: Box; others: Box[]; board: Box }[];
   };
-  /** Every board line's place at `time`, and each stroke with the text it lies over. */
+  /** Every board line's place at `time`, and each X with its two strokes, the text it lies over, and the text of every other line. */
   const shoot = (page: Page, time: number) => page.evaluate((t): Shot => {
     const scrub = document.querySelector<HTMLInputElement>(".live-scrub");
     if (!scrub) return { error: "no scrubber", lines: [], strokes: [] };
@@ -892,20 +893,37 @@ test("a strike goes through the middle of its line, a little past both ends, and
       return { x: l, y: top, w: Math.max(...rs.map((r) => r.right)) - l, h: Math.max(...rs.map((r) => r.bottom)) - top };
     };
     const board = document.querySelector("#film .film-board")!.getBoundingClientRect();
+    /** A line's text: its math's own boxes, or the rows of its words. */
+    const textOf = (line: Element) => {
+      const math = [...line.querySelectorAll(".film-math .katex-html .base")].map((b) => b.getBoundingClientRect());
+      const words = line.querySelector(".film-struck-words") ?? line;
+      return math.length ? union(math) : union([...words.getClientRects()]);
+    };
+    const lines = [...document.querySelectorAll("#film .film-line")];
     return {
       lines: [...document.querySelectorAll("#film .film-line, #film .film-line .film-math")].map((el) => box(el.getBoundingClientRect())),
       strokes: [...document.querySelectorAll<HTMLElement>("#film .film-struck")].map((el) => {
         const line = el.parentElement!;
-        const math = [...line.querySelectorAll(".film-math .katex-html .base")].map((b) => b.getBoundingClientRect());
         const words = line.querySelector(".film-struck-words");
         const ink = line.querySelector<HTMLElement>(".film-math") ?? (words as HTMLElement);
+        const paths = [...el.querySelectorAll<SVGPathElement>("svg > path")];
+        const m = paths[0]!.getScreenCTM()!;
+        // each stroke's two ends, on screen, from its "M x y L x y"
+        const segs = paths.map((p) => {
+          const n = p.getAttribute("d")!.match(/-?[\d.]+/g)!.map(Number);
+          const at = (x: number, y: number) => { const q = new DOMPoint(x, y).matrixTransform(m); return { x: q.x, y: q.y }; };
+          return [at(n[0]!, n[1]!), at(n[2]!, n[3]!)] as [Pt, Pt];
+        });
         return {
           on: getComputedStyle(el).visibility !== "hidden",
-          drawn: new DOMMatrix(getComputedStyle(el).transform).a,
+          drawn: paths.map((p) => 1 - Number(p.getAttribute("stroke-dashoffset"))),
+          segs,
+          thick: Number.parseFloat(getComputedStyle(paths[0]!).strokeWidth) * Math.hypot(m.a, m.b),
           ink: Number.parseFloat(getComputedStyle(ink).opacity),
-          paint: getComputedStyle(el).backgroundColor,
+          paint: paths.map((p) => `${getComputedStyle(p).stroke} ${getComputedStyle(p).strokeLinecap}`),
           box: box(el.getBoundingClientRect()),
-          text: math.length ? union(math) : union([...words!.getClientRects()]),
+          text: textOf(line),
+          others: lines.filter((o) => o !== line && getComputedStyle(o).visibility !== "hidden" && Number(getComputedStyle(o).opacity) > 0).map(textOf).filter((b) => b.w > 0 && b.h > 0),
           board: box(board),
         };
       }),
@@ -921,7 +939,7 @@ test("a strike goes through the middle of its line, a little past both ends, and
     const page = await browser.newPage({ viewport: { width: view.width, height: view.height } });
     try {
       // the same board with no strike on it, after both words
-      const end = STRIKE_CUES[1]! + 0.5;
+      const end = STRIKE_CUES[1]! + 0.7;
       await open(page, PLAIN_FILM_ID, view.layout);
       const plain = await shoot(page, end);
       expect(plain.error, view.layout).toBeUndefined();
@@ -931,39 +949,62 @@ test("a strike goes through the middle of its line, a little past both ends, and
         await page.evaluate((name) => { document.documentElement.dataset.theme = name; }, theme);
         for (const [k, cue] of STRIKE_CUES.entries()) {
           const where = `${view.layout} ${theme} strike ${k + 1}`;
-          const before = await shoot(page, cue - 0.05), part = await shoot(page, cue + 0.12), after = await shoot(page, cue + 0.45);
+          const before = await shoot(page, cue - 0.05), first = await shoot(page, cue + 0.15), second = await shoot(page, cue + 0.45), after = await shoot(page, cue + 0.7);
           expect(after.strokes.length, where).toBe(2);
-          const was = before.strokes[k]!, mid = part.strokes[k]!, now = after.strokes[k]!;
-          // not before its word; afterwards one whole stroke, in ink that shows, over text that has dimmed a little
+          const was = before.strokes[k]!, one = first.strokes[k]!, two = second.strokes[k]!, now = after.strokes[k]!;
+          // not before its word; afterwards a whole X, round-capped in ink that shows, over text that has dimmed a little
           expect(was.on, where).toBe(false);
+          expect(was.drawn, where).toEqual([0, 0]);
           expect(was.ink, where).toBe(1);
           expect(now.on, where).toBe(true);
-          expect(now.drawn, where).toBe(1);
-          expect(now.paint, where).toMatch(/^rgb\(/);
+          expect(now.drawn, where).toEqual([1, 1]);
+          for (const paint of now.paint) expect(paint, where).toMatch(/^rgb\(.*\) round$/);
           expect(now.ink, where).toBeGreaterThan(0.4);
           expect(now.ink, where).toBeLessThan(0.7);
-          // through the vertical middle of the text, the same small distance past it at each end
+          // the first stroke drawn, then the second
+          expect(one.on, where).toBe(true);
+          expect(one.drawn[0]!, where).toBeGreaterThan(0.05);
+          expect(one.drawn[0]!, where).toBeLessThan(0.95);
+          expect(one.drawn[1], where).toBe(0);
+          expect(two.drawn[0], where).toBe(1);
+          expect(two.drawn[1]!, where).toBeGreaterThan(0.05);
+          expect(two.drawn[1]!, where).toBeLessThan(0.95);
+          // over the middle of the text, the same small distance past it on the left and right, a little less above and below
           const past = [now.text.x - now.box.x, now.box.x + now.box.w - (now.text.x + now.text.w)];
+          const over = [now.text.y - now.box.y, now.box.y + now.box.h - (now.text.y + now.text.h)];
+          expect(Math.abs(now.box.x + now.box.w / 2 - (now.text.x + now.text.w / 2)), where).toBeLessThan(0.75);
           expect(Math.abs(now.box.y + now.box.h / 2 - (now.text.y + now.text.h / 2)), where).toBeLessThan(0.75);
           expect(Math.abs(past[0]! - past[1]!), where).toBeLessThan(0.75);
+          expect(Math.abs(over[0]! - over[1]!), where).toBeLessThan(0.75);
           expect(past[0]!, where).toBeGreaterThan(now.text.h * 0.05);
           expect(past[0]!, where).toBeLessThan(now.text.h * 0.4);
-          expect(now.box.h, where).toBeGreaterThan(1.2);
-          expect(now.box.h, where).toBeLessThan(now.text.h * 0.2);
-          // whole inside the board's window
+          expect(over[0]!, where).toBeGreaterThan(0.5);
+          expect(over[0]!, where).toBeLessThan(past[0]!);
+          // two diagonals, corner to corner, their round caps ending at the box's edges: top left to bottom right, then bottom left to top right
+          expect(now.thick, where).toBeGreaterThan(1.2);
+          expect(now.thick, where).toBeLessThan(now.text.h * 0.2);
+          const r = now.thick / 2, L = now.box.x + r, R = now.box.x + now.box.w - r, T = now.box.y + r, B = now.box.y + now.box.h - r;
+          const ends: [Pt, Pt][] = [[{ x: L, y: T }, { x: R, y: B }], [{ x: L, y: B }, { x: R, y: T }]];
+          for (const [i, seg] of now.segs.entries())
+            for (const [j, end] of seg.entries()) {
+              expect(Math.abs(end.x - ends[i]![j]!.x), `${where} stroke ${i + 1} end ${j + 1}`).toBeLessThan(0.75);
+              expect(Math.abs(end.y - ends[i]![j]!.y), `${where} stroke ${i + 1} end ${j + 1}`).toBeLessThan(0.75);
+            }
+          // whole inside the board's window, and clear of every other line's text
           expect(now.box.x, where).toBeGreaterThan(now.board.x);
           expect(now.box.x + now.box.w, where).toBeLessThan(now.board.x + now.board.w);
           expect(now.box.y, where).toBeGreaterThan(now.board.y);
           expect(now.box.y + now.box.h, where).toBeLessThan(now.board.y + now.board.h);
-          // drawn from its left end
-          expect(mid.on, where).toBe(true);
-          expect(Math.abs(mid.box.x - now.box.x), where).toBeLessThan(0.05);
-          expect(mid.box.w, where).toBeGreaterThan(now.box.w * 0.05);
-          expect(mid.box.w, where).toBeLessThan(now.box.w * 0.95);
+          expect(now.others.length, where).toBeGreaterThan(0);
+          for (const o of now.others) {
+            const apart = Math.max(o.y - (now.box.y + now.box.h), now.box.y - (o.y + o.h), o.x - (now.box.x + now.box.w), now.box.x - (o.x + o.w));
+            expect(apart, where).toBeGreaterThan(0);
+          }
           // no line moves or changes size as it is struck
           expect(before.lines.length, where).toBe(after.lines.length);
           expect(shift(before.lines, after.lines), where).toBeLessThan(0.05);
-          expect(shift(before.lines, part.lines), where).toBeLessThan(0.05);
+          expect(shift(before.lines, first.lines), where).toBeLessThan(0.05);
+          expect(shift(before.lines, second.lines), where).toBeLessThan(0.05);
         }
       }
       // and the struck board is the plain board, line for line

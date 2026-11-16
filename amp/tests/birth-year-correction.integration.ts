@@ -176,7 +176,7 @@ test("birth years can be corrected", database, async (t) => {
   );
 
   await t.test(
-    "only the account's own children, and only a school-age year",
+    "only the account's own learners, with exact earlier years and bounded birth years",
     async () => {
       const { account, ids } = await f.family([
         { name: "Cleo", birthYear: 2015 },
@@ -189,7 +189,19 @@ test("birth years can be corrected", database, async (t) => {
         { birthYear: 2014 },
       );
       assert.equal(refused.statusCode, 404, refused.body);
-      for (const birthYear of [year - 30, year, 2016.5])
+      for (const birthYear of [year - 30, 1900, year - 2]) {
+        assert.deepEqual(
+          await f.ok(
+            f.post(`/api/v1/family/learners/${cleo}/birth-year`, account, {
+              birthYear,
+            }),
+          ),
+          { birthYear },
+        );
+        assert.equal((await f.me(account)).learners[0].birthYear, birthYear);
+        assert.equal(await f.rosterGrade(cleo!), gradeOf(birthYear));
+      }
+      for (const birthYear of [1899, year - 1, year, 2016.5])
         assert.equal(
           (
             await f.post(
@@ -205,8 +217,8 @@ test("birth years can be corrected", database, async (t) => {
         );
       assert.equal(
         (await f.me(account)).learners[0].birthYear,
-        2015,
-        "nothing changed",
+        year - 2,
+        "invalid years leave the last exact year unchanged",
       );
       // The adult's own learner has no birth year to correct.
       const own = await f.ok(

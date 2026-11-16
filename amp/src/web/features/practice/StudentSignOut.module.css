@@ -23,6 +23,19 @@
   position: static;
   flex: none;
 }
+.signOut.familyReturn {
+  display: flex;
+  width: auto;
+  gap: var(--space-1);
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-control);
+  font-size: var(--text-table);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.familyReturn svg {
+  width: 16px;
+}
 .signOut svg {
   width: 22px;
   height: 22px;
