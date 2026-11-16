@@ -1,10 +1,10 @@
 // @vitest-environment jsdom
 /**
  * A strike: the screenplay names a board line by its id, the check names a
- * target that is not such a line, and the stroke and the dimmed text are a
- * function of time, so the line is struck after its word and not before,
- * whichever way the film is sought. (Where the stroke lies is measured in a
- * real browser: frame.test.ts.)
+ * target that is not such a line, and the X and the dimmed text are a
+ * function of time, so the line is crossed out after its word and not before,
+ * whichever way the film is sought. (Where the X lies is measured in a real
+ * browser: frame.test.ts.)
  */
 import { describe, expect, it } from "vitest";
 import { Film, STRUCK } from "./stage";
@@ -32,8 +32,8 @@ function film(beats: Beat[]) {
   return { f, root, wordAt };
 }
 const style = (el: Element | null) => (el as HTMLElement).style;
-/** How much of the stroke is drawn, 0 to 1. */
-const drawn = (el: Element | null) => Number(style(el).transform.match(/^scaleX\(([\d.e-]+)\)$/)![1]);
+/** How much of each of the X's two strokes is drawn, 0 to 1, in drawing order. */
+const drawn = (el: Element | null) => [...el!.querySelectorAll("svg > path")].map((p) => 1 - Number(p.getAttribute("stroke-dashoffset")));
 
 describe("a strike in the screenplay", () => {
   it("names one board line, on a word", () => {
@@ -70,22 +70,38 @@ describe("a strike in the screenplay", () => {
 });
 
 describe("a struck line", () => {
-  it("is struck after its word and not before, and its text dims", () => {
+  it("is crossed out after its word and not before: one stroke, then the other, and its text dims", () => {
     const { f, root, wordAt } = film([slip, struck, mended]);
     const cue = wordAt(1, "missing");
     const stroke = root.querySelector(".film-struck"), math = root.querySelector(".film-line.write .film-math");
     expect(stroke?.parentElement?.textContent).toContain("10");
+    // two strokes, each one dash of its whole length, round-capped in the warm ink by the stylesheet
+    const paths = [...stroke!.querySelectorAll("svg > path")];
+    expect(paths.length).toBe(2);
+    for (const p of paths) {
+      expect(p.getAttribute("pathLength")).toBe("1");
+      expect(p.getAttribute("stroke-dasharray")).toBe("1 2");
+    }
     f.seek(cue - 0.05);
     expect(style(stroke).visibility).toBe("hidden");
-    expect(drawn(stroke)).toBeCloseTo(0, 6);
+    expect(drawn(stroke)).toEqual([0, 0]);
     expect(Number(style(math).opacity)).toBe(1);
-    // part of the way along: drawn from the left, the text already dimming
-    f.seek(cue + 0.175);
+    // a quarter of the way: half the first stroke, none of the second, the text already dimming
+    f.seek(cue + 0.15);
     expect(style(stroke).visibility).toBe("inherit");
-    expect(drawn(stroke)).toBeCloseTo(0.5, 6);
+    expect(drawn(stroke)[0]).toBeCloseTo(0.5, 6);
+    expect(drawn(stroke)[1]).toBe(0);
+    expect(Number(style(math).opacity)).toBeLessThan(1);
+    // halfway: the first stroke whole, the second not begun, the text halfway dimmed
+    f.seek(cue + 0.3);
+    expect(drawn(stroke)).toEqual([1, 0]);
     expect(Number(style(math).opacity)).toBeCloseTo((1 + STRUCK) / 2, 5);
-    f.seek(cue + 0.4);
-    expect(drawn(stroke)).toBe(1);
+    // three quarters: half the second stroke
+    f.seek(cue + 0.45);
+    expect(drawn(stroke)[0]).toBe(1);
+    expect(drawn(stroke)[1]).toBeCloseTo(0.5, 6);
+    f.seek(cue + 0.65);
+    expect(drawn(stroke)).toEqual([1, 1]);
     expect(Number(style(math).opacity)).toBe(STRUCK);
     // only the struck line: the mended one keeps its ink and gets no stroke
     const lines = root.querySelectorAll(".film-line.write");
@@ -99,17 +115,18 @@ describe("a struck line", () => {
     const cue = wordAt(1, "missing");
     const stroke = root.querySelector(".film-struck"), math = root.querySelector(".film-line.write .film-math");
     f.seek(f.duration);
-    expect(drawn(stroke)).toBeCloseTo(1, 6);
+    expect(drawn(stroke)).toEqual([1, 1]);
     expect(Number(style(math).opacity)).toBe(STRUCK);
     f.seek(cue - 1);
     expect(style(stroke).visibility).toBe("hidden");
+    expect(drawn(stroke)).toEqual([0, 0]);
     expect(Number(style(math).opacity)).toBe(1);
     f.seek(wordAt(3, "new") + 1);
     expect(style(stroke).visibility).toBe("inherit");
-    expect(drawn(stroke)).toBeCloseTo(1, 6);
+    expect(drawn(stroke)).toEqual([1, 1]);
   });
 
-  it("dims the words of a struck line of text, not the stroke", () => {
+  it("dims the words of a struck line of text, not the X", () => {
     const { f, root, wordAt } = film([
       { say: "Add two sides.", do: [{ do: "text", text: "Add two sides.", id: "note", at: "Add" }] },
       { say: "No, that is wrong.", do: [{ do: "strike", target: "note", at: "wrong" }] },
@@ -118,14 +135,14 @@ describe("a struck line", () => {
     const words = line.querySelector(".film-struck-words"), stroke = line.querySelector(".film-struck");
     expect(words?.textContent).toBe("Add two sides.");
     expect(stroke?.parentElement).toBe(line);
-    f.seek(wordAt(1, "wrong") + 0.4);
+    f.seek(wordAt(1, "wrong") + 0.65);
     expect(Number(style(words).opacity)).toBe(STRUCK);
     expect(style(stroke).opacity).toBe("");
   });
 
-  it("is rendered while the stroke is drawn: those frames are not held copies", () => {
+  it("is rendered while the X is drawn: those frames are not held copies", () => {
     const { f, wordAt } = film([slip, struck, mended]);
     const cue = wordAt(1, "missing");
-    expect(f.moving().some(([a, b]) => a <= cue && b >= cue + 0.35)).toBe(true);
+    expect(f.moving().some(([a, b]) => a <= cue && b >= cue + 0.6)).toBe(true);
   });
 });

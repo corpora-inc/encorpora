@@ -164,7 +164,7 @@ const DEFAULT_DUR: Record<string, number> = {
   partition: 1.5, shade: 1.3,
   arrive: 0.5, count: 0.5, send: 0.9, leave: 0.45,
   problem: 0.45, write: 0.75, text: 0.45, term: 0.45, watch: 0.45, answer: 0.6, clear: 0.4, scene: 0.9,
-  strike: 0.35, header: 0.45,
+  strike: 0.6, header: 0.45,
 };
 
 /** The longest one trade of base-ten blocks may take, when a screenplay asks for a slow one. */
@@ -2971,16 +2971,19 @@ type BoardItem = {
   kind: string; el: HTMLElement; t0: number; dur: number; col: number; shot: number; id?: string;
   top: number; bottom: number; stack?: StackView;
   fly?: { el: HTMLElement; dx: number; dy: number }[]; fresh?: HTMLElement[]; note?: HTMLElement; standalone?: boolean;
-  /** Struck out from t0: the stroke over the line and the text that dims under it (both set when the column is laid out). */
-  struck?: { t0: number; dur: number; shot: number; el?: HTMLElement; ink?: HTMLElement };
+  /** Struck out from t0: the X over the line, its two strokes, and the text that dims under it (all set when the column is laid out). */
+  struck?: { t0: number; dur: number; shot: number; el?: HTMLElement; strokes?: SVGElement[]; ink?: HTMLElement };
 };
 /**
- * A struck line: one stroke through the middle of its text, drawn left to right,
- * reaching STRIKE_PAST of the column's type size past the text at each end and
- * STRIKE_THICK of it thick. The text under it dims to STRUCK. The stroke lies
- * over the line and takes no room, so nothing on the board moves.
+ * A struck line: an X over its text, corner to corner of the text's own box,
+ * reaching STRIKE_PAST of the column's type size past the text at each side and
+ * STRIKE_OVER of it above and below, its strokes STRIKE_THICK of it thick. The
+ * first stroke is drawn from the top left to the bottom right, then the second
+ * from the bottom left to the top right, each over half the strike's time. The
+ * text under it dims to STRUCK. The X lies over the line and takes no room, so
+ * nothing on the board moves.
  */
-export const STRIKE_PAST = 0.12, STRIKE_THICK = 0.065, STRUCK = 0.55;
+export const STRIKE_PAST = 0.12, STRIKE_OVER = 0.08, STRIKE_THICK = 0.065, STRUCK = 0.55;
 /** Board lines a strike can go through: one row of working. A card or a stack is not struck. */
 const STRIKABLE = ["write", "text", "answer"];
 /**
@@ -3473,9 +3476,9 @@ class Board {
       }
   }
   /**
-   * Lay each strike over its line, through the middle of the text and a little
-   * past both ends. Measured once, when the column is laid out, and placed over
-   * the line: it takes no room and never moves.
+   * Lay each strike's X over its line, over the text's own box and a little
+   * past it on every side. Measured once, when the column is laid out, and
+   * placed over the line: it takes no room and never moves.
    */
   strikes(ci: number, its: BoardItem[]) {
     const type = parseFloat(this.cols[ci]!.style.getPropertyValue("--film-math")) || 84;
@@ -3497,7 +3500,7 @@ class Board {
       const rows = new Set(boxes.map((b) => Math.round((b.top + b.bottom) / type)));
       const broken = math ? ink.dataset.split === "1" || (/\\\\|\\begin\{/.test(ink.dataset.tex ?? "") && ink.dataset.flow !== "1") : rows.size > 1;
       if (broken) {
-        this.issues.push(`Shot ${s.shot + 1}: strike of "${it.id}", but that line takes more than one row. A strike is one stroke through one row: shorten the line.`);
+        this.issues.push(`Shot ${s.shot + 1}: strike of "${it.id}", but that line takes more than one row. A strike is one X over one row: shorten the line.`);
         delete it.struck;
         continue;
       }
@@ -3506,10 +3509,30 @@ class Board {
       const k = it.el.offsetWidth && host.width ? host.width / it.el.offsetWidth : 1;
       const l = Math.min(...boxes.map((b) => b.left)), r = Math.max(...boxes.map((b) => b.right));
       const top = Math.min(...boxes.map((b) => b.top)), bottom = Math.max(...boxes.map((b) => b.bottom));
-      const thick = Math.max(4, Math.round(type * STRIKE_THICK)), past = type * STRIKE_PAST;
+      const thick = Math.max(4, Math.round(type * STRIKE_THICK)), past = type * STRIKE_PAST, over = type * STRIKE_OVER;
       const el = div("film-struck", it.el);
-      if (boxes.length)
-        el.style.cssText = `left:${((l - host.left) / k - it.el.clientLeft - past).toFixed(2)}px;top:${(((top + bottom) / 2 - host.top) / k - it.el.clientTop - thick / 2).toFixed(2)}px;width:${((r - l) / k + 2 * past).toFixed(2)}px;height:${thick}px`;
+      const x = svg("svg");
+      x.setAttribute("aria-hidden", "true");
+      el.append(x);
+      // the first stroke top left to bottom right, the second bottom left to top right; each a dash of the stroke's whole length, drawn by its offset
+      s.strokes = [0, 1].map(() => {
+        const p = svg("path");
+        p.setAttribute("pathLength", "1");
+        p.setAttribute("stroke-dasharray", "1 2");
+        p.setAttribute("stroke-dashoffset", "1");
+        p.setAttribute("stroke-width", String(thick));
+        x.append(p);
+        return p;
+      });
+      if (boxes.length) {
+        const w = (r - l) / k + 2 * past, h = (bottom - top) / k + 2 * over;
+        el.style.cssText = `left:${((l - host.left) / k - it.el.clientLeft - past).toFixed(2)}px;top:${((top - host.top) / k - it.el.clientTop - over).toFixed(2)}px;width:${w.toFixed(2)}px;height:${h.toFixed(2)}px`;
+        x.setAttribute("viewBox", `0 0 ${w.toFixed(2)} ${h.toFixed(2)}`);
+        // the round caps end at the box's edges
+        const a = thick / 2, x0 = a.toFixed(2), y0 = a.toFixed(2), x1 = (w - a).toFixed(2), y1 = (h - a).toFixed(2);
+        s.strokes[0]!.setAttribute("d", `M${x0} ${y0}L${x1} ${y1}`);
+        s.strokes[1]!.setAttribute("d", `M${x0} ${y1}L${x1} ${y0}`);
+      }
       s.el = el; s.ink = ink;
     }
   }
@@ -3867,11 +3890,11 @@ class Board {
       }
       it.el.style.opacity = String((it.fly || it.fresh ? 1 : u) * dim);
       if (it.struck?.el) {
-        // drawn left to right from its word, then held: the state at t, whichever way the film was sought
-        const k = ease((t - it.struck.t0) / it.struck.dur);
-        it.struck.el.style.transform = `scaleX(${k})`;
-        it.struck.el.style.visibility = k > 0 ? "inherit" : "hidden";
-        it.struck.ink!.style.opacity = String(lerp(1, STRUCK, k));
+        // the X from its word: one stroke over the first half of the strike, the other over the second, then held; the state at t, whichever way the film was sought
+        const u = clamp((t - it.struck.t0) / it.struck.dur);
+        it.struck.strokes!.forEach((p, i) => p.setAttribute("stroke-dashoffset", String(1 - ease(2 * u - i))));
+        it.struck.el.style.visibility = u > 0 ? "inherit" : "hidden";
+        it.struck.ink!.style.opacity = String(lerp(1, STRUCK, ease(u)));
       }
       if (it.stack) drawStack(it.stack, it.t0, t);
     }

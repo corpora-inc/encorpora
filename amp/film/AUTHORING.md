@@ -142,7 +142,7 @@ All writing goes on one whiteboard for the whole lesson. Each line is written un
 | `{"do":"text","text":"... $math$ ...","tone":"muted"}` | A short line of words. |
 | `{"do":"term","word":"...","meaning":"..."}` | A new word, defined in one or two plain sentences. |
 | `{"do":"watch","text":"..."}` | The most common mistake, said as what to do instead. |
-| `{"do":"strike","target":"slip","at":"missing"}` | Strike out a line already on the board, named by its `"id"`: on the cue word one stroke is drawn through it and its text dims. It stays struck. |
+| `{"do":"strike","target":"slip","at":"missing"}` | Strike out a line already on the board, named by its `"id"`: on the cue word it is crossed out with an X, one stroke and then the other, and its text dims. It stays struck. |
 | `{"do":"header","tex":"y-y_1=m(x-x_1)","label":"Point-slope form"}` | Pin a formula (or `text`, a few words) at the top of the board, under a fine-print name. It stays while the work under it is written and cleared. See "A header". |
 | `{"do":"clear"}` | Start a new column on the board: a new example. The old column stays for the overview. |
 | `{"do":"overview"}` | Pull back to show the current example whole, from problem to answer. `"of":"g1"` shows the column holding line `g1` (recap the first full example after quick ones). `"columns":"all"` shows every column. |
@@ -150,7 +150,7 @@ All writing goes on one whiteboard for the whole lesson. Each line is written un
 
 Give board lines an `"id"` when a recap step will point at them. Keep the recap short: three or four steps of a line or two each. On the 16:9 film the card is as tall as its steps, and `--dry` reports a card taller than the frame ("The recap card is taller than the frame"), because its top and bottom would be cut off.
 
-`strike` marks a line as wrong after it has been written and talked about: a learner writes a slip, the teacher questions it, and the line is struck before the mended line goes under it. The target is a `write`, `text` or `answer` of the column being written, one row long; the stroke takes no room, so nothing moves. `--dry` names a target that is not such a line, and the board's arithmetic check skips a struck line (it is wrong on purpose).
+`strike` marks a line as wrong after it has been written and talked about: a learner writes a slip, the teacher questions it, and the line is struck before the mended line goes under it. The target is a `write`, `text` or `answer` of the column being written, one row long; the X takes no room, so nothing moves. `--dry` names a target that is not such a line, and the board's arithmetic check skips a struck line (it is wrong on purpose).
 
 ```json
 { "say": "Four plus four plus two is ten.", "speaker": "learner", "do": [ { "do": "write", "tex": "4+4+2=10", "id": "slip", "at": "Four" } ] },
