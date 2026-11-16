@@ -405,7 +405,10 @@ export async function applySnapshot(
       scope_id: scope,
       person_id: person,
       role,
+      // A hand-granted admin role is never adopted: a school founder keeps
+      // the school they created when Clever later demotes or unshares them.
       adopted:
+        !(kind === "org_role" && role === "admin") &&
         adoptedPeople.has(person) &&
         (kind === "enrollment"
           ? adoptedClasses.has(scope)
@@ -420,10 +423,7 @@ export async function applySnapshot(
     // tech leads). PortalOnly marks staff a district grants Clever Portal
     // access only, so they receive no school authority in AMP.
     // https://dev.clever.com/docs/api-v3-upgrade-guide
-    if (
-      role === "staff" &&
-      user.roles.staff?.roles?.includes("PortalOnly")
-    )
+    if (role === "staff" && user.roles.staff?.roles?.includes("PortalOnly"))
       return;
     for (const sourceId of new Set([
       ...(profile.schools ?? []),
