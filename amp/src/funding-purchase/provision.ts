@@ -20,28 +20,13 @@ import {
   type FundingOffer,
   FundingPurchaseError,
 } from "./contracts.js";
+import { fundedInvoiceTerm, fundedTermEnd } from "./term.js";
+import { fundingOfferMatchesSnapshot } from "./offer-terms.js";
+export { fundedTermEnd, annualTermEnd } from "./term.js";
 export const fundedProvisionSchema = z.strictObject({
   requestId: z.string().uuid(),
   events: z.array(commerceEventSchema).min(4).max(5),
 });
-/** A funded term's end: the same day and time `months` calendar months
- * later, clamped to that month's last day (January 31 + 1 month is February
- * 28; February 29 + 12 months is February 28). */
-export function fundedTermEnd(start: string, months: 1 | 12): string {
-  const date = new Date(start),
-    index = date.getUTCMonth() + months,
-    year = date.getUTCFullYear() + Math.floor(index / 12),
-    month = index % 12;
-  const day = Math.min(
-    date.getUTCDate(),
-    new Date(Date.UTC(year, month + 1, 0)).getUTCDate(),
-  );
-  date.setUTCFullYear(year, month, day);
-  return date.toISOString();
-}
-/** Twelve calendar months; leap-day terms end on the last day of February. */
-export const annualTermEnd = (start: string) => fundedTermEnd(start, 12);
-
 /** How far ahead a term paid early may be scheduled. Further than this, the
  * learner's existing access is something an operator reconciles first. */
 const EARLY_RENEWAL_LIMIT_MS = 366 * 86_400_000;
@@ -110,6 +95,7 @@ export async function provisionFundingRequest(
   if (created?.type !== "order.created")
     throw new FundingPurchaseError(400, "creation_event_required");
   const activation = data.events.find((e) => e.type === "license.activated");
+  const fulfillment = data.events.find((e) => e.type === "order.fulfilled");
   const allowed = new Set([
     "order.created",
     "order.approved",
@@ -118,8 +104,7 @@ export async function provisionFundingRequest(
     "license.activated",
   ]);
   if (
-    !activation ||
-    !data.events.some((e) => e.type === "order.fulfilled") ||
+    !fulfillment ||
     new Set(data.events.map((e) => e.type)).size !== data.events.length ||
     data.events.some(
       (e) =>
@@ -134,10 +119,7 @@ export async function provisionFundingRequest(
       "complete_provisioning_events_required",
     );
   const term = created.order.license;
-  // A term starts at activation, or later when it follows access the learner
-  // already has (checked against that access below).
-  if (Date.parse(term.startsAt) < Date.parse(activation.occurredAt))
-    throw new FundingPurchaseError(400, "funded_activation_term_required");
+  const provisionedAt = activation?.occurredAt ?? fulfillment.occurredAt;
   const repository = new FundingPurchaseRepository(pool, []);
   return repository.transaction(
     created.order.account.id,
@@ -177,6 +159,37 @@ export async function provisionFundingRequest(
           throw new FundingPurchaseError(409, "provisioning_payload_mismatch");
         return { requestId: request.id, orderId: request.orderId };
       }
+      const invoiceTerm = fundedInvoiceTerm(request);
+      if (invoiceTerm) {
+        if (
+          term.startsAt !== invoiceTerm.startsAt ||
+          term.endsAt !== invoiceTerm.endsAt
+        )
+          throw new FundingPurchaseError(400, "funded_invoice_term_required");
+        // An expired paid invoice is a financial record, with no new grant.
+        // A current invoice activates only within its printed service period.
+        if (
+          activation
+            ? Date.parse(activation.occurredAt) < Date.parse(term.startsAt) ||
+              Date.parse(activation.occurredAt) >= Date.parse(term.endsAt)
+            : Date.parse(fulfillment.occurredAt) < Date.parse(term.endsAt)
+        )
+          throw new FundingPurchaseError(
+            400,
+            "funded_activation_term_required",
+          );
+      } else {
+        if (!activation)
+          throw new FundingPurchaseError(
+            400,
+            "complete_provisioning_events_required",
+          );
+        if (Date.parse(term.startsAt) < Date.parse(activation.occurredAt))
+          throw new FundingPurchaseError(
+            400,
+            "funded_activation_term_required",
+          );
+      }
       // A verified in-window settlement remains payable while consent is
       // pending. Require the persisted operator import and its exact conversion;
       // caller-supplied event timestamps alone cannot waive an expired quote.
@@ -195,7 +208,7 @@ export async function provisionFundingRequest(
                 payment.payment_row,
                 request,
                 payment.verified_config,
-                activation.occurredAt,
+                provisionedAt,
                 undefined,
                 term.startsAt,
               ),
@@ -205,16 +218,8 @@ export async function provisionFundingRequest(
       const live = availableOffers(
         offers,
         timelySettlement ? new Date(settlementAt!) : new Date(),
-      ).find(
-        (o) =>
-          o.id === request.offer.id && o.revision === request.offer.revision,
-      );
-      if (
-        !live ||
-        canonicalCommercePayload(live) !==
-          canonicalCommercePayload(request.offer)
-      )
-        throw new FundingPurchaseError(409, "offer_unavailable");
+      ).find((o) => fundingOfferMatchesSnapshot(o, request.offer));
+      if (!live) throw new FundingPurchaseError(409, "offer_unavailable");
       if (
         term.endsAt !== fundedTermEnd(term.startsAt, request.offer.termMonths)
       )
@@ -261,7 +266,7 @@ export async function provisionFundingRequest(
       // the live resolver below still rejects any overlapping replacement.
       // Complete saved provider payloads also preserve pre-migration schedules.
       const savedSchedule =
-        (row.scheduled_term?.activatedAt === activation.occurredAt &&
+        (row.scheduled_term?.activatedAt === provisionedAt &&
           row.scheduled_term?.startsAt === term.startsAt) ||
         (checkout?.provisioning_payload != null &&
           canonicalCommercePayload(checkout.provisioning_payload) ===
@@ -298,20 +303,29 @@ export async function provisionFundingRequest(
               g.starts_at.getTime() < start,
           );
       if (
-        order.license.startsAt !== activation.occurredAt &&
-        (start - Date.parse(activation.occurredAt) > EARLY_RENEWAL_LIMIT_MS ||
+        !invoiceTerm &&
+        order.license.startsAt !== provisionedAt &&
+        (start - Date.parse(provisionedAt) > EARLY_RENEWAL_LIMIT_MS ||
           !followed)
       )
         throw new FundingPurchaseError(409, "funded_term_start_unsupported");
-      // Replace only this learner's unpaid bridge. Validation and replacement
-      // share the transaction, so a rejected payment cannot revoke access.
+      // Current paid access replaces this learner's unpaid bridges. An expired
+      // invoice settles only its own bridge: a newer invoice may cover today.
+      // Validation and replacement share the transaction.
+      const expiredInvoiceId = invoiceTerm && !activation ? request.id : null;
       await client.query(
-        "UPDATE amp_grants SET status='revoked' WHERE learner_id=$1 AND id LIKE 'funded-pending:%'",
-        [request.learnerId],
+        `UPDATE amp_grants SET status='revoked'
+         WHERE learner_id=$1 AND id LIKE 'funded-pending:%'
+           AND ($2::text IS NULL OR id IN (
+             SELECT grant_id FROM amp_access_gifts WHERE funding_invoice_id=$2
+           ))`,
+        [request.learnerId, expiredInvoiceId],
       );
       await client.query(
-        "UPDATE amp_access_gifts SET revoked_at=COALESCE(revoked_at,now()) WHERE learner_id=$1 AND source='funded-pending'",
-        [request.learnerId],
+        `UPDATE amp_access_gifts SET revoked_at=COALESCE(revoked_at,now())
+         WHERE learner_id=$1 AND source='funded-pending'
+           AND ($2::text IS NULL OR funding_invoice_id=$2)`,
+        [request.learnerId, expiredInvoiceId],
       );
       // The exclusive account lock is acquired before request/order/learner locks.
       // It serializes this bounded operator import with other grant and privacy writers.
@@ -324,7 +338,7 @@ export async function provisionFundingRequest(
           g.starts_at.getTime() < Date.parse(order.license.endsAt) &&
           g.ends_at.getTime() > Date.parse(order.license.startsAt),
       );
-      if (overlap)
+      if (overlap && !invoiceTerm)
         throw new FundingPurchaseError(409, "overlapping_learning_access");
       for (const event of data.events)
         await applyCommerceEventInTransaction(client, event);
@@ -332,10 +346,11 @@ export async function provisionFundingRequest(
         "UPDATE amp_funding_requests SET order_id=$2,conversion_payload=$3 WHERE id=$1",
         [request.id, order.id, JSON.stringify(data)],
       );
-      await client.query(
-        "INSERT INTO amp_funded_activation_outbox(request_id) VALUES($1) ON CONFLICT DO NOTHING",
-        [request.id],
-      );
+      if (activation)
+        await client.query(
+          "INSERT INTO amp_funded_activation_outbox(request_id) VALUES($1) ON CONFLICT DO NOTHING",
+          [request.id],
+        );
       for (const event of data.events)
         await recordFundedCampaignEvent(client, event);
       return { requestId: request.id, orderId: order.id };

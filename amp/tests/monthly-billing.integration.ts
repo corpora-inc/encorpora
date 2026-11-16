@@ -49,7 +49,7 @@ test(
         "INSERT INTO amp_learners(id,account_id,name) VALUES('child','parent','Synthetic learner')",
       );
       await pool.query(
-        "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES('parent',$1,'fixture','synthetic')",
+        "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES('parent',$1,'fixture','synthetic'),('stranger',$1,'fixture','synthetic')",
         [settings.consentPolicyVersion],
       );
       const repository = new StripeRepository(pool, settings);
@@ -75,36 +75,92 @@ test(
           ],
         },
       });
+      const sessions = new Map<
+        string,
+        { status: "open" | "expired"; interval: "month" | "year" }
+      >();
+      const expired: string[] = [];
       const gateway = new StripeGateway(settings, {
         subscriptions: { retrieve: async () => subscription() },
+        checkout: {
+          sessions: {
+            expire: async (id: string) => {
+              const session = sessions.get(id);
+              assert.equal(session?.status, "open");
+              session!.status = "expired";
+              expired.push(id);
+              return {
+                id,
+                livemode: false,
+                status: "expired",
+                subscription: null,
+              };
+            },
+          },
+        },
       } as unknown as Stripe);
       gateway.verifyCatalog = async () => {};
       gateway.verifyMerchant = async () => {};
       gateway.createCustomer = async () => payment.customerId;
       gateway.createCheckout = async (id, _customer, interval) => {
-        assert.equal(interval, "month");
+        assert.ok(interval, "checkout creation carries the selected interval");
         checkoutId = id;
+        const sessionId = `cs_${interval}_${id}`;
+        sessions.set(sessionId, { status: "open", interval });
         return {
-          id: `cs_monthly_${id}`,
+          id: sessionId,
           url: "https://checkout.stripe.com/fixture",
         };
       };
-      gateway.checkoutStatus = async () => ({
-        status: "open",
+      gateway.checkoutStatus = async (id) => ({
+        status: sessions.get(id)!.status,
         url: "https://checkout.stripe.com/fixture",
       });
       const billing = new StripeBilling(repository, gateway);
       const requestId = randomUUID();
       await billing.checkout("parent", "child", requestId, "month");
+      const firstMonthly = checkoutId;
       assert.equal((await repository.binding(checkoutId)).interval, "month");
       await assert.rejects(
         billing.checkout("parent", "child", requestId, "year"),
         /checkout_request_conflict/,
       );
       await assert.rejects(
-        billing.checkout("parent", "child", randomUUID(), "year"),
-        /checkout_plan_conflict/,
+        billing.checkout("stranger", "child", randomUUID(), "year"),
+        /learner_not_found/,
       );
+      assert.deepEqual(
+        expired,
+        [],
+        "a conflicting request or another account cannot expire the checkout",
+      );
+      assert.equal(sessions.size, 1);
+      await billing.checkout("parent", "child", randomUUID(), "year");
+      const annual = checkoutId;
+      assert.notEqual(annual, firstMonthly);
+      assert.equal((await repository.binding(annual)).interval, "year");
+      assert.deepEqual(expired, [`cs_month_${firstMonthly}`]);
+      // Return to monthly for the settlement lifecycle below. Each change
+      // expires the abandoned provider session before replacing its plan.
+      await billing.checkout("parent", "child", randomUUID(), "month");
+      assert.notEqual(checkoutId, firstMonthly);
+      assert.notEqual(checkoutId, annual);
+      assert.deepEqual(expired, [
+        `cs_month_${firstMonthly}`,
+        `cs_year_${annual}`,
+      ]);
+      assert.equal(sessions.size, 3);
+      const open = await pool.query(
+        "SELECT id,account_id,learner_id,billing_interval FROM amp_stripe_checkouts WHERE NOT closed",
+      );
+      assert.deepEqual(open.rows, [
+        {
+          id: checkoutId,
+          account_id: "parent",
+          learner_id: "child",
+          billing_interval: "month",
+        },
+      ]);
       await assert.rejects(
         pool.query("UPDATE amp_stripe_checkouts SET billing_interval='year'"),
         /immutable/,
@@ -317,8 +373,12 @@ test(
         payment.subscriptionId,
       );
       assert.equal(
-        (await pool.query("SELECT closed FROM amp_stripe_checkouts")).rows[0]
-          .closed,
+        (
+          await pool.query(
+            "SELECT closed FROM amp_stripe_checkouts WHERE id=$1",
+            [checkoutId],
+          )
+        ).rows[0].closed,
         true,
       );
       const replacement = await repository.reserve(

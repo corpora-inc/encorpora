@@ -1,10 +1,16 @@
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type FormEvent,
+  type ReactNode,
+} from "react";
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { RootLink } from "../../nav/root";
-import { Link, useLocation } from "@tanstack/react-router";
+import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { z } from "zod";
 import type { AuthSession } from "../../auth";
-import { FundingInvoices, fundingRecordsKey } from "./FundingInvoices";
+import { fundingRecordsKey } from "./records";
 import { request } from "../../lib/api";
 import { analyticsVisitorHeaders } from "../../lib/analytics";
 import { recordPurchaseAction } from "../../lib/purchase-analytics";
@@ -20,21 +26,25 @@ import { LoadingScreen, RouteError } from "../../ui/LoadingScreen";
 import { SelectField } from "../../ui/SelectField";
 import { Segmented } from "../../ui/Segmented";
 import { TextField } from "../../ui/TextField";
-import { invoiceOfferSchema } from "./invoice-offers";
+import {
+  invoiceResumeOptions,
+  InvoiceUnavailableError,
+  purchaseOfferSchema,
+  type PurchaseOffer as Offer,
+  type InvoiceResult,
+  type ResumedInvoice,
+} from "./invoice-resume";
+export { purchaseOfferSchema } from "./invoice-resume";
 import { invoiceBlobUrl, invoiceDocumentSchema } from "./invoice-document";
 import { fundingReturn } from "./setup";
+import {
+  PaymentMethodChoice,
+  paymentMethodHref,
+  type PaymentInterval,
+} from "../billing/PaymentMethodChoice";
 import { InvoicePractice } from "./InvoicePractice";
 import styles from "./FundedPurchasePage.module.css";
 
-export const purchaseOfferSchema = invoiceOfferSchema.extend({
-  programId: z.string(),
-  jurisdiction: z.string(),
-  productDescription: z.string(),
-  taxMinor: z.number(),
-  destinationUrl: z.string().url(),
-  merchant: z.object({ supportEmail: z.string().email() }),
-});
-type Offer = z.infer<typeof purchaseOfferSchema>;
 const offerOptions = {
   queryKey: ["public-funding-purchase-offers"],
   queryFn: ({ signal }: { signal: AbortSignal }) =>
@@ -107,12 +117,25 @@ function AccountPurchase({ session }: { session: AuthSession }) {
 function PurchasePage(account: Account) {
   const offers = useQuery(offerOptions);
   const location = useLocation();
-  const [createdId, setCreatedId] = useState<string>();
+  const navigate = useNavigate();
   const search = location.search as {
     offer?: string;
     program?: string;
     learner?: string;
+    invoice?: string;
+    interval?: PaymentInterval;
   };
+  const setInvoice = (invoice?: string, learner?: string) =>
+    void navigate({
+      to: "/$",
+      params: { _splat: "purchase/funded" },
+      replace: true,
+      search: (previous) => ({
+        ...previous,
+        invoice,
+        ...(learner ? { learner } : {}),
+      }),
+    });
   return (
     <main className={styles.page}>
       {account.session ? (
@@ -122,13 +145,25 @@ function PurchasePage(account: Account) {
       ) : (
         <RootLink className={styles.back}>Back to AMP</RootLink>
       )}
-      <header className={styles.heading}>
+      <div className={styles.heading}>
         <h1>Pay with education funds</h1>
-      </header>
-      {account.session && account.verified && (
-        <FundingInvoices session={account.session} exclude={createdId} />
-      )}
-      {offers.isPending ? (
+      </div>
+      {search.invoice ? (
+        <ResumeInvoice
+          key={`${account.session?.accountId ?? "guest"}:${search.invoice}`}
+          account={account}
+          invoiceId={search.invoice}
+          preferredLearner={search.learner}
+          onClear={() => setInvoice()}
+        />
+      ) : account.session &&
+        search.learner &&
+        !account.learners.some((learner) => learner.id === search.learner) ? (
+        <p role="alert">
+          This learner isn’t available in your account. Open Billing to choose a
+          learner.
+        </p>
+      ) : offers.isPending ? (
         <Loading>Loading programs and plans</Loading>
       ) : offers.error ? (
         <div role="alert">
@@ -153,8 +188,26 @@ function PurchasePage(account: Account) {
           preferredOffer={search.offer}
           preferredProgram={search.program}
           preferredLearner={search.learner}
-          onCreated={(id) => {
-            setCreatedId(id);
+          preferredInterval={search.interval}
+          paymentMethods={({ learnerId, interval, busy }) => (
+            <PaymentMethodChoice
+              value="education-funds"
+              disabled={busy}
+              onChange={(method) => {
+                if (method === "card")
+                  void navigate({
+                    href: paymentMethodHref(method, interval, learnerId),
+                  });
+              }}
+            />
+          )}
+          onSelectionChange={({ learnerId, interval, offerId }) => {
+            const query = new URLSearchParams({ interval });
+            if (learnerId) query.set("learner", learnerId);
+            if (offerId) query.set("offer", offerId);
+            void navigate({ href: `/purchase/funded?${query}`, replace: true });
+          }}
+          onCreated={(id, learner) => {
             if (account.session) {
               void queryClient.invalidateQueries({
                 queryKey: [
@@ -170,6 +223,7 @@ function PurchasePage(account: Account) {
                   "invoice-intents",
                 ],
               });
+              if (account.verified) setInvoice(id, learner);
             }
           }}
         />
@@ -181,23 +235,127 @@ function PurchasePage(account: Account) {
   );
 }
 
+function ResumeInvoice({
+  account,
+  invoiceId,
+  preferredLearner,
+  onClear,
+}: {
+  account: Account;
+  invoiceId: string;
+  preferredLearner?: string;
+  onClear: () => void;
+}) {
+  const session = account.session;
+  const restored = useQuery({
+    ...invoiceResumeOptions(
+      session ?? ({ accountId: "", token: "" } as AuthSession),
+      invoiceId,
+    ),
+    enabled: !!session && !!account.verified,
+  });
+  if (!session || !account.verified)
+    return (
+      <section>
+        <p>Sign in with the email used for this invoice to open it.</p>
+        <Link
+          to={session ? "/start/verify-email" : "/sign-in"}
+          search={{
+            next: `/purchase/funded?invoice=${encodeURIComponent(invoiceId)}`,
+          }}
+          className={buttonClass("primary")}
+        >
+          {session ? "Confirm email" : "Sign in"}
+        </Link>
+      </section>
+    );
+  if (restored.error)
+    return (
+      <section>
+        <p role="alert">{restored.error.message}</p>
+        {!(restored.error instanceof InvoiceUnavailableError) && (
+          <Button variant="secondary" onClick={() => void restored.refetch()}>
+            Try again
+          </Button>
+        )}
+      </section>
+    );
+  if (!restored.data) return <Loading>Opening your invoice</Loading>;
+  const saved = restored.data;
+  const learner = saved.record?.learnerId ?? preferredLearner;
+  // Claimed invoices always use their recorded learner, regardless of URL filters.
+  if (saved.record && !account.learners.some((child) => child.id === learner))
+    return (
+      <p role="alert">
+        This invoice’s learner is no longer available. Open Billing to view the
+        record.
+      </p>
+    );
+  if (
+    !saved.record &&
+    learner &&
+    !account.learners.some((child) => child.id === learner)
+  )
+    return (
+      <p role="alert">
+        This learner isn’t available to this account. Open Billing to connect
+        your invoice.
+      </p>
+    );
+  return (
+    <InvoiceComposer
+      key={invoiceId}
+      offers={[saved.invoice.offer]}
+      account={account}
+      preferredLearner={learner}
+      preferredOffer={saved.invoice.offer.id}
+      resumed={saved}
+      onCreated={() => {}}
+      onClear={onClear}
+    />
+  );
+}
+
 export function InvoiceComposer({
   offers,
   account,
   preferredOffer,
   preferredProgram,
   preferredLearner,
+  preferredInterval,
+  paymentMethods,
+  onSelectionChange,
   onCreated,
+  onClear,
+  resumed,
 }: {
   offers: readonly Offer[];
   account: Account;
   preferredOffer?: string;
   preferredProgram?: string;
   preferredLearner?: string;
-  onCreated: (id: string) => void;
+  preferredInterval?: PaymentInterval;
+  paymentMethods?: (selection: {
+    learnerId: string;
+    interval: PaymentInterval;
+    busy: boolean;
+  }) => ReactNode;
+  onSelectionChange?: (selection: {
+    learnerId: string;
+    interval: PaymentInterval;
+    offerId?: string;
+  }) => void;
+  onCreated: (id: string, learner?: string) => void;
+  onClear?: () => void;
+  resumed?: ResumedInvoice;
 }) {
   const initial =
     offers.find((o) => o.id === preferredOffer) ??
+    offers.find(
+      (o) =>
+        o.programId === preferredProgram &&
+        o.termMonths === (preferredInterval === "month" ? 1 : 12),
+    ) ??
     offers.find((o) => o.programId === preferredProgram);
   const [program, setProgram] = useState(initial ? programKey(initial) : "");
   const [offerId, setOfferId] = useState(initial?.id ?? "");
@@ -205,27 +363,55 @@ export function InvoiceComposer({
   const childChoices = account.learners.filter(
     (l) => l.id !== account.ownLearnerId,
   );
-  const [learnerId, setLearnerId] = useState(
-    preferredLearner ?? childChoices[0]?.id ?? account.ownLearnerId ?? "",
+  const initialLearner =
+    account.learners.find((learner) => learner.id === preferredLearner) ??
+    (resumed
+      ? undefined
+      : (childChoices[0] ??
+        account.learners.find(
+          (learner) => learner.id === account.ownLearnerId,
+        )));
+  const [learnerId, setLearnerId] = useState(initialLearner?.id ?? "");
+  const [access, setAccess] = useState<
+    { endsAt?: string; ready: boolean } | undefined
+  >(() =>
+    resumed?.record
+      ? {
+          ready:
+            resumed.record.accessStatus === "active" ||
+            resumed.record.fundedPending?.status === "funded-pending",
+          endsAt:
+            resumed.record.fundedPending?.status === "funded-pending"
+              ? resumed.record.fundedPending.endsAt
+              : resumed.record.commerce?.endsAt,
+        }
+      : undefined,
   );
-  const [access, setAccess] = useState<{ endsAt?: string; ready: boolean }>();
   const [accessError, setAccessError] = useState("");
+  const [submitted, setSubmitted] = useState(
+    resumed?.record?.status === "parent-reported-submitted",
+  );
+  const paid = resumed?.record?.paymentStatus === "settled";
+  const [submitting, setSubmitting] = useState(false);
+  const [submissionError, setSubmissionError] = useState("");
   const [student, setStudent] = useState(() => {
-    const child =
-      account.learners.find((entry) => entry.id === preferredLearner) ??
-      (childChoices.length === 1 ? childChoices[0] : undefined);
+    const child = initialLearner;
     return child && child.name !== "Me" && !/^Child \d+$/.test(child.name)
       ? child.name
       : "";
   });
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
-  const [result, setResult] = useState<{
-    document: z.infer<typeof invoiceDocumentSchema>;
-    offer: Offer;
-    name: string;
-    email: string;
-  }>();
+  const [result, setResult] = useState<InvoiceResult | undefined>(() =>
+    resumed
+      ? {
+          document: resumed.document,
+          offer: resumed.invoice.offer,
+          name: resumed.invoice.studentBillingName,
+          email: account.email ?? "",
+        }
+      : undefined,
+  );
   const [pdfUrl, setPdfUrl] = useState("");
   const heading = useRef<HTMLHeadingElement>(null);
   const retry = useRef<{ payload: string; key: string } | undefined>(undefined);
@@ -237,7 +423,67 @@ export function InvoiceComposer({
     .filter((o) => programKey(o) === program)
     .sort((a, b) => (b.termMonths ?? 12) - (a.termMonths ?? 12));
   const offer = plans.find((o) => o.id === offerId);
+  const selectedLearner = account.learners.find(
+    (learner) => learner.id === learnerId,
+  );
+  const emailDelivery = useQuery({
+    queryKey: [
+      "account",
+      account.session?.accountId,
+      "invoice-email-status",
+      result?.document.invoiceId,
+    ],
+    enabled: !!result && !!account.session && !!account.verified,
+    queryFn: async ({ signal }) => {
+      const response = await request(
+        "/funding/invoices",
+        z.object({
+          invoices: z.array(
+            z.object({
+              id: z.string(),
+              emailStatus: z.enum(["queued", "sent", "failed"]).optional(),
+            }),
+          ),
+        }),
+        { token: account.session!.token, signal },
+      );
+      return (
+        response.invoices.find(
+          (invoice) => invoice.id === result!.document.invoiceId,
+        )?.emailStatus ?? null
+      );
+    },
+    refetchInterval: (query) =>
+      query.state.data === undefined || query.state.data === "queued"
+        ? 3000
+        : false,
+  });
   useEffect(() => () => requestController.current?.abort(), []);
+  useEffect(() => {
+    const record = resumed?.record;
+    if (!record) return;
+    setLearnerId(record.learnerId);
+    setSubmitted(record.status === "parent-reported-submitted");
+    setAccess({
+      ready:
+        record.accessStatus === "active" ||
+        record.fundedPending?.status === "funded-pending",
+      endsAt:
+        record.fundedPending?.status === "funded-pending"
+          ? record.fundedPending.endsAt
+          : record.commerce?.endsAt,
+    });
+  }, [resumed?.record]);
+  useEffect(() => {
+    if (!resumed || resumed.record || !learnerId || !account.verified) return;
+    const controller = new AbortController();
+    requestController.current = controller;
+    setBusy(true);
+    void startAccess(resumed.invoice.id, controller.signal).finally(() => {
+      if (!controller.signal.aborted) setBusy(false);
+    });
+    return () => controller.abort();
+  }, [resumed, learnerId]);
   useEffect(() => {
     if (!result) return;
     const url = invoiceBlobUrl(result.document.pdfBase64);
@@ -328,8 +574,15 @@ export function InvoiceComposer({
         name: fields.studentBillingName,
         email: fields.parentEmail,
       });
-      onCreated(document.invoiceId);
-      await startAccess(document.invoiceId, controller.signal);
+      // The URL-backed view owns the one claim attempt and its retry state.
+      // Claiming here too would silently repeat a failed request on navigation.
+      if (account.session && account.verified) {
+        onCreated(document.invoiceId, learnerId);
+      } else {
+        await startAccess(document.invoiceId, controller.signal);
+        if (!controller.signal.aborted)
+          onCreated(document.invoiceId, learnerId);
+      }
     } catch (reason) {
       if (!controller.signal.aborted)
         setError(
@@ -341,17 +594,81 @@ export function InvoiceComposer({
       if (!controller.signal.aborted) setBusy(false);
     }
   }
+  async function markSubmitted() {
+    if (!result || !account.session || !access || submitting) return;
+    setSubmitting(true);
+    setSubmissionError("");
+    try {
+      const record = await request(
+        `/funding/requests/${result.document.invoiceId}/status`,
+        z.object({
+          fundedPending: z
+            .object({ status: z.string(), endsAt: z.string() })
+            .nullable()
+            .optional(),
+        }),
+        {
+          token: account.session.token,
+          body: { status: "parent-reported-submitted" },
+        },
+      );
+      setSubmitted(true);
+      if (record.fundedPending)
+        setAccess(
+          (current) =>
+            current && { ...current, endsAt: record.fundedPending!.endsAt },
+        );
+      await Promise.all([
+        refreshMe(account.session),
+        queryClient.invalidateQueries({
+          queryKey: fundingRecordsKey(account.session.accountId),
+        }),
+        queryClient.invalidateQueries({
+          queryKey: invoiceResumeOptions(
+            account.session,
+            result.document.invoiceId,
+          ).queryKey,
+        }),
+      ]);
+    } catch (reason) {
+      setSubmissionError(
+        reason instanceof Error
+          ? reason.message
+          : "Submission status couldn’t be saved.",
+      );
+    } finally {
+      setSubmitting(false);
+    }
+  }
   if (result)
     return (
       <section className={styles.ready}>
         <h2 ref={heading} tabIndex={-1}>
-          {access?.ready ? "You’re ready to start" : "Your invoice is ready"}
+          Invoice for {result.name}
         </h2>
+        {resumed &&
+          !resumed.record &&
+          !learnerId &&
+          account.learners.length > 0 && (
+            <SelectField
+              label="Learner for this invoice"
+              value={learnerId}
+              onValueChange={setLearnerId}
+              disabled={busy}
+            >
+              <option value="">Choose a learner</option>
+              {account.learners.map((learner) => (
+                <option key={learner.id} value={learner.id}>
+                  {learner.name}
+                </option>
+              ))}
+            </SelectField>
+          )}
         {access?.ready && (
           <>
             <p>
               {access.endsAt
-                ? `Learning access is active through ${new Date(access.endsAt).toLocaleDateString()}. Submit your invoice to keep learning.`
+                ? `Learning access is active through ${new Date(access.endsAt).toLocaleDateString()}.${submitted || paid ? "" : " Submit your invoice to keep learning."}`
                 : "Your learner has access."}
             </p>
             {account.session && (
@@ -411,59 +728,112 @@ export function InvoiceComposer({
         >
           Download invoice PDF
         </a>
-        <p>
-          A copy will also be emailed to <strong>{result.email}</strong>.
+        <p role="status">
+          {emailDelivery.data === "sent" ? (
+            <>
+              Invoice emailed to <strong>{result.email}</strong>.
+            </>
+          ) : emailDelivery.data === "failed" ? (
+            <>
+              The email couldn’t be sent to <strong>{result.email}</strong>. You
+              can download your PDF here.
+            </>
+          ) : emailDelivery.data === "queued" ? (
+            <>
+              Invoice saved. Sending a copy to <strong>{result.email}</strong>.
+            </>
+          ) : (
+            "Invoice saved. You can download your PDF here."
+          )}
         </p>
         <section className={styles.next}>
-          <h3>Submit your invoice</h3>
-          <p>{result.document.instructions}</p>
-          <a
-            href={result.document.destinationUrl}
-            className={buttonClass("secondary")}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => recordPurchaseAction("funding_provider_open")}
-          >
-            Open {providerName(result.document.destinationUrl)}
-          </a>
-          <p className={styles.note}>
-            Submit by{" "}
-            {new Date(
-              access?.endsAt ?? result.document.expiresAt,
-            ).toLocaleDateString()}
-            . Your program reviews and pays the invoice.
-          </p>
+          <h3>
+            {paid
+              ? "Payment received"
+              : submitted
+                ? "Submitted · awaiting payment"
+                : `Next: submit to ${providerName(result.document.destinationUrl)}`}
+          </h3>
+          {paid ? (
+            <p>
+              Your payment is recorded. You can find the invoice and payment
+              details in Billing.
+            </p>
+          ) : submitted ? (
+            <p>
+              Your submission is recorded. Follow its payment status in Billing.
+            </p>
+          ) : (
+            <>
+              <p>{result.document.instructions}</p>
+              <a
+                href={result.document.destinationUrl}
+                className={buttonClass("secondary")}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => recordPurchaseAction("funding_provider_open")}
+              >
+                Open {providerName(result.document.destinationUrl)}
+              </a>
+              {account.session && account.verified && access && (
+                <Button
+                  variant="primary"
+                  disabled={submitting}
+                  aria-busy={submitting}
+                  onClick={() => void markSubmitted()}
+                >
+                  {submitting ? "Saving…" : "I’ve submitted it"}
+                </Button>
+              )}
+              {submissionError && <p role="alert">{submissionError}</p>}
+              {access?.endsAt && (
+                <p className={styles.note}>
+                  Submit by {new Date(access.endsAt).toLocaleDateString()}. Your
+                  program reviews and pays the invoice.
+                </p>
+              )}
+            </>
+          )}
         </section>
-        {!access?.ready && (!learnerId || !account.verified) && (
-          <p>
-            <Link
-              to={
-                !account.session
-                  ? "/sign-up"
+        {!access?.ready &&
+          (!learnerId || !account.verified) &&
+          !(resumed && account.verified && account.learners.length > 0) && (
+            <p>
+              <Link
+                to={
+                  !account.session
+                    ? "/sign-up"
+                    : !account.verified
+                      ? "/start/verify-email"
+                      : "/start/name"
+                }
+                search={{ return: fundingReturn(result.offer.programId) }}
+                className={buttonClass("primary")}
+                onClick={() => recordPurchaseAction("amp_setup_open")}
+              >
+                {!account.session
+                  ? "Create account & start learning"
                   : !account.verified
-                    ? "/start/verify-email"
-                    : "/start/name"
-              }
-              search={{ return: fundingReturn(result.offer.programId) }}
-              className={buttonClass("primary")}
-              onClick={() => recordPurchaseAction("amp_setup_open")}
-            >
-              {!account.session
-                ? "Create account & start learning"
-                : !account.verified
-                  ? "Confirm email & start learning"
-                  : "Set up your learner"}
-            </Link>
-          </p>
-        )}
+                    ? "Confirm email & start learning"
+                    : "Set up your learner"}
+              </Link>
+            </p>
+          )}
         <Button
           variant="quiet"
+          disabled={submitting || busy}
           onClick={() => {
+            if (onClear) {
+              onClear();
+              return;
+            }
             setResult(undefined);
             setAccess(undefined);
             setAccessError("");
             setPdfUrl("");
             setError("");
+            setSubmitted(false);
+            setSubmissionError("");
           }}
         >
           Create another invoice
@@ -471,7 +841,53 @@ export function InvoiceComposer({
       </section>
     );
   return (
-    <form onSubmit={(event) => void submit(event)} className={styles.form}>
+    <form
+      onSubmit={(event) => void submit(event)}
+      className={styles.form}
+      aria-labelledby="new-invoice-title"
+    >
+      {paymentMethods?.({
+        learnerId,
+        interval:
+          offer?.termMonths === 1
+            ? "month"
+            : offer
+              ? "year"
+              : (preferredInterval ?? "year"),
+        busy,
+      })}
+      <h2 id="new-invoice-title" className={styles.composerTitle}>
+        {selectedLearner
+          ? `New invoice for ${selectedLearner.name === "Me" ? "you" : selectedLearner.name}`
+          : "New invoice"}
+      </h2>
+      {childChoices.length > 1 && (
+        <SelectField
+          label="Learner for this invoice"
+          value={learnerId}
+          onValueChange={(value) => {
+            setLearnerId(value);
+            onSelectionChange?.({
+              learnerId: value,
+              offerId: offer?.id,
+              interval:
+                offer?.termMonths === 1
+                  ? "month"
+                  : offer
+                    ? "year"
+                    : (preferredInterval ?? "year"),
+            });
+            setStudent(childChoices.find((l) => l.id === value)?.name ?? "");
+          }}
+          disabled={busy}
+        >
+          {childChoices.map((l) => (
+            <option key={l.id} value={l.id}>
+              {l.name}
+            </option>
+          ))}
+        </SelectField>
+      )}
       <SelectField
         label="Funding program"
         value={program}
@@ -480,13 +896,18 @@ export function InvoiceComposer({
         onValueChange={(key) => {
           const next = offers.filter((o) => programKey(o) === key);
           setProgram(key);
-          setOfferId(
-            (
-              next.find((o) => o.termMonths === offer?.termMonths) ??
-              next.find((o) => o.termMonths === 12) ??
-              next[0]
-            )?.id ?? "",
-          );
+          const selected =
+            next.find(
+              (o) =>
+                o.termMonths ===
+                (offer?.termMonths ?? (preferredInterval === "month" ? 1 : 12)),
+            ) ?? next[0];
+          setOfferId(selected?.id ?? "");
+          onSelectionChange?.({
+            learnerId,
+            offerId: selected?.id,
+            interval: selected?.termMonths === 1 ? "month" : "year",
+          });
           setError("");
         }}
       >
@@ -506,6 +927,14 @@ export function InvoiceComposer({
             disabled={busy}
             onChange={(id) => {
               setOfferId(id);
+              onSelectionChange?.({
+                learnerId,
+                offerId: id,
+                interval:
+                  plans.find((o) => o.id === id)?.termMonths === 1
+                    ? "month"
+                    : "year",
+              });
               setError("");
             }}
             options={plans.map((o) => ({
@@ -515,24 +944,13 @@ export function InvoiceComposer({
             }))}
           />
           <p className={styles.note}>One learner. No automatic renewal.</p>
+          {offer?.termPolicy?.endsWith("-from-invoice") && (
+            <p className={styles.note}>
+              Your {offer.termMonths === 1 ? "month" : "year"} begins when you
+              create the invoice. The PDF includes the start and end dates.
+            </p>
+          )}
         </section>
-      )}
-      {childChoices.length > 1 && (
-        <SelectField
-          label="Learner"
-          value={learnerId}
-          onValueChange={(value) => {
-            setLearnerId(value);
-            setStudent(childChoices.find((l) => l.id === value)?.name ?? "");
-          }}
-          disabled={busy}
-        >
-          {childChoices.map((l) => (
-            <option key={l.id} value={l.id}>
-              {l.name}
-            </option>
-          ))}
-        </SelectField>
       )}
       <TextField
         label="Student name on invoice"

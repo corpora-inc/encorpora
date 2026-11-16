@@ -2,7 +2,7 @@ import type { FamilyPlaces } from "../../../family/projection-contracts";
 
 /** A parent's purchases are details within family Settings too. */
 export const usesFamilySettingsFrame = (pathname: string) =>
-  /^\/(?:account\/(?:security|billing|privacy)(?:\/|$)|purchase(?:\/|$))/.test(
+  /^\/(?:account\/(?:security|billing|privacy)(?:\/|$)|purchase(?:\/|$)|continue\/[^/]+$)/.test(
     pathname,
   );
 

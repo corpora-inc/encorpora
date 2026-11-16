@@ -33,12 +33,6 @@ export function FamilyRecordLinks({ place }: { place: FamilyPlace }) {
         </Link>
       )}
       <span className={styles.recordRelated}>
-        {leaf === "map" &&
-          children.some((entry) => entry.capabilities.readWorkbooks) && (
-            <Link to="/$" params={{ _splat: `${base}/workbooks` }}>
-              Workbooks
-            </Link>
-          )}
         {!time && (
           <Link to="/$" params={{ _splat: `${base}/time` }}>
             Practice time
@@ -49,6 +43,13 @@ export function FamilyRecordLinks({ place }: { place: FamilyPlace }) {
             Report cards
           </Link>
         )}
+        {!workbooks &&
+          !child &&
+          children.some((entry) => entry.capabilities.readWorkbooks) && (
+            <Link to="/$" params={{ _splat: `${base}/workbooks` }}>
+              Workbooks
+            </Link>
+          )}
       </span>
     </nav>
   );

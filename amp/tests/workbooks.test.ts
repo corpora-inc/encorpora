@@ -1,3 +1,4 @@
+import { workbookFilename, attachmentFilename } from "../src/workbook/filename";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { buildApp } from "../src/server/app.js";
@@ -409,9 +410,9 @@ test("the PDF is rendered from the stored workbook for each request and never st
   const pdf = await server.inject({ url: `${url}/${made.id}/pdf`, headers });
   assert.equal(pdf.statusCode, 200);
   assert.equal(pdf.headers["content-type"], "application/pdf");
-  assert.match(
-    pdf.headers["content-disposition"] as string,
-    new RegExp(`amp-workbook-${today}-1-A4\\.pdf`),
+  assert.equal(
+    attachmentFilename(pdf.headers["content-disposition"] as string, ""),
+    workbookFilename(made, "Sample learner", "pdf", "A4"),
   );
   assert.equal(pdf.body, "%PDF-1.7 A4 1");
   assert.equal(calls.length, 1);
@@ -555,9 +556,9 @@ test("without a renderer, history says so and the printable document downloads i
   });
   assert.equal(document.statusCode, 200);
   assert.match(document.headers["content-type"] as string, /text\/html/);
-  assert.match(
-    document.headers["content-disposition"] as string,
-    new RegExp(`amp-workbook-${today}-1\\.html`),
+  assert.equal(
+    attachmentFilename(document.headers["content-disposition"] as string, ""),
+    workbookFilename(made, "Sample learner", "html"),
   );
   assert.ok(document.body.includes(made.code));
   assert.ok(document.body.includes("size:A4"));

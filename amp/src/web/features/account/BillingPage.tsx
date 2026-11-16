@@ -15,6 +15,7 @@ import { FundingInvoices } from "../funding/FundingInvoices";
 import { secondParentOnly } from "../second-parent/api";
 import { SecondParentNote } from "../second-parent/SecondParentNote";
 import { Receipts } from "./Receipts";
+import { AccountPageHeader } from "./AccountPageHeader";
 import styles from "./BillingPage.module.css";
 
 export function BillingPage() {
@@ -62,28 +63,20 @@ function Billing({ session }: { session: AuthSession }) {
       className={styles.page}
       data-family-settings-detail={settingsFamily ? "" : undefined}
     >
-      <header className={styles.heading}>
-        {search.receipt ? (
-          <Button variant="quiet" align="start" onClick={() => receipt()}>
-            ← Billing
-          </Button>
-        ) : null}
-        <div className={styles.titleRow}>
-          <h1>{search.receipt ? "Receipt" : "Billing"}</h1>
-          {settingsFamily && !search.receipt && (
-            <Link
-              to="/$"
-              params={{ _splat: `family/${settingsFamily}/settings` }}
-              className={styles.settingsReturn}
-            >
-              ‹ Settings
-            </Link>
-          )}
-        </div>
-        {!search.receipt && (
-          <p>Manage your plans, education funds and receipts.</p>
-        )}
-      </header>
+      <AccountPageHeader
+        title={search.receipt ? "Receipt" : "Billing"}
+        familyId={search.receipt ? null : settingsFamily}
+        description={
+          !search.receipt && "Manage your plans, education funds and receipts."
+        }
+        before={
+          search.receipt ? (
+            <Button variant="quiet" align="start" onClick={() => receipt()}>
+              ← Billing
+            </Button>
+          ) : null
+        }
+      />
       {!search.receipt && (
         <>
           <section className={styles.section} aria-labelledby="plans-title">

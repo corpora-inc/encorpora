@@ -1,3 +1,4 @@
+import { workbookFilename, workbookDisposition } from "./filename.js";
 import type { FastifyBaseLogger, FastifyInstance } from "fastify";
 import { createHash, randomUUID } from "node:crypto";
 import { z } from "zod";
@@ -621,7 +622,7 @@ export function registerWorkbookRoutes(
         .type("text/html; charset=utf-8")
         .header(
           "Content-Disposition",
-          `attachment; filename="amp-workbook-${record.date}-${record.number}.html"`,
+          workbookDisposition(workbookFilename(record, learnerName, "html")),
         )
         .send(html);
     },
@@ -665,7 +666,9 @@ export function registerWorkbookRoutes(
         .type("application/pdf")
         .header(
           "Content-Disposition",
-          `attachment; filename="amp-workbook-${page.record.date}-${page.record.number}-${page.format}.pdf"`,
+          workbookDisposition(
+            workbookFilename(page.record, learnerName, "pdf", page.format),
+          ),
         )
         .send(pdf);
     },

@@ -1,5 +1,6 @@
 import { useSettingsFamily } from "./features/family/account-settings";
 import { LegalDocuments } from "./features/account/LegalDocuments";
+import { AccountPageHeader } from "./features/account/AccountPageHeader";
 import { requestFetch, requestWith } from "./lib/request-transport";
 import { namedByTab as titleNamedByTab } from "./features/navigation/shell-frame";
 import screenTitle from "./ui/ScreenTitle.module.css";
@@ -751,25 +752,12 @@ export function FamilyCenter({
             {title}
           </h1>
         ) : (
-          <div className={pages.head}>
-            <h1
-              id="family-title"
-              ref={heading}
-              tabIndex={-1}
-              className={pages.title}
-            >
-              {title}
-            </h1>
-            {settingsFamily && !back && (
-              <Link
-                to="/$"
-                params={{ _splat: `family/${settingsFamily}/settings` }}
-                className={pages.settingsReturn}
-              >
-                ‹ Settings
-              </Link>
-            )}
-          </div>
+          <AccountPageHeader
+            title={title}
+            familyId={back ? null : settingsFamily}
+            headingId="family-title"
+            headingRef={heading}
+          />
         )}
         {/* Every adult's own name, as others see it (R9, R12). */}
         {section === "security" && <YourName />}

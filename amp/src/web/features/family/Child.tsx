@@ -36,7 +36,7 @@ import {
 import { useHandOver } from "../school/classes/today/use-hand-over";
 import { areaSourceOf } from "../../nav/AreaLayer";
 import { childProgressOptions, type FamilyChild } from "./api";
-import { DevicesSheet } from "./Devices";
+import { DevicesSheet, SignInPictures } from "./Devices";
 import {
   childOf,
   FamilyFrame,
@@ -488,6 +488,7 @@ function ChildSettings({
             </div>
           </div>
         )}
+        <SignInPictures key={child.id} place={place} child={child} />
         {caps.manageDevices && place.own && (
           <div className={styles.setting}>
             <div className={styles.settingText}>

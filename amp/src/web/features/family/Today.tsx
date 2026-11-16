@@ -1,3 +1,5 @@
+import { useQuery } from "@tanstack/react-query";
+import { fundingRecordsOptions } from "../funding/records";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import type { TodayTodo } from "../../../schools/teacher-contracts";
@@ -14,6 +16,7 @@ import { useHandOver } from "../school/classes/today/use-hand-over";
 import { WeekFacts } from "../school/classes/today/WeekFacts";
 import { fullDay } from "../school/classes/teacher-shared";
 import type { FamilyChild } from "./api";
+import { useLearnerStore } from "../../learner-store";
 import { useStartOwnPractice } from "../me/api";
 import { rememberPlace } from "../onboarding/place-memory";
 import { AddKidsSheet } from "./AddKids";
@@ -58,6 +61,33 @@ export function AccessFact({ child }: { child: FamilyChild }) {
       value={String(left)}
       label={left === 1 ? "free problem left" : "free problems left"}
     />
+  );
+}
+
+/** Billing stays in the parent's family frame; the child's practice stays primary. */
+function ChildBillingLink({
+  child,
+  pending,
+}: {
+  child: FamilyChild;
+  pending: boolean;
+}) {
+  const label = !child.access.hasAccess
+    ? "Get access"
+    : pending
+      ? "View invoice"
+      : "Manage access";
+  return (
+    <Link
+      to="/account/billing"
+      hash={pending ? "funded-invoices-title" : undefined}
+      className={styles.accessLink}
+      aria-label={`${label} for ${child.name}`}
+      data-child-billing={child.id}
+      onClick={() => useLearnerStore.getState().select(child.id)}
+    >
+      {label}
+    </Link>
   );
 }
 
@@ -237,6 +267,12 @@ function familyEntries(
 export function FamilyTodayScreen() {
   const place = useFamilyPlace();
   const { data, family, session, me } = place;
+  const billing = useQuery({
+    ...fundingRecordsOptions(session),
+    enabled:
+      !!data?.capabilities.manageBilling &&
+      data.children.some((child) => child.access.hasAccess),
+  });
   const navigate = useNavigate();
   const search = useRouterState({
     select: (state) => state.location.search as Record<string, unknown>,
@@ -348,7 +384,24 @@ export function FamilyTodayScreen() {
                     </Link>
                     <span className={styles.facts}>
                       <WeekFactsOf child={child} today={data.today.date} />
-                      {!sharedAccess && <AccessFact child={child} />}
+                      {(!sharedAccess || data.capabilities.manageBilling) && (
+                        <span className={styles.accessCell}>
+                          {!sharedAccess && <AccessFact child={child} />}
+                          {data.capabilities.manageBilling && (
+                            <ChildBillingLink
+                              child={child}
+                              pending={
+                                billing.data?.requests.some(
+                                  (invoice) =>
+                                    invoice.learnerId === child.id &&
+                                    invoice.fundedPending?.status ===
+                                      "funded-pending",
+                                ) ?? false
+                              }
+                            />
+                          )}
+                        </span>
+                      )}
                     </span>
                     <span className={styles.action}>
                       <ChildAction

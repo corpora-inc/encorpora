@@ -26,12 +26,13 @@ import { chosenPlan } from "../../../lib/pending-trial";
 import { Button, buttonClass } from "../../../ui/Button";
 import { YearField } from "../../../ui/YearField";
 import { QueryBlock } from "../../../ui/QueryBlock";
+import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { RowButton, RowList } from "../../../ui/RowList";
 import { JoinClass } from "../../school/join/JoinClass";
 import { Toast } from "../../../ui/Toast";
 import { approvalsOptions } from "../../family-approval/api";
 import { presenceOptions } from "../../school/classes/api";
-import { useFinishSignIn } from "../../school/join/api";
+import { finishingSignIn, useFinishSignIn } from "../../school/join/api";
 import { useStartPlace } from "../starter-api";
 import { familyPlacesOptions } from "../../family/api";
 import { DevicesSheet } from "../../family/Devices";
@@ -147,6 +148,10 @@ export function FamilySetup({
 }) {
   const me = useQuery(meOptions(session)).data;
   const from = useSetupFrom();
+  // The handoff remounts setup with the child's session before navigating to
+  // practice. That child's /me has no familyClass; it is not an incomplete
+  // parent setup and must not redirect over the pending practice navigation.
+  if (finishingSignIn()) return <LoadingScreen />;
   // A parent's setup from before (how they practice, a second parent): its
   // links in flight open who practices first; both stay on Today and People.
   if (kind === "parent" && (step === "practice" || step === "second-parent"))

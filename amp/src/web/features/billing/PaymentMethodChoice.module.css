@@ -1,0 +1,7 @@
+.choice [role="radio"] > span {
+  white-space: normal;
+  text-wrap: balance;
+}
+.choice [role="radio"] {
+  align-content: center;
+}

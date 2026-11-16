@@ -9,7 +9,7 @@ import { DEFAULT_FRONTIER_POLICY } from "../learning/frontier-policy";
 import { reportFrontier } from "../learning/frontier-report";
 import { practiceChangeSchema } from "../learning/practice-settings";
 import { changePractice } from "./practice-settings";
-import { satPracticeEligible } from "../curriculum/sat.js";
+import { satPracticeConfiguration } from "../learning/assessment-profile.js";
 import {
   assertPracticePolicy,
   DEFAULT_PRACTICE_POLICY,
@@ -708,13 +708,22 @@ function routes(app: FastifyInstance, options: AppOptions) {
       const focusedPool = practice.focusSkillId
         ? supported.filter((t) => t.skillId === practice.focusSkillId)
         : [];
+      const sat =
+        satMathFocus && !focused && !focusedPool.length
+          ? satPracticeConfiguration(supported, options.practicePolicy)
+          : null;
       // A saved web preference must not strand an older client whose drawing
       // capabilities cannot render that skill. Its supported mix stays usable.
       const mixedPool = focusedPool.length
         ? focusedPool
-        : satMathFocus
-          ? supported.filter(satPracticeEligible)
+        : sat
+          ? sat.templates
           : supported;
+      if (sat && !mixedPool.length)
+        throw new ApiError(
+          409,
+          "No supported SAT problems. Refresh or update the app to continue.",
+        );
       const recoveryPool = input.recoveryStrand
         ? mixedPool.filter(
             (t) =>
@@ -723,6 +732,8 @@ function routes(app: FastifyInstance, options: AppOptions) {
           )
         : [];
       const practicePool = recoveryPool.length ? recoveryPool : mixedPool;
+      const selectionPolicy =
+        sat?.policy ?? options.practicePolicy ?? DEFAULT_PRACTICE_POLICY;
       let levelNow: Frontier | undefined;
       const selected = focused
         ? Array.from({ length: count }, () => ({
@@ -733,7 +744,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
               "math",
           }))
         : planMixedPractice({
-            policy: options.practicePolicy,
+            policy: selectionPolicy,
             templates: practicePool,
             skills,
             attempts: await tx.recentAttempts(),
@@ -786,11 +797,8 @@ function routes(app: FastifyInstance, options: AppOptions) {
           reason: choice.reason,
           strand: choice.strand,
           frontierPolicy: DEFAULT_FRONTIER_POLICY.version,
-          practicePolicy: (options.practicePolicy ?? DEFAULT_PRACTICE_POLICY)
-            .version,
-          practiceFingerprint: (
-            options.practicePolicy ?? DEFAULT_PRACTICE_POLICY
-          ).fingerprint,
+          practicePolicy: selectionPolicy.version,
+          practiceFingerprint: selectionPolicy.fingerprint,
           ...("selection" in choice ? { trace: choice.selection } : {}),
           epoch: practice.epoch,
           focusSkillId: practice.focusSkillId,
