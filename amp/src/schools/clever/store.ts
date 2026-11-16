@@ -12,6 +12,7 @@ import { namingConsentActive } from "../../server/account-access.js";
 import {
   CleverSyncError,
   gradeLevel,
+  cohortGrade,
   userRoles,
   type Kind,
   type RosterRecord,
@@ -289,7 +290,8 @@ export async function applySnapshot(
       email: optional(user.email, 320),
       grade_level: grade,
       needsLearner: !!user.roles.student || !!previous?.needsLearner,
-      birthGrade: grade ?? previous?.birthGrade ?? null,
+      birthGrade:
+        cohortGrade(user.roles.student?.grade) ?? previous?.birthGrade ?? null,
       sourceBirthYear:
         user.roles.student?.birth_year ?? previous?.sourceBirthYear ?? null,
       identifier:
@@ -579,17 +581,12 @@ type PersonWrite = {
   /** From Clever's dob; preferred over the grade estimate. */
   sourceBirthYear: number | null;
 };
-/** Clever's date of birth refines the grade estimate (held back, skipped,
- * borderline birthdays) but cannot contradict the school's grade: a year more
- * than two from the grade estimate is treated as a data error. */
-const birthYearOf = (p: PersonWrite, now?: Date) => {
-  const estimate =
-    p.birthGrade === null ? null : birthYearForGrade(p.birthGrade, now);
-  if (p.sourceBirthYear === null) return estimate;
-  if (estimate === null || Math.abs(p.sourceBirthYear - estimate) <= 2)
-    return p.sourceBirthYear;
-  return estimate;
-};
+/** The school's grade gives AMP's cohort birth year exactly. Clever's date of
+ * birth fills in only when there is no placeable grade (Ungraded, Other). */
+const birthYearOf = (p: PersonWrite, now?: Date) =>
+  p.birthGrade === null
+    ? p.sourceBirthYear
+    : birthYearForGrade(p.birthGrade, now);
 
 /** The same privacy and propagation rules as writeStudent, applied in bounded
  * sets. Every account lock precedes every person/learner lock. Pending names

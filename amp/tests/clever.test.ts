@@ -67,7 +67,7 @@ test("Clever strips credentials, unknown fields and sensitive demographics", () 
   assert.deepEqual(parsed, {
     ...snapshot.users[0],
     roles: {
-      student: { ...snapshot.users[0].roles.student!, birth_year: 2000 },
+      student: { ...snapshot.users[0].roles.student!, birth_year: 1999 },
     },
   });
   assert.equal(JSON.stringify(parsed).includes("1/1/2000"), false);
@@ -334,10 +334,37 @@ test("Clever Events preserve feed order, are idempotent and do not persist prior
 test("Clever date of birth yields only a birth year, idempotently", async () => {
   const { userSchema, birthYearFromDob } =
     await import("../src/schools/clever/model.js");
-  assert.equal(birthYearFromDob("3/14/2015"), 2015);
+  // Cohort year: January-August births join the previous fall's cohort.
+  assert.equal(birthYearFromDob("3/14/2015"), 2014);
+  assert.equal(birthYearFromDob("9/1/2015"), 2015);
+  assert.equal(birthYearFromDob("8/31/2015"), 2014);
   assert.equal(birthYearFromDob("12/1/2009"), 2009);
-  assert.equal(birthYearFromDob("2014-07-04"), 2014);
-  for (const bad of ["", "2015", "14/2015", "1/1/1850", "1/1/9999", null])
+  const { cohortGrade } = await import("../src/schools/clever/model.js");
+  assert.deepEqual(
+    [
+      "PreKindergarten",
+      "TransitionalKindergarten",
+      "Preschool",
+      "Kindergarten",
+      "4",
+      "Ungraded",
+      "Other",
+      null,
+    ].map(cohortGrade),
+    [-1, -1, -2, 0, 4, null, null, null],
+  );
+  assert.equal(birthYearFromDob(20150314), null);
+  assert.equal(birthYearFromDob("2014-07-04"), 2013);
+  assert.equal(birthYearFromDob("2014-10-04"), 2014);
+  for (const bad of [
+    "",
+    "2015",
+    "14/2015",
+    "1/1/1850",
+    "1/1/9999",
+    "13/1/2015",
+    null,
+  ])
     assert.equal(birthYearFromDob(bad), null, String(bad));
   const raw = {
     id: "300000000000000000000001",
@@ -357,7 +384,7 @@ test("Clever date of birth yields only a birth year, idempotently", async () => 
   assert.deepEqual(parsed.roles.student, {
     school: "200000000000000000000001",
     grade: "4",
-    birth_year: 2015,
+    birth_year: 2014,
   });
   assert.deepEqual(userSchema.parse(parsed), parsed);
   const undated = userSchema.parse({
