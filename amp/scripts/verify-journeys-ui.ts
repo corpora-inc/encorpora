@@ -574,7 +574,7 @@ async function parentJourney(
   // straight into that child's first problem. A name is never a step.
   await page.waitForURL(/\/start\/parent$/);
   await heading(page, "Add your kids");
-  await page.getByRole("button", { name: "Add a child" }).click();
+  await page.getByRole("button", { name: "Add another child" }).click();
   for (const [child, year] of [
     ["Child 1", "2016"],
     ["Child 2", "2018"],
