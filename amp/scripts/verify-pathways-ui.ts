@@ -1704,9 +1704,10 @@ try {
     .locator('a[data-entity="skill"]')
     .filter({ hasText: skillTitle("nonlinear-intersection-reading") });
   const parentUrl = new URL((await parentLink.getAttribute("href"))!, origin);
-  // A connection is the skill's own address, shareable, with no query.
+  // A connection is the skill's own address, shareable; no layer rides in
+  // its query (an ad's label on this address stays on it).
   assert.equal(parentUrl.pathname, "/pathways/nonlinear-intersection-reading");
-  assert.equal(parentUrl.search, "");
+  assert.equal(parentUrl.searchParams.get("open"), null);
   // The map's search and grade stay in its view, out of the address.
   assert.equal(parentUrl.searchParams.get("topic"), null);
   assert.equal(
