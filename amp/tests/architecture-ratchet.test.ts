@@ -28,10 +28,17 @@
  * - renderNavigate: `<Navigate …>` elements (navigation during render).
  * - silentCatches: a `.catch(fn)` callback or a `catch {}` block that neither
  *   throws, rejects nor logs. Logging is a console.* call, or a call to a
- *   function named log…/report…/capture… or …Failure/…Failed. Zod's
- *   `.catch(fallback)` on a schema is not a promise and never counts.
+ *   function named log…/report…/capture… or …Failure/…Failed; the
+ *   sanctioned helpers in lib/report-error.ts (`reportError`, `reported(…)`,
+ *   `ifNotFound(…)`, `jsonOrNull`) and `useErrorToast().report` count as
+ *   handling. Zod's `.catch(fallback)` on a schema is not a promise and never
+ *   counts.
  * - sessionProps: JSX attributes `session={…}` (session drilled through props;
- *   read it through a hook).
+ *   read it with `useSession()` from lib/session.ts).
+ * - sessionReads: `useQuery(sessionOptions)` or `useSuspenseQuery(…)` outside
+ *   lib/session.ts (read it with `useSession()` / `useSessionOrNull()`).
+ * - inlineQueryKeys: a `queryKey:` spelled as an array literal outside
+ *   lib/keys.ts (build it with `qk`).
  * - nativeControls: raw `<select>` and `<input>` elements outside ui/.
  *
  * Page-local container widths are tests/page-layout.test.ts's job.
@@ -65,6 +72,8 @@ export const CATEGORIES = [
   "renderNavigate",
   "silentCatches",
   "sessionProps",
+  "sessionReads",
+  "inlineQueryKeys",
   "nativeControls",
 ] as const;
 export type Category = (typeof CATEGORIES)[number];
@@ -82,6 +91,11 @@ const HISTORY_METHODS = new Set([
   "replaceState",
 ]);
 const LOGGER = /^(log|report|capture)|(Failure|Failed)$/;
+/** lib/report-error.ts helpers that rethrow what they don't handle. */
+const RETHROWS = new Set(["ifNotFound"]);
+/** Where the session is read and keys are spelled: the only places. */
+const SESSION_HOOKS = "lib/session.ts";
+const KEY_FACTORY = "lib/keys.ts";
 
 /** The name a call is made by: `f(…)` → f, `a.b.f(…)` → f. */
 function calleeName(expression: ts.Expression): string | undefined {
@@ -172,7 +186,7 @@ function handles(body: ts.Node) {
         (ts.isPropertyAccessExpression(at.expression) &&
           ts.isIdentifier(at.expression.expression) &&
           at.expression.expression.text === "console") ||
-        (name !== undefined && LOGGER.test(name)) ||
+        (name !== undefined && (LOGGER.test(name) || RETHROWS.has(name))) ||
         (name === "reject" &&
           ts.isPropertyAccessExpression(at.expression) &&
           endsWith(at.expression.expression, "Promise"))
@@ -183,6 +197,21 @@ function handles(body: ts.Node) {
   };
   visit(body);
   return handled;
+}
+
+/** `sessionOptions`, or an options object spread from it. */
+function readsSession(argument: ts.Expression) {
+  const at = unwrap(argument);
+  if (ts.isIdentifier(at)) return at.text === "sessionOptions";
+  return (
+    ts.isObjectLiteralExpression(at) &&
+    at.properties.some(
+      (property) =>
+        ts.isSpreadAssignment(property) &&
+        ts.isIdentifier(property.expression) &&
+        property.expression.text === "sessionOptions",
+    )
+  );
 }
 
 /** Every anti-pattern in one source file. */
@@ -264,6 +293,14 @@ export function scan(file: string, source: string): Finding[] {
       if (ts.isIdentifier(node.expression) && name === "redirect")
         add("redirects", node);
 
+      if (
+        (name === "useQuery" || name === "useSuspenseQuery") &&
+        file !== SESSION_HOOKS &&
+        node.arguments[0] &&
+        readsSession(node.arguments[0])
+      )
+        add("sessionReads", node);
+
       if (name && EFFECTS.has(name)) {
         const effect = node.arguments[0];
         if (
@@ -303,6 +340,13 @@ export function scan(file: string, source: string): Finding[] {
     ) {
       const name = propertyName(node);
       const object = node.parent;
+      if (
+        name === "queryKey" &&
+        file !== KEY_FACTORY &&
+        ts.isPropertyAssignment(node) &&
+        ts.isArrayLiteralExpression(unwrap(node.initializer))
+      )
+        add("inlineQueryKeys", node);
       if (name === "validateSearch") {
         if (!onlyExceptions(keysWithin(node))) add("validateSearch", node);
       } else if (name === "search") {
@@ -491,6 +535,12 @@ test("catches that neither log nor rethrow are silent", () => {
       k.catch(() => Promise.reject(new Error("k")));
       l.catch(logged);
       try { m(); } catch (error) { console.warn("m failed", error); }
+      n.catch(reported("load n", null));
+      o.catch(ifNotFound(null));
+      p.catch((error) => ifNotFound(null)(error));
+      try { q(); } catch (error) { setError(reportError(error, "save q")); }
+      try { r(); } catch (error) { errors.report(error, "save r"); }
+      try { s(); } catch (error) { setError(messageFor(error)); }
       const schema = z.string().optional().catch(undefined);
       const other = z.enum(["a"]).catch(() => "a");
     `),
@@ -501,8 +551,43 @@ test("catches that neither log nor rethrow are silent", () => {
       "silentCatches",
       "silentCatches",
       "silentCatches",
+      "silentCatches",
     ],
   );
+});
+
+test("sessions read outside lib/session.ts count", () => {
+  const source = `
+    const a = useQuery(sessionOptions).data;
+    const { data } = useSuspenseQuery(sessionOptions);
+    const c = useQuery({ ...sessionOptions, select: (s) => s?.accountId });
+    const d = useSession();
+    const e = useQuery(meOptions(session));
+    const f = await queryClient.ensureQueryData(sessionOptions);
+  `;
+  assert.deepEqual(only(source), [
+    "sessionReads",
+    "sessionReads",
+    "sessionReads",
+  ]);
+  assert.deepEqual(only(source, "lib/session.ts"), []);
+});
+
+test("query keys spelled outside lib/keys.ts count", () => {
+  const source = `
+    const a = queryOptions({ queryKey: ["account", id, "receipts"], queryFn });
+    const b = queryOptions({ queryKey: [...billingKey(id), "offer"] as const, queryFn });
+    void client.invalidateQueries({ queryKey: ["account", id] });
+    const d = queryOptions({ queryKey: qk.receipts(id, null), queryFn });
+    void client.invalidateQueries({ queryKey: qk.account(id) });
+    const f = { queryKey };
+  `;
+  assert.deepEqual(only(source), [
+    "inlineQueryKeys",
+    "inlineQueryKeys",
+    "inlineQueryKeys",
+  ]);
+  assert.deepEqual(only(source, "lib/keys.ts"), []);
 });
 
 test("session props and native controls outside ui/ count", () => {

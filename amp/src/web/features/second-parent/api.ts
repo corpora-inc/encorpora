@@ -3,6 +3,7 @@ import { z } from "zod";
 import type { SignedInMe } from "../../../account/contracts";
 import type { AuthSession } from "../../auth";
 import { request } from "../../lib/api";
+import { qk } from "../../lib/keys";
 import { AppError } from "../../lib/AppError";
 import { invalidateAccount } from "../../lib/query";
 
@@ -21,7 +22,7 @@ export type SecondParent = z.infer<typeof secondParentSchema>;
 
 export const secondParentOptions = (session: AuthSession) =>
   queryOptions({
-    queryKey: ["account", session.accountId, "second-parent"],
+    queryKey: qk.secondParent(session.accountId),
     retry: (failures, error) =>
       failures < 2 && error instanceof AppError && error.retry,
     retryDelay: (failures) => 800 * 2 ** failures,

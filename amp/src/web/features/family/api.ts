@@ -13,6 +13,7 @@ import {
 } from "../../../family/projection-contracts";
 import type { AuthSession } from "../../auth";
 import { request } from "../../lib/api";
+import { qk } from "../../lib/keys";
 import { invalidateAccount, queryClient } from "../../lib/query";
 
 /*
@@ -29,7 +30,7 @@ export type FamilyChild = FamilyProjection["children"][number];
 export type FamilyPlace = FamilyPlaces["families"][number];
 
 const key = (session: AuthSession, ...rest: unknown[]) =>
-  ["account", session.accountId, "families", ...rest] as const;
+  [...qk.families(session.accountId), ...rest] as const;
 
 /** A student's session never reads a parent's family. */
 const adult = (session: AuthSession | null | undefined) =>

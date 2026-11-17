@@ -3,6 +3,7 @@ import { z } from "zod";
 import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
 import { request } from "../../lib/api";
+import { qk } from "../../lib/keys";
 import { invalidateAccount, meKey, queryClient } from "../../lib/query";
 import {
   enrollmentViewSchema,
@@ -13,8 +14,7 @@ import type { AnnualOffer } from "../../../billing/stripe/purchase-contracts";
 import { paymentUrl } from "./payment-url";
 import { flush, analyticsVisitorHeaders } from "../../lib/analytics";
 
-const billingKey = (identity: string) =>
-  ["account", identity, "billing"] as const;
+const billingKey = (identity: string) => qk.billing(identity);
 export const offerOptions = (session: AuthSession) =>
   queryOptions({
     queryKey: [...billingKey(session.accountId), "offer"],
@@ -51,7 +51,7 @@ export const enrollmentOptions = (session: AuthSession, poll = false) =>
 /** Email-plus availability; read only when purchase enrollment is unavailable. */
 export const emailConsentOptions = (session: AuthSession) =>
   queryOptions({
-    queryKey: ["account", session.accountId, "consent", "availability"],
+    queryKey: qk.consentAvailability(session.accountId),
     queryFn: ({ signal }) =>
       request("/consent", z.object({ available: z.boolean() }), {
         token: session.token,

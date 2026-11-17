@@ -2,6 +2,7 @@ import { queryOptions } from "@tanstack/react-query";
 import { z } from "zod";
 import type { AuthSession } from "../../auth";
 import { request } from "../../lib/api";
+import { qk } from "../../lib/keys";
 
 const trendPoint = z.object({
   answered: z.number().int().nonnegative(),
@@ -16,7 +17,7 @@ export type LevelTrendPoint = z.infer<typeof trendPoint>;
  * account's key, so a change to the account refreshes it with the rest. */
 export const levelTrendOptions = (session: AuthSession, learnerId: string) =>
   queryOptions({
-    queryKey: ["account", session.accountId, "level-trend", learnerId],
+    queryKey: qk.levelTrend(session.accountId, learnerId),
     queryFn: ({ signal }) =>
       request(
         `/learners/${encodeURIComponent(learnerId)}/level-trend`,

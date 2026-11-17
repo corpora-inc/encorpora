@@ -10,13 +10,14 @@ import {
 } from "../../../family/approval-contracts";
 import type { AuthSession } from "../../auth";
 import { request } from "../../lib/api";
+import { qk } from "../../lib/keys";
 import { invalidateAccount } from "../../lib/query";
 
 /** Children from other families in this family's class, under the account's
  * key, so every change to the account refreshes them with `/me`. */
 export const approvalsOptions = (session: AuthSession) =>
   queryOptions({
-    queryKey: ["account", session.accountId, "family-approvals"],
+    queryKey: qk.familyApprovals(session.accountId),
     queryFn: ({ signal }) =>
       request(
         "/family/approvals",
@@ -28,7 +29,7 @@ export const approvalsOptions = (session: AuthSession) =>
 /** The approving parent's page about one child. */
 export const approvalOptions = (session: AuthSession, id: string) =>
   queryOptions({
-    queryKey: ["account", session.accountId, "family-approval", id],
+    queryKey: qk.familyApproval(session.accountId, id),
     queryFn: ({ signal }) =>
       request(
         `/family/approvals/${encodeURIComponent(id)}`,

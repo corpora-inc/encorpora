@@ -2,6 +2,7 @@ import { attachmentFilename } from "../../workbook/filename";
 import { requestFetch } from "./request-transport";
 import { defaultPaper } from "../features/workbooks/model";
 import { AppError } from "./AppError";
+import { jsonOrNull } from "./report-error";
 
 /** The person's paper, Letter or A4, from their locale (the workbook
  * screen's default). */
@@ -56,7 +57,7 @@ export async function downloadPdf({
     throw error;
   }
   if (!response.ok) {
-    const data: unknown = await response.json().catch(() => null);
+    const data = await jsonOrNull(response);
     const code =
       data &&
       typeof data === "object" &&

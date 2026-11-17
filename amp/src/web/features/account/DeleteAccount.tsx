@@ -6,10 +6,9 @@ import {
   type DeletionBlocker,
   type DeletionPreview,
 } from "../../../account/deletion-contracts";
-import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
 import { returnTarget } from "../../lib/return-to";
-import { sessionOptions } from "../../lib/query";
+import { useSession } from "../../lib/session";
 import { Button, buttonClass } from "../../ui/Button";
 import { Loading } from "../../ui/Loading";
 import { TextField } from "../../ui/TextField";
@@ -89,14 +88,8 @@ function whatGoes(preview: DeletionPreview): Row[] {
   return rows;
 }
 
-function BlockerRow({
-  blocker,
-  session,
-}: {
-  blocker: DeletionBlocker;
-  session: AuthSession;
-}) {
-  const portal = useBillingPortal(session);
+function BlockerRow({ blocker }: { blocker: DeletionBlocker }) {
+  const portal = useBillingPortal(useSession());
   if (blocker.code === "plan_renews")
     return (
       <li className={pages.row}>
@@ -173,7 +166,8 @@ function failureText(error: unknown) {
   return "Your account wasn’t deleted. Try again in a moment.";
 }
 
-function DeleteAccount({ session }: { session: AuthSession }) {
+export function DeleteAccountScreen() {
+  const session = useSession();
   const navigate = useNavigate();
   const preview = useQuery(deletionPreviewOptions(session));
   const remove = useDeleteAccount(session);
@@ -282,11 +276,7 @@ function DeleteAccount({ session }: { session: AuthSession }) {
               </h2>
               <ul className={pages.list}>
                 {data.blockers.map((blocker) => (
-                  <BlockerRow
-                    key={blocker.code}
-                    blocker={blocker}
-                    session={session}
-                  />
+                  <BlockerRow key={blocker.code} blocker={blocker} />
                 ))}
               </ul>
             </section>
@@ -322,12 +312,6 @@ function DeleteAccount({ session }: { session: AuthSession }) {
       )}
     </Page>
   );
-}
-
-export function DeleteAccountScreen() {
-  const { data: session } = useQuery(sessionOptions);
-  if (!session) return null;
-  return <DeleteAccount key={session.accountId} session={session} />;
 }
 
 /** After a deletion: the address is free to start again. */
