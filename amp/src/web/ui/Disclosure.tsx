@@ -35,7 +35,20 @@ export function Disclosure({
           : undefined
       }
     >
-      <summary>
+      <summary
+        onClick={
+          // Held by the page: the click is its change, made in the same
+          // render, so an accordion never shows two open for a frame (the
+          // native toggle event comes a task later). Find-in-page still
+          // opens it natively, through onToggle.
+          onOpenChange && open !== undefined
+            ? (event) => {
+                event.preventDefault();
+                onOpenChange(!open);
+              }
+            : undefined
+        }
+      >
         <span>{summary}</span>
         <svg viewBox="0 0 12 12" aria-hidden="true">
           <path d="m3 4.5 3 3 3-3" />
