@@ -16,14 +16,14 @@ import { registerConsentRoutes } from "../src/parent-consent/routes.js";
 import { FamilyRepository } from "../src/family/repository.js";
 import { learningConsentActive } from "../src/server/account-access.js";
 import { purgeConsentRecords } from "../src/parent-consent/lifecycle.js";
-import type { ConsentMail } from "../src/parent-consent/contracts.js";
+import type { ConsentPayload } from "../src/parent-consent/contracts.js";
 import { consentFixture as p } from "./parent-consent.fixture.js";
 const enabled = { skip: !process.env.AMP_TEST_DATABASE_URL };
 async function fixture(
   run: (
     pool: Pool,
     r: ConsentRepository,
-    mails: ConsentMail[],
+    mails: ConsentPayload[],
   ) => Promise<void>,
 ) {
   const url = process.env.AMP_TEST_DATABASE_URL!,
@@ -58,14 +58,14 @@ const binding = {
   sender: "notice@example.com",
   credentialFingerprint: "fixture-credential",
 };
-const transport = (mails: ConsentMail[]) => ({
+const transport = (mails: ConsentPayload[]) => ({
   binding,
-  async send(m: ConsentMail) {
+  async send(m: ConsentPayload) {
     mails.push(m);
     return { kind: "accepted" as const, receipt: `fixture-${mails.length}` };
   },
 });
-function ack(mail: ConsentMail) {
+function ack(mail: ConsentPayload) {
   const u = new URL(mail.text.match(/Review and respond: (\S+)/)![1]!);
   const q = new URLSearchParams(u.hash.slice(1));
   return {

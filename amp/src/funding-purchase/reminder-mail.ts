@@ -9,7 +9,70 @@ import type {
 import { digest } from "../parent-consent/crypto.js";
 import { currentPolicy } from "../parent-consent/policy.js";
 import { disclosesResend } from "../parent-consent/resend.js";
+import { renderEmail, retryPayload } from "../email/email.js";
 import { FundingPurchaseRepository } from "./repository.js";
+
+/** An invoice reminder: submit it before the deadline, or (once the parent
+ * reported submitting) the program has not paid yet. */
+export function invoiceReminderMail(input: {
+  invoiceId: string;
+  kind: "submission" | "processing";
+  recipient: string;
+  /** YYYY-MM-DD, UTC. */
+  deadline: string;
+  instructions: string;
+  programName: string;
+  destinationUrl: string;
+  billingUrl: string;
+  pdfBase64: string;
+}): ConsentMail {
+  const { invoiceId, deadline, destinationUrl, billingUrl } = input;
+  const submission = input.kind === "submission";
+  const subject = submission
+    ? "Reminder: submit your AMP invoice"
+    : "Your AMP invoice is awaiting payment";
+  return {
+    idempotencyKey: `amp-invoice-reminder:${invoiceId}:${input.kind}`,
+    recipient: input.recipient,
+    ...renderEmail({
+      origin: new URL(billingUrl).origin,
+      subject,
+      heading: subject,
+      body: [
+        submission
+          ? `Please submit your AMP invoice by ${deadline} (UTC). Your invoice PDF is attached.`
+          : `We haven’t received payment for your AMP invoice. Your invoice access ends on ${deadline} (UTC).`,
+        submission
+          ? {
+              button: { label: "Submit the invoice", url: destinationUrl },
+              lead: input.instructions,
+            }
+          : {
+              button: {
+                label: "Check your payment request",
+                url: destinationUrl,
+              },
+              lead: `Check your existing payment request with ${input.programName}:`,
+            },
+        {
+          link: { label: "Open Billing", url: billingUrl },
+          lead: submission
+            ? "After submitting, choose “I’ve submitted it” in Billing to keep practicing while your program processes payment."
+            : "View your invoice and learning access in Billing:",
+        },
+        `Invoice: ${invoiceId}`,
+        "For help with your program’s payment request, email support@corpora.inc.",
+      ],
+    }),
+    attachments: [
+      {
+        filename: `education-invoice-${invoiceId}.pdf`,
+        content: input.pdfBase64,
+        contentType: "application/pdf",
+      },
+    ],
+  };
+}
 
 /** Reuses the funded-delivery job and transport. These are invoice follow-ups,
  * not a marketing campaign; each invoice has at most one of each reminder. */
@@ -73,33 +136,23 @@ export async function deliverFundingReminderMail(
       const billingUrl = new URL("/account/billing", accountUrl).href;
       const deadline = new Date(row.deadline_at).toISOString().slice(0, 10);
       const submission = row.kind === "submission";
-      const mail: ConsentMail = {
-        idempotencyKey: `amp-invoice-reminder:${row.invoice_id}:${row.kind}`,
+      const composed = invoiceReminderMail({
+        invoiceId: row.invoice_id,
+        kind: submission ? "submission" : "processing",
         recipient: row.parent_email,
-        subject: submission
-          ? "Reminder: submit your AMP invoice"
-          : "Your AMP invoice is awaiting payment",
-        text: [
-          submission
-            ? `Please submit your AMP invoice by ${deadline} (UTC). Your invoice PDF is attached.`
-            : `We haven’t received payment for your AMP invoice. Your invoice access ends on ${deadline} (UTC).`,
-          submission
-            ? `${row.offer_snapshot.instructions}\n${row.offer_snapshot.destinationUrl}`
-            : `Check your existing payment request with ${row.offer_snapshot.programName}:\n${row.offer_snapshot.destinationUrl}`,
-          submission
-            ? `After submitting, choose “I’ve submitted it” in Billing to keep practicing while your program processes payment.\n${billingUrl}`
-            : `View your invoice and learning access in Billing:\n${billingUrl}`,
-          `Invoice: ${row.invoice_id}`,
-          "For help with your program’s payment request, email support@corpora.inc.",
-        ].join("\n\n"),
-        attachments: [
-          {
-            filename: `education-invoice-${row.invoice_id}.pdf`,
-            content: row.pdf_base64,
-            contentType: "application/pdf",
-          },
-        ],
-      };
+        deadline,
+        instructions: row.offer_snapshot.instructions,
+        programName: row.offer_snapshot.programName,
+        destinationUrl: row.offer_snapshot.destinationUrl,
+        billingUrl,
+        pdfBase64: row.pdf_base64,
+      });
+      const mail = retryPayload(
+        composed,
+        (payload) =>
+          row.delivery_binding ===
+          digest({ transport: transport.binding, mail: payload }),
+      );
       const binding = digest({ transport: transport.binding, mail });
       const unavailable =
         row.state === "cancelled" ||

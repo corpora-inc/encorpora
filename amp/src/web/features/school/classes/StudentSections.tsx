@@ -64,6 +64,8 @@ export function StudentSections({
           empty={`We’ll find ${first}’s level in a few minutes of practice.`}
           openAreas
           crossCutting
+          // Ranges in grade words, as the map and a parent's page say them.
+          plain
           holdFirst={openedUnmeasured.current}
         />
       </section>

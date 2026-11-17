@@ -146,6 +146,30 @@
   height: auto;
   border-radius: calc(var(--tile) * 0.14);
 }
+/* A phone: the code across the top, then the way in and the QR side by
+   side, so a small class's names are on the first screen with it (#27). */
+@media (max-width: 719.98px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: var(--space-3);
+  }
+  .how {
+    display: contents;
+  }
+  .board .code {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+  .board .instruction {
+    justify-self: start;
+    font-size: clamp(16px, 5vw, 22px);
+    text-align: start;
+  }
+  .qr {
+    width: clamp(96px, 28vw, 168px);
+  }
+}
 /* The wave fills as the class arrives: the AMP mark, doing a job. */
 .progress {
   display: grid;

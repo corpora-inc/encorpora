@@ -46,6 +46,7 @@ const bumped = [
   "seats-needed",
   "shape-sides-select",
   "times-as-many-comparison",
+  "variable-in-situation",
 ] as const;
 
 /** Skill id below `version`, then the skill id at the current version. */

@@ -304,6 +304,8 @@ export function LevelRows({
   wordRanges = false,
   overallEstimated = false,
   axis = true,
+  axisAt = "bottom",
+  guesses = false,
   moving = false,
   rowLink,
   notStarted,
@@ -326,6 +328,13 @@ export function LevelRows({
   /** The overall estimate is a starting guess, drawn dashed. */
   overallEstimated?: boolean;
   axis?: boolean;
+  /** Where the grade axis sits: over the rows, so a long stack shows its
+   * scale on the first screen (the class map), or under them. */
+  axisAt?: "top" | "bottom";
+  /** A starting guess's row says its likely range too, quieter, rather than
+   * a word ("Starting", "Not yet"): the dashed bar already says it's a
+   * guess. A row with no estimate says nothing at its end. */
+  guesses?: boolean;
   /** A lone learner's unmeasured row searches (LevelBar's `moving`); a
    * column of many stays still. */
   moving?: boolean;
@@ -368,8 +377,20 @@ export function LevelRows({
     leave: (id: string) =>
       setPointed((current) => (current === id ? null : current)),
   };
+  const axisRow = numbers && axis && (
+    <div
+      className={`${styles.axisRow} ${bare} ${axisAt === "top" ? styles.axisTop : ""}`}
+      data-interactive={interactive ? "" : undefined}
+      data-level-axis-at={axisAt}
+    >
+      <span />
+      <LevelAxis scale={scale} />
+      <span />
+    </div>
+  );
   return (
     <>
+      {axisAt === "top" && axisRow}
       <ul className={rowClass} data-interactive={interactive ? "" : undefined}>
         <AreaRow
           area={overallArea}
@@ -382,6 +403,7 @@ export function LevelRows({
           notStarted={notStarted}
           rowLink={rowLink}
           point={point}
+          guesses={guesses}
           strong
         />
         {areas.map((area) => (
@@ -400,20 +422,12 @@ export function LevelRows({
               wordRanges={wordRanges}
               rowLink={rowLink}
               point={point}
+              guesses={guesses}
             />
           </Fragment>
         ))}
       </ul>
-      {numbers && axis && (
-        <div
-          className={`${styles.axisRow} ${bare}`}
-          data-interactive={interactive ? "" : undefined}
-        >
-          <span />
-          <LevelAxis scale={scale} />
-          <span />
-        </div>
-      )}
+      {axisAt === "bottom" && axisRow}
       {interactive && numbers && readoutArea?.estimate && (
         // Reserved for the pointer: the same two lines whatever it says.
         <p className={styles.readout} data-level-readout="" aria-hidden="true">
@@ -443,8 +457,10 @@ function AreaRow({
   rowLink,
   point,
   notStarted,
+  guesses = false,
 }: {
   notStarted?: string;
+  guesses?: boolean;
   wordRanges?: boolean;
   area: LevelRangeArea;
   scale: RangeScale;
@@ -460,6 +476,14 @@ function AreaRow({
   const size = strong ? "large" : "regular";
   const estimate = area.estimate;
   const range = estimate ? likelyRange(estimate) : null;
+  /** The row's likely range at its end, in grade words or the scale's
+   * numbers. */
+  const rangeText = (shown: readonly [number, number]) =>
+    wordRanges
+      ? rangeWords(shown)
+      : shownGrades(shown).openHigh
+        ? `${shown[0].toFixed(1)}+`
+        : `${shown[0].toFixed(1)}–${shown[1].toFixed(1)}`;
   const label =
     !estimate || !range
       ? `${area.label}: ${notStarted ?? words.notYet}`
@@ -491,24 +515,26 @@ function AreaRow({
           />
         )}
       </span>
-      <span className={styles.rowNumbers} aria-hidden="true">
+      <span
+        className={styles.rowNumbers}
+        aria-hidden="true"
+        data-guess={guesses && area.estimated && range ? "" : undefined}
+      >
         {!numbers
           ? ""
           : !estimate || !range
-            ? notStarted
+            ? notStarted || guesses
               ? ""
               : "Not yet"
             : area.estimated
-              ? strong
-                ? "Starting"
-                : "Not yet"
+              ? guesses
+                ? rangeText(range)
+                : strong
+                  ? "Starting"
+                  : "Not yet"
               : !decimals
                 ? ""
-                : wordRanges
-                  ? rangeWords(range)
-                  : shownGrades(range).openHigh
-                    ? `${range[0].toFixed(1)}+`
-                    : `${range[0].toFixed(1)}–${range[1].toFixed(1)}`}
+                : rangeText(range)}
       </span>
     </>
   );
