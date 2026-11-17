@@ -334,9 +334,11 @@ async function family(
   await page.keyboard.press("Escape");
   await devices.waitFor({ state: "detached" });
 
-  // People is the family's parents: no roster, class code or co-teacher.
+  // People is the family's parents, a section of its Settings (its old
+  // address opens Settings): no roster, class code or co-teacher.
   await page.goto(`${familyUrl}/people`);
-  await heading(page, "People");
+  await heading(page, "Settings");
+  await page.locator("[data-settings-people]").waitFor();
   for (const name of ["Invite a co-teacher", "Parent links"])
     check(
       `${label} a family's People offers no ${name}`,
