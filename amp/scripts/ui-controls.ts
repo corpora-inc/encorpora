@@ -95,9 +95,17 @@ export async function practiceHere(page: Page, id: string) {
     .first()
     .click();
   // Practice opens at the learner's own address (`/practice/<learner>`).
-  await page.waitForURL(
-    (url) => url.pathname === `/practice/${encodeURIComponent(id)}`,
-  );
+  await page
+    .waitForURL((url) => url.pathname === `/practice/${encodeURIComponent(id)}`)
+    .catch(async (error: unknown) => {
+      await page
+        .screenshot({ path: "artifacts/practice-here-failure.png" })
+        .catch(() => undefined);
+      throw new Error(
+        `practiceHere: still at ${page.url()}, want /practice/${id}`,
+        { cause: error },
+      );
+    });
   await page.locator(".problem-stage").waitFor();
 }
 /** Ends a child's session on this device: Back to family returns it to the parent,

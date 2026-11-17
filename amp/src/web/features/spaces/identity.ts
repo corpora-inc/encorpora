@@ -89,6 +89,8 @@ export const isSelfAddress = (pathname: string) => SELF.test(pathname);
 /** What an account's practice self is made of: its own learner and its
  * practice profiles. */
 export type SelfAccount = {
+  account?: { kind?: string } | null;
+  learners?: readonly { id: string }[] | null;
   adultPractice?: { learner?: { id: string } | null } | null;
   practiceProfiles?: readonly { id: string }[] | null;
 };
@@ -97,8 +99,9 @@ export type SelfAccount = {
  * Who "self" is on a shared learning screen that names nobody: the practice
  * profile the adult is practicing as (practicing as someone else is the
  * account's current learner, learner-store.ts, being one of its profiles),
- * else the adult's own learner. An account with neither (a parent who
- * doesn't practice, a student's session) has no self: null.
+ * else the adult's own learner. A school student's session (their own, or
+ * a device a parent handed them) is their one learner's. An account with
+ * none of these (a parent who doesn't practice) has no self: null.
  */
 export function selfOf(
   account: SelfAccount | null | undefined,
@@ -106,7 +109,10 @@ export function selfOf(
 ): AddressedIdentity | null {
   if (current && account?.practiceProfiles?.some((p) => p.id === current))
     return { kind: "profile", id: current };
-  const own = account?.adultPractice?.learner?.id;
+  const own =
+    account?.account?.kind === "student"
+      ? account.learners?.[0]?.id
+      : account?.adultPractice?.learner?.id;
   return own ? { kind: "learner", id: own } : null;
 }
 
