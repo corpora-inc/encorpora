@@ -8,7 +8,7 @@
  */
 import { sourceCorpus } from "../src/search/source-corpus";
 import { createLexicalIndex } from "../src/search/lexical";
-import { relevanceSet } from "../src/search/relevance-set";
+import { relevanceSet, skillRelevanceSet } from "../src/search/relevance-set";
 import {
   attachTerms,
   buildLibrary,
@@ -87,5 +87,28 @@ for (const [name, run] of engines) {
     `${name}: ${grouped}/${relevanceSet.length} (${pct(grouped)}%) hit@3 by group; ${overall}/${relevanceSet.length} (${pct(overall)}%) overall`,
   );
   if (verbose && misses.length) console.log(misses.join("\n"));
+  // Skill queries: the Skills group's first three (hit) and first five
+  // (precision: a wrong skill shown counts against it).
+  let skillHits = 0,
+    precision = 0;
+  const skillMisses: string[] = [];
+  for (const { query, skills } of skillRelevanceSet) {
+    const shown = (await run(query))
+      .filter((id) => id.startsWith("skill:"))
+      .slice(0, 5)
+      .map((id) => id.slice("skill:".length));
+    const good = shown.filter((id) => skills.includes(id)).length;
+    if (shown.slice(0, 3).some((id) => skills.includes(id))) skillHits++;
+    precision += shown.length ? good / shown.length : 0;
+    if (good < shown.length || !shown.length)
+      skillMisses.push(
+        `  ${good}/${shown.length} ${query} → ${shown.join(", ") || "(nothing)"}`,
+      );
+  }
+  const n = skillRelevanceSet.length;
+  console.log(
+    `  skills: ${skillHits}/${n} hit@3; precision@5 ${Math.round((100 * precision) / n)}%`,
+  );
+  if (verbose && skillMisses.length) console.log(skillMisses.join("\n"));
 }
 semantic?.close();
