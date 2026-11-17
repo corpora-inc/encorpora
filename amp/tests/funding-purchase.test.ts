@@ -10,6 +10,10 @@ import {
   type FundingRequest,
 } from "../src/funding-purchase/contracts.js";
 import { renderFundingQuote } from "../src/funding-purchase/quote.js";
+import {
+  documentPalette,
+  fundingDocument,
+} from "../src/funding-purchase/quote-pdf.js";
 import { annualTermEnd } from "../src/funding-purchase/provision.js";
 import { testFundingOffer as offer } from "./funding-purchase.fixture.js";
 import { researchedRefundTerms } from "../src/funding-purchase/refund-terms.js";
@@ -19,7 +23,7 @@ import {
   programMonthlyPriceMinor,
 } from "../src/funding-purchase/program-prices.js";
 import { fundingPrograms } from "../src/funding-purchase/programs.js";
-import { mkdtemp, writeFile, rm } from "node:fs/promises";
+import { mkdtemp, readFile, writeFile, rm } from "node:fs/promises";
 import { execFileSync } from "node:child_process";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -141,11 +145,11 @@ test("named invoices use an explicit parent-supplied name and never imply paymen
     "named-student-invoice",
   );
   const html = renderFundingQuote(named);
-  assert.match(html, /Education purchase invoice/);
+  assert.match(html, /<h1>Invoice<\/h1>/);
   assert.match(html, /Zoë García &lt;&amp;&gt;/);
   assert.ok(!html.includes("opaque-student"));
   assert.ok(!html.includes("not an invoice"));
-  assert.match(html, /not a receipt or confirmation of payment/);
+  assert.match(html, /Amount due \(USD\)/);
   const { renderFundingQuotePdf, validateInvoiceStudentName } =
     await import("../src/funding-purchase/quote-pdf.js");
   assert.equal(
@@ -214,6 +218,151 @@ test("standard state invoices fit one Letter page, including a long student name
   }
 });
 
+test("program invoices carry each reviewer's required fields once, inside an A4-safe Letter page, and no submission steps", async () => {
+  const { renderFundingQuotePdf } =
+    await import("../src/funding-purchase/quote-pdf.js");
+  const { PDFDocument } = await import("pdf-lib");
+  // The operator's submission steps for the parent (the invoice page and the
+  // invoice email show them); they are not part of the invoice.
+  const instructions =
+    "Download your invoice. In ClassWallet, choose Pay Vendor, select Corpora Inc, enter the invoice total, upload the invoice and submit for program review. Your program decides whether to approve this purchase. Do not also pay by card.";
+  const directory = await mkdtemp(join(tmpdir(), "amp-invoice-fields-"));
+  try {
+    for (const [programId, jurisdiction, programName] of [
+      ["ar-efa", "AR", "Arkansas Education Freedom Account"],
+      ["az-esa", "AZ", "Arizona Empowerment Scholarship Account"],
+      ["nh-efa", "NH", "New Hampshire Education Freedom Account"],
+    ] as const)
+      for (const termMonths of [12, 1] as const) {
+        const invoice: FundingRequest = {
+          ...request,
+          id: "3f6c2a1e-8b4d-4c7a-9e21-5d0b7f9a6c13",
+          createdAt: "2026-11-16T15:42:00.000Z",
+          expiresAt: "2026-12-16T15:42:00.000Z",
+          studentBillingName: "Zoë García",
+          offer: {
+            ...offer,
+            programId,
+            jurisdiction,
+            programName,
+            programYear: "2026-27",
+            productTitle: `AMP Mathematics - ${termMonths === 1 ? "monthly" : "annual"} learner license`,
+            sku: `amp-math-${termMonths === 1 ? "monthly" : "annual"}-single`,
+            documentPolicy: "named-student-invoice",
+            route: "direct-pay",
+            purchaseReview: "individual-approval-required",
+            activationPolicy: "after-settlement",
+            termMonths,
+            termPolicy:
+              termMonths === 1
+                ? "one-month-from-invoice"
+                : "twelve-months-from-invoice",
+            subtotalMinor: termMonths === 1 ? 5900 : 59900,
+            instructions,
+            merchant: {
+              legalName: "Corpora Inc",
+              postalAddress: "60 MLK Jr Dr, Emerson GA 30137, United States",
+              supportEmail: "support@corpora.inc",
+            },
+          },
+        };
+        const path = join(directory, `${programId}-${termMonths}.pdf`);
+        const bytes = await renderFundingQuotePdf(invoice);
+        await writeFile(path, bytes);
+        const pdf = execFileSync("pdftotext", [path, "-"], {
+          encoding: "utf8",
+        });
+        const html = renderFundingQuote(invoice)
+          .replace(/<style>[\s\S]*?<\/style>/, "")
+          .replace(/<[^>]+>/g, " ");
+        const total = termMonths === 1 ? "$59.00" : "$599.00";
+        for (const document of [pdf, html]) {
+          const words = document.replace(/\s+/g, " ");
+          // AR Invoicing & Payment Guide; AZ ESA Parent Handbook 2026–27
+          // p. 43; NH EFA Provider Handbook p. 12 (quote-pdf.ts).
+          for (const required of [
+            "Corpora Inc",
+            "60 MLK Jr Dr",
+            "Emerson GA 30137, United States",
+            "support@corpora.inc",
+            "Invoice number",
+            invoice.id,
+            "Issue date",
+            "Nov 16, 2026",
+            "Valid until",
+            "Dec 16, 2026",
+            "Bill to",
+            programName,
+            "Student",
+            "Zoë García",
+            "Service dates",
+            termMonths === 1
+              ? "Nov 16, 2026 – Dec 16, 2026"
+              : "Nov 16, 2026 – Nov 16, 2027",
+            invoice.offer.productTitle,
+            `SKU ${invoice.offer.sku}`,
+            "Subtotal",
+            "Tax",
+            "$0.00",
+            "Amount due (USD)",
+            total,
+          ])
+            assert.ok(
+              words.includes(required),
+              `${programId} ${termMonths}: missing ${required}`,
+            );
+          assert.doesNotMatch(
+            words,
+            /Pay Vendor|pay by card|ClassWallet|Next step|not a receipt|program decides/i,
+          );
+          const sentences = words
+            .split(/(?<=[.!?])\s+/)
+            .map((sentence) => sentence.trim())
+            .filter((sentence) => sentence.length > 24);
+          assert.equal(
+            new Set(sentences).size,
+            sentences.length,
+            `${programId} ${termMonths}: a sentence repeats`,
+          );
+        }
+        const document = await PDFDocument.load(bytes);
+        assert.equal(document.getPageCount(), 1);
+        assert.deepEqual(document.getPage(0).getSize(), {
+          width: 612,
+          height: 792,
+        });
+        // Every word sits inside the 60 pt margins, which also print whole on
+        // A4 at actual size (pdftotext's substitute metrics can overrun a
+        // right-aligned word by up to 2 pt).
+        const boxes = execFileSync("pdftotext", ["-bbox", path, "-"], {
+          encoding: "utf8",
+        });
+        for (const [, xMin, yMin, xMax, yMax] of boxes.matchAll(
+          /<word xMin="([\d.]+)" yMin="([\d.]+)" xMax="([\d.]+)" yMax="([\d.]+)"/g,
+        )) {
+          assert.ok(Number(xMin) >= 58 && Number(xMax) <= 554, boxes);
+          assert.ok(Number(yMin) >= 40 && Number(yMax) <= 760, boxes);
+        }
+      }
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test("funding documents use the app's light-theme colour tokens", async () => {
+  const tokens = await readFile(
+    new URL("../src/web/ui/tokens.css", import.meta.url),
+    "utf8",
+  );
+  for (const [token, value] of Object.entries(documentPalette))
+    // The first definition of each token is the light theme's.
+    assert.equal(
+      tokens.match(new RegExp(`--${token}:\\s*(#[0-9a-f]{6});`, "i"))?.[1],
+      value,
+      token,
+    );
+});
+
 test("invoice PDFs and HTML distinguish purchased terms, payment status and document validity", async () => {
   const { renderFundingQuotePdf } =
     await import("../src/funding-purchase/quote-pdf.js");
@@ -242,7 +391,7 @@ test("invoice PDFs and HTML distinguish purchased terms, payment status and docu
       for (const document of [pdf, html]) {
         const words = document.replace(/\s+/g, " ");
         assert.match(words, /Jordan Example/);
-        assert.match(words, /not a receipt or confirmation of payment/);
+        assert.match(words, /Amount due \(USD\)/);
         assert.ok(words.includes(`${termMonths} calendar month`));
         assert.match(words, /existing paid access/);
         assert.match(
@@ -259,7 +408,8 @@ test("invoice PDFs and HTML distinguish purchased terms, payment status and docu
             /annual curriculum|12 months|12 calendar months/i,
           );
       }
-      assert.match(pdf, /Issued \/ valid until/);
+      assert.match(pdf, /Issue date/);
+      assert.match(pdf, /Valid until/);
       assert.match(pdf, /\$123\.00/);
     }
   } finally {
@@ -291,6 +441,11 @@ test("fixed-term invoices print the same dated month or year that is purchased",
               : "twelve-months-from-invoice",
         },
       };
+      // The service period starts on the issue date the invoice prints.
+      assert.deepEqual(fundingDocument(invoice).references[1], [
+        "Issue date",
+        "Jan 31, 2024",
+      ]);
       const path = join(directory, `dated-${termMonths}.pdf`);
       await writeFile(path, await renderFundingQuotePdf(invoice));
       const pdf = execFileSync("pdftotext", [path, "-"], { encoding: "utf8" });
@@ -300,11 +455,10 @@ test("fixed-term invoices print the same dated month or year that is purchased",
         assert.ok(
           words.includes(
             termMonths === 1
-              ? "01/31/2024 – 02/29/2024"
-              : "01/31/2024 – 01/31/2025",
+              ? "Jan 31, 2024 – Feb 29, 2024"
+              : "Jan 31, 2024 – Jan 31, 2025",
           ),
         );
-        assert.match(words, /license period begins on the invoice date/);
         assert.doesNotMatch(
           words,
           /from license activation|dates must be confirmed/,

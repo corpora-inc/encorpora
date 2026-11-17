@@ -12,7 +12,7 @@ export function FamilyReturn() {
       params={{ _splat: home.slice(1) }}
       className={buttonClass("quiet")}
     >
-      Back to family
+      Open your family
     </Link>
   ) : null;
 }

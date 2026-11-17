@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
+import { Page } from "../../ui/Page";
+import { PageHeader } from "../../ui/PageHeader";
 import type { ReactNode } from "react";
 import type { AuthSession } from "../../auth";
 import { meOptions } from "../../lib/query";
@@ -20,27 +22,9 @@ export function whose(learner: Pick<WorkbookLearner, "name" | "pauseViewer">) {
   return { own, label: own ? null : learner.name };
 }
 
-/** The way back to the learner's workbooks, above a workbook's own title. */
-export function WorkbookTrail({ learner }: { learner: WorkbookLearner }) {
-  const who = whose(learner);
-  return (
-    <nav className={styles.trail} aria-label="Workbooks">
-      <Link
-        to="/learners/$learnerId/workbooks"
-        params={{ learnerId: learner.id }}
-        className={styles.trailLink}
-      >
-        <svg viewBox="0 0 16 16" aria-hidden="true">
-          <path d="M10 3.5 5.5 8l4.5 4.5" />
-        </svg>
-        {who.own ? "Your workbooks" : `${learner.name}’s workbooks`}
-      </Link>
-    </nav>
-  );
-}
-
-/** Workbook content on AppShell for an account-owned learner with learning
- * permission; workbook history does not depend on a license. */
+/** A learner's workbooks, on a standard Page under the app frame, for an
+ * account-owned learner with learning permission; workbook history does not
+ * depend on a license. Each screen draws its own header. */
 export function WorkbookFrame({
   session,
   learnerId,
@@ -64,7 +48,7 @@ export function WorkbookFrame({
   if (!data)
     body = me.error ? (
       <div className={styles.notice}>
-        <h1 className={styles.title}>Workbooks</h1>
+        <PageHeader title="Workbooks" />
         <p role="alert">
           Your family details didn't load. Check your connection and try again.
         </p>
@@ -82,7 +66,7 @@ export function WorkbookFrame({
   else if (!learner)
     body = (
       <div className={styles.notice}>
-        <h1 className={styles.title}>Workbooks</h1>
+        <PageHeader title="Workbooks" />
         <p>This learner isn't in your family. Choose a learner in Family.</p>
         <Link
           to="/$"
@@ -96,10 +80,10 @@ export function WorkbookFrame({
   else if (!canReadWorkbooks(learner))
     body = (
       <div className={styles.notice}>
-        {!(learner.adult && !learner.simulation) && (
-          <p className={styles.learnerLabel}>{learner.name}</p>
-        )}
-        <h1 className={styles.title}>Workbooks</h1>
+        <PageHeader
+          title="Workbooks"
+          subtitle={learner.adult && !learner.simulation ? null : learner.name}
+        />
         <p>
           {learner.adult && !learner.simulation
             ? "Workbooks come with your practice. Finish setting up your access to print one."
@@ -128,9 +112,5 @@ export function WorkbookFrame({
               ? "adult"
               : "parent",
     });
-  return (
-    <main className={styles.page} aria-busy={!data || busy}>
-      {body}
-    </main>
-  );
+  return <Page aria-busy={!data || busy}>{body}</Page>;
 }

@@ -4,7 +4,10 @@ import {
   useQueryClient,
   useSuspenseQuery,
 } from "@tanstack/react-query";
-import { useParams } from "@tanstack/react-router";
+import { useParams, useRouter } from "@tanstack/react-router";
+import { closeTo } from "../../lib/return-to";
+import { Sheet } from "../../ui/Sheet";
+import { useWorkbookPaths } from "./paths";
 import { Navigate } from "../../nav/Navigate";
 import { useState } from "react";
 import type { AuthSession } from "../../auth";
@@ -18,12 +21,8 @@ import type {
 } from "../../../workbook/contracts";
 import { saveWorkbookResults, workbookResultsOptions } from "./api";
 import { dateLabel, sectionNames, workbookMessage } from "./model";
-import {
-  WorkbookFrame,
-  WorkbookTrail,
-  whose,
-  type WorkbookLearner,
-} from "./WorkbookFrame";
+import { WorkbookFrame, whose, type WorkbookLearner } from "./WorkbookFrame";
+import { PageHeader } from "../../ui/PageHeader";
 import styles from "./Workbooks.module.css";
 
 type Draft = { answer?: string; mark?: "right" | "not-yet" };
@@ -44,15 +43,70 @@ export function WorkbookResultsScreen() {
   );
 }
 
-function Results({
-  session,
+/** A workbook's results, as a sheet over the screen that lists the
+ * learner's workbooks (useWorkbookPaths): a family child's page. Its own
+ * address; ✕, Escape and the browser's Back close it to that screen. */
+export function WorkbookResultsSheet({
   learner,
   workbookId,
 }: {
-  session: AuthSession;
   learner: WorkbookLearner;
   workbookId: string;
 }) {
+  const router = useRouter();
+  const paths = useWorkbookPaths();
+  const session = useQuery(sessionOptions).data;
+  const data = useQuery({
+    ...workbookResultsOptions(
+      session ?? { accountId: "", token: "" },
+      learner.id,
+      workbookId,
+    ),
+    enabled: !!session,
+  }).data;
+  if (!session) return null;
+  return (
+    <Sheet
+      open
+      tall
+      title={resultsTitle(data)}
+      description={resultsLede(learner)}
+      onOpenChange={(open) => {
+        if (!open) closeTo(router, `/${paths.list(learner.id)}`);
+      }}
+      returnFocus={() => document.querySelector<HTMLElement>("main h1") ?? null}
+    >
+      <Results learner={learner} workbookId={workbookId} header={false} />
+    </Sheet>
+  );
+}
+
+const resultsTitle = (
+  data: { workbook: { number: number; date: string } } | undefined,
+) =>
+  data
+    ? `No. ${data.workbook.number} · ${dateLabel(data.workbook.date)}`
+    : "Workbook results";
+const resultsLede = (learner: WorkbookLearner) =>
+  whose(learner).own
+    ? "Type each answer, or mark it right or not yet."
+    : `Type each of ${learner.name}’s answers, or mark it right or not yet.`;
+
+function Results({
+  session: given,
+  learner,
+  workbookId,
+  header = true,
+}: {
+  /** The signed-in session, else read here (a sheet's, signed in). */
+  session?: AuthSession;
+  learner: WorkbookLearner;
+  workbookId: string;
+  /** In a sheet, the sheet's own title says it. */
+  header?: boolean;
+}) {
+  const signedIn = useQuery({ ...sessionOptions, enabled: !given }).data;
+  const session = given ?? signedIn ?? { accountId: "", token: "" };
   const client = useQueryClient();
   const results = useQuery(
     workbookResultsOptions(session, learner.id, workbookId),
@@ -110,17 +164,12 @@ function Results({
   const open = data?.rows.filter((row) => !row.recorded).length ?? 0;
   return (
     <>
-      <WorkbookTrail learner={learner} />
-      <h1 className={styles.title}>
-        {data
-          ? `No. ${data.workbook.number} · ${dateLabel(data.workbook.date)}`
-          : "Workbook results"}
-      </h1>
-      <p className={styles.lede}>
-        {whose(learner).own
-          ? "Type each answer, or mark it right or not yet."
-          : `Type each of ${learner.name}’s answers, or mark it right or not yet.`}
-      </p>
+      {header && (
+        <PageHeader
+          title={resultsTitle(data)}
+          subtitle={resultsLede(learner)}
+        />
+      )}
       {results.error ? (
         <p className={styles.message} role="alert">
           {workbookMessage(

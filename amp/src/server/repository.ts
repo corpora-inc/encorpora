@@ -947,6 +947,7 @@ export class PgTransaction implements LearnerTransaction {
     return startingSd({
       birthYear: learner?.birth_year as number | null | undefined,
       adult: learner?.adult === true,
+      simulation: learner?.simulation === true,
       band: learner?.starting_band as Parameters<typeof startingSd>[0]["band"],
     });
   }

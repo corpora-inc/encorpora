@@ -60,8 +60,6 @@ const CARRIED: Record<string, readonly string[]> = {
   "": ["devices"],
   map: ["skill", "lens", "sort"],
   "reports/grades": ["term", "year", "student"],
-  reports: ["term", "year", "student"],
-  time: ["week", "to", "sort"],
   people: ["devices"],
   settings: [],
 };
@@ -182,6 +180,7 @@ export function familyClassTarget({
   search,
   hash,
   people,
+  only,
 }: {
   family: string;
   parts: readonly string[];
@@ -190,6 +189,8 @@ export function familyClassTarget({
    * link's secret lives. */
   hash?: string;
   people: PersonMap;
+  /** The family's one child, when it has exactly one. */
+  only?: string;
 }): FamilyTarget {
   const target = leafFor(parts);
   const { learner, rest, foreign } = childOf(search[OPEN_KEY], people);
@@ -227,6 +228,8 @@ export function familyClassTarget({
     return viaReturn(familyPath(family, "cards"), {
       student: search.student,
     });
+  const part = childPart(family, target.leaf, search, rest, only);
+  if (part) return part;
   const keys =
     CARRIED[target.leaf] ??
     (target.leaf.startsWith("workbooks")
@@ -241,9 +244,6 @@ export function familyClassTarget({
   const opens: Search = {
     ...(devices && target.leaf !== "settings" ? { devices: 1 } : {}),
     ...(target.leaf.startsWith("workbooks") ? workbookIdentity(search) : {}),
-    // Time's own working view: its range, its measure and one of the
-    // family's own children's days, typed (a bare `from` is a return).
-    ...(target.leaf === "time" ? timeView(search, people) : {}),
   };
   const result = viaReturn(
     familyPath(family, target.leaf),
@@ -256,6 +256,44 @@ export function familyClassTarget({
     : result;
 }
 
+/** The record leaves that are parts of each child's page now (family-routes'
+ * aliases), and the part each opens at. */
+const CHILD_PARTS: Record<string, string | null> = {
+  map: null,
+  time: "child-time",
+  reports: "child-reports",
+  workbooks: "child-workbooks",
+};
+
+/**
+ * Where a record leaf opens, computed once so no alias hop follows: for a
+ * family of one child, that child's page at the part (Progress keeps its
+ * curriculum layers); for several, Progress. The workbook print for several
+ * keeps its own address. Null for any other leaf.
+ */
+function childPart(
+  family: string,
+  leaf: string,
+  search: Search,
+  rest: readonly Entity[],
+  only: string | undefined,
+): FamilyTarget | null {
+  if (!(leaf in CHILD_PARTS)) return null;
+  const part = CHILD_PARTS[leaf]!;
+  if (
+    leaf === "workbooks" &&
+    (search.several !== undefined || workbookIdentity(search).several)
+  )
+    return null;
+  if (!only && part === null) return null;
+  const carried = part === null ? pick(search, CARRIED.map ?? []) : {};
+  const result = viaReturn(
+    familyPath(family, only ? `kids/${only}` : "map"),
+    withOpen(carried, part === null ? [...rest] : []),
+  );
+  return part && only ? { ...result, hash: part } : result;
+}
+
 /** The family Settings sections an old settings anchor may name. */
 const SETTINGS_SECTIONS = new Set([
   "family-children",
@@ -265,24 +303,6 @@ const SETTINGS_SECTIONS = new Set([
 ]);
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
-
-/** Time's working view in an old address: the range (`period`), the measure
- * (`chart=problems`), one of the family's own children's days (`student`,
- * their roster person) and a typed range start. */
-export function timeView(search: Search, people: PersonMap): Search {
-  return {
-    ...(["week", "month", "term"].includes(String(search.period))
-      ? { period: String(search.period) }
-      : {}),
-    ...(search.chart === "problems" ? { chart: "problems" } : {}),
-    ...(typeof search.student === "string" && people.has(search.student)
-      ? { student: search.student }
-      : {}),
-    ...(typeof search.from === "string" && DAY.test(search.from)
-      ? { from: search.from }
-      : {}),
-  };
-}
 
 /** A workbook's own identity in an old address: the set printed on a day
  * (its QR code names it), and a stack's day, minutes, paper and children. */
@@ -315,12 +335,15 @@ export function familyOrgTarget({
   search,
   hash,
   people = new Map(),
+  only,
 }: {
   family: string;
   page: "roster" | "map" | "settings" | "today";
   search: Search;
   hash?: string;
   people?: PersonMap;
+  /** The family's one child, when it has exactly one. */
+  only?: string;
 }): FamilyTarget {
   const leaf = {
     roster: "people",
@@ -334,6 +357,8 @@ export function familyOrgTarget({
       familyPath(family, `kids/${learner}`),
       withOpen(pick(search, ["skill"]), rest),
     );
+  const part = childPart(family, leaf, search, rest, only);
+  if (part) return part;
   const result = viaReturn(familyPath(family, leaf), search);
   return leaf === "settings" && hash && SETTINGS_SECTIONS.has(hash)
     ? { ...result, hash }
