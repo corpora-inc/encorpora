@@ -64,6 +64,7 @@ export const documentRoutePatterns: readonly string[] = [
   "^/lessons/?$",
   "^/lessons/[^/]+/?$",
   "^/lessons/[^/]+/watch/?$",
+  "^/lessons/[^/]+/watch/[^/]+/?$",
   "^/me/?$",
   "^/me/level/?$",
   "^/me/profiles/?$",
