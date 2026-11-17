@@ -171,8 +171,6 @@ def validate(spec):
     if not formats or not isinstance(formats, list) or any(f not in FORMATS for f in formats) \
             or len(set(formats)) != len(formats):
         raise SpecError(f'formats must be a list drawn from {sorted(FORMATS)}')
-    if not GOOGLE_FORMATS <= set(formats):
-        raise SpecError('paid video specs require wide, square and portrait; feed is supplemental')
 
     shots = spec.get('shots')
     if not isinstance(shots, list) or not shots:

@@ -45,11 +45,10 @@ class Delivery(unittest.TestCase):
         self.assertEqual(set(result), {'wide', 'square', 'portrait'})
         self.assertEqual(result['square']['width'], 1080)
 
-    def test_feed_cannot_replace_missing_square(self):
+    def test_any_set_of_shapes_passes(self):
         del self.exports['square']
         self.save()
-        with self.assertRaisesRegex(spec.SpecError, 'feed cannot replace square'):
-            delivery.check(self.manifest)
+        self.assertEqual(set(delivery.check(self.manifest)), set(self.exports))
 
     def test_file_labeled_square_with_feed_dimensions_is_rejected(self):
         self.media['square']['streams'][0]['height'] = 1350
@@ -86,20 +85,19 @@ class Delivery(unittest.TestCase):
         with self.assertRaisesRegex(spec.SpecError, 'not in the checked'):
             delivery.check(self.manifest, self.root / 'other.mp4')
 
-    def test_incomplete_upload_fails_before_credentials_or_network(self):
-        del self.exports['square']
+    def test_empty_delivery_fails_before_credentials_or_network(self):
+        self.exports.clear()
         self.save()
         with patch.dict(os.environ, {'AMP_YOUTUBE_CHANNEL_ID': 'test-channel'}), patch.object(youtube, '_token') as token:
             with self.assertRaises(spec.SpecError):
                 youtube.upload(self.root / 'wide.mp4', 'Title', '', delivery_manifest=self.manifest)
             token.assert_not_called()
 
-    def test_spec_cannot_omit_square(self):
+    def test_spec_may_omit_square(self):
         example = Path(__file__).resolve().parents[1] / 'cinema/examples/ad.json'
         data = json.loads(example.read_text())
         data['formats'] = ['wide', 'portrait', 'feed']
-        with self.assertRaisesRegex(spec.SpecError, 'require wide, square and portrait'):
-            spec.validate(data)
+        spec.validate(data)
 
     def test_upload_receipt_identifies_sent_bytes_if_local_file_changes_during_put(self):
         video = self.root / 'square.mp4'
