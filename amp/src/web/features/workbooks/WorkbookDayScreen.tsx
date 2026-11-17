@@ -48,8 +48,10 @@ import {
   searchChoices,
   sectionNames,
   workbookMessage,
+  workbookSearchSchema,
   type WorkbookSearch,
 } from "./model";
+import { useWorkbookPaths } from "./paths";
 import { AllowancePause } from "../continue/AllowancePause";
 import { WorkbookFrame, whose, type WorkbookLearner } from "./WorkbookFrame";
 import { WorkbookHistory } from "./WorkbookHistoryScreen";
@@ -92,36 +94,52 @@ function DaySheet({
   learner: WorkbookLearner;
   date: string;
 }) {
-  const router = useRouter();
-  const who = whose(learner);
   return (
     <>
       <WorkbookHistory session={session} learner={learner} />
-      <Sheet
-        open
-        tall
-        title={dateLabel(date)}
-        description={who.label ?? undefined}
-        onOpenChange={(open) => {
-          // Back to where the day was opened, else its workbooks.
-          if (!open) closeTo(router, `/learners/${learner.id}/workbooks`);
-        }}
-        returnFocus={() =>
-          document.querySelector<HTMLElement>("main h1") ?? null
-        }
-      >
-        {date === localDate() ? (
-          <TodayOrUsed
-            key={learner.id}
-            session={session}
-            learner={learner}
-            date={date}
-          />
-        ) : (
-          <PastDay session={session} learner={learner} date={date} />
-        )}
-      </Sheet>
+      <WorkbookDaySheet learner={learner} date={date} />
     </>
+  );
+}
+
+/** A day's workbook, as a sheet over the screen that lists the learner's
+ * workbooks (useWorkbookPaths): its own address; ✕, Escape and the
+ * browser's Back close it to that screen. */
+export function WorkbookDaySheet({
+  learner,
+  date,
+}: {
+  learner: WorkbookLearner;
+  date: string;
+}) {
+  const router = useRouter();
+  const paths = useWorkbookPaths();
+  const session = useQuery(sessionOptions).data;
+  const who = whose(learner);
+  if (!session) return null;
+  return (
+    <Sheet
+      open
+      tall
+      title={dateLabel(date)}
+      description={who.label ?? undefined}
+      onOpenChange={(open) => {
+        // Back to where the day was opened, else its workbooks.
+        if (!open) closeTo(router, `/${paths.list(learner.id)}`);
+      }}
+      returnFocus={() => document.querySelector<HTMLElement>("main h1") ?? null}
+    >
+      {date === localDate() ? (
+        <TodayOrUsed
+          key={learner.id}
+          session={session}
+          learner={learner}
+          date={date}
+        />
+      ) : (
+        <PastDay session={session} learner={learner} date={date} />
+      )}
+    </Sheet>
   );
 }
 
@@ -148,8 +166,13 @@ function Today({
   learner: WorkbookLearner;
   date: string;
 }) {
-  const search = useSearch({ strict: false }) as WorkbookSearch;
+  // Read through the schema here too: on a child's page the day is an
+  // overlay route with no search validation of its own.
+  const search: WorkbookSearch = workbookSearchSchema.parse(
+    useSearch({ strict: false }),
+  );
   const navigate = useNavigate();
+  const paths = useWorkbookPaths();
   const client = useQueryClient();
   const paper = search.paper ?? defaultPaper();
   const choices = searchChoices(search);
@@ -286,8 +309,8 @@ function Today({
         );
       } else {
         await navigate({
-          to: "/learners/$learnerId/workbooks/$workbookId/results",
-          params: { learnerId: learner.id, workbookId: made.id },
+          to: "/$",
+          params: { _splat: paths.results(learner.id, made.id) },
         });
       }
     } catch (error) {
@@ -549,6 +572,7 @@ function Contents({
   /** A load that failed: said in the card's reserved space, with a retry. */
   failure?: { text: string; retry: () => void };
 }) {
+  const paths = useWorkbookPaths();
   return (
     <article
       className={`${styles.contents} ${stale && !failure && !used ? styles.stale : ""}`}
@@ -613,8 +637,8 @@ function Contents({
               </Button>
             ) : (
               <Link
-                to="/learners/$learnerId/workbooks/$workbookId/results"
-                params={{ learnerId, workbookId: workbook.id }}
+                to="/$"
+                params={{ _splat: paths.results(learnerId, workbook.id) }}
                 className={buttonClass("quiet", styles.resultsButton, "start")}
               >
                 Enter results
