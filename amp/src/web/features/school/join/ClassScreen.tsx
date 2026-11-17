@@ -95,7 +95,7 @@ export function ClassScreen() {
       </JoinFrame>
     );
   return (
-    <JoinFrame step="name" code={shown}>
+    <JoinFrame step="name" code={shown} width="wide">
       <div className={styles.wide}>
         <h1 className={styles.title}>Tap your name</h1>
         <p className={styles.subtitle}>{roster.data.class.name}</p>

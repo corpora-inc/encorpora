@@ -51,6 +51,11 @@ vi.mock("../../practice/FeedbackPreferences", () => ({
 vi.mock("../../profiles/ProfileBar", () => ({
   ProfilePlace: () => <span data-testid="profile-place" />,
 }));
+// Who the drawer could choose between (features/spaces/learner-choice.ts):
+// its own tests cover the rule; these drawers offer no choice.
+vi.mock("../../spaces/learner-choice", () => ({
+  useLearnerChoice: () => ({ learners: [], canChoose: false }),
+}));
 vi.mock("../../spaces/useSpace", () => ({
   useLocationMatch: () => ({ pathname: harness.pathname.value }),
   useSpace: () => null,

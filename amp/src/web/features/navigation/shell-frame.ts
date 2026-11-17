@@ -57,6 +57,8 @@ export function shellFrame(
       board: false,
     };
   if (path === "/school/new") return null;
+  // A school's guided setup: the app's plain bar over its own stepper.
+  if (/^\/school\/[^/]+\/setup(?:\/|$)/.test(path)) return { kind: "plain" };
   if (
     [
       "/school/invite",
@@ -171,7 +173,7 @@ export function shellFrame(
     /^\/start\/(parent|tutor)\/[a-z-]+$/.test(path)
   )
     return { kind: "plain" };
-  if (path === "/practice") return { kind: "practice" };
+  if (/^\/practice(?:\/[^/]+)?\/?$/.test(path)) return { kind: "practice" };
   // The immersive film route supplies its own return and playback controls.
   if (/^\/lessons\/[^/]+\/watch$/.test(path)) return null;
   if (under(path, "/lessons") || under(path, "/books"))

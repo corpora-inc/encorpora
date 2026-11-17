@@ -1,3 +1,4 @@
+import { childAddress, practiceParams } from "../spaces/identity";
 import { PracticeLabel } from "../practice/CurriculumPractice";
 import { ScreenTitle } from "../../ui/ScreenTitle";
 import { EntityLink } from "../../nav/links";
@@ -11,7 +12,6 @@ import {
   useSearch,
   Link,
 } from "@tanstack/react-router";
-import { childAddress } from "../spaces/identity";
 import { skillCatalogOptions, useLearningView } from "../../lib/learning-view";
 import { useUrlSearchText } from "../../lib/url-search-text";
 import { useHeroAction } from "../../lib/shell-slots";
@@ -176,7 +176,9 @@ export function InventoryScreen() {
     (sum, s) => sum + (evidence.get(s.id)?.independentCorrect ?? 0),
     0,
   );
-  const inCollection = matching.filter((s) => shows(filter, evidence.get(s.id)));
+  const inCollection = matching.filter((s) =>
+    shows(filter, evidence.get(s.id)),
+  );
   // A search lists best first; the whole collection, by grade then title.
   const visible = needle
     ? inCollection
@@ -206,6 +208,7 @@ export function InventoryScreen() {
     return (
       <main className={styles.page}>
         <InventoryHero
+          learner={view.learner?.id}
           total={allSkills.length}
           preview={visible.slice(0, 4).map((skill) => skill.title)}
         />
@@ -393,7 +396,11 @@ export function InventoryScreen() {
               <Link
                 className={buttonClass("primary")}
                 to="/$"
-                params={{ _splat: "practice" }}
+                params={
+                  view.learner
+                    ? practiceParams(view.learner.id)
+                    : { _splat: "practice" }
+                }
                 search={{ skill }}
               >
                 <PracticeLabel />
@@ -472,9 +479,11 @@ function SkillRow({
 /** Day 0: what Inventory will be, the one step that fills it, and the whole
  * list a tap away. The bar's Practice steps aside for this one. */
 function InventoryHero({
+  learner,
   total,
   preview,
 }: {
+  learner: string | undefined;
   total: number;
   preview: readonly string[];
 }) {
@@ -496,7 +505,7 @@ function InventoryHero({
       </p>
       <Link
         to="/$"
-        params={{ _splat: "practice" }}
+        params={learner ? practiceParams(learner) : { _splat: "practice" }}
         className={buttonClass("primary", styles.heroGo)}
       >
         Start practicing

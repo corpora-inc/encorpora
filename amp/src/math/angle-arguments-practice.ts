@@ -12,7 +12,7 @@ import {
   type MultiPartChoiceResponse,
 } from "./multi-part-choice";
 import { serializeSelection } from "./selection-response";
-import { scene } from "./scene/author";
+import { around, scene } from "./scene/author";
 import type { Element, Point } from "./scene/spec";
 import { axisRecord, chooseAxes, defineAxis } from "./variation/axes";
 
@@ -225,6 +225,10 @@ function angleMark(
  * anchor is the point itself. */
 function pointName(name: string, p: V, inside: V): Element {
   const u = unit(sub(p, inside));
+  const away: [-1 | 0 | 1, -1 | 0 | 1] = [
+    u[0] > 0.3 ? -1 : u[0] < -0.3 ? 1 : 0,
+    u[1] > 0.3 ? 1 : u[1] < -0.3 ? -1 : 0,
+  ];
   return {
     type: "text",
     id: `p-${name.replace("′", "p")}`,
@@ -232,11 +236,13 @@ function pointName(name: string, p: V, inside: V): Element {
     text: name,
     font: "math",
     bold: true,
-    align: [
-      u[0] > 0.3 ? -1 : u[0] < -0.3 ? 1 : 0,
-      u[1] > 0.3 ? 1 : u[1] < -0.3 ? -1 : 0,
+    align: away,
+    // Away from the figure first; else the nearest clear place around the
+    // point (two figures side by side can bring two names together).
+    place: [
+      [Math.round(u[0] * 8), Math.round(-u[1] * 8), ...away],
+      ...around(10, 18),
     ],
-    offset: [Math.round(u[0] * 8), Math.round(-u[1] * 8)],
   };
 }
 const segment = (

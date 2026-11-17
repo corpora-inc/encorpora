@@ -232,6 +232,10 @@ function edgeLabel(id: string, a: V3, b: V3, center: V3, text: string): Prim {
     ny = -ny;
   }
   const unknown = text === "?";
+  const ax = nx < -0.3 ? 1 : nx > 0.3 ? -1 : 0,
+    ay = ny > 0.3 ? 1 : ny < -0.3 ? -1 : 0;
+  const ux = (q[0] - p[0]) / len,
+    uy = (q[1] - p[1]) / len;
   return {
     type: "text",
     id,
@@ -243,11 +247,17 @@ function edgeLabel(id: string, a: V3, b: V3, center: V3, text: string): Prim {
     bold: unknown,
     color: unknown ? "warm" : "ink",
     halo: true,
-    align: [
-      nx < -0.3 ? 1 : nx > 0.3 ? -1 : 0,
-      ny > 0.3 ? 1 : ny < -0.3 ? -1 : 0,
-    ],
-    offset: [nx * 10, -ny * 10],
+    align: [ax, ay],
+    // Off the edge's middle, outward; else slid along the edge, clear of a
+    // neighbouring solid's labels.
+    place: [0, 14, -14, 28, -28].map(
+      (k): [number, number, -1 | 0 | 1, -1 | 0 | 1] => [
+        nx * 10 + ux * k,
+        -ny * 10 - uy * k,
+        ax,
+        ay,
+      ],
+    ),
   };
 }
 

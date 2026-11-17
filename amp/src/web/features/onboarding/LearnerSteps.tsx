@@ -21,6 +21,7 @@ import { useCreateLearner, useSetBirthYear } from "./api";
 import { Progress } from "./Progress";
 import { useDraft } from "./state";
 import styles from "./Start.module.css";
+import { practiceParams } from "../spaces/identity";
 
 /**
  * Learner name, then birth year. A paid, unassigned enrollment is claimed for
@@ -72,7 +73,7 @@ export function LearnerSteps({
     void navigate(
       isFundedReturn(search.return)
         ? { to: fundedPrograms[search.return].path, search, replace: true }
-        : { to: "/$", params: { _splat: "practice" }, replace: true },
+        : { to: "/$", params: practiceParams(learnerId), replace: true },
     );
   };
   const assign = (learnerId: string) =>

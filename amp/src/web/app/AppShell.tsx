@@ -15,6 +15,7 @@ import type { SignedInMe } from "../../account/contracts";
 import { nativeRuntime } from "../native-runtime";
 import { meOptions, sessionOptions } from "../lib/query";
 import { useCurrentLearner } from "../learner-store";
+import { practicePath } from "../features/spaces/identity";
 import { useShellSlots } from "../lib/shell-slots";
 import { usePlaces } from "../features/navigation/PlaceSwitcher";
 import type { SpaceDescriptor } from "../features/spaces/resolve";
@@ -363,7 +364,7 @@ function ProgressAction({
       data-shell-action
     >
       <svg viewBox="0 0 16 16" aria-hidden="true">
-        {target.path !== "/practice" ? (
+        {!target.path.startsWith("/practice/") ? (
           <path
             d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"
             fill="none"
@@ -392,7 +393,7 @@ function practiceTarget(
   // Practice, where the one pause shows once the free problems are used.
   if (own)
     return me.adultPractice?.learner
-      ? { path: "/practice", label: "Practice" }
+      ? { path: practicePath(me.adultPractice.learner.id), label: "Practice" }
       : null;
   // A second parent's family's child practices from its class.
   if (secondParentChild(me, learnerId)) return null;
@@ -402,11 +403,14 @@ function practiceTarget(
   const learner =
     learners.find((entry) => entry.id === learnerId) ?? learners[0];
   if (learner && learner.learningAllowed !== false)
-    return { path: "/practice", label: "Practice" };
+    return { path: practicePath(learner.id), label: "Practice" };
   // An adult with no child, before this device has chosen a learner (a
   // shared lesson link): their own practice, never "Get started" again.
   if (!learner && me.adultPractice?.learner)
-    return { path: "/practice", label: "Practice" };
+    return {
+      path: practicePath(me.adultPractice.learner.id),
+      label: "Practice",
+    };
   if (me.account.kind === "student") return null;
   return learner ? null : { path: "/start", label: "Get started" };
 }

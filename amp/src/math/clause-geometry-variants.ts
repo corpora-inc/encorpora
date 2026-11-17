@@ -12,7 +12,7 @@ import {
   type Item,
   type Rng,
 } from "./number-geometry-clause-kit";
-import { scene } from "./scene/author";
+import { around, scene } from "./scene/author";
 import type { Element, Point, Scene, PathOp } from "./scene/spec";
 const polar = (angle: number, r = 4): Point => [
   r * Math.cos((angle * Math.PI) / 180),
@@ -419,9 +419,25 @@ export function recognizeAngle(r: Rng): Item {
           { type: "segment", from: [0, 0], to: [4, 0], arrow: "end" },
           { type: "segment", from: [0, 0], to: [1, 3], arrow: "end" },
           { type: "segment", from: [-3, 1], to: [-3, 3], arrow: "end" },
-          { type: "text", at: [0, -0.5], text: v },
-          { type: "text", at: [3, -0.5], text: a },
-          { type: "text", at: [1, 2.3], text: b },
+          // Each name beside its point, placed clear of the rays.
+          {
+            type: "text",
+            at: [0, 0],
+            text: v,
+            place: [[0, 8, 0, -1], ...around(10, 18)],
+          },
+          {
+            type: "text",
+            at: [3, 0],
+            text: a,
+            place: [[0, 8, 0, -1], ...around(10, 18)],
+          },
+          {
+            type: "text",
+            at: [0.8, 2.4],
+            text: b,
+            place: [[10, 0, -1, 0], [-10, 0, 1, 0], ...around(12, 20)],
+          },
         ).build(),
       },
       ...choice(
@@ -698,36 +714,43 @@ function deriveCircle(r: Rng): Item {
     { type: "circle", center: [h, k], r: radius },
     { type: "point", at: [h, k] },
     { type: "point", at: [px, py] },
+    // Labels at what they name; the layout places each clear of the
+    // circle, the legs, the axes and the other labels.
     {
       type: "text",
-      at: [h - radius * 0.25, k - radius * 0.32],
+      at: [h, k],
       text: `C(${h}, ${k})`,
+      place: [[-8, 8, 1, -1], ...around(8, 20)],
     },
     {
       type: "text",
-      at: [px + radius * 0.18, py + radius * 0.24],
+      at: [px, py],
       text: "P(x, y)",
+      place: [[8, -8, -1, 1], ...around(8, 20)],
     },
     { type: "segment", from: [h, k], to: [px, k], stroke: "axis" },
     { type: "segment", from: [px, k], to: [px, py], stroke: "warm" },
     { type: "segment", from: [h, k], to: [px, py], stroke: "accent" },
     {
       type: "text",
-      at: [h + dx / 2, k - radius * 0.1],
+      at: [h + dx / 2, k],
       text: "?",
       color: "axis",
+      place: [[0, 6, 0, -1], [0, -6, 0, 1], ...around(10, 18)],
     },
     {
       type: "text",
-      at: [px + radius * 0.1, k + dy / 2],
+      at: [px, k + dy / 2],
       text: "?",
       color: "warm",
+      place: [[6, 0, -1, 0], [-6, 0, 1, 0], ...around(10, 18)],
     },
     {
       type: "text",
-      at: [h + dx * 0.3, k + dy * 0.65],
+      at: [h + dx / 2, k + dy / 2],
       text: radical ? `√${n}` : rt,
       color: "accent",
+      place: [[-6, -6, 1, 1], [6, 6, -1, -1], ...around(10, 18)],
     },
     {
       type: "polyline",

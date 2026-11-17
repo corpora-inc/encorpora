@@ -16,12 +16,24 @@ export const setupSteps = [
   "students",
 ] as const;
 export type SetupStep = (typeof setupSteps)[number];
+/** A setup step's own address, without the leading slash:
+ * `school/<org>/setup`, then `…/setup/<step>`; typing names is
+ * `…/setup/students/names`. */
+export const setupPath = (
+  orgId: string,
+  step: SetupStep = "school",
+  method?: "names",
+) =>
+  orgPath(
+    orgId,
+    `setup${step === "school" ? "" : `/${step}`}${method ? `/${method}` : ""}`,
+  );
 
 /** A person's home in a school: setup until it's finished, then the school's own
  * address, which opens the overview or their classes as this person can see. */
 export function orgHome(org: Pick<OrgResource, "id" | "setupPending">) {
   return org.setupPending
-    ? { to: "/school/new", search: { org: org.id } }
+    ? { to: `/${setupPath(org.id)}` }
     : { to: `/school/${org.id}` };
 }
 

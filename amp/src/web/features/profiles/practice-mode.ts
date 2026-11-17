@@ -3,8 +3,10 @@ import { AppError } from "../../lib/AppError";
 import {
   addressedIdentity,
   learningIdentity,
+  practicePath,
   type AddressedIdentity,
 } from "../spaces/identity";
+import { nativeRuntime } from "../../native-runtime";
 import { canonicalLearning } from "../spaces/learner-urls";
 import { familyPlacesOptions } from "../family/api";
 import { currentLearner, selectLearner } from "../../learner-store";
@@ -141,6 +143,81 @@ export async function adoptPracticeMode(location: {
     throw await (await import("../home/destination")).homeRedirect();
 }
 
+/** A learning screen's older address goes to its canonical one in one
+ * hop, replacing it in history (amp/AGENTS.md: a redirect only for a legacy
+ * URL, never chained). The one way this module redirects. */
+const olderAddress = (href: string) => redirect({ href, replace: true });
+
+/** Whose practice bare `/practice` meant: a school student's own learner;
+ * an older link's `?learner=`; the adult's own; else the account's current
+ * child (learner-store.ts), else its first. Null: nobody to practice. */
+export function practiceLearnerFor(
+  me: SignedInMe,
+  named: string | null,
+  chosen: string | null,
+): string | null {
+  if (me.account.kind === "student") return me.learners[0]?.id ?? null;
+  if (named) return named;
+  const own = me.adultPractice?.learner?.id;
+  if (own) return own;
+  const children = [
+    ...me.learners,
+    ...(me.secondParentOf ?? []).flatMap((family) => family.learners),
+  ];
+  return (
+    children.find((entry) => entry.id === chosen)?.id ?? children[0]?.id ?? null
+  );
+}
+
+/** A school student's practice address, from the account already loaded:
+ * synchronous, for a guard sending a student home (bare `/practice`, one
+ * more hop, only before their `/me` has loaded). */
+export function studentPracticeHref() {
+  const student = studentSession();
+  const me = student
+    ? queryClient.getQueryData<Me>(meKey(student.accountId))
+    : undefined;
+  const learner = me?.signedIn ? me.learners[0]?.id : undefined;
+  return learner ? practicePath(learner) : "/practice";
+}
+
+/** A school student's addresses that are a family's (its setup, buying,
+ * consent): their practice is their one place. */
+const NOT_A_STUDENTS = /^\/(?:family|purchase|consent)(?:\/|$)/;
+
+/**
+ * Before practice loads: `/practice` names nobody, so it is an older
+ * address. One hop, replacing it, to `/practice/<learner>`, keeping its
+ * filter (`?skill=`, `?strand=`). A practice profile (`?profile=`) is a mode
+ * with its own address and stays. Every link in the app goes to
+ * `/practice/<learner>` itself (identity.ts `practicePath`). A school
+ * student on a family's screen goes to their practice the same way.
+ */
+export async function practiceAddress(location: {
+  pathname: string;
+  searchStr: string;
+}) {
+  if (nativeRuntime) return;
+  const away = !!studentSession() && NOT_A_STUDENTS.test(location.pathname);
+  if (!away && !/^\/practice\/?$/.test(location.pathname)) return;
+  const params = new URLSearchParams(away ? "" : location.searchStr);
+  if (params.get("profile")) return;
+  const session = await queryClient.ensureQueryData(sessionOptions);
+  if (!session) return;
+  const me = await queryClient.ensureQueryData(meOptions(session));
+  if (!me.signedIn) return;
+  const learner = practiceLearnerFor(
+    me,
+    params.get(LEARNER_KEY) || null,
+    currentLearner(session.accountId),
+  );
+  if (!learner) return;
+  params.delete(LEARNER_KEY);
+  throw olderAddress(
+    `${practicePath(learner)}${params.size ? `?${params}` : ""}`,
+  );
+}
+
 /**
  * Before a shared learning screen loads: an older address goes to its
  * canonical one (features/spaces/learner-urls.ts), replacing it in history,
@@ -176,7 +253,7 @@ export async function canonicalLearnerAddress(location: {
     currentLearner(),
   );
   if (href && href !== `${location.pathname}${location.searchStr}`)
-    throw redirect({ href, replace: true });
+    throw olderAddress(href);
 }
 
 /** The learner a resolved navigation's address names becomes the account's

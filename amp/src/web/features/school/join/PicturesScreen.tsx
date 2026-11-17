@@ -174,7 +174,7 @@ export function PicturesScreen() {
         ? "Pick 3 pictures you’ll remember"
         : "Pick your 3 pictures";
   return (
-    <JoinFrame step="pictures" code={formatJoinCode(code)}>
+    <JoinFrame step="pictures" code={formatJoinCode(code)} width="wide">
       <div className={styles.pictures}>
         <div className={styles.prompt}>
           <p className={styles.who}>
