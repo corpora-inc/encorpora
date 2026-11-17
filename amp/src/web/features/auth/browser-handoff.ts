@@ -1,6 +1,7 @@
 import type { InAppPlatform } from "../../../analytics/browser-kind";
 import { browserHandoffUrl } from "../../lib/funded-entry";
 import { arrivalLabels, arrivalTitleLabels } from "../../lib/program-choice";
+import { chosenPlan } from "../../lib/pending-trial";
 
 /**
  * The one-tap way out of an in-app browser into the phone's real browser,
@@ -43,7 +44,11 @@ export function browserHandoffHref(
  * handoff needs it, and the store loads with every first screen.
  */
 export function arrivalQuery(): Record<string, string> {
-  return { ...arrivalLabels(), ...arrivalTitleLabels() };
+  const labels = arrivalTitleLabels();
+  // A Buy's plan (lib/pending-trial.ts) opens for the learner once they
+  // exist, in whichever browser finishes signing up.
+  const plan = labels.entry === "pitch-buy" ? chosenPlan() : null;
+  return { ...arrivalLabels(), ...labels, ...(plan ? { plan } : {}) };
 }
 
 /** An address with the tab's arrival on it, for another browser. */

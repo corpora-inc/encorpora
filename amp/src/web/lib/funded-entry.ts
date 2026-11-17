@@ -190,6 +190,7 @@ export function continuationSearch(
  * sign-in gate's way back: the tab keeps it (lib/program-choice.ts). */
 export const ARRIVAL_KEYS = [
   "entry",
+  "plan",
   "program",
   "utm_campaign",
   "utm_source",
@@ -213,7 +214,7 @@ export function gateContinuation(
   search: Record<string, unknown>,
 ): FundedSearch {
   const kept: FundedSearch = { ...continuationSearch(search) };
-  for (const key of ARRIVAL_KEYS) delete kept[key];
+  for (const key of ARRIVAL_KEYS) delete (kept as Record<string, unknown>)[key];
   if (kept.return === "free-practice") delete kept.return;
   return kept;
 }
