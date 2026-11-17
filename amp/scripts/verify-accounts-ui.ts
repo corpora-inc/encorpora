@@ -1,4 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
+import { addChildInSheet } from "./lib/add-child";
 import { openMenu, returnToParent } from "./ui-controls";
 import { createOTP } from "@better-auth/utils/otp";
 import { base32 } from "@better-auth/utils/base32";
@@ -137,19 +138,7 @@ async function addChild(page: Page, name: string) {
   }
   await page.waitForURL((url) => url.pathname.endsWith("/settings"));
   await page.getByRole("button", { name: "Add a child", exact: true }).click();
-  const sheet = page.getByRole("dialog", { name: "Add a child" });
-  await sheet.getByLabel("Name", { exact: true }).fill(name);
-  await sheet.getByRole("button", { name: "Birth year", exact: true }).click();
-  await page
-    .getByRole("dialog", { name: "Birth year" })
-    .getByRole("option", { name: "2016", exact: true })
-    .click();
-  await sheet.getByRole("button", { name: "Add child", exact: true }).click();
-  await sheet
-    .getByText(`${name} is in your family.`, { exact: true })
-    .waitFor();
-  await page.keyboard.press("Escape");
-  await sheet.waitFor({ state: "detached" });
+  await addChildInSheet(page, { name });
 }
 async function signedIn(page: Page, email: string) {
   // The root is an intermediate redirect. Wait for this parent's actual

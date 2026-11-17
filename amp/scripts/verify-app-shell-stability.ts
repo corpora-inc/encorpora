@@ -161,7 +161,9 @@ const screens: Screen[] = [
     state: "paid",
     group: "account",
     ready: (p) =>
-      p.getByRole("heading", { name: "Sign-in", exact: true }).waitFor(),
+      p
+        .getByRole("heading", { name: "Sign-in & security", exact: true })
+        .waitFor(),
   },
   {
     id: "billing",

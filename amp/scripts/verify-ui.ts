@@ -1,4 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
+import { addChildInSheet } from "./lib/add-child";
 import {
   chooseLearner,
   currentLearner,
@@ -812,34 +813,16 @@ try {
   await page.setViewportSize({ width: 390, height: 844 });
   await returnToParent(page);
   const familyPath = new URL(page.url()).pathname;
-  // A child added from Today's "Add a child", with a maximum-length nickname.
-  await page.goto(`http://127.0.0.1:4350${familyPath}?add=1`);
-  const sheet = page.getByRole("dialog", { name: "Add a child" });
-  await sheet
-    .getByLabel("Name", { exact: true })
-    .fill("LongNickname".repeat(5));
-  await sheet.getByRole("button", { name: "Birth year", exact: true }).click();
-  await page
-    .getByRole("dialog", { name: "Birth year" })
-    .getByRole("option", { name: "2016", exact: true })
-    .click();
-  const creation = page.waitForResponse(
-    (response) =>
-      new URL(response.url()).pathname === "/api/v1/learners" &&
-      response.request().method() === "POST",
-  );
-  await sheet.getByRole("button", { name: "Add child", exact: true }).click();
-  const created = await creation;
-  assert.ok(created.ok(), `Add a child: ${created.status()}`);
-  // The name as kept: a nickname at its maximum length.
-  const { id: addedId, name: nickname } = (await created.json()) as {
-    id: string;
-    name: string;
-  };
+  // A child added from the family's Settings › People, "Add a child", with
+  // a maximum-length nickname: the year saves them, Done closes the sheet.
+  const family = /^\/family\/[^/]+/.exec(familyPath)?.[0];
+  assert.ok(family, `back with the parent at ${familyPath}`);
+  await page.goto(`http://127.0.0.1:4350${family}/settings`);
+  await page.getByRole("button", { name: "Add a child", exact: true }).click();
+  const { id: addedId, name: nickname } = await addChildInSheet(page, {
+    name: "LongNickname".repeat(5),
+  });
   learnerIds.push(addedId);
-  await sheet.getByText(`${nickname} is in your family.`).waitFor();
-  await page.keyboard.press("Escape");
-  await sheet.waitFor({ state: "detached" });
   // The drawer lists both children; choosing one opens their own page,
   // which a reload keeps.
   progress("learner choice and persistence");

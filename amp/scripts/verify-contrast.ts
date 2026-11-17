@@ -414,25 +414,26 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
       await page.goto(origin + route);
       await settle();
     });
-  // Today's "Add a child": the sheet, its birth-year dialog, and the error
-  // a failed save shows in place.
+  // "Add a child" (the family's Settings): the sheet, its birth-year dialog,
+  // and the error a failed save shows in place. Choosing the year saves the
+  // child (features/family/AddChildren.tsx).
+  const adding = page.getByRole("dialog", { name: "Add a child" });
+  const year = "Birth year, Jordan";
   await step("add-child-sheet", async () => {
-    await page.goto(`${origin}${family}?add=1`);
-    await page.getByRole("dialog", { name: "Add a child" }).waitFor();
-    await page.getByPlaceholder("First name or nickname").fill("Jordan");
+    await page.goto(`${origin}${family}/settings`);
+    await page
+      .getByRole("button", { name: "Add a child", exact: true })
+      .click();
+    await adding
+      .getByRole("textbox", { name: /^Name, / })
+      .last()
+      .fill("Jordan");
   });
   await step("dialog-birth-year", async () => {
-    await page
-      .getByRole("dialog", { name: "Add a child" })
-      .getByRole("button", { name: "Birth year", exact: true })
-      .click();
-    await page.getByRole("dialog", { name: "Birth year" }).waitFor();
+    await adding.getByRole("button", { name: year, exact: true }).click();
+    await page.getByRole("dialog", { name: year }).waitFor();
   });
   await step("add-child-error", async () => {
-    await page
-      .getByRole("dialog", { name: "Birth year" })
-      .getByRole("option", { name: "2018", exact: true })
-      .click();
     await page.route("**/api/v1/learners", (r) =>
       r.request().method() === "POST"
         ? r.fulfill({
@@ -442,8 +443,8 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
         : r.fallback(),
     );
     await page
-      .getByRole("dialog", { name: "Add a child" })
-      .getByRole("button", { name: "Add child", exact: true })
+      .getByRole("dialog", { name: year })
+      .getByRole("option", { name: "2018", exact: true })
       .click();
     await page.getByRole("alert").waitFor();
     await page.unroute("**/api/v1/learners");
