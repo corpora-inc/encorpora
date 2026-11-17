@@ -214,8 +214,11 @@ async function workbooksUsed(
   page: Page,
   label: string,
   action: "Continue with AMP" | "Talk to us" | null,
+  /** Where the pause is: the page, or a day's sheet over its list (whose
+   * own pause, behind the sheet, is not this one). */
+  within: Page | ReturnType<Page["locator"]> = page,
 ) {
-  const pause = page
+  const pause = within
     .locator('[data-allowance-pause="workbooks"]')
     .filter({ visible: true });
   await pause.first().waitFor();
@@ -399,8 +402,19 @@ async function journey(
     await new Promise((resolve) => setTimeout(resolve, 400));
     await route.continue();
   });
+  // Rolling drafts the day's next workbook: a preview, which saves nothing,
+  // so nothing is read again; the address stays the day's.
   await page.getByRole("button", { name: "Roll another", exact: true }).click();
-  await page.waitForURL(/number=2/);
+  await page.getByRole("heading", { name: "No. 2" }).waitFor();
+  await settle(page, 1200);
+  assert.doesNotMatch(page.url(), /\?/);
+  assert.equal(reads.me, 0, "a draft never refreshes the account");
+  assert.equal(reads.history, 0, "a draft never refreshes history");
+  // Downloading saves it: one new workbook refreshes each once.
+  await Promise.all([
+    page.waitForEvent("download"),
+    page.getByRole("button", { name: "Download workbook" }).click(),
+  ]);
   await settle(page, 1200);
   assert.equal(reads.me, 1, "one new workbook refreshes the account once");
   assert.equal(reads.history, 1, "one new workbook refreshes history once");
@@ -434,8 +448,10 @@ async function journey(
     .getByRole("link", { name: /Enter results for workbook/ })
     .first()
     .click();
+  // The results name whose answers they are (WorkbookResultsScreen).
   await page
-    .getByText(`${fox.name} · Workbook results`, { exact: true })
+    .getByText(new RegExp(`^Type each of ${fox.name}.s answers`))
+    .first()
     .waitFor();
   await page.getByRole("radio", { name: "Right", exact: true }).first().click();
   await page
@@ -461,15 +477,17 @@ async function journey(
     100,
   );
   // Today, with no workbook yet: the line first, and no controls that can
-  // no longer make one.
+  // no longer make one. The day is a sheet over the list of workbooks,
+  // which says the same behind it: the sheet's is the one read here.
   await page.goto(`${origin}/learners/${moon.id}/workbooks/${stack.today}`);
-  await page.locator('[data-allowance-pause="workbooks"]').waitFor();
+  const daySheet = page.getByRole("dialog");
+  await daySheet.locator('[data-allowance-pause="workbooks"]').waitFor();
   await settle(page, 600);
   check(
     `${label} exhausted day offers nothing that fails`,
     (await page.getByRole("button", { name: "Roll another" }).count()) === 0,
   );
-  await workbooksUsed(page, `${label} exhausted day`, purchase);
+  await workbooksUsed(page, `${label} exhausted day`, purchase, daySheet);
   await measured(page, `${label} exhausted day`);
   await shot(page, "workbook-day-used", width, theme);
   await db.query(
@@ -502,7 +520,9 @@ async function journey(
   await todayTitle(page);
   await measured(page, `${label} teacher`);
   await shot(page, "teacher", width, theme);
-  // A class has no checkout: its next step is a conversation.
+  // A school's students have no free allowance (the stack's own rule): with
+  // no seat, a pupil needs one, whatever free workbooks their learner used,
+  // and the stack never speaks of free workbooks or a checkout.
   await db.query("UPDATE amp_learners SET free_workbooks_used=5 WHERE id=$1", [
     pupil.learnerId,
   ]);
@@ -511,7 +531,20 @@ async function journey(
   );
   await page.getByRole("heading", { name: "Workbooks", exact: true }).waitFor();
   await page.locator(`button[aria-pressed]`).first().waitFor();
-  await workbooksUsed(page, `${label} school stack`, "Talk to us");
+  await page
+    .getByText("No student here can get a new workbook.", { exact: true })
+    .waitFor();
+  check(
+    `${label} school stack: the pupil needs a seat`,
+    (await page.getByText("Needs a seat").count()) > 0,
+  );
+  check(
+    `${label} school stack: no free-allowance words or checkout`,
+    (await page.locator('[data-allowance-pause="workbooks"]').count()) === 0 &&
+      (await page.getByText(/free workbooks/i).count()) === 0 &&
+      (await page.getByRole("link", { name: "Continue with AMP" }).count()) ===
+        0,
+  );
   await page.evaluate(() =>
     window.scrollTo({ top: document.documentElement.scrollHeight }),
   );

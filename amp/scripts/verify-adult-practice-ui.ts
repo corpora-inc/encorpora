@@ -177,7 +177,26 @@ async function shot(
 async function measured(page: Page, label: string) {
   await settle(page, 300);
   const geometry = await probe(page);
-  check(`${label} overflow`, geometry.overflow === 0, geometry.overflow);
+  check(
+    `${label} overflow`,
+    geometry.overflow === 0,
+    geometry.overflow === 0
+      ? 0
+      : {
+          by: geometry.overflow,
+          // What sticks out past the viewport, innermost first.
+          wide: await page.evaluate(() =>
+            [...document.querySelectorAll("body *")]
+              .filter((el) => el.getBoundingClientRect().right > innerWidth + 1)
+              .reverse()
+              .slice(0, 4)
+              .map(
+                (el) =>
+                  `${el.tagName.toLowerCase()}.${(el.className || "").toString().slice(0, 40)} ${Math.round(el.getBoundingClientRect().right)} "${(el.textContent ?? "").trim().slice(0, 30)}"`,
+              ),
+          ),
+        },
+  );
   check(
     `${label} targets`,
     geometry.smallTargets.length === 0,
@@ -421,7 +440,7 @@ async function teacherStarts(
   await practicing(page);
   check(
     `${label} straight into practice`,
-    path(page) === "/practice",
+    /^\/practice\/[^/]+$/.test(path(page)),
     path(page),
   );
   await settle(page, 600);
@@ -474,6 +493,31 @@ async function teacherStarts(
       /Recent work/.test(record),
     record.slice(0, 600),
   );
+  // Beside the title, Practice at a level and the progress report are one
+  // control pair: the same quiet action, size and weight.
+  const pair = await page.evaluate(() => {
+    const level = document.querySelector<HTMLElement>("[data-at-a-level]");
+    const report = [
+      ...document.querySelectorAll<HTMLElement>("main button"),
+    ].find((button) => /Progress report/.test(button.textContent ?? ""));
+    const look = (el: HTMLElement) => {
+      const style = getComputedStyle(el);
+      return {
+        size: style.fontSize,
+        weight: style.fontWeight,
+        color: style.color,
+        background: style.backgroundColor,
+        radius: style.borderRadius,
+        height: Math.round(el.getBoundingClientRect().height),
+      };
+    };
+    return level && report ? [look(level), look(report)] : null;
+  });
+  check(
+    `${label} Practice at a level and Progress report are one control pair`,
+    !!pair && JSON.stringify(pair[0]) === JSON.stringify(pair[1]),
+    pair,
+  );
   await measured(page, `${label} record`);
   await shot(page, "record", width, theme, engine);
 
@@ -491,7 +535,10 @@ async function teacherStarts(
   await practicing(page);
   await page.reload();
   await practicing(page);
-  check(`${label} reload keeps practice`, path(page) === "/practice");
+  check(
+    `${label} reload keeps practice`,
+    /^\/practice\/[^/]+$/.test(path(page)),
+  );
   await page.goto(`${origin}/me`);
   await heading(page, "Where you are");
   await page.reload();
@@ -628,7 +675,7 @@ async function nobody(browser: Browser) {
 try {
   const browser = await chromium.launch();
   await nobody(browser);
-  for (const width of [1280, 390])
+  for (const width of [1280, 390, 320])
     for (const theme of ["light", "dark"] as const)
       await teacherStarts(browser, "chromium", width, theme);
   await parentStarts(browser, 1280, "light");

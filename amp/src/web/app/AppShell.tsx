@@ -1,3 +1,4 @@
+import { InAppFrame } from "../ui/app-frame";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, useRouter } from "@tanstack/react-router";
 import {
@@ -127,7 +128,9 @@ export function AppShell({ children }: { children: ReactNode }) {
         className={space ? styles.content : styles.bare}
         data-shell-content={space ? "" : undefined}
       >
-        {blocked ? <SpaceBlocked failed={blocked === "failed"} /> : children}
+        <InAppFrame.Provider value={!!space}>
+          {blocked ? <SpaceBlocked failed={blocked === "failed"} /> : children}
+        </InAppFrame.Provider>
       </div>
       {framed.current && (
         <DrawerRecovery>

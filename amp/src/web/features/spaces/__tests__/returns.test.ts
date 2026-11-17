@@ -88,3 +88,14 @@ test("CP-2 r2 M3: what the documented returns need, and nothing that isn't a pla
   // An address that isn't one of the app's places is not a return.
   expect(appReturn("/not-a-real-app-page")).toBeUndefined();
 });
+
+test("practice at a learner's own address, with its focus, is a place to return to", () => {
+  for (const path of [
+    "/practice/7d3c1e2a-0000-4000-8000-000000000001",
+    "/practice/own/types/quadrilateral-hierarchy-multiselect",
+    "/practice/own/skills/add-two-digit",
+    "/practice/own/areas/geometry",
+  ])
+    expect(appReturn(path)).toBe(path);
+  expect(appReturn("/practice/own/elsewhere/x")).toBeUndefined();
+});

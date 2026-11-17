@@ -382,7 +382,10 @@ try {
     await page.goto(`${origin}/overview`);
     await practiceHere(page, adult.id);
     await page.goto(`${origin}/lessons?strand=data&topic=mean-data`);
-    await page.getByRole("link", { name: /^Try this problem type/ }).click();
+    await page
+      .getByRole("dialog")
+      .getByRole("link", { name: /^Practice/ })
+      .click();
     await page.locator(".question").waitFor();
     await flagFlow(page, `adult-390x844-${colorScheme}`, {
       note: true,

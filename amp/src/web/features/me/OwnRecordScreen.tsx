@@ -279,13 +279,14 @@ export function OwnRecordScreen() {
 }
 
 /** Practicing at a level (`/me/level`): a grade and a pace, then the main
- * loop there. One quiet link, the same on day 0 and after. */
+ * loop there. A quiet action, the same on day 0 and after, and the same
+ * control as the progress report beside it. */
 function AtALevel() {
   return (
     <Link
       to="/$"
       params={{ _splat: "me/level" }}
-      className={styles.quietLink}
+      className={buttonClass("quiet")}
       data-at-a-level=""
     >
       Practice at a level

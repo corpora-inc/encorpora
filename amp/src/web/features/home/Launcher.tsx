@@ -7,6 +7,7 @@ import { LoadingScreen } from "../../ui/LoadingScreen";
 import { Page } from "../../ui/Page";
 import { PageHeader } from "../../ui/PageHeader";
 import { WaveMark } from "../../ui/WaveMark";
+import { StudentWaiting } from "../practice/StudentWaiting";
 import { choosePlace, usePlaces } from "../navigation/PlaceSwitcher";
 import { rememberedPlace } from "../onboarding/place-memory";
 import { launches, type Launch } from "./destination";
@@ -23,6 +24,21 @@ export function Launcher() {
   const me = useQuery(forSession(useSessionOrNull(), meOptions)).data;
   const account = me?.signedIn ? me : null;
   const { groups, loading } = usePlaces(account);
+  // A school's student who can't practice yet (no seat, practice not
+  // started or ended) is told why here, never offered a practice that only
+  // says so: the school's word for it, else no seat for a learner who can't
+  // practice (as practice itself decides, app/LegacyApp.tsx).
+  const own =
+    account?.account.kind === "student"
+      ? account.family.learners.find((learner) => !learner.deletedAt)
+      : undefined;
+  const gate =
+    account?.account.kind === "student"
+      ? (account.school?.practice ??
+        (own?.canPractice === false ? "seat" : undefined))
+      : undefined;
+  if (account && gate)
+    return <StudentWaiting gate={gate} className={account.school?.className} />;
   if (!account || loading) return <LoadingScreen overlay />;
   const all = launches(account, groups, rememberedPlace(account.account.id));
   const open = (launch: Launch) => {
