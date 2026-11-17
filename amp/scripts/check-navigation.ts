@@ -5,8 +5,9 @@
  * history: no `navigate({ to: "/" })`, `<Link to="/">`, `redirect({ to: "/" })`,
  * `window.location` assignment or `history.back()`. Each place that must
  * (sign-out, a payment provider, a full reload after an update) is listed
- * below with its reason and count; anything new fails the build. A screen's
- * rendered redirect is nav/Navigate.tsx, never the router's own.
+ * below with its reason and count; anything new fails the build. Nothing
+ * redirects while it renders: a destination is computed in a guard or a
+ * handler (amp/AGENTS.md, "Frontend architecture").
  *
  *   npx tsx scripts/check-navigation.ts
  */
@@ -96,13 +97,12 @@ for (const path of files(ROOT)) {
     });
 }
 let failed = 0;
-// A rendered redirect is src/web/nav/Navigate.tsx, which navigates once per
-// destination. The router's own re-navigates on every render with new
-// props, and a screen that renders while its navigation is pending then
-// never lets it commit (the tab hangs).
+// No rendered redirect: the router's <Navigate> re-navigates on every render
+// with new props, and a screen that renders while its navigation is pending
+// never lets it commit (the tab hung). A guard or a handler computes the
+// destination once (app/sign-in-gate.ts, app/legacy-aliases.ts).
 for (const path of files(ROOT)) {
   const file = relative(ROOT, path);
-  if (file === "nav/Navigate.tsx") continue;
   if (
     /import\s*\{[^}]*\bNavigate\b[^}]*\}\s*from\s*"@tanstack\/react-router"/.test(
       readFileSync(path, "utf8"),
@@ -110,7 +110,7 @@ for (const path of files(ROOT)) {
   ) {
     failed++;
     console.error(
-      `${file}: imports the router's Navigate. Use src/web/nav/Navigate.tsx.`,
+      `${file}: imports the router's Navigate. Compute the destination in the route's guard or an event handler instead.`,
     );
   }
 }

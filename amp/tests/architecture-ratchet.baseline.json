@@ -4,7 +4,7 @@
     "redirects": 1,
     "validateSearch": 1,
     "searchHandoffs": 11,
-    "navigatingEffects": 3,
+    "navigatingEffects": 2,
     "renderNavigate": 0,
     "silentCatches": 2,
     "sessionProps": 3,
@@ -29,8 +29,7 @@
       "ui/Tabs.tsx": 2
     },
     "navigatingEffects": {
-      "app/LegacyApp.tsx": 2,
-      "nav/Navigate.tsx": 1
+      "app/LegacyApp.tsx": 2
     },
     "renderNavigate": {},
     "silentCatches": {
