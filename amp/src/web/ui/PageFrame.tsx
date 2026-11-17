@@ -1,3 +1,4 @@
+import { useInAppFrame } from "./app-frame";
 import { NavigationDrawer } from "../features/navigation/NavigationDrawer";
 import { RootLink } from "../nav/root";
 import { SupportHelp } from "../features/support/SupportHelp";
@@ -29,6 +30,8 @@ export function PageFrame({
 }
 /** The wordmark at the top of a centered card; it links home. */
 export function FrameBrand({ expanded = false }: { expanded?: boolean }) {
+  // In the app's frame, its bar is the one logo and menu.
+  if (useInAppFrame()) return null;
   return (
     <div className={styles.cardBrandRow}>
       <NavigationDrawer />
