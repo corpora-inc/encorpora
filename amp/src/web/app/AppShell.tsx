@@ -297,6 +297,21 @@ function useAccount(accountPage = true): SignedInMe | null {
  * what happened and the one way on. */
 function SpaceBlocked({ failed }: { failed: boolean }) {
   const queries = useQueryClient();
+  // A read that failed is said here and logged once, never in silence.
+  useEffect(() => {
+    if (failed)
+      console.error(
+        "The screen's account or place didn't load",
+        queries
+          .getQueryCache()
+          .findAll({ type: "active" })
+          .filter((query) => query.state.status === "error")
+          .map((query) => ({
+            key: query.queryKey,
+            error: String(query.state.error),
+          })),
+      );
+  }, [failed, queries]);
   return (
     <main className={styles.blocked} data-space-blocked>
       <EmptyState
@@ -318,9 +333,12 @@ function SpaceBlocked({ failed }: { failed: boolean }) {
           )
         }
       >
-        {failed
-          ? "Check your connection, then try again."
-          : "If someone sent you this link, ask them to share it with this account."}
+        {failed ? (
+          // Said as it happens, beside its one recovery.
+          <span role="alert">Check your connection, then try again.</span>
+        ) : (
+          "If someone sent you this link, ask them to share it with this account."
+        )}
       </EmptyState>
     </main>
   );

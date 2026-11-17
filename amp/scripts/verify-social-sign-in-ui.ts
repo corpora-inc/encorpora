@@ -877,6 +877,8 @@ try {
   let entry = {
     ...snapshot,
     next: "start",
+    // A new account: its first run not yet answered.
+    setup: { persona: null, done: false },
     learners: [],
     consent: { status: "none", method: null },
     familyClass: undefined,

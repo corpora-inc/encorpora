@@ -6,7 +6,7 @@ import {
   nativeSignOut,
   nativeSessionEvents,
 } from "./native-session";
-import { UserManager, WebStorageStateStore, type User } from "oidc-client-ts";
+import type { User, UserManager } from "oidc-client-ts";
 import { accountClient } from "./account-client";
 import { AppError } from "./lib/AppError";
 import { fetchAuthConfig, type AuthConfig } from "./auth-config";
@@ -24,11 +24,18 @@ const authority = (import.meta.env && import.meta.env.VITE_AMP_AUTHORITY) as
   string | undefined;
 const clientId = (import.meta.env && import.meta.env.VITE_AMP_CLIENT_ID) as
   string | undefined;
-const manager =
-  !nativeRuntime && authority && clientId
-    ? new UserManager({
-        authority,
-        client_id: clientId,
+/** An external sign-in (OIDC) is built into this deployment. Only then is
+ * its client loaded (`oidcManager`): AMP's own accounts never download it,
+ * so it stays out of the app's first code. */
+const oidcConfigured = !nativeRuntime && !!authority && !!clientId;
+let oidc: Promise<UserManager> | null = null;
+/** The OIDC client, loaded once, on first use, in OIDC mode only. */
+function oidcManager(): Promise<UserManager> {
+  oidc ??= import("oidc-client-ts").then(
+    ({ UserManager, WebStorageStateStore }) =>
+      new UserManager({
+        authority: authority!,
+        client_id: clientId!,
         redirect_uri: `${location.origin}/`,
         response_type: "code",
         scope: import.meta.env.VITE_AMP_SCOPES ?? "openid profile",
@@ -37,15 +44,19 @@ const manager =
           : {}),
         userStore: new WebStorageStateStore({ store: sessionStorage }),
         automaticSilentRenew: true,
-      })
-    : null;
+      }),
+  );
+  return oidc;
+}
 const devSignedOut = "amp.dev.signedOut";
 
 export type { AuthConfig };
 export function authConfig(): Promise<AuthConfig> {
   // The native app signs in through its own session layer, not this API.
   if (nativeRuntime) return Promise.resolve({ mode: "native" });
-  const fallback: AuthConfig = { mode: manager ? "oidc" : "development" };
+  const fallback: AuthConfig = {
+    mode: oidcConfigured ? "oidc" : "development",
+  };
   return fetchAuthConfig().catch(() => {
     if (import.meta.env.DEV) return fallback;
     throw new AppError(
@@ -97,7 +108,7 @@ export async function accessSession(): Promise<AuthSession | null> {
   // every first screen waits on both. A school sign-in, completing or hinted,
   // is checked first below, so it keeps its order.
   const speculative =
-    !manager && !student && !completion && !providerHint
+    !oidcConfigured && !student && !completion && !providerHint
       ? accountSession()
       : undefined;
   speculative?.catch(() => undefined);
@@ -136,7 +147,7 @@ export async function accessSession(): Promise<AuthSession | null> {
     if (student) return student;
     return speculative ?? accountSession();
   }
-  if (import.meta.env.DEV && !manager) {
+  if (import.meta.env.DEV && !oidcConfigured) {
     // Development only: `?signed-out` simulates a visitor without an account
     // for this tab, so the "Try free" path can be exercised locally.
     if (new URLSearchParams(location.search).has("signed-out")) {
@@ -149,7 +160,8 @@ export async function accessSession(): Promise<AuthSession | null> {
       accountId: "development-household",
     };
   }
-  if (!manager) return null;
+  if (!oidcConfigured) return null;
+  const manager = await oidcManager();
   if (new URLSearchParams(location.search).has("code")) {
     await manager.signinRedirectCallback();
     history.replaceState({}, "", location.pathname);
@@ -164,16 +176,16 @@ export async function signIn(intent?: "create") {
     location.assign(intent === "create" ? "/sign-up" : "/sign-in");
     return;
   }
-  if (import.meta.env.DEV && !manager) {
+  if (import.meta.env.DEV && !oidcConfigured) {
     sessionStorage.removeItem(devSignedOut);
     location.reload();
     return;
   }
-  if (!manager)
+  if (!oidcConfigured)
     throw new Error(
       "Account sign-in has not been configured for this deployment.",
     );
-  await manager.signinRedirect();
+  await (await oidcManager()).signinRedirect();
 }
 /** Signs out, then opens `to` (accounts mode; the other modes go where
  * their provider sends them). */
@@ -207,7 +219,7 @@ export async function signOut(to = "/") {
     location.assign(to);
     return;
   }
-  if (manager) await manager.signoutRedirect();
+  if (oidcConfigured) await (await oidcManager()).signoutRedirect();
 }
 
 const accountSessionListeners = new Set<
@@ -240,7 +252,7 @@ export function onSessionChanged(
     update(session);
   };
   accountSessionListeners.add(checked);
-  if (!manager) {
+  if (!oidcConfigured) {
     const changed = () => {
       const current = ++generation;
       void accessSession()
@@ -265,15 +277,30 @@ export function onSessionChanged(
       }
     };
   }
+  // OIDC: its client's events, once it has loaded.
   const loaded = (user: User) => update(session(user));
   const unloaded = () => update(null);
-  manager.events.addUserLoaded(loaded);
-  manager.events.addUserUnloaded(unloaded);
-  manager.events.addAccessTokenExpired(unloaded);
+  let active = true;
+  let detach = () => {};
+  oidcManager()
+    .then((manager) => {
+      if (!active) return;
+      manager.events.addUserLoaded(loaded);
+      manager.events.addUserUnloaded(unloaded);
+      manager.events.addAccessTokenExpired(unloaded);
+      detach = () => {
+        manager.events.removeUserLoaded(loaded);
+        manager.events.removeUserUnloaded(unloaded);
+        manager.events.removeAccessTokenExpired(unloaded);
+      };
+    })
+    .catch((failure) => {
+      console.error("The sign-in client didn't load", failure);
+      error?.(String(failure));
+    });
   return () => {
+    active = false;
     accountSessionListeners.delete(checked);
-    manager.events.removeUserLoaded(loaded);
-    manager.events.removeUserUnloaded(unloaded);
-    manager.events.removeAccessTokenExpired(unloaded);
+    detach();
   };
 }

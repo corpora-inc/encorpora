@@ -7,7 +7,8 @@ import {
   routeFor,
   startDestination,
 } from "../guard";
-import { canRemoveSaved, stepUrl } from "../setup/FamilySetup";
+import { stepUrl } from "../setup/FamilySetup";
+import { canRemoveSaved } from "../../family/AddChildren";
 import { SETUP_STEPS } from "../setup/steps";
 
 /*

@@ -58,8 +58,7 @@ import {
   startNavigation,
 } from "../features/onboarding/guard";
 import { rememberPlace } from "../features/onboarding/place-memory";
-import { homeRedirect } from "../features/home/destination";
-import { useHomePlace } from "../lib/home-place";
+import { useHomeHref } from "../lib/home-place";
 import {
   isFundedReturn,
   campaignSearch,
@@ -99,6 +98,8 @@ import {
 } from "../features/school/classroom/search";
 import { designAllowed, designSearchSchema } from "../features/design/search";
 import { stampPrevious, VIEW_KEYS } from "../lib/return-to";
+import { settleLegacyLayers } from "../nav/links";
+import { seedLayers } from "../nav/layer-store";
 import {
   MAX_LAYERS,
   OPEN_KEY,
@@ -113,6 +114,13 @@ import {
   carriedKeys,
   isLearningPath,
 } from "../features/profiles/practice-mode";
+/** A guard's one redirect to the person's destination, its code loaded
+ * only when a guard needs it (it stays out of the app's entry). */
+const homeRedirect = async (
+  ...known: Parameters<
+    typeof import("../features/home/destination").homeRedirect
+  >
+) => (await import("../features/home/destination")).homeRedirect(...known);
 const searchSchema = z
   .object({
     return: z
@@ -157,8 +165,7 @@ const searchSchema = z
   .passthrough();
 function RouterError({ error }: { error: unknown }) {
   const router = useRouter();
-  const accountId = useQuery(sessionOptions).data?.accountId ?? "";
-  const home = useHomePlace((state) => state.homes[accountId]);
+  const home = useHomeHref();
   // A family's child's map fails at its own address: "Back to map" is it.
   const child = childAddress(window.location.pathname);
   return (
@@ -2084,6 +2091,23 @@ router.subscribe("onResolved", ({ toLocation }) => {
     me?.signedIn && practicingAsAdult(me, chosen) ? chosen : null,
   );
   if (place) rememberPlace(session.accountId, place);
+});
+// A link from before the layer store names its layers in the address
+// (`?open=`): once the screen is on view they move into the store
+// (nav/layer-store.ts) and leave the address, replacing its entry. The one
+// legacy step; nothing in the app writes `?open=` into the address bar.
+router.subscribe("onResolved", ({ toLocation }) => {
+  const legacy = settleLegacyLayers(
+    toLocation,
+    queryClient.getQueryData(sessionOptions.queryKey)?.accountId,
+  );
+  if (!legacy) return;
+  seedLayers(legacy.scope, legacy.stack);
+  void router.navigate({
+    href: legacy.href,
+    replace: true,
+    resetScroll: false,
+  });
 });
 const SIGNED_OUT_KEY = "amp.signed-out-redirect";
 /** True when this tab was sent to sign-in moments ago: a second 401 then is

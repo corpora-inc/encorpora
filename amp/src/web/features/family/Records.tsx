@@ -15,7 +15,8 @@ import {
 import { divisionLabels } from "../../../schools/calendar";
 import { YearCalendar } from "../school/CalendarScreen";
 import { downloadPdf, paperFormat } from "../../lib/pdf-download";
-import { buttonClass } from "../../ui/Button";
+import { Button, buttonClass } from "../../ui/Button";
+import { AddChildrenSheet } from "./AddChildren";
 import { EmptyState } from "../../ui/EmptyState";
 import { PrintButton } from "../../ui/PrintButton";
 import { ActionRow } from "../../ui/ActionRow";
@@ -139,22 +140,26 @@ function useRecords(place: FamilyPlace, children: readonly FamilyChild[]) {
   });
 }
 
-/** No children yet: the one step that adds them, or who does. */
+/** No children yet: the one step that adds them, over this screen, or who
+ * does. */
 function NoChildren({ place }: { place: FamilyPlace }) {
+  const [adding, setAdding] = useState(false);
   return place.holder ? (
-    <EmptyState
-      title="Add your kids"
-      action={
-        <Link
-          to="/$"
-          params={{ _splat: familyHref(place.family) }}
-          search={{ add: 1 } as never}
-          className={buttonClass("primary")}
-        >
-          Add your kids
-        </Link>
-      }
-    />
+    <>
+      <EmptyState
+        title="Add your kids"
+        action={
+          <Button
+            variant="primary"
+            data-add-child=""
+            onClick={() => setAdding(true)}
+          >
+            Add your kids
+          </Button>
+        }
+      />
+      <AddChildrenSheet open={adding} onOpenChange={setAdding} />
+    </>
   ) : (
     <EmptyState title="No children here yet">
       The parent who invited you adds the children.

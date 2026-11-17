@@ -119,8 +119,6 @@ export function Graph({
   /** The skill the person is looking at: selected, or the one just closed. */
   const focal = useRef(selected);
   if (selected) focal.current = selected;
-  /** The selection the camera last answered, so a rebuild never re-frames it. */
-  const answered = useRef("");
   /** Until the person moves the map or selects, the first view may follow the level. */
   const touched = useRef(false);
   const firstView = useRef(true);
@@ -669,6 +667,14 @@ export function Graph({
         : 0.65;
       ring.quaternion.copy(camera.quaternion);
       renderer.render(scene, camera);
+      // Whether every skill of the map is inside the view: the whole map
+      // framed (Q-9), for the checks (scripts/verify-pathways-layers-ui.ts).
+      el.dataset.wholeMap = String(
+        wholeInView(
+          camera,
+          points.map((p) => p.position),
+        ),
+      );
       if (
         !areaLabelsShown &&
         (fitView ||
@@ -1330,15 +1336,11 @@ export function Graph({
       rotate.current = () => {};
     };
   }, [skills, evidence, motion, range?.lo, range?.hi, rangeStrand]);
-  // A new selection is marked where it is; only a deep link on arrival
-  // cuts straight to it.
+  // A new selection is marked where it is. Arriving (a child's Pathways
+  // tab, Grades → 3D, Back from practice) with skills already open, the map
+  // still opens whole (Q-9): the open skill is marked, the camera stays.
   useEffect(() => {
-    const changed = selected !== answered.current;
-    answered.current = selected;
-    focus.current(
-      selected,
-      changed && selected && firstView.current ? "cut" : "none",
-    );
+    focus.current(selected, "none");
     rotate.current(orbit);
   }, [
     selected,
@@ -1352,9 +1354,11 @@ export function Graph({
   ]);
   // Choosing an area dims the others where they are: the camera stays.
   useEffect(() => dim.current(), [area]);
-  // A skill found by the search or the list glides into view, once.
+  // A skill found by the search or the list glides into view, once; one
+  // found before the 3D map was on view (in the grades view) is marked, and
+  // the map opens whole.
   useEffect(() => {
-    if (frame) focus.current(frame.id, firstView.current ? "cut" : "glide");
+    if (frame) focus.current(frame.id, firstView.current ? "none" : "glide");
   }, [frame]);
   // Arriving with nothing selected, the map opens on the whole map, framed
   // (Q-9): the learner's level stays marked where it is, and "Where you are"
@@ -1503,4 +1507,23 @@ export function Graph({
       </div>
     </section>
   );
+}
+
+/** Every point inside the camera's view (a skill's gem around each). */
+function wholeInView(
+  camera: THREE.PerspectiveCamera,
+  positions: readonly (readonly [number, number, number])[],
+) {
+  camera.updateMatrixWorld();
+  const frustum = new THREE.Frustum().setFromProjectionMatrix(
+    new THREE.Matrix4().multiplyMatrices(
+      camera.projectionMatrix,
+      camera.matrixWorldInverse,
+    ),
+  );
+  const at = new THREE.Vector3();
+  return positions.every((p) => {
+    at.set(p[0], p[1], p[2]);
+    return frustum.planes.every((plane) => plane.distanceToPoint(at) >= 1);
+  });
 }

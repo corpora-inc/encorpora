@@ -24,6 +24,7 @@ import {
   retireSession,
   sessionOptions,
 } from "../lib/query";
+import { setHomeAccount } from "../lib/home-place";
 export function Providers({
   children,
   onAccountExit,
@@ -86,6 +87,7 @@ function SessionProviders({
         const current = ++generation;
         setAnalyticsSession(session);
         noteSignedIn(!!session);
+        setHomeAccount(session?.accountId ?? null);
         setError("");
         const previous = queryClient.getQueryData(sessionOptions.queryKey);
         if (

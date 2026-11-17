@@ -11,6 +11,10 @@ import { createJSONStorage, persist } from "zustand/middleware";
  */
 type HomePlace = {
   homes: Record<string, string>;
+  /** The account signed in on this tab, as the session layer last said:
+   * whose home a home link opens (stored, so the light pitch can read it:
+   * lib/home-href.ts). */
+  account: string | null;
   setHome: (accountId: string, href: string) => void;
 };
 
@@ -18,7 +22,8 @@ const storage = createJSONStorage(() => ({
   getItem: (name: string) => {
     try {
       return localStorage.getItem(name);
-    } catch {
+    } catch (error) {
+      console.warn("Your home place couldn’t be read on this device", error);
       return null;
     }
   },
@@ -45,6 +50,7 @@ export const useHomePlace = create<HomePlace>()(
   persist(
     (set) => ({
       homes: {},
+      account: null,
       setHome: (accountId, href) => {
         if (!accountId || !usable(href)) return;
         set((state) =>
@@ -54,10 +60,30 @@ export const useHomePlace = create<HomePlace>()(
         );
       },
     }),
-    { name: "amp.home", storage, version: 1 },
+    {
+      name: "amp.home",
+      storage,
+      version: 1,
+      partialize: (state) => ({ homes: state.homes, account: state.account }),
+    },
   ),
 );
 
 /** Records where an account's home is: an event handler's call. */
 export const setHome = (accountId: string, href: string) =>
   useHomePlace.getState().setHome(accountId, href);
+
+/** The session layer says who is signed in (lib/query, app/providers): a
+ * handler's call, so home links never read the session (or its auth code)
+ * themselves. */
+export const setHomeAccount = (accountId: string | null) => {
+  if (useHomePlace.getState().account !== accountId)
+    useHomePlace.setState({ account: accountId });
+};
+
+/** The signed-in account's home address, or undefined (none yet, or no one
+ * signed in). */
+export const useHomeHref = () =>
+  useHomePlace((state) =>
+    state.account ? state.homes[state.account] : undefined,
+  );

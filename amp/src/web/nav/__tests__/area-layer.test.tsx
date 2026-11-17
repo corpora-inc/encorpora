@@ -22,6 +22,7 @@ import { skillCatalogOptions } from "../../lib/learning-view";
 import { sessionOptions } from "../../lib/query";
 import { areaSkills, areaSourceOf } from "../AreaLayer";
 import { LayerHost } from "../LayerHost";
+import { useLayerStore } from "../layer-store";
 
 const practice = vi.hoisted(() => ({ allowed: false }));
 vi.mock("../../lib/learning-view", async (original) => ({
@@ -35,6 +36,7 @@ vi.mock("../../lib/learning-view", async (original) => ({
 afterEach(() => {
   cleanup();
   practice.allowed = false;
+  useLayerStore.setState({ stacks: {}, motion: null });
 });
 
 globalThis.ResizeObserver ??= class {
@@ -117,7 +119,7 @@ test("the skills of an area sort into earned, working on (nearest first) and nex
   expect(placed.all.some((e) => e.skill.strand !== "geometry")).toBe(false);
 });
 
-test("a level's row opens its area on a real URL; Back closes it", async () => {
+test("a level's row opens its area over the page, never a step in history; ✕ closes it", async () => {
   const router = renderPage(() => (
     <>
       <RecordLevels record={record} empty="" openAreas />
@@ -127,16 +129,18 @@ test("a level's row opens its area on a real URL; Back closes it", async () => {
   const row = await screen.findByRole("link", {
     name: /^Geometry: best guess Grade 6/,
   });
+  // A new tab or a copied link opens the same layer.
   expect(row.getAttribute("href")).toBe("/?open=area%3Ageometry");
+  const entries = router.history.length;
   fireEvent.click(row);
-  await waitFor(() =>
-    expect(router.state.location.search).toEqual({ open: "area:geometry" }),
-  );
   const layer = await screen.findByRole("dialog", { name: "Geometry" });
+  // The screen's layers, not its address or its history.
+  expect(router.state.location.search).toEqual({});
+  expect(router.history.length).toBe(entries);
   expect(layer.textContent).toContain(
     "Most likely Grade 6 · somewhere between Grade 5 and Grade 7",
   );
-  // Each skill opens over the area, in the address.
+  // Each skill opens over the area, in the same overlay.
   const working = layer.querySelector("[data-area-group=working]")!;
   const links = [...working.querySelectorAll("a")];
   expect(links.map((a) => a.dataset.areaSkill)).toEqual([
@@ -151,10 +155,19 @@ test("a level's row opens its area on a real URL; Back closes it", async () => {
   ).toContain("angles");
   // No practice where the page didn't say this reader may start it.
   expect(layer.querySelector("[data-area-practice]")).toBeNull();
-  router.history.back();
-  await waitFor(() =>
-    expect(screen.queryByRole("dialog", { name: "Geometry" })).toBeNull(),
-  );
+  fireEvent.click(links[0]!);
+  await screen.findByRole("dialog", { name: "area of triangles" });
+  // One overlay, one scrim, and the way back up.
+  expect(document.querySelectorAll("[data-layer-scrim]")).toHaveLength(1);
+  const crumbs = [...document.querySelectorAll("[data-layer-crumb]")];
+  expect(crumbs.map((crumb) => crumb.textContent)).toEqual([
+    "Geometry",
+    "area of triangles",
+  ]);
+  fireEvent.click(crumbs[0]!);
+  await screen.findByRole("dialog", { name: "Geometry" });
+  fireEvent.click(document.querySelector("[data-layer-close]")!);
+  await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
   expect(router.state.location.search).toEqual({});
 });
 

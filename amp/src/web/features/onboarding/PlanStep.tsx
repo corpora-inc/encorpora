@@ -69,9 +69,7 @@ export function PlanStep({ session }: { session: AuthSession }) {
   );
   const requests = useRef<Partial<Record<"year" | "month", string>>>({});
   const [changedPlan, setChangedPlan] = useState(
-    search.interval === "month" ||
-      search.interval === "year" ||
-      !!chosenPlan(),
+    search.interval === "month" || search.interval === "year" || !!chosenPlan(),
   );
   useEffect(() => track("plan_view"), []);
   // Back from Stripe restores this page from the browser cache: re-read the
