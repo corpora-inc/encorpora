@@ -1,9 +1,9 @@
 {
   "about": "Frontend anti-pattern counts in src/web; they only fall (amp/AGENTS.md, Frontend architecture). Enforced by tests/architecture-ratchet.test.ts; `files` locates the counts for its failure messages.",
   "counts": {
-    "redirects": 81,
+    "redirects": 76,
     "validateSearch": 12,
-    "searchHandoffs": 166,
+    "searchHandoffs": 160,
     "navigatingEffects": 19,
     "renderNavigate": 27,
     "silentCatches": 249,
@@ -15,19 +15,20 @@
       "app/family-redirect.ts": 4,
       "app/family-routes.tsx": 9,
       "app/pay-routes.tsx": 3,
-      "app/router.tsx": 41,
-      "app/school-routes.tsx": 20,
+      "app/router.tsx": 37,
+      "app/school-routes.tsx": 18,
       "features/home/destination.ts": 1,
       "features/pay/legacy.ts": 2,
-      "features/profiles/practice-mode.ts": 1
+      "features/profiles/practice-mode.ts": 1,
+      "nav/legacy-layers.ts": 1
     },
     "validateSearch": {
       "app/router.tsx": 12
     },
     "searchHandoffs": {
       "app/family-routes.tsx": 3,
-      "app/router.tsx": 13,
-      "app/school-routes.tsx": 5,
+      "app/router.tsx": 9,
+      "app/school-routes.tsx": 3,
       "features/access/AccessScreen.tsx": 3,
       "features/account/AccountReady.tsx": 3,
       "features/account/BillingPage.tsx": 2,

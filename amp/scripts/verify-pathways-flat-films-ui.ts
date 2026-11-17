@@ -1,5 +1,6 @@
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
+import { openLayers, openOf } from "./layer-probe";
 import { mkdir, realpath } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { createServer } from "vite";
@@ -21,7 +22,7 @@ const chromium = secureChromium(rawChromium);
  * switched off, as in the founder's automation browser.
  */
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
-const source = `export async function accessSession(){return {token:"parent-one",accountId:"parent-one"};}export function onSessionChanged(){return()=>{};}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
+const source = `export async function accessSession(){return {token:"parent-one",accountId:"parent-one"};}export function onSessionChanged(){return()=>{};}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export function notifyDeviceSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
 const vite = await createServer({
   cacheDir: process.env.AMP_VITE_CACHE_DIR ?? "artifacts/vite-pathways-flat",
   plugins: [
@@ -389,7 +390,7 @@ for (const width of widths)
     await page
       .getByRole("heading", { name: oneFilm.title, exact: true })
       .waitFor();
-    assert.match(page.url(), new RegExp(`open=skill%3A${oneFilm.id}`));
+    assert.deepEqual(await openOf(page, "skill"), [oneFilm.id]);
 
     // Q-211: the skill's films at its top: one card for its one film.
     const sheet = page.locator(`[data-skill-layer="${oneFilm.id}"]`);
@@ -469,16 +470,14 @@ for (const width of widths)
     await lessonPage.goto(
       `${origin}/pathways?open=skill:${oneFilm.id},lesson:${filmed}`,
     );
-    const dialog = lessonPage.getByRole("dialog", {
-      name: "Explore a problem type",
-    });
+    const dialog = lessonPage.getByRole("dialog");
     const title = dialog.getByRole("heading", {
       name: templates.find((t) => t.id === filmed)!.title,
       exact: true,
     });
     await title.waitFor();
     const try_ = dialog.getByRole("link", {
-      name: "Try this problem type",
+      name: "Practice",
       exact: true,
     });
     const watch = dialog.getByRole("link", {
@@ -571,14 +570,12 @@ for (const width of widths)
     const cold = await context.newPage();
     await fixture(cold, { holdCatalog: 1500 });
     await cold.goto(`${origin}/pathways?open=lesson:${filmed}`);
-    const coldDialog = cold.getByRole("dialog", {
-      name: "Explore a problem type",
-    });
+    const coldDialog = cold.getByRole("dialog");
     const coldWatch = coldDialog.getByRole("link", { name: /^Watch lesson/ });
     await coldWatch.waitFor();
     const held = (await coldWatch.boundingBox())!;
     await coldDialog
-      .getByRole("link", { name: "Try this problem type", exact: true })
+      .getByRole("link", { name: "Practice", exact: true })
       .waitFor();
     assert.deepEqual(
       await coldWatch.boundingBox(),
@@ -601,9 +598,7 @@ for (const width of widths)
         lessonGate: new Promise<void>((r) => (releaseLesson = r)),
       });
       await wrapping.goto(`${origin}/pathways?open=lesson:${type.id}`);
-      const longDialog = wrapping.getByRole("dialog", {
-        name: "Explore a problem type",
-      });
+      const longDialog = wrapping.getByRole("dialog");
       const parts = async () => {
         const at = async (selector: string) => {
           const el = longDialog.locator(selector).first();
@@ -737,8 +732,8 @@ for (const width of widths)
     await shot(far, `q208-chosen-skill-in-view-${tag}`);
     await far.close();
 
-    // A stack of sheets (Q-8): each has one cross; it and Escape put down
-    // one layer, the scrim the whole stack, and Back brings it back.
+    // A stack of skills is ONE overlay (Q-8, founder 11-16): one scrim, one
+    // cross that closes it all, Escape and the trail one level up.
     const stacked = await context.newPage();
     await fixture(stacked);
     const deep = [noFilms.id, farSkill.id, "compound-probability"];
@@ -765,22 +760,33 @@ for (const width of widths)
       `${tag}: the close sits at the top right`,
     );
     await shot(stacked, `sheets-stack-${tag}`);
-    const opened = () => new URL(stacked.url()).searchParams.get("open");
+    assert.equal(await stacked.locator("[data-layer-scrim]").count(), 1);
+    // The trail: the two levels under the top one, whose title heads it.
+    assert.equal(await stacked.locator("[data-layer-crumb]").count(), 2);
     const depth = (n: number) =>
-      stacked.waitForURL((url) =>
-        n
-          ? url.searchParams.get("open")?.split(",").length === n
-          : !url.searchParams.has("open"),
+      stacked.waitForFunction(
+        (n) =>
+          (
+            document
+              .querySelector("[data-layer-frame]")
+              ?.getAttribute("data-layers") ?? ""
+          )
+            .split(",")
+            .filter(Boolean).length === n,
+        n,
       );
-    await cross.click();
-    await depth(2);
     await stacked.keyboard.press("Escape");
+    await depth(2);
+    await stacked.locator('[data-layer-crumb="1"]').click();
     await depth(1);
-    // (A shared link's steps replace it: three deep again.)
+    await cross.click();
+    await depth(0);
+    // (A shared link: three deep again, in the screen's layers.)
     await stacked.goto(
       `${origin}/pathways?open=${deep.map((id) => `skill:${id}`).join(",")}`,
     );
     await cross.waitFor();
+    assert.equal(new URL(stacked.url()).searchParams.get("open"), null);
     // The scrim, beside or above the sheet: the whole stack away.
     const box = (await topSheet.boundingBox())!;
     await stacked.mouse.click(
@@ -793,9 +799,10 @@ for (const width of widths)
       .first()
       .waitFor({ state: "detached" });
     await stacked.locator(".pathways-plan").waitFor();
-    await stacked.goBack();
-    await cross.waitFor();
-    assert.equal(opened()?.split(",").length, 3);
+    // Closed stays closed: a refresh shows the map alone.
+    await stacked.reload();
+    await stacked.locator(".pathways-plan").waitFor();
+    assert.deepEqual(await openLayers(stacked), []);
     await stacked.close();
 
     assert.deepEqual(errors, [], `${tag}: page errors`);

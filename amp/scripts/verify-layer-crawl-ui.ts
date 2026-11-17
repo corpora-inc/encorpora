@@ -43,7 +43,8 @@ import {
   PERSONA_PASSPHRASE,
   personaEmail,
 } from "../src/web/features/dev/persona-list";
-import { ENTITY_KINDS, OPEN_KEY, readStack } from "../src/web/nav/entities";
+import { ENTITY_KINDS, OPEN_KEY } from "../src/web/nav/entities";
+import { storedLayers } from "./layer-probe";
 import { startPersonaStack } from "./persona-stack";
 
 const chromium = secureChromium(rawChromium);
@@ -148,7 +149,8 @@ const view = (page: Page): View => {
 };
 const trim = (path: string) =>
   path.length > 1 ? path.replace(/\/+$/, "") : path;
-const layers = (page: Page) => readStack(view(page).search.get(OPEN_KEY));
+/** The screen's layers (nav/layer-store.ts): never in its address. */
+const layers = (page: Page) => storedLayers(page);
 /** The page's own view: its search without the layers and what they read. */
 const baseSearch = (page: Page) => {
   const search = new URLSearchParams(view(page).search);
@@ -168,13 +170,14 @@ async function check(
 ) {
   await page.waitForTimeout(350);
   const now = view(page);
+  const open = (await layers(page)).length;
   const problems = [
     !now.path.startsWith(prefix) && `left ${prefix} for ${now.path}`,
     now.path !== base.path && `the page changed to ${now.path}`,
     baseSearch(page) !== base.search &&
       `its view changed: ${baseSearch(page)} vs ${base.search}`,
-    layers(page).length !== depth &&
-      `${layers(page).length} layers, not ${depth}`,
+    open !== depth && `${open} layers, not ${depth}`,
+    view(page).search.has(OPEN_KEY) && "layers in the address",
     ONBOARDING.test(await page.locator("body").innerText()) &&
       "first-run screen showed",
   ].filter(Boolean);
@@ -186,7 +189,7 @@ async function check(
 
 /** Waits until the top layer is on screen and takes keys. */
 async function shown(page: Page) {
-  const kind = layers(page).at(-1)?.kind;
+  const kind = (await layers(page)).at(-1)?.kind;
   await page
     .locator(
       kind === "work"
@@ -204,7 +207,7 @@ const top = (page: Page) => page.locator('[role="dialog"]:visible').last();
 /** A layer over another has one way down (Q-8): its cross, never a second
  * "back" control beside it. */
 async function hint(page: Page, what: string) {
-  const stack = layers(page);
+  const stack = await layers(page);
   const [below, above] = stack.slice(-2);
   if (!below || above?.kind === "work" || below.kind === "work") return;
   await top(page)
@@ -349,6 +352,9 @@ async function crawl(page: Page, place: PlacePage, person: string) {
     if (await page.locator(`main a[data-entity="${kind}"]:visible`).count())
       present.push(kind);
   for (const kind of present) {
+    // Each walk starts on the page alone: a screen shows its layers again
+    // when it comes back (nav/layer-store.ts), so forget the last walk's.
+    await page.evaluate(() => sessionStorage.removeItem("amp.layers"));
     await page.goto(`${origin}${tab}`);
     await idle(page);
     const link = page.locator(`main a[data-entity="${kind}"]:visible`).first();
@@ -363,12 +369,12 @@ async function crawl(page: Page, place: PlacePage, person: string) {
     await link.click();
     await page.waitForTimeout(350);
     // A link may open more than one layer (a student, then their answer).
-    const opened = Math.max(1, layers(page).length);
+    const opened = Math.max(1, (await layers(page)).length);
     await check(page, prefix, base, opened, `${where}: open`);
-    assert.equal(layers(page).at(-1)?.kind, kind, `${where}: on top`);
+    assert.equal((await layers(page)).at(-1)?.kind, kind, `${where}: on top`);
     reached.add(kind);
     reachedIn.add(`${place.type}:${kind}`);
-    for (const layer of layers(page)) {
+    for (const layer of await layers(page)) {
       if (layer.kind === "student") students.push(layer.id);
       if (layer.kind === "work") answers.push(layer.id);
     }
@@ -397,21 +403,18 @@ async function crawl(page: Page, place: PlacePage, person: string) {
       await page.keyboard.press("Escape");
       await check(page, prefix, base, opened, `${where}: Escape`);
     }
-    // Back leaves the page as it was, scrolled where it was; Forward and a
-    // refresh bring the stack back; closing pops it a layer at a time.
-    await page.goBack();
-    await check(page, prefix, base, 0, `${where}: Back`);
-    const back = await page.evaluate(() => scrollY);
+    // Layers are no steps in history: the page under them never moved,
+    // scrolled where it was. Closing pops them a layer at a time; a refresh
+    // brings the stack back.
+    const under = await page.evaluate(() => scrollY);
     assert.ok(
-      Math.abs(back - scrolled) <= 2,
-      `${where}: the page's scroll came back (${back} vs ${scrolled})`,
+      Math.abs(under - scrolled) <= 2,
+      `${where}: the page stayed where it was (${under} vs ${scrolled})`,
     );
-    await page.goForward();
-    await check(page, prefix, base, opened, `${where}: Forward`);
     await page.reload();
     await check(page, prefix, base, opened, `${where}: refresh`);
-    while (layers(page).length) {
-      const before = layers(page).length;
+    while ((await layers(page)).length) {
+      const before = (await layers(page)).length;
       await shown(page);
       await page.keyboard.press("Escape");
       await check(page, prefix, base, before - 1, `${where}: close`);
@@ -429,12 +432,19 @@ async function redirects(
   what: string,
 ) {
   await page.goto(`${origin}${from}`);
-  await page.waitForURL((url) => url.searchParams.has(OPEN_KEY), {
-    timeout: 15_000,
-  });
+  await page.waitForFunction(
+    (path) => location.pathname === path && !location.search.includes("open="),
+    path,
+    { timeout: 15_000 },
+  );
+  await page.waitForTimeout(400);
   await shown(page);
   assert.equal(view(page).path, path, `${what}: the page under it`);
-  assert.equal(view(page).search.get(OPEN_KEY), stack, `${what}: its layers`);
+  assert.equal(
+    (await layers(page)).map((layer) => `${layer.kind}:${layer.id}`).join(),
+    stack,
+    `${what}: its layers`,
+  );
   assert.ok(!view(page).search.has("lesson"), `${what}: no old key left`);
   // Closing it leaves that page, never the old address.
   await page.keyboard.press("Escape");
@@ -474,23 +484,25 @@ async function mapStays(page: Page, person: string) {
   await page.waitForTimeout(800);
   const framed = await mapView(page);
   assert.ok(Object.keys(framed).length >= 5, `${person}: the map names skills`);
+  // Closing it: the map holds (layers are no steps in history, so Back and
+  // Forward leave the screen rather than walk them).
   const steps: [string, () => Promise<unknown>, number][] = [
     ["Escape", () => page.keyboard.press("Escape"), 0],
-    ["Forward", () => page.goForward(), 1],
-    ["Back", () => page.goBack(), 0],
-    ["Forward again", () => page.goForward(), 1],
   ];
   for (const [step, run, depth] of steps) {
     await run();
     await page.waitForTimeout(700);
-    assert.equal(layers(page).length, depth, `${person} Pathways ${step}`);
+    assert.equal(
+      (await layers(page)).length,
+      depth,
+      `${person} Pathways ${step}`,
+    );
     const now = await mapView(page);
     assert.ok(
       sameView(now, framed),
       `${person} Pathways: the map stays where it was (${step}): ${JSON.stringify(now)} vs ${JSON.stringify(framed)}`,
     );
   }
-  await page.keyboard.press("Escape");
   await page.emulateMedia({ reducedMotion: null });
   console.log(`${person}: a skill opens and closes over Pathways in place`);
 }
@@ -519,7 +531,9 @@ async function hintFits(skillId: string, templateId: string) {
     await back.waitFor({ timeout: 15_000 });
     await page.waitForTimeout(500);
     const box = (await back.boundingBox())!;
-    const title = (await top(page).locator("header h2").boundingBox())!;
+    const title = (await top(page)
+      .locator("[data-layer-panel] h2")
+      .boundingBox())!;
     assert.ok(
       box.x >= 0 && box.x + box.width <= width,
       `${width}: the cross sits inside the screen (${box.x}..${box.x + box.width})`,
@@ -664,6 +678,15 @@ try {
       pageLinks = [];
       await context.close();
       continue;
+    }
+    // `/` is the launcher, a light document without the app's router: the
+    // table comes from a screen of the app.
+    const routed = await page.evaluate(
+      "typeof window.ampRouteTable === 'function'",
+    );
+    if (!table && !routed) {
+      await page.goto(`${origin}/pathways`);
+      await page.waitForFunction("typeof window.ampRouteTable === 'function'");
     }
     table ??= await page.evaluate(() =>
       (window as unknown as { ampRouteTable: () => Route[] }).ampRouteTable(),

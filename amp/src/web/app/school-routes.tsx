@@ -3,7 +3,8 @@ import { lazyRouteComponent } from "../lib/lazy-route-component";
 import { meOptions, queryClient, sessionOptions } from "../lib/query";
 import { studentSession } from "../lib/student-device";
 import { nativeRuntime } from "../native-runtime";
-import { OPEN_KEY, work, writeStack } from "../nav/entities";
+import { OPEN_KEY, work } from "../nav/entities";
+import { landWithLayers, withoutLayerKeys } from "../nav/legacy-layers";
 import type { AuthSession } from "../auth";
 import {
   calendarOptions,
@@ -448,7 +449,7 @@ export function schoolRoutes(root: AnyRoute) {
       getParentRoute: () => root,
       path: "/school/$org/students/$student",
       staticData: { space: "school" },
-      beforeLoad: async ({ params, search, location }) => {
+      beforeLoad: async ({ params, search, location, preload }) => {
         const { org, student } = params as unknown as {
           org: string;
           student: string;
@@ -461,21 +462,21 @@ export function schoolRoutes(root: AnyRoute) {
           null,
           location as never,
         );
-        throw redirect({
-          to: `/school/${org}/students`,
-          search: {
-            ...(search as Record<string, unknown>),
-            [OPEN_KEY]: writeStack([{ kind: "student", id: student }]),
-          },
-          replace: true,
-        } as never);
+        return landWithLayers(
+          withoutLayerKeys(
+            `/school/${org}/students`,
+            search as Record<string, unknown>,
+          ),
+          [{ kind: "student", id: student }],
+          preload,
+        );
       },
     }),
     createRoute({
       getParentRoute: () => root,
       path: "/school/$org/students/$student/work/$work",
       staticData: { space: "school" },
-      beforeLoad: async ({ params, search, location }) => {
+      beforeLoad: async ({ params, search, location, preload }) => {
         const {
           org,
           student,
@@ -492,17 +493,14 @@ export function schoolRoutes(root: AnyRoute) {
           attempt,
           location as never,
         );
-        throw redirect({
-          to: `/school/${org}/students`,
-          search: {
-            ...(search as Record<string, unknown>),
-            [OPEN_KEY]: writeStack([
-              { kind: "student", id: student },
-              work(student, attempt),
-            ]),
-          },
-          replace: true,
-        } as never);
+        return landWithLayers(
+          withoutLayerKeys(
+            `/school/${org}/students`,
+            search as Record<string, unknown>,
+          ),
+          [{ kind: "student", id: student }, work(student, attempt)],
+          preload,
+        );
       },
     }),
     orgScreen(
