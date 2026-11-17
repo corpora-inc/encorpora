@@ -8,6 +8,7 @@ import {
 import { spokenMath } from "./MathText";
 import { SceneFigure } from "./scene/SceneFigure";
 import { RadioControl } from "./ui/RadioControl";
+import { Form } from "./ui/Form";
 
 export type FigureChoiceReview = ReturnType<typeof figureChoiceReview>;
 /** The correct card and the learner's card, from the server's answer. */
@@ -201,7 +202,7 @@ export function PickedAnswer({
   submit: () => void;
 }) {
   return (
-    <form
+    <Form
       className="figure-choice-form"
       aria-label={spokenMath(label)}
       onSubmit={(event: FormEvent) => {
@@ -222,6 +223,6 @@ export function PickedAnswer({
       >
         Check
       </button>
-    </form>
+    </Form>
   );
 }

@@ -4,6 +4,7 @@ import { TextArea, TextField } from "../../ui/TextField";
 import { sendInquiry } from "./api";
 import { Honeypot } from "../../ui/Honeypot";
 import styles from "./TalkToUs.module.css";
+import { Form } from "../../ui/Form";
 
 type Errors = Partial<Record<"name" | "email" | "school" | "students", string>>;
 const MESSAGE_LIMIT = 4000;
@@ -72,10 +73,9 @@ export function TalkToUs({
   return (
     <div className={styles.talk}>
       <div className={styles.stage}>
-        <form
+        <Form
           className={styles.form}
           onSubmit={(event) => void submit(event)}
-          noValidate
           aria-hidden={sent ? true : undefined}
           inert={sent ? true : undefined}
           data-hidden={sent ? true : undefined}
@@ -144,7 +144,7 @@ export function TalkToUs({
               {failure}
             </p>
           </div>
-        </form>
+        </Form>
         {sent && (
           <div className={styles.sent} role="status">
             <h3>Thank you.</h3>

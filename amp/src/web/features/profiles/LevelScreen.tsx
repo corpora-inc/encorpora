@@ -21,6 +21,7 @@ import { GradePicker } from "./GradePicker";
 import { practiceAs } from "./practice-mode";
 import { setLevelDraft, useLevelDraft } from "./level-draft";
 import styles from "./LevelScreen.module.css";
+import { Form } from "../../ui/Form";
 
 const paceOptions: SegmentedOption<ProfilePace>[] = profilePaces.map(
   (pace) => ({
@@ -85,9 +86,8 @@ export function LevelScreen() {
         onDismiss={() => start.reset()}
         takeFocus
       />
-      <form
+      <Form
         className={styles.form}
-        noValidate
         data-level-practice
         onSubmit={(event: FormEvent) => {
           event.preventDefault();
@@ -160,7 +160,7 @@ export function LevelScreen() {
             Save as a profile
           </Link>
         </div>
-      </form>
+      </Form>
     </main>
   );
 }

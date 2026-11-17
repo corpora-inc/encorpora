@@ -32,6 +32,7 @@ import {
   type ConnectionCredential,
 } from "./api";
 import styles from "../PlainPage.module.css";
+import { Form } from "../../../ui/Form";
 
 const startUrl = "/api/v1/school/sso/clever/start";
 const time = new Intl.DateTimeFormat(undefined, { timeStyle: "short" });
@@ -319,7 +320,7 @@ export function ConnectionScreen() {
             ? "Reconnect your district"
             : "Authorize your district",
           body: (
-            <form
+            <Form
               className={styles.form}
               onSubmit={(event) => {
                 event.preventDefault();
@@ -354,7 +355,7 @@ export function ConnectionScreen() {
                   {connection ? "Reconnect district" : "Connect district"}
                 </Button>
               </Actions>
-            </form>
+            </Form>
           ),
         }
       : {

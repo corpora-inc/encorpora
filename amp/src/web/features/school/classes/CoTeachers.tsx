@@ -11,6 +11,7 @@ import { refreshSchool, school as schoolApi, staffOptions } from "../api";
 import { CopyButton, FormNote } from "../parts";
 import school from "../School.module.css";
 import styles from "./Family.module.css";
+import { Form } from "../../../ui/Form";
 
 /** The other adults who teach this family's class, for example the other
  * parent. The invitation is the school's staff invitation with the teacher
@@ -133,7 +134,7 @@ export function CoTeacherInviteSheet({
       }}
       title="Invite a co-teacher"
     >
-      <form
+      <Form
         className={school.sheetForm}
         onSubmit={(event) => {
           event.preventDefault();
@@ -166,7 +167,7 @@ export function CoTeacherInviteSheet({
         >
           Send invitation
         </Button>
-      </form>
+      </Form>
     </Sheet>
   );
 }

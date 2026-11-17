@@ -56,6 +56,7 @@ import {
 import { recordPendingIntent, recordSignupIntent } from "./signup-intent";
 import { LoadingScreen } from "../../ui/LoadingScreen";
 import { useBrowserHandoff } from "./OpenInBrowser";
+import { Form } from "../../ui/Form";
 
 /** The sign-up code's length (server/sign-in-methods.ts SIGN_UP_CODE_LENGTH). */
 const SIGN_UP_CODE_DIGITS = 6;
@@ -855,7 +856,7 @@ export function SignInScreen() {
           primaryProviders.length > 0 &&
           (passwords || passkeyCreate) && <EmailDivider copy={copy} />}
         {codeFor && showProviders ? (
-          <form
+          <Form
             className="account-form"
             onSubmit={confirmCode}
             data-email-code=""
@@ -872,6 +873,9 @@ export function SignInScreen() {
               autoComplete="one-time-code"
               inputMode="numeric"
               pattern={`[0-9 ]{${SIGN_UP_CODE_DIGITS},${SIGN_UP_CODE_DIGITS + 2}}`}
+              messages={{
+                pattern: `Enter the ${SIGN_UP_CODE_DIGITS} digits from the email.`,
+              }}
               maxLength={SIGN_UP_CODE_DIGITS + 2}
               value={emailCode}
               onChange={(e) => setEmailCode(e.target.value)}
@@ -902,7 +906,7 @@ export function SignInScreen() {
                 Use a different email
               </Button>
             </div>
-          </form>
+          </Form>
         ) : hinted ? (
           <div
             className={styles.methodHint}
@@ -959,7 +963,7 @@ export function SignInScreen() {
             )}
           </div>
         ) : passkeyMethod ? (
-          <form
+          <Form
             ref={formRef}
             className="account-form"
             onSubmit={createWithPasskey}
@@ -995,7 +999,7 @@ export function SignInScreen() {
               Create account with a passkey
             </Button>
             <small className={styles.hint}>No password to remember.</small>
-          </form>
+          </Form>
         ) : step === "check-email" ? (
           <div className={styles.emailHelp} data-check-email>
             <p>
@@ -1012,7 +1016,7 @@ export function SignInScreen() {
           </div>
         ) : (
           (passwords || !showProviders) && (
-            <form ref={formRef} className="account-form" onSubmit={submit}>
+            <Form ref={formRef} className="account-form" onSubmit={submit}>
               {step !== "reset" && step !== "two-factor" && (
                 <TextField
                   label="Email"
@@ -1078,7 +1082,7 @@ export function SignInScreen() {
                   }[step]
                 }
               </Button>
-            </form>
+            </Form>
           )
         )}
         {handoff.hint}

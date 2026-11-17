@@ -38,6 +38,7 @@ import {
   privacyOptions,
 } from "./org-api";
 import styles from "./Org.module.css";
+import { Form } from "../../../ui/Form";
 
 const COLLECTED = [
   "Each student’s name, grade and class. An email address or school ID only if you add one.",
@@ -123,7 +124,7 @@ function Agreement({
         Read the full agreement
       </Button>
       {!accepted && canAccept && (
-        <form
+        <Form
           className={styles.acceptForm}
           onSubmit={(event) => {
             event.preventDefault();
@@ -147,7 +148,7 @@ function Agreement({
           >
             Accept the agreement
           </Button>
-        </form>
+        </Form>
       )}
       <Sheet
         open={reading}

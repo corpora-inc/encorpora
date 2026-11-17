@@ -9,6 +9,7 @@ import {
   type PegBoardResponse,
   type Stick,
 } from "../math/peg-board";
+import { Form } from "./ui/Form";
 
 const pegName = (id: number) =>
   `row ${Math.floor(id / 5) + 1}, column ${(id % 5) + 1}`;
@@ -318,7 +319,7 @@ export function PegBoardAnswer({
   const a = parsePegBoard(response, value),
     count = a?.sticks.length ?? response.given.length;
   return (
-    <form
+    <Form
       className="peg-board-form"
       onSubmit={(e) => {
         e.preventDefault();
@@ -341,6 +342,6 @@ export function PegBoardAnswer({
       >
         Check
       </button>
-    </form>
+    </Form>
   );
 }

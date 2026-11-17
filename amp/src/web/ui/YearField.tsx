@@ -5,11 +5,13 @@ import { TilePicker } from "./TileChoice";
 import { Button } from "./Button";
 import { TextField } from "./TextField";
 import styles from "./YearField.module.css";
+import { Form } from "./Form";
 
 /**
  * A birth year as a field: the same field style as a text field beside it
- * (tokens.css --field-*), opening the year tiles the starter uses in a
- * dialog, full screen on a phone. Choosing a year closes it and focus
+ * (tokens.css --field-*) and the calendar mark of ui/DatePicker, opening the
+ * year tiles the starter uses in a dialog, full screen on a phone. Every
+ * birth year in the app is this field. Choosing a year closes it and focus
  * returns to the field, which reads the year. The tiles are a listbox (ui/
  * TilePicker): arrows and typing move, Enter or Space chooses, Escape
  * closes; four typed digits outside the tiles open "Earlier year…" with them.
@@ -67,8 +69,10 @@ export function YearField({
         }}
       >
         <span>{shown ?? placeholder}</span>
-        <svg viewBox="0 0 12 12" aria-hidden="true">
-          <path d="m3 4.5 3 3 3-3" />
+        {/* The calendar of ui/DatePicker: a year is a date, chosen from the
+            tiles it opens, never a dropdown list. */}
+        <svg viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M4 5.5h12v11H4v-11Zm0 3.5h12M7.5 3v3.5M12.5 3v3.5" />
         </svg>
       </button>
       <Dialog
@@ -80,7 +84,7 @@ export function YearField({
         initialFocus={entering ? "input" : '[role="listbox"]'}
       >
         {entering ? (
-          <form
+          <Form
             className={styles.earlier}
             onSubmit={(event) => {
               event.preventDefault();
@@ -109,7 +113,7 @@ export function YearField({
             <Button type="submit" variant="primary">
               Use this year
             </Button>
-          </form>
+          </Form>
         ) : (
           <>
             <TilePicker

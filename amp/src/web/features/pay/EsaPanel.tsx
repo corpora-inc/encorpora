@@ -39,6 +39,7 @@ import {
   type EsaStep,
 } from "./store";
 import styles from "./Pay.module.css";
+import { Form } from "../../ui/Form";
 
 /* ---------- the education-funds tab ---------- */
 
@@ -173,7 +174,7 @@ export function EsaPanel() {
         </>
       )}
       {step === "name" && (
-        <form
+        <Form
           className={styles.form}
           onSubmit={(event) => {
             event.preventDefault();
@@ -252,7 +253,7 @@ export function EsaPanel() {
               </p>
             </div>
           )}
-        </form>
+        </Form>
       )}
     </div>
   );

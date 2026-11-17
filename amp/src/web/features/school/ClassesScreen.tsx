@@ -73,6 +73,7 @@ import { SMALL_CLASS } from "../navigation/shell-frame";
 import { meOptions } from "../../lib/query";
 import styles from "./School.module.css";
 import { COURSE_OPTIONS, courseLabel } from "./courses";
+import { Form } from "../../ui/Form";
 
 const GRADING: GradingKind[] = ["year", "semester", "trimester", "quarter"];
 const gradingLabel = (kind: GradingKind) =>
@@ -139,7 +140,7 @@ function AddClassSheet({
   };
   return (
     <Sheet open={open} onOpenChange={onOpenChange} title="Add a class">
-      <form
+      <Form
         className={styles.sheetForm}
         onSubmit={(event) => {
           event.preventDefault();
@@ -193,7 +194,7 @@ function AddClassSheet({
         >
           Add class
         </Button>
-      </form>
+      </Form>
     </Sheet>
   );
 }
@@ -485,7 +486,7 @@ function AddStudentSheet({
       title="Add a student"
       description={`To ${className}`}
     >
-      <form
+      <Form
         className={styles.sheetForm}
         onSubmit={(event) => {
           event.preventDefault();
@@ -553,7 +554,7 @@ function AddStudentSheet({
         >
           Add student
         </Button>
-      </form>
+      </Form>
     </Sheet>
   );
 }

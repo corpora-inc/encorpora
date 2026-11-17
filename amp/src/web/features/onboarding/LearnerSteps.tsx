@@ -25,6 +25,7 @@ import { Progress } from "./Progress";
 import { useDraft } from "./state";
 import styles from "./Start.module.css";
 import { practiceParams } from "../spaces/identity";
+import { Form } from "../../ui/Form";
 
 /**
  * Learner name, then birth year. A paid, unassigned enrollment is claimed for
@@ -231,7 +232,7 @@ export function LearnerSteps({ me }: { me: SignedInMe }) {
           <p className={styles.divider}>or add a new learner</p>
         </div>
       )}
-      <form
+      <Form
         onSubmit={(event) => {
           event.preventDefault();
           if (!name.trim()) return;
@@ -260,7 +261,7 @@ export function LearnerSteps({ me }: { me: SignedInMe }) {
             Back to family
           </Link>
         )}
-      </form>
+      </Form>
     </section>
   );
 }

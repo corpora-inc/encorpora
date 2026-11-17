@@ -33,6 +33,7 @@ import {
 import { deleteBackward, insertText, readField } from "./lib/keypadEdit";
 import { WorkDiagramView, type DiagramSlots } from "./WorkDiagram";
 import { AnswerInput } from "./ui/AnswerInput";
+import { Form } from "./ui/Form";
 
 /* Structured work: a list of steps (or a two-column proof) built field by
    field. Every control keeps its size from the first frame: a choice is as
@@ -1108,7 +1109,7 @@ export function StructuredWorkAnswer({
         ),
       );
   return (
-    <form
+    <Form
       className="work-form"
       aria-label={spokenMath(r.label)}
       onSubmit={(event: FormEvent) => {
@@ -1139,7 +1140,7 @@ export function StructuredWorkAnswer({
           Check
         </button>
       </div>
-    </form>
+    </Form>
   );
 }
 

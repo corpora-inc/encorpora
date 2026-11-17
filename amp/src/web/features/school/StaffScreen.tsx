@@ -27,6 +27,7 @@ import { OrgFrame } from "./OrgFrame";
 import { CopyButton, FormNote, PageHead, roleNames } from "./parts";
 import styles from "./School.module.css";
 import { compareClassNames } from "./sort";
+import { Form } from "../../ui/Form";
 
 /** A long school address breaks after its @, never inside a word. */
 function Address({ email }: { email: string }) {
@@ -109,7 +110,7 @@ function InviteForm({ orgId }: { orgId: string }) {
     }
   };
   return (
-    <form
+    <Form
       className={styles.invite}
       onSubmit={(event) => {
         event.preventDefault();
@@ -177,7 +178,7 @@ function InviteForm({ orgId }: { orgId: string }) {
         Send invitation
       </Button>
       <FormNote error={error} status={status} />
-    </form>
+    </Form>
   );
 }
 

@@ -8,7 +8,7 @@ import { ChoicePicker, Listbox, ListboxDisclosure } from "../../../ui/Listbox";
 import { Menu, MenuItem, MenuLabel } from "../../../ui/Menu";
 import { SearchField } from "../../../ui/SearchField";
 import { Segmented, type SegmentedOption } from "../../../ui/Segmented";
-import { BirthYearPicker, Select } from "../../../ui/Select";
+import { Select } from "../../../ui/Select";
 import { Stepper } from "../../../ui/Stepper";
 import { TextArea, TextField } from "../../../ui/TextField";
 import { TileChoice } from "../../../ui/TileChoice";
@@ -390,11 +390,6 @@ function ChoiceSection() {
           )}
         </Live>
       </Specimen>
-      <Specimen label="Birth year picker">
-        <Live initial={""}>
-          {(value, set) => <BirthYearPicker value={value} onChange={set} />}
-        </Live>
-      </Specimen>
       <Specimen label="Select, disabled">
         <Select aria-label="Minutes" value="45" disabled>
           <option value="45">45 minutes</option>
@@ -549,6 +544,15 @@ function FieldFamilySection() {
             </div>
           )}
         </Live>
+      </Specimen>
+      <Specimen label="A field that says what is wrong">
+        <TextField
+          label="Email"
+          type="email"
+          value="skylar@"
+          error="Finish the address after the @."
+          readOnly
+        />
       </Specimen>
       <Specimen label="A missing year, asked for">
         <YearField

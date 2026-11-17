@@ -15,6 +15,7 @@ import {
   NumberTilePad,
   spokenNumberTile as spoken,
 } from "./NumberSentence";
+import { Form } from "./ui/Form";
 
 const slotNames = [
   "First number",
@@ -368,7 +369,7 @@ export function CounterBuilderAnswer({
     !a ||
     (a.groups.every((n) => n === 0) && a.sentence.every((v) => v === null));
   return (
-    <form
+    <Form
       className="counter-builder-form"
       onSubmit={(event) => {
         event.preventDefault();
@@ -391,6 +392,6 @@ export function CounterBuilderAnswer({
       >
         Check
       </button>
-    </form>
+    </Form>
   );
 }

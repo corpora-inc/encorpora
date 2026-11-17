@@ -17,6 +17,7 @@ import {
   secondParentOptions,
   type SecondParent as SecondParentView,
 } from "./api";
+import { Form } from "../../ui/Form";
 
 /** The family's second parent (docs/families.md), for its account holder:
  * invite one, see where it stands, send again or remove. A paid family covers
@@ -266,7 +267,7 @@ export function SecondParentInviteSheet({
           </Button>
         </div>
       ) : (
-        <form
+        <Form
           className={school.sheetForm}
           onSubmit={(event) => {
             event.preventDefault();
@@ -300,7 +301,7 @@ export function SecondParentInviteSheet({
           >
             Send
           </Button>
-        </form>
+        </Form>
       )}
     </Sheet>
   );

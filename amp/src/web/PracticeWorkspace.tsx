@@ -106,6 +106,7 @@ import { Loading } from "./ui/Loading";
 import { prefetchMoneyArt } from "./scene/money-art";
 import { RadioControl } from "./ui/RadioControl";
 import { AnswerInput } from "./ui/AnswerInput";
+import { Form } from "./ui/Form";
 type ReportSheet = typeof import("./ReportProblemSheet");
 /** The report sheet uses the UI kit's stylesheets, so it loads in the
  * browser on demand (this module also loads under Node). */
@@ -1046,7 +1047,7 @@ export function PracticeWorkspace(props: Props) {
         </fieldset>
       );
       return (
-        <form
+        <Form
           className="choice-form multi-select-form"
           data-choice-count={problem.response.options.length}
           onSubmit={(event) => {
@@ -1077,7 +1078,7 @@ export function PracticeWorkspace(props: Props) {
           >
             Check
           </button>
-        </form>
+        </Form>
       );
     }
     // Options that are themselves letters ("A", "B") need no second letter
@@ -1089,7 +1090,7 @@ export function PracticeWorkspace(props: Props) {
       );
     if (problem.response.kind === "choice")
       return (
-        <form
+        <Form
           className="choice-form"
           data-choice-count={problem.response.options.length}
           onSubmit={(event) => {
@@ -1137,11 +1138,11 @@ export function PracticeWorkspace(props: Props) {
                 and Check resends the same answer. */}
             Check
           </button>
-        </form>
+        </Form>
       );
     return (
       <>
-        <form
+        <Form
           onSubmit={(event) => {
             event.preventDefault();
             if (busy || !(outcome || response.trim())) return;
@@ -1199,7 +1200,7 @@ export function PracticeWorkspace(props: Props) {
               ? "Enter a whole number of square units."
               : "Enter a number, decimal or fraction. Negative answers use a minus sign."}
           </span>
-        </form>
+        </Form>
         {keypad && (
           <div className="math-keypad" aria-label="Math keypad">
             {[

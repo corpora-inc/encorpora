@@ -1,1 +1,1 @@
-export { Select, BirthYearPicker } from "./ui/Select";
+export { Select } from "./ui/Select";

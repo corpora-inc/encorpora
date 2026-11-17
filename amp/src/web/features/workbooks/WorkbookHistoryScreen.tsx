@@ -14,6 +14,7 @@ import { WorkbookFrame, whose, type WorkbookLearner } from "./WorkbookFrame";
 import { WorkbookList } from "./WorkbookList";
 import { useWorkbookPaths } from "./paths";
 import styles from "./Workbooks.module.css";
+import { Form } from "../../ui/Form";
 
 export function WorkbookHistoryScreen() {
   const { learnerId } = useParams({ strict: false }) as { learnerId: string };
@@ -205,7 +206,7 @@ function CodeEntry({ learnerId }: { learnerId: string }) {
     }
   }
   return (
-    <form className={styles.codeForm} onSubmit={(event) => void open(event)}>
+    <Form className={styles.codeForm} onSubmit={(event) => void open(event)}>
       <TextField
         label="Workbook code"
         placeholder="ABCD-EFGH"
@@ -229,6 +230,6 @@ function CodeEntry({ learnerId }: { learnerId: string }) {
       >
         Open results
       </Button>
-    </form>
+    </Form>
   );
 }

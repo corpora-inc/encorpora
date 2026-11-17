@@ -9,6 +9,7 @@ import { Chips } from "./ui/Chips";
 import { TextArea } from "./ui/TextField";
 import type { ProblemReport } from "./problem-flag";
 import type { ReportResult } from "./ProblemFlag";
+import { Form } from "./ui/Form";
 export { Toast } from "./ui/Toast";
 
 /** Reasons (one tap each), an optional note where allowed, and Send. A
@@ -51,7 +52,7 @@ export function ReportProblemForm({
     }
   }
   return (
-    <form className="report-form" onSubmit={submit}>
+    <Form className="report-form" onSubmit={submit}>
       <Chips
         label="What’s wrong?"
         options={flagReasons.map((value) => ({
@@ -86,6 +87,6 @@ export function ReportProblemForm({
       >
         Send
       </button>
-    </form>
+    </Form>
   );
 }

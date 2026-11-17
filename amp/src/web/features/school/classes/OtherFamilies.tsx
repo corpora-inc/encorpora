@@ -13,6 +13,7 @@ import { freeProblemsLeft } from "../../../lib/free-allowance";
 import { TalkToUsButton } from "../../continue/AllowancePause";
 import school from "../School.module.css";
 import styles from "./Family.module.css";
+import { Form } from "../../../ui/Form";
 
 const DAY = new Intl.DateTimeFormat("en-US", {
   month: "long",
@@ -289,7 +290,7 @@ export function OtherFamilyAddSheet({
           </Button>
         </div>
       ) : (
-        <form
+        <Form
           className={school.sheetForm}
           onSubmit={(event) => {
             event.preventDefault();
@@ -323,7 +324,7 @@ export function OtherFamilyAddSheet({
           >
             Send approval link
           </Button>
-        </form>
+        </Form>
       )}
     </Sheet>
   );

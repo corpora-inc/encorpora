@@ -26,6 +26,7 @@ import {
 } from "../math/point-plot";
 import { spokenMath } from "./MathText";
 import { SceneSvg } from "./scene/SceneSvg";
+import { Form } from "./ui/Form";
 
 /** The math-to-figure-pixel map of the laid-out grid, read from its own
  * gridlines so the overlay always sits exactly on the drawn lattice. */
@@ -644,7 +645,7 @@ export function PointPlotAnswer({
     (_, i) => slots[i] ?? null,
   );
   return (
-    <form
+    <Form
       className="point-plot-form"
       aria-label={spokenMath(response.label)}
       onSubmit={(event: FormEvent) => {
@@ -692,7 +693,7 @@ export function PointPlotAnswer({
           Check
         </button>
       </div>
-    </form>
+    </Form>
   );
 }
 

@@ -15,10 +15,11 @@ import { AppError } from "../../lib/AppError";
 import { invalidateAccount, meOptions } from "../../lib/query";
 import { useSession } from "../../lib/session";
 import { Button } from "../../ui/Button";
-import { BirthYearPicker } from "../../ui/Select";
+import { YearField } from "../../ui/YearField";
 import { Sheet } from "../../ui/Sheet";
 import { TextField } from "../../ui/TextField";
 import styles from "./AddChildSheet.module.css";
+import { Form } from "../../ui/Form";
 
 /* Adding a child to a family's class (docs/product-model.md). A family's class
    is never a school: it has no school roster form and no grades. Its account
@@ -121,9 +122,8 @@ export function AddChildSheet({
       }}
       title={child ? "Add a child" : "Add a student"}
     >
-      <form
+      <Form
         className={styles.form}
-        noValidate
         onSubmit={(event) => {
           event.preventDefault();
           void submit();
@@ -148,11 +148,11 @@ export function AddChildSheet({
           <span className={styles.label} aria-hidden="true">
             Birth year
           </span>
-          <BirthYearPicker
+          <YearField
             label="Birth year"
-            adult={false}
             value={year}
             disabled={busy}
+            invalid={!!yearError}
             onChange={(next) => {
               setYear(next);
               setYearError("");
@@ -183,7 +183,7 @@ export function AddChildSheet({
         >
           {child ? "Add child" : "Add student"}
         </Button>
-      </form>
+      </Form>
     </Sheet>
   );
 }

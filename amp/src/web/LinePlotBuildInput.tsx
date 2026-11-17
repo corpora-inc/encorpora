@@ -5,6 +5,7 @@ import {
   normalizeLinePlotBuild,
   type LinePlotBuildResponse,
 } from "../math/line-plot-build";
+import { Form } from "./ui/Form";
 
 type Props = {
   response: LinePlotBuildResponse;
@@ -334,7 +335,7 @@ export function LinePlotBuildAnswer({
     0,
   );
   return (
-    <form
+    <Form
       className="line-build-form"
       onSubmit={(event) => {
         event.preventDefault();
@@ -357,6 +358,6 @@ export function LinePlotBuildAnswer({
       >
         Check
       </button>
-    </form>
+    </Form>
   );
 }
