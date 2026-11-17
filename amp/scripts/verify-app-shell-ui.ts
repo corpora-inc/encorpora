@@ -390,7 +390,9 @@ async function verifyShell() {
     );
     await page.goto(origin + scenario.path, { waitUntil: "domcontentloaded" });
     await page.getByRole("alert").first().waitFor();
-    await page.getByRole("button", { name: "Dismiss message" }).click();
+    // A toast is dismissed; an inline error stays beside its recovery.
+    const dismiss = page.getByRole("button", { name: "Dismiss message" });
+    if (await dismiss.count()) await dismiss.first().click();
     await page.waitForTimeout(500);
     check(
       await page.getByRole("button", { name: "Try again" }).isVisible(),
