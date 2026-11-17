@@ -319,13 +319,11 @@ registerComponent("angle", {
           type: "text",
           id: `measure.${i}`,
           at: at(a + sweep / 2, c.marksOnly ? r : out),
-          ...(c.marksOnly
-            ? {
-                place: [16, 30, -14, 44, -26].map(
-                  (d) => [u[0] * d, u[1] * d, 0, 0] as [number, number, 0, 0],
-                ),
-              }
-            : {}),
+          // On its own figure, the computed spot first, then along the
+          // bisector, clear of the rays' end dots and other labels.
+          place: (c.marksOnly ? [16, 30, -14, 44, -26] : [0, -10, 10, -20]).map(
+            (d) => [u[0] * d, u[1] * d, 0, 0] as [number, number, 0, 0],
+          ),
           text: degrees(span),
           font: "sans",
           bold: true,
