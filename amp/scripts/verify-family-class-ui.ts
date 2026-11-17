@@ -346,7 +346,7 @@ async function family(
     );
   check(
     `${label} a family's People shows no class code`,
-    !(await page.locator("main").innerText())
+    !(await page.locator("[data-settings-people]").innerText())
       .replace(/[^A-Z0-9]/gi, "")
       .includes(code.replace(/[^A-Z0-9]/gi, "")),
   );
