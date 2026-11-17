@@ -84,6 +84,28 @@ const previewPrices: Plugin = {
   },
 };
 
+/** Money art in the browser is files: hashed, cached for good, fetched once
+ * and decoded before a money problem shows (`src/web/scene/money-art.ts`).
+ * Every other renderer (print, the server, film) keeps the embedded copies,
+ * so a document carries its own pictures. */
+const sceneArtFiles: Plugin = {
+  name: "amp-scene-art-files",
+  enforce: "pre",
+  async resolveId(source, importer, options) {
+    if (options?.ssr || !/(?:^|\/)(?:coin|bill)-art(?:\.[jt]s)?$/.test(source))
+      return;
+    const resolved = await this.resolve(source, importer, {
+      ...options,
+      skipSelf: true,
+    });
+    if (
+      resolved &&
+      /\/src\/web\/scene\/(?:coin|bill)-art\.ts$/.test(resolved.id)
+    )
+      return resolved.id.replace(/\.ts$/, ".files.ts");
+  },
+};
+
 /** `/` is the pitch's own document (`home.html` in the build): the shell
  * with the light home entry (`src/web/home-entry.tsx`) in place of the app's.
  * The development server serves `/` the same way, so the pitch is built and
@@ -138,6 +160,7 @@ export default defineConfig({
     serverOnlyCrypto,
     devFixtures,
     previewPrices,
+    sceneArtFiles,
     homeDocument,
     react(),
   ],

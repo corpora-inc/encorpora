@@ -467,6 +467,12 @@ try {
       { button: "Start practicing", until: "[data-problem-id]" },
     ],
     ["pathways", "adult-3wk", "/pathways"],
+    // A money problem: its coins are files decoded before it shows.
+    [
+      "money problem",
+      "adult-3wk",
+      "/practice?skill=money-values&template=coin-total",
+    ],
   ];
   for (const [name, who, path, then] of screens) {
     if (only && !only.includes(name)) continue;

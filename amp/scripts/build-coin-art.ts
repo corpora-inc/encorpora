@@ -6,8 +6,9 @@ import { coinKinds } from "../src/math/scene/art";
 /**
  * Embeds the coin faces (`src/web/scene/coin-art/*.webp`, sources in the
  * README there) in `src/web/scene/coin-art.ts` as data URLs. Every renderer
- * (app, print, film player, headless film renders, server-side worksheets)
- * then draws a coin with no request and no loading gap.
+ * but the app's browser build (print, film player, headless film renders,
+ * server-side worksheets) then draws a coin with no request and no loading
+ * gap; the app serves the files themselves (`coin-art.files.ts`).
  */
 const dir = new URL("../src/web/scene/", import.meta.url);
 const entries = coinKinds.map((coin) => {

@@ -9,6 +9,7 @@ import {
   usePracticeViewport,
 } from "../src/web/PracticeWorkspace";
 import "../src/web/app/styles";
+import { withMoneyArt } from "../src/web/scene/money-art";
 import type { GeneratedProblem, TemplateMetadata } from "../src/math/contracts";
 import { markStructuredWork } from "../src/math/structured-work";
 
@@ -27,10 +28,12 @@ declare global {
 function App() {
   const [value, setValue] = useState<Case | null>(null);
   const [revision, setRevision] = useState(0);
-  window.layoutCase = (value) => {
-    setValue(value);
-    setRevision((n) => n + 1);
-  };
+  // As practice presents a problem: once its money pictures can paint.
+  window.layoutCase = (value) =>
+    void withMoneyArt(value.problem.public).then(() => {
+      setValue(value);
+      setRevision((n) => n + 1);
+    });
   usePracticeViewport(true);
   if (!value) return <p>Choose a template with ?template=…&amp;seed=…</p>;
   return (
