@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { useToRoot } from "../../nav/root";
 import { useLocation, useNavigate } from "@tanstack/react-router";
 import { invalidateAccount, meOptions, refreshMe } from "../../lib/query";
 import { useSession } from "../../lib/session";
@@ -60,6 +61,7 @@ export function StartScreen() {
   const query = useQuery(meOptions(session)),
     location = useLocation(),
     navigate = useNavigate();
+  const toRoot = useToRoot();
   const me = query.data;
   const search = continuationSearch(location.search);
   const funded = useFunded();
@@ -90,14 +92,10 @@ export function StartScreen() {
             if (funded) {
               forgetFundedPurchase(session.accountId);
               chooseProgram(fundedPrograms[funded].id);
-              void navigate({ to: "/" });
-            } else
-              void navigate({
-                to:
-                  me.availableAccessGrant || search.return === "access"
-                    ? "/access"
-                    : "/",
-              });
+              toRoot();
+            } else if (me.availableAccessGrant || search.return === "access")
+              void navigate({ to: "/access" });
+            else toRoot();
           }}
         />
       </div>
