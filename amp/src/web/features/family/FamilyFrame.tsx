@@ -9,7 +9,8 @@ import { useEffect, type ReactNode } from "react";
 import type { SignedInMe } from "../../../account/contracts";
 import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
-import { meOptions, sessionOptions } from "../../lib/query";
+import { meOptions } from "../../lib/query";
+import { useSessionOrNull } from "../../lib/session";
 import { LayerHost } from "../../nav/LayerHost";
 import type { AreaSource } from "../../nav/AreaLayer";
 import { OPEN_KEY, workParts, type Entity } from "../../nav/entities";
@@ -35,7 +36,7 @@ export function useFamilyPlace() {
 }
 /** A family by its id, from outside its own pages (setup's last step). */
 export function useFamilyPlaceOf(family: string) {
-  const session = useQuery(sessionOptions).data ?? null;
+  const session = useSessionOrNull();
   const auth = session ?? NO_SESSION;
   // Its own guard (api.ts): signed in as a parent, never a child's session
   // that a handover has just started on this screen.

@@ -17,7 +17,7 @@ import { flush, analyticsVisitorHeaders } from "../../lib/analytics";
 const billingKey = (identity: string) => qk.account(identity, "billing");
 export const offerOptions = (session: AuthSession) =>
   queryOptions({
-    queryKey: [...billingKey(session.accountId), "offer"],
+    queryKey: qk.account(session.accountId, "billing", "offer"),
     queryFn: ({ signal }) =>
       request("/billing/offer", offerViewSchema, {
         token: session.token,
@@ -34,7 +34,7 @@ export { pricesOptions } from "./prices";
 /** Polls only while a verified result is still pending. */
 export const enrollmentOptions = (session: AuthSession, poll = false) =>
   queryOptions({
-    queryKey: [...billingKey(session.accountId), "enrollment"],
+    queryKey: qk.account(session.accountId, "billing", "enrollment"),
     queryFn: ({ signal }) =>
       request("/billing/enrollment", enrollmentViewSchema, {
         token: session.token,

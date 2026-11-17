@@ -165,10 +165,7 @@ export function BillingPanel() {
         </>
       )}
       {!receipt && (
-        <FundingInvoices
-          session={session}
-          verified={!account.account.confirmationRequired}
-        />
+        <FundingInvoices verified={!account.account.confirmationRequired} />
       )}
       {receipt ? (
         <Receipts selected={receipt} onSelect={setReceipt} />
