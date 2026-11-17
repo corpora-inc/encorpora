@@ -173,21 +173,19 @@
     }
   };
 
-  // A stylesheet of AMP's that failed before this script ran: its request
-  // finished, yet it has no sheet. One still loading reports to the
-  // listener below if it fails.
-  var sheets = document.querySelectorAll('link[rel="stylesheet"]');
-  for (var k = 0; k < sheets.length; k++)
-    if (
-      !sheets[k].sheet &&
-      ours(sheets[k].href) &&
-      window.performance &&
-      performance.getEntriesByName &&
-      performance.getEntriesByName(sheets[k].href).length
-    ) {
+  // A file of AMP's that failed before this script ran (a stylesheet or a
+  // modulepreload reports on its element, unheard). Only an explicit HTTP
+  // error counts: a browser that doesn't report a response's status
+  // (responseStatus) is never guessed at.
+  var entries =
+    window.performance && performance.getEntriesByType
+      ? performance.getEntriesByType("resource")
+      : [];
+  for (var k = 0; k < entries.length; k++)
+    if (entries[k].responseStatus >= 400 && ours(entries[k].name)) {
       if (window.console)
-        console.error("AMP: a stylesheet didn’t load", sheets[k].href);
-      failed("load", sheets[k].href);
+        console.error("AMP: a file didn’t load", entries[k].name);
+      failed("load", entries[k].name);
     }
 
   // A script or stylesheet of AMP's that fails to load (load errors don't

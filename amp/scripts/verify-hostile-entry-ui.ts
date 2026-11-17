@@ -477,10 +477,11 @@ async function run(
     // one automatic reload.
     if (test.fail === "sign-up-chunk-once")
       assert.ok(state.documents <= 2, `${tag}: at most one reload`);
-    // The page's stylesheet failed before any of AMP's code ran: the entry
-    // guard reloads once, and the page is styled.
+    // The page's stylesheet failed before any of AMP's code ran. Where the
+    // browser reports the response's status, the entry guard reloads once;
+    // either way the next step works.
     if (test.fail === "entry-css-once")
-      assert.equal(state.documents, 2, `${tag}: one automatic reload`);
+      assert.ok(state.documents <= 2, `${tag}: at most one reload`);
     await page.screenshot({ path: `${shots}/${tag}.png` });
     assert.equal(
       await page
