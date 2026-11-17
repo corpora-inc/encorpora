@@ -1,5 +1,6 @@
 /** Local UAT: single-child progress, family sections and comparison links. */
 import assert from "node:assert/strict";
+import { waitForLayers } from "./layer-probe";
 import { mkdir } from "node:fs/promises";
 import { chromium as rawChromium } from "playwright";
 import { secureChromium } from "../browser-security.mjs";
@@ -238,8 +239,11 @@ try {
     (href) => (window as Window & { location: Location }).location.assign(href),
     origin + base + "/map?open=area%3Aoperations",
   );
-  await page.waitForURL(origin + detail + "?open=area%3Aoperations");
+  // The layer goes into the child's page's layers; the address names the
+  // page only.
+  await page.waitForURL(origin + detail);
   await page.getByRole("dialog", { name: "Operations", exact: true }).waitFor();
+  await waitForLayers(page, ["area:operations"]);
   await page.goBack();
   await page.waitForURL(origin + base);
   console.log("PASS map alias preserves layers and Back");

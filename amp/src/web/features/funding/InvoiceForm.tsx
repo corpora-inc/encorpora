@@ -158,7 +158,8 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
     try {
       await navigator.clipboard.writeText(value);
       setCopied(`${label} copied`);
-    } catch {
+    } catch (failure) {
+      console.warn("The clipboard refused the copy", failure);
       setCopied("Select and copy the text above.");
     }
   }

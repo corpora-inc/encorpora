@@ -21,6 +21,8 @@ export { fundingRecordsKey } from "./records";
 import { PageSection } from "../../ui/PageSection";
 import styles from "../account/BillingPage.module.css";
 import { practiceParams } from "../spaces/identity";
+import { qk } from "../../lib/keys";
+import { useSession } from "../../lib/session";
 
 const intent = z.object({
   id: z.string(),
@@ -34,7 +36,7 @@ const intent = z.object({
  * them ahead. */
 export const invoiceHistoryOptions = (session: AuthSession) =>
   queryOptions({
-    queryKey: ["account", session.accountId, "funding-invoice-history"],
+    queryKey: qk.account(session.accountId, "funding-invoice-history"),
     queryFn: ({ signal }) =>
       request("/funding/invoices", z.object({ invoices: z.array(intent) }), {
         token: session.token,
@@ -42,14 +44,13 @@ export const invoiceHistoryOptions = (session: AuthSession) =>
       }),
   });
 export function FundingInvoices({
-  session,
   verified = true,
   exclude,
 }: {
-  session: AuthSession;
   verified?: boolean;
   exclude?: string;
 }) {
+  const session = useSession();
   const me = useQuery(meOptions(session));
   const navigate = useNavigate();
   const handoff = useHandOver(session);
@@ -129,7 +130,8 @@ export function FundingInvoices({
       } else {
         await handoff.handOver(selected);
       }
-    } catch {
+    } catch (failure) {
+      console.error("Learning didn’t open after the invoice", failure);
       if (!signal.aborted)
         setError(
           "Your invoice is saved. Learning couldn’t be opened. Try again.",
@@ -163,6 +165,7 @@ export function FundingInvoices({
       a.remove();
       setTimeout(() => URL.revokeObjectURL(url), 60000);
     } catch (e) {
+      console.error("An education-fund invoice didn’t download", e);
       if (!signal.aborted)
         setError(e instanceof Error ? e.message : "Download failed.");
     } finally {
@@ -187,6 +190,7 @@ export function FundingInvoices({
         refreshMe(session),
       ]);
     } catch (e) {
+      console.error("An invoice's submission didn’t save", e);
       if (!signal.aborted)
         setError(
           e instanceof Error

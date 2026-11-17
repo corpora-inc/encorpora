@@ -11,10 +11,8 @@ import {
   setupSteps,
   type SetupStep,
 } from "../features/school/paths";
-import { redirect } from "@tanstack/react-router";
 import { meOptions, queryClient } from "../lib/query";
-import { OPEN_KEY, work, writeStack } from "../nav/entities";
-import { toFamilyChild } from "./family-redirect";
+import { OPEN_KEY } from "../nav/entities";
 import { admit, elsewhere, requireSignedIn } from "./sign-in-gate";
 
 /* What the school's routes decide before a screen paints: who may open it,
@@ -211,76 +209,4 @@ export const orgIndexData = async ({
     orgApi().then((m) => preload(m.overviewOptions(session, orgId))),
     standingApi().then((m) => preload(m.orgStandingOptions(session, orgId))),
   ]);
-};
-
-/** A school-level student page from before layers: a student layer over the
- * school's Students (a family's child: their own page). */
-export const student = async ({
-  params,
-  search,
-  location,
-}: {
-  params: unknown;
-  search: unknown;
-  location: Location;
-}) => {
-  const { org, student } = params as unknown as {
-    org: string;
-    student: string;
-  };
-  // A family's child: their own page.
-  const family = await toFamilyChild(
-    await staffSession(location),
-    org,
-    student,
-    null,
-    location as never,
-  );
-  if (family) elsewhere(family);
-  throw redirect({
-    to: `/school/${org}/students`,
-    search: {
-      ...(search as Record<string, unknown>),
-      [OPEN_KEY]: writeStack([{ kind: "student", id: student }]),
-    },
-    replace: true,
-  } as never);
-};
-export const studentWork = async ({
-  params,
-  search,
-  location,
-}: {
-  params: unknown;
-  search: unknown;
-  location: Location;
-}) => {
-  const {
-    org,
-    student,
-    work: attempt,
-  } = params as unknown as {
-    org: string;
-    student: string;
-    work: string;
-  };
-  const family = await toFamilyChild(
-    await staffSession(location),
-    org,
-    student,
-    attempt,
-    location as never,
-  );
-  if (family) elsewhere(family);
-  throw redirect({
-    to: `/school/${org}/students`,
-    search: {
-      ...(search as Record<string, unknown>),
-      [OPEN_KEY]: writeStack([
-        { kind: "student", id: student },
-        work(student, attempt),
-      ]),
-    },
-    replace: true,
-  } as never);
 };

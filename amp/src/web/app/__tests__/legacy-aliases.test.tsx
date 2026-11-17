@@ -6,6 +6,7 @@ import {
 } from "@tanstack/react-router";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { usePanelsStore } from "../../features/account/panels";
+import { layerScope, useLayerStore } from "../../nav/layer-store";
 import { queryClient, sessionOptions } from "../../lib/query";
 import { knownDocumentPath } from "../document-routes";
 import {
@@ -32,6 +33,7 @@ const SCHOOL = "22222222-2222-4222-8222-222222222222";
 const FAMILY_ORG = "33333333-3333-4333-8333-333333333333";
 const CLASS = "44444444-4444-4444-8444-444444444444";
 const CHILD = "55555555-5555-4555-8555-555555555555";
+const ATTEMPT = "77777777-7777-4777-8777-777777777777";
 const SESSION = { accountId: "parent", token: "test-token" };
 
 /** Who opens the old address. */
@@ -64,6 +66,10 @@ vi.mock("../family-redirect", () => ({
   ) =>
     state.parent && params.org === FAMILY_ORG
       ? { to: `/family/${FAMILY}`, search: {} }
+      : null,
+  toFamilyChild: async (_session: unknown, org: string, person: string) =>
+    state.parent && org === FAMILY_ORG
+      ? { to: `/family/${FAMILY}/kids/${person}`, search: {} }
       : null,
   toFamilyPage: async (_session: unknown, org: string, page: string) =>
     state.parent && org === FAMILY_ORG
@@ -111,6 +117,8 @@ type Example = {
   panel?: { overlay: "privacy" | "billing"; id: string | null };
   /** The sheet history state opens, where the row opens one. */
   sheet?: string;
+  /** The layers the store holds for the screen it lands on. */
+  layers?: string[];
   /** The consent email's proof is held (consent-entry.ts). */
   consent?: boolean;
 };
@@ -202,17 +210,27 @@ const EXAMPLES: Example[] = [
   {
     from: "/lessons?q=fractions&topic=add-fractions",
     world: "adult",
-    lands: "/pathways?topic=fractions&open=lesson%3Aadd-fractions",
+    lands: "/pathways?topic=fractions",
+    layers: ["lesson:add-fractions"],
   },
+  { from: "/lessons?q=fractions", world: "adult", lands: "/pathways?topic=fractions" },
   {
     from: "/pathways?skill=s1&view=3d",
     world: "signed out",
-    lands: "/pathways?view=3d&open=skill%3As1",
+    lands: "/pathways?view=3d",
+    layers: ["skill:s1"],
+  },
+  {
+    from: "/pathways?open=skill%3As2",
+    world: "signed out",
+    lands: "/pathways",
+    layers: ["skill:s2"],
   },
   {
     from: "/pathways/s1?lesson=t1",
     world: "adult",
-    lands: "/pathways?open=skill%3As1%2Clesson%3At1",
+    lands: "/pathways",
+    layers: ["skill:s1", "lesson:t1"],
   },
 
   {
@@ -255,17 +273,37 @@ const EXAMPLES: Example[] = [
   {
     from: `${CLASS_AT}/today?lesson=t1`,
     world: "adult",
-    lands: `${CLASS_AT}/today?open=lesson%3At1`,
+    lands: `${CLASS_AT}/today`,
+    layers: ["lesson:t1"],
   },
   {
     from: `${CLASS_AT}/map/${CHILD}?sort=name`,
     world: "adult",
-    lands: `${CLASS_AT}/map?sort=name&open=student%3A${CHILD}`,
+    lands: `${CLASS_AT}/map?sort=name`,
+    layers: [`student:${CHILD}`],
   },
   {
-    from: `${CLASS_AT}/map/${CHILD}/work/a1`,
+    from: `${CLASS_AT}/map/${CHILD}/work/${ATTEMPT}`,
     world: "adult",
-    lands: `${CLASS_AT}/map?open=student%3A${CHILD}%2Cwork%3A${CHILD}.a1`,
+    lands: `${CLASS_AT}/map`,
+    layers: [`student:${CHILD}`, `work:${CHILD}.${ATTEMPT}`],
+  },
+  {
+    from: `/school/${SCHOOL}/students/${CHILD}`,
+    world: "adult",
+    lands: `/school/${SCHOOL}/students`,
+    layers: [`student:${CHILD}`],
+  },
+  {
+    from: `/school/${SCHOOL}/students/${CHILD}/work/${ATTEMPT}`,
+    world: "adult",
+    lands: `/school/${SCHOOL}/students`,
+    layers: [`student:${CHILD}`, `work:${CHILD}.${ATTEMPT}`],
+  },
+  {
+    from: `/school/${FAMILY_ORG}/students/${CHILD}`,
+    world: "family parent",
+    lands: `/family/${FAMILY}/kids/${CHILD}`,
   },
   { from: "/school/new", world: "signed out", lands: "/schools" },
   {
@@ -422,6 +460,14 @@ for (const example of EXAMPLES)
         usePanelsStore.getState().accounts.parent?.[example.panel.overlay] ??
           null,
       ).toBe(example.panel.id);
+    if (example.layers)
+      expect(
+        (
+          useLayerStore.getState().stacks[
+            layerScope(pathname, state.parent || example.world === "adult" ? SESSION.accountId : undefined)
+          ] ?? []
+        ).map((layer) => `${layer.kind}:${layer.id}`),
+      ).toEqual(example.layers);
     if (example.sheet)
       expect(
         Object.values(

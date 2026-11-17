@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
+import { forSession, useSessionOrNull } from "../lib/session";
 import { useState, type ReactNode } from "react";
 import { learnerSkillOptions, skillCatalogOptions } from "../lib/learning-view";
-import { sessionOptions } from "../lib/query";
 import {
   bandLabel,
   areas,
@@ -272,15 +272,12 @@ function LearnerOnSkill({
   learner: string;
   skill: string;
 }) {
-  const session = useQuery(sessionOptions).data;
-  const found = useQuery({
-    ...learnerSkillOptions(
-      session ?? { accountId: "", token: "" },
-      learner,
-      skill,
+  const session = useSessionOrNull();
+  const found = useQuery(
+    forSession(session, (signedIn) =>
+      learnerSkillOptions(signedIn, learner, skill),
     ),
-    enabled: !!session,
-  });
+  );
   if (!found.data)
     return found.isError ? (
       <p role="alert">Your work on this skill didn’t load. Try again.</p>

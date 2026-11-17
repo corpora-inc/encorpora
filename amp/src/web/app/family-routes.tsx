@@ -17,6 +17,7 @@ import { elsewhere } from "./sign-in-gate";
 import { ownClassOf } from "../features/spaces/resolve";
 import { groupAddress } from "./family-redirect";
 import { OPEN_KEY, readStack } from "../nav/entities";
+import { layerScope, useLayerStore } from "../nav/layer-store";
 import { payOverlays } from "./pay-routes";
 import { accountOverlays } from "./account-overlays";
 
@@ -193,12 +194,17 @@ export function familyRoutes(root: AnyRoute) {
           pathname: location.pathname,
           search: location.search as Record<string, unknown>,
         });
-        // A problem type's short lesson (a layer, `?open=lesson:<type>`)
-        // needs neither the curriculum nor the record: it opens at once over
-        // the map, which fills in under it, as on the learner's own Pathways
-        // (router.tsx).
-        const open = new URLSearchParams(location.searchStr).get(OPEN_KEY);
-        if (!readStack(open).some((layer) => layer.kind === "lesson"))
+        // A problem type's short lesson open over the map (its layers,
+        // nav/layer-store.ts) needs neither the curriculum nor the record: it
+        // opens at once over the map, which fills in under it, as on the
+        // learner's own Pathways (router.tsx).
+        const stack = [
+          ...(useLayerStore.getState().stacks[
+            layerScope(location.pathname, session.accountId)
+          ] ?? []),
+          ...readStack(new URLSearchParams(location.searchStr).get(OPEN_KEY)),
+        ];
+        if (!stack.some((layer) => layer.kind === "lesson"))
           return void (await ready);
         void ready.catch((error: unknown) =>
           console.error("The map did not preload", error),

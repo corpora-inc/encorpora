@@ -7,7 +7,8 @@ import { signOut } from "../../auth";
 import { useLoggedError } from "../../feedback";
 import { AppError } from "../../lib/AppError";
 import { linkRefused } from "../../lib/link-carry";
-import { invalidateAccount, meOptions, sessionOptions } from "../../lib/query";
+import { invalidateAccount, meOptions } from "../../lib/query";
+import { forSession, useSessionOrNull } from "../../lib/session";
 import { Button, buttonClass } from "../../ui/Button";
 import { Loading } from "../../ui/Loading";
 import { Toast } from "../../ui/Toast";
@@ -15,6 +16,7 @@ import { Brand } from "../school/SchoolFrame";
 import school from "../school/School.module.css";
 import { approvals, rememberApproval, rememberedApproval } from "./api";
 import styles from "./Approval.module.css";
+import { qk } from "../../lib/keys";
 
 function parseFragment(hash: string) {
   const [token, proof] = hash.replace(/^#/, "").split(".");
@@ -52,13 +54,10 @@ export function ApproveLinkScreen() {
     rememberedApproval() ||
     "";
   const parsed = parseFragment(fragment);
-  const session = useQuery(sessionOptions).data;
-  const me = useQuery({
-    ...meOptions(session ?? { token: "", accountId: "" }),
-    enabled: !!session,
-  }).data;
+  const session = useSessionOrNull();
+  const me = useQuery(forSession(session, meOptions)).data;
   const lookup = useQuery<ApprovalLookup, Error>({
-    queryKey: ["family-approval-link", parsed?.token],
+    queryKey: qk.familyApprovalLink(parsed?.token),
     enabled: !!parsed,
     retry: false,
     queryFn: () => approvals.lookup(parsed!.token),

@@ -417,6 +417,20 @@ async function practicing(page: Page) {
   await page.waitForURL(/\/practice/);
   await page.locator("[data-problem-id]").first().waitFor({ timeout: 30_000 });
 }
+/** Back from Stripe: the pay overlay's confirmation, over the screen it was
+ * opened from (features/pay/stripe-return.ts), whose Done closes to that
+ * screen. */
+async function paidAndDone(page: Page) {
+  await page.waitForURL(/\/pay\/done$/, { timeout: 30_000 });
+  const done = page.getByRole("dialog");
+  await done
+    .getByText("Payment received. A receipt is in your email and in Billing.", {
+      exact: true,
+    })
+    .waitFor({ timeout: 30_000 });
+  await done.getByRole("button", { name: "Done", exact: true }).click();
+  await page.waitForURL((url) => !/\/pay(\/|$)/.test(url.pathname));
+}
 /** Skip the problem on screen and go on to the next one. */
 async function skipOne(page: Page) {
   await page
@@ -721,8 +735,9 @@ async function parentJourney(
     .getByRole("button", { name: /Continue to Stripe|Resume checkout/ })
     .click();
   await payInCheckout(page, 1, width, theme);
-  // Back on the same screen, practicing, with the name offered once.
-  await practicing(page);
+  // Back on the child's page, with the name offered once.
+  await paidAndDone(page);
+  await page.waitForURL(new RegExp(`/kids/${fox.id}$`));
   const naming = page.getByRole("dialog", { name: `Add ${fox.name}’s name` });
   await naming.waitFor();
   await measured(page, `${label} naming`);
@@ -730,6 +745,9 @@ async function parentJourney(
   await naming.getByLabel("Name", { exact: true }).fill("Rowan");
   await naming.getByRole("button", { name: "Save name" }).click();
   await naming.waitFor({ state: "detached" });
+  // Practice goes on from their page, past the 100.
+  await page.getByRole("button", { name: "Practice with Rowan" }).click();
+  await practicing(page);
   const named = (
     await db.query("SELECT name,name_pending FROM amp_learners WHERE id=$1", [
       fox.id,
@@ -904,6 +922,7 @@ async function adultJourney(
   await shot(page, 2, "continue", width, theme);
   await go.click();
   await payInCheckout(page, 2, width, theme);
+  await paidAndDone(page);
   await practicing(page);
   check(
     `${label} no naming for an adult`,

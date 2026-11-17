@@ -1,4 +1,4 @@
-import { redirect } from "@tanstack/react-router";
+import { isRedirect, redirect } from "@tanstack/react-router";
 import type { AuthSession } from "../auth";
 import {
   claimInitialConsentChallenge,
@@ -9,15 +9,16 @@ import { continuationSearch, fundedPrograms } from "../lib/funded-entry";
 import { queryClient, sessionOptions } from "../lib/query";
 import { requestFetch } from "../lib/request-transport";
 import { nativeRuntime } from "../native-runtime";
+import { MAX_LAYERS, work } from "../nav/entities";
 import {
-  MAX_LAYERS,
-  OPEN_KEY,
-  pushLayer,
-  readStack,
-  work,
-  writeStack,
-  type Entity,
-} from "../nav/entities";
+  layerScope,
+  pushed,
+  seedLayers,
+  type Layer,
+} from "../nav/layer-store";
+import { withoutLayerKeys } from "../nav/legacy-layers";
+import { legacyLayers } from "../nav/links";
+import { canonicalLearnerAddress } from "../features/profiles/practice-mode";
 import { admit, requireSignedIn, toOwnPlace, withQuery } from "./sign-in-gate";
 
 /*
@@ -54,7 +55,9 @@ export type OldAddress = {
 };
 
 /** A new address: an href, or the router's parts of one (its search
- * serialized the router's way), with history state for a sheet. */
+ * serialized the router's way), with history state for a sheet, and the
+ * layers (nav/layer-store.ts) the old address named, which go into the
+ * store for the screen it lands on: the new address names the screen only. */
 export type Target =
   | string
   | {
@@ -62,7 +65,9 @@ export type Target =
       search?: Record<string, unknown>;
       hash?: string;
       state?: Record<string, unknown>;
-    };
+      layers?: Layer[];
+    }
+  | { href: string; state?: Record<string, unknown>; layers?: Layer[] };
 
 export type LegacyAlias = {
   /** The old address, in route-path syntax: `/family/learners`,
@@ -86,36 +91,48 @@ const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const sessionIfAny = (): Promise<AuthSession | null> =>
   queryClient.ensureQueryData(sessionOptions);
 
-/** The old address with its query's `drop` keys gone and the layer stack
- * `open` written (`?open=`, which the router moves into the layer store once
- * the screen is on view: nav/links.tsx `settleLegacyLayers`). */
-function layered(
+/** The screen at `path` (an old address's layer keys dropped from its
+ * query), with `layers` for its store. */
+const withLayers = (
   path: string,
-  { searchStr }: OldAddress,
-  open: string | undefined,
-  drop: readonly string[] = [],
-) {
-  const params = new URLSearchParams(searchStr);
-  for (const key of [...drop, OPEN_KEY]) params.delete(key);
-  if (open) params.set(OPEN_KEY, open);
-  const text = params.toString();
-  return text ? `${path}?${text}` : path;
-}
+  { search }: OldAddress,
+  layers: Layer[],
+): Target => ({
+  href: withoutLayerKeys(path, search),
+  layers: layers.slice(0, MAX_LAYERS),
+});
 
-/** Pathways from before layers: `?skill=<skill>` or `/pathways/<skill>`
- * (the skill under any layers the address holds), and `?lesson=<type>` (the
- * lesson on top): the map with them as layers. */
-function pathwaysLayers(old: OldAddress, skill?: unknown) {
-  let open: string | undefined = old.search[OPEN_KEY] as string | undefined;
-  if (typeof old.search.lesson === "string")
-    open = pushLayer(open, { kind: "lesson", id: old.search.lesson });
-  const below = readStack(open);
-  const named = skill ?? old.search.skill;
-  const stack: Entity[] =
-    typeof named === "string"
-      ? [{ kind: "skill" as const, id: named }, ...below].slice(0, MAX_LAYERS)
-      : below;
-  return layered("/pathways", old, writeStack(stack), ["skill", "lesson"]);
+/**
+ * Pathways from before its layers: a skill's own address (`/pathways/<skill>`,
+ * `?skill=<skill>`), a lesson (`?lesson=`) and an old shared stack
+ * (`?open=`) land on the map whose learner the address names (a parent's
+ * goes to their child's address, canonicalLearnerAddress), with their
+ * layers in that map's store: the skill under any layers the address held,
+ * then a lesson it names over them.
+ */
+async function pathwaysTarget(
+  search: Record<string, unknown>,
+  skill?: string,
+): Promise<Target> {
+  const named =
+    skill ?? (typeof search.skill === "string" ? search.skill : undefined);
+  let stack: Layer[] = legacyLayers(search);
+  if (named) stack = [{ kind: "skill", id: named }, ...stack];
+  if (typeof search.lesson === "string")
+    stack = pushed(stack, { kind: "lesson", id: search.lesson });
+  const map = withoutLayerKeys("/pathways", search);
+  const [path, query = ""] = map.split("?");
+  let href = map;
+  try {
+    await canonicalLearnerAddress({
+      pathname: path!,
+      searchStr: query ? `?${query}` : "",
+    });
+  } catch (thrown) {
+    if (!isRedirect(thrown)) throw thrown;
+    href = (thrown as { options: { href?: string } }).options.href ?? map;
+  }
+  return { href, layers: stack.slice(0, MAX_LAYERS) };
 }
 
 /** Privacy's older addresses (IA v2 §2.3): the Privacy overlay over the
@@ -399,32 +416,30 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
   {
     from: "/lessons",
     about: "the lessons library",
-    to: ({ searchStr }): Target => {
+    to: ({ searchStr }): Target | Promise<Target> => {
       const params = new URLSearchParams(searchStr);
       const query = params.get("q")?.trim();
       // `?topic=` named a problem type's short lesson: Pathways opens it.
       const lesson = params.get("topic")?.trim();
-      return {
-        to: "/pathways",
-        search: {
-          ...(query ? { topic: query } : {}),
-          ...(lesson
-            ? { [OPEN_KEY]: pushLayer(undefined, { kind: "lesson", id: lesson }) }
-            : {}),
-        },
-      };
+      const search = query ? { topic: query } : {};
+      return lesson
+        ? pathwaysTarget({ ...search, lesson })
+        : { to: "/pathways", search };
     },
   },
   {
     from: "/pathways",
-    about: "a skill or lesson in the query",
-    when: ({ search }) => search.skill !== undefined || search.lesson !== undefined,
-    to: (old) => pathwaysLayers(old),
+    about: "a skill, lesson or shared stack in the query",
+    when: ({ search }) =>
+      search.skill !== undefined ||
+      search.lesson !== undefined ||
+      search.open !== undefined,
+    to: ({ search }) => pathwaysTarget(search),
   },
   {
     from: "/pathways/$skill",
     about: "a skill's own address",
-    to: (old) => pathwaysLayers(old, old.params.skill),
+    to: ({ search, params }) => pathwaysTarget(search, params.skill),
   },
 
   // A school's older addresses. A parent's own family, at its class or its
@@ -457,41 +472,75 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
     about: "today's lesson in the query",
     when: ({ search }) => search.lesson !== undefined,
     to: (old) =>
-      layered(
+      withLayers(
         old.pathname.replace(/\/+$/, ""),
         old,
         typeof old.search.lesson === "string"
-          ? pushLayer(old.search[OPEN_KEY], {
+          ? pushed(legacyLayers(old.search), {
               kind: "lesson",
               id: old.search.lesson,
             })
-          : (old.search[OPEN_KEY] as string | undefined),
-        ["lesson"],
+          : legacyLayers(old.search),
       ),
   },
   {
     from: "/school/$org/classes/$class/map/$student",
     about: "a student on the class map",
     to: (old) =>
-      layered(
+      withLayers(
         `/school/${old.params.org}/classes/${old.params.class}/map`,
         old,
-        pushLayer(undefined, { kind: "student", id: old.params.student! }),
+        [{ kind: "student", id: old.params.student! }],
       ),
   },
   {
     from: "/school/$org/classes/$class/map/$student/work/$work",
     about: "a student's answer on the class map",
     to: (old) =>
-      layered(
+      withLayers(
         `/school/${old.params.org}/classes/${old.params.class}/map`,
         old,
-        writeStack([
+        [
           { kind: "student", id: old.params.student! },
           work(old.params.student!, old.params.work!),
-        ]),
+        ],
       ),
   },
+  // A school-level student page, and one of their answers on it, from
+  // before layers: a student layer over the school's Students (a family's
+  // child: their own page).
+  ...(["/school/$org/students/$student", "/school/$org/students/$student/work/$work"] as const).map(
+    (from) => ({
+      from,
+      about: from.endsWith("$work")
+        ? "a student's answer in a school"
+        : "a student in a school",
+      to: async (old: OldAddress): Promise<Target> => {
+        const { org, student, work: attempt } = old.params as Record<
+          string,
+          string
+        >;
+        const session = await requireSignedIn(old, {
+          web: true,
+          adults: true,
+          back: "here",
+        });
+        const { toFamilyChild } = await import("./family-redirect");
+        const family = await toFamilyChild(
+          session,
+          org!,
+          student!,
+          attempt ?? null,
+          old,
+        );
+        if (family) return family;
+        return withLayers(`/school/${org}/students`, old, [
+          { kind: "student", id: student! },
+          ...(attempt ? [work(student!, attempt)] : []),
+        ]);
+      },
+    }),
+  ),
   // An older setup address (`/school/new?org=…&step=…`): the step's own
   // address. Signed out without a school named: the schools page.
   {
@@ -676,5 +725,16 @@ export async function followAlias(
       throw redirect({ href: target, replace: true });
     return;
   }
-  throw redirect({ ...target, replace: true } as never);
+  const { layers, ...address } = target;
+  if (layers?.length) {
+    const path = ("href" in address ? address.href : address.to).split(
+      /[?#]/,
+    )[0]!;
+    const session = await sessionIfAny().catch((error: unknown) => {
+      console.warn("Layers from an older link go to the guest's map", error);
+      return null;
+    });
+    seedLayers(layerScope(path, session?.accountId), layers);
+  }
+  throw redirect({ ...address, replace: true } as never);
 }

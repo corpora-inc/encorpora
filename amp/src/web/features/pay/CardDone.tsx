@@ -15,6 +15,7 @@ import { usePayAddress, usePayClose } from "./context";
 import type { PayLearner } from "./context";
 import { usePayStore, useCheckoutReturn, type CheckoutKind } from "./store";
 import styles from "./Pay.module.css";
+import { useSession } from "../../lib/session";
 
 type Learner = PayLearner;
 
@@ -66,7 +67,10 @@ export function useCardOutcome(
     claimed.current = purchase.id;
     claim.mutate(
       { purchaseId: purchase.id, learnerId: learner.id },
-      { onError: (error) => console.error("The paid plan wasn’t assigned", error) },
+      {
+        onError: (error) =>
+          console.error("The paid plan wasn’t assigned", error),
+      },
     );
   }, [kind, purchase?.phase, purchase?.id]);
   useMetaPurchaseContext(
@@ -79,9 +83,13 @@ export function useCardOutcome(
   );
   useEffect(() => {
     if (returned)
-      trackOnce(`checkout_return.${returned.checkoutId}.processing`, "checkout_return", {
-        outcome: "success",
-      });
+      trackOnce(
+        `checkout_return.${returned.checkoutId}.processing`,
+        "checkout_return",
+        {
+          outcome: "success",
+        },
+      );
   }, [returned?.checkoutId]);
   const retry = () => {
     claimed.current = null;
@@ -90,12 +98,26 @@ export function useCardOutcome(
     void enrollment.refetch();
   };
   if (active) return { kind, outcome: { state: "active" }, retry };
-  const error = claim.error ?? (kind === "learner" ? status.error : enrollment.error);
+  const error =
+    claim.error ?? (kind === "learner" ? status.error : enrollment.error);
   if (error) return { kind, outcome: { state: "failed", error }, retry };
   const phase = kind === "learner" ? learnerPhase : purchase?.phase;
-  if (phase === "checkout-open" || phase === "ready" || phase === "checkout-expired" || phase === "expired")
-    return { kind, outcome: { state: "open", resume: phase === "checkout-open" }, retry };
-  if (phase === "needs-review" || phase === "requires-review" || phase === "consent-required")
+  if (
+    phase === "checkout-open" ||
+    phase === "ready" ||
+    phase === "checkout-expired" ||
+    phase === "expired"
+  )
+    return {
+      kind,
+      outcome: { state: "open", resume: phase === "checkout-open" },
+      retry,
+    };
+  if (
+    phase === "needs-review" ||
+    phase === "requires-review" ||
+    phase === "consent-required"
+  )
     return {
       kind,
       outcome: {
@@ -118,16 +140,15 @@ export function useCardOutcome(
 
 /** The confirmation's body for each outcome. */
 export function CardDone({
-  session,
   learner,
   outcome,
   retry,
 }: {
-  session: AuthSession;
   learner: Learner;
   outcome: CardOutcome;
   retry: () => void;
 }) {
+  const session = useSession();
   const open = usePayStore((state) => state.open);
   const choose = usePayStore((state) => state.choose);
   const { origin, base } = usePayAddress();
@@ -166,7 +187,9 @@ export function CardDone({
             to={base as never}
             replace
             className={buttonClass("primary")}
-            onClick={() => choose(session.accountId, learner.id, { method: "card" })}
+            onClick={() =>
+              choose(session.accountId, learner.id, { method: "card" })
+            }
           >
             {outcome.resume ? "Return to checkout" : "Choose a plan"}
           </Link>

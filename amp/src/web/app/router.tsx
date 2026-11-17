@@ -103,16 +103,9 @@ import {
 } from "../features/school/classroom/search";
 import { designAllowed, designSearchSchema } from "../features/design/search";
 import { stampPrevious, VIEW_KEYS } from "../lib/return-to";
+import { applyDeferredIdentity } from "../features/school/join/api";
 import { settleLegacyLayers } from "../nav/links";
-import { seedLayers } from "../nav/layer-store";
-import {
-  MAX_LAYERS,
-  OPEN_KEY,
-  pushLayer,
-  readStack,
-  work,
-  writeStack,
-} from "../nav/entities";
+import { layerScope, seedLayers, useLayerStore } from "../nav/layer-store";
 import {
   adoptPracticeMode,
   followResolvedLearner,
@@ -728,29 +721,34 @@ const inventory = createRoute({
   ),
 });
 /** One map for the whole curriculum: a skill opens over it as a layer
- * (`?open=skill:<id>`), so choosing or closing one changes the address,
- * never the map (its camera, full screen and orbit stay as they were). */
+ * (nav/layer-store.ts), so choosing or closing one never moves the map (its
+ * camera, full screen and orbit stay as they were). */
 const pathways = createRoute({
   getParentRoute: () => root,
   path: "/pathways",
   staticData: { space: "learner" },
-  // (A skill or lesson from before layers, `?skill=`, `?lesson=` and
-  // `/pathways/<skill>`, is an app/legacy-aliases.ts row.)
+  // (A skill, lesson or shared stack from before the layer store, `?skill=`,
+  // `?lesson=`, `?open=` and `/pathways/<skill>`, is an app/legacy-aliases.ts
+  // row, which seeds the store.)
   beforeLoad: async ({ location }) => {
     await framedScreen();
     await canonicalLearnerAddress(location);
     await adoptPracticeMode(location);
   },
   // The curriculum and the learner's record arrive with it: one paint. A
-  // problem type's short lesson (a layer, `?open=lesson:<type>`) needs
-  // neither: it opens at once over the map, which fills in under it.
+  // problem type's short lesson needs neither: it opens at once over the
+  // map, which fills in under it.
   loader: ({ location }) => {
-    const open = new URLSearchParams(location.searchStr).get(OPEN_KEY);
     const at = {
       pathname: location.pathname,
       search: location.search as Record<string, unknown>,
     };
-    if (!readStack(open).some((layer) => layer.kind === "lesson"))
+    const scope = layerScope(
+      location.pathname,
+      queryClient.getQueryData(sessionOptions.queryKey)?.accountId,
+    );
+    const stack = useLayerStore.getState().stacks[scope] ?? [];
+    if (!stack.some((layer) => layer.kind === "lesson"))
       return preloadLearning(at);
     void preloadLearning(at).catch((error: unknown) =>
       console.error("The map did not preload", error),
@@ -1782,6 +1780,11 @@ router.subscribe("onResolved", ({ toLocation }) => {
   );
   if (place) rememberPlace(session.accountId, place);
 });
+// A device handed to a child from a parent's screen: the child's identity
+// arrives in the same render as the screen that mounts next (practice), so
+// the parent's screen never redraws for the child first
+// (features/school/join/api.ts).
+router.subscribe("onBeforeRouteMount", () => applyDeferredIdentity());
 // A link from before the layer store names its layers in the address
 // (`?open=`): once the screen is on view they move into the store
 // (nav/layer-store.ts) and leave the address, replacing its entry. The one

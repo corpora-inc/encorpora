@@ -240,20 +240,7 @@ export function schoolRoutes(root: AnyRoute) {
     ]),
     orgScreen("/students", screens.students, undefined, "roster"),
     // The school-level student page from before layers, and one of their
-    // answers on it: a student layer over the school's Students, as the
-    // class map's old addresses redirect (nav/entities.ts).
-    createRoute({
-      getParentRoute: () => root,
-      path: "/school/$org/students/$student",
-      staticData: { space: "school" },
-      beforeLoad: guard("student"),
-    }),
-    createRoute({
-      getParentRoute: () => root,
-      path: "/school/$org/students/$student/work/$work",
-      staticData: { space: "school" },
-      beforeLoad: guard("studentWork"),
-    }),
+    // answers on it, are app/legacy-aliases.ts rows.
     orgScreen(
       "/staff",
       screens.staff,

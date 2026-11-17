@@ -36,7 +36,13 @@ export function layerScope(pathname: string, accountId: string | undefined) {
 /** How long after a person's open or close a layer drawn still moves. */
 export const MOTION_MS = 700;
 
-type Motion = { scope: string; direction: 1 | -1; at: number };
+type Motion = {
+  scope: string;
+  direction: 1 | -1;
+  at: number;
+  /** Going up: the layer just closed (`kind:id`). */
+  closed?: string;
+};
 type LayerState = {
   stacks: Record<string, Layer[]>;
   /** The last open or close a person made. Never stored. */
@@ -96,7 +102,15 @@ export const useLayerStore = create<LayerState>()(
               next.length ? [...kept, [scope, next]] : kept,
             ),
             motion: direction
-              ? { scope, direction, at: performance.now() }
+              ? {
+                  scope,
+                  direction,
+                  at: performance.now(),
+                  closed:
+                    direction < 0 && _old?.[next.length]
+                      ? `${_old[next.length]!.kind}:${_old[next.length]!.id}`
+                      : undefined,
+                }
               : state.motion,
           };
         }),
@@ -144,6 +158,13 @@ export function layerActions(scope: string) {
     closeAll: () => {
       const stack = get();
       set(stack.slice(0, closeDepth(stack, stack.length - 1)), -1);
+    },
+    /** Closes the layer at `index` and every layer over it, back to where
+     * it closes to (entities closeDepth): an answer's replay to the page it
+     * was opened over, never to the student under it. */
+    closeLayer: (index: number) => {
+      const stack = get();
+      set(stack.slice(0, closeDepth(stack, index)), -1);
     },
     /** Swaps the top layer (Previous and Next through answers). */
     replaceTop: (layer: Layer) => set([...get().slice(0, -1), layer], 1),

@@ -6,7 +6,9 @@ import { secureChromium } from "../browser-security.mjs";
 import { settleArrival } from "./ui-settle";
 import { userAgents } from "../tests/fixtures/in-app-user-agents";
 
-// Real clipboard and isolated storage; API replies are synthetic.
+// One tap on Google in an in-app browser opens the same sign-in in the real
+// browser (a separate, isolated context here), where Google starts at once.
+// API replies are synthetic.
 const arg = (name: string) => {
   const i = process.argv.indexOf(`--${name}`);
   return i < 0 ? undefined : process.argv[i + 1];
@@ -35,14 +37,38 @@ const vite = await createServer({
 await vite.listen();
 const browser = await secureChromium(rawChromium).launch();
 const failures: string[] = [];
-async function context(inApp: boolean, method = "") {
+/** Records the one-tap jump (an `intent://` or `x-safari-` link) instead of
+ * following it, as no other browser exists here. */
+const captureHandoffs = `
+  window.__handoffs = [];
+  const follow = HTMLAnchorElement.prototype.click;
+  HTMLAnchorElement.prototype.click = function () {
+    if (/^(intent|x-safari-https?):/.test(this.href))
+      return void window.__handoffs.push(this.href);
+    return follow.call(this);
+  };
+`;
+/** The address a jump opens, from either platform's link. */
+function opened(handoff: string) {
+  const address =
+    handoff.match(
+      /^intent:\/\/(.*)#Intent;scheme=http;package=com\.android\.chrome;end$/,
+    )?.[1] ?? handoff.match(/^x-safari-http:\/\/(.*)$/)?.[1];
+  assert.ok(address, handoff);
+  return `http://${address}`;
+}
+async function handoffs(page: import("playwright").Page) {
+  return page.evaluate(() => (window as any).__handoffs as string[]);
+}
+let socialStarts: { provider: string; callbackURL: string }[] = [];
+async function context(inApp: false | string, method = "") {
   const c = await browser.newContext({
     viewport: { width: 390, height: 844 },
     ...(inApp
-      ? { userAgent: userAgents.find((a) => a.name === "instagram-0")!.ua }
+      ? { userAgent: userAgents.find((a) => a.name === inApp)!.ua }
       : {}),
-    permissions: ["clipboard-read", "clipboard-write"],
   });
+  await c.addInitScript({ content: captureHandoffs });
   await c.route("**/api/**", async (route) => {
     const request = route.request();
     assert.ok(
@@ -68,6 +94,12 @@ async function context(inApp: boolean, method = "") {
         },
       });
     if (p === "/api/auth/get-session") return route.fulfill({ json: null });
+    if (p === "/api/auth/sign-in/social") {
+      socialStarts.push(request.postDataJSON());
+      return route.fulfill({
+        json: { url: `${origin}/provider-stub`, redirect: true },
+      });
+    }
     if (p.endsWith("/invites/lookup"))
       return route.fulfill({
         json: {
@@ -96,13 +128,13 @@ async function context(inApp: boolean, method = "") {
   return c;
 }
 try {
-  // Exercise the real Clipboard API and paste into an isolated standard browser.
-  for (const path of [
-    "/try?entry=pitch-try&return=free-practice",
-    "/sign-up?entry=pitch-buy",
-  ]) {
-    const app = await context(true),
-      p = await app.newPage();
+  // Try/Buy: one tap from Instagram (iOS) and Facebook (Android).
+  for (const [path, app] of [
+    ["/try?entry=pitch-try&return=free-practice", "instagram-0"],
+    ["/sign-up?entry=pitch-buy", "facebook-0"],
+  ] as const) {
+    const inApp = await context(app),
+      p = await inApp.newPage();
     await p.goto(origin + path);
     await p
       .getByLabel("Email", { exact: true })
@@ -110,52 +142,42 @@ try {
     await p
       .getByLabel("Password", { exact: true })
       .fill("private-draft-password");
-    await p
-      .getByRole("button", { name: "Open in your browser", exact: true })
-      .click();
-    await p.getByText("Link copied.", { exact: false }).waitFor();
-    const copied = await p.evaluate(() => navigator.clipboard.readText());
-    assert.equal(copied, p.url());
-    assert.ok(!copied.includes("private-draft"));
+    await p.locator('[data-provider="google"]').click();
+    const [handoff] = await handoffs(p);
+    assert.ok(!handoff.includes("private-draft"), "the draft stays here");
+    assert.equal(socialStarts.length, 0, "Google never starts in the webview");
     const ordinary = await context(false),
       q = await ordinary.newPage();
-    await q.goto(copied);
+    await q.route(`${origin}/provider-stub`, (route) =>
+      route.fulfill({ contentType: "text/html", body: "<p>Provider</p>" }),
+    );
+    // A fresh tab opened by the jump.
+    await q.goto(opened(handoff));
+    await q.waitForURL(`${origin}/provider-stub`);
+    assert.equal(socialStarts.length, 1, "Google starts once on arrival");
+    assert.equal(socialStarts[0].provider, "google");
+    assert.equal(
+      new URL(q.url()).pathname,
+      "/provider-stub",
+      "the provider replaces the sign-in",
+    );
+    // Back from the provider shows the sign-in; Google doesn't start again.
+    await q.goBack();
     await q.locator('[data-provider="google"]').waitFor();
-    await q
-      .getByRole("button", {
-        name: "Create account with a passkey",
-        exact: true,
-      })
-      .waitFor();
+    await settleArrival(q);
+    assert.equal(socialStarts.length, 1, "Back never re-enters Google");
     assert.equal(
       new URL(q.url()).searchParams.get("entry"),
       new URL(p.url()).searchParams.get("entry"),
     );
-    assert.equal(await q.getByLabel("Email", { exact: true }).inputValue(), "");
-    console.log("PASS fresh-browser Try/Buy and absent clipboard");
-    // Actual absent API, rather than a mocked rejected promise.
-    await p.getByRole("button", { name: "Close", exact: true }).click();
-    await p.evaluate(() =>
-      Object.defineProperty(navigator, "clipboard", {
-        value: undefined,
-        configurable: true,
-      }),
-    );
-    await p
-      .getByRole("button", { name: "Open in your browser", exact: true })
-      .click();
-    await p
-      .getByText("Select and copy the page link", { exact: false })
-      .waitFor();
     assert.equal(
-      await p
-        .getByLabel("Page link")
-        .evaluate(
-          (e: HTMLTextAreaElement) => e.selectionEnd - e.selectionStart,
-        ),
-      copied.length,
+      await q.getByLabel("Email", { exact: true }).inputValue(),
+      "",
+      "the draft never crosses browsers",
     );
-    await app.close();
+    socialStarts = [];
+    console.log(`PASS ${app} ${path} one-tap Google in the real browser`);
+    await inApp.close();
     await ordinary.close();
   }
   // Follow real invitation/approval routes into auth, then cross storage boundaries.
@@ -164,7 +186,7 @@ try {
       const destination =
         kind === "school-invite" ? "/school/invite" : "/family/approve";
       const fragment = "r".repeat(43) + "." + "s".repeat(43);
-      const app = await context(true, method),
+      const app = await context("instagram-0", method),
         p = await app.newPage();
       const ordinary = await context(false, method),
         q = await ordinary.newPage();
@@ -195,11 +217,22 @@ try {
             .click();
           await p.locator("[data-method-hint]").waitFor();
         }
-        await p
-          .getByRole("button", { name: "Open in your browser", exact: true })
-          .click();
-        await p.getByText("Link copied.", { exact: false }).waitFor();
-        const copied = await p.evaluate(() => navigator.clipboard.readText());
+        // Google (offered directly, or as this account's method) jumps; a
+        // passkey account continues in Safari. Either way the invitation
+        // leaves as its own link: this browser's storage stays here.
+        if (method === "passkey")
+          await p
+            .getByRole("button", { name: "Continue in Safari", exact: true })
+            .click();
+        else
+          await p
+            .locator(
+              method
+                ? '[data-method-hint] [data-provider="google"]'
+                : '[data-provider="google"]',
+            )
+            .click();
+        const copied = opened((await handoffs(p))[0]);
         assert.equal(
           copied,
           origin + destination + "#" + fragment,
