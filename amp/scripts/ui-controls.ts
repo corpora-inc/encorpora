@@ -94,7 +94,10 @@ export async function practiceHere(page: Page, id: string) {
     .locator(`[data-practice-here=${JSON.stringify(id)}]`)
     .first()
     .click();
-  await page.waitForURL((url) => url.pathname === "/practice");
+  // Practice opens at the learner's own address (`/practice/<learner>`).
+  await page.waitForURL(
+    (url) => url.pathname === `/practice/${encodeURIComponent(id)}`,
+  );
   await page.locator(".problem-stage").waitFor();
 }
 /** Ends a child's session on this device: Back to family returns it to the parent,

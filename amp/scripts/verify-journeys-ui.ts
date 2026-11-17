@@ -699,7 +699,7 @@ async function parentJourney(
   );
   check(
     `${label} pause stays on practice`,
-    new URL(page.url()).pathname === "/practice",
+    /^\/practice\/[^/]+$/.test(new URL(page.url()).pathname),
     page.url(),
   );
   await measured(page, `${label} pause`);

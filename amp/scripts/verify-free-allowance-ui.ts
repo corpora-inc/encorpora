@@ -613,7 +613,7 @@ async function adultJourney(
   await pause.first().waitFor();
   check(
     `${label} the pause stays on practice`,
-    new URL(page.url()).pathname === "/practice",
+    /^\/practice\/[^/]+$/.test(new URL(page.url()).pathname),
     page.url(),
   );
   check(
