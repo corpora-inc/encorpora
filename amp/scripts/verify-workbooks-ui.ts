@@ -444,10 +444,11 @@ try {
       await schoolShellReview(page, "learner-workbooks");
       await assertLayout(page, label);
       await assertSegments(page, label);
-      // The date heading keeps its word spaces. A space where the title
-      // wraps has no width, so measure the widest.
+      // The date heading (the day's sheet's title, over the workbooks)
+      // keeps its word spaces. A space where the title wraps has no width,
+      // so measure the widest.
       const space = await page.evaluate(() => {
-        const h1 = document.querySelector("main h1")!;
+        const h1 = document.querySelector('[role="dialog"] h2')!;
         const text = h1.firstChild!;
         const widths: number[] = [];
         for (let at = 0; at < text.textContent!.length; at++) {

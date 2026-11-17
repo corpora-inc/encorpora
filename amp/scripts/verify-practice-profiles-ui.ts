@@ -766,7 +766,11 @@ async function teacherCopiesAStudent(
     await page.waitForURL(/\/pay(?:\/|$)/);
   };
   await continueFromPause();
-  await heading(page, "Continue with AMP");
+  // Continue with AMP opens choosing a plan, over the account.
+  await page
+    .getByRole("heading", { name: "Choose your plan" })
+    .first()
+    .waitFor();
   check(
     `${label} a profile without children continues with their own practice`,
     path(page) === `/account/pay/${copy.id}` &&
