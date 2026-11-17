@@ -2,6 +2,7 @@ import { afterEach, expect, test } from "vitest";
 import {
   layerActions,
   layerScope,
+  pathwaysSkill,
   pushed,
   seedLayers,
   useLayerStore,
@@ -23,6 +24,19 @@ test("a family's or a school's screen names its own account and learner; others 
   expect(layerScope("/pathways", "a")).toBe("a:/pathways");
   expect(layerScope("/pathways", "b")).not.toBe(layerScope("/pathways", "a"));
   expect(layerScope("/pathways", undefined)).toBe("guest:/pathways");
+});
+
+test("your own map names an open skill in its path, and that address is the map's screen", () => {
+  expect(pathwaysSkill("/pathways/count-to-20")).toBe("count-to-20");
+  expect(pathwaysSkill("/pathways/count-to-20/")).toBe("count-to-20");
+  expect(pathwaysSkill("/pathways")).toBeUndefined();
+  expect(pathwaysSkill("/pathways/a/b")).toBeUndefined();
+  expect(pathwaysSkill(`${map}/s1`)).toBeUndefined();
+  // A malformed address is no skill, never an error.
+  expect(pathwaysSkill("/pathways/%E0%A4%A")).toBeUndefined();
+  // Its view and its layers are the map's, whichever skill is open.
+  expect(layerScope("/pathways/count-to-20", "a")).toBe("a:/pathways");
+  expect(layerScope("/pathways/arrays", undefined)).toBe("guest:/pathways");
 });
 
 test("opening goes deeper; an open layer lower down brings the stack back to it", () => {
