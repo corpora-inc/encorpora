@@ -148,6 +148,8 @@ try {
       .click();
     await page.getByRole("button", { name: "Check for changes" }).click();
     await page.waitForURL(/\/import\/review$/);
+    // The review arrives after the address: wait for its rows, then count.
+    await page.getByText(/Two students share this name/).first().waitFor();
     assert.equal(
       await page.getByText(/Two students share this name/).count(),
       2,
