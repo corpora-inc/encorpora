@@ -1109,9 +1109,12 @@ async function verifySearchTyping() {
           problems.push(`frame ${i}: the search field moved`);
         if (a.scroll !== b.scroll)
           problems.push(`frame ${i}: the page scrolled while typing`);
-        // Settled: a quarter second after the last key, the results hold.
+        // Settled: a quarter second after the last key, results shown hold
+        // their place. When they first appear is how fast the runner is;
+        // the latency budget is verify-search-typing-ui's.
         if (
           a.at > typed + 250 &&
+          a.first !== null &&
           (a.first !== b.first ||
             JSON.stringify(a.box) !== JSON.stringify(b.box))
         )

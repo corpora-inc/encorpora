@@ -676,8 +676,9 @@ async function verifyDrawerLearner() {
             [...expected].sort(),
             `${kind}: the drawer names the family's children`,
           );
+          // Its words; the drawer draws section labels in capitals.
           assert.equal(
-            await nav.locator("[data-drawer-kids]").innerText(),
+            (await nav.locator("[data-drawer-kids]").textContent())?.trim(),
             expected.length === 1 ? "Your child" : "Your kids",
             `${kind}: the children's heading`,
           );
