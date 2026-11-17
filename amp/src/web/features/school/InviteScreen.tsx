@@ -9,6 +9,7 @@ import { linkRefused } from "../../lib/link-carry";
 import { sessionOptions, meOptions } from "../../lib/query";
 import { useLoggedError } from "../../feedback";
 import { Button, buttonClass } from "../../ui/Button";
+import { Page } from "../../ui/Page";
 import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { useAuthDraft } from "../auth/draft";
@@ -170,11 +171,7 @@ export function InviteScreen() {
     } else setConfirmSent(true);
   };
   return (
-    <main
-      className={styles.inviteCard}
-      data-dense
-      data-in-shell={session ? "" : undefined}
-    >
+    <Page width="narrow" className={styles.inviteCard} data-dense>
       {/* A family's second parent isn't joining a school. */}
       {!session && <Brand for={view?.secondParent ? null : undefined} />}
       {!parsed ? (
@@ -372,6 +369,6 @@ export function InviteScreen() {
         </>
       )}
       <Toast message={error} onDismiss={() => setError("")} />
-    </main>
+    </Page>
   );
 }

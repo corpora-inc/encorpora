@@ -326,16 +326,9 @@ button.copyPrimary {
   visibility: hidden;
 }
 
-/* The invitation: one card, centered in the page. */
+/* The invitation: a narrow Page's column (InviteScreen). */
 .inviteCard {
-  display: grid;
   gap: var(--space-5);
-  align-content: start;
-  box-sizing: border-box;
-  max-width: var(--page-narrow);
-  min-height: 100dvh;
-  margin-inline: auto;
-  padding: clamp(var(--space-5), 9vh, 96px) var(--space-4) var(--space-6);
   color: var(--color-on-surface);
 }
 .inviteCard > :first-child {
@@ -829,12 +822,6 @@ button.copyPrimary {
 .seatRequest label {
   font-size: var(--text-table);
   font-weight: 600;
-}
-
-.inviteCard[data-in-shell] {
-  max-width: var(--width-form);
-  min-height: calc(100dvh - var(--shell-bar, 56px));
-  padding-top: var(--space-5);
 }
 
 /* Settings: one page of sections, each a heading with its facts and

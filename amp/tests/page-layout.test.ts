@@ -320,8 +320,6 @@ const ROUTES_PHASE_2: Record<string, string> = {
   "features/profiles/index.ts#LevelScreen": "an adult's own practice",
   "features/profiles/index.ts#NewProfileScreen": "an adult's own practice",
   "features/profiles/index.ts#ProfilesScreen": "an adult's own practice",
-  "features/school/InviteScreen.tsx#InviteScreen":
-    "a school, class or setup screen",
   "features/school/SetupScreen.tsx#SetupScreen":
     "a school, class or setup screen",
   "features/school/classes/index.ts#GradebookScreen":
