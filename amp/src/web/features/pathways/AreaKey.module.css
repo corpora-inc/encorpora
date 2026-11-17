@@ -1,7 +1,7 @@
 /* The map's key (AreaKey.tsx): All, then the five areas, each a 44 px chip
-   that shows only its area. Chosen, a chip fills (`data-selected`: the
-   router also marks the matching link `aria-current="page"`); weight, border and size
-   stay, so nothing moves. Labels stay on one line; chips wrap whole. */
+   that shows only its area. Chosen, a chip fills (`data-selected`, and
+   `aria-pressed`); weight, border and size stay, so
+   nothing moves. Labels stay on one line; chips wrap whole. */
 /* A nav, so the app's legacy `nav` rules (style.css) are reset here. */
 .key {
   display: flex;
@@ -11,6 +11,9 @@
   border-bottom: 0;
 }
 .key .chip {
+  /* Whole chips: one never shrinks below its label, it wraps instead. */
+  flex: none;
+  margin: 0;
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);

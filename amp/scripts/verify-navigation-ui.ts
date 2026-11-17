@@ -1,3 +1,4 @@
+import { seedLearnerScript } from "./lib/learner-seed";
 import { secureChromium } from "../browser-security.mjs";
 import { settleArrival } from "./ui-settle";
 import assert from "node:assert/strict";
@@ -87,7 +88,7 @@ try {
   const context = await browser.newContext();
   await context.addInitScript("globalThis.__name ??= (f) => f");
   await context.addInitScript(
-    `localStorage.setItem('amp.learner', JSON.stringify({state:{learnerId:'jordan'},version:1})); navigator.sendBeacon = function(){ return true; };`,
+    `${seedLearnerScript("amp|drawer-fixture", "jordan")} navigator.sendBeacon = function(){ return true; };`,
   );
   await context.route("**/api/**", async (route) => {
     const path = new URL(route.request().url()).pathname;

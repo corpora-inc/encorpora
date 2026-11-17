@@ -567,7 +567,7 @@ test("role loss: the same route with the role gone keeps no tab and no action", 
   assert.deepEqual(ids(after), []);
 });
 
-test("shared learning routes: the route's learner, a profile, then yourself", () => {
+test("shared learning routes: the route's learner, a profile, then yourself (the profile practiced as)", () => {
   // Explicit in the address (an older `?learner=` link, before its route
   // redirects it): whoever another tab chose. Its tabs are the child's own
   // addresses, never `?learner=` (Q-209).
@@ -579,7 +579,10 @@ test("shared learning routes: the route's learner, a profile, then yourself", ()
   assert.equal(named.learner?.id, "pip");
   assert.equal(named.label, "Pip");
   assert.deepEqual(
-    named.tabs.map((tab) => [tab.path, tab.search]),
+    named.tabs.map((tab) => [
+      tab.path,
+      "search" in tab ? tab.search : undefined,
+    ]),
     [
       [`family/${FAMILY}/kids/pip`, undefined],
       [`family/${FAMILY}/kids/pip/pathways`, undefined],
@@ -594,16 +597,19 @@ test("shared learning routes: the route's learner, a profile, then yourself", ()
   expectSpace(workbooks, "family");
   assert.equal(workbooks.family.id, OTHER_FAMILY);
   assert.equal(workbooks.relation, "second-parent");
-  // A profile in the address is the adult's own practice.
-  const profile = resolveSpace(
-    at("/practice", { search: { profile: "profile-4" } }),
-    adult(power, "pip"),
-  );
+  // A profile's practice names it: the adult's own practice, as it.
+  const profile = resolveSpace(at("/practice/profile-4"), adult(power, "pip"));
   expectSpace(profile, "me");
   assert.equal(profile.mode, "profile");
   // Optional practice preserves the parent’s family context.
   assert.equal(profile.label, "Your family");
   assert.equal(profile.learner?.id, "profile-4");
+  // Practicing as it (the device's current learner), a screen that names
+  // nobody is the profile's.
+  const asProfile = resolveSpace(at("/overview"), adult(power, "profile-4"));
+  expectSpace(asProfile, "me");
+  assert.equal(asProfile.mode, "profile");
+  assert.equal(asProfile.learner?.id, "profile-4");
   // A learner who isn't this account's is nobody's here: never another child.
   const foreign = resolveSpace(
     at("/overview", { search: { learner: "stranger" } }),
@@ -616,7 +622,7 @@ test("shared learning routes: the route's learner, a profile, then yourself", ()
   const self = resolveSpace(at("/overview"), adult(power, "wren"));
   expectSpace(self, "me");
   assert.equal(self.learner?.id, "jonah");
-  assert.ok(self.tabs.every((tab) => tab.search === undefined));
+  assert.ok(self.tabs.every((tab) => !("search" in tab)));
   // An account with no practice of its own has no self: the device's
   // choice, as before (its route sends Pathways, Inventory and the Overview
   // to that child's own address).
@@ -955,28 +961,28 @@ test("an admin or viewer inspecting a class keeps their own role; only teaching 
 });
 
 test("CP-2 H2: one learner per address, the same order as adoption", () => {
-  // A profile outranks ?learner=: the frame is the profile's, not Pip's.
+  // The path outranks ?learner=: a profile's practice is the profile's,
+  // not Pip's.
   const both = resolveSpace(
-    at("/practice", { search: { profile: "profile-4", learner: "pip" } }),
+    at("/practice/profile-4", { search: { learner: "pip" } }),
     adult(power, "wren"),
   );
   expectSpace(both, "me");
   assert.equal(both.mode, "profile");
   assert.equal(both.learner?.id, "profile-4");
-  // A profile's tabs are the profile's own: its levels, its address.
-  const tabs = resolveSpace(
-    at("/pathways", { search: { profile: "profile-4" } }),
-    adult(power, "pip"),
-  );
+  // A profile's tabs, while it is practiced as: its practice and levels
+  // by address, its map and inventory self's; none carries a query.
+  const tabs = resolveSpace(at("/pathways"), adult(power, "profile-4"));
   assert.deepEqual(
-    tabs.tabs.map((tab) => [tab.id, tab.path, tab.search ?? null]),
+    tabs.tabs.map((tab) => [tab.id, tab.path]),
     [
-      ["practice", "practice", { profile: "profile-4" }],
-      ["levels", "me/profiles/profile-4", null],
-      ["pathways", "pathways", { profile: "profile-4" }],
-      ["inventory", "inventory", { profile: "profile-4" }],
+      ["practice", "practice/profile-4"],
+      ["levels", "me/profiles/profile-4"],
+      ["pathways", "pathways"],
+      ["inventory", "inventory"],
     ],
   );
+  assert.ok(tabs.tabs.every((tab) => !("search" in tab)));
   // A learner this account doesn't read is unavailable, never another.
   const foreign = resolveSpace(
     at("/practice", { search: { learner: "stranger" } }),
@@ -1183,7 +1189,7 @@ test("CP-2 r2 H4: a learner's own target: the holder's child, a second parent's,
 
 test("CP-2 r2 H2: a profile this account doesn't have is unavailable, never ?learner= or the device's choice", () => {
   const space = resolveSpace(
-    at("/practice", { search: { profile: "revoked", learner: "pip" } }),
+    at("/practice/revoked", { search: { learner: "pip" } }),
     adult(power, "wren"),
   );
   expectSpace(space, "me");

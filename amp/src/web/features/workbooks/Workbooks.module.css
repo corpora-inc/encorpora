@@ -159,6 +159,10 @@
   display: inline-flex;
   flex-wrap: wrap;
   align-items: baseline;
+  /* A full touch target of its own, laid out as one line of text. */
+  align-content: center;
+  min-height: var(--target-size);
+  margin-block: calc((1lh - var(--target-size)) / 2);
   justify-self: start;
   gap: 0 var(--space-2);
   border-radius: var(--radius-small);

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useNavigate, useSearch } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import type { FormEvent } from "react";
 import {
   gradeCourse,
@@ -12,7 +12,6 @@ import {
 } from "../../../learning/practice-profiles";
 import { AppError } from "../../lib/AppError";
 import { meOptions } from "../../lib/query";
-import { returnTarget } from "../../lib/return-to";
 import { Button } from "../../ui/Button";
 import { Segmented, type SegmentedOption } from "../../ui/Segmented";
 import { Toast } from "../../ui/Toast";
@@ -52,8 +51,6 @@ export function LevelScreen() {
   const session = currentSession();
   const navigate = useNavigate();
   const draft = useLevelDraft("level");
-  const raw = useSearch({ strict: false }) as Record<string, unknown>;
-  const from = returnTarget(raw.from);
   const me = useQuery(meOptions(session)).data;
   // The last choice, until another is made here: where they were.
   const last = me?.signedIn
@@ -99,7 +96,8 @@ export function LevelScreen() {
             { grade, pace },
             {
               onSuccess: (profile) =>
-                void navigate(practiceAs(profile, from ?? "/me/level")),
+                // Its way back is here, to choose again.
+                void navigate(practiceAs(profile, "/me/level")),
             },
           );
         }}

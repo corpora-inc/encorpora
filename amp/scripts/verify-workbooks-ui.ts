@@ -101,6 +101,18 @@ const repository = {
       },
       workbookByCode: async (code: string) => rows.find((r) => r.code === code),
       recentWorkbooks: async () => rows,
+      // Results entered from paper, per workbook (the list's "entered").
+      // Paper results are attempts with request ids `paper:<workbook>:<n>`
+      // (as the repository counts them).
+      paperResultCounts: async () =>
+        new Map(
+          rows.map((r) => [
+            r.id,
+            attempts.filter((a) =>
+              String(a.requestId ?? "").startsWith(`paper:${r.id}:`),
+            ).length,
+          ]),
+        ),
       practiceSettings: async () => defaultPracticeSettings(),
       attemptByRequest: async (requestId: string) =>
         attempts.find((a) => a.requestId === requestId),

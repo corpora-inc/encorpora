@@ -17,13 +17,7 @@ import { createPortal } from "react-dom";
 import { withProblemHints, type HintedProblem } from "../lib/problem-hints";
 import { withMoneyArt } from "../scene/money-art";
 import type { ProblemHint } from "../../math/contracts";
-import {
-  refreshMe,
-  sessionOptions,
-  queryClient,
-  meOptions,
-  meKey,
-} from "../lib/query";
+import { refreshMe, queryClient, meOptions, meKey } from "../lib/query";
 import type { Step } from "../../math/scene/timeline";
 import { useQuery } from "@tanstack/react-query";
 import { secondParentChild } from "../features/second-parent/api";
@@ -51,7 +45,7 @@ import { loadFrontier } from "../lib/frontier-load";
 import { FILM_CAPABILITY } from "../../content/lesson-films";
 import { noteActiveProblem } from "../lib/student-activity";
 import { forgetHelp, helpUsedBefore, noteHelp } from "../lib/help-events";
-import { Link, useRouter } from "@tanstack/react-router";
+import { Link, useRouter, useRouterState } from "@tanstack/react-router";
 import { buttonClass } from "../ui/Button";
 import { closeTo } from "../lib/return-to";
 import { ROOT } from "../nav/root";
@@ -72,13 +66,8 @@ import { ParentConsentCenter } from "../ParentConsentCenter";
 import { takeConsentChallenge, type ConsentChallenge } from "../consent-link";
 import { ProgressWorkspace, type ProgressView } from "../ProgressWorkspace";
 import {
-  capturePurchaseReturn,
   clearPurchaseReturn,
   clearOwnedPurchaseReturn,
-  readOwnedPurchaseReturn,
-  rememberOwnedPurchaseReturn,
-  parsePurchaseReturn,
-  type PurchaseReturn,
 } from "../purchase-return";
 import type { FamilySummary } from "../../family/contracts";
 import { preferredBookForProblem } from "../../books/selection";
@@ -216,7 +205,6 @@ addEventListener(
   },
   true,
 );
-let initialPurchaseReturn = nativeRuntime ? null : capturePurchaseReturn();
 if (nativeRuntime) clearInitialConsentChallenge();
 // Leaving Family lands on "/", which mounts this screen anew: the focus owed
 // to the menu button outlives the screen that asked for it.
@@ -267,22 +255,30 @@ function practiceLearner(
   );
 }
 export function LegacyApp() {
-  const session = useQuery(sessionOptions);
-  if (session.isPending) return <LoadingScreen />;
-  if (session.error)
-    return (
-      <LoadingScreen
-        error="Sign-in could not be checked. Try again."
-        retry={() => void session.refetch()}
-      />
-    );
+  // Its route made sure of the session first (app/router.tsx appScreen); a
+  // failed read is that route's error screen.
+  const session = useSessionOrNull();
+  const idle = useRouterState({ select: (state) => state.status === "idle" });
+  const shownAccount = useRef<string | null>(null);
   // Account changes reset all private screen state together. A resolved session
   // is an input to the screen, not a second state machine that catches up later.
-  return <LegacyScreen key={session.data?.accountId ?? "guest"} />;
+  // While another screen loads (Back from a child's practice ends their
+  // session on the way), the screen on view keeps its account: it is leaving,
+  // so it never starts again, blank, for the next one (as useAppRoute keeps
+  // its address).
+  const account = session?.accountId ?? "guest";
+  if (idle) shownAccount.current = account;
+  const shown = shownAccount.current ?? account;
+  return <LegacyScreen key={shown} owner={shown === "guest" ? null : shown} />;
 }
-function LegacyScreen() {
-  // Keyed by its account above: one screen per session, never two.
-  const session = useSessionOrNull();
+function LegacyScreen({ owner }: { owner: string | null }) {
+  // One account's screen (keyed by it above). While it leaves (another
+  // account's session arrived with the screen that replaces it), it stays
+  // that account's: nothing on it redraws for the next one.
+  const live = useSessionOrNull();
+  const own = useRef(live);
+  if ((live?.accountId ?? null) === owner) own.current = live;
+  const session = own.current;
   const route = useAppRoute();
   const router = useRouter();
   const { navigate } = route;
@@ -444,11 +440,6 @@ function LegacyScreen() {
   const [purchaseFocus, setPurchaseFocus] = useState<
     "annual" | "funded" | undefined
   >();
-  const [purchaseReturn, setPurchaseReturn] = useState<PurchaseReturn | null>(
-    () => readOwnedPurchaseReturn(accountId ?? ""),
-  );
-  const pendingPurchaseReturn = useRef(initialPurchaseReturn);
-  const returnIdentity = useRef<string | null>(null);
   // An adult's own learner learns on the account's own terms; the family's
   // learners need its consent.
   const learningAllowed =
@@ -688,7 +679,6 @@ function LegacyScreen() {
 
     setConsentReturn(false);
 
-    setPurchaseReturn(readOwnedPurchaseReturn(identity ?? ""));
     const openingSecurity =
       !nativeRuntime &&
       accountRef.current === null &&
@@ -814,12 +804,15 @@ function LegacyScreen() {
   }
   useLayoutEffect(() => updateAuth(session), [session]);
   useLayoutEffect(() => {
-    if (nativeRuntime || !accountId || !claimInitialConsentChallenge(accountId))
+    // A consent email's link reaches /consent by its route (the alias in
+    // app/legacy-aliases.ts); here, it is taken.
+    if (
+      nativeRuntime ||
+      !accountId ||
+      route.location.pathname !== "/consent" ||
+      !claimInitialConsentChallenge(accountId)
+    )
       return;
-    if (route.location.pathname !== "/consent") {
-      navigate("/consent", { replace: true });
-      return;
-    }
     consentEpoch.current++;
     setConsentChallenge(consumeInitialConsentChallenge(accountId));
     setHasPendingConsent(false);
@@ -862,55 +855,9 @@ function LegacyScreen() {
       }
     });
   }, [accountId, route.location.pathname]);
-  useEffect(() => {
-    if (!accountId || !token || !pendingPurchaseReturn.current) return;
-    // A return belongs to its first signed-in owner, not every account that
-    // subsequently mounts in this document after a cross-tab session change.
-    initialPurchaseReturn = null;
-    const context = parsePurchaseReturn(pendingPurchaseReturn.current);
-    pendingPurchaseReturn.current = null;
-    if (!context) {
-      clearPurchaseReturn();
-      return;
-    }
-    returnIdentity.current = accountId;
-    const epoch = authEpoch.current;
-    const navigation = navigationEpoch.current;
-    void (async () => {
-      try {
-        if (context.purchaseId)
-          await api<{ learnerId: string }>(
-            `/billing/purchase/${context.purchaseId}`,
-          );
-        if (
-          epoch !== authEpoch.current ||
-          returnIdentity.current !== accountRef.current ||
-          navigation !== navigationEpoch.current ||
-          !parsePurchaseReturn(context)
-        )
-          return;
-        if (!rememberOwnedPurchaseReturn(accountId, context)) return;
-        navigationEpoch.current++;
-        setReadingBook(null);
-        setPurchaseReturn(context);
-        setPurchaseView("annual");
-      } catch (failure) {
-        console.error("The purchase return could not be resumed", failure);
-        if (
-          epoch === authEpoch.current &&
-          navigation === navigationEpoch.current &&
-          parsePurchaseReturn(context)
-        ) {
-          navigate("/account/billing");
-          setError(
-            "This purchase return could not be matched to your account. Open Annual subscription to check your learner’s access.",
-          );
-        }
-      } finally {
-        clearPurchaseReturn();
-      }
-    })();
-  }, [accountId]);
+  // A checkout's return (Stripe's `?billing=`) is resolved by the router
+  // before any screen (app/third-party-returns.ts), and an unmatched one is
+  // said in Billing; nothing here reads it.
   useEffect(() => {
     setReadingBook(null);
     setBooks([]);
@@ -1696,7 +1643,6 @@ function LegacyScreen() {
                   <MenuItem
                     onSelect={() => {
                       clearPurchaseReturn();
-                      pendingPurchaseReturn.current = null;
                       clearInitialConsentChallenge();
                       clearOwnedPurchaseReturn();
                       setHasPendingConsent(false);

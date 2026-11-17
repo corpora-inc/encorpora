@@ -4,9 +4,9 @@
  * Back hung the tab in a render loop ("Maximum update depth exceeded"), with
  * no menu and no way to navigate away. The cause was a rendered redirect
  * that navigated again on every render while its navigation was pending
- * (src/web/nav/Navigate.tsx). And a screen that fails still fails inside the
- * app's frame, with its bar, menu and a way home (the router's
- * defaultErrorComponent).
+ * (rendered redirects are gone: guards compute destinations). And a screen
+ * that fails still fails inside the app's frame, with its bar, menu and a
+ * way home (the router's defaultErrorComponent).
  *
  *   AMP_TEST_DATABASE_URL=postgres://…/amp_history_walk \
  *     npx tsx scripts/verify-history-walk-ui.ts [--port 4964] [--widths 390,1280]
@@ -109,7 +109,8 @@ const watchPractice = `(() => {
   const boxes = (window.__practiceBoxes = []);
   const poll = () => {
     // Practice has arrived (its address names the learner, and any focus).
-    if (/^\/practice(\/|$)/.test(location.pathname)) return;
+    // (Doubled escapes: this is a template string, evaluated in the page.)
+    if (/^\\/practice(\\/|$)/.test(location.pathname)) return;
     const button = document.querySelector(
       "[data-layer-frame] [data-curriculum-practice] button",
     );

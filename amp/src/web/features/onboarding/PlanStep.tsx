@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { Link, useSearch } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { signOut } from "../../auth";
 import { useSession } from "../../lib/session";
@@ -41,7 +41,6 @@ const names = { year: "annual", month: "monthly" } as const;
  */
 export function PlanStep() {
   const session = useSession();
-  const search = useSearch({ strict: false }) as { interval?: unknown };
   const Frame = CardFrame;
   const enrollment = useQuery(enrollmentOptions(session));
   const me = useQuery(meOptions(session)).data;
@@ -62,19 +61,13 @@ export function PlanStep() {
     mutationFn: signOut,
     onError: () => new AppError("unavailable", exitFailed, true).log(),
   });
-  // The plan chosen on the free-trial paywall, if any, stays selected.
+  // The plan already chosen (on the pitch, or here before Stripe), if any,
+  // stays selected (lib/pending-trial.ts).
   const [interval, chooseInterval] = useState<"year" | "month">(
-    () =>
-      (search.interval === "month" || search.interval === "year"
-        ? search.interval
-        : null) ??
-      chosenPlan() ??
-      "year",
+    () => chosenPlan() ?? "year",
   );
   const requests = useRef<Partial<Record<"year" | "month", string>>>({});
-  const [changedPlan, setChangedPlan] = useState(
-    search.interval === "month" || search.interval === "year" || !!chosenPlan(),
-  );
+  const [changedPlan, setChangedPlan] = useState(() => !!chosenPlan());
   useEffect(() => track("plan_view"), []);
   // Back from Stripe restores this page from the browser cache: re-read the
   // enrollment and drop the finished "opening checkout" state.

@@ -23,8 +23,9 @@ import { settleArrival } from "./ui-settle";
  * Passkey-first parent sign-up in a real browser with Chromium's virtual
  * authenticator: email → "Create account with a passkey" → "What brings you
  * to AMP?", with the address unconfirmed; a parent's child starts practicing
- * without it, and "Continue with AMP" asks for confirmation in place and
- * continues once the emailed link is opened; sign out; sign in with the
+ * without it, paying asks for no confirmation, and a funded program's
+ * step asks for it in place and continues to the program's pay overlay once
+ * the emailed link is opened; sign out; sign in with the
  * passkey alone. Also an email that already has an account, routed to
  * sign-in. Screens at 320, 384x700, 390x844, 768 and 1280 in both themes,
  * with no horizontal overflow and no layout shift.
@@ -252,19 +253,22 @@ try {
   );
   const child = started.learnerId as string;
   assert.ok(child, "the starter made the child");
-  // "Continue with AMP" opens the plan at once: card checkout's own receipt
-  // is the notice consent needs (16 CFR 312.5(b)(2)(ii)), so no confirmation
-  // link comes first (#2336).
+  // Paying for the child (an older /continue/<learner> link, one hop to the
+  // pay overlay) opens the plan at once: card checkout's own receipt is the
+  // notice consent needs (16 CFR 312.5(b)(2)(ii)), so no confirmation link
+  // comes first (#2336).
   await page.goto(`${origin}/continue/${child}`);
-  await page.getByRole("heading", { name: "Continue with AMP" }).waitFor();
+  await page.waitForURL((url) => /\/pay(\/|$)/.test(url.pathname));
+  await page.getByRole("heading", { name: "Choose your plan" }).waitFor();
   assert.equal(
     await page.getByRole("heading", { name: "Confirm your email" }).count(),
     0,
-    "Continue with AMP never waits on a confirmation link",
+    "paying never waits on a confirmation link",
   );
-  // A funded program's invoice still starts from a confirmed address
-  // (onboarding/guard.ts): its confirmation step, in place.
-  await page.goto(`${origin}/purchase/arkansas-efa`);
+  // A funded program's purchase is made out to a confirmed address: its
+  // first-run step asks for it in place (onboarding/guard.ts), arriving with
+  // the program as a sign-in's continuation names it.
+  await page.goto(`${origin}/start/verify-email?return=arkansas-efa`);
   await page.waitForURL((url) => url.pathname === "/start/verify-email");
   await page.getByRole("heading", { name: "Confirm your email" }).waitFor();
   await page.getByText(email, { exact: true }).waitFor();
@@ -350,8 +354,9 @@ try {
   await page
     .getByRole("heading", { name: "Confirm your email" })
     .waitFor({ state: "detached" });
-  // Confirmed, the program's own entry continues.
-  await page.waitForURL((url) => url.pathname === "/purchase/arkansas-efa");
+  // Confirmed, the program's purchase continues: its tab of the child's pay
+  // overlay (onboarding/pay-link.ts).
+  await page.waitForURL((url) => /\/pay(\/|$)/.test(url.pathname));
 
   // Sign out, then back in with the passkey alone.
   await page.evaluate(() =>

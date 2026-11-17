@@ -1,3 +1,4 @@
+import { seedLearner } from "./lib/learner-seed";
 import { secureChromium } from "../browser-security.mjs";
 /**
  * Search fields type instantly. For every search box that mirrors its text
@@ -153,14 +154,7 @@ try {
     });
     // tsx names the functions this script passes to the page.
     await context.addInitScript("globalThis.__name ??= (f) => f;");
-    await context.addInitScript(
-      `localStorage.setItem('amp.learner', ${JSON.stringify(
-        JSON.stringify({
-          state: { learnerId: fixture.paid.jordan.id },
-          version: 1,
-        }),
-      )})`,
-    );
+    await seedLearner(context, fixture.paid.account, fixture.paid.jordan.id);
     const page = await context.newPage();
     page.setDefaultTimeout(30000);
     const errors: string[] = [];

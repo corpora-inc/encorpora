@@ -96,6 +96,10 @@ try {
             },
           });
         if (path === "/api/v1/me") return route.fulfill({ json: me });
+        // An adult with no family: the account's own hub
+        // (features/spaces/settings-hub.ts).
+        if (path === "/api/v1/families")
+          return route.fulfill({ json: { families: [], next: null } });
         if (path === "/api/v1/account/deletion")
           return stale
             ? route.fulfill({ status: 403, json: { error: "reauth_required" } })

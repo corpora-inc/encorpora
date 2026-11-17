@@ -125,7 +125,16 @@ function SessionProviders({
         retireSession(previous, session);
         void queryClient.cancelQueries({ queryKey: sessionOptions.queryKey });
         queryClient.setQueryData(sessionOptions.queryKey, session);
-        if (previous?.accountId && previous.accountId !== session?.accountId)
+        // Leaving an account re-guards the screen on view (boot.tsx). A
+        // family handoff isn't leaving: it carries its own navigation (into
+        // the child's practice, or Back out of it), whose guards already run
+        // with the new session; re-guarding the screen it leaves would
+        // reload it under a wait.
+        if (
+          previous?.accountId &&
+          previous.accountId !== session?.accountId &&
+          !(change?.handoff && session)
+        )
           onAccountExit?.(previous);
         if (session) {
           if (nativeRuntime)

@@ -332,6 +332,9 @@ async function journey(
   // here"), and Sign out gives it back to the parent's Today.
   await page.goto(`${origin}/overview`);
   await page.waitForURL(new RegExp(`/kids/${fox.id}$`));
+  // /overview's hop loads the child's page anew: tap Practice on that one.
+  await page.waitForLoadState("load");
+  await page.locator(`[data-child-page="${fox.id}"]`).waitFor();
   await page.getByRole("button", { name: `Practice with ${fox.name}` }).click();
   await practicing(page);
   await page

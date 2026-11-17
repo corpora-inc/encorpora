@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useSearch } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
+import { signInTarget } from "../../app/sign-in-gate";
 import { meOptions } from "../../lib/query";
 import { useSession } from "../../lib/session";
-import { continuationSearch } from "../../lib/funded-entry";
 import { PageFrame, FrameBrand, frameCard } from "../../ui/PageFrame";
 import { Button, buttonClass } from "../../ui/Button";
 import styles from "./Account.module.css";
@@ -12,8 +12,7 @@ import styles from "./Account.module.css";
  * hop (app/router.tsx, `accountReady`), so here there is always a session. */
 export function AccountReady() {
   const session = useSession();
-  const rawSearch = useSearch({ strict: false });
-  const carry = continuationSearch(rawSearch);
+  const location = useLocation();
   const me = useQuery(meOptions(session));
   const account =
     me.data?.signedIn && me.data.account.id === session.accountId
@@ -47,8 +46,9 @@ export function AccountReady() {
             {me.data?.signedIn === false ? (
               <Link
                 className={buttonClass("primary")}
-                to="/sign-in"
-                search={carry}
+                // The sign-in gate's address: back here, with what this
+                // sign-up carried.
+                {...signInTarget(location)}
               >
                 Sign in again
               </Link>
@@ -76,9 +76,10 @@ export function AccountReady() {
                 </Link>
               ) : (
                 <Link
+                  // The arrival's program and campaign are the tab's
+                  // (lib/program-choice.ts); the first run reads them.
                   className={buttonClass("primary")}
                   to="/start"
-                  search={carry}
                 >
                   Continue →
                 </Link>

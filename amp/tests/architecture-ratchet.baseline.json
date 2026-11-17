@@ -1,50 +1,26 @@
 {
   "about": "Frontend anti-pattern counts in src/web; they only fall (amp/AGENTS.md, Frontend architecture). Enforced by tests/architecture-ratchet.test.ts; `files` locates the counts for its failure messages.",
   "counts": {
-    "redirects": 1,
-    "validateSearch": 6,
-    "searchHandoffs": 11,
-    "navigatingEffects": 3,
+    "redirects": 0,
+    "validateSearch": 0,
+    "searchHandoffs": 0,
+    "navigatingEffects": 0,
     "renderNavigate": 0,
-    "silentCatches": 2,
-    "sessionProps": 3,
-    "sessionReads": 1,
+    "silentCatches": 0,
+    "sessionProps": 0,
+    "sessionReads": 0,
     "inlineQueryKeys": 0,
     "nativeControls": 0
   },
   "files": {
-    "redirects": {
-      "features/profiles/practice-mode.ts": 1
-    },
-    "validateSearch": {
-      "app/router.tsx": 6
-    },
-    "searchHandoffs": {
-      "features/account/AccountReady.tsx": 2,
-      "features/inventory/InventoryScreen.tsx": 3,
-      "features/profiles/api.ts": 1,
-      "features/profiles/practice-mode.ts": 1,
-      "nav/root.tsx": 1,
-      "ui/RowList.tsx": 1,
-      "ui/Tabs.tsx": 2
-    },
-    "navigatingEffects": {
-      "app/LegacyApp.tsx": 2,
-      "nav/Navigate.tsx": 1
-    },
+    "redirects": {},
+    "validateSearch": {},
+    "searchHandoffs": {},
+    "navigatingEffects": {},
     "renderNavigate": {},
-    "silentCatches": {
-      "features/lessons/publications.ts": 1,
-      "scene/money-art.ts": 1
-    },
-    "sessionProps": {
-      "features/school/classes/StudentLayer.tsx": 1,
-      "features/school/ClassesScreen.tsx": 1,
-      "features/school/StudentsScreen.tsx": 1
-    },
-    "sessionReads": {
-      "app/LegacyApp.tsx": 1
-    },
+    "silentCatches": {},
+    "sessionProps": {},
+    "sessionReads": {},
     "inlineQueryKeys": {},
     "nativeControls": {}
   },
