@@ -47,6 +47,7 @@ import { probe, settle, shellRecord, shiftRecorder } from "./app-shell-probe";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { todayTitle } from "./today-title";
+import { openHome } from "./launcher";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -272,13 +273,13 @@ async function family(
   await existingFamily(account);
 
   // 1. `/` opens the family's Today.
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(FAMILY_TODAY);
   await todayTitle(page);
   const familyUrl = page.url();
-  const maya = page.getByRole("button", { name: "Let Maya practice here" });
+  const maya = page.getByRole("button", { name: "Practice with Maya" });
   await maya.waitFor();
-  await page.getByRole("button", { name: "Let Theo practice here" }).waitFor();
+  await page.getByRole("button", { name: "Practice with Theo" }).waitFor();
   check(
     `${label} the children's shared access is dated once`,
     (await page.getByText(/^Both have AMP through /).count()) === 1,
@@ -386,7 +387,7 @@ async function family(
     .filter({ visible: true })
     .first()
     .click();
-  await page.getByRole("button", { name: "Sign out" }).click();
+  await page.getByRole("button", { name: "Back to family" }).click();
   await page.waitForURL(FAMILY_TODAY);
   await todayTitle(page);
   check(`${label} back on the family's Today`, page.url() === familyUrl, [

@@ -23,6 +23,7 @@ import {
 } from "./app-shell-fixture";
 import { verifyShellReview } from "./app-shell-review";
 import { chooseLearner } from "./ui-controls";
+import { openHome } from "./launcher";
 
 const argument = (name: string) => {
   const index = process.argv.indexOf(`--${name}`);
@@ -645,7 +646,7 @@ async function verifyDrawerLearner() {
               : [fixture.paid.jordan.id, fixture.paid.avery.id];
         const page = await context.newPage();
         try {
-          await page.goto(`${origin}/`);
+          await openHome(page, origin);
           await page.locator("[data-today-title]").first().waitFor();
           await page.getByRole("button", { name: "Open AMP menu" }).click();
           const drawer = page.getByRole("dialog", {
