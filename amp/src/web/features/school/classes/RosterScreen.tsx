@@ -31,7 +31,6 @@ import { classesOptions, currentSession, orgOptions } from "../api";
 import { ClassPeople } from "./people/ClassPeople";
 import { canAddStudents } from "../permissions";
 import { classUrl } from "./teacher-shared";
-import { useOpenView } from "../view-store";
 import { ViewLink } from "../ViewLink";
 import { approvalsOptions } from "../../family-approval/api";
 import { secondParentOptions } from "../../second-parent/api";
@@ -121,7 +120,6 @@ export function RosterScreen() {
   const flash = useFlash((state) => state.message);
   const clearFlash = useFlash((state) => state.clear);
   const navigate = useNavigate();
-  const openView = useOpenView();
   const session = useStaffSession();
   const roster = useQuery({
     ...rosterOptions(session, place),
@@ -244,14 +242,13 @@ export function RosterScreen() {
                 <Menu label="Manage" aria-label={`Manage ${row.name}`}>
                   <MenuItem
                     onSelect={() => {
-                      // The cards page opens on this student's card.
-                      openView(
-                        `school/${params.org}/classes/${params.class}/cards`,
-                        { student: row.id },
-                      );
+                      // One student's card: the cards page, at its own
+                      // address (`cards/<student>`).
                       void navigate({
-                        to: "/school/$org/classes/$class/cards",
-                        params,
+                        to: "/$",
+                        params: {
+                          _splat: `school/${params.org}/classes/${params.class}/cards/${row.id}`,
+                        },
                       });
                     }}
                   >

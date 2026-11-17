@@ -16,10 +16,10 @@ import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { Toast } from "../../../ui/Toast";
 import { PublicFrame } from "../../schools/PublicFrame";
 import { signInLink } from "../../schools/sign-in-link";
-import { ViewLink } from "../ViewLink";
 import { deviceTimeZone } from "../../onboarding/starter-api";
 import { Actions, Aside, Lead, PlainPage } from "../PlainPage";
 import { orgsOptions } from "../api";
+import { adoptPath } from "../paths";
 import { Authorization } from "../pilots/Authorization";
 import { cleverOnboardingSession } from "./onboarding-session";
 import { linkClever as linkAccount } from "./link";
@@ -198,10 +198,7 @@ export function ConnectionScreen() {
     }
   }
   const signInAgain = (
-    <Link
-      {...signInLink("/school/connect")}
-      className={buttonClass("primary")}
-    >
+    <Link {...signInLink("/school/connect")} className={buttonClass("primary")}>
       Sign in again
     </Link>
   );
@@ -403,13 +400,13 @@ export function ConnectionScreen() {
                   withClever("Review schools")
                 ) : (
                   <>
-                    <ViewLink
-                      to="/school/adopt"
-                      view={{ district: connection.orgId, manage: 1 }}
+                    <Link
+                      to="/$"
+                      params={{ _splat: adoptPath(connection.orgId, true) }}
                       className={buttonClass("primary")}
                     >
                       Review schools
-                    </ViewLink>
+                    </Link>
                     {canSync && !waitingToSync && (
                       <Button
                         variant="secondary"

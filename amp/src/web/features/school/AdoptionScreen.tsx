@@ -4,9 +4,12 @@ import { useQuery } from "@tanstack/react-query";
 import { Disclosure } from "../../ui/Disclosure";
 import { CopyButton } from "./parts";
 import { StatRow, StatTile } from "../../ui/StatTile";
-import { Link, useLocation, useNavigate } from "@tanstack/react-router";
-import { useScreenView } from "./view-store";
-import { ViewLink } from "./ViewLink";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { z } from "zod";
 import type { AdoptionReview } from "../../../schools/adoption-contracts";
@@ -35,6 +38,7 @@ import {
 import { Actions, Lead, PlainPage } from "./PlainPage";
 import { adoptionLabels } from "./adoption-labels";
 import { AdoptionMatching } from "./AdoptionMatching";
+import { adoptPath } from "./paths";
 import styles from "./AdoptionScreen.module.css";
 import plainStyles from "./PlainPage.module.css";
 
@@ -91,11 +95,7 @@ function DistrictInvite({ districtId }: { districtId: string }) {
       <Lead>
         Send this link to the school. You’ll accept here once they approve.
       </Lead>
-      <CopyLink
-        url={address(
-          `/school/adopt?district=${encodeURIComponent(districtId)}`,
-        )}
-      />
+      <CopyLink url={address(`/${adoptPath(districtId)}`)} />
     </PlainPage>
   );
 }
@@ -232,13 +232,13 @@ function AuthorizeSchool({ districtId }: { districtId?: string }) {
           {data.districts.map((item) => (
             <li key={item.id}>
               <span>{item.name}</span>
-              <ViewLink
-                to="/school/adopt"
-                view={{ district: item.id, manage: 1 }}
+              <Link
+                to="/$"
+                params={{ _splat: adoptPath(item.id, true) }}
                 className={buttonClass("secondary")}
               >
                 Invite a school
-              </ViewLink>
+              </Link>
             </li>
           ))}
         </ul>
@@ -600,20 +600,12 @@ function ReviewDecision({
 export function AdoptionScreen() {
   const session = currentSession(),
     location = useLocation();
-  // A school opens a district's invitation link (`?district=`, a link sent
-  // to another person, read once here). A district admin's own "Invite a
-  // school" opens this screen with its view set (view-store.ts).
-  const [view] = useScreenView<{ district: string; manage: number }>();
-  const shared = z
-    .uuid()
-    .safeParse(new URLSearchParams(location.searchStr).get("district"));
-  const managed = z.uuid().safeParse(view.district);
-  const managing = !shared.success && view.manage === 1 && managed.success;
-  const districtId = shared.success
-    ? shared.data
-    : managing
-      ? managed.data
-      : undefined;
+  // The district names the page (`/school/adopt/<district>`: a school
+  // approving; `…/manage`: the district admin's invitation link).
+  const { district } = useParams({ strict: false }) as { district?: string };
+  const named = z.uuid().safeParse(district);
+  const districtId = named.success ? named.data : undefined;
+  const managing = !!districtId && /\/manage\/?$/.test(location.pathname);
   prepareSchoolAdoption();
   const [token, setToken] = useState(schoolAdoptionToken);
   useEffect(

@@ -1,13 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "@tanstack/react-router";
-import { ViewLink } from "./ViewLink";
+import { Link, useParams } from "@tanstack/react-router";
 import { buttonClass } from "../../ui/Button";
 import { OrgExperienceSection } from "./classroom/ExperienceScreens";
 import { WeeklyTargetSection } from "./classroom/WeeklyTargetSection";
 import { currentSession, orgOptions } from "./api";
 import { OrgFrame } from "./OrgFrame";
 import { PageHead } from "./parts";
-import { orgPath } from "./paths";
+import { adoptPath, orgPath } from "./paths";
 import styles from "./School.module.css";
 
 /**
@@ -37,13 +36,13 @@ export function OrgSettingsScreen() {
           >
             <h2 id="settings-schools">Schools</h2>
             <div>
-              <ViewLink
-                to="/school/adopt"
-                view={{ district: orgId, manage: 1 }}
+              <Link
+                to="/$"
+                params={{ _splat: adoptPath(orgId, true) }}
                 className={buttonClass("secondary")}
               >
                 Invite a school
-              </ViewLink>
+              </Link>
             </div>
           </section>
         )}
