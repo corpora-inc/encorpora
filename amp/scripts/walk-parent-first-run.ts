@@ -113,10 +113,10 @@ try {
   // 2. Three kids: each is saved when its year is chosen.
   await nameField(page, "Child 1").fill("Ada");
   await chooseYear(page, "Ada", thisYear - 9);
-  await page.getByRole("button", { name: "Add a child" }).click();
+  await page.getByRole("button", { name: "Add another child" }).click();
   await nameField(page, "Child 2").fill("Ben");
   await chooseYear(page, "Ben", thisYear - 7);
-  await page.getByRole("button", { name: "Add a child" }).click();
+  await page.getByRole("button", { name: "Add another child" }).click();
   await nameField(page, "Child 3").fill("Cy");
   await chooseYear(page, "Cy", thisYear - 5);
   await rows(3);
