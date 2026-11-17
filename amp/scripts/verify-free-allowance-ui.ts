@@ -538,6 +538,26 @@ async function journey(
     `${label} school stack: the pupil needs a seat`,
     (await page.getByText("Needs a seat").count()) > 0,
   );
+  // Never a dead end: the class's own next step (Start, or Request seats),
+  // the same one Today offers, taken right here over the stack.
+  const step = page.locator("[data-access-step]");
+  await step.waitFor();
+  const stepAction = step.getByRole("button");
+  check(
+    `${label} school stack offers the class's next step`,
+    (await stepAction.count()) === 1,
+    await step.innerText(),
+  );
+  const stackPath = new URL(page.url()).pathname;
+  await stepAction.first().click();
+  await page.getByRole("dialog").first().waitFor();
+  check(
+    `${label} school stack's step opens in place`,
+    new URL(page.url()).pathname === stackPath,
+    page.url(),
+  );
+  await page.keyboard.press("Escape");
+  await page.getByRole("dialog").first().waitFor({ state: "detached" });
   check(
     `${label} school stack: no free-allowance words or checkout`,
     (await page.locator('[data-allowance-pause="workbooks"]').count()) === 0 &&
