@@ -69,9 +69,8 @@ test("a lesson whose chunk fails to load fails in its own sheet, and the page st
       <RouterProvider router={router} />
     </QueryClientProvider>,
   );
-  const sheet = await screen.findByRole("dialog", {
-    name: "Lesson",
-  });
+  // The lesson's own overlay, named for the lesson when its title is known.
+  const sheet = await screen.findByRole("dialog");
   expect(sheet.textContent).toContain(
     "The lesson could not be opened. Retry it, or reload the page.",
   );
