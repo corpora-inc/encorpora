@@ -4,7 +4,6 @@ import {
 } from "../lib/family-practice-history";
 import { knownDocumentPath } from "./document-routes";
 import { invoiceOffersOptions } from "../features/funding/invoice-offers";
-import { signupEntrySchema } from "../../parent-followup/contracts";
 import {
   createRootRoute,
   notFound,
@@ -67,6 +66,7 @@ import {
   admit,
   elsewhere,
   requireSignedIn,
+  returnSearchShape,
   signInTarget,
   toOwnPlace,
   withQuery,
@@ -74,6 +74,7 @@ import {
 import {
   cleverReturn,
   homeReturn,
+  inboundSearchShape,
   resumeStripeReturn,
   signInArrivalPending,
   signInReturn,
@@ -101,7 +102,7 @@ import { frameData, schoolRoutes, staffScreen } from "./school-routes";
 import { familyRoutes } from "./family-routes";
 import { accountOverlays } from "./account-overlays";
 import { payAddresses } from "./pay-routes";
-import { appReturn, RETURN_LIMIT } from "../features/spaces/returns";
+import { appReturn } from "../features/spaces/returns";
 import { loadCurriculum, loadScope } from "../features/schools/api";
 import {
   marksSearchSchema,
@@ -122,29 +123,16 @@ import {
   carriedKeys,
   isLearningPath,
 } from "../features/profiles/practice-mode";
+/** Every address's query, as the root reads it: the sign-in gate's return
+ * (app/sign-in-gate.ts), what arrives from outside (app/third-party-returns.ts),
+ * and the screen state some screens still read from the query. That last
+ * group goes key by key as its readers move to paths and stores
+ * (amp/AGENTS.md, "Frontend architecture"); when it is empty, this schema
+ * is the two sanctioned modules' alone. */
 const searchSchema = z
   .object({
-    return: z
-      .enum([
-        "free-practice",
-        "security",
-        "access",
-        "arkansas-efa",
-        "new-hampshire-efa",
-        "arizona-esa",
-        "school",
-        "school-invite",
-        "family-approval",
-      ])
-      .optional()
-      .catch(undefined),
-    /** Where a sign-in continues; `continuationSearch` holds it to the one
-     * return contract (`appReturn`). */
-    next: z.string().max(RETURN_LIMIT).optional().catch(undefined),
-    entry: signupEntrySchema.optional().catch(undefined),
-    program: z.enum(["ar-efa", "az-esa", "nh-efa"]).optional().catch(undefined),
-    token: z.string().max(2048).optional(),
-    error: z.string().max(200).optional(),
+    ...returnSearchShape,
+    ...inboundSearchShape,
     topic: z.string().max(100).optional().catch(undefined),
     strand: z.string().max(100).optional(),
     filter: z.string().max(100).optional(),
@@ -153,15 +141,7 @@ const searchSchema = z
     skill: z.string().max(100).optional(),
     template: z.string().max(100).optional(),
     page: z.coerce.number().int().nonnegative().optional(),
-    state: z.string().max(200).optional(),
-    purchase: z.string().max(200).optional(),
-    billing: z.string().max(40).optional(),
     interval: z.enum(["year", "month"]).optional().catch(undefined),
-    reason: z.enum(["limit", "choice"]).optional().catch(undefined),
-    "sign-in": z.string().optional(),
-    "signed-in": z.string().optional(),
-    method: z.enum(["password"]).optional().catch(undefined),
-    "reset-password": z.string().optional(),
   })
   .passthrough();
 function RouterError({ error }: { error: unknown }) {

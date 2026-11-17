@@ -1,4 +1,5 @@
 import { redirect } from "@tanstack/react-router";
+import { z } from "zod";
 import type { AuthSession } from "../auth";
 import type { SignedInMe } from "../../account/contracts";
 import { continuationSearch } from "../lib/funded-entry";
@@ -7,6 +8,7 @@ import { queryClient, sessionOptions } from "../lib/query";
 import { studentSession } from "../lib/student-device";
 import { nativeRuntime } from "../native-runtime";
 import { studentPracticeHref } from "../features/profiles/practice-mode";
+import { RETURN_LIMIT } from "../features/spaces/returns";
 
 /*
  * The sign-in gate (amp/AGENTS.md, "Frontend architecture"): the one place a
@@ -58,6 +60,28 @@ export function withQuery(path: string, query: Record<string, unknown> = {}) {
  * school's, a family's) straight back to this address, or by a return of
  * its own (`{ return: "access" }`). */
 export type Back = "continue" | "here" | AuthSearch;
+
+/** The gate's way back, on the sign-in address's query: which kind of
+ * return (lib/funded-entry.ts `continuationSearch`), and where a sign-in
+ * continues, held to the one return contract (`appReturn`). Part of the
+ * root's query schema (app/router.tsx). */
+export const returnSearchShape = {
+  return: z
+    .enum([
+      "free-practice",
+      "security",
+      "access",
+      "arkansas-efa",
+      "new-hampshire-efa",
+      "arizona-esa",
+      "school",
+      "school-invite",
+      "family-approval",
+    ])
+    .optional()
+    .catch(undefined),
+  next: z.string().max(RETURN_LIMIT).optional().catch(undefined),
+};
 
 /** A device this screen isn't for: one hop to the device's own home. */
 export function admit({ web, adults }: Admits) {
