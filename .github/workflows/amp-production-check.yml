@@ -71,6 +71,7 @@ jobs:
           id="${commit}-$(date -u -d "$modified" +%Y%m%dT%H%M%SZ)"
           echo "Live web release: $id"
           echo "id=$id" >> "$GITHUB_OUTPUT"
+          # The cache lookup needs its path to exist.
           mkdir -p "$RUNNER_TEMP/checked"
       - id: seen
         name: Was this release already checked?
@@ -136,7 +137,7 @@ jobs:
           node "$RUNNER_TEMP/check-production-entry.mjs" "$AMP_ORIGIN"
       - name: Remember the release as checked
         if: success()
-        run: echo '${{ needs.release.outputs.id }}' > "$RUNNER_TEMP/checked/id"
+        run: mkdir -p "$RUNNER_TEMP/checked" && echo '${{ needs.release.outputs.id }}' > "$RUNNER_TEMP/checked/id"
       - name: Save the checked release
         if: success()
         uses: actions/cache/save@v4
