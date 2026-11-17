@@ -27,7 +27,11 @@ export function PrivacyFixture({
     return createRouter({
       routeTree: createRootRoute({
         component: () => (
-          <main data-privacy-harness style={{ padding: 16, maxWidth: 760 }}>
+          <main
+            data-privacy-harness
+            data-account={identity}
+            style={{ padding: 16, maxWidth: 760 }}
+          >
             <h1>Privacy &amp; data</h1>
             <PrivacyPanel />
           </main>
