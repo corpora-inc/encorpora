@@ -55,7 +55,7 @@ export function RecordLevels({
   /** A teacher's record: modeling and reasoning too, after the five areas
    * (ui/level-range `byArea`). A family's leaves them out. */
   crossCutting?: boolean;
-  /** A parent reads it: each row's range in grade words, not decimals. */
+  /** Each row’s range in grade words ("Gr 7–Geom"), not decimals. */
   plain?: boolean;
   /** The line under the level before there's any work to read it from. */
   empty: string;

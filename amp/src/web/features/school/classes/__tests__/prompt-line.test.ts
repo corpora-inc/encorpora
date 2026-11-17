@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { promptLine } from "../teacher-shared";
+import { promptLine } from "../prompt-line";
 
 test("a mark set after an expression never breaks from it (Q-4)", () => {
   const line = promptLine(

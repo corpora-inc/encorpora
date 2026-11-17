@@ -34,16 +34,12 @@ export type NavId =
 export function OrgFrame({
   orgId,
   nav,
-  title,
-  place = true,
   narrow = false,
   children,
 }: {
   orgId: string;
   nav: NavId;
   title: string;
-  /** A class screen's eyebrow: the class's name. */
-  place?: boolean;
   /** One focused, centred column: a Settings page. */
   narrow?: boolean;
   crumbs?: readonly SchoolCrumb[];
@@ -140,10 +136,8 @@ export function OrgFrame({
       className={frame.content}
       data-dense
     >
-      {/* Which class, for someone who teaches several; a family has one. */}
-      {place && nav.startsWith("class:") && org.data.kind !== "family" && (
-        <p className={frame.place}>{title}</p>
-      )}
+      {/* Which class is the shell bar's place name, at every width: the
+          page never says it again. */}
       {links.length > 1 && (
         <nav className={frame.links} aria-label="In this section">
           {links.map(([path, label]) => (

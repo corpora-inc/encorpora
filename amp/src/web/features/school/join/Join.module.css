@@ -314,9 +314,41 @@
   position: relative;
   display: grid;
   width: 100%;
-  /* The room the screen's mark, name and prompt take above it. */
+  /* The room the stepper, name, prompt, slots and message take above it and
+     the foot below: the pad gets the rest, so the screen never scrolls and
+     a pick in the last row can't move the stepper off the top (#26). */
   --chrome-block: 480px;
-  max-width: max(280px, calc(100dvh - var(--chrome-block)));
+  max-width: max(220px, calc(100dvh - var(--chrome-block)));
+}
+@media (max-width: 719.98px) {
+  .pad {
+    --chrome-block: 410px;
+  }
+}
+/* The pictures fill the screen to its foot: only a small margin under them. */
+.page:has(.pictures) > main {
+  --page-bottom: var(--space-4);
+}
+/* A short phone (360×640, 320×568): the same screen, tighter, so the whole
+   pad still fits under the prompt with targets over 44 px. */
+@media (max-width: 719.98px) and (max-height: 760px) {
+  .pictures,
+  .prompt {
+    gap: var(--space-2);
+  }
+  .who {
+    --avatar-size: 36px;
+    font-size: 19px;
+  }
+  .pictures .title {
+    font-size: clamp(22px, 6.2vw, 30px);
+  }
+  .slots {
+    --slot: min(21vw, 92px, 9.5dvh);
+  }
+  .pad {
+    --chrome-block: calc(290px + 9.5dvh);
+  }
 }
 .grid {
   display: grid;
