@@ -570,9 +570,7 @@ function verticalProof(r: Random): Proof {
       "Addition property of equality",
       "Corresponding angles are congruent",
     ],
-    extra: [
-      `$\\angle ${a}$ and $\\angle ${c}$ form a linear pair`,
-    ],
+    extra: [`$\\angle ${a}$ and $\\angle ${c}$ form a linear pair`],
     figure: drawing({ at, segments: ["AC", "BD"] }),
     hint: "Both target angles form a linear pair with the same neighboring angle, so compare their sums of 180°.",
     explanation: [
