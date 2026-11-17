@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { useRef } from "react";
 import type { AnnualOffer } from "../../../billing/stripe/purchase-contracts";
 import { fundedPrograms } from "../../lib/funded-entry";
@@ -11,6 +11,7 @@ import { TextField } from "../../ui/TextField";
 import { TileChoice } from "../../ui/TileChoice";
 import { Toast } from "../../ui/Toast";
 import { PlanTerms } from "../billing/PlanChoice";
+import { emailConsentOptions } from "../billing";
 import { InvoicePractice } from "../funding/InvoicePractice";
 import {
   fundingOffersOptions,
@@ -86,7 +87,9 @@ export function EsaPanel() {
     void navigate({ to: invoicePath(learner.id, invoiceId) as never });
   });
   // One key per exact request, so a retry never makes a second invoice.
-  const attempt = useRef<{ payload: string; key: string } | null>(null);
+  const attempt = useRef<{ payload: string; key: string; invoiceId?: string } | null>(
+    null,
+  );
   if (offers.error) return <Retry error={offers.error} onRetry={() => void offers.refetch()} />;
   if (!offers.data) return <RowsSkeleton rows={4} />;
   const programs = fundingPrograms(offers.data);
@@ -120,6 +123,10 @@ export function EsaPanel() {
             learnerId: own,
             prepare: () => startOwnPractice(session),
             idempotencyKey: attempt.current.key,
+            invoiceId: attempt.current.invoiceId,
+            onInvoice: (invoiceId) => {
+              if (attempt.current?.payload === payload) attempt.current.invoiceId = invoiceId;
+            },
           });
       }}
     >
@@ -168,6 +175,9 @@ export function EsaPanel() {
           As it appears in your {program ? shortName(program) : "program"} account.
         </p>
       </div>
+      {learner.learningAllowed === false ? (
+        <ConsentFirst />
+      ) : (
       <div className={styles.actions}>
         <Button
           type="submit"
@@ -186,7 +196,38 @@ export function EsaPanel() {
           {create.error ? invoiceFailure(create.error) : ""}
         </p>
       </div>
+      )}
     </form>
+  );
+}
+
+/**
+ * A named child under 13 learns on the parent's verified consent, so an
+ * invoice can't start their access until it is given: 16 CFR 312.5(a)(1)
+ * (consent before collecting a child's personal information), checked by
+ * the server's claim (`purchaseConsentSatisfied`, docs/funded-purchases.md).
+ * A program's payment is not a parent's own card, so it can't verify consent
+ * the way card checkout does (312.5(b)(2)(ii)). This is shown only where
+ * `/me` says the learner can't learn now (`learningAllowed`), in place of an
+ * action that would fail, with the step that works.
+ */
+function ConsentFirst() {
+  const { session, learner } = usePay();
+  const email = useQuery(emailConsentOptions(session));
+  return (
+    <div className={styles.actions}>
+      <p className={styles.text}>
+        Before {learner.name} can learn, confirm you’re their parent.
+        {email.data?.available
+          ? " It takes one email. Then create the invoice here."
+          : " Card checkout confirms it as you pay."}
+      </p>
+      {email.data?.available && (
+        <Link to="/$" params={{ _splat: "consent" }} className={buttonClass("primary")}>
+          Confirm by email
+        </Link>
+      )}
+    </div>
   );
 }
 

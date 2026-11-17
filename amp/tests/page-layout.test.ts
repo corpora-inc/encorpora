@@ -665,8 +665,8 @@ test("every route's screen renders Page, or is listed with its reason", () => {
 /** Functions that compute a parent from canonical state: one per entity
  * they are called for, several across entities. */
 const PARENT_RESOLVERS: Record<string, string> = {
-  "features/continue/ContinueScreen.tsx#learnerPage":
-    "one parent per learner, their own page: a child's in their family, the adult's /me, a profile's list (the pay flow carries it to /pay)",
+  "features/pay/screens.tsx#learnerPage":
+    "one parent per learner, their own page: a child's in their family, the adult's /me, a profile's list",
   "features/family/RecordLinks.tsx#useFamilyRecordBack":
     "one parent per record: a child's page goes to Today; practice time, report cards and workbooks to Progress (with one child, that child's page)",
 };

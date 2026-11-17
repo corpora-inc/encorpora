@@ -167,13 +167,13 @@ async function walk(browser: Browser, width: number, scheme: "light" | "dark") {
   await shot(page, `${tag}-1-card`);
 
   // Tabs: no address, no history, no movement.
-  const history = await page.evaluate(() => history.length);
+  const entries = await page.evaluate(() => window.history.length);
   const area = page.locator("[data-method]").first().locator("..");
   const before = await area.boundingBox();
   await page.getByRole("radio", { name: "Education funds" }).click();
   await page.waitForTimeout(200);
   assert.equal(page.url(), pay, "the tab changes no address");
-  assert.equal(await page.evaluate(() => history.length), history, "the tab adds no history");
+  assert.equal(await page.evaluate(() => window.history.length), entries, "the tab adds no history");
   const after = await area.boundingBox();
   assert.equal(Math.round(after!.height), Math.round(before!.height), "the tab area keeps its height");
   assert.equal(Math.round(after!.y), Math.round(before!.y), "the tab area stays put");

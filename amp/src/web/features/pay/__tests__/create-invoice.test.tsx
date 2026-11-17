@@ -135,3 +135,23 @@ test("reporting submission refreshes the account and Billing", async () => {
     ).toBe(true),
   );
 });
+
+test("a retry after the invoice exists only claims it again: never a second invoice", async () => {
+  const kept: string[] = [];
+  const { result } = renderHook(() => useCreateInvoice(session), { wrapper });
+  await act(async () => {
+    await result.current.mutateAsync({
+      offer: { id: "az-esa-annual-invoice", revision: "r1" },
+      studentBillingName: "August Example",
+      parentEmail: "parent@example.test",
+      learnerId: "august",
+      idempotencyKey: "0b8f7f8e-4d0a-4d61-8d5c-8f1c3b6b1c13",
+      invoiceId,
+      onInvoice: (id) => kept.push(id),
+    });
+  });
+  expect(calls.map((call) => new URL(call.url, "http://x").pathname)).toEqual([
+    `/api/v1/funding/invoices/${invoiceId}/claim`,
+  ]);
+  expect(kept).toEqual([invoiceId]);
+});

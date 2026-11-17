@@ -10,8 +10,8 @@ import { testFundingOffer } from "./funding-purchase.fixture.js";
 /*
  * The pay screen's "Create invoice" (src/web/features/pay/api.ts,
  * useCreateInvoice) is two idempotent requests: the invoice, then its claim
- * for the learner. Through the real routes, as the signed-in parent of a
- * child learning on the restricted basis (no consent recorded): the claim
+ * for the learner. Through the real routes, as a new parent who named their
+ * nine-year-old in the starter and gave consent: the claim
  * gives the child access at once, the invoice email is queued with the
  * invoice, and the whole action retried gives the same invoice, one email
  * and one grant.
@@ -36,7 +36,14 @@ async function fixture(run: (pool: Pool) => Promise<void>) {
       `INSERT INTO amp_auth_users(id,name,email,"emailVerified") VALUES('owner','Parent','parent@example.com',true)`,
     );
     await pool.query(
-      "INSERT INTO amp_learners(id,account_id,name,name_pending,birth_year,picture_identity,picture_number,identity_scope) VALUES('august','amp|owner','Fox',true,2018,'fox',1,'amp|owner')",
+      "INSERT INTO amp_learners(id,account_id,name,birth_year) VALUES('august','amp|owner','August',$1)",
+      [new Date().getUTCFullYear() - 9],
+    );
+    // A named child under 13 learns on the parent's verified consent
+    // (16 CFR 312.5(a)(1)); the pay screen asks for it first when /me says
+    // the learner can't learn yet (EsaPanel's ConsentFirst).
+    await pool.query(
+      "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES('amp|owner','test','verified','test')",
     );
     await run(pool);
   } finally {
@@ -64,16 +71,20 @@ test(
         studentBillingName: "August Example",
         idempotencyKey: randomUUID(),
       };
-      // The mutation: the invoice, then its claim for this learner.
-      const createAndClaim = async () => {
-        const created = await app.inject({
-          method: "POST",
-          url: "/api/v1/funding/invoices",
-          payload: fields,
-        });
-        assert.equal(created.statusCode, 200, created.body);
-        const { invoiceId, emailStatus } = created.json();
-        assert.equal(emailStatus, "queued");
+      // The mutation: the invoice, then its claim for this learner; a retry
+      // after the invoice exists claims that invoice again.
+      const createAndClaim = async (made?: string) => {
+        let invoiceId = made;
+        if (!invoiceId) {
+          const created = await app.inject({
+            method: "POST",
+            url: "/api/v1/funding/invoices",
+            payload: fields,
+          });
+          assert.equal(created.statusCode, 200, created.body);
+          assert.equal(created.json().emailStatus, "queued");
+          invoiceId = created.json().invoiceId as string;
+        }
         const claimed = await app.inject({
           method: "POST",
           url: `/api/v1/funding/invoices/${invoiceId}/claim`,
@@ -114,8 +125,8 @@ test(
         assert.ok(record.json().fundedPending?.endsAt);
         assert.equal(record.json().offer.instructions, offer.instructions);
 
-        // A retry of the whole action (a lost response): nothing new.
-        const again = await createAndClaim();
+        // A retry after a lost claim response: nothing new.
+        const again = await createAndClaim(first.invoiceId);
         assert.equal(again.invoiceId, first.invoiceId);
         assert.equal(
           (await pool.query("SELECT count(*)::int AS n FROM amp_funding_invoice_outbox"))

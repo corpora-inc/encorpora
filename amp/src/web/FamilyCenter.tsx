@@ -1056,7 +1056,7 @@ export function FamilyCenter({
                   if (nativeRuntime && onChoosePayment) {
                     selectLearner(learner.id);
                     onChoosePayment();
-                  } else route.navigate(`/continue/${learner.id}`);
+                  } else route.navigate(`/pay/${learner.id}`);
                 }}
                 onManage={() => void billing()}
                 onHistory={(learner, trigger) => {

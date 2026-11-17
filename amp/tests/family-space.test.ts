@@ -81,7 +81,7 @@ const kid = (
     progress: "",
     workbooks: null,
     practiceHere: null,
-    continue: `/continue/${id}`,
+    continue: `/pay/${id}`,
   },
   ...over,
 });

@@ -258,7 +258,7 @@ const invoiceFailures: Record<string, string> = {
   offer_unavailable:
     "This program’s price or terms just changed. Go back to the plan to see the current one.",
   verified_consent_required:
-    "Learning is paused for this learner because consent was withdrawn. Renew it in Privacy, then create the invoice.",
+    "This learner needs a parent’s consent before they can learn. Confirm it in Privacy, then create the invoice again.",
   family_holder_only: "Only the family’s account holder can pay for its children.",
   learner_not_found: "This learner isn’t in your account anymore.",
   invoice_already_claimed: "This invoice already belongs to another learner.",
@@ -275,9 +275,10 @@ export function invoiceFailure(error: unknown) {
  * Creates the invoice and starts the learner's access in one action: the
  * invoice (its PDF email is queued in the same transaction), then the claim
  * that connects it to this learner and activates its funded-pending access
- * (docs/funded-purchases.md, "Access while payment is pending"). Both are
- * idempotent: a retry with the same key and fields returns the same invoice
- * and the same claim, never a second invoice, email or grant.
+ * (docs/funded-purchases.md, "Access while payment is pending"). A retry
+ * never makes a second invoice, email or grant: before the invoice exists it
+ * resends the same key and fields (the server returns the same invoice);
+ * after, it only claims that invoice again (idempotent for its learner).
  */
 export function useCreateInvoice(
   session: AuthSession,
@@ -294,24 +295,35 @@ export function useCreateInvoice(
       learnerId: string | null;
       prepare?: () => Promise<string>;
       idempotencyKey: string;
+      /** This attempt's invoice, when an earlier try made it and only its
+       * claim failed: a claimed invoice can't be made again, so a retry
+       * claims it (idempotently) instead. */
+      invoiceId?: string;
+      /** The invoice exists: keep its id for a retry. */
+      onInvoice?: (invoiceId: string) => void;
     }) => {
-      const document = await request("/funding/invoices", invoiceDocumentSchema, {
-        headers: analyticsVisitorHeaders(),
-        body: {
-          offerId: input.offer.id,
-          offerRevision: input.offer.revision,
-          parentEmail: input.parentEmail,
-          studentBillingName: input.studentBillingName,
-          idempotencyKey: input.idempotencyKey,
-        },
-      });
+      const invoiceId =
+        input.invoiceId ??
+        (
+          await request("/funding/invoices", invoiceDocumentSchema, {
+            headers: analyticsVisitorHeaders(),
+            body: {
+              offerId: input.offer.id,
+              offerRevision: input.offer.revision,
+              parentEmail: input.parentEmail,
+              studentBillingName: input.studentBillingName,
+              idempotencyKey: input.idempotencyKey,
+            },
+          })
+        ).invoiceId;
+      input.onInvoice?.(invoiceId);
       const learnerId = input.learnerId ?? (await input.prepare!());
       const claimed = await request(
-        `/funding/invoices/${encodeURIComponent(document.invoiceId)}/claim`,
+        `/funding/invoices/${encodeURIComponent(invoiceId)}/claim`,
         claimSchema,
         { token: session.token, body: { learnerId } },
       );
-      return { invoiceId: document.invoiceId, learnerId, claimed };
+      return { invoiceId, learnerId, claimed };
     },
     onSuccess: (created) => onCreated?.(created),
     onError: (error) => console.error("The invoice wasn’t created", error),

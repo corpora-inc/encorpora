@@ -105,12 +105,12 @@ const SCREENS: Screen[] = [
     width: "standard",
   },
   {
-    name: "continue",
+    // The one pay screen (features/pay), loaded ahead by its route: it
+    // opens whole, so no shift is expected.
+    name: "pay",
     person: "parent-day1",
-    path: async (page) => `/continue/${await firstChild(page)}`,
+    path: async (page) => `/pay/${await firstChild(page)}`,
     width: "standard",
-    knownShift:
-      "the plan's loading skeleton is shorter than the plans, notice and checkout that replace it, so the list of what's included below moves down",
     parent: async (page) =>
       `${await familyPath(page)}/kids/${await firstChild(page)}`,
   },
@@ -120,20 +120,6 @@ const SCREENS: Screen[] = [
     path: "/account/billing",
     width: "standard",
     parent: async (page) => `${await familyPath(page)}/settings`,
-  },
-  {
-    name: "purchase-annual",
-    person: "family",
-    path: "/purchase/annual",
-    width: "standard",
-    parent: async () => "/account/billing",
-  },
-  {
-    name: "purchase-funded",
-    person: "family",
-    path: "/purchase/funded",
-    width: "standard",
-    parent: async () => "/account/billing",
   },
   {
     name: "family-today",
