@@ -644,6 +644,7 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
     about: "a learner's pay screen",
     to: toPay("continue"),
   },
+  { from: "/purchase", about: "the purchase page", to: toPay("choose") },
   { from: "/purchase/annual", about: "the card plan", to: toPay("card") },
   { from: "/purchase/choose", about: "choosing a plan", to: toPay("choose") },
   { from: "/purchase/funded", about: "paying with funds", to: toPay("funds") },
