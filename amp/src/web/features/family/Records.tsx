@@ -170,7 +170,7 @@ export function FamilyWorkbooksScreen() {
       </FamilyFrame>
     );
   if (host) return <WorkbookStackScreen host={host} />;
-  return <NoClass place={place} what="Print workbooks" />;
+  return <NoClass place={place} what="Workbooks for all kids" />;
 }
 
 /** One printed day's workbooks, marked by hand

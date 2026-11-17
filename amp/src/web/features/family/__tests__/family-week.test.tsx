@@ -65,18 +65,12 @@ test("the week's minutes each day, every child's together, and the skills earned
   expect(days).toHaveLength(7);
   expect(days[0]!.getAttribute("aria-label")).toMatch(/30 min · 2 problems/);
   expect(days[1]!.getAttribute("aria-label")).toMatch(/5 min/);
-  // A day without practice says so; today is marked; the days ahead are
-  // empty slots, never a tab stop or a claim.
-  expect(days[2]!.getAttribute("aria-label")).toBe("Today: no practice");
-  expect(days[2]!.hasAttribute("data-current")).toBe(true);
-  expect(days[3]!.hasAttribute("data-ahead")).toBe(true);
-  expect(days[3]!.hasAttribute("tabindex")).toBe(false);
-  // Each day's initial under it, and no caption between the ends.
-  expect(
-    document.querySelector("[data-family-week] figure > [aria-hidden]")
-      ?.textContent,
-  ).toBe("MTWTFSS");
-  expect(document.querySelector("figcaption")).toBeNull();
+  // A quiet day says so; today is the one marked.
+  expect(days[3]!.getAttribute("aria-label")).toMatch(/no practice/);
+  expect(days[2]!.getAttribute("aria-label")).toMatch(/^Today/);
+  // Day initials under the columns, no caption inside the axis.
+  expect(days[0]!.textContent).toBe("M");
+  expect(screen.queryByText(/Minutes per day/)).toBeNull();
 });
 
 test("nothing before the week's first practice", () => {

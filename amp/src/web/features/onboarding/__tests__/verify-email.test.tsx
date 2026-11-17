@@ -15,6 +15,9 @@ vi.mock("../../../account-client", () => ({
   accountClient: { sendVerificationEmail: api.send },
 }));
 vi.mock("../../../lib/query", () => ({ refreshMe: api.refresh }));
+vi.mock("../../../lib/session", () => ({
+  useSession: () => ({ token: "fixture", accountId: "fixture" }),
+}));
 vi.mock("@tanstack/react-router", () => ({
   useLocation: () => ({ search: {} }),
   Link: ({ children }: { children: React.ReactNode }) => <a>{children}</a>,
@@ -40,11 +43,7 @@ test("email recovery stays beside its actions and announces a successful resend 
   api.send.mockResolvedValue({ error: null });
   render(
     <QueryClientProvider client={new QueryClient()}>
-      <VerifyEmailStep
-        session={{ token: "fixture", accountId: "fixture" }}
-        me={me}
-        embedded
-      />
+      <VerifyEmailStep me={me} embedded />
     </QueryClientProvider>,
   );
   const step = screen

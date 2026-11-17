@@ -1,3 +1,4 @@
+import { jsonOrNull } from "../../lib/report-error";
 import { requestFetch } from "../../lib/request-transport";
 import { errorDetails } from "../../../analytics/error-details";
 import type { FunnelProps } from "../../../analytics/events";
@@ -45,7 +46,7 @@ async function post(path: string, body: unknown) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
   });
-  const data = (await response.json().catch(() => null)) as {
+  const data = (await jsonOrNull(response)) as {
     code?: string;
     message?: string;
   } | null;

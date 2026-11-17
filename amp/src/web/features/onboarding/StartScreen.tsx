@@ -1,67 +1,79 @@
-import { useEffect } from "react";
-import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
+import { useToRoot } from "../../nav/root";
 import { useLocation, useNavigate } from "@tanstack/react-router";
-import { Navigate } from "../../nav/Navigate";
-import type { AuthSession } from "../../auth";
-import { invalidateAccount, meOptions, sessionOptions } from "../../lib/query";
-import { nativeRuntime } from "../../native-runtime";
+import { invalidateAccount, meOptions, refreshMe } from "../../lib/query";
+import { useSession } from "../../lib/session";
 import { ParentConsentCenter } from "../../ParentConsentCenter";
 import { LoadingScreen, RouteError } from "../../ui/LoadingScreen";
 import { PageFrame } from "../../ui/PageFrame";
 import {
-  isFundedReturn,
-  fundedPrograms,
   continuationSearch,
-  rememberFundedPurchase,
+  continuationUrl,
+  fundedPrograms,
+  fundedReturnOf,
+  isFundedReturn,
   forgetFundedPurchase,
 } from "../../lib/funded-entry";
 import { chosenPlan } from "../../lib/pending-trial";
+import { chooseProgram } from "../../lib/program-choice";
 import { startDestination, startNavigation } from "./guard";
 import { LearnerSteps } from "./LearnerSteps";
 import { PlanStep } from "./PlanStep";
 import { PurchaseStep } from "./PurchaseStep";
 import { VerifyEmailStep } from "./VerifyEmailStep";
+import { fundedPayHref } from "./pay-link";
+
+/** The funded program these steps are for: the address's on arrival, then
+ * the one kept for the account (`fundedSetup`, in the route guard). */
+function useFunded() {
+  const session = useSession();
+  const search = continuationSearch(useLocation().search);
+  return isFundedReturn(search.return)
+    ? search.return
+    : fundedReturnOf(session.accountId);
+}
+
+/** After a step changes the account (an address confirmed, consent given):
+ * the first-run guard's next address for it, computed once, in one move. */
+export function useStartOnward() {
+  const session = useSession();
+  const navigate = useNavigate();
+  const pathname = useLocation().pathname;
+  const funded = useFunded();
+  return async () => {
+    const me = await refreshMe(session);
+    const target = startDestination(
+      me,
+      pathname,
+      !!chosenPlan(),
+      funded ?? false,
+    );
+    if (!target) return;
+    // A funded program's purchase is its tab of the learner's pay overlay.
+    const pay = me.signedIn ? fundedPayHref(session, me, target) : null;
+    if (pay) await navigate({ href: pay, replace: true });
+    else await navigate({ ...startNavigation(target), replace: true });
+  };
+}
 
 export function StartScreen() {
-  const { data: session } = useSuspenseQuery(sessionOptions);
-  return session ? (
-    <SignedInStart session={session} />
-  ) : (
-    <Navigate to="/sign-in" />
-  );
-}
-function SignedInStart({ session }: { session: AuthSession }) {
+  const session = useSession();
   const query = useQuery(meOptions(session)),
     location = useLocation(),
     navigate = useNavigate();
+  const toRoot = useToRoot();
   const me = query.data;
   const search = continuationSearch(location.search);
-  useEffect(() => {
-    if (isFundedReturn(search.return))
-      rememberFundedPurchase(session.accountId, search);
-  }, [session.accountId, location.searchStr]);
+  const funded = useFunded();
+  const onward = useStartOnward();
   if (query.error && !me)
     return (
       <RouteError error={query.error} reset={() => void query.refetch()} />
     );
-  if (!me) return <LoadingScreen />;
-  // The same guard as route beforeLoad, re-applied whenever `/me` changes.
-  // While leaving /start (for example to practice), the location is already
-  // the destination; this screen must not redirect again.
-  const leaving = !/^\/start(\/|$)/.test(location.pathname);
-  const target =
-    nativeRuntime || leaving
-      ? null
-      : startDestination(
-          me,
-          location.pathname,
-          !!chosenPlan(),
-          isFundedReturn(search.return) ? search.return : false,
-        );
-  if (target)
-    return <Navigate {...startNavigation(target)} search={search} replace />;
-  if (!me.signedIn) return <Navigate to="/sign-in" />;
-  if (leaving) return <LoadingScreen />;
+  // Signed out while here, or leaving /start (for example to practice):
+  // the page is already on its way.
+  if (!me || !me.signedIn || !/^\/start(\/|$)/.test(location.pathname))
+    return <LoadingScreen />;
   const step = location.pathname;
   if (step === "/start/consent")
     return (
@@ -69,26 +81,21 @@ function SignedInStart({ session }: { session: AuthSession }) {
         <ParentConsentCenter
           token={session.token}
           identity={session.accountId}
-          onChanged={() => void invalidateAccount(session.accountId)}
+          onChanged={() =>
+            void invalidateAccount(session.accountId)
+              .then(onward)
+              .catch((error: unknown) =>
+                console.error("The next step after consent didn’t open", error),
+              )
+          }
           onClose={() => {
-            if (isFundedReturn(search.return)) {
+            if (funded) {
               forgetFundedPurchase(session.accountId);
-              void navigate({
-                to: "/",
-                search: {
-                  ...search,
-                  return: undefined,
-                  program: fundedPrograms[search.return].id,
-                },
-              });
-            } else
-              void navigate({
-                to:
-                  me.availableAccessGrant || search.return === "access"
-                    ? "/access"
-                    : "/",
-                search,
-              });
+              chooseProgram(fundedPrograms[funded].id);
+              toRoot();
+            } else if (me.availableAccessGrant || search.return === "access")
+              void navigate({ to: "/access" });
+            else toRoot();
           }}
         />
       </div>
@@ -96,16 +103,21 @@ function SignedInStart({ session }: { session: AuthSession }) {
   return (
     <PageFrame>
       {step === "/start/verify-email" ? (
-        <VerifyEmailStep session={session} me={me} />
-      ) : step === "/start/plan" ? (
-        <PlanStep session={session} />
-      ) : step === "/start/purchase" ? (
-        <PurchaseStep
-          session={session}
-          metaPermission={me.family.metaPurchaseMeasurement}
+        <VerifyEmailStep
+          me={me}
+          // The email's link comes back to this program's setup, on any
+          // device.
+          continueTo={
+            funded ? continuationUrl({ return: funded }, "/start") : undefined
+          }
+          onConfirmed={onward}
         />
+      ) : step === "/start/plan" ? (
+        <PlanStep />
+      ) : step === "/start/purchase" ? (
+        <PurchaseStep metaPermission={me.family.metaPurchaseMeasurement} />
       ) : (
-        <LearnerSteps session={session} me={me} />
+        <LearnerSteps me={me} />
       )}
     </PageFrame>
   );

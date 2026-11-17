@@ -3,7 +3,7 @@ import { z } from "zod";
 import type { AuthSession } from "../../auth";
 import { selectLearner } from "../../learner-store";
 import { request } from "../../lib/api";
-import { invalidateAccount, queryClient, refreshMe } from "../../lib/query";
+import { invalidateAccount, refreshMe } from "../../lib/query";
 import type { Persona } from "./activation";
 import { rememberPlace } from "./place-memory";
 import { setupSavesKey } from "./setup/kids-api";
@@ -32,7 +32,8 @@ export function deviceTimeZone() {
     return (
       Intl.DateTimeFormat().resolvedOptions().timeZone || "America/New_York"
     );
-  } catch {
+  } catch (error) {
+    console.warn("This device's time zone is unknown; using New York", error);
     return "America/New_York";
   }
 }
@@ -52,9 +53,7 @@ export function useStartPlace(session: AuthSession) {
       // family's class, which is its family side.
       rememberPlace(session.accountId, answer.as === "myself" ? "me" : "home");
       await refreshMe(session);
-      void queryClient.invalidateQueries({
-        queryKey: ["account", session.accountId],
-      });
+      void invalidateAccount(session.accountId);
       return started;
     },
   });

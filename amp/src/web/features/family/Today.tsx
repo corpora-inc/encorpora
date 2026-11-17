@@ -1,8 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import {
-  NO_PRACTICE_THIS_WEEK,
-  practiceMinutes,
-} from "../../lib/practice-minutes";
+import { practiceMinutes } from "../../lib/practice-minutes";
 import { fundingRecordsOptions } from "../funding/records";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
@@ -148,17 +145,21 @@ export function WeekFact({ child }: { child: FamilyChild }) {
   if (!week.lastPracticed)
     return <Fact value="Not started" label="no practice yet" />;
   const minutes = practiceMinutes(week.minutes, week.problems);
-  // Practiced before, not yet this week: the one quiet line.
+  // Practiced before, not yet this week: one quiet line, never "None".
   if (!minutes)
     return (
       <span className={styles.fact} data-week-quiet="">
-        <span className={styles.factLabel}>{NO_PRACTICE_THIS_WEEK}</span>
+        <span className={styles.factLabel}>No practice yet this week</span>
       </span>
     );
   return (
     <Fact
       value={minutes}
-      label={`${count(week.problems, "problem")} this week`}
+      label={
+        week.minutes > 0 || week.problems > 0
+          ? `${count(week.problems, "problem")} this week`
+          : "this week"
+      }
     />
   );
 }
@@ -611,7 +612,8 @@ export function FamilyTodayScreen() {
 
 /**
  * For all the kids at once (several children): the family's report cards,
- * once there is term work to report on, and printing their workbooks.
+ * once there is term work to report on, and the workbook print for them
+ * all (the family's workbooks address).
  * Nothing until one of them applies.
  */
 function ForAllKids({ place }: { place: ReturnType<typeof useFamilyPlace> }) {
@@ -630,7 +632,7 @@ function ForAllKids({ place }: { place: ReturnType<typeof useFamilyPlace> }) {
           className={buttonClass("secondary")}
           data-workbooks-several=""
         >
-          Print workbooks
+          Workbooks for all kids
         </Link>
       )}
     </ActionRow>

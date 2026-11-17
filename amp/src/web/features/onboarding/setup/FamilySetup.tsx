@@ -11,6 +11,7 @@ import { request } from "../../../lib/api";
 import { flush } from "../../../lib/analytics";
 import { AppError } from "../../../lib/AppError";
 import { meOptions, queryClient } from "../../../lib/query";
+import { useSession } from "../../../lib/session";
 import { chosenPlan } from "../../../lib/pending-trial";
 import { setHome } from "../../../lib/home-place";
 import { Button, buttonClass } from "../../../ui/Button";
@@ -27,6 +28,8 @@ import { setupOf } from "../guard";
 import { familyPlacesOptions } from "../../family/api";
 import { DevicesSheet } from "../../family/Devices";
 import { useFamilyPlaceOf } from "../../family/FamilyFrame";
+import { useSheet } from "../../../nav/sheet";
+import { payHref } from "../pay-link";
 import { StepFrame } from "./StepFrame";
 import { People } from "./PeopleRows";
 import { AddChildren, useChildrenEditor } from "../../family/AddChildren";
@@ -96,15 +99,8 @@ const useDraft = create<
 /** One step of a parent's or a tutor's setup. The URL is the step; the
  * route guard (`routeFor`) already sent any other address where it belongs,
  * so this only draws the step it names. */
-export function FamilySetup({
-  session,
-  kind,
-  step,
-}: {
-  session: AuthSession;
-  kind: SetupKind;
-  step: string;
-}) {
+export function FamilySetup({ kind, step }: { kind: SetupKind; step: string }) {
+  const session = useSession();
   const me = useQuery(meOptions(session)).data;
   // The handoff remounts setup with the child's session before navigating to
   // practice. That child's /me has no familyClass; it is not an incomplete
@@ -132,7 +128,7 @@ export function FamilySetup({
       </StepFrame>
     );
   const steps = setupSteps(kind, me);
-  const props = { session, me, kind, index, steps };
+  const props = { me, kind, index, steps };
   if (index === 0)
     return kind === "parent" ? (
       <ChildrenStep {...props} />
@@ -144,7 +140,6 @@ export function FamilySetup({
 }
 
 type StepProps = {
-  session: AuthSession;
   me: SignedInMe;
   kind: SetupKind;
   index: number;
@@ -163,7 +158,7 @@ function Frame({
   return <StepFrame href={(id) => stepUrl(kind, id)} {...rest} />;
 }
 
-const why = (failure: unknown, fallback: string) => {
+const reportSetupFailure = (failure: unknown, fallback: string) => {
   console.error(fallback, failure);
   return failure instanceof AppError && failure.message
     ? failure.message
@@ -219,7 +214,8 @@ function usePracticeHere(
  * in their name back out. What is typed but not yet saved is this screen's
  * own input, never a copy of the kids. */
 function ChildrenStep(props: StepProps) {
-  const { session, me, kind, index, steps } = props;
+  const { me, kind, index, steps } = props;
+  const session = useSession();
   useSetupView(props);
   const navigate = useNavigate();
   const practiceHere = usePracticeHere(session, kind, async () => {
@@ -266,9 +262,10 @@ function ChildrenStep(props: StepProps) {
       const first = kids[0]!;
       if (plan) {
         await navigate({
-          to: "/continue/$learnerId",
-          params: { learnerId: first.id },
-          search: { interval: plan },
+          href: await payHref(session, first.id, {
+            method: "card",
+            interval: plan,
+          }),
         });
         return;
       }
@@ -286,7 +283,10 @@ function ChildrenStep(props: StepProps) {
       await navigate({ to: nextUrl(props) as never });
     } catch (failure) {
       editor.setError(
-        why(failure, "That didn’t save. Check your connection and try again."),
+        reportSetupFailure(
+          failure,
+          "That didn’t save. Check your connection and try again.",
+        ),
       );
     } finally {
       setLeaving(false);
@@ -319,7 +319,8 @@ function ChildrenStep(props: StepProps) {
 /** Step one for a tutor: each student's nickname or initials and birth year.
  * Their own parent names them later, by a link from Today. */
 function StudentsStep(props: StepProps) {
-  const { session, me, kind, index, steps } = props;
+  const { me, kind, index, steps } = props;
+  const session = useSession();
   useSetupView(props);
   const navigate = useNavigate();
   const start = useStartPlace(session);
@@ -368,7 +369,10 @@ function StudentsStep(props: StepProps) {
       await navigate({ to: nextUrl(props) as never });
     } catch (failure) {
       setError(
-        why(failure, "That didn’t save. Check your connection and try again."),
+        reportSetupFailure(
+          failure,
+          "That didn’t save. Check your connection and try again.",
+        ),
       );
     } finally {
       setSaving(false);
@@ -448,7 +452,8 @@ function StudentsStep(props: StepProps) {
 /** How the children practice: handed this device, or on their own with the
  * class code and three pictures. Cards print a QR for each child. */
 function JoinStep(props: StepProps) {
-  const { session, me, kind, index, steps } = props;
+  const { me, kind, index, steps } = props;
+  const session = useSession();
   useSetupView(props);
   const place = me.familyClass!;
   const presence = useQuery(
@@ -524,14 +529,16 @@ function JoinStep(props: StepProps) {
  * they sign out), or Today for later. A tutor's in-flight setup ends on its
  * class's Today. */
 function ReadyStep(props: StepProps) {
-  const { session, me, kind, index, steps } = props;
+  const { me, kind, index, steps } = props;
+  const session = useSession();
   useSetupView(props);
   const place = me.familyClass!;
   const parent = kind === "parent";
   const children = parent ? me.learners : [];
   const [starting, setStarting] = useState<string | null>(null);
   const [error, setError] = useState("");
-  const [devices, setDevices] = useSearchFlag("devices");
+  // An opened sheet is a history entry: Back closes it, a reload keeps it.
+  const devices = useSheet("devices");
   const today = parent ? familyToday(place) : todayUrl(place);
   const practiceHere = usePracticeHere(session, kind, async () => today);
   const begin = async (learnerId: string) => {
@@ -540,7 +547,12 @@ function ReadyStep(props: StepProps) {
     try {
       await practiceHere(learnerId);
     } catch (failure) {
-      setError(why(failure, "Practice didn’t start. Try again in a moment."));
+      setError(
+        reportSetupFailure(
+          failure,
+          "Practice didn’t start. Try again in a moment.",
+        ),
+      );
       setStarting(null);
     }
   };
@@ -608,14 +620,13 @@ function ReadyStep(props: StepProps) {
           <RowButton
             title="On their own devices"
             data-own-devices=""
-            onClick={() => setDevices(true)}
+            onClick={devices.show}
           />
         </RowList>
         <SetupDevices
-          session={session}
           place={place}
-          open={devices}
-          onOpenChange={setDevices}
+          open={devices.open}
+          onOpenChange={devices.onOpenChange}
         />
         <Toast message={error} onDismiss={() => setError("")} />
       </Frame>
@@ -638,43 +649,18 @@ function ReadyStep(props: StepProps) {
   );
 }
 
-/** A boolean address key (`?devices=1`): an opened sheet is a history
- * entry, so Back closes it and a refresh keeps it open. */
-function useSearchFlag(key: string) {
-  const navigate = useNavigate();
-  const on = useLocation({
-    select: (location) => {
-      const value = (location.search as Record<string, unknown>)[key];
-      return value === 1 || value === "1";
-    },
-  });
-  const set = (open: boolean) =>
-    void navigate({
-      to: ".",
-      search: ((current: Record<string, unknown>) => {
-        const next = { ...current };
-        if (open) next[key] = 1;
-        else delete next[key];
-        return next;
-      }) as never,
-      replace: !open,
-    });
-  return [on, set] as const;
-}
-
 /** "Their own devices" from setup: the family's own sheet, for the family
  * this parent holds. */
 function SetupDevices({
-  session,
   place,
   open,
   onOpenChange,
 }: {
-  session: AuthSession;
   place: { orgId: string; classId: string; className: string };
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }) {
+  const session = useSession();
   const places = useQuery(familyPlacesOptions(session));
   const family =
     places.data?.families.find((entry) => entry.role === "holder")?.familyId ??
