@@ -440,7 +440,7 @@ async function teacherStarts(
   await practicing(page);
   check(
     `${label} straight into practice`,
-    path(page) === "/practice",
+    /^\/practice\/[^/]+$/.test(path(page)),
     path(page),
   );
   await settle(page, 600);
@@ -497,8 +497,9 @@ async function teacherStarts(
   // control pair: the same quiet action, size and weight.
   const pair = await page.evaluate(() => {
     const level = document.querySelector<HTMLElement>("[data-at-a-level]");
-    const report = [...document.querySelectorAll<HTMLElement>("main button")]
-      .find((button) => /Progress report/.test(button.textContent ?? ""));
+    const report = [
+      ...document.querySelectorAll<HTMLElement>("main button"),
+    ].find((button) => /Progress report/.test(button.textContent ?? ""));
     const look = (el: HTMLElement) => {
       const style = getComputedStyle(el);
       return {
@@ -534,7 +535,10 @@ async function teacherStarts(
   await practicing(page);
   await page.reload();
   await practicing(page);
-  check(`${label} reload keeps practice`, path(page) === "/practice");
+  check(
+    `${label} reload keeps practice`,
+    /^\/practice\/[^/]+$/.test(path(page)),
+  );
   await page.goto(`${origin}/me`);
   await heading(page, "Where you are");
   await page.reload();

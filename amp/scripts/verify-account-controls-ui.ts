@@ -515,14 +515,17 @@ try {
     await page.emulateMedia({ colorScheme: theme });
     await page.setViewportSize({ width: 390, height: 844 });
     // This screen set represents a new account: no learner or place yet.
-    for (const [path, heading] of [
-      ["/sign-in", "Sign in"],
-      ["/sign-up", "Create your account"],
-      ["/sign-in/forgot", "Reset your password"],
-      ["/start", "What brings you to AMP?"],
+    // Signed in, sign-in and sign-up need no second sign-in: one hop to the
+    // account's own place, which for a new account is its first question.
+    for (const [path, heading, lands] of [
+      ["/sign-in", "What brings you to AMP?", "/start"],
+      ["/sign-up", "What brings you to AMP?", "/start"],
+      ["/sign-in/forgot", "Reset your password", "/sign-in/forgot"],
+      ["/start", "What brings you to AMP?", "/start"],
     ]) {
       await page.goto(`${origin}${path}`);
       await page.getByRole("heading", { name: heading, exact: true }).waitFor();
+      assert.equal(new URL(page.url()).pathname, lands, `${path} lands`);
       await fits(page, `${path} ${theme}`);
       await page.screenshot({
         path: `${output}/screen-${path.replaceAll("/", "-")}-${theme}-390.png`,
