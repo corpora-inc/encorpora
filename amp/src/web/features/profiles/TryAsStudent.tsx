@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "@tanstack/react-router";
-import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
+import { useSession } from "../../lib/session";
 import { Button } from "../../ui/Button";
 import { Toast } from "../../ui/Toast";
 import { copiedLabel, useCopyStudent } from "./api";
@@ -10,15 +10,14 @@ import { practiceAs } from "./practice-mode";
  * of the reader's own, copied once from the student's levels now, then
  * practice as it. The student's own record never changes. */
 export function TryAsStudent({
-  session,
   personId,
   label = "Try problems as this student",
 }: {
-  session: AuthSession;
   personId: string;
   /** In the space's words: "Try problems as Maya" in a family. */
   label?: string;
 }) {
+  const session = useSession();
   const navigate = useNavigate();
   // Practicing as the student is a mode of this place: its way back, Back
   // and a refresh return here (practice-mode.ts).

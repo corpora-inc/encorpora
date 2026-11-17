@@ -313,8 +313,11 @@ async function adultTriesALevel(
   await page.goto(`${origin}/me`);
   await heading(page, "Where you are");
   const entry = await openDrawer(page);
-  await entry.getByRole("link", { name: "Profiles", exact: true }).click();
-  await heading(page, "Profiles");
+  // One entry per feature (#2384): Practice at a level opens its hub.
+  await entry
+    .getByRole("link", { name: "Practice at a level", exact: true })
+    .click();
+  await heading(page, "Practice at a level");
   await page.getByRole("link", { name: "New profile", exact: true }).click();
   await heading(page, "New profile");
   check(
@@ -521,8 +524,10 @@ async function adultTriesALevel(
 
   // The profiles page lists the saved mode and reopens it, then its levels.
   const again = await openDrawer(page);
-  await again.getByRole("link", { name: "Profiles", exact: true }).click();
-  await heading(page, "Profiles");
+  await again
+    .getByRole("link", { name: "Practice at a level", exact: true })
+    .click();
+  await heading(page, "Practice at a level");
   check(
     `${label} saved profiles offer practice, editing and a new level`,
     (await page

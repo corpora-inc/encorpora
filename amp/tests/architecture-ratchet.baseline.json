@@ -7,7 +7,7 @@
     "navigatingEffects": 3,
     "renderNavigate": 0,
     "silentCatches": 0,
-    "sessionProps": 1,
+    "sessionProps": 0,
     "sessionReads": 1,
     "inlineQueryKeys": 0,
     "nativeControls": 0
@@ -27,9 +27,7 @@
     },
     "renderNavigate": {},
     "silentCatches": {},
-    "sessionProps": {
-      "features/school/classes/StudentLayer.tsx": 1
-    },
+    "sessionProps": {},
     "sessionReads": {
       "app/LegacyApp.tsx": 1
     },
