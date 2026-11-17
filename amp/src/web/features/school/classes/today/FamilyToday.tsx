@@ -23,6 +23,7 @@ import { todoEntries, useChecks } from "./todo-entries";
 import styles from "./Today.module.css";
 import { useHandOver } from "./use-hand-over";
 import { WeekFacts } from "./WeekFacts";
+import { PayLink } from "../../../pay/link";
 
 type Learner = SignedInMe["learners"][number];
 /** Fewer free problems than this and Today says so. */
@@ -157,14 +158,13 @@ export function FamilyToday({
                 : `After those, continue with AMP to keep ${student.name} practicing.`,
             mark: left === 0 ? ("plain" as const) : ("check" as const),
             actions: (
-              <Link
-                to="/pay/$learnerId"
-                params={{ learnerId: learner.id }}
+              <PayLink
+                learnerId={learner.id}
                 className={buttonClass(left === 0 ? "primary" : "secondary")}
                 onClick={() => remember(learner.id)}
               >
                 Continue with AMP
-              </Link>
+              </PayLink>
             ),
           },
         ];

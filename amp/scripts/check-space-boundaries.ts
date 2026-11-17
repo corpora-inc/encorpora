@@ -60,6 +60,12 @@ const WORDS = "features/spaces/words.ts";
 
 /** Named exceptions: importer → the composition module it may import, why. */
 export const ALLOWED: Record<string, [string, string][]> = {
+  "features/pay/address.ts": [
+    [
+      "features/spaces/learner-urls.ts",
+      "which family a learner's own page is in (childFamily), read from /me: where paying for them opens, no place, no space, no words",
+    ],
+  ],
   "features/pay/store.ts": [
     [
       "features/spaces/returns.ts",

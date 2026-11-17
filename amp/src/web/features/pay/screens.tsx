@@ -1,19 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useParams } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { licenseSummary } from "../../family-access";
 import { Button, buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
-import { Page } from "../../ui/Page";
-import { PageHeader } from "../../ui/PageHeader";
+import { Sheet } from "../../ui/Sheet";
 import { Toast } from "../../ui/Toast";
 import { useClaimEnrollment } from "../billing";
-import { childFamily } from "../spaces/learner-urls";
-import type { SignedInMe } from "../../../account/contracts";
+import { payAddress } from "./address";
 import { fundingOffersOptions, fundingPrograms, fundingRequestOptions } from "./api";
 import { CardDone, useCardOutcome } from "./CardDone";
 import { CardPanel } from "./CardPanel";
-import { usePay, usePayState, type PayContext, type PayLearner } from "./context";
+import { usePay, usePayClose, usePayState, type PayContext, type PayLearner } from "./context";
 import { EsaPanel, InvoiceDone, invoiceGivesAccess, RowsSkeleton } from "./EsaPanel";
 import { forWhom, whoName } from "./paths";
 import { MethodTabs, useMethod } from "./PlanPicker";
@@ -21,102 +19,80 @@ import { usePayStore } from "./store";
 import styles from "./Pay.module.css";
 
 /*
- * The pay flow's screens (paths.ts has the map). Each is one Page at the
- * standard width under one PageHeader: "‹ Back" up to the learner's page,
- * the title, and who it is for. The choosing screen's header never changes
- * between its tabs, so switching never moves anything.
+ * Paying is an overlay over the screen it was opened from (address.ts): the
+ * shared Sheet, beside that screen on a wide screen, over it on a phone.
+ * There is no Back: the cross, Escape or the scrim close it, to exactly the
+ * screen behind. Its title says what is happening and who it is for; only
+ * the body changes. The method tab and the education-funds step are state
+ * in the pay store, never an address or a history entry.
  */
-
-type Target = { to: string; params?: Record<string, string> };
-
-/** The learner's own page: the pay screens' parent, where "‹ Back" goes up
- * to and paying ends (founder, 2026-11-16: up, never a browser Back). A
- * child's page is in their family, the adult's is their own record, a
- * practice profile's the profiles; read from the account itself. */
-export function learnerPage(
-  me: SignedInMe | null,
-  learner: PayLearner | undefined,
-): Target {
-  if (!me || !learner) return { to: "/family" };
-  if (learner.simulation) return { to: "/me/profiles" };
-  if (learner.adult) return { to: "/me" };
-  const family = childFamily(me, learner.id);
-  return family
-    ? {
-        to: "/family/$family/kids/$learner",
-        params: { family, learner: learner.id },
-      }
-    : { to: "/family" };
-}
-/** The same page as an address. */
-export const targetHref = (target: Target) =>
-  Object.entries(target.params ?? {}).reduce(
-    (href, [key, value]) => href.replace(`$${key}`, encodeURIComponent(value)),
-    target.to,
-  );
 
 const hasFull = (learner: PayLearner) =>
   `${whoName(learner)} ${learner.adult ? "have" : "has"} full access`;
 
-/** A pay screen: its header, then its body once the account and learner
- * are known (the header keeps its place while they load). */
-function PayFrame({
+/** The overlay: its title, then its body once the account and learner are
+ * known (the sheet is its full height from the start, so nothing moves). */
+function PayOverlay({
   title,
   screen,
   children,
 }: {
-  title: ReactNode | ((context: PayContext) => ReactNode);
+  title: (context: PayContext) => string;
   screen: string;
   children: () => ReactNode;
 }) {
+  const close = usePayClose();
   const { me, account, learner, ready } = usePayState();
   return (
-    <Page width="standard" className={styles.step} data-pay={screen}>
-      <PageHeader
-        // Up to an explicit parent, the learner's page, never a browser
-        // Back (founder, 2026-11-16).
-        back={learnerPage(account, learner)}
-        title={typeof title === "function" ? (ready ? title(ready) : " ") : title}
-        subtitle={learner ? forWhom(learner) : " "}
-      />
-      {ready ? (
-        children()
-      ) : me.error && !account ? (
-        <EmptyState
-          title="This didn’t load"
-          action={
-            <Button variant="primary" onClick={() => void me.refetch()}>
-              Try again
-            </Button>
-          }
-        >
-          Check your connection, then try again.
-        </EmptyState>
-      ) : account && !learner ? (
-        <EmptyState
-          title="This learner isn’t in your account"
-          action={
-            <Link to="/account/billing" className={buttonClass("primary")}>
-              Open billing
-            </Link>
-          }
-        >
-          Billing lists each of your learners and their plans.
-        </EmptyState>
-      ) : (
-        <RowsSkeleton rows={3} />
-      )}
-    </Page>
+    <Sheet
+      open
+      tall
+      onOpenChange={(open) => {
+        if (!open) close();
+      }}
+      title={ready ? title(ready) : " "}
+      description={learner ? forWhom(learner) : " "}
+    >
+      <div className={styles.overlay} data-pay={screen}>
+        {ready ? (
+          children()
+        ) : me.error && !account ? (
+          <EmptyState
+            title="This didn’t load"
+            action={
+              <Button variant="primary" onClick={() => void me.refetch()}>
+                Try again
+              </Button>
+            }
+          >
+            Check your connection, then try again.
+          </EmptyState>
+        ) : account && !learner ? (
+          <EmptyState
+            title="This learner isn’t in your account"
+            action={
+              <Link to="/account/billing" className={buttonClass("primary")}>
+                Open billing
+              </Link>
+            }
+          >
+            Billing lists each of your learners and their plans.
+          </EmptyState>
+        ) : (
+          <RowsSkeleton rows={3} />
+        )}
+      </div>
+    </Sheet>
   );
 }
 
-/* ---------- /pay/<learner>: choose ---------- */
+/* ---------- …/pay: choose ---------- */
 
 export function PayScreen() {
   return (
-    <PayFrame title="Choose your plan" screen="choose">
+    <PayOverlay title={() => "Choose your plan"} screen="choose">
       {() => <Choose />}
-    </PayFrame>
+    </PayOverlay>
   );
 }
 
@@ -128,7 +104,7 @@ function Choose() {
 }
 
 /**
- * The two ways to pay as tabs of this one screen. Both panels are drawn in
+ * The two ways to pay as tabs of this one overlay. Both panels are drawn in
  * the same place, the one not chosen hidden, so the area is always the
  * taller one's height and switching moves nothing.
  */
@@ -171,6 +147,7 @@ function Methods() {
 
 function HasAccess() {
   const { learner } = usePay();
+  const close = usePayClose();
   const access = licenseSummary(learner.access);
   return (
     <div className={styles.panel}>
@@ -182,9 +159,9 @@ function HasAccess() {
           : `${hasFull(learner)}.`}
       </p>
       <div className={styles.actions}>
-        <Link to="/account/billing" className={buttonClass("primary")}>
-          View billing
-        </Link>
+        <Button variant="primary" onClick={close}>
+          Done
+        </Button>
       </div>
     </div>
   );
@@ -225,48 +202,44 @@ function UsePaidPlan({ purchaseId }: { purchaseId: string }) {
   );
 }
 
-/* ---------- /pay/<learner>/card/done ---------- */
+/* ---------- …/pay/done: back from Stripe ---------- */
 
 export function PayCardDoneScreen() {
   return (
-    <PayFrame
+    <PayOverlay
       title={({ learner }) => (learner.hasAccess ? hasFull(learner) : "Confirming your payment")}
       screen="card-done"
     >
       {() => <CardDoneBody />}
-    </PayFrame>
+    </PayOverlay>
   );
 }
 function CardDoneBody() {
   const { session, me, learner } = usePay();
   const { outcome, retry } = useCardOutcome(session, me, learner);
-  return (
-    <CardDone
-      session={session}
-      learner={learner}
-      outcome={outcome}
-      retry={retry}
-      done={targetHref(learnerPage(me, learner))}
-    />
-  );
+  return <CardDone session={session} learner={learner} outcome={outcome} retry={retry} />;
 }
 
-/* ---------- /pay/<learner>/invoice/<invoice> ---------- */
+/* ---------- …/pay/invoice/<invoice> ---------- */
 
 export function PayInvoiceScreen() {
-  const { invoiceId } = useParams({ strict: false }) as { invoiceId: string };
+  const pathname = useLocation({ select: (location) => location.pathname });
+  const address = payAddress(pathname);
+  const invoiceId = address?.view.kind === "invoice" ? address.view.invoiceId : "";
+  // The title follows the same cached record the body reads.
+  const { session } = usePayState();
+  const record = useQuery({
+    ...fundingRequestOptions(session ?? { accountId: "", token: "" }, invoiceId),
+    enabled: !!session && !!invoiceId,
+  }).data;
   return (
-    <PayFrame
-      title={(context) => <InvoiceHeading {...context} invoiceId={invoiceId} />}
+    <PayOverlay
+      title={({ learner }) =>
+        invoiceGivesAccess(record, learner) ? `${hasFull(learner)} now` : "Your invoice is ready"
+      }
       screen="invoice"
     >
       {() => <InvoiceDone invoiceId={invoiceId} />}
-    </PayFrame>
+    </PayOverlay>
   );
-}
-/** "August has full access now", once the invoice's access is live: the
- * same cached answer the body reads. */
-function InvoiceHeading({ session, learner, invoiceId }: PayContext & { invoiceId: string }) {
-  const record = useQuery(fundingRequestOptions(session, invoiceId)).data;
-  return invoiceGivesAccess(record, learner) ? `${hasFull(learner)} now` : "Your invoice is ready";
 }

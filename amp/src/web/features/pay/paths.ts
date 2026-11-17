@@ -1,25 +1,8 @@
+import { learnerOrigin, payOver } from "./address";
 import type { SignedInMe } from "../../../account/contracts";
 
-/*
- * The pay flow's addresses (docs/architecture/web-app.md, "Pay"). A path
- * names a screen and the learner (or invoice) it is about; nothing else
- * rides in the address. The method tab, the plan and the program are
- * choices on one screen, kept in the pay store (store.ts).
- *
- *   /pay/<learner>                    choose: Card | Education funds
- *   /pay/<learner>/card/done          back from Stripe: the confirmation
- *   /pay/<learner>/invoice/<invoice>  the invoice: access, PDF, how to submit
- */
-
-export function payPath(learnerId: string) {
-  return `/pay/${encodeURIComponent(learnerId)}`;
-}
-export function cardDonePath(learnerId: string) {
-  return `${payPath(learnerId)}/card/done`;
-}
-export function invoicePath(learnerId: string, invoiceId: string) {
-  return `${payPath(learnerId)}/invoice/${encodeURIComponent(invoiceId)}`;
-}
+/* Who a pay overlay is for, and where an older pay address goes. The
+   overlay's own addresses are address.ts's. */
 
 type Learner = SignedInMe["family"]["learners"][number];
 
@@ -76,10 +59,10 @@ export function whoName(learner: Pick<Learner, "adult" | "name">) {
 }
 
 /**
- * Where an old pay address goes, in one hop (the legacy redirects in
- * app/pay-routes.tsx): the learner it named (or the account's only one),
- * whose choices the hop seeds; with no learner to name, Billing, which
- * lists each learner's "Choose a plan".
+ * Where an old pay address goes, in one hop (app/pay-routes.tsx): the pay
+ * overlay of the learner it named (or the account's only one), over their
+ * own page; with no learner to name, Billing, which lists each learner's
+ * "Choose a plan".
  */
 export function legacyPayTarget(
   me: SignedInMe,
@@ -88,6 +71,6 @@ export function legacyPayTarget(
   const named = learner ? payLearnerFor(me, learner) : undefined;
   const target = named ?? onlyPayableLearner(me);
   return target
-    ? { href: payPath(target.id), learnerId: target.id }
+    ? { href: payOver(learnerOrigin(me, target.id), target.id), learnerId: target.id }
     : { href: "/account/billing" };
 }

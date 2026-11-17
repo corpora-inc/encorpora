@@ -86,7 +86,7 @@ import { secondParentOptions } from "../features/second-parent/api";
 import { classYearOptions } from "../features/school/org/org-api";
 import { frameData, schoolRoutes, staffScreen } from "./school-routes";
 import { familyRoutes } from "./family-routes";
-import { payRoutes } from "./pay-routes";
+import { payOverlays, payRoutes } from "./pay-routes";
 import { appReturn, RETURN_LIMIT } from "../features/spaces/returns";
 import { toFamilyAddress } from "./family-redirect";
 import { loadCurriculum, loadScope } from "../features/schools/api";
@@ -1034,9 +1034,11 @@ const billingPage = createRoute({
         await import("../features/account/billing-prefetch")
       ).prefetchBilling(session);
   },
+  // Billing, and the pay overlay its "Choose a plan" opens over it
+  // (`pay/<learner>`, features/pay): Billing stays mounted behind.
   component: lazyRouteComponent(
-    () => import("../features/account/BillingPage"),
-    "BillingPage",
+    () => import("../features/pay/hosts"),
+    "BillingPayHost",
   ),
 });
 const billingPurchasesAlias = createRoute({
@@ -1872,7 +1874,7 @@ export const router = createRouter({
     workbookHistory,
     workbookDay,
     workbookResults,
-    billingPage,
+    billingPage.addChildren([...payOverlays(billingPage, "pay/$learner")]),
     billingPurchasesAlias,
     billingRecordsAlias,
     invoiceArkansas,

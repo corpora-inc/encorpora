@@ -451,6 +451,12 @@ const ROUTES_PHASE_2: Record<string, string> = {
 /** Route screens that never will: another product's frame, or a
  * development tool. */
 const ROUTES_EXEMPT: Record<string, string> = {
+  "features/pay/hosts.tsx#ChildPayHost":
+    "a child's page (ChildScreen renders Page) with the pay overlay's outlet over it",
+  "features/pay/hosts.tsx#TodayPayHost":
+    "the family's Today (it renders Page) with the pay overlay's outlet over it",
+  "features/pay/hosts.tsx#BillingPayHost":
+    "Billing (it renders Page) with the pay overlay's outlet over it",
   "features/pitch/PitchScreen.tsx#PitchScreen":
     "the signed-out pitch: a marketing page with its own art direction",
   "features/schools/index.ts#SchoolsScreen":
@@ -665,8 +671,6 @@ test("every route's screen renders Page, or is listed with its reason", () => {
 /** Functions that compute a parent from canonical state: one per entity
  * they are called for, several across entities. */
 const PARENT_RESOLVERS: Record<string, string> = {
-  "features/pay/screens.tsx#learnerPage":
-    "one parent per learner, their own page: a child's in their family, the adult's /me, a profile's list",
   "features/family/RecordLinks.tsx#useFamilyRecordBack":
     "one parent per record: a child's page goes to Today; practice time, report cards and workbooks to Progress (with one child, that child's page)",
 };

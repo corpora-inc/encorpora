@@ -20,6 +20,7 @@ import { Page } from "../../ui/Page";
 import { PageHeader } from "../../ui/PageHeader";
 import { PageSection } from "../../ui/PageSection";
 import styles from "./BillingPage.module.css";
+import { PayLink } from "../pay/link";
 
 export function BillingPage() {
   const { data: session } = useSuspenseQuery(sessionOptions);
@@ -136,9 +137,8 @@ function Billing({ session }: { session: AuthSession }) {
                         </p>
                       </div>
                       {access.kind === "none" && !learner.deletedAt ? (
-                        <Link
-                          to="/pay/$learnerId"
-                          params={{ learnerId: learner.id }}
+                        <PayLink
+                          learnerId={learner.id}
                           className={buttonClass("primary")}
                           onClick={() =>
                             rememberContinuation({
@@ -149,7 +149,7 @@ function Billing({ session }: { session: AuthSession }) {
                           }
                         >
                           Choose a plan
-                        </Link>
+                        </PayLink>
                       ) : learner.access.length > 1 ? (
                         <Button
                           variant="quiet"

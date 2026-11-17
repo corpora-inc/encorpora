@@ -11,13 +11,13 @@ import { nativeRuntime } from "../native-runtime";
 import type { LegacyHop } from "../features/pay/legacy";
 
 /*
- * The pay flow (features/pay/paths.ts has the map): one route family keyed
- * by the learner. Its only redirects are the auth gate and one hop from
- * each older pay address (docs/architecture/web-app.md, "Pay"): what an old
- * address carried (a plan, a program) is written into the pay store on the
- * way through and never read from the address again. The hops' logic, like
- * the screens, loads only when a pay address is opened, never with the
- * app's entry (features/pay/legacy.ts).
+ * Paying is an overlay nested under the screen it was opened from
+ * (features/pay/address.ts): a child's page, the family's Today, Billing.
+ * Its only redirects are the auth gate and one hop from each older pay
+ * address (docs/architecture/web-app.md, "Pay"): what an old address
+ * carried (a plan, a program) is written into the pay store on the way
+ * through and never read from the address again. The hops' logic, like the
+ * overlay, loads only when it is opened, never with the app's entry.
  */
 
 /** Pay screens are a signed-in adult's, on the web: a school student's
@@ -29,25 +29,45 @@ async function payGate() {
   if (!session) throw redirect({ to: "/sign-in" });
 }
 
-/** Typed by the root it hangs from, so `to="/pay/$learnerId"` is checked. */
-export function payRoutes<Root extends AnyRoute>(root: Root) {
-  const screens = () => import("../features/pay/screens");
-  const screen = <Path extends string>(path: Path, name: string) =>
+const screens = () => import("../features/pay/screens");
+
+/**
+ * A pay overlay's routes under the screen it opens over (its host, which
+ * renders that screen and an outlet): an empty index (the screen alone),
+ * then `<at>` (choose), `<at>/done` (back from Stripe) and
+ * `<at>/invoice/$invoiceId` (the invoice made). `at` is `pay` under a
+ * child's own page and `pay/$learner` elsewhere (features/pay/address.ts).
+ */
+export function payOverlays<Parent extends AnyRoute>(
+  parent: Parent,
+  at: "pay" | "pay/$learner",
+) {
+  const overlay = <Path extends string>(path: Path, name: string) =>
     createRoute({
-      getParentRoute: () => root,
+      getParentRoute: () => parent,
       path,
-      staticData: { space: "account" },
       beforeLoad: payGate,
-      loader: async ({ params }: { params: { learnerId?: string } }) => {
+      loader: async ({ params }: { params: { learner?: string } }) => {
         const session = queryClient.getQueryData(sessionOptions.queryKey);
-        if (session && params.learnerId)
+        if (session && params.learner)
           await (await import("../features/pay/prefetch")).prefetchPay(
             session,
-            params.learnerId,
+            params.learner,
           );
       },
       component: lazyRouteComponent(screens, name as never),
     });
+  return [
+    createRoute({ getParentRoute: () => parent, path: "/" }),
+    overlay(at, "PayScreen"),
+    overlay(`${at}/done`, "PayCardDoneScreen"),
+    overlay(`${at}/invoice/$invoiceId`, "PayInvoiceScreen"),
+  ] as const;
+}
+
+/** The older pay addresses, each one hop to a pay overlay. Typed by the
+ * root they hang from. */
+export function payRoutes<Root extends AnyRoute>(root: Root) {
   const legacy = <Path extends string>(path: Path, hop: LegacyHop) =>
     createRoute({
       getParentRoute: () => root,
@@ -67,11 +87,10 @@ export function payRoutes<Root extends AnyRoute>(root: Root) {
       },
     });
   return [
-    screen("/pay/$learnerId", "PayScreen"),
-    screen("/pay/$learnerId/card/done", "PayCardDoneScreen"),
-    screen("/pay/$learnerId/invoice/$invoiceId", "PayInvoiceScreen"),
-    // "Continue with AMP" for one learner (2026-11): its flow.
+    // "Continue with AMP" for one learner (2026-11), and the pay screen of
+    // its own address for a day: the overlay over the learner's page.
     legacy("/continue/$learnerId", "continue"),
+    legacy("/pay/$learnerId", "continue"),
     // The card plan, and the return address of an older learner checkout.
     legacy("/purchase/annual", "card"),
     legacy("/purchase/choose", "choose"),

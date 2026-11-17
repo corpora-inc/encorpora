@@ -10,8 +10,8 @@ import { AppError } from "../../lib/AppError";
 import { nativeRuntime } from "../../native-runtime";
 import { keepaliveFetch } from "../../lib/keepalive";
 
-/** Only the payment confirmations call this (`/start/purchase`, and a
- * learner's `/pay/<learner>/card/done`). A local request,
+/** Only the payment confirmations call this (`/start/purchase`, and a pay
+ * overlay's `…/pay/done`, features/pay/address.ts). A local request,
  * never a Meta browser SDK; server-owned payment evidence is authoritative. */
 export function useMetaPurchaseContext(
   session: AuthSession,
@@ -33,7 +33,7 @@ export function useMetaPurchaseContext(
       phase !== "paid" ||
       returned !== "processing" ||
       returnedFrom !== checkoutId ||
-      !/^\/(?:start\/purchase|pay\/[^/]+\/card\/done)$/.test(
+      !/^\/start\/purchase$|\/pay(?:\/[^/]+)?\/done$/.test(
         location.pathname,
       ) ||
       (navigator as Navigator & { globalPrivacyControl?: boolean })

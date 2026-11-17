@@ -2,8 +2,12 @@
    from Page and PageHeader; this sets only each step's body. Every rule
    sets its element fully: legacy element rules (style.css, theme.css) style
    bare paragraphs, lists and buttons. */
-.step {
-  gap: var(--page-gap);
+/* The overlay's body (screens.tsx, in the shared Sheet): its sections
+   stacked at one rhythm. */
+.overlay {
+  display: grid;
+  gap: var(--space-5);
+  min-width: 0;
 }
 .panel,
 .lead,
@@ -164,22 +168,6 @@
 .panelArea[data-active="false"] {
   visibility: hidden;
 }
-/* The education-funds tab's groups. */
-.group.group {
-  display: grid;
-  gap: var(--space-3);
-  min-width: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-.legend.legend {
-  padding: 0;
-  color: var(--color-on-surface);
-  font-size: var(--text-label);
-  font-weight: 650;
-  line-height: 1.3;
-}
 /* A program's tile: its short name over its status line, left-aligned and
    wrapping, every tile the height of the tallest. */
 .programs > button {
@@ -202,4 +190,67 @@
   font-size: var(--text-small);
   font-weight: 400;
   line-height: 1.4;
+}
+/* The education-funds steps: a stepper, then the step. */
+.wizard {
+  display: grid;
+  gap: var(--space-5);
+  min-width: 0;
+}
+.stepper.stepper {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.stepButton.stepButton {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  min-height: var(--target-min);
+  padding: 0 var(--space-2);
+  border: 0;
+  border-bottom: 2px solid var(--color-border);
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-muted-text);
+  font: inherit;
+  font-size: var(--text-label);
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.stepButton:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+.stepButton[data-done] {
+  color: var(--color-on-surface);
+}
+.stepButton[aria-current="step"] {
+  border-bottom-color: var(--color-primary);
+  color: var(--color-on-surface);
+}
+.stepButton:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.stepNumber {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 1.5em;
+  height: 1.5em;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: var(--text-small);
+  font-variant-numeric: tabular-nums;
+}
+.stepButton[aria-current="step"] .stepNumber {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
 }

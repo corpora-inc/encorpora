@@ -11,7 +11,7 @@ import { enrollmentOptions, useClaimEnrollment } from "../billing";
 import { useMetaPurchaseContext } from "../privacy/useMetaPurchaseContext";
 import { purchaseStatusOptions } from "./api";
 import { checkoutKind, Panel } from "./CardPanel";
-import { payPath } from "./paths";
+import { usePayAddress, usePayClose } from "./context";
 import type { PayLearner } from "./context";
 import { usePayStore, useCheckoutReturn, type CheckoutKind } from "./store";
 import styles from "./Pay.module.css";
@@ -122,17 +122,16 @@ export function CardDone({
   learner,
   outcome,
   retry,
-  done,
 }: {
   session: AuthSession;
   learner: Learner;
   outcome: CardOutcome;
   retry: () => void;
-  /** Where "Continue" goes: the learner's page. */
-  done: string;
 }) {
   const open = usePayStore((state) => state.open);
   const choose = usePayStore((state) => state.choose);
+  const { origin, base } = usePayAddress();
+  const close = usePayClose();
   if (outcome.state === "active")
     return (
       <div className={styles.panel}>
@@ -140,24 +139,21 @@ export function CardDone({
           Payment received. A receipt is in your email and in Billing.
         </p>
         <div className={styles.actions}>
-          <Link
-            to={done as never}
-            className={buttonClass("primary")}
+          <Button
+            variant="primary"
             // What remains is the optional name (AfterPurchase), offered
-            // on the screen this returns to.
-            onClick={() =>
+            // on the screen behind, which this closes to.
+            onClick={() => {
               open(session.accountId, {
                 learnerId: learner.id,
-                returnTo: done,
+                returnTo: origin,
                 stage: "naming",
-              })
-            }
+              });
+              close();
+            }}
           >
-            Continue
-          </Link>
-          <Link to="/account/billing" className={buttonClass("quiet")}>
-            View billing
-          </Link>
+            Done
+          </Button>
         </div>
       </div>
     );
@@ -167,7 +163,8 @@ export function CardDone({
         text="Payment isn’t complete yet. Nothing was charged."
         action={
           <Link
-            to={payPath(learner.id) as never}
+            to={base as never}
+            replace
             className={buttonClass("primary")}
             onClick={() => choose(session.accountId, learner.id, { method: "card" })}
           >

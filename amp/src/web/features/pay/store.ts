@@ -18,10 +18,14 @@ export type CheckoutKind = "learner" | "enrollment";
 
 export type PayMethod = "card" | "esa";
 
+export type EsaStep = "program" | "plan" | "name";
+
 /** What one learner's flow has chosen. */
 export type LearnerChoice = {
   /** The tab: card, or education funds. */
   method?: PayMethod;
+  /** The education-funds step shown (its stepper). */
+  esaStep?: EsaStep;
   interval?: PayInterval;
   /** The education-funds program (`programId`, e.g. `az-esa`). */
   program?: string;
@@ -43,6 +47,8 @@ export type Opener = {
 export type OpenCheckout = {
   learnerId: string;
   kind: CheckoutKind;
+  /** The overlay it was opened from (address.ts), where the return lands. */
+  base: string;
   savedAt: number;
 };
 

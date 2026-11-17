@@ -8,6 +8,9 @@ import { payState, usePayStore } from "../store";
    the pay store with what it carried; the new addresses carry nothing. */
 
 const session = { accountId: "parent-1", token: "fixture-session" };
+const FAMILY = "fam-1";
+/** August's pay overlay over his own page. */
+const OVER_AUGUST = `/family/${FAMILY}/kids/august/pay`;
 const child = (id: string, name: string, extra = {}) => ({
   id,
   name,
@@ -21,7 +24,15 @@ const family = (learners: ReturnType<typeof child>[]): SignedInMe => ({
   signedIn: true,
   account: { id: session.accountId, email: "parent@example.test", emailVerified: true },
   consent: { status: "none", method: null },
-  learners: [],
+  learners: learners
+    .filter((entry) => !("simulation" in entry))
+    .map((entry) => ({
+      id: entry.id,
+      name: entry.name,
+      birthYear: 2017,
+      entitlement: { active: true, plan: null, endsAt: null },
+    })),
+  familyClass: { orgId: FAMILY, classId: "class-1", className: "Family", notice: false },
   family: {
     consent: { status: "not-recorded", policyVersion: null, recordedAt: null, withdrawnAt: null },
     learners,
@@ -110,24 +121,28 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 
-test("the new pay addresses carry no query and validate none", () => {
-  for (const id of [
-    "/pay/$learnerId",
-    "/pay/$learnerId/card/done",
-    "/pay/$learnerId/invoice/$invoiceId",
+test("the pay overlays hang under their screens and carry no query", () => {
+  for (const path of [
+    "/family/$family/kids/$learner/pay",
+    "/family/$family/kids/$learner/pay/done",
+    "/family/$family/kids/$learner/pay/invoice/$invoiceId",
+    "/family/$family/pay/$learner",
+    "/family/$family/pay/$learner/done",
+    "/family/$family/pay/$learner/invoice/$invoiceId",
+    "/account/billing/pay/$learner",
+    "/account/billing/pay/$learner/done",
+    "/account/billing/pay/$learner/invoice/$invoiceId",
   ]) {
-    const route = router.routesById[id as keyof typeof router.routesById] as {
-      options: { validateSearch?: unknown };
-    };
-    expect(route, id).toBeTruthy();
-    expect(route.options.validateSearch, id).toBeUndefined();
+    const route = (router.routesByPath as Record<string, { options: { validateSearch?: unknown } }>)[path];
+    expect(route, path).toBeTruthy();
+    expect(route!.options.validateSearch, path).toBeUndefined();
   }
 });
 
 test("/continue/<learner>?interval= opens that learner's pay screen on the card tab, plan kept", async () => {
   expect(
     await hop("/continue/$learnerId", { interval: "month" }, { learnerId: "august" }),
-  ).toMatchObject({ href: "/pay/august", replace: true });
+  ).toMatchObject({ href: OVER_AUGUST, replace: true });
   expect(payState(session.accountId).learners.august).toEqual({
     method: "card",
     interval: "month",
@@ -142,13 +157,13 @@ test("/continue for a practice profile opens the paused child's", async () => {
   queryClient.setQueryData(meOptions(session).queryKey, me);
   expect(
     await hop("/continue/$learnerId", {}, { learnerId: "profile" }),
-  ).toMatchObject({ href: "/pay/august" });
+  ).toMatchObject({ href: OVER_AUGUST });
 });
 
 test("/purchase/funded?learner=&program=&interval= opens the education-funds tab with them", async () => {
   expect(
     await hop("/purchase/funded", { learner: "august", program: "az-esa", interval: "month" }),
-  ).toMatchObject({ href: "/pay/august" });
+  ).toMatchObject({ href: OVER_AUGUST });
   expect(payState(session.accountId).learners.august).toEqual({
     method: "esa",
     program: "az-esa",
@@ -159,7 +174,7 @@ test("/purchase/funded?learner=&program=&interval= opens the education-funds tab
 test("an old offer link names its program and plan", async () => {
   expect(
     await hop("/purchase/funded", { offer: "az-esa-monthly-invoice" }),
-  ).toMatchObject({ href: "/pay/august" });
+  ).toMatchObject({ href: OVER_AUGUST });
   expect(payState(session.accountId).learners.august).toEqual({
     method: "esa",
     program: "az-esa",
@@ -168,7 +183,7 @@ test("an old offer link names its program and plan", async () => {
 });
 
 test("a program's entry opens its tab for the account's one learner", async () => {
-  expect(await hop("/purchase/arizona-esa")).toMatchObject({ href: "/pay/august" });
+  expect(await hop("/purchase/arizona-esa")).toMatchObject({ href: OVER_AUGUST });
   expect(payState(session.accountId).learners.august).toMatchObject({
     method: "esa",
     program: "az-esa",
@@ -200,7 +215,7 @@ test("Stripe's learner-checkout return resolves its learner once and lands on a 
   const purchase = "1dc64558-2238-45a4-bafb-3e9fc53d5517";
   expect(
     await hop("/purchase/annual", { billing: "processing", purchase }),
-  ).toMatchObject({ href: "/pay/august/card/done" });
+  ).toMatchObject({ href: `${OVER_AUGUST}/done` });
   expect(payState(session.accountId).returned).toMatchObject({
     learnerId: "august",
     kind: "learner",
@@ -212,25 +227,36 @@ test("leaving Stripe returns to the plan on the card tab", async () => {
   const purchase = "1dc64558-2238-45a4-bafb-3e9fc53d5517";
   expect(
     await hop("/purchase/annual", { billing: "canceled", purchase }),
-  ).toMatchObject({ href: "/pay/august" });
+  ).toMatchObject({ href: OVER_AUGUST });
   expect(payState(session.accountId).learners.august).toEqual({ method: "card" });
 });
 
-test("an enrollment checkout from the pay screen returns to that learner's confirmation", async () => {
-  usePayStore
-    .getState()
-    .checkoutOpened(session.accountId, { learnerId: "august", kind: "enrollment" });
+test("an enrollment checkout returns to the overlay it was opened from, on its confirmation", async () => {
+  usePayStore.getState().checkoutOpened(session.accountId, {
+    learnerId: "august",
+    kind: "enrollment",
+    base: `/account/billing/pay/august`,
+  });
   expect(
     await hop("/start/purchase", {
       billing: "processing",
       purchase: "1dc64558-2238-45a4-bafb-3e9fc53d5517",
     }),
-  ).toMatchObject({ href: "/pay/august/card/done" });
+  ).toMatchObject({ href: "/account/billing/pay/august/done" });
 });
 
-test("pay screens need a signed-in adult: signed out, one hop to sign in", async () => {
-  queryClient.setQueryData(sessionOptions.queryKey, null);
+test("the pay address of a day ago opens the overlay over the learner's page", async () => {
   expect(await hop("/pay/$learnerId", {}, { learnerId: "august" })).toMatchObject({
-    to: "/sign-in",
+    href: OVER_AUGUST,
+  });
+});
+
+test("an overlay needs a signed-in adult: signed out, one hop to sign in", async () => {
+  queryClient.setQueryData(sessionOptions.queryKey, null);
+  const route = (router.routesByPath as Record<string, { options: { beforeLoad: () => Promise<unknown> } }>)[
+    "/family/$family/kids/$learner/pay"
+  ]!;
+  await expect(route.options.beforeLoad()).rejects.toMatchObject({
+    options: { to: "/sign-in" },
   });
 });

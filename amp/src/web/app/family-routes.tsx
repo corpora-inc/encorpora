@@ -18,6 +18,7 @@ import { staffScreen } from "./school-routes";
 import { ownClassOf } from "../features/spaces/resolve";
 import { groupAddress } from "./family-redirect";
 import { OPEN_KEY, readStack } from "../nav/entities";
+import { payOverlays } from "./pay-routes";
 
 /*
  * A family's own screens (docs/architecture/spaces.md, P2): `/family/<family>`
@@ -36,6 +37,7 @@ async function ownFamily(session: AuthSession) {
 
 export function familyRoutes(root: AnyRoute) {
   const screens = () => import("../features/family/screens");
+  const payHosts = () => import("../features/pay/hosts");
   const screen = (name: string) =>
     lazyRouteComponent(screens as never, name as never);
   /** An older account address: the same screen at its neutral address. */
@@ -192,6 +194,34 @@ export function familyRoutes(root: AnyRoute) {
       },
       component: lazyRouteComponent(load as never, name as never),
     });
+  // A child's page paints whole: its record (levels, and whether there is
+  // anything to report yet) arrives with it, once the family's own
+  // projection says this reader may read it. Its host keeps the page
+  // mounted under the pay overlay its "Continue with AMP" opens (`pay`).
+  const childPage = createRoute({
+    getParentRoute: () => family,
+    path: "kids/$learner",
+    loader: async ({ context, params }) => {
+      const { session } = context as unknown as { session: AuthSession };
+      const { family: id, learner } = params as {
+        family: string;
+        learner: string;
+      };
+      const data = await queryClient
+        .ensureQueryData(familyOptions(session, id))
+        .catch(() => null);
+      const child = data?.children.find((entry) => entry.id === learner);
+      if (child?.capabilities.readProgress)
+        await preload(childProgressOptions(session, id, learner));
+    },
+    component: lazyRouteComponent(payHosts, "ChildPayHost"),
+  });
+  /** Today's host: Today itself, and the pay overlay over it. */
+  const today = createRoute({
+    getParentRoute: () => family,
+    id: "today",
+    component: lazyRouteComponent(payHosts, "TodayPayHost"),
+  });
   return [
     landing,
     ...accountAlias("/family/security", "/account/security"),
@@ -200,28 +230,10 @@ export function familyRoutes(root: AnyRoute) {
     learners("/family/learners", "settings", {}),
     learners("/family/learners/new", "", { add: 1 }),
     family.addChildren([
-      leaf("/", "FamilyTodayScreen"),
-      // A child's page paints whole: its record (levels, and whether there
-      // is anything to report yet) arrives with it, once the family's own
-      // projection says this reader may read it.
-      createRoute({
-        getParentRoute: () => family,
-        path: "kids/$learner",
-        loader: async ({ context, params }) => {
-          const { session } = context as unknown as { session: AuthSession };
-          const { family: id, learner } = params as {
-            family: string;
-            learner: string;
-          };
-          const data = await queryClient
-            .ensureQueryData(familyOptions(session, id))
-            .catch(() => null);
-          const child = data?.children.find((entry) => entry.id === learner);
-          if (child?.capabilities.readProgress)
-            await preload(childProgressOptions(session, id, learner));
-        },
-        component: screen("ChildScreen"),
-      }),
+      // Today, with the pay overlay its "Continue with AMP" opens over it
+      // (`pay/<learner>`, features/pay): Today stays mounted behind.
+      today.addChildren([...payOverlays(today, "pay/$learner")]),
+      childPage.addChildren([...payOverlays(childPage, "pay")]),
       childScreen(
         "kids/$learner/pathways",
         () => import("../features/pathways/PathwaysScreen"),

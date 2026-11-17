@@ -21,8 +21,7 @@ import {
   useLearnerCheckout,
   type PurchasePhase,
 } from "./api";
-import { cardDonePath } from "./paths";
-import { usePay, type PayLearner } from "./context";
+import { usePay, usePayAddress, type PayLearner } from "./context";
 import { PlanPicker, useChosenInterval } from "./PlanPicker";
 import { usePayStore, type CheckoutKind, type PayInterval } from "./store";
 import styles from "./Pay.module.css";
@@ -55,6 +54,7 @@ export function CardPanel() {
 
 function LearnerCheckout() {
   const { session, learner } = usePay();
+  const { base } = usePayAddress();
   const chosen = useChosenInterval();
   // A practice profile of an account with no learner of its own yet: the
   // adult's own learner starts when they check out (docs/families.md).
@@ -108,7 +108,7 @@ function LearnerCheckout() {
         text="Your payment is being confirmed. This usually takes a few seconds."
         action={
           <Link
-            to={cardDonePath(learner.id) as never}
+            to={`${base}/done` as never}
             className={buttonClass("primary")}
           >
             See your payment
@@ -148,7 +148,7 @@ function LearnerCheckout() {
               },
               { onSuccess: forgetPlanChoice },
             );
-            opened(session.accountId, { learnerId: learner.id, kind: "learner" });
+            opened(session.accountId, { learnerId: learner.id, kind: "learner", base });
           }}
         >
           {busy ? "Opening secure checkout…" : resume ? "Resume checkout" : "Continue to Stripe"}
@@ -161,6 +161,7 @@ function LearnerCheckout() {
 
 function EnrollmentCheckout() {
   const { session, learner } = usePay();
+  const { base } = usePayAddress();
   const chosen = useChosenInterval();
   const enrollment = useQuery(enrollmentOptions(session));
   const available = enrollment.data?.available;
@@ -208,7 +209,7 @@ function EnrollmentCheckout() {
         text="Your payment is being confirmed."
         action={
           <Link
-            to={cardDonePath(learner.id) as never}
+            to={`${base}/done` as never}
             className={buttonClass("primary")}
           >
             See your payment
@@ -254,13 +255,13 @@ function EnrollmentCheckout() {
           disabled={busy}
           onClick={() => {
             if (resume) {
-              opened(session.accountId, { learnerId: learner.id, kind: "enrollment" });
+              opened(session.accountId, { learnerId: learner.id, kind: "enrollment", base });
               window.location.assign(resume);
               return;
             }
             track("checkout_start", { interval: offer.interval });
             const requestId = (requests.current[offer.interval] ??= crypto.randomUUID());
-            opened(session.accountId, { learnerId: learner.id, kind: "enrollment" });
+            opened(session.accountId, { learnerId: learner.id, kind: "enrollment", base });
             checkout.mutate(
               {
                 requestId,

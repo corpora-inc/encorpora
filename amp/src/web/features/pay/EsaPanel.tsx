@@ -28,14 +28,14 @@ import {
   type FundingOffer,
 } from "./api";
 import { Panel, Retry } from "./CardPanel";
-import { usePay, type PayLearner } from "./context";
-import { invoicePath } from "./paths";
+import { usePay, usePayAddress, type PayLearner } from "./context";
 import { PlanPicker, useChosenInterval } from "./PlanPicker";
 import {
   draftKey,
   useInvoiceDraft,
   useLearnerChoice,
   usePayStore,
+  type EsaStep,
 } from "./store";
 import styles from "./Pay.module.css";
 
@@ -82,9 +82,10 @@ export function EsaPanel() {
   const setName = useInvoiceDraft((state) => state.setName);
   const clearDraft = useInvoiceDraft((state) => state.clear);
   const navigate = useNavigate();
+  const { base } = usePayAddress();
   const create = useCreateInvoice(session, ({ invoiceId }) => {
     clearDraft(key);
-    void navigate({ to: invoicePath(learner.id, invoiceId) as never });
+    void navigate({ to: `${base}/invoice/${encodeURIComponent(invoiceId)}` as never });
   });
   // One key per exact request, so a retry never makes a second invoice.
   const attempt = useRef<{ payload: string; key: string; invoiceId?: string } | null>(
@@ -105,47 +106,26 @@ export function EsaPanel() {
   const name = typed ?? billingNameGuess(learner);
   const own = learner.simulation ? null : learner.id;
   const ready = !!program && !!name.trim() && !!email;
+  // The step shown: the one chosen, never past what is known (a plan needs
+  // its program).
+  const step: EsaStep = !program ? "program" : (choice.esaStep ?? "plan");
+  const go = (next: EsaStep) => choose(session.accountId, learner.id, { esaStep: next });
   return (
-    <form
-      className={styles.form}
-      onSubmit={(event) => {
-        event.preventDefault();
-        if (create.isPending || !program) return;
-        const fields = { offer: offer.id, revision: offer.revision, name: name.trim(), email };
-        const payload = JSON.stringify(fields);
-        if (attempt.current?.payload !== payload)
-          attempt.current = { payload, key: crypto.randomUUID() };
-        create.mutate(
-          {
-            offer,
-            studentBillingName: fields.name,
-            parentEmail: email,
-            learnerId: own,
-            prepare: () => startOwnPractice(session),
-            idempotencyKey: attempt.current.key,
-            invoiceId: attempt.current.invoiceId,
-            onInvoice: (invoiceId) => {
-              if (attempt.current?.payload === payload) attempt.current.invoiceId = invoiceId;
-            },
-          });
-      }}
-    >
-      <PlanPicker
-        offers={plans.map(asPlan)}
+    <div className={styles.wizard}>
+      <Stepper
+        current={step}
+        reachable={program ? ["program", "plan", "name"] : ["program"]}
+        onStep={go}
         disabled={create.isPending}
-        terms={<FundsTerms offer={offer} />}
       />
-      <fieldset className={styles.group} disabled={create.isPending}>
-        <legend id={`${key}-program`} className={styles.legend}>
-          Your program
-        </legend>
+      {step === "program" && (
         <TileChoice
-          labelledBy={`${key}-program`}
+          label="Your program"
           className={styles.programs}
-          columns={{ narrow: 1, wide: Math.min(programs.length, 3) }}
+          columns={{ narrow: 1, wide: 1 }}
           value={program?.id ?? null}
           onChange={(id) => {
-            if (id) choose(session.accountId, learner.id, { program: id });
+            if (id) choose(session.accountId, learner.id, { program: id, esaStep: "plan" });
           }}
           tiles={programs.map((entry) => ({
             value: entry.id,
@@ -160,44 +140,136 @@ export function EsaPanel() {
             ),
           }))}
         />
-      </fieldset>
-      <div className={styles.field}>
-        <TextField
-          label="Student’s name on the invoice"
-          value={name}
-          onChange={(event) => setName(key, event.target.value)}
-          required
-          maxLength={180}
-          autoComplete="off"
-          disabled={create.isPending}
-        />
-        <p className={styles.hint}>
-          As it appears in your {program ? shortName(program) : "program"} account.
-        </p>
-      </div>
-      {learner.learningAllowed === false ? (
-        <ConsentFirst />
-      ) : (
-      <div className={styles.actions}>
-        <Button
-          type="submit"
-          variant="primary"
-          disabled={create.isPending || !ready}
-          aria-busy={create.isPending || undefined}
-        >
-          Create invoice
-        </Button>
-        <p className={styles.fine}>
-          {learner.adult ? "You get" : `${learner.name} gets`} full access as
-          soon as it’s created. We email the invoice to {email}.
-        </p>
-        {/* Reserved: a failure appears here without moving anything. */}
-        <p className={styles.error} role="alert">
-          {create.error ? invoiceFailure(create.error) : ""}
-        </p>
-      </div>
       )}
-    </form>
+      {step === "plan" && (
+        <>
+          <PlanPicker offers={plans.map(asPlan)} terms={<FundsTerms offer={offer} />} />
+          <div className={styles.actions}>
+            <Button variant="primary" onClick={() => go("name")}>
+              Continue
+            </Button>
+          </div>
+        </>
+      )}
+      {step === "name" && (
+        <form
+          className={styles.form}
+          onSubmit={(event) => {
+            event.preventDefault();
+            if (create.isPending || !program) return;
+            const fields = { offer: offer.id, revision: offer.revision, name: name.trim(), email };
+            const payload = JSON.stringify(fields);
+            if (attempt.current?.payload !== payload)
+              attempt.current = { payload, key: crypto.randomUUID() };
+            create.mutate({
+              offer,
+              studentBillingName: fields.name,
+              parentEmail: email,
+              learnerId: own,
+              prepare: () => startOwnPractice(session),
+              idempotencyKey: attempt.current.key,
+              invoiceId: attempt.current.invoiceId,
+              onInvoice: (invoiceId) => {
+                if (attempt.current?.payload === payload) attempt.current.invoiceId = invoiceId;
+              },
+            });
+          }}
+        >
+          <dl className={styles.summary}>
+            <div>
+              <dt>Program</dt>
+              <dd>{program ? shortName(program) : ""}</dd>
+            </div>
+            <div>
+              <dt>Plan</dt>
+              <dd>
+                {offer.termMonths === 1 ? "Monthly" : "Annual"} ·{" "}
+                <strong>{money(offer.totalMinor)}</strong>
+              </dd>
+            </div>
+          </dl>
+          <div className={styles.field}>
+            <TextField
+              label="Student’s name on the invoice"
+              value={name}
+              onChange={(event) => setName(key, event.target.value)}
+              required
+              maxLength={180}
+              autoComplete="off"
+              disabled={create.isPending}
+            />
+            <p className={styles.hint}>
+              As it appears in your {program ? shortName(program) : "program"} account.
+            </p>
+          </div>
+          {learner.learningAllowed === false ? (
+            <ConsentFirst />
+          ) : (
+            <div className={styles.actions}>
+              <Button
+                type="submit"
+                variant="primary"
+                disabled={create.isPending || !ready}
+                aria-busy={create.isPending || undefined}
+              >
+                Create invoice
+              </Button>
+              <p className={styles.fine}>
+                {learner.adult ? "You get" : `${learner.name} gets`} full access as
+                soon as it’s created. We email the invoice to {email}.
+              </p>
+              {/* Reserved: a failure appears here without moving anything. */}
+              <p className={styles.error} role="alert">
+                {create.error ? invoiceFailure(create.error) : ""}
+              </p>
+            </div>
+          )}
+        </form>
+      )}
+    </div>
+  );
+}
+
+const STEPS: { step: EsaStep; label: string }[] = [
+  { step: "program", label: "Program" },
+  { step: "plan", label: "Plan" },
+  { step: "name", label: "Name" },
+];
+
+/** The education-funds steps: the current one marked, the ones before it
+ * (and any already reachable) a tap away. State, never an address. */
+function Stepper({
+  current,
+  reachable,
+  onStep,
+  disabled,
+}: {
+  current: EsaStep;
+  reachable: EsaStep[];
+  onStep: (step: EsaStep) => void;
+  disabled: boolean;
+}) {
+  const at = STEPS.findIndex((entry) => entry.step === current);
+  return (
+    <ol className={styles.stepper} aria-label="Steps">
+      {STEPS.map((entry, index) => (
+        <li key={entry.step}>
+          <button
+            type="button"
+            className={styles.stepButton}
+            aria-current={entry.step === current ? "step" : undefined}
+            data-done={index < at || undefined}
+            disabled={disabled || !reachable.includes(entry.step)}
+            onClick={() => onStep(entry.step)}
+          >
+            <span className={styles.stepNumber} aria-hidden="true">
+              {index + 1}
+            </span>
+            {entry.label}
+          </button>
+        </li>
+      ))}
+    </ol>
   );
 }
 

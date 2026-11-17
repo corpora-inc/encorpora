@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { track } from "../../lib/analytics";
 import { meOptions, queryClient, sessionOptions } from "../../lib/query";
 import { payLearnerFor } from "../pay/paths";
+import { learnerOrigin, payOver } from "../pay/address";
 import { TalkToUs } from "../schools/TalkToUs";
 import { Button, buttonClass } from "../../ui/Button";
 import { Sheet } from "../../ui/Sheet";
@@ -146,9 +147,11 @@ export function AllowancePause({
                 learnerId: payer,
                 returnTo: here,
               });
+              // Paying opens over the learner's own place (features/pay).
               void navigate({
-                to: "/pay/$learnerId",
-                params: { learnerId: payer },
+                to: (me?.signedIn
+                  ? payOver(learnerOrigin(me, payer), payer)
+                  : payOver("/account/billing", payer)) as never,
               });
             }}
           >

@@ -1,6 +1,7 @@
 import type { AuthSession } from "../../auth";
 import { purchaseLearner } from "./api";
-import { cardDonePath, payPath } from "./paths";
+import { meOptions, queryClient } from "../../lib/query";
+import { learnerOrigin, payOver } from "./address";
 import { payState, usePayStore, type CheckoutKind } from "./store";
 
 /**
@@ -8,7 +9,8 @@ import { payState, usePayStore, type CheckoutKind } from "./store";
  * avoid: the server gives Stripe `?billing=processing|canceled&purchase=<id>`
  * (billing/stripe/gateway.ts). It is read here once, resolved through the
  * server, kept in the pay store, and the parent lands on a clean path: the
- * learner's confirmation, or their plan again after leaving Stripe.
+ * pay overlay it was opened from, over the same screen, on its
+ * confirmation, or on the plan again after leaving Stripe.
  * (Stripe's own `session_id` isn't used: the server's checkout id is.) Null
  * when it names no learner this account can see (another device's
  * enrollment checkout, which names none): the caller's own screen then.
@@ -35,15 +37,23 @@ export async function stripeReturnTarget(
       : null;
   const learnerId = recorded ?? (open?.kind === kind ? open.learnerId : undefined);
   if (!learnerId) return null;
+  // The overlay it was opened from, over the same screen; from another tab,
+  // the learner's own place.
+  let base = open?.learnerId === learnerId ? open.base : undefined;
+  if (!base) {
+    const me = await queryClient.ensureQueryData(meOptions(session));
+    if (!me.signedIn) return null;
+    base = payOver(learnerOrigin(me, learnerId), learnerId);
+  }
   if (search.billing === "canceled") {
     // Left Stripe without paying: the plan again, on the card tab.
     usePayStore.getState().choose(session.accountId, learnerId, { method: "card" });
-    return payPath(learnerId);
+    return base;
   }
   usePayStore.getState().checkoutReturned(session.accountId, {
     learnerId,
     kind,
     checkoutId: purchaseId ?? "",
   });
-  return cardDonePath(learnerId);
+  return `${base}/done`;
 }

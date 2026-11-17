@@ -3,6 +3,7 @@ import type { SignedInMe } from "../../../../../account/contracts";
 import type { TodayStudentResource } from "../../../../../schools/teacher-contracts";
 import { Button, buttonClass } from "../../../../ui/Button";
 import styles from "./Today.module.css";
+import { PayLink } from "../../../pay/link";
 
 type Learner = SignedInMe["learners"][number];
 const DAY = new Intl.DateTimeFormat("en-US", {
@@ -124,14 +125,13 @@ export function ChildRow({
             onPracticeHere={onPracticeHere}
           />
         ) : holder ? (
-          <Link
-            to="/pay/$learnerId"
-            params={{ learnerId: learner.id }}
+          <PayLink
+            learnerId={learner.id}
             className={buttonClass("primary", styles.practiceHere)}
             onClick={() => onContinue(learner.id)}
           >
             Continue with AMP
-          </Link>
+          </PayLink>
         ) : null}
       </span>
     </li>

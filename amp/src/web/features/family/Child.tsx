@@ -47,6 +47,7 @@ import {
 import { AccessFact, ChildAction, WeekFactsOf } from "./Today";
 import styles from "./Family.module.css";
 import { ChildActivity } from "./ChildActivity";
+import { PayLink } from "../pay/link";
 
 /**
  * A child's page (`/family/<family>/kids/<learner>`): the same record a
@@ -290,9 +291,8 @@ export function ChildActions({
         child.access.canPractice &&
         child.capabilities.continuePurchase &&
         child.paths.continue && (
-          <Link
-            to="/pay/$learnerId"
-            params={{ learnerId: child.id }}
+          <PayLink
+            learnerId={child.id}
             className={buttonClass("secondary")}
             data-continue={child.id}
             onClick={() =>
@@ -304,7 +304,7 @@ export function ChildActions({
             }
           >
             Continue with AMP
-          </Link>
+          </PayLink>
         )}
     </ActionRow>
   );
