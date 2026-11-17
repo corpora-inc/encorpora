@@ -30,7 +30,7 @@ window.purchaseReview={emit(next){session=next;for(const listener of listeners)l
 export async function accessSession(){return session;}
 export function onSessionChanged(fn){listeners.add(fn);return()=>listeners.delete(fn);}
 export async function signIn(){sessionStorage.setItem('fixture-signed-in','yes');location.href='/';}
-export async function signOut(){window.purchaseReview.recordAtSignOut=sessionStorage.getItem('amp.purchase-return.v1');sessionStorage.setItem('fixture-record-at-sign-out',JSON.stringify(window.purchaseReview.recordAtSignOut));window.purchaseReview.emit(null);}export function notifyAccountSessionChanged(){void accessSession().then(session=>window.purchaseReview.emit(session));}export async function authConfig(){return {mode:"oidc"};}
+export async function signOut(){window.purchaseReview.recordAtSignOut=sessionStorage.getItem('amp.purchase-return.v1');sessionStorage.setItem('fixture-record-at-sign-out',JSON.stringify(window.purchaseReview.recordAtSignOut));window.purchaseReview.emit(null);}export function notifyDeviceSessionChanged(){}export function notifyAccountSessionChanged(){void accessSession().then(session=>window.purchaseReview.emit(session));}export async function authConfig(){return {mode:"oidc"};}
 `;
 const vite = await createServer({
   root: fileURLToPath(new URL("../", import.meta.url)),

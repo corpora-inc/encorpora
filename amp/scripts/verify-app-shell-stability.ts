@@ -175,8 +175,8 @@ const screens: Screen[] = [
     path: "/account/privacy",
     state: "paid",
     group: "account",
-    ready: (p) =>
-      p.locator("[data-account-body] [data-privacy-choice]").first().waitFor(),
+    // The Privacy overlay (features/privacy) over the account's hub.
+    ready: (p) => p.locator("[data-privacy-panels]").first().waitFor(),
   },
   {
     id: "practice",

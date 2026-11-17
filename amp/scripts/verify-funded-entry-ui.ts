@@ -29,7 +29,7 @@ export async function accessSession(){return localStorage.getItem('synthetic-sig
 export function onSessionChanged(update){listeners.add(update);return()=>listeners.delete(update);}
 export async function signIn(){}
 export async function signOut(){}
-export function notifyAccountSessionChanged(checked){
+export function notifyDeviceSessionChanged(){}export function notifyAccountSessionChanged(checked){
   const current = ++revision;
   if(checked !== undefined){for(const listener of listeners) listener(checked);return;}
   void accessSession().then(session=>{if(current === revision) for(const listener of listeners) listener(session);});

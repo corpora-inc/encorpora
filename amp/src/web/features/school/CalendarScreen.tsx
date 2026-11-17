@@ -38,15 +38,11 @@ import {
 import { FormNote, PageHead } from "./parts";
 import { orgPath } from "./paths";
 import { YearRibbon } from "./YearRibbon";
+import { gradingChoices, gradingWords } from "../school-year/model";
 import styles from "./School.module.css";
 
 /** The term choice of a small class: None is the whole year, no terms. */
-const TERM_CHOICES: ("year" | DivisionKind)[] = [
-  "year",
-  "semester",
-  "trimester",
-  "quarter",
-];
+const TERM_CHOICES = gradingChoices;
 
 const message = (failure: unknown, fallback: string) =>
   failure instanceof AppError ? failure.message : fallback;
@@ -528,10 +524,5 @@ function SchoolGradingPicker({ orgId }: { orgId: string }) {
   );
 }
 
-/** A grading choice in words: Full year, Semesters, Trimesters, Quarters. */
-export const gradingWords = (kind: GradingKind) =>
-  kind === "year"
-    ? "Full year"
-    : kind === "custom"
-      ? "Custom"
-      : divisionLabels[kind].plural;
+/** A grading choice in words (school-year/model.ts). */
+export { gradingWords };

@@ -737,8 +737,23 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
 
     setConsentChallenge(null);
     // Back to where consent was opened (Privacy, or a funded purchase's
-    // step), else Privacy's consent section.
-    closeTo(router, "/account/privacy/consent");
+    // step), else the Privacy overlay over the account's settings hub with
+    // its consent panel open: straight there, never through an old address.
+    const current = session;
+    if (current)
+      void Promise.all([
+        import("../features/account/panels"),
+        import("../features/spaces/settings-hub"),
+      ])
+        .then(async ([{ setPanel }, { loadSettingsHub }]) => {
+          setPanel(current.accountId, "privacy", "consent");
+          closeTo(router, await loadSettingsHub(current, "privacy"));
+        })
+        .catch((error: unknown) => {
+          console.error("Privacy’s address didn’t load", error);
+          closeTo(router, ROOT);
+        });
+    else closeTo(router, ROOT);
     setConsentReturn(true);
   }
   useEffect(() => {

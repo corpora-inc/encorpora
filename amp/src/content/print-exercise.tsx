@@ -141,6 +141,53 @@ function PrintMultiPart({
     );
   const number = (blankId: string) =>
     response.blanks.findIndex((b) => b.id === blankId) + 1;
+  const sentence = response.layout === "inline" && response.sentence && (
+    <p className="print-sentence">
+      {response.sentence.map((part, i) =>
+        "text" in part ? (
+          <PrintMathText key={i} text={part.text} />
+        ) : (
+          <span key={i} className="print-blank">
+            ({number(part.blank)})
+          </span>
+        ),
+      )}
+    </p>
+  );
+  // Long options shared by every blank (put statements in order) print once,
+  // lettered, with a box per blank for the letter. Repeating five sentences
+  // under each of five steps made one problem taller than a page.
+  const bank = drawnBoxes ? sharedOptionBank(response) : null;
+  if (bank)
+    return (
+      <>
+        {sentence}
+        <ol type="A" className="print-bank">
+          {bank.map((o) => (
+            <li key={o.id}>
+              <PrintMathText text={o.label} />
+            </li>
+          ))}
+        </ol>
+        <ol className="print-parts print-parts--letters">
+          {response.blanks.map((b) => {
+            const picked = bank.findIndex((o) => o.id === key[b.id]);
+            return (
+              <li key={b.id}>
+                <span className="print-part-label">
+                  <PrintMathText
+                    text={b.label.charAt(0).toUpperCase() + b.label.slice(1)}
+                  />
+                </span>
+                <span className="print-letter-box" aria-hidden="true">
+                  {picked >= 0 ? optionLetters[picked] : ""}
+                </span>
+              </li>
+            );
+          })}
+        </ol>
+      </>
+    );
   if (response.layout === "table") {
     const columns = response.blanks[0]!.options;
     return (
@@ -218,19 +265,7 @@ function PrintMultiPart({
   }
   return (
     <>
-      {response.layout === "inline" && response.sentence && (
-        <p className="print-sentence">
-          {response.sentence.map((part, i) =>
-            "text" in part ? (
-              <PrintMathText key={i} text={part.text} />
-            ) : (
-              <span key={i} className="print-blank">
-                ({number(part.blank)})
-              </span>
-            ),
-          )}
-        </p>
-      )}
+      {sentence}
       {drawnBoxes ? (
         <ol className="print-parts print-parts--grid">
           {response.blanks.map((b) => (
@@ -274,6 +309,30 @@ function PrintMultiPart({
       )}
     </>
   );
+}
+const optionLetters = "ABCDEFGHIJ";
+/** The options every blank of a slots or inline multi-part item shares, when
+ * they are too long to sit across a line (`optionColumns` 1) and there are at
+ * least three blanks: a workbook prints them once as a lettered bank. Null
+ * otherwise. */
+export function sharedOptionBank(
+  response: MultiPartChoiceResponse,
+): MultiPartChoiceResponse["blanks"][number]["options"] | null {
+  if (response.layout === "table" || response.layout === "cards") return null;
+  const [first, ...rest] = response.blanks;
+  if (!first || rest.length < 2) return null;
+  if (first.options.length > optionLetters.length) return null;
+  const same = rest.every(
+    (b) =>
+      b.options.length === first.options.length &&
+      b.options.every(
+        (o, i) =>
+          o.id === first.options[i]!.id && o.label === first.options[i]!.label,
+      ),
+  );
+  if (!same || optionColumns(first.options.map((o) => o.label)) !== 1)
+    return null;
+  return first.options;
 }
 /** Options of one printed blank: four across when every label is short, two
  * when they fit half a column, otherwise one per line. */
