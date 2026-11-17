@@ -62,7 +62,13 @@ export function emailProblem(raw: string): string {
 /** A rule the browser doesn't check: a blank-only required value, or an
  * address the server would refuse ("name@example" with no ending). */
 function customProblem(input: HTMLInputElement): string {
-  if (input.required && input.value !== "" && !input.value.trim())
+  // A password may be any characters, spaces too.
+  if (
+    input.required &&
+    input.type !== "password" &&
+    input.value !== "" &&
+    !input.value.trim()
+  )
     return "blank";
   if (input.type === "email" && input.value && !input.validity.typeMismatch)
     return emailProblem(input.value);
@@ -128,6 +134,8 @@ export function useFieldValidation({
   const [shown, setShown] = useState("");
   const input = useRef<HTMLInputElement | null>(null);
   const edited = useRef(false);
+  // The value as last typed, to tell a form's own reset from typing.
+  const typed = useRef("");
   // The custom rules follow the value, however it changed (typing, a reset,
   // autofill), so a form's submit check always sees them.
   useLayoutEffect(() => {
@@ -151,6 +159,7 @@ export function useFieldValidation({
       ref: setRef,
       onChange: (event: ChangeEvent<HTMLInputElement>) => {
         edited.current = true;
+        typed.current = event.currentTarget.value;
         // A showing message goes as soon as the value is right; while it is
         // still wrong, the same words stay (no swap mid-typing).
         if (shown && !check(event.currentTarget)) setShown("");
@@ -158,6 +167,9 @@ export function useFieldValidation({
       },
       onBlur: (event: FocusEvent<HTMLInputElement>) => {
         const node = event.currentTarget;
+        // Emptied by its form after a send (a changed password), not by
+        // typing: the field is untouched again and waits for the next submit.
+        if (!node.value && typed.current) edited.current = false;
         if (edited.current || node.value) setShown(check(node));
         onBlur?.(event);
       },

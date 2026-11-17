@@ -167,6 +167,8 @@ export function TilePicker<V extends string | number>({
           aria-label={tile.name}
           className={styles.tile}
           data-span={tile.span}
+          // Every picker's option carries its value, as ui/Select's do.
+          data-value={String(tile.value)}
         >
           {tile.label}
         </button>

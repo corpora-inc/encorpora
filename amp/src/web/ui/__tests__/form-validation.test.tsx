@@ -121,3 +121,50 @@ test("email messages say what is wrong and how to fix it, in one short line", ()
     expect(message.length).toBeLessThanOrEqual(42);
   }
 });
+
+test("a field its form empties after a send waits for the next submit", () => {
+  function PasswordForm() {
+    const [password, setPassword] = useState("");
+    return (
+      <Form
+        onSubmit={(event) => {
+          event.preventDefault();
+          setPassword("");
+        }}
+      >
+        <TextField
+          label="New password"
+          type="password"
+          required
+          minLength={10}
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        />
+        <button type="submit">Change password</button>
+      </Form>
+    );
+  }
+  render(<PasswordForm />);
+  const input = screen.getByLabelText("New password");
+  fireEvent.change(input, { target: { value: "a long new passphrase" } });
+  fireEvent.click(screen.getByRole("button", { name: "Change password" }));
+  expect((input as HTMLInputElement).value).toBe("");
+  fireEvent.blur(input);
+  expect(input.getAttribute("aria-invalid")).toBe("false");
+});
+
+test("a password of spaces is still a password", () => {
+  render(
+    <Form onSubmit={(event) => event.preventDefault()}>
+      <TextField
+        label="Password"
+        type="password"
+        required
+        value="          "
+        onChange={() => undefined}
+      />
+    </Form>,
+  );
+  const input = screen.getByLabelText("Password") as HTMLInputElement;
+  expect(input.checkValidity()).toBe(true);
+});
