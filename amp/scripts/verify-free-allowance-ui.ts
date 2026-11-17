@@ -171,7 +171,12 @@ async function shot(page: Page, name: string, width: number, theme: string) {
 }
 /** Nothing spills, every target is big enough, nothing overlaps or breaks
  * mid-word, nothing moved. */
-async function measured(page: Page, label: string) {
+async function measured(
+  page: Page,
+  label: string,
+  /** A shift here fails the run (premium rule 1), not only the record. */
+  { stillOrFail = false } = {},
+) {
   await settle(page, 300);
   const geometry = await probe(page);
   check(`${label} overflow`, geometry.overflow === 0, geometry.overflow);
@@ -187,7 +192,20 @@ async function measured(page: Page, label: string) {
     geometry.midWordWraps,
   );
   const { cls } = await shellRecord(page);
-  check(`${label} CLS`, cls <= 0.01, cls);
+  const moved =
+    cls <= 0.01
+      ? cls
+      : {
+          cls,
+          moved: await page.evaluate(
+            () =>
+              (window as unknown as { __shiftSources?: string[] })
+                .__shiftSources ?? [],
+          ),
+        };
+  check(`${label} CLS`, cls <= 0.01, moved);
+  if (stillOrFail)
+    assert.ok(cls <= 0.01, `${label}: layout shift ${JSON.stringify(moved)}`);
 }
 async function newContext(
   browser: Browser,
@@ -200,6 +218,32 @@ async function newContext(
     timezoneId: "America/Chicago",
   });
   await context.addInitScript(shiftRecorder);
+  // What each counted layout shift moved, so a failure names it.
+  await context.addInitScript(() => {
+    const sources: string[] = [];
+    (window as unknown as { __shiftSources: string[] }).__shiftSources =
+      sources;
+    try {
+      new PerformanceObserver((list) => {
+        for (const entry of list.getEntries() as unknown as {
+          value: number;
+          hadRecentInput: boolean;
+          sources?: { node?: Node | null }[];
+        }[]) {
+          if (entry.hadRecentInput || sources.length > 30) continue;
+          const nodes = (entry.sources ?? []).map(({ node }) => {
+            const el = node instanceof Element ? node : node?.parentElement;
+            return el
+              ? `${el.tagName.toLowerCase()}.${String(el.className).slice(0, 30)} "${(el.textContent ?? "").trim().slice(0, 30)}"`
+              : "?";
+          });
+          sources.push(`${entry.value.toFixed(3)} ${nodes.join(" | ")}`);
+        }
+      }).observe({ type: "layout-shift", buffered: true });
+    } catch (error) {
+      console.warn("Layout shifts aren't observed here", error);
+    }
+  });
   return context;
 }
 /** A practice problem on screen: the normal loop, unchanged. */
@@ -420,7 +464,9 @@ async function journey(
   assert.equal(reads.history, 1, "one new workbook refreshes history once");
   await page.unroute(mePattern);
   await page.unroute(historyPattern);
-  await measured(page, `${label} second immediate workbook`);
+  await measured(page, `${label} second immediate workbook`, {
+    stillOrFail: true,
+  });
   await shot(page, "workbook-day", width, theme);
   await db.query(
     "UPDATE amp_learners SET free_online_used=100,free_workbooks_used=5 WHERE id=ANY($1::text[])",
@@ -442,7 +488,7 @@ async function journey(
     .first()
     .waitFor();
   await workbooksUsed(page, `${label} exhausted history`, purchase);
-  await measured(page, `${label} exhausted history`);
+  await measured(page, `${label} exhausted history`, { stillOrFail: true });
   await shot(page, "history", width, theme);
   await page
     .getByRole("link", { name: /Enter results for workbook/ })
@@ -466,7 +512,7 @@ async function journey(
   await page.evaluate(() =>
     window.scrollTo({ top: document.documentElement.scrollHeight }),
   );
-  await measured(page, `${label} exhausted results`);
+  await measured(page, `${label} exhausted results`, { stillOrFail: true });
   await shot(page, "results", width, theme);
   assert.equal(
     (
@@ -611,13 +657,28 @@ async function adultJourney(
   await db.query("UPDATE amp_learners SET free_online_used=99 WHERE id=$1", [
     learnerId,
   ]);
+  // Their own practice, before its first answer: where they are, the free
+  // problems left, and its one next step. Their name stays out of the
+  // practice chrome.
   await page.goto(`${origin}/me`);
-  await heading(page, "Avery Fixture");
-  await page
-    .getByRole("link", { name: "Practice", exact: true })
-    .filter({ visible: true })
-    .first()
-    .click();
+  await heading(page, "Where you are");
+  check(
+    `${label} the record says one free problem is left`,
+    (await page.locator("[data-free-left]").first().innerText()).includes(
+      "1 free problem left",
+    ),
+    await page.locator("[data-free-left]").first().innerText(),
+  );
+  check(
+    `${label} the record never names them`,
+    (await page.getByRole("heading", { name: "Avery Fixture" }).count()) === 0,
+  );
+  const next = page.getByRole("link", { name: "Start practicing" });
+  check(
+    `${label} the record's next step is practice`,
+    (await next.count()) === 1,
+  );
+  await next.click();
   await practicing(page);
   await page
     .getByRole("button", { name: "Skip this problem and see its answer" })
@@ -652,7 +713,7 @@ async function adultJourney(
       JSON.stringify(["Continue with AMP"]),
   );
   await page.goto(`${origin}/me`);
-  await heading(page, "Avery Fixture");
+  await heading(page, "Where you are");
   check(
     `${label} the record shows the same pause`,
     (await page

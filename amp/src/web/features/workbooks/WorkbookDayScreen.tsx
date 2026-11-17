@@ -66,7 +66,7 @@ export function WorkbookDayScreen() {
   // An address that names no day is no screen.
   if (!isDate(date)) throw notFound();
   return (
-    <WorkbookFrame learnerId={learnerId}>
+    <WorkbookFrame learnerId={learnerId} withHistory>
       {(learner) => <DaySheet learner={learner} date={date} />}
     </WorkbookFrame>
   );
@@ -84,7 +84,8 @@ function DaySheet({
 }) {
   return (
     <>
-      <WorkbookHistory learner={learner} />
+      {/* The list behind holds still while the day is open over it. */}
+      <WorkbookHistory learner={learner} still />
       <WorkbookDaySheet learner={learner} date={date} />
     </>
   );

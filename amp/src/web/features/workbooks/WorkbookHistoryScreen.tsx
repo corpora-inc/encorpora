@@ -18,7 +18,7 @@ import styles from "./Workbooks.module.css";
 export function WorkbookHistoryScreen() {
   const { learnerId } = useParams({ strict: false }) as { learnerId: string };
   return (
-    <WorkbookFrame learnerId={learnerId}>
+    <WorkbookFrame learnerId={learnerId} withHistory>
       {(learner) => <WorkbookHistory learner={learner} />}
     </WorkbookFrame>
   );
@@ -33,16 +33,32 @@ export function WorkbookHistoryScreen() {
 export function WorkbookHistory({
   learner,
   section = false,
+  still = false,
 }: {
   learner: WorkbookLearner;
   section?: boolean;
+  /** A day or its results is open over the list: the list holds still
+   * (premium rule 1), showing what it showed when the sheet opened, and
+   * takes what changed (a workbook saved, the free ones used) once it
+   * closes, with the person's own close. */
+  still?: boolean;
 }) {
   const session = useSession();
-  const history = useQuery(workbookHistoryOptions(session, learner.id));
+  const live = useQuery(workbookHistoryOptions(session, learner.id));
+  const liveCanMake = canMakeWorkbook(learner);
+  const [held, setHeld] = useState({ data: live.data, canMake: liveCanMake });
+  // Follow the live list until it has loaded, or whenever nothing is over it.
+  if (
+    (!still || held.data === undefined) &&
+    (held.data !== live.data || held.canMake !== liveCanMake)
+  )
+    setHeld({ data: live.data, canMake: liveCanMake });
+  const holding = still && held.data !== undefined;
+  const history = holding ? { ...live, data: held.data } : live;
   const [entering, setEntering] = useState(false);
   const paths = useWorkbookPaths();
   const who = whose(learner);
-  const canMake = canMakeWorkbook(learner);
+  const canMake = holding ? held.canMake : liveCanMake;
   const workbooks = history.data?.workbooks;
   const none = workbooks?.length === 0;
   const today = (label: string) => (

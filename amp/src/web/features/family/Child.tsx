@@ -312,6 +312,11 @@ function ChildWorkbooks({
   child: FamilyChild;
 }) {
   const learner = workbookLearner(place, child);
+  // A day or its results open over the page: the list holds still.
+  const { date, workbookId } = useParams({ strict: false }) as {
+    date?: string;
+    workbookId?: string;
+  };
   if (!learner) return null;
   return (
     <section
@@ -320,7 +325,11 @@ function ChildWorkbooks({
       data-child-workbooks=""
     >
       <WorkbookPathsContext.Provider value={childWorkbookPaths(place.family)}>
-        <WorkbookHistory section learner={learner} />
+        <WorkbookHistory
+          section
+          learner={learner}
+          still={!!date || !!workbookId}
+        />
       </WorkbookPathsContext.Provider>
     </section>
   );
