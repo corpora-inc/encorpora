@@ -142,7 +142,7 @@ function PurchasePage(account: Account) {
   return (
     <Page>
       <PageHeader
-        back={account.session ? "/account/billing" : () => toRoot()}
+        back={account.session ? { to: "/account/billing" } : () => toRoot()}
         title="Pay with education funds"
       />
       {search.invoice ? (

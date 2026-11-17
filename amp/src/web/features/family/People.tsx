@@ -197,7 +197,7 @@ export function FamilyPeopleScreen() {
     <FamilyFrame
       place={place}
       title="People & sharing"
-      back={`/${familyHref(family, "settings")}`}
+      back={{ to: "/family/$family/settings", params: { family } }}
     >
       {data && (
         <div className={styles.page} data-family-people="">
