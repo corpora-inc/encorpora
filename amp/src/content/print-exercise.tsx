@@ -36,6 +36,7 @@ import {
   type StructuredWorkResponse,
 } from "../math/structured-work";
 import { SceneFigure } from "../web/scene/SceneFigure";
+import { LEGIBLE_PX } from "../web/scene/SceneSvg";
 import { layoutScene, type Scene } from "../math/scene";
 import { isPorted, legacyScene } from "../math/scene/legacy";
 import { PrintMathText, printMathStyles } from "./PrintMathText";
@@ -85,22 +86,43 @@ function PrintFigureChoice({
     </div>
   );
 }
-/** The line plot to mark draws no wider than its view box on paper. */
-const LINE_PLOT_DRAWING_WIDTH = 360;
-const printWidth = (width: number) =>
-  ({ "--print-width": width }) as React.CSSProperties;
-/** The width a problem figure draws at on paper: a scene's layout width (as
- * SceneFigure lays it out), else the column's figure width. */
-function figureWidth(
+/** The line plot to mark draws no wider than its view box on paper; its
+ * smallest labels are 14 view-box units. */
+const LINE_PLOT_DRAWING = { width: 360, floor: LEGIBLE_PX / 14 };
+/** A figure's width on paper, and the fraction of it that keeps its
+ * smallest label at LEGIBLE_PX: side by side, it narrows no further. */
+type PrintSize = { width: number; floor: number };
+const printWidth = ({ width, floor }: PrintSize) =>
+  ({
+    "--print-width": width,
+    "--print-floor": Math.min(1, floor),
+  }) as React.CSSProperties;
+/** A scene as SceneFigure lays it out, measured as SceneSvg does. */
+function sceneSize(scene: Scene, reveal = false): PrintSize {
+  const layout = layoutScene(scene, { reveal });
+  const smallest = Math.min(
+    ...layout.items.flatMap((d) =>
+      d.k === "text" ? d.t.runs.map((r) => r.size) : [],
+    ),
+  );
+  // Without labels, half its width still shows the drawing plainly.
+  return {
+    width: layout.width,
+    floor: Number.isFinite(smallest) ? LEGIBLE_PX / smallest : 0.5,
+  };
+}
+/** A problem figure on paper: a scene's layout, else a legacy figure at the
+ * column's figure width, which never narrows. */
+function figureSize(
   figure: NonNullable<GeneratedProblem["public"]["figure"]>,
-) {
+): PrintSize {
   const scene: Scene | null =
     figure.kind === "scene"
       ? figure.scene
       : isPorted(figure)
         ? legacyScene(figure)
         : null;
-  return scene ? layoutScene(scene).width : 480;
+  return scene ? sceneSize(scene) : { width: 480, floor: 1 };
 }
 /** A worked list can replace repeated choices only when it quotes every label in order. */
 // A stacked fraction needs room above and below inside its border.
@@ -621,15 +643,11 @@ export function PrintExerciseBody({
         // narrow by the same factor when the two are wider than the column
         // (publicationCss). Daily workbooks stack them as before.
         <div className="print-figure-pair">
-          <div style={printWidth(figureWidth(problem.public.figure!))}>
+          <div style={printWidth(figureSize(problem.public.figure!))}>
             {figure}
           </div>
           <div
-            style={printWidth(
-              grid
-                ? layoutScene(grid, { reveal: true }).width
-                : LINE_PLOT_DRAWING_WIDTH,
-            )}
+            style={printWidth(grid ? sceneSize(grid, true) : LINE_PLOT_DRAWING)}
           >
             {drawing}
           </div>
@@ -842,10 +860,11 @@ export const publicationCss = `@page{margin:18mm}:root{--scene-sans:Arial,Helvet
 /** Lesson editions: every printed problem fits one page. A workbook
  * exercise, and the question box of a solution or representation, is a
  * column no taller than 243 mm (a Letter page less its margins, the shorter
- * paper). When its parts are taller, the ruled workspace gives up its room
- * first (down to one line), then each scene figure shrinks, never below the
- * height that keeps its smallest label at the legible 12 px (9 pt, the
- * smallest problem text these styles print). A prompt figure beside a drawn
- * response shares the line by width. Daily workbooks lay out their own
- * fixed sheets and do not load this. */
-export const printFitCss = `.exercise:not(.exercise--solutions),.print-question{display:flex;flex-direction:column;box-sizing:border-box;max-height:243mm;break-inside:avoid}.exercise:not(.exercise--solutions)>*,.print-question>*{flex-shrink:0}.exercise>*+*,.print-question>*+*{margin-top:0}.exercise>.scene-figure,.print-question>.scene-figure{flex-shrink:1;min-height:var(--scene-legible-height)}.exercise>.writing{flex-shrink:4;min-height:25px}.print-figure-pair{display:flex;justify-content:center;align-items:flex-start;gap:16px;margin:15px 0}.print-figure-pair>div{flex:var(--print-width) var(--print-width) 0px;max-width:calc(var(--print-width) * 1px);min-width:0}.print-figure-pair .figure,.print-figure-pair figure{width:100%;margin:0}.line-build-drawing{max-width:${LINE_PLOT_DRAWING_WIDTH}px!important}`;
+ * paper). When its parts are taller, the ruled workspace gives up nearly all
+ * of the room (down to one line) and scene figures the rest, never below
+ * the height that keeps their smallest label at the legible 12 px (9 pt,
+ * the smallest problem text these styles print). A prompt figure beside a
+ * drawn response shares the line by width, narrowing no further than that
+ * same floor. Daily workbooks lay out their own fixed sheets and do not
+ * load this. */
+export const printFitCss = `.exercise:not(.exercise--solutions),.print-question{display:flex;flex-direction:column;box-sizing:border-box;max-height:243mm;break-inside:avoid}.exercise:not(.exercise--solutions)>*,.print-question>*{flex-shrink:0}.exercise>*+*,.print-question>*+*{margin-top:0}.exercise>.scene-figure,.print-question>.scene-figure{flex-shrink:1;min-height:var(--scene-legible-height)}.exercise>.writing{flex-shrink:100;min-height:25px}.print-figure-pair{display:flex;justify-content:center;align-items:flex-start;gap:16px;margin:15px 0}.print-figure-pair>div{flex:var(--print-width) var(--print-width) 0px;max-width:calc(var(--print-width) * 1px);min-width:calc(var(--print-width) * var(--print-floor) * 1px)}.print-figure-pair .figure,.print-figure-pair figure{width:100%;margin:0}.line-build-drawing{max-width:${LINE_PLOT_DRAWING.width}px!important}`;

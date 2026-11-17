@@ -105,6 +105,11 @@ async function inspect(html: string, format: "Letter" | "A4") {
         // TypeScript loader would wrap them in a helper the page lacks.)
         if (Math.max(section.getBoundingClientRect().height, section.scrollHeight) > pageHeight)
           issues.push("A section kept together is taller than a printable page");
+        // Content that escapes a box capped at a height paints over what
+        // follows it, even when the whole is shorter than this paper's page.
+        if (getComputedStyle(section).maxHeight !== "none" &&
+            section.scrollHeight > section.clientHeight + 1)
+          issues.push("Content overflows a box kept together");
       }
       const solutions = document.querySelector(".publication-kind")?.textContent?.trim() === "Worked solutions";
       for (const example of document.querySelectorAll<HTMLElement>(".reference-lesson > .worked-example")) {
@@ -227,6 +232,7 @@ try {
     `<p style="position:relative;left:-800px">Missing left-hand text</p>`,
     `<figure class="lesson-illustration" style="height:2000px;break-inside:avoid">Oversized lesson illustration</figure>`,
     `<section class="exercise" style="break-inside:avoid;display:flex;flex-direction:column;max-height:200px"><h2 style="flex-shrink:0;height:2000px">An exercise taller than its capped box</h2></section>`,
+    `<section class="exercise" style="break-inside:avoid;display:flex;flex-direction:column;max-height:200px"><h2 style="flex-shrink:0;height:400px">An exercise spilling out of its capped box</h2></section>`,
     `<svg data-lesson-illustration="test" viewBox="0 0 100 100"><text x="95" y="20">Clipped label</text></svg>`,
     `<svg data-lesson-illustration="test" viewBox="0 0 100 100"><text x="10" y="50" text-anchor="middle" transform="rotate(-90 10 50)">A rotated label far too long to fit</text></svg>`,
   ];
@@ -252,6 +258,8 @@ try {
     safeSolution.replace("class=\"exercise exercise--solutions\"", "class=\"exercise exercise--solutions\" style=\"break-inside:avoid\""),
     // A question box capped at a page's height whose parts overflow it.
     safeSolution.replace("<h2>1. A complete question</h2>", "<div class=\"print-question\" style=\"break-inside:avoid;break-after:avoid;max-height:200px\"><h2>1. A complete question</h2><p style=\"height:2000px\">A tall part.</p></div>"),
+    boxedSolution.replace("break-inside:avoid;break-after:avoid", "break-after:avoid"),
+    boxedSolution.replace("<h2>1. A complete question</h2></div>", "<p>1. A complete question</p></div>"),
   ];
   for (const mutation of solutionMutations)
     if (!(await inspect(mutation, "Letter")).length)
