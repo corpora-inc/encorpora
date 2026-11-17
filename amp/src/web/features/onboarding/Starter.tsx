@@ -1,10 +1,5 @@
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
-import {
-  Link,
-  useNavigate,
-  useParams,
-  useRouter,
-} from "@tanstack/react-router";
+import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { Navigate } from "../../nav/Navigate";
 import { useEffect, useState, type ReactNode } from "react";
 import { create } from "zustand";
@@ -13,7 +8,6 @@ import { AppError } from "../../lib/AppError";
 import { track } from "../../lib/analytics";
 import { ownPracticeAllowed } from "../../../learning/starting-point";
 import { authConfigOptions, meOptions, sessionOptions } from "../../lib/query";
-import { closeTo } from "../../lib/return-to";
 import { cleverEnabled } from "../school/clever/enabled";
 import { chosenPlan } from "../../lib/pending-trial";
 import { Button, buttonClass } from "../../ui/Button";
@@ -148,7 +142,6 @@ export function StarterStep() {
 function StarterScreen({ session }: { session: AuthSession }) {
   const params = useParams({ strict: false }) as { choice?: string };
   const choice = isStarterChoice(params.choice) ? params.choice : null;
-  const router = useRouter();
   const me = useQuery(meOptions(session)).data;
   const account = me?.signedIn ? me : null;
   // The account's first run (`me.setup`) decides the question. Until it is
@@ -237,19 +230,8 @@ function StarterScreen({ session }: { session: AuthSession }) {
           );
         })}
       </ul>
-      {/* Adding a place goes Back where it was opened. A first run has no
-          way out but the menu: nothing here drops anyone somewhere else. */}
-      {adding && (
-        <div>
-          <Button
-            variant="secondary"
-            // Where it was opened: the entry before this one (`closeTo`).
-            onClick={() => closeTo(router, "/")}
-          >
-            Back
-          </Button>
-        </div>
-      )}
+      {/* No in-page Back: adding a place is left by the menu, the place
+          switcher or the browser, like a first run. */}
     </Page>
   );
 }
@@ -394,7 +376,6 @@ function Myself({
     <StepFrame
       steps={ONE_STEP.myself}
       index={0}
-      back="/start"
       title="What year were you born?"
       titleId="starter-myself"
       hintLines={2}
@@ -469,7 +450,6 @@ function School({
     <StepFrame
       steps={ONE_STEP.school}
       index={0}
-      back="/start"
       title="AMP for your school"
       lede="Every student works at their own level in every area of math, from counting to precalculus, with unlimited problems and personalized workbooks. Teachers see who needs them today, and they decide every grade."
     >
