@@ -96,10 +96,7 @@ export function StudentLayer({
       ) : (
         <div className={styles.sheetRecord} data-map-student-record={student}>
           <div className={styles.recordAction}>
-            <TryAsStudent
-              session={currentSession()}
-              personId={data.student.id}
-            />
+            <TryAsStudent personId={data.student.id} />
             {school && (
               <ShareWithFamily
                 session={currentSession()}

@@ -82,11 +82,15 @@ try {
             "Recovery learner",
             2016,
           );
+          // The current learner, per account (learner-store.ts, v2).
           await context.addInitScript(
             (id) =>
               localStorage.setItem(
                 "amp.learner",
-                JSON.stringify({ state: { learnerId: id }, version: 1 }),
+                JSON.stringify({
+                  state: { learners: { "development-household": id } },
+                  version: 2,
+                }),
               ),
             learner.id,
           );
@@ -102,7 +106,8 @@ try {
               });
             } else await route.continue();
           });
-          await page.goto(`${origin}/practice`);
+          // Practice names its learner in its address (identity.ts).
+          await page.goto(`${origin}/practice/${learner.id}`);
           await page.locator(".question").waitFor();
           assert.equal(
             await page.getByText("Working together", { exact: true }).count(),
