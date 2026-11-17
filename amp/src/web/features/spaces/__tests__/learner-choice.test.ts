@@ -1,7 +1,8 @@
 import { expect, test } from "vitest";
 import type { Me } from "../../../../account/contracts";
 import { learnerChoice } from "../learner-choice";
-import { addressedIdentity, practicePath } from "../identity";
+import { addressedIdentity, practiceFocus, practicePath } from "../identity";
+import { focusFilter } from "../../practice/curriculum-filter";
 import { practiceLearnerFor } from "../../profiles/practice-mode";
 
 const kid = (id: string) => ({ id, name: id.toUpperCase() });
@@ -98,4 +99,46 @@ test("bare /practice resolves to one learner, decided once", () => {
       null,
     ),
   ).toBeNull();
+});
+
+test("practice's focus is part of its address, and reads back", () => {
+  expect(practicePath("aug", { skill: "add-within-10" })).toBe(
+    "/practice/aug/skills/add-within-10",
+  );
+  // A problem type is the most specific: it wins over its skill.
+  expect(practicePath("aug", { skill: "s", template: "t 1" })).toBe(
+    "/practice/aug/types/t%201",
+  );
+  expect(practicePath("aug", { strand: "fractions" })).toBe(
+    "/practice/aug/areas/fractions",
+  );
+  expect(practiceFocus("/practice/aug/types/t%201")).toEqual({
+    template: "t 1",
+  });
+  expect(practiceFocus("/practice/aug/skills/s")).toEqual({ skill: "s" });
+  expect(practiceFocus("/practice/aug/areas/fractions")).toEqual({
+    strand: "fractions",
+  });
+  expect(practiceFocus("/practice/aug")).toEqual({});
+  // The address still names its learner.
+  expect(addressedIdentity("/practice/aug/skills/s")).toEqual({
+    kind: "learner",
+    id: "aug",
+  });
+});
+
+test("a focus the catalog doesn't have is mixed practice", () => {
+  const catalog = {
+    skills: [{ id: "s", strand: "fractions" }],
+    templates: [{ id: "t", skillId: "s" }],
+  };
+  expect(focusFilter({ template: "t" }, catalog)).toEqual({
+    skill: "s",
+    template: "t",
+  });
+  expect(focusFilter({ skill: "s" }, catalog)).toEqual({ skill: "s" });
+  expect(focusFilter({ strand: "fractions" }, catalog)).toEqual({
+    strand: "fractions",
+  });
+  expect(focusFilter({ skill: "gone" }, catalog)).toEqual({});
 });

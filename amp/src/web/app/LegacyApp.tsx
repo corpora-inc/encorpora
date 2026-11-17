@@ -1,5 +1,5 @@
 import {
-  curriculumFilter,
+  focusFilter,
   type PracticeFilter,
 } from "../features/practice/curriculum-filter";
 import { requestFetch } from "../lib/request-transport";
@@ -27,7 +27,7 @@ import {
 import type { Step } from "../../math/scene/timeline";
 import { useQuery } from "@tanstack/react-query";
 import { secondParentChild } from "../features/second-parent/api";
-import { practicePath } from "../features/spaces/identity";
+import { practiceFocus, practicePath } from "../features/spaces/identity";
 import { useLearnerChoice } from "../features/spaces/learner-choice";
 import { ListboxDisclosure } from "../ui/Listbox";
 import { ChildOverview } from "../features/second-parent/ChildOverview";
@@ -513,7 +513,9 @@ function LegacyScreen() {
   const changingFilter = useRef(false);
   const filterKey =
     route.parts[0] === "practice" && catalog
-      ? JSON.stringify(curriculumFilter(route.location.search, catalog))
+      ? JSON.stringify(
+          focusFilter(practiceFocus(route.location.pathname), catalog),
+        )
       : "{}";
   // The drawer's practice facts (PracticeControls): the area or skill the
   // address holds practice to, and the level the answers so far measure.
@@ -1040,10 +1042,10 @@ function LegacyScreen() {
     )
       void action(() => {
         const filter = practiceFilter.current;
-        const search = new URLSearchParams(route.location.search);
-        const requested = ["skill", "template", "strand"].some((key) =>
-          search.has(key),
-        );
+        // An address held to something the catalog doesn't have recovers
+        // to mixed practice; one with no focus keeps the saved focus.
+        const requested =
+          Object.keys(practiceFocus(route.location.pathname)).length > 0;
         return loadBatch(
           filter.template ?? "",
           filter.strand,
@@ -1796,8 +1798,7 @@ function LegacyScreen() {
             void action(loadFamily);
           }}
         />
-      ) : familyOpen && token ? // only the parent notice above stays here. // The account's screens are routed now (app/account-overlays.tsx);
-      null : !token ? (
+      ) : familyOpen && token ? null : !token ? ( // only the parent notice above stays here. // The account's screens are routed now (app/account-overlays.tsx);
         <section className="card welcome">
           {!nativeRuntime && <LandingView />}
           <h2>
