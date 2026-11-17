@@ -756,6 +756,33 @@ button.copyPrimary {
   background: var(--color-meter);
   opacity: 0.55;
 }
+/* Named parts (Q1, Q2…): the second tone is a solid tint, not a faded
+   fill, so its name reads at full contrast; a hairline of the page parts
+   them. */
+.ribbonBar[data-labelled] .ribbonPart {
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  font-size: var(--text-table-small);
+  font-weight: 650;
+  font-variant-numeric: var(--numeric);
+  white-space: nowrap;
+}
+.ribbonBar[data-labelled] .ribbonPart + .ribbonPart {
+  box-shadow: inset 2px 0 0 var(--color-surface);
+}
+.ribbonBar[data-labelled] .ribbonPart[data-tone="a"] {
+  color: var(--color-on-primary);
+}
+.ribbonBar[data-labelled] .ribbonPart[data-tone="b"] {
+  background: color-mix(
+    in srgb,
+    var(--color-primary) 24%,
+    var(--color-surface-sunken)
+  );
+  color: var(--color-on-surface);
+  opacity: 1;
+}
 .ribbonTicks {
   position: relative;
   height: 16px;
