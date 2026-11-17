@@ -1,0 +1,139 @@
+/* The pitch's showcase: one fixed box the slides fade within, and a row of
+   44 px controls under it. The box's ratio is the captures' (16:9 wide, 9:16
+   on a phone), so no slide, load or change ever moves the page. */
+.showcase {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.stage {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-sunken);
+  /* Sideways strokes are the showcase's (swipe); up and down still scroll. */
+  touch-action: pan-y;
+}
+@media (max-width: 480px) {
+  .stage {
+    aspect-ratio: 600 / 1066;
+  }
+}
+/* Out of flow: what a slide holds can never size the box. */
+.slide {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 700ms var(--ease-standard);
+}
+.slide[data-current] {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .slide {
+    transition: none;
+  }
+}
+.slide picture,
+.slide picture img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.slide picture img {
+  object-fit: cover;
+}
+
+/* Workbook pages: paper resting on the table, the answer key half under the
+   practice page. */
+.paper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.page {
+  display: block;
+  width: auto;
+  height: 84%;
+  border-radius: 3px;
+  background: var(--color-print-paper);
+  box-shadow:
+    0 1px 2px var(--color-shadow),
+    0 14px 36px var(--color-shadow);
+}
+.page:first-child {
+  position: relative;
+  z-index: 1;
+  transform: rotate(-1.5deg) translateX(4%);
+}
+.page + .page {
+  transform: rotate(1.25deg) translate(-4%, 2%);
+}
+@media (max-width: 480px) {
+  .page {
+    width: 80%;
+    height: auto;
+  }
+  .page:first-child {
+    transform: rotate(-1deg);
+  }
+  .page + .page {
+    display: none;
+  }
+}
+
+/* Pause or play, then one dot per slide. Each is a 44 px target; the
+   current dot stretches inside its own target, so the row never moves. */
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.control {
+  display: grid;
+  place-items: center;
+  width: var(--target-size);
+  height: var(--target-size);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-muted-text);
+  cursor: pointer;
+}
+.control:hover {
+  color: var(--color-on-surface);
+}
+.control:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+}
+.control svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.5;
+  /* The current dot stretches by transform, never by width: a width that
+     grows re-centres it, and that counts as a layout shift. */
+  transition:
+    transform var(--motion-fast) var(--ease-standard),
+    opacity var(--motion-fast) var(--ease-standard);
+}
+.control[aria-current="true"] {
+  color: var(--color-primary);
+}
+.control[aria-current="true"] .dot {
+  transform: scaleX(2.75);
+  opacity: 1;
+}

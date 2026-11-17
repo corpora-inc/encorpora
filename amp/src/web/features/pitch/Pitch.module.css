@@ -113,22 +113,6 @@
   min-width: 0;
   margin: 0;
 }
-/* The box is reserved at the still's ratio, so nothing moves as it loads. */
-.product img {
-  display: block;
-  box-sizing: border-box;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-panel);
-  background: var(--color-surface-sunken);
-}
-@media (max-width: 480px) {
-  .product img {
-    aspect-ratio: 1;
-  }
-}
 .film {
   min-width: 0;
 }

@@ -19,8 +19,8 @@ import { choosePitchAction, pitchTarget } from "./targets";
 import { keepSignUpIntent } from "../../lib/program-choice";
 import { authStep } from "../../app/auth-links";
 import { usePitchAttention } from "./usePitchAttention";
-import { phoneVideoQuery, pitchVideo } from "./video";
-import { practiceStill } from "./product";
+import { pitchVideo } from "./video";
+import { Showcase } from "./Showcase";
 import styles from "./Pitch.module.css";
 import { FREE_ONLINE_PROBLEMS } from "../../../learning/free-allowance";
 import { TRIAL_WORKBOOKS_MAX } from "../../../learning/trial-workbooks";
@@ -138,24 +138,9 @@ export function PitchPage() {
             {tryFree("primary")}
             {freeNote}
           </div>
-          <figure className={styles.product}>
-            <picture>
-              <source
-                media={phoneVideoQuery}
-                srcSet={practiceStill.square.url}
-                width={practiceStill.square.width}
-                height={practiceStill.square.height}
-              />
-              <img
-                src={practiceStill.wide.url}
-                width={practiceStill.wide.width}
-                height={practiceStill.wide.height}
-                alt={practiceStill.alt}
-                decoding="async"
-                fetchPriority="high"
-              />
-            </picture>
-          </figure>
+          <div className={styles.product}>
+            <Showcase />
+          </div>
         </section>
         <section className={styles.details} aria-labelledby="pitch-why">
           <h2 id="pitch-why">Why children move faster with AMP</h2>
