@@ -453,6 +453,16 @@ const ROUTES_EXEMPT: Record<string, string> = {
     "the family's Today (it renders Page) with the pay overlay's outlet over it",
   "features/pay/hosts.tsx#BillingPayHost":
     "Billing (it renders Page) with the pay overlay's outlet over it",
+  "features/pay/hosts.tsx#SettingsHost":
+    "a family's Settings (it renders Page) with its overlays' outlet over it",
+  "features/account/overlays.tsx#BillingOverlay":
+    "an overlay in ui/Sheet over its settings hub, which renders Page",
+  "features/account/overlays.tsx#SecurityOverlay":
+    "an overlay in ui/Sheet over its settings hub, which renders Page",
+  "features/account/overlays.tsx#DeleteAccountOverlay":
+    "an overlay in ui/Sheet over its settings hub, which renders Page",
+  "features/privacy/PrivacyOverlay.tsx#PrivacyOverlay":
+    "an overlay in ui/Sheet over its settings hub, which renders Page",
   "features/pitch/PitchScreen.tsx#PitchScreen":
     "the signed-out pitch: a marketing page with its own art direction",
   "features/schools/index.ts#SchoolsScreen":
@@ -550,6 +560,7 @@ export function routeScreens() {
     "app/family-routes.tsx",
     "app/school-routes.tsx",
     "app/pay-routes.tsx",
+    "app/account-overlays.tsx",
   ]) {
     const source = read(from);
     const loaders = new Map<string, string>();
