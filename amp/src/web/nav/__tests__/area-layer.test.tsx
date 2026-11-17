@@ -31,6 +31,7 @@ vi.mock("../../lib/learning-view", async (original) => ({
     session: { data: null },
     canPractice: practice.allowed,
     viewOnly: false,
+    learner: { id: "learner-1" },
   }),
 }));
 afterEach(() => {
@@ -176,7 +177,10 @@ test("an area offers practice across the area, not only its nearest skill", asyn
   const action = await screen.findByRole("link", {
     name: "Practice",
   });
-  expect(action.getAttribute("href")).toBe("/practice?strand=geometry");
+  // Practice held to the area, at its own address.
+  expect(action.getAttribute("href")).toBe(
+    "/practice/learner-1/areas/geometry",
+  );
 });
 
 test("Overall opens the whole level: every area, each opening in its place", async () => {

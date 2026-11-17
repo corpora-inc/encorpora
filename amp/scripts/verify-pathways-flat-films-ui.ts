@@ -105,9 +105,13 @@ async function fixture(
   } = {},
 ) {
   await page.addInitScript((learner) => {
+    // The device's learner, per account (learner-store.ts, version 2).
     localStorage.setItem(
       "amp.learner",
-      JSON.stringify({ state: { learnerId: learner }, version: 1 }),
+      JSON.stringify({
+        state: { learners: { "parent-one": learner } },
+        version: 2,
+      }),
     );
   }, LEARNER);
   await page.route("**/api/v1/**", async (route) => {
@@ -528,19 +532,16 @@ for (const width of widths)
         sheetBox.width >= 680 && sheetBox.width <= 800,
         `${tag}: lesson sheet ${sheetBox.width}px`,
       );
+    // The lesson's title is the overlay's heading now (ui/LayerFrame), over
+    // the trail; the lesson's own column starts with its actions.
     const edges = await dialog.evaluate((el) => {
       const prose = el.querySelector(".problem-lesson .lesson-goal");
       const boxed = el.querySelector(".lesson-example-prompt");
-      const title = el.querySelector("h2:not([id])");
-      return [prose, boxed, title].map((node) =>
+      return [prose, boxed].map((node) =>
         node ? node.getBoundingClientRect().left : null,
       );
     });
     assert(edges[0] !== null && edges[1] !== null);
-    assert(
-      Math.abs(edges[0]! - edges[2]!) <= 0.5,
-      `${tag}: the title and the prose share the column`,
-    );
     if (width > 640)
       assert(
         Math.abs(edges[0]! - edges[1]!) <= 0.5,

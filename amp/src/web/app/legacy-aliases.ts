@@ -1,4 +1,4 @@
-import { isRedirect, redirect } from "@tanstack/react-router";
+import { redirect } from "@tanstack/react-router";
 import type { AuthSession } from "../auth";
 import {
   claimInitialConsentChallenge,
@@ -13,7 +13,10 @@ import { MAX_LAYERS, OPEN_KEY, work } from "../nav/entities";
 import { layerScope, pushed, seedLayers, type Layer } from "../nav/layer-store";
 import { withoutLayerKeys } from "../nav/legacy-layers";
 import { legacyLayers } from "../nav/links";
-import { canonicalLearnerAddress } from "../features/profiles/practice-mode";
+import {
+  LEARNING_PATHS,
+  olderLearningHref,
+} from "../features/profiles/practice-mode";
 import { admit, requireSignedIn, toOwnPlace, withQuery } from "./sign-in-gate";
 
 /*
@@ -106,7 +109,7 @@ const withLayers = (
  * Pathways from before its layers: a skill's own address (`/pathways/<skill>`,
  * `?skill=<skill>`), a lesson (`?lesson=`) and an old shared stack
  * (`?open=`) land on the map whose learner the address names (a parent's
- * goes to their child's address, canonicalLearnerAddress), with their
+ * goes to their child's address, olderLearningHref), with their
  * layers in that map's store: the skill under any layers the address held,
  * then a lesson it names over them.
  */
@@ -125,21 +128,44 @@ async function pathwaysTarget(
   // for the map's own view store (features/pathways/map-view.ts).
   const map = withoutLayerKeys(screen, search, MAP_KEYS);
   const [path, query = ""] = map.split("?");
-  let href = map;
-  try {
-    await canonicalLearnerAddress({
+  const href =
+    (await olderLearningHref({
       pathname: path!,
       searchStr: query ? `?${query}` : "",
-    });
-  } catch (thrown) {
-    if (!isRedirect(thrown)) throw thrown;
-    href = (thrown as { options: { href?: string } }).options.href ?? map;
-  }
+    })) ?? map;
   if (MAP_VIEW_KEYS.some((key) => key in search))
     await (
       await import("../features/pathways/legacy-addresses")
     ).carryMapView(href, search);
   return { href, layers: stack.slice(0, MAX_LAYERS) };
+}
+
+/** An older gallery address: its width and theme kept as this viewer's
+ * (features/design/view.ts), then its document's own path, its section kept. */
+async function toDesign(old: OldAddress) {
+  const [{ useDesignView }, { designWidths }] = await Promise.all([
+    import("../features/design/view"),
+    import("../features/design/search"),
+  ]);
+  const { frame, specimen, width, theme } = old.search;
+  const widthOf = Number(width);
+  useDesignView.getState().set({
+    ...(width === "fill"
+      ? { width: "fill" as const }
+      : designWidths.includes(widthOf as (typeof designWidths)[number])
+        ? { width: widthOf as (typeof designWidths)[number] }
+        : {}),
+    ...(theme === "light" || theme === "dark" ? { theme } : {}),
+  });
+  const section = old.hash ? `#${old.hash}` : "";
+  if (frame === "canvas") return `/design/canvas${section}`;
+  if (
+    frame === "specimen" &&
+    typeof specimen === "string" &&
+    /^[a-z0-9-]{1,60}$/.test(specimen)
+  )
+    return `/design/specimen/${specimen}`;
+  return `/design${section}`;
 }
 
 /** Privacy's older addresses (IA v2 §2.3): the Privacy overlay over the
@@ -281,6 +307,33 @@ const WORKBOOK_KEYS = [
   "lean",
   "lesson",
 ] as const;
+
+/** What a class's workbook stack chose in its query before its view store. */
+const STACK_KEYS = [
+  "date",
+  "minutes",
+  "paper",
+  "set",
+  "students",
+  "skill",
+] as const;
+
+/** A school screen's view from an old query (features/school/view-store.ts):
+ * written for the screen at the old address's path, which it opens without
+ * the query. Nothing chosen (all malformed): the screen as it is. */
+async function screenView(
+  old: OldAddress,
+  read: () => Promise<Record<string, string | number | undefined>>,
+) {
+  const path = old.pathname.replace(/\/+$/, "");
+  const [view, { openView }, session] = await Promise.all([
+    read(),
+    import("../features/school/view-store"),
+    sessionIfAny(),
+  ]);
+  openView(session?.accountId, path, view);
+  return path;
+}
 
 /** The query keys practice's focus had before its paths. */
 const FOCUS_KEYS = ["template", "skill", "strand"] as const;
@@ -442,6 +495,31 @@ async function familyChildLayer(old: OldAddress): Promise<Target | undefined> {
   return target.href.includes("/kids/") ? target.href : undefined;
 }
 
+/** A class code as its address says it (schools/contracts.ts
+ * `formatJoinCode`): `abc-def` or `ABCDEF` reads `ABC-DEF`. */
+const JOIN_CODE = /^[A-Z0-9]{3}-[A-Z0-9]{3}$/;
+const plainCode = (code: string) =>
+  code.toUpperCase().replace(/[^A-Z0-9]/g, "");
+
+/** A printed workbook page's QR code (src/schools/classroom-workbooks.ts):
+ * its marking screen, on its workbook and student, set in the school view
+ * store (features/school/view-store.ts). */
+async function toMarking(old: OldAddress) {
+  const session = await requireSignedIn(old, {
+    web: true,
+    adults: true,
+    back: "here",
+  });
+  const { openView } = await import("../features/school/view-store");
+  const set = Number(old.search.set);
+  const student = old.search.student;
+  openView(session.accountId, old.pathname, {
+    set: Number.isInteger(set) && set > 0 ? set : undefined,
+    student: typeof student === "string" ? student : undefined,
+  });
+  return old.pathname;
+}
+
 /** Every old address, each one hop to where it opens now. */
 export const LEGACY_ALIASES: readonly LegacyAlias[] = [
   // A consent email's link (its proof taken from the fragment at boot,
@@ -481,6 +559,28 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
         token: search.token,
         error: search.error,
       }),
+  },
+  // The component gallery's documents and view, from when its address held
+  // them: the frame is a path, the width and theme this viewer's own.
+  {
+    from: "/design",
+    about: "the gallery's frame, width or theme, by its query",
+    when: ({ search }) =>
+      ["frame", "specimen", "width", "theme"].some((key) => key in search),
+    to: toDesign,
+  },
+  // The plan's address from when it held the chosen interval.
+  {
+    from: "/start/plan",
+    about: "the plan, with its interval in the query",
+    when: ({ search }) => "interval" in search,
+    to: async ({ search }) => {
+      if (search.interval === "year" || search.interval === "month")
+        (await import("../lib/pending-trial")).rememberPlanChoice(
+          search.interval,
+        );
+      return "/start/plan";
+    },
   },
   { from: "/try", about: "the retired free trial", to: retiredTrial },
   { from: "/try/$", about: "the retired free trial's steps", to: retiredTrial },
@@ -531,9 +631,35 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
       const query = params.get("q")?.trim();
       // `?topic=` named a problem type's short lesson: Pathways opens it.
       const lesson = params.get("topic")?.trim();
-      // Its search goes into the map's view (features/pathways/map-view.ts).
-      const search = query ? { topic: query } : {};
+      // Its search and area go into the map's view
+      // (features/pathways/map-view.ts; an area the map doesn't have is
+      // dropped there).
+      const strand = params.get("strand")?.trim();
+      const search = {
+        ...(query ? { topic: query } : {}),
+        ...(strand ? { area: strand } : {}),
+      };
       return pathwaysTarget(lesson ? { ...search, lesson } : search);
+    },
+  },
+  {
+    from: "/lessons/$lesson",
+    about: "a lesson AMP no longer has",
+    // A lesson the catalog has opens in its reader. The catalog is the
+    // reader's own (one download, in the Query cache); when it can't be
+    // read, the reader says so with its Try again.
+    to: async ({ params }) => {
+      const { learningCatalogOptions } = await import("../learning-transport");
+      const catalog = (await queryClient
+        .ensureQueryData(learningCatalogOptions)
+        .catch((error: unknown) => {
+          console.warn("AMP couldn’t check a lesson’s address", error);
+          return null;
+        })) as { lessons?: { id: string }[] } | null;
+      if (!catalog?.lessons?.length) return undefined;
+      if (catalog.lessons.some((lesson) => lesson.id === params.lesson))
+        return undefined;
+      return pathwaysTarget({});
     },
   },
   {
@@ -579,21 +705,26 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
     about: "a practice focus in the query",
     when: ({ search }) =>
       FOCUS_KEYS.some((key) => typeof search[key] === "string"),
-    to: async ({ params, searchStr, search }) => {
-      const { practicePath } = await import("../features/spaces/identity");
-      const rest = new URLSearchParams(searchStr);
-      for (const key of FOCUS_KEYS) rest.delete(key);
-      const text = (key: string) =>
-        typeof search[key] === "string" && search[key] !== ""
-          ? (search[key] as string)
-          : undefined;
-      const path = practicePath(params.learnerId!, {
-        template: text("template"),
-        skill: text("skill"),
-        strand: text("strand"),
-      });
-      return rest.size ? `${path}?${rest}` : path;
-    },
+    to: olderLearningHref,
+  },
+  // Learning screens from before the address named whose they are: bare
+  // `/practice` (nobody), an older `?learner=`, and `?profile=&from=`
+  // (practicing as a profile, now the current learner, its return kept in
+  // features/profiles/mode-return.ts). A parent with no practice of their
+  // own goes from a shared screen that names nobody to their child's.
+  // (`/lessons` is the lessons library's row above, `/pathways/<skill>` a
+  // skill's.)
+  ...LEARNING_PATHS.filter((path) => path !== "/lessons").map((path) => ({
+    from: path,
+    about: `${path}, naming nobody or by an older query`,
+    to: olderLearningHref,
+  })),
+  {
+    from: "/practice/$",
+    about: "practice's screens, by an older query",
+    when: ({ search }: OldAddress) =>
+      "learner" in search || "profile" in search,
+    to: olderLearningHref,
   },
 
   // A workbook day's link from before its draft store carried the draft in
@@ -736,6 +867,58 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
       return `/${setupPath(orgId, step)}`;
     },
   },
+  // A district's adoption links from before the district had its path
+  // (`?district=<id>`, `&manage=1`). A school's approval in the fragment is
+  // kept for this tab first (adoption-session.ts), never carried on.
+  {
+    from: "/school/adopt",
+    about: "a district's adoption link in the query",
+    when: ({ search }) => UUID.test(String(search.district ?? "")),
+    to: async ({ search }) => {
+      const { prepareSchoolAdoption } = await import(
+        "../features/school/adoption-session"
+      );
+      prepareSchoolAdoption();
+      const manage = search.manage === 1 || search.manage === "1";
+      return `/school/adopt/${String(search.district)}${manage ? "/manage" : ""}`;
+    },
+  },
+  // One student's sign-in card, from before it had its path (`?student=`).
+  {
+    from: "/school/$org/classes/$class/cards",
+    about: "a student's card in the query",
+    when: ({ search }) => UUID.test(String(search.student ?? "")),
+    to: ({ params, search }) =>
+      `/school/${params.org}/classes/${params.class}/cards/${String(search.student)}`,
+  },
+  // A class's workbook screens and a student's standings, from before their
+  // view had its store (features/school/view-store.ts): what the query
+  // chose is that screen's view, and the address names the screen. (A
+  // printed workbook page's QR code, `?set=&student=`, is the last row.)
+  {
+    from: "/school/$org/classes/$class/workbooks",
+    about: "the workbook stack's view in the query",
+    when: ({ search }) => STACK_KEYS.some((key) => key in search),
+    to: (old) =>
+      screenView(old, async () => {
+        const { stackSearchSchema } = await import(
+          "../features/school/classroom/search"
+        );
+        return stackSearchSchema.parse(old.search);
+      }),
+  },
+  {
+    from: "/standings",
+    about: "a class's standings in the query",
+    when: ({ search }) => "class" in search,
+    to: (old) =>
+      screenView(old, async () => {
+        const { standingsSearchSchema } = await import(
+          "../features/school/classroom/search"
+        );
+        return standingsSearchSchema.parse(old.search);
+      }),
+  },
   {
     from: "/school/$org/experience",
     about: "the student experience, from before Settings",
@@ -814,6 +997,26 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
       return hop ? { to: hop.href, state: hop.state } : undefined;
     },
   })),
+  // A class code typed or shared in another form; a school sign-in that
+  // stopped comes back with its reason (`?sso=`), which the class shows.
+  {
+    from: "/join/$code",
+    about: "a class code in another form",
+    when: ({ params }) =>
+      !JOIN_CODE.test(params.code!) && plainCode(params.code!).length === 6,
+    to: ({ params, search }) => {
+      const plain = plainCode(params.code!);
+      return withQuery(`/join/${plain.slice(0, 3)}-${plain.slice(3)}`, {
+        sso: search.sso,
+      });
+    },
+  },
+  {
+    from: "/school/$org/classes/$class/workbooks/$date",
+    about: "a printed page's QR code",
+    when: ({ search }) => "set" in search || "student" in search,
+    to: toMarking,
+  },
 ];
 
 type At = {

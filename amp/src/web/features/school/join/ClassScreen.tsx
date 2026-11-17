@@ -1,10 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import {
-  Link,
-  useNavigate,
-  useParams,
-  useSearch,
-} from "@tanstack/react-router";
+import { Link, useParams, useSearch } from "@tanstack/react-router";
 import { useEffect } from "react";
 import {
   formatJoinCode,
@@ -20,16 +15,33 @@ import { JoinFrame } from "./JoinFrame";
 import styles from "./Join.module.css";
 
 /** A code that doesn't lead anywhere: why, and the way back. */
-export function JoinProblem({ message }: { message: string }) {
+export function JoinProblem({
+  message,
+  code,
+}: {
+  message: string;
+  /** The class to go back to, when its names are the next step. */
+  code?: string;
+}) {
   return (
     <JoinFrame>
       <div className={styles.column} data-centered>
         <div role="alert">
           <h1 className={styles.title}>{message}</h1>
         </div>
-        <Link to="/join" className={buttonClass("primary", styles.bigButton)}>
-          Type a code
-        </Link>
+        {code ? (
+          <Link
+            to="/join/$code"
+            params={{ code }}
+            className={buttonClass("primary", styles.bigButton)}
+          >
+            Pick your name
+          </Link>
+        ) : (
+          <Link to="/join" className={buttonClass("primary", styles.bigButton)}>
+            Type a code
+          </Link>
+        )}
       </div>
     </JoinFrame>
   );
@@ -51,26 +63,14 @@ export function ClassScreen() {
   const code = normalizeJoinCode(params.code);
   // The one address for this code says it as it's shown, dash and all.
   const shown = formatJoinCode(code);
-  const navigate = useNavigate();
   const roster = useQuery(joinRosterOptions(code));
   const { sso } = useSearch({ strict: false }) as { sso?: unknown };
   const problem = typeof sso === "string" ? SSO_MESSAGES[sso] : undefined;
   useEffect(() => {
     if (problem) console.error("School account sign-in stopped", sso);
   }, [problem, sso]);
-  // `abc-def` or `ABCDEF` becomes the one address, `ABC-DEF`: the form
-  // the code is shown in, and the link that was shared.
-  useEffect(() => {
-    if (code && shown !== params.code)
-      void navigate({
-        to: "/join/$code",
-        params: { code: shown },
-        // Keep why a school sign-in stopped (`?sso=`): the server returns
-        // here with the code as typed, and the reason must survive.
-        search: (previous: Record<string, unknown>) => previous,
-        replace: true,
-      });
-  }, [code, shown, params.code, navigate]);
+  // `abc-def` or `ABCDEF` reaches here as the one address, `ABC-DEF`, on
+  // its one hop (app/legacy-aliases.ts), `?sso=` kept.
   // The tab names whose code this is: "Achterberg family", or the class.
   const placeName = roster.data?.class.name;
   useEffect(() => {

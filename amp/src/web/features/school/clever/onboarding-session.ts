@@ -21,8 +21,9 @@ export function clearCleverOnboardingSession() {
   replacingStudentToken = null;
   try {
     sessionStorage.removeItem(key);
-  } catch {
-    /* Storage is optional. */
+  } catch (error) {
+    // Storage is optional: the proof in memory is already gone.
+    console.warn("Clever setup sign-in not cleared from this tab", error);
   }
 }
 
@@ -55,8 +56,9 @@ async function load(): Promise<CleverOnboardingSession | null> {
   if (!token) {
     try {
       token = sessionStorage.getItem(key);
-    } catch {
-      /* Storage is optional. */
+    } catch (error) {
+      // Storage is optional: without it, setup resumes from memory only.
+      console.warn("Clever setup sign-in not read from this tab", error);
     }
   }
   if (!token || !tokenPattern.test(token)) return null;
@@ -96,8 +98,9 @@ async function load(): Promise<CleverOnboardingSession | null> {
   memoryToken = token;
   try {
     sessionStorage.setItem(key, token);
-  } catch {
-    /* Memory holds this tab's proof. */
+  } catch (error) {
+    // Memory holds this tab's proof.
+    console.warn("Clever setup sign-in not kept for a reload", error);
   }
   if (completing) {
     completing = false;

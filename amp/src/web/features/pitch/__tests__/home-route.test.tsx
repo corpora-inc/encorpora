@@ -1,3 +1,4 @@
+import { arrivalLabels, chosenProgram } from "../../../lib/program-choice";
 import {
   act,
   cleanup,
@@ -138,9 +139,17 @@ test("a signed-out visitor at / sees the pitch, with ad context kept", async () 
   const [buy] = screen.getAllByRole("link", {
     name: "Buy with Arkansas EFA funds",
   });
-  expect(buy!.getAttribute("href")).toBe(
-    "/invoice/arkansas-efa?utm_campaign=ar-efa-launch&utm_source=google&utm_medium=cpc&program=ar-efa",
-  );
+  // The invoice's own address; the program and the ad's campaign are the
+  // tab's arrival (lib/program-choice.ts), not the link's. (The router's
+  // root search still retains them until it reads the same store.)
+  const invoice = new URL(buy!.getAttribute("href")!, location.origin);
+  expect(invoice.pathname).toBe("/invoice/arkansas-efa");
+  expect(chosenProgram()).toBe("ar-efa");
+  expect(arrivalLabels()).toEqual({
+    utm_campaign: "ar-efa-launch",
+    utm_source: "google",
+    utm_medium: "cpc",
+  });
   // An offer that has not stated its refund policy: the price only.
   expect(
     screen.getByText("$599 for the year, paid from your EFA balance."),
@@ -163,7 +172,6 @@ test("a signed-out visitor at / sees the pitch, with ad context kept", async () 
   expect(router.state.location.search).toMatchObject({
     return: "free-practice",
     entry: "pitch-try",
-    program: "ar-efa",
     utm_campaign: "ar-efa-launch",
   });
   analytics.flush(true);

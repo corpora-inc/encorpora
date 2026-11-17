@@ -102,7 +102,10 @@ function decodeOne(url: string): Promise<void> {
     })();
     decoding.set(url, pending);
     // A failure isn't remembered: the next ask tries again.
-    pending.catch(() => decoding.delete(url));
+    pending.catch((error: unknown) => {
+      decoding.delete(url);
+      console.warn("Money art didn't decode; the next ask tries again", error);
+    });
   }
   return pending;
 }

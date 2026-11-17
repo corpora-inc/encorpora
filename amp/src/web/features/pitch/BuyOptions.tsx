@@ -17,7 +17,7 @@ import {
 import { pricesOptions } from "../billing/prices";
 import { PitchLink, usePitchNav } from "./nav";
 import { pitchProgram, pitchProgramOf, pitchTarget } from "./targets";
-import { keepArrivalProgram } from "../../lib/program-choice";
+import { keepArrival } from "../../lib/program-choice";
 import styles from "./Pitch.module.css";
 import { storedHome } from "../../lib/home-href";
 
@@ -52,8 +52,9 @@ export function underPerDay(annualMinor: number) {
 /** Loads what Buy needs before a screen paints, so Buy never appears late
  * and moves the page. A failure stays for the screen to show in place. */
 export function loadBuyData(search: Record<string, unknown>) {
-  // An ad's `?program=` is read here, once, and kept for the tab.
-  const program = pitchProgram(keepArrivalProgram(search));
+  // An ad's `?program=` and campaign labels are read here, once, and kept
+  // for the tab.
+  const program = pitchProgram(keepArrival(search).program);
   return Promise.all([
     queryClient
       .ensureQueryData(pricesOptions)

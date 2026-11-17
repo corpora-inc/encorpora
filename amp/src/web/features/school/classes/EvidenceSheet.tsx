@@ -10,6 +10,7 @@ import { Button } from "../../../ui/Button";
 import { Loading } from "../../../ui/Loading";
 import { Meter } from "../../../ui/Meter";
 import { Sheet } from "../../../ui/Sheet";
+import { ViewLink } from "../ViewLink";
 import { FinalField, Suggested } from "./grade-parts";
 import { CurvePlace } from "./GradeCurve";
 import { evidenceOptions, type Place } from "./teacher-api";
@@ -188,18 +189,16 @@ export function EvidenceSheet({
                 Open {data.student.first}’s record
               </EntityLink>
             )}
-            <Link
-              to="/$"
-              params={{
-                _splat:
-                  links?.reportCard ??
-                  classUrl(place.org, place.class, "report-cards"),
-              }}
-              search={{ term, student: data.student.id } as never}
+            <ViewLink
+              to={
+                links?.reportCard ??
+                classUrl(place.org, place.class, "report-cards")
+              }
+              view={{ term, student: data.student.id }}
               className={buttonClass("quiet")}
             >
               Report card
-            </Link>
+            </ViewLink>
           </div>
         </div>
       )}

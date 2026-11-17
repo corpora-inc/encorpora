@@ -16,7 +16,9 @@ export function prepareBuyerHandoff(): string | null {
       memory = null;
       try {
         sessionStorage.removeItem(key);
-      } catch {}
+      } catch (error) {
+        console.warn("The buyer link couldn’t be forgotten on this tab", error);
+      }
       return null;
     }
     try {
@@ -24,7 +26,9 @@ export function prepareBuyerHandoff(): string | null {
         key,
         JSON.stringify({ token, until: Date.now() + 30 * 86400000 }),
       );
-    } catch {}
+    } catch (error) {
+      console.warn("The buyer link is kept for this page only", error);
+    }
     memory = token;
     return token;
   }
@@ -40,7 +44,9 @@ export function prepareBuyerHandoff(): string | null {
     )
       return (memory = saved.token);
     sessionStorage.removeItem(key);
-  } catch {}
+  } catch (error) {
+    console.warn("The buyer link kept on this tab couldn’t be read", error);
+  }
   return null;
 }
 let memory: string | null = null;

@@ -452,7 +452,6 @@ function School({
       {/* The next step first: what this account can do now, by what it
           already has (an invitation, a school, its own class's pilot). */}
       <SchoolNext
-        session={session}
         className={styles.actions}
         clever={clever}
         exploring={exploring}

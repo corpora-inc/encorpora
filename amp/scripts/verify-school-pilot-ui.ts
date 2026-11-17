@@ -290,7 +290,9 @@ try {
   await page
     .getByRole("button", { name: "Request seats", exact: true })
     .click();
-  await page.waitForURL(/seats=1/);
+  // The sheet opens in history state (nav/sheet.ts), never the address.
+  await page.getByRole("spinbutton", { name: "Seats" }).waitFor();
+  assert.ok(!new URL(page.url()).search, "Request seats leaves the address");
   await page.getByRole("spinbutton", { name: "Seats" }).press("PageUp");
   const relativeRequest = "**/api/v1/school/classes/*/purchase-request";
   await page.route(relativeRequest, async (route) => {
@@ -402,8 +404,11 @@ try {
     }),
   );
   await page.goto(
-    `${origin}/school/${created.org_id}/classes/${created.class_id}/today?seats=1`,
+    `${origin}/school/${created.org_id}/classes/${created.class_id}/today`,
   );
+  await page
+    .getByRole("button", { name: "Request seats", exact: true })
+    .click();
   await page.getByRole("button", { name: "Get link" }).click();
   await page
     .getByText(/Rowan Ellis already has a buyer link for this class/)

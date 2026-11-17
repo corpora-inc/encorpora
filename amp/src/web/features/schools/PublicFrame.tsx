@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { WaveMark } from "../../ui/NavigationSheet";
 import { buttonClass } from "../../ui/Button";
 import { SiteFooter } from "../support/SiteFooter";
+import { signInLink } from "./sign-in-link";
 import styles from "./PublicFrame.module.css";
 
 /** The school pages' header and footer. Every page offers the same few places:
@@ -43,8 +44,7 @@ export function PublicFrame({
             </Link>
             {signIn && (
               <Link
-                to="/sign-in"
-                search={{ return: "school", next: "/school" } as never}
+                {...signInLink("/school")}
                 className={buttonClass("quiet", styles.signIn)}
               >
                 Sign in

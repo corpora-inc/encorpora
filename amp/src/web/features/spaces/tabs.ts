@@ -158,9 +158,8 @@ export function learnerTabs(): TabItem[] {
 /** An adult's own practice: practice, where they are, and their workbooks on
  * a phone; their map and inventory under More. Practice at a level (with its
  * saved profiles) is the drawer's one entry, never a tab as well. Their own
- * learning tabs name nobody (self is implicit); a practice profile's name
- * the profile they are practicing as (which has its own levels, and no
- * workbooks). */
+ * learning tabs name nobody (self is implicit, and while they practice as a
+ * profile, self is that profile: its own levels, and no workbooks). */
 export function meTabs(
   ownLearner: string | null,
   profile: string | null = null,
@@ -168,17 +167,17 @@ export function meTabs(
    * `/me/level`, never in a saved profile's editor. */
   levelMode = false,
 ): TabItem[] {
-  if (profile) {
-    const as = { search: { profile } };
+  if (profile)
+    // Practicing as the profile (the account's current learner): its
+    // practice names it; its map and inventory are self's (identity.ts).
     return [
-      { ...tab("practice", "Practice", "practice", true), ...as },
+      tab("practice", "Practice", practicePath(profile).slice(1), true),
       levelMode
         ? tab("levels", "Level", "me/level", true)
         : tab("levels", "Levels", `me/profiles/${profile}`, true),
-      { ...tab("pathways", "Pathways", "pathways", true), ...as },
-      { ...tab("inventory", "Inventory", "inventory"), ...as },
+      tab("pathways", "Pathways", "pathways", true),
+      tab("inventory", "Inventory", "inventory"),
     ];
-  }
   return [
     ...(ownLearner
       ? [

@@ -4,8 +4,7 @@ import { Button, buttonClass } from "../../../ui/Button";
 import { Dialog } from "../../../ui/Dialog";
 import { QrCode } from "../../../ui/QrCode";
 import { Toast } from "../../../ui/Toast";
-import { useQuery } from "@tanstack/react-query";
-import { sessionOptions } from "../../../lib/query";
+import { useSessionOrNull } from "../../../lib/session";
 import { useRotateCode } from "../classes/api";
 import { CopyButton } from "../parts";
 import styles from "./JoinClass.module.css";
@@ -200,7 +199,7 @@ function NewCode({
   words: Pick<SpaceWords, "Learners">;
   locked: boolean;
 }) {
-  const session = useQuery(sessionOptions).data ?? null;
+  const session = useSessionOrNull();
   const rotate = useRotateCode(session, place);
   const [asking, setAsking] = useState(false);
   const [status, setStatus] = useState("");

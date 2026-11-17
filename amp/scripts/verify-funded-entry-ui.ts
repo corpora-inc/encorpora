@@ -166,6 +166,11 @@ async function serve(page: Page, state: State, faults: string[]) {
       path = new URL(req.url()).pathname.replace("/api/v1", "");
     if (path === "/funding/invoices")
       return route.fulfill({ json: { invoices: [] } });
+    // The public invoice form's offer for its program.
+    if (path === "/funding/invoice-offers")
+      return route.fulfill({
+        json: { offers: state.offer ? [presentOffer(state.program)] : [] },
+      });
     if (path === "/me") return route.fulfill({ json: me(state) });
     if (path === "/events")
       return route.fulfill({ status: 202, json: { accepted: 1 } });
@@ -262,6 +267,17 @@ async function capture(page: Page, label: string) {
   await fits(page, label);
   await page.screenshot({ path: `${shots}/${label}.png` });
 }
+/** A pay overlay's address: over the learner's own place
+ * (features/pay/address.ts). */
+const payOverlay = (url: URL) => /\/pay(\/|$)/.test(url.pathname);
+/** What the pay store holds for a learner (features/pay/store.ts). */
+const payChoice = (page: Page, learnerId: string) =>
+  page.evaluate(
+    (id) =>
+      JSON.parse(sessionStorage.getItem("amp.pay.v1") ?? "{}")?.state
+        ?.accounts?.["synthetic-parent"]?.learners?.[id] ?? null,
+    learnerId,
+  );
 try {
   for (const entry of entryPrograms)
     for (const width of [320, 390, 768, 1280])
@@ -273,7 +289,7 @@ try {
           },
           colorScheme: theme,
         });
-        let page = await context.newPage();
+        const page = await context.newPage();
         page.setDefaultTimeout(10000);
         const entryCampaign =
           entry.slug === "arizona-esa"
@@ -285,6 +301,8 @@ try {
           faults: string[] = [];
         await serve(page, state, faults);
         if (entry.slug === "new-hampshire-efa") {
+          // A funding page's free sign-up names its program (an older link's
+          // `?program=`, which the tab then keeps).
           await page.goto(
             `${origin}/sign-up?return=free-practice&program=nh-efa&${entryCampaign}`,
           );
@@ -292,20 +310,21 @@ try {
           await page.reload();
           await page.getByText("Approved New Hampshire EFA vendor.").waitFor();
           assert.equal(
-            new URL(page.url()).searchParams.get("program"),
-            "nh-efa",
-          );
-          assert.equal(
             new URL(page.url()).searchParams.get("utm_campaign"),
             "nh-efa-launch",
           );
           await capture(page, `free-signup-nh-${width}-${theme}`);
         }
+        // Signed out, a program's older purchase address is its public
+        // invoice form, in one hop: the ad's labels kept, nothing else.
         await page.goto(
           `${origin}/purchase/${entry.slug}?${entryCampaign}&email=must-not-forward`,
         );
+        await page.waitForURL(
+          (url) => url.pathname === `/invoice/${entry.slug}`,
+        );
         await page
-          .getByRole("heading", { name: "Create your account" })
+          .getByRole("heading", { name: "Get your AMP invoice" })
           .waitFor()
           .catch(async (e) => {
             console.log(
@@ -315,89 +334,16 @@ try {
             );
             throw e;
           });
-        await page
-          .getByLabel("Email", { exact: true })
-          .fill("parent@example.test");
-        await page
-          .locator('input[autocomplete="new-password"]')
-          .fill("synthetic-password-only");
-        await capture(page, `signup-${entry.slug}-${width}-${theme}`);
-        await page
-          .getByRole("button", { name: "Create account", exact: true })
-          .click();
-        await page
-          .getByRole("heading", { name: "Confirm your email" })
-          .waitFor();
-        const callback = await page.evaluate(
-          () => (window as any).syntheticCallback,
-        );
-        assert.ok(callback.startsWith(`/purchase/${entry.slug}?`));
-        assert.ok(!callback.includes("must-not-forward"));
-        state.confirm = false;
-        await page.getByRole("button", { name: "I’ve confirmed it" }).click();
-        // Who's learning: the buyer herself, or a child (consent first).
-        await page.getByRole("heading", { name: "Who’s learning?" }).waitFor();
-        await capture(page, `who-${entry.slug}-${width}-${theme}`);
-        await page.getByRole("link", { name: "For a child" }).click();
-        await page
-          .getByRole("heading", { name: "Learning consent", exact: true })
-          .waitFor();
-        assert.equal(state.learners.length, 0);
-        assert.ok(
-          await page.evaluate(
-            () =>
-              !!localStorage.getItem(
-                "amp.pending-funded-purchase.synthetic-parent",
-              ),
-          ),
-        );
-        await capture(page, `consent-${entry.slug}-${width}-${theme}`);
-        // Simulate consent completed in the email's tab: this shared component reads
-        // the same account-scoped continuation after the server confirms consent.
-        state.consent = true;
-        const original = page;
-        page = await context.newPage();
-        await serve(page, state, faults);
-        await page.goto(
-          `${origin}/artifacts/funded-entry/consent.html?identity=other-parent`,
-        );
-        await page
-          .getByRole("button", { name: "Continue to family" })
-          .waitFor();
+        const at = new URL(page.url());
         assert.equal(
-          await page
-            .getByRole("button", {
-              name: `Continue to ${entry.offer.programName}`,
-            })
-            .count(),
-          0,
+          at.searchParams.get("utm_campaign"),
+          new URLSearchParams(entryCampaign).get("utm_campaign"),
         );
-        await page.goto(`${origin}/artifacts/funded-entry/consent.html`);
-        await page
-          .getByRole("button", {
-            name: `Continue to ${entry.offer.programName}`,
-          })
-          .click();
-        await original.close();
-        await page.getByLabel("Learner name").fill("Sample learner");
-        await page
-          .getByRole("button", { name: "Continue", exact: true })
-          .click();
-        await page.getByRole("button", { name: "2016", exact: true }).click();
-        await page
-          .getByRole("heading", { name: entry.offer.programName, exact: true })
-          .waitFor();
-        assert.equal(
-          new URL(page.url()).searchParams.get("utm_source"),
-          new URLSearchParams(entryCampaign).get("utm_source"),
-        );
-        await page
-          .getByRole("button", { name: /^Program and product:/ })
-          .waitFor();
+        assert.ok(!page.url().includes("must-not-forward"));
         assert.ok(
           !(await page.locator("body").innerText()).includes("Fixture program"),
         );
-        await capture(page, `quote-options-${entry.slug}-${width}-${theme}`);
+        await capture(page, `invoice-${entry.slug}-${width}-${theme}`);
         if (width === 390 && theme === "light") {
           const axe = await new AxeBuilder({ page }).analyze();
           assert.deepEqual(
@@ -410,61 +356,46 @@ try {
             [],
           );
         }
-        state.failCreate = true;
-        await page
-          .getByRole("button", { name: "Prepare unpaid quote" })
-          .click();
-        await page.getByRole("alert").waitFor();
-        await capture(page, `failed-request-${entry.slug}-${width}-${theme}`);
-        await page
-          .getByRole("button", { name: "Dismiss message", exact: true })
-          .click();
-        await page
-          .getByRole("button", { name: "Prepare unpaid quote" })
-          .click();
-        await page
-          .getByRole("heading", { name: "Purchase request", exact: true })
-          .waitFor();
-        assert.equal(state.payloads.length, 2);
-        assert.equal(
-          state.payloads[0]!.idempotencyKey,
-          state.payloads[1]!.idempotencyKey,
-        );
-        assert.deepEqual(
-          state.payloads[1]!.campaignAttribution,
-          entry.slug === "new-hampshire-efa"
-            ? {
-                campaign: "nh-efa-launch",
-                source: "google",
-                medium: "cpc",
-                creative: "nh-efa-adaptive-v1",
-              }
-            : {
-                campaign:
-                  entry.slug === "arizona-esa"
-                    ? "az-esa-launch"
-                    : "ar-efa-launch",
-                source: "facebook",
-                medium: "paid-social",
-                creative: "efa-facebook-feed-v1",
-              },
-        );
-        assert.equal(
-          await page.evaluate(() =>
-            localStorage.getItem(
-              "amp.pending-funded-purchase.synthetic-parent",
-            ),
-          ),
-          null,
-        );
-        await capture(page, `prepared-${entry.slug}-${width}-${theme}`);
         assert.deepEqual(faults, []);
         await context.close();
       }
+  // Signed in, the older address is the learner's pay overlay, on its
+  // program's education-funds tab (features/pay/legacy.ts), in one hop.
+  for (const entry of entryPrograms) {
+    const context = await browser.newContext({
+      viewport: { width: 390, height: 844 },
+    });
+    await context.addInitScript(() =>
+      localStorage.setItem("synthetic-signed-in", "yes"),
+    );
+    const page = await context.newPage(),
+      state = fresh(entry.offer),
+      faults: string[] = [];
+    state.confirm = false;
+    state.consent = true;
+    state.learners = [learner];
+    await serve(page, state, faults);
+    await page.goto(`${origin}/purchase/${entry.slug}?${campaign}`);
+    await page.waitForURL(payOverlay);
+    assert.ok(
+      new URL(page.url()).pathname.includes(learner.id),
+      "the learner's own overlay",
+    );
+    assert.deepEqual(await payChoice(page, learner.id), {
+      method: "esa",
+      program: entry.offer.programId,
+    });
+    assert.deepEqual(
+      faults.filter((fault) => !fault.startsWith("Unexpected ")),
+      [],
+      "no page errors",
+    );
+    await context.close();
+  }
   // Privacy signals never prevent the same funded purchase, and invalid labels
-  // cannot survive the router's redirects or request serialization. Global
-  // Privacy Control drops the labels; Do Not Track has no legal force and
-  // changes nothing (lib/funded-entry.ts measurementOptOut).
+  // cannot survive the router's redirects. Global Privacy Control drops the
+  // labels; Do Not Track has no legal force and changes nothing
+  // (lib/funded-entry.ts measurementOptOut).
   for (const privacy of [
     "gpc",
     "dnt",
@@ -476,7 +407,6 @@ try {
       viewport: { width: 390, height: 844 },
     });
     await context.addInitScript((kind) => {
-      localStorage.setItem("synthetic-signed-in", "yes");
       if (kind === "gpc")
         Object.defineProperty(navigator, "globalPrivacyControl", {
           value: true,
@@ -487,9 +417,6 @@ try {
     const page = await context.newPage(),
       state = fresh(),
       faults: string[] = [];
-    state.confirm = false;
-    state.consent = true;
-    state.learners = [learner];
     await serve(page, state, faults);
     const tags =
       privacy === "invalid"
@@ -499,9 +426,8 @@ try {
           : campaign;
     const measured = privacy === "allowed" || privacy === "dnt";
     await page.goto(`${origin}/purchase/arkansas-efa?${tags}`);
-    await page
-      .getByRole("heading", { name: "Arkansas EFA", exact: true })
-      .waitFor();
+    await page.waitForURL((url) => url.pathname === "/invoice/arkansas-efa");
+    await page.getByRole("heading", { name: "Get your AMP invoice" }).waitFor();
     assert.equal(
       page.url().includes("utm_"),
       measured || privacy === "invalid-creative",
@@ -509,81 +435,11 @@ try {
     );
     assert.equal(page.url().includes("utm_content"), measured);
     assert.equal(page.url().includes("private"), false);
-    await page.getByRole("button", { name: "Prepare unpaid quote" }).click();
-    await page
-      .getByRole("heading", { name: "Purchase request", exact: true })
-      .waitFor();
-    assert.deepEqual(
-      state.payloads[0]!.campaignAttribution,
-      measured || privacy === "invalid-creative"
-        ? {
-            campaign: "ar-efa-launch",
-            source: "facebook",
-            medium: "paid-social",
-            ...(measured ? { creative: "efa-facebook-feed-v1" } : {}),
-          }
-        : undefined,
-    );
-    assert.deepEqual(faults, []);
-    await context.close();
-  }
-  {
-    const context = await browser.newContext();
-    await context.addInitScript(() =>
-      localStorage.setItem("synthetic-signed-in", "yes"),
-    );
-    const page = await context.newPage(),
-      state = fresh(),
-      faults: string[] = [];
-    state.confirm = false;
-    await serve(page, state, faults);
-    await page.goto(`${origin}/purchase/arkansas-efa?${campaign}`);
-    await page.getByRole("heading", { name: "Who’s learning?" }).waitFor();
-    await page.getByRole("link", { name: "For a child" }).click();
-    await page
-      .getByRole("heading", { name: "Learning consent", exact: true })
-      .waitFor();
-    // Back leaves the funded purchase for the account's first run.
-    await page.getByRole("button", { name: "Back", exact: true }).click();
-    await page
-      .getByRole("heading", { name: "What brings you to AMP?" })
-      .waitFor();
-    assert.equal(new URL(page.url()).pathname, "/start");
-    assert.equal(
-      await page.evaluate(() =>
-        localStorage.getItem("amp.pending-funded-purchase.synthetic-parent"),
-      ),
-      null,
-    );
-    assert.deepEqual(faults, []);
-    await context.close();
-  }
-  // An absent selected offer must never expose the unrelated fixture offer.
-  for (const entry of entryPrograms) {
-    const context = await browser.newContext();
-    await context.addInitScript(() =>
-      localStorage.setItem("synthetic-signed-in", "yes"),
-    );
-    const page = await context.newPage(),
-      state = fresh(entry.offer),
-      faults: string[] = [];
-    state.offer = false;
-    await serve(page, state, faults);
-    await page.goto(`${origin}/purchase/${entry.slug}`);
-    await page
-      .getByRole("heading", {
-        name: `${entry.offer.programName} purchase options`,
-      })
-      .waitFor();
-    assert.ok(
-      !(await page.locator("body").innerText()).includes("Fixture program"),
-    );
-    assert.equal(state.learners.length, 0);
     assert.deepEqual(faults, []);
     await context.close();
   }
   console.log(
-    "PASS: 24 state/viewport/theme journeys, retry idempotency, program filtering, GPC/DNT/invalid-label navigation, unavailable offer.",
+    "PASS: signed-out program addresses open their invoice form (24 program/viewport/theme cases), signed-in ones the learner's pay overlay on the program's tab, GPC/DNT/invalid-label navigation.",
   );
 } finally {
   await browser.close();

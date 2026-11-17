@@ -1,136 +1,40 @@
 {
   "about": "Frontend anti-pattern counts in src/web; they only fall (amp/AGENTS.md, Frontend architecture). Enforced by tests/architecture-ratchet.test.ts; `files` locates the counts for its failure messages.",
   "counts": {
-    "redirects": 1,
-    "validateSearch": 7,
-    "searchHandoffs": 66,
-    "navigatingEffects": 8,
-    "renderNavigate": 4,
-    "silentCatches": 19,
-    "sessionProps": 19,
-    "sessionReads": 8,
-    "inlineQueryKeys": 9,
-    "nativeControls": 5
+    "redirects": 0,
+    "validateSearch": 0,
+    "searchHandoffs": 3,
+    "navigatingEffects": 2,
+    "renderNavigate": 0,
+    "silentCatches": 0,
+    "sessionProps": 0,
+    "sessionReads": 1,
+    "inlineQueryKeys": 0,
+    "nativeControls": 0
   },
   "files": {
-    "redirects": {
-      "features/profiles/practice-mode.ts": 1
-    },
-    "validateSearch": {
-      "app/router.tsx": 7
-    },
+    "redirects": {},
+    "validateSearch": {},
     "searchHandoffs": {
-      "features/account/AccountReady.tsx": 2,
-      "features/inventory/InventoryScreen.tsx": 3,
-      "features/pitch/targets.ts": 1,
-      "features/profiles/api.ts": 1,
-      "features/profiles/practice-mode.ts": 1,
-      "features/school/AdoptionScreen.tsx": 1,
-      "features/school/CalendarScreen.tsx": 2,
-      "features/school/ChooserScreen.tsx": 1,
-      "features/school/classes/EvidenceSheet.tsx": 1,
-      "features/school/classes/GradebookScreen.tsx": 2,
-      "features/school/classes/RosterScreen.tsx": 2,
-      "features/school/classes/SmallClassGrades.tsx": 1,
-      "features/school/classes/StudentSections.tsx": 1,
-      "features/school/classes/teacher-shared.tsx": 2,
-      "features/school/classes/today/todo-entries.tsx": 3,
-      "features/school/classes/TodayScreen.tsx": 1,
-      "features/school/classes/WorkReplay.tsx": 2,
-      "features/school/ClassesScreen.tsx": 3,
-      "features/school/classroom/MarkingScreen.tsx": 2,
-      "features/school/classroom/StandingsScreen.tsx": 1,
-      "features/school/classroom/WorkbookStackScreen.tsx": 3,
-      "features/school/clever/ConnectionScreen.tsx": 2,
-      "features/school/ImportScreen.tsx": 1,
-      "features/school/InviteScreen.tsx": 2,
-      "features/school/join/api.ts": 1,
-      "features/school/join/ClassScreen.tsx": 1,
-      "features/school/org/ActivityScreen.tsx": 1,
-      "features/school/org/OverviewScreen.tsx": 4,
-      "features/school/org/PracticeMap.tsx": 1,
-      "features/school/org/RolloverScreen.tsx": 1,
-      "features/school/org/SchoolsScreen.tsx": 1,
-      "features/school/pilots/ClassAccess.tsx": 1,
-      "features/school/pilots/SchoolNext.tsx": 2,
-      "features/school/SettingsScreen.tsx": 1,
-      "features/school/StaffScreen.tsx": 1,
-      "features/school/StudentsScreen.tsx": 1,
-      "features/schools/PublicFrame.tsx": 1,
-      "features/schools/SchoolsScreen.tsx": 2,
-      "LessonIndex.tsx": 1,
-      "LessonLibrary.tsx": 1,
-      "nav/root.tsx": 1,
-      "ui/RowList.tsx": 1,
-      "ui/Tabs.tsx": 2
+      "features/inventory/InventoryScreen.tsx": 3
     },
     "navigatingEffects": {
-      "app/LegacyApp.tsx": 2,
-      "features/design/DesignScreen.tsx": 1,
-      "features/school/AdoptionScreen.tsx": 1,
-      "features/school/join/CardScreen.tsx": 1,
-      "features/school/join/ClassScreen.tsx": 1,
-      "features/school/join/ContinueScreen.tsx": 1,
-      "nav/Navigate.tsx": 1
+      "app/LegacyApp.tsx": 2
     },
-    "renderNavigate": {
-      "features/school/CalendarScreen.tsx": 1,
-      "features/school/classroom/StandingsScreen.tsx": 1,
-      "features/school/clever/ConnectionScreen.tsx": 1,
-      "features/school/join/PicturesScreen.tsx": 1
-    },
-    "silentCatches": {
-      "features/lessons/publications.ts": 1,
-      "features/school/adoption-session.ts": 3,
-      "features/school/classroom/MarkingScreen.tsx": 1,
-      "features/school/classroom/merge-worker.ts": 1,
-      "features/school/clever/ConnectionScreen.tsx": 1,
-      "features/school/clever/LinkCleverButton.tsx": 1,
-      "features/school/clever/onboarding-session.ts": 3,
-      "features/school/join/PicturesScreen.tsx": 1,
-      "features/school/join/scan.ts": 1,
-      "features/school/pilots/api.ts": 1,
-      "features/school/pilots/buyer-session.ts": 3,
-      "features/school/pilots/ClassAccess.tsx": 1,
-      "scene/money-art.ts": 1
-    },
-    "sessionProps": {
-      "features/family/TutoringGroup.tsx": 5,
-      "features/onboarding/Starter.tsx": 1,
-      "features/school/CalendarScreen.tsx": 2,
-      "features/school/classes/people/ClassPeople.tsx": 6,
-      "features/school/classes/StudentLayer.tsx": 2,
-      "features/school/classes/today/FamilyToday.tsx": 1,
-      "features/school/ClassesScreen.tsx": 1,
-      "features/school/StudentsScreen.tsx": 1
-    },
+    "renderNavigate": {},
+    "silentCatches": {},
+    "sessionProps": {},
     "sessionReads": {
-      "app/LegacyApp.tsx": 1,
-      "features/school/classroom/StandingsScreen.tsx": 1,
-      "features/school/clever/ConnectionScreen.tsx": 1,
-      "features/school/clever/LinkCleverButton.tsx": 1,
-      "features/school/InviteScreen.tsx": 1,
-      "features/school/join/JoinClass.tsx": 1,
-      "features/school/join/ReplaceCode.tsx": 1,
-      "features/schools/SchoolsScreen.tsx": 1
+      "app/LegacyApp.tsx": 1
     },
-    "inlineQueryKeys": {
-      "features/school/classes/teacher-api.ts": 1,
-      "features/school/clever/api.ts": 1,
-      "features/school/clever/ConnectionScreen.tsx": 1,
-      "features/school/InviteScreen.tsx": 2,
-      "features/school/join/api.ts": 1,
-      "features/school/pilots/api.ts": 1,
-      "features/school/pilots/SchoolNext.tsx": 1,
-      "features/schools/ParentScreen.tsx": 1
-    },
-    "nativeControls": {
-      "features/onboarding/setup/PeopleRows.tsx": 1,
-      "features/school/classes/grade-parts.tsx": 1,
-      "features/school/ImportScreen.tsx": 1,
-      "features/school/join/JoinScreen.tsx": 1,
-      "features/schools/TalkToUs.tsx": 1
-    }
+    "inlineQueryKeys": {},
+    "nativeControls": {}
   },
-  "exempt": []
+  "exempt": [
+    {
+      "category": "navigatingEffects",
+      "file": "features/design/DesignScreen.tsx",
+      "reason": "the dev gallery mirrors the canvas iframe's scrolled section (a postMessage browser event) into its own #hash"
+    }
+  ]
 }
