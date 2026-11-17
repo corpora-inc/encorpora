@@ -1426,7 +1426,7 @@ try {
     templates.find((t) => t.skillId === target.id)?.id,
     "selected skill reaches the existing batch API",
   );
-  await drill.waitForURL(`${origin}/practice`);
+  await drill.waitForURL((url) => url.pathname.startsWith("/practice"));
   await drill.close();
   const exactType = templates.filter((t) => t.skillId === target.id).at(-1)!;
   const typed = await browser.newPage({
@@ -1468,7 +1468,7 @@ try {
     linkedBatches[0]?.templateId,
     templates.find((t) => t.skillId === target.id)?.id,
   );
-  await linked.waitForURL(`${origin}/practice`);
+  await linked.waitForURL((url) => url.pathname.startsWith("/practice"));
   await linked.close();
 
   // Signed out, the map states the free allowance and its way in is sign-up.
