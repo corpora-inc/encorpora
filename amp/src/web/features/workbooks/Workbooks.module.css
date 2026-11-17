@@ -550,7 +550,14 @@ h3.optionsTitle {
 }
 .answerField {
   flex: 1 1 140px;
+  min-width: 0;
   max-width: 220px;
+}
+/* The field fills its column; its intrinsic width (about 240 px) would
+   reach under the marks beside it. */
+.answerField input {
+  width: 100%;
+  min-width: 0;
 }
 .picker {
   display: inline-flex;
