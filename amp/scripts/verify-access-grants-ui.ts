@@ -402,7 +402,9 @@ try {
   Object.assign(s, fresh(), { consent: false });
   await page.goto(`${origin}/access`);
   await page.getByRole("link", { name: "Continue setup" }).click();
-  await page.waitForURL("**/start/name?return=access");
+  // The gift is the account's own (me.availableAccessGrant): the step is a
+  // plain path.
+  await page.waitForURL((url) => url.pathname === "/start/name" && !url.search);
   await page.getByLabel("Learner name").waitFor();
   assert.equal(s.creates, 0);
   // Back/forward restores the invitation and draft step.

@@ -109,7 +109,8 @@ const watchPractice = `(() => {
   const boxes = (window.__practiceBoxes = []);
   const poll = () => {
     // Practice has arrived (its address names the learner, and any focus).
-    if (/^\/practice(\/|$)/.test(location.pathname)) return;
+    // (Doubled backslashes: this is a template string's source.)
+    if (/^\\/practice(\\/|$)/.test(location.pathname)) return;
     const button = document.querySelector(
       "[data-layer-frame] [data-curriculum-practice] button",
     );
