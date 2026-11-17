@@ -622,7 +622,6 @@ export function StudentsScreen() {
       )}
       {familyAdd && session ? (
         <AddChildSheet
-          session={session}
           kind={familyAdd}
           open={adding}
           onOpenChange={(next) =>

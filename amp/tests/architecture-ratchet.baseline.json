@@ -7,7 +7,7 @@
     "navigatingEffects": 3,
     "renderNavigate": 0,
     "silentCatches": 2,
-    "sessionProps": 3,
+    "sessionProps": 1,
     "sessionReads": 1,
     "inlineQueryKeys": 0,
     "nativeControls": 0
@@ -18,7 +18,6 @@
       "app/router.tsx": 6
     },
     "searchHandoffs": {
-      "features/account/AccountReady.tsx": 2,
       "features/inventory/InventoryScreen.tsx": 3,
       "nav/root.tsx": 1,
       "ui/RowList.tsx": 1,
@@ -34,9 +33,7 @@
       "scene/money-art.ts": 1
     },
     "sessionProps": {
-      "features/school/classes/StudentLayer.tsx": 1,
-      "features/school/ClassesScreen.tsx": 1,
-      "features/school/StudentsScreen.tsx": 1
+      "features/school/classes/StudentLayer.tsx": 1
     },
     "sessionReads": {
       "app/LegacyApp.tsx": 1
