@@ -629,3 +629,201 @@ test(
     assert.deepEqual(opened.learners, []);
   },
 );
+
+/* A parent's setup keeps the kids it saved editable until the parent is done:
+   a child with nothing yet in their name comes back out of the family. */
+test(
+  "setup takes a saved child with nothing yet back out of the family",
+  database,
+  async (t) => {
+    const f = await fixture(t);
+    const parent = await f.user("Casey Fixture");
+    const stranger = await f.user("Robin Fixture");
+    const first = await f.started(parent, {
+      as: "parent",
+      children: [
+        { birthYear: year - 9, name: "Sam" },
+        { birthYear: year - 7 },
+        { birthYear: year - 5 },
+      ],
+    });
+    const [, , classId] = first.home.match(HOME) ?? [];
+    const remove = (account: string, learnerId: string) =>
+      f.app.inject({
+        method: "POST",
+        url: `/api/v1/family/learners/${learnerId}/remove`,
+        payload: {},
+        headers: { authorization: `Bearer ${account}` },
+      });
+    const kids = async () =>
+      (await f.me(parent)).learners as {
+        id: string;
+        name: string;
+        removable?: true;
+      }[];
+    const [sam, second, third] = await kids();
+    // Every fresh child can come out: /me says so, so Remove only shows
+    // where it will work.
+    assert.deepEqual(
+      (await kids()).map((kid) => kid.removable),
+      [true, true, true],
+    );
+
+    // Another account's child, or a made-up one, is never theirs to remove.
+    assert.equal((await remove(stranger, second!.id)).statusCode, 404);
+    assert.equal((await remove(parent, "nobody")).statusCode, 404);
+
+    const gone = await remove(parent, second!.id);
+    assert.equal(gone.statusCode, 200, gone.body);
+    assert.deepEqual(
+      (await kids()).map((kid) => kid.id),
+      [sam!.id, third!.id],
+    );
+    // Off the family's roster too: its sign-in list no longer shows them.
+    assert.deepEqual(
+      (await f.studentsOf(classId!)).map((s) => s.id).sort(),
+      [sam!.id, third!.id].sort(),
+    );
+    assert.deepEqual(await f.signInList(classId!), ["Child 3", "Sam"]);
+    // Removing again finds nobody.
+    assert.equal((await remove(parent, second!.id)).statusCode, 404);
+
+    // A child already shown a problem has learning in their name: they stay,
+    // and /me no longer offers Remove for them.
+    await f.db.query(
+      "INSERT INTO amp_instances(id,learner_id,content) VALUES($1,$2,'{}'::jsonb)",
+      [randomUUID(), sam!.id],
+    );
+    const started = await remove(parent, sam!.id);
+    assert.equal(started.statusCode, 409, started.body);
+    assert.match(started.body, /child_has_history/);
+    assert.deepEqual(
+      (await kids()).map((kid) => [kid.id, kid.removable]),
+      [
+        [sam!.id, undefined],
+        [third!.id, true],
+      ],
+    );
+
+    // A child with a purchase in their name stays as well.
+    const paid = await f.started(parent, {
+      as: "parent",
+      children: [
+        { birthYear: year - 9 },
+        { birthYear: year - 5 },
+        { birthYear: year - 4 },
+      ],
+    });
+    assert.equal((paid as { added?: number }).added, 1);
+    const fourth = (await kids()).at(-1)!;
+    await f.db.query(
+      "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES($1,$2,'stripe',$3,'active',now(),now()+interval '1 year')",
+      [randomUUID(), fourth.id, randomUUID()],
+    );
+    assert.equal((await remove(parent, fourth.id)).statusCode, 409);
+
+    // The family keeps one child: the last is edited, never removed.
+    assert.equal((await remove(parent, third!.id)).statusCode, 200);
+    const alone = await f.user("Alex Fixture");
+    const only = await f.started(alone, {
+      as: "parent",
+      children: [{ birthYear: year - 8 }],
+    });
+    const last = await remove(alone, only.learnerId!);
+    assert.equal(last.statusCode, 409, last.body);
+    assert.match(last.body, /last_child/);
+    assert.equal(
+      await f.count("amp_learners WHERE account_id=$1 AND deleted_at IS NULL", [
+        alone,
+      ]),
+      1,
+    );
+  },
+);
+
+/* First-run progress has one owner (`me.setup`): the answer given and
+   whether the first run is done. Saving kids never ends it. */
+test(
+  "me.setup: the answer can change until the first run is done",
+  database,
+  async (t) => {
+    const f = await fixture(t);
+    const as = (account: string) => ({ authorization: `Bearer ${account}` });
+    const post = (account: string, url: string, payload: object) =>
+      f.app.inject({ method: "POST", url, payload, headers: as(account) });
+    const setup = async (account: string) => (await f.me(account)).setup;
+
+    const parent = await f.user("Casey Fixture");
+    assert.deepEqual(await setup(parent), { persona: null, done: false });
+    assert.equal(
+      (await post(parent, "/api/v1/start/choice", { answer: "parent" }))
+        .statusCode,
+      204,
+    );
+    assert.deepEqual(await setup(parent), { persona: "parent", done: false });
+    // Kids saved at step one: the family exists, and the first run goes on.
+    const made = await f.started(parent, {
+      as: "parent",
+      children: [{ birthYear: year - 9 }, { birthYear: year - 7 }],
+    });
+    assert.deepEqual(await setup(parent), { persona: "parent", done: false });
+    // Back to the question, another answer, and Parent again.
+    await post(parent, "/api/v1/start/choice", { answer: "myself" });
+    assert.deepEqual(await setup(parent), { persona: "myself", done: false });
+    await post(parent, "/api/v1/start/choice", { answer: "parent" });
+    // Going to Today from setup ends it; later answers (Add a place) don't
+    // change it.
+    assert.equal(
+      (await post(parent, "/api/v1/start/done", { answer: "parent" }))
+        .statusCode,
+      204,
+    );
+    assert.deepEqual(await setup(parent), { persona: "parent", done: true });
+    await post(parent, "/api/v1/start/choice", { answer: "myself" });
+    assert.deepEqual(await setup(parent), { persona: "parent", done: true });
+    assert.equal(
+      (await post(parent, "/api/v1/start/done", { answer: "nope" })).statusCode,
+      400,
+    );
+
+    // A child's first practice here ends a parent's first run.
+    const second = await f.user("Robin Fixture");
+    await post(second, "/api/v1/start/choice", { answer: "parent" });
+    const kids = await f.started(second, {
+      as: "parent",
+      children: [{ birthYear: year - 8 }],
+    });
+    const here = await post(
+      second,
+      `/api/v1/family/learners/${kids.learnerId}/practice-here`,
+      {},
+    );
+    assert.equal(here.statusCode, 201, here.body);
+    assert.deepEqual(await setup(second), { persona: "parent", done: true });
+
+    // Their own practice starting ends an adult's.
+    const adult = await f.user("Alex Fixture");
+    await post(adult, "/api/v1/start/choice", { answer: "myself" });
+    await f.started(adult, {
+      as: "myself",
+      timezone: "America/New_York",
+      birthYear: year - 30,
+    });
+    assert.deepEqual(await setup(adult), { persona: "myself", done: true });
+
+    // An account from before this record that already has a place finished
+    // its first run then, and answering again doesn't reopen it.
+    const earlier = await f.user("Sam Fixture");
+    await f.started(earlier, {
+      as: "parent",
+      children: [{ birthYear: year - 6 }],
+    });
+    await f.db.query("DELETE FROM amp_first_runs WHERE account_id=$1", [
+      earlier,
+    ]);
+    assert.deepEqual(await setup(earlier), { persona: null, done: true });
+    await post(earlier, "/api/v1/start/choice", { answer: "myself" });
+    assert.deepEqual(await setup(earlier), { persona: "myself", done: true });
+    assert.ok(made.home);
+  },
+);
