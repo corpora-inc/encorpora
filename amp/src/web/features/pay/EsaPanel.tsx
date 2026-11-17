@@ -10,6 +10,7 @@ import { PageSection } from "../../ui/PageSection";
 import { TextField } from "../../ui/TextField";
 import { TileChoice } from "../../ui/TileChoice";
 import { Toast } from "../../ui/Toast";
+import { FlowSteps } from "../../ui/FlowSteps";
 import { PlanTerms } from "../billing/PlanChoice";
 import { emailConsentOptions } from "../billing";
 import { InvoicePractice } from "../funding/InvoicePractice";
@@ -112,11 +113,13 @@ export function EsaPanel() {
   const go = (next: EsaStep) => choose(session.accountId, learner.id, { esaStep: next });
   return (
     <div className={styles.wizard}>
-      <Stepper
-        current={step}
-        reachable={program ? ["program", "plan", "name"] : ["program"]}
-        onStep={go}
-        disabled={create.isPending}
+      <FlowSteps
+        label="Education funds"
+        steps={STEPS}
+        current={STEPS.findIndex((entry) => entry.id === step)}
+        onStep={(id) => {
+          if (!create.isPending) go(id as EsaStep);
+        }}
       />
       {step === "program" && (
         <TileChoice
@@ -230,48 +233,13 @@ export function EsaPanel() {
   );
 }
 
-const STEPS: { step: EsaStep; label: string }[] = [
-  { step: "program", label: "Program" },
-  { step: "plan", label: "Plan" },
-  { step: "name", label: "Name" },
+/** The education-funds steps (ui/FlowSteps): state in the pay store, never
+ * an address; a done step is a tap back to it. */
+const STEPS: { id: EsaStep; label: string }[] = [
+  { id: "program", label: "Program" },
+  { id: "plan", label: "Plan" },
+  { id: "name", label: "Name" },
 ];
-
-/** The education-funds steps: the current one marked, the ones before it
- * (and any already reachable) a tap away. State, never an address. */
-function Stepper({
-  current,
-  reachable,
-  onStep,
-  disabled,
-}: {
-  current: EsaStep;
-  reachable: EsaStep[];
-  onStep: (step: EsaStep) => void;
-  disabled: boolean;
-}) {
-  const at = STEPS.findIndex((entry) => entry.step === current);
-  return (
-    <ol className={styles.stepper} aria-label="Steps">
-      {STEPS.map((entry, index) => (
-        <li key={entry.step}>
-          <button
-            type="button"
-            className={styles.stepButton}
-            aria-current={entry.step === current ? "step" : undefined}
-            data-done={index < at || undefined}
-            disabled={disabled || !reachable.includes(entry.step)}
-            onClick={() => onStep(entry.step)}
-          >
-            <span className={styles.stepNumber} aria-hidden="true">
-              {index + 1}
-            </span>
-            {entry.label}
-          </button>
-        </li>
-      ))}
-    </ol>
-  );
-}
 
 /**
  * A named child under 13 learns on the parent's verified consent, so an

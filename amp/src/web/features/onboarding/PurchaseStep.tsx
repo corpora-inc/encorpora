@@ -141,7 +141,7 @@ export function PurchaseStep({
         </a>
       ) : (
         <Link {...plans} className={buttonClass("primary")}>
-          Back to plans
+          Choose a plan
         </Link>
       ),
     },

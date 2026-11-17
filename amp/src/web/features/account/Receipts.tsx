@@ -218,7 +218,7 @@ export function Receipts({
         <>
           <p>This receipt isn’t available in this account.</p>
           <Button variant="secondary" onClick={() => onSelect()}>
-            Back to billing
+            All receipts
           </Button>
         </>
       ) : !selected && records.data ? (

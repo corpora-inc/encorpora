@@ -388,7 +388,7 @@ try {
   await page
     .getByRole("heading", { name: "Payment records", exact: true })
     .waitFor();
-  await page.getByRole("button", { name: "Back to family" }).click();
+  await page.getByRole("button", { name: "Close payment records" }).click();
   assert.equal(
     await page
       .locator("[data-payment-history]")

@@ -168,7 +168,7 @@ export function CardDone({
             className={buttonClass("primary")}
             onClick={() => choose(session.accountId, learner.id, { method: "card" })}
           >
-            {outcome.resume ? "Back to checkout" : "Choose a plan"}
+            {outcome.resume ? "Return to checkout" : "Choose a plan"}
           </Link>
         }
       />

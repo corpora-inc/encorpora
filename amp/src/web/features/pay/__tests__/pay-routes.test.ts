@@ -133,7 +133,7 @@ test("the pay overlays hang under their screens and carry no query", () => {
     "/account/billing/pay/$learner/done",
     "/account/billing/pay/$learner/invoice/$invoiceId",
   ]) {
-    const route = (router.routesByPath as Record<string, { options: { validateSearch?: unknown } }>)[path];
+    const route = (router.routesByPath as unknown as Record<string, { options: { validateSearch?: unknown } }>)[path];
     expect(route, path).toBeTruthy();
     expect(route!.options.validateSearch, path).toBeUndefined();
   }
@@ -253,7 +253,7 @@ test("the pay address of a day ago opens the overlay over the learner's page", a
 
 test("an overlay needs a signed-in adult: signed out, one hop to sign in", async () => {
   queryClient.setQueryData(sessionOptions.queryKey, null);
-  const route = (router.routesByPath as Record<string, { options: { beforeLoad: () => Promise<unknown> } }>)[
+  const route = (router.routesByPath as unknown as Record<string, { options: { beforeLoad: () => Promise<unknown> } }>)[
     "/family/$family/kids/$learner/pay"
   ]!;
   await expect(route.options.beforeLoad()).rejects.toMatchObject({

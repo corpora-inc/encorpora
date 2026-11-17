@@ -671,16 +671,12 @@ const BACK_DEBT: Record<string, string> = {
     "a legacy screen (phase 2): replaced when its feature migrates",
   "ParentConsentCenter.tsx":
     "a legacy screen (phase 2): replaced when its feature migrates",
-  "PaymentHistoryCenter.tsx":
-    "a pay surface: the pay flow (redo-pay-flow) replaces it with the stepper in its overlay",
   "PracticeWorkspace.tsx":
     "a legacy screen (phase 2): replaced when its feature migrates",
   "ProgressWorkspace.tsx":
     "a legacy screen (phase 2): replaced when its feature migrates",
   "app/LegacyApp.tsx":
     "a legacy screen (phase 2): replaced when its feature migrates",
-  "features/account/Receipts.tsx":
-    "a pay surface: the pay flow (redo-pay-flow) replaces it with the stepper in its overlay",
   "features/auth/SignInScreen.tsx":
     "a sign-in or first-run card step: to move onto the shared stepper (phase 2)",
   "features/design/sections/states.tsx":
@@ -695,16 +691,12 @@ const BACK_DEBT: Record<string, string> = {
     "a family screen: the child-page worker removes it in its restructure (overlays close with ✕)",
   "features/films/FilmScreen.tsx":
     "the immersive film's return to its problem or lesson: to become its ✕ (phase 2)",
-  "features/funding/InvoiceForm.tsx":
-    "a pay surface: the pay flow (redo-pay-flow) replaces it with the stepper in its overlay",
   "features/me/OwnTimeScreen.tsx":
     "an adult's practice time: Progress's tab replaces it (phase 2)",
   "features/navigation/DrawerContents.tsx":
     "practice modes' way back to where they started, in the bar and drawer: to become the mode's exit (phase 2)",
   "features/onboarding/LearnerSteps.tsx":
     "a sign-in or first-run card step: to move onto the shared stepper (phase 2)",
-  "features/onboarding/PurchaseStep.tsx":
-    "a pay surface: the pay flow (redo-pay-flow) replaces it with the stepper in its overlay",
   "features/pathways/LessonRecovery.tsx":
     "an overlay's failure state names where ✕ returns; to become the overlay's ✕ (phase 2)",
   "features/practice/StudentSignOut.tsx":

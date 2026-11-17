@@ -39,13 +39,27 @@
   color: var(--color-muted-text);
   text-decoration: none;
 }
-a.step:hover .name {
+/* A done step in a flow on one address: the same, as a button. */
+button.step {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+a.step:hover .name,
+button.step:hover .name {
   color: var(--color-on-surface);
 }
-a.step:hover .bar {
+a.step:hover .bar,
+button.step:hover .bar {
   background: var(--color-primary-hover);
 }
-a.step:focus-visible {
+a.step:focus-visible,
+button.step:focus-visible {
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
