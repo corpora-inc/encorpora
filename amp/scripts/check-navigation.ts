@@ -21,6 +21,7 @@ const MODULE = [
   /^lib\/return-to\.ts$/,
   /^app\/router\.tsx$/,
   /^app\/school-routes\.tsx$/,
+  /^app\/pay-routes\.tsx$/,
 ];
 const BANNED = [
   /navigate\(\{\s*to:\s*"\/"/,
@@ -51,12 +52,11 @@ const ALLOWED: Record<string, [count: number, reason: string]> = {
     "explicit account linking hands off to Clever OAuth",
   ],
   "features/account/BillingPage.tsx": [1, "Stripe subscription management"],
-  "AnnualPurchase.tsx": [2, "Stripe Checkout and the billing portal"],
   "FamilyCenter.tsx": [1, "Stripe's billing portal"],
   "features/billing/api.ts": [1, "Stripe Checkout"],
-  "features/continue/ContinueScreen.tsx": [1, "Stripe Checkout"],
+  "features/pay/api.ts": [1, "Stripe Checkout"],
+  "features/pay/CardPanel.tsx": [1, "resuming an open Stripe Checkout"],
   "features/onboarding/PlanStep.tsx": [1, "resuming an open Stripe Checkout"],
-  "FundingPurchaseCenter.tsx": [1, "ClassWallet's payment page"],
   "features/dev/PersonaSwitcher.tsx": [
     1,
     "development only: a fresh signed-in load as another persona",

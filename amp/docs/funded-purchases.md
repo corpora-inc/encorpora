@@ -56,7 +56,7 @@ Invoice and reminder delivery use the funded worker's reviewed mail transport, w
 
 ## Parent document and status
 
-Billing contains education-fund invoice history, authenticated PDF downloads, program payment links and submission reporting. The funded purchase page creates an invoice from the buyer's billing details before learning setup. Connecting that invoice to a learner uses the server's account ownership and learning-permission checks. Viewing existing records does not create access. Stable account identity is separate from the renewable access token.
+Billing contains education-fund invoice history, authenticated PDF downloads, program payment links and submission reporting. A signed-in parent creates an invoice on the learner's pay screen (`/pay/<learner>`, its education-funds tab): one action creates the invoice (queuing its email) and claims it for that learner, so access starts at once; the invoice's own page (`/pay/<learner>/invoice/<invoice>`) gives the PDF and the offer's submission instructions. The public invoice form (`/invoice/<program>`) creates an invoice before any account exists. Connecting that invoice to a learner uses the server's account ownership and learning-permission checks. Viewing existing records does not create access. Stable account identity is separate from the renewable access token.
 
 ### An adult buying for herself
 

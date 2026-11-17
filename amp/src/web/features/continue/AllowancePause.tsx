@@ -2,7 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { track } from "../../lib/analytics";
-import { sessionOptions } from "../../lib/query";
+import { meOptions, queryClient, sessionOptions } from "../../lib/query";
+import { payLearnerFor } from "../pay/paths";
+import { learnerOrigin, payOver } from "../pay/address";
 import { TalkToUs } from "../schools/TalkToUs";
 import { Button, buttonClass } from "../../ui/Button";
 import { Sheet } from "../../ui/Sheet";
@@ -133,14 +135,23 @@ export function AllowancePause({
                 continued.current = true;
                 track("continue_click");
               }
+              // A practice profile's plan is its family's (paths.ts).
+              const me = queryClient.getQueryData(
+                meOptions(session).queryKey,
+              );
+              const payer =
+                (me?.signedIn && payLearnerFor(me, learner.id)?.id) ||
+                learner.id;
               rememberContinuation({
                 accountId: session.accountId,
-                learnerId: learner.id,
+                learnerId: payer,
                 returnTo: here,
               });
+              // Paying opens over the learner's own place (features/pay).
               void navigate({
-                to: "/continue/$learnerId",
-                params: { learnerId: learner.id },
+                to: (me?.signedIn
+                  ? payOver(learnerOrigin(me, payer), payer)
+                  : payOver("/account/billing", payer)) as never,
               });
             }}
           >

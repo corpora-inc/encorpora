@@ -101,27 +101,9 @@ const SCREENS: Screen[] = [
     width: "standard",
   },
   {
-    name: "continue",
-    person: "parent-day1",
-    path: async (page) => `/continue/${await firstChild(page)}`,
-    width: "standard",
-  },
-  {
     name: "billing",
     person: "family",
     path: "/account/billing",
-    width: "standard",
-  },
-  {
-    name: "purchase-annual",
-    person: "family",
-    path: "/purchase/annual",
-    width: "standard",
-  },
-  {
-    name: "purchase-funded",
-    person: "family",
-    path: "/purchase/funded",
     width: "standard",
   },
   {
