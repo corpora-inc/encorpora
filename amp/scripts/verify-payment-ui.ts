@@ -141,6 +141,8 @@ try {
   const context = await browser.newContext({
     viewport: { width: 320, height: 568 },
     acceptDownloads: true,
+    // The sheet lands without its slide, so it is measured where it rests.
+    reducedMotion: "reduce",
   });
   const page = await context.newPage();
   page.setDefaultTimeout(15000);

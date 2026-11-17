@@ -144,9 +144,17 @@ export function WeekFact({ child }: { child: FamilyChild }) {
   const { week } = child;
   if (!week.lastPracticed)
     return <Fact value="Not started" label="no practice yet" />;
+  const minutes = practiceMinutes(week.minutes, week.problems);
+  // Practiced before, not yet this week: one quiet line, never "None".
+  if (!minutes)
+    return (
+      <span className={styles.fact} data-week-quiet="">
+        <span className={styles.factLabel}>No practice yet this week</span>
+      </span>
+    );
   return (
     <Fact
-      value={practiceMinutes(week.minutes, week.problems) ?? "None"}
+      value={minutes}
       label={
         week.minutes > 0 || week.problems > 0
           ? `${count(week.problems, "problem")} this week`
@@ -498,41 +506,51 @@ export function FamilyTodayScreen() {
                       name: <span className={styles.kidName}>You</span>,
                       action: (
                         <span className={styles.action}>
-                          <Button
-                            variant="secondary"
-                            aria-label="Practice as yourself"
-                            aria-busy={startOwn.isPending || undefined}
-                            onClick={() => {
-                              if (startOwn.isPending) return;
-                              setOwnError("");
-                              void (
-                                practiceSelf
-                                  ? Promise.resolve(
-                                      me!.adultPractice!.learner!.id,
-                                    )
-                                  : startOwn.mutateAsync(undefined)
-                              )
-                                .then((learner) => {
-                                  rememberPlace(session.accountId, "home");
-                                  return navigate({
-                                    to: "/$",
-                                    params: practiceParams(learner),
-                                    search: { from: `/${familyHref(family)}` },
+                          {practiceSelf ? (
+                            <Link
+                              to="/$"
+                              params={practiceParams(
+                                me!.adultPractice!.learner!.id,
+                              )}
+                              className={buttonClass("secondary")}
+                              aria-label="Practice as yourself"
+                              onClick={() =>
+                                rememberPlace(session.accountId, "home")
+                              }
+                            >
+                              Practice
+                            </Link>
+                          ) : (
+                            <Button
+                              variant="secondary"
+                              aria-label="Practice as yourself"
+                              aria-busy={startOwn.isPending || undefined}
+                              onClick={() => {
+                                if (startOwn.isPending) return;
+                                setOwnError("");
+                                void startOwn
+                                  .mutateAsync(undefined)
+                                  .then((learner) => {
+                                    rememberPlace(session.accountId, "home");
+                                    return navigate({
+                                      to: "/$",
+                                      params: practiceParams(learner),
+                                    });
+                                  })
+                                  .catch((failure: unknown) => {
+                                    console.error(
+                                      "Own practice didn’t start",
+                                      failure,
+                                    );
+                                    setOwnError(
+                                      "Practice didn’t start. Try again.",
+                                    );
                                   });
-                                })
-                                .catch((failure: unknown) => {
-                                  console.error(
-                                    "Own practice didn’t start",
-                                    failure,
-                                  );
-                                  setOwnError(
-                                    "Practice didn’t start. Try again.",
-                                  );
-                                });
-                            }}
-                          >
-                            Practice
-                          </Button>
+                              }}
+                            >
+                              Practice
+                            </Button>
+                          )}
                         </span>
                       ),
                     }}
@@ -594,7 +612,8 @@ export function FamilyTodayScreen() {
 
 /**
  * For all the kids at once (several children): the family's report cards,
- * once there is term work to report on, and the workbook print for several.
+ * once there is term work to report on, and the workbook print for them
+ * all (the family's workbooks address).
  * Nothing until one of them applies.
  */
 function ForAllKids({ place }: { place: ReturnType<typeof useFamilyPlace> }) {
@@ -610,11 +629,10 @@ function ForAllKids({ place }: { place: ReturnType<typeof useFamilyPlace> }) {
         <Link
           to="/$"
           params={{ _splat: familyHref(place.family, "workbooks") }}
-          search={{ several: 1 } as never}
           className={buttonClass("secondary")}
           data-workbooks-several=""
         >
-          Workbooks for several
+          Workbooks for all kids
         </Link>
       )}
     </ActionRow>

@@ -54,7 +54,7 @@ import {
 import { rememberPlace } from "../features/onboarding/place-memory";
 import { useHomeHref } from "../lib/home-place";
 import {
-  isFundedReturn,
+  fundedSetup,
   campaignSearch,
   continuationSearch,
   continuationUrl,
@@ -75,6 +75,8 @@ import {
   cleverReturn,
   homeReturn,
   resumeStripeReturn,
+  signInArrivalPending,
+  signInReturn,
   stripeReturn,
 } from "./third-party-returns";
 import { knownStale, onSignedOut } from "../lib/app-recovery";
@@ -84,7 +86,6 @@ import {
   studentSession,
   studentSignInEnded,
 } from "../lib/student-device";
-import { workbookSearchSchema } from "../features/workbooks/model";
 import { prepareBuyerHandoff } from "../features/school/pilots/buyer-session";
 import { prepareSchoolAdoption } from "../features/school/adoption-session";
 import { finishingSignIn } from "../features/school/join/finishing";
@@ -322,10 +323,15 @@ const pitch = lazyRouteComponent(
  * needed) before the screen changes, so a remount never shows the other
  * screen half-loaded. */
 function AppScreen() {
-  const watchingFilm = useMatch({
+  const film = useMatch({
     from: "/app/lessons/$templateId/watch",
     shouldThrow: false,
   });
+  const filmForProblem = useMatch({
+    from: "/app/lessons/$templateId/watch/$problem",
+    shouldThrow: false,
+  });
+  const watchingFilm = film ?? filmForProblem;
   const session = useSessionOrNull();
   const router = useRouter();
   const atHome = useMatch({
@@ -382,7 +388,16 @@ const auth = lazyRouteComponent(
   "SignInScreen",
 );
 /** Sign-in methods load with the route: the screen renders complete. */
-const loadAuthConfig = () => queryClient.ensureQueryData(authConfigOptions);
+async function loadAuthConfig() {
+  const config = await queryClient.ensureQueryData(authConfigOptions);
+  // A deployment without its own accounts signs in with its external
+  // authority: the auth screens hand straight to it.
+  if (config.mode !== "accounts") {
+    window.history.replaceState({}, "", "/");
+    await (await import("../auth")).signIn();
+  }
+  return config;
+}
 const start = lazyRouteComponent(
   () => import("../features/onboarding/StartScreen"),
   "StartScreen",
@@ -404,7 +419,9 @@ async function beforeStart({
     me,
     location.pathname,
     !!chosenPlan(),
-    isFundedReturn(search.return) ? search.return : false,
+    // The funded program these steps are for: the address's on arrival,
+    // kept for the account; the next steps are plain paths.
+    fundedSetup(session.accountId, location.search),
   );
   if (target) elsewhere(withQuery(target, search));
 }
@@ -480,15 +497,23 @@ export const homeRouteId = () => home.id;
  * resume the account; `/` chooses its place or its first-run question. */
 async function beforeAuthEntry({
   search,
+  location,
 }: {
   search: Record<string, unknown>;
+  location: { pathname: string; searchStr: string; search: unknown };
 }) {
   if (nativeRuntime) return;
   notForStudents();
+  // A sign-in that failed comes back with its code: kept, then one hop to
+  // the clean address.
+  signInReturn(location);
   // Security, school connections and invitation handoffs can require a
-  // fresh sign-in or another identity even with a valid session. Provider
-  // errors must also stay visible on the authentication screen.
-  if (search.error || (search.return && search.return !== "free-practice"))
+  // fresh sign-in or another identity even with a valid session. A failed
+  // sign-in must also stay visible on the authentication screen.
+  if (
+    signInArrivalPending() ||
+    (search.return && search.return !== "free-practice")
+  )
     return;
   const session = await queryClient.ensureQueryData(sessionOptions);
   if (!session) return;
@@ -518,6 +543,9 @@ const accessGift = createRoute({
   getParentRoute: () => root,
   path: "/access",
   staticData: { space: "account" },
+  // Signed out, sign-in comes back here.
+  beforeLoad: ({ location }) =>
+    requireSignedIn(location, { back: { return: "access" } }),
   component: lazyRouteComponent(
     () => import("../features/access/AccessScreen"),
     "AccessScreen",
@@ -807,7 +835,6 @@ const workbookDay = createRoute({
   getParentRoute: () => root,
   path: "/learners/$learnerId/workbooks/$date",
   staticData: { space: "learner" },
-  validateSearch: (search) => workbookSearchSchema.parse(search),
   beforeLoad: beforeWorkbooks,
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookDayScreen"),
@@ -1512,6 +1539,20 @@ const lessonFilm = createRoute({
     await legacy.preload?.();
   },
 });
+/** A film watched as help for one problem (`<problem>`): the same film,
+ * and watching it counts as help for that problem. */
+const lessonFilmProblem = createRoute({
+  getParentRoute: () => appScreen,
+  path: "/lessons/$templateId/watch/$problem",
+  staticData: { space: "learner" },
+  component: lazyRouteComponent(
+    () => import("../features/films/FilmScreen"),
+    "FilmScreen",
+  ),
+  loader: async () => {
+    await legacy.preload?.();
+  },
+});
 /** Development only: the design preview's persona switcher
  * (`scripts/design-preview.sh`). `import.meta.env.DEV` is false in a build,
  * so neither the route nor its chunk is in production. */
@@ -1531,7 +1572,7 @@ const history = nativeRuntime
   : createBrowserHistory();
 export const router = createRouter({
   routeTree: root.addChildren([
-    appScreen.addChildren([home, fallback, lessonFilm]),
+    appScreen.addChildren([home, fallback, lessonFilm, lessonFilmProblem]),
     join,
     joinContinue,
     joinClass,

@@ -194,7 +194,6 @@ test("Workbooks keep their identity: a day's set, the stack's day, minutes, pape
         minutes: 45,
         paper: "a4",
         students: `${P_PIP},${P_WREN}`,
-        several: 1,
       },
     },
   );
@@ -207,7 +206,8 @@ test("Workbooks keep their identity: a day's set, the stack's day, minutes, pape
       students: "x,y",
       date: "soon",
     }),
-    { to: `/family/${F}`, search: {} },
+    // Several children: the print for them all, at its own address.
+    { to: `/family/${F}/workbooks`, search: {} },
   );
 });
 

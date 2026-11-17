@@ -9,7 +9,8 @@ import { showsPitch } from "./shows-pitch";
 function providerHint() {
   try {
     return /(?:^|;\s*)amp\.provider=1(?:;|$)/.test(document.cookie);
-  } catch {
+  } catch (error) {
+    console.warn("Cookies are unreadable; no provider sign-in hint", error);
     return false;
   }
 }

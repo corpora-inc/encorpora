@@ -230,8 +230,13 @@ for (const width of WIDTHS)
       await page.locator("[data-own-devices]").first().waitFor();
       await settle(page);
       await page.locator("[data-own-devices]").first().click();
-      if (!/devices=1/.test(page.url()))
-        fail(`today-${tag}`, "the sheet has no address");
+      // A history entry of its own (nav/sheet.ts): Back closes it, a
+      // reload keeps it, and the address stays the screen's.
+      if (
+        new URL(page.url()).search ||
+        (await page.evaluate(() => history.state?.sheet)) !== "devices"
+      )
+        fail(`today-${tag}`, "the sheet is not its own history entry");
       await checkSheet(page, `today-sheet-${tag}`, `today-sheet-${tag}`);
       // The family's Settings: the code and Replace code.
       await page.keyboard.press("Escape");
@@ -266,8 +271,13 @@ for (const width of WIDTHS)
       await shoot(page, `setup-ready-${tag}`);
       await noOverflow(page, `setup-${tag}`);
       await page.locator("[data-own-devices]").click();
-      if (!/devices=1/.test(page.url()))
-        fail(`setup-${tag}`, "the sheet has no address");
+      // A history entry of its own (nav/sheet.ts): Back closes it, a
+      // reload keeps it, and the address stays the screen's.
+      if (
+        new URL(page.url()).search ||
+        (await page.evaluate(() => history.state?.sheet)) !== "devices"
+      )
+        fail(`setup-${tag}`, "the sheet is not its own history entry");
       await checkSheet(page, `setup-sheet-${tag}`, `setup-sheet-${tag}`);
       await made.close();
     }

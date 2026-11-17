@@ -34,6 +34,22 @@ const FAMILY_ORG = "33333333-3333-4333-8333-333333333333";
 const CLASS = "44444444-4444-4444-8444-444444444444";
 const CHILD = "55555555-5555-4555-8555-555555555555";
 const ATTEMPT = "77777777-7777-4777-8777-777777777777";
+/** A family of three children in its own class, each by their person. */
+const FAMILY_OF_THREE = "88888888-8888-4888-8888-888888888888";
+const KIDS = [
+  [
+    "99999999-9999-4999-8999-999999999991",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa1",
+  ],
+  [
+    "99999999-9999-4999-8999-999999999992",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa2",
+  ],
+  [
+    "99999999-9999-4999-8999-999999999993",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa3",
+  ],
+] as const;
 const SESSION = { accountId: "parent", token: "test-token" };
 
 /** Who opens the old address. */
@@ -91,7 +107,24 @@ vi.mock("../../features/family/api", async (original) => ({
   }),
   familyOptions: (_session: unknown, id: string) => ({
     queryKey: ["test", "family", id],
-    queryFn: async () => ({ children: [{ id: CHILD }] }),
+    queryFn: async () =>
+      id === FAMILY_OF_THREE
+        ? {
+            familyId: id,
+            children: KIDS.map(([learner, person]) => ({
+              id: learner,
+              classes: [
+                {
+                  id: CLASS,
+                  personId: person,
+                  name: "Our family",
+                  orgId: FAMILY_ORG,
+                  hostedByFamily: true,
+                },
+              ],
+            })),
+          }
+        : { familyId: id, children: [{ id: CHILD, classes: [] }] },
   }),
 }));
 
@@ -261,6 +294,11 @@ const EXAMPLES: Example[] = [
   },
 
   {
+    from: `/learners/${CHILD}/workbooks/2026-11-16?minutes=45&paper=a4`,
+    world: "adult",
+    lands: `/learners/${CHILD}/workbooks/2026-11-16`,
+  },
+  {
     from: `/practice/${CHILD}?skill=s1&profile=p`,
     world: "adult",
     lands: `/practice/${CHILD}/skills/s1?profile=p`,
@@ -400,6 +438,24 @@ const EXAMPLES: Example[] = [
     from: `/family/${FAMILY}/map?open=skill%3As1`,
     world: "family parent",
     lands: `/family/${FAMILY}?open=skill%3As1`,
+  },
+  // Several children: their workbook print is the address itself; an older
+  // flag or learner list leaves the query, the children as their people.
+  {
+    from: `/family/${FAMILY_OF_THREE}/workbooks?several=1&paper=a4&kids=${KIDS[1][0]},${KIDS[2][0]}`,
+    world: "family parent",
+    lands: `/family/${FAMILY_OF_THREE}/workbooks?paper=a4&students=${KIDS[1][1]}%2C${KIDS[2][1]}`,
+  },
+  // One of their own children opened as a roster layer: their page.
+  {
+    from: `/family/${FAMILY_OF_THREE}?open=student%3A${KIDS[1][1]}`,
+    world: "family parent",
+    lands: `/family/${FAMILY_OF_THREE}/kids/${KIDS[1][0]}`,
+  },
+  {
+    from: `/family/${FAMILY_OF_THREE}/settings?open=student%3A${KIDS[2][1]}`,
+    world: "family parent",
+    lands: `/family/${FAMILY_OF_THREE}/kids/${KIDS[2][0]}`,
   },
   ...[
     ["workbooks", "child-workbooks"],

@@ -191,6 +191,7 @@ export default defineConfig({
       "zod",
       "zustand",
       "zustand/middleware",
+      "zustand/vanilla",
       "better-auth/client",
       "better-auth/client/plugins",
       "@better-auth/passkey/client",

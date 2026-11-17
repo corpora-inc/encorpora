@@ -2,10 +2,10 @@ import { useMetaPurchaseContext } from "../privacy/useMetaPurchaseContext";
 import type { PurchaseMeasurement } from "../../../advertising/permission-contracts";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation } from "@tanstack/react-router";
-import { Navigate } from "../../nav/Navigate";
 import { useEffect, type ReactNode } from "react";
 import type { EnrollmentPhase } from "../../../billing/stripe/enrollment-contracts";
-import type { AuthSession } from "../../auth";
+import { rememberPlanChoice } from "../../lib/pending-trial";
+import { useSession } from "../../lib/session";
 import { AppError } from "../../lib/AppError";
 import { Button, buttonClass } from "../../ui/Button";
 import { FrameBrand, frameCard } from "../../ui/PageFrame";
@@ -16,6 +16,7 @@ import {
   refreshMeAfter,
   useBillingPortal,
 } from "../billing";
+import { PlanStep } from "./PlanStep";
 import { Progress } from "./Progress";
 import styles from "./Start.module.css";
 import { trackOnce } from "../../lib/analytics";
@@ -52,12 +53,11 @@ const tone: Record<Shown, "busy" | "good" | "attention" | "info"> = {
  * cell, so moving between phases never moves or resizes the card.
  */
 export function PurchaseStep({
-  session,
   metaPermission,
 }: {
-  session: AuthSession;
   metaPermission?: PurchaseMeasurement;
 }) {
+  const session = useSession();
   const params = new URLSearchParams(useLocation().searchStr);
   const left = params.get("billing") === "canceled";
   const returned = params.get("billing");
@@ -90,18 +90,15 @@ export function PurchaseStep({
   useEffect(() => {
     if (view) refreshMeAfter(session, view);
   }, [phase]);
-  if (view && (!view.purchase || phase === "ready"))
-    return <Navigate {...plans} replace />;
-  // Leaving Stripe without paying returns to the plan with the same plan
-  // selected, and says nothing more.
-  if (left && view?.purchase && phase === "checkout-open")
-    return (
-      <Navigate
-        {...plans}
-        search={{ interval: view.purchase.interval }}
-        replace
-      />
-    );
+  // Nothing bought yet: the plan, here. Leaving Stripe without paying shows
+  // the plan with the same plan selected, and says nothing more.
+  if (
+    view &&
+    (!view.purchase || phase === "ready" || (left && phase === "checkout-open"))
+  ) {
+    if (view.purchase) rememberPlanChoice(view.purchase.interval);
+    return <PlanStep />;
+  }
   const shown: Shown =
     enrollment.error && !view
       ? "unreachable"

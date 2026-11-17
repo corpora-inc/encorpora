@@ -10,6 +10,7 @@ import { afterEach, expect, test, vi } from "vitest";
 import type { WorkbookSummary } from "../../../../workbook/contracts";
 import type { AuthSession } from "../../../auth";
 import { AppError } from "../../../lib/AppError";
+import { sessionOptions } from "../../../lib/query";
 import {
   awaitingResults,
   HISTORY_PATIENCE_MS,
@@ -54,9 +55,11 @@ function renderHistory(answer: () => Promise<Response>) {
   const client = new QueryClient({
     defaultOptions: { queries: { retryDelay: 0 } },
   });
+  // Signed in: the screen reads the session where it is kept.
+  client.setQueryData(sessionOptions.queryKey, session);
   const router = createRouter({
     routeTree: createRootRoute({
-      component: () => <WorkbookHistory session={session} learner={learner} />,
+      component: () => <WorkbookHistory learner={learner} />,
     }),
     history: createMemoryHistory({
       initialEntries: ["/learners/learner-1/workbooks"],
