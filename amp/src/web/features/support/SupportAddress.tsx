@@ -12,7 +12,8 @@ export function SupportAddress() {
     try {
       await navigator.clipboard.writeText(SUPPORT_EMAIL);
       setStatus("copied");
-    } catch {
+    } catch (error) {
+      console.warn("Clipboard unavailable; selecting the address", error);
       setStatus("manual");
       if (address.current) {
         const range = document.createRange();

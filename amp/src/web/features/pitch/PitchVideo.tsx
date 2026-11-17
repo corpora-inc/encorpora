@@ -17,7 +17,8 @@ import styles from "./Pitch.module.css";
 function localStorageOrNull() {
   try {
     return window.localStorage;
-  } catch {
+  } catch (error) {
+    console.warn("Storage is blocked; the film mix lasts for this page", error);
     return null;
   }
 }
@@ -82,6 +83,7 @@ export function PitchVideo({ video }: { video: Video }) {
     void node.play().catch((failure: unknown) => {
       if (failure instanceof DOMException && failure.name === "AbortError")
         return;
+      console.warn("The pitch film didn’t start", failure);
       setError("The video didn’t start. Try again.");
     });
   }, [source]);

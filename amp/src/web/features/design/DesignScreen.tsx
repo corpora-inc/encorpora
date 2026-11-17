@@ -18,6 +18,7 @@ import {
   type DesignWidth,
 } from "./search";
 import { systemTheme, useDesignTheme, useNoIndex } from "./theme";
+import { useDesignView } from "./view";
 import styles from "./Design.module.css";
 
 const SECTION = "amp-design-section";
@@ -25,12 +26,25 @@ const SECTION = "amp-design-section";
 /** `/design`: every shared component in its states, from fixtures only. */
 export function DesignScreen() {
   const search = useSearch({ strict: false }) as DesignSearch;
+  const view = useDesignView();
   useNoIndex();
-  const theme = search.theme ?? systemTheme();
-  if (search.frame === "canvas") return <Canvas theme={theme} />;
+  // A framed document is told its theme by its frame's address; the gallery
+  // page uses this viewer's own (an older link's, at first).
+  if (search.frame === "canvas")
+    return <Canvas theme={search.theme ?? systemTheme()} />;
   if (search.frame === "specimen")
-    return <SpecimenView id={search.specimen} theme={theme} />;
-  return <Chrome width={search.width ?? "fill"} theme={theme} />;
+    return (
+      <SpecimenView
+        id={search.specimen}
+        theme={search.theme ?? systemTheme()}
+      />
+    );
+  return (
+    <Chrome
+      width={view.width ?? search.width ?? "fill"}
+      theme={view.theme ?? search.theme ?? systemTheme()}
+    />
+  );
 }
 
 const widthOptions = [
@@ -82,7 +96,6 @@ function Chrome({
       if (event.origin !== location.origin || data?.type !== SECTION) return;
       void navigate({
         to: ".",
-        search: (previous: Record<string, unknown>) => previous,
         hash: data.id ?? "",
         replace: true,
         resetScroll: false,
@@ -91,17 +104,7 @@ function Chrome({
     window.addEventListener("message", follow);
     return () => window.removeEventListener("message", follow);
   }, [navigate]);
-  const set = (patch: Partial<DesignSearch>) =>
-    void navigate({
-      to: ".",
-      search: (previous: Record<string, unknown>) => ({
-        ...previous,
-        ...patch,
-      }),
-      hash: (current: string) => current,
-      replace: true,
-      resetScroll: false,
-    } as never);
+  const set = useDesignView((state) => state.set);
   const device = !room || width === "fill" ? (room?.width ?? 0) : width;
   const scale = room && device ? Math.min(1, room.width / device) : 1;
   return (

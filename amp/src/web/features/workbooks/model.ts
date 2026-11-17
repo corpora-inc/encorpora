@@ -6,6 +6,9 @@ import {
   type WorkbookPaper,
 } from "../../../workbook/contracts";
 
+/** The query string an older workbook-day link carried (its route still
+ * parses it, app/router.tsx; the day reads its draft from draft-store.ts).
+ * Delete once the route stops validating it. */
 export const workbookSearchSchema = z.object({
   draft: z.string().uuid().optional().catch(undefined),
   minutes: z
@@ -85,29 +88,6 @@ export const defaultWorkbookChoices: WorkbookChoicesInput = {
   lean: "level",
   lesson: true,
 };
-/** Choices from the URL. */
-export function searchChoices(search: WorkbookSearch): WorkbookChoicesInput {
-  return {
-    areas: [...new Set((search.areas ?? "").split(",").filter(Boolean))].sort(),
-    lean: search.lean ?? "level",
-    lesson: search.lesson !== "off",
-  };
-}
-/** Choices as URL search parameters; defaults are left out. */
-export function choicesSearch(choices: WorkbookChoicesInput) {
-  return {
-    areas: choices.areas.length
-      ? [...choices.areas].sort().join(",")
-      : undefined,
-    lean: choices.lean === "level" ? undefined : choices.lean,
-    lesson: choices.lesson ? undefined : ("off" as const),
-  };
-}
-export const sameChoices = (a: WorkbookChoicesInput, b: WorkbookChoicesInput) =>
-  a.lean === b.lean &&
-  a.lesson === b.lesson &&
-  [...a.areas].sort().join(",") === [...b.areas].sort().join(",");
-
 export const leanNames = {
   easier: "Easier",
   level: "At level",

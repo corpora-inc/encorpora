@@ -3,8 +3,8 @@ import { Link } from "@tanstack/react-router";
 import { Page } from "../../ui/Page";
 import { PageHeader } from "../../ui/PageHeader";
 import type { ReactNode } from "react";
-import type { AuthSession } from "../../auth";
 import { meOptions } from "../../lib/query";
+import { useSession } from "../../lib/session";
 import { Button, buttonClass } from "../../ui/Button";
 import type { PauseViewer } from "../continue/AllowancePause";
 import { canReadWorkbooks, type WorkbookAccess } from "./model";
@@ -26,16 +26,15 @@ export function whose(learner: Pick<WorkbookLearner, "name" | "pauseViewer">) {
  * account-owned learner with learning permission; workbook history does not
  * depend on a license. Each screen draws its own header. */
 export function WorkbookFrame({
-  session,
   learnerId,
   busy = false,
   children,
 }: {
-  session: AuthSession;
   learnerId: string;
   busy?: boolean;
   children: (learner: WorkbookLearner) => ReactNode;
 }) {
+  const session = useSession();
   const me = useQuery(meOptions(session));
   const data =
     me.data?.signedIn && me.data.account.id === session.accountId

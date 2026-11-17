@@ -1,11 +1,8 @@
-import { useSuspenseQuery } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
-import { Navigate } from "../../nav/Navigate";
 import { useState } from "react";
 import { ownPracticeAllowed } from "../../../learning/starting-point";
-import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
-import { sessionOptions } from "../../lib/query";
+import { useSession } from "../../lib/session";
 import { Button } from "../../ui/Button";
 import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
 import { Toast } from "../../ui/Toast";
@@ -19,11 +16,8 @@ import { practiceParams } from "../spaces/identity";
  * enough: an adult's starts mid-scale and practice finds the level within a
  * few problems. */
 export function OwnStartScreen() {
-  const { data: session } = useSuspenseQuery(sessionOptions);
-  return session ? <StartCard session={session} /> : <Navigate to="/sign-in" />;
-}
-
-function StartCard({ session }: { session: AuthSession }) {
+  // Its route signs the visitor in first (app/router.tsx, ownPractice).
+  const session = useSession();
   const navigate = useNavigate();
   const [year, setYear] = useState<number | null>(null);
   const start = useStartOwnPractice(session);
