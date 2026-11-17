@@ -15,13 +15,15 @@ export async function addChildInSheet(
   // The newest row is the one being added: "Name, Child 2 (…)".
   const field = sheet.getByRole("textbox", { name: /^Name, / }).last();
   if (name) await field.fill(name);
-  const label = `Birth year, ${name.trim() || (await rowLabel(field))}`;
+  // The field keeps what it takes (at most the name's maximum length).
+  const kept = (await field.inputValue()).trim();
+  const label = `Birth year, ${kept || (await rowLabel(field))}`;
+  await sheet.getByRole("button", { name: label, exact: true }).click();
   const created = page.waitForResponse(
     (response) =>
       new URL(response.url()).pathname === "/api/v1/learners" &&
       response.request().method() === "POST",
   );
-  await sheet.getByRole("button", { name: label, exact: true }).click();
   await page
     .getByRole("dialog", { name: label })
     .getByRole("option", { name: year, exact: true })

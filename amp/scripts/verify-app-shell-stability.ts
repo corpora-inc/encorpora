@@ -99,6 +99,9 @@ type Screen = {
   group: "family" | "record" | "account" | "practice" | "me" | "plain";
   /** Shown once the screen has its data. */
   ready: (page: Page) => Promise<unknown>;
+  /** An overlay over the account's hub (features/account/overlays.tsx): the
+   * screen behind, its logo included, is covered until it closes. */
+  overlay?: true;
 };
 /** A family screen has its data once its heading is in the dense frame. */
 const familyReady = (p: Page) =>
@@ -160,6 +163,7 @@ const screens: Screen[] = [
     path: "/account/security",
     state: "paid",
     group: "account",
+    overlay: true,
     ready: (p) =>
       p
         .getByRole("heading", { name: "Sign-in & security", exact: true })
@@ -170,6 +174,7 @@ const screens: Screen[] = [
     path: "/account/billing",
     state: "paid",
     group: "account",
+    overlay: true,
     ready: (p) => p.locator("[data-account-body]").first().waitFor(),
   },
   {
@@ -177,6 +182,7 @@ const screens: Screen[] = [
     path: "/account/privacy",
     state: "paid",
     group: "account",
+    overlay: true,
     // The Privacy overlay (features/privacy) over the account's hub.
     ready: (p) => p.locator("[data-privacy-panels]").first().waitFor(),
   },
@@ -417,7 +423,12 @@ for (const engine of engines) {
             path: `${shots}/${screen.id}-${width}-${theme}.png`,
           });
 
-        // The drawer opens from the logo and closes on the same spot.
+        // The drawer opens from the logo and closes on the same spot. An
+        // overlay covers the logo; it closes to the screen behind first.
+        if (screen.overlay) {
+          await context.close();
+          continue;
+        }
         await page.locator("[data-app-logo]").first().click();
         const close = page.locator("[data-shell-close]");
         await close.waitFor();

@@ -428,6 +428,8 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
       .getByRole("textbox", { name: /^Name, / })
       .last()
       .fill("Jordan");
+    // The row has taken the name: its year is now Jordan's.
+    await adding.getByRole("button", { name: year, exact: true }).waitFor();
   });
   await step("dialog-birth-year", async () => {
     await adding.getByRole("button", { name: year, exact: true }).click();

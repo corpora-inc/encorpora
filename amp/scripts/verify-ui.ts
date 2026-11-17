@@ -861,6 +861,12 @@ try {
     );
   }
   await page.setViewportSize({ width: 390, height: 844 });
+  // The child's settings fold under one Settings on their page
+  // (features/family/Child.tsx); the birth year is one of them.
+  await page
+    .getByRole("region", { name: `${nickname}’s settings` })
+    .getByText("Settings", { exact: true })
+    .click();
   await page
     .getByRole("button", { name: `Birth year, ${nickname}: 2016` })
     .click();
@@ -877,77 +883,8 @@ try {
     ),
     "The birth-year change keeps the child's page within a phone",
   );
-  // Privacy fits a phone: every choice and the way out (the logo) in view.
-  progress("privacy and consent");
-  for (const size of [
-    { width: 390, height: 844 },
-    { width: 320, height: 568 },
-    TABLET_LANDSCAPE,
-    PHONE_LANDSCAPE,
-  ]) {
-    await page.setViewportSize(size);
-    await page.goto("http://127.0.0.1:4350/account/privacy");
-    await page.getByRole("heading", { name: "Privacy", exact: true }).waitFor();
-    if (isPhoneLandscape(size)) {
-      await assertPhoneLandscapeSmoke(page, "Family privacy");
-    } else {
-      assert.ok(
-        await page.evaluate(
-          () => document.documentElement.scrollWidth <= innerWidth,
-        ),
-      );
-      const back = await page.locator("[data-app-logo]").boundingBox();
-      assert.ok(
-        back && back.y + back.height <= size.height,
-        "Privacy's way out stays visible",
-      );
-      const lastChoice = await page
-        .getByRole("button", { name: "What is kept", exact: false })
-        .boundingBox();
-      assert.ok(
-        lastChoice && lastChoice.y + lastChoice.height <= size.height,
-        `Privacy choices fit ${size.width}×${size.height}: ${JSON.stringify(lastChoice)}`,
-      );
-    }
-    await page.screenshot({
-      path: new URL(
-        `../artifacts/screenshots/family-in-app-${size.width}.png`,
-        import.meta.url,
-      ).pathname,
-    });
-  }
-  // A consent withdrawal that saved, when the refreshed family details then
-  // fail to load, says so and not to repeat it.
-  await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("http://127.0.0.1:4350/account/privacy/consent");
-  await page
-    .getByRole("heading", { name: "Learning consent", exact: true })
-    .waitFor();
-  // Synthetic mutation isolates this browser race from the shared test account.
-  await page.route("**/family/consent/withdraw", (route) =>
-    route.fulfill({ json: { withdrawn: true } }),
-  );
-  await page.route("**/api/v1/me", (route) =>
-    route.fulfill({
-      status: 503,
-      json: { error: "family_service_unavailable" },
-    }),
-  );
-  await page
-    .getByRole("button", { name: "Withdraw consent", exact: true })
-    .click();
-  await page
-    .getByRole("dialog")
-    .getByRole("button", { name: "Withdraw consent", exact: true })
-    .click();
-  await page
-    .getByText(
-      "Your change was saved, but refreshed family details could not be loaded. Try refreshing; do not repeat the deletion.",
-      { exact: true },
-    )
-    .waitFor();
-  await page.unroute("**/api/v1/me");
-  await page.unroute("**/family/consent/withdraw");
+  // Privacy & data (its panels at every width, consent and its withdrawal)
+  // is verify-family-ui's.
   assert.deepEqual(errors, []);
   console.log(
     "Browser learning, hint, attempt, lesson and progress flows passed at desktop and phone widths.",
