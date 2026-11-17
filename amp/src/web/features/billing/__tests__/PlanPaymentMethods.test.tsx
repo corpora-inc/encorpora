@@ -6,9 +6,6 @@ import { PlanStep } from "../../onboarding/PlanStep";
 import { enrollmentOptions, offerOptions } from "../api";
 import { consentFixture } from "../../../../../tests/parent-consent.fixture";
 const navigation = vi.hoisted(() => ({ go: vi.fn() }));
-vi.mock("../../../nav/Navigate", () => ({
-  Navigate: ({ to }: { to: string }) => <a href={to}>Recover purchase</a>,
-}));
 vi.mock("@tanstack/react-router", () => ({
   useSearch: () => ({ interval: "month" }),
   useLocation: () => ({
