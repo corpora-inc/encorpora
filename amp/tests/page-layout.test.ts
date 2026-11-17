@@ -453,6 +453,16 @@ const ROUTES_EXEMPT: Record<string, string> = {
     "the family's Today (it renders Page) with the pay overlay's outlet over it",
   "features/pay/hosts.tsx#BillingPayHost":
     "Billing (it renders Page) with the pay overlay's outlet over it",
+  "features/pay/hosts.tsx#SettingsHost":
+    "a family's Settings (it renders Page) with its overlays' outlet over it",
+  "features/account/overlays.tsx#BillingOverlay":
+    "an overlay in ui/Sheet over its settings hub, which renders Page",
+  "features/account/overlays.tsx#SecurityOverlay":
+    "an overlay in ui/Sheet over its settings hub, which renders Page",
+  "features/account/overlays.tsx#DeleteAccountOverlay":
+    "an overlay in ui/Sheet over its settings hub, which renders Page",
+  "features/privacy/PrivacyOverlay.tsx#PrivacyOverlay":
+    "an overlay in ui/Sheet over its settings hub, which renders Page",
   "features/pitch/PitchScreen.tsx#PitchScreen":
     "the signed-out pitch: a marketing page with its own art direction",
   "features/schools/index.ts#SchoolsScreen":
@@ -550,6 +560,7 @@ export function routeScreens() {
     "app/family-routes.tsx",
     "app/school-routes.tsx",
     "app/pay-routes.tsx",
+    "app/account-overlays.tsx",
   ]) {
     const source = read(from);
     const loaders = new Map<string, string>();
@@ -690,14 +701,10 @@ const BACK_DEBT: Record<string, string> = {
     "the immersive film's return to its problem or lesson: to become its ✕ (phase 2)",
   "features/me/OwnTimeScreen.tsx":
     "an adult's practice time: Progress's tab replaces it (phase 2)",
-  "features/navigation/DrawerContents.tsx":
-    "practice modes' way back to where they started, in the bar and drawer: to become the mode's exit (phase 2)",
   "features/onboarding/LearnerSteps.tsx":
     "a sign-in or first-run card step: to move onto the shared stepper (phase 2)",
   "features/pathways/LessonRecovery.tsx":
     "an overlay's failure state names where ✕ returns; to become the overlay's ✕ (phase 2)",
-  "features/practice/StudentSignOut.tsx":
-    "practice modes' way back to where they started, in the bar and drawer: to become the mode's exit (phase 2)",
   "features/profiles/api.ts":
     "practice modes' way back to where they started, in the bar and drawer: to become the mode's exit (phase 2)",
   "features/profiles/practice-mode.ts":
@@ -748,7 +755,13 @@ const BACK_PATTERNS: [string, RegExp][] = [
   ["history.back()", /\bhistory\.back\(\)/],
 ];
 /** Where the one overlay close and its link helper live. */
-const BACK_OWNERS = new Set(["lib/return-to.ts", "nav/links.tsx"]);
+// The overlay close mechanics, not Back controls: closeTo's return, and a
+// sheet popping its own same-URL history entry when it closes (nav/sheet.ts).
+const BACK_OWNERS = new Set([
+  "lib/return-to.ts",
+  "nav/links.tsx",
+  "nav/sheet.ts",
+]);
 
 const withoutComments = (source: string) =>
   source.replace(/\/\*[\s\S]*?\*\//g, "").replace(/(^|[^:"'`])\/\/.*$/gm, "$1");

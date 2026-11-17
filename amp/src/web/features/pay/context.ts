@@ -1,9 +1,10 @@
-import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
+import { useSession } from "../../lib/session";
 import { useLocation, useRouter } from "@tanstack/react-router";
 import { closeTo } from "../../lib/return-to";
 import type { SignedInMe } from "../../../account/contracts";
 import type { AuthSession } from "../../auth";
-import { meOptions, sessionOptions } from "../../lib/query";
+import { meOptions } from "../../lib/query";
 import { payAddress } from "./address";
 import { liveLearner } from "./paths";
 
@@ -22,7 +23,7 @@ export type PayContext = {
  * after that, so a panel uses `usePay()`.
  */
 export function usePayState() {
-  const session = useSuspenseQuery(sessionOptions).data;
+  const session = useSession();
   // The overlay's address names the learner (address.ts).
   const learnerId = useLocation({
     select: (location) => payAddress(location.pathname)?.learnerId ?? "",

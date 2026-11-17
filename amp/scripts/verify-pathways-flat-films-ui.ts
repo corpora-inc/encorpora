@@ -22,7 +22,7 @@ const chromium = secureChromium(rawChromium);
  * switched off, as in the founder's automation browser.
  */
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
-const source = `export async function accessSession(){return {token:"parent-one",accountId:"parent-one"};}export function onSessionChanged(){return()=>{};}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export function notifyDeviceSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
+const source = `export async function accessSession(){return {token:"parent-one",accountId:"parent-one"};}export function onSessionChanged(){return()=>{};}export async function signIn(){}export async function signOut(){}export function notifyDeviceSessionChanged(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
 const vite = await createServer({
   cacheDir: process.env.AMP_VITE_CACHE_DIR ?? "artifacts/vite-pathways-flat",
   plugins: [

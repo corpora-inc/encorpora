@@ -80,11 +80,14 @@ export function learnerOrigin(me: SignedInMe, learnerId: string) {
     : "/account/billing";
 }
 
-/** The screens a pay overlay opens over (app/family-routes.tsx, router.tsx):
- * the family's Today, a child's page, Billing. */
+/** The screens a pay overlay opens over (app/family-routes.tsx, router.tsx,
+ * app/account-overlays.tsx): the family's Today, a child's page, the
+ * settings hubs (family Settings, `/account`), Billing. */
 const HOSTS = [
   /^\/family\/[^/]+$/,
   /^\/family\/[^/]+\/kids\/[^/]+$/,
+  /^\/family\/[^/]+\/settings$/,
+  /^\/account$/,
   /^\/account\/billing$/,
 ];
 export const isPayHost = (pathname: string) =>

@@ -2,18 +2,15 @@ import { familyDisplayName } from "../spaces/resolve";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
-import { formatDay } from "../../../schools/calendar";
 import { Button, buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
 import { RowLink, RowList } from "../../ui/RowList";
 import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { approvalsOptions } from "../family-approval/api";
-import { calendarOptions, orgOptions } from "../school/api";
 import { presenceOptions } from "../school/classes/api";
 import { formatJoinCode } from "../school/join/JoinClass";
 import { ReplaceCode } from "../school/join/ReplaceCode";
-import { EditSheet } from "../school/CalendarScreen";
 import { FamilyPracticeDefaults } from "./Practice";
 import {
   CoTeacherInviteSheet,
@@ -34,8 +31,9 @@ import {
 } from "../second-parent/SecondParent";
 import type { ApprovalRowResource } from "../../../family/approval-contracts";
 import { familyTeachingOptions } from "./api";
-import { AddKidsSheet } from "./AddKids";
-import { GradingPeriods } from "./Records";
+import { AddChildrenSheet } from "./AddChildren";
+import { NameEditor } from "../account/NameEditor";
+import { SchoolYearSection } from "../school-year/SchoolYearSection";
 import { DevicesSheet } from "./Devices";
 import {
   FamilyFrame,
@@ -85,32 +83,6 @@ function AddAction({
       </svg>
       {children}
     </button>
-  );
-}
-
-/**
- * The adult's own name, as the other parent, an approving parent and an
- * invitation show it. It is the account's (R9, R12): changed in Account.
- */
-function YourName({ place }: { place: FamilyPlace }) {
-  const known = place.me?.account.displayName?.trim() || null;
-  return (
-    <div className={styles.setting} data-your-name={known ? "" : "missing"}>
-      <div className={styles.settingText}>
-        <dt>{known ?? "Your name"}</dt>
-        <dd>{known ? "Your name" : "Other parents see it."}</dd>
-      </div>
-      <div className={styles.settingAction}>
-        <Link
-          to="/$"
-          params={{ _splat: "account/security" }}
-          className={buttonClass("secondary")}
-          data-change-in-account=""
-        >
-          {known ? "Change in Account" : "Add in Account"}
-        </Link>
-      </div>
-    </div>
   );
 }
 
@@ -202,9 +174,8 @@ export function FamilyPeopleScreen() {
             <h2 id="people-you" className={people.title}>
               You
             </h2>
-            <dl className={styles.settings}>
-              <YourName place={place} />
-            </dl>
+            {/* Their own name, changed here (the account's, shown everywhere). */}
+            <NameEditor detail="Other parents see it." />
           </section>
           {second ? (
             <section className={people.list} aria-labelledby="people-family">
@@ -276,90 +247,6 @@ export function FamilyPeopleScreen() {
   );
 }
 
-/** The family's school year: its dates, and changing them. No terms or
- * grading periods: a family's records run the whole year. */
-function SchoolYear({ place }: { place: FamilyPlace }) {
-  const { session } = place;
-  // The class's own org: a family's id need not be it.
-  const orgId = place.own?.org ?? "";
-  const org = useQuery({
-    ...orgOptions(session, orgId),
-    enabled: !!place.own,
-  });
-  const calendar = useQuery({
-    ...calendarOptions(session, orgId),
-    enabled: !!place.own && !!org.data?.can?.includes("calendar.read"),
-  });
-  const [editing, setEditing] = useState(false);
-  const year = calendar.data?.find((entry) => entry.kind === "year");
-  if (!place.own || !org.data?.can?.includes("calendar.read")) return null;
-  // The year is the class's: with other families' children in it, it is
-  // the tutoring group's to change, where that scope is said.
-  const shared = !!place.data?.teachingPlace;
-  const canEdit = !shared && !!org.data.can.includes("calendar.write");
-  return (
-    <section className={styles.section} aria-labelledby="family-year">
-      <h2 id="family-year">School year</h2>
-      <dl className={styles.settings}>
-        <div className={styles.setting}>
-          <div className={styles.settingText}>
-            <dt>{year?.name ?? " "}</dt>
-            <dd>
-              {year
-                ? `${formatDay(year.startsOn)} to ${formatDay(year.endsOn)}`
-                : calendar.isError
-                  ? "The year didn’t load."
-                  : " "}
-            </dd>
-          </div>
-          <div className={styles.settingAction}>
-            {calendar.isError ? (
-              <Button
-                variant="secondary"
-                onClick={() => void calendar.refetch()}
-              >
-                Try again
-              </Button>
-            ) : (
-              canEdit &&
-              year && (
-                <Button variant="secondary" onClick={() => setEditing(true)}>
-                  Change dates
-                </Button>
-              )
-            )}
-          </div>
-        </div>
-      </dl>
-      <p className={styles.footnote}>
-        {shared
-          ? "Your tutoring group shares these dates."
-          : "Report cards and time count from the first day."}
-      </p>
-      {shared && org.data.can.includes("calendar.write") && (
-        <Link
-          to="/$"
-          params={{
-            _splat: `school/${place.own.org}/classes/${place.own.id}/settings`,
-          }}
-          className={buttonClass("secondary")}
-          style={{ justifySelf: "start" }}
-          data-group-calendar=""
-        >
-          Open the group’s calendar
-        </Link>
-      )}
-      {editing && year && !shared && (
-        <EditSheet
-          orgId={orgId}
-          session={year}
-          onClose={() => setEditing(false)}
-        />
-      )}
-    </section>
-  );
-}
-
 /** The family code, and replacing it: a setting, apart from "Their own
  * devices", where the way in is. With other families' children in the class
  * the code is the tutoring group's, so it is replaced there. */
@@ -417,12 +304,11 @@ function FamilyCode({ place }: { place: FamilyPlace }) {
  */
 export function FamilySettingsScreen() {
   const place = useFamilyPlace();
-  const { data, me, session } = place;
-  const navigate = useNavigate();
-  const [adding, setAdding] = useFlag("add");
+  const { data } = place;
+  // Adding children: a sheet over Settings, its own state (no address).
+  const [adding, setAdding] = useState(false);
   const children = data?.children ?? [];
   const add = !!data?.capabilities.addChildren;
-  const consented = me?.consent.status === "active";
   return (
     <FamilyFrame place={place} title="Settings">
       {data && (
@@ -433,11 +319,8 @@ export function FamilySettingsScreen() {
               {add && (
                 <Button
                   variant="secondary"
-                  onClick={() =>
-                    consented
-                      ? setAdding(true)
-                      : void navigate({ to: "/start/parent" as never })
-                  }
+                  data-add-child=""
+                  onClick={() => setAdding(true)}
                 >
                   Add a child
                 </Button>
@@ -470,12 +353,19 @@ export function FamilySettingsScreen() {
               to={familyHref(place.family, "people")}
             />
           </RowList>
-          <SchoolYear place={place} />
-          {/* A report card a grading period: set with the year, beside it. */}
-          {place.own &&
-            data.children.some((child) => child.capabilities.readGrades) && (
-              <GradingPeriods place={place} shared={!!data.teachingPlace} />
-            )}
+          {/* One school year: its dates, grading periods and bar, with one
+              Edit. The tutoring group's, when the family is in one. */}
+          {place.own && (
+            <SchoolYearSection
+              org={place.own.org}
+              classId={place.own.id}
+              titleId="family-year"
+              grading={data.children.some(
+                (child) => child.capabilities.readGrades,
+              )}
+              setBy={data.teachingPlace ? "Your tutoring group" : undefined}
+            />
+          )}
           <FamilyCode place={place} />
           <FamilyPracticeDefaults place={place} />
           <section className={styles.section} aria-labelledby="family-account">
@@ -488,13 +378,7 @@ export function FamilySettingsScreen() {
               <RowLink title="Profile & sign-in" to="account/security" />
             </RowList>
           </section>
-          {add && consented && (
-            <AddKidsSheet
-              session={session}
-              open={adding}
-              onOpenChange={setAdding}
-            />
-          )}
+          {add && <AddChildrenSheet open={adding} onOpenChange={setAdding} />}
         </div>
       )}
     </FamilyFrame>

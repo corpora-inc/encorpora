@@ -2,7 +2,11 @@ import { requestFetch } from "./lib/request-transport";
 import { useLoggedError } from "./feedback";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { notifyAccountSessionChanged } from "./auth";
-import { accountClient } from "./account-client";
+import {
+  accountClient,
+  passkeyAccountClient,
+  preloadPasskeys,
+} from "./account-client";
 import { buttonClass } from "./ui/Button";
 import "./account-security.css";
 import { DeleteAccountEntry } from "./features/account/DeleteAccountEntry";
@@ -146,6 +150,7 @@ export function AccountSecurity() {
     }
   }
   function switchPanel(next: string) {
+    if (next === "passkeys") preloadPasskeys();
     setPanel(next);
     setPassword("");
     setNewPassword("");
@@ -270,9 +275,12 @@ export function AccountSecurity() {
                                 onSubmit={(e) =>
                                   submit(e, async () => {
                                     checked(
-                                      await accountClient.passkey.updatePasskey(
-                                        { id: key.id, name: keyName.trim() },
-                                      ),
+                                      await (
+                                        await passkeyAccountClient()
+                                      ).passkey.updatePasskey({
+                                        id: key.id,
+                                        name: keyName.trim(),
+                                      }),
                                     );
                                     setRename("");
                                     setNotice("Passkey name saved.");
@@ -339,7 +347,9 @@ export function AccountSecurity() {
                             onSubmit={(e) =>
                               submit(e, async () => {
                                 checked(
-                                  await accountClient.passkey.addPasskey({
+                                  await (
+                                    await passkeyAccountClient()
+                                  ).passkey.addPasskey({
                                     name: keyName.trim() || "Passkey",
                                   }),
                                 );

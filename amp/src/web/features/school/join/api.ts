@@ -149,10 +149,12 @@ export function useFinishSignIn() {
       returnTo?: string,
       filter?: PracticeFilter,
       learnerId?: string,
+      /** The place's name, for its way back ("Back to Grade 5 Math"). */
+      returnName?: string,
     ) => {
       const session = { accountId: grant.accountId, token: grant.token };
       finishing = true;
-      rememberStudentSession(session, grant.mode, handed, returnTo);
+      rememberStudentSession(session, grant.mode, handed, returnTo, returnName);
       // A parent's device handed to their child from a screen of theirs
       // (Practice on a skill): the screen holds, its button busy, until
       // practice replaces it. The child's identity arrives in the same

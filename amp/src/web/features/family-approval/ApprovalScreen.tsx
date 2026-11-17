@@ -5,12 +5,8 @@ import { useEffect, useState } from "react";
 import { useLoggedError } from "../../feedback";
 import { useLearnerStore } from "../../learner-store";
 import { AppError } from "../../lib/AppError";
-import {
-  invalidateAccount,
-  meOptions,
-  refreshMe,
-  sessionOptions,
-} from "../../lib/query";
+import { invalidateAccount, meOptions, refreshMe } from "../../lib/query";
+import { useSession } from "../../lib/session";
 import { Button, buttonClass } from "../../ui/Button";
 import { Loading } from "../../ui/Loading";
 import controls from "../../ui/Controls.module.css";
@@ -43,7 +39,7 @@ const failures: Record<string, string> = {
 export function ApprovalScreen() {
   const { approvalId } = useParams({ from: "/family/approvals/$approvalId" });
   const navigate = useNavigate();
-  const session = useQuery(sessionOptions).data!;
+  const session = useSession();
   const me = useQuery(meOptions(session)).data;
   const page = useQuery({ ...approvalOptions(session, approvalId), retry: 1 });
   const claim = useClaimEnrollment(session);

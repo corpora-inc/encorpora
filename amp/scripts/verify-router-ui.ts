@@ -10,7 +10,7 @@ import { retentionNotice } from "../src/family/contracts";
 import { skillTitle, skills } from "../src/curriculum/catalog";
 import { templates } from "../src/math/engine";
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
-const source = `export async function accessSession(){if(window.routeSession==='failed')throw new Error('Synthetic session outage');return window.routeSession ? {token:'synthetic',accountId:'synthetic-parent'} : null;}export function onSessionChanged(){return()=>{};}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export function notifyDeviceSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
+const source = `export async function accessSession(){if(window.routeSession==='failed')throw new Error('Synthetic session outage');return window.routeSession ? {token:'synthetic',accountId:'synthetic-parent'} : null;}export function onSessionChanged(){return()=>{};}export async function signIn(){}export async function signOut(){}export function notifyDeviceSessionChanged(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
 const vite = await createServer({
   cacheDir: "node_modules/.vite-router-proof",
   plugins: [

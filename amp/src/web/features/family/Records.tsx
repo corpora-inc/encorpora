@@ -3,19 +3,9 @@ import { childTimeCsvPath, childTimeOptions } from "./api";
 import { useQueries, useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useEffect, useMemo, useState, type ReactNode } from "react";
-import type { GradingKind } from "../../../schools/contracts";
-import { AppError } from "../../lib/AppError";
-import { Toast } from "../../ui/Toast";
-import {
-  classesOptions,
-  orgOptions,
-  refreshSchool,
-  school,
-} from "../school/api";
-import { divisionLabels } from "../../../schools/calendar";
-import { YearCalendar } from "../school/CalendarScreen";
 import { downloadPdf, paperFormat } from "../../lib/pdf-download";
-import { buttonClass } from "../../ui/Button";
+import { Button, buttonClass } from "../../ui/Button";
+import { AddChildrenSheet } from "./AddChildren";
 import { EmptyState } from "../../ui/EmptyState";
 import { PrintButton } from "../../ui/PrintButton";
 import { ActionRow } from "../../ui/ActionRow";
@@ -139,22 +129,26 @@ function useRecords(place: FamilyPlace, children: readonly FamilyChild[]) {
   });
 }
 
-/** No children yet: the one step that adds them, or who does. */
+/** No children yet: the one step that adds them, over this screen, or who
+ * does. */
 function NoChildren({ place }: { place: FamilyPlace }) {
+  const [adding, setAdding] = useState(false);
   return place.holder ? (
-    <EmptyState
-      title="Add your kids"
-      action={
-        <Link
-          to="/$"
-          params={{ _splat: familyHref(place.family) }}
-          search={{ add: 1 } as never}
-          className={buttonClass("primary")}
-        >
-          Add your kids
-        </Link>
-      }
-    />
+    <>
+      <EmptyState
+        title="Add your kids"
+        action={
+          <Button
+            variant="primary"
+            data-add-child=""
+            onClick={() => setAdding(true)}
+          >
+            Add your kids
+          </Button>
+        }
+      />
+      <AddChildrenSheet open={adding} onOpenChange={setAdding} />
+    </>
   ) : (
     <EmptyState title="No children here yet">
       The parent who invited you adds the children.
@@ -387,84 +381,6 @@ function NoClass({ place, what }: { place: FamilyPlace; what: string }) {
         }
       ></EmptyState>
     </FamilyFrame>
-  );
-}
-
-/**
- * The family's grading periods: the school year, or the year in semesters,
- * trimesters or quarters, with their dates. A report card is one per period.
- * A class that also holds other families' children keeps its periods with
- * its tutoring group: the choice changes everyone's.
- */
-export function GradingPeriods({
-  place,
-  shared,
-}: {
-  place: FamilyPlace;
-  shared: boolean;
-}) {
-  const own = place.own!;
-  const { session } = place;
-  const org = useQuery(orgOptions(session, own.org)).data;
-  const classes = useQuery(classesOptions(session, own.org));
-  const klass = classes.data?.find((entry) => entry.id === own.id);
-  const [notice, setNotice] = useState("");
-  const [error, setError] = useState("");
-  if (!org?.can?.includes("calendar.read") || !klass) return null;
-  const canEdit =
-    !shared &&
-    (org.can.includes("classes.update") || !!org.teaches?.includes(own.id));
-  const pick = (gradingKind: GradingKind) =>
-    void school
-      .updateClass(session, own.org, own.id, { gradingKind })
-      .then(() => refreshSchool(session))
-      .then(() =>
-        setNotice(
-          gradingKind === "year" || gradingKind === "custom"
-            ? "Report cards cover the whole school year."
-            : `A report card for each ${divisionLabels[gradingKind].one.toLowerCase()}.`,
-        ),
-      )
-      .catch((failure) => {
-        console.error("The grading periods didn’t save", failure);
-        setError(
-          failure instanceof AppError
-            ? failure.message
-            : "That change didn’t save. Try again.",
-        );
-      });
-  return (
-    <section aria-labelledby="reports-periods" className={styles.section}>
-      <div className={styles.settingText}>
-        <h2 id="reports-periods">Grading periods</h2>
-        {shared && (
-          <p className={styles.footnote}>Your tutoring group shares these.</p>
-        )}
-      </div>
-      {shared ? (
-        // The whole group's calendar: changed with the group, never here.
-        <Link
-          to="/$"
-          params={{ _splat: `school/${own.org}/classes/${own.id}/settings` }}
-          className={buttonClass("secondary")}
-          style={{ justifySelf: "start" }}
-        >
-          Open the group’s calendar
-        </Link>
-      ) : (
-        <YearCalendar
-          orgId={own.org}
-          compact
-          grading={{
-            value: klass.gradingKind,
-            onChange: pick,
-            disabled: !canEdit,
-          }}
-        />
-      )}
-      <Toast tone="status" message={notice} onDismiss={() => setNotice("")} />
-      <Toast message={error} onDismiss={() => setError("")} />
-    </section>
   );
 }
 

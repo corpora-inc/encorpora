@@ -23,7 +23,10 @@ import {
 } from "../../purchase-return";
 import styles from "./Navigation.module.css";
 import { ProfilePlace } from "../profiles/ProfileBar";
-import { handedStudentDevice } from "../../lib/student-device";
+import {
+  handedReturnName,
+  handedStudentDevice,
+} from "../../lib/student-device";
 import { ThisDevice } from "./ThisDevice";
 
 type Icon =
@@ -352,7 +355,11 @@ export function DrawerFooter({ close }: { close: () => void }) {
   // address never shows here: screen recordings of the menu stay clean, and
   // Account holds it.
   const name = student ? (account?.learners[0]?.name ?? "") : "";
-  const label = student && handedStudentDevice() ? "Back to family" : "Sign out";
+  // A handed device goes back to the place it was handed from, by name.
+  const label =
+    student && handedStudentDevice()
+      ? `Back to ${handedReturnName() ?? "family"}`
+      : "Sign out";
   return (
     <section
       className={styles.footer}

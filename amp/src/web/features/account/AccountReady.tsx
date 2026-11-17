@@ -1,7 +1,8 @@
-import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { Link, useSearch } from "@tanstack/react-router";
 import { Navigate } from "../../nav/Navigate";
-import { meOptions, sessionOptions } from "../../lib/query";
+import { meOptions } from "../../lib/query";
+import { forSession, useSessionOrNull } from "../../lib/session";
 import { continuationSearch } from "../../lib/funded-entry";
 import { PageFrame, FrameBrand, frameCard } from "../../ui/PageFrame";
 import { Button, buttonClass } from "../../ui/Button";
@@ -9,13 +10,10 @@ import styles from "./Account.module.css";
 
 /** A successful account creation has an explicit, useful landing screen. */
 export function AccountReady() {
-  const { data: session } = useSuspenseQuery(sessionOptions);
+  const session = useSessionOrNull();
   const rawSearch = useSearch({ strict: false });
   const carry = continuationSearch(rawSearch);
-  const me = useQuery({
-    ...meOptions(session ?? { accountId: "", token: "" }),
-    enabled: !!session,
-  });
+  const me = useQuery(forSession(session, meOptions));
   if (!session) return <Navigate to="/sign-in" search={carry} replace />;
   const account =
     me.data?.signedIn && me.data.account.id === session.accountId

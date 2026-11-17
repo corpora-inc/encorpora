@@ -58,7 +58,7 @@ const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
 const auth = `const listeners=new Set();
 export async function accessSession(){const r=await fetch('/api/__pitch/session');return (await r.json()).session;}
 export function onSessionChanged(update){listeners.add(update);return()=>listeners.delete(update);}
-export function notifyAccountSessionChanged(s){if(s!==undefined)for(const l of listeners)l(s);}
+export function notifyDeviceSessionChanged(){}export function notifyAccountSessionChanged(s){if(s!==undefined)for(const l of listeners)l(s);}
 export async function signIn(){}export async function signOut(){}
 export async function authConfig(){return {mode:'accounts',passwords:true,parentFollowup:true,providers:[]};}`;
 const vite = await createServer({

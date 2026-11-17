@@ -178,7 +178,7 @@ const vite = await viteServer({
       enforce: "pre",
       load(id) {
         if (id.split("?")[0] === authPath)
-          return `export async function accessSession(){return {token:"synthetic",accountId:"fixture-parent"}}export function onSessionChanged(){return()=>{}}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:"accounts",passwords:true,providers:[]}}`;
+          return `export async function accessSession(){return {token:"synthetic",accountId:"fixture-parent"}}export function onSessionChanged(){return()=>{}}export async function signIn(){}export async function signOut(){}export function notifyDeviceSessionChanged(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:"accounts",passwords:true,providers:[]}}`;
       },
       configureServer(server) {
         server.middlewares.use("/api", (_request, response) => {

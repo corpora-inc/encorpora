@@ -17,7 +17,7 @@ import type { ConsentView } from "../src/parent-consent/contracts.js";
 import { retentionNotice } from "../src/family/contracts.js";
 import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
-const auth = `const listeners=new Set();let session={token:'fixture',accountId:'parent'};window.authFragment=location.hash;window.consentApp={emit(s){session=s;for(const f of listeners)f(s)}};export async function accessSession(){return session};export function onSessionChanged(f){listeners.add(f);return()=>listeners.delete(f)};export async function signIn(){};export function notifyAccountSessionChanged(){void accessSession().then(session=>window.consentApp.emit(session));}export async function authConfig(){return {mode:"oidc"};}export async function signOut(){window.consentApp.emit(null)}`;
+const auth = `const listeners=new Set();let session={token:'fixture',accountId:'parent'};window.authFragment=location.hash;window.consentApp={emit(s){session=s;for(const f of listeners)f(s)}};export async function accessSession(){return session};export function onSessionChanged(f){listeners.add(f);return()=>listeners.delete(f)};export async function signIn(){};export function notifyDeviceSessionChanged(){}export function notifyAccountSessionChanged(){void accessSession().then(session=>window.consentApp.emit(session));}export async function authConfig(){return {mode:"oidc"};}export async function signOut(){window.consentApp.emit(null)}`;
 const vite = await createServer({
   cacheDir: "node_modules/.vite-consent-app",
   root: fileURLToPath(new URL("../", import.meta.url)),
