@@ -1,3 +1,4 @@
+import { sheetState } from "../../../nav/sheet";
 import { spaceWords } from "../../spaces/words";
 import { standing } from "../../../lib/AppError";
 import { ScreenTitle } from "../../../ui/ScreenTitle";
@@ -372,7 +373,7 @@ function EmptyMap({ org, classId }: { org: string; classId: string }) {
           <Link
             to="/$"
             params={{ _splat: classUrl(org, classId, "settings") }}
-            search={{ add: 1 } as never}
+            state={sheetState("add") as never}
             className={buttonClass("primary")}
           >
             Add students

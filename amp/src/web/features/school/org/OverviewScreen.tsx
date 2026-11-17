@@ -6,12 +6,10 @@ import {
   type ListFigure,
 } from "../class-columns";
 import { useQuery } from "@tanstack/react-query";
-import {
-  Link,
-  useNavigate,
-  useParams,
-  useSearch,
-} from "@tanstack/react-router";
+import { Link, useParams } from "@tanstack/react-router";
+import { sheetState } from "../../../nav/sheet";
+import { useScreenView } from "../view-store";
+import { ViewLink } from "../ViewLink";
 import { useMemo, type ReactNode } from "react";
 import { formatDay, formatLastDay } from "../../../../schools/calendar";
 import type {
@@ -287,14 +285,13 @@ function Attention({ items }: { items: readonly AttentionItem[] }) {
           <h3>{item.title}</h3>
           <p>{item.detail}</p>
           {item.rule && <RuleNote>{item.rule}</RuleNote>}
-          <Link
-            to="/$"
-            params={{ _splat: orgPath(item.action.org, item.action.path) }}
-            search={(item.action.search ?? {}) as never}
+          <ViewLink
+            to={orgPath(item.action.org, item.action.path)}
+            view={item.action.search ?? {}}
             className={buttonClass("secondary", styles.attentionAction)}
           >
             {item.action.label}
-          </Link>
+          </ViewLink>
         </li>
       ))}
     </ul>
@@ -455,24 +452,15 @@ export function OverviewScreen() {
   const canImport = org?.can?.includes("roster.import") === true;
   const view = overview.data;
   const district = view ? view.org.kind !== "school" : false;
-  const search = useSearch({ strict: false }) as {
-    chart?: unknown;
-    rows?: unknown;
-    dot?: unknown;
-  };
+  // The chart's measure, the rows' order and the dots: this screen's view
+  // (view-store.ts).
+  const [search, setSearch] = useScreenView<{
+    chart: string;
+    rows: string;
+    dot: string;
+  }>();
   const measure: TrendMeasure = measureOf(search.chart);
   const dots: DoseDots = search.dot === "classes" ? "classes" : "students";
-  const navigate = useNavigate();
-  const setSearch = (patch: Record<string, string | undefined>) =>
-    void navigate({
-      to: ".",
-      replace: true,
-      resetScroll: false,
-      search: ((previous: Record<string, unknown>) => ({
-        ...previous,
-        ...patch,
-      })) as never,
-    });
   const setMeasure = (next: TrendMeasure) =>
     setSearch({ chart: next === "problems" ? "problems" : undefined });
   const placed = [...(view?.classes ?? []), ...(view?.schools ?? [])].reduce(
@@ -613,7 +601,7 @@ export function OverviewScreen() {
                     <Link
                       to="/$"
                       params={{ _splat: orgPath(orgId, "schools") }}
-                      search={{ add: 1 } as never}
+                      state={sheetState("add") as never}
                     >
                       Add a school
                     </Link>
@@ -630,7 +618,7 @@ export function OverviewScreen() {
                     <Link
                       to="/$"
                       params={{ _splat: orgPath(orgId, "classes") }}
-                      search={{ add: 1 } as never}
+                      state={sheetState("add") as never}
                     >
                       Add a class
                     </Link>

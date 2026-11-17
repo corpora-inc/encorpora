@@ -6,6 +6,7 @@ import {
 } from "@tanstack/react-router";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { usePanelsStore } from "../../features/account/panels";
+import { useViewStore, viewScope } from "../../features/school/view-store";
 import { layerScope, useLayerStore } from "../../nav/layer-store";
 import { meOptions, queryClient, sessionOptions } from "../../lib/query";
 import {
@@ -68,6 +69,14 @@ const state = vi.hoisted(() => ({
 vi.mock("../../features/spaces/settings-hub", () => ({
   loadSettingsHub: async (_session: unknown, overlay?: string) =>
     overlay ? `${state.hub}/${overlay}` : state.hub,
+}));
+// The catalog the lesson reader reads: one lesson AMP still has.
+vi.mock("../../learning-transport", () => ({
+  learningCatalogOptions: {
+    queryKey: ["search-catalog"],
+    queryFn: async () => ({ lessons: [{ id: "ratios" }] }),
+    staleTime: Infinity,
+  },
 }));
 vi.mock("../../consent-entry", () => ({
   hasInitialConsentChallenge: () => state.consent,
@@ -179,6 +188,8 @@ type Example = {
   layers?: string[];
   /** The consent email's proof is held (consent-entry.ts). */
   consent?: boolean;
+  /** The school view store afterwards, for the landing screen. */
+  view?: Record<string, unknown>;
   /** Their `/me`, where the row reads it. */
   me?: object;
 };
@@ -205,6 +216,17 @@ const EXAMPLES: Example[] = [
     world: "signed out",
     lands: "/reset-password?token=abc",
   },
+  {
+    from: "/design?frame=specimen&specimen=tab-row-family-open&theme=dark",
+    world: "signed out",
+    lands: "/design/specimen/tab-row-family-open",
+  },
+  {
+    from: "/design?frame=canvas&theme=light#buttons",
+    world: "signed out",
+    lands: "/design/canvas#buttons",
+  },
+  { from: "/design?width=390", world: "signed out", lands: "/design" },
   { from: "/try", world: "signed out", lands: "/sign-up?return=free-practice" },
   { from: "/try/anything", world: "adult", lands: `/family/${FAMILY}` },
 
@@ -289,6 +311,13 @@ const EXAMPLES: Example[] = [
     layers: ["lesson:add-fractions"],
   },
   { from: "/lessons?q=fractions", world: "adult", lands: "/pathways" },
+  {
+    from: "/lessons?q=fractions&strand=geometry",
+    world: "adult",
+    lands: "/pathways",
+  },
+  // A lesson AMP no longer has; one it has opens in its reader (below).
+  { from: "/lessons/retired-lesson", world: "adult", lands: "/pathways" },
   {
     from: "/pathways?skill=s1&view=3d",
     world: "signed out",
@@ -458,6 +487,39 @@ const EXAMPLES: Example[] = [
     lands: `/school/${SCHOOL}/setup/calendar`,
   },
   {
+    from: `/school/adopt?district=${SCHOOL}`,
+    world: "adult",
+    lands: `/school/adopt/${SCHOOL}`,
+  },
+  {
+    from: `/school/adopt?district=${SCHOOL}&manage=1`,
+    world: "adult",
+    lands: `/school/adopt/${SCHOOL}/manage`,
+  },
+  {
+    from: `${CLASS_AT}/cards?student=${CHILD}`,
+    world: "adult",
+    lands: `${CLASS_AT}/cards/${CHILD}`,
+  },
+  {
+    from: `${CLASS_AT}/workbooks?minutes=45&skill=s1`,
+    world: "adult",
+    lands: `${CLASS_AT}/workbooks`,
+    view: { minutes: 45, skill: "s1" },
+  },
+  {
+    from: `${CLASS_AT}/workbooks/2026-11-16?set=3&student=${CHILD}`,
+    world: "adult",
+    lands: `${CLASS_AT}/workbooks/2026-11-16`,
+    view: { set: 3, student: CHILD },
+  },
+  {
+    from: `/standings?class=${CLASS}`,
+    world: "adult",
+    lands: "/standings",
+    view: { class: CLASS },
+  },
+  {
     from: `/school/${SCHOOL}/experience`,
     world: "adult",
     lands: `/school/${SCHOOL}/settings#student-experience`,
@@ -532,6 +594,18 @@ const EXAMPLES: Example[] = [
     world: "family parent" as const,
     lands: `/family/${FAMILY}/kids/${CHILD}#${anchor}`,
   })),
+  { from: "/join/abc-def", world: "signed out", lands: "/join/ABC-DEF" },
+  {
+    from: "/join/abcdef?sso=declined",
+    world: "signed out",
+    lands: "/join/ABC-DEF?sso=declined",
+  },
+  {
+    from: `/school/o/classes/c/workbooks/2026-11-02?set=3&student=${FAMILY}`,
+    world: "adult",
+    lands: "/school/o/classes/c/workbooks/2026-11-02",
+    view: { set: 3, student: FAMILY },
+  },
 ];
 
 /** A router whose root asks the table first, as app/router.tsx's does. */
@@ -619,6 +693,10 @@ for (const example of EXAMPLES)
     // Never chained: where it lands is no row's, for the same person.
     state.consent = false;
     expect(await aliasTarget(at(landed)).catch(() => "a hop")).toBeNull();
+    if (example.view)
+      expect(
+        useViewStore.getState().views[viewScope(SESSION.accountId, landed)],
+      ).toEqual(example.view);
     if (example.panel)
       expect(
         usePanelsStore.getState().accounts.parent?.[example.panel.overlay] ??
@@ -659,6 +737,11 @@ test("the server serves every row's old address (document-routes.ts)", async () 
       (alias) => alias.from,
     ),
   ).toEqual([]);
+});
+
+test("a lesson the catalog has stays at its own address", async () => {
+  enter("adult");
+  expect(await aliasTarget(at("/lessons/ratios"))).toBeNull();
 });
 
 test("patterns match whole addresses, a final $ the rest", () => {

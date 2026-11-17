@@ -396,11 +396,14 @@ async function familyThenSchool(
   );
   await measured(page, `${label} family switcher`);
   await shot(page, "drawer-switcher", width, theme);
+  // An unfinished school opens its setup wizard at its first step.
+  const wizardPath = `/school/${issued.orgId}/setup`;
+  const wizardTitle = "Where will you use AMP?";
   await choose(page, fromHome, new RegExp(school));
-  await heading(page, "When does your school year run?");
+  await heading(page, wizardTitle);
   check(
     `${label} the switcher opens setup`,
-    path(page) === setupPath,
+    path(page) === wizardPath,
     path(page),
   );
 
@@ -414,11 +417,11 @@ async function familyThenSchool(
 
   // Back, Forward and reload each keep their screen.
   await page.goBack();
-  await heading(page, "When does your school year run?");
-  check(`${label} Back reopens setup`, path(page) === setupPath, path(page));
+  await heading(page, wizardTitle);
+  check(`${label} Back reopens setup`, path(page) === wizardPath, path(page));
   await page.reload();
-  await heading(page, "When does your school year run?");
-  check(`${label} reload keeps setup`, path(page) === setupPath, path(page));
+  await heading(page, wizardTitle);
+  check(`${label} reload keeps setup`, path(page) === wizardPath, path(page));
   await page.goForward();
   await page.waitForURL(family.inFamily);
   await page.reload();
@@ -429,7 +432,7 @@ async function familyThenSchool(
     path(page),
   );
   await page.goBack();
-  await heading(page, "When does your school year run?");
+  await heading(page, wizardTitle);
 
   // Having worked in setup, `/` is still the family.
   await openHome(page, origin);

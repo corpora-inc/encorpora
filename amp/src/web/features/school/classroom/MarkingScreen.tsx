@@ -1,11 +1,6 @@
 import { useSession } from "../../../lib/session";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import {
-  Link,
-  useNavigate,
-  useParams,
-  useSearch,
-} from "@tanstack/react-router";
+import { useParams } from "@tanstack/react-router";
 import {
   createContext,
   useContext,
@@ -33,6 +28,8 @@ import { marksSearchSchema } from "./search";
 import { PageHead } from "../parts";
 import { invalidateStack, marksOptions, saveMarks, say } from "./api";
 import type { MarksSearch } from "./search";
+import { useScreenView, type View } from "../view-store";
+import { ViewLink } from "../ViewLink";
 import styles from "./Marking.module.css";
 
 /** Marks waiting to be saved, kept across screens in this tab. Saved marks are
@@ -75,6 +72,15 @@ const markWord: Record<PaperMark, string> = {
 type Student = MarksView["students"][number];
 /** What this host calls the people whose sheets these are. */
 const Who = createContext({ learner: "student", learners: "students" });
+/** The workbook tab as it opens fresh: nothing chosen from an earlier visit. */
+const STACK_FRESH: View = {
+  date: undefined,
+  minutes: undefined,
+  paper: undefined,
+  set: undefined,
+  students: undefined,
+  skill: undefined,
+};
 const count = (n: number, one: string, many = `${one}s`) =>
   `${n} ${n === 1 ? one : many}`;
 
@@ -84,16 +90,18 @@ export function MarkingScreen({ host: given }: { host?: ClassHost } = {}) {
   const host = useClassHost(given);
   const { date = "" } = useParams({ strict: false }) as { date?: string };
   const params = { ...host.place, date };
-  const raw = useSearch({ strict: false });
-  const search = useMemo(
+  // The sheet and the student shown: this screen's view (view-store.ts). A
+  // printed QR code's old address sets them on its one hop
+  // (app/legacy-aliases.ts).
+  const [raw, setView] = useScreenView<MarksSearch>();
+  const view = useMemo(
     () => marksSearchSchema.parse(raw) as MarksSearch,
     [raw],
   );
   const session = useStaffSession();
   const query = useQuery(
-    marksOptions(session, params.class, params.date, search.set),
+    marksOptions(session, params.class, params.date, view.set),
   );
-  const navigate = useNavigate();
   // Only the people this host shows: a family's own children.
   const data = useMemo(
     () =>
@@ -139,34 +147,23 @@ export function MarkingScreen({ host: given }: { host?: ClassHost } = {}) {
           <EmptyState
             title="Nothing printed for this day"
             action={
-              <Link
-                to="/$"
-                params={{ _splat: host.href("workbooks") }}
-                search={{}}
+              <ViewLink
+                to={host.href("workbooks")}
+                view={STACK_FRESH}
                 className={buttonClass("primary")}
               >
                 Print workbooks
-              </Link>
+              </ViewLink>
             }
           />
         ) : (
           <Marks
             key={`${params.class}:${params.date}:${data.set}`}
             data={data}
-            search={search}
+            view={view}
             classId={params.class}
             date={params.date}
-
-            setSearch={(change, replace = false) =>
-              void navigate({
-                to: ".",
-                search: ((previous: MarksSearch) => ({
-                  ...previous,
-                  ...change,
-                })) as never,
-                replace,
-              })
-            }
+            setView={setView}
           />
         )}
       </host.Frame>
@@ -176,16 +173,16 @@ export function MarkingScreen({ host: given }: { host?: ClassHost } = {}) {
 
 function Marks({
   data,
-  search,
+  view,
   classId,
   date,
-  setSearch,
+  setView,
 }: {
   data: MarksView;
-  search: MarksSearch;
+  view: MarksSearch;
   classId: string;
   date: string;
-  setSearch: (change: Partial<MarksSearch>, replace?: boolean) => void;
+  setView: (change: Partial<MarksSearch>) => void;
 }) {
   const session = useSession();
   const who = useContext(Who);
@@ -244,7 +241,7 @@ function Marks({
       session,
       classId,
       date,
-      search.set,
+      view.set,
     ).queryKey;
     const merge = (id: string, problems: MarkedProblem[]) => {
       const update = (current: MarksView | undefined) =>
@@ -277,6 +274,7 @@ function Marks({
             saved += row.entries.length;
             sheets += 1;
           } catch (failure) {
+            console.error("A marked sheet didn’t save", failure);
             failures.push(failure);
           }
         }
@@ -297,7 +295,7 @@ function Marks({
 
   const sets = data.sets;
   const current = phone
-    ? (data.students.find((student) => student.id === search.student) ??
+    ? (data.students.find((student) => student.id === view.student) ??
       data.students.find(
         (student) =>
           student.workbook?.problems.some((problem) => !problem.mark) ?? false,
@@ -318,7 +316,7 @@ function Marks({
             }))}
             value={String(data.set)}
             onChange={(value) =>
-              setSearch({ set: Number(value), student: undefined }, true)
+              setView({ set: Number(value), student: undefined })
             }
           />
         </div>
@@ -331,14 +329,14 @@ function Marks({
           canMark={data.canMark}
           onMark={(n, mark) => set(current.id, n, mark)}
           onAllRight={() => allRight(current)}
-          onStudent={(id) => setSearch({ student: id })}
+          onStudent={(id) => setView({ student: id })}
         />
       ) : (
         <MarkGrid
           students={data.students}
           drafts={drafts}
           canMark={data.canMark}
-          focusStudent={search.student}
+          focusStudent={view.student}
           onMark={set}
           onAllRight={allRight}
         />

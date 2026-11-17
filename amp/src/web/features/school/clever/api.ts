@@ -5,6 +5,7 @@ import { z } from "zod";
 import { AGREEMENT_VERSION } from "../../../../schools/agreement";
 import { plainName, timezone } from "../../../../schools/contracts";
 import { AppError } from "../../../lib/AppError";
+import { qk } from "../../../lib/keys";
 export { cleverEnabled } from "./enabled";
 
 export type ConnectionCredential = {
@@ -168,11 +169,12 @@ async function connectionCall<T>(
 }
 export const connectionOptions = (credential: ConnectionCredential) =>
   queryOptions({
-    queryKey: [
-      "school-connection",
+    queryKey: qk.account(
       credential.accountId,
+      "school",
+      "connection",
       credential.onboarding ? "onboarding" : "account",
-    ],
+    ),
     queryFn: ({ signal }) =>
       connectionCall(
         "/clever/status",

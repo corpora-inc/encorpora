@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams, useRouter } from "@tanstack/react-router";
-import { Navigate } from "../../../nav/Navigate";
 import { useEffect, useRef, useState } from "react";
 import {
   formatJoinCode,
@@ -92,6 +91,8 @@ export function PicturesScreen() {
       );
     } catch (error) {
       const failure = error as JoinError;
+      // The screen says what happened; the log keeps which failure it was.
+      console.warn("Picture sign-in failed", failure.code ?? failure.message);
       setBusy(false);
       if (
         failure.code === "pictures_not_set" ||
@@ -157,12 +158,13 @@ export function PicturesScreen() {
   if (roster.isError && !roster.data)
     return <JoinProblem message={roster.error.message} />;
   if (!roster.data) return <LoadingScreen />;
+  // A name that isn't on the list (removed, or an old link): the class's
+  // names, one tap away, never a hop that Back comes back to.
   if (!student)
     return (
-      <Navigate
-        to="/join/$code"
-        params={{ code: formatJoinCode(code) }}
-        replace
+      <JoinProblem
+        message="That name isn’t on this class’s list."
+        code={formatJoinCode(code)}
       />
     );
   const confirming = firstTime && picks.length === PICKS && !busy && !stop;

@@ -1042,8 +1042,10 @@ try {
     0,
     "nothing of the first account shows",
   );
-  // The new account's own family, never the first account's checkout return.
-  assert.match(new URL(page.url()).pathname, /^\/family\/[^/]+$/);
+  // The new account's own places (`/` is the launcher and never redirects:
+  // amp/AGENTS.md), never the first account's checkout return.
+  assert.equal(new URL(page.url()).pathname, "/");
+  await page.locator("[data-launcher]").waitFor();
   await otherTab.close();
   assert.deepEqual(errors, []);
   await context.close();

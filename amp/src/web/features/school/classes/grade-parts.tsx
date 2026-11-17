@@ -2,6 +2,7 @@ import { useSession } from "../../../lib/session";
 import { useEffect, useRef, useState } from "react";
 import type { SuggestionResource } from "../../../../schools/teacher-contracts";
 import { failureMessage, useSaveFinal, type Place } from "./teacher-api";
+import { CellField } from "../../../ui/CellField";
 import styles from "./Teacher.module.css";
 
 export function Suggested({ suggestion }: { suggestion: SuggestionResource }) {
@@ -86,9 +87,8 @@ export function FinalField({
   };
   return (
     <span className={styles.finalCell} data-state={state}>
-      <input
+      <CellField
         className={styles.finalInput}
-        type="text"
         value={draft}
         maxLength={24}
         autoComplete="off"

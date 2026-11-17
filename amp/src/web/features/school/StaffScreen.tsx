@@ -1,7 +1,9 @@
 import { reportError } from "../../lib/report-error";
 import { SMALL_CLASS } from "../navigation/shell-frame";
 import { useQuery } from "@tanstack/react-query";
-import { useNavigate, useParams, useSearch } from "@tanstack/react-router";
+import { useParams } from "@tanstack/react-router";
+import { useOpenSheet, useSheetNav } from "../../nav/sheet";
+import { useScreenView } from "./view-store";
 import { useState } from "react";
 import type { StaffResource } from "../../../schools/setup-contracts";
 import { useLoggedError } from "../../feedback";
@@ -54,10 +56,9 @@ function InviteForm({ orgId }: { orgId: string }) {
   const classes = [
     ...(useQuery(classesOptions(session, orgId)).data ?? []),
   ].sort((a, b) => compareClassNames(a.name, b.name));
-  // "Invite a co-teacher" on a class's Students arrives with that class.
-  const { class: forClass } = useSearch({ strict: false }) as {
-    class?: unknown;
-  };
+  // "Invite a co-teacher" on a class's Students arrives with that class
+  // chosen (this screen's view, view-store.ts).
+  const [{ class: forClass }] = useScreenView<{ class: string }>();
   const [email, setEmail] = useState("");
   const [role, setRole] = useState<InviteRole>("teacher");
   const [classIds, setClassIds] = useState<string[]>(() =>
@@ -415,8 +416,9 @@ function ClassesSheet({
 /** Staff: who has access, who's still invited, and the way to end either. */
 export function StaffScreen() {
   const { org: orgId } = useParams({ strict: false }) as { org: string };
-  const search = useSearch({ strict: false }) as { edit?: unknown };
-  const navigate = useNavigate();
+  // One person's edit sheet over the list (nav/sheet.ts).
+  const sheets = useSheetNav();
+  const openSheet = useOpenSheet();
   const session = currentSession();
   const org = useQuery(orgOptions(session, orgId)).data;
   const staff = useQuery(staffOptions(session, orgId));
@@ -425,16 +427,7 @@ export function StaffScreen() {
   const admins = rows.filter(
     (person) => person.roles.includes("admin") && person.status === "active",
   );
-  const editing = rows.find((person) => person.id === search.edit);
-  const setEditing = (id: string | undefined) =>
-    void navigate({
-      to: ".",
-      search: ((previous: Record<string, unknown>) => ({
-        ...previous,
-        edit: id,
-      })) as never,
-      resetScroll: false,
-    });
+  const editing = rows.find((person) => openSheet === `edit:${person.id}`);
   return (
     <OrgFrame orgId={orgId} nav="staff" title="Staff">
       <PageHead
@@ -476,7 +469,7 @@ export function StaffScreen() {
                       admins.length <= 1
                     )
                   }
-                  onEdit={() => setEditing(person.id)}
+                  onEdit={() => sheets.show(`edit:${person.id}`)}
                 />
               ))}
             </ul>
@@ -488,7 +481,7 @@ export function StaffScreen() {
           key={editing.id}
           orgId={orgId}
           person={editing}
-          onClose={() => setEditing(undefined)}
+          onClose={() => sheets.close(`edit:${editing.id}`)}
         />
       )}
     </OrgFrame>

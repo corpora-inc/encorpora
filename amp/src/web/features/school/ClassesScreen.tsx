@@ -19,12 +19,9 @@ import {
   useInfiniteQuery,
   useQuery,
 } from "@tanstack/react-query";
-import {
-  Link,
-  useNavigate,
-  useParams,
-  useSearch,
-} from "@tanstack/react-router";
+import { Link, useNavigate, useParams } from "@tanstack/react-router";
+import { useSheet } from "../../nav/sheet";
+import { useScreenView } from "./view-store";
 import { useEffect, useState } from "react";
 import { divisionLabels, formatDay } from "../../../schools/calendar";
 import type {
@@ -256,12 +253,12 @@ const classHome = (orgId: string, classId: string, earlier: boolean) =>
 
 export function ClassesScreen() {
   const { org: orgId } = useParams({ strict: false }) as { org: string };
-  const search = useSearch({ strict: false }) as {
-    add?: unknown;
-    year?: unknown;
-    periods?: unknown;
-  };
-  const navigate = useNavigate();
+  // The year shown and the "own periods" filter: this screen's view, never
+  // the address (view-store.ts).
+  const [search, setView] = useScreenView<{
+    year: string;
+    periods: string;
+  }>();
   const session = currentSession();
   const org = useQuery(orgOptions(session, orgId)).data;
   const years = useQuery(yearsOptions(session, orgId)).data ?? [];
@@ -284,15 +281,7 @@ export function ClassesScreen() {
   );
   const earlier = !!year && !!inUse && year.endsOn < inUse.startsOn;
   const canAdd = org?.can?.includes("classes.create") && !year;
-  const adding = search.add === 1 || search.add === "1";
-  const setAdding = (open: boolean) =>
-    void navigate({
-      to: ".",
-      search: ((previous: Record<string, unknown>) => ({
-        ...previous,
-        add: open ? 1 : undefined,
-      })) as never,
-    });
+  const { open: adding, onOpenChange: setAdding } = useSheet("add");
   return (
     <OrgFrame orgId={orgId} nav="classes" title="Classes">
       <PageHead
@@ -318,14 +307,7 @@ export function ClassesScreen() {
             dense
             value={(year ?? inUse)?.id ?? null}
             onChange={(value) =>
-              void navigate({
-                to: ".",
-                search: ((previous: Record<string, unknown>) => ({
-                  ...previous,
-                  year: value === inUse?.id ? undefined : value,
-                })) as never,
-                resetScroll: false,
-              })
+              setView({ year: value === inUse?.id ? undefined : value })
             }
             options={years
               .slice(0, 4)
@@ -337,13 +319,12 @@ export function ClassesScreen() {
       {ownPeriods && (
         <p className={styles.quiet} data-own-periods="">
           Classes with their own grading periods ·{" "}
-          <Link
-            to="/$"
-            params={{ _splat: orgPath(orgId, "classes") }}
-            search={{} as never}
+          <Button
+            variant="quiet"
+            onClick={() => setView({ periods: undefined })}
           >
             Show all classes
-          </Link>
+          </Button>
         </p>
       )}
       {classes.isError ? (
@@ -588,18 +569,7 @@ export function ClassScreen() {
   const classes = useQuery(classesOptions(session, orgId));
   const klass = classes.data?.find((entry) => entry.id === classId);
   const { query, rows } = useClassRoster(orgId, classId);
-  const search = useSearch({ strict: false }) as { add?: unknown };
-  const navigate = useNavigate();
-  const adding = search.add === 1 || search.add === "1";
-  const setAdding = (open: boolean) =>
-    void navigate({
-      to: ".",
-      search: ((previous: Record<string, unknown>) => ({
-        ...previous,
-        add: open ? 1 : undefined,
-      })) as never,
-      resetScroll: false,
-    });
+  const { open: adding, onOpenChange: setAdding } = useSheet("add");
   const canEdit =
     org?.can?.includes("classes.update") || org?.teaches?.includes(classId);
   const canAdd = canAddStudents(org, classId);
@@ -812,7 +782,6 @@ export function ClassScreen() {
             )}
             {familyAdd && session ? (
               <AddChildSheet
-                session={session}
                 kind={familyAdd}
                 open={adding}
                 onOpenChange={setAdding}

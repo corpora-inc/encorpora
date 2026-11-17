@@ -22,7 +22,8 @@ export function AreaKey({
     ...areas.map((a, slot) => ({ id: a.id, title: a.title, slot })),
   ];
   return (
-    <nav
+    <div
+      role="group"
       className={`${styles.key} ${className ?? ""}`}
       aria-label="Math areas"
       data-area-key=""
@@ -31,8 +32,8 @@ export function AreaKey({
         <button
           type="button"
           key={option.id ?? "all"}
-          onClick={() => view.set({ area: option.id })}
           aria-pressed={option.id === area}
+          onClick={() => view.set({ area: option.id })}
           className={styles.chip}
           data-area-choice={option.id ?? "all"}
           data-selected={option.id === area ? "" : undefined}
@@ -50,6 +51,6 @@ export function AreaKey({
           {option.title}
         </button>
       ))}
-    </nav>
+    </div>
   );
 }

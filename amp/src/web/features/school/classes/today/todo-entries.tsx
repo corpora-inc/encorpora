@@ -7,6 +7,8 @@ import type {
 import { buttonClass } from "../../../../ui/Button";
 import type { FeedEntry } from "./Feed";
 import { classUrl } from "../teacher-shared";
+import { sheetState } from "../../../../nav/sheet";
+import { ViewLink } from "../../ViewLink";
 import { EntityLink } from "../../../../nav/links";
 import { work, type Entity } from "../../../../nav/entities";
 
@@ -109,15 +111,16 @@ export function TodoAction({
         {action.label}
       </EntityLink>
     );
-  const target = {
-    to: classUrl(org, classId, action.tab as ClassTabId | "start"),
-    search: action.tab === "settings" ? { add: 1 } : {},
-  };
   return (
     <Link
       to="/$"
-      params={{ _splat: target.to }}
-      search={target.search as never}
+      params={{
+        _splat: classUrl(org, classId, action.tab as ClassTabId | "start"),
+      }}
+      // Settings opens with its add-students sheet (nav/sheet.ts).
+      state={
+        (action.tab === "settings" ? sheetState("add") : undefined) as never
+      }
       className={buttonClass(look)}
     >
       {action.label}
@@ -215,17 +218,16 @@ export function todoEntries({
           importStudents={importStudents}
         />
         {todo.groupSheet && canPrint && (
-          <Link
-            to="/school/$org/classes/$class/workbooks"
-            params={place}
-            search={{
+          <ViewLink
+            to={`school/${place.org}/classes/${place.class}/workbooks`}
+            view={{
               students: todo.students.map((student) => student.id).join(","),
               skill: todo.groupSheet.skillId,
             }}
             className={buttonClass("secondary")}
           >
             {todo.groupSheet.label}
-          </Link>
+          </ViewLink>
         )}
         {extra?.(todo)}
       </>

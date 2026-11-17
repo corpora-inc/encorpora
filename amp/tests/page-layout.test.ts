@@ -300,6 +300,10 @@ const ROUTES_PHASE_2: Record<string, string> = {
   "app/LegacyApp.tsx#LegacyApp":
     "the legacy host: practice (full) and the account centre",
   "features/design/DesignScreen.tsx#DesignScreen": "the /design gallery",
+  "features/design/DesignScreen.tsx#DesignCanvas":
+    "the gallery's framed canvas (/design/canvas): every section at the chosen width",
+  "features/design/DesignScreen.tsx#DesignSpecimen":
+    "a gallery frame (/design/specimen/<id>): one viewport-owning component alone",
   "features/family-approval/ApprovalScreen.tsx#ApprovalScreen":
     "joining, approvals and links from outside the app",
   "features/family-approval/ApproveLinkScreen.tsx#ApproveLinkScreen":

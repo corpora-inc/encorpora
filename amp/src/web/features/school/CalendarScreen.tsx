@@ -1,15 +1,10 @@
 import { reportError } from "../../lib/report-error";
-import { closeSearch } from "../../lib/return-to";
+import { useOpenSheet, useSheetNav } from "../../nav/sheet";
+import { useScreenView } from "./view-store";
 import { OrgFrame } from "./OrgFrame";
 import { useQuery } from "@tanstack/react-query";
-import {
-  Link,
-  useNavigate,
-  useParams,
-  useSearch,
-  useRouter,
-} from "@tanstack/react-router";
-import { Navigate } from "../../nav/Navigate";
+import { Link, useParams } from "@tanstack/react-router";
+import { ViewLink } from "./ViewLink";
 import { useState } from "react";
 import {
   divisionKinds,
@@ -28,7 +23,6 @@ import { Sheet } from "../../ui/Sheet";
 import { Toast } from "../../ui/Toast";
 import {
   calendarOptions,
-  classesOptions,
   currentSession,
   orgOptions,
   refreshSchool,
@@ -47,11 +41,12 @@ const TERM_CHOICES = gradingChoices;
 /** Changing one session's dates (the year, a term): a sheet of two days. */
 export function EditSheet({
   orgId,
-  session: entry,
+  period: entry,
   onClose,
 }: {
   orgId: string;
-  session: SessionResource;
+  /** The year or term whose dates change. */
+  period: SessionResource;
   onClose: () => void;
 }) {
   const session = currentSession();
@@ -132,11 +127,11 @@ export function YearCalendar({
    * classes grade by, with nothing to choose (a class chooses its own). */
   section?: boolean;
 }) {
-  const search = useSearch({ strict: false }) as {
-    view?: unknown;
-    edit?: unknown;
-  };
-  const navigate = useNavigate();
+  // The set of terms shown: this screen's view (view-store.ts). One
+  // period's dates open in a sheet over it (nav/sheet.ts).
+  const [search, setSearch] = useScreenView<{ view: string }>();
+  const sheets = useSheetNav();
+  const openSheet = useOpenSheet();
   const session = currentSession();
   const org = useQuery(orgOptions(session, orgId)).data;
   const calendar = useQuery(calendarOptions(session, orgId));
@@ -160,17 +155,7 @@ export function YearCalendar({
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   useLoggedError(error);
-  const router = useRouter();
-  const setSearch = (patch: Record<string, unknown>) =>
-    void navigate({
-      to: ".",
-      search: ((previous: Record<string, unknown>) => ({
-        ...previous,
-        ...patch,
-      })) as never,
-      resetScroll: false,
-    });
-  const editing = sessions.find((entry) => entry.id === search.edit);
+  const editing = sessions.find((entry) => openSheet === `edit:${entry.id}`);
   const pick = (kind: DivisionKind) => {
     setSearch({ view: kind });
     if (kinds.includes(kind) || !canEdit) return;
@@ -193,7 +178,7 @@ export function YearCalendar({
     canEdit && year ? (
       <Button
         variant={compact ? "quiet" : "secondary"}
-        onClick={() => setSearch({ edit: year.id })}
+        onClick={() => sheets.show(`edit:${year.id}`)}
       >
         Change year dates
       </Button>
@@ -270,7 +255,7 @@ export function YearCalendar({
               {canEdit && !part.inherited && (
                 <Button
                   variant="quiet"
-                  onClick={() => setSearch({ edit: part.id })}
+                  onClick={() => sheets.show(`edit:${part.id}`)}
                 >
                   Edit
                 </Button>
@@ -353,7 +338,7 @@ export function YearCalendar({
                           {canEdit && !part.inherited && (
                             <Button
                               variant="quiet"
-                              onClick={() => setSearch({ edit: part.id })}
+                              onClick={() => sheets.show(`edit:${part.id}`)}
                             >
                               Edit
                             </Button>
@@ -372,8 +357,8 @@ export function YearCalendar({
           <EditSheet
             key={editing.id}
             orgId={orgId}
-            session={editing}
-            onClose={() => closeSearch(router, "edit")}
+            period={editing}
+            onClose={() => sheets.close(`edit:${editing.id}`)}
           />
         )}
       </section>
@@ -382,8 +367,8 @@ export function YearCalendar({
     <EditSheet
       key={editing.id}
       orgId={orgId}
-      session={editing}
-      onClose={() => closeSearch(router, "edit")}
+      period={editing}
+      onClose={() => sheets.close(`edit:${editing.id}`)}
     />
   );
   if (compact)
@@ -442,37 +427,19 @@ export function CalendarScreen() {
   const { org: orgId } = useParams({ strict: false }) as { org: string };
   const session = currentSession();
   const org = useQuery(orgOptions(session, orgId)).data;
-  const classes = useQuery({
-    ...classesOptions(session, orgId),
-    enabled: org?.kind === "family" || org?.solo === true,
-  }).data;
   if (!org) return null;
-  const small = org.kind === "family" || org.solo === true;
-  if (small && !classes) return null;
-  // A school's year and terms are its Calendar tab; a one-class school's
-  // or a family's are its class's Settings.
-  if (!small)
-    return (
-      <OrgFrame orgId={orgId} nav="calendar" title="Calendar" narrow>
-        {/* The screen's one h1 (its tab names it, so it isn't shown again). */}
-        <PageHead title="Calendar" />
-        <div className={styles.settingsPage}>
-          <YearCalendar orgId={orgId} section />
-        </div>
-      </OrgFrame>
-    );
+  // A school's year and terms are its Calendar tab. A family's open in its
+  // class's Settings from the route's guard (familyEquivalent); a one-class
+  // school's links go there directly, and its old Calendar address shows
+  // the same year here, in place, never a redirect from render.
   return (
-    <Navigate
-      to={"/$" as never}
-      params={
-        {
-          _splat: classes?.[0]
-            ? `school/${orgId}/classes/${classes[0].id}/settings`
-            : `school/${orgId}/settings`,
-        } as never
-      }
-      replace
-    />
+    <OrgFrame orgId={orgId} nav="calendar" title="Calendar" narrow>
+      {/* The screen's one h1 (its tab names it, so it isn't shown again). */}
+      <PageHead title="Calendar" />
+      <div className={styles.settingsPage}>
+        <YearCalendar orgId={orgId} section />
+      </div>
+    </OrgFrame>
   );
 }
 
@@ -513,15 +480,11 @@ function SchoolGradingPicker({ orgId }: { orgId: string }) {
       />
       {data.own > 0 && (
         <p className={styles.fieldHelp}>
-          <Link
-            to="/$"
-            params={{ _splat: orgPath(orgId, "classes") }}
-            search={{ periods: "own" } as never}
-          >
+          <ViewLink to={orgPath(orgId, "classes")} view={{ periods: "own" }}>
             {data.own === 1
               ? "1 class uses its own periods"
               : `${data.own} classes use their own periods`}
-          </Link>
+          </ViewLink>
         </p>
       )}
       <Toast message={error} onDismiss={() => setError("")} />

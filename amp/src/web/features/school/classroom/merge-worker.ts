@@ -29,6 +29,8 @@ self.addEventListener("message", (event: MessageEvent<MergeRequest>) => {
         bytes.buffer as ArrayBuffer,
       ]);
     } catch (error) {
+      // The page shows the message; the worker's own log keeps the cause.
+      console.error("Merging the workbook PDFs failed", error);
       post({
         ok: false,
         message: error instanceof Error ? error.message : String(error),

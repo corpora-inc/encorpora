@@ -1,4 +1,4 @@
-import { useNavigate, useRouterState, useSearch } from "@tanstack/react-router";
+import { useNavigate, useParams, useRouterState } from "@tanstack/react-router";
 import {
   useEffect,
   useLayoutEffect,
@@ -10,41 +10,37 @@ import { Segmented } from "../../ui/Segmented";
 import { EmptyState } from "../../ui/EmptyState";
 import "../school/SchoolFrame.module.css";
 import { contents, GallerySections, specimens } from "./catalog";
-import { setFrameTheme } from "./Gallery";
-import {
-  designWidths,
-  type DesignSearch,
-  type DesignTheme,
-  type DesignWidth,
-} from "./search";
+import { designWidths, type DesignTheme, type DesignWidth } from "./search";
 import { systemTheme, useDesignTheme, useNoIndex } from "./theme";
 import { useDesignView } from "./view";
 import styles from "./Design.module.css";
 
 const SECTION = "amp-design-section";
 
-/** `/design`: every shared component in its states, from fixtures only. */
+/** `/design`: every shared component in its states, from fixtures only.
+ * Its width and theme are this viewer's own (`view.ts`). */
 export function DesignScreen() {
-  const search = useSearch({ strict: false }) as DesignSearch;
   const view = useDesignView();
   useNoIndex();
-  // A framed document is told its theme by its frame's address; the gallery
-  // page uses this viewer's own (an older link's, at first).
-  if (search.frame === "canvas")
-    return <Canvas theme={search.theme ?? systemTheme()} />;
-  if (search.frame === "specimen")
-    return (
-      <SpecimenView
-        id={search.specimen}
-        theme={search.theme ?? systemTheme()}
-      />
-    );
   return (
-    <Chrome
-      width={view.width ?? search.width ?? "fill"}
-      theme={view.theme ?? search.theme ?? systemTheme()}
-    />
+    <Chrome width={view.width ?? "fill"} theme={view.theme ?? systemTheme()} />
   );
+}
+
+/** `/design/canvas`: the document the gallery frames at its width. Its
+ * theme is the viewer's (`view.ts`), and follows changes live. */
+export function DesignCanvas() {
+  const theme = useDesignView((view) => view.theme);
+  useNoIndex();
+  return <Canvas theme={theme ?? systemTheme()} />;
+}
+
+/** `/design/specimen/<id>`: one viewport-owning component, alone. */
+export function DesignSpecimen() {
+  const { id } = useParams({ strict: false }) as { id?: string };
+  const theme = useDesignView((view) => view.theme);
+  useNoIndex();
+  return <SpecimenView id={id} theme={theme ?? systemTheme()} />;
 }
 
 const widthOptions = [
@@ -72,9 +68,7 @@ function Chrome({
   const [theme, setTheme] = useDesignTheme(initialTheme);
   const hash = useRouterState({ select: (state) => state.location.hash });
   // Fixed at first paint: later changes reach the canvas without a reload.
-  const [src] = useState(
-    () => `/design?frame=canvas&theme=${theme}${hash ? `#${hash}` : ""}`,
-  );
+  const [src] = useState(() => `/design/canvas${hash ? `#${hash}` : ""}`);
   const viewport = useRef<HTMLDivElement>(null);
   const [room, setRoom] = useState<{ width: number; height: number } | null>(
     null,
@@ -178,8 +172,7 @@ function Chrome({
 
 /** Every section, in one scrolling document at the frame's width. */
 function Canvas({ theme: initialTheme }: { theme: DesignTheme }) {
-  const [theme] = useDesignTheme(initialTheme);
-  setFrameTheme(theme);
+  useDesignTheme(initialTheme);
   // An address with a section opens on it, once the sections are drawn.
   useEffect(() => {
     const id = decodeURIComponent(location.hash.slice(1));

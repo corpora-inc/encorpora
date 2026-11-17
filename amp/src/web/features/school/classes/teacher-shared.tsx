@@ -1,12 +1,6 @@
-import { closeSearch } from "../../../lib/return-to";
 import { EntityLink } from "../../../nav/links";
 import type { Entity } from "../../../nav/entities";
-import {
-  Link,
-  useNavigate,
-  useRouter,
-  useSearch,
-} from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import {
   useEffect,
   useId,
@@ -28,6 +22,8 @@ import { Button, buttonClass } from "../../../ui/Button";
 import type { GridSort } from "../../../ui/DataGrid";
 import { EmptyState } from "../../../ui/EmptyState";
 import { usePopover } from "../../../ui/popover-owner";
+import { useOpenSheet, useSheetNav } from "../../../nav/sheet";
+import { useScreenView } from "../view-store";
 import "katex/dist/katex.min.css";
 import styles from "./Teacher.module.css";
 
@@ -39,29 +35,28 @@ export const classUrl = (
 ) => `school/${org}/classes/${id}/${tab}`;
 export { buttonClass };
 
-/** A screen's state lives in the URL, so refresh, Back and a shared link all
- * restore it. */
-export function useClassSearch() {
-  const raw = useSearch({ strict: false }) as Record<string, unknown>;
-  const navigate = useNavigate();
-  const set = (
-    patch: Record<string, string | number | undefined>,
-    options: { replace?: boolean } = {},
-  ) =>
-    void navigate({
-      to: ".",
-      search: ((previous: Record<string, unknown>) => ({
-        ...previous,
-        ...patch,
-      })) as never,
-      replace: options.replace,
-      resetScroll: false,
-    });
-  const router = useRouter();
-  /** Closes what these keys opened (a sheet): Back to where it was opened,
-   * as X and the browser's Back both do (lib/return-to.ts). */
-  const close = (...keys: string[]) => closeSearch(router, ...keys);
-  return [raw, set, close] as const;
+/** A class screen's view (its sort, lens, term, period…): one store keyed by
+ * the account and the screen (view-store.ts), so Back, Forward and a refresh
+ * all restore it, and the address carries nothing. */
+export function useClassView() {
+  const [view, set, clear] = useScreenView();
+  return [view as Record<string, unknown>, set, clear] as const;
+}
+/** A sheet over this screen for one of several things (`student:<id>`), in
+ * history state (nav/sheet.ts): Back, ✕ and Escape close it alike. */
+export function useKeyedSheet(prefix: string) {
+  const sheets = useSheetNav();
+  const open = useOpenSheet();
+  const id = open?.startsWith(`${prefix}:`)
+    ? open.slice(prefix.length + 1)
+    : undefined;
+  return {
+    id,
+    show: (next: string) => sheets.show(`${prefix}:${next}`),
+    close: () => {
+      if (id !== undefined) sheets.close(`${prefix}:${id}`);
+    },
+  };
 }
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 /** A value from the address bar that may be nonsense: it recovers, not errors. */
@@ -416,9 +411,9 @@ export function WorkList({
 }: {
   work: readonly WorkItem[];
   reader?: RecordReader;
-  /** Where a row's replay lives, as a splat path and search. */
+  /** Where a row's replay lives, as a splat path. */
   href?: (item: WorkItem) =>
-    | { path: string; search?: Record<string, string> }
+    | { path: string }
     /** A layer over this page (nav/entities.ts). */
     | { entity: Entity }
     /** This row opens nothing. */
@@ -479,7 +474,6 @@ export function WorkList({
               <Link
                 to="/$"
                 params={{ _splat: target.path }}
-                search={(target.search ?? {}) as never}
                 className={styles.workRow}
                 data-work-item={item.id}
               >
