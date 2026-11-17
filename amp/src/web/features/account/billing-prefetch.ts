@@ -17,7 +17,8 @@ export async function prefetchBilling(session: AuthSession) {
     queryClient.ensureQueryData(fundingRecordsOptions(session)),
     queryClient.ensureQueryData(receiptsOptions(session, null)),
   ];
-  if (verified) asks.push(queryClient.ensureQueryData(invoiceHistoryOptions(session)));
+  if (verified)
+    asks.push(queryClient.ensureQueryData(invoiceHistoryOptions(session)));
   for (const result of await Promise.allSettled(asks))
     if (result.status === "rejected")
       console.warn("Billing's data didn't load ahead", result.reason);

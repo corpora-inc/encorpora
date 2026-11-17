@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
+import { useSessionOrNull } from "../../lib/session";
 import { Link, useLocation } from "@tanstack/react-router";
 import type { ComponentProps, ReactNode } from "react";
-import { meOptions, sessionOptions } from "../../lib/query";
+import { meOptions } from "../../lib/query";
 import { isPayHost, learnerOrigin, payOver } from "./address";
 
 /**
@@ -12,7 +13,7 @@ import { isPayHost, learnerOrigin, payOver } from "./address";
  */
 export function usePayHref(learnerId: string) {
   const pathname = useLocation({ select: (location) => location.pathname });
-  const session = useQuery(sessionOptions).data;
+  const session = useSessionOrNull();
   const me = useQuery({
     ...meOptions(session ?? { accountId: "", token: "" }),
     enabled: !!session,

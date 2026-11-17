@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { AppError } from "../../lib/AppError";
+import { reportError } from "../../lib/report-error";
 import { Button } from "../../ui/Button";
 import { PageSection } from "../../ui/PageSection";
 import styles from "./BillingPage.module.css";
@@ -17,15 +19,24 @@ export async function downloadLegal(id: (typeof legalDocuments)[number]["id"]) {
     signal: AbortSignal.timeout(15000),
   });
   if (!response.ok)
-    throw new Error("The document couldn’t be downloaded. Try again.");
+    throw new AppError(
+      "unavailable",
+      "The document couldn’t be downloaded. Try again.",
+      true,
+      null,
+      null,
+      response.status,
+    );
   const doc = new DOMParser().parseFromString(
     await response.text(),
     "text/html",
   );
   const content = doc.querySelector(".legal");
   if (!content)
-    throw new Error(
+    throw new AppError(
+      "contract",
       "The document couldn’t be downloaded. Open it using the link instead.",
+      false,
     );
   // Preserve text and document structure without copying scripts or site chrome.
   const blocks = [...content.querySelectorAll("h2,h3,p,li")]
@@ -79,7 +90,12 @@ export function LegalDocuments() {
                   await downloadLegal(doc.id);
                 } catch (cause) {
                   setError(
-                    cause instanceof Error ? cause.message : "Download failed.",
+                    reportError(cause, {
+                      doing: "download a policy",
+                      fallback:
+                        "The document didn’t download. Check your connection and try again, or open it using the link.",
+                      details: { document: doc.id },
+                    }),
                   );
                 } finally {
                   setBusy(undefined);

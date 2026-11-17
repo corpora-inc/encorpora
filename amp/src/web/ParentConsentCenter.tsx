@@ -10,6 +10,7 @@ import type { ConsentView } from "../parent-consent/contracts.js";
 import type { ConsentChallenge } from "./consent-link.js";
 import "./parent-consent.css";
 import { Loading } from "./ui/Loading";
+import { ConsentNotice } from "./features/privacy/LearningData";
 import { useRouter } from "@tanstack/react-router";
 import { returnTarget } from "./lib/return-to";
 export function ParentConsentCenter({
@@ -294,52 +295,7 @@ export function ParentConsentCenter({
             {view.notice && (
               <details>
                 <summary>Read the complete privacy notice</summary>
-                <p>
-                  <strong>{view.notice.operator.name}</strong>
-                  <br />
-                  {view.notice.operator.address}
-                  <br />
-                  {view.notice.operator.telephone}
-                  <br />
-                  {view.notice.operator.email}
-                </p>
-                <p>
-                  Notice {view.notice.version}. Your contact address is used to
-                  request permission before collecting child information.
-                </p>
-                <h3>Information and purposes</h3>
-                {view.notice.childData.map((d, i) => (
-                  <p key={i}>
-                    <strong>{d.category}</strong>: {d.purpose}. Retention:{" "}
-                    {d.retention}.
-                  </p>
-                ))}
-                <h3>Internal service providers</h3>
-                {view.notice.processors.map((d, i) => (
-                  <p key={i}>
-                    <strong>{d.name}</strong> ({d.service}): {d.data}.{" "}
-                    {d.purpose}. Retention: {d.retention}.
-                  </p>
-                ))}
-                <p>
-                  This method permits only the reviewed internal-use practices,
-                  not other disclosure of children’s personal information.
-                </p>
-                <p>{view.notice.reviewAndDeletion}</p>
-                <p>
-                  You may withdraw at any time. Pending contact is deleted after{" "}
-                  {view.notice.pendingContactDays} days if consent is not
-                  completed. Evidence is kept while consent is active and for{" "}
-                  {view.notice.withdrawnEvidenceDays} days after withdrawal:{" "}
-                  {view.notice.evidenceRetentionPurpose}
-                </p>
-                <a
-                  href={view.notice.privacyUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Full privacy policy
-                </a>
+                <ConsentNotice notice={view.notice} />
               </details>
             )}
             {(canStart || canAck) && (

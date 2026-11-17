@@ -18,7 +18,8 @@ const storage = createJSONStorage(() => ({
   getItem: (name: string) => {
     try {
       return localStorage.getItem(name);
-    } catch {
+    } catch (error) {
+      console.warn("Your home place couldn’t be read on this device", error);
       return null;
     }
   },

@@ -295,12 +295,15 @@ export async function verifyShellReview({
                 `${fixture.origin}/lessons?topic=${encodeURIComponent(templates[0]!.id)}`,
                 { waitUntil: "domcontentloaded" },
               );
-              // It opens in Pathways' sheet: the sheet's title, then the
-              // lesson's own heading.
+              // It opens in Pathways' sheet: the sheet's title (the
+              // lesson's, from this build's index), then the lesson itself.
               await page
                 .waitForFunction(
                   () =>
-                    document.querySelectorAll('[role="dialog"] h2').length >= 2,
+                    !!document.querySelector('[role="dialog"] h2') &&
+                    !!document.querySelector(
+                      '[role="dialog"] article.problem-lesson',
+                    ),
                   undefined,
                   { timeout: 8000 },
                 )

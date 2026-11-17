@@ -2,7 +2,11 @@ import { queryOptions, useQuery } from "@tanstack/react-query";
 import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
 import type { AuthSession } from "../../auth";
+import { AppError } from "../../lib/AppError";
 import { request } from "../../lib/api";
+import { qk } from "../../lib/keys";
+import { reportError } from "../../lib/report-error";
+import { useSession } from "../../lib/session";
 import { requestFetch } from "../../lib/request-transport";
 import { ReceiptDetails } from "../../ReceiptDetails";
 import { Button } from "../../ui/Button";
@@ -28,7 +32,7 @@ const schema = z.object({
 /** A page of payment receipts: Billing's route loads the first ahead. */
 export const receiptsOptions = (session: AuthSession, cursor: string | null) =>
   queryOptions({
-    queryKey: ["account", session.accountId, "receipts", cursor],
+    queryKey: qk.account(session.accountId, "receipts", cursor),
     queryFn: ({ signal }) =>
       request(
         `/payments${cursor ? `?cursor=${encodeURIComponent(cursor)}` : ""}`,
@@ -37,14 +41,13 @@ export const receiptsOptions = (session: AuthSession, cursor: string | null) =>
       ),
   });
 export function Receipts({
-  session,
   selected,
   onSelect,
 }: {
-  session: AuthSession;
   selected?: string;
   onSelect: (id?: string) => void;
 }) {
+  const session = useSession();
   const [cursor, setCursor] = useState<string | null>(null);
   const [previous, setPrevious] = useState<z.infer<typeof payment>[]>([]);
   const records = useQuery(receiptsOptions(session, cursor));
@@ -105,8 +108,13 @@ export function Receipts({
         !response.ok ||
         !response.headers.get("content-type")?.startsWith("application/pdf")
       )
-        throw new Error(
+        throw new AppError(
+          "unavailable",
           "Your receipt couldn’t be downloaded. Try again, or email support@corpora.inc for help.",
+          true,
+          response.headers.get("x-request-id"),
+          null,
+          response.status,
         );
       const blob = await response.blob();
       if (controller.signal.aborted) return;
@@ -120,12 +128,13 @@ export function Receipts({
       setTimeout(() => URL.revokeObjectURL(url), 60_000);
       setDownloaded(true);
     } catch (cause) {
-      if (!controller.signal.aborted)
-        setError(
-          cause instanceof Error
-            ? cause.message
-            : "Download failed. Try again.",
-        );
+      const message = reportError(cause, {
+        doing: "download a receipt",
+        fallback:
+          "Your receipt didn’t download. Check your connection and try again.",
+        details: { payment: record.id, adjustment },
+      });
+      if (!controller.signal.aborted) setError(message);
     } finally {
       if (!controller.signal.aborted) setBusy(false);
     }
