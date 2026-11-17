@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { planLines } from "../BillingSummary";
+import { managesPlan, planLines } from "../BillingSummary";
 
 const learner = (
   name: string,
@@ -51,4 +51,17 @@ test("the adult's own learner is you", () => {
       }),
     ]),
   ).toEqual(["Free · 1 problem left for you"]);
+});
+
+test("a plan is managed by its family's holder, never by a parent who is only a second parent", () => {
+  const me = (learners: unknown[]) =>
+    ({ family: { learners } }) as unknown as Parameters<typeof managesPlan>[0];
+  const kids = [learner("Pip", paid("2027-07-01T12:00:00Z"))];
+  // The holder of a family with learners manages its plan.
+  expect(managesPlan(me(kids), false)).toBe(true);
+  // Only another family's second parent: the server refuses their
+  // purchases (family_holder_only), so nothing is offered.
+  expect(managesPlan(me(kids), true)).toBe(false);
+  // No learners: no plan to manage.
+  expect(managesPlan(me([]), false)).toBe(false);
 });

@@ -439,10 +439,7 @@ export function StartPracticeButton({
 export function RequestSeatsButton({ primary }: { primary: boolean }) {
   const seats = useSheet("seats");
   return (
-    <Button
-      variant={primary ? "primary" : "secondary"}
-      onClick={seats.show}
-    >
+    <Button variant={primary ? "primary" : "secondary"} onClick={seats.show}>
       Request seats
     </Button>
   );
@@ -576,6 +573,37 @@ export function AccessLine({ place }: { place: Place }) {
         )}
       </div>
     </section>
+  );
+}
+
+/**
+ * The class's next access step, where a screen shows students who need a
+ * seat (the workbook stack): the same step Today's feed offers (Start, or
+ * Request seats, or who can), from `accessFeedEntry`, with its sheets here,
+ * so the request is made in place. Nothing while the class has no step.
+ */
+export function AccessStep({ place }: { place: Place }) {
+  const access = useClassAccess(place);
+  const ended = useEndedStep(place);
+  const entry = accessFeedEntry(
+    access.view,
+    place,
+    access.pilot,
+    access.requests,
+    ended,
+  );
+  if (!entry) return null;
+  return (
+    <div className={styles.accessStep} data-access-step={access.view.kind}>
+      <p>
+        <strong>{entry.title}</strong>
+        {entry.detail && <span> {entry.detail}</span>}
+      </p>
+      {entry.actions && (
+        <div className={styles.accessStepAction}>{entry.actions}</div>
+      )}
+      <AccessSheets place={place} />
+    </div>
   );
 }
 

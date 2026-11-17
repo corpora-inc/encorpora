@@ -1,7 +1,13 @@
 import { expect, test } from "vitest";
 import type { Me } from "../../../../account/contracts";
 import { learnerChoice } from "../learner-choice";
-import { addressedIdentity, practiceFocus, practicePath } from "../identity";
+import {
+  addressedIdentity,
+  learningIdentity,
+  practiceFocus,
+  practicePath,
+  selfOf,
+} from "../identity";
 import { focusFilter } from "../../practice/curriculum-filter";
 import { practiceLearnerFor } from "../../profiles/practice-mode";
 
@@ -141,4 +147,21 @@ test("a focus the catalog doesn't have is mixed practice", () => {
     strand: "fractions",
   });
   expect(focusFilter({ skill: "gone" }, catalog)).toEqual({});
+});
+
+test("a school student's own screens are their one learner's", () => {
+  const student = {
+    account: { kind: "student" },
+    learners: [{ id: "aug" }],
+  };
+  expect(selfOf(student, null)).toEqual({ kind: "learner", id: "aug" });
+  // Their unnamed Pathways, Inventory and Overview are theirs.
+  expect(learningIdentity("/pathways", {}, selfOf(student, null))).toEqual({
+    kind: "learner",
+    id: "aug",
+  });
+  // A parent who doesn't practice has no self.
+  expect(
+    selfOf({ account: { kind: "parent" }, learners: [{ id: "aug" }] }, null),
+  ).toBeNull();
 });

@@ -11,7 +11,7 @@ import { OwnPractice } from "../me/OwnPractice";
 import { PayLink } from "../pay/link";
 import { secondParentOnly } from "../second-parent/api";
 import { AccountSections } from "./AccountSections";
-import { planLearners } from "./BillingSummary";
+import { managesPlan } from "./BillingSummary";
 import { NameEditor } from "./NameEditor";
 
 /**
@@ -38,8 +38,7 @@ export function AccountHubScreen() {
     ? account.family.learners.find((learner) => learner.id === own.id)
     : undefined;
   const practice = !!own || account.adultPractice?.eligible === true;
-  const shared = secondParentOnly(account);
-  const plan = !shared && planLearners(account).length > 0;
+  const plan = managesPlan(account, secondParentOnly(account));
   return (
     <Page data-account-hub="">
       <PageHeader title="Account" />
