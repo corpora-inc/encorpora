@@ -8,7 +8,6 @@
 .support {
   color: var(--color-muted-text);
 }
-.funding h2,
 .receiptSummary h2 {
   margin: 0;
   font-family: inherit;
@@ -62,24 +61,6 @@
   color: var(--color-muted-text);
   font-size: 14px;
   line-height: 1.6;
-}
-.funding {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 24px;
-  padding: 24px;
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  background: var(--color-surface-sunken);
-}
-.funding > div {
-  display: grid;
-  gap: 8px;
-}
-.funding p {
-  color: var(--color-muted-text);
-  font-size: 15px;
 }
 .receipts li {
   border-bottom: 1px solid var(--color-border);
@@ -149,13 +130,6 @@
 .support a {
   color: var(--color-primary);
   overflow-wrap: anywhere;
-}
-@media (max-width: 639px) {
-  .funding {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 20px;
-  }
 }
 @media (max-width: 359px) {
   .planRow {

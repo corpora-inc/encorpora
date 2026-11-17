@@ -102,10 +102,6 @@ const COMPONENTS: Allowed = {
 
 /** Screens not on Page yet: phase 2 moves them and deletes their lines. */
 const PHASE_2: Allowed = {
-  "annual-purchase.css": {
-    widths: ["46rem"],
-    why: "the native app's legacy annual purchase",
-  },
   "parent-consent.css": {
     widths: ["52rem"],
     why: "the parent consent centre",
@@ -190,10 +186,6 @@ const PHASE_2: Allowed = {
   "features/schools/Parent.module.css": {
     widths: ["720px"],
     why: "a parent's progress link",
-  },
-  "funding-purchase.css": {
-    widths: ["900px"],
-    why: "the native app's legacy education-funds centre",
   },
   "native-session.css": { widths: ["640px"], why: "the native session screen" },
   "payment-history.css": {
@@ -459,8 +451,6 @@ const ROUTES_PHASE_2: Record<string, string> = {
 /** Route screens that never will: another product's frame, or a
  * development tool. */
 const ROUTES_EXEMPT: Record<string, string> = {
-  "features/funding/FundedEntry.tsx#FundedEntry":
-    "a redirect to /purchase/funded; it renders nothing",
   "features/pitch/PitchScreen.tsx#PitchScreen":
     "the signed-out pitch: a marketing page with its own art direction",
   "features/schools/index.ts#SchoolsScreen":
@@ -557,6 +547,7 @@ export function routeScreens() {
     "app/router.tsx",
     "app/family-routes.tsx",
     "app/school-routes.tsx",
+    "app/pay-routes.tsx",
   ]) {
     const source = read(from);
     const loaders = new Map<string, string>();

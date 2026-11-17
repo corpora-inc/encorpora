@@ -134,7 +134,7 @@ function Billing({ session }: { session: AuthSession }) {
                       </div>
                       {access.kind === "none" && !learner.deletedAt ? (
                         <Link
-                          to="/continue/$learnerId"
+                          to="/pay/$learnerId"
                           params={{ learnerId: learner.id }}
                           className={buttonClass("primary")}
                           onClick={() =>
@@ -176,18 +176,6 @@ function Billing({ session }: { session: AuthSession }) {
               })}
             </ul>
           </PageSection>
-          <section className={styles.funding} aria-labelledby="funding-title">
-            <div>
-              <h2 id="funding-title">Pay with education funds</h2>
-              <p>
-                Choose your program and plan, then download an invoice to submit
-                to your program.
-              </p>
-            </div>
-            <Link to="/purchase/funded" className={buttonClass("secondary")}>
-              Get an invoice
-            </Link>
-          </section>
         </>
       )}
       {!search.receipt && (

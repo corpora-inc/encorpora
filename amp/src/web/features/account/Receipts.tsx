@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { queryOptions, useQuery } from "@tanstack/react-query";
 import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
 import type { AuthSession } from "../../auth";
@@ -25,6 +25,17 @@ const schema = z.object({
   records: z.array(payment),
   nextCursor: z.string().nullable(),
 });
+/** A page of payment receipts: Billing's route loads the first ahead. */
+export const receiptsOptions = (session: AuthSession, cursor: string | null) =>
+  queryOptions({
+    queryKey: ["account", session.accountId, "receipts", cursor],
+    queryFn: ({ signal }) =>
+      request(
+        `/payments${cursor ? `?cursor=${encodeURIComponent(cursor)}` : ""}`,
+        schema,
+        { token: session.token, signal },
+      ),
+  });
 export function Receipts({
   session,
   selected,
@@ -36,15 +47,7 @@ export function Receipts({
 }) {
   const [cursor, setCursor] = useState<string | null>(null);
   const [previous, setPrevious] = useState<z.infer<typeof payment>[]>([]);
-  const records = useQuery({
-    queryKey: ["account", session.accountId, "receipts", cursor],
-    queryFn: ({ signal }) =>
-      request(
-        `/payments${cursor ? `?cursor=${encodeURIComponent(cursor)}` : ""}`,
-        schema,
-        { token: session.token, signal },
-      ),
-  });
+  const records = useQuery(receiptsOptions(session, cursor));
   const all = [...previous, ...(records.data?.records ?? [])];
   const record = all.find((p) => p.id === selected);
   const [name, setName] = useState("");
