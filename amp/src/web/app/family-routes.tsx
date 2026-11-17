@@ -41,32 +41,23 @@ export function familyRoutes(root: AnyRoute) {
   const payHosts = () => import("../features/pay/hosts");
   const screen = (name: string) =>
     lazyRouteComponent(screens as never, name as never);
-  /** An older account address: the same screen at its neutral address. */
-  const accountAlias = (from: string, to: string) => [
-    createRoute({
-      getParentRoute: () => root,
-      path: from,
-      staticData: { space: "account" },
-      beforeLoad: ({ location }) => {
-        throw redirect({
-          href: `${to}${location.searchStr}${location.hash ? `#${location.hash}` : ""}`,
-          replace: true,
-        });
-      },
-    }),
-    createRoute({
-      getParentRoute: () => root,
-      path: `${from}/$`,
-      staticData: { space: "account" },
-      beforeLoad: ({ location }) => {
-        const rest = location.pathname.slice(from.length);
-        throw redirect({
-          href: `${to}${rest}${location.searchStr}${location.hash ? `#${location.hash}` : ""}`,
-          replace: true,
-        });
-      },
-    }),
-  ];
+  /** An older account address: the same screen at its neutral address,
+   * with the rest of the path (`from` alone, or `from/…`). */
+  const accountAlias = (from: string, to: string) =>
+    [from, `${from}/$`].map((path) =>
+      createRoute({
+        getParentRoute: () => root,
+        path,
+        staticData: { space: "account" },
+        beforeLoad: ({ location }) => {
+          const rest = location.pathname.slice(from.length);
+          throw redirect({
+            href: `${to}${rest}${location.searchStr}${location.hash ? `#${location.hash}` : ""}`,
+            replace: true,
+          });
+        },
+      }),
+    );
   /** The account's learners, from before families had a place: the family's
    * Settings (its children), or adding a child on its Today. */
   const learners = (path: string, leaf: string, search: object) =>
@@ -340,7 +331,6 @@ export function familyRoutes(root: AnyRoute) {
     landing,
     ...accountAlias("/family/security", "/account/security"),
     ...accountAlias("/family/access", "/account/billing"),
-    ...accountAlias("/family/privacy", "/account/privacy"),
     learners("/family/learners", "settings", {}),
     learners("/family/learners/new", "", { add: 1 }),
     family.addChildren([
