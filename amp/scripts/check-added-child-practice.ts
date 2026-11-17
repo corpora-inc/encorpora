@@ -74,7 +74,7 @@ try {
       await page
         .getByRole("button", { name: "Birth year, Morgan", exact: true })
         .click();
-      await page.getByRole("radio", { name: "2015", exact: true }).click();
+      await page.getByRole("option", { name: "2015", exact: true }).click();
       await page.getByRole("button", { name: "Next", exact: true }).click();
       await page.waitForURL("**/start/parent/ready");
       await page

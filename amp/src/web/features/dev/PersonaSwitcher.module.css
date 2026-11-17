@@ -16,10 +16,48 @@
   margin: 0;
   color: var(--color-muted-text);
 }
+/* Two lines are always reserved and a longer message is clamped (the full
+ * text is its title and in the console), so an error never moves the page. */
 .error {
-  min-height: 24px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  height: calc(2 * 1.5em);
   margin: var(--space-3) 0;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
   color: var(--color-on-danger);
+}
+.newUser {
+  display: grid;
+  gap: var(--space-1);
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 72px;
+  margin-top: var(--space-5);
+  padding: var(--space-4);
+  text-align: start;
+  font: inherit;
+  color: var(--color-on-primary);
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-control);
+  cursor: pointer;
+}
+.newUser:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+}
+.newUser:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.newUser[aria-busy="true"] {
+  background: var(--color-primary-active);
+}
+.newUser .stage {
+  color: inherit;
 }
 .group h2 {
   margin: var(--space-5) 0 var(--space-3);

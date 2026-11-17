@@ -887,7 +887,7 @@ try {
     .click();
   await page
     .getByRole("dialog", { name: `Birth year, ${nickname}` })
-    .getByRole("radio", { name: "2015", exact: true })
+    .getByRole("option", { name: "2015", exact: true })
     .click();
   await page
     .getByRole("button", { name: `Birth year, ${nickname}: 2015` })

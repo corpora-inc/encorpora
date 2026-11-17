@@ -105,7 +105,7 @@ async function fits(page: Page) {
 async function pickYear(page: Page, label: string, year: string) {
   await page.getByRole("button", { name: label, exact: true }).click();
   const years = page.getByRole("dialog", { name: label });
-  await years.getByRole("radio", { name: year, exact: true }).click();
+  await years.getByRole("option", { name: year, exact: true }).click();
   await years.waitFor({ state: "hidden" });
 }
 async function contrast(page: Page, selector: string) {

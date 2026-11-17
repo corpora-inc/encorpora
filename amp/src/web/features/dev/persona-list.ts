@@ -20,9 +20,22 @@ export type PreviewPersona = {
   stage: string;
   /** Where the switcher sends them; "/" lets the app decide. */
   home: string;
+  /** False: seeded for browser checks only. The switcher opens a fresh
+   * "New user" in its place, so a click never shows a last run's leftovers. */
+  switcher?: false;
 };
 
 export const personaEmail = (slug: string) => `${slug}@${PERSONA_DOMAIN}`;
+
+/** "New user" on `/dev/personas`: a brand-new account each click, through the
+ * real sign-up. The address is unique, on the persona domain. */
+export const newUserEmail = (now = Date.now()) =>
+  `new-${now}@${PERSONA_DOMAIN}`;
+export const NEW_USER_EMAIL = /^new-[a-z0-9]{1,24}@personas\.amp\.test$/;
+/** The development server's confirmation of a new user's address
+ * (`scripts/dev-new-user.ts`, registered only by `vite serve`): what the
+ * emailed link does for a real person before they first sign in. */
+export const NEW_USER_CONFIRM_PATH = "/__amp-dev/personas/confirm-new-user";
 
 export const PREVIEW_PERSONAS: readonly PreviewPersona[] = [
   {
@@ -32,6 +45,7 @@ export const PREVIEW_PERSONAS: readonly PreviewPersona[] = [
     label: "Just signed up",
     stage: "No place yet: “What brings you to AMP?”",
     home: "/",
+    switcher: false,
   },
   {
     slug: "adult-new",
@@ -86,7 +100,8 @@ export const PREVIEW_PERSONAS: readonly PreviewPersona[] = [
     group: "Families",
     name: "Jonah Pell",
     label: "Homeschool family",
-    stage: "Pip (K), Wren (4), Theo (10); paid, weeks of history, second parent",
+    stage:
+      "Pip (K), Wren (4), Theo (10); paid, weeks of history, second parent",
     home: "/",
   },
   {

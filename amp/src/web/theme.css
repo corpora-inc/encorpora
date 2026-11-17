@@ -627,6 +627,15 @@ header {
   border-color: var(--color-primary);
   color: var(--color-on-primary);
 }
+/* The years are a listbox (BirthYearPrompt): the grid keeps focus and the
+   active year wears the focus ring, for a keyboard only. */
+.year-grid:focus {
+  outline: none;
+}
+.year-grid:focus-visible [data-active] {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
 
 /* Lessons tab: plain sections on the page, no card around them
    (docs/design/ia.md). */

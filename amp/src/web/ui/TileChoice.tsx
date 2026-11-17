@@ -4,6 +4,7 @@ import {
   type KeyboardEvent,
   type ReactNode,
 } from "react";
+import { useTileListbox } from "./tile-listbox";
 import styles from "./TileChoice.module.css";
 
 export type Tile<V> = {
@@ -97,6 +98,75 @@ export function TileChoice<V extends string | number>({
             onChange(clearable && tile.value === value ? null : tile.value)
           }
           onKeyDown={(event) => move(event, at)}
+        >
+          {tile.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+/** The tiles' row count at this width, as TileChoice.module.css sets it. */
+function columnsNow(columns: { narrow: number; wide: number }) {
+  return typeof window !== "undefined" &&
+    window.matchMedia?.("(min-width: 560px)").matches
+    ? columns.wide
+    : columns.narrow;
+}
+
+/**
+ * The same tiles where choosing one is the commit: a year that closes its
+ * dialog. A radio group would choose on every arrow press, so this is a
+ * listbox (ui/tile-listbox): the arrows, Home, End, Page Up, Page Down and
+ * typing move a focus ring over the tiles, and Enter or Space chooses.
+ */
+export function TilePicker<V extends string | number>({
+  label,
+  tiles,
+  value,
+  onChange,
+  columns = { narrow: 4, wide: 8 },
+  disabled = false,
+  onTypeUnmatched,
+}: {
+  label: string;
+  tiles: readonly (Tile<V> & { label: string })[];
+  value: V | null;
+  onChange: (value: V) => void;
+  columns?: { narrow: number; wide: number };
+  disabled?: boolean;
+  /** Four typed digits that match no tile. */
+  onTypeUnmatched?: (typed: string) => void;
+}) {
+  const { listProps, optionProps } = useTileListbox({
+    labels: tiles.map((tile) => tile.name ?? tile.label),
+    selected: tiles.findIndex((tile) => tile.value === value),
+    onChoose: (index) => onChange(tiles[index]!.value),
+    spans: tiles.map((tile) => tile.span),
+    columns: () => columnsNow(columns),
+    disabled,
+    onTypeUnmatched,
+  });
+  return (
+    <div
+      {...listProps}
+      aria-label={label}
+      className={`${styles.grid} ${styles.picker}`}
+      style={
+        {
+          "--tiles-narrow": columns.narrow,
+          "--tiles-wide": columns.wide,
+        } as CSSProperties
+      }
+    >
+      {tiles.map((tile, at) => (
+        <button
+          key={String(tile.value)}
+          type="button"
+          {...optionProps(at)}
+          aria-label={tile.name}
+          className={styles.tile}
+          data-span={tile.span}
         >
           {tile.label}
         </button>

@@ -1,6 +1,5 @@
-import { useRef, type CSSProperties } from "react";
 import { birthYears } from "../../lib/birth-years";
-import tiles from "../../ui/TileChoice.module.css";
+import { TileChoice } from "../../ui/TileChoice";
 
 /** The years the grid offers, "Adult" for anyone older, then oldest first:
  * the old free trial's picker, starting at age 7. */
@@ -9,7 +8,8 @@ const OWN_YOUNGEST = 7;
 const ADULT_AGE = 25;
 
 /** "What year were you born?" for someone's own practice: one tile per year
- * and "Adult", arrow keys moving through them. The year is all AMP needs
+ * and "Adult", the shared radio tiles (ui/TileChoice): choosing is not the
+ * commit here (a Start button is), so the arrows, Home and End choose. The year is all AMP needs
  * (the starter's Myself step and `/me/start` alike); practice finds the
  * level from the first answers. */
 export function OwnYearTiles({
@@ -33,51 +33,20 @@ export function OwnYearTiles({
       label: String(year),
     })),
   ];
-  const refs = useRef<(HTMLButtonElement | null)[]>([]);
-  const current = Math.max(
-    0,
-    options.findIndex((option) => option.year === value),
-  );
-  const pick = (index: number) => {
-    onChange(options[index]!.year);
-    refs.current[index]?.focus();
-  };
   return (
-    <div
-      role="radiogroup"
-      aria-labelledby={labelledBy}
-      className={tiles.grid}
-      style={{ "--tiles-narrow": 4, "--tiles-wide": 8 } as CSSProperties}
-    >
-      {options.map((option, index) => (
-        <button
-          key={option.label}
-          ref={(node) => {
-            refs.current[index] = node;
-          }}
-          type="button"
-          role="radio"
-          aria-checked={option.year === value}
-          tabIndex={index === current ? 0 : -1}
-          data-span={option.label === "Adult" ? "row" : undefined}
-          className={tiles.tile}
-          disabled={disabled}
-          onClick={() => pick(index)}
-          onKeyDown={(event) => {
-            const step =
-              event.key === "ArrowRight" || event.key === "ArrowDown"
-                ? 1
-                : event.key === "ArrowLeft" || event.key === "ArrowUp"
-                  ? -1
-                  : 0;
-            if (!step) return;
-            event.preventDefault();
-            pick((index + step + options.length) % options.length);
-          }}
-        >
-          {option.label}
-        </button>
-      ))}
-    </div>
+    <TileChoice
+      labelledBy={labelledBy}
+      tiles={options.map((option) => ({
+        value: option.year,
+        label: option.label,
+        span: option.label === "Adult" ? ("row" as const) : undefined,
+      }))}
+      value={value}
+      onChange={(year) => {
+        if (year !== null) onChange(year);
+      }}
+      columns={{ narrow: 4, wide: 8 }}
+      disabled={disabled}
+    />
   );
 }
