@@ -151,6 +151,7 @@ export async function flowReport(
     throw new Error(`Days must be 1–${RETENTION.funnelEventDays}`);
   const client = await pool.connect();
   let visitors: Visitor[];
+  let automated: { landed: number; tried: number };
   try {
     await client.query("BEGIN ISOLATION LEVEL REPEATABLE READ READ ONLY");
     await client.query("SET LOCAL statement_timeout='20s'");
@@ -197,6 +198,22 @@ export async function flowReport(
         [days, since ?? null],
       )
     ).rows;
+    // Crawlers and automated browsers (Meta's ad review among them,
+    // src/analytics/automated-client.ts): their own line, never people.
+    automated = (
+      await client.query<{ landed: number; tried: number }>(
+        `SELECT count(DISTINCT e.visitor_id) FILTER (WHERE e.event='pitch_view')::int AS landed,
+           count(DISTINCT e.visitor_id) FILTER (WHERE e.event='try_click')::int AS tried
+         FROM amp_funnel_events e JOIN amp_funnel_visitors v USING(visitor_id)
+         WHERE v.traffic_kind='automated' AND e.${range}
+           AND ($2::timestamptz IS NULL OR EXISTS (
+             SELECT 1 FROM amp_visitor_journeys j
+             WHERE j.visitor_id=e.visitor_id AND j.event='pitch_view' AND j.received_at>=$2))
+           AND EXISTS (SELECT 1 FROM amp_funnel_events p
+             WHERE p.visitor_id=e.visitor_id AND p.event='pitch_view' AND p.${range})`,
+        [days, since ?? null],
+      )
+    ).rows[0]!;
     await client.query("COMMIT");
   } catch (error) {
     await client.query("ROLLBACK").catch(() => {});
@@ -223,6 +240,7 @@ export async function flowReport(
     days,
     since: since?.toISOString() ?? null,
     overall: row(visitors),
+    automated,
     bySource: groups(visitors, (v) => `${v.source} / ${v.medium}`),
     byDevice: groups(visitors, (v) => v.device),
     byMix: groups(
@@ -331,6 +349,10 @@ export function formatFlowReport(
     `AMP acquisition flow, last ${report.days} day(s)${report.since ? `, landing since ${report.since}` : ""}`,
     `Stayed = ${STAYED_MS / 1000} s visible, or a play, or a tap or key. Steps after Stayed count only those people. TooFast = clicked within ${TOO_FAST_MS / 1000} s with no input. MedStay is visible time across screens.`,
     `\nOverall\n${table(HEADER, [cells("all", report.overall)])}`,
+    `\nNot people (crawlers and automated browsers, Meta's ad review among them; left out above)\n${table(
+      ["", "Landed", "Try"],
+      [["automated", report.automated.landed, report.automated.tried]],
+    )}`,
     section("By source / medium (first touch)", report.bySource),
     section("By device", report.byDevice),
     section("By mix (browsers that played one)", report.byMix),

@@ -6,6 +6,7 @@ import { MAX_BATCH_BYTES, eventBatchSchema } from "./events.js";
 import { recordEventBatch } from "./repository.js";
 import { MARKETING_SCREENS } from "./site-actions.js";
 import { studentBearer } from "../schools/principal.js";
+import { automatedClient } from "./automated-client.js";
 
 /** Batches per minute per client address (two-second batching sends ~30). */
 export const EVENT_RATE_LIMIT = 120;
@@ -28,10 +29,7 @@ export async function registerAnalyticsRoutes(
     reply: FastifyReply,
     siteOnly = false,
   ) => {
-    if (
-      request.headers["sec-gpc"] === "1" ||
-      studentBearer(request)
-    )
+    if (request.headers["sec-gpc"] === "1" || studentBearer(request))
       return reply.code(204).send();
     const parsed = eventBatchSchema.safeParse(request.body);
     if (!parsed.success)
@@ -73,9 +71,17 @@ export async function registerAnalyticsRoutes(
         if (account !== parsed.data.accountScope)
           return reply.code(202).send({ accepted: 0 });
       }
+      // A crawler's browser is never a person, whatever the page reported.
+      // Our own flagged browsers stay internal, so their checks don't count
+      // as outside crawlers.
+      const batch =
+        parsed.data.traffic !== "internal" &&
+        automatedClient(request.ip, request.headers["user-agent"])
+          ? { ...parsed.data, traffic: "automated" as const }
+          : parsed.data;
       const accepted = await recordEventBatch(
         options.pool,
-        parsed.data,
+        batch,
         new Date(),
         account,
       );
@@ -98,10 +104,7 @@ export async function registerAnalyticsRoutes(
   await app.register(async (scope) => {
     scope.get("/api/v1/events/context", config, async (request, reply) => {
       reply.header("Cache-Control", "no-store");
-      if (
-        !options.authenticate ||
-        request.headers["sec-gpc"] === "1"
-      )
+      if (!options.authenticate || request.headers["sec-gpc"] === "1")
         return reply.code(204).send();
       const account = await options.authenticate(request);
       const result = await options.pool.query(
