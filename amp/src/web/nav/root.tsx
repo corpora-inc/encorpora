@@ -2,6 +2,7 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import type { ComponentProps } from "react";
 import type { FundedProgram } from "../lib/funded-entry";
 import { useHomeHref as useHomePlaceHref } from "../lib/home-place";
+import { chooseProgram, isProgramChoice } from "../lib/program-choice";
 
 /**
  * The root (docs/design/ia.md, "Navigation", rule 6). `/` never redirects:
@@ -24,14 +25,23 @@ function useHomeHref() {
  * there; signed out, the pitch. */
 export function RootLink({
   program,
+  onClick,
   ...props
 }: Omit<ComponentProps<typeof Link>, "to" | "params" | "search"> & {
-  /** Preserve the funding choice when returning to the public pitch. */
+  /** Keep the funding choice for the public pitch (lib/program-choice.ts),
+   * never in its address. */
   program?: FundedProgram["id"];
 }) {
   const home = useHomeHref();
   return home === ROOT ? (
-    <Link {...props} to="/" search={program ? { program } : undefined} />
+    <Link
+      {...props}
+      to="/"
+      onClick={(event) => {
+        if (program && isProgramChoice(program)) chooseProgram(program);
+        onClick?.(event);
+      }}
+    />
   ) : (
     <Link {...props} to="/$" params={{ _splat: home.slice(1) }} />
   );

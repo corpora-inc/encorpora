@@ -3,31 +3,24 @@
   "counts": {
     "redirects": 0,
     "validateSearch": 0,
-    "searchHandoffs": 4,
-    "navigatingEffects": 2,
+    "searchHandoffs": 0,
+    "navigatingEffects": 0,
     "renderNavigate": 0,
     "silentCatches": 0,
     "sessionProps": 0,
-    "sessionReads": 1,
+    "sessionReads": 0,
     "inlineQueryKeys": 0,
     "nativeControls": 0
   },
   "files": {
     "redirects": {},
     "validateSearch": {},
-    "searchHandoffs": {
-      "features/inventory/InventoryScreen.tsx": 3,
-      "nav/root.tsx": 1
-    },
-    "navigatingEffects": {
-      "app/LegacyApp.tsx": 2
-    },
+    "searchHandoffs": {},
+    "navigatingEffects": {},
     "renderNavigate": {},
     "silentCatches": {},
     "sessionProps": {},
-    "sessionReads": {
-      "app/LegacyApp.tsx": 1
-    },
+    "sessionReads": {},
     "inlineQueryKeys": {},
     "nativeControls": {}
   },

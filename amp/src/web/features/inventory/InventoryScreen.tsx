@@ -6,15 +6,11 @@ import { LayerHost } from "../../nav/LayerHost";
 import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
 import { useDeferredValue, useMemo, useState, type CSSProperties } from "react";
 import { useQuery } from "@tanstack/react-query";
-import {
-  useLocation,
-  useNavigate,
-  useSearch,
-  Link,
-} from "@tanstack/react-router";
+import { useLocation, Link } from "@tanstack/react-router";
 import { skillCatalogOptions, useLearningView } from "../../lib/learning-view";
 import { useUrlSearchText } from "../../lib/url-search-text";
 import { useHeroAction } from "../../lib/shell-slots";
+import { useInventoryView } from "./inventory-view";
 import {
   bandLabel,
   bands,
@@ -89,16 +85,16 @@ export function InventoryScreen() {
   );
   const { shown } = useCurriculumDetails();
   const catalog = useQuery(skillCatalogOptions);
-  const search = useSearch({ strict: false });
-  const navigate = useNavigate();
-  const urlQuery = typeof search.topic === "string" ? search.topic : "";
-  // The field owns its text while typing; the URL follows after a pause.
-  const field = useUrlSearchText(urlQuery, (topic) =>
-    update({ topic: topic || undefined }, true),
+  // How this inventory is being looked at (inventory-view.ts): its search,
+  // collection and area, kept for the screen, never in the address.
+  const inventoryView = useInventoryView();
+  // The field owns its text while typing; the view follows after a pause.
+  const field = useUrlSearchText(inventoryView.topic, (topic) =>
+    inventoryView.set({ topic }),
   );
   const query = useDeferredValue(field.text.trim());
   // The math area, as Pathways names it (`?area=geometry`).
-  const area = areaParam(search.area) ?? "";
+  const area = areaParam(inventoryView.area) ?? "";
   const evidence = useMemo(
     () => new Map(view.evidence?.skills.map((e) => [e.skillId, e]) ?? []),
     [view.evidence],
@@ -150,22 +146,9 @@ export function InventoryScreen() {
   const triedAnything = (view.evidence?.skills ?? []).some((e) => e.attempts);
   // Before the first answer the collection is the whole curriculum.
   const filter =
-    readFilter(search.collection) ?? (triedAnything ? "tried" : "all");
-  const update = (
-    values: { topic?: string; collection?: string; area?: string },
-    replace = false,
-  ) =>
-    void navigate({
-      // This inventory's own address: yours, or a child's.
-      to: ".",
-      search: {
-        topic: field.carry() || undefined,
-        collection: search.collection ? filter : undefined,
-        area: area || undefined,
-        ...values,
-      },
-      replace,
-    });
+    readFilter(inventoryView.collection) ?? (triedAnything ? "tried" : "all");
+  const update = (values: { collection?: string; area?: string }) =>
+    inventoryView.set({ topic: field.carry(), ...values });
   const earnedInArea = inArea.filter(
     (s) => (evidence.get(s.id)?.independentCorrect ?? 0) > 0,
   );
@@ -201,13 +184,14 @@ export function InventoryScreen() {
     view.active &&
     !child &&
     !triedAnything &&
-    !search.collection &&
+    !inventoryView.collection &&
     !query &&
     !area;
   if (hero)
     return (
       <main className={styles.page}>
         <InventoryHero
+          browseAll={() => inventoryView.set({ collection: "all" })}
           learner={view.learner?.id}
           total={allSkills.length}
           preview={visible.slice(0, 4).map((skill) => skill.title)}
@@ -275,7 +259,7 @@ export function InventoryScreen() {
               align="end"
               options={areaOptions}
               value={area}
-              onChange={(next) => update({ area: next || undefined })}
+              onChange={(next) => update({ area: next || "" })}
             />
           </div>
           {triedAnything && (
@@ -396,12 +380,12 @@ export function InventoryScreen() {
               <Link
                 className={buttonClass("primary")}
                 to="/$"
+                // Practice held to this skill, at its own address.
                 params={
                   view.learner
-                    ? practiceParams(view.learner.id)
+                    ? practiceParams(view.learner.id, { skill })
                     : { _splat: "practice" }
                 }
-                search={{ skill }}
               >
                 <PracticeLabel />
               </Link>
@@ -482,10 +466,12 @@ function InventoryHero({
   learner,
   total,
   preview,
+  browseAll,
 }: {
   learner: string | undefined;
   total: number;
   preview: readonly string[];
+  browseAll: () => void;
 }) {
   useHeroAction(true);
   return (
@@ -510,13 +496,14 @@ function InventoryHero({
       >
         Start practicing
       </Link>
-      <Link
-        to="/inventory"
-        search={{ collection: "all" } as never}
+      {/* The whole collection, on this same screen (inventory-view.ts). */}
+      <button
+        type="button"
         className={buttonClass("quiet")}
+        onClick={browseAll}
       >
         Browse all {total.toLocaleString("en-US")} skills
-      </Link>
+      </button>
     </section>
   );
 }
