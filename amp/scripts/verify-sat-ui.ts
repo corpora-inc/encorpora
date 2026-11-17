@@ -332,6 +332,11 @@ try {
         await page
           .getByRole("button", { name: "Back to family", exact: true })
           .click();
+        // The device returns to the family; the child's settings open from
+        // their name in Settings.
+        await page.waitForURL((url) => url.pathname.startsWith("/family/"));
+        await page.goto(fixture.origin + `/family/${familyId}/settings`);
+        await page.locator(`[data-child-settings-open="${learnerId}"]`).click();
         await toggle.waitFor();
         await toggle.click();
         await page
@@ -340,6 +345,10 @@ try {
           })
           .waitFor();
         assert.equal(await toggle.isChecked(), false);
+        // The child takes the device again, from their page.
+        await page.keyboard.press("Escape");
+        await page.getByRole("dialog").waitFor({ state: "detached" });
+        await page.goto(fixture.origin + childPath);
         await page.locator(`[data-practice-here="${learnerId}"]`).click();
         assert.deepEqual(
           await shownProblem(page),

@@ -17,6 +17,7 @@
  *     AMP_TEST_DATABASE_URL=... npx tsx scripts/verify-adult-practice-ui.ts [--port 4434]
  */
 import { mkdir, writeFile } from "node:fs/promises";
+import { CANCELLED_BY_NAVIGATION } from "./lib/cancelled-by-navigation";
 import { randomBytes, randomUUID } from "node:crypto";
 import pg from "pg";
 import {
@@ -116,7 +117,6 @@ const DAY = 86_400_000;
 const day = (offset: number) =>
   new Date(Date.now() + offset * DAY).toISOString().slice(0, 10);
 const last: { page: Page | null } = { page: null };
-const CANCELLED_BY_NAVIGATION = /due to access control checks/;
 
 async function signUp(page: Page, email: string, name: string) {
   const fallback = page.getByRole("button", {

@@ -12,6 +12,7 @@
  * queue, as tests/purchase-consent.integration.ts does. Screenshots hold
  * synthetic accounts only. */
 import assert from "node:assert/strict";
+import { CANCELLED_BY_NAVIGATION } from "./lib/cancelled-by-navigation";
 import { mkdir, writeFile } from "node:fs/promises";
 import { randomBytes, randomUUID } from "node:crypto";
 import pg from "pg";
@@ -300,9 +301,10 @@ async function opened(context: BrowserContext, label: string) {
   const page = await context.newPage();
   page.setDefaultTimeout(30_000);
   last.page = page;
-  page.on("pageerror", (error) =>
-    failures.push(`${label} page error: ${error.message}`),
-  );
+  page.on("pageerror", (error) => {
+    if (!CANCELLED_BY_NAVIGATION.test(error.message))
+      failures.push(`${label} page error: ${error.message}`);
+  });
   return page;
 }
 async function heading(page: Page, name: RegExp | string, level = 1) {
