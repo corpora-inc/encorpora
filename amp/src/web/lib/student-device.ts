@@ -16,6 +16,8 @@ const handedKey = "amp.student.handed";
 /** Where a handed device goes back to, when the adult handed it over from a
  * particular screen (a demo's roster, say); `/` otherwise. */
 const returnKey = "amp.student.return";
+/** The name of the place a handed device returns to ("Grade 5 Math"). */
+const returnNameKey = "amp.student.return-name";
 export const STUDENT_IDLE_MS = 30 * 60_000;
 
 export type StudentSession = { accountId: string; token: string };
@@ -53,6 +55,7 @@ export function rememberStudentSession(
   mode: "shared" | "personal",
   handed = false,
   returnTo?: string,
+  returnName?: string,
 ) {
   clearStudentDevice();
   const store = mode === "shared" ? sessionStorage : localStorage;
@@ -60,6 +63,17 @@ export function rememberStudentSession(
   if (mode === "shared") store.setItem(activeKey, String(Date.now()));
   if (handed) sessionStorage.setItem(handedKey, "1");
   if (handed && returnTo) sessionStorage.setItem(returnKey, returnTo);
+  if (handed && returnName) sessionStorage.setItem(returnNameKey, returnName);
+}
+/** The name of the place a handed device goes back to, when it was named
+ * at the handoff (a class); a family's is "family". */
+export function handedReturnName(): string | null {
+  try {
+    return sessionStorage.getItem(returnNameKey);
+  } catch (error) {
+    console.warn("The place this device returns to couldn’t be read", error);
+    return null;
+  }
 }
 /** This student's sign-in was handed over by a parent on their own device. */
 export function handedStudentDevice(): boolean {
@@ -82,7 +96,10 @@ export function clearStudentDevice() {
   // A parent's or teacher's held link never stays beside a child's session.
   forgetEveryLink();
   for (const [store, keys] of [
-    [() => sessionStorage, [studentKey, activeKey, handedKey, returnKey]],
+    [
+      () => sessionStorage,
+      [studentKey, activeKey, handedKey, returnKey, returnNameKey],
+    ],
     [() => localStorage, [studentKey, learnerKey]],
   ] as const)
     try {

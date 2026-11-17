@@ -65,8 +65,11 @@ const failures: Record<string, string> = {
  * students, as their own device would, until it signs out back to here. */
 export function PracticeAs({
   student,
+  returnName,
 }: {
   student: { id: string; name: string };
+  /** The class this roster is: the way back is named for it. */
+  returnName?: string;
 }) {
   const finish = useFinishSignIn();
   const [starting, setStarting] = useState(false);
@@ -80,7 +83,14 @@ export function PracticeAs({
         { token: currentSession().token, body: {} },
       );
       // Signing out comes back to this roster.
-      await finish(grant, true, location.pathname);
+      await finish(
+        grant,
+        true,
+        location.pathname,
+        undefined,
+        undefined,
+        returnName,
+      );
     } catch (failure) {
       console.error("Practice as a demo student didn’t start", failure);
       setError(
