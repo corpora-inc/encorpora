@@ -234,6 +234,21 @@ const EXAMPLES: Example[] = [
   },
 
   {
+    from: `/practice/${CHILD}?skill=s1&profile=p`,
+    world: "adult",
+    lands: `/practice/${CHILD}/skills/s1?profile=p`,
+  },
+  {
+    from: `/practice/${CHILD}?template=t1&strand=geometry`,
+    world: "adult",
+    lands: `/practice/${CHILD}/types/t1`,
+  },
+  {
+    from: `/practice/${CHILD}?strand=geometry`,
+    world: "signed out",
+    lands: `/practice/${CHILD}/areas/geometry`,
+  },
+  {
     from: `/school/${FAMILY_ORG}/classes/${CLASS}`,
     world: "family parent",
     lands: `/family/${FAMILY}`,

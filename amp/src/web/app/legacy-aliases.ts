@@ -260,6 +260,9 @@ const FAMILY_ORG_PAGES: [string, "roster" | "map" | "settings" | "today"][] = [
   ["/import/$step", "today"],
 ];
 
+/** The query keys practice's focus had before its paths. */
+const FOCUS_KEYS = ["template", "skill", "strand"] as const;
+
 /** `/family/<segment>` screens and rows that aren't a family's id. */
 const FAMILY_SCREENS = new Set([
   "approve",
@@ -440,6 +443,30 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
     from: "/pathways/$skill",
     about: "a skill's own address",
     to: ({ search, params }) => pathwaysTarget(search, params.skill),
+  },
+
+  // Practice held to a problem type, skill or area by its query, from before
+  // each focus had its path (features/spaces/identity.ts practicePath).
+  {
+    from: "/practice/$learnerId",
+    about: "a practice focus in the query",
+    when: ({ search }) =>
+      FOCUS_KEYS.some((key) => typeof search[key] === "string"),
+    to: async ({ params, searchStr, search }) => {
+      const { practicePath } = await import("../features/spaces/identity");
+      const rest = new URLSearchParams(searchStr);
+      for (const key of FOCUS_KEYS) rest.delete(key);
+      const text = (key: string) =>
+        typeof search[key] === "string" && search[key] !== ""
+          ? (search[key] as string)
+          : undefined;
+      const path = practicePath(params.learnerId!, {
+        template: text("template"),
+        skill: text("skill"),
+        strand: text("strand"),
+      });
+      return rest.size ? `${path}?${rest}` : path;
+    },
   },
 
   // A school's older addresses. A parent's own family, at its class or its
