@@ -959,6 +959,11 @@ function propertyClaims(seed: string, salt: string): GeneratedProblem {
     text: `${angle}°`,
     size: "sm",
     halo: true,
+    // Along the angle's bisector, the first spot clear of the corners.
+    place: [0, -10, 10, -18, 18].map(
+      (d) =>
+        [Math.cos(mid) * d, -Math.sin(mid) * d, 0, 0] as [number, number, 0, 0],
+    ),
   };
   const figure = sceneFigure(
     outline(

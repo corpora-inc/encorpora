@@ -175,6 +175,31 @@ function boxOf(d: Drawn): Box {
 
 export type Fault = { rule: string; detail: string };
 
+/** Does a box meet an arrowhead (a filled triangle "MxyLxyLxyZ")? Tested
+ * on the triangle itself, sampled, not its bounding box: a slanted head's
+ * box is twice its area. */
+function headMeets(b: Box, d: string) {
+  const n = d.match(/-?\d+(?:\.\d+)?/g)!.map(Number);
+  if (n.length < 6) return false;
+  const [ax, ay, bx, by, cx, cy] = n as [
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+  ];
+  for (let i = 0; i <= 12; i++)
+    for (let j = 0; i + j <= 12; j++) {
+      const u = i / 12,
+        v = j / 12,
+        w = 1 - u - v;
+      if (inside(b, ax * w + bx * u + cx * v, ay * w + by * u + cy * v))
+        return true;
+    }
+  return false;
+}
+
 /** Every readability fault of one laid-out scene in one container. */
 export function faults(scene: Scene, c: Container, reveal = false) {
   const fitted = fit(scene, c);
@@ -233,7 +258,7 @@ export function layoutFaults(l: Layout, scene: Scene, c: Container): Fault[] {
   for (const t of texts) {
     const b = inkBox(t);
     for (const m of marks)
-      if (meets(b, boxOf(m)))
+      if (m.k === "path" ? headMeets(b, m.d) : meets(b, boxOf(m)))
         out.push({
           rule: "label/mark",
           detail: `"${t.plain}" (${t.id}) covers ${m.id}`,

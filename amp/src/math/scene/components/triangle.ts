@@ -89,6 +89,7 @@ registerComponent("triangle", {
       (pts[0]![1] + pts[1]![1] + pts[2]![1]) / 3,
     ];
     const px = (n: number) => n / s;
+    const sideLabels: Prim[] = [];
     const prims: Prim[] = [
       {
         type: "polygon",
@@ -144,7 +145,7 @@ registerComponent("triangle", {
         // anchor corner so the label never crosses the line.
         const ax = normal[0] > 0.35 ? -1 : normal[0] < -0.35 ? 1 : 0,
           ay = normal[1] > 0.35 ? 1 : normal[1] < -0.35 ? -1 : 0;
-        prims.push({
+        sideLabels.push({
           type: "text",
           id: `side.${i}.label`,
           at: mid,
@@ -233,10 +234,19 @@ registerComponent("triangle", {
           color: spec.color ?? "accent",
           size: "sm",
           align: [0, 0],
+          // The computed spot, else along the bisector, clear of the
+          // neighbouring corner's label on a thin triangle.
+          place: [0, 10, -10, 20, -20].map(
+            (d) => [bis[0] * d, -bis[1] * d, 0, 0] as [number, number, 0, 0],
+          ),
         });
       }
       if (t.names) {
         const out: Point = [-bis[0], -bis[1]];
+        const away: [-1 | 0 | 1, -1 | 0 | 1] = [
+          out[0] > 0.3 ? -1 : out[0] < -0.3 ? 1 : 0,
+          out[1] > 0.3 ? 1 : out[1] < -0.3 ? -1 : 0,
+        ];
         prims.push({
           type: "text",
           id: `vertex.${i}`,
@@ -244,14 +254,27 @@ registerComponent("triangle", {
           text: t.names[i]!,
           font: "math",
           bold: true,
-          align: [
-            out[0] > 0.3 ? -1 : out[0] < -0.3 ? 1 : 0,
-            out[1] > 0.3 ? 1 : out[1] < -0.3 ? -1 : 0,
+          align: away,
+          // Outside the corner, or the nearest clear place around it: two
+          // triangles side by side can bring two names together.
+          place: [
+            [out[0] * 6, -out[1] * 6, ...away],
+            ...[10, 18].flatMap((d) =>
+              [
+                [d, -d, -1, 1],
+                [-d, -d, 1, 1],
+                [d, d, -1, -1],
+                [-d, d, 1, -1],
+                [0, -d - 2, 0, 1],
+                [0, d + 2, 0, -1],
+              ].map((c) => c as [number, number, -1 | 0 | 1, -1 | 0 | 1]),
+            ),
           ],
-          offset: [out[0] * 6, -out[1] * 6],
         });
       }
     }
+    // Lengths after the names, so a length gives way to a vertex name.
+    prims.push(...sideLabels);
     return prims;
   },
   describe(t) {
