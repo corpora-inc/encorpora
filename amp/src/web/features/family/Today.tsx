@@ -608,7 +608,7 @@ export function FamilyTodayScreen() {
 
 /**
  * For all the kids at once (several children): the family's report cards,
- * once there is term work to report on, and the workbook print for several.
+ * once there is term work to report on, and printing their workbooks.
  * Nothing until one of them applies.
  */
 function ForAllKids({ place }: { place: ReturnType<typeof useFamilyPlace> }) {
@@ -624,7 +624,6 @@ function ForAllKids({ place }: { place: ReturnType<typeof useFamilyPlace> }) {
         <Link
           to="/$"
           params={{ _splat: familyHref(place.family, "workbooks") }}
-          search={{ several: 1 } as never}
           className={buttonClass("secondary")}
           data-workbooks-several=""
         >

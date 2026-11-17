@@ -1,7 +1,7 @@
-import { redirect } from "@tanstack/react-router";
 import type { SignedInMe } from "../../../account/contracts";
 import type { AuthSession } from "../../auth";
 import { fundedProgramForPath, fundedPrograms } from "../../lib/funded-entry";
+import { requireSignedIn, toOwnPlace } from "../../app/sign-in-gate";
 import { meOptions, queryClient, sessionOptions } from "../../lib/query";
 import { studentSession } from "../../lib/student-device";
 import { nativeRuntime } from "../../native-runtime";
@@ -10,7 +10,7 @@ import { legacyPayTarget } from "./paths";
 import { usePayStore, type LearnerChoice, type PayInterval } from "./store";
 import { stripeReturnTarget } from "./stripe-return";
 
-/* The one hop from each older pay address (app/pay-routes.tsx), loaded
+/* The one hop from each older pay address (app/legacy-aliases.ts), loaded
    only when one is opened. Each computes its target once from canonical
    state, seeds the pay store with what the address carried, and the
    address is never read again. */
@@ -23,11 +23,15 @@ type Input = {
   pathname: string;
 };
 
-async function signedIn(): Promise<{ session: AuthSession; me: SignedInMe }> {
-  const session = await queryClient.ensureQueryData(sessionOptions);
-  if (!session) throw redirect({ to: "/sign-in" });
+/** The account an old pay address is for: signed out, the sign-in gate's
+ * one hop (it comes back with the address's continuation); an account the
+ * server no longer knows, its own place. */
+async function signedIn(
+  input: Input,
+): Promise<{ session: AuthSession; me: SignedInMe }> {
+  const session = await requireSignedIn(input);
   const me = await queryClient.ensureQueryData(meOptions(session));
-  if (!me.signedIn) throw redirect({ to: "/sign-in" });
+  if (!me.signedIn) return toOwnPlace();
   return { session, me };
 }
 
@@ -66,7 +70,8 @@ export async function offerChoice(offerId: string) {
 /** An education-funds address: signed out, the public invoice form for its
  * program (campaign labels kept); signed in, the learner's pay screen on
  * the education-funds tab. */
-async function fundsTarget({ search, searchStr }: Input, programId?: string) {
+async function fundsTarget(input: Input, programId?: string) {
+  const { search, searchStr } = input;
   const named = Object.values(fundedPrograms).find((entry) => entry.id === programId);
   const session = await queryClient.ensureQueryData(sessionOptions);
   if (!session) {
@@ -75,7 +80,7 @@ async function fundsTarget({ search, searchStr }: Input, programId?: string) {
     for (const key of [...labels.keys()]) if (!key.startsWith("utm_")) labels.delete(key);
     return `/invoice/${named.slug}${labels.size ? `?${labels}` : ""}`;
   }
-  const { me } = await signedIn();
+  const { me } = await signedIn(input);
   const offered = text(search.offer) ? await offerChoice(text(search.offer)!) : null;
   const target = legacyPayTarget(me, text(search.learner));
   carry(session, target.learnerId, {
@@ -96,12 +101,12 @@ export async function legacyHop(hop: LegacyHop, input: Input): Promise<string> {
   if (hop === "funds") {
     // An old invoice link: its record, status and PDF are in Billing.
     if (text(search.invoice)) {
-      await signedIn();
+      await signedIn(input);
       return "/account/billing";
     }
     return fundsTarget(input, text(search.program));
   }
-  const { session, me } = await signedIn();
+  const { session, me } = await signedIn(input);
   if (hop === "card" && (text(search.purchase) || text(search.billing)))
     return (await stripeReturnTarget(session, search, "learner")) ?? "/account/billing";
   const target = legacyPayTarget(

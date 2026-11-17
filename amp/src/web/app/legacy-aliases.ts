@@ -6,10 +6,10 @@ import {
 } from "../consent-entry";
 import { isFamilyId } from "../features/family/api";
 import { continuationSearch, fundedPrograms } from "../lib/funded-entry";
-import { queryClient, sessionOptions } from "../lib/query";
+import { meOptions, queryClient, sessionOptions } from "../lib/query";
 import { requestFetch } from "../lib/request-transport";
 import { nativeRuntime } from "../native-runtime";
-import { MAX_LAYERS, work } from "../nav/entities";
+import { MAX_LAYERS, OPEN_KEY, work } from "../nav/entities";
 import {
   layerScope,
   pushed,
@@ -342,6 +342,85 @@ const familyRecord =
         };
   };
 
+/**
+ * A family's workbooks: for one child, that child's page at their
+ * workbooks; for several, the print for them all, which is this address
+ * (an older `?several=1` or `?kids=` leaves the query: the print's own
+ * identity stays, `kids` as the people they are in the family's class).
+ */
+async function familyWorkbooks(old: OldAddress): Promise<Target | undefined> {
+  const id = old.params.family!;
+  const session = await requireSignedIn(old, {
+    web: true,
+    adults: true,
+    back: "here",
+  });
+  const [{ familyOptions }, { peopleOf, workbookPrintSearch }, { ownClassOf }] =
+    await Promise.all([
+      import("../features/family/api"),
+      import("../features/family/redirects"),
+      import("../features/spaces/resolve"),
+    ]);
+  const data = await queryClient.ensureQueryData(familyOptions(session, id));
+  const [first, second] = data.children;
+  if (!first) return { to: `/family/${id}` };
+  if (!second)
+    return { to: `/family/${id}/kids/${first.id}`, hash: "child-workbooks" };
+  if (old.search.several === undefined && old.search.kids === undefined)
+    return undefined;
+  const own = ownClassOf(null, id, data);
+  return {
+    to: `/family/${id}/workbooks`,
+    search: workbookPrintSearch(
+      old.search,
+      own ? peopleOf(data.children, own.id) : new Map(),
+    ),
+  };
+}
+
+/** A family address that opened one of its own children by their roster
+ * person (`?open=student:<person>`, a link from before each child had a
+ * page): that child's page, their answers over it. Another family's child
+ * (a tutoring group's) stays a layer. */
+async function familyChildLayer(
+  old: OldAddress,
+): Promise<Target | undefined> {
+  const id = old.params.family!;
+  const session = await requireSignedIn(old, {
+    web: true,
+    adults: true,
+    back: "here",
+  });
+  const [{ familyOptions }, { familyOrgTarget, peopleOf }, { ownClassOf }] =
+    await Promise.all([
+      import("../features/family/api"),
+      import("../features/family/redirects"),
+      import("../features/spaces/resolve"),
+    ]);
+  const data = await queryClient.ensureQueryData(familyOptions(session, id));
+  // The class the family hosts, else the one this parent teaches in (/me).
+  const own =
+    ownClassOf(null, id, data) ??
+    (await queryClient.ensureQueryData(meOptions(session)).then((me) =>
+      ownClassOf(me.signedIn ? me : null, id, data),
+    ));
+  if (!own) return undefined;
+  const target = familyOrgTarget({
+    family: id,
+    page: "today",
+    search: {
+      [OPEN_KEY]: old.search[OPEN_KEY],
+      ...(typeof old.search.skill === "string"
+        ? { skill: old.search.skill }
+        : {}),
+    },
+    people: peopleOf(data.children, own.id),
+  });
+  return target.to.includes("/kids/")
+    ? { to: target.to, search: target.search }
+    : undefined;
+}
+
 /** Every old address, each one hop to where it opens now. */
 export const LEGACY_ALIASES: readonly LegacyAlias[] = [
   // A consent email's link (its proof taken from the fragment at boot,
@@ -623,14 +702,7 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
     to: familySettings("devices"),
   },
   { from: "/family/$family/map", about: "the map", to: familyRecord(null) },
-  {
-    from: "/family/$family/workbooks",
-    about: "workbooks",
-    // The workbook print for several children stays at its address.
-    when: ({ search }) =>
-      search.several === undefined && search.kids === undefined,
-    to: familyRecord("child-workbooks"),
-  },
+  { from: "/family/$family/workbooks", about: "workbooks", to: familyWorkbooks },
   { from: "/family/$family/time", about: "practice time", to: familyRecord("child-time") },
   {
     from: "/family/$family/reports",
@@ -646,6 +718,20 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
     when: ({ params }: OldAddress) =>
       !isFamilyId(params.family!) && !FAMILY_SCREENS.has(params.family!),
     to: () => "/family",
+  })),
+  // One of the family's own children opened as a roster layer.
+  ...["/family/$family", "/family/$family/$"].map((from) => ({
+    from,
+    about: "a child's roster layer",
+    when: ({ params, search }: OldAddress) => {
+      const open = search[OPEN_KEY];
+      return (
+        isFamilyId(params.family!) &&
+        typeof open === "string" &&
+        open.includes("student:")
+      );
+    },
+    to: familyChildLayer,
   })),
   // An older address that opened a sheet with a key (`?devices=1`,
   // `?add=1`): the same screen, the sheet from history state.
