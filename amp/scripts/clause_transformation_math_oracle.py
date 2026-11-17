@@ -288,6 +288,7 @@ def solve(public):
         grid = response['grid']
         require(all(grid['xMin'] <= x <= grid['xMax'] and grid['yMin'] <= y <= grid['yMax'] and x.denominator == y.denominator == 1 for x, y in target), 'All image points lie on the plot lattice')
         require(response['ordered'] and response['pointLabels'] == ['A′', 'B′', 'C′'], 'Preserve vertex correspondence')
+        require(plain(response['label']) == "Place A', B' and C'", 'Label names the image vertices')
         require([point(p['x'], p['y']) for p in response['given']['vertices']] == original, 'Plot preimage matches the prompt')
         return json.dumps([[int(x), int(y)] for x, y in target], separators=(',', ':'))
     if ident == 'dilation-measure':

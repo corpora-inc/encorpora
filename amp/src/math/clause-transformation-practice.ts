@@ -630,7 +630,7 @@ function geometryDraw(c: Context): GeneratedProblem {
     );
     p.public.response = {
       kind: "point-plot",
-      label: "Place the image vertices",
+      label: "Place $A'$, $B'$ and $C'$",
       grid: {
         xMin: -10,
         xMax: 10,
