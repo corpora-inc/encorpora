@@ -54,11 +54,8 @@ test("the gradebook and report cards gate on these rules", () => {
     ),
     "utf8",
   );
-  // The requested person goes through the host's filter.
-  assert.match(
-    book,
-    /const open = keptPerson\(host, uuidOr\(search\.student\)\)/,
-  );
+  // The requested person (the evidence sheet's) goes through the host's filter.
+  assert.match(book, /const open = keptPerson\(host, uuidOr\(evidence\.id\)\)/);
   // Export, Close term, the curve and its sheet each wait on `whole`.
   assert.match(
     book,
