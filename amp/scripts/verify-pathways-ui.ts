@@ -467,6 +467,16 @@ async function noOverflow(page: Page) {
     );
   }
 }
+/** Zooms the 3D map in: its + where the screen shows one; on a phone, where
+ * the pinch zooms and + gives way to keep the controls on one row, the
+ * wheel over the map, which the map's camera takes the same way. */
+async function zoomIn(page: Page) {
+  const button = page.getByRole("button", { name: "Zoom in", exact: true });
+  if (await button.isVisible()) return button.click();
+  const box = (await page.locator(".pathways-canvas canvas").boundingBox())!;
+  await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+  for (let step = 0; step < 4; step++) await page.mouse.wheel(0, -120);
+}
 async function verifySettledLabels(page: Page, animated = false) {
   const overlay = page.locator(".pathways-map-labels");
   const settled = () =>
@@ -547,7 +557,7 @@ async function verifySettledLabels(page: Page, animated = false) {
     { timeout: 1500 },
   );
   await settled();
-  await page.getByRole("button", { name: "Zoom in", exact: true }).click();
+  await zoomIn(page);
   await settled();
   await page.getByRole("button", { name: "Whole map", exact: true }).click();
   await page.mouse.move(x, y);
@@ -563,7 +573,7 @@ async function verifySettledLabels(page: Page, animated = false) {
   await settled();
   await page.getByRole("button", { name: "Pause motion", exact: true }).click();
   await settled();
-  await page.getByRole("button", { name: "Zoom in", exact: true }).click();
+  await zoomIn(page);
   await settled();
   // Real touch cancellation must release OrbitControls' held-gesture state.
   if (
@@ -1215,6 +1225,22 @@ async function verifySkillAddress() {
     // choosing an area there works.
     await page.getByRole("radio", { name: "3D" }).click();
     await page.locator(".pathways-viewport canvas").waitFor();
+    // On a phone the camera's controls are one row of 44 px targets.
+    await page.locator('.pathways-camera[data-ready="true"]').waitFor();
+    const rows = await page.evaluate(() => {
+      const shown = [
+        ...document.querySelectorAll<HTMLElement>(".pathways-camera button"),
+      ].filter((button) => button.offsetParent);
+      return {
+        rows: new Set(
+          shown.map((button) => Math.round(button.getBoundingClientRect().top)),
+        ).size,
+        small: shown.filter(
+          (button) => button.getBoundingClientRect().height < 44,
+        ).length,
+      };
+    });
+    assert.deepEqual(rows, { rows: 1, small: 0 });
     await page.getByRole("button", { name: "Full screen" }).click();
     const key = page.locator(".pathways-viewport.is-full [data-area-key]");
     await key.waitFor();
@@ -1290,9 +1316,60 @@ async function verifyMapFailure() {
   }
 }
 
+/**
+ * A skill's layer opened at its address paints once, whole: its header line
+ * is held while the catalog loads, and the learner's work on the skill
+ * (near its top) arrives with the rest, so nothing in it moves. Measured as
+ * layout shift on a phone, with the learner's work answering late.
+ */
+async function verifySkillLayerShift() {
+  const page = await browser.newPage({
+    viewport: { width: 390, height: 844 },
+    reducedMotion: "reduce",
+  });
+  try {
+    await fixture(page, { self: true });
+    await page.addInitScript(() => {
+      localStorage.setItem("amp.pathways-view", "grades");
+      const box = window as unknown as { __cls: number };
+      box.__cls = 0;
+      new PerformanceObserver((list) => {
+        for (const entry of list.getEntries() as unknown as {
+          value: number;
+          hadRecentInput: boolean;
+        }[])
+          if (!entry.hadRecentInput) box.__cls += entry.value;
+      }).observe({ type: "layout-shift", buffered: true });
+    });
+    // The learner's work on the skill answers after the catalog.
+    await page.route(/\/api\/v1\/learners\/[^/]+\/skills\//, async (route) => {
+      await new Promise((resolve) => setTimeout(resolve, 700));
+      await route.fallback();
+    });
+    await page.goto(`${origin}/pathways/${target.id}`);
+    await page.locator("[data-skill-learner]").waitFor();
+    await page.evaluate(
+      () =>
+        new Promise((done) =>
+          requestAnimationFrame(() => requestAnimationFrame(done)),
+        ),
+    );
+    const cls = await page.evaluate(
+      () => (window as unknown as { __cls: number }).__cls,
+    );
+    assert.ok(
+      cls <= 0.01,
+      `the skill layer moved while it loaded (CLS ${cls})`,
+    );
+  } finally {
+    await page.close();
+  }
+}
+
 try {
   await verifySearchFilters();
   await verifySkillAddress();
+  await verifySkillLayerShift();
   await verifyMapFailure();
   if (!process.env.AMP_MAP_FOCUS) await verifySearchTyping();
   if (!process.env.AMP_MAP_FOCUS) await verifyLessonRecovery();
@@ -1474,7 +1551,7 @@ try {
       await page.keyboard.press("Escape");
       await skillLayer(page).waitFor({ state: "detached" });
       assert.deepEqual(await openSkills(page), []);
-      await page.getByRole("button", { name: "Zoom in", exact: true }).click();
+      await zoomIn(page);
       await noOverflow(page);
       await page.waitForFunction(
         () =>
@@ -2079,7 +2156,7 @@ try {
   await evolving.goto(`${origin}/pathways`);
   await onCanonicalMap(evolving, true);
   await evolving.locator(".pathways-canvas canvas").waitFor();
-  await evolving.getByRole("button", { name: "Zoom in", exact: true }).click();
+  await zoomIn(evolving);
   // Found in the list, the skill is framed; its name is the witness.
   await evolving.getByRole("button", { name: "Browse skills" }).click();
   await evolving
@@ -2167,7 +2244,7 @@ try {
   await lost.goto(`${origin}/pathways`);
   await onCanonicalMap(lost, true);
   await lost.locator(".pathways-canvas canvas").waitFor();
-  await lost.getByRole("button", { name: "Zoom in", exact: true }).click();
+  await zoomIn(lost);
   await lost
     .locator("canvas")
     .evaluate((el) =>
