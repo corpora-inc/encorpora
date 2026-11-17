@@ -1,14 +1,22 @@
+/** A pay overlay's own addresses under its host (app/pay-routes.tsx). */
+const pay = "(?:/done|/invoice/[^/]+)?/?$";
 /** Browser documents that have a registered screen or a retained client redirect.
  * This controls the static web server's SPA fallback, never account authorization.
- * Update alongside router/family/school routes; unknown route shapes return 404.
+ * Unknown route shapes return 404. Every route in the app's router must match
+ * one of these, or `npm run build` fails (app/__tests__/document-routes.test.ts):
+ * a route the server doesn't serve breaks on refresh, a shared link and the
+ * return from Stripe.
  */
 export const documentRoutePatterns: readonly string[] = [
   "^/$",
   "^/access/?$",
+  "^/account/?$",
   "^/account/billing/?$",
   "^/account/billing/purchases/?$",
   "^/account/billing/records/?$",
+  "^/account/delete-account/?$",
   "^/account/deleted/?$",
+  `^/account/pay/[^/]+${pay}`,
   "^/account/privacy/?$",
   "^/account/privacy/consent/?$",
   "^/account/privacy/delete/?$",
@@ -23,7 +31,7 @@ export const documentRoutePatterns: readonly string[] = [
   "^/c/?$",
   "^/consent/?$",
   "^/continue/[^/]+/?$",
-  "^/design/?$",
+  "^/design(?:/canvas|/specimen/[^/]+)?/?$",
   "^/family/?$",
   "^/family/[^/]+/?$",
   "^/family/[^/]+/cards/?$",
@@ -31,12 +39,16 @@ export const documentRoutePatterns: readonly string[] = [
   "^/family/[^/]+/kids/[^/]+/?$",
   "^/family/[^/]+/kids/[^/]+/inventory/?$",
   "^/family/[^/]+/kids/[^/]+/pathways/?$",
+  `^/family/[^/]+/kids/[^/]+/pay${pay}`,
+  "^/family/[^/]+/kids/[^/]+/workbooks/[^/]+(?:/results)?/?$",
   "^/family/[^/]+/map/?$",
+  `^/family/[^/]+/pay/[^/]+${pay}`,
   "^/family/[^/]+/people/?$",
   "^/family/[^/]+/reports/?$",
   "^/family/[^/]+/reports/grades/?$",
   "^/family/[^/]+/settings/?$",
-  "^/family/[^/]+/settings/privacy/?$",
+  "^/family/[^/]+/settings/(?:billing|privacy|security|delete-account)/?$",
+  `^/family/[^/]+/settings/pay/[^/]+${pay}`,
   "^/family/[^/]+/time/?$",
   "^/family/[^/]+/workbooks/?$",
   "^/family/[^/]+/workbooks/[^/]+/?$",
