@@ -64,6 +64,14 @@ vi.mock("../../features/spaces/settings-hub", () => ({
   loadSettingsHub: async (_session: unknown, overlay?: string) =>
     overlay ? `${state.hub}/${overlay}` : state.hub,
 }));
+// The catalog the lesson reader reads: one lesson AMP still has.
+vi.mock("../../learning-transport", () => ({
+  learningCatalogOptions: {
+    queryKey: ["search-catalog"],
+    queryFn: async () => ({ lessons: [{ id: "ratios" }] }),
+    staleTime: Infinity,
+  },
+}));
 vi.mock("../../consent-entry", () => ({
   hasInitialConsentChallenge: () => state.consent,
   claimInitialConsentChallenge: () => state.consent,
@@ -262,6 +270,13 @@ const EXAMPLES: Example[] = [
     layers: ["lesson:add-fractions"],
   },
   { from: "/lessons?q=fractions", world: "adult", lands: "/pathways" },
+  {
+    from: "/lessons?q=fractions&strand=geometry",
+    world: "adult",
+    lands: "/pathways",
+  },
+  // A lesson AMP no longer has; one it has opens in its reader (below).
+  { from: "/lessons/retired-lesson", world: "adult", lands: "/pathways" },
   {
     from: "/pathways?skill=s1&view=3d",
     world: "signed out",
@@ -603,6 +618,11 @@ test("the server serves every row's old address (document-routes.ts)", async () 
       (alias) => alias.from,
     ),
   ).toEqual([]);
+});
+
+test("a lesson the catalog has stays at its own address", async () => {
+  enter("adult");
+  expect(await aliasTarget(at("/lessons/ratios"))).toBeNull();
 });
 
 test("patterns match whole addresses, a final $ the rest", () => {

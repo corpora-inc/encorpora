@@ -63,7 +63,7 @@ import { ReferenceLesson } from "../../content/ReferenceLesson";
 import { nativeRuntime } from "../native-runtime";
 import { ALREADY_REPORTED, noteAllowed } from "../../feedback/problem-flags";
 import { NativeFamily } from "../NativeGate";
-import { learningRequest, learningCatalog } from "../learning-transport";
+import { learningRequest, learningCatalogOptions } from "../learning-transport";
 import {
   batchWithCapabilityFallback,
   clientResponseCapabilities,
@@ -134,12 +134,7 @@ import {
 import { calculatorAllowed } from "../../math/calculator";
 import { gradeNumber } from "../../learning/frontier";
 import type { GradeBand } from "../../curriculum/types";
-import { LessonIndex } from "../LessonIndex";
-import {
-  LessonLibraryPlaceholder,
-  LessonsUnavailable,
-  loadGlossary,
-} from "../LessonLibrary";
+import { LessonsUnavailable } from "../LessonsUnavailable";
 import { Home, type FrontierMap } from "../Home";
 import { practicingAsAdult } from "../lib/adult-learner";
 import { freeLeft } from "../lib/free-allowance";
@@ -349,12 +344,6 @@ function LegacyScreen() {
     route.parts[0] === "lessons" && route.parts[1]
       ? (catalog?.lessons.find((entry) => entry.id === route.parts[1]) ?? null)
       : null;
-  // A problem type's short lesson (`/lessons?topic=`) reads from the API,
-  // not the catalog, so it opens without waiting for it.
-  const topicOpen =
-    route.parts[0] === "lessons" &&
-    !route.parts[1] &&
-    new URLSearchParams(route.location.search).has("topic");
   const setReadingLesson = (lesson: Lesson | null) => {
     if (lesson) navigate(`/lessons/${encodeURIComponent(lesson.id)}`);
   };
@@ -603,7 +592,6 @@ function LegacyScreen() {
   const bookPositions = useRef(readerPositions);
   const readerHeading = useRef<HTMLHeadingElement>(null);
   const readerTriggerId = useRef<string | null>(null);
-  const libraryReturn = useRef({ search: "", scroll: 0 });
   useEffect(() => {
     if (readingLesson && tab === "library")
       readerHeading.current?.focus({ preventScroll: true });
@@ -841,13 +829,11 @@ function LegacyScreen() {
   }, [accountId, route.location.pathname]);
   const catalogRequest = useRef<Promise<void> | null>(null);
   function loadCatalog() {
-    catalogRequest.current ??= learningCatalog()
+    catalogRequest.current ??= queryClient
+      .ensureQueryData(learningCatalogOptions)
       .then((loaded: Catalog) => {
         setCatalog(loaded);
         setCatalogFailed(false);
-        // Lessons' search index is the catalog and the glossary: with both
-        // here, Lessons opens at once from any screen.
-        void loadGlossary();
       })
       .catch((failure: unknown) => {
         console.error("The lesson catalog could not be loaded", failure);
@@ -1394,10 +1380,7 @@ function LegacyScreen() {
   function closeReader() {
     const idea = progressLessonReturn.current;
     progressLessonReturn.current = null;
-    closeTo(
-      router,
-      idea ? "/progress" : `/lessons${libraryReturn.current.search}`,
-    );
+    closeTo(router, idea ? "/progress" : "/pathways");
     if (idea)
       requestAnimationFrame(() =>
         document
@@ -2141,18 +2124,12 @@ function LegacyScreen() {
           />
         )
       ) : tab === "library" ? (
-        <main
-          className="library-main"
-          aria-busy={!catalog && !catalogFailed && !topicOpen}
-        >
-          {/* Until the catalog lands, the library or the reader paints its
-              own frame in place, so nothing moves when it does. */}
-          {!catalog && !route.parts[1] && !topicOpen && (
-            <LessonLibraryPlaceholder
-              retry={catalogFailed ? loadCatalog : undefined}
-            />
-          )}
-          {!catalog && route.parts[1] && (
+        <main className="library-main" aria-busy={!catalog && !catalogFailed}>
+          {/* A lesson's own address (`/lessons/<id>`); one AMP no longer has
+              goes to Pathways (app/legacy-aliases.ts). Until the catalog
+              lands, the reader paints its own frame in place, so nothing
+              moves when it does. */}
+          {!readingLesson && (
             <article className="card lesson-reader" aria-busy={!catalogFailed}>
               <div className="card-top">
                 <button className="text-button" onClick={closeReader}>
@@ -2161,72 +2138,13 @@ function LegacyScreen() {
               </div>
               {catalogFailed ? (
                 <LessonsUnavailable retry={loadCatalog} />
+              ) : catalog ? (
+                // An id the catalog doesn't have, whose alias couldn't check.
+                <p role="status">This lesson is no longer in AMP.</p>
               ) : (
                 <Loading>Opening the lesson…</Loading>
               )}
             </article>
-          )}
-          {(catalog || topicOpen) && !readingLesson && (
-            <>
-              <LessonIndex
-                templates={catalog?.templates ?? []}
-                skills={catalog?.skills ?? []}
-                busy={busy}
-                loadLesson={async (templateId) =>
-                  (
-                    await api<{ lesson: ProblemLessonView }>(
-                      `/problem-lessons/${templateId}?film=${FILM_CAPABILITY}`,
-                    )
-                  ).lesson
-                }
-                practice={(templateId) =>
-                  void action(() => loadBatch(templateId))
-                }
-                references={catalog?.lessons ?? []}
-                openReference={(reference) => {
-                  readerTriggerId.current = reference.id;
-                  // Back returns to these results at this scroll position.
-                  libraryReturn.current = {
-                    // The live URL: the search field writes its query after
-                    // a pause, which can land after this render.
-                    search: window.location.search,
-                    scroll: window.scrollY,
-                  };
-                  void action(() => openReferenceLesson(reference, null));
-                }}
-              />
-              {/* Below the index, so it appears with the catalog rather than
-                  being pushed down when the index fills in. */}
-              {catalog &&
-                !new URLSearchParams(route.location.search).has("topic") &&
-                !new URLSearchParams(route.location.search).get("q") && (
-                  <>
-                    <section className="book-list" aria-label="Printable books">
-                      <h2>Printable books</h2>
-                      <ul>
-                        {books.map((book) => (
-                          <li key={book.id}>
-                            <span>
-                              {book.title}
-                              <small>{book.pages} pages</small>
-                            </span>
-                            <button
-                              className="text-button"
-                              disabled={busy}
-                              data-book-id={book.id}
-                              onClick={() =>
-                                void action(() => openBook(book.id))
-                              }
-                            >
-                              Open book
-                            </button>
-                          </li>
-                        ))}
-                      </ul>
-                    </section>
-                  </>
-                )}
-            </>
           )}
           {readingLesson && (
             <article className="card lesson-reader">

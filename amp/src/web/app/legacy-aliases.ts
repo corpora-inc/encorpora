@@ -533,9 +533,35 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
       const query = params.get("q")?.trim();
       // `?topic=` named a problem type's short lesson: Pathways opens it.
       const lesson = params.get("topic")?.trim();
-      // Its search goes into the map's view (features/pathways/map-view.ts).
-      const search = query ? { topic: query } : {};
+      // Its search and area go into the map's view
+      // (features/pathways/map-view.ts; an area the map doesn't have is
+      // dropped there).
+      const strand = params.get("strand")?.trim();
+      const search = {
+        ...(query ? { topic: query } : {}),
+        ...(strand ? { area: strand } : {}),
+      };
       return pathwaysTarget(lesson ? { ...search, lesson } : search);
+    },
+  },
+  {
+    from: "/lessons/$lesson",
+    about: "a lesson AMP no longer has",
+    // A lesson the catalog has opens in its reader. The catalog is the
+    // reader's own (one download, in the Query cache); when it can't be
+    // read, the reader says so with its Try again.
+    to: async ({ params }) => {
+      const { learningCatalogOptions } = await import("../learning-transport");
+      const catalog = (await queryClient
+        .ensureQueryData(learningCatalogOptions)
+        .catch((error: unknown) => {
+          console.warn("AMP couldn’t check a lesson’s address", error);
+          return null;
+        })) as { lessons?: { id: string }[] } | null;
+      if (!catalog?.lessons?.length) return undefined;
+      if (catalog.lessons.some((lesson) => lesson.id === params.lesson))
+        return undefined;
+      return pathwaysTarget({});
     },
   },
   {
