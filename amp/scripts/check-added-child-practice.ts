@@ -66,7 +66,7 @@ try {
         .getByRole("heading", { name: "Add your kids", exact: true })
         .waitFor();
       await page
-        .getByRole("button", { name: "Add a child", exact: true })
+        .getByRole("button", { name: "Add another child", exact: true })
         .click();
       await page
         .getByRole("textbox", { name: /^Name, Child 2/ })
