@@ -45,7 +45,8 @@
  *
  * - The sanctioned mechanisms (SANCTIONED): the legacy-alias table and its
  *   one generic hop (app/legacy-aliases.ts), the sign-in gate
- *   (app/sign-in-gate.ts) and the third-party returns
+ *   (app/sign-in-gate.ts) with its auth addresses (app/auth-links.ts), and
+ *   the third-party returns
  *   (app/third-party-returns.ts). Each is the one place its pattern lives.
  * - Annotated exemptions: `// arch-exempt(<category>): <reason>` on the
  *   finding's line, or on its own line(s) directly above it, for the rare
@@ -111,6 +112,11 @@ export const SANCTIONED: Record<
     categories: ["redirects", "searchHandoffs"],
     mechanism:
       "the sign-in gate: one hop to sign-in (or a device's own home), then back",
+  },
+  "app/auth-links.ts": {
+    categories: ["searchHandoffs"],
+    mechanism:
+      "auth addresses: the sign-in screens' addresses, carrying the sign-in gate's continuation",
   },
   "app/third-party-returns.ts": {
     categories: ["redirects", "searchHandoffs", "validateSearch"],
@@ -318,10 +324,15 @@ export function scanFile(file: string, source: string) {
   const problems = notes.flatMap((note) => {
     const at = `${file}:${note.line}`;
     if (!CATEGORIES.includes(note.category as Category))
-      return [`${at}: arch-exempt names no category the ratchet counts ("${note.category}")`];
-    if (!note.reason) return [`${at}: arch-exempt(${note.category}) gives no reason`];
+      return [
+        `${at}: arch-exempt names no category the ratchet counts ("${note.category}")`,
+      ];
+    if (!note.reason)
+      return [`${at}: arch-exempt(${note.category}) gives no reason`];
     if (!note.used)
-      return [`${at}: arch-exempt(${note.category}) exempts nothing on line ${note.target}: delete it`];
+      return [
+        `${at}: arch-exempt(${note.category}) exempts nothing on line ${note.target}: delete it`,
+      ];
     return [];
   });
   return { counted, excused, exempt, problems };
@@ -813,7 +824,8 @@ test("architecture anti-patterns in src/web only fall", () => {
     ),
     `Annotated exemptions (not counted; the list only shrinks): ${exempt.length}`,
     ...exempt.map(
-      (entry) => `  ${entry.file}:${entry.line} ${entry.category}: ${entry.reason}`,
+      (entry) =>
+        `  ${entry.file}:${entry.line} ${entry.category}: ${entry.reason}`,
     ),
   ];
   console.log(listing.join("\n"));

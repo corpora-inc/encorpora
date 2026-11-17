@@ -32,11 +32,13 @@ export function observePurchaseRequest(path: string, method: string) {
           outcome,
           ...(failure ? { failure } : {}),
         });
-      } catch {
-        /* Optional measurement. */
+      } catch (error) {
+        // Optional measurement.
+        console.warn("Purchase measurement dropped", error);
       }
     };
-  } catch {
+  } catch (error) {
+    console.warn("Purchase measurement not started", error);
     return noop;
   }
 }
@@ -78,7 +80,8 @@ export function recordPurchaseAction(action: PurchaseAction["action"]) {
         actionId: crypto.randomUUID(),
         action,
       });
-  } catch {
-    /* A measurement failure must not interrupt a download or navigation. */
+  } catch (error) {
+    // A measurement failure must not interrupt a download or navigation.
+    console.warn("Purchase action not measured", error);
   }
 }

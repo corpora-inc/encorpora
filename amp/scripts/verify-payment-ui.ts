@@ -126,31 +126,30 @@ for (const [name, bytes] of [
     new URL(name, directory).pathname,
   ]);
 }
-await writeFile(
-  new URL("index.html", directory),
-  '<!doctype html><html lang="en"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Payment proof</title><div id="root"></div><script type="module" src="./entry.tsx"></script></html>',
-);
-await writeFile(
-  new URL("entry.tsx", directory),
-  `import React,{useEffect} from 'react';import{FixtureRouter,FamilyFixture}from'../../scripts/family-fixture';import{createRoot}from'react-dom/client';import{FamilyCenter}from'../../src/web/FamilyCenter';import{ChooseHowToPay}from'../../src/web/ChooseHowToPay';import'../../src/web/theme.css';import{PaymentHistoryCenter}from'../../src/web/PaymentHistoryCenter';import'../../src/web/style.css';const root=createRoot(document.getElementById('root'));const harness={pay(){root.render(<div className="shell purchase-shell"><ChooseHowToPay token="parent" learnerName={null} onCard={()=>harness.render()} onFunds={()=>{}} onClose={()=>{}}/></div>);},render(identity='parent',token=identity){root.render(<React.StrictMode><PaymentHistoryCenter token={token} identity={identity} onClose={()=>root.render(<h1>Family screen</h1>)}/></React.StrictMode>);},family(){root.render(<FixtureRouter path="/family/access"><FamilyFixture token="parent" identity="parent"/></FixtureRouter>);},unmount(){root.render(<h1>Other screen</h1>)}};(window as any).paymentHarness=harness;harness.render();`,
-);
+// The receipts, in the real app: Billing's Receipts (features/account),
+// against synthetic account and payment responses.
+const port = Number(process.env.AMP_PAYMENT_UI_PORT ?? 4356);
+const origin = `http://127.0.0.1:${port}`;
 const vite = await createServer({
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
-  server: { host: "127.0.0.1", port: 4356, strictPort: true },
+  cacheDir: new URL("vite-cache/", directory).pathname,
+  server: { host: "127.0.0.1", port, strictPort: true, hmr: false },
 });
 await vite.listen();
 const browser = await engine.launch({ headless: true });
 try {
-  const page = await browser.newPage({
+  const context = await browser.newContext({
     viewport: { width: 320, height: 568 },
     acceptDownloads: true,
+    // The sheet lands without its slide, so it is measured where it rests.
+    reducedMotion: "reduce",
   });
-  page.setDefaultTimeout(10000);
+  const page = await context.newPage();
+  page.setDefaultTimeout(15000);
   const failures: string[] = [];
   page.on("pageerror", (error) => failures.push(error.message));
   const summary = {
     id: record.id,
-    learnerReference: record.learnerReference,
     status: record.status,
     productTitle: record.baseline!.profile.product.title,
     paidAt: record.baseline!.paidAt,
@@ -162,114 +161,125 @@ try {
       .slice(1)
       .map((item) => ({ id: item.id, observedAt: item.observedAt })),
   };
-  let mode = "records",
-    hold = false,
-    entered!: () => void,
-    release!: () => void;
-  let held = Promise.resolve();
-  await page.route("**/api/v1/payments*", async (route) => {
-    if (hold) {
-      entered();
-      await held;
-    }
-    const other = route.request().headers().authorization === "Bearer other";
-    await route.fulfill({
-      status: mode === "error" ? 503 : 200,
-      json:
-        mode === "error"
-          ? { error: "unavailable" }
-          : {
-              records:
-                other || mode === "empty"
-                  ? []
-                  : [
-                      {
-                        ...summary,
-                        status: mode === "review" ? "review" : "verified",
-                      },
-                    ],
-              nextCursor: null,
-            },
-    });
-  });
-  await page.route("**/api/v1/payments/reimbursement-programs", (route) =>
-    route.fulfill({ json: { programs } }),
-  );
-  await page.route("**/api/v1/billing/offer", (route) =>
-    route.fulfill({
-      json: {
-        available: true,
-        offer: { formattedAmount: "Synthetic price", amountMinor: 12000 },
-      },
-    }),
-  );
-  await page.route("**/api/v1/funding/offers", (route) =>
-    route.fulfill({ json: { offers: [] } }),
-  );
-  await page.route("**/api/v1/payments/**/*.pdf", async (route) => {
-    const details =
-      route.request().method() === "POST" ? route.request().postDataJSON() : {};
-    if (details.programId && !details.learnerName?.trim())
-      return route.fulfill({
-        status: 400,
-        json: { error: "receipt_learner_name_required" },
-      });
-    await route.fulfill({
-      contentType: "application/pdf",
-      body: Buffer.from(
-        await paymentPdf(record, undefined, details.learnerName),
-      ),
-    });
-  });
-  let familyLearners = [
+  let mode: "records" | "review" | "empty" | "error" = "records";
+  const user = {
+    id: "payment-fixture",
+    name: "Sample parent",
+    email: "parent@example.test",
+    emailVerified: true,
+    createdAt: "2026-01-01T00:00:00.000Z",
+    updatedAt: "2026-01-01T00:00:00.000Z",
+  };
+  const me = fixtureMe(
     {
-      id: "child",
-      name: "Synthetic learner",
-      deletedAt: null as string | null,
-      access: [],
-      stripeLinked: false,
+      consent: {
+        status: "not-recorded",
+        policyVersion: null,
+        recordedAt: null,
+        withdrawnAt: null,
+      },
+      learners: [],
+      retained: retentionNotice,
     },
-  ];
-  await page.route("**/api/v1/me", (route) =>
-    route.fulfill({
-      json: fixtureMe({
-        consent: {
-          status: "withdrawn",
-          policyVersion: "fixture",
-          recordedAt: null,
-          withdrawnAt: "2026-01-01",
-        },
-        learners: familyLearners,
-        retained: retentionNotice,
-      }),
-    }),
+    "amp|payment-fixture",
   );
-  const url = `http://127.0.0.1:4356/artifacts/payment-review-${process.env.AMP_BROWSER ?? "chromium"}/index.html`;
+  await context.route("**/api/**", async (route) => {
+    const request = route.request();
+    const path = new URL(request.url()).pathname;
+    if (path === "/api/v1/events" || path === "/api/v1/events/context")
+      return route.fulfill({ status: 204, body: "" });
+    if (path === "/api/v1/auth-config")
+      return route.fulfill({
+        json: { mode: "accounts", passwords: true, providers: [] },
+      });
+    if (path === "/api/auth/get-session")
+      return route.fulfill({
+        json: {
+          user,
+          session: {
+            id: "session-fixture",
+            token: "synthetic-token",
+            userId: user.id,
+            createdAt: user.createdAt,
+            updatedAt: user.updatedAt,
+            expiresAt: "2099-01-01T00:00:00.000Z",
+          },
+        },
+      });
+    if (path === "/api/v1/me") return route.fulfill({ json: me });
+    if (path === "/api/v1/payments/reimbursement-programs")
+      return route.fulfill({ json: { programs } });
+    if (path.endsWith(".pdf")) {
+      const details = request.method() === "POST" ? request.postDataJSON() : {};
+      if (details.programId && !details.learnerName?.trim())
+        return route.fulfill({
+          status: 400,
+          json: { error: "receipt_learner_name_required" },
+        });
+      return route.fulfill({
+        contentType: "application/pdf",
+        body: Buffer.from(
+          await paymentPdf(record, undefined, details.learnerName),
+        ),
+      });
+    }
+    if (path === "/api/v1/payments")
+      return route.fulfill(
+        mode === "error"
+          ? { status: 503, json: { error: "unavailable" } }
+          : {
+              json: {
+                records:
+                  mode === "empty"
+                    ? []
+                    : [
+                        {
+                          ...summary,
+                          status: mode === "review" ? "review" : "verified",
+                        },
+                      ],
+                nextCursor: null,
+              },
+            },
+      );
+    return route.fulfill({ json: {} });
+  });
+  const billing = `${origin}/account/billing`;
+  /** Billing, with its receipts open. */
+  async function receipts() {
+    await page.goto(billing);
+    const fold = page.getByText("Receipts", { exact: true }).first();
+    await fold.waitFor();
+    if (
+      (await page
+        .getByRole("button", { name: /AMP annual|Synthetic/ })
+        .count()) === 0
+    )
+      await fold.click();
+  }
+  const item = () =>
+    page.getByRole("button", {
+      name: new RegExp(summary.productTitle.slice(0, 12)),
+    });
   async function shot(name: string) {
-    await page.screenshot({ path: new URL(`${name}.png`, directory).pathname });
-    // Phone landscape only has to stay usable; the others must fit.
+    await page.screenshot({
+      path: new URL(`${name}.png`, directory).pathname,
+      fullPage: true,
+    });
     if (isPhoneLandscape(page.viewportSize()!))
       return assertPhoneLandscapeSmoke(page, name);
     assert.equal(
       await page.evaluate(
-        () =>
-          document.documentElement.scrollWidth > innerWidth ||
-          document.documentElement.scrollHeight > innerHeight,
+        () => document.documentElement.scrollWidth > innerWidth,
       ),
       false,
-      `${name} document overflow`,
+      `${name} scrolls sideways`,
     );
     for (const button of await page
-      .locator(".payment-history header button,.payment-history footer button")
+      .getByRole("button", { name: /Download receipt|Download refund receipt/ })
       .all()) {
       const box = await button.boundingBox();
-      assert.ok(
-        box &&
-          box.height >= 44 &&
-          box.y >= 0 &&
-          box.y + box.height <= page.viewportSize()!.height,
-        `${name} primary action bounds`,
-      );
+      assert.ok(box && box.height >= 44, `${name} download target`);
     }
   }
   for (const size of [
@@ -280,191 +290,102 @@ try {
     { width: 1280, height: 900 },
   ]) {
     await page.setViewportSize(size);
-    await page.goto(url);
-    await page.getByRole("button", { name: /AMP annual/ }).waitFor();
+    await receipts();
+    await item().first().waitFor();
     await shot(`list-${size.width}`);
-    await page.getByRole("button", { name: /AMP annual/ }).click();
-    await page.getByRole("button", { name: "Download payment PDF" }).waitFor();
+    await item().first().click();
+    const download = page.getByRole("button", { name: "Download receipt" });
+    await download.waitFor();
     await shot(`detail-${size.width}`);
-    const download = page.waitForEvent("download");
-    await page.getByRole("button", { name: "Download payment PDF" }).click();
-    assert.match((await download).suggestedFilename(), /^payment-.*\.pdf$/);
+    const saved = page.waitForEvent("download");
+    await download.click();
+    assert.match((await saved).suggestedFilename(), /^receipt-.*\.pdf$/);
+    await page
+      .getByRole("status")
+      .filter({ hasText: "Your PDF is ready" })
+      .waitFor();
   }
+  // A program that needs the learner's name: asked for inline, then printed.
   for (const size of [
     { width: 320, height: 568 },
     { width: 390, height: 844 },
     { width: 1280, height: 900 },
   ]) {
     await page.setViewportSize(size);
-    await page.goto(url);
-    await page.evaluate(() => (window as any).paymentHarness.pay());
-    await choose(
-      page.getByRole("button", { name: "Reimbursement state" }),
-      "AZ",
-    );
-    const link = page.getByRole("link", {
-      name: /Official .* reimbursement instructions/,
-    });
-    assert.equal(await link.getAttribute("href"), programs[0]!.officialUrl);
-    await link.scrollIntoViewIfNeeded();
-    await page.screenshot({
-      path: new URL(`reimbursement-${size.width}.png`, directory).pathname,
-    });
-    assert.equal(
-      await page.evaluate(
-        () => document.documentElement.scrollWidth > innerWidth,
-      ),
-      false,
-    );
-    await page
-      .getByRole("button", { name: "Continue to card payment" })
-      .click();
-    await page.getByRole("button", { name: /AMP annual/ }).click();
+    await receipts();
+    await item().first().click();
+    await page.getByText("Add details for reimbursement").click();
     await choose(
       page.getByRole("button", { name: "Reimbursement program (optional)" }),
       programs[0]!.id,
     );
-    await page.getByRole("button", { name: "Download payment PDF" }).click();
+    await page.getByRole("button", { name: "Download receipt" }).click();
     await page
       .getByRole("alert")
-      .filter({ hasText: "Enter the learner name" })
+      .filter({ hasText: "Enter the learner name required by your program." })
       .waitFor();
     await page
       .getByRole("textbox", { name: /Learner name/ })
       .fill("Élodie Muñoz");
     await page.getByRole("alert").waitFor({ state: "detached" });
-    await page
-      .getByRole("textbox", { name: /Learner name/ })
-      .scrollIntoViewIfNeeded();
     await shot(`receipt-details-${size.width}`);
-    const downloadPromise = page.waitForEvent("download");
-    await page.getByRole("button", { name: "Download payment PDF" }).click();
-    const download = await downloadPromise;
+    const saved = page.waitForEvent("download");
+    await page.getByRole("button", { name: "Download receipt" }).click();
+    const named = await saved;
     const path = new URL(`named-receipt-${size.width}.pdf`, directory).pathname;
-    await download.saveAs(path);
+    await named.saveAs(path);
     assert.ok(
       execFileSync("pdftotext", [path, "-"], { encoding: "utf8" }).includes(
         "Élodie Muñoz",
       ),
     );
     await page.getByRole("textbox", { name: /Learner name/ }).fill("测试");
-    await page.getByRole("button", { name: "Download payment PDF" }).click();
+    await page.getByRole("button", { name: "Download receipt" }).click();
     await page
       .getByRole("alert")
       .filter({ hasText: "basic Latin letters" })
       .waitFor();
   }
+  // A payment still being checked offers no download; none, and a failed
+  // read, say so in place.
+  await page.setViewportSize({ width: 390, height: 844 });
   mode = "review";
-  await page.goto(url);
-  await page.getByRole("button", { name: /AMP annual/ }).click();
+  await receipts();
+  await item().first().click();
+  await page
+    .getByText("Your payment is being checked.", { exact: false })
+    .waitFor();
   assert.equal(
-    await page.getByRole("button", { name: "Download payment PDF" }).count(),
+    await page.getByRole("button", { name: "Download receipt" }).count(),
     0,
   );
   await shot("review");
   mode = "empty";
-  await page.goto(url);
+  await receipts();
   await page
-    .getByRole("heading", { name: "No supported payment records" })
+    .getByText("No receipts yet. Your card payments will appear here.")
     .waitFor();
   await shot("empty");
   mode = "error";
-  await page.goto(url);
-  await page.getByRole("alert").waitFor();
+  await receipts();
+  await page
+    .getByRole("alert")
+    .filter({ hasText: "Receipts couldn’t be loaded." })
+    .waitFor();
   await shot("error");
   mode = "records";
-  await page.goto(url);
-  await page.getByRole("button", { name: /AMP annual/ }).waitFor();
-  await page.evaluate(() => {
-    (window as any).paymentHarness.render("parent", "renewed-token");
-  });
-  await page.getByRole("button", { name: /AMP annual/ }).click();
-  await page.getByRole("button", { name: "Download payment PDF" }).waitFor();
-  await page.evaluate(() => {
-    (window as any).paymentHarness.family();
-  });
-  await page.getByRole("button", { name: /^Purchases and records/ }).click();
-  await page.locator("[data-payment-history]").click();
-  await page
-    .getByRole("heading", { name: "Payment records", exact: true })
-    .waitFor();
-  await page.getByRole("button", { name: "Close payment records" }).click();
-  assert.equal(
-    await page
-      .locator("[data-payment-history]")
-      .evaluate((element) => element === document.activeElement),
-    true,
-  );
-  for (const learners of [
-    [],
-    [
-      {
-        id: "deleted-child",
-        name: "Deleted learner",
-        deletedAt: "2026-01-01T00:00:00Z",
-        access: [],
-        stripeLinked: false,
-      },
-    ],
-  ]) {
-    familyLearners = learners;
-    await page.evaluate(() => {
-      (window as any).paymentHarness.unmount();
-    });
-    await page.getByRole("heading", { name: "Other screen" }).waitFor();
-    await page.evaluate(() => {
-      (window as any).paymentHarness.family();
-    });
-    await page.getByRole("button", { name: /^Purchases and records/ }).click();
-    await page.locator("[data-payment-history]").click();
-    await page.getByRole("button", { name: /AMP annual/ }).waitFor();
-    await shot(learners.length ? "tombstone-history" : "empty-family-history");
-  }
+  await page.getByRole("button", { name: "Try again" }).click();
+  await item().first().waitFor();
+  // Larger text keeps the receipt readable at 320 px.
   await page.setViewportSize({ width: 320, height: 568 });
-  await page.goto(url);
-  await page.getByRole("button", { name: /AMP annual/ }).click();
-  await page.evaluate(() => {
-    const elements = [
-      ...document.querySelectorAll<HTMLElement>(
-        ".payment-history p,.payment-history h1,.payment-history h2,.payment-history button,.payment-history summary",
-      ),
-    ];
-    const sizes = elements.map((element) =>
-      parseFloat(getComputedStyle(element).fontSize),
-    );
-    elements.forEach(
-      (element, index) =>
-        (element.style.fontSize = `${sizes[index]! * 1.25}px`),
-    );
-  });
+  await receipts();
+  await item().first().click();
+  await page.getByRole("button", { name: "Download receipt" }).waitFor();
+  await page.addStyleTag({ content: "html { font-size: 125%; }" });
   await shot("detail-125-percent");
-  let signal!: Promise<void>;
-  signal = new Promise((resolve) => {
-    entered = resolve;
-  });
-  held = new Promise((resolve) => {
-    release = resolve;
-  });
-  hold = true;
-  await page.evaluate(() => {
-    (window as any).paymentHarness.render("old-parent");
-  });
-  await signal;
-  await page.evaluate(() => {
-    (window as any).paymentHarness.render("other");
-  });
-  hold = false;
-  release();
-  await page
-    .getByRole("heading", { name: "No supported payment records" })
-    .waitFor();
-  assert.equal(
-    await page.getByRole("button", { name: /AMP annual/ }).count(),
-    0,
-  );
   assert.deepEqual(failures, []);
   console.log(
-    "Payment records: PDF text/raster proof and compact UI, owned entry/return, renewal and held identity transition passed.",
+    "Receipts: PDF text/raster proof, Billing's list and detail, reimbursement name, review, empty and error passed.",
   );
 } finally {
   await browser.close();

@@ -4,8 +4,8 @@ import type { FamilySummary } from "../../family/contracts";
 import type { Me } from "../../account/contracts";
 import { nativeRuntime } from "../native-runtime";
 import { meKey, queryClient } from "./query";
-const nativeFamilyKey = (identity: string | null) =>
-  ["native-family", identity] as const;
+import { qk } from "./keys";
+const nativeFamilyKey = qk.nativeFamily;
 const subscribeAccountCache = (notify: () => void) =>
   queryClient.getQueryCache().subscribe(notifyManager.batchCalls(notify));
 /** Web has one canonical server resource; legacy Family screens select its projection. */
@@ -69,8 +69,8 @@ export function setNativeFamilySnapshot(
 }
 export function clearFamilyAccount(identity: string | null) {
   if (identity) {
-    void queryClient.cancelQueries({ queryKey: ["account", identity] });
-    queryClient.removeQueries({ queryKey: ["account", identity] });
+    void queryClient.cancelQueries({ queryKey: qk.account(identity) });
+    queryClient.removeQueries({ queryKey: qk.account(identity) });
     queryClient.removeQueries({ queryKey: nativeFamilyKey(identity) });
   }
 }

@@ -1,4 +1,4 @@
-import { createRoute, redirect, type AnyRoute } from "@tanstack/react-router";
+import { createRoute, type AnyRoute } from "@tanstack/react-router";
 import { lazyRouteComponent } from "../lib/lazy-route-component";
 import type { AuthSession } from "../auth";
 import { orgOptions, preload } from "../features/school/core-api";
@@ -45,12 +45,15 @@ export function schoolRoutes(root: AnyRoute) {
     load?: (session: AuthSession, orgId: string) => unknown[],
     /** A family org's own page in place of this school-level one. */
     family: "roster" | "map" | "settings" | "today" = "today",
+    beforeLoad: (context: unknown) => Promise<unknown> = familyEquivalent(
+      family,
+    ),
   ) =>
     createRoute({
       getParentRoute: () => root,
       path: `/school/$org${path}`,
       staticData: { space: "school" },
-      beforeLoad: familyEquivalent(family),
+      beforeLoad,
       loader: async ({ context, params }) => {
         const { session } = context as unknown as { session: AuthSession };
         const orgId = (params as unknown as { org: string }).org;
@@ -119,20 +122,6 @@ export function schoolRoutes(root: AnyRoute) {
       "LicenseScreen",
     ),
   };
-  /** An address from before Settings: it opens that section of Settings. */
-  const toSettings = (path: string, hash: string) =>
-    createRoute({
-      getParentRoute: () => root,
-      path: `/school/$org${path}`,
-      staticData: { space: "school" },
-      beforeLoad: ({ params }) => {
-        throw redirect({
-          to: `/school/${(params as unknown as { org: string }).org}/settings`,
-          hash,
-          replace: true,
-        } as never);
-      },
-    });
   return [
     createRoute({
       getParentRoute: () => root,
@@ -144,14 +133,8 @@ export function schoolRoutes(root: AnyRoute) {
         "ChooserScreen",
       ),
     }),
-    // An older setup address (`/school/new?org=…&step=…`): the step's own
-    // address, in one hop.
-    createRoute({
-      getParentRoute: () => root,
-      path: "/school/new",
-      staticData: { space: "account" },
-      beforeLoad: guard("setup"),
-    }),
+    // An older setup address (`/school/new?org=…&step=…`) is an
+    // app/legacy-aliases.ts row.
     // Guided setup, for the admin of a school we issued: one step an
     // address (`setup`, `setup/calendar`, … `setup/students/names`), on the
     // shared stepper.
@@ -260,20 +243,7 @@ export function schoolRoutes(root: AnyRoute) {
     ]),
     orgScreen("/students", screens.students, undefined, "roster"),
     // The school-level student page from before layers, and one of their
-    // answers on it: a student layer over the school's Students, as the
-    // class map's old addresses redirect (nav/entities.ts).
-    createRoute({
-      getParentRoute: () => root,
-      path: "/school/$org/students/$student",
-      staticData: { space: "school" },
-      beforeLoad: guard("student"),
-    }),
-    createRoute({
-      getParentRoute: () => root,
-      path: "/school/$org/students/$student/work/$work",
-      staticData: { space: "school" },
-      beforeLoad: guard("studentWork"),
-    }),
+    // answers on it, are app/legacy-aliases.ts rows.
     orgScreen(
       "/staff",
       screens.staff,
@@ -292,6 +262,8 @@ export function schoolRoutes(root: AnyRoute) {
         api().then((m) => preload(m.calendarOptions(session, orgId))),
       ],
       "settings",
+      // A one-class school's year is its class's Settings.
+      guard("calendar"),
     ),
     // Every section before the page paints, so a section never arrives
     // late and pushes the ones below it (the license, opened by its hash).
@@ -321,6 +293,7 @@ export function schoolRoutes(root: AnyRoute) {
     ]),
     orgScreen("/import", screens.importer),
     orgScreen("/import/$step", screens.importer),
-    toSettings("/experience", "student-experience"),
+    // `/school/<org>/experience`, from before Settings, is an
+    // app/legacy-aliases.ts row.
   ];
 }

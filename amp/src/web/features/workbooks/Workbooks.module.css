@@ -544,30 +544,8 @@ h3.optionsTitle {
   gap: var(--space-2) var(--space-3);
 }
 .answerField {
-  display: grid;
-  gap: var(--space-1);
   flex: 1 1 140px;
   max-width: 220px;
-  font-size: var(--text-small);
-  font-weight: 700;
-}
-.answerField input {
-  box-sizing: border-box;
-  min-height: var(--target-size);
-  padding: 0 var(--space-3);
-  border: 1px solid var(--color-border-strong);
-  border-radius: var(--radius-control);
-  background: var(--color-surface-raised);
-  color: var(--color-on-surface);
-  font: inherit;
-  font-weight: 400;
-}
-.answerField input:focus-visible {
-  outline: 3px solid var(--color-focus-ring);
-  outline-offset: 1px;
-}
-.answerField input[aria-invalid="true"] {
-  border-color: var(--color-danger-accent);
 }
 .picker {
   display: inline-flex;

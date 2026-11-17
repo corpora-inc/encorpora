@@ -25,7 +25,8 @@ export function shareToken(): string | null {
   if (held) return held;
   try {
     return sessionStorage.getItem(storageKey);
-  } catch {
+  } catch (error) {
+    console.warn("This link couldn’t be read back on this device", error);
     return null;
   }
 }

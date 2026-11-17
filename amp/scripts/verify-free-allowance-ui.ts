@@ -363,7 +363,8 @@ async function journey(
   );
   assert.equal(made.status(), 201);
   await page.goto(
-    `${origin}/learners/${fox.id}/workbooks/${stack.today}?number=1&minutes=45&paper=letter`,
+    // The day opens on its latest workbook, No. 1, made above.
+    `${origin}/learners/${fox.id}/workbooks/${stack.today}`,
   );
   await page
     .getByRole("button", { name: "Roll another", exact: true })

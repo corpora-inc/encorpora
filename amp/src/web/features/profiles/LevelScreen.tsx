@@ -20,7 +20,7 @@ import { currentSession } from "../school/api";
 import { usePracticeAtLevel } from "./api";
 import { GradePicker } from "./GradePicker";
 import { practiceAs } from "./practice-mode";
-import { newProfileSearch } from "./ProfileScreens";
+import { setLevelDraft, useLevelDraft } from "./level-draft";
 import styles from "./LevelScreen.module.css";
 
 const paceOptions: SegmentedOption<ProfilePace>[] = profilePaces.map(
@@ -45,32 +45,28 @@ const level = (at: number) => levelName(at).replace(/ /g, " ");
  * grade") or curious about a level: it asks nothing about anyone, saves
  * nothing about anyone, and each new choice starts fresh. It practices as
  * the account's one level profile; saving a named profile is optional. The
- * grade and pace live in the URL, so a refresh or Back keeps the choice.
+ * grade and pace being chosen are this flow's draft (level-draft.ts), so a
+ * refresh keeps the choice.
  */
 export function LevelScreen() {
   const session = currentSession();
   const navigate = useNavigate();
+  const draft = useLevelDraft("level");
   const raw = useSearch({ strict: false }) as Record<string, unknown>;
-  const search = newProfileSearch(raw);
   const from = returnTarget(raw.from);
   const me = useQuery(meOptions(session)).data;
-  // The last choice, when the address names none: where they were.
+  // The last choice, until another is made here: where they were.
   const last = me?.signedIn
     ? me.practiceProfiles?.find((profile) => profile.level)?.level
     : undefined;
-  const grade = search.grade ?? last?.grade ?? null;
-  const pace = search.pace ?? last?.pace ?? "on-level";
+  const grade = draft.grade ?? last?.grade ?? null;
+  const pace = draft.pace ?? last?.pace ?? "on-level";
   const start = usePracticeAtLevel(session);
   const choose = (next: { grade: number | null; pace: ProfilePace }) => {
     start.reset();
-    void navigate({
-      to: ".",
-      search: ((current: Record<string, unknown>) => ({
-        ...current,
-        ...(next.grade === null ? {} : { grade: next.grade }),
-        pace: next.pace,
-      })) as never,
-      replace: true,
+    setLevelDraft(session.accountId, "level", {
+      ...(next.grade === null ? {} : { grade: next.grade }),
+      pace: next.pace,
     });
   };
   const course = grade === null ? null : gradeCourse(grade);
@@ -110,9 +106,7 @@ export function LevelScreen() {
       >
         <header className={styles.head}>
           <h1>Practice at a level</h1>
-          <p>
-            Nothing is saved. Your own levels don’t change.
-          </p>
+          <p>Nothing is saved. Your own levels don’t change.</p>
         </header>
         <div className={styles.field}>
           <span className={styles.label} id="level-grade">
@@ -155,7 +149,14 @@ export function LevelScreen() {
           <Link
             to="/$"
             params={{ _splat: "me/profiles/new" }}
-            search={(grade === null ? {} : { grade, pace }) as never}
+            // The new profile starts from this choice.
+            onClick={() =>
+              setLevelDraft(
+                session.accountId,
+                "new",
+                grade === null ? {} : { grade, pace },
+              )
+            }
             className={styles.save}
           >
             Save as a profile

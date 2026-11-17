@@ -1,25 +1,64 @@
 import {
   useId,
-  type InputHTMLAttributes,
+  type ComponentPropsWithRef,
+  type ReactNode,
   type TextareaHTMLAttributes,
 } from "react";
 import styles from "./Controls.module.css";
+/** A one-line field. `hint` is one quiet line under it (a rule, such as a
+ * password's length); `action` sits on the label's line, at its right edge
+ * (a switch to another way in). Neither is part of the field's name. */
 export function TextField({
   label,
   error,
+  hint,
+  action,
   ...props
-}: InputHTMLAttributes<HTMLInputElement> & { label: string; error?: string }) {
+}: ComponentPropsWithRef<"input"> & {
+  label: string;
+  error?: string;
+  hint?: string;
+  action?: ReactNode;
+}) {
   const id = useId();
+  // The label element holds the hint and the action too: the name is the
+  // label's own words.
+  const named =
+    (hint || action) && !props["aria-label"] && !props["aria-labelledby"]
+      ? { "aria-labelledby": `${id}-label` }
+      : {};
+  const title = <span id={`${id}-label`}>{label}</span>;
   return (
     <label className={styles.field} htmlFor={id}>
-      <span>{label}</span>
+      {action ? (
+        <span className={styles.fieldHeading}>
+          {title}
+          {action}
+        </span>
+      ) : (
+        title
+      )}
       <input
         {...props}
+        {...named}
         id={id}
         className={styles.input}
         aria-invalid={!!error}
-        aria-describedby={`${id}-error`}
+        // A caller's own description (a help line elsewhere) is kept beside
+        // the hint's and the error's.
+        aria-describedby={[
+          props["aria-describedby"],
+          hint && `${id}-hint`,
+          `${id}-error`,
+        ]
+          .filter(Boolean)
+          .join(" ")}
       />
+      {hint && (
+        <span id={`${id}-hint`} className={styles.fieldHint}>
+          {hint}
+        </span>
+      )}
       <span id={`${id}-error`} className={styles.fieldError} aria-live="polite">
         {error ?? ""}
       </span>

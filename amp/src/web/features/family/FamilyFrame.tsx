@@ -1,11 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import {
-  Link,
-  useNavigate,
-  useParams,
-  useRouterState,
-} from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { Link, useParams } from "@tanstack/react-router";
+import type { ReactNode } from "react";
 import type { SignedInMe } from "../../../account/contracts";
 import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
@@ -13,8 +8,8 @@ import { meOptions } from "../../lib/query";
 import { useSessionOrNull } from "../../lib/session";
 import { LayerHost } from "../../nav/LayerHost";
 import type { AreaSource } from "../../nav/AreaLayer";
-import { OPEN_KEY, workParts, type Entity } from "../../nav/entities";
-import { familyOrgTarget, peopleOf } from "./redirects";
+import { workParts, type Entity } from "../../nav/entities";
+import { peopleOf } from "./redirects";
 import { Button, buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
 import { LoadingScreen } from "../../ui/LoadingScreen";
@@ -65,43 +60,6 @@ export const childOf = (data: FamilyProjection | undefined, id: string) =>
   data?.children.find((child) => child.id === id);
 
 /**
- * An address that opens one of the family's own children by their roster
- * person (`?open=student:<person>`, a link from before): the child's own
- * page instead, their answers over it, in a parent's words. Never the
- * school's student record inside the family.
- */
-function useOwnChildLayer(place: FamilyPlace) {
-  const navigate = useNavigate();
-  const search = useRouterState({
-    select: (state) => state.location.search as Record<string, unknown>,
-  });
-  const open = search[OPEN_KEY];
-  const target =
-    place.data && place.own && typeof open === "string"
-      ? familyOrgTarget({
-          family: place.family,
-          page: "today",
-          search: {
-            [OPEN_KEY]: open,
-            ...(typeof search.skill === "string"
-              ? { skill: search.skill }
-              : {}),
-          },
-          people: peopleOf(place.data.children, place.own.id),
-        })
-      : null;
-  const to = target && target.to.includes("/kids/") ? target : null;
-  useEffect(() => {
-    if (to)
-      void navigate({
-        to: to.to,
-        search: to.search as never,
-        replace: true,
-      } as never);
-  }, [to?.to, JSON.stringify(to?.search)]);
-}
-
-/**
  * The page under the app frame for every family screen: one standard Page
  * column, its header (the title; no way back: the family's tabs and the
  * browser's own Back are the navigation), its wait inside it (the bar is already whole), the family's
@@ -128,7 +86,6 @@ export function FamilyFrame({
   children: ReactNode;
 }) {
   const { query, data } = place;
-  useOwnChildLayer(place);
   const content = (body: ReactNode) => (
     <Page
       id="family-content"

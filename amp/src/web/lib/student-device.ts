@@ -31,7 +31,8 @@ function read(store: () => Storage): StudentSession | null {
       token.startsWith("st_")
       ? { accountId, token }
       : null;
-  } catch {
+  } catch (error) {
+    console.warn("Student sign-in on this device wasn’t read", error);
     return null;
   }
 }
@@ -77,7 +78,8 @@ export function handedReturnName(): string | null {
 export function handedStudentDevice(): boolean {
   try {
     return sessionStorage.getItem(handedKey) === "1";
-  } catch {
+  } catch (error) {
+    console.warn("Whether this device was handed over wasn’t read", error);
     return false;
   }
 }
@@ -86,7 +88,8 @@ export function handedReturnPath(): string {
   try {
     const path = sessionStorage.getItem(returnKey) ?? "/";
     return /^\/(?!\/)[^\s\\]*$/.test(path) ? path : "/";
-  } catch {
+  } catch (error) {
+    console.warn("The place this device returns to couldn’t be read", error);
     return "/";
   }
 }

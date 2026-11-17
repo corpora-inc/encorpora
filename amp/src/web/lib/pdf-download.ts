@@ -56,7 +56,10 @@ export async function downloadPdf({
     throw error;
   }
   if (!response.ok) {
-    const data: unknown = await response.json().catch(() => null);
+    const data: unknown = await response.json().catch((error: unknown) => {
+      console.warn("AMP: the PDF failure's body wasn’t readable", error);
+      return null;
+    });
     const code =
       data &&
       typeof data === "object" &&

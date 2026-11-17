@@ -65,6 +65,12 @@ test("the week's minutes each day, every child's together, and the skills earned
   expect(days).toHaveLength(7);
   expect(days[0]!.getAttribute("aria-label")).toMatch(/30 min · 2 problems/);
   expect(days[1]!.getAttribute("aria-label")).toMatch(/5 min/);
+  // A quiet day says so; today is the one marked.
+  expect(days[3]!.getAttribute("aria-label")).toMatch(/no practice/);
+  expect(days[2]!.getAttribute("aria-label")).toMatch(/^Today/);
+  // Day initials under the columns, no caption inside the axis.
+  expect(days[0]!.textContent).toBe("M");
+  expect(screen.queryByText(/Minutes per day/)).toBeNull();
 });
 
 test("nothing before the week's first practice", () => {

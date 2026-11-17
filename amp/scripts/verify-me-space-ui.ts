@@ -331,7 +331,7 @@ if (part("answer")) {
   await page.goto(`${origin}/me`, { waitUntil: "load" });
   await page.locator("[data-level-start]").waitFor();
   await page.getByRole("link", { name: "Start practicing" }).click();
-  await page.waitForURL(/\/practice/);
+  await page.waitForURL(/\/practice\?profile=/);
   // The first problem, whatever its kind: its Check (or Next) is there.
   await page
     .getByRole("button", { name: /^(Check|Next)/ })
@@ -604,9 +604,9 @@ if (part("levelmode")) {
   const context = await reader(1280, "light");
   await signIn(context, "adult-3wk@personas.amp.test");
   const page = await context.newPage();
-  await page.goto(`${origin}/me/level?grade=4&pace=on-level`, {
-    waitUntil: "load",
-  });
+  await page.goto(`${origin}/me/level`, { waitUntil: "load" });
+  await page.getByRole("radio", { name: "4th grade" }).click();
+  await page.getByRole("radio", { name: /^On level/ }).click();
   await page.getByRole("button", { name: "Start practicing" }).click();
   await page.waitForURL(/\/practice\?profile=/);
   const profile = new URL(page.url()).searchParams.get("profile")!;

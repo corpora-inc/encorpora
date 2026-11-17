@@ -1,8 +1,7 @@
-import { redirect } from "@tanstack/react-router";
 import { meSchema, type SignedInMe } from "../../../account/contracts";
 import type { AuthSession } from "../../auth";
 import { request } from "../../lib/api";
-import { meOptions, sessionOptions } from "../../lib/query";
+import { meOptions } from "../../lib/query";
 import { confirmSession } from "../../lib/session-generation";
 import { queryClient } from "../../lib/query-client";
 import { setHome } from "../../lib/home-place";
@@ -170,23 +169,9 @@ export async function loadPlaceGroups(
   return placeGroups(me, places, families);
 }
 
-/** A guard's one redirect for an address that isn't this person's: straight
- * to their destination, never through `/`. Signed out, the pitch. */
-export async function homeRedirect(known?: SignedInMe) {
-  const session = await queryClient
-    .ensureQueryData(sessionOptions)
-    .catch((error: unknown) => {
-      console.warn(
-        "The session couldn’t be read; opening as signed out",
-        error,
-      );
-      return null;
-    });
-  const href = session
-    ? await homeDestination(session, known).catch((error) => {
-        console.warn("Your place didn’t load; opening home", error);
-        return "/";
-      })
-    : "/";
-  return redirect({ href, replace: true });
+/** One hop to this account's own place, never through `/`: the sign-in
+ * gate's (app/sign-in-gate.ts `toOwnPlace`), for code that still asks here. */
+export async function homeRedirect(known?: SignedInMe): Promise<never> {
+  const { toOwnPlace } = await import("../../app/sign-in-gate");
+  return toOwnPlace(known);
 }

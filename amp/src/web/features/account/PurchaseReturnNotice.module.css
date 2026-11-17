@@ -1,0 +1,27 @@
+/* Why Billing opened after a checkout (PurchaseReturnNotice): one inline
+   notice at the top of Billing, its Dismiss beside the words. */
+.notice {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--space-2) var(--space-3);
+  margin-bottom: var(--space-5);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-warning-accent);
+  border-radius: var(--radius-panel);
+  background: var(--color-warning);
+  color: var(--color-on-warning);
+}
+.notice p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.notice p + p {
+  margin-top: var(--space-1);
+}
+.title {
+  font-weight: 700;
+}
+.notice > button {
+  color: var(--color-on-warning);
+}

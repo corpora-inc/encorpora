@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { gradeName } from "../../../learning/level-check";
 import type { AuthSession } from "../../auth";
-import { meOptions, sessionOptions } from "../../lib/query";
+import { meOptions } from "../../lib/query";
+import { useSessionOrNull } from "../../lib/session";
 import { ownPracticeOptions } from "../me/api";
 import styles from "./Continue.module.css";
 
@@ -59,7 +60,7 @@ export function RecapLine({
   /** The pause has just said how many: the line says the rest. */
   withAnswered?: boolean;
 }) {
-  const session = useQuery(sessionOptions).data;
+  const session = useSessionOrNull();
   const recap = useRecap(session, learnerId, withAnswered);
   return (
     <p className={styles.recap} aria-live="polite">

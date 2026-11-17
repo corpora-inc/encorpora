@@ -457,7 +457,16 @@ try {
         assert(await next.isEnabled());
         failBranch = false;
         await next.click();
-        await page.locator("#answer").waitFor();
+        await page
+          .locator("#answer")
+          .waitFor()
+          .catch(async (error) => {
+            await page.screenshot({
+              path: `${output}/${mode}-${width}-${theme}-after-branch-failure.png`,
+            });
+            console.error(await page.locator("body").innerText(), errors);
+            throw error;
+          });
         await page.keyboard.press("Escape");
         await page.getByRole("button", { name: "Open AMP menu" }).click();
         await page

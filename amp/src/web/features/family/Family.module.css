@@ -185,9 +185,28 @@
     gap: 0 var(--space-3);
   }
   [data-family-kids] .action > * {
+    width: auto;
     min-height: var(--target-min);
     height: var(--target-min);
     padding-block: 0;
+  }
+  /* The child's one action on their name's line, right-aligned and its
+     own size: three children fit one phone screen. */
+  [data-family-kids] > li {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  [data-family-kids] > li > [data-part="title"] {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  [data-family-kids] > li > [data-part="action"] {
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 0;
+    justify-items: end;
+  }
+  [data-family-kids] > li > [data-part="figure"] {
+    grid-column: 1 / -1;
   }
 }
 /* Quiet rows under the children: their own devices, practicing yourself. */

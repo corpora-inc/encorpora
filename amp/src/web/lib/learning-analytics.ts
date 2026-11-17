@@ -5,8 +5,9 @@ export function observeLearningRequest(path: string, method: string) {
   const track: typeof sink = ((...args: Parameters<typeof sink>) => {
     try {
       (sink as Function)(...args);
-    } catch {
-      /* Optional diagnostics. */
+    } catch (error) {
+      // Optional diagnostics: never interrupt the request.
+      console.warn("Learning request measurement dropped", error);
     }
   }) as typeof sink;
   path = path.split(/[?#]/)[0];

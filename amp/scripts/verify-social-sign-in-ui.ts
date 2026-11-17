@@ -965,10 +965,12 @@ try {
   await page.unroute("**/api/v1/me");
   // Keep this document alive while another tab changes the shared account.
   // A consumed checkout must not be inherited by the newly mounted account.
-  await page.evaluate(async () => {
-    const modulePath = "/src/web/app/router.tsx";
-    const { router } = await import(modulePath);
-    await router.navigate({ to: "/$", params: { _splat: "overview" } });
+  // An in-app navigation (the router follows the history it owns), so the
+  // document stays: importing the router module here can make Vite reload
+  // the page to optimize a dependency.
+  await page.evaluate(() => {
+    history.pushState({}, "", "/overview");
+    dispatchEvent(new PopStateEvent("popstate", { state: {} }));
   });
   await page
     .getByRole("heading", { level: 1, name: "Test Learner", exact: true })
