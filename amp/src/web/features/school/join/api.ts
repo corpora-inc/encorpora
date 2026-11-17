@@ -186,8 +186,12 @@ export function useFinishSignIn() {
       try {
         await navigate({
           to: "/$",
-          params: learner ? practiceParams(learner) : { _splat: "practice" },
-          search: filter ?? {},
+          // Its filter is the practice address's own focus.
+          params: learner
+            ? practiceParams(learner, filter)
+            : { _splat: "practice" },
+          // Only a hand-over (which always names its learner) has a filter.
+          search: {},
           replace: !handed,
           state:
             learnerId && returnTo

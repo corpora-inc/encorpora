@@ -1,7 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
+import { useSessionOrNull } from "../lib/session";
 import { useLocation, useRouter, useSearch } from "@tanstack/react-router";
 import type { ComponentProps, MouseEvent, ReactNode } from "react";
-import { sessionOptions } from "../lib/query";
 import { closeTo } from "../lib/return-to";
 import { OPEN_KEY, readStack, writeStack, type Entity } from "./entities";
 import {
@@ -96,7 +95,7 @@ export function useHereWithLayers() {
 /** The screen whose layers these are: its account, learner and address. */
 export function useLayerScope() {
   const pathname = useLocation({ select: (location) => location.pathname });
-  const accountId = useQuery(sessionOptions).data?.accountId;
+  const accountId = useSessionOrNull()?.accountId;
   return layerScope(pathname, accountId);
 }
 
