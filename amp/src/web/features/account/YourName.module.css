@@ -42,6 +42,17 @@
 .action > * {
   min-height: 44px;
 }
+/* The button's two labels share one cell: the shown one, and the other
+   holding its width (see YourName). */
+.labels {
+  display: inline-grid;
+}
+.labels > * {
+  grid-area: 1 / 1;
+}
+.labels > [aria-hidden="true"] {
+  visibility: hidden;
+}
 .form {
   display: grid;
   grid-column: 1 / -1;

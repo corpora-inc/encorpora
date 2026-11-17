@@ -136,7 +136,21 @@ export function YourName() {
                 disabled={!account}
                 data-change-name=""
               >
-                {known ? "Change" : "Add your name"}
+                {/* Both labels hold the button's width, so the row's text
+                    wraps the same before and after the account loads. */}
+                <span className={styles.labels}>
+                  {(["Change", "Add your name"] as const).map((label) => (
+                    <span
+                      key={label}
+                      aria-hidden={
+                        label !== (known ? "Change" : "Add your name") ||
+                        undefined
+                      }
+                    >
+                      {label}
+                    </span>
+                  ))}
+                </span>
               </Button>
             </div>
           </>
