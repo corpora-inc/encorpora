@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "@tanstack/react-router";
 import { meOptions, sessionOptions } from "../../lib/query";
 import { hasAccountContext } from "../../lib/account-page";
-import { useLearnerStore } from "../../learner-store";
+import { useCurrentLearner } from "../../learner-store";
 import { nativeRuntime } from "../../native-runtime";
 import { useFamilyCache } from "../../lib/family-cache";
 import {
@@ -23,7 +23,7 @@ export function useCurriculumScope() {
   const nativeFamily = useFamilyCache(
     nativeRuntime ? (session.data?.accountId ?? null) : null,
   );
-  const selected = useLearnerStore((s) => s.learnerId);
+  const selected = useCurrentLearner();
   if (nativeRuntime) {
     // The Rust session owns native requests. Reuse the family snapshot loaded
     // through that bridge, including LegacyApp's first-learner fallback.

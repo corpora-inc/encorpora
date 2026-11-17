@@ -44,7 +44,7 @@ function expectScope(scope: string, ready: boolean) {
 afterEach(() => {
   cleanup();
   queryClient.clear();
-  useLearnerStore.getState().select(null);
+  useLearnerStore.setState({ learners: {} });
   vi.unstubAllGlobals();
   vi.mocked(accessSession).mockReset();
 });
@@ -60,7 +60,7 @@ test("pending native session cannot use a cached family's curriculum scope", asy
     }),
   );
   setNativeFamilySnapshot("parent-a", family(["old"]));
-  useLearnerStore.getState().select("old");
+  useLearnerStore.getState().select("parent-a", "old");
   render(
     <QueryClientProvider client={queryClient}>
       <Scope />
@@ -81,7 +81,7 @@ test("native curriculum identity uses bridge family snapshots without browser AP
   vi.stubGlobal("fetch", fetch);
   const parentA = { accountId: "parent-a", token: "opaque-handle" };
   queryClient.setQueryData(sessionOptions.queryKey, parentA);
-  useLearnerStore.getState().select("second");
+  useLearnerStore.getState().select("parent-a", "second");
   render(
     <QueryClientProvider client={queryClient}>
       <Scope />
@@ -90,7 +90,7 @@ test("native curriculum identity uses bridge family snapshots without browser AP
   expectScope("pending", false);
   act(() => setNativeFamilySnapshot("parent-a", family(["first", "second"])));
   await waitFor(() => expectScope("account:parent-a:second", true));
-  act(() => useLearnerStore.getState().select("foreign"));
+  act(() => useLearnerStore.getState().select("parent-a", "foreign"));
   await waitFor(() => expectScope("account:parent-a:first", true));
   const parentB = { accountId: "parent-b", token: "other-handle" };
   act(() => queryClient.setQueryData(sessionOptions.queryKey, parentB));

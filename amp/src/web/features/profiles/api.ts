@@ -8,7 +8,7 @@ import {
   type ProfileLevels,
 } from "../../../learning/practice-profiles";
 import type { AuthSession } from "../../auth";
-import { useLearnerStore } from "../../learner-store";
+import { selectLearner, useCurrentLearner } from "../../learner-store";
 import { practiceProfile } from "../../lib/adult-learner";
 import { request } from "../../lib/api";
 import { meOptions, refreshMe, sessionOptions } from "../../lib/query";
@@ -26,7 +26,7 @@ const created = z.object({ learnerId: z.string() });
 /** Practice as this profile: it becomes the learner practicing, and practice
  * opens on it. The place they came from stays the one `/` remembers. */
 export function choosePracticeProfile(id: string) {
-  useLearnerStore.getState().select(id);
+  selectLearner(id);
   rememberProfileUse(id);
 }
 
@@ -156,7 +156,7 @@ export function usePracticingProfile() {
   }).data;
   const account =
     me?.signedIn && me.account.id === session?.accountId ? me : null;
-  const learnerId = useLearnerStore((state) => state.learnerId);
+  const learnerId = useCurrentLearner();
   const profile = practiceProfile(account, learnerId);
   const navigate = useNavigate();
   const router = useRouter();
@@ -181,9 +181,8 @@ export function usePracticingProfile() {
     leave: () => {
       // Back where it was started: X, the browser's Back and this agree.
       if (from) return closeTo(router, from, from);
-      const store = useLearnerStore.getState();
       if (target.own) {
-        store.select(target.own);
+        selectLearner(target.own);
         void navigate({
           to: "/$",
           params: { _splat: "practice" },
@@ -194,7 +193,7 @@ export function usePracticingProfile() {
       // No mode's `from` and no practice of their own: Back to where the
       // profile was started, else the root, which opens the place they work
       // (the family's first child chosen again, as the root would).
-      store.select(target.first);
+      selectLearner(target.first);
       closeTo(router, ROOT);
     },
   };

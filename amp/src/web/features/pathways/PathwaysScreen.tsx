@@ -25,7 +25,7 @@ import { meOptions, sessionOptions } from "../../lib/query";
 import { skillCatalogOptions } from "../../lib/learning-view";
 import { request } from "../../lib/api";
 import { useUrlSearchText } from "../../lib/url-search-text";
-import { useLearnerStore } from "../../learner-store";
+import { useCurrentLearner } from "../../learner-store";
 import type { AuthSession } from "../../auth";
 import { gradeName } from "../../Home";
 import { byArea, fitScale, LevelRows, WHOLE_SCALE } from "../../ui/level-range";
@@ -165,7 +165,7 @@ function GuestMap() {
 
 function LearnerMap({ session }: { session: AuthSession }) {
   const me = useQuery(meOptions(session));
-  const { learnerId: chosenId, select } = useLearnerStore();
+  const chosenId = useCurrentLearner();
   // Whose map the address names (features/spaces/identity.ts): yourself at
   // /pathways, a family's child at /family/<family>/kids/<learner>/pathways,
   // a practice profile by `?profile=`. Unnamed, a parent with no practice of
@@ -188,10 +188,6 @@ function LearnerMap({ session }: { session: AuthSession }) {
   const own = practicingAsAdult(account, learnerId)
     ? adultLearner(account)
     : (profileLearner(account, learnerId) ?? solo);
-  useEffect(() => {
-    if (!addressed && solo && own === solo && learnerId !== solo.id)
-      select(solo.id);
-  }, [solo?.id, learnerId]);
   /** Another child's map is their own address. */
   const openChild = (id: string) => {
     const family = account ? childFamily(account, id, places.data) : null;

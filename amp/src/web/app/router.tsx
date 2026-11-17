@@ -46,7 +46,7 @@ import {
   meOptions,
 } from "../lib/query";
 import type { Me } from "../../account/contracts";
-import { useLearnerStore } from "../learner-store";
+import { currentLearner } from "../learner-store";
 import { practicingAsAdult, practicingAsProfile } from "../lib/adult-learner";
 import { LoadingScreen, RouteError } from "../ui/LoadingScreen";
 import { childAddress, childPath } from "../features/spaces/identity";
@@ -114,6 +114,7 @@ import {
 } from "../nav/entities";
 import {
   adoptPracticeMode,
+  followResolvedLearner,
   canonicalLearnerAddress,
   carriedKeys,
   isLearningPath,
@@ -988,28 +989,14 @@ const pathwaySkill = createRoute({
   path: "$skillId",
   beforeLoad: ({ location, params }) => skillAsLayer(location, params.skillId),
 });
-/** A learner's workbooks are a tab of their Progress: arriving chooses
- * that learner (the account's own, never a practice profile), so the
- * group's other tabs and Practice are theirs too. The server still decides
- * what the account may open. */
-async function beforeWorkbooks<Params extends { learnerId: string }>({
-  params,
-}: {
-  params: Params;
-}) {
-  const { learnerId } = params;
+/** A learner's workbooks are a tab of their Progress. The address names
+ * the learner (`$learnerId`): the screen reads it from there, and once the
+ * navigation resolves it is the account's current learner
+ * (followResolvedLearner). The server still decides what the account may
+ * open. */
+function beforeWorkbooks() {
   if (nativeRuntime) throw redirect({ to: "/" });
   notForStudents();
-  const session = await queryClient.ensureQueryData(sessionOptions);
-  if (!session) return;
-  const me = await queryClient
-    .ensureQueryData(meOptions(session))
-    .catch(() => null);
-  // The address names the learner (`$learnerId`): the screen reads it from
-  // there, and the shell adopts it as this device's choice once the screen
-  // shows. A guard never chooses (a preload runs it too).
-  void me;
-  void learnerId;
 }
 /** Daily paper workbooks for one learner (features/workbooks). */
 const workbookHistory = createRoute({
@@ -1578,8 +1565,8 @@ const ownRecord = createRoute({
         to: me.adultPractice?.eligible ? "/me/start" : "/",
         replace: true,
       } as never);
-    // The shell makes the adult's own learner this device's choice once
-    // `/me` shows; a guard never chooses (a preload runs it too).
+    // Once `/me` resolves, the adult's own learner is the account's current
+    // one (followResolvedLearner).
     return { session, learnerId: own.id };
   },
   loader: ({ context }) => {
@@ -1952,6 +1939,9 @@ export const router = createRouter({
   defaultPendingMs: 1000,
   defaultPendingMinMs: 0,
 });
+// The learner a resolved address names is the account's current learner:
+// the router writes it, once per navigation (learner-store.ts).
+followResolvedLearner(router);
 // Development only: the route table, as the navigation crawler reads it
 // (scripts/verify-layer-crawl-ui.ts), so a new screen is crawled without
 // anyone editing the crawler. A layout's own address is its index child's;
@@ -2090,7 +2080,7 @@ router.subscribe("onResolved", ({ toLocation }) => {
   const session = queryClient.getQueryData(sessionOptions.queryKey);
   if (!session || studentSession()) return;
   const me = queryClient.getQueryData<Me>(meKey(session.accountId));
-  const chosen = useLearnerStore.getState().learnerId;
+  const chosen = currentLearner();
   // Practicing as a profile is a step away from a place, never one `/`
   // returns to.
   if (

@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import type { AuthSession } from "../../auth";
-import { useLearnerStore } from "../../learner-store";
+import { selectLearner } from "../../learner-store";
 import { Button, buttonClass } from "../../ui/Button";
 import { useHandOver } from "../school/classes/today/use-hand-over";
 
@@ -22,7 +22,7 @@ export function InvoicePractice({
           to="/$"
           params={{ _splat: "practice" }}
           className={buttonClass("primary")}
-          onClick={() => useLearnerStore.getState().select(learnerId)}
+          onClick={() => selectLearner(learnerId)}
         >
           Start learning
         </Link>

@@ -63,18 +63,18 @@ const queries = () => {
 };
 
 test("CP-2 r2 H2: the screen on view is the learner its address names, whatever the device chose", () => {
-  useLearnerStore.getState().select("wren");
+  useLearnerStore.getState().select(session.accountId, "wren");
   router.location = router.resolvedLocation = {
     pathname: "/pathways",
     search: { learner: "pip" },
   };
   const view = mount(queries());
   expect(view.result.current.learner?.id).toBe("pip");
-  expect(useLearnerStore.getState().learnerId).toBe("wren");
+  expect(useLearnerStore.getState().learners[session.accountId]).toBe("wren");
 });
 
 test("CP-2 r2 H2: a navigation still loading changes nobody on the screen on view", () => {
-  useLearnerStore.getState().select("wren");
+  useLearnerStore.getState().select(session.accountId, "wren");
   router.resolvedLocation = { pathname: "/pathways", search: {} };
   router.location = { pathname: "/practice", search: { learner: "pip" } };
   const view = mount(queries());
@@ -82,7 +82,7 @@ test("CP-2 r2 H2: a navigation still loading changes nobody on the screen on vie
 });
 
 test("CP-2 r2 H2: the named learner gone while mounted is nobody, never another", async () => {
-  useLearnerStore.getState().select("pip");
+  useLearnerStore.getState().select(session.accountId, "pip");
   router.location = router.resolvedLocation = {
     pathname: "/pathways",
     search: { learner: "pip" },
@@ -99,5 +99,5 @@ test("CP-2 r2 H2: the named learner gone while mounted is nobody, never another"
   });
   expect(view.result.current.learner).toBeUndefined();
   // The device's choice is not moved to Wren behind the screen.
-  expect(useLearnerStore.getState().learnerId).toBe("pip");
+  expect(useLearnerStore.getState().learners[session.accountId]).toBe("pip");
 });

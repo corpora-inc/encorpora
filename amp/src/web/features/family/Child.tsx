@@ -5,9 +5,8 @@ import {
   useParams,
   useRouterState,
 } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { reportable } from "../../../learning/level-check";
-import { useLearnerStore } from "../../learner-store";
 import { z } from "zod";
 import {
   CHILD_NAME_MAX,
@@ -84,12 +83,6 @@ export function ChildScreen() {
   // Something to report: a level with an answer behind it (Q-201).
   const hasReport = reportable(progress.data?.level);
   if (progress.data) openedUnmeasured.current ??= !hasReport;
-  // This child is the one chosen on this device while their page is open:
-  // their learning screens are theirs.
-  const known = !!child;
-  useEffect(() => {
-    if (known) useLearnerStore.getState().select(learner);
-  }, [known, learner]);
   const search = useRouterState({
     select: (state) => state.location.search as Record<string, unknown>,
   });

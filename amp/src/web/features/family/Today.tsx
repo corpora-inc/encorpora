@@ -17,7 +17,7 @@ import { useHandOver } from "../school/classes/today/use-hand-over";
 import { WeekFacts } from "../school/classes/today/WeekFacts";
 import { fullDay } from "../school/classes/teacher-shared";
 import type { FamilyChild } from "./api";
-import { useLearnerStore } from "../../learner-store";
+import { selectLearner } from "../../learner-store";
 import { useStartOwnPractice } from "../me/api";
 import { rememberPlace } from "../onboarding/place-memory";
 import { AddChildrenSheet } from "./AddChildren";
@@ -87,7 +87,7 @@ function ChildBillingLink({
       className={styles.accessLink}
       aria-label={`${label} for ${child.name}`}
       data-child-billing={child.id}
-      onClick={() => useLearnerStore.getState().select(child.id)}
+      onClick={() => selectLearner(child.id)}
     >
       {label}
     </Link>

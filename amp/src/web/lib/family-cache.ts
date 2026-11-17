@@ -41,6 +41,18 @@ export function useAccountCache(identity: string | null) {
   );
   return me?.signedIn ? me : null;
 }
+/** The family the account holds now, outside render (`useFamilyCache`'s
+ * answer, from the same cache). */
+export function familySnapshot(identity: string | null) {
+  if (nativeRuntime)
+    return (
+      queryClient.getQueryData<FamilySummary | null>(
+        nativeFamilyKey(identity),
+      ) ?? null
+    );
+  const me = queryClient.getQueryData<Me | null>(meKey(identity));
+  return me?.signedIn ? me.family : null;
+}
 export function familyRevision(identity: string | null) {
   return (
     queryClient.getQueryState(
