@@ -77,14 +77,17 @@ import {
   studentSignInEnded,
 } from "../lib/student-device";
 import { workbookSearchSchema } from "../features/workbooks/model";
-import { orgsOptions, preload } from "../features/school/api";
 import { prepareBuyerHandoff } from "../features/school/pilots/buyer-session";
 import { prepareSchoolAdoption } from "../features/school/adoption-session";
-import { finishingSignIn } from "../features/school/join/api";
+import { finishingSignIn } from "../features/school/join/finishing";
 import { SMALL_CLASS } from "../features/navigation/shell-frame";
 import { approvalsOptions } from "../features/family-approval/api";
 import { secondParentOptions } from "../features/second-parent/api";
-import { classYearOptions } from "../features/school/org/org-api";
+import {
+  classYearOptions,
+  orgsOptions,
+  preload,
+} from "../features/school/core-api";
 import { frameData, schoolRoutes, staffScreen } from "./school-routes";
 import { familyRoutes } from "./family-routes";
 import { payOverlays, payRoutes } from "./pay-routes";

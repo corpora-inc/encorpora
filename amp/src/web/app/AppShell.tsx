@@ -28,7 +28,7 @@ import {
 } from "../features/spaces/hold";
 import { useSettledMatch, useSpace } from "../features/spaces/useSpace";
 import { DemoMark } from "../features/school/demo/DemoMark";
-import { DemoSetupAction } from "../features/school/demo/DemoPlace";
+import { DemoSetupAction } from "../features/school/demo/DemoSetupAction";
 import {
   ProfileBackAction,
   ProfileMark,

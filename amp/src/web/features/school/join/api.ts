@@ -1,3 +1,4 @@
+import { setFinishingSignIn } from "./finishing";
 import { familyPracticeState } from "../../../lib/family-practice-history";
 import type { PracticeFilter } from "../../practice/curriculum-filter";
 import { requestFetch } from "../../../lib/request-transport";
@@ -136,8 +137,7 @@ export const signInWithCard = (token: string) =>
 /** The app remounts for a new identity, including whichever sign-in screen is
  * up. A remounted screen checks this and keeps the wave going until practice
  * replaces it, rather than starting over. */
-let finishing = false;
-export const finishingSignIn = () => finishing;
+export { finishingSignIn } from "./finishing";
 
 /** Straight to the first problem. A class sign-in replaces the pictures.
  * A parent handoff preserves the curriculum entry for browser Back; the
@@ -155,7 +155,7 @@ export function useFinishSignIn() {
       returnName?: string,
     ) => {
       const session = { accountId: grant.accountId, token: grant.token };
-      finishing = true;
+      setFinishingSignIn(true);
       rememberStudentSession(session, grant.mode, handed, returnTo, returnName);
       notifyDeviceSessionChanged(session);
       // The app remounts for a new identity, and that would cancel a `/me`
@@ -177,7 +177,7 @@ export function useFinishSignIn() {
               : undefined,
         });
       } finally {
-        finishing = false;
+        setFinishingSignIn(false);
       }
     },
     [navigate],

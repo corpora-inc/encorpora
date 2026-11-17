@@ -24,7 +24,7 @@ import {
   frontierSchema,
 } from "../features/pathways/model";
 import type { AuthSession } from "../auth";
-import { studentSkillResponse } from "../../schools/teacher-contracts";
+import { studentSkillResponse } from "../../schools/skill-contracts";
 import {
   secondParentChild,
   secondParentChildren,

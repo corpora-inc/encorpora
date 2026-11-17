@@ -1,5 +1,4 @@
 import { queryOptions } from "@tanstack/react-query";
-import { z } from "zod";
 import {
   activityPeopleResponse,
   activityResponse,
@@ -17,10 +16,9 @@ import {
   type ActivityKind,
   type RolloverInput,
 } from "../../../../schools/org-contracts";
-import { schoolActions } from "../../../../schools/contracts";
 import type { AuthSession } from "../../../auth";
-import { AppError, keepRefusal } from "../../../lib/AppError";
-import { call, keyFor } from "../api";
+import { AppError } from "../../../lib/AppError";
+import { call, keyFor } from "../core-api";
 
 export const overviewOptions = (session: AuthSession, orgId: string) =>
   queryOptions({
@@ -50,51 +48,13 @@ export const yearsOptions = (session: AuthSession, orgId: string) =>
         (data) => data.years,
       ),
   });
-/** A class's year and what binds it to a place (its org, the orgs above
- * it, its name, this person's actions there). The binding is optional: an
- * older server answers the year alone. */
-export const classYearResource = z.object({
-  past: z.boolean(),
-  orgId: z.uuid().optional(),
-  path: z.array(z.uuid()).optional(),
-  name: z.string().nullable().optional(),
-  can: z.array(z.enum(schoolActions)).optional(),
-  /** Whether the class's students can practice, for anyone who reads the
-   * class (SPEC R14): its sign-in tools follow this, whatever the role. */
-  practice: z.enum(["open", "waiting", "ended"]).optional(),
-  /** When anything deciding practice can next change (null: nothing
-   * dated ahead): ask again then. */
-  recheckAt: z.string().nullable().optional(),
-  /** Why practice ended, when it has (CP-3 r7): the school year, the
-   * roster, or the coverage. Older servers don't say. */
-  practiceEnd: z.enum(["session", "roster", "coverage"]).nullable().optional(),
-  /** What a waiting class waits for: its students, or its teacher's Start
-   * (no pilot, no license). Older servers don't say. */
-  practiceWait: z.enum(["students", "start"]).nullable().optional(),
-  /** The server's clock at this answer: the device's is never trusted. */
-  serverNow: z.string().optional(),
-  /** When this answer was asked for, on this page's monotonic clock. */
-  receivedAt: z.number().optional(),
-});
-export type ClassYear = z.infer<typeof classYearResource>;
-export const classYearOptions = (session: AuthSession, classId: string) => {
-  const queryKey = keyFor(session, "class-year", classId);
-  return queryOptions({
-    queryKey,
-    queryFn: ({ signal }) => {
-      // Anchored when asked, not when answered: the server's clock was
-      // read after this, so counting from here never postpones a moment
-      // by however long the answer took (CP-3 r5).
-      const asked = performance.now();
-      // A refusal stands until a successful read (CP-3 r8).
-      return keepRefusal(queryKey, () =>
-        call(`/classes/${classId}/year`, classYearResource, session, {
-          signal,
-        }),
-      ).then((year): ClassYear => ({ ...year, receivedAt: asked }));
-    },
-  });
-};
+// A class's year is the shell's (core-api.ts); here for the screens that
+// import it from the org's API.
+export {
+  classYearOptions,
+  classYearResource,
+  type ClassYear,
+} from "../core-api";
 export const rolloverOptions = (session: AuthSession, orgId: string) =>
   queryOptions({
     queryKey: keyFor(session, "org", orgId, "year"),

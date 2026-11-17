@@ -6,28 +6,11 @@ import { nativeRuntime } from "../native-runtime";
 import { OPEN_KEY, work, writeStack } from "../nav/entities";
 import type { AuthSession } from "../auth";
 import {
-  calendarOptions,
   classesOptions,
-  licenseOptions,
   orgOptions,
   orgsOptions,
   preload,
-  setupOptions,
-  signInHelpOptions,
-  staffOptions,
-} from "../features/school/api";
-import {
-  integrationsOptions,
-  overviewOptions,
-  privacyOptions,
-  rolloverOptions,
-  schoolsOptions,
-  yearsOptions,
-} from "../features/school/org/org-api";
-import {
-  classStandingOptions,
-  orgStandingOptions,
-} from "../features/school/standing/standing-api";
+} from "../features/school/core-api";
 import {
   markSchoolSignup,
   orgHome,
@@ -35,6 +18,13 @@ import {
   type SetupStep,
 } from "../features/school/paths";
 import { toFamilyChild, toFamilyPage } from "./family-redirect";
+
+/* A screen's own reads come from the school's API chunks, loaded with the
+   screen: the route table, in the app's entry, carries only the shell's
+   (core-api.ts; scripts/check-bundle-budget.ts). */
+const api = () => import("../features/school/api");
+const orgApi = () => import("../features/school/org/org-api");
+const standingApi = () => import("../features/school/standing/standing-api");
 
 /** Staff screens: signed in, on the web, and not a student's device. A signed-out
  * visitor goes through the usual sign-in and comes straight back here. */
@@ -290,7 +280,9 @@ export function schoolRoutes(root: AnyRoute) {
         if (!requested.setupPending)
           throw redirect({ ...orgHome(requested), replace: true } as never);
         const [state] = await Promise.all([
-          queryClient.fetchQuery(setupOptions(session, requested.id)),
+          api().then((m) =>
+            queryClient.fetchQuery(m.setupOptions(session, requested.id)),
+          ),
           preload(meOptions(session)),
         ]);
         // The first thing not yet answered; a later step waits for it.
@@ -377,8 +369,10 @@ export function schoolRoutes(root: AnyRoute) {
           const orgId = (params as unknown as { org: string }).org;
           await Promise.all([
             frameData(session, orgId),
-            preload(overviewOptions(session, orgId)),
-            preload(orgStandingOptions(session, orgId)),
+            orgApi().then((m) => preload(m.overviewOptions(session, orgId))),
+            standingApi().then((m) =>
+              preload(m.orgStandingOptions(session, orgId)),
+            ),
           ]);
         },
         component: screens.overview,
@@ -398,7 +392,11 @@ export function schoolRoutes(root: AnyRoute) {
     orgScreen(
       "/standing",
       screens.standing,
-      (session, orgId) => [preload(orgStandingOptions(session, orgId))],
+      (session, orgId) => [
+        standingApi().then((m) =>
+          preload(m.orgStandingOptions(session, orgId)),
+        ),
+      ],
       "map",
     ),
     createRoute({
@@ -418,31 +416,33 @@ export function schoolRoutes(root: AnyRoute) {
         };
         await Promise.all([
           frameData(session, orgId),
-          preload(classStandingOptions(session, classId)),
+          standingApi().then((m) =>
+            preload(m.classStandingOptions(session, classId)),
+          ),
         ]);
       },
       component: screens.classStanding,
     }),
     orgScreen("/schools", screens.schools, (session, orgId) => [
-      preload(schoolsOptions(session, orgId)),
+      orgApi().then((m) => preload(m.schoolsOptions(session, orgId))),
     ]),
     // The new year's steps, each at its own address: `/year` (dates), then
     // `/year/classes`, `/year/grades` and `/year/review`.
     orgScreen("/year", screens.rollover, (session, orgId) => [
-      preload(rolloverOptions(session, orgId)),
+      orgApi().then((m) => preload(m.rolloverOptions(session, orgId))),
     ]),
     orgScreen("/year/$step", screens.rollover, (session, orgId) => [
-      preload(rolloverOptions(session, orgId)),
+      orgApi().then((m) => preload(m.rolloverOptions(session, orgId))),
     ]),
     orgScreen("/integrations", screens.integrations, (session, orgId) => [
-      preload(integrationsOptions(session, orgId)),
+      orgApi().then((m) => preload(m.integrationsOptions(session, orgId))),
     ]),
     orgScreen("/privacy", screens.privacy, (session, orgId) => [
-      preload(privacyOptions(session, orgId)),
+      orgApi().then((m) => preload(m.privacyOptions(session, orgId))),
     ]),
     orgScreen("/activity", screens.activity),
     orgScreen("/classes", screens.classes, (session, orgId) => [
-      preload(yearsOptions(session, orgId)),
+      orgApi().then((m) => preload(m.yearsOptions(session, orgId))),
     ]),
     orgScreen("/students", screens.students, undefined, "roster"),
     // The school-level student page from before layers, and one of their
@@ -512,16 +512,20 @@ export function schoolRoutes(root: AnyRoute) {
     orgScreen(
       "/staff",
       screens.staff,
-      (session, orgId) => [preload(staffOptions(session, orgId))],
+      (session, orgId) => [
+        api().then((m) => preload(m.staffOptions(session, orgId))),
+      ],
       "roster",
     ),
     orgScreen("/sign-in-help", screens.help, (session, orgId) => [
-      preload(signInHelpOptions(session, orgId)),
+      api().then((m) => preload(m.signInHelpOptions(session, orgId))),
     ]),
     orgScreen(
       "/calendar",
       screens.calendar,
-      (session, orgId) => [preload(calendarOptions(session, orgId))],
+      (session, orgId) => [
+        api().then((m) => preload(m.calendarOptions(session, orgId))),
+      ],
       "settings",
     ),
     // Every section before the page paints, so a section never arrives
@@ -546,7 +550,7 @@ export function schoolRoutes(root: AnyRoute) {
     orgScreen("/license", screens.license, (session, orgId) => [
       preload(orgOptions(session, orgId)).then((org) =>
         (org as { can?: string[] } | undefined)?.can?.includes("license.read")
-          ? preload(licenseOptions(session, orgId))
+          ? api().then((m) => preload(m.licenseOptions(session, orgId)))
           : undefined,
       ),
     ]),

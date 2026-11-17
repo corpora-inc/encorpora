@@ -6,7 +6,7 @@ import {
 } from "@tanstack/react-router";
 import type { AuthSession } from "../auth";
 import { meOptions, queryClient } from "../lib/query";
-import { preload } from "../features/school/api";
+import { preload } from "../features/school/core-api";
 import {
   childProgressOptions,
   familyOptions,
