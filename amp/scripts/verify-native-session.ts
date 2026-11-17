@@ -790,7 +790,7 @@ try {
     .click();
   await page.getByRole("region", { name: "Reading workspace" }).waitFor();
   assert.equal(await page.getByRole("button", { name: /Download/ }).count(), 0);
-  await page.getByRole("button", { name: "← Back", exact: true }).click();
+  await page.getByRole("button", { name: "Close book", exact: true }).click();
   await page.getByRole("button", { name: "Account menu" }).count();
   await page.getByLabel("Account menu").click();
   // An Account menu item since #1155 (verify-session-ui uses the same role).

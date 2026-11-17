@@ -305,7 +305,7 @@ try {
   await page
     .getByRole("main", { name: "Number Builders", exact: true })
     .waitFor();
-  await page.getByRole("button", { name: "← Back", exact: true }).click();
+  await page.getByRole("button", { name: "Close book", exact: true }).click();
   await page.waitForFunction(
     () =>
       document.activeElement?.getAttribute("data-book-id") ===
@@ -330,7 +330,7 @@ try {
   await page
     .getByRole("main", { name: "Number Builders", exact: true })
     .waitFor();
-  await page.getByRole("button", { name: "← Back", exact: true }).click();
+  await page.getByRole("button", { name: "Close book", exact: true }).click();
   await resume(page);
   await page
     .locator("#answer")
@@ -496,7 +496,7 @@ try {
   await page
     .getByRole("button", { name: "Open related book", exact: true })
     .click();
-  await page.getByRole("button", { name: "← Back", exact: true }).click();
+  await page.getByRole("button", { name: "Close book", exact: true }).click();
   await page.waitForFunction(
     () =>
       document.activeElement?.getAttribute("data-book-id") ===
@@ -512,7 +512,7 @@ try {
   await page
     .getByRole("main", { name: "Balance and Change", exact: true })
     .waitFor();
-  await page.getByRole("button", { name: "← Back", exact: true }).click();
+  await page.getByRole("button", { name: "Close book", exact: true }).click();
   await page.waitForFunction(
     () =>
       document.activeElement?.getAttribute("data-book-id") ===
