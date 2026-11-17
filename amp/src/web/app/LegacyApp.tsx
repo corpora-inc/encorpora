@@ -35,7 +35,6 @@ import {
   useFamilyCache,
   setNativeFamilySnapshot,
   familyRevision,
-  clearFamilyAccount,
   familySnapshot,
 } from "../lib/family-cache";
 import {
@@ -674,7 +673,12 @@ function LegacyScreen() {
   function updateAuth(session: AuthSession | null) {
     const next = session?.token ?? null,
       identity = session?.accountId ?? null;
-    const previousIdentity = accountRef.current;
+    // This screen is one account's (LegacyApp keys it by account). A session
+    // for another account means it is being replaced: the outgoing screen
+    // (still shown while Back loads, a family handoff) sends nobody
+    // anywhere and clears nothing. Providers starts again for a real account
+    // change; a handoff keeps both accounts' data.
+    if (accountRef.current !== null && accountRef.current !== identity) return;
     if (tokenRef.current === next && accountRef.current === identity) return;
     tokenRef.current = next;
     if (accountRef.current === identity) return;
@@ -683,10 +687,6 @@ function LegacyScreen() {
     setConsentChallenge(null);
 
     setConsentReturn(false);
-    if (accountRef.current !== null) {
-      clearPurchaseReturn();
-      pendingPurchaseReturn.current = null;
-    }
 
     setPurchaseReturn(readOwnedPurchaseReturn(identity ?? ""));
     const openingSecurity =
@@ -701,9 +701,6 @@ function LegacyScreen() {
     authEpoch.current++;
     familyRequest.current++;
     navigationEpoch.current++;
-    if (previousIdentity && previousIdentity !== identity)
-      navigate("/", { replace: true });
-    if (previousIdentity !== identity) clearFamilyAccount(previousIdentity);
     setFamilySummary(null);
     setBusy(false);
     setName("");

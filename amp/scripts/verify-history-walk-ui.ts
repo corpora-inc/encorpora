@@ -108,7 +108,8 @@ const watchPractice = `(() => {
   window.__tap = performance.now();
   const boxes = (window.__practiceBoxes = []);
   const poll = () => {
-    if (location.pathname.startsWith("/practice")) return;
+    // Practice has arrived (its address names the learner, and any focus).
+    if (/^\/practice(\/|$)/.test(location.pathname)) return;
     const button = document.querySelector(
       "[data-layer-frame] [data-curriculum-practice] button",
     );
@@ -196,7 +197,8 @@ async function firstRun(page: Page) {
   await oneHop(page, "first practice", "link");
 }
 
-/** A learner's practice: its address names them (`/practice/<learner>`). */
+/** A learner's practice: its address names them (`/practice/<learner>`),
+ * and any focus (`…/skills/<skill>`). */
 const PRACTICE = /^\/practice\/[^/]+(?:\/(?:types|skills|areas)\/[^/]+)?$/;
 const CHILD_PAGE = /^\/family\/[^/]+\/kids\/[^/]+$/;
 
