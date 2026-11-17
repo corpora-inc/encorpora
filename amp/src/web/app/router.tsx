@@ -521,14 +521,23 @@ const accountReady = createRoute({
   getParentRoute: () => root,
   path: "/account/ready",
   staticData: { space: "account" },
-  loader: async () => {
-    const session = await queryClient.ensureQueryData(sessionOptions);
-    // Leave a failed lookup to the screen's inline retry instead of replacing
-    // the successful-registration page with a route error.
-    if (session)
-      await queryClient
-        .ensureQueryData(meOptions(session))
-        .catch(() => undefined);
+  // Signed out: sign in, keeping the continuation. A gift waiting (or a
+  // sign-up that came from one): the gift's page, in one hop.
+  beforeLoad: async ({ location }) => {
+    const session = await requireSignedIn(location);
+    // A failed lookup is the screen's inline retry, never a route error.
+    const me = await queryClient
+      .ensureQueryData(meOptions(session))
+      .catch((error: unknown) =>
+        console.warn("The new account didn’t load ahead", error),
+      );
+    const account =
+      me?.signedIn && me.account.id === session.accountId ? me : null;
+    if (
+      account?.availableAccessGrant ||
+      continuationSearch(location.search).return === "access"
+    )
+      elsewhere("/access");
   },
   component: lazyRouteComponent(
     () => import("../features/account/AccountReady"),
