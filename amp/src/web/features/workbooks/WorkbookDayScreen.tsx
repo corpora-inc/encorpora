@@ -15,6 +15,7 @@ import {
 import { Navigate } from "../../nav/Navigate";
 import { Fragment, useEffect, useState, type ReactNode } from "react";
 import type { AuthSession } from "../../auth";
+import { qk } from "../../lib/keys";
 import { meOptions, sessionOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
 import { Chips } from "../../ui/Chips";
@@ -33,7 +34,6 @@ import {
   workbookAreasOptions,
   workbookHistoryOptions,
   workbookPreviewOptions,
-  workbooksKey,
   type WorkbookMinutes,
 } from "./api";
 import {
@@ -289,7 +289,12 @@ function Today({
     });
     void client.invalidateQueries({ queryKey: meOptions(session).queryKey });
     void client.invalidateQueries({
-      queryKey: [...workbooksKey(session, learner.id), "history"],
+      queryKey: qk.account(
+        session.accountId,
+        "workbooks",
+        learner.id,
+        "history",
+      ),
     });
     return made;
   }

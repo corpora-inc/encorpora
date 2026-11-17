@@ -22,22 +22,24 @@ export const useFeedbackPreferences = create<Preferences>()(
         getItem: (key) => {
           try {
             return localStorage.getItem(key);
-          } catch {
+          } catch (error) {
+            console.warn("Feedback preferences not read", error);
             return null;
           }
         },
         setItem: (key, value) => {
           try {
             localStorage.setItem(key, value);
-          } catch {
-            /* Memory-only preferences when storage is unavailable. */
+          } catch (error) {
+            // Memory-only preferences when storage is unavailable.
+            console.warn("Feedback preferences not saved", error);
           }
         },
         removeItem: (key) => {
           try {
             localStorage.removeItem(key);
-          } catch {
-            /* Storage unavailable. */
+          } catch (error) {
+            console.warn("Feedback preferences not cleared", error);
           }
         },
       })),
@@ -69,9 +71,14 @@ export function prepareFeedbackSound() {
   try {
     context ??= new AudioContext();
     if (context.state === "suspended")
-      void context.resume().catch(() => undefined);
-  } catch {
-    /* Sound is optional; an unavailable device must not block an answer. */
+      void context
+        .resume()
+        .catch((error: unknown) =>
+          console.warn("Feedback sound not resumed", error),
+        );
+  } catch (error) {
+    // Sound is optional; an unavailable device must not block an answer.
+    console.warn("Feedback sound unavailable", error);
   }
 }
 
@@ -81,8 +88,9 @@ export function playCorrectFeedback(milestone = false) {
   if (preferences.haptics && typeof navigator.vibrate === "function") {
     try {
       navigator.vibrate(milestone ? [15, 50, 15] : 12);
-    } catch {
-      /* Unsupported or denied. */
+    } catch (error) {
+      // Unsupported or denied.
+      console.warn("Feedback vibration unavailable", error);
     }
   }
   if (!preferences.sound || !context || context.state !== "running") return;
@@ -105,12 +113,17 @@ export function playCorrectFeedback(milestone = false) {
         gain.disconnect();
       };
     });
-  } catch {
-    /* Feedback never affects answer delivery or progression. */
+  } catch (error) {
+    // Feedback never affects answer delivery or progression.
+    console.warn("Feedback sound not played", error);
   }
 }
 
 useFeedbackPreferences.subscribe((state, previous) => {
   if (!state.sound && previous.sound && context?.state === "running")
-    void context.suspend().catch(() => undefined);
+    void context
+      .suspend()
+      .catch((error: unknown) =>
+        console.warn("Feedback sound not suspended", error),
+      );
 });
