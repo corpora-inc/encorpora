@@ -474,7 +474,8 @@ function sameView(a: Record<string, string>, b: Record<string, string>) {
  * closing, Back and Forward never move it. */
 async function mapStays(page: Page, person: string) {
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await land(page, "/pathways");
+  // The 3D map (the grades view is the default, Q-212).
+  await land(page, "/pathways?view=3d");
   // The map opens whole (Q-9): its areas named, until a skill is framed.
   await page.locator(".pathways-map-labels .area-label").first().waitFor();
   await page.getByRole("button", { name: "Browse skills" }).click();

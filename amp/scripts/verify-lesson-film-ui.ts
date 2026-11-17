@@ -214,7 +214,7 @@ try {
         await watch.waitFor();
         assert.equal(
           await page
-            .getByRole("link", { name: /^Try this problem type/ })
+            .getByRole("link", { name: /^Practice/ })
             .count(),
           0,
           "A child's map offers the adult no practice of its own",
