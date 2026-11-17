@@ -1,10 +1,10 @@
+import { useSession } from "../../../lib/session";
 import { EntityLink } from "../../../nav/links";
 import { work } from "../../../nav/entities";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import type { WorkItem } from "../../../../schools/teacher-contracts";
-import type { AuthSession } from "../../../auth";
 import { AppError } from "../../../lib/AppError";
 import { Button } from "../../../ui/Button";
 import { Loading } from "../../../ui/Loading";
@@ -20,7 +20,6 @@ import styles from "./Teacher.module.css";
  * objectives with their dates, and the actual problems. */
 export function EvidenceSheet({
   place,
-  session,
   term,
   student,
   returnFocus,
@@ -30,7 +29,6 @@ export function EvidenceSheet({
   links,
 }: {
   place: Place;
-  session: AuthSession | null;
   term: string;
   student: string | undefined;
   /** Where the person's own record and report card are, from the page that
@@ -45,6 +43,7 @@ export function EvidenceSheet({
   onError: (message: string) => void;
   onSaved: (message: string) => void;
 }) {
+  const session = useSession();
   const evidence = useQuery({
     ...evidenceOptions(session, place, term, student ?? ""),
     enabled: !!session && !!student,
@@ -98,7 +97,6 @@ export function EvidenceSheet({
                 Final
               </div>
               <FinalField
-                session={session}
                 place={place}
                 student={data.student}
                 term={term}
@@ -166,7 +164,7 @@ export function EvidenceSheet({
             key={`${term}:${student}`}
             first={data.work}
             next={data.nextOffset}
-            session={session}
+
             place={place}
             term={term}
             student={data.student.id}
@@ -213,18 +211,17 @@ export function EvidenceSheet({
 function EvidenceWork({
   first,
   next,
-  session,
   place,
   term,
   student,
 }: {
   first: readonly WorkItem[];
   next: number | null;
-  session: AuthSession | null;
   place: Place;
   term: string;
   student: string;
 }) {
+  const session = useSession();
   const client = useQueryClient();
   const [more, setMore] = useState<readonly WorkItem[]>([]);
   const [offset, setOffset] = useState(next);

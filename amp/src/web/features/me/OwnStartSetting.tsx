@@ -5,7 +5,7 @@ import {
   ownPracticeAllowed,
   type AdultStart,
 } from "../../../learning/starting-point";
-import type { AuthSession } from "../../auth";
+import { useSession } from "../../lib/session";
 import { AppError } from "../../lib/AppError";
 import { Button, buttonClass } from "../../ui/Button";
 import { Dialog } from "../../ui/Dialog";
@@ -22,12 +22,11 @@ import styles from "./Own.module.css";
  * and every answer stays. Their levels and record are one link away.
  */
 export function OwnStartSetting({
-  session,
   start,
 }: {
-  session: AuthSession;
   start: AdultStart | null | undefined;
 }) {
+  const session = useSession();
   const change = useChangeOwnStart(session);
   const [open, setOpen] = useState(false);
   const [picked, setPicked] = useState<number | null>(null);

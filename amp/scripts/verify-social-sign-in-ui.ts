@@ -830,13 +830,16 @@ try {
     .getByRole("button", { name: "Back to family", exact: true })
     .click();
   await familyHome(page);
-  // Simulate another person's saved learner selection on a shared device.
+  // Simulate another account's saved learner selection on a shared device
+  // (the store is keyed by account: learner-store.ts).
   await page.evaluate(() =>
     localStorage.setItem(
       "amp.learner",
       JSON.stringify({
-        state: { learnerId: "another-account-learner" },
-        version: 1,
+        state: {
+          learners: { "amp|another-account": "another-account-learner" },
+        },
+        version: 2,
       }),
     ),
   );

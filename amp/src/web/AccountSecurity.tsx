@@ -54,7 +54,12 @@ function checked<T>(result: {
     );
   return result.data!;
 }
-export function AccountSecurity() {
+export function AccountSecurity({
+  deleteEntry = true,
+}: {
+  /** Its own "Delete account" row: off where the hub offers it already. */
+  deleteEntry?: boolean;
+} = {}) {
   const [summary, setSummary] = useState<Summary | null>(null);
   const [now, setNow] = useState(performance.now());
   const [freshUntil, setFreshUntil] = useState(0);
@@ -716,7 +721,7 @@ export function AccountSecurity() {
               </div>
             </div>
           )}
-          <DeleteAccountEntry continues />
+          {deleteEntry && <DeleteAccountEntry continues />}
         </>
       )}
     </section>

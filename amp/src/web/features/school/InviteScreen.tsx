@@ -1,14 +1,15 @@
+import { reportError } from "../../lib/report-error";
 import { heldCapability } from "../../capability-entry";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import type { InviteView } from "../../../schools/setup-contracts";
 import { signOut } from "../../auth";
-import { AppError } from "../../lib/AppError";
 import { linkRefused } from "../../lib/link-carry";
 import { sessionOptions, meOptions } from "../../lib/query";
 import { useLoggedError } from "../../feedback";
 import { Button, buttonClass } from "../../ui/Button";
+import { Page } from "../../ui/Page";
 import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { useAuthDraft } from "../auth/draft";
@@ -16,7 +17,12 @@ import { accountClient } from "../../account-client";
 import { SUPPORT_EMAIL } from "../support/SupportHelp";
 import { refreshSchool, school } from "./api";
 import { roleNames } from "./parts";
-import { forgetInvite, rememberInvite, rememberedInvite } from "./paths";
+import {
+  forgetInvite,
+  rememberInvite,
+  rememberedInvite,
+  setupPath,
+} from "./paths";
 import { Brand } from "./SchoolFrame";
 import styles from "./School.module.css";
 
@@ -109,8 +115,7 @@ export function InviteScreen() {
           ? ({ to: "/family", replace: true } as never)
           : joined.setup && joined.orgId
             ? ({
-                to: "/school/new",
-                search: { org: joined.orgId, step: "calendar" },
+                to: `/${setupPath(joined.orgId, "calendar")}`,
                 replace: true,
               } as never)
             : joined.orgId
@@ -119,9 +124,10 @@ export function InviteScreen() {
       );
     } catch (failure) {
       setError(
-        failure instanceof AppError
-          ? failure.message
-          : "The invitation didn’t go through. Try again.",
+        reportError(failure, {
+          doing: "go through the invitation",
+          fallback: "The invitation didn’t go through. Try again.",
+        }),
       );
       setBusy(false);
     }
@@ -170,11 +176,7 @@ export function InviteScreen() {
     } else setConfirmSent(true);
   };
   return (
-    <main
-      className={styles.inviteCard}
-      data-dense
-      data-in-shell={session ? "" : undefined}
-    >
+    <Page width="narrow" className={styles.inviteCard} data-dense>
       {/* A family's second parent isn't joining a school. */}
       {!session && <Brand for={view?.secondParent ? null : undefined} />}
       {!parsed ? (
@@ -239,8 +241,8 @@ export function InviteScreen() {
           <h1>This invitation is for another address</h1>
           <p>
             It was sent to <strong>{view.email}</strong>, and you’re signed in
-            as {email}. To join {family.name} as a parent, sign in with
-            that address, or create an account with it.
+            as {email}. To join {family.name} as a parent, sign in with that
+            address, or create an account with it.
           </p>
           <div className={styles.inviteActions}>
             <Button variant="primary" onClick={() => void useAnother()}>
@@ -372,6 +374,6 @@ export function InviteScreen() {
         </>
       )}
       <Toast message={error} onDismiss={() => setError("")} />
-    </main>
+    </Page>
   );
 }

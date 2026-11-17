@@ -7,7 +7,8 @@ import { childFamily } from "../spaces/learner-urls";
  *
  *   /family/<family>/kids/<learner>/pay           over the child's page
  *   /family/<family>/pay/<learner>                over the family's Today
- *   /account/billing/pay/<learner>                over Billing
+ *   /family/<family>/settings/pay/<learner>       over the family's Settings
+ *   /account/pay/<learner>                        over the account
  *
  * and under each base, `/done` (back from Stripe) and `/invoice/<invoice>`
  * (the invoice made). Closing goes to the origin: exactly the screen behind.
@@ -68,7 +69,7 @@ export function payOver(origin: string, learnerId: string) {
 
 /** A learner's own place, where paying opens when nothing else names one
  * (an older link, Stripe's return in another tab): a child's page in their
- * family; the adult's (or a practice profile's) Billing. */
+ * family; the adult's (or a practice profile's) account. */
 export function learnerOrigin(me: SignedInMe, learnerId: string) {
   const learner = me.family.learners.find((entry) => entry.id === learnerId);
   const family =
@@ -77,15 +78,17 @@ export function learnerOrigin(me: SignedInMe, learnerId: string) {
       : null;
   return family
     ? `/family/${family}/kids/${encodeURIComponent(learnerId)}`
-    : "/account/billing";
+    : "/account";
 }
 
-/** The screens a pay overlay opens over (app/family-routes.tsx, router.tsx):
- * the family's Today, a child's page, Billing. */
+/** The screens a pay overlay opens over (app/family-routes.tsx, router.tsx,
+ * app/account-overlays.tsx): the family's Today, a child's page, the
+ * settings hubs (family Settings, `/account`), Billing. */
 const HOSTS = [
   /^\/family\/[^/]+$/,
   /^\/family\/[^/]+\/kids\/[^/]+$/,
-  /^\/account\/billing$/,
+  /^\/family\/[^/]+\/settings$/,
+  /^\/account$/,
 ];
 export const isPayHost = (pathname: string) =>
   HOSTS.some((host) => host.test(pathname.replace(/\/+$/, "")));

@@ -5,7 +5,8 @@ import { Navigate } from "../../../nav/Navigate";
 import type { CSSProperties } from "react";
 import type { StandingsBoard } from "../../../../schools/classroom-contracts";
 import { sessionOptions } from "../../../lib/query";
-import { Button, buttonClass } from "../../../ui/Button";
+import { Button } from "../../../ui/Button";
+import { Page } from "../../../ui/Page";
 import { NavigationDrawer } from "../../navigation/NavigationDrawer";
 import { StudentSignOut } from "../../practice/StudentSignOut";
 import { gradeLabel } from "../parts";
@@ -230,16 +231,10 @@ export function StandingsScreen() {
           AMP
         </RootLink>
         <span className={styles.spacer} />
+        {/* The menu (the drawer) is the way to practice: no in-page Back. */}
         <StudentSignOut inBar />
-        <Link
-          to="/$"
-          params={{ _splat: "practice" }}
-          className={buttonClass("secondary", styles.back)}
-        >
-          Back to practice
-        </Link>
       </header>
-      <main className={styles.main}>
+      <Page className={styles.main}>
         {list.length > 1 && chosen && (
           <div className={styles.picker} role="group" aria-label="Which class">
             {list.map((entry) => (
@@ -288,7 +283,7 @@ export function StandingsScreen() {
             </ol>
           </div>
         )}
-      </main>
+      </Page>
     </div>
   );
 }

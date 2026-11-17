@@ -16,17 +16,12 @@ import { FamilyFrame, familyHref, useFamilyPlace } from "./FamilyFrame";
 export { FamilyTodayScreen } from "./Today";
 export { ChildScreen } from "./Child";
 export {
-  FamilyMapScreen,
   FamilyWorkbooksScreen,
   FamilyMarkingScreen,
   FamilyGradesScreen,
-  FamilyCardsScreen,
 } from "./Records";
-export {
-  FamilyPeopleScreen,
-  FamilySettingsScreen,
-  TutoringGroupScreen,
-} from "./People";
+export { TutoringGroupScreen } from "./TutoringGroup";
+export { FamilySettingsScreen } from "./settings/Settings";
 
 /** `/family` with several families to choose between: the account holder's
  * own and one they are the second parent of. */

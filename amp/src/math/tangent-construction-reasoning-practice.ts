@@ -13,6 +13,7 @@ import {
   figureScene,
   sceneFigure,
 } from "./geometry-teaching-figures";
+import { around } from "./scene/author";
 import type { Element, Scene } from "./scene/spec";
 import { defineAxis, type Random } from "./variation/axes";
 
@@ -255,7 +256,9 @@ export function constructionScene(
         font: "math",
         halo: true,
         align: [0, -1],
-        offset: [0, 6],
+        // Under the segment, or the nearest clear place beside it (M's
+        // name sits near it on a short segment).
+        place: [[0, 6, 0, -1], [0, -6, 0, 1], ...around(10, 18)],
       },
     );
   }

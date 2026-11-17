@@ -38,10 +38,6 @@
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
-.back {
-  margin-inline-start: var(--space-2);
-  white-space: nowrap;
-}
 .spacer {
   flex: 1;
 }
@@ -49,15 +45,10 @@
   .bar {
     padding-inline: var(--space-2);
   }
-  .back {
-    padding-inline: var(--space-3);
-  }
 }
+/* The board's column is Page's: its stack keeps the board's own rhythm. */
 .main {
-  box-sizing: border-box;
-  width: min(100%, 720px);
-  margin-inline: auto;
-  padding: var(--space-5) var(--space-4) var(--space-8);
+  display: block;
 }
 .picker {
   display: flex;

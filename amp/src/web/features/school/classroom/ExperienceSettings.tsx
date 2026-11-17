@@ -1,3 +1,4 @@
+import { useSession } from "../../../lib/session";
 import { Reveal } from "../../../ui/Reveal";
 import { LockMark, SettingMeta } from "./SettingMeta";
 import { useQuery } from "@tanstack/react-query";
@@ -228,14 +229,13 @@ function SettingRow<K extends ExperienceKey>({
 /** One screen at any scope: what students see, who decided, and what this person
  * can change. A choice shows at once and saves itself. */
 export function ExperienceSettings({
-  session,
   scope,
   experience,
 }: {
-  session: AuthSession | null;
   scope: ExperienceScope;
   experience: Experience;
 }) {
+  const session = useSession();
   const write = useExperienceWrite(session, scope);
   const solo =
     useQuery({

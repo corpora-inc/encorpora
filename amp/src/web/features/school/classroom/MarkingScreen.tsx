@@ -1,3 +1,4 @@
+import { useSession } from "../../../lib/session";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   Link,
@@ -155,7 +156,7 @@ export function MarkingScreen({ host: given }: { host?: ClassHost } = {}) {
             search={search}
             classId={params.class}
             date={params.date}
-            session={session}
+
             setSearch={(change, replace = false) =>
               void navigate({
                 to: ".",
@@ -178,16 +179,15 @@ function Marks({
   search,
   classId,
   date,
-  session,
   setSearch,
 }: {
   data: MarksView;
   search: MarksSearch;
   classId: string;
   date: string;
-  session: ReturnType<typeof useStaffSession>;
   setSearch: (change: Partial<MarksSearch>, replace?: boolean) => void;
 }) {
+  const session = useSession();
   const who = useContext(Who);
   const client = useQueryClient();
   const phone = usePhone();

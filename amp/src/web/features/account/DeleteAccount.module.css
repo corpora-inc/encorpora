@@ -37,3 +37,8 @@
     justify-self: stretch;
   }
 }
+/* The panel in the Delete account overlay: its parts a section gap apart. */
+.panel {
+  display: grid;
+  gap: var(--space-5);
+}

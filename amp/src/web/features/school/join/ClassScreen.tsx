@@ -19,25 +19,6 @@ import { joinRosterOptions } from "./api";
 import { JoinFrame } from "./JoinFrame";
 import styles from "./Join.module.css";
 
-export function BackLink({
-  label,
-  ...to
-}: { label: string } & (
-  | { to: "/join"; params?: undefined }
-  | {
-      to: "/join/$code";
-      params: { code: string };
-    }
-)) {
-  return (
-    <Link {...to} className={styles.back} aria-label={label}>
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M15 5l-7 7 7 7" />
-      </svg>
-    </Link>
-  );
-}
-
 /** A code that doesn't lead anywhere: why, and the way back. */
 export function JoinProblem({ message }: { message: string }) {
   return (
@@ -106,7 +87,7 @@ export function ClassScreen() {
   // Practice isn't open: say so here, before a name and three pictures.
   if (roster.data.practice)
     return (
-      <JoinFrame lead={<BackLink to="/join" label="Back to the code" />}>
+      <JoinFrame step="name" code={shown}>
         <PracticeGate
           gate={roster.data.practice}
           className={roster.data.class.name}
@@ -114,7 +95,7 @@ export function ClassScreen() {
       </JoinFrame>
     );
   return (
-    <JoinFrame lead={<BackLink to="/join" label="Back to the code" />}>
+    <JoinFrame step="name" code={shown} width="wide">
       <div className={styles.wide}>
         <h1 className={styles.title}>Tap your name</h1>
         <p className={styles.subtitle}>{roster.data.class.name}</p>

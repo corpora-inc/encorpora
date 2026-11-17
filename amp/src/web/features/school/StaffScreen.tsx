@@ -1,9 +1,9 @@
+import { reportError } from "../../lib/report-error";
 import { SMALL_CLASS } from "../navigation/shell-frame";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams, useSearch } from "@tanstack/react-router";
 import { useState } from "react";
 import type { StaffResource } from "../../../schools/setup-contracts";
-import { AppError } from "../../lib/AppError";
 import { useLoggedError } from "../../feedback";
 import { Badge } from "../../ui/Badge";
 import { Button, buttonClass } from "../../ui/Button";
@@ -40,8 +40,6 @@ function Address({ email }: { email: string }) {
   );
 }
 
-const message = (failure: unknown, fallback: string) =>
-  failure instanceof AppError ? failure.message : fallback;
 const INVITE_ROLES = ["teacher", "aide", "admin", "viewer"] as const;
 type InviteRole = (typeof INVITE_ROLES)[number];
 const roleHelp: Record<InviteRole, string> = {
@@ -99,7 +97,12 @@ function InviteForm({ orgId }: { orgId: string }) {
       setEmail("");
       setClassIds([]);
     } catch (failure) {
-      setError(message(failure, "That invitation didn’t save. Try again."));
+      setError(
+        reportError(failure, {
+          doing: "save that invitation",
+          fallback: "That invitation didn’t save. Try again.",
+        }),
+      );
     } finally {
       setBusy(false);
     }
@@ -212,7 +215,12 @@ function StaffRow({
           : "The email didn’t send. Copy the link and send it yourself.",
       );
     } catch (failure) {
-      setError(message(failure, "That didn’t send. Try again."));
+      setError(
+        reportError(failure, {
+          doing: "resend a staff invitation",
+          fallback: "That didn’t send. Try again.",
+        }),
+      );
     } finally {
       setBusy(null);
     }
@@ -224,7 +232,12 @@ function StaffRow({
       await school.endStaff(session, orgId, person.id);
       await refreshSchool(session);
     } catch (failure) {
-      setError(message(failure, "That didn’t save. Try again."));
+      setError(
+        reportError(failure, {
+          doing: "end a staff member's access",
+          fallback: "That didn’t save. Try again.",
+        }),
+      );
       setBusy(null);
     }
   };
@@ -382,7 +395,12 @@ function ClassesSheet({
               .then(() => refreshSchool(session))
               .then(onClose)
               .catch((failure) => {
-                setError(message(failure, "That didn’t save. Try again."));
+                setError(
+                  reportError(failure, {
+                    doing: "save a staff member's classes",
+                    fallback: "That didn’t save. Try again.",
+                  }),
+                );
                 setBusy(false);
               });
           }}

@@ -1,19 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import { useLocation, useRouterState } from "@tanstack/react-router";
 import { useMemo, useRef } from "react";
-import { useLearnerStore } from "../../learner-store";
+import { useCurrentLearner } from "../../learner-store";
 import { AppError, refused, standing } from "../../lib/AppError";
 import { isConfirmed } from "../../lib/session-generation";
 import { hasAccountContext } from "../../lib/account-page";
 import { meOptions, sessionOptions } from "../../lib/query";
-import { classesOptions, orgOptions } from "../school/api";
-import { classYearOptions } from "../school/org/org-api";
-import { pilotOptions } from "../school/pilots/api";
-import { familyOptions, familyPlacesOptions } from "../family/api";
 import {
-  settingsFamilyOf,
-  usesFamilySettingsFrame,
-} from "../family/settings-family";
+  classesOptions,
+  classYearOptions,
+  orgOptions,
+  pilotOptions,
+} from "../school/core-api";
+import { familyOptions, familyPlacesOptions } from "../family/api";
 import { shellFrame } from "../navigation/shell-frame";
 import {
   resolveSpace,
@@ -127,7 +126,7 @@ export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
   const me = refused(meQuery.error) ? undefined : meQuery.data;
   const account =
     me?.signedIn && me.account.id === session?.accountId ? me : null;
-  const learnerId = useLearnerStore((state) => state.learnerId);
+  const learnerId = useCurrentLearner();
   const frame =
     match && session && !student
       ? shellFrame(
@@ -140,18 +139,12 @@ export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
   const orgId =
     frame?.kind === "class" || frame?.kind === "school" ? frame.org : "";
   const classId = frame?.kind === "class" ? frame.classId : "";
-  const accountSettings = usesFamilySettingsFrame(match?.pathname ?? "");
   const families = useQuery({
     ...familyPlacesOptions(auth),
-    enabled: (!!classId || accountSettings) && !!session && !student,
+    enabled: !!classId && !!session && !student,
     refetchOnMount: false,
   });
-  const familyId =
-    frame?.kind === "family"
-      ? frame.family
-      : accountSettings
-        ? (settingsFamilyOf(current(families))?.familyId ?? "")
-        : "";
+  const familyId = frame?.kind === "family" ? frame.family : "";
   const family = useQuery({
     ...familyOptions(auth, familyId),
     enabled: !!familyId && !!session && !student,

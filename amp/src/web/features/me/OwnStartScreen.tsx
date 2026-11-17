@@ -12,6 +12,7 @@ import { Toast } from "../../ui/Toast";
 import { OwnYearTiles } from "../onboarding/OwnYearTiles";
 import { useStartOwnPractice } from "./api";
 import styles from "../onboarding/Start.module.css";
+import { practiceParams } from "../spaces/identity";
 
 /** `/me/start`: an adult who teaches, or whose child practices, gives the
  * year they were born and goes straight into practice. The year is always
@@ -47,10 +48,10 @@ function StartCard({ session }: { session: AuthSession }) {
             event.preventDefault();
             if (year === null || young || start.isPending) return;
             start.mutate(year, {
-              onSuccess: () =>
+              onSuccess: (learner) =>
                 void navigate({
                   to: "/$",
-                  params: { _splat: "practice" },
+                  params: practiceParams(learner),
                   replace: true,
                 }),
               onError: (error) =>

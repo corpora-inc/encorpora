@@ -1,3 +1,4 @@
+import { reportError } from "../../lib/report-error";
 import { spaceWords } from "../spaces/words";
 import { EntityLink } from "../../nav/links";
 import {
@@ -31,7 +32,6 @@ import type {
   GradingKind,
   StudentResource,
 } from "../../../schools/contracts";
-import { AppError } from "../../lib/AppError";
 import { useLoggedError } from "../../feedback";
 import { Avatar } from "../../ui/Avatar";
 import { Badge } from "../../ui/Badge";
@@ -131,9 +131,10 @@ function AddClassSheet({
       });
     } catch (failure) {
       setError(
-        failure instanceof AppError
-          ? failure.message
-          : "That class didn’t save. Try again.",
+        reportError(failure, {
+          doing: "save that class",
+          fallback: "That class didn’t save. Try again.",
+        }),
       );
     } finally {
       setBusy(false);
@@ -533,9 +534,10 @@ function AddStudentSheet({
             })
             .catch((failure) => {
               setError(
-                failure instanceof AppError
-                  ? failure.message
-                  : "That student didn’t save. Try again.",
+                reportError(failure, {
+                  doing: "save that student",
+                  fallback: "That student didn’t save. Try again.",
+                }),
               );
             })
             .finally(() => setBusy(false));
@@ -645,9 +647,10 @@ export function ClassScreen() {
       )
       .catch((failure) =>
         setError(
-          failure instanceof AppError
-            ? failure.message
-            : "That change didn’t save. Try again.",
+          reportError(failure, {
+            doing: "save that change",
+            fallback: "That change didn’t save. Try again.",
+          }),
         ),
       );
   // A family, a tutor or a lone class keeps its year here; a school's classes

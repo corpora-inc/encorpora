@@ -1,7 +1,7 @@
+import { reportError } from "../../lib/report-error";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Authorization } from "./pilots/Authorization";
-import { Link, useNavigate, useSearch } from "@tanstack/react-router";
-import { Navigate } from "../../nav/Navigate";
+import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { useMemo, useRef, useState, type ReactNode } from "react";
 import {
   AGREEMENT_VERSION,
@@ -21,8 +21,9 @@ import type {
   ExperiencePreset,
   SetupState,
 } from "../../../schools/setup-contracts";
-import { AppError } from "../../lib/AppError";
 import { Button } from "../../ui/Button";
+import { FlowSteps } from "../../ui/FlowSteps";
+import { Page } from "../../ui/Page";
 import { DatePicker } from "../../ui/DatePicker";
 import { Segmented } from "../../ui/Segmented";
 import { Select } from "../../ui/Select";
@@ -30,18 +31,15 @@ import { Sheet } from "../../ui/Sheet";
 import { TextArea, TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { useLoggedError } from "../../feedback";
-import { meOptions } from "../../lib/query";
-import { PlaceSwitcher, usePlaces } from "../navigation/PlaceSwitcher";
-import {
-  currentSession,
-  orgsOptions,
-  refreshSchool,
-  school,
-  setupOptions,
-} from "./api";
+import { currentSession, refreshSchool, school, setupOptions } from "./api";
 import { GradePicker } from "./parts";
-import { classPath, orgPath, setupSteps, type SetupStep } from "./paths";
-import { Brand } from "./SchoolFrame";
+import {
+  classPath,
+  orgPath,
+  setupPath,
+  setupSteps,
+  type SetupStep,
+} from "./paths";
 import { YearRibbon } from "./YearRibbon";
 import styles from "./Setup.module.css";
 
@@ -86,13 +84,6 @@ export const COMMON_ZONES = [
   ["America/Anchorage", "Alaska"],
   ["Pacific/Honolulu", "Hawaii"],
 ] as const;
-const message = (error: unknown, fallback: string) =>
-  error instanceof AppError
-    ? error.message
-    : error instanceof Error
-      ? error.message
-      : fallback;
-
 function useErrorState() {
   const [error, setError] = useState("");
   useLoggedError(error);
@@ -109,167 +100,37 @@ const stepAsks: Record<SetupStep, string> = {
   students: "Import or type a roster",
 };
 
-/** The left of the page writes itself as the questions are answered, so it is
- * always clear what's been decided, and each line is a way back to change it. */
-function Ledger({
-  state,
-  current,
-  orgId,
-}: {
-  state: SetupState | null;
-  current: SetupStep;
-  orgId: string;
-}) {
-  const answers: Record<SetupStep, string | undefined> = {
-    school: state?.org.name,
-    calendar: state?.calendar
-      ? `${formatDay(state.calendar.startsOn, false)} to ${formatDay(state.calendar.endsOn)}${state.calendar.division ? `, ${divisionLabels[state.calendar.division].plural.toLowerCase()}` : ""}`
-      : undefined,
-    experience: experienceTitle(state?.experience ?? null),
-    agreement: state?.agreement
-      ? `Accepted by ${state.agreement.signerName}`
-      : undefined,
-    students: undefined,
-  };
-  const reachable = (step: SetupStep) =>
-    !!state &&
-    (step === current ||
-      !!answers[step] ||
-      setupSteps.indexOf(step) === setupSteps.findIndex((s) => !answers[s]));
-  return (
-    <ol className={styles.ledger}>
-      {setupSteps.map((step, index) => {
-        const done = !!answers[step] && step !== current;
-        const answer = answers[step];
-        const inner = (
-          <>
-            <span className={styles.ledgerMark} aria-hidden="true">
-              {done ? (
-                <svg viewBox="0 0 16 16">
-                  <path d="m3.5 8.5 3 3 6-7" />
-                </svg>
-              ) : (
-                index + 1
-              )}
-            </span>
-            <span className={styles.ledgerText}>
-              <span className={styles.ledgerName}>{stepNames[step]}</span>
-              <span
-                className={styles.ledgerAnswer}
-                data-answered={answer ? "" : undefined}
-                title={answer}
-              >
-                {answer ?? stepAsks[step]}
-              </span>
-            </span>
-          </>
-        );
-        return (
-          <li
-            key={step}
-            data-state={step === current ? "current" : done ? "done" : "next"}
-          >
-            {reachable(step) && step !== current ? (
-              <Link
-                to="/$"
-                params={{ _splat: "school/new" }}
-                search={{ org: orgId, step } as never}
-                className={styles.ledgerRow}
-              >
-                {inner}
-              </Link>
-            ) : (
-              <span
-                className={styles.ledgerRow}
-                aria-current={step === current ? "step" : undefined}
-              >
-                {inner}
-              </span>
-            )}
-          </li>
-        );
-      })}
-    </ol>
-  );
-}
+const SETUP_FLOW = setupSteps.map((id) => ({ id, label: stepNames[id] }));
 
+/** One step of guided setup: where it stands on the shared stepper (its done
+ * steps link to their own addresses; there is no in-page Back), the step's
+ * question, and what comes next at the same bottom edge on every step. The
+ * app's bar above it holds the menu and the place switcher. */
 function Frame({
   step,
-  state,
   orgId,
   children,
   footer,
 }: {
   step: SetupStep;
-  state: SetupState | null;
+  state?: SetupState | null;
   orgId: string;
   children: ReactNode;
   footer: ReactNode;
 }) {
-  const index = setupSteps.indexOf(step);
-  const me = useQuery(meOptions(currentSession())).data;
-  const account = me?.signedIn ? me : null;
-  // The same places, named the same way, as every other switcher: the
-  // places read, never the family's class name from `/me` alone.
-  const { groups, more } = usePlaces(account);
-  // A half-finished setup never keeps someone from their other places.
-  const switcher =
-    account && groups.flatMap((group) => group.entries).length > 1 ? (
-      <PlaceSwitcher
-        me={account}
-        current={`school:${orgId}`}
-        groups={groups}
-        more={more}
-        label={state?.org.name}
+  return (
+    <Page className={styles.page} data-dense>
+      <FlowSteps
+        steps={SETUP_FLOW}
+        current={setupSteps.indexOf(step)}
+        href={(id) => `/${setupPath(orgId, id as SetupStep)}`}
+        label="Setup"
       />
-    ) : null;
-  return (
-    <div className={styles.frame} data-dense>
-      <aside className={styles.rail}>
-        <Brand />
-        {switcher && <div className={styles.places}>{switcher}</div>}
-        <Ledger state={state} current={step} orgId={orgId} />
-      </aside>
-      <header className={styles.bar}>
-        <Brand />
-        <span className={styles.barStep}>
-          Step {index + 1} of {setupSteps.length}
-        </span>
-        <span
-          className={styles.barMeter}
-          role="progressbar"
-          aria-label="Setup"
-          aria-valuemin={0}
-          aria-valuemax={setupSteps.length}
-          aria-valuenow={index + 1}
-          aria-valuetext={`Step ${index + 1} of ${setupSteps.length}, ${stepNames[step]}`}
-        >
-          {setupSteps.map((entry, position) => (
-            <span key={entry} data-filled={position <= index || undefined} />
-          ))}
-        </span>
-        {switcher && <div className={styles.barPlaces}>{switcher}</div>}
-      </header>
-      <main className={styles.main}>
-        <div className={styles.question}>{children}</div>
-      </main>
-      <footer className={styles.footer}>
+      <div className={styles.question}>{children}</div>
+      <div className={styles.footer}>
         <div className={styles.footerInner}>{footer}</div>
-      </footer>
-    </div>
-  );
-}
-
-function BackButton({ orgId, to }: { orgId: string; to: SetupStep }) {
-  return (
-    <Link
-      to="/$"
-      params={{ _splat: "school/new" }}
-      search={{ org: orgId, step: to } as never}
-      className={styles.back}
-    >
-      Back
-    </Link>
+      </div>
+    </Page>
   );
 }
 
@@ -305,12 +166,15 @@ function SchoolStep({ state, orgId }: { state: SetupState; orgId: string }) {
       client.setQueryData(setupOptions(session, orgId).queryKey, saved);
       await refreshSchool(session);
       await navigate({
-        to: "/$",
-        params: { _splat: "school/new" },
-        search: { org: orgId, step: "calendar" } as never,
+        to: `/${setupPath(orgId, "calendar")}` as never,
       });
     } catch (failure) {
-      setError(message(failure, "That didn’t save. Try again."));
+      setError(
+        reportError(failure, {
+          doing: "save the school's setup",
+          fallback: "That didn’t save. Try again.",
+        }),
+      );
       setBusy(false);
     }
   };
@@ -429,12 +293,15 @@ function CalendarStep({ state, orgId }: { state: SetupState; orgId: string }) {
         queryKey: setupOptions(session, orgId).queryKey,
       });
       await navigate({
-        to: "/$",
-        params: { _splat: "school/new" },
-        search: { org: orgId, step: "experience" } as never,
+        to: `/${setupPath(orgId, "experience")}` as never,
       });
     } catch (failure) {
-      setError(message(failure, "That didn’t save. Try again."));
+      setError(
+        reportError(failure, {
+          doing: "save the school calendar",
+          fallback: "That didn’t save. Try again.",
+        }),
+      );
       setBusy(null);
     }
   };
@@ -445,7 +312,6 @@ function CalendarStep({ state, orgId }: { state: SetupState; orgId: string }) {
       orgId={orgId}
       footer={
         <>
-          <BackButton orgId={orgId} to="school" />
           <div className={styles.footerRight}>
             <Button
               variant="quiet"
@@ -555,12 +421,15 @@ function ExperienceStep({
       const saved = await school.setExperience(session, orgId, value);
       client.setQueryData(setupOptions(session, orgId).queryKey, saved);
       await navigate({
-        to: "/$",
-        params: { _splat: "school/new" },
-        search: { org: orgId, step: "agreement" } as never,
+        to: `/${setupPath(orgId, "agreement")}` as never,
       });
     } catch (failure) {
-      setError(message(failure, "That didn’t save. Try again."));
+      setError(
+        reportError(failure, {
+          doing: "save the student experience",
+          fallback: "That didn’t save. Try again.",
+        }),
+      );
       setBusy(false);
     }
   };
@@ -571,7 +440,6 @@ function ExperienceStep({
       orgId={orgId}
       footer={
         <>
-          <BackButton orgId={orgId} to="calendar" />
           <Button
             variant="primary"
             className={styles.next}
@@ -661,9 +529,7 @@ function AgreementStep({ state, orgId }: { state: SetupState; orgId: string }) {
   const [error, setError] = useErrorState();
   const next = () =>
     navigate({
-      to: "/$",
-      params: { _splat: "school/new" },
-      search: { org: orgId, step: "students" } as never,
+      to: `/${setupPath(orgId, "students")}` as never,
     });
   const accept = async () => {
     const missing = name.trim() ? {} : { name: "Enter your name." };
@@ -679,7 +545,12 @@ function AgreementStep({ state, orgId }: { state: SetupState; orgId: string }) {
       client.setQueryData(setupOptions(session, orgId).queryKey, saved);
       await next();
     } catch (failure) {
-      setError(message(failure, "That didn’t save. Try again."));
+      setError(
+        reportError(failure, {
+          doing: "accept the student data agreement",
+          fallback: "That didn’t save. Try again.",
+        }),
+      );
       setBusy(false);
     }
   };
@@ -690,7 +561,6 @@ function AgreementStep({ state, orgId }: { state: SetupState; orgId: string }) {
       orgId={orgId}
       footer={
         <>
-          <BackButton orgId={orgId} to="experience" />
           {accepted ? (
             <Button
               variant="primary"
@@ -808,12 +678,23 @@ function StudentsStep({
         replace: true,
       });
     } catch (failure) {
-      setError(message(failure, "That didn’t save. Try again."));
+      setError(
+        reportError(failure, {
+          doing: "finish school setup",
+          fallback: "That didn’t save. Try again.",
+        }),
+      );
       setBusy(null);
     }
   };
   const classHome = (classId: string | null) =>
     classId ? classPath(orgId, classId) : orgPath(orgId, "classes");
+  const finishForImport = () =>
+    void finish(
+      "import",
+      solo ? { className: className.trim() || "Math class" } : {},
+      () => orgPath(orgId, "import"),
+    );
   if (method === "names") {
     const submit = () => {
       if (!className.trim()) {
@@ -837,7 +718,16 @@ function StudentsStep({
         orgId={orgId}
         footer={
           <>
-            <BackButton orgId={orgId} to="students" />
+            {/* The other way to bring students: an alternative, never a
+                way Back (the stepper and the browser go back). */}
+            <Button
+              variant="quiet"
+              aria-busy={busy === "import"}
+              disabled={!!busy}
+              onClick={finishForImport}
+            >
+              Import a roster instead
+            </Button>
             <Button
               variant="primary"
               className={styles.next}
@@ -884,12 +774,6 @@ function StudentsStep({
       </Frame>
     );
   }
-  const finishForImport = () =>
-    void finish(
-      "import",
-      solo ? { className: className.trim() || "Math class" } : {},
-      () => orgPath(orgId, "import"),
-    );
   const skip = () =>
     void finish(
       "skip",
@@ -897,12 +781,7 @@ function StudentsStep({
       classHome,
     );
   return (
-    <Frame
-      step="students"
-      state={state}
-      orgId={orgId}
-      footer={<BackButton orgId={orgId} to="agreement" />}
-    >
+    <Frame step="students" state={state} orgId={orgId} footer={null}>
       <h1>Add your students</h1>
       <p className={styles.lede}>{seatsLine(state.license)}</p>
       <ul className={styles.routes}>
@@ -923,9 +802,7 @@ function StudentsStep({
         </li>
         <li>
           <Link
-            to="/$"
-            params={{ _splat: "school/new" }}
-            search={{ org: orgId, step: "students", by: "names" } as never}
+            to={`/${setupPath(orgId, "students", "names")}` as never}
             className={styles.route}
           >
             <span className={styles.routeTitle}>Type their names</span>
@@ -957,26 +834,21 @@ function StudentsStep({
 }
 
 /** Guided setup: one question a screen, each its own URL. Every answer is saved
- * as it's given, so Back, reload and coming back tomorrow all land here. */
+ * as it's given, so the browser's Back, a reload and coming back tomorrow all
+ * land here. */
 export function SetupScreen() {
-  const search = useSearch({ strict: false }) as {
-    org?: unknown;
-    step?: unknown;
-    by?: unknown;
+  const params = useParams({ strict: false }) as {
+    org: string;
+    step?: string;
+    method?: string;
   };
   const session = currentSession();
-  const orgs = useQuery(orgsOptions(session)).data ?? [];
-  const known = orgs.find((org) => org.id === search.org);
-  const orgId = known?.id ?? null;
-  const setup = useQuery({
-    ...setupOptions(session, orgId ?? "none"),
-    enabled: !!orgId,
-  });
-  const state = orgId ? (setup.data ?? null) : null;
+  // The route already checked the org and the step (app/school-guards.ts).
+  const orgId = params.org;
+  const setup = useQuery(setupOptions(session, orgId));
+  const state = setup.data ?? null;
   const step: SetupStep =
-    setupSteps.find((entry) => entry === search.step) ?? "school";
-  // Only a school we issued has setup; the route sends anyone else on.
-  if (!orgId) return <Navigate to="/schools" replace />;
+    setupSteps.find((entry) => entry === params.step) ?? "school";
   if (!state)
     return (
       <Frame
@@ -1023,7 +895,7 @@ export function SetupScreen() {
           key={orgId}
           state={state}
           orgId={orgId}
-          method={search.by === "names" ? "names" : null}
+          method={params.method === "names" ? "names" : null}
         />
       );
   }

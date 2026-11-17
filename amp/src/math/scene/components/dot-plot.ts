@@ -148,7 +148,7 @@ const BAND = 56,
 
 registerComponent("dotPlot", {
   maxScale: (p) => 40 * (p.denominator ?? 1),
-  compile(p, { s }) {
+  compile(p, { s, height: room }) {
     const d = p.denominator ?? 1,
       kind = p.mark ?? "dot";
     const text = (v: number) => dotTickLabel(v, d, p);
@@ -172,10 +172,21 @@ registerComponent("dotPlot", {
         ? REF
         : 0);
     const below = (g: number) => (g === 0 && p.bricks ? BRICKS : 0);
+    // Stacks close up (to a hair between dots) when the full spacing would
+    // overflow the figure's height: a short choice card.
+    const fixedPx = p.groups.reduce(
+      (sum, _, g) => sum + NAME + band(g) + FIRST + LABELS + below(g) + 12,
+      0,
+    );
+    const allLevels = p.groups.reduce((sum, _, g) => sum + levels(g), 0);
+    const stack =
+      room === undefined
+        ? STACK
+        : Math.min(STACK, Math.max(2 * MARK + 1, (room - fixedPx) / allLevels));
     const height = (g: number) =>
-      (NAME + band(g) + FIRST + levels(g) * STACK + LABELS + below(g)) / s;
+      (NAME + band(g) + FIRST + levels(g) * stack + LABELS + below(g)) / s;
     const markAt = (v: number, axisY: number, level: number, id: string) => {
-      const y = axisY + (FIRST + level * STACK) / s;
+      const y = axisY + (FIRST + level * stack) / s;
       const data = { mark: kind, value: v, level };
       if (kind === "dot")
         return [
@@ -239,7 +250,7 @@ registerComponent("dotPlot", {
           const level = seen.get(v) ?? 0;
           seen.set(v, level + 1);
           if (v === ref.at) continue;
-          const y = axisY + (FIRST + level * STACK) / s;
+          const y = axisY + (FIRST + level * stack) / s;
           prims.push({
             type: "segment",
             id: `ref.${r}.distance.${i}`,
@@ -260,7 +271,7 @@ registerComponent("dotPlot", {
       top -= height(g) + 12 / s;
     }
     const stackTop = (g: number) =>
-      axes[g]! + (FIRST + (levels(g) - 0.5) * STACK) / s;
+      axes[g]! + (FIRST + (levels(g) - 0.5) * stack) / s;
     for (const [r, ref] of (p.references ?? []).entries()) {
       const g = ref.group ?? 0;
       prims.push({

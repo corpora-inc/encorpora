@@ -36,10 +36,16 @@ export interface PointPlotResponse {
    * on a graphed function; nothing is drawn and the function stays private.
    * Display only. */
   connect: "none" | "line" | "polygon" | "curve";
-  /** A pre-image or reference shape drawn on the grid (never an answer). */
+  /** A pre-image or reference shape drawn on the grid (never an answer).
+   * The vertices are labeled points. Edges are drawn only when asked for:
+   * `closed` draws the polygon, `edges` the open path in order (a given
+   * segment). A set of given corners of a shape to complete has neither,
+   * since a path through them in listed order can cross the shape (A→C is
+   * a rectangle's diagonal, not a side). */
   given?: {
     vertices: { x: number; y: number; label: string }[];
     closed: boolean;
+    edges?: boolean;
   };
 }
 /** An exact rational n/d with d > 0 in lowest terms. */
@@ -117,6 +123,7 @@ export const pointPlotResponseSchema = z
           .min(1)
           .max(6),
         closed: z.boolean(),
+        edges: z.boolean().optional(),
       })
       .strict()
       .optional(),
@@ -452,10 +459,11 @@ export function pointPlotScene(
   const given = response.given;
   if (given) {
     const v = given.vertices;
-    for (let i = 0; i + 1 < v.length; i++)
-      plot = plot.segment([v[i]!.x, v[i]!.y], [v[i + 1]!.x, v[i + 1]!.y], {
-        color: "ink",
-      });
+    if (given.closed || given.edges)
+      for (let i = 0; i + 1 < v.length; i++)
+        plot = plot.segment([v[i]!.x, v[i]!.y], [v[i + 1]!.x, v[i + 1]!.y], {
+          color: "ink",
+        });
     if (given.closed && v.length > 2)
       plot = plot.segment([v.at(-1)!.x, v.at(-1)!.y], [v[0]!.x, v[0]!.y], {
         color: "ink",

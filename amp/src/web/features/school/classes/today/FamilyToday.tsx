@@ -1,3 +1,4 @@
+import { useSession } from "../../../../lib/session";
 import { spaceWords } from "../../../spaces/words";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
@@ -7,7 +8,6 @@ import type {
   TodayStudentResource,
   TodayTodo,
 } from "../../../../../schools/teacher-contracts";
-import type { AuthSession } from "../../../../auth";
 import { Button, buttonClass } from "../../../../ui/Button";
 import { EmptyState } from "../../../../ui/EmptyState";
 import { Sheet } from "../../../../ui/Sheet";
@@ -48,7 +48,6 @@ export function FamilyToday({
   data,
   place,
   code,
-  session,
   me,
   secondParent,
 }: {
@@ -56,11 +55,11 @@ export function FamilyToday({
   place: { org: string; class: string };
   /** The class code, for the one Join element. */
   code: string | null;
-  session: AuthSession;
   me: SignedInMe | undefined;
   /** The family's second parent; undefined unless this is its holder. */
   secondParent: unknown;
 }) {
+  const session = useSession();
   const here = useRouterState({
     select: (state) => state.location.pathname + state.location.searchStr,
   });

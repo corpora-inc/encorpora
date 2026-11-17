@@ -729,7 +729,9 @@ async function journeys(browser: Browser, engine: string) {
     check(`${engine} top ten`, rows === 10, rows);
     await reader.page.reload();
     await heading(reader.page, "Growth this term").waitFor();
-    await reader.page.getByRole("link", { name: "Back to practice" }).click();
+    // No in-page Back: the menu is the way to practice.
+    await reader.page.getByRole("button", { name: "Open AMP menu" }).click();
+    await reader.page.getByRole("link", { name: "Practice" }).click();
     await reader.page.waitForURL("**/practice");
     check(
       `${engine} a student sends no analytics`,

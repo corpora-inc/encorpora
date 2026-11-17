@@ -1,6 +1,9 @@
 import { Outlet } from "@tanstack/react-router";
-import { BillingPage } from "../account/BillingPage";
-import { ChildScreen, FamilyTodayScreen } from "../family/screens";
+import {
+  ChildScreen,
+  FamilySettingsScreen,
+  FamilyTodayScreen,
+} from "../family/screens";
 
 /*
  * The screens a pay overlay opens over (address.ts): each stays mounted,
@@ -25,10 +28,13 @@ export function TodayPayHost() {
     </>
   );
 }
-export function BillingPayHost() {
+/** A family's Settings, and the account overlay open over it
+ * (app/account-overlays.tsx): billing, privacy, sign-in, deleting the
+ * account, Pay. */
+export function SettingsHost() {
   return (
     <>
-      <BillingPage />
+      <FamilySettingsScreen />
       <Outlet />
     </>
   );

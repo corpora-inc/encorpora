@@ -6,8 +6,6 @@ import { forgetEveryLink } from "../features/links/forget";
  * A synchronous check on purpose: analytics and engagement consult it before
  * they start. This module imports nothing that could start them. */
 const studentKey = "amp.student";
-/** `useLearnerStore`'s persisted choice, which must not outlive the student. */
-const learnerKey = "amp.learner";
 /** When a shared device was last used, so a reload doesn't restart the clock. */
 const activeKey = "amp.student.active";
 /** A parent handed this device to their child ("Let Maya practice here"), so
@@ -100,7 +98,7 @@ export function clearStudentDevice() {
       () => sessionStorage,
       [studentKey, activeKey, handedKey, returnKey, returnNameKey],
     ],
-    [() => localStorage, [studentKey, learnerKey]],
+    [() => localStorage, [studentKey]],
   ] as const)
     try {
       for (const key of keys) store().removeItem(key);

@@ -1,3 +1,4 @@
+import { reportError } from "../../lib/report-error";
 import { closeSearch } from "../../lib/return-to";
 import { OrgFrame } from "./OrgFrame";
 import { useQuery } from "@tanstack/react-query";
@@ -18,7 +19,6 @@ import {
 } from "../../../schools/calendar";
 import type { SessionResource } from "../../../schools/setup-contracts";
 import type { GradingKind } from "../../../schools/contracts";
-import { AppError } from "../../lib/AppError";
 import { useLoggedError } from "../../feedback";
 import { Button, buttonClass } from "../../ui/Button";
 import { DatePicker } from "../../ui/DatePicker";
@@ -38,18 +38,11 @@ import {
 import { FormNote, PageHead } from "./parts";
 import { orgPath } from "./paths";
 import { YearRibbon } from "./YearRibbon";
+import { gradingChoices, gradingWords } from "../school-year/model";
 import styles from "./School.module.css";
 
 /** The term choice of a small class: None is the whole year, no terms. */
-const TERM_CHOICES: ("year" | DivisionKind)[] = [
-  "year",
-  "semester",
-  "trimester",
-  "quarter",
-];
-
-const message = (failure: unknown, fallback: string) =>
-  failure instanceof AppError ? failure.message : fallback;
+const TERM_CHOICES = gradingChoices;
 
 /** Changing one session's dates (the year, a term): a sheet of two days. */
 export function EditSheet({
@@ -100,7 +93,10 @@ export function EditSheet({
               .then(onClose)
               .catch((failure) => {
                 setError(
-                  message(failure, "Those dates didn’t save. Try again."),
+                  reportError(failure, {
+                    doing: "save those dates",
+                    fallback: "Those dates didn’t save. Try again.",
+                  }),
                 );
                 setBusy(false);
               });
@@ -184,7 +180,12 @@ export function YearCalendar({
       .addDivision(session, orgId, kind)
       .then(() => refreshSchool(session))
       .catch((failure) =>
-        setError(message(failure, "Those terms didn’t save. Try again.")),
+        setError(
+          reportError(failure, {
+            doing: "save those terms",
+            fallback: "Those terms didn’t save. Try again.",
+          }),
+        ),
       )
       .finally(() => setBusy(false));
   };
@@ -528,10 +529,5 @@ function SchoolGradingPicker({ orgId }: { orgId: string }) {
   );
 }
 
-/** A grading choice in words: Full year, Semesters, Trimesters, Quarters. */
-export const gradingWords = (kind: GradingKind) =>
-  kind === "year"
-    ? "Full year"
-    : kind === "custom"
-      ? "Custom"
-      : divisionLabels[kind].plural;
+/** A grading choice in words (school-year/model.ts). */
+export { gradingWords };

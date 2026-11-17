@@ -221,10 +221,10 @@ const linkParts = (setupUrl: string) => {
   const [token, proof] = setupUrl.split("#")[1]!.split(".");
   return { token, proof };
 };
-/** Where each step of the list on the left sits. An answer arriving under a
- * step must move nothing. */
+/** Where each step of the shared stepper sits. An answer saved under a step
+ * must move nothing. */
 const ledgerRows = (page: Page) =>
-  page.locator("aside ol > li").evaluateAll((rows) =>
+  page.locator('nav[aria-label="Setup"] ol > li').evaluateAll((rows) =>
     rows.map((row) => {
       const box = row.getBoundingClientRect();
       return [Math.round(box.top), Math.round(box.height)];
@@ -314,8 +314,7 @@ async function journey(
   await heading(page, "When does your school year run?");
   check(
     `${label} setup opens at the calendar`,
-    page.url().includes(`org=${issued.orgId}`) &&
-      page.url().includes("step=calendar"),
+    page.url().endsWith(`/school/${issued.orgId}/setup/calendar`),
     page.url(),
   );
   const confirmed = confirmations.filter((to) => to === email).length;
@@ -327,22 +326,24 @@ async function journey(
   const wide = width >= 1024;
   const rows = wide ? await ledgerRows(page) : [];
   if (wide) {
-    const ledger = await page.locator("aside ol > li").allInnerTexts();
+    const ledger = await page
+      .locator('nav[aria-label="Setup"] ol > li')
+      .allInnerTexts();
     check(
-      `${label} the school step shows its answer`,
-      /School\s+Alder Street School/.test(ledger[0] ?? ""),
-      ledger,
-    );
-    check(
-      `${label} every step has its line before it's answered`,
-      /When the year runs/.test(ledger[1] ?? "") &&
-        /What students see/.test(ledger[2] ?? "") &&
-        /Read and accept/.test(ledger[3] ?? ""),
+      `${label} the stepper names every step`,
+      /School/.test(ledger[0] ?? "") &&
+        /Calendar/.test(ledger[1] ?? "") &&
+        /Student experience/.test(ledger[2] ?? "") &&
+        /Data agreement/.test(ledger[3] ?? ""),
       ledger,
     );
   }
   // The school step stays editable: its name, who it's for, the time zone.
-  await page.getByRole("link", { name: "Back" }).click();
+  // No in-page Back: the stepper's done step is the way back.
+  await page
+    .getByRole("navigation", { name: "Setup" })
+    .getByRole("link", { name: /School/ })
+    .click();
   await heading(page, "Where will you use AMP?");
   check(
     `${label} the name is filled in`,
@@ -365,7 +366,7 @@ async function journey(
   await page.getByRole("radio", { name: /A school/ }).click();
   await next.click();
   await heading(page, "When does your school year run?");
-  check(`${label} step in the URL`, page.url().includes("step=calendar"));
+  check(`${label} step in the URL`, page.url().endsWith("/setup/calendar"));
   if (wide)
     check(
       `${label} the step list holds still`,
@@ -408,12 +409,12 @@ async function journey(
   await page.goForward();
   await heading(page, "When does your school year run?");
   // A step further on than the answers go waits for them.
-  const orgId = new URL(page.url()).searchParams.get("org")!;
-  await page.goto(`${origin}/school/new?org=${orgId}&step=students`);
+  const orgId = new URL(page.url()).pathname.split("/")[2]!;
+  await page.goto(`${origin}/school/${orgId}/setup/students`);
   await heading(page, "When does your school year run?");
   check(
     `${label} a later step waits`,
-    page.url().includes("step=calendar"),
+    page.url().endsWith("/setup/calendar"),
     page.url(),
   );
   await page.getByRole("radio", { name: "Trimesters" }).click();
@@ -424,12 +425,6 @@ async function journey(
       `${label} the calendar's answer arrives in place`,
       JSON.stringify(await ledgerRows(page)) === JSON.stringify(rows),
       { rows, now: await ledgerRows(page) },
-    );
-    check(
-      `${label} the calendar's answer`,
-      /trimesters/.test(
-        (await page.locator("aside ol > li").nth(1).innerText()) ?? "",
-      ),
     );
   }
   await page.getByRole("radio", { name: /Levels visible/ }).click();
@@ -492,7 +487,7 @@ async function journey(
     buffer: Buffer.from(rosterCsv()),
   });
   await heading(page, "Check the columns");
-  check(`${label} step in the URL`, page.url().includes("step=map"));
+  check(`${label} step in the URL`, page.url().endsWith("/import/columns"));
   await shot(page, "import-2-columns", width, theme);
   await page.getByRole("button", { name: "What Period holds" }).click();
   const fields = page.getByRole("dialog");
@@ -539,7 +534,7 @@ async function journey(
   await page.unroute("**/roster/apply");
   await page.getByRole("button", { name: "Try again" }).click();
   await heading(page, /24 students added, 1 teacher invited/);
-  check(`${label} step in the URL`, page.url().includes("step=done"));
+  check(`${label} step in the URL`, page.url().endsWith("/import/done"));
   await shot(page, "import-5-done", width, theme);
   const teacherMail = mail.find((entry) => entry.to === "okafor@alder.example");
   check(
@@ -696,7 +691,11 @@ async function loneTeacher(
   await page.getByRole("button", { name: "Start setup" }).click();
   await heading(page, "When does your school year run?");
   // One teacher and one class: said on the school step.
-  await page.getByRole("link", { name: "Back" }).click();
+  // No in-page Back: the stepper's done step is the way back.
+  await page
+    .getByRole("navigation", { name: "Setup" })
+    .getByRole("link", { name: /School/ })
+    .click();
   await heading(page, "Where will you use AMP?");
   await page.getByRole("radio", { name: /One class/ }).click();
   await page.getByRole("button", { name: "Continue" }).click();
@@ -968,7 +967,7 @@ async function sweep(
     return { classId: json.classes[0].id, studentId: students.students[0].id };
   })();
   const setupPath = (step: string, extra = "") =>
-    `/school/new?org=${pendingOrg}&step=${step}${extra}`;
+    `/school/${pendingOrg}/setup${step === "school" ? "" : `/${step}`}${extra}`;
   const setupScreens = [
     ["school", "Where will you use AMP?"],
     ["calendar", "When does your school year run?"],
@@ -1012,7 +1011,7 @@ async function sweep(
         await measure(setupPage, `${label} setup ${step}`, width);
         await resetRecord(setupPage);
       }
-      await setupPage.goto(`${origin}${setupPath("students", "&by=names")}`);
+      await setupPage.goto(`${origin}${setupPath("students", "/names")}`);
       await heading(setupPage, "Who’s in your class?");
       // Names, then the class's grade tiles: the page runs under its pinned
       // Back / Add class bar mid-scroll, as it should; nothing overlaps at

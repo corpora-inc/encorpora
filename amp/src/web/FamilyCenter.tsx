@@ -1,20 +1,17 @@
+// Unreachable in the app since IA v2 (the account is /account and its
+// overlays); kept only for the legacy deep-check harnesses
+// (scripts/family-fixture.tsx), which are to move to the overlays.
 import { useSettingsFamily } from "./features/family/account-settings";
 import { pastCoppaAge } from "../privacy/coppa-age";
-import { LegalDocuments } from "./features/account/LegalDocuments";
 import { Page } from "./ui/Page";
 import { PageHeader } from "./ui/PageHeader";
-import { requestFetch, requestWith } from "./lib/request-transport";
+import { requestFetch } from "./lib/request-transport";
 import { namedByTab as titleNamedByTab } from "./features/navigation/shell-frame";
 import screenTitle from "./ui/ScreenTitle.module.css";
 import { SatMathFocus } from "./features/practice/SatMathFocus";
 import { workbooksEnabled } from "./features/workbooks/config";
 import { canReadWorkbooks } from "./features/workbooks/model";
-import { PurchaseMeasurement } from "./features/privacy/PurchaseMeasurement";
-import {
-  canWithdraw,
-  ConsentSummary,
-  DeletionTerms,
-} from "./features/privacy/LearningData";
+import { DeletionTerms } from "./features/privacy/LearningData";
 import { Toast } from "./ui/Toast";
 import { useLoggedError, requestMessage } from "./feedback";
 import { useAppRoute, type FamilySection } from "./app-routes";
@@ -48,7 +45,7 @@ import {
   childNameProblem,
   PARENT_ENTRY_LINE,
 } from "../learning/nickname";
-import { useLearnerStore } from "./learner-store";
+import { selectLearner } from "./learner-store";
 import { invalidateAccount, refreshMe } from "./lib/query";
 import { rememberPlace } from "./features/onboarding/place-memory";
 import { deviceTimeZone } from "./features/onboarding/starter-api";
@@ -68,16 +65,13 @@ interface Props {
   /** First-run setup (plan, payment, learner); defaults to consent review. */
   onContinueSetup?: () => void;
   returnToConsent?: boolean;
-  selectedLearnerId?: string;
-  onSelectLearner?: (id: string) => void;
   returnFocus?: "annual" | "funded";
   onAnnualPurchase?: () => void;
   onFundedPurchase?: () => void;
   /** Opens "choose how to pay" for the selected learner. */
   onChoosePayment?: () => void;
 }
-type Confirmation =
-  { kind: "withdraw" } | { kind: "delete"; learner?: FamilyLearner };
+type Confirmation = { kind: "delete"; learner?: FamilyLearner };
 const messages: Record<string, string> = {
   sign_in_required: "Sign in again to manage your family.",
   learner_not_found:
@@ -102,8 +96,6 @@ export function FamilyCenter({
   onConsentEnrollment,
   onContinueSetup,
   returnToConsent = false,
-  selectedLearnerId,
-  onSelectLearner,
   returnFocus,
   onAnnualPurchase,
   onFundedPurchase,
@@ -127,7 +119,6 @@ export function FamilyCenter({
   const paymentTrigger = useRef<HTMLButtonElement>(null);
   const paymentWasOpen = useRef(false);
   const section = initialSection;
-  const [localLearnerId, setLocalLearnerId] = useState("");
   const [historyFor, setHistoryFor] = useState<FamilyLearner | null>(null);
   /** The child whose settings are open in Learners. */
   const [openLearner, setOpenLearner] = useState<string | null>(null);
@@ -142,17 +133,6 @@ export function FamilyCenter({
   const purchaseChooser = route.parts[2] === "purchases";
   const setPurchaseChooser = (open: boolean) => {
     if (open) route.navigate("/account/billing/purchases");
-  };
-  const privacy =
-    section === "privacy" &&
-    ["export", "consent", "delete", "retention", "measurement"].includes(
-      route.parts[2],
-    )
-      ? (route.parts[2] as
-          "export" | "consent" | "delete" | "retention" | "measurement")
-      : null;
-  const setPrivacy = (value: typeof privacy) => {
-    if (value) route.navigate(`/account/privacy/${value}`);
   };
   // Family is about the family's learners; the adult's own learner is its
   // own place.
@@ -184,20 +164,17 @@ export function FamilyCenter({
     [nameError, setNameError] = useState(""),
     [newNameError, setNewNameError] = useState("");
   const body = useRef<HTMLElement>(null);
-  const previousPrivacy = useRef(privacy),
-    previousRename = useRef(rename);
+  const previousRename = useRef(rename);
   const heading = useRef<HTMLHeadingElement>(null),
     dialog = useRef<HTMLDialogElement>(null),
     dialogHeading = useRef<HTMLHeadingElement>(null),
     trigger = useRef<HTMLElement | null>(null);
   const mounted = useRef(false),
     generation = useRef(0);
-  const downloadFrame = useRef<HTMLIFrameElement | null>(null);
   useLayoutEffect(() => {
     mounted.current = true;
     generation.current++;
 
-    setLocalLearnerId("");
     setHistoryFor(null);
 
     setError("");
@@ -208,8 +185,6 @@ export function FamilyCenter({
     return () => {
       mounted.current = false;
       generation.current++;
-      downloadFrame.current?.remove();
-      downloadFrame.current = null;
     };
   }, [identity]);
   useLayoutEffect(() => {
@@ -244,26 +219,17 @@ export function FamilyCenter({
       paymentTrigger.current?.focus({ preventScroll: true });
     paymentWasOpen.current = paymentHistoryOpen;
   }, [paymentHistoryOpen]);
-  const profileId = selectedLearnerId ?? localLearnerId;
-  const selectedLearner =
-    family?.learners.find((entry) => entry.id === profileId) ??
-    family?.learners.find((entry) => !entry.deletedAt) ??
-    family?.learners[0];
-  function selectLearner(id: string) {
-    setLocalLearnerId(id);
-    onSelectLearner?.(id);
+  function chooseLearner(id: string) {
+    // Choosing a live learner makes them the current learner everywhere;
+    // a billing reference (a deleted learner) does not.
+    if (family?.learners.some((entry) => entry.id === id && !entry.deletedAt))
+      selectLearner(id, identity);
     setRename(null);
     setHistoryFor(null);
     setError("");
     setNotice("");
     if (body.current) body.current.scrollTop = 0;
   }
-  useLayoutEffect(() => {
-    if (selectedLearner && selectedLearner.id !== profileId) {
-      setLocalLearnerId(selectedLearner.id);
-      onSelectLearner?.(selectedLearner.id);
-    }
-  }, [selectedLearner?.id, profileId, onSelectLearner]);
   const current = (epoch: number) =>
     mounted.current && generation.current === epoch;
   const tokenRef = useRef(token);
@@ -321,18 +287,6 @@ export function FamilyCenter({
     };
   }, [confirmation]);
   useLayoutEffect(() => {
-    if (previousPrivacy.current === privacy) return;
-    const previous = previousPrivacy.current;
-    previousPrivacy.current = privacy;
-    if (body.current) body.current.scrollTop = 0;
-    const target = privacy
-      ? heading.current
-      : body.current?.querySelector<HTMLElement>(
-          `[data-privacy-choice="${previous}"]`,
-        );
-    target?.focus({ preventScroll: true });
-  }, [privacy]);
-  useLayoutEffect(() => {
     if (rename) {
       previousRename.current = rename;
       return;
@@ -372,15 +326,7 @@ export function FamilyCenter({
     const selected = confirmation;
     if (!selected) return;
     await action(async () => {
-      if (selected.kind === "withdraw") {
-        await api("/family/consent/withdraw", {});
-        setConfirmation(null);
-
-        onLearningInvalidated();
-        setNotice(
-          "Consent withdrawn. New learning activity is paused for children under 13. You can still export or delete learning data and manage billing. Renewal has not been canceled.",
-        );
-      } else {
+      {
         const receipt = await api<DeletionReceipt>(
           selected.learner
             ? `/family/learners/${encodeURIComponent(selected.learner.id)}/delete-learning-data`
@@ -389,8 +335,6 @@ export function FamilyCenter({
         );
         setConfirmation(null);
 
-        setLocalLearnerId("");
-        onSelectLearner?.("");
         onLearningInvalidated();
         setNotice(
           `${receipt.deletedLearners} learner ${receipt.deletedLearners === 1 ? "history was" : "histories were"} removed from the live application. ${receipt.retainedBillingReferences ? "Linked financial records remain, including any student name required on an invoice. " : ""}${receipt.consentWithdrawn ? "Consent is withdrawn. " : ""}${receipt.billingManagementRequired ? "A billing link remains: check and cancel renewal in billing if needed." : "Check your purchase provider for any renewal commitments."}`,
@@ -405,62 +349,6 @@ export function FamilyCenter({
             "Your change was saved, but refreshed family details could not be loaded. Try refreshing; do not repeat the deletion.",
           );
       }
-    });
-  }
-  async function exportData() {
-    await action(async () => {
-      const epoch = generation.current;
-      const { ticket } = await api<{ ticket: string }>(
-        "/family/export-ticket",
-        {},
-      );
-      if (!current(epoch)) return;
-      if (!/^[A-Za-z0-9_-]{43}$/.test(ticket))
-        throw new Error("The download could not be prepared. Try again.");
-      downloadFrame.current?.remove();
-      const frame = document.createElement("iframe");
-      frame.name = `family-download-${crypto.randomUUID()}`;
-      frame.title = "Family data download";
-      frame.hidden = true;
-      downloadFrame.current = frame;
-      frame.onload = () => {
-        if (!current(epoch) || downloadFrame.current !== frame) return;
-        // An attachment leaves the frame blank. A failed request returns an
-        // error document here instead of replacing the learning application.
-        if (frame.contentDocument?.body.textContent?.trim()) {
-          setNotice("");
-          setError(
-            "The download could not be completed. Request a fresh download and try again.",
-          );
-        }
-      };
-      const form = document.createElement("form"),
-        field = document.createElement("input");
-      form.hidden = true;
-      form.method = "POST";
-      form.action = "/api/v1/family/export";
-      form.target = frame.name;
-      field.type = "hidden";
-      field.name = "ticket";
-      field.value = ticket;
-      form.append(field);
-      // The ticket request and the browser's streaming POST are separate
-      // sends; renewal can begin between them. Gate the actual submission.
-      await requestWith(
-        async () => {
-          document.body.append(frame, form);
-          try {
-            form.submit();
-          } finally {
-            form.remove();
-            setTimeout(() => frame.remove(), 120_000);
-          }
-        },
-        { token: tokenRef.current, method: form.method },
-      );
-      setNotice(
-        "Download requested. Check your browser’s downloads and keep the file private. If it is interrupted, request a fresh download.",
-      );
     });
   }
   async function billing() {
@@ -493,21 +381,11 @@ export function FamilyCenter({
   const hasChildren = !!family?.learners.some((entry) => !entry.deletedAt);
   const title = purchaseChooser
     ? "Purchases and records"
-    : privacy
-      ? {
-          export: "Download your data",
-          consent: "Learning permissions",
-          delete: "Delete learning data",
-          retention: "Data retention",
-          measurement: "Advertising preferences",
-        }[privacy]
-      : section === "security"
-        ? "Profile"
-        : section === "learners"
-          ? "Learners"
-          : section === "access"
-            ? "Billing"
-            : "Privacy";
+    : section === "security"
+      ? "Profile"
+      : section === "learners"
+        ? "Learners"
+        : "Billing";
   const namedByTab = !settingsFamily && titleNamedByTab(pathname, title);
   const addChild = () =>
     consentActive ? setAdding(true) : route.navigate("/start/parent");
@@ -659,41 +537,6 @@ export function FamilyCenter({
       </>
     );
   };
-  const privacyChoices = family
-    ? ([
-        [
-          "export",
-          "Download your data",
-          hasChildren
-            ? "A personal copy of your family’s data"
-            : "A personal copy of your data",
-        ],
-        ...(secondOnly ||
-        !(hasChildren || family.consent.status === "withdrawn")
-          ? []
-          : ([
-              [
-                "consent",
-                "Learning permissions",
-                "Manage permission to save your child’s learning activity",
-              ],
-            ] as const)),
-        ["delete", "Delete learning data", "See what is removed first"],
-        ["retention", "Data retention", "Billing, sign-in and backups"],
-        ...((family.purchaseMeasurement?.available ||
-          family.metaPurchaseMeasurement?.available ||
-          family.openaiPurchaseMeasurement?.available) &&
-        !nativeRuntime
-          ? ([
-              [
-                "measurement",
-                "Advertising preferences",
-                "Whether Google, Meta or OpenAI receives purchase details",
-              ],
-            ] as const)
-          : []),
-      ] as const)
-    : [];
   return (
     <Page
       ref={body}
@@ -869,10 +712,7 @@ export function FamilyCenter({
                 own={ownLearner}
                 ownDetail={
                   ownLearner && !nativeRuntime ? (
-                    <OwnStartSetting
-                      session={session}
-                      start={ownLearner.start}
-                    />
+                    <OwnStartSetting start={ownLearner.start} />
                   ) : undefined
                 }
                 children={family.learners}
@@ -881,7 +721,7 @@ export function FamilyCenter({
                   setOpenLearner(id || null);
                   // The adult's own practice opens its settings here; it
                   // isn't chosen as the family's learner.
-                  if (id && id !== ownLearner?.id) selectLearner(id);
+                  if (id && id !== ownLearner?.id) chooseLearner(id);
                 }}
                 detail={learnerDetail}
               />
@@ -987,7 +827,7 @@ export function FamilyCenter({
                               // Sets where their own practice starts.
                               birthYear: Number(newBirthYear),
                             });
-                            useLearnerStore.getState().select(learnerId);
+                            selectLearner(learnerId, identity);
                             rememberPlace(identity, "me");
                             await refreshMe({ accountId: identity, token });
                             setAskSelf(null);
@@ -1034,7 +874,7 @@ export function FamilyCenter({
                 recordsRef={paymentTrigger}
                 onContinue={(learner) => {
                   if (nativeRuntime && onChoosePayment) {
-                    selectLearner(learner.id);
+                    chooseLearner(learner.id);
                     onChoosePayment();
                   } else route.navigate(`/pay/${learner.id}`);
                 }}
@@ -1045,152 +885,6 @@ export function FamilyCenter({
                 }}
                 onRecords={() => setPurchaseChooser(true)}
               />
-            </section>
-          )}
-          {section === "privacy" && !privacy && (
-            <section className={pages.section} aria-label="Privacy choices">
-              <ul className={pages.list}>
-                {privacyChoices.map(([key, choice, detail]) => (
-                  <li key={key} className={pages.linkItem}>
-                    <button
-                      type="button"
-                      className={pages.linkRow}
-                      data-privacy-choice={key}
-                      onClick={() => setPrivacy(key)}
-                    >
-                      <span className={pages.rowText}>
-                        <span className={pages.rowTitle}>{choice}</span>
-                        <span className={pages.rowMeta}>{detail}</span>
-                      </span>
-                      <Chevron />
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-          {section === "privacy" && !privacy && <LegalDocuments />}
-          {section === "privacy" &&
-            privacy === "measurement" &&
-            family.purchaseMeasurement?.available &&
-            !nativeRuntime && (
-              <PurchaseMeasurement
-                key={`${identity}:google`}
-                view={family.purchaseMeasurement}
-                token={token}
-                identity={identity}
-              />
-            )}
-          {section === "privacy" &&
-            privacy === "measurement" &&
-            family.metaPurchaseMeasurement?.available &&
-            !nativeRuntime && (
-              <PurchaseMeasurement
-                key={`${identity}:meta`}
-                provider="meta"
-                view={family.metaPurchaseMeasurement}
-                token={token}
-                identity={identity}
-              />
-            )}
-          {section === "privacy" &&
-            privacy === "measurement" &&
-            family.openaiPurchaseMeasurement?.available &&
-            !nativeRuntime && (
-              <PurchaseMeasurement
-                key={`${identity}:openai`}
-                provider="openai"
-                view={family.openaiPurchaseMeasurement}
-                token={token}
-                identity={identity}
-              />
-            )}
-          {section === "privacy" && privacy === "export" && (
-            <section className={`family-section ${pages.section}`}>
-              <p className={pages.prose}>
-                One NDJSON file with {hasChildren ? "your learners’" : "your"}{" "}
-                problems and answers, plans, orders and privacy activity.
-              </p>
-              <div className={pages.footActions}>
-                <Button
-                  variant="primary"
-                  disabled={busy}
-                  aria-busy={busy || undefined}
-                  onClick={() => void exportData()}
-                >
-                  {hasChildren ? "Download family data" : "Download your data"}
-                </Button>
-              </div>
-            </section>
-          )}
-          {section === "privacy" &&
-            privacy === "consent" &&
-            secondOnly &&
-            account && <SecondParentNote me={account} />}
-          {section === "privacy" && privacy === "consent" && !secondOnly && (
-            <section className={`family-section ${pages.section}`}>
-              <ConsentSummary
-                status={family.consent.status}
-                recordedAt={family.consent.recordedAt}
-                withdrawnAt={family.consent.withdrawnAt}
-              />
-              <div className={pages.footActions}>
-                {onConsentEnrollment && (
-                  <Button
-                    variant="secondary"
-                    data-consent-enrollment
-                    onClick={onConsentEnrollment}
-                  >
-                    {family.consent.status === "active"
-                      ? "Review consent"
-                      : "Consent options"}
-                  </Button>
-                )}
-                {canWithdraw(family.consent.status) && (
-                  <Button
-                    variant="quiet"
-                    className={pages.danger}
-                    disabled={busy}
-                    onClick={(event) =>
-                      ask({ kind: "withdraw" }, event.currentTarget)
-                    }
-                  >
-                    Withdraw consent
-                  </Button>
-                )}
-              </div>
-            </section>
-          )}
-          {section === "privacy" && privacy === "delete" && (
-            <section className={`family-section ${pages.section}`}>
-              <p className={pages.prose}>
-                {hasChildren
-                  ? "Removes every learner’s name, saved problems and answer history from AMP, and withdraws consent. This can’t be undone."
-                  : "Removes your saved problems and answer history from AMP. This can’t be undone."}
-              </p>
-              <div className={pages.footActions}>
-                <Button
-                  variant="secondary"
-                  className={pages.danger}
-                  disabled={busy}
-                  onClick={(event) =>
-                    ask({ kind: "delete" }, event.currentTarget)
-                  }
-                >
-                  Review deletion
-                </Button>
-              </div>
-            </section>
-          )}
-          {section === "privacy" && privacy === "retention" && (
-            <section className={`family-section ${pages.section}`}>
-              <p className={pages.prose}>{family.retained.identity}</p>
-              <p className={pages.prose}>{family.retained.financial}</p>
-              <p className={pages.prose}>{family.retained.backups}</p>
-              <p className={pages.prose}>
-                Privacy action records hold no learner names or answers and
-                expire after {family.retained.privacyAuditDays} days.
-              </p>
             </section>
           )}
         </>
@@ -1207,28 +901,18 @@ export function FamilyCenter({
         >
           <div className="family-dialog-copy">
             <h2 id="family-confirm-title" ref={dialogHeading} tabIndex={-1}>
-              {confirmation.kind === "withdraw"
-                ? "Pause new learning activity?"
-                : confirmation.learner
-                  ? "Delete this learner’s data?"
-                  : hasChildren
-                    ? "Delete all family learning data?"
-                    : "Delete your learning data?"}
+              {confirmation.learner
+                ? "Delete this learner’s data?"
+                : hasChildren
+                  ? "Delete all family learning data?"
+                  : "Delete your learning data?"}
             </h2>
-            {confirmation.kind === "delete" && confirmation.learner && (
+            {confirmation.learner && (
               <p className="family-confirm-learner">
                 <strong>Learner:</strong> {confirmation.learner.name}
               </p>
             )}
-            {confirmation.kind === "withdraw" ? (
-              <p>
-                Existing learning records stay available to export or delete.
-                Practice pauses after withdrawal. Payment renewal continues
-                unless you cancel it separately.
-              </p>
-            ) : (
-              <DeletionTerms learner={!!confirmation.learner} />
-            )}
+            <DeletionTerms learner={!!confirmation.learner} />
           </div>
           <div className="family-actions">
             <button disabled={busy} onClick={() => setConfirmation(null)}>
@@ -1239,11 +923,7 @@ export function FamilyCenter({
               disabled={busy}
               onClick={() => void confirm()}
             >
-              {busy
-                ? "Saving…"
-                : confirmation.kind === "withdraw"
-                  ? "Withdraw consent"
-                  : "Delete learning data"}
+              {busy ? "Saving…" : "Delete learning data"}
             </button>
           </div>
           {error && (

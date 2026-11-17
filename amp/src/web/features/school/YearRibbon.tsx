@@ -5,6 +5,7 @@ import {
   type DivisionKind,
   type SplitSession,
 } from "../../../schools/calendar";
+import { shortName } from "../school-year/model";
 import styles from "./School.module.css";
 
 const DAY = 86_400_000;
@@ -21,6 +22,7 @@ export function YearRibbon({
   sessions,
   list = true,
   today,
+  labels = false,
 }: {
   startsOn: string;
   endsOn: string;
@@ -31,6 +33,9 @@ export function YearRibbon({
   list?: boolean;
   /** Marks where today falls, when it falls inside the year. */
   today?: string;
+  /** Each part's short name inside it (Q1, S2), and the Today line's room
+   * kept even when today is outside the year, so the bar never moves. */
+  labels?: boolean;
 }) {
   const start = time(startsOn);
   const span = Math.max(DAY, time(endsOn) - start + DAY);
@@ -43,7 +48,8 @@ export function YearRibbon({
     const at = Math.max(0, (cursor.getTime() - start) / span);
     // A month the year starts late in gets no letter: it would sit on top of
     // the next one.
-    const partial = cursor.getTime() < start && new Date(start).getUTCDate() > 10;
+    const partial =
+      cursor.getTime() < start && new Date(start).getUTCDate() > 10;
     if (at < 1 && !partial)
       ticks.push({
         label: MONTHS[cursor.getUTCMonth()]!,
@@ -61,19 +67,25 @@ export function YearRibbon({
           : `School year from ${formatDay(startsOn)} to ${formatDay(endsOn)}`
       }
     >
-      {now > 0 && now < 1 && (
+      {((now > 0 && now < 1) || labels) && (
         <div className={styles.ribbonNow} aria-hidden="true">
-          <span
-            style={{
-              left: `${now * 100}%`,
-              translate: `${-Math.round(now * 100)}% 0`,
-            }}
-          >
-            Today
-          </span>
+          {now > 0 && now < 1 && (
+            <span
+              style={{
+                left: `${now * 100}%`,
+                translate: `${-Math.round(now * 100)}% 0`,
+              }}
+            >
+              Today
+            </span>
+          )}
         </div>
       )}
-      <div className={styles.ribbonBar} aria-hidden="true">
+      <div
+        className={styles.ribbonBar}
+        data-labelled={labels || undefined}
+        aria-hidden="true"
+      >
         {now > 0 && now < 1 && (
           <span
             className={styles.ribbonToday}
@@ -89,7 +101,13 @@ export function YearRibbon({
               style={{
                 width: `${((time(part.endsOn) - time(part.startsOn) + DAY) / span) * 100}%`,
               }}
-            />
+            >
+              {labels && (
+                <span className={styles.ribbonLabel}>
+                  {shortName(part.name)}
+                </span>
+              )}
+            </span>
           ))
         ) : (
           <span

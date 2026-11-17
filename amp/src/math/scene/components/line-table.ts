@@ -100,14 +100,21 @@ function lines(t: string, head: boolean, narrow = false) {
   return [t.slice(0, at), t.slice(at + 1)];
 }
 
+/** A cell placed in the drawn grid, with its place in the table's data. */
+type Placed = { cell: Cell; r: number; c: number };
+
 registerComponent("lineTable", {
-  compile(t, { s }) {
-    const cols = t.rows[0]!.length;
-    const setAt = (narrow: boolean) =>
-      t.rows.map((row, r) =>
-        row.map((cell, c) => {
-          const v = text(cell),
-            head = isHead(t, r, c);
+  compile(t, { s, width: target }) {
+    const fit = Math.min(FIT, target ?? FIT);
+    const grid0 = t.rows.map((row, r) =>
+      row.map((cell, c): Placed => ({ cell, r, c })),
+    );
+    const headOf = (p: Placed) => isHead(t, p.r, p.c);
+    const setAt = (view: Placed[][], narrow: boolean) =>
+      view.map((row) =>
+        row.map((p) => {
+          const v = text(p.cell),
+            head = headOf(p);
           const parts = v ? lines(v, head, narrow) : [];
           const width = Math.max(
             0,
@@ -116,18 +123,36 @@ registerComponent("lineTable", {
                 typeset(part, lineCellFont(v), size(v, head), head).width,
             ),
           );
-          return { v, head, parts, width, pad: pad(v, head) };
+          return { ...p, v, head, parts, width, pad: pad(v, head) };
         }),
       );
     const widthsOf = (cells: ReturnType<typeof setAt>) =>
-      Array.from({ length: cols }, (_, c) =>
+      Array.from({ length: cells[0]!.length }, (_, c) =>
         Math.max(MIN_W, ...cells.map((row) => row[c]!.width + 2 * row[c]!.pad)),
       );
-    let set = setAt(false);
+    const sum = (w: number[]) => w.reduce((a, b) => a + b, 0);
+    let set = setAt(grid0, false);
     let widths = widthsOf(set);
-    if (widths.reduce((a, b) => a + b, 0) > FIT) {
-      set = setAt(true);
+    if (sum(widths) > fit) {
+      set = setAt(grid0, true);
       widths = widthsOf(set);
+    }
+    // A table read across (headings in the first column, every cell boxed)
+    // that still does not fit turns to read down: each data column becomes
+    // a row, so a phone keeps its type at full size.
+    if (
+      sum(widths) > fit &&
+      (t.header ?? "column") === "column" &&
+      (t.rules ?? "grid") === "grid" &&
+      t.total === undefined
+    ) {
+      const turned = grid0[0]!.map((_, c) => grid0.map((row) => row[c]!));
+      const turnedSet = setAt(turned, true);
+      const turnedWidths = widthsOf(turnedSet);
+      if (sum(turnedWidths) < sum(widths)) {
+        set = turnedSet;
+        widths = turnedWidths;
+      }
     }
     const heights = set.map((row) =>
       Math.max(
@@ -146,15 +171,16 @@ registerComponent("lineTable", {
     const total = left.at(-1)! + widths.at(-1)!;
     const grid = (t.rules ?? "grid") === "grid";
     const hl = new Set(t.highlight ?? []);
-    for (const [r, row] of t.rows.entries()) {
+    for (const [r, row] of set.entries()) {
       const top = tops[r]!,
         h = heights[r]!;
-      for (const [c, cell] of row.entries()) {
-        const { v, head, parts, pad: inset } = set[r]![c]!;
+      for (const [c, placed] of row.entries()) {
+        // Ids and per-column settings follow the data, however it is drawn.
+        const { v, head, parts, pad: inset, cell, r: dr, c: dc } = placed;
         const color = typeof cell === "string" ? undefined : cell.color;
         const fill = color
           ? (`${color}-fill` as const)
-          : hl.has(c) && !head
+          : hl.has(dc) && !head
             ? "gold-fill"
             : head
               ? "empty"
@@ -164,14 +190,14 @@ registerComponent("lineTable", {
         if (grid || fill !== "none")
           prims.push({
             type: "rect",
-            id: `cell.${r}.${c}`,
+            id: `cell.${dr}.${dc}`,
             at: [u(left[c]!), u(top - h)],
             size: [u(widths[c]!), u(h)],
             fill,
             ...(grid ? { stroke: "axis" as const, width: 1 } : {}),
-            data: { cell: `${r},${c}` },
+            data: { cell: `${dr},${dc}` },
           });
-        const align = t.align?.[c] ?? "center";
+        const align = t.align?.[dc] ?? "center";
         const x =
           align === "left"
             ? left[c]! + inset
@@ -183,7 +209,7 @@ registerComponent("lineTable", {
         for (const [i, part] of parts.entries())
           prims.push({
             type: "text",
-            id: parts.length > 1 ? `text.${r}.${c}.${i}` : `text.${r}.${c}`,
+            id: parts.length > 1 ? `text.${dr}.${dc}.${i}` : `text.${dr}.${dc}`,
             at: [u(x), u(top - h / 2 + shift(i))],
             text: part,
             font: lineCellFont(v),
@@ -192,7 +218,7 @@ registerComponent("lineTable", {
             align: [align === "left" ? -1 : align === "right" ? 1 : 0, 0],
             derived: derived(cell) || undefined,
             color: color ?? "ink",
-            data: { cell: `${r},${c}` },
+            data: { cell: `${dr},${dc}` },
           });
       }
       if (!grid && r > 0)

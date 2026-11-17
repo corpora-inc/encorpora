@@ -1,3 +1,4 @@
+import { reportError } from "../../../lib/report-error";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
@@ -80,9 +81,10 @@ function Agreement({
       await refreshSchool(session);
     } catch (failure) {
       setError(
-        failure instanceof AppError
-          ? failure.message
-          : "That didn’t save. Try again.",
+        reportError(failure, {
+          doing: "accept the student data agreement",
+          fallback: "That didn’t save. Try again.",
+        }),
       );
     } finally {
       setBusy(false);
@@ -188,9 +190,10 @@ function ExportSection({ orgId, orgName }: { orgId: string; orgName: string }) {
             .then((name) => setStatus(`Downloaded ${name}.`))
             .catch((failure) =>
               setError(
-                failure instanceof AppError
-                  ? failure.message
-                  : "The export didn’t download. Try again.",
+                reportError(failure, {
+                  doing: "download the export",
+                  fallback: "The export didn’t download. Try again.",
+                }),
               ),
             )
             .finally(() => setBusy(false));

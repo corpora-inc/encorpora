@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import type { SignedInMe } from "../../../account/contracts";
 import type { AuthSession } from "../../auth";
 import { BirthYearPrompt } from "../../BirthYearPrompt";
-import { useLearnerStore } from "../../learner-store";
+import { selectLearner } from "../../learner-store";
 import {
   continuationSearch,
   fundedPrograms,
@@ -21,6 +21,7 @@ import { useCreateLearner, useSetBirthYear } from "./api";
 import { Progress } from "./Progress";
 import { useDraft } from "./state";
 import styles from "./Start.module.css";
+import { practiceParams } from "../spaces/identity";
 
 /**
  * Learner name, then birth year. A paid, unassigned enrollment is claimed for
@@ -67,12 +68,12 @@ export function LearnerSteps({
     giftClaim.isPending ||
     correct.isPending;
   const practice = (learnerId: string) => {
-    useLearnerStore.getState().select(learnerId);
+    selectLearner(learnerId);
     draft.clear();
     void navigate(
       isFundedReturn(search.return)
         ? { to: fundedPrograms[search.return].path, search, replace: true }
-        : { to: "/$", params: { _splat: "practice" }, replace: true },
+        : { to: "/$", params: practiceParams(learnerId), replace: true },
     );
   };
   const assign = (learnerId: string) =>

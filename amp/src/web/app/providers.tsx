@@ -12,7 +12,6 @@ import {
   clearPurchaseReturn,
 } from "../purchase-return";
 import { clearOnboardingDraft } from "../features/onboarding/state";
-import { useLearnerStore } from "../learner-store";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Fragment, useEffect, useState, type ReactNode } from "react";
 import { onSessionChanged, signOut, type AuthSession } from "../auth";
@@ -25,6 +24,7 @@ import {
   sessionOptions,
 } from "../lib/query";
 import { setHomeAccount } from "../lib/home-place";
+import { qk } from "../lib/keys";
 export function Providers({
   children,
   onAccountExit,
@@ -68,7 +68,7 @@ function SessionProviders({
         await queryClient.fetchQuery({ ...meOptions(session), staleTime: 0 });
         if (current !== generation) return;
         await queryClient.invalidateQueries({
-          queryKey: ["account", session.accountId],
+          queryKey: qk.account(session.accountId),
           predicate: (query) => query.queryKey[2] !== "me",
         });
       } catch {
@@ -83,7 +83,7 @@ function SessionProviders({
       }
     }
     const unsubscribe = onSessionChanged(
-      (session) => {
+      (session, change) => {
         const current = ++generation;
         setAnalyticsSession(session);
         noteSignedIn(!!session);
@@ -97,9 +97,6 @@ function SessionProviders({
           clearInitialConsentChallenge();
           clearOwnedPurchaseReturn();
           clearPurchaseReturn();
-          // This device's learner choice was the old account's: another
-          // account starts from its own home, never that learner.
-          if (previous?.accountId) useLearnerStore.getState().select(null);
         }
         if (previous?.accountId !== session?.accountId) {
           clearOnboardingDraft();
@@ -108,9 +105,17 @@ function SessionProviders({
           // switch started from a link is an ordinary carry once it arrives.
           if (previous?.accountId) forgetEveryLink();
           else if (session) settleSwitches();
-          setIdentityVersion((version) => version + 1);
-          void queryClient.cancelQueries({ queryKey: ["account"] });
-          queryClient.removeQueries({ queryKey: ["account"] });
+          // Sign-out and another person's account start the tree and the
+          // account data again. A family handoff (a parent handing this
+          // device to their child and taking it back) keeps both: every
+          // account's data is under its own key (lib/keys.ts) and every
+          // screen's learner comes from its address (learner-store.ts), so
+          // Back to the parent's screen paints at once from what it had.
+          if (!(change?.handoff && previous?.accountId && session)) {
+            setIdentityVersion((version) => version + 1);
+            void queryClient.cancelQueries({ queryKey: qk.accounts() });
+            queryClient.removeQueries({ queryKey: qk.accounts() });
+          }
         }
         // A new session: nothing asked with the old one is sent, handled or
         // cached again. The same account's renewal keeps what is on screen,
@@ -125,7 +130,7 @@ function SessionProviders({
         if (session) {
           if (nativeRuntime)
             void queryClient.invalidateQueries({
-              queryKey: ["account", session.accountId],
+              queryKey: qk.account(session.accountId),
             });
           else void refreshAccount(session, current);
         }

@@ -25,6 +25,7 @@ vi.mock("../../../auth", () => ({
 afterEach(() => {
   cleanup();
   queryClient.clear();
+  queryClient.setQueryData(["session"], session);
   vi.unstubAllGlobals();
 });
 
@@ -38,9 +39,10 @@ const own = {
   adult: true as const,
   start: "middle-school" as const,
 };
+queryClient.setQueryData(["session"], session);
 const setting = (start = own.start) => (
   <QueryClientProvider client={queryClient}>
-    <OwnStartSetting session={session} start={start} />
+    <OwnStartSetting start={start} />
   </QueryClientProvider>
 );
 

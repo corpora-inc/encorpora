@@ -1228,7 +1228,7 @@ try {
   await teacher.goto(`${classUrl}/start`);
   await teacher.getByRole("heading", { name: "Practice has ended" }).waitFor();
   await noCode("the board whose year read had no state");
-  // Neither read says: Couldn't check practice, with Try again and Exit.
+  // Neither read says: Couldn't check practice, with Try again and Close.
   const presenceRoute = `**/api/v1/school/classes/${created.class_id}/presence`;
   await teacher.route(presenceRoute, async (route) => {
     const response = await route.fetch();
@@ -1242,7 +1242,7 @@ try {
   await teacher
     .getByRole("heading", { name: "Couldn’t check practice" })
     .waitFor();
-  await teacher.getByRole("link", { name: "Exit" }).waitFor();
+  await teacher.getByRole("button", { name: "Close", exact: true }).waitFor();
   await noCode("the board that couldn't check");
   await capture(teacher, "board-unknown");
   await teacher.unroute(yearRoute);
