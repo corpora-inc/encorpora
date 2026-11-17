@@ -164,13 +164,42 @@ const SPOKEN: Record<string, string> = {
   circ: "°",
   angle: "∠",
 };
+/** A fraction that is one number over another, inside TeX. */
+const FRACTION = /\\[td]?frac\{([^{}]*)\}\{([^{}]*)\}/g;
+/** A whole number, a decimal or a single letter, signed or not: a fraction's
+ * part that needs no brackets on one line. */
+const ATOM = /^[-−]?(?:\d+(?:\.\d+)?|[A-Za-z])$/;
+/**
+ * TeX fractions as plain text that reads only one way: a mixed number keeps
+ * its space ("3 1/4", never "31/4"), and a part that is itself a fraction or
+ * an expression is bracketed, innermost first ("(−5/4)/(1/6)", never
+ * "−5/41/6").
+ */
+function plainFractions(tex: string): string {
+  let text = tex.replace(
+    /(\d)\s*\\[td]?frac\{(\d+)\}\{(\d+)\}/g,
+    "$1\u00a0$2/$3",
+  );
+  const part = (value: string) => {
+    const trimmed = value.trim();
+    return ATOM.test(trimmed) ? trimmed : `(${trimmed})`;
+  };
+  // Innermost first: each pass turns the fractions with no fraction inside.
+  for (let pass = 0; pass < 8 && FRACTION.test(text); pass++) {
+    FRACTION.lastIndex = 0;
+    text = text.replace(FRACTION, (_, top: string, bottom: string) =>
+      `${part(top)}/${part(bottom)}`,
+    );
+  }
+  return text;
+}
+
 /** Plain reading text for an accessible name: each `$…$` span becomes its
  * source without TeX markup ("Exact coefficient $a$" → "Exact coefficient a",
  * "$\frac{3}{4}\pi$" → "3/4π"). Text without TeX is returned unchanged. */
 export function spokenMath(text: string): string {
   return text.replace(/\$([^$]+)\$/g, (_, tex: string) =>
-    tex
-      .replace(/\\[td]?frac\{([^{}]*)\}\{([^{}]*)\}/g, "$1/$2")
+    plainFractions(tex)
       .replace(/\\sqrt\{([^{}]*)\}/g, "√$1")
       .replace(/\\(?:text|mathrm)\{([^{}]*)\}/g, "$1")
       .replace(/\\([A-Za-z]+)\s*/g, (m, name: string) => SPOKEN[name] ?? "")

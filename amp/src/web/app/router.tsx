@@ -66,6 +66,7 @@ import {
   knowStudentFirst,
   requireSignedIn,
   signInTarget,
+  toOnlyPlace,
   toOwnPlace,
   withQuery,
 } from "./sign-in-gate";
@@ -385,15 +386,19 @@ const home = createRoute({
     }
     return { pitch: shown };
   },
-  // `/` never decides for anyone: signed out it is the pitch, signed in the
-  // launcher, a real screen whether reached by a link or by Back. Only an
-  // address that carries a handoff (an auth link, a payment's return, a
-  // consent challenge) goes on, once, to the screen that handles it.
-  // (Old `/?sign-in`, `/?reset-password` and a consent email's link are
+  // Signed out, `/` is the pitch. Signed in with one place (a parent with
+  // one family), there is nothing to choose: one hop to that place
+  // (docs/design/ia.md, Navigation rule 6). With several, the launcher, a
+  // real screen whether reached by a link or by Back. An address that
+  // carries a handoff (an auth link, a payment's return, a consent
+  // challenge) goes on, once, to the screen that handles it first. (Old
+  // `/?sign-in`, `/?reset-password` and a consent email's link are
   // app/legacy-aliases.ts rows.)
   beforeLoad: async ({ location }) => {
     if (nativeRuntime) return;
     await homeReturn(location);
+    const session = await queryClient.ensureQueryData(sessionOptions);
+    if (session) await toOnlyPlace(session);
   },
 });
 /** The launcher's account and places, read before it paints. */

@@ -155,6 +155,10 @@ export const progressRecordResource = z.object({
   reference: z.object({ from: z.number(), to: z.number() }).nullable(),
   strands: z.array(strandResource),
   weeks: z.array(z.object({ week: day, minutes: z.number() })),
+  /** Every skill earned, ever (learning/earned.ts): on a record that lists
+   * them all (a family's child, an adult's own), the count Pathways shows.
+   * A teacher's record counts objectives as a grade does, and omits it. */
+  earned: z.number().int().nonnegative().optional(),
   objectives: z.array(
     z.object({
       skillId: z.string(),

@@ -1,3 +1,4 @@
+import { earnedCount } from "../../../learning/earned";
 import {
   skillLight,
   layout,
@@ -49,9 +50,7 @@ export async function mapShareImage(
   ctx.font = "500 30px system-ui, sans-serif";
   ctx.fillText(level, 56, 298, 420);
   const known = new Set(skills.map((s) => s.id));
-  const earned = evidence.filter(
-    (e) => known.has(e.skillId) && e.independentCorrect > 0,
-  ).length;
+  const earned = earnedCount(evidence.filter((e) => known.has(e.skillId)));
   ctx.fillStyle = ink;
   ctx.font = "400 22px system-ui, sans-serif";
   ctx.fillText(

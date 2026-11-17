@@ -29,6 +29,7 @@ import {
 } from "playwright";
 import { secureChromium } from "../browser-security.mjs";
 import { startShellFixture } from "./app-shell-fixture";
+import { openHome } from "./launcher";
 
 const chromium = secureChromium(rawChromium);
 const arg = (name: string) => {
@@ -128,6 +129,8 @@ const watchPractice = `(() => {
 /** Every history entry the app writes (push or replace), in order. */
 const recordHistory = `(() => {
   const writes = (window.__writes = []);
+  const pops = (window.__pops = []);
+  addEventListener("popstate", () => pops.push(location.pathname));
   for (const kind of ["pushState", "replaceState"]) {
     const write = history[kind].bind(history);
     history[kind] = (state, unused, url) => {
@@ -149,12 +152,23 @@ async function oneHop(
   label: string,
   at: "link" | "history" | "load",
 ) {
-  const writes = await page.evaluate(() => {
-    const w = window as unknown as { __writes: string[] };
-    return w.__writes.splice(0);
+  const [writes, pops] = await page.evaluate(() => {
+    const w = window as unknown as { __writes: string[]; __pops: string[] };
+    return [w.__writes.splice(0), w.__pops.splice(0)] as const;
   });
   const want = at === "history" ? 0 : 1;
-  const ok = at === "load" ? writes.length <= 1 : writes.length === want;
+  // Back or Forward onto `/` for an account with one place: `/` opens that
+  // place, one replacing hop (app/sign-in-gate.ts `toOnlyPlace`).
+  const onlyPlace =
+    at === "history" &&
+    pops.at(-1) === "/" &&
+    writes.length === 1 &&
+    writes[0]!.startsWith("replace ") &&
+    !writes[0]!.startsWith("replace /?") &&
+    writes[0] !== "replace /";
+  const ok =
+    onlyPlace ||
+    (at === "load" ? writes.length <= 1 : writes.length === want);
   if (!ok)
     fail(
       `${label}: ${writes.length} history writes, want ${at === "load" ? "at most 1" : want}`,
@@ -744,7 +758,8 @@ async function walk(width: number, w: Walk) {
       }
       await settled(page);
       await oneHop(page, `${label} ${step} #${index + 1}`, "history");
-      // Back to `/` is the launcher itself, never a redirect onward.
+      // Back to `/` is the launcher itself, or (one place) that place in
+      // one hop (oneHop above), never a chain onward.
       if (
         new URL(page.url()).pathname === "/" &&
         !(await page.locator("[data-launcher]").isVisible())
@@ -759,8 +774,7 @@ async function walk(width: number, w: Walk) {
       await w.after?.(page, index);
     }
     // Still able to go anywhere: a hung tab can't even load another page.
-    await page.goto(`${origin}/`, { timeout: 15_000 });
-    await page.locator("[data-launcher]").waitFor();
+    await openHome(page, origin, { timeout: 15_000 });
     await healthy(page, `${label} navigating away`, errors);
     console.log(`ok ${label}: ${trail.join(" → ")}`);
   } finally {
@@ -881,8 +895,8 @@ async function failingScreen(width: number) {
     await openMenu(page);
     await page.keyboard.press("Escape");
     await page.getByRole("link", { name: "Go home" }).click();
-    await page.waitForURL((url) => url.pathname === "/");
-    await page.locator("[data-launcher]").waitFor();
+    // Home: the account's one place (its family), never a loop.
+    await page.waitForURL((url) => /^\/family\//.test(url.pathname));
     // The failure was the screen's own, not a loop.
     const depth = errors.filter((e) => /Maximum update depth/.test(e));
     if (depth.length) fail(`${label}: update depth`, depth);

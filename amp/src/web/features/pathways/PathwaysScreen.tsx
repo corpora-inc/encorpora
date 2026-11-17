@@ -4,6 +4,7 @@ import {
   practiceParams,
   practicePath,
 } from "../spaces/identity";
+import { earnedCount } from "../../../learning/earned";
 import { useSession, useSessionOrNull } from "../../lib/session";
 import { qk } from "../../lib/keys";
 import {
@@ -479,7 +480,7 @@ export function MapView({
     () => new Map(evidence.map((s) => [s.skillId, s])),
     [evidence],
   );
-  const earned = evidence.filter((s) => s.independentCorrect > 0).length;
+  const earned = earnedCount(evidence);
   const countsReady = !!catalog.data && !recordLoading;
   /** Opens a skill over the map. Chosen on the map, the map stays where it
    * is; found by the search or the list, the map frames it as it opens. */
@@ -503,9 +504,9 @@ export function MapView({
   const level = useMemo(
     () =>
       skills && !frontierLoading
-        ? levelRegion(skills, frontier, evidence)
+        ? levelRegion(skills, frontier)
         : null,
-    [skills, frontier, evidence, frontierLoading],
+    [skills, frontier, frontierLoading],
   );
   // What this map offers with a skill opened over it: what a search found
   // in it, then practicing it (or the way in, for a visitor).

@@ -124,9 +124,12 @@ export function RecordLevels({
 /** Active minutes for each of the last 12 weeks. */
 export function RecordWeeks({ record }: { record: ProgressRecord }) {
   const largest = Math.max(1, ...record.weeks.map((week) => week.minutes));
-  const total = record.weeks.reduce((sum, week) => sum + week.minutes, 0);
+  // The record's minutes are exact; these words count whole ones.
+  const total = Math.round(
+    record.weeks.reduce((sum, week) => sum + week.minutes, 0),
+  );
   // No practice in these weeks: say so, never an empty chart.
-  if (total === 0)
+  if (record.weeks.every((week) => week.minutes === 0))
     return (
       <p className={styles.quietLine}>
         No active minutes in the last {record.weeks.length} weeks.
@@ -143,7 +146,7 @@ export function RecordWeeks({ record }: { record: ProgressRecord }) {
           <span
             key={week.week}
             className={styles.dayColumn}
-            data-tip={`Week of ${shortDay(week.week)}: ${number(week.minutes)} active minutes`}
+            data-tip={`Week of ${shortDay(week.week)}: ${number(Math.round(week.minutes))} active minutes`}
           >
             <span
               className={styles.dayBar}
@@ -164,7 +167,10 @@ export function RecordWeeks({ record }: { record: ProgressRecord }) {
   );
 }
 
-/** Objectives gained over the last year, newest first. */
+/** Skills gained, newest first: on a record that lists every one earned
+ * (a family's child, an adult's own: `record.earned`), how many, as
+ * Pathways counts them, then the latest; on a teacher's, the objectives a
+ * grade counts over the last year. */
 export function RecordObjectives({
   record,
   openSkills = false,
@@ -173,8 +179,32 @@ export function RecordObjectives({
   /** Each skill opens over the page (a staff reader's record). */
   openSkills?: boolean;
 }) {
+  const earned = record.earned;
   if (record.objectives.length === 0)
-    return <p className={styles.quietLine}>None yet this year.</p>;
+    return (
+      <p className={styles.quietLine}>
+        {earned === undefined ? "None yet this year." : "None yet."}
+      </p>
+    );
+  return (
+    <>
+      {earned !== undefined && (
+        <p className={styles.quietLine} data-skills-earned={earned}>
+          {earned === 1 ? "1 skill earned" : `${number(earned)} skills earned`}
+        </p>
+      )}
+      <ObjectiveList record={record} openSkills={openSkills} />
+    </>
+  );
+}
+
+function ObjectiveList({
+  record,
+  openSkills,
+}: {
+  record: ProgressRecord;
+  openSkills: boolean;
+}) {
   return (
     <ul className={styles.objectives}>
       {record.objectives.map((objective) => (
