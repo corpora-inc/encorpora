@@ -628,7 +628,13 @@ const BACK_PATTERNS: [string, RegExp][] = [
   ["history.back()", /\bhistory\.back\(\)/],
 ];
 /** Where the one overlay close and its link helper live. */
-const BACK_OWNERS = new Set(["lib/return-to.ts", "nav/links.tsx"]);
+// The overlay close mechanics, not Back controls: closeTo's return, and a
+// sheet popping its own same-URL history entry when it closes (nav/sheet.ts).
+const BACK_OWNERS = new Set([
+  "lib/return-to.ts",
+  "nav/links.tsx",
+  "nav/sheet.ts",
+]);
 
 const withoutComments = (source: string) =>
   source.replace(/\/\*[\s\S]*?\*\//g, "").replace(/(^|[^:"'`])\/\/.*$/gm, "$1");

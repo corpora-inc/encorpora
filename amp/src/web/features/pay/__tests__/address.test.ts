@@ -38,8 +38,16 @@ test("opening from a screen puts the overlay over that same screen", () => {
   expect(payOver("/family/f1/kids/august", "august")).toBe("/family/f1/kids/august/pay");
   expect(payOver("/family/f1", "august")).toBe("/family/f1/pay/august");
   expect(payOver("/account/billing", "august")).toBe("/account/billing/pay/august");
-  for (const host of ["/family/f1", "/family/f1/kids/a", "/account/billing"])
+  expect(payOver("/family/f1/settings", "a")).toBe("/family/f1/settings/pay/a");
+  expect(payOver("/account", "a")).toBe("/account/pay/a");
+  for (const host of [
+    "/family/f1",
+    "/family/f1/kids/a",
+    "/family/f1/settings",
+    "/account",
+    "/account/billing",
+  ])
     expect(isPayHost(host), host).toBe(true);
-  for (const other of ["/practice", "/family/f1/settings", "/account/billing/pay/a"])
+  for (const other of ["/practice", "/family/f1/people", "/account/billing/pay/a"])
     expect(isPayHost(other), other).toBe(false);
 });

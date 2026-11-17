@@ -99,6 +99,9 @@ test("closing goes Back to where it was opened, else to its parent", () => {
   expect(closesBack(at("/g?student=s2", "/g?student=s1"), "/g")).toBe(false);
   // Signing in is never gone Back to.
   expect(closesBack(at("/map/s1", "/sign-in"), "/map")).toBe(false);
+  expect(closesBack(at("/map/s1", "/account/deleted"), "/map")).toBe(false);
+  // The account hub is a screen: its overlay closes Back to it.
+  expect(closesBack(at("/account/privacy", "/account"), "/account")).toBe(true);
   // A named `from` must be the entry before.
   expect(closesBack(at("/lessons/t/watch", "/x?lesson=t"), "/p", "/x?lesson=t"))
     .toBe(true);
