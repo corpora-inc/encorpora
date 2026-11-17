@@ -3,7 +3,7 @@
   "counts": {
     "redirects": 87,
     "validateSearch": 14,
-    "searchHandoffs": 183,
+    "searchHandoffs": 182,
     "navigatingEffects": 21,
     "renderNavigate": 32,
     "silentCatches": 255,
@@ -112,7 +112,6 @@
       "LessonLibrary.tsx": 1,
       "nav/links.tsx": 2,
       "nav/root.tsx": 1,
-      "ui/PageHeader.tsx": 1,
       "ui/RowList.tsx": 1,
       "ui/Tabs.tsx": 2
     },
