@@ -41,6 +41,10 @@ import {
   type SetupStep,
 } from "./paths";
 import { YearRibbon } from "./YearRibbon";
+// The dense page's element resets (lists, paragraphs, headings) arrive with
+// the wizard, never later from another screen's chunk, which moved every
+// step's content as they landed.
+import "./SchoolFrame.module.css";
 import styles from "./Setup.module.css";
 
 const stepNames: Record<SetupStep, string> = {
