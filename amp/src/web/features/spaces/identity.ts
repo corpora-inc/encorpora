@@ -16,14 +16,49 @@ const PATH = new RegExp(
   "i",
 );
 
-/** A learner's practice: `/practice/<learner>`. Bare `/practice` names
- * nobody and is an older address (one hop here: practice-mode.ts). */
-export const practicePath = (learner: string) =>
-  `/practice/${encodeURIComponent(learner)}`;
+/** What practice is held to, in its address: a problem type, a skill or an
+ * area (strand). None is mixed practice. */
+export type PracticeFocus = {
+  skill?: string;
+  template?: string;
+  strand?: string;
+};
+const FOCUS_SEGMENT = { template: "types", skill: "skills", strand: "areas" };
+const FOCUS = /^\/practice\/[^/]+\/(types|skills|areas)\/([^/]+)\/?$/;
+
+/** A learner's practice: `/practice/<learner>`, mixed; held to a problem
+ * type, a skill or an area, `/practice/<learner>/types/<id>`, `…/skills/<id>`,
+ * `…/areas/<strand>`. Bare `/practice` names nobody and is an older address
+ * (one hop: practice-mode.ts). */
+export function practicePath(learner: string, focus: PracticeFocus = {}) {
+  const at = `/practice/${encodeURIComponent(learner)}`;
+  const kind = focus.template
+    ? "template"
+    : focus.skill
+      ? "skill"
+      : focus.strand
+        ? "strand"
+        : null;
+  return kind
+    ? `${at}/${FOCUS_SEGMENT[kind]}/${encodeURIComponent(focus[kind]!)}`
+    : at;
+}
 /** The `$` route's params for a learner's practice. */
-export const practiceParams = (learner: string) => ({
-  _splat: practicePath(learner).slice(1),
+export const practiceParams = (learner: string, focus?: PracticeFocus) => ({
+  _splat: practicePath(learner, focus).slice(1),
 });
+/** What a practice address holds practice to (unchecked: practice checks it
+ * against the catalog, features/practice/curriculum-filter.ts). */
+export function practiceFocus(pathname: string): PracticeFocus {
+  const [, segment, id] = FOCUS.exec(pathname) ?? [];
+  if (!segment || !id) return {};
+  const value = decodeURIComponent(id);
+  return segment === "types"
+    ? { template: value }
+    : segment === "skills"
+      ? { skill: value }
+      : { strand: value };
+}
 const text = (value: unknown) =>
   typeof value === "string" && value !== "" ? value : null;
 

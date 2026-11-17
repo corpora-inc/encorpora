@@ -1,7 +1,7 @@
 import test from "node:test";
 import { userAgents } from "./fixtures/in-app-user-agents";
 import assert from "node:assert/strict";
-import { browserKind } from "../src/analytics/browser-kind.js";
+import { browserKind, inAppBrowser } from "../src/analytics/browser-kind.js";
 import {
   funnelPropsSchemas,
   eventBatchSchema,
@@ -132,4 +132,62 @@ test("overlapping app markers and generic webviews stay embedded", () => {
     browserKind("Mozilla/5.0 LinkedIn/9.0 Safari/604.1"),
     "inapp-other",
   );
+});
+
+test("each in-app browser names its app and platform", () => {
+  const cases: [string, string, "ios" | "android"][] = [
+    [ios(" [FBAN/FBIOS;FBAV/489.0.0.40.109;FBSN/iOS]"), "facebook", "ios"],
+    [android(" [FB_IAB/FB4A;FBAV/489.0.0.40.109;]"), "facebook", "android"],
+    [ios(" [FBAN/MessengerForiOS;FBAV/489.0.0.40.109;]"), "facebook", "ios"],
+    [
+      ios(" Instagram 355.0.0.29.82 (iPhone15,2; iOS 18_1; en_US)"),
+      "instagram",
+      "ios",
+    ],
+    [
+      android(" Instagram 355.0.0.29.82 Android (34/14; 420dpi)"),
+      "instagram",
+      "android",
+    ],
+    [
+      ios(" musical_ly_37.5.0 JsSdk/2.0 BytedanceWebview/d8a21c6"),
+      "tiktok",
+      "ios",
+    ],
+    [android(" trill_370404 JsSdk/1.0 AppName/trill"), "tiktok", "android"],
+    [ios(" [LinkedInApp]"), "linkedin", "ios"],
+    [android(" [LinkedInApp]/9.29.6919"), "linkedin", "android"],
+    [
+      ios(" Snapchat/13.20.0.43 (like Safari/8619.1.26.30.5, panda)"),
+      "snapchat",
+      "ios",
+    ],
+    [
+      android(" Snapchat/13.20.0.43 (Pixel 8; Android 14; gzip)"),
+      "snapchat",
+      "android",
+    ],
+    [ios(" Twitter for iPhone/10.62"), "x", "ios"],
+    [android(" TwitterAndroid"), "x", "android"],
+    [ios(" Safari Line/14.1.0"), "line", "ios"],
+    [android(" Line/14.1.0/IAB"), "line", "android"],
+    [
+      ios(" MicroMessenger/8.0.47(0x18002f2c) NetType/WIFI Language/zh_CN"),
+      "wechat",
+      "ios",
+    ],
+    [
+      android(
+        " MMWEBID/1234 MicroMessenger/8.0.47.2560(0x28002F35) WeChat/arm64",
+      ),
+      "wechat",
+      "android",
+    ],
+    [android(""), "webview", "android"],
+    [ios(""), "webview", "ios"],
+  ];
+  for (const [agent, app, platform] of cases)
+    assert.deepEqual(inAppBrowser(agent), { app, platform }, agent);
+  for (const { ua, kind } of userAgents)
+    if (kind === "standard") assert.equal(inAppBrowser(ua), null, ua);
 });

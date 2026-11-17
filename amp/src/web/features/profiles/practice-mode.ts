@@ -67,6 +67,16 @@ export function modeFrom(search: Record<string, unknown>) {
     : undefined;
 }
 
+/** A guard's read that failed: logged, and the guard lets the screen open,
+ * whose own query shows the failure. (This module is in the entry bundle,
+ * so it logs to the console rather than load lib/report-error.ts.) */
+const carryOn =
+  (doing: string) =>
+  (error: unknown): null => {
+    console.warn(`AMP couldn’t ${doing}`, error);
+    return null;
+  };
+
 const PLACE = /^\/school\/([^/?#]+)(?:\/classes\/([^/?#]+))?/;
 
 /** The school and class a mode returns to, from its `from`. */
@@ -112,7 +122,7 @@ export async function adoptPracticeMode(location: {
   if (!session) return;
   const me = await queryClient
     .ensureQueryData(meOptions(session))
-    .catch(() => null);
+    .catch(carryOn("read the account for practice"));
   if (!me?.signedIn) return;
   // The address names whose screen this is (features/spaces/identity.ts): a
   // profile or a learner this account doesn't read is unavailable, never
@@ -187,8 +197,8 @@ const NOT_A_STUDENTS = /^\/(?:family|purchase|consent)(?:\/|$)/;
 
 /**
  * Before practice loads: `/practice` names nobody, so it is an older
- * address. One hop, replacing it, to `/practice/<learner>`, keeping its
- * filter (`?skill=`, `?strand=`). A practice profile (`?profile=`) is a mode
+ * address. One hop, replacing it, to `/practice/<learner>`, its filter
+ * (`?skill=`, `?strand=`) becoming the address's focus. A practice profile (`?profile=`) is a mode
  * with its own address and stays. Every link in the app goes to
  * `/practice/<learner>` itself (identity.ts `practicePath`). A school
  * student on a family's screen goes to their practice the same way.
@@ -213,8 +223,16 @@ export async function practiceAddress(location: {
   );
   if (!learner) return;
   params.delete(LEARNER_KEY);
+  // An older filter (`?template=`, `?skill=`, `?strand=`) is the address's
+  // own focus now (identity.ts `practicePath`).
+  const focus = {
+    template: params.get("template") ?? undefined,
+    skill: params.get("skill") ?? undefined,
+    strand: params.get("strand") ?? undefined,
+  };
+  for (const key of ["template", "skill", "strand"]) params.delete(key);
   throw olderAddress(
-    `${practicePath(learner)}${params.size ? `?${params}` : ""}`,
+    `${practicePath(learner, focus)}${params.size ? `?${params}` : ""}`,
   );
 }
 
@@ -233,18 +251,18 @@ export async function canonicalLearnerAddress(location: {
   const params = new URLSearchParams(location.searchStr);
   const session = await queryClient
     .ensureQueryData(sessionOptions)
-    .catch(() => null);
+    .catch(carryOn("read the session for a learning address"));
   if (!session) return;
   const me = await queryClient
     .ensureQueryData(meOptions(session))
-    .catch(() => null);
+    .catch(carryOn("read the account for a learning address"));
   if (!me?.signedIn || me.account.kind === "student") return;
   // Only an older key, or a parent with no practice of their own, can have
   // another address; a child's family id comes from the account's places.
   if (!params.has("learner") && me.adultPractice?.learner) return;
   const places = await queryClient
     .ensureQueryData(familyPlacesOptions(session))
-    .catch(() => null);
+    .catch(carryOn("read the family places for a learning address"));
   const href = canonicalLearning(
     location.pathname,
     params,

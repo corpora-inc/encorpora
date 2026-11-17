@@ -1,7 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
+import { useSessionOrNull } from "../lib/session";
 import { useLocation, useRouter, useSearch } from "@tanstack/react-router";
 import type { ComponentProps, MouseEvent, ReactNode } from "react";
-import { sessionOptions } from "../lib/query";
 import { closeTo } from "../lib/return-to";
 import { OPEN_KEY, readStack, writeStack, type Entity } from "./entities";
 import {
@@ -84,10 +83,19 @@ export function settleLegacyLayers(
   };
 }
 
+/** This screen's address with its open layers, as a return target a view
+ * of its own carries (`?from=`, a film): with no history behind it, closing
+ * still lands on the layers it was opened from. */
+export function useHereWithLayers() {
+  const { stack } = useLayers();
+  const location = useLocation();
+  return shareableHref(location.pathname, location.searchStr, stack);
+}
+
 /** The screen whose layers these are: its account, learner and address. */
 export function useLayerScope() {
   const pathname = useLocation({ select: (location) => location.pathname });
-  const accountId = useQuery(sessionOptions).data?.accountId;
+  const accountId = useSessionOrNull()?.accountId;
   return layerScope(pathname, accountId);
 }
 

@@ -1,15 +1,16 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import {
-  Link,
-  useLocation,
-  useNavigate,
-  useSearch,
-} from "@tanstack/react-router";
-import { Navigate } from "../../nav/Navigate";
+import { Link, useSearch } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { signOut, type AuthSession } from "../../auth";
+import { signOut } from "../../auth";
+import { useSession } from "../../lib/session";
 import { AppError } from "../../lib/AppError";
-import { chosenPlan, forgetPlanChoice } from "../../lib/pending-trial";
+import {
+  chosenPlan,
+  forgetPlanChoice,
+  rememberPlanChoice,
+} from "../../lib/pending-trial";
+import { meOptions } from "../../lib/query";
+import { PurchaseStep } from "./PurchaseStep";
 import { Button, buttonClass } from "../../ui/Button";
 import { FrameBrand, frameCard } from "../../ui/PageFrame";
 import { Toast } from "../../ui/Toast";
@@ -38,12 +39,15 @@ const names = { year: "annual", month: "monthly" } as const;
  * parental consent; no learner details are asked for. A learner's own plan
  * is the pay flow's (features/pay).
  */
-export function PlanStep({ session }: { session: AuthSession }) {
-  const navigate = useNavigate();
-  const location = useLocation();
+export function PlanStep() {
+  const session = useSession();
   const search = useSearch({ strict: false }) as { interval?: unknown };
   const Frame = CardFrame;
   const enrollment = useQuery(enrollmentOptions(session));
+  const me = useQuery(meOptions(session)).data;
+  const metaPermission = me?.signedIn
+    ? me.family.metaPurchaseMeasurement
+    : undefined;
   const available = enrollment.data?.available;
   const offers = useQuery({
     ...offerOptions(session),
@@ -86,12 +90,13 @@ export function PlanStep({ session }: { session: AuthSession }) {
   const purchase = enrollment.data?.purchase;
   const phase = purchase?.phase;
 
+  // Paid or paying: this plan's checkout shows its progress here.
   if (
     phase &&
     !["ready", "expired", "checkout-open"].includes(phase) &&
     enrollment.data
   )
-    return <Navigate to="/start/purchase" replace />;
+    return <PurchaseStep metaPermission={metaPermission} />;
   const failed =
     enrollment.error ?? (available ? offers.error : emailPlus.error);
   if (failed)
@@ -200,12 +205,8 @@ export function PlanStep({ session }: { session: AuthSession }) {
         onChange={(next) => {
           track("plan_select", { interval: next });
           chooseInterval(next);
-          const query = new URLSearchParams(location.searchStr);
-          query.set("interval", next);
-          void navigate({
-            href: `${location.pathname}?${query}`,
-            replace: true,
-          });
+          // Kept for this device: a refresh, or Back from Stripe, shows it.
+          rememberPlanChoice(next);
           setChangedPlan(true);
           delete requests.current[next];
           checkout.reset();

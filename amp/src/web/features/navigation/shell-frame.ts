@@ -173,7 +173,11 @@ export function shellFrame(
     /^\/start\/(parent|tutor)\/[a-z-]+$/.test(path)
   )
     return { kind: "plain" };
-  if (/^\/practice(?:\/[^/]+)?\/?$/.test(path)) return { kind: "practice" };
+  // A learner's practice, mixed or held to a type, a skill or an area.
+  if (
+    /^\/practice(?:\/[^/]+(?:\/(?:types|skills|areas)\/[^/]+)?)?\/?$/.test(path)
+  )
+    return { kind: "practice" };
   // The immersive film route supplies its own return and playback controls.
   if (/^\/lessons\/[^/]+\/watch$/.test(path)) return null;
   if (under(path, "/lessons") || under(path, "/books"))

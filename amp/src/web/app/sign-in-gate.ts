@@ -2,6 +2,7 @@ import { redirect } from "@tanstack/react-router";
 import type { AuthSession } from "../auth";
 import type { SignedInMe } from "../../account/contracts";
 import { continuationSearch } from "../lib/funded-entry";
+import { authStep, type AuthSearch } from "./auth-links";
 import { queryClient, sessionOptions } from "../lib/query";
 import { studentSession } from "../lib/student-device";
 import { nativeRuntime } from "../native-runtime";
@@ -16,7 +17,11 @@ import { studentPracticeHref } from "../features/profiles/practice-mode";
  * - a school student's device, to their own practice (`adults`);
  * - the store apps, to their home screen (`web`);
  * - a signed-in person on a screen that isn't theirs, to their own place
- *   (`toOwnPlace`), never through `/`.
+ *   (`toOwnPlace`), never through `/`;
+ * - a signed-in person on a screen that isn't theirs YET or any more (a
+ *   first-run step not reached, a setup step not open, a start already
+ *   made), to the one screen that is (`elsewhere`), its address computed
+ *   once by the guard from canonical state.
  *
  * Guards call these; nothing else in a guard redirects. Old addresses are
  * app/legacy-aliases.ts's, and a provider's return value is
@@ -35,14 +40,24 @@ export type Admits = {
 /** Where a guard's location is: the router's. */
 export type GateLocation = {
   pathname: string;
-  searchStr: string;
+  searchStr?: string;
   search?: unknown;
 };
 
+/** `path?key=value…` from string values (others are left out). */
+export function withQuery(path: string, query: Record<string, unknown> = {}) {
+  const params = new URLSearchParams();
+  for (const [key, value] of Object.entries(query))
+    if (typeof value === "string") params.set(key, value);
+  const text = params.toString();
+  return text ? `${path}?${text}` : path;
+}
+
 /** How sign-in comes back: by the continuation the address carries (a
- * campaign, a program, a return; lib/funded-entry.ts), or, for a place
- * (a school's, a family's), straight back to this address. */
-export type Back = "continue" | "here";
+ * campaign, a program, a return; lib/funded-entry.ts), for a place (a
+ * school's, a family's) straight back to this address, or by a return of
+ * its own (`{ return: "access" }`). */
+export type Back = "continue" | "here" | AuthSearch;
 
 /** A device this screen isn't for: one hop to the device's own home. */
 export function admit({ web, adults }: Admits) {
@@ -53,14 +68,19 @@ export function admit({ web, adults }: Admits) {
 
 /** The sign-in address that comes back to `location`. */
 export function signInTarget(location: GateLocation, back: Back = "continue") {
-  const search =
-    back === "here"
-      ? {
-          return: "school" as const,
-          next: `${location.pathname}${location.searchStr}`,
-        }
-      : continuationSearch((location.search ?? {}) as Record<string, unknown>);
-  return { to: "/sign-in" as const, search };
+  return authStep(
+    "sign-in",
+    typeof back === "object"
+      ? back
+      : back === "here"
+        ? {
+            return: "school" as const,
+            next: `${location.pathname}${location.searchStr ?? ""}`,
+          }
+        : continuationSearch(
+            (location.search ?? {}) as Record<string, unknown>,
+          ),
+  );
 }
 
 /**
@@ -81,6 +101,23 @@ export async function requireSignedIn(
     markSchoolSignup("1");
   }
   throw redirect({ ...signInTarget(location, back), replace: true } as never);
+}
+
+/** The screen this person may open instead of the one asked for (its
+ * address computed once, from canonical state): one hop, replacing it. */
+export function elsewhere(
+  target:
+    | string
+    | {
+        to: string;
+        search?: Record<string, unknown>;
+        hash?: string;
+        state?: Record<string, unknown>;
+      },
+): never {
+  throw typeof target === "string"
+    ? redirect({ href: target, replace: true })
+    : redirect({ ...target, replace: true } as never);
 }
 
 /**

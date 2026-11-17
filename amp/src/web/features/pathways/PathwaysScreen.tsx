@@ -4,6 +4,8 @@ import {
   practiceParams,
   practicePath,
 } from "../spaces/identity";
+import { useSession, useSessionOrNull } from "../../lib/session";
+import { qk } from "../../lib/keys";
 import {
   CurriculumPractice,
   PracticeLabel,
@@ -20,20 +22,19 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import {
   Link,
   useLocation,
   useNavigate,
   useSearch,
 } from "@tanstack/react-router";
-import { meOptions, sessionOptions } from "../../lib/query";
+import { meOptions } from "../../lib/query";
 import { skillCatalogOptions } from "../../lib/learning-view";
 import { request } from "../../lib/api";
 import { useUrlSearchText } from "../../lib/url-search-text";
 import { useCurrentLearner } from "../../learner-store";
 import { useLearnerChoice } from "../spaces/learner-choice";
-import type { AuthSession } from "../../auth";
 import { gradeName } from "../../Home";
 import { byArea, fitScale, LevelRows, WHOLE_SCALE } from "../../ui/level-range";
 import { measured } from "../../../learning/level-check";
@@ -66,7 +67,13 @@ import {
 import { ListboxDisclosure, type ListboxOption } from "../../ui/Listbox";
 import { Segmented } from "../../ui/Segmented";
 import { LayerHost } from "../../nav/LayerHost";
-import { EntityLink, useLayers } from "../../nav/links";
+import {
+  EntityLink,
+  shareableHref,
+  useHereWithLayers,
+  useLayers,
+} from "../../nav/links";
+import { pushed } from "../../nav/layer-store";
 import { buttonClass } from "../../ui/Button";
 import layers from "../../nav/layers.module.css";
 import { RootLink } from "../../nav/root";
@@ -109,7 +116,8 @@ const MapWaiting = () => (
 function savedView(): MapMode {
   try {
     return localStorage.getItem(VIEW_KEY) === "3d" ? "3d" : "grades";
-  } catch {
+  } catch (error) {
+    console.warn("This device's map view is not readable", error);
     return "grades";
   }
 }
@@ -146,15 +154,12 @@ function showMap() {
 }
 
 export function PathwaysScreen() {
-  const { data: session } = useSuspenseQuery(sessionOptions);
+  // The route made sure of the session before this screen (framedScreen).
+  const session = useSessionOrNull();
   // This public resource outlives the keyed learner view. Keep its in-flight
   // read alive when the account resolves and that view changes learner.
   useQuery(skillCatalogOptions);
-  return session ? (
-    <LearnerMap key={session.accountId} session={session} />
-  ) : (
-    <GuestMap />
-  );
+  return session ? <LearnerMap key={session.accountId} /> : <GuestMap />;
 }
 /** Signed out: the whole curriculum, and the way in. */
 function GuestMap() {
@@ -169,7 +174,8 @@ function GuestMap() {
   );
 }
 
-function LearnerMap({ session }: { session: AuthSession }) {
+function LearnerMap() {
+  const session = useSession();
   const me = useQuery(meOptions(session));
   const chosenId = useCurrentLearner();
   // Whose map the address names (features/spaces/identity.ts): yourself at
@@ -220,7 +226,7 @@ function LearnerMap({ session }: { session: AuthSession }) {
     ? learners.find((l) => l.id === learnerId)
     : undefined;
   const progress = useQuery({
-    queryKey: ["account", session.accountId, "pathways", learner?.id],
+    queryKey: qk.account(session.accountId, "pathways", learner?.id),
     enabled: !!learner,
     refetchInterval: 30_000,
     queryFn: ({ signal }) =>
@@ -230,7 +236,7 @@ function LearnerMap({ session }: { session: AuthSession }) {
       }),
   });
   const frontier = useQuery({
-    queryKey: ["account", session.accountId, "pathways-frontier", learner?.id],
+    queryKey: qk.account(session.accountId, "pathways-frontier", learner?.id),
     enabled: !!learner,
     refetchInterval: 30_000,
     queryFn: ({ signal }) =>
@@ -378,6 +384,7 @@ export function MapView({
   // found by the search or the list is framed on it.
   const mapLayers = useLayers();
   const stack = mapLayers.stack;
+  const hereWithLayers = useHereWithLayers();
   const selectedId =
     stack.filter((layer) => layer.kind === "skill").at(-1)?.id ?? "";
   const [frame, setFrame] = useState<{ id: string } | null>(null);
@@ -417,8 +424,9 @@ export function MapView({
   const chooseView = (next: MapMode) => {
     try {
       localStorage.setItem(VIEW_KEY, next);
-    } catch {
+    } catch (error) {
       // This device keeps no choice; the address still carries it.
+      console.warn("This device keeps no map view", error);
     }
     setRemembered(next);
     void navigate({
@@ -584,7 +592,7 @@ export function MapView({
                 to="/lessons/$templateId/watch"
                 params={{ templateId: shownFound.id }}
                 search={{
-                  from: window.location.pathname + window.location.search,
+                  from: hereWithLayers,
                 }}
               >
                 Watch
