@@ -108,7 +108,7 @@ const watchPractice = `(() => {
   window.__tap = performance.now();
   const boxes = (window.__practiceBoxes = []);
   const poll = () => {
-    if (location.pathname === "/practice") return;
+    if (location.pathname.startsWith("/practice")) return;
     const button = document.querySelector(
       "[data-layer-frame] [data-curriculum-practice] button",
     );

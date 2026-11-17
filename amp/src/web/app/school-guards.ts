@@ -17,7 +17,7 @@ import { meOptions, queryClient, sessionOptions } from "../lib/query";
 import { studentSession } from "../lib/student-device";
 import { nativeRuntime } from "../native-runtime";
 import { OPEN_KEY, work } from "../nav/entities";
-import { landWithLayers, withoutLayerKeys } from "../nav/legacy-layers";
+import { landingWithLayers, withoutLayerKeys } from "../nav/legacy-layers";
 import { toFamilyChild, toFamilyPage } from "./family-redirect";
 
 /* What the school's routes decide before a screen paints: who may open it,
@@ -302,14 +302,13 @@ export const student = async ({
     null,
     location as never,
   );
-  return landWithLayers(
-    withoutLayerKeys(
-      `/school/${org}/students`,
-      search as Record<string, unknown>,
-    ),
-    [{ kind: "student", id: student }],
-    preload,
+  const href = withoutLayerKeys(
+    `/school/${org}/students`,
+    search as Record<string, unknown>,
   );
+  if (!preload)
+    await landingWithLayers(href, [{ kind: "student", id: student }]);
+  throw redirect({ href, replace: true });
 };
 export const studentWork = async ({
   params,
@@ -338,12 +337,14 @@ export const studentWork = async ({
     attempt,
     location as never,
   );
-  return landWithLayers(
-    withoutLayerKeys(
-      `/school/${org}/students`,
-      search as Record<string, unknown>,
-    ),
-    [{ kind: "student", id: student }, work(student, attempt)],
-    preload,
+  const href = withoutLayerKeys(
+    `/school/${org}/students`,
+    search as Record<string, unknown>,
   );
+  if (!preload)
+    await landingWithLayers(href, [
+      { kind: "student", id: student },
+      work(student, attempt),
+    ]);
+  throw redirect({ href, replace: true });
 };

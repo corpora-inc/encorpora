@@ -45,7 +45,8 @@ function enter(world: World) {
     sessionOptions.queryKey,
     world === "signed out" ? null : SESSION,
   );
-  hub.href = world === "family parent" ? `/family/${FAMILY}/settings` : "/account";
+  hub.href =
+    world === "family parent" ? `/family/${FAMILY}/settings` : "/account";
 }
 
 type Example = {
@@ -61,7 +62,38 @@ type Example = {
 };
 
 const PRIVACY = `/family/${FAMILY}/settings/privacy`;
+const KID = "22222222-2222-4222-8222-222222222222";
+const STUDENT = "33333333-3333-4333-8333-333333333333";
+const CLASS = "/school/org/classes/class";
 const EXAMPLES: Example[] = [
+  // The map's layers and view leave the address for their stores.
+  { from: "/pathways/count-to-20", world: "adult", lands: "/pathways" },
+  {
+    from: "/pathways?skill=count-to-20&lesson=count-objects&topic=frac&filter=3",
+    world: "adult",
+    lands: "/pathways",
+  },
+  {
+    from: `/family/${FAMILY}/kids/${KID}/pathways?open=skill%3Acount-to-20&view=3d&area=geometry`,
+    world: "family parent",
+    lands: `/family/${FAMILY}/kids/${KID}/pathways`,
+  },
+  {
+    from: "/lessons?q=fractions&topic=count-objects",
+    world: "adult",
+    lands: "/pathways",
+  },
+  {
+    from: `${CLASS}/today?lesson=count-objects`,
+    world: "adult",
+    lands: `${CLASS}/today`,
+  },
+  { from: `${CLASS}/map/${STUDENT}`, world: "adult", lands: `${CLASS}/map` },
+  {
+    from: `${CLASS}/map/${STUDENT}/work/abcdef01`,
+    world: "adult",
+    lands: `${CLASS}/map`,
+  },
   {
     from: "/?sign-in=create&return=school&error=bad",
     world: "signed out",
@@ -74,21 +106,22 @@ const EXAMPLES: Example[] = [
     lands: "/reset-password?token=abc",
   },
   { from: "/", world: "adult", consent: true, lands: "/consent" },
-  ...(["export", "consent", "delete", "retention", "measurement"] as const)
-    .flatMap((panel) => [
-      {
-        from: `/account/privacy/${panel}`,
-        world: "family parent" as const,
-        lands: PRIVACY,
-        panel: { overlay: "privacy" as const, id: panel },
-      },
-      {
-        from: `/family/privacy/${panel}`,
-        world: "adult" as const,
-        lands: "/account/privacy",
-        panel: { overlay: "privacy" as const, id: panel },
-      },
-    ]),
+  ...(
+    ["export", "consent", "delete", "retention", "measurement"] as const
+  ).flatMap((panel) => [
+    {
+      from: `/account/privacy/${panel}`,
+      world: "family parent" as const,
+      lands: PRIVACY,
+      panel: { overlay: "privacy" as const, id: panel },
+    },
+    {
+      from: `/family/privacy/${panel}`,
+      world: "adult" as const,
+      lands: "/account/privacy",
+      panel: { overlay: "privacy" as const, id: panel },
+    },
+  ]),
   {
     from: "/family/privacy",
     world: "family parent",
@@ -189,7 +222,9 @@ test("the server serves every row's old address (document-routes.ts)", () => {
 });
 
 test("patterns match whole addresses, a final $ the rest", () => {
-  expect(matchPattern("/family/privacy/$panel", "/family/privacy/export")).toEqual({
+  expect(
+    matchPattern("/family/privacy/$panel", "/family/privacy/export"),
+  ).toEqual({
     panel: "export",
   });
   expect(matchPattern("/family/privacy/$panel", "/family/privacy")).toBeNull();

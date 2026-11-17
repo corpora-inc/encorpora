@@ -78,6 +78,13 @@ async function toPrivacy(old: OldAddress) {
   return loadSettingsHub(session, "privacy");
 }
 
+const pathwaysLegacy = () => import("../features/pathways/legacy-addresses");
+/** The keys a map's address carried its layers and view in (kept here, in
+ * the entry, so `when` needs no chunk; legacy-addresses.ts MAP_KEYS). */
+const MAP_KEYS = ["open", "skill", "lesson", "topic", "filter", "area", "view"];
+const carriesMap = (old: OldAddress) =>
+  MAP_KEYS.some((key) => key in old.search);
+
 /** Every old address, each one hop to where it opens now. */
 export const LEGACY_ALIASES: readonly LegacyAlias[] = [
   // `/` from before the sign-in screens had addresses, in older mail.
@@ -96,7 +103,10 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
     about: "a password reset, by its query",
     when: (old) => "reset-password" in old.search,
     to: ({ search }) =>
-      withQuery("/reset-password", { token: search.token, error: search.error }),
+      withQuery("/reset-password", {
+        token: search.token,
+        error: search.error,
+      }),
   },
   // A consent email's link (its proof in the fragment, consent-entry.ts):
   // signed in, the consent screen takes it; signed out, the pitch.
@@ -108,6 +118,47 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
       (await queryClient.ensureQueryData(sessionOptions))
         ? "/consent"
         : undefined,
+  },
+  // Pathways and the class map from before the layer and map-view stores
+  // (features/pathways/legacy-addresses.ts): the layers and the view the
+  // address named go into their stores; the map's own address, once.
+  {
+    from: "/pathways/$skill",
+    about: "a skill's page from before layers",
+    to: (old) => pathwaysLegacy().then((m) => m.toMap(old, "/pathways")),
+  },
+  {
+    from: "/pathways",
+    about: "the map with its layers or view in the address",
+    when: (old) => carriesMap(old),
+    to: (old) => pathwaysLegacy().then((m) => m.toMap(old)),
+  },
+  {
+    from: "/family/$family/kids/$learner/pathways",
+    about: "a child's map with its layers or view in the address",
+    when: (old) => carriesMap(old),
+    to: (old) => pathwaysLegacy().then((m) => m.toMap(old)),
+  },
+  {
+    from: "/lessons",
+    about: "the lessons library, now the map",
+    to: (old) => pathwaysLegacy().then((m) => m.toMapFromLessons(old)),
+  },
+  {
+    from: "/school/$org/classes/$class/today",
+    about: "Today with a lesson in the address",
+    when: (old) => "lesson" in old.search,
+    to: (old) => pathwaysLegacy().then((m) => m.toLessonLayer(old)),
+  },
+  {
+    from: "/school/$org/classes/$class/map/$student",
+    about: "a class map's student page from before layers",
+    to: (old) => pathwaysLegacy().then((m) => m.toClassMapLayers(old)),
+  },
+  {
+    from: "/school/$org/classes/$class/map/$student/work/$work",
+    about: "a class map's answer page from before layers",
+    to: (old) => pathwaysLegacy().then((m) => m.toClassMapLayers(old)),
   },
   { from: "/account/privacy/$panel", about: "a privacy panel", to: toPrivacy },
   { from: "/family/privacy", about: "a family's privacy", to: toPrivacy },

@@ -3,7 +3,7 @@
   "counts": {
     "redirects": 68,
     "validateSearch": 9,
-    "searchHandoffs": 136,
+    "searchHandoffs": 129,
     "navigatingEffects": 15,
     "renderNavigate": 21,
     "silentCatches": 165,
@@ -17,20 +17,19 @@
       "app/family-redirect.ts": 4,
       "app/family-routes.tsx": 9,
       "app/pay-routes.tsx": 3,
-      "app/router.tsx": 30,
-      "app/school-guards.ts": 16,
+      "app/router.tsx": 29,
+      "app/school-guards.ts": 18,
       "app/school-routes.tsx": 1,
       "features/home/destination.ts": 1,
       "features/pay/legacy.ts": 2,
-      "features/profiles/practice-mode.ts": 1,
-      "nav/legacy-layers.ts": 1
+      "features/profiles/practice-mode.ts": 1
     },
     "validateSearch": {
       "app/router.tsx": 9
     },
     "searchHandoffs": {
       "app/family-routes.tsx": 2,
-      "app/router.tsx": 7,
+      "app/router.tsx": 6,
       "app/school-guards.ts": 2,
       "features/access/AccessScreen.tsx": 3,
       "features/account/AccountReady.tsx": 3,
@@ -53,8 +52,6 @@
       "features/onboarding/setup/FamilySetup.tsx": 2,
       "features/onboarding/Starter.tsx": 1,
       "features/onboarding/StartScreen.tsx": 3,
-      "features/pathways/AreaKey.tsx": 1,
-      "features/pathways/PathwaysScreen.tsx": 5,
       "features/pitch/PitchPage.tsx": 2,
       "features/pitch/targets.ts": 2,
       "features/practice/CurriculumPractice.tsx": 1,

@@ -14,7 +14,6 @@ import {
   createBrowserHistory,
   createMemoryHistory,
   Outlet,
-  isRedirect,
   redirect,
   retainSearchParams,
   useMatch,
@@ -99,16 +98,8 @@ import {
 import { designAllowed, designSearchSchema } from "../features/design/search";
 import { stampPrevious, VIEW_KEYS } from "../lib/return-to";
 import { applyDeferredIdentity } from "../features/school/join/api";
-import { legacyLayers, settleLegacyLayers } from "../nav/links";
-import { landWithLayers, withoutLayerKeys } from "../nav/legacy-layers";
-import {
-  layerScope,
-  pushed,
-  seedLayers,
-  useLayerStore,
-  type Layer,
-} from "../nav/layer-store";
-import { MAX_LAYERS, OPEN_KEY, work } from "../nav/entities";
+import { settleLegacyLayers } from "../nav/links";
+import { layerScope, seedLayers, useLayerStore } from "../nav/layer-store";
 import {
   adoptPracticeMode,
   followResolvedLearner,
@@ -779,67 +770,6 @@ const inventory = createRoute({
     "InventoryScreen",
   ),
 });
-/** A screen's address from before lesson layers (`?lesson=<type>`): the
- * same screen with the lesson as a layer over it, in one hop. */
-async function lessonAsLayer(
-  location: { pathname: string; search: Record<string, unknown> },
-  preload?: boolean,
-) {
-  const { lesson } = location.search;
-  if (lesson === undefined) return;
-  await landWithLayers(
-    withoutLayerKeys(location.pathname, location.search),
-    typeof lesson === "string"
-      ? pushed(legacyLayers(location.search), { kind: "lesson", id: lesson })
-      : legacyLayers(location.search),
-    preload,
-  );
-}
-/**
- * Pathways from before its layers, in one hop: a skill's own address
- * (`/pathways/<skill>`, `?skill=<skill>`), a lesson (`?lesson=`) and an old
- * shared stack (`?open=`) land on the map whose learner the address names
- * (canonicalLearnerAddress: a parent's goes to their child's address), with
- * their layers in that map's store.
- */
-async function pathwaysLayers(
-  location: { pathname: string; search: Record<string, unknown> },
-  preload: boolean | undefined,
-) {
-  const search = location.search;
-  const named = /^\/pathways\/([^/]+)\/?$/.exec(location.pathname)?.[1];
-  const skill = named
-    ? decodeURIComponent(named)
-    : location.pathname === "/pathways" && typeof search.skill === "string"
-      ? search.skill
-      : undefined;
-  const lesson = typeof search.lesson === "string" ? search.lesson : undefined;
-  if (
-    skill === undefined &&
-    search.lesson === undefined &&
-    !(OPEN_KEY in search) &&
-    !(location.pathname === "/pathways" && "skill" in search)
-  )
-    return;
-  // The skill under any layers the address already holds (a lesson), then
-  // a lesson the address names over them.
-  let stack: Layer[] = legacyLayers(search);
-  if (skill) stack = [{ kind: "skill", id: skill }, ...stack];
-  if (lesson) stack = pushed(stack, { kind: "lesson", id: lesson });
-  const map = withoutLayerKeys("/pathways", search);
-  const [path, query = ""] = map.split("?");
-  let href = map;
-  try {
-    await canonicalLearnerAddress({
-      pathname: path!,
-      searchStr: query ? `?${query}` : "",
-    });
-  } catch (thrown) {
-    if (!isRedirect(thrown)) throw thrown;
-    href = (thrown as { options: { href?: string } }).options.href ?? map;
-  }
-  await landWithLayers(href, stack.slice(0, MAX_LAYERS), preload);
-}
 /** One map for the whole curriculum: a skill opens over it as a layer
  * (nav/layer-store.ts), so choosing or closing one never moves the map (its
  * camera, full screen and orbit stay as they were). */
@@ -847,15 +777,10 @@ const pathways = createRoute({
   getParentRoute: () => root,
   path: "/pathways",
   staticData: { space: "learner" },
-  beforeLoad: async ({ location, preload }) => {
+  beforeLoad: async ({ location }) => {
     await framedScreen();
-    await pathwaysLayers(
-      {
-        pathname: location.pathname,
-        search: location.search as Record<string, unknown>,
-      },
-      preload,
-    );
+    // Its older addresses (a skill's own, `?skill=`, `?lesson=`, `?open=`,
+    // `?topic=`) are rows of app/legacy-aliases.ts.
     await canonicalLearnerAddress(location);
     await adoptPracticeMode(location);
   },
@@ -894,31 +819,12 @@ const lessonsHome = createRoute({
   getParentRoute: () => root,
   path: "/lessons",
   staticData: { space: "learner" },
-  beforeLoad: async ({ location, preload }) => {
-    const params = new URLSearchParams(location.searchStr);
-    const query = params.get("q")?.trim();
-    // `?topic=` named a problem type's short lesson: Pathways opens it, in
-    // the same one hop.
-    const lesson = params.get("topic")?.trim();
-    if (lesson)
-      await pathwaysLayers(
-        {
-          pathname: "/pathways",
-          search: { ...(query ? { topic: query } : {}), lesson },
-        },
-        preload,
-      );
-    throw redirect({
-      to: "/pathways",
-      search: query ? { topic: query } : {},
-      replace: true,
-    });
-  },
+  // Opens the map: a row of app/legacy-aliases.ts (`/lessons`).
 });
 const pathwaySkill = createRoute({
   getParentRoute: () => pathways,
   path: "$skillId",
-  // Its parent's beforeLoad lands it on the map, with the skill over it.
+  // Opens the map with the skill over it: a row of app/legacy-aliases.ts.
 });
 /** A learner's workbooks are a tab of their Progress. The address names
  * the learner (`$learnerId`): the screen reads it from there, and once the
@@ -1124,15 +1030,8 @@ const schoolClassHome = createRoute({
 const schoolClassToday = createRoute({
   getParentRoute: () => schoolClass,
   path: "today",
-  // Today's lesson from before layers (`?lesson=`): a layer over Today.
-  beforeLoad: ({ location, preload }) =>
-    lessonAsLayer(
-      {
-        pathname: location.pathname,
-        search: location.search as Record<string, unknown>,
-      },
-      preload,
-    ),
+  // Today's lesson from before layers (`?lesson=`): a row of
+  // app/legacy-aliases.ts, a layer over Today.
   // A family's own class lists children from other families: there before
   // the screen paints.
   loader: async ({ context, params }) => {
@@ -1179,32 +1078,12 @@ const schoolClassMap = createRoute({
 const schoolClassMapStudent = createRoute({
   getParentRoute: () => schoolClassMap,
   path: "$student",
-  beforeLoad: ({ params, location, preload }): Promise<never> => {
-    const at = params as unknown as Record<string, string>;
-    return landWithLayers(
-      withoutLayerKeys(
-        `/school/${at.org}/classes/${at.class}/map`,
-        location.search as Record<string, unknown>,
-      ),
-      [{ kind: "student", id: at.student! }],
-      preload,
-    );
-  },
+  // A row of app/legacy-aliases.ts: the student's layer over the map.
 });
 const schoolClassMapWork = createRoute({
   getParentRoute: () => schoolClassMapStudent,
   path: "work/$work",
-  beforeLoad: ({ params, location, preload }): Promise<never> => {
-    const at = params as unknown as Record<string, string>;
-    return landWithLayers(
-      withoutLayerKeys(
-        `/school/${at.org}/classes/${at.class}/map`,
-        location.search as Record<string, unknown>,
-      ),
-      [{ kind: "student", id: at.student! }, work(at.student!, at.work!)],
-      preload,
-    );
-  },
+  // A row of app/legacy-aliases.ts: the answer's layers over the map.
 });
 const schoolClassGradebook = createRoute({
   getParentRoute: () => schoolClass,

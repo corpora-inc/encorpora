@@ -540,11 +540,10 @@ export function MapView({
             ) : shownFound.kind === "film" ? (
               <Link
                 className={layers.rowAction}
-                to="/lessons/$templateId/watch"
+                to="/$"
                 // Closing the film comes Back here, the map's layers as
                 // they were (nav/layer-store.ts).
-                params={{ templateId: shownFound.id }}
-                search={{}}
+                params={{ _splat: `lessons/${shownFound.id}/watch` }}
               >
                 Watch
               </Link>
@@ -568,16 +567,18 @@ export function MapView({
               <Link
                 className={buttonClass("primary")}
                 to="/$"
+                // The skill's practice, at its own address; a problem type
+                // the search found: that one (it wins over its skill).
                 params={
-                  learnerId ? practiceParams(learnerId) : { _splat: "practice" }
+                  learnerId
+                    ? practiceParams(learnerId, {
+                        skill: skillId,
+                        ...(found?.kind === "type" || found?.kind === "film"
+                          ? { template: found.id }
+                          : {}),
+                      })
+                    : { _splat: "practice" }
                 }
-                search={{
-                  skill: skillId,
-                  // A problem type the search found: that one.
-                  ...(found?.kind === "type" || found?.kind === "film"
-                    ? { template: found.id }
-                    : {}),
-                }}
               >
                 <PracticeLabel />
               </Link>
@@ -892,9 +893,13 @@ export function MapView({
               className={buttonClass("primary")}
               to="/$"
               params={
-                learnerId ? practiceParams(learnerId) : { _splat: "practice" }
+                learnerId
+                  ? practiceParams(learnerId, {
+                      skill: practiced,
+                      template: type,
+                    })
+                  : { _splat: "practice" }
               }
-              search={{ skill: practiced, template: type }}
             >
               <PracticeLabel />
             </Link>
