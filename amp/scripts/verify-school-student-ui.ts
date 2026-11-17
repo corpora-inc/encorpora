@@ -168,7 +168,9 @@ async function open(
         json: { error: "An active student license is required" },
       });
     }
-    // A parent's session check is legitimate once the student has signed out.
+    // A parent's session check is legitimate once the student has signed
+    // out (or their sign-in is forgotten): this device has no account.
+    if (path === "/api/auth/get-session") return route.fulfill({ json: null });
     return route.fulfill({ status: 404, json: { error: "Not found" } });
   });
   // Once per tab, so signing out can clear it.
@@ -503,7 +505,15 @@ try {
       slowJoin: 2000,
     });
     await page.waitForURL("**/join");
-    await page.getByRole("heading", { name: "Type your code" }).waitFor();
+    await page
+      .getByRole("heading", { name: "Type your code" })
+      .waitFor()
+      .catch(async (error) => {
+        throw new Error(
+          `/join at ${page.url()} shows: ${(await page.locator("body").innerText()).slice(0, 300)}`,
+          { cause: error },
+        );
+      });
     assert.equal(new URL(page.url()).pathname, "/join");
     assert.equal(
       await page.evaluate(() => sessionStorage.getItem("amp.student")),
