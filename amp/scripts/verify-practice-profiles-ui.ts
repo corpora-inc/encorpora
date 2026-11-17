@@ -206,8 +206,22 @@ async function newContext(
     timezoneId: "America/Chicago",
   });
   await context.addInitScript(shiftRecorder);
+  // The plans and prices (Stripe's, which this server has no keys for):
+  // a year and a month, as the store sells them.
+  await context.route(/\/api\/v1\/billing\/(prices|offer)(\?|$)/, (route) =>
+    route.fulfill({ json: { available: true, offer: OFFERS[0], offers: OFFERS } }),
+  );
   return context;
 }
+const OFFERS = ["year", "month"].map((interval, i) => ({
+  id: (i ? "b" : "a").repeat(64),
+  mode: "test",
+  currency: "USD",
+  amountMinor: i ? 5900 : 59900,
+  formattedAmount: i ? "$59.00" : "$599.00",
+  interval,
+  learnerCount: 1,
+}));
 const menuButton = (page: Page) =>
   page
     .getByRole("button", { name: /^(Open|Close) AMP menu$/ })
@@ -766,11 +780,22 @@ async function teacherCopiesAStudent(
     await page.waitForURL(/\/pay(?:\/|$)/);
   };
   await continueFromPause();
-  // Continue with AMP opens choosing a plan, over the account.
+  // Continue with AMP opens choosing a plan, over the account: the plans
+  // themselves, a year and a month, ready to choose.
   await page
     .getByRole("heading", { name: "Choose your plan" })
     .first()
     .waitFor();
+  const plans = page.getByRole("radiogroup", { name: "Plan" });
+  await plans.waitFor();
+  check(
+    `${label} Continue offers the plans`,
+    (await plans.getByRole("radio").count()) === 2 &&
+      /\$599\.00/.test(await plans.innerText()) &&
+      /\$59\.00/.test(await plans.innerText()) &&
+      (await page.getByText(/load the plans/).count()) === 0,
+    await plans.innerText(),
+  );
   check(
     `${label} a profile without children continues with their own practice`,
     path(page) === `/account/pay/${copy.id}` &&

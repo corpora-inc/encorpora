@@ -400,7 +400,16 @@ const controlBoxes = (page: Page) =>
       ),
     ].map((el) => {
       const box = el.getBoundingClientRect();
-      return [Math.round(box.x), Math.round(box.y), Math.round(box.width)];
+      // Where it sits in the sheet's content: a click scrolls the sheet to
+      // bring its control into view, which moves nothing in the layout.
+      let scrolled = 0;
+      for (let at = el.parentElement; at; at = at.parentElement)
+        scrolled += at.scrollTop;
+      return [
+        Math.round(box.x),
+        Math.round(box.y + scrolled),
+        Math.round(box.width),
+      ];
     }),
   );
 
