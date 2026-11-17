@@ -3,13 +3,13 @@
   "counts": {
     "redirects": 5,
     "validateSearch": 9,
-    "searchHandoffs": 120,
+    "searchHandoffs": 119,
     "navigatingEffects": 14,
     "renderNavigate": 16,
-    "silentCatches": 121,
-    "sessionProps": 36,
-    "sessionReads": 16,
-    "inlineQueryKeys": 21,
+    "silentCatches": 106,
+    "sessionProps": 35,
+    "sessionReads": 14,
+    "inlineQueryKeys": 19,
     "nativeControls": 24
   },
   "files": {
@@ -23,7 +23,6 @@
       "app/router.tsx": 9
     },
     "searchHandoffs": {
-      "app/router.tsx": 1,
       "features/access/AccessScreen.tsx": 3,
       "features/account/AccountReady.tsx": 3,
       "features/account/DeleteAccount.tsx": 1,
@@ -123,14 +122,11 @@
     },
     "silentCatches": {
       "AccountSecurity.tsx": 2,
-      "app/boot.tsx": 1,
-      "app/router.tsx": 9,
       "auth-config.ts": 1,
       "auth.ts": 3,
       "BookReader.tsx": 1,
       "Calculator.tsx": 3,
       "capability-entry.ts": 1,
-      "FamilyCenter.tsx": 2,
       "features/auth/passkey.ts": 1,
       "features/auth/SignInScreen.tsx": 2,
       "features/dev/PersonaSwitcher.tsx": 3,
@@ -179,14 +175,12 @@
       "native-session.ts": 1,
       "NativePreview.tsx": 1,
       "ParentConsentCenter.tsx": 2,
-      "PaymentHistoryCenter.tsx": 3,
       "PracticeWorkspace.tsx": 1,
       "purchase-return.ts": 5,
       "scene/money-art.ts": 1,
       "share-entry.ts": 1
     },
     "sessionProps": {
-      "FamilyCenter.tsx": 1,
       "features/access/AccessScreen.tsx": 1,
       "features/family/TutoringGroup.tsx": 5,
       "features/onboarding/setup/FamilySetup.tsx": 1,
@@ -203,7 +197,6 @@
     },
     "sessionReads": {
       "app/LegacyApp.tsx": 1,
-      "app/router.tsx": 2,
       "features/access/AccessScreen.tsx": 1,
       "features/onboarding/Starter.tsx": 2,
       "features/onboarding/StartScreen.tsx": 1,
@@ -218,7 +211,6 @@
       "lib/learning-view.ts": 1
     },
     "inlineQueryKeys": {
-      "app/router.tsx": 2,
       "features/onboarding/starter-api.ts": 1,
       "features/onboarding/Starter.tsx": 1,
       "features/school/classes/teacher-api.ts": 1,
