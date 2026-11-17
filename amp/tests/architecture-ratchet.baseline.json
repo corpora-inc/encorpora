@@ -2,7 +2,7 @@
   "about": "Frontend anti-pattern counts in src/web; they only fall (amp/AGENTS.md, Frontend architecture). Enforced by tests/architecture-ratchet.test.ts; `files` locates the counts for its failure messages.",
   "counts": {
     "redirects": 1,
-    "validateSearch": 7,
+    "validateSearch": 6,
     "searchHandoffs": 70,
     "navigatingEffects": 7,
     "renderNavigate": 4,
@@ -17,7 +17,7 @@
       "features/profiles/practice-mode.ts": 1
     },
     "validateSearch": {
-      "app/router.tsx": 7
+      "app/router.tsx": 6
     },
     "searchHandoffs": {
       "features/account/AccountReady.tsx": 2,

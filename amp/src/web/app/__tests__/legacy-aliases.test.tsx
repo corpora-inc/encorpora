@@ -178,6 +178,17 @@ const EXAMPLES: Example[] = [
     world: "signed out",
     lands: "/reset-password?token=abc",
   },
+  {
+    from: "/design?frame=specimen&specimen=tab-row-family-open&theme=dark",
+    world: "signed out",
+    lands: "/design/specimen/tab-row-family-open",
+  },
+  {
+    from: "/design?frame=canvas&theme=light#buttons",
+    world: "signed out",
+    lands: "/design/canvas#buttons",
+  },
+  { from: "/design?width=390", world: "signed out", lands: "/design" },
   { from: "/try", world: "signed out", lands: "/sign-up?return=free-practice" },
   { from: "/try/anything", world: "adult", lands: `/family/${FAMILY}` },
 
