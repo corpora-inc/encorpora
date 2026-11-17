@@ -18,6 +18,7 @@ import { pricesOptions } from "../billing/prices";
 import { PitchLink, usePitchNav } from "./nav";
 import { pitchProgram, pitchTarget } from "./targets";
 import styles from "./Pitch.module.css";
+import { useToRoot } from "../../nav/root";
 
 export const REFUND_POLICY_URL = "https://corpora.inc/legal/refund/";
 /** The guarantee, the same on every route that carries it; the asterisk
@@ -129,6 +130,7 @@ export function BuyOptions({
   onInterval?: (interval: "year" | "month") => void;
 }) {
   const nav = usePitchNav();
+  const toHome = useToRoot();
   const [own, setOwn] = useState<"year" | "month">("year");
   const interval = chosen ?? own;
   const choose = onInterval ?? setOwn;
@@ -147,8 +149,9 @@ export function BuyOptions({
     // The plan waits for the learner it is for: after sign-up and "What
     // brings you to AMP?", it opens for them with this plan chosen.
     rememberPlanChoice(next);
-    // Signed in: the root opens their place, where the plan waits.
-    nav.go(signedIn ? { to: "/" } : pitchTarget("card", search));
+    // Signed in: their place, where the plan waits.
+    if (signedIn) toHome();
+    else nav.go(pitchTarget("card", search));
   }
   if (program && fundedOffer) {
     const link = (

@@ -103,10 +103,6 @@ const COMPONENTS: Allowed = {
 
 /** Screens not on Page yet: phase 2 moves them and deletes their lines. */
 const PHASE_2: Allowed = {
-  "annual-purchase.css": {
-    widths: ["46rem"],
-    why: "the native app's legacy annual purchase",
-  },
   "parent-consent.css": {
     widths: ["52rem"],
     why: "the parent consent centre",
@@ -175,10 +171,6 @@ const PHASE_2: Allowed = {
   "features/schools/Parent.module.css": {
     widths: ["720px"],
     why: "a parent's progress link",
-  },
-  "funding-purchase.css": {
-    widths: ["900px"],
-    why: "the native app's legacy education-funds centre",
   },
   "native-session.css": { widths: ["640px"], why: "the native session screen" },
   "payment-history.css": {
@@ -387,8 +379,12 @@ const ROUTES_PHASE_2: Record<string, string> = {
 /** Route screens that never will: another product's frame, or a
  * development tool. */
 const ROUTES_EXEMPT: Record<string, string> = {
-  "features/funding/FundedEntry.tsx#FundedEntry":
-    "a redirect to /purchase/funded; it renders nothing",
+  "features/pay/hosts.tsx#ChildPayHost":
+    "a child's page (ChildScreen renders Page) with the pay overlay's outlet over it",
+  "features/pay/hosts.tsx#TodayPayHost":
+    "the family's Today (it renders Page) with the pay overlay's outlet over it",
+  "features/pay/hosts.tsx#BillingPayHost":
+    "Billing (it renders Page) with the pay overlay's outlet over it",
   "features/pitch/PitchScreen.tsx#PitchScreen":
     "the signed-out pitch: a marketing page with its own art direction",
   "features/schools/index.ts#SchoolsScreen":
@@ -485,6 +481,7 @@ export function routeScreens() {
     "app/router.tsx",
     "app/family-routes.tsx",
     "app/school-routes.tsx",
+    "app/pay-routes.tsx",
   ]) {
     const source = read(from);
     const loaders = new Map<string, string>();
@@ -605,44 +602,30 @@ test("every route's screen renders Page, or is listed with its reason", () => {
  * no longer matches fails, so the list only shrinks.
  */
 const BACK_DEBT: Record<string, string> = {
-  "AnnualPurchase.tsx":
-    "a pay surface: the pay flow (redo-pay-flow) replaces it with the stepper in its overlay",
   "BookReader.tsx":
     "a legacy screen (phase 2): replaced when its feature migrates",
-  "ChooseHowToPay.tsx":
-    "a pay surface: the pay flow (redo-pay-flow) replaces it with the stepper in its overlay",
-  "FundingPurchaseCenter.tsx":
-    "a pay surface: the pay flow (redo-pay-flow) replaces it with the stepper in its overlay",
   "NativeGate.tsx":
     "a legacy screen (phase 2): replaced when its feature migrates",
   "ParentConsentCenter.tsx":
     "a legacy screen (phase 2): replaced when its feature migrates",
-  "PaymentHistoryCenter.tsx":
-    "a pay surface: the pay flow (redo-pay-flow) replaces it with the stepper in its overlay",
   "PracticeWorkspace.tsx":
     "a legacy screen (phase 2): replaced when its feature migrates",
   "ProgressWorkspace.tsx":
     "a legacy screen (phase 2): replaced when its feature migrates",
   "app/LegacyApp.tsx":
     "a legacy screen (phase 2): replaced when its feature migrates",
-  "features/account/Receipts.tsx":
-    "a pay surface: the pay flow (redo-pay-flow) replaces it with the stepper in its overlay",
   "features/auth/SignInScreen.tsx":
     "a sign-in or first-run card step: to move onto the shared stepper (phase 2)",
   "features/design/sections/states.tsx":
     "the /design gallery's sample empty state",
   "features/films/FilmScreen.tsx":
     "the immersive film's return to its problem or lesson: to become its ✕ (phase 2)",
-  "features/funding/InvoiceForm.tsx":
-    "a pay surface: the pay flow (redo-pay-flow) replaces it with the stepper in its overlay",
   "features/me/OwnTimeScreen.tsx":
     "an adult's practice time: Progress's tab replaces it (phase 2)",
   "features/navigation/DrawerContents.tsx":
     "practice modes' way back to where they started, in the bar and drawer: to become the mode's exit (phase 2)",
   "features/onboarding/LearnerSteps.tsx":
     "a sign-in or first-run card step: to move onto the shared stepper (phase 2)",
-  "features/onboarding/PurchaseStep.tsx":
-    "a pay surface: the pay flow (redo-pay-flow) replaces it with the stepper in its overlay",
   "features/pathways/LessonRecovery.tsx":
     "an overlay's failure state names where ✕ returns; to become the overlay's ✕ (phase 2)",
   "features/practice/StudentSignOut.tsx":

@@ -48,7 +48,8 @@ amp/src/web/
     lessons/      /lessons, /lessons/:type
     progress/     /progress/:learnerId
     family/       /family/learners, /family/access, /family/privacy
-    billing/      /purchase/*: plan choice, Stripe redirect and return, receipts, ESA
+    billing/      plan control, offers, enrollment checkout, receipts
+    pay/          /pay/<learner>: the one pay flow (see "Pay")
 ```
 
 **Module boundaries:**
@@ -96,6 +97,16 @@ One guard (`features/onboarding/guard.ts`) maps `me.next` to the allowed steps f
 - One task per screen, with progress shown, Back working at every step, and everything resumable by URL.
 - No settings detours, and no 403 ever reaches the screen.
 - Email-plus consent is offered only to parents who don't pay by card. It's a step in the same flow, with clear "we'll email you" states.
+
+## Pay (an overlay over the screen it opens from)
+
+Paying for a learner is one overlay (`features/pay`, the shared `Sheet`), nested under the screen it was opened from, which stays behind it: `/family/<family>/kids/<learner>/pay` over a child's page, `/family/<family>/pay/<learner>` over Today, `/account/billing/pay/<learner>` over Billing (`address.ts`). The cross, Escape or the scrim close it to exactly that screen's address; there is no Back control. A refresh restores it over its screen.
+
+- `…/pay`: "Choose your plan / For <name>". **Card | Education funds** are tabs of the overlay (the shared `Segmented`); both panels draw in one grid cell, so switching moves nothing. Card: the plan control (`PlanPicker`, shared by both tabs), then Stripe Checkout; a child of a family without consent pays through the enrollment checkout with the direct notice. Education funds: steps (program, plan, the student's name as the program account has it), then **Create invoice**, which creates the invoice and claims it for the learner in one action: access starts at once, and the invoice email is queued with the invoice.
+- `…/pay/done`: back from Stripe; follows the verified payment until the learner has access.
+- `…/pay/invoice/<invoice>`: the invoice: access, the PDF, the program's own submission steps (the offer's `instructions`, one sentence to a step), its deadline, and "I've submitted it". Its later status is in Billing.
+
+**State.** Paths name the screen behind, the learner and the invoice; nothing else rides in the address. The tab, plan, program and education-funds step live in the pay store (`features/pay/store.ts`, zustand, keyed by account and learner, kept for the tab in sessionStorage); the billing name is in memory only. Switching tabs or steps is never a new address or history entry. Server data is in the Query cache; mutations invalidate the account. Stripe's return address is read once (`stripe-return.ts`), resolved through the server, and replaced by the overlay it was opened from, on its confirmation. Older addresses (`/continue/<learner>`, `/pay/<learner>`, `/purchase/annual`, `/purchase/funded`, `/purchase/choose`, the program entries) each make one hop to the overlay over the learner's own page and seed the store with what they carried (`app/pay-routes.tsx`).
 
 ## Public documents and indexing
 

@@ -229,9 +229,9 @@ export function PaymentHistoryCenter({
       <header>
         <button
           onClick={back}
-          aria-label={selected ? "Back to payment records" : "Back to family"}
+          aria-label={selected ? "Close payment details" : "Close payment records"}
         >
-          Back
+          Close
         </button>
         <h1 id="payment-history-title" ref={heading} tabIndex={-1}>
           {record ? "Payment details" : "Payment records"}

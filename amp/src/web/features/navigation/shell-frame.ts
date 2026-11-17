@@ -168,19 +168,12 @@ export function shellFrame(
   if (under(path, "/family/privacy"))
     return { kind: "account", active: "privacy" };
   if (under(path, "/family")) return { kind: "account", active: "learners" };
-  // Buying and the parent notice are steps of Billing and Privacy. The
-  // funded-program entries (`/purchase/arizona-esa`, …) have their own frame.
-  if (
-    path === "/purchase" ||
-    path === "/purchase/choose" ||
-    path === "/purchase/annual" ||
-    path === "/purchase/funded"
-  )
-    return { kind: "account", active: "access" };
+  // The parent notice is a step of Privacy.
   if (path === "/consent") return { kind: "account", active: "privacy" };
-  // "Continue with AMP" for one learner is a step of whatever led there
-  // (practice, Today, Billing), so it has the plain bar and its own way back.
-  if (under(path, "/continue")) return { kind: "plain" };
+  // Paying for one learner (`/pay/<learner>/…`) is a step of whatever led
+  // there (practice, Today, Billing), so it has the plain bar and its own
+  // way back, on every step alike.
+  if (under(path, "/pay")) return { kind: "plain" };
   // "What brings you to AMP?", each answer's question, and the steps of a
   // parent's or a tutor's setup.
   if (

@@ -13,12 +13,16 @@ export function FlowSteps({
   steps,
   current,
   href,
+  onStep,
   label = "Steps",
 }: {
   steps: readonly { id: string; label: string }[];
   current: number;
   /** A done step's address, from the flow's own step map. */
   href?: (id: string) => string;
+  /** Or, for a flow whose steps are state on one address (the pay
+   * overlay's education funds): going back to a done step. */
+  onStep?: (id: string) => void;
   label?: string;
 }) {
   if (steps.length < 2) return null;
@@ -42,6 +46,14 @@ export function FlowSteps({
                 <Link to={href(step.id) as never} className={styles.step}>
                   {content}
                 </Link>
+              ) : state === "done" && onStep ? (
+                <button
+                  type="button"
+                  className={styles.step}
+                  onClick={() => onStep(step.id)}
+                >
+                  {content}
+                </button>
               ) : (
                 <span
                   className={styles.step}

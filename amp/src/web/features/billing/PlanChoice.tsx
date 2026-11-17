@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { AnnualOffer } from "../../../billing/stripe/purchase-contracts";
 import { Segmented } from "../../ui/Segmented";
 import { annualSaving, formatUsd } from "./payment-url";
@@ -26,6 +27,7 @@ export function PlanChoice({
   interval,
   onChange,
   disabled = false,
+  terms,
 }: {
   offers: AnnualOffer[];
   /** The server's additional-child offers, shown as one line when sold. */
@@ -33,6 +35,9 @@ export function PlanChoice({
   interval: "year" | "month";
   onChange: (interval: "year" | "month") => void;
   disabled?: boolean;
+  /** The plan's terms, when they aren't a renewing card subscription's
+   * (an education-funds invoice: one term, no renewal). */
+  terms?: ReactNode;
 }) {
   const selected =
     offers.find((offer) => offer.interval === interval) ?? offers[0];
@@ -77,14 +82,20 @@ export function PlanChoice({
             {additional}
           </p>
         )}
-        <p className={styles.terms}>
-          Renews each {selected.interval} until you cancel. Tax is shown at
-          checkout.
-          {selected.mode === "test" && (
-            <span className={styles.sandbox}> Sandbox: no real payment.</span>
-          )}
-        </p>
+        {terms ?? (
+          <p className={styles.terms}>
+            Renews each {selected.interval} until you cancel. Tax is shown at
+            checkout.
+            {selected.mode === "test" && (
+              <span className={styles.sandbox}> Sandbox: no real payment.</span>
+            )}
+          </p>
+        )}
       </div>
     </div>
   );
+}
+/** A plan's terms line, in PlanChoice's style, for `terms`. */
+export function PlanTerms({ children }: { children: ReactNode }) {
+  return <p className={styles.terms}>{children}</p>;
 }

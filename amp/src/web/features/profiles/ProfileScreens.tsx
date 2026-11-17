@@ -46,6 +46,7 @@ import {
 import { practiceAs } from "./practice-mode";
 import { GradePicker } from "./GradePicker";
 import styles from "./Profiles.module.css";
+import { useToRoot } from "../../nav/root";
 
 const paceOptions: SegmentedOption<ProfilePace>[] = profilePaces.map(
   (pace) => ({
@@ -475,6 +476,7 @@ function ProfileEditor({
   back: ReturnType<typeof leaveTarget>;
 }) {
   const navigate = useNavigate();
+  const toHome = useToRoot();
   const [label, setLabel] = useState(profile.label);
   const [levels, setLevels] = useState(profile.levels);
   const [confirm, setConfirm] = useState(false);
@@ -575,11 +577,9 @@ function ProfileEditor({
                   const store = useLearnerStore.getState();
                   if (store.learnerId === profile.id)
                     store.select(back.own ?? back.first);
-                  void navigate(
-                    back.own
-                      ? { to: "/$", params: { _splat: "me" } }
-                      : { to: "/" },
-                  );
+                  if (back.own)
+                    void navigate({ to: "/$", params: { _splat: "me" } });
+                  else toHome();
                 },
               })
             }
