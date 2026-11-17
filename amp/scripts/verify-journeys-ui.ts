@@ -1071,7 +1071,7 @@ async function tutorJourney(
   await page.waitForURL(/\/start\/tutor\/ready$/);
   await heading(page, "Your class is ready");
   await shot(page, 4, "setup-ready", width, theme);
-  await page.getByRole("link", { name: "Go to Today" }).click();
+  await page.getByRole("button", { name: "Go to Today" }).click();
   // Other families' children only: the tutoring group is its class's
   // classroom, never a family; its people are the class's Students.
   await page.waitForURL(CLASS_TODAY);
@@ -1142,6 +1142,9 @@ async function tutorJourney(
   const childName = parent.getByLabel("Your child’s name");
   await childName.waitFor();
   await childName.fill("Ana");
+  // The birth year sets where Ana's practice starts, and whether she is
+  // under 13 (features/family-approval/ApprovalScreen.tsx).
+  await pickYear(parent, "Your child’s birth year");
   await shot(parent, 4, "approve", width, theme);
   await parent.getByRole("button", { name: /^Approve .+ joining/ }).click();
   await heading(parent, /^Ana is in /);
@@ -1198,15 +1201,18 @@ async function schoolJourney(
   );
   await measured(page, `${label} demo school`);
   await shot(page, 5, "demo-school", width, theme);
-  const talk = page.locator("[data-demo-action]").filter({ visible: true });
+  // The demo's one action is the real thing, set up on their own: a leader
+  // sets up their real school (school/demo/DemoSetupAction.tsx).
+  const real = page.locator("[data-demo-action]").filter({ visible: true });
   check(
-    `${label} the action is Talk to us`,
-    (await talk.getAttribute("aria-label")) === "Talk to us",
+    `${label} the action is Set up your real school`,
+    (await real.getAttribute("aria-label")) === "Set up your real school",
   );
-  await talk.click();
-  await page.waitForURL(/\/schools#talk$/);
-  await page.getByRole("heading", { name: "Talk to us." }).waitFor();
-  await shot(page, 5, "talk", width, theme);
+  await real.click();
+  await page.waitForURL(/\/school\/start\/school$/);
+  await heading(page, "Set up your school");
+  await measured(page, `${label} real school`);
+  await shot(page, 5, "real-school", width, theme);
   await context.close();
 }
 
@@ -1262,28 +1268,19 @@ async function returningJourney(
   );
   await measured(back, `${label} home`);
   await shot(back, 6, "home", width, theme);
-  // An adult's own practice is its own place, never a learner in the
-  // family (the family adds only children): the switcher starts it, and the
-  // year is all it asks.
-  await back
-    .getByRole("button", { name: "Open AMP menu" })
-    .filter({ visible: true })
-    .first()
-    .click();
-  await back.getByRole("dialog").waitFor();
-  await back
-    .getByRole("button", { name: /: switch place$/ })
-    .filter({ visible: true })
-    .first()
-    .click();
-  const places = back.getByRole("menu");
-  await places.getByRole("menuitem", { name: /Practice yourself/ }).click();
-  await places.waitFor({ state: "detached" });
-  await back.waitForURL(/\/me\/start$/);
-  await heading(back, "What year were you born?");
+  // An adult's own practice is their own learner, never a learner in the
+  // family (the family adds only children). It starts in place in the
+  // family's Settings › People (IA v2 §3.3, me/OwnPractice.tsx), then
+  // Practice.
+  await back.goto(`${origin}${new URL(back.url()).pathname}/settings`);
+  const startOwn = back.locator("[data-start-own-practice]");
+  await startOwn.waitFor();
   await shot(back, 6, "own-practice-start", width, theme);
-  await back.getByRole("radio", { name: "Adult", exact: true }).click();
-  await back.getByRole("button", { name: "Start practicing" }).click();
+  await startOwn.click();
+  await back
+    .locator("[data-own-practice]")
+    .getByRole("button", { name: "Practice", exact: true })
+    .click();
   await practicing(back);
   check(
     `${label} their own learner, not a family one`,

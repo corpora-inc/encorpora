@@ -169,12 +169,13 @@ export async function probe(page: Page): Promise<ShellProbe> {
       const r = el.getBoundingClientRect();
       if (r.width >= 43.5 && r.height >= 43.5) continue;
       const display = getComputedStyle(el).display;
-      // WCAG 2.5.8 exempts links inside running text.
+      // WCAG 2.5.8 exempts a target inside running text: a link, or a
+      // button drawn as one (it opens something rather than going).
       if (
-        el.tagName === "A" &&
+        /^(A|BUTTON)$/.test(el.tagName) &&
         display === "inline" &&
         el.parentElement &&
-        /^(P|LI|SPAN|SMALL|DD|TD)$/.test(el.parentElement.tagName) &&
+        /^(P|LI|SPAN|SMALL|DD|TD|LABEL)$/.test(el.parentElement.tagName) &&
         (el.parentElement.textContent ?? "").trim().length >
           (el.textContent ?? "").trim().length + 12
       ) {
