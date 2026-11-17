@@ -308,6 +308,10 @@ try {
         `${label}: the worked steps are shown`,
       );
 
+      // Where "See why" opened its explanation over the sheet (an editor
+      // or figure dock beside the problem), it closes back to the sheet.
+      if (await page.locator("dialog[open]").count())
+        await page.keyboard.press("Escape");
       // Next continues with a new problem.
       await page.locator(".next-action").click();
       await page.locator(".feedback").waitFor({ state: "detached" });
