@@ -144,7 +144,7 @@ try {
       });
       await page.goto(origin + "/start/plan");
       const checkout = page.getByRole("button", {
-        name: "Continue to secure checkout",
+        name: "Continue to Stripe",
         exact: true,
       });
       // No parent acknowledgement before paying: card checkout has no
@@ -187,8 +187,7 @@ try {
       await page.waitForFunction(() =>
         [...document.querySelectorAll("button")].some(
           (button) =>
-            button.textContent === "Continue to secure checkout" &&
-            !button.disabled,
+            button.textContent === "Continue to Stripe" && !button.disabled,
         ),
       );
       await page.screenshot({

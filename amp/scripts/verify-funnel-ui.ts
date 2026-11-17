@@ -352,10 +352,8 @@ try {
   await page.goto(`${origin}/continue/funnel-child`);
   await page.getByRole("radio", { name: /Monthly/ }).click();
   await page.getByRole("radio", { name: /Annual/ }).click();
-  await page.getByRole("checkbox").click();
-  await page
-    .getByRole("button", { name: "Continue to secure checkout" })
-    .click();
+  // No parent checkbox before paying (#2402); the card pays at Stripe.
+  await page.getByRole("button", { name: "Continue to Stripe" }).click();
   await page
     .getByRole("heading", { name: "Stripe Checkout fixture" })
     .waitFor();
