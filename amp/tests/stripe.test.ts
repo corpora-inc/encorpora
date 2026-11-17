@@ -492,24 +492,52 @@ test("Checkout prefills the parent's email onto a Customer without one, and neve
   assert.equal(calls.length, 1);
 });
 
-test("a Customer in the other mode is refused before Checkout", async () => {
-  const client = {
-    customers: {
-      retrieve: async (id: string) => ({ id, email: null, livemode: true }),
+test("a failed or inapplicable prefill never stops Checkout", async () => {
+  for (const retrieve of [
+    async () => {
+      throw new Error("timeout");
     },
-  } as unknown as Stripe;
-  await assert.rejects(
-    new StripeGateway(config, client).createCheckout(
-      binding.id,
-      binding.customerId,
-      "year",
-      false,
-      undefined,
-      "full",
-      "parent@example.test",
-    ),
-    /customer_mode_mismatch/,
-  );
+    async (id: string) => ({ id, deleted: true }),
+    async (id: string) => ({ id, email: null, livemode: true }),
+  ]) {
+    const updates: unknown[] = [];
+    const sessions: unknown[] = [];
+    const client = {
+      customers: {
+        retrieve,
+        update: async (...args: unknown[]) => updates.push(args),
+      },
+      checkout: {
+        sessions: {
+          create: async (params: unknown) => {
+            sessions.push(params);
+            return {
+              id: "cs_fixture",
+              url: "https://checkout.stripe.test/fixture",
+              livemode: false,
+            };
+          },
+        },
+      },
+    } as unknown as Stripe;
+    const warn = console.warn;
+    console.warn = () => {};
+    try {
+      await new StripeGateway(config, client).createCheckout(
+        binding.id,
+        binding.customerId,
+        "year",
+        false,
+        undefined,
+        "full",
+        "parent@example.test",
+      );
+    } finally {
+      console.warn = warn;
+    }
+    assert.deepEqual(updates, []);
+    assert.equal(sessions.length, 1);
+  }
 });
 
 test("pinned API version supports flexible billing mode", () => {

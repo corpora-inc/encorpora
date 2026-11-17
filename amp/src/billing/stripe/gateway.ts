@@ -101,16 +101,17 @@ export class StripeGateway {
   /** Checkout prefills (and holds) the email of a Customer that has one;
    * without it, the parent types the address they signed in with. Set it
    * once, from the account's confirmed sign-in email, and never replace one
-   * the parent has since changed in the billing portal. Checkout would save
-   * the typed address onto the Customer anyway (Stripe API: Checkout
-   * Sessions, `customer`), so Stripe receives nothing it didn't before. */
+   * the parent has since changed in the billing portal. It is the adult
+   * account holder's address, which Checkout would otherwise ask for and
+   * save onto the Customer (Stripe API: Checkout Sessions, `customer`). */
   async prefillEmail(customerId: string, email: string): Promise<void> {
     const customer = await this.client.customers.retrieve(customerId);
-    requireEvidence(
-      !customer.deleted && customer.livemode === this.config.livemode,
-      "customer_mode_mismatch",
-    );
-    if (customer.email) return;
+    if (
+      customer.deleted ||
+      customer.livemode !== this.config.livemode ||
+      customer.email
+    )
+      return;
     await this.client.customers.update(customerId, { email });
   }
   async createCheckout(
@@ -123,7 +124,14 @@ export class StripeGateway {
     /** The signed-in parent's confirmed email, prefilled on Checkout. */
     email?: string,
   ): Promise<{ id: string; url: string }> {
-    if (email) await this.prefillEmail(customerId, email);
+    // A convenience: if it fails, Checkout asks for the email as before.
+    if (email)
+      await this.prefillEmail(customerId, email).catch((error: unknown) =>
+        console.warn(
+          "Checkout email prefill skipped",
+          error instanceof Error ? error.name : "unknown",
+        ),
+      );
     const session = await this.client.checkout.sessions.create(
       {
         mode: "subscription",
