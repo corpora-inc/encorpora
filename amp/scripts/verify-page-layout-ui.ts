@@ -11,8 +11,7 @@
  *   standard page does, its column at the same depth under the app's bar;
  * - never scrolls sideways, and every list on named columns (ui/ColumnList)
  *   keeps each column at one x down its rows;
- * - goes "‹ Back" up to its declared parent, opened directly or from
- *   another screen (never history);
+ * - draws no in-page Back control (tabs, menus and the browser navigate);
  * - holds still once painted: the title doesn't move between first paint
  *   and a settled page, and the page's layout shift stays under 0.01.
  *
@@ -70,9 +69,6 @@ type Screen = {
   /** A data wait under the header known to shift the page past the budget,
    * with why: reported, not failed, until it is fixed. */
   knownShift?: string;
-  /** The screen's declared parent: where its "‹ Back" goes, whether the
-   * page was opened directly or from somewhere else. */
-  parent?: (page: Page) => Promise<string>;
 };
 
 /** The family's own address (`/family` opens it). */
@@ -105,21 +101,10 @@ const SCREENS: Screen[] = [
     width: "standard",
   },
   {
-    // The one pay screen (features/pay), loaded ahead by its route: it
-    // opens whole, so no shift is expected.
-    name: "pay",
-    person: "parent-day1",
-    path: async (page) => `/pay/${await firstChild(page)}`,
-    width: "standard",
-    parent: async (page) =>
-      `${await familyPath(page)}/kids/${await firstChild(page)}`,
-  },
-  {
     name: "billing",
     person: "family",
     path: "/account/billing",
     width: "standard",
-    parent: async (page) => `${await familyPath(page)}/settings`,
   },
   {
     name: "family-today",
@@ -153,7 +138,14 @@ const SCREENS: Screen[] = [
     path: async (page) =>
       `${await familyPath(page)}/kids/${await firstChild(page)}`,
     width: "standard",
-    parent: familyPath,
+  },
+  // A child's workbooks, from their page: the same column as the family's
+  // screens.
+  {
+    name: "child-workbooks",
+    person: "family",
+    path: async (page) => `/learners/${await firstChild(page)}/workbooks`,
+    width: "standard",
   },
   {
     name: "family-settings",
@@ -166,14 +158,12 @@ const SCREENS: Screen[] = [
     person: "family",
     path: "/account/security",
     width: "standard",
-    parent: async (page) => `${await familyPath(page)}/settings`,
   },
   {
     name: "account-privacy",
     person: "family",
     path: "/account/privacy",
     width: "standard",
-    parent: async (page) => `${await familyPath(page)}/settings`,
   },
 ];
 
@@ -369,6 +359,16 @@ try {
               `${where}: Page width ${settled.page}, expected ${screen.width}`,
             );
           if (!settled.title) fail(`${where}: no visible title`);
+          const backs = await page
+            .locator("main")
+            .getByRole("link", { name: "Back", exact: true })
+            .or(
+              page
+                .locator("main")
+                .getByRole("button", { name: "Back", exact: true }),
+            )
+            .count();
+          if (backs) fail(`${where}: an in-page Back control`);
           if (settled.misaligned.length)
             fail(
               `${where}: list columns don't line up: ${settled.misaligned.join(", ")}`,
@@ -400,65 +400,6 @@ try {
               fullPage: true,
             });
         }
-    } finally {
-      await page.close();
-    }
-  }
-  // "‹ Back" goes up to the declared parent: opened directly (a new tab),
-  // and opened from another screen of the app, it lands on the same place.
-  for (const screen of SCREENS.filter(
-    (entry) =>
-      entry.parent &&
-      (!ONLY || ONLY.split(",").some((name) => entry.name.includes(name))),
-  )) {
-    const context = contexts.get(screen.person)!;
-    const page = await context.newPage();
-    try {
-      await page.setViewportSize({ width: 390, height: 900 });
-      const parent = await screen.parent!(page);
-      const path = resolved.get(screen.name)!;
-      const elsewhere =
-        path === "/account/security" ? "/account/privacy" : "/account/security";
-      for (const arrival of ["directly", "from elsewhere"] as const) {
-        if (arrival === "directly")
-          await page.goto(`${origin}${path}`, {
-            waitUntil: "domcontentloaded",
-          });
-        else {
-          await page.goto(`${origin}${elsewhere}`, {
-            waitUntil: "domcontentloaded",
-          });
-          await page.locator("main h1").first().waitFor({ state: "attached" });
-          // An in-app navigation: the router follows the history it owns.
-          await page.evaluate((to) => {
-            history.pushState({}, "", to);
-            dispatchEvent(new PopStateEvent("popstate", { state: {} }));
-          }, path);
-        }
-        await page.waitForURL((url) => url.pathname === path.split("?")[0]);
-        // The screen it left is gone: one page on show, and settled.
-        await page.waitForFunction(
-          () => document.querySelectorAll("main").length === 1,
-          undefined,
-          { timeout: 15_000 },
-        );
-        await settle(page);
-        const back = page
-          .locator("main")
-          .getByRole("link", { name: "Back", exact: true })
-          .first();
-        await back.waitFor({ timeout: 15_000 });
-        await back.click();
-        await page
-          .waitForURL((url) => url.pathname === parent, { timeout: 15_000 })
-          .catch(() => undefined);
-        const landed = new URL(page.url()).pathname;
-        console.log(`Back from ${screen.name} (${arrival}): ${landed}`);
-        if (landed !== parent)
-          fail(
-            `${screen.name} opened ${arrival}: Back went to ${landed}, not its parent ${parent}`,
-          );
-      }
     } finally {
       await page.close();
     }

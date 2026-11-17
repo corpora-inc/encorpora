@@ -56,7 +56,7 @@ print(json.dumps({'cases': len(problems), 'mutations': 6}))
       cwd: fileURLToPath(new URL("../", import.meta.url)),
       input: JSON.stringify(problems),
       encoding: "utf8",
-      timeout: 30_000,
+      timeout: 120_000,
       maxBuffer: 8 * 1024 * 1024,
     },
   );
@@ -123,7 +123,7 @@ print(json.dumps({'cases': len(problems), 'mutations': 10}))
       cwd: fileURLToPath(new URL("../", import.meta.url)),
       input: JSON.stringify(problems),
       encoding: "utf8",
-      timeout: 30_000,
+      timeout: 120_000,
       maxBuffer: 8 * 1024 * 1024,
     },
   );

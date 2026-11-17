@@ -11,38 +11,24 @@ type Database = Pick<Pool | PoolClient, "query">;
    Anything else is that child's learning or money, and is deleted, if at
    all, from Privacy (`delete-learning-data`). */
 
-const optionalTable = async (db: Database, table: string) =>
-  !!(await db.query("SELECT to_regclass($1) AS relation", [table])).rows[0]
-    ?.relation;
-
 /** This account's children who can still be taken back out of the family. */
 export async function removableChildren(
   db: Database,
   accountId: string,
 ): Promise<Set<string>> {
-  const [stripe, funding] = await Promise.all([
-    optionalTable(db, "amp_stripe_checkouts"),
-    optionalTable(db, "amp_funding_requests"),
-  ]);
-  const assigned =
-    stripe &&
-    !!(
-      await db.query(
-        "SELECT 1 FROM information_schema.columns WHERE table_schema=current_schema() AND table_name='amp_stripe_checkouts' AND column_name='assigned_learner_id'",
-      )
-    ).rowCount;
+  // Historical, not entitlement: "was anything ever granted, bought or
+  // requested for this child", whether or not it is still in force
+  // (tests/fixtures/grant-readers.json).
   const rows = await db.query<{ id: string }>(
     `SELECT l.id FROM amp_learners l
-     WHERE l.account_id=$1 AND l.deleted_at IS NULL
-       -- Any schema: an older fixture's learners have no adult column.
-       AND NOT COALESCE(to_jsonb(l)->'adult'='true'::jsonb,false)
+     WHERE l.account_id=$1 AND l.deleted_at IS NULL AND NOT l.adult
        AND NOT EXISTS (SELECT 1 FROM amp_instances i WHERE i.learner_id=l.id)
        AND NOT EXISTS (SELECT 1 FROM amp_skill_evidence e WHERE e.learner_id=l.id)
        AND NOT EXISTS (SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id)
        AND NOT EXISTS (SELECT 1 FROM amp_commerce_orders o WHERE o.learner_id=l.id)
-       ${stripe ? "AND NOT EXISTS (SELECT 1 FROM amp_stripe_checkouts s WHERE s.learner_id=l.id)" : ""}
-       ${assigned ? "AND NOT EXISTS (SELECT 1 FROM amp_stripe_checkouts s WHERE s.assigned_learner_id=l.id)" : ""}
-       ${funding ? "AND NOT EXISTS (SELECT 1 FROM amp_funding_requests r WHERE r.learner_id=l.id)" : ""}`,
+       AND NOT EXISTS (SELECT 1 FROM amp_stripe_checkouts s WHERE s.learner_id=l.id)
+       AND NOT EXISTS (SELECT 1 FROM amp_stripe_checkouts s WHERE s.assigned_learner_id=l.id)
+       AND NOT EXISTS (SELECT 1 FROM amp_funding_requests r WHERE r.learner_id=l.id)`,
     [accountId],
   );
   return new Set(rows.rows.map((row) => row.id));

@@ -7,12 +7,12 @@ import {
   routeFor,
   startDestination,
 } from "../guard";
-import { backUrl, canRemoveSaved } from "../setup/FamilySetup";
+import { canRemoveSaved, stepUrl } from "../setup/FamilySetup";
 import { SETUP_STEPS } from "../setup/steps";
 
 /*
  * A parent's first run (founder QA 2026-11-16): the steps are URLs, Back is
- * the step before (an explicit address, never history), and nothing is decided by "a family now exists". Saved kids stay
+ * a done step in the stepper (an explicit address, never history), and nothing is decided by "a family now exists". Saved kids stay
  * editable until the parent is done.
  */
 
@@ -164,10 +164,11 @@ test("a saved child's Remove shows only where it will work", () => {
   expect(canRemoveSaved({}, 3)).toBe(false);
 });
 
-test("a step's Back goes to the step before it in the step map, never history", () => {
-  const steps = SETUP_STEPS.parent;
-  // The first step goes up to the question; the next goes back to the kids.
-  expect(backUrl("parent", steps, 0)).toBe("/start");
-  expect(backUrl("parent", steps, 1)).toBe("/start/parent");
-  expect(backUrl("tutor", SETUP_STEPS.tutor, 2)).toBe("/start/tutor/join");
+test("the stepper's done steps link to their own addresses, from the step map", () => {
+  // No in-page Back: a done step is a link in the stepper (ui/FlowSteps).
+  expect(SETUP_STEPS.parent.map((step) => stepUrl("parent", step.id))).toEqual([
+    "/start/parent",
+    "/start/parent/ready",
+  ]);
+  expect(stepUrl("tutor", "join")).toBe("/start/tutor/join");
 });

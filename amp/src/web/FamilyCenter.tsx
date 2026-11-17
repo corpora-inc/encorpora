@@ -234,9 +234,6 @@ export function FamilyCenter({
         ?.focus({ preventScroll: true });
     chooserWasOpen.current = purchaseChooser;
   }, [purchaseChooser]);
-  function closeChooser() {
-    route.navigate("/account/billing");
-  }
   useLayoutEffect(() => {
     if (purchaseChooser && !returnFocus)
       heading.current?.focus({ preventScroll: true });
@@ -512,12 +509,6 @@ export function FamilyCenter({
             ? "Billing"
             : "Privacy";
   const namedByTab = !settingsFamily && titleNamedByTab(pathname, title);
-  // A step inside a tab says the way back above its title.
-  const back = purchaseChooser
-    ? closeChooser
-    : section === "privacy" && privacy
-      ? () => route.navigate("/account/privacy")
-      : null;
   const addChild = () =>
     consentActive ? setAdding(true) : route.navigate("/start/parent");
   /** The account holder corrects a child's year; a second parent reads it. */
@@ -760,23 +751,7 @@ export function FamilyCenter({
           {title}
         </h1>
       ) : (
-        <PageHeader
-          back={
-            back
-              ? family
-                ? back
-                : null
-              : settingsFamily
-                ? {
-                    to: "/family/$family/settings",
-                    params: { family: settingsFamily },
-                  }
-                : null
-          }
-          title={title}
-          titleId="family-title"
-          titleRef={heading}
-        />
+        <PageHeader title={title} titleId="family-title" titleRef={heading} />
       )}
       {/* Every adult's own name, as others see it (R9, R12). */}
       {section === "security" && <YourName />}
