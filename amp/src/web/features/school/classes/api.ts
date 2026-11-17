@@ -5,6 +5,7 @@ import {
 } from "@tanstack/react-query";
 import { z } from "zod";
 import { keepRefusal } from "../../../lib/AppError";
+import { qk } from "../../../lib/keys";
 import {
   issuedCardsResource,
   orgResource,
@@ -62,7 +63,7 @@ export const rosterOptions = (session: Session, place: Place) =>
   });
 export const orgOptions = (session: Session, org: string) =>
   queryOptions({
-    queryKey: ["account", session?.accountId, "school", org, "org"],
+    queryKey: qk.account(session?.accountId ?? null, "school", org, "org"),
     enabled: !!session,
     queryFn: ({ signal }) =>
       request(
@@ -74,7 +75,7 @@ export const orgOptions = (session: Session, org: string) =>
   });
 export const classListOptions = (session: Session, org: string) =>
   queryOptions({
-    queryKey: ["account", session?.accountId, "school", org, "classes"],
+    queryKey: qk.account(session?.accountId ?? null, "school", org, "classes"),
     enabled: !!session,
     queryFn: ({ signal }) =>
       request(

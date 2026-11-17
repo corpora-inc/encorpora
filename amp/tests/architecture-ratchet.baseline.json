@@ -9,7 +9,7 @@
     "silentCatches": 195,
     "sessionProps": 67,
     "sessionReads": 45,
-    "inlineQueryKeys": 64,
+    "inlineQueryKeys": 48,
     "nativeControls": 27
   },
   "files": {
@@ -18,7 +18,8 @@
       "app/family-routes.tsx": 9,
       "app/pay-routes.tsx": 3,
       "app/router.tsx": 41,
-      "app/school-routes.tsx": 19,
+      "app/school-guards.ts": 18,
+      "app/school-routes.tsx": 1,
       "features/home/destination.ts": 1,
       "features/pay/legacy.ts": 2,
       "features/profiles/practice-mode.ts": 1
@@ -29,7 +30,7 @@
     "searchHandoffs": {
       "app/family-routes.tsx": 3,
       "app/router.tsx": 13,
-      "app/school-routes.tsx": 5,
+      "app/school-guards.ts": 5,
       "features/access/AccessScreen.tsx": 3,
       "features/account/AccountReady.tsx": 3,
       "features/account/BillingPage.tsx": 2,
@@ -150,7 +151,7 @@
       "app/family-routes.tsx": 9,
       "app/LegacyApp.tsx": 7,
       "app/router.tsx": 16,
-      "app/school-routes.tsx": 3,
+      "app/school-guards.ts": 3,
       "auth-config.ts": 1,
       "auth.ts": 3,
       "BookReader.tsx": 1,
@@ -314,9 +315,7 @@
       "features/pay/api.ts": 4,
       "features/practice/AnswerFeedback.tsx": 1,
       "features/practice/practice-settings.ts": 1,
-      "features/school/classes/api.ts": 2,
-      "features/school/classes/teacher-api.ts": 14,
-      "features/school/classroom/api.ts": 1,
+      "features/school/classes/teacher-api.ts": 1,
       "features/school/clever/api.ts": 1,
       "features/school/clever/ConnectionScreen.tsx": 1,
       "features/school/InviteScreen.tsx": 2,

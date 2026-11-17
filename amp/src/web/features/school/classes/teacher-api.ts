@@ -30,16 +30,25 @@ import {
 import type { AuthSession } from "../../../auth";
 import { AppError } from "../../../lib/AppError";
 import { request } from "../../../lib/api";
+import { qk } from "../../../lib/keys";
 
 export type Place = { org: string; class: string };
 type Session = AuthSession | null;
 const CLASS = ({ class: id }: Place) => `/school/classes/${id}`;
 /** One store: everything about a class lives under this key, so a change here
  * refreshes the map, the gradebook and the roster alike. */
-const classKey = (session: Session, place: Place) =>
-  ["account", session?.accountId, "school", place.org, place.class] as const;
-const recordKey = (session: Session, student: string) =>
-  ["account", session?.accountId, "school", "record", student] as const;
+/** A class's reads, and one student's record, under the account's school
+ * keys (lib/keys.ts). */
+const classKey = (session: Session, place: Place, ...rest: unknown[]) =>
+  qk.account(
+    session?.accountId ?? null,
+    "school",
+    place.org,
+    place.class,
+    ...rest,
+  );
+const recordKey = (session: Session, ...rest: unknown[]) =>
+  qk.account(session?.accountId ?? null, "school", "record", ...rest);
 const read =
   <T>(
     session: Session,
@@ -51,13 +60,13 @@ const read =
 
 export const todayOptions = (session: Session, place: Place) =>
   queryOptions({
-    queryKey: [...classKey(session, place), "today"],
+    queryKey: classKey(session, place, "today"),
     enabled: !!session,
     queryFn: read(session, `${CLASS(place)}/today`, todayResponse),
   });
 export const mapOptions = (session: Session, place: Place) =>
   queryOptions({
-    queryKey: [...classKey(session, place), "map"],
+    queryKey: classKey(session, place, "map"),
     enabled: !!session,
     queryFn: read(session, `${CLASS(place)}/map`, mapResponse),
   });
@@ -67,7 +76,7 @@ export const gradebookOptions = (
   term: string | undefined,
 ) =>
   queryOptions({
-    queryKey: [...classKey(session, place), "gradebook", term ?? "current"],
+    queryKey: classKey(session, place, "gradebook", term ?? "current"),
     enabled: !!session,
     placeholderData: keepPreviousData,
     queryFn: read(
@@ -84,7 +93,7 @@ export const evidenceOptions = (
   offset = 0,
 ) =>
   queryOptions({
-    queryKey: [...classKey(session, place), "evidence", term, student, offset],
+    queryKey: classKey(session, place, "evidence", term, student, offset),
     enabled: !!session,
     queryFn: read(
       session,
@@ -103,7 +112,7 @@ export const timeOptions = (
   from?: string,
 ) =>
   queryOptions({
-    queryKey: [...classKey(session, place), "time", period, from ?? null],
+    queryKey: classKey(session, place, "time", period, from ?? null),
     enabled: !!session,
     placeholderData: keepPreviousData,
     queryFn: read(
@@ -121,13 +130,14 @@ export const studentTimeOptions = (
   from?: string,
 ) =>
   queryOptions({
-    queryKey: [
-      ...classKey(session, place),
+    queryKey: classKey(
+      session,
+      place,
       "student-time",
       period,
       student,
       from ?? null,
-    ],
+    ),
     enabled: !!session,
     queryFn: read(
       session,
@@ -141,7 +151,7 @@ export const reportCardsOptions = (
   term: string,
 ) =>
   queryOptions({
-    queryKey: [...classKey(session, place), "report-cards", term],
+    queryKey: classKey(session, place, "report-cards", term),
     enabled: !!session,
     queryFn: read(
       session,
@@ -158,7 +168,7 @@ export const workReplayOptions = (
   skill?: string,
 ) =>
   queryOptions({
-    queryKey: [...recordKey(session, student), "work", attempt, skill ?? null],
+    queryKey: recordKey(session, student, "work", attempt, skill ?? null),
     enabled: !!session,
     // An answer never changes once given.
     staleTime: Infinity,
@@ -203,7 +213,7 @@ export const studentSkillOptions = (
   skill: string,
 ) =>
   queryOptions({
-    queryKey: [...recordKey(session, student), "skill", skill],
+    queryKey: recordKey(session, student, "skill", skill),
     enabled: !!session,
     queryFn: read(
       session,
@@ -218,7 +228,7 @@ export const classSkillOptions = (
   skill: string,
 ) =>
   queryOptions({
-    queryKey: [...classKey(session, place), "skill", skill],
+    queryKey: classKey(session, place, "skill", skill),
     enabled: !!session,
     queryFn: read(
       session,
@@ -261,7 +271,7 @@ function useClassRefresh(session: Session, place: Place) {
     Promise.all([
       client.invalidateQueries({ queryKey: classKey(session, place) }),
       client.invalidateQueries({
-        queryKey: ["account", session?.accountId, "school", "record"],
+        queryKey: recordKey(session),
       }),
     ]);
 }
@@ -283,7 +293,7 @@ export function useSaveFinal(session: Session, place: Place) {
       ),
     onSuccess: ({ final }, { student, term }) => {
       client.setQueriesData<GradebookResponse>(
-        { queryKey: [...classKey(session, place), "gradebook"] },
+        { queryKey: classKey(session, place, "gradebook") },
         (book) =>
           book && book.term?.id === term
             ? {
@@ -295,7 +305,7 @@ export function useSaveFinal(session: Session, place: Place) {
             : book,
       );
       client.setQueriesData<EvidenceResponse>(
-        { queryKey: [...classKey(session, place), "evidence", term, student] },
+        { queryKey: classKey(session, place, "evidence", term, student) },
         (evidence) => evidence && { ...evidence, final },
       );
       return refresh();
