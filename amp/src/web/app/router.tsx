@@ -29,7 +29,7 @@ import { lazyRouteComponent } from "../lib/lazy-route-component";
 import { z } from "zod";
 import { useQuery } from "@tanstack/react-query";
 import { lazy, Suspense, useEffect, useRef } from "react";
-import { readContinuation } from "../features/continue/memory";
+import { usePayStore } from "../features/pay/store";
 import type { AuthSession } from "../auth";
 import { setPitchShown } from "../lib/analytics";
 import { showsPitch } from "../features/pitch/shows-pitch";
@@ -90,6 +90,7 @@ import { secondParentOptions } from "../features/second-parent/api";
 import { classYearOptions } from "../features/school/org/org-api";
 import { frameData, schoolRoutes, staffScreen } from "./school-routes";
 import { familyRoutes } from "./family-routes";
+import { payRoutes } from "./pay-routes";
 import { appReturn, RETURN_LIMIT } from "../features/spaces/returns";
 import { toFamilyAddress } from "./family-redirect";
 import { loadCurriculum, loadScope } from "../features/schools/api";
@@ -183,10 +184,11 @@ function AfterPurchaseGate() {
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
-  const waiting =
-    !!session &&
-    readContinuation(session.accountId)?.stage === "naming" &&
-    !!pathname;
+  const naming = usePayStore(
+    (state) =>
+      !!session && state.accounts[session.accountId]?.opener?.stage === "naming",
+  );
+  const waiting = naming && !!pathname;
   return waiting ? (
     <Suspense fallback={null}>
       <AfterPurchase />
@@ -503,11 +505,15 @@ const home = createRoute({
             params: { _splat: "consent" },
             replace: true,
           });
+        // Back from a learner's Stripe Checkout: read once, resolved through
+        // the server, and on to that learner's confirmation (features/pay).
         if (hasPurchaseReturn(location.searchStr))
           throw redirect({
-            to: "/$",
-            params: { _splat: "purchase/annual" },
-            search,
+            href:
+              (await (
+                await import("../features/pay/stripe-return")
+              ).stripeReturnTarget(session, search, "learner")) ??
+              "/account/billing",
             replace: true,
           });
         if ("security" in search)
@@ -784,33 +790,25 @@ const startPlan = createRoute({
   beforeLoad: beforeStart,
   component: start,
 });
-/** "Continue with AMP" for one learner: the plan, then Stripe, then back to
- * the screen it was opened from. */
-const continueWithAmp = createRoute({
-  getParentRoute: () => root,
-  path: "/continue/$learnerId",
-  staticData: { space: "account" },
-  validateSearch: (search: Record<string, unknown>) =>
-    search.interval === "year" || search.interval === "month"
-      ? { interval: search.interval as "year" | "month" }
-      : {},
-  beforeLoad: async () => {
-    notForStudents();
-    if (nativeRuntime) throw redirect({ to: "/", replace: true });
-    const session = await queryClient.ensureQueryData(sessionOptions);
-    if (!session) throw redirect({ to: "/sign-in" });
-  },
-  component: lazyRouteComponent(
-    () => import("../features/continue/ContinueScreen"),
-    "ContinueScreen",
-  ),
-});
 /** Stripe Checkout's success and cancel URL for parent enrollment. */
 const startPurchase = createRoute({
   getParentRoute: () => root,
   path: "/start/purchase",
   staticData: { space: "account" },
-  beforeLoad: beforeStart,
+  beforeLoad: async (input) => {
+    // A learner's enrollment checkout from the pay flow comes back to that
+    // learner's confirmation; one with no learner yet stays here.
+    const session = await queryClient
+      .ensureQueryData(sessionOptions)
+      .catch(() => null);
+    const target =
+      session &&
+      (await (
+        await import("../features/pay/stripe-return")
+      ).stripeReturnTarget(session, input.location.search, "enrollment"));
+    if (target) throw redirect({ href: target, replace: true });
+    return beforeStart(input);
+  },
   component: start,
 });
 const startName = createRoute({
@@ -1068,6 +1066,13 @@ const billingPage = createRoute({
     if (!finishingSignIn()) notForStudents();
     await framedScreen();
   },
+  loader: async () => {
+    const session = queryClient.getQueryData(sessionOptions.queryKey);
+    if (session)
+      await (
+        await import("../features/account/billing-prefetch")
+      ).prefetchBilling(session);
+  },
   component: lazyRouteComponent(
     () => import("../features/account/BillingPage"),
     "BillingPage",
@@ -1092,79 +1097,6 @@ const billingRecordsAlias = createRoute({
       replace: true,
     });
   },
-});
-const cardPurchase = createRoute({
-  getParentRoute: () => root,
-  path: "/purchase/annual",
-  staticData: { space: "account" },
-  beforeLoad: async () => {
-    notForStudents();
-    await framedScreen();
-  },
-  component: lazyRouteComponent(
-    () => import("../features/billing/CardPurchasePage"),
-    "CardPurchasePage",
-  ),
-});
-const fundedPurchase = createRoute({
-  getParentRoute: () => root,
-  path: "/purchase/funded",
-  staticData: { space: "account" },
-  validateSearch: z.object({
-    interval: z.enum(["year", "month"]).optional().catch(undefined),
-    // Keep malformed identifiers so invoice recovery shows an error rather
-    // than silently opening a new invoice form.
-    invoice: z.string().min(1).max(200).optional().catch("invalid"),
-    offer: z.string().max(120).optional().catch(undefined),
-    learner: z.string().max(120).optional().catch(undefined),
-    program: z.string().max(80).optional().catch(undefined),
-  }),
-  beforeLoad: () => {
-    // An invoice's Start learning action is handing this tab to the child.
-    // Let that marked practice navigation finish instead of redirecting it.
-    if (!finishingSignIn()) notForStudents();
-    if (nativeRuntime) throw redirect({ to: "/" });
-  },
-  component: lazyRouteComponent(
-    () => import("../features/funding/FundedPurchasePage"),
-    "FundedPurchasePage",
-  ),
-});
-const funded = createRoute({
-  getParentRoute: () => root,
-  path: "/purchase/arkansas-efa",
-  staticData: { space: "account" },
-  beforeLoad: () => {
-    if (nativeRuntime) throw redirect({ to: "/" });
-  },
-  component: lazyRouteComponent(
-    () => import("../features/funding/FundedEntry"),
-    "FundedEntry",
-  ),
-});
-const fundedNewHampshire = createRoute({
-  getParentRoute: () => root,
-  path: "/purchase/new-hampshire-efa",
-  staticData: { space: "account" },
-  beforeLoad: () => {
-    if (nativeRuntime) throw redirect({ to: "/" });
-  },
-  component: lazyRouteComponent(
-    () => import("../features/funding/FundedEntry"),
-    "FundedEntry",
-  ),
-});
-const fundedArizona = createRoute({
-  getParentRoute: () => root,
-  path: "/purchase/arizona-esa",
-  staticData: { space: "account" },
-  beforeLoad: () => {
-    if (nativeRuntime) throw redirect({ to: "/" });
-  },
-  component: lazyRouteComponent(
-    () => import("../features/funding/FundedEntry"),
-    "FundedEntry",
-  ),
 });
 const invoiceForm = lazyRouteComponent(
   () => import("../features/funding/InvoiceForm"),
@@ -1972,7 +1904,6 @@ export const router = createRouter({
     starterChoice,
     starterStep,
     startPlan,
-    continueWithAmp,
     startPurchase,
     startName,
     startYear,
@@ -1989,11 +1920,6 @@ export const router = createRouter({
     billingPage,
     billingPurchasesAlias,
     billingRecordsAlias,
-    cardPurchase,
-    fundedPurchase,
-    funded,
-    fundedNewHampshire,
-    fundedArizona,
     invoiceArkansas,
     invoiceArizona,
     invoiceNewHampshire,
@@ -2001,6 +1927,7 @@ export const router = createRouter({
     // URLs stay out of the typed route table.
     ...(schoolRoutes(root) as unknown as []),
     ...(familyRoutes(root) as unknown as []),
+    ...payRoutes(root),
     ...((devPersonas ? [devPersonas] : []) as unknown as []),
   ]),
   history,

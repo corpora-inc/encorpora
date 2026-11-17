@@ -10,7 +10,8 @@ import { AppError } from "../../lib/AppError";
 import { nativeRuntime } from "../../native-runtime";
 import { keepaliveFetch } from "../../lib/keepalive";
 
-/** Only the adult payment-confirmation screen calls this. A local request,
+/** Only the payment confirmations call this (`/start/purchase`, and a
+ * learner's `/pay/<learner>/card/done`). A local request,
  * never a Meta browser SDK; server-owned payment evidence is authoritative. */
 export function useMetaPurchaseContext(
   session: AuthSession,
@@ -32,7 +33,9 @@ export function useMetaPurchaseContext(
       phase !== "paid" ||
       returned !== "processing" ||
       returnedFrom !== checkoutId ||
-      location.pathname !== "/start/purchase" ||
+      !/^\/(?:start\/purchase|pay\/[^/]+\/card\/done)$/.test(
+        location.pathname,
+      ) ||
       (navigator as Navigator & { globalPrivacyControl?: boolean })
         .globalPrivacyControl === true
     )

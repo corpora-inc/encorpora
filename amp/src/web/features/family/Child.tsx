@@ -152,7 +152,7 @@ export function ChildScreen() {
               child.capabilities.continuePurchase &&
               child.paths.continue && (
                 <Link
-                  to="/continue/$learnerId"
+                  to="/pay/$learnerId"
                   params={{ learnerId: child.id }}
                   className={buttonClass("secondary")}
                   data-continue={child.id}

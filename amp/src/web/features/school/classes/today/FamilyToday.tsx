@@ -158,7 +158,7 @@ export function FamilyToday({
             mark: left === 0 ? ("plain" as const) : ("check" as const),
             actions: (
               <Link
-                to="/continue/$learnerId"
+                to="/pay/$learnerId"
                 params={{ learnerId: learner.id }}
                 className={buttonClass(left === 0 ? "primary" : "secondary")}
                 onClick={() => remember(learner.id)}

@@ -48,7 +48,8 @@ amp/src/web/
     lessons/      /lessons, /lessons/:type
     progress/     /progress/:learnerId
     family/       /family/learners, /family/access, /family/privacy
-    billing/      /purchase/*: plan choice, Stripe redirect and return, receipts, ESA
+    billing/      plan control, offers, enrollment checkout, receipts
+    pay/          /pay/<learner>: the one pay flow (see "Pay")
 ```
 
 **Module boundaries:**
@@ -96,6 +97,16 @@ One guard (`features/onboarding/guard.ts`) maps `me.next` to the allowed steps f
 - One task per screen, with progress shown, Back working at every step, and everything resumable by URL.
 - No settings detours, and no 403 ever reaches the screen.
 - Email-plus consent is offered only to parents who don't pay by card. It's a step in the same flow, with clear "we'll email you" states.
+
+## Pay (`/pay/<learner>`)
+
+One flow pays for one learner, keyed by that learner from start to end (`features/pay`). Every entry links to it: Billing's "Choose a plan", Today's and a child's "Continue with AMP", practice's pause.
+
+- `/pay/<learner>`: one screen, "Choose your plan / For <name>", "‹ Back" up to the learner's page. **Card | Education funds** are tabs of that screen (the shared `Segmented`); both panels draw in one grid cell, so switching moves nothing. The card tab is the plan control (`PlanPicker`, shared by both tabs), then Stripe Checkout; a child of a family without consent pays through the enrollment checkout with the direct notice. The education-funds tab is the plan, the program (tiles), the student's name as the program account has it, then **Create invoice**, which creates the invoice and claims it for the learner in one action: access starts at once, and the invoice email is queued with the invoice.
+- `/pay/<learner>/card/done`: back from Stripe; follows the verified payment until the learner has access.
+- `/pay/<learner>/invoice/<invoice>`: the invoice: access, the PDF, and the program's own submission steps (the offer's `instructions`, one sentence to a step), its deadline, and "I've submitted it". Its later status is in Billing.
+
+**State.** Paths name the screen and its learner or invoice; nothing else rides in the address. The tab, plan and program live in the pay store (`features/pay/store.ts`, zustand, keyed by account and learner, kept for the tab in sessionStorage); the billing name is in memory only. Server data is in the Query cache; mutations invalidate the account. Stripe's return address is read once (`stripe-return.ts`), resolved through the server, and replaced by a clean path. Older addresses (`/continue/<learner>`, `/purchase/annual`, `/purchase/funded`, `/purchase/choose`, the program entries) each make one hop to `/pay/<learner>` and seed the store with what they carried (`app/pay-routes.tsx`).
 
 ## Public documents and indexing
 

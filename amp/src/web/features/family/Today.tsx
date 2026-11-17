@@ -196,7 +196,7 @@ export function ChildAction({
   if (child.capabilities.continuePurchase && child.paths.continue)
     return (
       <Link
-        to="/continue/$learnerId"
+        to="/pay/$learnerId"
         params={{ learnerId: child.id }}
         className={buttonClass("primary")}
         data-continue={child.id}

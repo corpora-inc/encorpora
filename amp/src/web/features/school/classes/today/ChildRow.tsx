@@ -125,7 +125,7 @@ export function ChildRow({
           />
         ) : holder ? (
           <Link
-            to="/continue/$learnerId"
+            to="/pay/$learnerId"
             params={{ learnerId: learner.id }}
             className={buttonClass("primary", styles.practiceHere)}
             onClick={() => onContinue(learner.id)}
