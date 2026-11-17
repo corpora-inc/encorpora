@@ -152,6 +152,44 @@
   font-size: var(--text-table);
   text-align: end;
 }
+/* A child's access and its link: one line, or the link under it. */
+.access {
+  display: grid;
+  justify-items: start;
+  min-width: 0;
+}
+/* A phone (the children's list is one column under 400 px): a calm,
+   compact row. Each figure reads as one line, its value then its label
+   ("5 min · 6 problems this week"), the access with its link beside it,
+   and the action a regular 44 px button. */
+@container (max-width: 399px) {
+  [data-family-kids] .fact {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 var(--space-1);
+  }
+  [data-family-kids] .factValue::after {
+    content: "·" / "";
+    margin-inline-start: var(--space-1);
+    color: var(--color-muted-text);
+    font-weight: 400;
+  }
+  [data-family-kids] .factLabel {
+    font-size: var(--text-label);
+  }
+  [data-family-kids] .access {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 var(--space-3);
+  }
+  [data-family-kids] .action > * {
+    min-height: var(--target-min);
+    height: var(--target-min);
+    padding-block: 0;
+  }
+}
 /* Quiet rows under the children: their own devices, practicing yourself. */
 .quiet {
   margin-top: var(--space-4);
