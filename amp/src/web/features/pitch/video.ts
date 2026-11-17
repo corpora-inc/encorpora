@@ -140,14 +140,15 @@ export function browserFilmMix(
     const kept = storage?.getItem(filmMixKey);
     const known = FILM_MIXES.find((mix) => mix === kept);
     if (known) return known;
-  } catch {
+  } catch (error) {
     // Storage can be blocked; the mix then lasts for this page.
+    console.warn("The film mix couldn’t be read", error);
   }
   const mix = FILM_MIXES[Math.floor(random() * FILM_MIXES.length)] ?? "a";
   try {
     storage?.setItem(filmMixKey, mix);
-  } catch {
-    // As above.
+  } catch (error) {
+    console.warn("The film mix couldn’t be kept", error);
   }
   return mix;
 }

@@ -470,7 +470,7 @@ function Library({
         : result.kind === "type"
           ? `/lessons?topic=${encodeURIComponent(result.target)}`
           : result.kind === "film"
-            ? `/lessons/${encodeURIComponent(result.target)}/watch?from=${encodeURIComponent(window.location.pathname + window.location.search)}`
+            ? `/lessons/${encodeURIComponent(result.target)}/watch`
             : `/pathways?${new URLSearchParams({ [OPEN_KEY]: writeStack([{ kind: "skill", id: result.target }])! })}`;
     return {
       href,

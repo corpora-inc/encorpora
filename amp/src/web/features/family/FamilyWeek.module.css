@@ -1,0 +1,84 @@
+/* The family's week on Today (FamilyWeek): seven day slots, Monday first,
+   each a column of the day's minutes over its initial. A quiet day is a
+   faint tick on the baseline; today's initial is marked. The block is the
+   same height loading, failed or drawn, so nothing below moves. */
+.week {
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+}
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-3);
+}
+.head h2,
+.head p {
+  margin: 0;
+}
+.head p {
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  font-variant-numeric: var(--numeric);
+}
+.chart,
+.reserve {
+  height: 96px;
+  box-sizing: border-box;
+}
+.reserve {
+  margin: 0;
+  border-radius: var(--radius-small);
+}
+.chart {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+.day {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: var(--space-1);
+  min-width: 0;
+  border-radius: var(--radius-small);
+}
+.day:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.track {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-bottom: 1px solid var(--color-border);
+}
+.bar {
+  width: min(100%, 28px);
+  border-radius: 4px 4px 0 0;
+  background: var(--color-primary);
+}
+/* A day without practice: a faint tick on the baseline. */
+.quiet {
+  width: min(100%, 28px);
+  height: 2px;
+  border-radius: 1px;
+  background: var(--color-border);
+}
+.initial {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  line-height: 1.3;
+  text-align: center;
+}
+.today .initial {
+  color: var(--color-on-surface);
+  font-weight: 700;
+}
+.today .track {
+  border-bottom: 2px solid var(--color-primary);
+}
+.ahead .initial {
+  opacity: 0.55;
+}

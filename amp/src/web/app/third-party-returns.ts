@@ -1,5 +1,8 @@
 import { redirect } from "@tanstack/react-router";
 import { create } from "zustand";
+import { useAuthDraft } from "../features/auth/draft";
+import { continuationSearch } from "../lib/funded-entry";
+import { authStep } from "./auth-links";
 import type { AuthSession } from "../auth";
 import {
   clearPurchaseReturn,
@@ -28,6 +31,10 @@ import { requireSignedIn, toOwnPlace } from "./sign-in-gate";
  *   returning account's sign-in (features/auth/SignInScreen.tsx), and
  *   `/?security` after linking one (AccountSecurity.tsx).
  * - Clever's refusal on `/school/connect`: `?error=<code>`.
+ * - A sign-in that failed, back on `/sign-in` or `/sign-up`:
+ *   `?error=<code>`, with `&provider=` from a provider's error return
+ *   (SignInScreen's `errorCallbackURL`), Clever's and a link's from our
+ *   server (`signInReturn`).
  */
 
 type Location = { pathname: string; searchStr: string; search: unknown };
@@ -141,6 +148,33 @@ export async function homeReturn(location: Location) {
   if ("security" in search)
     throw redirect({ href: "/account/security", replace: true });
 }
+
+/** A sign-in's failure back on `/sign-in` or `/sign-up`: kept for the
+ * screen to show once (features/auth/draft.ts), then one hop to the same
+ * screen's clean address with its continuation, so a refresh or Back never
+ * shows it again. */
+export function signInReturn(location: Location) {
+  const { error, provider, ...rest } = (location.search ?? {}) as Record<
+    string,
+    unknown
+  >;
+  if (typeof error !== "string" || !error) return;
+  useAuthDraft.getState().arrive({
+    error: error.slice(0, 200),
+    ...(typeof provider === "string" ? { provider } : {}),
+  });
+  throw redirect({
+    ...authStep(
+      location.pathname === "/sign-up" ? "sign-up" : "sign-in",
+      continuationSearch(rest),
+    ),
+    replace: true,
+  } as never);
+}
+
+/** A sign-in failure waiting to be shown: the sign-in screen stays, even
+ * for someone signed in (security, a link that failed). */
+export const signInArrivalPending = () => !!useAuthDraft.getState().arrival;
 
 /** Clever's refusal on `/school/connect`, the one search that screen reads
  * (spread into its route's options). */

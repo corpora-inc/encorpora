@@ -32,6 +32,9 @@ export type AccountResources = {
   "funding-invoice-history": [];
   /** One education-fund invoice a parent is finishing. */
   "active-funding-invoice": [invoice: string];
+  /** One learner's printed workbooks (features/workbooks/api.ts): their
+   * history, areas, previews and results. */
+  workbooks: [learner: string, ...part: unknown[]];
   /** A parent's consent: its status, and whether it can be given here. */
   consent: [part?: "availability"];
   /** The families this account belongs to, and each one's reads
@@ -87,9 +90,22 @@ export const qk = {
   /** The family a native shell hands over (lib/family-cache.ts). */
   nativeFamily: (identity: string | null) =>
     ["native-family", identity] as const,
+  /** The curriculum's size for the school pitch (objectives, problem
+   * types, lessons): the same for every visitor. */
+  schoolsCurriculum: () => ["schools", "curriculum"] as const,
   /** Every account's data on this device: what a sign-out or another
    * person's account drops (app/providers.tsx). */
   accounts: () => ["account"] as const,
+  /** A lesson's film, the same for every visitor (features/films). */
+  lessonFilm: (templateId: string) => ["lesson-film", templateId] as const,
+  /** A learner's practice settings, by who is practicing (an account, or
+   * "guest") (features/practice/practice-settings.ts). */
+  practiceSettings: (identity: string, learner: string) =>
+    ["practice-settings", identity, learner] as const,
+  /** What one answer changed, under its practice's scope (an account and
+   * learner, never a credential) (features/practice/AnswerFeedback.tsx). */
+  answerFeedback: (scope: readonly string[], outcome: string) =>
+    [...scope, "answer-feedback", outcome] as const,
   /** One account's data, or one of its resources. */
   account,
   /** The plans' prices: the same for every visitor (features/billing). */

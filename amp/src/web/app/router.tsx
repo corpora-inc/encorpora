@@ -21,7 +21,7 @@ import {
 } from "@tanstack/react-router";
 import { lazyRouteComponent } from "../lib/lazy-route-component";
 import { z } from "zod";
-import { useQuery } from "@tanstack/react-query";
+import { useSessionOrNull } from "../lib/session";
 import { lazy, Suspense, useEffect, useRef } from "react";
 import { usePayStore } from "../features/pay/store";
 import type { AuthSession } from "../auth";
@@ -54,7 +54,7 @@ import {
 import { rememberPlace } from "../features/onboarding/place-memory";
 import { useHomeHref } from "../lib/home-place";
 import {
-  isFundedReturn,
+  fundedSetup,
   campaignSearch,
   continuationSearch,
   continuationUrl,
@@ -62,6 +62,7 @@ import {
 } from "../lib/funded-entry";
 import { chosenPlan } from "../lib/pending-trial";
 import { followAlias, LEGACY_ALIASES } from "./legacy-aliases";
+import { qk } from "../lib/keys";
 import {
   admit,
   elsewhere,
@@ -74,6 +75,8 @@ import {
   cleverReturn,
   homeReturn,
   resumeStripeReturn,
+  signInArrivalPending,
+  signInReturn,
   stripeReturn,
 } from "./third-party-returns";
 import { knownStale, onSignedOut } from "../lib/app-recovery";
@@ -83,7 +86,6 @@ import {
   studentSession,
   studentSignInEnded,
 } from "../lib/student-device";
-import { workbookSearchSchema } from "../features/workbooks/model";
 import { prepareBuyerHandoff } from "../features/school/pilots/buyer-session";
 import { prepareSchoolAdoption } from "../features/school/adoption-session";
 import { finishingSignIn } from "../features/school/join/finishing";
@@ -188,7 +190,7 @@ const AfterPurchase = lazy(() =>
   })),
 );
 function AfterPurchaseGate() {
-  const session = useQuery(sessionOptions).data;
+  const session = useSessionOrNull();
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
@@ -295,11 +297,16 @@ const root = createRootRoute({
       return;
     const session = await queryClient
       .ensureQueryData(sessionOptions)
-      .catch(() => undefined);
+      .catch((error: unknown) =>
+        console.warn("The session didn’t load ahead", error),
+      );
+    // The resource's observer shows its own error; this refresh only logs.
     if (session)
       void queryClient
         .fetchQuery({ ...meOptions(session), staleTime: 0 })
-        .catch(() => undefined); // The resource's observer owns its error UI.
+        .catch((error: unknown) =>
+          console.warn("The account didn’t refresh", error),
+        );
   },
   pendingMs: 600_000,
 });
@@ -316,11 +323,16 @@ const pitch = lazyRouteComponent(
  * needed) before the screen changes, so a remount never shows the other
  * screen half-loaded. */
 function AppScreen() {
-  const watchingFilm = useMatch({
+  const film = useMatch({
     from: "/app/lessons/$templateId/watch",
     shouldThrow: false,
   });
-  const session = useQuery(sessionOptions);
+  const filmForProblem = useMatch({
+    from: "/app/lessons/$templateId/watch/$problem",
+    shouldThrow: false,
+  });
+  const watchingFilm = film ?? filmForProblem;
+  const session = useSessionOrNull();
   const router = useRouter();
   const atHome = useMatch({
     from: home.id,
@@ -330,7 +342,7 @@ function AppScreen() {
       settled: match.status === "success",
     }),
   });
-  const shown = !!atHome && showsPitch(session.data);
+  const shown = !!atHome && showsPitch(session);
   useEffect(() => {
     if (atHome?.pitch !== undefined && shown !== atHome.pitch)
       void router.invalidate();
@@ -345,7 +357,7 @@ function AppScreen() {
   // `/` signed in on the web is the launcher; every other path the app.
   const kind = atHome?.pitch
     ? "pitch"
-    : atHome && !nativeRuntime && session.data
+    : atHome && !nativeRuntime && session
       ? "launcher"
       : "app";
   const shownKind = useRef<string | null>(null);
@@ -376,7 +388,16 @@ const auth = lazyRouteComponent(
   "SignInScreen",
 );
 /** Sign-in methods load with the route: the screen renders complete. */
-const loadAuthConfig = () => queryClient.ensureQueryData(authConfigOptions);
+async function loadAuthConfig() {
+  const config = await queryClient.ensureQueryData(authConfigOptions);
+  // A deployment without its own accounts signs in with its external
+  // authority: the auth screens hand straight to it.
+  if (config.mode !== "accounts") {
+    window.history.replaceState({}, "", "/");
+    await (await import("../auth")).signIn();
+  }
+  return config;
+}
 const start = lazyRouteComponent(
   () => import("../features/onboarding/StartScreen"),
   "StartScreen",
@@ -398,7 +419,9 @@ async function beforeStart({
     me,
     location.pathname,
     !!chosenPlan(),
-    isFundedReturn(search.return) ? search.return : false,
+    // The funded program these steps are for: the address's on arrival,
+    // kept for the account; the next steps are plain paths.
+    fundedSetup(session.accountId, location.search),
   );
   if (target) elsewhere(withQuery(target, search));
 }
@@ -474,15 +497,23 @@ export const homeRouteId = () => home.id;
  * resume the account; `/` chooses its place or its first-run question. */
 async function beforeAuthEntry({
   search,
+  location,
 }: {
   search: Record<string, unknown>;
+  location: { pathname: string; searchStr: string; search: unknown };
 }) {
   if (nativeRuntime) return;
   notForStudents();
+  // A sign-in that failed comes back with its code: kept, then one hop to
+  // the clean address.
+  signInReturn(location);
   // Security, school connections and invitation handoffs can require a
-  // fresh sign-in or another identity even with a valid session. Provider
-  // errors must also stay visible on the authentication screen.
-  if (search.error || (search.return && search.return !== "free-practice"))
+  // fresh sign-in or another identity even with a valid session. A failed
+  // sign-in must also stay visible on the authentication screen.
+  if (
+    signInArrivalPending() ||
+    (search.return && search.return !== "free-practice")
+  )
     return;
   const session = await queryClient.ensureQueryData(sessionOptions);
   if (!session) return;
@@ -512,6 +543,9 @@ const accessGift = createRoute({
   getParentRoute: () => root,
   path: "/access",
   staticData: { space: "account" },
+  // Signed out, sign-in comes back here.
+  beforeLoad: ({ location }) =>
+    requireSignedIn(location, { back: { return: "access" } }),
   component: lazyRouteComponent(
     () => import("../features/access/AccessScreen"),
     "AccessScreen",
@@ -801,7 +835,6 @@ const workbookDay = createRoute({
   getParentRoute: () => root,
   path: "/learners/$learnerId/workbooks/$date",
   staticData: { space: "learner" },
-  validateSearch: (search) => workbookSearchSchema.parse(search),
   beforeLoad: beforeWorkbooks,
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookDayScreen"),
@@ -839,6 +872,9 @@ const accountHub = createRoute({
     "AccountHost",
   ),
 });
+/** The form shows its own retry when the offers didn't load ahead. */
+const invoiceOffersFailed = (error: unknown) =>
+  console.warn("The invoice offers didn’t load ahead", error);
 const invoiceForm = lazyRouteComponent(
   () => import("../features/funding/InvoiceForm"),
   "InvoiceForm",
@@ -850,7 +886,7 @@ const invoiceArkansas = createRoute({
   loader: () =>
     queryClient
       .ensureQueryData(invoiceOffersOptions("ar-efa"))
-      .catch(() => undefined),
+      .catch(invoiceOffersFailed),
   component: invoiceForm,
 });
 const invoiceArizona = createRoute({
@@ -860,7 +896,7 @@ const invoiceArizona = createRoute({
   loader: () =>
     queryClient
       .ensureQueryData(invoiceOffersOptions("az-esa"))
-      .catch(() => undefined),
+      .catch(invoiceOffersFailed),
   component: invoiceForm,
 });
 const invoiceNewHampshire = createRoute({
@@ -870,7 +906,7 @@ const invoiceNewHampshire = createRoute({
   loader: () =>
     queryClient
       .ensureQueryData(invoiceOffersOptions("nh-efa"))
-      .catch(() => undefined),
+      .catch(invoiceOffersFailed),
   component: invoiceForm,
 });
 /** Where a student signs in, and where an ended sign-in lands. */
@@ -947,7 +983,9 @@ const schoolClassToday = createRoute({
     const session = (context as { session: AuthSession }).session;
     const me = await queryClient
       .ensureQueryData(meOptions(session))
-      .catch(() => null);
+      .catch((error: unknown) =>
+        console.warn("The account didn’t load ahead", error),
+      );
     if (me?.signedIn && me.familyClass?.classId === params.class)
       await Promise.all([
         preload(approvalsOptions(session)),
@@ -1034,7 +1072,9 @@ const schoolClassSettings = createRoute({
           getNextPageParam: (last: { nextOffset?: number | null }) =>
             last.nextOffset,
         } as never)
-        .catch(() => undefined),
+        .catch((error: unknown) =>
+          console.warn("The class's students didn’t load ahead", error),
+        ),
     ]);
   },
   component: lazyRouteComponent(
@@ -1499,6 +1539,20 @@ const lessonFilm = createRoute({
     await legacy.preload?.();
   },
 });
+/** A film watched as help for one problem (`<problem>`): the same film,
+ * and watching it counts as help for that problem. */
+const lessonFilmProblem = createRoute({
+  getParentRoute: () => appScreen,
+  path: "/lessons/$templateId/watch/$problem",
+  staticData: { space: "learner" },
+  component: lazyRouteComponent(
+    () => import("../features/films/FilmScreen"),
+    "FilmScreen",
+  ),
+  loader: async () => {
+    await legacy.preload?.();
+  },
+});
 /** Development only: the design preview's persona switcher
  * (`scripts/design-preview.sh`). `import.meta.env.DEV` is false in a build,
  * so neither the route nor its chunk is in production. */
@@ -1518,7 +1572,7 @@ const history = nativeRuntime
   : createBrowserHistory();
 export const router = createRouter({
   routeTree: root.addChildren([
-    appScreen.addChildren([home, fallback, lessonFilm]),
+    appScreen.addChildren([home, fallback, lessonFilm, lessonFilmProblem]),
     join,
     joinContinue,
     joinClass,
@@ -1826,7 +1880,8 @@ function redirectedRecently() {
     const at = Number(sessionStorage.getItem(SIGNED_OUT_KEY));
     sessionStorage.setItem(SIGNED_OUT_KEY, String(Date.now()));
     return Date.now() - at < 30_000;
-  } catch {
+  } catch (error) {
+    console.warn("This tab's last sign-in redirect wasn't read", error);
     return false;
   }
 }
@@ -1861,7 +1916,7 @@ onSignedOut(() => {
             await router.navigate({ to: "/join", replace: true });
           } finally {
             queryClient.setQueryData(sessionOptions.queryKey, null);
-            queryClient.removeQueries({ queryKey: ["account"] });
+            queryClient.removeQueries({ queryKey: qk.accounts() });
             leavingStudent = false;
           }
         })
@@ -1877,22 +1932,25 @@ onSignedOut(() => {
   // Several requests from one screen can fail together: one redirect, and the
   // rest wait silently for the screen to be replaced.
   if (leaving) return true;
-  const { pathname, search } = router.state.location;
+  const { pathname } = router.state.location;
   // Sign-in screens, a student's included, have no sign-in to leave.
   if (/^\/(sign-in|sign-up|reset-password|join|c)(\/|$)/.test(pathname))
     return false;
   if (redirectedRecently()) return false;
   leaving = true;
-  const carry = continuationSearch(search);
   const clear = () => {
     leaving = false;
     queryClient.setQueryData(sessionOptions.queryKey, null);
-    queryClient.removeQueries({ queryKey: ["account"] });
+    queryClient.removeQueries({ queryKey: qk.accounts() });
   };
-  const target = { to: "/sign-in", search: carry } as const;
+  // The sign-in gate's own address (app/sign-in-gate.ts), carrying the
+  // campaign, program and return context.
+  const target = signInTarget(router.state.location);
   void router
     .preloadRoute(target)
-    .catch(() => undefined)
+    .catch((error: unknown) =>
+      console.warn("Sign-in didn’t load ahead", error),
+    )
     .then(() => router.navigate({ ...target, replace: true }))
     .finally(clear);
   return true;

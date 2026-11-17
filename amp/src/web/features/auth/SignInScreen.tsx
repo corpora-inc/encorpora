@@ -10,6 +10,7 @@ import {
 import styles from "./Auth.module.css";
 import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
 import { Button, buttonClass } from "../../ui/Button";
+import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { useLocation, useNavigate } from "@tanstack/react-router";
 import { authConfigOptions } from "../../lib/query";
@@ -22,7 +23,6 @@ import {
   preloadPasskeys,
 } from "../../account-client";
 import {
-  signIn,
   accessSession,
   notifyAccountSessionChanged,
   type AuthSession,
@@ -47,6 +47,8 @@ import {
   fundedAttribution,
 } from "../../lib/funded-entry";
 import { useAuthDraft } from "./draft";
+import { authStep } from "../../app/auth-links";
+import { chosenProgram } from "../../lib/program-choice";
 import { useBrowserHandoff } from "./OpenInBrowser";
 
 /** The fragment that marks a sign-in handed off from an in-app browser:
@@ -101,18 +103,8 @@ export function SignInScreen() {
   const invalidReset =
     routeLocation.pathname === "/reset-password" &&
     (!resetToken || params.has("error"));
-  useEffect(() => {
-    if (invalidReset)
-      void navigate({
-        to: "/sign-in/$step",
-        params: { step: "forgot" },
-        search: {
-          ...continuationSearch(routeLocation.search),
-          error: "reset_link_invalid",
-        },
-        replace: true,
-      });
-  }, [invalidReset]);
+  // An expired or broken reset link asks for a new one in place, at the
+  // link's own address.
   const step: Step = invalidReset
     ? "forgot"
     : (params.has("reset-password") && resetToken) ||
@@ -126,22 +118,19 @@ export function SignInScreen() {
             )
           ? (routeLocation.pathname.split("/")[2] as Step)
           : "sign-in";
+  // Each step is its own address, carrying the sign-in's continuation
+  // (app/auth-links.ts).
   const setStep = (next: Step | "create-password") => {
-    const search = continuationSearch(routeLocation.search);
-    if (next === "create") void navigate({ to: "/sign-up", search });
-    else if (next === "sign-in") void navigate({ to: "/sign-in", search });
-    else if (next === "create-password")
-      void navigate({
-        to: "/sign-up",
-        search: { ...search, method: "password" },
-      });
-    else if (next === "reset")
-      void navigate({
-        to: "/reset-password",
-        search: { ...search, token: resetToken ?? undefined },
-      });
-    else
-      void navigate({ to: "/sign-in/$step", params: { step: next }, search });
+    const carry = continuationSearch(routeLocation.search);
+    void navigate(
+      next === "create"
+        ? authStep("sign-up", carry)
+        : next === "create-password"
+          ? authStep("sign-up", { ...carry, method: "password" })
+          : next === "reset"
+            ? authStep("reset", { ...carry, token: resetToken ?? undefined })
+            : authStep(next, carry),
+    );
   };
   const { data: config } = useSuspenseQuery(authConfigOptions);
   const accounts = config.mode === "accounts";
@@ -167,7 +156,12 @@ export function SignInScreen() {
     if (offersPasskey) preloadPasskeys();
   }, [offersPasskey]);
   const copy = socialCopyFor(document.documentElement.lang);
-  const errorProvider = params.get("provider");
+  // A failed sign-in, back from its provider or our server: shown once
+  // (app/third-party-returns.ts `signInReturn` kept it and cleaned the
+  // address). A step's own address (`/sign-in/forgot`) may still name one.
+  const [arrival] = useState(() => useAuthDraft.getState().arrival);
+  const arrivalCode = arrival?.error ?? params.get("error");
+  const errorProvider = arrival ? arrival.provider : params.get("provider");
   const [pending, setPending] = useState<Provider | null>(null);
   const [handoffReady, setHandoffReady] = useState(false);
   const { email, setEmail } = useAuthDraft();
@@ -186,21 +180,21 @@ export function SignInScreen() {
   const hinted = methodHint?.step === step ? methodHint : null;
   const formRef = useRef<HTMLFormElement>(null);
   const [error, setError] = useState(
-    invalidReset || params.get("error") === "reset_link_invalid"
+    invalidReset || arrivalCode === "reset_link_invalid"
       ? "That password reset link expired or is invalid. Request a new link."
-      : params.get("error") === "clever_sign_in_failed"
+      : arrivalCode === "clever_sign_in_failed"
         ? "Clever sign-in didn’t finish."
-        : params.get("error") === "clever_sign_in_busy"
+        : arrivalCode === "clever_sign_in_busy"
           ? "Clever sign-in is busy. Try again in a moment."
-          : params.get("error") === "link_failed"
+          : arrivalCode === "link_failed"
             ? "That login could not be linked. Sign in again, then try linking it from Security."
-            : params.get("error") && isProvider(errorProvider)
+            : arrivalCode && isProvider(errorProvider)
               ? socialErrorMessage(
                   copy,
-                  params.get("error")!,
+                  arrivalCode,
                   providerNames[errorProvider],
                 )
-              : params.get("error")
+              : arrivalCode
                 ? "That sign-in did not complete. Try again."
                 : "",
   );
@@ -208,25 +202,9 @@ export function SignInScreen() {
   // A notice carried from another screen (an email that already has an
   // account) shows once, on arrival.
   const [notice, setNotice] = useState(() => useAuthDraft.getState().notice);
-  useEffect(() => void useAuthDraft.getState().takeNotice(), []);
   useEffect(() => {
-    if (!accounts) {
-      history.replaceState({}, "", "/");
-      void signIn();
-    }
-  }, [accounts]);
-  // A provider's error is shown once; refresh and history do not replay it.
-  useEffect(() => {
-    if (!isProvider(errorProvider)) return;
-    void navigate({
-      to: ".",
-      search: (previous: Record<string, unknown>) => ({
-        ...previous,
-        error: undefined,
-        provider: undefined,
-      }),
-      replace: true,
-    });
+    useAuthDraft.getState().takeNotice();
+    useAuthDraft.getState().takeArrival();
   }, []);
   function go(next: Step | "create-password") {
     setStep(next);
@@ -235,6 +213,9 @@ export function SignInScreen() {
     setMethodHint(null);
   }
   const carry = continuationSearch(routeLocation.search);
+  // The funding program this visitor came through (lib/program-choice.ts),
+  // or the one an older link names.
+  const program = carry.program ?? chosenProgram() ?? undefined;
   const freeEntry = carry.return === "free-practice";
   const pitchEntry = isPitchEntry(carry.entry) ? carry.entry : undefined;
   // Every pitch path is a parent signup, so it records the same intent.
@@ -310,7 +291,8 @@ export function SignInScreen() {
         setError(
           `${providerNames[pending]} sign-in didn’t finish here. Try again or choose another option.`,
         );
-      } catch {
+      } catch (failure) {
+        console.warn("A provider sign-in could not be checked", failure);
         if (active)
           setError(
             "Your sign-in could not be checked. Try again or choose another option.",
@@ -362,7 +344,7 @@ export function SignInScreen() {
           // Opted in by default; every email carries a one-click unsubscribe.
           newsletter: true,
           entry: carry.entry,
-          program: carry.program,
+          program,
           campaign: fundedAttribution(carry),
         }),
       });
@@ -423,6 +405,7 @@ export function SignInScreen() {
       if (stage) await measureAuth(stage, work);
       else await work();
     } catch (failure) {
+      console.warn("A sign-in step didn’t finish", failure);
       setPending(null);
       setError(
         failure instanceof TypeError
@@ -575,7 +558,7 @@ export function SignInScreen() {
       await prepareFreeSignup();
       const result = await signUpWithPasskey(
         email.trim(),
-        freeEntry ? { program: carry.program } : undefined,
+        freeEntry ? { program } : undefined,
         startedAt,
       );
       if (result.ok) return done();
@@ -717,7 +700,7 @@ export function SignInScreen() {
               Each learner starts with 100 free problems and five free
               workbooks. No card needed.
             </p>
-            {carry.program && (
+            {program && (
               <p className={styles.funding}>
                 Approved{" "}
                 {
@@ -725,7 +708,7 @@ export function SignInScreen() {
                     "ar-efa": "Arkansas EFA",
                     "az-esa": "Arizona ESA",
                     "nh-efa": "New Hampshire EFA",
-                  }[carry.program]
+                  }[program]
                 }{" "}
                 vendor.
               </p>
@@ -756,7 +739,7 @@ export function SignInScreen() {
             href="/api/v1/school/sso/clever/start"
             className={buttonClass(
               ["clever_sign_in_failed", "clever_sign_in_busy"].includes(
-                params.get("error") ?? "",
+                arrivalCode ?? "",
               )
                 ? "primary"
                 : "secondary",
@@ -849,21 +832,20 @@ export function SignInScreen() {
             className="account-form"
             onSubmit={createWithPasskey}
           >
-            <div className={styles.emailHeader}>
-              <label htmlFor="signup-passkey-email">Email</label>
-              {passwords && (
-                <button
-                  type="button"
-                  className={styles.inlineLink}
-                  disabled={busy || !!pending}
-                  onClick={() => go("create-password")}
-                >
-                  Use a password instead
-                </button>
-              )}
-            </div>
-            <input
-              id="signup-passkey-email"
+            <TextField
+              label="Email"
+              action={
+                passwords && (
+                  <button
+                    type="button"
+                    className={styles.inlineLink}
+                    disabled={busy || !!pending}
+                    onClick={() => go("create-password")}
+                  >
+                    Use a password instead
+                  </button>
+                )
+              }
               required
               type="email"
               autoComplete="email"
@@ -900,55 +882,46 @@ export function SignInScreen() {
           (passwords || !showProviders) && (
             <form ref={formRef} className="account-form" onSubmit={submit}>
               {step !== "reset" && step !== "two-factor" && (
-                <label>
-                  Email
-                  <input
-                    required
-                    type="email"
-                    autoComplete="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </label>
+                <TextField
+                  label="Email"
+                  required
+                  type="email"
+                  autoComplete="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               )}
               {(step === "sign-in" ||
                 step === "create" ||
                 step === "reset") && (
                 // The rule describes the field and isn't part of its name,
                 // which stays "Password".
-                <div className="account-field">
-                  <label>
-                    {step === "reset" ? "New password" : "Password"}
-                    <input
-                      required
-                      type="password"
-                      minLength={step === "sign-in" ? 1 : 10}
-                      autoComplete={
-                        step === "sign-in" ? "current-password" : "new-password"
-                      }
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      aria-describedby={
-                        step !== "sign-in" ? "password-rule" : undefined
-                      }
-                    />
-                  </label>
-                  {step !== "sign-in" && (
-                    <small id="password-rule">At least 10 characters.</small>
-                  )}
-                </div>
+                <TextField
+                  label={step === "reset" ? "New password" : "Password"}
+                  hint={
+                    step !== "sign-in" ? "At least 10 characters." : undefined
+                  }
+                  required
+                  type="password"
+                  minLength={step === "sign-in" ? 1 : 10}
+                  autoComplete={
+                    step === "sign-in" ? "current-password" : "new-password"
+                  }
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               )}
               {step === "two-factor" && (
-                <label>
-                  {backup ? "Backup code" : "Code from your authenticator app"}
-                  <input
-                    required
-                    autoComplete="one-time-code"
-                    inputMode={backup ? "text" : "numeric"}
-                    value={code}
-                    onChange={(e) => setCode(e.target.value.trim())}
-                  />
-                </label>
+                <TextField
+                  label={
+                    backup ? "Backup code" : "Code from your authenticator app"
+                  }
+                  required
+                  autoComplete="one-time-code"
+                  inputMode={backup ? "text" : "numeric"}
+                  value={code}
+                  onChange={(e) => setCode(e.target.value.trim())}
+                />
               )}
               <Button
                 variant="primary"

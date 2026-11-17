@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { sessionOptions } from "../../../lib/query";
 import { cleanup, render, screen } from "@testing-library/react";
 import { afterEach, expect, test, vi } from "vitest";
 import { PlanStep } from "../../onboarding/PlanStep";
@@ -52,6 +53,7 @@ function setup(
         }
       : null,
   });
+  client.setQueryData(sessionOptions.queryKey, session);
   client.setQueryData(offerOptions(session).queryKey, {
     available: true,
     offers: [
@@ -78,7 +80,7 @@ function setup(
   });
   return render(
     <QueryClientProvider client={client}>
-      <PlanStep session={session} {...props} />
+      <PlanStep {...props} />
     </QueryClientProvider>,
   );
 }
@@ -90,14 +92,14 @@ test("the plan before any learner offers card only: an invoice needs its learner
   expect(screen.getByRole("radiogroup", { name: "Plan" })).toBeTruthy();
 });
 test.each(["paid", "processing", "assigned", "requires-review"] as const)(
-  "%s enrollment goes to purchase recovery before new method choices",
+  "%s enrollment shows purchase recovery before new method choices",
   (phase) => {
     setup({}, phase);
     expect(
       screen.queryByRole("radiogroup", { name: "Payment method" }),
     ).toBeNull();
-    expect(screen.getByRole("link").getAttribute("href")).toBe(
-      "/start/purchase",
-    );
+    // The purchase's progress shows in place (PurchaseStep), with no hop.
+    expect(screen.getByRole("heading", { level: 1 })).toBeTruthy();
+    expect(screen.queryByRole("radiogroup", { name: "Plan" })).toBeNull();
   },
 );

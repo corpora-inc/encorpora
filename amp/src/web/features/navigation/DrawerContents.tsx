@@ -123,11 +123,9 @@ export default function DrawerContents({
     {
       detail,
       current = false,
-      search,
     }: {
       detail?: string;
       current?: boolean;
-      search?: Record<string, string>;
     } = {},
   ) => (
     <Link
@@ -135,7 +133,8 @@ export default function DrawerContents({
       className={styles.navLink}
       to="/$"
       params={{ _splat: href.replace(/^\//, "") }}
-      search={search ?? {}}
+      // A destination's own address, with nothing of this screen's.
+      search={{}}
       // The space decides the one current item; the router's own prefix
       // match would mark /me current on /me/profiles.
       activeOptions={{ exact: true, includeSearch: false }}

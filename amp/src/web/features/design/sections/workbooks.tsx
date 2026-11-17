@@ -19,7 +19,6 @@ function query(
     refetch: () => Promise.resolve(undefined),
   } as unknown as UseQueryResult<History>;
 }
-const session = { token: "", accountId: "design" };
 const learner = (access: { hasAccess: boolean; name?: string }) => ({
   id: "00000000-0000-4000-8000-000000000001",
   name: access.name ?? "Ada",
@@ -80,7 +79,6 @@ export function WorkbookSections() {
         <Specimen label="Three workbooks, one with choices" wide>
           <div inert>
             <WorkbookList
-              session={session}
               learnerId={learner({ hasAccess: true }).id}
               query={query({ data: { workbooks, pdf: true } })}
             />
@@ -89,7 +87,6 @@ export function WorkbookSections() {
         <Specimen label="Two workbooks" wide>
           <div inert>
             <WorkbookList
-              session={session}
               learnerId={learner({ hasAccess: true }).id}
               query={query({
                 data: { workbooks: workbooks.slice(0, 2), pdf: true },
@@ -100,7 +97,6 @@ export function WorkbookSections() {
         <Specimen label="Loading">
           <div inert>
             <WorkbookList
-              session={session}
               learnerId={learner({ hasAccess: true }).id}
               query={query("pending")}
             />
@@ -109,7 +105,6 @@ export function WorkbookSections() {
         <Specimen label="Failed to load">
           <div inert>
             <WorkbookList
-              session={session}
               learnerId={learner({ hasAccess: true }).id}
               query={query({ error: new Error("Network error") })}
             />
@@ -118,7 +113,6 @@ export function WorkbookSections() {
         <Specimen label="None yet">
           <div inert>
             <WorkbookList
-              session={session}
               learnerId={learner({ hasAccess: true }).id}
               query={query({ data: { workbooks: [], pdf: true } })}
             />

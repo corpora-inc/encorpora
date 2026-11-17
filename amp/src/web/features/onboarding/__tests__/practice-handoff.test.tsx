@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { cleanup, render, screen } from "@testing-library/react";
 import { afterEach, expect, test, vi } from "vitest";
-import { meOptions } from "../../../lib/query";
+import { meOptions, sessionOptions } from "../../../lib/query";
 import { FamilySetup } from "../setup/FamilySetup";
 import { routeFor } from "../guard";
 
@@ -27,6 +27,7 @@ function renderSetup(kind: "parent" | "tutor") {
   const session = { accountId: "test-child", token: "test-token" };
   // During the handoff, the remounted setup reads the child's /me, whose
   // familyClass is absent.
+  client.setQueryData(sessionOptions.queryKey, session);
   client.setQueryData(meOptions(session).queryKey, {
     signedIn: true,
     account: { id: session.accountId },
@@ -34,7 +35,7 @@ function renderSetup(kind: "parent" | "tutor") {
   } as never);
   return render(
     <QueryClientProvider client={client}>
-      <FamilySetup session={session} kind={kind} step="ready" />
+      <FamilySetup kind={kind} step="ready" />
     </QueryClientProvider>,
   );
 }

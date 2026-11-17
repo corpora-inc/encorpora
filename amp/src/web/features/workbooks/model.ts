@@ -1,26 +1,9 @@
-import { z } from "zod";
 import { AppError } from "../../lib/AppError";
 import {
   workbookLeans,
   type WorkbookChoicesInput,
   type WorkbookPaper,
 } from "../../../workbook/contracts";
-
-export const workbookSearchSchema = z.object({
-  draft: z.string().uuid().optional().catch(undefined),
-  minutes: z
-    .union([z.literal(30), z.literal(45), z.literal(60)])
-    .optional()
-    .catch(undefined),
-  paper: z.enum(["letter", "a4"]).optional().catch(undefined),
-  number: z.coerce.number().int().min(1).max(999).optional().catch(undefined),
-  /** The workbook's choices: areas (comma-separated strands), lean, and
-   * `lesson=off` for problems only. Absent: mixed, at level, with a lesson. */
-  areas: z.string().max(400).optional().catch(undefined),
-  lean: z.enum(workbookLeans).optional().catch(undefined),
-  lesson: z.literal("off").optional().catch(undefined),
-});
-export type WorkbookSearch = z.infer<typeof workbookSearchSchema>;
 
 /** The device's calendar date, YYYY-MM-DD. */
 export function localDate(at = new Date()): string {
@@ -49,7 +32,8 @@ export function defaultPaper(): WorkbookPaper {
   try {
     const region = new Intl.Locale(navigator.language).maximize().region;
     return region && !letterRegions.has(region) ? "a4" : "letter";
-  } catch {
+  } catch (error) {
+    console.warn("The device's region couldn't be read", error);
     return "letter";
   }
 }
@@ -84,29 +68,6 @@ export const defaultWorkbookChoices: WorkbookChoicesInput = {
   lean: "level",
   lesson: true,
 };
-/** Choices from the URL. */
-export function searchChoices(search: WorkbookSearch): WorkbookChoicesInput {
-  return {
-    areas: [...new Set((search.areas ?? "").split(",").filter(Boolean))].sort(),
-    lean: search.lean ?? "level",
-    lesson: search.lesson !== "off",
-  };
-}
-/** Choices as URL search parameters; defaults are left out. */
-export function choicesSearch(choices: WorkbookChoicesInput) {
-  return {
-    areas: choices.areas.length
-      ? [...choices.areas].sort().join(",")
-      : undefined,
-    lean: choices.lean === "level" ? undefined : choices.lean,
-    lesson: choices.lesson ? undefined : ("off" as const),
-  };
-}
-export const sameChoices = (a: WorkbookChoicesInput, b: WorkbookChoicesInput) =>
-  a.lean === b.lean &&
-  a.lesson === b.lesson &&
-  [...a.areas].sort().join(",") === [...b.areas].sort().join(",");
-
 export const leanNames = {
   easier: "Easier",
   level: "At level",

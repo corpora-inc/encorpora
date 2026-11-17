@@ -1,26 +1,24 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useSearch } from "@tanstack/react-router";
-import { Navigate } from "../../nav/Navigate";
 import { meOptions } from "../../lib/query";
-import { forSession, useSessionOrNull } from "../../lib/session";
+import { useSession } from "../../lib/session";
 import { continuationSearch } from "../../lib/funded-entry";
 import { PageFrame, FrameBrand, frameCard } from "../../ui/PageFrame";
 import { Button, buttonClass } from "../../ui/Button";
 import styles from "./Account.module.css";
 
-/** A successful account creation has an explicit, useful landing screen. */
+/** A successful account creation has an explicit, useful landing screen.
+ * Its route signs in first and sends a waiting gift to /access in its one
+ * hop (app/router.tsx, `accountReady`), so here there is always a session. */
 export function AccountReady() {
-  const session = useSessionOrNull();
+  const session = useSession();
   const rawSearch = useSearch({ strict: false });
   const carry = continuationSearch(rawSearch);
-  const me = useQuery(forSession(session, meOptions));
-  if (!session) return <Navigate to="/sign-in" search={carry} replace />;
+  const me = useQuery(meOptions(session));
   const account =
     me.data?.signedIn && me.data.account.id === session.accountId
       ? me.data
       : null;
-  if (account?.availableAccessGrant || carry.return === "access")
-    return <Navigate to="/access" replace />;
   const active = account?.learners.some(
     (learner) => learner.entitlement.active,
   );
