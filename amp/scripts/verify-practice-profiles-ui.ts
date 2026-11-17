@@ -762,13 +762,14 @@ async function teacherCopiesAStudent(
     // `?profile=` link opens the same, one hop).
     await page.goto(`${origin}/practice/${copy.id}`);
     await page.locator(`[data-continue-with-amp="${copy.id}"]`).click();
-    await page.waitForURL(/\/continue\//);
+    // Pay is an overlay over where it was opened (features/pay/address.ts).
+    await page.waitForURL(/\/pay(?:\/|$)/);
   };
   await continueFromPause();
   await heading(page, "Continue with AMP");
   check(
     `${label} a profile without children continues with their own practice`,
-    path(page) === `/continue/${copy.id}` &&
+    path(page) === `/account/pay/${copy.id}` &&
       (await page.getByText("For your own practice").isVisible()),
     path(page),
   );
@@ -786,10 +787,11 @@ async function teacherCopiesAStudent(
   check(`${label} a child is added`, child.ok(), await child.text());
   const childId = (await child.json()).id as string;
   await continueFromPause();
-  await page.waitForURL(new RegExp(`/continue/${childId}$`));
+  const forChild = new RegExp(`/(?:pay/${childId}|kids/${childId}/pay)$`);
+  await page.waitForURL(forChild);
   check(
     `${label} a profile with a paused child continues the family's plan`,
-    path(page) === `/continue/${childId}`,
+    forChild.test(path(page)),
     path(page),
   );
   await context.close();

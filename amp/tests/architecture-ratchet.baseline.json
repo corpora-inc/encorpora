@@ -3,7 +3,7 @@
   "counts": {
     "redirects": 0,
     "validateSearch": 0,
-    "searchHandoffs": 4,
+    "searchHandoffs": 1,
     "navigatingEffects": 2,
     "renderNavigate": 0,
     "silentCatches": 0,
@@ -16,7 +16,6 @@
     "redirects": {},
     "validateSearch": {},
     "searchHandoffs": {
-      "features/inventory/InventoryScreen.tsx": 3,
       "nav/root.tsx": 1
     },
     "navigatingEffects": {
