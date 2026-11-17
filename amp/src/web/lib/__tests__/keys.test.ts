@@ -11,7 +11,7 @@ test("an account's keys sit under its prefix, each with its own parts", () => {
   ]);
   expect(qk.account(null, "me")).toEqual(["account", null, "me"]);
   expectTypeOf(qk.account("a-1", "level-trend", "l-1")).toEqualTypeOf<
-    readonly ["account", string, "level-trend", string]
+    readonly ["account", "a-1", "level-trend", string]
   >();
   // @ts-expect-error receipts name their page
   qk.account("a-1", "receipts");

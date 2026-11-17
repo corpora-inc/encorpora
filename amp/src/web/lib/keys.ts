@@ -53,7 +53,7 @@ function account<Id extends Account, R extends Resource>(
   resource: R,
   ...parts: AccountResources[R]
 ): readonly ["account", Id, R, ...AccountResources[R]];
-function account(id: Account, ...leaf: unknown[]) {
+function account(id: Account, ...leaf: unknown[]): readonly unknown[] {
   return ["account", id, ...leaf];
 }
 
