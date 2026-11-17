@@ -49,14 +49,16 @@ test("no open redirects: other sites, schemes and tricks are refused", () => {
     expect(returnTarget(value)).toBeUndefined();
 });
 
-test("a film returns where it was opened, never to a film, else its lesson", () => {
+test("a film returns where it was opened, never to a film, else its skill's address", () => {
   expect(filmFrom(`${answer}&lesson=t1`)).toBe(`${answer}&lesson=t1`);
   expect(filmFrom("/lessons/t1/watch?from=/pathways")).toBeUndefined();
   expect(filmFrom("//evil.example")).toBeUndefined();
-  expect(filmReturn("https://evil.example", "t1")).toBe(
-    "/pathways?lesson=t1",
+  expect(filmReturn("https://evil.example", "multiply-tens")).toBe(
+    "/pathways/multiply-tens",
   );
-  expect(filmReturn("/practice?skill=a", "t1")).toBe("/practice?skill=a");
+  // Never a lesson in the map's query.
+  expect(filmReturn(undefined)).toBe("/pathways");
+  expect(filmReturn("/practice?skill=a", "s1")).toBe("/practice?skill=a");
 });
 
 test("the same screen: path and search, the list's own view aside", () => {

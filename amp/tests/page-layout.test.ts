@@ -610,8 +610,6 @@ const BACK_DEBT: Record<string, string> = {
     "a sign-in or first-run card step: to move onto the shared stepper (phase 2)",
   "features/design/sections/states.tsx":
     "the /design gallery's sample empty state",
-  "features/films/FilmScreen.tsx":
-    "the immersive film's return to its problem or lesson: to become its ✕ (phase 2)",
   "features/me/OwnTimeScreen.tsx":
     "an adult's practice time: Progress's tab replaces it (phase 2)",
   "features/onboarding/LearnerSteps.tsx":
