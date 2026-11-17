@@ -80,6 +80,9 @@ export const qk = {
   /** The family a native shell hands over (lib/family-cache.ts). */
   nativeFamily: (identity: string | null) =>
     ["native-family", identity] as const,
+  /** Every account's data on this device: what a sign-out or another
+   * person's account drops (app/providers.tsx). */
+  accounts: () => ["account"] as const,
   /** One account's data, or one of its resources. */
   account,
 };

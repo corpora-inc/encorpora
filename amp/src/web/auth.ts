@@ -200,7 +200,7 @@ export async function signOut(to = "/") {
     const handed = handedStudentDevice();
     const back = handedReturnPath();
     clearStudentDevice();
-    notifyDeviceSessionChanged();
+    notifyDeviceSessionChanged(undefined, { handoff: handed });
     location.assign(handed ? back : "/join");
     return;
   }
@@ -226,8 +226,13 @@ export async function signOut(to = "/") {
   if (oidcConfigured) await (await oidcManager()).signoutRedirect();
 }
 
+/** How the device's session changed. A family handoff is a parent handing
+ * this device to their child ("Practice with Aug") or taking it back: the
+ * same family on the same device, each account's data still its own, so
+ * nothing on screen need be thrown away (app/providers.tsx). */
+export type SessionChange = { handoff?: boolean };
 const accountSessionListeners = new Set<
-  (session: AuthSession | null) => void
+  (session: AuthSession | null, change: SessionChange) => void
 >();
 
 /** Publish a checked session in this tab before navigation. Cross-tab messages
@@ -239,29 +244,38 @@ export function notifyAccountSessionChanged(checked?: AuthSession | null) {
 
 /** A shared-device handoff changes only this tab, not the parent's account
  * cookies or any other tab. Publish it once, without echoing a broadcast. */
-export function notifyDeviceSessionChanged(checked?: AuthSession | null) {
+export function notifyDeviceSessionChanged(
+  checked?: AuthSession | null,
+  change: SessionChange = {},
+) {
   if (checked === undefined)
-    window.dispatchEvent(new Event("amp-account-session-changed"));
-  else for (const listener of accountSessionListeners) listener(checked);
+    window.dispatchEvent(
+      new CustomEvent("amp-account-session-changed", { detail: change }),
+    );
+  else
+    for (const listener of accountSessionListeners) listener(checked, change);
 }
 
 export function onSessionChanged(
-  update: (session: AuthSession | null) => void,
+  update: (session: AuthSession | null, change?: SessionChange) => void,
   error?: (message: string) => void,
 ) {
   if (nativeRuntime) return nativeSessionEvents(update, error);
   let generation = 0;
-  const checked = (session: AuthSession | null) => {
+  const checked = (session: AuthSession | null, change: SessionChange) => {
     generation++;
-    update(session);
+    update(session, change);
   };
   accountSessionListeners.add(checked);
   if (!oidcConfigured) {
-    const changed = () => {
+    const changed = (event: Event) => {
       const current = ++generation;
+      // This tab's own handoff says so; another tab's change never is one.
+      const change =
+        event instanceof CustomEvent ? (event.detail as SessionChange) : {};
       void accessSession()
         .then((session) => {
-          if (current === generation) update(session);
+          if (current === generation) update(session, change);
         })
         .catch((failure) => {
           console.error("AMP: the session wasn’t read after a change", failure);

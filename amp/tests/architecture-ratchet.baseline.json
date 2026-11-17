@@ -1,24 +1,23 @@
 {
   "about": "Frontend anti-pattern counts in src/web; they only fall (amp/AGENTS.md, Frontend architecture). Enforced by tests/architecture-ratchet.test.ts; `files` locates the counts for its failure messages.",
   "counts": {
-    "redirects": 80,
-    "validateSearch": 10,
-    "searchHandoffs": 144,
+    "redirects": 73,
+    "validateSearch": 9,
+    "searchHandoffs": 142,
     "navigatingEffects": 18,
     "renderNavigate": 24,
-    "silentCatches": 148,
+    "silentCatches": 117,
     "sessionProps": 64,
-    "sessionReads": 43,
-    "inlineQueryKeys": 39,
-    "nativeControls": 25
+    "sessionReads": 41,
+    "inlineQueryKeys": 35,
+    "nativeControls": 19
   },
   "files": {
     "redirects": {
       "app/family-redirect.ts": 4,
       "app/family-routes.tsx": 9,
       "app/pay-routes.tsx": 3,
-      "app/privacy-routes.tsx": 1,
-      "app/router.tsx": 40,
+      "app/router.tsx": 34,
       "app/school-guards.ts": 18,
       "app/school-routes.tsx": 1,
       "features/home/destination.ts": 1,
@@ -26,11 +25,11 @@
       "features/profiles/practice-mode.ts": 1
     },
     "validateSearch": {
-      "app/router.tsx": 10
+      "app/router.tsx": 9
     },
     "searchHandoffs": {
       "app/family-routes.tsx": 2,
-      "app/router.tsx": 13,
+      "app/router.tsx": 11,
       "app/school-guards.ts": 4,
       "features/access/AccessScreen.tsx": 3,
       "features/account/AccountReady.tsx": 3,
@@ -138,19 +137,12 @@
       "features/workbooks/WorkbookResultsScreen.tsx": 1
     },
     "silentCatches": {
-      "AccountSecurity.tsx": 2,
       "app/boot.tsx": 1,
       "app/family-redirect.ts": 10,
       "app/family-routes.tsx": 8,
       "app/LegacyApp.tsx": 7,
-      "app/router.tsx": 14,
+      "app/router.tsx": 13,
       "app/school-guards.ts": 3,
-      "auth-config.ts": 1,
-      "auth.ts": 3,
-      "BookReader.tsx": 1,
-      "Calculator.tsx": 3,
-      "capability-entry.ts": 1,
-      "FamilyCenter.tsx": 2,
       "features/auth/passkey.ts": 1,
       "features/auth/SignInScreen.tsx": 2,
       "features/dev/PersonaSwitcher.tsx": 3,
@@ -194,17 +186,7 @@
       "features/workbooks/api.ts": 1,
       "features/workbooks/model.ts": 1,
       "features/workbooks/WorkbookDayScreen.tsx": 1,
-      "LessonIndex.tsx": 1,
-      "LessonLibrary.tsx": 1,
-      "MathText.tsx": 1,
-      "native-session.ts": 1,
-      "NativePreview.tsx": 1,
-      "ParentConsentCenter.tsx": 2,
-      "PaymentHistoryCenter.tsx": 3,
-      "PracticeWorkspace.tsx": 1,
-      "purchase-return.ts": 5,
-      "scene/money-art.ts": 1,
-      "share-entry.ts": 1
+      "scene/money-art.ts": 1
     },
     "sessionProps": {
       "app/LegacyApp.tsx": 2,
@@ -235,7 +217,6 @@
       "features/workbooks/WorkbookResultsScreen.tsx": 2
     },
     "sessionReads": {
-      "app/AppShell.tsx": 2,
       "app/LegacyApp.tsx": 1,
       "app/router.tsx": 2,
       "features/access/AccessScreen.tsx": 1,
@@ -271,7 +252,6 @@
       "nav/SkillLayer.tsx": 1
     },
     "inlineQueryKeys": {
-      "app/providers.tsx": 4,
       "app/router.tsx": 2,
       "features/billing/api.ts": 2,
       "features/billing/prices.ts": 1,
@@ -299,7 +279,6 @@
       "features/workbooks/WorkbookDayScreen.tsx": 1
     },
     "nativeControls": {
-      "AccountSecurity.tsx": 5,
       "Calculator.tsx": 1,
       "features/auth/SignInScreen.tsx": 4,
       "features/onboarding/setup/PeopleRows.tsx": 1,
@@ -310,12 +289,12 @@
       "features/workbooks/WorkbookResultsScreen.tsx": 1,
       "FigureChoiceInput.tsx": 1,
       "FigurePanelChoice.tsx": 1,
-      "LessonLibrary.tsx": 1,
       "MultiPartChoiceInput.tsx": 1,
       "ParentConsentCenter.tsx": 1,
       "PracticeWorkspace.tsx": 2,
       "ReceiptDetails.tsx": 1,
       "StructuredWorkInput.tsx": 1
     }
-  }
+  },
+  "exempt": []
 }

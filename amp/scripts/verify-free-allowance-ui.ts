@@ -290,9 +290,7 @@ async function journey(
       [account],
     )
   ).rows[0];
-  await page
-    .getByRole("button", { name: `Practice with ${fox.name}` })
-    .click();
+  await page.getByRole("button", { name: `Practice with ${fox.name}` }).click();
   await practicing(page);
   await measured(page, `${label} unnamed practice`);
   await shot(page, "practice", width, theme);
@@ -319,12 +317,14 @@ async function journey(
   await page.getByRole("button", { name: "Back to family" }).click();
   await page.waitForURL(FAMILY_TODAY);
   await freeLeft(page, 99).waitFor();
-  // Their first free workbook is selectable in the teacher view.
-  await page.goto(
-    `${origin}/school/${home.org_id}/classes/${home.class_id}/workbooks`,
-  );
-  await page.getByRole("heading", { name: "Workbooks", exact: true }).waitFor();
-  await page.getByText(fox.name, { exact: true }).first().waitFor();
+  // Their first free workbook is on their own page, its workbooks part
+  // (features/family/Child.tsx; the family's /workbooks is a one-hop alias).
+  const familyPath = new URL(page.url()).pathname;
+  const workbooksOf = async (child: { id: string }) => {
+    await page.goto(`${origin}${familyPath}/kids/${child.id}`);
+    await page.locator("[data-child-workbooks]").waitFor();
+  };
+  await workbooksOf(fox);
   await measured(page, `${label} workbook stack`);
   await shot(page, "workbooks", width, theme);
 
@@ -332,9 +332,7 @@ async function journey(
   // here"), and Sign out gives it back to the parent's Today.
   await page.goto(`${origin}/overview`);
   await page.waitForURL(new RegExp(`/kids/${fox.id}$`));
-  await page
-    .getByRole("button", { name: `Practice with ${fox.name}` })
-    .click();
+  await page.getByRole("button", { name: `Practice with ${fox.name}` }).click();
   await practicing(page);
   await page
     .getByRole("button", { name: "Open AMP menu" })
@@ -343,10 +341,7 @@ async function journey(
     .click();
   await page.getByRole("button", { name: "Back to family" }).click();
   await page.waitForURL(FAMILY_TODAY);
-  await page.goto(
-    `${origin}/school/${home.org_id}/classes/${home.class_id}/workbooks`,
-  );
-  await page.getByText(fox.name, { exact: true }).first().waitFor();
+  await workbooksOf(fox);
 
   // Reprints belong to specific students. Exhaustion keeps issued results
   // available, without enabling an impossible new workbook for someone else.
@@ -400,20 +395,10 @@ async function journey(
     "UPDATE amp_learners SET free_online_used=100,free_workbooks_used=5 WHERE id=ANY($1::text[])",
     [[fox.id, moon.id]],
   );
-  // A family's Workbooks lists its children, one at a time (no class
-  // reprint stack): the exhausted child's own workbooks say why, calmly,
-  // and offer the one thing that works.
-  await page.goto(
-    `${origin}/school/${home.org_id}/classes/${home.class_id}/workbooks`,
-  );
-  await page.waitForURL(/\/family\/[0-9a-f-]{36}\/workbooks$/);
-  for (const child of [fox, moon])
-    await page
-      .getByRole("link", { name: new RegExp(`^${child.name}`) })
-      .waitFor();
+  // Each child's workbooks are on their own page: the exhausted child's
+  // say why, calmly, and offer the one thing that works.
   const purchase = "Continue with AMP" as const;
-  await page.getByRole("link", { name: new RegExp(`^${moon.name}`) }).click();
-  await page.waitForURL(new RegExp(`/learners/${moon.id}/workbooks`));
+  await workbooksOf(moon);
   await workbooksUsed(page, `${label} exhausted child`, purchase);
   await page.evaluate(() =>
     window.scrollTo({ top: document.documentElement.scrollHeight }),
