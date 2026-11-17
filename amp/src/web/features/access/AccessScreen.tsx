@@ -31,7 +31,7 @@ export function AccessScreen() {
   // gift to this account. It is not consent.
   if (me && !me.account.emailVerified)
     return (
-      <PageFrame centered>
+      <PageFrame>
         <VerifyEmailStep session={session} me={me} invitation />
       </PageFrame>
     );
@@ -94,7 +94,7 @@ export function AccessScreen() {
     </Button>
   );
   return (
-    <PageFrame centered>
+    <PageFrame>
       <section
         className={`${frameCard} ${styles.step} ${giftStyles.card}`}
         aria-busy={query.isPending}

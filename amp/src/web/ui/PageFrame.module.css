@@ -1,25 +1,25 @@
+/* The sign-in and first-run frame (PageFrame.tsx): a narrow Page (its width
+   and gutters are the Page's), the help link at its foot. */
 .frame {
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-rows: minmax(0, 1fr) auto;
   width: 100%;
   min-height: 100dvh;
   background: var(--color-surface);
   color: var(--color-on-surface);
 }
-.header {
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
-  /* Exactly the first-paint skeleton's bar: legacy header rules never apply. */
-  height: calc(var(--target-size) + var(--space-4));
-  min-height: 0;
-  padding: 0 var(--space-4);
-  gap: 0;
-  flex-wrap: nowrap;
-  /* The menu and the wordmark read as one unit at the start of the bar; the
-     legacy `header` rule would push the wordmark to the far edge. */
-  justify-content: flex-start;
-  border-bottom: 1px solid var(--color-border);
+/* No bar: the card sits in the middle of the safe area. Auto margins centre
+   it and collapse to the inset when the card is taller than the screen, so
+   it is never clipped. */
+.frame > main {
+  padding-block: max(
+      var(--frame-inset, var(--space-5)),
+      env(safe-area-inset-top)
+    )
+    max(var(--frame-inset, var(--space-5)), env(safe-area-inset-bottom));
+}
+.frame > main > * {
+  margin-block: auto;
 }
 .brand {
   display: inline-flex;
@@ -45,17 +45,10 @@
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
-.main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 0;
-  padding: clamp(var(--space-4), 5vh, 56px) var(--space-4) var(--space-6);
-}
-.main .card {
+.frame .card {
   container-type: inline-size;
   box-sizing: border-box;
-  width: min(100%, var(--width-form));
+  width: 100%;
   max-width: none;
   margin: 0;
   padding: var(--frame-card-padding, var(--space-5));
@@ -65,24 +58,9 @@
   box-shadow: none;
 }
 @media (max-width: 400px) {
-  .main .card {
+  .frame .card {
     padding: var(--frame-card-padding, var(--space-4));
   }
-}
-/* No bar: the card is centered in the safe area. Auto margins center it and
- * collapse to the padding when the card is taller than the screen, so it is
- * never clipped. */
-.centered {
-  grid-template-rows: minmax(0, 1fr) auto;
-}
-.centered .main {
-  padding: max(var(--frame-inset, var(--space-5)), env(safe-area-inset-top))
-    max(var(--space-4), env(safe-area-inset-right))
-    max(var(--frame-inset, var(--space-5)), env(safe-area-inset-bottom))
-    max(var(--space-4), env(safe-area-inset-left));
-}
-.centered .main > * {
-  margin-block: auto;
 }
 .cardBrand {
   justify-self: start;
@@ -136,7 +114,4 @@
 }
 .cardBrandRow .brandExpansion {
   font-size: 11px;
-}
-.header {
-  gap: var(--space-3);
 }

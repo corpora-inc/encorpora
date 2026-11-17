@@ -342,7 +342,7 @@ export function DeleteAccountScreen() {
 /** After a deletion: the address is free to start again. */
 export function AccountDeletedScreen() {
   return (
-    <PageFrame centered>
+    <PageFrame>
       <section data-account-deleted className={`${frameCard} ${account.ready}`}>
         <div className={account.readyHeader}>
           <FrameBrand expanded />

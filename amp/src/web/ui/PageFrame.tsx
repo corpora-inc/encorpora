@@ -1,46 +1,28 @@
 import { NavigationDrawer } from "../features/navigation/NavigationDrawer";
 import { RootLink } from "../nav/root";
 import { SupportHelp } from "../features/support/SupportHelp";
-import { Link } from "@tanstack/react-router";
 import { type ReactNode } from "react";
 import { brand } from "../../brand";
+import { Page } from "./Page";
 import styles from "./PageFrame.module.css";
 /** The class every auth and first-run card uses, so cards share one position and size. */
 export const frameCard = styles.card;
 /**
- * The branded frame for sign-in, sign-up and first-run steps.
- *
- * First-run cards are top-anchored at one offset under the brand bar, so
- * moving between steps never moves the card. `centered` (sign-in and trial entry)
- * drops the bar: the card carries the brand itself (`FrameBrand`) and sits in
- * the middle of the safe area, or at its top with padding when it is taller
- * than the screen.
+ * The branded frame for sign-in, sign-up and the first-run cards: a narrow
+ * Page with no app bar, its card in the middle of the safe area (or at its
+ * top, with padding, when it is taller than the screen). The card carries
+ * the brand itself (`FrameBrand`).
  */
 export function PageFrame({
   children,
-  centered = false,
   className = "",
 }: {
   children: ReactNode;
-  centered?: boolean;
   className?: string;
 }) {
-  if (centered)
-    return (
-      <div className={`${styles.frame} ${styles.centered} ${className}`}>
-        <main className={styles.main}>{children}</main>
-        <SupportHelp feedback={false} />
-      </div>
-    );
   return (
     <div className={`${styles.frame} ${className}`}>
-      <header className={styles.header}>
-        <NavigationDrawer />
-        <RootLink className={styles.brand} aria-label={`${brand.name} home`}>
-          {brand.name}
-        </RootLink>
-      </header>
-      <main className={styles.main}>{children}</main>
+      <Page width="narrow">{children}</Page>
       <SupportHelp feedback={false} />
     </div>
   );

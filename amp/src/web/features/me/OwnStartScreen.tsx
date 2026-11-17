@@ -36,7 +36,7 @@ function StartCard({ session }: { session: AuthSession }) {
         ? "Your practice didn’t start. Check your connection, then try again."
         : "";
   return (
-    <PageFrame centered>
+    <PageFrame>
       <Toast message={failure} onDismiss={() => start.reset()} takeFocus />
       <section className={`${frameCard} ${styles.step}`}>
         <FrameBrand expanded />

@@ -93,7 +93,7 @@ function SignedInStart({ session }: { session: AuthSession }) {
       </div>
     );
   return (
-    <PageFrame centered>
+    <PageFrame>
       {step === "/start/verify-email" ? (
         <VerifyEmailStep session={session} me={me} />
       ) : step === "/start/plan" ? (
