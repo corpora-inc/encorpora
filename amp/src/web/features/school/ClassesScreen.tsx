@@ -782,7 +782,6 @@ export function ClassScreen() {
             )}
             {familyAdd && session ? (
               <AddChildSheet
-                session={session}
                 kind={familyAdd}
                 open={adding}
                 onOpenChange={setAdding}

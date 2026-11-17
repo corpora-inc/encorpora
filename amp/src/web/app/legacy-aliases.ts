@@ -1,4 +1,4 @@
-import { isRedirect, redirect } from "@tanstack/react-router";
+import { redirect } from "@tanstack/react-router";
 import type { AuthSession } from "../auth";
 import {
   claimInitialConsentChallenge,
@@ -13,7 +13,10 @@ import { MAX_LAYERS, OPEN_KEY, work } from "../nav/entities";
 import { layerScope, pushed, seedLayers, type Layer } from "../nav/layer-store";
 import { withoutLayerKeys } from "../nav/legacy-layers";
 import { legacyLayers } from "../nav/links";
-import { canonicalLearnerAddress } from "../features/profiles/practice-mode";
+import {
+  LEARNING_PATHS,
+  olderLearningHref,
+} from "../features/profiles/practice-mode";
 import { admit, requireSignedIn, toOwnPlace, withQuery } from "./sign-in-gate";
 
 /*
@@ -106,7 +109,7 @@ const withLayers = (
  * Pathways from before its layers: a skill's own address (`/pathways/<skill>`,
  * `?skill=<skill>`), a lesson (`?lesson=`) and an old shared stack
  * (`?open=`) land on the map whose learner the address names (a parent's
- * goes to their child's address, canonicalLearnerAddress), with their
+ * goes to their child's address, olderLearningHref), with their
  * layers in that map's store: the skill under any layers the address held,
  * then a lesson it names over them.
  */
@@ -125,16 +128,11 @@ async function pathwaysTarget(
   // for the map's own view store (features/pathways/map-view.ts).
   const map = withoutLayerKeys(screen, search, MAP_KEYS);
   const [path, query = ""] = map.split("?");
-  let href = map;
-  try {
-    await canonicalLearnerAddress({
+  const href =
+    (await olderLearningHref({
       pathname: path!,
       searchStr: query ? `?${query}` : "",
-    });
-  } catch (thrown) {
-    if (!isRedirect(thrown)) throw thrown;
-    href = (thrown as { options: { href?: string } }).options.href ?? map;
-  }
+    })) ?? map;
   if (MAP_VIEW_KEYS.some((key) => key in search))
     await (
       await import("../features/pathways/legacy-addresses")
@@ -694,21 +692,26 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
     about: "a practice focus in the query",
     when: ({ search }) =>
       FOCUS_KEYS.some((key) => typeof search[key] === "string"),
-    to: async ({ params, searchStr, search }) => {
-      const { practicePath } = await import("../features/spaces/identity");
-      const rest = new URLSearchParams(searchStr);
-      for (const key of FOCUS_KEYS) rest.delete(key);
-      const text = (key: string) =>
-        typeof search[key] === "string" && search[key] !== ""
-          ? (search[key] as string)
-          : undefined;
-      const path = practicePath(params.learnerId!, {
-        template: text("template"),
-        skill: text("skill"),
-        strand: text("strand"),
-      });
-      return rest.size ? `${path}?${rest}` : path;
-    },
+    to: olderLearningHref,
+  },
+  // Learning screens from before the address named whose they are: bare
+  // `/practice` (nobody), an older `?learner=`, and `?profile=&from=`
+  // (practicing as a profile, now the current learner, its return kept in
+  // features/profiles/mode-return.ts). A parent with no practice of their
+  // own goes from a shared screen that names nobody to their child's.
+  // (`/lessons` is the lessons library's row above, `/pathways/<skill>` a
+  // skill's.)
+  ...LEARNING_PATHS.filter((path) => path !== "/lessons").map((path) => ({
+    from: path,
+    about: `${path}, naming nobody or by an older query`,
+    to: olderLearningHref,
+  })),
+  {
+    from: "/practice/$",
+    about: "practice's screens, by an older query",
+    when: ({ search }: OldAddress) =>
+      "learner" in search || "profile" in search,
+    to: olderLearningHref,
   },
 
   // A workbook day's link from before its draft store carried the draft in

@@ -8,7 +8,12 @@ import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { usePanelsStore } from "../../features/account/panels";
 import { useViewStore, viewScope } from "../../features/school/view-store";
 import { layerScope, useLayerStore } from "../../nav/layer-store";
-import { queryClient, sessionOptions } from "../../lib/query";
+import { meOptions, queryClient, sessionOptions } from "../../lib/query";
+import {
+  modeReturn,
+  useModeReturns,
+} from "../../features/profiles/mode-return";
+import { currentLearner, useLearnerStore } from "../../learner-store";
 import { knownDocumentPath } from "../document-routes";
 import {
   aliasTarget,
@@ -142,12 +147,27 @@ vi.mock("../../features/family/api", async (original) => ({
   }),
 }));
 
-function enter(world: World, consent = false) {
+/** The adult's own practice and their practice profile, for the learning
+ * screens' rows (their `/me`). */
+const OWN = "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb";
+const PROFILE = "cccccccc-cccc-4ccc-8ccc-cccccccccccc";
+const ADULT_ME = {
+  signedIn: true,
+  account: { id: SESSION.accountId, kind: "adult", email: null },
+  learners: [],
+  adultPractice: { eligible: true, learner: { id: OWN, name: "Ines" } },
+  practiceProfiles: [{ id: PROFILE, label: "Grade 4" }],
+};
+function enter(world: World, consent = false, me?: object) {
   queryClient.clear();
   queryClient.setQueryData(
     sessionOptions.queryKey,
     world === "signed out" ? null : SESSION,
   );
+  if (me) queryClient.setQueryData(meOptions(SESSION).queryKey, me as never);
+  // No current learner and no practice mode carried from another example.
+  useLearnerStore.setState({ learners: {} });
+  useModeReturns.setState({ returns: {} });
   state.hub =
     world === "family parent" ? `/family/${FAMILY}/settings` : "/account";
   state.parent = world === "family parent";
@@ -170,6 +190,8 @@ type Example = {
   consent?: boolean;
   /** The school view store afterwards, for the landing screen. */
   view?: Record<string, unknown>;
+  /** Their `/me`, where the row reads it. */
+  me?: object;
 };
 
 const PRIVACY = `/family/${FAMILY}/settings/privacy`;
@@ -345,8 +367,31 @@ const EXAMPLES: Example[] = [
   {
     from: `/practice/${CHILD}?skill=s1&profile=p`,
     world: "adult",
-    lands: `/practice/${CHILD}/skills/s1?profile=p`,
+    me: ADULT_ME,
+    lands: `/practice/${CHILD}/skills/s1`,
   },
+  // Learning screens by an older query, or naming nobody.
+  { from: "/practice", world: "adult", me: ADULT_ME, lands: `/practice/${OWN}` },
+  {
+    from: `/practice?profile=${PROFILE}&from=%2Fme%2Flevel&skill=s1`,
+    world: "adult",
+    me: ADULT_ME,
+    lands: `/practice/${PROFILE}/skills/s1`,
+  },
+  {
+    from: `/practice/${CHILD}/skills/s1?learner=${OWN}`,
+    world: "adult",
+    me: ADULT_ME,
+    lands: `/practice/${CHILD}/skills/s1`,
+  },
+  ...["/overview", "/progress", "/books", "/inventory", "/pathways"].map(
+    (path) => ({
+      from: `${path}?learner=${OWN}`,
+      world: "adult" as const,
+      me: ADULT_ME,
+      lands: path,
+    }),
+  ),
   {
     from: `/practice/${CHILD}?template=t1&strand=geometry`,
     world: "adult",
@@ -603,7 +648,7 @@ const shape = (href: string) => {
 
 /** The row an example's address is handled by, in its world. */
 async function rowOf(example: Example): Promise<LegacyAlias | undefined> {
-  enter(example.world, example.consent);
+  enter(example.world, example.consent, example.me);
   try {
     return (await aliasTarget(at(example.from)))?.alias;
   } catch {
@@ -638,7 +683,7 @@ test("every row has an example that reaches it", async () => {
 
 for (const example of EXAMPLES)
   test(`${example.world}: ${example.from} is one hop to ${example.lands}`, async () => {
-    enter(example.world, example.consent);
+    enter(example.world, example.consent, example.me);
     const { router, hops } = routerAt(example.from);
     await router.load();
     const { pathname, searchStr, hash } = router.state.location;
@@ -711,4 +756,15 @@ test("patterns match whole addresses, a final $ the rest", () => {
   expect(matchPattern("/account/billing/$", "/account/billing")).toBeNull();
   expect(matchPattern("/", "/")).toEqual({});
   expect(matchPattern("/$", "/")).toBeNull();
+});
+
+test("an older ?profile=&from= link is the mode: the profile is the current learner, the return kept", async () => {
+  enter("adult", false, ADULT_ME);
+  const { router } = routerAt(
+    `/pathways?profile=${PROFILE}&from=%2Fschool%2F${SCHOOL}`,
+  );
+  await router.load();
+  expect(router.state.location.href).toBe("/pathways");
+  expect(currentLearner(SESSION.accountId)).toBe(PROFILE);
+  expect(modeReturn(SESSION.accountId)).toBe(`/school/${SCHOOL}`);
 });
