@@ -185,12 +185,11 @@ export function ProgressWorkspace({
       setCapacity(
         largeText
           ? 1
-          : Math.max(
+          : // As many rows as the stage holds: a tall screen's page never
+            // leaves a card-sized gap under its cards.
+            Math.max(
               1,
-              Math.min(
-                3,
-                Math.floor((target.clientHeight + gap) / (card + gap)),
-              ),
+              Math.floor((target.clientHeight + gap) / (card + gap)),
             ) * columns,
       );
     };
