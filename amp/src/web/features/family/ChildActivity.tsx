@@ -27,6 +27,8 @@ export function ChildActivity({
   record: ProgressRecord;
 }) {
   const [unit, setUnit] = useState<"day" | "week">("day");
+  // Any practice on record: the daily chart has something to show.
+  const practiced = record.weeks.some((week) => week.minutes > 0);
   const today = place.data!.today.date;
   const from = shift(today, -13);
   const time = useQuery(
@@ -76,21 +78,32 @@ export function ChildActivity({
           ]}
         />
       </div>
-      {unit === "day" && time.isPending ? (
-        <Loading inline>Loading practice time…</Loading>
+      {/* A child who has never practiced has nothing to wait for: their
+          line shows at once. Otherwise every daily state (the wait, a
+          failure, a quiet fortnight, one day) holds the chart's height, so
+          nothing below moves when the days arrive. */}
+      {unit === "day" && !practiced ? (
+        <p>No practice in the past two weeks.</p>
+      ) : unit === "day" && time.isPending ? (
+        <div className={styles.reserve} data-activity-reserve="">
+          <Loading inline>Loading practice time…</Loading>
+        </div>
       ) : unit === "day" && time.isError ? (
-        <p role="alert">
+        <p role="alert" className={styles.reserve}>
           Practice time didn’t load.{" "}
           <button onClick={() => void time.refetch()}>Try again</button>
         </p>
       ) : shown.length === 0 ? (
-        <p>
+        <p className={unit === "day" ? styles.reserve : undefined}>
           {unit === "day"
             ? "No practice in the past two weeks."
             : "No practice in the past twelve weeks."}
         </p>
       ) : shown.length === 1 ? (
-        <p data-activity-summary>
+        <p
+          data-activity-summary
+          className={unit === "day" ? styles.reserve : undefined}
+        >
           <strong>{detail(shown[0]!)}</strong>
           {" · "}
           {unit === "day" && shown[0]!.date === today
