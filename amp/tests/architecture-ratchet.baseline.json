@@ -3,14 +3,14 @@
   "counts": {
     "redirects": 5,
     "validateSearch": 9,
-    "searchHandoffs": 126,
-    "navigatingEffects": 15,
-    "renderNavigate": 21,
-    "silentCatches": 122,
-    "sessionProps": 54,
-    "sessionReads": 24,
+    "searchHandoffs": 120,
+    "navigatingEffects": 14,
+    "renderNavigate": 16,
+    "silentCatches": 121,
+    "sessionProps": 36,
+    "sessionReads": 16,
     "inlineQueryKeys": 21,
-    "nativeControls": 25
+    "nativeControls": 24
   },
   "files": {
     "redirects": {
@@ -88,8 +88,6 @@
       "features/school/StudentsScreen.tsx": 1,
       "features/schools/PublicFrame.tsx": 1,
       "features/schools/SchoolsScreen.tsx": 2,
-      "features/workbooks/WorkbookDayScreen.tsx": 5,
-      "features/workbooks/WorkbookList.tsx": 1,
       "home-entry.tsx": 1,
       "LessonIndex.tsx": 1,
       "LessonLibrary.tsx": 1,
@@ -108,13 +106,11 @@
       "features/school/join/CardScreen.tsx": 1,
       "features/school/join/ClassScreen.tsx": 1,
       "features/school/join/ContinueScreen.tsx": 1,
-      "features/workbooks/WorkbookDayScreen.tsx": 1,
       "nav/Navigate.tsx": 1
     },
     "renderNavigate": {
       "features/access/AccessScreen.tsx": 1,
       "features/account/AccountReady.tsx": 2,
-      "features/me/OwnStartScreen.tsx": 1,
       "features/onboarding/PlanStep.tsx": 1,
       "features/onboarding/PurchaseStep.tsx": 2,
       "features/onboarding/Starter.tsx": 2,
@@ -123,10 +119,7 @@
       "features/school/CalendarScreen.tsx": 1,
       "features/school/classroom/StandingsScreen.tsx": 1,
       "features/school/clever/ConnectionScreen.tsx": 1,
-      "features/school/join/PicturesScreen.tsx": 1,
-      "features/workbooks/WorkbookDayScreen.tsx": 2,
-      "features/workbooks/WorkbookHistoryScreen.tsx": 1,
-      "features/workbooks/WorkbookResultsScreen.tsx": 1
+      "features/school/join/PicturesScreen.tsx": 1
     },
     "silentCatches": {
       "AccountSecurity.tsx": 2,
@@ -161,7 +154,6 @@
       "features/school/pilots/buyer-session.ts": 3,
       "features/school/pilots/ClassAccess.tsx": 1,
       "features/support/SupportAddress.tsx": 1,
-      "features/workbooks/WorkbookDayScreen.tsx": 1,
       "LessonIndex.tsx": 1,
       "LessonLibrary.tsx": 1,
       "lib/account-signals.ts": 3,
@@ -196,9 +188,7 @@
     "sessionProps": {
       "FamilyCenter.tsx": 1,
       "features/access/AccessScreen.tsx": 1,
-      "features/design/sections/workbooks.tsx": 5,
       "features/family/TutoringGroup.tsx": 5,
-      "features/me/OwnStartScreen.tsx": 1,
       "features/onboarding/setup/FamilySetup.tsx": 1,
       "features/onboarding/Starter.tsx": 8,
       "features/onboarding/StartScreen.tsx": 5,
@@ -209,16 +199,12 @@
       "features/school/classes/StudentLayer.tsx": 2,
       "features/school/classes/today/FamilyToday.tsx": 1,
       "features/school/ClassesScreen.tsx": 1,
-      "features/school/StudentsScreen.tsx": 1,
-      "features/workbooks/WorkbookDayScreen.tsx": 6,
-      "features/workbooks/WorkbookHistoryScreen.tsx": 4,
-      "features/workbooks/WorkbookResultsScreen.tsx": 2
+      "features/school/StudentsScreen.tsx": 1
     },
     "sessionReads": {
       "app/LegacyApp.tsx": 1,
       "app/router.tsx": 2,
       "features/access/AccessScreen.tsx": 1,
-      "features/me/OwnStartScreen.tsx": 1,
       "features/onboarding/Starter.tsx": 2,
       "features/onboarding/StartScreen.tsx": 1,
       "features/school/classroom/StandingsScreen.tsx": 1,
@@ -228,9 +214,6 @@
       "features/school/join/JoinClass.tsx": 1,
       "features/school/join/ReplaceCode.tsx": 1,
       "features/schools/SchoolsScreen.tsx": 1,
-      "features/workbooks/WorkbookDayScreen.tsx": 2,
-      "features/workbooks/WorkbookHistoryScreen.tsx": 2,
-      "features/workbooks/WorkbookResultsScreen.tsx": 3,
       "Home.tsx": 1,
       "lib/learning-view.ts": 1
     },
@@ -258,7 +241,6 @@
       "features/school/ImportScreen.tsx": 1,
       "features/school/join/JoinScreen.tsx": 1,
       "features/schools/TalkToUs.tsx": 1,
-      "features/workbooks/WorkbookResultsScreen.tsx": 1,
       "FigureChoiceInput.tsx": 1,
       "FigurePanelChoice.tsx": 1,
       "LessonLibrary.tsx": 1,
