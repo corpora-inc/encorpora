@@ -35,7 +35,7 @@ afterEach(() => {
 test("a file that failed on the current release offers a reload, not a retry in place", async () => {
   const reset = vi.fn();
   render(<RouteError error={cssFailure} reset={reset} />);
-  await screen.findByText("This screen could not be loaded.");
+  await screen.findByText("This page didn’t finish loading. Check your connection, then reload.");
   expect(recovery.recover).toHaveBeenCalledWith(cssFailure, false);
   fireEvent.click(screen.getByRole("button", { name: "Reload" }));
   expect(reload).toHaveBeenCalledTimes(1);

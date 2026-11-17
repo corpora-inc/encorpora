@@ -10,7 +10,11 @@ export function ChunkRecoveryNotice() {
   const visible = useSyncExternalStore(subscribeChunkNotice, chunkNotice);
   return (
     <Toast
-      message={visible ? "This screen could not be loaded." : ""}
+      message={
+        visible
+          ? "Part of this page didn’t load. Check your connection, then reload."
+          : ""
+      }
       onDismiss={dismissChunkNotice}
       action={{ label: "Reload", onClick: () => location.reload() }}
     />

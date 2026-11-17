@@ -460,7 +460,7 @@ async function verifyOtherRecovery() {
         await injectChunk(page, "rejection");
         await page
           .getByRole("alert")
-          .filter({ hasText: "This screen could not be loaded." })
+          .filter({ hasText: "Part of this page didn’t load." })
           .waitFor();
         await checkGeometry(page);
         assert.deepEqual(

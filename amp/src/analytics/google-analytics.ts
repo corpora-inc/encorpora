@@ -27,13 +27,13 @@ const publicAppPaths = new Set(Object.keys(publicAppPageTitles));
 export function googlePage(
   input: string,
   home: HomeScreen = "pitch",
-  sitePages: Readonly<Record<string,string>> = marketingPageTitles,
+  sitePages: Readonly<Record<string, string>> = marketingPageTitles,
 ): string | undefined {
   const url = new URL(input);
   if (url.protocol !== "https:") return;
   const path = url.pathname.replace(/\/$/, "") || "/";
   let safePath: string | undefined;
-  if (url.hostname === "corpora.inc" && Object.hasOwn(sitePages,path))
+  if (url.hostname === "corpora.inc" && Object.hasOwn(sitePages, path))
     safePath = path;
   if (url.hostname === "amp.corpora.inc") {
     if (publicAppPaths.has(path) && (path !== "/" || home === "pitch"))
@@ -69,7 +69,7 @@ export function googlePage(
 export function googlePageTitle(
   input: string,
   home: HomeScreen = "pitch",
-  sitePages: Readonly<Record<string,string>> = marketingPageTitles,
+  sitePages: Readonly<Record<string, string>> = marketingPageTitles,
 ): string | undefined {
   const page = googlePage(input, home, sitePages);
   if (!page) return;
@@ -201,7 +201,7 @@ export function createGoogleAnalytics(
   options: {
     home?: () => HomeScreen;
     /** Fixed public routes compiled by the static-site build; never DOM or URL input. */
-    sitePages?: Readonly<Record<string,string>>;
+    sitePages?: Readonly<Record<string, string>>;
     /** A school student's device: nothing is collected, and a document that
      * started as a parent's stays disabled afterwards. */
     blocked?: () => boolean;
@@ -231,7 +231,9 @@ export function createGoogleAnalytics(
   function navigate() {
     try {
       const home = options.home?.() ?? "pitch";
-      const page = permitted() ? googlePage(location.href, home, options.sitePages) : undefined;
+      const page = permitted()
+        ? googlePage(location.href, home, options.sitePages)
+        : undefined;
       // ga-disable stops hits but does not reset Google's engagement clock.
       // Once learning starts, keep this document disabled so a later parent
       // screen cannot export time spent learning. A fresh document can resume.
@@ -350,8 +352,9 @@ export function createGoogleAnalytics(
           },
         );
       });
-    } catch {
-      /* Analytics must never interrupt navigation or checkout. */
+    } catch (error) {
+      // Analytics must never interrupt navigation or checkout.
+      console.warn("Google Analytics: the page wasn’t measured", error);
     }
   }
   /** Forward one first-party action with its validated props. */
@@ -368,8 +371,9 @@ export function createGoogleAnalytics(
         page_location: previous,
         page_title: previousTitle,
       });
-    } catch {
-      /* Measurement is optional. */
+    } catch (error) {
+      // Measurement is optional.
+      console.warn("Google Analytics: an event wasn’t sent", action, error);
     }
   }
   function signupContext(): GaSignupContext | undefined {
@@ -380,7 +384,11 @@ export function createGoogleAnalytics(
         retired ||
         !permitted() ||
         adOptOut() ||
-        !googlePage(location.href, options.home?.() ?? "pitch", options.sitePages)
+        !googlePage(
+          location.href,
+          options.home?.() ?? "pitch",
+          options.sitePages,
+        )
       )
         return;
       // Cookieless consent-mode pings cannot become server-side signup events.
@@ -394,7 +402,9 @@ export function createGoogleAnalytics(
       )
         return;
       return { ...signup };
-    } catch {
+    } catch (error) {
+      // Sign-up never waits on analytics: no context, no error.
+      console.warn("Google Analytics: no sign-up context", error);
       return;
     }
   }

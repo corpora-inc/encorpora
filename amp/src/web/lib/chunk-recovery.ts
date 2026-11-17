@@ -55,14 +55,32 @@ export function recoverChunkError(
   } else if (showNotice) {
     notice = true;
     subscribers.forEach((callback) => callback());
+    // No app screen is up to show the notice (the light pitch, or a page
+    // whose app never mounted): the entry guard says it in place instead.
+    // Not for a background preload: the visitor asked for nothing yet, and
+    // the screen they do open reports its own failure.
+    if (!subscribers.size && !preload) showEntryRecovery();
   }
   return true;
+}
+
+declare global {
+  interface Window {
+    /** public/entry-guard.js, loaded by every document before the app. */
+    ampEntryGuard?: { show(kind: "load" | "engine"): void };
+  }
+}
+function showEntryRecovery() {
+  if (window.ampEntryGuard) window.ampEntryGuard.show("load");
+  else console.error("AMP: a file didn’t load and no screen can say so");
 }
 let listening = false;
 /** Recovery must work even when analytics is disabled by a privacy preference. */
 export function startRuntimeRecovery() {
   if (listening) return;
   listening = true;
+  // From here the app recovers its own failures; the entry guard stands down.
+  document.documentElement.setAttribute("data-amp-runtime", "");
   watchReloadSafety();
   window.addEventListener("vite:preloadError", (event) => {
     recoverChunkError(

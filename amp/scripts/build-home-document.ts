@@ -1,4 +1,6 @@
 import { readdir, readFile, rm, writeFile } from "node:fs/promises";
+import { resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 import { brand } from "../src/brand";
 
 /**
@@ -9,7 +11,10 @@ import { brand } from "../src/brand";
  * the prices and the two boot answers with the document. It also carries the
  * canonical link and structured data that only `/` needs.
  */
-const dist = new URL("../dist/", import.meta.url);
+// AMP_DIST_DIR: a build elsewhere (scripts/verify-hostile-entry-ui.ts).
+const dist = process.env.AMP_DIST_DIR
+  ? pathToFileURL(`${resolve(process.env.AMP_DIST_DIR)}/`)
+  : new URL("../dist/", import.meta.url);
 const shell = await readFile(new URL("index.html", dist), "utf8");
 const assets = await readdir(new URL("assets/", dist));
 type Chunk = { file: string; imports?: string[]; css?: string[] };

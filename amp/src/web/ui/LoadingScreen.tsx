@@ -144,7 +144,9 @@ export function RouteError({
       error={
         error instanceof AppError
           ? error.message
-          : "This screen could not be loaded."
+          : chunk
+            ? "This page didn’t finish loading. Check your connection, then reload."
+            : "This screen could not be loaded."
       }
       retryLabel={chunk ? "Reload" : "Try again"}
       // A file that failed to load is not fetched again in place: reload.
