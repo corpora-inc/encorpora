@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useSession, useSessionOrNull } from "../../lib/session";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { SignedInMe } from "../../../account/contracts";
 import {
   CHILD_NAME_MAX,
@@ -136,14 +136,35 @@ export function useChildrenEditor(
       setSaving(({ [row.key]: _, ...rest }) => rest);
     }
   };
-  const commitName = async (child: (typeof known)[number]) => {
-    const name = names[child.id];
-    if (name === undefined) return;
+  /** A typed name worth saving: changed, and a name AMP takes. */
+  const renameOf = (child: (typeof known)[number], name?: string) => {
+    if (name === undefined) return undefined;
     const current = child.defaultName ? "" : child.name;
-    if (name.trim() === current || childNameProblem(name)) return;
+    return name.trim() === current || childNameProblem(name) ? undefined : name;
+  };
+  const commitName = async (child: (typeof known)[number]) => {
+    const name = renameOf(child, names[child.id]);
+    if (name === undefined) return;
     await renameKid.mutateAsync({ id: child.id, name });
     setNames(({ [child.id]: _, ...rest }) => rest);
   };
+  // A name typed and not yet saved is saved when the screen goes, as when
+  // its field is left: Back, Forward or a link leave no field behind.
+  const unsaved = useRef(() => {});
+  unsaved.current = () => {
+    for (const child of known) {
+      const name = renameOf(child, names[child.id]);
+      if (name !== undefined)
+        renameKid.mutate(
+          { id: child.id, name },
+          {
+            onError: (failure) =>
+              console.error("A name typed before leaving didn’t save", failure),
+          },
+        );
+    }
+  };
+  useEffect(() => () => unsaved.current(), []);
   /** Every row saved: waits for saves in flight (a tap is never refused
    * while one finishes), then saves names typed and rows whose year was
    * chosen while their name still needed fixing. False if one failed (its
