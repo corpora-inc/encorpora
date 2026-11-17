@@ -61,15 +61,14 @@ if (SHOTS) mkdirSync(SHOTS, { recursive: true });
 type Kind = "narrow" | "standard" | "wide" | "full";
 /** Cumulative layout shift a page may show while its data arrives. */
 const SHIFT_BUDGET = 0.01;
+/** How late every API answer arrives (contextFor). */
+const API_LATENCY_MS = 300;
 type Screen = {
   name: string;
   person: string;
   /** The address, or how to find it from the person's own pages. */
   path: string | ((page: Page) => Promise<string>);
   width: Kind;
-  /** A data wait under the header known to shift the page past the budget,
-   * with why: reported, not failed, until it is fixed. */
-  knownShift?: string;
   /** The screen's declared parent: where its "‹ Back" goes, whether the
    * page was opened directly or from somewhere else. */
   parent?: (page: Page) => Promise<string>;
@@ -109,8 +108,6 @@ const SCREENS: Screen[] = [
     person: "parent-day1",
     path: async (page) => `/continue/${await firstChild(page)}`,
     width: "standard",
-    knownShift:
-      "the plan's loading skeleton is shorter than the plans, notice and checkout that replace it, so the list of what's included below moves down",
     parent: async (page) =>
       `${await familyPath(page)}/kids/${await firstChild(page)}`,
   },
@@ -226,6 +223,14 @@ async function contextFor(browser: Browser, person: string) {
     },
   );
   assert.ok(response.ok(), `${person} signs in (${response.status()})`);
+  // Every API answer arrives a moment after the page paints, as on a phone
+  // network: whatever a screen shows while its data loads is on screen
+  // when the data arrives, so a placeholder of the wrong size fails here on
+  // any machine, not only on a busy one.
+  await context.route(`${origin}/api/**`, async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, API_LATENCY_MS));
+    await route.fallback();
+  });
   return context;
 }
 
@@ -400,11 +405,7 @@ try {
             );
           // A data wait under the header may settle within the "good"
           // budget; the header itself never moves (checked above).
-          if (settled.shift > SHIFT_BUDGET && screen.knownShift)
-            console.log(
-              `  KNOWN ${where}: layout shift ${settled.shift.toFixed(4)}: ${screen.knownShift}`,
-            );
-          else if (settled.shift > SHIFT_BUDGET)
+          if (settled.shift > SHIFT_BUDGET)
             fail(
               `${where}: layout shift ${settled.shift.toFixed(4)} (${settled.shiftSources.join(", ")})`,
             );
