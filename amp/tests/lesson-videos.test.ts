@@ -25,7 +25,8 @@ test("YouTube release policy enforces hold, cadence, audience review, and fail-f
   assert.equal(result.status, 0, result.stderr);
 });
 
-test("publishing rejects an unapproved voice even with Python optimization enabled", () => {
+test("the YouTube uploader rejects an unapproved voice even with Python optimization enabled", () => {
+  // #2406 removed the voice gate from publish-lesson-video.py; the uploader keeps its own.
   const dir = mkdtempSync(join(tmpdir(), "amp-video-policy-"));
   try {
     mkdirSync(join(dir, "assets"));
@@ -37,15 +38,6 @@ test("publishing rejects an unapproved voice even with Python optimization enabl
     );
     writeFileSync(join(dir, "description.txt"), "An example lesson.");
     const cases = [
-      [
-        "publish-lesson-video.py",
-        manifest,
-        dir,
-        "--bucket",
-        "unused",
-        "--profile",
-        "unused",
-      ],
       [
         "publish-lesson-youtube.py",
         manifest,
