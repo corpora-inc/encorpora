@@ -74,7 +74,7 @@ function items() {
     out.push({
       src: `gallery: ${c.name}`,
       scene: c.scene,
-      reveal: "reveal" in c ? c.reveal : undefined,
+      reveal: (c as { reveal?: boolean }).reveal,
       boxes:
         !c.name.includes("(lesson)") &&
         c.scene.elements.every((e) => offered.has(e.type))
