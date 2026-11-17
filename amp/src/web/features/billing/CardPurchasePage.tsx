@@ -8,6 +8,8 @@ import { AnnualPurchase } from "../../AnnualPurchase";
 import { useNavigate } from "@tanstack/react-router";
 import { rememberContinuation } from "../continue/memory";
 import type { AuthSession } from "../../auth";
+import { Page } from "../../ui/Page";
+import { PageHeader } from "../../ui/PageHeader";
 import styles from "../account/BillingPage.module.css";
 
 /** Older purchase links choose a learner, then use the one checkout screen.
@@ -80,11 +82,8 @@ function CardEntry({ session }: { session: AuthSession }) {
       />
     );
   return (
-    <main className={styles.page}>
-      <header className={styles.heading}>
-        <Link to="/account/billing">← Billing</Link>
-        <h1>Who is this plan for?</h1>
-      </header>
+    <Page className={styles.page}>
+      <PageHeader back="/account/billing" title="Who is this plan for?" />
       <ul className={styles.plans}>
         {learners.map((l) => (
           <li key={l.id} className={styles.planRow}>
@@ -114,6 +113,6 @@ function CardEntry({ session }: { session: AuthSession }) {
           </li>
         ))}
       </ul>
-    </main>
+    </Page>
   );
 }

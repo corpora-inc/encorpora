@@ -30,6 +30,12 @@ export function addressedIdentity(
   return learner ? { kind: "learner", id: learner } : null;
 }
 
+/** Whether the path itself names the learner (`/learners/<id>`,
+ * `/continue/<id>`, a family child's address), rather than a search value.
+ * Only a path may name one of the adult's own practice profiles as a
+ * learner; `?learner=` never names a profile (CP-2 r3). */
+export const namesLearnerByPath = (pathname: string) => PATH.test(pathname);
+
 /** The shared learning screens: an address among them that names nobody is
  * the adult's own (self is implicit, never a learner chosen earlier). */
 const SELF =

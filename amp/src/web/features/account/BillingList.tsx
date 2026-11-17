@@ -69,11 +69,7 @@ export function BillingList({
     .sort((a, b) => Number(!!b.adult) - Number(!!a.adult));
   return (
     <>
-      {!shown.length && (
-        <p className={styles.lede}>
-          Nothing is billed yet.
-        </p>
-      )}
+      {!shown.length && <p className={styles.lede}>Nothing is billed yet.</p>}
       <ul className={styles.list} aria-label="What each learner holds">
         {shown.map((learner, index) => {
           const access = licenseSummary(learner.access);
@@ -163,25 +159,5 @@ export function Chevron() {
     <svg className={styles.chevron} viewBox="0 0 24 24" aria-hidden="true">
       <path d="m9 6 6 6-6 6" />
     </svg>
-  );
-}
-
-/** The way back from a step inside an Account tab, above its heading. */
-export function BackRow({
-  onClick,
-  children,
-}: {
-  onClick: () => void;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className={styles.back}>
-      <Button variant="quiet" align="start" onClick={onClick}>
-        <svg className={styles.chevron} viewBox="0 0 24 24" aria-hidden="true">
-          <path d="m15 6-6 6 6 6" />
-        </svg>
-        {children}
-      </Button>
-    </div>
   );
 }

@@ -6,7 +6,7 @@ import {
   type ReactNode,
 } from "react";
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
-import { RootLink } from "../../nav/root";
+import { useToRoot } from "../../nav/root";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { z } from "zod";
 import type { AuthSession } from "../../auth";
@@ -43,6 +43,8 @@ import {
   type PaymentInterval,
 } from "../billing/PaymentMethodChoice";
 import { InvoicePractice } from "./InvoicePractice";
+import { Page } from "../../ui/Page";
+import { PageHeader } from "../../ui/PageHeader";
 import styles from "./FundedPurchasePage.module.css";
 
 const offerOptions = {
@@ -116,6 +118,7 @@ function AccountPurchase({ session }: { session: AuthSession }) {
 }
 function PurchasePage(account: Account) {
   const offers = useQuery(offerOptions);
+  const toRoot = useToRoot();
   const location = useLocation();
   const navigate = useNavigate();
   const search = location.search as {
@@ -137,17 +140,11 @@ function PurchasePage(account: Account) {
       }),
     });
   return (
-    <main className={styles.page}>
-      {account.session ? (
-        <Link to="/account/billing" className={styles.back}>
-          ← Billing
-        </Link>
-      ) : (
-        <RootLink className={styles.back}>Back to AMP</RootLink>
-      )}
-      <div className={styles.heading}>
-        <h1>Pay with education funds</h1>
-      </div>
+    <Page>
+      <PageHeader
+        back={account.session ? "/account/billing" : () => toRoot()}
+        title="Pay with education funds"
+      />
       {search.invoice ? (
         <ResumeInvoice
           key={`${account.session?.accountId ?? "guest"}:${search.invoice}`}
@@ -231,7 +228,7 @@ function PurchasePage(account: Account) {
       <p className={styles.support}>
         Questions? <a href="mailto:support@corpora.inc">support@corpora.inc</a>
       </p>
-    </main>
+    </Page>
   );
 }
 

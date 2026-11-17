@@ -461,7 +461,15 @@ for (const engine of engines) {
         [
           "family",
           familyPath,
-          ["map", "workbooks", "time", "reports", "people", "settings", "today"],
+          [
+            "map",
+            "workbooks",
+            "time",
+            "reports",
+            "people",
+            "settings",
+            "today",
+          ],
         ],
         ["record", `${jordan()}/pathways`, ["inventory", "pathways"]],
         ["account", "/account/security", ["access", "privacy", "security"]],

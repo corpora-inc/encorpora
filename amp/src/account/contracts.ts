@@ -1,3 +1,4 @@
+import { STARTER_ANSWERS } from "../analytics/events.js";
 import { availableGiftSchema } from "../access-grants/contracts.js";
 import { purchaseMeasurementSchema } from "../advertising/permission-contracts.js";
 import { z } from "zod";
@@ -36,6 +37,9 @@ export const familySummarySchema = z.object({
       namePending: z.boolean().optional(),
       /** Goes by their number ("Child 2"): no nickname chosen yet. */
       defaultName: z.literal(true).optional(),
+      /** Nothing yet in their name (no problem shown, no purchase): a
+       * parent's setup can still take them back out. */
+      removable: z.literal(true).optional(),
       freeAllowance: freeAllowanceSchema.optional(),
       /** The account holder's own learner (docs/families.md), not a child. */
       adult: z.literal(true).optional(),
@@ -59,6 +63,8 @@ const childSchema = z.object({
   birthYear: z.number().nullable(),
   namePending: z.boolean().optional(),
   defaultName: z.literal(true).optional(),
+  /** Nothing yet in their name: setup can take them back out. */
+  removable: z.literal(true).optional(),
   freeAllowance: freeAllowanceSchema.optional(),
   entitlement: z.object({
     /** Permission for online practice, including a free allowance. */
@@ -181,6 +187,15 @@ export const meSchema = z.discriminatedUnion("signedIn", [
      * paid purchase no learner holds yet. `accept-gift`: an invitation's
      * access to accept. */
     next: z.enum(["start", "add-learner", "practice", "accept-gift"]),
+    /** The first run (docs/product-model.md, "First run"): the answer given
+     * to "What brings you to AMP?" and whether that first run is done. The
+     * one owner of first-run progress; absent from older providers. */
+    setup: z
+      .object({
+        persona: z.enum(STARTER_ANSWERS).nullable(),
+        done: z.boolean(),
+      })
+      .optional(),
   }),
 ]);
 export type Me = z.infer<typeof meSchema>;

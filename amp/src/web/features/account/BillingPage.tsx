@@ -16,7 +16,9 @@ import { FundingInvoices } from "../funding/FundingInvoices";
 import { secondParentOnly } from "../second-parent/api";
 import { SecondParentNote } from "../second-parent/SecondParentNote";
 import { Receipts } from "./Receipts";
-import { AccountPageHeader } from "./AccountPageHeader";
+import { Page } from "../../ui/Page";
+import { PageHeader } from "../../ui/PageHeader";
+import { PageSection } from "../../ui/PageSection";
 import styles from "./BillingPage.module.css";
 
 export function BillingPage() {
@@ -60,30 +62,27 @@ function Billing({ session }: { session: AuthSession }) {
       search: id ? { receipt: id } : {},
     });
   return (
-    <main
-      className={styles.page}
-      data-family-settings-detail={settingsFamily ? "" : undefined}
-    >
-      <AccountPageHeader
+    <Page className={styles.page}>
+      <PageHeader
         title={search.receipt ? "Receipt" : "Billing"}
-        familyId={search.receipt ? null : settingsFamily}
-        description={
-          !search.receipt && "Manage your plans, education funds and receipts."
+        back={
+          search.receipt
+            ? () => receipt()
+            : settingsFamily
+              ? `/family/${settingsFamily}/settings`
+              : null
         }
-        before={
-          search.receipt ? (
-            <Button variant="quiet" align="start" onClick={() => receipt()}>
-              ← Billing
-            </Button>
-          ) : null
+        subtitle={
+          !search.receipt && "Manage your plans, education funds and receipts."
         }
       />
       {!search.receipt && (
         <>
-          <section className={styles.section} aria-labelledby="plans-title">
-            <div className={styles.sectionHeading}>
-              <h2 id="plans-title">Your plans</h2>
-              {linked && (
+          <PageSection
+            title="Your plans"
+            titleId="plans-title"
+            actions={
+              linked && (
                 <Button
                   variant="secondary"
                   aria-busy={portal.isPending || undefined}
@@ -92,8 +91,9 @@ function Billing({ session }: { session: AuthSession }) {
                 >
                   Manage subscriptions
                 </Button>
-              )}
-            </div>
+              )
+            }
+          >
             {linked && (
               <p className={styles.muted}>
                 Change your payment method or cancel renewal in Stripe.
@@ -175,7 +175,7 @@ function Billing({ session }: { session: AuthSession }) {
                 );
               })}
             </ul>
-          </section>
+          </PageSection>
           <section className={styles.funding} aria-labelledby="funding-title">
             <div>
               <h2 id="funding-title">Pay with education funds</h2>
@@ -205,7 +205,7 @@ function Billing({ session }: { session: AuthSession }) {
         Questions about a payment?{" "}
         <a href="mailto:support@corpora.inc">support@corpora.inc</a>
       </footer>
-    </main>
+    </Page>
   );
 }
 const date = (value: string) =>

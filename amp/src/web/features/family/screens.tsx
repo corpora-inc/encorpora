@@ -5,7 +5,9 @@ import { buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
 import { LoadingScreen } from "../../ui/LoadingScreen";
 import { RowLink, RowList } from "../../ui/RowList";
-import frame from "../school/SchoolFrame.module.css";
+import { Page } from "../../ui/Page";
+import { PageHeader } from "../../ui/PageHeader";
+import styles from "./Family.module.css";
 import { LoadFailed } from "../school/classes/teacher-shared";
 import { familyPlacesOptions } from "./api";
 import { FamilyFrame, familyHref, useFamilyPlace } from "./FamilyFrame";
@@ -39,7 +41,7 @@ export function FamilyChooserScreen() {
     (family) => family.role !== "co-teacher",
   );
   return (
-    <main className={frame.content} data-dense data-narrow="">
+    <Page className={styles.screen} data-dense>
       {places.isPending ? (
         <LoadingScreen overlay />
       ) : places.isError ? (
@@ -48,8 +50,8 @@ export function FamilyChooserScreen() {
           onRetry={() => void places.refetch()}
         />
       ) : (
-        <div style={{ display: "grid", gap: "var(--space-5)" }}>
-          <h1>Your families</h1>
+        <>
+          <PageHeader title="Your families" />
           {parents.length === 0 ? (
             <EmptyState
               title="No family yet"
@@ -77,9 +79,9 @@ export function FamilyChooserScreen() {
               ))}
             </RowList>
           )}
-        </div>
+        </>
       )}
-    </main>
+    </Page>
   );
 }
 

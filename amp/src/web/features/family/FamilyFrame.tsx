@@ -17,11 +17,12 @@ import { familyOrgTarget, peopleOf } from "./redirects";
 import { Button, buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
 import { LoadingScreen } from "../../ui/LoadingScreen";
-import frame from "../school/SchoolFrame.module.css";
+import { Page } from "../../ui/Page";
+import { PageHeader, type PageBack } from "../../ui/PageHeader";
 import { ownClassOf } from "../spaces/resolve";
 import { spaceWords } from "../spaces/words";
 import { familyOptions, type FamilyProjection } from "./api";
-import { FamilyRecordLinks } from "./RecordLinks";
+import { FamilyRecordLinks, useFamilyRecordBack } from "./RecordLinks";
 import styles from "./Family.module.css";
 
 const NO_SESSION: AuthSession = { accountId: "", token: "" };
@@ -64,13 +65,6 @@ export const childOf = (data: FamilyProjection | undefined, id: string) =>
   data?.children.find((child) => child.id === id);
 
 /**
- * The page under the app frame for every family screen: one content column,
- * its wait inside it (the bar is already whole), the family's unavailable
- * state when the address names a family this account isn't a parent of, and
- * the layers opened over the page (a skill, a lesson, one of a child's
- * answers).
- */
-/**
  * An address that opens one of the family's own children by their roster
  * person (`?open=student:<person>`, a link from before): the child's own
  * page instead, their answers over it, in a parent's words. Never the
@@ -107,11 +101,20 @@ function useOwnChildLayer(place: FamilyPlace) {
   }, [to?.to, JSON.stringify(to?.search)]);
 }
 
+/**
+ * The page under the app frame for every family screen: one standard Page
+ * column, its header (the record's way back, the title, the related
+ * records), its wait inside it (the bar is already whole), the family's
+ * unavailable state when the address names a family this account isn't a
+ * parent of, and the layers opened over the page (a skill, a lesson, one of
+ * a child's answers).
+ */
 export function FamilyFrame({
   place,
   loading = false,
   title,
   description,
+  back,
   area,
   children,
 }: {
@@ -123,28 +126,31 @@ export function FamilyFrame({
   /** Shared page heading: every family tab starts at the same position. */
   title?: ReactNode;
   description?: ReactNode;
+  /** The screen's way back, when it is a step under a tab (People under
+   * Settings); a progress record's own comes from its address. */
+  back?: PageBack;
   children: ReactNode;
 }) {
   const { query, data } = place;
   useOwnChildLayer(place);
+  const recordBack = useFamilyRecordBack(place);
   const content = (body: ReactNode) => (
-    <main
+    <Page
       id="family-content"
       tabIndex={-1}
-      className={frame.content}
+      className={styles.screen}
       data-dense
       data-family-screen=""
     >
       {data &&
         !loading &&
         (title ? (
-          <header className={styles.pageHeader} data-family-heading>
-            <div className={styles.head}>
-              <h1>{title}</h1>
-              {description && <p className={styles.sub}>{description}</p>}
-            </div>
-            <FamilyRecordLinks place={place} />
-          </header>
+          <PageHeader
+            back={back ?? recordBack}
+            title={title}
+            subtitle={description}
+            actions={<FamilyRecordLinks place={place} />}
+          />
         ) : (
           <FamilyRecordLinks place={place} />
         ))}
@@ -158,7 +164,7 @@ export function FamilyFrame({
           area={area}
         />
       )}
-    </main>
+    </Page>
   );
   if (!data && (query.isPending || !place.signedIn))
     return content(<LoadingScreen overlay />);

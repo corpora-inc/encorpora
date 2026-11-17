@@ -14,6 +14,7 @@ import { shellFrame, type ShellFrame } from "../navigation/shell-frame";
 import {
   childAddress,
   learningIdentity,
+  namesLearnerByPath,
   type AddressedIdentity,
 } from "./identity";
 import { spaceOfPath, type RouteSpace, type Space } from "./space";
@@ -368,6 +369,8 @@ function chosenLearner(
    * learning view and practice read it. */
   named: AddressedIdentity | null,
   selected: string | null,
+  /** The path itself names the learner (identity.ts `namesLearnerByPath`). */
+  byPath = false,
 ): Chosen | null {
   const own = me?.adultPractice?.learner ?? null;
   const learnerOf = (id: string): Chosen | null => {
@@ -391,11 +394,12 @@ function chosenLearner(
   // Named: that learner or profile, of the kind named, or nobody. A path
   // that names a learner may name one of this adult's own practice profiles
   // (a profile is their learner): its Continue with AMP (`/continue/<id>`)
-  // is the profile's own way on, never "not available".
+  // is the profile's own way on, never "not available". A search value
+  // (`?learner=`) never names a profile (CP-2 r3).
   if (named)
     return named.kind === "profile"
       ? profileOf(named.id)
-      : (learnerOf(named.id) ?? profileOf(named.id));
+      : (learnerOf(named.id) ?? (byPath ? profileOf(named.id) : null));
   const chosen = selected ? (learnerOf(selected) ?? profileOf(selected)) : null;
   if (chosen) return chosen;
   const first = me?.learners[0];
@@ -592,7 +596,14 @@ function resolveOnce(
             me?.adultPractice?.learner?.id,
           );
     const chosen =
-      route === "me" ? null : chosenLearner(me, named, session.learnerId);
+      route === "me"
+        ? null
+        : chosenLearner(
+            me,
+            named,
+            session.learnerId,
+            namesLearnerByPath(match.pathname),
+          );
     // The address named someone this account doesn't read: unavailable,
     // never whoever was chosen before.
     const foreign = route === "learner" && !chosen && !!named;

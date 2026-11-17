@@ -15,7 +15,8 @@ import { Loading } from "../../ui/Loading";
 import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { useBillingPortal } from "../billing/api";
-import { BackRow } from "./BillingList";
+import { Page } from "../../ui/Page";
+import { PageHeader } from "../../ui/PageHeader";
 import {
   accountGone,
   deletionPreviewOptions,
@@ -209,127 +210,117 @@ function DeleteAccount({ session }: { session: AuthSession }) {
   };
   const data = preview.data;
   return (
-    <main className={pages.page} data-delete-account>
-      <div className={pages.column}>
-        <BackRow
-          onClick={() =>
-            void navigate({ to: "/$", params: { _splat: "account/security" } })
-          }
-        >
-          Sign-in
-        </BackRow>
-        <div className={pages.head}>
-          <h1 className={pages.title}>Delete your account</h1>
-          <p className={pages.lede}>
-            Deleting your account is permanent. It can’t be undone.
+    <Page data-delete-account>
+      <PageHeader
+        back="/account/security"
+        title="Delete your account"
+        subtitle="Deleting your account is permanent. It can’t be undone."
+      />
+      {needsSignIn ? (
+        <div className={styles.reserve}>
+          <p className={pages.quietLine}>
+            For your security, sign in again before deleting your account.
           </p>
+          <div className={pages.footActions}>
+            <Link
+              className={buttonClass("primary")}
+              to="/sign-in"
+              search={{
+                return: "security",
+                next: returnTarget("/account/security/delete"),
+              }}
+            >
+              Sign in again to delete
+            </Link>
+          </div>
         </div>
-        {needsSignIn ? (
-          <div className={styles.reserve}>
-            <p className={pages.quietLine}>
-              For your security, sign in again before deleting your account.
-            </p>
+      ) : !data || preview.isFetching ? (
+        <div className={styles.reserve} aria-busy={!preview.error}>
+          {preview.error ? (
             <div className={pages.footActions}>
-              <Link
-                className={buttonClass("primary")}
-                to="/sign-in"
-                search={{
-                  return: "security",
-                  next: returnTarget("/account/security/delete"),
-                }}
+              <p className={pages.quietLine} role="alert">
+                What your account holds didn’t load.
+              </p>
+              <Button
+                variant="secondary"
+                onClick={() => void preview.refetch()}
               >
-                Sign in again to delete
-              </Link>
+                Try again
+              </Button>
             </div>
-          </div>
-        ) : !data || preview.isFetching ? (
-          <div className={styles.reserve} aria-busy={!preview.error}>
-            {preview.error ? (
-              <div className={pages.footActions}>
-                <p className={pages.quietLine} role="alert">
-                  What your account holds didn’t load.
-                </p>
-                <Button
-                  variant="secondary"
-                  onClick={() => void preview.refetch()}
-                >
-                  Try again
-                </Button>
-              </div>
-            ) : (
-              <Loading>Reading your account</Loading>
+          ) : (
+            <Loading>Reading your account</Loading>
+          )}
+        </div>
+      ) : (
+        <>
+          <section className={pages.section} aria-labelledby="what-goes">
+            <h2 id="what-goes" className={pages.sectionTitle}>
+              What goes
+            </h2>
+            <ul className={pages.list}>
+              {whatGoes(data).map((row) => (
+                <li key={row.key} className={pages.row}>
+                  <div className={pages.rowText}>
+                    <h3 className={pages.rowTitle}>{row.title}</h3>
+                    <p className={pages.rowMeta}>{row.detail}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            {data.billingRecords && (
+              <p className={pages.quietLine}>
+                Payment records stay for as long as the law requires, with no
+                name or sign-in attached.
+              </p>
             )}
-          </div>
-        ) : (
-          <>
-            <section className={pages.section} aria-labelledby="what-goes">
-              <h2 id="what-goes" className={pages.sectionTitle}>
-                What goes
+          </section>
+          {data.blockers.length ? (
+            <section className={pages.section} aria-labelledby="first">
+              <h2 id="first" className={pages.sectionTitle}>
+                First
               </h2>
               <ul className={pages.list}>
-                {whatGoes(data).map((row) => (
-                  <li key={row.key} className={pages.row}>
-                    <div className={pages.rowText}>
-                      <h3 className={pages.rowTitle}>{row.title}</h3>
-                      <p className={pages.rowMeta}>{row.detail}</p>
-                    </div>
-                  </li>
+                {data.blockers.map((blocker) => (
+                  <BlockerRow
+                    key={blocker.code}
+                    blocker={blocker}
+                    session={session}
+                  />
                 ))}
               </ul>
-              {data.billingRecords && (
-                <p className={pages.quietLine}>
-                  Payment records stay for as long as the law requires, with no
-                  name or sign-in attached.
-                </p>
-              )}
             </section>
-            {data.blockers.length ? (
-              <section className={pages.section} aria-labelledby="first">
-                <h2 id="first" className={pages.sectionTitle}>
-                  First
-                </h2>
-                <ul className={pages.list}>
-                  {data.blockers.map((blocker) => (
-                    <BlockerRow
-                      key={blocker.code}
-                      blocker={blocker}
-                      session={session}
-                    />
-                  ))}
-                </ul>
-              </section>
-            ) : (
-              <form className={styles.confirm} onSubmit={submit} noValidate>
-                <TextField
-                  label={`Type “${DELETE_ACCOUNT_WORD}” to confirm`}
-                  value={typed}
-                  autoComplete="off"
-                  autoCapitalize="none"
-                  autoCorrect="off"
-                  spellCheck={false}
-                  enterKeyHint="done"
-                  disabled={remove.isPending}
-                  onChange={(event) => {
-                    remove.reset();
-                    setTyped(event.target.value);
-                  }}
-                  error={remove.error ? failureText(remove.error) : ""}
-                />
-                <Button
-                  type="submit"
-                  variant="primary"
-                  className={styles.delete}
-                  disabled={!confirmed || remove.isPending}
-                  aria-busy={remove.isPending || undefined}
-                >
-                  Delete account
-                </Button>
-              </form>
-            )}
-          </>
-        )}
-      </div>
-    </main>
+          ) : (
+            <form className={styles.confirm} onSubmit={submit} noValidate>
+              <TextField
+                label={`Type “${DELETE_ACCOUNT_WORD}” to confirm`}
+                value={typed}
+                autoComplete="off"
+                autoCapitalize="none"
+                autoCorrect="off"
+                spellCheck={false}
+                enterKeyHint="done"
+                disabled={remove.isPending}
+                onChange={(event) => {
+                  remove.reset();
+                  setTyped(event.target.value);
+                }}
+                error={remove.error ? failureText(remove.error) : ""}
+              />
+              <Button
+                type="submit"
+                variant="primary"
+                className={styles.delete}
+                disabled={!confirmed || remove.isPending}
+                aria-busy={remove.isPending || undefined}
+              >
+                Delete account
+              </Button>
+            </form>
+          )}
+        </>
+      )}
+    </Page>
   );
 }
 

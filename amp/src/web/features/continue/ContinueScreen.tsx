@@ -39,6 +39,8 @@ import {
   rememberContinuation,
 } from "./memory";
 import { Included, RecapLine } from "./Recap";
+import { Page } from "../../ui/Page";
+import { PageHeader } from "../../ui/PageHeader";
 import styles from "./Continue.module.css";
 
 /** `/continue/$learnerId`: "Continue with AMP" for one learner. The plan,
@@ -95,7 +97,7 @@ function Continue({ session }: { session: AuthSession }) {
   }, [learner?.id, page.isPending, home]);
   if (me.error && !account)
     return (
-      <Page>
+      <ContinuePage>
         <EmptyState
           title="This didn’t load"
           action={
@@ -106,12 +108,12 @@ function Continue({ session }: { session: AuthSession }) {
         >
           Check your connection, then try again.
         </EmptyState>
-      </Page>
+      </ContinuePage>
     );
-  if (!account) return <Page busy />;
+  if (!account) return <ContinuePage busy />;
   if (!learner)
     return (
-      <Page>
+      <ContinuePage>
         <EmptyState
           title="This learner isn’t in your account"
           action={
@@ -120,7 +122,7 @@ function Continue({ session }: { session: AuthSession }) {
         >
           Choose a learner from your family to continue with AMP.
         </EmptyState>
-      </Page>
+      </ContinuePage>
     );
   // Access is already active: back where they were, with the name to come.
   if (learner.hasAccess) {
@@ -147,16 +149,13 @@ function Continue({ session }: { session: AuthSession }) {
     );
   if (learner.simulation)
     return (
-      <Page
+      <ContinuePage
         back={returnTo}
-        head={
-          <>
-            <h1 className={styles.title}>Choose your plan</h1>
-            <p className={styles.for}>For your own practice</p>
-            <p className={styles.covers}>
-              It covers practicing as {learner.name} and every level you try.
-            </p>
-          </>
+        subtitle="For your own practice"
+        note={
+          <p className={styles.covers}>
+            It covers practicing as {learner.name} and every level you try.
+          </p>
         }
         aside={<Included forChild={false} />}
       >
@@ -166,21 +165,14 @@ function Continue({ session }: { session: AuthSession }) {
           interval={interval}
           returnTo={returnTo}
         />
-      </Page>
+      </ContinuePage>
     );
   const adult = learner.adult === true;
   const consented = account.consent.status === "active";
   return (
-    <Page
+    <ContinuePage
       back={returnTo}
-      head={
-        <>
-          <h1 className={styles.title}>Choose your plan</h1>
-          <p className={styles.for}>
-            {adult ? "For your own practice" : `For ${learner.name}`}
-          </p>
-        </>
-      }
+      subtitle={adult ? "For your own practice" : `For ${learner.name}`}
       aside={
         <>
           <RecapLine learnerId={learner.id} />
@@ -224,7 +216,7 @@ function Continue({ session }: { session: AuthSession }) {
           }
         />
       )}
-    </Page>
+    </ContinuePage>
   );
 }
 
@@ -251,7 +243,7 @@ function ForChild({
       replace: true,
     });
   }, [learnerId]);
-  return <Page busy />;
+  return <ContinuePage busy />;
 }
 
 /** The adult's own practice, bought for a profile's sake by an account with
@@ -316,65 +308,52 @@ function Return({ href }: { href: string }) {
   useEffect(() => {
     void navigate({ href, replace: true });
   }, [href]);
-  return <Page busy />;
+  return <ContinuePage busy />;
 }
 
 /**
- * Continue's page: the way back, the heading, then what they did and get
- * beside the plan (one column on phones, the plan last).
+ * Continue's page: the way back, "Choose your plan" and who it is for, then
+ * what they did and get beside the plan (one column on phones, the plan
+ * last).
  */
-function Page({
+function ContinuePage({
   children,
   busy = false,
   back,
-  head,
+  subtitle,
+  note,
   aside,
 }: {
   children?: React.ReactNode;
   busy?: boolean;
   /** Where "Back" returns: the screen Continue was opened from. */
   back?: string;
-  head?: React.ReactNode;
+  subtitle?: string;
+  /** A line under the header, before the plan. */
+  note?: React.ReactNode;
   aside?: React.ReactNode;
 }) {
-  if (busy || !head)
+  if (busy || !subtitle)
     return (
-      <main className={styles.page} aria-busy={busy || undefined}>
+      <Page aria-busy={busy || undefined}>
         {busy ? <LoadingScreen overlay /> : children}
-      </main>
+      </Page>
     );
   return (
-    <main className={styles.page}>
-      {back && (
-        <Link
-          to={back.split("?")[0] as never}
-          className={`${buttonClass("quiet", "", "start")} ${styles.backLink}`}
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="m15 6-6 6 6 6" />
-          </svg>
-          {backLabel(back)}
-        </Link>
-      )}
-      <div className={styles.head}>{head}</div>
+    <Page>
+      <PageHeader
+        back={back ?? null}
+        title="Choose your plan"
+        subtitle={subtitle}
+      />
+      {note}
       <div className={styles.columns}>
         <div className={styles.checkout}>{children}</div>
         {aside && <div className={styles.aside}>{aside}</div>}
       </div>
-    </main>
+    </Page>
   );
 }
-/** "Back to practice" names where it goes when it can. */
-function backLabel(href: string) {
-  const path = href.split("?")[0]!;
-  if (path === "/practice") return "Back to practice";
-  if (path === "/me") return "Back to your progress";
-  if (path.startsWith("/family/access") || path.startsWith("/account/billing"))
-    return "Back to billing";
-  if (/\/classes\/[^/]+\/today$/.test(path)) return "Back to Today";
-  return "Back";
-}
-
 /** A plan already paid for and not yet anyone's: it becomes this learner's. */
 function UsePaidPlan({
   session,

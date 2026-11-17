@@ -36,6 +36,26 @@ AMP is an independent TypeScript/PostgreSQL mathematics product. Follow the repo
 - Review complete composed screens in guest, signed-in and paid states. Inspect visual hierarchy, typography, alignment and control weight in screenshots; overflow and touch-target assertions alone do not establish visual quality. Keep skill titles readable rather than truncating them to make room for secondary controls.
 - Verify real browser behavior and attach synthetic screenshots at 320, 390, 768 and 1280 px in light and dark themes. Measure overflow and bounding boxes during loading, validation and failed requests; verify learner state across navigation.
 
+### Frontend architecture (non-negotiable, enforced in CI)
+
+AMP's web app is built to an elite engineering standard, not as a pile of one-off screens. An audit on 2026-11-16 found 88 redirects, 39 query-string handoffs, 14 separate "where next" functions, the current learner held in 7 places, and about 13 pay surfaces. Those produced redirect chains and a Back button that hung the tab. Never reintroduce these patterns. Ratchet tests and lint hold every count to "only falls" (`tests/architecture-ratchet.test.ts`; lower its baseline as counts fall).
+
+- **Canonical global state.** Every fact has exactly one owner:
+  - Server data lives in the TanStack Query cache, behind a key factory, and changes only through mutations that invalidate everything that shows it.
+  - Client state (current learner, current place, flow drafts, preferences) lives in typed zustand stores keyed by account.
+  - Components read through hooks and selectors. Never drill props, never copy state into `useState` and sync it with effects, and never build a context as an ad-hoc store.
+- **URLs name screens, not state.** A path names the screen and its subject (`/family/<id>/today`, `/pay/<learnerId>/…`).
+  - No query strings carry app state between screens (`?learner=`, `?from=`, `?return=`, `?interval=`). The one exception is a third party's return value, such as Stripe's `session_id`, read once and resolved.
+  - Back, Forward, refresh and shared links work by construction.
+- **No redirect chains.**
+  - Compute a navigation target once, from canonical state, before navigating, then link straight to it.
+  - Redirects exist only for a legacy URL or the sign-in gate: one hop, never chained, never based on how the page was reached.
+  - No effect navigates, and nothing navigates during render.
+  - `/` never redirects.
+- **One component per job.** Screens render through `ui/Page` and `PageHeader` (one width scale, one header, one "‹ Back"). Lists use `ui/ColumnList`. Use the shared controls in `ui/`. Never add a page-specific width, header or back link, a second dialog system, or a raw native control.
+- **Contain failure.** Route errors render inside the app shell with the menu intact. No silent `.catch(() => null)`. Every error is logged and shown inline or as a toast.
+- **Hooks rules are law.** Follow ESLint's react-hooks rules (`rules-of-hooks`, `exhaustive-deps`, `set-state-in-effect`). Fix a violation by deriving state or moving work to an event handler or loader, never with a disable comment without a written reason.
+
 ### Web application boundaries
 
 Follow [the web architecture](docs/architecture/web-app.md). New auth and onboarding screens live in `src/web/features/`; typed TanStack routes and providers live in `src/web/app/`. `main.tsx` only bootstraps providers and the router. TanStack Query owns the account-scoped `/me` resource, including its Family projection; zustand owns selection and memory-only form drafts. Server mutations invalidate that canonical resource. Shared accessible controls and theme tokens live in `src/web/ui/`. The legacy host bridges Family, billing, trial, lessons and practice until their feature migrations; do not add new screens to it.

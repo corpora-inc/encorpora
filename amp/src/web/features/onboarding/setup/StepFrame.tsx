@@ -1,8 +1,9 @@
-import { Link, useLocation, useRouter } from "@tanstack/react-router";
+import { Link, useRouter } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { closeTo } from "../../../lib/return-to";
-import { Button, buttonClass } from "../../../ui/Button";
-import { appReturn } from "../../spaces/returns";
+import { stepBack } from "../../../lib/return-to";
+import { buttonClass } from "../../../ui/Button";
+import { Page } from "../../../ui/Page";
+import { PageHeader } from "../../../ui/PageHeader";
 import styles from "./Setup.module.css";
 
 /** One step of a first run (docs/design/ia.md): where it sits in the setup,
@@ -33,16 +34,9 @@ export function StepFrame({
   hintLines?: 1 | 2;
   back: string;
 }) {
-  // Adding a place from elsewhere (`?from=`): every step can give up and go
-  // back there (docs/architecture/spaces.md, "Returns").
   const router = useRouter();
-  const from = appReturn(
-    useLocation({
-      select: (location) => (location.search as Record<string, unknown>).from,
-    }),
-  );
   return (
-    <main className={styles.page}>
+    <Page>
       {steps.length > 1 && (
         <nav className={styles.progress} aria-label="Setup">
           <p className={styles.count}>
@@ -62,10 +56,7 @@ export function StepFrame({
           </ol>
         </nav>
       )}
-      <h1 id={titleId} className={styles.title}>
-        {title}
-      </h1>
-      {lede && <p className={styles.lede}>{lede}</p>}
+      <PageHeader title={title} titleId={titleId} subtitle={lede} />
       <div className={styles.body}>{children}</div>
       <div className={styles.foot}>
         <div className={styles.actions}>
@@ -78,14 +69,10 @@ export function StepFrame({
               ) as never
             }
             className={buttonClass("quiet")}
+            onClick={(event) => stepBack(router.history, back, event)}
           >
             Back
           </Link>
-          {from && (
-            <Button variant="quiet" onClick={() => closeTo(router, from)}>
-              Cancel
-            </Button>
-          )}
           {next}
         </div>
         <p
@@ -96,6 +83,6 @@ export function StepFrame({
           {hint}
         </p>
       </div>
-    </main>
+    </Page>
   );
 }

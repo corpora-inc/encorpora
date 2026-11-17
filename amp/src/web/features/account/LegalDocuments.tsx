@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "../../ui/Button";
+import { PageSection } from "../../ui/PageSection";
 import styles from "./BillingPage.module.css";
 
 export const legalDocuments = [
@@ -55,8 +56,7 @@ export function LegalDocuments() {
   const [busy, setBusy] = useState<string>();
   const [error, setError] = useState("");
   return (
-    <section className={styles.section} aria-labelledby="legal-documents-title">
-      <h2 id="legal-documents-title">Policies & documents</h2>
+    <PageSection title="Policies & documents" titleId="legal-documents-title">
       <ul className={styles.plans}>
         {legalDocuments.map((doc) => (
           <li key={doc.id} className={styles.planRow}>
@@ -93,6 +93,6 @@ export function LegalDocuments() {
       </ul>
       <p className={styles.muted}>Save a readable copy, or print it to PDF.</p>
       {error && <p role="alert">{error}</p>}
-    </section>
+    </PageSection>
   );
 }
