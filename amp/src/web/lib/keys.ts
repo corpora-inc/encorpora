@@ -21,8 +21,8 @@ export type AccountResources = {
   "own-practice": [];
   /** Purchases and plans (features/billing), and their parts. */
   billing: [part?: string];
-  /** Whether a parent's consent can be given here. */
-  consent: [part: "availability"];
+  /** A parent's consent: its status, and whether it can be given here. */
+  consent: [part?: "availability"];
   /** The families this account belongs to, and each one's reads
    * (features/family/api.ts). */
   families: unknown[];
