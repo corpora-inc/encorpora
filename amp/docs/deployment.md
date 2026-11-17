@@ -157,7 +157,9 @@ The check runs as the image’s unprivileged user. It validates the complete cat
 
 The API never downloads the model. Without the model or the vectors it answers lexically and logs why. If a document's vectors are missing or out of date, as in local development after a content change, it embeds that document in the background. Search adds about 90 MB of resident memory, 80 MB of it the model. A query takes about 5 ms.
 
-Run `npm run build:search` locally (it fetches the model the first time), then `npm run search:relevance` to score the fixed relevance set.
+A skill's document is everything it holds, not its title alone: its description, its strand and area ("Reasoning and proof, Geometry"), the titles of its problem types and the lessons that teach them. Its embedding reads the title, description, strand, area and first six problem types. The blend scales lexical hits to their group's best hit. A neighbour counts only above the floor (cosine 0.4) and within 0.16 of the query's best neighbour anywhere, so a group whose documents are all far from the query gets nothing from vectors rather than its least-bad document on top. A group ends at a tenth of its best score. Inventory and Pathways share the one field, hook and result list (`src/web/features/search/SiteSearch.tsx`).
+
+Run `npm run build:search` locally (it fetches the model the first time), then `npm run search:relevance` to score the fixed relevance set and the skill queries (hit in the Skills group's first three, precision of its first five). On 2026-11-16: 31 of 32 hit@3 by group and skill queries 12 of 12 hit, 82% precision (before: 30 of 32, and 10 of 12 at 63%, "logic" showing one unrelated skill). Measured locally, a warm request takes 6 ms (p50) and 20 ms at most, round trip.
 
 ### Demo school terms
 

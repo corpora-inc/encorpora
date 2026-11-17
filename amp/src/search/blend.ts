@@ -19,6 +19,9 @@ export const NEIGHBOUR_FLOOR = 0.4;
 /** How far below the query's best neighbour a neighbour may be and still
  * count: further is another topic that happens to share a word or a shape. */
 export const NEIGHBOUR_MARGIN = 0.16;
+/** A result scoring under this share of its group's best is a stray word
+ * match ("time" in "times"), not an answer: the group ends before it. */
+export const GROUP_FLOOR = 0.1;
 const LEXICAL_WEIGHT = 0.6;
 const VECTOR_WEIGHT = 0.4;
 
@@ -81,11 +84,14 @@ export function blend(
     (a, b) => b.score - a.score || a.id.localeCompare(b.id),
   );
   const counts = new Map<SearchGroupId, number>();
+  const tops = new Map<SearchGroupId, number>();
   return ranked.filter((hit) => {
     const group = groupOfId(hit.id);
+    const top = tops.get(group) ?? hit.score;
+    tops.set(group, top);
     const count = counts.get(group) ?? 0;
     counts.set(group, count + 1);
-    return count < GROUP_LIMIT[group];
+    return count < GROUP_LIMIT[group] && hit.score >= GROUP_FLOOR * top;
   });
 }
 

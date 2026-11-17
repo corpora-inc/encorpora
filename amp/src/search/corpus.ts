@@ -12,8 +12,8 @@ export type SearchKind = "lesson" | "type" | "film" | "skill" | "term";
 
 /** Results are shown in these groups, in this order. */
 export const searchGroups = [
-  { id: "lessons", label: "Lessons", kinds: ["lesson", "type", "film"] },
   { id: "skills", label: "Skills", kinds: ["skill"] },
+  { id: "lessons", label: "Lessons", kinds: ["lesson", "type", "film"] },
   { id: "glossary", label: "Glossary", kinds: ["term"] },
 ] as const satisfies readonly {
   id: string;

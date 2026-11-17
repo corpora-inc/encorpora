@@ -9,8 +9,8 @@
     "silentCatches": 243,
     "sessionProps": 89,
     "sessionReads": 47,
-    "inlineQueryKeys": 64,
-    "nativeControls": 27
+    "inlineQueryKeys": 63,
+    "nativeControls": 25
   },
   "files": {
     "redirects": {
@@ -364,7 +364,6 @@
       "features/school/pilots/api.ts": 1,
       "features/school/pilots/SchoolNext.tsx": 1,
       "features/schools/ParentScreen.tsx": 1,
-      "features/search/search-corpus.ts": 1,
       "features/workbooks/api.ts": 4,
       "features/workbooks/WorkbookDayScreen.tsx": 1,
       "lib/family-cache.ts": 2,
@@ -374,9 +373,7 @@
       "AccountSecurity.tsx": 5,
       "Calculator.tsx": 1,
       "features/auth/SignInScreen.tsx": 4,
-      "features/inventory/InventoryScreen.tsx": 1,
       "features/onboarding/setup/PeopleRows.tsx": 1,
-      "features/pathways/PathwaysScreen.tsx": 1,
       "features/school/classes/grade-parts.tsx": 1,
       "features/school/ImportScreen.tsx": 1,
       "features/school/join/JoinScreen.tsx": 1,

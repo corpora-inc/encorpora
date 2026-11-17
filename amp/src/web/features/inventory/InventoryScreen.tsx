@@ -116,24 +116,23 @@ export function InventoryScreen() {
   const keys = useResultKeys();
   const actions = useSearchActions(found.docs);
   const needle = query.toLowerCase();
-  const matching = useMemo(() => {
-    if (!needle) return inArea;
-    const rank = new Map(
-      found.results
-        .filter((result) => result.kind === "skill")
-        .map((result, at) => [result.target, at]),
-    );
-    return inArea
-      .filter(
-        (s) =>
-          rank.has(s.id) ||
-          `${s.title} ${s.description}`.toLowerCase().includes(needle),
-      )
-      .sort(
-        (a, b) =>
-          (rank.get(a.id) ?? rank.size) - (rank.get(b.id) ?? rank.size),
-      );
-  }, [inArea, needle, found.results]);
+  const rank = new Map(
+    found.results
+      .filter((result) => result.kind === "skill")
+      .map((result, at) => [result.target, at]),
+  );
+  const matching = needle
+    ? inArea
+        .filter(
+          (s) =>
+            rank.has(s.id) ||
+            `${s.title} ${s.description}`.toLowerCase().includes(needle),
+        )
+        .sort(
+          (a, b) =>
+            (rank.get(a.id) ?? rank.size) - (rank.get(b.id) ?? rank.size),
+        )
+    : inArea;
   // Lessons in the chosen math area (a lesson's area is its skill's).
   const areaOfSkill = useMemo(
     () => new Map(allSkills.map((s) => [s.id, areas[areaSlot(s)]?.id])),

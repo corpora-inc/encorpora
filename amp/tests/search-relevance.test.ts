@@ -8,9 +8,14 @@ import {
   term,
   words,
 } from "../src/search/lexical";
-import { relevanceSet } from "../src/search/relevance-set";
+import { relevanceSet, skillRelevanceSet } from "../src/search/relevance-set";
 import { synonyms } from "../src/search/synonyms";
-import { blend, groupTops, NEIGHBOUR_FLOOR } from "../src/search/blend";
+import {
+  blend,
+  groupTops,
+  NEIGHBOUR_FLOOR,
+  NEIGHBOUR_MARGIN,
+} from "../src/search/blend";
 
 const docs = sourceCorpus();
 const index = createLexicalIndex(docs);
@@ -123,4 +128,76 @@ test("the blend ranks agreement first and ignores weak neighbours", () => {
     ["lesson:b", "lesson:a", "lesson:c"],
   );
   assert.deepEqual(blend([], [{ id: "lesson:x", similarity: 0.2 }]), []);
+});
+
+test("skill queries find their skills, and only their skills, lexically", () => {
+  // The Skills group's first three hold a listed skill, and its first five
+  // are mostly listed skills. Measured 12 of 12 and 77% when written (the
+  // shipped search before skills read their strand, problem types and
+  // lessons: 10 of 12 and 63%, "logic" showing only a facts-within-5 skill).
+  let hits = 0,
+    precision = 0;
+  const misses: string[] = [];
+  for (const { query, skills } of skillRelevanceSet) {
+    const shown = index
+      .search(query)
+      .filter((hit) => hit.id.startsWith("skill:"))
+      .slice(0, 5)
+      .map((hit) => hit.id.slice("skill:".length));
+    if (shown.slice(0, 3).some((id) => skills.includes(id))) hits++;
+    else misses.push(`${query} → ${shown.join(", ")}`);
+    precision += shown.length
+      ? shown.filter((id) => skills.includes(id)).length / shown.length
+      : 0;
+  }
+  assert.ok(hits >= 11, `skill hit@3 ${hits}; misses:\n${misses.join("\n")}`);
+  assert.ok(precision / skillRelevanceSet.length >= 0.7, `${precision}`);
+});
+
+test("logic finds the reasoning and proof skills", () => {
+  const reasoning = skillRelevanceSet.find((c) => c.query === "logic")!.skills;
+  const shown = index
+    .search("logic")
+    .filter((hit) => hit.id.startsWith("skill:"))
+    .slice(0, 5)
+    .map((hit) => hit.id.slice("skill:".length));
+  assert.equal(shown.length, 5);
+  for (const id of shown) assert.ok(reasoning.includes(id), id);
+});
+
+test("a group far from the query gets no neighbours from it", () => {
+  // The founder's "logic": glossary terms were near, every skill far; the
+  // nearest far skill must not lead the Skills group.
+  const best = 0.62;
+  const ranked = blend(
+    [],
+    [
+      { id: "term:converse", similarity: best },
+      { id: "term:proof", similarity: best - 0.05 },
+      { id: "skill:facts-within-5", similarity: best - NEIGHBOUR_MARGIN - 0.02 },
+    ],
+  );
+  assert.deepEqual(
+    ranked.map((hit) => hit.id),
+    ["term:converse", "term:proof"],
+  );
+});
+
+test("a typo in a skill word still finds its skills", () => {
+  for (const [typo, word] of [
+    ["fracions", "fraction"],
+    ["geometery", "geometr"],
+  ] as const) {
+    const top = index
+      .search(typo)
+      .filter((hit) => hit.id.startsWith("skill:"))
+      .slice(0, 3);
+    assert.equal(top.length, 3, typo);
+    for (const hit of top)
+      assert.ok(
+        index.docs.get(hit.id)!.body.toLowerCase().includes(word) ||
+          index.docs.get(hit.id)!.title.toLowerCase().includes(word),
+        `${typo} → ${hit.id}`,
+      );
+  }
 });
