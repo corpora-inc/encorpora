@@ -32,6 +32,18 @@ export function planLearners(me: SignedInMe) {
   );
 }
 
+/** Whether this account manages a plan here: its own family's learners.
+ * A parent who is only another family's second parent manages none: a
+ * family's purchases are its account holder's, and the server refuses a
+ * second parent's (`family_holder_only`, src/billing/stripe/routes.ts), so
+ * offering plan management to them would be a button bound to fail. */
+export function managesPlan(
+  me: SignedInMe,
+  onlySecondParent: boolean,
+): boolean {
+  return !onlySecondParent && planLearners(me).length > 0;
+}
+
 /** The last day of a learner's active access, or null. */
 const lastDay = (learner: Learner) =>
   learner.access
