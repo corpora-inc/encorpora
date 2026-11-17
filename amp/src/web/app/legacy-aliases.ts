@@ -5,7 +5,8 @@ import {
   hasInitialConsentChallenge,
 } from "../consent-entry";
 import { isFamilyId } from "../features/family/api";
-import { continuationSearch, fundedPrograms } from "../lib/funded-entry";
+import { fundedPrograms, gateContinuation } from "../lib/funded-entry";
+import { keepSignUpIntent, signUpIntent } from "../lib/program-choice";
 import { meOptions, queryClient, sessionOptions } from "../lib/query";
 import { requestFetch } from "../lib/request-transport";
 import { nativeRuntime } from "../native-runtime";
@@ -234,11 +235,11 @@ async function retiredTrial({ search }: OldAddress) {
   admit({ adults: true });
   const session = await sessionIfAny();
   if (!session) {
-    const carry = continuationSearch(search);
-    return withQuery("/sign-up", {
-      ...carry,
-      return: carry.return ?? "free-practice",
-    });
+    // Its program, campaign and entry are the tab's (the root's
+    // `keepInbound` read them); the trial is why this tab signs up.
+    const carry = gateContinuation(search);
+    if (!carry.return) keepSignUpIntent({ ...signUpIntent(), free: true });
+    return withQuery("/sign-up", carry);
   }
   // A follow-up email's way back, now signed in: the follow-up is done.
   if (search.return === "free-practice")

@@ -126,6 +126,25 @@ export function existingAccountEmail(
   };
 }
 
+/** A sign-up code: six digits, valid for ten minutes. */
+export const SIGN_UP_CODE_LENGTH = 6;
+export const SIGN_UP_CODE_SECONDS = 600;
+/** Where the code is typed: the sign-up screen's own path (better-auth's
+ * email-code plugin), which confirms the address and signs in. */
+export const CODE_VERIFY_PATH = "/email-otp/verify-email";
+
+/** The sign-up code email: the code, what it is for, how long it lasts. */
+export function signUpCodeEmail(brandName: string, code: string) {
+  return {
+    subject: `${code} is your ${brandName} code`,
+    text: [
+      `Your ${brandName} code is ${code}.`,
+      `Enter it on the sign-up screen to confirm this email and finish creating your account. It expires in ${SIGN_UP_CODE_SECONDS / 60} minutes.`,
+      `If you didn’t try to create a ${brandName} account, ignore this email; nothing happens without the code.`,
+    ].join("\n\n"),
+  };
+}
+
 /** The password-reset email. An account without a password is told how it
  * signs in; the reset link is offered only as a way to add a password. */
 export function resetPasswordEmail(

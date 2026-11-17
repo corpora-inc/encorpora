@@ -76,6 +76,7 @@ import {
   keepInbound,
   resumeStripeReturn,
   signInArrivalPending,
+  arrivalReturn,
   signInReturn,
   stripeReturn,
 } from "./third-party-returns";
@@ -304,7 +305,15 @@ const auth = lazyRouteComponent(
 );
 /** Sign-in methods load with the route: the screen renders complete. */
 async function loadAuthConfig() {
-  const config = await queryClient.ensureQueryData(authConfigOptions);
+  // A failed read is the screen's own retry (SignInScreen's ConfigRetry),
+  // never the route's error screen.
+  const config = await queryClient
+    .ensureQueryData(authConfigOptions)
+    .catch((error: unknown) => {
+      console.error("Sign-in methods didn’t load", error);
+      return null;
+    });
+  if (!config) return null;
   // A deployment without its own accounts signs in with its external
   // authority: the auth screens hand straight to it.
   if (config.mode !== "accounts") {
@@ -320,6 +329,15 @@ const start = lazyRouteComponent(
 /** A school sets its students up; setup and paper self-marking are for
  * families, so a student's URL goes back to practice. */
 const notForStudents = () => admit({ adults: true });
+/** A sign-up intent kept from before a provider's redirect, recorded once
+ * signed in (features/auth/signup-intent.ts); never waited on. */
+function recordIntentAfterSignIn() {
+  void import("../features/auth/signup-intent")
+    .then(({ recordPendingIntent }) => recordPendingIntent())
+    .catch((error: unknown) =>
+      console.error("The sign-up intent's retry didn't load", error),
+    );
+}
 /** Every /start step runs the one first-run guard against `/me`. */
 async function beforeStart({
   location,
@@ -329,6 +347,9 @@ async function beforeStart({
   const search = continuationSearch(location.search);
   const session = await requireSignedIn(location, { adults: true });
   if (nativeRuntime) return;
+  // A provider's new account lands here: a sign-up intent that couldn't be
+  // recorded before it is recorded now, without waiting on it.
+  recordIntentAfterSignIn();
   const me = await queryClient.ensureQueryData(meOptions(session));
   const target = startDestination(
     me,
@@ -430,13 +451,13 @@ async function beforeAuthEntry({
   // Security, school connections and invitation handoffs can require a
   // fresh sign-in or another identity even with a valid session. A failed
   // sign-in must also stay visible on the authentication screen.
-  if (
+  const session =
     signInArrivalPending() ||
     (search.return && search.return !== "free-practice")
-  )
-    return;
-  const session = await queryClient.ensureQueryData(sessionOptions);
-  if (!session) return;
+      ? null
+      : await queryClient.ensureQueryData(sessionOptions);
+  // The screen stays: an older link's arrival leaves its address first.
+  if (!session) return arrivalReturn(location);
   // Signed in already: the sign-in gate's way back, once.
   const next = continuationUrl(search);
   // Nothing asked for: the account's own place, never `/`.

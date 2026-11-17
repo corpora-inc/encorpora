@@ -420,3 +420,57 @@ test(
     }
   },
 );
+
+test(
+  "an intent recorded after sign-up (late) still marks a just-made account new; never an old one",
+  { skip: !process.env.AMP_TEST_DATABASE_URL },
+  async () => {
+    const url = process.env.AMP_TEST_DATABASE_URL!;
+    const schema = `followup_${randomUUID().replaceAll("-", "")}`;
+    const admin = new Pool({ connectionString: url, max: 1 });
+    const scoped = new URL(url);
+    scoped.searchParams.set("options", `-c search_path=${schema}`);
+    const pool = new Pool({ connectionString: scoped.href, max: 5 });
+    try {
+      await admin.query(`CREATE SCHEMA ${schema}`);
+      await migrate(scoped.href);
+      async function signUp(id: string, age: string, late: boolean) {
+        await pool.query(
+          `INSERT INTO amp_auth_users(id,name,email,"emailVerified","createdAt") VALUES ($1,'Parent',$2,true,now()-$3::interval)`,
+          [id, `${id}@example.com`, age],
+        );
+        const token = await createSignupIntent(pool, {
+          newsletter: true,
+          notice: signupNotice,
+          entry: "pitch-try",
+          ...(late ? { late: true as const } : {}),
+        });
+        await completeSignup(pool, `amp.parent-signup=${token}`, id);
+        return (
+          await pool.query(
+            "SELECT new_account, entry_label FROM amp_parent_followups WHERE user_id=$1",
+            [id],
+          )
+        ).rows[0];
+      }
+      assert.deepEqual(await signUp("late-new", "5 minutes", true), {
+        new_account: true,
+        entry_label: "pitch-try",
+      });
+      assert.equal(
+        (await signUp("on-time-old", "5 minutes", false)).new_account,
+        false,
+        "an intent made after the account, not marked late, is a sign-in",
+      );
+      assert.equal(
+        (await signUp("late-old", "2 days", true)).new_account,
+        false,
+        "a late intent never makes an old account new",
+      );
+    } finally {
+      await pool.end();
+      await admin.query(`DROP SCHEMA IF EXISTS ${schema} CASCADE`);
+      await admin.end();
+    }
+  },
+);

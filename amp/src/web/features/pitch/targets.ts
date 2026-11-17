@@ -1,16 +1,10 @@
-import type { PitchEntry } from "../../../parent-followup/contracts";
 import { authStep } from "../../app/auth-links";
 import {
-  arrivalLabels,
   chosenProgram,
   isProgramChoice,
+  keepSignUpIntent,
 } from "../../lib/program-choice";
-import {
-  campaignSearch,
-  fundedPrograms,
-  type FundedProgram,
-  type FundedSearch,
-} from "../../lib/funded-entry";
+import { fundedPrograms, type FundedProgram } from "../../lib/funded-entry";
 
 export type PitchProgramId = FundedProgram["id"];
 
@@ -30,26 +24,15 @@ export function pitchProgramOf(
   );
 }
 
-/** Fixed labels a sign-up carries in its continuation: an ad's campaign
- * labels, from this address or the tab's arrival (lib/program-choice.ts).
- * The program is the tab's choice, never the address's. */
-export function pitchCarry(search: Record<string, unknown>): FundedSearch {
-  return campaignSearch({ ...arrivalLabels(), ...search });
-}
-
-/** Where each pitch action goes. Every destination can succeed signed out:
- * the funded invoice needs no account; the rest sign up first. */
+/** Where each pitch action goes: a plain address. Every destination can
+ * succeed signed out: the funded invoice needs no account; the rest sign up
+ * first. Why they sign up is the tab's (`choosePitchAction`), and the ad's
+ * campaign and program are the arrival's (lib/program-choice.ts): nothing
+ * rides on the address. */
 export function pitchTarget(
   action: "funded" | "card" | "try",
   search: Record<string, unknown>,
 ) {
-  const carry = pitchCarry(search);
-  const signUp = (entry: PitchEntry, free: boolean) =>
-    authStep("sign-up", {
-      ...carry,
-      entry,
-      ...(free ? { return: "free-practice" as const } : {}),
-    });
   switch (action) {
     case "funded": {
       const program = pitchProgramOf(search);
@@ -58,8 +41,13 @@ export function pitchTarget(
       return { to: `/invoice/${program.slug}` as const };
     }
     case "card":
-      return signUp("pitch-buy", false);
     case "try":
-      return signUp("pitch-try", true);
+      return authStep("sign-up");
   }
+}
+
+/** A pitch action was chosen: sign-up learns why (Try it free, or Buy by
+ * card) from the tab, before it opens. */
+export function choosePitchAction(action: "card" | "try") {
+  keepSignUpIntent({ entry: action === "try" ? "pitch-try" : "pitch-buy" });
 }

@@ -175,22 +175,27 @@ test.each(["/sign-in", "/sign-up"] as const)(
       { return: "family-approval" },
     ])
       await expect(enterAuth({ search })).resolves.toBeUndefined();
-    // A failed sign-in is kept, then one hop to the clean address, where
-    // the screen stays to show it, even for a session.
+    // A failed sign-in is kept, then one hop to the clean address (the
+    // older link's arrival is the tab's, lib/program-choice.ts), where the
+    // screen stays to show it, even for a session.
     await expect(
       enterAuth({
         search: { ...trial, error: "access_denied", provider: "google" },
       }),
     ).rejects.toMatchObject({
-      options: { to: path, search: trial, replace: true },
+      options: { to: path, search: {}, replace: true },
     });
     expect(useAuthDraft.getState().arrival).toEqual({
       error: "access_denied",
       provider: "google",
     });
-    await expect(enterAuth({ search: trial })).resolves.toBeUndefined();
+    await expect(enterAuth({ search: {} })).resolves.toBeUndefined();
     useAuthDraft.getState().takeArrival();
     queryClient.setQueryData(sessionOptions.queryKey, null);
-    await expect(enterAuth({ search: trial })).resolves.toBeUndefined();
+    // Signed out, an older link's arrival leaves the address in one hop.
+    await expect(enterAuth({ search: trial })).rejects.toMatchObject({
+      options: { to: path, search: {}, replace: true },
+    });
+    await expect(enterAuth({ search: {} })).resolves.toBeUndefined();
   },
 );

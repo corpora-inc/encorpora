@@ -165,13 +165,13 @@ test(
         },
       );
       await t.test(
-        "a new address still gets its confirmation link, not the existing-account email",
+        "a new address still gets its sign-up code, not the existing-account email",
         async () => {
           sent.length = 0;
           const response = await signUp("brand-new@example.com");
           assert.equal(response.statusCode, 200, response.body);
           assert.equal(sent.length, 1);
-          assert.match(sent[0].subject, /^Confirm your email/);
+          assert.match(sent[0].subject, /^\d{6} is your AMP code$/);
         },
       );
       await t.test(

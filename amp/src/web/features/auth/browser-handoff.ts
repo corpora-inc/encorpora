@@ -1,5 +1,6 @@
 import type { InAppPlatform } from "../../../analytics/browser-kind";
 import { browserHandoffUrl } from "../../lib/funded-entry";
+import { arrivalQuery } from "../../lib/program-choice";
 
 /**
  * The one-tap way out of an in-app browser into the phone's real browser,
@@ -13,15 +14,18 @@ import { browserHandoffUrl } from "../../lib/funded-entry";
  *   shows where the app's own "open in browser" item is.
  * - iOS 17 and later: `x-safari-https://`, which opens Safari.
  *
- * Invitations and approvals carried across sign-in on this device leave as
- * their own canonical link (`browserHandoffUrl`); browser storage doesn't
- * cross into the other browser.
+ * Browser storage doesn't cross into the other browser, so what this tab
+ * keeps leaves on the address: invitations and approvals carried across
+ * sign-in as their own canonical link (`browserHandoffUrl`), and the tab's
+ * arrival (its program, campaign and why it signs up, `arrivalQuery`) as the
+ * query an ad's link would carry. The other browser reads that once and
+ * cleans its address (app/third-party-returns.ts `signInReturn`).
  */
 export function browserHandoffHref(
   href: string,
   platform: InAppPlatform,
 ): string | null {
-  const url = new URL(browserHandoffUrl(href));
+  const url = new URL(withArrival(browserHandoffUrl(href)));
   if (url.protocol !== "https:" && url.protocol !== "http:") return null;
   if (platform === "android")
     // Android's Intent.parseUri takes everything before the last `#Intent;`
@@ -29,6 +33,14 @@ export function browserHandoffHref(
     return `intent://${url.host}${url.pathname}${url.search}${url.hash}#Intent;scheme=${url.protocol.slice(0, -1)};package=com.android.chrome;end`;
   if (platform === "ios") return `x-safari-${url.href}`;
   return null;
+}
+
+/** An address with the tab's arrival on it, for another browser. */
+export function withArrival(href: string) {
+  const url = new URL(href);
+  for (const [key, value] of Object.entries(arrivalQuery()))
+    if (!url.searchParams.has(key)) url.searchParams.set(key, value);
+  return url.href;
 }
 
 /** Where each app keeps "open in browser", for the hint shown when the jump
