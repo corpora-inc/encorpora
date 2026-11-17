@@ -25,7 +25,7 @@ import { meOptions, sessionOptions } from "../../lib/query";
 import { skillCatalogOptions } from "../../lib/learning-view";
 import { request } from "../../lib/api";
 import { useUrlSearchText } from "../../lib/url-search-text";
-import { selectLearner, useCurrentLearner } from "../../learner-store";
+import { useCurrentLearner } from "../../learner-store";
 import type { AuthSession } from "../../auth";
 import { gradeName } from "../../Home";
 import { byArea, fitScale, LevelRows, WHOLE_SCALE } from "../../ui/level-range";
@@ -201,10 +201,6 @@ function LearnerMap({ session }: { session: AuthSession }) {
   const own = practicingAsAdult(account, learnerId)
     ? adultLearner(account)
     : (profileLearner(account, learnerId) ?? solo);
-  useEffect(() => {
-    if (!addressed && solo && own === solo && learnerId !== solo.id)
-      selectLearner(solo.id);
-  }, [solo?.id, learnerId]);
   /** Another child's map is their own address. */
   const openChild = (id: string) => {
     const family = account ? childFamily(account, id, places.data) : null;

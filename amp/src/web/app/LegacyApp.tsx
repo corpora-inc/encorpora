@@ -32,6 +32,7 @@ import {
   setNativeFamilySnapshot,
   familyRevision,
   clearFamilyAccount,
+  familySnapshot,
 } from "../lib/family-cache";
 import {
   claimInitialConsentChallenge,
@@ -124,7 +125,10 @@ import {
   selectLearner,
   useCurrentLearner,
 } from "../learner-store";
-import { useAddressedIdentity } from "../features/spaces/useAddressed";
+import {
+  addressedIdentityNow,
+  useAddressedIdentity,
+} from "../features/spaces/useAddressed";
 import { calculatorAllowed } from "../../math/calculator";
 import { gradeNumber } from "../../learning/frontier";
 import type { GradeBand } from "../../curriculum/types";
@@ -231,6 +235,41 @@ const catalogUnavailable =
  * Forward, a link) reopens the book at the same frame. */
 const readerPositions: Record<string, number> = {};
 
+/**
+ * Whose practice LegacyApp's screens are, derived (never chosen here): the
+ * learner the address names (features/spaces/identity.ts), else the
+ * account's current learner (learner-store.ts) while it is live and may
+ * learn, else the family's first child that may, its first child, then the
+ * adult's own (an adult on their own, with no choice yet, learns as
+ * themselves and never meets family setup). Pure: render and work that
+ * finishes later read the same answer from the same sources.
+ */
+function practiceLearner(
+  summary: FamilySummary | null,
+  named: string | null | undefined,
+  chosen: string | null,
+) {
+  const learners = summary?.learners.filter((entry) => !entry.deletedAt) ?? [];
+  const allowed =
+    summary?.consent.status === "active" ||
+    summary?.consent.status === "development";
+  // Each learner says whether it may learn: an unnamed child and an adult's
+  // own learner may before any family consent.
+  const may = (entry: (typeof learners)[number]) =>
+    entry.learningAllowed ?? allowed;
+  const children = learners.filter((entry) => !entry.adult);
+  const choice = learners.find((entry) => entry.id === chosen);
+  return (
+    (named
+      ? learners.find((entry) => entry.id === named)
+      : choice && may(choice)
+        ? choice
+        : children.find(may)) ??
+    children[0] ??
+    learners.find((entry) => entry.adult && !entry.simulation) ??
+    null
+  );
+}
 export function LegacyApp() {
   const session = useQuery(sessionOptions);
   if (session.isPending) return <LoadingScreen />;
@@ -327,8 +366,6 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   // The displayed screen's address names whose practice it is
   // (features/spaces/identity.ts); otherwise this device's choice.
   const addressed = useAddressedIdentity();
-  const addressedRef = useRef(addressed);
-  addressedRef.current = addressed;
   const chosenId = useCurrentLearner();
   const learnerId = addressed?.id ?? chosenId;
   // A child of a family this account is the second parent of, chosen to read
@@ -341,16 +378,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     !nativeRuntime && account?.signedIn
       ? secondParentChild(account, learnerId)
       : null;
-  // The account snapshot can arrive before this device has a saved selection.
-  // Resolve a learner from that snapshot immediately: redirecting to setup
-  // while loadFamily is selecting one can continually restart navigation.
-  // An adult on their own, on a device with no selection yet (a shared link
-  // to a lesson), learns as their own learner, never meets family setup.
-  const learner =
-    learners.find((entry) => entry.id === learnerId) ??
-    childLearners[0] ??
-    learners.find((entry) => entry.adult && !entry.simulation) ??
-    null;
+  const learner = practiceLearner(familySummary, addressed?.id, chosenId);
   // The adult's own learner, or one of their practice profiles: both learn
   // on the account's own terms, with no birth year.
   const ownLearner = learner?.adult === true;
@@ -419,7 +447,6 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   );
   const consentEpoch = useRef(0);
   const renderedConsentEpoch = consentEpoch.current;
-  const [familyLearnerId, setFamilyLearnerId] = useState("");
   const [consentReturn, setConsentReturn] = useState(false);
   const [purchaseFocus, setPurchaseFocus] = useState<
     "annual" | "funded" | undefined
@@ -563,8 +590,17 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   const authEpoch = useRef(0),
     tokenRef = useRef<string | null>(null),
     accountRef = useRef<string | null>(null);
-  const learnerRef = useRef<string | undefined>(undefined);
-  learnerRef.current = learner?.id;
+  // Whose practice is on view now, for work that finishes later: derived
+  // from the same canonical sources as `learner` (the address, the store and
+  // the account), never a copy; nobody once this screen's account is gone.
+  const learnerNow = () =>
+    accountRef.current === accountId
+      ? practiceLearner(
+          familySnapshot(accountId),
+          addressedIdentityNow(router.state)?.id,
+          currentLearner(accountId),
+        )?.id
+      : undefined;
   // Printing a lesson hands over its typeset PDF, never a browser print of
   // the page. A lesson without PDFs on this server offers no print at all.
   const lessonPrintState = useLessonPrint({
@@ -602,7 +638,6 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       consentEpoch.current++;
       accountRef.current = null;
       tokenRef.current = null;
-      learnerRef.current = undefined;
     },
     [],
   );
@@ -651,13 +686,11 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       new URLSearchParams(location.search).has("security");
     if (openingSecurity) navigate("/account/security", { replace: true });
 
-    setFamilyLearnerId("");
     setPurchaseFocus(undefined);
     accountRef.current = identity;
     authEpoch.current++;
     familyRequest.current++;
     navigationEpoch.current++;
-    learnerRef.current = undefined;
     if (previousIdentity && previousIdentity !== identity)
       navigate("/", { replace: true });
     if (previousIdentity !== identity) clearFamilyAccount(previousIdentity);
@@ -865,10 +898,10 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         `/learners/${learner.id}/books?readerCapabilities=${readerCapabilities.join(",")}`,
       )
         .then((data) => {
-          if (learnerRef.current === learner.id) setBooks(data.books);
+          if (learnerNow() === learner.id) setBooks(data.books);
         })
         .catch((e) => {
-          if (learnerRef.current === learner.id && epoch === authEpoch.current)
+          if (learnerNow() === learner.id && epoch === authEpoch.current)
             setError(e instanceof Error ? e.message : "Could not load books");
         });
     setProblem(null);
@@ -888,7 +921,6 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     authEpoch.current++;
     familyRequest.current++;
     navigationEpoch.current++;
-    learnerRef.current = undefined;
 
     // A successful destructive privacy mutation invalidates the last server
     // snapshot even if its follow-up refresh fails. Reset notifies mounted
@@ -951,26 +983,6 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     familyRequest.current++;
     setLoadFailed(false);
     setFamilySummary(summary);
-    const allowed =
-      summary.consent.status === "active" ||
-      summary.consent.status === "development";
-    // Each learner says whether it may learn: an unnamed child and an adult's
-    // own learner may before any family consent.
-    const available = summary.learners.filter(
-      (entry) => !entry.deletedAt && (entry.learningAllowed ?? allowed),
-    );
-    // The adult's own learner stays chosen only when it was chosen; a device
-    // with no choice opens on the family's first learner, never the adult's.
-    // A screen whose address names its learner is that learner's: nothing
-    // here chooses another (features/spaces/identity.ts).
-    const named = addressedRef.current?.id ?? null;
-    const selected =
-      available.find((entry) => entry.id === (named ?? currentLearner())) ??
-      (named ? null : (available.find((entry) => !entry.adult) ?? null));
-    learnerRef.current = selected?.id;
-    // Keep the chosen learner unless it no longer exists or learning is not
-    // allowed; never forget the choice merely because data is reloading.
-    if (selected && !named) selectLearner(selected.id);
   }
   useEffect(() => {
     if (
@@ -1075,7 +1087,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     const current = () =>
       revision === progressRevision.current &&
       epoch === authEpoch.current &&
-      learnerRef.current === learner.id;
+      learnerNow() === learner.id;
     setProgressLoading(true);
     setProgressError("");
     try {
@@ -1099,10 +1111,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     learnerId: string,
     error: unknown,
   ): null {
-    if (
-      navigation !== navigationEpoch.current ||
-      learnerRef.current !== learnerId
-    )
+    if (navigation !== navigationEpoch.current || learnerNow() !== learnerId)
       return null;
     throw error;
   }
@@ -1120,10 +1129,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       await api(`/learners/${learner.id}/lesson-support`, {
         problemId: problem.id,
       }).catch((error) => navigationFailure(navigation, learner.id, error));
-    if (
-      navigation !== navigationEpoch.current ||
-      learnerRef.current !== learner.id
-    )
+    if (navigation !== navigationEpoch.current || learnerNow() !== learner.id)
       return;
     progressLessonReturn.current = skillId;
     noteHelp({
@@ -1175,7 +1181,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         figureCapabilities: [...figureCapabilities],
       },
       (body) => api<Batch>(`/learners/${learnerId}/batches`, body),
-      () => authEpoch.current === epoch && learnerRef.current === learnerId,
+      () => authEpoch.current === epoch && learnerNow() === learnerId,
     )
       .then(withProblemHints)
       .then(withMoneyArt);
@@ -1223,8 +1229,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     upcoming.current = null;
     const navigation = ++navigationEpoch.current;
     const current = () =>
-      navigation === navigationEpoch.current &&
-      learnerRef.current === learner.id;
+      navigation === navigationEpoch.current && learnerNow() === learner.id;
     if ((templateId || focusSkill !== undefined) && !nativeRuntime) {
       const skillId =
         focusSkill !== undefined
@@ -1269,7 +1274,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     setBusy(true);
     try {
       const saved = await adjustments.change(intent);
-      if (!saved || learnerRef.current !== learner.id) return;
+      if (!saved || learnerNow() !== learner.id) return;
       upcoming.current = null;
       setQueue([]);
       if (intent.kind !== "together") {
@@ -1297,10 +1302,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       return loadBatch("");
     const navigation = ++navigationEpoch.current;
     const data = await ready.batch.catch(() => null);
-    if (
-      navigation !== navigationEpoch.current ||
-      learnerRef.current !== learner.id
-    )
+    if (navigation !== navigationEpoch.current || learnerNow() !== learner.id)
       return;
     if (data) applyBatch(data);
     else await loadBatch("");
@@ -1322,7 +1324,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         problemId: problem.id,
         ...attempt,
       });
-      if (learnerRef.current !== learner.id) return;
+      if (learnerNow() !== learner.id) return;
       rememberOpenProblem(learner.id, null);
       forgetHelp(problem.id);
       setOutcome(result);
@@ -1336,7 +1338,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         console.error("Progress refresh failed", error),
       );
     } catch (e) {
-      if (learnerRef.current !== learner.id) return;
+      if (learnerNow() !== learner.id) return;
       if (e instanceof HttpError && e.status >= 400 && e.status < 500)
         setPending(null);
       if (allowanceEnded(e)) {
@@ -1358,7 +1360,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         problemId: problem.id,
       });
     } catch (e) {
-      if (learnerRef.current === learner.id && allowanceEnded(e)) {
+      if (learnerNow() === learner.id && allowanceEnded(e)) {
         setPausedFor(learner.id);
         void loadFamily().catch((cause) =>
           console.error("Family refresh after the free problems", cause),
@@ -1367,7 +1369,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       }
       throw e;
     }
-    if (learnerRef.current !== learner.id) return;
+    if (learnerNow() !== learner.id) return;
     rememberOpenProblem(learner.id, null);
     setOutcome(result);
     upcoming.current = { learnerId: learner.id, batch: requestBatch("") };
@@ -1432,7 +1434,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     }).catch((error) => navigationFailure(navigation, learner.id, error));
     if (
       !data ||
-      learnerRef.current !== learner.id ||
+      learnerNow() !== learner.id ||
       navigationEpoch.current !== navigation
     )
       return;
@@ -1480,8 +1482,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     if (!result.ok)
       throw new Error((await result.json()).error ?? "Download unavailable");
     const blob = await result.blob();
-    if (epoch !== authEpoch.current || learnerRef.current !== learner.id)
-      return;
+    if (epoch !== authEpoch.current || learnerNow() !== learner.id) return;
     const url = URL.createObjectURL(blob),
       link = document.createElement("a");
     link.href = url;
@@ -1542,7 +1543,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
               ...learnerFrontierOptions(session, id),
               staleTime: 10_000,
             }),
-      () => active && learnerRef.current === id,
+      () => active && learnerNow() === id,
       (map) =>
         setLoadedFrontier({ learnerId: id, birthYear: learner.birthYear, map }),
     );
@@ -1821,13 +1822,6 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             nativeRuntime ? undefined : () => navigate("/start/plan")
           }
           returnToConsent={consentReturn}
-          selectedLearnerId={familyLearnerId || learnerId || ""}
-          onSelectLearner={(id) => {
-            setFamilyLearnerId(id);
-            // Choosing a live learner in Family makes them the current
-            // learner everywhere; billing references do not.
-            if (learners.some((entry) => entry.id === id)) selectLearner(id);
-          }}
           initialSection={familySection}
           onSectionChange={setFamilySection}
           returnFocus={purchaseFocus}

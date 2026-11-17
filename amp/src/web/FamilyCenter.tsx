@@ -68,8 +68,6 @@ interface Props {
   /** First-run setup (plan, payment, learner); defaults to consent review. */
   onContinueSetup?: () => void;
   returnToConsent?: boolean;
-  selectedLearnerId?: string;
-  onSelectLearner?: (id: string) => void;
   returnFocus?: "annual" | "funded";
   onAnnualPurchase?: () => void;
   onFundedPurchase?: () => void;
@@ -102,8 +100,6 @@ export function FamilyCenter({
   onConsentEnrollment,
   onContinueSetup,
   returnToConsent = false,
-  selectedLearnerId,
-  onSelectLearner,
   returnFocus,
   onAnnualPurchase,
   onFundedPurchase,
@@ -127,7 +123,6 @@ export function FamilyCenter({
   const paymentTrigger = useRef<HTMLButtonElement>(null);
   const paymentWasOpen = useRef(false);
   const section = initialSection;
-  const [localLearnerId, setLocalLearnerId] = useState("");
   const [historyFor, setHistoryFor] = useState<FamilyLearner | null>(null);
   /** The child whose settings are open in Learners. */
   const [openLearner, setOpenLearner] = useState<string | null>(null);
@@ -197,7 +192,6 @@ export function FamilyCenter({
     mounted.current = true;
     generation.current++;
 
-    setLocalLearnerId("");
     setHistoryFor(null);
 
     setError("");
@@ -244,26 +238,17 @@ export function FamilyCenter({
       paymentTrigger.current?.focus({ preventScroll: true });
     paymentWasOpen.current = paymentHistoryOpen;
   }, [paymentHistoryOpen]);
-  const profileId = selectedLearnerId ?? localLearnerId;
-  const selectedLearner =
-    family?.learners.find((entry) => entry.id === profileId) ??
-    family?.learners.find((entry) => !entry.deletedAt) ??
-    family?.learners[0];
-  function selectLearner(id: string) {
-    setLocalLearnerId(id);
-    onSelectLearner?.(id);
+  function chooseLearner(id: string) {
+    // Choosing a live learner makes them the current learner everywhere;
+    // a billing reference (a deleted learner) does not.
+    if (family?.learners.some((entry) => entry.id === id && !entry.deletedAt))
+      selectLearner(id, identity);
     setRename(null);
     setHistoryFor(null);
     setError("");
     setNotice("");
     if (body.current) body.current.scrollTop = 0;
   }
-  useLayoutEffect(() => {
-    if (selectedLearner && selectedLearner.id !== profileId) {
-      setLocalLearnerId(selectedLearner.id);
-      onSelectLearner?.(selectedLearner.id);
-    }
-  }, [selectedLearner?.id, profileId, onSelectLearner]);
   const current = (epoch: number) =>
     mounted.current && generation.current === epoch;
   const tokenRef = useRef(token);
@@ -389,8 +374,6 @@ export function FamilyCenter({
         );
         setConfirmation(null);
 
-        setLocalLearnerId("");
-        onSelectLearner?.("");
         onLearningInvalidated();
         setNotice(
           `${receipt.deletedLearners} learner ${receipt.deletedLearners === 1 ? "history was" : "histories were"} removed from the live application. ${receipt.retainedBillingReferences ? "Linked financial records remain, including any student name required on an invoice. " : ""}${receipt.consentWithdrawn ? "Consent is withdrawn. " : ""}${receipt.billingManagementRequired ? "A billing link remains: check and cancel renewal in billing if needed." : "Check your purchase provider for any renewal commitments."}`,
@@ -881,7 +864,7 @@ export function FamilyCenter({
                   setOpenLearner(id || null);
                   // The adult's own practice opens its settings here; it
                   // isn't chosen as the family's learner.
-                  if (id && id !== ownLearner?.id) selectLearner(id);
+                  if (id && id !== ownLearner?.id) chooseLearner(id);
                 }}
                 detail={learnerDetail}
               />
@@ -987,7 +970,7 @@ export function FamilyCenter({
                               // Sets where their own practice starts.
                               birthYear: Number(newBirthYear),
                             });
-                            selectLearner(learnerId);
+                            selectLearner(learnerId, identity);
                             rememberPlace(identity, "me");
                             await refreshMe({ accountId: identity, token });
                             setAskSelf(null);
@@ -1034,7 +1017,7 @@ export function FamilyCenter({
                 recordsRef={paymentTrigger}
                 onContinue={(learner) => {
                   if (nativeRuntime && onChoosePayment) {
-                    selectLearner(learner.id);
+                    chooseLearner(learner.id);
                     onChoosePayment();
                   } else route.navigate(`/pay/${learner.id}`);
                 }}

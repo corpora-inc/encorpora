@@ -1,11 +1,6 @@
-import { useEffect } from "react";
 import { queryOptions, skipToken, useQuery } from "@tanstack/react-query";
 import { meOptions, queryClient, sessionOptions } from "./query";
-import {
-  currentLearner,
-  selectLearner,
-  useCurrentLearner,
-} from "../learner-store";
+import { currentLearner, useCurrentLearner } from "../learner-store";
 import {
   learningIdentity,
   type AddressedIdentity,
@@ -283,21 +278,9 @@ export function useLearningView({
   const addressed = useAddressedIdentity();
   // A family's child's records only where that family shows them (CP-5 #6).
   const readable = useAddressedRecordsReadable();
-  const { learners, shared, profile, solo, own, learner, unavailable } =
+  const { learners, shared, profile, own, learner, unavailable } =
     chooseLearner(account, selectedId, addressed);
   const viewOnly = !own && !!secondParentChild(account, learner?.id);
-  useEffect(() => {
-    // A named screen never moves the device's choice from here: the shell
-    // adopts it once the screen shows (AppShell), and a named learner who is
-    // gone is nobody, never another.
-    if (addressed) return;
-    if (solo && own === solo && selectedId !== solo.id) selectLearner(solo.id);
-    if (own) return;
-    const chosen =
-      learners.some((l) => l.id === selectedId) ||
-      shared.some((l) => l.id === selectedId);
-    if (!chosen && learners[0]) selectLearner(learners[0].id);
-  }, [account, selectedId, addressed?.kind, addressed?.id]);
   const loadingIdentity = session.isPending || (!!session.data && me.isPending);
   // Without records (the drawer), these observe nothing: a disabled observer
   // of the learner's level would still be its last, and unmounting it (the

@@ -13,13 +13,8 @@ import {
 } from "react";
 import type { SignedInMe } from "../../account/contracts";
 import { nativeRuntime } from "../native-runtime";
-import { hasAccountContext } from "../lib/account-page";
 import { meOptions, sessionOptions } from "../lib/query";
-import {
-  currentLearner,
-  selectLearner,
-  useCurrentLearner,
-} from "../learner-store";
+import { useCurrentLearner } from "../learner-store";
 import { useShellSlots } from "../lib/shell-slots";
 import { usePlaces } from "../features/navigation/PlaceSwitcher";
 import type { SpaceDescriptor } from "../features/spaces/resolve";
@@ -44,7 +39,6 @@ import { Toast } from "../ui/Toast";
 import { Button, buttonClass } from "../ui/Button";
 import { EmptyState } from "../ui/EmptyState";
 import { RootLink } from "../nav/root";
-import { committedChoice } from "../features/profiles/practice-mode";
 import { AppLogo } from "../ui/AppLogo";
 import { PlaceName } from "../ui/PlaceName";
 import bar from "../ui/AppBar.module.css";
@@ -96,19 +90,6 @@ export function AppShell({ children }: { children: ReactNode }) {
   if (!identity || (held.current && held.current.session !== identity))
     held.current = null;
   const space = session.data && steady?.bar ? steady : null;
-  // Once a screen is on view, the learner its address names becomes this
-  // device's choice (never during a load or a preload: features/spaces).
-  const me = useAccount(!!match && hasAccountContext(match.pathname));
-  useEffect(() => {
-    if (!me || !match) return;
-    const choice = committedChoice(
-      me,
-      match.pathname,
-      match.search ?? {},
-      currentLearner(),
-    );
-    if (choice !== undefined) selectLearner(choice);
-  }, [me, match]);
   // A place this person can no longer open, or one that didn't load, shows
   // that in place of the screen: nothing of it renders or asks the server.
   const blocked = session.data ? blockedBy(resolved) : null;

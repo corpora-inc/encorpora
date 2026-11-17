@@ -1,18 +1,18 @@
-import type { SignedInMe } from "../../../account/contracts";
+import type { Me, SignedInMe } from "../../../account/contracts";
 import { AppError } from "../../lib/AppError";
 import {
   addressedIdentity,
-  childAddress,
   learningIdentity,
   type AddressedIdentity,
 } from "../spaces/identity";
 import { canonicalLearning } from "../spaces/learner-urls";
 import { familyPlacesOptions } from "../family/api";
-import { currentLearner } from "../../learner-store";
-import { redirect } from "@tanstack/react-router";
+import { currentLearner, selectLearner } from "../../learner-store";
+import { redirect, type AnyRouter } from "@tanstack/react-router";
 import { hasHome } from "../onboarding/guard";
 import { returnTarget } from "../../lib/return-to";
-import { meOptions, queryClient, sessionOptions } from "../../lib/query";
+import { meKey, meOptions, queryClient, sessionOptions } from "../../lib/query";
+import type { AuthSession } from "../../auth";
 import { studentSession } from "../../lib/student-device";
 import { classesOptions, preload } from "../school/api";
 
@@ -114,9 +114,9 @@ export async function adoptPracticeMode(location: {
   if (!me?.signedIn) return;
   // The address names whose screen this is (features/spaces/identity.ts): a
   // profile or a learner this account doesn't read is unavailable, never
-  // someone else. Nothing here changes this device's choice: a guard also
-  // runs for preloads and for navigations that never show, so the shell
-  // adopts the named learner once its screen is on view (AppShell).
+  // someone else. Nothing here changes the current learner: a guard also
+  // runs for preloads and for navigations that never show
+  // (followResolvedLearner adopts it once the navigation resolves).
   const named = addressedIdentity(location.pathname, location.search);
   if (named && !readsIdentity(me, named))
     throw new AppError(
@@ -179,6 +179,46 @@ export async function canonicalLearnerAddress(location: {
     throw redirect({ href, replace: true });
 }
 
+/** The learner a resolved navigation's address names becomes the account's
+ * current one (learner-store.ts). */
+function adoptChoice(
+  me: SignedInMe,
+  location: { pathname: string; search: Record<string, unknown> },
+) {
+  const choice = committedChoice(
+    me,
+    location.pathname,
+    location.search,
+    currentLearner(me.account.id),
+  );
+  if (choice !== undefined) selectLearner(choice, me.account.id);
+}
+
+/**
+ * The router's one writer of the current learner (learner-store.ts): when a
+ * navigation resolves (its screen is the one on view), the learner its
+ * address names becomes the account's current one. A preload, a navigation
+ * still loading and one abandoned never resolve, so they choose nobody. An
+ * event, never a screen's effect; a school student's address names their
+ * one learner, so their session chooses nothing.
+ */
+export function followResolvedLearner(router: Pick<AnyRouter, "subscribe">) {
+  return router.subscribe("onResolved", ({ toLocation }) => {
+    if (studentSession()) return;
+    const session = queryClient.getQueryData<AuthSession | null>(
+      sessionOptions.queryKey,
+    );
+    const me = session
+      ? queryClient.getQueryData<Me>(meKey(session.accountId))
+      : undefined;
+    if (me?.signedIn && me.account.id === session?.accountId)
+      adoptChoice(me, {
+        pathname: toLocation.pathname,
+        search: toLocation.search as Record<string, unknown>,
+      });
+  });
+}
+
 /** This account reads the learner or profile an address names. */
 export function readsIdentity(me: SignedInMe, named: AddressedIdentity) {
   if (named.kind === "profile")
@@ -210,8 +250,7 @@ export function committedChoice(
   if (pathname === "/me") return own && current !== own ? own : undefined;
   if (
     !isLearningPath(pathname) &&
-    !/^\/learners\//.test(pathname) &&
-    !childAddress(pathname)
+    !/^\/(?:learners|family\/[^/]+\/kids)\//.test(pathname)
   )
     return undefined;
   // An unnamed shared learning screen is the adult's own (self).

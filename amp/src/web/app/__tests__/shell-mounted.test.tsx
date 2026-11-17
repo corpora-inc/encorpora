@@ -40,6 +40,7 @@ import {
 import { classYearOptions } from "../../features/school/org/org-api";
 import { pilotOptions } from "../../features/school/pilots/api";
 import { StaffScreen } from "../../features/school/StaffScreen";
+import { followResolvedLearner } from "../../features/profiles/practice-mode";
 
 const h = vi.hoisted(() => ({
   changed: null as null | ((session: unknown) => void),
@@ -180,6 +181,8 @@ async function mount(
     history: createMemoryHistory({ initialEntries: [initial] }),
     defaultPendingMs: 100_000,
   });
+  // As the app's router does (app/router.tsx).
+  followResolvedLearner(router);
   await router.load();
   render(
     <Providers>
