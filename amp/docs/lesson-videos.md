@@ -11,28 +11,14 @@ active problem. Existing assistance tracking applies when the lesson is opened.
 The first binding is `add-fractions`: a 69-second explanation of two thirds plus
 one fourth. It uses Madeline Brousseaux, voice ID `XescS24CsOySAkKrLAO3`.
 
-## Produce one explanation, export several formats
+## Make the film
 
-1. Choose a problem family and state its givens, requested answer, prerequisites,
-   and method. Author one worked example that explains why the method works.
-   Let the explanation determine its length. Independently review the script
-   and the correspondence between quantities, labels, and pictures.
-2. Generate narration using exactly Madeline Brousseaux
-   (`XescS24CsOySAkKrLAO3`) or Paul (`J3Ei0Lj6fAobhIqY5ySH`). Record the voice ID,
-   model, and audio SHA-256 in `assets/narration.json`. Never select by name or
-   substitute another voice. Validate the ID and audio hash before rendering.
-3. Align visual events to the spoken words. Render mathematical objects in
-   Blender; compose typography and captions separately for landscape and
-   portrait. Cache repeated scene states so a timing change does not require
-   rendering every video frame in Blender.
-4. Export a clean landscape MP4 for AMP/YouTube, captioned landscape and portrait
-   MP4s for social distribution, VTT/SRT captions, a poster, and the source
-   package. Decode every export, check its duration and audio, and inspect the
-   explanation at phone size. Review the actual moving transitions as well as
-   stills. Do not bulk-publish unreviewed scripts or mathematical models.
-5. Add a versioned manifest under `src/content/videos/`, including explicit
-   template bindings, transcript, all worked answers, voice ID, URLs, and file
-   hashes. Bind only families whose method the video actually teaches.
+**The only rule for films (Skylar, 2026-11-17): make incredible, amazing, viral films that people love.** Length, voice, look, formats and process are the film's call.
+
+What the tooling reads: `scripts/publish-lesson-video.py` expects the narration's voice ID, model and audio SHA-256
+in `assets/narration.json`, and a versioned manifest under `src/content/videos/` with explicit template bindings,
+transcript, all worked answers, voice ID, URLs and file hashes. Bind only families whose method the video actually
+teaches, and leave out a video whose worked answer would answer the learner's active problem (the server does this).
 
 The [fraction-addition source package](https://d38iwc9748jekz.cloudfront.net/amp/lessons/fraction-addition/v2/lesson-source.zip)
 contains the reviewed script, narration, word timings, Blender scene, compositor,
@@ -96,14 +82,7 @@ comments and playback. Studio-only checks must be completed and recorded, not
 inferred from a successful Data API call. Run `python3 -m unittest discover -s
 scripts -p test_youtube_policy.py` to verify release safeguards.
 
-## Quality and throughput
-
-Batch related families to reuse a visual vocabulary: fraction strips, number
-lines, place-value blocks, arrays, or coordinate planes. Review one representative
-lesson before extending a model. Track script/review time, scene-authoring time,
-render time, correction count, and publishing time for the first few lessons
-before estimating the entire library. A polished new visual model usually needs
-more editorial work than another lesson using an established model.
+## Integration checks
 
 Run `npm run tsc`, `npm run test:core`, and
 `npx tsx scripts/verify-lesson-video-ui.ts` for integration changes. The browser
