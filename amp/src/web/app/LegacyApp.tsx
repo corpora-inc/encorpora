@@ -66,6 +66,12 @@ import { ParentConsentCenter } from "../ParentConsentCenter";
 import { takeConsentChallenge, type ConsentChallenge } from "../consent-link";
 import { ProgressWorkspace, type ProgressView } from "../ProgressWorkspace";
 import {
+  progressKey,
+  progressPath,
+  shownProgress,
+  useProgressView,
+} from "./progress-view";
+import {
   clearPurchaseReturn,
   clearOwnedPurchaseReturn,
 } from "../purchase-return";
@@ -209,7 +215,6 @@ if (nativeRuntime) clearInitialConsentChallenge();
 // Leaving Family lands on "/", which mounts this screen anew: the focus owed
 // to the menu button outlives the screen that asked for it.
 const nativeFamilyReturn = { current: false };
-const progressReturn = { current: { identity: "", href: "/progress" } };
 // A failed catalog, as the toast names it outside Lessons (which says so in
 // place, beside Try again).
 const catalogUnavailable =
@@ -312,11 +317,7 @@ function LegacyScreen({ owner }: { owner: string | null }) {
   const tab = route.tab;
   const setTab = (tab: "practice" | "library" | "progress") =>
     navigate(
-      tab === "library"
-        ? "/lessons"
-        : tab === "progress"
-          ? progressReturn.current.href
-          : "/",
+      tab === "library" ? "/lessons" : tab === "progress" ? "/progress" : "/",
     );
   const exploring = route.exploring;
   const setExploring = (value: boolean) =>
@@ -367,8 +368,6 @@ function LegacyScreen({ owner }: { owner: string | null }) {
   const chooseLearner = (id: string) => {
     if (route.parts[0] === "practice") return navigate(practicePath(id));
     selectLearner(id);
-    // Another learner's Progress opens unfiltered.
-    if (route.parts[0] === "progress") navigate("/progress", { replace: true });
   };
   // Practice's own address names its learner (identity.ts `practicePath`).
   const practiceHref = () => (learner ? practicePath(learner.id) : "/practice");
@@ -380,24 +379,6 @@ function LegacyScreen({ owner }: { owner: string | null }) {
     learnerId: learner?.id ?? "",
     token: token ?? undefined,
   });
-  // Remember a tab's return URL, not a second copy of its screen/filter state.
-  // It lives outside the component: "/" and the other app routes mount this
-  // screen separately, so going home must not forget where Progress was.
-  useLayoutEffect(() => {
-    if (!accountId) {
-      progressReturn.current = { identity: "", href: "/progress" };
-      return;
-    }
-    if (!learner) return;
-    const identity = `${accountId}:${learner.id}`;
-    // Another learner's Progress starts unfiltered: the chooser opens it
-    // so (chooseLearner), and nothing here navigates.
-    if (progressReturn.current.identity !== identity)
-      progressReturn.current = { identity, href: "/progress" };
-    else if (route.location.pathname === "/progress")
-      progressReturn.current.href =
-        route.location.pathname + route.location.search;
-  }, [accountId, learner?.id, route.location.pathname, route.location.search]);
 
   // A school student's level starts from their grade, and an adult's from
   // where they chose to begin, so neither has a prompt.
@@ -549,25 +530,21 @@ function LegacyScreen({ owner }: { owner: string | null }) {
     [router],
   );
   const progressRevision = useRef(0);
-  const progressParams = new URLSearchParams(route.location.search);
-  const progressView: ProgressView = {
-    filter: ["review", "explore"].includes(progressParams.get("filter") ?? "")
-      ? (progressParams.get("filter") as "review" | "explore")
-      : "practiced",
-    strand: progressParams.get("strand") ?? "",
-    page: Math.max(0, Number(progressParams.get("page")) || 0),
-    skillId: progressParams.get("skill"),
-  };
-  const setProgressView: React.Dispatch<React.SetStateAction<ProgressView>> = (
-    update,
+  // How Progress was left, per account's learner (app/progress-view.ts):
+  // never the address, so `/progress` is one screen and Back is a screen.
+  const [storedProgress, storeProgress] = useProgressView(
+    accountId && learner ? progressKey(accountId, learner.id) : null,
+  );
+  const progressView = shownProgress(route.location.pathname, storedProgress);
+  // A new area or skill is a new address (one entry: Back returns to the
+  // last); which skills and the page are kept in the store.
+  const setProgressView = (
+    update: ProgressView | ((view: ProgressView) => ProgressView),
   ) => {
     const next = typeof update === "function" ? update(progressView) : update;
-    const query = new URLSearchParams();
-    if (next.filter !== "practiced") query.set("filter", next.filter);
-    if (next.strand) query.set("strand", next.strand);
-    if (next.page) query.set("page", String(next.page));
-    if (next.skillId) query.set("skill", next.skillId);
-    navigate(`/progress${query.size ? `?${query}` : ""}`);
+    storeProgress(next);
+    const path = progressPath(next);
+    if (path !== route.location.pathname) navigate(path);
   };
   const [progressLoading, setProgressLoading] = useState(false);
   const [progressError, setProgressError] = useState("");

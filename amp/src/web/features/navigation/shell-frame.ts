@@ -182,7 +182,11 @@ export function shellFrame(
   if (/^\/lessons\/[^/]+\/watch$/.test(path)) return null;
   if (under(path, "/lessons") || under(path, "/books"))
     return { kind: "plain", practice: true };
-  if (path === "/" || path === "/progress") return { kind: "plain" };
+  if (
+    path === "/" ||
+    /^\/progress(?:\/(?:areas|skills)\/[^/]+)?\/?$/.test(path)
+  )
+    return { kind: "plain" };
   return null;
 }
 

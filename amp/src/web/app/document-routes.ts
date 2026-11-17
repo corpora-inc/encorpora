@@ -81,7 +81,7 @@ export const documentRoutePatterns: readonly string[] = [
   "^/pathways/[^/]+/?$",
   "^/practice(?:/[^/]+(?:/(?:types|skills|areas)/[^/]+)?)?/?$",
   "^/profile/birth-year/?$",
-  "^/progress/?$",
+  "^/progress(?:/(?:areas|skills)/[^/]+)?/?$",
   "^/purchase/?$",
   "^/purchase/annual/?$",
   "^/purchase/arizona-esa/?$",
