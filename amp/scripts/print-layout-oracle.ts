@@ -90,7 +90,7 @@ async function inspect(html: string, format: "Letter" | "A4") {
           );
       }
       for (const section of document.querySelectorAll(
-        ".exercise,.example,.representation,.lesson-illustration",
+        ".exercise,.example,.representation,.lesson-illustration,.print-question",
       )) {
         if (section.classList.contains("exercise--solutions")) continue;
         // A section allowed to break between its parts may span pages.
@@ -100,7 +100,10 @@ async function inspect(html: string, format: "Letter" | "A4") {
           )
         )
           continue;
-        if (section.getBoundingClientRect().height > pageHeight)
+        // Measured with any content that overflows the box: a box capped at
+        // a page's height can still hold more. (No named helpers here: the
+        // TypeScript loader would wrap them in a helper the page lacks.)
+        if (Math.max(section.getBoundingClientRect().height, section.scrollHeight) > pageHeight)
           issues.push("A section kept together is taller than a printable page");
       }
       const solutions = document.querySelector(".publication-kind")?.textContent?.trim() === "Worked solutions";
@@ -145,7 +148,10 @@ async function inspect(html: string, format: "Letter" | "A4") {
         const answer = children.at(-1);
         const stepItems = steps ? [...steps.children] as HTMLElement[] : [];
         const question = steps ? children.slice(0, children.indexOf(steps)) : [];
-        if (question[0]?.tagName !== "H2" || !steps || !stepItems.length ||
+        // The question may be one box (.print-question) holding its parts.
+        const group = question.length === 1 && question[0]!.classList.contains("print-question") ? question[0]! : null;
+        const parts = group ? [...group.children] as HTMLElement[] : question;
+        if (parts[0]?.tagName !== "H2" || !steps || !stepItems.length ||
             !stepItems.every((item) => item.tagName === "LI") ||
             answer?.tagName !== "P" || !answer.querySelector("strong")?.textContent?.trim().startsWith("Answer:")) {
           issues.push("Solution exercise lacks a complete question, explanation, or answer group");
@@ -153,8 +159,9 @@ async function inspect(html: string, format: "Letter" | "A4") {
         }
         if (getComputedStyle(exercise).breakInside !== "auto")
           issues.push("Solution exercise cannot flow across pages");
-        const questionHeight = question.at(-1)!.getBoundingClientRect().bottom - question[0]!.getBoundingClientRect().top;
-        if (questionHeight > pageHeight || question.some((item) => !["avoid", "avoid-page"].includes(getComputedStyle(item).breakAfter)))
+        const questionHeight = group ? Math.max(group.getBoundingClientRect().height, group.scrollHeight) : question.at(-1)!.getBoundingClientRect().bottom - question[0]!.getBoundingClientRect().top;
+        if (questionHeight > pageHeight || question.some((item) => !["avoid", "avoid-page"].includes(getComputedStyle(item).breakAfter)) ||
+            (group && !["avoid", "avoid-page"].includes(getComputedStyle(group).breakInside)))
           issues.push("Solution question and figure do not form one printable group");
         if (stepItems.some((item) => item.getBoundingClientRect().height > pageHeight || !["avoid", "avoid-page"].includes(getComputedStyle(item).breakInside)))
           issues.push("Solution explanation item can split or exceed a page");
@@ -210,12 +217,16 @@ try {
   const safeSolution = `<style>.exercise--solutions{break-inside:auto}.exercise--solutions>h2{break-after:avoid}.exercise--solutions>ol>li{break-inside:avoid}.exercise--solutions>ol>li:last-child{break-after:avoid}.exercise--solutions>p{break-before:avoid;break-inside:avoid}</style><article><p class="publication-kind">Worked solutions</p><section class="exercise exercise--solutions"><h2>1. A complete question</h2><ol><li>A reason.</li></ol><p><strong>Answer: one.</strong></p></section></article>`;
   if ((await inspect(safeSolution, "Letter")).length)
     throw new Error("Valid breakable solution reference failed");
+  const boxedSolution = safeSolution.replace("<h2>1. A complete question</h2>", "<div class=\"print-question\" style=\"break-inside:avoid;break-after:avoid\"><h2>1. A complete question</h2></div>");
+  if ((await inspect(boxedSolution, "Letter")).length)
+    throw new Error("Valid boxed solution question reference failed");
   const mutations = [
     `<p style="white-space:nowrap">${"Long printed text ".repeat(80)}TAIL</p>`,
     `<p style="width:80px;overflow:hidden;white-space:nowrap">${"Hidden text ".repeat(30)}TAIL</p>`,
     `<div style="height:5px;overflow:hidden"><p>Clipped paragraph</p></div>`,
     `<p style="position:relative;left:-800px">Missing left-hand text</p>`,
     `<figure class="lesson-illustration" style="height:2000px;break-inside:avoid">Oversized lesson illustration</figure>`,
+    `<section class="exercise" style="break-inside:avoid;display:flex;flex-direction:column;max-height:200px"><h2 style="flex-shrink:0;height:2000px">An exercise taller than its capped box</h2></section>`,
     `<svg data-lesson-illustration="test" viewBox="0 0 100 100"><text x="95" y="20">Clipped label</text></svg>`,
     `<svg data-lesson-illustration="test" viewBox="0 0 100 100"><text x="10" y="50" text-anchor="middle" transform="rotate(-90 10 50)">A rotated label far too long to fit</text></svg>`,
   ];
@@ -239,6 +250,8 @@ try {
     safeSolution.replace("<li>A reason.</li>", "<li style=\"height:2000px\">A reason.</li>"),
     safeSolution.replace("<li>A reason.</li>", "<li style=\"break-after:auto\">A reason.</li>"),
     safeSolution.replace("class=\"exercise exercise--solutions\"", "class=\"exercise exercise--solutions\" style=\"break-inside:avoid\""),
+    // A question box capped at a page's height whose parts overflow it.
+    safeSolution.replace("<h2>1. A complete question</h2>", "<div class=\"print-question\" style=\"break-inside:avoid;break-after:avoid;max-height:200px\"><h2>1. A complete question</h2><p style=\"height:2000px\">A tall part.</p></div>"),
   ];
   for (const mutation of solutionMutations)
     if (!(await inspect(mutation, "Letter")).length)
