@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import type { OrgResource } from "../../../../schools/contracts";
-import type { AuthSession } from "../../../auth";
+import { useSession } from "../../../lib/session";
 import { useLoggedError } from "../../../feedback";
 import { qk } from "../../../lib/keys";
 import { linkRefused } from "../../../lib/link-carry";
@@ -21,19 +21,18 @@ import { inviteToken, schoolState } from "./school-state";
  * the demo, or talks to us below. Clever is offered only where it is on.
  */
 export function SchoolNext({
-  session,
   clever,
   exploring,
   onExplore,
   className,
 }: {
-  session: AuthSession;
   /** The row the buttons sit in. */
   className?: string;
   clever: boolean;
   exploring: boolean;
   onExplore: () => void;
 }) {
+  const session = useSession();
   const orgs = useQuery(orgsOptions(session));
   useLoggedError(orgs.isError ? "Your schools didn’t load." : "");
   // An invitation kept on this device leads only while the server says it

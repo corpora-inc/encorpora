@@ -344,7 +344,6 @@ function SchoolStep({ session }: { session: AuthSession }) {
   return (
     <>
       <School
-        session={session}
         exploring={demo.isPending && demo.variables === "school"}
         onExplore={explore}
       />
@@ -434,11 +433,9 @@ const FACTS = [
 
 /** The school pitch: set up the school now, explore a demo, or talk to us. */
 function School({
-  session,
   exploring,
   onExplore,
 }: {
-  session: AuthSession;
   exploring: boolean;
   onExplore: () => void;
 }) {
@@ -459,7 +456,6 @@ function School({
       {/* The next step first: what this account can do now, by what it
           already has (an invitation, a school, its own class's pilot). */}
       <SchoolNext
-        session={session}
         className={styles.actions}
         clever={clever}
         exploring={exploring}

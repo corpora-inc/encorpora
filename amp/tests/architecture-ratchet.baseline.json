@@ -7,7 +7,7 @@
     "navigatingEffects": 11,
     "renderNavigate": 17,
     "silentCatches": 154,
-    "sessionProps": 40,
+    "sessionProps": 38,
     "sessionReads": 31,
     "inlineQueryKeys": 23,
     "nativeControls": 21
@@ -170,7 +170,7 @@
       "features/design/sections/workbooks.tsx": 5,
       "features/me/OwnStartScreen.tsx": 1,
       "features/onboarding/setup/FamilySetup.tsx": 1,
-      "features/onboarding/Starter.tsx": 8,
+      "features/onboarding/Starter.tsx": 6,
       "features/onboarding/StartScreen.tsx": 5,
       "features/pathways/PathwaysScreen.tsx": 1,
       "features/practice/CurriculumPractice.tsx": 1,
