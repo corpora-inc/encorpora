@@ -70,7 +70,12 @@ import {
   toOwnPlace,
   withQuery,
 } from "./sign-in-gate";
-import { cleverReturn, homeReturn, stripeReturn } from "./third-party-returns";
+import {
+  cleverReturn,
+  homeReturn,
+  resumeStripeReturn,
+  stripeReturn,
+} from "./third-party-returns";
 import { knownStale, onSignedOut } from "../lib/app-recovery";
 import { autoReloadBlock } from "../lib/reload-guard";
 import {
@@ -263,6 +268,8 @@ const root = createRootRoute({
     // An old address: one hop to its new one, before any screen's guard.
     if (!preload) await followAlias(location);
     if (nativeRuntime) return;
+    // A Stripe return kept across a sign-in: its confirmation, once.
+    if (!preload) await resumeStripeReturn();
     if (!preload) await restoreFamilyPractice(location);
     if (
       knownStale() &&
@@ -514,14 +521,23 @@ const accountReady = createRoute({
   getParentRoute: () => root,
   path: "/account/ready",
   staticData: { space: "account" },
-  loader: async () => {
-    const session = await queryClient.ensureQueryData(sessionOptions);
-    // Leave a failed lookup to the screen's inline retry instead of replacing
-    // the successful-registration page with a route error.
-    if (session)
-      await queryClient
-        .ensureQueryData(meOptions(session))
-        .catch(() => undefined);
+  // Signed out: sign in, keeping the continuation. A gift waiting (or a
+  // sign-up that came from one): the gift's page, in one hop.
+  beforeLoad: async ({ location }) => {
+    const session = await requireSignedIn(location);
+    // A failed lookup is the screen's inline retry, never a route error.
+    const me = await queryClient
+      .ensureQueryData(meOptions(session))
+      .catch((error: unknown) =>
+        console.warn("The new account didn’t load ahead", error),
+      );
+    const account =
+      me?.signedIn && me.account.id === session.accountId ? me : null;
+    if (
+      account?.availableAccessGrant ||
+      continuationSearch(location.search).return === "access"
+    )
+      elsewhere("/access");
   },
   component: lazyRouteComponent(
     () => import("../features/account/AccountReady"),
