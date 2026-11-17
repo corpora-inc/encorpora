@@ -8,7 +8,7 @@ import {
 } from "../spaces/identity";
 import { canonicalLearning } from "../spaces/learner-urls";
 import { familyPlacesOptions } from "../family/api";
-import { useLearnerStore } from "../../learner-store";
+import { currentLearner } from "../../learner-store";
 import { redirect } from "@tanstack/react-router";
 import { hasHome } from "../onboarding/guard";
 import { returnTarget } from "../../lib/return-to";
@@ -173,7 +173,7 @@ export async function canonicalLearnerAddress(location: {
     params,
     me,
     places,
-    useLearnerStore.getState().learnerId,
+    currentLearner(),
   );
   if (href && href !== `${location.pathname}${location.searchStr}`)
     throw redirect({ href, replace: true });

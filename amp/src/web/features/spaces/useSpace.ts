@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useLocation, useRouterState } from "@tanstack/react-router";
 import { useMemo, useRef } from "react";
-import { useLearnerStore } from "../../learner-store";
+import { useCurrentLearner } from "../../learner-store";
 import { AppError, refused, standing } from "../../lib/AppError";
 import { isConfirmed } from "../../lib/session-generation";
 import { hasAccountContext } from "../../lib/account-page";
@@ -127,7 +127,7 @@ export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
   const me = refused(meQuery.error) ? undefined : meQuery.data;
   const account =
     me?.signedIn && me.account.id === session?.accountId ? me : null;
-  const learnerId = useLearnerStore((state) => state.learnerId);
+  const learnerId = useCurrentLearner();
   const frame =
     match && session && !student
       ? shellFrame(

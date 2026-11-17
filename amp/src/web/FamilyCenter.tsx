@@ -48,7 +48,7 @@ import {
   childNameProblem,
   PARENT_ENTRY_LINE,
 } from "../learning/nickname";
-import { useLearnerStore } from "./learner-store";
+import { selectLearner } from "./learner-store";
 import { invalidateAccount, refreshMe } from "./lib/query";
 import { rememberPlace } from "./features/onboarding/place-memory";
 import { deviceTimeZone } from "./features/onboarding/starter-api";
@@ -987,7 +987,7 @@ export function FamilyCenter({
                               // Sets where their own practice starts.
                               birthYear: Number(newBirthYear),
                             });
-                            useLearnerStore.getState().select(learnerId);
+                            selectLearner(learnerId);
                             rememberPlace(identity, "me");
                             await refreshMe({ accountId: identity, token });
                             setAskSelf(null);

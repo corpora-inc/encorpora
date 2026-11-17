@@ -15,7 +15,11 @@ import type { SignedInMe } from "../../account/contracts";
 import { nativeRuntime } from "../native-runtime";
 import { hasAccountContext } from "../lib/account-page";
 import { meOptions, sessionOptions } from "../lib/query";
-import { useLearnerStore } from "../learner-store";
+import {
+  currentLearner,
+  selectLearner,
+  useCurrentLearner,
+} from "../learner-store";
 import { useShellSlots } from "../lib/shell-slots";
 import { usePlaces } from "../features/navigation/PlaceSwitcher";
 import type { SpaceDescriptor } from "../features/spaces/resolve";
@@ -101,9 +105,9 @@ export function AppShell({ children }: { children: ReactNode }) {
       me,
       match.pathname,
       match.search ?? {},
-      useLearnerStore.getState().learnerId,
+      currentLearner(),
     );
-    if (choice !== undefined) useLearnerStore.getState().select(choice);
+    if (choice !== undefined) selectLearner(choice);
   }, [me, match]);
   // A place this person can no longer open, or one that didn't load, shows
   // that in place of the screen: nothing of it renders or asks the server.
@@ -354,7 +358,7 @@ function ProgressAction({
   own: boolean;
   me: SignedInMe | null;
 }) {
-  const learnerId = useLearnerStore((state) => state.learnerId);
+  const learnerId = useCurrentLearner();
   // A day-0 hero on the screen is its one Practice; the bar's holds its place.
   const hero = useShellSlots((state) => state.heroAction);
   const target = practiceTarget(own, me, learnerId);

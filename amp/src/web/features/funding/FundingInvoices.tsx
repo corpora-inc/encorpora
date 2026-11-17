@@ -7,7 +7,7 @@ import { requestFetch } from "../../lib/request-transport";
 import { queryClient, refreshMe, meOptions } from "../../lib/query";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { SelectField } from "../../ui/SelectField";
-import { useLearnerStore } from "../../learner-store";
+import { selectLearner } from "../../learner-store";
 import { Button, buttonClass } from "../../ui/Button";
 import { Loading } from "../../ui/Loading";
 import { fundingReturn } from "./setup";
@@ -123,7 +123,7 @@ export function FundingInvoices({
         me.data?.signedIn &&
         me.data.adultPractice?.learner?.id === selected
       ) {
-        useLearnerStore.getState().select(selected);
+        selectLearner(selected);
         void navigate({ to: "/$", params: { _splat: "practice" } });
       } else {
         await handoff.handOver(selected);

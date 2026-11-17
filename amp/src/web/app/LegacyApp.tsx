@@ -119,7 +119,11 @@ import { Loading } from "../ui/Loading";
 import { Menu, MenuItem } from "../ui/Menu";
 import { LandingView } from "../lib/LandingView";
 import { track, trackOnce } from "../lib/analytics";
-import { useLearnerStore } from "../learner-store";
+import {
+  currentLearner,
+  selectLearner,
+  useCurrentLearner,
+} from "../learner-store";
 import { useAddressedIdentity } from "../features/spaces/useAddressed";
 import { calculatorAllowed } from "../../math/calculator";
 import { gradeNumber } from "../../learning/frontier";
@@ -325,9 +329,8 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   const addressed = useAddressedIdentity();
   const addressedRef = useRef(addressed);
   addressedRef.current = addressed;
-  const chosenId = useLearnerStore((state) => state.learnerId);
+  const chosenId = useCurrentLearner();
   const learnerId = addressed?.id ?? chosenId;
-  const selectLearner = useLearnerStore((state) => state.select);
   // A child of a family this account is the second parent of, chosen to read
   // their progress: their Overview is read-only (docs/families.md).
   const account = useQuery({
@@ -962,9 +965,8 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     // here chooses another (features/spaces/identity.ts).
     const named = addressedRef.current?.id ?? null;
     const selected =
-      available.find(
-        (entry) => entry.id === (named ?? useLearnerStore.getState().learnerId),
-      ) ?? (named ? null : (available.find((entry) => !entry.adult) ?? null));
+      available.find((entry) => entry.id === (named ?? currentLearner())) ??
+      (named ? null : (available.find((entry) => !entry.adult) ?? null));
     learnerRef.current = selected?.id;
     // Keep the chosen learner unless it no longer exists or learning is not
     // allowed; never forget the choice merely because data is reloading.

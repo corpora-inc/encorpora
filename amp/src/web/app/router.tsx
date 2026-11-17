@@ -46,7 +46,7 @@ import {
   meOptions,
 } from "../lib/query";
 import type { Me } from "../../account/contracts";
-import { useLearnerStore } from "../learner-store";
+import { currentLearner } from "../learner-store";
 import { practicingAsAdult, practicingAsProfile } from "../lib/adult-learner";
 import { LoadingScreen, RouteError } from "../ui/LoadingScreen";
 import { childAddress, childPath } from "../features/spaces/identity";
@@ -2072,7 +2072,7 @@ router.subscribe("onResolved", ({ toLocation }) => {
   const session = queryClient.getQueryData(sessionOptions.queryKey);
   if (!session || studentSession()) return;
   const me = queryClient.getQueryData<Me>(meKey(session.accountId));
-  const chosen = useLearnerStore.getState().learnerId;
+  const chosen = currentLearner();
   // Practicing as a profile is a step away from a place, never one `/`
   // returns to.
   if (

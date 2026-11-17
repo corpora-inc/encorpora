@@ -7,7 +7,7 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { reportable } from "../../../learning/level-check";
-import { useLearnerStore } from "../../learner-store";
+import { selectLearner } from "../../learner-store";
 import { z } from "zod";
 import {
   CHILD_NAME_MAX,
@@ -88,7 +88,7 @@ export function ChildScreen() {
   // their learning screens are theirs.
   const known = !!child;
   useEffect(() => {
-    if (known) useLearnerStore.getState().select(learner);
+    if (known) selectLearner(learner);
   }, [known, learner]);
   const search = useRouterState({
     select: (state) => state.location.search as Record<string, unknown>,
