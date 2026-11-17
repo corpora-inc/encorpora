@@ -85,7 +85,11 @@ async function post<T>(
     failure.log();
     throw failure;
   }
-  const data = (await response.json().catch(() => null)) as {
+  const data = (await response.json().catch((error) => {
+    // In the entry bundle: logs itself (no lib/report-error chunk).
+    console.warn("A join answer wasn’t JSON", error);
+    return null;
+  })) as {
     error?: unknown;
     retryAfter?: unknown;
   } | null;

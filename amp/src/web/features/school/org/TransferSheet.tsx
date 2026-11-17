@@ -1,6 +1,6 @@
+import { reportError } from "../../../lib/report-error";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { AppError } from "../../../lib/AppError";
 import { useLoggedError } from "../../../feedback";
 import { Button } from "../../../ui/Button";
 import { Select } from "../../../ui/Select";
@@ -68,9 +68,10 @@ export function TransferSheet({
       onMoved(moved.to);
     } catch (failure) {
       setError(
-        failure instanceof AppError
-          ? failure.message
-          : `${name} didn’t move. Try again.`,
+        reportError(failure, {
+          doing: "move a student to another school",
+          fallback: `${name} didn’t move. Try again.`,
+        }),
       );
     } finally {
       setBusy(false);

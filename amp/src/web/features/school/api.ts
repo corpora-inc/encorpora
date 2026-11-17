@@ -463,4 +463,11 @@ export const currentSession = () =>
 /** Loads what a screen needs before it paints, so it never builds up in front
  * of the person. A failure is left for the screen, which says so in place. */
 export const preload = (options: { queryKey: readonly unknown[] }) =>
-  queryClient.ensureQueryData(options as never).catch(() => undefined);
+  queryClient
+    .ensureQueryData(options as never)
+    // In the entry bundle: it logs itself, never through lib/report-error
+    // (a chunk of its own; docs/architecture/frontend-patterns.md).
+    .catch((error) => {
+      console.warn("School data didn’t load ahead", error);
+      return undefined;
+    });

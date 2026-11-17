@@ -1,8 +1,8 @@
+import { reportError } from "../../../lib/report-error";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import type { AuthSession } from "../../../auth";
 import { useLoggedError } from "../../../feedback";
-import { AppError } from "../../../lib/AppError";
 import { Badge } from "../../../ui/Badge";
 import { Button } from "../../../ui/Button";
 import { Sheet } from "../../../ui/Sheet";
@@ -119,9 +119,10 @@ export function CoTeacherInviteSheet({
       onClose();
     } catch (failure) {
       setError(
-        failure instanceof AppError
-          ? failure.message
-          : "That invitation didn’t save. Try again.",
+        reportError(failure, {
+          doing: "save that invitation",
+          fallback: "That invitation didn’t save. Try again.",
+        }),
       );
       setBusy(false);
     }

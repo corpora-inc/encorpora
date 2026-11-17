@@ -1,3 +1,4 @@
+import { reportError } from "../../../lib/report-error";
 import { useQuery } from "@tanstack/react-query";
 import { CopyButton } from "../parts";
 import {
@@ -398,9 +399,10 @@ function useStartPractice(place: Place, pilot: PilotState | undefined) {
       await refreshSchool(session);
     } catch (failure) {
       setError(
-        failure instanceof AppError
-          ? failure.message
-          : "Practice didn’t start. Try again.",
+        reportError(failure, {
+          doing: "start practice",
+          fallback: "Practice didn’t start. Try again.",
+        }),
       );
     } finally {
       setBusy(false);
@@ -855,9 +857,10 @@ function AuthorizeSheet({
       onClose();
     } catch (failure) {
       setError(
-        failure instanceof AppError
-          ? failure.message
-          : "Practice didn’t start. Try again.",
+        reportError(failure, {
+          doing: "start practice",
+          fallback: "Practice didn’t start. Try again.",
+        }),
       );
     } finally {
       setBusy(false);

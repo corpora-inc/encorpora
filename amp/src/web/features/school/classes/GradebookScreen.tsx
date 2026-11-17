@@ -1,3 +1,4 @@
+import { reportError } from "../../../lib/report-error";
 import { useSession } from "../../../lib/session";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
@@ -130,10 +131,11 @@ function ExportSheet({
       })
       .catch((error) =>
         onError(
-          failureMessage(
-            error,
-            "That file didn’t download. Check your connection and try again.",
-          ),
+          reportError(error, {
+            doing: "download that file",
+            fallback:
+              "That file didn’t download. Check your connection and try again.",
+          }),
         ),
       )
       .finally(() => setBusy(null));

@@ -1,8 +1,8 @@
+import { reportError } from "../../../lib/report-error";
 import { useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { AGREEMENT_VERSION } from "../../../../schools/agreement";
 import { startSchoolSchema } from "../../../../schools/pilot-contracts";
-import { AppError } from "../../../lib/AppError";
 import { useLoggedError } from "../../../feedback";
 import { Button } from "../../../ui/Button";
 import { TextField } from "../../../ui/TextField";
@@ -93,9 +93,10 @@ export function SchoolCreateScreen() {
       });
     } catch (failure) {
       setError(
-        failure instanceof AppError
-          ? failure.message
-          : "The school didn’t save. Try again.",
+        reportError(failure, {
+          doing: "save the school",
+          fallback: "The school didn’t save. Try again.",
+        }),
       );
       setBusy(false);
     }

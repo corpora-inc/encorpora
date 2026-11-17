@@ -1,3 +1,4 @@
+import { reportError } from "../../lib/report-error";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Authorization } from "./pilots/Authorization";
 import { Link, useNavigate, useSearch } from "@tanstack/react-router";
@@ -21,7 +22,6 @@ import type {
   ExperiencePreset,
   SetupState,
 } from "../../../schools/setup-contracts";
-import { AppError } from "../../lib/AppError";
 import { Button } from "../../ui/Button";
 import { DatePicker } from "../../ui/DatePicker";
 import { Segmented } from "../../ui/Segmented";
@@ -86,13 +86,6 @@ export const COMMON_ZONES = [
   ["America/Anchorage", "Alaska"],
   ["Pacific/Honolulu", "Hawaii"],
 ] as const;
-const message = (error: unknown, fallback: string) =>
-  error instanceof AppError
-    ? error.message
-    : error instanceof Error
-      ? error.message
-      : fallback;
-
 function useErrorState() {
   const [error, setError] = useState("");
   useLoggedError(error);
@@ -310,7 +303,12 @@ function SchoolStep({ state, orgId }: { state: SetupState; orgId: string }) {
         search: { org: orgId, step: "calendar" } as never,
       });
     } catch (failure) {
-      setError(message(failure, "That didn’t save. Try again."));
+      setError(
+        reportError(failure, {
+          doing: "save the school's setup",
+          fallback: "That didn’t save. Try again.",
+        }),
+      );
       setBusy(false);
     }
   };
@@ -434,7 +432,12 @@ function CalendarStep({ state, orgId }: { state: SetupState; orgId: string }) {
         search: { org: orgId, step: "experience" } as never,
       });
     } catch (failure) {
-      setError(message(failure, "That didn’t save. Try again."));
+      setError(
+        reportError(failure, {
+          doing: "save the school calendar",
+          fallback: "That didn’t save. Try again.",
+        }),
+      );
       setBusy(null);
     }
   };
@@ -560,7 +563,12 @@ function ExperienceStep({
         search: { org: orgId, step: "agreement" } as never,
       });
     } catch (failure) {
-      setError(message(failure, "That didn’t save. Try again."));
+      setError(
+        reportError(failure, {
+          doing: "save the student experience",
+          fallback: "That didn’t save. Try again.",
+        }),
+      );
       setBusy(false);
     }
   };
@@ -679,7 +687,12 @@ function AgreementStep({ state, orgId }: { state: SetupState; orgId: string }) {
       client.setQueryData(setupOptions(session, orgId).queryKey, saved);
       await next();
     } catch (failure) {
-      setError(message(failure, "That didn’t save. Try again."));
+      setError(
+        reportError(failure, {
+          doing: "accept the student data agreement",
+          fallback: "That didn’t save. Try again.",
+        }),
+      );
       setBusy(false);
     }
   };
@@ -808,7 +821,12 @@ function StudentsStep({
         replace: true,
       });
     } catch (failure) {
-      setError(message(failure, "That didn’t save. Try again."));
+      setError(
+        reportError(failure, {
+          doing: "finish school setup",
+          fallback: "That didn’t save. Try again.",
+        }),
+      );
       setBusy(null);
     }
   };

@@ -1,3 +1,4 @@
+import { reportError } from "../../lib/report-error";
 import { useSession } from "../../lib/session";
 import { useQuery } from "@tanstack/react-query";
 import { Disclosure } from "../../ui/Disclosure";
@@ -139,7 +140,10 @@ function AuthorizeSchool({ districtId }: { districtId?: string }) {
         if (issued?.id === id) setIssued(null);
         await query.refetch();
       })
-      .catch((e) => setError(adoptionError(e)))
+      .catch((e) => {
+        reportError(e, "withdraw a district invitation");
+        setError(adoptionError(e));
+      })
       .finally(() => setBusy(false));
   };
   return (
@@ -196,7 +200,10 @@ function AuthorizeSchool({ districtId }: { districtId?: string }) {
                       setIssued(result);
                       await query.refetch();
                     })
-                    .catch((e) => setError(adoptionError(e)))
+                    .catch((e) => {
+                      reportError(e, "approve joining the district");
+                      setError(adoptionError(e));
+                    })
                     .finally(() => setBusy(false));
                 }}
               >
@@ -558,7 +565,10 @@ function ReviewDecision({
                     setAccepted(true);
                     await refreshSchool(session);
                   })
-                  .catch((e) => setError(adoptionError(e)))
+                  .catch((e) => {
+                    reportError(e, "review the school's move");
+                    setError(adoptionError(e));
+                  })
                   .finally(() => setBusy(false));
               }}
             >

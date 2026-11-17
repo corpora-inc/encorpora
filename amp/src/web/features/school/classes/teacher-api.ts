@@ -1,3 +1,4 @@
+import { jsonOrNull } from "../../../lib/report-error";
 import {
   keepPreviousData,
   queryOptions,
@@ -350,7 +351,7 @@ async function fetchFile(
     headers: { Authorization: `Bearer ${session?.token ?? ""}` },
   });
   if (!response.ok) {
-    const body = (await response.json().catch(() => null)) as {
+    const body = (await jsonOrNull(response)) as {
       error?: string;
     } | null;
     throw new AppError(

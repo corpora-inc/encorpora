@@ -1,3 +1,4 @@
+import { reportError } from "../../lib/report-error";
 import { useQuery } from "@tanstack/react-query";
 import { queryClient } from "../../lib/query";
 import { pilotOptions } from "./pilots/api";
@@ -117,8 +118,6 @@ const stepOf = (segment: unknown): Step =>
     (step) => STEP_PATHS[step] === (segment ?? ""),
   ) ?? "source";
 
-const failureText = (failure: unknown, fallback: string) =>
-  failure instanceof AppError ? failure.message : fallback;
 const plural = (count: number, one: string, many = `${one}s`) =>
   `${count.toLocaleString("en-US")} ${count === 1 ? one : many}`;
 const fullName = (row: { givenName?: string; familyName?: string }) =>
@@ -392,7 +391,12 @@ function MapStep({
     setError("");
     void onContinue()
       .catch((failure) =>
-        setError(failureText(failure, "The check didn’t finish. Try again.")),
+        setError(
+          reportError(failure, {
+            doing: "finish the check",
+            fallback: "The check didn’t finish. Try again.",
+          }),
+        ),
       )
       .finally(() => setBusy(false));
   };
@@ -890,10 +894,10 @@ function ReviewStep({
         setProgress({
           done: results.length,
           total: toWrite.length,
-          failed: failureText(
-            failure,
-            "The connection dropped. Everything so far is saved.",
-          ),
+          failed: reportError(failure, {
+            doing: "apply the roster import",
+            fallback: "The connection dropped. Everything so far is saved.",
+          }),
           results,
           invited,
           nextChunk: index,

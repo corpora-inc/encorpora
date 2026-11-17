@@ -1,10 +1,10 @@
+import { reportError } from "../../lib/report-error";
 import { heldCapability } from "../../capability-entry";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import type { InviteView } from "../../../schools/setup-contracts";
 import { signOut } from "../../auth";
-import { AppError } from "../../lib/AppError";
 import { linkRefused } from "../../lib/link-carry";
 import { sessionOptions, meOptions } from "../../lib/query";
 import { useLoggedError } from "../../feedback";
@@ -120,9 +120,10 @@ export function InviteScreen() {
       );
     } catch (failure) {
       setError(
-        failure instanceof AppError
-          ? failure.message
-          : "The invitation didn’t go through. Try again.",
+        reportError(failure, {
+          doing: "go through the invitation",
+          fallback: "The invitation didn’t go through. Try again.",
+        }),
       );
       setBusy(false);
     }

@@ -1,3 +1,4 @@
+import { reportError } from "../../../lib/report-error";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
@@ -501,9 +502,11 @@ export function RolloverScreen() {
       setResult(applied);
     } catch (failure) {
       setError(
-        failure instanceof AppError
-          ? failure.message
-          : "The new year didn’t start, and nothing changed. Try again.",
+        reportError(failure, {
+          doing: "start the new school year",
+          fallback:
+            "The new year didn’t start, and nothing changed. Try again.",
+        }),
       );
     } finally {
       setBusy(false);

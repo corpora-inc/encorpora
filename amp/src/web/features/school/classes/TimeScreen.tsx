@@ -1,3 +1,4 @@
+import { reportError } from "../../../lib/report-error";
 import type { ReactNode } from "react";
 import { EntityLink } from "../../../nav/links";
 import { ScreenTitle } from "../../../ui/ScreenTitle";
@@ -755,10 +756,11 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
                         .then((name) => setMessage(`Downloaded ${name}.`))
                         .catch((failure) =>
                           setError(
-                            failureMessage(
-                              failure,
-                              "That file didn’t download. Check your connection and try again.",
-                            ),
+                            reportError(failure, {
+                              doing: "download that file",
+                              fallback:
+                                "That file didn’t download. Check your connection and try again.",
+                            }),
                           ),
                         )
                         .finally(() => setBusy(false));
