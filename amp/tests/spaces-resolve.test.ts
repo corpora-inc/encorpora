@@ -758,8 +758,8 @@ test("account: its own neutral addresses and the old ones, never family chrome",
   }
 });
 
-test("individual purchase entry keeps the account frame with or without route metadata", () => {
-  const match = at("/continue/rowan");
+test("paying for one learner keeps the account frame with or without route metadata", () => {
+  const match = at("/pay/rowan");
   const fallback = resolveSpace(match, adult(adultOnly, "rowan"));
   assert.equal(fallback.space, "account");
   assert.equal(fallback.bar, "plain");
@@ -800,7 +800,7 @@ test("every route family has its space", () => {
     ["/lessons/abc", "learner"],
     ["/books/x", "learner"],
     ["/learners/a/workbooks/2026-11-09", "learner"],
-    ["/continue/a", "account"],
+    ["/pay/a", "account"],
     ["/profile/birth-year", "learner"],
     ["/me", "me"],
     ["/me/start", "me"],

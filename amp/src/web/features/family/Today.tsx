@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { practiceMinutes } from "../../lib/practice-minutes";
 import { fundingRecordsOptions } from "../funding/records";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
@@ -25,6 +26,7 @@ import { DevicesSheet } from "./Devices";
 import { FamilyFrame, familyHref, useFamilyPlace } from "./FamilyFrame";
 import { ColumnList, ColumnRow, type Column } from "../../ui/ColumnList";
 import styles from "./Family.module.css";
+import { PayLink } from "../pay/link";
 
 const count = (n: number, one: string, many = `${one}s`) =>
   `${n} ${n === 1 ? one : many}`;
@@ -123,7 +125,7 @@ export function WeekFact({ child }: { child: FamilyChild }) {
     return <Fact value="Not started" label="no practice yet" />;
   return (
     <Fact
-      value={week.minutes > 0 ? `${week.minutes} min` : "None"}
+      value={practiceMinutes(week.minutes, week.problems) ?? "None"}
       label={
         week.minutes > 0 || week.problems > 0
           ? `${count(week.problems, "problem")} this week`
@@ -195,9 +197,8 @@ export function ChildAction({
     );
   if (child.capabilities.continuePurchase && child.paths.continue)
     return (
-      <Link
-        to="/continue/$learnerId"
-        params={{ learnerId: child.id }}
+      <PayLink
+        learnerId={child.id}
         className={buttonClass("primary")}
         data-continue={child.id}
         // Back to the child's page, with access active, after the plan,
@@ -211,7 +212,7 @@ export function ChildAction({
         }
       >
         Continue with AMP
-      </Link>
+      </PayLink>
     );
   return (
     <span className={styles.actionNote}>
@@ -445,7 +446,7 @@ export function FamilyTodayScreen() {
                         />
                       ),
                       access: (
-                        <>
+                        <span className={styles.access}>
                           {!sharedAccess && <AccessFact child={child} />}
                           {data.capabilities.manageBilling && (
                             <ChildBillingLink
@@ -460,7 +461,7 @@ export function FamilyTodayScreen() {
                               }
                             />
                           )}
-                        </>
+                        </span>
                       ),
                       action: (
                         <span className={styles.action}>

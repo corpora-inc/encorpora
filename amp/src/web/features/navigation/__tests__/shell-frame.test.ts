@@ -35,10 +35,6 @@ test("each group's screens share one frame and name their tab", () => {
     kind: "account",
     active: "access",
   });
-  expect(shellFrame("/purchase/annual")).toEqual({
-    kind: "account",
-    active: "access",
-  });
   expect(shellFrame("/consent")).toEqual({
     kind: "account",
     active: "privacy",
@@ -54,7 +50,7 @@ test("each group's screens share one frame and name their tab", () => {
   expect(shellFrame("/school/adopt")).toEqual({ kind: "plain" });
 });
 
-test("the starter and Continue with AMP sit on the app frame", () => {
+test("the starter and the pay flow sit on the app frame", () => {
   for (const path of [
     "/start",
     "/start/parent",
@@ -63,7 +59,13 @@ test("the starter and Continue with AMP sit on the app frame", () => {
     "/start/tutor/join",
   ])
     expect(shellFrame(path), path).toEqual({ kind: "plain" });
-  expect(shellFrame("/continue/learner-1")).toEqual({ kind: "plain" });
+  for (const path of [
+    "/pay/learner-1",
+    "/pay/learner-1/card",
+    "/pay/learner-1/esa/plan",
+    "/pay/learner-1/esa/invoice/invoice-1",
+  ])
+    expect(shellFrame(path), path).toEqual({ kind: "plain" });
   // The steps around it keep their own frame.
   for (const path of ["/start/purchase", "/start/verify-email", "/start/x"])
     expect(shellFrame(path), path).toBeNull();

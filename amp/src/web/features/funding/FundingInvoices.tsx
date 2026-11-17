@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { queryOptions, useQuery } from "@tanstack/react-query";
 import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
 import type { AuthSession } from "../../auth";
@@ -29,6 +29,17 @@ const intent = z.object({
   paymentVerified: z.boolean().optional(),
   offer,
 });
+/** The account's invoices not yet tied to a learner: Billing's route loads
+ * them ahead. */
+export const invoiceHistoryOptions = (session: AuthSession) =>
+  queryOptions({
+    queryKey: ["account", session.accountId, "funding-invoice-history"],
+    queryFn: ({ signal }) =>
+      request("/funding/invoices", z.object({ invoices: z.array(intent) }), {
+        token: session.token,
+        signal,
+      }),
+  });
 export function FundingInvoices({
   session,
   verified = true,
@@ -72,13 +83,8 @@ export function FundingInvoices({
   };
   const records = useQuery(fundingRecordsOptions(session));
   const invoices = useQuery({
-    queryKey: ["account", session.accountId, "funding-invoice-history"],
+    ...invoiceHistoryOptions(session),
     enabled: verified,
-    queryFn: ({ signal }) =>
-      request("/funding/invoices", z.object({ invoices: z.array(intent) }), {
-        token: session.token,
-        signal,
-      }),
   });
   const [busy, setBusy] = useState<string>();
   const [error, setError] = useState("");

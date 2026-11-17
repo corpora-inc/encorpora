@@ -7,6 +7,7 @@ import { useLearnerStore } from "../../learner-store";
 import { sessionOptions } from "../../lib/query";
 import { Menu, MenuItem, MenuLabel } from "../../ui/Menu";
 import { rememberPlace } from "../onboarding/place-memory";
+import { setHome } from "../../lib/home-place";
 import { DemoMark } from "../school/demo/DemoMark";
 import {
   currentPlace,
@@ -73,6 +74,9 @@ export function placeEntries(me: SignedInMe): PlaceEntry[] {
  * `/` offers first (starting or trying a level is a step, not a place). */
 export function choosePlace(me: SignedInMe, place: PlaceEntry) {
   choosePlaceLearner(me, place.id);
+  // A step (starting, a level) is not a home.
+  if (place.id !== "level" && place.path && !place.path.startsWith("me/"))
+    setHome(me.account.id, `/${place.path}`);
   if (place.id === "home" || (place.id === "me" && place.path === "me"))
     rememberPlace(me.account.id, place.id);
   else if (place.id.startsWith("school:"))

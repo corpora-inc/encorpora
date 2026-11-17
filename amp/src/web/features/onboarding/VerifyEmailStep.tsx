@@ -58,7 +58,12 @@ export function VerifyEmailStep({
         email,
         callbackURL: invitation
           ? "/access"
-          : (continueTo ?? continuationUrl(location.search, "/")),
+          : (continueTo ??
+            // A new account's link opens its first question, never `/`.
+            continuationUrl(
+              location.search,
+              me.next === "start" ? "/start" : "/",
+            )),
       });
       if (result.error) {
         const error = new AppError("unavailable", messages.sendFailed, true);

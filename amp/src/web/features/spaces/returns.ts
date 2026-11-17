@@ -51,7 +51,7 @@ const PLACES = [
 ];
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const STEPS =
-  /^\/(start|continue|sign-in|sign-up|reset-password|purchase|invoice|consent|access|school\/(new|start|connect|adopt|invite))(\/|$)/;
+  /^\/(start|continue|pay|sign-in|sign-up|reset-password|purchase|invoice|consent|access|school\/(new|start|connect|adopt|invite))(\/|$)/;
 
 export function appReturn(
   value: unknown,

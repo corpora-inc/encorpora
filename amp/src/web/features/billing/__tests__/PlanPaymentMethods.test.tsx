@@ -1,10 +1,9 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import { afterEach, expect, test, vi } from "vitest";
 import { PlanStep } from "../../onboarding/PlanStep";
 import { enrollmentOptions, offerOptions } from "../api";
 import { consentFixture } from "../../../../../tests/parent-consent.fixture";
-import { PaymentMethodChoice } from "../PaymentMethodChoice";
 const navigation = vi.hoisted(() => ({ go: vi.fn() }));
 vi.mock("../../../nav/Navigate", () => ({
   Navigate: ({ to }: { to: string }) => <a href={to}>Recover purchase</a>,
@@ -83,29 +82,12 @@ function setup(
     </QueryClientProvider>,
   );
 }
-test("standalone plan offers education funds with the current monthly choice", () => {
+test("the plan before any learner offers card only: an invoice needs its learner", () => {
   setup();
-  fireEvent.click(screen.getByRole("radio", { name: "Education funds (ESA)" }));
-  expect(navigation.go).toHaveBeenCalledWith({
-    href: "/purchase/funded?interval=month",
-  });
-});
-test("embedded plan does not add a second method selector", () => {
-  setup({ embedded: true });
   expect(
     screen.queryByRole("radiogroup", { name: "Payment method" }),
   ).toBeNull();
-});
-test("Continue supplies exactly one learner-aware method selector", () => {
-  setup({
-    embedded: true,
-    paymentMethods: () => (
-      <PaymentMethodChoice value="card" onChange={() => {}} />
-    ),
-  });
-  expect(
-    screen.getAllByRole("radiogroup", { name: "Payment method" }),
-  ).toHaveLength(1);
+  expect(screen.getByRole("radiogroup", { name: "Plan" })).toBeTruthy();
 });
 test.each(["paid", "processing", "assigned", "requires-review"] as const)(
   "%s enrollment goes to purchase recovery before new method choices",

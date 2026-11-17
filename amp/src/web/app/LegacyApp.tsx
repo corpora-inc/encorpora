@@ -68,8 +68,6 @@ import {
 import { ParentConsentCenter } from "../ParentConsentCenter";
 import { takeConsentChallenge, type ConsentChallenge } from "../consent-link";
 import { ProgressWorkspace, type ProgressView } from "../ProgressWorkspace";
-import { AnnualPurchase } from "../AnnualPurchase";
-import { FundingPurchaseCenter } from "../FundingPurchaseCenter";
 import {
   capturePurchaseReturn,
   clearPurchaseReturn,
@@ -114,7 +112,6 @@ import "../theme.css";
 import "../premium-controls.css";
 import "../app-shell.css";
 import { BirthYearPrompt } from "../BirthYearPrompt";
-import { ChooseHowToPay } from "../ChooseHowToPay";
 
 import type { Me } from "../../account/contracts";
 import { LoadingScreen } from "../ui/LoadingScreen";
@@ -1054,51 +1051,12 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     // Paid for in place: practice picks up where the pause was.
     paused,
   ]);
-  function closePurchase() {
+  /** Paying is the pay flow's (features/pay): every older entry here
+   * opens it through Billing, which lists each learner's plan. */
+  function openPurchase() {
     navigationEpoch.current++;
-    clearOwnedPurchaseReturn();
-    // Every close is Back to where it was opened (lib/return-to.ts): a
-    // purchase opened from "how to pay" returns there; else, with no
-    // history, to Access or its purchases.
-    if (purchaseView !== "choose" && purchaseFromChoice) {
-      setPurchaseFromChoice(false);
-      setError("");
-      closeTo(router, "/purchase/choose");
-      return;
-    }
-    setPurchaseFocus(
-      purchaseView === "choose" ? undefined : (purchaseView ?? undefined),
-    );
-
-    setPurchaseReturn(null);
-    closeTo(
-      router,
-      purchaseView === "choose"
-        ? "/account/billing"
-        : "/account/billing/purchases",
-    );
-    setError("");
-    void action(loadFamily);
-  }
-  // The education-fund offer chosen on the "how to pay" screen, if any.
-  const [purchaseOffer, setPurchaseOffer] = useState("");
-  const [purchaseInterval, setPurchaseInterval] = useState<"year" | "month">(
-    "year",
-  );
-  const [purchaseFromChoice, setPurchaseFromChoice] = useState(false);
-  function openPurchase(view: "choose" | "annual" | "funded") {
-    if (view === "funded" && !nativeRuntime) {
-      navigate("/purchase/funded");
-      return;
-    }
-    clearOwnedPurchaseReturn();
-    setPurchaseInterval("year");
-    setPurchaseFromChoice(false);
-    navigationEpoch.current++;
-    setPurchaseReturn(null);
     setPurchaseFocus(undefined);
-    setPurchaseView(view);
-    setError("");
+    navigate("/account/billing");
   }
   function openFamily() {
     navigationEpoch.current++;
@@ -1851,49 +1809,6 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             void action(loadFamily);
           }}
         />
-      ) : familyOpen && token && purchaseView === "choose" ? (
-        <ChooseHowToPay
-          token={token}
-          learnerName={learner?.name ?? null}
-          onCard={(interval) => {
-            openPurchase("annual");
-            setPurchaseInterval(interval);
-            setPurchaseFromChoice(true);
-          }}
-          onFunds={(offerId) => {
-            if (!nativeRuntime) {
-              const search = new URLSearchParams({ offer: offerId });
-              if (learnerId) search.set("learner", learnerId);
-              navigate(`/purchase/funded?${search}`);
-              return;
-            }
-            setPurchaseOffer(offerId);
-            openPurchase("funded");
-            setPurchaseFromChoice(true);
-          }}
-          onClose={closePurchase}
-        />
-      ) : familyOpen && token && purchaseView === "annual" ? (
-        <AnnualPurchase
-          preferredInterval={purchaseInterval}
-          token={token}
-          preferredLearnerId={learnerId ?? undefined}
-          identity={accountId ?? token}
-          returnState={purchaseReturn?.state}
-          purchaseId={purchaseReturn?.purchaseId}
-          onClose={closePurchase}
-          onAccessChanged={() => void action(loadFamily)}
-        />
-      ) : familyOpen && token && purchaseView === "funded" ? (
-        <FundingPurchaseCenter
-          token={token}
-          preferredOfferId={purchaseOffer}
-          preferredLearnerId={learnerId ?? undefined}
-          identity={accountId ?? token}
-          learners={childLearners}
-          consentActive={familySummary?.consent.status === "active"}
-          onClose={closePurchase}
-        />
       ) : familyOpen && token ? (
         <FamilyCenter
           // Until the sign-in mode is known, keep the Security tab's place:
@@ -1914,9 +1829,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           initialSection={familySection}
           onSectionChange={setFamilySection}
           returnFocus={purchaseFocus}
-          onAnnualPurchase={() => openPurchase("annual")}
-          onFundedPurchase={() => openPurchase("funded")}
-          onChoosePayment={() => openPurchase("choose")}
+          onAnnualPurchase={openPurchase}
+          onFundedPurchase={openPurchase}
+          onChoosePayment={openPurchase}
           token={token}
           identity={accountId ?? token}
           onChanged={async () => {
