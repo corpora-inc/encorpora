@@ -335,7 +335,17 @@ async function send<T>(
     throw error;
   }
   const requestId = response.headers.get("x-request-id");
-  const data: unknown = await response.json().catch(() => null);
+  // An empty or non-JSON body (a 204, a proxy's HTML page) is no data; a
+  // body that broke off is logged and read as none too.
+  const data: unknown = await response.json().catch((error: unknown) => {
+    if (!(error instanceof SyntaxError) && !options.signal?.aborted)
+      console.warn("AMP: a response body didn’t arrive", {
+        path,
+        status: response.status,
+        error,
+      });
+    return null;
+  });
   checkSession();
   checkAborted();
   // A tab running an older release than the API: a missing route or a

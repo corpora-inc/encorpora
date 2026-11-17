@@ -1,5 +1,7 @@
-import { queryOptions, skipToken, useQuery } from "@tanstack/react-query";
+import { queryOptions, useQuery } from "@tanstack/react-query";
 import { meOptions, queryClient, sessionOptions } from "./query";
+import { qk } from "./keys";
+import { forSession, useSessionQuery } from "./session";
 import { currentLearner, useCurrentLearner } from "../learner-store";
 import {
   learningIdentity,
@@ -34,7 +36,7 @@ import {
  * the lessons' text (1.17 MB compressed in the full `/catalog`). An API from
  * before `/catalog/map` existed answers 404; the full catalog still serves. */
 export const skillCatalogOptions = queryOptions({
-  queryKey: ["pathways-catalog"],
+  queryKey: qk.pathwaysCatalog(),
   queryFn: ({ signal }) =>
     request("/catalog/map", catalogSchema, { signal }).catch(
       (error: unknown) => {
@@ -50,7 +52,7 @@ export const learnerEvidenceOptions = (
   learnerId: string,
 ) =>
   queryOptions({
-    queryKey: ["account", session.accountId, "pathways", learnerId],
+    queryKey: qk.account(session.accountId, "pathways", learnerId),
     queryFn: ({ signal }) =>
       request(
         `/learners/${encodeURIComponent(learnerId)}/progress`,
@@ -66,14 +68,13 @@ export const learnerSkillOptions = (
   skillId: string,
 ) =>
   queryOptions({
-    queryKey: [
-      "account",
+    queryKey: qk.account(
       session.accountId,
       "pathways",
       learnerId,
       "skill",
       skillId,
-    ],
+    ),
     queryFn: ({ signal }) =>
       request(
         `/learners/${encodeURIComponent(learnerId)}/skills/${encodeURIComponent(skillId)}`,
@@ -86,7 +87,7 @@ export const learnerFrontierOptions = (
   learnerId: string,
 ) =>
   queryOptions({
-    queryKey: ["account", session.accountId, "pathways-frontier", learnerId],
+    queryKey: qk.account(session.accountId, "pathways-frontier", learnerId),
     queryFn: ({ signal }) =>
       request(
         `/learners/${encodeURIComponent(learnerId)}/frontier`,
@@ -158,6 +159,14 @@ export function chooseLearner(
   return { learners, shared, profile, solo, own, learner, unavailable: false };
 }
 
+/** A preload's failure is logged and left for the screen, which asks again
+ * and shows it in place. */
+const quiet = <T>(promise: Promise<T>, what: string) =>
+  promise.catch((error: unknown) => {
+    console.error(`${what} did not preload`, error);
+    return undefined;
+  });
+
 /** A learning screen's data (who, the curriculum, and the chosen learner's
  * record and level), loaded before it renders so it paints once, whole
  * (docs/design/ia.md, "Smoothness"). A failure is left for the screen to
@@ -169,13 +178,15 @@ export async function preloadOverviewLevel(location?: {
   pathname: string;
   search: Record<string, unknown>;
 }) {
-  const session = await queryClient
-    .ensureQueryData(sessionOptions)
-    .catch(() => undefined);
+  const session = await quiet(
+    queryClient.ensureQueryData(sessionOptions),
+    "The session",
+  );
   if (!session) return;
-  const me = await queryClient
-    .ensureQueryData(meOptions(session))
-    .catch(() => undefined);
+  const me = await quiet(
+    queryClient.ensureQueryData(meOptions(session)),
+    "The account",
+  );
   const account =
     me?.signedIn && me.account.id === session.accountId ? me : null;
   // The address being loaded names its learner; a load never changes this
@@ -203,11 +214,6 @@ export async function preloadLearningView(location?: {
   pathname: string;
   search: Record<string, unknown>;
 }) {
-  const quiet = <T>(promise: Promise<T>, what: string) =>
-    promise.catch((error: unknown) => {
-      console.error(`${what} did not preload`, error);
-      return undefined;
-    });
   const catalog = quiet(
     queryClient.ensureQueryData(skillCatalogOptions),
     "The curriculum",
@@ -262,11 +268,8 @@ export async function preloadLearningView(location?: {
 export function useLearningView({
   records = true,
 }: { records?: boolean } = {}) {
-  const session = useQuery(sessionOptions);
-  const me = useQuery({
-    ...meOptions(session.data ?? { accountId: "", token: "" }),
-    enabled: !!session.data,
-  });
+  const session = useSessionQuery();
+  const me = useQuery(forSession(session.data ?? null, meOptions));
   const account =
     me.data?.signedIn && me.data.account.id === session.data?.accountId
       ? me.data
@@ -283,38 +286,23 @@ export function useLearningView({
     chooseLearner(account, selectedId, addressed);
   const viewOnly = !own && !!secondParentChild(account, learner?.id);
   const loadingIdentity = session.isPending || (!!session.data && me.isPending);
-  // Without records (the drawer), these observe nothing: a disabled observer
-  // of the learner's level would still be its last, and unmounting it (the
-  // drawer closing on its way to the Overview) cancels the level refresh the
-  // Overview is waiting for.
-  const evidence = useQuery(
-    records
-      ? {
-          ...learnerEvidenceOptions(
-            session.data ?? { accountId: "", token: "" },
-            learner?.id ?? "",
-          ),
-          enabled: !!session.data && !!learner && readable,
-        }
-      : {
-          queryKey: ["learning-view", "no-records", "evidence"],
-          queryFn: skipToken,
-        },
-  );
-  const frontier = useQuery(
-    records
-      ? {
-          ...learnerFrontierOptions(
-            session.data ?? { accountId: "", token: "" },
-            learner?.id ?? "",
-          ),
-          enabled: !!session.data && !!learner && readable,
-        }
-      : {
-          queryKey: ["learning-view", "no-records", "frontier"],
-          queryFn: skipToken,
-        },
-  );
+  // Without records (the drawer), these observe nothing, on the signed-out
+  // key that never asks: a disabled observer of the learner's level would
+  // still be its last, and unmounting it (the drawer closing on its way to
+  // the Overview) cancels the level refresh the Overview is waiting for.
+  const asked = records ? (session.data ?? null) : null;
+  const evidence = useQuery({
+    ...forSession(asked, (signedIn) =>
+      learnerEvidenceOptions(signedIn, learner?.id ?? ""),
+    ),
+    enabled: !!learner && readable,
+  });
+  const frontier = useQuery({
+    ...forSession(asked, (signedIn) =>
+      learnerFrontierOptions(signedIn, learner?.id ?? ""),
+    ),
+    enabled: !!learner && readable,
+  });
   const active = !!learner;
   const canPractice =
     !!learner &&

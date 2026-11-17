@@ -105,16 +105,10 @@ button.security-panel-toggle:hover:not(:disabled) {
   font-size: 0.9rem;
   font-weight: 600;
 }
+/* The fields are ui/TextField; they fill the column. */
 .account-security input {
   width: 100%;
   min-width: 0;
-  box-sizing: border-box;
-  padding: 11px;
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  font: inherit;
-  background: var(--color-surface-raised);
-  color: var(--color-on-surface-raised);
 }
 .security-actions {
   display: flex;

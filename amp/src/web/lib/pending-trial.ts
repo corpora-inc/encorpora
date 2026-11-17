@@ -19,7 +19,8 @@ export function chosenPlan(now = Date.now()): "year" | "month" | null {
     if (typeof at !== "number" || now - at > planDays * 86_400_000 || at > now)
       return null;
     return interval;
-  } catch {
+  } catch (error) {
+    console.warn("Plan choice not read on this device", error);
     return null;
   }
 }

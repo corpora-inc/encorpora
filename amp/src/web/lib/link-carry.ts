@@ -37,7 +37,8 @@ function read(path: LinkPath): Carried | null {
   let raw: string | null;
   try {
     raw = localStorage.getItem(KEYS[path]);
-  } catch {
+  } catch (error) {
+    console.warn("The link kept for sign-in couldn’t be read", error);
     return null;
   }
   if (!raw) return null;
@@ -45,8 +46,9 @@ function read(path: LinkPath): Carried | null {
     const carried = JSON.parse(raw) as Partial<Carried> | null;
     if (typeof carried?.value === "string" && typeof carried.until === "number")
       return carried as Carried;
-  } catch {
+  } catch (error) {
     // Not a carry this version wrote.
+    console.warn("The link kept for sign-in wasn’t readable", error);
   }
   // Kept by an earlier version, with no lifetime: let go.
   dropCarry(path);
@@ -80,8 +82,9 @@ export function carriedLink(path: LinkPath, now = Date.now()) {
 export function dropCarry(path: LinkPath) {
   try {
     localStorage.removeItem(KEYS[path]);
-  } catch {
+  } catch (error) {
     // Nothing was kept, then.
+    console.warn("The link kept for sign-in couldn’t be cleared", error);
   }
 }
 

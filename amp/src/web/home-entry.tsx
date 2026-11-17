@@ -88,7 +88,9 @@ function showPitch() {
     // The brand on `/` is this page: the router would show it again.
     go: (place) => void (place.to === "/" || leave(place)),
     preload: () => void loadApp(),
-    reload: () => void leave({ to: "/", search }),
+    // This address again: the router keeps its campaign labels, program
+    // and entry (`app/router.tsx`, the root's search), so nothing is handed.
+    reload: () => void leave({ to: "/" }),
   };
   async function leave(place: PitchPlace) {
     if (leaving) return;

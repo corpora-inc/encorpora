@@ -210,7 +210,10 @@ export function startActivity(
           await response
             .json()
             .then((body: { error?: unknown }) => body?.error ?? null)
-            .catch(() => null),
+            .catch((error: unknown) => {
+              console.warn("The refusal's reason wasn’t readable", error);
+              return null;
+            }),
         );
     } catch (error) {
       // Offline: the help waits for the next heartbeat (time already passed

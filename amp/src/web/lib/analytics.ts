@@ -25,6 +25,16 @@ import { createGoogleAnalytics } from "../../analytics/google-analytics";
 import { isStudentDevice } from "./student-device";
 import { currentBrowserKind } from "../../analytics/browser-kind";
 import { keepaliveFetch } from "./keepalive";
+import { mediaMatches } from "./media-query";
+
+/** Storage is optional: a refusal is logged once per kind, then the queue
+ * lives in memory. */
+const storageFailures = new Set<string>();
+function logStorageFailure(what: string, error: unknown) {
+  if (storageFailures.has(what)) return;
+  storageFailures.add(what);
+  console.warn(`Analytics: ${what}`, error);
+}
 
 let pitchShown = false;
 /** Set by the `/` route before it resolves: a signed-out web visitor there
@@ -136,7 +146,9 @@ export function setAnalyticsSession(next: AuthSession | null) {
           trackPageView(location.pathname);
         }
       })
-      .catch(() => {});
+      .catch((error: unknown) =>
+        console.warn("Analytics: the account's generation wasn’t read", error),
+      );
   } else if (!next) contextVersion++;
   restore();
   buffer = buffer.filter((e) => !e.scope || e.scope === next?.accountId);
@@ -166,8 +178,8 @@ function restore() {
       )
         buffer.push({ ...parsed.data, scope, generation } as Queued);
     }
-  } catch {
-    /* Storage is optional. */
+  } catch (error) {
+    logStorageFailure("the queued events weren’t restored", error);
   }
 }
 let persistenceTimer: ReturnType<typeof setTimeout> | null = null;
@@ -177,8 +189,8 @@ function persist(immediate = false) {
     persistenceTimer = null;
     try {
       sessionStorage.setItem(queueKey, JSON.stringify(buffer));
-    } catch {
-      /* Memory fallback. */
+    } catch (error) {
+      logStorageFailure("the event queue is kept in memory only", error);
     }
     return;
   }
@@ -297,8 +309,9 @@ export function trackOnce<E extends ClientEvent>(
   try {
     if (sessionStorage.getItem(slot)) return;
     sessionStorage.setItem(slot, "1");
-  } catch {
+  } catch (error) {
     // Without session storage the event may count twice; never block on it.
+    logStorageFailure("a once-per-tab event may count twice", error);
   }
   (track as (event: E, props: FunnelProps<E>) => void)(event, props);
 }
@@ -382,7 +395,8 @@ export function flush(unloading = false): void {
           nextSendAt = Date.now() + retryMs;
         }
       })
-      .catch(() => {
+      .catch((error: unknown) => {
+        console.warn("Analytics: events not sent; they'll be retried", error);
         retryMs = Math.min(60000, retryMs * 2);
         nextSendAt = Date.now() + retryMs;
       })
@@ -464,7 +478,8 @@ export function daysSinceFirstVisit(now = Date.now()): number {
     const first = Number(localStorage.getItem(firstVisitKey));
     if (!Number.isFinite(first) || first <= 0 || first > now) return 0;
     return Math.min(3650, Math.floor((now - first) / 86_400_000));
-  } catch {
+  } catch (error) {
+    logStorageFailure("the first visit's date wasn’t read", error);
     return 0;
   }
 }
@@ -475,8 +490,9 @@ export function trackSessionStart(): void {
   try {
     if (sessionStorage.getItem(sessionKey)) return;
     sessionStorage.setItem(sessionKey, "1");
-  } catch {
+  } catch (error) {
     // Without session storage, count each page load as a session.
+    logStorageFailure("each page load counts as a session", error);
   }
   track("session_start", { daysSinceFirstVisit: daysSinceFirstVisit() });
 }
@@ -492,18 +508,10 @@ export function landingProps(
       hostname: location.hostname,
       referrer,
       width: window.innerWidth,
-      coarse: coarsePointer(),
+      coarse: mediaMatches("(pointer: coarse)"),
     }),
     browser: currentBrowserKind(),
   };
-}
-/** A webview's `matchMedia` may be missing or a bare stub. */
-function coarsePointer(): boolean {
-  try {
-    return matchMedia("(pointer: coarse)").matches === true;
-  } catch {
-    return false;
-  }
 }
 
 /** Test seam: forget buffered events and the in-memory visitor. */

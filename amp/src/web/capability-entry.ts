@@ -39,8 +39,9 @@ export function takeCapabilityFragment(
   memory.set(path, { value: location.hash.slice(1), until: now + HELD_FOR_MS });
   try {
     for (const key of RETIRED_KEYS) sessionStorage.removeItem(key);
-  } catch {
+  } catch (error) {
     // Nothing kept there, then.
+    console.warn("AMP: retired link storage couldn’t be cleared", error);
   }
   history.replaceState(history.state, "", location.pathname + location.search);
 }
