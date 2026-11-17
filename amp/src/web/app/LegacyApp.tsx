@@ -93,6 +93,7 @@ import type { Learner, Outcome } from "../../server/repository";
 import type { ProgressSnapshot } from "../../server/progress";
 import type { Lesson } from "../../content/lessons";
 import { AnswerFeedback } from "../features/practice/AnswerFeedback";
+import { ProblemGrade } from "../features/practice/ProblemGrade";
 import { PracticeWorkspace, usePracticeViewport } from "../PracticeWorkspace";
 import {
   signIn,
@@ -1883,6 +1884,20 @@ function LegacyScreen({ owner }: { owner: string | null }) {
             strand={
               catalog?.skills.find((skill) => skill.id === problem.skillId)
                 ?.strand
+            }
+            topicGrade={
+              <ProblemGrade
+                learnerId={learner.id}
+                problemId={problem.id}
+                strand={
+                  catalog?.skills.find((skill) => skill.id === problem.skillId)
+                    ?.strand ?? "math"
+                }
+                band={
+                  catalog?.skills.find((skill) => skill.id === problem.skillId)
+                    ?.gradeBand
+                }
+              />
             }
             error={error}
             clearError={() => setError("")}
