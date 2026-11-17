@@ -37,7 +37,8 @@ async function signedIn(
 
 const interval = (value: unknown): PayInterval | undefined =>
   value === "year" || value === "month" ? value : undefined;
-const text = (value: unknown) => (typeof value === "string" ? value : undefined);
+const text = (value: unknown) =>
+  typeof value === "string" ? value : undefined;
 
 /** Writes what an old address carried into the store for its learner,
  * once; the address is never read again. */
@@ -72,16 +73,21 @@ export async function offerChoice(offerId: string) {
  * the education-funds tab. */
 async function fundsTarget(input: Input, programId?: string) {
   const { search, searchStr } = input;
-  const named = Object.values(fundedPrograms).find((entry) => entry.id === programId);
+  const named = Object.values(fundedPrograms).find(
+    (entry) => entry.id === programId,
+  );
   const session = await queryClient.ensureQueryData(sessionOptions);
   if (!session) {
     if (!named) return "/sign-in";
     const labels = new URLSearchParams(searchStr);
-    for (const key of [...labels.keys()]) if (!key.startsWith("utm_")) labels.delete(key);
+    for (const key of [...labels.keys()])
+      if (!key.startsWith("utm_")) labels.delete(key);
     return `/invoice/${named.slug}${labels.size ? `?${labels}` : ""}`;
   }
   const { me } = await signedIn(input);
-  const offered = text(search.offer) ? await offerChoice(text(search.offer)!) : null;
+  const offered = text(search.offer)
+    ? await offerChoice(text(search.offer)!)
+    : null;
   const target = legacyPayTarget(me, text(search.learner));
   carry(session, target.learnerId, {
     method: "esa",
@@ -108,12 +114,18 @@ export async function legacyHop(hop: LegacyHop, input: Input): Promise<string> {
   }
   const { session, me } = await signedIn(input);
   if (hop === "card" && (text(search.purchase) || text(search.billing)))
-    return (await stripeReturnTarget(session, search, "learner")) ?? "/account/billing";
+    return (
+      (await stripeReturnTarget(session, search, "learner")) ??
+      "/account/billing"
+    );
   const target = legacyPayTarget(
     me,
     hop === "continue" ? input.params.learnerId : text(search.learner),
   );
   if (hop !== "choose")
-    carry(session, target.learnerId, { method: "card", interval: interval(search.interval) });
+    carry(session, target.learnerId, {
+      method: "card",
+      interval: interval(search.interval),
+    });
   return target.href;
 }

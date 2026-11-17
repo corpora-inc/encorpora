@@ -156,7 +156,10 @@ export function WeekFact({ child }: { child: FamilyChild }) {
       </span>
     );
   return (
-    <Fact value={minutes} label={`${count(week.problems, "problem")} this week`} />
+    <Fact
+      value={minutes}
+      label={`${count(week.problems, "problem")} this week`}
+    />
   );
 }
 /** When a child last practiced; nothing before their first answer. */

@@ -334,7 +334,9 @@ export function workbookIdentity(search: Search): Search {
  * they are in the family's own class (`people`, person → learner).
  */
 export function workbookPrintSearch(search: Search, people: PersonMap): Search {
-  const byLearner = new Map([...people].map(([person, learner]) => [learner, person]));
+  const byLearner = new Map(
+    [...people].map(([person, learner]) => [learner, person]),
+  );
   const kids = (typeof search.kids === "string" ? search.kids : "")
     .split(",")
     .map((learner) => byLearner.get(learner))

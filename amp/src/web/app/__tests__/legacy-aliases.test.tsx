@@ -37,9 +37,18 @@ const ATTEMPT = "77777777-7777-4777-8777-777777777777";
 /** A family of three children in its own class, each by their person. */
 const FAMILY_OF_THREE = "88888888-8888-4888-8888-888888888888";
 const KIDS = [
-  ["99999999-9999-4999-8999-999999999991", "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa1"],
-  ["99999999-9999-4999-8999-999999999992", "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa2"],
-  ["99999999-9999-4999-8999-999999999993", "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa3"],
+  [
+    "99999999-9999-4999-8999-999999999991",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa1",
+  ],
+  [
+    "99999999-9999-4999-8999-999999999992",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa2",
+  ],
+  [
+    "99999999-9999-4999-8999-999999999993",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa3",
+  ],
 ] as const;
 const SESSION = { accountId: "parent", token: "test-token" };
 

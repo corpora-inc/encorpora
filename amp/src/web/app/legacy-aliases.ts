@@ -382,9 +382,7 @@ async function familyWorkbooks(old: OldAddress): Promise<Target | undefined> {
  * person (`?open=student:<person>`, a link from before each child had a
  * page): that child's page, their answers over it. Another family's child
  * (a tutoring group's) stays a layer. */
-async function familyChildLayer(
-  old: OldAddress,
-): Promise<Target | undefined> {
+async function familyChildLayer(old: OldAddress): Promise<Target | undefined> {
   const id = old.params.family!;
   const session = await requireSignedIn(old, {
     web: true,
@@ -401,9 +399,9 @@ async function familyChildLayer(
   // The class the family hosts, else the one this parent teaches in (/me).
   const own =
     ownClassOf(null, id, data) ??
-    (await queryClient.ensureQueryData(meOptions(session)).then((me) =>
-      ownClassOf(me.signedIn ? me : null, id, data),
-    ));
+    (await queryClient
+      .ensureQueryData(meOptions(session))
+      .then((me) => ownClassOf(me.signedIn ? me : null, id, data)));
   if (!own) return undefined;
   const target = familyOrgTarget({
     family: id,
@@ -702,7 +700,11 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
     to: familySettings("devices"),
   },
   { from: "/family/$family/map", about: "the map", to: familyRecord(null) },
-  { from: "/family/$family/workbooks", about: "workbooks", to: familyWorkbooks },
+  {
+    from: "/family/$family/workbooks",
+    about: "workbooks",
+    to: familyWorkbooks,
+  },
   { from: "/family/$family/time", about: "practice time", to: familyRecord("child-time") },
   {
     from: "/family/$family/reports",

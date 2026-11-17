@@ -31,10 +31,10 @@ export function PurchaseReturnNotice() {
           We couldn’t match that payment to this account.
         </p>
         <p>
-          If you paid while signed in to another account, sign in to that one
-          to see the plan. Otherwise check your plans below in a few minutes.
-          If the plan still isn’t there, email {SUPPORT_EMAIL} with the
-          receipt Stripe sent you, and we’ll connect it.
+          If you paid while signed in to another account, sign in to that one to
+          see the plan. Otherwise check your plans below in a few minutes. If
+          the plan still isn’t there, email {SUPPORT_EMAIL} with the receipt
+          Stripe sent you, and we’ll connect it.
         </p>
       </div>
       <Button variant="quiet" onClick={() => setNotice(undefined)}>
