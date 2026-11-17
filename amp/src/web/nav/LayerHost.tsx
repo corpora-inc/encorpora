@@ -1,10 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import { useSessionOrNull } from "../lib/session";
 import { useParams } from "@tanstack/react-router";
-import { lazy, Suspense, type ReactNode } from "react";
+import { lazy, Suspense, useEffect, type ReactNode } from "react";
 // A lesson is its own chunk, with every problem type's title: it opens with
 // its head laid out (features/pathways/LessonDialog.tsx).
-const LessonDialog = lazy(() => import("../features/pathways/LessonDialog"));
+/** The lesson layer's code, asked for once: the warm-up and the layer
+ * share one answer (a failed load fails the layer, never loads twice). */
+const lessonCode: { load?: ReturnType<typeof loadLessonCode> } = {};
+const loadLessonCode = () => import("../features/pathways/LessonDialog");
+const lessonChunk = () => (lessonCode.load ??= loadLessonCode());
+const LessonDialog = lazy(lessonChunk);
 import {
   LessonFailure,
   LessonLayerBoundary,
@@ -81,6 +86,15 @@ export function LayerHost({
       : { direction: 0 };
   };
   const top = framed.at(-1);
+  // Any layer can open a lesson over it: its chunk is fetched while the
+  // overlay is up, so going deeper never waits on it.
+  const open = !!top;
+  useEffect(() => {
+    if (open)
+      void lessonChunk().catch((error: unknown) =>
+        console.warn("The lesson layer's code did not preload", error),
+      );
+  }, [open]);
   return (
     // Each layer's own way back (a lesson's recovery) steps up one level.
     <LayerBackProvider value={layers.close}>
@@ -104,33 +118,39 @@ export function LayerHost({
       )}
       {top && (
         // One overlay, one scrim, however deep: the top layer is its panel,
-        // the trail the way back up (ui/LayerFrame.tsx).
-        <LayerFrame
-          // A new frame for each base: over a replay, or over the page.
-          key={replay ? `over:${replay.id}` : "page"}
-          crumbs={framed.map((entity, index) => ({
-            key: `${index}:${entity.kind}:${entity.id}`,
-            title: <LayerTitle entity={entity} />,
-          }))}
-          layers={framed.map((entity) => `${entity.kind}:${entity.id}`).join()}
-          onCrumb={(depth) => layers.closeToDepth(replayAt + 1 + depth)}
-          onClose={layers.closeAll}
-          onStepBack={layers.close}
-          moving={moving}
-          wide={top.kind === "lesson"}
-          above={!!replay}
-        >
-          <Layer
-            entity={top}
-            below={shown.slice(0, shown.indexOf(top))}
-            org={org}
-            learner={learner}
-            close={layers.closeAll}
-            lessonActions={lessonActions}
-            skillActions={skillActions}
-            area={area}
-          />
-        </LayerFrame>
+        // the trail the way back up (ui/LayerFrame.tsx). A lesson's chunk
+        // arrives before the overlay shows, so it opens whole, its head,
+        // film and wait in place on its first frame.
+        <Suspense fallback={null}>
+          <LayerFrame
+            // A new frame for each base: over a replay, or over the page.
+            key={replay ? `over:${replay.id}` : "page"}
+            crumbs={framed.map((entity, index) => ({
+              key: `${index}:${entity.kind}:${entity.id}`,
+              title: <LayerTitle entity={entity} />,
+            }))}
+            layers={framed
+              .map((entity) => `${entity.kind}:${entity.id}`)
+              .join()}
+            onCrumb={(depth) => layers.closeToDepth(replayAt + 1 + depth)}
+            onClose={layers.closeAll}
+            onStepBack={layers.close}
+            moving={moving}
+            wide={top.kind === "lesson"}
+            above={!!replay}
+          >
+            <Layer
+              entity={top}
+              below={shown.slice(0, shown.indexOf(top))}
+              org={org}
+              learner={learner}
+              close={layers.closeAll}
+              lessonActions={lessonActions}
+              skillActions={skillActions}
+              area={area}
+            />
+          </LayerFrame>
+        </Suspense>
       )}
     </LayerBackProvider>
   );
@@ -232,7 +252,7 @@ function Layer({
             </Dialog>
           }
         >
-          <Suspense fallback={null}>
+          <>
             <LessonDialog
               lesson={entity.id}
               onClose={close}
@@ -245,7 +265,7 @@ function Layer({
                 )
               }
             />
-          </Suspense>
+          </>
         </LessonLayerBoundary>
       );
     }

@@ -58,6 +58,10 @@
   color: var(--color-muted-text);
   cursor: pointer;
 }
+/* Nothing to clear: the button keeps its place, unseen. */
+.field button.clear[data-empty] {
+  visibility: hidden;
+}
 .field button.clear:hover:not(:disabled) {
   filter: none;
   background: var(--color-surface-hover);
