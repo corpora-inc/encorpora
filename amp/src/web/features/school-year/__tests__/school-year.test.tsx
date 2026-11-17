@@ -77,7 +77,7 @@ const barNames = (root: ParentNode) =>
 
 test("one section: the year's line, the bar, one caption and one Edit", async () => {
   mount();
-  await screen.findByText("2026–27 · Jul 1, 2026 to Jun 30, 2027");
+  await screen.findByText("Jul 1, 2026 to Jun 30, 2027");
   expect(screen.getAllByRole("heading")).toHaveLength(1);
   expect(
     within(section()).getByText("One report card for the whole year"),
@@ -92,7 +92,7 @@ test("one section: the year's line, the bar, one caption and one Edit", async ()
 
 test("Edit, choose Quarters, Save: one sheet saves it, and the bar and caption follow", async () => {
   const history = mount();
-  await screen.findByText("2026–27 · Jul 1, 2026 to Jun 30, 2027");
+  await screen.findByText("Jul 1, 2026 to Jun 30, 2027");
   // Something else the account shows: the save refreshes it too.
   const other = qk.account(SESSION.accountId, "families");
   queryClient.setQueryData(other, ["before"]);
@@ -165,7 +165,7 @@ test("Save with hand-set new periods: the kind, then those periods' days", async
 
 test("a failed save says so in the sheet, keeps the draft, and still refreshes", async () => {
   mount();
-  await screen.findByText("2026–27 · Jul 1, 2026 to Jun 30, 2027");
+  await screen.findByText("Jul 1, 2026 to Jun 30, 2027");
   school.state.refuse = /classes/;
   const error = vi.spyOn(console, "error").mockImplementation(() => {});
   fireEvent.click(screen.getByRole("button", { name: "Edit the school year" }));

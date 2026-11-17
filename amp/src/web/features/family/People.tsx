@@ -359,6 +359,7 @@ export function FamilySettingsScreen() {
             <SchoolYearSection
               org={place.own.org}
               classId={place.own.id}
+              titleId="family-year"
               grading={data.children.some(
                 (child) => child.capabilities.readGrades,
               )}

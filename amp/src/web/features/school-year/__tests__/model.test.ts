@@ -16,7 +16,7 @@ import {
   shortName,
   startDraft,
   todayIn,
-  yearLine,
+  yearLines,
   type Saved,
 } from "../model";
 
@@ -46,7 +46,10 @@ const saved = (kind: Saved["kind"], sessions = [year, ...quarters]): Saved => ({
 });
 
 test("the year's line and each period's short name", () => {
-  expect(yearLine(year)).toBe("2026–27 · Jul 1, 2026 to Jun 30, 2027");
+  expect(yearLines(year)).toEqual({
+    name: "2026–27",
+    days: "Jul 1, 2026 to Jun 30, 2027",
+  });
   expect(shortName("Quarter 2")).toBe("Q2");
   expect(shortName("Semester 1")).toBe("S1");
   expect(shortName("Fall")).toBe("Fall");

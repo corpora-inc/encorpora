@@ -8,7 +8,7 @@ import {
   choiceOf,
   isDivision,
   periodsOf,
-  yearLine,
+  yearLines,
   type Period,
 } from "./model";
 import { SchoolYearSheet } from "./SchoolYearSheet";
@@ -33,6 +33,7 @@ export function SchoolYearSection({
   grading,
   setBy,
   title = "School year",
+  titleId,
 }: YearPlace & {
   /** A child or student here has report cards: the periods are shown and
    * chosen. Without, the year is one bar and its dates. */
@@ -41,6 +42,8 @@ export function SchoolYearSection({
    * tutoring group"): shown read-only, with that said. */
   setBy?: string;
   title?: string;
+  /** The heading's id, for a link's #hash (a family's `family-year`). */
+  titleId?: string;
 }) {
   const year = useSchoolYear({ org, classId });
   // The edit sheet is a same-address history entry (nav/sheet.ts): Back and
@@ -57,6 +60,7 @@ export function SchoolYearSection({
   return (
     <PageSection
       title={title}
+      titleId={titleId}
       data-school-year=""
       actions={
         // The action's room is kept while it loads and when there's none,
@@ -84,7 +88,10 @@ export function SchoolYearSection({
           </div>
         ) : saved ? (
           <>
-            <p className={styles.line}>{yearLine(saved.year)}</p>
+            <p className={styles.line}>
+              <strong>{yearLines(saved.year).name}</strong>
+              <span>{yearLines(saved.year).days}</span>
+            </p>
             <YearRibbon
               startsOn={saved.year.startsOn}
               endsOn={saved.year.endsOn}

@@ -5,7 +5,7 @@
 /* The heading's action: an Edit's room, kept with or without one. */
 .action {
   display: flex;
-  min-height: 44px;
+  min-height: var(--target-size);
   align-items: center;
 }
 
@@ -15,12 +15,21 @@
   gap: var(--space-3);
   min-width: 0;
 }
+/* The year's name, then its days: two lines at every width. */
 .line {
+  display: grid;
+  gap: 2px;
   margin: 0;
-  font-size: var(--text-body);
-  font-weight: 600;
   font-variant-numeric: var(--numeric);
   line-height: 1.45;
+}
+.line strong {
+  font-size: var(--text-body);
+  font-weight: 650;
+}
+.line span {
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
 }
 .caption,
 .note {
@@ -51,8 +60,8 @@
   border-radius: var(--radius-small);
 }
 .skeletonLine {
-  width: min(320px, 80%);
-  height: calc(var(--text-body) * 1.45);
+  width: min(280px, 80%);
+  height: calc(1.45 * var(--text-body) + 2px + 1.45 * var(--text-table));
 }
 /* The bar with its Today line and month letters (School.module.css
    `.ribbon`): 18 − 4 + 8 + 40 + 8 + 16. */
@@ -60,7 +69,7 @@
   height: 86px;
 }
 .skeletonCaption {
-  width: min(480px, 90%);
+  width: 90%;
   height: calc(2 * 1.45 * var(--text-table));
 }
 @container (min-width: 560px) {

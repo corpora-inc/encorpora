@@ -178,9 +178,11 @@ export function shortName(name: string) {
   return match ? `${match[1]![0]}${match[2]}` : name;
 }
 
-/** The year's line: "2026–27 · Jul 1, 2026 to Jun 30, 2027". */
-export const yearLine = (year: Span) =>
-  `${yearName(year.startsOn, year.endsOn)} · ${formatDay(year.startsOn)} to ${formatDay(year.endsOn)}`;
+/** The year's name and its days: "2026–27", "Jul 1, 2026 to Jun 30, 2027". */
+export const yearLines = (year: Span) => ({
+  name: yearName(year.startsOn, year.endsOn),
+  days: `${formatDay(year.startsOn)} to ${formatDay(year.endsOn)}`,
+});
 
 /** The one caption under the bar: what the periods mean for report cards,
  * and which one is now. */
