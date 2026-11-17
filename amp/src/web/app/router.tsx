@@ -58,6 +58,8 @@ import {
   startNavigation,
 } from "../features/onboarding/guard";
 import { rememberPlace } from "../features/onboarding/place-memory";
+import { homeRedirect } from "../features/home/destination";
+import { useHomePlace } from "../lib/home-place";
 import {
   isFundedReturn,
   campaignSearch,
@@ -153,12 +155,15 @@ const searchSchema = z
   .passthrough();
 function RouterError({ error }: { error: unknown }) {
   const router = useRouter();
+  const accountId = useQuery(sessionOptions).data?.accountId ?? "";
+  const home = useHomePlace((state) => state.homes[accountId]);
   // A family's child's map fails at its own address: "Back to map" is it.
   const child = childAddress(window.location.pathname);
   return (
     <RouteError
       error={error}
       reset={() => void router.invalidate()}
+      home={home}
       map={
         child?.screen === "pathways"
           ? childPath(child.family, child.learner, "pathways")
@@ -1561,8 +1566,8 @@ const standings = createRoute({
   path: "/standings",
   staticData: { space: "student" },
   validateSearch: standingsSearchSchema,
-  beforeLoad: () => {
-    if (!studentSession()) throw redirect({ to: "/", replace: true });
+  beforeLoad: async () => {
+    if (!studentSession()) throw await homeRedirect();
   },
   // Which boards this student has is known before the screen paints, so a
   // class picker is there from the first frame and never pushes the board
@@ -1648,7 +1653,7 @@ const ownStart = createRoute({
     const { me } = await ownPractice();
     if (me.adultPractice?.learner)
       throw redirect({ to: "/me", replace: true } as never);
-    if (!me.adultPractice?.eligible) throw redirect({ to: "/", replace: true });
+    if (!me.adultPractice?.eligible) throw await homeRedirect();
   },
   component: lazyRouteComponent(ownScreens, "OwnStartScreen"),
 });
@@ -1762,8 +1767,14 @@ const familyApprove = createRoute({
   path: "/family/approve",
   staticData: { space: "public" },
   beforeLoad: () => {
-    if (nativeRuntime || studentSession())
-      throw redirect({ to: "/", replace: true });
+    if (nativeRuntime) throw redirect({ to: "/", replace: true });
+    // A student's home is their practice.
+    if (studentSession())
+      throw redirect({
+        to: "/$",
+        params: { _splat: "practice" },
+        replace: true,
+      });
   },
   component: lazyRouteComponent(
     () => import("../features/family-approval/ApproveLinkScreen"),

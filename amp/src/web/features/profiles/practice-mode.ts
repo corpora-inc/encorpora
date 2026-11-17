@@ -12,7 +12,7 @@ import { useLearnerStore } from "../../learner-store";
 import { redirect } from "@tanstack/react-router";
 import { hasHome } from "../onboarding/guard";
 import { returnTarget } from "../../lib/return-to";
-import { rootRedirect } from "../../nav/root";
+import { homeRedirect } from "../home/destination";
 import { meOptions, queryClient, sessionOptions } from "../../lib/query";
 import { studentSession } from "../../lib/student-device";
 import { classesOptions, preload } from "../school/api";
@@ -139,7 +139,7 @@ export async function adoptPracticeMode(location: {
     (me.staffOf?.length ?? 0) > 0 &&
     PRACTICE_ONLY.test(location.pathname)
   )
-    throw rootRedirect();
+    throw await homeRedirect();
 }
 
 /**

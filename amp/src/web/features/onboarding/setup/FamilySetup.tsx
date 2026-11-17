@@ -17,6 +17,7 @@ import { flush } from "../../../lib/analytics";
 import { AppError } from "../../../lib/AppError";
 import { invalidateAccount, meOptions, queryClient } from "../../../lib/query";
 import { chosenPlan } from "../../../lib/pending-trial";
+import { setHome } from "../../../lib/home-place";
 import { Button, buttonClass } from "../../../ui/Button";
 import { YearField } from "../../../ui/YearField";
 import { QueryBlock } from "../../../ui/QueryBlock";
@@ -266,9 +267,11 @@ function ChildrenStep(props: StepProps) {
       ...meOptions(session),
       staleTime: 0,
     });
-    return fresh.signedIn && fresh.familyClass
-      ? familyToday(fresh.familyClass)
-      : "/";
+    if (!fresh.signedIn || !fresh.familyClass) return "/";
+    // The family just made is this parent's home from now on.
+    const today = familyToday(fresh.familyClass);
+    setHome(session.accountId, today);
+    return today;
   });
   const addKid = useAddKid(session);
   const renameKid = useRenameKid(session);
