@@ -83,3 +83,12 @@ export async function stripeReturnTarget(
   });
   return `${base}/done`;
 }
+
+/** Billing over the account's settings hub (a family's Settings), where a
+ * return this account can't place, and the billing portal's, land. */
+export function billingHub(session: AuthSession): Promise<string> {
+  return loadSettingsHub(session, "billing").catch((error: unknown) => {
+    console.error("The account's settings hub didn't load", error);
+    return "/account/billing";
+  });
+}

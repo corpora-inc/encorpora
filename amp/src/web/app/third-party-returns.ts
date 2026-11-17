@@ -119,7 +119,8 @@ async function resolveStripe(
   kind: "learner" | "enrollment",
   fallback: "billing" | undefined,
 ): Promise<string | undefined> {
-  const { stripeReturnTarget } = await import("../features/pay/stripe-return");
+  const { stripeReturnTarget, billingHub } =
+    await import("../features/pay/stripe-return");
   const href = await stripeReturnTarget(
     session,
     {
@@ -132,15 +133,6 @@ async function resolveStripe(
   if (kind === "learner" && values.purchaseId)
     useReturnNotices.getState().set(session.accountId, "purchase-unmatched");
   return fallback ? billingHub(session) : undefined;
-}
-
-/** Billing over the account's settings hub (features/spaces/settings-hub). */
-async function billingHub(session: AuthSession): Promise<string> {
-  const { loadSettingsHub } = await import("../features/spaces/settings-hub");
-  return loadSettingsHub(session, "billing").catch((error: unknown) => {
-    console.error("The account's settings hub didn't load", error);
-    return "/account/billing";
-  });
 }
 
 /** Stripe's return to a learner's checkout (at `/`) or a parent's
@@ -189,7 +181,7 @@ export async function resumeStripeReturn() {
   if (!session) return;
   clearPurchaseReturn();
   const href = await resolveStripe(session, kept, "learner", "billing");
-  throw redirect({ href: href ?? (await billingHub(session)), replace: true });
+  throw redirect({ href: href ?? "/account/billing", replace: true });
 }
 
 /** A provider's return to `/`: the account's place after a sign-in, Sign-in
