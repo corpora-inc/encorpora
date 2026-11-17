@@ -7,12 +7,12 @@ import {
   routeFor,
   startDestination,
 } from "../guard";
-import { canRemoveSaved } from "../setup/FamilySetup";
-import { stepBack } from "../../../lib/return-to";
+import { backUrl, canRemoveSaved } from "../setup/FamilySetup";
+import { SETUP_STEPS } from "../setup/steps";
 
 /*
  * A parent's first run (founder QA 2026-11-16): the steps are URLs, Back is
- * one step, and nothing is decided by "a family now exists". Saved kids stay
+ * the step before (an explicit address, never history), and nothing is decided by "a family now exists". Saved kids stay
  * editable until the parent is done.
  */
 
@@ -164,41 +164,10 @@ test("a saved child's Remove shows only where it will work", () => {
   expect(canRemoveSaved({}, 3)).toBe(false);
 });
 
-const click = (extra: object = {}) => ({
-  button: 0,
-  metaKey: false,
-  ctrlKey: false,
-  shiftKey: false,
-  altKey: false,
-  preventDefault: vi.fn(),
-  ...extra,
-});
-
-test("in-page Back is the browser's Back when the step before is the one it names", () => {
-  const history = {
-    location: { state: { ampPrevious: "/start/parent" } },
-    back: vi.fn(),
-  };
-  const event = click();
-  stepBack(history, "/start/parent", event);
-  expect(event.preventDefault).toHaveBeenCalled();
-  expect(history.back).toHaveBeenCalledOnce();
-});
-
-test("otherwise Back follows its own address (a direct link, a refresh with no history)", () => {
-  for (const state of [{}, { ampPrevious: "/family/x/today" }, null]) {
-    const history = { location: { state }, back: vi.fn() };
-    const event = click();
-    stepBack(history, "/start/parent", event);
-    expect(event.preventDefault).not.toHaveBeenCalled();
-    expect(history.back).not.toHaveBeenCalled();
-  }
-  // A modified click opens the step in a new tab, as a link does.
-  const history = {
-    location: { state: { ampPrevious: "/start/parent" } },
-    back: vi.fn(),
-  };
-  const event = click({ metaKey: true });
-  stepBack(history, "/start/parent", event);
-  expect(history.back).not.toHaveBeenCalled();
+test("a step's Back goes to the step before it in the step map, never history", () => {
+  const steps = SETUP_STEPS.parent;
+  // The first step goes up to the question; the next goes back to the kids.
+  expect(backUrl("parent", steps, 0)).toBe("/start");
+  expect(backUrl("parent", steps, 1)).toBe("/start/parent");
+  expect(backUrl("tutor", SETUP_STEPS.tutor, 2)).toBe("/start/tutor/join");
 });

@@ -324,7 +324,8 @@ test("existing invoices are managed in Billing, outside a new invoice setup", as
   ).toBeNull();
   expect(screen.queryByRole("button", { name: "Download invoice" })).toBeNull();
   expect(
-    screen.getByRole("link", { name: /Billing/ }).getAttribute("href"),
+    // The header's Back goes up to Billing, its declared parent.
+    screen.getByRole("link", { name: "Back" }).getAttribute("href"),
   ).toBe("/account/billing");
 });
 
