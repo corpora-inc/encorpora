@@ -1,6 +1,7 @@
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { RootLink } from "../../nav/root";
-import { Link, Navigate, useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
+import { Navigate } from "../../nav/Navigate";
 import { meOptions, sessionOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
 import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
@@ -31,7 +32,7 @@ export function AccessScreen() {
   // gift to this account. It is not consent.
   if (me && !me.account.emailVerified)
     return (
-      <PageFrame centered>
+      <PageFrame>
         <VerifyEmailStep session={session} me={me} invitation />
       </PageFrame>
     );
@@ -94,7 +95,7 @@ export function AccessScreen() {
     </Button>
   );
   return (
-    <PageFrame centered>
+    <PageFrame>
       <section
         className={`${frameCard} ${styles.step} ${giftStyles.card}`}
         aria-busy={query.isPending}

@@ -48,6 +48,10 @@ test("any other failure retries in place", () => {
   fireEvent.click(screen.getByRole("button", { name: "Try again" }));
   expect(reset).toHaveBeenCalledTimes(1);
   expect(reload).not.toHaveBeenCalled();
+  // A way out that always works, whatever state the screen was in.
+  expect(
+    screen.getByRole("link", { name: "Go home" }).getAttribute("href"),
+  ).toBe("/");
 });
 
 test("a family child's map that fails offers its own map back and a reload, never a retry", () => {

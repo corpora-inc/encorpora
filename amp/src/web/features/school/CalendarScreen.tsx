@@ -3,12 +3,12 @@ import { OrgFrame } from "./OrgFrame";
 import { useQuery } from "@tanstack/react-query";
 import {
   Link,
-  Navigate,
   useNavigate,
   useParams,
   useSearch,
   useRouter,
 } from "@tanstack/react-router";
+import { Navigate } from "../../nav/Navigate";
 import { useState } from "react";
 import {
   divisionKinds,

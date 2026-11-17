@@ -7,12 +7,12 @@ import {
 } from "@tanstack/react-query";
 import {
   Link,
-  Navigate,
   useNavigate,
   useParams,
   useRouter,
   useSearch,
 } from "@tanstack/react-router";
+import { Navigate } from "../../nav/Navigate";
 import { Fragment, useEffect, useState, type ReactNode } from "react";
 import type { AuthSession } from "../../auth";
 import { meOptions, sessionOptions } from "../../lib/query";

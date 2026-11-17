@@ -6,12 +6,14 @@ import { meOptions, sessionOptions } from "../../../lib/query";
 import { Starter } from "../Starter";
 
 const FROM = "/school/11111111-1111-4111-8111-111111111111/classes";
+vi.mock("../../../nav/Navigate", () => ({
+  Navigate: () => null,
+}));
 vi.mock("@tanstack/react-router", () => ({
   useParams: () => ({}),
   useLocation: () => ({ search: { from: FROM } }),
   useRouter: () => ({}),
   useNavigate: () => vi.fn(),
-  Navigate: () => null,
   Link: ({
     children,
     to,

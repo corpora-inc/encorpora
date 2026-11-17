@@ -1,4 +1,5 @@
-import { Navigate, useLocation } from "@tanstack/react-router";
+import { useLocation } from "@tanstack/react-router";
+import { Navigate } from "../../nav/Navigate";
 import { fundedProgramForPath } from "../../lib/funded-entry";
 
 /** Bookmarked program links and sign-in returns use the same invoice page. */

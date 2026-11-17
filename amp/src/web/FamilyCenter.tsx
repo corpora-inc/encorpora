@@ -1,7 +1,8 @@
 import { useSettingsFamily } from "./features/family/account-settings";
 import { pastCoppaAge } from "../privacy/coppa-age";
 import { LegalDocuments } from "./features/account/LegalDocuments";
-import { AccountPageHeader } from "./features/account/AccountPageHeader";
+import { Page } from "./ui/Page";
+import { PageHeader } from "./ui/PageHeader";
 import { requestFetch, requestWith } from "./lib/request-transport";
 import { namedByTab as titleNamedByTab } from "./features/navigation/shell-frame";
 import screenTitle from "./ui/ScreenTitle.module.css";
@@ -33,7 +34,7 @@ import { Sheet } from "./ui/Sheet";
 import { Button, buttonClass } from "./ui/Button";
 import { TextField } from "./ui/TextField";
 import { Link, useLocation } from "@tanstack/react-router";
-import { BackRow, BillingList, Chevron } from "./features/account/BillingList";
+import { BillingList, Chevron } from "./features/account/BillingList";
 import { LearnerList } from "./features/account/LearnerList";
 import { DeleteAccountEntry } from "./features/account/DeleteAccountEntry";
 import pages from "./features/account/AccountPages.module.css";
@@ -177,7 +178,7 @@ export function FamilyCenter({
     [name, setName] = useState(""),
     [nameError, setNameError] = useState(""),
     [newNameError, setNewNameError] = useState("");
-  const body = useRef<HTMLDivElement>(null);
+  const body = useRef<HTMLElement>(null);
   const previousPrivacy = useRef(privacy),
     previousRename = useRef(rename);
   const heading = useRef<HTMLHeadingElement>(null),
@@ -508,9 +509,9 @@ export function FamilyCenter({
   const namedByTab = !settingsFamily && titleNamedByTab(pathname, title);
   // A step inside a tab says the way back above its title.
   const back = purchaseChooser
-    ? { label: "Billing", go: closeChooser }
+    ? closeChooser
     : section === "privacy" && privacy
-      ? { label: "Privacy", go: () => route.navigate("/account/privacy") }
+      ? () => route.navigate("/account/privacy")
       : null;
   const addChild = () =>
     consentActive ? setAdding(true) : route.navigate("/start/parent");
@@ -545,9 +546,7 @@ export function FamilyCenter({
       : null;
     // 13 or older is outside COPPA (16 CFR 312.2): named like any learner.
     const canName =
-      !learner.namePending ||
-      consentActive ||
-      pastCoppaAge(learner.birthYear);
+      !learner.namePending || consentActive || pastCoppaAge(learner.birthYear);
     return (
       <>
         {!nativeRuntime && (age === null || age >= 13) && (
@@ -700,9 +699,10 @@ export function FamilyCenter({
       ] as const)
     : [];
   return (
-    <section
-      data-family-settings-detail={settingsFamily ? "" : undefined}
-      className={`family-center ${pages.page}`}
+    <Page
+      ref={body}
+      data-family-center=""
+      data-account-body=""
       aria-labelledby="family-title"
     >
       {historyFor && (
@@ -743,493 +743,492 @@ export function FamilyCenter({
         tone="status"
         onDismiss={() => setYearSaved("")}
       />
-      <div className={pages.column} ref={body} data-account-body>
-        {back && family && <BackRow onClick={back.go}>{back.label}</BackRow>}
-        {/* The open tab already says Sign-in, Learners, Billing or
+      {/* The open tab already says Sign-in, Learners, Billing or
             Privacy: the title stays for screen readers and focus only. */}
-        {namedByTab ? (
-          <h1
-            id="family-title"
-            ref={heading}
-            tabIndex={-1}
-            className={screenTitle.hidden}
-          >
-            {title}
-          </h1>
-        ) : (
-          <AccountPageHeader
-            title={title}
-            familyId={back ? null : settingsFamily}
-            headingId="family-title"
-            headingRef={heading}
-          />
-        )}
-        {/* Every adult's own name, as others see it (R9, R12). */}
-        {section === "security" && <YourName />}
-        {section === "security" && accountsEnabled && <AccountSecurity />}
-        {/* With AMP accounts, the row follows Sign-in's settings once they
+      {namedByTab ? (
+        <h1
+          id="family-title"
+          ref={heading}
+          tabIndex={-1}
+          className={screenTitle.hidden}
+        >
+          {title}
+        </h1>
+      ) : (
+        <PageHeader
+          back={
+            back
+              ? family
+                ? back
+                : null
+              : settingsFamily
+                ? `/family/${settingsFamily}/settings`
+                : null
+          }
+          title={title}
+          titleId="family-title"
+          titleRef={heading}
+        />
+      )}
+      {/* Every adult's own name, as others see it (R9, R12). */}
+      {section === "security" && <YourName />}
+      {section === "security" && accountsEnabled && <AccountSecurity />}
+      {/* With AMP accounts, the row follows Sign-in's settings once they
             load (AccountSecurity), so nothing below them moves. */}
-        {section === "security" && !accountsEnabled && <DeleteAccountEntry />}
-        {notice && (
-          <p className="family-notice" role="status">
-            {notice}
-          </p>
-        )}
-        {/* Sign-in shows no family details: no family wait sits below its
+      {section === "security" && !accountsEnabled && <DeleteAccountEntry />}
+      {notice && (
+        <p className="family-notice" role="status">
+          {notice}
+        </p>
+      )}
+      {/* Sign-in shows no family details: no family wait sits below its
             settings to be pushed down when they arrive. */}
-        {section === "security" && accountsEnabled ? null : !family ? (
-          <div aria-busy="true" className={pages.section}>
-            <div className={`${pages.reserve} amp-skeleton`} />
-            <div className={`${pages.reserve} amp-skeleton`} />
-            {error && (
-              <div className={pages.footActions}>
-                <Button
-                  variant="secondary"
-                  onClick={() => void action(refresh)}
+      {section === "security" && accountsEnabled ? null : !family ? (
+        <div aria-busy="true" className={pages.section}>
+          <div className={`${pages.reserve} amp-skeleton`} />
+          <div className={`${pages.reserve} amp-skeleton`} />
+          {error && (
+            <div className={pages.footActions}>
+              <Button variant="secondary" onClick={() => void action(refresh)}>
+                Try again
+              </Button>
+            </div>
+          )}
+        </div>
+      ) : purchaseChooser ? (
+        <>
+          <section
+            className={`family-purchase-options ${pages.section}`}
+            aria-labelledby="family-title"
+          >
+            <ul className={pages.list}>
+              <li className={pages.linkItem}>
+                <button
+                  type="button"
+                  ref={paymentTrigger}
+                  className={pages.linkRow}
+                  data-payment-history
+                  onClick={() => setPaymentHistoryOpen(true)}
                 >
-                  Try again
-                </Button>
-              </div>
-            )}
-          </div>
-        ) : purchaseChooser ? (
-          <>
-            <section
-              className={`family-purchase-options ${pages.section}`}
-              aria-labelledby="family-title"
-            >
-              <ul className={pages.list}>
+                  <span className={pages.rowText}>
+                    <span className={pages.rowTitle}>Payment records</span>
+                    <span className={pages.rowMeta}>
+                      Paid receipts and refund PDFs
+                    </span>
+                  </span>
+                  <Chevron />
+                </button>
+              </li>
+              {onAnnualPurchase && (
                 <li className={pages.linkItem}>
                   <button
                     type="button"
-                    ref={paymentTrigger}
                     className={pages.linkRow}
-                    data-payment-history
-                    onClick={() => setPaymentHistoryOpen(true)}
+                    data-purchase-entry="annual"
+                    onClick={onAnnualPurchase}
                   >
                     <span className={pages.rowText}>
-                      <span className={pages.rowTitle}>Payment records</span>
+                      <span className={pages.rowTitle}>
+                        Annual subscription
+                      </span>
                       <span className={pages.rowMeta}>
-                        Paid receipts and refund PDFs
+                        Card payment, with the current price and terms
                       </span>
                     </span>
                     <Chevron />
                   </button>
                 </li>
-                {onAnnualPurchase && (
-                  <li className={pages.linkItem}>
-                    <button
-                      type="button"
-                      className={pages.linkRow}
-                      data-purchase-entry="annual"
-                      onClick={onAnnualPurchase}
-                    >
-                      <span className={pages.rowText}>
-                        <span className={pages.rowTitle}>
-                          Annual subscription
-                        </span>
-                        <span className={pages.rowMeta}>
-                          Card payment, with the current price and terms
-                        </span>
+              )}
+              {onFundedPurchase && (
+                <li className={pages.linkItem}>
+                  <button
+                    type="button"
+                    className={pages.linkRow}
+                    data-purchase-entry="funded"
+                    onClick={onFundedPurchase}
+                  >
+                    <span className={pages.rowText}>
+                      <span className={pages.rowTitle}>Education funds</span>
+                      <span className={pages.rowMeta}>
+                        Program options, quotes and requests
                       </span>
-                      <Chevron />
-                    </button>
-                  </li>
-                )}
-                {onFundedPurchase && (
-                  <li className={pages.linkItem}>
-                    <button
-                      type="button"
-                      className={pages.linkRow}
-                      data-purchase-entry="funded"
-                      onClick={onFundedPurchase}
-                    >
-                      <span className={pages.rowText}>
-                        <span className={pages.rowTitle}>Education funds</span>
-                        <span className={pages.rowMeta}>
-                          Program options, quotes and requests
-                        </span>
-                      </span>
-                      <Chevron />
-                    </button>
-                  </li>
-                )}
-              </ul>
-            </section>
-          </>
-        ) : (
-          <>
-            {(section === "learners" || section === "access") &&
-              secondOnly &&
-              account && <SecondParentNote me={account} />}
-            {learnerSections && section === "learners" && (
-              <section className={pages.section} aria-label="Learners">
-                {!consentActive && nativeRuntime ? (
-                  <div className={pages.section}>
-                    <p className={pages.lede}>
-                      Learning consent is completed in the AMP web application.
-                    </p>
-                    <div className={pages.footActions}>
-                      <Button
-                        variant="primary"
-                        onClick={onContinueSetup ?? onConsentEnrollment}
-                      >
-                        Continue setup
-                      </Button>
-                    </div>
-                  </div>
-                ) : null}
-                <LearnerList
-                  own={ownLearner}
-                  ownDetail={
-                    ownLearner && !nativeRuntime ? (
-                      <OwnStartSetting
-                        session={session}
-                        start={ownLearner.start}
-                      />
-                    ) : undefined
-                  }
-                  children={family.learners}
-                  selectedId={openLearner ?? undefined}
-                  onSelect={(id) => {
-                    setOpenLearner(id || null);
-                    // The adult's own practice opens its settings here; it
-                    // isn't chosen as the family's learner.
-                    if (id && id !== ownLearner?.id) selectLearner(id);
-                  }}
-                  detail={learnerDetail}
-                />
-                {!nativeRuntime && !adding && (
+                    </span>
+                    <Chevron />
+                  </button>
+                </li>
+              )}
+            </ul>
+          </section>
+        </>
+      ) : (
+        <>
+          {(section === "learners" || section === "access") &&
+            secondOnly &&
+            account && <SecondParentNote me={account} />}
+          {learnerSections && section === "learners" && (
+            <section className={pages.section} aria-label="Learners">
+              {!consentActive && nativeRuntime ? (
+                <div className={pages.section}>
+                  <p className={pages.lede}>
+                    Learning consent is completed in the AMP web application.
+                  </p>
                   <div className={pages.footActions}>
                     <Button
-                      variant="secondary"
-                      disabled={busy}
-                      onClick={addChild}
+                      variant="primary"
+                      onClick={onContinueSetup ?? onConsentEnrollment}
                     >
-                      Add a child
+                      Continue setup
                     </Button>
                   </div>
-                )}
-                {!nativeRuntime && adding && (
-                  <form
-                    id="family-add-learner"
-                    className={pages.addForm}
-                    onSubmit={(event) => {
-                      event.preventDefault();
-                      const name = newName.trim();
-                      if (!name || !newBirthYear) return;
-                      // An adult may be adding themselves: their own
-                      // practice is their own learner, not a family one.
-                      if (
-                        askSelf === null &&
-                        newBirthYear &&
-                        Number(newBirthYear) <= new Date().getFullYear() - 18
-                      )
-                        return setAskSelf(name);
-                      setAskSelf(null);
-                      void action(async () => {
-                        await api("/learners", {
-                          name,
-                          birthYear: Number(newBirthYear),
-                        });
-                        await refresh();
-                        setNewName("");
-                        setNewBirthYear("");
-                        setAdding(false);
-                        setNotice(`${name} added.`);
-                      });
-                    }}
-                  >
-                    <h2 className={pages.sectionTitle}>Add a child</h2>
-                    <TextField
-                      label="Name"
-                      value={newName}
-                      maxLength={CHILD_NAME_MAX}
-                      placeholder="First name or nickname"
-                      onChange={(event) => setNewName(event.target.value)}
+                </div>
+              ) : null}
+              <LearnerList
+                own={ownLearner}
+                ownDetail={
+                  ownLearner && !nativeRuntime ? (
+                    <OwnStartSetting
+                      session={session}
+                      start={ownLearner.start}
                     />
-                    <div className={pages.fieldLabel}>
-                      <span>Birth year</span>
-                      <YearField
-                        label={
-                          newName.trim()
-                            ? `Birth year, ${newName.trim()}`
-                            : "Birth year"
-                        }
-                        value={newBirthYear}
-                        placeholder="Choose a year"
-                        onChange={setNewBirthYear}
-                        disabled={busy}
-                        earlier
-                      />
-                    </div>
-                    {/* The birth year sets where practice starts. */}
-                    <div className={pages.detailActions}>
-                      <Button
-                        variant="primary"
-                        disabled={busy || !newName.trim() || !newBirthYear}
-                      >
-                        Add
-                      </Button>
-                      <Button
-                        variant="quiet"
-                        type="button"
-                        disabled={busy}
-                        onClick={() => setAdding(false)}
-                      >
-                        Cancel
-                      </Button>
-                    </div>
-                    <Sheet
-                      open={askSelf !== null}
-                      onOpenChange={(open) => {
-                        if (!open) setAskSelf(null);
-                      }}
-                      title="Is this you?"
-                    >
-                      <div className="family-sheet-actions">
-                        <Button
-                          variant="primary"
-                          type="button"
-                          disabled={busy}
-                          onClick={() =>
-                            void action(async () => {
-                              const { learnerId } = await api<{
-                                learnerId: string;
-                              }>("/me/practice", {
-                                timezone: deviceTimeZone(),
-                                // Sets where their own practice starts.
-                                birthYear: Number(newBirthYear),
-                              });
-                              useLearnerStore.getState().select(learnerId);
-                              rememberPlace(identity, "me");
-                              await refreshMe({ accountId: identity, token });
-                              setAskSelf(null);
-                              setAdding(false);
-                              setNewName("");
-                              setNewBirthYear("");
-                              route.navigate("/me");
-                            })
-                          }
-                        >
-                          Yes, it’s me
-                        </Button>
-                        <Button
-                          variant="secondary"
-                          type="submit"
-                          form="family-add-learner"
-                          disabled={busy}
-                        >
-                          No, add {askSelf ?? "them"}
-                        </Button>
-                      </div>
-                    </Sheet>
-                  </form>
-                )}
-              </section>
-            )}
-            {learnerSections &&
-              section === "learners" &&
-              !adding &&
-              !nativeRuntime &&
-              account?.familyClass && (
-                <SecondParent
-                  session={session}
-                  className="family-second-parent"
-                  headingClassName={pages.sectionTitle}
-                />
-              )}
-            {learnerSections && section === "access" && (
-              <section className={pages.section} aria-label="Billing">
-                <BillingList
-                  learners={cached?.learners ?? family.learners}
-                  consentActive={consentActive}
-                  busy={busy}
-                  recordsRef={paymentTrigger}
-                  onContinue={(learner) => {
-                    if (nativeRuntime && onChoosePayment) {
-                      selectLearner(learner.id);
-                      onChoosePayment();
-                    } else route.navigate(`/continue/${learner.id}`);
-                  }}
-                  onManage={() => void billing()}
-                  onHistory={(learner, trigger) => {
-                    accessTrigger.current = trigger;
-                    setHistoryFor(learner);
-                  }}
-                  onRecords={() => setPurchaseChooser(true)}
-                />
-              </section>
-            )}
-            {section === "privacy" && !privacy && (
-              <section className={pages.section} aria-label="Privacy choices">
-                <ul className={pages.list}>
-                  {privacyChoices.map(([key, choice, detail]) => (
-                    <li key={key} className={pages.linkItem}>
-                      <button
-                        type="button"
-                        className={pages.linkRow}
-                        data-privacy-choice={key}
-                        onClick={() => setPrivacy(key)}
-                      >
-                        <span className={pages.rowText}>
-                          <span className={pages.rowTitle}>{choice}</span>
-                          <span className={pages.rowMeta}>{detail}</span>
-                        </span>
-                        <Chevron />
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            )}
-            {section === "privacy" && !privacy && <LegalDocuments />}
-            {section === "privacy" &&
-              privacy === "measurement" &&
-              family.purchaseMeasurement?.available &&
-              !nativeRuntime && (
-                <PurchaseMeasurement
-                  key={`${identity}:google`}
-                  view={family.purchaseMeasurement}
-                  token={token}
-                  identity={identity}
-                />
-              )}
-            {section === "privacy" &&
-              privacy === "measurement" &&
-              family.metaPurchaseMeasurement?.available &&
-              !nativeRuntime && (
-                <PurchaseMeasurement
-                  key={`${identity}:meta`}
-                  provider="meta"
-                  view={family.metaPurchaseMeasurement}
-                  token={token}
-                  identity={identity}
-                />
-              )}
-            {section === "privacy" &&
-              privacy === "measurement" &&
-              family.openaiPurchaseMeasurement?.available &&
-              !nativeRuntime && (
-                <PurchaseMeasurement
-                  key={`${identity}:openai`}
-                  provider="openai"
-                  view={family.openaiPurchaseMeasurement}
-                  token={token}
-                  identity={identity}
-                />
-              )}
-            {section === "privacy" && privacy === "export" && (
-              <section className={`family-section ${pages.section}`}>
-                <p className={pages.prose}>
-                  One NDJSON file with {hasChildren ? "your learners’" : "your"}{" "}
-                  problems and answers, plans, orders and privacy activity.
-                </p>
-                <div className={pages.footActions}>
-                  <Button
-                    variant="primary"
-                    disabled={busy}
-                    aria-busy={busy || undefined}
-                    onClick={() => void exportData()}
-                  >
-                    {hasChildren
-                      ? "Download family data"
-                      : "Download your data"}
-                  </Button>
-                </div>
-              </section>
-            )}
-            {section === "privacy" &&
-              privacy === "consent" &&
-              secondOnly &&
-              account && <SecondParentNote me={account} />}
-            {section === "privacy" && privacy === "consent" && !secondOnly && (
-              <section className={`family-section ${pages.section}`}>
-                <p className={pages.rowTitle}>
-                  {family.consent.status === "active"
-                    ? "Consent is active."
-                    : family.consent.status === "withdrawn"
-                      ? "Consent is withdrawn. New learning activity is paused for children under 13."
-                      : family.consent.status === "development"
-                        ? "Local development access. No verified consent record is present."
-                        : "Verified parent consent is not recorded."}
-                </p>
-                {family.consent.status === "active" ||
-                family.consent.status === "development" ? (
-                  <p className={pages.prose}>
-                    Withdrawing stops new learning activity for children under
-                    13. It doesn’t delete existing records or cancel a plan’s
-                    renewal.
-                  </p>
-                ) : (
-                  <p className={pages.prose}>
-                    Your billing controls and data export stay available.
-                    Pausing learning doesn’t cancel a paid plan.
-                  </p>
-                )}
-                <div className={pages.footActions}>
-                  {onConsentEnrollment && (
-                    <Button
-                      variant="secondary"
-                      data-consent-enrollment
-                      onClick={onConsentEnrollment}
-                    >
-                      {family.consent.status === "active"
-                        ? "Review consent"
-                        : "Consent options"}
-                    </Button>
-                  )}
-                  {(family.consent.status === "active" ||
-                    family.consent.status === "development") && (
-                    <Button
-                      variant="quiet"
-                      className={pages.danger}
-                      disabled={busy}
-                      onClick={(event) =>
-                        ask({ kind: "withdraw" }, event.currentTarget)
-                      }
-                    >
-                      Withdraw consent
-                    </Button>
-                  )}
-                </div>
-              </section>
-            )}
-            {section === "privacy" && privacy === "delete" && (
-              <section className={`family-section ${pages.section}`}>
-                <p className={pages.prose}>
-                  {hasChildren
-                    ? "Removes every learner’s name, saved problems and answer history from AMP, and withdraws consent. This can’t be undone."
-                    : "Removes your saved problems and answer history from AMP. This can’t be undone."}
-                </p>
+                  ) : undefined
+                }
+                children={family.learners}
+                selectedId={openLearner ?? undefined}
+                onSelect={(id) => {
+                  setOpenLearner(id || null);
+                  // The adult's own practice opens its settings here; it
+                  // isn't chosen as the family's learner.
+                  if (id && id !== ownLearner?.id) selectLearner(id);
+                }}
+                detail={learnerDetail}
+              />
+              {!nativeRuntime && !adding && (
                 <div className={pages.footActions}>
                   <Button
                     variant="secondary"
+                    disabled={busy}
+                    onClick={addChild}
+                  >
+                    Add a child
+                  </Button>
+                </div>
+              )}
+              {!nativeRuntime && adding && (
+                <form
+                  id="family-add-learner"
+                  className={pages.addForm}
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                    const name = newName.trim();
+                    if (!name || !newBirthYear) return;
+                    // An adult may be adding themselves: their own
+                    // practice is their own learner, not a family one.
+                    if (
+                      askSelf === null &&
+                      newBirthYear &&
+                      Number(newBirthYear) <= new Date().getFullYear() - 18
+                    )
+                      return setAskSelf(name);
+                    setAskSelf(null);
+                    void action(async () => {
+                      await api("/learners", {
+                        name,
+                        birthYear: Number(newBirthYear),
+                      });
+                      await refresh();
+                      setNewName("");
+                      setNewBirthYear("");
+                      setAdding(false);
+                      setNotice(`${name} added.`);
+                    });
+                  }}
+                >
+                  <h2 className={pages.sectionTitle}>Add a child</h2>
+                  <TextField
+                    label="Name"
+                    value={newName}
+                    maxLength={CHILD_NAME_MAX}
+                    placeholder="First name or nickname"
+                    onChange={(event) => setNewName(event.target.value)}
+                  />
+                  <div className={pages.fieldLabel}>
+                    <span>Birth year</span>
+                    <YearField
+                      label={
+                        newName.trim()
+                          ? `Birth year, ${newName.trim()}`
+                          : "Birth year"
+                      }
+                      value={newBirthYear}
+                      placeholder="Choose a year"
+                      onChange={setNewBirthYear}
+                      disabled={busy}
+                      earlier
+                    />
+                  </div>
+                  {/* The birth year sets where practice starts. */}
+                  <div className={pages.detailActions}>
+                    <Button
+                      variant="primary"
+                      disabled={busy || !newName.trim() || !newBirthYear}
+                    >
+                      Add
+                    </Button>
+                    <Button
+                      variant="quiet"
+                      type="button"
+                      disabled={busy}
+                      onClick={() => setAdding(false)}
+                    >
+                      Cancel
+                    </Button>
+                  </div>
+                  <Sheet
+                    open={askSelf !== null}
+                    onOpenChange={(open) => {
+                      if (!open) setAskSelf(null);
+                    }}
+                    title="Is this you?"
+                  >
+                    <div className="family-sheet-actions">
+                      <Button
+                        variant="primary"
+                        type="button"
+                        disabled={busy}
+                        onClick={() =>
+                          void action(async () => {
+                            const { learnerId } = await api<{
+                              learnerId: string;
+                            }>("/me/practice", {
+                              timezone: deviceTimeZone(),
+                              // Sets where their own practice starts.
+                              birthYear: Number(newBirthYear),
+                            });
+                            useLearnerStore.getState().select(learnerId);
+                            rememberPlace(identity, "me");
+                            await refreshMe({ accountId: identity, token });
+                            setAskSelf(null);
+                            setAdding(false);
+                            setNewName("");
+                            setNewBirthYear("");
+                            route.navigate("/me");
+                          })
+                        }
+                      >
+                        Yes, it’s me
+                      </Button>
+                      <Button
+                        variant="secondary"
+                        type="submit"
+                        form="family-add-learner"
+                        disabled={busy}
+                      >
+                        No, add {askSelf ?? "them"}
+                      </Button>
+                    </div>
+                  </Sheet>
+                </form>
+              )}
+            </section>
+          )}
+          {learnerSections &&
+            section === "learners" &&
+            !adding &&
+            !nativeRuntime &&
+            account?.familyClass && (
+              <SecondParent
+                session={session}
+                className="family-second-parent"
+                headingClassName={pages.sectionTitle}
+              />
+            )}
+          {learnerSections && section === "access" && (
+            <section className={pages.section} aria-label="Billing">
+              <BillingList
+                learners={cached?.learners ?? family.learners}
+                consentActive={consentActive}
+                busy={busy}
+                recordsRef={paymentTrigger}
+                onContinue={(learner) => {
+                  if (nativeRuntime && onChoosePayment) {
+                    selectLearner(learner.id);
+                    onChoosePayment();
+                  } else route.navigate(`/continue/${learner.id}`);
+                }}
+                onManage={() => void billing()}
+                onHistory={(learner, trigger) => {
+                  accessTrigger.current = trigger;
+                  setHistoryFor(learner);
+                }}
+                onRecords={() => setPurchaseChooser(true)}
+              />
+            </section>
+          )}
+          {section === "privacy" && !privacy && (
+            <section className={pages.section} aria-label="Privacy choices">
+              <ul className={pages.list}>
+                {privacyChoices.map(([key, choice, detail]) => (
+                  <li key={key} className={pages.linkItem}>
+                    <button
+                      type="button"
+                      className={pages.linkRow}
+                      data-privacy-choice={key}
+                      onClick={() => setPrivacy(key)}
+                    >
+                      <span className={pages.rowText}>
+                        <span className={pages.rowTitle}>{choice}</span>
+                        <span className={pages.rowMeta}>{detail}</span>
+                      </span>
+                      <Chevron />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+          {section === "privacy" && !privacy && <LegalDocuments />}
+          {section === "privacy" &&
+            privacy === "measurement" &&
+            family.purchaseMeasurement?.available &&
+            !nativeRuntime && (
+              <PurchaseMeasurement
+                key={`${identity}:google`}
+                view={family.purchaseMeasurement}
+                token={token}
+                identity={identity}
+              />
+            )}
+          {section === "privacy" &&
+            privacy === "measurement" &&
+            family.metaPurchaseMeasurement?.available &&
+            !nativeRuntime && (
+              <PurchaseMeasurement
+                key={`${identity}:meta`}
+                provider="meta"
+                view={family.metaPurchaseMeasurement}
+                token={token}
+                identity={identity}
+              />
+            )}
+          {section === "privacy" &&
+            privacy === "measurement" &&
+            family.openaiPurchaseMeasurement?.available &&
+            !nativeRuntime && (
+              <PurchaseMeasurement
+                key={`${identity}:openai`}
+                provider="openai"
+                view={family.openaiPurchaseMeasurement}
+                token={token}
+                identity={identity}
+              />
+            )}
+          {section === "privacy" && privacy === "export" && (
+            <section className={`family-section ${pages.section}`}>
+              <p className={pages.prose}>
+                One NDJSON file with {hasChildren ? "your learners’" : "your"}{" "}
+                problems and answers, plans, orders and privacy activity.
+              </p>
+              <div className={pages.footActions}>
+                <Button
+                  variant="primary"
+                  disabled={busy}
+                  aria-busy={busy || undefined}
+                  onClick={() => void exportData()}
+                >
+                  {hasChildren ? "Download family data" : "Download your data"}
+                </Button>
+              </div>
+            </section>
+          )}
+          {section === "privacy" &&
+            privacy === "consent" &&
+            secondOnly &&
+            account && <SecondParentNote me={account} />}
+          {section === "privacy" && privacy === "consent" && !secondOnly && (
+            <section className={`family-section ${pages.section}`}>
+              <p className={pages.rowTitle}>
+                {family.consent.status === "active"
+                  ? "Consent is active."
+                  : family.consent.status === "withdrawn"
+                    ? "Consent is withdrawn. New learning activity is paused for children under 13."
+                    : family.consent.status === "development"
+                      ? "Local development access. No verified consent record is present."
+                      : "Verified parent consent is not recorded."}
+              </p>
+              {family.consent.status === "active" ||
+              family.consent.status === "development" ? (
+                <p className={pages.prose}>
+                  Withdrawing stops new learning activity for children under 13.
+                  It doesn’t delete existing records or cancel a plan’s renewal.
+                </p>
+              ) : (
+                <p className={pages.prose}>
+                  Your billing controls and data export stay available. Pausing
+                  learning doesn’t cancel a paid plan.
+                </p>
+              )}
+              <div className={pages.footActions}>
+                {onConsentEnrollment && (
+                  <Button
+                    variant="secondary"
+                    data-consent-enrollment
+                    onClick={onConsentEnrollment}
+                  >
+                    {family.consent.status === "active"
+                      ? "Review consent"
+                      : "Consent options"}
+                  </Button>
+                )}
+                {(family.consent.status === "active" ||
+                  family.consent.status === "development") && (
+                  <Button
+                    variant="quiet"
                     className={pages.danger}
                     disabled={busy}
                     onClick={(event) =>
-                      ask({ kind: "delete" }, event.currentTarget)
+                      ask({ kind: "withdraw" }, event.currentTarget)
                     }
                   >
-                    Review deletion
+                    Withdraw consent
                   </Button>
-                </div>
-              </section>
-            )}
-            {section === "privacy" && privacy === "retention" && (
-              <section className={`family-section ${pages.section}`}>
-                <p className={pages.prose}>{family.retained.identity}</p>
-                <p className={pages.prose}>{family.retained.financial}</p>
-                <p className={pages.prose}>{family.retained.backups}</p>
-                <p className={pages.prose}>
-                  Privacy action records hold no learner names or answers and
-                  expire after {family.retained.privacyAuditDays} days.
-                </p>
-              </section>
-            )}
-          </>
-        )}
-      </div>
+                )}
+              </div>
+            </section>
+          )}
+          {section === "privacy" && privacy === "delete" && (
+            <section className={`family-section ${pages.section}`}>
+              <p className={pages.prose}>
+                {hasChildren
+                  ? "Removes every learner’s name, saved problems and answer history from AMP, and withdraws consent. This can’t be undone."
+                  : "Removes your saved problems and answer history from AMP. This can’t be undone."}
+              </p>
+              <div className={pages.footActions}>
+                <Button
+                  variant="secondary"
+                  className={pages.danger}
+                  disabled={busy}
+                  onClick={(event) =>
+                    ask({ kind: "delete" }, event.currentTarget)
+                  }
+                >
+                  Review deletion
+                </Button>
+              </div>
+            </section>
+          )}
+          {section === "privacy" && privacy === "retention" && (
+            <section className={`family-section ${pages.section}`}>
+              <p className={pages.prose}>{family.retained.identity}</p>
+              <p className={pages.prose}>{family.retained.financial}</p>
+              <p className={pages.prose}>{family.retained.backups}</p>
+              <p className={pages.prose}>
+                Privacy action records hold no learner names or answers and
+                expire after {family.retained.privacyAuditDays} days.
+              </p>
+            </section>
+          )}
+        </>
+      )}
       {confirmation && (
         <dialog
           ref={dialog}
@@ -1303,6 +1302,6 @@ export function FamilyCenter({
           )}
         </dialog>
       )}
-    </section>
+    </Page>
   );
 }

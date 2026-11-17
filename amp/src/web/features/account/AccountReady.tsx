@@ -1,5 +1,6 @@
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
-import { Link, Navigate, useSearch } from "@tanstack/react-router";
+import { Link, useSearch } from "@tanstack/react-router";
+import { Navigate } from "../../nav/Navigate";
 import { meOptions, sessionOptions } from "../../lib/query";
 import { continuationSearch } from "../../lib/funded-entry";
 import { PageFrame, FrameBrand, frameCard } from "../../ui/PageFrame";
@@ -26,7 +27,7 @@ export function AccountReady() {
     (learner) => learner.entitlement.active,
   );
   return (
-    <PageFrame centered>
+    <PageFrame>
       <section
         data-account-ready
         className={`${frameCard} ${styles.ready}`}

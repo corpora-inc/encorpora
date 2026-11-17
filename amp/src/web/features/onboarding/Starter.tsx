@@ -1,11 +1,11 @@
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import {
   Link,
-  Navigate,
   useNavigate,
   useParams,
   useRouter,
 } from "@tanstack/react-router";
+import { Navigate } from "../../nav/Navigate";
 import { useEffect, useState, type ReactNode } from "react";
 import { create } from "zustand";
 import type { AuthSession } from "../../auth";
@@ -41,6 +41,8 @@ import { FamilySetup } from "./setup/FamilySetup";
 import { OwnYearTiles } from "./OwnYearTiles";
 import { StepFrame } from "./setup/StepFrame";
 import { setupStep } from "./activation";
+import { Page } from "../../ui/Page";
+import { PageHeader } from "../../ui/PageHeader";
 import styles from "./Starter.module.css";
 
 /** Unsent answers live only in this tab's memory, per account. */
@@ -188,10 +190,8 @@ function StarterScreen({ session }: { session: AuthSession }) {
     if (!adding) record.mutate(answer);
   };
   return (
-    <main className={styles.page} data-starter={choice ?? ""}>
-      <h1 className={styles.title}>
-        {adding ? "Add a place" : "What brings you to AMP?"}
-      </h1>
+    <Page data-starter={choice ?? ""}>
+      <PageHeader title={adding ? "Add a place" : "What brings you to AMP?"} />
       <ul className={styles.choices}>
         {shown.map((entry) => {
           const content = (
@@ -250,7 +250,7 @@ function StarterScreen({ session }: { session: AuthSession }) {
           </Button>
         </div>
       )}
-    </main>
+    </Page>
   );
 }
 

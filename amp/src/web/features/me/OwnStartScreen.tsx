@@ -1,5 +1,6 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { Navigate, useNavigate } from "@tanstack/react-router";
+import { useNavigate } from "@tanstack/react-router";
+import { Navigate } from "../../nav/Navigate";
 import { useState } from "react";
 import { ownPracticeAllowed } from "../../../learning/starting-point";
 import type { AuthSession } from "../../auth";
@@ -36,7 +37,7 @@ function StartCard({ session }: { session: AuthSession }) {
         ? "Your practice didn’t start. Check your connection, then try again."
         : "";
   return (
-    <PageFrame centered>
+    <PageFrame>
       <Toast message={failure} onDismiss={() => start.reset()} takeFocus />
       <section className={`${frameCard} ${styles.step}`}>
         <FrameBrand expanded />

@@ -159,11 +159,7 @@ test("a parent approving another family's child pays first; the plan before any 
 
 const unconfirmed = (value: SignedInMe): SignedInMe => ({
   ...value,
-  account: {
-    ...value.account,
-    emailVerified: false,
-    confirmationRequired: true,
-  },
+  account: { ...value.account, emailVerified: false, confirmationRequired: true },
 });
 const child = {
   id: "child",
@@ -259,9 +255,9 @@ test("an adult buying for herself goes to the program, never through parent cons
     expect(startDestination(myself, "/start/name", false, slug)).toBeNull();
   }
   // An unconfirmed email waits until an invoice is connected.
-  expect(
-    startDestination(unconfirmed(myself), "/start", false, "arizona-esa"),
-  ).toBe("/purchase/arizona-esa");
+  expect(startDestination(unconfirmed(myself), "/start", false, "arizona-esa")).toBe(
+    "/purchase/arizona-esa",
+  );
 });
 
 test("a gift for an adult on her own goes to the gift; a child's setup stays open", () => {
@@ -308,9 +304,7 @@ test("an email gift routes around checkout and consent, never around the address
 
 test("an unconfirmed account can always open the confirmation page; a confirmed one moves on", () => {
   const parent = me({ next: "practice", learners: [child] });
-  expect(
-    startDestination(unconfirmed(parent), "/start/verify-email"),
-  ).toBeNull();
+  expect(startDestination(unconfirmed(parent), "/start/verify-email")).toBeNull();
   expect(startDestination(parent, "/start/verify-email")).toBe("/");
   // Nothing else waits for it: learning stays open.
   expect(startDestination(unconfirmed(parent), "/start/plan")).toBe("/");

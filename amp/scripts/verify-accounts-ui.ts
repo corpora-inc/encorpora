@@ -225,7 +225,7 @@ try {
   await page.getByRole("button", { name: "Birth year, Child 1" }).click();
   await page
     .getByRole("dialog", { name: "Birth year, Child 1" })
-    .getByRole("radio", { name: "2016", exact: true })
+    .getByRole("option", { name: "2016", exact: true })
     .click();
   await page.getByRole("button", { name: "Next", exact: true }).click();
   // One child goes straight into their first problem, on this device; the

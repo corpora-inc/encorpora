@@ -1,5 +1,6 @@
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
-import { Link, Navigate, useNavigate, useParams } from "@tanstack/react-router";
+import { Link, useNavigate, useParams } from "@tanstack/react-router";
+import { Navigate } from "../../nav/Navigate";
 import { useState, type FormEvent } from "react";
 import type { AuthSession } from "../../auth";
 import { sessionOptions } from "../../lib/query";

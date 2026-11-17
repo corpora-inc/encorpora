@@ -1,0 +1,26 @@
+/* A page's section (PageSection.tsx): Billing's heading and rhythm. */
+.section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: var(--space-4);
+  min-width: 0;
+}
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-4);
+  min-width: 0;
+}
+/* Doubled: legacy `.shell :is(h2, h3)` and element rules set their own. */
+.title.title {
+  margin: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: var(--text-heading-2);
+  font-weight: 650;
+  letter-spacing: 0;
+  line-height: 1.3;
+}

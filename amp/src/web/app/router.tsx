@@ -2008,6 +2008,12 @@ export const router = createRouter({
   defaultPreload: "intent",
   defaultPreloadDelay: 0,
   defaultPendingComponent: LoadingScreen,
+  // Every route catches its own failure, inside its parent: a screen that
+  // fails to load or render says so in the content area, under the app's bar
+  // and menu, with Try again and Go home. Only the root's own failure (the
+  // shell itself) takes the whole page. React reports each caught error
+  // (createRoot's onCaughtError in boot.tsx, trackClientError).
+  defaultErrorComponent: RouterError,
   defaultPendingMs: 1000,
   defaultPendingMinMs: 0,
 });

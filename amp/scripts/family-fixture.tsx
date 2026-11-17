@@ -80,7 +80,7 @@ export function FamilyFixture({
         height: "100dvh",
       }}
     >
-      <style>{`[data-family-harness] > .family-center { height: auto; }`}</style>
+      <style>{`[data-family-harness] > [data-family-center] { height: auto; }`}</style>
       {/* The bar's tab cell sits on the content's gutter; a phone's strip
           reaches its labels out to that gutter (Tabs.module.css). */}
       <div style={{ display: "flex", minWidth: 0, paddingInline: 16 }}>

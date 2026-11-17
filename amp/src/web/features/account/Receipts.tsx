@@ -7,6 +7,7 @@ import { requestFetch } from "../../lib/request-transport";
 import { ReceiptDetails } from "../../ReceiptDetails";
 import { Button } from "../../ui/Button";
 import { Loading } from "../../ui/Loading";
+import { PageSection } from "../../ui/PageSection";
 import styles from "./BillingPage.module.css";
 
 const payment = z.object({
@@ -127,8 +128,11 @@ export function Receipts({
     }
   }
   return (
-    <section className={styles.section} aria-labelledby="receipts-title">
-      {!selected && <h2 id="receipts-title">Receipts</h2>}
+    <PageSection
+      title={selected ? undefined : "Receipts"}
+      titleId="receipts-title"
+      aria-labelledby="receipts-title"
+    >
       {records.isPending && <Loading>Loading receipts…</Loading>}
       {records.error && (
         <div role="alert">
@@ -177,7 +181,7 @@ export function Receipts({
                 />
               </details>
               {!!record.adjustments.length && (
-                <div className={styles.section}>
+                <div className={styles.refunds}>
                   <h3>Refunds</h3>
                   {record.adjustments.map((a) => (
                     <Button
@@ -254,7 +258,7 @@ export function Receipts({
           )}
         </>
       ) : null}
-    </section>
+    </PageSection>
   );
 }
 const money = (minor: number) =>
