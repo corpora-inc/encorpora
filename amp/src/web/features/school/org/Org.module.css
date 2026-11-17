@@ -701,7 +701,7 @@
   gap: var(--space-3);
   justify-items: stretch;
   width: 100%;
-  max-width: 420px;
+  max-width: var(--page-narrow);
 }
 .collected {
   display: grid;
@@ -805,7 +805,7 @@ button.danger:disabled {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-3);
   align-items: start;
-  max-width: 760px;
+  max-width: var(--page-standard);
   margin-bottom: var(--space-6);
 }
 .filters > .filterField:nth-child(-n + 2) {
@@ -907,7 +907,7 @@ button.danger:disabled {
   display: grid;
   gap: var(--space-6);
   justify-items: start;
-  max-width: 760px;
+  max-width: var(--page-standard);
 }
 .logDay {
   width: 100%;

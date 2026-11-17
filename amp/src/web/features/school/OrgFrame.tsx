@@ -130,7 +130,8 @@ export function OrgFrame({
     nav === "privacy" ||
     nav === "integrations" ||
     nav === "license" ||
-    nav === "calendar";
+    nav === "calendar" ||
+    nav === "sign-in-help";
   return (
     <Page
       width={focused ? "standard" : "wide"}

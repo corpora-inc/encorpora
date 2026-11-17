@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useParams } from "@tanstack/react-router";
+import { Link, useParams, useRouter } from "@tanstack/react-router";
 import { EntityLink, useLayers } from "../../../nav/links";
 import type {
   ClassStandingResponse,
@@ -13,7 +13,9 @@ import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { StatTile } from "../../../ui/StatTile";
 import { FigureTip } from "../classes/teacher-shared";
 import { currentSession } from "../api";
-import { OrgFrame } from "../OrgFrame";
+import { closeTo } from "../../../lib/return-to";
+import { Dialog } from "../../../ui/Dialog";
+import { StandingScreen } from "./StandingScreen";
 import { orgPath } from "../paths";
 import { across, CurveLegend, CurvePlot, GradeAxis, peakOf } from "./CurvePlot";
 import {
@@ -30,7 +32,6 @@ import {
   CurveFacts,
   curveSentence,
   SettlingNote,
-  UpLink,
 } from "./parts";
 import { classStandingOptions } from "./standing-api";
 import styles from "./Standing.module.css";
@@ -249,12 +250,22 @@ export function ClassStandingScreen() {
       : only === 0
         ? "Kindergarten"
         : `Grade ${gradeName(only)}`;
+  const router = useRouter();
+  // The class is a drill over the school's curves: an overlay on them, whose
+  // cross closes to where it was opened (lib/return-to), else the curves.
   return (
-    <OrgFrame
-      orgId={params.org}
-      nav="overview"
-      title={data?.class.name ?? "Class"}
-    >
+    <>
+      <StandingScreen />
+      <Dialog
+        open
+        wide
+        tall
+        fullOnPhone
+        title={data?.class.name ?? "Class"}
+        onOpenChange={(open) => {
+          if (!open) closeTo(router, `/${orgPath(params.org, "standing")}`);
+        }}
+      >
       {standing.isPending ? (
         <LoadingScreen overlay />
       ) : !data ? (
@@ -286,11 +297,7 @@ export function ClassStandingScreen() {
         </EmptyState>
       ) : (
         <div className={styles.screen}>
-          <UpLink to={orgPath(params.org, "standing")}>
-            Where students stand
-          </UpLink>
           <header className={styles.title}>
-            <h1>{data.class.name}</h1>
             <p>
               {[gradesWords(data.grades), studentsWord(data.curve.n)]
                 .filter(Boolean)
@@ -426,6 +433,7 @@ export function ClassStandingScreen() {
           )}
         </div>
       )}
-    </OrgFrame>
+      </Dialog>
+    </>
   );
 }

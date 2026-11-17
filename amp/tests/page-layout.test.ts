@@ -140,33 +140,13 @@ const PHASE_2: Allowed = {
     widths: ["480px", "560px", "720px", "960px"],
     why: "practice profiles",
   },
-  "features/school/Import.module.css": {
-    widths: ["420px", "880px"],
-    why: "a school's import",
-  },
-  "features/school/School.module.css": {
-    widths: ["480px", "520px", "640px", "720px", "880px"],
-    why: "school screens",
-  },
   "features/school/Setup.module.css": {
     widths: ["480px", "600px"],
     why: "school setup",
   },
-  "features/school/classroom/Experience.module.css": {
-    widths: ["960px"],
-    why: "a class's student experience",
-  },
-  "features/school/classroom/Stack.module.css": {
-    widths: ["640px"],
-    why: "the workbook stack",
-  },
   "features/school/join/Join.module.css": {
     widths: ["420px", "480px", "620px", "1080px", "1320px"],
     why: "joining a class and a student's sign-in",
-  },
-  "features/school/org/Org.module.css": {
-    widths: ["420px", "760px"],
-    why: "school and district screens",
   },
   "features/schools/Parent.module.css": {
     widths: ["720px"],
@@ -393,6 +373,8 @@ const ROUTES_EXEMPT: Record<string, string> = {
     "the signed-out schools site, in its own PublicFrame",
   "features/schools/index.ts#TrustScreen":
     "the signed-out schools site, in its own PublicFrame",
+  "features/school/standing/index.ts#ClassStandingScreen":
+    "the school's curves (StandingScreen renders Page) with the class's overlay over them",
   "features/dev/PersonaSwitcher.tsx#PersonaSwitcher":
     "development only; never in a production bundle",
 };
@@ -635,8 +617,6 @@ const BACK_DEBT: Record<string, string> = {
   "features/profiles/practice-mode.ts":
     "practice modes' way back to where they started, in the bar and drawer: to become the mode's exit (phase 2)",
   "features/school/SetupScreen.tsx":
-    "a school screen (phase 2): tabs and overlays replace its way back",
-  "features/school/standing/parts.tsx":
     "a school screen (phase 2): tabs and overlays replace its way back",
   "nav/LayerHost.tsx":
     "an overlay's failure state names where ✕ returns; to become the overlay's ✕ (phase 2)",
