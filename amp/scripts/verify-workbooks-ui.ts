@@ -232,6 +232,18 @@ let failNextDownload: false | "pdf" | "all" = false;
 let failLoads = false;
 /** The next results save fails. */
 let failNextSave = false;
+/** Every draft the builder previewed, by its request id: choosing makes a
+ * new draft; only Download and Enter results issue one. */
+const previews: string[] = [];
+/** Waits until the builder has asked for a draft it hadn't before. */
+async function newDraft(seen: number) {
+  for (let tries = 0; tries < 150; tries++) {
+    if (new Set(previews).size > seen) return;
+    await new Promise((resolve) => setTimeout(resolve, 100));
+  }
+  throw new Error("no new draft was previewed");
+}
+const drafts = () => new Set(previews).size;
 async function fixture(page: Page) {
   const errors: string[] = [];
   page.on("console", (message) => {
@@ -241,6 +253,11 @@ async function fixture(page: Page) {
   await page.route("**/api/v1/**", async (route) => {
     const request = route.request();
     const url = new URL(request.url());
+    if (request.method() === "POST" && url.pathname.endsWith("/preview"))
+      previews.push(
+        (JSON.parse(request.postData() ?? "{}") as { requestId?: string })
+          .requestId ?? "",
+      );
     if (
       failNextSave &&
       request.method() === "POST" &&
@@ -297,6 +314,10 @@ async function fixture(page: Page) {
       });
     }
     if (url.pathname.endsWith("/me")) return route.fulfill({ json: me });
+    // The account's families (the place switcher and the frame read them):
+    // this parent's family is the fixture's own, so none to list.
+    if (url.pathname === "/api/v1/families")
+      return route.fulfill({ json: { families: [], next: null } });
     if (url.pathname.endsWith("/auth-config"))
       return route.fulfill({
         json: { mode: "accounts", passwords: true, providers: [] },
@@ -392,11 +413,11 @@ async function assertSegments(page: Page, label: string) {
   assert.deepEqual(problems, [], `${label}: segmented controls`);
 }
 /** Positions of the controls that must never move. */
-const controlBoxes = (page: Page) =>
-  page.evaluate(() =>
+const controlBoxes = (page: Page, card = true) =>
+  page.evaluate((card) =>
     [
       ...document.querySelectorAll(
-        "[role=dialog] [role=radiogroup], [role=dialog] [data-workbook-actions] button, [role=dialog] [aria-label='Workbook contents']",
+        `[role=dialog] [role=radiogroup], [role=dialog] [data-workbook-actions] button${card ? ", [role=dialog] [aria-label='Workbook contents']" : ""}`,
       ),
     ].map((el) => {
       const box = el.getBoundingClientRect();
@@ -411,7 +432,7 @@ const controlBoxes = (page: Page) =>
         Math.round(box.width),
       ];
     }),
-  );
+  card);
 
 /** The workbook's options, in the day's sheet over the list. */
 async function withOptions<T>(
@@ -499,19 +520,18 @@ try {
       await page.getByText(/About (55|60|65) minutes/).waitFor();
       assert.deepEqual(await controlBoxes(page), before, `${label}: length`);
 
-      // Roll another: a new number, nothing moves.
-      const firstCode = await page
-        .getByLabel("Workbook code")
-        .first()
-        .textContent();
+      // Roll another: a new draft of the day's next workbook (a preview,
+      // issued only by Download or Enter results), and nothing moves.
+      const seen = drafts();
       await page.getByRole("button", { name: "Roll another" }).click();
-      await page.getByRole("heading", { name: "No. 2" }).waitFor();
+      await newDraft(seen);
+      await page.getByRole("heading", { name: "No. 1" }).waitFor();
+      assert.equal(
+        await page.getByLabel("Workbook code").first().textContent(),
+        "Preview",
+      );
       // The address names the day; the workbook on it is the day's draft.
       assert.doesNotMatch(page.url(), /\?/);
-      assert.notEqual(
-        await page.getByLabel("Workbook code").first().textContent(),
-        firstCode,
-      );
       assert.deepEqual(await controlBoxes(page), before, `${label}: roll`);
 
       // A renderer outage still gives the parent a printable copy.
@@ -523,7 +543,7 @@ try {
       assert.equal(
         fallback.suggestedFilename(),
         workbookFilename(
-          rows.find((row) => row.date === today && row.number === 2)!,
+          rows.find((row) => row.date === today && row.number === 1)!,
           "Maya",
           "html",
         ),
@@ -565,7 +585,7 @@ try {
       assert.equal(
         download.suggestedFilename(),
         workbookFilename(
-          rows.find((row) => row.date === today && row.number === 2)!,
+          rows.find((row) => row.date === today && row.number === 1)!,
           "Maya",
           "pdf",
           "Letter",
@@ -577,9 +597,14 @@ try {
         .waitFor({ state: "detached" });
       assert.deepEqual(await controlBoxes(page), before, `${label}: download`);
 
-      // A reload keeps the workbook on screen and its length.
+      // Downloading issued it: No. 1, with its printed code. A reload keeps
+      // the workbook on screen and its length.
+      assert.notEqual(
+        await page.getByLabel("Workbook code").first().textContent(),
+        "Preview",
+      );
       await page.reload();
-      await page.getByRole("heading", { name: "No. 2" }).waitFor();
+      await page.getByRole("heading", { name: "No. 1" }).waitFor();
       assert.equal(
         await withOptions(page, (options) =>
           options
@@ -589,8 +614,9 @@ try {
         "true",
       );
 
-      // Mix and match: each choice rolls a new workbook with it, and nothing
-      // moves. An area, then a stretch, then problems only.
+      // Mix and match: each choice drafts the next workbook (No. 2) with
+      // it, and nothing moves. An area, then a stretch, then problems only.
+      let seenNow = drafts();
       const areaLabel = await withOptions(page, async (options) => {
         const area = options
           .getByRole("group", { name: "Areas" })
@@ -601,11 +627,13 @@ try {
         await area.click();
         return text;
       });
-      await page.getByRole("heading", { name: "No. 3" }).waitFor();
+      await newDraft(seenNow);
+      await page.getByRole("heading", { name: "No. 2" }).waitFor();
       await page
         .getByText(new RegExp(`^${areaLabel}`))
         .first()
         .waitFor();
+      seenNow = drafts();
       assert.deepEqual(await controlBoxes(page), before, `${label}: area`);
       await withOptions(page, async (options) => {
         await options.getByRole("radio", { name: /^Harder/ }).click();
@@ -614,7 +642,12 @@ try {
           .and(options.locator('[aria-checked="true"]'))
           .waitFor();
       });
-      await page.getByRole("heading", { name: "No. 4" }).waitFor();
+      await newDraft(seenNow);
+      await page
+        .getByLabel("Workbook contents")
+        .getByText(/Harder/)
+        .waitFor();
+      seenNow = drafts();
       assert.deepEqual(await controlBoxes(page), before, `${label}: lean`);
       await withOptions(page, async (options) => {
         await options.getByRole("radio", { name: /^Leave out/ }).click();
@@ -623,7 +656,11 @@ try {
           .and(options.locator('[aria-checked="true"]'))
           .waitFor();
       });
-      await page.getByRole("heading", { name: "No. 5" }).waitFor();
+      await newDraft(seenNow);
+      await page
+        .getByLabel("Workbook contents")
+        .getByText(/Problems only/)
+        .waitFor();
       assert.doesNotMatch(page.url(), /\?/);
       assert.equal(
         await page
@@ -641,7 +678,7 @@ try {
       });
       // A reload keeps the draft and every choice it was made with.
       await page.reload();
-      await page.getByRole("heading", { name: "No. 5" }).waitFor();
+      await page.getByRole("heading", { name: "No. 2" }).waitFor();
       assert.equal(
         await withOptions(page, (options) =>
           options
@@ -659,7 +696,8 @@ try {
         "true",
       );
 
-      // History lists every stored workbook, newest first.
+      // History lists every stored workbook, newest first: the two before
+      // today and today's one issued (drafts are never stored).
       // Closing the day's sheet returns to the list under it.
       await page.keyboard.press("Escape");
       await page.waitForURL(new RegExp(`/learners/${learnerId}/workbooks$`));
@@ -668,7 +706,7 @@ try {
         .getByRole("list", { name: "Workbooks" })
         .getByRole("listitem")
         .count();
-      assert.equal(items, 8);
+      assert.equal(items, 3);
       await assertLayout(page, `${label} history`);
       await page.screenshot({
         path: `${output}history-${label}.png`,
@@ -787,7 +825,9 @@ try {
       await page.getByText(/^Right · marked$/).waitFor();
 
       // A day that cannot load says so inside the contents card, with the
-      // one action that can recover; the controls above do not move.
+      // one action that can recover; no control moves. (The card itself
+      // sits under the options, whose area chips are the learner's own and
+      // did not load either, so only the controls are compared.)
       failLoads = true;
       await page.goto(
         `${origin}/learners/${learnerId}/workbooks/${today}`,
@@ -797,15 +837,15 @@ try {
       await assertLayout(page, `${label} load error`);
       await assertSegments(page, `${label} load error`);
       assert.deepEqual(
-        await controlBoxes(page),
-        before,
+        await controlBoxes(page, false),
+        before.slice(0, -1),
         `${label}: load error moved the controls`,
       );
       if (width <= 390)
         await page.screenshot({ path: `${output}load-error-${label}.png` });
       failLoads = false;
       await failure.getByRole("button", { name: "Try again" }).click();
-      await page.getByRole("heading", { name: /^No\. / }).waitFor();
+      await page.getByRole("heading", { name: /No\. \d/ }).waitFor();
       errors.length = 0;
 
       // A learner without practice access is sent to set it up, never to a

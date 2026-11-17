@@ -36,6 +36,31 @@ export function Toast({
         onOpenChange={(open) => {
           if (!open) onDismiss();
         }}
+        // A toast never keeps Escape from the layer it was pressed in: Radix
+        // makes each toast the topmost dismissable layer, which alone hears
+        // Escape. Pressed in a sheet or dialog (focus not in the toast), the
+        // toast steps aside and the same Escape goes to that layer once the
+        // toast is gone, so the layer does exactly what Escape does there.
+        onEscapeKeyDown={(event) => {
+          const target = event.target;
+          if (
+            !(target instanceof Element) ||
+            target.closest("[data-app-toast]") ||
+            !target.closest('[role="dialog"], [role="alertdialog"]')
+          )
+            return;
+          requestAnimationFrame(() => {
+            if (target.isConnected)
+              target.dispatchEvent(
+                new KeyboardEvent("keydown", {
+                  key: "Escape",
+                  bubbles: true,
+                  cancelable: true,
+                }),
+              );
+          });
+        }}
+        data-app-toast=""
         duration={tone === "status" ? 4000 : Infinity}
         type={tone === "status" ? "background" : "foreground"}
         className={`${styles.toast} ${title ? styles.titled : ""}`}

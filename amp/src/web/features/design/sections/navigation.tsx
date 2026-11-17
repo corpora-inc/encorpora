@@ -2,7 +2,7 @@ import type { MouseEvent, ReactNode } from "react";
 import { AppLogo } from "../../../ui/AppLogo";
 import { QrCode } from "../../../ui/QrCode";
 import { Tabs, type TabItem } from "../../../ui/Tabs";
-import { classroomTabs, familyTabs } from "../../spaces/tabs";
+import { classroomTabs, familyTabs, meTabs } from "../../spaces/tabs";
 import { WaveMark } from "../../../ui/WaveMark";
 import { Section, Specimen } from "../Gallery";
 import bar from "../../../ui/AppBar.module.css";
@@ -92,6 +92,8 @@ const tabRows = {
     label: "Family",
     items: familyTabs("org", "class", { learners: 12 }),
   },
+  // An adult's own practice: five tabs, three of them a phone's.
+  me: { label: "Your practice", items: meTabs("learner-fixture") },
   admin: {
     label: "School",
     items: placeTabs([

@@ -329,6 +329,12 @@ function Today({ learner, date }: DayProps) {
         </Button>
       </div>
       <div className={styles.builder}>
+        {/* The options first, then the workbook they make: a new preview
+            never moves a control. */}
+        <section className={styles.optionsPanel} aria-label="Workbook options">
+          <h3 className={styles.optionsTitle}>Options</h3>
+          {options}
+        </section>
         <Contents
           workbook={issued ?? workbook.data}
           draft={!issued}
@@ -367,10 +373,6 @@ function Today({ learner, date }: DayProps) {
               : undefined
           }
         />
-        <section className={styles.optionsPanel} aria-label="Workbook options">
-          <h3 className={styles.optionsTitle}>Options</h3>
-          {options}
-        </section>
       </div>
       {/* An action that fails says so in the shared toast, over the page. */}
       <Toast message={message} onDismiss={() => setMessage("")} />
