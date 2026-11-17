@@ -51,7 +51,7 @@ export function recoverChunkError(
     reloading = true;
     // Persist synchronously and use keepalive before replacing the document.
     flush(true);
-    location.reload();
+    reloadWithFreshFiles(error);
   } else if (showNotice) {
     notice = true;
     subscribers.forEach((callback) => callback());
@@ -62,6 +62,41 @@ export function recoverChunkError(
     if (!subscribers.size && !preload) showEntryRecovery();
   }
   return true;
+}
+
+/** AMP files that failed to load in this document (modulepreload links and
+ * scripts report it on the element, not to `window.onerror`). */
+const failedFiles = new Set<string>();
+const assetUrl = (url: string) =>
+  url.startsWith(`${location.origin}/assets/`) ? url : null;
+/** Safari keeps a failed modulepreload in its memory cache across a reload:
+ * the reloaded page then fails on the same file without asking the server
+ * (seen in WebKit, 2026-11-17). Asking for each failed file again, bypassing
+ * the cache, replaces that entry, so the reload recovers. Every reload after
+ * a failed file goes through here, automatic or pressed. Bounded: the reload
+ * never waits more than 3 s. */
+export function reloadWithFreshFiles(error?: unknown): void {
+  const named = String((error as Error)?.message ?? "").match(
+    /https?:\/\/[^\s'"]+\/assets\/[\w.-]+\.(?:js|css)/,
+  )?.[0];
+  const urls = [...failedFiles, ...(named && assetUrl(named) ? [named] : [])];
+  if (!urls.length) return location.reload();
+  void Promise.race([
+    Promise.allSettled(
+      [...new Set(urls)]
+        .slice(0, 10)
+        .map((url) =>
+          fetch(url, { cache: "reload", credentials: "same-origin" }).catch(
+            (refused: unknown) =>
+              console.warn(
+                "AMP: a failed file couldn’t be asked for again",
+                refused,
+              ),
+          ),
+        ),
+    ),
+    new Promise((resolve) => setTimeout(resolve, 3000)),
+  ]).finally(() => location.reload());
 }
 
 declare global {
@@ -82,6 +117,20 @@ export function startRuntimeRecovery() {
   // From here the app recovers its own failures; the entry guard stands down.
   document.documentElement.setAttribute("data-amp-runtime", "");
   watchReloadSafety();
+  window.addEventListener(
+    "error",
+    (event) => {
+      const target = event.target;
+      const url =
+        target instanceof HTMLLinkElement
+          ? target.href
+          : target instanceof HTMLScriptElement
+            ? target.src
+            : "";
+      if (url && assetUrl(url)) failedFiles.add(url);
+    },
+    true,
+  );
   window.addEventListener("vite:preloadError", (event) => {
     recoverChunkError(
       (event as Event & { payload?: unknown }).payload,

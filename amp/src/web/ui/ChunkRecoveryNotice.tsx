@@ -3,6 +3,7 @@ import {
   chunkNotice,
   subscribeChunkNotice,
   dismissChunkNotice,
+  reloadWithFreshFiles,
 } from "../lib/chunk-recovery";
 import { Toast } from "./Toast";
 
@@ -16,7 +17,7 @@ export function ChunkRecoveryNotice() {
           : ""
       }
       onDismiss={dismissChunkNotice}
-      action={{ label: "Reload", onClick: () => location.reload() }}
+      action={{ label: "Reload", onClick: () => reloadWithFreshFiles() }}
     />
   );
 }

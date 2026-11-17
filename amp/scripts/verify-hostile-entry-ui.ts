@@ -107,7 +107,10 @@ const server = http.createServer((request, response) => {
   for (const [name, value] of Object.entries(headers))
     response.setHeader(name, value);
   if (!served) {
-    response.writeHead(404, { "Content-Type": "text/html" });
+    response.writeHead(404, {
+      "Content-Type": "text/html",
+      "Cache-Control": "no-store",
+    });
     response.end("<!doctype html><title>Not found</title>");
     return;
   }
@@ -309,7 +312,9 @@ async function intercept(context: BrowserContext, test: Case, state: State) {
       if (test.fail === "sign-up-chunk-once") state.failing = false;
       return path.startsWith("/assets/")
         ? route.fulfill({
+            // As nginx answers a missing file (docker/nginx.conf, /404.html).
             status: 404,
+            headers: { "Cache-Control": "no-store" },
             contentType: "text/html",
             body: "<!doctype html><title>Not found</title>",
           })
@@ -387,6 +392,7 @@ async function run(
     gtag: 0,
   };
   const pageErrors: string[] = [];
+  const consoleLines: string[] = [];
   try {
     await intercept(context, test, state);
     // A visitor's browser, not an automated one: the Google tag loads.
@@ -400,6 +406,30 @@ async function run(
     if (test.inject) await context.addInitScript({ content: injected });
     const page = await context.newPage();
     page.setDefaultTimeout(20_000);
+    page.on("framenavigated", (frame) => {
+      if (frame === page.mainFrame())
+        consoleLines.push(`navigated: ${frame.url()}`);
+    });
+    page.on("request", (request) => {
+      if (/\/assets\/SignInScreen-.*\.js/.test(request.url()))
+        consoleLines.push(`request: ${request.url().split("/").pop()}`);
+    });
+    page.on("requestfailed", (request) => {
+      if (/\/assets\//.test(request.url()))
+        consoleLines.push(
+          `failed: ${request.url().split("/").pop()} ${request.failure()?.errorText}`,
+        );
+    });
+    page.on("requestfinished", async (request) => {
+      if (/\/assets\/SignInScreen-/.test(request.url()))
+        consoleLines.push(
+          `file: ${request.url().split("/").pop()} ${(await request.response())?.status()}`,
+        );
+    });
+    page.on("console", (message) => {
+      if (message.type() === "error" || message.type() === "warning")
+        consoleLines.push(`${message.type()}: ${message.text().slice(0, 300)}`);
+    });
     page.on("pageerror", (error) => {
       if (!/in-app bridge/.test(error.message)) pageErrors.push(error.message);
     });
@@ -464,7 +494,7 @@ async function run(
       )) <= 1,
       `${tag}: no horizontal overflow`,
     );
-  
+
     if (test.continueWithGoogle) {
       await google(page).click();
       await page.getByRole("heading", { name: "Provider sign-in" }).waitFor();
@@ -486,6 +516,16 @@ async function run(
     } else if (!test.blocker)
       assert.ok(state.gtag > 0, `${tag}: the Google tag loaded`);
     else assert.equal(state.gtag, 0, `${tag}: the blocker kept the tag out`);
+  } catch (error) {
+    // What the visitor saw, and how the page got there.
+    for (const page of context.pages())
+      await page
+        .screenshot({ path: `${shots}/${tag}-failure.png` })
+        .catch((shot: unknown) => console.warn(`${tag}: no screenshot`, shot));
+    console.log(
+      `${tag}: ${state.documents} document(s)\n  ${[...pageErrors, ...consoleLines].join("\n  ")}`,
+    );
+    throw error;
   } finally {
     await context.close();
   }

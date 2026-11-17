@@ -9,6 +9,7 @@ vi.mock("../../lib/chunk-recovery", () => ({
   recoverChunkError: recovery.recover,
   chunkReloading: () => false,
   dismissChunkNotice: recovery.dismiss,
+  reloadWithFreshFiles: () => location.reload(),
 }));
 import { RouteError } from "../LoadingScreen";
 
@@ -35,7 +36,9 @@ afterEach(() => {
 test("a file that failed on the current release offers a reload, not a retry in place", async () => {
   const reset = vi.fn();
   render(<RouteError error={cssFailure} reset={reset} />);
-  await screen.findByText("This page didn’t finish loading. Check your connection, then reload.");
+  await screen.findByText(
+    "This page didn’t finish loading. Check your connection, then reload.",
+  );
   expect(recovery.recover).toHaveBeenCalledWith(cssFailure, false);
   fireEvent.click(screen.getByRole("button", { name: "Reload" }));
   expect(reload).toHaveBeenCalledTimes(1);

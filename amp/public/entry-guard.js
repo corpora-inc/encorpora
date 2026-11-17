@@ -22,6 +22,8 @@
   var SLOT = "amp.release-reload";
   var TTL = 60000;
   var shown = false;
+  /** AMP's files that failed to load in this document. */
+  var failedUrls = [];
   var messages = {
     load: "AMP didn’t finish loading. Check your connection, then reload.",
     engine:
@@ -77,9 +79,7 @@
     button.type = "button";
     button.className = "app-recovery-button";
     button.textContent = "Reload";
-    button.addEventListener("click", function () {
-      location.reload();
-    });
+    button.addEventListener("click", refreshThenReload);
     body.appendChild(message);
     body.appendChild(button);
     if (inPlace) {
@@ -94,10 +94,36 @@
     }
   }
 
-  function failed(kind) {
+  /** Safari keeps a failed modulepreload in its memory cache across a
+   * reload; asking for the file again, past the cache, lets the reload work.
+   * Never waits more than 3 s. */
+  function refreshThenReload() {
+    var done = false;
+    var reload = function () {
+      if (done) return;
+      done = true;
+      location.reload();
+    };
+    setTimeout(reload, 3000);
+    if (!failedUrls.length || !window.fetch || !window.Promise) return reload();
+    var asks = [];
+    for (var i = 0; i < failedUrls.length && i < 10; i++)
+      asks.push(
+        window
+          .fetch(failedUrls[i], { cache: "reload", credentials: "same-origin" })
+          .then(null, function (error) {
+            if (window.console)
+              console.warn("AMP: a file wasn’t asked for again", error);
+          })
+      );
+    Promise.all(asks).then(reload, reload);
+  }
+
+  function failed(kind, url) {
+    if (url && failedUrls.indexOf(url) < 0) failedUrls.push(url);
     if (shown) return;
     if (kind === "load" && claimReload()) {
-      location.reload();
+      refreshThenReload();
       return;
     }
     show(kind);
@@ -105,25 +131,28 @@
 
   window.ampEntryGuard = { show: show };
 
-  // Before the runtime starts, a script or stylesheet of AMP's that fails to
-  // load (load errors don't bubble: listen while they're captured).
+  // A script or stylesheet of AMP's that fails to load (load errors don't
+  // bubble: listen while they're captured). Always remembered, for the
+  // Reload's refresh; acted on only before the runtime starts.
   window.addEventListener(
     "error",
     function (event) {
       var target = event.target;
-      if (started() || !target || target === window) return;
+      if (!target || target === window) return;
       var url =
         target.tagName === "SCRIPT"
           ? target.src
           : target.tagName === "LINK"
             ? target.href
             : "";
-      if (url && ours(url)) {
+      if (!url || !ours(url)) return;
+      if (failedUrls.indexOf(url) < 0) failedUrls.push(url);
+      if (!started()) {
         if (window.console) console.error("AMP: a file didn’t load", url);
-        failed("load");
+        failed("load", url);
       }
     },
-    true,
+    true
   );
   // Code that can't even start: a browser that can't parse it, or a module
   // it imports that is gone.
@@ -139,7 +168,7 @@
     var text = String((reason && reason.message) || reason || "");
     if (
       /dynamically imported module|Importing a module script failed|error loading dynamically imported module|Failed to (?:fetch|load) module script|Unable to preload CSS/i.test(
-        text,
+        text
       )
     ) {
       if (window.console) console.error("AMP couldn’t start", reason);
