@@ -187,8 +187,8 @@ const NOT_A_STUDENTS = /^\/(?:family|purchase|consent)(?:\/|$)/;
 
 /**
  * Before practice loads: `/practice` names nobody, so it is an older
- * address. One hop, replacing it, to `/practice/<learner>`, keeping its
- * filter (`?skill=`, `?strand=`). A practice profile (`?profile=`) is a mode
+ * address. One hop, replacing it, to `/practice/<learner>`, its filter
+ * (`?skill=`, `?strand=`) becoming the address's focus. A practice profile (`?profile=`) is a mode
  * with its own address and stays. Every link in the app goes to
  * `/practice/<learner>` itself (identity.ts `practicePath`). A school
  * student on a family's screen goes to their practice the same way.
@@ -213,8 +213,16 @@ export async function practiceAddress(location: {
   );
   if (!learner) return;
   params.delete(LEARNER_KEY);
+  // An older filter (`?template=`, `?skill=`, `?strand=`) is the address's
+  // own focus now (identity.ts `practicePath`).
+  const focus = {
+    template: params.get("template") ?? undefined,
+    skill: params.get("skill") ?? undefined,
+    strand: params.get("strand") ?? undefined,
+  };
+  for (const key of ["template", "skill", "strand"]) params.delete(key);
   throw olderAddress(
-    `${practicePath(learner)}${params.size ? `?${params}` : ""}`,
+    `${practicePath(learner, focus)}${params.size ? `?${params}` : ""}`,
   );
 }
 
