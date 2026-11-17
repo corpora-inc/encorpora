@@ -6,7 +6,7 @@
     "searchHandoffs": 126,
     "navigatingEffects": 15,
     "renderNavigate": 21,
-    "silentCatches": 141,
+    "silentCatches": 140,
     "sessionProps": 54,
     "sessionReads": 33,
     "inlineQueryKeys": 29,
@@ -131,7 +131,7 @@
     "silentCatches": {
       "AccountSecurity.tsx": 2,
       "app/boot.tsx": 1,
-      "app/router.tsx": 10,
+      "app/router.tsx": 9,
       "auth-config.ts": 1,
       "auth.ts": 3,
       "BookReader.tsx": 1,
