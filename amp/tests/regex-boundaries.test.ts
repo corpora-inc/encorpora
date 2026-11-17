@@ -197,6 +197,7 @@ test("a glossary form is found only between word boundaries", () => {
     "énégatif",
     "négatifs",
     "9a.m.",
+    "\u0345rate",
   ])
     assert.deepEqual(scan(text), [], text);
   assert.deepEqual(scanForms("anything", formPattern([])), []);

@@ -11,7 +11,8 @@ const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 /** A letter, digit, apostrophe or hyphen continues a word. */
 const WORD = String.raw`[\p{L}\p{N}'-]`;
-const wordBefore = new RegExp(`${WORD}$`, "u");
+// "iu" as in the form pattern: case folding can make a mark a letter.
+const wordBefore = new RegExp(`${WORD}$`, "iu");
 
 /** One pattern for a set of lowercase forms: longest first, so "unit rate"
  * wins over "rate" at the same position. A word boundary treats hyphens and
