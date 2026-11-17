@@ -3,14 +3,14 @@
   "counts": {
     "redirects": 2,
     "validateSearch": 8,
-    "searchHandoffs": 88,
-    "navigatingEffects": 8,
+    "searchHandoffs": 87,
+    "navigatingEffects": 7,
     "renderNavigate": 5,
     "silentCatches": 87,
     "sessionProps": 21,
     "sessionReads": 10,
     "inlineQueryKeys": 17,
-    "nativeControls": 20
+    "nativeControls": 19
   },
   "files": {
     "redirects": {
@@ -33,7 +33,6 @@
       "features/navigation/PlaceSwitcher.tsx": 1,
       "features/pathways/AreaKey.tsx": 1,
       "features/pathways/PathwaysScreen.tsx": 5,
-      "features/pitch/targets.ts": 1,
       "features/practice/CurriculumPractice.tsx": 1,
       "features/profiles/api.ts": 1,
       "features/profiles/LevelScreen.tsx": 2,
@@ -82,7 +81,6 @@
     },
     "navigatingEffects": {
       "app/LegacyApp.tsx": 2,
-      "features/design/DesignScreen.tsx": 1,
       "features/school/AdoptionScreen.tsx": 1,
       "features/school/join/CardScreen.tsx": 1,
       "features/school/join/ClassScreen.tsx": 1,
@@ -184,7 +182,6 @@
     "nativeControls": {
       "AccountSecurity.tsx": 5,
       "Calculator.tsx": 1,
-      "features/onboarding/setup/PeopleRows.tsx": 1,
       "features/school/classes/grade-parts.tsx": 1,
       "features/school/ImportScreen.tsx": 1,
       "features/school/join/JoinScreen.tsx": 1,
@@ -199,5 +196,11 @@
       "StructuredWorkInput.tsx": 1
     }
   },
-  "exempt": []
+  "exempt": [
+    {
+      "category": "navigatingEffects",
+      "file": "features/design/DesignScreen.tsx",
+      "reason": "the dev gallery mirrors the canvas iframe's scrolled section (a postMessage browser event) into its own #hash"
+    }
+  ]
 }

@@ -1,12 +1,15 @@
 import { useSyncExternalStore } from "react";
 
 /*
- * The funding program a visitor came to AMP through (an Arizona ESA, an
- * Arkansas or New Hampshire EFA), before any account: one choice per tab,
- * kept in sessionStorage so a refresh, Back and every next screen (sign-up,
- * the first run, the invoice) know it without a query string. An ad's
- * `?program=` is read once on arrival (`keepArrivalProgram`), the way a
- * third party's return value is.
+ * The arrival store: what a visitor came to AMP through, before any account,
+ * kept per tab in sessionStorage so a refresh, Back and every next screen
+ * (sign-up, the first run, the invoice) know it without a query string:
+ *
+ * - the funding program (an Arizona ESA, an Arkansas or New Hampshire EFA);
+ * - the ad's campaign labels (`utm_*`), for attribution.
+ *
+ * An ad's address is read once on arrival (`keepArrival`), the way a third
+ * party's return value is.
  *
  * Dependency-free (React only): the pitch loads it without auth, router or
  * query (scripts/check-bundle-budget.ts).
@@ -51,11 +54,69 @@ export function chooseProgram(program: ProgramChoice | null) {
   for (const listener of listeners) listener();
 }
 
-/** An arrival's `?program=` (an ad's, a funding page's link), kept for the
- * tab. A visit that names none keeps the choice already made. */
-export function keepArrivalProgram(search: Record<string, unknown>) {
+/** The labels an ad puts on its link. Kept as given (each at most 100
+ * characters); readers check them against the known campaigns
+ * (lib/funded-entry.ts `campaignSearch`, which also honors a privacy
+ * preference). */
+export const CAMPAIGN_LABELS = [
+  "utm_campaign",
+  "utm_source",
+  "utm_medium",
+  "utm_content",
+] as const;
+export type ArrivalLabels = Partial<
+  Record<(typeof CAMPAIGN_LABELS)[number], string>
+>;
+const LABELS_KEY = "amp.arrival-labels";
+let labels: ArrivalLabels | undefined;
+
+/** The campaign labels this tab arrived with, unchecked ({} for none). */
+export function arrivalLabels(): ArrivalLabels {
+  if (labels !== undefined) return labels;
+  try {
+    const kept: unknown = JSON.parse(
+      sessionStorage.getItem(LABELS_KEY) ?? "{}",
+    );
+    labels = pickLabels(
+      kept && typeof kept === "object" ? (kept as Record<string, unknown>) : {},
+    );
+  } catch (error) {
+    console.warn("The arrival's campaign couldn’t be read", error);
+    labels = {};
+  }
+  return labels;
+}
+
+function pickLabels(search: Record<string, unknown>): ArrivalLabels {
+  const picked: ArrivalLabels = {};
+  for (const key of CAMPAIGN_LABELS) {
+    const value = search[key];
+    if (typeof value === "string" && value && value.length <= 100)
+      picked[key] = value;
+  }
+  return picked;
+}
+
+/** An arrival's address (an ad's, a funding page's link): its program and
+ * its campaign labels, kept for the tab. A visit that names none keeps what
+ * was kept. */
+export function keepArrival(search: Record<string, unknown>) {
   if (isProgramChoice(search.program)) chooseProgram(search.program);
-  return chosenProgram();
+  const given = pickLabels(search);
+  if (Object.keys(given).length) {
+    labels = given;
+    try {
+      sessionStorage.setItem(LABELS_KEY, JSON.stringify(given));
+    } catch (error) {
+      console.warn("The arrival's campaign lasts for this page only", error);
+    }
+  }
+  return { program: chosenProgram(), labels: arrivalLabels() };
+}
+
+/** An arrival's program, kept (`keepArrival`). */
+export function keepArrivalProgram(search: Record<string, unknown>) {
+  return keepArrival(search).program;
 }
 
 function subscribe(listener: () => void) {
@@ -68,7 +129,8 @@ export function useChosenProgram(): ProgramChoice | null {
   return useSyncExternalStore(subscribe, chosenProgram, () => null);
 }
 
-/** Forgets the cached copy (tests). */
+/** Forgets the cached copies (tests). */
 export function resetProgramChoiceForTests() {
   current = undefined;
+  labels = undefined;
 }
