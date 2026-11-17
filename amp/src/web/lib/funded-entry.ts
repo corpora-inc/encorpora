@@ -93,7 +93,11 @@ const schoolStep = (value: unknown) => {
   let url: URL;
   try {
     url = new URL(value, "https://amp.invalid");
-  } catch {
+  } catch (error) {
+    console.warn(
+      "AMP: ignored a school setup return that isn’t an address",
+      error,
+    );
     return undefined;
   }
   if (url.origin !== "https://amp.invalid") return undefined;
@@ -273,15 +277,21 @@ export function rememberFundedPurchase(
         labels: campaignSearch(search),
       }),
     );
-  } catch {
-    /* The current tab's URL still supports continuation. */
+  } catch (error) {
+    // The current tab's URL still supports continuation.
+    console.warn("AMP: the funded purchase wasn’t kept on this device", error);
   }
 }
 
 export function forgetFundedPurchase(accountId: string) {
   try {
     localStorage.removeItem(pendingPrefix + accountId);
-  } catch {}
+  } catch (error) {
+    console.warn(
+      "AMP: the funded purchase wasn’t cleared on this device",
+      error,
+    );
+  }
 }
 
 /** The funded program this account's pending purchase is for, on this
@@ -344,7 +354,8 @@ export function pendingFundedPurchase(accountId: string): string | null {
       ...safe,
       return: parsed.data.destination ?? "arkansas-efa",
     });
-  } catch {
+  } catch (error) {
+    console.warn("AMP: the funded purchase on this device wasn’t read", error);
     return null;
   }
 }

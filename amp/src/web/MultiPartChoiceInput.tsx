@@ -20,6 +20,7 @@ import {
   type MultiPartChoiceResponse,
   type PartMark,
 } from "../math/multi-part-choice";
+import { RadioControl } from "./ui/RadioControl";
 
 /* Multi-part choice: one option per blank, row or slot. Every control keeps
    its size from the first frame (a blank is as wide as its widest option),
@@ -549,8 +550,7 @@ export function MultiPartChoiceInput({
                           data-selected={selected ? "" : undefined}
                           data-mark={state}
                         >
-                          <input
-                            type="radio"
+                          <RadioControl
                             name={`${group}-${row.id}`}
                             value={c.id}
                             checked={selected}

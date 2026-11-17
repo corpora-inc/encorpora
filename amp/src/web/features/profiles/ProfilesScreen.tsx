@@ -6,6 +6,7 @@ import { buttonClass } from "../../ui/Button";
 import { Loading } from "../../ui/Loading";
 import { currentSession } from "../school/api";
 import { choosePracticeProfile, recentProfiles } from "./api";
+import { setLevelDraft } from "./level-draft";
 import { practiceAs } from "./practice-mode";
 import styles from "./Profiles.module.css";
 
@@ -47,6 +48,8 @@ export function ProfilesScreen() {
             <Link
               to="/$"
               params={{ _splat: "me/profiles/new" }}
+              // A new profile starts afresh (level-draft.ts).
+              onClick={() => setLevelDraft(session.accountId, "new", {})}
               className={buttonClass("secondary")}
             >
               New profile

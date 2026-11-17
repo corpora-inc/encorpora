@@ -1,5 +1,7 @@
 import { redirect } from "@tanstack/react-router";
+import { z } from "zod";
 import { create } from "zustand";
+import { signupEntrySchema } from "../../parent-followup/contracts";
 import { useAuthDraft } from "../features/auth/draft";
 import { continuationSearch } from "../lib/funded-entry";
 import { authStep } from "./auth-links";
@@ -38,6 +40,24 @@ import { requireSignedIn, toOwnPlace } from "./sign-in-gate";
  */
 
 type Location = { pathname: string; searchStr: string; search: unknown };
+
+/** What arrives on an address from outside the app, as the root's query
+ * schema reads it (app/router.tsx): an ad's or a program page's entry label
+ * and program, a mailed link's token, a provider's error, Stripe's return,
+ * and the older mail's `/?sign-in`, `/?reset-password` (app/legacy-aliases.ts
+ * rows) and a provider's `/?signed-in`. */
+export const inboundSearchShape = {
+  entry: signupEntrySchema.optional().catch(undefined),
+  program: z.enum(["ar-efa", "az-esa", "nh-efa"]).optional().catch(undefined),
+  token: z.string().max(2048).optional(),
+  error: z.string().max(200).optional(),
+  purchase: z.string().max(200).optional(),
+  billing: z.string().max(40).optional(),
+  "sign-in": z.string().optional(),
+  "signed-in": z.string().optional(),
+  method: z.enum(["password"]).optional().catch(undefined),
+  "reset-password": z.string().optional(),
+};
 
 /** Why a return landed where it did, for that screen to say inline: a
  * learner checkout the server couldn't match to this account opens Billing,

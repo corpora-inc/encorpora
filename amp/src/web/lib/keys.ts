@@ -54,9 +54,9 @@ export type AccountResources = {
   "family-approval": [request: string];
   /** One learner's level over time. */
   "level-trend": [learner: string];
-  /** A learner's record on the map (Pathways), and on one skill
-   * (lib/learning-view.ts). */
-  pathways: [learner?: string, skill?: string];
+  /** A learner's record on the map (`/learners/:id/progress`), and their
+   * record on one skill (`…/skills/:skill`, lib/learning-view.ts). */
+  pathways: [learner?: string, part?: "skill", skill?: string];
   /** A learner's level estimate, as the map frames it. */
   "pathways-frontier": [learner?: string];
 };
@@ -84,6 +84,12 @@ export const qk = {
   /** The whole learning catalog the search corpus is built from
    * (features/search/search-corpus.ts): the same for every visitor. */
   searchCatalog: () => ["search-catalog"] as const,
+  /** The curriculum as the map reads it (lib/learning-view.ts): the same for
+   * every visitor. */
+  pathwaysCatalog: () => ["pathways-catalog"] as const,
+  /** The family a native shell hands over (lib/family-cache.ts). */
+  nativeFamily: (identity: string | null) =>
+    ["native-family", identity] as const,
   /** The curriculum's size for the school pitch (objectives, problem
    * types, lessons): the same for every visitor. */
   schoolsCurriculum: () => ["schools", "curriculum"] as const,

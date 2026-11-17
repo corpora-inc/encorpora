@@ -11,15 +11,17 @@ export function noteSignedIn(signedIn: boolean) {
   try {
     if (signedIn) localStorage.setItem(key, "1");
     else localStorage.removeItem(key);
-  } catch {
+  } catch (error) {
     // Storage can be refused (some in-app browsers); `/` then asks first.
+    console.warn("AMP: the signed-in hint wasn’t kept", error);
   }
 }
 
 export function signedInHint(): boolean {
   try {
     return localStorage.getItem(key) === "1";
-  } catch {
+  } catch (error) {
+    console.warn("AMP: the signed-in hint wasn’t read", error);
     return false;
   }
 }
