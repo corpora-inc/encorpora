@@ -140,8 +140,12 @@ async function expectAt(page: Page, href: string, what: string) {
   assert.ok(same(here(page), href), `${what}: at ${here(page)}, not ${href}`);
   assert.doesNotMatch(here(page), /^\/(pathways|practice|me)?(\?|$)/);
 }
+/** The problem type's lesson sheet (features/pathways/LessonDialog): named
+ * by the lesson's own title, so found by the lesson it holds. */
 const lessonDialog = (page: Page) =>
-  page.getByRole("dialog", { name: "Explore a problem type" });
+  page
+    .getByRole("dialog")
+    .filter({ has: page.locator("article.problem-lesson") });
 const replayLayer = (page: Page) => page.locator("[data-replay-facts]").first();
 /** The student's sheet over the map (a layer, nav/LayerHost). */
 const studentSheet = (page: Page, student: string) =>

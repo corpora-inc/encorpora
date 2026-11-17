@@ -19,6 +19,7 @@ import { ownClassOf } from "../features/spaces/resolve";
 import { groupAddress } from "./family-redirect";
 import { OPEN_KEY, readStack } from "../nav/entities";
 import { payOverlays } from "./pay-routes";
+import { accountOverlays } from "./account-overlays";
 
 /*
  * A family's own screens (docs/architecture/spaces.md, P2): `/family/<family>`
@@ -40,32 +41,23 @@ export function familyRoutes(root: AnyRoute) {
   const payHosts = () => import("../features/pay/hosts");
   const screen = (name: string) =>
     lazyRouteComponent(screens as never, name as never);
-  /** An older account address: the same screen at its neutral address. */
-  const accountAlias = (from: string, to: string) => [
-    createRoute({
-      getParentRoute: () => root,
-      path: from,
-      staticData: { space: "account" },
-      beforeLoad: ({ location }) => {
-        throw redirect({
-          href: `${to}${location.searchStr}${location.hash ? `#${location.hash}` : ""}`,
-          replace: true,
-        });
-      },
-    }),
-    createRoute({
-      getParentRoute: () => root,
-      path: `${from}/$`,
-      staticData: { space: "account" },
-      beforeLoad: ({ location }) => {
-        const rest = location.pathname.slice(from.length);
-        throw redirect({
-          href: `${to}${rest}${location.searchStr}${location.hash ? `#${location.hash}` : ""}`,
-          replace: true,
-        });
-      },
-    }),
-  ];
+  /** An older account address: the same screen at its neutral address,
+   * with the rest of the path (`from` alone, or `from/…`). */
+  const accountAlias = (from: string, to: string) =>
+    [from, `${from}/$`].map((path) =>
+      createRoute({
+        getParentRoute: () => root,
+        path,
+        staticData: { space: "account" },
+        beforeLoad: ({ location }) => {
+          const rest = location.pathname.slice(from.length);
+          throw redirect({
+            href: `${to}${rest}${location.searchStr}${location.hash ? `#${location.hash}` : ""}`,
+            replace: true,
+          });
+        },
+      }),
+    );
   /** The account's learners, from before families had a place: the family's
    * Settings (its children), or adding a child on its Today. */
   const learners = (path: string, leaf: string, search: object) =>
@@ -289,6 +281,46 @@ export function familyRoutes(root: AnyRoute) {
     loader: childLoader,
     component: lazyRouteComponent(payHosts, "ChildPayHost"),
   });
+  // Settings paints whole: the school year, the family code and the
+  // practice defaults read the family's own class before the screen
+  // shows, so no section arrives late and pushes the others down. Its host
+  // keeps it mounted under the overlays its rows open.
+  const settings = createRoute({
+    getParentRoute: () => family,
+    path: "settings",
+    loader: async ({ context, params }) => {
+      const { session } = context as unknown as { session: AuthSession };
+      const id = (params as { family: string }).family;
+      const [data, me] = await Promise.all([
+        queryClient
+          .ensureQueryData(familyOptions(session, id))
+          .catch(() => null),
+        queryClient.ensureQueryData(meOptions(session)).catch(() => null),
+      ]);
+      const own = ownClassOf(me?.signedIn ? me : null, id, data);
+      if (!own) return;
+      const [
+        { orgOptions, calendarOptions },
+        { presenceOptions },
+        { experienceOptions },
+      ] = await Promise.all([
+        import("../features/school/api"),
+        import("../features/school/classes/api"),
+        import("../features/school/classroom/api"),
+      ]);
+      const org = await queryClient
+        .ensureQueryData(orgOptions(session, own.org))
+        .catch(() => null);
+      await Promise.all([
+        org?.can?.includes("calendar.read")
+          ? preload(calendarOptions(session, own.org))
+          : null,
+        preload(presenceOptions(session, { org: own.org, class: own.id })),
+        preload(experienceOptions(session, { kind: "class", id: own.id })),
+      ]);
+    },
+    component: lazyRouteComponent(payHosts, "SettingsHost"),
+  });
   /** Today's host: Today itself, and the pay overlay over it. */
   const today = createRoute({
     getParentRoute: () => family,
@@ -299,7 +331,6 @@ export function familyRoutes(root: AnyRoute) {
     landing,
     ...accountAlias("/family/security", "/account/security"),
     ...accountAlias("/family/access", "/account/billing"),
-    ...accountAlias("/family/privacy", "/account/privacy"),
     learners("/family/learners", "settings", {}),
     learners("/family/learners/new", "", { add: 1 }),
     family.addChildren([
@@ -346,45 +377,9 @@ export function familyRoutes(root: AnyRoute) {
       childAlias("reports", "child-reports", "FamilyMapScreen"),
       leaf("reports/grades", "FamilyGradesScreen"),
       leaf("people", "FamilyPeopleScreen"),
-      // Settings paints whole: the school year, the family code and the
-      // practice defaults read the family's own class before the screen
-      // shows, so no section arrives late and pushes the others down.
-      createRoute({
-        getParentRoute: () => family,
-        path: "settings",
-        loader: async ({ context, params }) => {
-          const { session } = context as unknown as { session: AuthSession };
-          const id = (params as { family: string }).family;
-          const [data, me] = await Promise.all([
-            queryClient
-              .ensureQueryData(familyOptions(session, id))
-              .catch(() => null),
-            queryClient.ensureQueryData(meOptions(session)).catch(() => null),
-          ]);
-          const own = ownClassOf(me?.signedIn ? me : null, id, data);
-          if (!own) return;
-          const [
-            { orgOptions, calendarOptions },
-            { presenceOptions },
-            { experienceOptions },
-          ] = await Promise.all([
-            import("../features/school/api"),
-            import("../features/school/classes/api"),
-            import("../features/school/classroom/api"),
-          ]);
-          const org = await queryClient
-            .ensureQueryData(orgOptions(session, own.org))
-            .catch(() => null);
-          await Promise.all([
-            org?.can?.includes("calendar.read")
-              ? preload(calendarOptions(session, own.org))
-              : null,
-            preload(presenceOptions(session, { org: own.org, class: own.id })),
-            preload(experienceOptions(session, { kind: "class", id: own.id })),
-          ]);
-        },
-        component: screen("FamilySettingsScreen"),
-      }),
+      // Settings, and the overlays its rows open over it (billing, privacy,
+      // sign-in, deleting the account, Pay): Settings stays mounted behind.
+      settings.addChildren([...accountOverlays(settings)]),
       leaf("cards", "FamilyCardsScreen"),
       // The tutoring group is its class's classroom: this address opens it.
       createRoute({

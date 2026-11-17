@@ -150,7 +150,7 @@ for (const [date, minutes] of [
 }
 
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
-const auth = `export async function accessSession(){return {token:"parent-one",accountId:"parent-one"};}export function onSessionChanged(){return()=>{};}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
+const auth = `export async function accessSession(){return {token:"parent-one",accountId:"parent-one"};}export function onSessionChanged(){return()=>{};}export async function signIn(){}export async function signOut(){}export function notifyDeviceSessionChanged(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
 const vite = await createServer({
   logLevel: "warn",
   plugins: [

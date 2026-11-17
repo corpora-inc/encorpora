@@ -26,7 +26,7 @@ import {
 
 // Synthetic identities and progress; real routes, catalog, layout, WebGL, and controls.
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
-const source = `export async function accessSession(){return window.pathwaysAccount ? {token:window.pathwaysAccount,accountId:window.pathwaysAccount} : null;}export function onSessionChanged(fn){const handler=()=>accessSession().then(fn);window.addEventListener('pathways-session',handler);return()=>window.removeEventListener('pathways-session',handler);}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
+const source = `export async function accessSession(){return window.pathwaysAccount ? {token:window.pathwaysAccount,accountId:window.pathwaysAccount} : null;}export function onSessionChanged(fn){const handler=()=>accessSession().then(fn);window.addEventListener('pathways-session',handler);return()=>window.removeEventListener('pathways-session',handler);}export async function signIn(){}export async function signOut(){}export function notifyDeviceSessionChanged(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
 const vite = await createServer({
   cacheDir: process.env.AMP_VITE_CACHE_DIR ?? "artifacts/vite-pathways",
   plugins: [
