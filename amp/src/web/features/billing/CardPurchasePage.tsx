@@ -84,7 +84,7 @@ function CardEntry({ session }: { session: AuthSession }) {
   return (
     <Page className={styles.page}>
       <PageHeader
-        back="/account/billing"
+        back={{ to: "/account/billing" }}
         title="Who is this plan for?"
       />
       <ul className={styles.plans}>
