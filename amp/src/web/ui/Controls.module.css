@@ -127,6 +127,8 @@
   color: var(--field-on);
   font: inherit;
   font-size: var(--text-body);
+  /* Typed text is the reader's, not the label's weight. */
+  font-weight: 400;
   transition:
     border-color var(--motion-fast) var(--ease-standard),
     box-shadow var(--motion-fast) var(--ease-standard);
@@ -135,22 +137,24 @@
   color: var(--field-placeholder);
   opacity: 1;
 }
-.input:hover:not(:disabled, :focus) {
+.input.input:hover:not(:disabled, :focus) {
   border-color: var(--field-border-hover);
 }
 /* Focus hugs the field: its edge turns to the focus ink, with a soft halo
-   around it, never a ring floating off its corners. */
-.input:focus-visible {
+   around it, never a ring floating off its corners. States carry the class
+   twice, so a screen's element rule (".account-form input") never overrides
+   their edge. */
+.input.input:focus-visible {
   outline: none;
   border-color: var(--color-focus-ring);
   box-shadow: var(--field-focus);
 }
 /* A field that says what is wrong wears the error's edge; focused, its halo
    too. */
-.input[aria-invalid="true"] {
+.input.input[aria-invalid="true"] {
   border-color: var(--color-danger-accent);
 }
-.input[aria-invalid="true"]:focus-visible {
+.input.input[aria-invalid="true"]:focus-visible {
   border-color: var(--color-danger-accent);
   box-shadow: var(--field-focus-invalid);
 }

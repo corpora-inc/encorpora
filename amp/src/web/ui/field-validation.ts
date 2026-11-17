@@ -1,4 +1,5 @@
 import {
+  useCallback,
   useLayoutEffect,
   useRef,
   useState,
@@ -137,10 +138,13 @@ export function useFieldValidation({
     node.setCustomValidity(customProblem(node));
     return fieldMessage(node, label, messages);
   };
-  const setRef: RefCallback<HTMLInputElement> = (node) => {
-    input.current = node;
-    assign(ref, node);
-  };
+  const setRef: RefCallback<HTMLInputElement> = useCallback(
+    (node) => {
+      input.current = node;
+      assign(ref, node);
+    },
+    [ref],
+  );
   return {
     message: error || shown,
     props: {

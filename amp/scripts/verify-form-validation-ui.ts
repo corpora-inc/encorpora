@@ -165,9 +165,17 @@ try {
             path: `${out}${label.replaceAll(" ", "-")}-blurred.png`,
           });
           // Finish the address: the message goes as soon as it is right.
-          await email.click();
-          await email.press("End");
+          await email.focus();
+          // The caret to the end (an email input has no selection API;
+          // macOS keyboards move it with Cmd+Right).
+          await email.press(
+            process.platform === "darwin" ? "Meta+ArrowRight" : "End",
+          );
           await email.pressSequentially("example.com");
+          assert.equal(
+            await email.inputValue(),
+            "skylar.saveland+passkey@example.com",
+          );
           assert.equal(await note.textContent(), "", `${label}: cleared`);
           assert.equal(await email.getAttribute("aria-invalid"), "false");
           assert.deepEqual(
