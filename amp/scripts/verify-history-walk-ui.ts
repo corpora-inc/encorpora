@@ -108,7 +108,9 @@ const watchPractice = `(() => {
   window.__tap = performance.now();
   const boxes = (window.__practiceBoxes = []);
   const poll = () => {
-    if (location.pathname.startsWith("/practice")) return;
+    // Practice has arrived (its address names the learner, and any focus).
+    // (Doubled escapes: this is a template string, evaluated in the page.)
+    if (/^\\/practice(\\/|$)/.test(location.pathname)) return;
     const button = document.querySelector(
       "[data-layer-frame] [data-curriculum-practice] button",
     );
