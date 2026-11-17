@@ -5,6 +5,7 @@ import {
   type GradePolicy,
   type StudentLevel,
 } from "./grade-policy.js";
+import { minutesWords, PRACTICED, practiced } from "./practice-rules.js";
 import type { TodayTodo } from "./teacher-contracts.js";
 
 /** One answer as `amp_skill_evidence` keeps its last five. */
@@ -25,9 +26,9 @@ export type TodayStudent = {
   level: StudentLevel | null;
   weekMinutes: number;
   weekProblems: number;
-  /** Work today, so a good day can say so. */
-  workedToday: boolean;
+  /** Today's work, by the same rule as the week's (practice-rules). */
   todayMinutes: number;
+  todayProblems: number;
   /** A typical week before this one, among weeks with any work. */
   usualWeeklyMinutes: number | null;
   /** The latest day with any activity, ever. */
@@ -157,15 +158,13 @@ function readyForMore(
   );
 }
 
-const plural = (count: number, one: string, many = `${one}s`) =>
-  `${count} ${count === 1 ? one : many}`;
+const capital = (text: string) => text[0]!.toUpperCase() + text.slice(1);
 /** A family's day, as a parent reads it: everyone worked, or each child who
  * did, by name. */
 function familyDay(
   students: readonly TodayStudent[],
   worked: readonly TodayStudent[],
   minutesToday: number,
-  objectives: number,
 ): TodayTodo[] {
   if (worked.length >= 2 && worked.length === students.length)
     return [
@@ -176,23 +175,25 @@ function familyDay(
           worked.length === 2
             ? "Both children worked today"
             : `All ${worked.length} children worked today`,
-        detail: `${plural(minutesToday, "active minute")}.`,
+        detail:
+          minutesToday > 0
+            ? `${capital(minutesWords(minutesToday, "active minute"))}.`
+            : "",
         students: people(worked),
         action: { kind: "tab", tab: "time", label: "See the time report" },
       },
     ];
   return worked.map((student) => {
-    const minutes = Math.round(student.todayMinutes);
     return {
       id: `worked:${student.id}`,
       kind: "good-day",
       title:
-        minutes > 0
-          ? `${student.first} practiced ${plural(minutes, "minute")} today`
+        student.todayMinutes > 0
+          ? `${student.first} practiced ${minutesWords(student.todayMinutes)} today`
           : `${student.first} practiced today`,
       detail: student.objectivesThisWeek
         ? `${skillsShownWords(student.objectivesThisWeek)} this week.`
-        : `${plural(Math.round(student.weekMinutes), "minute")} so far this week.`,
+        : `${capital(minutesWords(student.weekMinutes))} so far this week.`,
       students: people([student]),
       action: {
         kind: "student",
@@ -416,9 +417,18 @@ export function todayTodos(
                 : { kind: "tab", tab: "map", label: "See the class map" },
           },
         ];
-  const worked = students.filter((student) => student.workedToday);
-  const minutesToday = Math.round(
-    worked.reduce((sum, student) => sum + student.todayMinutes, 0),
+  // A class's "N of M practiced today" sits beside the week's "practiced"
+  // count: the same rule, so today never counts someone the week doesn't
+  // (practice-rules `practiceCounts`). A family's lines name each child who
+  // did any work today, and no family screen counts "practiced".
+  const worked = students.filter((student) =>
+    input.family
+      ? student.todayMinutes > 0 || student.todayProblems > 0
+      : practiced(student.todayMinutes, student.todayProblems),
+  );
+  const minutesToday = worked.reduce(
+    (sum, student) => sum + student.todayMinutes,
+    0,
   );
   const gained = students
     .filter((student) => student.objectivesThisWeek > 0)
@@ -431,14 +441,18 @@ export function todayTodos(
     worked.length >= rules.goodDayStudents &&
     worked.length / students.length >= rules.goodDayShare;
   const going: TodayTodo[] = input.family
-    ? familyDay(students, worked, minutesToday, objectives)
+    ? familyDay(students, worked, minutesToday)
     : goodDay
       ? [
           {
             id: "good-day",
             kind: "good-day",
             title: `${worked.length} of ${students.length} ${plural} practiced today`,
-            detail: `${minutesToday.toLocaleString("en-US")} active minutes.`,
+            detail:
+              minutesToday > 0
+                ? `${capital(minutesWords(minutesToday, "active minute"))}.`
+                : "",
+            rule: `Practiced: at least ${PRACTICED.minutes} active minutes or ${PRACTICED.problems} problems.`,
             students: people(worked),
             action: { kind: "tab", tab: "time", label: "See the time report" },
           },

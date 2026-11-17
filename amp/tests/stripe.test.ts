@@ -420,13 +420,124 @@ test("automatic tax collects the full billing address and saves it to the custom
     address: "auto",
     name: "auto",
   });
-  assert.deepEqual(taxed.calls[0]!.name_collection, {
-    individual: { enabled: true, optional: false },
-  });
+  // The billing details ask for the full name; a first-class name field
+  // too made the parent type it twice (findings #22).
+  assert.equal("name_collection" in taxed.calls[0]!, false);
   const untaxed = checkoutCapture({ ...config, automaticTax: false });
   await untaxed.gateway.createCheckout(binding.id, binding.customerId);
   assert.deepEqual(untaxed.calls[0]!.automatic_tax, { enabled: false });
   assert.equal("billing_address_collection" in untaxed.calls[0]!, false);
+  // No billing address, so the receipt's name is asked for once, here.
+  assert.deepEqual(untaxed.calls[0]!.name_collection, {
+    individual: { enabled: true, optional: false },
+  });
+  assert.deepEqual(untaxed.calls[0]!.customer_update, {
+    address: "auto",
+    name: "auto",
+  });
+});
+
+test("Checkout prefills the parent's email onto a Customer without one, and never replaces one", async () => {
+  for (const existing of [null, "changed-in-portal@example.test"]) {
+    const order: string[] = [];
+    const updates: unknown[] = [];
+    const client = {
+      customers: {
+        retrieve: async (id: string) => {
+          order.push("retrieve");
+          return { id, deleted: undefined, email: existing, livemode: false };
+        },
+        update: async (id: string, params: unknown) => {
+          order.push("update");
+          updates.push([id, params]);
+          return { id };
+        },
+      },
+      checkout: {
+        sessions: {
+          create: async () => {
+            order.push("checkout");
+            return {
+              id: "cs_fixture",
+              url: "https://checkout.stripe.test/fixture",
+              livemode: false,
+            };
+          },
+        },
+      },
+    } as unknown as Stripe;
+    const gateway = new StripeGateway(config, client);
+    await gateway.createCheckout(
+      binding.id,
+      binding.customerId,
+      "year",
+      false,
+      undefined,
+      "full",
+      "parent@example.test",
+    );
+    // Set before the session exists: Checkout reads the Customer's email.
+    assert.deepEqual(
+      order,
+      existing ? ["retrieve", "checkout"] : ["retrieve", "update", "checkout"],
+    );
+    assert.deepEqual(
+      updates,
+      existing ? [] : [[binding.customerId, { email: "parent@example.test" }]],
+    );
+  }
+  // Without a confirmed email, nothing is read or written.
+  const { calls, gateway } = checkoutCapture();
+  await gateway.createCheckout(binding.id, binding.customerId);
+  assert.equal(calls.length, 1);
+});
+
+test("a failed or inapplicable prefill never stops Checkout", async () => {
+  for (const retrieve of [
+    async () => {
+      throw new Error("timeout");
+    },
+    async (id: string) => ({ id, deleted: true }),
+    async (id: string) => ({ id, email: null, livemode: true }),
+  ]) {
+    const updates: unknown[] = [];
+    const sessions: unknown[] = [];
+    const client = {
+      customers: {
+        retrieve,
+        update: async (...args: unknown[]) => updates.push(args),
+      },
+      checkout: {
+        sessions: {
+          create: async (params: unknown) => {
+            sessions.push(params);
+            return {
+              id: "cs_fixture",
+              url: "https://checkout.stripe.test/fixture",
+              livemode: false,
+            };
+          },
+        },
+      },
+    } as unknown as Stripe;
+    const warn = console.warn;
+    console.warn = () => {};
+    try {
+      await new StripeGateway(config, client).createCheckout(
+        binding.id,
+        binding.customerId,
+        "year",
+        false,
+        undefined,
+        "full",
+        "parent@example.test",
+      );
+    } finally {
+      console.warn = warn;
+    }
+    assert.deepEqual(updates, []);
+    assert.equal(sessions.length, 1);
+  }
 });
 
 test("pinned API version supports flexible billing mode", () => {

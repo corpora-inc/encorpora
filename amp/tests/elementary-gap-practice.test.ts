@@ -576,13 +576,16 @@ test("measure-meaning-choice: each measure is computed from the listed numbers",
 });
 
 test("variable-in-situation: exactly one choice differs in kind from the other three", () => {
-  const fixedWords =
-    /days in a week|cents in a dollar|hours in a day|minutes in an hour|months in a year|each week|each night|markers the teacher has/;
+  const storyConstant =
+    /^The (?:dollars Ana saves each week|pages Sam reads each night|number of markers the teacher has): (\d+)$/;
+  const fact =
+    /days in a week|cents in a dollar|hours in a day|minutes in an hour|months in a year/;
+  let constants = 0;
   for (const p of prompts("variable-in-situation")) {
     const asksVariable = /can change, so it is a variable/.test(
       p.public.prompt,
     );
-    const isFixed = (s: string) => fixedWords.test(s);
+    const isFixed = (s: string) => storyConstant.test(s) || fact.test(s);
     const target = labels(p).filter((o) =>
       asksVariable ? !isFixed(o.label) : isFixed(o.label),
     );
@@ -591,7 +594,31 @@ test("variable-in-situation: exactly one choice differs in kind from the other t
       [p.answer],
       p.public.prompt,
     );
+    if (asksVariable) continue;
+    // "Stays the same" is about the story: its own quantity, with the
+    // story's number, never a fact such as the hours in a day.
+    constants++;
+    const story = keyed(p).match(storyConstant);
+    assert.ok(story, `${p.public.prompt} keyed ${keyed(p)}`);
+    assert.equal(Number(story[1]), nums(p.public.prompt)[0], p.public.prompt);
   }
+  assert.ok(constants > 0, "Every run asks for a constant");
+});
+test("variable-in-situation: version 1 problems replay as they were saved", () => {
+  // Version 1 keyed a fact on some seeds; saved attempts must still replay
+  // the problem the learner saw.
+  const replayed = Array.from({ length: 64 }, (_, i) =>
+    generateProblem("variable-in-situation", `replay-${i}`, 1),
+  ).filter((p) => /stays the same/.test(p.public.prompt));
+  assert.ok(replayed.every((p) => p.public.templateVersion === 1));
+  assert.ok(
+    replayed.some((p) =>
+      /hours in a day|days in a week|months in a year|minutes in an hour|cents in a dollar/.test(
+        keyed(p),
+      ),
+    ),
+    "Version 1 replay keeps its original draws",
+  );
 });
 test("story-for-subtraction-sentence: the keyed story asks for the unknown the sentence has", () => {
   for (const p of prompts("story-for-subtraction-sentence")) {
