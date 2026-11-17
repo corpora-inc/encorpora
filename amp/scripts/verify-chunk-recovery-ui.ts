@@ -294,10 +294,15 @@ async function verifyRouteImports() {
     });
     try {
       const state = await fixture(context, false, (pathname, documents) => {
+        // A payment return, signed out: the return is kept while the
+        // person signs in (app/third-party-returns.ts), so sign-in's screen
+        // is the import that fails.
         if (mode === "payment")
-          return /\/assets\/LegacyApp-[^/]+\.js$/.test(pathname);
+          return /\/assets\/SignInScreen-[^/]+\.js$/.test(pathname);
+        // A screen that opens signed out, without a redirect: a program's
+        // invoice form.
         if (mode === "input")
-          return /\/assets\/AccessScreen-[^/]+\.js$/.test(pathname);
+          return /\/assets\/InvoiceForm-[^/]+\.js$/.test(pathname);
         if (mode === "mixed" && documents === 1)
           return /\/assets\/SignInScreen-[^/]+\.css$/.test(pathname);
         return /\/assets\/SignInScreen-[^/]+\.js$/.test(pathname);
@@ -328,7 +333,7 @@ async function verifyRouteImports() {
         // Navigate through browser history without replacing the document.
         // The guard must protect edits even after the control unmounts.
         await page.evaluate(() => {
-          history.pushState({}, "", "/access");
+          history.pushState({}, "", "/invoice/arizona-esa");
           dispatchEvent(new PopStateEvent("popstate"));
         });
       }
