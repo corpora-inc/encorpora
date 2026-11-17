@@ -13,6 +13,7 @@ import { Wave } from "../../../ui/Loading";
 import { Segmented } from "../../../ui/Segmented";
 import { meOptions } from "../../../lib/query";
 import { AllowancePause } from "../../continue/AllowancePause";
+import { AccessStep } from "../pilots/ClassAccess";
 import { dateLabel, defaultPaper } from "../../workbooks/model";
 import { currentSession, orgOptions } from "../api";
 import { useStaffSession } from "../classes/api";
@@ -331,6 +332,12 @@ function Stack({
   const ids = here?.students ?? chosen.map((student) => student.id);
   const ready = ids.filter((id) => tiles[id]?.state === "ready").length;
   const printable = ids.filter((id) => tiles[id]?.state !== "seat").length;
+  // Someone here can't get a workbook until they have a seat.
+  const seatless = data.students.some(
+    (student) =>
+      !(student.canMakeWorkbook ?? student.seated) ||
+      tiles[student.id]?.state === "seat",
+  );
   const left = printable - ready;
   const toggles = !here;
 
@@ -532,6 +539,11 @@ function Stack({
         </ul>
         {/* From the class's data on first paint, whatever set is chosen, so
             choosing never moves what follows. */}
+        {/* A school's students who need a seat: the class's step that gets
+            them one, made right here (pilots/ClassAccess.tsx). */}
+        {orgKind === "school" && seatless && (
+          <AccessStep place={{ org, class: classId }} />
+        )}
         {data.canPrint && used.length > 0 && (
           <AllowancePause
             kind="workbooks"
