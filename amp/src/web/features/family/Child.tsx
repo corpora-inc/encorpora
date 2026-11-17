@@ -529,9 +529,11 @@ export function ChildSettingsSheet({
       title={child.name}
       description={
         child.capabilities.readProgress ? (
+          // A whole 44 px target, as every control is (premium rule 4).
           <Link
             to="/$"
             params={{ _splat: familyHref(place.family, `kids/${child.id}`) }}
+            className={buttonClass("quiet", "", "start")}
             data-child-progress={child.id}
           >
             Progress
