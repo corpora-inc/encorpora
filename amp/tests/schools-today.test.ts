@@ -602,6 +602,19 @@ test("Today and the week count practice by one rule, minutes under one included"
     }),
   ).find((todo) => todo.id === "good-day")!;
   assert.equal(brief.detail, "Under 1 active minute.");
+  // A family's lines count any work: no family screen counts "practiced",
+  // so a short go of two problems still shows.
+  const home = todayTodos(input({ family: true, students: recorded }));
+  const all = home.find((todo) => todo.id === "good-day");
+  assert.equal(all?.title, "All 3 children worked today");
+  assert.equal(all?.detail, "1 active minute.");
+  const one = todayTodos(
+    input({ family: true, students: [recorded[2]!, student("Ada")] }),
+  );
+  assert.ok(
+    one.some((todo) => todo.title === "Leo practiced under 1 minute today"),
+    JSON.stringify(one.map((todo) => todo.title)),
+  );
   // The spread's statistics read the tenths the server keeps, not zeros.
   const spread = summarize(recorded.map((one) => one.weekMinutes))!;
   assert.equal(spread.median, 0.3);

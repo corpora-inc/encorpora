@@ -260,8 +260,6 @@ export async function readToday(
     },
     policy,
   );
-  // Today and the week, by one rule over the same rows (practice-rules).
-  const counts = practiceCounts(students);
   return {
     class: classSummaryOf(context),
     family,
@@ -301,7 +299,8 @@ export async function readToday(
         (sum, student) => sum + student.objectivesThisWeek,
         0,
       ),
-      working: counts.week,
+      // By the rule Today's "practiced today" uses, over the same rows.
+      working: practiceCounts(students).week,
       students: named.length,
     },
   };

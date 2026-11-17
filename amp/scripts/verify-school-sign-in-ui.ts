@@ -371,7 +371,7 @@ async function sweep(
         const sizes = (await boxes(page, pictureButtons)).map((b) => b.width);
         check(
           `${label} pictures ${w}x${h} targets`,
-          Math.min(...sizes) >= 44,
+          sizes.length === 16 && Math.min(...sizes) >= 44,
           sizes,
         );
       }

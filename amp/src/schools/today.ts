@@ -417,10 +417,14 @@ export function todayTodos(
                 : { kind: "tab", tab: "map", label: "See the class map" },
           },
         ];
-  // Practiced today by the week's own rule, so today never counts someone
-  // the week doesn't (practice-rules `practiceCounts`).
+  // A class's "N of M practiced today" sits beside the week's "practiced"
+  // count: the same rule, so today never counts someone the week doesn't
+  // (practice-rules `practiceCounts`). A family's lines name each child who
+  // did any work today, and no family screen counts "practiced".
   const worked = students.filter((student) =>
-    practiced(student.todayMinutes, student.todayProblems),
+    input.family
+      ? student.todayMinutes > 0 || student.todayProblems > 0
+      : practiced(student.todayMinutes, student.todayProblems),
   );
   const minutesToday = worked.reduce(
     (sum, student) => sum + student.todayMinutes,

@@ -1,4 +1,5 @@
 import { useQueries } from "@tanstack/react-query";
+import { minutesFigure } from "../../../schools/practice-rules";
 import { Button } from "../../ui/Button";
 import { number, shortDay, TipZone } from "../school/classes/teacher-shared";
 import { childTimeOptions } from "./api";
@@ -70,7 +71,7 @@ export function FamilyWeek({ place }: { place: FamilyPlace }) {
       <div className={styles.head}>
         <h2 id="family-week">This week</h2>
         <p data-family-week-facts="">
-          {number(week.minutes)} min
+          {minutesFigure(week.minutes)} min
           {week.objectives > 0 &&
             ` · ${number(week.objectives)} ${
               week.objectives === 1 ? "skill earned" : "skills earned"
