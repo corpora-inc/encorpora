@@ -1,9 +1,10 @@
 import { redirect } from "@tanstack/react-router";
+import { currentInAppBrowser } from "../../analytics/browser-kind";
 import { z } from "zod";
 import { create } from "zustand";
 import { signupEntrySchema } from "../../parent-followup/contracts";
 import { useAuthDraft } from "../features/auth/draft";
-import { continuationSearch } from "../lib/funded-entry";
+import { carriesArrival, gateContinuation } from "../lib/funded-entry";
 import { authStep } from "./auth-links";
 import type { AuthSession } from "../auth";
 import {
@@ -13,12 +14,8 @@ import {
   type PurchaseReturn,
 } from "../purchase-return";
 import { queryClient, sessionOptions } from "../lib/query";
-import { keepArrival } from "../lib/program-choice";
-import {
-  requireSignedIn,
-  returnSearchShape,
-  toOwnPlace,
-} from "./sign-in-gate";
+import { keepArrival, keepSignUpIntent } from "../lib/program-choice";
+import { requireSignedIn, returnSearchShape, toOwnPlace } from "./sign-in-gate";
 
 /*
  * Third-party returns (amp/AGENTS.md, "Frontend architecture"): the one
@@ -181,7 +178,12 @@ export async function resumeStripeReturn() {
   const session = await queryClient.ensureQueryData(sessionOptions);
   if (!session) return;
   clearPurchaseReturn();
-  const href = await resolveStripe(session, kept, "learner", "/account/billing");
+  const href = await resolveStripe(
+    session,
+    kept,
+    "learner",
+    "/account/billing",
+  );
   throw redirect({ href: href ?? "/account/billing", replace: true });
 }
 
@@ -192,17 +194,28 @@ export async function homeReturn(location: Location) {
   const session = await queryClient.ensureQueryData(sessionOptions);
   await stripeReturn(location, "learner", session, "/account/billing");
   if (!session) return;
-  if ("signed-in" in search) await toOwnPlace();
+  if ("signed-in" in search) {
+    // A provider's sign-in: a sign-up intent kept from before its redirect
+    // is recorded now (features/auth/signup-intent.ts), never waited on, and
+    // why this tab signed up has served.
+    keepSignUpIntent(null);
+    void import("../features/auth/signup-intent")
+      .then(({ recordPendingIntent }) => recordPendingIntent())
+      .catch((error: unknown) =>
+        console.error("The sign-up intent's retry didn't load", error),
+      );
+    await toOwnPlace();
+  }
   if ("security" in search)
     throw redirect({ href: "/account/security", replace: true });
 }
 
 /** A sign-in's failure back on `/sign-in` or `/sign-up`: kept for the
  * screen to show once (features/auth/draft.ts), then one hop to the same
- * screen's clean address with its continuation, so a refresh or Back never
- * shows it again. */
-export function signInReturn(location: Location) {
-  const { error, provider, ...rest } = (location.search ?? {}) as Record<
+ * screen's clean address with the gate's own continuation, so a refresh or
+ * Back never shows it again. */
+export function signInReturn(location: AuthLocation) {
+  const { error, provider } = (location.search ?? {}) as Record<
     string,
     unknown
   >;
@@ -211,11 +224,39 @@ export function signInReturn(location: Location) {
     error: error.slice(0, 200),
     ...(typeof provider === "string" ? { provider } : {}),
   });
+  cleanAuthAddress(location);
+}
+
+/** An older sign-up link's or another browser's arrival on a signed-out
+ * `/sign-in` or `/sign-up` (`?entry=pitch-try&return=free-practice`, an
+ * ad's labels: the legacy form, read into the tab by the root's
+ * `keepInbound`): one hop to the clean address. Signed in, the route's own
+ * hop to the account's place goes first, so it is never a chain. */
+export function arrivalReturn(location: AuthLocation) {
+  // In an app's own browser the address keeps it: that address is what the
+  // app's "Open in browser" opens, and the phone's browser starts with empty
+  // storage (features/auth/OpenInBrowser.tsx writes it there when the
+  // one-tap jump didn't leave).
+  if (currentInAppBrowser()) return;
+  if (carriesArrival((location.search ?? {}) as Record<string, unknown>))
+    cleanAuthAddress(location);
+}
+
+type AuthLocation = Location & { hash?: string };
+
+/** The same auth screen with the gate's continuation only (and its
+ * fragment: a handed-off Google start), replacing this address. */
+function cleanAuthAddress(location: AuthLocation): never {
+  const { method, ...rest } = (location.search ?? {}) as Record<
+    string,
+    unknown
+  >;
   throw redirect({
-    ...authStep(
-      location.pathname === "/sign-up" ? "sign-up" : "sign-in",
-      continuationSearch(rest),
-    ),
+    ...authStep(location.pathname === "/sign-up" ? "sign-up" : "sign-in", {
+      ...gateContinuation(rest),
+      ...(method === "password" ? { method } : {}),
+    }),
+    ...(location.hash ? { hash: location.hash } : {}),
     replace: true,
   } as never);
 }

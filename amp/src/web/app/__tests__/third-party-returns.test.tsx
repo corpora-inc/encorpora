@@ -116,7 +116,9 @@ test("an enrollment return this tab didn't open stays on its step", async () => 
 test("signed out, a learner's return signs in, then resumes in one hop", async () => {
   signedIn("learner");
   queryClient.setQueryData(sessionOptions.queryKey, null);
-  const { router, hops } = routerAt(`/?billing=processing&purchase=${PURCHASE}`);
+  const { router, hops } = routerAt(
+    `/?billing=processing&purchase=${PURCHASE}`,
+  );
   await router.load();
   expect(router.state.location.pathname).toBe("/sign-in");
   expect(hops()).toBe(1);
@@ -132,7 +134,9 @@ test("signed out, a learner's return signs in, then resumes in one hop", async (
 
 test("a learner return the server can't place opens Billing, saying so", async () => {
   server.learner = null;
-  const { router, hops } = routerAt(`/?billing=processing&purchase=${PURCHASE}`);
+  const { router, hops } = routerAt(
+    `/?billing=processing&purchase=${PURCHASE}`,
+  );
   await router.load();
   expect(router.state.location.href).toBe("/account/billing");
   expect(hops()).toBe(1);
@@ -146,4 +150,67 @@ test("a provider's sign-in and a linked provider each hop once", async () => {
   await security.router.load();
   expect(security.router.state.location.pathname).toBe("/account/security");
   expect(security.hops()).toBe(1);
+});
+
+test("an older sign-up link's arrival is dropped in one hop; the gate's way back stays", async () => {
+  const { arrivalReturn, signInReturn } =
+    await import("../third-party-returns");
+  const hop = (
+    pathname: string,
+    search: Record<string, unknown>,
+    hash = "",
+  ) => {
+    try {
+      (search.error ? signInReturn : arrivalReturn)({
+        pathname,
+        searchStr: `?${new URLSearchParams(search as Record<string, string>)}`,
+        search,
+        hash,
+      });
+      return null;
+    } catch (thrown) {
+      return (thrown as { options: Record<string, unknown> }).options;
+    }
+  };
+  expect(
+    hop("/sign-up", { entry: "pitch-try", return: "free-practice" }),
+  ).toMatchObject({ to: "/sign-up", search: {}, replace: true });
+  // A handed-off Google start keeps its fragment.
+  expect(
+    hop(
+      "/sign-up",
+      { entry: "pitch-buy", utm_source: "google" },
+      "continue-with-google",
+    ),
+  ).toMatchObject({ to: "/sign-up", search: {}, hash: "continue-with-google" });
+  expect(
+    hop("/sign-in", { return: "access", program: "ar-efa" }),
+  ).toMatchObject({ to: "/sign-in", search: { return: "access" } });
+  // A failure is kept and its arrival dropped in the same hop.
+  expect(
+    hop("/sign-up", { error: "access_denied", entry: "pitch-try" }),
+  ).toMatchObject({ to: "/sign-up", search: {} });
+  // Nothing to drop: the screen's own address stays.
+  expect(hop("/sign-in", { return: "access" })).toBeNull();
+  expect(hop("/sign-up", {})).toBeNull();
+});
+
+test("in an app's own browser, an arrival stays on the address its Open in browser opens", async () => {
+  const { arrivalReturn } = await import("../third-party-returns");
+  const agent = vi
+    .spyOn(navigator, "userAgent", "get")
+    .mockReturnValue(
+      "Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Instagram 357.0.0.25.101 (iPhone16,2; iOS 18_1; en_US; en; scale=3.00; 1290x2796; 667412305)",
+    );
+  try {
+    expect(
+      arrivalReturn({
+        pathname: "/sign-up",
+        searchStr: "?entry=pitch-try",
+        search: { entry: "pitch-try" },
+      }),
+    ).toBeUndefined();
+  } finally {
+    agent.mockRestore();
+  }
 });

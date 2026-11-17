@@ -48,6 +48,29 @@ const vite = await createServer({
   server: { host: "127.0.0.1", port, strictPort: true },
 });
 await vite.listen();
+/** Why this tab signs up (lib/program-choice.ts `signUpIntent`): kept per
+ * tab, never on sign-up's address. */
+const signUpIntent = (page: Page) =>
+  page.evaluate(() =>
+    JSON.parse(sessionStorage.getItem("amp.sign-up-entry") ?? "null"),
+  );
+/** Each entry: the address opened (older links for Try and Buy, kept as
+ * deliberate legacy inputs), the tab's intent after arrival, and
+ * sign-up's heading. */
+const entries = {
+  "sign-up": { path: "/sign-up", intent: null, heading: "Create your account" },
+  "sign-in": { path: "/sign-in", intent: null, heading: "Sign in" },
+  try: {
+    path: "/try?entry=pitch-try&return=free-practice",
+    intent: { entry: "pitch-try", free: true },
+    heading: "Try AMP free",
+  },
+  buy: {
+    path: "/sign-up?entry=pitch-buy",
+    intent: { entry: "pitch-buy" },
+    heading: "Create your account to buy",
+  },
+} as const;
 const geometry = (page: Page) =>
   page.locator(".account-sign-in").evaluate((el) => {
     const r = el.getBoundingClientRect();
@@ -176,16 +199,41 @@ try {
             });
             const tag = `${engine}-${scenario.name}-${width}-${colorScheme}`;
             try {
-              for (const entry of ["sign-up", "sign-in", "try", "buy"]) {
-                const path =
-                  entry === "try"
-                    ? "/try?entry=pitch-try&return=free-practice"
-                    : entry === "buy"
-                      ? "/sign-up?entry=pitch-buy"
-                      : `/${entry}`;
-                await page.goto(origin + path);
+              for (const entry of [
+                "sign-up",
+                "sign-in",
+                "try",
+                "buy",
+              ] as const) {
+                const expected = entries[entry];
+                await page.goto(origin + expected.path);
                 await page.getByLabel("Password", { exact: true }).waitFor();
                 await settleArrival(page);
+                // Why this tab signs up is the tab's, and sign-up says it.
+                // `/try` is one hop to plain `/sign-up`; in an app's browser
+                // an older `/sign-up?entry=` keeps its arrival on the address,
+                // which is what the app's own "open in browser" opens
+                // (app/third-party-returns.ts `arrivalReturn`).
+                const arrived = new URL(page.url());
+                assert.equal(
+                  arrived.pathname,
+                  entry === "sign-in" ? "/sign-in" : "/sign-up",
+                  `${entry}: one hop`,
+                );
+                assert.equal(
+                  arrived.search,
+                  entry === "buy" ? "?entry=pitch-buy" : "",
+                  `${entry}: the in-app address`,
+                );
+                if (expected.intent)
+                  assert.deepEqual(
+                    await signUpIntent(page),
+                    expected.intent,
+                    `${entry}: the tab keeps why it signs up`,
+                  );
+                await page
+                  .getByRole("heading", { name: expected.heading, exact: true })
+                  .waitFor();
                 // Google is always offered, in its usual place.
                 assert.equal(
                   await page.locator('[data-provider="google"]').count(),
@@ -278,13 +326,23 @@ try {
                   entry === "sign-in" ? "/sign-in" : "/sign-up",
                 );
                 assert.equal(opened.hash, "#continue-with-google");
+                // The tab's arrival crosses on the handoff's address (the
+                // other browser's storage starts empty). Try it free is the
+                // trial itself: no return.
+                assert.equal(
+                  here.searchParams.get("entry"),
+                  entry === "buy" ? "pitch-buy" : null,
+                  `${entry}: the in-app address before the hint`,
+                );
                 assert.equal(
                   opened.searchParams.get("entry"),
-                  here.searchParams.get("entry"),
+                  expected.intent?.entry ?? null,
+                  `${entry}: handoff carries the entry`,
                 );
                 assert.equal(
                   opened.searchParams.get("return"),
-                  here.searchParams.get("return"),
+                  null,
+                  `${entry}: no free-practice return beside pitch-try`,
                 );
                 // No browser opened here: after a moment, the hint points
                 // at the app's menu, over the page.
@@ -311,6 +369,14 @@ try {
                   await geometry(page),
                   before,
                   "handoff does not move the form",
+                );
+                // The app's own "open in browser" opens this address: it now
+                // takes the arrival along too, and keeps it.
+                await settleArrival(page);
+                assert.equal(
+                  new URL(page.url()).searchParams.get("entry"),
+                  expected.intent?.entry ?? null,
+                  `${entry}: the address the app's menu opens`,
                 );
                 await fits(page);
                 if (entry === "sign-up")
@@ -360,19 +426,45 @@ try {
               await page
                 .getByRole("button", { name: "Create account", exact: true })
                 .click();
-              await page
-                .getByRole("heading", { name: "Check your email", exact: true })
+              // An unconfirmed new account: the emailed code is typed on this
+              // same screen, never a "Check your email" dead end.
+              const codeForm = page.getByRole("form", {
+                name: "Confirm your email",
+              });
+              await codeForm.waitFor();
+              await codeForm.getByText("parent@example.test").waitFor();
+              await codeForm.getByLabel("Code", { exact: true }).waitFor();
+              await codeForm
+                .getByRole("button", { name: "Continue", exact: true })
                 .waitFor();
+              assert.equal(new URL(page.url()).pathname, "/sign-up");
               assert.equal(submissions, 1);
-              assert.equal(
-                new URL(page.url()).searchParams.get("entry"),
-                "pitch-buy",
-              );
+              assert.deepEqual(await signUpIntent(page), {
+                entry: "pitch-buy",
+              });
+              await page
+                .getByRole("heading", {
+                  name: "Create your account to buy",
+                  exact: true,
+                })
+                .waitFor();
+              await fits(page);
+              await page.screenshot({
+                path: `${shots}/${tag}-email-code.png`,
+                fullPage: true,
+              });
               // A provider-only account offers what works: Google through
-              // the handoff, a passkey through the real browser.
+              // the handoff, a passkey through the real browser. Sign-up's
+              // plain address: the tab still knows it is buying.
               for (const method of ["google", "passkey"]) {
                 methods = [method];
-                await page.goto(origin + "/sign-up?entry=pitch-buy");
+                await page.goto(origin + "/sign-up");
+                await page
+                  .getByRole("heading", {
+                    name: "Create your account to buy",
+                    exact: true,
+                  })
+                  .waitFor();
                 await page
                   .getByLabel("Email", { exact: true })
                   .fill("parent@example.test");
@@ -419,8 +511,13 @@ try {
                   const [handoff] = await page.evaluate(
                     () => (window as any).__handoffs as string[],
                   );
-                  assert.ok(
-                    handoff.includes("/sign-up?entry=pitch-buy"),
+                  const target = new URL(
+                    `http://${handoff.replace(/^intent:\/\/|^x-safari-http:\/\//, "").replace(/#Intent;.*$/, "")}`,
+                  );
+                  assert.equal(target.pathname, "/sign-up", handoff);
+                  assert.equal(
+                    target.searchParams.get("entry"),
+                    "pitch-buy",
                     handoff,
                   );
                 }

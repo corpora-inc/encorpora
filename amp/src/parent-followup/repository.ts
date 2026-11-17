@@ -75,7 +75,7 @@ export async function completeSignup(
       : null;
     const inserted = await db.query(
       `INSERT INTO amp_parent_followups(user_id,email,program,campaign,newsletter,notice_version,unsubscribe_token,acquisition_journey_id,new_account,entry_label)
-      SELECT id,email,$2,$3,$4,$5,$6,$7,("createdAt">=$8),$9 FROM amp_auth_users WHERE id=$1
+      SELECT id,email,$2,$3,$4,$5,$6,$7,("createdAt">=$8::timestamptz-$10::interval),$9 FROM amp_auth_users WHERE id=$1
       ON CONFLICT(user_id) DO NOTHING RETURNING user_id`,
       [
         userId,
@@ -87,6 +87,9 @@ export async function completeSignup(
         journey ?? null,
         pending.created_at,
         intent.entry ?? null,
+        // A late intent (recorded after the account it is for) still marks
+        // an account made in the last half hour as new.
+        intent.late ? "30 minutes" : "0",
       ],
     );
     if (inserted.rowCount) {

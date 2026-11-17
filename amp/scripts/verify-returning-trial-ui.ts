@@ -17,7 +17,11 @@ const shots = "artifacts/returning-trial-ui";
 await mkdir(shots, { recursive: true });
 const f = await startShellFixture({ webPort: port });
 const browser = await chromium.launch();
+/** An older trial link (a follow-up email's way back): a deliberate legacy
+ * input. Today the pitch's Try it free opens plain `/sign-up`, the tab
+ * keeping why (lib/program-choice.ts, `amp.sign-up-entry`). */
 const entry = "/start?entry=pitch-try&return=free-practice";
+const tryItFree = JSON.stringify({ entry: "pitch-try", free: true });
 
 try {
   for (const width of [320, 390, 768, 1280])
@@ -68,11 +72,19 @@ try {
       );
       await page.screenshot({ path: `${shots}/family-${width}-${theme}.png` });
 
-      // Both public entry routes recognize an already signed-in account.
+      // Both public entry routes recognize an already signed-in account:
+      // sign-in, the pitch's Try it free (plain `/sign-up`, the tab knowing
+      // why) and an older sign-up link.
       for (const auth of [
         "/sign-in",
+        "/sign-up",
         "/sign-up?entry=pitch-try&return=free-practice",
       ]) {
+        if (auth === "/sign-up")
+          await page.evaluate(
+            (kept) => sessionStorage.setItem("amp.sign-up-entry", kept),
+            tryItFree,
+          );
         await page.goto(`${f.origin}${auth}`);
         await page.waitForURL((url) => url.pathname === home);
         await page
@@ -99,6 +111,14 @@ try {
   const returning = await browser.newContext();
   const signIn = await returning.newPage();
   await signIn.goto(`${f.origin}${entry}`);
+  await signIn.getByLabel("Email", { exact: true }).waitFor();
+  // Sign-in on its clean address; the tab keeps why it came.
+  assert.equal(new URL(signIn.url()).pathname, "/sign-in");
+  assert.equal(new URL(signIn.url()).search, "", "the older link is cleaned");
+  assert.equal(
+    await signIn.evaluate(() => sessionStorage.getItem("amp.sign-up-entry")),
+    tryItFree,
+  );
   await signIn.getByLabel("Email", { exact: true }).fill(f.starter.email);
   await signIn
     .getByLabel("Password", { exact: true })

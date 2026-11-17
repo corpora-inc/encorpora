@@ -28,6 +28,10 @@ export const signupIntentSchema = z.strictObject({
   entry: signupEntrySchema.optional(),
   // Pages loaded before a deploy still send the notice they showed.
   notice: z.enum([explicitNewsletterNotice, signupNotice]),
+  /** Sent after the account was created: the intent couldn't be recorded
+   * before sign-up (web/features/auth/signup-intent.ts), which never waits
+   * on it. The account still counts as new if made just before. */
+  late: z.literal(true).optional(),
 });
 export type SignupIntent = z.infer<typeof signupIntentSchema>;
 export type FollowupStage = "welcome" | "reminder";

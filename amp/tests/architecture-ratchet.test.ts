@@ -20,7 +20,13 @@
  *   property of an object that also names `to`, or of an object passed
  *   straight to navigate/redirect/buildLocation, and every JSX `search={…}`.
  *   A search made only of a third party's return value (QUERY_EXCEPTIONS) is
- *   not a handoff.
+ *   not a handoff. So is an auth address built with a continuation outside
+ *   the sanctioned mechanisms: `authStep(step, carry)` with a carry. The
+ *   search is assembled inside app/auth-links.ts, where it is excused, so
+ *   before 2026-11-17 a screen could hand anything to sign-up's query
+ *   through it uncounted (the pitch's `/sign-up?entry=pitch-try&
+ *   return=free-practice`). Screens name a way back (`authReturn`) or move
+ *   within signing in (`authMove`); why a visitor signs up is the tab's.
  * - navigatingEffects: useEffect/useLayoutEffect callbacks that navigate:
  *   navigate() (or a name bound to useNavigate()), `x.navigate(…)`,
  *   `history.push|replace|back|forward|go|pushState|replaceState(…)`,
@@ -422,6 +428,12 @@ function rawScan(file: string, source: string): Finding[] {
       if (ts.isIdentifier(node.expression) && name === "redirect")
         add("redirects", node);
 
+      // An auth address carrying a continuation, built through the
+      // sanctioned helper from outside it.
+      const carry = node.arguments[1];
+      if (name === "authStep" && carry && !carriesNothing(carry))
+        add("searchHandoffs", node);
+
       if (
         (name === "useQuery" || name === "useSuspenseQuery") &&
         file !== SESSION_HOOKS &&
@@ -638,12 +650,18 @@ test("query-string handoffs count; clearing and Stripe's return do not", () => {
       const plain = <Link to="/f" search={{}} />;
       const notNavigation = { search: "text" };
       function f({ to, search }: Options) { return search; }
+      const signUp = authStep("sign-up", { entry: "pitch-try" });
+      const carried = authStep("sign-in", pitchCarry(search));
+      const bare = authStep("sign-up");
+      const cleared = authStep("sign-in", {});
     `),
     [
       "validateSearch",
       "searchHandoffs",
       "searchHandoffs",
       "redirects",
+      "searchHandoffs",
+      "searchHandoffs",
       "searchHandoffs",
       "searchHandoffs",
     ],

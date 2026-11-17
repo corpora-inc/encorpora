@@ -5,9 +5,10 @@ import {
   keepArrival,
   keepArrivalProgram,
   resetProgramChoiceForTests,
+  signUpIntent,
 } from "../../../lib/program-choice";
 import {
-  pitchCarry,
+  choosePitchAction,
   pitchProgram,
   pitchProgramOf,
   pitchTarget,
@@ -35,14 +36,13 @@ test("a funded program's Buy is its no-account invoice, with the campaign kept",
     });
 });
 
-test("the ad's campaign is the arrival's: kept once, carried by sign-up", () => {
+test("the ad's campaign is the arrival's: kept once, never on sign-up's address", () => {
   keepArrival({ ...campaign, program: "ar-efa", gclid: "click" });
   resetProgramChoiceForTests();
   expect(arrivalLabels()).toEqual(campaign);
-  // A later screen's address names no campaign: sign-up still carries it.
-  expect(pitchTarget("card", {})).toEqual({
+  expect(pitchTarget("card", campaign)).toEqual({
     to: "/sign-up",
-    search: { ...campaign, entry: "pitch-buy" },
+    search: {},
   });
 });
 
@@ -56,31 +56,19 @@ test("the program is the tab's choice, never the next address's", () => {
   expect(chosenProgram()).toBe("az-esa");
 });
 
-test("card Buy signs up for the purchase; Try it free signs up for free practice", () => {
+test("card Buy signs up for the purchase; Try it free signs up for free practice; the tab knows which", () => {
   const search = { ...campaign, program: "nh-efa", gclid: "click" };
-  expect(pitchTarget("card", search)).toEqual({
-    to: "/sign-up",
-    search: { ...campaign, entry: "pitch-buy" },
-  });
-  expect(pitchTarget("try", search)).toEqual({
-    to: "/sign-up",
-    search: {
-      ...campaign,
-      entry: "pitch-try",
-      return: "free-practice",
-    },
-  });
-  expect(pitchTarget("try", {})).toEqual({
-    to: "/sign-up",
-    search: { entry: "pitch-try", return: "free-practice" },
-  });
+  expect(pitchTarget("card", search)).toEqual({ to: "/sign-up", search: {} });
+  expect(pitchTarget("try", search)).toEqual({ to: "/sign-up", search: {} });
+  choosePitchAction("card");
+  expect(signUpIntent()).toEqual({ entry: "pitch-buy" });
+  choosePitchAction("try");
+  expect(signUpIntent()).toEqual({ entry: "pitch-try", free: true });
 });
 
 test("unknown programs and free-text labels never travel", () => {
   expect(pitchProgram("tx-esa")).toBeUndefined();
-  expect(
-    pitchCarry({ program: "tx-esa", utm_source: "me@example.com" }),
-  ).toEqual({});
+  keepArrival({ program: "tx-esa", utm_source: "me@example.com" });
   expect(arrivalLabels()).toEqual({});
   expect(() => pitchTarget("funded", { program: "tx-esa" })).toThrow();
 });

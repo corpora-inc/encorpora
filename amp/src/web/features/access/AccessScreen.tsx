@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { RootLink } from "../../nav/root";
 import { Link, useNavigate } from "@tanstack/react-router";
-import { authStep } from "../../app/auth-links";
+import { authReturn } from "../../app/auth-links";
 import { meOptions } from "../../lib/query";
 import { useSession } from "../../lib/session";
 import { Button, buttonClass } from "../../ui/Button";
@@ -120,7 +120,7 @@ export function AccessScreen() {
             )}
             {query.data?.signedIn === false && (
               <Link
-                {...authStep("sign-in", { return: "access" })}
+                {...authReturn("sign-in", "access")}
                 className={buttonClass("primary")}
               >
                 Sign in again

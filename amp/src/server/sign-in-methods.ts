@@ -151,6 +151,13 @@ export function existingAccountEmail(
   });
 }
 
+/** A sign-up code: six digits, valid for ten minutes. */
+export const SIGN_UP_CODE_LENGTH = 6;
+export const SIGN_UP_CODE_SECONDS = 600;
+/** Where the code is typed: the sign-up screen's own path (better-auth's
+ * email-code plugin), which confirms the address and signs in. */
+export const CODE_VERIFY_PATH = "/email-otp/verify-email";
+
 /** The password-reset email. An account without a password is told how it
  * signs in; the reset link is offered only as a way to add a password. */
 export function resetPasswordEmail(

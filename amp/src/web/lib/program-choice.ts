@@ -6,7 +6,10 @@ import { useSyncExternalStore } from "react";
  * (sign-up, the first run, the invoice) know it without a query string:
  *
  * - the funding program (an Arizona ESA, an Arkansas or New Hampshire EFA);
- * - the ad's campaign labels (`utm_*`), for attribution.
+ * - the ad's campaign labels (`utm_*`), for attribution;
+ * - why this visitor is signing up (`signUpEntry`): the pitch's Try it free
+ *   or Buy, a partner's link. It picks the sign-up screen's words and is
+ *   recorded with the new account; it never rides on an address.
  *
  * An ad's address is read once on arrival (`keepArrival`), the way a third
  * party's return value is.
@@ -110,11 +113,90 @@ function optedOut() {
   );
 }
 
-/** An arrival's address (an ad's, a funding page's link): its program and
- * its campaign labels, kept for the tab. A visit that names none keeps what
- * was kept. */
+/** Why a visitor signs up: what they chose on the pitch (`pitch-*`, a
+ * choice that survives a privacy preference), or a partner's link label
+ * (measurement, dropped under GPC). parent-followup/contracts.ts
+ * `signupEntrySchema` is the server's list (lib/__tests__/program-choice.test.ts
+ * keeps the two equal). */
+export const SIGN_UP_ENTRIES = [
+  "pitch-try",
+  "pitch-workbook",
+  "pitch-buy",
+  "openai-math-path",
+  "openai-math-plans",
+] as const;
+export type SignUpEntry = (typeof SIGN_UP_ENTRIES)[number];
+const isSignUpEntry = (value: unknown): value is SignUpEntry =>
+  SIGN_UP_ENTRIES.includes(value as SignUpEntry);
+const isPitchChoice = (value: SignUpEntry) => value.startsWith("pitch-");
+
+/** What a sign-up is for: an entry, and whether it starts the free trial
+ * (an older link's `return=free-practice`, the pitch's Try it free). */
+export type SignUpIntent = { entry?: SignUpEntry; free?: boolean };
+const ENTRY_KEY = "amp.sign-up-entry";
+let intent: SignUpIntent | undefined;
+
+/** Why this tab is signing up ({} for nothing in particular). */
+export function signUpIntent(): SignUpIntent {
+  if (intent !== undefined) return intent;
+  try {
+    const kept: unknown = JSON.parse(sessionStorage.getItem(ENTRY_KEY) ?? "{}");
+    intent = pickIntent(
+      kept && typeof kept === "object" ? (kept as Record<string, unknown>) : {},
+    );
+  } catch (error) {
+    console.warn("Why this tab is signing up couldn’t be read", error);
+    intent = {};
+  }
+  return intent;
+}
+
+function pickIntent(value: Record<string, unknown>): SignUpIntent {
+  const entry =
+    isSignUpEntry(value.entry) && (isPitchChoice(value.entry) || !optedOut())
+      ? value.entry
+      : undefined;
+  return {
+    ...(entry ? { entry } : {}),
+    ...(value.free === true || entry === "pitch-try" ? { free: true } : {}),
+  };
+}
+
+/** Sets why this tab is signing up: the pitch's Try it free or Buy, before
+ * it opens sign-up at its plain address. `null` forgets it (Sign in). */
+export function keepSignUpIntent(next: SignUpIntent | null) {
+  intent = next ? pickIntent(next) : {};
+  try {
+    if (Object.keys(intent).length)
+      sessionStorage.setItem(ENTRY_KEY, JSON.stringify(intent));
+    else sessionStorage.removeItem(ENTRY_KEY);
+  } catch (error) {
+    console.warn("Why this tab is signing up lasts for this page only", error);
+  }
+}
+
+/** The labels titles and measurement read for this tab (the program, why
+ * it signs up), as an ad's address would carry them; never put on one. */
+export function arrivalTitleLabels(): Record<string, string> {
+  const { entry, free } = signUpIntent();
+  const program = chosenProgram();
+  return {
+    ...(program ? { program } : {}),
+    ...(entry ? { entry } : {}),
+    ...(free && entry !== "pitch-try" ? { return: "free-practice" } : {}),
+  };
+}
+
+/** An arrival's address (an ad's, a funding page's link, an older sign-up
+ * link): its program, its campaign labels and why it signs up, kept for the
+ * tab. A visit that names none keeps what was kept. */
 export function keepArrival(search: Record<string, unknown>) {
   if (isProgramChoice(search.program)) chooseProgram(search.program);
+  if (isSignUpEntry(search.entry) || search.return === "free-practice")
+    keepSignUpIntent({
+      ...(isSignUpEntry(search.entry) ? { entry: search.entry } : {}),
+      free: search.return === "free-practice",
+    });
   const given = optedOut() ? {} : pickLabels(search);
   if (Object.keys(given).length) {
     labels = given;
@@ -146,4 +228,5 @@ export function useChosenProgram(): ProgramChoice | null {
 export function resetProgramChoiceForTests() {
   current = undefined;
   labels = undefined;
+  intent = undefined;
 }

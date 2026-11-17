@@ -258,7 +258,7 @@ test("the pitch reaches GA with its titles and video, Buy and try events, saniti
   const bundle = await build({
     stdin: {
       contents:
-        'import * as amp from "./src/web/lib/analytics"; window.amp = amp;',
+        'import * as amp from "./src/web/lib/analytics"; import * as choice from "./src/web/lib/program-choice"; window.amp = amp; window.ampChoice = choice;',
       resolveDir: process.cwd(),
     },
     bundle: true,
@@ -410,24 +410,35 @@ test("the pitch reaches GA with its titles and video, Buy and try events, saniti
       ],
     );
 
-    // Each sign-up intent is its own title on the same sanitized URL.
-    await page.evaluate(() => {
-      history.pushState(
-        {},
-        "",
-        "/sign-up?entry=pitch-try&return=free-practice&program=ar-efa&email=private@example.test",
-      );
-      (window as any).amp.trackGooglePage();
-    });
-    await awaitHits("page_view", 2);
-    await page.evaluate(() => {
-      history.pushState({}, "", "/sign-up?entry=pitch-buy&program=ar-efa");
-      (window as any).amp.trackGooglePage();
-    });
-    await awaitHits("page_view", 3);
+    // Each sign-up intent is its own title on the same plain URL: the
+    // pitch's Try it free and Buy open `/sign-up` with no query, and why the
+    // visitor signs up (and the ad's program) is the tab's
+    // (lib/program-choice.ts: `amp.sign-up-entry`, `amp.program-choice`).
+    let views = named("page_view").length;
+    for (const intent of [
+      { entry: "pitch-try", free: true },
+      { entry: "pitch-buy" },
+    ]) {
+      // Each from the pitch, as a visitor goes: Google's tag reads a page's
+      // title as its page view is processed, so each view lands first.
+      await page.evaluate(() => {
+        history.pushState({}, "", "/");
+        (window as any).amp.trackGooglePage();
+      });
+      await awaitHits("page_view", ++views);
+      await page.evaluate((kept) => {
+        // As the pitch's Try it free and Buy keep it, before sign-up opens.
+        const choice = (window as any).ampChoice;
+        choice.chooseProgram("ar-efa");
+        choice.keepSignUpIntent(kept);
+        history.pushState({}, "", "/sign-up");
+        (window as any).amp.trackGooglePage();
+      }, intent);
+      await awaitHits("page_view", ++views);
+    }
     assert.deepEqual(
       named("page_view")
-        .slice(1)
+        .filter((h) => h.get("dl") === "https://amp.corpora.inc/sign-up")
         .map((h) => [h.get("dl"), h.get("dt"), h.get("ep.program")]),
       [
         ["https://amp.corpora.inc/sign-up", "Try AMP Free | AMP", "ar-efa"],

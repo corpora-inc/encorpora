@@ -311,7 +311,8 @@ try {
         await serve(page, state, faults);
         if (entry.slug === "new-hampshire-efa") {
           // A funding page's free sign-up names its program (an older link's
-          // `?program=`, which the tab then keeps).
+          // `?program=`, a deliberate legacy input): one hop to the clean
+          // `/sign-up`, the tab keeping the trial, program and campaign.
           await page.goto(
             `${origin}/sign-up?return=free-practice&program=nh-efa&${entryCampaign}`,
           );
@@ -327,12 +328,22 @@ try {
               );
               throw e;
             });
+          assert.equal(new URL(page.url()).pathname, "/sign-up");
+          assert.equal(new URL(page.url()).search, "", "older link cleaned");
+          // A reload of the clean address still knows all of it.
           await page.reload();
           await page.getByText("Approved New Hampshire EFA vendor.").waitFor();
-          assert.equal(
-            new URL(page.url()).searchParams.get("utm_campaign"),
-            "nh-efa-launch",
+          await page.getByRole("heading", { name: "Try AMP free" }).waitFor();
+          assert.deepEqual(
+            await page.evaluate(() => ({
+              intent: JSON.parse(
+                sessionStorage.getItem("amp.sign-up-entry") ?? "null",
+              ),
+              program: sessionStorage.getItem("amp.program-choice"),
+            })),
+            { intent: { free: true }, program: "nh-efa" },
           );
+          assert.equal((await arrival(page))?.utm_campaign, "nh-efa-launch");
           await capture(page, `free-signup-nh-${width}-${theme}`);
         }
         // Signed out, a program's older purchase address is its public
