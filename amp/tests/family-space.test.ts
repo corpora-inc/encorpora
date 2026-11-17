@@ -81,7 +81,7 @@ const kid = (
     progress: "",
     workbooks: null,
     practiceHere: null,
-    continue: `/continue/${id}`,
+    continue: `/pay/${id}`,
   },
   ...over,
 });
@@ -192,9 +192,6 @@ test("personal account settings keep a parent's family without adopting a teachi
     "/account/billing/records",
     "/account/privacy",
     "/account/security",
-    "/purchase/funded",
-    "/continue/child-1",
-    "/purchase/annual",
   ]) {
     const space = resolveSpace(
       { pathname: path, space: "account" },
@@ -228,6 +225,32 @@ test("personal account settings keep a parent's family without adopting a teachi
     settingsFamilyOf({ families: [place(B, "co-teacher")], next: null }),
     null,
   );
+});
+
+test("paying for a learner highlights no Settings tab: it is a step, not a setting", () => {
+  const families: FamilyPlaces = {
+    families: [
+      {
+        familyId: A,
+        role: "holder",
+        displayName: "Fixture family",
+        classId: null,
+        orgId: null,
+        teachingPlace: null,
+        capabilities: { readFamily: true, readTeaching: false },
+      },
+    ],
+    next: null,
+  };
+  for (const path of ["/pay/child-1", "/pay/child-1/card", "/pay/child-1/esa/plan"]) {
+    const space = resolveSpace({ pathname: path, space: "account" }, adult(power), {
+      families,
+      family: familyA,
+    });
+    assert.equal(space.space, "account", path);
+    assert.notEqual(space.active, "settings", path);
+    assert.deepEqual(space.tabs, [], path);
+  }
 });
 
 test("a family's address is its own frame, Today at its root and a child's page under it", () => {

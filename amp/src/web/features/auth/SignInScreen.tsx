@@ -12,13 +12,17 @@ import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
 import { Button, buttonClass } from "../../ui/Button";
 import { Toast } from "../../ui/Toast";
 import { useLocation, useNavigate } from "@tanstack/react-router";
-import { authConfigOptions, sessionOptions } from "../../lib/query";
-import { queryClient } from "../../lib/query-client";
+import { authConfigOptions } from "../../lib/query";
 import { useLoggedError } from "../../feedback";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { accountClient } from "../../account-client";
-import { signIn, accessSession, notifyAccountSessionChanged } from "../../auth";
+import {
+  signIn,
+  accessSession,
+  notifyAccountSessionChanged,
+  type AuthSession,
+} from "../../auth";
 import {
   EmailDivider,
   ProviderButtons,
@@ -272,7 +276,7 @@ export function SignInScreen() {
         if (!active) return;
         if (session) {
           notifyAccountSessionChanged(session);
-          await continueAfterSignIn();
+          await continueAfterSignIn(session);
           return;
         }
         trackAuth("auth_failure", {
@@ -347,20 +351,22 @@ export function SignInScreen() {
     });
   }
   const returnTo = continuationUrl(carry, "/");
+  // A new account's own destination is its first question: the address a
+  // confirmation link or a provider's sign-up returns to, never `/`.
+  const firstRunTo = returnTo === "/" ? "/start" : returnTo;
   // Sign-in and sign-up resume the same account: its place, or the role
   // question when it has no place yet.
   const done = async () => {
     const session = await measureAuth("session", accessSession);
     if (!session) throw new Error("Sign-in didn’t finish. Please try again.");
     notifyAccountSessionChanged(session);
-    await continueAfterSignIn();
+    await continueAfterSignIn(session);
   };
-  async function continueAfterSignIn() {
+  async function continueAfterSignIn(session: AuthSession) {
     // Nothing asked for: straight to the account's place (or its first
     // question), its final address, never through `/`.
-    const session = queryClient.getQueryData(sessionOptions.queryKey);
     const href =
-      returnTo === "/" && session
+      returnTo === "/"
         ? await import("../home/destination")
             .then(({ homeDestination }) => homeDestination(session))
             .catch((error) => {
@@ -475,7 +481,7 @@ export function SignInScreen() {
           name: "",
           email: email.trim(),
           password,
-          callbackURL: returnTo,
+          callbackURL: firstRunTo,
         });
         fail(result);
         // Where email must be confirmed first, no session is issued yet. A
@@ -566,7 +572,7 @@ export function SignInScreen() {
             provider,
             fetchOptions: { timeout: 15_000 },
             callbackURL: returnTo,
-            newUserCallbackURL: returnTo,
+            newUserCallbackURL: firstRunTo,
             errorCallbackURL: `${step === "create" ? "/sign-up" : "/sign-in"}?${new URLSearchParams(
               {
                 provider,

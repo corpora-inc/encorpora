@@ -10,6 +10,8 @@
  */
 import { useState } from "react";
 import { accountClient } from "../../account-client";
+import { accessSession } from "../../auth";
+import { homeDestination } from "../home/destination";
 import {
   NEW_USER_CONFIRM_PATH,
   PERSONA_PASSPHRASE,
@@ -34,17 +36,29 @@ const post = (path: string, body: unknown) =>
     body: JSON.stringify(body),
   });
 
-function openFresh(home: string) {
+/** Forgets this device's last person, then loads the new one's own place
+ * (`destination.ts`, what sign-in opens): never `/`, which would only offer
+ * it. `home` is a persona's fixed screen, when it has one. */
+async function openFresh(home: string) {
   localStorage.clear();
   sessionStorage.clear();
-  location.assign(home);
+  location.assign(home === "/" ? await destination() : home);
+}
+/** The signed-in account's destination, or `/` when it can't be read. */
+async function destination() {
+  const session = await accessSession();
+  if (!session) return "/";
+  return homeDestination(session).catch((error) => {
+    console.warn("The persona's place didn't load; opening /", error);
+    return "/";
+  });
 }
 
 /** A brand-new account, in exactly a real person's state after signing up:
  * the sign-up screen's own call (`SignInScreen.tsx`: no name, return to "/"),
  * then the address confirmed as the emailed link confirms it (the dev
- * server's NEW_USER_CONFIRM_PATH), then home, where the app asks "What brings
- * you to AMP?". */
+ * server's NEW_USER_CONFIRM_PATH), then its destination, as sign-up opens
+ * it: "What brings you to AMP?" (/start). */
 async function signUpNewUser() {
   await post("/api/auth/sign-out", {}).catch(() => undefined);
   const email = newUserEmail();
@@ -80,7 +94,7 @@ async function signUpNewUser() {
         `New account could not sign in (${signedIn.error.status}): ${signedIn.error.message ?? signedIn.error.statusText} [${email}]`,
       );
   }
-  openFresh("/");
+  await openFresh("/");
 }
 
 async function signInAs(persona: PreviewPersona) {
@@ -93,7 +107,7 @@ async function signInAs(persona: PreviewPersona) {
     throw new Error(
       `${persona.name} could not sign in (${response.status}). Seed the preview: scripts/design-preview.sh reseed`,
     );
-  openFresh(persona.home);
+  await openFresh(persona.home);
 }
 
 export function PersonaSwitcher() {

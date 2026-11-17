@@ -393,7 +393,7 @@ function chosenLearner(
   };
   // Named: that learner or profile, of the kind named, or nobody. A path
   // that names a learner may name one of this adult's own practice profiles
-  // (a profile is their learner): its Continue with AMP (`/continue/<id>`)
+  // (a profile is their learner): its Continue with AMP (`/pay/<id>`)
   // is the profile's own way on, never "not available". A search value
   // (`?learner=`) never names a profile (CP-2 r3).
   if (named)

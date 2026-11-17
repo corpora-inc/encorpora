@@ -33,7 +33,7 @@
   align-content: center;
   min-width: 0;
 }
-/* Narrow: the title on its own line, the figures under it in equal
+/* Under 560 px: the title on its own line, the figures under it in equal
    columns, the action last, full width. */
 .cell[data-part="title"],
 .cell[data-part="action"] {
@@ -50,9 +50,29 @@
 .cell[data-part="action"]:empty {
   display: none;
 }
-@container (max-width: 339px) {
+/* A phone (the list under 400 px, where three figures and their labels no
+   longer fit side by side): one column. The title, each figure on a line
+   of its own, close together, then the action. */
+@container (max-width: 399px) {
   .row {
-    grid-template-columns: repeat(var(--figures-narrow), minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--space-1);
+  }
+  .cell[data-part="figure"]:empty {
+    display: none;
+  }
+  .cell[data-part="action"] {
+    margin-top: var(--space-2);
+  }
+  /* A row with no figures (yourself, under the children): its action on
+     the title's line. */
+  .row:not(:has(> [data-part="figure"]:not(:empty))) {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .row:not(:has(> [data-part="figure"]:not(:empty))) > [data-part="title"],
+  .row:not(:has(> [data-part="figure"]:not(:empty))) > [data-part="action"] {
+    grid-column: auto;
+    margin-top: 0;
   }
 }
 /* From 560 px the action shares the title's line, in the last column. */

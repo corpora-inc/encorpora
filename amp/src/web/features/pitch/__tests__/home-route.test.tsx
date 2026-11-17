@@ -30,6 +30,9 @@ vi.mock("../../../auth", () => ({
 vi.mock("../../../app/LegacyApp", () => ({
   LegacyApp: () => <h1>Signed-in app</h1>,
 }));
+vi.mock("../../home/Launcher", () => ({
+  Launcher: () => <h1>Launcher</h1>,
+}));
 vi.mock("../../auth/SignInScreen", () => ({
   SignInScreen: () => <h1>Sign-up screen</h1>,
 }));
@@ -215,12 +218,11 @@ test("without a program, Buy is the card plan and continues to checkout after si
   expect(chosenPlan()).toBe("month");
 });
 
-test("a signed-in parent at / keeps the app", async () => {
+test("a signed-in parent at / sees the launcher, never a redirect", async () => {
   state.session = { token: "t", accountId: "parent" } as AuthSession;
-  const { analytics } = await open("/");
-  expect(
-    await screen.findByRole("heading", { name: "Signed-in app" }),
-  ).toBeTruthy();
+  const { analytics, router } = await open("/");
+  expect(await screen.findByRole("heading", { name: "Launcher" })).toBeTruthy();
+  expect(router.state.location.pathname).toBe("/");
   expect(
     screen.queryByText("See how far your child can go in math."),
   ).toBeNull();

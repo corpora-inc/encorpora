@@ -49,6 +49,8 @@ const fail = (label: string, detail: unknown = "") => {
   console.error(`FAIL ${label}`, detail);
 };
 
+// The dev server's "New user" confirms the address in this same database.
+process.env.AMP_DATABASE_URL ??= process.env.AMP_TEST_DATABASE_URL;
 const f = await startShellFixture({ webPort: port });
 const origin = f.origin;
 const browser = await chromium.launch();
@@ -130,8 +132,10 @@ const forget = (page: Page) =>
 /** "What brings you to AMP?" → I'm a parent → one child → their practice. */
 async function firstRun(page: Page) {
   // `/` is the launcher: a new account's one way on is to start.
+  // Typed, `/` welcomes a new account, never an empty page.
   await page.goto(`${origin}/`);
   await page.locator("[data-launcher]").waitFor();
+  await page.getByRole("heading", { name: "Welcome to AMP" }).waitFor();
   await forget(page);
   await page.getByRole("link", { name: "Get started", exact: true }).click();
   await page
@@ -451,6 +455,92 @@ async function walk(width: number, w: Walk) {
   }
 }
 
+/** Every way in opens its destination itself: a new account lands on its
+ * first question (/start) in one navigation, never through `/`. */
+async function entries(width: number) {
+  const label = `${width} sign-up`;
+  // The sign-up screen, as a person fills it in.
+  {
+    const context = await browser.newContext({
+      viewport: { width, height: 900 },
+    });
+    await context.addInitScript(recordHistory);
+    const page = await context.newPage();
+    page.setDefaultTimeout(20_000);
+    const seen: string[] = [];
+    try {
+      await page.goto(`${origin}/sign-up`);
+      const fallback = page.getByRole("button", {
+        name: "Use a password instead",
+      });
+      const password = page.getByLabel("Password", { exact: true });
+      await Promise.race([fallback.waitFor(), password.waitFor()]);
+      if (await fallback.isVisible()) await fallback.click();
+      await page
+        .getByLabel("Email")
+        .fill(`walk-${randomUUID().slice(0, 8)}@example.com`);
+      await password.fill("synthetic long fixture passphrase");
+      await settled(page);
+      await forget(page);
+      page.on("framenavigated", (frame) => {
+        if (frame === page.mainFrame())
+          seen.push(new URL(frame.url()).pathname);
+      });
+      await page.getByRole("button", { name: "Create account" }).click();
+      await page.waitForURL((url) => url.pathname === "/start");
+      await page
+        .getByRole("heading", { name: "What brings you to AMP?" })
+        .waitFor();
+      await settled(page);
+      await oneHop(page, `${label}: Create account`, "link");
+      if (seen.includes("/")) fail(`${label}: went through /`, seen);
+      console.log(`ok ${label}: ${seen.join(" → ")}`);
+    } catch (error) {
+      fail(`${label}: didn't land on /start`, {
+        at: page.url(),
+        seen,
+        error: String(error).split("\n")[0],
+      });
+    } finally {
+      await context.close();
+    }
+  }
+  // The design preview's "New user": a brand-new account, then its place.
+  {
+    const label = `${width} dev New user`;
+    const context = await browser.newContext({
+      viewport: { width, height: 900 },
+    });
+    await context.addInitScript(recordHistory);
+    const page = await context.newPage();
+    page.setDefaultTimeout(20_000);
+    const seen: string[] = [];
+    try {
+      await page.goto(`${origin}/dev/personas`);
+      const create = page.getByRole("button", { name: /New user/ });
+      await create.waitFor();
+      page.on("framenavigated", (frame) => {
+        if (frame === page.mainFrame())
+          seen.push(new URL(frame.url()).pathname);
+      });
+      await create.click();
+      await page.waitForURL((url) => url.pathname === "/start");
+      await page
+        .getByRole("heading", { name: "What brings you to AMP?" })
+        .waitFor();
+      await settled(page);
+      // A full load of /start: the router's own stamp, no redirect.
+      await oneHop(page, `${label}: New user`, "load");
+      if (seen.includes("/")) fail(`${label}: went through /`, seen);
+      console.log(`ok ${label}: ${seen.join(" → ")}`);
+    } catch (error) {
+      fail(`${label}: didn't land on /start`, String(error).split("\n")[0]);
+    } finally {
+      await context.close();
+    }
+  }
+}
+
 /** A screen that throws while rendering: an inline error in the content
  * area, the bar and menu still working, and Go home leaving it. */
 async function failingScreen(width: number) {
@@ -495,6 +585,7 @@ try {
     for (const w of walks)
       if (!only || w.id.includes(only)) await walk(width, w);
     if (!only || "failing screen".includes(only)) await failingScreen(width);
+    if (!only || "sign-up new user".includes(only)) await entries(width);
   }
 } finally {
   await browser.close();

@@ -2,7 +2,7 @@
  * Whose learning screen an address names (docs/architecture/spaces.md,
  * "Learning screens"), in one order everywhere: the path's own learner (a
  * family's child, `/family/<family>/kids/<learner>/…`; `/learners/<id>/…`;
- * `/continue/<id>`), then a practice profile (`?profile=`, a mode), then the
+ * `/pay/<id>`), then a practice profile (`?profile=`, a mode), then the
  * legacy `?learner=` (an older link; its route redirects it to the canonical
  * address before it shows). Null: the address names nobody. Pure, so a
  * loader, the resolver, the learning view and practice all read the same
@@ -12,7 +12,7 @@ export type AddressedIdentity = { kind: "learner" | "profile"; id: string };
 
 const UUID = "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}";
 const PATH = new RegExp(
-  `^/(?:learners|continue|family/${UUID}/kids)/([^/]+)`,
+  `^/(?:learners|pay|family/${UUID}/kids)/([^/]+)`,
   "i",
 );
 const text = (value: unknown) =>
@@ -31,7 +31,7 @@ export function addressedIdentity(
 }
 
 /** Whether the path itself names the learner (`/learners/<id>`,
- * `/continue/<id>`, a family child's address), rather than a search value.
+ * `/pay/<id>`, a family child's address), rather than a search value.
  * Only a path may name one of the adult's own practice profiles as a
  * learner; `?learner=` never names a profile (CP-2 r3). */
 export const namesLearnerByPath = (pathname: string) => PATH.test(pathname);

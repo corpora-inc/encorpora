@@ -16,6 +16,7 @@ test("a return never carries a link's secret or returns to one", () => {
     "/join/ABC123",
     "/start/parent",
     "/continue/pip",
+    "/pay/pip",
     "/purchase/annual?billing=processing&purchase=cs_1",
     "https://elsewhere.example/school",
     "//elsewhere.example",

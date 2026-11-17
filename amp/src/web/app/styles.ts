@@ -12,8 +12,6 @@ import "../scene/scene-player.css";
 import "../native-session.css";
 import "../parent-consent.css";
 import "../progress-workspace.css";
-import "../annual-purchase.css";
-import "../funding-purchase.css";
 import "../family-center.css";
 import "../account-security.css";
 import "../plan-options.css";

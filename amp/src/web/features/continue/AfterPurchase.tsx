@@ -43,7 +43,7 @@ export function AfterPurchase() {
       learner.hasAccess &&
       (!learner.defaultName || learner.adult)
     )
-      forgetContinuation();
+      forgetContinuation(session!.accountId);
   }, [naming, learner?.id, learner?.defaultName]);
   const shown =
     !dismissed &&
@@ -59,7 +59,7 @@ export function AfterPurchase() {
       accountId={session.accountId}
       learner={learner}
       onDone={() => {
-        forgetContinuation();
+        forgetContinuation(session!.accountId);
         setDismissed(true);
       }}
     />

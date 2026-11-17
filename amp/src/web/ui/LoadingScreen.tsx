@@ -113,9 +113,12 @@ export function RouteError({
   error,
   reset,
   map,
+  home = "/",
 }: {
   error: unknown;
   reset: () => void;
+  /** Where Go home goes: this person's own place, else `/`. */
+  home?: string;
   /** The map this failed screen is (a family's child's, at its own
    * address), which "Back to map" opens closed; your own is `/pathways`. */
   map?: string | null;
@@ -164,9 +167,9 @@ export function RouteError({
             </button>
           </div>
         ) : (
-          // Always a way out that works: a fresh load of the root (nav/root.tsx),
-          // which opens this person's place, whatever state this screen was in.
-          <a className={buttonClass("secondary")} href="/">
+          // Always a way out that works: a fresh load of this person's own
+          // place (lib/home-place.ts), whatever state this screen was in.
+          <a className={buttonClass("secondary")} href={home}>
             Go home
           </a>
         )
