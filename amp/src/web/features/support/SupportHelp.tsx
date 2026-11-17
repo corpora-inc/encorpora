@@ -2,7 +2,6 @@ import { useRef, useState, type FormEvent } from "react";
 import { z } from "zod";
 import type { parentFeedbackSchema } from "../../../feedback/parent-feedback";
 import { request } from "../../lib/api";
-import { reportError } from "../../lib/report-error";
 import { Button } from "../../ui/Button";
 import { Checkbox } from "../../ui/Checkbox";
 import { Dialog } from "../../ui/Dialog";
@@ -56,8 +55,9 @@ export function ParentFeedbackForm({
       setSent(true);
       setMessage("");
     } catch (error) {
-      // Logged; the words here say more than the server's generic ones.
-      reportError(error, "send parent feedback");
+      // Logged here, not through lib/report-error: every framed page loads
+      // this form, and the entry's dependency map would carry that chunk.
+      console.error("AMP couldn’t send parent feedback", error);
       setError(
         "Your feedback wasn’t confirmed. Try again, or email support@corpora.inc.",
       );

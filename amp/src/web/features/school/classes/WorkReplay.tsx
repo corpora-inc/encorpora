@@ -10,7 +10,7 @@ import { createPortal } from "react-dom";
 import type { PublicProblem } from "../../../../math/contracts";
 import type { Outcome } from "../../../../server/repository";
 import type { WorkReplayResponse } from "../../../../schools/teacher-contracts";
-import { isNotFound } from "../../../lib/report-error";
+import { AppError } from "../../../lib/AppError";
 import { MathText } from "../../../MathText";
 import {
   PracticeWorkspace,
@@ -269,7 +269,7 @@ export function WorkReplay({
       replay?.problem ? (replay.problem as unknown as PublicProblem) : null,
     [replay?.item.id],
   );
-  const missing = isNotFound(query.error);
+  const missing = query.error instanceof AppError && query.error.status === 404;
   let body: ReactNode;
   if (!replay)
     body = (

@@ -1,4 +1,3 @@
-import { jsonOrNull, reported } from "./lib/report-error";
 import type { FlagReason, ProblemFlagInput } from "../feedback/problem-flags";
 
 /** What the learner chose in the report sheet. */
@@ -12,14 +11,19 @@ let webCommit: Promise<string | null> | null = null;
  * build), or null in a local build or when it cannot be read. */
 export function webBuildCommit(): Promise<string | null> {
   webCommit ??= fetch("/version.json", { cache: "no-store" })
-    .then((response) => (response.ok ? jsonOrNull(response) : null))
+    .then((response) => (response.ok ? response.json() : null))
     .then((body: unknown) => {
       const commit = (body as { commit?: unknown } | null)?.commit;
       return typeof commit === "string" && /^[0-9a-f]{40}$/.test(commit)
         ? commit
         : null;
     })
-    .catch(reported("read the web build’s commit", null));
+    // Practice's chunks stay clear of lib/report-error (its entry cost);
+    // the report goes without the commit, which a local build never has.
+    .catch((error: unknown) => {
+      console.warn("The web build’s commit couldn’t be read", error);
+      return null;
+    });
   return webCommit;
 }
 

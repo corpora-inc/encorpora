@@ -1,5 +1,4 @@
 import { AppError } from "../../lib/AppError";
-import { jsonOrNull } from "../../lib/report-error";
 import type { WorkbookPaper } from "../../../workbook/contracts";
 
 /** A lesson's typeset PDFs (scripts/publications.ts): the lesson itself, a
@@ -75,7 +74,7 @@ export async function downloadPublication({
     throw error;
   }
   if (!response.ok) {
-    const data = await jsonOrNull(response);
+    const data: unknown = await response.json().catch(() => null);
     const code =
       data &&
       typeof data === "object" &&

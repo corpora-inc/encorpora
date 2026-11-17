@@ -93,4 +93,6 @@ setError(cause instanceof Error ? cause.message : "Failed"); // a raw TypeError 
 
 Show the error's own message when it is an `AppError`, because the request layer writes those for people. Throw an `AppError` with words for people rather than a plain `Error` when your code makes the failure itself. When the screen can say more than the server's generic message, log with `reportError` and show your own words.
 
+`lib/report-error.ts` is its own chunk, and each lazy route that loads it adds to the entry's dependency map, which counts against the 290 KB entry budget. Code that most routes load (practice, printing, the help form on every framed page) logs the error with `console.error` or `console.warn` and its context instead (`problem-flag.ts`, `features/support/SupportHelp.tsx`).
+
 A route guard must not turn a failed read into `null` and keep routing. Let the failure reach the route's error screen, or use `ifNotFound` when "none" is a real answer.

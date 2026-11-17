@@ -5,7 +5,7 @@
  *
  * Server data an account reads sits under `qk.account(id)`, so invalidating
  * that one prefix refreshes everything the account shows, and a sign-out or
- * an account change drops all of it (`qk.accounts()`).
+ * an account change drops all of it.
  *
  * The resources are a type, so the registry costs the entry bundle nothing,
  * and each key's shape is still checked where it is built:
@@ -62,8 +62,6 @@ export const qk = {
   session: () => ["session"] as const,
   /** How this deployment signs people in. */
   authConfig: () => ["auth-config"] as const,
-  /** Every account's data: removed when the signed-in account changes. */
-  accounts: () => ["account"] as const,
   /** One account's data, or one of its resources. */
   account,
 };

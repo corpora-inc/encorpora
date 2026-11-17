@@ -5,7 +5,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import type { WorkItem } from "../../../../schools/teacher-contracts";
 import type { AuthSession } from "../../../auth";
-import { isNotFound } from "../../../lib/report-error";
+import { AppError } from "../../../lib/AppError";
 import { Button } from "../../../ui/Button";
 import { Loading } from "../../../ui/Loading";
 import { Meter } from "../../../ui/Meter";
@@ -51,7 +51,8 @@ export function EvidenceSheet({
   });
   const data = student ? evidence.data : undefined;
   // A shared link to someone who isn't in this term: back to the term.
-  const gone = isNotFound(evidence.error);
+  const gone =
+    evidence.error instanceof AppError && evidence.error.status === 404;
   useEffect(() => {
     if (gone && student) onClose();
     // `onClose` changes each render; this is about the failure.
