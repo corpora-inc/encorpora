@@ -4,10 +4,10 @@
     "redirects": 73,
     "validateSearch": 9,
     "searchHandoffs": 142,
-    "navigatingEffects": 18,
-    "renderNavigate": 24,
-    "silentCatches": 178,
-    "sessionProps": 57,
+    "navigatingEffects": 15,
+    "renderNavigate": 21,
+    "silentCatches": 171,
+    "sessionProps": 56,
     "sessionReads": 38,
     "inlineQueryKeys": 32,
     "nativeControls": 25
@@ -105,7 +105,7 @@
       "ui/Tabs.tsx": 2
     },
     "navigatingEffects": {
-      "app/LegacyApp.tsx": 5,
+      "app/LegacyApp.tsx": 2,
       "features/auth/SignInScreen.tsx": 3,
       "features/design/DesignScreen.tsx": 1,
       "features/family/FamilyFrame.tsx": 1,
@@ -119,7 +119,6 @@
       "nav/Navigate.tsx": 1
     },
     "renderNavigate": {
-      "app/LegacyApp.tsx": 3,
       "features/access/AccessScreen.tsx": 1,
       "features/account/AccountReady.tsx": 2,
       "features/me/OwnStartScreen.tsx": 1,
@@ -141,7 +140,6 @@
       "app/boot.tsx": 1,
       "app/family-redirect.ts": 10,
       "app/family-routes.tsx": 8,
-      "app/LegacyApp.tsx": 7,
       "app/router.tsx": 13,
       "app/school-guards.ts": 3,
       "auth-config.ts": 1,
@@ -217,7 +215,7 @@
       "share-entry.ts": 1
     },
     "sessionProps": {
-      "app/LegacyApp.tsx": 2,
+      "app/LegacyApp.tsx": 1,
       "FamilyCenter.tsx": 1,
       "features/access/AccessScreen.tsx": 1,
       "features/design/sections/workbooks.tsx": 5,
