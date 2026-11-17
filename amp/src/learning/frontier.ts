@@ -123,13 +123,17 @@ export function initialLevel(options: {
 export const ADULT_START_SD = 12;
 /** The reported level's prior width for a learner (`createFrontierState`):
  * `ADULT_START_SD` for an adult with no school-age birth year, and the
- * policy's (undefined) for everyone whose age or family band places them. */
+ * policy's (undefined) for everyone whose age or family band places them.
+ * A practice profile is someone at the level it was set to ("practice at
+ * grade 4", a copied student): its start places it as an age does, so it
+ * keeps the policy's width and starts at that level. */
 export function startingSd(options: {
   birthYear?: number | null;
   adult?: boolean;
+  simulation?: boolean;
   band?: StartingChoice | null;
 }): number | undefined {
-  if (options.birthYear != null) return undefined;
+  if (options.birthYear != null || options.simulation) return undefined;
   const adultBand =
     !!options.band && (adultStarts as readonly string[]).includes(options.band);
   return options.adult || adultBand ? ADULT_START_SD : undefined;

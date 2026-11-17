@@ -54,7 +54,8 @@ AMP's web app is built to an elite engineering standard, not as a pile of one-of
   - Redirects exist only for a legacy URL or the sign-in gate: one hop, never chained, never based on how the page was reached.
   - No effect navigates, and nothing navigates during render.
   - `/` never redirects.
-- **One component per job.** Screens render through `ui/Page` and `PageHeader` (one width scale, one header, one "‹ Back"). Lists use `ui/ColumnList`. Use the shared controls in `ui/`. Never add a page-specific width, header or back link, a second dialog system, or a raw native control.
+- **One component per job.** Screens render through `ui/Page` and `PageHeader` (one width scale, one header). Lists use `ui/ColumnList`. Use the shared controls in `ui/`. Never add a page-specific width, header or back link, a second dialog system, or a raw native control.
+- **No in-page Back control. Tabs, menus and the browser navigate; flows use the shared stepper; contextual screens are overlays that close to the screen behind them.** The stepper is `ui/FlowSteps`; `tests/page-layout.test.ts` fails on a new Back.
 - **Contain failure.** Route errors render inside the app shell with the menu intact. No silent `.catch(() => null)`. Every error is logged and shown inline or as a toast.
 - **Hooks rules are law.** Follow ESLint's react-hooks rules (`rules-of-hooks`, `exhaustive-deps`, `set-state-in-effect`). Fix a violation by deriving state or moving work to an event handler or loader, never with a disable comment without a written reason.
 

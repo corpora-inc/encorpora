@@ -11,8 +11,10 @@ import { TextField } from "../../ui/TextField";
 import { awaitingResults, workbookByCode, workbookHistoryOptions } from "./api";
 import { canMakeWorkbook, localDate, workbookMessage } from "./model";
 import { AllowancePause } from "../continue/AllowancePause";
+import { PageHeader } from "../../ui/PageHeader";
 import { WorkbookFrame, whose, type WorkbookLearner } from "./WorkbookFrame";
 import { WorkbookList } from "./WorkbookList";
+import { useWorkbookPaths } from "./paths";
 import styles from "./Workbooks.module.css";
 
 export function WorkbookHistoryScreen() {
@@ -30,67 +32,82 @@ export function WorkbookHistoryScreen() {
  * before as a list, and results by code as a quiet second action while a
  * workbook still waits for them. With none made yet, the list's place says
  * so and holds the one way to make the first. On the adult's own practice
- * it speaks to them and never names them. */
+ * it speaks to them and never names them. As a `section` of a child's own
+ * page, it is one part under the page's title (h2), naming no one. */
 export function WorkbookHistory({
-  session,
+  session: given,
   learner,
+  section = false,
 }: {
-  session: AuthSession;
+  session?: AuthSession;
   learner: WorkbookLearner;
+  section?: boolean;
 }) {
-  const history = useQuery(workbookHistoryOptions(session, learner.id));
+  const signedIn = useQuery({ ...sessionOptions, enabled: !given }).data;
+  const session = given ?? signedIn ?? { accountId: "", token: "" };
+  const history = useQuery({
+    ...workbookHistoryOptions(session, learner.id),
+    enabled: !!session.token,
+  });
   const [entering, setEntering] = useState(false);
+  const paths = useWorkbookPaths();
   const who = whose(learner);
   const canMake = canMakeWorkbook(learner);
   const workbooks = history.data?.workbooks;
   const none = workbooks?.length === 0;
   const today = (label: string) => (
     <Link
-      to="/learners/$learnerId/workbooks/$date"
-      params={{ learnerId: learner.id, date: localDate() }}
+      to="/$"
+      params={{ _splat: paths.day(learner.id, localDate()) }}
       className={buttonClass("primary", styles.today)}
     >
       <PlusIcon />
       {label}
     </Link>
   );
+  const actions = (
+    <div className={styles.listActions}>
+      {workbooks && awaitingResults(workbooks) && (
+        <Button
+          variant="secondary"
+          onClick={() => setEntering(true)}
+          data-results-code
+        >
+          Enter results with a code
+        </Button>
+      )}
+      {canMake &&
+        (workbooks || history.error ? (
+          today(none ? "Make a workbook" : "Today’s workbook")
+        ) : (
+          <span
+            className={`${styles.actionSkeleton} amp-skeleton`}
+            aria-hidden="true"
+          >
+            <span />
+          </span>
+        ))}
+    </div>
+  );
   return (
     <>
-      <header className={styles.listHead}>
-        <div className={styles.listTitle}>
-          {who.label && <p className={styles.learnerLabel}>{who.label}</p>}
-          <h1 className={styles.title}>
-            {who.own ? "Your workbooks" : "Workbooks"}
-          </h1>
+      {section ? (
+        // A part of a child's page: its heading and its one action, empty
+        // or not.
+        <div className={styles.sectionHead}>
+          <h2 id="child-workbooks">Workbooks</h2>
+          {actions}
         </div>
-        {/* The actions land with the list: the first workbook is made from
-            the empty list's own button, and results by code are offered only
-            while a workbook waits for them. */}
-        {!none && (
-          <div className={styles.listActions}>
-            {workbooks && awaitingResults(workbooks) && (
-              <Button
-                variant="secondary"
-                onClick={() => setEntering(true)}
-                data-results-code
-              >
-                Enter results with a code
-              </Button>
-            )}
-            {canMake &&
-              (workbooks || history.error ? (
-                today("Today’s workbook")
-              ) : (
-                <span
-                  className={`${styles.actionSkeleton} amp-skeleton`}
-                  aria-hidden="true"
-                >
-                  <span />
-                </span>
-              ))}
-          </div>
-        )}
-      </header>
+      ) : (
+        <PageHeader
+          title={who.own ? "Your workbooks" : "Workbooks"}
+          subtitle={who.label}
+          // The actions land with the list: the first workbook is made from
+          // the empty list's own button, and results by code are offered
+          // only while a workbook waits for them.
+          actions={!none && actions}
+        />
+      )}
       {!canMake && (
         <AllowancePause
           kind="workbooks"
@@ -100,17 +117,25 @@ export function WorkbookHistory({
         />
       )}
       {none ? (
-        <div className={styles.empty}>
-          <EmptyState
-            title="No workbooks yet"
-            action={canMake ? today("Make a workbook") : undefined}
-          />
-        </div>
+        section ? null : (
+          <div className={styles.empty}>
+            <EmptyState
+              title="No workbooks yet"
+              action={canMake ? today("Make a workbook") : undefined}
+            />
+          </div>
+        )
       ) : (
         <section className={styles.past} aria-labelledby="past-workbooks">
-          <h2 id="past-workbooks" className={styles.sectionTitle}>
-            Past workbooks
-          </h2>
+          {section ? (
+            <h3 id="past-workbooks" className={styles.sectionTitle}>
+              Past workbooks
+            </h3>
+          ) : (
+            <h2 id="past-workbooks" className={styles.sectionTitle}>
+              Past workbooks
+            </h2>
+          )}
           <WorkbookList
             session={session}
             learnerId={learner.id}
@@ -147,6 +172,7 @@ function CodeEntry({
   learnerId: string;
 }) {
   const navigate = useNavigate();
+  const paths = useWorkbookPaths();
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
@@ -166,8 +192,8 @@ function CodeEntry({
         return;
       }
       await navigate({
-        to: "/learners/$learnerId/workbooks/$workbookId/results",
-        params: { learnerId, workbookId: found.id },
+        to: "/$",
+        params: { _splat: paths.results(learnerId, found.id) },
       });
     } catch (failure) {
       console.error("A workbook code wasn't checked", failure);

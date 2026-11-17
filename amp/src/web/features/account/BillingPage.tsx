@@ -1,4 +1,3 @@
-import { useSettingsFamily } from "../family/account-settings";
 import { Link, useNavigate, useSearch } from "@tanstack/react-router";
 import { Navigate } from "../../nav/Navigate";
 import { useMutation, useQuery, useSuspenseQuery } from "@tanstack/react-query";
@@ -31,7 +30,6 @@ export function BillingPage() {
   );
 }
 function Billing({ session }: { session: AuthSession }) {
-  const settingsFamily = useSettingsFamily();
   const me = useQuery(meOptions(session));
   const search = useSearch({ strict: false }) as { receipt?: string };
   const navigate = useNavigate();
@@ -65,16 +63,6 @@ function Billing({ session }: { session: AuthSession }) {
     <Page className={styles.page}>
       <PageHeader
         title={search.receipt ? "Receipt" : "Billing"}
-        back={
-          search.receipt
-            ? () => receipt()
-            : settingsFamily
-              ? {
-                  to: "/family/$family/settings",
-                  params: { family: settingsFamily },
-                }
-              : null
-        }
         subtitle={
           !search.receipt && "Manage your plans, education funds and receipts."
         }

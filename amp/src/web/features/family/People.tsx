@@ -35,6 +35,7 @@ import {
 import type { ApprovalRowResource } from "../../../family/approval-contracts";
 import { familyTeachingOptions } from "./api";
 import { AddKidsSheet } from "./AddKids";
+import { GradingPeriods } from "./Records";
 import { DevicesSheet } from "./Devices";
 import {
   FamilyFrame,
@@ -194,11 +195,7 @@ export function FamilyPeopleScreen() {
   const ownPractice = !!me?.adultPractice?.learner;
   const startPractice = !ownPractice && me?.adultPractice?.eligible === true;
   return (
-    <FamilyFrame
-      place={place}
-      title="People & sharing"
-      back={{ to: "/family/$family/settings", params: { family } }}
-    >
+    <FamilyFrame place={place} title="People & sharing">
       {data && (
         <div className={styles.page} data-family-people="">
           <section className={people.list} aria-labelledby="people-you">
@@ -474,6 +471,11 @@ export function FamilySettingsScreen() {
             />
           </RowList>
           <SchoolYear place={place} />
+          {/* A report card a grading period: set with the year, beside it. */}
+          {place.own &&
+            data.children.some((child) => child.capabilities.readGrades) && (
+              <GradingPeriods place={place} shared={!!data.teachingPlace} />
+            )}
           <FamilyCode place={place} />
           <FamilyPracticeDefaults place={place} />
           <section className={styles.section} aria-labelledby="family-account">
@@ -537,7 +539,7 @@ export function TutoringGroupScreen() {
               params={{ _splat: familyHref(family) }}
               className={buttonClass("primary")}
             >
-              Back to Today
+              Open Today
             </Link>
           }
         >

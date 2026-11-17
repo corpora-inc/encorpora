@@ -24,6 +24,15 @@ import { Toast } from "../../ui/Toast";
 import { ActionRow } from "../../ui/ActionRow";
 import { YearField } from "../../ui/YearField";
 import { Disclosure } from "../../ui/Disclosure";
+import { PrintButton } from "../../ui/PrintButton";
+import { downloadPdf, paperFormat } from "../../lib/pdf-download";
+import { gradebookOptions } from "../school/classes/teacher-api";
+import { WorkbookHistory } from "../workbooks/WorkbookHistoryScreen";
+import { canReadWorkbooks, isDate } from "../workbooks/model";
+import { WorkbookDaySheet } from "../workbooks/WorkbookDayScreen";
+import { WorkbookResultsSheet } from "../workbooks/WorkbookResultsScreen";
+import type { WorkbookLearner } from "../workbooks/WorkbookFrame";
+import { childWorkbookPaths, WorkbookPathsContext } from "../workbooks/paths";
 import { SatMathFocus } from "../practice/SatMathFocus";
 import { ChildPracticeSettings } from "./Practice";
 import { rememberContinuation } from "../continue/memory";
@@ -51,9 +60,11 @@ import { ChildActivity } from "./ChildActivity";
 /**
  * A child's page (`/family/<family>/kids/<learner>`): the same record a
  * teacher reads (where they are, their weeks, the skills they've earned and
- * their recent work), worded for a parent. Its actions: Practice, and beside
- * it their own devices (a code, a QR code or a printed card). Their progress
- * report is under Report cards. For the parent who manages them, their name,
+ * their recent work), worded for a parent: the hub for that child. Its
+ * actions: Practice, and beside it their own devices (a code, a QR code or a
+ * printed card). On the page, no pages of their own: their practice time
+ * (#child-time), their workbooks (#child-workbooks) and their reports to
+ * download (#child-reports). For the parent who manages them, their name,
  * and the rarely needed rest under Advanced. A second parent reads it and
  * lets them practice here.
  */
@@ -106,7 +117,7 @@ export function ChildScreen() {
               params={{ _splat: familyHref(family) }}
               className={buttonClass("primary")}
             >
-              Back to Today
+              Open Today
             </Link>
           }
         >
@@ -227,7 +238,21 @@ export function ChildScreen() {
               Check your connection, then try again.
             </EmptyState>
           ) : null}
+          <ChildWorkbooks place={place} child={child} />
+          {/* A progress report once there is progress to report, decided
+              when the page opens: a first answer while it is open adds
+              nothing above the settings. */}
+          <ChildReports
+            place={place}
+            child={child}
+            progress={
+              child.capabilities.readProgress &&
+              hasReport &&
+              openedUnmeasured.current === false
+            }
+          />
           <ChildSettings place={place} child={child} />
+          <ChildWorkbookOverlay place={place} child={child} />
           {place.own && child.capabilities.manageDevices && (
             <DevicesSheet
               place={place}
@@ -244,8 +269,8 @@ export function ChildScreen() {
 }
 
 /** A child's actions: Practice, and beside it their own devices, as near to
- * hand. Then their workbooks and, while free problems remain, the plan.
- * Their progress report is under Report cards, not here. */
+ * hand; while free problems remain, the plan. Their workbooks and reports
+ * are sections of the page, not actions. */
 export function ChildActions({
   place,
   child,
@@ -276,15 +301,6 @@ export function ChildActions({
           Their own devices
         </Button>
       )}
-      {child.capabilities.readWorkbooks && (
-        <Link
-          to="/learners/$learnerId/workbooks"
-          params={{ learnerId: child.id }}
-          className={buttonClass("secondary")}
-        >
-          Workbooks
-        </Link>
-      )}
       {/* While free problems remain, the plan is one step away. */}
       {!child.access.hasAccess &&
         child.access.canPractice &&
@@ -307,6 +323,161 @@ export function ChildActions({
           </Link>
         )}
     </ActionRow>
+  );
+}
+
+/** A child's workbooks, on their page: today's to make, the ones made
+ * before to download, and results to enter. Their record arrives with the
+ * page (family-routes), so the list never pushes the page down. */
+function ChildWorkbooks({
+  place,
+  child,
+}: {
+  place: FamilyPlace;
+  child: FamilyChild;
+}) {
+  const learner = workbookLearner(place, child);
+  if (!learner) return null;
+  return (
+    <section
+      aria-labelledby="child-workbooks"
+      className={styles.section}
+      data-child-workbooks=""
+    >
+      <WorkbookPathsContext.Provider value={childWorkbookPaths(place.family)}>
+        <WorkbookHistory section learner={learner} />
+      </WorkbookPathsContext.Provider>
+    </section>
+  );
+}
+
+/** The child as their workbooks know them, when this reader may read them. */
+function workbookLearner(
+  place: FamilyPlace,
+  child: FamilyChild,
+): WorkbookLearner | null {
+  const learner = place.me?.family.learners.find(
+    (entry) => entry.id === child.id && !entry.deletedAt,
+  );
+  if (!child.capabilities.readWorkbooks || !learner) return null;
+  if (!canReadWorkbooks(learner)) return null;
+  return {
+    ...learner,
+    pauseViewer: learner.simulation
+      ? "profile"
+      : learner.adult
+        ? "adult"
+        : "parent",
+  };
+}
+
+/** A workbook day or its results, open over the child's page at its own
+ * address (`kids/<id>/workbooks/<date>`, `…/<workbook>/results`); ✕ closes
+ * it to the page. */
+function ChildWorkbookOverlay({
+  place,
+  child,
+}: {
+  place: FamilyPlace;
+  child: FamilyChild;
+}) {
+  const { date, workbookId } = useParams({ strict: false }) as {
+    date?: string;
+    workbookId?: string;
+  };
+  const learner = workbookLearner(place, child);
+  if (!learner || (!date && !workbookId)) return null;
+  return (
+    <WorkbookPathsContext.Provider value={childWorkbookPaths(place.family)}>
+      {workbookId ? (
+        <WorkbookResultsSheet learner={learner} workbookId={workbookId} />
+      ) : isDate(date!) ? (
+        <WorkbookDaySheet learner={learner} date={date!} />
+      ) : null}
+    </WorkbookPathsContext.Provider>
+  );
+}
+
+/** A child's reports, each a PDF to download: their progress report, their
+ * report card for the current term (a child of the family's own class),
+ * and the family's grades to decide. */
+function ChildReports({
+  place,
+  child,
+  progress,
+}: {
+  place: FamilyPlace;
+  child: FamilyChild;
+  progress: boolean;
+}) {
+  const { own, session } = place;
+  const person = own
+    ? child.classes.find((entry) => entry.id === own.id)?.personId
+    : undefined;
+  const graded = !!own && !!person && child.capabilities.readGrades;
+  const term = useQuery({
+    ...gradebookOptions(
+      session,
+      { org: own?.org ?? "", class: own?.id ?? "" },
+      undefined,
+    ),
+    enabled: graded,
+  }).data?.term?.id;
+  const card = graded && !!term;
+  const grades = !!own && child.capabilities.editGrades;
+  if (!progress && !card && !grades) return null;
+  const file = child.name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  return (
+    <section
+      aria-labelledby="child-reports"
+      className={styles.section}
+      data-child-reports=""
+    >
+      <h2 id="child-reports">Reports</h2>
+      <div className={styles.reportActions}>
+        {progress && (
+          <PrintButton
+            variant="secondary"
+            label={`Download ${child.name}’s progress report, PDF`}
+            download={() =>
+              downloadPdf({
+                path: `${child.paths.progress.replace(/^\/api\/v1/, "")}.pdf?format=${paperFormat()}`,
+                token: session.token,
+                name: `amp-progress-report-${file}.pdf`,
+              })
+            }
+          >
+            Download progress report
+          </PrintButton>
+        )}
+        {card && (
+          <PrintButton
+            variant="secondary"
+            label={`Download ${child.name}’s report card, PDF`}
+            download={() =>
+              downloadPdf({
+                path: `/school/classes/${encodeURIComponent(own!.id)}/report-cards.pdf?${new URLSearchParams(
+                  { term: term!, student: person!, format: paperFormat() },
+                )}`,
+                token: session.token,
+                name: `amp-report-card-${file}.pdf`,
+              })
+            }
+          >
+            Download report card
+          </PrintButton>
+        )}
+        {grades && (
+          <Link
+            to="/$"
+            params={{ _splat: familyHref(place.family, "reports/grades") }}
+            className={buttonClass("secondary")}
+          >
+            Grades
+          </Link>
+        )}
+      </div>
+    </section>
   );
 }
 

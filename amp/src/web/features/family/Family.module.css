@@ -193,6 +193,12 @@
   display: grid;
   margin: 0;
 }
+/* A child's reports: each a download, side by side, wrapping whole. */
+.reportActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
 /* A child's settings: their name, then Advanced folded under it, one list. */
 .settingsGroup {
   display: grid;
@@ -347,13 +353,11 @@
   font-size: var(--text-label);
   font-weight: 600;
 }
-.recordName:hover,
-.recordLinks a:hover {
+.recordName:hover {
   background: transparent;
   color: var(--color-primary);
 }
-.recordName:hover .recordOpen,
-.recordLinks a:hover {
+.recordName:hover .recordOpen {
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }
@@ -367,27 +371,6 @@
 .recordName:focus-visible {
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
-}
-/* The records beside a record, in its header's actions. */
-.recordLinks {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-2) var(--space-4);
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-.recordLinks a {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
-  min-height: var(--target-min);
-  color: var(--color-primary);
-  font-size: var(--text-label);
-  font-weight: 600;
-  text-decoration: none;
-  width: fit-content;
 }
 /* The map: its key beside the title, then each child whole. */
 .mapPage {

@@ -3,7 +3,7 @@
   "counts": {
     "redirects": 81,
     "validateSearch": 14,
-    "searchHandoffs": 182,
+    "searchHandoffs": 181,
     "navigatingEffects": 21,
     "renderNavigate": 32,
     "silentCatches": 256,
@@ -55,7 +55,6 @@
       "features/onboarding/LearnerSteps.tsx": 4,
       "features/onboarding/PurchaseStep.tsx": 1,
       "features/onboarding/setup/FamilySetup.tsx": 2,
-      "features/onboarding/setup/StepFrame.tsx": 1,
       "features/onboarding/Starter.tsx": 1,
       "features/onboarding/StartScreen.tsx": 3,
       "features/pathways/AreaKey.tsx": 1,
