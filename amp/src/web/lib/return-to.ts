@@ -38,7 +38,8 @@ export function returnTarget(value: unknown): string | undefined {
   let url: URL;
   try {
     url = new URL(value, BASE);
-  } catch {
+  } catch (error) {
+    console.warn("AMP: ignored a return address that isn’t one", error);
     return undefined;
   }
   if (url.origin !== BASE) return undefined;
@@ -73,7 +74,8 @@ export function sameScreen(entry: string, target: string) {
   try {
     a = new URL(entry, BASE);
     b = new URL(target, BASE);
-  } catch {
+  } catch (error) {
+    console.warn("AMP: compared an address that isn’t one", error);
     return false;
   }
   const path = (url: URL) => url.pathname.replace(/\/+$/, "") || "/";

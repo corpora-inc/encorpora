@@ -40,6 +40,11 @@ export type AccountResources = {
   "family-approval": [request: string];
   /** One learner's level over time. */
   "level-trend": [learner: string];
+  /** A learner's record on the map (`/learners/:id/progress`), or their
+   * record on one skill (`…/skills/:skill`). */
+  pathways: [learner: string, ...skill: [] | [part: "skill", skill: string]];
+  /** A learner's level: where each strand's frontier stands. */
+  "pathways-frontier": [learner: string];
 };
 type Resource = keyof AccountResources;
 
@@ -65,6 +70,16 @@ export const qk = {
   /** The whole learning catalog the search corpus is built from
    * (features/search/search-corpus.ts): the same for every visitor. */
   searchCatalog: () => ["search-catalog"] as const,
+  /** The curriculum as the map reads it (lib/learning-view.ts): the same for
+   * every visitor. */
+  pathwaysCatalog: () => ["pathways-catalog"] as const,
+  /** A screen that asks for no learner records (the drawer) still mounts
+   * its observers; they sit on these keys and fetch nothing. */
+  noRecords: (part: "evidence" | "frontier") =>
+    ["learning-view", "no-records", part] as const,
+  /** The family a native shell hands over (lib/family-cache.ts). */
+  nativeFamily: (identity: string | null) =>
+    ["native-family", identity] as const,
   /** One account's data, or one of its resources. */
   account,
 };

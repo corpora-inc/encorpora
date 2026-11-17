@@ -40,7 +40,9 @@ export function captureOpenAIEntry(): void {
         signal: AbortSignal.timeout(1500),
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ optOut: true }),
-      }).catch(() => {});
+      }).catch((error: unknown) =>
+        console.warn("AMP: the advertising opt-out wasn’t sent", error),
+      );
       return;
     }
     if (navigator.webdriver) return;
@@ -81,8 +83,11 @@ export function captureOpenAIEntry(): void {
         clicks,
         labels: fundedAttribution(Object.fromEntries(original)),
       }),
-    }).catch(() => {});
-  } catch {
-    /* Acquisition must never interrupt the app. */
+    }).catch((error: unknown) =>
+      console.warn("AMP: the ad click wasn’t recorded", error),
+    );
+  } catch (error) {
+    // Acquisition must never interrupt the app.
+    console.warn("AMP: the ad click wasn’t read", error);
   }
 }

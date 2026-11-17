@@ -52,7 +52,10 @@ export function buildIsStale(maxAgeMs = 30_000): Promise<boolean> {
       stale = live !== null && live !== loadedEntry;
       return stale;
     })
-    .catch(() => false)
+    .catch((error: unknown) => {
+      console.warn("AMP: the live release couldn’t be checked", error);
+      return false;
+    })
     .finally(() => {
       checking = null;
     });
