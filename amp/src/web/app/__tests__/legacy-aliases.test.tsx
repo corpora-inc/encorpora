@@ -227,6 +227,11 @@ const EXAMPLES: Example[] = [
     lands: "/design/canvas#buttons",
   },
   { from: "/design?width=390", world: "signed out", lands: "/design" },
+  {
+    from: "/start/plan?interval=month",
+    world: "signed out",
+    lands: "/start/plan",
+  },
   { from: "/try", world: "signed out", lands: "/sign-up?return=free-practice" },
   { from: "/try/anything", world: "adult", lands: `/family/${FAMILY}` },
 

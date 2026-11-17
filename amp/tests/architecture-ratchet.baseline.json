@@ -3,7 +3,7 @@
   "counts": {
     "redirects": 0,
     "validateSearch": 0,
-    "searchHandoffs": 1,
+    "searchHandoffs": 0,
     "navigatingEffects": 2,
     "renderNavigate": 0,
     "silentCatches": 0,
@@ -15,9 +15,7 @@
   "files": {
     "redirects": {},
     "validateSearch": {},
-    "searchHandoffs": {
-      "nav/root.tsx": 1
-    },
+    "searchHandoffs": {},
     "navigatingEffects": {
       "app/LegacyApp.tsx": 2
     },
