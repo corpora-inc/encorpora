@@ -40,10 +40,13 @@ let current = parent;
 // redirects. Destination rendering is covered by verify-returning-trial-ui.ts.
 const beforeLoad = router.routesById["/start"].options.beforeLoad as (input: {
   params: { choice?: string };
-  location: { search: Record<string, unknown> };
+  location: { pathname: string; search: Record<string, unknown> };
 }) => Promise<unknown>;
 const enter = (search: Record<string, unknown> = trial, choice?: string) =>
-  beforeLoad({ params: { choice }, location: { search } });
+  beforeLoad({
+    params: { choice },
+    location: { pathname: choice ? `/start/${choice}` : "/start", search },
+  });
 
 beforeEach(() => {
   localStorage.clear();

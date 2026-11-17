@@ -4,6 +4,8 @@ import {
   type FundedProgramSlug,
 } from "../../lib/funded-entry";
 import type { Me, SignedInMe } from "../../../account/contracts";
+import { appReturn } from "../spaces/returns";
+import { isSetupKind, RETIRED_STEPS, SETUP_STEPS } from "./setup/steps";
 
 /** "What brings you to AMP?" (`/start`) and each of its answers, one URL
  * each. Any signed-in adult may open it to add a place. */
@@ -24,6 +26,80 @@ export function isStarterPath(pathname: string) {
   // A parent's or a tutor's setup steps are the starter's too.
   if (/^\/start\/(parent|tutor)\/[a-z-]+$/.test(path)) return true;
   return isStarterChoice(choice);
+}
+
+/** The account's first run (`me.setup`, owned by the server). A provider
+ * that doesn't send it (native, offline) gets the server's own rule for an
+ * account with no first-run record: done once it has a place. */
+export function setupOf(me: SignedInMe): Setup {
+  return me.setup ?? { persona: null, done: me.next !== "start" };
+}
+type Setup = NonNullable<SignedInMe["setup"]>;
+
+/** "Add a place" once the first run is done and there is a place: until
+ * then `/start` is the account's own question, every answer offered and the
+ * one given marked, however much of its setup is already saved. */
+export function addingPlace(me: SignedInMe | null) {
+  return !!me && setupOf(me).done && placesFor(me).length > 0;
+}
+
+/** The answer already given, shown as the current one; none while adding a
+ * place. */
+export function currentChoice(me: SignedInMe | null): StarterChoice | null {
+  if (!me || addingPlace(me)) return null;
+  return setupOf(me).persona;
+}
+
+export type FirstRunTarget = { to: string };
+
+/**
+ * The one first-run router for `/start` and its steps, used by their route
+ * guard. The URL is the step; `me.setup` is the progress; the kids are what
+ * `/me` says. Returns where to go instead, or null to stay. It never sends
+ * anyone out of setup because a family now exists.
+ *
+ * - `/start/<unknown>` is the question; `/start/teacher` is classroom setup.
+ * - `/start/<parent|tutor>/<step>`: a retired step opens its successor, an
+ *   unknown one the first step; a later step needs what the first saves
+ *   (a parent's kids, a tutor's class).
+ * - `/start?return=free-practice` (an old trial link) resumes an account
+ *   whose first run is done at `/`.
+ *
+ * Each is one hop, to an address that needs no further routing. Nothing
+ * rides along in a query string: the path names the step, and `me` the rest.
+ */
+export function routeFor(
+  me: SignedInMe | null,
+  location: { pathname: string; search: Record<string, unknown> },
+): FirstRunTarget | null {
+  const path = location.pathname.replace(/\/+$/, "") || "/";
+  const [, , choice, step, ...rest] = path.split("/");
+  if (path === "/start")
+    return location.search.return === "free-practice" &&
+      !appReturn(location.search.from) &&
+      me &&
+      setupOf(me).done
+      ? { to: "/" }
+      : null;
+  if (!path.startsWith("/start/")) return null;
+  if (!isStarterChoice(choice) || rest.length) return { to: "/start" };
+  if (choice === "teacher") return { to: "/school/start" };
+  if (step === undefined) return null;
+  if (!isSetupKind(choice)) return { to: `/start/${choice}` };
+  const at = (id: string) => ({
+    to: id ? `/start/${choice}/${id}` : `/start/${choice}`,
+  });
+  const retired = RETIRED_STEPS[choice][step];
+  if (retired !== undefined) return at(retired);
+  const ids: readonly string[] = SETUP_STEPS[choice].map((entry) => entry.id);
+  if (!ids.includes(step) || step === "") return at("");
+  // A later step needs what the first one saves.
+  if (
+    me &&
+    (!me.familyClass || (choice === "parent" && me.learners.length === 0))
+  )
+    return at("");
+  return null;
 }
 
 /** The steps that remain around the starter: Stripe's enrollment return; the
