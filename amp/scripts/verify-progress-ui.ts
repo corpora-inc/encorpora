@@ -26,11 +26,13 @@ async function returnToHistory(page: Page) {
     (window as Window & { __historyDocument?: boolean }).__historyDocument =
       true;
   });
-  if (new URL(page.url()).pathname === "/progress")
-    await navigateApp(page, "Progress");
-  for (let n = 0; n < 6 && new URL(page.url()).pathname !== "/progress"; n++)
-    await page.goBack();
-  assert.equal(new URL(page.url()).pathname, "/progress");
+  // Progress and an idea's detail are each an address of their own
+  // (/progress, /progress/skills/<id>).
+  const atProgress = () =>
+    /^\/progress(\/|$)/.test(new URL(page.url()).pathname);
+  if (atProgress()) await navigateApp(page, "Progress");
+  for (let n = 0; n < 6 && !atProgress(); n++) await page.goBack();
+  assert.ok(atProgress(), new URL(page.url()).pathname);
   assert.equal(
     await page.evaluate(
       () =>
@@ -309,8 +311,7 @@ try {
       document.activeElement?.getAttribute("data-book-id") ===
       "number-builders",
   );
-  assert.equal(new URL(page.url()).pathname, "/progress");
-  assert.equal(new URL(page.url()).searchParams.get("skill"), "count-to-20");
+  assert.equal(new URL(page.url()).pathname, "/progress/skills/count-to-20");
   const batchPromise = page.waitForResponse(
     (r) => r.url().endsWith("/batches") && r.request().method() === "POST",
   );
@@ -322,7 +323,7 @@ try {
   const problem = batch.problems[0];
   assert.equal(problem.skillId, "count-to-20");
   await returnToHistory(page);
-  assert.equal(new URL(page.url()).searchParams.get("skill"), "count-to-20");
+  assert.equal(new URL(page.url()).pathname, "/progress/skills/count-to-20");
   await page
     .getByRole("button", { name: "Open related book", exact: true })
     .click();
