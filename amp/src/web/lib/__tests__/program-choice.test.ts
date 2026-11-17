@@ -111,3 +111,27 @@ test("a partner's entry label is measurement: dropped under GPC; a pitch choice 
   expect(signUpIntent()).toEqual({ entry: "pitch-buy" });
   vi.unstubAllGlobals();
 });
+
+test("a Buy's plan crosses into another browser with its entry, and is kept there", async () => {
+  const { chosenPlan, rememberPlanChoice, forgetPlanChoice } = await import(
+    "../pending-trial"
+  );
+  forgetPlanChoice();
+  rememberPlanChoice("month");
+  keepSignUpIntent({ entry: "pitch-buy" });
+  expect(arrivalQuery()).toEqual({ entry: "pitch-buy", plan: "month" });
+  // Try it free carries no plan.
+  keepSignUpIntent({ entry: "pitch-try" });
+  expect(arrivalQuery()).toEqual({ entry: "pitch-try" });
+  // The other browser: empty storage, the handoff's address.
+  forgetPlanChoice();
+  sessionStorage.clear();
+  resetProgramChoiceForTests();
+  keepArrival({ entry: "pitch-buy", plan: "month" });
+  expect(chosenPlan()).toBe("month");
+  expect(signUpIntent()).toEqual({ entry: "pitch-buy" });
+  // A plan without a Buy is not kept.
+  forgetPlanChoice();
+  keepArrival({ plan: "year" });
+  expect(chosenPlan()).toBeNull();
+});

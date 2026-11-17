@@ -19,12 +19,21 @@
 }
 
 /* The step's actions on the right; the reason Next waits keeps its line
-   beneath, so nothing moves when it goes. */
+   beneath, so nothing moves when it goes. The foot holds to the bottom of
+   the screen while the step is taller than it, so Next is always in view
+   without scrolling, at every size (a 360 x 640 phone, a 1280 x 720
+   laptop). It stays in the flow: scrolled to the end, nothing sits under
+   it, and every field can be brought above it. */
 .foot {
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
   display: grid;
   gap: var(--space-2);
   padding-top: var(--space-4);
+  padding-bottom: max(var(--space-3), env(safe-area-inset-bottom));
   border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
 }
 .actions {
   display: flex;

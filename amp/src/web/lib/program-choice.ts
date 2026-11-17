@@ -1,4 +1,5 @@
 import { useSyncExternalStore } from "react";
+import { rememberPlanChoice } from "./pending-trial";
 
 /*
  * The arrival store: what a visitor came to AMP through, before any account,
@@ -192,6 +193,13 @@ export function arrivalTitleLabels(): Record<string, string> {
  * tab. A visit that names none keeps what was kept. */
 export function keepArrival(search: Record<string, unknown>) {
   if (isProgramChoice(search.program)) chooseProgram(search.program);
+  // Another browser's Buy (features/auth/browser-handoff.ts): its plan,
+  // kept on this device.
+  if (
+    search.entry === "pitch-buy" &&
+    (search.plan === "year" || search.plan === "month")
+  )
+    rememberPlanChoice(search.plan);
   if (isSignUpEntry(search.entry) || search.return === "free-practice")
     keepSignUpIntent({
       ...(isSignUpEntry(search.entry) ? { entry: search.entry } : {}),

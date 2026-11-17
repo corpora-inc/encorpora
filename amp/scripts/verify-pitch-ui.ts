@@ -692,6 +692,8 @@ async function journeys(browser: Browser, engine: string) {
     signUpHeading: string;
     entry: string;
     landing: (page: Page, api: Api) => Promise<void>;
+    /** Email sign-up confirms its address with this code first. */
+    code?: string;
   };
   // A new account answers "What brings you to AMP?" first.
   const starter = async (page: Page) => {
@@ -710,6 +712,8 @@ async function journeys(browser: Browser, engine: string) {
       },
       signUpHeading: "Create your account to buy",
       entry: "pitch-buy",
+      // Production's email sign-up: the code, then straight on to the plan.
+      code: "135790",
       // The plan waits for the learner it is for: the parent's one child,
       // then that child's plan with the pitch's plan chosen, then Stripe.
       landing: async (page, api) => {
@@ -718,6 +722,37 @@ async function journeys(browser: Browser, engine: string) {
         // Guided family setup (#2157) names each row and saves with Next.
         await page.waitForURL((url) => url.pathname === "/start/parent");
         await page.getByRole("heading", { name: "Add your kids" }).waitFor();
+        // Next is always in view without scrolling, on a small phone and a
+        // short laptop screen (finding #10), and covers no field once the
+        // step is scrolled to its end.
+        for (const [width, height] of [
+          [360, 640],
+          [1280, 720],
+          [390, 844],
+        ] as const) {
+          await page.setViewportSize({ width, height });
+          await page.evaluate(() => scrollTo(0, 0));
+          const next = await page
+            .getByRole("button", { name: "Next", exact: true })
+            .boundingBox();
+          assert.ok(
+            next && next.y >= 0 && next.y + next.height <= height,
+            `setup ${width}x${height}: Next in view (${JSON.stringify(next)})`,
+          );
+          await page.evaluate(() => scrollTo(0, document.body.scrollHeight));
+          const [foot, field] = await Promise.all([
+            page
+              .getByRole("button", { name: "Next", exact: true })
+              .boundingBox(),
+            page.getByRole("button", { name: "Add a child" }).boundingBox(),
+          ]);
+          assert.ok(
+            foot && field && field.y + field.height <= foot.y,
+            `setup ${width}x${height}: scrolled to the end, Next covers nothing`,
+          );
+          if (width === 360)
+            await page.screenshot({ path: `${shots}/setup-next-360x640.png` });
+        }
         await page
           .getByRole("button", { name: "Birth year, Child 1", exact: true })
           .click();
@@ -780,6 +815,7 @@ async function journeys(browser: Browser, engine: string) {
       intents: [],
       events: [],
       pricesFail: false,
+      ...(item.code ? { emailCode: item.code } : {}),
     };
     await serve(page, api);
     await page.goto(`${origin}${item.url}`);
@@ -796,6 +832,11 @@ async function journeys(browser: Browser, engine: string) {
       .getByLabel("Password", { exact: true })
       .fill("correct horse battery");
     await page.getByRole("button", { name: "Create account" }).click();
+    if (item.code) {
+      const form = page.getByRole("form", { name: "Confirm your email" });
+      await form.getByLabel("Code").fill(item.code);
+      await form.getByRole("button", { name: "Continue" }).click();
+    }
     await item.landing(page, api);
     assert.equal(api.intents.length, 1, `${tag}: one signup intent`);
     assert.equal(api.intents[0]!.entry, item.entry);
