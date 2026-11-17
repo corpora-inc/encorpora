@@ -20,9 +20,6 @@ export function CoTeacherRows({
   orgId,
   onError,
 }: {
-  /** Unused: each reads the session itself (useSession). Kept until
-   * features/family/TutoringGroup.tsx stops passing it. */
-  session?: unknown;
   orgId: string;
   onError: (message: string) => void;
 }) {
@@ -92,9 +89,6 @@ export function CoTeacherInviteSheet({
   classId,
   onClose,
 }: {
-  /** Unused: each reads the session itself (useSession). Kept until
-   * features/family/TutoringGroup.tsx stops passing it. */
-  session?: unknown;
   orgId: string;
   classId: string;
   onClose: () => void;

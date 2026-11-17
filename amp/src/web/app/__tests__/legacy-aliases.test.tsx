@@ -6,6 +6,7 @@ import {
 } from "@tanstack/react-router";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { usePanelsStore } from "../../features/account/panels";
+import { useViewStore, viewScope } from "../../features/school/view-store";
 import { queryClient, sessionOptions } from "../../lib/query";
 import { knownDocumentPath } from "../document-routes";
 import {
@@ -45,7 +46,8 @@ function enter(world: World) {
     sessionOptions.queryKey,
     world === "signed out" ? null : SESSION,
   );
-  hub.href = world === "family parent" ? `/family/${FAMILY}/settings` : "/account";
+  hub.href =
+    world === "family parent" ? `/family/${FAMILY}/settings` : "/account";
 }
 
 type Example = {
@@ -58,6 +60,8 @@ type Example = {
   panel?: { overlay: "privacy"; id: string | null };
   /** The consent email's proof is held (consent-entry.ts). */
   consent?: boolean;
+  /** The school view store afterwards, for the landing screen. */
+  view?: Record<string, unknown>;
 };
 
 const PRIVACY = `/family/${FAMILY}/settings/privacy`;
@@ -74,21 +78,22 @@ const EXAMPLES: Example[] = [
     lands: "/reset-password?token=abc",
   },
   { from: "/", world: "adult", consent: true, lands: "/consent" },
-  ...(["export", "consent", "delete", "retention", "measurement"] as const)
-    .flatMap((panel) => [
-      {
-        from: `/account/privacy/${panel}`,
-        world: "family parent" as const,
-        lands: PRIVACY,
-        panel: { overlay: "privacy" as const, id: panel },
-      },
-      {
-        from: `/family/privacy/${panel}`,
-        world: "adult" as const,
-        lands: "/account/privacy",
-        panel: { overlay: "privacy" as const, id: panel },
-      },
-    ]),
+  ...(
+    ["export", "consent", "delete", "retention", "measurement"] as const
+  ).flatMap((panel) => [
+    {
+      from: `/account/privacy/${panel}`,
+      world: "family parent" as const,
+      lands: PRIVACY,
+      panel: { overlay: "privacy" as const, id: panel },
+    },
+    {
+      from: `/family/privacy/${panel}`,
+      world: "adult" as const,
+      lands: "/account/privacy",
+      panel: { overlay: "privacy" as const, id: panel },
+    },
+  ]),
   {
     from: "/family/privacy",
     world: "family parent",
@@ -101,6 +106,18 @@ const EXAMPLES: Example[] = [
     world: "adult",
     lands: "/account/privacy",
     panel: { overlay: "privacy", id: null },
+  },
+  { from: "/join/abc-def", world: "signed out", lands: "/join/ABC-DEF" },
+  {
+    from: "/join/abcdef?sso=declined",
+    world: "signed out",
+    lands: "/join/ABC-DEF?sso=declined",
+  },
+  {
+    from: `/school/o/classes/c/workbooks/2026-11-02?set=3&student=${FAMILY}`,
+    world: "adult",
+    lands: "/school/o/classes/c/workbooks/2026-11-02",
+    view: { set: 3, student: FAMILY },
   },
   // Signed out: sign in, then straight back to the old address.
   {
@@ -169,6 +186,10 @@ for (const example of EXAMPLES)
     // Never chained: where it lands is no row's.
     consent.held = false;
     expect(findAlias(at(landed))).toBeNull();
+    if (example.view)
+      expect(
+        useViewStore.getState().views[viewScope(SESSION.accountId, landed)],
+      ).toEqual(example.view);
     if (example.panel)
       expect(
         usePanelsStore.getState().accounts.parent?.[example.panel.overlay] ??
@@ -189,7 +210,9 @@ test("the server serves every row's old address (document-routes.ts)", () => {
 });
 
 test("patterns match whole addresses, a final $ the rest", () => {
-  expect(matchPattern("/family/privacy/$panel", "/family/privacy/export")).toEqual({
+  expect(
+    matchPattern("/family/privacy/$panel", "/family/privacy/export"),
+  ).toEqual({
     panel: "export",
   });
   expect(matchPattern("/family/privacy/$panel", "/family/privacy")).toBeNull();

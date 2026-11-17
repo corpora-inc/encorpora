@@ -268,7 +268,6 @@ export function FamilyToday({
       )}
       {inviting && (
         <SecondParentInviteSheet
-          session={session}
           onClose={() => setInviting(false)}
         />
       )}

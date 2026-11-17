@@ -120,7 +120,6 @@ export function ClassPeople({
               )}
               {second.data && (
                 <SecondParentRow
-                  session={session}
                   parent={second.data}
                   onError={setError}
                 />
@@ -185,7 +184,7 @@ export function ClassPeople({
         />
       </div>
       {open?.kind === "second-parent" && (
-        <SecondParentInviteSheet session={session} onClose={close} />
+        <SecondParentInviteSheet onClose={close} />
       )}
       {open?.kind === "co-teacher" && (
         <CoTeacherInviteSheet

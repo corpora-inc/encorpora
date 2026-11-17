@@ -1492,11 +1492,16 @@ async function sweep(
       },
     });
     await picking.page.goto(`${origin}/standings`);
-    const picker = picking.page.getByRole("radiogroup", { name: "Which class" });
+    const picker = picking.page.getByRole("radiogroup", {
+      name: "Which class",
+    });
     await picker.getByRole("radio", { name: "Math Club" }).click();
     await heading(picking.page, "Practice this term").waitFor();
     // The choice is the screen's view, not its address; a reload keeps it.
-    check(`${label} a board's choice stays off the URL`, !new URL(picking.page.url()).search);
+    check(
+      `${label} a board's choice stays off the URL`,
+      !new URL(picking.page.url()).search,
+    );
     await picking.page.reload();
     await heading(picking.page, "Practice this term").waitFor();
     await settled(picking.page);

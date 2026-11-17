@@ -17,6 +17,7 @@ import {
   useFinishSignIn,
 } from "./api";
 import { canScan, CardScanner } from "./CardScanner";
+import { DrawnInput } from "../../../ui/DrawnInput";
 import { CodeTiles } from "./CodeTiles";
 import { JoinFrame } from "./JoinFrame";
 import { readScan } from "./scan";
@@ -141,10 +142,8 @@ export function JoinScreen() {
                 }
               />
             </span>
-            {/* arch-exempt(nativeControls): CodeTiles draws this field; the input is only their invisible keyboard target, with no look of its own */}
-            <input
+            <DrawnInput
               ref={input}
-              className={styles.codeInput}
               value={code}
               readOnly={busy}
               onChange={(event) => type(event.target.value)}

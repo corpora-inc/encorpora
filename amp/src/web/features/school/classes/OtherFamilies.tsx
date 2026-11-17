@@ -93,9 +93,6 @@ export function OtherFamilyRow({
   onError,
   offerTalk = true,
 }: {
-  /** Unused: each reads the session itself (useSession). Kept until
-   * features/family/TutoringGroup.tsx stops passing it. */
-  session?: unknown;
   row: ApprovalRowResource;
   /** Offer "Talk to us" once their free problems are used (a class's
    * access is set up with a person). Off where their own parent buys. */
@@ -221,9 +218,6 @@ export function OtherFamilyAddSheet({
   student,
   onClose,
 }: {
-  /** Unused: each reads the session itself (useSession). Kept until
-   * features/family/TutoringGroup.tsx stops passing it. */
-  session?: unknown;
   rows: ApprovalRowResource[];
   /** An unnamed student of the class whose parent the link is for. */
   student?: { personId?: string; name?: string };
