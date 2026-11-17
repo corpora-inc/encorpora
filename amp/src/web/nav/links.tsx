@@ -84,6 +84,15 @@ export function settleLegacyLayers(
   };
 }
 
+/** This screen's address with its open layers, as a return target a view
+ * of its own carries (`?from=`, a film): with no history behind it, closing
+ * still lands on the layers it was opened from. */
+export function useHereWithLayers() {
+  const { stack } = useLayers();
+  const location = useLocation();
+  return shareableHref(location.pathname, location.searchStr, stack);
+}
+
 /** The screen whose layers these are: its account, learner and address. */
 export function useLayerScope() {
   const pathname = useLocation({ select: (location) => location.pathname });

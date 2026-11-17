@@ -82,6 +82,10 @@ export function sameScreen(entry: string, target: string) {
   const keys = new Set([...a.searchParams.keys(), ...b.searchParams.keys()]);
   for (const key of keys) {
     if (!b.searchParams.has(key) && viewKey.has(key)) continue;
+    // A screen's layers are no part of which screen it is: they live in the
+    // layer store (nav/layer-store.ts); a target names them only so a link
+    // with no history behind it opens them.
+    if (key === "open") continue;
     const left = a.searchParams.getAll(key);
     const right = b.searchParams.getAll(key);
     if (left.length !== right.length || left.some((v, i) => v !== right[i]))

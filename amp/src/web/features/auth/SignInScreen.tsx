@@ -47,9 +47,23 @@ import {
   fundedAttribution,
 } from "../../lib/funded-entry";
 import { useAuthDraft } from "./draft";
-import { currentBrowserKind } from "../../../analytics/browser-kind";
-import { nativeRuntime } from "../../native-runtime";
-import { OpenInBrowser } from "./OpenInBrowser";
+import { useBrowserHandoff } from "./OpenInBrowser";
+
+/** The fragment that marks a sign-in handed off from an in-app browser:
+ * Google starts on arrival. A fragment never reaches the server or a log. */
+const GOOGLE_START = "continue-with-google";
+/** A fresh arrival by link, not Back, Forward or a reload. */
+function arrivedByLink() {
+  try {
+    const [entry] = performance.getEntriesByType(
+      "navigation",
+    ) as PerformanceNavigationTiming[];
+    return !entry || entry.type === "navigate";
+  } catch (error) {
+    console.warn("Navigation type unavailable; not starting Google", error);
+    return false;
+  }
+}
 
 type Step =
   "sign-in" | "create" | "forgot" | "reset" | "check-email" | "two-factor";
@@ -131,12 +145,12 @@ export function SignInScreen() {
   };
   const { data: config } = useSuspenseQuery(authConfigOptions);
   const accounts = config.mode === "accounts";
-  const inApp = !nativeRuntime && currentBrowserKind() !== "standard";
-  const providers = accounts
-    ? config.providers
-        .filter(isProvider)
-        .filter((p) => !inApp || p !== "google")
-    : [];
+  // In an in-app browser (Facebook, Instagram, TikTok…), Google refuses to
+  // sign in, so "Continue with Google" opens the same sign-in in the phone's
+  // browser in one tap. Every other method works in place.
+  const handoff = useBrowserHandoff();
+  const inApp = !!handoff.inApp;
+  const providers = accounts ? config.providers.filter(isProvider) : [];
   const passwords = accounts ? config.passwords : true;
   // Passkey-first sign-up wherever this browser and deployment support it;
   // a password is the secondary choice (`?method=password`).
@@ -234,9 +248,8 @@ export function SignInScreen() {
   // Parents sent to sign in from /access get the parent signup layout:
   // "Continue with Google" in full on its own row.
   const parentLayout = parentEntry || carry.return === "access";
-  const primaryProviders = inApp
-    ? []
-    : parentLayout && providers.some((p) => p !== "github")
+  const primaryProviders =
+    parentLayout && providers.some((p) => p !== "github")
       ? providers.filter((p) => p !== "github")
       : providers;
   const additionalProviders = providers.filter(
@@ -625,6 +638,40 @@ export function SignInScreen() {
       );
     }, null);
   };
+  /** The sign-in this screen would start, opened in the real browser, where
+   * it starts Google at once (`googleArrival`). It keeps the continuation. */
+  const googleStart = () => {
+    const start = new URL(
+      step === "create" ? "/sign-up" : "/sign-in",
+      location.origin,
+    );
+    start.search = `${new URLSearchParams(carry as Record<string, string>)}`;
+    start.hash = GOOGLE_START;
+    return start.href;
+  };
+  const choose = (provider: Provider) => {
+    if (busy || pending) return;
+    if (inApp && provider === "google" && handoff.open(googleStart())) return;
+    social(provider);
+  };
+  // Arriving from that handoff starts Google once. Back or a reload to this
+  // address shows the screen instead, so Back from Google never re-enters it.
+  const [googleArrival] = useState(
+    () =>
+      location.hash === `#${GOOGLE_START}` &&
+      !inApp &&
+      providers.includes("google") &&
+      (step === "sign-in" || step === "create") &&
+      arrivedByLink(),
+  );
+  const arrivalStarted = useRef(false);
+  useEffect(() => {
+    // Starts an external sign-in on arrival; the provider's page replaces
+    // this one by the auth client's redirect, never by the router.
+    if (!googleArrival || arrivalStarted.current) return;
+    arrivalStarted.current = true;
+    social("google");
+  }, [googleArrival]);
   const signInWithPasskey = () =>
     void run(async () => {
       await prepareFreeSignup();
@@ -685,7 +732,7 @@ export function SignInScreen() {
             )}
           </div>
         )}
-        {step === "sign-in" && !inApp && providers.length > 0 && (
+        {step === "sign-in" && providers.length > 0 && (
           <p className={styles.hint}>
             Choose the sign-in method you used to create your account.
           </p>
@@ -725,7 +772,7 @@ export function SignInScreen() {
             copy={copy}
             busy={busy || !!pending}
             pending={pending}
-            onSelect={social}
+            onSelect={choose}
           />
         )}
         {step === "sign-in" && !inApp && (
@@ -762,8 +809,20 @@ export function SignInScreen() {
             <p role="status">
               This email signs in with {methodList(hinted.methods)}.
               {hinted.externalOnly &&
+                !handoff.available &&
                 " Open this page in your browser to continue."}
             </p>
+            {hinted.externalOnly && handoff.available && (
+              <Button
+                type="button"
+                variant="primary"
+                onClick={() => handoff.open(location.href)}
+              >
+                {handoff.inApp?.platform === "ios"
+                  ? "Continue in Safari"
+                  : "Continue in your browser"}
+              </Button>
+            )}
             <ProviderButtons
               providers={
                 hinted.externalOnly ? [] : hinted.methods.filter(isProvider)
@@ -771,7 +830,7 @@ export function SignInScreen() {
               copy={copy}
               busy={busy || !!pending}
               pending={pending}
-              onSelect={social}
+              onSelect={choose}
             />
             {!inApp && hinted.methods.includes("passkey") && (
               <Button
@@ -834,7 +893,7 @@ export function SignInScreen() {
               copy={copy}
               busy={busy || !!pending}
               pending={pending}
-              onSelect={social}
+              onSelect={choose}
             />
           </div>
         ) : (
@@ -911,7 +970,7 @@ export function SignInScreen() {
             </form>
           )
         )}
-        {inApp && showProviders && <OpenInBrowser />}
+        {handoff.hint}
         <div className="account-links">
           {step === "sign-in" && passwords && (
             <>
@@ -968,7 +1027,7 @@ export function SignInScreen() {
                 copy={copy}
                 busy={busy || !!pending}
                 pending={pending}
-                onSelect={social}
+                onSelect={choose}
               />
             </details>
           )}

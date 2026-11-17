@@ -128,7 +128,10 @@ export function WorkReplay({
   /** A layer over a page (nav/LayerHost): closing pops it, stepping swaps
    * it, and while another layer covers it, its keys rest. */
   layer?: {
+    /** Its cross: back to the page it was opened over. */
     close: () => void;
+    /** Escape: one level up, as everywhere in the layers. */
+    up: () => void;
     covered: boolean;
     step: (entity: Entity) => void;
   };
@@ -182,7 +185,7 @@ export function WorkReplay({
       // A layer over it handles its own keys: Escape closes only that.
       if (covered) return;
       if (event.key === "Escape" && !document.querySelector("dialog[open]"))
-        close();
+        (layer ? layer.up : close)();
       const to =
         event.key === "ArrowLeft"
           ? replay?.previous
