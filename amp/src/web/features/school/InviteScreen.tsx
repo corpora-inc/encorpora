@@ -26,6 +26,7 @@ import {
   setupPath,
 } from "./paths";
 import { Brand } from "./SchoolFrame";
+import { signInLink } from "../schools/sign-in-link";
 import styles from "./School.module.css";
 
 function parseFragment(hash: string) {
@@ -136,7 +137,6 @@ export function InviteScreen() {
   };
   const view = invite.data;
   const email = me?.signedIn ? me.account.email : null;
-  const signInSearch = { return: "school-invite" } as never;
   // A family's second parent joins only as the address it was sent to. The
   // family is named as the family, and its parent by their own name.
   const family = view?.secondParent
@@ -357,16 +357,14 @@ export function InviteScreen() {
           </p>
           <div className={styles.inviteActions}>
             <Link
-              to="/sign-up"
-              search={signInSearch}
+              {...signInLink({ return: "school-invite" }, "/sign-up")}
               className={buttonClass("primary")}
               onClick={carry}
             >
               Create an account
             </Link>
             <Link
-              to="/sign-in"
-              search={signInSearch}
+              {...signInLink({ return: "school-invite" })}
               className={buttonClass("secondary")}
               onClick={carry}
             >

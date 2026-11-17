@@ -9,6 +9,7 @@ import { SCOPE_CSV, SCOPE_PDF } from "./api";
 import { CurriculumRibbon } from "./CurriculumRibbon";
 import { ProductShot } from "./ProductShot";
 import { PublicFrame } from "./PublicFrame";
+import { signInLink } from "./sign-in-link";
 import { TalkToUs } from "./TalkToUs";
 import { productScreens as screens } from "./screens";
 import styles from "./Schools.module.css";
@@ -31,8 +32,7 @@ function Actions({ className = "" }: { className?: string }) {
         </Link>
       ) : (
         <Link
-          to="/sign-up"
-          search={{ return: "school", next: "/school/start" }}
+          {...signInLink("/school/start", "/sign-up")}
           className={buttonClass("primary", styles.action)}
         >
           Start with your class
@@ -55,8 +55,7 @@ function Actions({ className = "" }: { className?: string }) {
         </Link>
       ) : (
         <Link
-          to="/sign-up"
-          search={{ return: "school", next: "/school/start/school" } as never}
+          {...signInLink("/school/start/school", "/sign-up")}
           className={buttonClass(clever ? "quiet" : "secondary", styles.action)}
         >
           Set up your school

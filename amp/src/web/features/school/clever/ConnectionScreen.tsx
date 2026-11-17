@@ -15,6 +15,8 @@ import { Loading } from "../../../ui/Loading";
 import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { Toast } from "../../../ui/Toast";
 import { PublicFrame } from "../../schools/PublicFrame";
+import { signInLink } from "../../schools/sign-in-link";
+import { ViewLink } from "../ViewLink";
 import { deviceTimeZone } from "../../onboarding/starter-api";
 import { Actions, Aside, Lead, PlainPage } from "../PlainPage";
 import { orgsOptions } from "../api";
@@ -197,8 +199,7 @@ export function ConnectionScreen() {
   }
   const signInAgain = (
     <Link
-      to="/sign-in"
-      search={{ return: "school", next: "/school/connect" }}
+      {...signInLink("/school/connect")}
       className={buttonClass("primary")}
     >
       Sign in again
@@ -402,13 +403,13 @@ export function ConnectionScreen() {
                   withClever("Review schools")
                 ) : (
                   <>
-                    <Link
+                    <ViewLink
                       to="/school/adopt"
-                      search={{ district: connection.orgId, manage: 1 }}
+                      view={{ district: connection.orgId, manage: 1 }}
                       className={buttonClass("primary")}
                     >
                       Review schools
-                    </Link>
+                    </ViewLink>
                     {canSync && !waitingToSync && (
                       <Button
                         variant="secondary"
