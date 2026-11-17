@@ -40,8 +40,7 @@ import {
 } from "./memory";
 import { Included, RecapLine } from "./Recap";
 import { Page } from "../../ui/Page";
-import { PageHeader, type PageBack } from "../../ui/PageHeader";
-import { childFamily } from "../spaces/learner-urls";
+import { PageHeader } from "../../ui/PageHeader";
 import styles from "./Continue.module.css";
 
 /** `/continue/$learnerId`: "Continue with AMP" for one learner. The plan,
@@ -151,7 +150,6 @@ function Continue({ session }: { session: AuthSession }) {
   if (learner.simulation)
     return (
       <ContinuePage
-        back={learnerPage(account, learner)}
         subtitle="For your own practice"
         note={
           <p className={styles.covers}>
@@ -172,7 +170,6 @@ function Continue({ session }: { session: AuthSession }) {
   const consented = account.consent.status === "active";
   return (
     <ContinuePage
-      back={learnerPage(account, learner)}
       subtitle={adult ? "For your own practice" : `For ${learner.name}`}
       aside={
         <>
@@ -320,15 +317,12 @@ function Return({ href }: { href: string }) {
 function ContinuePage({
   children,
   busy = false,
-  back,
   subtitle,
   note,
   aside,
 }: {
   children?: React.ReactNode;
   busy?: boolean;
-  /** Back goes up to the learner's own page (learnerPage). */
-  back?: PageBack;
   subtitle?: string;
   /** A line under the header, before the plan. */
   note?: React.ReactNode;
@@ -342,11 +336,7 @@ function ContinuePage({
     );
   return (
     <Page>
-      <PageHeader
-        back={back ?? null}
-        title="Choose your plan"
-        subtitle={subtitle}
-      />
+      <PageHeader title="Choose your plan" subtitle={subtitle} />
       {note}
       <div className={styles.columns}>
         <div className={styles.checkout}>{children}</div>
@@ -354,23 +344,6 @@ function ContinuePage({
       </div>
     </Page>
   );
-}
-/** Continue's parent, from the account itself: the learner's own page (a
- * child's in their family, the adult's progress, the practice profiles),
- * never where Continue was opened from. */
-function learnerPage(
-  account: SignedInMe,
-  learner: { id: string; adult?: boolean; simulation?: boolean },
-): PageBack {
-  if (learner.simulation) return { to: "/me/profiles" };
-  if (learner.adult) return { to: "/me" };
-  const family = childFamily(account, learner.id);
-  return family
-    ? {
-        to: "/family/$family/kids/$learner",
-        params: { family, learner: learner.id },
-      }
-    : { to: "/family" };
 }
 /** A plan already paid for and not yet anyone's: it becomes this learner's. */
 function UsePaidPlan({

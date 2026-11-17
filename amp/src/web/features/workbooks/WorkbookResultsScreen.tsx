@@ -18,12 +18,8 @@ import type {
 } from "../../../workbook/contracts";
 import { saveWorkbookResults, workbookResultsOptions } from "./api";
 import { dateLabel, sectionNames, workbookMessage } from "./model";
-import {
-  WorkbookFrame,
-  WorkbookTrail,
-  whose,
-  type WorkbookLearner,
-} from "./WorkbookFrame";
+import { WorkbookFrame, whose, type WorkbookLearner } from "./WorkbookFrame";
+import { PageHeader } from "../../ui/PageHeader";
 import styles from "./Workbooks.module.css";
 
 type Draft = { answer?: string; mark?: "right" | "not-yet" };
@@ -110,17 +106,18 @@ function Results({
   const open = data?.rows.filter((row) => !row.recorded).length ?? 0;
   return (
     <>
-      <WorkbookTrail learner={learner} />
-      <h1 className={styles.title}>
-        {data
-          ? `No. ${data.workbook.number} · ${dateLabel(data.workbook.date)}`
-          : "Workbook results"}
-      </h1>
-      <p className={styles.lede}>
-        {whose(learner).own
-          ? "Type each answer, or mark it right or not yet."
-          : `Type each of ${learner.name}’s answers, or mark it right or not yet.`}
-      </p>
+      <PageHeader
+        title={
+          data
+            ? `No. ${data.workbook.number} · ${dateLabel(data.workbook.date)}`
+            : "Workbook results"
+        }
+        subtitle={
+          whose(learner).own
+            ? "Type each answer, or mark it right or not yet."
+            : `Type each of ${learner.name}’s answers, or mark it right or not yet.`
+        }
+      />
       {results.error ? (
         <p className={styles.message} role="alert">
           {workbookMessage(

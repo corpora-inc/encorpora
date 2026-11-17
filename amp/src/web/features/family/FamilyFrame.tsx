@@ -18,11 +18,11 @@ import { Button, buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
 import { LoadingScreen } from "../../ui/LoadingScreen";
 import { Page } from "../../ui/Page";
-import { PageHeader, type PageBack } from "../../ui/PageHeader";
+import { PageHeader } from "../../ui/PageHeader";
 import { ownClassOf } from "../spaces/resolve";
 import { spaceWords } from "../spaces/words";
 import { familyOptions, type FamilyProjection } from "./api";
-import { FamilyRecordLinks, useFamilyRecordBack } from "./RecordLinks";
+import { FamilyRecordLinks } from "./RecordLinks";
 import styles from "./Family.module.css";
 
 const NO_SESSION: AuthSession = { accountId: "", token: "" };
@@ -103,8 +103,7 @@ function useOwnChildLayer(place: FamilyPlace) {
 
 /**
  * The page under the app frame for every family screen: one standard Page
- * column, its header (the record's way back, the title, the related
- * records), its wait inside it (the bar is already whole), the family's
+ * column, its header (the title and the related records), its wait inside it (the bar is already whole), the family's
  * unavailable state when the address names a family this account isn't a
  * parent of, and the layers opened over the page (a skill, a lesson, one of
  * a child's answers).
@@ -114,7 +113,6 @@ export function FamilyFrame({
   loading = false,
   title,
   description,
-  back,
   area,
   children,
 }: {
@@ -126,14 +124,10 @@ export function FamilyFrame({
   /** Shared page heading: every family tab starts at the same position. */
   title?: ReactNode;
   description?: ReactNode;
-  /** The screen's way back, when it is a step under a tab (People under
-   * Settings); a progress record's own comes from its address. */
-  back?: PageBack;
   children: ReactNode;
 }) {
   const { query, data } = place;
   useOwnChildLayer(place);
-  const recordBack = useFamilyRecordBack(place);
   const content = (body: ReactNode) => (
     <Page
       id="family-content"
@@ -146,7 +140,6 @@ export function FamilyFrame({
         !loading &&
         (title ? (
           <PageHeader
-            back={back ?? recordBack}
             title={title}
             subtitle={description}
             actions={<FamilyRecordLinks place={place} />}

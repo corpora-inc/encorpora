@@ -6,7 +6,6 @@ import {
   type ReactNode,
 } from "react";
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
-import { useToRoot } from "../../nav/root";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { z } from "zod";
 import type { AuthSession } from "../../auth";
@@ -118,7 +117,6 @@ function AccountPurchase({ session }: { session: AuthSession }) {
 }
 function PurchasePage(account: Account) {
   const offers = useQuery(offerOptions);
-  const toRoot = useToRoot();
   const location = useLocation();
   const navigate = useNavigate();
   const search = location.search as {
@@ -147,10 +145,7 @@ function PurchasePage(account: Account) {
   const settled = !search.invoice && (learnerMissing || !offers.isPending);
   return (
     <Page>
-      <PageHeader
-        back={account.session ? { to: "/account/billing" } : () => toRoot()}
-        title="Pay with education funds"
-      />
+      <PageHeader title="Pay with education funds" />
       {search.invoice ? (
         <ResumeInvoice
           key={`${account.session?.accountId ?? "guest"}:${search.invoice}`}

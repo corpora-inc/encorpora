@@ -1,5 +1,5 @@
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
-import { afterEach, expect, test, vi } from "vitest";
+import { cleanup, render, screen } from "@testing-library/react";
+import { afterEach, expect, test } from "vitest";
 import { Page } from "../Page";
 import { PageHeader } from "../PageHeader";
 import { PageSection } from "../PageSection";
@@ -36,28 +36,22 @@ test("standard is the default, and full has no column of its own", () => {
   expect(full!.querySelector("[data-page-column]")).toBeNull();
 });
 
-test("a header's way back sits above its title, one label style", () => {
-  const back = vi.fn();
+test("a header is its title, subtitle and actions; it never draws a Back", () => {
   render(
     <PageHeader
-      back={back}
       title="Receipt"
       subtitle="Paid Nov 1"
       actions={<button type="button">Print</button>}
     />,
   );
-  const header = document.querySelector("[data-page-header]")!;
-  // Said as where it goes; the chevron is drawn, not said.
-  const link = screen.getByRole("button", { name: "Back" });
-  const title = screen.getByRole("heading", { level: 1, name: "Receipt" });
-  // The way back comes first, the title after it.
   expect(
-    link.compareDocumentPosition(title) & Node.DOCUMENT_POSITION_FOLLOWING,
+    screen.getByRole("heading", { level: 1, name: "Receipt" }),
   ).toBeTruthy();
-  expect(header.firstElementChild).toBe(link);
   expect(screen.getByText("Paid Nov 1").tagName).toBe("P");
-  fireEvent.click(link);
-  expect(back).toHaveBeenCalledOnce();
+  expect(screen.queryByRole("link", { name: /back/i })).toBeNull();
+  expect(screen.getAllByRole("button").map((b) => b.textContent)).toEqual([
+    "Print",
+  ]);
 });
 
 test("a section is labelled by its title, with its action beside it", () => {
