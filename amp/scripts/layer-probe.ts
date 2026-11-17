@@ -73,3 +73,34 @@ export const storedLayers = (page: Page) =>
     );
     return (key ? stacks[key]! : []).map(({ kind, id }) => ({ kind, id }));
   });
+
+/** Waits until the map's view (src/web/features/pathways/map-view.ts,
+ * sessionStorage `amp.map-view`) for the screen on view has `key` as
+ * `value` ("" for none): its search's text (`topic`), grade (`band`) or
+ * area. The view never rides in the address. */
+export const waitForMapView = (
+  page: Page,
+  key: "topic" | "band" | "area",
+  value: string,
+  timeout = 15_000,
+) =>
+  page.waitForFunction(
+    ([key, value]) => {
+      const path = location.pathname.replace(/\/+$/, "") || "/";
+      let views: Record<string, Record<string, unknown>> = {};
+      try {
+        views =
+          JSON.parse(sessionStorage.getItem("amp.map-view") ?? "{}")?.state
+            ?.views ?? {};
+      } catch (error) {
+        console.warn("The map's view did not read", error);
+      }
+      const scope = Object.keys(views).find(
+        (at) => at === path || at.endsWith(`:${path}`),
+      );
+      const now = scope ? views[scope]![key!] : undefined;
+      return (now ?? "") === value || (value === "" && now === null);
+    },
+    [key, value] as const,
+    { timeout },
+  );
