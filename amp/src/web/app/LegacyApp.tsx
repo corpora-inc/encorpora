@@ -72,13 +72,8 @@ import { ParentConsentCenter } from "../ParentConsentCenter";
 import { takeConsentChallenge, type ConsentChallenge } from "../consent-link";
 import { ProgressWorkspace, type ProgressView } from "../ProgressWorkspace";
 import {
-  capturePurchaseReturn,
   clearPurchaseReturn,
   clearOwnedPurchaseReturn,
-  readOwnedPurchaseReturn,
-  rememberOwnedPurchaseReturn,
-  parsePurchaseReturn,
-  type PurchaseReturn,
 } from "../purchase-return";
 import type { FamilySummary } from "../../family/contracts";
 import { preferredBookForProblem } from "../../books/selection";
@@ -216,7 +211,6 @@ addEventListener(
   },
   true,
 );
-let initialPurchaseReturn = nativeRuntime ? null : capturePurchaseReturn();
 if (nativeRuntime) clearInitialConsentChallenge();
 // Leaving Family lands on "/", which mounts this screen anew: the focus owed
 // to the menu button outlives the screen that asked for it.
@@ -458,11 +452,6 @@ function LegacyScreen({ owner }: { owner: string | null }) {
   const [purchaseFocus, setPurchaseFocus] = useState<
     "annual" | "funded" | undefined
   >();
-  const [purchaseReturn, setPurchaseReturn] = useState<PurchaseReturn | null>(
-    () => readOwnedPurchaseReturn(accountId ?? ""),
-  );
-  const pendingPurchaseReturn = useRef(initialPurchaseReturn);
-  const returnIdentity = useRef<string | null>(null);
   // An adult's own learner learns on the account's own terms; the family's
   // learners need its consent.
   const learningAllowed =
@@ -702,7 +691,6 @@ function LegacyScreen({ owner }: { owner: string | null }) {
 
     setConsentReturn(false);
 
-    setPurchaseReturn(readOwnedPurchaseReturn(identity ?? ""));
     const openingSecurity =
       !nativeRuntime &&
       accountRef.current === null &&
@@ -876,55 +864,9 @@ function LegacyScreen({ owner }: { owner: string | null }) {
       }
     });
   }, [accountId, route.location.pathname]);
-  useEffect(() => {
-    if (!accountId || !token || !pendingPurchaseReturn.current) return;
-    // A return belongs to its first signed-in owner, not every account that
-    // subsequently mounts in this document after a cross-tab session change.
-    initialPurchaseReturn = null;
-    const context = parsePurchaseReturn(pendingPurchaseReturn.current);
-    pendingPurchaseReturn.current = null;
-    if (!context) {
-      clearPurchaseReturn();
-      return;
-    }
-    returnIdentity.current = accountId;
-    const epoch = authEpoch.current;
-    const navigation = navigationEpoch.current;
-    void (async () => {
-      try {
-        if (context.purchaseId)
-          await api<{ learnerId: string }>(
-            `/billing/purchase/${context.purchaseId}`,
-          );
-        if (
-          epoch !== authEpoch.current ||
-          returnIdentity.current !== accountRef.current ||
-          navigation !== navigationEpoch.current ||
-          !parsePurchaseReturn(context)
-        )
-          return;
-        if (!rememberOwnedPurchaseReturn(accountId, context)) return;
-        navigationEpoch.current++;
-        setReadingBook(null);
-        setPurchaseReturn(context);
-        setPurchaseView("annual");
-      } catch (failure) {
-        console.error("The purchase return could not be resumed", failure);
-        if (
-          epoch === authEpoch.current &&
-          navigation === navigationEpoch.current &&
-          parsePurchaseReturn(context)
-        ) {
-          navigate("/account/billing");
-          setError(
-            "This purchase return could not be matched to your account. Open Annual subscription to check your learner’s access.",
-          );
-        }
-      } finally {
-        clearPurchaseReturn();
-      }
-    })();
-  }, [accountId]);
+  // A checkout's return (Stripe's `?billing=`) is resolved by the router
+  // before any screen (app/third-party-returns.ts), and an unmatched one is
+  // said in Billing; nothing here reads it.
   useEffect(() => {
     setReadingBook(null);
     setBooks([]);
@@ -1710,7 +1652,6 @@ function LegacyScreen({ owner }: { owner: string | null }) {
                   <MenuItem
                     onSelect={() => {
                       clearPurchaseReturn();
-                      pendingPurchaseReturn.current = null;
                       clearInitialConsentChallenge();
                       clearOwnedPurchaseReturn();
                       setHasPendingConsent(false);

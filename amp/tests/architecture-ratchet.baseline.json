@@ -4,7 +4,7 @@
     "redirects": 0,
     "validateSearch": 0,
     "searchHandoffs": 3,
-    "navigatingEffects": 2,
+    "navigatingEffects": 1,
     "renderNavigate": 0,
     "silentCatches": 0,
     "sessionProps": 0,
@@ -19,7 +19,7 @@
       "features/inventory/InventoryScreen.tsx": 3
     },
     "navigatingEffects": {
-      "app/LegacyApp.tsx": 2
+      "app/LegacyApp.tsx": 1
     },
     "renderNavigate": {},
     "silentCatches": {},
