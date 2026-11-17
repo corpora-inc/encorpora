@@ -1,4 +1,5 @@
 import { expect, test, vi } from "vitest";
+import { findAliases } from "../../../app/legacy-aliases";
 
 vi.mock("../../../auth", () => ({
   accessSession: vi.fn(async () => null),
@@ -30,7 +31,12 @@ test("a school's own address is its overview, never the not-found screen", () =>
 
 test("a class's own address opens the class, an unknown one says so", () => {
   const place = `/school/${org}/classes/${klass}`;
-  expect(routeOf(place)).toBe("/school/$org/classes/$class/");
+  // The class's bare address is an old one: its Today, in one hop.
+  expect(
+    findAliases({ pathname: place, search: {}, searchStr: "" }).map(
+      ({ alias }) => alias.about,
+    ),
+  ).toContain("a class's own address");
   expect(routeOf(`${place}/today`)).toBe("/school/$org/classes/$class/today");
   expect(routeOf(`${place}/grades`)).toBe("/school/$org/classes/$class/$");
 });

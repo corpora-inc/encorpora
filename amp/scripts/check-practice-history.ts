@@ -1,4 +1,8 @@
 import assert from "node:assert/strict";
+import { storedLayers } from "./layer-probe";
+/** The screen's layers (nav/layer-store.ts) as `kind:id,…`. */
+const layersOf = async (page: import("playwright").Page) =>
+  (await storedLayers(page)).map((l) => `${l.kind}:${l.id}`).join(",");
 import { chromium as rawChromium } from "playwright";
 import { secureChromium } from "../browser-security.mjs";
 const origin =
@@ -79,7 +83,8 @@ try {
         `Back must settle without a redirect loop: ${urls.join(" → ")}`,
       );
       assert.equal(new URL(page.url()).pathname, base);
-      assert.equal(new URL(page.url()).searchParams.get("open"), stack);
+      assert.equal(new URL(page.url()).searchParams.get("open"), null);
+      assert.equal(await layersOf(page), stack);
       await page
         .getByRole("dialog", {
           name: "Choose the operations of a story",
@@ -102,19 +107,16 @@ try {
             exact: true,
           })
           .waitFor();
-        assert.equal(new URL(page.url()).searchParams.get("open"), stack);
+        assert.equal(await layersOf(page), stack);
       }
 
-      const back = page.locator("[data-layer-close]:visible").last();
-      if (await back.count()) {
-        await back.click();
-        await page.waitForTimeout(1200);
-
-        assert.equal(
-          new URL(page.url()).searchParams.get("open"),
-          stack.split(",").slice(0, -1).join(","),
-        );
-      }
+      // Escape goes up one level (the cross closes the whole overlay).
+      await page.keyboard.press("Escape");
+      await page.waitForTimeout(1200);
+      assert.equal(
+        await layersOf(page),
+        stack.split(",").slice(0, -1).join(","),
+      );
       if (mode === "child") {
         assert.ok(batches.length >= 2);
         assert.ok(batches.every((id) => id === child.id));
@@ -126,7 +128,7 @@ try {
           .waitFor();
       }
       console.log(
-        `PASS: ${mode} browser Back/Forward restores the nested curriculum and Close removes one layer.`,
+        `PASS: ${mode} browser Back/Forward restores the nested curriculum and Escape removes one layer.`,
       );
     } catch (e) {
       console.error(

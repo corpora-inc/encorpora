@@ -115,3 +115,15 @@ test("a layer's link shares the screen with its stack", () => {
   ).toBe(`${map}?view=3d&open=skill%3Aa%2Cskill%3Ab`);
   expect(shareableHref(map, "?view=3d", [])).toBe(`${map}?view=3d`);
 });
+
+test("closing an answer's replay closes back to the page, its student with it", () => {
+  const scope = "/school/o/classes/c/map";
+  const layers = layerActions(scope);
+  layers.open([
+    { kind: "student", id: "00000000-0000-4000-8000-000000000001" },
+    { kind: "work", id: "00000000-0000-4000-8000-000000000001.abcdef01" },
+  ]);
+  layers.closeLayer(1);
+  // One step: nothing of the stack is left to disagree with the page.
+  expect(useLayerStore.getState().stacks[scope]).toBeUndefined();
+});

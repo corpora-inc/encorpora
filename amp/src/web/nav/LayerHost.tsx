@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { useSessionOrNull } from "../lib/session";
 import { useParams } from "@tanstack/react-router";
 import { lazy, Suspense, type ReactNode } from "react";
 // A lesson is its own chunk, with every problem type's title: it opens with
@@ -13,11 +14,10 @@ import { StudentLayer } from "../features/school/classes/StudentLayer";
 import { studentRecordOptions } from "../features/school/classes/teacher-api";
 import { WorkReplaySlot } from "../features/school/classes/WorkReplaySlot";
 import { skillCatalogOptions } from "../lib/learning-view";
-import { sessionOptions } from "../lib/query";
 import { ENTITIES, staffOnly, workParts, type Entity } from "./entities";
 import { useLayers } from "./links";
 import { MOTION_MS, useLayerStore } from "./layer-store";
-import { LayerFrame } from "../ui/LayerFrame";
+import { LayerFrame, type Moving } from "../ui/LayerFrame";
 import { LayerBackProvider } from "../ui/LayerControls";
 import { SkillLayer } from "./SkillLayer";
 import { AreaLayer, areaSourceOf, OVERALL, type AreaSource } from "./AreaLayer";
@@ -74,11 +74,11 @@ export function LayerHost({
   const replay = replayAt >= 0 ? shown[replayAt]! : null;
   const framed = shown.slice(replayAt + 1);
   const depthOf = (entity: Entity) => stack.indexOf(entity) + 1;
-  const moving = () => {
+  const moving = (): Moving => {
     const motion = useLayerStore.getState().motion;
     return motion?.scope === scope && performance.now() - motion.at < MOTION_MS
-      ? motion.direction
-      : 0;
+      ? { direction: motion.direction, closed: motion.closed }
+      : { direction: 0 };
   };
   const top = framed.at(-1);
   return (
@@ -93,7 +93,10 @@ export function LayerHost({
           }
           skill={replay.skill}
           layer={{
-            close: () => layers.closeToDepth(depthOf(replay) - 1),
+            // An answer closes back to the page it was opened over (its
+            // student's sheet with it), as its address always did.
+            close: () => layers.closeLayer(depthOf(replay) - 1),
+            up: layers.close,
             covered: framed.length > 0,
             step: (entity) => layers.replaceTop(entity),
           }}
@@ -109,6 +112,7 @@ export function LayerHost({
             key: `${index}:${entity.kind}:${entity.id}`,
             title: <LayerTitle entity={entity} />,
           }))}
+          layers={framed.map((entity) => `${entity.kind}:${entity.id}`).join()}
           onCrumb={(depth) => layers.closeToDepth(replayAt + 1 + depth)}
           onClose={layers.closeAll}
           onStepBack={layers.close}
@@ -290,7 +294,7 @@ function StudentArea({
   onClose: () => void;
   back?: string;
 }) {
-  const session = useQuery(sessionOptions).data ?? null;
+  const session = useSessionOrNull();
   const record = useQuery({
     ...studentRecordOptions(session, student),
     enabled: !!session,
@@ -311,7 +315,7 @@ function StudentArea({
  * name, a skill's or a lesson's title. Nothing while it loads, or for a
  * replayed answer (the X over it is plain). */
 export function useLayerTitle(entity: Entity | undefined) {
-  const session = useQuery(sessionOptions).data ?? null;
+  const session = useSessionOrNull();
   const student = useQuery({
     ...studentRecordOptions(session, entity?.id ?? ""),
     enabled: !!session && entity?.kind === "student",

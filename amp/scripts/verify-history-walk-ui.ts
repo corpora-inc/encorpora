@@ -67,7 +67,7 @@ type Walk = {
   /** Checks after a step has landed (filled by `before`). */
   after?: (page: Page, index: number) => Promise<void>;
   /** Just before a step is taken. */
-  beforeStep?: (page: Page, index: number) => Promise<void> | undefined;
+  beforeStep?: (page: Page, index: number) => Promise<unknown> | undefined;
 };
 
 /** A fresh account through the real sign-up, signed in on its own context. */
@@ -89,8 +89,39 @@ async function freshParent(browser: Browser, width: number) {
   if (!response.ok())
     throw Error(`sign-up ${response.status()} ${await response.text()}`);
   await context.addInitScript(recordHistory);
+  await context.addInitScript(recordShifts);
   return context;
 }
+
+/** Every layout shift the page makes (CLS entries), with when. */
+const recordShifts = `(() => {
+  const shifts = (window.__shifts = []);
+  new PerformanceObserver((list) => {
+    for (const entry of list.getEntries())
+      if (!entry.hadRecentInput)
+        shifts.push({ at: entry.startTime, value: entry.value });
+  }).observe({ type: "layout-shift", buffered: true });
+})();`;
+/** From now until practice paints: every frame, where the overlay's
+ * Practice button is (or "gone"), while the screen is still the map. */
+const watchPractice = `(() => {
+  window.__tap = performance.now();
+  const boxes = (window.__practiceBoxes = []);
+  const poll = () => {
+    if (location.pathname === "/practice") return;
+    const button = document.querySelector(
+      "[data-layer-frame] [data-curriculum-practice] button",
+    );
+    const box = button && button.getBoundingClientRect();
+    boxes.push(
+      box
+        ? [box.x, box.y, box.width, box.height].map(Math.round).join(",")
+        : "gone",
+    );
+    requestAnimationFrame(poll);
+  };
+  poll();
+})()`;
 
 /** Every history entry the app writes (push or replace), in order. */
 const recordHistory = `(() => {
@@ -172,22 +203,21 @@ const CHILD_PAGE = /^\/family\/[^/]+\/kids\/[^/]+$/;
 /** Records whether anything on the page shows a wait from now on (a
  * loading screen, a skeleton, a busy region): read with `waited`. */
 const watchWaits = (page: Page) =>
-  page.evaluate(() => {
-    const w = window as unknown as { __waited?: string[] };
-    w.__waited = [];
-    const seen = () => {
+  // A string: a function here would carry the bundler's name helper.
+  page.evaluate(`(() => {
+    const waits = (window.__waited = []);
+    new MutationObserver(() => {
       const found = document.querySelector(
         ".amp-loading, .amp-skeleton, [role=status][aria-busy=true]",
       );
-      if (found) w.__waited!.push(found.className || found.tagName);
-    };
-    new MutationObserver(seen).observe(document.body, {
+      if (found) waits.push(String(found.className || found.tagName));
+    }).observe(document.body, {
       subtree: true,
       childList: true,
       attributes: true,
       attributeFilter: ["class", "aria-busy"],
     });
-  });
+  })()`);
 const waited = (page: Page) =>
   page.evaluate(
     () => (window as unknown as { __waited?: string[] }).__waited ?? [],
@@ -373,23 +403,39 @@ const skillPractice: Walk = {
     const first = await frameState(page);
     await openLevel(page, 2, await deeper(page, 1));
     await openLevel(page, 3, await deeper(page, 2));
-    // ONE overlay: one scrim, as dark as it was at the first level, and
-    // the trail names all three.
+    // ONE overlay: one scrim, as dark as it was at the first level.
     const three = await frameState(page);
     if (three.scrims !== 1 || three.dialogs !== 1)
       fail("three levels: one scrim, one dialog", three);
     if (three.scrimOpacity !== first.scrimOpacity)
       fail("three levels: the scrim's opacity changed", [first, three]);
-    if (three.crumbs.length !== 3) fail("three levels: three crumbs", three);
+    // The trail names the two levels under the third; its title is the
+    // third's own heading.
+    if (three.crumbs.length !== 2)
+      fail("three levels: two crumbs, the ancestors", three);
     if (page.url() !== map.href)
       fail("layers stay out of the address", page.url());
     const practice = page
       .locator("[data-layer-frame]")
       .getByRole("button", { name: /^Practice with / });
     await forget(page);
+    await page.evaluate(watchPractice);
     await practice.click();
     await page.waitForURL((url) => PRACTICE.test(url.pathname));
     await page.locator(".problem-stage").waitFor();
+    // Tapping Practice moves nothing: the overlay and its busy button hold
+    // still until practice replaces the screen (founder 11-16, "it jerks
+    // the page around"), and the switch itself shifts nothing.
+    const held = (await page.evaluate(`({
+      boxes: window.__practiceBoxes,
+      cls: window.__shifts
+        .filter((shift) => shift.at >= window.__tap)
+        .reduce((sum, shift) => sum + shift.value, 0),
+    })`)) as { boxes: string[]; cls: number };
+    if (held.cls >= 0.01)
+      fail("Practice: layout shift until practice paints", held.cls);
+    if (new Set(held.boxes).size !== 1 || held.boxes[0] === "gone")
+      fail("Practice: its button holds its place until practice", held.boxes);
     await settled(page);
     await oneHop(page, "Practice with the child", "link");
     const atPractice = new URL(page.url());

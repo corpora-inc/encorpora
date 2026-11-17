@@ -1,4 +1,4 @@
-import { queryOptions, skipToken, useQuery } from "@tanstack/react-query";
+import { queryOptions, useQuery } from "@tanstack/react-query";
 import { meOptions, queryClient, sessionOptions } from "./query";
 import { qk } from "./keys";
 import { forSession, useSessionQuery } from "./session";
@@ -286,36 +286,23 @@ export function useLearningView({
     chooseLearner(account, selectedId, addressed);
   const viewOnly = !own && !!secondParentChild(account, learner?.id);
   const loadingIdentity = session.isPending || (!!session.data && me.isPending);
-  // Without records (the drawer), these observe nothing: a disabled observer
-  // of the learner's level would still be its last, and unmounting it (the
-  // drawer closing on its way to the Overview) cancels the level refresh the
-  // Overview is waiting for.
-  const evidence = useQuery(
-    records
-      ? {
-          ...forSession(session.data ?? null, (signedIn) =>
-            learnerEvidenceOptions(signedIn, learner?.id ?? ""),
-          ),
-          enabled: !!learner && readable,
-        }
-      : {
-          queryKey: qk.noRecords("evidence"),
-          queryFn: skipToken,
-        },
-  );
-  const frontier = useQuery(
-    records
-      ? {
-          ...forSession(session.data ?? null, (signedIn) =>
-            learnerFrontierOptions(signedIn, learner?.id ?? ""),
-          ),
-          enabled: !!learner && readable,
-        }
-      : {
-          queryKey: qk.noRecords("frontier"),
-          queryFn: skipToken,
-        },
-  );
+  // Without records (the drawer), these observe nothing, on the signed-out
+  // key that never asks: a disabled observer of the learner's level would
+  // still be its last, and unmounting it (the drawer closing on its way to
+  // the Overview) cancels the level refresh the Overview is waiting for.
+  const asked = records ? (session.data ?? null) : null;
+  const evidence = useQuery({
+    ...forSession(asked, (signedIn) =>
+      learnerEvidenceOptions(signedIn, learner?.id ?? ""),
+    ),
+    enabled: !!learner && readable,
+  });
+  const frontier = useQuery({
+    ...forSession(asked, (signedIn) =>
+      learnerFrontierOptions(signedIn, learner?.id ?? ""),
+    ),
+    enabled: !!learner && readable,
+  });
   const active = !!learner;
   const canPractice =
     !!learner &&

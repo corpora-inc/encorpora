@@ -29,6 +29,7 @@
  *     [--people family,teacher] [--widths 390,1280] [--schemes light] \
  *     [--label before] [--out <dir>] [--max-screens 40]
  */
+import { storedLayers } from "./layer-probe";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
@@ -918,6 +919,13 @@ for (const person of PEOPLE) {
     await page.setViewportSize({ width: 1280, height: 900 });
     await page.emulateMedia({ colorScheme: "light", reducedMotion: "reduce" });
     try {
+      // Each address shows only the layers it names: the layer store
+      // (sessionStorage `amp.layers`) forgets the screens swept before.
+      await page
+        .evaluate(() => sessionStorage.removeItem("amp.layers"))
+        .catch((error) =>
+          console.warn(`[${person}] layers not cleared`, String(error)),
+        );
       await page.goto(target.href, { waitUntil: "domcontentloaded" });
     } catch (error) {
       console.error(`[${person}] ${target.href} did not open`, error);
@@ -925,6 +933,14 @@ for (const person of PEOPLE) {
     }
     await settle(page);
     const landed = new URL(page.url());
+    // A link's layers move into the screen's layers and leave the address:
+    // they are still part of the screen's shape.
+    const stack = await storedLayers(page);
+    if (stack.length)
+      landed.searchParams.set(
+        "open",
+        stack.map((layer) => `${layer.kind}:${layer.id}`).join(","),
+      );
     const screen = shape(landed);
     // Every shape it opens or redirects to is noted, so it isn't queued again.
     shapes.add(screen);

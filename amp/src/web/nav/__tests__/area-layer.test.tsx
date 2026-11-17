@@ -157,13 +157,11 @@ test("a level's row opens its area over the page, never a step in history; ✕ c
   expect(layer.querySelector("[data-area-practice]")).toBeNull();
   fireEvent.click(links[0]!);
   await screen.findByRole("dialog", { name: "area of triangles" });
-  // One overlay, one scrim, and the way back up.
+  // One overlay, one scrim, and the way back up: the layer under it (its
+  // own title is the heading).
   expect(document.querySelectorAll("[data-layer-scrim]")).toHaveLength(1);
   const crumbs = [...document.querySelectorAll("[data-layer-crumb]")];
-  expect(crumbs.map((crumb) => crumb.textContent)).toEqual([
-    "Geometry",
-    "area of triangles",
-  ]);
+  expect(crumbs.map((crumb) => crumb.textContent)).toEqual(["Geometry"]);
   fireEvent.click(crumbs[0]!);
   await screen.findByRole("dialog", { name: "Geometry" });
   fireEvent.click(document.querySelector("[data-layer-close]")!);
