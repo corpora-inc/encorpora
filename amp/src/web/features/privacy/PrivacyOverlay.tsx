@@ -1,16 +1,17 @@
-import { Loading } from "../../ui/Loading";
 import { AccountOverlay } from "../account/AccountOverlay";
+import { PrivacyPanel } from "./PrivacyPanel";
 
-/*
- * Privacy & data over a settings hub (app/account-overlays.tsx): the privacy
- * panels as disclosures, one open at a time, opening first on
- * `panels.privacy` (features/account/panels.ts). Owned by the privacy
- * package (the IA v2 spec, WP3); this is its contract.
+/**
+ * Privacy & data, one overlay over the settings hub it opens from (IA v2
+ * §2.2 and §3.6; app/account-overlays.tsx): a routed overlay, so a mailed or
+ * legal link opens it, ✕, Escape and Back close it to the hub, and a refresh
+ * keeps it. Its body is the panels (PrivacyPanel): disclosures, one open at
+ * a time, none with an address, opening first on `panels.privacy`.
  */
 export function PrivacyOverlay() {
   return (
     <AccountOverlay name="privacy" title="Privacy & data">
-      <Loading />
+      <PrivacyPanel />
     </AccountOverlay>
   );
 }
