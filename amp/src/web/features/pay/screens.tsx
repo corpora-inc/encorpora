@@ -59,6 +59,8 @@ function PayOverlay({
 }) {
   const close = usePayClose();
   const { me, account, learner, ready } = usePayState();
+  // Billing at the account's own settings hub, never `/account` for a family.
+  const billing = useSettingsHref("billing");
   return (
     <Sheet
       open
@@ -90,7 +92,7 @@ function PayOverlay({
           <EmptyState
             title="This learner isn’t in your account"
             action={
-              <Link to="/account/billing" className={buttonClass("primary")}>
+              <Link to={billing as never} className={buttonClass("primary")}>
                 Open billing
               </Link>
             }

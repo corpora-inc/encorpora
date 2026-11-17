@@ -93,6 +93,14 @@ export function handedReturnPath(): string {
     return "/";
   }
 }
+/** Where a handed device's home control goes: the family's Today when it
+ * was handed over from one of the family's screens (`/family/<id>/…`), the
+ * screen it was handed from otherwise (a class's roster), else `/`. */
+export function handedHome(): string {
+  const path = handedReturnPath();
+  const family = /^\/family\/([^/?#]+)/.exec(path);
+  return family ? `/family/${family[1]}` : path;
+}
 export function clearStudentDevice() {
   // A parent's or teacher's held link never stays beside a child's session.
   forgetEveryLink();

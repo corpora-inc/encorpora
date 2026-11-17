@@ -1,7 +1,8 @@
 import type { AuthSession } from "../../auth";
 import { purchaseLearner } from "./api";
 import { meOptions, queryClient } from "../../lib/query";
-import { learnerOrigin, payOver } from "./address";
+import { learnerOrigin, payAddress, payOver } from "./address";
+import { loadSettingsHub } from "../spaces/settings-hub";
 import { payState, usePayStore, type CheckoutKind } from "./store";
 
 /**
@@ -10,7 +11,8 @@ import { payState, usePayStore, type CheckoutKind } from "./store";
  * (billing/stripe/gateway.ts). It is read here once, resolved through the
  * server, kept in the pay store, and the parent lands on a clean path: the
  * pay overlay it was opened from, over the same screen, on its
- * confirmation, or on the plan again after leaving Stripe.
+ * confirmation, or on the plan again after leaving Stripe (its back link or
+ * the browser's Back: both land on that same overlay).
  * (Stripe's own `session_id` isn't used: the server's checkout id is.) Null
  * when it names no learner this account can see (another device's
  * enrollment checkout, which names none): the caller's own screen then.
@@ -25,7 +27,10 @@ export async function stripeReturnTarget(
       ? search.purchase
       : undefined;
   if (!purchaseId && typeof search.billing !== "string") return null;
+  // The billing portal's return names no checkout: Billing, by the caller.
+  if (search.billing === "account") return null;
   const open = payState(session.accountId).checkout;
+  const opened = open?.kind === kind ? open : undefined;
   // A learner checkout records its learner; an enrollment checkout names
   // none until it is claimed, so only this tab knows who it was for.
   const recorded =
@@ -35,15 +40,33 @@ export async function stripeReturnTarget(
           return null;
         })
       : null;
-  const learnerId = recorded ?? (open?.kind === kind ? open.learnerId : undefined);
+  const learnerId = recorded ?? opened?.learnerId;
   if (!learnerId) return null;
-  // The overlay it was opened from, over the same screen; from another tab,
-  // the learner's own place.
-  let base = open?.learnerId === learnerId ? open.base : undefined;
+  // The overlay it was opened from, over the same screen. A practice
+  // profile's checkout records the adult's own learner it started: the same
+  // screen, for them.
+  const from = opened ? payAddress(opened.base) : null;
+  let base =
+    opened && from
+      ? opened.learnerId === learnerId
+        ? opened.base
+        : payOver(from.origin, learnerId)
+      : undefined;
   if (!base) {
+    // Opened in another tab: the learner's own place, a child's page in
+    // their family, else the account's settings hub (a family's Settings),
+    // never a screen they didn't come from.
     const me = await queryClient.ensureQueryData(meOptions(session));
     if (!me.signedIn) return null;
-    base = payOver(learnerOrigin(me, learnerId), learnerId);
+    const origin = learnerOrigin(me, learnerId);
+    const hub =
+      origin === "/account"
+        ? await loadSettingsHub(session).catch((error: unknown) => {
+            console.error("The account's settings hub didn't load", error);
+            return origin;
+          })
+        : origin;
+    base = payOver(hub, learnerId);
   }
   if (search.billing === "canceled") {
     // Left Stripe without paying: the plan again, on the card tab.

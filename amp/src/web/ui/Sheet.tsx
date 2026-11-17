@@ -24,6 +24,7 @@ export function Sheet(props: SheetProps) {
         title={props.title}
         description={props.description}
         lead={props.lead}
+        tall={props.tall}
       >
         {props.children}
       </SheetPanel>
@@ -39,6 +40,7 @@ export function SheetPanel({
   description,
   lead,
   bodyClass = styles.body,
+  tall,
   children,
 }: {
   title: string;
@@ -46,6 +48,9 @@ export function SheetPanel({
   lead?: ReactNode;
   /** The body's own look, when the layer is a reading dialog's (a lesson). */
   bodyClass?: string;
+  /** The sheet is its full height from the start (`Sheet`'s `tall`): the
+   * frame it is drawn in takes that height while this panel shows. */
+  tall?: boolean;
   children: ReactNode;
 }) {
   const panel = useLayerPanel();
@@ -58,6 +63,7 @@ export function SheetPanel({
         className={styles.header}
         data-layer-header=""
         data-scrolled={scrolled || undefined}
+        data-sheet-tall={tall || undefined}
       >
         {lead}
         <div className={styles.heading}>

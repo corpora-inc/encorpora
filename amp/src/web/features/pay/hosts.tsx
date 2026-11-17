@@ -1,4 +1,4 @@
-import { Outlet } from "@tanstack/react-router";
+import { RouteSheetOutlet } from "../../nav/RouteSheet";
 import {
   ChildScreen,
   FamilySettingsScreen,
@@ -8,15 +8,16 @@ import {
 /*
  * The screens a pay overlay opens over (address.ts): each stays mounted,
  * and visible behind the overlay on a wide screen, while its `pay` child
- * route draws the overlay in the outlet. Opening and closing never reload
- * or remount the screen behind.
+ * route draws the overlay in the screen's one sheet (nav/RouteSheet.tsx).
+ * Opening and closing never reload or remount the screen behind, and going
+ * from one overlay to another over it keeps the same scrim and sheet.
  */
 
 export function ChildPayHost() {
   return (
     <>
       <ChildScreen />
-      <Outlet />
+      <RouteSheetOutlet />
     </>
   );
 }
@@ -24,7 +25,7 @@ export function TodayPayHost() {
   return (
     <>
       <FamilyTodayScreen />
-      <Outlet />
+      <RouteSheetOutlet />
     </>
   );
 }
@@ -35,7 +36,7 @@ export function SettingsHost() {
   return (
     <>
       <FamilySettingsScreen />
-      <Outlet />
+      <RouteSheetOutlet />
     </>
   );
 }

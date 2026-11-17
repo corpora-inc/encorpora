@@ -15,26 +15,14 @@
   background: transparent;
   color: var(--color-muted-text);
 }
-.signOut.signOut:hover:not(:disabled) {
+.signOut.signOut:hover:not(:disabled),
+a.signOut.signOut:hover {
   background: var(--color-surface-sunken);
   color: var(--color-on-surface-sunken);
 }
 .signOut.inBar {
   position: static;
   flex: none;
-}
-.signOut.familyReturn {
-  display: flex;
-  width: auto;
-  gap: var(--space-1);
-  padding: 0 var(--space-2);
-  border-radius: var(--radius-control);
-  font-size: var(--text-table);
-  font-weight: 600;
-  white-space: nowrap;
-}
-.familyReturn svg {
-  width: 16px;
 }
 .signOut svg {
   width: 22px;
