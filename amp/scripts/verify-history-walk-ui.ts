@@ -67,7 +67,7 @@ type Walk = {
   /** Checks after a step has landed (filled by `before`). */
   after?: (page: Page, index: number) => Promise<void>;
   /** Just before a step is taken. */
-  beforeStep?: (page: Page, index: number) => Promise<void> | undefined;
+  beforeStep?: (page: Page, index: number) => Promise<unknown> | undefined;
 };
 
 /** A fresh account through the real sign-up, signed in on its own context. */
@@ -203,22 +203,21 @@ const CHILD_PAGE = /^\/family\/[^/]+\/kids\/[^/]+$/;
 /** Records whether anything on the page shows a wait from now on (a
  * loading screen, a skeleton, a busy region): read with `waited`. */
 const watchWaits = (page: Page) =>
-  page.evaluate(() => {
-    const w = window as unknown as { __waited?: string[] };
-    w.__waited = [];
-    const seen = () => {
+  // A string: a function here would carry the bundler's name helper.
+  page.evaluate(`(() => {
+    const waits = (window.__waited = []);
+    new MutationObserver(() => {
       const found = document.querySelector(
         ".amp-loading, .amp-skeleton, [role=status][aria-busy=true]",
       );
-      if (found) w.__waited!.push(found.className || found.tagName);
-    };
-    new MutationObserver(seen).observe(document.body, {
+      if (found) waits.push(String(found.className || found.tagName));
+    }).observe(document.body, {
       subtree: true,
       childList: true,
       attributes: true,
       attributeFilter: ["class", "aria-busy"],
     });
-  });
+  })()`);
 const waited = (page: Page) =>
   page.evaluate(
     () => (window as unknown as { __waited?: string[] }).__waited ?? [],

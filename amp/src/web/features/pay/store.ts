@@ -70,13 +70,22 @@ type AccountPay = {
 type PayState = {
   accounts: Record<string, AccountPay>;
   choose: (account: string, learner: string, choice: LearnerChoice) => void;
-  open: (account: string, opener: Omit<Opener, "savedAt" | "stage"> & {
-    stage?: Opener["stage"];
-  }) => void;
+  open: (
+    account: string,
+    opener: Omit<Opener, "savedAt" | "stage"> & {
+      stage?: Opener["stage"];
+    },
+  ) => void;
   paid: (account: string) => void;
   forgetOpener: (account: string) => void;
-  checkoutOpened: (account: string, checkout: Omit<OpenCheckout, "savedAt">) => void;
-  checkoutReturned: (account: string, value: Omit<CheckoutReturn, "savedAt">) => void;
+  checkoutOpened: (
+    account: string,
+    checkout: Omit<OpenCheckout, "savedAt">,
+  ) => void;
+  checkoutReturned: (
+    account: string,
+    value: Omit<CheckoutReturn, "savedAt">,
+  ) => void;
 };
 
 /** Long enough for a slow checkout; short enough that an old one is gone. */
@@ -86,7 +95,8 @@ const storage = createJSONStorage(() => ({
   getItem: (name: string) => {
     try {
       return sessionStorage.getItem(name);
-    } catch {
+    } catch (error) {
+      console.warn("The pay flow's choices weren't restored", error);
       return null;
     }
   },
@@ -113,7 +123,10 @@ const update = (
 ) => {
   const current = state.accounts[account] ?? { learners: {} };
   return {
-    accounts: { ...state.accounts, [account]: { ...current, ...change(current) } },
+    accounts: {
+      ...state.accounts,
+      [account]: { ...current, ...change(current) },
+    },
   };
 };
 
@@ -144,7 +157,9 @@ export const usePayStore = create<PayState>()(
       paid: (account) =>
         set((state) =>
           update(state, account, (current) =>
-            current.opener ? { opener: { ...current.opener, stage: "naming" } } : {},
+            current.opener
+              ? { opener: { ...current.opener, stage: "naming" } }
+              : {},
           ),
         ),
       forgetOpener: (account) =>
@@ -202,7 +217,9 @@ export function useOpener(account: string, learner: string) {
 
 /** The return this tab read from Stripe for this learner, if any. */
 export function useCheckoutReturn(account: string, learner: string) {
-  const value = fresh(usePayStore((state) => state.accounts[account]?.returned));
+  const value = fresh(
+    usePayStore((state) => state.accounts[account]?.returned),
+  );
   return value?.learnerId === learner ? value : undefined;
 }
 

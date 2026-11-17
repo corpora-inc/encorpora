@@ -1,20 +1,19 @@
 import { Link } from "@tanstack/react-router";
-import type { AuthSession } from "../../auth";
 import { selectLearner } from "../../learner-store";
 import { Button, buttonClass } from "../../ui/Button";
 import { useHandOver } from "../school/classes/today/use-hand-over";
 import { practiceParams } from "../spaces/identity";
+import { useSession } from "../../lib/session";
 
 /** Invoice access uses the same child session as the family's Practice action. */
 export function InvoicePractice({
-  session,
   learnerId,
   adult,
 }: {
-  session: AuthSession;
   learnerId: string;
   adult: boolean;
 }) {
+  const session = useSession();
   const { handOver, starting, error } = useHandOver(session);
   return (
     <>

@@ -58,11 +58,7 @@ function SecondParentSection({ place }: { place: FamilyPlace }) {
             </Button>
           </li>
         ) : second.data ? (
-          <SecondParentRow
-            session={session}
-            parent={second.data}
-            onError={setError}
-          />
+          <SecondParentRow parent={second.data} onError={setError} />
         ) : null}
       </ul>
       {invite && second.isSuccess && !second.data && (
@@ -70,9 +66,7 @@ function SecondParentSection({ place }: { place: FamilyPlace }) {
           <AddAction onClick={inviting.show}>Add a second parent</AddAction>
         </div>
       )}
-      {inviting.open && (
-        <SecondParentInviteSheet session={session} onClose={inviting.close} />
-      )}
+      {inviting.open && <SecondParentInviteSheet onClose={inviting.close} />}
       <Toast message={error} onDismiss={() => setError("")} />
     </section>
   );

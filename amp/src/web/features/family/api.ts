@@ -125,12 +125,18 @@ export async function childPagePath(
 ): Promise<string | null> {
   const places = await queryClient
     .fetchQuery(familyPlacesOptions(session))
-    .catch(() => null);
+    .catch((error: unknown) => {
+      console.warn("The account's families didn't load", error);
+      return null;
+    });
   for (const place of places?.families ?? []) {
     if (place.role !== "holder") continue;
     const family = await queryClient
       .fetchQuery(familyOptions(session, place.familyId))
-      .catch(() => null);
+      .catch((error: unknown) => {
+        console.warn("A family didn't load", error);
+        return null;
+      });
     if (family?.children.some((child) => child.id === learnerId))
       return `/family/${place.familyId}/kids/${learnerId}`;
   }

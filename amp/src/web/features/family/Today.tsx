@@ -520,11 +520,15 @@ export function FamilyTodayScreen() {
                                     search: { from: `/${familyHref(family)}` },
                                   });
                                 })
-                                .catch(() =>
+                                .catch((failure: unknown) => {
+                                  console.error(
+                                    "Own practice didn’t start",
+                                    failure,
+                                  );
                                   setOwnError(
                                     "Practice didn’t start. Try again.",
-                                  ),
-                                );
+                                  );
+                                });
                             }}
                           >
                             Practice

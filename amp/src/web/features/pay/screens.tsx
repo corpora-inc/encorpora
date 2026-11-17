@@ -8,11 +8,26 @@ import { Sheet } from "../../ui/Sheet";
 import { Toast } from "../../ui/Toast";
 import { useClaimEnrollment } from "../billing";
 import { payAddress } from "./address";
-import { fundingOffersOptions, fundingPrograms, fundingRequestOptions } from "./api";
+import {
+  fundingOffersOptions,
+  fundingPrograms,
+  fundingRequestOptions,
+} from "./api";
 import { CardDone, useCardOutcome } from "./CardDone";
 import { CardPanel } from "./CardPanel";
-import { usePay, usePayClose, usePayState, type PayContext, type PayLearner } from "./context";
-import { EsaPanel, InvoiceDone, invoiceGivesAccess, RowsSkeleton } from "./EsaPanel";
+import {
+  usePay,
+  usePayClose,
+  usePayState,
+  type PayContext,
+  type PayLearner,
+} from "./context";
+import {
+  EsaPanel,
+  InvoiceDone,
+  invoiceGivesAccess,
+  RowsSkeleton,
+} from "./EsaPanel";
 import { forWhom, whoName } from "./paths";
 import { MethodTabs, useMethod } from "./PlanPicker";
 import { usePayStore } from "./store";
@@ -99,7 +114,8 @@ export function PayScreen() {
 function Choose() {
   const { me, learner } = usePay();
   if (learner.hasAccess) return <HasAccess />;
-  if (me.unassignedPurchase) return <UsePaidPlan purchaseId={me.unassignedPurchase.id} />;
+  if (me.unassignedPurchase)
+    return <UsePaidPlan purchaseId={me.unassignedPurchase.id} />;
   return <Methods />;
 }
 
@@ -154,8 +170,14 @@ function HasAccess() {
       <p className={styles.text}>
         {access.license
           ? `${hasFull(learner)} ${access.kind === "scheduled" ? "from" : "through"} ${new Date(
-              access.kind === "scheduled" ? access.license.startsAt : access.license.endsAt,
-            ).toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" })}.`
+              access.kind === "scheduled"
+                ? access.license.startsAt
+                : access.license.endsAt,
+            ).toLocaleDateString(undefined, {
+              month: "long",
+              day: "numeric",
+              year: "numeric",
+            })}.`
           : `${hasFull(learner)}.`}
       </p>
       <div className={styles.actions}>
@@ -175,7 +197,10 @@ function UsePaidPlan({ purchaseId }: { purchaseId: string }) {
   const paid = usePayStore((state) => state.paid);
   return (
     <div className={styles.panel}>
-      <Toast message={claim.error?.message ?? ""} onDismiss={() => claim.reset()} />
+      <Toast
+        message={claim.error?.message ?? ""}
+        onDismiss={() => claim.reset()}
+      />
       <p className={styles.text}>
         Your plan is paid and isn’t anyone’s yet. It can be{" "}
         {learner.adult ? "yours" : `${learner.name}’s`}.
@@ -190,7 +215,8 @@ function UsePaidPlan({ purchaseId }: { purchaseId: string }) {
               { purchaseId, learnerId: learner.id },
               {
                 onSuccess: () => paid(session.accountId),
-                onError: (error) => console.error("The paid plan wasn’t assigned", error),
+                onError: (error) =>
+                  console.error("The paid plan wasn’t assigned", error),
               },
             )
           }
@@ -207,7 +233,9 @@ function UsePaidPlan({ purchaseId }: { purchaseId: string }) {
 export function PayCardDoneScreen() {
   return (
     <PayOverlay
-      title={({ learner }) => (learner.hasAccess ? hasFull(learner) : "Confirming your payment")}
+      title={({ learner }) =>
+        learner.hasAccess ? hasFull(learner) : "Confirming your payment"
+      }
       screen="card-done"
     >
       {() => <CardDoneBody />}
@@ -217,7 +245,7 @@ export function PayCardDoneScreen() {
 function CardDoneBody() {
   const { session, me, learner } = usePay();
   const { outcome, retry } = useCardOutcome(session, me, learner);
-  return <CardDone session={session} learner={learner} outcome={outcome} retry={retry} />;
+  return <CardDone learner={learner} outcome={outcome} retry={retry} />;
 }
 
 /* ---------- …/pay/invoice/<invoice> ---------- */
@@ -225,17 +253,23 @@ function CardDoneBody() {
 export function PayInvoiceScreen() {
   const pathname = useLocation({ select: (location) => location.pathname });
   const address = payAddress(pathname);
-  const invoiceId = address?.view.kind === "invoice" ? address.view.invoiceId : "";
+  const invoiceId =
+    address?.view.kind === "invoice" ? address.view.invoiceId : "";
   // The title follows the same cached record the body reads.
   const { session } = usePayState();
   const record = useQuery({
-    ...fundingRequestOptions(session ?? { accountId: "", token: "" }, invoiceId),
+    ...fundingRequestOptions(
+      session ?? { accountId: "", token: "" },
+      invoiceId,
+    ),
     enabled: !!session && !!invoiceId,
   }).data;
   return (
     <PayOverlay
       title={({ learner }) =>
-        invoiceGivesAccess(record, learner) ? `${hasFull(learner)} now` : "Your invoice is ready"
+        invoiceGivesAccess(record, learner)
+          ? `${hasFull(learner)} now`
+          : "Your invoice is ready"
       }
       screen="invoice"
     >
