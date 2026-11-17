@@ -247,8 +247,9 @@ function styleSheet() {
 
 /** Both parts of an email from one content. */
 export function renderEmail(content: EmailContent): Email {
-  const { origin, subject, heading, body, footer = [] } = content;
-  if (/[\r\n]/.test(subject)) throw new Error("Email subject has a line break");
+  const { origin, heading, body, footer = [] } = content;
+  // A subject is one line; a name someone typed can carry a line break.
+  const subject = content.subject.replace(/\s*[\r\n]+\s*/g, " ");
   const c = EMAIL_COLORS.light;
   const mark = new URL(EMAIL_MARK_PATH, safeUrl(origin)).href;
   const preheader = (
@@ -319,7 +320,8 @@ export type TextOnlyRetry<M extends Email> = Omit<M, "html"> & {
  * changed one, so an outbox row first dispatched before this mail carried
  * HTML (an ambiguous attempt from before the 2026-11-17 deploy) resends its
  * text-only payload. `boundTo` says whether a payload is the row's recorded
- * binding. New rows always send both parts.
+ * binding. New rows always send both parts. (Like a wording change, a later
+ * change to the layout stops a retry already in flight as `binding-changed`.)
  */
 export function retryPayload<M extends Email>(
   mail: M,

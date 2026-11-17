@@ -267,7 +267,9 @@ export function accountMail(
   config: Pick<AccountsConfig, "mail" | "production" | "baseURL">,
 ): AccountMail {
   const sendEmail = accountEmailSender(config);
-  return (to, message) => sendEmail(to, linkedEmail(config.baseURL, message));
+  // Async, so a composing error reaches the caller's .catch as a rejection.
+  return async (to, message) =>
+    sendEmail(to, linkedEmail(config.baseURL, message));
 }
 
 export async function createAccounts(pool: Pool, config: AccountsConfig) {

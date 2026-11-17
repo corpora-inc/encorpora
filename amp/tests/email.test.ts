@@ -157,6 +157,16 @@ test("both parts come from the same blocks", () => {
   assert.match(email.html, /href="mailto:help@example.com"[^>]*>help@/);
 });
 
+test("a subject is always one line", () => {
+  const email = linkedEmail("https://amp.example", {
+    subject: "Seat request: Lincoln\nElementary",
+    text: "T",
+    url: "https://amp.example/x",
+    action: "Open",
+  });
+  assert.equal(email.subject, "Seat request: Lincoln Elementary");
+});
+
 test("content is escaped, and only web links become links", () => {
   const email = linkedEmail("https://amp.example", {
     subject: "Inquiry: <b>",
