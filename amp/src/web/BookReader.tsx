@@ -236,6 +236,7 @@ export function BookReader({
                 try {
                   await download();
                 } catch (error) {
+                  console.error("AMP couldn’t prepare the download", error);
                   setError(
                     error instanceof Error
                       ? error.message

@@ -23,12 +23,7 @@ import {
   type ReactNode,
 } from "react";
 import { useQuery } from "@tanstack/react-query";
-import {
-  Link,
-  useLocation,
-  useNavigate,
-  useSearch,
-} from "@tanstack/react-router";
+import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { meOptions } from "../../lib/query";
 import { skillCatalogOptions } from "../../lib/learning-view";
 import { request } from "../../lib/api";
@@ -55,7 +50,6 @@ import {
   bandLabel,
   bands,
   skillLight,
-  areaParam,
   areaSlot,
   progressSchema,
   frontierSchema,
@@ -67,12 +61,8 @@ import {
 import { ListboxDisclosure, type ListboxOption } from "../../ui/Listbox";
 import { Segmented } from "../../ui/Segmented";
 import { LayerHost } from "../../nav/LayerHost";
-import {
-  EntityLink,
-  shareableHref,
-  useHereWithLayers,
-  useLayers,
-} from "../../nav/links";
+import { useMapView } from "./map-view";
+import { EntityLink, shareableHref, useLayers } from "../../nav/links";
 import { pushed } from "../../nav/layer-store";
 import { buttonClass } from "../../ui/Button";
 import layers from "../../nav/layers.module.css";
@@ -378,37 +368,32 @@ export function MapView({
     ...skillCatalogOptions,
     refetchInterval: 300_000,
   });
-  const search = useSearch({ strict: false });
+  // Its search, grade and area: this screen's map view (map-view.ts).
+  const mapView = useMapView();
   // A skill is a layer over the map (nav/layer-store.ts): the top one is the
   // map's selection. Opening and closing it never moves the map; a skill
   // found by the search or the list is framed on it.
   const mapLayers = useLayers();
   const stack = mapLayers.stack;
-  const hereWithLayers = useHereWithLayers();
   const selectedId =
     stack.filter((layer) => layer.kind === "skill").at(-1)?.id ?? "";
   const [frame, setFrame] = useState<{ id: string } | null>(null);
-  const urlQuery = typeof search.topic === "string" ? search.topic : "";
-  // The field owns its text while typing; the URL follows after a pause.
-  const field = useUrlSearchText(urlQuery, (topic) => update({ topic }, true));
+  const savedQuery = mapView.topic;
+  // The field owns its text while typing; the map's view follows after a
+  // pause.
+  const field = useUrlSearchText(savedQuery, (topic) => mapView.set({ topic }));
   const query = useDeferredValue(field.text);
-  const band =
-    typeof search.filter === "string" && bands.includes(search.filter)
-      ? search.filter
-      : "";
-  // One area of math (`?area=geometry`), chosen in the key; else all five.
-  const area = areaParam((search as Record<string, unknown>).area);
-  const navigate = useNavigate();
+  const band = bands.includes(mapView.band) ? mapView.band : "";
+  // One area of math, chosen in the key; else all five.
+  const area = mapView.area;
   const { shown } = useCurriculumDetails();
   // A browser that can't draw the 3D map (or loses its context while it is
   // open) gets the flat pathway in its place: no canvas, no camera controls,
   // and no choice of view.
   const [drawn, setDrawn] = useState(canDrawMap);
-  // The grades view, or 3D: the address's (`?view=`), else this device's
-  // last choice. Either keeps the skill open over it.
-  const [remembered, setRemembered] = useState(savedView);
-  const view: MapMode =
-    search.view === "3d" || search.view === "grades" ? search.view : remembered;
+  // The grades view, or 3D: this device's last choice. Either keeps the
+  // skill open over it.
+  const [view, setView] = useState(savedView);
   const threeD = drawn && view === "3d";
   // Fetch the map's code once the screen is up, so choosing 3D is immediate.
   useEffect(() => {
@@ -425,25 +410,16 @@ export function MapView({
     try {
       localStorage.setItem(VIEW_KEY, next);
     } catch (error) {
-      // This device keeps no choice; the address still carries it.
+      // This device keeps no choice; this visit still does.
       console.warn("This device keeps no map view", error);
     }
-    setRemembered(next);
-    void navigate({
-      to: ".",
-      search: ((current: Record<string, unknown>) => ({
-        ...current,
-        view: next,
-      })) as never,
-      replace: true,
-      resetScroll: false,
-    });
+    setView(next);
   };
   // Arriving with a search (a link, or /lessons?q=) opens its results.
   // A shared search opens its results, unless the link names a skill: then
   // the skill is what it shows, its search kept in the field.
   const [browse, setBrowse] = useState(
-    () => urlQuery.trim().length > 0 && !selectedId,
+    () => savedQuery.trim().length > 0 && !selectedId,
   );
   // A problem type's short lesson is a layer over the map
   // (nav/layer-store.ts): a refresh or Back to this screen shows it again,
@@ -505,39 +481,14 @@ export function MapView({
   );
   const earned = evidence.filter((s) => s.independentCorrect > 0).length;
   const countsReady = !!catalog.data && !recordLoading;
-  // The map's own view: its search and grade filter, beside any layers.
-  const update = (
-    values: {
-      topic?: string;
-      filter?: string;
-    },
-    replace = false,
-  ) =>
-    void navigate({
-      // This map's own address: yours, or a child's.
-      to: ".",
-      search: ((current: Record<string, unknown>) => {
-        const next: Record<string, unknown> = {
-          ...current,
-          topic:
-            (values.topic === undefined ? field.carry() : values.topic) ||
-            undefined,
-          filter:
-            (values.filter === undefined ? band : values.filter) || undefined,
-        };
-        return next;
-      }) as never,
-      replace,
-      resetScroll: false,
-    });
   /** Opens a skill over the map. Chosen on the map, the map stays where it
    * is; found by the search or the list, the map frames it as it opens. */
   const select = (id: string, framed = false) => {
     setBrowse(false);
     if (framed) setFrame({ id });
-    // The search's text and grade stay in the address; the skill opens
-    // over the map, in this screen's layers.
-    if (field.carry() !== urlQuery) update({}, true);
+    // The search's text stays in the map's view; the skill opens over the
+    // map, in this screen's layers.
+    field.flush();
     mapLayers.open({ kind: "skill", id });
     if (framed) showMap();
   };
@@ -589,11 +540,10 @@ export function MapView({
             ) : shownFound.kind === "film" ? (
               <Link
                 className={layers.rowAction}
-                to="/lessons/$templateId/watch"
-                params={{ templateId: shownFound.id }}
-                search={{
-                  from: hereWithLayers,
-                }}
+                to="/$"
+                // Closing the film comes Back here, the map's layers as
+                // they were (nav/layer-store.ts).
+                params={{ _splat: `lessons/${shownFound.id}/watch` }}
               >
                 Watch
               </Link>
@@ -617,16 +567,18 @@ export function MapView({
               <Link
                 className={buttonClass("primary")}
                 to="/$"
+                // The skill's practice, at its own address; a problem type
+                // the search found: that one (it wins over its skill).
                 params={
-                  learnerId ? practiceParams(learnerId) : { _splat: "practice" }
+                  learnerId
+                    ? practiceParams(learnerId, {
+                        skill: skillId,
+                        ...(found?.kind === "type" || found?.kind === "film"
+                          ? { template: found.id }
+                          : {}),
+                      })
+                    : { _splat: "practice" }
                 }
-                search={{
-                  skill: skillId,
-                  // A problem type the search found: that one.
-                  ...(found?.kind === "type" || found?.kind === "film"
-                    ? { template: found.id }
-                    : {}),
-                }}
               >
                 <PracticeLabel />
               </Link>
@@ -788,7 +740,7 @@ export function MapView({
                   label="Grade or course"
                   options={bandOptions}
                   value={band}
-                  onChange={(next) => update({ filter: next }, true)}
+                  onChange={(next) => mapView.set({ band: next })}
                 />
               </div>
               {searching && (
@@ -941,9 +893,13 @@ export function MapView({
               className={buttonClass("primary")}
               to="/$"
               params={
-                learnerId ? practiceParams(learnerId) : { _splat: "practice" }
+                learnerId
+                  ? practiceParams(learnerId, {
+                      skill: practiced,
+                      template: type,
+                    })
+                  : { _splat: "practice" }
               }
-              search={{ skill: practiced, template: type }}
             >
               <PracticeLabel />
             </Link>

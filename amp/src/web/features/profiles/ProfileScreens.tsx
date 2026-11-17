@@ -431,7 +431,6 @@ export function EditProfileScreen() {
 }
 
 function ProfileEditor({
-  session,
   profile,
   back,
 }: {

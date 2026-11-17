@@ -1,30 +1,27 @@
 {
   "about": "Frontend anti-pattern counts in src/web; they only fall (amp/AGENTS.md, Frontend architecture). Enforced by tests/architecture-ratchet.test.ts; `files` locates the counts for its failure messages.",
   "counts": {
-    "redirects": 2,
-    "validateSearch": 8,
-    "searchHandoffs": 73,
+    "redirects": 1,
+    "validateSearch": 7,
+    "searchHandoffs": 66,
     "navigatingEffects": 8,
     "renderNavigate": 4,
-    "silentCatches": 87,
+    "silentCatches": 19,
     "sessionProps": 19,
-    "sessionReads": 10,
-    "inlineQueryKeys": 17,
-    "nativeControls": 20
+    "sessionReads": 8,
+    "inlineQueryKeys": 9,
+    "nativeControls": 5
   },
   "files": {
     "redirects": {
-      "features/profiles/practice-mode.ts": 1,
-      "nav/legacy-layers.ts": 1
+      "features/profiles/practice-mode.ts": 1
     },
     "validateSearch": {
-      "app/router.tsx": 8
+      "app/router.tsx": 7
     },
     "searchHandoffs": {
       "features/account/AccountReady.tsx": 2,
       "features/inventory/InventoryScreen.tsx": 3,
-      "features/pathways/AreaKey.tsx": 1,
-      "features/pathways/PathwaysScreen.tsx": 5,
       "features/pitch/targets.ts": 1,
       "features/profiles/api.ts": 1,
       "features/profiles/practice-mode.ts": 1,
@@ -61,7 +58,6 @@
       "features/school/StudentsScreen.tsx": 1,
       "features/schools/PublicFrame.tsx": 1,
       "features/schools/SchoolsScreen.tsx": 2,
-      "home-entry.tsx": 1,
       "LessonIndex.tsx": 1,
       "LessonLibrary.tsx": 1,
       "nav/root.tsx": 1,
@@ -84,12 +80,6 @@
       "features/school/join/PicturesScreen.tsx": 1
     },
     "silentCatches": {
-      "AccountSecurity.tsx": 2,
-      "auth-config.ts": 1,
-      "auth.ts": 3,
-      "BookReader.tsx": 1,
-      "Calculator.tsx": 3,
-      "capability-entry.ts": 1,
       "features/lessons/publications.ts": 1,
       "features/school/adoption-session.ts": 3,
       "features/school/classroom/MarkingScreen.tsx": 1,
@@ -102,35 +92,7 @@
       "features/school/pilots/api.ts": 1,
       "features/school/pilots/buyer-session.ts": 3,
       "features/school/pilots/ClassAccess.tsx": 1,
-      "LessonIndex.tsx": 1,
-      "LessonLibrary.tsx": 1,
-      "lib/account-signals.ts": 3,
-      "lib/analytics.ts": 8,
-      "lib/api.ts": 1,
-      "lib/app-recovery.ts": 1,
-      "lib/funded-entry.ts": 4,
-      "lib/keepalive.ts": 1,
-      "lib/learning-analytics.ts": 1,
-      "lib/learning-view.ts": 2,
-      "lib/link-carry.ts": 3,
-      "lib/media-query.ts": 1,
-      "lib/openai-acquisition.ts": 3,
-      "lib/pdf-download.ts": 1,
-      "lib/pending-trial.ts": 1,
-      "lib/purchase-analytics.ts": 3,
-      "lib/reload-guard.ts": 2,
-      "lib/return-to.ts": 2,
-      "lib/session-hint.ts": 2,
-      "lib/student-activity.ts": 1,
-      "lib/student-device.ts": 3,
-      "MathText.tsx": 1,
-      "native-session.ts": 1,
-      "NativePreview.tsx": 1,
-      "ParentConsentCenter.tsx": 2,
-      "PracticeWorkspace.tsx": 1,
-      "purchase-return.ts": 5,
-      "scene/money-art.ts": 1,
-      "share-entry.ts": 1
+      "scene/money-art.ts": 1
     },
     "sessionProps": {
       "features/family/TutoringGroup.tsx": 5,
@@ -150,9 +112,7 @@
       "features/school/InviteScreen.tsx": 1,
       "features/school/join/JoinClass.tsx": 1,
       "features/school/join/ReplaceCode.tsx": 1,
-      "features/schools/SchoolsScreen.tsx": 1,
-      "Home.tsx": 1,
-      "lib/learning-view.ts": 1
+      "features/schools/SchoolsScreen.tsx": 1
     },
     "inlineQueryKeys": {
       "features/school/classes/teacher-api.ts": 1,
@@ -162,26 +122,14 @@
       "features/school/join/api.ts": 1,
       "features/school/pilots/api.ts": 1,
       "features/school/pilots/SchoolNext.tsx": 1,
-      "features/schools/ParentScreen.tsx": 1,
-      "lib/family-cache.ts": 2,
-      "lib/learning-view.ts": 6
+      "features/schools/ParentScreen.tsx": 1
     },
     "nativeControls": {
-      "AccountSecurity.tsx": 5,
-      "Calculator.tsx": 1,
       "features/onboarding/setup/PeopleRows.tsx": 1,
       "features/school/classes/grade-parts.tsx": 1,
       "features/school/ImportScreen.tsx": 1,
       "features/school/join/JoinScreen.tsx": 1,
-      "features/schools/TalkToUs.tsx": 1,
-      "FigureChoiceInput.tsx": 1,
-      "FigurePanelChoice.tsx": 1,
-      "LessonLibrary.tsx": 1,
-      "MultiPartChoiceInput.tsx": 1,
-      "ParentConsentCenter.tsx": 1,
-      "PracticeWorkspace.tsx": 2,
-      "ReceiptDetails.tsx": 1,
-      "StructuredWorkInput.tsx": 1
+      "features/schools/TalkToUs.tsx": 1
     }
   },
   "exempt": []

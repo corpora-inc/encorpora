@@ -20,7 +20,7 @@ import {
   LevelRange,
   LevelRangeStart,
 } from "./ui/level-range";
-import { sessionOptions } from "./lib/query";
+import { forSession, useSessionOrNull } from "./lib/session";
 import { useHeroAction } from "./lib/shell-slots";
 import { levelTrendOptions } from "./features/level/api";
 import { freeProblemsLeft } from "./lib/free-allowance";
@@ -66,13 +66,12 @@ export function Home(props: Props) {
   const openedUnmeasured = useRef<boolean | null>(null);
   if (f) openedUnmeasured.current ??= !isMeasured;
   const heroLayout = !!f && (!isMeasured || !!openedUnmeasured.current);
-  const session = useQuery(sessionOptions).data;
+  const session = useSessionOrNull();
   const trend = useQuery({
-    ...levelTrendOptions(
-      session ?? { accountId: "", token: "" },
-      props.learnerId ?? "",
+    ...forSession(session, (signedIn) =>
+      levelTrendOptions(signedIn, props.learnerId ?? ""),
     ),
-    enabled: !!session && !!props.learnerId && isMeasured,
+    enabled: !!props.learnerId && isMeasured,
   });
   const who = props.reader === "other" ? props.name : undefined;
   // The grade typical for their age, behind every bar, when it is known.

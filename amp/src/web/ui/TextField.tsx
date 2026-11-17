@@ -1,6 +1,6 @@
 import {
   useId,
-  type InputHTMLAttributes,
+  type ComponentPropsWithRef,
   type ReactNode,
   type TextareaHTMLAttributes,
 } from "react";
@@ -14,7 +14,7 @@ export function TextField({
   hint,
   action,
   ...props
-}: InputHTMLAttributes<HTMLInputElement> & {
+}: ComponentPropsWithRef<"input"> & {
   label: string;
   error?: string;
   hint?: string;
@@ -44,7 +44,15 @@ export function TextField({
         id={id}
         className={styles.input}
         aria-invalid={!!error}
-        aria-describedby={hint ? `${id}-hint ${id}-error` : `${id}-error`}
+        // A caller's own description (a help line elsewhere) is kept beside
+        // the hint's and the error's.
+        aria-describedby={[
+          props["aria-describedby"],
+          hint && `${id}-hint`,
+          `${id}-error`,
+        ]
+          .filter(Boolean)
+          .join(" ")}
       />
       {hint && (
         <span id={`${id}-hint`} className={styles.fieldHint}>

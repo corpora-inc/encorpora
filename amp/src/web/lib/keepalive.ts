@@ -11,7 +11,8 @@ export function keepaliveFetch(
     () => {
       try {
         return fetch(input, { ...init, keepalive: true });
-      } catch {
+      } catch (error) {
+        console.warn("keepalive refused; sending an ordinary request", error);
         return Promise.resolve().then(() => requestFetch(input, init));
       }
     },

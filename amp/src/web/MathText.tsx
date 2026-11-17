@@ -123,13 +123,19 @@ const SHORT = 20;
 // operand.
 const BARE_SYMBOL = /(?:[<>=+\-]|\\(?:le|ge|neq|times|div|cdot))\s*$/;
 
+/** TeX that didn't render, logged once each: it shows as its source. */
+const unrendered = new Set<string>();
 function render(tex: string) {
   try {
     return katex.renderToString(tex, {
       throwOnError: true,
       output: "htmlAndMathml",
     });
-  } catch {
+  } catch (error) {
+    if (!unrendered.has(tex)) {
+      unrendered.add(tex);
+      console.warn("AMP: TeX shown as its source", error);
+    }
     return escape(tex);
   }
 }
