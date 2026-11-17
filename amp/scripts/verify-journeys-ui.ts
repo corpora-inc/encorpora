@@ -778,14 +778,15 @@ async function parentJourney(
   await page.getByRole("button", { name: "Practice with Rowan" }).waitFor();
   await shot(page, 1, "today-paid", width, theme);
 
-  // Family: the parent renames a child on the child's own page, and adds
-  // another from Today, with no consent step for either name. Their older
-  // address (/family/learners) opens the family's Settings.
+  // Family: the parent renames a child in that child's settings, a sheet
+  // over the family's Settings (features/family/settings/Children.tsx), and
+  // adds another, with no consent step for either name. Their older address
+  // (/family/learners) opens the family's Settings.
   await page.goto(`${origin}/family/learners`);
   await page.waitForURL(/\/family\/[0-9a-f-]{36}\/settings$/);
-  await page.getByRole("link", { name: /^Rowan/ }).click();
-  await page.waitForURL(/\/family\/[0-9a-f-]{36}\/kids\/[^/]+$/);
-  const settings = page.getByRole("region", { name: "Rowan’s settings" });
+  await page.getByRole("button", { name: "Rowan’s settings" }).click();
+  const settings = page.getByRole("dialog", { name: "Rowan", exact: true });
+  await settings.waitFor();
   // The name is the first of the child's settings.
   await settings
     .getByRole("button", { name: "Change", exact: true })
@@ -800,9 +801,10 @@ async function parentJourney(
   await shot(page, 1, "family-rename", width, theme);
   await rename.fill("Ro");
   await settings.getByRole("button", { name: "Save name" }).click();
-  await page
-    .getByRole("heading", { name: "Ro", exact: true, level: 1 })
-    .waitFor();
+  // The sheet and the family's list both say the new name at once.
+  await page.getByRole("dialog", { name: "Ro", exact: true }).waitFor();
+  await page.keyboard.press("Escape");
+  await page.getByRole("button", { name: "Ro’s settings" }).waitFor();
   await page.goto(`${origin}/family/learners/new`);
   await page.getByRole("dialog", { name: "Add a child" }).waitFor();
   await measured(page, `${label} add learner`);
