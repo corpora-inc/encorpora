@@ -5,3 +5,10 @@
 85fe606f7a9568ecedd0f89ace8800b5e434f7f6:amp/docs/reviews/school-onboarding/clever-worker-50000.json:generic-api-key:31
 c47d30de0d960772639fbe9f0404660a27c646c5:amp/docs/reviews/school-onboarding/clever-worker-50000.json:generic-api-key:26
 c47d30de0d960772639fbe9f0404660a27c646c5:amp/docs/reviews/school-onboarding/clever-worker-50000.json:generic-api-key:31
+
+# Fake idempotency-key UUIDs in a pay test fixture (create-invoice.test.tsx),
+# not credentials; replaced with patterned UUIDs, exact historical findings only.
+1b829f1bd84009dead23965d1def7dadc3cb003e:amp/src/web/features/pay/__tests__/create-invoice.test.tsx:generic-api-key:148
+1a06ecb7cb40b5d30e1f946f12b200468b1a3d35:amp/src/web/features/pay/__tests__/create-invoice.test.tsx:generic-api-key:77
+1a06ecb7cb40b5d30e1f946f12b200468b1a3d35:amp/src/web/features/pay/__tests__/create-invoice.test.tsx:generic-api-key:92
+1a06ecb7cb40b5d30e1f946f12b200468b1a3d35:amp/src/web/features/pay/__tests__/create-invoice.test.tsx:generic-api-key:119
