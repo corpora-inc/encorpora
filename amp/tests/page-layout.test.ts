@@ -228,16 +228,8 @@ const PHASE_2: Allowed = {
     why: "legacy global shell rules",
   },
   "features/continue/Continue.module.css": {
-    widths: ["520px", "808px"],
-    why: "the free-allowance pause inside practice; Continue (the pay flow)",
-  },
-  "features/account/BillingPage.module.css": {
-    widths: ["808px"],
-    why: "Billing (the pay flow, redo-pay-flow)",
-  },
-  "features/funding/FundedPurchasePage.module.css": {
-    widths: ["760px"],
-    why: "education funds (the pay flow, redo-pay-flow)",
+    widths: ["520px"],
+    why: "the free-allowance pause inside practice",
   },
 };
 
@@ -346,14 +338,6 @@ const FRAMES: Record<string, string> = {
 
 /** Route screens that don't render Page yet, `module#export`, with why. */
 const ROUTES_PHASE_2: Record<string, string> = {
-  "features/account/BillingPage.tsx#BillingPage":
-    "the pay flow (redo-pay-flow)",
-  "features/billing/CardPurchasePage.tsx#CardPurchasePage":
-    "the pay flow (redo-pay-flow)",
-  "features/funding/FundedPurchasePage.tsx#FundedPurchasePage":
-    "the pay flow (redo-pay-flow)",
-  "features/continue/ContinueScreen.tsx#ContinueScreen":
-    "the pay flow (redo-pay-flow)",
   "app/LegacyApp.tsx#LegacyApp":
     "the legacy host: practice (full) and the account centre",
   "features/design/DesignScreen.tsx#DesignScreen": "the /design gallery",

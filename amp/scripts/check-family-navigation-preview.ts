@@ -209,9 +209,9 @@ try {
         await tabs.locator('[aria-current="page"]').innerText(),
         "Settings",
       );
-      await page.getByRole("link", { name: "← Billing", exact: true }).click();
+      await page.getByRole("link", { name: "Back", exact: true }).click();
       await page.waitForURL(origin + "/account/billing");
-      await page.getByRole("link", { name: "‹ Settings", exact: true }).click();
+      await page.getByRole("link", { name: "Back", exact: true }).click();
       await page.waitForURL(origin + base + "/settings");
       await page.getByRole("link", { name: /People & sharing/ }).click();
       await page.waitForURL(origin + base + "/people");

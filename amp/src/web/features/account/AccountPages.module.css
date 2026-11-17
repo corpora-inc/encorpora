@@ -3,35 +3,6 @@
    the account's rows and forms. Rows with hairlines, never cards.
    Legacy element rules (style.css, theme.css) style bare buttons, headings
    and labels; every rule here sets its element fully so they never leak. */
-/* The account header Billing still uses (AccountPageHeader). */
-.heading {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  width: 100%;
-  gap: var(--space-2);
-}
-.headingRow {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
-}
-.heading .title {
-  font-size: clamp(28px, 7.6vw, var(--text-heading-1));
-}
-.title {
-  margin: 0;
-  color: inherit;
-  font-family: var(--font-display);
-  font-size: clamp(var(--text-title-min), 7vw, var(--text-heading-1));
-  font-weight: 400;
-  letter-spacing: -0.015em;
-  line-height: 1.12;
-}
-.title:focus {
-  outline: none;
-}
 .lede {
   margin: 0;
   color: var(--color-muted-text);
@@ -231,17 +202,4 @@
   gap: var(--space-4);
   font-size: var(--text-label);
   font-weight: 600;
-}
-.settingsReturn {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  color: var(--color-primary);
-  font-size: var(--text-label);
-  font-weight: 600;
-  flex-shrink: 0;
-  text-decoration: none;
-}
-.settingsReturn:hover {
-  text-decoration: underline;
 }

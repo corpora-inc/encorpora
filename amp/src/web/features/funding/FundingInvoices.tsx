@@ -18,6 +18,7 @@ import {
   fundingRecordsOptions,
 } from "./records";
 export { fundingRecordsKey } from "./records";
+import { PageSection } from "../../ui/PageSection";
 import styles from "../account/BillingPage.module.css";
 
 const intent = z.object({
@@ -193,8 +194,7 @@ export function FundingInvoices({
     return <Loading>Loading education-fund invoices…</Loading>;
   if (records.error || invoices.error)
     return (
-      <section className={styles.section}>
-        <h2>Education-fund invoices</h2>
+      <PageSection title="Education-fund invoices">
         <p>Invoices couldn’t be loaded.</p>
         <Button
           variant="secondary"
@@ -205,12 +205,14 @@ export function FundingInvoices({
         >
           Try again
         </Button>
-      </section>
+      </PageSection>
     );
   if (!claimedRecords.length && !pending.length) return null;
   return (
-    <section className={styles.section} aria-labelledby="funded-invoices-title">
-      <h2 id="funded-invoices-title">Education-fund invoices</h2>
+    <PageSection
+      title="Education-fund invoices"
+      titleId="funded-invoices-title"
+    >
       {(error || handoff.error) && <p role="alert">{error || handoff.error}</p>}
       {claimedRecords.map((r) => (
         <article key={r.id} className={styles.invoice}>
@@ -344,7 +346,7 @@ export function FundingInvoices({
           </article>
         );
       })}
-    </section>
+    </PageSection>
   );
 }
 const date = (value: string) =>
