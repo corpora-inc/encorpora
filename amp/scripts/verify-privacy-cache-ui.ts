@@ -62,7 +62,7 @@ try {
       await familyBatchRelease;
       await route.fulfill({ response: result });
     });
-    await page.getByRole("button", { name: "2016", exact: true }).click();
+    await page.getByRole("option", { name: "2016", exact: true }).click();
     // The birth year saved, the child's own page shows (their Overview).
     await page.waitForURL((url) =>
       url.pathname.endsWith(`/kids/${learner.id}`),

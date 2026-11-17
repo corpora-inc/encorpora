@@ -736,7 +736,7 @@ try {
     page.getByRole("button", { name: "Learner", exact: true }),
     learnerA.id,
   );
-  await page.getByRole("button", { name: "2016", exact: true }).click();
+  await page.getByRole("option", { name: "2016", exact: true }).click();
   await page.getByRole("button", { name: "Go", exact: true }).waitFor();
   // No device toggle for grade numbers: a grown-up's view shows them.
   assert.equal(

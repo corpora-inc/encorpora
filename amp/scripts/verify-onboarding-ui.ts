@@ -854,7 +854,7 @@ try {
     );
     const year = page.locator("main section").first(),
       yearBox = await box(year);
-    await page.getByRole("button", { name: "2015", exact: true }).click();
+    await page.getByRole("option", { name: "2015", exact: true }).click();
     await page
       .getByRole("alert")
       .filter({ hasText: "Billing is temporarily unavailable" })
@@ -866,7 +866,7 @@ try {
       "failed claim does not move the step",
     );
     await page.getByRole("button", { name: "Dismiss message" }).click();
-    await page.getByRole("button", { name: "2014", exact: true }).click();
+    await page.getByRole("option", { name: "2014", exact: true }).click();
     await page.waitForURL("**/practice");
     assert.equal(
       state.learners.length,
@@ -904,13 +904,13 @@ try {
       });
       return route.abort("connectionreset");
     });
-    await page.getByRole("button", { name: "2013", exact: true }).click();
+    await page.getByRole("option", { name: "2013", exact: true }).click();
     await page
       .getByRole("alert")
       .filter({ hasText: "Check your connection" })
       .waitFor();
     await page.getByRole("button", { name: "Dismiss message" }).click();
-    await page.getByRole("button", { name: "2013", exact: true }).click();
+    await page.getByRole("option", { name: "2013", exact: true }).click();
     await page.waitForURL("**/practice");
     assert.equal(state.learners.length, 1, "lost response never duplicates");
     assert.deepEqual(state.claims, [{ purchaseId, learnerId: "learner-lost" }]);
