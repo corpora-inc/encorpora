@@ -119,7 +119,7 @@ test("a child's address names them; yourself is unnamed", () => {
 
 test("the app's own tabs never carry ?learner=", () => {
   for (const tab of [...meTabs("jonah"), ...meTabs(null)])
-    expect(tab.search).toBeUndefined();
+    expect("search" in tab).toBe(false);
   expect(meTabs("jonah").map((tab) => tab.path)).toEqual([
     // Practice names its learner in its path (identity.ts practicePath).
     "practice/jonah",
@@ -136,7 +136,7 @@ test("the app's own tabs never carry ?learner=", () => {
     "inventory",
   ]);
   for (const tab of meTabs("jonah", "grade-4"))
-    expect(tab.search).toBeUndefined();
+    expect("search" in tab).toBe(false);
   expect(childTabs(FAMILY, "pip").map((tab) => tab.path)).toEqual([
     `family/${FAMILY}/kids/pip`,
     `family/${FAMILY}/kids/pip/pathways`,

@@ -371,7 +371,11 @@ test("Q-209: a child's Pathways and Inventory are their own addresses, with thei
     assert.equal(space.label, "Wren");
     assert.equal(space.active, screen);
     assert.deepEqual(
-      space.tabs.map((tab) => [tab.id, tab.path, tab.search]),
+      space.tabs.map((tab) => [
+        tab.id,
+        tab.path,
+        "search" in tab ? tab.search : undefined,
+      ]),
       [
         ["overview", `family/${A}/kids/wren`, undefined],
         ["pathways", `family/${A}/kids/wren/pathways`, undefined],

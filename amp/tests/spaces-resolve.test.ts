@@ -579,7 +579,10 @@ test("shared learning routes: the route's learner, a profile, then yourself", ()
   assert.equal(named.learner?.id, "pip");
   assert.equal(named.label, "Pip");
   assert.deepEqual(
-    named.tabs.map((tab) => [tab.path, tab.search]),
+    named.tabs.map((tab) => [
+      tab.path,
+      "search" in tab ? tab.search : undefined,
+    ]),
     [
       [`family/${FAMILY}/kids/pip`, undefined],
       [`family/${FAMILY}/kids/pip/pathways`, undefined],
@@ -616,7 +619,7 @@ test("shared learning routes: the route's learner, a profile, then yourself", ()
   const self = resolveSpace(at("/overview"), adult(power, "wren"));
   expectSpace(self, "me");
   assert.equal(self.learner?.id, "jonah");
-  assert.ok(self.tabs.every((tab) => tab.search === undefined));
+  assert.ok(self.tabs.every((tab) => !("search" in tab)));
   // An account with no practice of its own has no self: the device's
   // choice, as before (its route sends Pathways, Inventory and the Overview
   // to that child's own address).
@@ -969,7 +972,11 @@ test("CP-2 H2: one learner per address, the same order as adoption", () => {
     adult(power, "pip"),
   );
   assert.deepEqual(
-    tabs.tabs.map((tab) => [tab.id, tab.path, tab.search ?? null]),
+    tabs.tabs.map((tab) => [
+      tab.id,
+      tab.path,
+      ("search" in tab ? tab.search : undefined) ?? null,
+    ]),
     [
       ["practice", "practice", { profile: "profile-4" }],
       ["levels", "me/profiles/profile-4", null],

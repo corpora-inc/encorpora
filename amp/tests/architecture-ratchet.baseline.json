@@ -3,10 +3,10 @@
   "counts": {
     "redirects": 0,
     "validateSearch": 1,
-    "searchHandoffs": 7,
+    "searchHandoffs": 4,
     "navigatingEffects": 3,
     "renderNavigate": 0,
-    "silentCatches": 2,
+    "silentCatches": 0,
     "sessionProps": 1,
     "sessionReads": 1,
     "inlineQueryKeys": 0,
@@ -19,19 +19,14 @@
     },
     "searchHandoffs": {
       "features/inventory/InventoryScreen.tsx": 3,
-      "nav/root.tsx": 1,
-      "ui/RowList.tsx": 1,
-      "ui/Tabs.tsx": 2
+      "nav/root.tsx": 1
     },
     "navigatingEffects": {
       "app/LegacyApp.tsx": 2,
       "nav/Navigate.tsx": 1
     },
     "renderNavigate": {},
-    "silentCatches": {
-      "features/lessons/publications.ts": 1,
-      "scene/money-art.ts": 1
-    },
+    "silentCatches": {},
     "sessionProps": {
       "features/school/classes/StudentLayer.tsx": 1
     },

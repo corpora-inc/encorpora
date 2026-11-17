@@ -18,7 +18,6 @@ export type TabItem = {
   label: string;
   /** The tab's URL path, without the leading slash. */
   path: string;
-  search?: Record<string, unknown>;
   /** One of the tabs a phone shows; the first four when none says. */
   phone?: boolean;
 };
@@ -226,7 +225,7 @@ export function Tabs({
           key={item.id}
           to="/$"
           params={{ _splat: item.path }}
-          search={item.search ?? {}}
+          search={{}}
           activeOptions={{ exact: true, includeSearch: false }}
           activeProps={{}}
           aria-current={item.id === active ? "page" : undefined}
@@ -276,7 +275,7 @@ export function Tabs({
                   void navigate({
                     to: "/$",
                     params: { _splat: item.path },
-                    search: item.search ?? {},
+                    search: {},
                   } as never)
                 }
               >
