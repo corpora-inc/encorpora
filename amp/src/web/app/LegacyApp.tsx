@@ -471,15 +471,17 @@ function LegacyScreen({ owner }: { owner: string | null }) {
   // Keep the selected curriculum scope in the address for the whole series.
   const practiceFilter = useRef<PracticeFilter>({});
   const changingFilter = useRef(false);
+  // Null away from practice: Progress or a lesson opened from a problem
+  // leaves its focus as it was (see the layout effect below).
   const filterKey =
     route.parts[0] === "practice" && catalog
       ? JSON.stringify(
           focusFilter(practiceFocus(route.location.pathname), catalog),
         )
-      : "{}";
+      : null;
   // The drawer's practice facts (PracticeControls): the area or skill the
   // address holds practice to, and the level the answers so far measure.
-  const shownFilter = JSON.parse(filterKey) as PracticeFilter;
+  const shownFilter = JSON.parse(filterKey ?? "{}") as PracticeFilter;
   const filterName = shownFilter.skill
     ? (catalog?.skills.find((skill) => skill.id === shownFilter.skill)?.title ??
       null)
@@ -493,11 +495,14 @@ function LegacyScreen({ owner }: { owner: string | null }) {
     enabled: !!learner && !nativeRuntime && route.parts[0] === "practice",
   }).data?.overall;
   useLayoutEffect(() => {
+    // Away from practice its focus stays as it was, so coming back (Back
+    // from Progress) resumes the same problem with its answer as left.
+    if (filterKey === null) return;
+    const changing = changingFilter.current;
+    changingFilter.current = false;
+    if (filterKey === JSON.stringify(practiceFilter.current)) return;
     practiceFilter.current = JSON.parse(filterKey) as PracticeFilter;
-    if (changingFilter.current) {
-      changingFilter.current = false;
-      return;
-    }
+    if (changing) return;
     setProblem(null);
     setQueue([]);
     upcoming.current = null;
@@ -1188,7 +1193,7 @@ function LegacyScreen({ owner }: { owner: string | null }) {
       setQueue([]);
       if (intent.kind !== "together") {
         practiceFilter.current = {};
-        changingFilter.current = filterKey !== "{}";
+        changingFilter.current = (filterKey ?? "{}") !== "{}";
         navigate(practiceHref(), { replace: true });
         setPending(null);
         const strand =
@@ -1858,7 +1863,8 @@ function LegacyScreen({ owner }: { owner: string | null }) {
             exit={() => setExploring(true)}
             exitHref="/"
             returnToMixed={
-              (practiceSettings.data?.focusSkillId || filterKey !== "{}") &&
+              (practiceSettings.data?.focusSkillId ||
+                (filterKey ?? "{}") !== "{}") &&
               !nativeRuntime
                 ? () =>
                     void action(() =>

@@ -8,6 +8,7 @@ import { useSession } from "../../lib/session";
 import { Button, buttonClass } from "../../ui/Button";
 import type { PauseViewer } from "../continue/AllowancePause";
 import { canReadWorkbooks, type WorkbookAccess } from "./model";
+import { workbookHistoryOptions } from "./api";
 import styles from "./Workbooks.module.css";
 
 export type WorkbookLearner = { id: string; name: string } & WorkbookAccess & {
@@ -28,10 +29,15 @@ export function whose(learner: Pick<WorkbookLearner, "name" | "pauseViewer">) {
 export function WorkbookFrame({
   learnerId,
   busy = false,
+  withHistory = false,
   children,
 }: {
   learnerId: string;
   busy?: boolean;
+  /** The screen lists the learner's workbooks: it arrives with them, so
+   * nothing it shows (its actions, the list) pushes the page down once
+   * they answer. A failed read still opens it, to say so in place. */
+  withHistory?: boolean;
   children: (learner: WorkbookLearner) => ReactNode;
 }) {
   const session = useSession();
@@ -43,8 +49,18 @@ export function WorkbookFrame({
   const learner = data?.family.learners.find(
     (l) => l.id === learnerId && !l.deletedAt,
   );
+  const history = useQuery({
+    ...workbookHistoryOptions(session, learnerId),
+    enabled: withHistory && !!learner && canReadWorkbooks(learner),
+  });
+  const waiting =
+    withHistory &&
+    !!learner &&
+    canReadWorkbooks(learner) &&
+    history.isPending &&
+    !history.isError;
   let body: ReactNode;
-  if (!data)
+  if (!data || waiting)
     body = me.error ? (
       <div className={styles.notice}>
         <PageHeader title="Workbooks" />
@@ -111,5 +127,5 @@ export function WorkbookFrame({
               ? "adult"
               : "parent",
     });
-  return <Page aria-busy={!data || busy}>{body}</Page>;
+  return <Page aria-busy={!data || waiting || busy}>{body}</Page>;
 }
