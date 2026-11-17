@@ -23,7 +23,11 @@ const child = (id: string, name: string, extra = {}) => ({
 });
 const family = (learners: ReturnType<typeof child>[]): SignedInMe => ({
   signedIn: true,
-  account: { id: session.accountId, email: "parent@example.test", emailVerified: true },
+  account: {
+    id: session.accountId,
+    email: "parent@example.test",
+    emailVerified: true,
+  },
   consent: { status: "none", method: null },
   learners: learners
     .filter((entry) => !("simulation" in entry))
@@ -33,11 +37,26 @@ const family = (learners: ReturnType<typeof child>[]): SignedInMe => ({
       birthYear: 2017,
       entitlement: { active: true, plan: null, endsAt: null },
     })),
-  familyClass: { orgId: FAMILY, classId: "class-1", className: "Family", notice: false },
+  familyClass: {
+    orgId: FAMILY,
+    classId: "class-1",
+    className: "Family",
+    notice: false,
+  },
   family: {
-    consent: { status: "not-recorded", policyVersion: null, recordedAt: null, withdrawnAt: null },
+    consent: {
+      status: "not-recorded",
+      policyVersion: null,
+      recordedAt: null,
+      withdrawnAt: null,
+    },
     learners,
-    retained: { identity: "", financial: "", backups: "", privacyAuditDays: 30 },
+    retained: {
+      identity: "",
+      financial: "",
+      backups: "",
+      privacyAuditDays: 30,
+    },
   },
   next: "practice",
 });
@@ -87,7 +106,9 @@ const hop = async (
   params: Record<string, string> = {},
 ) => {
   const pathname = path.replace(/\$(\w+)/g, (_, name: string) => params[name]!);
-  const searchStr = new URLSearchParams(search as Record<string, string>).toString();
+  const searchStr = new URLSearchParams(
+    search as Record<string, string>,
+  ).toString();
   const location = {
     pathname,
     search,
@@ -96,7 +117,9 @@ const hop = async (
   try {
     if (findAliases(location).length) await followAlias(location);
     else {
-      const route = router.routesById[path as keyof typeof router.routesById] as {
+      const route = router.routesById[
+        path as keyof typeof router.routesById
+      ] as {
         options: { beforeLoad: (input: unknown) => Promise<unknown> };
       };
       await route.options.beforeLoad({ params, location });
@@ -120,7 +143,8 @@ beforeEach(() => {
     vi.fn(async (input: RequestInfo | URL) => {
       const url = String(input);
       if (url.includes("/funding/invoice-offers")) return Response.json(offers);
-      if (url.includes("/billing/purchase/")) return Response.json({ learnerId: "august" });
+      if (url.includes("/billing/purchase/"))
+        return Response.json({ learnerId: "august" });
       return Response.json(me);
     }),
   );
@@ -144,7 +168,12 @@ test("the pay overlays hang under their screens and carry no query", () => {
     "/account/pay/$learner/done",
     "/account/pay/$learner/invoice/$invoiceId",
   ]) {
-    const route = (router.routesByPath as unknown as Record<string, { options: { validateSearch?: unknown } }>)[path];
+    const route = (
+      router.routesByPath as unknown as Record<
+        string,
+        { options: { validateSearch?: unknown } }
+      >
+    )[path];
     expect(route, path).toBeTruthy();
     expect(route!.options.validateSearch, path).toBeUndefined();
   }
@@ -152,7 +181,11 @@ test("the pay overlays hang under their screens and carry no query", () => {
 
 test("/continue/<learner>?interval= opens that learner's pay screen on the card tab, plan kept", async () => {
   expect(
-    await hop("/continue/$learnerId", { interval: "month" }, { learnerId: "august" }),
+    await hop(
+      "/continue/$learnerId",
+      { interval: "month" },
+      { learnerId: "august" },
+    ),
   ).toMatchObject({ href: OVER_AUGUST, replace: true });
   expect(payState(session.accountId).learners.august).toEqual({
     method: "card",
@@ -173,7 +206,11 @@ test("/continue for a practice profile opens the paused child's", async () => {
 
 test("/purchase/funded?learner=&program=&interval= opens the education-funds tab with them", async () => {
   expect(
-    await hop("/purchase/funded", { learner: "august", program: "az-esa", interval: "month" }),
+    await hop("/purchase/funded", {
+      learner: "august",
+      program: "az-esa",
+      interval: "month",
+    }),
   ).toMatchObject({ href: OVER_AUGUST });
   expect(payState(session.accountId).learners.august).toEqual({
     method: "esa",
@@ -194,30 +231,40 @@ test("an old offer link names its program and plan", async () => {
 });
 
 test("a program's entry opens its tab for the account's one learner", async () => {
-  expect(await hop("/purchase/arizona-esa")).toMatchObject({ href: OVER_AUGUST });
+  expect(await hop("/purchase/arizona-esa")).toMatchObject({
+    href: OVER_AUGUST,
+  });
   expect(payState(session.accountId).learners.august).toMatchObject({
     method: "esa",
     program: "az-esa",
   });
 });
 
-test("signed out, a program's entry is its public invoice form, campaign labels kept", async () => {
+test("signed out, a program's entry is its public invoice form; its labels are the arrival's, not the address's", async () => {
   queryClient.setQueryData(sessionOptions.queryKey, null);
   expect(
     await hop("/purchase/arizona-esa", { utm_source: "google", learner: "x" }),
-  ).toMatchObject({ href: "/invoice/arizona-esa?utm_source=google" });
+  ).toMatchObject({ href: "/invoice/arizona-esa" });
 });
 
 test("with several children and none named, the flow starts from Billing", async () => {
   me = family([child("august", "August"), child("wren", "Wren")]);
   queryClient.setQueryData(meOptions(session).queryKey, me);
-  expect(await hop("/purchase/annual")).toMatchObject({ href: "/account/billing" });
-  expect(await hop("/purchase/choose")).toMatchObject({ href: "/account/billing" });
-  expect(await hop("/purchase/funded")).toMatchObject({ href: "/account/billing" });
+  expect(await hop("/purchase/annual")).toMatchObject({
+    href: "/account/billing",
+  });
+  expect(await hop("/purchase/choose")).toMatchObject({
+    href: "/account/billing",
+  });
+  expect(await hop("/purchase/funded")).toMatchObject({
+    href: "/account/billing",
+  });
 });
 
 test("an old invoice link goes to Billing, where its record is", async () => {
-  expect(await hop("/purchase/funded", { invoice: "a-saved-invoice" })).toMatchObject({
+  expect(
+    await hop("/purchase/funded", { invoice: "a-saved-invoice" }),
+  ).toMatchObject({
     href: "/account/billing",
   });
 });
@@ -239,7 +286,9 @@ test("leaving Stripe returns to the plan on the card tab", async () => {
   expect(
     await hop("/purchase/annual", { billing: "canceled", purchase }),
   ).toMatchObject({ href: OVER_AUGUST });
-  expect(payState(session.accountId).learners.august).toEqual({ method: "card" });
+  expect(payState(session.accountId).learners.august).toEqual({
+    method: "card",
+  });
 });
 
 test("an enrollment checkout returns to the overlay it was opened from, on its confirmation", async () => {
@@ -257,16 +306,21 @@ test("an enrollment checkout returns to the overlay it was opened from, on its c
 });
 
 test("the pay address of a day ago opens the overlay over the learner's page", async () => {
-  expect(await hop("/pay/$learnerId", {}, { learnerId: "august" })).toMatchObject({
+  expect(
+    await hop("/pay/$learnerId", {}, { learnerId: "august" }),
+  ).toMatchObject({
     href: OVER_AUGUST,
   });
 });
 
 test("an overlay needs a signed-in adult: signed out, one hop to sign in", async () => {
   queryClient.setQueryData(sessionOptions.queryKey, null);
-  const route = (router.routesByPath as unknown as Record<string, { options: { beforeLoad: (input: never) => Promise<unknown> } }>)[
-    "/family/$family/kids/$learner/pay"
-  ]!;
+  const route = (
+    router.routesByPath as unknown as Record<
+      string,
+      { options: { beforeLoad: (input: never) => Promise<unknown> } }
+    >
+  )["/family/$family/kids/$learner/pay"]!;
   await expect(
     route.options.beforeLoad({
       location: { pathname: "/family/f/kids/k/pay", searchStr: "", search: {} },
