@@ -10,7 +10,7 @@
  *      which address the invitation is for, with Use another account.
  *   3. The invited parent opens the link in a second browser, creates an
  *      account with that address and joins as a parent: the family's Today
- *      with "Let Maya practice here", and nothing that is the holder's.
+ *      with "Practice with Maya", and nothing that is the holder's.
  *   4. From Today she reads Maya's page, Pathways and Inventory, then
  *      through the place switcher starts her own practice.
  *   5. The holder sees her joined on People: the action to invite is gone.
@@ -21,6 +21,7 @@
  *
  *     AMP_TEST_DATABASE_URL=... npx tsx scripts/verify-second-parent-ui.ts [--port 4540]
  */
+import { openHome } from "./launcher";
 import type { LinkedMessage } from "../src/email/email.js";
 import { mkdir, writeFile } from "node:fs/promises";
 import { randomBytes, randomUUID } from "node:crypto";
@@ -282,8 +283,11 @@ async function openSwitcher(page: Page) {
 /** A family's People is its parents: never a roster, parent links or a
  * co-teacher, whoever reads it. Its old class address opens it. */
 async function familyPeople(page: Page, familyUrl: string, label: string) {
+  // People is a section of the family's Settings (its old address opens
+  // Settings).
   await go(page, `${familyUrl}/people`);
-  await heading(page, "People");
+  await heading(page, "Settings");
+  await page.locator("[data-settings-people]").waitFor();
   for (const name of ["Parent links", "Invite a co-teacher"])
     check(
       `${label} no ${name} on a family's People`,
@@ -318,7 +322,8 @@ async function journey(
     holderAccount.slice(4),
   ]);
   const maya = await family(holderAccount);
-  await go(holder, `${origin}/`);
+  // `/` is the launcher; its first place is the family (scripts/launcher.ts).
+  await openHome(holder, origin);
   await holder.waitForURL(FAMILY_TODAY);
   await todayTitle(holder);
   const familyUrl = holder.url();
@@ -331,7 +336,8 @@ async function journey(
   await measured(holder, `${label} holder today`);
   await shot(holder, "holder-today", width, theme, engine);
   await go(holder, `${familyUrl}/people`);
-  await heading(holder, "People");
+  await heading(holder, "Settings");
+  await holder.locator("[data-settings-people]").waitFor();
   const add = holder.getByRole("button", { name: "Add a second parent" });
   await add.waitFor();
   await measured(holder, `${label} holder people`);
@@ -434,7 +440,7 @@ async function journey(
   );
   await todayTitle(rowan);
   const handOver = rowan.getByRole("button", {
-    name: "Let Maya practice here",
+    name: "Practice with Maya",
   });
   await handOver.waitFor();
   for (const name of [
@@ -468,7 +474,7 @@ async function journey(
   await rowan.locator(`[data-child-link="${maya}"]`).click();
   await rowan.waitForURL(new RegExp(`/kids/${maya}$`));
   await heading(rowan, "Maya");
-  await rowan.getByRole("button", { name: "Let Maya practice here" }).waitFor();
+  await rowan.getByRole("button", { name: "Practice with Maya" }).waitFor();
   for (const name of ["Change birth year", "Continue with AMP"])
     check(
       `${label} the family's decisions aren't offered: ${name}`,

@@ -441,12 +441,9 @@ try {
       .getByRole("button", { name: "Try one problem", exact: true })
       .click();
     await batchStarted;
-    // The learner moves on to their Pathways (the lessons library is no
-    // destination of its own: docs/design/ia.md).
-    await page
-      .getByRole("link", { name: "Pathways", exact: true })
-      .first()
-      .click();
+    // The learner moves on, by the menu, to their record (practice shows
+    // no tabs; its way out is the menu).
+    await navigateApp(page, "Progress");
     const obsoleteBatch = page.waitForResponse(
       (response) =>
         response.url().endsWith("/batches") &&
@@ -462,11 +459,8 @@ try {
         ),
     );
     assert.equal(await page.getByRole("alert").count(), 0, failure.error);
-    assert.equal(new URL(page.url()).pathname, "/pathways", failure.error);
-    assert.equal(await page.locator(".progress-workspace").count(), 0);
-    await page
-      .getByRole("heading", { name: "Pathways", exact: true })
-      .waitFor();
+    // The late answer never pulls them back into practice.
+    assert.equal(new URL(page.url()).pathname, "/overview", failure.error);
     await returnToHistory(page);
   }
 

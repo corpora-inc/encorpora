@@ -148,6 +148,9 @@ export function ProgressWorkspace({
   const list = useRef<HTMLDivElement>(null),
     heading = useRef<HTMLHeadingElement>(null);
   const [capacity, setCapacity] = useState(2);
+  // The page size the overflow guard settled on, for the stage height it
+  // measured.
+  const fitted = useRef<{ height: number; capacity: number } | null>(null);
   const [largeText, setLargeText] = useState(false);
   const [infoOpen, setInfoOpen] = useState(false);
   const returnSkill = useRef<string | null>(null);
@@ -182,15 +185,20 @@ export function ProgressWorkspace({
       const gap = grid
         ? Number.parseFloat(getComputedStyle(grid).rowGap) || 0
         : 12;
+      // As many rows as the stage holds: a tall screen's page never leaves
+      // a card-sized gap under its cards. A row the guard below had to drop
+      // at this stage size stays dropped, so coming back from an idea never
+      // shows the page one row longer for a frame.
+      const fits =
+        Math.max(1, Math.floor((target.clientHeight + gap) / (card + gap))) *
+        columns;
+      const dropped = fitted.current;
       setCapacity(
         largeText
           ? 1
-          : // As many rows as the stage holds: a tall screen's page never
-            // leaves a card-sized gap under its cards.
-            Math.max(
-              1,
-              Math.floor((target.clientHeight + gap) / (card + gap)),
-            ) * columns,
+          : dropped && dropped.height === target.clientHeight
+            ? Math.min(fits, dropped.capacity)
+            : fits,
       );
     };
     const observer = new ResizeObserver(measure);
@@ -208,7 +216,9 @@ export function ProgressWorkspace({
       const columns = grid
         ? getComputedStyle(grid).gridTemplateColumns.split(" ").length
         : 1;
-      setCapacity(Math.max(1, capacity - columns));
+      const fewer = Math.max(1, capacity - columns);
+      fitted.current = { height: stage.clientHeight, capacity: fewer };
+      setCapacity(fewer);
     }
   });
   const entries = (snapshot?.skills ?? []).flatMap((evidence) => {
