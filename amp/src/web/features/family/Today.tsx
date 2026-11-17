@@ -20,7 +20,7 @@ import type { FamilyChild } from "./api";
 import { useLearnerStore } from "../../learner-store";
 import { useStartOwnPractice } from "../me/api";
 import { rememberPlace } from "../onboarding/place-memory";
-import { AddKidsSheet } from "./AddKids";
+import { AddChildrenSheet } from "./AddChildren";
 import { accessUntil, sharedAccessOf } from "./access";
 import { DevicesSheet } from "./Devices";
 import { FamilyFrame, familyHref, useFamilyPlace } from "./FamilyFrame";
@@ -385,11 +385,8 @@ export function FamilyTodayScreen() {
                 action={
                   <Button
                     variant="primary"
-                    onClick={() =>
-                      me?.consent.status === "active"
-                        ? setOpen("add", true)
-                        : void navigate({ to: "/start/parent" as never })
-                    }
+                    data-add-child=""
+                    onClick={() => setOpen("add", true)}
                   >
                     Add your kids
                   </Button>
@@ -560,8 +557,7 @@ export function FamilyTodayScreen() {
             />
           )}
           {place.holder && (
-            <AddKidsSheet
-              session={session}
+            <AddChildrenSheet
               open={adding}
               onOpenChange={(open) => setOpen("add", open)}
             />

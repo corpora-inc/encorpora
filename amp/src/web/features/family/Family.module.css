@@ -449,3 +449,8 @@
   letter-spacing: 0.06em;
   white-space: nowrap;
 }
+/* Adding children in a sheet: the rows, then Done at their foot. */
+.addChildren {
+  display: grid;
+  gap: var(--space-4);
+}

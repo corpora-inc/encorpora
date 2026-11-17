@@ -34,7 +34,8 @@ import {
 } from "../second-parent/SecondParent";
 import type { ApprovalRowResource } from "../../../family/approval-contracts";
 import { familyTeachingOptions } from "./api";
-import { AddKidsSheet } from "./AddKids";
+import { AddChildrenSheet } from "./AddChildren";
+import { NameEditor } from "../account/NameEditor";
 import { GradingPeriods } from "./Records";
 import { DevicesSheet } from "./Devices";
 import {
@@ -85,32 +86,6 @@ function AddAction({
       </svg>
       {children}
     </button>
-  );
-}
-
-/**
- * The adult's own name, as the other parent, an approving parent and an
- * invitation show it. It is the account's (R9, R12): changed in Account.
- */
-function YourName({ place }: { place: FamilyPlace }) {
-  const known = place.me?.account.displayName?.trim() || null;
-  return (
-    <div className={styles.setting} data-your-name={known ? "" : "missing"}>
-      <div className={styles.settingText}>
-        <dt>{known ?? "Your name"}</dt>
-        <dd>{known ? "Your name" : "Other parents see it."}</dd>
-      </div>
-      <div className={styles.settingAction}>
-        <Link
-          to="/$"
-          params={{ _splat: "account/security" }}
-          className={buttonClass("secondary")}
-          data-change-in-account=""
-        >
-          {known ? "Change in Account" : "Add in Account"}
-        </Link>
-      </div>
-    </div>
   );
 }
 
@@ -202,9 +177,8 @@ export function FamilyPeopleScreen() {
             <h2 id="people-you" className={people.title}>
               You
             </h2>
-            <dl className={styles.settings}>
-              <YourName place={place} />
-            </dl>
+            {/* Their own name, changed here (the account's, shown everywhere). */}
+            <NameEditor detail="Other parents see it." />
           </section>
           {second ? (
             <section className={people.list} aria-labelledby="people-family">
@@ -417,12 +391,11 @@ function FamilyCode({ place }: { place: FamilyPlace }) {
  */
 export function FamilySettingsScreen() {
   const place = useFamilyPlace();
-  const { data, me, session } = place;
-  const navigate = useNavigate();
-  const [adding, setAdding] = useFlag("add");
+  const { data } = place;
+  // Adding children: a sheet over Settings, its own state (no address).
+  const [adding, setAdding] = useState(false);
   const children = data?.children ?? [];
   const add = !!data?.capabilities.addChildren;
-  const consented = me?.consent.status === "active";
   return (
     <FamilyFrame place={place} title="Settings">
       {data && (
@@ -433,11 +406,8 @@ export function FamilySettingsScreen() {
               {add && (
                 <Button
                   variant="secondary"
-                  onClick={() =>
-                    consented
-                      ? setAdding(true)
-                      : void navigate({ to: "/start/parent" as never })
-                  }
+                  data-add-child=""
+                  onClick={() => setAdding(true)}
                 >
                   Add a child
                 </Button>
@@ -488,13 +458,7 @@ export function FamilySettingsScreen() {
               <RowLink title="Profile & sign-in" to="account/security" />
             </RowList>
           </section>
-          {add && consented && (
-            <AddKidsSheet
-              session={session}
-              open={adding}
-              onOpenChange={setAdding}
-            />
-          )}
+          {add && <AddChildrenSheet open={adding} onOpenChange={setAdding} />}
         </div>
       )}
     </FamilyFrame>
