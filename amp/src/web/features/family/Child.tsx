@@ -747,10 +747,8 @@ function ChildSettingsRows({
           />
         </Disclosure>
       )}
-      <Toast
-        message={notice || error}
-        onDismiss={() => (setNotice(""), setError(""))}
-      />
+      <Toast message={error} onDismiss={() => setError("")} />
+      <Toast tone="status" message={notice} onDismiss={() => setNotice("")} />
     </>
   );
 }
