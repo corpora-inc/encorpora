@@ -105,9 +105,13 @@ async function fixture(
   } = {},
 ) {
   await page.addInitScript((learner) => {
+    // The device's learner, per account (learner-store.ts, version 2).
     localStorage.setItem(
       "amp.learner",
-      JSON.stringify({ state: { learnerId: learner }, version: 1 }),
+      JSON.stringify({
+        state: { learners: { "parent-one": learner } },
+        version: 2,
+      }),
     );
   }, LEARNER);
   await page.route("**/api/v1/**", async (route) => {

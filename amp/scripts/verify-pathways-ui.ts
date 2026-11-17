@@ -234,9 +234,17 @@ async function fixture(
       (window as any).pathwaysAccount = signedIn ? "parent-one" : null;
       // This proof is of the 3D map: the grades view is the default (Q-212).
       localStorage.setItem("amp.pathways-view", "3d");
+      // The device's learner, per account (learner-store.ts, version 2).
       localStorage.setItem(
         "amp.learner",
-        JSON.stringify({ state: { learnerId: selectedLearnerId }, version: 1 }),
+        JSON.stringify({
+          state: {
+            learners: selectedLearnerId
+              ? { "parent-one": selectedLearnerId }
+              : {},
+          },
+          version: 2,
+        }),
       );
     },
     { signedIn, selectedLearnerId },
