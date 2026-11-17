@@ -1,6 +1,11 @@
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
-import { openLayers, openOf, waitForSkills } from "./layer-probe";
+import {
+  openLayers,
+  openOf,
+  waitForMapView,
+  waitForSkills,
+} from "./layer-probe";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { mkdir, realpath } from "node:fs/promises";
@@ -862,7 +867,7 @@ async function verifySearchFilters() {
       );
       await input.focus();
       await input.press("Backspace");
-      await page.waitForURL((url) => !url.searchParams.has("topic"));
+      await waitForMapView(page, "topic", "");
       assert.equal(
         await input.inputValue(),
         "",
@@ -872,7 +877,7 @@ async function verifySearchFilters() {
         await input.evaluate((el) => el === document.activeElement),
         "Deleting keeps the keyboard focused on search",
       );
-      assert.equal(new URL(page.url()).searchParams.get("filter"), "K");
+      await waitForMapView(page, "band", "K");
       // A grown-up's view always names grades: no device toggle.
       assert.equal(
         await page.getByRole("checkbox", { name: /grade numbers/i }).count(),
@@ -886,7 +891,7 @@ async function verifySearchFilters() {
       assert.equal(await grade.getAttribute("data-value"), "K");
       const gradeBox = await grade.boundingBox();
       await choose(page, "Grade or course", "");
-      await page.waitForURL((url) => !url.searchParams.has("filter"));
+      await waitForMapView(page, "band", "");
       assert.equal(
         await grade.getAttribute("data-value"),
         "",
@@ -904,9 +909,7 @@ async function verifySearchFilters() {
       // A grown-up's view names grades, so the grade picker stays.
       assert(await grade.isVisible(), "the grade picker stays in the browser");
       await input.pressSequentially("linear", { delay: 10 });
-      await page.waitForURL(
-        (url) => url.searchParams.get("topic") === "linear",
-      );
+      await waitForMapView(page, "topic", "linear");
       assert.equal(await input.inputValue(), "linear");
       // Founder (phone, "Lo"): results open never widen the page, and the
       // panel holding them ends inside the screen (an ancestor's clip hides
@@ -937,8 +940,10 @@ async function verifySearchFilters() {
       );
       assert.equal(await input.inputValue(), "linear");
       await input.fill("L".repeat(101));
-      await page.waitForURL(
-        (url) => url.searchParams.get("topic")?.length === 100,
+      await page.waitForFunction(
+        () =>
+          (document.querySelector<HTMLInputElement>(".pathways-search input")
+            ?.value.length ?? 0) === 100,
       );
       assert.equal(
         (await input.inputValue()).length,
@@ -947,7 +952,7 @@ async function verifySearchFilters() {
       );
       assert.equal(await page.locator("#pathways-browser").isVisible(), true);
       await input.fill("");
-      await page.waitForURL((url) => !url.searchParams.has("topic"));
+      await waitForMapView(page, "topic", "");
       assert.equal(
         await input.inputValue(),
         "",
@@ -976,14 +981,10 @@ async function verifySearchFilters() {
         "Other valid filters survive a malformed query",
       );
       await input.fill("linear");
-      await page.waitForURL(
-        (url) => url.searchParams.get("topic") === "linear",
-      );
+      await waitForMapView(page, "topic", "linear");
       const countingTitle = skillTitle("count-to-20");
       await input.fill(countingTitle);
-      await page.waitForURL(
-        (url) => url.searchParams.get("topic") === countingTitle,
-      );
+      await waitForMapView(page, "topic", countingTitle);
       await skillResult(page, "count-to-20").click();
       await waitForSkills(page, ["count-to-20"]);
       await skillLayer(page).waitFor();
@@ -1000,9 +1001,9 @@ async function verifySearchFilters() {
       await input.waitFor();
       assert.equal(await input.inputValue(), countingTitle);
       await input.fill("");
-      await page.waitForURL((url) => !url.searchParams.has("topic"));
+      await waitForMapView(page, "topic", "");
       await choose(page, "Grade or course", "");
-      await page.waitForURL((url) => !url.searchParams.has("filter"));
+      await waitForMapView(page, "band", "");
       await input.focus();
       await noOverflow(page);
       await page.screenshot({
@@ -1070,9 +1071,7 @@ async function verifySearchTyping() {
       await input.click();
       await page.keyboard.type("fraction", { delay: 90 });
       const typed = await page.evaluate(() => performance.now());
-      await page.waitForURL(
-        (url) => url.searchParams.get("topic") === "fraction",
-      );
+      await waitForMapView(page, "topic", "fraction");
       // Well past the search corpus's late arrival.
       await page.waitForTimeout(1500);
       type Frame = {
@@ -1516,8 +1515,8 @@ try {
     parentUrl.searchParams.get("open"),
     `skill:${target.id},skill:nonlinear-intersection-reading`,
   );
-  assert.equal(parentUrl.searchParams.get("topic"), "systems");
-  assert.equal(parentUrl.searchParams.get("filter"), "algebra-2");
+  // The map's search and grade stay in its view, out of the address.
+  assert.equal(parentUrl.searchParams.get("topic"), null);
   assert.equal(
     await skillLayer(guest)
       .getByRole("link", { name: "Try it free", exact: true })

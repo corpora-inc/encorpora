@@ -845,7 +845,11 @@ for (const width of [390, 1280]) {
   await shot(page, `q212-grades-${tag}`);
   await threeD.click();
   await page.locator(".pathways-canvas canvas").waitFor();
-  assert.match(page.url(), /[?&]view=3d\b/, `${tag}: the address says 3D`);
+  assert.equal(
+    await page.evaluate(() => localStorage.getItem("amp.pathways-view")),
+    "3d",
+    `${tag}: this device remembers 3D`,
+  );
   assert.equal(await page.locator(".pathways-plan").count(), 0);
   assert.deepEqual(await where(), area, `${tag}: the map starts where it did`);
   await noOverflow(page, `${tag} 3D`);
@@ -875,7 +879,10 @@ for (const width of [390, 1280]) {
   await heading.waitFor({ state: "detached" });
   await grades.click();
   await page.locator(".pathways-plan").waitFor();
-  assert.match(page.url(), /[?&]view=grades\b/);
+  assert.equal(
+    await page.evaluate(() => localStorage.getItem("amp.pathways-view")),
+    "grades",
+  );
   assert.deepEqual(
     await where(),
     area,
