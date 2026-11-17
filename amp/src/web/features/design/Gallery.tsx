@@ -1,5 +1,4 @@
 import { useState, type CSSProperties, type ReactNode } from "react";
-import type { DesignTheme } from "./search";
 import styles from "./Design.module.css";
 
 /** One component's section: its name, where it lives, and its states. */
@@ -71,13 +70,6 @@ export function Specimen({
   );
 }
 
-let canvasTheme: DesignTheme | undefined;
-/** The theme the canvas opened with, so frames start in it; later changes
- * reach them over the gallery's channel, without reloading. */
-export function setFrameTheme(theme: DesignTheme) {
-  canvasTheme = theme;
-}
-
 /** A component that owns the whole viewport (practice, a sheet, a toast), in
  * a document of its own at the canvas's width, so its media queries, fixed
  * layers and focus behave as on a real screen. */
@@ -91,10 +83,7 @@ export function SpecimenFrame({
   /** Pixels; by default a phone's or a laptop's screen height. */
   height?: number;
 }) {
-  const [src] = useState(
-    () =>
-      `/design?frame=specimen&specimen=${specimen}${canvasTheme ? `&theme=${canvasTheme}` : ""}`,
-  );
+  const [src] = useState(() => `/design/specimen/${specimen}`);
   const tall =
     height ??
     (typeof window !== "undefined" && window.innerWidth < 600 ? 740 : 800);

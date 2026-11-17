@@ -10,9 +10,6 @@ vi.mock("../../school/join/api", async (original) => ({
   ...(await original<typeof import("../../school/join/api")>()),
   finishingSignIn: () => handoff.active,
 }));
-vi.mock("../../../nav/Navigate", () => ({
-  Navigate: ({ to }: { to: string }) => <a href={to}>Redirect</a>,
-}));
 vi.mock("@tanstack/react-router", () => ({
   useLocation: ({ select }: { select: (value: unknown) => unknown }) =>
     select({ search: {} }),

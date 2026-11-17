@@ -1,3 +1,4 @@
+import { readLearner } from "./lib/learner-seed";
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
@@ -175,7 +176,6 @@ async function open(
     if (sessionStorage.getItem("fixture-seeded")) return;
     sessionStorage.setItem("fixture-seeded", "1");
     sessionStorage.setItem("amp.student", saved);
-    localStorage.setItem("amp.learner", "kept-until-sign-out");
   }, JSON.stringify(session));
   if (options.slowJoin)
     await context.route(
@@ -480,13 +480,14 @@ try {
     await drawer(page);
     await page.getByRole("button", { name: "Sign out" }).click();
     await page.waitForURL("**/join");
-    assert.deepEqual(
-      await page.evaluate(() => [
-        sessionStorage.getItem("amp.student"),
-        localStorage.getItem("amp.learner"),
-      ]),
-      [null, null],
+    // Nothing of the student's stays on the shared device: their session,
+    // and no current learner kept for their account (learner-store.ts keeps
+    // a school student's choice in memory only).
+    assert.equal(
+      await page.evaluate(() => sessionStorage.getItem("amp.student")),
+      null,
     );
+    assert.equal(await readLearner(page, session.accountId), null);
     assert.equal(requests.includes("/api/auth/sign-out"), false);
     await close();
   }

@@ -1,3 +1,4 @@
+import { writeLearner } from "./lib/learner-seed";
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
@@ -294,14 +295,7 @@ try {
         await practice
           .getByRole("heading", { name: "Sign in", exact: true })
           .waitFor();
-        await practice.evaluate(
-          (learnerId) =>
-            localStorage.setItem(
-              "amp.learner",
-              JSON.stringify({ state: { learnerId }, version: 1 }),
-            ),
-          practiceLearner,
-        );
+        await writeLearner(practice, identity, practiceLearner);
         await practice.goto(`${origin}/practice`);
         if (!authenticated) {
           // Signed out, practice offers the free account in place.

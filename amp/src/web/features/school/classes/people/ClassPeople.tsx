@@ -120,13 +120,11 @@ export function ClassPeople({
               )}
               {second.data && (
                 <SecondParentRow
-                  session={session}
                   parent={second.data}
                   onError={setError}
                 />
               )}
               <CoTeacherRows
-                session={session}
                 orgId={orgId}
                 onError={setError}
               />
@@ -166,7 +164,6 @@ export function ClassPeople({
               <OtherFamilyRow
                 key={row.id}
                 row={row}
-                session={session}
                 onAccess={() => setOpen({ kind: "access", row })}
                 onSend={() =>
                   setOpen({
@@ -187,11 +184,10 @@ export function ClassPeople({
         />
       </div>
       {open?.kind === "second-parent" && (
-        <SecondParentInviteSheet session={session} onClose={close} />
+        <SecondParentInviteSheet onClose={close} />
       )}
       {open?.kind === "co-teacher" && (
         <CoTeacherInviteSheet
-          session={session}
           orgId={orgId}
           classId={classId}
           onClose={close}
@@ -199,7 +195,6 @@ export function ClassPeople({
       )}
       {open?.kind === "other-family" && (
         <OtherFamilyAddSheet
-          session={session}
           rows={rows}
           student={open.personId ? open : undefined}
           onClose={close}

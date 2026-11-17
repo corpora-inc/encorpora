@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import type { AuthSession } from "../../auth";
+import { useSessionOrNull } from "../../lib/session";
 import { Button } from "../../ui/Button";
 import { Dialog } from "../../ui/Dialog";
 import { TextField } from "../../ui/TextField";
@@ -20,14 +20,13 @@ const longDate = (iso: string) =>
  * shows only for someone who can, and only for a student a link would show
  * something about. */
 export function ShareWithFamily({
-  session,
   student,
   first,
 }: {
-  session: AuthSession | null;
   student: string;
   first: string;
 }) {
+  const session = useSessionOrNull();
   const state = useQuery(shareOptions(session, student));
   const change = useShareChange(session, student);
   const [open, setOpen] = useState(false);

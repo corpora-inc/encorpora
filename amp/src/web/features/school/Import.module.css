@@ -71,13 +71,6 @@
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.fileInput {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  pointer-events: none;
-}
 .paste {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto;

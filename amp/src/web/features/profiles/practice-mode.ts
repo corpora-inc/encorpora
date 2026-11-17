@@ -1,41 +1,42 @@
 import type { Me, SignedInMe } from "../../../account/contracts";
 import { AppError } from "../../lib/AppError";
 import {
-  addressedIdentity,
   learningIdentity,
+  practiceParams,
   practicePath,
+  selfOf,
   type AddressedIdentity,
 } from "../spaces/identity";
 import { nativeRuntime } from "../../native-runtime";
 import { canonicalLearning } from "../spaces/learner-urls";
 import { familyPlacesOptions } from "../family/api";
 import { currentLearner, selectLearner } from "../../learner-store";
-import { redirect, type AnyRouter } from "@tanstack/react-router";
+import type { AnyRouter } from "@tanstack/react-router";
 import { hasHome } from "../onboarding/guard";
 import { returnTarget } from "../../lib/return-to";
 import { meKey, meOptions, queryClient, sessionOptions } from "../../lib/query";
 import type { AuthSession } from "../../auth";
 import { studentSession } from "../../lib/student-device";
 import { classesOptions, preload } from "../school/core-api";
+import { modeReturn, setModeReturn } from "./mode-return";
 
 /*
  * Practicing as someone else is a mode nested in a place (docs/design/ia.md,
- * "Places and modes"). It lives in the address, never only on the device:
- *
- *   /practice?profile=<the profile>&from=<where it was started>
- *
- * so refresh, Back and Forward reopen exactly that mode, and its way back
- * ("Back to Grade 5 Math") returns to where it was started (lib/return-to.ts).
- * Learning screens reached inside the mode carry both keys (app/router.tsx).
+ * "Places and modes"). A profile is the adult's learner, so its practice is
+ * at its own address, `/practice/<profile>`; the mode is the account's
+ * current learner (learner-store.ts) being one of its profiles, and while it
+ * is, the shared learning screens that name nobody are the profile's
+ * (features/spaces/identity.ts `selfOf`). Its way back ("Back to Grade 5
+ * Math") is the account's mode return (mode-return.ts). Nothing of it rides
+ * in a query string; an older `?profile=&from=` link is an
+ * app/legacy-aliases.ts row (`olderLearningHref`).
  */
 
-/** The address keys that hold the practice mode. */
-export const MODE_KEYS = ["profile", "from"] as const;
-/** The address key that names whose learning screens these are. */
-export const LEARNER_KEY = "learner";
+/** An older link's key that named whose learning screen it was. */
+const LEARNER_KEY = "learner";
 
-/** Learning screens: where a practice mode goes with the reader. */
-const LEARNING = [
+/** The shared learning screens. */
+export const LEARNING_PATHS = [
   "/practice",
   "/overview",
   "/progress",
@@ -47,21 +48,22 @@ const LEARNING = [
 /** Screens that are only someone's practice (no curriculum to browse). */
 const PRACTICE_ONLY = /^\/(?:practice|overview|progress|books)(?:\/|$)/;
 export const isLearningPath = (pathname: string) =>
-  LEARNING.some((path) => pathname === path || pathname.startsWith(`${path}/`));
+  LEARNING_PATHS.some(
+    (path) => pathname === path || pathname.startsWith(`${path}/`),
+  );
 
-/** Practice as a profile, returning to `from` (an internal path). */
+/** Practice as a profile (the caller has made it the current learner:
+ * api.ts `choosePracticeProfile`), returning to `from` (an internal path):
+ * its practice's address, with where the mode returns recorded. Called as
+ * the mode starts, from a person's own choice. */
 export function practiceAs(profile: string, from?: string) {
-  const back = returnTarget(from);
-  return {
-    to: "/$" as const,
-    params: { _splat: "practice" },
-    search: { profile, ...(back ? { from: back } : {}) } as never,
-  };
+  setModeReturn(modeFrom(from) ?? null);
+  return { to: "/$" as const, params: practiceParams(profile) };
 }
 
-/** Where a practice mode returns: a place, never another learning screen. */
-export function modeFrom(search: Record<string, unknown>) {
-  const from = returnTarget(search.from);
+/** Where a practice mode may return: a place, never a learning screen. */
+export function modeFrom(value: unknown) {
+  const from = returnTarget(value);
   return from && !isLearningPath(new URL(from, "https://amp.invalid").pathname)
     ? from
     : undefined;
@@ -104,11 +106,11 @@ export function modeReturnLabel(
 }
 
 /**
- * Before a learning screen loads: the address chooses who practices.
- * - `?profile=` names one of the account's profiles: practice as it, and
- *   load the name of where it returns, so its way back paints whole.
- * - Without it, a profile left chosen on the device is put down: the screen
- *   is the account's own.
+ * Before a learning screen loads: whose it is, from its address and self
+ * (features/spaces/identity.ts).
+ * - A learner or profile this account doesn't read is unavailable.
+ * - Practicing as a profile: the name of where the mode returns is loaded,
+ *   so its way back paints whole.
  * - An account with a place and nothing of its own to practice (staff,
  *   a demo school's admin) goes from practice screens to its place: never
  *   family setup.
@@ -129,7 +131,12 @@ export async function adoptPracticeMode(location: {
   // someone else. Nothing here changes the current learner: a guard also
   // runs for preloads and for navigations that never show
   // (followResolvedLearner adopts it once the navigation resolves).
-  const named = addressedIdentity(location.pathname, location.search);
+  const named = learningIdentity(
+    location.pathname,
+    location.search,
+    selfOf(me, currentLearner(session.accountId)),
+    me,
+  );
   if (named && !readsIdentity(me, named))
     throw new AppError(
       "permission",
@@ -139,7 +146,7 @@ export async function adoptPracticeMode(location: {
       false,
     );
   if (named?.kind === "profile") {
-    const [, org] = PLACE.exec(modeFrom(location.search) ?? "") ?? [];
+    const [, org] = PLACE.exec(modeReturn(session.accountId) ?? "") ?? [];
     if (org) await preload(classesOptions(session, org));
     return;
   }
@@ -153,13 +160,9 @@ export async function adoptPracticeMode(location: {
     throw await (await import("../home/destination")).homeRedirect();
 }
 
-/** A learning screen's older address goes to its canonical one in one
- * hop, replacing it in history (amp/AGENTS.md: a redirect only for a legacy
- * URL, never chained). The one way this module redirects. */
-const olderAddress = (href: string) => redirect({ href, replace: true });
-
 /** Whose practice bare `/practice` meant: a school student's own learner;
- * an older link's `?learner=`; the adult's own; else the account's current
+ * an older link's `?learner=`; self (the profile practiced as, else the
+ * adult's own); else the account's current
  * child (learner-store.ts), else its first. Null: nobody to practice. */
 export function practiceLearnerFor(
   me: SignedInMe,
@@ -168,6 +171,8 @@ export function practiceLearnerFor(
 ): string | null {
   if (me.account.kind === "student") return me.learners[0]?.id ?? null;
   if (named) return named;
+  const self = selfOf(me, chosen);
+  if (self?.kind === "profile") return self.id;
   const own = me.adultPractice?.learner?.id;
   if (own) return own;
   const children = [
@@ -192,86 +197,98 @@ export function studentPracticeHref() {
 }
 
 /** A school student's addresses that are a family's (its setup, buying,
- * consent): their practice is their one place. */
-const NOT_A_STUDENTS = /^\/(?:family|purchase|consent)(?:\/|$)/;
+ * consent): their practice is their one place (the route's guard sends
+ * them, app/sign-in-gate.ts `admit`). */
+export const notAStudents = (pathname: string) =>
+  /^\/(?:family|purchase|consent)(?:\/|$)/.test(pathname);
+
+/** The keys an older learning link carried, and practice's older filter. */
+const OLDER_KEYS = [LEARNER_KEY, "profile", "from"];
+const FOCUS_KEYS = ["template", "skill", "strand"] as const;
 
 /**
- * Before practice loads: `/practice` names nobody, so it is an older
- * address. One hop, replacing it, to `/practice/<learner>`, its filter
- * (`?skill=`, `?strand=`) becoming the address's focus. A practice profile (`?profile=`) is a mode
- * with its own address and stays. Every link in the app goes to
- * `/practice/<learner>` itself (identity.ts `practicePath`). A school
- * student on a family's screen goes to their practice the same way.
+ * Where an older learning address opens now (app/legacy-aliases.ts rows;
+ * one hop, replacing it), or undefined when it isn't old for this person:
+ * - bare `/practice` names nobody: `/practice/<learner>` (whose:
+ *   `practiceLearnerFor`); practice's filter (`?skill=`, `?strand=`,
+ *   `?template=`) is the address's own focus (identity.ts `practicePath`);
+ * - `?profile=&from=` (practicing as a profile, from before the mode was
+ *   the current learner): that profile becomes the current learner, where
+ *   it returns is recorded (mode-return.ts), and the screen opens without
+ *   them (practice at `/practice/<profile>`);
+ * - `?learner=`, and a parent with no practice of their own on a shared
+ *   screen that names nobody: the canonical address
+ *   (features/spaces/learner-urls.ts). A learner this account doesn't read
+ *   stays, for `adoptPracticeMode` to refuse.
  */
-export async function practiceAddress(location: {
+export async function olderLearningHref(old: {
   pathname: string;
   searchStr: string;
-}) {
-  if (nativeRuntime) return;
-  const away = !!studentSession() && NOT_A_STUDENTS.test(location.pathname);
-  if (!away && !/^\/practice\/?$/.test(location.pathname)) return;
-  const params = new URLSearchParams(away ? "" : location.searchStr);
-  if (params.get("profile")) return;
-  const session = await queryClient.ensureQueryData(sessionOptions);
-  if (!session) return;
-  const me = await queryClient.ensureQueryData(meOptions(session));
-  if (!me.signedIn) return;
-  const learner = practiceLearnerFor(
-    me,
-    params.get(LEARNER_KEY) || null,
-    currentLearner(session.accountId),
+}): Promise<string | undefined> {
+  if (nativeRuntime || !isLearningPath(old.pathname)) return undefined;
+  const params = new URLSearchParams(old.searchStr);
+  // Practice (`/practice`, `/practice/<learner>`) and its older filter.
+  const practice = /^\/practice(?:\/([^/]+))?\/?$/.exec(old.pathname);
+  const focus = Object.fromEntries(
+    FOCUS_KEYS.map((key) => [key, params.get(key) || undefined]),
   );
-  if (!learner) return;
-  params.delete(LEARNER_KEY);
-  // An older filter (`?template=`, `?skill=`, `?strand=`) is the address's
-  // own focus now (identity.ts `practicePath`).
-  const focus = {
-    template: params.get("template") ?? undefined,
-    skill: params.get("skill") ?? undefined,
-    strand: params.get("strand") ?? undefined,
-  };
-  for (const key of ["template", "skill", "strand"]) params.delete(key);
-  throw olderAddress(
-    `${practicePath(learner, focus)}${params.size ? `?${params}` : ""}`,
-  );
-}
-
-/**
- * Before a shared learning screen loads: an older address goes to its
- * canonical one (features/spaces/learner-urls.ts), replacing it in history,
- * so `?learner=` never shows. The device's choice is read (a parent with no
- * practice of their own sees the child it names), never changed. A learner
- * this account doesn't read stays, for `adoptPracticeMode` to refuse.
- */
-export async function canonicalLearnerAddress(location: {
-  pathname: string;
-  searchStr: string;
-}) {
-  if (studentSession() || !isLearningPath(location.pathname)) return;
-  const params = new URLSearchParams(location.searchStr);
+  if (practice?.[1] && !params.has("profile") && !params.has(LEARNER_KEY)) {
+    // Its learner named, only the filter is old: no account needed.
+    for (const key of FOCUS_KEYS) params.delete(key);
+    const path = practicePath(decodeURIComponent(practice[1]), focus);
+    return `${path}${params.size ? `?${params}` : ""}`;
+  }
+  const bare = !!practice && !practice[1];
+  if (studentSession() && !bare) return undefined;
   const session = await queryClient
     .ensureQueryData(sessionOptions)
     .catch(carryOn("read the session for a learning address"));
-  if (!session) return;
+  if (!session) return undefined;
   const me = await queryClient
     .ensureQueryData(meOptions(session))
     .catch(carryOn("read the account for a learning address"));
-  if (!me?.signedIn || me.account.kind === "student") return;
+  if (!me?.signedIn) return undefined;
+  // An older link's profile, if it is one of this account's and the path
+  // names nobody: the mode.
+  const profile = params.get("profile");
+  const asProfile =
+    !!profile &&
+    !practice?.[1] &&
+    !!me.practiceProfiles?.some((entry) => entry.id === profile);
+  if (asProfile) {
+    selectLearner(profile, me.account.id);
+    setModeReturn(modeFrom(params.get("from")) ?? null, me.account.id);
+  }
+  const chosen = currentLearner(me.account.id);
+  const named = asProfile ? null : params.get(LEARNER_KEY) || null;
+  for (const key of OLDER_KEYS) if (key !== LEARNER_KEY) params.delete(key);
+  if (practice) {
+    const learner = practice[1]
+      ? decodeURIComponent(practice[1])
+      : practiceLearnerFor(me, named, chosen);
+    if (!learner) return undefined;
+    params.delete(LEARNER_KEY);
+    for (const key of FOCUS_KEYS) params.delete(key);
+    return `${practicePath(learner, focus)}${params.size ? `?${params}` : ""}`;
+  }
+  const here = `${old.pathname}${params.size ? `?${params}` : ""}`;
   // Only an older key, or a parent with no practice of their own, can have
   // another address; a child's family id comes from the account's places.
-  if (!params.has("learner") && me.adultPractice?.learner) return;
-  const places = await queryClient
-    .ensureQueryData(familyPlacesOptions(session))
-    .catch(carryOn("read the family places for a learning address"));
-  const href = canonicalLearning(
-    location.pathname,
-    params,
-    me,
-    places,
-    currentLearner(),
-  );
-  if (href && href !== `${location.pathname}${location.searchStr}`)
-    throw olderAddress(href);
+  if (me.account.kind === "student") return undefined;
+  const canonical =
+    params.has(LEARNER_KEY) || !me.adultPractice?.learner
+      ? canonicalLearning(
+          old.pathname,
+          params,
+          me,
+          await queryClient
+            .ensureQueryData(familyPlacesOptions(session))
+            .catch(carryOn("read the family places for a learning address")),
+          chosen,
+        )
+      : null;
+  const href = canonical ?? here;
+  return href !== `${old.pathname}${old.searchStr}` ? href : undefined;
 }
 
 /** The learner a resolved navigation's address names becomes the account's
@@ -330,10 +347,11 @@ export function readsIdentity(me: SignedInMe, named: AddressedIdentity) {
 /**
  * The device's choice once a screen is on view (called by the shell with the
  * committed address): the learner or profile the address names (a family's
- * child by their path), the adult's own on `/me` and on a shared learning
- * screen that names nobody (self), and, for an account with no practice of
- * its own, a profile left chosen is put down. Returns the choice to make, or
- * undefined for none.
+ * child by their path, a profile by its practice's), and the adult's own on
+ * `/me`. A shared learning screen that names nobody is self's (the profile
+ * practiced as, else the adult's own: identity.ts `selfOf`), so practicing
+ * as a profile stays until a person leaves it. Returns the choice to make,
+ * or undefined for none.
  */
 export function committedChoice(
   me: SignedInMe,
@@ -348,8 +366,8 @@ export function committedChoice(
     !/^\/(?:learners|family\/[^/]+\/kids)\//.test(pathname)
   )
     return undefined;
-  // An unnamed shared learning screen is the adult's own (self).
-  const named = learningIdentity(pathname, search, own);
+  // An unnamed shared learning screen is self's.
+  const named = learningIdentity(pathname, search, selfOf(me, current), me);
   if (named)
     return readsIdentity(me, named) && current !== named.id
       ? named.id
@@ -357,53 +375,4 @@ export function committedChoice(
   if (me.practiceProfiles?.some((entry) => entry.id === current))
     return own ?? me.learners[0]?.id ?? null;
   return undefined;
-}
-
-type Place = { pathname: string; search: Record<string, unknown> };
-const START = /^\/start(?:\/|$)/;
-
-/**
- * The address keys a move carries from here to there, or null (one rule,
- * docs/architecture/spaces.md, "Learning screens"):
- * - between the starter's steps, where adding a place returns (`from`);
- * - between learning screens, a practice profile (with its `from`). A
- *   learner never travels: yourself is unnamed, and a child's screens carry
- *   them in their path.
- * A destination that names its own learner or profile (`explicit`, the keys
- * the caller set) replaces the one here; a profile and a learner never
- * travel together.
- */
-export function carriedKeys(
-  here: Place,
-  next: Place,
-  explicit: readonly string[],
-): Record<string, unknown> | null {
-  const from = here.search.from;
-  if (
-    typeof from === "string" &&
-    START.test(here.pathname) &&
-    START.test(next.pathname) &&
-    next.search.from === undefined &&
-    !explicit.includes("from")
-  )
-    return { from };
-  if (!isLearningPath(here.pathname) || !isLearningPath(next.pathname))
-    return null;
-  if (
-    explicit.includes("profile") ||
-    explicit.includes(LEARNER_KEY) ||
-    next.search.profile !== undefined ||
-    next.search[LEARNER_KEY] !== undefined
-  )
-    return null;
-  if (typeof here.search.profile === "string")
-    return Object.fromEntries(
-      MODE_KEYS.filter((key) => here.search[key] !== undefined).map((key) => [
-        key,
-        here.search[key],
-      ]),
-    );
-  // A learner is never carried: yourself needs no name, and a child's
-  // screens name them in their own address (/family/<family>/kids/<learner>).
-  return null;
 }

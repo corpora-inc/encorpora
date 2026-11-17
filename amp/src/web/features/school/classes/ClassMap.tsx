@@ -28,7 +28,7 @@ import {
   WHOLE_SCALE,
 } from "../../../ui/level-range";
 import { Menu, MenuItem } from "../../../ui/Menu";
-import { classUrl, parseSort, useClassSearch } from "./teacher-shared";
+import { classUrl, parseSort, useClassView } from "./teacher-shared";
 import styles from "./ClassMap.module.css";
 
 /** A provisional guess wider than this rests against an end of the scale. */
@@ -127,7 +127,7 @@ export function ClassMap({
   /** Before anyone has practiced: the one step that starts it. */
   action?: ReactNode;
 }) {
-  const [search, set] = useClassSearch();
+  const [search, set] = useClassView();
   const strands = limitStrands
     ? data.strands.slice(0, limitStrands)
     : byArea(data.strands, { crossCutting });
@@ -176,7 +176,7 @@ export function ClassMap({
         : column === "student"
           ? "ascending"
           : "descending";
-    set({ sort: `${column}:${next}` }, { replace: true });
+    set({ sort: `${column}:${next}` });
   };
   const reading = (row: Placed) => {
     if (!row.estimate) return "not measured yet";
@@ -224,7 +224,7 @@ export function ClassMap({
             <MenuItem
               key={id}
               selected={id === lens}
-              onSelect={() => set({ lens: id }, { replace: true })}
+              onSelect={() => set({ lens: id })}
             >
               {label(id)}
             </MenuItem>

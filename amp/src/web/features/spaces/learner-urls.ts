@@ -8,9 +8,10 @@ import { childPath, type ChildScreen } from "./identity";
  *
  *   yourself          /pathways, /inventory, /practice, /me …   (no id: self)
  *   a family's child  /family/<family>/kids/<learner>[/pathways|/inventory]
- *   a practice profile /practice?profile=<profile>&from=…        (unchanged)
+ *   a practice profile /practice/<profile>, and self's screens while the
+ *                      adult practices as it (identity.ts selfOf)
  *
- * `?learner=` is only an older link: its route sends it here.
+ * `?learner=` is only an older link: app/legacy-aliases.ts sends it here.
  */
 
 /** The family whose child this learner is, for this account: the family it
@@ -70,10 +71,12 @@ function chosenChild(me: SignedInMe, selected: string | null) {
  *   (self is implicit); naming one of their children: that child's screen in
  *   their family; naming nobody this account reads: it stays, and the screen
  *   says it isn't available (never another learner).
- * - A profile outranks `?learner=`: the learner key is dropped.
- * - A parent with no practice of their own, on Pathways, Inventory or the
- *   Overview without a name: the child the screen would show, at that
- *   child's address, so the address always says whose it is.
+ * - Practicing as a profile (this device's choice is one), `?learner=` is
+ *   dropped: the profile is self.
+ * - A parent with no practice of their own, not practicing as a profile, on
+ *   Pathways, Inventory or the Overview without a name: the child the
+ *   screen would show, at that child's address, so the address always says
+ *   whose it is.
  */
 export function canonicalLearning(
   pathname: string,
@@ -87,15 +90,15 @@ export function canonicalLearning(
   const rest = new URLSearchParams(params);
   rest.delete("learner");
   const here = () => `${pathname}${rest.size ? `?${rest}` : ""}`;
-  if (
-    learner !== null &&
-    (params.get("profile") || learner === "" || learner === own)
-  )
+  const profiling = !!me.practiceProfiles?.some(
+    (profile) => profile.id === selected,
+  );
+  if (learner !== null && (profiling || learner === "" || learner === own))
     return here();
   const screen = childScreen(pathname);
   const child =
     learner ??
-    (!own && !params.get("profile") && screen && pathname !== "/practice"
+    (!own && !profiling && screen && pathname !== "/practice"
       ? chosenChild(me, selected)
       : null);
   if (!child || !screen) return null;

@@ -1,11 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
+import { sheetState } from "../../../nav/sheet";
 import { Menu, MenuItem } from "../../../ui/Menu";
 import { Toast } from "../../../ui/Toast";
 import { useStaffSession } from "./api";
 import { WeeklyTarget } from "./GradebookScreen";
 import { gradebookOptions } from "./teacher-api";
+import { useOpenView } from "../view-store";
 import styles from "../School.module.css";
 
 /** A small class's grades in its Settings (docs/design/ia.md): the weekly
@@ -24,11 +26,19 @@ export function SmallClassGrades({
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const term = book?.term;
-  const to = (leaf: string, search: Record<string, unknown> = {}) =>
+  const openView = useOpenView();
+  const path = (leaf: string) => `school/${orgId}/classes/${classId}/${leaf}`;
+  /** One term's report cards: the term chosen there before going. */
+  const toCards = (termId: string) => {
+    openView(path("report-cards"), { term: termId });
+    void navigate({ to: "/$", params: { _splat: path("report-cards") } });
+  };
+  /** The gradebook with one of its sheets open (nav/sheet.ts). */
+  const toSheet = (sheet: "export" | "close") =>
     void navigate({
       to: "/$",
-      params: { _splat: `school/${orgId}/classes/${classId}/${leaf}` },
-      search: search as never,
+      params: { _splat: path("gradebook") },
+      state: sheetState(sheet) as never,
     });
   return (
     <section className={styles.calendarSection} aria-labelledby="grades">
@@ -38,14 +48,14 @@ export function SmallClassGrades({
         </div>
         {term && term.state !== "upcoming" && (
           <Menu label="Report cards and export">
-            <MenuItem onSelect={() => to("report-cards", { term: term.id })}>
+            <MenuItem onSelect={() => toCards(term.id)}>
               Report cards
             </MenuItem>
-            <MenuItem onSelect={() => to("gradebook", { export: 1 })}>
+            <MenuItem onSelect={() => toSheet("export")}>
               Export grades
             </MenuItem>
             {term.state === "open" && book?.canEdit && (
-              <MenuItem onSelect={() => to("gradebook", { close: 1 })}>
+              <MenuItem onSelect={() => toSheet("close")}>
                 Close {term.name}
               </MenuItem>
             )}

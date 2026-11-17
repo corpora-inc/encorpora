@@ -225,19 +225,19 @@ async function closeDrawer(page: Page) {
 }
 /** A practice problem on screen: the normal loop, unchanged. */
 async function practicing(page: Page, asProfile = true) {
+  // Practice names whose it is in its path (a profile is the adult's
+  // learner); the mode is the device's current learner, never a query.
   await page.waitForURL(
-    (url) =>
-      url.pathname === "/practice" &&
-      url.searchParams.has("profile") === asProfile,
+    (url) => /^\/practice\/[^/]+$/.test(url.pathname) && !url.search,
   );
   await page.locator("[data-problem-id]").first().waitFor({ timeout: 30_000 });
-  const query = new URL(page.url()).searchParams;
+  const learner = decodeURIComponent(
+    new URL(page.url()).pathname.split("/")[2]!,
+  );
   check(
-    "practice URL identifies the selected mode",
-    asProfile
-      ? query.get("profile") === (await chosen(page)) && query.has("profile")
-      : !query.has("profile"),
-    page.url(),
+    `practice URL names the ${asProfile ? "profile" : "adult's own"} practicing`,
+    learner === (await chosen(page)),
+    { url: page.url(), chosen: await chosen(page) },
   );
 }
 /** Moves strands where this width keeps them: beside the choices with room,
@@ -272,8 +272,12 @@ const text = async (locator: ReturnType<Page["locator"]>) =>
 const chosen = (page: Page) =>
   page.evaluate(
     () =>
-      JSON.parse(localStorage.getItem("amp.learner") ?? "{}")?.state
-        ?.learnerId ?? null,
+      // The learner store keeps one current learner per account on this
+      // device (learner-store.ts); this browser has one account.
+      (Object.values(
+        JSON.parse(localStorage.getItem("amp.learner") ?? "{}")?.state
+          ?.learners ?? {},
+      )[0] as string | undefined) ?? null,
   );
 
 /** An adult with their own practice tries a level, practices as it, and goes
@@ -309,8 +313,11 @@ async function adultTriesALevel(
   await page.goto(`${origin}/me`);
   await heading(page, "Where you are");
   const entry = await openDrawer(page);
-  await entry.getByRole("link", { name: "Profiles", exact: true }).click();
-  await heading(page, "Profiles");
+  // One entry per feature (#2384): Practice at a level opens its hub.
+  await entry
+    .getByRole("link", { name: "Practice at a level", exact: true })
+    .click();
+  await heading(page, "Practice at a level");
   await page.getByRole("link", { name: "New profile", exact: true }).click();
   await heading(page, "New profile");
   check(
@@ -517,8 +524,10 @@ async function adultTriesALevel(
 
   // The profiles page lists the saved mode and reopens it, then its levels.
   const again = await openDrawer(page);
-  await again.getByRole("link", { name: "Profiles", exact: true }).click();
-  await heading(page, "Profiles");
+  await again
+    .getByRole("link", { name: "Practice at a level", exact: true })
+    .click();
+  await heading(page, "Practice at a level");
   check(
     `${label} saved profiles offer practice, editing and a new level`,
     (await page
@@ -749,8 +758,9 @@ async function teacherCopiesAStudent(
       )
     ).rows[0].n;
   const continueFromPause = async () => {
-    // The address selects the copied mode; device memory alone cannot.
-    await page.goto(`${origin}/practice?profile=${copy.id}`);
+    // Its practice's address selects the copied profile (an older
+    // `?profile=` link opens the same, one hop).
+    await page.goto(`${origin}/practice/${copy.id}`);
     await page.locator(`[data-continue-with-amp="${copy.id}"]`).click();
     await page.waitForURL(/\/continue\//);
   };

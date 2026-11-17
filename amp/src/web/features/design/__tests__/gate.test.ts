@@ -1,5 +1,7 @@
 import { afterEach, expect, test, vi } from "vitest";
-import { designAllowed, designSearchSchema } from "../search";
+import { LEGACY_ALIASES } from "../../../app/legacy-aliases";
+import { designAllowed } from "../search";
+import { useDesignView } from "../view";
 
 afterEach(() => {
   vi.unstubAllEnvs();
@@ -18,17 +20,22 @@ test("a development server always shows it", () => {
   expect(designAllowed()).toBe(true);
 });
 
-test("the address keeps a known width and theme and drops anything else", () => {
-  expect(designSearchSchema.parse({ width: 390, theme: "dark" })).toEqual({
-    width: 390,
+test("an older address keeps a known width and theme, as this viewer's, and drops anything else", async () => {
+  const row = LEGACY_ALIASES.find((alias) => alias.from === "/design")!;
+  const at = (search: Record<string, unknown>, hash = "") =>
+    row.to({ pathname: "/design", params: {}, search, searchStr: "", hash });
+  useDesignView.setState({ width: undefined, theme: undefined });
+  expect(await at({ width: 390, theme: "dark" })).toBe("/design");
+  expect(useDesignView.getState()).toMatchObject({ width: 390, theme: "dark" });
+  await at({ width: "fill" });
+  expect(useDesignView.getState().width).toBe("fill");
+  await at({ width: 500, theme: "sepia" });
+  expect(useDesignView.getState()).toMatchObject({
+    width: "fill",
     theme: "dark",
   });
-  expect(designSearchSchema.parse({ width: "fill" }).width).toBe("fill");
-  expect(designSearchSchema.parse({ width: 500, theme: "sepia" })).toEqual({
-    width: undefined,
-    theme: undefined,
-  });
-  expect(
-    designSearchSchema.parse({ frame: "specimen", specimen: "../x" }).specimen,
-  ).toBeUndefined();
+  expect(await at({ frame: "specimen", specimen: "../x" })).toBe("/design");
+  expect(await at({ frame: "canvas" }, "buttons")).toBe(
+    "/design/canvas#buttons",
+  );
 });

@@ -6,7 +6,7 @@ import { WeeklyTargetSection } from "./classroom/WeeklyTargetSection";
 import { currentSession, orgOptions } from "./api";
 import { OrgFrame } from "./OrgFrame";
 import { PageHead } from "./parts";
-import { orgPath } from "./paths";
+import { adoptPath, orgPath } from "./paths";
 import styles from "./School.module.css";
 
 /**
@@ -37,8 +37,8 @@ export function OrgSettingsScreen() {
             <h2 id="settings-schools">Schools</h2>
             <div>
               <Link
-                to="/school/adopt"
-                search={{ district: orgId, manage: 1 }}
+                to="/$"
+                params={{ _splat: adoptPath(orgId, true) }}
                 className={buttonClass("secondary")}
               >
                 Invite a school

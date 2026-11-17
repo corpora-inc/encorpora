@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import type { ParentView } from "../../../schools/share-contracts";
+import { qk } from "../../lib/keys";
 import { shareToken, takeShareFragment } from "../../share-entry";
 import { Button } from "../../ui/Button";
 import { byArea, fitScale, LevelRows } from "../../ui/level-range";
@@ -173,7 +174,8 @@ export function ParentScreen() {
     return () => window.removeEventListener("hashchange", changed);
   }, []);
   const view = useQuery({
-    queryKey: ["family-link", token],
+    // A shared link reads the same for anyone holding it: under no account.
+    queryKey: qk.account(null, "school", "family-link", token),
     enabled: !!token,
     retry: false,
     refetchOnWindowFocus: false,

@@ -373,18 +373,20 @@ async function familyThenSchool(
   const classPath = path(page);
 
   // The switcher lists places only (never a learner): the family, the
-  // school still to set up, practice at a level, and Add a place. The
-  // school opens its setup.
+  // school still to set up, and Add a place. A parent whose home is their
+  // family has no Practice group (#2384: their own practice is an optional
+  // entry within the family, offered by Add a place). The school opens its
+  // setup.
   const fromHome = await openSwitcher(page, true);
   const items = await fromHome.getByRole("menuitem").allInnerTexts();
   check(
-    `${label} the switcher lists the family, the school and practice at a level`,
+    `${label} the switcher lists the family, the school and Add a place`,
     family.named.test(items[0] ?? "") &&
       items.some(
         (item) => item.includes(school) && /Finish setting up/.test(item),
       ) &&
-      items.some((item) => /Practice at a level/.test(item)) &&
-      /Add a place/.test(items.at(-1) ?? "") &&
+      !items.some((item) => /Practice at a level/.test(item)) &&
+      /Add a place[\s\S]*own practice/.test(items.at(-1) ?? "") &&
       items.indexOf(items.find((item) => item.includes(school))!) > 0,
     items,
   );
@@ -394,11 +396,14 @@ async function familyThenSchool(
   );
   await measured(page, `${label} family switcher`);
   await shot(page, "drawer-switcher", width, theme);
+  // An unfinished school opens its setup wizard at its first step.
+  const wizardPath = `/school/${issued.orgId}/setup`;
+  const wizardTitle = "Where will you use AMP?";
   await choose(page, fromHome, new RegExp(school));
-  await heading(page, "When does your school year run?");
+  await heading(page, wizardTitle);
   check(
     `${label} the switcher opens setup`,
-    path(page) === setupPath,
+    path(page) === wizardPath,
     path(page),
   );
 
@@ -412,11 +417,11 @@ async function familyThenSchool(
 
   // Back, Forward and reload each keep their screen.
   await page.goBack();
-  await heading(page, "When does your school year run?");
-  check(`${label} Back reopens setup`, path(page) === setupPath, path(page));
+  await heading(page, wizardTitle);
+  check(`${label} Back reopens setup`, path(page) === wizardPath, path(page));
   await page.reload();
-  await heading(page, "When does your school year run?");
-  check(`${label} reload keeps setup`, path(page) === setupPath, path(page));
+  await heading(page, wizardTitle);
+  check(`${label} reload keeps setup`, path(page) === wizardPath, path(page));
   await page.goForward();
   await page.waitForURL(family.inFamily);
   await page.reload();
@@ -427,7 +432,7 @@ async function familyThenSchool(
     path(page),
   );
   await page.goBack();
-  await heading(page, "When does your school year run?");
+  await heading(page, wizardTitle);
 
   // Having worked in setup, `/` is still the family.
   await openHome(page, origin);
@@ -563,17 +568,18 @@ async function practiceAndSchool(browser: Browser, width: number) {
   const classPath = path(page);
   const toSchool = await openSwitcher(page, true);
   const items = await toSchool.getByRole("menuitem").allInnerTexts();
-  // The family's entry names its one child; a parent whose child has access
-  // may also practice free; the school is where they are Admin.
+  // The family's entry names its one child; the school is where they are
+  // Admin. Their own practice is offered within the family (#2384), so the
+  // switcher's last entry, Add a place, names it.
   check(
-    `${label} the family names its child, then the school and practice`,
+    `${label} the family names its child, then the school, then Add a place`,
     family.named.test(items[0] ?? "") &&
       /Jordan/.test(items[0] ?? "") &&
       items.some(
         (item) => /Birch Road School/.test(item) && /Admin/.test(item),
       ) &&
-      items.some((item) => /Practice yourself/.test(item)) &&
-      items.some((item) => /Practice at a level/.test(item)),
+      !items.some((item) => /Practice at a level/.test(item)) &&
+      /Add a place[\s\S]*own practice/.test(items.at(-1) ?? ""),
     items,
   );
   await choose(page, toSchool, /Birch Road School/);
