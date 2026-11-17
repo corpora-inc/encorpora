@@ -80,21 +80,25 @@ export function SearchField({
           onKeyDown?.(event);
         }}
       />
-      {value && (
-        <button
-          type="button"
-          className={styles.clear}
-          aria-label={`Clear ${label.toLowerCase()}`}
-          onClick={() => {
-            onChange("");
-            own.current?.focus();
-          }}
-        >
-          <svg viewBox="0 0 20 20" aria-hidden="true">
-            <path d="m5.5 5.5 9 9m0-9-9 9" />
-          </svg>
-        </button>
-      )}
+      {/* Its place is kept while there is nothing to clear, so the first
+          key never narrows the field (premium rule 1). */}
+      <button
+        type="button"
+        className={styles.clear}
+        aria-label={`Clear ${label.toLowerCase()}`}
+        aria-hidden={value ? undefined : true}
+        tabIndex={value ? undefined : -1}
+        disabled={!value}
+        data-empty={value ? undefined : ""}
+        onClick={() => {
+          onChange("");
+          own.current?.focus();
+        }}
+      >
+        <svg viewBox="0 0 20 20" aria-hidden="true">
+          <path d="m5.5 5.5 9 9m0-9-9 9" />
+        </svg>
+      </button>
     </label>
   );
 }

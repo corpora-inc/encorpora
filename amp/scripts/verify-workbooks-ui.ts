@@ -400,7 +400,16 @@ const controlBoxes = (page: Page) =>
       ),
     ].map((el) => {
       const box = el.getBoundingClientRect();
-      return [Math.round(box.x), Math.round(box.y), Math.round(box.width)];
+      // Where it sits in the sheet's content: a click scrolls the sheet to
+      // bring its control into view, which moves nothing in the layout.
+      let scrolled = 0;
+      for (let at = el.parentElement; at; at = at.parentElement)
+        scrolled += at.scrollTop;
+      return [
+        Math.round(box.x),
+        Math.round(box.y + scrolled),
+        Math.round(box.width),
+      ];
     }),
   );
 
@@ -444,10 +453,11 @@ try {
       await schoolShellReview(page, "learner-workbooks");
       await assertLayout(page, label);
       await assertSegments(page, label);
-      // The date heading keeps its word spaces. A space where the title
-      // wraps has no width, so measure the widest.
+      // The date heading (the day's sheet's title, over the workbooks)
+      // keeps its word spaces. A space where the title wraps has no width,
+      // so measure the widest.
       const space = await page.evaluate(() => {
-        const h1 = document.querySelector("main h1")!;
+        const h1 = document.querySelector('[role="dialog"] h2')!;
         const text = h1.firstChild!;
         const widths: number[] = [];
         for (let at = 0; at < text.textContent!.length; at++) {

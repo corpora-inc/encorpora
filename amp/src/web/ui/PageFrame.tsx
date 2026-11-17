@@ -34,7 +34,13 @@ export function FrameBrand({ expanded = false }: { expanded?: boolean }) {
       <NavigationDrawer />
       <RootLink
         className={`${styles.brand} ${styles.cardBrand}`}
-        aria-label={`${brand.name} home`}
+        // The name holds the words shown (WCAG 2.5.3): the expansion too,
+        // when it shows.
+        aria-label={
+          expanded
+            ? `${brand.name} ${brand.expansion}, home`
+            : `${brand.name} home`
+        }
       >
         <span className={styles.wordmark}>{brand.name}</span>
         {expanded && (

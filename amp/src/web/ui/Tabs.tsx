@@ -59,7 +59,18 @@ export function Tabs({
   useLayoutEffect(() => {
     const strip = list.current;
     if (!strip) return;
-    const over = () => strip.scrollWidth > strip.clientWidth + 1;
+    // Too wide: the row overflows its strip, or a shown label (or More's)
+    // is cut inside its own box. Either way, tabs go under More; a label
+    // never shrinks, truncates or wraps.
+    const clipped = (el: HTMLElement) =>
+      el.getClientRects().length > 0 && el.scrollWidth > el.clientWidth + 1;
+    const over = () =>
+      strip.scrollWidth > strip.clientWidth + 1 ||
+      [
+        ...strip.querySelectorAll<HTMLElement>(
+          "[data-tab]:not([data-hidden]), [data-tabs-more] button",
+        ),
+      ].some(clipped);
     const measure = () => {
       const tabs = [...strip.querySelectorAll<HTMLElement>("[data-tab]")];
       strip.removeAttribute("data-fit");
