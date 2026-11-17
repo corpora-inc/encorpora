@@ -10,10 +10,12 @@ import {
   printFigureCss,
   printTokens,
   publicationCss,
+  sharedOptionBank,
 } from "../content/print-exercise";
 import type { Lesson } from "../content/lessons";
 import type { GeneratedProblem } from "../math/contracts";
 import { figureChoiceName } from "../math/figure-choice";
+import { draftChoices } from "../math/multi-part-choice";
 import { answerText } from "../math/selection-response";
 import { Figure } from "../web/Figure";
 import {
@@ -172,6 +174,19 @@ function keyAnswer(problem: GeneratedProblem): string {
   }
   if (r.kind === "figure-choice")
     return `${figureChoiceName(r, problem.answer)}. ${text}`;
+  // A shared option bank prints lettered: each blank names its letter too.
+  const bank = r.kind === "multi-part-choice" ? sharedOptionBank(r) : null;
+  if (r.kind === "multi-part-choice" && bank) {
+    const chosen = draftChoices(r, problem.answer);
+    return r.blanks
+      .map((b) => {
+        const i = bank.findIndex((o) => o.id === chosen[b.id]);
+        return i >= 0
+          ? `${b.label}: ${letters[i]}. ${bank[i]!.label}`
+          : `${b.label}: —`;
+      })
+      .join("; ");
+  }
   return text;
 }
 
@@ -1220,6 +1235,17 @@ body{margin:0}
 .wb-row>.wb-item:only-child .print-parts--grid>li{display:grid;grid-template-columns:fit-content(42%) minmax(0,1fr);column-gap:16px;align-items:baseline}
 .wb-row>.wb-item:only-child .print-part-label{margin:0}
 .wb-row>.wb-item:only-child .print-part-options--4{grid-template-columns:repeat(4,max-content)}
+/* Set by the layout script when typeset options or statements are wider than their column. */
+.wb .print-part-options--wrap{display:flex;flex-wrap:wrap}
+.wb .print-work-bank ol.print-work-bank-one{columns:1}
+/* A shared option bank: the options once, lettered, then a box per blank. */
+.wb-item .print-bank{margin:6px 0 4px;padding-left:24px;line-height:1.45}
+.wb-item .print-bank>li{margin:0 0 3px;padding-left:2px}
+.wb-item .print-bank>li::marker{font-weight:700}
+.wb-item .print-parts--letters{list-style:none;display:flex;flex-wrap:wrap;gap:8px 20px;margin:8px 0 2px;padding:0}
+.wb-item .print-parts--letters>li{display:flex;align-items:center;gap:7px;margin:0}
+.wb-item .print-parts--letters .print-part-label{display:inline;margin:0;white-space:nowrap}
+.print-letter-box{flex:none;display:inline-grid;place-items:center;width:var(--answer-h);height:var(--answer-h);border:1.4px solid var(--ink);border-radius:calc(var(--radius) * 0.6);box-sizing:border-box;font-weight:700}
 .wb-item:has(.print-work) .figure{max-height:1.8in}
 /* Shown work is written in its table; extra room comes only from the page. */
 .wb-item:has(.print-work,.print-work-order) .wb-work{min-height:var(--wb-grow,0px);margin-top:0}

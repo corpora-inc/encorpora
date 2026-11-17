@@ -122,9 +122,11 @@ export function stampPrevious(
     : { ...next.state, [PREVIOUS]: previous };
 }
 
-/** Entries a close never goes Back to: signing in, joining, starting. */
+/** Entries a close never goes Back to: signing in, joining, starting, and
+ * the pages around registering and deleting an account. `/account` itself is
+ * a hub with overlays (app/account-overlays.tsx), so closing one goes Back. */
 const PASSAGE =
-  /^\/(?:sign-in|sign-up|reset-password|join|c|start|account)(?:[/?#]|$)/;
+  /^\/(?:sign-in|sign-up|reset-password|join|c|start|account\/(?:ready|deleted))(?:[/?#]|$)/;
 
 /** The little of the router a close needs. */
 export type ClosingRouter = {
