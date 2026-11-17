@@ -83,10 +83,13 @@
   padding: var(--space-2) max(var(--space-4), env(safe-area-inset-right))
     var(--space-5) max(var(--space-4), env(safe-area-inset-left));
 }
+/* The first screen: the headline, one line, Try it free, then the app
+   itself. On a phone they stack in that order, Try always above the fold;
+   from 960 px the words and Try sit beside the still. */
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  grid-template-areas: "copy" "film" "actions";
+  grid-template-areas: "copy" "start" "product";
   gap: var(--space-4);
 }
 .copy {
@@ -94,15 +97,46 @@
   display: grid;
   gap: var(--space-3);
 }
+.start {
+  grid-area: start;
+  display: grid;
+  gap: var(--space-2);
+  max-width: 28rem;
+}
+.start .tryButton {
+  min-height: 56px;
+  font-size: var(--text-body);
+  border-radius: calc(var(--radius-control) + var(--space-1));
+}
+.product {
+  grid-area: product;
+  min-width: 0;
+  margin: 0;
+}
+/* The box is reserved at the still's ratio, so nothing moves as it loads. */
+.product img {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-sunken);
+}
+@media (max-width: 480px) {
+  .product img {
+    aspect-ratio: 1;
+  }
+}
 .film {
-  grid-area: film;
   min-width: 0;
 }
 .title {
   margin: 0;
   font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
   font-weight: 400;
-  font-size: clamp(34px, 3.6vw + 16px, 60px);
+  font-size: clamp(32px, 3.6vw + 16px, 60px);
   line-height: 1.08;
   letter-spacing: -0.025em;
   text-wrap: balance;
@@ -111,120 +145,27 @@
 .lede {
   margin: 0;
   font-size: 18px;
-  line-height: 1.55;
+  line-height: 1.5;
   text-wrap: balance;
   text-wrap: pretty;
   color: var(--color-muted-text);
 }
-/* Without production media the hero is one column, as wide as its text:
-   no empty video track. The two-column layout returns with the video. */
-.hero:not(.withFilm) {
-  max-width: 46rem;
-}
-
-/* The buy actions fill the width at every size; their buttons take the plan
-   control's corner radius, so the band reads as one piece. On a phone they stack in
-   reading order. From 481 px they lay out on one grid, so controls share a
-   height and the fine print under them starts on one line. */
-.actions {
-  grid-area: actions;
-  display: grid;
-  gap: var(--space-4);
-}
-.actions .buyButton,
-.actions .tryButton {
-  border-radius: calc(var(--radius-control) + var(--space-1));
+/* A short phone (320 x 568, an in-app browser's 360 x 640): the words take
+   a step down so Try stays on the first screen. */
+@media (max-width: 480px) and (max-height: 700px) {
+  .title {
+    font-size: 30px;
+  }
+  .lede {
+    font-size: 16px;
+  }
+  .hero {
+    gap: var(--space-3);
+  }
 }
 @media (min-width: 481px) {
   .hero {
     gap: var(--space-5);
-  }
-  .actions {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-2) var(--space-3);
-  }
-  .actions[data-actions="card"] {
-    grid-template-areas:
-      "plan plan"
-      "planterms planterms"
-      "buy try"
-      "buyterms note";
-  }
-  .actions[data-actions="funded"] {
-    grid-template-areas:
-      "buy try"
-      "buyterms note"
-      "trust card";
-  }
-  .actions[data-actions="error"] {
-    grid-template-areas:
-      "error try"
-      "error note";
-  }
-  .actions[data-actions="free"] {
-    grid-template-areas:
-      "try try"
-      "note note";
-  }
-  .actions .buy,
-  .actions .free,
-  .actions [data-buy="card"] > :first-child {
-    display: contents;
-  }
-  .actions [data-buy="card"] > :first-child > :first-child {
-    grid-area: plan;
-  }
-  .actions [data-buy="card"] > :first-child > :last-child {
-    grid-area: planterms;
-    margin-bottom: var(--space-2);
-    font-size: var(--text-label);
-  }
-  .actions .buyButton {
-    grid-area: buy;
-  }
-  .actions .buyTerms {
-    grid-area: buyterms;
-  }
-  .actions .extras {
-    display: contents;
-  }
-  .actions .trust {
-    grid-area: trust;
-    align-self: center;
-  }
-  .actions .cardInstead {
-    grid-area: card;
-    align-self: start;
-  }
-  .actions .priceError {
-    grid-area: error;
-  }
-  .actions .tryButton {
-    grid-area: try;
-    min-height: 56px;
-    font-size: var(--text-body);
-  }
-  .actions .note {
-    grid-area: note;
-  }
-}
-/* A funded program's status stays on one line, so it takes the full width
-   until half the width is enough. */
-@media (min-width: 481px) and (max-width: 699.98px) {
-  .actions[data-actions="funded"] {
-    grid-template-areas:
-      "buy try"
-      "buyterms note"
-      "trust trust"
-      "card card";
-  }
-}
-/* Tablets: the headline and the lede share a row above the full-width film. */
-@media (min-width: 700px) and (max-width: 959.98px) {
-  .withFilm .copy {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-    column-gap: var(--space-5);
-    align-items: center;
   }
 }
 @media (min-width: 960px) {
@@ -235,58 +176,29 @@
     gap: 48px;
     padding-top: var(--space-3);
   }
-  /* The words grow with the film beside them. */
-  .withFilm .title {
-    font-size: clamp(46px, 5.5vw - 6px, 60px);
+  .title {
+    font-size: clamp(44px, 5vw - 4px, 60px);
   }
-  .withFilm .lede {
+  .lede {
     font-size: clamp(17px, 1.6vw, 20px);
   }
-  /* The words run the film's full height: headline at its top edge, lede at
-     its bottom edge. */
-  .hero.withFilm {
+  /* The words and Try on the left, the app on the right. */
+  .hero {
     grid-template-columns: var(--pitch-split) minmax(0, 1fr);
     grid-template-areas:
-      "copy film"
-      "actions actions";
+      "copy product"
+      "start product";
     column-gap: var(--pitch-gutter);
-    align-items: center;
+    row-gap: var(--space-5);
   }
-  .hero.withFilm .copy {
-    align-self: stretch;
-    align-content: space-between;
+  .copy {
+    align-self: end;
   }
-  /* The band under them: the plan under the words; Buy and Try split the
-     film's width, with their outer edges on the film's edges. */
-  .hero.withFilm .actions {
-    grid-template-columns:
-      var(--pitch-split) var(--pitch-gutter) minmax(0, 1fr) var(--space-3)
-      minmax(0, 1fr);
-    column-gap: 0;
+  .start {
+    align-self: start;
   }
-  .hero.withFilm .actions[data-actions="card"] {
-    grid-template-areas:
-      "plan . buy . try"
-      "planterms . buyterms . note";
-  }
-  .hero.withFilm .actions[data-actions="funded"] {
-    grid-template-areas:
-      "buy buy buy . try"
-      "buyterms . card . note"
-      "trust . card . note";
-  }
-  .hero.withFilm .actions[data-actions="error"] {
-    grid-template-areas:
-      "error error error . try"
-      "error error error . note";
-  }
-  .hero.withFilm .actions[data-actions="free"] {
-    grid-template-areas:
-      "try try try try try"
-      "note note note note note";
-  }
-  .hero.withFilm .actions [data-buy="card"] > :first-child > :last-child {
-    margin-bottom: 0;
+  .product {
+    align-self: center;
   }
 }
 /* Large displays: the whole page grows with the screen, so it never sits in
@@ -295,10 +207,10 @@
   .page {
     --pitch-width: clamp(1180px, 72vw, 1400px);
   }
-  .withFilm .title {
+  .title {
     font-size: clamp(60px, 3.66vw, 72px);
   }
-  .withFilm .lede {
+  .lede {
     font-size: clamp(20px, 1.15vw, 22px);
   }
 }
@@ -499,10 +411,8 @@
   text-underline-offset: 3px;
 }
 
-/* The price, the guarantee and the two actions. On a phone they read in that
-   order. On wider screens the guarantee sits beside the other two, so neither
-   column ends in empty space: the price at the top, the actions on the
-   guarantee's last line, and the page finishing on Buy at its bottom corner. */
+/* The price, Buy and education funds, beside the guarantee from 768 px.
+   Try it free closes the price column. */
 .offer {
   display: grid;
   gap: 40px;
@@ -510,32 +420,20 @@
 @media (min-width: 768px) {
   .offer[data-offer="card"],
   .offer[data-offer="funded"] {
-    grid-template-areas:
-      "guarantee price"
-      "guarantee closing";
-    grid-template-columns: minmax(0, 1fr) var(--pitch-split);
-    grid-template-rows: auto 1fr;
+    grid-template-columns: var(--pitch-split) minmax(0, 1fr);
     gap: var(--space-5) var(--pitch-gutter);
+    align-items: start;
   }
-  /* A funded price has more to say, so it takes half. */
-  .offer[data-offer="funded"] {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .offer .price {
-    grid-area: price;
-  }
-  .offer .guarantee {
-    grid-area: guarantee;
-  }
-  .offer .closing {
-    grid-area: closing;
-    align-self: end;
-  }
-  .offer[data-offer="card"] .closing,
-  .offer[data-offer="funded"] .closing {
-    padding-top: 0;
-    border-top: 0;
-  }
+}
+.price .free {
+  padding-top: var(--space-2);
+}
+.funds {
+  margin: 0;
+  font-size: var(--text-label);
+  line-height: 1.6;
+  color: var(--color-muted-text);
+  text-wrap: pretty;
 }
 .details {
   display: grid;
@@ -621,22 +519,6 @@
 .guarantee p.footnote {
   font-size: var(--text-label);
   line-height: 1.45;
-}
-/* Side by side where both labels fit whole, otherwise one above the other. */
-.closing {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-  padding-top: var(--space-5);
-  border-top: 1px solid var(--color-border);
-}
-.closing > * {
-  flex: 1 1 160px;
-  min-height: 56px;
-}
-/* Buy's longer funded label sets its own width; Try takes what's left. */
-.offer[data-offer="funded"] .closing > * {
-  flex-basis: 140px;
 }
 .trust {
   margin: 0;
