@@ -520,7 +520,9 @@ async function journey(
   await todayTitle(page);
   await measured(page, `${label} teacher`);
   await shot(page, "teacher", width, theme);
-  // A class has no checkout: its next step is a conversation.
+  // A school's students have no free allowance (the stack's own rule): with
+  // no seat, a pupil needs one, whatever free workbooks their learner used,
+  // and the stack never speaks of free workbooks or a checkout.
   await db.query("UPDATE amp_learners SET free_workbooks_used=5 WHERE id=$1", [
     pupil.learnerId,
   ]);
@@ -529,7 +531,20 @@ async function journey(
   );
   await page.getByRole("heading", { name: "Workbooks", exact: true }).waitFor();
   await page.locator(`button[aria-pressed]`).first().waitFor();
-  await workbooksUsed(page, `${label} school stack`, "Talk to us");
+  await page
+    .getByText("No student here can get a new workbook.", { exact: true })
+    .waitFor();
+  check(
+    `${label} school stack: the pupil needs a seat`,
+    (await page.getByText("Needs a seat").count()) > 0,
+  );
+  check(
+    `${label} school stack: no free-allowance words or checkout`,
+    (await page.locator('[data-allowance-pause="workbooks"]').count()) === 0 &&
+      (await page.getByText(/free workbooks/i).count()) === 0 &&
+      (await page.getByRole("link", { name: "Continue with AMP" }).count()) ===
+        0,
+  );
   await page.evaluate(() =>
     window.scrollTo({ top: document.documentElement.scrollHeight }),
   );
