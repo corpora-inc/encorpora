@@ -1237,8 +1237,19 @@ const standings = createRoute({
   path: "/standings",
   staticData: { space: "student" },
   validateSearch: standingsSearchSchema,
+  // A student whose classes have no board on: their practice.
   beforeLoad: async () => {
     if (!studentSession()) await toOwnPlace();
+    const [{ standingsBoardsOptions }, session] = await Promise.all([
+      import("../features/school/classroom/api"),
+      queryClient.ensureQueryData(sessionOptions),
+    ]);
+    const boards = await queryClient
+      .ensureQueryData(standingsBoardsOptions(session ?? null))
+      .catch((error: unknown) =>
+        console.warn("Standings didn’t load ahead", error),
+      );
+    if (boards && !boards.boards.length) elsewhere(studentPracticeHref());
   },
   // Which boards this student has is known before the screen paints, so a
   // class picker is there from the first frame and never pushes the board
