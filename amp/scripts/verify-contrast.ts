@@ -22,6 +22,7 @@ import { buildApp } from "../src/server/app";
 import { PostgresRepository } from "../src/server/repository";
 import { developmentAuth } from "../src/server/auth";
 import { registerFamilyRoutes } from "../src/family/routes.js";
+import { registerSchoolRoutes } from "../src/schools/routes.js";
 import { migrate } from "./migrate";
 import { openMenu, practiceHere } from "./ui-controls";
 import { openTopicLesson, startTopic } from "./ui-practice";
@@ -59,6 +60,12 @@ await registerFamilyRoutes(app, {
   pool: repository.pool,
   authenticate: developmentAuth(),
   development: true,
+});
+// A family's Settings reads its school year from its place (an org), as
+// the app's own server serves it (src/server/main.ts).
+await registerSchoolRoutes(app, {
+  pool: repository.pool,
+  authenticate: developmentAuth(),
 });
 await app.listen({ host: "127.0.0.1", port: 4393 });
 const origin = "http://127.0.0.1:4392";
