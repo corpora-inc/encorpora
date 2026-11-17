@@ -549,8 +549,11 @@ try {
   );
   const prepared = await page.evaluate(async () => {
     const modulePath = "/src/web/account-client.ts";
-    const { accountClient } = await import(modulePath);
-    const added = await accountClient.passkey.addPasskey({
+    // Passkeys are their own client, loaded when used (account-client.ts).
+    const { accountClient, passkeyAccountClient } = await import(modulePath);
+    const added = await (
+      await passkeyAccountClient()
+    ).passkey.addPasskey({
       name: "Authentication race key",
     });
     if (added.error)
@@ -573,8 +576,11 @@ try {
   );
   const authenticating = page.evaluate(async () => {
     const modulePath = "/src/web/account-client.ts";
-    const { accountClient } = await import(modulePath);
-    return (await accountClient.signIn.passkey()).error?.code ?? null;
+    const { passkeyAccountClient } = await import(modulePath);
+    return (
+      (await (await passkeyAccountClient()).signIn.passkey()).error?.code ??
+      null
+    );
   });
   let removingProof: Promise<{ statusCode: number }> | undefined;
   try {

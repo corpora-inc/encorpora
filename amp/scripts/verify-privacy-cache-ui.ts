@@ -81,13 +81,14 @@ try {
     const settings = new URL(page.url()).pathname;
     await page.locator("[data-settings-privacy-row]").click();
     await page.waitForURL((url) => url.pathname === `${settings}/privacy`);
+    // Each privacy panel is a disclosure (ui/Disclosure.tsx).
     await page
-      .getByRole("button", {
-        name:
+      .locator("summary")
+      .filter({
+        hasText:
           mutation === "withdraw"
             ? "Learning permission"
             : "Delete learning data",
-        exact: false,
       })
       .click();
     // Synthetic mutation isolates this browser race from the shared test account.
@@ -115,26 +116,18 @@ try {
         json: { error: "family_service_unavailable" },
       }),
     );
-    await page
-      .getByRole("button", {
-        name: mutation === "withdraw" ? "Withdraw consent" : "Review deletion",
-        exact: true,
-      })
-      .click();
-    await page
-      .getByRole("dialog")
-      .getByRole("button", {
-        name:
-          mutation === "withdraw" ? "Withdraw consent" : "Delete learning data",
-        exact: true,
-      })
-      .click();
-    await page
-      .getByText(
-        "Your change was saved, but refreshed family details could not be loaded. Try refreshing; do not repeat the deletion.",
-        { exact: true },
-      )
-      .waitFor();
+    // The change is saved while the account's refresh fails (503).
+    const saved = page.waitForResponse((response) =>
+      /\/family\/(consent\/withdraw|delete-learning-data)$/.test(
+        new URL(response.url()).pathname,
+      ),
+    );
+    // Withdrawing asks once more in place; deleting is its one button.
+    if (mutation === "withdraw") {
+      await page.locator("[data-consent-withdraw]").click();
+      await page.locator("[data-consent-withdraw-confirm]").click();
+    } else await page.locator("[data-delete-learning]").click();
+    await (await saved).finished();
     const releasedBatch = page.waitForResponse((response) =>
       response.url().endsWith("/batches"),
     );

@@ -207,6 +207,20 @@ async function serve(page: Page, faults: string[]) {
       return route.fulfill({
         json: { available: true, offer: offers[0], offers },
       });
+    // The pitch reads which programs invoice (none here); sign-up reads its
+    // sign-in configuration.
+    if (path === "/funding/invoice-offers")
+      return route.fulfill({ json: { offers: [] } });
+    if (path === "/auth-config")
+      return route.fulfill({
+        json: {
+          mode: "accounts",
+          passwords: true,
+          passkeySignup: true,
+          parentFollowup: true,
+          providers: ["google"],
+        },
+      });
     // The signed-out pitch at `/` prices its plans before it paints.
     if (path === "/billing/prices")
       return route.fulfill({ json: { available: true, offers } });
