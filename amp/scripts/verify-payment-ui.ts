@@ -207,6 +207,8 @@ try {
         },
       });
     if (path === "/api/v1/me") return route.fulfill({ json: me });
+    if (path === "/api/v1/families")
+      return route.fulfill({ json: { families: [], next: null } });
     if (path === "/api/v1/payments/reimbursement-programs")
       return route.fulfill({ json: { programs } });
     if (path.endsWith(".pdf")) {
@@ -248,14 +250,14 @@ try {
   /** Billing, with its receipts open. */
   async function receipts() {
     await page.goto(billing);
-    const fold = page.getByText("Receipts", { exact: true }).first();
+    // Billing's Receipts fold (ui/Disclosure); the account remembers it
+    // open (features/account/panels.ts), so open it only when closed.
+    const fold = page.locator("details").filter({
+      has: page.locator(":scope > summary", { hasText: "Receipts" }),
+    });
     await fold.waitFor();
-    if (
-      (await page
-        .getByRole("button", { name: /AMP annual|Synthetic/ })
-        .count()) === 0
-    )
-      await fold.click();
+    if (!(await fold.evaluate((node) => (node as HTMLDetailsElement).open)))
+      await fold.locator(":scope > summary").click();
   }
   const item = () =>
     page.getByRole("button", {
