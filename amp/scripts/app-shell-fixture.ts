@@ -344,7 +344,7 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       id: "landing",
       path: "/",
       state: "guest",
-      ready: heading(/See how far your child can go in math/),
+      ready: heading(/Kids put in the time and AMP does the rest/),
     },
     {
       id: "sign-in",

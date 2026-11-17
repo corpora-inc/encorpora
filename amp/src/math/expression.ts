@@ -863,8 +863,24 @@ export function lineText(line: Line): string {
  * spaces, with parts of a compound line joined by " or ". */
 export function compactLine(raw: string, compound = false): string {
   const s = canonicalInput(raw);
-  const parts = compound
-    ? s.split(/\s*,\s*|\s+or\s+|(?<![a-zA-Z])or(?![a-zA-Z])/i)
-    : [s];
+  const parts = compound ? splitCompound(s) : [s];
   return parts.map((part) => part.replace(/ /g, "")).join(" or ");
+}
+/** Parts split at commas, at a spaced "or" and at a bare "or" between
+ * non-letters ("1or2"). The letter before a bare "or" is checked by hand:
+ * Safari before 16.4 has no lookbehind. */
+function splitCompound(s: string): string[] {
+  const separator = /\s*,\s*|\s+or\s+|or(?![a-z])/gi;
+  const parts: string[] = [];
+  let from = 0;
+  for (let match; (match = separator.exec(s));) {
+    if (/^or$/i.test(match[0]) && /[a-z]/i.test(s[match.index - 1] ?? "")) {
+      separator.lastIndex = match.index + 1;
+      continue;
+    }
+    parts.push(s.slice(from, match.index));
+    from = separator.lastIndex;
+  }
+  parts.push(s.slice(from));
+  return parts;
 }

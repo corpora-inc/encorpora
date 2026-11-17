@@ -1,3 +1,4 @@
+import type { AccountMail, LinkedMessage } from "../email/email.js";
 import { randomUUID } from "node:crypto";
 import { SchoolError } from "./contracts.js";
 import { recordEvent } from "./events.js";
@@ -115,27 +116,29 @@ export async function createSchool(
   });
 }
 
+/** The invitation to a new school's admin. */
+export function setupInvitation(
+  school: Pick<CreatedSchool, "name" | "setupUrl">,
+): LinkedMessage {
+  return {
+    subject: `${school.name} is ready on AMP for Schools`,
+    text: `AMP for Schools is ready for ${school.name}, and you’re its admin. Open this link to sign in or create your account, then set up your school year, what students see, the data agreement and your roster. The link works once and expires in ${INVITE_DAYS} days. If you weren’t expecting this, you can ignore it.`,
+    url: school.setupUrl,
+    action: "Set up your school",
+  };
+}
+
 /** The setup invitation, through the account mail path. A failure is reported,
  * not thrown: the school and its link stand, and the operator can send it. */
 export async function mailSetupInvitation(
   services: {
-    mail?: (
-      to: string,
-      subject: string,
-      text: string,
-      url: string,
-    ) => Promise<void>;
+    mail?: AccountMail;
   },
   school: Pick<CreatedSchool, "name" | "adminEmail" | "setupUrl">,
 ) {
   if (!services.mail) return false;
   try {
-    await services.mail(
-      school.adminEmail,
-      `${school.name} is ready on AMP for Schools`,
-      `AMP for Schools is ready for ${school.name}, and you’re its admin. Open this link to sign in or create your account, then set up your school year, what students see, the data agreement and your roster. The link works once and expires in ${INVITE_DAYS} days. If you weren’t expecting this, you can ignore it.`,
-      school.setupUrl,
-    );
+    await services.mail(school.adminEmail, setupInvitation(school));
     return true;
   } catch (error) {
     console.error("[schools] setup invitation mail not sent", {

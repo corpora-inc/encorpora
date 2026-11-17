@@ -99,15 +99,21 @@ test(
         170_000,
         "invoice",
       );
-      // Excluded: our own automated checks.
+      // Excluded: our own automated checks, and Meta's ad review pressing Try.
       await visitor(
         { source: "google", kind: "automated" },
         [["video_play"]],
         5000,
       );
+      await visitor(
+        { source: "facebook", kind: "automated" },
+        [["try_click"], ["buy_click", { path: "funded" }]],
+        0,
+      );
 
       const report = await flowReport(pool, { days: 1 });
       assert.equal(report.overall.landed, 5);
+      assert.deepEqual(report.automated, { landed: 2, tried: 1 });
       assert.equal(report.overall.stayed, 3);
       assert.equal(report.overall.tooFast, 1);
       assert.equal(report.overall.played, 2);

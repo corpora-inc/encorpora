@@ -68,7 +68,7 @@ const COMPONENTS: Allowed = {
     why: "a setup step's form fields",
   },
   "features/pitch/Pitch.module.css": {
-    widths: ["1180px", "1400px", "46rem"],
+    widths: ["1180px", "1400px", "28rem"],
     why: "the signed-out pitch: a marketing page with its own art direction",
   },
   "features/schools/PublicFrame.module.css": {
@@ -610,8 +610,6 @@ const BACK_DEBT: Record<string, string> = {
     "a sign-in or first-run card step: to move onto the shared stepper (phase 2)",
   "features/design/sections/states.tsx":
     "the /design gallery's sample empty state",
-  "features/films/FilmScreen.tsx":
-    "the immersive film's return to its problem or lesson: to become its ✕ (phase 2)",
   "features/me/OwnTimeScreen.tsx":
     "an adult's practice time: Progress's tab replaces it (phase 2)",
   "features/onboarding/LearnerSteps.tsx":

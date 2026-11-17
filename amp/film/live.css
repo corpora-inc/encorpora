@@ -7,6 +7,9 @@ html:has(.live-index), html:has(.live-index) body { overflow: auto; }
 
 .live { position: fixed; inset: 0; z-index: 100; display: flex; flex-direction: column; background: var(--color-surface); color: var(--color-on-surface); }
 .live.ready { opacity: 1; }
+/* The player takes focus on arrival (keys reach it at once); the region
+   itself draws no ring. Its controls keep their designed focus-visible ring. */
+.live:focus { outline: none; }
 .live-frame { position: relative; flex: 1; min-height: 0; overflow: hidden; }
 .live button, .live a { font-family: var(--font-body, system-ui); }
 .live button:focus-visible, .live a:focus-visible, .live input:focus-visible { outline: 3px solid var(--color-focus-ring); outline-offset: 3px; }
@@ -62,6 +65,9 @@ html:has(.live-index), html:has(.live-index) body { overflow: auto; }
 .live-scrub::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: var(--color-figure-accent); border: 3px solid var(--color-surface); }
 .live-time { flex: none; font-variant-numeric: tabular-nums; color: var(--color-muted-text); min-width: 92px; text-align: right; }
 .live-back { flex: none; display: grid; place-items: center; min-width: 44px; height: 44px; padding: 0 6px; box-sizing: border-box; color: var(--color-muted-text); text-decoration: none; }
+/* ✕: the film closes to the screen it was opened from. */
+.live-close { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border: 1.5px solid var(--color-border-strong); border-radius: 50%; box-sizing: border-box; color: var(--color-on-surface); background: var(--color-surface); }
+.live-close svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
 
 /* A phone on its side: the picture takes the whole screen and the bar floats over its foot. */
 @media (orientation: landscape) and (max-height: 500px) {
@@ -147,3 +153,8 @@ html:has(.live-index), html:has(.live-index) body { overflow: auto; }
 .live-poster-title { margin: 0; max-width: 18em; font: 700 clamp(22px, 4vw, 34px)/1.35 system-ui, sans-serif; color: var(--color-on-surface); text-wrap: balance; }
 .live-poster-meta { margin: 0; font: 600 15px system-ui, sans-serif; color: var(--color-muted-text); font-variant-numeric: tabular-nums; }
 .live.started .live-poster, .live.playing .live-poster, .live.moved .live-poster { opacity: 0; }
+/* With the film's own picture behind it, the poster is the title over that
+   picture: the words on a fade at the top, the frame clear below them. */
+.live.framed .live-poster { --live-poster-top: clamp(16px, 4vh, 40px); justify-content: flex-start; padding: var(--live-poster-top) var(--space-5) 0; background: linear-gradient(to bottom, var(--color-surface) 0, var(--color-surface) calc(var(--live-poster-top) + 44px), transparent calc(var(--live-poster-top) + 84px)); }
+/* Its length is the bar's (0:00 / 4:22): only the title sits over the picture. */
+.live.framed .live-poster-meta { display: none; }

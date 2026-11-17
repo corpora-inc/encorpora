@@ -1,3 +1,4 @@
+import type { AccountMail } from "../email/email.js";
 import { classPracticeGate, inSnapshot } from "./pilot-access.js";
 import { joinTeacherPilot } from "./pilots.js";
 import { adultNameSql } from "../account/profile.js";
@@ -90,12 +91,7 @@ export type SchoolServices = {
    * Absent: `origin` alone. */
   origins?: readonly string[];
   /** The account mail path. Absent: invitations rely on their copied link. */
-  mail?: (
-    to: string,
-    subject: string,
-    text: string,
-    url: string,
-  ) => Promise<void>;
+  mail?: AccountMail;
   /** Public OAuth client IDs, for the IT handoff page. */
   signIn?: { google?: string; microsoft?: string };
   /** Student sign-in through an outside provider. Absent: cards and codes only. */

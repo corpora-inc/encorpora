@@ -8,7 +8,7 @@
  */
 import { useRef, type KeyboardEvent, type RefObject } from "react";
 import { useLessonSearch, type SearchResult } from "../../lib/lesson-search";
-import { shareableHref, useLayers } from "../../nav/links";
+import { useLayers } from "../../nav/links";
 import { pushed } from "../../nav/layer-store";
 import { SearchField } from "../../ui/SearchField";
 import { resultKeys, type SearchActions } from "./SearchResults";
@@ -47,9 +47,9 @@ export function useSearchActions(
   return {
     href: (result) => {
       const skill = skillOf(result, docs);
-      return shareableHref(
-        window.location.pathname,
-        window.location.search,
+      // The screen's own sharing address for that stack (your own map:
+      // the skill's path, /pathways/<skill>).
+      return layers.href(
         skill ? pushed(layers.stack, { kind: "skill", id: skill }) : layers.stack,
       );
     },

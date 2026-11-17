@@ -8,6 +8,7 @@ import { ConsentError } from "./contracts.js";
 import { policyGeneration } from "./policy.js";
 import { digest } from "./crypto.js";
 import { consentMail } from "./mail.js";
+import { retryPayload } from "../email/email.js";
 import { ConsentRepository } from "./repository.js";
 
 /** Resend keeps keys for 24 hours. Leave one hour for provider/clock uncertainty. */
@@ -65,7 +66,7 @@ export async function deliverConsentMail(
         !row.recipient_ciphertext
       )
         return null;
-      const mail = consentMail(policy, {
+      const composed = consentMail(policy, {
         id: row.id,
         recipient: repository.secrets!.decrypt(
           row.recipient_ciphertext,
@@ -79,7 +80,17 @@ export async function deliverConsentMail(
         idempotencyKey: `amp-consent:${row.outbox_id}`,
         noticeHash: row.notice_digest,
       });
-      const binding = { ...transport.binding, payloadDigest: digest(mail) };
+      const bindingOf = (payload: unknown) => ({
+        ...transport.binding,
+        payloadDigest: digest(payload),
+      });
+      const mail = retryPayload(
+        composed,
+        (payload) =>
+          !!row.delivery_binding &&
+          digest(row.delivery_binding) === digest(bindingOf(payload)),
+      );
+      const binding = bindingOf(mail);
       const reason =
         row.attempts > 0 && !row.first_dispatch_at
           ? "historical-unknown"
