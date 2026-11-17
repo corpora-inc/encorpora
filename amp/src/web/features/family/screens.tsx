@@ -17,10 +17,8 @@ export { FamilyTodayScreen } from "./Today";
 export { ChildScreen } from "./Child";
 export {
   FamilyMapScreen,
-  FamilyTimeScreen,
   FamilyWorkbooksScreen,
   FamilyMarkingScreen,
-  FamilyReportsScreen,
   FamilyGradesScreen,
   FamilyCardsScreen,
 } from "./Records";
@@ -98,7 +96,7 @@ export function FamilyMissingScreen() {
             params={{ _splat: familyHref(place.family) }}
             className={buttonClass("primary")}
           >
-            Back to Today
+            Open Today
           </Link>
         }
       ></EmptyState>

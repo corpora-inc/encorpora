@@ -581,10 +581,15 @@ export function routeScreens() {
       )
         add(loaders.get("screens")!, args[0]!.slice(1, -1));
     }
-    // A family tab: `leaf(path, "FamilyTimeScreen")`, from `screens`.
+    // A family tab: `leaf(path, "FamilyMapScreen")`, from `screens`.
     for (const args of calls(source, /\bleaf\(/g))
       if (/^"\w+"$/.test(args[1] ?? "") && loaders.has("screens"))
         add(loaders.get("screens")!, args[1]!.slice(1, -1));
+    // A record alias that renders where it stays:
+    // `childAlias(path, anchor, "FamilyMapScreen", …)`.
+    for (const args of calls(source, /\bchildAlias\(/g))
+      if (/^"\w+"$/.test(args[2] ?? "") && loaders.has("screens"))
+        add(loaders.get("screens")!, args[2]!.slice(1, -1));
     // A child's learning screen: `childScreen(path, () => import(…), name)`.
     for (const args of calls(source, /\bchildScreen\(/g)) {
       const specifier = loaderOf(args[1] ?? "");
@@ -681,14 +686,6 @@ const BACK_DEBT: Record<string, string> = {
     "a sign-in or first-run card step: to move onto the shared stepper (phase 2)",
   "features/design/sections/states.tsx":
     "the /design gallery's sample empty state",
-  "features/family/Child.tsx":
-    "a family screen: the child-page worker removes it in its restructure (overlays close with ✕)",
-  "features/family/FamilyReturn.tsx":
-    "a family screen: the child-page worker removes it in its restructure (overlays close with ✕)",
-  "features/family/People.tsx":
-    "a family screen: the child-page worker removes it in its restructure (overlays close with ✕)",
-  "features/family/screens.tsx":
-    "a family screen: the child-page worker removes it in its restructure (overlays close with ✕)",
   "features/films/FilmScreen.tsx":
     "the immersive film's return to its problem or lesson: to become its ✕ (phase 2)",
   "features/me/OwnTimeScreen.tsx":
