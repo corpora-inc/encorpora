@@ -10,7 +10,8 @@
  *    name every exception with its reason; an entry that no longer matches
  *    fails too, so they only shrink.
  * 2. Every route's screen renders Page, through Page itself or a frame that
- *    does (PageFrame, FamilyFrame, StepFrame), or is listed with its reason.
+ *    does (PageFrame, FamilyFrame, StepFrame, WorkbookFrame), or is listed
+ *    with its reason.
  *
  * Phase 2 of the layout system (round 2026-11-16) moves the screens listed
  * under PHASE_2 onto Page and deletes their entries.
@@ -334,6 +335,7 @@ const FRAMES: Record<string, string> = {
   PageFrame: "ui/PageFrame.tsx",
   FamilyFrame: "features/family/FamilyFrame.tsx",
   StepFrame: "features/onboarding/setup/StepFrame.tsx",
+  WorkbookFrame: "features/workbooks/WorkbookFrame.tsx",
 };
 
 /** Route screens that don't render Page yet, `module#export`, with why. */
@@ -448,12 +450,6 @@ const ROUTES_PHASE_2: Record<string, string> = {
     "a school, class or setup screen",
   "features/schools/ParentScreen.tsx#ParentScreen":
     "joining, approvals and links from outside the app",
-  "features/workbooks/WorkbookDayScreen.tsx#WorkbookDayScreen":
-    "an adult's workbooks",
-  "features/workbooks/WorkbookHistoryScreen.tsx#WorkbookHistoryScreen":
-    "an adult's workbooks",
-  "features/workbooks/WorkbookResultsScreen.tsx#WorkbookResultsScreen":
-    "an adult's workbooks",
 };
 
 /** Route screens that never will: another product's frame, or a
@@ -674,8 +670,8 @@ test("every route's screen renders Page, or is listed with its reason", () => {
 /** Functions that compute a parent from canonical state: one per entity
  * they are called for, several across entities. */
 const PARENT_RESOLVERS: Record<string, string> = {
-  "features/continue/ContinueScreen.tsx#learnerPage":
-    "one parent per learner, their own page: a child's in their family, the adult's /me, a profile's list (the pay flow carries it to /pay)",
+  "features/spaces/learner-urls.ts#learnerPage":
+    "one parent per learner, their own page: a child's in their family, the adult's /me, a profile's list (Continue, a learner's workbooks)",
   "features/family/RecordLinks.tsx#useFamilyRecordBack":
     "one parent per record: a child's page goes to Today; practice time, report cards and workbooks to Progress (with one child, that child's page)",
 };

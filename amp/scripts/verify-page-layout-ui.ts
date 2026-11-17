@@ -169,6 +169,16 @@ const SCREENS: Screen[] = [
     width: "standard",
     parent: familyPath,
   },
+  // A child's workbooks, from their page: the same column as the family's
+  // screens, and Back up to the child's page.
+  {
+    name: "child-workbooks",
+    person: "family",
+    path: async (page) => `/learners/${await firstChild(page)}/workbooks`,
+    width: "standard",
+    parent: async (page) =>
+      `${await familyPath(page)}/kids/${await firstChild(page)}`,
+  },
   {
     name: "family-settings",
     person: "family",

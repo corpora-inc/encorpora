@@ -11,6 +11,7 @@ import { TextField } from "../../ui/TextField";
 import { awaitingResults, workbookByCode, workbookHistoryOptions } from "./api";
 import { canMakeWorkbook, localDate, workbookMessage } from "./model";
 import { AllowancePause } from "../continue/AllowancePause";
+import { PageHeader } from "../../ui/PageHeader";
 import { WorkbookFrame, whose, type WorkbookLearner } from "./WorkbookFrame";
 import { WorkbookList } from "./WorkbookList";
 import styles from "./Workbooks.module.css";
@@ -56,41 +57,40 @@ export function WorkbookHistory({
   );
   return (
     <>
-      <header className={styles.listHead}>
-        <div className={styles.listTitle}>
-          {who.label && <p className={styles.learnerLabel}>{who.label}</p>}
-          <h1 className={styles.title}>
-            {who.own ? "Your workbooks" : "Workbooks"}
-          </h1>
-        </div>
-        {/* The actions land with the list: the first workbook is made from
-            the empty list's own button, and results by code are offered only
-            while a workbook waits for them. */}
-        {!none && (
-          <div className={styles.listActions}>
-            {workbooks && awaitingResults(workbooks) && (
-              <Button
-                variant="secondary"
-                onClick={() => setEntering(true)}
-                data-results-code
-              >
-                Enter results with a code
-              </Button>
-            )}
-            {canMake &&
-              (workbooks || history.error ? (
-                today("Today’s workbook")
-              ) : (
-                <span
-                  className={`${styles.actionSkeleton} amp-skeleton`}
-                  aria-hidden="true"
+      <PageHeader
+        back={learner.home}
+        title={who.own ? "Your workbooks" : "Workbooks"}
+        subtitle={who.label}
+        // The actions land with the list: the first workbook is made from the
+        // empty list's own button, and results by code are offered only while
+        // a workbook waits for them.
+        actions={
+          !none && (
+            <div className={styles.listActions}>
+              {workbooks && awaitingResults(workbooks) && (
+                <Button
+                  variant="secondary"
+                  onClick={() => setEntering(true)}
+                  data-results-code
                 >
-                  <span />
-                </span>
-              ))}
-          </div>
-        )}
-      </header>
+                  Enter results with a code
+                </Button>
+              )}
+              {canMake &&
+                (workbooks || history.error ? (
+                  today("Today’s workbook")
+                ) : (
+                  <span
+                    className={`${styles.actionSkeleton} amp-skeleton`}
+                    aria-hidden="true"
+                  >
+                    <span />
+                  </span>
+                ))}
+            </div>
+          )
+        }
+      />
       {!canMake && (
         <AllowancePause
           kind="workbooks"

@@ -41,7 +41,7 @@ import {
 import { Included, RecapLine } from "./Recap";
 import { Page } from "../../ui/Page";
 import { PageHeader, type PageBack } from "../../ui/PageHeader";
-import { childFamily } from "../spaces/learner-urls";
+import { learnerPage } from "../spaces/learner-urls";
 import styles from "./Continue.module.css";
 
 /** `/continue/$learnerId`: "Continue with AMP" for one learner. The plan,
@@ -354,23 +354,6 @@ function ContinuePage({
       </div>
     </Page>
   );
-}
-/** Continue's parent, from the account itself: the learner's own page (a
- * child's in their family, the adult's progress, the practice profiles),
- * never where Continue was opened from. */
-function learnerPage(
-  account: SignedInMe,
-  learner: { id: string; adult?: boolean; simulation?: boolean },
-): PageBack {
-  if (learner.simulation) return { to: "/me/profiles" };
-  if (learner.adult) return { to: "/me" };
-  const family = childFamily(account, learner.id);
-  return family
-    ? {
-        to: "/family/$family/kids/$learner",
-        params: { family, learner: learner.id },
-      }
-    : { to: "/family" };
 }
 /** A plan already paid for and not yet anyone's: it becomes this learner's. */
 function UsePaidPlan({
