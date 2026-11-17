@@ -152,9 +152,11 @@ EXPOSE 8080
 # for the next parent.
 CMD ["node", "--no-flush-bytecode", "src/server/main.mjs"]
 
-# No seed: nothing earlier to keep.
+# No seed: nothing earlier to keep. This stage is part of the PDF renderer's
+# fingerprint (its name is in the preamble), so it names nothing the web
+# image serves: with no earlier files, the carry finds none and keeps none.
 FROM node-base AS web-seed-none
-RUN mkdir -p /usr/share/nginx/html/assets /usr/share/amp-web
+RUN mkdir -p /usr/share/amp-web
 FROM ${WEB_SEED} AS web-seed
 
 # This build's files plus the earlier releases' still within the window.
