@@ -267,8 +267,10 @@
   border-radius: 6px;
 }
 
-/* The narrowest phones (320 px): three parts still sit side by side. */
-@container (max-width: 319px) {
+/* A phone's stage (320 to 384 px viewports): three parts still sit side by
+   side. At full size they need about 335 px (the down side's column, three
+   92 px parts and the marks' room); a 384 px phone's stage is 322. */
+@container (max-width: 343px) {
   .work-diagram {
     --work-part-min: 72px;
     --work-side-entry: 60px;
