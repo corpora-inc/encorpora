@@ -1,10 +1,10 @@
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { fundedPrograms } from "../funded-entry";
+import { arrivalQuery } from "../../features/auth/browser-handoff";
 import {
   PROGRAM_CHOICES,
   SIGN_UP_ENTRIES,
   arrivalLabels,
-  arrivalQuery,
   keepSignUpIntent,
   signUpIntent,
   keepArrival,

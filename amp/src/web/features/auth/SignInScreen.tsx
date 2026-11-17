@@ -493,17 +493,24 @@ export function SignInScreen() {
     event.preventDefault();
     if (busy || pending || !codeFor) return;
     void run(async () => {
-      const result = await accountClient.emailOtp.verifyEmail({
-        email: codeFor,
-        otp: emailCode.replace(/\D/g, ""),
-      });
-      if (result.error)
+      // The code endpoint by its path: the email-code client plugin would
+      // add to the first load for this one call (check-bundle-budget).
+      const result = await accountClient.$fetch<{ token: string | null }>(
+        "/email-otp/verify-email",
+        {
+          method: "POST",
+          body: { email: codeFor, otp: emailCode.replace(/\D/g, "") },
+        },
+      );
+      const refused = result.error as
+        (typeof result.error & { code?: string }) | null;
+      if (refused)
         throw new Error(
-          result.error.code === "OTP_EXPIRED"
+          refused.code === "OTP_EXPIRED"
             ? "That code expired. Send a new code and enter it here."
-            : result.error.code === "TOO_MANY_ATTEMPTS"
+            : refused.code === "TOO_MANY_ATTEMPTS"
               ? "Too many tries with that code. Send a new code and enter it here."
-              : result.error.status === 429
+              : refused.status === 429
                 ? "Too many attempts. Wait a minute, then try again."
                 : "That code doesn’t match. Check the latest email from AMP and try again.",
         );
@@ -856,9 +863,8 @@ export function SignInScreen() {
           >
             <p className={styles.codeHint}>
               We sent a {SIGN_UP_CODE_DIGITS}-digit code to{" "}
-              <strong>{codeFor}</strong>. Enter it here to finish. If that
-              email already has an AMP account, we sent it how to sign in
-              instead.
+              <strong>{codeFor}</strong>. Enter it here to finish. If that email
+              already has an AMP account, we sent it how to sign in instead.
             </p>
             <TextField
               label="Code"

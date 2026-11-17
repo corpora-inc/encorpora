@@ -175,23 +175,6 @@ export function keepSignUpIntent(next: SignUpIntent | null) {
   }
 }
 
-/**
- * The tab's arrival as an address's query, for the one place it must cross
- * into another browser: the in-app browser's handoff to the phone's own
- * (features/auth/browser-handoff.ts), whose storage starts empty. The other
- * browser reads it once on arrival (`keepArrival`) and cleans the address.
- */
-export function arrivalQuery(): Record<string, string> {
-  const { entry, free } = signUpIntent();
-  const program = chosenProgram();
-  return {
-    ...arrivalLabels(),
-    ...(program ? { program } : {}),
-    ...(entry ? { entry } : {}),
-    ...(free && entry !== "pitch-try" ? { return: "free-practice" } : {}),
-  };
-}
-
 /** An arrival's address (an ad's, a funding page's link, an older sign-up
  * link): its program, its campaign labels and why it signs up, kept for the
  * tab. A visit that names none keeps what was kept. */

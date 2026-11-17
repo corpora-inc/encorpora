@@ -1,6 +1,10 @@
 import type { InAppPlatform } from "../../../analytics/browser-kind";
 import { browserHandoffUrl } from "../../lib/funded-entry";
-import { arrivalQuery } from "../../lib/program-choice";
+import {
+  arrivalLabels,
+  chosenProgram,
+  signUpIntent,
+} from "../../lib/program-choice";
 
 /**
  * The one-tap way out of an in-app browser into the phone's real browser,
@@ -33,6 +37,24 @@ export function browserHandoffHref(
     return `intent://${url.host}${url.pathname}${url.search}${url.hash}#Intent;scheme=${url.protocol.slice(0, -1)};package=com.android.chrome;end`;
   if (platform === "ios") return `x-safari-${url.href}`;
   return null;
+}
+
+/**
+ * The tab's arrival (lib/program-choice.ts) as an address's query, for the
+ * one place it must cross into another browser: this handoff, whose other
+ * browser's storage starts empty. That browser reads it once on arrival
+ * (`keepArrival`) and cleans the address. Here, not in the store: only a
+ * handoff needs it, and the store loads with every first screen.
+ */
+export function arrivalQuery(): Record<string, string> {
+  const { entry, free } = signUpIntent();
+  const program = chosenProgram();
+  return {
+    ...arrivalLabels(),
+    ...(program ? { program } : {}),
+    ...(entry ? { entry } : {}),
+    ...(free && entry !== "pitch-try" ? { return: "free-practice" } : {}),
+  };
 }
 
 /** An address with the tab's arrival on it, for another browser. */

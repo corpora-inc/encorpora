@@ -21,8 +21,11 @@ const KB = 1024;
 const budget = {
   /** The app's entry code, which every screen but the pitch runs first
    * (2026-11-15: 288 KB, as three chunks: the app, what it shares with the
-   * pitch's entry, and its start). */
-  entryJs: 290 * KB,
+   * pitch's entry, and its start). 2026-11-17: main reached 290.0 KB; the
+   * sign-up arrival (why a tab signs up, read on every arrival before any
+   * screen, and the one-hop clean-up of older sign-up addresses) adds
+   * about 0.7 KB that must run first, so 292 KB. */
+  entryJs: 292 * KB,
   /** The pitch's light entry: React, the pitch and its measurement, no app
    * (2026-11-15: 152 KB). */
   pitchJs: 160 * KB,

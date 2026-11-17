@@ -1,6 +1,6 @@
 import { requestFetch } from "./lib/request-transport";
 import { createAuthClient } from "better-auth/client";
-import { emailOTPClient, twoFactorClient } from "better-auth/client/plugins";
+import { twoFactorClient } from "better-auth/client/plugins";
 
 const basePath = "/api/auth";
 const fetchOptions = {
@@ -25,7 +25,7 @@ const fetchOptions = {
 export const accountClient = createAuthClient({
   basePath,
   fetchOptions,
-  plugins: [twoFactorClient(), emailOTPClient()],
+  plugins: [twoFactorClient()],
 });
 
 let passkeys: Promise<PasskeyAccountClient> | undefined;
@@ -54,7 +54,7 @@ async function createPasskeyClient() {
   return createAuthClient({
     basePath,
     fetchOptions,
-    plugins: [twoFactorClient(), emailOTPClient(), passkeyClient()],
+    plugins: [twoFactorClient(), passkeyClient()],
   });
 }
 type PasskeyAccountClient = Awaited<ReturnType<typeof createPasskeyClient>>;
