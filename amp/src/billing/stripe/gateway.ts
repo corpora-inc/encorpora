@@ -98,6 +98,21 @@ export class StripeGateway {
     );
     return customer.id;
   }
+  /** Checkout prefills (and holds) the email of a Customer that has one;
+   * without it, the parent types the address they signed in with. Set it
+   * once, from the account's confirmed sign-in email, and never replace one
+   * the parent has since changed in the billing portal. Checkout would save
+   * the typed address onto the Customer anyway (Stripe API: Checkout
+   * Sessions, `customer`), so Stripe receives nothing it didn't before. */
+  async prefillEmail(customerId: string, email: string): Promise<void> {
+    const customer = await this.client.customers.retrieve(customerId);
+    requireEvidence(
+      !customer.deleted && customer.livemode === this.config.livemode,
+      "customer_mode_mismatch",
+    );
+    if (customer.email) return;
+    await this.client.customers.update(customerId, { email });
+  }
   async createCheckout(
     checkoutId: string,
     customerId: string,
@@ -105,7 +120,10 @@ export class StripeGateway {
     enrollment = false,
     expiresAt?: number,
     tier: PriceTier = "full",
+    /** The signed-in parent's confirmed email, prefilled on Checkout. */
+    email?: string,
   ): Promise<{ id: string; url: string }> {
+    if (email) await this.prefillEmail(customerId, email);
     const session = await this.client.checkout.sessions.create(
       {
         mode: "subscription",
@@ -132,11 +150,24 @@ export class StripeGateway {
           ? { allowed_payment_method_types: ["card" as const, "link" as const] }
           : {}),
         automatic_tax: { enabled: this.config.automaticTax },
-        // Prices are tax-exclusive: tax needs the full address, saved to the customer.
+        // Prices are tax-exclusive: Stripe Tax calculates from the customer's
+        // address, so it is collected in full and saved to the customer
+        // (docs.stripe.com/tax/checkout: an existing customer needs
+        // `customer_update.address: auto`). The billing details already ask
+        // for a full name, which `customer_update.name` saves as the
+        // customer's name, the one each invoice snapshots for the receipt
+        // (docs/reimbursement-receipts.md). Asking for a name again is only
+        // needed when no billing address is collected: Stripe's first-class
+        // name field is separate from the billing name, so with both the
+        // parent typed their name twice (docs.stripe.com/payments/checkout/
+        // name-collection).
         ...(this.config.automaticTax
           ? { billing_address_collection: "required" as const }
-          : {}),
-        name_collection: { individual: { enabled: true, optional: false } },
+          : {
+              name_collection: {
+                individual: { enabled: true, optional: false },
+              },
+            }),
         customer_update: { address: "auto", name: "auto" },
         success_url: `${this.config.appOrigin}/${enrollment ? "start/purchase" : ""}?billing=processing&purchase=${encodeURIComponent(checkoutId)}`,
         cancel_url: `${this.config.appOrigin}/${enrollment ? "start/purchase" : ""}?billing=canceled&purchase=${encodeURIComponent(checkoutId)}`,

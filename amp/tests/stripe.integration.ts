@@ -246,3 +246,83 @@ test(
     }
   },
 );
+
+test(
+  "Stripe PostgreSQL: Checkout gets the parent's confirmed sign-in email, never an unconfirmed one",
+  { skip: !process.env.AMP_TEST_DATABASE_URL },
+  async () => {
+    const schema = `amp_stripe_email_${randomUUID().replaceAll("-", "")}`;
+    const connectionString = process.env.AMP_TEST_DATABASE_URL!;
+    const admin = new Pool({ connectionString, max: 1 });
+    const pool = new Pool({
+      connectionString,
+      max: 4,
+      options: `-c search_path=${schema}`,
+    });
+    try {
+      await admin.query(`CREATE SCHEMA ${schema}`);
+      for (const file of [
+        "0001.sql",
+        "0002-commerce.sql",
+        "0003-parent-consent.sql",
+        "0004-parent-lifecycle.sql",
+        "0015-trials.sql",
+        "0018-trial-teaching.sql",
+        "0005-stripe.sql",
+        "0011-paid-evidence.sql",
+        "0017-monthly-billing.sql",
+        "0096-extra-child-price.sql",
+        "0006-commerce-orders.sql",
+        "0008-skill-evidence.sql",
+        "0085-learner-frontier-state.sql",
+      ])
+        await pool.query(
+          await readFile(
+            new URL(`../migrations/${file}`, import.meta.url),
+            "utf8",
+          ),
+        );
+      // The sign-in table's columns this reads (migrations/0016-accounts.sql).
+      await pool.query(
+        `CREATE TABLE amp_auth_users (id text PRIMARY KEY, email text NOT NULL UNIQUE, "emailVerified" boolean NOT NULL)`,
+      );
+      await pool.query(
+        `INSERT INTO amp_auth_users VALUES ('confirmed',' parent@example.test ',true),('unconfirmed','typo@example.test',false)`,
+      );
+      for (const account of ["amp|confirmed", "amp|unconfirmed"]) {
+        const learner = `child-${account.slice(4)}`;
+        await pool.query(
+          "INSERT INTO amp_learners(id,account_id,name) VALUES($1,$2,'Fixture')",
+          [learner, account],
+        );
+        await pool.query(
+          "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES($1,$2,'fixture','fixture')",
+          [account, config.consentPolicyVersion],
+        );
+      }
+      const gateway = new StripeGateway(config);
+      const billing = new StripeBilling(
+        new StripeRepository(pool, config),
+        gateway,
+      );
+      const emails: (string | undefined)[] = [];
+      gateway.verifyCatalog = async () => {};
+      gateway.createCustomer = async (reservation) => `cus_${reservation}`;
+      gateway.createCheckout = async (...args) => {
+        emails.push(args[6]);
+        return { id: `cs_${emails.length}`, url: "https://checkout.stripe.test/x" };
+      };
+      await billing.checkout("amp|confirmed", "child-confirmed", randomUUID());
+      await billing.checkout(
+        "amp|unconfirmed",
+        "child-unconfirmed",
+        randomUUID(),
+      );
+      assert.deepEqual(emails, ["parent@example.test", undefined]);
+    } finally {
+      await pool.end();
+      await admin.query(`DROP SCHEMA IF EXISTS ${schema} CASCADE`);
+      await admin.end();
+    }
+  },
+);
