@@ -1,3 +1,4 @@
+import type { LinkedMessage } from "../email/email.js";
 import { adultNameSql } from "../account/profile.js";
 import type { Pool, PoolClient } from "pg";
 import { z } from "zod";
@@ -269,6 +270,20 @@ export async function removeSecondParent(pool: Pool, holder: string) {
   });
 }
 
+/** A parent's invitation to the family's second parent. */
+export function secondParentInvitation(
+  who: string,
+  className: string,
+  url: string,
+): LinkedMessage {
+  return {
+    subject: `${who} invited you to ${className} on AMP`,
+    text: `${who} invited you to ${className} on AMP, the adaptive math practice, as a parent. You’ll see the children’s class and progress, and your own practice is free. Open this link, then sign in or create an account with this email address. It works once and expires in 30 days. If you weren’t expecting this, you can ignore it.`,
+    url,
+    action: "Accept invitation",
+  };
+}
+
 /** The invitation, through the account mail path. A failure is reported, not
  * thrown: the invitation stands, and its link can be copied. */
 export async function mailSecondParent(
@@ -286,13 +301,14 @@ export async function mailSecondParent(
     )
   ).rows[0]!.sends;
   if (today > SECOND_PARENT_MAILS_PER_DAY) return false;
-  const who = sent.holderName ?? "A parent";
   try {
     await mail(
       sent.email,
-      `${who} invited you to ${sent.className} on AMP`,
-      `${who} invited you to ${sent.className} on AMP, the adaptive math practice, as a parent. You’ll see the children’s class and progress, and your own practice is free. Open this link, then sign in or create an account with this email address. It works once and expires in 30 days. If you weren’t expecting this, you can ignore it.`,
-      mailedInviteUrl(keys, sent.credentialId),
+      secondParentInvitation(
+        sent.holderName ?? "A parent",
+        sent.className,
+        mailedInviteUrl(keys, sent.credentialId),
+      ),
     );
     return true;
   } catch (error) {

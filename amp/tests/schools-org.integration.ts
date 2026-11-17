@@ -50,7 +50,7 @@ test(
       services: {
         secret: "test",
         origin: "https://amp.test",
-        mail: async (to, subject) => {
+        mail: async (to, { subject }) => {
           mailed.push({ to, subject });
         },
       },
