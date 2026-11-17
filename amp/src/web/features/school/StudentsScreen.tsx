@@ -1,3 +1,4 @@
+import { reportError } from "../../lib/report-error";
 import { closeSearch } from "../../lib/return-to";
 import { canAddStudents } from "./permissions";
 import {
@@ -19,7 +20,6 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { StudentResource } from "../../../schools/contracts";
-import { AppError } from "../../lib/AppError";
 import { useLoggedError } from "../../feedback";
 import { Avatar } from "../../ui/Avatar";
 import { Badge } from "../../ui/Badge";
@@ -56,8 +56,6 @@ import {
 import { orgPath } from "./paths";
 import styles from "./School.module.css";
 
-const message = (failure: unknown, fallback: string) =>
-  failure instanceof AppError ? failure.message : fallback;
 const statusWords: Record<StudentStatus, string> = {
   "needs-seat": "waiting for a seat",
   "never-signed-in": "who haven’t signed in yet",
@@ -110,7 +108,12 @@ function StudentSheet({
       await refreshSchool(session);
       onClose();
     } catch (failure) {
-      setError(message(failure, "Those changes didn’t save. Try again."));
+      setError(
+        reportError(failure, {
+          doing: "save those changes",
+          fallback: "Those changes didn’t save. Try again.",
+        }),
+      );
       setBusy(null);
     }
   };
@@ -122,7 +125,12 @@ function StudentSheet({
       await refreshSchool(session);
       onClose();
     } catch (failure) {
-      setError(message(failure, "That student wasn’t removed. Try again."));
+      setError(
+        reportError(failure, {
+          doing: "remove a student",
+          fallback: "That student wasn’t removed. Try again.",
+        }),
+      );
       setBusy(null);
     }
   };
@@ -311,7 +319,12 @@ function AddStudentSheet({
       setFamily("");
       onOpenChange(false);
     } catch (failure) {
-      setError(message(failure, "That student didn’t save. Try again."));
+      setError(
+        reportError(failure, {
+          doing: "save that student",
+          fallback: "That student didn’t save. Try again.",
+        }),
+      );
     } finally {
       setBusy(false);
     }

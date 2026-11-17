@@ -7,7 +7,7 @@ import {
 } from "../../../schools/contracts";
 import type { AuthSession } from "../../auth";
 import type { FamilyPlaces } from "../../../family/projection-contracts";
-import { call, keyFor } from "../school/api";
+import { call, keyFor } from "../school/core-api";
 import { spaceWords } from "./words";
 import { parentHome } from "../family/parent-home";
 

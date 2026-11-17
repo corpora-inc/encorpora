@@ -23,9 +23,13 @@ const stopwords = new Set(
   ).split(" "),
 );
 
+/** Words whose final "s" is not a plural: "times" (multiply) is not more
+ * than one "time" (clocks). */
+const notPlural = new Set(["times"]);
+
 /** A light English stemmer: plurals only, the same on both sides. */
 export function stem(word: string) {
-  if (word.length <= 3 || /\d/.test(word)) return word;
+  if (word.length <= 3 || /\d/.test(word) || notPlural.has(word)) return word;
   if (word.endsWith("ies") && word.length > 4) return `${word.slice(0, -3)}y`;
   if (/(ches|shes|sses|xes|zes)$/.test(word)) return word.slice(0, -2);
   if (word.endsWith("s") && !/(ss|us|is)$/.test(word)) return word.slice(0, -1);

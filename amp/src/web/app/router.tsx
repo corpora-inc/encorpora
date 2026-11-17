@@ -46,7 +46,7 @@ import {
   meOptions,
 } from "../lib/query";
 import type { Me } from "../../account/contracts";
-import { useLearnerStore } from "../learner-store";
+import { currentLearner } from "../learner-store";
 import { practicingAsAdult, practicingAsProfile } from "../lib/adult-learner";
 import { LoadingScreen, RouteError } from "../ui/LoadingScreen";
 import { childAddress, childPath } from "../features/spaces/identity";
@@ -77,14 +77,17 @@ import {
   studentSignInEnded,
 } from "../lib/student-device";
 import { workbookSearchSchema } from "../features/workbooks/model";
-import { orgsOptions, preload } from "../features/school/api";
 import { prepareBuyerHandoff } from "../features/school/pilots/buyer-session";
 import { prepareSchoolAdoption } from "../features/school/adoption-session";
-import { finishingSignIn } from "../features/school/join/api";
+import { finishingSignIn } from "../features/school/join/finishing";
 import { SMALL_CLASS } from "../features/navigation/shell-frame";
 import { approvalsOptions } from "../features/family-approval/api";
 import { secondParentOptions } from "../features/second-parent/api";
-import { classYearOptions } from "../features/school/org/org-api";
+import {
+  classYearOptions,
+  orgsOptions,
+  preload,
+} from "../features/school/core-api";
 import { frameData, schoolRoutes, staffScreen } from "./school-routes";
 import { familyRoutes } from "./family-routes";
 import { privacyRoutes } from "./privacy-routes";
@@ -111,6 +114,7 @@ import {
 } from "../nav/entities";
 import {
   adoptPracticeMode,
+  followResolvedLearner,
   canonicalLearnerAddress,
   carriedKeys,
   isLearningPath,
@@ -985,28 +989,14 @@ const pathwaySkill = createRoute({
   path: "$skillId",
   beforeLoad: ({ location, params }) => skillAsLayer(location, params.skillId),
 });
-/** A learner's workbooks are a tab of their Progress: arriving chooses
- * that learner (the account's own, never a practice profile), so the
- * group's other tabs and Practice are theirs too. The server still decides
- * what the account may open. */
-async function beforeWorkbooks<Params extends { learnerId: string }>({
-  params,
-}: {
-  params: Params;
-}) {
-  const { learnerId } = params;
+/** A learner's workbooks are a tab of their Progress. The address names
+ * the learner (`$learnerId`): the screen reads it from there, and once the
+ * navigation resolves it is the account's current learner
+ * (followResolvedLearner). The server still decides what the account may
+ * open. */
+function beforeWorkbooks() {
   if (nativeRuntime) throw redirect({ to: "/" });
   notForStudents();
-  const session = await queryClient.ensureQueryData(sessionOptions);
-  if (!session) return;
-  const me = await queryClient
-    .ensureQueryData(meOptions(session))
-    .catch(() => null);
-  // The address names the learner (`$learnerId`): the screen reads it from
-  // there, and the shell adopts it as this device's choice once the screen
-  // shows. A guard never chooses (a preload runs it too).
-  void me;
-  void learnerId;
 }
 /** Daily paper workbooks for one learner (features/workbooks). */
 const workbookHistory = createRoute({
@@ -1352,34 +1342,45 @@ const schoolClassImport = createRoute({
     "ImportScreen",
   ),
 });
-/** A teacher sets up a class (one short form). `org` preselects a school. */
+/** The import's later steps, each at its own address: `import/columns`,
+ * `import/review`, `import/done`. */
+const schoolClassImportStep = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "import/$step",
+  component: lazyRouteComponent(
+    () => import("../features/school/ImportScreen"),
+    "ImportScreen",
+  ),
+});
+/** A teacher sets up a class: its two steps, each at its own address
+ * (features/school/pilots/start-steps.ts). Nothing rides along in a query. */
+const startLoader = async ({ context }: { context: unknown }) => {
+  const { session } = context as { session: AuthSession };
+  await Promise.all([
+    preload(meOptions(session)),
+    preload(orgsOptions(session)),
+  ]);
+};
 const schoolStart = createRoute({
   getParentRoute: () => root,
   path: "/school/start",
   staticData: { space: "account" },
   beforeLoad: staffScreen,
-  // `from`: adding a place from somewhere, its way back (appReturn).
-  validateSearch: (
-    search: Record<string, unknown>,
-  ): { org?: string; from?: string } => {
-    const from = appReturn(search.from);
-    return {
-      ...(z.uuid().safeParse(search.org).success
-        ? { org: String(search.org) }
-        : {}),
-      ...(from ? { from } : {}),
-    };
-  },
-  loader: async ({ context }) => {
-    const { session } = context as unknown as { session: AuthSession };
-    await Promise.all([
-      preload(meOptions(session)),
-      preload(orgsOptions(session)),
-    ]);
-  },
+  loader: startLoader,
   component: lazyRouteComponent(
     () => import("../features/school/pilots/SchoolStartScreen"),
     "SchoolStartScreen",
+  ),
+});
+const schoolStartStudents = createRoute({
+  getParentRoute: () => root,
+  path: "/school/start/students",
+  staticData: { space: "account" },
+  beforeLoad: staffScreen,
+  loader: startLoader,
+  component: lazyRouteComponent(
+    () => import("../features/school/pilots/SchoolStartScreen"),
+    "SchoolStartStudentsScreen",
   ),
 });
 /** "I run a school": the school, then its classes (one short form). */
@@ -1564,8 +1565,8 @@ const ownRecord = createRoute({
         to: me.adultPractice?.eligible ? "/me/start" : "/",
         replace: true,
       } as never);
-    // The shell makes the adult's own learner this device's choice once
-    // `/me` shows; a guard never chooses (a preload runs it too).
+    // Once `/me` resolves, the adult's own learner is the account's current
+    // one (followResolvedLearner).
     return { session, learnerId: own.id };
   },
   loader: ({ context }) => {
@@ -1851,6 +1852,7 @@ export const router = createRouter({
       schoolClassSettings,
       schoolClassRoster,
       schoolClassImport,
+      schoolClassImportStep,
       schoolClassStart,
       schoolClassCards,
       schoolClassExperience,
@@ -1871,6 +1873,7 @@ export const router = createRouter({
     schoolsTrust,
     schoolsContinue,
     schoolStart,
+    schoolStartStudents,
     schoolCreate,
     schoolConnect,
     schoolAdopt,
@@ -1936,6 +1939,9 @@ export const router = createRouter({
   defaultPendingMs: 1000,
   defaultPendingMinMs: 0,
 });
+// The learner a resolved address names is the account's current learner:
+// the router writes it, once per navigation (learner-store.ts).
+followResolvedLearner(router);
 // Development only: the route table, as the navigation crawler reads it
 // (scripts/verify-layer-crawl-ui.ts), so a new screen is crawled without
 // anyone editing the crawler. A layout's own address is its index child's;
@@ -2074,7 +2080,7 @@ router.subscribe("onResolved", ({ toLocation }) => {
   const session = queryClient.getQueryData(sessionOptions.queryKey);
   if (!session || studentSession()) return;
   const me = queryClient.getQueryData<Me>(meKey(session.accountId));
-  const chosen = useLearnerStore.getState().learnerId;
+  const chosen = currentLearner();
   // Practicing as a profile is a step away from a place, never one `/`
   // returns to.
   if (

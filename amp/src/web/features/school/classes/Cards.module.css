@@ -1,22 +1,12 @@
-.page,
-.center {
-  min-height: calc(100dvh - var(--shell-bar, 56px));
-  background: var(--color-surface);
-  color: var(--color-on-surface);
+/* Sign-in cards (CardsScreen): what to make, then the sheets to print, on
+   the class's Page. */
+.page {
   font-size: var(--text-dense);
   line-height: 1.45;
-}
-.center {
-  display: grid;
-  place-items: center;
-  padding: var(--space-5) var(--space-4);
-  box-sizing: border-box;
 }
 .prepare {
   display: grid;
   gap: var(--space-3);
-  width: 100%;
-  max-width: 560px;
 }
 .prepare p {
   color: var(--color-muted-text);
@@ -25,49 +15,16 @@
   color: var(--color-on-surface);
   font-weight: 550;
 }
-.problem {
-  color: var(--color-on-danger);
-}
-.prepare .problem {
-  color: var(--color-on-surface);
-  font-weight: 600;
-}
 .choices {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
-  margin-top: var(--space-3);
-}
-.toolbar {
-  position: sticky;
-  z-index: 2;
-  top: 0;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3) var(--space-5);
-  padding: var(--space-4) clamp(16px, 4vw, 48px);
-  border-bottom: 1px solid var(--color-border);
-  background: var(--color-surface);
-}
-.toolbarText {
-  flex: 1 1 320px;
-}
-.toolbarText p {
-  margin-top: 2px;
-  color: var(--color-muted-text);
-}
-.toolbarActions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
+  margin-top: var(--space-2);
 }
 .sheets {
   display: grid;
   justify-items: center;
   gap: var(--space-8);
-  padding: var(--space-6) clamp(16px, 5vw, 48px) var(--space-8);
 }
 /* Letter, with half-inch margins: 7.5 × 10 in of cards, in units of the sheet's
    width, so the preview is the page at any size. */
@@ -151,12 +108,11 @@
   html,
   body,
   .page {
-    min-height: 0;
     background: var(--color-print-paper);
     color: var(--color-print-ink);
     print-color-adjust: exact;
   }
-  .toolbar {
+  .page :global([data-page-header]) {
     display: none;
   }
   .sheets {

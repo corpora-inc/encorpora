@@ -1,9 +1,9 @@
+import { reportError } from "../../../lib/report-error";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { formatDay } from "../../../../schools/calendar";
 import type { IntegrationsResponse } from "../../../../schools/org-contracts";
-import { AppError } from "../../../lib/AppError";
 import { authConfigOptions } from "../../../lib/query";
 import { cleverEnabled } from "../clever/enabled";
 import { useLoggedError } from "../../../feedback";
@@ -89,9 +89,10 @@ function SetUpWithUs({
           )
           .catch((failure) =>
             onError(
-              failure instanceof AppError
-                ? failure.message
-                : "The request didn’t send. Email support@corpora.inc.",
+              reportError(failure, {
+                doing: "send the request",
+                fallback: "The request didn’t send. Email support@corpora.inc.",
+              }),
             ),
           )
           .finally(() => setBusy(false));
@@ -251,9 +252,10 @@ export function IntegrationsScreen() {
                             )
                             .catch((failure) =>
                               setError(
-                                failure instanceof AppError
-                                  ? failure.message
-                                  : "That didn’t save. Try again.",
+                                reportError(failure, {
+                                  doing: "change a sign-in provider",
+                                  fallback: "That didn’t save. Try again.",
+                                }),
                               ),
                             )
                             .finally(() => setSaving(null));

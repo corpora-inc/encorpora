@@ -1,9 +1,9 @@
-import { useCloseClick } from "../../../nav/links";
+import { closeTo } from "../../../lib/return-to";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { Link, useParams } from "@tanstack/react-router";
+import { useParams, useRouter } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Avatar } from "../../../ui/Avatar";
-import { Button, buttonClass } from "../../../ui/Button";
+import { Button } from "../../../ui/Button";
 import { EmptyState } from "../../../ui/EmptyState";
 import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { publicOrigin } from "../../../app/route-head";
@@ -118,19 +118,15 @@ export function StartClassScreen() {
     logged.current = failing;
   }, [failing, presence.error]);
 
-  // Back to where the board was opened: Today, the map, the roster.
-  const closeClick = useCloseClick(
-    `/school/${params.org}/classes/${params.class}`,
-  );
+  // The board is an overlay on its class: its cross closes it to where it
+  // was opened (Today, the map, the roster), else the class's Today.
+  const router = useRouter();
+  const close = () =>
+    closeTo(router, `/school/${params.org}/classes/${params.class}/today`);
   const exit = (
-    <Link
-      to="/school/$org/classes/$class"
-      params={params}
-      className={buttonClass("secondary", styles.exit)}
-      onClick={closeClick}
-    >
-      Exit
-    </Link>
+    <Button variant="secondary" onClick={close}>
+      Close
+    </Button>
   );
   if (board === null)
     return (
@@ -187,7 +183,16 @@ export function StartClassScreen() {
               <ExpandMark on={fullscreen} />
             </Button>
           )}
-          {exit}
+          <Button
+            variant="quiet"
+            className={styles.iconButton}
+            aria-label="Close the board"
+            onClick={close}
+          >
+            <svg viewBox="0 0 24 24" className={styles.mark} aria-hidden="true">
+              <path d="m6 6 12 12M18 6 6 18" />
+            </svg>
+          </Button>
         </div>
       </header>
       <section className={styles.hero}>

@@ -1,0 +1,8 @@
+/* The one search field: as wide as its place allows, as tall as the
+   controls beside it, and 16 px text so a phone never zooms on focus. */
+.field {
+  --search-field-max: none;
+  --search-field-height: var(--target-size);
+  --search-field-text: 16px;
+  box-sizing: border-box;
+}

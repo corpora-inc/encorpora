@@ -3,7 +3,7 @@ import { CHILD_NAME_MAX, childNameProblem } from "../../../learning/nickname";
 import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useLoggedError } from "../../feedback";
-import { useLearnerStore } from "../../learner-store";
+import { selectLearner } from "../../learner-store";
 import { AppError } from "../../lib/AppError";
 import { invalidateAccount, meOptions, refreshMe } from "../../lib/query";
 import { useSession } from "../../lib/session";
@@ -105,7 +105,7 @@ export function ApprovalScreen() {
   };
   const progress = () => {
     if (!view?.learnerId) return;
-    useLearnerStore.getState().select(view.learnerId);
+    selectLearner(view.learnerId);
     void navigate({ to: "/$", params: { _splat: "progress" } });
   };
   const teachers = view ? teacherLine(view.teachers) : "";

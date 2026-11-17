@@ -2,7 +2,7 @@ import { queryOptions, useMutation } from "@tanstack/react-query";
 import { z } from "zod";
 import { ownPracticeResponse } from "../../../account/adult-contracts";
 import type { AuthSession } from "../../auth";
-import { useLearnerStore } from "../../learner-store";
+import { selectLearner } from "../../learner-store";
 import { request } from "../../lib/api";
 import {
   invalidateAccount,
@@ -56,7 +56,7 @@ export function useStartOwnPractice(session: AuthSession) {
           },
         },
       );
-      useLearnerStore.getState().select(learnerId);
+      selectLearner(learnerId);
       rememberPlace(session.accountId, "me");
       await refreshMe(session);
       void queryClient.invalidateQueries({

@@ -1,9 +1,9 @@
-import { useCloseClick } from "../../../nav/links";
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import type { ReportCardsResponse } from "../../../../schools/teacher-contracts";
-import { buttonClass } from "../../../ui/Button";
+import { Button } from "../../../ui/Button";
+import { Page } from "../../../ui/Page";
+import { PageHeader } from "../../../ui/PageHeader";
 import { PrintButton } from "../../../ui/PrintButton";
 import { downloadPdf, paperFormat } from "../../../lib/pdf-download";
 import { EmptyState } from "../../../ui/EmptyState";
@@ -121,14 +121,15 @@ function Card({
 export function ReportCardScreen() {
   const host = useClassHost();
   return (
-    <main className={styles.page} data-dense>
+    <Page className={styles.page} data-dense>
       <ReportCards host={host} />
-    </main>
+    </Page>
   );
 }
 
-/** A term's report cards, for the people a host shows: a toolbar to print
- * them, then a card each. `framed` hosts keep their own way back. */
+/** A term's report cards, for the people a host shows: a header to print
+ * them, then a card each. They sit under the class's Grades tab (or a
+ * family's own frame), which is the way elsewhere: no in-page Back. */
 export function ReportCards({
   host,
   framed = false,
@@ -152,21 +153,6 @@ export function ReportCards({
     ...reportCardsOptions(session, place, term ?? ""),
     enabled: !!session && !!term,
   });
-  // Back to where it was opened: the gradebook, Settings, a student.
-  const closeClick = useCloseClick(
-    `/${host.href("gradebook")}${term ? `?term=${encodeURIComponent(term)}` : ""}`,
-  );
-  const back = framed ? null : (
-    <Link
-      to="/$"
-      params={{ _splat: host.href("gradebook") }}
-      search={(term ? { term } : {}) as never}
-      className={buttonClass("secondary")}
-      onClick={closeClick}
-    >
-      Back
-    </Link>
-  );
   if ((!asked && current.isPending) || (term && cards.isPending))
     return framed ? (
       <div aria-busy="true" className={styles.wait} />
@@ -203,59 +189,70 @@ export function ReportCards({
               ? "No term to report on yet"
               : "These report cards didn’t load"
           }
-          action={back}
+          action={
+            framed && !term ? undefined : (
+              <Button
+                variant="secondary"
+                onClick={() =>
+                  void (term ? cards.refetch() : current.refetch())
+                }
+              >
+                Try again
+              </Button>
+            )
+          }
         >
           {framed && !term
             ? "Set the school year and its terms in Settings."
-            : "Open them again from the gradebook."}
+            : "Check your connection, then try again."}
         </EmptyState>
       </div>
     );
   if (students.length === 0)
     return (
       <div className={styles.lost}>
-        <EmptyState
-          title={`No ${words.learners} in this term yet`}
-          action={back}
-        />
+        <EmptyState title={`No ${words.learners} in this term yet`} />
       </div>
     );
+  const summary = (
+    <>
+      {only || framed ? "" : `${data.term.name}, `}
+      {only
+        ? data.term.name
+        : `${students.length} ${students.length === 1 ? words.learner : words.learners}`}
+      {blank === 0
+        ? ""
+        : only
+          ? ". No final grade entered yet."
+          : `. ${blank === 1 ? "1 card has" : `${blank} cards have`} no final grade yet.`}
+    </>
+  );
+  const print = (whole || only) && (
+    <PrintButton
+      variant="primary"
+      disabled={!session}
+      download={() => pdf(only ?? undefined)}
+    >
+      {only || students.length === 1 ? "Print" : "Print all"}
+    </PrintButton>
+  );
   return (
     <div className={styles.set} data-framed={framed ? "" : undefined}>
-      <div className={styles.toolbar}>
-        <div className={styles.toolbarText}>
-          {framed ? (
+      {framed ? (
+        <div className={styles.toolbar}>
+          <div className={styles.toolbarText}>
             <h2>{only ? students[0]!.name : data.term.name}</h2>
-          ) : (
-            <h1>
-              {only ? students[0]!.name : `${data.class.name} report cards`}
-            </h1>
-          )}
-          <p>
-            {only || framed ? "" : `${data.term.name}, `}
-            {only
-              ? data.term.name
-              : `${students.length} ${students.length === 1 ? words.learner : words.learners}`}
-            {blank === 0
-              ? ""
-              : only
-                ? ". No final grade entered yet."
-                : `. ${blank === 1 ? "1 card has" : `${blank} cards have`} no final grade yet.`}
-          </p>
+            <p>{summary}</p>
+          </div>
+          {print && <div className={styles.toolbarActions}>{print}</div>}
         </div>
-        <div className={styles.toolbarActions}>
-          {back}
-          {(whole || only) && (
-            <PrintButton
-              variant="primary"
-              disabled={!session}
-              download={() => pdf(only ?? undefined)}
-            >
-              {only || students.length === 1 ? "Print" : "Print all"}
-            </PrintButton>
-          )}
-        </div>
-      </div>
+      ) : (
+        <PageHeader
+          title={only ? students[0]!.name : `${data.class.name} report cards`}
+          subtitle={summary}
+          actions={print || undefined}
+        />
+      )}
       <div className={styles.cards}>
         {students.map((student) => (
           <Card

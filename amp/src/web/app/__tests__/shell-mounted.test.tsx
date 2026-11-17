@@ -40,6 +40,7 @@ import {
 import { classYearOptions } from "../../features/school/org/org-api";
 import { pilotOptions } from "../../features/school/pilots/api";
 import { StaffScreen } from "../../features/school/StaffScreen";
+import { followResolvedLearner } from "../../features/profiles/practice-mode";
 
 const h = vi.hoisted(() => ({
   changed: null as null | ((session: unknown) => void),
@@ -140,7 +141,9 @@ const never = () => new Promise(() => {});
 function Learning() {
   const view = useLearningView({ records: false });
   const space = useSpace(useSettledMatch());
-  const selected = useLearnerStore((state) => state.learnerId);
+  const selected = useLearnerStore(
+    (state) => state.learners[auth.accountId] ?? null,
+  );
   const row = {
     selected,
     learner: view.learner?.id,
@@ -178,6 +181,8 @@ async function mount(
     history: createMemoryHistory({ initialEntries: [initial] }),
     defaultPendingMs: 100_000,
   });
+  // As the app's router does (app/router.tsx).
+  followResolvedLearner(router);
   await router.load();
   render(
     <Providers>
@@ -213,7 +218,7 @@ beforeEach(() => {
   h.request.mockReset().mockImplementation(never);
   queryClient.setQueryData(sessionOptions.queryKey, auth);
   queryClient.setQueryData(meOptions(auth).queryKey, me as never);
-  useLearnerStore.getState().select("wren");
+  useLearnerStore.getState().select(auth.accountId, "wren");
 });
 afterEach(() => {
   cleanup();
@@ -257,7 +262,7 @@ test("CP-2 r3 H2: a navigation still loading, or abandoned, changes nobody", asy
     learner: "wren",
     frame: "wren",
   });
-  expect(useLearnerStore.getState().learnerId).toBe("wren");
+  expect(useLearnerStore.getState().learners[auth.accountId]).toBe("wren");
   // Abandoned: another navigation replaces it; still nobody changed.
   await act(async () => {
     await router.navigate({
@@ -267,13 +272,13 @@ test("CP-2 r3 H2: a navigation still loading, or abandoned, changes nobody", asy
     } as never);
     await flushUpdates();
   });
-  expect(useLearnerStore.getState().learnerId).toBe("wren");
+  expect(useLearnerStore.getState().learners[auth.accountId]).toBe("wren");
   gate.resolve(undefined);
   await act(async () => {
     await navigation.catch(() => undefined);
     await flushUpdates();
   });
-  expect(useLearnerStore.getState().learnerId).toBe("wren");
+  expect(useLearnerStore.getState().learners[auth.accountId]).toBe("wren");
   // Committed: the shell then makes Pip the choice.
   await act(async () => {
     await router.navigate({
@@ -283,7 +288,7 @@ test("CP-2 r3 H2: a navigation still loading, or abandoned, changes nobody", asy
     } as never);
     await flushUpdates();
   });
-  expect(useLearnerStore.getState().learnerId).toBe("pip");
+  expect(useLearnerStore.getState().learners[auth.accountId]).toBe("pip");
   expect(h.renders.at(-1)).toMatchObject({ learner: "pip", frame: "pip" });
 });
 
@@ -300,7 +305,7 @@ test("H2: the named learner removed while open keeps the screen out, choosing no
   });
   expect(screen.queryByTestId("learning")).toBeNull();
   expect(document.querySelector("[data-space-blocked]")).toBeTruthy();
-  expect(useLearnerStore.getState().learnerId).toBe("pip");
+  expect(useLearnerStore.getState().learners[auth.accountId]).toBe("pip");
 });
 
 function seedSchool() {

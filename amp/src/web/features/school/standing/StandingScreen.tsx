@@ -10,13 +10,7 @@ import { orgPath } from "../paths";
 import { compareClassNames } from "../sort";
 import { CurveLegend, CurvePlot, GradeAxis, peakOf } from "./CurvePlot";
 import { gradesWords, signed, students } from "./format";
-import {
-  AxisEnds,
-  CurveFacts,
-  curveSentence,
-  SettlingNote,
-  UpLink,
-} from "./parts";
+import { AxisEnds, CurveFacts, curveSentence, SettlingNote } from "./parts";
 import { orgStandingOptions } from "./standing-api";
 import styles from "./Standing.module.css";
 
@@ -59,7 +53,6 @@ export function StandingScreen() {
         </EmptyState>
       ) : (
         <div className={styles.screen}>
-          <UpLink to={orgPath(orgId)}>Overview</UpLink>
           <header className={styles.title}>
             <h1>Where students stand against grade level</h1>
             <p>

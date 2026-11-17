@@ -1,3 +1,4 @@
+import { reportError } from "../../../lib/report-error";
 import { useQuery } from "@tanstack/react-query";
 import { CopyButton } from "../parts";
 import {
@@ -398,9 +399,10 @@ function useStartPractice(place: Place, pilot: PilotState | undefined) {
       await refreshSchool(session);
     } catch (failure) {
       setError(
-        failure instanceof AppError
-          ? failure.message
-          : "Practice didn’t start. Try again.",
+        reportError(failure, {
+          doing: "start practice",
+          fallback: "Practice didn’t start. Try again.",
+        }),
       );
     } finally {
       setBusy(false);
@@ -855,9 +857,10 @@ function AuthorizeSheet({
       onClose();
     } catch (failure) {
       setError(
-        failure instanceof AppError
-          ? failure.message
-          : "Practice didn’t start. Try again.",
+        reportError(failure, {
+          doing: "start practice",
+          fallback: "Practice didn’t start. Try again.",
+        }),
       );
     } finally {
       setBusy(false);
@@ -909,7 +912,8 @@ export function ClosedSignIn({
   known,
 }: {
   place: Place;
-  /** A way back beside the next step (the board's Exit). */
+  /** Beside the next step: the board's Close. The class's own tabs are the
+   * way anywhere else; there is no in-page Back. */
   also?: ReactNode;
   /** Also read again what the screen itself read (the board's presence). */
   onRetry?: () => void;
@@ -927,12 +931,13 @@ export function ClosedSignIn({
       ? known
       : access.practice;
   const unavailable = access.unavailable && practice === access.practice;
-  const actions = (next: ReactNode) => (
-    <div className={styles.sheetActions}>
-      {next}
-      {also}
-    </div>
-  );
+  const actions = (next: ReactNode) =>
+    next || also ? (
+      <div className={styles.sheetActions}>
+        {next}
+        {also}
+      </div>
+    ) : undefined;
   const today = `/school/${place.org}/classes/${place.class}/today`;
   const to = (label: string, search: Record<string, number> = {}) => (
     <Link
@@ -988,10 +993,7 @@ export function ClosedSignIn({
         )}
       />
     ) : (
-      <EmptyState
-        title="No students yet"
-        action={actions(also ? null : to("Back to Today"))}
-      />
+      <EmptyState title="No students yet" action={actions(null)} />
     );
   if (practice === "waiting" && view.kind === "start")
     return (
@@ -1016,7 +1018,7 @@ export function ClosedSignIn({
     return (
       <EmptyState
         title="Waiting for the class’s teacher to start practice"
-        action={actions(also ? null : to("Back to Today"))}
+        action={actions(null)}
       />
     );
   return (
@@ -1041,9 +1043,7 @@ export function ClosedSignIn({
           >
             See students
           </Link>
-        ) : also ? null : (
-          to("Back to Today")
-        ),
+        ) : null,
       )}
     >
       Reports, exports and workbooks stay with the class.

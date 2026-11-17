@@ -1,3 +1,4 @@
+import { reported } from "../../../lib/report-error";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, useNavigate, useRouter } from "@tanstack/react-router";
 import { useEffect, useMemo, type ReactNode } from "react";
@@ -156,7 +157,10 @@ export function WorkReplay({
   // The neighbours are fetched as this one shows, so stepping is instant.
   useEffect(() => {
     for (const id of [replay?.previous, replay?.next])
-      if (id) void client.prefetchQuery(options(id)).catch(() => undefined);
+      if (id)
+        void client
+          .prefetchQuery(options(id))
+          .catch(reported("load the next answer ahead", undefined));
   }, [replay?.previous, replay?.next]);
   const search: Record<string, string> = skill ? { skill } : {};
   // Back to where it was opened: the record, Today, a gradebook's evidence.

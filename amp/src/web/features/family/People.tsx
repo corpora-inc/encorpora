@@ -2,18 +2,15 @@ import { familyDisplayName } from "../spaces/resolve";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
-import { formatDay } from "../../../schools/calendar";
 import { Button, buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
 import { RowLink, RowList } from "../../ui/RowList";
 import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { approvalsOptions } from "../family-approval/api";
-import { calendarOptions, orgOptions } from "../school/api";
 import { presenceOptions } from "../school/classes/api";
 import { formatJoinCode } from "../school/join/JoinClass";
 import { ReplaceCode } from "../school/join/ReplaceCode";
-import { EditSheet } from "../school/CalendarScreen";
 import { FamilyPracticeDefaults } from "./Practice";
 import {
   CoTeacherInviteSheet,
@@ -36,7 +33,7 @@ import type { ApprovalRowResource } from "../../../family/approval-contracts";
 import { familyTeachingOptions } from "./api";
 import { AddChildrenSheet } from "./AddChildren";
 import { NameEditor } from "../account/NameEditor";
-import { GradingPeriods } from "./Records";
+import { SchoolYearSection } from "../school-year/SchoolYearSection";
 import { DevicesSheet } from "./Devices";
 import {
   FamilyFrame,
@@ -250,90 +247,6 @@ export function FamilyPeopleScreen() {
   );
 }
 
-/** The family's school year: its dates, and changing them. No terms or
- * grading periods: a family's records run the whole year. */
-function SchoolYear({ place }: { place: FamilyPlace }) {
-  const { session } = place;
-  // The class's own org: a family's id need not be it.
-  const orgId = place.own?.org ?? "";
-  const org = useQuery({
-    ...orgOptions(session, orgId),
-    enabled: !!place.own,
-  });
-  const calendar = useQuery({
-    ...calendarOptions(session, orgId),
-    enabled: !!place.own && !!org.data?.can?.includes("calendar.read"),
-  });
-  const [editing, setEditing] = useState(false);
-  const year = calendar.data?.find((entry) => entry.kind === "year");
-  if (!place.own || !org.data?.can?.includes("calendar.read")) return null;
-  // The year is the class's: with other families' children in it, it is
-  // the tutoring group's to change, where that scope is said.
-  const shared = !!place.data?.teachingPlace;
-  const canEdit = !shared && !!org.data.can.includes("calendar.write");
-  return (
-    <section className={styles.section} aria-labelledby="family-year">
-      <h2 id="family-year">School year</h2>
-      <dl className={styles.settings}>
-        <div className={styles.setting}>
-          <div className={styles.settingText}>
-            <dt>{year?.name ?? " "}</dt>
-            <dd>
-              {year
-                ? `${formatDay(year.startsOn)} to ${formatDay(year.endsOn)}`
-                : calendar.isError
-                  ? "The year didn’t load."
-                  : " "}
-            </dd>
-          </div>
-          <div className={styles.settingAction}>
-            {calendar.isError ? (
-              <Button
-                variant="secondary"
-                onClick={() => void calendar.refetch()}
-              >
-                Try again
-              </Button>
-            ) : (
-              canEdit &&
-              year && (
-                <Button variant="secondary" onClick={() => setEditing(true)}>
-                  Change dates
-                </Button>
-              )
-            )}
-          </div>
-        </div>
-      </dl>
-      <p className={styles.footnote}>
-        {shared
-          ? "Your tutoring group shares these dates."
-          : "Report cards and time count from the first day."}
-      </p>
-      {shared && org.data.can.includes("calendar.write") && (
-        <Link
-          to="/$"
-          params={{
-            _splat: `school/${place.own.org}/classes/${place.own.id}/settings`,
-          }}
-          className={buttonClass("secondary")}
-          style={{ justifySelf: "start" }}
-          data-group-calendar=""
-        >
-          Open the group’s calendar
-        </Link>
-      )}
-      {editing && year && !shared && (
-        <EditSheet
-          orgId={orgId}
-          session={year}
-          onClose={() => setEditing(false)}
-        />
-      )}
-    </section>
-  );
-}
-
 /** The family code, and replacing it: a setting, apart from "Their own
  * devices", where the way in is. With other families' children in the class
  * the code is the tutoring group's, so it is replaced there. */
@@ -440,12 +353,19 @@ export function FamilySettingsScreen() {
               to={familyHref(place.family, "people")}
             />
           </RowList>
-          <SchoolYear place={place} />
-          {/* A report card a grading period: set with the year, beside it. */}
-          {place.own &&
-            data.children.some((child) => child.capabilities.readGrades) && (
-              <GradingPeriods place={place} shared={!!data.teachingPlace} />
-            )}
+          {/* One school year: its dates, grading periods and bar, with one
+              Edit. The tutoring group's, when the family is in one. */}
+          {place.own && (
+            <SchoolYearSection
+              org={place.own.org}
+              classId={place.own.id}
+              titleId="family-year"
+              grading={data.children.some(
+                (child) => child.capabilities.readGrades,
+              )}
+              setBy={data.teachingPlace ? "Your tutoring group" : undefined}
+            />
+          )}
           <FamilyCode place={place} />
           <FamilyPracticeDefaults place={place} />
           <section className={styles.section} aria-labelledby="family-account">

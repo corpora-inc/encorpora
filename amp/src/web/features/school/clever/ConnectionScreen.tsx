@@ -479,10 +479,7 @@ export function ConnectionScreen() {
       ),
     };
   const content = (
-    <PlainPage
-      title={state.title || undefined}
-      back={session ? "/school" : "/schools"}
-    >
+    <PlainPage title={state.title || undefined}>
       {state.body}
       <Toast
         message={error === "reauth" ? "" : error}

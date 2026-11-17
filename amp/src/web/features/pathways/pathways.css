@@ -226,12 +226,11 @@
 .pathways-toolbar > button {
   font-size: 12px;
 }
-.pathways-search {
+/* The shared search field (features/search/SiteSearch), at the browser's
+   width; it owns its height, border and 16 px text. */
+.pathways .pathways-search {
   width: 260px;
-}
-.pathways-search input {
-  width: 100%;
-  font-size: 16px;
+  flex: none;
 }
 .pathways input::placeholder {
   color: var(--atlas-muted);
@@ -565,7 +564,7 @@
     gap: 6px;
     margin-top: 8px;
   }
-  .pathways-search {
+  .pathways .pathways-search {
     width: 100%;
   }
   .pathways-toolbar > button {
@@ -988,7 +987,6 @@
 
 /* The search field and Browse are one matched pair: the same height, the
    same weight of type. */
-.pathways .pathways-toolbar input,
 .pathways .pathways-toolbar > button {
   box-sizing: border-box;
   height: var(--target-size);

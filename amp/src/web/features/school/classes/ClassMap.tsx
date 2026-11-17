@@ -1,3 +1,4 @@
+import { useSession } from "../../../lib/session";
 import type { SpaceWords } from "../../spaces/words";
 import { measured } from "../../../../learning/level-check";
 import { EntityLink } from "../../../nav/links";
@@ -460,7 +461,6 @@ function SmallClassMap({
               (grades.get(student.id)?.suggestion.status === "ready" ||
                 grades.get(student.id)?.final != null) && (
                 <GradeLine
-                  session={session}
                   place={classPlace}
                   term={book.data.term}
                   editable={
@@ -488,7 +488,6 @@ const COMPONENT_NAMES = {
 /** A learner's grade for the open term, in one line: the suggestion and
  * what it rests on once there is enough work, and the final grade. */
 function GradeLine({
-  session,
   place,
   term,
   editable,
@@ -496,7 +495,6 @@ function GradeLine({
   student,
   onMessage,
 }: {
-  session: ReturnType<typeof currentSession>;
   place: { org: string; class: string };
   term: { id: string; name: string };
   editable: boolean;
@@ -504,6 +502,7 @@ function GradeLine({
   student: MapStudent;
   onMessage: (message: string) => void;
 }) {
+  const session = useSession();
   const ready = row?.suggestion.status === "ready";
   // A final grade is a report-card entry: it appears once the term has work
   // to grade (or already has one), never as an empty box beside "Not enough
@@ -530,7 +529,6 @@ function GradeLine({
         <span className={styles.gradeFinal}>
           <span className={styles.gradeFinalLabel}>Final grade</span>
           <FinalField
-            session={session}
             place={place}
             student={{
               id: student.id,

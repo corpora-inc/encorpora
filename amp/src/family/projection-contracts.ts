@@ -6,7 +6,7 @@ import {
   todayStudentResource,
   todayTodoResource,
   todayResponse,
-} from "../schools/teacher-contracts.js";
+} from "../schools/today-contracts.js";
 
 export const familyRoleSchema = z.enum([
   "holder",
