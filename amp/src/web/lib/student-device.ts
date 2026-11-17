@@ -70,7 +70,8 @@ export function rememberStudentSession(
 export function handedReturnName(): string | null {
   try {
     return sessionStorage.getItem(returnNameKey);
-  } catch {
+  } catch (error) {
+    console.warn("The place this device returns to couldn’t be read", error);
     return null;
   }
 }
