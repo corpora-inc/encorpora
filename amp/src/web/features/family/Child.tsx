@@ -64,9 +64,8 @@ import { ChildActivity } from "./ChildActivity";
  * actions: Practice, and beside it their own devices (a code, a QR code or a
  * printed card). On the page, no pages of their own: their practice time
  * (#child-time), their workbooks (#child-workbooks) and their reports to
- * download (#child-reports). For the parent who manages them, their name,
- * and the rarely needed rest under Advanced. A second parent reads it and
- * lets them practice here.
+ * download (#child-reports). Their settings fold under one Settings, closed
+ * until opened. A second parent reads it and lets them practice here.
  */
 export function ChildScreen() {
   const place = useFamilyPlace();
@@ -483,9 +482,9 @@ function ChildReports({
 
 const ok = z.unknown();
 
-/** What the parent who manages this child can change: their name, and
- * under Advanced (rarely needed) their birth year, practice settings,
- * sign-in pictures, consent and deleting their learning data. Each row only
+/** What the parent who manages this child can change, folded under one
+ * Settings: their name, birth year, practice settings, sign-in pictures,
+ * consent and deleting their learning data. Each row only
  * where the server allows it; a second parent reads the year. Their own
  * devices are an action beside Practice, not a setting. */
 export function ChildSettings({
@@ -566,7 +565,8 @@ export function ChildSettings({
     child.classes.some(
       (entry) => entry.id === place.own!.id && !!entry.personId,
     );
-  const advanced = [
+  const any = [
+    caps.rename || naming,
     caps.changeBirthYear || !!child.birthYear,
     caps.changePracticeSettings,
     practice,
@@ -574,14 +574,14 @@ export function ChildSettings({
     caps.manageConsent,
     caps.delete,
   ].some(Boolean);
-  const named = caps.rename || naming;
-  if (!named && !advanced) return null;
+  if (!any) return null;
   return (
-    <section aria-labelledby="child-settings" className={styles.section}>
-      <h2 id="child-settings">{child.name}’s settings</h2>
-      <div className={styles.settingsGroup}>
-        {named && (
-          <dl className={styles.settings}>
+    <section aria-label={`${child.name}’s settings`} className={styles.section}>
+      {/* One folded section: nothing of the settings shows on the page
+          until it is opened. */}
+      <Disclosure summary="Settings" className={styles.childSettings}>
+        <dl className={styles.settings} data-child-settings="">
+          {(caps.rename || naming) && (
             <div className={styles.setting}>
               {naming ? (
                 <form
@@ -643,88 +643,80 @@ export function ChildSettings({
                 </>
               )}
             </div>
-          </dl>
-        )}
-        {/* The rest is rarely needed: folded under Advanced, still in reach
-          (consent and deleting their data among it). */}
-        {advanced && (
-          <Disclosure summary="Advanced" className={styles.advanced}>
-            <dl className={styles.settings} data-child-advanced="">
-              {(caps.changeBirthYear || child.birthYear) && (
-                <div className={styles.setting}>
-                  <div className={styles.settingText}>
-                    <dt>Birth year</dt>
-                    <dd>Sets where practice starts. Their answers stay.</dd>
-                  </div>
-                  <div className={styles.settingAction}>
-                    <YearField
-                      label={`Birth year, ${child.name}`}
-                      earlier
-                      value={child.birthYear ? String(child.birthYear) : ""}
-                      placeholder="Choose a year"
-                      disabled={busy || !caps.changeBirthYear}
-                      onChange={(year) => void saveYear(year)}
-                    />
-                  </div>
-                </div>
-              )}
-              {caps.changePracticeSettings && (
-                <ChildPracticeSettings place={place} child={child} />
-              )}
-              {practice && summary && (
-                <div className={styles.setting} data-practice-settings="">
-                  <div
-                    className={styles.settingText}
-                    style={{ gridColumn: "1 / -1" }}
-                  >
-                    <SatMathFocus
-                      key={`${session.accountId}:${child.id}`}
-                      learner={summary}
-                      token={session.token}
-                      identity={session.accountId}
-                      onSaved={() => invalidateAccount(session.accountId)}
-                    />
-                  </div>
-                </div>
-              )}
-              <SignInPictures key={child.id} place={place} child={child} />
-              {caps.manageConsent && (
-                <div className={styles.setting}>
-                  <div className={styles.settingText}>
-                    <dt>Consent</dt>
-                  </div>
-                  <div className={styles.settingAction}>
-                    <Button
-                      variant="secondary"
-                      data-child-consent=""
-                      onClick={() => setSheet("consent")}
-                    >
-                      Open
-                    </Button>
-                  </div>
-                </div>
-              )}
-              {caps.delete && (
-                <div className={styles.setting}>
-                  <div className={styles.settingText}>
-                    <dt>Delete learning data</dt>
-                    <dd>{child.name}’s answers and levels, for good</dd>
-                  </div>
-                  <div className={styles.settingAction}>
-                    <Button
-                      variant="secondary"
-                      data-child-delete=""
-                      onClick={() => setSheet("delete")}
-                    >
-                      Open
-                    </Button>
-                  </div>
-                </div>
-              )}
-            </dl>
-          </Disclosure>
-        )}
-      </div>
+          )}
+          {(caps.changeBirthYear || child.birthYear) && (
+            <div className={styles.setting}>
+              <div className={styles.settingText}>
+                <dt>Birth year</dt>
+                <dd>Sets where practice starts. Their answers stay.</dd>
+              </div>
+              <div className={styles.settingAction}>
+                <YearField
+                  label={`Birth year, ${child.name}`}
+                  earlier
+                  value={child.birthYear ? String(child.birthYear) : ""}
+                  placeholder="Choose a year"
+                  disabled={busy || !caps.changeBirthYear}
+                  onChange={(year) => void saveYear(year)}
+                />
+              </div>
+            </div>
+          )}
+          {caps.changePracticeSettings && (
+            <ChildPracticeSettings place={place} child={child} />
+          )}
+          {practice && summary && (
+            <div className={styles.setting} data-practice-settings="">
+              <div
+                className={styles.settingText}
+                style={{ gridColumn: "1 / -1" }}
+              >
+                <SatMathFocus
+                  key={`${session.accountId}:${child.id}`}
+                  learner={summary}
+                  token={session.token}
+                  identity={session.accountId}
+                  onSaved={() => invalidateAccount(session.accountId)}
+                />
+              </div>
+            </div>
+          )}
+          <SignInPictures key={child.id} place={place} child={child} />
+          {caps.manageConsent && (
+            <div className={styles.setting}>
+              <div className={styles.settingText}>
+                <dt>Consent</dt>
+              </div>
+              <div className={styles.settingAction}>
+                <Button
+                  variant="secondary"
+                  data-child-consent=""
+                  onClick={() => setSheet("consent")}
+                >
+                  Open
+                </Button>
+              </div>
+            </div>
+          )}
+          {caps.delete && (
+            <div className={styles.setting}>
+              <div className={styles.settingText}>
+                <dt>Delete learning data</dt>
+                <dd>{child.name}’s answers and levels, for good</dd>
+              </div>
+              <div className={styles.settingAction}>
+                <Button
+                  variant="secondary"
+                  data-child-delete=""
+                  onClick={() => setSheet("delete")}
+                >
+                  Open
+                </Button>
+              </div>
+            </div>
+          )}
+        </dl>
+      </Disclosure>
       {/* Consent and deleting their data open over these settings: no
           address of their own, so closing is this screen, where it was. */}
       {caps.manageConsent && (

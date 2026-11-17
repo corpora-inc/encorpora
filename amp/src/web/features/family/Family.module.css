@@ -199,15 +199,9 @@
   flex-wrap: wrap;
   gap: var(--space-3);
 }
-/* A child's settings: their name, then Advanced folded under it, one list. */
-.settingsGroup {
-  display: grid;
-  min-width: 0;
-}
-.settings + .advanced {
-  border-top: 0;
-}
-.advanced[open] {
+/* A child's settings: one folded section. Open, its rows' own lines
+   divide it, the last closing it, so the fold's lower line steps aside. */
+.childSettings[open] {
   border-bottom-color: transparent;
 }
 .setting {
