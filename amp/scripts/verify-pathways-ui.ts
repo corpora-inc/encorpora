@@ -1421,12 +1421,15 @@ try {
   await drill.goto(`${origin}/pathways?skill=${target.id}`);
   await drill.getByRole("link", { name: "Practice", exact: true }).click();
   await drill.locator("#problem-prompt").waitFor();
-  assert.equal(
-    batches[0]?.templateId,
-    templates.find((t) => t.skillId === target.id)?.id,
-    "selected skill reaches the existing batch API",
+  // The skill is practice's own address (/practice/<learner>/skills/<id>):
+  // practice holds to it (its focus, features/practice/curriculum-filter.ts).
+  assert.match(
+    new URL(drill.url()).pathname,
+    new RegExp(`/skills/${target.id}$`),
+    "the selected skill is practice's address",
   );
-  await drill.waitForURL(`${origin}/practice`);
+  assert(batches.length > 0, "practice asks for its problems");
+  await drill.waitForURL((url) => url.pathname.startsWith("/practice"));
   await drill.close();
   const exactType = templates.filter((t) => t.skillId === target.id).at(-1)!;
   const typed = await browser.newPage({
@@ -1468,7 +1471,7 @@ try {
     linkedBatches[0]?.templateId,
     templates.find((t) => t.skillId === target.id)?.id,
   );
-  await linked.waitForURL(`${origin}/practice`);
+  await linked.waitForURL((url) => url.pathname.startsWith("/practice"));
   await linked.close();
 
   // Signed out, the map states the free allowance and its way in is sign-up.
@@ -1722,7 +1725,8 @@ try {
       .waitFor();
     assert.equal(
       await unknown.locator('meta[name="robots"]').getAttribute("content"),
-      "noindex",
+      // Kept out of the index, its links still followed (pathways-metadata.ts).
+      "noindex, follow",
     );
     await unknown.close();
   }
