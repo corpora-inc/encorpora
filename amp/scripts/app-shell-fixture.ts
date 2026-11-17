@@ -315,7 +315,9 @@ export type Scenario = {
  * family's Today ("Let … practice here"): the child's own session opens on
  * their practice (docs/architecture/spaces.md). */
 export async function handOver(page: Page, origin: string, learnerId: string) {
+  // `/` is the launcher: its first way in is the family.
   await page.goto(`${origin}/`);
+  await page.locator("[data-launcher] [data-launch]").first().click();
   await page
     .locator(`[data-practice-here=${JSON.stringify(learnerId)}]`)
     .first()
@@ -395,11 +397,12 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       ready: (p) => p.locator('.frontier-map[aria-busy="false"]').waitFor(),
     },
     {
-      // A parent signs in to their family's Today.
-      id: "family-today",
+      // `/` signed in: the launcher, the family first.
+      id: "launcher",
       path: "/",
       state: "paid",
-      ready: (p) => p.locator("[data-today-title]").first().waitFor(),
+      ready: (p) =>
+        p.locator("[data-launcher] [data-launch]").first().waitFor(),
     },
     {
       // A parent's Overview is their child's page in the family.

@@ -69,6 +69,18 @@ export function placeEntries(me: SignedInMe): PlaceEntry[] {
   return placeGroups(me, null).flatMap((group) => group.entries);
 }
 
+/** Opening a place: its learner is chosen, and it is remembered as the one
+ * `/` offers first (starting or trying a level is a step, not a place). */
+export function choosePlace(me: SignedInMe, place: PlaceEntry) {
+  choosePlaceLearner(me, place.id);
+  if (place.id === "home" || (place.id === "me" && place.path === "me"))
+    rememberPlace(me.account.id, place.id);
+  else if (place.id.startsWith("school:"))
+    rememberPlace(me.account.id, place.id as `school:${string}`);
+  else if (place.id.startsWith("family:"))
+    rememberPlace(me.account.id, `school:${place.id.slice(7)}`);
+}
+
 /** Choosing a place chooses its learner: the adult's own for their
  * practice, one of the family's children for a family (unless one already
  * is), and nobody for a class or school, where no learner belongs. */
@@ -151,14 +163,7 @@ export function PlaceSwitcher({
   const name = here?.name ?? label ?? "Your places";
   const choose = (place: PlaceEntry) => {
     if (place.id === here?.id) return;
-    choosePlaceLearner(me, place.id);
-    // A place `/` can return to; starting or trying a level is a step.
-    if (place.id === "home" || (place.id === "me" && place.path === "me"))
-      rememberPlace(me.account.id, place.id);
-    else if (place.id.startsWith("school:"))
-      rememberPlace(me.account.id, place.id as `school:${string}`);
-    else if (place.id.startsWith("family:"))
-      rememberPlace(me.account.id, `school:${place.id.slice(7)}`);
+    choosePlace(me, place);
     onNavigate?.();
     void navigate(
       place.path ? { to: "/$", params: { _splat: place.path } } : { to: "/" },

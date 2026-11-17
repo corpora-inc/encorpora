@@ -22,8 +22,12 @@ export function PrintButton({
   className,
   download,
   disabled,
+  label,
 }: {
   children: ReactNode;
+  /** The accessible name, when the visible words leave out what the file
+   * is (it begins with them). */
+  label?: string;
   variant?: ButtonVariant;
   /** The button's own class (the anchor around it is the component's). */
   className?: string;
@@ -75,6 +79,7 @@ export function PrintButton({
         className={className}
         aria-busy={busy}
         disabled={disabled}
+        aria-label={label}
         aria-describedby={message ? id : undefined}
         onClick={() => void run()}
       >
