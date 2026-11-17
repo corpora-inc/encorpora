@@ -20,7 +20,6 @@ import { authStep } from "../../app/auth-links";
 import { usePitchAttention } from "./usePitchAttention";
 import { phoneVideoQuery, pitchVideo } from "./video";
 import { practiceStill } from "./product";
-import { fundedPrograms } from "../../lib/funded-entry";
 import styles from "./Pitch.module.css";
 import { FREE_ONLINE_PROBLEMS } from "../../../learning/free-allowance";
 import { TRIAL_WORKBOOKS_MAX } from "../../../learning/trial-workbooks";
@@ -204,10 +203,13 @@ export function PitchPage() {
           <section
             ref={purchase}
             className={`${styles.details} ${styles.price}`}
-            aria-labelledby="pitch-price"
+            // Nothing for sale here (no prices, no program): no "Price".
+            {...(offered === "free"
+              ? { "aria-label": "Get started" }
+              : { "aria-labelledby": "pitch-price" })}
             data-actions={offered}
           >
-            <h2 id="pitch-price">Price</h2>
+            {offered !== "free" && <h2 id="pitch-price">Price</h2>}
             {data.failed ? (
               <div className={styles.priceError} role="alert">
                 <p>Prices didn’t load. Check your connection and try again.</p>
@@ -224,28 +226,25 @@ export function PitchPage() {
                 onInterval={setPlan}
               />
             )}
-            {!funded && (
-              <p className={styles.funds} data-education-funds="">
-                Paying with an education fund?{" "}
-                {Object.values(fundedPrograms).map((entry, index, all) => (
-                  <span key={entry.slug}>
-                    <PitchLink
-                      place={{ to: `/invoice/${entry.slug}` }}
-                      className={styles.inlineLink}
-                      onClick={() =>
-                        track("buy_click", { path: "funded", from: "pitch" })
-                      }
-                    >
-                      {entry.name}
-                    </PitchLink>
-                    {index < all.length - 2
-                      ? ", "
-                      : index === all.length - 2
-                        ? " or "
-                        : "."}
-                  </span>
-                ))}
-              </p>
+            {!funded && !!data.funds?.length && (
+              <div className={styles.funds} data-education-funds="">
+                <p>Paying with an education fund?</p>
+                <ul>
+                  {data.funds.map((entry) => (
+                    <li key={entry.slug}>
+                      <PitchLink
+                        place={{ to: `/invoice/${entry.slug}` }}
+                        className={buttonClass("quiet", styles.fundLink)}
+                        onClick={() =>
+                          track("buy_click", { path: "funded", from: "pitch" })
+                        }
+                      >
+                        {entry.name}
+                      </PitchLink>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             )}
             <div className={styles.free}>
               {tryFree("secondary")}
