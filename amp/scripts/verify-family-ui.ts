@@ -170,15 +170,17 @@ try {
     if (path === "/api/v1/family/export") return route.fallback();
     return route.fulfill({ json: {} });
   });
+  // The overlay's own panels; a panel may fold more inside it (consent's
+  // "Privacy details").
   const panel = (summary: string) =>
-    page.locator("details").filter({
-      has: page.locator("summary", { hasText: summary }),
+    page.locator("[data-privacy-panels] > details").filter({
+      has: page.locator(":scope > summary", { hasText: summary }),
     });
   async function open(summary: string) {
     const fold = panel(summary);
     await fold.waitFor();
     if (!(await fold.evaluate((node) => (node as HTMLDetailsElement).open)))
-      await fold.locator("summary").click();
+      await fold.locator(":scope > summary").click();
   }
   async function fits(label: string) {
     const size = page.viewportSize()!;
