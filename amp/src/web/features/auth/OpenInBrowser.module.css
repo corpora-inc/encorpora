@@ -1,0 +1,56 @@
+/* Over the page, under the app's own menu button at the top right. */
+.anchor {
+  position: fixed;
+  top: calc(env(safe-area-inset-top, 0px) + var(--space-3));
+  right: calc(env(safe-area-inset-right, 0px) + var(--space-3));
+  z-index: 1200;
+  max-width: calc(100vw - 2 * var(--space-3));
+}
+.hint {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3) var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  box-shadow: var(--shadow-overlay);
+  font: inherit;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  animation: arrive 180ms ease-out;
+}
+.hint:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.menu {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.75em;
+  padding: 0 var(--space-1);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface-sunken);
+  font-weight: 700;
+}
+.arrow {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  color: var(--color-primary);
+}
+@keyframes arrive {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hint {
+    animation: none;
+  }
+}

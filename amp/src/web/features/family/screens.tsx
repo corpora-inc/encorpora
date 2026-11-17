@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
-import { sessionOptions } from "../../lib/query";
+import { useSession } from "../../lib/session";
 import { buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
 import { LoadingScreen } from "../../ui/LoadingScreen";
@@ -26,10 +26,7 @@ export { FamilySettingsScreen } from "./settings/Settings";
 /** `/family` with several families to choose between: the account holder's
  * own and one they are the second parent of. */
 export function FamilyChooserScreen() {
-  const session = useQuery(sessionOptions).data;
-  const places = useQuery(
-    familyPlacesOptions(session ?? { accountId: "", token: "" }),
-  );
+  const places = useQuery(familyPlacesOptions(useSession()));
   const parents = (places.data?.families ?? []).filter(
     (family) => family.role !== "co-teacher",
   );

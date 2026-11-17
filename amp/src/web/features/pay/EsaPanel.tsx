@@ -55,8 +55,8 @@ const asPlan = (offer: FundingOffer): AnnualOffer => ({
 
 /** A program's short name ("Arizona ESA"), else its full one. */
 const shortName = (program: { id: string; name: string }) =>
-  Object.values(fundedPrograms).find((entry) => entry.id === program.id)?.name ??
-  program.name;
+  Object.values(fundedPrograms).find((entry) => entry.id === program.id)
+    ?.name ?? program.name;
 
 /** The learner's name as the invoice's first guess: never a placeholder
  * ("Child 2") and never "Me". */
@@ -86,23 +86,31 @@ export function EsaPanel() {
   const { base } = usePayAddress();
   const create = useCreateInvoice(session, ({ invoiceId }) => {
     clearDraft(key);
-    void navigate({ to: `${base}/invoice/${encodeURIComponent(invoiceId)}` as never });
+    void navigate({
+      to: `${base}/invoice/${encodeURIComponent(invoiceId)}` as never,
+    });
   });
   // One key per exact request, so a retry never makes a second invoice.
-  const attempt = useRef<{ payload: string; key: string; invoiceId?: string } | null>(
-    null,
-  );
-  if (offers.error) return <Retry error={offers.error} onRetry={() => void offers.refetch()} />;
+  const attempt = useRef<{
+    payload: string;
+    key: string;
+    invoiceId?: string;
+  } | null>(null);
+  if (offers.error)
+    return <Retry error={offers.error} onRetry={() => void offers.refetch()} />;
   if (!offers.data) return <RowsSkeleton rows={4} />;
   const programs = fundingPrograms(offers.data);
   if (!programs.length)
-    return <Panel text="No education-funds program is taking invoices right now. Card works today." />;
+    return (
+      <Panel text="No education-funds program is taking invoices right now. Card works today." />
+    );
   // One program needs no choosing.
   const program =
     programs.find((entry) => entry.id === choice.program) ??
     (programs.length === 1 ? programs[0] : undefined);
   const plans = (program ?? programs[0]!).offers;
-  const offer = plans.find((entry) => offerInterval(entry) === interval) ?? plans[0]!;
+  const offer =
+    plans.find((entry) => offerInterval(entry) === interval) ?? plans[0]!;
   const email = me.account.email ?? "";
   const name = typed ?? billingNameGuess(learner);
   const own = learner.simulation ? null : learner.id;
@@ -110,7 +118,8 @@ export function EsaPanel() {
   // The step shown: the one chosen, never past what is known (a plan needs
   // its program).
   const step: EsaStep = !program ? "program" : (choice.esaStep ?? "plan");
-  const go = (next: EsaStep) => choose(session.accountId, learner.id, { esaStep: next });
+  const go = (next: EsaStep) =>
+    choose(session.accountId, learner.id, { esaStep: next });
   return (
     <div className={styles.wizard}>
       <FlowSteps
@@ -128,7 +137,11 @@ export function EsaPanel() {
           columns={{ narrow: 1, wide: 1 }}
           value={program?.id ?? null}
           onChange={(id) => {
-            if (id) choose(session.accountId, learner.id, { program: id, esaStep: "plan" });
+            if (id)
+              choose(session.accountId, learner.id, {
+                program: id,
+                esaStep: "plan",
+              });
           }}
           tiles={programs.map((entry) => ({
             value: entry.id,
@@ -137,7 +150,9 @@ export function EsaPanel() {
               <span className={styles.program}>
                 <span className={styles.programName}>{shortName(entry)}</span>
                 <span className={styles.programMeta}>
-                  {entry.statusLabel ?? stateNames[entry.jurisdiction] ?? entry.name}
+                  {entry.statusLabel ??
+                    stateNames[entry.jurisdiction] ??
+                    entry.name}
                 </span>
               </span>
             ),
@@ -146,7 +161,10 @@ export function EsaPanel() {
       )}
       {step === "plan" && (
         <>
-          <PlanPicker offers={plans.map(asPlan)} terms={<FundsTerms offer={offer} />} />
+          <PlanPicker
+            offers={plans.map(asPlan)}
+            terms={<FundsTerms offer={offer} />}
+          />
           <div className={styles.actions}>
             <Button variant="primary" onClick={() => go("name")}>
               Continue
@@ -160,7 +178,12 @@ export function EsaPanel() {
           onSubmit={(event) => {
             event.preventDefault();
             if (create.isPending || !program) return;
-            const fields = { offer: offer.id, revision: offer.revision, name: name.trim(), email };
+            const fields = {
+              offer: offer.id,
+              revision: offer.revision,
+              name: name.trim(),
+              email,
+            };
             const payload = JSON.stringify(fields);
             if (attempt.current?.payload !== payload)
               attempt.current = { payload, key: crypto.randomUUID() };
@@ -173,7 +196,8 @@ export function EsaPanel() {
               idempotencyKey: attempt.current.key,
               invoiceId: attempt.current.invoiceId,
               onInvoice: (invoiceId) => {
-                if (attempt.current?.payload === payload) attempt.current.invoiceId = invoiceId;
+                if (attempt.current?.payload === payload)
+                  attempt.current.invoiceId = invoiceId;
               },
             });
           }}
@@ -202,7 +226,8 @@ export function EsaPanel() {
               disabled={create.isPending}
             />
             <p className={styles.hint}>
-              As it appears in your {program ? shortName(program) : "program"} account.
+              As it appears in your {program ? shortName(program) : "program"}{" "}
+              account.
             </p>
           </div>
           {learner.learningAllowed === false ? (
@@ -218,8 +243,8 @@ export function EsaPanel() {
                 Create invoice
               </Button>
               <p className={styles.fine}>
-                {learner.adult ? "You get" : `${learner.name} gets`} full access as
-                soon as it’s created. We email the invoice to {email}.
+                {learner.adult ? "You get" : `${learner.name} gets`} full access
+                as soon as it’s created. We email the invoice to {email}.
               </p>
               {/* Reserved: a failure appears here without moving anything. */}
               <p className={styles.error} role="alert">
@@ -263,7 +288,11 @@ function ConsentFirst() {
           : " Card checkout confirms it as you pay."}
       </p>
       {email.data?.available && (
-        <Link to="/$" params={{ _splat: "consent" }} className={buttonClass("primary")}>
+        <Link
+          to="/$"
+          params={{ _splat: "consent" }}
+          className={buttonClass("primary")}
+        >
           Confirm by email
         </Link>
       )}
@@ -292,8 +321,11 @@ function FundsTerms({ offer }: { offer: FundingOffer }) {
 /** "ClassWallet" for its address, else the program's name. */
 export function providerName(url: string, program: string) {
   try {
-    return new URL(url).hostname === "app.classwallet.com" ? "ClassWallet" : program;
-  } catch {
+    return new URL(url).hostname === "app.classwallet.com"
+      ? "ClassWallet"
+      : program;
+  } catch (failure) {
+    console.warn("A program's payment address isn't a URL", failure);
     return program;
   }
 }
@@ -316,7 +348,9 @@ const day = (value: string) =>
 /** Whether the invoice's learner has access: the grant, or its pending
  * bridge (docs/funded-purchases.md). */
 export function invoiceGivesAccess(
-  invoice: { accessStatus?: string; fundedPending?: { status: string } | null } | undefined,
+  invoice:
+    | { accessStatus?: string; fundedPending?: { status: string } | null }
+    | undefined,
   learner: PayLearner,
 ) {
   return (
@@ -333,10 +367,15 @@ export function InvoiceDone({ invoiceId }: { invoiceId: string }) {
   const download = useDownloadInvoice(session);
   const submitted = useReportSubmitted(session);
   if (invoice.error)
-    return <Retry error={invoice.error} onRetry={() => void invoice.refetch()} />;
+    return (
+      <Retry error={invoice.error} onRetry={() => void invoice.refetch()} />
+    );
   if (!invoice.data) return <RowsSkeleton rows={4} />;
   const record = invoice.data;
-  const provider = providerName(record.offer.destinationUrl, record.offer.programName);
+  const provider = providerName(
+    record.offer.destinationUrl,
+    record.offer.programName,
+  );
   const paid = record.paymentStatus === "settled";
   const reported = record.status === "parent-reported-submitted";
   const deadline = record.fundedPending?.endsAt;
@@ -352,27 +391,31 @@ export function InvoiceDone({ invoiceId }: { invoiceId: string }) {
               : `We’re emailing the invoice to ${address}.`}
         </p>
         <div className={styles.actions}>
-          <InvoicePractice
-            session={session}
-            learnerId={learner.id}
-            adult={!!learner.adult}
-          />
+          <InvoicePractice learnerId={learner.id} adult={!!learner.adult} />
           <Button
             variant="secondary"
             aria-busy={download.isPending || undefined}
             disabled={download.isPending}
             onClick={() => {
               recordPurchaseAction("document_download");
-              download.mutate({ id: record.id, documentPolicy: record.offer.documentPolicy });
+              download.mutate({
+                id: record.id,
+                documentPolicy: record.offer.documentPolicy,
+              });
             }}
           >
             Download invoice
           </Button>
         </div>
       </div>
-      <Toast message={download.error?.message ?? ""} onDismiss={() => download.reset()} />
       <Toast
-        message={submitted.error ? "Your submission wasn’t recorded. Try again." : ""}
+        message={download.error?.message ?? ""}
+        onDismiss={() => download.reset()}
+      />
+      <Toast
+        message={
+          submitted.error ? "Your submission wasn’t recorded. Try again." : ""
+        }
         onDismiss={() => submitted.reset()}
       />
       <PageSection
@@ -386,20 +429,24 @@ export function InvoiceDone({ invoiceId }: { invoiceId: string }) {
       >
         {paid ? (
           <p className={styles.text}>
-            {record.offer.programName} paid this invoice. Its receipt is in Billing.
+            {record.offer.programName} paid this invoice. Its receipt is in
+            Billing.
           </p>
         ) : reported ? (
           <p className={styles.text}>
             {record.offer.programName} reviews and pays it.
-            {deadline && ` Access continues through ${day(deadline)} while it does.`}{" "}
+            {deadline &&
+              ` Access continues through ${day(deadline)} while it does.`}{" "}
             Billing shows when it’s paid.
           </p>
         ) : (
           <>
             <ol className={styles.steps}>
-              {instructionSteps(record.offer.instructions).map((step, index) => (
-                <li key={index}>{step}</li>
-              ))}
+              {instructionSteps(record.offer.instructions).map(
+                (step, index) => (
+                  <li key={index}>{step}</li>
+                ),
+              )}
             </ol>
             {deadline && (
               <p className={styles.text}>

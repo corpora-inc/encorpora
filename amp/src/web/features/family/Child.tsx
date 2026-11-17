@@ -572,7 +572,7 @@ function ChildSettingsRows({
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState("");
   const [error, setError] = useState("");
-  const say = (failure: unknown, fallback: string) => {
+  const reportFailure = (failure: unknown, fallback: string) => {
     console.error(fallback, failure);
     setError(
       failure instanceof AppError && failure.message
@@ -595,7 +595,7 @@ function ChildSettingsRows({
       setNaming(false);
       setNotice("Name saved.");
     } catch (failure) {
-      say(failure, "The name didn’t save. Try again.");
+      reportFailure(failure, "The name didn’t save. Try again.");
     } finally {
       setBusy(false);
     }
@@ -612,7 +612,10 @@ function ChildSettingsRows({
       await invalidateAccount(session.accountId);
       setNotice(`${child.name}’s birth year is ${year}.`);
     } catch (failure) {
-      say(failure, "That year didn’t save. Choose it again from the list.");
+      reportFailure(
+        failure,
+        "That year didn’t save. Choose it again from the list.",
+      );
     } finally {
       setBusy(false);
     }

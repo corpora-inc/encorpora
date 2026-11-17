@@ -14,6 +14,7 @@ import { schoolShellReview } from "./school-shell-review";
  *       [--skip-journeys] [--reuse <schema>] [--keep] [--port 4400]
  */
 import assert from "node:assert/strict";
+import { waitForLayers } from "./layer-probe";
 import { randomUUID } from "node:crypto";
 import { mkdir, readFile, realpath, writeFile } from "node:fs/promises";
 import { PDFDocument } from "pdf-lib";
@@ -510,14 +511,23 @@ async function journey(browser: Browser, engine: string, width: number) {
   await lesson.click();
   const sheet = page.getByRole("dialog");
   await sheet.waitFor();
-  // A lesson layer over Today (?open=lesson:<type>).
-  await page.waitForFunction(() => location.search.includes("open=lesson"));
+  // A lesson layer over Today, in its layers, never its address.
+  await page.waitForFunction(
+    () =>
+      document
+        .querySelector("[data-layer-frame]")
+        ?.getAttribute("data-layers")
+        ?.startsWith("lesson:") === true,
+  );
+  check(
+    `${label} the lesson stays out of the address`,
+    !page.url().includes("open="),
+  );
   await sheet.locator("h2").first().waitFor();
   await settle(page, 400);
   await shot(page, "today-lesson", width, theme);
   await page.keyboard.press("Escape");
   await sheet.waitFor({ state: "detached" });
-  await page.waitForFunction(() => !location.search.includes("open="));
 
   // Checking off survives a reload, today.
   const box = page.getByRole("checkbox", {
@@ -840,10 +850,10 @@ async function sweep(browser: Browser, engine: string) {
             new URL(page.url()).pathname,
             `/school/${orgId}/students`,
           );
-          assert.equal(
-            new URL(page.url()).searchParams.get("open"),
-            `student:${amara}`,
-          );
+          // The old student address: their layer over Students, in one
+          // hop to the screen's own address.
+          assert.equal(new URL(page.url()).searchParams.get("open"), null);
+          await waitForLayers(page, [`student:${amara}`]);
         }
         await schoolShellReview(
           page,

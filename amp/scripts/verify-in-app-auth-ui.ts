@@ -4,6 +4,7 @@ import { chromium as rawChromium, webkit, type Page } from "playwright";
 import { createServer } from "vite";
 import { secureChromium } from "../browser-security.mjs";
 import { userAgents } from "../tests/fixtures/in-app-user-agents";
+import { inAppBrowser } from "../src/analytics/browser-kind";
 import { settleArrival } from "./ui-settle";
 
 // Synthetic API responses; no providers, mail services or production requests.
@@ -86,16 +87,18 @@ try {
             ? [320, 390, 768, 1280]
             : [390])
           for (const colorScheme of ["light", "dark"] as const) {
+            const userAgent =
+              engine === "webkit" &&
+              ["facebook", "tiktok", "messenger"].includes(scenario.name)
+                ? sample(
+                    scenario.name === "messenger"
+                      ? "messenger-ios"
+                      : `${scenario.name}-1`,
+                  )
+                : scenario.ua;
+            const platform = inAppBrowser(userAgent)!.platform;
             const context = await browser.newContext({
-              userAgent:
-                engine === "webkit" &&
-                ["facebook", "tiktok", "messenger"].includes(scenario.name)
-                  ? sample(
-                      scenario.name === "messenger"
-                        ? "messenger-ios"
-                        : `${scenario.name}-1`,
-                    )
-                  : scenario.ua,
+              userAgent,
               viewport: { width, height: width === 320 ? 740 : 900 },
               colorScheme,
             });
@@ -109,6 +112,13 @@ try {
               content: `
               window.__shifts = 0;
               window.__shiftDetails = [];
+              window.__handoffs = [];
+              const follow = HTMLAnchorElement.prototype.click;
+              HTMLAnchorElement.prototype.click = function () {
+                if (/^(intent|x-safari-https?):/.test(this.href))
+                  return void window.__handoffs.push(this.href);
+                return follow.call(this);
+              };
               Object.defineProperty(navigator, "clipboard", {
                 configurable: true,
                 value: { writeText: async (value) => {
@@ -176,9 +186,10 @@ try {
                 await page.goto(origin + path);
                 await page.getByLabel("Password", { exact: true }).waitFor();
                 await settleArrival(page);
+                // Google is always offered, in its usual place.
                 assert.equal(
                   await page.locator('[data-provider="google"]').count(),
-                  0,
+                  1,
                 );
                 assert.equal(
                   await page.getByRole("button", { name: /passkey/i }).count(),
@@ -245,90 +256,76 @@ try {
                 const before = await geometry(page);
                 await page.evaluate(() => {
                   (window as any).__shifts = 0;
+                  (window as any).__handoffs = [];
                 });
-                await page
-                  .getByRole("button", {
-                    name: "Open in your browser",
-                    exact: true,
-                  })
-                  .click();
-                const dialog = page.getByRole("dialog");
-                await dialog.waitFor();
-                await page
-                  .getByText("Link copied.", { exact: false })
-                  .waitFor();
-                const url = page.url();
+                // One tap on Google opens the same sign-in in the real
+                // browser, where Google starts at once.
+                await page.locator('[data-provider="google"]').click();
+                const [handoff] = await page.evaluate(
+                  () => (window as any).__handoffs as string[],
+                );
+                const address =
+                  platform === "android"
+                    ? handoff.match(
+                        /^intent:\/\/(.*)#Intent;scheme=http;package=com\.android\.chrome;end$/,
+                      )?.[1]
+                    : handoff.match(/^x-safari-http:\/\/(.*)$/)?.[1];
+                assert.ok(address, `${platform} handoff: ${handoff}`);
+                const opened = new URL(`http://${address}`);
+                const here = new URL(page.url());
                 assert.equal(
-                  await page.getByLabel("Page link").inputValue(),
-                  url,
+                  opened.pathname,
+                  entry === "sign-in" ? "/sign-in" : "/sign-up",
+                );
+                assert.equal(opened.hash, "#continue-with-google");
+                assert.equal(
+                  opened.searchParams.get("entry"),
+                  here.searchParams.get("entry"),
                 );
                 assert.equal(
-                  await page.evaluate(() => (window as any).__copied),
-                  url,
+                  opened.searchParams.get("return"),
+                  here.searchParams.get("return"),
+                );
+                // No browser opened here: after a moment, the hint points
+                // at the app's menu, over the page.
+                const hint = page.locator("[data-browser-hint]");
+                await hint.waitFor();
+                assert.equal(
+                  (await hint.textContent())?.trim(),
+                  platform === "ios"
+                    ? "Open in Safari from ⋯"
+                    : "Open in your browser from ⋮",
+                );
+                const box = (await hint.boundingBox())!;
+                const viewport = page.viewportSize()!;
+                assert.ok(box.height >= 44, "hint is a 44px target");
+                assert.ok(
+                  box.x + box.width <= viewport.width && box.x >= 0,
+                  "hint fits the width",
+                );
+                assert.ok(
+                  viewport.width - (box.x + box.width) < 24 && box.y < 24,
+                  "hint sits under the app's menu, top right",
                 );
                 assert.deepEqual(
                   await geometry(page),
                   before,
-                  "handoff does not move form",
-                );
-                const box = await dialog.boundingBox();
-                await page.evaluate(() => {
-                  (window as any).__denyCopy = true;
-                });
-                await dialog
-                  .getByRole("button", { name: "Copy link", exact: true })
-                  .click();
-                await page
-                  .getByText("Select and copy the page link", { exact: false })
-                  .waitFor();
-                assert.deepEqual(
-                  await dialog.boundingBox(),
-                  box,
-                  "clipboard failure does not move dialog",
-                );
-                assert.equal(
-                  await page.getByLabel("Page link").evaluate((el) => {
-                    const field = el as HTMLTextAreaElement;
-                    return field.selectionEnd - field.selectionStart;
-                  }),
-                  url.length,
+                  "handoff does not move the form",
                 );
                 await fits(page);
                 if (entry === "sign-up")
                   await page.screenshot({
-                    path: `${shots}/${tag}-copy-fallback.png`,
+                    path: `${shots}/${tag}-handoff-hint.png`,
                     fullPage: true,
                   });
-                await page.keyboard.press("Escape");
-                await dialog.waitFor({ state: "hidden" });
+                await hint.click();
+                await hint.waitFor({ state: "detached" });
                 assert.deepEqual(await geometry(page), before);
-                // Clipboard denial on the initial click must also expose a selected link.
-                await page
-                  .getByRole("button", {
-                    name: "Open in your browser",
-                    exact: true,
-                  })
-                  .click();
-                await page
-                  .getByText("Select and copy the page link", { exact: false })
-                  .waitFor();
-                assert.equal(
-                  await page.getByLabel("Page link").evaluate((el) => {
-                    const field = el as HTMLTextAreaElement;
-                    return field.selectionEnd - field.selectionStart;
-                  }),
-                  url.length,
-                );
-                await page.keyboard.press("Escape");
-                await dialog.waitFor({ state: "hidden" });
                 assert.equal(
                   await page.evaluate(() => (window as any).__shifts),
                   0,
-                  `copy feedback has zero layout shift: ${JSON.stringify(await page.evaluate(() => (window as any).__shiftDetails))}`,
+                  `handoff has zero layout shift: ${JSON.stringify(await page.evaluate(() => (window as any).__shiftDetails))}`,
                 );
-                await page.evaluate(() => {
-                  (window as any).__denyCopy = false;
-                });
                 if (entry === "sign-in") {
                   await page
                     .getByLabel("Email", { exact: true })
@@ -371,11 +368,8 @@ try {
                 new URL(page.url()).searchParams.get("entry"),
                 "pitch-buy",
               );
-              assert.equal(
-                await page.locator('[data-provider="google"]').count(),
-                0,
-              );
-              // A provider-only account must offer the browser handoff, no dead auth button.
+              // A provider-only account offers what works: Google through
+              // the handoff, a passkey through the real browser.
               for (const method of ["google", "passkey"]) {
                 methods = [method];
                 await page.goto(origin + "/sign-up?entry=pitch-buy");
@@ -397,22 +391,40 @@ try {
                   before,
                   "method hint preserves card",
                 );
+                const hinted = page.locator("[data-method-hint]");
                 assert.equal(
-                  await page.locator('[data-provider="google"]').count(),
-                  0,
+                  await hinted.locator('[data-provider="google"]').count(),
+                  method === "google" ? 1 : 0,
                 );
                 assert.equal(
                   await page.getByRole("button", { name: /passkey/i }).count(),
                   0,
                 );
-                assert.ok(
-                  await page
-                    .getByRole("button", {
-                      name: "Open in your browser",
-                      exact: true,
-                    })
-                    .isVisible(),
+                const onward = hinted.getByRole("button", {
+                  name:
+                    platform === "ios"
+                      ? "Continue in Safari"
+                      : "Continue in your browser",
+                  exact: true,
+                });
+                assert.equal(
+                  await onward.count(),
+                  method === "passkey" ? 1 : 0,
                 );
+                if (method === "passkey") {
+                  await page.evaluate(() => {
+                    (window as any).__handoffs = [];
+                  });
+                  await onward.click();
+                  const [handoff] = await page.evaluate(
+                    () => (window as any).__handoffs as string[],
+                  );
+                  assert.ok(
+                    handoff.includes("/sign-up?entry=pitch-buy"),
+                    handoff,
+                  );
+                }
+                await fits(page);
               }
               assert.deepEqual(errors, []);
               checked++;
@@ -450,12 +462,18 @@ try {
           await page.getByLabel("Password", { exact: true }).count(),
           0,
         );
-        assert.equal(
-          await page
-            .getByRole("button", { name: "Open in your browser", exact: true })
-            .count(),
-          0,
-        );
+        // Google signs in here directly: no handoff, no hint.
+        let social = 0;
+        await page.route("**/api/auth/sign-in/social", (route) => {
+          social++;
+          return route.fulfill({
+            json: { url: `${origin}/sign-up`, redirect: false },
+          });
+        });
+        await page.locator('[data-provider="google"]').click();
+        await page.waitForTimeout(1800);
+        assert.equal(social, 1);
+        assert.equal(await page.locator("[data-browser-hint]").count(), 0);
         await context.close();
       }
     } finally {

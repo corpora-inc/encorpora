@@ -1,5 +1,6 @@
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
+import { waitForLayers } from "./layer-probe";
 import { fileURLToPath } from "node:url";
 import { chromium as rawChromium } from "playwright";
 const chromium = secureChromium(rawChromium);
@@ -127,15 +128,14 @@ try {
     countingTitle,
   );
   assert.match(await map.title(), new RegExp(countingTitle));
-  // A skill's older address opens it as a layer over the map
-  // (`/pathways?open=skill:<id>`); closing it leaves the map, whose title
-  // drops the skill's.
-  assert.equal(
-    new URL(map.url()).searchParams.get("open"),
-    "skill:count-to-20",
-  );
+  // A skill's older address opens it as a layer over the map, in one hop
+  // to the map's own address (nav/legacy-layers.ts); closing it leaves the
+  // map, whose title drops the skill's.
+  assert.equal(new URL(map.url()).pathname, "/pathways");
+  assert.equal(new URL(map.url()).searchParams.get("open"), null);
+  await waitForLayers(map, ["skill:count-to-20"]);
   await map.getByRole("button", { name: "Close", exact: true }).click();
-  await map.waitForURL((url) => !url.searchParams.has("open"));
+  await waitForLayers(map, []);
   await map.waitForFunction(
     (title) => !document.title.includes(title),
     countingTitle,

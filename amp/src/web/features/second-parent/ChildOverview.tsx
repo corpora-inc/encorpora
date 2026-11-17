@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { studentGrantResource } from "../../../schools/contracts";
-import type { AuthSession } from "../../auth";
+import { useSession } from "../../lib/session";
 import { useLoggedError } from "../../feedback";
 import { Home, type FrontierMap } from "../../Home";
 import { request } from "../../lib/api";
@@ -22,14 +22,13 @@ const failures: Record<string, string> = {
  * to the child, as "Let … practice here" does on the class; a child who can't
  * practice yet has none here, because access is the account holder's. */
 export function ChildOverview({
-  session,
   child,
   strands,
 }: {
-  session: AuthSession;
   child: NonNullable<ReturnType<typeof secondParentChild>>;
   strands: readonly string[];
 }) {
+  const session = useSession();
   const frontier = useQuery(learnerFrontierOptions(session, child.id));
   const finish = useFinishSignIn();
   const [busy, setBusy] = useState(false);

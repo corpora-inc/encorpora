@@ -3,7 +3,6 @@ import {
   restoreFamilyPractice,
 } from "../lib/family-practice-history";
 import { knownDocumentPath } from "./document-routes";
-import { requestFetch } from "../lib/request-transport";
 import { invoiceOffersOptions } from "../features/funding/invoice-offers";
 import { signupEntrySchema } from "../../parent-followup/contracts";
 import {
@@ -62,8 +61,21 @@ import {
   type CampaignSearch,
 } from "../lib/funded-entry";
 import { chosenPlan } from "../lib/pending-trial";
-import { hasInitialConsentChallenge } from "../consent-entry";
-import { hasPurchaseReturn } from "../purchase-return";
+import { followAlias, LEGACY_ALIASES } from "./legacy-aliases";
+import {
+  admit,
+  elsewhere,
+  requireSignedIn,
+  signInTarget,
+  toOwnPlace,
+  withQuery,
+} from "./sign-in-gate";
+import {
+  cleverReturn,
+  homeReturn,
+  resumeStripeReturn,
+  stripeReturn,
+} from "./third-party-returns";
 import { knownStale, onSignedOut } from "../lib/app-recovery";
 import { autoReloadBlock } from "../lib/reload-guard";
 import {
@@ -85,11 +97,9 @@ import {
 } from "../features/school/core-api";
 import { frameData, schoolRoutes, staffScreen } from "./school-routes";
 import { familyRoutes } from "./family-routes";
-import { privacyRoutes } from "./privacy-routes";
 import { accountOverlays } from "./account-overlays";
-import { payRoutes } from "./pay-routes";
+import { payAddresses } from "./pay-routes";
 import { appReturn, RETURN_LIMIT } from "../features/spaces/returns";
-import { toFamilyAddress } from "./family-redirect";
 import { loadCurriculum, loadScope } from "../features/schools/api";
 import {
   marksSearchSchema,
@@ -98,16 +108,9 @@ import {
 } from "../features/school/classroom/search";
 import { designAllowed, designSearchSchema } from "../features/design/search";
 import { stampPrevious, VIEW_KEYS } from "../lib/return-to";
+import { applyDeferredIdentity } from "../features/school/join/api";
 import { settleLegacyLayers } from "../nav/links";
-import { seedLayers } from "../nav/layer-store";
-import {
-  MAX_LAYERS,
-  OPEN_KEY,
-  pushLayer,
-  readStack,
-  work,
-  writeStack,
-} from "../nav/entities";
+import { layerScope, seedLayers, useLayerStore } from "../nav/layer-store";
 import {
   adoptPracticeMode,
   followResolvedLearner,
@@ -117,13 +120,6 @@ import {
   carriedKeys,
   isLearningPath,
 } from "../features/profiles/practice-mode";
-/** A guard's one redirect to the person's destination, its code loaded
- * only when a guard needs it (it stays out of the app's entry). */
-const homeRedirect = async (
-  ...known: Parameters<
-    typeof import("../features/home/destination").homeRedirect
-  >
-) => (await import("../features/home/destination")).homeRedirect(...known);
 const searchSchema = z
   .object({
     return: z
@@ -269,7 +265,11 @@ const root = createRootRoute({
   // into a full page load of the same URL. The current screen stays painted
   // until the new page paints, so no loading screen shows in between.
   beforeLoad: async ({ location, preload }) => {
+    // An old address: one hop to its new one, before any screen's guard.
+    if (!preload) await followAlias(location);
     if (nativeRuntime) return;
+    // A Stripe return kept across a sign-in: its confirmation, once.
+    if (!preload) await resumeStripeReturn();
     if (!preload) await restoreFamilyPractice(location);
     if (
       knownStale() &&
@@ -383,20 +383,15 @@ const start = lazyRouteComponent(
 );
 /** A school sets its students up; setup and paper self-marking are for
  * families, so a student's URL goes back to practice. */
-function notForStudents() {
-  if (studentSession())
-    throw redirect({ href: studentPracticeHref(), replace: true });
-}
+const notForStudents = () => admit({ adults: true });
 /** Every /start step runs the one first-run guard against `/me`. */
 async function beforeStart({
   location,
 }: {
   location: { pathname: string; search: Record<string, unknown> };
 }) {
-  notForStudents();
   const search = continuationSearch(location.search);
-  const session = await queryClient.ensureQueryData(sessionOptions);
-  if (!session) throw redirect({ to: "/sign-in", search });
+  const session = await requireSignedIn(location, { adults: true });
   if (nativeRuntime) return;
   const me = await queryClient.ensureQueryData(meOptions(session));
   const target = startDestination(
@@ -405,53 +400,16 @@ async function beforeStart({
     !!chosenPlan(),
     isFundedReturn(search.return) ? search.return : false,
   );
-  if (target)
-    throw redirect({ ...startNavigation(target), search, replace: true });
+  if (target) elsewhere(withQuery(target, search));
 }
-/** The separate free trial is retired: one product, one way in. Links to
- * `/try` from ads and email still work: signed out, they sign up (and the
- * starter follows); signed in, straight to their place or the starter. */
-async function retiredTrial({ search }: { search: Record<string, unknown> }) {
-  notForStudents();
-  const session = await queryClient
-    .ensureQueryData(sessionOptions)
-    .catch(() => null);
-  if (!session) {
-    // An old free-practice link signs up as one, keeping a funded program's
-    // context (the funding pages link here); an explicit return stays.
-    const carry = continuationSearch(search);
-    throw redirect({
-      to: "/sign-up",
-      search: { ...carry, return: carry.return ?? "free-practice" },
-      replace: true,
-    });
-  }
-  // A follow-up email's way back, now signed in: the follow-up is done.
-  if (search.return === "free-practice")
-    void requestFetch("/api/v1/parent-followup/complete", {
-      signal: AbortSignal.timeout(10000),
-      method: "POST",
-      credentials: "same-origin",
-      headers: { "Content-Type": "application/json" },
-      body: "{}",
-    }).catch(() => undefined);
-  throw await homeRedirect();
-}
-const tryStart = createRoute({
-  getParentRoute: () => root,
-  path: "/try",
-  staticData: { space: "public" },
-  beforeLoad: retiredTrial,
-});
-const tryAnything = createRoute({
-  getParentRoute: () => root,
-  path: "/try/$",
-  staticData: { space: "public" },
-  beforeLoad: retiredTrial,
-});
 const appScreen = createRoute({
   getParentRoute: () => root,
   id: "app",
+  // The session is known before an app screen renders (LegacyApp reads it
+  // from the cache); a failed read is the route's error screen.
+  beforeLoad: async () => {
+    await queryClient.ensureQueryData(sessionOptions);
+  },
   component: AppScreen,
 });
 const home = createRoute({
@@ -488,46 +446,11 @@ const home = createRoute({
   // launcher, a real screen whether reached by a link or by Back. Only an
   // address that carries a handoff (an auth link, a payment's return, a
   // consent challenge) goes on, once, to the screen that handles it.
-  beforeLoad: async ({ search: rawSearch, location }) => {
-    const search = searchSchema.parse(rawSearch);
-    if ("sign-in" in search)
-      throw redirect({
-        to: search["sign-in"] === "create" ? "/sign-up" : "/sign-in",
-        search: { return: search.return, error: search.error },
-      });
-    if ("reset-password" in search)
-      throw redirect({
-        to: "/reset-password",
-        search: { token: search.token, error: search.error },
-      });
+  // (Old `/?sign-in`, `/?reset-password` and a consent email's link are
+  // app/legacy-aliases.ts rows.)
+  beforeLoad: async ({ location }) => {
     if (nativeRuntime) return;
-    const session = await queryClient.ensureQueryData(sessionOptions);
-    if (!session) return;
-    // Back from a provider's sign-in: the account's place, once.
-    if ("signed-in" in search) throw await homeRedirect();
-    if (hasInitialConsentChallenge())
-      throw redirect({
-        to: "/$",
-        params: { _splat: "consent" },
-        replace: true,
-      });
-    // Back from a learner's Stripe Checkout: read once, resolved through
-    // the server, and on to that learner's confirmation (features/pay).
-    if (hasPurchaseReturn(location.searchStr))
-      throw redirect({
-        href:
-          (await (
-            await import("../features/pay/stripe-return")
-          ).stripeReturnTarget(session, search, "learner")) ??
-          "/account/billing",
-        replace: true,
-      });
-    if ("security" in search)
-      throw redirect({
-        to: "/$",
-        params: { _splat: "account/security" },
-        replace: true,
-      });
+    await homeReturn(location);
   },
 });
 /** The launcher's account and places, read before it paints. */
@@ -563,10 +486,11 @@ async function beforeAuthEntry({
     return;
   const session = await queryClient.ensureQueryData(sessionOptions);
   if (!session) return;
+  // Signed in already: the sign-in gate's way back, once.
   const next = continuationUrl(search);
   // Nothing asked for: the account's own place, never `/`.
-  if (next.split("?")[0] === "/") throw await homeRedirect();
-  throw redirect({ href: next, replace: true });
+  if (next.split("?")[0] === "/") await toOwnPlace();
+  elsewhere(next);
 }
 const signIn = createRoute({
   getParentRoute: () => root,
@@ -649,14 +573,7 @@ async function beforeStarter({
   params: { choice?: string };
   location: { pathname: string; search: Record<string, unknown> };
 }) {
-  notForStudents();
-  if (nativeRuntime) throw redirect({ to: "/", replace: true });
-  const session = await queryClient.ensureQueryData(sessionOptions);
-  if (!session)
-    throw redirect({
-      to: "/sign-in",
-      search: continuationSearch(location.search),
-    });
+  const session = await requireSignedIn(location, { adults: true, web: true });
   // Which question this is and which answers it offers are the account's:
   // known before the first paint, so neither changes under the reader. An
   // old trial link reads the account fresh: a first run may have finished in
@@ -673,8 +590,8 @@ async function beforeStarter({
   const target = routeFor(me?.signedIn ? me : null, location);
   // An established account's old trial link: straight to its place.
   if (target?.to === "/")
-    throw await homeRedirect(me?.signedIn ? me : undefined);
-  if (target) throw redirect({ to: target.to as never, replace: true });
+    await toOwnPlace(me?.signedIn ? me : undefined);
+  if (target) elsewhere(target.to);
   // The school answer's next step depends on the account's schools: there
   // before the page paints, so its buttons never arrive late.
   if (params.choice === "school") {
@@ -733,15 +650,11 @@ const startPurchase = createRoute({
   beforeLoad: async (input) => {
     // A learner's enrollment checkout from the pay flow comes back to that
     // learner's confirmation; one with no learner yet stays here.
-    const session = await queryClient
-      .ensureQueryData(sessionOptions)
-      .catch(() => null);
-    const target =
-      session &&
-      (await (
-        await import("../features/pay/stripe-return")
-      ).stripeReturnTarget(session, input.location.search, "enrollment"));
-    if (target) throw redirect({ href: target, replace: true });
+    await stripeReturn(
+      input.location,
+      "enrollment",
+      await queryClient.ensureQueryData(sessionOptions),
+    );
     return beforeStart(input);
   },
   component: start,
@@ -786,8 +699,12 @@ async function preloadLearning(location?: {
   await preloadLearningView(location);
 }
 async function framedScreen() {
-  if (nativeRuntime) throw redirect({ to: "/" });
-  await queryClient.ensureQueryData(sessionOptions).catch(() => undefined);
+  admit({ web: true });
+  await queryClient
+    .ensureQueryData(sessionOptions)
+    .catch((error: unknown) =>
+      console.warn("The session didn’t load ahead", error),
+    );
 }
 const inventory = createRoute({
   getParentRoute: () => root,
@@ -795,14 +712,9 @@ const inventory = createRoute({
   staticData: { space: "learner" },
   // A learning record belongs to an account: signed out, sign in first.
   beforeLoad: async ({ location }) => {
-    await framedScreen();
+    await requireSignedIn(location, { web: true });
     await canonicalLearnerAddress(location);
     await adoptPracticeMode(location);
-    if (!queryClient.getQueryData(sessionOptions.queryKey))
-      throw redirect({
-        to: "/sign-in",
-        search: continuationSearch(location.search),
-      });
   },
   // Its record and level arrive with it: one paint, whole.
   loader: ({ location }) =>
@@ -815,83 +727,35 @@ const inventory = createRoute({
     "InventoryScreen",
   ),
 });
-/** A screen's address from before lesson layers (`?lesson=<type>`): the
- * same screen with the lesson as a layer over it (nav/entities.ts). */
-function lessonAsLayer(location: {
-  pathname: string;
-  search: Record<string, unknown>;
-}) {
-  const { lesson, ...search } = location.search;
-  if (lesson === undefined) return;
-  const open =
-    typeof lesson === "string"
-      ? pushLayer(search[OPEN_KEY], { kind: "lesson", id: lesson })
-      : (search[OPEN_KEY] as string | undefined);
-  throw redirect({
-    href: router.buildLocation({
-      to: location.pathname,
-      search: { ...search, ...(open ? { [OPEN_KEY]: open } : {}) } as never,
-    }).href,
-    replace: true,
-  });
-}
-/** Pathways' skill from before skill layers (`/pathways/<skill>`, or
- * `?skill=<skill>`): the map with the skill as a layer over it, under any
- * layers the address already holds (a lesson). */
-function skillAsLayer(
-  location: { search: Record<string, unknown> },
-  skill: unknown,
-) {
-  const { skill: _legacy, ...search } = location.search;
-  const below = readStack(search[OPEN_KEY]);
-  const open =
-    typeof skill === "string"
-      ? writeStack(
-          [{ kind: "skill" as const, id: skill }, ...below].slice(
-            0,
-            MAX_LAYERS,
-          ),
-        )
-      : writeStack(below);
-  throw redirect({
-    href: router.buildLocation({
-      to: "/pathways",
-      search: { ...search, [OPEN_KEY]: open } as never,
-    }).href,
-    replace: true,
-  });
-}
 /** One map for the whole curriculum: a skill opens over it as a layer
- * (`?open=skill:<id>`), so choosing or closing one changes the address,
- * never the map (its camera, full screen and orbit stay as they were). */
+ * (nav/layer-store.ts), so choosing or closing one never moves the map (its
+ * camera, full screen and orbit stay as they were). */
 const pathways = createRoute({
   getParentRoute: () => root,
   path: "/pathways",
   staticData: { space: "learner" },
+  // (A skill, lesson or shared stack from before the layer store, `?skill=`,
+  // `?lesson=`, `?open=` and `/pathways/<skill>`, is an app/legacy-aliases.ts
+  // row, which seeds the store.)
   beforeLoad: async ({ location }) => {
-    lessonAsLayer(location);
-    const { skill } = location.search as { skill?: unknown };
-    if (skill !== undefined && location.pathname === "/pathways")
-      skillAsLayer(location, skill);
-    // A skill's own address (`/pathways/<skill>`) is its layer over the map,
-    // made here, before a parent's map moves to their child's address
-    // (canonicalLearnerAddress), which would otherwise drop the skill.
-    const named = /^\/pathways\/([^/]+)\/?$/.exec(location.pathname)?.[1];
-    if (named) skillAsLayer(location, decodeURIComponent(named));
     await framedScreen();
     await canonicalLearnerAddress(location);
     await adoptPracticeMode(location);
   },
   // The curriculum and the learner's record arrive with it: one paint. A
-  // problem type's short lesson (a layer, `?open=lesson:<type>`) needs
-  // neither: it opens at once over the map, which fills in under it.
+  // problem type's short lesson needs neither: it opens at once over the
+  // map, which fills in under it.
   loader: ({ location }) => {
-    const open = new URLSearchParams(location.searchStr).get(OPEN_KEY);
     const at = {
       pathname: location.pathname,
       search: location.search as Record<string, unknown>,
     };
-    if (!readStack(open).some((layer) => layer.kind === "lesson"))
+    const scope = layerScope(
+      location.pathname,
+      queryClient.getQueryData(sessionOptions.queryKey)?.accountId,
+    );
+    const stack = useLayerStore.getState().stacks[scope] ?? [];
+    if (!stack.some((layer) => layer.kind === "lesson"))
       return preloadLearning(at);
     void preloadLearning(at).catch((error: unknown) =>
       console.error("The map did not preload", error),
@@ -906,44 +770,13 @@ const pathwaysIndex = createRoute({
   getParentRoute: () => pathways,
   path: "/",
 });
-/** The lessons library is no destination of its own (docs/design/ia.md):
- * `/lessons` opens Pathways, its search carrying any query. A lesson's own
- * address (`/lessons/<id>`) still opens its reader. */
-const lessonsHome = createRoute({
-  getParentRoute: () => root,
-  path: "/lessons",
-  staticData: { space: "learner" },
-  beforeLoad: ({ location }) => {
-    const params = new URLSearchParams(location.searchStr);
-    const query = params.get("q")?.trim();
-    // `?topic=` named a problem type's short lesson: Pathways opens it.
-    const lesson = params.get("topic")?.trim();
-    throw redirect({
-      to: "/pathways",
-      search: {
-        ...(query ? { topic: query } : {}),
-        ...(lesson
-          ? { [OPEN_KEY]: pushLayer(undefined, { kind: "lesson", id: lesson }) }
-          : {}),
-      } as never,
-      replace: true,
-    });
-  },
-});
-const pathwaySkill = createRoute({
-  getParentRoute: () => pathways,
-  path: "$skillId",
-  beforeLoad: ({ location, params }) => skillAsLayer(location, params.skillId),
-});
 /** A learner's workbooks are a tab of their Progress. The address names
  * the learner (`$learnerId`): the screen reads it from there, and once the
  * navigation resolves it is the account's current learner
  * (followResolvedLearner). The server still decides what the account may
  * open. */
-function beforeWorkbooks() {
-  if (nativeRuntime) throw redirect({ to: "/" });
-  notForStudents();
-}
+const beforeWorkbooks = ({ location }: { location: { pathname: string; searchStr: string } }) =>
+  requireSignedIn(location, { web: true, adults: true });
 /** Daily paper workbooks for one learner (features/workbooks). */
 const workbookHistory = createRoute({
   getParentRoute: () => root,
@@ -985,43 +818,18 @@ const accountHub = createRoute({
   getParentRoute: () => root,
   path: "/account",
   staticData: { space: "account" },
-  beforeLoad: async () => {
-    if (!finishingSignIn()) notForStudents();
-    await framedScreen();
-    if (!queryClient.getQueryData(sessionOptions.queryKey))
-      throw redirect({ to: "/sign-in" });
+  beforeLoad: async ({ location }) => {
+    await requireSignedIn(location, {
+      web: true,
+      // A school's sign-in finishing here may be a student's, briefly.
+      adults: !finishingSignIn(),
+    });
   },
   component: lazyRouteComponent(
     () => import("../features/account/AccountHub"),
     "AccountHost",
   ),
 });
-/** The account's older addresses (features/account/legacy.ts): each one
- * hop, straight to its overlay over the account's settings hub. */
-const accountLegacy = (path: string) =>
-  createRoute({
-    getParentRoute: () => root,
-    path,
-    staticData: { space: "account" },
-    beforeLoad: async ({ location }) => {
-      const session = await queryClient.ensureQueryData(sessionOptions);
-      const [{ accountHop }, { setPanel }, { loadSettingsHub }] =
-        await Promise.all([
-          import("../features/account/legacy"),
-          import("../features/account/panels"),
-          import("../features/spaces/settings-hub"),
-        ]);
-      const hub = session ? await loadSettingsHub(session) : "/account";
-      const hop = accountHop(
-        location.pathname,
-        hub,
-        location.search as Record<string, unknown>,
-      );
-      if (hop?.panel && session)
-        setPanel(session.accountId, hop.panel.overlay, hop.panel.id);
-      throw redirect({ href: hop?.href ?? "/account", replace: true });
-    },
-  });
 const invoiceForm = lazyRouteComponent(
   () => import("../features/funding/InvoiceForm"),
   "InvoiceForm",
@@ -1100,13 +908,9 @@ const schoolClass = createRoute({
   getParentRoute: () => root,
   path: "/school/$org/classes/$class",
   staticData: { space: "classroom" },
-  // A parent's family lived at its class before it had an address of its
-  // own: each old leaf opens the family's matching screen.
-  beforeLoad: async (context) => {
-    const result = await staffScreen(context);
-    await toFamilyAddress(result.session, context);
-    return result;
-  },
+  // (A parent's family at its old class address is an
+  // app/legacy-aliases.ts row.)
+  beforeLoad: staffScreen,
   loader: ({ context, params }) =>
     Promise.all([
       frameData((context as { session: AuthSession }).session, params.org),
@@ -1125,22 +929,9 @@ const schoolClass = createRoute({
       ),
     ]),
 });
-const schoolClassHome = createRoute({
-  getParentRoute: () => schoolClass,
-  path: "/",
-  beforeLoad: ({ params }) => {
-    throw redirect({
-      to: "/school/$org/classes/$class/today",
-      params,
-      replace: true,
-    });
-  },
-});
 const schoolClassToday = createRoute({
   getParentRoute: () => schoolClass,
   path: "today",
-  // Today's lesson from before layers (`?lesson=`): a layer over Today.
-  beforeLoad: ({ location }) => lessonAsLayer(location),
   // A family's own class lists children from other families: there before
   // the screen paints.
   loader: async ({ context, params }) => {
@@ -1180,45 +971,6 @@ const schoolClassMap = createRoute({
   path: "map",
   loader: mapLoader,
   component: lazyRouteComponent(classScreens, "MapScreen"),
-});
-/** The class map's student and answer addresses from before layers
- * (`map/<student>`, `map/<student>/work/<answer>`): a link or a history
- * entry still opens them, as layers over the map (nav/entities.ts). */
-const schoolClassMapStudent = createRoute({
-  getParentRoute: () => schoolClassMap,
-  path: "$student",
-  beforeLoad: ({ params, search }) => {
-    throw redirect({
-      to: "/school/$org/classes/$class/map",
-      params,
-      search: {
-        ...(search as Record<string, unknown>),
-        [OPEN_KEY]: pushLayer(undefined, {
-          kind: "student",
-          id: params.student,
-        }),
-      } as never,
-      replace: true,
-    });
-  },
-});
-const schoolClassMapWork = createRoute({
-  getParentRoute: () => schoolClassMapStudent,
-  path: "work/$work",
-  beforeLoad: ({ params, search }) => {
-    throw redirect({
-      to: "/school/$org/classes/$class/map",
-      params,
-      search: {
-        ...(search as Record<string, unknown>),
-        [OPEN_KEY]: writeStack([
-          { kind: "student", id: params.student },
-          work(params.student, params.work),
-        ]),
-      } as never,
-      replace: true,
-    });
-  },
 });
 const schoolClassGradebook = createRoute({
   getParentRoute: () => schoolClass,
@@ -1347,17 +1099,11 @@ const schoolConnect = createRoute({
   getParentRoute: () => root,
   path: "/school/connect",
   staticData: { space: "account" },
-  validateSearch: (search: Record<string, unknown>): { error?: string } =>
-    ["clever_identity_already_linked", "clever_link_expired"].includes(
-      String(search.error),
-    )
-      ? { error: String(search.error) }
-      : {},
+  ...cleverReturn,
   beforeLoad: async () => {
-    if (nativeRuntime) throw redirect({ to: "/", replace: true });
+    admit({ web: true });
     const config = await queryClient.ensureQueryData(authConfigOptions);
-    if (config.mode === "accounts" && !config.clever)
-      throw redirect({ to: "/school/start", replace: true });
+    if (config.mode === "accounts" && !config.clever) elsewhere("/school/start");
     if (studentSession()) {
       // The component may already have captured a hash-only completion.
       // Await its validation; only the helper can replace a student, and
@@ -1366,8 +1112,7 @@ const schoolConnect = createRoute({
         await import("../features/school/clever/onboarding-session");
       await cleverOnboardingSession();
     }
-    if (studentSession())
-      throw redirect({ href: studentPracticeHref(), replace: true });
+    admit({ adults: true });
   },
   component: lazyRouteComponent(
     () => import("../features/school/clever/ConnectionScreen"),
@@ -1464,7 +1209,7 @@ const standings = createRoute({
   staticData: { space: "student" },
   validateSearch: standingsSearchSchema,
   beforeLoad: async () => {
-    if (!studentSession()) throw await homeRedirect();
+    if (!studentSession()) await toOwnPlace();
   },
   // Which boards this student has is known before the screen paints, so a
   // class picker is there from the first frame and never pushes the board
@@ -1485,29 +1230,26 @@ const standings = createRoute({
 /** The adult's own practice: their record, and where they begin. One chunk.
  * Arriving chooses their own learner, so practice and the drawer follow. */
 const ownScreens = () => import("../features/me");
-async function ownPractice() {
-  notForStudents();
-  if (nativeRuntime) throw redirect({ to: "/", replace: true });
-  // Signed out: sign in, and `/` brings them back to their own practice.
-  const session = await queryClient.ensureQueryData(sessionOptions);
-  if (!session) throw redirect({ to: "/sign-in" });
+async function ownPractice(location: { pathname: string; searchStr: string }) {
+  const session = await requireSignedIn(location, { web: true, adults: true });
   const me = await queryClient.ensureQueryData(meOptions(session));
-  if (!me.signedIn) throw redirect({ to: "/sign-in" });
+  // The server no longer knows the session: sign in again.
+  if (!me.signedIn)
+    elsewhere(withQuery("/sign-in", signInTarget(location).search));
   return { me, session };
 }
 const ownRecord = createRoute({
   getParentRoute: () => root,
   path: "/me",
   staticData: { space: "me" },
-  beforeLoad: async () => {
-    const { me, session } = await ownPractice();
+  beforeLoad: async ({ location }) => {
+    const { me, session } = await ownPractice(location);
     const own = me.adultPractice?.learner;
-    // Nothing to read yet: start, when they may; otherwise there's no place.
-    if (!own)
-      throw redirect({
-        to: me.adultPractice?.eligible ? "/me/start" : "/",
-        replace: true,
-      } as never);
+    // Nothing to read yet: start, when they may; otherwise their place.
+    if (!own) {
+      if (me.adultPractice?.eligible) elsewhere("/me/start");
+      return toOwnPlace(me);
+    }
     // Once `/me` resolves, the adult's own learner is the account's current
     // one (followResolvedLearner).
     return { session, learnerId: own.id };
@@ -1527,10 +1269,13 @@ const ownTime = createRoute({
   getParentRoute: () => root,
   path: "/me/time",
   staticData: { space: "me" },
-  beforeLoad: async () => {
-    const { me, session } = await ownPractice();
+  beforeLoad: async ({ location }) => {
+    const { me, session } = await ownPractice(location);
+    // Nothing to time yet: where `/me` would send them, in one hop.
     if (!me.adultPractice?.learner)
-      throw redirect({ to: "/me", replace: true } as never);
+      return me.adultPractice?.eligible
+        ? elsewhere("/me/start")
+        : toOwnPlace(me);
     return { session };
   },
   loader: async ({ context }) => {
@@ -1546,11 +1291,10 @@ const ownStart = createRoute({
   getParentRoute: () => root,
   path: "/me/start",
   staticData: { space: "me" },
-  beforeLoad: async () => {
-    const { me } = await ownPractice();
-    if (me.adultPractice?.learner)
-      throw redirect({ to: "/me", replace: true } as never);
-    if (!me.adultPractice?.eligible) throw await homeRedirect();
+  beforeLoad: async ({ location }) => {
+    const { me } = await ownPractice(location);
+    if (me.adultPractice?.learner) elsewhere("/me");
+    if (!me.adultPractice?.eligible) await toOwnPlace(me);
   },
   component: lazyRouteComponent(ownScreens, "OwnStartScreen"),
 });
@@ -1561,8 +1305,8 @@ const profiles = createRoute({
   getParentRoute: () => root,
   path: "/me/profiles",
   staticData: { space: "me" },
-  beforeLoad: async () => {
-    await ownPractice();
+  beforeLoad: async ({ location }) => {
+    await ownPractice(location);
   },
   component: lazyRouteComponent(profileScreens, "ProfilesScreen"),
 });
@@ -1570,8 +1314,8 @@ const newProfile = createRoute({
   getParentRoute: () => root,
   path: "/me/profiles/new",
   staticData: { space: "me" },
-  beforeLoad: async () => {
-    await ownPractice();
+  beforeLoad: async ({ location }) => {
+    await ownPractice(location);
   },
   component: lazyRouteComponent(profileScreens, "NewProfileScreen"),
 });
@@ -1580,8 +1324,8 @@ const levelPractice = createRoute({
   getParentRoute: () => root,
   path: "/me/level",
   staticData: { space: "me" },
-  beforeLoad: async () => {
-    await ownPractice();
+  beforeLoad: async ({ location }) => {
+    await ownPractice(location);
   },
   component: lazyRouteComponent(profileScreens, "LevelScreen"),
 });
@@ -1589,8 +1333,8 @@ const editProfile = createRoute({
   getParentRoute: () => root,
   path: "/me/profiles/$profileId",
   staticData: { space: "me" },
-  beforeLoad: async () => {
-    await ownPractice();
+  beforeLoad: async ({ location }) => {
+    await ownPractice(location);
   },
   component: lazyRouteComponent(profileScreens, "EditProfileScreen"),
 });
@@ -1620,9 +1364,7 @@ async function loadOwnPractice(session: AuthSession, learnerId: string) {
 }
 /** The public school pages, one chunk between them. */
 const schoolsPublic = () => import("../features/schools");
-const notInTheApp = () => {
-  if (nativeRuntime) throw redirect({ to: "/", replace: true });
-};
+const notInTheApp = () => admit({ web: true });
 const schoolsHome = createRoute({
   getParentRoute: () => root,
   path: "/schools",
@@ -1663,12 +1405,8 @@ const familyApprove = createRoute({
   getParentRoute: () => root,
   path: "/family/approve",
   staticData: { space: "public" },
-  beforeLoad: () => {
-    if (nativeRuntime) throw redirect({ to: "/", replace: true });
-    // A student's home is their practice.
-    if (studentSession())
-      throw redirect({ href: studentPracticeHref(), replace: true });
-  },
+  // A student's home is their practice.
+  beforeLoad: () => admit({ web: true, adults: true }),
   component: lazyRouteComponent(
     () => import("../features/family-approval/ApproveLinkScreen"),
     "ApproveLinkScreen",
@@ -1678,11 +1416,8 @@ const familyApproval = createRoute({
   getParentRoute: () => root,
   path: "/family/approvals/$approvalId",
   staticData: { space: "public" },
-  beforeLoad: async () => {
-    notForStudents();
-    if (nativeRuntime) throw redirect({ to: "/", replace: true });
-    const session = await queryClient.ensureQueryData(sessionOptions);
-    if (!session) throw redirect({ to: "/sign-in", replace: true });
+  beforeLoad: async ({ location }) => {
+    await requireSignedIn(location, { web: true, adults: true });
   },
   component: lazyRouteComponent(
     () => import("../features/family-approval/ApprovalScreen"),
@@ -1697,7 +1432,7 @@ const design = createRoute({
   staticData: { space: "public" },
   validateSearch: (search) => designSearchSchema.parse(search),
   beforeLoad: () => {
-    if (!designAllowed()) throw redirect({ to: "/", replace: true });
+    if (!designAllowed()) elsewhere("/");
   },
   component: lazyRouteComponent(
     () => import("../features/design/DesignScreen"),
@@ -1781,11 +1516,8 @@ export const router = createRouter({
     joinPictures,
     signInCard,
     schoolClass.addChildren([
-      schoolClassHome,
       schoolClassToday,
-      schoolClassMap.addChildren([
-        schoolClassMapStudent.addChildren([schoolClassMapWork]),
-      ]),
+      schoolClassMap,
       schoolClassGradebook,
       schoolClassTime,
       schoolClassReportCards,
@@ -1837,24 +1569,12 @@ export const router = createRouter({
     startYear,
     startConsent,
     startVerify,
-    tryStart,
-    tryAnything,
     inventory,
-    pathways.addChildren([pathwaysIndex, pathwaySkill]),
-    lessonsHome,
+    pathways.addChildren([pathwaysIndex]),
     workbookHistory,
     workbookDay,
     workbookResults,
     accountHub.addChildren([...accountOverlays(accountHub)]),
-    ...[
-      "/account/security/delete",
-      "/family/security/delete",
-      "/account/billing/$",
-      "/family/security",
-      "/family/security/$",
-      "/family/access",
-      "/family/access/$",
-    ].map(accountLegacy),
     invoiceArkansas,
     invoiceArizona,
     invoiceNewHampshire,
@@ -1862,8 +1582,7 @@ export const router = createRouter({
     // URLs stay out of the typed route table.
     ...(schoolRoutes(root) as unknown as []),
     ...(familyRoutes(root) as unknown as []),
-    ...(privacyRoutes(root) as unknown as []),
-    ...payRoutes(root),
+    ...payAddresses(root),
     ...((devPersonas ? [devPersonas] : []) as unknown as []),
   ]),
   history,
@@ -1900,8 +1619,8 @@ if (import.meta.env.DEV) {
     options: { path?: string; component?: unknown };
   };
   Object.assign(window, {
-    ampRouteTable: () =>
-      (Object.values(router.routesById) as unknown as Entry[])
+    ampRouteTable: () => [
+      ...(Object.values(router.routesById) as unknown as Entry[])
         .filter(
           (route) =>
             !route.isRoot &&
@@ -1916,6 +1635,17 @@ if (import.meta.env.DEV) {
             (route.options.path === "/" &&
               !!route.parentRoute?.options.component),
         })),
+      // Old addresses (app/legacy-aliases.ts): each an address, no page.
+      ...[
+        ...new Set(
+          LEGACY_ALIASES.filter((alias) => !alias.when).map(
+            (alias) => alias.from,
+          ),
+        ),
+      ]
+        .filter((path) => !router.routesById[path as never])
+        .map((path) => ({ path, page: false })),
+    ],
   });
 }
 // A control that only changes the address's search (a toggle, a segmented
@@ -2057,6 +1787,11 @@ router.subscribe("onResolved", ({ toLocation }) => {
   );
   if (place) rememberPlace(session.accountId, place);
 });
+// A device handed to a child from a parent's screen: the child's identity
+// arrives in the same render as the screen that mounts next (practice), so
+// the parent's screen never redraws for the child first
+// (features/school/join/api.ts).
+router.subscribe("onBeforeRouteMount", () => applyDeferredIdentity());
 // A link from before the layer store names its layers in the address
 // (`?open=`): once the screen is on view they move into the store
 // (nav/layer-store.ts) and leave the address, replacing its entry. The one
