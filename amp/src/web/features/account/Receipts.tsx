@@ -9,6 +9,7 @@ import { reportError } from "../../lib/report-error";
 import { useSession } from "../../lib/session";
 import { requestFetch } from "../../lib/request-transport";
 import { ReceiptDetails } from "../../ReceiptDetails";
+import { receiptRequestSchema } from "../../../billing/evidence/reimbursement.js";
 import { Button } from "../../ui/Button";
 import { Loading } from "../../ui/Loading";
 import { PageSection } from "../../ui/PageSection";
@@ -40,6 +41,15 @@ export const receiptsOptions = (session: AuthSession, cursor: string | null) =>
         { token: session.token, signal },
       ),
   });
+/** A receipt download the server refuses for a reason the parent can fix. */
+const RECEIPT_REFUSALS: Record<string, string> = {
+  receipt_learner_name_required:
+    "Enter the learner name required by your program.",
+  reimbursement_program_unavailable:
+    "This reimbursement program is unavailable. Select another program or Personal records.",
+  receipt_payment_method_unavailable:
+    "This payment has no recorded payment method. Contact purchase support for that evidence.",
+};
 export function Receipts({
   selected,
   onSelect,
@@ -81,6 +91,18 @@ export function Receipts({
   }, [selected, record, records.data, records.isFetching]);
   async function download(adjustment?: string) {
     if (!record || busy) return;
+    // The PDF's font prints basic Latin letters and some accents: a name it
+    // can't print is said before anything is sent.
+    if (
+      !adjustment &&
+      !receiptRequestSchema.safeParse({ learnerName: name.trim() }).success
+    ) {
+      setError(
+        "This PDF supports basic Latin letters and some accents. Contact purchase support if the font cannot print your name.",
+      );
+      setDownloaded(false);
+      return;
+    }
     const controller = new AbortController();
     pending.current = controller;
     setBusy(true);
@@ -104,6 +126,25 @@ export function Receipts({
           signal: controller.signal,
         },
       );
+      // What the server refuses, said as what to do next.
+      if (!response.ok) {
+        const refused = (await response.json().catch(() => ({}))) as {
+          error?: string;
+        };
+        const said = RECEIPT_REFUSALS[refused.error ?? ""];
+        if (said) {
+          if (refused.error === "reimbursement_program_unavailable")
+            setProgram("");
+          throw new AppError(
+            "validation",
+            said,
+            false,
+            response.headers.get("x-request-id"),
+            refused.error ?? null,
+            response.status,
+          );
+        }
+      }
       if (
         !response.ok ||
         !response.headers.get("content-type")?.startsWith("application/pdf")
@@ -188,8 +229,14 @@ export function Receipts({
                   token={session.token}
                   learnerName={name}
                   programId={program}
-                  onName={setName}
-                  onProgram={setProgram}
+                  onName={(value) => {
+                    setName(value);
+                    setError("");
+                  }}
+                  onProgram={(value) => {
+                    setProgram(value);
+                    setError("");
+                  }}
                 />
               </details>
               {!!record.adjustments.length && (
