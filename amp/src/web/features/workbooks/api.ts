@@ -5,7 +5,9 @@ import {
 import { queryOptions } from "@tanstack/react-query";
 import type { AuthSession } from "../../auth";
 import { request } from "../../lib/api";
+import { qk } from "../../lib/keys";
 import { AppError } from "../../lib/AppError";
+import { jsonOrNull } from "../../lib/report-error";
 import {
   workbookAreasSchema,
   type WorkbookDraft,
@@ -21,9 +23,8 @@ export type WorkbookMinutes = 30 | 45 | 60;
 export const workbookPath = (learnerId: string) =>
   `/learners/${encodeURIComponent(learnerId)}/workbooks`;
 
-/** Under the account key, so every account invalidation refreshes it. */
-export const workbooksKey = (session: AuthSession, learnerId: string) =>
-  ["account", session.accountId, "workbooks", learnerId] as const;
+/* Keys sit under the account (`qk.account(id, "workbooks", learner, …)`),
+ * so every account invalidation refreshes them. */
 
 /** A history read that is only slow waits, as the skeleton: a failure the
  * server or network may recover from is asked again quietly, and only a
@@ -51,7 +52,13 @@ export const workbookHistoryOptions = (
   date?: string,
 ) =>
   queryOptions({
-    queryKey: [...workbooksKey(session, learnerId), "history", date ?? null],
+    queryKey: qk.account(
+      session.accountId,
+      "workbooks",
+      learnerId,
+      "history",
+      date ?? null,
+    ),
     queryFn: async ({ signal }) => {
       const patience = AbortSignal.timeout(HISTORY_PATIENCE_MS);
       try {
@@ -81,7 +88,7 @@ export const awaitingResults = (workbooks: readonly WorkbookSummary[]) =>
 /** The areas a parent can choose for this learner. */
 export const workbookAreasOptions = (session: AuthSession, learnerId: string) =>
   queryOptions({
-    queryKey: [...workbooksKey(session, learnerId), "areas"],
+    queryKey: qk.account(session.accountId, "workbooks", learnerId, "areas"),
     queryFn: ({ signal }) =>
       request(`${workbookPath(learnerId)}/areas`, workbookAreasSchema, {
         token: session.token,
@@ -97,7 +104,13 @@ export const workbookPreviewOptions = (
   input: WorkbookDraft,
 ) =>
   queryOptions({
-    queryKey: [...workbooksKey(session, learnerId), "preview", input],
+    queryKey: qk.account(
+      session.accountId,
+      "workbooks",
+      learnerId,
+      "preview",
+      input,
+    ),
     queryFn: ({ signal }) =>
       request(`${workbookPath(learnerId)}/preview`, workbookSummarySchema, {
         token: session.token,
@@ -150,7 +163,8 @@ async function downloadWorkbookFile(
       return await fetch(`${base}/${path}`, {
         headers: { Authorization: authorization },
       });
-    } catch {
+    } catch (cause) {
+      console.warn("Workbook download didn't connect", cause);
       const error = new AppError(
         "network",
         "The workbook didn't download. Check your connection and try again.",
@@ -173,7 +187,8 @@ async function downloadWorkbookFile(
     kind = "html";
   }
   if (!response.ok) {
-    const data: unknown = await response.json().catch(() => null);
+    // The error page may not be JSON; its status still says what failed.
+    const data = await jsonOrNull(response);
     const message =
       data && typeof data === "object" && "error" in data
         ? String(data.error)
@@ -213,7 +228,13 @@ export const workbookResultsOptions = (
   workbookId: string,
 ) =>
   queryOptions({
-    queryKey: [...workbooksKey(session, learnerId), "results", workbookId],
+    queryKey: qk.account(
+      session.accountId,
+      "workbooks",
+      learnerId,
+      "results",
+      workbookId,
+    ),
     queryFn: ({ signal }) =>
       request(
         `${workbookPath(learnerId)}/${encodeURIComponent(workbookId)}/results`,
