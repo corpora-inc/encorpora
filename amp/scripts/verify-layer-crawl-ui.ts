@@ -792,32 +792,15 @@ try {
     }
     if (place.family) await familySchoolRoutes(page, place, person);
     pageLinks = [];
-    // A legacy centre's close goes Back to where it was opened: the same
-    // history entry, not a new one at a hard-coded address.
+    // Privacy's old addresses are one hop to the Privacy overlay over the
+    // family's Settings, with the named panel open (features/privacy).
     if (person === "family") {
       await page.goto(`${origin}/family/privacy/consent`);
-      const consent = page.locator("[data-consent-enrollment]");
-      await consent.waitFor();
-      const entry = () =>
-        page.evaluate(() => {
-          const state = history.state as Record<string, unknown> | null;
-          return String(state?.__TSR_key ?? state?.key ?? "");
-        });
-      const opener = { path: view(page).path, entry: await entry() };
-      await consent.click();
-      await page.waitForURL(/\/consent$/);
       await page
-        .locator(".parent-consent-center header button", { hasText: "Back" })
-        .click();
-      await page.waitForURL((url) => url.pathname !== "/consent");
-      await page.waitForTimeout(300);
-      assert.equal(
-        view(page).path,
-        opener.path,
-        "consent closes to its opener",
-      );
-      assert.equal(await entry(), opener.entry, "consent's close is Back");
-      console.log(`${person}: consent closes Back to ${opener.path}`);
+        .locator('details[open] [data-privacy-panel="consent"]')
+        .waitFor();
+      assert.match(view(page).path, /^\/family\/[^/]+\/settings\/privacy$/);
+      console.log(`${person}: /family/privacy/consent opens Privacy's consent`);
     }
     await context.close();
   }

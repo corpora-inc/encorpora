@@ -15,7 +15,7 @@ import {
 } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { afterEach, expect, test, vi } from "vitest";
-import { queryClient } from "../../../lib/query";
+import { meOptions, queryClient, sessionOptions } from "../../../lib/query";
 import { buttonClass } from "../../../ui/Button";
 import { ChildActions, ChildSettings } from "../Child";
 import type { FamilyChild } from "../api";
@@ -110,7 +110,18 @@ const withConsent = (consent: object) =>
     me: { ...place.me!, family: { ...place.me!.family, consent } },
   }) as unknown as FamilyPlace;
 
-function mount(node: ReactNode) {
+/* The privacy bodies read the session and `/me` from the cache
+ * (lib/session.ts), as on the real screen. */
+function seed(at: FamilyPlace) {
+  queryClient.setQueryData(sessionOptions.queryKey, at.session);
+  queryClient.setQueryData(meOptions(at.session).queryKey, {
+    signedIn: true,
+    ...at.me,
+  } as never);
+}
+
+function mount(node: ReactNode, at: FamilyPlace = place) {
+  seed(at);
   const history = createMemoryHistory({ initialEntries: [AT] });
   const router = createRouter({
     routeTree: createRootRoute({ component: () => <>{node}</> }),
@@ -205,7 +216,7 @@ async function settingsFold() {
 }
 
 async function openConsent(at: FamilyPlace) {
-  mount(<ChildSettings place={at} child={child} />);
+  mount(<ChildSettings place={at} child={child} />, at);
   const fold = await settingsFold();
   fold.open = true;
   fireEvent.click(document.querySelector("[data-child-consent]")!);
@@ -251,6 +262,13 @@ test("consent given: its date, and withdrawing in place", async () => {
     within(dialog).getByText("Consent given on November 2, 2026."),
   ).toBeTruthy();
   expect(within(dialog).queryByText(/billing|export/i)).toBeNull();
+  // One inline confirm (the IA's rule for a destructive action), no dialog.
+  fireEvent.click(
+    within(dialog).getByRole("button", { name: "Withdraw consent" }),
+  );
+  expect(server.calls.map((call) => call.path)).not.toContain(
+    "/family/consent/withdraw",
+  );
   fireEvent.click(
     within(dialog).getByRole("button", { name: "Withdraw consent" }),
   );

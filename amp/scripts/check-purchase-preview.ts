@@ -128,7 +128,8 @@ try {
   assert.equal(await receipt.failure(), null);
   await shots("receipt");
   await page.goto(`${origin}/account/privacy`);
-  await page.getByRole("heading", { name: "Policies & documents" }).waitFor();
+  // The Privacy overlay's Policies & documents panel (a disclosure).
+  await page.getByText("Policies & documents", { exact: true }).click();
   const policyDownload = page.waitForEvent("download");
   await page.getByRole("button", { name: "Download terms of use" }).click();
   const policy = await policyDownload;
