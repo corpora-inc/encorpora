@@ -9,20 +9,22 @@ import { idiomInsteadOfTerm } from "./senses";
 export const normalizeForm = (s: string) => s.replace(/’/g, "'");
 const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
+/** A letter, digit, apostrophe or hyphen continues a word. */
+const WORD = String.raw`[\p{L}\p{N}'-]`;
+const wordBefore = new RegExp(`${WORD}$`, "u");
+
 /** One pattern for a set of lowercase forms: longest first, so "unit rate"
  * wins over "rate" at the same position. A word boundary treats hyphens and
  * apostrophes as part of a word, so "negative" is not found in
- * "non-negative". */
+ * "non-negative". The pattern checks the boundary after a form; `scanForms`
+ * checks the one before it (Safari before 16.4 has no lookbehind). */
 export function formPattern(forms: Iterable<string>): RegExp {
   const sorted = [...new Set([...forms].map(normalizeForm))].sort(
     (a, b) => b.length - a.length || (a < b ? -1 : 1),
   );
   // An empty set matches nothing.
   if (!sorted.length) return /(?!)/gu;
-  return new RegExp(
-    `(?<![\\p{L}\\p{N}'-])(?:${sorted.map(escape).join("|")})(?![\\p{L}\\p{N}'-])`,
-    "giu",
-  );
+  return new RegExp(`(?:${sorted.map(escape).join("|")})(?!${WORD})`, "giu");
 }
 
 /** Every form the pattern finds in one prose run (no formulas), in order,
@@ -35,11 +37,21 @@ export function scanForms(
   // A prose run that starts with a hyphen continues a formula ("$y$-intercept"):
   // the hyphen there is a boundary.
   const text = normalizeForm(prose).replace(/^-/, " ");
-  return [...text.matchAll(pattern)].map((match) => ({
-    start: match.index,
-    end: match.index + match[0].length,
-    form: match[0].toLowerCase(),
-  }));
+  const found: { start: number; end: number; form: string }[] = [];
+  for (let match; (match = pattern.exec(text));) {
+    const start = match.index;
+    const next = start + (text.codePointAt(start)! > 0xffff ? 2 : 1);
+    // Inside a word: retry from the next character, where a shorter form
+    // ("rate" in "sunit rate") can still begin.
+    if (wordBefore.test(text.slice(Math.max(0, start - 2), start))) {
+      pattern.lastIndex = next;
+      continue;
+    }
+    const end = start + match[0].length;
+    if (end === start) pattern.lastIndex = next; // as matchAll steps past ""
+    found.push({ start, end, form: match[0].toLowerCase() });
+  }
+  return found;
 }
 
 export type ProsePiece = { text: string; id?: TermId };
