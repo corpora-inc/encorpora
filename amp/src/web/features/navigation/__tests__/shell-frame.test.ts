@@ -46,6 +46,10 @@ test("each group's screens share one frame and name their tab", () => {
   });
   expect(shellFrame("/school/invite")).toEqual({ kind: "plain" });
   expect(shellFrame("/school/start")).toEqual({ kind: "plain" });
+  // A school's guided setup: the plain bar over its own stepper.
+  expect(shellFrame(`/school/${"1".repeat(8)}/setup/calendar`)).toEqual({
+    kind: "plain",
+  });
   expect(shellFrame("/school/connect")).toEqual({ kind: "plain" });
   expect(shellFrame("/school/adopt")).toEqual({ kind: "plain" });
 });

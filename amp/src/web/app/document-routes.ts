@@ -119,6 +119,7 @@ export const documentRoutePatterns: readonly string[] = [
   "^/school/[^/]+/privacy/?$",
   "^/school/[^/]+/schools/?$",
   "^/school/[^/]+/settings/?$",
+  "^/school/[^/]+/setup(?:/[^/]+){0,2}/?$",
   "^/school/[^/]+/sign-in-help/?$",
   "^/school/[^/]+/staff/?$",
   "^/school/[^/]+/standing/?$",

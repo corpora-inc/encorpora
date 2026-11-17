@@ -749,6 +749,11 @@ test("account: its own neutral addresses and the old ones, never family chrome",
     ["/school/start", "setup"],
     ["/school/connect", "setup"],
     ["/school/new", "setup"],
+    ["/school/11111111-1111-4111-8111-111111111111/setup", "setup"],
+    [
+      "/school/11111111-1111-4111-8111-111111111111/setup/students/names",
+      "setup",
+    ],
     ["/purchase/arizona-esa", "steps"],
     ["/access", "steps"],
   ] as const) {

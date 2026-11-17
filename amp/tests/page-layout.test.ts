@@ -140,10 +140,6 @@ const PHASE_2: Allowed = {
     widths: ["480px", "560px", "720px", "960px"],
     why: "practice profiles",
   },
-  "features/school/Setup.module.css": {
-    widths: ["480px", "600px"],
-    why: "school setup",
-  },
   "features/school/join/Join.module.css": {
     widths: ["420px", "480px", "620px", "1080px", "1320px"],
     why: "joining a class and a student's sign-in",
@@ -320,8 +316,6 @@ const ROUTES_PHASE_2: Record<string, string> = {
   "features/profiles/index.ts#LevelScreen": "an adult's own practice",
   "features/profiles/index.ts#NewProfileScreen": "an adult's own practice",
   "features/profiles/index.ts#ProfilesScreen": "an adult's own practice",
-  "features/school/SetupScreen.tsx#SetupScreen":
-    "a school, class or setup screen",
   "features/school/classes/index.ts#GradebookScreen":
     "a school, class or setup screen",
   "features/school/classes/index.ts#MapScreen":
@@ -621,8 +615,6 @@ const BACK_DEBT: Record<string, string> = {
     "practice modes' way back to where they started, in the bar and drawer: to become the mode's exit (phase 2)",
   "features/profiles/practice-mode.ts":
     "practice modes' way back to where they started, in the bar and drawer: to become the mode's exit (phase 2)",
-  "features/school/SetupScreen.tsx":
-    "a school screen (phase 2): tabs and overlays replace its way back",
   "nav/LayerHost.tsx":
     "an overlay's failure state names where ✕ returns; to become the overlay's ✕ (phase 2)",
   "scene/ScenePlayer.tsx":

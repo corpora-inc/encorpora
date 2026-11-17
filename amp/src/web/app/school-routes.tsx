@@ -144,17 +144,30 @@ export function schoolRoutes(root: AnyRoute) {
         "ChooserScreen",
       ),
     }),
-    // Guided setup, for the admin of a school we issued. Their invitation is
-    // how they arrive; without one there's nothing to set up, so a visitor
-    // goes to `/schools`, which says how a school starts, and someone signed
-    // in to their school first run.
+    // An older setup address (`/school/new?org=…&step=…`): the step's own
+    // address, in one hop.
     createRoute({
       getParentRoute: () => root,
       path: "/school/new",
       staticData: { space: "account" },
       beforeLoad: guard("setup"),
-      component: setup,
     }),
+    // Guided setup, for the admin of a school we issued: one step an
+    // address (`setup`, `setup/calendar`, … `setup/students/names`), on the
+    // shared stepper.
+    ...[
+      "/school/$org/setup",
+      "/school/$org/setup/$step",
+      "/school/$org/setup/$step/$method",
+    ].map((path) =>
+      createRoute({
+        getParentRoute: () => root,
+        path,
+        staticData: { space: "account" },
+        beforeLoad: guard("setupStep"),
+        component: setup,
+      }),
+    ),
     createRoute({
       getParentRoute: () => root,
       path: "/school/invite",
