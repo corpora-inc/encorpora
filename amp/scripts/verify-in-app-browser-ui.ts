@@ -471,7 +471,8 @@ async function run(
         await page.getByRole("heading", { name: title }).waitFor();
         const url = new URL(page.url());
         assert.equal(url.pathname, "/sign-up", `${tag}: ${name} signs up`);
-        assert.equal(url.searchParams.get("entry"), entry, `${tag}: ${name}`);
+        // Why (the title says which) is the tab's, never the address's.
+        assert.equal(url.search, "", `${tag}: ${name} (${entry}) no query`);
         assert.ok((await overflow()) <= 1, `${tag}: ${name} sign-up fits`);
         assert.equal(await page.getByText(boundaryText).count(), 0, tag);
         if (name === "Try it free")
