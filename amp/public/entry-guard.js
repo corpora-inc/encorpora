@@ -22,6 +22,8 @@
   var SLOT = "amp.release-reload";
   var TTL = 60000;
   var shown = false;
+  var reloading = false;
+  var toast = null;
   /** AMP's files that failed to load in this document. */
   var failedUrls = [];
   var messages = {
@@ -44,15 +46,26 @@
       return false;
     }
   }
-  /** Claims the reload slot; false when a reload happened in the last minute
-   * or the browser keeps no session storage (a reload could then repeat). */
+  /** Claims the reload slot, as src/web/lib/reload-guard.ts does: false
+   * when a reload happened in the last minute, also counted from when this
+   * document started (so a failure that takes longer than that to arrive
+   * can't loop), in the native app (it updates through its store), or when
+   * the browser keeps no session storage (a reload could then repeat). */
   function claimReload() {
+    if (window.isTauri || window.__TAURI_INTERNALS__) return false;
     try {
       var previous = Number(sessionStorage.getItem(SLOT));
       var now = Date.now();
+      var startedAt =
+        window.performance && performance.timeOrigin
+          ? performance.timeOrigin
+          : now;
       sessionStorage.setItem(SLOT, String(now));
       if (sessionStorage.getItem(SLOT) !== String(now)) return false;
-      return !(previous && Math.abs(now - previous) < TTL);
+      return !(
+        previous &&
+        (Math.abs(now - previous) < TTL || startedAt - previous < TTL)
+      );
     } catch (error) {
       if (window.console) console.warn("AMP: reloads can’t be counted", error);
       return false;
@@ -65,9 +78,10 @@
     var text = messages[kind] || messages.load;
     var root = document.getElementById("root");
     var wave = root && root.querySelector(".app-loading[aria-busy]");
-    // Only the first paint's wave is showing: the message takes its place.
-    // Anything else on screen stays, under a fixed notice that moves nothing.
-    var inPlace = !!wave && root.children.length === 1;
+    // Only the first paint's wave is showing, before any app code runs: the
+    // message takes its place. Anything else on screen (React's own) stays,
+    // under a fixed notice that moves nothing.
+    var inPlace = !started() && !!wave && root.children.length === 1;
     var box = document.createElement("div");
     box.className = inPlace ? "app-loading" : "app-recovery-toast";
     box.setAttribute("role", "alert");
@@ -91,7 +105,14 @@
     } else {
       box.appendChild(body);
       document.body.appendChild(box);
+      toast = box;
     }
+  }
+  /** The app's own notice has taken over: the fixed one leaves. */
+  function hide() {
+    if (toast && toast.parentNode) toast.parentNode.removeChild(toast);
+    toast = null;
+    shown = false;
   }
 
   /** Safari keeps a failed modulepreload in its memory cache across a
@@ -105,12 +126,22 @@
       location.reload();
     };
     setTimeout(reload, 3000);
-    if (!failedUrls.length || !window.fetch || !window.Promise) return reload();
+    // The files known to have failed first, then the document's own (a
+    // failure before this script ran, e.g. a modulepreload, wasn't heard).
+    var urls = failedUrls.slice();
+    var own = document.querySelectorAll(
+      'link[rel="modulepreload"], link[rel="stylesheet"], script[type="module"][src]'
+    );
+    for (var j = 0; j < own.length; j++) {
+      var url = own[j].href || own[j].src;
+      if (url && ours(url) && urls.indexOf(url) < 0) urls.push(url);
+    }
+    if (!urls.length || !window.fetch || !window.Promise) return reload();
     var asks = [];
-    for (var i = 0; i < failedUrls.length && i < 10; i++)
+    for (var i = 0; i < urls.length && i < 10; i++)
       asks.push(
         window
-          .fetch(failedUrls[i], { cache: "reload", credentials: "same-origin" })
+          .fetch(urls[i], { cache: "reload", credentials: "same-origin" })
           .then(null, function (error) {
             if (window.console)
               console.warn("AMP: a file wasn’t asked for again", error);
@@ -121,15 +152,34 @@
 
   function failed(kind, url) {
     if (url && failedUrls.indexOf(url) < 0) failedUrls.push(url);
-    if (shown) return;
+    // One reload is already on its way: later failures only add their file.
+    if (shown || reloading) return;
     if (kind === "load" && claimReload()) {
+      reloading = true;
       refreshThenReload();
       return;
     }
     show(kind);
   }
 
-  window.ampEntryGuard = { show: show };
+  window.ampEntryGuard = { show: show, hide: hide };
+
+  // A stylesheet of AMP's that failed before this script ran: its request
+  // finished, yet it has no sheet. One still loading reports to the
+  // listener below if it fails.
+  var sheets = document.querySelectorAll('link[rel="stylesheet"]');
+  for (var k = 0; k < sheets.length; k++)
+    if (
+      !sheets[k].sheet &&
+      ours(sheets[k].href) &&
+      window.performance &&
+      performance.getEntriesByName &&
+      performance.getEntriesByName(sheets[k].href).length
+    ) {
+      if (window.console)
+        console.error("AMP: a stylesheet didn’t load", sheets[k].href);
+      failed("load", sheets[k].href);
+    }
 
   // A script or stylesheet of AMP's that fails to load (load errors don't
   // bubble: listen while they're captured). Always remembered, for the

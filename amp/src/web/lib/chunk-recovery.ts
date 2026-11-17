@@ -17,6 +17,8 @@ const subscribers = new Set<() => void>();
 export const chunkNotice = () => notice;
 export const subscribeChunkNotice = (callback: () => void) => {
   subscribers.add(callback);
+  // The app's notice is up: the entry guard's fixed one, if any, leaves.
+  window.ampEntryGuard?.hide();
   return () => {
     subscribers.delete(callback);
   };
@@ -102,7 +104,7 @@ export function reloadWithFreshFiles(error?: unknown): void {
 declare global {
   interface Window {
     /** public/entry-guard.js, loaded by every document before the app. */
-    ampEntryGuard?: { show(kind: "load" | "engine"): void };
+    ampEntryGuard?: { show(kind: "load" | "engine"): void; hide(): void };
   }
 }
 function showEntryRecovery() {
