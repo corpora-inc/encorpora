@@ -1,5 +1,6 @@
 /** Generate direct-response metadata and the static server's known-route map. */
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { documentRoutesNginxMap } from "./lib/nginx-map";
 import { createRequire } from "node:module";
 import { routeHead, applyRouteHead } from "../src/web/app/route-head.js";
 import { documentRoutePatterns, publicDocumentPaths } from "../src/web/app/document-routes.js";
@@ -27,5 +28,5 @@ const tokens = await readFile(new URL("../src/web/ui/tokens.css", import.meta.ur
 await writeFile(new URL("not-found.css", dist), tokens + '\nbody{margin:0;background:var(--color-surface);color:var(--color-on-surface);font-family:system-ui,sans-serif}.amp-missing{box-sizing:border-box;width:min(100%,var(--width-form));margin:var(--space-7) auto;padding:var(--space-5)}.amp-missing h1{font-family:var(--font-display);font-size:var(--text-heading-1);line-height:1.2}.amp-missing p{line-height:1.6}.amp-missing nav{display:grid;gap:var(--space-3);margin-top:var(--space-5)}.amp-missing a{display:flex;align-items:center;min-height:var(--target-size);color:var(--color-on-surface);text-underline-offset:.2em}.amp-missing a:focus-visible{outline:3px solid var(--color-focus-ring);outline-offset:var(--space-1)}\n');
 const artifacts = new URL("../artifacts/", import.meta.url);
 await mkdir(artifacts, { recursive: true });
-await writeFile(new URL("document-routes-nginx-map.conf", artifacts), '# Generated from src/web/app/document-routes.ts.\nmap $uri $amp_route_known {\n  default 0;\n' + documentRoutePatterns.map(pattern => `  ~${pattern} 1;`).join("\n") + '\n}\n');
+await writeFile(new URL("document-routes-nginx-map.conf", artifacts), documentRoutesNginxMap(documentRoutePatterns));
 console.log("Built public school metadata, a 404 document and the browser-route map.");
