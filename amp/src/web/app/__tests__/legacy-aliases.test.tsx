@@ -234,6 +234,11 @@ const EXAMPLES: Example[] = [
   },
 
   {
+    from: `/learners/${CHILD}/workbooks/2026-11-16?minutes=45&paper=a4`,
+    world: "adult",
+    lands: `/learners/${CHILD}/workbooks/2026-11-16`,
+  },
+  {
     from: `/practice/${CHILD}?skill=s1&profile=p`,
     world: "adult",
     lands: `/practice/${CHILD}/skills/s1?profile=p`,

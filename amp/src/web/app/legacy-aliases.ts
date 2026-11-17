@@ -260,6 +260,17 @@ const FAMILY_ORG_PAGES: [string, "roster" | "map" | "settings" | "today"][] = [
   ["/import/$step", "today"],
 ];
 
+/** The query a workbook day's link carried before its draft store. */
+const WORKBOOK_KEYS = [
+  "draft",
+  "minutes",
+  "paper",
+  "number",
+  "areas",
+  "lean",
+  "lesson",
+] as const;
+
 /** The query keys practice's focus had before its paths. */
 const FOCUS_KEYS = ["template", "skill", "strand"] as const;
 
@@ -467,6 +478,15 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
       });
       return rest.size ? `${path}?${rest}` : path;
     },
+  },
+
+  // A workbook day's link from before its draft store carried the draft in
+  // its query (`?draft=`, `?minutes=`, …): the day's own address.
+  {
+    from: "/learners/$learnerId/workbooks/$date",
+    about: "a workbook day's old query",
+    when: ({ search }) => WORKBOOK_KEYS.some((key) => key in search),
+    to: ({ pathname }) => pathname.replace(/\/+$/, ""),
   },
 
   // A school's older addresses. A parent's own family, at its class or its
