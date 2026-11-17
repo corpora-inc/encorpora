@@ -494,8 +494,9 @@ async function verifyFrontierSwitch() {
       .evaluateAll((nodes) =>
         nodes.map((node) => (node as HTMLElement).style.left),
       );
+  // The child's name is the page's title, in its header over the content.
   const heading = () =>
-    page.locator("[data-child-page] h1").first().innerText();
+    page.getByRole("heading", { level: 1 }).first().innerText();
   assert.equal(await heading(), fixture.paid.jordan.name);
   const oldDots = await dots();
   let release!: () => void;
