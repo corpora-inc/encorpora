@@ -1189,6 +1189,20 @@ test("CP-2 r2 H2: a profile this account doesn't have is unavailable, never ?lea
   assert.equal(space.learner, null);
 });
 
+test("a path that names a practice profile (/learners/<id>) is that profile; the same id in ?learner= is not", () => {
+  const byPath = resolveSpace(
+    at("/learners/profile-4/overview"),
+    adult(power, "jonah"),
+  );
+  assert.notEqual(byPath.status, "unavailable");
+  assert.equal(byPath.learner?.id, "profile-4");
+  const byQuery = resolveSpace(
+    at("/practice", { search: { learner: "profile-4" } }),
+    adult(power, "jonah"),
+  );
+  assert.equal(byQuery.status, "unavailable");
+});
+
 test("CP-2 r3: the frame reads the address as the learning view does: ?learner= never names a profile", () => {
   const space = resolveSpace(
     at("/practice", { search: { learner: "profile-4" } }),

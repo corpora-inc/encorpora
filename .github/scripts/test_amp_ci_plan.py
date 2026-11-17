@@ -7,7 +7,7 @@ import subprocess
 import pytest
 import yaml
 
-from amp_ci_plan import COMPLETENESS_TEST, ROOT, browser_entries, plan, test_catalog as catalog
+from amp_ci_plan import COMPLETENESS_TEST, RATCHET_TEST, ROOT, browser_entries, plan, test_catalog as catalog
 
 
 def test_single_database_regression_does_not_rebuild_or_sweep_unrelated_suites():
@@ -437,3 +437,21 @@ def test_publishing_lesson_films_checks_the_manifest_without_runtime_suites():
             assert not result[key], key
     assert (ROOT / 'amp/src/content/films/manifest.json').is_file()
     assert (ROOT / 'amp/tests/lesson-films.test.ts').is_file()
+
+
+@pytest.mark.parametrize('path', ['amp/src/web/features/family/Today.tsx', 'amp/src/web/lib/api.ts'])
+def test_every_web_change_runs_the_architecture_ratchet(path):
+    for quick in (True, False):
+        assert RATCHET_TEST in plan([path], quick=quick)['core']
+    assert (ROOT / 'amp' / RATCHET_TEST).is_file()
+
+
+def test_lowering_the_architecture_baseline_runs_only_the_ratchet():
+    for quick in (True, False):
+        result = plan(['amp/tests/architecture-ratchet.baseline.json'], quick=quick)
+        assert RATCHET_TEST in result['core']
+        assert set(result['core']) <= {RATCHET_TEST, COMPLETENESS_TEST}
+        assert not result['database']
+        for key in ('build', 'colors', 'browser', 'browser_scripts', 'content', 'native'):
+            assert not result[key], key
+    assert (ROOT / 'amp/tests/architecture-ratchet.baseline.json').is_file()
