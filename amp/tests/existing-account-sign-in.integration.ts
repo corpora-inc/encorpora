@@ -171,7 +171,7 @@ test(
           const response = await signUp("brand-new@example.com");
           assert.equal(response.statusCode, 200, response.body);
           assert.equal(sent.length, 1);
-          assert.match(sent[0].subject, /^\d{6} is your AMP code$/);
+          assert.match(sent[0].subject, /^\d{6} is your AMP sign-up code$/);
         },
       );
       await t.test(

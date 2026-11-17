@@ -18,8 +18,8 @@ import {
 import { deliverFundedActivationMail } from "../src/funding-purchase/activation-mail.js";
 import { installConsentPolicy } from "../src/parent-consent/policy.js";
 import type {
-  ConsentMail,
   ConsentTransport,
+  ConsentPayload,
 } from "../src/parent-consent/contracts.js";
 import { consentFixture } from "./parent-consent.fixture.js";
 import {
@@ -382,7 +382,7 @@ async function scheduledPurchase(
 }
 
 function assertScheduledMail(
-  mail: ConsentMail,
+  mail: ConsentPayload,
   invoice: string,
   startsAt: string,
   endsAt: string,
@@ -420,7 +420,7 @@ test(
         ).rows[0].n,
         1,
       );
-      const mails: ConsentMail[] = [];
+      const mails: ConsentPayload[] = [];
       const transport = notificationTransport(async (mail) => {
         mails.push(mail);
         return { kind: "accepted", receipt: "fixture-receipt" };
@@ -459,7 +459,7 @@ test(
         invoices,
         yearly,
       );
-      const mails: ConsentMail[] = [];
+      const mails: ConsentPayload[] = [];
       await deliverFundedActivationMail(
         pool,
         notificationTransport(async (mail) => {
@@ -541,7 +541,7 @@ test(
         pool,
         invoices,
       );
-      const mails: ConsentMail[] = [];
+      const mails: ConsentPayload[] = [];
       const transport = notificationTransport(async (mail) => {
         mails.push(mail);
         return { kind: "unknown" };
@@ -600,7 +600,7 @@ test(
         ],
       };
       await installConsentPolicy(pool, notificationPolicy);
-      const mails: ConsentMail[] = [];
+      const mails: ConsentPayload[] = [];
       const transport = notificationTransport(async (mail) => {
         mails.push(mail);
         return { kind: "accepted", receipt: randomUUID() };

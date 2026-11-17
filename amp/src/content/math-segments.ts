@@ -220,9 +220,11 @@ const SUBSCRIPT: Record<string, string> = {
 export function toTex(formula: string): string {
   return (
     formula
-      // A thousands separator is part of its numeral, not punctuation.
-      .replace(/(?<![\d.,])\d{1,3}(?:,\d{3})+(?![\d,])/g, (n) =>
-        n.replaceAll(",", "{,}"),
+      // A thousands separator is part of its numeral, not punctuation. The
+      // character before is captured: Safari before 16.4 has no lookbehind.
+      .replace(
+        /(^|[^\d.,])(\d{1,3}(?:,\d{3})+)(?![\d,])/g,
+        (_, before: string, n: string) => before + n.replaceAll(",", "{,}"),
       )
       .replace(/log_(\w+)/g, "\\log_{$1}")
       .replace(/\blog\b/g, "\\log")
@@ -241,8 +243,9 @@ export function toTex(formula: string): string {
       .replace(/−/g, "-")
       .replace(/□/g, "\\boxed{\\phantom{0}}")
       // A run of underscores standing alone is a written blank ("8 × 5 = __"),
-      // not a subscript; TeX would reject it and show the source.
-      .replace(/(?<![\w}])_{2,}(?![\w{])/g, "\\boxed{\\phantom{0}}")
+      // not a subscript; TeX would reject it and show the source. (No
+      // lookbehind: Safari before 16.4 throws on it.)
+      .replace(/(^|[^\w}])_{2,}(?![\w{])/g, "$1\\boxed{\\phantom{0}}")
       .replace(/×/g, "\\times ")
       .replace(/÷/g, "\\div ")
       .replace(/≤/g, "\\le ")

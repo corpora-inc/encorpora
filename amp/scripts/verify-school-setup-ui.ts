@@ -13,6 +13,7 @@
  *
  *     AMP_TEST_DATABASE_URL=... npx tsx scripts/verify-school-setup-ui.ts [--port 4398]
  */
+import type { LinkedMessage } from "../src/email/email.js";
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
@@ -96,7 +97,7 @@ console.info = (...args: unknown[]) => {
 const services = {
   secret: accounts.config.secret,
   origin,
-  mail: async (to: string, subject: string, text: string, link: string) => {
+  mail: async (to: string, { subject, text, url: link }: LinkedMessage) => {
     mail.push({ to, subject, text, url: link });
   },
 };

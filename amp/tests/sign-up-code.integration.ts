@@ -81,7 +81,9 @@ test(
           .some((cookie) => String(cookie).includes("session_token="));
       const password = "a new password here";
       const codes = () =>
-        sent.filter((mail) => /^\d{6} is your AMP code$/.test(mail.subject));
+        sent.filter((mail) =>
+          /^\d{6} is your AMP sign-up code$/.test(mail.subject),
+        );
 
       await t.test("sign-up mails one code and no session yet", async () => {
         const response = await post("/sign-up/email", {
@@ -94,9 +96,13 @@ test(
         assert.equal(session(response), false);
         assert.equal(sent.length, 1);
         assert.equal(sent[0]!.to, "new@example.com");
-        assert.match(sent[0]!.subject, /^\d{6} is your AMP code$/);
+        assert.match(sent[0]!.subject, /^\d{6} is your AMP sign-up code$/);
         assert.match(sent[0]!.text, /expires in 10 minutes/);
-        assert.doesNotMatch(sent[0]!.text, /https?:\/\//, "no link");
+        assert.doesNotMatch(
+          sent[0]!.text,
+          /verify-email|token=/,
+          "no link to open",
+        );
       });
       const code = codeIn(sent[0]!.subject)!;
 
@@ -207,8 +213,12 @@ test(
           assert.equal(signIn.json().code, "EMAIL_NOT_VERIFIED");
           assert.equal(session(signIn), false);
           assert.equal(sent.length, 1);
-          assert.match(sent[0]!.subject, /^\d{6} is your AMP code$/);
-          assert.doesNotMatch(sent[0]!.text, /https?:\/\//, "no link");
+          assert.match(sent[0]!.subject, /^\d{6} is your AMP sign-up code$/);
+          assert.doesNotMatch(
+            sent[0]!.text,
+            /verify-email|token=/,
+            "no link to open",
+          );
           const fresh = await post("/email-otp/verify-email", {
             email: "later@example.com",
             otp: codeIn(sent[0]!.subject)!,

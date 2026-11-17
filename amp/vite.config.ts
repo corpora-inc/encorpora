@@ -164,6 +164,27 @@ const homeDocument: Plugin = {
   },
 };
 
+/** Regex lookbehind, `(?<=…)` and `(?<!…)`, throws a SyntaxError in Safari
+ * before 16.4, inside Vite's default `safari16` target, and esbuild cannot
+ * lower it (it emits `new RegExp("…")`). Fail the build on any in browser
+ * code: literal, fallback or template source. */
+const noRegexLookbehind: Plugin = {
+  name: "amp-no-regex-lookbehind",
+  apply: "build",
+  generateBundle(_options, bundle) {
+    if (this.environment?.config.consumer === "server") return;
+    for (const chunk of Object.values(bundle)) {
+      if (chunk.type !== "chunk") continue;
+      const at = chunk.code.search(/\(\?<[=!]/);
+      if (at < 0) continue;
+      const excerpt = chunk.code.slice(Math.max(0, at - 40), at + 40);
+      this.error(
+        `${chunk.fileName} has regex lookbehind, which Safari before 16.4 rejects: …${excerpt}… Rewrite it with a capture group or a check of the previous character.`,
+      );
+    }
+  },
+};
+
 export default defineConfig({
   // A long-running server can keep its prebundled dependencies to itself.
   // Two dev servers sharing one cache rewrite each other's chunks, and pages
@@ -176,6 +197,7 @@ export default defineConfig({
     devNewUserPlugin,
     sceneArtFiles,
     homeDocument,
+    noRegexLookbehind,
     react(),
   ],
   optimizeDeps: {

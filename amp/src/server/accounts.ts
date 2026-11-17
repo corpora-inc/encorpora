@@ -28,13 +28,13 @@ import { microsoftEmailVerified } from "./provider-email";
 import { passkeySignup, PASSKEY_SIGNUP_SECONDS } from "./passkey-signup";
 import {
   accountSignInMethods,
+  confirmationMessage,
   existingAccountEmail,
   resetPasswordEmail,
   signInLink,
   CODE_VERIFY_PATH,
   SIGN_UP_CODE_LENGTH,
   SIGN_UP_CODE_SECONDS,
-  signUpCodeEmail,
   signInMethodLookup,
 } from "./sign-in-methods";
 import { tryGetCurrentAuthEndpointContext } from "@better-auth/core/context";
@@ -51,7 +51,14 @@ import type { Pool } from "pg";
 import { ApiError } from "./repository";
 import { recordActivation } from "../analytics/activation.js";
 import type { Authenticator } from "./auth";
-import { brand, brandTitle } from "../brand";
+import { brand } from "../brand";
+import {
+  deliverable,
+  linkedEmail,
+  signUpCodeEmail,
+  type AccountMail,
+  type Email,
+} from "../email/email.js";
 import {
   invitationProvesAddress,
   isFamilyInvitee,
@@ -231,33 +238,45 @@ async function appleClientSecret(apple: NonNullable<AccountsConfig["apple"]>) {
 }
 
 /** The account mail path: Resend when configured; outside production, the
- * server log. Shared with operator scripts that send account mail. */
-export function accountMail(
+ * server log. Every message carries both its HTML and plain-text parts
+ * (src/email/email.ts). */
+export function accountEmailSender(
   config: Pick<AccountsConfig, "mail" | "production">,
 ) {
   const mailer = config.mail && new Resend(config.mail.apiKey);
-  return async function send(
-    to: string,
-    subject: string,
-    text: string,
-    url?: string,
-  ) {
+  return async function sendEmail(to: string, email: Email) {
+    const { subject, html, text } = deliverable(email);
     if (mailer) {
       const { error } = await mailer.emails.send({
         from: config.mail!.from,
         to,
         subject,
-        text: `${text}\n\n${url ? `${url}\n\n` : ""}${brandTitle}\n`,
+        html,
+        text,
       });
       if (error) throw new Error(`Email not sent: ${error.message}`);
     } else if (!config.production) {
-      console.info(`[accounts] email to ${to}: ${subject}\n${url ?? text}`);
+      // Development: the subject and the links, the main action last.
+      const links = text.match(/https?:\/\/\S+/g) ?? [];
+      console.info(
+        `[accounts] email to ${to}: ${subject}\n${links.join("\n")}`,
+      );
     } else throw new Error("Email delivery is not configured");
   };
 }
 
+/** The one-link account mail path. Shared with operator scripts that send
+ * account mail. */
+export function accountMail(
+  config: Pick<AccountsConfig, "mail" | "production" | "baseURL">,
+): AccountMail {
+  const sendEmail = accountEmailSender(config);
+  return (to, message) => sendEmail(to, linkedEmail(config.baseURL, message));
+}
+
 export async function createAccounts(pool: Pool, config: AccountsConfig) {
   const send = accountMail(config);
+  const sendEmail = accountEmailSender(config);
   const methodsEnabled = {
     providers: enabledProviders(config),
     passwords: config.passwords,
@@ -266,10 +285,10 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
   const sendLogged = async (
     kind: string,
     user: { id: string; email: string },
-    message: { subject: string; text: string; url: string },
+    message: Email,
   ) => {
     try {
-      await send(user.email, message.subject, message.text, message.url);
+      await sendEmail(user.email, message);
       console.info(`[accounts] ${kind} email sent`, { userId: user.id });
     } catch (error) {
       console.error(`[accounts] ${kind} email not sent`, {
@@ -284,9 +303,13 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
    * webview; no link to open in the right one). Only the recipient and the
    * code go in, so the shared email layout can take it over whole. */
   const sendSignUpCode = async (to: string, code: string) => {
-    const message = signUpCodeEmail(brand.name, code);
+    const message = signUpCodeEmail({
+      code,
+      origin: config.baseURL,
+      expiresInMinutes: SIGN_UP_CODE_SECONDS / 60,
+    });
     try {
-      await send(to, message.subject, message.text);
+      await sendEmail(to, message);
       console.info("[accounts] sign-up code email sent");
     } catch (error) {
       console.error("[accounts] sign-up code email not sent", { error });
@@ -309,7 +332,9 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
     disableSignUp: true,
     sendVerificationOnSignUp: false,
     async sendVerificationOTP() {
-      console.error("[accounts] a sign-up code was asked for outside its flows");
+      console.error(
+        "[accounts] a sign-up code was asked for outside its flows",
+      );
     },
   });
   /** Makes a fresh code for this unconfirmed address and mails it. A failure
@@ -496,10 +521,11 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
           config.baseURL,
           new URL(url).searchParams.get("callbackURL"),
         );
-        await sendLogged("password reset", user, {
-          ...resetPasswordEmail(brand.name, methods, signIn),
-          url,
-        });
+        await sendLogged(
+          "password reset",
+          user,
+          resetPasswordEmail(brand.name, methods, signIn, url),
+        );
       },
       // With confirmation required, signing up with a used address answers
       // like a new one and sends nothing by default. The owner gets an email
@@ -620,10 +646,7 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
         if (user.emailVerified) return;
         // An unconfirmed account signing in with its password: the code
         // form takes over in place, so it gets a code, not a link.
-        if (
-          request &&
-          new URL(request.url).pathname.endsWith("/sign-in/email")
-        )
+        if (request && new URL(request.url).pathname.endsWith("/sign-in/email"))
           return mailSignUpCode(user.email);
         const school =
           !(await isFamilyInvitee(pool, user.email)) &&
@@ -632,14 +655,7 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
               .get("callbackURL")
               ?.startsWith("/school") ||
             (await isSchoolStaff(pool, user.id)));
-        await send(
-          user.email,
-          `Confirm your email for ${brand.name}`,
-          school
-            ? `Confirm this address for your ${brand.name} for Schools account. If you did not create an ${brand.name} account, ignore this email; nothing happens without your confirmation.`
-            : `Confirm this address for your ${brand.name} parent account. Until it is confirmed, the account cannot buy access or give consent for a learner. If you did not create an ${brand.name} account, ignore this email; nothing happens without your confirmation.`,
-          url,
-        );
+        await send(user.email, confirmationMessage(brand.name, school, url));
       },
     },
     socialProviders: {
@@ -722,7 +738,7 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
       database: { validateSchema: false },
     },
   });
-  return { auth, config, send, pool };
+  return { auth, config, send, sendEmail, pool };
 }
 export type Accounts = Awaited<ReturnType<typeof createAccounts>>;
 

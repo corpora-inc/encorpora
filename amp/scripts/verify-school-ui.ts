@@ -21,6 +21,7 @@
  *
  *     AMP_TEST_DATABASE_URL=... npx tsx scripts/verify-school-ui.ts [--engine chromium|webkit] [--port 4425]
  */
+import type { LinkedMessage } from "../src/email/email.js";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { mkdir, readFile, realpath, writeFile } from "node:fs/promises";
@@ -103,7 +104,7 @@ const renderer = localRenderer();
 const services = {
   secret: accounts.config.secret,
   origin,
-  mail: async (to: string, subject: string, _text: string, link: string) => {
+  mail: async (to: string, { subject, url: link }: LinkedMessage) => {
     mail.push({ to, subject, url: link });
   },
 };

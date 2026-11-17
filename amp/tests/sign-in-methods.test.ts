@@ -45,19 +45,21 @@ test("methods are named the way a person says them", () => {
 
 test("the existing-account email offers a reset only when a password exists", () => {
   const links = { signIn: `${base}/sign-in`, forgot: `${base}/sign-in/forgot` };
+  const reset = `${base}/reset-password/synthetic`;
   const google = existingAccountEmail("AMP", ["google"], links);
-  assert.equal(google.url, links.signIn);
+  assert.ok(google.text.includes(links.signIn));
+  assert.ok(google.html.includes(`href="${links.signIn}"`));
   assert.doesNotMatch(google.text, /password/i);
   const password = existingAccountEmail("AMP", ["password"], links);
   assert.ok(password.text.includes(links.forgot));
   // An account with no usable method can still get in by setting a password.
   assert.ok(existingAccountEmail("AMP", [], links).text.includes(links.forgot));
   assert.equal(
-    resetPasswordEmail("AMP", null, links.signIn).subject,
+    resetPasswordEmail("AMP", null, links.signIn, reset).subject,
     "Reset your AMP password",
   );
   assert.equal(
-    resetPasswordEmail("AMP", ["passkey"], links.signIn).subject,
+    resetPasswordEmail("AMP", ["passkey"], links.signIn, reset).subject,
     "Sign in to AMP",
   );
 });
