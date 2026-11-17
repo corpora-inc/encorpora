@@ -778,3 +778,11 @@ h3.caption {
     padding-inline-start: 0;
   }
 }
+/* The axis over the rows (`axisAt="top"`): the scale is read before the bars. */
+.axisTop {
+  margin-bottom: var(--space-1);
+}
+/* A starting guess's range: there, but quieter than a measured one. */
+.rowNumbers[data-guess] {
+  color: var(--color-subtle-text);
+}

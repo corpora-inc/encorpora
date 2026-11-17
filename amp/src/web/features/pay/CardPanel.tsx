@@ -231,9 +231,11 @@ function EnrollmentCheckout() {
       <PlanPicker offers={plans} extra={offers.data?.extraOffers} disabled={busy} />
       {/* The direct notice, before the payment that is the parent's
           consent: 16 CFR 312.4(b) (direct notice to the parent) and 312.4(c)
-          (its content). Its summary names what is collected and why, with
-          the online notice's link (312.4(c)(1)); the rest of the notice
-          expands in place, on this page, before the action. */}
+          (its content). Its summary says who collects the child's learning
+          information and why, with the online notice's link (312.4(c)(1));
+          every item of the notice, each category with its purpose and
+          retention first, expands in place under "Privacy details", on this
+          screen, before the action (billing/NoticeSummary.tsx). */}
       <NoticeSummary notice={view.notice} />
       <div className={styles.actions}>
         {/* The checkout action is the parent's affirmative response, with

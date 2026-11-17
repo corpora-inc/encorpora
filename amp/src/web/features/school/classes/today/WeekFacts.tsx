@@ -1,7 +1,12 @@
 import type { CSSProperties } from "react";
+import {
+  minutesFigure,
+  minutesNoun,
+  minutesWords,
+} from "../../../../../schools/practice-rules";
 import { summarize } from "../../../../../schools/practice-stats";
 import type { TodayResponse } from "../../../../../schools/teacher-contracts";
-import { HeatCell, HeatLegend, StatsLine } from "../../practice/heat";
+import { figure, HeatCell, HeatLegend, StatsLine } from "../../practice/heat";
 import { InfoPopover } from "../../../../ui/InfoPopover";
 import { number, TipZone } from "../teacher-shared";
 import styles from "./Today.module.css";
@@ -40,8 +45,8 @@ export function WeekFacts({
       </h2>
       <dl className={styles.weekFacts}>
         <div>
-          <dt>active minutes</dt>
-          <dd>{number(week.minutes)}</dd>
+          <dt>{minutesNoun(week.minutes, "active minute")}</dt>
+          <dd>{minutesFigure(week.minutes)}</dd>
         </div>
         {week.problems >= PROBLEMS_WORTH_STATING ? (
           <div>
@@ -106,14 +111,14 @@ function Spread({
           className={styles.spreadStrip}
           style={{ "--spread-columns": sorted.length } as CSSProperties}
           role="img"
-          aria-label={`${sorted.length} ${words.learners}: median ${Math.round(stats.median)}, mean ${Math.round(stats.mean)} active minutes this week.`}
+          aria-label={`${sorted.length} ${words.learners}: median ${figure(stats.median)}, mean ${figure(stats.mean)} active minutes this week.`}
         >
           {sorted.map((student) => (
             <HeatCell
               key={student.id}
               value={student.weekMinutes}
               midpoint={target}
-              tip={`${student.name}: ${number(student.weekMinutes)} active ${student.weekMinutes === 1 ? "minute" : "minutes"}, ${number(student.weekProblems)} ${student.weekProblems === 1 ? "problem" : "problems"} this week`}
+              tip={`${student.name}: ${minutesWords(student.weekMinutes, "active minute")}, ${number(student.weekProblems)} ${student.weekProblems === 1 ? "problem" : "problems"} this week`}
             />
           ))}
         </span>
