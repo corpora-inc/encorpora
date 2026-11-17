@@ -72,9 +72,13 @@ export async function registerAnalyticsRoutes(
           return reply.code(202).send({ accepted: 0 });
       }
       // A crawler's browser is never a person, whatever the page reported.
-      const batch = automatedClient(request.ip, request.headers["user-agent"])
-        ? { ...parsed.data, traffic: "automated" as const }
-        : parsed.data;
+      // Our own flagged browsers stay internal, so their checks don't count
+      // as outside crawlers.
+      const batch =
+        parsed.data.traffic !== "internal" &&
+        automatedClient(request.ip, request.headers["user-agent"])
+          ? { ...parsed.data, traffic: "automated" as const }
+          : parsed.data;
       const accepted = await recordEventBatch(
         options.pool,
         batch,

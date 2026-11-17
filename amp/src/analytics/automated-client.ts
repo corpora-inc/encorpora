@@ -11,7 +11,7 @@
  *   user agent.
  */
 const AUTOMATED_AGENT =
-  /HeadlessChrome|\bHeadless\b|PhantomJS|Selenium|WebDriver|Puppeteer|Playwright|Lighthouse|facebookexternalhit|meta-external|Facebot|AdsBot-Google|Googlebot|Google-InspectionTool|bingbot|Bytespider|GPTBot|ClaudeBot/i;
+  /HeadlessChrome|\bHeadless\b|PhantomJS|Selenium|WebDriver|Puppeteer|Playwright|facebookexternalhit|meta-external|Facebot|AdsBot-Google|Googlebot|Google-InspectionTool|bingbot|Bytespider|GPTBot|ClaudeBot/i;
 
 /** An IPv4 address, plain or IPv6-mapped (`::ffff:57.141.0.1`). */
 function ipv4(address: string): number[] | null {
