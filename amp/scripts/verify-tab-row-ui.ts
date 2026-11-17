@@ -29,6 +29,8 @@ const rows = {
   teacher: ["today", "settings"],
   family: ["today", "settings"],
   tutor: ["today", "settings"],
+  // An adult's own practice (/me): five tabs.
+  me: ["practice", "inventory"],
   admin: ["overview", "settings"],
   district: ["overview", "settings"],
 } as const;
@@ -61,8 +63,20 @@ try {
               ),
             ].filter((el) => el.getClientRects().length > 0);
             const words = shown.map((el) => {
+              // The words a person sees: More keeps room for its longest
+              // name, so its box is the name it shows, not that room.
+              const visible = [
+                ...el.querySelectorAll<HTMLElement>("span > span"),
+              ].find((span) => {
+                const style = getComputedStyle(span);
+                return (
+                  style.visibility === "visible" &&
+                  style.display !== "none" &&
+                  !!span.textContent
+                );
+              });
               const range = document.createRange();
-              range.selectNodeContents(el);
+              range.selectNodeContents(visible ?? el);
               const box = range.getBoundingClientRect();
               return {
                 text: el.textContent ?? "",
@@ -86,10 +100,22 @@ try {
           assert.ok(!row.scrolls, `${tag}: the row never scrolls`);
           assert.ok(!row.faded, `${tag}: no fading edge`);
           assert.ok(row.page <= row.view, `${tag}: no page overflow`);
+          // Whole tabs at their spacing, then More: the /me row at 320 holds
+          // two and More (ui/Tabs).
           assert.ok(
-            row.words.length >= 4,
-            `${tag}: at least three tabs and More`,
+            row.words.length >= 3,
+            `${tag}: at least two tabs and More`,
           );
+          // Labels never run together: at least --space-3 (12 px, ui/Tabs
+          // FIT_STEPS) between the words of neighbouring tabs.
+          const inOrder = [...row.words].sort((a, b) => a.left - b.left);
+          for (let at = 1; at < inOrder.length; at++) {
+            const gap = inOrder[at]!.left - inOrder[at - 1]!.right;
+            assert.ok(
+              gap >= 11.5,
+              `${tag}: "${inOrder[at - 1]!.text}" and "${inOrder[at]!.text}" are ${gap.toFixed(1)} px apart, under 12`,
+            );
+          }
           for (const w of row.words) {
             assert.ok(w.whole, `${tag}: "${w.text}" is whole`);
             assert.ok(

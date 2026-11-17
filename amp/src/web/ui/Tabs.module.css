@@ -137,21 +137,14 @@
     justify-content: center;
   }
 }
-/* A row that would otherwise scroll keeps every label in view: Tabs.tsx
-   steps the padding down until it fits (the Account, family and school rows
-   on a 320 px phone). Each tab stays a 44 px target. */
+/* A row that would otherwise scroll tries one tighter padding: neighbouring
+   labels stay --space-3 apart, never closer (Tabs.tsx FIT_STEPS); past that
+   it shows whole tabs and More. Each tab stays a 44 px target. */
 .tabs[data-fit] .tab {
   min-width: 44px;
 }
 .tabs[data-fit="snug"] {
-  --tab-pad: var(--space-2);
-}
-.tabs[data-fit="tight"],
-.tabs[data-fit="small"] {
-  --tab-pad: var(--space-1);
-}
-.tabs[data-fit="small"] .tab {
-  font-size: 14px;
+  --tab-pad: calc(var(--space-3) / 2);
 }
 /* A row too wide even at its tightest: the tabs that fit, whole, then More
    with the rest (Tabs.tsx). More is a tab: same size, type and fill. */
