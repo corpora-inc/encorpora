@@ -186,10 +186,16 @@ export function layoutFaults(l: Layout, scene: Scene, c: Container): Fault[] {
   const out: Fault[] = [];
   const W = scene.width ?? 360,
     H = scene.maxHeight ?? 320;
-  if (l.width > W + 1 || l.height > H + 1)
+  // A figure wider than its box is drawn smaller to fit it (the text size
+  // rule below holds it to a readable size). Its height cap holds, except
+  // for rows of text (tables), which grow downward as the stage scrolls.
+  const grows = scene.elements.every(
+    (e) => e.type === "table" || e.type === "lineTable",
+  );
+  if (l.height > H + 1 && !grows)
     out.push({
       rule: "container",
-      detail: `figure ${l.width}×${l.height} exceeds ${W}×${H}`,
+      detail: `figure ${l.width}×${l.height} is taller than its ${H} px box`,
     });
   const texts = l.items.filter((d): d is Text => d.k === "text");
   for (const d of l.items) {
