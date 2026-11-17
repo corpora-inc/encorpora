@@ -188,7 +188,8 @@ function AfterPurchaseGate() {
   });
   const naming = usePayStore(
     (state) =>
-      !!session && state.accounts[session.accountId]?.opener?.stage === "naming",
+      !!session &&
+      state.accounts[session.accountId]?.opener?.stage === "naming",
   );
   const waiting = naming && !!pathname;
   return waiting ? (
@@ -713,7 +714,8 @@ async function beforeStarter({
         .catch((error) => console.warn("The account didn’t load ahead", error));
   const target = routeFor(me?.signedIn ? me : null, location);
   // An established account's old trial link: straight to its place.
-  if (target?.to === "/") throw await homeRedirect();
+  if (target?.to === "/")
+    throw await homeRedirect(me?.signedIn ? me : undefined);
   if (target) throw redirect({ to: target.to as never, replace: true });
   // The school answer's next step depends on the account's schools: there
   // before the page paints, so its buttons never arrive late.
