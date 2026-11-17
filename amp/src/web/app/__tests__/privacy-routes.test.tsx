@@ -33,9 +33,17 @@ function routerAt(path: string) {
     getParentRoute: () => root,
     path: "/family/$family/settings",
   });
+  const account = createRoute({
+    getParentRoute: () => root,
+    path: "/account",
+  });
   const tree = root.addChildren([
     settings.addChildren([
       createRoute({ getParentRoute: () => settings, path: "privacy" }),
+    ]),
+    // The overlay over /account (app/account-overlays.tsx), for anyone.
+    account.addChildren([
+      createRoute({ getParentRoute: () => account, path: "privacy" }),
     ]),
     ...(privacyRoutes(root) as unknown as []),
   ]);
@@ -53,7 +61,6 @@ afterEach(() => vi.clearAllMocks());
 
 const FAMILY_PRIVACY = `/family/${FAMILY}/settings/privacy`;
 const ROWS = [
-  ["/account/privacy", null],
   ["/account/privacy/export", "export"],
   ["/account/privacy/consent", "consent"],
   ["/account/privacy/delete", "delete"],
@@ -81,15 +88,16 @@ for (const [from, panel] of ROWS)
     );
   });
 
-test("an adult with no family: /account/privacy is the overlay itself, no hop", async () => {
-  hub.href = "/account";
-  const { router, hops } = routerAt("/account/privacy");
-  await router.load();
-  expect(router.state.location.pathname).toBe("/account/privacy");
-  expect(hops()).toBe(0);
-});
+for (const href of ["/account", `/family/${FAMILY}/settings`])
+  test(`/account/privacy is the overlay itself for anyone, no hop (hub ${href})`, async () => {
+    hub.href = href;
+    const { router, hops } = routerAt("/account/privacy");
+    await router.load();
+    expect(router.state.location.pathname).toBe("/account/privacy");
+    expect(hops()).toBe(0);
+  });
 
-for (const [from, panel] of ROWS.filter(([path]) => path !== "/account/privacy"))
+for (const [from, panel] of ROWS)
   test(`an adult with no family: ${from} is one hop to /account/privacy`, async () => {
     hub.href = "/account";
     const { router, hops } = routerAt(from);

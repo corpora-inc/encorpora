@@ -2,7 +2,6 @@ import { expect, test } from "vitest";
 import { shellFrame } from "../shell-frame";
 import { phoneTabs } from "../../../ui/Tabs";
 import {
-  accountTabs,
   classroomTabs,
   familyTabs,
   learnerTabs,
@@ -23,21 +22,9 @@ test("each group's screens share one frame and name their tab", () => {
     kind: "progress",
     active: "inventory",
   });
-  expect(shellFrame("/family/security")).toEqual({
-    kind: "account",
-    active: "security",
-  });
-  expect(shellFrame("/family/learners/new")).toEqual({
-    kind: "account",
-    active: "learners",
-  });
-  expect(shellFrame("/family/access/records")).toEqual({
-    kind: "account",
-    active: "access",
-  });
   expect(shellFrame("/consent")).toEqual({
     kind: "account",
-    active: "privacy",
+    active: "account",
   });
   expect(shellFrame("/practice")).toEqual({ kind: "practice" });
   expect(shellFrame("/lessons/fractions")).toEqual({
@@ -87,25 +74,24 @@ test("screens with frames of their own stay outside it", () => {
     expect(shellFrame(path), path).toBeNull();
 });
 
-test("a learner's record and the account each have one row of tabs; the URLs never move", () => {
+test("a learner's record has one row of tabs; the account is one page with none", () => {
   expect(learnerTabs().map((tab) => tab.path)).toEqual([
     "overview",
     "pathways",
     "inventory",
   ]);
-  expect(accountTabs.map((tab) => tab.label)).toEqual([
-    "Profile",
-    "Billing",
-    "Privacy",
-  ]);
-  // The account's own settings are at neutral addresses, the old ones still
-  // open the same tab.
-  for (const [path, active] of [
-    ["/account/security", "security"],
-    ["/account/billing/records", "access"],
-    ["/account/privacy/export", "privacy"],
+  // The account and the overlays over it share one frame, with no tabs.
+  for (const path of [
+    "/account",
+    "/account/security",
+    "/account/billing",
+    "/account/privacy",
+    "/account/delete-account",
   ])
-    expect(shellFrame(path), path).toEqual({ kind: "account", active });
+    expect(shellFrame(path), path).toEqual({
+      kind: "account",
+      active: "account",
+    });
   // Practice at a level's hub is the drawer's entry, never a tab (Q-3).
   expect(shellFrame("/me/profiles")).toEqual({ kind: "plain" });
 });
@@ -256,6 +242,4 @@ test("a phone's tabs: each space's own four", () => {
     "gradebook",
     "time",
   ]);
-  // A group that marks none shows its first four.
-  expect(ids(phoneTabs(accountTabs))).toEqual(ids(accountTabs));
 });

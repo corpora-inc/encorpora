@@ -21,7 +21,7 @@ export function usePayHref(learnerId: string) {
   const here = pathname.replace(/\/+$/, "");
   if (isPayHost(here)) return payOver(here, learnerId);
   return payOver(
-    me?.signedIn ? learnerOrigin(me, learnerId) : "/account/billing",
+    me?.signedIn ? learnerOrigin(me, learnerId) : "/account",
     learnerId,
   );
 }

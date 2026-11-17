@@ -46,6 +46,9 @@ export type FamilyTarget = {
   search: Search;
   /** Only a known settings section, never a secret. */
   hash?: string;
+  /** The sheet the screen opens on arrival (nav/sheet.ts), in history
+   * state, never the address: their own devices. */
+  state?: { sheet: string };
 };
 
 const pick = (search: Search, keys: readonly string[]) =>
@@ -57,10 +60,8 @@ const pick = (search: Search, keys: readonly string[]) =>
 
 /** The address keys each leaf's screen reads, besides `open`. */
 const CARRIED: Record<string, readonly string[]> = {
-  "": ["devices"],
-  map: ["skill", "lens", "sort"],
+  "": [],
   "reports/grades": ["term", "year", "student"],
-  people: ["devices"],
   settings: [],
 };
 
@@ -129,8 +130,6 @@ function leafFor(parts: readonly string[]): {
   devices?: true;
   /** A Settings section this leaf opens at. */
   section?: string;
-  /** A sign-in card print for one child. */
-  cards?: true;
 } {
   const [first = "today", second, third, fourth] = parts;
   switch (first) {
@@ -150,11 +149,13 @@ function leafFor(parts: readonly string[]): {
       return { leaf: "time" };
     case "workbooks":
       return { leaf: second ? `workbooks/${second}` : "workbooks" };
+    // The family's people are Settings' People.
     case "roster":
-      return { leaf: "people" };
-    // Cards and the sign-in board are the children's own devices.
+      return { leaf: "settings" };
+    // Cards and the sign-in board are the children's own devices, a sheet
+    // over Settings (its sign-in cards print there).
     case "cards":
-      return { leaf: "people", devices: true, cards: true };
+      return { leaf: "settings", devices: true };
     case "start":
       return { leaf: "", devices: true };
     case "settings":
@@ -221,13 +222,6 @@ export function familyClassTarget({
       familyPath(family, `kids/${learner}`),
       withOpen(pick(search, ["skill"]), rest),
     );
-  // One child's card, named by their roster person, prints on its own.
-  const selected =
-    typeof search.student === "string" ? people.get(search.student) : undefined;
-  if (target.cards && typeof search.student === "string" && selected)
-    return viaReturn(familyPath(family, "cards"), {
-      student: search.student,
-    });
   const part = childPart(family, target.leaf, search, rest, only);
   if (part) return part;
   const keys =
@@ -236,24 +230,28 @@ export function familyClassTarget({
       ? Object.keys(search).filter((key) => key !== OPEN_KEY)
       : []);
   // What the screen opens itself, typed and validated beyond the shared
-  // return keys: the devices sheet, a workbook's identity (its set on a
-  // day, the stack's day, minutes, paper and chosen children) and a
-  // settings section. Anything else, and every other fragment, is dropped.
+  // return keys: the devices sheet (history state), a workbook's identity
+  // (its set on a day, the stack's day, minutes, paper and chosen children)
+  // and a settings section. Anything else, and every other fragment, is
+  // dropped.
   const devices =
     target.devices || search.devices === 1 || search.devices === "1";
-  const opens: Search = {
-    ...(devices && target.leaf !== "settings" ? { devices: 1 } : {}),
-    ...(target.leaf.startsWith("workbooks") ? workbookIdentity(search) : {}),
-  };
+  const opens: Search = target.leaf.startsWith("workbooks")
+    ? workbookIdentity(search)
+    : {};
   const result = viaReturn(
     familyPath(family, target.leaf),
     withOpen(pick(search, keys), rest),
     opens,
   );
   const section = target.section ?? hash;
-  return target.leaf === "settings" && section && SETTINGS_SECTIONS.has(section)
-    ? { ...result, hash: section }
-    : result;
+  return {
+    ...result,
+    ...(target.leaf === "settings" && section && SETTINGS_SECTIONS.has(section)
+      ? { hash: section }
+      : {}),
+    ...(devices ? { state: { sheet: "devices" } } : {}),
+  };
 }
 
 /** The record leaves that are parts of each child's page now (family-routes'
@@ -268,8 +266,9 @@ const CHILD_PARTS: Record<string, string | null> = {
 /**
  * Where a record leaf opens, computed once so no alias hop follows: for a
  * family of one child, that child's page at the part (Progress keeps its
- * curriculum layers); for several, Progress. The workbook print for several
- * keeps its own address. Null for any other leaf.
+ * curriculum layers); for several, Today, where each child's card opens
+ * their page. The workbook print for several keeps its own address. Null
+ * for any other leaf.
  */
 function childPart(
   family: string,
@@ -285,10 +284,14 @@ function childPart(
     (search.several !== undefined || workbookIdentity(search).several)
   )
     return null;
-  if (!only && part === null) return null;
-  const carried = part === null ? pick(search, CARRIED.map ?? []) : {};
+  // Progress's view goes with it to a child's page; Today keeps only the
+  // layers (and an answer's skill).
+  const carried =
+    part === null
+      ? pick(search, only ? ["skill", "lens", "sort"] : ["skill"])
+      : {};
   const result = viaReturn(
-    familyPath(family, only ? `kids/${only}` : "map"),
+    familyPath(family, only ? `kids/${only}` : ""),
     withOpen(carried, part === null ? [...rest] : []),
   );
   return part && only ? { ...result, hash: part } : result;
@@ -346,7 +349,7 @@ export function familyOrgTarget({
   only?: string;
 }): FamilyTarget {
   const leaf = {
-    roster: "people",
+    roster: "settings",
     map: "map",
     settings: "settings",
     today: "",
@@ -399,4 +402,38 @@ export function childrenElsewhere<
   return children.filter(
     (child) => !classId || !child.classes.some((entry) => entry.id === classId),
   );
+}
+
+/** The address keys that once opened a sheet over a family screen, and the
+ * sheet each opens now (nav/sheet.ts). */
+const SHEET_KEYS: Record<string, string> = {
+  devices: "devices",
+  add: "add-children",
+};
+
+/**
+ * An older family address that opened a sheet with a key (`?devices=1`,
+ * `?add=1`): one hop to the same screen without it, the sheet opening from
+ * history state. Null when the address has none.
+ */
+export function sheetHop(
+  pathname: string,
+  search: Search,
+): { href: string; state: { sheet: string } } | null {
+  const key = Object.keys(SHEET_KEYS).find(
+    (name) => search[name] !== undefined,
+  );
+  if (!key) return null;
+  const query = new URLSearchParams();
+  for (const [name, value] of Object.entries(search))
+    if (!(name in SHEET_KEYS) && value !== undefined)
+      query.set(
+        name,
+        typeof value === "string" ? value : JSON.stringify(value),
+      );
+  const text = query.toString();
+  return {
+    href: text ? `${pathname}?${text}` : pathname,
+    state: { sheet: SHEET_KEYS[key]! },
+  };
 }

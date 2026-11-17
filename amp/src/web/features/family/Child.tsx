@@ -1,10 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import {
-  Link,
-  useNavigate,
-  useParams,
-  useRouterState,
-} from "@tanstack/react-router";
+import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import { reportable } from "../../../learning/level-check";
 import { z } from "zod";
@@ -44,7 +39,7 @@ import { useHandOver } from "../school/classes/today/use-hand-over";
 import { areaSourceOf } from "../../nav/AreaLayer";
 import { childProgressOptions, type FamilyChild } from "./api";
 import { DevicesSheet, SignInPictures } from "./Devices";
-import { ConsentSheet, DeleteDataSheet } from "./ChildPrivacy";
+import { ChildConsentPanel, ChildDeletePanel } from "../privacy/ChildPanels";
 import {
   childOf,
   FamilyFrame,
@@ -55,6 +50,8 @@ import {
 import { AccessFact, ChildAction, WeekFactsOf } from "./Today";
 import styles from "./Family.module.css";
 import { ChildActivity } from "./ChildActivity";
+import { useSheet } from "../../nav/sheet";
+import { Sheet } from "../../ui/Sheet";
 import { PayLink } from "../pay/link";
 
 /**
@@ -83,22 +80,8 @@ export function ChildScreen() {
   // Something to report: a level with an answer behind it (Q-201).
   const hasReport = reportable(progress.data?.level);
   if (progress.data) openedUnmeasured.current ??= !hasReport;
-  const search = useRouterState({
-    select: (state) => state.location.search as Record<string, unknown>,
-  });
-  const navigate = useNavigate();
-  const devices = search.devices === 1 || search.devices === "1";
-  const setDevices = (open: boolean) =>
-    void navigate({
-      to: ".",
-      search: ((current: Record<string, unknown>) => {
-        const next = { ...current };
-        if (open) next.devices = 1;
-        else delete next.devices;
-        return next;
-      }) as never,
-      replace: !open,
-    });
+  // Their own devices: a sheet over the page, in history state.
+  const devices = useSheet("devices");
   if (data && !child)
     return (
       <FamilyFrame place={place}>
@@ -139,7 +122,7 @@ export function ChildScreen() {
             child={child}
             starting={starting}
             onPracticeHere={(id) => void handOver(id)}
-            onDevices={() => setDevices(true)}
+            onDevices={devices.show}
           />
           <section aria-labelledby="child-week" className={styles.section}>
             <h2 id="child-week" className={styles.label}>
@@ -250,8 +233,8 @@ export function ChildScreen() {
             <DevicesSheet
               place={place}
               classId={place.own.id}
-              open={devices}
-              onOpenChange={setDevices}
+              open={devices.open}
+              onOpenChange={devices.onOpenChange}
             />
           )}
         </div>
@@ -475,17 +458,111 @@ function ChildReports({
 
 const ok = z.unknown();
 
-/** What the parent who manages this child can change, folded under one
- * Settings: their name, birth year, practice settings, sign-in pictures,
- * consent and deleting their learning data. Each row only
- * where the server allows it; a second parent reads the year. Their own
- * devices are an action beside Practice, not a setting. */
+/** Whether a reader may change or read anything of this child's settings:
+ * a row shows only where the server allows it; a second parent reads the
+ * year. */
+function hasSettings(place: FamilyPlace, child: FamilyChild) {
+  const caps = child.capabilities;
+  return [
+    caps.rename,
+    caps.changeBirthYear || !!child.birthYear,
+    caps.changePracticeSettings,
+    caps.manageDevices && !!place.own,
+    caps.manageConsent,
+    caps.delete,
+  ].some(Boolean);
+}
+
+/** What the parent who manages this child can change, on their page, folded
+ * under one Settings: the same rows as the child's settings sheet over
+ * family Settings. Deleting their data leaves for the family's Today. */
 export function ChildSettings({
   place,
   child,
 }: {
   place: FamilyPlace;
   child: FamilyChild;
+}) {
+  const navigate = useNavigate();
+  if (!hasSettings(place, child)) return null;
+  return (
+    <section aria-label={`${child.name}’s settings`} className={styles.section}>
+      {/* One folded section: nothing of the settings shows on the page
+          until it is opened. */}
+      <Disclosure summary="Settings" className={styles.childSettings}>
+        <ChildSettingsRows
+          place={place}
+          child={child}
+          onDeleted={() =>
+            navigate({
+              to: "/$",
+              params: { _splat: familyHref(place.family) },
+              replace: true,
+            })
+          }
+        />
+      </Disclosure>
+    </section>
+  );
+}
+
+/**
+ * One child's settings over family Settings (the IA v2 spec, §3.1; sheet
+ * state `child:<learner>`): the same rows as their page's Settings, and a
+ * link to their page.
+ */
+export function ChildSettingsSheet({
+  place,
+  child,
+  open,
+  onOpenChange,
+}: {
+  place: FamilyPlace;
+  child: FamilyChild;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}) {
+  return (
+    <Sheet
+      open={open}
+      onOpenChange={onOpenChange}
+      title={child.name}
+      description={
+        child.capabilities.readProgress ? (
+          <Link
+            to="/$"
+            params={{ _splat: familyHref(place.family, `kids/${child.id}`) }}
+            data-child-progress={child.id}
+          >
+            Progress
+          </Link>
+        ) : undefined
+      }
+      tall
+    >
+      <div data-child-settings-sheet={child.id}>
+        <ChildSettingsRows
+          place={place}
+          child={child}
+          onDeleted={() => onOpenChange(false)}
+        />
+      </div>
+    </Sheet>
+  );
+}
+
+/** The rows of a child's settings: their name, birth year, practice
+ * settings, sign-in pictures, then learning permission and deleting their
+ * learning data, each a disclosure in place (never a sheet over a sheet).
+ * `onDeleted` leaves whatever is about this child once their data is gone. */
+function ChildSettingsRows({
+  place,
+  child,
+  onDeleted,
+}: {
+  place: FamilyPlace;
+  child: FamilyChild;
+  onDeleted: () => Promise<unknown> | void;
 }) {
   const { session } = place;
   const caps = child.capabilities;
@@ -495,8 +572,6 @@ export function ChildSettings({
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState("");
   const [error, setError] = useState("");
-  /** Consent or deleting their data, open over the settings. */
-  const [sheet, setSheet] = useState<"consent" | "delete" | null>(null);
   const say = (failure: unknown, fallback: string) => {
     console.error(fallback, failure);
     setError(
@@ -551,186 +626,128 @@ export function ChildSettings({
     : null;
   const practice =
     caps.changePracticeSettings && !!summary && (age === null || age >= 13);
-  // Picture recovery, where the parent keeps the child's sign-in.
-  const pictures =
-    caps.manageDevices &&
-    !!place.own &&
-    child.classes.some(
-      (entry) => entry.id === place.own!.id && !!entry.personId,
-    );
-  const any = [
-    caps.rename || naming,
-    caps.changeBirthYear || !!child.birthYear,
-    caps.changePracticeSettings,
-    practice,
-    pictures,
-    caps.manageConsent,
-    caps.delete,
-  ].some(Boolean);
-  if (!any) return null;
   return (
-    <section aria-label={`${child.name}’s settings`} className={styles.section}>
-      {/* One folded section: nothing of the settings shows on the page
-          until it is opened. */}
-      <Disclosure summary="Settings" className={styles.childSettings}>
-        <dl className={styles.settings} data-child-settings="">
-          {(caps.rename || naming) && (
-            <div className={styles.setting}>
-              {naming ? (
-                <form
-                  className={styles.form}
-                  noValidate
-                  onSubmit={(event) => {
-                    event.preventDefault();
-                    void rename();
-                  }}
-                  style={{ gridColumn: "1 / -1" }}
-                >
-                  <TextField
-                    label="Name"
-                    value={name}
-                    error={nameError}
-                    onChange={(event) => {
-                      setName(event.target.value);
-                      setNameError("");
-                    }}
-                    maxLength={CHILD_NAME_MAX}
-                    autoComplete="off"
-                    placeholder="First name or nickname"
-                    title={PARENT_ENTRY_LINE}
-                    autoFocus
-                    disabled={busy}
-                  />
-                  <div className={styles.formActions}>
-                    <Button
-                      variant="primary"
-                      disabled={busy}
-                      aria-busy={busy || undefined}
-                    >
-                      Save name
-                    </Button>
-                    <Button
-                      variant="quiet"
-                      type="button"
-                      onClick={() => {
-                        setNaming(false);
-                        setName(child.name);
-                      }}
-                      disabled={busy}
-                    >
-                      Cancel
-                    </Button>
-                  </div>
-                </form>
-              ) : (
-                <>
-                  <div className={styles.settingText}>
-                    <dt>Name</dt>
-                    <dd>{child.name}</dd>
-                  </div>
-                  <div className={styles.settingAction}>
-                    <Button variant="secondary" onClick={() => setNaming(true)}>
-                      Change
-                    </Button>
-                  </div>
-                </>
-              )}
-            </div>
-          )}
-          {(caps.changeBirthYear || child.birthYear) && (
-            <div className={styles.setting}>
-              <div className={styles.settingText}>
-                <dt>Birth year</dt>
-                <dd>Sets where practice starts. Their answers stay.</dd>
-              </div>
-              <div className={styles.settingAction}>
-                <YearField
-                  label={`Birth year, ${child.name}`}
-                  earlier
-                  value={child.birthYear ? String(child.birthYear) : ""}
-                  placeholder="Choose a year"
-                  disabled={busy || !caps.changeBirthYear}
-                  onChange={(year) => void saveYear(year)}
-                />
-              </div>
-            </div>
-          )}
-          {caps.changePracticeSettings && (
-            <ChildPracticeSettings place={place} child={child} />
-          )}
-          {practice && summary && (
-            <div className={styles.setting} data-practice-settings="">
-              <div
-                className={styles.settingText}
+    <>
+      <dl className={styles.settings} data-child-settings="">
+        {(caps.rename || naming) && (
+          <div className={styles.setting}>
+            {naming ? (
+              <form
+                className={styles.form}
+                noValidate
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  void rename();
+                }}
                 style={{ gridColumn: "1 / -1" }}
               >
-                <SatMathFocus
-                  key={`${session.accountId}:${child.id}`}
-                  learner={summary}
-                  token={session.token}
-                  identity={session.accountId}
-                  onSaved={() => invalidateAccount(session.accountId)}
+                <TextField
+                  label="Name"
+                  value={name}
+                  error={nameError}
+                  onChange={(event) => {
+                    setName(event.target.value);
+                    setNameError("");
+                  }}
+                  maxLength={CHILD_NAME_MAX}
+                  autoComplete="off"
+                  placeholder="First name or nickname"
+                  title={PARENT_ENTRY_LINE}
+                  autoFocus
+                  disabled={busy}
                 />
-              </div>
+                <div className={styles.formActions}>
+                  <Button
+                    variant="primary"
+                    disabled={busy}
+                    aria-busy={busy || undefined}
+                  >
+                    Save name
+                  </Button>
+                  <Button
+                    variant="quiet"
+                    type="button"
+                    onClick={() => {
+                      setNaming(false);
+                      setName(child.name);
+                    }}
+                    disabled={busy}
+                  >
+                    Cancel
+                  </Button>
+                </div>
+              </form>
+            ) : (
+              <>
+                <div className={styles.settingText}>
+                  <dt>Name</dt>
+                  <dd>{child.name}</dd>
+                </div>
+                <div className={styles.settingAction}>
+                  <Button variant="secondary" onClick={() => setNaming(true)}>
+                    Change
+                  </Button>
+                </div>
+              </>
+            )}
+          </div>
+        )}
+        {(caps.changeBirthYear || child.birthYear) && (
+          <div className={styles.setting}>
+            <div className={styles.settingText}>
+              <dt>Birth year</dt>
+              <dd>Sets where practice starts. Their answers stay.</dd>
             </div>
-          )}
-          <SignInPictures key={child.id} place={place} child={child} />
-          {caps.manageConsent && (
-            <div className={styles.setting}>
-              <div className={styles.settingText}>
-                <dt>Consent</dt>
-              </div>
-              <div className={styles.settingAction}>
-                <Button
-                  variant="secondary"
-                  data-child-consent=""
-                  onClick={() => setSheet("consent")}
-                >
-                  Open
-                </Button>
-              </div>
+            <div className={styles.settingAction}>
+              <YearField
+                label={`Birth year, ${child.name}`}
+                earlier
+                value={child.birthYear ? String(child.birthYear) : ""}
+                placeholder="Choose a year"
+                disabled={busy || !caps.changeBirthYear}
+                onChange={(year) => void saveYear(year)}
+              />
             </div>
-          )}
-          {caps.delete && (
-            <div className={styles.setting}>
-              <div className={styles.settingText}>
-                <dt>Delete learning data</dt>
-                <dd>{child.name}’s answers and levels, for good</dd>
-              </div>
-              <div className={styles.settingAction}>
-                <Button
-                  variant="secondary"
-                  data-child-delete=""
-                  onClick={() => setSheet("delete")}
-                >
-                  Open
-                </Button>
-              </div>
+          </div>
+        )}
+        {caps.changePracticeSettings && (
+          <ChildPracticeSettings place={place} child={child} />
+        )}
+        {practice && summary && (
+          <div className={styles.setting} data-practice-settings="">
+            <div
+              className={styles.settingText}
+              style={{ gridColumn: "1 / -1" }}
+            >
+              <SatMathFocus
+                key={`${session.accountId}:${child.id}`}
+                learner={summary}
+                token={session.token}
+                identity={session.accountId}
+                onSaved={() => invalidateAccount(session.accountId)}
+              />
             </div>
-          )}
-        </dl>
-      </Disclosure>
-      {/* Consent and deleting their data open over these settings: no
-          address of their own, so closing is this screen, where it was. */}
+          </div>
+        )}
+        <SignInPictures key={child.id} place={place} child={child} />
+      </dl>
       {caps.manageConsent && (
-        <ConsentSheet
-          place={place}
-          open={sheet === "consent"}
-          onOpenChange={(open) => setSheet(open ? "consent" : null)}
-        />
+        <Disclosure summary="Learning permission">
+          <ChildConsentPanel />
+        </Disclosure>
       )}
       {caps.delete && (
-        <DeleteDataSheet
-          place={place}
-          child={child}
-          open={sheet === "delete"}
-          onOpenChange={(open) => setSheet(open ? "delete" : null)}
-        />
+        <Disclosure summary="Delete learning data">
+          <ChildDeletePanel
+            child={{ id: child.id, name: child.name }}
+            onDone={onDeleted}
+          />
+        </Disclosure>
       )}
       <Toast
         message={notice || error}
         onDismiss={() => (setNotice(""), setError(""))}
       />
-    </section>
+    </>
   );
 }

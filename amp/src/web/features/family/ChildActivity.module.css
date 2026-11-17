@@ -48,3 +48,14 @@
   font-size: var(--text-table-small);
   color: var(--color-muted-text);
 }
+/* The chart's block: the columns and their caption. A wait or a failure
+ * holds the same height, so nothing below moves when the days arrive. */
+.figure,
+.reserve {
+  height: 112px;
+  box-sizing: border-box;
+}
+.reserve {
+  margin: 0;
+  border-radius: var(--radius-small);
+}

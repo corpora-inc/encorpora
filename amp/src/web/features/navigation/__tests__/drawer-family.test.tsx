@@ -93,6 +93,7 @@ test("Family: Today and its own children as rows, then the switcher, then the ac
       } as never,
     },
   );
+  harness.settings.value = `/family/${FAMILY}/settings`;
   render(<DrawerContents close={() => {}} space={space} />);
   // No child picker: the children are rows, each opening their page.
   expect(sections()).toEqual(["AMP navigation", "Your places", "Account"]);
@@ -102,11 +103,14 @@ test("Family: Today and its own children as rows, then the switcher, then the ac
   );
   expect(screen.queryByRole("option", { name: "Pip" })).toBeNull();
   expect(screen.getByTestId("switcher").dataset.current).toBe("home");
-  // One account for every space; the family's settings are its own tab.
+  // A parent's account settings are their family's Settings: one entry,
+  // named for it, never a sign-in page (IA v2 §4).
   expect(screen.queryByRole("link", { name: "Family & account" })).toBeNull();
+  expect(screen.queryByRole("link", { name: "Account" })).toBeNull();
   expect(
-    screen.getByRole("link", { name: "Account" }).getAttribute("href"),
-  ).toBe("/account/security");
+    screen.getByRole("link", { name: "Settings" }).getAttribute("href"),
+  ).toBe(`/family/${FAMILY}/settings`);
+  harness.settings.value = "/account";
   // Device preferences: one quiet section of switches.
   expect(document.querySelector("[data-this-device]")).toBeTruthy();
   expect(screen.getByRole("switch", { name: "Sound" })).toBeTruthy();
@@ -165,7 +169,7 @@ test("Classroom: the class, no family learner, no practice settings", () => {
   );
   expect(
     screen.getByRole("link", { name: "Account" }).getAttribute("href"),
-  ).toBe("/account/security");
+  ).toBe("/account");
 });
 
 test("Parent practice keeps a visible return to the family", () => {
@@ -218,7 +222,9 @@ test("Account: no space's destinations, the switcher and the account", () => {
     { pathname: "/account/security" },
     { kind: "adult", me: account, learnerId: "pip" },
   );
+  harness.pathname.value = "/account/security";
   render(<DrawerContents close={() => {}} space={space} />);
+  harness.pathname.value = "/";
   expect(links()).toEqual([]);
   expect(
     screen.getByRole("link", { name: "Account" }).getAttribute("aria-current"),
