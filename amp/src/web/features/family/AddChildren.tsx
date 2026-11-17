@@ -282,7 +282,9 @@ export function AddChildren({
         disabled={disabled}
         rows={editor.people}
         add={
-          editor.total < 6 ? { label: "Add a child", onAdd: editor.add } : null
+          editor.total < 6
+            ? { label: "Add another child", onAdd: editor.add }
+            : null
         }
       />
       <p className={setup.basis}>{PARENT_ENTRY_LINE}</p>

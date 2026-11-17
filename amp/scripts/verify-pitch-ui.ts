@@ -927,7 +927,9 @@ async function journeys(browser: Browser, engine: string) {
             page
               .getByRole("button", { name: "Next", exact: true })
               .boundingBox(),
-            page.getByRole("button", { name: "Add a child" }).boundingBox(),
+            page
+              .getByRole("button", { name: "Add another child" })
+              .boundingBox(),
           ]);
           assert.ok(
             foot && field && field.y + field.height <= foot.y,
