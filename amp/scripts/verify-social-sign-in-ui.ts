@@ -938,7 +938,7 @@ try {
     .waitFor();
   entry = {
     ...snapshot,
-    next: "choose-plan",
+    next: "practice",
     learners: snapshot.learners.map((l: any) => ({
       ...l,
       entitlement: { ...l.entitlement, active: false },
@@ -951,36 +951,15 @@ try {
   await page.route("**/api/v1/billing/offer", (route) =>
     route.fulfill({ json: { available: false } }),
   );
+  // Stripe's return opens the pay overlay over the learner's own place, on
+  // its confirmation, at a clean address (features/pay/stripe-return.ts).
   await page.goto(`${origin}/?billing=processing&purchase=${purchaseId}`);
-  await page.waitForURL(`${origin}/purchase/annual`);
-  await page
-    .getByRole("heading", { name: "Annual access", exact: true })
-    .waitFor();
-  await page.waitForFunction(
-    () => sessionStorage.getItem("amp.purchase-return.v1") === null,
+  await page.waitForURL((url) =>
+    /^\/family\/[^/]+\/kids\/[^/]+\/pay\/done$/.test(url.pathname),
   );
   assert.equal(new URL(page.url()).search, "");
-  await page.evaluate(
-    ({ purchaseId }) =>
-      sessionStorage.setItem(
-        "amp.purchase-return.v1",
-        JSON.stringify({
-          state: "processing",
-          purchaseId,
-          expiresAt: Date.now() + 60_000,
-        }),
-      ),
-    { purchaseId },
-  );
-  await page.goto(`${origin}/`);
-  await page.waitForURL(`${origin}/purchase/annual`);
+  await page.getByRole("dialog").first().waitFor();
   await page.unroute("**/api/v1/me");
-  await page
-    .getByRole("heading", { name: "Annual access", exact: true })
-    .waitFor();
-  await page.waitForFunction(
-    () => sessionStorage.getItem("amp.purchase-return.v1") === null,
-  );
   // Keep this document alive while another tab changes the shared account.
   // A consumed checkout must not be inherited by the newly mounted account.
   await page.evaluate(async () => {
