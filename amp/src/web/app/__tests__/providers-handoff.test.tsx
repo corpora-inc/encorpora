@@ -29,7 +29,7 @@ vi.mock("../../lib/api", async (original) => ({
 const parent: AuthSession = { accountId: "amp|parent", token: "p" };
 const child: AuthSession = { accountId: "school:aug", token: "st_aug" };
 const other: AuthSession = { accountId: "amp|other", token: "o" };
-const parentData = qk.account(parent.accountId, "pathways", "aug");
+const parentData = qk.account(parent.accountId, "me");
 
 /** A screen's own state: a new instance means the tree was remounted. */
 function Screen() {
@@ -46,7 +46,7 @@ const change = async (session: AuthSession | null, how: SessionChange = {}) => {
 beforeEach(() => {
   h.mounts = 0;
   queryClient.setQueryData(sessionOptions.queryKey, parent);
-  queryClient.setQueryData(parentData, { skills: ["kept"] });
+  queryClient.setQueryData(parentData, { kept: true });
   render(
     <Providers>
       <Screen />
@@ -63,12 +63,12 @@ test("a family handoff keeps the screens and the parent's data, both ways", asyn
   // "Practice with Aug": the parent hands this device to their child.
   await change(child, { handoff: true });
   expect(instance()).toBe(1);
-  expect(queryClient.getQueryData(parentData)).toEqual({ skills: ["kept"] });
+  expect(queryClient.getQueryData(parentData)).toEqual({ kept: true });
   // Back to the family: the parent takes it back; their screen paints from
   // what it had, with no wait.
   await change(parent, { handoff: true });
   expect(instance()).toBe(1);
-  expect(queryClient.getQueryData(parentData)).toEqual({ skills: ["kept"] });
+  expect(queryClient.getQueryData(parentData)).toEqual({ kept: true });
 });
 
 test("another person's account starts the tree and the account data again", async () => {
