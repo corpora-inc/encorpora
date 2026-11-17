@@ -70,6 +70,11 @@ function render() {
   }).render(
     <Providers
       onAccountExit={(previous) => {
+        // A handoff to a child ("Practice with …") carries its own
+        // destination: its one navigation runs the new session's guards
+        // there. Re-guarding the screen it leaves would replace that entry
+        // ("/" for a student), so Back could never return to it.
+        if (finishingSignIn()) return;
         // A purchase view belongs to the parent who opened it. The provider has
         // already cleared that parent's private state and installed the new
         // session. Child practice and the parent's return preserve the

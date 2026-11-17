@@ -12,7 +12,8 @@ import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
 import { Button, buttonClass } from "../../ui/Button";
 import { Toast } from "../../ui/Toast";
 import { useLocation, useNavigate } from "@tanstack/react-router";
-import { authConfigOptions } from "../../lib/query";
+import { authConfigOptions, sessionOptions } from "../../lib/query";
+import { queryClient } from "../../lib/query-client";
 import { useLoggedError } from "../../feedback";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
@@ -346,8 +347,8 @@ export function SignInScreen() {
     });
   }
   const returnTo = continuationUrl(carry, "/");
-  // Sign-in and sign-up resume the same account home. Home asks the role
-  // question only when the account has no place yet.
+  // Sign-in and sign-up resume the same account: its place, or the role
+  // question when it has no place yet.
   const done = async () => {
     const session = await measureAuth("session", accessSession);
     if (!session) throw new Error("Sign-in didn’t finish. Please try again.");
@@ -355,7 +356,19 @@ export function SignInScreen() {
     await continueAfterSignIn();
   };
   async function continueAfterSignIn() {
-    await navigate({ href: returnTo, replace: true });
+    // Nothing asked for: straight to the account's place (or its first
+    // question), its final address, never through `/`.
+    const session = queryClient.getQueryData(sessionOptions.queryKey);
+    const href =
+      returnTo === "/" && session
+        ? await import("../home/destination")
+            .then(({ homeDestination }) => homeDestination(session))
+            .catch((error) => {
+              console.warn("Your place didn’t load; opening home", error);
+              return "/";
+            })
+        : returnTo;
+    await navigate({ href, replace: true });
   }
   async function run(
     work: () => Promise<void>,

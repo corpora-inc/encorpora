@@ -18,6 +18,7 @@ import { request } from "../../../lib/api";
 import { flush } from "../../../lib/analytics";
 import { AppError } from "../../../lib/AppError";
 import { invalidateAccount, meOptions } from "../../../lib/query";
+import { queryClient } from "../../../lib/query-client";
 import { chosenPlan } from "../../../lib/pending-trial";
 import { Button, buttonClass } from "../../../ui/Button";
 import { YearField } from "../../../ui/YearField";
@@ -105,8 +106,8 @@ function useSetupFrom() {
 }
 const todayUrl = (place: { orgId: string; classId: string }) =>
   `/school/${place.orgId}/classes/${place.classId}/today`;
-/** A family's Today: its own address, the landing alias for theirs. */
-const FAMILY_TODAY = "/family";
+/** A family's Today, at its own address (a family's id is its org's). */
+const familyToday = (place: { orgId: string }) => `/family/${place.orgId}`;
 
 /** Rows a parent or tutor is adding, kept in this tab's memory per account,
  * so Back, Forward and a refresh of the step keep what was typed. */
@@ -267,7 +268,13 @@ const setupDone = ({ kind, steps, index }: StepProps) =>
 /** Hands this device to a child: their first problem opens here, and the
  * parent's view returns when they sign out. Setup's last step is done then,
  * and measured before the hand-off: a child's session measures nothing. */
-function usePracticeHere(session: AuthSession, kind: SetupKind, today: string) {
+function usePracticeHere(
+  session: AuthSession,
+  kind: SetupKind,
+  /** Where the device returns when the child is done: known only once the
+   * family exists, so read when the handoff starts. */
+  today: () => Promise<string>,
+) {
   const finish = useFinishSignIn();
   return async (learnerId: string) => {
     const grant = await request(
@@ -277,7 +284,7 @@ function usePracticeHere(session: AuthSession, kind: SetupKind, today: string) {
     );
     setupStep("ready", "complete", kind);
     flush(true);
-    await finish(grant, true, today, undefined, learnerId);
+    await finish(grant, true, await today(), undefined, learnerId);
   };
 }
 
@@ -289,7 +296,15 @@ function ChildrenStep(props: StepProps) {
   useSetupView(props);
   const navigate = useNavigate();
   const start = useStartPlace(session);
-  const practiceHere = usePracticeHere(session, kind, FAMILY_TODAY);
+  const practiceHere = usePracticeHere(session, kind, async () => {
+    const fresh = await queryClient.fetchQuery({
+      ...meOptions(session),
+      staleTime: 0,
+    });
+    return fresh.signedIn && fresh.familyClass
+      ? familyToday(fresh.familyClass)
+      : "/";
+  });
   const draft = useDraft();
   const mine = draft.owner === session.accountId;
   const existing = me.learners;
@@ -856,8 +871,8 @@ function ReadyStep(props: StepProps) {
   const [starting, setStarting] = useState<string | null>(null);
   const [error, setError] = useState("");
   const [devices, setDevices] = useSearchFlag("devices");
-  const today = parent ? FAMILY_TODAY : todayUrl(place);
-  const practiceHere = usePracticeHere(session, kind, today);
+  const today = parent ? familyToday(place) : todayUrl(place);
+  const practiceHere = usePracticeHere(session, kind, async () => today);
   const begin = async (learnerId: string) => {
     if (starting) return;
     setStarting(learnerId);
