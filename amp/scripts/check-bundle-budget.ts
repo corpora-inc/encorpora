@@ -24,8 +24,11 @@ const budget = {
    * pitch's entry, and its start). 2026-11-17: main 289.2 KB; sign-up's
    * arrival (why a tab signs up, read on every arrival before any screen,
    * the one-hop clean-up of older sign-up addresses, and the analytics
-   * title that reads it) adds 1.1 KB that must run first: 290.3 KB. */
-  entryJs: 291 * KB,
+   * title that reads it) adds 1.1 KB that must run first: 290.3 KB. The
+   * one validation pattern every form uses (ui/Form, ui/field-validation:
+   * messages in the field's own line, never the browser's bubble) brings it
+   * to 291.1 KB. */
+  entryJs: 292 * KB,
   /** The pitch's light entry: React, the pitch and its measurement, no app
    * (2026-11-15: 152 KB). */
   pitchJs: 160 * KB,
