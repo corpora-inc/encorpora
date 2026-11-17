@@ -620,9 +620,15 @@ async function parentStarts(
     .getByRole("button", { name: "Practice", exact: true })
     .click();
   await practicing(page);
-  // Back to the family: its class, with the child in it.
-  const fromOwn = await openSwitcher(page, "Avery Lind", true);
-  await choose(page, fromOwn, new RegExp(family));
+  // Back to the family: its class, with the child in it. The parent's own
+  // practice is a member's activity inside the family (IA v2 §3.3), so the
+  // switcher already names the family; the menu's first link is its Today.
+  await menuButton(page).click();
+  await page
+    .getByRole("dialog")
+    .getByRole("link", { name: family, exact: true })
+    .first()
+    .click();
   await page.waitForURL(inClass);
   await todayTitle(page);
   check(

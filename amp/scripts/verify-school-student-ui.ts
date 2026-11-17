@@ -369,7 +369,7 @@ try {
       assert.equal(
         requests.length,
         reads,
-        "student drawer reuses the screen's data",
+        `student drawer reuses the screen's data; it asked for ${JSON.stringify(requests.slice(reads))}`,
       );
       await page.screenshot({ path: `${shots}/menu-${label}.png` });
       noParentCalls(requests);

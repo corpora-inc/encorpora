@@ -1012,7 +1012,9 @@ async function teacherJourney(
     .filter({ visible: true })
     .first()
     .click();
-  await page.getByRole("button", { name: "Back to family" }).click();
+  // A handed device goes back to the place it came from, by name
+  // (features/navigation/DrawerContents.tsx): here, the class.
+  await page.getByRole("button", { name: /^Back to / }).click();
   await page.waitForURL((at) => at.href === roster);
   await heading(page, "Students");
 
