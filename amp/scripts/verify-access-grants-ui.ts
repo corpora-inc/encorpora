@@ -8,6 +8,7 @@ const chromium = secureChromium(rawChromium);
 import AxeBuilder from "@axe-core/playwright";
 import { createServer } from "vite";
 import { retentionNotice } from "../src/family/contracts";
+import { openHome } from "./launcher";
 
 const port = Number(process.env.AMP_ACCESS_UI_PORT ?? 4386),
   origin = `http://127.0.0.1:${port}`;
@@ -315,7 +316,7 @@ try {
   s.learners = [
     { id: "existing", name: "Alex", birthYear: 2012, active: false },
   ];
-  await page.goto(origin);
+  await openHome(page, origin);
   await page.waitForURL("**/access");
   await page.getByRole("link", { name: "Continue setup" }).click();
   s.failClaim = true;

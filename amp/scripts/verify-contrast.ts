@@ -29,6 +29,7 @@ import {
   assertContrastCoverage,
   contrastPartition,
 } from "./contrast-partition";
+import { openHome } from "./launcher";
 
 const pairs = contrastPartition(process.argv.slice(2));
 const url = process.env.AMP_TEST_DATABASE_URL;
@@ -372,7 +373,7 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
   // family tab and the account's settings.
   let family = "";
   await step("family-today", async () => {
-    await page.goto(`${origin}/`);
+    await openHome(page, origin);
     await page.waitForURL((url) => /^\/family\/[^/]+$/.test(url.pathname));
     family = new URL(page.url()).pathname;
     await page.locator("[data-today-title]").waitFor();

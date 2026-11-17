@@ -97,11 +97,13 @@ export async function practiceHere(page: Page, id: string) {
   await page.waitForURL((url) => url.pathname === "/practice");
   await page.locator(".problem-stage").waitFor();
 }
-/** Ends a child's session on this device: Sign out returns it to the parent,
+/** Ends a child's session on this device: Back to family returns it to the parent,
  * on the family's Today. */
 export async function returnToParent(page: Page) {
   const drawer = await openMenu(page);
-  await drawer.getByRole("button", { name: "Sign out", exact: true }).click();
+  await drawer
+    .getByRole("button", { name: "Back to family", exact: true })
+    .click();
   await page.waitForURL((url) => /^\/family\/[^/]+$/.test(url.pathname));
   await page.locator("[data-today-title]").waitFor();
 }

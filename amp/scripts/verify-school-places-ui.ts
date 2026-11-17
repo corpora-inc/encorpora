@@ -48,6 +48,7 @@ import { migrate } from "./migrate";
 import { schoolAdmin } from "./school-admin";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { todayTitle } from "./today-title";
+import { openHome } from "./launcher";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -373,7 +374,7 @@ async function familyThenSchool(
   await shot(page, "setup-with-switcher", width, theme);
 
   // `/` keeps the family: a half-finished setup never captures it.
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(family.inFamily);
   await todayTitle(page);
   const classPath = path(page);
@@ -435,7 +436,7 @@ async function familyThenSchool(
   await heading(page, "When does your school year run?");
 
   // Having worked in setup, `/` is still the family.
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(family.inFamily);
 
   // Setup finished: the school is a place `/` can open.
@@ -493,7 +494,7 @@ async function familyThenSchool(
   await page.keyboard.press("Escape");
   await fromSchool.waitFor({ state: "detached" });
   // Last worked at the school: `/` opens it.
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(new RegExp(`/school/${issued.orgId}`));
   check(
     `${label} / returns to the school`,
@@ -503,7 +504,7 @@ async function familyThenSchool(
   const back = await openSwitcher(page, true);
   await chooseFamily(page, back, family, label);
   await page.waitForURL(family.inFamily);
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(family.inFamily);
   check(
     `${label} / returns to the family`,
@@ -560,7 +561,7 @@ async function practiceAndSchool(browser: Browser, width: number) {
   });
 
   // Nothing remembered yet: `/` is the family (docs/families.md).
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(FAMILY_TODAY);
   await todayTitle(page);
   const family = await familyOf(page);
@@ -586,7 +587,7 @@ async function practiceAndSchool(browser: Browser, width: number) {
   const schoolPath = path(page);
   await page.getByRole("heading", { level: 1 }).first().waitFor();
   // Last worked at the school: `/` opens it.
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(new RegExp(`/school/${issued.orgId}`));
   // Back to the family's class, then Back and Forward between the two.
   const back = await openSwitcher(page, true);
@@ -614,9 +615,14 @@ async function practiceAndSchool(browser: Browser, width: number) {
     path(page) === classPath,
     path(page),
   );
-  // Remembered there, `/` opens it again.
-  await page.goto(`${origin}/`);
+  // Remembered there, `/` offers it first. `/` is a screen of its own, so
+  // Back from the place is `/` again, then the family before it, then the
+  // school.
+  await openHome(page, origin);
   await page.waitForURL(inClass);
+  await page.goBack();
+  await page.waitForURL(`${origin}/`);
+  await page.locator("[data-launcher]").waitFor();
   await page.goBack();
   await page.waitForURL(inClass);
   await page.goBack();

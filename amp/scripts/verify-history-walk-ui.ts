@@ -180,12 +180,14 @@ async function addPlace(page: Page) {
   await oneHop(page, "Add a place", "link");
 }
 
+/** Changing their mind: "Add a place" has no in-page Back, so they leave
+ * it the way a person does, with the browser's Back. */
 async function addPlaceCancel(page: Page) {
   await addPlace(page);
-  await page.getByRole("button", { name: "Back", exact: true }).click();
+  await page.evaluate(() => history.back());
   await page.waitForURL((url) => url.pathname !== "/start");
   await settled(page);
-  await oneHop(page, "Add a place, Back", "history");
+  await oneHop(page, "Add a place, browser Back", "history");
 }
 
 /** From the child's practice, the menu's "Back to family": the child's

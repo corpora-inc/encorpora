@@ -344,7 +344,7 @@ async function demo(
     .filter({ visible: true })
     .first()
     .click();
-  await page.getByRole("button", { name: "Sign out" }).click();
+  await page.getByRole("button", { name: "Back to family" }).click();
   await page.waitForURL((at) => at.href === rosterUrl);
   await heading(page, "Students");
 

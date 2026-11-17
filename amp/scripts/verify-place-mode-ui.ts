@@ -27,6 +27,7 @@ import {
   personaEmail,
 } from "../src/web/features/dev/persona-list";
 import { startPersonaStack } from "./persona-stack";
+import { openHome } from "./launcher";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -107,7 +108,7 @@ try {
     assert.ok(response.ok(), `${person} signs in: ${response.status()}`);
     const page = await context.newPage();
     page.on("pageerror", (error) => console.error("page error:", error));
-    await page.goto(`${origin}/`);
+    await openHome(page, origin);
     await page.waitForURL(/\/school\/[^/]+/);
     const prefix = new URL(page.url()).pathname.match(/^\/school\/[^/]+/)![0];
     await inPlace(page, prefix, `${person} lands`);

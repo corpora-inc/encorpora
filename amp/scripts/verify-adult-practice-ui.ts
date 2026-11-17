@@ -46,6 +46,7 @@ import { migrate } from "./migrate";
 import { schoolAdmin } from "./school-admin";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { todayTitle } from "./today-title";
+import { openHome } from "./launcher";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -403,7 +404,7 @@ async function teacherStarts(
   }
 
   // `/` opens their school; its switcher offers their own practice.
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await schoolReady();
   // Inside a class, the switcher is named for the class it is in.
   const fromSchool = await openSwitcher(page, "Grade 8 Math", true);
@@ -477,7 +478,7 @@ async function teacherStarts(
     )
   ).rows[0].id as string;
   await history(context, learnerId);
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(`${origin}/me`);
   // Their record is titled by what it shows; the place is named for them
   // in the app bar and the switcher.
@@ -534,12 +535,12 @@ async function teacherStarts(
   await shot(page, "switcher", width, theme, engine);
   await choose(page, fromOwn, new RegExp(school));
   await schoolReady();
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await schoolReady();
   const back = await openSwitcher(page, "Grade 8 Math", true);
   await choose(page, back, /Dana Okafor/);
   await heading(page, "Where you are");
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(`${origin}/me`);
   check(`${label} no uncaught errors`, errors.length === 0, errors);
   await context.close();
@@ -576,7 +577,7 @@ async function parentStarts(
   // is the reader's own: "Your family" (features/spaces/places.ts).
   const family = "Your family";
   const inClass = /\/family\/[0-9a-f-]{36}$/;
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(inClass);
   await todayTitle(page);
   const fromHome = await openSwitcher(page, family, true);
@@ -602,7 +603,7 @@ async function parentStarts(
   check(
     `${label} the family side has the child`,
     (await page
-      .getByRole("button", { name: "Let Rowan practice here" })
+      .getByRole("button", { name: "Practice with Rowan" })
       .count()) === 1,
   );
   // A device with nothing remembered opens the family's class, even when the
@@ -612,7 +613,7 @@ async function parentStarts(
     [account],
   );
   await page.evaluate(() => localStorage.clear());
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(inClass);
   await todayTitle(page);
   check(
