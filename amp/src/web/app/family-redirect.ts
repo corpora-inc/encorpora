@@ -88,6 +88,7 @@ export async function toFamilyAddress(
     search: (location.search ?? {}) as Record<string, unknown>,
     hash: location.hash || undefined,
     people: peopleOf(projection?.children ?? [], classId),
+    only: onlyChild(projection),
   });
   throw redirect({ ...target, replace: true } as never);
 }
@@ -128,6 +129,7 @@ export async function toFamilyPage(
       search: (location.search ?? {}) as Record<string, unknown>,
       hash: location.hash || undefined,
       people: peopleOf(projection?.children ?? [], parent.classId),
+      only: onlyChild(projection),
     }),
     replace: true,
   } as never);
@@ -161,6 +163,7 @@ export async function toFamilyChild(
       search: (location.search ?? {}) as Record<string, unknown>,
       hash: location.hash || undefined,
       people: peopleOf(projection?.children ?? [], parent.classId),
+      only: onlyChild(projection),
     }),
     replace: true,
   } as never);
@@ -197,4 +200,14 @@ export async function groupAddress(
   const path = `/school/${own.org}/classes/${classId}/${leaf}`;
   const text = query.toString();
   return appReturn(text ? `${path}?${text}` : path) ?? path;
+}
+
+/** A family's one child, when it has exactly one: its records open on
+ * their page. */
+function onlyChild(
+  projection: { children: readonly { id: string }[] } | null | undefined,
+) {
+  return projection?.children.length === 1
+    ? projection.children[0]!.id
+    : undefined;
 }

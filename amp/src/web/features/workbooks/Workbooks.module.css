@@ -11,6 +11,21 @@
   stroke-linejoin: round;
 }
 
+/* On a child's page: the section's heading and its one action share a
+   line, and take their own lines on a narrow page. */
+.sectionHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-6);
+}
+@media (max-width: 899.98px) {
+  .sectionHead {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
 .listActions {
   display: flex;
   flex-wrap: wrap;
@@ -38,7 +53,7 @@
   gap: var(--space-3);
   margin-top: var(--space-3);
 }
-h2.sectionTitle {
+:is(h2, h3).sectionTitle {
   margin: 0;
   color: var(--color-muted-text);
   font-family: inherit;

@@ -300,7 +300,7 @@ try {
   for (const width of [390, 1280]) {
     await page.setViewportSize({ width, height: 900 });
     await page
-      .getByRole("link", { name: "Back to family", exact: true })
+      .getByRole("link", { name: "Open your family", exact: true })
       .waitFor();
     assert.ok(
       await page.evaluate(
@@ -312,7 +312,7 @@ try {
       path: `${output}/own-practice-${width}.png`,
     });
   }
-  await page.getByRole("link", { name: "Back to family", exact: true }).click();
+  await page.getByRole("link", { name: "Open your family", exact: true }).click();
   await page.waitForURL(/\/family/);
   await page.goto(origin + "/");
   await page.waitForURL(/\/family/);

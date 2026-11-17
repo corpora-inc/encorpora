@@ -40,6 +40,12 @@ test("an adult without a birth year starts from a nearly flat prior; a child fro
   assert.equal(startingSd({ band: "algebra-2" }), ADULT_START_SD);
   assert.equal(startingSd({ birthYear: 2016 }), undefined);
   assert.equal(startingSd({ band: "3–5" }), undefined);
+  // A practice profile set to a level ("practice at grade 4") is placed by
+  // that choice, as an age places a child, though its learner is an adult's.
+  assert.equal(
+    startingSd({ adult: true, simulation: true, band: "3–5" }),
+    undefined,
+  );
 });
 
 test("one right answer from an adult leaves the top open (founder, 2026-11-15)", () => {

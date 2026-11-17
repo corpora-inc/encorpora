@@ -15,6 +15,7 @@ import {
 } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { afterEach, expect, test } from "vitest";
+import { buttonClass } from "../../../ui/Button";
 import { ChildActions, ChildSettings } from "../Child";
 import type { FamilyChild } from "../api";
 import type { FamilyPlace } from "../FamilyFrame";
@@ -62,7 +63,7 @@ function mount(node: ReactNode) {
   return history;
 }
 
-test("the child's actions: Practice, then their own devices beside it; no progress report", async () => {
+test("the child's actions: Practice, then their own devices beside it; no progress report or workbooks", async () => {
   let opened = 0;
   mount(
     <ChildActions
@@ -80,13 +81,13 @@ test("the child's actions: Practice, then their own devices beside it; no progre
   const names = actions.map((node) => node.textContent?.trim());
   expect(names.slice(0, 2)).toEqual(["Practice", "Their own devices"]);
   expect(names).not.toContain("Progress report");
-  // The same size and weight as every secondary action on the page.
+  // The page's secondary button, at Practice's size (ui/Controls).
   const devices = within(group).getByRole("button", {
     name: "Their own devices",
   });
-  expect(devices.className).toBe(
-    within(group).getByRole("link", { name: "Workbooks" }).className,
-  );
+  expect(devices.className).toBe(buttonClass("secondary"));
+  // Workbooks and reports are sections of the page, not actions.
+  expect(names).not.toContain("Workbooks");
   fireEvent.click(devices);
   expect(opened).toBe(1);
 });

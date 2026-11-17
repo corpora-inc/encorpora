@@ -10,6 +10,7 @@ import {
 } from "../../../workbook/contracts";
 import { downloadWorkbook } from "./api";
 import { choicesLabel, choicesSearch, workbookMessage } from "./model";
+import { useWorkbookPaths } from "./paths";
 import styles from "./Workbooks.module.css";
 
 const areaName = (id: string) => workbookAreaNames[id] ?? id;
@@ -41,6 +42,7 @@ export function WorkbookList({
   learnerId: string;
   query: UseQueryResult<{ workbooks: WorkbookSummary[]; pdf: boolean }>;
 }) {
+  const paths = useWorkbookPaths();
   const [downloading, setDownloading] = useState<string | null>(null);
   const [message, setMessage] = useState("");
   async function download(workbook: WorkbookSummary) {
@@ -106,8 +108,8 @@ export function WorkbookList({
                 </span>
                 <div className={styles.rowText}>
                   <Link
-                    to="/learners/$learnerId/workbooks/$date"
-                    params={{ learnerId, date: workbook.date }}
+                    to="/$"
+                    params={{ _splat: paths.day(learnerId, workbook.date) }}
                     search={{
                       number: workbook.number,
                       minutes: workbook.minutes,
@@ -131,8 +133,8 @@ export function WorkbookList({
                 </div>
                 <div className={styles.rowActions}>
                   <Link
-                    to="/learners/$learnerId/workbooks/$workbookId/results"
-                    params={{ learnerId, workbookId: workbook.id }}
+                    to="/$"
+                    params={{ _splat: paths.results(learnerId, workbook.id) }}
                     className={buttonClass("quiet", styles.rowButton)}
                     aria-label={`${entered ? "See" : "Enter"} results for workbook ${workbook.code}`}
                   >
