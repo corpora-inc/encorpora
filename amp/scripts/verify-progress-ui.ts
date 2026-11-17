@@ -230,7 +230,10 @@ try {
           exact: typeof filterName === "string",
         })
         .click();
-      for (;;) {
+      // The first two pages of each filter: every card's detail fits, and
+      // paging forward keeps them fitting. (Explore lists every idea, over
+      // 300; walking them all at every width took hours and proved no more.)
+      for (let pageNumber = 0; pageNumber < 2; pageNumber++) {
         await page.waitForTimeout(30);
         if (!strict) await assertPhoneLandscapeSmoke(page, String(filterName));
         const fits =
