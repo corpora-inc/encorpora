@@ -418,11 +418,13 @@ try {
       await page.screenshot({
         path: `${shots}/child-${width}-${theme}.png`,
       });
+      // Privacy's old address: one hop to the overlay over Settings.
       await page.goto(`${origin}/family/privacy`);
-      await page
-        .getByRole("heading", { name: "Privacy", exact: true })
-        .waitFor();
-      assert.equal(new URL(page.url()).pathname, "/account/privacy");
+      await page.locator("[data-privacy-panels]").waitFor();
+      assert.equal(
+        new URL(page.url()).pathname,
+        `${familyPath}/settings/privacy`,
+      );
       await fits(page);
       await page.screenshot({ path: `${shots}/privacy-${width}-${theme}.png` });
       // Cold direct links keep a painted shell while session discovery is delayed.

@@ -21,7 +21,7 @@ const vite = await createServer({
       enforce: "pre",
       load(id) {
         if (id.split("?")[0] === authPath)
-          return `export async function accessSession(){return {token:"synthetic",accountId:"parent-one"};}export function onSessionChanged(){return()=>{}}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:"accounts",passwords:true,providers:[]}}`;
+          return `export async function accessSession(){return {token:"synthetic",accountId:"parent-one"};}export function onSessionChanged(){return()=>{}}export async function signIn(){}export async function signOut(){}export function notifyDeviceSessionChanged(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:"accounts",passwords:true,providers:[]}}`;
       },
     },
   ],

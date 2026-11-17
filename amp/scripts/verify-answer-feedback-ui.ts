@@ -22,7 +22,7 @@ const vite = await createServer({
       enforce: "pre",
       load(id) {
         if (id.split("?")[0] === root + "src/web/auth.ts")
-          return `export async function accessSession(){return localStorage.getItem("fixture.parent")?{token:"synthetic",accountId:"fixture-parent"}:null;}export function onSessionChanged(){return()=>{}}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:"accounts",passwords:true,providers:[]}}`;
+          return `export async function accessSession(){return localStorage.getItem("fixture.parent")?{token:"synthetic",accountId:"fixture-parent"}:null;}export function onSessionChanged(){return()=>{}}export async function signIn(){}export async function signOut(){}export function notifyDeviceSessionChanged(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:"accounts",passwords:true,providers:[]}}`;
       },
     },
   ],

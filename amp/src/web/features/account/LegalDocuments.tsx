@@ -2,7 +2,6 @@ import { useState } from "react";
 import { AppError } from "../../lib/AppError";
 import { reportError } from "../../lib/report-error";
 import { Button } from "../../ui/Button";
-import { PageSection } from "../../ui/PageSection";
 import styles from "./BillingPage.module.css";
 
 export const legalDocuments = [
@@ -63,11 +62,20 @@ export async function downloadLegal(id: (typeof legalDocuments)[number]["id"]) {
   a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 60000);
 }
+/**
+ * Policies & documents: each one to read, or to save as a readable copy.
+ *
+ * Requirement: the privacy policy is available to every user, in the app
+ * (COPPA, 16 CFR 312.4(d); Cal. Civ. Code 1798.130(a)(5); App Store Review
+ * Guideline 5.1.1(i); Google Play User Data policy), and AMP's terms and
+ * policies are readable and downloadable from Privacy (amp/AGENTS.md).
+ * The Privacy overlay's panel; its name is the panel's.
+ */
 export function LegalDocuments() {
   const [busy, setBusy] = useState<string>();
   const [error, setError] = useState("");
   return (
-    <PageSection title="Policies & documents" titleId="legal-documents-title">
+    <div data-legal-documents="">
       <ul className={styles.plans}>
         {legalDocuments.map((doc) => (
           <li key={doc.id} className={styles.planRow}>
@@ -109,6 +117,6 @@ export function LegalDocuments() {
       </ul>
       <p className={styles.muted}>Save a readable copy, or print it to PDF.</p>
       {error && <p role="alert">{error}</p>}
-    </PageSection>
+    </div>
   );
 }
