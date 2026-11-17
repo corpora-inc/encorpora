@@ -1,20 +1,19 @@
 {
   "about": "Frontend anti-pattern counts in src/web; they only fall (amp/AGENTS.md, Frontend architecture). Enforced by tests/architecture-ratchet.test.ts; `files` locates the counts for its failure messages.",
   "counts": {
-    "redirects": 5,
+    "redirects": 4,
     "validateSearch": 9,
-    "searchHandoffs": 101,
+    "searchHandoffs": 99,
     "navigatingEffects": 11,
     "renderNavigate": 12,
-    "silentCatches": 89,
+    "silentCatches": 88,
     "sessionProps": 39,
     "sessionReads": 18,
-    "inlineQueryKeys": 18,
+    "inlineQueryKeys": 17,
     "nativeControls": 21
   },
   "files": {
     "redirects": {
-      "features/home/destination.ts": 1,
       "features/pay/legacy.ts": 2,
       "features/profiles/practice-mode.ts": 1,
       "nav/legacy-layers.ts": 1
@@ -25,7 +24,6 @@
     "searchHandoffs": {
       "features/account/AccountReady.tsx": 3,
       "features/account/DeleteAccount.tsx": 1,
-      "features/design/DesignScreen.tsx": 2,
       "features/family-approval/ApproveLinkScreen.tsx": 2,
       "features/family/FamilyFrame.tsx": 1,
       "features/family/Records.tsx": 1,
@@ -119,7 +117,6 @@
       "BookReader.tsx": 1,
       "Calculator.tsx": 3,
       "capability-entry.ts": 1,
-      "features/auth/passkey.ts": 1,
       "features/lessons/publications.ts": 1,
       "features/school/adoption-session.ts": 3,
       "features/school/classroom/MarkingScreen.tsx": 1,
@@ -197,7 +194,6 @@
       "lib/learning-view.ts": 1
     },
     "inlineQueryKeys": {
-      "features/onboarding/Starter.tsx": 1,
       "features/school/classes/teacher-api.ts": 1,
       "features/school/clever/api.ts": 1,
       "features/school/clever/ConnectionScreen.tsx": 1,

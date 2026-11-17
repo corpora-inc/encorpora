@@ -6,6 +6,7 @@ import { AppError } from "../../lib/AppError";
 import { track } from "../../lib/analytics";
 import { ownPracticeAllowed } from "../../../learning/starting-point";
 import { authConfigOptions, meOptions } from "../../lib/query";
+import { qk } from "../../lib/keys";
 import { useSession } from "../../lib/session";
 import { cleverEnabled } from "../school/clever/enabled";
 import { chosenPlan } from "../../lib/pending-trial";
@@ -435,7 +436,7 @@ function School({
 }) {
   const session = useSession();
   const summary = useQuery({
-    queryKey: ["schools", "curriculum"],
+    queryKey: qk.schoolsCurriculum(),
     queryFn: loadCurriculum,
     staleTime: Infinity,
   });
