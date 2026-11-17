@@ -58,11 +58,11 @@ def parse_publication(document):
     require(len(exercises) == 12, 'Each triangle sheet must have twelve exercises')
     result = []
     for index, exercise in enumerate(exercises, 1):
-        heading = text(exercise.find('h2'))
+        heading = text(exercise.find('.//h2'))
         prefix = f'{index}. '
         require(heading.startswith(prefix), 'Printed exercise numbering is inconsistent')
         prompt = heading[len(prefix):]
-        choices = exercise.find("ol[@class='print-choices']")
+        choices = exercise.find(".//ol[@class='print-choices']")
         labels = [text(option) for option in choices.findall('li')] if choices is not None else []
         if template == 'right-triangle':
             found = re.fullmatch(r'A right triangle has perpendicular legs ([1-9][0-9]*) cm and '

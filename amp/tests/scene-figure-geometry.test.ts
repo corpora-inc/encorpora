@@ -11,6 +11,7 @@ import {
   OWN,
   PHONE_CARD,
   PHONE_PANEL,
+  PRINT_CARD,
   faults,
   type Container,
 } from "./helpers/scene-geometry.js";
@@ -24,7 +25,7 @@ import {
  * gallery's parameter ranges) and sampled problems of every template that
  * emits a scene: problem figures in the figure panel (wide screen and
  * print, and a 320 px phone), and figure-choice options in a choice card on
- * a 320 px phone and at 1280. A reference scene of a kind that is offered as
+ * a 320 px phone, at 1280 and on paper. A reference scene of a kind that is offered as
  * a choice is also checked in both cards. In each it asserts that no label
  * meets another label, a dot, an arrowhead or an arrow's stroke; that
  * everything lies inside the view box and the height it was given; and that
@@ -62,7 +63,7 @@ function items() {
           out.push({
             src: `${t.id} option`,
             scene: o.scene,
-            boxes: [PHONE_CARD, DESKTOP_CARD],
+            boxes: [PHONE_CARD, DESKTOP_CARD, PRINT_CARD],
           });
     }
   const offered = new Set(

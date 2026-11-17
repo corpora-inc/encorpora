@@ -5,6 +5,7 @@ import {
   type Layout,
   type Scene,
 } from "../../src/math/scene/index.js";
+import { PRINT_OPTION_BOX } from "../../src/math/figure-choice.js";
 
 /**
  * Figure geometry as a learner sees it: a scene laid out for one container
@@ -46,7 +47,22 @@ export const DESKTOP_CARD: Container = {
   maxHeight: 160,
   display: 300,
 };
-export const CONTAINERS = [OWN, PHONE_PANEL, PHONE_CARD, DESKTOP_CARD];
+/** A choice card on paper (PrintFigureChoice): laid out in
+ * PRINT_OPTION_BOX and drawn at that size, less the answer card's ring in
+ * the narrower (A4) column. */
+export const PRINT_CARD: Container = {
+  name: "choice card print",
+  width: PRINT_OPTION_BOX.width,
+  maxHeight: PRINT_OPTION_BOX.maxHeight,
+  display: 286,
+};
+export const CONTAINERS = [
+  OWN,
+  PHONE_PANEL,
+  PHONE_CARD,
+  DESKTOP_CARD,
+  PRINT_CARD,
+];
 
 /** Smallest base-line label size on screen, in CSS px (SceneSvg's
  * LEGIBLE_PX, less rounding), and for raised or stacked parts. */
