@@ -1,8 +1,8 @@
 import { childrenElsewhere } from "./redirects";
 import { childTimeCsvPath, childTimeOptions } from "./api";
 import { useQuery } from "@tanstack/react-query";
-import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
-import { useEffect, useMemo } from "react";
+import { Link } from "@tanstack/react-router";
+import { useMemo } from "react";
 import { downloadPdf, paperFormat } from "../../lib/pdf-download";
 import { buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
@@ -23,7 +23,7 @@ import styles from "./Family.module.css";
 
 /*
  * A family's records (`/family/<family>/…`): grades, the workbook print for
- * several, marking, and the family's report cards (on Today). Each child's time, workbooks and reports are on their own page
+ * several children, marking, and the family's report cards (on Today). Each child's time, workbooks and reports are on their own page
  * (Child.tsx). Each shows the family's own children only. Where a record lives in the family's own class (grades,
  * report cards, the workbook stack, cards), the class's screen is composed
  * here through a host: the family's frame, its addresses and its words, and
@@ -154,45 +154,16 @@ export function FamilyReportCards({ place }: { place: FamilyPlace }) {
 }
 
 /**
- * Workbooks for several (`/family/<family>/workbooks?several=1`): one
- * print, a different workbook for each child, in the family's own class.
- * Each child's own workbooks are on their page; the bare address opens
- * there (the route's one hop).
+ * The workbook print for several children (`/family/<family>/workbooks`):
+ * one print, a different workbook for each child, in the family's own
+ * class. A one-child family's workbooks are on the child's page (the
+ * address's legacy row, app/legacy-aliases.ts).
  */
 export function FamilyWorkbooksScreen() {
   const place = useFamilyPlace();
   const host = useFamilyHost(place);
   const { data } = place;
-  const navigate = useNavigate();
-  const search = useRouterState({
-    select: (state) => state.location.search as Record<string, unknown>,
-  });
-  // A group sheet linked by learner (`kids=`): the stack names them by the
-  // person each is in the family's class.
-  const kids = typeof search.kids === "string" ? search.kids : null;
-  useEffect(() => {
-    if (!kids || !data || !place.own) return;
-    const people = new Map(
-      [...peopleOf(data.children, place.own.id)].map(([person, learner]) => [
-        learner,
-        person,
-      ]),
-    );
-    const students = kids
-      .split(",")
-      .map((learner) => people.get(learner))
-      .filter(Boolean)
-      .join(",");
-    void navigate({
-      to: ".",
-      search: ((previous: Record<string, unknown>) => {
-        const { kids: _kids, ...rest } = previous;
-        return { ...rest, several: 1, ...(students ? { students } : {}) };
-      }) as never,
-      replace: true,
-    });
-  }, [kids, data, place.own, navigate]);
-  if (!data || kids)
+  if (!data)
     return (
       <FamilyFrame place={place} loading>
         {null}

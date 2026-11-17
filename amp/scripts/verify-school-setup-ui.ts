@@ -1080,6 +1080,10 @@ async function sweep(
         .click();
       await page.getByRole("dialog").getByLabel("Display name").waitFor();
       await measure(page, `${label} student sheet`, width);
+      // The sheet lives in this history entry (nav/sheet.ts), so loading the
+      // same address again would reopen it: put it down first.
+      await page.keyboard.press("Escape");
+      await page.getByRole("dialog").waitFor({ state: "detached" });
       // A failed search moves nothing either.
       await page.goto(`${origin}/school/${orgId}/students`);
       await heading(page, "Students");

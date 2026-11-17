@@ -267,8 +267,8 @@ const CHILD_PARTS: Record<string, string | null> = {
  * Where a record leaf opens, computed once so no alias hop follows: for a
  * family of one child, that child's page at the part (Progress keeps its
  * curriculum layers); for several, Today, where each child's card opens
- * their page. The workbook print for several keeps its own address. Null
- * for any other leaf.
+ * their page; the workbooks of several are their print, at its own address.
+ * Null for any other leaf.
  */
 function childPart(
   family: string,
@@ -279,11 +279,9 @@ function childPart(
 ): FamilyTarget | null {
   if (!(leaf in CHILD_PARTS)) return null;
   const part = CHILD_PARTS[leaf]!;
-  if (
-    leaf === "workbooks" &&
-    (search.several !== undefined || workbookIdentity(search).several)
-  )
-    return null;
+  // Several children: the workbook print for them all is the family's own
+  // workbooks address.
+  if (leaf === "workbooks" && !only) return null;
   // Progress's view goes with it to a child's page; Today keeps only the
   // layers (and an answer's skill).
   const carried =
@@ -325,7 +323,32 @@ export function workbookIdentity(search: Search): Search {
       ? { minutes: Number(text("minutes")) }
       : {}),
     ...(/^(letter|a4)$/.test(text("paper")) ? { paper: text("paper") } : {}),
-    ...(students.length ? { students: students.join(","), several: 1 } : {}),
+    ...(students.length ? { students: students.join(",") } : {}),
+  };
+}
+
+/**
+ * The workbook print for several children, from an older address that
+ * flagged it (`?several=1`) or named its children by learner (`?kids=`):
+ * the print's own identity and skill, with those children as the people
+ * they are in the family's own class (`people`, person → learner).
+ */
+export function workbookPrintSearch(search: Search, people: PersonMap): Search {
+  const byLearner = new Map(
+    [...people].map(([person, learner]) => [learner, person]),
+  );
+  const kids = (typeof search.kids === "string" ? search.kids : "")
+    .split(",")
+    .map((learner) => byLearner.get(learner))
+    .filter((person): person is string => !!person);
+  const identity = workbookIdentity(
+    kids.length ? { ...search, students: kids.join(",") } : search,
+  );
+  return {
+    ...(typeof search.skill === "string" && search.skill.length <= 120
+      ? { skill: search.skill }
+      : {}),
+    ...identity,
   };
 }
 
