@@ -515,22 +515,29 @@ async function journey(
   );
   const places = await own.getByRole("menuitem").allInnerTexts();
   check(
-    `${label} the switcher lists the family as a second parent, and her own practice`,
-    places.some((item) => /Second parent/.test(item)) &&
-      places.some((item) => /Practice yourself/.test(item)),
+    `${label} the switcher lists the family as a second parent`,
+    places.some((item) => /Second parent/.test(item)),
     places,
   );
   await shot(rowan, "switcher", width, theme, engine);
-  await own
-    .getByRole("menuitem")
-    .filter({ has: rowan.locator('[data-place="me"]') })
+  await rowan.keyboard.press("Escape");
+  // Her own practice starts in place on her Account (IA v2 §3.3,
+  // me/OwnPractice.tsx), then Practice.
+  await go(rowan, `${origin}/account`);
+  const startOwn = rowan.locator("[data-start-own-practice]");
+  await startOwn.waitFor();
+  await startOwn.click();
+  await rowan
+    .locator("[data-own-practice]")
+    .getByRole("button", { name: "Practice", exact: true })
     .click();
-  await heading(rowan, "What year were you born?");
-  await rowan.getByRole("radio", { name: "Adult", exact: true }).click();
-  await rowan.getByRole("button", { name: "Start practicing" }).click();
-  await rowan.waitForURL(/\/practice/);
+  await rowan.waitForURL(/\/practice\/[^/]+$/);
   await rowan.locator("[data-problem-id]").first().waitFor();
-  check(`${label} her own practice`, path(rowan) === "/practice");
+  check(
+    `${label} her own practice`,
+    /^\/practice\/[^/]+$/.test(path(rowan)),
+    path(rowan),
+  );
   await settle(rowan, 600);
   await shot(rowan, "own-practice", width, theme, engine);
   const me = await (
