@@ -278,8 +278,9 @@
   stroke: none;
 }
 
-/* In the day's sheet: the two actions, the workbook as paper, then its
-   options, one column. */
+/* In the day's sheet, one column: the two actions, the options, then the
+   workbook they make as paper, last, so its changing height (a title that
+   wraps, another draft) never moves a control. */
 .builder {
   display: grid;
   gap: var(--space-5);

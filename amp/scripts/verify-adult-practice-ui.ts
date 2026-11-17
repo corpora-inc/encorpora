@@ -474,6 +474,30 @@ async function teacherStarts(
       /Recent work/.test(record),
     record.slice(0, 600),
   );
+  // Beside the title, Practice at a level and the progress report are one
+  // control pair: the same quiet action, size and weight.
+  const pair = await page.evaluate(() => {
+    const level = document.querySelector<HTMLElement>("[data-at-a-level]");
+    const report = [...document.querySelectorAll<HTMLElement>("main button")]
+      .find((button) => /Progress report/.test(button.textContent ?? ""));
+    const look = (el: HTMLElement) => {
+      const style = getComputedStyle(el);
+      return {
+        size: style.fontSize,
+        weight: style.fontWeight,
+        color: style.color,
+        background: style.backgroundColor,
+        radius: style.borderRadius,
+        height: Math.round(el.getBoundingClientRect().height),
+      };
+    };
+    return level && report ? [look(level), look(report)] : null;
+  });
+  check(
+    `${label} Practice at a level and Progress report are one control pair`,
+    !!pair && JSON.stringify(pair[0]) === JSON.stringify(pair[1]),
+    pair,
+  );
   await measured(page, `${label} record`);
   await shot(page, "record", width, theme, engine);
 
@@ -628,7 +652,7 @@ async function nobody(browser: Browser) {
 try {
   const browser = await chromium.launch();
   await nobody(browser);
-  for (const width of [1280, 390])
+  for (const width of [1280, 390, 320])
     for (const theme of ["light", "dark"] as const)
       await teacherStarts(browser, "chromium", width, theme);
   await parentStarts(browser, 1280, "light");

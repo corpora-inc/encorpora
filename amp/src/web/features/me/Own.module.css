@@ -83,11 +83,7 @@
   stroke-linejoin: round;
 }
 .weekLink:hover,
-.quietLink:hover {
-  background: var(--color-surface-hover);
-}
-.weekLink:focus-visible,
-.quietLink:focus-visible {
+.weekLink:focus-visible {
   outline: 3px solid var(--color-focus-ring);
   outline-offset: -3px;
 }
@@ -95,19 +91,6 @@
   color: var(--color-muted-text);
   font-size: var(--text-label);
   font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-}
-/* A quiet text link at the size of a target. */
-.quietLink {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding-inline: var(--space-3);
-  border-radius: var(--radius-small);
-  color: var(--color-primary);
-  font-size: var(--text-label);
-  font-weight: 650;
-  text-decoration: none;
   white-space: nowrap;
 }
 /* Day 0's action: prominent, its natural width. */
