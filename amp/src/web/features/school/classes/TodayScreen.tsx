@@ -216,8 +216,6 @@ export function TodayScreen() {
       className={data?.class.name}
       loading={loading}
       tab="today"
-      // The class's name is this page's title.
-      place={false}
     >
       {!data ? (
         <LoadFailed what="Today" onRetry={() => void today.refetch()} />
@@ -330,6 +328,8 @@ export function MapScreen() {
             data={map.data}
             words={words}
             crossCutting
+            // Ranges in grade words, as everywhere else ("Gr 7–Geom").
+            plain
             action={
               start ? (
                 <Link

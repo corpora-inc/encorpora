@@ -73,9 +73,13 @@ test("a family's progress link stays out of search and sends no referrer", () =>
 });
 
 test("the component gallery stays out of search", () => {
-  const block = /location = \/design \{([^}]*)\}/.exec(conf)?.[1] ?? "";
+  // `/design` and the documents it frames (`/design/canvas`, `/design/specimen/<id>`).
+  const block =
+    /location ~ \^\/design\(\?:\/\|\$\) \{([\s\S]*?)\n  \}/.exec(conf)?.[1] ?? "";
   assert.match(block, /X-Robots-Tag "noindex, nofollow" always;/);
   assert.match(block, /include \/etc\/nginx\/amp-security-headers\.conf;/);
+  // Only the gallery's known addresses (document-routes.ts) are served.
+  assert.match(block, /if \(\$amp_route_known = 0\) \{ return 404; \}/);
 });
 
 /** Whether a CSP directive allows an https URL. A `*.host` source matches

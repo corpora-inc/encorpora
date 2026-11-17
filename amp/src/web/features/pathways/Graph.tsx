@@ -285,15 +285,17 @@ export function Graph({
     const meshes: THREE.Mesh[] = [],
       glows: THREE.Sprite[] = [];
     for (const p of points) {
-      const earned = skillLight(stats.get(p.skill.id));
+      const earned = mapLight(stats.get(p.skill.id));
       const color = colors[areaSlot(p.skill)]!;
       const material = new THREE.MeshStandardMaterial({
-        color: earned.stage
+        // Lit: its hue, brightened toward white at its core. Not yet: a
+        // muted, darker point of the same hue.
+        color: earned.lit
           ? color
           : color
               .clone()
-              .lerp(new THREE.Color(paintRole("--atlas-light")), 0.22)
-              .multiplyScalar(0.8),
+              .lerp(new THREE.Color(paintRole("--atlas-muted")), 0.5)
+              .multiplyScalar(0.32),
         emissive: color,
         emissiveIntensity: earned.intensity,
         metalness: 0.5,
@@ -313,6 +315,7 @@ export function Graph({
       mesh.userData.id = p.skill.id;
       mesh.userData.radius = [0.48, 0.72, 0.92, 1.12][earned.stage];
       mesh.userData.score = earned.score;
+      mesh.userData.lit = earned.lit;
       mesh.userData.renderScale = motion ? fromScale : targetScale;
       scene.add(mesh);
       meshes.push(mesh);
@@ -328,6 +331,7 @@ export function Graph({
       );
       sprite.position.copy(mesh.position);
       sprite.scale.setScalar(earned.stage ? 9 + earned.stage * 2 : 5);
+      sprite.userData.scale = sprite.scale.x;
       scene.add(sprite);
       glows.push(sprite);
     }
@@ -674,15 +678,23 @@ export function Graph({
       // Keep the smallest nodes legible in CSS pixels; earned size/glow remains separate.
       const unitsPerPixel =
         (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2))) / height;
-      for (const mesh of meshes) {
-        const pixels = mesh.userData.score
-          ? 2 + mesh.userData.score * 0.06
-          : 1.5;
+      // An earned skill stays a clear point of light even with the whole
+      // map in view: a larger core and a halo of at least ~26 px.
+      meshes.forEach((mesh, i) => {
+        const pixels = mesh.userData.lit
+          ? 3.5 + mesh.userData.score * 0.1
+          : 1.3;
+        const distance = camera.position.distanceTo(mesh.position);
         const minimum =
-          (camera.position.distanceTo(mesh.position) * unitsPerPixel * pixels) /
-          mesh.userData.radius;
+          (distance * unitsPerPixel * pixels) / mesh.userData.radius;
         mesh.scale.setScalar(Math.max(mesh.userData.renderScale, minimum));
-      }
+        const glow = glows[i]!;
+        glow.scale.setScalar(
+          mesh.userData.lit
+            ? Math.max(glow.userData.scale, distance * unitsPerPixel * 26)
+            : glow.userData.scale,
+        );
+      });
       (lines.material as THREE.LineBasicMaterial).opacity = fitView
         ? 0.38
         : 0.65;
@@ -776,7 +788,7 @@ export function Graph({
           paths.prerequisites.has(idHere) ||
           paths.dependents.has(idHere) ||
           relatedIds.has(idHere);
-        const earned = skillLight(stats.get(idHere));
+        const earned = mapLight(stats.get(idHere));
         const bright = inArea(points[i]!.skill);
         const material = mesh.material as THREE.MeshStandardMaterial;
         material.emissiveIntensity =
@@ -1514,10 +1526,18 @@ export function Graph({
             </svg>
           </button>
         )}
-        <button aria-label="Zoom in" onClick={() => zoom.current(0.72)}>
+        <button
+          aria-label="Zoom in"
+          data-camera="zoom"
+          onClick={() => zoom.current(0.72)}
+        >
           +
         </button>
-        <button aria-label="Zoom out" onClick={() => zoom.current(1.4)}>
+        <button
+          aria-label="Zoom out"
+          data-camera="zoom"
+          onClick={() => zoom.current(1.4)}
+        >
           −
         </button>
         <button
@@ -1549,6 +1569,24 @@ export function Graph({
       </div>
     </section>
   );
+}
+
+/**
+ * How a skill shines on the 3D map. An earned skill (one independent
+ * success or more) is lit: a bright core in its area's hue and a halo that
+ * grows with what is earned. One not yet earned is a dim point, so the
+ * child's own skills are what the map shows first, in either theme (the
+ * scene is the dark atlas in both).
+ */
+function mapLight(evidence: Parameters<typeof skillLight>[0]) {
+  const light = skillLight(evidence);
+  const lit = light.stage > 0;
+  return {
+    ...light,
+    lit,
+    intensity: lit ? Math.max(0.9, light.intensity + 0.5) : 0,
+    glow: lit ? Math.min(1, Math.max(0.75, light.glow + 0.4)) : 0.03,
+  };
 }
 
 /** Every point inside the camera's view (a skill's gem around each). */

@@ -15,6 +15,12 @@ import {
   type TodayInput,
   type TodayStudent,
 } from "../src/schools/today";
+import {
+  minutesFigure,
+  minutesWords,
+  practiceCounts,
+} from "../src/schools/practice-rules";
+import { summarize } from "../src/schools/practice-stats";
 
 /** A Friday. */
 const TODAY = "2026-11-06";
@@ -56,7 +62,7 @@ const student = (
   level: level(5),
   weekMinutes: 45,
   weekProblems: 80,
-  workedToday: false,
+  todayProblems: 0,
   todayMinutes: 0,
   usualWeeklyMinutes: 50,
   lastActive: "2026-11-05",
@@ -146,8 +152,8 @@ test("a family's Today speaks of children and never asks to start a class", () =
       family: true,
       students: [
         fresh("Ada"),
-        student("Ben", { workedToday: true, todayMinutes: 20 }),
-        student("Cy", { workedToday: true, todayMinutes: 15 }),
+        student("Ben", { todayMinutes: 20, todayProblems: 12 }),
+        student("Cy", { todayMinutes: 15, todayProblems: 12 }),
       ],
     }),
   );
@@ -161,8 +167,8 @@ test("a family's Today speaks of children and never asks to start a class", () =
     input({
       family: true,
       students: [
-        student("Ada", { workedToday: true, todayMinutes: 12 }),
-        student("Ben", { workedToday: true, todayMinutes: 20 }),
+        student("Ada", { todayMinutes: 12, todayProblems: 12 }),
+        student("Ben", { todayMinutes: 20, todayProblems: 12 }),
       ],
     }),
   );
@@ -402,7 +408,7 @@ test("ready for more means past the course in every strand, and holding it", () 
 });
 
 test("a day with most of the class working says how many, without a verdict", () => {
-  const worked = { workedToday: true, todayMinutes: 20, objectivesThisWeek: 2 };
+  const worked = { todayMinutes: 20, todayProblems: 12, objectivesThisWeek: 2 };
   const todos = todayTodos(
     input({
       students: [
@@ -535,4 +541,121 @@ test("keeps missing links each student's latest miss without help", () => {
     shared.misses?.map((entry) => entry.attempt),
     ["amara-3", "diego-3"],
   );
+});
+
+/* Finding #24 (2026-11-17 product grabs): a class's Today said "3 of 3 students
+   practiced today" beside "students practiced 2 of 3" this week, with "1
+   active minutes" and a spread of "median 0, mean 0". Today counted any work;
+   the week, the practiced rule; and every minute was rounded to a whole one
+   before it was summed or summarized. */
+test("Today and the week count practice by one rule, minutes under one included", () => {
+  // The recorded class: three sub-minute sessions, one of only two problems.
+  const recorded = [
+    student("Ava", {
+      todayMinutes: 0.4,
+      todayProblems: 6,
+      weekMinutes: 0.4,
+      weekProblems: 6,
+    }),
+    student("Ben", {
+      todayMinutes: 0.3,
+      todayProblems: 5,
+      weekMinutes: 0.3,
+      weekProblems: 5,
+    }),
+    student("Leo", {
+      todayMinutes: 0.2,
+      todayProblems: 2,
+      weekMinutes: 0.2,
+      weekProblems: 2,
+    }),
+  ];
+  const counts = practiceCounts(recorded);
+  assert.deepEqual(counts, { today: 2, week: 2 });
+  const todos = todayTodos(input({ students: recorded }));
+  // Two of three is too few for a good-day line: no "3 of 3" beside "2 of 3".
+  assert.ok(
+    todos.every((todo) => !/3 of 3/.test(todo.title)),
+    JSON.stringify(todos),
+  );
+  // A fourth student who practiced makes the day: its count is the rule's.
+  const four = [
+    ...recorded,
+    student("Mia", {
+      todayMinutes: 0.3,
+      todayProblems: 7,
+      weekMinutes: 0.3,
+      weekProblems: 7,
+    }),
+  ];
+  const good = todayTodos(input({ students: four })).find(
+    (todo) => todo.id === "good-day",
+  )!;
+  assert.equal(good.title, "3 of 4 students practiced today");
+  assert.equal(practiceCounts(four).today, 3);
+  // 0.4 + 0.3 + 0.3 minutes: one minute, singular.
+  assert.equal(good.detail, "1 active minute.");
+  assert.match(good.rule ?? "", /5 active minutes or 5 problems/);
+  const brief = todayTodos(
+    input({
+      students: four.map((one) => ({ ...one, todayMinutes: 0.1 })),
+    }),
+  ).find((todo) => todo.id === "good-day")!;
+  assert.equal(brief.detail, "Under 1 active minute.");
+  // A family's lines count any work: no family screen counts "practiced",
+  // so a short go of two problems still shows.
+  const home = todayTodos(input({ family: true, students: recorded }));
+  const all = home.find((todo) => todo.id === "good-day");
+  assert.equal(all?.title, "All 3 children worked today");
+  assert.equal(all?.detail, "1 active minute.");
+  const one = todayTodos(
+    input({ family: true, students: [recorded[2]!, student("Ada")] }),
+  );
+  assert.ok(
+    one.some((todo) => todo.title === "Leo practiced under 1 minute today"),
+    JSON.stringify(one.map((todo) => todo.title)),
+  );
+  // The spread's statistics read the tenths the server keeps, not zeros.
+  const spread = summarize(recorded.map((one) => one.weekMinutes))!;
+  assert.equal(spread.median, 0.3);
+  assert.ok(spread.mean > 0.29 && spread.mean < 0.31);
+  assert.equal(minutesFigure(0.3), "<1");
+  assert.equal(minutesFigure(0), "0");
+  assert.equal(minutesFigure(1.4), "1");
+  assert.equal(minutesFigure(1234.2), "1,234");
+  assert.equal(minutesWords(0.3, "active minute"), "under 1 active minute");
+  assert.equal(minutesWords(1, "active minute"), "1 active minute");
+  assert.equal(minutesWords(0, "active minute"), "0 active minutes");
+  assert.equal(minutesWords(12.6), "13 minutes");
+});
+
+test("today's practiced count never passes the week's, whatever the work", () => {
+  let seed = 11;
+  const random = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  for (let run = 0; run < 300; run++) {
+    const students = Array.from(
+      { length: 1 + Math.floor(random() * 30) },
+      (_, i) => {
+        const todayMinutes = Math.round(random() * random() * 90) / 10;
+        const todayProblems = Math.floor(random() * 9);
+        return student(`S${i}`, {
+          todayMinutes,
+          todayProblems,
+          // A day is inside its week.
+          weekMinutes: todayMinutes + Math.round(random() * 80) / 10,
+          weekProblems: todayProblems + Math.floor(random() * 6),
+        });
+      },
+    );
+    const counts = practiceCounts(students);
+    assert.ok(counts.today <= counts.week, JSON.stringify(counts));
+    const good = todayTodos(input({ students })).find(
+      (todo) => todo.id === "good-day",
+    );
+    if (good)
+      assert.equal(
+        good.title,
+        `${counts.today} of ${students.length} students practiced today`,
+      );
+  }
 });
