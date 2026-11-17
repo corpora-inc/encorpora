@@ -14,6 +14,7 @@ import {
   useModeReturns,
 } from "../../features/profiles/mode-return";
 import { currentLearner, useLearnerStore } from "../../learner-store";
+import { useInventoryViewStore } from "../../features/inventory/inventory-view";
 import { knownDocumentPath } from "../document-routes";
 import {
   aliasTarget,
@@ -388,6 +389,18 @@ const EXAMPLES: Example[] = [
     world: "adult",
     me: ADULT_ME,
     lands: `/practice/${CHILD}/skills/s1`,
+  },
+  // An inventory's view from before its view store (a shared link).
+  {
+    from: "/inventory?topic=fractions&collection=all&area=geometry",
+    world: "adult",
+    me: ADULT_ME,
+    lands: "/inventory",
+  },
+  {
+    from: `/family/${FAMILY}/kids/${CHILD}/inventory?collection=earned`,
+    world: "family parent",
+    lands: `/family/${FAMILY}/kids/${CHILD}/inventory`,
   },
   ...["/overview", "/progress", "/books", "/inventory", "/pathways"].map(
     (path) => ({
@@ -772,4 +785,19 @@ test("an older ?profile=&from= link is the mode: the profile is the current lear
   expect(router.state.location.href).toBe("/pathways");
   expect(currentLearner(SESSION.accountId)).toBe(PROFILE);
   expect(modeReturn(SESSION.accountId)).toBe(`/school/${SCHOOL}`);
+});
+
+test("an older inventory link's view lands in its view store, keyed by the screen", async () => {
+  enter("adult", false, ADULT_ME);
+  useInventoryViewStore.setState({ views: {} });
+  const { router } = routerAt(
+    "/inventory?topic=fractions&collection=all&area=geometry",
+  );
+  await router.load();
+  expect(router.state.location.href).toBe("/inventory");
+  expect(
+    useInventoryViewStore.getState().views[
+      layerScope("/inventory", SESSION.accountId)
+    ],
+  ).toEqual({ topic: "fractions", collection: "all", area: "geometry" });
 });
