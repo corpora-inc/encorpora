@@ -54,6 +54,8 @@ const fixture = await startShellFixture({
 });
 const { origin } = fixture;
 let familyPath = "";
+let practicePath = "";
+let starterChildPath = "";
 
 /** The paid parent also starts their own practice, so `/me` has a record. */
 {
@@ -88,7 +90,19 @@ let familyPath = "";
   );
   if (!own) throw Error("Paid fixture must hold a family");
   familyPath = `/family/${own.familyId as string}`;
+  // Each screen is measured at its own address, never an older one that
+  // hops there (a hop is a second screen, with its own account refresh).
+  const page = await context.newPage();
+  await page.goto(`${origin}/practice`);
+  await page.waitForURL((url) => /^\/practice\/[^/]+$/.test(url.pathname));
+  practicePath = new URL(page.url()).pathname;
   await context.close();
+  const starter = await fixture.context(browser, "starter");
+  const starterPage = await starter.newPage();
+  await starterPage.goto(`${origin}/overview`);
+  await starterPage.waitForURL((url) => /\/kids\/[^/]+$/.test(url.pathname));
+  starterChildPath = new URL(starterPage.url()).pathname;
+  await starter.close();
   await browser.close();
 }
 
@@ -175,7 +189,8 @@ const screens: Screen[] = [
     state: "paid",
     group: "account",
     overlay: true,
-    ready: (p) => p.locator("[data-account-body]").first().waitFor(),
+    // The Billing overlay, its plans in place.
+    ready: (p) => p.locator("[data-billing-panel]").first().waitFor(),
   },
   {
     id: "privacy",
@@ -210,9 +225,12 @@ const screens: Screen[] = [
   },
 ];
 // The child's addresses need the family the setup above found.
-for (const screen of screens)
+for (const screen of screens) {
   if (screen.id.startsWith("child"))
     screen.path = `${jordan()}${screen.id === "child" ? "" : `/${screen.id.slice(6)}`}`;
+  if (screen.id === "practice") screen.path = practicePath;
+  if (screen.id === "starter-child") screen.path = starterChildPath;
+}
 
 /** Installed before any page script: the requests the screen makes, and
  * every element whose own visible text changes while nothing was pressed. */
