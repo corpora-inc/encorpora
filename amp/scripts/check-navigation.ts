@@ -24,6 +24,10 @@ const MODULE = [
   // The school route table's guards, loaded with a school address.
   /^app\/school-guards\.ts$/,
   /^app\/pay-routes\.tsx$/,
+  // The sanctioned sign-in gate and the old-address alias table: the one
+  // place a guard may send someone to "/" (a native device off the web).
+  /^app\/sign-in-gate\.ts$/,
+  /^app\/legacy-aliases\.ts$/,
 ];
 const BANNED = [
   /navigate\(\{\s*to:\s*"\/"/,
