@@ -2,7 +2,6 @@ import {
   carryFamilyPractice,
   restoreFamilyPractice,
 } from "../lib/family-practice-history";
-import { knownDocumentPath } from "./document-routes";
 import { invoiceOffersOptions } from "../features/funding/invoice-offers";
 import {
   createRootRoute,
@@ -115,6 +114,14 @@ import {
   studentPracticeHref,
   isLearningPath,
 } from "../features/profiles/practice-mode";
+// The served-address list is only read by the missing-screen fallback. It
+// loads beside the entry, not in it (scripts/check-bundle-budget.ts), and
+// starts loading at once so the fallback never waits for it. A failed load
+// is tried again when the fallback needs it.
+const documentRoutes = import("./document-routes");
+documentRoutes.catch((error: unknown) =>
+  console.warn("The served-address list didn’t load ahead", error),
+);
 function RouterError({ error }: { error: unknown }) {
   const router = useRouter();
   const home = useHomeHref();
@@ -1464,7 +1471,14 @@ const fallback = createRoute({
   path: "/$",
   // Reject unknown shapes before adopting a learner or loading the legacy app.
   beforeLoad: async ({ location }) => {
-    if (!knownDocumentPath(location.pathname)) throw notFound();
+    let served: typeof import("./document-routes");
+    try {
+      served = await documentRoutes;
+    } catch (error) {
+      console.warn("Loading the served-address list again", error);
+      served = await import("./document-routes");
+    }
+    if (!served.knownDocumentPath(location.pathname)) throw notFound();
     // A school student's device on a family's page: their own practice.
     // (An older learning address is an app/legacy-aliases.ts row.)
     if (notAStudents(location.pathname)) admit({ adults: true });

@@ -175,17 +175,6 @@ const known = documentRoutePatterns.map((pattern) => new RegExp(pattern));
 export const knownDocumentPath = (path: string) =>
   known.some((pattern) => pattern.test(path));
 
-/** Analytics-visible auth and purchase screens are deliberately not indexable. */
-export const publicDocumentPaths = [
-  "/",
-  "/schools",
-  "/schools/trust",
-  "/schools/scope-and-sequence",
-] as const;
-export const indexableDocumentPath = (path: string) => {
-  const clean = path.replace(/\/$/, "") || "/";
-  return (
-    (publicDocumentPaths as readonly string[]).includes(clean) ||
-    /^\/pathways(?:\/[^/]+)?$/.test(clean)
-  );
-};
+// Which documents search may index has its own small module, so the head
+// (route-head.ts) doesn't carry this list in the app's entry.
+export { indexableDocumentPath, publicDocumentPaths } from "./document-index";
