@@ -386,7 +386,11 @@ try {
       await next.waitFor();
       assert.equal(await next.getAttribute("href"), "/start");
       await fits(page, `ready ${theme} ${width}`);
-      await page.getByRole("button", { name: "Open AMP menu" }).click();
+      await page
+        .getByRole("button", { name: "Open AMP menu" })
+        .filter({ visible: true })
+        .first()
+        .click();
       await page
         .getByRole("button", { name: "Sign out", exact: true })
         .waitFor();

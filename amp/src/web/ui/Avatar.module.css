@@ -28,14 +28,29 @@
   height: var(--avatar-size, 44px);
   font-size: calc(var(--avatar-size, 44px) * 0.36);
 }
-/* A surface ring separates overlapping faces without a border's weight. */
+/* A surface ring separates overlapping faces without a border's weight.
+   Each face but the last centres its initials in the part the next one
+   leaves showing, so even two wide initials ("WM") read in full. */
 .stack {
+  --stack-ring: 2px;
+  --stack-overlap: 4px;
   display: inline-flex;
   flex: none;
 }
 .stack .avatar {
-  box-shadow: 0 0 0 2px var(--avatar-ring, var(--color-surface));
+  box-sizing: border-box;
+  box-shadow: 0 0 0 var(--stack-ring) var(--avatar-ring, var(--color-surface));
+}
+.stack .avatar:not(:last-child) {
+  padding-inline-end: calc(var(--stack-overlap) + var(--stack-ring));
 }
 .stack .avatar + .avatar {
-  margin-inline-start: -6px;
+  margin-inline-start: calc(-1 * var(--stack-overlap));
+}
+.stack .small {
+  --stack-ring: 1px;
+  --stack-overlap: 1.5px;
+}
+.stack .large {
+  --stack-overlap: 6px;
 }

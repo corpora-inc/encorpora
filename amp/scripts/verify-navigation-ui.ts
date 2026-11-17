@@ -653,8 +653,12 @@ try {
   failMe = true;
   await page.goto(`${origin}/inventory`);
   await trigger.click();
-  // One Account link for the whole group, even while the account is down.
-  await page.getByRole("link", { name: "Account", exact: true }).waitFor();
+  // One link to the settings hub (a family parent's family Settings, else
+  // Account: features/spaces/settings-hub.ts), even while the account is
+  // down.
+  const hub = page.getByRole("link", { name: /^(Settings|Account)$/ });
+  await hub.first().waitFor();
+  assert.equal(await hub.count(), 1, "one link to the settings hub");
   assert.equal(
     await drawer
       .getByRole("link", { name: /Manage learners|Account settings/ })
