@@ -475,7 +475,8 @@ function sameView(a: Record<string, string>, b: Record<string, string>) {
 async function mapStays(page: Page, person: string) {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await land(page, "/pathways");
-  await page.locator(".pathways-map-labels .skill-label").first().waitFor();
+  // The map opens whole (Q-9): its areas named, until a skill is framed.
+  await page.locator(".pathways-map-labels .area-label").first().waitFor();
   await page.getByRole("button", { name: "Browse skills" }).click();
   const pick = page.locator('#pathways-browser a[data-entity="skill"]').nth(3);
   await pick.click();
