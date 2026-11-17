@@ -4,12 +4,8 @@ import type { SignedInMe } from "../../../../account/contracts";
 import { AppError } from "../../../lib/AppError";
 import { meOptions, queryClient, sessionOptions } from "../../../lib/query";
 import { useLearnerStore } from "../../../learner-store";
-import { isRedirect } from "@tanstack/react-router";
-import {
-  adoptPracticeMode,
-  canonicalLearnerAddress,
-  carriedKeys,
-} from "../practice-mode";
+import { learningIdentity, selfOf } from "../../spaces/identity";
+import { adoptPracticeMode, olderLearningHref } from "../practice-mode";
 
 const session = { accountId: "amp|jonah", token: "t" };
 const child = (id: string, name: string) => ({
@@ -53,57 +49,40 @@ test("CP-2 r2 H2: no route guard in the router chooses a learner", () => {
 });
 
 test("CP-2 H2: a learner or profile this account doesn't read is unavailable, not the previous one", async () => {
-  for (const search of [{ learner: "someone-else" }, { profile: "revoked" }]) {
-    const opened = adoptPracticeMode(at(search));
+  for (const location of [
+    at({ learner: "someone-else" }),
+    // A profile is practiced at its own address, as the adult's learner.
+    { pathname: "/practice/revoked", search: {} },
+  ]) {
+    const opened = adoptPracticeMode(location);
     await expect(opened).rejects.toBeInstanceOf(AppError);
     await expect(opened).rejects.toMatchObject({ kind: "permission" });
   }
+  // The account's own profile, by its practice's address, opens.
+  await adoptPracticeMode({ pathname: "/practice/grade-4", search: {} });
   expect(useLearnerStore.getState().learners[session.accountId]).toBe("wren");
 });
 
-test("CP-2 H2: one identity travels between learning screens", () => {
-  const here = (search: Record<string, unknown>) => ({
-    pathname: "/pathways",
-    search,
+test("practicing as a profile is its address and the current learner, never a query string", () => {
+  // Its practice names it, as a profile.
+  expect(learningIdentity("/practice/grade-4", {}, null, me)).toEqual({
+    kind: "profile",
+    id: "grade-4",
   });
-  const there = { pathname: "/practice", search: {} };
-  // Q-209: a learner never travels (yourself is unnamed; a child's screens
-  // name them in their path); only a practice profile does.
-  expect(carriedKeys(here({ learner: "pip" }), there, [])).toBeNull();
-  expect(
-    carriedKeys(here({ profile: "grade-4", from: "/me" }), there, []),
-  ).toEqual({ profile: "grade-4", from: "/me" });
-  expect(
-    carriedKeys(here({ profile: "grade-4" }), there, ["learner"]),
-  ).toBeNull();
-  expect(carriedKeys(here({ learner: "pip" }), there, ["profile"])).toBeNull();
-  expect(
-    carriedKeys(here({ learner: "pip" }), { pathname: "/me", search: {} }, []),
-  ).toBeNull();
-});
-
-test("CP-2 M4: adding a place keeps its return through every starter step", () => {
-  const start = (pathname: string, search: Record<string, unknown> = {}) => ({
-    pathname,
-    search,
+  // While it is the current learner, the shared screens that name nobody
+  // are its; otherwise they are the adult's own.
+  expect(learningIdentity("/pathways", {}, selfOf(me, "grade-4"), me)).toEqual(
+    { kind: "profile", id: "grade-4" },
+  );
+  expect(learningIdentity("/pathways", {}, selfOf(me, "pip"), me)).toEqual({
+    kind: "learner",
+    id: "jonah",
   });
-  expect(
-    carriedKeys(
-      start("/start", { from: "/school/o" }),
-      start("/start/parent"),
-      [],
-    ),
-  ).toEqual({ from: "/school/o" });
-  expect(
-    carriedKeys(
-      start("/start/parent/children", { from: "/school/o" }),
-      start("/start/parent"),
-      [],
-    ),
-  ).toEqual({ from: "/school/o" });
-  expect(
-    carriedKeys(start("/start", { from: "/school/o" }), start("/me"), []),
-  ).toBeNull();
+  // An older ?profile= names nobody: its alias row reads it
+  // (app/legacy-aliases.ts).
+  expect(learningIdentity("/pathways", { profile: "grade-4" }, null, me)).toBe(
+    null,
+  );
 });
 
 test("Q-209: an older ?learner= address is sent to its canonical one, and nobody is chosen", async () => {
@@ -114,15 +93,8 @@ test("Q-209: an older ?learner= address is sent to its canonical one, and nobody
       next: null,
     },
   );
-  const redirected = async (pathname: string, searchStr: string) => {
-    try {
-      await canonicalLearnerAddress({ pathname, searchStr });
-      return null;
-    } catch (thrown) {
-      expect(isRedirect(thrown)).toBe(true);
-      return (thrown as { options: { href: string } }).options.href;
-    }
-  };
+  const redirected = async (pathname: string, searchStr: string) =>
+    (await olderLearningHref({ pathname, searchStr })) ?? null;
   // Yourself: unnamed. A child: their own address, in their family.
   expect(await redirected("/pathways", "?learner=jonah")).toBe("/pathways");
   expect(await redirected("/pathways", "?learner=pip&topic=frac")).toBe(

@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { useLocation, useNavigate, useRouter } from "@tanstack/react-router";
+import { useNavigate, useRouter } from "@tanstack/react-router";
 import { z } from "zod";
 import type { SignedInMe } from "../../../account/contracts";
 import {
@@ -16,6 +16,7 @@ import { forSession, useSessionOrNull } from "../../lib/session";
 import { closeTo } from "../../lib/return-to";
 import { ROOT } from "../../nav/root";
 import { modeFrom, modePlace, modeReturnLabel } from "./practice-mode";
+import { setModeReturn, useModeReturn } from "./mode-return";
 import { classesOptions } from "../school/core-api";
 import { practiceParams } from "../spaces/identity";
 
@@ -148,9 +149,10 @@ export function leaveTarget(me: SignedInMe | null | undefined) {
     : { own: null, first, label: "Back", short: "Back" };
 }
 
-/** The profile being practiced as, and the one tap back out of it: to where
- * the mode was started (`?from=`, features/profiles/practice-mode.ts), else
- * the adult's own practice or their home. */
+/** The profile being practiced as (the account's current learner, when it
+ * is one of its profiles), and the one tap back out of it: to where the mode
+ * was started (mode-return.ts), else the adult's own practice or their
+ * home. Leaving chooses their own learner again and ends the mode. */
 export function usePracticingProfile() {
   const session = useSessionOrNull();
   const me = useQuery(forSession(session, meOptions)).data;
@@ -160,12 +162,7 @@ export function usePracticingProfile() {
   const profile = practiceProfile(account, learnerId);
   const navigate = useNavigate();
   const router = useRouter();
-  const from = modeFrom(
-    useLocation({ select: (location) => location.search }) as Record<
-      string,
-      unknown
-    >,
-  );
+  const from = modeFrom(useModeReturn());
   const target = leaveTarget(account);
   // Its class's name, loaded with the screen (practice-mode.ts).
   const { org } = modePlace(from);
@@ -179,15 +176,15 @@ export function usePracticingProfile() {
       ? { ...target, ...modeReturnLabel(from, account, classes) }
       : target,
     leave: () => {
+      setModeReturn(null);
       // Back where it was started: X, the browser's Back and this agree.
-      if (from) return closeTo(router, from, from);
+      if (from) {
+        selectLearner(target.own ?? target.first);
+        return closeTo(router, from, from);
+      }
       if (target.own) {
         selectLearner(target.own);
-        void navigate({
-          to: "/$",
-          params: practiceParams(target.own),
-          search: { profile: undefined, from: undefined },
-        });
+        void navigate({ to: "/$", params: practiceParams(target.own) });
         return;
       }
       // No mode's `from` and no practice of their own: Back to where the
