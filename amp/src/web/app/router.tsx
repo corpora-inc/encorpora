@@ -109,7 +109,7 @@ import {
   stackSearchSchema,
   standingsSearchSchema,
 } from "../features/school/classroom/search";
-import { designAllowed, designSearchSchema } from "../features/design/search";
+import { designAllowed } from "../features/design/search";
 import { stampPrevious, VIEW_KEYS } from "../lib/return-to";
 import { applyDeferredIdentity } from "../features/school/join/api";
 import { settleLegacyLayers } from "../nav/links";
@@ -1474,18 +1474,32 @@ const familyApproval = createRoute({
 });
 /** Every shared component in its states, from fixtures (features/design): an
  * internal tool for development and staff browsers, unlinked and unindexed. */
+const designScreens = () => import("../features/design/DesignScreen");
+const designGuard = () => {
+  if (!designAllowed()) elsewhere("/");
+};
 const design = createRoute({
   getParentRoute: () => root,
   path: "/design",
   staticData: { space: "public" },
-  validateSearch: (search) => designSearchSchema.parse(search),
-  beforeLoad: () => {
-    if (!designAllowed()) elsewhere("/");
-  },
-  component: lazyRouteComponent(
-    () => import("../features/design/DesignScreen"),
-    "DesignScreen",
-  ),
+  beforeLoad: designGuard,
+  component: lazyRouteComponent(designScreens, "DesignScreen"),
+});
+/** The documents the gallery frames: every section at the chosen width,
+ * and one viewport-owning component alone. */
+const designCanvas = createRoute({
+  getParentRoute: () => root,
+  path: "/design/canvas",
+  staticData: { space: "public" },
+  beforeLoad: designGuard,
+  component: lazyRouteComponent(designScreens, "DesignCanvas"),
+});
+const designSpecimen = createRoute({
+  getParentRoute: () => root,
+  path: "/design/specimen/$id",
+  staticData: { space: "public" },
+  beforeLoad: designGuard,
+  component: lazyRouteComponent(designScreens, "DesignSpecimen"),
 });
 const fallback = createRoute({
   getParentRoute: () => appScreen,
@@ -1602,6 +1616,8 @@ export const router = createRouter({
     familyApprove,
     familyApproval,
     design,
+    designCanvas,
+    designSpecimen,
     signIn,
     signUp,
     accountReady,

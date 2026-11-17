@@ -142,6 +142,34 @@ async function pathwaysTarget(
   return { href, layers: stack.slice(0, MAX_LAYERS) };
 }
 
+/** An older gallery address: its width and theme kept as this viewer's
+ * (features/design/view.ts), then its document's own path, its section kept. */
+async function toDesign(old: OldAddress) {
+  const [{ useDesignView }, { designWidths }] = await Promise.all([
+    import("../features/design/view"),
+    import("../features/design/search"),
+  ]);
+  const { frame, specimen, width, theme } = old.search;
+  const widthOf = Number(width);
+  useDesignView.getState().set({
+    ...(width === "fill"
+      ? { width: "fill" as const }
+      : designWidths.includes(widthOf as (typeof designWidths)[number])
+        ? { width: widthOf as (typeof designWidths)[number] }
+        : {}),
+    ...(theme === "light" || theme === "dark" ? { theme } : {}),
+  });
+  const section = old.hash ? `#${old.hash}` : "";
+  if (frame === "canvas") return `/design/canvas${section}`;
+  if (
+    frame === "specimen" &&
+    typeof specimen === "string" &&
+    /^[a-z0-9-]{1,60}$/.test(specimen)
+  )
+    return `/design/specimen/${specimen}`;
+  return `/design${section}`;
+}
+
 /** Privacy's older addresses (IA v2 §2.3): the Privacy overlay over the
  * account's settings hub, the panel the last part named open
  * (features/account/panels.ts). `/account/privacy` itself is the overlay
@@ -506,6 +534,15 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
         token: search.token,
         error: search.error,
       }),
+  },
+  // The component gallery's documents and view, from when its address held
+  // them: the frame is a path, the width and theme this viewer's own.
+  {
+    from: "/design",
+    about: "the gallery's frame, width or theme, by its query",
+    when: ({ search }) =>
+      ["frame", "specimen", "width", "theme"].some((key) => key in search),
+    to: toDesign,
   },
   { from: "/try", about: "the retired free trial", to: retiredTrial },
   { from: "/try/$", about: "the retired free trial's steps", to: retiredTrial },
