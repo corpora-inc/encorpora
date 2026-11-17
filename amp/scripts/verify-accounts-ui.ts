@@ -408,7 +408,11 @@ try {
   await addChild(sibling, "Sibling");
   await sibling.close();
 
-  // Session rotation must update AMP's in-memory API bearer token too.
+  // Session rotation must update AMP's in-memory API bearer token too. The
+  // parent closes Sign-in & security (an overlay over Settings) first.
+  const security = page.getByRole("dialog", { name: "Sign-in & security" });
+  await security.getByRole("button", { name: "Close", exact: true }).click();
+  await security.waitFor({ state: "detached" });
   await addChild(page, "Maya");
   await page.getByRole("button", { name: "Open AMP menu" }).click();
   await page.getByRole("button", { name: "Sign out", exact: true }).click();

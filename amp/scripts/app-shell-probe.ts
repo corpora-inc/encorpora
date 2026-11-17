@@ -256,6 +256,17 @@ export async function probe(page: Page): Promise<ShellProbe> {
       )
         truncated.push(describe(el));
     }
+    // Opaque feet stuck to the bottom of the screen, and where they begin.
+    const stickyFeet = [...document.querySelectorAll<HTMLElement>("body *")]
+      .filter((el) => {
+        const st = getComputedStyle(el);
+        return (
+          st.position === "sticky" &&
+          st.bottom === "0px" &&
+          !/^(transparent|rgba\(\d+, \d+, \d+, 0\))$/.test(st.backgroundColor)
+        );
+      })
+      .map((el) => ({ el, top: el.getBoundingClientRect().top }));
     // Overlap counts only what is visible: each box is clipped by its
     // scrolling or clipping ancestors.
     const clipped = (el: HTMLElement) => {
@@ -281,6 +292,12 @@ export async function probe(page: Page): Promise<ShellProbe> {
         const bar = document.querySelector("[data-app-bar]");
         if (bar) top = Math.max(top, bar.getBoundingClientRect().bottom);
       }
+      // Likewise a step's opaque foot held to the bottom of the screen
+      // (`position: sticky; bottom: 0`, onboarding/setup): what scrolls
+      // under it is hidden, and scrolled to the end nothing sits there.
+      for (const foot of stickyFeet)
+        if (!foot.el.contains(el) && bottom > foot.top)
+          bottom = Math.max(top, foot.top);
       return { left, top, right, bottom };
     };
     const boxes = controls

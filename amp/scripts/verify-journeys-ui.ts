@@ -1328,14 +1328,18 @@ async function journey7(
   }
   // A funded program's link keeps its program through sign-up: the vendor
   // line shows, and the follow-up records it.
+  // Sign-up's address is plain: the tab keeps the program and the free
+  // trial (lib/program-choice.ts).
   await visit(page, `${origin}/try?program=ar-efa`);
-  await page.waitForURL(/\/sign-up\?/);
-  const carried = new URL(page.url()).searchParams;
+  await page.waitForURL((url) => url.pathname === "/sign-up" && !url.search);
+  const carried = await page.evaluate(() => ({
+    intent: JSON.parse(sessionStorage.getItem("amp.sign-up-entry") ?? "null"),
+    program: sessionStorage.getItem("amp.program-choice"),
+  }));
   check(
     `${label} a funded link keeps its program`,
-    carried.get("program") === "ar-efa" &&
-      carried.get("return") === "free-practice",
-    page.url(),
+    carried.program === "ar-efa" && carried.intent?.free === true,
+    carried,
   );
   await page.getByText("Approved Arkansas EFA vendor.").waitFor();
   await shot(page, 7, "signed-out", width, theme);

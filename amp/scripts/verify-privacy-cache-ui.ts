@@ -71,19 +71,22 @@ try {
     // offers only its places, so the parent opens it there.
     await page.goto("http://127.0.0.1:4350/practice");
     await familyBatchWaiting;
-    // Account, then its Privacy tab, from the drawer, in this document.
+    // A family parent's account settings are the family's Settings; its
+    // Privacy row opens Privacy over it, from the drawer, in this document.
     const drawer = await openMenu(page);
-    await drawer.getByRole("link", { name: "Account", exact: true }).click();
-    await page.waitForURL((url) => url.pathname === "/account/security");
-    await page
-      .getByRole("link", { name: "Privacy", exact: true })
-      .first()
-      .click();
-    await page.waitForURL((url) => url.pathname === "/account/privacy");
+    await drawer.getByRole("link", { name: "Settings", exact: true }).click();
+    await page.waitForURL((url) =>
+      /^\/family\/[^/]+\/settings$/.test(url.pathname),
+    );
+    const settings = new URL(page.url()).pathname;
+    await page.locator("[data-settings-privacy-row]").click();
+    await page.waitForURL((url) => url.pathname === `${settings}/privacy`);
     await page
       .getByRole("button", {
         name:
-          mutation === "withdraw" ? "Learning consent" : "Delete learning data",
+          mutation === "withdraw"
+            ? "Learning permission"
+            : "Delete learning data",
         exact: false,
       })
       .click();
@@ -143,9 +146,12 @@ try {
         window as Window & { __privacyRaceDocument?: boolean }
       ).__privacyRaceDocument = true;
     });
-    for (const path of ["/account/privacy", "/account/security", "/practice"]) {
+    for (const back of [
+      (path: string) => path === settings,
+      (path: string) => path.startsWith("/practice"),
+    ]) {
       await page.goBack();
-      await page.waitForURL((url) => url.pathname === path);
+      await page.waitForURL((url) => back(url.pathname));
     }
     assert.equal(
       await page.evaluate(
@@ -169,10 +175,10 @@ try {
       await page.getByRole("navigation", { name: "Learning sections" }).count(),
       0,
     );
-    // The account stays reachable from the drawer.
+    // The family's Settings stay reachable from the drawer.
     const after = await openMenu(page);
-    await after.getByRole("link", { name: "Account", exact: true }).click();
-    await page.waitForURL((url) => url.pathname === "/account/security");
+    await after.getByRole("link", { name: "Settings", exact: true }).click();
+    await page.waitForURL((url) => url.pathname === settings);
     assert.deepEqual(errors, []);
     await page.close();
     console.log(
