@@ -112,6 +112,27 @@
     mask-image: none;
   }
 }
+/* A phone: the tabs fill the row as equal segments, each label centred in
+   its own, the open one's line under the whole segment. A label never
+   wraps; a segment is never narrower than its label or 44 px. */
+@media (max-width: 559px) {
+  .tabs {
+    width: 100%;
+    margin-inline: 0;
+  }
+  .tabs .tab,
+  .tabs .moreSlot {
+    flex: 1 1 0;
+    min-width: max-content;
+  }
+  .tabs .tab::before {
+    inset: auto 0 0;
+  }
+  .tabs .moreSlot > * {
+    width: 100%;
+    justify-content: center;
+  }
+}
 /* A row that would otherwise scroll keeps every label in view: Tabs.tsx
    steps the padding down until it fits (the Account, family and school rows
    on a 320 px phone). Each tab stays a 44 px target. */

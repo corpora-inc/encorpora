@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { practiceMinutes } from "../../../../lib/practice-minutes";
 import type { SignedInMe } from "../../../../../account/contracts";
 import type { TodayStudentResource } from "../../../../../schools/teacher-contracts";
 import { Button, buttonClass } from "../../../../ui/Button";
@@ -101,7 +102,10 @@ export function ChildRow({
         ) : (
           <>
             <Fact
-              value={week ? `${student.weekMinutes} min` : "None"}
+              value={
+                practiceMinutes(student.weekMinutes, student.weekProblems) ??
+                "None"
+              }
               label={
                 week
                   ? `${count(student.weekProblems, "problem")} this week`
