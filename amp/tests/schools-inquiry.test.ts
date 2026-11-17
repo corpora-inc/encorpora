@@ -8,6 +8,7 @@ import {
   INQUIRY_MAILBOX,
 } from "../src/schools/share-routes.js";
 import { buildApp } from "../src/server/app.js";
+import type { LinkedMessage } from "../src/email/email.js";
 
 type Mail = { to: string; subject: string; text: string; url: string };
 /** The school routes with mail captured. The inquiry never reads the
@@ -33,7 +34,7 @@ async function app(mail: ((sent: Mail) => Promise<void>) | null) {
       origin: "https://amp.example",
       ...(mail
         ? {
-            mail: (to: string, subject: string, text: string, url: string) =>
+            mail: (to: string, { subject, text, url }: LinkedMessage) =>
               mail({ to, subject, text, url }),
           }
         : {}),

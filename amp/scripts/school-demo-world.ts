@@ -130,7 +130,7 @@ export async function startDemoServer(options: {
   const services: SchoolAdminServices = {
     secret: `synthetic-school-demo-${randomUUID()}`,
     origin,
-    mail: async (to, subject, _text, link) => {
+    mail: async (to, { subject, url: link }) => {
       mail.push({ to, subject, url: link });
     },
   };

@@ -19,7 +19,7 @@ const notificationPolicy = {
 };
 import { deliverFundedActivationMail } from "../src/funding-purchase/activation-mail.js";
 import type {
-  ConsentMail,
+  ConsentPayload,
   ConsentTransport,
 } from "../src/parent-consent/contracts.js";
 import test from "node:test";
@@ -2132,7 +2132,7 @@ test(
         ).rows[0].n,
         1,
       );
-      const mails: ConsentMail[] = [];
+      const mails: ConsentPayload[] = [];
       const transport = notificationTransport(async (mail) => {
         mails.push(mail);
         await new Promise((resolve) => setTimeout(resolve, 30));
@@ -2212,7 +2212,7 @@ test(
     fixture(async (pool, repo) => {
       const { input } = await notificationFixture(pool, repo);
       await provisionFundingRequest(pool, input, [offer]);
-      const mails: ConsentMail[] = [];
+      const mails: ConsentPayload[] = [];
       const transport = notificationTransport(async (mail) => {
         mails.push(mail);
         return { kind: "unknown" };

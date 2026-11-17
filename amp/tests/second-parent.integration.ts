@@ -1,3 +1,4 @@
+import type { LinkedMessage } from "../src/email/email.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { randomBytes, randomUUID } from "node:crypto";
@@ -47,9 +48,7 @@ test(
       [];
     const mail = async (
       to: string,
-      subject: string,
-      text: string,
-      link: string,
+      { subject, text, url: link }: LinkedMessage,
     ) => {
       mailed.push({ to, subject, text, url: link });
     };

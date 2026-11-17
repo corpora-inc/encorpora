@@ -28,6 +28,7 @@ import { microsoftEmailVerified } from "./provider-email";
 import { passkeySignup, PASSKEY_SIGNUP_SECONDS } from "./passkey-signup";
 import {
   accountSignInMethods,
+  confirmationMessage,
   existingAccountEmail,
   resetPasswordEmail,
   signInLink,
@@ -47,7 +48,13 @@ import type { Pool } from "pg";
 import { ApiError } from "./repository";
 import { recordActivation } from "../analytics/activation.js";
 import type { Authenticator } from "./auth";
-import { brand, brandTitle } from "../brand";
+import { brand } from "../brand";
+import {
+  deliverable,
+  linkedEmail,
+  type AccountMail,
+  type Email,
+} from "../email/email.js";
 import {
   invitationProvesAddress,
   isFamilyInvitee,
@@ -227,33 +234,45 @@ async function appleClientSecret(apple: NonNullable<AccountsConfig["apple"]>) {
 }
 
 /** The account mail path: Resend when configured; outside production, the
- * server log. Shared with operator scripts that send account mail. */
-export function accountMail(
+ * server log. Every message carries both its HTML and plain-text parts
+ * (src/email/email.ts). */
+export function accountEmailSender(
   config: Pick<AccountsConfig, "mail" | "production">,
 ) {
   const mailer = config.mail && new Resend(config.mail.apiKey);
-  return async function send(
-    to: string,
-    subject: string,
-    text: string,
-    url: string,
-  ) {
+  return async function sendEmail(to: string, email: Email) {
+    const { subject, html, text } = deliverable(email);
     if (mailer) {
       const { error } = await mailer.emails.send({
         from: config.mail!.from,
         to,
         subject,
-        text: `${text}\n\n${url}\n\n${brandTitle}\n`,
+        html,
+        text,
       });
       if (error) throw new Error(`Email not sent: ${error.message}`);
     } else if (!config.production) {
-      console.info(`[accounts] email to ${to}: ${subject}\n${url}`);
+      // Development: the subject and the links, the main action last.
+      const links = text.match(/https?:\/\/\S+/g) ?? [];
+      console.info(
+        `[accounts] email to ${to}: ${subject}\n${links.join("\n")}`,
+      );
     } else throw new Error("Email delivery is not configured");
   };
 }
 
+/** The one-link account mail path. Shared with operator scripts that send
+ * account mail. */
+export function accountMail(
+  config: Pick<AccountsConfig, "mail" | "production" | "baseURL">,
+): AccountMail {
+  const sendEmail = accountEmailSender(config);
+  return (to, message) => sendEmail(to, linkedEmail(config.baseURL, message));
+}
+
 export async function createAccounts(pool: Pool, config: AccountsConfig) {
   const send = accountMail(config);
+  const sendEmail = accountEmailSender(config);
   const methodsEnabled = {
     providers: enabledProviders(config),
     passwords: config.passwords,
@@ -262,10 +281,10 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
   const sendLogged = async (
     kind: string,
     user: { id: string; email: string },
-    message: { subject: string; text: string; url: string },
+    message: Email,
   ) => {
     try {
-      await send(user.email, message.subject, message.text, message.url);
+      await sendEmail(user.email, message);
       console.info(`[accounts] ${kind} email sent`, { userId: user.id });
     } catch (error) {
       console.error(`[accounts] ${kind} email not sent`, {
@@ -447,10 +466,11 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
           config.baseURL,
           new URL(url).searchParams.get("callbackURL"),
         );
-        await sendLogged("password reset", user, {
-          ...resetPasswordEmail(brand.name, methods, signIn),
-          url,
-        });
+        await sendLogged(
+          "password reset",
+          user,
+          resetPasswordEmail(brand.name, methods, signIn, url),
+        );
       },
       // With confirmation required, signing up with a used address answers
       // like a new one and sends nothing by default. The owner gets an email
@@ -552,14 +572,7 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
               .get("callbackURL")
               ?.startsWith("/school") ||
             (await isSchoolStaff(pool, user.id)));
-        await send(
-          user.email,
-          `Confirm your email for ${brand.name}`,
-          school
-            ? `Confirm this address for your ${brand.name} for Schools account. If you did not create an ${brand.name} account, ignore this email; nothing happens without your confirmation.`
-            : `Confirm this address for your ${brand.name} parent account. Until it is confirmed, the account cannot buy access or give consent for a learner. If you did not create an ${brand.name} account, ignore this email; nothing happens without your confirmation.`,
-          url,
-        );
+        await send(user.email, confirmationMessage(brand.name, school, url));
       },
     },
     socialProviders: {
@@ -626,7 +639,7 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
       database: { validateSchema: false },
     },
   });
-  return { auth, config, send, pool };
+  return { auth, config, send, sendEmail, pool };
 }
 export type Accounts = Awaited<ReturnType<typeof createAccounts>>;
 

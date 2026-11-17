@@ -4,7 +4,7 @@ import { z } from "zod";
 import type {
   ConsentPolicy,
   ConsentTransport,
-  ConsentMail,
+  ConsentPayload,
   DeliveryResult,
 } from "./contracts.js";
 
@@ -78,7 +78,7 @@ export class ResendConsentTransport implements ConsentTransport {
     });
   }
   async send(
-    mail: ConsentMail,
+    mail: ConsentPayload,
     options: { signal: AbortSignal },
   ): Promise<DeliveryResult> {
     if (process.env.NODE_ENV !== "production" || options.signal.aborted)
@@ -96,6 +96,7 @@ export class ResendConsentTransport implements ConsentTransport {
           from: this.config.sender,
           to: [mail.recipient],
           subject: mail.subject,
+          ...(mail.html ? { html: mail.html } : {}),
           text: mail.text,
           ...(mail.attachments ? { attachments: mail.attachments } : {}),
         },

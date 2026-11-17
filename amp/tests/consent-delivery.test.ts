@@ -15,6 +15,7 @@ const mail: ConsentMail = {
   idempotencyKey: "amp-consent:synthetic-outbox",
   recipient: "parent@example.com",
   subject: "Synthetic private notice",
+  html: "<!doctype html><p>Synthetic fragment</p>",
   text: "Synthetic fragment https://example.com/#token=private",
 };
 
@@ -81,6 +82,7 @@ test("published SDK sends exact immutable body/key to pinned origin, refuses red
       from: config.sender,
       to: [mail.recipient],
       subject: mail.subject,
+      html: mail.html,
       text: mail.text,
     });
     assert.ok(options?.signal);
