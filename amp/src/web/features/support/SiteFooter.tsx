@@ -78,8 +78,9 @@ const socials = [
   },
 ] as const;
 
-/** The public pages' footer: the address to copy, AMP's other places, and the
- * page's own links. Each frame places it on its own content width. */
+/** The public pages' footer: the support address and the page's own links
+ * on the left, AMP's other places on the right. Each frame places it on its
+ * own content width and draws the rule above it. */
 export function SiteFooter({
   className = "",
   children,
@@ -89,8 +90,13 @@ export function SiteFooter({
 }) {
   return (
     <footer className={`${styles.footer} ${className}`}>
-      <div className={styles.footerTop}>
-        <ContactAddress />
+      <div className={styles.footerRow}>
+        <div className={styles.footerText}>
+          <ContactAddress className={styles.footerAddress} />
+          <nav className={styles.footerLinks} aria-label="More">
+            {children}
+          </nav>
+        </div>
         <ul className={styles.socials} aria-label="AMP elsewhere">
           {socials.map((social) => (
             <li key={social.name}>
@@ -107,9 +113,6 @@ export function SiteFooter({
           ))}
         </ul>
       </div>
-      <nav className={styles.footerLinks} aria-label="More">
-        {children}
-      </nav>
     </footer>
   );
 }

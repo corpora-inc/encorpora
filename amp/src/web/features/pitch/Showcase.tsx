@@ -31,6 +31,12 @@ const subscribeVisibility = (change: () => void) => {
 };
 const pageVisible = () => document.visibilityState === "visible";
 
+const subscribeNarrow = (change: () => void) => {
+  const query = window.matchMedia(narrowQuery);
+  query.addEventListener("change", change);
+  return () => query.removeEventListener("change", change);
+};
+
 /** True once the page has loaded and the browser is idle: the later slides'
  * files start then, never in the first screen's bandwidth. */
 function useWarm() {
@@ -113,9 +119,14 @@ function AppShot({ slide, first }: { slide: ShowcaseSlide; first: boolean }) {
 /** Workbook pages as printed: paper on the table, in either theme. A phone
  * shows the first page. */
 function PaperShot({ slide }: { slide: ShowcaseSlide }) {
+  const narrow = useSyncExternalStore(
+    subscribeNarrow,
+    () => window.matchMedia(narrowQuery).matches,
+    () => false,
+  );
   return (
     <div className={styles.paper}>
-      {[1, 2].map((page) => (
+      {(narrow ? [1] : [1, 2]).map((page) => (
         <img
           key={page}
           className={styles.page}
@@ -173,13 +184,16 @@ export function Showcase() {
           `[data-slide="${next}"] img`,
         ) ?? []),
       ];
-      Promise.all(images.map((image) => image.decode())).then(
-        () => {
-          if (!cancelled) setIndex(next);
-        },
-        (error: unknown) =>
+      // A picture that fails to decode is logged and the fade goes ahead:
+      // the box is reserved, and the rotation never stalls on one file.
+      Promise.resolve()
+        .then(() => Promise.all(images.map((image) => image.decode?.())))
+        .catch((error: unknown) =>
           console.error("pitch showcase: a slide's picture failed", error),
-      );
+        )
+        .then(() => {
+          if (!cancelled) setIndex(next);
+        });
     }, ADVANCE_MS);
     return () => {
       cancelled = true;
@@ -235,10 +249,14 @@ export function Showcase() {
       }}
       onBlur={blur}
     >
+      {/* Announced when the visitor moves it, never while it rotates. */}
+      <p className={styles.status} aria-live="polite" aria-atomic="true">
+        {playing
+          ? ""
+          : `${index + 1} of ${count}: ${showcaseSlides[index]!.label}`}
+      </p>
       <div
         className={styles.stage}
-        // Announced when the visitor moves it, never while it rotates.
-        aria-live={playing ? "off" : "polite"}
         onPointerDown={swipeStart}
         onPointerUp={swipeEnd}
         onPointerCancel={() => (swipe.current = null)}

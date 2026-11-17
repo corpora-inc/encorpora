@@ -87,6 +87,14 @@ export function PitchPage() {
       {TRIAL_WORKBOOKS_MAX} workbooks.
     </p>
   );
+  // The free trial beside the price: under the guarantee where there is a
+  // price, or the section's one action where nothing is for sale.
+  const free = (
+    <div className={styles.free} data-free-trial="">
+      {tryFree("secondary")}
+      {freeNote}
+    </div>
+  );
   // Which buy layout the bottom takes; `BuyOptions` decides the same way.
   const offered = data.failed
     ? "error"
@@ -178,7 +186,7 @@ export function PitchPage() {
           </section>
         )}
         <section className={styles.details} aria-labelledby="pitch-year">
-          <h2 id="pitch-year">Everything in one year</h2>
+          <h2 id="pitch-year">Everything you need for math education</h2>
           <ul className={styles.checklist}>
             <li>Unlimited adaptive practice, counting through precalculus</li>
             <li>
@@ -223,7 +231,7 @@ export function PitchPage() {
                     <li key={entry.slug}>
                       <PitchLink
                         place={{ to: `/invoice/${entry.slug}` }}
-                        className={buttonClass("quiet", styles.fundLink)}
+                        className={buttonClass("secondary", styles.fundLink)}
                         onClick={() =>
                           track("buy_click", { path: "funded", from: "pitch" })
                         }
@@ -235,14 +243,11 @@ export function PitchPage() {
                 </ul>
               </div>
             )}
-            <div className={styles.free}>
-              {tryFree("secondary")}
-              {freeNote}
-            </div>
+            {offered === "free" && free}
           </section>
           {guaranteed && (
             <section
-              className={`${styles.details} ${styles.guarantee}`}
+              className={styles.guarantee}
               aria-labelledby="pitch-guarantee"
               data-guarantee=""
             >
@@ -257,6 +262,7 @@ export function PitchPage() {
               <p className={styles.footnote}>{GUARANTEE_FOOTNOTE}</p>
             </section>
           )}
+          {offered !== "free" && free}
         </div>
       </main>
       <SiteFooter className={styles.footer}>

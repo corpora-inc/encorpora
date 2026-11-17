@@ -1,6 +1,6 @@
 /**
  * Capture the pitch's showcase: the slides beside Try it free at `/`
- * (src/web/features/pitch/showcase.ts). Each practice slide is the real app
+ * (src/web/features/pitch/showcase-slides.ts). Each practice slide is the real app
  * (this checkout's components, served by Vite) answering a real template's
  * problem; the workbook slide is a real workbook page from the print
  * pipeline. Synthetic fixtures only, loopback HTTP, no personal data.
@@ -64,7 +64,9 @@ const captures: Record<string, Capture> = {
     moment: "correct",
   },
   "fraction-line": {
-    problem: { templateId: "fraction-line-position", seed: "s1" },
+    // P at 2/3: clear of the line's "one whole" caption, which sits over
+    // the middle of the line.
+    problem: { templateId: "fraction-line-position", seed: "s4" },
     moment: "question",
   },
   workbook: { workbook: { learner: "third-grade" } },

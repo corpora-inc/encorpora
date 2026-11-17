@@ -235,10 +235,13 @@ async function serve(page: Page, api: Api) {
     if (path === "/api/v1/funding/invoice-offers")
       return route.fulfill({
         json: {
-          offers:
-            new URL(request.url()).searchParams.get("program") === "ar-efa"
-              ? [fundedOffer]
-              : [],
+          // Each program sells, as in production: without a program the
+          // page lists all three.
+          offers: ["ar-efa", "nh-efa", "az-esa"].includes(
+            new URL(request.url()).searchParams.get("program") ?? "",
+          )
+            ? [fundedOffer]
+            : [],
         },
       });
     if (path === "/api/v1/parent-followup/intent") {
@@ -347,6 +350,64 @@ async function noOverflow(page: Page, tag: string) {
   );
   assert.ok(overflow <= 1, `${tag}: no horizontal overflow (${overflow}px)`);
 }
+/**
+ * The page's close is balanced: from 768 px the price sits beside the
+ * guarantee and both columns end on one line, with Try it free under the
+ * guarantee; the education funds take at most two compact rows; the footer
+ * is one row from 768 px (address, links and icons centred on one line).
+ */
+async function closeIsBalanced(
+  page: Page,
+  tag: string,
+  width: number,
+  funds: boolean,
+) {
+  const found = await page.evaluate(() => {
+    const box = (selector: string) => {
+      const r = document.querySelector(selector)?.getBoundingClientRect();
+      return r
+        ? { top: r.top, bottom: r.bottom, left: r.left, right: r.right }
+        : null;
+    };
+    const rows = (selector: string) =>
+      new Set(
+        [...document.querySelectorAll(selector)].map((node) => {
+          const r = node.getBoundingClientRect();
+          return Math.round(r.top + r.height / 2);
+        }),
+      ).size;
+    return {
+      price: box("[data-actions]"),
+      guarantee: box("[data-guarantee]"),
+      free: box("[data-free-trial]"),
+      fundRows: rows("[data-education-funds] a"),
+      funds: document.querySelectorAll("[data-education-funds] a").length,
+      footerRows: rows("footer a"),
+    };
+  });
+  const { price, guarantee, free } = found;
+  assert.ok(price && guarantee && free, `${tag}: the close's parts`);
+  if (width >= 768) {
+    assert.ok(
+      guarantee.left >= price.right && guarantee.top < price.top + 64,
+      `${tag}: the guarantee beside the price: ${JSON.stringify(found)}`,
+    );
+    assert.ok(
+      Math.abs(free.bottom - price.bottom) <= 2 && free.left >= price.right,
+      `${tag}: Try it free under the guarantee, both columns ending on one line: ${JSON.stringify(found)}`,
+    );
+    assert.equal(found.footerRows, 1, `${tag}: the footer is one row`);
+  } else
+    assert.ok(
+      guarantee.top >= price.bottom && free.top >= guarantee.bottom,
+      `${tag}: price, guarantee, then Try it free: ${JSON.stringify(found)}`,
+    );
+  if (funds) {
+    assert.equal(found.funds, 3, `${tag}: every program is offered`);
+    assert.ok(found.fundRows <= 2, `${tag}: the funds take two rows at most`);
+  }
+}
+
 /** Positions of everything a parent reads or presses, in page coordinates. */
 async function layout(page: Page) {
   return page.evaluate(() =>
@@ -480,6 +541,7 @@ async function viewports(browser: Browser, engine: string) {
           { tryShown: true, buyShown: false, priceShown: false },
           `${tag}: Try it free on the first screen, no price or Buy`,
         );
+        await closeIsBalanced(page, tag, width, !program);
         // Every control is a 44 px target; inline text links are exempt.
         const small = await page.evaluate(() =>
           [...document.querySelectorAll("[data-pitch] a, [data-pitch] button")]
@@ -790,7 +852,8 @@ async function showcase(browser: Browser, engine: string) {
       }
       // Keyboard focus inside it holds the slide.
       await page.locator("[data-first-action] button").focus();
-      await page.keyboard.press("Tab");
+      // WebKit's Tab skips buttons unless Option is held (Safari's default).
+      await page.keyboard.press(engine === "webkit" ? "Alt+Tab" : "Tab");
       assert.equal(
         await page.evaluate(() =>
           document.activeElement?.closest("[data-showcase]") ? true : false,

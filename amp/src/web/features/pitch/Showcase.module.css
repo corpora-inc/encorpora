@@ -2,6 +2,7 @@
    44 px controls under it. The box's ratio is the captures' (16:9 wide, 9:16
    on a phone), so no slide, load or change ever moves the page. */
 .showcase {
+  position: relative;
   display: grid;
   gap: var(--space-2);
   min-width: 0;
@@ -81,9 +82,17 @@
   .page:first-child {
     transform: rotate(-1deg);
   }
-  .page + .page {
-    display: none;
-  }
+}
+
+/* The chosen slide, for screen readers only. */
+.status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 /* Pause or play, then one dot per slide. Each is a 44 px target; the
