@@ -129,7 +129,7 @@ export function YearCalendar({
 }) {
   // The set of terms shown: this screen's view (view-store.ts). One
   // period's dates open in a sheet over it (nav/sheet.ts).
-  const [search, setSearch] = useScreenView<{ view: string }>();
+  const [shownView, setShownView] = useScreenView<{ view: string }>();
   const sheets = useSheetNav();
   const openSheet = useOpenSheet();
   const session = currentSession();
@@ -142,7 +142,7 @@ export function YearCalendar({
       (entry) => entry.kind === kind && entry.parentId === year?.id,
     ),
   );
-  const asked = divisionKinds.find((kind) => kind === search.view);
+  const asked = divisionKinds.find((kind) => kind === shownView.view);
   const shown: DivisionKind | null = grading
     ? divisionKinds.includes(grading.value as DivisionKind)
       ? (grading.value as DivisionKind)
@@ -157,7 +157,7 @@ export function YearCalendar({
   useLoggedError(error);
   const editing = sessions.find((entry) => openSheet === `edit:${entry.id}`);
   const pick = (kind: DivisionKind) => {
-    setSearch({ view: kind });
+    setShownView({ view: kind });
     if (kinds.includes(kind) || !canEdit) return;
     setBusy(true);
     setError("");

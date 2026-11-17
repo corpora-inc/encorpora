@@ -606,7 +606,8 @@ for (const width of widths)
           return (await el.count()) ? el.boundingBox() : null;
         };
         return {
-          title: await at("h2:not([id])"),
+          // The lesson's title is the overlay's heading.
+          title: await at("[data-layer-panel] h2"),
           watch: await at("[data-film-link]"),
           wait: await at("[data-layer-wait]"),
         };

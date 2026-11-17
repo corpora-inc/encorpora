@@ -1,3 +1,4 @@
+import { progressKey, useProgressViews } from "../progress-view";
 import {
   createMemoryHistory,
   createRootRoute,
@@ -14,6 +15,7 @@ import {
   useModeReturns,
 } from "../../features/profiles/mode-return";
 import { currentLearner, useLearnerStore } from "../../learner-store";
+import { useInventoryViewStore } from "../../features/inventory/inventory-view";
 import { knownDocumentPath } from "../document-routes";
 import {
   aliasTarget,
@@ -192,12 +194,38 @@ type Example = {
   view?: Record<string, unknown>;
   /** Their `/me`, where the row reads it. */
   me?: object;
+  /** Progress's kept view for the adult's own learner, afterwards. */
+  progress?: Record<string, unknown>;
 };
 
 const PRIVACY = `/family/${FAMILY}/settings/privacy`;
 const CLASS_AT = `/school/${SCHOOL}/classes/${CLASS}`;
 const FAMILY_PAY = `/family/${FAMILY}/kids/${CHILD}/pay`;
 const EXAMPLES: Example[] = [
+  {
+    from: "/progress?filter=review&page=2&strand=fractions&skill=s1",
+    world: "adult",
+    me: ADULT_ME,
+    lands: "/progress/skills/s1",
+    progress: {
+      filter: "review",
+      page: 2,
+      strand: "fractions",
+      skillId: null,
+    },
+  },
+  {
+    from: "/progress?strand=fractions",
+    world: "adult",
+    me: ADULT_ME,
+    lands: "/progress/areas/fractions",
+    progress: {
+      filter: "practiced",
+      page: 0,
+      strand: "fractions",
+      skillId: null,
+    },
+  },
   { from: "/", world: "adult", consent: true, lands: "/consent" },
   {
     from: `/practice/${CHILD}`,
@@ -376,7 +404,12 @@ const EXAMPLES: Example[] = [
     lands: `/practice/${CHILD}/skills/s1`,
   },
   // Learning screens by an older query, or naming nobody.
-  { from: "/practice", world: "adult", me: ADULT_ME, lands: `/practice/${OWN}` },
+  {
+    from: "/practice",
+    world: "adult",
+    me: ADULT_ME,
+    lands: `/practice/${OWN}`,
+  },
   {
     from: `/practice?profile=${PROFILE}&from=%2Fme%2Flevel&skill=s1`,
     world: "adult",
@@ -388,6 +421,18 @@ const EXAMPLES: Example[] = [
     world: "adult",
     me: ADULT_ME,
     lands: `/practice/${CHILD}/skills/s1`,
+  },
+  // An inventory's view from before its view store (a shared link).
+  {
+    from: "/inventory?topic=fractions&collection=all&area=geometry",
+    world: "adult",
+    me: ADULT_ME,
+    lands: "/inventory",
+  },
+  {
+    from: `/family/${FAMILY}/kids/${CHILD}/inventory?collection=earned`,
+    world: "family parent",
+    lands: `/family/${FAMILY}/kids/${CHILD}/inventory`,
   },
   ...["/overview", "/progress", "/books", "/inventory", "/pathways"].map(
     (path) => ({
@@ -698,6 +743,10 @@ for (const example of EXAMPLES)
     // Never chained: where it lands is no row's, for the same person.
     state.consent = false;
     expect(await aliasTarget(at(landed)).catch(() => "a hop")).toBeNull();
+    if (example.progress)
+      expect(
+        useProgressViews.getState().views[progressKey(SESSION.accountId, OWN)],
+      ).toEqual(example.progress);
     if (example.view)
       expect(
         useViewStore.getState().views[viewScope(SESSION.accountId, landed)],
@@ -772,4 +821,19 @@ test("an older ?profile=&from= link is the mode: the profile is the current lear
   expect(router.state.location.href).toBe("/pathways");
   expect(currentLearner(SESSION.accountId)).toBe(PROFILE);
   expect(modeReturn(SESSION.accountId)).toBe(`/school/${SCHOOL}`);
+});
+
+test("an older inventory link's view lands in its view store, keyed by the screen", async () => {
+  enter("adult", false, ADULT_ME);
+  useInventoryViewStore.setState({ views: {} });
+  const { router } = routerAt(
+    "/inventory?topic=fractions&collection=all&area=geometry",
+  );
+  await router.load();
+  expect(router.state.location.href).toBe("/inventory");
+  expect(
+    useInventoryViewStore.getState().views[
+      layerScope("/inventory", SESSION.accountId)
+    ],
+  ).toEqual({ topic: "fractions", collection: "all", area: "geometry" });
 });

@@ -54,21 +54,21 @@ test("the gradebook and report cards gate on these rules", () => {
     ),
     "utf8",
   );
-  // The requested person goes through the host's filter.
-  assert.match(
-    book,
-    /const open = keptPerson\(host, uuidOr\(search\.student\)\)/,
-  );
+  // The requested person (the evidence sheet's) goes through the host's filter.
+  assert.match(book, /const open = keptPerson\(host, uuidOr\(evidence\.id\)\)/);
   // Export, Close term, the curve and its sheet each wait on `whole`.
   assert.match(
     book,
-    /\{whole && \(\s*<Button variant="quiet" onClick=\{\(\) => set\(\{ export: 1 \}\)\}>/,
+    /\{whole && \(\s*<Button variant="quiet" onClick=\{exportSheet\.show\}>/,
   );
   assert.match(book, /\{editable && whole && \(/);
   assert.match(book, /\{curved && editable && whole && \(/);
   assert.match(book, /\{whole && \(\s*<ExportSheet/);
-  // A shared link to Close term never opens its dialog in a shared host.
-  assert.match(book, /search\.close === "1"\) &&\s*offersWholeClass\(host\)/);
+  // Close term (its button or its sheet) never opens in a shared host.
+  assert.match(
+    book,
+    /\(closingHere \|\| closeSheet\.open\) && offersWholeClass\(host\)/,
+  );
   const cards = readFileSync(
     new URL(
       "../src/web/features/school/classes/ReportCardScreen.tsx",

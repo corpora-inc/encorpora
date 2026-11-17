@@ -313,7 +313,10 @@ try {
   await page.evaluate(() => (window as any).privacyHarness.render("other"));
   release();
   hold = null;
+  // The new account's own Privacy, painted.
+  await page.locator('[data-privacy-harness][data-account="other"]').waitFor();
   await panel("Download your data").waitFor();
+  await page.waitForTimeout(500);
   assert.equal(
     await page.getByRole("alert").count(),
     0,
