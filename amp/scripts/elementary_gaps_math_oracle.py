@@ -1274,37 +1274,59 @@ def solve_true_comparison(public):
 
 
 # ------------------------------------------------------------------ variables and constants
-SITUATIONS = {
-    'Ana saves': {'constant': ['days in a week', 'cents in a dollar', 'dollars Ana saves each week'],
+# Each story fixes exactly one quantity of its own (the rate the prompt states) and names the
+# quantities that change as the story goes on. World facts (hours in a day, ...) also never
+# change, but they are not part of the story: the question asks about the story, so a world
+# fact is a non-changing distractor when a variable is asked and a second defensible
+# constant when a constant is asked.
+STORIES = {
+    'Ana saves': {'pattern': r'Ana saves (\d+) dollars every week and keeps a count of the weeks',
+                  'constant': 'dollars Ana saves each week',
                   'variable': ['weeks Ana has been saving', 'total dollars Ana has saved so far', 'dollars Ana would still need for a bike']},
-    'Sam reads': {'constant': ['hours in a day', 'minutes in an hour', 'pages Sam reads each night'],
+    'Sam reads': {'pattern': r'Sam reads (\d+) pages every night, night after night',
+                  'constant': 'pages Sam reads each night',
                   'variable': ['nights Sam has been reading', 'pages left to read in the book', 'total pages Sam has read so far']},
-    'A teacher shares': {'constant': ['months in a year', 'markers the teacher has'],
+    'A teacher shares': {'pattern': r'A teacher shares (\d+) markers equally among the groups in a class',
+                         'constant': 'markers the teacher has',
                          'variable': ['groups in the class', 'markers each group gets', 'markers left over after sharing']},
 }
-
-
-UNIVERSAL = {'constant': ['days in a week', 'hours in a day', 'minutes in an hour', 'months in a year', 'cents in a dollar'], 'variable': []}
+WORLD_FACTS = {'days in a week': 7, 'hours in a day': 24, 'minutes in an hour': 60, 'months in a year': 12, 'cents in a dollar': 100}
 
 
 def solve_variable(public):
     prompt = plain(public['prompt'])
     m = re.fullmatch(r'(.*)\. Which quantity (can change, so it is a variable|stays the same, so it is a constant)\?', prompt)
     require(m is not None, 'Unreadable question')
-    situation = next((k for k in SITUATIONS if m[1].startswith(k)), None)
+    situation = next((k for k in STORIES if m[1].startswith(k)), None)
     require(situation is not None, 'Known situation')
+    story = STORIES[situation]
+    given = re.fullmatch(story['pattern'], m[1])
+    require(given is not None, f'Unreadable story {m[1]!r}')
     want = 'variable' if m[2].startswith('can change') else 'constant'
-    table = {k: names + UNIVERSAL[k] for k, names in SITUATIONS[situation].items()}
     options = options_of(public, 4)
-    flags = []
+    kinds = []
     for o in options:
-        label = plain(o['label']).split(':')[0].replace('The number of ', '').replace('The ', '')
-        kinds = [k for k, names in table.items() if label in names]
-        require(len(kinds) == 1, f'Quantity {label!r} is not classified')
-        stated = ':' in o['label']
-        require(stated == (kinds[0] == 'constant' and label in table['constant']) or kinds[0] == 'variable' and not stated, 'Constants state their value')
-        flags.append(kinds[0] == want)
-    return only(options, flags, 'variable or constant')
+        name, _, value = plain(o['label']).partition(':')
+        name = name.replace('The number of ', '').replace('The ', '')
+        if name == story['constant']:
+            kind, truth = 'story constant', int(given[1])
+        elif name in WORLD_FACTS:
+            kind, truth = 'world fact', WORLD_FACTS[name]
+        elif name in story['variable']:
+            kind, truth = 'variable', None
+        else:
+            raise ValueError(f'Quantity {name!r} is not classified for this story')
+        # A constant states its value after a colon; a changing quantity has no single value.
+        require((':' in o['label']) == (truth is not None), 'Constants state their value')
+        if truth is not None:
+            require(number_of(value) == truth, f'{name!r} is stated as {value.strip()!r}, not {truth}')
+        kinds.append(kind)
+    if want == 'variable':
+        return only(options, [k == 'variable' for k in kinds], 'variable')
+    # The keyed constant is the story's own; a world fact offered beside it also never changes.
+    require('story constant' in kinds, "The story's own constant is not offered")
+    require('world fact' not in kinds, 'A world fact is a second quantity that stays the same')
+    return only(options, [k == 'story constant' for k in kinds], 'constant')
 
 
 # ------------------------------------------------------------------ dispatch
@@ -1463,4 +1485,25 @@ def self_test():
     rejects(p, 'no single rule')
     p = copy.deepcopy(good[9][0]); p['prompt'] = p['prompt'].replace('100 bike', '40 bike')
     rejects(p, 'supply equals demand')
+    # Variables and constants: the story's own constant is keyed; a world fact beside it is a
+    # second constant (the production case keyed "hours in a day" and omitted the story's rate).
+    sam = 'Sam reads 7 pages every night, night after night. Which quantity {}?'
+    asked = _public('variable-in-situation', sam.format('stays the same, so it is a constant'),
+                    _choice(['The number of nights Sam has been reading', 'The pages Sam reads each night: 7',
+                             'The pages left to read in the book', 'The total pages Sam has read so far']))
+    require(solve(asked) == 'option-b', 'The story constant is keyed')
+    varied = _public('variable-in-situation', sam.format('can change, so it is a variable'),
+                     _choice(['The number of hours in a day: 24', 'The pages Sam reads each night: 7',
+                              'The total pages Sam has read so far', 'The number of minutes in an hour: 60']))
+    require(solve(varied) == 'option-c', 'The changing story quantity is keyed')
+    p = copy.deepcopy(asked); p['response']['options'][1]['label'] = 'The number of hours in a day: 24'
+    rejects(p, 'a world fact keyed as the constant while the story constant is missing')
+    p = copy.deepcopy(asked); p['response']['options'][0]['label'] = 'The number of hours in a day: 24'
+    rejects(p, 'a world fact offered beside the story constant')
+    p = copy.deepcopy(asked); p['response']['options'][1]['label'] = 'The pages Sam reads each night: 8'
+    rejects(p, 'a story constant stated with the wrong value')
+    p = copy.deepcopy(asked); p['response']['options'][1]['label'] = 'The pages Sam reads each night'
+    rejects(p, 'a constant without its value')
+    p = copy.deepcopy(varied); p['response']['options'][1]['label'] = 'The number of nights Sam has been reading'
+    rejects(p, 'two changing quantities')
     return True

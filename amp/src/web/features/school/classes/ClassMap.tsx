@@ -113,7 +113,7 @@ export function ClassMap({
   /** A teacher's map: modeling and reasoning too, after the five areas
    * (ui/level-range `byArea`). A family's map leaves them out. */
   crossCutting?: boolean;
-  /** A parent reads it: ranges in grade words, not the scale's decimals. */
+  /** Ranges in grade words ("Gr 7–Geom"), not the scale’s decimals. */
   plain?: boolean;
   /** Each row's name, linked where the composing screen opens a learner;
    * by default the learner's record over the page. */
@@ -180,8 +180,9 @@ export function ClassMap({
   };
   const reading = (row: Placed) => {
     if (!row.estimate) return "not measured yet";
-    if (row.estimated) return "not enough work yet";
     const [from, to] = likelyRange(row.estimate);
+    if (row.estimated)
+      return `a first guess, ${plain ? likelyInWords([from, to]).toLowerCase() : `likely grade ${from.toFixed(1)} to ${to.toFixed(1)}`}`;
     const reference = row.student.reference;
     const where = !reference
       ? ""
@@ -211,8 +212,7 @@ export function ClassMap({
     );
   return (
     <div className={styles.map}>
-      {/* Before any practice each row says "Starting" or "Not yet": no
-          heading repeats it. Only the step that starts it stays. */}
+      {/* Before any practice, only the step that starts it. */}
       {starting && action && <div className={styles.starting}>{action}</div>}
       <div className={styles.toolbar} hidden={starting || undefined}>
         <Menu
@@ -305,14 +305,15 @@ export function ClassMap({
               )}
             </span>
             <span role="cell" className={styles.numbers}>
-              {!row.estimate && !nobody ? null : !row.estimate ||
-                row.estimated ? (
-                <span className={styles.notYet}>
-                  {!row.estimate
-                    ? "Not yet"
-                    : starting
-                      ? "Starting"
-                      : "Not enough work"}
+              {/* Not measured: the bar's "?" or pill says it. A starting
+                  guess: its range, quieter, as its dashed bar is. */}
+              {!row.estimate ? null : row.estimated ? (
+                <span className={styles.notYet} data-guess="">
+                  {plain
+                    ? rangeWords(likelyRange(row.estimate))
+                    : likelyRange(row.estimate)
+                        .map((value) => value.toFixed(1))
+                        .join("–")}
                 </span>
               ) : plain ? (
                 rangeWords(likelyRange(row.estimate))
@@ -403,8 +404,7 @@ function SmallClassMap({
   return (
     <div className={styles.map}>
       <Toast message={message} onDismiss={() => setMessage("")} />
-      {/* Before any practice each row says "Starting" or "Not yet": no
-          heading repeats it. Only the step that starts it stays. */}
+      {/* Before any practice, only the step that starts it. */}
       {starting && action && <div className={styles.starting}>{action}</div>}
       {learners.map((learner) => {
         const { student, overall } = learner;
@@ -444,6 +444,10 @@ function SmallClassMap({
               notStarted={nobody ? undefined : NOT_STARTED}
               // A pill needs no scale under it.
               axis={!!overall.estimate || nobody}
+              // The scale over the rows, so it's on the first screen; a
+              // starting guess's row says its range, never a status word.
+              axisAt="top"
+              guesses
               overallEstimated={overall.estimated}
               areas={learner.areas}
               scale={scale}

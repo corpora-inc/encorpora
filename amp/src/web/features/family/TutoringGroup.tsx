@@ -14,6 +14,7 @@ import {
   OtherFamilyAddSheet,
   OtherFamilyRow,
 } from "../school/classes/OtherFamilies";
+import { minutesFigure } from "../../../schools/practice-rules";
 import { lastPracticed } from "../school/classes/today/ChildRow";
 import rowStyles from "../school/classes/Family.module.css";
 import people from "../school/classes/people/People.module.css";
@@ -135,7 +136,7 @@ export function TutoringGroupScreen() {
                       <span className={rowStyles.name}>{student.name}</span>
                       <span className={rowStyles.access}>
                         {student.lastActive
-                          ? `${student.weekMinutes} min this week · last practiced ${lastPracticed(student.lastActive, t.today.date)}`
+                          ? `${minutesFigure(student.weekMinutes)} min this week · last practiced ${lastPracticed(student.lastActive, t.today.date)}`
                           : "Not started"}
                       </span>
                     </span>
