@@ -1,13 +1,12 @@
-import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useParams } from "@tanstack/react-router";
-import { Navigate } from "../../nav/Navigate";
 import { useEffect, useState, type ReactNode } from "react";
 import { create } from "zustand";
-import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
 import { track } from "../../lib/analytics";
 import { ownPracticeAllowed } from "../../../learning/starting-point";
-import { authConfigOptions, meOptions, sessionOptions } from "../../lib/query";
+import { authConfigOptions, meOptions } from "../../lib/query";
+import { useSession } from "../../lib/session";
 import { cleverEnabled } from "../school/clever/enabled";
 import { chosenPlan } from "../../lib/pending-trial";
 import { Button, buttonClass } from "../../ui/Button";
@@ -108,39 +107,30 @@ const choices: {
  * and the words used. Each answer opens its own steps at its own URL
  * (`/start/<choice>`), the way a parent's setup does. A teacher opens classroom setup. */
 export function Starter() {
-  const { data: session } = useSuspenseQuery(sessionOptions);
   const params = useParams({ strict: false }) as { choice?: string };
-  if (!session) return <Navigate to="/sign-in" replace />;
   // A parent or a tutor is walked through setting up their class.
   if (isSetupKind(params.choice))
-    return <FamilySetup session={session} kind={params.choice} step="" />;
+    return <FamilySetup kind={params.choice} step="" />;
   // Learning for yourself, or a school: a step page of its own.
-  if (params.choice === "myself") return <MyselfStep session={session} />;
-  if (params.choice === "school") return <SchoolStep session={session} />;
+  if (params.choice === "myself") return <MyselfStep />;
+  if (params.choice === "school") return <SchoolStep />;
   // Any other address was routed before this paints (`routeFor`).
-  return <StarterScreen session={session} />;
+  return <StarterScreen />;
 }
 
 /** `/start/<parent|tutor>/<step>`: a later step of that setup. */
 export function StarterStep() {
-  const { data: session } = useSuspenseQuery(sessionOptions);
   const params = useParams({ strict: false }) as {
     choice?: string;
     step?: string;
   };
-  if (!session) return <Navigate to="/sign-in" replace />;
   // Only a setup's steps reach here (`routeFor`).
   if (!isSetupKind(params.choice)) return null;
-  return (
-    <FamilySetup
-      session={session}
-      kind={params.choice}
-      step={params.step ?? ""}
-    />
-  );
+  return <FamilySetup kind={params.choice} step={params.step ?? ""} />;
 }
 
-function StarterScreen({ session }: { session: AuthSession }) {
+function StarterScreen() {
+  const session = useSession();
   const params = useParams({ strict: false }) as { choice?: string };
   const choice = isStarterChoice(params.choice) ? params.choice : null;
   const me = useQuery(meOptions(session)).data;
@@ -238,7 +228,8 @@ function StarterScreen({ session }: { session: AuthSession }) {
 }
 
 /** A school can explore a separate demo school with sample students. */
-function useExplore(session: AuthSession) {
+function useExplore() {
+  const session = useSession();
   const navigate = useNavigate();
   const demo = useStartDemo(session);
   const [error, setError] = useState("");
@@ -274,7 +265,8 @@ const ONE_STEP = {
 } as const;
 
 /** `/start/myself`: the year they were born, then straight into practice. */
-function MyselfStep({ session }: { session: AuthSession }) {
+function MyselfStep() {
+  const session = useSession();
   const navigate = useNavigate();
   const start = useStartPlace(session);
   const [error, setError] = useState("");
@@ -323,7 +315,6 @@ function MyselfStep({ session }: { session: AuthSession }) {
   return (
     <>
       <Myself
-        session={session}
         busy={start.isPending}
         onParent={() => {
           record.mutate("parent");
@@ -338,13 +329,12 @@ function MyselfStep({ session }: { session: AuthSession }) {
 
 /** `/start/school`: the school pitch, then setting up the real school
  * yourself; the demo and a person to talk to are options, never steps. */
-function SchoolStep({ session }: { session: AuthSession }) {
-  const { explore, demo, error, setError } = useExplore(session);
+function SchoolStep() {
+  const { explore, demo, error, setError } = useExplore();
   useEffect(() => setupStep("school", "view", "school"), []);
   return (
     <>
       <School
-        session={session}
         exploring={demo.isPending && demo.variables === "school"}
         onExplore={explore}
       />
@@ -360,16 +350,15 @@ function SchoolStep({ session }: { session: AuthSession }) {
  * cover the rest). Under 13, a parent sets AMP up, and that way in is one
  * tap away. */
 function Myself({
-  session,
   busy,
   onParent,
   onStart,
 }: {
-  session: AuthSession;
   busy: boolean;
   onParent: () => void;
   onStart: (start: OwnStart) => void;
 }) {
+  const session = useSession();
   const draft = useStarterDraft();
   const mine = draft.owner === session.accountId;
   const picked = mine ? draft.ownYear : null;
@@ -434,14 +423,13 @@ const FACTS = [
 
 /** The school pitch: set up the school now, explore a demo, or talk to us. */
 function School({
-  session,
   exploring,
   onExplore,
 }: {
-  session: AuthSession;
   exploring: boolean;
   onExplore: () => void;
 }) {
+  const session = useSession();
   const summary = useQuery({
     queryKey: ["schools", "curriculum"],
     queryFn: loadCurriculum,

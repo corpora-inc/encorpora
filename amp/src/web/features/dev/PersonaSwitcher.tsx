@@ -54,13 +54,20 @@ async function destination() {
   });
 }
 
+/** Signs out whoever is signed in; with nobody signed in, that's a no-op
+ * the switch carries on past. */
+const signOutFirst = () =>
+  post("/api/auth/sign-out", {}).catch((error: unknown) =>
+    console.warn("Sign-out before switching persona didn’t finish", error),
+  );
+
 /** A brand-new account, in exactly a real person's state after signing up:
  * the sign-up screen's own call (`SignInScreen.tsx`: no name, return to "/"),
  * then the address confirmed as the emailed link confirms it (the dev
  * server's NEW_USER_CONFIRM_PATH), then its destination, as sign-up opens
  * it: "What brings you to AMP?" (/start). */
 async function signUpNewUser() {
-  await post("/api/auth/sign-out", {}).catch(() => undefined);
+  await signOutFirst();
   const email = newUserEmail();
   const created = await accountClient.signUp.email({
     name: "",
@@ -74,7 +81,10 @@ async function signUpNewUser() {
     );
   const confirmed = await post(NEW_USER_CONFIRM_PATH, { email });
   if (!confirmed.ok) {
-    const { error } = (await confirmed.json().catch(() => ({}))) as {
+    const { error } = (await confirmed.json().catch((cause: unknown) => {
+      console.warn("The dev server's confirmation answer isn't JSON", cause);
+      return {};
+    })) as {
       error?: string;
     };
     throw new Error(
@@ -98,7 +108,7 @@ async function signUpNewUser() {
 }
 
 async function signInAs(persona: PreviewPersona) {
-  await post("/api/auth/sign-out", {}).catch(() => undefined);
+  await signOutFirst();
   const response = await post("/api/auth/sign-in/email", {
     email: personaEmail(persona.slug),
     password: PERSONA_PASSPHRASE,

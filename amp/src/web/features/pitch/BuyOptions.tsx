@@ -53,11 +53,21 @@ export function underPerDay(annualMinor: number) {
 export function loadBuyData(search: Record<string, unknown>) {
   const program = pitchProgram(search.program);
   return Promise.all([
-    queryClient.ensureQueryData(pricesOptions).catch(() => undefined),
+    queryClient
+      .ensureQueryData(pricesOptions)
+      .catch((error: unknown) =>
+        console.warn("Prices didn’t preload; Buy shows the failure", error),
+      ),
     program
       ? queryClient
           .ensureQueryData(invoiceOffersOptions(program.id))
-          .catch(() => undefined)
+          .catch((error: unknown) =>
+            console.warn(
+              "Program offers didn’t preload; Buy shows the failure",
+              { program: program.id },
+              error,
+            ),
+          )
       : undefined,
   ]);
 }
