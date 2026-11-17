@@ -46,7 +46,8 @@ export function LessonIndex(props: Props) {
         .then((lesson) => {
           if (current) setOpen(lesson);
         })
-        .catch(() => {
+        .catch((error: unknown) => {
+          console.error("AMP couldn’t open the lesson", error);
           if (current)
             setError(
               "The lesson could not be opened. Return to all lessons and try again.",

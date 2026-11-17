@@ -46,6 +46,21 @@ function swallowNextClick() {
 /** A scientific calculator for problems that allow one (as the SAT does). It
  * sits over the answer area, leaving the question visible. A tap outside or
  * Escape closes it. */
+/** The expression's value as shown, or null while it isn't one yet (the
+ * display then says "Check the expression"). Its reason goes to the debug
+ * log, never what the learner typed. */
+function calculate(expression: string): string | null {
+  try {
+    return formatResult(evaluate(expression));
+  } catch (error) {
+    console.debug(
+      "Calculator: not a complete expression",
+      error instanceof Error ? error.message : error,
+    );
+    return null;
+  }
+}
+
 export function Calculator(props: Props) {
   const [expression, setExpression] = useState("");
   const [result, setResult] = useState<string | null>(null);
@@ -86,14 +101,7 @@ export function Calculator(props: Props) {
     };
   }, []);
 
-  const preview = (() => {
-    if (!expression) return "";
-    try {
-      return formatResult(evaluate(expression));
-    } catch {
-      return "";
-    }
-  })();
+  const preview = (expression && calculate(expression)) || "";
   /** After =, the next operator or ± continues from the result. */
   const continuing = (): Field | null =>
     result !== null && expression === ""
@@ -119,22 +127,17 @@ export function Calculator(props: Props) {
   }
   function useResult() {
     if (expression) {
-      try {
-        props.use(formatResult(evaluate(expression)));
-      } catch {
-        setError(true);
-      }
+      const value = calculate(expression);
+      if (value === null) setError(true);
+      else props.use(value);
     } else if (result !== null) props.use(result);
   }
   function equals() {
-    try {
-      const value = formatResult(evaluate(expression));
-      setResult(value);
-      setEvaluated(expression);
-      caret.commit(clearField(), setExpression);
-    } catch {
-      setError(true);
-    }
+    const value = calculate(expression);
+    if (value === null) return setError(true);
+    setResult(value);
+    setEvaluated(expression);
+    caret.commit(clearField(), setExpression);
   }
   return (
     <section className="calculator" aria-label="Calculator" ref={panel}>

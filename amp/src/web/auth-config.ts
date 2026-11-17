@@ -26,7 +26,9 @@ export function fetchAuthConfig(): Promise<AuthConfig> {
     if (response.ok) return response.json() as Promise<AuthConfig>;
     throw new Error(`auth-config ${response.status}`);
   }));
-  asked.catch(() => {
+  asked.catch((error: unknown) => {
+    // Its callers show the failure; this only lets the next call ask again.
+    console.warn("AMP: the sign-in configuration wasn’t read", error);
     if (config === asked) config = null;
   });
   return asked;

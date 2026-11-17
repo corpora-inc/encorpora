@@ -104,6 +104,8 @@ export function PaymentHistoryCenter({
         setNextCursor(data.nextCursor);
       }
     } catch (cause) {
+      if (!controller.signal.aborted)
+        console.error("AMP couldn’t load the payment records", cause);
       if (generation === epoch.current && !controller.signal.aborted)
         setError(
           cause instanceof Error
@@ -161,7 +163,10 @@ export function PaymentHistoryCenter({
         },
       );
       if (!response.ok) {
-        const data = (await response.json().catch(() => ({}))) as {
+        const data = (await response.json().catch((cause: unknown) => {
+          console.warn("AMP: the PDF refusal had no readable body", cause);
+          return {};
+        })) as {
           error?: string;
         };
         if (data.error === "reimbursement_program_unavailable") {
@@ -198,6 +203,8 @@ export function PaymentHistoryCenter({
       setTimeout(() => URL.revokeObjectURL(url), 60_000);
       setNotice("PDF download requested. Keep this financial record private.");
     } catch (cause) {
+      if (!controller.signal.aborted)
+        console.error("AMP couldn’t download the payment record", cause);
       if (generation === epoch.current && !controller.signal.aborted)
         setError(
           cause instanceof Error ? cause.message : "Download unavailable.",

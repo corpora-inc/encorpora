@@ -309,6 +309,7 @@ export function FamilyCenter({
     try {
       await run();
     } catch (e) {
+      console.error("AMP couldn’t make a family change", e);
       if (current(epoch))
         setError(e instanceof Error ? e.message : "Please try again.");
     } finally {
@@ -343,7 +344,8 @@ export function FamilyCenter({
       const epoch = generation.current;
       try {
         await refresh();
-      } catch {
+      } catch (e) {
+        console.error("AMP couldn’t refresh the family after a deletion", e);
         if (current(epoch))
           setError(
             "Your change was saved, but refreshed family details could not be loaded. Try refreshing; do not repeat the deletion.",

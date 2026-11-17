@@ -69,8 +69,8 @@ export function parsePurchaseReturn(
 export function clearPurchaseReturn() {
   try {
     sessionStorage.removeItem(purchaseReturnSlot);
-  } catch {
-    /* Storage may be disabled. */
+  } catch (error) {
+    console.warn("AMP: the purchase return couldn’t be cleared", error);
   }
 }
 /** At boot: a stored return that is expired or malformed is no handoff, and
@@ -84,7 +84,8 @@ export function discardStalePurchaseReturn(now = Date.now()) {
       !(raw.length <= 256 && parsePurchaseReturn(JSON.parse(raw), now))
     )
       clearPurchaseReturn();
-  } catch {
+  } catch (error) {
+    console.warn("AMP: dropped an unreadable purchase return", error);
     clearPurchaseReturn();
   }
 }
@@ -109,7 +110,8 @@ export function hasPurchaseReturn(search: string, now = Date.now()): boolean {
       raw.length <= 256 &&
       parsePurchaseReturn(JSON.parse(raw), now)
     );
-  } catch {
+  } catch (error) {
+    console.warn("AMP: the purchase return couldn’t be read", error);
     return false;
   }
 }
@@ -138,8 +140,9 @@ export function capturePurchaseReturn(now = Date.now()): PurchaseReturn | null {
     if (entry)
       try {
         sessionStorage.setItem(purchaseReturnSlot, JSON.stringify(entry));
-      } catch {
-        /* In-memory navigation remains available. */
+      } catch (error) {
+        // In-memory navigation remains available.
+        console.warn("AMP: the purchase return wasn’t kept for a reload", error);
       }
     return entry;
   }
@@ -151,7 +154,8 @@ export function capturePurchaseReturn(now = Date.now()): PurchaseReturn | null {
         : null;
     if (!entry) clearPurchaseReturn();
     return entry;
-  } catch {
+  } catch (error) {
+    console.warn("AMP: dropped an unreadable purchase return", error);
     clearPurchaseReturn();
     return null;
   }

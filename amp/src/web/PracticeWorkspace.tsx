@@ -402,7 +402,8 @@ export function PracticeWorkspace(props: Props) {
     if (problem.response.kind === "point-plot") {
       try {
         return pointPlotAnswerText(problem.response, value);
-      } catch {
+      } catch (error) {
+        console.warn("The plotted points couldn’t be read aloud", error);
         return "No points placed";
       }
     }

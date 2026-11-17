@@ -77,6 +77,7 @@ export function ParentConsentCenter({
           retry.current = null;
       }
     } catch (e) {
+      if (!abort.signal.aborted) console.error("AMP couldn’t load consent", e);
       if (current === epoch.current && !abort.signal.aborted)
         setError(e instanceof Error ? e.message : "Unable to load consent.");
     } finally {
@@ -173,6 +174,7 @@ export function ParentConsentCenter({
         onChanged?.();
       }
     } catch (e) {
+      console.error("AMP couldn’t save the consent response", e);
       if (current === epoch.current)
         setError(
           e instanceof Error ? e.message : "Your response could not be saved.",

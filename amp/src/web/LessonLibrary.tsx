@@ -43,6 +43,7 @@ import {
   type SearchActions,
 } from "./features/search/SearchResults";
 import styles from "./LessonLibrary.module.css";
+import { SearchField } from "./ui/SearchField";
 
 export type LibrarySkillRow = {
   id: string;
@@ -79,7 +80,8 @@ function takeLibraryReturn(): LibraryReturn | null {
     const raw = sessionStorage.getItem(RETURN_KEY);
     sessionStorage.removeItem(RETURN_KEY);
     return raw ? (JSON.parse(raw) as LibraryReturn) : null;
-  } catch {
+  } catch (error) {
+    console.warn("The lesson's place in the library couldn’t be read", error);
     return null;
   }
 }
@@ -493,54 +495,21 @@ function Library({
         onKeyDown={(event) => resultKeys(event, input, resultList)}
       >
         <div ref={controls} className={styles.bar} role="search">
-          <label className={styles.search}>
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="11" cy="11" r="6.5" />
-              <path d="m16 16 4.5 4.5" />
-            </svg>
-            <input
-              ref={input}
-              type="search"
-              className={styles.input}
-              aria-label="Search"
-              placeholder="Search"
-              maxLength={80}
-              value={text}
-              autoComplete="off"
-              enterKeyHint="search"
-              onChange={(event) => {
-                pinResults();
-                field.change(event.target.value);
-              }}
-              onBlur={field.flush}
-              onKeyDown={(event) => {
-                if (event.key === "Enter") field.flush();
-                if (event.key === "Escape" && text) {
-                  event.preventDefault();
-                  pinResults();
-                  field.set("");
-                }
-              }}
-            />
-            <button
-              type="button"
-              className={styles.clear}
-              aria-label="Clear search"
-              hidden={!text}
-              onClick={(event) => {
-                pinResults();
-                field.set("");
-                event.currentTarget
-                  .closest("label")
-                  ?.querySelector("input")
-                  ?.focus();
-              }}
-            >
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="m7 7 10 10M17 7 7 17" />
-              </svg>
-            </button>
-          </label>
+          <SearchField
+            label="Search"
+            placeholder="Search"
+            className={styles.searchField}
+            inputRef={input}
+            value={text}
+            onChange={(next) => {
+              pinResults();
+              // Clearing shows every lesson at once; typing waits a moment.
+              if (next) field.change(next);
+              else field.set("");
+            }}
+            onBlur={field.flush}
+            onEnter={field.flush}
+          />
           <Select
             aria-label="Math area"
             className={styles.area}
