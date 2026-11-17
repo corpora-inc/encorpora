@@ -54,7 +54,10 @@ export function WorkbookHistory({
   )
     setHeld({ data: live.data, canMake: liveCanMake });
   const holding = still && held.data !== undefined;
-  const history = holding ? { ...live, data: held.data } : live;
+  // Held data under an open sheet keeps the query's own (settled) shape.
+  const history = (
+    holding ? { ...live, data: held.data } : live
+  ) as typeof live;
   const [entering, setEntering] = useState(false);
   const paths = useWorkbookPaths();
   const who = whose(learner);
