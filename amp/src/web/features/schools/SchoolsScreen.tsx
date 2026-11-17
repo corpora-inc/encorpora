@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useLoaderData } from "@tanstack/react-router";
-import { authConfigOptions, sessionOptions } from "../../lib/query";
+import { authConfigOptions } from "../../lib/query";
+import { useSessionOrNull } from "../../lib/session";
 import { cleverEnabled } from "../school/clever/enabled";
 import type { ReactNode } from "react";
 import { buttonClass } from "../../ui/Button";
@@ -15,7 +16,7 @@ import styles from "./Schools.module.css";
 const count = (value: number) => value.toLocaleString("en-US");
 
 function Actions({ className = "" }: { className?: string }) {
-  const session = useQuery(sessionOptions).data;
+  const session = useSessionOrNull();
   const clever = cleverEnabled(useQuery(authConfigOptions).data);
   return (
     <div className={`${styles.actions} ${className}`}>

@@ -743,8 +743,10 @@ async function journeys(browser: Browser, engine: string) {
     await staff(teacherAccount, "POST", `classes/${period.id}/experience`, {
       values: { standings: "off" },
     });
-    // The redirect can interrupt the navigation itself, in WebKit.
-    await reader.page.goto(`${origin}/standings`).catch(() => undefined);
+    // The board says so in place, with the way on to practice.
+    await reader.page.goto(`${origin}/standings`);
+    await heading(reader.page, "Standings are off for your class").waitFor();
+    await reader.page.getByRole("link", { name: "Practice" }).click();
     await reader.page.waitForURL("**/practice");
     await staff(teacherAccount, "POST", `classes/${period.id}/experience`, {
       values: { standings: "class" },
@@ -1490,18 +1492,18 @@ async function sweep(
       },
     });
     await picking.page.goto(`${origin}/standings`);
-    const picker = picking.page.getByRole("group", { name: "Which class" });
-    await picker.getByRole("link", { name: "Math Club" }).click();
+    const picker = picking.page.getByRole("radiogroup", { name: "Which class" });
+    await picker.getByRole("radio", { name: "Math Club" }).click();
     await heading(picking.page, "Practice this term").waitFor();
-    check(
-      `${label} a board has its own URL`,
-      picking.page.url().includes(`class=${wideClass.id}`),
-    );
+    // The choice is the screen's view, not its address; a reload keeps it.
+    check(`${label} a board's choice stays off the URL`, !new URL(picking.page.url()).search);
+    await picking.page.reload();
+    await heading(picking.page, "Practice this term").waitFor();
     await settled(picking.page);
     await settle(picking.page, 900);
     await geometry(picking.page, `${label} two boards`);
     await shoot(picking.page, engine, "standings-two-boards", width, theme);
-    await picking.page.goBack();
+    await picker.getByRole("radio", { name: /./ }).first().click();
     await heading(picking.page, "Growth this term").waitFor();
     await picking.context.close();
     contexts.splice(contexts.indexOf(picking.context), 1);

@@ -141,6 +141,7 @@ export function JoinScreen() {
                 }
               />
             </span>
+            {/* arch-exempt(nativeControls): CodeTiles draws this field; the input is only their invisible keyboard target, with no look of its own */}
             <input
               ref={input}
               className={styles.codeInput}

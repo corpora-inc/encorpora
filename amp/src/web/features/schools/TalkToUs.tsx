@@ -130,6 +130,7 @@ export function TalkToUs({
           />
           {/* Left empty by people; a form filler that completes it is
               thanked and nothing is sent. */}
+          {/* arch-exempt(nativeControls): a hidden honeypot no person sees or reaches, so no designed control applies */}
           <input
             className={styles.trap}
             name="website"
