@@ -23,6 +23,9 @@ export const useLayerBack = () => useContext(LayerBack);
 export type LayerPanelFrame = {
   /** The whole overlay away, back to the page (its ✕). */
   close: () => void;
+  /** The way back up (the layers under this one), the first line of the
+   * panel's heading; none at the first level. */
+  trail?: ReactNode;
 };
 const LayerPanel = createContext<LayerPanelFrame | null>(null);
 export const LayerPanelProvider = LayerPanel.Provider;
