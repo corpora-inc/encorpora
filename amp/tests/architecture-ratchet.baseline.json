@@ -3,7 +3,7 @@
   "counts": {
     "redirects": 4,
     "validateSearch": 8,
-    "searchHandoffs": 85,
+    "searchHandoffs": 83,
     "navigatingEffects": 10,
     "renderNavigate": 6,
     "silentCatches": 87,
@@ -29,8 +29,6 @@
       "features/family/Records.tsx": 1,
       "features/family/redirects.ts": 1,
       "features/family/Today.tsx": 2,
-      "features/films/FilmCards.tsx": 1,
-      "features/films/FilmLink.tsx": 1,
       "features/funding/FundingInvoices.tsx": 1,
       "features/inventory/InventoryScreen.tsx": 3,
       "features/pathways/AreaKey.tsx": 1,
