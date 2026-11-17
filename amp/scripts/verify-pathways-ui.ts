@@ -1215,6 +1215,22 @@ async function verifySkillAddress() {
     // choosing an area there works.
     await page.getByRole("radio", { name: "3D" }).click();
     await page.locator(".pathways-viewport canvas").waitFor();
+    // On a phone the camera's controls are one row of 44 px targets.
+    await page.locator('.pathways-camera[data-ready="true"]').waitFor();
+    const rows = await page.evaluate(() => {
+      const shown = [
+        ...document.querySelectorAll<HTMLElement>(".pathways-camera button"),
+      ].filter((button) => button.offsetParent);
+      return {
+        rows: new Set(
+          shown.map((button) => Math.round(button.getBoundingClientRect().top)),
+        ).size,
+        small: shown.filter(
+          (button) => button.getBoundingClientRect().height < 44,
+        ).length,
+      };
+    });
+    assert.deepEqual(rows, { rows: 1, small: 0 });
     await page.getByRole("button", { name: "Full screen" }).click();
     const key = page.locator(".pathways-viewport.is-full [data-area-key]");
     await key.waitFor();
