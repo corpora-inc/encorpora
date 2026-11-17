@@ -36,6 +36,7 @@ export const documentRoutePatterns: readonly string[] = [
   "^/family/[^/]+/reports/?$",
   "^/family/[^/]+/reports/grades/?$",
   "^/family/[^/]+/settings/?$",
+  "^/family/[^/]+/settings/privacy/?$",
   "^/family/[^/]+/time/?$",
   "^/family/[^/]+/workbooks/?$",
   "^/family/[^/]+/workbooks/[^/]+/?$",

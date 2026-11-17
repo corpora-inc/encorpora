@@ -90,6 +90,7 @@ import {
 } from "../features/school/core-api";
 import { frameData, schoolRoutes, staffScreen } from "./school-routes";
 import { familyRoutes } from "./family-routes";
+import { privacyRoutes } from "./privacy-routes";
 import { payOverlays, payRoutes } from "./pay-routes";
 import { appReturn, RETURN_LIMIT } from "../features/spaces/returns";
 import { toFamilyAddress } from "./family-redirect";
@@ -1929,6 +1930,7 @@ export const router = createRouter({
     // URLs stay out of the typed route table.
     ...(schoolRoutes(root) as unknown as []),
     ...(familyRoutes(root) as unknown as []),
+    ...(privacyRoutes(root) as unknown as []),
     ...payRoutes(root),
     ...((devPersonas ? [devPersonas] : []) as unknown as []),
   ]),

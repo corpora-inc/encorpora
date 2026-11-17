@@ -7,7 +7,7 @@
     "navigatingEffects": 18,
     "renderNavigate": 27,
     "silentCatches": 195,
-    "sessionProps": 67,
+    "sessionProps": 66,
     "sessionReads": 45,
     "inlineQueryKeys": 48,
     "nativeControls": 27
@@ -15,8 +15,9 @@
   "files": {
     "redirects": {
       "app/family-redirect.ts": 4,
-      "app/family-routes.tsx": 9,
+      "app/family-routes.tsx": 8,
       "app/pay-routes.tsx": 3,
+      "app/privacy-routes.tsx": 1,
       "app/router.tsx": 41,
       "app/school-guards.ts": 18,
       "app/school-routes.tsx": 1,
@@ -239,7 +240,7 @@
       "features/access/AccessScreen.tsx": 1,
       "features/account/BillingPage.tsx": 2,
       "features/design/sections/workbooks.tsx": 5,
-      "features/family/People.tsx": 8,
+      "features/family/People.tsx": 7,
       "features/me/OwnStartScreen.tsx": 1,
       "features/onboarding/setup/FamilySetup.tsx": 1,
       "features/onboarding/Starter.tsx": 8,

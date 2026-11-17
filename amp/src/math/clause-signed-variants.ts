@@ -484,32 +484,27 @@ function jumps(r: Rng): Item {
     max = Math.ceil(Math.max(0, ...starts, ...ends)) + 1;
   const options = ends.map((end, i) => {
     const start = starts[i]!;
-    const elements: Element[] = [
-      { type: "segment", from: [0, min], to: [0, max], arrow: "both" },
-      ...Array.from({ length: max - min + 1 }, (_, j) => ({
-        type: "text" as const,
-        at: [-1, min + j] as [number, number],
-        text: String(min + j),
-      })),
-      { type: "point", at: [0, start] },
-      { type: "arrow", from: [0.5, start], to: [0.5, end], stroke: "accent" },
-    ];
     return {
       label: `${withArticle(vertical ? "vertical" : "horizontal", true)} number line: start ${show(start)}, arrow ends at ${show(end)}.`,
-      scene: vertical
-        ? scene(...elements).build({ width: 260, maxHeight: 290 })
-        : numberLine({
-            min,
-            max,
-            step: 1 / d,
-            marks: [
-              { at: start, label: true },
-              { at: end, label: true },
-            ],
-            hops: [
-              { from: start, by: end - start, landing: "shown", label: false },
-            ],
-          }).scene({ width: 260, maxHeight: 240 }),
+      // One kit number line either way: it chooses which ticks to number
+      // from the room it has, so the numbers never stack into one another.
+      scene: numberLine({
+        min,
+        max,
+        step: 1 / d,
+        ...(vertical && { orientation: "vertical" as const }),
+        marks: [
+          { at: start, label: true },
+          { at: end, label: true },
+        ],
+        hops: [
+          { from: start, by: end - start, landing: "shown", label: false },
+        ],
+      }).scene(
+        vertical
+          ? { width: 260, maxHeight: 290 }
+          : { width: 260, maxHeight: 240 },
+      ),
     };
   });
   return {
