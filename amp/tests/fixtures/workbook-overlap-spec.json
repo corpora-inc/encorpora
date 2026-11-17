@@ -1,0 +1,210 @@
+{
+  "date": "2026-11-16",
+  "level": 9,
+  "number": 1,
+  "choices": {
+    "lean": "level",
+    "areas": [],
+    "lesson": true
+  },
+  "minutes": 45,
+  "version": 2,
+  "sections": [
+    {
+      "kind": "warm-up",
+      "items": [
+        {
+          "seed": "workbook:qa-2026-11-16-overlap:2026-11-16:1::level:lesson:warm-up:0",
+          "grade": 7,
+          "space": "answer",
+          "strand": "probability",
+          "minutes": 2,
+          "skillId": "probability",
+          "templateId": "expected-count-blanks",
+          "templateVersion": 1
+        },
+        {
+          "seed": "workbook:qa-2026-11-16-overlap:2026-11-16:1::level:lesson:warm-up:1",
+          "grade": 7,
+          "space": "answer",
+          "strand": "data",
+          "minutes": 1,
+          "skillId": "sampling",
+          "templateId": "representative-sample-choice",
+          "templateVersion": 2
+        },
+        {
+          "seed": "workbook:qa-2026-11-16-overlap:2026-11-16:1::level:lesson:warm-up:2",
+          "grade": 7,
+          "space": "answer",
+          "strand": "number",
+          "minutes": 3.5,
+          "skillId": "signed-multiplication",
+          "templateId": "fraction-to-decimal-long-division",
+          "templateVersion": 1
+        },
+        {
+          "seed": "workbook:qa-2026-11-16-overlap:2026-11-16:1::level:lesson:warm-up:3",
+          "grade": 7.4,
+          "space": "answer",
+          "strand": "algebra",
+          "minutes": 4,
+          "skillId": "linear-inequalities",
+          "templateId": "solve-justify-inequality",
+          "templateVersion": 1
+        },
+        {
+          "seed": "workbook:qa-2026-11-16-overlap:2026-11-16:1::level:lesson:warm-up:4",
+          "grade": 7.4,
+          "space": "answer",
+          "strand": "geometry",
+          "minutes": 1,
+          "skillId": "composite-measurement",
+          "templateId": "geo-ring-area",
+          "templateVersion": 1
+        },
+        {
+          "seed": "workbook:qa-2026-11-16-overlap:2026-11-16:1::level:lesson:warm-up:5",
+          "grade": 7.35,
+          "space": "answer",
+          "strand": "ratio",
+          "minutes": 1,
+          "skillId": "proportional-relationships",
+          "templateId": "variation-constant",
+          "templateVersion": 1
+        }
+      ]
+    },
+    {
+      "kind": "lesson",
+      "items": [
+        {
+          "seed": "workbook:qa-2026-11-16-overlap:2026-11-16:1::level:lesson:lesson:0",
+          "grade": 8,
+          "space": "answer",
+          "strand": "geometry",
+          "minutes": 2,
+          "skillId": "rigid-motions",
+          "templateId": "identify-rigid-motion",
+          "templateVersion": 2
+        },
+        {
+          "seed": "workbook:qa-2026-11-16-overlap:2026-11-16:1::level:lesson:lesson:1",
+          "grade": 8,
+          "space": "answer",
+          "strand": "geometry",
+          "minutes": 2,
+          "skillId": "rigid-motions",
+          "templateId": "transformation-image",
+          "templateVersion": 2
+        }
+      ],
+      "lessonId": "rigid-motions"
+    },
+    {
+      "kind": "practice",
+      "items": [
+        {
+          "seed": "workbook:qa-2026-11-16-overlap:2026-11-16:1::level:lesson:practice:0",
+          "grade": 8,
+          "space": "standard",
+          "strand": "data",
+          "minutes": 2,
+          "skillId": "two-way-tables",
+          "templateId": "two-way-row-percent",
+          "templateVersion": 1
+        },
+        {
+          "seed": "workbook:qa-2026-11-16-overlap:2026-11-16:1::level:lesson:practice:1",
+          "grade": 8,
+          "space": "standard",
+          "strand": "number",
+          "minutes": 1.5,
+          "skillId": "scientific-notation",
+          "templateId": "scientific-times-larger",
+          "templateVersion": 2
+        },
+        {
+          "seed": "workbook:qa-2026-11-16-overlap:2026-11-16:1::level:lesson:practice:2",
+          "grade": 8,
+          "space": "answer",
+          "strand": "algebra",
+          "minutes": 6.5,
+          "skillId": "slope",
+          "templateId": "slope-argument-order",
+          "templateVersion": 1
+        },
+        {
+          "seed": "workbook:qa-2026-11-16-overlap:2026-11-16:1::level:lesson:practice:3",
+          "grade": 8.25,
+          "space": "answer",
+          "strand": "functions",
+          "minutes": 1.5,
+          "skillId": "function-notation",
+          "templateId": "function-missing-input",
+          "templateVersion": 1
+        },
+        {
+          "seed": "workbook:qa-2026-11-16-overlap:2026-11-16:1::level:lesson:practice:6",
+          "grade": 8,
+          "space": "answer",
+          "strand": "data",
+          "minutes": 2,
+          "skillId": "scatterplots",
+          "templateId": "trend-slope-meaning",
+          "templateVersion": 2
+        }
+      ]
+    },
+    {
+      "kind": "review",
+      "items": [
+        {
+          "seed": "workbook:qa-2026-11-16-overlap:2026-11-16:1::level:lesson:review:0",
+          "grade": 7.15,
+          "space": "answer",
+          "strand": "probability",
+          "minutes": 1.5,
+          "skillId": "compound-probability",
+          "templateId": "compound-event-simulation",
+          "templateVersion": 2
+        },
+        {
+          "seed": "workbook:qa-2026-11-16-overlap:2026-11-16:1::level:lesson:review:1",
+          "grade": 7,
+          "space": "standard",
+          "strand": "data",
+          "minutes": 2,
+          "skillId": "compare-distributions",
+          "templateId": "means-in-mads",
+          "templateVersion": 1
+        },
+        {
+          "seed": "workbook:qa-2026-11-16-overlap:2026-11-16:1::level:lesson:review:2",
+          "grade": 7,
+          "space": "standard",
+          "strand": "number",
+          "minutes": 1.5,
+          "skillId": "signed-addition",
+          "templateId": "signed-fraction-sum",
+          "templateVersion": 2
+        }
+      ]
+    },
+    {
+      "kind": "challenge",
+      "items": [
+        {
+          "seed": "workbook:qa-2026-11-16-overlap:2026-11-16:1::level:lesson:challenge:0",
+          "grade": 9.35,
+          "space": "roomy",
+          "strand": "modeling",
+          "minutes": 5,
+          "skillId": "systems-modeling",
+          "templateId": "system-equation-choice",
+          "templateVersion": 2
+        }
+      ]
+    }
+  ]
+}

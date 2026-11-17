@@ -125,8 +125,28 @@ export const workbookLayoutScript = String.raw`(function () {
       if (split && unit.length > 1) {
         detach(unit);
         units(unit, false).forEach(function (u) { place(u, false); });
+        return;
       }
-      // A single block taller than a page stays; the layout check reports it.
+      // A unit taller than a whole page would run off it and print over the
+      // next page's problems. It prints smaller instead, as much as it takes
+      // to fit; the layout check fails any problem this shrinks noticeably,
+      // so its template's print gets fixed.
+      fitAlone(unit, current);
+    }
+    // Scale a unit alone on its page (or key column) until the page fits.
+    function fitAlone(unit, p, fitsNow) {
+      fitsNow = fitsNow || function () { return fits(p); };
+      for (var guard = 0; guard < 6 && !fitsNow(); guard++) {
+        var total = unit.reduce(function (sum, b) { return sum + height(b); }, 0);
+        var over = height(p.content) - height(p.body);
+        if (p.cols) over = p.cols[p.col].getBoundingClientRect().bottom - p.body.getBoundingClientRect().bottom;
+        var factor = Math.max(0.05, 1 - (over + 2) / total);
+        unit.forEach(function (b) {
+          var zoom = (parseFloat(b.style.zoom) || 1) * factor;
+          b.style.zoom = zoom.toFixed(4);
+          b.setAttribute("data-fit-zoom", zoom.toFixed(3));
+        });
+      }
     }
     // A lesson card must fit one page with its heading. A long one stacks
     // its idea and worked example, then gives up content one rank at a time
@@ -195,17 +215,31 @@ export const workbookLayoutScript = String.raw`(function () {
     });
 
     // A problem too wide for half the page (a long formula, a wide table)
-    // takes its own full-width row.
+    // takes its own full-width row. So does a pair taller than a page: at
+    // full width a problem's options and figure sit side by side, where half
+    // a page stacks them into a column that would print smaller to fit.
     list(flow.querySelectorAll(".wb-row")).forEach(function (row) {
       var items = list(row.children);
       if (items.length < 2) return;
       var tooWide = items.some(function (item) {
         return item.scrollWidth > item.clientWidth + 1;
       });
-      if (!tooWide) return;
+      if (!tooWide && height(row) <= pageHeight) return;
       var next = row.cloneNode(false);
       next.appendChild(items[1]);
       row.parentNode.insertBefore(next, row.nextSibling);
+    });
+    // Typeset math never wraps: options set four across that run past their
+    // column wrap onto the next line instead, and a statement bank with an
+    // entry wider than its half column prints one entry per line.
+    list(flow.querySelectorAll(".print-part-options")).forEach(function (el) {
+      if (el.scrollWidth > el.clientWidth + 1) el.classList.add("print-part-options--wrap");
+    });
+    list(flow.querySelectorAll(".print-work-bank ol")).forEach(function (ol) {
+      var wide = list(ol.children).some(function (li) {
+        return li.scrollWidth > li.clientWidth + 1;
+      });
+      if (wide) ol.classList.add("print-work-bank-one");
     });
     var optional = list(flow.querySelectorAll("[data-optional]"));
     detach(optional);
@@ -308,8 +342,17 @@ export const workbookLayoutScript = String.raw`(function () {
         for (;;) {
           var col = kp.cols[kp.col];
           var had = col.children.length;
-          unit.forEach(function (b) { col.appendChild(b); });
-          if (columnFits() || !had) return;
+          unit.forEach(function (b) {
+            col.appendChild(b);
+            // Typeset math wider than the column prints a touch smaller
+            // instead of past the column.
+            if (!b.style.zoom && b.scrollWidth > b.clientWidth + 1)
+              b.style.zoom = ((b.clientWidth - 2) / b.scrollWidth).toFixed(4);
+          });
+          if (columnFits()) return;
+          // An entry taller than a whole column prints smaller, never past
+          // the page.
+          if (!had) { fitAlone(unit, kp, columnFits); return; }
           unit.forEach(function (b) { col.removeChild(b); });
           if (kp.col === 0) kp.col = 1; else keyPage();
         }
