@@ -21,7 +21,7 @@ import {
 } from "@tanstack/react-router";
 import { lazyRouteComponent } from "../lib/lazy-route-component";
 import { z } from "zod";
-import { useQuery } from "@tanstack/react-query";
+import { useSessionOrNull } from "../lib/session";
 import { lazy, Suspense, useEffect, useRef } from "react";
 import { usePayStore } from "../features/pay/store";
 import type { AuthSession } from "../auth";
@@ -62,6 +62,7 @@ import {
 } from "../lib/funded-entry";
 import { chosenPlan } from "../lib/pending-trial";
 import { followAlias, LEGACY_ALIASES } from "./legacy-aliases";
+import { qk } from "../lib/keys";
 import {
   admit,
   elsewhere,
@@ -190,7 +191,7 @@ const AfterPurchase = lazy(() =>
   })),
 );
 function AfterPurchaseGate() {
-  const session = useQuery(sessionOptions).data;
+  const session = useSessionOrNull();
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
@@ -297,11 +298,16 @@ const root = createRootRoute({
       return;
     const session = await queryClient
       .ensureQueryData(sessionOptions)
-      .catch(() => undefined);
+      .catch((error: unknown) =>
+        console.warn("The session didn’t load ahead", error),
+      );
+    // The resource's observer shows its own error; this refresh only logs.
     if (session)
       void queryClient
         .fetchQuery({ ...meOptions(session), staleTime: 0 })
-        .catch(() => undefined); // The resource's observer owns its error UI.
+        .catch((error: unknown) =>
+          console.warn("The account didn’t refresh", error),
+        );
   },
   pendingMs: 600_000,
 });
@@ -322,7 +328,7 @@ function AppScreen() {
     from: "/app/lessons/$templateId/watch",
     shouldThrow: false,
   });
-  const session = useQuery(sessionOptions);
+  const session = useSessionOrNull();
   const router = useRouter();
   const atHome = useMatch({
     from: home.id,
@@ -332,7 +338,7 @@ function AppScreen() {
       settled: match.status === "success",
     }),
   });
-  const shown = !!atHome && showsPitch(session.data);
+  const shown = !!atHome && showsPitch(session);
   useEffect(() => {
     if (atHome?.pitch !== undefined && shown !== atHome.pitch)
       void router.invalidate();
@@ -347,7 +353,7 @@ function AppScreen() {
   // `/` signed in on the web is the launcher; every other path the app.
   const kind = atHome?.pitch
     ? "pitch"
-    : atHome && !nativeRuntime && session.data
+    : atHome && !nativeRuntime && session
       ? "launcher"
       : "app";
   const shownKind = useRef<string | null>(null);
@@ -863,6 +869,9 @@ const accountHub = createRoute({
     "AccountHost",
   ),
 });
+/** The form shows its own retry when the offers didn't load ahead. */
+const invoiceOffersFailed = (error: unknown) =>
+  console.warn("The invoice offers didn’t load ahead", error);
 const invoiceForm = lazyRouteComponent(
   () => import("../features/funding/InvoiceForm"),
   "InvoiceForm",
@@ -874,7 +883,7 @@ const invoiceArkansas = createRoute({
   loader: () =>
     queryClient
       .ensureQueryData(invoiceOffersOptions("ar-efa"))
-      .catch(() => undefined),
+      .catch(invoiceOffersFailed),
   component: invoiceForm,
 });
 const invoiceArizona = createRoute({
@@ -884,7 +893,7 @@ const invoiceArizona = createRoute({
   loader: () =>
     queryClient
       .ensureQueryData(invoiceOffersOptions("az-esa"))
-      .catch(() => undefined),
+      .catch(invoiceOffersFailed),
   component: invoiceForm,
 });
 const invoiceNewHampshire = createRoute({
@@ -894,7 +903,7 @@ const invoiceNewHampshire = createRoute({
   loader: () =>
     queryClient
       .ensureQueryData(invoiceOffersOptions("nh-efa"))
-      .catch(() => undefined),
+      .catch(invoiceOffersFailed),
   component: invoiceForm,
 });
 /** Where a student signs in, and where an ended sign-in lands. */
@@ -971,7 +980,9 @@ const schoolClassToday = createRoute({
     const session = (context as { session: AuthSession }).session;
     const me = await queryClient
       .ensureQueryData(meOptions(session))
-      .catch(() => null);
+      .catch((error: unknown) =>
+        console.warn("The account didn’t load ahead", error),
+      );
     if (me?.signedIn && me.familyClass?.classId === params.class)
       await Promise.all([
         preload(approvalsOptions(session)),
@@ -1058,7 +1069,9 @@ const schoolClassSettings = createRoute({
           getNextPageParam: (last: { nextOffset?: number | null }) =>
             last.nextOffset,
         } as never)
-        .catch(() => undefined),
+        .catch((error: unknown) =>
+          console.warn("The class's students didn’t load ahead", error),
+        ),
     ]);
   },
   component: lazyRouteComponent(
@@ -1850,7 +1863,8 @@ function redirectedRecently() {
     const at = Number(sessionStorage.getItem(SIGNED_OUT_KEY));
     sessionStorage.setItem(SIGNED_OUT_KEY, String(Date.now()));
     return Date.now() - at < 30_000;
-  } catch {
+  } catch (error) {
+    console.warn("This tab's last sign-in redirect wasn't read", error);
     return false;
   }
 }
@@ -1885,7 +1899,7 @@ onSignedOut(() => {
             await router.navigate({ to: "/join", replace: true });
           } finally {
             queryClient.setQueryData(sessionOptions.queryKey, null);
-            queryClient.removeQueries({ queryKey: ["account"] });
+            queryClient.removeQueries({ queryKey: qk.accounts() });
             leavingStudent = false;
           }
         })
@@ -1901,22 +1915,25 @@ onSignedOut(() => {
   // Several requests from one screen can fail together: one redirect, and the
   // rest wait silently for the screen to be replaced.
   if (leaving) return true;
-  const { pathname, search } = router.state.location;
+  const { pathname } = router.state.location;
   // Sign-in screens, a student's included, have no sign-in to leave.
   if (/^\/(sign-in|sign-up|reset-password|join|c)(\/|$)/.test(pathname))
     return false;
   if (redirectedRecently()) return false;
   leaving = true;
-  const carry = continuationSearch(search);
   const clear = () => {
     leaving = false;
     queryClient.setQueryData(sessionOptions.queryKey, null);
-    queryClient.removeQueries({ queryKey: ["account"] });
+    queryClient.removeQueries({ queryKey: qk.accounts() });
   };
-  const target = { to: "/sign-in", search: carry } as const;
+  // The sign-in gate's own address (app/sign-in-gate.ts), carrying the
+  // campaign, program and return context.
+  const target = signInTarget(router.state.location);
   void router
     .preloadRoute(target)
-    .catch(() => undefined)
+    .catch((error: unknown) =>
+      console.warn("Sign-in didn’t load ahead", error),
+    )
     .then(() => router.navigate({ ...target, replace: true }))
     .finally(clear);
   return true;

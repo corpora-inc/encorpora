@@ -7,6 +7,7 @@ import {
   FILM_CAPABILITY,
 } from "../../../content/lesson-films";
 import { request } from "../../lib/api";
+import { qk } from "../../lib/keys";
 import { mountFilmPlayer } from "../../../../film/player";
 import { Loading } from "../../ui/Loading";
 import { noteHelp } from "../../lib/help-events";
@@ -34,7 +35,7 @@ export function FilmScreen() {
   const router = useRouter();
   const host = useRef<HTMLDivElement>(null);
   const metadata = useQuery({
-    queryKey: ["lesson-film", templateId],
+    queryKey: qk.lessonFilm(templateId),
     queryFn: ({ signal }) =>
       request(
         `/problem-lessons/${encodeURIComponent(templateId)}?film=${FILM_CAPABILITY}`,

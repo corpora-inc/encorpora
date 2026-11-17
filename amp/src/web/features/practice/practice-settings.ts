@@ -5,6 +5,7 @@ import {
   type PracticeChange,
 } from "../../../learning/practice-settings";
 import { request } from "../../lib/api";
+import { qk } from "../../lib/keys";
 import { queryClient } from "../../lib/query";
 import { AppError } from "../../lib/AppError";
 
@@ -20,7 +21,7 @@ export type PracticeIntent = PracticeChange extends infer C
   : never;
 export const practiceSettingsOptions = (scope: PracticeScope) =>
   queryOptions({
-    queryKey: ["practice-settings", scope.identity, scope.learnerId],
+    queryKey: qk.practiceSettings(scope.identity, scope.learnerId),
     queryFn: ({ signal }) =>
       request(
         `/learners/${encodeURIComponent(scope.learnerId)}/practice-state`,

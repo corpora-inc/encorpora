@@ -11,7 +11,8 @@ import type { AuthSession } from "../../auth";
 import { selectLearner, useCurrentLearner } from "../../learner-store";
 import { practiceProfile } from "../../lib/adult-learner";
 import { request } from "../../lib/api";
-import { meOptions, refreshMe, sessionOptions } from "../../lib/query";
+import { meOptions, refreshMe } from "../../lib/query";
+import { forSession, useSessionOrNull } from "../../lib/session";
 import { closeTo } from "../../lib/return-to";
 import { ROOT } from "../../nav/root";
 import { modeFrom, modePlace, modeReturnLabel } from "./practice-mode";
@@ -38,7 +39,8 @@ export function recentProfiles(): string[] {
   try {
     const raw = JSON.parse(localStorage.getItem(RECENT_KEY) ?? "[]");
     return Array.isArray(raw) ? raw.filter((id) => typeof id === "string") : [];
-  } catch {
+  } catch (error) {
+    console.warn("The profile list order couldn’t be read", error);
     return [];
   }
 }
@@ -150,11 +152,8 @@ export function leaveTarget(me: SignedInMe | null | undefined) {
  * the mode was started (`?from=`, features/profiles/practice-mode.ts), else
  * the adult's own practice or their home. */
 export function usePracticingProfile() {
-  const session = useQuery(sessionOptions).data;
-  const me = useQuery({
-    ...meOptions(session ?? { accountId: "", token: "" }),
-    enabled: !!session,
-  }).data;
+  const session = useSessionOrNull();
+  const me = useQuery(forSession(session, meOptions)).data;
   const account =
     me?.signedIn && me.account.id === session?.accountId ? me : null;
   const learnerId = useCurrentLearner();
