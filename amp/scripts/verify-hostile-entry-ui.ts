@@ -38,7 +38,8 @@ import { eventBatchSchema } from "../src/analytics/events";
  *   sign-in configuration, the sign-up intent and the event collector;
  * - a deploy: the sign-up screen's file 404s once (one automatic reload), or
  *   until the visitor reloads (one automatic reload, then a message and
- *   Reload in place), and the app's entry file 404s (the entry guard).
+ *   Reload in place), the app's entry file 404s, and its stylesheet 404s
+ *   once (the entry guard).
  *
  * Every case also asserts: no content-policy violation, no error screen
  * unless the case expects its message, no page error from AMP's code, and no
@@ -166,7 +167,8 @@ type Fail =
   | "events"
   | "sign-up-chunk-once"
   | "sign-up-chunk"
-  | "entry-chunk";
+  | "entry-chunk"
+  | "entry-css-once";
 type Case = {
   name: string;
   app?: App;
@@ -208,6 +210,7 @@ const cases: Case[] = [
   { name: "deploy-once", fail: "sign-up-chunk-once" },
   { name: "deploy-stuck", fail: "sign-up-chunk" },
   { name: "deploy-entry", fail: "entry-chunk" },
+  { name: "deploy-css", fail: "entry-css-once" },
 ];
 
 // The Google tag's stand-in: it sends where GA4 sends with ad storage granted,
@@ -280,6 +283,7 @@ const failedPath: Record<Fail, RegExp> = {
   "sign-up-chunk-once": /^\/assets\/SignInScreen-[\w-]+\.js$/,
   "sign-up-chunk": /^\/assets\/SignInScreen-[\w-]+\.js$/,
   "entry-chunk": /^\/assets\/(?:home|boot)-[\w-]+\.js$/,
+  "entry-css-once": /^\/assets\/document-runtime-[\w-]+\.css$/,
 };
 
 async function intercept(context: BrowserContext, test: Case, state: State) {
@@ -309,7 +313,8 @@ async function intercept(context: BrowserContext, test: Case, state: State) {
     const path = url.pathname;
     if (test.blocker && trackingPath.test(path)) return route.abort();
     if (test.fail && state.failing && failedPath[test.fail].test(path)) {
-      if (test.fail === "sign-up-chunk-once") state.failing = false;
+      if (test.fail === "sign-up-chunk-once" || test.fail === "entry-css-once")
+        state.failing = false;
       return path.startsWith("/assets/")
         ? route.fulfill({
             // As nginx answers a missing file (docker/nginx.conf, /404.html).
@@ -472,6 +477,10 @@ async function run(
     // one automatic reload.
     if (test.fail === "sign-up-chunk-once")
       assert.ok(state.documents <= 2, `${tag}: at most one reload`);
+    // The page's stylesheet failed before any of AMP's code ran: the entry
+    // guard reloads once, and the page is styled.
+    if (test.fail === "entry-css-once")
+      assert.equal(state.documents, 2, `${tag}: one automatic reload`);
     await page.screenshot({ path: `${shots}/${tag}.png` });
     assert.equal(
       await page
