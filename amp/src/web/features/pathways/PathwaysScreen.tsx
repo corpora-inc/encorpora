@@ -16,11 +16,16 @@ import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
 import { NavigationDrawer } from "../navigation/NavigationDrawer";
 import {
   Suspense,
+  startTransition,
   useDeferredValue,
+  useImperativeHandle,
   useMemo,
   useEffect,
+  useRef,
   useState,
+  type ComponentProps,
   type ReactNode,
+  type Ref,
 } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
@@ -379,10 +384,12 @@ export function MapView({
     stack.filter((layer) => layer.kind === "skill").at(-1)?.id ?? "";
   const [frame, setFrame] = useState<{ id: string } | null>(null);
   const savedQuery = mapView.topic;
-  // The field owns its text while typing; the map's view follows after a
-  // pause.
-  const field = useUrlSearchText(savedQuery, (topic) => mapView.set({ topic }));
-  const query = useDeferredValue(field.text);
+  // The field owns its text while typing (MapSearchField, so a keystroke
+  // repaints only the field); this screen takes the query in a transition,
+  // and the map's view follows after a pause.
+  const [typed, setTyped] = useState(savedQuery);
+  const search = useRef<{ flush: () => void }>(null);
+  const query = useDeferredValue(typed);
   const band = bands.includes(mapView.band) ? mapView.band : "";
   // One area of math, chosen in the key; else all five.
   const area = mapView.area;
@@ -488,7 +495,7 @@ export function MapView({
     if (framed) setFrame({ id });
     // The search's text stays in the map's view; the skill opens over the
     // map, in this screen's layers.
-    field.flush();
+    search.current?.flush();
     mapLayers.open({ kind: "skill", id });
     if (framed) showMap();
   };
@@ -669,9 +676,12 @@ export function MapView({
           }
         }}
       >
-        <SiteSearchField
+        <MapSearchField
+          saved={savedQuery}
+          save={(topic) => mapView.set({ topic })}
+          onQuery={setTyped}
+          handle={search}
           className="pathways-search"
-          field={field}
           inputRef={keys.input}
           onFocus={() => setBrowse(true)}
           onChange={() => setBrowse(true)}
@@ -964,4 +974,28 @@ function PathwayLevels({
       numbers={numbers}
     />
   );
+}
+
+/** The map's search field. Its text is its own while typing, so a
+ * keystroke's urgent render is the field alone; the screen receives the
+ * query in a transition (React may interrupt it for the next keystroke), and
+ * the map's view stores it after a pause (lib/url-search-text.ts). */
+function MapSearchField({
+  saved,
+  save,
+  onQuery,
+  handle,
+  ...props
+}: {
+  saved: string;
+  save: (topic: string) => void;
+  onQuery: (query: string) => void;
+  handle: Ref<{ flush: () => void }>;
+} & Omit<ComponentProps<typeof SiteSearchField>, "field">) {
+  const field = useUrlSearchText(saved, save);
+  useImperativeHandle(handle, () => ({ flush: field.flush }), [field.flush]);
+  useEffect(() => {
+    startTransition(() => onQuery(field.text));
+  }, [field.text]);
+  return <SiteSearchField field={field} {...props} />;
 }
