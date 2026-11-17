@@ -492,7 +492,7 @@ async function journey(
     buffer: Buffer.from(rosterCsv()),
   });
   await heading(page, "Check the columns");
-  check(`${label} step in the URL`, page.url().includes("step=map"));
+  check(`${label} step in the URL`, page.url().endsWith("/import/columns"));
   await shot(page, "import-2-columns", width, theme);
   await page.getByRole("button", { name: "What Period holds" }).click();
   const fields = page.getByRole("dialog");
@@ -539,7 +539,7 @@ async function journey(
   await page.unroute("**/roster/apply");
   await page.getByRole("button", { name: "Try again" }).click();
   await heading(page, /24 students added, 1 teacher invited/);
-  check(`${label} step in the URL`, page.url().includes("step=done"));
+  check(`${label} step in the URL`, page.url().endsWith("/import/done"));
   await shot(page, "import-5-done", width, theme);
   const teacherMail = mail.find((entry) => entry.to === "okafor@alder.example");
   check(
