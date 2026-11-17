@@ -170,10 +170,19 @@ export async function probe(page: Page): Promise<ShellProbe> {
       if (r.width >= 43.5 && r.height >= 43.5) continue;
       const display = getComputedStyle(el).display;
       // WCAG 2.5.8 exempts a target inside running text: a link, or a
-      // button drawn as one (it opens something rather than going).
+      // button drawn as one, no taller than its line (a button computes as
+      // inline-block even when set inline).
+      const line = (() => {
+        const st = getComputedStyle(el.parentElement ?? el);
+        const height = parseFloat(st.lineHeight);
+        return Number.isNaN(height) ? parseFloat(st.fontSize) * 1.5 : height;
+      })();
       if (
-        /^(A|BUTTON)$/.test(el.tagName) &&
-        display === "inline" &&
+        (el.tagName === "A"
+          ? display === "inline"
+          : el.tagName === "BUTTON" &&
+            /^inline/.test(display) &&
+            r.height <= line + 4) &&
         el.parentElement &&
         /^(P|LI|SPAN|SMALL|DD|TD|LABEL)$/.test(el.parentElement.tagName) &&
         (el.parentElement.textContent ?? "").trim().length >
@@ -283,6 +292,15 @@ export async function probe(page: Page): Promise<ShellProbe> {
         const a = boxes[i]!,
           b = boxes[j]!;
         if (a.el.contains(b.el) || b.el.contains(a.el)) continue;
+        // A list row whose link is the row itself, with a figure's tip
+        // layered over it as its own target (school/class-columns.tsx).
+        const row = a.el.closest("[data-list-row]");
+        if (
+          row &&
+          row === b.el.closest("[data-list-row]") &&
+          [a.el, b.el].some((el) => el.matches("[data-figure-tip]"))
+        )
+          continue;
         const x = Math.min(a.r.right, b.r.right) - Math.max(a.r.left, b.r.left);
         const y = Math.min(a.r.bottom, b.r.bottom) - Math.max(a.r.top, b.r.top);
         if (x > 1 && y > 1)

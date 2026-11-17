@@ -474,11 +474,15 @@ try {
     // student space's home, docs/architecture/spaces.md), where this
     // fixture's refused batch asks the teacher.
     if (path !== "/profile/birth-year")
-      await page.waitForURL(
-        (url) =>
-          url.pathname === "/overview" ||
-          /^\/practice\/[^/]+$/.test(url.pathname),
-      );
+      await page
+        .waitForURL(
+          (url) =>
+            url.pathname === "/overview" ||
+            /^\/practice\/[^/]+$/.test(url.pathname),
+        )
+        .catch((error) => {
+          throw new Error(`${path} opened ${page.url()}`, { cause: error });
+        });
     const landed = new URL(page.url()).pathname;
     await (
       landed.startsWith("/practice/")
