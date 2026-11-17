@@ -426,7 +426,7 @@ try {
       await page
         .getByRole("heading", { name: "What year was Old learner born?" })
         .waitFor();
-      await page.getByRole("button", { name: "2016", exact: true }).click();
+      await page.getByRole("option", { name: "2016", exact: true }).click();
       await received;
       await page.evaluate(() =>
         (window as any).sessionReview.emit({

@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { birthYears } from "../lib/birth-years";
 import { Dialog } from "./Dialog";
-import { TileChoice } from "./TileChoice";
+import { TilePicker } from "./TileChoice";
 import { Button } from "./Button";
 import { TextField } from "./TextField";
 import styles from "./YearField.module.css";
 
 /**
  * A birth year as a field: the same field style as a text field beside it
- * (tokens.css --field-*), opening the year tiles the starter uses (ui/
- * TileChoice) in a dialog, full screen on a phone. Choosing a year closes it.
+ * (tokens.css --field-*), opening the year tiles the starter uses in a
+ * dialog, full screen on a phone. Choosing a year closes it and focus
+ * returns to the field, which reads the year. The tiles are a listbox (ui/
+ * TilePicker): arrows and typing move, Enter or Space chooses, Escape
+ * closes; four typed digits outside the tiles open "Earlier year…" with them.
  */
 export function YearField({
   value,
@@ -73,8 +76,8 @@ export function YearField({
         onOpenChange={setOpen}
         title={label}
         fullOnPhone
-        // The chosen year (else the first) has focus and is in view.
-        initialFocus={entering ? "input" : '[role="radio"][tabindex="0"]'}
+        // The years take focus, the chosen one (else the first) active.
+        initialFocus={entering ? "input" : '[role="listbox"]'}
       >
         {entering ? (
           <form
@@ -109,7 +112,7 @@ export function YearField({
           </form>
         ) : (
           <>
-            <TileChoice
+            <TilePicker
               label={label}
               // Oldest first: "Adult" leads, then the years in reading order.
               tiles={[
@@ -120,11 +123,19 @@ export function YearField({
               ]}
               value={value ? Number(value) : null}
               onChange={(year) => {
-                if (year === null) return;
                 onChange(String(year));
                 setOpen(false);
               }}
               columns={{ narrow: 4, wide: 4 }}
+              onTypeUnmatched={
+                earlier
+                  ? (year) => {
+                      setTyped(year);
+                      setError("");
+                      setEntering(true);
+                    }
+                  : undefined
+              }
             />
             {earlier && (
               <Button

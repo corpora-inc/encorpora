@@ -26,7 +26,7 @@ export function AccountReady() {
     (learner) => learner.entitlement.active,
   );
   return (
-    <PageFrame centered>
+    <PageFrame>
       <section
         data-account-ready
         className={`${frameCard} ${styles.ready}`}

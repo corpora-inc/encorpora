@@ -559,7 +559,23 @@
   --text-label: 14px;
   --text-small: 13px;
   --text-price: 22px;
-  --width-form: 480px;
+  /* Page layout (ui/Page.tsx): the only place a screen's column width,
+     gutter and vertical rhythm are set. A screen picks a kind, never a px.
+       narrow    forms and sign-in cards
+       standard  every single-column screen: first run, plan, pay, billing,
+                 settings, the family's screens (Billing's column)
+       wide      dashboards, tables, Pathways */
+  --page-narrow: 480px;
+  --page-standard: 760px;
+  --page-wide: 1120px;
+  /* The page's side gutter, its top and foot, and the space between its
+     sections: 16 / 24 / 64 / 24 px on phones, 24 / 32 / 64 / 32 px from
+     768 px up (the media block below). */
+  --page-gutter: var(--space-4);
+  --page-top: var(--space-5);
+  --page-bottom: var(--space-8);
+  --page-gap: var(--space-5);
+  --width-form: var(--page-narrow);
   /* A page of reading and forms: the plain pages, the narrow column. */
   --width-content: 720px;
   --text-title-min: 28px;
@@ -581,7 +597,7 @@
   --space-8: 64px;
   --radius-small: 8px;
   --width-rail: 232px;
-  --width-content-wide: 1120px;
+  --width-content-wide: var(--page-wide);
   --width-sheet: 500px;
   /* One reading column for a lesson (lesson-reading.css): its prose,
      headings, example, steps and figures, in characters of the body size.
@@ -597,6 +613,13 @@
   --field-on: var(--color-on-surface);
   --field-border: var(--color-answer-border);
   --field-placeholder: var(--color-subtle-text);
+}
+@media (min-width: 768px) {
+  :root {
+    --page-gutter: var(--space-5);
+    --page-top: var(--space-6);
+    --page-gap: var(--space-6);
+  }
 }
 /* Print is always ink on paper, whatever the screen theme. */
 :root {
