@@ -1,6 +1,7 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { ContactAddress } from "../../support/ContactAddress";
-import { Link, Navigate, useLocation, useSearch } from "@tanstack/react-router";
+import { Link, useLocation, useSearch } from "@tanstack/react-router";
+import { Navigate } from "../../../nav/Navigate";
 import { useEffect, useState, type ReactNode } from "react";
 import { AGREEMENT_VERSION } from "../../../../schools/agreement";
 import { AppError } from "../../../lib/AppError";

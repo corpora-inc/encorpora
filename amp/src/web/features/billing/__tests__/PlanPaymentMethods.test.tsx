@@ -6,6 +6,9 @@ import { enrollmentOptions, offerOptions } from "../api";
 import { consentFixture } from "../../../../../tests/parent-consent.fixture";
 import { PaymentMethodChoice } from "../PaymentMethodChoice";
 const navigation = vi.hoisted(() => ({ go: vi.fn() }));
+vi.mock("../../../nav/Navigate", () => ({
+  Navigate: ({ to }: { to: string }) => <a href={to}>Recover purchase</a>,
+}));
 vi.mock("@tanstack/react-router", () => ({
   useSearch: () => ({ interval: "month" }),
   useLocation: () => ({
@@ -13,7 +16,6 @@ vi.mock("@tanstack/react-router", () => ({
     searchStr: "?interval=month",
   }),
   useNavigate: () => navigation.go,
-  Navigate: ({ to }: { to: string }) => <a href={to}>Recover purchase</a>,
   Link: ({ children }: { children: React.ReactNode }) => <a>{children}</a>,
 }));
 vi.mock("../../../lib/analytics", () => ({

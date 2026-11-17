@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
-import { Navigate, useLocation, useNavigate } from "@tanstack/react-router";
+import { useLocation, useNavigate } from "@tanstack/react-router";
+import { Navigate } from "../../nav/Navigate";
 import type { AuthSession } from "../../auth";
 import { invalidateAccount, meOptions, sessionOptions } from "../../lib/query";
 import { nativeRuntime } from "../../native-runtime";

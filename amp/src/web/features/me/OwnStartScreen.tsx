@@ -1,5 +1,6 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { Navigate, useNavigate } from "@tanstack/react-router";
+import { useNavigate } from "@tanstack/react-router";
+import { Navigate } from "../../nav/Navigate";
 import { useState } from "react";
 import { ownPracticeAllowed } from "../../../learning/starting-point";
 import type { AuthSession } from "../../auth";

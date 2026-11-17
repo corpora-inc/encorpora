@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { Navigate, useParams, useRouter } from "@tanstack/react-router";
+import { useParams, useRouter } from "@tanstack/react-router";
+import { Navigate } from "../../../nav/Navigate";
 import { useEffect, useRef, useState } from "react";
 import {
   formatJoinCode,

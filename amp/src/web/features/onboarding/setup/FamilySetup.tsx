@@ -1,11 +1,7 @@
 import { spaceWords } from "../../spaces/words";
 import { useQuery } from "@tanstack/react-query";
-import {
-  Link,
-  Navigate,
-  useLocation,
-  useNavigate,
-} from "@tanstack/react-router";
+import { Link, useLocation, useNavigate } from "@tanstack/react-router";
+import { Navigate } from "../../../nav/Navigate";
 import { useEffect, useId, useState, type ReactNode } from "react";
 import { create } from "zustand";
 import { z } from "zod";

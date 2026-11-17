@@ -1,6 +1,7 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Authorization } from "./pilots/Authorization";
-import { Link, Navigate, useNavigate, useSearch } from "@tanstack/react-router";
+import { Link, useNavigate, useSearch } from "@tanstack/react-router";
+import { Navigate } from "../../nav/Navigate";
 import { useMemo, useRef, useState, type ReactNode } from "react";
 import {
   AGREEMENT_VERSION,

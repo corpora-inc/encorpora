@@ -1,12 +1,8 @@
 import { useMetaPurchaseContext } from "../privacy/useMetaPurchaseContext";
 import type { PurchaseMeasurement } from "../../../advertising/permission-contracts";
 import { useQuery } from "@tanstack/react-query";
-import {
-  Link,
-  Navigate,
-  useLocation,
-  useNavigate,
-} from "@tanstack/react-router";
+import { Link, useLocation, useNavigate } from "@tanstack/react-router";
+import { Navigate } from "../../nav/Navigate";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { EnrollmentPhase } from "../../../billing/stripe/enrollment-contracts";
 import type { AuthSession } from "../../auth";

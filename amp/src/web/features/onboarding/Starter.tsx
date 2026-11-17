@@ -1,12 +1,12 @@
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import {
   Link,
-  Navigate,
   useLocation,
   useNavigate,
   useParams,
   useRouter,
 } from "@tanstack/react-router";
+import { Navigate } from "../../nav/Navigate";
 import { useEffect, useState, type ReactNode } from "react";
 import { create } from "zustand";
 import type { AuthSession } from "../../auth";

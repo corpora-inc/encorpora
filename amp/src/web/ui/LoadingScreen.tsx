@@ -149,7 +149,7 @@ export function RouteError({
         pathways ? undefined : chunk ? () => window.location.reload() : reset
       }
       recovery={
-        pathways && (
+        pathways ? (
           <div
             style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)" }}
           >
@@ -163,6 +163,12 @@ export function RouteError({
               Reload page
             </button>
           </div>
+        ) : (
+          // Always a way out that works: a fresh load of the root (nav/root.tsx),
+          // which opens this person's place, whatever state this screen was in.
+          <a className={buttonClass("secondary")} href="/">
+            Go home
+          </a>
         )
       }
     />

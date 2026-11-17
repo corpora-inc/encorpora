@@ -1,6 +1,7 @@
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { RootLink } from "../../nav/root";
-import { Link, Navigate, useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
+import { Navigate } from "../../nav/Navigate";
 import { meOptions, sessionOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
 import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";

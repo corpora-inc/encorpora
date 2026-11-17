@@ -3,11 +3,11 @@ import { useMutation, useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { RootLink } from "../../nav/root";
 import {
   Link,
-  Navigate,
   useNavigate,
   useParams,
   useSearch,
 } from "@tanstack/react-router";
+import { Navigate } from "../../nav/Navigate";
 import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
 import type { SignedInMe } from "../../../account/contracts";
