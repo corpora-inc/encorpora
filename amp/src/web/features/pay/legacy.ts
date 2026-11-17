@@ -4,6 +4,7 @@ import { fundedProgramForPath, fundedPrograms } from "../../lib/funded-entry";
 import { requireSignedIn, toOwnPlace } from "../../app/sign-in-gate";
 import { meOptions, queryClient, sessionOptions } from "../../lib/query";
 import { studentSession } from "../../lib/student-device";
+import { studentPracticeHref } from "../profiles/practice-mode";
 import { nativeRuntime } from "../../native-runtime";
 import { fundingOffersOptions, offerInterval } from "./api";
 import { legacyPayTarget } from "./paths";
@@ -94,8 +95,11 @@ async function fundsTarget(input: Input, programId?: string) {
 
 /** Where an older pay address goes, in one hop. */
 export async function legacyHop(hop: LegacyHop, input: Input): Promise<string> {
-  // A school student's device, and the store apps, never pay: their home.
-  if (studentSession() || nativeRuntime) return "/";
+  // A school student's device never pays: its own practice, where every
+  // adult's screen sends it (app/sign-in-gate.ts `admit`). The store apps
+  // never pay: their home.
+  if (studentSession()) return studentPracticeHref();
+  if (nativeRuntime) return "/";
   const { search } = input;
   if (hop === "program")
     return fundsTarget(input, fundedProgramForPath(input.pathname)?.id);
