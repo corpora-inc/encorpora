@@ -17,13 +17,7 @@ import { createPortal } from "react-dom";
 import { withProblemHints, type HintedProblem } from "../lib/problem-hints";
 import { withMoneyArt } from "../scene/money-art";
 import type { ProblemHint } from "../../math/contracts";
-import {
-  refreshMe,
-  sessionOptions,
-  queryClient,
-  meOptions,
-  meKey,
-} from "../lib/query";
+import { refreshMe, queryClient, meOptions, meKey } from "../lib/query";
 import type { Step } from "../../math/scene/timeline";
 import { useQuery } from "@tanstack/react-query";
 import { secondParentChild } from "../features/second-parent/api";
@@ -261,24 +255,18 @@ function practiceLearner(
   );
 }
 export function LegacyApp() {
-  const session = useQuery(sessionOptions);
+  // Its route made sure of the session first (app/router.tsx appScreen); a
+  // failed read is that route's error screen.
+  const session = useSessionOrNull();
   const idle = useRouterState({ select: (state) => state.status === "idle" });
   const shownAccount = useRef<string | null>(null);
-  if (session.isPending) return <LoadingScreen />;
-  if (session.error)
-    return (
-      <LoadingScreen
-        error="Sign-in could not be checked. Try again."
-        retry={() => void session.refetch()}
-      />
-    );
   // Account changes reset all private screen state together. A resolved session
   // is an input to the screen, not a second state machine that catches up later.
   // While another screen loads (Back from a child's practice ends their
   // session on the way), the screen on view keeps its account: it is leaving,
   // so it never starts again, blank, for the next one (as useAppRoute keeps
   // its address).
-  const account = session.data?.accountId ?? "guest";
+  const account = session?.accountId ?? "guest";
   if (idle) shownAccount.current = account;
   const shown = shownAccount.current ?? account;
   return <LegacyScreen key={shown} owner={shown === "guest" ? null : shown} />;
@@ -816,12 +804,15 @@ function LegacyScreen({ owner }: { owner: string | null }) {
   }
   useLayoutEffect(() => updateAuth(session), [session]);
   useLayoutEffect(() => {
-    if (nativeRuntime || !accountId || !claimInitialConsentChallenge(accountId))
+    // A consent email's link reaches /consent by its route (the alias in
+    // app/legacy-aliases.ts); here, it is taken.
+    if (
+      nativeRuntime ||
+      !accountId ||
+      route.location.pathname !== "/consent" ||
+      !claimInitialConsentChallenge(accountId)
+    )
       return;
-    if (route.location.pathname !== "/consent") {
-      navigate("/consent", { replace: true });
-      return;
-    }
     consentEpoch.current++;
     setConsentChallenge(consumeInitialConsentChallenge(accountId));
     setHasPendingConsent(false);
