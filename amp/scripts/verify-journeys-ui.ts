@@ -913,9 +913,10 @@ async function adultJourney(
   );
   await measured(page, `${label} pause`);
   await shot(page, 2, "pause", width, theme);
-  // The pay overlay over their own practice (features/pay).
+  // The pay overlay (features/pay): an adult's opens over their account,
+  // at /account/pay/<their learner>.
   await page.getByRole("button", { name: "Continue with AMP" }).click();
-  await page.waitForURL(/\/pay$/);
+  await page.waitForURL(/\/pay(\/[^/]+)?$/);
   const pay = page.getByRole("dialog");
   await pay.getByRole("heading", { name: "Choose your plan" }).waitFor();
   const go = pay
