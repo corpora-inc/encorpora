@@ -1,5 +1,5 @@
 import * as RadixDialog from "@radix-ui/react-dialog";
-import { createContext, useContext } from "react";
+import { createContext, useContext, type ReactNode } from "react";
 import styles from "./LayerControls.module.css";
 
 /**
@@ -14,15 +14,52 @@ const LayerBack = createContext<(() => void) | null>(null);
 export const LayerBackProvider = LayerBack.Provider;
 export const useLayerBack = () => useContext(LayerBack);
 
+/**
+ * The one overlay a layer host draws (ui/LayerFrame.tsx). A layer's own
+ * Sheet or Dialog inside it draws its panel there, never an overlay and a
+ * scrim of its own; what that panel holds (a confirmation's own Sheet) is
+ * outside the frame again (`LayerPanelReset`).
+ */
+export type LayerPanelFrame = {
+  /** The whole overlay away, back to the page (its ✕). */
+  close: () => void;
+};
+const LayerPanel = createContext<LayerPanelFrame | null>(null);
+export const LayerPanelProvider = LayerPanel.Provider;
+export const useLayerPanel = () => useContext(LayerPanel);
+/** Inside a layer's panel: its contents are no layer of the frame. */
+export function LayerPanelReset({ children }: { children: ReactNode }) {
+  return (
+    <LayerPanel.Provider value={null}>
+      <LayerBack.Provider value={null}>{children}</LayerBack.Provider>
+    </LayerPanel.Provider>
+  );
+}
+
 /** The cross at a layer's top right: this layer down, one step. */
 export function CloseControl({ label = "Close" }: { label?: string }) {
   const stepBack = useLayerBack();
+  const panel = useLayerPanel();
   const glyph = (
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d="m6 6 12 12M18 6 6 18" />
     </svg>
   );
-  // In a layer host: one layer down (its address loses its last entry).
+  // A layer's panel in the layer frame: the whole overlay away, back to
+  // the page (its trail steps up a level, Escape one level).
+  if (panel)
+    return (
+      <button
+        type="button"
+        className={styles.close}
+        aria-label={label}
+        data-layer-close=""
+        onClick={panel.close}
+      >
+        {glyph}
+      </button>
+    );
+  // In a layer host: one layer down.
   if (stepBack)
     return (
       <button

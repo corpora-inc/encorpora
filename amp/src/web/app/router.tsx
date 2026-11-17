@@ -99,6 +99,8 @@ import {
 } from "../features/school/classroom/search";
 import { designAllowed, designSearchSchema } from "../features/design/search";
 import { stampPrevious, VIEW_KEYS } from "../lib/return-to";
+import { settleLegacyLayers } from "../nav/links";
+import { seedLayers } from "../nav/layer-store";
 import {
   MAX_LAYERS,
   OPEN_KEY,
@@ -2084,6 +2086,23 @@ router.subscribe("onResolved", ({ toLocation }) => {
     me?.signedIn && practicingAsAdult(me, chosen) ? chosen : null,
   );
   if (place) rememberPlace(session.accountId, place);
+});
+// A link from before the layer store names its layers in the address
+// (`?open=`): once the screen is on view they move into the store
+// (nav/layer-store.ts) and leave the address, replacing its entry. The one
+// legacy step; nothing in the app writes `?open=` into the address bar.
+router.subscribe("onResolved", ({ toLocation }) => {
+  const legacy = settleLegacyLayers(
+    toLocation,
+    queryClient.getQueryData(sessionOptions.queryKey)?.accountId,
+  );
+  if (!legacy) return;
+  seedLayers(legacy.scope, legacy.stack);
+  void router.navigate({
+    href: legacy.href,
+    replace: true,
+    resetScroll: false,
+  });
 });
 const SIGNED_OUT_KEY = "amp.signed-out-redirect";
 /** True when this tab was sent to sign-in moments ago: a second 401 then is
