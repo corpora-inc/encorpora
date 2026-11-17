@@ -96,12 +96,15 @@ test("funded purchase entry keeps its setup route", async () => {
   await expect(enter({ return: "arkansas-efa" })).resolves.toBeUndefined();
 });
 
-test("a signed-out trial link keeps its intent through sign-in", async () => {
+test("a signed-out trial link goes to sign-in in one hop; its intent is the tab's", async () => {
   queryClient.setQueryData(sessionOptions.queryKey, null);
+  // The root's keepInbound reads the arrival into the tab first
+  // (lib/program-choice.ts); the gate hands on only its own way back, so
+  // sign-in's address is clean and nothing hops again.
   await expect(
     enter({ ...trial, program: "az-esa", token: "discard" }),
   ).rejects.toMatchObject({
-    options: { to: "/sign-in", search: { ...trial, program: "az-esa" } },
+    options: { to: "/sign-in", search: {} },
   });
 });
 
@@ -175,22 +178,27 @@ test.each(["/sign-in", "/sign-up"] as const)(
       { return: "family-approval" },
     ])
       await expect(enterAuth({ search })).resolves.toBeUndefined();
-    // A failed sign-in is kept, then one hop to the clean address, where
-    // the screen stays to show it, even for a session.
+    // A failed sign-in is kept, then one hop to the clean address (the
+    // older link's arrival is the tab's, lib/program-choice.ts), where the
+    // screen stays to show it, even for a session.
     await expect(
       enterAuth({
         search: { ...trial, error: "access_denied", provider: "google" },
       }),
     ).rejects.toMatchObject({
-      options: { to: path, search: trial, replace: true },
+      options: { to: path, search: {}, replace: true },
     });
     expect(useAuthDraft.getState().arrival).toEqual({
       error: "access_denied",
       provider: "google",
     });
-    await expect(enterAuth({ search: trial })).resolves.toBeUndefined();
+    await expect(enterAuth({ search: {} })).resolves.toBeUndefined();
     useAuthDraft.getState().takeArrival();
     queryClient.setQueryData(sessionOptions.queryKey, null);
-    await expect(enterAuth({ search: trial })).resolves.toBeUndefined();
+    // Signed out, an older link's arrival leaves the address in one hop.
+    await expect(enterAuth({ search: trial })).rejects.toMatchObject({
+      options: { to: path, search: {}, replace: true },
+    });
+    await expect(enterAuth({ search: {} })).resolves.toBeUndefined();
   },
 );

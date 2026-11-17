@@ -186,6 +186,39 @@ export function continuationSearch(
   };
 }
 
+/** What an address may carry that is the visitor's arrival, not the
+ * sign-in gate's way back: the tab keeps it (lib/program-choice.ts). */
+export const ARRIVAL_KEYS = [
+  "entry",
+  "plan",
+  "program",
+  "utm_campaign",
+  "utm_source",
+  "utm_medium",
+  "utm_content",
+] as const;
+
+/** Whether an address carries an arrival (an ad's, an older sign-up link's,
+ * another browser's handoff) for the tab to keep. */
+export function carriesArrival(search: Record<string, unknown>) {
+  return (
+    ARRIVAL_KEYS.some((key) => search[key] !== undefined) ||
+    search.return === "free-practice"
+  );
+}
+
+/** The sign-in gate's own continuation (a school, an invitation, a funded
+ * purchase, security): `continuationSearch` without the arrival, which the
+ * tab keeps instead of the address. */
+export function gateContinuation(
+  search: Record<string, unknown>,
+): FundedSearch {
+  const kept: FundedSearch = { ...continuationSearch(search) };
+  for (const key of ARRIVAL_KEYS) delete (kept as Record<string, unknown>)[key];
+  if (kept.return === "free-practice") delete kept.return;
+  return kept;
+}
+
 export function continuationUrl(
   search: Record<string, unknown>,
   fallback = "/",

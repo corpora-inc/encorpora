@@ -1,0 +1,2564 @@
+{
+ "id": "list-all-pairs--sl",
+ "title": "Factors, multiples, primes and composites",
+ "teaches": [
+  "factor-pairs-select",
+  "factor-partner",
+  "complete-list-choice",
+  "prime-composite-sort",
+  "multiples-select",
+  "divisibility-rule-check",
+  "mcas-prime-factor-select"
+ ],
+ "skill": "factors-multiples",
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -1.1,
+     -0.3,
+     13.1,
+     7.1
+    ],
+    "points": {
+     "A": [
+      0,
+      5
+     ],
+     "A4": [
+      4,
+      5
+     ],
+     "Pv": [
+      6,
+      3.5
+     ],
+     "P": [
+      6,
+      6.7
+     ]
+    },
+    "parts": [
+     {
+      "id": "g4",
+      "grid": [
+       4,
+       3
+      ],
+      "at": "A4"
+     },
+     {
+      "id": "g",
+      "grid": [
+       12,
+       5
+      ],
+      "at": "A"
+     },
+     {
+      "id": "t",
+      "counters": "g4",
+      "n": 12,
+      "shape": "square",
+      "ink": "accent"
+     },
+     {
+      "id": "l3",
+      "label": "\\text{3 rows: }3\\times4=12",
+      "at": "P",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "l1",
+      "label": "\\text{1 row: }1\\times12=12",
+      "at": "P",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "l2",
+      "label": "\\text{2 rows: }2\\times6=12",
+      "at": "P",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "l4",
+      "label": "\\text{4 rows: }4\\times3\\text{, the same!}",
+      "at": "P",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm"
+     },
+     {
+      "id": "l5",
+      "label": "\\text{5 rows: 2 left over}",
+      "at": "P",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here are twelve square tiles. How many different rectangles can they make?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "header",
+       "text": "Every rectangle twelve can make"
+      },
+      {
+       "do": "problem",
+       "text": "How many rectangles can 12 tiles make?",
+       "at": "How"
+      },
+      {
+       "do": "show",
+       "target": "t",
+       "at": "Here"
+      },
+      {
+       "do": "highlight",
+       "target": "t",
+       "at": "rectangles"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "I know one! Three rows of four.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "l3",
+       "at": "Three"
+      },
+      {
+       "do": "highlight",
+       "target": "t",
+       "at": "Three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Right. But are there more? Let us find every one, and know exactly when to stop looking.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "t",
+       "at": "more"
+      },
+      {
+       "do": "hide",
+       "target": "l3",
+       "at": "Let"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Start with one row. All twelve tiles in a line.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "t1": {
+         "cell": [
+          "g",
+          1
+         ]
+        },
+        "t2": {
+         "cell": [
+          "g",
+          2
+         ]
+        },
+        "t3": {
+         "cell": [
+          "g",
+          3
+         ]
+        },
+        "t4": {
+         "cell": [
+          "g",
+          4
+         ]
+        },
+        "t5": {
+         "cell": [
+          "g",
+          5
+         ]
+        },
+        "t6": {
+         "cell": [
+          "g",
+          6
+         ]
+        },
+        "t7": {
+         "cell": [
+          "g",
+          7
+         ]
+        },
+        "t8": {
+         "cell": [
+          "g",
+          8
+         ]
+        },
+        "t9": {
+         "cell": [
+          "g",
+          9
+         ]
+        },
+        "t10": {
+         "cell": [
+          "g",
+          10
+         ]
+        },
+        "t11": {
+         "cell": [
+          "g",
+          11
+         ]
+        },
+        "t12": {
+         "cell": [
+          "g",
+          12
+         ]
+        }
+       },
+       "at": "Start",
+       "dur": 1.4
+      },
+      {
+       "do": "show",
+       "target": "l1",
+       "at": "line"
+      },
+      {
+       "do": "write",
+       "tex": "1\\times12=12",
+       "fresh": true,
+       "at": "line"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "That one is skinny!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "t",
+       "at": "skinny"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Still a rectangle. One times twelve. One and twelve are a factor pair.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "t",
+       "at": "rectangle",
+       "until": "One"
+      },
+      {
+       "do": "highlight",
+       "target": "l1",
+       "at": "One"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now two rows. Half of the tiles drop down. Two rows of six: two times six.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": "l1",
+       "at": "Now"
+      },
+      {
+       "do": "move",
+       "points": {
+        "t1": [
+         3.5,
+         4.5
+        ],
+        "t2": [
+         4.5,
+         4.5
+        ],
+        "t3": [
+         5.5,
+         4.5
+        ],
+        "t4": [
+         6.5,
+         4.5
+        ],
+        "t5": [
+         7.5,
+         4.5
+        ],
+        "t6": [
+         8.5,
+         4.5
+        ],
+        "t7": [
+         3.5,
+         3.5
+        ],
+        "t8": [
+         4.5,
+         3.5
+        ],
+        "t9": [
+         5.5,
+         3.5
+        ],
+        "t10": [
+         6.5,
+         3.5
+        ],
+        "t11": [
+         7.5,
+         3.5
+        ],
+        "t12": [
+         8.5,
+         3.5
+        ]
+       },
+       "at": "Half",
+       "dur": 1.4
+      },
+      {
+       "do": "show",
+       "target": "l2",
+       "at": "Two",
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "2\\times6=12",
+       "fresh": true,
+       "at": "times"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Another pair! Two and six.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "l2",
+       "at": "Another"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three rows. Three rows of four: three times four.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": "l2",
+       "at": "Three"
+      },
+      {
+       "do": "move",
+       "points": {
+        "t1": [
+         4.5,
+         4.5
+        ],
+        "t2": [
+         5.5,
+         4.5
+        ],
+        "t3": [
+         6.5,
+         4.5
+        ],
+        "t4": [
+         7.5,
+         4.5
+        ],
+        "t5": [
+         4.5,
+         3.5
+        ],
+        "t6": [
+         5.5,
+         3.5
+        ],
+        "t7": [
+         6.5,
+         3.5
+        ],
+        "t8": [
+         7.5,
+         3.5
+        ],
+        "t9": [
+         4.5,
+         2.5
+        ],
+        "t10": [
+         5.5,
+         2.5
+        ],
+        "t11": [
+         6.5,
+         2.5
+        ],
+        "t12": [
+         7.5,
+         2.5
+        ]
+       },
+       "at": "Three",
+       "dur": 1.6
+      },
+      {
+       "do": "show",
+       "target": "l3",
+       "at": "four"
+      },
+      {
+       "do": "write",
+       "tex": "3\\times4=12",
+       "fresh": true,
+       "at": "times"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "That is my rectangle!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "t",
+       "at": "rectangle"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now four rows? Watch. Turn the three by four on its side.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": "l3",
+       "at": "Now"
+      },
+      {
+       "do": "turn",
+       "target": "t",
+       "about": "Pv",
+       "deg": 90,
+       "at": "Turn",
+       "dur": 2.0
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four rows of three. Four times three. It is the very same rectangle, only turned.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "l4",
+       "at": "Four"
+      },
+      {
+       "do": "highlight",
+       "target": "t",
+       "at": "same"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So four rows gives us nothing new.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "l4",
+       "at": "nothing"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Right. From here on, every try only repeats a rectangle we already have. That is when we stop.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "t",
+       "at": "repeats"
+      },
+      {
+       "do": "text",
+       "text": "$4\\times3$ is $3\\times4$ turned. Stop.",
+       "at": "stop"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Not every number of rows works, though. Try five. Five rows of two use ten tiles, and two are left over.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": "l4",
+       "at": "Not"
+      },
+      {
+       "do": "move",
+       "points": {
+        "t1": [
+         7.5,
+         5
+        ],
+        "t2": [
+         7.5,
+         4
+        ],
+        "t3": [
+         6.5,
+         5
+        ],
+        "t4": [
+         6.5,
+         4
+        ],
+        "t5": [
+         5.5,
+         5
+        ],
+        "t6": [
+         5.5,
+         4
+        ],
+        "t7": [
+         4.5,
+         5
+        ],
+        "t8": [
+         4.5,
+         4
+        ],
+        "t9": [
+         3.5,
+         5
+        ],
+        "t10": [
+         3.5,
+         4
+        ],
+        "t11": [
+         7.5,
+         2.1
+        ],
+        "t12": [
+         6.5,
+         2.1
+        ]
+       },
+       "at": "Try",
+       "dur": 1.6
+      },
+      {
+       "do": "show",
+       "target": "l5",
+       "at": "Five",
+       "nth": 2
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "t11",
+        "t12"
+       ],
+       "at": "two",
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "12=5\\times2+2",
+       "fresh": true,
+       "at": "ten"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "No rectangle. So five is not a factor of twelve.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "t11",
+        "t12"
+       ],
+       "at": "No"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Twelve makes exactly three rectangles, found in order. And we knew when to stop.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "3\\text{ rectangles}",
+       "at": "exactly"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.5,
+     -1.8,
+     7.5,
+     3.4
+    ],
+    "points": {
+     "A": [
+      0,
+      3
+     ],
+     "M": [
+      3.5,
+      -0.9
+     ]
+    },
+    "parts": [
+     {
+      "id": "g",
+      "grid": [
+       7,
+       3
+      ],
+      "at": "A"
+     },
+     {
+      "id": "t",
+      "counters": "g",
+      "n": 7,
+      "shape": "square",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "l1",
+      "label": "\\text{1 row: }1\\times7",
+      "at": "M",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "l2",
+      "label": "\\text{2 rows: 1 left over}",
+      "at": "M",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm"
+     },
+     {
+      "id": "l3",
+      "label": "\\text{3 rows: 1 left over}",
+      "at": "M",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm"
+     },
+     {
+      "id": "l4",
+      "label": "\\text{prime: 1 rectangle}",
+      "at": "M",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now seven tiles. One row: one times seven.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Seven tiles"
+      },
+      {
+       "do": "show",
+       "target": "l1",
+       "at": "One"
+      },
+      {
+       "do": "write",
+       "tex": "1\\times7=7",
+       "fresh": true,
+       "at": "times"
+      },
+      {
+       "do": "highlight",
+       "target": "t",
+       "at": "seven"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two rows? Three in each row, and one tile left over.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "hide",
+       "target": "l1",
+       "at": "Two"
+      },
+      {
+       "do": "move",
+       "points": {
+        "t1": [
+         1.5,
+         2.5
+        ],
+        "t2": [
+         2.5,
+         2.5
+        ],
+        "t3": [
+         3.5,
+         2.5
+        ],
+        "t4": [
+         1.5,
+         1.5
+        ],
+        "t5": [
+         2.5,
+         1.5
+        ],
+        "t6": [
+         3.5,
+         1.5
+        ],
+        "t7": [
+         5.5,
+         2.5
+        ]
+       },
+       "at": "Three",
+       "dur": 1.3
+      },
+      {
+       "do": "show",
+       "target": "l2",
+       "at": "one"
+      },
+      {
+       "do": "highlight",
+       "target": "t7",
+       "at": "one"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three rows? Two in each row, and again one left over. Three rows already beats the two in a row, so we can stop.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "hide",
+       "target": "l2",
+       "at": "Three"
+      },
+      {
+       "do": "move",
+       "points": {
+        "t1": [
+         2,
+         2.5
+        ],
+        "t2": [
+         3,
+         2.5
+        ],
+        "t3": [
+         2,
+         1.5
+        ],
+        "t4": [
+         3,
+         1.5
+        ],
+        "t5": [
+         2,
+         0.5
+        ],
+        "t6": [
+         3,
+         0.5
+        ],
+        "t7": [
+         5,
+         2.5
+        ]
+       },
+       "at": "Two",
+       "dur": 1.3
+      },
+      {
+       "do": "show",
+       "target": "l3",
+       "at": "again"
+      },
+      {
+       "do": "highlight",
+       "target": "t7",
+       "at": "again",
+       "until": "Three",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6"
+       ],
+       "at": "Three",
+       "nth": 2,
+       "until": "stop"
+      },
+      {
+       "do": "highlight",
+       "target": "t",
+       "at": "stop"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Seven tiles make only the one long rectangle.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "t1": [
+         0.5,
+         2.5
+        ],
+        "t2": [
+         1.5,
+         2.5
+        ],
+        "t3": [
+         2.5,
+         2.5
+        ],
+        "t4": [
+         3.5,
+         2.5
+        ],
+        "t5": [
+         4.5,
+         2.5
+        ],
+        "t6": [
+         5.5,
+         2.5
+        ],
+        "t7": [
+         6.5,
+         2.5
+        ]
+       },
+       "at": "Seven",
+       "dur": 1.4
+      },
+      {
+       "do": "hide",
+       "target": "l3",
+       "at": "Seven"
+      },
+      {
+       "do": "show",
+       "target": "l4",
+       "at": "only"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A number with just one rectangle is called prime. Its only factors are one and itself.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "t",
+       "at": "prime"
+      },
+      {
+       "do": "text",
+       "text": "Prime: only the pair $1\\times$ itself.",
+       "at": "Its"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A number with more than one rectangle is composite. Twelve has three, so twelve is composite.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "text",
+       "text": "Composite: more than one pair.",
+       "at": "composite"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.5,
+     -1.8,
+     9.5,
+     3.4
+    ],
+    "points": {
+     "A": [
+      0,
+      3
+     ],
+     "M": [
+      4.5,
+      -0.9
+     ]
+    },
+    "parts": [
+     {
+      "id": "g",
+      "grid": [
+       9,
+       3
+      ],
+      "at": "A"
+     },
+     {
+      "id": "t",
+      "counters": "g",
+      "n": 9,
+      "shape": "square",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "l1",
+      "label": "\\text{1 row: }1\\times9",
+      "at": "M",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "l2",
+      "label": "\\text{2 rows: 1 left over}",
+      "at": "M",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm"
+     },
+     {
+      "id": "l3",
+      "label": "\\text{3 rows: }3\\times3=9",
+      "at": "M",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "l4",
+      "label": "\\text{1 tile: }1\\times1",
+      "at": "M",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Nine tiles. One row: one times nine. Two rows leave one over.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Nine tiles"
+      },
+      {
+       "do": "show",
+       "target": "l1",
+       "at": "One"
+      },
+      {
+       "do": "write",
+       "tex": "1\\times9=9",
+       "fresh": true,
+       "at": "times"
+      },
+      {
+       "do": "hide",
+       "target": "l1",
+       "at": "Two"
+      },
+      {
+       "do": "move",
+       "points": {
+        "t1": [
+         1.9,
+         2.5
+        ],
+        "t2": [
+         2.9,
+         2.5
+        ],
+        "t3": [
+         3.9,
+         2.5
+        ],
+        "t4": [
+         4.9,
+         2.5
+        ],
+        "t5": [
+         1.9,
+         1.5
+        ],
+        "t6": [
+         2.9,
+         1.5
+        ],
+        "t7": [
+         3.9,
+         1.5
+        ],
+        "t8": [
+         4.9,
+         1.5
+        ],
+        "t9": [
+         7.2,
+         2.5
+        ]
+       },
+       "at": "Two",
+       "dur": 1.3
+      },
+      {
+       "do": "show",
+       "target": "l2",
+       "at": "leave"
+      },
+      {
+       "do": "highlight",
+       "target": "t9",
+       "at": "over"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three rows of three fit perfectly.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": "l2",
+       "at": "Three"
+      },
+      {
+       "do": "move",
+       "points": {
+        "t1": [
+         3.5,
+         2.5
+        ],
+        "t2": [
+         4.5,
+         2.5
+        ],
+        "t3": [
+         5.5,
+         2.5
+        ],
+        "t4": [
+         3.5,
+         1.5
+        ],
+        "t5": [
+         4.5,
+         1.5
+        ],
+        "t6": [
+         5.5,
+         1.5
+        ],
+        "t7": [
+         3.5,
+         0.5
+        ],
+        "t8": [
+         4.5,
+         0.5
+        ],
+        "t9": [
+         5.5,
+         0.5
+        ]
+       },
+       "at": "Three",
+       "dur": 1.5
+      },
+      {
+       "do": "show",
+       "target": "l3",
+       "at": "perfectly"
+      },
+      {
+       "do": "write",
+       "tex": "3\\times3=9",
+       "fresh": true,
+       "at": "perfectly"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "It is a square! Three and three.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "t",
+       "at": "square"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A square is a rectangle whose partner is itself, so we write it once. Nine has two pairs, so nine is composite.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "t",
+       "at": "itself",
+       "until": "Nine"
+      },
+      {
+       "do": "answer",
+       "tex": "1\\times9,\\ 3\\times3",
+       "at": "Nine"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "What about just one tile?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6",
+        "t7",
+        "t8",
+        "t9",
+        "l3"
+       ],
+       "at": "one"
+      },
+      {
+       "do": "show",
+       "target": "l4",
+       "at": "tile"
+      },
+      {
+       "do": "move",
+       "points": {
+        "t1": [
+         4.5,
+         2.5
+        ]
+       },
+       "at": "one",
+       "dur": 0.8
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One tile makes one little square. A prime needs two different factors, and one has only one. So one is neither prime nor composite.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "t1",
+       "at": "One",
+       "until": "prime"
+      },
+      {
+       "do": "highlight",
+       "target": "l4",
+       "at": "prime",
+       "until": "and"
+      },
+      {
+       "do": "highlight",
+       "target": "t1",
+       "at": "only"
+      },
+      {
+       "do": "text",
+       "text": "1 is neither prime nor composite.",
+       "at": "neither"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.2,
+     -0.3,
+     11.5,
+     8.1
+    ],
+    "points": {
+     "T": [
+      0,
+      7.8
+     ],
+     "Z": [
+      11,
+      0
+     ]
+    },
+    "parts": [
+     {
+      "id": "tb",
+      "table": true,
+      "at": "T",
+      "head": [
+       "Tiles in a row",
+       "Is it a rectangle?"
+      ],
+      "rows": [
+       {
+        "label": "1 row",
+        "cells": [
+         "36",
+         "yes: $1\\times36$"
+        ]
+       },
+       {
+        "label": "2 rows",
+        "cells": [
+         "18",
+         "yes: $2\\times18$"
+        ]
+       },
+       {
+        "label": "3 rows",
+        "cells": [
+         "12",
+         "yes: $3\\times12$"
+        ]
+       },
+       {
+        "label": "4 rows",
+        "cells": [
+         "9",
+         "yes: $4\\times9$"
+        ]
+       },
+       {
+        "label": "5 rows",
+        "cells": [
+         "7, and 1 left",
+         "no"
+        ]
+       },
+       {
+        "label": "6 rows",
+        "cells": [
+         "6",
+         "yes: $6\\times6$"
+        ]
+       }
+      ],
+      "cell": [
+       3.7,
+       1.0
+      ],
+      "labelW": 2.6,
+      "size": "m"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A bigger number: thirty-six. We cannot fit that many tiles, but we can still try the rows in order.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "All the pairs of 36"
+      },
+      {
+       "do": "show",
+       "target": "tb.row.0",
+       "at": "rows"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One row: thirty-six in a row. Two rows: eighteen. Three rows: twelve. Four rows: nine.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "tb.row.1",
+       "at": "One"
+      },
+      {
+       "do": "write",
+       "tex": "1\\times36",
+       "fresh": true,
+       "at": "One"
+      },
+      {
+       "do": "show",
+       "target": "tb.row.2",
+       "at": "Two"
+      },
+      {
+       "do": "write",
+       "tex": "2\\times18",
+       "fresh": true,
+       "at": "Two"
+      },
+      {
+       "do": "show",
+       "target": "tb.row.3",
+       "at": "Three"
+      },
+      {
+       "do": "write",
+       "tex": "3\\times12",
+       "fresh": true,
+       "at": "Three"
+      },
+      {
+       "do": "show",
+       "target": "tb.row.4",
+       "at": "Four"
+      },
+      {
+       "do": "write",
+       "tex": "4\\times9",
+       "fresh": true,
+       "at": "Four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five rows leaves one over, so five does not work. Six rows: six in each row. Six times six.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "tb.row.5",
+       "at": "Five"
+      },
+      {
+       "do": "highlight",
+       "target": "tb.row.5",
+       "at": "leaves",
+       "until": "Six"
+      },
+      {
+       "do": "show",
+       "target": "tb.row.6",
+       "at": "Six"
+      },
+      {
+       "do": "highlight",
+       "target": "tb.row.6",
+       "at": "Six",
+       "nth": 3
+      },
+      {
+       "do": "write",
+       "tex": "6\\times6",
+       "fresh": true,
+       "at": "times"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The two numbers have met. That is the signal to stop. Anything bigger would only repeat a pair we have.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "tb.row.6",
+       "at": "met"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five pairs, smallest first, each written once.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "tb.row.1",
+        "tb.row.2",
+        "tb.row.3",
+        "tb.row.4",
+        "tb.row.6"
+       ],
+       "at": "Five"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.7,
+     -1.6,
+     10.9,
+     9.9
+    ],
+    "points": {
+     "A": [
+      0,
+      9
+     ],
+     "R1": [
+      8.5,
+      8.5
+     ],
+     "R2": [
+      8.5,
+      7.5
+     ],
+     "R3": [
+      8.5,
+      6.5
+     ],
+     "R4": [
+      8.5,
+      5.5
+     ],
+     "R5": [
+      8.5,
+      4.5
+     ],
+     "R6": [
+      8.5,
+      3.5
+     ],
+     "R7": [
+      8.5,
+      2.5
+     ],
+     "R8": [
+      8.5,
+      1.5
+     ],
+     "R9": [
+      8.5,
+      0.5
+     ],
+     "N": [
+      3,
+      -1
+     ]
+    },
+    "parts": [
+     {
+      "id": "g",
+      "grid": [
+       6,
+       9
+      ],
+      "at": "A"
+     },
+     {
+      "id": "t",
+      "counters": "g",
+      "n": 54,
+      "shape": "square",
+      "ink": "violet"
+     },
+     {
+      "id": "s1",
+      "label": "1\\times6=6",
+      "at": "R1",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent"
+     },
+     {
+      "id": "s2",
+      "label": "2\\times6=12",
+      "at": "R2",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent"
+     },
+     {
+      "id": "s3",
+      "label": "3\\times6=18",
+      "at": "R3",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent"
+     },
+     {
+      "id": "s4",
+      "label": "4\\times6=24",
+      "at": "R4",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent"
+     },
+     {
+      "id": "s5",
+      "label": "5\\times6=30",
+      "at": "R5",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent"
+     },
+     {
+      "id": "s6",
+      "label": "6\\times6=36",
+      "at": "R6",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent"
+     },
+     {
+      "id": "s7",
+      "label": "7\\times6=42",
+      "at": "R7",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent"
+     },
+     {
+      "id": "s8",
+      "label": "8\\times6=48",
+      "at": "R8",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm"
+     },
+     {
+      "id": "s9",
+      "label": "9\\times6=54",
+      "at": "R9",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent"
+     },
+     {
+      "id": "n1",
+      "label": "\\text{12 is a multiple of 6}",
+      "at": "N",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent"
+     },
+     {
+      "id": "n2",
+      "label": "\\text{6 is a factor of 12}",
+      "at": "N",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Another question. Forty-eight tiles in rows of six. Six times what is forty-eight? Build it one row at a time.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "The other factor, and multiples"
+      },
+      {
+       "do": "problem",
+       "text": "$48=6\\times ?$",
+       "at": "Forty-eight"
+      },
+      {
+       "do": "show",
+       "target": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6"
+       ],
+       "at": "Build",
+       "dur": 0.6
+      },
+      {
+       "do": "show",
+       "target": "s1",
+       "at": "row"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two rows: twelve. Three rows: eighteen. Four rows: twenty-four. Five rows: thirty.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "t7",
+        "t8",
+        "t9",
+        "t10",
+        "t11",
+        "t12"
+       ],
+       "at": "Two",
+       "dur": 0.6
+      },
+      {
+       "do": "show",
+       "target": "s2",
+       "at": "twelve"
+      },
+      {
+       "do": "show",
+       "target": [
+        "t13",
+        "t14",
+        "t15",
+        "t16",
+        "t17",
+        "t18"
+       ],
+       "at": "Three",
+       "dur": 0.6
+      },
+      {
+       "do": "show",
+       "target": "s3",
+       "at": "eighteen"
+      },
+      {
+       "do": "show",
+       "target": [
+        "t19",
+        "t20",
+        "t21",
+        "t22",
+        "t23",
+        "t24"
+       ],
+       "at": "Four",
+       "dur": 0.6
+      },
+      {
+       "do": "show",
+       "target": "s4",
+       "at": "twenty-four"
+      },
+      {
+       "do": "show",
+       "target": [
+        "t25",
+        "t26",
+        "t27",
+        "t28",
+        "t29",
+        "t30"
+       ],
+       "at": "Five",
+       "dur": 0.6
+      },
+      {
+       "do": "show",
+       "target": "s5",
+       "at": "thirty"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Six rows is thirty-six, seven rows is forty-two...",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "t31",
+        "t32",
+        "t33",
+        "t34",
+        "t35",
+        "t36"
+       ],
+       "at": "Six",
+       "dur": 0.6
+      },
+      {
+       "do": "show",
+       "target": "s6",
+       "at": "thirty-six"
+      },
+      {
+       "do": "show",
+       "target": [
+        "t37",
+        "t38",
+        "t39",
+        "t40",
+        "t41",
+        "t42"
+       ],
+       "at": "seven",
+       "dur": 0.6
+      },
+      {
+       "do": "show",
+       "target": "s7",
+       "at": "forty-two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Eight rows: forty-eight! We landed exactly on it. Forty-eight is six times eight. The other factor is eight.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "t43",
+        "t44",
+        "t45",
+        "t46",
+        "t47",
+        "t48"
+       ],
+       "at": "Eight",
+       "dur": 0.6
+      },
+      {
+       "do": "show",
+       "target": "s8",
+       "at": "forty-eight"
+      },
+      {
+       "do": "highlight",
+       "target": "s8",
+       "at": "exactly"
+      },
+      {
+       "do": "answer",
+       "tex": "48=6\\times8",
+       "at": "Forty-eight",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Six, twelve, eighteen, twenty-four. That is counting by sixes!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "s1",
+       "at": "Six",
+       "until": "twelve"
+      },
+      {
+       "do": "highlight",
+       "target": "s2",
+       "at": "twelve",
+       "until": "eighteen"
+      },
+      {
+       "do": "highlight",
+       "target": "s3",
+       "at": "eighteen",
+       "until": "twenty-four"
+      },
+      {
+       "do": "highlight",
+       "target": "s4",
+       "at": "twenty-four",
+       "until": "That"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+       ],
+       "at": "counting"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Yes. Those totals are the multiples of six: one row, two rows, three rows of six.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Multiples of 6: 6, 12, 18, 24, 30, ...",
+       "at": "multiples"
+      },
+      {
+       "do": "highlight",
+       "target": "s1",
+       "at": "one",
+       "until": "two"
+      },
+      {
+       "do": "highlight",
+       "target": "s2",
+       "at": "two",
+       "until": "three"
+      },
+      {
+       "do": "highlight",
+       "target": "s3",
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Twelve is a multiple of six. And six is a factor of twelve. The same fact, said from each end.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6",
+        "t7",
+        "t8",
+        "t9",
+        "t10",
+        "t11",
+        "t12"
+       ],
+       "at": "Twelve"
+      },
+      {
+       "do": "show",
+       "target": "n1",
+       "at": "Twelve"
+      },
+      {
+       "do": "hide",
+       "target": "n1",
+       "at": "And"
+      },
+      {
+       "do": "show",
+       "target": "n2",
+       "at": "And"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Is fifty-four a multiple of six?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": "n2"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One more row lands right on it: nine rows. Yes. But fifty-three is one short, so it falls between two rows. Close does not count.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "t49",
+        "t50",
+        "t51",
+        "t52",
+        "t53",
+        "t54"
+       ],
+       "at": "One",
+       "dur": 0.6
+      },
+      {
+       "do": "show",
+       "target": "s9",
+       "at": "nine"
+      },
+      {
+       "do": "watch",
+       "text": "One away from a multiple is not a multiple.",
+       "at": "Close"
+      },
+      {
+       "do": "highlight",
+       "target": "s9",
+       "at": "Yes",
+       "until": "But"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1.7,
+     -1.6,
+     18.7,
+     3.4
+    ],
+    "points": {
+     "A": [
+      0,
+      3
+     ],
+     "M": [
+      8.5,
+      -1.1
+     ]
+    },
+    "parts": [
+     {
+      "id": "g",
+      "grid": [
+       17,
+       3
+      ],
+      "at": "A"
+     },
+     {
+      "id": "t",
+      "counters": "g",
+      "n": 51,
+      "shape": "square",
+      "ink": "blue"
+     },
+     {
+      "id": "e1",
+      "label": "74=2\\times37",
+      "at": "M",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "e2",
+      "label": "35=5\\times7",
+      "at": "M",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "l1",
+      "label": "51",
+      "at": "M",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "l2",
+      "label": "5+1=6",
+      "at": "M",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm"
+     },
+     {
+      "id": "l3",
+      "label": "\\text{3 rows: }3\\times17=51",
+      "at": "M",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "You do not always need tiles. Quick tests tell you about factors. An even number always has two as a factor.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Quick tests for a factor"
+      },
+      {
+       "do": "text",
+       "text": "Even: has the factor 2.",
+       "at": "even"
+      },
+      {
+       "do": "show",
+       "target": "e1",
+       "at": "even"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A number ending in zero or five always has five.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "hide",
+       "target": "e1",
+       "at": "ending"
+      },
+      {
+       "do": "show",
+       "target": "e2",
+       "at": "ending"
+      },
+      {
+       "do": "text",
+       "text": "Ends in 0 or 5: has the factor 5.",
+       "at": "five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "And if the digits add up to a multiple of three, the number has three as a factor.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "hide",
+       "target": "e2",
+       "at": "And"
+      },
+      {
+       "do": "text",
+       "text": "Digits add to a multiple of 3: has the factor 3.",
+       "at": "digits"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Is fifty-one prime? It is not even, and it does not end in zero or five.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Is 51 prime or composite?",
+       "at": "Is"
+      },
+      {
+       "do": "show",
+       "target": "l1",
+       "at": "fifty-one"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "But add the digits. Five plus one is six, a multiple of three. So three should be a factor.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "hide",
+       "target": "l1",
+       "at": "add"
+      },
+      {
+       "do": "show",
+       "target": "l2",
+       "at": "Five"
+      },
+      {
+       "do": "write",
+       "tex": "5+1=6",
+       "fresh": true,
+       "at": "Five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Check it with tiles. Three rows. Seventeen in each row. A perfect rectangle.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": "l2",
+       "at": "Check"
+      },
+      {
+       "do": "show",
+       "target": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6",
+        "t7",
+        "t8",
+        "t9",
+        "t10",
+        "t11",
+        "t12",
+        "t13",
+        "t14",
+        "t15",
+        "t16",
+        "t17"
+       ],
+       "at": "Three",
+       "dur": 0.6
+      },
+      {
+       "do": "show",
+       "target": [
+        "t18",
+        "t19",
+        "t20",
+        "t21",
+        "t22",
+        "t23",
+        "t24",
+        "t25",
+        "t26",
+        "t27",
+        "t28",
+        "t29",
+        "t30",
+        "t31",
+        "t32",
+        "t33",
+        "t34"
+       ],
+       "at": "Seventeen",
+       "dur": 0.6
+      },
+      {
+       "do": "show",
+       "target": [
+        "t35",
+        "t36",
+        "t37",
+        "t38",
+        "t39",
+        "t40",
+        "t41",
+        "t42",
+        "t43",
+        "t44",
+        "t45",
+        "t46",
+        "t47",
+        "t48",
+        "t49",
+        "t50",
+        "t51"
+       ],
+       "at": "perfect",
+       "dur": 0.6
+      },
+      {
+       "do": "show",
+       "target": "l3",
+       "at": "perfect"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So fifty-one is composite! It only looked prime.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "51=3\\times17",
+       "fresh": true,
+       "at": "composite"
+      },
+      {
+       "do": "highlight",
+       "target": "t",
+       "at": "looked"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1.2,
+     0,
+     13.2,
+     10.8
+    ],
+    "points": {
+     "A1": [
+      0,
+      9.4
+     ],
+     "A2": [
+      0,
+      7.0
+     ],
+     "A3": [
+      0,
+      3.6
+     ],
+     "B1": [
+      6,
+      9.7
+     ],
+     "B2": [
+      6.6,
+      6.0
+     ],
+     "B3": [
+      4.6,
+      2.1
+     ]
+    },
+    "parts": [
+     {
+      "id": "ga",
+      "grid": [
+       12,
+       1
+      ],
+      "at": "A1"
+     },
+     {
+      "id": "gb",
+      "grid": [
+       6,
+       2
+      ],
+      "at": "A2"
+     },
+     {
+      "id": "gc",
+      "grid": [
+       4,
+       3
+      ],
+      "at": "A3"
+     },
+     {
+      "id": "ta",
+      "counters": "ga",
+      "n": 12,
+      "shape": "square",
+      "ink": "accent"
+     },
+     {
+      "id": "tb",
+      "counters": "gb",
+      "n": 12,
+      "shape": "square",
+      "ink": "blue"
+     },
+     {
+      "id": "tc",
+      "counters": "gc",
+      "n": 12,
+      "shape": "square",
+      "ink": "warm"
+     },
+     {
+      "id": "la",
+      "label": "1\\times12",
+      "at": "B1",
+      "dir": "n",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "lb",
+      "label": "2\\times6",
+      "at": "B2",
+      "dir": "e",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "lc",
+      "label": "3\\times4",
+      "at": "B3",
+      "dir": "e",
+      "size": "l",
+      "ink": "warm"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here is everything twelve tiles can do. One row of twelve.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Every rectangle twelve can make"
+      },
+      {
+       "do": "show",
+       "target": [
+        "ta",
+        "la"
+       ],
+       "at": "One"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two rows of six. Three rows of four.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "tb",
+        "lb"
+       ],
+       "at": "Two"
+      },
+      {
+       "do": "show",
+       "target": [
+        "tc",
+        "lc"
+       ],
+       "at": "Three"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Three rectangles, six factors: one, two, three, four, six, twelve.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "ta",
+        "tb",
+        "tc"
+       ],
+       "at": "rectangles",
+       "until": "six"
+      },
+      {
+       "do": "highlight",
+       "target": "ta",
+       "at": "one",
+       "until": "two"
+      },
+      {
+       "do": "highlight",
+       "target": "tb",
+       "at": "two",
+       "until": "three",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "tc",
+       "at": "three",
+       "nth": 2,
+       "until": "six",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "tb",
+       "at": "six",
+       "nth": 2,
+       "until": "twelve"
+      },
+      {
+       "do": "highlight",
+       "target": "ta",
+       "at": "twelve"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "To find every factor pair of any number, try each number of rows in order, and write each pair once.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "recap",
+       "text": "Try 1 row, 2 rows, 3 rows... in order.",
+       "at": "try"
+      },
+      {
+       "do": "recap",
+       "text": "Leftover tiles mean it is not a factor.",
+       "at": "write"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "And stop when the rectangles start to repeat.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "recap",
+       "text": "Stop when the rectangles repeat.",
+       "at": "stop"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

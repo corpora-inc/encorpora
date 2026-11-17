@@ -16,7 +16,12 @@ import {
 } from "../funding/invoice-offers";
 import { pricesOptions } from "../billing/prices";
 import { PitchLink, usePitchNav } from "./nav";
-import { pitchProgram, pitchProgramOf, pitchTarget } from "./targets";
+import {
+  choosePitchAction,
+  pitchProgram,
+  pitchProgramOf,
+  pitchTarget,
+} from "./targets";
 import { keepArrival } from "../../lib/program-choice";
 import styles from "./Pitch.module.css";
 import { storedHome } from "../../lib/home-href";
@@ -192,6 +197,7 @@ export function BuyOptions({
     // The plan waits for the learner it is for: after sign-up and "What
     // brings you to AMP?", it opens for them with this plan chosen.
     rememberPlanChoice(next);
+    if (!signedIn) choosePitchAction("card");
     // Signed in: their place, where the plan waits (or `/`, which offers it).
     nav.go(
       signedIn ? { to: storedHome() ?? "/" } : pitchTarget("card", landing),

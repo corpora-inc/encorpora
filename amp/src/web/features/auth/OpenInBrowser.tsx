@@ -5,7 +5,11 @@ import {
   type InAppPlatform,
 } from "../../../analytics/browser-kind";
 import { nativeRuntime } from "../../native-runtime";
-import { browserHandoffHref, handoffHint } from "./browser-handoff";
+import {
+  browserHandoffHref,
+  handoffHint,
+  withArrival,
+} from "./browser-handoff";
 import styles from "./OpenInBrowser.module.css";
 
 /** How long a page that handed off stays on view before the jump counts as
@@ -42,6 +46,13 @@ export function useBrowserHandoff() {
           platform: inApp.platform,
           app: inApp.app,
         });
+        // The app's own "open in browser" opens this address: it takes
+        // the tab's arrival along, as the jump would have.
+        try {
+          history.replaceState(history.state, "", withArrival(location.href));
+        } catch (error) {
+          console.warn("The address couldn't take the arrival along", error);
+        }
         setHint(true);
       }
     }, LEAVE_WINDOW);

@@ -61,7 +61,7 @@ export async function accessSession(){const r=await fetch('/api/__pitch/session'
 export function onSessionChanged(update){listeners.add(update);return()=>listeners.delete(update);}
 export function notifyDeviceSessionChanged(){}export function notifyAccountSessionChanged(s){if(s!==undefined)for(const l of listeners)l(s);}
 export async function signIn(){}export async function signOut(){}
-export async function authConfig(){return {mode:'accounts',passwords:true,parentFollowup:true,providers:[]};}`;
+export async function authConfig(){const r=await fetch('/api/v1/auth-config');if(!r.ok)throw new Error('auth config '+r.status);return r.json();}`;
 const vite = await createServer({
   cacheDir: noMedia
     ? "node_modules/.vite-pitch-text"
@@ -151,6 +151,16 @@ type Api = {
   child?: string;
   /** The plan each checkout asked Stripe for. */
   checkouts?: string[];
+  /** The sign-up intent answers 403, as it does a crawler without Origin. */
+  intentFails?: boolean;
+  /** Each `/complete` of a late intent, signed in. */
+  completes?: number;
+  /** Email sign-up confirms its address with a code first (production). */
+  emailCode?: string;
+  /** Sign-in's configuration fails to load. */
+  configFails?: boolean;
+  /** The providers sign-in offers (none by default). */
+  providers?: string[];
 };
 const childId = "pitch-child";
 /** The parent's `/me`, as the server answers it before and after the starter. */
@@ -199,14 +209,16 @@ async function serve(page: Page, api: Api) {
     // The two answers the light home entry decides `/` with
     // (src/web/home-entry.tsx), matching the session above.
     if (path === "/api/v1/auth-config")
-      return route.fulfill({
-        json: {
-          mode: "accounts",
-          passwords: true,
-          parentFollowup: true,
-          providers: [],
-        },
-      });
+      return api.configFails
+        ? route.abort("failed")
+        : route.fulfill({
+            json: {
+              mode: "accounts",
+              passwords: true,
+              parentFollowup: true,
+              providers: api.providers ?? [],
+            },
+          });
     if (path === "/api/auth/get-session")
       return route.fulfill({
         json: api.signedIn
@@ -231,12 +243,45 @@ async function serve(page: Page, api: Api) {
       });
     if (path === "/api/v1/parent-followup/intent") {
       api.intents.push(request.postDataJSON());
+      return api.intentFails && !api.signedIn
+        ? route.fulfill({ status: 403, json: { error: "origin_not_allowed" } })
+        : route.fulfill({ json: { ready: true } });
+    }
+    if (path === "/api/v1/parent-followup/complete") {
+      api.completes = (api.completes ?? 0) + 1;
       return route.fulfill({ json: { ready: true } });
+    }
+    // The code typed on the sign-up screen confirms the address and signs in.
+    if (path === "/api/auth/email-otp/verify-email") {
+      if (request.postDataJSON().otp !== api.emailCode)
+        return route.fulfill({
+          status: 400,
+          json: { code: "INVALID_OTP", message: "Invalid OTP" },
+        });
+      api.signedIn = true;
+      return route.fulfill({
+        json: {
+          status: true,
+          token: "synthetic",
+          user: { id: "pitch-parent", email: "parent@example.test" },
+        },
+      });
     }
     // #2257 checks the address before password signup. This is a new account.
     if (path === "/api/auth/sign-in-methods")
       return route.fulfill({ json: { methods: [] } });
     if (path === "/api/auth/sign-up/email") {
+      if (api.emailCode)
+        return route.fulfill({
+          json: {
+            token: null,
+            user: {
+              id: "pitch-parent",
+              email: "parent@example.test",
+              emailVerified: false,
+            },
+          },
+        });
       api.signedIn = true;
       return route.fulfill({
         json: {
@@ -647,6 +692,8 @@ async function journeys(browser: Browser, engine: string) {
     signUpHeading: string;
     entry: string;
     landing: (page: Page, api: Api) => Promise<void>;
+    /** Email sign-up confirms its address with this code first. */
+    code?: string;
   };
   // A new account answers "What brings you to AMP?" first.
   const starter = async (page: Page) => {
@@ -665,6 +712,8 @@ async function journeys(browser: Browser, engine: string) {
       },
       signUpHeading: "Create your account to buy",
       entry: "pitch-buy",
+      // Production's email sign-up: the code, then straight on to the plan.
+      code: "135790",
       // The plan waits for the learner it is for: the parent's one child,
       // then that child's plan with the pitch's plan chosen, then Stripe.
       landing: async (page, api) => {
@@ -673,6 +722,39 @@ async function journeys(browser: Browser, engine: string) {
         // Guided family setup (#2157) names each row and saves with Next.
         await page.waitForURL((url) => url.pathname === "/start/parent");
         await page.getByRole("heading", { name: "Add your kids" }).waitFor();
+        // Next is always in view without scrolling, on a small phone and a
+        // short laptop screen (finding #10), and covers no field once the
+        // step is scrolled to its end.
+        for (const [width, height] of [
+          [360, 640],
+          [1280, 720],
+          [390, 844],
+        ] as const) {
+          await page.setViewportSize({ width, height });
+          await page.evaluate(() => scrollTo(0, 0));
+          const next = await page
+            .getByRole("button", { name: "Next", exact: true })
+            .boundingBox();
+          assert.ok(
+            next && next.y >= 0 && next.y + next.height <= height,
+            `setup ${width}x${height}: Next in view (${JSON.stringify(next)})`,
+          );
+          await page.evaluate(() => scrollTo(0, document.body.scrollHeight));
+          const [foot, field] = await Promise.all([
+            page
+              .getByRole("button", { name: "Next", exact: true })
+              .boundingBox(),
+            page
+              .getByRole("button", { name: "Add another child" })
+              .boundingBox(),
+          ]);
+          assert.ok(
+            foot && field && field.y + field.height <= foot.y,
+            `setup ${width}x${height}: scrolled to the end, Next covers nothing`,
+          );
+          if (width === 360)
+            await page.screenshot({ path: `${shots}/setup-next-360x640.png` });
+        }
         await page
           .getByRole("button", { name: "Birth year, Child 1", exact: true })
           .click();
@@ -735,19 +817,16 @@ async function journeys(browser: Browser, engine: string) {
       intents: [],
       events: [],
       pricesFail: false,
+      ...(item.code ? { emailCode: item.code } : {}),
     };
     await serve(page, api);
     await page.goto(`${origin}${item.url}`);
     await item.act(page);
     await page.getByRole("heading", { name: item.signUpHeading }).waitFor();
+    // Sign-up's own address: why, the program and the campaign are the
+    // tab's, never a query string.
     assert.equal(new URL(page.url()).pathname, "/sign-up", tag);
-    assert.equal(new URL(page.url()).searchParams.get("entry"), item.entry);
-    if (item.url.includes("program"))
-      assert.equal(
-        new URL(page.url()).searchParams.get("utm_campaign"),
-        "ar-efa-launch",
-        `${tag}: campaign kept`,
-      );
+    assert.equal(new URL(page.url()).search, "", `${tag}: no query`);
     await noOverflow(page, `${tag} sign-up`);
     await page.screenshot({ path: `${shots}/${tag}-sign-up.png` });
     await page.getByLabel("Email").fill("parent@example.test");
@@ -755,15 +834,126 @@ async function journeys(browser: Browser, engine: string) {
       .getByLabel("Password", { exact: true })
       .fill("correct horse battery");
     await page.getByRole("button", { name: "Create account" }).click();
+    if (item.code) {
+      const form = page.getByRole("form", { name: "Confirm your email" });
+      await form.getByLabel("Code").fill(item.code);
+      await form.getByRole("button", { name: "Continue" }).click();
+    }
     await item.landing(page, api);
     assert.equal(api.intents.length, 1, `${tag}: one signup intent`);
     assert.equal(api.intents[0]!.entry, item.entry);
     assert.equal(api.intents[0]!.notice, signupNotice);
     assert.equal(api.intents[0]!.newsletter, true);
-    if (item.url.includes("program"))
+    if (item.url.includes("program")) {
       assert.equal(api.intents[0]!.program, "ar-efa");
+      assert.deepEqual(
+        api.intents[0]!.campaign,
+        { campaign: "ar-efa-launch", source: "google", medium: "cpc" },
+        `${tag}: campaign kept`,
+      );
+    }
     await noOverflow(page, tag);
     await page.screenshot({ path: `${shots}/${tag}.png` });
+    await context.close();
+  }
+
+  // Sign-up never waits on its intent: a refused intent (403, as Meta's
+  // crawlers get) and the account is still made, then the intent is
+  // recorded once signed in. Email sign-up confirms its address with a code
+  // typed on the same screen.
+  for (const variant of ["intent-refused", "email-code"] as const) {
+    const tag = `${engine}-journey-${variant}`;
+    const context = await browser.newContext({
+      viewport: { width: 390, height: 844 },
+    });
+    const page = await context.newPage();
+    const api: Api = {
+      signedIn: false,
+      intents: [],
+      events: [],
+      pricesFail: false,
+      intentFails: variant === "intent-refused",
+      ...(variant === "email-code" ? { emailCode: "246810" } : {}),
+    };
+    await serve(page, api);
+    await page.goto(`${origin}/`);
+    await page.getByRole("button", { name: "Try it free" }).first().click();
+    await page.getByRole("heading", { name: "Try AMP free" }).waitFor();
+    assert.equal(new URL(page.url()).search, "", `${tag}: no query`);
+    await page.getByLabel("Email").fill("parent@example.test");
+    await page
+      .getByLabel("Password", { exact: true })
+      .fill("correct horse battery");
+    await page.getByRole("button", { name: "Create account" }).click();
+    if (variant === "email-code") {
+      const form = page.getByRole("form", { name: "Confirm your email" });
+      await form.waitFor();
+      await form.getByText("parent@example.test").waitFor();
+      assert.equal(new URL(page.url()).pathname, "/sign-up", tag);
+      await noOverflow(page, `${tag} code`);
+      await page.screenshot({ path: `${shots}/${tag}-code.png` });
+      // A wrong code says so in place; the right one signs in.
+      await form.getByLabel("Code").fill("111111");
+      await form.getByRole("button", { name: "Continue" }).click();
+      await page.getByText("That code doesn’t match").waitFor();
+      assert.equal(api.signedIn, false, `${tag}: no session on a wrong code`);
+      await form.getByLabel("Code").fill("246 810");
+      await form.getByRole("button", { name: "Continue" }).click();
+    }
+    await page.waitForURL((url) => url.pathname === "/start");
+    await page
+      .getByRole("heading", { name: "What brings you to AMP?" })
+      .waitFor();
+    assert.equal(api.signedIn, true, `${tag}: signed in`);
+    if (variant === "intent-refused") {
+      assert.equal(api.intents.length, 2, `${tag}: refused, then recorded`);
+      assert.equal(api.intents[1]!.late, true, `${tag}: marked late`);
+      assert.equal(api.intents[1]!.entry, "pitch-try");
+      assert.equal(api.completes, 1, `${tag}: attached to the account`);
+    } else assert.equal(api.intents.length, 1, `${tag}: one intent`);
+    await context.close();
+  }
+
+  // Sign-in's methods failed to load: a working screen with a retry.
+  {
+    const context = await browser.newContext({
+      viewport: { width: 390, height: 844 },
+    });
+    const page = await context.newPage();
+    const api: Api = {
+      signedIn: false,
+      intents: [],
+      events: [],
+      pricesFail: false,
+      configFails: true,
+    };
+    await serve(page, api);
+    await page.goto(`${origin}/sign-up`);
+    await page.getByRole("heading", { name: "Sign-in didn’t load" }).waitFor();
+    await noOverflow(page, `${engine} sign-in config retry`);
+    await page.screenshot({ path: `${shots}/${engine}-config-retry.png` });
+    api.configFails = false;
+    await page.getByRole("button", { name: "Try again" }).click();
+    await page.getByLabel("Email").waitFor();
+    await context.close();
+  }
+
+  // An older sign-up link (`?entry=pitch-try&return=free-practice`): one
+  // hop to the clean address, the tab knowing why it signs up.
+  {
+    const context = await browser.newContext({
+      viewport: { width: 390, height: 844 },
+    });
+    const page = await context.newPage();
+    await serve(page, {
+      signedIn: false,
+      intents: [],
+      events: [],
+      pricesFail: false,
+    });
+    await page.goto(`${origin}/sign-up?entry=pitch-try&return=free-practice`);
+    await page.getByRole("heading", { name: "Try AMP free" }).waitFor();
+    assert.equal(new URL(page.url()).search, "", "older link cleaned");
     await context.close();
   }
 
@@ -836,6 +1026,51 @@ async function journeys(browser: Browser, engine: string) {
   }
 }
 
+/** Sign-up as Try it free opens it, for review: 320/390/768/1280 px, light
+ * and dark, and an Instagram webview on an iPhone (390 x 664), where Google
+ * hands off to Safari and email is the form below it. */
+async function signUpShots(browser: Browser, engine: string) {
+  const instagram =
+    "Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/22B83 Instagram 356.0.0.21.107 (iPhone15,3; iOS 18_1; en_US; en; scale=3.00; 1290x2796; 646512530)";
+  const views = [
+    ...[320, 390, 768, 1280].flatMap((width) =>
+      (["light", "dark"] as const).map((colorScheme) => ({
+        tag: `${width}-${colorScheme}`,
+        options: {
+          viewport: { width, height: width >= 768 ? 900 : 844 },
+          colorScheme,
+        },
+      })),
+    ),
+    {
+      tag: "instagram-ios-390x664",
+      options: {
+        viewport: { width: 390, height: 664 },
+        userAgent: instagram,
+        colorScheme: "light" as const,
+      },
+    },
+  ];
+  for (const { tag, options } of views) {
+    const context = await browser.newContext(options);
+    const page = await context.newPage();
+    await serve(page, {
+      signedIn: false,
+      intents: [],
+      events: [],
+      pricesFail: false,
+      providers: ["google", "apple", "microsoft"],
+    });
+    await page.goto(`${origin}/`);
+    await page.getByRole("button", { name: "Try it free" }).first().click();
+    await page.getByRole("heading", { name: "Try AMP free" }).waitFor();
+    await page.evaluate(() => document.fonts.ready);
+    await noOverflow(page, `${engine} sign-up ${tag}`);
+    await page.screenshot({ path: `${shots}/${engine}-sign-up-${tag}.png` });
+    await context.close();
+  }
+}
+
 try {
   for (const engine of engines) {
     const browser = await (
@@ -846,6 +1081,7 @@ try {
       if (!noMedia) {
         await fit(browser, engine);
         await journeys(browser, engine);
+        await signUpShots(browser, engine);
       }
     } catch (error) {
       for (const context of browser.contexts())

@@ -29,7 +29,6 @@ import {
   trackClientError,
   trackGooglePage,
 } from "./lib/analytics";
-import { campaignSearch } from "./lib/funded-entry";
 import { queryClient } from "./lib/query-client";
 import { LoadingScreen, markArrival } from "./ui/LoadingScreen";
 
@@ -73,23 +72,14 @@ function showPitch() {
   let leaving = false;
   const nav: PitchNav = {
     search,
-    // What the router's links show: the place, with the campaign labels and
-    // program it keeps on every move (`app/router.tsx`, the root's search).
-    href: ({ to, search: next = {} }) =>
-      to +
-      defaultStringifySearch({
-        ...campaignSearch(search),
-        ...(typeof search.program === "string"
-          ? { program: search.program }
-          : {}),
-        ...(search.entry !== undefined ? { entry: search.entry } : {}),
-        ...next,
-      }),
+    // What the router's links show: the place itself. The ad's program,
+    // campaign and why the visitor signs up are the tab's
+    // (lib/program-choice.ts), kept on arrival, never carried.
+    href: ({ to, search: next = {} }) => to + defaultStringifySearch(next),
     // The brand on `/` is this page: the router would show it again.
     go: (place) => void (place.to === "/" || leave(place)),
     preload: () => void loadApp(),
-    // This address again: the router keeps its campaign labels, program
-    // and entry (`app/router.tsx`, the root's search), so nothing is handed.
+    // This address again, as the router decides it.
     reload: () => void leave({ to: "/" }),
   };
   async function leave(place: PitchPlace) {

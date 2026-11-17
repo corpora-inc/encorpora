@@ -181,6 +181,10 @@ type Entry = {
 };
 type P = [number, number];
 /** The app's figure roles, as the film's theme tokens: things are drawn in the same paints as in a problem. */
+/** The counted mark on a thing in a row or pile: centred under its 100-unit art box, clear of the art. */
+export const THING_TICK = "M40 110L48 118L60 102";
+/** In a grid the mark stays inside the thing's own cell (at its lower right), clear of the cell's border. */
+export const THING_TICK_IN_CELL = "M81 98L89 106L102 90";
 const THING_PAINT: Record<string, string> = {
   none: "none", ink: "var(--color-figure-ink)", axis: "var(--color-figure-axis)", grid: "var(--color-figure-grid)", muted: "var(--color-muted-text)",
   paper: "var(--color-figure-paper)", empty: "var(--color-figure-empty)",
@@ -1360,9 +1364,9 @@ class GeoStage {
           return { el, w: l.w ?? 1 };
         });
         tg.appendChild(art);
-        // counted: a small muted tick at the thing's lower right, inside its own place, clear of the art when the light grows it
+        // counted: a small muted tick, clear of the art when the light grows it
         const tick = svg("path", "film-thing-tick film-em");
-        tick.setAttribute("d", "M81 98L89 106L102 90");
+        tick.setAttribute("d", "in" in p && p.in ? THING_TICK_IN_CELL : THING_TICK);
         tg.appendChild(tick);
         layer.appendChild(tg);
         this.thingViews.set(th.name, { g: tg, art, tick, layers, px: 0 });
@@ -2377,9 +2381,11 @@ class GeoStage {
         this.tableIssues.add(`bar ${p.id}: a per-piece value does not fit. Widen the bar or hide .values.`);
     });
     const title = this.chainState([`${p.id}.title`], true, t);
-    show(v.bracket, o * title.o);
+    // an empty title draws nothing: a bracket with no words over it is only a stray line for labels to touch
+    if (p.title === "") { show(v.bracket, 0); show(v.title, 0); }
+    else show(v.bracket, o * title.o);
     v.bracket.setAttribute("d", `M${k(b.x, top + 0.22)}V${map([0, top + 0.6])[1]}H${map([b.x + b.w, 0])[0]}V${map([0, top + 0.22])[1]}`);
-    show(v.title, o * title.o); place(v.title, map([b.x + b.w / 2, top + 1.35]), "c", 0, o * title.o, title.em);
+    if (p.title !== "") { show(v.title, o * title.o); place(v.title, map([b.x + b.w / 2, top + 1.35]), "c", 0, o * title.o, title.em); }
     const scaleStates = {
       top: this.chainState([`${p.id}.scale`], false, t),
       amount: this.chainState([`${p.id}.amounts`], false, t),

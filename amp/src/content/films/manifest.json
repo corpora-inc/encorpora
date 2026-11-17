@@ -202,6 +202,29 @@
     ],
     "skill": "triangle-angle-theorems"
   },
+  "area-model-product": {
+    "id": "area-model-product--sa",
+    "version": "63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641",
+    "title": "Multiplying with partial products",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/audio.m4a",
+    "duration": 320.88997732426304,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/audio.m4a",
+        "version": "63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641",
+        "duration": 320.88997732426304
+      }
+    ],
+    "skill": "whole-multiplication"
+  },
   "area-tiling-distributive": {
     "id": "rectangle-area",
     "version": "cc598ab39b5e8661433c452ddda97da3ada60247ed86e21823e6814dfd2c14d8",
@@ -1560,6 +1583,52 @@
     ],
     "skill": "compare-attributes"
   },
+  "complete-area-model": {
+    "id": "area-model-product--sa",
+    "version": "63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641",
+    "title": "Multiplying with partial products",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/audio.m4a",
+    "duration": 320.88997732426304,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/audio.m4a",
+        "version": "63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641",
+        "duration": 320.88997732426304
+      }
+    ],
+    "skill": "whole-multiplication"
+  },
+  "complete-list-choice": {
+    "id": "list-all-pairs--sl",
+    "version": "0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397",
+    "title": "Factors, multiples, primes and composites",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/audio.m4a",
+    "duration": 320.97,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/audio.m4a",
+        "version": "0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397",
+        "duration": 320.97
+      }
+    ],
+    "skill": "factors-multiples"
+  },
   "complete-the-shape": {
     "id": "compose-shape-name--sc",
     "version": "f20bf4d0c462f669cf12591bd6714accc06268e6ba2cb563e4540448193a6a96",
@@ -2565,6 +2634,29 @@
     ],
     "skill": "division-facts"
   },
+  "divisibility-rule-check": {
+    "id": "list-all-pairs--sl",
+    "version": "0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397",
+    "title": "Factors, multiples, primes and composites",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/audio.m4a",
+    "duration": 320.97,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/audio.m4a",
+        "version": "0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397",
+        "duration": 320.97
+      }
+    ],
+    "skill": "factors-multiples"
+  },
   "dot-group-compared-to-number": {
     "id": "compare-groups--sk",
     "version": "4bfc6d4452f8718f1bcc4954e45d02aabbb5532d374688802d461f518dc4859b",
@@ -2928,6 +3020,29 @@
     ],
     "skill": "hundreds-place-value"
   },
+  "explain-part": {
+    "id": "area-model-product--sa",
+    "version": "63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641",
+    "title": "Multiplying with partial products",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/audio.m4a",
+    "duration": 320.88997732426304,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/audio.m4a",
+        "version": "63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641",
+        "duration": 320.88997732426304
+      }
+    ],
+    "skill": "whole-multiplication"
+  },
   "exponent-quotient-slots": {
     "id": "quotient-of-powers-exponent--sq",
     "version": "9179886bde6f398e1f147103a8f8d33644a7ad3655785d8137f95eca70cb5621",
@@ -2971,6 +3086,52 @@
       }
     ],
     "skill": "multiplication-division-equality"
+  },
+  "factor-pairs-select": {
+    "id": "list-all-pairs--sl",
+    "version": "0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397",
+    "title": "Factors, multiples, primes and composites",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/audio.m4a",
+    "duration": 320.97,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/audio.m4a",
+        "version": "0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397",
+        "duration": 320.97
+      }
+    ],
+    "skill": "factors-multiples"
+  },
+  "factor-partner": {
+    "id": "list-all-pairs--sl",
+    "version": "0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397",
+    "title": "Factors, multiples, primes and composites",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/audio.m4a",
+    "duration": 320.97,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/audio.m4a",
+        "version": "0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397",
+        "duration": 320.97
+      }
+    ],
+    "skill": "factors-multiples"
   },
   "facts-from-known": {
     "id": "regions-to-whole--so",
@@ -3017,6 +3178,29 @@
       }
     ],
     "skill": "facts-within-5"
+  },
+  "facts-to-twelve": {
+    "id": "area-model-product--sa",
+    "version": "63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641",
+    "title": "Multiplying with partial products",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/audio.m4a",
+    "duration": 320.88997732426304,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/audio.m4a",
+        "version": "63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641",
+        "duration": 320.88997732426304
+      }
+    ],
+    "skill": "whole-multiplication"
   },
   "fee-plan-chain": {
     "id": "linear-model-equation--sm",
@@ -4494,6 +4678,29 @@
     ],
     "skill": "two-step-stories"
   },
+  "list-all-pairs": {
+    "id": "list-all-pairs--sl",
+    "version": "0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397",
+    "title": "Factors, multiples, primes and composites",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/audio.m4a",
+    "duration": 320.97,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/audio.m4a",
+        "version": "0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397",
+        "duration": 320.97
+      }
+    ],
+    "skill": "factors-multiples"
+  },
   "loan-compare-options": {
     "id": "linear-initial-value-meaning--sk",
     "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
@@ -4767,6 +4974,29 @@
     ],
     "skill": "curved-solid-volume"
   },
+  "mcas-prime-factor-select": {
+    "id": "list-all-pairs--sl",
+    "version": "0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397",
+    "title": "Factors, multiples, primes and composites",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/audio.m4a",
+    "duration": 320.97,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/audio.m4a",
+        "version": "0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397",
+        "duration": 320.97
+      }
+    ],
+    "skill": "factors-multiples"
+  },
   "mcas-rational-irrational-select": {
     "id": "repeating-decimal-to-fraction--sr",
     "version": "94c7f19809cb72717a34e016a012871fdd9ab0f2978a8520e26d499563ca8c18",
@@ -4878,6 +5108,29 @@
       }
     ],
     "skill": "compare-functions"
+  },
+  "mcas-true-product-equations": {
+    "id": "area-model-product--sa",
+    "version": "63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641",
+    "title": "Multiplying with partial products",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/audio.m4a",
+    "duration": 320.88997732426304,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/audio.m4a",
+        "version": "63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641",
+        "duration": 320.88997732426304
+      }
+    ],
+    "skill": "whole-multiplication"
   },
   "mean-data": {
     "id": "mean-data",
@@ -5217,6 +5470,29 @@
       }
     ]
   },
+  "multiples-select": {
+    "id": "list-all-pairs--sl",
+    "version": "0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397",
+    "title": "Factors, multiples, primes and composites",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/audio.m4a",
+    "duration": 320.97,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/audio.m4a",
+        "version": "0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397",
+        "duration": 320.97
+      }
+    ],
+    "skill": "factors-multiples"
+  },
   "multiplication-division-equation-truth": {
     "id": "multiplication-division-equation-truth--sm",
     "version": "22ec1a420ba347118bedacf8702a0ec96d955bb1bc3620034ee1f8eef412fbb2",
@@ -5286,6 +5562,29 @@
     ],
     "skill": "multiplication-facts"
   },
+  "multiply-by-one-digit": {
+    "id": "area-model-product--sa",
+    "version": "63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641",
+    "title": "Multiplying with partial products",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/audio.m4a",
+    "duration": 320.88997732426304,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/audio.m4a",
+        "version": "63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641",
+        "duration": 320.88997732426304
+      }
+    ],
+    "skill": "whole-multiplication"
+  },
   "multiply-by-tens": {
     "id": "multiply-by-tens--sm",
     "version": "5963521b66a7c860d7eb3b862a9be016024dd8d36f1faf71d44b9607d18bc33f",
@@ -5331,6 +5630,29 @@
       }
     ],
     "skill": "multiplication-facts"
+  },
+  "multiply-two-digit": {
+    "id": "area-model-product--sa",
+    "version": "63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641",
+    "title": "Multiplying with partial products",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/audio.m4a",
+    "duration": 320.88997732426304,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/audio.m4a",
+        "version": "63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641",
+        "duration": 320.88997732426304
+      }
+    ],
+    "skill": "whole-multiplication"
   },
   "name-cut-shape-pieces": {
     "id": "solid-bottom-face-shape--ss",
@@ -6116,6 +6438,29 @@
     ],
     "skill": "parallelogram-proofs"
   },
+  "partial-products-by-place": {
+    "id": "area-model-product--sa",
+    "version": "63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641",
+    "title": "Multiplying with partial products",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/audio.m4a",
+    "duration": 320.88997732426304,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/audio.m4a",
+        "version": "63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641",
+        "duration": 320.88997732426304
+      }
+    ],
+    "skill": "whole-multiplication"
+  },
   "partition-from-marks": {
     "id": "array-add-rows-total--sa",
     "version": "ec8aac943e93c8c0f731987d916c06545eecc4dd2b495cc991995a6bb523fed5",
@@ -6538,6 +6883,29 @@
       }
     ],
     "skill": "linear-models"
+  },
+  "prime-composite-sort": {
+    "id": "list-all-pairs--sl",
+    "version": "0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397",
+    "title": "Factors, multiples, primes and composites",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/audio.m4a",
+    "duration": 320.97,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/list-all-pairs--sl/0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397/audio.m4a",
+        "version": "0280e2dfabea7c8248a196ae08977508b34e32e1c0a3e08480e1f1111c612397",
+        "duration": 320.97
+      }
+    ],
+    "skill": "factors-multiples"
   },
   "product-of-powers-exponent": {
     "id": "product-of-powers-exponent--sp",
@@ -9608,6 +9976,29 @@
       }
     ],
     "skill": "ten-more-less"
+  },
+  "tens-contribution": {
+    "id": "area-model-product--sa",
+    "version": "63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641",
+    "title": "Multiplying with partial products",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/audio.m4a",
+    "duration": 320.88997732426304,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/area-model-product--sa/63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641/audio.m4a",
+        "version": "63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641",
+        "duration": 320.88997732426304
+      }
+    ],
+    "skill": "whole-multiplication"
   },
   "tens-ones-model": {
     "id": "tens-ones-model--st",

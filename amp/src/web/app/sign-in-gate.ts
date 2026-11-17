@@ -2,7 +2,7 @@ import { redirect } from "@tanstack/react-router";
 import { z } from "zod";
 import type { AuthSession } from "../auth";
 import type { SignedInMe } from "../../account/contracts";
-import { continuationSearch } from "../lib/funded-entry";
+import { gateContinuation } from "../lib/funded-entry";
 import { authStep, type AuthSearch } from "./auth-links";
 import { meOptions, queryClient, sessionOptions } from "../lib/query";
 import { studentSession } from "../lib/student-device";
@@ -120,9 +120,9 @@ export function signInTarget(location: GateLocation, back: Back = "continue") {
             return: "school" as const,
             next: `${location.pathname}${location.searchStr ?? ""}`,
           }
-        : continuationSearch(
-            (location.search ?? {}) as Record<string, unknown>,
-          ),
+        : // The gate's own way back; the visitor's arrival is the tab's
+          // (lib/program-choice.ts), read on arrival, never handed on.
+          gateContinuation((location.search ?? {}) as Record<string, unknown>),
   );
 }
 

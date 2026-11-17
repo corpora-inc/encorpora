@@ -1,4 +1,3 @@
-import { requestFetch } from "../../lib/request-transport";
 import { measureAuth } from "../../lib/auth-measurement";
 import { track as trackAuth, googleSignupContext } from "../../lib/analytics";
 import { entryCapture } from "../../lib/openai-acquisition";
@@ -16,7 +15,7 @@ import { useLocation, useNavigate } from "@tanstack/react-router";
 import { authConfigOptions } from "../../lib/query";
 import { useLoggedError } from "../../feedback";
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import {
   accountClient,
   passkeyAccountClient,
@@ -47,9 +46,19 @@ import {
   fundedAttribution,
 } from "../../lib/funded-entry";
 import { useAuthDraft } from "./draft";
-import { authStep } from "../../app/auth-links";
-import { arrivalLabels, chosenProgram } from "../../lib/program-choice";
+import { authMove } from "../../app/auth-links";
+import {
+  arrivalLabels,
+  chosenProgram,
+  keepSignUpIntent,
+  signUpIntent,
+} from "../../lib/program-choice";
+import { recordPendingIntent, recordSignupIntent } from "./signup-intent";
+import { LoadingScreen } from "../../ui/LoadingScreen";
 import { useBrowserHandoff } from "./OpenInBrowser";
+
+/** The sign-up code's length (server/sign-in-methods.ts SIGN_UP_CODE_LENGTH). */
+const SIGN_UP_CODE_DIGITS = 6;
 
 /** The fragment that marks a sign-in handed off from an in-app browser:
  * Google starts on arrival. A fragment never reaches the server or a log. */
@@ -121,33 +130,36 @@ export function SignInScreen() {
   // Each step is its own address, carrying the sign-in's continuation
   // (app/auth-links.ts).
   const setStep = (next: Step | "create-password") => {
-    const carry = continuationSearch(routeLocation.search);
+    const here = routeLocation.search as Record<string, unknown>;
     void navigate(
       next === "create"
-        ? authStep("sign-up", carry)
+        ? authMove("sign-up", here)
         : next === "create-password"
-          ? authStep("sign-up", { ...carry, method: "password" })
+          ? authMove("sign-up", here, { method: "password" })
           : next === "reset"
-            ? authStep("reset", { ...carry, token: resetToken ?? undefined })
-            : authStep(next, carry),
+            ? authMove("reset", here, { token: resetToken ?? undefined })
+            : authMove(next, here),
     );
   };
-  const { data: config } = useSuspenseQuery(authConfigOptions);
-  const accounts = config.mode === "accounts";
+  // The sign-in methods: loaded with the route; a failed load is this
+  // screen's own retry, never a dead end (`ConfigRetry`).
+  const configQuery = useQuery(authConfigOptions);
+  const config = configQuery.data ?? null;
+  const accounts = config?.mode === "accounts";
   // In an in-app browser (Facebook, Instagram, TikTok…), Google refuses to
   // sign in, so "Continue with Google" opens the same sign-in in the phone's
   // browser in one tap. Every other method works in place.
   const handoff = useBrowserHandoff();
   const inApp = !!handoff.inApp;
   const providers = accounts ? config.providers.filter(isProvider) : [];
-  const passwords = accounts ? config.passwords : true;
+  const passwords = config ? (accounts ? config.passwords : true) : false;
   // Passkey-first sign-up wherever this browser and deployment support it;
   // a password is the secondary choice (`?method=password`).
   const passkeyCreate =
     step === "create" &&
     accounts &&
     !inApp &&
-    !!config.passkeySignup &&
+    !!config?.passkeySignup &&
     passkeysAvailable();
   const passkeyMethod = passkeyCreate && params.get("method") !== "password";
   // Sign-in offers a passkey: its client loads with this screen, not at boot.
@@ -168,6 +180,10 @@ export function SignInScreen() {
   const [password, setPassword] = useState("");
   const [code, setCode] = useState("");
   const [backup, setBackup] = useState(false);
+  // A new email-and-password account's address, waiting for the code we
+  // emailed to it: typed here, in this same browser, then signed in.
+  const [codeFor, setCodeFor] = useState<string | null>(null);
+  const [emailCode, setEmailCode] = useState("");
   const [busy, setBusy] = useState(false);
   // An account without a password, answered in place of the password form
   // (at the form's height, so nothing moves) with the methods that work.
@@ -212,12 +228,19 @@ export function SignInScreen() {
     setNotice("");
     setMethodHint(null);
   }
+  // Where this sign-in continues (the sign-in gate's way back, on the
+  // address) and why this tab signs up (the arrival store: the pitch's Try
+  // it free or Buy, a partner's link; never on the address). A sign-in on
+  // its way somewhere else (a school, an invitation) isn't a pitch sign-up.
   const carry = continuationSearch(routeLocation.search);
+  const intent =
+    carry.return && carry.return !== "free-practice" ? {} : signUpIntent();
+  const entry = carry.entry ?? intent.entry;
   // The funding program this visitor came through (lib/program-choice.ts),
   // or the one an older link names.
   const program = carry.program ?? chosenProgram() ?? undefined;
-  const freeEntry = carry.return === "free-practice";
-  const pitchEntry = isPitchEntry(carry.entry) ? carry.entry : undefined;
+  const freeEntry = carry.return === "free-practice" || !!intent.free;
+  const pitchEntry = isPitchEntry(entry) ? entry : undefined;
   // Every pitch path is a parent signup, so it records the same intent.
   const signupEntry = freeEntry || !!pitchEntry;
   const pitchCopy =
@@ -236,7 +259,7 @@ export function SignInScreen() {
   const additionalProviders = providers.filter(
     (p) => !primaryProviders.includes(p),
   );
-  const followupEnabled = accounts && config.parentFollowup;
+  const followupEnabled = accounts && !!config?.parentFollowup;
   // A route arrival does not prove these controls rendered. This uses the
   // existing first-party batch and contains no field contents or URL values.
   useEffect(() => {
@@ -326,34 +349,23 @@ export function SignInScreen() {
       document.removeEventListener("visibilitychange", visible);
     };
   }, [pending, handoffReady]);
+  // The parent's sign-up intent, recorded on the way (never waited on for
+  // long, never a reason to stop): ./signup-intent.ts.
   async function prepareFreeSignup() {
     if (!signupEntry || !followupEnabled) return;
-    await measureAuth("prepare", async () => {
-      await Promise.race([
-        entryCapture,
-        new Promise<void>((resolve) => setTimeout(resolve, 1800)),
-      ]);
-      const response = await requestFetch("/api/v1/parent-followup/intent", {
-        method: "POST",
-        credentials: "same-origin",
-        signal: AbortSignal.timeout(10000),
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          notice: signupNotice,
-          analytics: googleSignupContext(),
-          // Opted in by default; every email carries a one-click unsubscribe.
-          newsletter: true,
-          entry: carry.entry,
-          program,
-          // The ad's labels, from the continuation or the tab's arrival.
-          campaign: fundedAttribution({ ...arrivalLabels(), ...carry }),
-        }),
-      });
-      if (!response.ok)
-        throw new Error(
-          "We couldn’t prepare your free account. Please try again.",
-        );
-    });
+    await recordSignupIntent(
+      {
+        notice: signupNotice,
+        analytics: googleSignupContext(),
+        // Opted in by default; every email carries a one-click unsubscribe.
+        newsletter: true,
+        entry,
+        program,
+        // The ad's labels, from the continuation or the tab's arrival.
+        campaign: fundedAttribution({ ...arrivalLabels(), ...carry }),
+      },
+      entryCapture,
+    );
   }
   const returnTo = continuationUrl(carry, "/");
   // A new account's own destination is its first question: the address a
@@ -375,6 +387,9 @@ export function SignInScreen() {
     const session = await measureAuth("session", accessSession);
     if (!session) throw new Error("Sign-in didn’t finish. Please try again.");
     notifyAccountSessionChanged(session);
+    await recordPendingIntent();
+    // Signed in: why this tab signed up has been recorded.
+    keepSignUpIntent(null);
     await continueAfterSignIn(session);
   };
   async function continueAfterSignIn(session: AuthSession) {
@@ -469,6 +484,58 @@ export function SignInScreen() {
             "That request didn’t finish. Try again."),
     );
   };
+  function showCode(address: string) {
+    setEmailCode("");
+    setCodeFor(address);
+    setNotice("");
+  }
+  function confirmCode(event: FormEvent) {
+    event.preventDefault();
+    if (busy || pending || !codeFor) return;
+    void run(async () => {
+      // The code endpoint by its path: the email-code client plugin would
+      // add to the first load for this one call (check-bundle-budget).
+      const result = await accountClient.$fetch<{ token: string | null }>(
+        "/email-otp/verify-email",
+        {
+          method: "POST",
+          body: { email: codeFor, otp: emailCode.replace(/\D/g, "") },
+        },
+      );
+      const refused = result.error as
+        (typeof result.error & { code?: string }) | null;
+      if (refused)
+        throw new Error(
+          refused.code === "OTP_EXPIRED"
+            ? "That code expired. Send a new code and enter it here."
+            : refused.code === "TOO_MANY_ATTEMPTS"
+              ? "Too many tries with that code. Send a new code and enter it here."
+              : refused.status === 429
+                ? "Too many attempts. Wait a minute, then try again."
+                : "That code doesn’t match. Check the latest email from AMP and try again.",
+        );
+      await done();
+    });
+  }
+  /** A new code: signing in again with the password just typed proves it,
+   * and the server mails a fresh code to an unconfirmed address. */
+  function resendCode() {
+    if (busy || pending || !codeFor) return;
+    void run(async () => {
+      const result = await accountClient.signIn.email({
+        ...signInReturn,
+        email: codeFor,
+        password,
+      });
+      if (result.error?.code === "EMAIL_NOT_VERIFIED") {
+        setEmailCode("");
+        setNotice(`A new code is on its way to ${codeFor}.`);
+        return;
+      }
+      fail(result);
+      await done();
+    });
+  }
   function submit(event: FormEvent) {
     event.preventDefault();
     if (busy || pending) return;
@@ -480,8 +547,9 @@ export function SignInScreen() {
           email: email.trim(),
           password,
         });
+        // An unconfirmed account: the sign-in mailed a fresh code.
         if (result.error?.code === "EMAIL_NOT_VERIFIED")
-          return go("check-email");
+          return showCode(email.trim());
         if (
           result.error?.code === "INVALID_EMAIL_OR_PASSWORD" &&
           (await offerAccountMethods(email.trim()))
@@ -505,8 +573,9 @@ export function SignInScreen() {
           callbackURL: firstRunTo,
         });
         fail(result);
-        // Where email must be confirmed first, no session is issued yet. A
-        // mailed school invitation already confirmed this address, so sign in.
+        // Where email must be confirmed first, no session is issued yet: the
+        // code we emailed is typed here. A mailed school invitation already
+        // confirmed this address, so sign in.
         if (result.data?.token) await done();
         else if (result.data?.user.emailVerified) {
           fail(
@@ -517,7 +586,7 @@ export function SignInScreen() {
             }),
           );
           await done();
-        } else go("check-email");
+        } else showCode(email.trim());
       } else if (step === "forgot") {
         fail(
           await accountClient.requestPasswordReset({
@@ -640,14 +709,16 @@ export function SignInScreen() {
   };
   // Arriving from that handoff starts Google once. Back or a reload to this
   // address shows the screen instead, so Back from Google never re-enters it.
-  const [googleArrival] = useState(
-    () =>
-      location.hash === `#${GOOGLE_START}` &&
-      !inApp &&
-      providers.includes("google") &&
-      (step === "sign-in" || step === "create") &&
-      arrivedByLink(),
+  // The fragment and how this page was reached are read once; the methods
+  // can arrive later (a retried configuration), and Google starts then.
+  const [googleHandedOff] = useState(
+    () => location.hash === `#${GOOGLE_START}` && arrivedByLink(),
   );
+  const googleArrival =
+    googleHandedOff &&
+    !inApp &&
+    providers.includes("google") &&
+    (step === "sign-in" || step === "create");
   const arrivalStarted = useRef(false);
   useEffect(() => {
     // Starts an external sign-in on arrival; the provider's page replaces
@@ -663,6 +734,17 @@ export function SignInScreen() {
       await done();
     });
   const showProviders = step === "sign-in" || step === "create";
+  // The sign-in methods didn't load (a dropped connection, a blocker): a
+  // working screen that says so and tries again, never a dead end.
+  if (!config)
+    return configQuery.isError ? (
+      <ConfigRetry
+        retrying={configQuery.isFetching}
+        retry={() => void configQuery.refetch()}
+      />
+    ) : (
+      <LoadingScreen />
+    );
   return (
     <PageFrame className={styles.authFrame}>
       <section
@@ -772,7 +854,56 @@ export function SignInScreen() {
         {showProviders &&
           primaryProviders.length > 0 &&
           (passwords || passkeyCreate) && <EmailDivider copy={copy} />}
-        {hinted ? (
+        {codeFor && showProviders ? (
+          <form
+            className="account-form"
+            onSubmit={confirmCode}
+            data-email-code=""
+            aria-label="Confirm your email"
+          >
+            <p className={styles.codeHint}>
+              We sent a {SIGN_UP_CODE_DIGITS}-digit code to{" "}
+              <strong>{codeFor}</strong>. Enter it here to finish. If that email
+              already has an AMP account, we sent it how to sign in instead.
+            </p>
+            <TextField
+              label="Code"
+              required
+              autoComplete="one-time-code"
+              inputMode="numeric"
+              pattern={`[0-9 ]{${SIGN_UP_CODE_DIGITS},${SIGN_UP_CODE_DIGITS + 2}}`}
+              maxLength={SIGN_UP_CODE_DIGITS + 2}
+              value={emailCode}
+              onChange={(e) => setEmailCode(e.target.value)}
+            />
+            <Button
+              variant="primary"
+              type="submit"
+              disabled={busy || !!pending}
+              aria-busy={busy}
+            >
+              Continue
+            </Button>
+            <div className={styles.codeActions}>
+              <Button
+                type="button"
+                variant="quiet"
+                disabled={busy || !!pending}
+                onClick={resendCode}
+              >
+                Send a new code
+              </Button>
+              <Button
+                type="button"
+                variant="quiet"
+                disabled={busy || !!pending}
+                onClick={() => setCodeFor(null)}
+              >
+                Use a different email
+              </Button>
+            </div>
+          </form>
+        ) : hinted ? (
           <div
             className={styles.methodHint}
             data-method-hint
@@ -925,7 +1056,13 @@ export function SignInScreen() {
                 />
               )}
               <Button
-                variant="primary"
+                // A parent's sign-up leads with their provider; email is
+                // the quieter way in beside it.
+                variant={
+                  parentEntry && primaryProviders.length
+                    ? "secondary"
+                    : "primary"
+                }
                 type="submit"
                 disabled={busy || !!pending}
                 aria-busy={busy}
@@ -1028,6 +1165,41 @@ export function SignInScreen() {
             <a href="https://corpora.inc/legal/privacy/">Privacy</a>
           </p>
         )}
+      </section>
+    </PageFrame>
+  );
+}
+
+/** The sign-in screen when its methods didn't load: what happened, and one
+ * action that tries again. Same frame as the screen it stands in for. */
+function ConfigRetry({
+  retrying,
+  retry,
+}: {
+  retrying: boolean;
+  retry: () => void;
+}) {
+  return (
+    <PageFrame className={styles.authFrame}>
+      <section
+        className={`card welcome account-sign-in ${frameCard} ${styles.frame}`}
+        data-auth-config-failed=""
+      >
+        <FrameBrand />
+        <h2>Sign-in didn’t load</h2>
+        <p role="alert">
+          We couldn’t reach AMP to show the ways to sign in. Check your
+          connection, then try again.
+        </p>
+        <Button
+          variant="primary"
+          type="button"
+          disabled={retrying}
+          aria-busy={retrying}
+          onClick={retry}
+        >
+          Try again
+        </Button>
       </section>
     </PageFrame>
   );

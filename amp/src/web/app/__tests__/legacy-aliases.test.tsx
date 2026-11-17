@@ -260,7 +260,8 @@ const EXAMPLES: Example[] = [
     world: "signed out",
     lands: "/start/plan",
   },
-  { from: "/try", world: "signed out", lands: "/sign-up?return=free-practice" },
+  // The trial is why the tab signs up (lib/program-choice.ts), not a query.
+  { from: "/try", world: "signed out", lands: "/sign-up" },
   { from: "/try/anything", world: "adult", lands: `/family/${FAMILY}` },
 
   ...(
@@ -852,4 +853,20 @@ test("an older inventory link's view lands in its view store, keyed by the scree
       layerScope("/inventory", SESSION.accountId)
     ],
   ).toEqual({ topic: "fractions", collection: "all", area: "geometry" });
+});
+
+test("signed out, /try keeps the free trial as why the tab signs up", async () => {
+  const { signUpIntent, resetProgramChoiceForTests } = await import(
+    "../../lib/program-choice"
+  );
+  sessionStorage.clear();
+  resetProgramChoiceForTests();
+  enter("signed out");
+  const { followAlias } = await import("../legacy-aliases");
+  await followAlias({
+    pathname: "/try",
+    searchStr: "",
+    search: {},
+  } as never).catch((hop: unknown) => hop);
+  expect(signUpIntent()).toMatchObject({ free: true });
 });

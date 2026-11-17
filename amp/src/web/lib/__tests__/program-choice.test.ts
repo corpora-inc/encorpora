@@ -1,8 +1,12 @@
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { fundedPrograms } from "../funded-entry";
+import { arrivalQuery } from "../../features/auth/browser-handoff";
 import {
   PROGRAM_CHOICES,
+  SIGN_UP_ENTRIES,
   arrivalLabels,
+  keepSignUpIntent,
+  signUpIntent,
   keepArrival,
   chooseProgram,
   chosenProgram,
@@ -63,4 +67,71 @@ test("free text and an opted-out visitor's labels are never kept", () => {
   expect(arrivalLabels()).toEqual({});
   expect(chosenProgram()).toBe("az-esa");
   vi.unstubAllGlobals();
+});
+
+test("the sign-up entries are exactly the server's", async () => {
+  const { signupEntrySchema } = await import(
+    "../../../parent-followup/contracts"
+  );
+  expect([...SIGN_UP_ENTRIES].sort()).toEqual(
+    [...signupEntrySchema.options].sort(),
+  );
+});
+
+test("why a tab signs up is kept for the tab, never on an address", () => {
+  keepSignUpIntent({ entry: "pitch-try" });
+  resetProgramChoiceForTests();
+  expect(signUpIntent()).toEqual({ entry: "pitch-try", free: true });
+  keepSignUpIntent({ entry: "pitch-buy" });
+  expect(signUpIntent()).toEqual({ entry: "pitch-buy" });
+  // Only the handoff to another browser writes it as a query.
+  chooseProgram("ar-efa");
+  expect(arrivalQuery()).toEqual({ program: "ar-efa", entry: "pitch-buy" });
+  keepSignUpIntent(null);
+  expect(signUpIntent()).toEqual({});
+  expect(sessionStorage.getItem("amp.sign-up-entry")).toBeNull();
+});
+
+test("an older sign-up address is read once into the tab", () => {
+  keepArrival({ entry: "pitch-try", return: "free-practice" });
+  expect(signUpIntent()).toEqual({ entry: "pitch-try", free: true });
+  keepArrival({ return: "free-practice" });
+  expect(signUpIntent()).toEqual({ free: true });
+  expect(arrivalQuery()).toEqual({ return: "free-practice" });
+  // A visit that names none keeps it.
+  keepArrival({});
+  expect(signUpIntent()).toEqual({ free: true });
+});
+
+test("a partner's entry label is measurement: dropped under GPC; a pitch choice is not", () => {
+  vi.stubGlobal("navigator", { globalPrivacyControl: true });
+  keepSignUpIntent({ entry: "openai-math-path" });
+  expect(signUpIntent()).toEqual({});
+  keepSignUpIntent({ entry: "pitch-buy" });
+  expect(signUpIntent()).toEqual({ entry: "pitch-buy" });
+  vi.unstubAllGlobals();
+});
+
+test("a Buy's plan crosses into another browser with its entry, and is kept there", async () => {
+  const { chosenPlan, rememberPlanChoice, forgetPlanChoice } = await import(
+    "../pending-trial"
+  );
+  forgetPlanChoice();
+  rememberPlanChoice("month");
+  keepSignUpIntent({ entry: "pitch-buy" });
+  expect(arrivalQuery()).toEqual({ entry: "pitch-buy", plan: "month" });
+  // Try it free carries no plan.
+  keepSignUpIntent({ entry: "pitch-try" });
+  expect(arrivalQuery()).toEqual({ entry: "pitch-try" });
+  // The other browser: empty storage, the handoff's address.
+  forgetPlanChoice();
+  sessionStorage.clear();
+  resetProgramChoiceForTests();
+  keepArrival({ entry: "pitch-buy", plan: "month" });
+  expect(chosenPlan()).toBe("month");
+  expect(signUpIntent()).toEqual({ entry: "pitch-buy" });
+  // A plan without a Buy is not kept.
+  forgetPlanChoice();
+  keepArrival({ plan: "year" });
+  expect(chosenPlan()).toBeNull();
 });

@@ -1,0 +1,3221 @@
+{
+ "id": "area-model-product--sa",
+ "title": "Multiplying with partial products",
+ "skill": "whole-multiplication",
+ "teaches": [
+  "complete-area-model",
+  "explain-part",
+  "multiply-two-digit",
+  "multiply-by-one-digit",
+  "tens-contribution",
+  "partial-products-by-place",
+  "mcas-true-product-equations",
+  "facts-to-twelve"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -3.2,
+     -0.8,
+     24,
+     16.3
+    ],
+    "points": {
+     "X0Y0": [
+      0,
+      0
+     ],
+     "X20Y0": [
+      20,
+      0
+     ],
+     "X23Y0": [
+      23,
+      0
+     ],
+     "X0Y4": [
+      0,
+      4
+     ],
+     "X20Y4": [
+      20,
+      4
+     ],
+     "X23Y4": [
+      23,
+      4
+     ],
+     "X0Y14": [
+      0,
+      14
+     ],
+     "X20Y14": [
+      20,
+      14
+     ],
+     "X23Y14": [
+      23,
+      14
+     ],
+     "cA": [
+      10,
+      9
+     ],
+     "cB": [
+      21.5,
+      9
+     ],
+     "cC": [
+      10,
+      2
+     ],
+     "cD": [
+      21.5,
+      2
+     ]
+    },
+    "parts": [
+     {
+      "id": "rect",
+      "poly": [
+       "X0Y0",
+       "X23Y0",
+       "X23Y14",
+       "X0Y14"
+      ],
+      "fill": "paper",
+      "ink": "ink",
+      "w": 3
+     },
+     {
+      "id": "kA",
+      "poly": [
+       "X0Y4",
+       "X20Y4",
+       "X20Y14",
+       "X0Y14"
+      ],
+      "fill": "accent-fill",
+      "ink": "paper",
+      "w": 3
+     },
+     {
+      "id": "kB",
+      "poly": [
+       "X20Y4",
+       "X23Y4",
+       "X23Y14",
+       "X20Y14"
+      ],
+      "fill": "gold-fill",
+      "ink": "paper",
+      "w": 3
+     },
+     {
+      "id": "kC",
+      "poly": [
+       "X0Y0",
+       "X20Y0",
+       "X20Y4",
+       "X0Y4"
+      ],
+      "fill": "blue-fill",
+      "ink": "paper",
+      "w": 3
+     },
+     {
+      "id": "kD",
+      "poly": [
+       "X20Y0",
+       "X23Y0",
+       "X23Y4",
+       "X20Y4"
+      ],
+      "fill": "accent-fill",
+      "ink": "paper",
+      "w": 3
+     },
+     {
+      "id": "fA",
+      "poly": [
+       "X0Y4",
+       "X20Y4",
+       "X20Y14",
+       "X0Y14"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 3
+     },
+     {
+      "id": "fB",
+      "poly": [
+       "X20Y4",
+       "X23Y4",
+       "X23Y14",
+       "X20Y14"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "fC",
+      "poly": [
+       "X0Y0",
+       "X20Y0",
+       "X20Y4",
+       "X0Y4"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3
+     },
+     {
+      "id": "fD",
+      "poly": [
+       "X20Y0",
+       "X23Y0",
+       "X23Y4",
+       "X20Y4"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 3
+     },
+     {
+      "id": "cutV",
+      "seg": [
+       "X20Y0",
+       "X20Y14"
+      ],
+      "ink": "ink",
+      "w": 3
+     },
+     {
+      "id": "cutH",
+      "seg": [
+       "X0Y4",
+       "X23Y4"
+      ],
+      "ink": "ink",
+      "w": 3
+     },
+     {
+      "id": "dW",
+      "dim": [
+       "X0Y14",
+       "X23Y14"
+      ],
+      "side": "n",
+      "tex": "23",
+      "ink": "ink"
+     },
+     {
+      "id": "dH",
+      "dim": [
+       "X0Y0",
+       "X0Y14"
+      ],
+      "side": "w",
+      "tex": "14",
+      "ink": "ink"
+     },
+     {
+      "id": "dT1",
+      "dim": [
+       "X0Y14",
+       "X20Y14"
+      ],
+      "side": "n",
+      "tex": "20",
+      "ink": "ink"
+     },
+     {
+      "id": "dT2",
+      "dim": [
+       "X20Y14",
+       "X23Y14"
+      ],
+      "side": "n",
+      "tex": "3",
+      "ink": "ink"
+     },
+     {
+      "id": "dL1",
+      "dim": [
+       "X0Y4",
+       "X0Y14"
+      ],
+      "side": "w",
+      "tex": "10",
+      "ink": "ink"
+     },
+     {
+      "id": "dL2",
+      "dim": [
+       "X0Y0",
+       "X0Y4"
+      ],
+      "side": "w",
+      "tex": "4",
+      "ink": "ink"
+     },
+     {
+      "id": "lA",
+      "label": "200",
+      "at": "cA",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "halo": true
+     },
+     {
+      "id": "lB",
+      "label": "30",
+      "at": "cB",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "halo": true
+     },
+     {
+      "id": "lC",
+      "label": "80",
+      "at": "cC",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "halo": true
+     },
+     {
+      "id": "lD",
+      "label": "12",
+      "at": "cD",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "halo": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Twenty-three times fourteen: the area of this rectangle. Champ, what do you get?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "problem",
+       "text": "What is $23 \\times 14$?"
+      },
+      {
+       "do": "draw",
+       "target": "rect",
+       "at": "Twenty-three"
+      },
+      {
+       "do": "show",
+       "target": "dW",
+       "at": "Twenty-three"
+      },
+      {
+       "do": "show",
+       "target": "dH",
+       "at": "fourteen"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Easy! Twenty times ten is two hundred. Three times four is twelve. So two hundred twelve!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "20\\times10=200",
+       "at": "Twenty"
+      },
+      {
+       "do": "write",
+       "tex": "3\\times4=12",
+       "at": "Three"
+      },
+      {
+       "do": "write",
+       "tex": "200+12=212",
+       "id": "guess",
+       "at": "twelve",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Quick, and tidy. But let's break this rectangle apart by place value, and see if anything is missing.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "draw",
+       "target": "cutV",
+       "at": "break"
+      },
+      {
+       "do": "hide",
+       "target": "dW",
+       "at": "break"
+      },
+      {
+       "do": "show",
+       "target": "dT1",
+       "at": "break"
+      },
+      {
+       "do": "show",
+       "target": "dT2",
+       "at": "break"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Twenty-three is twenty and three, so the long side splits right there.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "dT1",
+       "at": "twenty",
+       "until": "and"
+      },
+      {
+       "do": "highlight",
+       "target": "dT2",
+       "at": "three",
+       "until": "so"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Fourteen is ten and four. Cut the tall side there too.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "draw",
+       "target": "cutH",
+       "at": "Cut"
+      },
+      {
+       "do": "hide",
+       "target": "dH",
+       "at": "ten"
+      },
+      {
+       "do": "show",
+       "target": "dL1",
+       "at": "ten"
+      },
+      {
+       "do": "show",
+       "target": "dL2",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now the big rectangle is four smaller ones, and each is easy to work out.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "kA",
+        "kB",
+        "kC",
+        "kD"
+       ],
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Mine are these two corners: twenty by ten, and three by four!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "fA",
+        "lA"
+       ],
+       "at": "twenty"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "dT1",
+        "dL1"
+       ],
+       "at": "twenty",
+       "until": "and"
+      },
+      {
+       "do": "show",
+       "target": [
+        "fD",
+        "lD"
+       ],
+       "at": "three"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "dT2",
+        "dL2"
+       ],
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two hundred, and twelve. But look. Two pieces are still dark, and nobody counted them.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "kB",
+        "kC"
+       ],
+       "at": "dark"
+      },
+      {
+       "do": "strike",
+       "target": "guess",
+       "at": "nobody"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "This one is twenty across and four down: eighty.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear",
+       "at": "This"
+      },
+      {
+       "do": "show",
+       "target": "fC",
+       "at": "This"
+      },
+      {
+       "do": "highlight",
+       "target": "dT1",
+       "at": "twenty",
+       "until": "and"
+      },
+      {
+       "do": "highlight",
+       "target": "dL2",
+       "at": "four",
+       "until": "eighty"
+      },
+      {
+       "do": "write",
+       "tex": "20\\times4=80",
+       "at": "eighty"
+      },
+      {
+       "do": "show",
+       "target": "lC",
+       "at": "eighty"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "And this one is three across and ten down: thirty.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "fB",
+       "at": "this"
+      },
+      {
+       "do": "highlight",
+       "target": "dT2",
+       "at": "three",
+       "until": "across"
+      },
+      {
+       "do": "highlight",
+       "target": "dL1",
+       "at": "ten",
+       "until": "thirty"
+      },
+      {
+       "do": "write",
+       "tex": "3\\times10=30",
+       "at": "thirty"
+      },
+      {
+       "do": "show",
+       "target": "lB",
+       "at": "thirty"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Whoa. I forgot a hundred and ten!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "text",
+       "text": "$80+30=110$ was never counted",
+       "at": "forgot"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So add every piece back. Two hundred, eighty, thirty, twelve.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "fA",
+        "lA"
+       ],
+       "at": "Two",
+       "until": "eighty"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "fC",
+        "lC"
+       ],
+       "at": "eighty",
+       "until": "thirty"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "fB",
+        "lB"
+       ],
+       "at": "thirty",
+       "until": "twelve"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "fD",
+        "lD"
+       ],
+       "at": "twelve"
+      },
+      {
+       "do": "write",
+       "tex": "200+80+30+12=322",
+       "fresh": true,
+       "at": "Two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three hundred twenty-two. Champ's two corners were only part of the rectangle.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "322",
+       "at": "Three"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1.8,
+     -1,
+     10.6,
+     4.9
+    ],
+    "points": {
+     "S0": [
+      0,
+      0
+     ],
+     "S1": [
+      4.2,
+      0
+     ],
+     "S2": [
+      7.4,
+      0
+     ],
+     "S3": [
+      9.8,
+      0
+     ],
+     "T0": [
+      0,
+      3
+     ],
+     "T1": [
+      4.2,
+      3
+     ],
+     "T2": [
+      7.4,
+      3
+     ],
+     "T3": [
+      9.8,
+      3
+     ],
+     "c1": [
+      2.1,
+      1.5
+     ],
+     "c2": [
+      5.8,
+      1.5
+     ],
+     "c3": [
+      8.6,
+      1.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "rect",
+      "poly": [
+       "S0",
+       "S3",
+       "T3",
+       "T0"
+      ],
+      "fill": "paper",
+      "ink": "ink",
+      "w": 3
+     },
+     {
+      "id": "f1",
+      "poly": [
+       "S0",
+       "S1",
+       "T1",
+       "T0"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 3
+     },
+     {
+      "id": "f2",
+      "poly": [
+       "S1",
+       "S2",
+       "T2",
+       "T1"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "f3",
+      "poly": [
+       "S2",
+       "S3",
+       "T3",
+       "T2"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3
+     },
+     {
+      "id": "cut1",
+      "seg": [
+       "S1",
+       "T1"
+      ],
+      "ink": "ink",
+      "w": 3
+     },
+     {
+      "id": "cut2",
+      "seg": [
+       "S2",
+       "T2"
+      ],
+      "ink": "ink",
+      "w": 3
+     },
+     {
+      "id": "dW",
+      "dim": [
+       "T0",
+       "T3"
+      ],
+      "side": "n",
+      "tex": "346",
+      "ink": "ink"
+     },
+     {
+      "id": "dH",
+      "dim": [
+       "S0",
+       "T0"
+      ],
+      "side": "w",
+      "tex": "7",
+      "ink": "ink"
+     },
+     {
+      "id": "d1",
+      "dim": [
+       "T0",
+       "T1"
+      ],
+      "side": "n",
+      "tex": "300",
+      "ink": "ink"
+     },
+     {
+      "id": "d2",
+      "dim": [
+       "T1",
+       "T2"
+      ],
+      "side": "n",
+      "tex": "40",
+      "ink": "ink"
+     },
+     {
+      "id": "d3",
+      "dim": [
+       "T2",
+       "T3"
+      ],
+      "side": "n",
+      "tex": "6",
+      "ink": "ink"
+     },
+     {
+      "id": "l1",
+      "label": "2{,}100",
+      "at": "c1",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "halo": true
+     },
+     {
+      "id": "l2",
+      "label": "280",
+      "at": "c2",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "halo": true
+     },
+     {
+      "id": "l3",
+      "label": "42",
+      "at": "c3",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "halo": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now the same idea with one digit on top: seven times three hundred forty-six.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "What is $7 \\times 346$?",
+       "at": "Now"
+      },
+      {
+       "do": "draw",
+       "target": "rect",
+       "at": "seven"
+      },
+      {
+       "do": "show",
+       "target": [
+        "dW",
+        "dH"
+       ],
+       "at": "seven"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Cut it by place: three hundreds, four tens, six ones.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "draw",
+       "target": [
+        "cut1",
+        "cut2"
+       ],
+       "at": "Cut"
+      },
+      {
+       "do": "hide",
+       "target": "dW",
+       "at": "Cut"
+      },
+      {
+       "do": "show",
+       "target": "d1",
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "d2",
+       "at": "four"
+      },
+      {
+       "do": "show",
+       "target": "d3",
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "I squeezed the hundreds a little, so it fits on the screen.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "d1",
+       "at": "squeezed"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Seven times three hundred is two thousand one hundred.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "f1",
+       "at": "Seven"
+      },
+      {
+       "do": "show",
+       "target": "l1",
+       "at": "two"
+      },
+      {
+       "do": "write",
+       "tex": "7\\times300=2{,}100",
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Seven times forty is two hundred eighty.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "f2",
+       "at": "Seven"
+      },
+      {
+       "do": "show",
+       "target": "l2",
+       "at": "two"
+      },
+      {
+       "do": "write",
+       "tex": "7\\times40=280",
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "And seven times six is forty-two.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "f3",
+       "at": "seven"
+      },
+      {
+       "do": "show",
+       "target": "l3",
+       "at": "forty-two"
+      },
+      {
+       "do": "write",
+       "tex": "7\\times6=42",
+       "at": "forty-two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Add the three pieces back: two thousand, four hundred twenty-two.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "2{,}100+280+42=2{,}422",
+       "fresh": true,
+       "at": "Add"
+      },
+      {
+       "do": "answer",
+       "tex": "2{,}422",
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Three pieces, three easy products, one sum!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "f1",
+        "f2",
+        "f3"
+       ],
+       "at": "Three",
+       "until": "one"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1.8,
+     -1,
+     11.3,
+     4.9
+    ],
+    "points": {
+     "S0": [
+      0,
+      0
+     ],
+     "S1": [
+      4.2,
+      0
+     ],
+     "S2": [
+      5.2,
+      0
+     ],
+     "S3": [
+      8,
+      0
+     ],
+     "S4": [
+      10.2,
+      0
+     ],
+     "T0": [
+      0,
+      3
+     ],
+     "T1": [
+      4.2,
+      3
+     ],
+     "T2": [
+      5.2,
+      3
+     ],
+     "T3": [
+      8,
+      3
+     ],
+     "T4": [
+      10.2,
+      3
+     ],
+     "c1": [
+      2.1,
+      1.5
+     ],
+     "c2": [
+      4.7,
+      1.5
+     ],
+     "c3": [
+      6.6,
+      1.5
+     ],
+     "c4": [
+      9.1,
+      1.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "rect",
+      "poly": [
+       "S0",
+       "S4",
+       "T4",
+       "T0"
+      ],
+      "fill": "paper",
+      "ink": "ink",
+      "w": 3
+     },
+     {
+      "id": "f1",
+      "poly": [
+       "S0",
+       "S1",
+       "T1",
+       "T0"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 3
+     },
+     {
+      "id": "f2",
+      "poly": [
+       "S1",
+       "S2",
+       "T2",
+       "T1"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 3
+     },
+     {
+      "id": "f3",
+      "poly": [
+       "S2",
+       "S3",
+       "T3",
+       "T2"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "f4",
+      "poly": [
+       "S3",
+       "S4",
+       "T4",
+       "T3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3
+     },
+     {
+      "id": "cut1",
+      "seg": [
+       "S1",
+       "T1"
+      ],
+      "ink": "ink",
+      "w": 3
+     },
+     {
+      "id": "cut2",
+      "seg": [
+       "S2",
+       "T2"
+      ],
+      "ink": "ink",
+      "w": 3
+     },
+     {
+      "id": "cut3",
+      "seg": [
+       "S3",
+       "T3"
+      ],
+      "ink": "ink",
+      "w": 3
+     },
+     {
+      "id": "dW",
+      "dim": [
+       "T0",
+       "T4"
+      ],
+      "side": "n",
+      "tex": "2{,}058",
+      "ink": "ink"
+     },
+     {
+      "id": "dH",
+      "dim": [
+       "S0",
+       "T0"
+      ],
+      "side": "w",
+      "tex": "4",
+      "ink": "ink"
+     },
+     {
+      "id": "d1",
+      "dim": [
+       "T0",
+       "T1"
+      ],
+      "side": "n",
+      "tex": "2{,}000",
+      "ink": "ink"
+     },
+     {
+      "id": "d2",
+      "dim": [
+       "T1",
+       "T2"
+      ],
+      "side": "n",
+      "tex": "0",
+      "ink": "warm"
+     },
+     {
+      "id": "d3",
+      "dim": [
+       "T2",
+       "T3"
+      ],
+      "side": "n",
+      "tex": "50",
+      "ink": "ink"
+     },
+     {
+      "id": "d4",
+      "dim": [
+       "T3",
+       "T4"
+      ],
+      "side": "n",
+      "tex": "8",
+      "ink": "ink"
+     },
+     {
+      "id": "l1",
+      "label": "8{,}000",
+      "at": "c1",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "halo": true
+     },
+     {
+      "id": "l2",
+      "label": "0",
+      "at": "c2",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "halo": true
+     },
+     {
+      "id": "l3",
+      "label": "200",
+      "at": "c3",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "halo": true
+     },
+     {
+      "id": "l4",
+      "label": "32",
+      "at": "c4",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "halo": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here is one with a zero hiding in the middle: four times two thousand fifty-eight.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "What is $4 \\times 2{,}058$?"
+      },
+      {
+       "do": "draw",
+       "target": "rect",
+       "at": "four"
+      },
+      {
+       "do": "show",
+       "target": [
+        "dW",
+        "dH"
+       ],
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "There are no hundreds, so I can skip that part!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "dW",
+       "at": "hundreds",
+       "until": "so"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Don't skip it. Cut the strip by place: two thousand, no hundreds, fifty, eight.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "draw",
+       "target": [
+        "cut1",
+        "cut2",
+        "cut3"
+       ],
+       "at": "Cut"
+      },
+      {
+       "do": "hide",
+       "target": "dW",
+       "at": "Cut"
+      },
+      {
+       "do": "show",
+       "target": "d1",
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": "d2",
+       "at": "no"
+      },
+      {
+       "do": "show",
+       "target": "d3",
+       "at": "fifty"
+      },
+      {
+       "do": "show",
+       "target": "d4",
+       "at": "eight"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The hundreds piece has no width, only a sliver of nothing. It still sits in its place.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "d2",
+       "at": "hundreds"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four times two thousand is eight thousand. Four times zero is zero. Four times fifty is two hundred. Four times eight is thirty-two.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "f1",
+       "at": "Four"
+      },
+      {
+       "do": "show",
+       "target": "l1",
+       "at": "eight"
+      },
+      {
+       "do": "write",
+       "tex": "4\\times2{,}000=8{,}000",
+       "at": "eight"
+      },
+      {
+       "do": "show",
+       "target": "f2",
+       "at": "zero"
+      },
+      {
+       "do": "show",
+       "target": "l2",
+       "at": "zero",
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "4\\times0=0",
+       "at": "zero",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": "f3",
+       "at": "fifty"
+      },
+      {
+       "do": "show",
+       "target": "l3",
+       "at": "two",
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "4\\times50=200",
+       "at": "two",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": "f4",
+       "at": "eight",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": "l4",
+       "at": "thirty-two"
+      },
+      {
+       "do": "write",
+       "tex": "4\\times8=32",
+       "at": "thirty-two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Add: eight thousand, plus nothing, plus two hundred, plus thirty-two. Eight thousand, two hundred thirty-two.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "8{,}000+0+200+32=8{,}232",
+       "fresh": true,
+       "at": "Add"
+      },
+      {
+       "do": "answer",
+       "tex": "8{,}232",
+       "at": "Eight",
+       "nth": 2
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "f1",
+        "l1"
+       ],
+       "at": "eight",
+       "until": "plus"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "f2",
+        "l2"
+       ],
+       "at": "nothing",
+       "until": "plus",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "f3",
+        "l3"
+       ],
+       "at": "two",
+       "until": "plus",
+       "untilNth": 3
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "f4",
+        "l4"
+       ],
+       "at": "thirty-two",
+       "until": "Eight",
+       "untilNth": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1.8,
+     -1,
+     8.2,
+     4.9
+    ],
+    "points": {
+     "S0": [
+      0,
+      0
+     ],
+     "S1": [
+      5.6,
+      0
+     ],
+     "S2": [
+      6.58,
+      0
+     ],
+     "T0": [
+      0,
+      3
+     ],
+     "T1": [
+      5.6,
+      3
+     ],
+     "T2": [
+      6.58,
+      3
+     ],
+     "i1": [
+      1.4,
+      0
+     ],
+     "i2": [
+      2.8,
+      0
+     ],
+     "i3": [
+      4.2,
+      0
+     ],
+     "j1": [
+      1.4,
+      3
+     ],
+     "j2": [
+      2.8,
+      3
+     ],
+     "j3": [
+      4.2,
+      3
+     ],
+     "m1": [
+      0.7,
+      1.5
+     ],
+     "m2": [
+      2.1,
+      1.5
+     ],
+     "m3": [
+      3.5,
+      1.5
+     ],
+     "m4": [
+      4.9,
+      1.5
+     ],
+     "cT": [
+      2.8,
+      1.5
+     ],
+     "cO": [
+      6.09,
+      1.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "rect",
+      "poly": [
+       "S0",
+       "S2",
+       "T2",
+       "T0"
+      ],
+      "fill": "paper",
+      "ink": "ink",
+      "w": 3
+     },
+     {
+      "id": "fT",
+      "poly": [
+       "S0",
+       "S1",
+       "T1",
+       "T0"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "fO",
+      "poly": [
+       "S1",
+       "S2",
+       "T2",
+       "T1"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3
+     },
+     {
+      "id": "cut",
+      "seg": [
+       "S1",
+       "T1"
+      ],
+      "ink": "ink",
+      "w": 3
+     },
+     {
+      "id": "t1",
+      "seg": [
+       "i1",
+       "j1"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "dash": true
+     },
+     {
+      "id": "t2",
+      "seg": [
+       "i2",
+       "j2"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "dash": true
+     },
+     {
+      "id": "t3",
+      "seg": [
+       "i3",
+       "j3"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "dash": true
+     },
+     {
+      "id": "dW",
+      "dim": [
+       "T0",
+       "T2"
+      ],
+      "side": "n",
+      "tex": "47",
+      "ink": "ink"
+     },
+     {
+      "id": "dH",
+      "dim": [
+       "S0",
+       "T0"
+      ],
+      "side": "w",
+      "tex": "6",
+      "ink": "ink"
+     },
+     {
+      "id": "dT",
+      "dim": [
+       "T0",
+       "T1"
+      ],
+      "side": "n",
+      "tex": "40",
+      "ink": "ink"
+     },
+     {
+      "id": "dO",
+      "dim": [
+       "T1",
+       "T2"
+      ],
+      "side": "n",
+      "tex": "7",
+      "ink": "ink"
+     },
+     {
+      "id": "n1",
+      "label": "60",
+      "at": "m1",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink"
+     },
+     {
+      "id": "n2",
+      "label": "60",
+      "at": "m2",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink"
+     },
+     {
+      "id": "n3",
+      "label": "60",
+      "at": "m3",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink"
+     },
+     {
+      "id": "n4",
+      "label": "60",
+      "at": "m4",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink"
+     },
+     {
+      "id": "big",
+      "label": "240",
+      "at": "cT",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "halo": true
+     },
+     {
+      "id": "ones",
+      "label": "42",
+      "at": "cO",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "halo": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Six times forty-seven. Careful with the four in forty-seven. It is not four. It is forty.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "What is $6 \\times 47$?",
+       "at": "Six"
+      },
+      {
+       "do": "draw",
+       "target": "rect",
+       "at": "Careful"
+      },
+      {
+       "do": "show",
+       "target": [
+        "dW",
+        "dH"
+       ],
+       "at": "Careful"
+      },
+      {
+       "do": "highlight",
+       "target": "dW",
+       "at": "forty"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So six times four is twenty-four, and six times seven is forty-two. Sixty-six!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "6\\times4=24",
+       "at": "twenty-four"
+      },
+      {
+       "do": "write",
+       "tex": "6\\times7=42",
+       "at": "forty-two"
+      },
+      {
+       "do": "write",
+       "tex": "24+42=66",
+       "id": "wrong",
+       "at": "Sixty-six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Let's see what that four really is. Forty is four tens: four columns, each one ten wide.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "strike",
+       "target": "wrong",
+       "at": "Let's"
+      },
+      {
+       "do": "draw",
+       "target": "cut",
+       "at": "Let's"
+      },
+      {
+       "do": "hide",
+       "target": "dW",
+       "at": "Let's"
+      },
+      {
+       "do": "show",
+       "target": [
+        "dT",
+        "dO"
+       ],
+       "at": "Let's"
+      },
+      {
+       "do": "show",
+       "target": "fT",
+       "at": "four",
+       "nth": 2
+      },
+      {
+       "do": "draw",
+       "target": [
+        "t1",
+        "t2",
+        "t3"
+       ],
+       "at": "columns"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each column is six tall and ten wide. Sixty, sixty, sixty, sixty.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "n1",
+       "at": "Sixty"
+      },
+      {
+       "do": "show",
+       "target": "n2",
+       "at": "sixty",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": "n3",
+       "at": "sixty",
+       "nth": 3
+      },
+      {
+       "do": "show",
+       "target": "n4",
+       "at": "sixty",
+       "nth": 4
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four sixties make two hundred forty. So six times forty is two hundred forty, never six times four. That twenty-four was twenty-four tens.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Four"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "n1",
+        "n2",
+        "n3",
+        "n4"
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "t1",
+        "t2",
+        "t3"
+       ],
+       "at": "make"
+      },
+      {
+       "do": "show",
+       "target": "big",
+       "at": "two"
+      },
+      {
+       "do": "write",
+       "tex": "6\\times40=240",
+       "at": "So"
+      },
+      {
+       "do": "text",
+       "text": "$24$ tens $=240$",
+       "at": "That"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Then the ones: six times seven is forty-two. Two hundred forty plus forty-two is two hundred eighty-two.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "fO",
+       "at": "ones"
+      },
+      {
+       "do": "show",
+       "target": "ones",
+       "at": "forty-two"
+      },
+      {
+       "do": "write",
+       "tex": "240+42=282",
+       "at": "plus"
+      },
+      {
+       "do": "answer",
+       "tex": "282",
+       "at": "eighty-two"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So the tens piece is six times forty. Every digit keeps its place value.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "fT",
+        "big"
+       ],
+       "at": "tens",
+       "until": "Every"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -2.6,
+     -0.8,
+     13.2,
+     13.6
+    ],
+    "points": {
+     "X0Y0": [
+      0,
+      0
+     ],
+     "X10Y0": [
+      10,
+      0
+     ],
+     "X12Y0": [
+      12,
+      0
+     ],
+     "X0Y2": [
+      0,
+      2
+     ],
+     "X10Y2": [
+      10,
+      2
+     ],
+     "X12Y2": [
+      12,
+      2
+     ],
+     "X0Y12": [
+      0,
+      12
+     ],
+     "X10Y12": [
+      10,
+      12
+     ],
+     "X12Y12": [
+      12,
+      12
+     ],
+     "cA": [
+      5,
+      7
+     ],
+     "cB": [
+      11,
+      7
+     ],
+     "cC": [
+      5,
+      1
+     ],
+     "cD": [
+      11,
+      1
+     ]
+    },
+    "parts": [
+     {
+      "id": "rect",
+      "poly": [
+       "X0Y0",
+       "X12Y0",
+       "X12Y12",
+       "X0Y12"
+      ],
+      "fill": "paper",
+      "ink": "ink",
+      "w": 3
+     },
+     {
+      "id": "fA",
+      "poly": [
+       "X0Y2",
+       "X10Y2",
+       "X10Y12",
+       "X0Y12"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 3
+     },
+     {
+      "id": "fB",
+      "poly": [
+       "X10Y2",
+       "X12Y2",
+       "X12Y12",
+       "X10Y12"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "fC",
+      "poly": [
+       "X0Y0",
+       "X10Y0",
+       "X10Y2",
+       "X0Y2"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "fD",
+      "poly": [
+       "X10Y0",
+       "X12Y0",
+       "X12Y2",
+       "X10Y2"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3
+     },
+     {
+      "id": "cutV",
+      "seg": [
+       "X10Y0",
+       "X10Y12"
+      ],
+      "ink": "ink",
+      "w": 3
+     },
+     {
+      "id": "cutH",
+      "seg": [
+       "X0Y2",
+       "X12Y2"
+      ],
+      "ink": "ink",
+      "w": 3
+     },
+     {
+      "id": "dW",
+      "dim": [
+       "X0Y12",
+       "X12Y12"
+      ],
+      "side": "n",
+      "tex": "12",
+      "ink": "ink"
+     },
+     {
+      "id": "dH",
+      "dim": [
+       "X0Y0",
+       "X0Y12"
+      ],
+      "side": "w",
+      "tex": "12",
+      "ink": "ink"
+     },
+     {
+      "id": "dT1",
+      "dim": [
+       "X0Y12",
+       "X10Y12"
+      ],
+      "side": "n",
+      "tex": "10",
+      "ink": "ink"
+     },
+     {
+      "id": "dT2",
+      "dim": [
+       "X10Y12",
+       "X12Y12"
+      ],
+      "side": "n",
+      "tex": "2",
+      "ink": "ink"
+     },
+     {
+      "id": "dL1",
+      "dim": [
+       "X0Y2",
+       "X0Y12"
+      ],
+      "side": "w",
+      "tex": "10",
+      "ink": "ink"
+     },
+     {
+      "id": "dL2",
+      "dim": [
+       "X0Y0",
+       "X0Y2"
+      ],
+      "side": "w",
+      "tex": "2",
+      "ink": "ink"
+     },
+     {
+      "id": "lA",
+      "label": "100",
+      "at": "cA",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "halo": true
+     },
+     {
+      "id": "lB",
+      "label": "20",
+      "at": "cB",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "halo": true
+     },
+     {
+      "id": "lC",
+      "label": "20",
+      "at": "cC",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "halo": true
+     },
+     {
+      "id": "lD",
+      "label": "4",
+      "at": "cD",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "halo": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "learner",
+     "say": "Twelve times twelve? That one I just know. A hundred forty-four!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "What is $12 \\times 12$?",
+       "at": "Twelve"
+      },
+      {
+       "do": "write",
+       "tex": "12\\times12=144",
+       "at": "hundred"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "You do, and it is a good fact to own. Here is why it is true: a square, twelve by twelve.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "draw",
+       "target": "rect",
+       "at": "square"
+      },
+      {
+       "do": "show",
+       "target": [
+        "dW",
+        "dH"
+       ],
+       "at": "twelve",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each twelve is a ten and a two. Cut both sides.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "draw",
+       "target": [
+        "cutV",
+        "cutH"
+       ],
+       "at": "Cut"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "dW",
+        "dH"
+       ],
+       "at": "Cut"
+      },
+      {
+       "do": "show",
+       "target": [
+        "dT1",
+        "dT2",
+        "dL1",
+        "dL2"
+       ],
+       "at": "Cut"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten by ten is one hundred. Ten by two is twenty. Two by ten is twenty again. Two by two is four.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "fA",
+       "at": "Ten"
+      },
+      {
+       "do": "show",
+       "target": "lA",
+       "at": "hundred"
+      },
+      {
+       "do": "show",
+       "target": "fC",
+       "at": "Ten",
+       "nth": 3
+      },
+      {
+       "do": "show",
+       "target": "lC",
+       "at": "twenty"
+      },
+      {
+       "do": "show",
+       "target": "fB",
+       "at": "Two",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": "lB",
+       "at": "twenty",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": "fD",
+       "at": "Two",
+       "nth": 3
+      },
+      {
+       "do": "show",
+       "target": "lD",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A hundred, twenty, twenty, four: one hundred forty-four.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "fA",
+        "lA"
+       ],
+       "at": "hundred",
+       "until": "twenty"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "fC",
+        "lC"
+       ],
+       "at": "twenty",
+       "until": "four"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "fB",
+        "lB"
+       ],
+       "at": "twenty",
+       "nth": 2,
+       "until": "four"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "fD",
+        "lD"
+       ],
+       "at": "four"
+      },
+      {
+       "do": "write",
+       "tex": "100+20+20+4=144",
+       "fresh": true,
+       "at": "hundred"
+      },
+      {
+       "do": "answer",
+       "tex": "144",
+       "at": "one"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Every fact up to twelve times twelve hides a picture like this one. If a fact slips away, split the twelve.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Every"
+      },
+      {
+       "do": "text",
+       "text": "Every fact hides a picture",
+       "at": "Every"
+      },
+      {
+       "do": "text",
+       "text": "A fact slips away? Split the 12.",
+       "at": "If"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Seven times twelve? Seven tens is seventy, seven twos is fourteen. Eighty-four!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "7\\times12=70+14=84",
+       "fresh": true,
+       "at": "Seven"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1.8,
+     -1,
+     10.6,
+     4.9
+    ],
+    "points": {
+     "S0": [
+      0,
+      0
+     ],
+     "S1": [
+      4.2,
+      0
+     ],
+     "S2": [
+      7.4,
+      0
+     ],
+     "S3": [
+      9.8,
+      0
+     ],
+     "T0": [
+      0,
+      3
+     ],
+     "T1": [
+      4.2,
+      3
+     ],
+     "T2": [
+      7.4,
+      3
+     ],
+     "T3": [
+      9.8,
+      3
+     ],
+     "c1": [
+      2.1,
+      1.5
+     ],
+     "c2": [
+      5.8,
+      1.5
+     ],
+     "c3": [
+      8.6,
+      1.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "rect",
+      "poly": [
+       "S0",
+       "S3",
+       "T3",
+       "T0"
+      ],
+      "fill": "paper",
+      "ink": "ink",
+      "w": 3
+     },
+     {
+      "id": "f1",
+      "poly": [
+       "S0",
+       "S1",
+       "T1",
+       "T0"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 3
+     },
+     {
+      "id": "f2",
+      "poly": [
+       "S1",
+       "S2",
+       "T2",
+       "T1"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "f3",
+      "poly": [
+       "S2",
+       "S3",
+       "T3",
+       "T2"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3
+     },
+     {
+      "id": "cut1",
+      "seg": [
+       "S1",
+       "T1"
+      ],
+      "ink": "ink",
+      "w": 3
+     },
+     {
+      "id": "cut2",
+      "seg": [
+       "S2",
+       "T2"
+      ],
+      "ink": "ink",
+      "w": 3
+     },
+     {
+      "id": "dH",
+      "dim": [
+       "S0",
+       "T0"
+      ],
+      "side": "w",
+      "tex": "3",
+      "ink": "ink"
+     },
+     {
+      "id": "dW",
+      "dim": [
+       "T0",
+       "T3"
+      ],
+      "side": "n",
+      "tex": "276",
+      "ink": "ink"
+     },
+     {
+      "id": "d1",
+      "dim": [
+       "T0",
+       "T1"
+      ],
+      "side": "n",
+      "tex": "200",
+      "ink": "ink"
+     },
+     {
+      "id": "d2",
+      "dim": [
+       "T1",
+       "T2"
+      ],
+      "side": "n",
+      "tex": "70",
+      "ink": "ink"
+     },
+     {
+      "id": "d3",
+      "dim": [
+       "T2",
+       "T3"
+      ],
+      "side": "n",
+      "tex": "6",
+      "ink": "ink"
+     },
+     {
+      "id": "l1",
+      "label": "600",
+      "at": "c1",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "halo": true
+     },
+     {
+      "id": "l2",
+      "label": "210",
+      "at": "c2",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "halo": true
+     },
+     {
+      "id": "l3",
+      "label": "18",
+      "at": "c3",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "halo": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "One more job: checking. Someone says three times two hundred seventy-six is six hundred twenty-eight. True, or false?",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "True or false? $3 \\times 276 = 628$",
+       "at": "One"
+      },
+      {
+       "do": "draw",
+       "target": "rect",
+       "at": "Someone"
+      },
+      {
+       "do": "show",
+       "target": "dH",
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "dW",
+       "at": "seventy-six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Don't argue with it. Build it, one place at a time: two hundred, seventy, six.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "draw",
+       "target": [
+        "cut1",
+        "cut2"
+       ],
+       "at": "Build"
+      },
+      {
+       "do": "hide",
+       "target": "dW",
+       "at": "Build"
+      },
+      {
+       "do": "show",
+       "target": "d1",
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": "d2",
+       "at": "seventy"
+      },
+      {
+       "do": "show",
+       "target": "d3",
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three times two hundred is six hundred. Three times seventy is two hundred ten. Three times six is eighteen.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "f1",
+       "at": "Three"
+      },
+      {
+       "do": "show",
+       "target": "l1",
+       "at": "six"
+      },
+      {
+       "do": "show",
+       "target": "f2",
+       "at": "Three",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": "l2",
+       "at": "two",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": "f3",
+       "at": "Three",
+       "nth": 3
+      },
+      {
+       "do": "show",
+       "target": "l3",
+       "at": "eighteen"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Six hundred, plus two hundred ten, plus eighteen: eight hundred twenty-eight.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "600+210+18=828",
+       "at": "plus"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "f1",
+        "l1"
+       ],
+       "at": "Six",
+       "until": "plus"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "f2",
+        "l2"
+       ],
+       "at": "two",
+       "until": "plus",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "f3",
+        "l3"
+       ],
+       "at": "eighteen",
+       "until": "eight"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So it's false! Six twenty-eight is two hundred short.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "\\text{False: } 828",
+       "at": "false"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Look at the middle piece. Two hundred ten holds two whole hundreds. Whoever dropped them wrote ten, and got six hundred twenty-eight. Every piece counts, carries and all.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Look"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "f2",
+        "l2"
+       ],
+       "at": "middle",
+       "until": "Whoever"
+      },
+      {
+       "do": "text",
+       "text": "$210$ holds 2 hundreds",
+       "at": "holds"
+      },
+      {
+       "do": "write",
+       "tex": "600+10+18=628",
+       "fresh": true,
+       "at": "six"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -3.2,
+     -4.8,
+     24,
+     16.3
+    ],
+    "points": {
+     "X0Y0": [
+      0,
+      0
+     ],
+     "X20Y0": [
+      20,
+      0
+     ],
+     "X23Y0": [
+      23,
+      0
+     ],
+     "X0Y4": [
+      0,
+      4
+     ],
+     "X20Y4": [
+      20,
+      4
+     ],
+     "X23Y4": [
+      23,
+      4
+     ],
+     "X0Y14": [
+      0,
+      14
+     ],
+     "X20Y14": [
+      20,
+      14
+     ],
+     "X23Y14": [
+      23,
+      14
+     ],
+     "cA": [
+      10,
+      9
+     ],
+     "cB": [
+      21.5,
+      9
+     ],
+     "cC": [
+      10,
+      2
+     ],
+     "cD": [
+      21.5,
+      2
+     ],
+     "E": [
+      11.5,
+      -3.2
+     ]
+    },
+    "parts": [
+     {
+      "id": "rect",
+      "poly": [
+       "X0Y0",
+       "X23Y0",
+       "X23Y14",
+       "X0Y14"
+      ],
+      "fill": "paper",
+      "ink": "ink",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "fA",
+      "poly": [
+       "X0Y4",
+       "X20Y4",
+       "X20Y14",
+       "X0Y14"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "fB",
+      "poly": [
+       "X20Y4",
+       "X23Y4",
+       "X23Y14",
+       "X20Y14"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "fC",
+      "poly": [
+       "X0Y0",
+       "X20Y0",
+       "X20Y4",
+       "X0Y4"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "fD",
+      "poly": [
+       "X20Y0",
+       "X23Y0",
+       "X23Y4",
+       "X20Y4"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "cutV",
+      "seg": [
+       "X20Y0",
+       "X20Y14"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "cutH",
+      "seg": [
+       "X0Y4",
+       "X23Y4"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "dT1",
+      "dim": [
+       "X0Y14",
+       "X20Y14"
+      ],
+      "side": "n",
+      "tex": "20",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "dT2",
+      "dim": [
+       "X20Y14",
+       "X23Y14"
+      ],
+      "side": "n",
+      "tex": "3",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "dL1",
+      "dim": [
+       "X0Y4",
+       "X0Y14"
+      ],
+      "side": "w",
+      "tex": "10",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "dL2",
+      "dim": [
+       "X0Y0",
+       "X0Y4"
+      ],
+      "side": "w",
+      "tex": "4",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "lA",
+      "label": "200",
+      "at": "cA",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "lB",
+      "label": "30",
+      "at": "cB",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "lC",
+      "label": "80",
+      "at": "cC",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "lD",
+      "label": "12",
+      "at": "cD",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "eC",
+      "label": "20\\times4=80",
+      "at": "E",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue"
+     },
+     {
+      "id": "eB",
+      "label": "3\\times10=30",
+      "at": "E",
+      "dir": "c",
+      "size": "xl",
+      "ink": "gold"
+     },
+     {
+      "id": "sum",
+      "label": "200+80+30+12=322",
+      "at": "E",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Back to our rectangle. Where did the eighty come from?",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Where does a piece come from?",
+       "at": "Back"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "fC",
+        "lC"
+       ],
+       "at": "eighty"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Every piece takes one number from the top and one from the side. This one: twenty across, and four down.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "text",
+       "text": "A piece = top × side",
+       "at": "Every"
+      },
+      {
+       "do": "show",
+       "target": "eC",
+       "at": "twenty"
+      },
+      {
+       "do": "highlight",
+       "target": "dT1",
+       "at": "twenty",
+       "until": "across"
+      },
+      {
+       "do": "highlight",
+       "target": "dL2",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "And the thirty is three across and ten down!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": "eC",
+       "at": "And"
+      },
+      {
+       "do": "show",
+       "target": "eB",
+       "at": "three"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "fB",
+        "lB"
+       ],
+       "at": "thirty"
+      },
+      {
+       "do": "highlight",
+       "target": "dT2",
+       "at": "three",
+       "until": "across"
+      },
+      {
+       "do": "highlight",
+       "target": "dL1",
+       "at": "ten"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four pieces, four pairs of sides. Nothing left out, nothing counted twice. Add them: three hundred twenty-two.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "text",
+       "text": "4 pieces, 4 pairs of sides",
+       "at": "Four"
+      },
+      {
+       "do": "hide",
+       "target": "eB",
+       "at": "Add"
+      },
+      {
+       "do": "show",
+       "target": "sum",
+       "at": "three"
+      },
+      {
+       "do": "answer",
+       "tex": "322",
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Split by place. Multiply every piece. Add them all.",
+     "pause": 1.2,
+     "do": [
+      {
+       "do": "text",
+       "text": "Split by place. Multiply. Add.",
+       "at": "Split"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

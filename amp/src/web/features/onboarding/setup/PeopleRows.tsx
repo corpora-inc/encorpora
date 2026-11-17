@@ -127,13 +127,24 @@ export function People({
         })}
       </ol>
       {add && (
+        // Another row is the quiet, optional choice; the step's Next stays
+        // its one primary action.
         <Button
           type="button"
-          variant="secondary"
+          variant="quiet"
+          align="start"
           className={styles.addRow}
           disabled={disabled}
           onClick={add.onAdd}
         >
+          <svg
+            className={styles.addMark}
+            viewBox="0 0 16 16"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M8 3v10M3 8h10" />
+          </svg>
           {add.label}
         </Button>
       )}

@@ -205,8 +205,19 @@ export function createGoogleAnalytics(
     /** A school student's device: nothing is collected, and a document that
      * started as a parent's stays disabled afterwards. */
     blocked?: () => boolean;
+    /** The tab's arrival labels the address no longer carries (its
+     * `program`, why it signs up: `entry`, `return`), read for the page's
+     * title and program only, never added to `page_location`. */
+    arrival?: () => Readonly<Record<string, string>>;
   } = {},
 ) {
+  /** This address, as titles and the program read it: with the arrival. */
+  const labelled = (href: string) => {
+    const url = new URL(href);
+    for (const [key, value] of Object.entries(options.arrival?.() ?? {}))
+      if (!url.searchParams.has(key)) url.searchParams.set(key, value);
+    return url.href;
+  };
   const w = window as AnalyticsWindow;
   let loaded = false;
   let retired = false;
@@ -244,7 +255,11 @@ export function createGoogleAnalytics(
         previous = "";
         return;
       }
-      const title = googlePageTitle(location.href, home, options.sitePages);
+      const title = googlePageTitle(
+        labelled(location.href),
+        home,
+        options.sitePages,
+      );
       if (sameGoogleVisit(previous, page) && title === previousTitle) return;
       const referrer = previous || safeReferrer(document.referrer);
       const pageParams = {
@@ -252,7 +267,7 @@ export function createGoogleAnalytics(
         page_referrer: referrer,
         page_title: title,
       };
-      const program = googleProgram(location.href);
+      const program = googleProgram(labelled(location.href));
       if (!loaded) {
         loaded = true;
         // Google's EU user consent policy requires default-deny only for the
@@ -363,7 +378,7 @@ export function createGoogleAnalytics(
       if (!Object.hasOwn(forwarded, action)) return;
       navigate();
       if (!loaded || w[disabledKey] || !previous) return;
-      const mapped = googleEvent(action, props, location.href);
+      const mapped = googleEvent(action, props, labelled(location.href));
       if (!mapped) return;
       command("event", mapped.name, {
         ...mapped.params,
