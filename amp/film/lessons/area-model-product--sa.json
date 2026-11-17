@@ -100,7 +100,7 @@
        "X20Y14",
        "X0Y14"
       ],
-      "fill": "walnut",
+      "fill": "accent-fill",
       "ink": "paper",
       "w": 3
      },
@@ -112,7 +112,7 @@
        "X23Y14",
        "X20Y14"
       ],
-      "fill": "walnut",
+      "fill": "gold-fill",
       "ink": "paper",
       "w": 3
      },
@@ -124,7 +124,7 @@
        "X20Y4",
        "X0Y4"
       ],
-      "fill": "walnut",
+      "fill": "blue-fill",
       "ink": "paper",
       "w": 3
      },
@@ -136,7 +136,7 @@
        "X23Y4",
        "X20Y4"
       ],
-      "fill": "walnut",
+      "fill": "accent-fill",
       "ink": "paper",
       "w": 3
      },

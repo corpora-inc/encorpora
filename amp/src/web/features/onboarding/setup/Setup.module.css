@@ -173,6 +173,16 @@
 .people > .addRow {
   justify-self: start;
   width: auto;
+  gap: var(--space-2);
+}
+.addMark {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
 }
 .remove {
   display: grid;

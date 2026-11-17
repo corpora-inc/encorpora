@@ -7,6 +7,7 @@ import { PostgresRepository } from "../src/server/repository.js";
 import { buildApp } from "../src/server/app.js";
 import { workbookProblems } from "../src/workbook/compose.js";
 import { workbookTemplateIds } from "../src/workbook/results.js";
+import { findOrMakeWorkbook } from "../src/workbook/routes.js";
 
 test(
   "paper results are graded, stored as paper evidence, change skill evidence once, and hold printed problems out of the day's practice",
@@ -32,13 +33,28 @@ test(
       await migrate(scoped.href);
       const learner = await repository.create("paper-parent", "Paper", 2016);
       const base = `/api/v1/learners/${learner.id}`;
+      // A fixed roll (the demo school's `seedKey`), not one keyed by this
+      // run's random learner id: which problems print, and so how many take
+      // a typed answer, is the same on every run. Keyed by the learner id,
+      // a roll occasionally printed only one typed answer (run 44175734099).
+      // This roll prints 7 to 12 typed answers for learners born 2013 to
+      // 2018, so it holds as this learner ages.
       const made = (
-        await app.inject({
-          method: "POST",
-          url: `${base}/workbooks`,
-          payload: { date: today, minutes: 45, paper: "letter" },
-        })
-      ).json();
+        await repository.transaction("paper-parent", learner.id, (tx) =>
+          findOrMakeWorkbook(
+            tx,
+            learner.id,
+            {
+              date: today,
+              minutes: 45,
+              paper: "letter",
+              seedKey: { learnerKey: "paper-results", date: "2026-01-05" },
+            },
+            Date.now(),
+            { allowed: () => {} },
+          ),
+        )
+      ).record;
       const view = await app.inject({
         url: `${base}/workbooks/${made.id}/results`,
       });
