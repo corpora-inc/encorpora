@@ -8,6 +8,7 @@ import {
 } from "../../../content/lesson-films";
 import { request } from "../../lib/api";
 import { qk } from "../../lib/keys";
+import { skillCatalogOptions } from "../../lib/learning-view";
 import { mountFilmPlayer } from "../../../../film/player";
 import { Loading } from "../../ui/Loading";
 import { noteHelp } from "../../lib/help-events";
@@ -23,10 +24,12 @@ export function filmFrom(value: unknown) {
     ? from
     : undefined;
 }
-/** Where closing the film goes: where it was opened, or else its lesson. */
-export function filmReturn(value: unknown, templateId: string) {
+/** Where closing the film goes: where it was opened, or else its skill's
+ * own address on the map (the map, while its skill isn't known). */
+export function filmReturn(value: unknown, skill?: string) {
   return (
-    filmFrom(value) ?? `/pathways?lesson=${encodeURIComponent(templateId)}`
+    filmFrom(value) ??
+    (skill ? `/pathways/${encodeURIComponent(skill)}` : "/pathways")
   );
 }
 export function FilmScreen() {
@@ -54,7 +57,15 @@ export function FilmScreen() {
   });
   // The current server decides which edition is published, even in an older open tab.
   const film = metadata.data?.lesson.film;
-  const back = filmReturn(opener, templateId);
+  // The skill the film teaches, for closing to it when nothing opened it
+  // here: the film names its skill, else the catalog's problem type does.
+  const catalog = useQuery({ ...skillCatalogOptions, enabled: !opener });
+  const skill =
+    film?.skill ??
+    catalog.data?.templates.find((type) => type.id === templateId)?.skillId;
+  // The player mounts once its way out is known, so it never remounts.
+  const ready = !!film && (!!opener || !!film.skill || !catalog.isPending);
+  const back = filmReturn(opener, skill);
   const problemId = problem;
   // A film is help: opening it is recorded, and its time is video time,
   // counted while it plays even without a touch.
@@ -73,19 +84,15 @@ export function FilmScreen() {
       });
   }, [!!film, templateId, problemId]);
   useEffect(() => {
-    if (!film || !host.current) return;
+    if (!film || !ready || !host.current) return;
     const previous = document.title;
     document.title = `${film.title} · AMP`;
     let attending: (() => void) | null = null;
     const dispose = mountFilmPlayer(host.current, {
       ...film,
-      backHref: back,
-      backLabel: back.startsWith("/practice")
-        ? "Back to problem"
-        : "Back to lesson",
-      // Back to the lesson or problem it was opened from: X and the
-      // browser's Back do the same thing.
-      onBack: () => closeTo(router, back),
+      // An overlay over where it was opened: ✕ closes to it, as the
+      // browser's Back does.
+      close: { href: back, onClose: () => closeTo(router, back) },
       onPlayingChange: (playing) => {
         attending?.();
         attending = playing ? attendWhilePlaying() : null;
@@ -96,7 +103,7 @@ export function FilmScreen() {
       dispose();
       document.title = previous;
     };
-  }, [film, back, router]);
+  }, [film, ready, back, router]);
   return (
     <main className="film-route" ref={host}>
       {metadata.isPending || film ? (
@@ -120,9 +127,7 @@ export function FilmScreen() {
               closeTo(router, back);
             }}
           >
-            {back.startsWith("/practice")
-              ? "Back to problem"
-              : "Back to lesson"}
+            Close
           </a>
         </div>
       )}

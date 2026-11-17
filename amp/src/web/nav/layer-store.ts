@@ -25,9 +25,27 @@ export type Layer = Entity & {
   skill?: string;
 };
 
-/** The screen a stack belongs to. */
+/**
+ * The skill your own Pathways names in its address (`/pathways/<skill>`):
+ * the map's screen with that skill open over it, a real address that Back
+ * closes and a link shares. Undefined at any other address.
+ */
+export function pathwaysSkill(pathname: string): string | undefined {
+  const named = /^\/pathways\/([^/]+)\/?$/.exec(pathname)?.[1];
+  if (!named) return undefined;
+  try {
+    return decodeURIComponent(named);
+  } catch (error) {
+    console.warn("A skill's address didn't read; opening the map", error);
+    return undefined;
+  }
+}
+
+/** The screen a stack belongs to. A skill's address on your own Pathways
+ * is the map's screen (`/pathways`): its view and layers are the map's. */
 export function layerScope(pathname: string, accountId: string | undefined) {
-  const path = pathname.replace(/\/+$/, "") || "/";
+  const trimmed = pathname.replace(/\/+$/, "") || "/";
+  const path = /^\/pathways\/[^/]+$/.test(trimmed) ? "/pathways" : trimmed;
   return /^\/(family|school)\//.test(path)
     ? path
     : `${accountId ?? "guest"}:${path}`;

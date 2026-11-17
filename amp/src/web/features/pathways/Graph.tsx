@@ -1,3 +1,4 @@
+import { AreaKey } from "./AreaKey";
 import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePopover } from "../../ui/popover-owner";
@@ -119,6 +120,8 @@ export function Graph({
   /** The skill the person is looking at: selected, or the one just closed. */
   const focal = useRef(selected);
   if (selected) focal.current = selected;
+  const selectedNow = useRef(selected);
+  selectedNow.current = selected;
   /** Until the person moves the map or selects, the first view may follow the level. */
   const touched = useRef(false);
   const firstView = useRef(true);
@@ -134,6 +137,16 @@ export function Graph({
   const [orbit, setOrbit] = useState(false);
   const viewport = useRef<HTMLElement>(null);
   const [fullscreen, setFullscreen] = useState(false);
+  /** Full screen was just entered or left: the next size centres the map
+   * (its selected skill, else the whole map) on the new screen, rather than
+   * holding it where it sat on the page (on a phone, the lower half). */
+  const refit = useRef(0);
+  const toggleFullscreen = (next: boolean) => {
+    // The resizes that entering or leaving brings, within a second; a later
+    // one (a phone's address bar, a window) keeps the map where it is.
+    refit.current = performance.now() + 1000;
+    setFullscreen(next);
+  };
   // The toolbar appears whole, once it knows whether "Where you are" belongs in
   // it, so no button ever shifts (at most 1.5 s on a slow estimate).
   const [toolbarReady, setToolbarReady] = useState(!levelLoading);
@@ -147,10 +160,10 @@ export function Graph({
   useEffect(() => {
     if (!fullscreen) return;
     const changed = () => {
-      if (!document.fullscreenElement) setFullscreen(false);
+      if (!document.fullscreenElement) toggleFullscreen(false);
     };
     const key = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setFullscreen(false);
+      if (e.key === "Escape") toggleFullscreen(false);
     };
     document.addEventListener("fullscreenchange", changed);
     document.addEventListener("keydown", key);
@@ -1146,9 +1159,28 @@ export function Graph({
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
       placeAreas();
+      const centring = !!before && performance.now() < refit.current;
+      if (centring) refit.current = 0;
       if (fitView) {
         tween = null;
         place(overviewPose());
+      } else if (centring) {
+        tween = null;
+        const node = byId.get(selectedNow.current)?.position;
+        if (node) {
+          // The selected skill to the middle, at the same distance.
+          const at = pose();
+          const { back } = look(at);
+          const offset = new THREE.Vector3(...node).sub(at.target);
+          offset.addScaledVector(back, -offset.dot(back));
+          place({
+            position: at.position.clone().add(offset),
+            target: at.target.clone().add(offset),
+          });
+        } else {
+          fitView = true;
+          place(overviewPose());
+        }
       } else if (
         before &&
         (before.width !== now.width || before.height !== now.height)
@@ -1444,11 +1476,13 @@ export function Graph({
           )}
         </p>
       )}
+      {/* Full screen covers the page's key: the map takes it along. */}
+      {fullscreen && <AreaKey area={area} className="pathways-full-key" />}
       <div className="pathways-camera" data-ready={toolbarReady}>
         <button
           aria-label={fullscreen ? "Exit full screen" : "Full screen"}
           aria-pressed={fullscreen}
-          onClick={() => setFullscreen((v) => !v)}
+          onClick={() => toggleFullscreen(!fullscreen)}
         >
           <span className="camera-wide">
             {fullscreen ? "Exit full screen" : "Full screen"}
