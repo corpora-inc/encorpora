@@ -20,16 +20,33 @@ import { JoinFrame } from "./JoinFrame";
 import styles from "./Join.module.css";
 
 /** A code that doesn't lead anywhere: why, and the way back. */
-export function JoinProblem({ message }: { message: string }) {
+export function JoinProblem({
+  message,
+  code,
+}: {
+  message: string;
+  /** The class to go back to, when its names are the next step. */
+  code?: string;
+}) {
   return (
     <JoinFrame>
       <div className={styles.column} data-centered>
         <div role="alert">
           <h1 className={styles.title}>{message}</h1>
         </div>
-        <Link to="/join" className={buttonClass("primary", styles.bigButton)}>
-          Type a code
-        </Link>
+        {code ? (
+          <Link
+            to="/join/$code"
+            params={{ code }}
+            className={buttonClass("primary", styles.bigButton)}
+          >
+            Pick your name
+          </Link>
+        ) : (
+          <Link to="/join" className={buttonClass("primary", styles.bigButton)}>
+            Type a code
+          </Link>
+        )}
       </div>
     </JoinFrame>
   );

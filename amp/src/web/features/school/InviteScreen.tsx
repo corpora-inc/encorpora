@@ -6,7 +6,9 @@ import { useEffect, useState } from "react";
 import type { InviteView } from "../../../schools/setup-contracts";
 import { signOut } from "../../auth";
 import { linkRefused } from "../../lib/link-carry";
-import { sessionOptions, meOptions } from "../../lib/query";
+import { qk } from "../../lib/keys";
+import { meOptions } from "../../lib/query";
+import { forSession, useSessionOrNull } from "../../lib/session";
 import { useLoggedError } from "../../feedback";
 import { Button, buttonClass } from "../../ui/Button";
 import { Page } from "../../ui/Page";
@@ -50,13 +52,11 @@ export function InviteScreen() {
     rememberedInvite() ||
     "";
   const parsed = parseFragment(fragment);
-  const session = useQuery(sessionOptions).data;
-  const me = useQuery({
-    ...meOptions(session ?? { token: "", accountId: "" }),
-    enabled: !!session,
-  }).data;
+  const session = useSessionOrNull();
+  const me = useQuery(forSession(session, meOptions)).data;
   const invite = useQuery<InviteView, Error>({
-    queryKey: ["school-invite", parsed?.token],
+    // An invitation reads the same before any sign-in: under no account.
+    queryKey: qk.account(null, "school", "invite", parsed?.token),
     enabled: !!parsed,
     retry: false,
     queryFn: () => school.lookupInvite(parsed!.token),
@@ -107,7 +107,9 @@ export function InviteScreen() {
       });
       forgetInvite();
       await refreshSchool(session);
-      await client.invalidateQueries({ queryKey: ["school-invite"] });
+      await client.invalidateQueries({
+        queryKey: qk.account(null, "school", "invite"),
+      });
       // A new school's admin carries on into its setup, the school step done;
       // a family's second parent opens the family (`/family` chooses it).
       await navigate(
