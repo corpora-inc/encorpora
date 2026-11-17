@@ -86,19 +86,24 @@ vi.mock("../family-redirect", () => ({
     { params }: { params: { org: string } },
   ) =>
     state.parent && params.org === FAMILY_ORG
-      ? { to: `/family/${FAMILY}`, search: {} }
+      ? { href: `/family/${FAMILY}` }
       : null,
   toFamilyChild: async (_session: unknown, org: string, person: string) =>
     state.parent && org === FAMILY_ORG
-      ? { to: `/family/${FAMILY}/kids/${person}`, search: {} }
+      ? { href: `/family/${FAMILY}/kids/${person}` }
       : null,
-  toFamilyPage: async (_session: unknown, org: string, page: string) =>
+  toFamilyPage: async (
+    _session: unknown,
+    org: string,
+    page: string,
+    location: { hash?: string },
+  ) =>
     state.parent && org === FAMILY_ORG
       ? {
           // Roster and Settings are Settings; Map and Today are Today (or a
-          // one child's page: features/family/redirects.ts).
-          to: `/family/${FAMILY}${page === "roster" || page === "settings" ? "/settings" : ""}`,
-          search: {},
+          // one child's page: features/family/redirects.ts). A settings
+          // section's anchor rides in the href.
+          href: `/family/${FAMILY}${page === "roster" || page === "settings" ? "/settings" : ""}${location.hash ? `#${location.hash}` : ""}`,
         }
       : null,
 }));
@@ -183,7 +188,12 @@ const CLASS_AT = `/school/${SCHOOL}/classes/${CLASS}`;
 const FAMILY_PAY = `/family/${FAMILY}/kids/${CHILD}/pay`;
 const EXAMPLES: Example[] = [
   { from: "/", world: "adult", consent: true, lands: "/consent" },
-  { from: `/practice/${CHILD}`, world: "adult", consent: true, lands: "/consent" },
+  {
+    from: `/practice/${CHILD}`,
+    world: "adult",
+    consent: true,
+    lands: "/consent",
+  },
   {
     from: "/?sign-in=create&return=school&error=bad",
     world: "signed out",
@@ -198,21 +208,22 @@ const EXAMPLES: Example[] = [
   { from: "/try", world: "signed out", lands: "/sign-up?return=free-practice" },
   { from: "/try/anything", world: "adult", lands: `/family/${FAMILY}` },
 
-  ...(["export", "consent", "delete", "retention", "measurement"] as const)
-    .flatMap((panel) => [
-      {
-        from: `/account/privacy/${panel}`,
-        world: "family parent" as const,
-        lands: PRIVACY,
-        panel: { overlay: "privacy" as const, id: panel },
-      },
-      {
-        from: `/family/privacy/${panel}`,
-        world: "adult" as const,
-        lands: "/account/privacy",
-        panel: { overlay: "privacy" as const, id: panel },
-      },
-    ]),
+  ...(
+    ["export", "consent", "delete", "retention", "measurement"] as const
+  ).flatMap((panel) => [
+    {
+      from: `/account/privacy/${panel}`,
+      world: "family parent" as const,
+      lands: PRIVACY,
+      panel: { overlay: "privacy" as const, id: panel },
+    },
+    {
+      from: `/family/privacy/${panel}`,
+      world: "adult" as const,
+      lands: "/account/privacy",
+      panel: { overlay: "privacy" as const, id: panel },
+    },
+  ]),
   {
     from: "/family/privacy",
     world: "family parent",
@@ -248,14 +259,22 @@ const EXAMPLES: Example[] = [
   },
   { from: "/family/security", world: "adult", lands: "/account/security" },
   { from: "/family/access", world: "adult", lands: "/account/billing" },
-  { from: "/family/access/purchases", world: "adult", lands: "/account/billing" },
+  {
+    from: "/family/access/purchases",
+    world: "adult",
+    lands: "/account/billing",
+  },
   { from: "/family/access", world: "signed out", lands: "/sign-in" },
 
   { from: `/continue/${CHILD}`, world: "family parent", lands: FAMILY_PAY },
   { from: `/pay/${CHILD}`, world: "family parent", lands: FAMILY_PAY },
   { from: "/purchase/annual", world: "family parent", lands: FAMILY_PAY },
   { from: "/purchase/choose", world: "family parent", lands: FAMILY_PAY },
-  { from: "/purchase/funded", world: "family parent", lands: `${FAMILY_PAY}/funds` },
+  {
+    from: "/purchase/funded",
+    world: "family parent",
+    lands: `${FAMILY_PAY}/funds`,
+  },
   ...["arkansas-efa", "arizona-esa", "new-hampshire-efa"].map((program) => ({
     from: `/purchase/${program}`,
     world: "family parent" as const,
@@ -265,14 +284,16 @@ const EXAMPLES: Example[] = [
   {
     from: "/lessons?q=fractions&topic=add-fractions",
     world: "adult",
-    lands: "/pathways?topic=fractions",
+    // The search goes into the map's view (features/pathways/map-view.ts).
+    lands: "/pathways",
     layers: ["lesson:add-fractions"],
   },
-  { from: "/lessons?q=fractions", world: "adult", lands: "/pathways?topic=fractions" },
+  { from: "/lessons?q=fractions", world: "adult", lands: "/pathways" },
   {
     from: "/pathways?skill=s1&view=3d",
     world: "signed out",
-    lands: "/pathways?view=3d",
+    // 3D becomes this device's choice of view.
+    lands: "/pathways",
     layers: ["skill:s1"],
   },
   {
@@ -287,11 +308,32 @@ const EXAMPLES: Example[] = [
     lands: "/pathways",
     layers: ["skill:s1", "lesson:t1"],
   },
+  {
+    from: "/pathways?topic=fractions&filter=3&area=geometry",
+    world: "adult",
+    lands: "/pathways",
+  },
+  {
+    from: `/family/${FAMILY}/kids/${CHILD}/pathways?open=skill%3As1&topic=x`,
+    world: "family parent",
+    lands: `/family/${FAMILY}/kids/${CHILD}/pathways`,
+    layers: ["skill:s1"],
+  },
 
   {
     from: `/learners/${CHILD}/workbooks/2026-11-16?minutes=45&paper=a4`,
     world: "adult",
     lands: `/learners/${CHILD}/workbooks/2026-11-16`,
+  },
+  {
+    from: "/lessons/add-fractions/watch?problem=p1&from=%2Fpathways",
+    world: "adult",
+    lands: "/lessons/add-fractions/watch/p1",
+  },
+  {
+    from: "/lessons/add-fractions/watch?from=%2Fpathways",
+    world: "adult",
+    lands: "/lessons/add-fractions/watch",
   },
   {
     from: `/practice/${CHILD}?skill=s1&profile=p`,
@@ -365,6 +407,12 @@ const EXAMPLES: Example[] = [
     world: "family parent" as const,
     lands: `/family/${FAMILY}${leaf}`,
   })),
+  // A family target's href keeps its anchor through the one hop.
+  {
+    from: `/school/${FAMILY_ORG}/settings#family-year`,
+    world: "family parent",
+    lands: `/family/${FAMILY}/settings#family-year`,
+  },
   { from: CLASS_AT, world: "adult", lands: `${CLASS_AT}/today` },
   // Everyone else's class address: the class's own rows.
   { from: CLASS_AT, world: "family parent", lands: `${CLASS_AT}/today` },
@@ -580,14 +628,22 @@ for (const example of EXAMPLES)
       expect(
         (
           useLayerStore.getState().stacks[
-            layerScope(pathname, state.parent || example.world === "adult" ? SESSION.accountId : undefined)
+            layerScope(
+              pathname,
+              state.parent || example.world === "adult"
+                ? SESSION.accountId
+                : undefined,
+            )
           ] ?? []
         ).map((layer) => `${layer.kind}:${layer.id}`),
       ).toEqual(example.layers);
     if (example.sheet)
       expect(
         Object.values(
-          (router.state.location.state ?? {}) as unknown as Record<string, unknown>,
+          (router.state.location.state ?? {}) as unknown as Record<
+            string,
+            unknown
+          >,
         ),
       ).toContain(example.sheet);
   });

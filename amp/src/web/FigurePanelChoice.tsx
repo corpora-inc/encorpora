@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { article, type PanelChoice } from "../math/figure-panels";
 import { spokenMath } from "./MathText";
+import { RadioControl } from "./ui/RadioControl";
 
 type Box = { x: number; y: number; w: number; h: number };
 /** The correct panel and the learner's panel, once the answer is checked. */
@@ -121,8 +122,7 @@ export function FigurePanelChoice({
                 height: box.h,
               }}
             >
-              <input
-                type="radio"
+              <RadioControl
                 className="figure-panel-radio"
                 name={`figure-panel-${problemId}`}
                 value={option.id}

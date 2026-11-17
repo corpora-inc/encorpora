@@ -1,6 +1,10 @@
 import type { PitchEntry } from "../../../parent-followup/contracts";
 import { authStep } from "../../app/auth-links";
-import { chosenProgram, isProgramChoice } from "../../lib/program-choice";
+import {
+  arrivalLabels,
+  chosenProgram,
+  isProgramChoice,
+} from "../../lib/program-choice";
 import {
   campaignSearch,
   fundedPrograms,
@@ -26,10 +30,11 @@ export function pitchProgramOf(
   );
 }
 
-/** Fixed labels the pitch carries forward: an ad's campaign labels. The
- * program is the tab's choice, never the address's. */
+/** Fixed labels a sign-up carries in its continuation: an ad's campaign
+ * labels, from this address or the tab's arrival (lib/program-choice.ts).
+ * The program is the tab's choice, never the address's. */
 export function pitchCarry(search: Record<string, unknown>): FundedSearch {
-  return campaignSearch(search);
+  return campaignSearch({ ...arrivalLabels(), ...search });
 }
 
 /** Where each pitch action goes. Every destination can succeed signed out:
@@ -49,7 +54,8 @@ export function pitchTarget(
     case "funded": {
       const program = pitchProgramOf(search);
       if (!program) throw new Error("A funded purchase needs its program");
-      return { to: `/invoice/${program.slug}` as const, search: carry };
+      // The invoice reads the arrival's campaign from the tab's store.
+      return { to: `/invoice/${program.slug}` as const };
     }
     case "card":
       return signUp("pitch-buy", false);

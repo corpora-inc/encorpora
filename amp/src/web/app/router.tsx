@@ -4,7 +4,6 @@ import {
 } from "../lib/family-practice-history";
 import { knownDocumentPath } from "./document-routes";
 import { invoiceOffersOptions } from "../features/funding/invoice-offers";
-import { signupEntrySchema } from "../../parent-followup/contracts";
 import {
   createRootRoute,
   notFound,
@@ -67,6 +66,7 @@ import {
   admit,
   elsewhere,
   requireSignedIn,
+  returnSearchShape,
   signInTarget,
   toOwnPlace,
   withQuery,
@@ -74,6 +74,7 @@ import {
 import {
   cleverReturn,
   homeReturn,
+  inboundSearchShape,
   resumeStripeReturn,
   signInArrivalPending,
   signInReturn,
@@ -101,7 +102,7 @@ import { frameData, schoolRoutes, staffScreen } from "./school-routes";
 import { familyRoutes } from "./family-routes";
 import { accountOverlays } from "./account-overlays";
 import { payAddresses } from "./pay-routes";
-import { appReturn, RETURN_LIMIT } from "../features/spaces/returns";
+import { appReturn } from "../features/spaces/returns";
 import { loadCurriculum, loadScope } from "../features/schools/api";
 import {
   marksSearchSchema,
@@ -120,29 +121,16 @@ import {
   studentPracticeHref,
   isLearningPath,
 } from "../features/profiles/practice-mode";
+/** Every address's query, as the root reads it: the sign-in gate's return
+ * (app/sign-in-gate.ts), what arrives from outside (app/third-party-returns.ts),
+ * and the screen state some screens still read from the query. That last
+ * group goes key by key as its readers move to paths and stores
+ * (amp/AGENTS.md, "Frontend architecture"); when it is empty, this schema
+ * is the two sanctioned modules' alone. */
 const searchSchema = z
   .object({
-    return: z
-      .enum([
-        "free-practice",
-        "security",
-        "access",
-        "arkansas-efa",
-        "new-hampshire-efa",
-        "arizona-esa",
-        "school",
-        "school-invite",
-        "family-approval",
-      ])
-      .optional()
-      .catch(undefined),
-    /** Where a sign-in continues; `continuationSearch` holds it to the one
-     * return contract (`appReturn`). */
-    next: z.string().max(RETURN_LIMIT).optional().catch(undefined),
-    entry: signupEntrySchema.optional().catch(undefined),
-    program: z.enum(["ar-efa", "az-esa", "nh-efa"]).optional().catch(undefined),
-    token: z.string().max(2048).optional(),
-    error: z.string().max(200).optional(),
+    ...returnSearchShape,
+    ...inboundSearchShape,
     topic: z.string().max(100).optional().catch(undefined),
     strand: z.string().max(100).optional(),
     filter: z.string().max(100).optional(),
@@ -151,15 +139,7 @@ const searchSchema = z
     skill: z.string().max(100).optional(),
     template: z.string().max(100).optional(),
     page: z.coerce.number().int().nonnegative().optional(),
-    state: z.string().max(200).optional(),
-    purchase: z.string().max(200).optional(),
-    billing: z.string().max(40).optional(),
     interval: z.enum(["year", "month"]).optional().catch(undefined),
-    reason: z.enum(["limit", "choice"]).optional().catch(undefined),
-    "sign-in": z.string().optional(),
-    "signed-in": z.string().optional(),
-    method: z.enum(["password"]).optional().catch(undefined),
-    "reset-password": z.string().optional(),
   })
   .passthrough();
 function RouterError({ error }: { error: unknown }) {
@@ -437,7 +417,12 @@ const home = createRoute({
   getParentRoute: () => appScreen,
   path: "/",
   staticData: { space: "learner" },
-  loaderDeps: ({ search }) => ({ program: search.program }),
+  // The ad's program and campaign, kept once by the pitch
+  // (lib/program-choice.ts `keepArrival`).
+  loaderDeps: ({ search }) => ({
+    program: search.program,
+    ...campaignSearch(search),
+  }),
   loader: async ({ deps }) => {
     const session = queryClient.getQueryData(sessionOptions.queryKey);
     const shown = showsPitch(session);
@@ -630,8 +615,7 @@ async function beforeStarter({
         .catch((error) => console.warn("The account didn’t load ahead", error));
   const target = routeFor(me?.signedIn ? me : null, location);
   // An established account's old trial link: straight to its place.
-  if (target?.to === "/")
-    await toOwnPlace(me?.signedIn ? me : undefined);
+  if (target?.to === "/") await toOwnPlace(me?.signedIn ? me : undefined);
   if (target) elsewhere(target.to);
   // The school answer's next step depends on the account's schools: there
   // before the page paints, so its buttons never arrive late.
@@ -814,8 +798,11 @@ const pathwaysIndex = createRoute({
  * navigation resolves it is the account's current learner
  * (followResolvedLearner). The server still decides what the account may
  * open. */
-const beforeWorkbooks = ({ location }: { location: { pathname: string; searchStr: string } }) =>
-  requireSignedIn(location, { web: true, adults: true });
+const beforeWorkbooks = ({
+  location,
+}: {
+  location: { pathname: string; searchStr: string };
+}) => requireSignedIn(location, { web: true, adults: true });
 /** Daily paper workbooks for one learner (features/workbooks). */
 const workbookHistory = createRoute({
   getParentRoute: () => root,
@@ -1148,7 +1135,8 @@ const schoolConnect = createRoute({
   beforeLoad: async () => {
     admit({ web: true });
     const config = await queryClient.ensureQueryData(authConfigOptions);
-    if (config.mode === "accounts" && !config.clever) elsewhere("/school/start");
+    if (config.mode === "accounts" && !config.clever)
+      elsewhere("/school/start");
     if (studentSession()) {
       // The component may already have captured a hash-only completion.
       // Await its validation; only the helper can replace a student, and
@@ -1253,8 +1241,19 @@ const standings = createRoute({
   path: "/standings",
   staticData: { space: "student" },
   validateSearch: standingsSearchSchema,
+  // A student whose classes have no board on: their practice.
   beforeLoad: async () => {
     if (!studentSession()) await toOwnPlace();
+    const [{ standingsBoardsOptions }, session] = await Promise.all([
+      import("../features/school/classroom/api"),
+      queryClient.ensureQueryData(sessionOptions),
+    ]);
+    const boards = await queryClient
+      .ensureQueryData(standingsBoardsOptions(session ?? null))
+      .catch((error: unknown) =>
+        console.warn("Standings didn’t load ahead", error),
+      );
+    if (boards && !boards.boards.length) elsewhere(studentPracticeHref());
   },
   // Which boards this student has is known before the screen paints, so a
   // class picker is there from the first frame and never pushes the board
@@ -1515,19 +1514,6 @@ const lessonFilm = createRoute({
   getParentRoute: () => appScreen,
   path: "/lessons/$templateId/watch",
   staticData: { space: "learner" },
-  validateSearch: (search): { from: string | undefined; problem?: string } => {
-    /** The problem the film was opened from, so watching it is help for it. */
-    const problem = z
-      .string()
-      .max(160)
-      .optional()
-      .catch(undefined)
-      .parse(search.problem);
-    return {
-      from: z.string().max(2048).optional().catch(undefined).parse(search.from),
-      ...(problem ? { problem } : {}),
-    };
-  },
   component: lazyRouteComponent(
     () => import("../features/films/FilmScreen"),
     "FilmScreen",
@@ -1925,9 +1911,7 @@ onSignedOut(() => {
   const target = signInTarget(router.state.location);
   void router
     .preloadRoute(target)
-    .catch((error: unknown) =>
-      console.warn("Sign-in didn’t load ahead", error),
-    )
+    .catch((error: unknown) => console.warn("Sign-in didn’t load ahead", error))
     .then(() => router.navigate({ ...target, replace: true }))
     .finally(clear);
   return true;

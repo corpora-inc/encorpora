@@ -4,7 +4,8 @@
 function list(query: string): MediaQueryList | undefined {
   try {
     return matchMedia(query);
-  } catch {
+  } catch (error) {
+    console.warn(`Media query ${query} isn’t supported here`, error);
     return undefined;
   }
 }

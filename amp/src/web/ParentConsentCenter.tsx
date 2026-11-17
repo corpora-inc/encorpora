@@ -1,5 +1,6 @@
 import { requestFetch } from "./lib/request-transport";
 import { CheckboxControl } from "./ui/Checkbox";
+import { TextField } from "./ui/TextField";
 import {
   pendingFundedPurchase,
   fundedProgramForPath,
@@ -77,6 +78,7 @@ export function ParentConsentCenter({
           retry.current = null;
       }
     } catch (e) {
+      if (!abort.signal.aborted) console.error("AMP couldn’t load consent", e);
       if (current === epoch.current && !abort.signal.aborted)
         setError(e instanceof Error ? e.message : "Unable to load consent.");
     } finally {
@@ -173,6 +175,7 @@ export function ParentConsentCenter({
         onChanged?.();
       }
     } catch (e) {
+      console.error("AMP couldn’t save the consent response", e);
       if (current === epoch.current)
         setError(
           e instanceof Error ? e.message : "Your response could not be saved.",
@@ -253,19 +256,17 @@ export function ParentConsentCenter({
                   Use your own email. Open the notice we send while signed in
                   here, and learning starts as soon as you agree.
                 </p>
-                <label>
-                  Email address
-                  <input
-                    ref={emailInput}
-                    required
-                    aria-label="Parent email address"
-                    type="email"
-                    autoComplete="email"
-                    maxLength={254}
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </label>
+                <TextField
+                  label="Email address"
+                  ref={emailInput}
+                  required
+                  aria-label="Parent email address"
+                  type="email"
+                  autoComplete="email"
+                  maxLength={254}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </>
             )}
             {phase === "awaiting-initial" && !canAck && (

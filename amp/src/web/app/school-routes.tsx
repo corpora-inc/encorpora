@@ -45,12 +45,15 @@ export function schoolRoutes(root: AnyRoute) {
     load?: (session: AuthSession, orgId: string) => unknown[],
     /** A family org's own page in place of this school-level one. */
     family: "roster" | "map" | "settings" | "today" = "today",
+    beforeLoad: (context: unknown) => Promise<unknown> = familyEquivalent(
+      family,
+    ),
   ) =>
     createRoute({
       getParentRoute: () => root,
       path: `/school/$org${path}`,
       staticData: { space: "school" },
-      beforeLoad: familyEquivalent(family),
+      beforeLoad,
       loader: async ({ context, params }) => {
         const { session } = context as unknown as { session: AuthSession };
         const orgId = (params as unknown as { org: string }).org;
@@ -259,6 +262,8 @@ export function schoolRoutes(root: AnyRoute) {
         api().then((m) => preload(m.calendarOptions(session, orgId))),
       ],
       "settings",
+      // A one-class school's year is its class's Settings.
+      guard("calendar"),
     ),
     // Every section before the page paints, so a section never arrives
     // late and pushes the ones below it (the license, opened by its hash).

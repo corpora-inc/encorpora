@@ -111,7 +111,11 @@ export async function accessSession(): Promise<AuthSession | null> {
     !oidcConfigured && !student && !completion && !providerHint
       ? accountSession()
       : undefined;
-  speculative?.catch(() => undefined);
+  // Asked early, used below only for AMP's own accounts; whoever uses it
+  // shows its failure.
+  speculative?.catch((error: unknown) =>
+    console.warn("AMP: the early session check failed", error),
+  );
   const configuration = await authConfig();
   if (configuration.mode === "accounts") {
     // Only where a school sign-in exists (its readable hint cookie) or one
@@ -274,6 +278,7 @@ export function onSessionChanged(
           if (current === generation) update(session, change);
         })
         .catch((failure) => {
+          console.error("AMP: the session wasn’t read after a change", failure);
           if (current === generation) error?.(String(failure));
         });
     };
@@ -286,8 +291,11 @@ export function onSessionChanged(
       window.removeEventListener("amp-account-session-changed", changed);
       try {
         channel?.close();
-      } catch {
-        /* Optional cross-tab transport. */
+      } catch (failure) {
+        console.warn(
+          "AMP: the cross-tab sign-in channel didn’t close",
+          failure,
+        );
       }
     };
   }

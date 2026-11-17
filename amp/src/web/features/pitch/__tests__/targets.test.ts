@@ -1,6 +1,8 @@
 import { beforeEach, expect, test } from "vitest";
 import {
+  arrivalLabels,
   chosenProgram,
+  keepArrival,
   keepArrivalProgram,
   resetProgramChoiceForTests,
 } from "../../../lib/program-choice";
@@ -30,8 +32,18 @@ test("a funded program's Buy is its no-account invoice, with the campaign kept",
   ] as const)
     expect(pitchTarget("funded", { ...campaign, program: id })).toEqual({
       to: `/invoice/${slug}`,
-      search: campaign,
     });
+});
+
+test("the ad's campaign is the arrival's: kept once, carried by sign-up", () => {
+  keepArrival({ ...campaign, program: "ar-efa", gclid: "click" });
+  resetProgramChoiceForTests();
+  expect(arrivalLabels()).toEqual(campaign);
+  // A later screen's address names no campaign: sign-up still carries it.
+  expect(pitchTarget("card", {})).toEqual({
+    to: "/sign-up",
+    search: { ...campaign, entry: "pitch-buy" },
+  });
 });
 
 test("the program is the tab's choice, never the next address's", () => {
@@ -40,7 +52,6 @@ test("the program is the tab's choice, never the next address's", () => {
   expect(pitchProgramOf({})?.slug).toBe("arizona-esa");
   expect(pitchTarget("funded", campaign)).toEqual({
     to: "/invoice/arizona-esa",
-    search: campaign,
   });
   expect(chosenProgram()).toBe("az-esa");
 });
@@ -70,5 +81,6 @@ test("unknown programs and free-text labels never travel", () => {
   expect(
     pitchCarry({ program: "tx-esa", utm_source: "me@example.com" }),
   ).toEqual({});
+  expect(arrivalLabels()).toEqual({});
   expect(() => pitchTarget("funded", { program: "tx-esa" })).toThrow();
 });

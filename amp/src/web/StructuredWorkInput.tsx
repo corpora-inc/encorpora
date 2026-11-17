@@ -32,6 +32,7 @@ import {
 } from "../math/structured-work";
 import { deleteBackward, insertText, readField } from "./lib/keypadEdit";
 import { WorkDiagramView, type DiagramSlots } from "./WorkDiagram";
+import { AnswerInput } from "./ui/AnswerInput";
 
 /* Structured work: a list of steps (or a two-column proof) built field by
    field. Every control keeps its size from the first frame: a choice is as
@@ -467,7 +468,7 @@ export function StructuredWorkInput({
     return (
       <span className="work-entry" data-kind={f.kind}>
         <span className="work-entry-row">
-          <input
+          <AnswerInput
             ref={(node) => {
               if (node) inputs.current.set(key, node);
               else inputs.current.delete(key);
@@ -476,11 +477,8 @@ export function StructuredWorkInput({
             data-invalid={showError ? "" : undefined}
             value={raw}
             readOnly={locked}
-            inputMode={small ? "none" : "text"}
-            autoComplete="off"
-            autoCapitalize="none"
-            autoCorrect="off"
-            spellCheck={false}
+            keypad={small}
+            inputMode="text"
             maxLength={fieldMaxLength(f)}
             data-field={key}
             aria-label={

@@ -7,6 +7,7 @@ import {
 } from "../math/figure-choice";
 import { spokenMath } from "./MathText";
 import { SceneFigure } from "./scene/SceneFigure";
+import { RadioControl } from "./ui/RadioControl";
 
 export type FigureChoiceReview = ReturnType<typeof figureChoiceReview>;
 /** The correct card and the learner's card, from the server's answer. */
@@ -119,8 +120,7 @@ export function FigureChoiceInput({
               data-selected={selected ? "" : undefined}
               data-mark={mark?.tone}
             >
-              <input
-                type="radio"
+              <RadioControl
                 className="figure-choice-radio"
                 name={`figure-choice-${problemId}`}
                 value={option.id}

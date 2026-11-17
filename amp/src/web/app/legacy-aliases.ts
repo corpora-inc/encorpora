@@ -10,12 +10,7 @@ import { meOptions, queryClient, sessionOptions } from "../lib/query";
 import { requestFetch } from "../lib/request-transport";
 import { nativeRuntime } from "../native-runtime";
 import { MAX_LAYERS, OPEN_KEY, work } from "../nav/entities";
-import {
-  layerScope,
-  pushed,
-  seedLayers,
-  type Layer,
-} from "../nav/layer-store";
+import { layerScope, pushed, seedLayers, type Layer } from "../nav/layer-store";
 import { withoutLayerKeys } from "../nav/legacy-layers";
 import { legacyLayers } from "../nav/links";
 import {
@@ -87,6 +82,11 @@ export type LegacyAlias = {
   to: (old: OldAddress) => Target | undefined | Promise<Target | undefined>;
 };
 
+/** The keys a map's address carried its layers and view in (layers: the
+ * layer store; view: features/pathways/map-view.ts). */
+const MAP_VIEW_KEYS = ["topic", "filter", "area", "view"];
+const MAP_KEYS = ["open", "skill", "lesson", ...MAP_VIEW_KEYS];
+
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 /** The session, if any, without asking anyone to sign in: a row that is
@@ -116,6 +116,7 @@ const withLayers = (
 async function pathwaysTarget(
   search: Record<string, unknown>,
   skill?: string,
+  screen = "/pathways",
 ): Promise<Target> {
   const named =
     skill ?? (typeof search.skill === "string" ? search.skill : undefined);
@@ -123,13 +124,19 @@ async function pathwaysTarget(
   if (named) stack = [{ kind: "skill", id: named }, ...stack];
   if (typeof search.lesson === "string")
     stack = pushed(stack, { kind: "lesson", id: search.lesson });
-  const map = withoutLayerKeys("/pathways", search);
+  // The map's view (its search, grade and area) leaves the address too,
+  // for the map's own view store (features/pathways/map-view.ts).
+  const map = withoutLayerKeys(screen, search, MAP_KEYS);
   const [path, query = ""] = map.split("?");
   const href =
     (await olderLearningHref({
       pathname: path!,
       searchStr: query ? `?${query}` : "",
     })) ?? map;
+  if (MAP_VIEW_KEYS.some((key) => key in search))
+    await (
+      await import("../features/pathways/legacy-addresses")
+    ).carryMapView(href, search);
   return { href, layers: stack.slice(0, MAX_LAYERS) };
 }
 
@@ -163,7 +170,11 @@ async function toAccount(old: OldAddress) {
       import("../features/spaces/settings-hub"),
     ],
   );
-  const hop = accountHop(old.pathname, await loadSettingsHub(session), old.search);
+  const hop = accountHop(
+    old.pathname,
+    await loadSettingsHub(session),
+    old.search,
+  );
   if (hop?.panel) setPanel(session.accountId, hop.panel.overlay, hop.panel.id);
   return hop?.href ?? "/account";
 }
@@ -290,12 +301,15 @@ const familyLearners = (sheet?: string) => async (old: OldAddress) => {
     adults: true,
     back: "here",
   });
-  const [{ familyPlacesOptions }, { familyPath, landingFamily }, { sheetState }] =
-    await Promise.all([
-      import("../features/family/api"),
-      import("../features/family/redirects"),
-      import("../nav/sheet"),
-    ]);
+  const [
+    { familyPlacesOptions },
+    { familyPath, landingFamily },
+    { sheetState },
+  ] = await Promise.all([
+    import("../features/family/api"),
+    import("../features/family/redirects"),
+    import("../nav/sheet"),
+  ]);
   const places = await queryClient.fetchQuery(familyPlacesOptions(session));
   const family = landingFamily(places);
   return family
@@ -423,9 +437,7 @@ async function familyChildLayer(old: OldAddress): Promise<Target | undefined> {
     },
     people: peopleOf(data.children, own.id),
   });
-  return target.to.includes("/kids/")
-    ? { to: target.to, search: target.search }
-    : undefined;
+  return target.href.includes("/kids/") ? target.href : undefined;
 }
 
 /** Every old address, each one hop to where it opens now. */
@@ -463,7 +475,10 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
     about: "a password reset, by its query",
     when: (old) => "reset-password" in old.search,
     to: ({ search }) =>
-      withQuery("/reset-password", { token: search.token, error: search.error }),
+      withQuery("/reset-password", {
+        token: search.token,
+        error: search.error,
+      }),
   },
   { from: "/try", about: "the retired free trial", to: retiredTrial },
   { from: "/try/$", about: "the retired free trial's steps", to: retiredTrial },
@@ -491,7 +506,11 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
     about: "Continue with AMP",
     to: toPay("continue"),
   },
-  { from: "/pay/$learnerId", about: "a learner's pay screen", to: toPay("continue") },
+  {
+    from: "/pay/$learnerId",
+    about: "a learner's pay screen",
+    to: toPay("continue"),
+  },
   { from: "/purchase/annual", about: "the card plan", to: toPay("card") },
   { from: "/purchase/choose", about: "choosing a plan", to: toPay("choose") },
   { from: "/purchase/funded", about: "paying with funds", to: toPay("funds") },
@@ -510,25 +529,45 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
       const query = params.get("q")?.trim();
       // `?topic=` named a problem type's short lesson: Pathways opens it.
       const lesson = params.get("topic")?.trim();
+      // Its search goes into the map's view (features/pathways/map-view.ts).
       const search = query ? { topic: query } : {};
-      return lesson
-        ? pathwaysTarget({ ...search, lesson })
-        : { to: "/pathways", search };
+      return pathwaysTarget(lesson ? { ...search, lesson } : search);
     },
   },
   {
     from: "/pathways",
-    about: "a skill, lesson or shared stack in the query",
-    when: ({ search }) =>
-      search.skill !== undefined ||
-      search.lesson !== undefined ||
-      search.open !== undefined,
+    about: "a skill, lesson, shared stack or the map's view in the query",
+    when: ({ search }) => MAP_KEYS.some((key) => search[key] !== undefined),
     to: ({ search }) => pathwaysTarget(search),
+  },
+  {
+    from: "/family/$family/kids/$learner/pathways",
+    about: "a child's map with its layers or view in the query",
+    when: ({ search }) => MAP_KEYS.some((key) => search[key] !== undefined),
+    to: (old) => pathwaysTarget(old.search, undefined, old.pathname),
   },
   {
     from: "/pathways/$skill",
     about: "a skill's own address",
     to: ({ search, params }) => pathwaysTarget(search, params.skill),
+  },
+
+  // A film opened as help for a problem, from before that had its path
+  // (`?problem=`); its `?from=` went with it (closing goes back).
+  {
+    from: "/lessons/$templateId/watch",
+    about: "a film's problem and return in the query",
+    when: ({ search }) => "problem" in search || "from" in search,
+    to: ({ params, search }) => {
+      const film = `/lessons/${encodeURIComponent(params.templateId!)}/watch`;
+      const raw = search.problem;
+      const problem =
+        (typeof raw === "string" || typeof raw === "number") &&
+        String(raw).length <= 160
+          ? String(raw)
+          : undefined;
+      return problem ? `${film}/${encodeURIComponent(problem)}` : film;
+    },
   },
 
   // Practice held to a problem type, skill or area by its query, from before
@@ -636,38 +675,42 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
   // A school-level student page, and one of their answers on it, from
   // before layers: a student layer over the school's Students (a family's
   // child: their own page).
-  ...(["/school/$org/students/$student", "/school/$org/students/$student/work/$work"] as const).map(
-    (from) => ({
-      from,
-      about: from.endsWith("$work")
-        ? "a student's answer in a school"
-        : "a student in a school",
-      to: async (old: OldAddress): Promise<Target> => {
-        const { org, student, work: attempt } = old.params as Record<
-          string,
-          string
-        >;
-        const session = await requireSignedIn(old, {
-          web: true,
-          adults: true,
-          back: "here",
-        });
-        const { toFamilyChild } = await import("./family-redirect");
-        const family = await toFamilyChild(
-          session,
-          org!,
-          student!,
-          attempt ?? null,
-          old,
-        );
-        if (family) return family;
-        return withLayers(`/school/${org}/students`, old, [
-          { kind: "student", id: student! },
-          ...(attempt ? [work(student!, attempt)] : []),
-        ]);
-      },
-    }),
-  ),
+  ...(
+    [
+      "/school/$org/students/$student",
+      "/school/$org/students/$student/work/$work",
+    ] as const
+  ).map((from) => ({
+    from,
+    about: from.endsWith("$work")
+      ? "a student's answer in a school"
+      : "a student in a school",
+    to: async (old: OldAddress): Promise<Target> => {
+      const {
+        org,
+        student,
+        work: attempt,
+      } = old.params as Record<string, string>;
+      const session = await requireSignedIn(old, {
+        web: true,
+        adults: true,
+        back: "here",
+      });
+      const { toFamilyChild } = await import("./family-redirect");
+      const family = await toFamilyChild(
+        session,
+        org!,
+        student!,
+        attempt ?? null,
+        old,
+      );
+      if (family) return family;
+      return withLayers(`/school/${org}/students`, old, [
+        { kind: "student", id: student! },
+        ...(attempt ? [work(student!, attempt)] : []),
+      ]);
+    },
+  })),
   // An older setup address (`/school/new?org=…&step=…`): the step's own
   // address. Signed out without a school named: the schools page.
   {
@@ -728,7 +771,11 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
     about: "workbooks",
     to: familyWorkbooks,
   },
-  { from: "/family/$family/time", about: "practice time", to: familyRecord("child-time") },
+  {
+    from: "/family/$family/time",
+    about: "practice time",
+    to: familyRecord("child-time"),
+  },
   {
     from: "/family/$family/reports",
     about: "report cards",

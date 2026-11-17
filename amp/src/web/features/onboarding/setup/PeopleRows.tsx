@@ -1,5 +1,5 @@
-import { useId } from "react";
 import { Button } from "../../../ui/Button";
+import { TextField } from "../../../ui/TextField";
 import { YearField } from "../../../ui/YearField";
 import styles from "./Setup.module.css";
 
@@ -22,6 +22,15 @@ export type Row = {
   onRemove?: () => void;
   /** This row is being saved. */
   busy?: boolean;
+};
+
+/** A row's name field, one cell of the rows' grid. */
+const nameCell = {
+  root: styles.cell!,
+  head: styles.cellHead!,
+  label: styles.cellLabel!,
+  input: styles.nameInput!,
+  note: styles.cellNote!,
 };
 
 /** Each child: a name field whose placeholder is what they go by if it stays
@@ -48,7 +57,6 @@ export function People({
   disabled: boolean;
   add: { label: string; onAdd: () => void } | null;
 }) {
-  const id = useId();
   return (
     <div className={styles.people}>
       {rows.length > 0 && (
@@ -61,7 +69,6 @@ export function People({
       <ol className={styles.rows}>
         {rows.map((row, at) => {
           const needsYear = missingYear && !row.fixed && !row.year;
-          const nameId = `${id}-${row.key}`;
           // Named by what the parent typed, else the row's own name.
           const remove = row.onRemove && (
             <RemoveRow
@@ -72,36 +79,27 @@ export function People({
           );
           return (
             <li key={row.key} className={styles.person}>
-              <div className={styles.cell}>
-                {/* On a phone, Remove sits on the name's label line, at the
-                    field's right edge: part of the child, not of the field. */}
-                <span className={styles.cellHead}>
-                  <label htmlFor={nameId} className={styles.cellLabel}>
-                    {field.label}
-                  </label>
-                  {remove && (
-                    <span className={styles.headRemove}>{remove}</span>
-                  )}
-                </span>
-                <input
-                  id={nameId}
-                  className={styles.nameInput}
-                  value={row.name}
-                  placeholder={row.label}
-                  maxLength={field.max}
-                  autoComplete="off"
-                  autoCapitalize="words"
-                  spellCheck={false}
-                  aria-invalid={invalid === at || undefined}
-                  aria-label={`${field.label}, ${row.label} (${field.placeholder.toLowerCase()})`}
-                  disabled={disabled || row.busy}
-                  onChange={(event) => row.onName(event.target.value)}
-                  onBlur={row.onCommit}
-                />
-                <span className={styles.cellNote} aria-live="polite">
-                  {invalid === at ? nameNote : ""}
-                </span>
-              </div>
+              {/* On a phone, Remove sits on the name's label line, at the
+                  field's right edge: part of the child, not of the field. */}
+              <TextField
+                cell={nameCell}
+                label={field.label}
+                action={
+                  remove && <span className={styles.headRemove}>{remove}</span>
+                }
+                error={invalid === at ? nameNote : undefined}
+                value={row.name}
+                placeholder={row.label}
+                maxLength={field.max}
+                autoComplete="off"
+                autoCapitalize="words"
+                spellCheck={false}
+                aria-invalid={invalid === at || undefined}
+                aria-label={`${field.label}, ${row.label} (${field.placeholder.toLowerCase()})`}
+                disabled={disabled || row.busy}
+                onChange={(event) => row.onName(event.target.value)}
+                onBlur={row.onCommit}
+              />
               <div className={styles.cell}>
                 <span className={styles.cellLabel} aria-hidden="true">
                   Birth year

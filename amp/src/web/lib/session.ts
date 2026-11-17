@@ -29,6 +29,14 @@ export function useSessionOrNull(): AuthSession | null {
   return useQuery(sessionOptions).data ?? null;
 }
 
+/** The sign-in itself, with its loading and failure, for the one hook that
+ * shows them (`useLearningView`: the drawer and practice wait on, or say,
+ * an unreadable sign-in). Everything else reads `useSession()` or
+ * `useSessionOrNull()`. */
+export function useSessionQuery() {
+  return useQuery(sessionOptions);
+}
+
 /** A session's query on a screen that may be signed out:
  * `useQuery(forSession(session, meOptions))`. Signed out, it asks nothing
  * and stays pending. Use it instead of a stand-in session

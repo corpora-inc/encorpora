@@ -1,26 +1,62 @@
 import {
   useId,
-  type InputHTMLAttributes,
+  type ComponentPropsWithRef,
   type ReactNode,
   type TextareaHTMLAttributes,
 } from "react";
 import styles from "./Controls.module.css";
+/** The classes of a field that is one cell of a caller's grid (the rows of
+ * children a parent adds): its own box, label line, label, input and note,
+ * so the grid lays out every cell alike. */
+export type TextFieldCell = {
+  root: string;
+  head: string;
+  label: string;
+  input: string;
+  note: string;
+};
+
 /** A one-line field. `hint` is one quiet line under it (a rule, such as a
  * password's length); `action` sits on the label's line, at its right edge
- * (a switch to another way in). Neither is part of the field's name. */
+ * (a switch to another way in, a row's Remove). Neither is part of the
+ * field's name. `cell` draws it as one cell of a grid, in the grid's
+ * classes. */
 export function TextField({
   label,
   error,
   hint,
   action,
+  cell,
   ...props
-}: InputHTMLAttributes<HTMLInputElement> & {
+}: ComponentPropsWithRef<"input"> & {
   label: string;
   error?: string;
   hint?: string;
   action?: ReactNode;
+  cell?: TextFieldCell;
 }) {
   const id = useId();
+  if (cell)
+    return (
+      <div className={cell.root}>
+        <span className={cell.head}>
+          <label htmlFor={id} className={cell.label}>
+            {label}
+          </label>
+          {action}
+        </span>
+        <input
+          {...props}
+          id={id}
+          className={cell.input}
+          aria-invalid={props["aria-invalid"] ?? (error ? true : undefined)}
+          aria-describedby={`${id}-error`}
+        />
+        <span id={`${id}-error`} className={cell.note} aria-live="polite">
+          {error ?? ""}
+        </span>
+      </div>
+    );
   // The label element holds the hint and the action too: the name is the
   // label's own words.
   const named =
@@ -44,7 +80,15 @@ export function TextField({
         id={id}
         className={styles.input}
         aria-invalid={!!error}
-        aria-describedby={hint ? `${id}-hint ${id}-error` : `${id}-error`}
+        // A caller's own description (a help line elsewhere) is kept beside
+        // the hint's and the error's.
+        aria-describedby={[
+          props["aria-describedby"],
+          hint && `${id}-hint`,
+          `${id}-error`,
+        ]
+          .filter(Boolean)
+          .join(" ")}
       />
       {hint && (
         <span id={`${id}-hint`} className={styles.fieldHint}>
