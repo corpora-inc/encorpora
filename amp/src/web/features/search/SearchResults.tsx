@@ -16,7 +16,7 @@ import styles from "./SearchResults.module.css";
 /** Rows each group shows before "Show more". */
 const FIRST: Record<SearchGroupId, number> = {
   lessons: 8,
-  skills: 4,
+  skills: 5,
   glossary: 3,
 };
 const KIND_LABEL = {
@@ -82,10 +82,14 @@ export const SearchResults = memo(function SearchResults({
   results,
   pending,
   actions,
+  groups,
 }: {
   results: readonly SearchResult[];
   pending: boolean;
   actions: SearchActions;
+  /** The groups this screen shows here, when it lists one itself
+   * (Inventory's skills carry their progress). */
+  groups?: readonly SearchGroupId[];
 }) {
   // Groups opened past their first rows; a new set of results starts closed.
   const [more, setMore] = useState<{
@@ -97,6 +101,7 @@ export const SearchResults = memo(function SearchResults({
   return (
     <div className={styles.results} aria-busy={pending} data-search-results="">
       {searchGroups.map((group) => {
+        if (groups && !groups.includes(group.id)) return null;
         // A problem type's lesson plays its film, so a film whose problem
         // type is listed rides on that row instead of repeating its title.
         const types = new Set(

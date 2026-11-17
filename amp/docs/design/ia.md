@@ -133,7 +133,7 @@ Each of these is that person's own composition of shared components (rule 6). Th
 - **Pathways and Inventory:** full width. On day 0 each is a centred hero over the whole curriculum.
 - **Workbooks:** the drawer item under Practice. The workbook pages are their own place (the plain bar with its Practice, no Progress tabs, the drawer item current); a workbook's page keeps its in-page way back to "Your workbooks", and the builder opens in a sheet.
 - **Lessons** are not a destination of their own. They are reached from a skill's layer (over Pathways and Inventory), from practice (Lesson in the feedback) and from Pathways' search. The `/lessons/<id>` reader stays for links. `/lessons` alone opens Pathways, carrying any `?q=` into its search.
-- **Pathways' search is the one search:** skills, lessons and glossary terms, grouped (the semantic search).
+- **One search, on Pathways and Inventory:** skills, lessons and glossary terms, grouped (the semantic search), through one field, hook and result list (`features/search/SiteSearch.tsx`). Every result opens its skill where that screen opens skills; Inventory lists its found skills with their progress, best first.
 - **The drawer, for an adult:** Practice · Workbooks (a book icon) · Progress (Overview · Pathways · Inventory) · Practice as someone else (its own icon) · Account. Exactly one item is current. There is no Lessons item.
 - **Practice as someone else (`/me/profiles`):** saved profiles, recent ones, and "Try a level…", reached from the drawer. It is never in the place switcher.
 - **Account:** Learners lists "Your practice" first. Billing shows the free problems left or the plan.

@@ -6,6 +6,8 @@
  * means the same thing everywhere.
  */
 
+import { areas, crossCuttingAreas, strandAreas } from "../curriculum/areas";
+
 export type SearchKind = "lesson" | "type" | "film" | "skill" | "term";
 
 /** Results are shown in these groups, in this order. */
@@ -47,6 +49,36 @@ export type SearchDoc = {
   band: string;
   /** Math area (BirthYearPrompt `strandNames`), empty for glossary terms. */
   strand: string;
+  /** What else the embedding reads besides the title and snippet: a skill's
+   * strand, area and problem types. Empty for other kinds. */
+  about: string;
+};
+
+/**
+ * Each engine strand in the words people search it by (BirthYearPrompt's
+ * `strandNames`, with "Reasoning" as the proof and justification it is).
+ */
+export const strandWords: Readonly<Record<string, string>> = {
+  number: "Numbers",
+  operations: "Operations",
+  fractions: "Fractions",
+  decimals: "Decimals",
+  ratio: "Ratio and percent",
+  algebra: "Algebra",
+  reasoning: "Reasoning and proof",
+  functions: "Functions",
+  geometry: "Geometry",
+  trigonometry: "Trigonometry",
+  measurement: "Measurement",
+  data: "Data and statistics",
+  probability: "Probability",
+  modeling: "Word problems",
+};
+
+/** A skill's math area, as every screen names it (curriculum/areas.ts). */
+const areaTitle = (skill: { id: string; strand: string }) => {
+  const id = strandAreas[skill.strand] ?? crossCuttingAreas[skill.id];
+  return areas.find((area) => area.id === id)?.title ?? "";
 };
 
 export type CorpusLesson = {
@@ -181,6 +213,7 @@ export function buildCorpus({
       codes: codesOf(lessonSkills),
       band: first.gradeBand,
       strand: first.strand,
+      about: "",
     });
   }
   for (const template of templates) {
@@ -202,6 +235,7 @@ export function buildCorpus({
       codes: codesOf([skill]),
       band: skill.gradeBand,
       strand: skill.strand,
+      about: "",
     });
   }
   // The manifest lists a film under every problem type it teaches; search lists it once.
@@ -224,9 +258,33 @@ export function buildCorpus({
       codes: codesOf([skill]),
       band: skill.gradeBand,
       strand: skill.strand,
+      about: "",
     });
   }
-  for (const skill of skills)
+  // A skill is found by everything it holds: its problem types and the
+  // lessons that teach them, its strand and its area, not its title alone.
+  const typesOf = new Map<string, string[]>();
+  for (const template of templates) {
+    const list = typesOf.get(template.skillId) ?? [];
+    list.push(template.title);
+    typesOf.set(template.skillId, list);
+  }
+  const lessonsOf = new Map<string, Set<string>>();
+  for (const lesson of lessons)
+    for (const id of lesson.templateIds) {
+      const skill = templateById.get(id)?.skillId;
+      if (!skill) continue;
+      const list = lessonsOf.get(skill) ?? new Set<string>();
+      list.add(lesson.title);
+      lessonsOf.set(skill, list);
+    }
+  for (const skill of skills) {
+    const types = [...new Set(typesOf.get(skill.id) ?? [])];
+    const kind = [
+      ...new Set([strandWords[skill.strand] ?? "", areaTitle(skill)]),
+    ]
+      .filter(Boolean)
+      .join(", ");
     docs.push({
       id: `skill:${skill.id}`,
       kind: "skill",
@@ -234,12 +292,25 @@ export function buildCorpus({
       skill: skill.id,
       title: skill.title ?? skill.id,
       snippet: excerpt(skill.description ?? ""),
-      body: plainText(skill.description ?? ""),
+      body: plainText(
+        [
+          skill.description ?? "",
+          kind,
+          ...types,
+          ...(lessonsOf.get(skill.id) ?? []),
+        ]
+          .filter(Boolean)
+          .join(". "),
+      ),
       names: [],
       codes: codesOf([skill]),
       band: skill.gradeBand,
       strand: skill.strand,
+      about: plainText(
+        [kind, types.slice(0, 6).join("; ")].filter(Boolean).join(". "),
+      ),
     });
+  }
   for (const term of terms)
     docs.push({
       id: `term:${term.id}`,
@@ -253,6 +324,7 @@ export function buildCorpus({
       codes: [],
       band: term.band ?? "",
       strand: "",
+      about: "",
     });
   return docs;
 }
@@ -262,6 +334,8 @@ export function embeddingText(doc: SearchDoc) {
   return plainText(
     doc.kind === "term"
       ? `${doc.title}: ${doc.snippet}`
-      : `${doc.title}. ${doc.snippet}`,
+      : doc.about
+        ? `${doc.title}. ${doc.snippet}. ${doc.about}`
+        : `${doc.title}. ${doc.snippet}`,
   ).slice(0, 600);
 }

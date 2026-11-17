@@ -51,6 +51,8 @@ export const synonyms: Readonly<Record<string, string>> = {
   "y mx b": "slope intercept",
   mx: "slope",
   // Everyday words for the same idea.
+  logic: "reasoning proof prove justify argument deductive",
+  logical: "reasoning proof prove justify argument deductive",
   average: "mean",
   "middle number": "median",
   "most often": "mode",
