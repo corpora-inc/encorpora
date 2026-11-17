@@ -60,7 +60,7 @@ export function useStartOwnPractice(session: AuthSession) {
       rememberPlace(session.accountId, "me");
       await refreshMe(session);
       void queryClient.invalidateQueries({
-        queryKey: ["account", session.accountId, "own-practice"],
+        queryKey: ownPracticeKey(session.accountId),
       });
       return learnerId;
     },

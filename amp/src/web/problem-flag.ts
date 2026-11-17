@@ -18,7 +18,12 @@ export function webBuildCommit(): Promise<string | null> {
         ? commit
         : null;
     })
-    .catch(() => null);
+    // Practice's chunks stay clear of lib/report-error (its entry cost);
+    // the report goes without the commit, which a local build never has.
+    .catch((error: unknown) => {
+      console.warn("The web build’s commit couldn’t be read", error);
+      return null;
+    });
   return webCommit;
 }
 

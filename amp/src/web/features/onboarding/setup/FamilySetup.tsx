@@ -1,25 +1,19 @@
 import { spaceWords } from "../../spaces/words";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
-import { useEffect, useId, useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { create } from "zustand";
 import type { SignedInMe } from "../../../../account/contracts";
-import {
-  CHILD_NAME_MAX,
-  childNameProblem,
-  NICKNAME_MAX,
-  PARENT_ENTRY_LINE,
-} from "../../../../learning/nickname";
+import { childNameProblem, NICKNAME_MAX } from "../../../../learning/nickname";
 import { studentGrantResource } from "../../../../schools/contracts";
 import type { AuthSession } from "../../../auth";
 import { request } from "../../../lib/api";
 import { flush } from "../../../lib/analytics";
 import { AppError } from "../../../lib/AppError";
-import { invalidateAccount, meOptions, queryClient } from "../../../lib/query";
+import { meOptions, queryClient } from "../../../lib/query";
 import { chosenPlan } from "../../../lib/pending-trial";
 import { setHome } from "../../../lib/home-place";
 import { Button, buttonClass } from "../../../ui/Button";
-import { YearField } from "../../../ui/YearField";
 import { QueryBlock } from "../../../ui/QueryBlock";
 import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { RowButton, RowList } from "../../../ui/RowList";
@@ -30,17 +24,12 @@ import { presenceOptions } from "../../school/classes/api";
 import { finishingSignIn, useFinishSignIn } from "../../school/join/api";
 import { useFinishSetup, useStartPlace } from "../starter-api";
 import { setupOf } from "../guard";
-import {
-  setupSavesSettled,
-  useAddKid,
-  useKidYear,
-  useRemoveKid,
-  useRenameKid,
-} from "./kids-api";
 import { familyPlacesOptions } from "../../family/api";
 import { DevicesSheet } from "../../family/Devices";
 import { useFamilyPlaceOf } from "../../family/FamilyFrame";
 import { StepFrame } from "./StepFrame";
+import { People } from "./PeopleRows";
+import { AddChildren, useChildrenEditor } from "../../family/AddChildren";
 import { setupStep } from "../activation";
 import { RETIRED_STEPS, SETUP_STEPS, type SetupKind, type Step } from "./steps";
 import styles from "./Setup.module.css";
@@ -222,17 +211,6 @@ function usePracticeHere(
   };
 }
 
-/** A saved child's Remove shows only where it will work: nothing yet in
- * their name, and another saved child stays (the family keeps one). */
-export const canRemoveSaved = (
-  child: { removable?: true },
-  saved: number,
-): boolean => !!child.removable && saved > 1;
-
-/** A row being added: not a child until its birth year is chosen, when it is
- * saved. `id` is the child it became, until `/me` lists them. */
-type FreshRow = { key: number; name: string; year: string; id?: string };
-
 /** Step one for a parent: each child's name (optional) and birth year. The
  * kids are the server's, read from `/me`; every edit is a mutation, so Back,
  * Forward, a refresh and every other screen show the same kids. A new row
@@ -255,111 +233,32 @@ function ChildrenStep(props: StepProps) {
     setHome(session.accountId, today);
     return today;
   });
-  const addKid = useAddKid(session);
-  const renameKid = useRenameKid(session);
-  const kidYear = useKidYear(session);
-  const removeKid = useRemoveKid(session);
-  const saved = me.learners;
-  // Names typed into saved kids' fields, until saved.
-  const [names, setNames] = useState<Record<string, string>>({});
-  const [fresh, setFresh] = useState<FreshRow[]>([]);
-  const [saving, setSaving] = useState<Record<number, true>>({});
+  // The kids, as the family's own capability (family/AddChildren): the
+  // first child also records the first run's answer (a parent sent here by
+  // a link), when it makes the family.
+  const setup = setupOf(me);
+  const editor = useChildrenEditor(session, me, {
+    saved: true,
+    answer: !setup.done && setup.persona !== kind ? kind : undefined,
+  });
   const [leaving, setLeaving] = useState(false);
-  const [error, setError] = useState("");
   const [asked, setAsked] = useState(false);
-  // A new row stays until `/me` lists the child it became: never shown twice,
-  // never missing in between.
-  const adding = fresh.filter(
-    (row) => !row.id || !saved.some((child) => child.id === row.id),
-  );
-  // A family with no child yet starts with one empty row (key 0, so typing
-  // into it keeps its field).
-  const rows: FreshRow[] =
-    adding.length || saved.length ? adding : [{ key: 0, name: "", year: "" }];
-  const total = saved.length + rows.length;
-  const nameOf = (child: (typeof saved)[number]) =>
-    names[child.id] ?? (child.defaultName ? "" : child.name);
-  let hint = "";
-  let invalid = -1;
-  for (const [at, name] of [
-    ...saved.map(nameOf),
-    ...rows.map((row) => row.name),
-  ].entries()) {
-    const problem = childNameProblem(name);
-    if (problem) {
-      hint = problem;
-      invalid = at;
-      break;
-    }
-  }
-  // A row with a name and no year, or no child at all, still needs a year.
-  // A row whose year is chosen is a child already, saved or being saved.
-  const missingYear =
-    (!saved.length && !rows.some((row) => row.year)) ||
-    rows.some((row) => row.name.trim() && !row.year);
-  const fail = (failure: unknown, fallback: string) =>
-    setError(why(failure, fallback));
-  const edit = (key: number, change: Partial<FreshRow>) =>
-    setFresh((current) => {
-      const base = current.length ? current : rows;
-      return base.map((row) => (row.key === key ? { ...row, ...change } : row));
-    });
-  // Saved when its year is chosen; the first child also makes the family,
-  // so the answer is recorded first (a parent sent here by a link).
-  const create = async (row: FreshRow, year: string) => {
-    edit(row.key, { year });
-    if (childNameProblem(row.name)) return false;
-    setSaving((current) => ({ ...current, [row.key]: true }));
-    setError("");
-    try {
-      const setup = setupOf(me);
-      const child = await addKid.mutateAsync({
-        name: row.name,
-        birthYear: Number(year),
-        ...(!setup.done && setup.persona !== kind ? { answer: kind } : {}),
-      });
-      edit(row.key, { id: child.id });
-      await invalidateAccount(session.accountId);
-      return true;
-    } catch (failure) {
-      fail(failure, "That child wasn’t saved. Choose the year again.");
-      edit(row.key, { year: "" });
-      return false;
-    } finally {
-      setSaving(({ [row.key]: _, ...rest }) => rest);
-    }
-  };
-  const commitName = async (child: (typeof saved)[number]) => {
-    const name = names[child.id];
-    if (name === undefined) return;
-    const current = child.defaultName ? "" : child.name;
-    if (name.trim() === current || childNameProblem(name)) return;
-    await renameKid.mutateAsync({ id: child.id, name });
-    setNames(({ [child.id]: _, ...rest }) => rest);
-  };
   const next = async () => {
-    if (missingYear) return setAsked(true);
-    if (hint || leaving) return;
+    if (editor.missingYear) return setAsked(true);
+    if (editor.hint || leaving) return;
     // A tap while a save is in flight is never refused: Next shows it is
-    // working, waits for the saves in the Query cache, then goes on. If one
-    // failed, its own message is up and the step stays.
+    // working, waits for the saves, then goes on. If one failed, its own
+    // message is up and the step stays.
     setLeaving(true);
-    setError("");
+    editor.setError("");
     try {
-      // Rows already being saved finish on their own; a row whose year was
-      // chosen while its name still needed fixing is saved now.
-      const unsaved = rows.filter(
-        (row) => row.year && !row.id && !saving[row.key],
-      );
-      if (!(await setupSavesSettled(queryClient, session))) return;
-      for (const child of saved) await commitName(child);
-      for (const row of unsaved) if (!(await create(row, row.year))) return;
+      if (!(await editor.settle())) return;
       // The kids as they are now, every save included.
       const latest = await queryClient.fetchQuery({
         ...meOptions(session),
         staleTime: 0,
       });
-      const kids = latest.signedIn ? latest.learners : saved;
+      const kids = latest.signedIn ? latest.learners : me.learners;
       setupDone(props);
       // A plan chosen on the pitch before signing up opens for the first
       // child; setup's next steps wait on Today.
@@ -386,7 +285,9 @@ function ChildrenStep(props: StepProps) {
       }
       await navigate({ to: nextUrl(props) as never });
     } catch (failure) {
-      fail(failure, "That didn’t save. Check your connection and try again.");
+      editor.setError(
+        why(failure, "That didn’t save. Check your connection and try again."),
+      );
     } finally {
       setLeaving(false);
     }
@@ -402,7 +303,7 @@ function ChildrenStep(props: StepProps) {
         <Button
           variant="primary"
           aria-busy={leaving || undefined}
-          data-waiting={missingYear || !!hint || undefined}
+          data-waiting={editor.missingYear || !!editor.hint || undefined}
           disabled={leaving}
           onClick={() => void next()}
         >
@@ -410,73 +311,7 @@ function ChildrenStep(props: StepProps) {
         </Button>
       }
     >
-      <People
-        nameNote={hint}
-        missingYear={asked}
-        field={{
-          label: "Name",
-          placeholder: "First name or nickname",
-          max: CHILD_NAME_MAX,
-        }}
-        invalid={invalid}
-        disabled={leaving}
-        rows={[
-          ...saved.map((child, at) => ({
-            key: child.id,
-            // A child who goes by their number keeps that number.
-            label: child.defaultName ? child.name : `Child ${at + 1}`,
-            name: nameOf(child),
-            year: child.birthYear ? String(child.birthYear) : "",
-            fixed: true,
-            onName: (name: string) =>
-              setNames((current) => ({ ...current, [child.id]: name })),
-            onCommit: () =>
-              void commitName(child).catch((failure) =>
-                fail(failure, "That name didn’t save. Try again."),
-              ),
-            onYear: (value: string) =>
-              kidYear.mutate(
-                { id: child.id, birthYear: Number(value) },
-                {
-                  onError: (failure) =>
-                    fail(failure, "That year didn’t save. Choose it again."),
-                },
-              ),
-            onRemove: canRemoveSaved(child, saved.length)
-              ? () =>
-                  removeKid.mutate(child.id, {
-                    onError: (failure) =>
-                      fail(failure, "That child wasn’t removed. Try again."),
-                  })
-              : undefined,
-          })),
-          ...rows.map((row, at) => ({
-            key: `new-${row.key}`,
-            label: `Child ${saved.length + at + 1}`,
-            name: row.name,
-            year: row.year,
-            busy: !!saving[row.key],
-            onName: (name: string) => edit(row.key, { name }),
-            onYear: (year: string) => void create(row, year),
-            onRemove:
-              total > 1
-                ? () =>
-                    setFresh(adding.filter((other) => other.key !== row.key))
-                : undefined,
-          })),
-        ]}
-        add={
-          total < 6
-            ? {
-                label: "Add a child",
-                onAdd: () =>
-                  setFresh([...rows, { key: Date.now(), name: "", year: "" }]),
-              }
-            : null
-        }
-      />
-      <p className={styles.basis}>{PARENT_ENTRY_LINE}</p>
-      <Toast message={error} onDismiss={() => setError("")} />
+      <AddChildren editor={editor} asked={asked} disabled={leaving} />
     </Frame>
   );
 }
@@ -607,167 +442,6 @@ function StudentsStep(props: StepProps) {
       )}
       <Toast message={error} onDismiss={() => setError("")} />
     </Frame>
-  );
-}
-
-type Row = {
-  key: string;
-  label: string;
-  name: string;
-  year: string;
-  /** Already saved: Remove only when the row takes `onRemove`. Its year
-   * shows, and can be corrected when the row takes `onYear`. */
-  fixed?: boolean;
-  onName: (name: string) => void;
-  /** The name field was left: save what was typed. */
-  onCommit?: () => void;
-  onYear?: (year: string) => void;
-  onRemove?: () => void;
-  /** This row is being saved. */
-  busy?: boolean;
-};
-
-/** Each child: a name field whose placeholder is what they go by if it stays
- * blank ("Child 2"), a birth year in the shared field style that opens the
- * year tiles, and, for a new row, Remove. One line from 560 px, under column
- * labels; stacked with its own labels on a phone. A row that still needs its
- * year says so at that field, once Next is asked for. */
-function People({
-  field,
-  rows,
-  invalid,
-  nameNote,
-  missingYear,
-  disabled,
-  add,
-}: {
-  field: { label: string; placeholder: string; max: number };
-  rows: Row[];
-  invalid: number;
-  /** The invalid name's problem, said under it. */
-  nameNote: string;
-  /** Show "Choose a year" at each row without one. */
-  missingYear: boolean;
-  disabled: boolean;
-  add: { label: string; onAdd: () => void } | null;
-}) {
-  const id = useId();
-  return (
-    <div className={styles.people}>
-      {rows.length > 0 && (
-        <div className={styles.columns} aria-hidden="true">
-          <span>{field.label}</span>
-          <span>Birth year</span>
-          <span />
-        </div>
-      )}
-      <ol className={styles.rows}>
-        {rows.map((row, at) => {
-          const needsYear = missingYear && !row.fixed && !row.year;
-          const nameId = `${id}-${row.key}`;
-          // Named by what the parent typed, else the row's own name.
-          const remove = row.onRemove && (
-            <RemoveRow
-              label={`Remove ${row.name.trim() || row.label}`}
-              disabled={disabled || !!row.busy}
-              onRemove={row.onRemove}
-            />
-          );
-          return (
-            <li key={row.key} className={styles.person}>
-              <div className={styles.cell}>
-                {/* On a phone, Remove sits on the name's label line, at the
-                    field's right edge: part of the child, not of the field. */}
-                <span className={styles.cellHead}>
-                  <label htmlFor={nameId} className={styles.cellLabel}>
-                    {field.label}
-                  </label>
-                  {remove && (
-                    <span className={styles.headRemove}>{remove}</span>
-                  )}
-                </span>
-                <input
-                  id={nameId}
-                  className={styles.nameInput}
-                  value={row.name}
-                  placeholder={row.label}
-                  maxLength={field.max}
-                  autoComplete="off"
-                  autoCapitalize="words"
-                  spellCheck={false}
-                  aria-invalid={invalid === at || undefined}
-                  aria-label={`${field.label}, ${row.label} (${field.placeholder.toLowerCase()})`}
-                  disabled={disabled || row.busy}
-                  onChange={(event) => row.onName(event.target.value)}
-                  onBlur={row.onCommit}
-                />
-                <span className={styles.cellNote} aria-live="polite">
-                  {invalid === at ? nameNote : ""}
-                </span>
-              </div>
-              <div className={styles.cell}>
-                <span className={styles.cellLabel} aria-hidden="true">
-                  Birth year
-                </span>
-                {row.fixed && !row.onYear ? (
-                  <span className={styles.fixedYear}>{row.year || "—"}</span>
-                ) : (
-                  <YearField
-                    label={`Birth year, ${row.name.trim() || row.label}`}
-                    earlier
-                    placeholder="Choose"
-                    value={row.year}
-                    disabled={disabled || row.busy}
-                    invalid={needsYear}
-                    onChange={(value) => row.onYear?.(value)}
-                  />
-                )}
-                <span className={styles.cellNote} aria-live="polite">
-                  {needsYear ? "Choose a year" : ""}
-                </span>
-              </div>
-              <span className={styles.removeCell}>{remove}</span>
-            </li>
-          );
-        })}
-      </ol>
-      {add && (
-        <Button
-          type="button"
-          variant="secondary"
-          className={styles.addRow}
-          disabled={disabled}
-          onClick={add.onAdd}
-        >
-          {add.label}
-        </Button>
-      )}
-    </div>
-  );
-}
-
-/** A row's Remove: a muted mark with a full-size target. */
-function RemoveRow({
-  label,
-  disabled,
-  onRemove,
-}: {
-  label: string;
-  disabled: boolean;
-  onRemove: () => void;
-}) {
-  return (
-    <button
-      type="button"
-      className={styles.remove}
-      aria-label={label}
-      disabled={disabled}
-      onClick={onRemove}
-    >
-      <svg viewBox="0 0 16 16" aria-hidden="true">
-        <path d="m4 4 8 8m0-8-8 8" />
-      </svg>
-    </button>
   );
 }
 

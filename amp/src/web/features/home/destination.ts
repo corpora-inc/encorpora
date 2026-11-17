@@ -175,8 +175,11 @@ export async function loadPlaceGroups(
 export async function homeRedirect(known?: SignedInMe) {
   const session = await queryClient
     .ensureQueryData(sessionOptions)
-    .catch((error) => {
-      console.warn("The session didn’t load; opening home", error);
+    .catch((error: unknown) => {
+      console.warn(
+        "The session couldn’t be read; opening as signed out",
+        error,
+      );
       return null;
     });
   const href = session

@@ -237,15 +237,9 @@
   flex-wrap: wrap;
   gap: var(--space-3);
 }
-/* A child's settings: their name, then Advanced folded under it, one list. */
-.settingsGroup {
-  display: grid;
-  min-width: 0;
-}
-.settings + .advanced {
-  border-top: 0;
-}
-.advanced[open] {
+/* A child's settings: one folded section. Open, its rows' own lines
+   divide it, the last closing it, so the fold's lower line steps aside. */
+.childSettings[open] {
   border-bottom-color: transparent;
 }
 .setting {
@@ -454,4 +448,9 @@
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.06em;
   white-space: nowrap;
+}
+/* Adding children in a sheet: the rows, then Done at their foot. */
+.addChildren {
+  display: grid;
+  gap: var(--space-4);
 }

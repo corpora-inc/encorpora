@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
-import { meOptions, sessionOptions } from "../../lib/query";
+import { meOptions } from "../../lib/query";
+import { forSession, useSessionOrNull } from "../../lib/session";
 import { buttonClass } from "../../ui/Button";
 import { LoadingScreen } from "../../ui/LoadingScreen";
 import { Page } from "../../ui/Page";
@@ -19,11 +20,7 @@ import styles from "./Launcher.module.css";
  * first, each with what it is and Open.
  */
 export function Launcher() {
-  const session = useQuery(sessionOptions).data ?? null;
-  const me = useQuery({
-    ...meOptions(session ?? { accountId: "", token: "" }),
-    enabled: !!session,
-  }).data;
+  const me = useQuery(forSession(useSessionOrNull(), meOptions)).data;
   const account = me?.signedIn ? me : null;
   const { groups, loading } = usePlaces(account);
   if (!account || loading) return <LoadingScreen overlay />;

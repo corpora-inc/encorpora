@@ -8,6 +8,7 @@ import {
 } from "./session-generation";
 import { accessSession, authConfig } from "../auth";
 import { request } from "./api";
+import { qk } from "./keys";
 import { setAnalyticsSession } from "./analytics";
 import { noteSignedIn } from "./session-hint";
 import { setHomeAccount } from "./home-place";
@@ -20,7 +21,7 @@ export { MOUNT_REFETCH_AFTER_MS, queryClient };
 const BOOT_RETRY = { retry: 1, retryDelay: 1000 } as const;
 export const sessionOptions = queryOptions({
   ...BOOT_RETRY,
-  queryKey: ["session"],
+  queryKey: qk.session(),
   queryFn: async ({ signal }) => {
     const session = await accessSession();
     signal.throwIfAborted();
@@ -38,15 +39,14 @@ export const sessionOptions = queryOptions({
  * Loaded before the sign-in screen renders, so its controls never shift. */
 export const authConfigOptions = queryOptions({
   ...BOOT_RETRY,
-  queryKey: ["auth-config"],
+  queryKey: qk.authConfig(),
   queryFn: () => authConfig(),
   staleTime: Infinity,
 });
-export const meKey = (identity: string | null) =>
-  ["account", identity, "me"] as const;
+export const meKey = (identity: string | null) => qk.account(identity, "me");
 /** The adult's own record (`features/me`), under the account's key. */
 export const ownPracticeKey = (identity: string) =>
-  ["account", identity, "own-practice"] as const;
+  qk.account(identity, "own-practice");
 export const meOptions = (session: AuthSession) =>
   queryOptions({
     queryKey: meKey(session.accountId),
@@ -90,11 +90,11 @@ export function retireSession(
   )
     return false;
   beginRenewal(next.token);
-  void client.cancelQueries({ queryKey: ["account", previous.accountId] });
+  void client.cancelQueries({ queryKey: qk.account(previous.accountId) });
   return true;
 }
 export function invalidateAccount(identity: string) {
-  return queryClient.invalidateQueries({ queryKey: ["account", identity] });
+  return queryClient.invalidateQueries({ queryKey: qk.account(identity) });
 }
 
 export async function refreshMe(session: AuthSession) {
