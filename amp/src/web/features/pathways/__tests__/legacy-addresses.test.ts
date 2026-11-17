@@ -1,5 +1,6 @@
+import { isRedirect } from "@tanstack/react-router";
 import { afterEach, expect, test } from "vitest";
-import { aliasTarget } from "../../../app/legacy-aliases";
+import { followAlias } from "../../../app/legacy-aliases";
 import { queryClient, sessionOptions } from "../../../lib/query";
 import { useLayerStore } from "../../../nav/layer-store";
 import { useMapViewStore } from "../map-view";
@@ -10,24 +11,30 @@ afterEach(() => {
   useMapViewStore.setState({ views: {} });
 });
 
-const at = (href: string) => {
+/** Where an older address hops (its row's one redirect). */
+async function hop(href: string) {
   const url = new URL(href, "https://amp.invalid");
-  return {
-    pathname: url.pathname,
-    searchStr: url.search,
-    search: Object.fromEntries(url.searchParams),
-  };
-};
+  try {
+    await followAlias({
+      pathname: url.pathname,
+      searchStr: url.search,
+      search: Object.fromEntries(url.searchParams),
+    });
+  } catch (thrown) {
+    expect(isRedirect(thrown)).toBe(true);
+    return (thrown as { options: { href?: string } }).options.href;
+  }
+  return null;
+}
 
 test("an older map address puts its layers and view in their stores, and names the map only", async () => {
   const adult = { accountId: "adult", token: "t" };
   queryClient.setQueryData(sessionOptions.queryKey, adult);
-  const href = await aliasTarget(
-    at(
+  expect(
+    await hop(
       "/pathways?skill=count-to-20&lesson=count-objects&topic=frac&filter=3&area=geometry",
     ),
-  );
-  expect(href).toBe("/pathways");
+  ).toBe("/pathways");
   expect(useLayerStore.getState().stacks["adult:/pathways"]).toEqual([
     { kind: "skill", id: "count-to-20" },
     { kind: "lesson", id: "count-objects" },
@@ -39,15 +46,11 @@ test("an older map address puts its layers and view in their stores, and names t
   });
 });
 
-test("a class map's answer page opens its student and the answer over the map", async () => {
-  const teacher = { accountId: "teacher", token: "t" };
-  queryClient.setQueryData(sessionOptions.queryKey, teacher);
-  const student = "33333333-3333-4333-8333-333333333333";
-  expect(
-    await aliasTarget(at(`/school/o/classes/c/map/${student}/work/abcdef01`)),
-  ).toBe("/school/o/classes/c/map");
-  expect(useLayerStore.getState().stacks["/school/o/classes/c/map"]).toEqual([
-    { kind: "student", id: student },
-    { kind: "work", id: `${student}.abcdef01` },
-  ]);
+test("the old library's search lands in the map's view", async () => {
+  const adult = { accountId: "adult", token: "t" };
+  queryClient.setQueryData(sessionOptions.queryKey, adult);
+  expect(await hop("/lessons?q=fractions")).toBe("/pathways");
+  expect(useMapViewStore.getState().views["adult:/pathways"]?.topic).toBe(
+    "fractions",
+  );
 });

@@ -6,10 +6,11 @@ import {
 } from "@tanstack/react-router";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { usePanelsStore } from "../../features/account/panels";
+import { layerScope, useLayerStore } from "../../nav/layer-store";
 import { queryClient, sessionOptions } from "../../lib/query";
 import { knownDocumentPath } from "../document-routes";
 import {
-  findAlias,
+  aliasTarget,
   followAlias,
   LEGACY_ALIASES,
   matchPattern,
@@ -18,81 +19,120 @@ import {
 
 /*
  * Every row of the legacy-alias table (app/legacy-aliases.ts) lands in ONE
- * hop on its right address, and that address is no row's: never chained.
- * The rows come from the table; a row without an example here fails, so a
- * new row brings its example with it.
+ * hop on its right address, and that address is no row's for the same
+ * person: never chained. The rows come from the table; a row no example
+ * reaches fails, so a new row brings its example with it.
+ *
+ * What a row reads from other modules is stubbed at their edge (the
+ * settings hub, the pay hops, a family's projection): their own logic has
+ * its own tests. Here the table and its one hop are under test.
  */
 
 const FAMILY = "11111111-1111-4111-8111-111111111111";
+const SCHOOL = "22222222-2222-4222-8222-222222222222";
+const FAMILY_ORG = "33333333-3333-4333-8333-333333333333";
+const CLASS = "44444444-4444-4444-8444-444444444444";
+const CHILD = "55555555-5555-4555-8555-555555555555";
+const ATTEMPT = "77777777-7777-4777-8777-777777777777";
 const SESSION = { accountId: "parent", token: "test-token" };
 
 /** Who opens the old address. */
 type World = "family parent" | "adult" | "signed out";
 
-const hub = vi.hoisted(() => ({ href: "" }));
+const state = vi.hoisted(() => ({
+  hub: "",
+  consent: false,
+  parent: false,
+}));
 vi.mock("../../features/spaces/settings-hub", () => ({
-  loadSettingsHub: async (_session: unknown, overlay: string) =>
-    `${hub.href}/${overlay}`,
+  loadSettingsHub: async (_session: unknown, overlay?: string) =>
+    overlay ? `${state.hub}/${overlay}` : state.hub,
 }));
 vi.mock("../../consent-entry", () => ({
-  hasInitialConsentChallenge: () => consent.held,
+  hasInitialConsentChallenge: () => state.consent,
+  claimInitialConsentChallenge: () => state.consent,
 }));
-const consent = vi.hoisted(() => ({ held: false }));
+vi.mock("../../features/home/destination", () => ({
+  homeDestination: async () => `/family/${FAMILY}`,
+}));
+vi.mock("../../features/pay/legacy", () => ({
+  legacyHop: async (hop: string, input: { params: Record<string, string> }) =>
+    `/family/${FAMILY}/kids/${input.params.learnerId ?? CHILD}/pay${hop === "funds" || hop === "program" ? "/funds" : ""}`,
+}));
+vi.mock("../family-redirect", () => ({
+  toFamilyAddress: async (
+    _session: unknown,
+    { params }: { params: { org: string } },
+  ) =>
+    state.parent && params.org === FAMILY_ORG
+      ? { to: `/family/${FAMILY}`, search: {} }
+      : null,
+  toFamilyChild: async (_session: unknown, org: string, person: string) =>
+    state.parent && org === FAMILY_ORG
+      ? { to: `/family/${FAMILY}/kids/${person}`, search: {} }
+      : null,
+  toFamilyPage: async (_session: unknown, org: string, page: string) =>
+    state.parent && org === FAMILY_ORG
+      ? {
+          // Roster and Settings are Settings; Map and Today are Today (or a
+          // one child's page: features/family/redirects.ts).
+          to: `/family/${FAMILY}${page === "roster" || page === "settings" ? "/settings" : ""}`,
+          search: {},
+        }
+      : null,
+}));
+vi.mock("../../features/family/api", async (original) => ({
+  ...(await original<typeof import("../../features/family/api")>()),
+  familyPlacesOptions: () => ({
+    queryKey: ["test", "places"],
+    queryFn: async () => ({
+      families: state.parent ? [{ familyId: FAMILY, role: "holder" }] : [],
+    }),
+  }),
+  familyOptions: (_session: unknown, id: string) => ({
+    queryKey: ["test", "family", id],
+    queryFn: async () => ({ children: [{ id: CHILD }] }),
+  }),
+}));
 
-function enter(world: World) {
+function enter(world: World, consent = false) {
   queryClient.clear();
   queryClient.setQueryData(
     sessionOptions.queryKey,
     world === "signed out" ? null : SESSION,
   );
-  hub.href =
+  state.hub =
     world === "family parent" ? `/family/${FAMILY}/settings` : "/account";
+  state.parent = world === "family parent";
+  state.consent = consent;
 }
 
 type Example = {
   /** The old address. */
   from: string;
   world: World;
-  /** Where it lands: its path and query, exactly. */
+  /** Where it lands: its path, query and hash. */
   lands: string;
   /** The panel store afterwards, where the row writes one. */
-  panel?: { overlay: "privacy"; id: string | null };
+  panel?: { overlay: "privacy" | "billing"; id: string | null };
+  /** The sheet history state opens, where the row opens one. */
+  sheet?: string;
+  /** The layers the store holds for the screen it lands on. */
+  layers?: string[];
   /** The consent email's proof is held (consent-entry.ts). */
   consent?: boolean;
 };
 
 const PRIVACY = `/family/${FAMILY}/settings/privacy`;
-const KID = "22222222-2222-4222-8222-222222222222";
-const STUDENT = "33333333-3333-4333-8333-333333333333";
-const CLASS = "/school/org/classes/class";
+const CLASS_AT = `/school/${SCHOOL}/classes/${CLASS}`;
+const FAMILY_PAY = `/family/${FAMILY}/kids/${CHILD}/pay`;
 const EXAMPLES: Example[] = [
-  // The map's layers and view leave the address for their stores.
-  { from: "/pathways/count-to-20", world: "adult", lands: "/pathways" },
+  { from: "/", world: "adult", consent: true, lands: "/consent" },
   {
-    from: "/pathways?skill=count-to-20&lesson=count-objects&topic=frac&filter=3",
+    from: `/practice/${CHILD}`,
     world: "adult",
-    lands: "/pathways",
-  },
-  {
-    from: `/family/${FAMILY}/kids/${KID}/pathways?open=skill%3Acount-to-20&view=3d&area=geometry`,
-    world: "family parent",
-    lands: `/family/${FAMILY}/kids/${KID}/pathways`,
-  },
-  {
-    from: "/lessons?q=fractions&topic=count-objects",
-    world: "adult",
-    lands: "/pathways",
-  },
-  {
-    from: `${CLASS}/today?lesson=count-objects`,
-    world: "adult",
-    lands: `${CLASS}/today`,
-  },
-  { from: `${CLASS}/map/${STUDENT}`, world: "adult", lands: `${CLASS}/map` },
-  {
-    from: `${CLASS}/map/${STUDENT}/work/abcdef01`,
-    world: "adult",
-    lands: `${CLASS}/map`,
+    consent: true,
+    lands: "/consent",
   },
   {
     from: "/?sign-in=create&return=school&error=bad",
@@ -105,7 +145,9 @@ const EXAMPLES: Example[] = [
     world: "signed out",
     lands: "/reset-password?token=abc",
   },
-  { from: "/", world: "adult", consent: true, lands: "/consent" },
+  { from: "/try", world: "signed out", lands: "/sign-up?return=free-practice" },
+  { from: "/try/anything", world: "adult", lands: `/family/${FAMILY}` },
+
   ...(
     ["export", "consent", "delete", "retention", "measurement"] as const
   ).flatMap((panel) => [
@@ -128,19 +170,246 @@ const EXAMPLES: Example[] = [
     lands: PRIVACY,
     panel: { overlay: "privacy", id: null },
   },
-  // Not a panel: the overlay, nothing opened.
   {
     from: "/account/privacy/elsewhere",
     world: "adult",
     lands: "/account/privacy",
     panel: { overlay: "privacy", id: null },
   },
-  // Signed out: sign in, then straight back to the old address.
   {
     from: "/family/privacy/export",
     world: "signed out",
     lands: "/sign-in?return=school&next=%2Ffamily%2Fprivacy%2Fexport",
   },
+  {
+    from: "/account/security/delete",
+    world: "family parent",
+    lands: `/family/${FAMILY}/settings/delete-account`,
+  },
+  {
+    from: "/family/security/delete",
+    world: "adult",
+    lands: "/account/delete-account",
+  },
+  {
+    from: "/account/billing/records",
+    world: "adult",
+    lands: "/account/billing",
+    panel: { overlay: "billing", id: "receipts" },
+  },
+  { from: "/family/security", world: "adult", lands: "/account/security" },
+  { from: "/family/access", world: "adult", lands: "/account/billing" },
+  {
+    from: "/family/access/purchases",
+    world: "adult",
+    lands: "/account/billing",
+  },
+  { from: "/family/access", world: "signed out", lands: "/sign-in" },
+
+  { from: `/continue/${CHILD}`, world: "family parent", lands: FAMILY_PAY },
+  { from: `/pay/${CHILD}`, world: "family parent", lands: FAMILY_PAY },
+  { from: "/purchase/annual", world: "family parent", lands: FAMILY_PAY },
+  { from: "/purchase/choose", world: "family parent", lands: FAMILY_PAY },
+  {
+    from: "/purchase/funded",
+    world: "family parent",
+    lands: `${FAMILY_PAY}/funds`,
+  },
+  ...["arkansas-efa", "arizona-esa", "new-hampshire-efa"].map((program) => ({
+    from: `/purchase/${program}`,
+    world: "family parent" as const,
+    lands: `${FAMILY_PAY}/funds`,
+  })),
+
+  {
+    from: "/lessons?q=fractions&topic=add-fractions",
+    world: "adult",
+    // The search goes into the map's view (features/pathways/map-view.ts).
+    lands: "/pathways",
+    layers: ["lesson:add-fractions"],
+  },
+  { from: "/lessons?q=fractions", world: "adult", lands: "/pathways" },
+  {
+    from: "/pathways?skill=s1&view=3d",
+    world: "signed out",
+    // 3D becomes this device's choice of view.
+    lands: "/pathways",
+    layers: ["skill:s1"],
+  },
+  {
+    from: "/pathways?open=skill%3As2",
+    world: "signed out",
+    lands: "/pathways",
+    layers: ["skill:s2"],
+  },
+  {
+    from: "/pathways/s1?lesson=t1",
+    world: "adult",
+    lands: "/pathways",
+    layers: ["skill:s1", "lesson:t1"],
+  },
+  {
+    from: "/pathways?topic=fractions&filter=3&area=geometry",
+    world: "adult",
+    lands: "/pathways",
+  },
+  {
+    from: `/family/${FAMILY}/kids/${CHILD}/pathways?open=skill%3As1&topic=x`,
+    world: "family parent",
+    lands: `/family/${FAMILY}/kids/${CHILD}/pathways`,
+    layers: ["skill:s1"],
+  },
+
+  {
+    from: `/practice/${CHILD}?skill=s1&profile=p`,
+    world: "adult",
+    lands: `/practice/${CHILD}/skills/s1?profile=p`,
+  },
+  {
+    from: `/practice/${CHILD}?template=t1&strand=geometry`,
+    world: "adult",
+    lands: `/practice/${CHILD}/types/t1`,
+  },
+  {
+    from: `/practice/${CHILD}?strand=geometry`,
+    world: "signed out",
+    lands: `/practice/${CHILD}/areas/geometry`,
+  },
+  {
+    from: `/school/${FAMILY_ORG}/classes/${CLASS}`,
+    world: "family parent",
+    lands: `/family/${FAMILY}`,
+  },
+  {
+    from: `/school/${FAMILY_ORG}/classes/${CLASS}/map/${CHILD}`,
+    world: "family parent",
+    lands: `/family/${FAMILY}`,
+  },
+  ...[
+    ["", ""],
+    ["/standing", ""],
+    [`/standing/${CLASS}`, ""],
+    ["/schools", ""],
+    ["/year", ""],
+    ["/year/classes", ""],
+    ["/integrations", ""],
+    ["/privacy", ""],
+    ["/activity", ""],
+    ["/classes", ""],
+    ["/students", "/settings"],
+    ["/staff", "/settings"],
+    ["/sign-in-help", ""],
+    ["/calendar", "/settings"],
+    ["/settings", "/settings"],
+    ["/license", ""],
+    ["/import", ""],
+    ["/import/columns", ""],
+  ].map(([page, leaf]) => ({
+    from: `/school/${FAMILY_ORG}${page}`,
+    world: "family parent" as const,
+    lands: `/family/${FAMILY}${leaf}`,
+  })),
+  { from: CLASS_AT, world: "adult", lands: `${CLASS_AT}/today` },
+  // Everyone else's class address: the class's own rows.
+  { from: CLASS_AT, world: "family parent", lands: `${CLASS_AT}/today` },
+  {
+    from: `${CLASS_AT}/today?lesson=t1`,
+    world: "adult",
+    lands: `${CLASS_AT}/today`,
+    layers: ["lesson:t1"],
+  },
+  {
+    from: `${CLASS_AT}/map/${CHILD}?sort=name`,
+    world: "adult",
+    lands: `${CLASS_AT}/map?sort=name`,
+    layers: [`student:${CHILD}`],
+  },
+  {
+    from: `${CLASS_AT}/map/${CHILD}/work/${ATTEMPT}`,
+    world: "adult",
+    lands: `${CLASS_AT}/map`,
+    layers: [`student:${CHILD}`, `work:${CHILD}.${ATTEMPT}`],
+  },
+  {
+    from: `/school/${SCHOOL}/students/${CHILD}`,
+    world: "adult",
+    lands: `/school/${SCHOOL}/students`,
+    layers: [`student:${CHILD}`],
+  },
+  {
+    from: `/school/${SCHOOL}/students/${CHILD}/work/${ATTEMPT}`,
+    world: "adult",
+    lands: `/school/${SCHOOL}/students`,
+    layers: [`student:${CHILD}`, `work:${CHILD}.${ATTEMPT}`],
+  },
+  {
+    from: `/school/${FAMILY_ORG}/students/${CHILD}`,
+    world: "family parent",
+    lands: `/family/${FAMILY}/kids/${CHILD}`,
+  },
+  { from: "/school/new", world: "signed out", lands: "/schools" },
+  {
+    from: `/school/new?org=${SCHOOL}&step=calendar`,
+    world: "adult",
+    lands: `/school/${SCHOOL}/setup/calendar`,
+  },
+  {
+    from: `/school/${SCHOOL}/experience`,
+    world: "adult",
+    lands: `/school/${SCHOOL}/settings#student-experience`,
+  },
+
+  {
+    from: "/family/learners",
+    world: "family parent",
+    lands: `/family/${FAMILY}/settings`,
+  },
+  {
+    from: "/family/learners/new",
+    world: "family parent",
+    lands: `/family/${FAMILY}/settings`,
+    sheet: "add-children",
+  },
+  { from: "/family/learners", world: "adult", lands: "/family" },
+  { from: "/family/not-an-id", world: "adult", lands: "/family" },
+  { from: "/family/not-an-id/settings", world: "adult", lands: "/family" },
+  {
+    from: `/family/${FAMILY}?devices=1`,
+    world: "family parent",
+    lands: `/family/${FAMILY}`,
+    sheet: "devices",
+  },
+  {
+    from: `/family/${FAMILY}/settings?add=1`,
+    world: "family parent",
+    lands: `/family/${FAMILY}/settings`,
+    sheet: "add-children",
+  },
+  {
+    from: `/family/${FAMILY}/people`,
+    world: "family parent",
+    lands: `/family/${FAMILY}/settings`,
+  },
+  {
+    from: `/family/${FAMILY}/cards`,
+    world: "family parent",
+    lands: `/family/${FAMILY}/settings`,
+    sheet: "devices",
+  },
+  {
+    from: `/family/${FAMILY}/map?open=skill%3As1`,
+    world: "family parent",
+    lands: `/family/${FAMILY}?open=skill%3As1`,
+  },
+  ...[
+    ["workbooks", "child-workbooks"],
+    ["time", "child-time"],
+    ["reports", "child-reports"],
+  ].map(([leaf, anchor]) => ({
+    from: `/family/${FAMILY}/${leaf}`,
+    world: "family parent" as const,
+    lands: `/family/${FAMILY}/kids/${CHILD}#${anchor}`,
+  })),
 ];
 
 /** A router whose root asks the table first, as app/router.tsx's does. */
@@ -167,66 +436,113 @@ const at = (href: string) => {
   return {
     pathname: url.pathname,
     searchStr: url.search,
-    search: Object.fromEntries(url.searchParams),
+    search: Object.fromEntries(url.searchParams) as Record<string, unknown>,
+    hash: url.hash.slice(1),
   };
 };
-const rowOf = (example: Example): LegacyAlias | undefined => {
-  consent.held = !!example.consent;
-  return findAlias(at(example.from))?.alias;
+/** An address's path, query (decoded, in order) and hash, for comparing. */
+const shape = (href: string) => {
+  const url = new URL(href, "https://amp.invalid");
+  return {
+    path: url.pathname,
+    query: [...url.searchParams].sort(),
+    hash: url.hash,
+  };
 };
 
-beforeEach(() => usePanelsStore.setState({ accounts: {} }));
-afterEach(() => {
-  consent.held = false;
-  vi.clearAllMocks();
-});
+/** The row an example's address is handled by, in its world. */
+async function rowOf(example: Example): Promise<LegacyAlias | undefined> {
+  enter(example.world, example.consent);
+  try {
+    return (await aliasTarget(at(example.from)))?.alias;
+  } catch {
+    // A row that calls the sign-in gate throws its hop: find it by trying
+    // each matching row on its own.
+    for (const alias of LEGACY_ALIASES)
+      if (matchPattern(alias.from, at(example.from).pathname))
+        try {
+          if (await aliasTarget(at(example.from), [alias])) return alias;
+        } catch (hop) {
+          if (hop && typeof hop === "object" && "options" in hop) return alias;
+        }
+    return undefined;
+  }
+}
 
-for (const alias of LEGACY_ALIASES)
-  test(`row ${alias.from} (${alias.about}) has an example`, () => {
-    expect(EXAMPLES.some((example) => rowOf(example) === alias)).toBe(true);
-  });
+beforeEach(() => usePanelsStore.setState({ accounts: {} }));
+afterEach(() => vi.clearAllMocks());
+
+test("every row has an example that reaches it", async () => {
+  const reached = new Set<LegacyAlias>();
+  for (const example of EXAMPLES) {
+    const row = await rowOf(example);
+    if (row) reached.add(row);
+  }
+  expect(
+    LEGACY_ALIASES.filter((alias) => !reached.has(alias)).map(
+      (alias) => `${alias.from} (${alias.about})`,
+    ),
+  ).toEqual([]);
+});
 
 for (const example of EXAMPLES)
   test(`${example.world}: ${example.from} is one hop to ${example.lands}`, async () => {
-    expect(rowOf(example), "the example is a row's").toBeDefined();
-    enter(example.world);
-    consent.held = !!example.consent;
+    enter(example.world, example.consent);
     const { router, hops } = routerAt(example.from);
     await router.load();
-    const { pathname, searchStr } = router.state.location;
-    const landed = `${pathname}${searchStr}`;
-    expect(new URL(landed, "https://amp.invalid")).toEqual(
-      new URL(example.lands, "https://amp.invalid"),
-    );
+    const { pathname, searchStr, hash } = router.state.location;
+    const landed = `${pathname}${searchStr}${hash ? `#${hash}` : ""}`;
+    expect(shape(landed)).toEqual(shape(example.lands));
     expect(hops()).toBe(1);
-    // Never chained: where it lands is no row's.
-    consent.held = false;
-    expect(findAlias(at(landed))).toBeNull();
+    // Never chained: where it lands is no row's, for the same person.
+    state.consent = false;
+    expect(await aliasTarget(at(landed)).catch(() => "a hop")).toBeNull();
     if (example.panel)
       expect(
         usePanelsStore.getState().accounts.parent?.[example.panel.overlay] ??
           null,
       ).toBe(example.panel.id);
+    if (example.layers)
+      expect(
+        (
+          useLayerStore.getState().stacks[
+            layerScope(
+              pathname,
+              state.parent || example.world === "adult"
+                ? SESSION.accountId
+                : undefined,
+            )
+          ] ?? []
+        ).map((layer) => `${layer.kind}:${layer.id}`),
+      ).toEqual(example.layers);
+    if (example.sheet)
+      expect(
+        Object.values(
+          (router.state.location.state ?? {}) as unknown as Record<
+            string,
+            unknown
+          >,
+        ),
+      ).toContain(example.sheet);
   });
 
-test("the server serves every row's old address (document-routes.ts)", () => {
-  for (const alias of LEGACY_ALIASES)
-    expect(
-      EXAMPLES.some(
-        (example) =>
-          rowOf(example) === alias &&
-          knownDocumentPath(at(example.from).pathname),
-      ),
-      alias.from,
-    ).toBe(true);
+test("the server serves every row's old address (document-routes.ts)", async () => {
+  const served = new Set<LegacyAlias>();
+  for (const example of EXAMPLES) {
+    const row = await rowOf(example);
+    if (row && knownDocumentPath(at(example.from).pathname)) served.add(row);
+  }
+  expect(
+    LEGACY_ALIASES.filter((alias) => !served.has(alias)).map(
+      (alias) => alias.from,
+    ),
+  ).toEqual([]);
 });
 
 test("patterns match whole addresses, a final $ the rest", () => {
   expect(
     matchPattern("/family/privacy/$panel", "/family/privacy/export"),
-  ).toEqual({
-    panel: "export",
-  });
+  ).toEqual({ panel: "export" });
   expect(matchPattern("/family/privacy/$panel", "/family/privacy")).toBeNull();
   expect(matchPattern("/family/privacy", "/family/privacy/")).toEqual({});
   expect(matchPattern("/account/billing/$", "/account/billing/a/b")).toEqual({
@@ -234,4 +550,5 @@ test("patterns match whole addresses, a final $ the rest", () => {
   });
   expect(matchPattern("/account/billing/$", "/account/billing")).toBeNull();
   expect(matchPattern("/", "/")).toEqual({});
+  expect(matchPattern("/$", "/")).toBeNull();
 });

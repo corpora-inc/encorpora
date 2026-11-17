@@ -49,7 +49,8 @@ export function defaultPaper(): WorkbookPaper {
   try {
     const region = new Intl.Locale(navigator.language).maximize().region;
     return region && !letterRegions.has(region) ? "a4" : "letter";
-  } catch {
+  } catch (error) {
+    console.warn("The device's region couldn't be read", error);
     return "letter";
   }
 }

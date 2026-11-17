@@ -1,13 +1,10 @@
 import { queryClient, sessionOptions } from "../lib/query";
 import { OPEN_KEY } from "./entities";
-import { layerScope, seedLayers, type Layer } from "./layer-store";
 
 /**
- * Addresses from before the layer store (`?open=`, `?lesson=`, a skill's or
- * a student's own address), as their rows of app/legacy-aliases.ts land
- * them: the layers they name go into the store for the screen they land on,
- * and that address names the screen only. The alias table makes the one hop
- * (and only for a navigation that shows, never a preload).
+ * Helpers for addresses from before the layer store (`?open=`, `?lesson=`, a
+ * skill's or a student's own address), as their rows of
+ * app/legacy-aliases.ts land them.
  */
 
 /** The session's account, for a layer stack keyed by it (nav/layer-store). */
@@ -19,16 +16,6 @@ export async function sessionAccount() {
       return null;
     });
   return session?.accountId;
-}
-
-/** An older address's layers into the store for the screen `href` names;
- * `href`, for its alias to go to. */
-export async function landingWithLayers(
-  href: string,
-  stack: Layer[],
-): Promise<string> {
-  seedLayers(layerScope(href.split(/[?#]/)[0]!, await sessionAccount()), stack);
-  return href;
 }
 
 /** An address without the keys that named layers (or a map's view) before

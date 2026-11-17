@@ -116,7 +116,10 @@ export async function prepareFromPitch(places: PitchPlace[]): Promise<void> {
     setAnalyticsSession(null);
     queryClient.setQueryData(sessionOptions.queryKey, null);
   }
-  const config = await fetchAuthConfig().catch(() => undefined);
+  // Sign-in's own screen loads its methods again when this read fails.
+  const config = await fetchAuthConfig().catch((error: unknown) =>
+    console.warn("Sign-in methods didn’t load ahead", error),
+  );
   if (config) queryClient.setQueryData(authConfigOptions.queryKey, config);
   await Promise.all(
     places.map((place) =>
