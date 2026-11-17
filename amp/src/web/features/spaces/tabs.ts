@@ -1,3 +1,4 @@
+import { practicePath } from "./identity";
 import type { OrgResource } from "../../../schools/contracts";
 import type { TabItem } from "../../ui/Tabs";
 
@@ -181,7 +182,7 @@ export function meTabs(
   return [
     ...(ownLearner
       ? [
-          tab("practice", "Practice", "practice", true),
+          tab("practice", "Practice", practicePath(ownLearner).slice(1), true),
           tab("levels", "Levels", "me", true),
           tab(
             "workbooks",

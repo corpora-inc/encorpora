@@ -62,8 +62,8 @@ import {
   type CampaignSearch,
 } from "../lib/funded-entry";
 import { chosenPlan } from "../lib/pending-trial";
-import { hasInitialConsentChallenge } from "../consent-entry";
-import { hasPurchaseReturn } from "../purchase-return";
+import { followAlias, LEGACY_ALIASES } from "./legacy-aliases";
+import { cleverReturn, homeReturn, stripeReturn } from "./third-party-returns";
 import { knownStale, onSignedOut } from "../lib/app-recovery";
 import { autoReloadBlock } from "../lib/reload-guard";
 import {
@@ -85,7 +85,6 @@ import {
 } from "../features/school/core-api";
 import { frameData, schoolRoutes, staffScreen } from "./school-routes";
 import { familyRoutes } from "./family-routes";
-import { privacyRoutes } from "./privacy-routes";
 import { accountOverlays } from "./account-overlays";
 import { payRoutes } from "./pay-routes";
 import { appReturn, RETURN_LIMIT } from "../features/spaces/returns";
@@ -269,6 +268,8 @@ const root = createRootRoute({
   // into a full page load of the same URL. The current screen stays painted
   // until the new page paints, so no loading screen shows in between.
   beforeLoad: async ({ location, preload }) => {
+    // An old address: one hop to its new one, before any screen's guard.
+    if (!preload) await followAlias(location);
     if (nativeRuntime) return;
     if (!preload) await restoreFamilyPractice(location);
     if (
@@ -488,46 +489,11 @@ const home = createRoute({
   // launcher, a real screen whether reached by a link or by Back. Only an
   // address that carries a handoff (an auth link, a payment's return, a
   // consent challenge) goes on, once, to the screen that handles it.
-  beforeLoad: async ({ search: rawSearch, location }) => {
-    const search = searchSchema.parse(rawSearch);
-    if ("sign-in" in search)
-      throw redirect({
-        to: search["sign-in"] === "create" ? "/sign-up" : "/sign-in",
-        search: { return: search.return, error: search.error },
-      });
-    if ("reset-password" in search)
-      throw redirect({
-        to: "/reset-password",
-        search: { token: search.token, error: search.error },
-      });
+  // (Old `/?sign-in`, `/?reset-password` and a consent email's link are
+  // app/legacy-aliases.ts rows.)
+  beforeLoad: async ({ location }) => {
     if (nativeRuntime) return;
-    const session = await queryClient.ensureQueryData(sessionOptions);
-    if (!session) return;
-    // Back from a provider's sign-in: the account's place, once.
-    if ("signed-in" in search) throw await homeRedirect();
-    if (hasInitialConsentChallenge())
-      throw redirect({
-        to: "/$",
-        params: { _splat: "consent" },
-        replace: true,
-      });
-    // Back from a learner's Stripe Checkout: read once, resolved through
-    // the server, and on to that learner's confirmation (features/pay).
-    if (hasPurchaseReturn(location.searchStr))
-      throw redirect({
-        href:
-          (await (
-            await import("../features/pay/stripe-return")
-          ).stripeReturnTarget(session, search, "learner")) ??
-          "/account/billing",
-        replace: true,
-      });
-    if ("security" in search)
-      throw redirect({
-        to: "/$",
-        params: { _splat: "account/security" },
-        replace: true,
-      });
+    await homeReturn(location);
   },
 });
 /** The launcher's account and places, read before it paints. */
@@ -733,15 +699,11 @@ const startPurchase = createRoute({
   beforeLoad: async (input) => {
     // A learner's enrollment checkout from the pay flow comes back to that
     // learner's confirmation; one with no learner yet stays here.
-    const session = await queryClient
-      .ensureQueryData(sessionOptions)
-      .catch(() => null);
-    const target =
-      session &&
-      (await (
-        await import("../features/pay/stripe-return")
-      ).stripeReturnTarget(session, input.location.search, "enrollment"));
-    if (target) throw redirect({ href: target, replace: true });
+    await stripeReturn(
+      input.location,
+      "enrollment",
+      await queryClient.ensureQueryData(sessionOptions),
+    );
     return beforeStart(input);
   },
   component: start,
@@ -1347,12 +1309,7 @@ const schoolConnect = createRoute({
   getParentRoute: () => root,
   path: "/school/connect",
   staticData: { space: "account" },
-  validateSearch: (search: Record<string, unknown>): { error?: string } =>
-    ["clever_identity_already_linked", "clever_link_expired"].includes(
-      String(search.error),
-    )
-      ? { error: String(search.error) }
-      : {},
+  ...cleverReturn,
   beforeLoad: async () => {
     if (nativeRuntime) throw redirect({ to: "/", replace: true });
     const config = await queryClient.ensureQueryData(authConfigOptions);
@@ -1862,7 +1819,6 @@ export const router = createRouter({
     // URLs stay out of the typed route table.
     ...(schoolRoutes(root) as unknown as []),
     ...(familyRoutes(root) as unknown as []),
-    ...(privacyRoutes(root) as unknown as []),
     ...payRoutes(root),
     ...((devPersonas ? [devPersonas] : []) as unknown as []),
   ]),
@@ -1900,8 +1856,8 @@ if (import.meta.env.DEV) {
     options: { path?: string; component?: unknown };
   };
   Object.assign(window, {
-    ampRouteTable: () =>
-      (Object.values(router.routesById) as unknown as Entry[])
+    ampRouteTable: () => [
+      ...(Object.values(router.routesById) as unknown as Entry[])
         .filter(
           (route) =>
             !route.isRoot &&
@@ -1916,6 +1872,12 @@ if (import.meta.env.DEV) {
             (route.options.path === "/" &&
               !!route.parentRoute?.options.component),
         })),
+      // Old addresses (app/legacy-aliases.ts): each an address, no page.
+      ...LEGACY_ALIASES.filter((alias) => !alias.when).map((alias) => ({
+        path: alias.from,
+        page: false,
+      })),
+    ],
   });
 }
 // A control that only changes the address's search (a toggle, a segmented
@@ -2015,6 +1977,18 @@ const PROFILE_PRACTICE_PATHS = [
   "/pathways",
   "/inventory",
 ];
+// Back and Forward between a screen and what is open over it keep the
+// screen's scroll: a sheet in history state (the same address), or an
+// overlay one leaf below the screen (`overList`: a settings hub's Billing or
+// Privacy, a workbook day). After a pop the router otherwise scrolls the
+// window to the top, so closing an overlay with ✕ (which goes Back,
+// lib/return-to.ts) lost the reader's place on the screen behind.
+router.history.subscribe(({ location, action }) => {
+  if (action.type === "PUSH" || action.type === "REPLACE") return;
+  const from = router.state.location.pathname;
+  if (from === location.pathname || overList(from, location.pathname))
+    router._scroll.n = false;
+});
 // A new screen closes any open tip, menu or picker (ui/popover-owner).
 router.subscribe("onBeforeNavigate", ({ pathChanged }) => {
   if (pathChanged) closeAllPopovers("navigate");

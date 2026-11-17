@@ -21,8 +21,9 @@ export function useFundingRefresh(
       running = true;
       try {
         await callbacks.current.refresh();
-      } catch {
-        /* Preserve verified status; explicit refresh reports errors. */
+      } catch (failure) {
+        // Preserve verified status; an explicit refresh shows its errors.
+        console.warn("A background funding refresh failed", failure);
       } finally {
         running = false;
       }

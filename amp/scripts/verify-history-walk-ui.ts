@@ -66,6 +66,8 @@ type Walk = {
   expect?: { current: string }[];
   /** Checks after a step has landed (filled by `before`). */
   after?: (page: Page, index: number) => Promise<void>;
+  /** Just before a step is taken. */
+  beforeStep?: (page: Page, index: number) => Promise<void> | undefined;
 };
 
 /** A fresh account through the real sign-up, signed in on its own context. */
@@ -156,11 +158,47 @@ async function firstRun(page: Page) {
     .click();
   await forget(page);
   await page.getByRole("button", { name: "Next", exact: true }).click();
-  await page.waitForURL((url) => url.pathname === "/practice");
+  await page.waitForURL((url) => PRACTICE.test(url.pathname));
   await page.locator(".problem-stage").waitFor();
   await settled(page);
   // Setup's last step hands the device to the child: one entry, practice.
   await oneHop(page, "first practice", "link");
+}
+
+/** A learner's practice: its address names them (`/practice/<learner>`). */
+const PRACTICE = /^\/practice\/[^/]+$/;
+const CHILD_PAGE = /^\/family\/[^/]+\/kids\/[^/]+$/;
+
+/** Records whether anything on the page shows a wait from now on (a
+ * loading screen, a skeleton, a busy region): read with `waited`. */
+const watchWaits = (page: Page) =>
+  page.evaluate(() => {
+    const w = window as unknown as { __waited?: string[] };
+    w.__waited = [];
+    const seen = () => {
+      const found = document.querySelector(
+        ".amp-loading, .amp-skeleton, [role=status][aria-busy=true]",
+      );
+      if (found) w.__waited!.push(found.className || found.tagName);
+    };
+    new MutationObserver(seen).observe(document.body, {
+      subtree: true,
+      childList: true,
+      attributes: true,
+      attributeFilter: ["class", "aria-busy"],
+    });
+  });
+const waited = (page: Page) =>
+  page.evaluate(
+    () => (window as unknown as { __waited?: string[] }).__waited ?? [],
+  );
+
+/** No learner chooser on this screen (features/spaces/learner-choice.ts). */
+async function noChooser(page: Page, label: string) {
+  const choosers = await page
+    .getByRole("button", { name: /^Learner\b|Choose learner/ })
+    .count();
+  if (choosers) fail(`${label}: a learner chooser with nobody to choose`);
 }
 
 const menu = (page: Page) =>
@@ -204,6 +242,17 @@ async function today(page: Page) {
   await menu(page).waitFor();
   await settled(page);
   await oneHop(page, "Back to family", "load");
+}
+
+/** From the family's Today, a child's row: their page (one entry). */
+async function childPage(page: Page) {
+  await forget(page);
+  await page.locator('main a[href*="/kids/"]').first().click();
+  await page.waitForURL((url) =>
+    /^\/family\/[^/]+\/kids\/[^/]+$/.test(url.pathname),
+  );
+  await settled(page);
+  await oneHop(page, "a child's page", "link");
 }
 
 async function tab(page: Page, name: string, path: RegExp) {
@@ -306,7 +355,7 @@ const skillPractice: Walk = {
   id: "child's skills → practice",
   before: async (page) => {
     await today(page);
-    await tab(page, "Progress", /^\/family\/[^/]+\/kids\/[^/]+$/);
+    await childPage(page);
     await tab(page, "Pathways", /^\/family\/[^/]+\/kids\/[^/]+\/pathways$/);
     const map = new URL(page.url());
     // A grade's skills, then the first of them.
@@ -339,7 +388,7 @@ const skillPractice: Walk = {
       .getByRole("button", { name: /^Practice with / });
     await forget(page);
     await practice.click();
-    await page.waitForURL((url) => url.pathname === "/practice");
+    await page.waitForURL((url) => PRACTICE.test(url.pathname));
     await page.locator(".problem-stage").waitFor();
     await settled(page);
     await oneHop(page, "Practice with the child", "link");
@@ -347,6 +396,13 @@ const skillPractice: Walk = {
     const at = (url: URL) => ({ current: url.pathname + url.search });
     skillPractice.expect = [at(map), at(atPractice), at(map)];
     skillPractice.after = async (page, index) => {
+      if (index === 0) {
+        // Back to the parent's map after the child's practice: the map
+        // and its record were already here, so nothing waits (Providers
+        // keeps a family handoff's data).
+        const waits = await waited(page);
+        if (waits.length) fail("Back to Pathways after practice waited", waits);
+      }
       if (index !== 0 && index !== 2) return;
       // Back on the map: the same three levels at once, drawn settled.
       await page.locator('[data-layer-frame][data-depth="3"]').waitFor();
@@ -371,10 +427,106 @@ const skillPractice: Walk = {
     };
   },
   steps: ["back", "forward", "back", "back", "forward"],
+  beforeStep: (page, index) => (index === 0 ? watchWaits(page) : undefined),
+};
+
+/** Family → the child's page → Practice: one entry, at the child's practice
+ * address; a refresh keeps the child; Back writes nothing and lands on the
+ * child's page; a refresh there keeps the child too. On the child's own
+ * (handed) session, Pathways, Inventory and the Overview offer no learner
+ * chooser. */
+const childPractice: Walk = {
+  id: "child's page → practice → back",
+  before: async (page) => {
+    // The handed child's own session (the first run left them practicing):
+    // their screens have one learner, so no chooser anywhere.
+    for (const path of ["/pathways", "/inventory", "/overview"]) {
+      await page.goto(`${origin}${path}`);
+      await page.locator("[data-app-logo]").first().waitFor();
+      await settled(page);
+      await noChooser(page, `handed child's ${path}`);
+    }
+    await today(page);
+    await childPage(page);
+    const childAt = new URL(page.url());
+    const child = decodeURIComponent(childAt.pathname.split("/").at(-1)!);
+    await forget(page);
+    await page
+      .getByRole("button", { name: /^Practice with / })
+      .first()
+      .click();
+    await page.waitForURL((url) => PRACTICE.test(url.pathname));
+    await page.locator(".problem-stage").waitFor();
+    await settled(page);
+    await oneHop(page, "the child's page → Practice", "link");
+    const practice = new URL(page.url());
+    if (decodeURIComponent(practice.pathname.split("/").at(-1)!) !== child)
+      fail("practice names another learner", [practice.pathname, child]);
+    // A refresh keeps the child's practice.
+    await page.reload();
+    await page.locator(".problem-stage").waitFor();
+    await settled(page);
+    await forget(page);
+    if (new URL(page.url()).pathname !== practice.pathname)
+      fail("a refresh of practice moved", page.url());
+    const at = (url: URL) => ({ current: url.pathname + url.search });
+    childPractice.expect = [at(childAt), at(practice)];
+    childPractice.after = async (page, index) => {
+      if (index !== 0) return;
+      // Back on the child's page; a refresh keeps the child.
+      await page.reload();
+      await page.waitForURL((url) => url.pathname === childAt.pathname);
+      await settled(page);
+      await forget(page);
+      if (new URL(page.url()).pathname !== childAt.pathname)
+        fail("a refresh of the child's page moved", page.url());
+    };
+  },
+  steps: ["back", "forward"],
+};
+
+/** A parent with two children: Pathways offers the chooser, and choosing
+ * the other child is one navigation to that child's address. */
+const twoChildren: Walk = {
+  id: "two children → chooser",
+  before: async (page) => {
+    await today(page);
+    const added = await page.evaluate(async () => {
+      const response = await fetch("/api/v1/learners", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ name: "Second", birthYear: 2015 }),
+      });
+      return response.status;
+    });
+    if (added >= 300) throw Error(`adding a second child: ${added}`);
+    await page.reload();
+    await settled(page);
+    await childPage(page);
+    await tab(page, "Pathways", /^\/family\/[^/]+\/kids\/[^/]+\/pathways$/);
+    const before = new URL(page.url()).pathname;
+    const chooser = page.getByRole("button", { name: /^Learner\b/ });
+    if (!(await chooser.count())) {
+      fail("two children: no learner chooser on Pathways");
+      return;
+    }
+    await chooser.first().click();
+    await forget(page);
+    await page.getByRole("option", { name: "Second" }).click();
+    await page.waitForURL((url) => url.pathname !== before);
+    await settled(page);
+    await oneHop(page, "choosing the other child", "link");
+    if (!/\/pathways$/.test(new URL(page.url()).pathname))
+      fail("the other child's Pathways", page.url());
+  },
+  steps: ["back", "forward"],
 };
 
 const walks: Walk[] = [
   skillPractice,
+  childPractice,
+  twoChildren,
   {
     // The first run hands the device to the one child, in practice; Back
     // walks the setup it came through.
@@ -395,7 +547,7 @@ const walks: Walk[] = [
     id: "progress → add a place → cancel",
     before: async (page) => {
       await today(page);
-      await tab(page, "Progress", /^\/family\/[^/]+\/kids\/[^/]+$/);
+      await childPage(page);
       await addPlaceCancel(page);
     },
     steps: ["back", "back", "forward", "back", "back", "forward", "forward"],
@@ -520,6 +672,7 @@ async function walk(width: number, w: Walk) {
       // history step itself (Playwright's goBack waits for a navigation
       // event that a same-document step, replaced on arrival, never sends).
       await forget(page);
+      await w.beforeStep?.(page, index);
       const moved = await within(
         page.evaluate(
           (back) => (back ? history.back() : history.forward()),
@@ -703,7 +856,7 @@ async function wholeMap(width: number) {
     page.setDefaultTimeout(15_000);
     await firstRun(page);
     await today(page);
-    await tab(page, "Progress", /^\/family\/[^/]+\/kids\/[^/]+$/);
+    await childPage(page);
     await tab(page, "Pathways", /^\/family\/[^/]+\/kids\/[^/]+\/pathways$/);
     const view = (name: "Grades" | "3D") =>
       page

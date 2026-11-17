@@ -160,7 +160,7 @@ export function useFinishSignIn() {
       const session = { accountId: grant.accountId, token: grant.token };
       setFinishingSignIn(true);
       rememberStudentSession(session, grant.mode, handed, returnTo, returnName);
-      notifyDeviceSessionChanged(session);
+      notifyDeviceSessionChanged(session, { handoff: handed });
       // The app remounts for a new identity, and that would cancel a `/me`
       // started during the move. Wait here, so practice opens with it in hand.
       const me = await queryClient
