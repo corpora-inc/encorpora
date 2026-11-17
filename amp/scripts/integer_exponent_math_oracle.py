@@ -245,7 +245,10 @@ def numeric_exercises(html):
     result = []
     for index, exercise in enumerate(exercises, 1):
         nodes = list(exercise.descendants())
-        children = [node for node in exercise.children if isinstance(node, PublicationNode)]
+        # A solution's question prints as one box (.print-question): read its parts.
+        children = [part for node in exercise.children if isinstance(node, PublicationNode)
+                    for part in ([c for c in node.children if isinstance(c, PublicationNode)]
+                                 if node.has_class('print-question') else [node])]
         require(all(isinstance(node, PublicationNode) or not node.strip() for node in exercise.children), 'Unexpected exercise text')
         tags = [node.tag for node in children]
         require(tags in (['h2', 'div'], ['h2', 'ol', 'p']), 'Malformed numeric exercise structure')

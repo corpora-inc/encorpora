@@ -71,7 +71,10 @@ def exercises(html):
     parser = PublicationParser(); parser.feed(html); parser.close()
     result = []
     for index, section in enumerate((n for n in parser.root.descendants() if n.has_class('exercise')), 1):
-        children = [n for n in section.children if isinstance(n, PublicationNode)]
+        # A solution's question prints as one box (.print-question): read its parts.
+        children = [part for node in section.children if isinstance(node, PublicationNode)
+                    for part in ([c for c in node.children if isinstance(c, PublicationNode)]
+                                 if node.has_class('print-question') else [node])]
         nodes = list(section.descendants())
         require(not any(n.tag in ('script', 'input') or 'data-answer' in n.attributes or 'data-correct' in n.attributes for n in nodes),
                 'Unexpected answer metadata in publication exercise')
