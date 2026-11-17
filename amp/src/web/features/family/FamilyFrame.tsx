@@ -22,7 +22,6 @@ import { PageHeader } from "../../ui/PageHeader";
 import { ownClassOf } from "../spaces/resolve";
 import { spaceWords } from "../spaces/words";
 import { familyOptions, type FamilyProjection } from "./api";
-import { FamilyRecordLinks } from "./RecordLinks";
 import styles from "./Family.module.css";
 
 const NO_SESSION: AuthSession = { accountId: "", token: "" };
@@ -103,7 +102,8 @@ function useOwnChildLayer(place: FamilyPlace) {
 
 /**
  * The page under the app frame for every family screen: one standard Page
- * column, its header (the title and the related records), its wait inside it (the bar is already whole), the family's
+ * column, its header (the title; no way back: the family's tabs and the
+ * browser's own Back are the navigation), its wait inside it (the bar is already whole), the family's
  * unavailable state when the address names a family this account isn't a
  * parent of, and the layers opened over the page (a skill, a lesson, one of
  * a child's answers).
@@ -136,17 +136,9 @@ export function FamilyFrame({
       data-dense
       data-family-screen=""
     >
-      {data &&
-        !loading &&
-        (title ? (
-          <PageHeader
-            title={title}
-            subtitle={description}
-            actions={<FamilyRecordLinks place={place} />}
-          />
-        ) : (
-          <FamilyRecordLinks place={place} />
-        ))}
+      {data && !loading && title && (
+        <PageHeader title={title} subtitle={description} />
+      )}
       {body}
       {/* Details opened over the page (?open=): it stays, they stack. A
           family with its own class opens a child's answers too. */}

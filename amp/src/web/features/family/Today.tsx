@@ -118,7 +118,7 @@ export function WeekFactsOf({
 
 /** A child's week on Today: minutes and problems, or that they haven't
  * started. */
-function WeekFact({ child }: { child: FamilyChild }) {
+export function WeekFact({ child }: { child: FamilyChild }) {
   const { week } = child;
   if (!week.lastPracticed)
     return <Fact value="Not started" label="no practice yet" />;
@@ -134,7 +134,7 @@ function WeekFact({ child }: { child: FamilyChild }) {
   );
 }
 /** When a child last practiced; nothing before their first answer. */
-function LastPracticedFact({
+export function LastPracticedFact({
   child,
   today,
 }: {
@@ -221,17 +221,28 @@ export function ChildAction({
   );
 }
 
-const TAB_LEAF: Record<string, string> = {
-  map: "map",
-  time: "time",
-  settings: "settings",
-};
+/** Where a to-do's tab opens, straight there: Progress and practice time
+ * are a one-child family's child page (practice time at its part). */
+function tabTarget(
+  tab: string,
+  only: string | null,
+): { leaf: string; hash?: string } {
+  if (tab === "map" || tab === "time")
+    return only
+      ? {
+          leaf: `kids/${only}`,
+          ...(tab === "time" ? { hash: "child-time" } : {}),
+        }
+      : { leaf: "map" };
+  return { leaf: tab === "settings" ? "settings" : "" };
+}
 
 /** The server's to-dos for the family's own children, in a parent's words:
  * a child opens their page, a skill or a lesson opens over Today. */
 function familyEntries(
   tasks: readonly TodayTodo[],
   family: string,
+  only: string | null,
   extra: (todo: TodayTodo) => ReactNode,
 ): FeedEntry[] {
   const action = (todo: TodayTodo, primary: boolean): ReactNode => {
@@ -260,11 +271,12 @@ function familyEntries(
           {action.label}
         </Link>
       );
-    const leaf = TAB_LEAF[action.tab];
+    const { leaf, hash } = tabTarget(action.tab, only);
     return (
       <Link
         to="/$"
-        params={{ _splat: familyHref(family, leaf ?? "") }}
+        params={{ _splat: familyHref(family, leaf) }}
+        hash={hash}
         search={(action.tab === "start" ? { devices: 1 } : {}) as never}
         className={buttonClass(look)}
       >
@@ -335,21 +347,27 @@ export function FamilyTodayScreen() {
   const practiceSelf = !!me?.adultPractice?.learner;
   const startSelf = !practiceSelf && me?.adultPractice?.eligible === true;
   const entries = data
-    ? familyEntries(data.today.tasks, family, (todo) => {
-        if (todo.kind === "good-day" || todo.students.length !== 1) return null;
-        const child = byId.get(todo.students[0]!.id);
-        return child &&
-          child.capabilities.practiceHere &&
-          child.access.canPractice ? (
-          <ChildAction
-            child={child}
-            family={family}
-            accountId={session.accountId}
-            starting={starting}
-            onPracticeHere={(id) => void handOver(id)}
-          />
-        ) : null;
-      })
+    ? familyEntries(
+        data.today.tasks,
+        family,
+        data.children.length === 1 ? data.children[0]!.id : null,
+        (todo) => {
+          if (todo.kind === "good-day" || todo.students.length !== 1)
+            return null;
+          const child = byId.get(todo.students[0]!.id);
+          return child &&
+            child.capabilities.practiceHere &&
+            child.access.canPractice ? (
+            <ChildAction
+              child={child}
+              family={family}
+              accountId={session.accountId}
+              starting={starting}
+              onPracticeHere={(id) => void handOver(id)}
+            />
+          ) : null;
+        },
+      )
     : [];
   return (
     <FamilyFrame

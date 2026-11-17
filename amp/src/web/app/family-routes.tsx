@@ -145,6 +145,40 @@ export function familyRoutes(root: AnyRoute) {
       path,
       component: screen(name),
     });
+  /** Progress and the family's old record pages (practice time, report
+   * cards, workbooks), now parts of each child's page: one hop, for a
+   * one-child family, to that child's page at the part (`anchor`); for
+   * several, the old record pages open Progress. Progress itself shows the
+   * several, and keeps its linked curriculum layers on the way to one. The
+   * workbook print for several (`?several`, `?kids`) stays at its address. */
+  const childAlias = (
+    path: string,
+    anchor: string | null,
+    name: string,
+    stays: (search: Record<string, unknown>) => boolean = () => false,
+  ) =>
+    createRoute({
+      getParentRoute: () => family,
+      path,
+      beforeLoad: async ({ context, params, location }) => {
+        const search = location.search as Record<string, unknown>;
+        if (stays(search)) return;
+        const { session } = context as unknown as { session: AuthSession };
+        const id = (params as { family: string }).family;
+        const data = await queryClient
+          .ensureQueryData(familyOptions(session, id))
+          .catch(() => null);
+        const only = data?.children.length === 1 ? data.children[0]! : null;
+        if (!only && !anchor) return;
+        throw redirect({
+          to: familyPath(id, only ? `kids/${only.id}` : "map"),
+          search: (anchor ? {} : search) as never,
+          hash: anchor ?? location.hash,
+          replace: true,
+        } as never);
+      },
+      component: screen(name),
+    });
   /** A child's learning screen at the child's own address
    * (`kids/<learner>/pathways`): the shared screen, for that child. The
    * address names them (features/spaces/identity.ts): a child who isn't the
@@ -217,8 +251,37 @@ export function familyRoutes(root: AnyRoute) {
             .ensureQueryData(familyOptions(session, id))
             .catch(() => null);
           const child = data?.children.find((entry) => entry.id === learner);
-          if (child?.capabilities.readProgress)
-            await preload(childProgressOptions(session, id, learner));
+          if (!child) return;
+          // Its workbooks and report card arrive with it too, so no part
+          // lands late and pushes the page down.
+          const me = child.capabilities.readGrades
+            ? await queryClient
+                .ensureQueryData(meOptions(session))
+                .catch(() => null)
+            : null;
+          const own = ownClassOf(me?.signedIn ? me : null, id, data);
+          const [{ workbookHistoryOptions }, { gradebookOptions }] =
+            await Promise.all([
+              import("../features/workbooks/api"),
+              import("../features/school/classes/teacher-api"),
+            ]);
+          await Promise.all([
+            child.capabilities.readProgress
+              ? preload(childProgressOptions(session, id, learner))
+              : null,
+            child.capabilities.readWorkbooks
+              ? preload(workbookHistoryOptions(session, learner))
+              : null,
+            own
+              ? preload(
+                  gradebookOptions(
+                    session,
+                    { org: own.org, class: own.id },
+                    undefined,
+                  ),
+                )
+              : null,
+          ]);
         },
         component: screen("ChildScreen"),
       }),
@@ -232,51 +295,16 @@ export function familyRoutes(root: AnyRoute) {
         () => import("../features/inventory/InventoryScreen"),
         "InventoryScreen",
       ),
-      createRoute({
-        getParentRoute: () => family,
-        path: "map",
-        beforeLoad: async ({ context, params, location }) => {
-          const { session } = context as unknown as { session: AuthSession };
-          const id = (params as { family: string }).family;
-          const data = await queryClient
-            .ensureQueryData(familyOptions(session, id))
-            .catch(() => null);
-          // A list of one adds no comparison. Preserve linked curriculum
-          // layers and replace this alias so Back skips the redundant page.
-          if (data?.children.length === 1)
-            throw redirect({
-              to: familyPath(id, `kids/${data.children[0]!.id}`),
-              search: location.search as never,
-              hash: location.hash,
-              replace: true,
-            } as never);
-        },
-        component: screen("FamilyMapScreen"),
-      }),
-      leaf("workbooks", "FamilyWorkbooksScreen"),
+      childAlias("map", null, "FamilyMapScreen"),
+      childAlias(
+        "workbooks",
+        "child-workbooks",
+        "FamilyWorkbooksScreen",
+        (search) => search.several !== undefined || search.kids !== undefined,
+      ),
       leaf("workbooks/$date", "FamilyMarkingScreen"),
-      leaf("time", "FamilyTimeScreen"),
-      // Each child's progress report waits for something to report: their
-      // records arrive with the screen, so no Print appears late.
-      createRoute({
-        getParentRoute: () => family,
-        path: "reports",
-        loader: async ({ context, params }) => {
-          const { session } = context as unknown as { session: AuthSession };
-          const id = (params as { family: string }).family;
-          const data = await queryClient
-            .ensureQueryData(familyOptions(session, id))
-            .catch(() => null);
-          await Promise.all(
-            (data?.children ?? [])
-              .filter((child) => child.capabilities.readProgress)
-              .map((child) =>
-                preload(childProgressOptions(session, id, child.id)),
-              ),
-          );
-        },
-        component: screen("FamilyReportsScreen"),
-      }),
+      childAlias("time", "child-time", "FamilyMapScreen"),
+      childAlias("reports", "child-reports", "FamilyMapScreen"),
       leaf("reports/grades", "FamilyGradesScreen"),
       leaf("people", "FamilyPeopleScreen"),
       // Settings paints whole: the school year, the family code and the
