@@ -27,8 +27,9 @@ const ColumnsContext = createContext<readonly Column[]>([]);
  * line up down the list whatever a row holds. From 720 px a row is one
  * line on the list's tracks (CSS subgrid); narrower, its title takes the
  * first line (with the action beside it from 560 px), the figures sit
- * under it in equal columns (two below 340 px), and the action takes the
- * last line, the same width on every row. Hairlines between rows.
+ * under it in equal columns, and the action takes the last line, the same
+ * width on every row. Under 400 px (a phone) it is one column: the title,
+ * each figure on its own line, then the action. Hairlines between rows.
  */
 export function ColumnList({
   label,
@@ -50,7 +51,6 @@ export function ColumnList({
           {
             "--columns": columns.map((column) => column.track).join(" "),
             "--figures": Math.max(figures, 1),
-            "--figures-narrow": Math.min(Math.max(figures, 1), 2),
           } as CSSProperties
         }
         {...data}

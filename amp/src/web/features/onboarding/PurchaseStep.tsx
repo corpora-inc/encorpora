@@ -1,9 +1,9 @@
 import { useMetaPurchaseContext } from "../privacy/useMetaPurchaseContext";
 import type { PurchaseMeasurement } from "../../../advertising/permission-contracts";
 import { useQuery } from "@tanstack/react-query";
-import { Link, useLocation, useNavigate } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 import { Navigate } from "../../nav/Navigate";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import type { EnrollmentPhase } from "../../../billing/stripe/enrollment-contracts";
 import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
@@ -15,9 +15,7 @@ import {
   paymentUrl,
   refreshMeAfter,
   useBillingPortal,
-  useClaimEnrollment,
 } from "../billing";
-import { continuationPaid, readContinuation } from "../continue/memory";
 import { Progress } from "./Progress";
 import styles from "./Start.module.css";
 import { trackOnce } from "../../lib/analytics";
@@ -76,43 +74,11 @@ export function PurchaseStep({
   }, [returned, returnedFrom]);
   const enrollment = useQuery(enrollmentOptions(session, !left));
   const portal = useBillingPortal(session);
-  const navigate = useNavigate();
   const view = enrollment.data;
   const phase = view?.purchase?.phase;
-  // "Continue with AMP" for one learner: the paid plan becomes theirs, and
-  // they go back to the screen it was opened from.
-  const continuation = readContinuation(session.accountId);
-  const claim = useClaimEnrollment(session);
-  const claimed = useRef<string | null>(null);
-  const [claimAttempt, setClaimAttempt] = useState(0);
-  const back = (target: string) =>
-    void navigate({ href: target, replace: true });
-  useEffect(() => {
-    if (!continuation || !view?.purchase) return;
-    if (phase === "assigned") {
-      continuationPaid(session.accountId);
-      back(continuation.returnTo);
-    } else if (phase === "paid" && claimed.current !== view.purchase.id) {
-      claimed.current = view.purchase.id;
-      claim.mutate(
-        { purchaseId: view.purchase.id, learnerId: continuation.learnerId },
-        {
-          onSuccess: () => {
-            continuationPaid(session.accountId);
-            back(continuation.returnTo);
-          },
-          onError: (error) =>
-            console.error("The paid plan wasn’t assigned", error),
-        },
-      );
-    }
-  }, [phase, view?.purchase?.id, claimAttempt]);
-  const plans = continuation
-    ? ({
-        to: "/continue/$learnerId",
-        params: { learnerId: continuation.learnerId },
-      } as const)
-    : ({ to: "/start/plan" } as const);
+  // A learner's own checkout returns to the pay flow (app/router.tsx); this
+  // is the plan bought before any learner.
+  const plans = { to: "/start/plan" } as const;
   useMetaPurchaseContext(
     session,
     view?.purchase?.id,
@@ -175,42 +141,19 @@ export function PurchaseStep({
         </a>
       ) : (
         <Link {...plans} className={buttonClass("primary")}>
-          Back to plans
+          Choose a plan
         </Link>
       ),
     },
-    paid: continuation
-      ? {
-          title: "Payment confirmed",
-          body: claim.isError
-            ? `${claim.error.message} Your payment is safe.`
-            : "Thank you. One moment while access starts.",
-          action: claim.isError ? (
-            <Button
-              variant="primary"
-              onClick={() => {
-                claimed.current = null;
-                claim.reset();
-                setClaimAttempt((attempt) => attempt + 1);
-              }}
-            >
-              Try again
-            </Button>
-          ) : (
-            <Button variant="primary" disabled aria-busy>
-              Starting access…
-            </Button>
-          ),
-        }
-      : {
-          title: "Payment confirmed",
-          body: "Thank you. Next, tell us who’s learning. It takes about a minute.",
-          action: (
-            <Link to="/start/name" className={buttonClass("primary")}>
-              Continue
-            </Link>
-          ),
-        },
+    paid: {
+      title: "Payment confirmed",
+      body: "Thank you. Next, tell us who’s learning. It takes about a minute.",
+      action: (
+        <Link to="/start/name" className={buttonClass("primary")}>
+          Continue
+        </Link>
+      ),
+    },
     assigned: {
       title: "You’re all set",
       body: "Your learner’s plan is active.",

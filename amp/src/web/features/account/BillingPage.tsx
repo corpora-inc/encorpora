@@ -19,6 +19,7 @@ import { Page } from "../../ui/Page";
 import { PageHeader } from "../../ui/PageHeader";
 import { PageSection } from "../../ui/PageSection";
 import styles from "./BillingPage.module.css";
+import { PayLink } from "../pay/link";
 
 export function BillingPage() {
   const { data: session } = useSuspenseQuery(sessionOptions);
@@ -124,9 +125,8 @@ function Billing({ session }: { session: AuthSession }) {
                         </p>
                       </div>
                       {access.kind === "none" && !learner.deletedAt ? (
-                        <Link
-                          to="/continue/$learnerId"
-                          params={{ learnerId: learner.id }}
+                        <PayLink
+                          learnerId={learner.id}
                           className={buttonClass("primary")}
                           onClick={() =>
                             rememberContinuation({
@@ -137,7 +137,7 @@ function Billing({ session }: { session: AuthSession }) {
                           }
                         >
                           Choose a plan
-                        </Link>
+                        </PayLink>
                       ) : learner.access.length > 1 ? (
                         <Button
                           variant="quiet"
@@ -167,18 +167,6 @@ function Billing({ session }: { session: AuthSession }) {
               })}
             </ul>
           </PageSection>
-          <section className={styles.funding} aria-labelledby="funding-title">
-            <div>
-              <h2 id="funding-title">Pay with education funds</h2>
-              <p>
-                Choose your program and plan, then download an invoice to submit
-                to your program.
-              </p>
-            </div>
-            <Link to="/purchase/funded" className={buttonClass("secondary")}>
-              Get an invoice
-            </Link>
-          </section>
         </>
       )}
       {!search.receipt && (

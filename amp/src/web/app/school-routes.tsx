@@ -253,8 +253,14 @@ export function schoolRoutes(root: AnyRoute) {
           org?: unknown;
           step?: unknown;
         };
-        if (nativeRuntime || studentSession())
-          throw redirect({ to: "/", replace: true });
+        if (nativeRuntime) throw redirect({ to: "/", replace: true });
+        // A student's home is their practice.
+        if (studentSession())
+          throw redirect({
+            to: "/$",
+            params: { _splat: "practice" },
+            replace: true,
+          });
         const signedIn = await queryClient.ensureQueryData(sessionOptions);
         // A setup link from earlier: sign in, then carry on with it.
         if (!signedIn && typeof search.org !== "string")
@@ -316,8 +322,14 @@ export function schoolRoutes(root: AnyRoute) {
       path: "/school/invite",
       staticData: { space: "public" },
       beforeLoad: () => {
-        if (nativeRuntime || studentSession())
-          throw redirect({ to: "/", replace: true });
+        if (nativeRuntime) throw redirect({ to: "/", replace: true });
+        // A student's home is their practice.
+        if (studentSession())
+          throw redirect({
+            to: "/$",
+            params: { _splat: "practice" },
+            replace: true,
+          });
       },
       component: screen(
         () => import("../features/school/InviteScreen"),

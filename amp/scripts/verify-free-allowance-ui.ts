@@ -31,6 +31,7 @@ import { probe, settle, shellRecord, shiftRecorder } from "./app-shell-probe";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { todayTitle } from "./today-title";
+import { openHome } from "./launcher";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -266,11 +267,11 @@ async function journey(
   );
   const fox = await repository.create(account, undefined, 2016);
   const moon = await repository.create(account, undefined, 2018);
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(FAMILY_TODAY);
   await todayTitle(page);
   await page
-    .getByRole("button", { name: `Let ${fox.name} practice here` })
+    .getByRole("button", { name: `Practice with ${fox.name}` })
     .waitFor();
   check(
     `${label} free balance visible`,
@@ -290,7 +291,7 @@ async function journey(
     )
   ).rows[0];
   await page
-    .getByRole("button", { name: `Let ${fox.name} practice here` })
+    .getByRole("button", { name: `Practice with ${fox.name}` })
     .click();
   await practicing(page);
   await measured(page, `${label} unnamed practice`);
@@ -315,7 +316,7 @@ async function journey(
     .filter({ visible: true })
     .first()
     .click();
-  await page.getByRole("button", { name: "Sign out" }).click();
+  await page.getByRole("button", { name: "Back to family" }).click();
   await page.waitForURL(FAMILY_TODAY);
   await freeLeft(page, 99).waitFor();
   // Their first free workbook is selectable in the teacher view.
@@ -332,7 +333,7 @@ async function journey(
   await page.goto(`${origin}/overview`);
   await page.waitForURL(new RegExp(`/kids/${fox.id}$`));
   await page
-    .getByRole("button", { name: `Let ${fox.name} practice here` })
+    .getByRole("button", { name: `Practice with ${fox.name}` })
     .click();
   await practicing(page);
   await page
@@ -340,7 +341,7 @@ async function journey(
     .filter({ visible: true })
     .first()
     .click();
-  await page.getByRole("button", { name: "Sign out" }).click();
+  await page.getByRole("button", { name: "Back to family" }).click();
   await page.waitForURL(FAMILY_TODAY);
   await page.goto(
     `${origin}/school/${home.org_id}/classes/${home.class_id}/workbooks`,

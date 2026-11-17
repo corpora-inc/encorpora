@@ -53,6 +53,7 @@ import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { todayTitle } from "./today-title";
 import { GRADE_5_CLASS } from "../src/schools/demo/personas";
+import { openHome } from "./launcher";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -610,7 +611,8 @@ async function parentJourney(
     .filter({ visible: true })
     .first()
     .click();
-  await page.getByRole("button", { name: "Sign out" }).click();
+  // A handed device's menu gives it back: "Back to family".
+  await page.getByRole("button", { name: "Back to family" }).click();
   // The device comes back to the parent, on Today, with both children.
   await page.waitForURL(FAMILY_TODAY);
   await todayTitle(page);
@@ -621,7 +623,7 @@ async function parentJourney(
     .first()
     .waitFor();
   await page
-    .getByRole("button", { name: `Let ${moon.name} practice here` })
+    .getByRole("button", { name: `Practice with ${moon.name}` })
     .waitFor();
   // A child's own device is an option behind "Their own devices", never
   // Today's headline.
@@ -754,9 +756,9 @@ async function parentJourney(
     `${label} practice continues past 100`,
     (await page.locator("[data-allowance-pause]").count()) === 0,
   );
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(FAMILY_TODAY);
-  await page.getByRole("button", { name: "Let Rowan practice here" }).waitFor();
+  await page.getByRole("button", { name: "Practice with Rowan" }).waitFor();
   await shot(page, 1, "today-paid", width, theme);
 
   // Family: the parent renames a child on the child's own page, and adds
@@ -816,7 +818,7 @@ async function parentJourney(
   await page.goto(
     `${origin}/school/${place.org_id}/classes/${place.class_id}/today`,
   );
-  await page.getByRole("button", { name: "Let Ivy practice here" }).waitFor();
+  await page.getByRole("button", { name: "Practice with Ivy" }).waitFor();
   await page.goto(
     `${origin}/school/${place.org_id}/classes/${place.class_id}/map`,
   );
@@ -983,7 +985,7 @@ async function teacherJourney(
     .filter({ visible: true })
     .first()
     .click();
-  await page.getByRole("button", { name: "Sign out" }).click();
+  await page.getByRole("button", { name: "Back to family" }).click();
   await page.waitForURL((at) => at.href === roster);
   await heading(page, "Students");
 
@@ -1219,7 +1221,7 @@ async function returningJourney(
   await signIn(back, email);
   await back.waitForURL(FAMILY_TODAY);
   await todayTitle(back);
-  await back.getByRole("button", { name: "Let Lena practice here" }).waitFor();
+  await back.getByRole("button", { name: "Practice with Lena" }).waitFor();
   check(
     `${label} nothing to answer on the way`,
     !seen.some((path) => path.startsWith("/start") || path.startsWith("/try")),
@@ -1338,7 +1340,7 @@ async function journey7(
     .filter({ visible: true })
     .first()
     .click();
-  await page.getByRole("button", { name: "Sign out" }).click();
+  await page.getByRole("button", { name: "Back to family" }).click();
   await page.waitForURL(FAMILY_TODAY);
   await visit(page, `${origin}/try/map`);
   await page.waitForURL(FAMILY_TODAY);

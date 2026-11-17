@@ -452,7 +452,7 @@ export async function familyProjection(
         practiceHere: practiceHere
           ? `/api/v1/family/learners/${encodeURIComponent(child.id)}/practice-here`
           : null,
-        continue: holder ? `/continue/${encodeURIComponent(child.id)}` : null,
+        continue: holder ? `/pay/${encodeURIComponent(child.id)}` : null,
       },
     });
   }

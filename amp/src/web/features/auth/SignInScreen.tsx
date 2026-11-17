@@ -12,13 +12,17 @@ import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
 import { Button, buttonClass } from "../../ui/Button";
 import { Toast } from "../../ui/Toast";
 import { useLocation, useNavigate } from "@tanstack/react-router";
-import { authConfigOptions, sessionOptions } from "../../lib/query";
-import { queryClient } from "../../lib/query-client";
+import { authConfigOptions } from "../../lib/query";
 import { useLoggedError } from "../../feedback";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { accountClient } from "../../account-client";
-import { signIn, accessSession, notifyAccountSessionChanged } from "../../auth";
+import {
+  signIn,
+  accessSession,
+  notifyAccountSessionChanged,
+  type AuthSession,
+} from "../../auth";
 import {
   EmailDivider,
   ProviderButtons,
@@ -272,7 +276,7 @@ export function SignInScreen() {
         if (!active) return;
         if (session) {
           notifyAccountSessionChanged(session);
-          await continueAfterSignIn();
+          await continueAfterSignIn(session);
           return;
         }
         trackAuth("auth_failure", {
@@ -347,27 +351,40 @@ export function SignInScreen() {
     });
   }
   const returnTo = continuationUrl(carry, "/");
+  // A new account's own destination is its first question: the address a
+  // confirmation link or a provider's sign-up returns to, never `/`.
+  // `/` with its search (a funded program, a campaign): the destination
+  // takes the search along.
+  const [returnPath, returnSearch = ""] = returnTo.split("?");
+  const toRoot = returnPath === "/";
+  const firstRunTo = toRoot
+    ? `/start${returnSearch ? `?${returnSearch}` : ""}`
+    : returnTo;
   // Sign-in and sign-up resume the same account: its place, or the role
   // question when it has no place yet.
   const done = async () => {
     const session = await measureAuth("session", accessSession);
     if (!session) throw new Error("Sign-in didn’t finish. Please try again.");
     notifyAccountSessionChanged(session);
-    await continueAfterSignIn();
+    await continueAfterSignIn(session);
   };
-  async function continueAfterSignIn() {
+  async function continueAfterSignIn(session: AuthSession) {
     // Nothing asked for: straight to the account's place (or its first
     // question), its final address, never through `/`.
-    const session = queryClient.getQueryData(sessionOptions.queryKey);
-    const href =
-      returnTo === "/" && session
-        ? await import("../home/destination")
-            .then(({ homeDestination }) => homeDestination(session))
-            .catch((error) => {
-              console.warn("Your place didn’t load; opening home", error);
-              return "/";
-            })
-        : returnTo;
+    const href = toRoot
+      ? await import("../home/destination")
+          .then(({ homeDestination }) => homeDestination(session))
+          .then((place) =>
+            // A new account's first question keeps the search it came with.
+            place === "/start" && returnSearch
+              ? `${place}?${returnSearch}`
+              : place,
+          )
+          .catch((error) => {
+            console.warn("Your place didn’t load; opening home", error);
+            return returnTo;
+          })
+      : returnTo;
     await navigate({ href, replace: true });
   }
   async function run(
@@ -475,7 +492,7 @@ export function SignInScreen() {
           name: "",
           email: email.trim(),
           password,
-          callbackURL: returnTo,
+          callbackURL: firstRunTo,
         });
         fail(result);
         // Where email must be confirmed first, no session is issued yet. A
@@ -565,8 +582,16 @@ export function SignInScreen() {
           const result = await accountClient.signIn.social({
             provider,
             fetchOptions: { timeout: 15_000 },
-            callbackURL: returnTo,
-            newUserCallbackURL: returnTo,
+            // A returning account comes back through `/?signed-in`, the one
+            // handoff that opens its place (its destination isn't known
+            // until the provider says who it is).
+            callbackURL: toRoot
+              ? `/?${new URLSearchParams([
+                  ["signed-in", ""],
+                  ...new URLSearchParams(returnSearch),
+                ])}`
+              : returnTo,
+            newUserCallbackURL: firstRunTo,
             errorCallbackURL: `${step === "create" ? "/sign-up" : "/sign-in"}?${new URLSearchParams(
               {
                 provider,

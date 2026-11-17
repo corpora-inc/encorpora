@@ -37,6 +37,7 @@ import {
   PERSONA_PASSPHRASE,
   personaEmail,
 } from "../src/web/features/dev/persona-list";
+import { openHome } from "./launcher";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -79,7 +80,7 @@ async function findMiss(context: BrowserContext) {
   };
   // Where the teacher lands is their class's Today.
   const page = await context.newPage();
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(/\/school\/[^/]+\/classes\/[^/]+\/today/);
   const [, org, classId] = new URL(page.url()).pathname.match(
     /^\/school\/([^/]+)\/classes\/([^/]+)/,

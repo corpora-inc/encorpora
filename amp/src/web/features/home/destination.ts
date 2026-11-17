@@ -1,7 +1,10 @@
+import { isCancelledError } from "@tanstack/react-query";
+import { redirect } from "@tanstack/react-router";
 import type { SignedInMe } from "../../../account/contracts";
 import type { AuthSession } from "../../auth";
-import { meOptions } from "../../lib/query";
+import { meOptions, sessionOptions } from "../../lib/query";
 import { queryClient } from "../../lib/query-client";
+import { setHome } from "../../lib/home-place";
 import { familyPlacesOptions } from "../family/api";
 import { rememberedPlace } from "../onboarding/place-memory";
 import {
@@ -14,8 +17,12 @@ import {
 /** Where a signed-in person goes from `/`: each a final address. */
 export type Launch = {
   id: string;
+  /** What it opens, said whole ("Open Your family"): its accessible name. */
   label: string;
+  /** The place's name and its short state, and the button's word. */
+  name: string;
   detail?: string;
+  action: string;
   /** The address, without its leading slash. */
   path: string;
   /** The place this opens, chosen and remembered when it is opened. */
@@ -34,31 +41,63 @@ export function launches(
   remembered: string | null,
 ): Launch[] {
   if (me.account.kind === "student")
-    return [{ id: "practice", label: "Continue practicing", path: "practice" }];
-  if (me.next === "accept-gift")
-    return [{ id: "access", label: "Accept your gift", path: "access" }];
+    return [
+      {
+        id: "practice",
+        label: "Continue practicing",
+        name: "Your practice",
+        action: "Continue",
+        path: "practice",
+      },
+    ];
+  // A gift waiting for a family none of whose children has access yet.
+  if (
+    me.next === "accept-gift" &&
+    !me.learners.some((learner) => learner.entitlement.active)
+  )
+    return [
+      {
+        id: "access",
+        label: "Accept your gift",
+        name: "Your gift",
+        action: "Accept",
+        path: "access",
+      },
+    ];
   const entries = groups
     .flatMap((group) => group.entries)
     // A level to practice at is a choice, not a place to return to.
     .filter((entry) => entry.id !== "level");
   if (me.next === "start" || !entries.length)
-    return [{ id: "start", label: "Get started", path: "start" }];
+    return [
+      {
+        id: "start",
+        label: "Get started",
+        name: "AMP",
+        action: "Get started",
+        path: "start",
+      },
+    ];
   const first = entries.find((entry) => entry.id === remembered);
   return [
     ...(first ? [first] : []),
     ...entries.filter((entry) => entry !== first),
-  ].map((entry) => ({
-    id: entry.id,
-    label:
-      entry.id !== "me"
-        ? `Open ${entry.name}`
-        : entry.path === "me"
-          ? "Continue practicing"
-          : entry.name,
-    detail: entry.detail,
-    path: entry.path,
-    place: entry,
-  }));
+  ].map((entry) => {
+    const continuing = entry.id === "me" && entry.path === "me";
+    return {
+      id: entry.id,
+      label: continuing
+        ? "Continue practicing"
+        : entry.id === "me"
+          ? entry.name
+          : `Open ${entry.name}`,
+      name: entry.name,
+      detail: entry.detail,
+      action: continuing ? "Continue" : entry.id === "me" ? "Start" : "Open",
+      path: entry.path,
+      place: entry,
+    };
+  });
 }
 
 /**
@@ -67,15 +106,30 @@ export function launches(
  * from the account and its places before navigating. Its places are cached
  * for the launcher too.
  */
-export async function homeDestination(session: AuthSession): Promise<string> {
-  const me = await queryClient.fetchQuery({
-    ...meOptions(session),
-    staleTime: 0,
-  });
+export async function homeDestination(
+  session: AuthSession,
+  /** The account as just read, when the caller has it fresh. */
+  known?: SignedInMe,
+): Promise<string> {
+  // Signing in replaces the account's cached reads, which cancels one in
+  // flight: the read then simply runs again, with the new session's.
+  const read = () =>
+    queryClient.fetchQuery({ ...meOptions(session), staleTime: 0 });
+  const me =
+    known ??
+    (await read().catch((error) => {
+      if (isCancelledError(error)) return read();
+      throw error;
+    }));
   if (!me.signedIn) return "/";
-  const groups = await loadPlaceGroups(session, me);
+  // A new account's destination needs no places: its first question.
+  const groups = me.next === "start" ? [] : await loadPlaceGroups(session, me);
   const [first] = launches(me, groups, rememberedPlace(me.account.id));
-  return first ? `/${first.path}` : "/";
+  if (!first) return "/";
+  const href = `/${first.path}`;
+  // Where this account's home links go from now on (its place, not /start).
+  if (first.place) setHome(me.account.id, href);
+  return href;
 }
 
 /** An adult's places, as the place switcher groups them (its same reads). */
@@ -85,11 +139,36 @@ export async function loadPlaceGroups(
 ): Promise<PlaceGroup[]> {
   if (me.account.kind === "student" || session.accountId.startsWith("school:"))
     return [];
+  // Either read failing leaves the places `/me` names (as the switcher
+  // does), never no destination.
+  const read = <T>(what: string, load: Promise<T>) =>
+    load.catch((error) => {
+      console.warn(`${what} didn’t load; using what /me names`, error);
+      return null;
+    });
   const [families, places] = await Promise.all([
-    queryClient.ensureQueryData(familyPlacesOptions(session)),
+    read(
+      "Your families",
+      queryClient.ensureQueryData(familyPlacesOptions(session)),
+    ),
     me.staffOf?.length
-      ? queryClient.ensureQueryData(placesOptions(session))
+      ? read("Your places", queryClient.ensureQueryData(placesOptions(session)))
       : null,
   ]);
   return placeGroups(me, places, families);
+}
+
+/** A guard's one redirect for an address that isn't this person's: straight
+ * to their destination, never through `/`. Signed out, the pitch. */
+export async function homeRedirect(known?: SignedInMe) {
+  const session = await queryClient
+    .ensureQueryData(sessionOptions)
+    .catch(() => null);
+  const href = session
+    ? await homeDestination(session, known).catch((error) => {
+        console.warn("Your place didn’t load; opening home", error);
+        return "/";
+      })
+    : "/";
+  return redirect({ href, replace: true });
 }

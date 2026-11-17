@@ -170,7 +170,7 @@ try {
           (await page.getByLabel(/Email for/).boundingBox())!.y,
       );
       for (const target of [
-        page.getByRole("link", { name: "Back to AMP" }),
+        page.getByRole("link", { name: "AMP home" }),
         page.getByRole("button", { name: "Create invoice PDF" }),
       ]) {
         const bounds = await target.boundingBox();
@@ -179,7 +179,7 @@ try {
           "invoice actions have 44px targets",
         );
       }
-      const back = page.getByRole("link", { name: "Back to AMP" });
+      const back = page.getByRole("link", { name: "AMP home" });
       assert.equal(
         await back.evaluate((el) => {
           const range = document.createRange();

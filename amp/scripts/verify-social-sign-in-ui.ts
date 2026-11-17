@@ -26,6 +26,7 @@ import { openMenu } from "./ui-controls";
 import { migrate } from "./migrate";
 import { fill, socialCopyFor } from "../src/web/features/auth/social-copy";
 import { todayTitle } from "./today-title";
+import { openHome } from "./launcher";
 
 /** Provider sign-in in the browser: the brand button stack on sign-in and
  * "Create your account" at phone, small-phone and desktop sizes in
@@ -498,7 +499,7 @@ try {
     await page.getByRole("button", { name: "Continue with Google" }).click();
     await page.waitForURL((url) => /^\/family\/[^/]+$/.test(url.pathname));
     await page
-      .getByRole("button", { name: /practice here/ })
+      .getByRole("button", { name: /^Practice with / })
       .first()
       .waitFor();
     assert.equal(await page.locator("[data-starter]").count(), 0);
@@ -796,7 +797,7 @@ try {
     await todayTitle(tab);
     await tab
       .getByRole("button", {
-        name: "Let Test Learner practice here",
+        name: "Practice with Test Learner",
         exact: true,
       })
       .waitFor();
@@ -804,7 +805,7 @@ try {
   async function practiceHere(tab: Page) {
     await tab
       .getByRole("button", {
-        name: "Let Test Learner practice here",
+        name: "Practice with Test Learner",
         exact: true,
       })
       .click();
@@ -821,12 +822,12 @@ try {
       [learnerId],
     );
   }
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await familyHome(page);
   await practiceHere(page);
   const studentMenu = await openMenu(page);
   await studentMenu
-    .getByRole("button", { name: "Sign out", exact: true })
+    .getByRole("button", { name: "Back to family", exact: true })
     .click();
   await familyHome(page);
   // Simulate another person's saved learner selection on a shared device.
@@ -840,11 +841,10 @@ try {
     ),
   );
   await page.goto(`${origin}/overview`);
-  // This learner has no answers yet: #2157 gives their starting estimate
-  // its own heading. Naming the learner also proves the stale selection
-  // from another account did not leak into this overview.
+  // The overview is the child's own page, titled with their name: that
+  // proves the stale selection from another account did not leak into it.
   await page
-    .getByRole("heading", { name: "Where Test Learner is", exact: true })
+    .getByRole("heading", { level: 1, name: "Test Learner", exact: true })
     .waitFor();
   await page.screenshot({
     path: new URL("returning-learner-home-390.png", shots).pathname,
@@ -859,7 +859,7 @@ try {
     });
     await fresh.addCookies(await context.cookies(origin));
     const tab = await fresh.newPage();
-    await tab.goto(`${origin}/`);
+    await openHome(tab, origin);
     await familyHome(tab);
     await practiceHere(tab);
     await tab.screenshot({
@@ -901,7 +901,7 @@ try {
       };
     }
   });
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(`${origin}/start`);
   await page
     .getByRole("heading", { name: "What brings you to AMP?" })
@@ -987,7 +987,7 @@ try {
     await router.navigate({ to: "/$", params: { _splat: "overview" } });
   });
   await page
-    .getByRole("heading", { name: "Where Test Learner is", exact: true })
+    .getByRole("heading", { level: 1, name: "Test Learner", exact: true })
     .waitFor();
   // The legacy overview resolves to this child's canonical address. An
   // account switch must refuse that address, not substitute another child.
