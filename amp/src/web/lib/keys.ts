@@ -19,8 +19,19 @@ export type AccountResources = {
   me: [];
   /** The adult's own practice (`/me/practice`). */
   "own-practice": [];
-  /** Purchases and plans (features/billing), and their parts. */
-  billing: [part?: string];
+  /** Purchases and plans (features/billing), and their parts: the offer,
+   * the enrollment, one learner's status (`"status", learner`). */
+  billing: [part?: string, ...rest: string[]];
+  /** Education-fund invoices (features/pay/api.ts): the records, one
+   * invoice, and an invoice's email (`"email", invoice`). */
+  "funding-invoices": string[];
+  /** The account's education-fund requests (features/funding/records.ts),
+   * and one of them. */
+  "funding-records": [invoice?: string];
+  /** The account's education-fund invoices, as Billing lists them. */
+  "funding-invoice-history": [];
+  /** One education-fund invoice a parent is finishing. */
+  "active-funding-invoice": [invoice: string];
   /** A parent's consent: its status, and whether it can be given here. */
   consent: [part?: "availability"];
   /** The families this account belongs to, and each one's reads
@@ -85,4 +96,15 @@ export const qk = {
   accounts: () => ["account"] as const,
   /** One account's data, or one of its resources. */
   account,
+  /** The plans' prices: the same for every visitor (features/billing). */
+  prices: () => ["billing", "prices"] as const,
+  /** The education-fund programs and their invoice offers (features/pay). */
+  fundingOffers: () => ["funding", "invoice-offers"] as const,
+  /** One program's public invoice offers (features/funding). */
+  publicInvoiceOffers: (program: string) =>
+    ["public-invoice-offers", program] as const,
+  /** What an approval link names, read before anyone signs in
+   * (features/family-approval). */
+  familyApprovalLink: (token: string | undefined) =>
+    ["family-approval-link", token] as const,
 };
