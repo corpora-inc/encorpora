@@ -1,5 +1,6 @@
 import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
 import { useQuery } from "@tanstack/react-query";
+import { qk } from "../../lib/keys";
 import { useRef, useState } from "react";
 import type { Outcome } from "../../../server/repository";
 import type { ProgressSnapshot } from "../../../server/progress";
@@ -36,7 +37,7 @@ export function AnswerFeedback({
   const details = shown || reveal === scope;
   const paths = answerPathways(outcome.skillId, skills, templates);
   const progress = useQuery({
-    queryKey: [...identity, "answer-feedback", outcome.id],
+    queryKey: qk.answerFeedback(identity, outcome.id),
     queryFn: async ({ signal }) => {
       const progress = await loadProgress();
       signal.throwIfAborted();

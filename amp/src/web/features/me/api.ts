@@ -31,7 +31,8 @@ function deviceTimeZone() {
     return (
       Intl.DateTimeFormat().resolvedOptions().timeZone || "America/New_York"
     );
-  } catch {
+  } catch (error) {
+    console.warn("The device's time zone couldn't be read", error);
     return "America/New_York";
   }
 }

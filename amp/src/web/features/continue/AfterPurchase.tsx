@@ -3,7 +3,8 @@ import { useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { z } from "zod";
 import { request } from "../../lib/api";
-import { meOptions, refreshMe, sessionOptions } from "../../lib/query";
+import { meOptions, refreshMe } from "../../lib/query";
+import { forSession, useSessionOrNull } from "../../lib/session";
 import { Button } from "../../ui/Button";
 import { Sheet } from "../../ui/Sheet";
 import { TextField } from "../../ui/TextField";
@@ -18,14 +19,11 @@ import styles from "./Continue.module.css";
  * "Not now" keeps the number, and Family can name them any time.
  */
 export function AfterPurchase() {
-  const session = useQuery(sessionOptions).data;
+  const session = useSessionOrNull();
   const location = useRouterState({
     select: (state) => state.location.pathname + state.location.searchStr,
   });
-  const me = useQuery({
-    ...meOptions(session ?? { accountId: "", token: "" }),
-    enabled: !!session,
-  }).data;
+  const me = useQuery(forSession(session, meOptions)).data;
   const [dismissed, setDismissed] = useState(false);
   const continuation = session ? readContinuation(session.accountId) : null;
   const account = me?.signedIn ? me : null;

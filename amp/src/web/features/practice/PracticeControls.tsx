@@ -66,6 +66,10 @@ export function PracticeControls({
         close?.();
       }
     } catch (failure) {
+      console.error("AMP couldn’t change practice", {
+        change: change.kind,
+        error: failure,
+      });
       setError(
         failure instanceof Error
           ? failure.message
