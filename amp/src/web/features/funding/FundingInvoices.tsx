@@ -20,6 +20,7 @@ import {
 export { fundingRecordsKey } from "./records";
 import { PageSection } from "../../ui/PageSection";
 import styles from "../account/BillingPage.module.css";
+import { practiceParams } from "../spaces/identity";
 
 const intent = z.object({
   id: z.string(),
@@ -124,7 +125,7 @@ export function FundingInvoices({
         me.data.adultPractice?.learner?.id === selected
       ) {
         selectLearner(selected);
-        void navigate({ to: "/$", params: { _splat: "practice" } });
+        void navigate({ to: "/$", params: practiceParams(selected) });
       } else {
         await handoff.handOver(selected);
       }

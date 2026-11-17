@@ -38,6 +38,7 @@ import { setupStep } from "./activation";
 import { Page } from "../../ui/Page";
 import { PageHeader } from "../../ui/PageHeader";
 import styles from "./Starter.module.css";
+import { practiceParams } from "../spaces/identity";
 
 /** Unsent answers live only in this tab's memory, per account. */
 type StarterDraft = {
@@ -303,7 +304,9 @@ function MyselfStep({ session }: { session: AuthSession }) {
         else
           void navigate({
             to: "/$",
-            params: { _splat: "practice" },
+            params: result.learnerId
+              ? practiceParams(result.learnerId)
+              : { _splat: "practice" },
             replace: true,
           });
       },

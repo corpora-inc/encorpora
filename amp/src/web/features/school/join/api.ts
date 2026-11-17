@@ -16,6 +16,7 @@ import { notifyDeviceSessionChanged } from "../../../auth";
 import { AppError } from "../../../lib/AppError";
 import { meOptions, queryClient } from "../../../lib/query";
 import { rememberStudentSession } from "../../../lib/student-device";
+import { practiceParams } from "../../spaces/identity";
 
 /** In a child's words: what happened, and what to do. */
 const messages: Record<string, string> = {
@@ -160,15 +161,19 @@ export function useFinishSignIn() {
       notifyDeviceSessionChanged(session);
       // The app remounts for a new identity, and that would cancel a `/me`
       // started during the move. Wait here, so practice opens with it in hand.
-      await queryClient
+      const me = await queryClient
         .fetchQuery(meOptions(session))
-        .catch((error) =>
-          console.warn("Practice will load `/me` itself", error),
-        );
+        .catch((error) => {
+          console.warn("Practice will load `/me` itself", error);
+          return null;
+        });
+      // Straight to the student's practice, at its own address: one entry.
+      const learner =
+        learnerId ?? (me?.signedIn ? me.learners[0]?.id : undefined);
       try {
         await navigate({
           to: "/$",
-          params: { _splat: "practice" },
+          params: learner ? practiceParams(learner) : { _splat: "practice" },
           search: filter ?? {},
           replace: !handed,
           state:

@@ -3,6 +3,7 @@ import { meOptions, queryClient, sessionOptions } from "./query";
 import { currentLearner, useCurrentLearner } from "../learner-store";
 import {
   learningIdentity,
+  practicePath,
   type AddressedIdentity,
 } from "../features/spaces/identity";
 import {
@@ -355,7 +356,7 @@ export function useLearningView({
       learner && viewOnly
         ? `/${secondParentChild(account, learner.id)!.classPath}`
         : learner
-          ? "/practice"
+          ? practicePath(learner.id)
           : "/start",
     retry: () => {
       void session.refetch();

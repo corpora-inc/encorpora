@@ -5,7 +5,7 @@
     "validateSearch": 10,
     "searchHandoffs": 154,
     "navigatingEffects": 18,
-    "renderNavigate": 26,
+    "renderNavigate": 25,
     "silentCatches": 191,
     "sessionProps": 64,
     "sessionReads": 44,
@@ -122,7 +122,7 @@
       "nav/Navigate.tsx": 1
     },
     "renderNavigate": {
-      "app/LegacyApp.tsx": 4,
+      "app/LegacyApp.tsx": 3,
       "features/access/AccessScreen.tsx": 1,
       "features/account/AccountReady.tsx": 2,
       "features/me/OwnStartScreen.tsx": 1,

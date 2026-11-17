@@ -3,6 +3,7 @@ import type { AuthSession } from "../../auth";
 import { selectLearner } from "../../learner-store";
 import { Button, buttonClass } from "../../ui/Button";
 import { useHandOver } from "../school/classes/today/use-hand-over";
+import { practiceParams } from "../spaces/identity";
 
 /** Invoice access uses the same child session as the family's Practice action. */
 export function InvoicePractice({
@@ -20,7 +21,7 @@ export function InvoicePractice({
       {adult ? (
         <Link
           to="/$"
-          params={{ _splat: "practice" }}
+          params={practiceParams(learnerId)}
           className={buttonClass("primary")}
           onClick={() => selectLearner(learnerId)}
         >

@@ -1,4 +1,10 @@
 import {
+  childAddress,
+  childPath,
+  practiceParams,
+  practicePath,
+} from "../spaces/identity";
+import {
   CurriculumPractice,
   PracticeLabel,
 } from "../practice/CurriculumPractice";
@@ -26,6 +32,7 @@ import { skillCatalogOptions } from "../../lib/learning-view";
 import { request } from "../../lib/api";
 import { useUrlSearchText } from "../../lib/url-search-text";
 import { useCurrentLearner } from "../../learner-store";
+import { useLearnerChoice } from "../spaces/learner-choice";
 import type { AuthSession } from "../../auth";
 import { gradeName } from "../../Home";
 import { byArea, fitScale, LevelRows, WHOLE_SCALE } from "../../ui/level-range";
@@ -76,7 +83,6 @@ import {
   useAddressedIdentity,
   useAddressedRecordsReadable,
 } from "../spaces/useAddressed";
-import { childAddress, childPath } from "../spaces/identity";
 import { childFamily } from "../spaces/learner-urls";
 import { familyPlacesOptions } from "../family/api";
 const emptyEvidence: Evidence[] = [];
@@ -199,6 +205,9 @@ function LearnerMap({ session }: { session: AuthSession }) {
   };
   // A second parent's family's children follow the family's own: their
   // progress, read-only.
+  const choice = useLearnerChoice();
+  // A child's session never has a chooser, so holds no place for one.
+  const holding = me.isPending && !session.accountId.startsWith("school:");
   const learners = own
     ? [own]
     : [...(account?.learners ?? []), ...secondParentChildren(account)];
@@ -255,7 +264,7 @@ function LearnerMap({ session }: { session: AuthSession }) {
   return (
     <MapView
       evidence={progress.data?.skills ?? emptyEvidence}
-      start={learner ? "/practice" : "/start"}
+      start={learner ? practicePath(learner.id) : "/start"}
       readOnly={viewOnly}
       key={learner?.id ?? "none"}
       canPractice={canPractice}
@@ -274,19 +283,23 @@ function LearnerMap({ session }: { session: AuthSession }) {
       birthYear={learner?.birthYear}
       controls={
         <>
-          {/* The learner row holds its place while the family loads. */}
-          {(me.isPending || (learners.length > 0 && !own)) && (
+          {/* Only when there is a real choice (learner-choice.ts); the row
+              holds its place while the account loads. */}
+          {(holding || choice.canChoose) && (
             <div
               className="pathways-learner"
-              aria-hidden={me.isPending || undefined}
-              style={me.isPending ? { visibility: "hidden" } : undefined}
+              aria-hidden={holding || undefined}
+              style={holding ? { visibility: "hidden" } : undefined}
             >
               <span aria-hidden="true">Learner</span>
               <ListboxDisclosure
                 label="Learner"
                 placeholder="Choose learner"
                 align="end"
-                options={learners.map((l) => ({ value: l.id, label: l.name }))}
+                options={choice.learners.map((l) => ({
+                  value: l.id,
+                  label: l.name,
+                }))}
                 value={learner?.id ?? null}
                 onChange={openChild}
               />
@@ -335,7 +348,8 @@ export function MapView({
   readOnly = false,
 }: {
   evidence: Evidence[];
-  start: "/sign-up" | "/practice" | "/start";
+  /** "/sign-up", "/start", or the learner's practice (`/practice/<id>`). */
+  start: string;
   notice: ReactNode;
   canPractice?: boolean;
   controls?: ReactNode;
@@ -595,7 +609,9 @@ export function MapView({
               <Link
                 className={buttonClass("primary")}
                 to="/$"
-                params={{ _splat: "practice" }}
+                params={
+                  learnerId ? practiceParams(learnerId) : { _splat: "practice" }
+                }
                 search={{
                   skill: skillId,
                   // A problem type the search found: that one.
@@ -916,7 +932,9 @@ export function MapView({
             <Link
               className={buttonClass("primary")}
               to="/$"
-              params={{ _splat: "practice" }}
+              params={
+                learnerId ? practiceParams(learnerId) : { _splat: "practice" }
+              }
               search={{ skill: practiced, template: type }}
             >
               <PracticeLabel />

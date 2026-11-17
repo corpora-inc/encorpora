@@ -1,9 +1,9 @@
+import { childAddress, practiceParams } from "../spaces/identity";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation } from "@tanstack/react-router";
 import type { AuthSession } from "../../auth";
 import { useLearningView } from "../../lib/learning-view";
 import { Button, buttonClass } from "../../ui/Button";
-import { childAddress } from "../spaces/identity";
 import { familyOptions } from "../family/api";
 import { useHandOver } from "../school/classes/today/use-hand-over";
 import type { PracticeFilter } from "./curriculum-filter";
@@ -42,7 +42,9 @@ export function CurriculumPractice({ filter }: { filter: PracticeFilter }) {
   return (
     <Link
       to="/$"
-      params={{ _splat: "practice" }}
+      params={
+        view.learner ? practiceParams(view.learner.id) : { _splat: "practice" }
+      }
       search={filter}
       className={buttonClass("primary")}
       data-curriculum-practice

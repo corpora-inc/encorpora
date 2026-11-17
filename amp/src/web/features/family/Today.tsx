@@ -30,6 +30,7 @@ import { FamilyFrame, familyHref, useFamilyPlace } from "./FamilyFrame";
 import { ColumnList, ColumnRow, type Column } from "../../ui/ColumnList";
 import styles from "./Family.module.css";
 import { PayLink } from "../pay/link";
+import { practiceParams } from "../spaces/identity";
 
 const count = (n: number, one: string, many = `${one}s`) =>
   `${n} ${n === 1 ? one : many}`;
@@ -506,14 +507,16 @@ export function FamilyTodayScreen() {
                               setOwnError("");
                               void (
                                 practiceSelf
-                                  ? Promise.resolve()
+                                  ? Promise.resolve(
+                                      me!.adultPractice!.learner!.id,
+                                    )
                                   : startOwn.mutateAsync(undefined)
                               )
-                                .then(() => {
+                                .then((learner) => {
                                   rememberPlace(session.accountId, "home");
                                   return navigate({
                                     to: "/$",
-                                    params: { _splat: "practice" },
+                                    params: practiceParams(learner),
                                     search: { from: `/${familyHref(family)}` },
                                   });
                                 })

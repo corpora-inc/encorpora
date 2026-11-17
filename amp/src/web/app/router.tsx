@@ -111,6 +111,8 @@ import {
 import {
   adoptPracticeMode,
   followResolvedLearner,
+  practiceAddress,
+  studentPracticeHref,
   canonicalLearnerAddress,
   carriedKeys,
   isLearningPath,
@@ -383,7 +385,7 @@ const start = lazyRouteComponent(
  * families, so a student's URL goes back to practice. */
 function notForStudents() {
   if (studentSession())
-    throw redirect({ to: "/$", params: { _splat: "practice" }, replace: true });
+    throw redirect({ href: studentPracticeHref(), replace: true });
 }
 /** Every /start step runs the one first-run guard against `/me`. */
 async function beforeStart({
@@ -1365,11 +1367,7 @@ const schoolConnect = createRoute({
       await cleverOnboardingSession();
     }
     if (studentSession())
-      throw redirect({
-        to: "/$",
-        params: { _splat: "practice" },
-        replace: true,
-      });
+      throw redirect({ href: studentPracticeHref(), replace: true });
   },
   component: lazyRouteComponent(
     () => import("../features/school/clever/ConnectionScreen"),
@@ -1669,11 +1667,7 @@ const familyApprove = createRoute({
     if (nativeRuntime) throw redirect({ to: "/", replace: true });
     // A student's home is their practice.
     if (studentSession())
-      throw redirect({
-        to: "/$",
-        params: { _splat: "practice" },
-        replace: true,
-      });
+      throw redirect({ href: studentPracticeHref(), replace: true });
   },
   component: lazyRouteComponent(
     () => import("../features/family-approval/ApproveLinkScreen"),
@@ -1716,6 +1710,7 @@ const fallback = createRoute({
   // Reject unknown shapes before adopting a learner or loading the legacy app.
   beforeLoad: async ({ location }) => {
     if (!knownDocumentPath(location.pathname)) throw notFound();
+    await practiceAddress(location);
     await canonicalLearnerAddress(location);
     await adoptPracticeMode(location);
   },
