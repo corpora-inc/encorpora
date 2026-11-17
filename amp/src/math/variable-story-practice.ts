@@ -1,11 +1,11 @@
 import type { TemplateMetadata } from "./contracts";
-import { defineAxis } from "./variation/axes";
+import { defineAxis, generatingVersion } from "./variation/axes";
 import { chainFamily, choiceSurface, dispatch, pick } from "./chain-kit";
 import { draw } from "./elementary-gap-kit";
 
 export const variableSituationTemplate: TemplateMetadata = {
   id: "variable-in-situation",
-  version: 1,
+  version: 2,
   requiredResponseCapability: "single-choice-v1",
   title: "What can change?",
   skillId: "variable-expressions",
@@ -29,19 +29,27 @@ export const subtractionStoryTemplate: TemplateMetadata = {
 type R = (lo: number, hi: number) => number;
 
 /* --------------------------------------------------------- variable */
+/**
+ * One story. `constant` is the story's own quantity that stays the same, the
+ * only right answer to "which stays the same?". `facts` stay the same too,
+ * but they are facts about the world, not the story, so they are offered
+ * only when the question asks what can change (two quantities that stay the
+ * same would make "which stays the same?" ambiguous).
+ */
 interface Situation {
   setup: (a: number) => string;
-  fixed: ((a: number) => string)[];
+  constant: (a: number) => string;
+  facts: string[];
   changing: string[];
 }
 const situations: Situation[] = [
   {
     setup: (a) =>
       `Ana saves ${a} dollars every week and keeps a count of the weeks.`,
-    fixed: [
-      (a) => `The dollars Ana saves each week: ${a}`,
-      () => "The number of days in a week: 7",
-      () => "The number of cents in a dollar: 100",
+    constant: (a) => `The dollars Ana saves each week: ${a}`,
+    facts: [
+      "The number of days in a week: 7",
+      "The number of cents in a dollar: 100",
     ],
     changing: [
       "The number of weeks Ana has been saving",
@@ -51,10 +59,10 @@ const situations: Situation[] = [
   },
   {
     setup: (a) => `Sam reads ${a} pages every night, night after night.`,
-    fixed: [
-      (a) => `The pages Sam reads each night: ${a}`,
-      () => "The number of hours in a day: 24",
-      () => "The number of minutes in an hour: 60",
+    constant: (a) => `The pages Sam reads each night: ${a}`,
+    facts: [
+      "The number of hours in a day: 24",
+      "The number of minutes in an hour: 60",
     ],
     changing: [
       "The number of nights Sam has been reading",
@@ -65,10 +73,10 @@ const situations: Situation[] = [
   {
     setup: (a) =>
       `A teacher shares ${a} markers equally among the groups in a class.`,
-    fixed: [
-      (a) => `The number of markers the teacher has: ${a}`,
-      () => "The number of days in a week: 7",
-      () => "The number of months in a year: 12",
+    constant: (a) => `The number of markers the teacher has: ${a}`,
+    facts: [
+      "The number of days in a week: 7",
+      "The number of months in a year: 12",
     ],
     changing: [
       "The number of groups in the class",
@@ -77,6 +85,9 @@ const situations: Situation[] = [
     ],
   },
 ];
+/** Version 2 keys the story's constant (see the model). */
+const storyConstantKeyed = () =>
+  (generatingVersion() ?? variableSituationTemplate.version) >= 2;
 const variableAxes = {
   asks: defineAxis("asks", ["variable", "constant"] as const),
 };
@@ -93,11 +104,18 @@ export const variableInSituation = chainFamily({
     const situation = pick(r, situations);
     const a = r(3, 9);
     const wantChange = ax.asks === "variable";
+    const fixed = [situation.constant(a), ...situation.facts];
+    // From version 2, "stays the same" keys the story's own constant
+    // against three quantities that change. Version 1 could key a fact
+    // ("hours in a day") and leave the story's constant out; its saved
+    // problems replay on the same draws.
     const target = wantChange
       ? pick(r, situation.changing)
-      : pick(r, situation.fixed)(a);
+      : storyConstantKeyed()
+        ? fixed[0]!
+        : pick(r, fixed);
     const others = wantChange
-      ? draw(r, situation.fixed, 3).map((f) => f(a))
+      ? draw(r, fixed, 3)
       : draw(r, situation.changing, 3);
     return {
       asks: ax.asks,
@@ -136,7 +154,7 @@ export const variableInSituation = chainFamily({
       explanation: [
         `A variable is a quantity that can change; a constant always has the same value.`,
         m.asks === "variable"
-          ? `The other three quantities are set by the situation and do not change. "${m.options[0]!.label}" takes a new value as the story goes on.`
+          ? `The other three quantities ${storyConstantKeyed() ? "stay the same" : "are set by the situation and do not change"}. "${m.options[0]!.label}" takes a new value as the story goes on.`
           : `"${m.options[0]!.label}" is set by the situation and does not change. The other three quantities take new values as the story goes on.`,
       ],
     }),
