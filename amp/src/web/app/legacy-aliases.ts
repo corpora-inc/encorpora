@@ -310,6 +310,33 @@ const WORKBOOK_KEYS = [
   "lesson",
 ] as const;
 
+/** What a class's workbook stack chose in its query before its view store. */
+const STACK_KEYS = [
+  "date",
+  "minutes",
+  "paper",
+  "set",
+  "students",
+  "skill",
+] as const;
+
+/** A school screen's view from an old query (features/school/view-store.ts):
+ * written for the screen at the old address's path, which it opens without
+ * the query. Nothing chosen (all malformed): the screen as it is. */
+async function screenView(
+  old: OldAddress,
+  read: () => Promise<Record<string, string | number | undefined>>,
+) {
+  const path = old.pathname.replace(/\/+$/, "");
+  const [view, { openView }, session] = await Promise.all([
+    read(),
+    import("../features/school/view-store"),
+    sessionIfAny(),
+  ]);
+  openView(session?.accountId, path, view);
+  return path;
+}
+
 /** The query keys practice's focus had before its paths. */
 const FOCUS_KEYS = ["template", "skill", "strand"] as const;
 
@@ -823,6 +850,58 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
       const step = setupSteps.find((entry) => entry === old.search.step);
       return `/${setupPath(orgId, step)}`;
     },
+  },
+  // A district's adoption links from before the district had its path
+  // (`?district=<id>`, `&manage=1`). A school's approval in the fragment is
+  // kept for this tab first (adoption-session.ts), never carried on.
+  {
+    from: "/school/adopt",
+    about: "a district's adoption link in the query",
+    when: ({ search }) => UUID.test(String(search.district ?? "")),
+    to: async ({ search }) => {
+      const { prepareSchoolAdoption } = await import(
+        "../features/school/adoption-session"
+      );
+      prepareSchoolAdoption();
+      const manage = search.manage === 1 || search.manage === "1";
+      return `/school/adopt/${String(search.district)}${manage ? "/manage" : ""}`;
+    },
+  },
+  // One student's sign-in card, from before it had its path (`?student=`).
+  {
+    from: "/school/$org/classes/$class/cards",
+    about: "a student's card in the query",
+    when: ({ search }) => UUID.test(String(search.student ?? "")),
+    to: ({ params, search }) =>
+      `/school/${params.org}/classes/${params.class}/cards/${String(search.student)}`,
+  },
+  // A class's workbook screens and a student's standings, from before their
+  // view had its store (features/school/view-store.ts): what the query
+  // chose is that screen's view, and the address names the screen. (A
+  // printed workbook page's QR code, `?set=&student=`, is the last row.)
+  {
+    from: "/school/$org/classes/$class/workbooks",
+    about: "the workbook stack's view in the query",
+    when: ({ search }) => STACK_KEYS.some((key) => key in search),
+    to: (old) =>
+      screenView(old, async () => {
+        const { stackSearchSchema } = await import(
+          "../features/school/classroom/search"
+        );
+        return stackSearchSchema.parse(old.search);
+      }),
+  },
+  {
+    from: "/standings",
+    about: "a class's standings in the query",
+    when: ({ search }) => "class" in search,
+    to: (old) =>
+      screenView(old, async () => {
+        const { standingsSearchSchema } = await import(
+          "../features/school/classroom/search"
+        );
+        return standingsSearchSchema.parse(old.search);
+      }),
   },
   {
     from: "/school/$org/experience",

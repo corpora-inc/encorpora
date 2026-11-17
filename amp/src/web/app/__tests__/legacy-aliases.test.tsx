@@ -442,6 +442,39 @@ const EXAMPLES: Example[] = [
     lands: `/school/${SCHOOL}/setup/calendar`,
   },
   {
+    from: `/school/adopt?district=${SCHOOL}`,
+    world: "adult",
+    lands: `/school/adopt/${SCHOOL}`,
+  },
+  {
+    from: `/school/adopt?district=${SCHOOL}&manage=1`,
+    world: "adult",
+    lands: `/school/adopt/${SCHOOL}/manage`,
+  },
+  {
+    from: `${CLASS_AT}/cards?student=${CHILD}`,
+    world: "adult",
+    lands: `${CLASS_AT}/cards/${CHILD}`,
+  },
+  {
+    from: `${CLASS_AT}/workbooks?minutes=45&skill=s1`,
+    world: "adult",
+    lands: `${CLASS_AT}/workbooks`,
+    view: { minutes: 45, skill: "s1" },
+  },
+  {
+    from: `${CLASS_AT}/workbooks/2026-11-16?set=3&student=${CHILD}`,
+    world: "adult",
+    lands: `${CLASS_AT}/workbooks/2026-11-16`,
+    view: { set: 3, student: CHILD },
+  },
+  {
+    from: `/standings?class=${CLASS}`,
+    world: "adult",
+    lands: "/standings",
+    view: { class: CLASS },
+  },
+  {
     from: `/school/${SCHOOL}/experience`,
     world: "adult",
     lands: `/school/${SCHOOL}/settings#student-experience`,
