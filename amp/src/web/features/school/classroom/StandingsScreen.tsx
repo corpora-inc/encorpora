@@ -1,15 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import { RootLink } from "../../../nav/root";
-import { Link, useSearch } from "@tanstack/react-router";
-import { Navigate } from "../../../nav/Navigate";
+import { Link } from "@tanstack/react-router";
 import type { CSSProperties } from "react";
 import type { StandingsBoard } from "../../../../schools/classroom-contracts";
-import { sessionOptions } from "../../../lib/query";
-import { Button } from "../../../ui/Button";
+import { useSessionOrNull } from "../../../lib/session";
+import { Button, buttonClass } from "../../../ui/Button";
 import { Page } from "../../../ui/Page";
+import { Segmented } from "../../../ui/Segmented";
 import { NavigationDrawer } from "../../navigation/NavigationDrawer";
 import { StudentSignOut } from "../../practice/StudentSignOut";
 import { gradeLabel } from "../parts";
+import { useScreenView } from "../view-store";
 import { say, standingsBoardOptions, standingsBoardsOptions } from "./api";
 import styles from "./Standings.module.css";
 
@@ -210,18 +211,19 @@ const gradeWord = (grade: number) =>
 /** `/standings`: for a student whose class turned it on, and never during a
  * problem. The top ten and your own line. */
 export function StandingsScreen() {
-  const { data: session } = useQuery(sessionOptions);
-  const search = useSearch({ from: "/standings" });
-  const boards = useQuery(standingsBoardsOptions(session ?? null));
+  const session = useSessionOrNull();
+  // Which class's board: this screen's view (view-store.ts), never the address.
+  const [view, setView] = useScreenView<{ class: string }>();
+  const boards = useQuery(standingsBoardsOptions(session));
   const list = boards.data?.boards ?? [];
   const chosen =
-    list.find((entry) => entry.classId === search.class) ?? list[0] ?? null;
+    list.find((entry) => entry.classId === view.class) ?? list[0] ?? null;
   const board = useQuery({
     ...standingsBoardOptions(session ?? null, chosen?.classId ?? ""),
     enabled: !!session && !!chosen,
   });
-  if (boards.isSuccess && !list.length)
-    return <Navigate to="/$" params={{ _splat: "practice" }} replace />;
+  // A class that turned standings off: the way on, in place.
+  const off = boards.isSuccess && !list.length;
   const failed = boards.error ?? board.error;
   return (
     <div className={styles.frame}>
@@ -236,25 +238,32 @@ export function StandingsScreen() {
       </header>
       <Page className={styles.main}>
         {list.length > 1 && chosen && (
-          <div className={styles.picker} role="group" aria-label="Which class">
-            {list.map((entry) => (
-              <Link
-                key={entry.classId}
-                to="/standings"
-                search={{ class: entry.classId }}
-                aria-current={
-                  entry.classId === chosen.classId ? "page" : undefined
-                }
-                className={styles.pick}
-              >
-                {entry.className}
-              </Link>
-            ))}
+          <div className={styles.picker}>
+            <Segmented
+              label="Which class"
+              options={list.map((entry) => ({
+                value: entry.classId,
+                label: entry.className,
+              }))}
+              value={chosen.classId}
+              onChange={(id) => setView({ class: id })}
+            />
           </div>
         )}
         {/* One wait, the board's own shape, from the first frame to the
             board: never a loader that turns into a skeleton. */}
-        {board.data ? (
+        {off ? (
+          <div className={styles.problem}>
+            <h1>Standings are off for your class</h1>
+            <Link
+              to="/$"
+              params={{ _splat: "practice" }}
+              className={buttonClass("primary")}
+            >
+              Practice
+            </Link>
+          </div>
+        ) : board.data ? (
           <Board data={board.data} />
         ) : failed ? (
           <div className={styles.problem} role="alert">

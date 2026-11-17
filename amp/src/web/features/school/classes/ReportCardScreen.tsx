@@ -11,7 +11,7 @@ import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { useStaffSession } from "./api";
 import { gradebookOptions, reportCardsOptions } from "./teacher-api";
 import { keptPerson, useClassHost, wholeClass, type ClassHost } from "./host";
-import { dayRange, number, useClassSearch, uuidOr } from "./teacher-shared";
+import { dayRange, number, useClassView, uuidOr } from "./teacher-shared";
 import styles from "./ReportCard.module.css";
 
 const gradeWords = (level: number) =>
@@ -139,7 +139,7 @@ export function ReportCards({
 }) {
   const { place, words } = host;
   const session = useStaffSession();
-  const [search] = useClassSearch();
+  const [search] = useClassView();
   const asked = uuidOr(search.term);
   // A link with no term opens the one the gradebook opens on.
   const current = useQuery({

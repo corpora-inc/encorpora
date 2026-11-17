@@ -16,6 +16,7 @@ import {
 } from "../../../../schools/contracts";
 import { notifyDeviceSessionChanged } from "../../../auth";
 import { AppError } from "../../../lib/AppError";
+import { qk } from "../../../lib/keys";
 import { meOptions, queryClient } from "../../../lib/query";
 import { rememberStudentSession } from "../../../lib/student-device";
 import { practiceParams } from "../../spaces/identity";
@@ -120,7 +121,8 @@ async function post<T>(
 
 export const joinRosterOptions = (code: string) =>
   queryOptions({
-    queryKey: ["join", code],
+    // A class's names read the same before any sign-in: under no account.
+    queryKey: qk.account(null, "school", "join", code),
     queryFn: () => post("lookup", { code }, joinRosterResource),
     staleTime: 30_000,
     retry: false,
@@ -188,7 +190,8 @@ export function useFinishSignIn() {
           params: learner
             ? practiceParams(learner, filter)
             : { _splat: "practice" },
-          search: learner ? {} : (filter ?? {}),
+          // Only a hand-over (which always names its learner) has a filter.
+          search: {},
           replace: !handed,
           state:
             learnerId && returnTo

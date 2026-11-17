@@ -33,13 +33,6 @@
 .pair :global(input) {
   min-width: 0;
 }
-.trap {
-  position: absolute;
-  left: -10000px;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-}
 .send {
   display: grid;
   gap: var(--space-2);

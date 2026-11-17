@@ -102,7 +102,6 @@ export function StudentLayer({
             />
             {school && (
               <ShareWithFamily
-                session={currentSession()}
                 student={data.student.id}
                 first={data.student.first}
               />

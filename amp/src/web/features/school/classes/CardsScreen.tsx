@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useSearch } from "@tanstack/react-router";
+import { useParams } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import type { IssuedCards } from "../../../../schools/contracts";
 import { Button } from "../../../ui/Button";
@@ -73,11 +73,11 @@ export function CardsScreen({ host: given }: { host?: ClassHost } = {}) {
   const host = useClassHost(given);
   const place = host.place;
   const words = host.words;
-  const raw = useSearch({ strict: false }) as { student?: unknown };
-  const student =
-    typeof raw.student === "string" && UUID.test(raw.student)
-      ? raw.student
-      : undefined;
+  // One student's card: its own address (`cards/<student>`).
+  const { student: named } = useParams({ strict: false }) as {
+    student?: string;
+  };
+  const student = named && UUID.test(named) ? named : undefined;
   const session = useStaffSession();
   const roster = useQuery(rosterOptions(session, place));
   const access = useClassAccess(place);

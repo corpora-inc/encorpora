@@ -1,21 +1,30 @@
-import { Link, useNavigate } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { claimCardToken, takeCardFragment } from "../../../card-entry";
 import { Button, buttonClass } from "../../../ui/Button";
 import { LoadingScreen } from "../../../ui/LoadingScreen";
 import {
   finishingSignIn,
+  JoinError,
   signInWithCard,
   useFinishSignIn,
-  type JoinError,
 } from "./api";
 import { JoinFrame } from "./JoinFrame";
 import styles from "./Join.module.css";
 
-/** `/c`: a printed card's link signs in at once. Without a token (a reload, or
- * Back), there's nothing to do here, so this goes to `/join`. */
+/** Without a token (a reload, or Back) there's nothing to sign in with: the
+ * card's own next step, in place, never a hop to `/join` that Back returns to. */
+const NO_CARD = new JoinError(
+  "This card link was already used. Scan your card again.",
+  false,
+  null,
+  null,
+  null,
+  null,
+);
+
+/** `/c`: a printed card's link signs in at once. */
 export function CardScreen() {
-  const navigate = useNavigate();
   const finish = useFinishSignIn();
   const [failure, setFailure] = useState<JoinError | null>(null);
   const token = useRef<string | null>(null);
@@ -32,8 +41,8 @@ export function CardScreen() {
     started.current = true;
     token.current = claimCardToken();
     if (token.current) start();
-    else void navigate({ to: "/join", replace: true });
-  }, [navigate, start]);
+    else setFailure(NO_CARD);
+  }, [start]);
   // Another card's link, opened in this same tab.
   useEffect(() => {
     const changed = () => {

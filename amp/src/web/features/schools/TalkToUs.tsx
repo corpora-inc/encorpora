@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { Button } from "../../ui/Button";
 import { TextArea, TextField } from "../../ui/TextField";
 import { sendInquiry } from "./api";
+import { Honeypot } from "../../ui/Honeypot";
 import styles from "./TalkToUs.module.css";
 
 type Errors = Partial<Record<"name" | "email" | "school" | "students", string>>;
@@ -130,15 +131,7 @@ export function TalkToUs({
           />
           {/* Left empty by people; a form filler that completes it is
               thanked and nothing is sent. */}
-          <input
-            className={styles.trap}
-            name="website"
-            tabIndex={-1}
-            autoComplete="off"
-            aria-hidden="true"
-            value={website}
-            onChange={(event) => setWebsite(event.target.value)}
-          />
+          <Honeypot value={website} onChange={setWebsite} />
           <div className={styles.send}>
             <Button
               type="submit"

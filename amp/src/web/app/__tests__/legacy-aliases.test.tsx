@@ -6,6 +6,7 @@ import {
 } from "@tanstack/react-router";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { usePanelsStore } from "../../features/account/panels";
+import { useViewStore, viewScope } from "../../features/school/view-store";
 import { layerScope, useLayerStore } from "../../nav/layer-store";
 import { queryClient, sessionOptions } from "../../lib/query";
 import { knownDocumentPath } from "../document-routes";
@@ -167,6 +168,8 @@ type Example = {
   layers?: string[];
   /** The consent email's proof is held (consent-entry.ts). */
   consent?: boolean;
+  /** The school view store afterwards, for the landing screen. */
+  view?: Record<string, unknown>;
 };
 
 const PRIVACY = `/family/${FAMILY}/settings/privacy`;
@@ -502,6 +505,18 @@ const EXAMPLES: Example[] = [
     world: "family parent" as const,
     lands: `/family/${FAMILY}/kids/${CHILD}#${anchor}`,
   })),
+  { from: "/join/abc-def", world: "signed out", lands: "/join/ABC-DEF" },
+  {
+    from: "/join/abcdef?sso=declined",
+    world: "signed out",
+    lands: "/join/ABC-DEF?sso=declined",
+  },
+  {
+    from: `/school/o/classes/c/workbooks/2026-11-02?set=3&student=${FAMILY}`,
+    world: "adult",
+    lands: "/school/o/classes/c/workbooks/2026-11-02",
+    view: { set: 3, student: FAMILY },
+  },
 ];
 
 /** A router whose root asks the table first, as app/router.tsx's does. */
@@ -589,6 +604,10 @@ for (const example of EXAMPLES)
     // Never chained: where it lands is no row's, for the same person.
     state.consent = false;
     expect(await aliasTarget(at(landed)).catch(() => "a hop")).toBeNull();
+    if (example.view)
+      expect(
+        useViewStore.getState().views[viewScope(SESSION.accountId, landed)],
+      ).toEqual(example.view);
     if (example.panel)
       expect(
         usePanelsStore.getState().accounts.parent?.[example.panel.overlay] ??

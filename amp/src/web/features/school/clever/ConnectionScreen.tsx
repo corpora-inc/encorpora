@@ -1,11 +1,13 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { ContactAddress } from "../../support/ContactAddress";
 import { Link, useLocation, useSearch } from "@tanstack/react-router";
-import { Navigate } from "../../../nav/Navigate";
 import { useEffect, useState, type ReactNode } from "react";
 import { AGREEMENT_VERSION } from "../../../../schools/agreement";
 import { AppError } from "../../../lib/AppError";
-import { authConfigOptions, sessionOptions } from "../../../lib/query";
+import { qk } from "../../../lib/keys";
+import { authConfigOptions } from "../../../lib/query";
+import { reportError } from "../../../lib/report-error";
+import { forSession, useSessionOrNull } from "../../../lib/session";
 import { useLoggedError } from "../../../feedback";
 import { Button, buttonClass } from "../../../ui/Button";
 import { Checkbox } from "../../../ui/Checkbox";
@@ -13,9 +15,11 @@ import { Loading } from "../../../ui/Loading";
 import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { Toast } from "../../../ui/Toast";
 import { PublicFrame } from "../../schools/PublicFrame";
+import { signInLink } from "../../schools/sign-in-link";
 import { deviceTimeZone } from "../../onboarding/starter-api";
 import { Actions, Aside, Lead, PlainPage } from "../PlainPage";
 import { orgsOptions } from "../api";
+import { adoptPath } from "../paths";
 import { Authorization } from "../pilots/Authorization";
 import { cleverOnboardingSession } from "./onboarding-session";
 import { linkClever as linkAccount } from "./link";
@@ -53,14 +57,12 @@ export function ConnectionScreen() {
   const client = useQueryClient();
   const hash = useLocation({ select: (location) => location.hash });
   const search = useSearch({ strict: false }) as { error?: string };
-  const session = useQuery(sessionOptions).data;
-  const orgs = useQuery({
-    ...orgsOptions(session ?? { token: "", accountId: "" }),
-    enabled: !!session,
-  }).data;
+  const session = useSessionOrNull();
+  const orgs = useQuery(forSession(session, orgsOptions)).data;
   const config = useQuery(authConfigOptions).data;
   const proof = useQuery({
-    queryKey: ["clever-onboarding-proof"],
+    // A setup-only proof from before any AMP sign-in: under no account.
+    queryKey: qk.account(null, "school", "clever-onboarding-proof"),
     queryFn: () => cleverOnboardingSession(),
     retry: false,
     staleTime: 0,
@@ -100,7 +102,6 @@ export function ConnectionScreen() {
   useLoggedError(status.error?.message ?? "");
   const loading = proof.isPending || (!!credential && status.isPending);
   const enabled = data?.enabled ?? cleverEnabled(config);
-  if (!loading && !enabled) return <Navigate to="/school/start" replace />;
   const identity = data?.identity,
     connection = data?.connection;
   const admin = identity?.roles.includes("district_admin") ?? false;
@@ -168,9 +169,10 @@ export function ConnectionScreen() {
         });
       } else
         setError(
-          failure instanceof Error
-            ? failure.message
-            : "That didn’t go through. Try again.",
+          reportError(failure, {
+            doing: kind === "connect" ? "connect Clever" : "sync Clever",
+            fallback: "That didn’t go through. Try again.",
+          }),
         );
     } finally {
       setBusy(null);
@@ -183,22 +185,20 @@ export function ConnectionScreen() {
     try {
       await linkAccount(session);
     } catch (failure) {
+      const message = reportError(failure, {
+        doing: "link Clever",
+        fallback: "Clever couldn’t be linked. Try again.",
+      });
       setError(
         failure instanceof AppError && failure.code === "reauth_required"
           ? "reauth"
-          : failure instanceof Error
-            ? failure.message
-            : "Clever couldn’t be linked. Try again.",
+          : message,
       );
       setBusy(null);
     }
   }
   const signInAgain = (
-    <Link
-      to="/sign-in"
-      search={{ return: "school", next: "/school/connect" }}
-      className={buttonClass("primary")}
-    >
+    <Link {...signInLink("/school/connect")} className={buttonClass("primary")}>
       Sign in again
     </Link>
   );
@@ -209,6 +209,19 @@ export function ConnectionScreen() {
   );
   let state: { title: string; body: ReactNode };
   if (loading) state = { title: "", body: <LoadingScreen overlay /> };
+  // The route opens class setup while Clever is off (router.tsx); this is
+  // the server turning it off after: the next step that works, in place.
+  else if (!enabled)
+    state = {
+      title: "Clever isn’t available",
+      body: (
+        <Actions>
+          <Link to="/school/start" className={buttonClass("primary")}>
+            Set up your class
+          </Link>
+        </Actions>
+      ),
+    };
   else if (proof.error || status.error)
     state = {
       title: "Connect your school",
@@ -388,8 +401,8 @@ export function ConnectionScreen() {
                 ) : (
                   <>
                     <Link
-                      to="/school/adopt"
-                      search={{ district: connection.orgId, manage: 1 }}
+                      to="/$"
+                      params={{ _splat: adoptPath(connection.orgId, true) }}
                       className={buttonClass("primary")}
                     >
                       Review schools

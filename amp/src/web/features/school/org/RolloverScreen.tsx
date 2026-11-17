@@ -1,6 +1,7 @@
 import { reportError } from "../../../lib/report-error";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useParams } from "@tanstack/react-router";
+import { ViewLink } from "../ViewLink";
 import { useEffect, useMemo, useState } from "react";
 import {
   divisionLabels,
@@ -554,14 +555,13 @@ export function RolloverScreen() {
         <div className={styles.wizard}>
           <Summary result={result} done />
           <div className={styles.stepActions}>
-            <Link
-              to="/$"
-              params={{ _splat: orgPath(orgId, "classes") }}
-              search={{ year: result.year.id } as never}
+            <ViewLink
+              to={orgPath(orgId, "classes")}
+              view={{ year: result.year.id }}
               className={buttonClass("primary")}
             >
               See {result.year.name} classes
-            </Link>
+            </ViewLink>
             <Link
               to="/$"
               params={{ _splat: orgPath(orgId, "calendar") }}

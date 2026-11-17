@@ -1,7 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { formatJoinCode } from "../../../../schools/contracts";
-import { sessionOptions } from "../../../lib/query";
+import { useSessionOrNull } from "../../../lib/session";
 import { Button } from "../../../ui/Button";
 import { Dialog } from "../../../ui/Dialog";
 import { Toast } from "../../../ui/Toast";
@@ -24,7 +23,7 @@ export function ReplaceCode({
   words: Pick<SpaceWords, "code">;
   locked?: boolean;
 }) {
-  const session = useQuery(sessionOptions).data ?? null;
+  const session = useSessionOrNull();
   const rotate = useRotateCode(session, place);
   const [asking, setAsking] = useState(false);
   const [status, setStatus] = useState("");

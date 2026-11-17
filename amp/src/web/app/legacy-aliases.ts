@@ -442,6 +442,31 @@ async function familyChildLayer(old: OldAddress): Promise<Target | undefined> {
   return target.href.includes("/kids/") ? target.href : undefined;
 }
 
+/** A class code as its address says it (schools/contracts.ts
+ * `formatJoinCode`): `abc-def` or `ABCDEF` reads `ABC-DEF`. */
+const JOIN_CODE = /^[A-Z0-9]{3}-[A-Z0-9]{3}$/;
+const plainCode = (code: string) =>
+  code.toUpperCase().replace(/[^A-Z0-9]/g, "");
+
+/** A printed workbook page's QR code (src/schools/classroom-workbooks.ts):
+ * its marking screen, on its workbook and student, set in the school view
+ * store (features/school/view-store.ts). */
+async function toMarking(old: OldAddress) {
+  const session = await requireSignedIn(old, {
+    web: true,
+    adults: true,
+    back: "here",
+  });
+  const { openView } = await import("../features/school/view-store");
+  const set = Number(old.search.set);
+  const student = old.search.student;
+  openView(session.accountId, old.pathname, {
+    set: Number.isInteger(set) && set > 0 ? set : undefined,
+    student: typeof student === "string" ? student : undefined,
+  });
+  return old.pathname;
+}
+
 /** Every old address, each one hop to where it opens now. */
 export const LEGACY_ALIASES: readonly LegacyAlias[] = [
   // A consent email's link (its proof taken from the fragment at boot,
@@ -840,6 +865,26 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
       return hop ? { to: hop.href, state: hop.state } : undefined;
     },
   })),
+  // A class code typed or shared in another form; a school sign-in that
+  // stopped comes back with its reason (`?sso=`), which the class shows.
+  {
+    from: "/join/$code",
+    about: "a class code in another form",
+    when: ({ params }) =>
+      !JOIN_CODE.test(params.code!) && plainCode(params.code!).length === 6,
+    to: ({ params, search }) => {
+      const plain = plainCode(params.code!);
+      return withQuery(`/join/${plain.slice(0, 3)}-${plain.slice(3)}`, {
+        sso: search.sso,
+      });
+    },
+  },
+  {
+    from: "/school/$org/classes/$class/workbooks/$date",
+    about: "a printed page's QR code",
+    when: ({ search }) => "set" in search || "student" in search,
+    to: toMarking,
+  },
 ];
 
 type At = {

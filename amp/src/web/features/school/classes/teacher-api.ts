@@ -180,6 +180,9 @@ export const workReplayOptions = (
       workReplayResponse,
     ),
   });
+/** A key under the adult's own practice (`qk` "own-practice"). */
+const ownPracticeKey = (accountId: string, ...rest: unknown[]) =>
+  [...qk.account(accountId, "own-practice"), ...rest] as const;
 /** One of the adult's own answers replayed (`/me`), under their own
  * practice's key, so a change to it refreshes this too. */
 export const ownWorkReplayOptions = (
@@ -188,14 +191,12 @@ export const ownWorkReplayOptions = (
   skill?: string,
 ) =>
   queryOptions({
-    queryKey: [
-      "account",
+    queryKey: ownPracticeKey(
       session?.accountId ?? "",
-      "own-practice",
       "work",
       attempt,
       skill ?? null,
-    ],
+    ),
     enabled: !!session,
     staleTime: Infinity,
     queryFn: read(
