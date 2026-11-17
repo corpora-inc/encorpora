@@ -27,9 +27,15 @@ import { Toast } from "../../../ui/Toast";
 import { approvalsOptions } from "../../family-approval/api";
 import { presenceOptions } from "../../school/classes/api";
 import { finishingSignIn, useFinishSignIn } from "../../school/join/api";
-import { useChooseSetup, useFinishSetup, useStartPlace } from "../starter-api";
+import { useFinishSetup, useStartPlace } from "../starter-api";
 import { setupOf } from "../guard";
-import { useAddKid, useKidYear, useRemoveKid, useRenameKid } from "./kids-api";
+import {
+  setupSavesSettled,
+  useAddKid,
+  useKidYear,
+  useRemoveKid,
+  useRenameKid,
+} from "./kids-api";
 import { familyPlacesOptions } from "../../family/api";
 import { DevicesSheet } from "../../family/Devices";
 import { useFamilyPlaceOf } from "../../family/FamilyFrame";
@@ -69,8 +75,8 @@ export const stepUrl = (kind: SetupKind, id: string) =>
   id ? `/start/${kind}/${id}` : `/start/${kind}`;
 const todayUrl = (place: { orgId: string; classId: string }) =>
   `/school/${place.orgId}/classes/${place.classId}/today`;
-/** A family's Today: its own address, the landing alias for theirs. */
-const FAMILY_TODAY = "/family";
+/** A family's Today, at its own address (a family's id is its org's). */
+const familyToday = (place: { orgId: string }) => `/family/${place.orgId}`;
 
 /** Rows a parent or tutor is adding, kept in this tab's memory per account,
  * so Back, Forward and a refresh of the step keep what was typed. */
@@ -213,7 +219,13 @@ const setupDone = ({ kind, steps, index }: StepProps) =>
 /** Hands this device to a child: their first problem opens here, and the
  * parent's view returns when they sign out. Setup's last step is done then,
  * and measured before the hand-off: a child's session measures nothing. */
-function usePracticeHere(session: AuthSession, kind: SetupKind, today: string) {
+function usePracticeHere(
+  session: AuthSession,
+  kind: SetupKind,
+  /** Where the device returns when the child is done: known only once the
+   * family exists, so read when the handoff starts. */
+  today: () => Promise<string>,
+) {
   const finish = useFinishSignIn();
   return async (learnerId: string) => {
     const grant = await request(
@@ -223,7 +235,7 @@ function usePracticeHere(session: AuthSession, kind: SetupKind, today: string) {
     );
     setupStep("ready", "complete", kind);
     flush(true);
-    await finish(grant, true, today, undefined, learnerId);
+    await finish(grant, true, await today(), undefined, learnerId);
   };
 }
 
@@ -249,8 +261,15 @@ function ChildrenStep(props: StepProps) {
   const { session, me, kind, index, steps } = props;
   useSetupView(props);
   const navigate = useNavigate();
-  const practiceHere = usePracticeHere(session, kind, FAMILY_TODAY);
-  const choose = useChooseSetup(session);
+  const practiceHere = usePracticeHere(session, kind, async () => {
+    const fresh = await queryClient.fetchQuery({
+      ...meOptions(session),
+      staleTime: 0,
+    });
+    return fresh.signedIn && fresh.familyClass
+      ? familyToday(fresh.familyClass)
+      : "/";
+  });
   const addKid = useAddKid(session);
   const renameKid = useRenameKid(session);
   const kidYear = useKidYear(session);
@@ -289,14 +308,10 @@ function ChildrenStep(props: StepProps) {
     }
   }
   // A row with a name and no year, or no child at all, still needs a year.
+  // A row whose year is chosen is a child already, saved or being saved.
   const missingYear =
-    !saved.length || rows.some((row) => row.name.trim() && !row.year);
-  const busy =
-    leaving ||
-    Object.keys(saving).length > 0 ||
-    renameKid.isPending ||
-    kidYear.isPending ||
-    removeKid.isPending;
+    (!saved.length && !rows.some((row) => row.year)) ||
+    rows.some((row) => row.name.trim() && !row.year);
   const fail = (failure: unknown, fallback: string) =>
     setError(why(failure, fallback));
   const edit = (key: number, change: Partial<FreshRow>) =>
@@ -313,10 +328,10 @@ function ChildrenStep(props: StepProps) {
     setError("");
     try {
       const setup = setupOf(me);
-      if (!setup.done && setup.persona !== kind) await choose.mutateAsync(kind);
       const child = await addKid.mutateAsync({
         name: row.name,
         birthYear: Number(year),
+        ...(!setup.done && setup.persona !== kind ? { answer: kind } : {}),
       });
       edit(row.key, { id: child.id });
       await invalidateAccount(session.accountId);
@@ -339,20 +354,27 @@ function ChildrenStep(props: StepProps) {
   };
   const next = async () => {
     if (missingYear) return setAsked(true);
-    if (hint || busy) return;
+    if (hint || leaving) return;
+    // A tap while a save is in flight is never refused: Next shows it is
+    // working, waits for the saves in the Query cache, then goes on. If one
+    // failed, its own message is up and the step stays.
     setLeaving(true);
     setError("");
     try {
+      // Rows already being saved finish on their own; a row whose year was
+      // chosen while its name still needed fixing is saved now.
+      const unsaved = rows.filter(
+        (row) => row.year && !row.id && !saving[row.key],
+      );
+      if (!(await setupSavesSettled(queryClient, session))) return;
       for (const child of saved) await commitName(child);
-      // A row whose year was chosen while its name still needed fixing is
-      // saved now; the kids are then read again.
-      let kids = saved;
-      const unsaved = rows.filter((row) => row.year && !row.id);
-      if (unsaved.length) {
-        for (const row of unsaved) if (!(await create(row, row.year))) return;
-        const latest = await queryClient.fetchQuery(meOptions(session));
-        if (latest.signedIn) kids = latest.learners;
-      }
+      for (const row of unsaved) if (!(await create(row, row.year))) return;
+      // The kids as they are now, every save included.
+      const latest = await queryClient.fetchQuery({
+        ...meOptions(session),
+        staleTime: 0,
+      });
+      const kids = latest.signedIn ? latest.learners : saved;
       setupDone(props);
       // A plan chosen on the pitch before signing up opens for the first
       // child; setup's next steps wait on Today.
@@ -851,8 +873,8 @@ function ReadyStep(props: StepProps) {
   const [starting, setStarting] = useState<string | null>(null);
   const [error, setError] = useState("");
   const [devices, setDevices] = useSearchFlag("devices");
-  const today = parent ? FAMILY_TODAY : todayUrl(place);
-  const practiceHere = usePracticeHere(session, kind, today);
+  const today = parent ? familyToday(place) : todayUrl(place);
+  const practiceHere = usePracticeHere(session, kind, async () => today);
   const begin = async (learnerId: string) => {
     if (starting) return;
     setStarting(learnerId);

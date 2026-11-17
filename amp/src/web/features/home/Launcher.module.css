@@ -1,0 +1,6 @@
+/* The one way in: a large target, the column's width on a phone. */
+.primary {
+  min-height: 56px;
+  width: 100%;
+  font-size: var(--text-body);
+}

@@ -52,16 +52,12 @@ import { LoadingScreen, RouteError } from "../ui/LoadingScreen";
 import { childAddress, childPath } from "../features/spaces/identity";
 import { closeAllPopovers } from "../ui/popover-owner";
 import {
-  homePlace,
   placeOfPath,
   routeFor,
   startDestination,
   startNavigation,
 } from "../features/onboarding/guard";
-import {
-  rememberPlace,
-  rememberedPlace,
-} from "../features/onboarding/place-memory";
+import { rememberPlace } from "../features/onboarding/place-memory";
 import {
   isFundedReturn,
   campaignSearch,
@@ -345,12 +341,18 @@ function AppScreen() {
   const settled = useRouterState({
     select: (state) => state.matches.at(-1)?.status === "success",
   });
-  const kind = atHome?.pitch ? "pitch" : "app";
+  // `/` signed in on the web is the launcher; every other path the app.
+  const kind = atHome?.pitch
+    ? "pitch"
+    : atHome && !nativeRuntime && session.data
+      ? "launcher"
+      : "app";
   const shownKind = useRef<string | null>(null);
   const deciding = !settled || (!!atHome && atHome.pitch === undefined);
   const pending = deciding && shownKind.current !== kind;
   if (!pending) shownKind.current = kind;
-  const Screen = kind === "pitch" ? pitch : legacy;
+  const Screen =
+    kind === "pitch" ? pitch : kind === "launcher" ? launcher : legacy;
   // Keyed, so the route's pending screen is replaced, not left hidden behind
   // the screen's own wait.
   return (
@@ -381,7 +383,8 @@ const start = lazyRouteComponent(
 /** A school sets its students up; setup and paper self-marking are for
  * families, so a student's URL goes back to practice. */
 function notForStudents() {
-  if (studentSession()) throw redirect({ to: "/", replace: true });
+  if (studentSession())
+    throw redirect({ to: "/$", params: { _splat: "practice" }, replace: true });
 }
 /** Every /start step runs the one first-run guard against `/me`. */
 async function beforeStart({
@@ -456,10 +459,21 @@ const home = createRoute({
   staticData: { space: "learner" },
   loaderDeps: ({ search }) => ({ program: search.program }),
   loader: async ({ deps }) => {
-    const shown = showsPitch(queryClient.getQueryData(sessionOptions.queryKey));
+    const session = queryClient.getQueryData(sessionOptions.queryKey);
+    const shown = showsPitch(session);
     setPitchShown(shown);
-    if (!shown) await legacy.preload?.();
-    else {
+    if (!shown) {
+      // Signed in, `/` is the launcher: its places arrive with it, so it
+      // paints whole (the native app keeps its own screen here).
+      if (nativeRuntime || !session) await legacy.preload?.();
+      else
+        await Promise.all([
+          launcher.preload?.(),
+          preloadLauncher(session).catch((error) =>
+            console.warn("Your places didn’t load ahead", error),
+          ),
+        ]);
+    } else {
       // Preload the route component alongside its data before showing the pitch.
       const [{ loadPitch }] = await Promise.all([
         import("../features/pitch/PitchScreen"),
@@ -469,15 +483,11 @@ const home = createRoute({
     }
     return { pitch: shown };
   },
+  // `/` never decides for anyone: signed out it is the pitch, signed in the
+  // launcher, a real screen whether reached by a link or by Back. Only an
+  // address that carries a handoff (an auth link, a payment's return, a
+  // consent challenge) goes on, once, to the screen that handles it.
   beforeLoad: async ({ search: rawSearch, location }) => {
-    // A handed device keeps the child's identity through browser history.
-    // Its home is practice, never the parent's remembered family place.
-    if (studentSession())
-      throw redirect({
-        to: "/$",
-        params: { _splat: "practice" },
-        replace: true,
-      });
     const search = searchSchema.parse(rawSearch);
     if ("sign-in" in search)
       throw redirect({
@@ -489,88 +499,44 @@ const home = createRoute({
         to: "/reset-password",
         search: { token: search.token, error: search.error },
       });
-    if (!nativeRuntime) {
-      const session = await queryClient.ensureQueryData(sessionOptions);
-      if (session) {
-        const me = await queryClient
-          .fetchQuery({ ...meOptions(session), staleTime: 0 })
-          .catch(() => queryClient.getQueryData(meOptions(session).queryKey));
-        // Explicit handoffs select their screen before mounting home. Merely
-        // skipping the default redirect would let home's setup effect race them.
-        if (hasInitialConsentChallenge())
-          throw redirect({
-            to: "/$",
-            params: { _splat: "consent" },
-            replace: true,
-          });
-        if (hasPurchaseReturn(location.searchStr))
-          throw redirect({
-            to: "/$",
-            params: { _splat: "purchase/annual" },
-            search,
-            replace: true,
-          });
-        if ("security" in search)
-          throw redirect({
-            to: "/$",
-            params: { _splat: "account/security" },
-            replace: true,
-          });
-        if (
-          me?.signedIn &&
-          me.next === "accept-gift" &&
-          !me.learners.some((learner) => learner.entitlement.active)
-        )
-          throw redirect({ to: "/access" });
-        // Arriving at `/` opens where this person last worked: a school, or
-        // their family side. Back and Forward reopen what `/` showed then,
-        // and for a place that is the place again: `/` never shows a
-        // place's account its first run (docs/design/ia.md, Navigation).
-        // A school student's device has no place to open: its home is the
-        // student's own learning (a place's guards send a student back to
-        // `/`, so routing one there would never end).
-        const place =
-          me?.signedIn && !studentSession()
-            ? homePlace(me, rememberedPlace(me.account.id))
-            : null;
-        if (me?.signedIn && place && (!traversing() || place !== "home")) {
-          if (place === "me")
-            throw redirect({ to: "/me", replace: true } as never);
-          // A family's side is its class, once a child can practice; until
-          // then first-run routing below guides the parent there.
-          if (
-            place === "home" &&
-            me.next === "practice" &&
-            (me.familyClass ||
-              me.learners.length > 0 ||
-              !!me.secondParentOf?.length)
-          )
-            throw redirect({ to: "/family", replace: true } as never);
-          if (place !== "home")
-            throw redirect({
-              to: "/$",
-              params: {
-                _splat:
-                  place === "schools" ? "school" : `school/${place.slice(7)}`,
-              },
-              replace: true,
-            });
-        }
-        // Resolve first-run routing before mounting the app shell, so a new
-        // account never sees home before the starter.
-        if (
-          me?.signedIn &&
-          me.next !== "practice" &&
-          me.next !== "accept-gift"
-        ) {
-          const target = startDestination(me, "/", !!chosenPlan());
-          if (target)
-            throw redirect({ ...startNavigation(target), replace: true });
-        }
-      }
-    }
+    if (nativeRuntime) return;
+    const session = await queryClient.ensureQueryData(sessionOptions);
+    if (!session) return;
+    if (hasInitialConsentChallenge())
+      throw redirect({
+        to: "/$",
+        params: { _splat: "consent" },
+        replace: true,
+      });
+    if (hasPurchaseReturn(location.searchStr))
+      throw redirect({
+        to: "/$",
+        params: { _splat: "purchase/annual" },
+        search,
+        replace: true,
+      });
+    if ("security" in search)
+      throw redirect({
+        to: "/$",
+        params: { _splat: "account/security" },
+        replace: true,
+      });
   },
 });
+/** The launcher's account and places, read before it paints. */
+async function preloadLauncher(session: AuthSession) {
+  const me = await queryClient.fetchQuery({
+    ...meOptions(session),
+    staleTime: 0,
+  });
+  if (!me.signedIn) return;
+  const { loadPlaceGroups } = await import("../features/home/destination");
+  await loadPlaceGroups(session, me);
+}
+const launcher = lazyRouteComponent(
+  () => import("../features/home/Launcher"),
+  "Launcher",
+);
 /** The pitch/app screen reads what `/` resolved; so does the document head.
  * A route's id exists once the router is built, so this reads it on demand. */
 export const homeRouteId = () => home.id;
@@ -1494,7 +1460,12 @@ const schoolConnect = createRoute({
         await import("../features/school/clever/onboarding-session");
       await cleverOnboardingSession();
     }
-    if (studentSession()) throw redirect({ to: "/", replace: true });
+    if (studentSession())
+      throw redirect({
+        to: "/$",
+        params: { _splat: "practice" },
+        replace: true,
+      });
   },
   component: lazyRouteComponent(
     () => import("../features/school/clever/ConnectionScreen"),
@@ -1896,17 +1867,6 @@ const devPersonas = import.meta.env.DEV
 const history = nativeRuntime
   ? createMemoryHistory({ initialEntries: ["/"] })
   : createBrowserHistory();
-// Subscribed before the router, so a route's `beforeLoad` knows how it came.
-let lastAction: string | null = null;
-history.subscribe(({ action }) => {
-  lastAction = action.type;
-});
-/** A Back, Forward or jump through history rather than an arrival. */
-function traversing() {
-  return (
-    lastAction === "BACK" || lastAction === "FORWARD" || lastAction === "GO"
-  );
-}
 export const router = createRouter({
   routeTree: root.addChildren([
     appScreen.addChildren([home, fallback, lessonFilm]),

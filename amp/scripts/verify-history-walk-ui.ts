@@ -19,6 +19,7 @@
  * navigating away, which a hung tab can't.
  */
 import { randomUUID } from "node:crypto";
+import { mkdir } from "node:fs/promises";
 import {
   chromium as rawChromium,
   type Browser,
@@ -35,6 +36,8 @@ const arg = (name: string) => {
 };
 const port = Number(arg("port") ?? 4964);
 const widths = (arg("widths") ?? "390,1280").split(",").map(Number);
+const shots = arg("shots") ?? "artifacts/history-walk";
+await mkdir(shots, { recursive: true });
 /** `--only <text>`: the walks whose name has it (and no failing screen). */
 const only = arg("only");
 
@@ -56,6 +59,8 @@ type Walk = {
   /** In-app steps after the first run, ending somewhere history can walk. */
   before: (page: Page) => Promise<void>;
   steps: Step[];
+  /** Where each step must land, when the walk knows (filled by `before`). */
+  expect?: { current: string }[];
 };
 
 /** A fresh account through the real sign-up, signed in on its own context. */
@@ -76,24 +81,79 @@ async function freshParent(browser: Browser, width: number) {
   );
   if (!response.ok())
     throw Error(`sign-up ${response.status()} ${await response.text()}`);
+  await context.addInitScript(recordHistory);
   return context;
 }
 
+/** Every history entry the app writes (push or replace), in order. */
+const recordHistory = `(() => {
+  const writes = (window.__writes = []);
+  for (const kind of ["pushState", "replaceState"]) {
+    const write = history[kind].bind(history);
+    history[kind] = (state, unused, url) => {
+      writes.push(kind.slice(0, -5) + " " + String(url ?? location.href).replace(location.origin, ""));
+      return write(state, unused, url);
+    };
+  }
+})();`;
+
+/**
+ * One action is one navigation, with no redirect hops: a link or a handoff
+ * writes exactly the one entry it goes to; Back and Forward write nothing
+ * (the entry is already there, and it is the screen); a full page load
+ * writes only the router's own stamp of the address it loaded. A redirect,
+ * or a chain of them, writes more, and fails here with each hop.
+ */
+async function oneHop(
+  page: Page,
+  label: string,
+  at: "link" | "history" | "load",
+) {
+  const writes = await page.evaluate(() => {
+    const w = window as unknown as { __writes: string[] };
+    return w.__writes.splice(0);
+  });
+  const want = at === "history" ? 0 : 1;
+  const ok = at === "load" ? writes.length <= 1 : writes.length === want;
+  if (!ok)
+    fail(
+      `${label}: ${writes.length} history writes, want ${at === "load" ? "at most 1" : want}`,
+      writes,
+    );
+}
+/** Forget the writes so far (a full page load, or the first run's sign-up). */
+const forget = (page: Page) =>
+  page.evaluate(() => {
+    (window as unknown as { __writes: string[] }).__writes.splice(0);
+  });
+
 /** "What brings you to AMP?" → I'm a parent → one child → their practice. */
 async function firstRun(page: Page) {
+  // `/` is the launcher: a new account's one way on is to start.
   await page.goto(`${origin}/`);
+  await page.locator("[data-launcher]").waitFor();
+  await forget(page);
+  await page.getByRole("link", { name: "Get started", exact: true }).click();
   await page
     .getByRole("heading", { name: "What brings you to AMP?" })
     .waitFor();
+  await settled(page);
+  await oneHop(page, "Get started", "link");
   await page.getByRole("link", { name: /^I’m a parent/ }).click();
   await page.getByRole("button", { name: "Birth year, Child 1" }).click();
+  // Choosing the year saves the child; Next is tapped at once, while that
+  // save is in flight, and goes on when it is done (never a dead button).
   await page
     .getByRole("dialog", { name: "Birth year, Child 1" })
-    .getByRole("radio", { name: "2016", exact: true })
+    .getByRole("option", { name: "2016", exact: true })
     .click();
+  await forget(page);
   await page.getByRole("button", { name: "Next", exact: true }).click();
   await page.waitForURL((url) => url.pathname === "/practice");
   await page.locator(".problem-stage").waitFor();
+  await settled(page);
+  // Setup's last step hands the device to the child: one entry, practice.
+  await oneHop(page, "first practice", "link");
 }
 
 const menu = (page: Page) =>
@@ -108,29 +168,41 @@ async function openMenu(page: Page) {
 async function addPlace(page: Page) {
   await openMenu(page);
   await page.getByRole("button", { name: /switch place$/ }).click();
+  await forget(page);
   await page.getByRole("menuitem", { name: /^Add a place/ }).click();
   await page.waitForURL((url) => url.pathname === "/start");
   await page.getByRole("heading", { name: "Add a place" }).waitFor();
+  await settled(page);
+  await oneHop(page, "Add a place", "link");
 }
 
 async function addPlaceCancel(page: Page) {
   await addPlace(page);
-  await page.getByRole("button", { name: "Cancel", exact: true }).click();
+  await page.getByRole("button", { name: "Back", exact: true }).click();
   await page.waitForURL((url) => url.pathname !== "/start");
+  await settled(page);
+  await oneHop(page, "Add a place, Back", "history");
 }
 
-/** From practice, the menu's Today: the family's own page. */
+/** From the child's practice, the menu's "Back to family": the child's
+ * session ends (a full load) and the parent is on their family's Today. */
 async function today(page: Page) {
   await openMenu(page);
-  await page.getByRole("link", { name: "Today", exact: true }).first().click();
+  await page
+    .getByRole("button", { name: "Back to family", exact: true })
+    .click();
   await page.waitForURL((url) => /^\/family\/[^/]+$/.test(url.pathname));
+  await menu(page).waitFor();
   await settled(page);
+  await oneHop(page, "Back to family", "load");
 }
 
 async function tab(page: Page, name: string, path: RegExp) {
+  await forget(page);
   await page.getByRole("link", { name, exact: true }).first().click();
   await page.waitForURL((url) => path.test(url.pathname));
   await settled(page);
+  await oneHop(page, name, "link");
 }
 
 /** The screen has arrived: its address has held still for a moment and
@@ -151,12 +223,51 @@ async function settled(page: Page) {
   );
 }
 
+/** The child's Pathways, a skill opened over it, and its Practice: the
+ * device goes to the child in one navigation, straight to their practice of
+ * that skill, and Back returns to the skill, the parent's again. */
+const skillPractice: Walk = {
+  id: "child's skill → practice",
+  before: async (page) => {
+    await today(page);
+    await tab(page, "Progress", /^\/family\/[^/]+\/kids\/[^/]+$/);
+    await tab(page, "Pathways", /^\/family\/[^/]+\/kids\/[^/]+\/pathways$/);
+    await forget(page);
+    // A grade's skills, then the first of them.
+    await page
+      .locator("[data-plan-band]")
+      .filter({ hasText: "Grade 3" })
+      .locator("strong")
+      .first()
+      .click();
+    await page.locator('a[data-entity="skill"]:visible').first().click();
+    await page.waitForURL((url) => url.searchParams.has("open"));
+    await settled(page);
+    await oneHop(page, "open a skill", "link");
+    const skill = new URL(page.url());
+    const practice = page.getByRole("button", { name: /^Practice with / });
+    await forget(page);
+    await practice.click();
+    await page.waitForURL((url) => url.pathname === "/practice");
+    await page.locator(".problem-stage").waitFor();
+    await settled(page);
+    await oneHop(page, "Practice with the child", "link");
+    const atPractice = new URL(page.url());
+    const at = (url: URL) => ({ current: url.pathname + url.search });
+    skillPractice.expect = [at(skill), at(atPractice), at(skill)];
+  },
+  steps: ["back", "forward", "back", "back", "forward"],
+};
+
 const walks: Walk[] = [
+  skillPractice,
   {
-    // The founder's exact path.
-    id: "practice → add a place → cancel",
-    before: addPlaceCancel,
-    steps: ["back", "forward", "back", "back", "forward", "forward", "back"],
+    // The first run hands the device to the one child, in practice; Back
+    // walks the setup it came through.
+    id: "first practice → back",
+    before: async () => {},
+    // Back as far as `/`: the launcher, the screen it was.
+    steps: ["back", "forward", "back", "back", "back", "forward", "forward"],
   },
   {
     id: "today → add a place → cancel",
@@ -185,8 +296,9 @@ const walks: Walk[] = [
     steps: ["back", "back", "forward", "back", "back", "forward", "forward"],
   },
   {
-    id: "practice → add a place → myself",
+    id: "today → add a place → myself",
     before: async (page) => {
+      await today(page);
       await addPlace(page);
       await page
         .getByRole("link", { name: /^I’m learning for myself/ })
@@ -195,6 +307,8 @@ const walks: Walk[] = [
       await page
         .getByRole("heading", { name: "What year were you born?" })
         .waitFor();
+      await settled(page);
+      await oneHop(page, "I’m learning for myself", "link");
     },
     steps: ["back", "back", "back", "forward", "forward", "back", "back"],
   },
@@ -242,7 +356,11 @@ async function healthy(page: Page, label: string, errors: string[]) {
   // The first-run steps are a passage with the logo alone; every other
   // screen keeps the menu.
   if (!/^\/start(\/|$)/.test(alive.path)) {
-    const shown = await menu(page)
+    // The menu's button (the logo); a layer open over the screen makes it
+    // inert, not absent.
+    const shown = await page
+      .locator("[data-app-logo]")
+      .first()
       .waitFor({ timeout: 5000 })
       .then(() => true)
       .catch(() => false);
@@ -268,14 +386,26 @@ async function walk(width: number, w: Walk) {
     const page = await context.newPage();
     page.setDefaultTimeout(15_000);
     const errors = watch(page);
-    await firstRun(page);
-    await w.before(page);
+    try {
+      await firstRun(page);
+      await w.before(page);
+    } catch (error) {
+      // A step that couldn't be taken: what was on screen, for the report.
+      const shot = `${shots}/${label.replace(/[^\w]+/g, "-")}.png`;
+      await page.screenshot({ path: shot }).catch(() => undefined);
+      fail(
+        `${label}: couldn't walk there (${shot})`,
+        String(error).split("\n")[0],
+      );
+      return;
+    }
     if (!(await healthy(page, `${label} before walking`, errors))) return;
     const trail: string[] = [new URL(page.url()).pathname];
     for (const [index, step] of w.steps.entries()) {
       // The browser's own Back and Forward, as a person presses them: the
       // history step itself (Playwright's goBack waits for a navigation
       // event that a same-document step, replaced on arrival, never sends).
+      await forget(page);
       const moved = await within(
         page.evaluate(
           (back) => (back ? history.back() : history.forward()),
@@ -296,11 +426,24 @@ async function walk(width: number, w: Walk) {
         console.error("  trail", trail.join(" → "));
         return;
       }
+      await settled(page);
+      await oneHop(page, `${label} ${step} #${index + 1}`, "history");
+      // Back to `/` is the launcher itself, never a redirect onward.
+      if (
+        new URL(page.url()).pathname === "/" &&
+        !(await page.locator("[data-launcher]").isVisible())
+      )
+        fail(`${label} ${step} #${index + 1}: / is not the launcher`);
+      const want = w.expect?.[index];
+      const here = new URL(page.url());
+      if (want && here.pathname + here.search !== want.current)
+        fail(
+          `${label} ${step} #${index + 1}: at ${here.pathname + here.search}, want ${want.current}`,
+        );
     }
-    // Still able to go anywhere: the menu's Account page.
-    await openMenu(page);
-    await page.getByRole("link", { name: "Account", exact: true }).click();
-    await page.waitForURL((url) => url.pathname.startsWith("/account/"));
+    // Still able to go anywhere: a hung tab can't even load another page.
+    await page.goto(`${origin}/`, { timeout: 15_000 });
+    await page.locator("[data-launcher]").waitFor();
     await healthy(page, `${label} navigating away`, errors);
     console.log(`ok ${label}: ${trail.join(" → ")}`);
   } finally {
@@ -335,7 +478,8 @@ async function failingScreen(width: number) {
     await openMenu(page);
     await page.keyboard.press("Escape");
     await page.getByRole("link", { name: "Go home" }).click();
-    await page.waitForURL((url) => !url.pathname.endsWith("/inventory"));
+    await page.waitForURL((url) => url.pathname === "/");
+    await page.locator("[data-launcher]").waitFor();
     // The failure was the screen's own, not a loop.
     const depth = errors.filter((e) => /Maximum update depth/.test(e));
     if (depth.length) fail(`${label}: update depth`, depth);

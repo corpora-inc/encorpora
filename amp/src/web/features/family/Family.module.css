@@ -193,6 +193,17 @@
   display: grid;
   margin: 0;
 }
+/* A child's settings: their name, then Advanced folded under it, one list. */
+.settingsGroup {
+  display: grid;
+  min-width: 0;
+}
+.settings + .advanced {
+  border-top: 0;
+}
+.advanced[open] {
+  border-bottom-color: transparent;
+}
 .setting {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
