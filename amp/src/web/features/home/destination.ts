@@ -1,8 +1,9 @@
-import { isCancelledError } from "@tanstack/react-query";
 import { redirect } from "@tanstack/react-router";
-import type { SignedInMe } from "../../../account/contracts";
+import { meSchema, type SignedInMe } from "../../../account/contracts";
 import type { AuthSession } from "../../auth";
+import { request } from "../../lib/api";
 import { meOptions, sessionOptions } from "../../lib/query";
+import { confirmSession } from "../../lib/session-generation";
 import { queryClient } from "../../lib/query-client";
 import { setHome } from "../../lib/home-place";
 import { familyPlacesOptions } from "../family/api";
@@ -111,16 +112,10 @@ export async function homeDestination(
   /** The account as just read, when the caller has it fresh. */
   known?: SignedInMe,
 ): Promise<string> {
-  // Signing in replaces the account's cached reads, which cancels one in
-  // flight: the read then simply runs again, with the new session's.
-  const read = () =>
-    queryClient.fetchQuery({ ...meOptions(session), staleTime: 0 });
-  const me =
-    known ??
-    (await read().catch((error) => {
-      if (isCancelledError(error)) return read();
-      throw error;
-    }));
+  // Read directly, not through the cache: signing in replaces the
+  // account's cached reads (and cancels any in flight) while this runs. The
+  // answer then seeds the cache for the screen it opens.
+  const me = known ?? (await readMe(session));
   if (!me.signedIn) return "/";
   // A new account's destination needs no places: its first question.
   const groups = me.next === "start" ? [] : await loadPlaceGroups(session, me);
@@ -130,6 +125,13 @@ export async function homeDestination(
   // Where this account's home links go from now on (its place, not /start).
   if (first.place) setHome(me.account.id, href);
   return href;
+}
+
+async function readMe(session: AuthSession) {
+  const me = await request("/me", meSchema, { token: session.token });
+  confirmSession(session.token);
+  queryClient.setQueryData(meOptions(session).queryKey, me);
+  return me;
 }
 
 /** An adult's places, as the place switcher groups them (its same reads). */
