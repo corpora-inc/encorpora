@@ -196,8 +196,9 @@ async function firstRun(page: Page) {
   await oneHop(page, "first practice", "link");
 }
 
-/** A learner's practice: its address names them (`/practice/<learner>`). */
-const PRACTICE = /^\/practice\/[^/]+$/;
+/** A learner's practice: its address names them (`/practice/<learner>`),
+ * and any focus (`…/skills/<skill>`). */
+const PRACTICE = /^\/practice\/[^/]+(?:\/(?:types|skills|areas)\/[^/]+)?$/;
 const CHILD_PAGE = /^\/family\/[^/]+\/kids\/[^/]+$/;
 
 /** Records whether anything on the page shows a wait from now on (a
