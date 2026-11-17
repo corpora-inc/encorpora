@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { track } from "../../lib/analytics";

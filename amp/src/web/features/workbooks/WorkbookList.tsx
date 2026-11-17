@@ -1,7 +1,7 @@
 import type { UseQueryResult } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import type { AuthSession } from "../../auth";
+import { useSessionOrNull } from "../../lib/session";
 import { Button, buttonClass } from "../../ui/Button";
 import { Toast } from "../../ui/Toast";
 import {
@@ -9,7 +9,8 @@ import {
   type WorkbookSummary,
 } from "../../../workbook/contracts";
 import { downloadWorkbook } from "./api";
-import { choicesLabel, choicesSearch, workbookMessage } from "./model";
+import { choicesLabel, workbookMessage } from "./model";
+import { changeWorkbookDay, workbookDayKey } from "./draft-store";
 import { useWorkbookPaths } from "./paths";
 import styles from "./Workbooks.module.css";
 
@@ -34,18 +35,20 @@ const dateParts = (date: string) => {
 /** Stored workbooks, newest first: each one's day as a calendar tile, what
  * is in it, and its two actions, results and download. */
 export function WorkbookList({
-  session,
   learnerId,
   query,
 }: {
-  session: AuthSession;
   learnerId: string;
   query: UseQueryResult<{ workbooks: WorkbookSummary[]; pdf: boolean }>;
 }) {
+  // Signed in wherever the list is the app's; the design gallery shows it
+  // signed out, inert.
+  const session = useSessionOrNull();
   const paths = useWorkbookPaths();
   const [downloading, setDownloading] = useState<string | null>(null);
   const [message, setMessage] = useState("");
   async function download(workbook: WorkbookSummary) {
+    if (!session) return;
     setMessage("");
     setDownloading(workbook.id);
     try {
@@ -110,11 +113,23 @@ export function WorkbookList({
                   <Link
                     to="/$"
                     params={{ _splat: paths.day(learnerId, workbook.date) }}
-                    search={{
-                      number: workbook.number,
-                      minutes: workbook.minutes,
-                      paper: workbook.paper,
-                      ...choicesSearch(workbook.choices),
+                    // The day opens on this workbook (draft-store.ts).
+                    onClick={() => {
+                      if (session)
+                        changeWorkbookDay(
+                          workbookDayKey(
+                            session.accountId,
+                            learnerId,
+                            workbook.date,
+                          ),
+                          {
+                            draft: undefined,
+                            number: workbook.number,
+                            minutes: workbook.minutes,
+                            paper: workbook.paper,
+                            choices: workbook.choices,
+                          },
+                        );
                     }}
                     className={styles.rowTitle}
                     aria-label={`${date.full}, workbook number ${workbook.number}`}

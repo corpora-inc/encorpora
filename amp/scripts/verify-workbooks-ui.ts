@@ -5,8 +5,9 @@ import { secureChromium } from "../browser-security.mjs";
  * Workbook screens in a real browser: the real Fastify routes compose
  * and store workbooks for a synthetic learner (in memory); only sign-in and
  * the family summary are fixtures. Checks overflow, touch targets, that no
- * control moves while workbooks load, change, fail or download, real URLs
- * (Back, reload), mixing and matching (areas, level, problems only), and
+ * control moves while workbooks load, change, fail or download, that a
+ * reload keeps the day's workbook and choices (kept for the tab, never in
+ * the query string), mixing and matching (areas, level, problems only), and
  * the unlicensed state. Screenshots at 320/390/768/1280
  * in light and dark go to docs/reviews/workbooks/.
  *
@@ -468,19 +469,23 @@ try {
       // Length changes keep every control in place and keep the number.
       await withOptions(page, async (options) => {
         await options.getByRole("radio", { name: "60 min" }).click();
-        await page.waitForURL(/minutes=60/);
+        await options
+          .getByRole("radio", { name: "60 min" })
+          .and(options.locator('[aria-checked="true"]'))
+          .waitFor();
       });
       await page.getByText(/About (55|60|65) minutes/).waitFor();
       assert.deepEqual(await controlBoxes(page), before, `${label}: length`);
 
-      // Roll another: a new number, a new URL, nothing moves.
+      // Roll another: a new number, nothing moves.
       const firstCode = await page
         .getByLabel("Workbook code")
         .first()
         .textContent();
       await page.getByRole("button", { name: "Roll another" }).click();
       await page.getByRole("heading", { name: "No. 2" }).waitFor();
-      assert.match(page.url(), /number=2/);
+      // The address names the day; the workbook on it is the day's draft.
+      assert.doesNotMatch(page.url(), /\?/);
       assert.notEqual(
         await page.getByLabel("Workbook code").first().textContent(),
         firstCode,
@@ -550,11 +555,9 @@ try {
         .waitFor({ state: "detached" });
       assert.deepEqual(await controlBoxes(page), before, `${label}: download`);
 
-      // Back returns to No. 1; reload restores the screen from the URL.
-      await page.goBack();
-      await page.getByRole("heading", { name: "No. 1" }).waitFor();
+      // A reload keeps the workbook on screen and its length.
       await page.reload();
-      await page.getByRole("heading", { name: "No. 1" }).waitFor();
+      await page.getByRole("heading", { name: "No. 2" }).waitFor();
       assert.equal(
         await withOptions(page, (options) =>
           options
@@ -564,8 +567,8 @@ try {
         "true",
       );
 
-      // Mix and match: each choice rolls a new workbook with it, at its own
-      // URL, and nothing moves. An area, then a stretch, then problems only.
+      // Mix and match: each choice rolls a new workbook with it, and nothing
+      // moves. An area, then a stretch, then problems only.
       const areaLabel = await withOptions(page, async (options) => {
         const area = options
           .getByRole("group", { name: "Areas" })
@@ -574,11 +577,9 @@ try {
         await area.waitFor();
         const text = (await area.textContent())!.trim();
         await area.click();
-        await page.waitForURL(/areas=/);
         return text;
       });
       await page.getByRole("heading", { name: "No. 3" }).waitFor();
-      assert.match(page.url(), /areas=/);
       await page
         .getByText(new RegExp(`^${areaLabel}`))
         .first()
@@ -586,17 +587,22 @@ try {
       assert.deepEqual(await controlBoxes(page), before, `${label}: area`);
       await withOptions(page, async (options) => {
         await options.getByRole("radio", { name: /^Harder/ }).click();
-        await page.waitForURL(/lean=stretch/);
+        await options
+          .getByRole("radio", { name: /^Harder/ })
+          .and(options.locator('[aria-checked="true"]'))
+          .waitFor();
       });
       await page.getByRole("heading", { name: "No. 4" }).waitFor();
-      assert.match(page.url(), /lean=stretch/);
       assert.deepEqual(await controlBoxes(page), before, `${label}: lean`);
       await withOptions(page, async (options) => {
         await options.getByRole("radio", { name: /^Leave out/ }).click();
-        await page.waitForURL(/lesson=off/);
+        await options
+          .getByRole("radio", { name: /^Leave out/ })
+          .and(options.locator('[aria-checked="true"]'))
+          .waitFor();
       });
       await page.getByRole("heading", { name: "No. 5" }).waitFor();
-      assert.match(page.url(), /lesson=off/);
+      assert.doesNotMatch(page.url(), /\?/);
       assert.equal(
         await page
           .getByLabel("Workbook contents")
@@ -611,13 +617,13 @@ try {
         path: `${output}day-mixed-${label}.png`,
         fullPage: true,
       });
-      // Back restores the previous workbook and its choices.
-      await page.goBack();
-      await page.getByRole("heading", { name: "No. 4" }).waitFor();
+      // A reload keeps the draft and every choice it was made with.
+      await page.reload();
+      await page.getByRole("heading", { name: "No. 5" }).waitFor();
       assert.equal(
         await withOptions(page, (options) =>
           options
-            .getByRole("radio", { name: /^Include/ })
+            .getByRole("radio", { name: /^Leave out/ })
             .getAttribute("aria-checked"),
         ),
         "true",
@@ -762,7 +768,7 @@ try {
       // one action that can recover; the controls above do not move.
       failLoads = true;
       await page.goto(
-        `${origin}/learners/${learnerId}/workbooks/${today}?minutes=30`,
+        `${origin}/learners/${learnerId}/workbooks/${today}`,
       );
       const failure = page.getByLabel("Workbook contents").getByRole("alert");
       await failure.waitFor();
