@@ -81,19 +81,24 @@ vi.mock("../family-redirect", () => ({
     { params }: { params: { org: string } },
   ) =>
     state.parent && params.org === FAMILY_ORG
-      ? { to: `/family/${FAMILY}`, search: {} }
+      ? { href: `/family/${FAMILY}` }
       : null,
   toFamilyChild: async (_session: unknown, org: string, person: string) =>
     state.parent && org === FAMILY_ORG
-      ? { to: `/family/${FAMILY}/kids/${person}`, search: {} }
+      ? { href: `/family/${FAMILY}/kids/${person}` }
       : null,
-  toFamilyPage: async (_session: unknown, org: string, page: string) =>
+  toFamilyPage: async (
+    _session: unknown,
+    org: string,
+    page: string,
+    location: { hash?: string },
+  ) =>
     state.parent && org === FAMILY_ORG
       ? {
           // Roster and Settings are Settings; Map and Today are Today (or a
-          // one child's page: features/family/redirects.ts).
-          to: `/family/${FAMILY}${page === "roster" || page === "settings" ? "/settings" : ""}`,
-          search: {},
+          // one child's page: features/family/redirects.ts). A settings
+          // section's anchor rides in the href.
+          href: `/family/${FAMILY}${page === "roster" || page === "settings" ? "/settings" : ""}${location.hash ? `#${location.hash}` : ""}`,
         }
       : null,
 }));
@@ -368,6 +373,12 @@ const EXAMPLES: Example[] = [
     world: "family parent" as const,
     lands: `/family/${FAMILY}${leaf}`,
   })),
+  // A family target's href keeps its anchor through the one hop.
+  {
+    from: `/school/${FAMILY_ORG}/settings#family-year`,
+    world: "family parent",
+    lands: `/family/${FAMILY}/settings#family-year`,
+  },
   { from: CLASS_AT, world: "adult", lands: `${CLASS_AT}/today` },
   // Everyone else's class address: the class's own rows.
   { from: CLASS_AT, world: "family parent", lands: `${CLASS_AT}/today` },
