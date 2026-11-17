@@ -51,7 +51,7 @@ async function chooseYear(page: Page, who: string, year: number) {
     .getByRole("button", { name: new RegExp(`^Birth year, ${who}`) })
     .click();
   const dialog = page.getByRole("dialog");
-  await dialog.getByRole("radio", { name: String(year) }).click();
+  await dialog.getByText(String(year), { exact: true }).click();
   await dialog.waitFor({ state: "hidden" });
 }
 async function setup(page: Page) {
