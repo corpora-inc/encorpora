@@ -1,3 +1,6 @@
+// First: zod's settings before any module builds a schema (a schema built
+// earlier probes `new Function`, which the content policy reports).
+import "../lib/zod-config";
 import "../card-entry";
 import "../share-entry";
 // A consent email's private fragment leaves the URL before any module that
@@ -6,7 +9,6 @@ import "../share-entry";
 // (home-entry.tsx) imports it first itself.
 import "../consent-entry";
 import "../capability-entry";
-import "../lib/zod-config";
 import { errorDetails } from "../../analytics/error-details";
 import {
   screenOf,
