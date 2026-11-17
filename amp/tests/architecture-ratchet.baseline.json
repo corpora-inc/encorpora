@@ -3,13 +3,13 @@
   "counts": {
     "redirects": 5,
     "validateSearch": 9,
-    "searchHandoffs": 126,
+    "searchHandoffs": 125,
     "navigatingEffects": 15,
     "renderNavigate": 21,
-    "silentCatches": 141,
+    "silentCatches": 130,
     "sessionProps": 54,
-    "sessionReads": 33,
-    "inlineQueryKeys": 29,
+    "sessionReads": 31,
+    "inlineQueryKeys": 27,
     "nativeControls": 25
   },
   "files": {
@@ -23,7 +23,6 @@
       "app/router.tsx": 9
     },
     "searchHandoffs": {
-      "app/router.tsx": 1,
       "features/access/AccessScreen.tsx": 3,
       "features/account/AccountReady.tsx": 3,
       "features/account/DeleteAccount.tsx": 1,
@@ -130,8 +129,6 @@
     },
     "silentCatches": {
       "AccountSecurity.tsx": 2,
-      "app/boot.tsx": 1,
-      "app/router.tsx": 10,
       "auth-config.ts": 1,
       "auth.ts": 3,
       "BookReader.tsx": 1,
@@ -224,7 +221,6 @@
     },
     "sessionReads": {
       "app/LegacyApp.tsx": 1,
-      "app/router.tsx": 2,
       "features/access/AccessScreen.tsx": 1,
       "features/continue/AfterPurchase.tsx": 1,
       "features/continue/AllowancePause.tsx": 1,
@@ -251,7 +247,6 @@
       "lib/learning-view.ts": 1
     },
     "inlineQueryKeys": {
-      "app/router.tsx": 2,
       "features/films/FilmScreen.tsx": 1,
       "features/onboarding/starter-api.ts": 1,
       "features/onboarding/Starter.tsx": 1,
