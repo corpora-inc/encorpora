@@ -1,6 +1,5 @@
-import { Link, useRouter } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { stepBack } from "../../../lib/return-to";
 import { buttonClass } from "../../../ui/Button";
 import { Page } from "../../../ui/Page";
 import { PageHeader } from "../../../ui/PageHeader";
@@ -34,7 +33,6 @@ export function StepFrame({
   hintLines?: 1 | 2;
   back: string;
 }) {
-  const router = useRouter();
   return (
     <Page>
       {steps.length > 1 && (
@@ -68,8 +66,8 @@ export function StepFrame({
                 new URLSearchParams(back.split("?")[1] ?? ""),
               ) as never
             }
+            // The step before, from the step map: never history.
             className={buttonClass("quiet")}
-            onClick={(event) => stepBack(router.history, back, event)}
           >
             Back
           </Link>

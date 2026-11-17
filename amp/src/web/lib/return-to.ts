@@ -178,28 +178,3 @@ export function withoutSearch(href: string, ...keys: string[]) {
   for (const key of keys) url.searchParams.delete(key);
   return url.pathname + url.search + url.hash;
 }
-
-/** Back from a step is one step: the browser's own Back when the entry
- * before this one is that step (so Forward returns here), else the step's
- * address. */
-export function stepBack(
-  history: { location: { state: unknown }; back: () => void },
-  back: string,
-  event: Pick<
-    MouseEvent,
-    "preventDefault" | "button" | "metaKey" | "ctrlKey" | "shiftKey" | "altKey"
-  >,
-) {
-  if (
-    event.button !== 0 ||
-    event.metaKey ||
-    event.ctrlKey ||
-    event.shiftKey ||
-    event.altKey
-  )
-    return;
-  const previous = previousEntry(history.location.state);
-  if (previous === undefined || !sameScreen(previous, back)) return;
-  event.preventDefault();
-  history.back();
-}
