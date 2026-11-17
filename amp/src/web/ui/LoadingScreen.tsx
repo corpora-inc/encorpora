@@ -131,7 +131,7 @@ export function RouteError({
   const chunk = errorDetails(error).category === "chunk";
   const [checked, setChecked] = useState<unknown>();
   useEffect(() => {
-    console.error("Application route failed to load or render.");
+    console.error("Application route failed to load or render.", error);
     if (chunk) {
       dismissChunkNotice();
       recoverChunkError(error, false);
