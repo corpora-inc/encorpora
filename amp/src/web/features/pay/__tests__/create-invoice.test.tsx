@@ -74,7 +74,7 @@ test("Create invoice makes the invoice, then claims it for the learner, then ref
       studentBillingName: "August Example",
       parentEmail: "parent@example.test",
       learnerId: "august",
-      idempotencyKey: "0b8f7f8e-4d0a-4d61-8d5c-8f1c3b6b1c11",
+      idempotencyKey: "00000000-0000-4000-8000-000000000001",
     });
   });
   expect(created).toMatchObject({ invoiceId, learnerId: "august" });
@@ -89,7 +89,7 @@ test("Create invoice makes the invoice, then claims it for the learner, then ref
     offerId: "az-esa-annual-invoice",
     offerRevision: "r1",
     studentBillingName: "August Example",
-    idempotencyKey: "0b8f7f8e-4d0a-4d61-8d5c-8f1c3b6b1c11",
+    idempotencyKey: "00000000-0000-4000-8000-000000000001",
   });
   expect(calls[1]!.body).toEqual({ learnerId: "august" });
   expect(calls[1]!.auth).toBe("Bearer fixture-session");
@@ -116,7 +116,7 @@ test("an adult with no learner yet starts it before the claim", async () => {
       parentEmail: "parent@example.test",
       learnerId: null,
       prepare,
-      idempotencyKey: "0b8f7f8e-4d0a-4d61-8d5c-8f1c3b6b1c12",
+      idempotencyKey: "00000000-0000-4000-8000-000000000002",
     });
   });
   expect(prepare).toHaveBeenCalledOnce();
@@ -145,7 +145,7 @@ test("a retry after the invoice exists only claims it again: never a second invo
       studentBillingName: "August Example",
       parentEmail: "parent@example.test",
       learnerId: "august",
-      idempotencyKey: "0b8f7f8e-4d0a-4d61-8d5c-8f1c3b6b1c13",
+      idempotencyKey: "00000000-0000-4000-8000-000000000003",
       invoiceId,
       onInvoice: (id) => kept.push(id),
     });
