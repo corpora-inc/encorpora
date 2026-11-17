@@ -5,7 +5,7 @@ import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
 import { request } from "../../lib/api";
 import { qk } from "../../lib/keys";
-import { reportError } from "../../lib/report-error";
+import { jsonOrNull, reportError } from "../../lib/report-error";
 import { useSession } from "../../lib/session";
 import { requestFetch } from "../../lib/request-transport";
 import { ReceiptDetails } from "../../ReceiptDetails";
@@ -128,7 +128,7 @@ export function Receipts({
       );
       // What the server refuses, said as what to do next.
       if (!response.ok) {
-        const refused = (await response.json().catch(() => ({}))) as {
+        const refused = ((await jsonOrNull(response)) ?? {}) as {
           error?: string;
         };
         const said = RECEIPT_REFUSALS[refused.error ?? ""];
