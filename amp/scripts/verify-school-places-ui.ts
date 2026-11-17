@@ -342,7 +342,7 @@ async function familyThenSchool(
     .filter({ visible: true })
     .first()
     .click();
-  await page.getByRole("button", { name: "Sign out" }).click();
+  await page.getByRole("button", { name: "Back to family" }).click();
   await page.waitForURL(FAMILY_TODAY);
   await todayTitle(page);
   await settle(page, 300);

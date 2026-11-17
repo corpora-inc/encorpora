@@ -16,7 +16,11 @@ import { authConfigOptions } from "../../lib/query";
 import { useLoggedError } from "../../feedback";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { accountClient } from "../../account-client";
+import {
+  accountClient,
+  passkeyAccountClient,
+  preloadPasskeys,
+} from "../../account-client";
 import {
   signIn,
   accessSession,
@@ -143,6 +147,11 @@ export function SignInScreen() {
     !!config.passkeySignup &&
     passkeysAvailable();
   const passkeyMethod = passkeyCreate && params.get("method") !== "password";
+  // Sign-in offers a passkey: its client loads with this screen, not at boot.
+  const offersPasskey = step === "sign-in" && !inApp;
+  useEffect(() => {
+    if (offersPasskey) preloadPasskeys();
+  }, [offersPasskey]);
   const copy = socialCopyFor(document.documentElement.lang);
   const errorProvider = params.get("provider");
   const [pending, setPending] = useState<Provider | null>(null);
@@ -360,6 +369,10 @@ export function SignInScreen() {
   const firstRunTo = toRoot
     ? `/start${returnSearch ? `?${returnSearch}` : ""}`
     : returnTo;
+  // A successful sign-in with a callback is sent there by the auth client
+  // (a full load, a new entry). Going home, the app opens the account's own
+  // destination itself instead (`continueAfterSignIn`), in one navigation.
+  const signInReturn = toRoot ? {} : { callbackURL: returnTo };
   // Sign-in and sign-up resume the same account: its place, or the role
   // question when it has no place yet.
   const done = async () => {
@@ -466,7 +479,7 @@ export function SignInScreen() {
       if (step === "sign-in") {
         await prepareFreeSignup();
         const result = await accountClient.signIn.email({
-          callbackURL: returnTo,
+          ...signInReturn,
           email: email.trim(),
           password,
         });
@@ -501,7 +514,7 @@ export function SignInScreen() {
         else if (result.data?.user.emailVerified) {
           fail(
             await accountClient.signIn.email({
-              callbackURL: returnTo,
+              ...signInReturn,
               email: email.trim(),
               password,
             }),
@@ -615,7 +628,7 @@ export function SignInScreen() {
   const signInWithPasskey = () =>
     void run(async () => {
       await prepareFreeSignup();
-      fail(await accountClient.signIn.passkey());
+      fail(await (await passkeyAccountClient()).signIn.passkey());
       await done();
     });
   const showProviders = step === "sign-in" || step === "create";
