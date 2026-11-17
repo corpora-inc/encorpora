@@ -292,7 +292,10 @@ export function onSessionChanged(
       try {
         channel?.close();
       } catch (failure) {
-        console.warn("AMP: the cross-tab sign-in channel didn’t close", failure);
+        console.warn(
+          "AMP: the cross-tab sign-in channel didn’t close",
+          failure,
+        );
       }
     };
   }

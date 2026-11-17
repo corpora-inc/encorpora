@@ -35,7 +35,11 @@
   gap: 8px;
   margin-block: 12px;
 }
-.receipt-details input,
+/* The learner name is ui/TextField; it fills the column. */
+.receipt-details input {
+  width: 100%;
+  min-width: 0;
+}
 .receipt-details select {
   box-sizing: border-box;
   width: 100%;

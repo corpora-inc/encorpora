@@ -8,6 +8,7 @@ import {
   useKeypadCaret,
   type Field,
 } from "./lib/keypadEdit";
+import { AnswerInput } from "./ui/AnswerInput";
 
 const KEYS = [
   ["(", ")", "^", "√", "AC"],
@@ -115,7 +116,8 @@ export function Calculator(props: Props) {
       caret.commit(clearField(), setExpression);
     } else if (key === "⌫") caret.commit(deleteBackward(field), setExpression);
     else if (key === "=") equals();
-    else if (key === "Use") useResult(); else if (key === "±") {
+    else if (key === "Use") useResult();
+    else if (key === "±") {
       caret.commit(negateExpression(continuing() ?? field), setExpression);
       setResult(null);
     } else {
@@ -150,14 +152,12 @@ export function Calculator(props: Props) {
         ✕
       </button>
       <div className="calculator-display" data-error={error || undefined}>
-        <input
+        <AnswerInput
           ref={display}
           aria-label="Calculator expression"
           value={expression}
           placeholder={result === null ? "0" : evaluated || result}
-          inputMode="none"
-          autoComplete="off"
-          spellCheck={false}
+          keypad
           onChange={(event) => {
             setExpression(event.target.value);
             setResult(null);

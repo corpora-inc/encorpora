@@ -1,6 +1,6 @@
 import {
   useId,
-  type InputHTMLAttributes,
+  type ComponentPropsWithRef,
   type TextareaHTMLAttributes,
 } from "react";
 import styles from "./Controls.module.css";
@@ -8,7 +8,7 @@ export function TextField({
   label,
   error,
   ...props
-}: InputHTMLAttributes<HTMLInputElement> & { label: string; error?: string }) {
+}: ComponentPropsWithRef<"input"> & { label: string; error?: string }) {
   const id = useId();
   return (
     <label className={styles.field} htmlFor={id}>
@@ -18,7 +18,11 @@ export function TextField({
         id={id}
         className={styles.input}
         aria-invalid={!!error}
-        aria-describedby={`${id}-error`}
+        // A caller's own description (a help line under the field) is
+        // kept beside the error's.
+        aria-describedby={[props["aria-describedby"], `${id}-error`]
+          .filter(Boolean)
+          .join(" ")}
       />
       <span id={`${id}-error`} className={styles.fieldError} aria-live="polite">
         {error ?? ""}

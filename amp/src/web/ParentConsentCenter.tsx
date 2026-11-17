@@ -1,5 +1,6 @@
 import { requestFetch } from "./lib/request-transport";
 import { CheckboxControl } from "./ui/Checkbox";
+import { TextField } from "./ui/TextField";
 import {
   pendingFundedPurchase,
   fundedProgramForPath,
@@ -255,19 +256,17 @@ export function ParentConsentCenter({
                   Use your own email. Open the notice we send while signed in
                   here, and learning starts as soon as you agree.
                 </p>
-                <label>
-                  Email address
-                  <input
-                    ref={emailInput}
-                    required
-                    aria-label="Parent email address"
-                    type="email"
-                    autoComplete="email"
-                    maxLength={254}
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </label>
+                <TextField
+                  label="Email address"
+                  ref={emailInput}
+                  required
+                  aria-label="Parent email address"
+                  type="email"
+                  autoComplete="email"
+                  maxLength={254}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </>
             )}
             {phase === "awaiting-initial" && !canAck && (

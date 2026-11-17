@@ -142,7 +142,10 @@ export function capturePurchaseReturn(now = Date.now()): PurchaseReturn | null {
         sessionStorage.setItem(purchaseReturnSlot, JSON.stringify(entry));
       } catch (error) {
         // In-memory navigation remains available.
-        console.warn("AMP: the purchase return wasn’t kept for a reload", error);
+        console.warn(
+          "AMP: the purchase return wasn’t kept for a reload",
+          error,
+        );
       }
     return entry;
   }

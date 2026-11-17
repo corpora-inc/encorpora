@@ -94,7 +94,10 @@ const schoolStep = (value: unknown) => {
   try {
     url = new URL(value, "https://amp.invalid");
   } catch (error) {
-    console.warn("AMP: ignored a school setup return that isn’t an address", error);
+    console.warn(
+      "AMP: ignored a school setup return that isn’t an address",
+      error,
+    );
     return undefined;
   }
   if (url.origin !== "https://amp.invalid") return undefined;
@@ -284,7 +287,10 @@ export function forgetFundedPurchase(accountId: string) {
   try {
     localStorage.removeItem(pendingPrefix + accountId);
   } catch (error) {
-    console.warn("AMP: the funded purchase wasn’t cleared on this device", error);
+    console.warn(
+      "AMP: the funded purchase wasn’t cleared on this device",
+      error,
+    );
   }
 }
 

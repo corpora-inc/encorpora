@@ -236,7 +236,9 @@ export function PaymentHistoryCenter({
       <header>
         <button
           onClick={back}
-          aria-label={selected ? "Close payment details" : "Close payment records"}
+          aria-label={
+            selected ? "Close payment details" : "Close payment records"
+          }
         >
           Close
         </button>

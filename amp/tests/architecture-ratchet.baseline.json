@@ -3,14 +3,14 @@
   "counts": {
     "redirects": 73,
     "validateSearch": 9,
-    "searchHandoffs": 142,
+    "searchHandoffs": 141,
     "navigatingEffects": 18,
     "renderNavigate": 24,
     "silentCatches": 117,
     "sessionProps": 64,
-    "sessionReads": 41,
+    "sessionReads": 40,
     "inlineQueryKeys": 35,
-    "nativeControls": 19
+    "nativeControls": 10
   },
   "files": {
     "redirects": {
@@ -97,7 +97,6 @@
       "features/schools/SchoolsScreen.tsx": 2,
       "features/workbooks/WorkbookDayScreen.tsx": 5,
       "features/workbooks/WorkbookList.tsx": 1,
-      "home-entry.tsx": 1,
       "LessonIndex.tsx": 1,
       "LessonLibrary.tsx": 1,
       "nav/root.tsx": 1,
@@ -246,7 +245,6 @@
       "features/workbooks/WorkbookDayScreen.tsx": 2,
       "features/workbooks/WorkbookHistoryScreen.tsx": 2,
       "features/workbooks/WorkbookResultsScreen.tsx": 3,
-      "Home.tsx": 1,
       "nav/LayerHost.tsx": 2,
       "nav/links.tsx": 1,
       "nav/SkillLayer.tsx": 1
@@ -279,21 +277,13 @@
       "features/workbooks/WorkbookDayScreen.tsx": 1
     },
     "nativeControls": {
-      "Calculator.tsx": 1,
       "features/auth/SignInScreen.tsx": 4,
       "features/onboarding/setup/PeopleRows.tsx": 1,
       "features/school/classes/grade-parts.tsx": 1,
       "features/school/ImportScreen.tsx": 1,
       "features/school/join/JoinScreen.tsx": 1,
       "features/schools/TalkToUs.tsx": 1,
-      "features/workbooks/WorkbookResultsScreen.tsx": 1,
-      "FigureChoiceInput.tsx": 1,
-      "FigurePanelChoice.tsx": 1,
-      "MultiPartChoiceInput.tsx": 1,
-      "ParentConsentCenter.tsx": 1,
-      "PracticeWorkspace.tsx": 2,
-      "ReceiptDetails.tsx": 1,
-      "StructuredWorkInput.tsx": 1
+      "features/workbooks/WorkbookResultsScreen.tsx": 1
     }
   },
   "exempt": []

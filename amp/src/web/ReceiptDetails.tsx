@@ -1,4 +1,5 @@
 import { Select } from "./PremiumControls";
+import { TextField } from "./ui/TextField";
 import { receiptFields } from "../billing/evidence/reimbursement.js";
 import { useReimbursementPrograms } from "./ReimbursementGuide.js";
 export function ReceiptDetails({
@@ -39,19 +40,18 @@ export function ReceiptDetails({
           </Select>
         </label>
       )}
-      <label>
-        Learner name{" "}
-        {program?.requiredFields.includes("learnerName")
-          ? "(required by program)"
-          : "(optional)"}
-        <input
-          value={learnerName}
-          maxLength={120}
-          autoComplete="off"
-          onChange={(e) => onName(e.target.value)}
-          aria-describedby="receipt-name-help"
-        />
-      </label>
+      <TextField
+        label={`Learner name ${
+          program?.requiredFields.includes("learnerName")
+            ? "(required by program)"
+            : "(optional)"
+        }`}
+        value={learnerName}
+        maxLength={120}
+        autoComplete="off"
+        onChange={(e) => onName(e.target.value)}
+        aria-describedby="receipt-name-help"
+      />
       <p id="receipt-name-help">
         Added only to this download; not saved to the account. This PDF supports
         basic Latin letters and some accents. Contact purchase support if the

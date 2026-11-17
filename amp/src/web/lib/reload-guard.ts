@@ -27,7 +27,10 @@ export function claimReload(
     if (storage.getItem(reloadSlot) !== String(now)) return "storage";
     return recent ? "recent" : null;
   } catch (error) {
-    console.warn("AMP: reloads can’t be counted without session storage", error);
+    console.warn(
+      "AMP: reloads can’t be counted without session storage",
+      error,
+    );
     return "storage";
   }
 }
@@ -113,7 +116,10 @@ export function autoReloadBlock(
   try {
     return claimReload(sessionStorage, Date.now(), performance.timeOrigin);
   } catch (error) {
-    console.warn("AMP: reloads can’t be counted without session storage", error);
+    console.warn(
+      "AMP: reloads can’t be counted without session storage",
+      error,
+    );
     return "storage";
   }
 }
