@@ -141,6 +141,8 @@ async function firstRun(page: Page) {
   await oneHop(page, "Get started", "link");
   await page.getByRole("link", { name: /^I’m a parent/ }).click();
   await page.getByRole("button", { name: "Birth year, Child 1" }).click();
+  // Choosing the year saves the child; Next is tapped at once, while that
+  // save is in flight, and goes on when it is done (never a dead button).
   await page
     .getByRole("dialog", { name: "Birth year, Child 1" })
     .getByRole("option", { name: "2016", exact: true })
@@ -176,10 +178,10 @@ async function addPlace(page: Page) {
 
 async function addPlaceCancel(page: Page) {
   await addPlace(page);
-  await page.getByRole("button", { name: "Cancel", exact: true }).click();
+  await page.getByRole("button", { name: "Back", exact: true }).click();
   await page.waitForURL((url) => url.pathname !== "/start");
   await settled(page);
-  await oneHop(page, "Cancel", "history");
+  await oneHop(page, "Add a place, Back", "history");
 }
 
 /** From the child's practice, the menu's "Back to family": the child's

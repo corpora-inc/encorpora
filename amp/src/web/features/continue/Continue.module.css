@@ -16,6 +16,13 @@
   display: grid;
   gap: var(--space-4);
 }
+/* What they did and get comes with the plan above it, never under the
+   plan's loading skeleton: the plans, notice and checkout are taller than
+   any skeleton at some width (the notice is the server's text), so a list
+   painted under it would move down when they arrive. */
+.checkout:has(> [aria-busy="true"]) + .aside {
+  display: none;
+}
 .recap {
   margin: 0;
   min-height: 1.45em;

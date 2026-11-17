@@ -139,6 +139,12 @@ function PurchasePage(account: Account) {
         ...(learner ? { learner } : {}),
       }),
     });
+  const learnerMissing =
+    !!account.session &&
+    !!search.learner &&
+    !account.learners.some((learner) => learner.id === search.learner);
+  // An invoice settles inside ResumeInvoice, which adds the support line.
+  const settled = !search.invoice && (learnerMissing || !offers.isPending);
   return (
     <Page>
       <PageHeader
@@ -153,9 +159,7 @@ function PurchasePage(account: Account) {
           preferredLearner={search.learner}
           onClear={() => setInvoice()}
         />
-      ) : account.session &&
-        search.learner &&
-        !account.learners.some((learner) => learner.id === search.learner) ? (
+      ) : learnerMissing ? (
         <p role="alert">
           This learner isn’t available in your account. Open Billing to choose a
           learner.
@@ -225,24 +229,46 @@ function PurchasePage(account: Account) {
           }}
         />
       )}
-      <p className={styles.support}>
-        Questions? <a href="mailto:support@corpora.inc">support@corpora.inc</a>
-      </p>
+      {settled && <Support />}
     </Page>
   );
 }
 
-function ResumeInvoice({
-  account,
-  invoiceId,
-  preferredLearner,
-  onClear,
-}: {
+/** The page's last line. It comes with the page's content, never under a
+ * wait, so nothing below a loading line moves when the content arrives. */
+function Support() {
+  return (
+    <p className={styles.support}>
+      Questions? <a href="mailto:support@corpora.inc">support@corpora.inc</a>
+    </p>
+  );
+}
+
+type ResumeProps = {
   account: Account;
   invoiceId: string;
   preferredLearner?: string;
   onClear: () => void;
-}) {
+};
+/** A saved invoice, then the support line once it is open (none under the
+ * wait, so nothing moves when the invoice arrives). */
+function ResumeInvoice(props: ResumeProps) {
+  const content = useResumedInvoice(props);
+  if (content === null) return <Loading>Opening your invoice</Loading>;
+  return (
+    <>
+      {content}
+      <Support />
+    </>
+  );
+}
+/** What a saved invoice shows, or null while it is still being read. */
+function useResumedInvoice({
+  account,
+  invoiceId,
+  preferredLearner,
+  onClear,
+}: ResumeProps): ReactNode | null {
   const session = account.session;
   const restored = useQuery({
     ...invoiceResumeOptions(
@@ -277,7 +303,7 @@ function ResumeInvoice({
         )}
       </section>
     );
-  if (!restored.data) return <Loading>Opening your invoice</Loading>;
+  if (!restored.data) return null;
   const saved = restored.data;
   const learner = saved.record?.learnerId ?? preferredLearner;
   // Claimed invoices always use their recorded learner, regardless of URL filters.

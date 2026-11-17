@@ -6,6 +6,7 @@ import { request } from "../../lib/api";
 import { invalidateAccount, queryClient, refreshMe } from "../../lib/query";
 import type { Persona } from "./activation";
 import { rememberPlace } from "./place-memory";
+import { setupSavesKey } from "./setup/kids-api";
 
 /** Where their own practice starts: a school-age birth year, or, past
  * school age, the start they chose (`pastSchoolAge`). */
@@ -97,6 +98,7 @@ export function useStartDemo(session: AuthSession) {
  * first run is done. `/me` is read again, so the starter shows it at once. */
 export function useChooseSetup(session: AuthSession) {
   return useMutation({
+    mutationKey: setupSavesKey(session),
     mutationFn: (answer: Persona) =>
       request("/start/choice", z.unknown(), {
         token: session.token,

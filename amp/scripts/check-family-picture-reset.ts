@@ -108,6 +108,8 @@ try {
   await account.goto(
     fixture.origin + `/family/${family}/kids/${persona.learnerId}`,
   );
+  // Picture recovery is under the child's Advanced settings.
+  await account.locator("summary", { hasText: "Advanced" }).click();
   const recovery = account.locator("[data-picture-sign-in]");
   await recovery
     .getByRole("button", { name: "Reset pictures", exact: true })
