@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import { chromium as rawChromium, type Page } from "playwright";
 const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
+import { settleArrival } from "./ui-settle";
 import {
   presentOffer,
   presentRequest,
@@ -345,6 +346,9 @@ try {
         );
         await capture(page, `invoice-${entry.slug}-${width}-${theme}`);
         if (width === 390 && theme === "light") {
+          // Measured settled: mid fade-in (ui/loading.css amp-appear) text
+          // blends with the surface and reads as low contrast.
+          await settleArrival(page);
           const axe = await new AxeBuilder({ page }).analyze();
           assert.deepEqual(
             axe.violations
