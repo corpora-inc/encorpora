@@ -66,13 +66,19 @@ await mkdir(output, {
 });
 try {
   const page = await browser.newPage({ hasTouch: true });
+  // Classic scrollbars reserve space even on hosts that default to overlays.
+  // Keep the narrow-phone layout representative of the Linux browser runner,
+  // in every document the run opens (each topic is a navigation).
+  await page.addInitScript(() =>
+    document.addEventListener("DOMContentLoaded", () => {
+      const style = document.createElement("style");
+      style.textContent =
+        ".problem-stage::-webkit-scrollbar { width: 15px; height: 15px; }";
+      document.head.append(style);
+    }),
+  );
   await page.goto("http://127.0.0.1:4442/overview");
   await practiceHere(page, learner.id);
-  // Classic scrollbars reserve space even on hosts that default to overlays.
-  // Keep the narrow-phone layout representative of the Linux browser runner.
-  await page.addStyleTag({
-    content: ".problem-stage::-webkit-scrollbar { width: 15px; height: 15px; }",
-  });
   const rows = [];
   const fixtures: {
     name: string;
