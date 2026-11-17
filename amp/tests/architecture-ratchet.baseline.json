@@ -1,11 +1,11 @@
 {
   "about": "Frontend anti-pattern counts in src/web; they only fall (amp/AGENTS.md, Frontend architecture). Enforced by tests/architecture-ratchet.test.ts; `files` locates the counts for its failure messages.",
   "counts": {
-    "redirects": 4,
+    "redirects": 2,
     "validateSearch": 8,
-    "searchHandoffs": 93,
-    "navigatingEffects": 10,
-    "renderNavigate": 7,
+    "searchHandoffs": 88,
+    "navigatingEffects": 8,
+    "renderNavigate": 5,
     "silentCatches": 87,
     "sessionProps": 21,
     "sessionReads": 10,
@@ -14,7 +14,6 @@
   },
   "files": {
     "redirects": {
-      "features/pay/legacy.ts": 2,
       "features/profiles/practice-mode.ts": 1,
       "nav/legacy-layers.ts": 1
     },
@@ -22,13 +21,10 @@
       "app/router.tsx": 8
     },
     "searchHandoffs": {
-      "features/account/AccountReady.tsx": 3,
+      "features/account/AccountReady.tsx": 2,
       "features/account/DeleteAccount.tsx": 1,
       "features/family-approval/ApproveLinkScreen.tsx": 2,
-      "features/family/FamilyFrame.tsx": 1,
-      "features/family/Records.tsx": 1,
       "features/family/redirects.ts": 1,
-      "features/family/Today.tsx": 2,
       "features/films/FilmCards.tsx": 1,
       "features/films/FilmLink.tsx": 1,
       "features/funding/FundingInvoices.tsx": 1,
@@ -87,8 +83,6 @@
     "navigatingEffects": {
       "app/LegacyApp.tsx": 2,
       "features/design/DesignScreen.tsx": 1,
-      "features/family/FamilyFrame.tsx": 1,
-      "features/family/Records.tsx": 1,
       "features/school/AdoptionScreen.tsx": 1,
       "features/school/join/CardScreen.tsx": 1,
       "features/school/join/ClassScreen.tsx": 1,
@@ -96,7 +90,6 @@
       "nav/Navigate.tsx": 1
     },
     "renderNavigate": {
-      "features/account/AccountReady.tsx": 2,
       "features/profiles/ProfileScreens.tsx": 1,
       "features/school/CalendarScreen.tsx": 1,
       "features/school/classroom/StandingsScreen.tsx": 1,
