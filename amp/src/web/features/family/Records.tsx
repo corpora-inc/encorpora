@@ -199,7 +199,7 @@ export function FamilyWorkbooksScreen() {
       </FamilyFrame>
     );
   if (host) return <WorkbookStackScreen host={host} />;
-  return <NoClass place={place} what="Workbooks for several" />;
+  return <NoClass place={place} what="Print workbooks" />;
 }
 
 /** One printed day's workbooks, marked by hand

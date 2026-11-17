@@ -1,6 +1,7 @@
 import { useQueries } from "@tanstack/react-query";
 import { Button } from "../../ui/Button";
 import { number, shortDay } from "../school/classes/teacher-shared";
+import { practiceMinutes } from "../../lib/practice-minutes";
 import { childTimeOptions } from "./api";
 import { DailyBars, type Interval } from "./ChildActivity";
 import type { FamilyPlace } from "./FamilyFrame";
@@ -11,17 +12,19 @@ const shift = (day: string, offset: number) =>
     .toISOString()
     .slice(0, 10);
 
-const weekday = (day: string) =>
+/** A day's initial (M, T, W…), under its column. */
+const initial = (day: string) =>
   new Date(`${day}T00:00:00Z`).toLocaleDateString("en-US", {
-    weekday: "short",
+    weekday: "narrow",
     timeZone: "UTC",
   });
 
 /**
  * The family's week on Today, compact: practice time each day this week,
- * every child's together, and the skills earned. The same chart as a child's
- * Practice time (ChildActivity), from the same daily time each child's page
- * reads. Nothing before the week's first practice, so an empty week is the
+ * every child's together, and the skills earned. Seven day slots, Monday
+ * first, each day's initial under it and today's marked; a day without
+ * practice is a faint tick. The same chart as a child's Practice time
+ * (ChildActivity), from the same daily time each child's page reads. Nothing before the week's first practice, so an empty week is the
  * children's cards saying "Not started", never a row of zeros. The chart
  * holds its height while the days arrive.
  */
@@ -52,9 +55,11 @@ export function FamilyWeek({ place }: { place: FamilyPlace }) {
     return { date, minutes, problems };
   });
   const detail = (entry: Interval) =>
-    `${number(entry.minutes)} min · ${entry.problems ?? 0} ${
-      entry.problems === 1 ? "problem" : "problems"
-    }`;
+    entry.minutes || entry.problems
+      ? `${practiceMinutes(entry.minutes, entry.problems ?? 0)} · ${
+          entry.problems ?? 0
+        } ${entry.problems === 1 ? "problem" : "problems"}`
+      : "no practice";
   return (
     <section
       aria-labelledby="family-week"
@@ -90,10 +95,10 @@ export function FamilyWeek({ place }: { place: FamilyPlace }) {
           label={(entry) =>
             entry.date === data.today.date ? "Today" : shortDay(entry.date)
           }
-          edge={(entry) => weekday(entry.date)}
+          mark={(entry) => initial(entry.date)}
+          current={data.today.date}
           detail={detail}
-          name="Practice time each day this week"
-          caption="Minutes per day, every child"
+          name="Practice time each day this week, every child"
         />
       )}
     </section>

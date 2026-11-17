@@ -115,7 +115,11 @@ export function ChildActivity({
 /**
  * Minutes as columns, one an interval, each with its detail on hover, tap
  * and focus: the one practice-time chart (a child's page, the family's week).
- * Its height is fixed, so nothing moves when it fills in.
+ * A quiet interval is a faint tick on the baseline, so every slot shows.
+ * Under the columns, either the first and last interval's names around a
+ * caption, or (`mark`) each column's own short name, with `current` (today)
+ * marked and the intervals after it dimmed and inert. Its height is fixed,
+ * so nothing moves when it fills in.
  */
 export function DailyBars({
   intervals,
@@ -124,46 +128,82 @@ export function DailyBars({
   name,
   caption,
   edge = label,
+  mark,
+  current,
 }: {
   intervals: readonly Interval[];
   label: (entry: Interval) => string;
   detail: (entry: Interval) => string;
   /** What the chart shows, for a screen reader. */
   name: string;
-  caption: string;
+  /** What the columns measure, between the end names (without `mark`). */
+  caption?: string;
   /** The first and last interval's name under the chart. */
   edge?: (entry: Interval) => string;
+  /** Each column's own short name under it (a day's initial). */
+  mark?: (entry: Interval) => string;
+  /** The interval that is now (today's date): marked; later ones inert. */
+  current?: string;
 }) {
   const largest = Math.max(1, ...intervals.map((entry) => entry.minutes));
   if (intervals.length === 0) return null;
+  const ahead = (entry: Interval) =>
+    current !== undefined && entry.date > current;
   return (
     <TipZone>
       <figure className={styles.figure}>
         <div className={styles.chart} role="group" aria-label={name}>
-          {intervals.map((entry) => (
-            <div
-              key={entry.date}
-              className={styles.column}
-              tabIndex={0}
-              aria-label={`${label(entry)}: ${detail(entry)}`}
-              data-tip={`${label(entry)}: ${detail(entry)}`}
-            >
-              <span
-                className={styles.bar}
-                style={{
-                  height: entry.minutes
-                    ? `${Math.max(4, (entry.minutes / largest) * 100)}%`
-                    : 0,
-                }}
-              />
-            </div>
-          ))}
+          {intervals.map((entry) => {
+            const later = ahead(entry);
+            const quiet = !entry.minutes && !entry.problems;
+            return (
+              <div
+                key={entry.date}
+                className={styles.column}
+                data-current={entry.date === current || undefined}
+                data-ahead={later || undefined}
+                data-interval={entry.date}
+                {...(later
+                  ? { "aria-hidden": true }
+                  : {
+                      tabIndex: 0,
+                      "aria-label": `${label(entry)}: ${detail(entry)}`,
+                      "data-tip": `${label(entry)}: ${detail(entry)}`,
+                    })}
+              >
+                <span
+                  className={quiet ? styles.tick : styles.bar}
+                  style={
+                    quiet
+                      ? undefined
+                      : {
+                          height: `${Math.max(4, (entry.minutes / largest) * 100)}%`,
+                        }
+                  }
+                />
+              </div>
+            );
+          })}
         </div>
-        <figcaption>
-          <span>{edge(intervals[0]!)}</span>
-          <span>{caption}</span>
-          <span>{edge(intervals.at(-1)!)}</span>
-        </figcaption>
+        {mark ? (
+          <div className={styles.marks} aria-hidden="true">
+            {intervals.map((entry) => (
+              <span
+                key={entry.date}
+                data-current={entry.date === current || undefined}
+                data-ahead={ahead(entry) || undefined}
+              >
+                {mark(entry)}
+              </span>
+            ))}
+          </div>
+        ) : (
+          <figcaption>
+            <span>{edge(intervals[0]!)}</span>
+            {caption && <span>{caption}</span>}
+            <span>{edge(intervals.at(-1)!)}</span>
+          </figcaption>
+        )}
       </figure>
     </TipZone>
   );

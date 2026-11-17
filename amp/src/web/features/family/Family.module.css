@@ -158,11 +158,33 @@
   justify-items: start;
   min-width: 0;
 }
-/* A phone (the children's list is one column under 400 px): a calm,
-   compact row. Each figure reads as one line, its value then its label
-   ("5 min · 6 problems this week"), the access with its link beside it,
-   and the action a regular 44 px button. */
-@container (max-width: 399px) {
+/* A phone (the children's list under 560 px, where the list would give each
+   action a full-width line): a calm, compact row. The name with the child's
+   one action at its end, its own 44 px size, so three children fit one
+   phone screen; under it each figure reads as one line, its value then its
+   label ("5 min · 6 problems this week"), the access with its link beside
+   it. */
+@container (max-width: 559px) {
+  [data-family-kids] > li {
+    grid-template-columns: minmax(0, 1fr) auto;
+    row-gap: var(--space-1);
+  }
+  [data-family-kids] > li > [data-part="title"] {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  [data-family-kids] > li > [data-part="action"] {
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 0;
+    justify-items: end;
+  }
+  [data-family-kids] > li > [data-part="figure"] {
+    grid-column: 1 / -1;
+  }
+  [data-family-kids] > li > [data-part="figure"]:empty {
+    display: none;
+  }
   [data-family-kids] .fact {
     display: flex;
     flex-wrap: wrap;
@@ -185,6 +207,7 @@
     gap: 0 var(--space-3);
   }
   [data-family-kids] .action > * {
+    width: auto;
     min-height: var(--target-min);
     height: var(--target-min);
     padding-block: 0;
