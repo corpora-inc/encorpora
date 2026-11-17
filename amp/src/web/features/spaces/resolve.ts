@@ -15,6 +15,7 @@ import {
   childAddress,
   learningIdentity,
   namesLearnerByPath,
+  practicePath,
   type AddressedIdentity,
 } from "./identity";
 import { spaceOfPath, type RouteSpace, type Space } from "./space";
@@ -652,7 +653,8 @@ function studentSpace(
       {
         id: "practice",
         label: "Practice",
-        path: "practice",
+        // Their practice's own address (identity.ts `practicePath`).
+        path: learner ? practicePath(learner.id).slice(1) : "practice",
         icon: "learn",
         current: frame?.kind === "practice",
       },
@@ -768,7 +770,12 @@ function meSpace(
         : []),
       ...(own
         ? [
-            destination("practice", "Practice", "practice", "learn"),
+            destination(
+              "practice",
+              "Practice",
+              practicePath(own.id).slice(1),
+              "learn",
+            ),
             destination("levels", "Levels", "me", "level"),
             destination("workbooks", "Workbooks", workbooks!, "workbooks"),
           ]

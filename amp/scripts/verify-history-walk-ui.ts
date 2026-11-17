@@ -244,6 +244,17 @@ async function today(page: Page) {
   await oneHop(page, "Back to family", "load");
 }
 
+/** From the family's Today, a child's row: their page (one entry). */
+async function childPage(page: Page) {
+  await forget(page);
+  await page.locator('main a[href*="/kids/"]').first().click();
+  await page.waitForURL((url) =>
+    /^\/family\/[^/]+\/kids\/[^/]+$/.test(url.pathname),
+  );
+  await settled(page);
+  await oneHop(page, "a child's page", "link");
+}
+
 async function tab(page: Page, name: string, path: RegExp) {
   await forget(page);
   await page.getByRole("link", { name, exact: true }).first().click();
@@ -344,7 +355,7 @@ const skillPractice: Walk = {
   id: "child's skills → practice",
   before: async (page) => {
     await today(page);
-    await tab(page, "Progress", /^\/family\/[^/]+\/kids\/[^/]+$/);
+    await childPage(page);
     await tab(page, "Pathways", /^\/family\/[^/]+\/kids\/[^/]+\/pathways$/);
     const map = new URL(page.url());
     // A grade's skills, then the first of them.
@@ -436,9 +447,9 @@ const childPractice: Walk = {
       await noChooser(page, `handed child's ${path}`);
     }
     await today(page);
-    await tab(page, "Progress", CHILD_PAGE);
-    const childPage = new URL(page.url());
-    const child = decodeURIComponent(childPage.pathname.split("/").at(-1)!);
+    await childPage(page);
+    const childAt = new URL(page.url());
+    const child = decodeURIComponent(childAt.pathname.split("/").at(-1)!);
     await forget(page);
     await page
       .getByRole("button", { name: /^Practice with / })
@@ -459,15 +470,15 @@ const childPractice: Walk = {
     if (new URL(page.url()).pathname !== practice.pathname)
       fail("a refresh of practice moved", page.url());
     const at = (url: URL) => ({ current: url.pathname + url.search });
-    childPractice.expect = [at(childPage), at(practice)];
+    childPractice.expect = [at(childAt), at(practice)];
     childPractice.after = async (page, index) => {
       if (index !== 0) return;
       // Back on the child's page; a refresh keeps the child.
       await page.reload();
-      await page.waitForURL((url) => url.pathname === childPage.pathname);
+      await page.waitForURL((url) => url.pathname === childAt.pathname);
       await settled(page);
       await forget(page);
-      if (new URL(page.url()).pathname !== childPage.pathname)
+      if (new URL(page.url()).pathname !== childAt.pathname)
         fail("a refresh of the child's page moved", page.url());
     };
   },
@@ -492,7 +503,7 @@ const twoChildren: Walk = {
     if (added >= 300) throw Error(`adding a second child: ${added}`);
     await page.reload();
     await settled(page);
-    await tab(page, "Progress", CHILD_PAGE);
+    await childPage(page);
     await tab(page, "Pathways", /^\/family\/[^/]+\/kids\/[^/]+\/pathways$/);
     const before = new URL(page.url()).pathname;
     const chooser = page.getByRole("button", { name: /^Learner\b/ });
@@ -536,7 +547,7 @@ const walks: Walk[] = [
     id: "progress → add a place → cancel",
     before: async (page) => {
       await today(page);
-      await tab(page, "Progress", /^\/family\/[^/]+\/kids\/[^/]+$/);
+      await childPage(page);
       await addPlaceCancel(page);
     },
     steps: ["back", "back", "forward", "back", "back", "forward", "forward"],
@@ -845,7 +856,7 @@ async function wholeMap(width: number) {
     page.setDefaultTimeout(15_000);
     await firstRun(page);
     await today(page);
-    await tab(page, "Progress", /^\/family\/[^/]+\/kids\/[^/]+$/);
+    await childPage(page);
     await tab(page, "Pathways", /^\/family\/[^/]+\/kids\/[^/]+\/pathways$/);
     const view = (name: "Grades" | "3D") =>
       page
