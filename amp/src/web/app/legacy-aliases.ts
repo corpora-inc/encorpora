@@ -439,9 +439,7 @@ async function familyChildLayer(old: OldAddress): Promise<Target | undefined> {
     },
     people: peopleOf(data.children, own.id),
   });
-  return target.to.includes("/kids/")
-    ? { to: target.to, search: target.search }
-    : undefined;
+  return target.href.includes("/kids/") ? target.href : undefined;
 }
 
 /** Every old address, each one hop to where it opens now. */
