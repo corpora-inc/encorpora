@@ -3,6 +3,7 @@ import { useRouterState } from "@tanstack/react-router";
 import type { Me } from "../../../account/contracts";
 import type { AuthSession } from "../../auth";
 import { meKey, meOptions, queryClient, sessionOptions } from "../../lib/query";
+import { forSession, useSessionOrNull } from "../../lib/session";
 import { familyOptions } from "../family/api";
 import {
   childAddress,
@@ -38,11 +39,8 @@ function ownOf(session: AuthSession | null, me: Me | undefined) {
  * shows.
  */
 export function useAddressedIdentity(): AddressedIdentity | null {
-  const session = useQuery(sessionOptions).data ?? null;
-  const me = useQuery({
-    ...meOptions(session ?? { accountId: "", token: "" }),
-    enabled: !!session,
-  }).data;
+  const session = useSessionOrNull();
+  const me = useQuery(forSession(session, meOptions)).data;
   const own = ownOf(session, me);
   const key = useRouterState({
     select: (state) => {
@@ -91,7 +89,7 @@ export function addressedIdentityNow(
  * screen never asks for a child its family doesn't show (CP-5 #6).
  */
 export function useAddressedRecordsReadable(): boolean {
-  const session = useQuery(sessionOptions).data ?? null;
+  const session = useSessionOrNull();
   const pathname = useRouterState({
     select: (state) => {
       const leaf = state.matches.at(-1);
