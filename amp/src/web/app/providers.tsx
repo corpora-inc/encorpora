@@ -24,6 +24,7 @@ import {
   sessionOptions,
 } from "../lib/query";
 import { setHomeAccount } from "../lib/home-place";
+import { qk } from "../lib/keys";
 export function Providers({
   children,
   onAccountExit,
@@ -67,7 +68,7 @@ function SessionProviders({
         await queryClient.fetchQuery({ ...meOptions(session), staleTime: 0 });
         if (current !== generation) return;
         await queryClient.invalidateQueries({
-          queryKey: ["account", session.accountId],
+          queryKey: qk.account(session.accountId),
           predicate: (query) => query.queryKey[2] !== "me",
         });
       } catch {
@@ -112,8 +113,8 @@ function SessionProviders({
           // Back to the parent's screen paints at once from what it had.
           if (!(change?.handoff && previous?.accountId && session)) {
             setIdentityVersion((version) => version + 1);
-            void queryClient.cancelQueries({ queryKey: ["account"] });
-            queryClient.removeQueries({ queryKey: ["account"] });
+            void queryClient.cancelQueries({ queryKey: qk.accounts() });
+            queryClient.removeQueries({ queryKey: qk.accounts() });
           }
         }
         // A new session: nothing asked with the old one is sent, handled or
@@ -129,7 +130,7 @@ function SessionProviders({
         if (session) {
           if (nativeRuntime)
             void queryClient.invalidateQueries({
-              queryKey: ["account", session.accountId],
+              queryKey: qk.account(session.accountId),
             });
           else void refreshAccount(session, current);
         }
