@@ -6,10 +6,13 @@ import { analyticsVisitorHeaders, flush } from "../../lib/analytics";
 import { request, requestFetch } from "../../lib/api";
 import { invalidateAccount, refreshMe } from "../../lib/query";
 import { paymentUrl } from "../billing/payment-url";
-import { purchaseOfferSchema, type PurchaseOffer } from "../funding/invoice-resume";
+import {
+  purchaseOfferSchema,
+  type PurchaseOffer,
+} from "../funding/invoice-resume";
 import { invoiceDocumentSchema } from "../funding/invoice-document";
-import { fundingRecordsKey } from "../funding/records";
 import type { PayInterval } from "./store";
+import { qk } from "../../lib/keys";
 
 /* The pay flow's server state: every read is a query in the account's
    cache, every write a mutation that invalidates the account (its `/me`,
@@ -19,7 +22,7 @@ import type { PayInterval } from "./store";
 /** The education-funds offers on sale: public, the same list the guest
  * invoice and the pitch read. */
 export const fundingOffersOptions = queryOptions({
-  queryKey: ["funding", "invoice-offers"],
+  queryKey: qk.fundingOffers(),
   queryFn: ({ signal }) =>
     request(
       "/funding/invoice-offers",
@@ -31,14 +34,18 @@ export const fundingOffersOptions = queryOptions({
 });
 
 export type FundingOffer = PurchaseOffer;
-export const offerInterval = (offer: Pick<FundingOffer, "termMonths">): PayInterval =>
-  offer.termMonths === 1 ? "month" : "year";
+export const offerInterval = (
+  offer: Pick<FundingOffer, "termMonths">,
+): PayInterval => (offer.termMonths === 1 ? "month" : "year");
 
 /** One program per entry, in name order, from the offers on sale. */
 export function fundingPrograms(offers: readonly FundingOffer[]) {
   const programs = new Map<string, FundingOffer[]>();
   for (const offer of offers)
-    programs.set(offer.programId, [...(programs.get(offer.programId) ?? []), offer]);
+    programs.set(offer.programId, [
+      ...(programs.get(offer.programId) ?? []),
+      offer,
+    ]);
   return [...programs.entries()]
     .map(([id, offers]) => ({
       id,
@@ -80,7 +87,7 @@ export const purchaseStatusOptions = (
   poll = false,
 ) =>
   queryOptions({
-    queryKey: ["account", session.accountId, "billing", "status", learnerId],
+    queryKey: qk.account(session.accountId, "billing", "status", learnerId),
     queryFn: ({ signal }) =>
       request(
         `/billing/status/${encodeURIComponent(learnerId)}`,
@@ -95,7 +102,10 @@ export const purchaseStatusOptions = (
   });
 
 /** The learner the paid checkout was for, from the server's record. */
-export async function purchaseLearner(session: AuthSession, purchaseId: string) {
+export async function purchaseLearner(
+  session: AuthSession,
+  purchaseId: string,
+) {
   const { learnerId } = await request(
     `/billing/purchase/${encodeURIComponent(purchaseId)}`,
     z.object({ learnerId: z.string().nullable() }),
@@ -202,9 +212,12 @@ export type FundingRequestView = z.infer<typeof fundingRequestSchema>;
 
 /** One claimed invoice: its program, status and submission deadline. Under
  * Billing's funding-records key, so whatever refreshes Billing refreshes it. */
-export const fundingRequestOptions = (session: AuthSession, invoiceId: string) =>
+export const fundingRequestOptions = (
+  session: AuthSession,
+  invoiceId: string,
+) =>
   queryOptions({
-    queryKey: [...fundingRecordsKey(session.accountId), invoiceId],
+    queryKey: qk.account(session.accountId, "funding-records", invoiceId),
     queryFn: ({ signal }) =>
       request(
         `/funding/requests/${encodeURIComponent(invoiceId)}`,
@@ -218,7 +231,12 @@ export const fundingRequestOptions = (session: AuthSession, invoiceId: string) =
  * funded-delivery worker. Polled until it settles. */
 export const invoiceEmailOptions = (session: AuthSession, invoiceId: string) =>
   queryOptions({
-    queryKey: ["account", session.accountId, "funding-invoices", "email", invoiceId],
+    queryKey: qk.account(
+      session.accountId,
+      "funding-invoices",
+      "email",
+      invoiceId,
+    ),
     queryFn: async ({ signal }) => {
       const { invoices } = await request(
         "/funding/invoices",
@@ -232,7 +250,9 @@ export const invoiceEmailOptions = (session: AuthSession, invoiceId: string) =>
         }),
         { token: session.token, signal },
       );
-      return invoices.find((entry) => entry.id === invoiceId)?.emailStatus ?? null;
+      return (
+        invoices.find((entry) => entry.id === invoiceId)?.emailStatus ?? null
+      );
     },
     refetchInterval: (query) =>
       query.state.data === "queued" && query.state.dataUpdateCount < 40
@@ -259,7 +279,8 @@ const invoiceFailures: Record<string, string> = {
     "This program’s price or terms just changed. Go back to the plan to see the current one.",
   verified_consent_required:
     "This learner needs a parent’s consent before they can learn. Confirm it in Privacy, then create the invoice again.",
-  family_holder_only: "Only the family’s account holder can pay for its children.",
+  family_holder_only:
+    "Only the family’s account holder can pay for its children.",
   learner_not_found: "This learner isn’t in your account anymore.",
   invoice_already_claimed: "This invoice already belongs to another learner.",
 };
@@ -354,7 +375,9 @@ export function useDownloadInvoice(session: AuthSession) {
   return useMutation({
     mutationFn: async (invoice: { id: string; documentPolicy: string }) => {
       const kind =
-        invoice.documentPolicy === "named-student-invoice" ? "invoice" : "quote";
+        invoice.documentPolicy === "named-student-invoice"
+          ? "invoice"
+          : "quote";
       const response = await requestFetch(
         `/api/v1/funding/requests/${encodeURIComponent(invoice.id)}/${kind}`,
         { headers: { authorization: `Bearer ${session.token}` } },
@@ -387,7 +410,8 @@ export async function startOwnPractice(session: AuthSession) {
       token: session.token,
       body: {
         timezone:
-          Intl.DateTimeFormat().resolvedOptions().timeZone || "America/New_York",
+          Intl.DateTimeFormat().resolvedOptions().timeZone ||
+          "America/New_York",
       },
     },
   );

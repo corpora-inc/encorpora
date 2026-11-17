@@ -5,6 +5,7 @@ import { request, requestFetch } from "../../lib/api";
 import { invoiceOfferSchema } from "./invoice-offers";
 import { invoiceDocumentSchema } from "./invoice-document";
 import { fundingRecordSchema } from "./records";
+import { qk } from "../../lib/keys";
 
 export const purchaseOfferSchema = invoiceOfferSchema.extend({
   programId: z.string(),
@@ -43,7 +44,7 @@ export class InvoiceUnavailableError extends Error {}
  * offer snapshot. The URL contains its identifier, never billing details. */
 export const invoiceResumeOptions = (session: AuthSession, id: string) =>
   queryOptions({
-    queryKey: ["account", session.accountId, "active-funding-invoice", id],
+    queryKey: qk.account(session.accountId, "active-funding-invoice", id),
     staleTime: 0,
     retry: false,
     queryFn: async ({ signal }) => {

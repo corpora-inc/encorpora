@@ -60,7 +60,7 @@ export async function openTopicLesson(
 export const practiceThis = (page: Page) =>
   page
     .getByRole("dialog")
-    .getByRole("link", { name: /^Try this problem type/ });
+    .getByRole("link", { name: /^Practice/ });
 
 /** Practice one problem type from its short lesson. */
 export async function startTopic(
