@@ -10,6 +10,7 @@ const h = vi.hoisted(() => ({
   changed: null as
     null | ((session: AuthSession | null, change?: SessionChange) => void),
   mounts: 0,
+  exits: [] as string[],
 }));
 vi.mock("../../auth", async (original) => ({
   ...(await original<object>()),
@@ -45,10 +46,11 @@ const change = async (session: AuthSession | null, how: SessionChange = {}) => {
 
 beforeEach(() => {
   h.mounts = 0;
+  h.exits = [];
   queryClient.setQueryData(sessionOptions.queryKey, parent);
   queryClient.setQueryData(parentData, { kept: true });
   render(
-    <Providers>
+    <Providers onAccountExit={(previous) => h.exits.push(previous.accountId)}>
       <Screen />
     </Providers>,
   );
@@ -69,11 +71,14 @@ test("a family handoff keeps the screens and the parent's data, both ways", asyn
   await change(parent, { handoff: true });
   expect(instance()).toBe(1);
   expect(queryClient.getQueryData(parentData)).toEqual({ kept: true });
+  // Neither way leaves an account: the screen on view isn't re-guarded.
+  expect(h.exits).toEqual([]);
 });
 
 test("another person's account starts the tree and the account data again", async () => {
   await change(other);
   expect(instance()).toBe(2);
+  expect(h.exits).toEqual([parent.accountId]);
   expect(queryClient.getQueryData(parentData)).toBeUndefined();
 });
 

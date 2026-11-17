@@ -51,7 +51,7 @@ import { loadFrontier } from "../lib/frontier-load";
 import { FILM_CAPABILITY } from "../../content/lesson-films";
 import { noteActiveProblem } from "../lib/student-activity";
 import { forgetHelp, helpUsedBefore, noteHelp } from "../lib/help-events";
-import { Link, useRouter } from "@tanstack/react-router";
+import { Link, useRouter, useRouterState } from "@tanstack/react-router";
 import { buttonClass } from "../ui/Button";
 import { closeTo } from "../lib/return-to";
 import { ROOT } from "../nav/root";
@@ -273,6 +273,8 @@ function practiceLearner(
 }
 export function LegacyApp() {
   const session = useQuery(sessionOptions);
+  const idle = useRouterState({ select: (state) => state.status === "idle" });
+  const shownAccount = useRef<string | null>(null);
   if (session.isPending) return <LoadingScreen />;
   if (session.error)
     return (
@@ -283,11 +285,23 @@ export function LegacyApp() {
     );
   // Account changes reset all private screen state together. A resolved session
   // is an input to the screen, not a second state machine that catches up later.
-  return <LegacyScreen key={session.data?.accountId ?? "guest"} />;
+  // While another screen loads (Back from a child's practice ends their
+  // session on the way), the screen on view keeps its account: it is leaving,
+  // so it never starts again, blank, for the next one (as useAppRoute keeps
+  // its address).
+  const account = session.data?.accountId ?? "guest";
+  if (idle) shownAccount.current = account;
+  const shown = shownAccount.current ?? account;
+  return <LegacyScreen key={shown} owner={shown === "guest" ? null : shown} />;
 }
-function LegacyScreen() {
-  // Keyed by its account above: one screen per session, never two.
-  const session = useSessionOrNull();
+function LegacyScreen({ owner }: { owner: string | null }) {
+  // One account's screen (keyed by it above). While it leaves (another
+  // account's session arrived with the screen that replaces it), it stays
+  // that account's: nothing on it redraws for the next one.
+  const live = useSessionOrNull();
+  const own = useRef(live);
+  if ((live?.accountId ?? null) === owner) own.current = live;
+  const session = own.current;
   const route = useAppRoute();
   const router = useRouter();
   const { navigate } = route;
