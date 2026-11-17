@@ -38,7 +38,7 @@ AMP is an independent TypeScript/PostgreSQL mathematics product. Follow the repo
 
 ### Frontend architecture (non-negotiable, enforced in CI)
 
-AMP's web app is built to an elite engineering standard, not as a pile of one-off screens. An audit on 2026-11-16 found 88 redirects, 39 query-string handoffs, 14 separate "where next" functions, the current learner held in 7 places, and about 13 pay surfaces. Those produced redirect chains and a Back button that hung the tab. Never reintroduce these patterns. Ratchet tests and lint hold every count to "only falls".
+AMP's web app is built to an elite engineering standard, not as a pile of one-off screens. An audit on 2026-11-16 found 88 redirects, 39 query-string handoffs, 14 separate "where next" functions, the current learner held in 7 places, and about 13 pay surfaces. Those produced redirect chains and a Back button that hung the tab. Never reintroduce these patterns. Ratchet tests and lint hold every count to "only falls" (`tests/architecture-ratchet.test.ts`; lower its baseline as counts fall).
 
 - **Canonical global state.** Every fact has exactly one owner:
   - Server data lives in the TanStack Query cache, behind a key factory, and changes only through mutations that invalidate everything that shows it.

@@ -43,6 +43,11 @@ PROTECTED_DATABASE = {
 
 FILM_MANIFEST = 'amp/src/content/films/manifest.json'
 FILM_MANIFEST_TEST = 'tests/lesson-films.test.ts'
+# The frontend architecture ratchet (amp/AGENTS.md, "Frontend architecture"):
+# every change to the web app, or to its baseline, runs it, quick checks too.
+RATCHET_BASELINE = 'amp/tests/architecture-ratchet.baseline.json'
+RATCHET_TEST = 'tests/architecture-ratchet.test.ts'
+WEB = 'amp/src/web/'
 
 
 def test_catalog(root):
@@ -190,6 +195,12 @@ def plan(paths, root=ROOT, full=False, quick=False):
             result['typecheck'] = True
             reasons.append('Published lesson-film manifest')
             continue
+        # The ratchet's counts: data only its own test reads.
+        if path == RATCHET_BASELINE:
+            result['core'].append(RATCHET_TEST)
+            targeted['core'].append(RATCHET_TEST)
+            reasons.append('Architecture ratchet baseline')
+            continue
         if path.startswith('amp/docs/') or path in ('amp/README.md', 'amp/AGENTS.md'):
             reasons.append('Documentation only')
             continue
@@ -262,6 +273,8 @@ def plan(paths, root=ROOT, full=False, quick=False):
                    for name, files in catalog.items()}
         if result['build']:
             changed['core'].extend(p for p in SMOKE_CORE if p in catalog['core'])
+        if any(p.startswith(WEB) for p in paths):
+            changed['core'].append(RATCHET_TEST)
         # Source-artifact completeness is cheap enough for every AMP PR and
         # queue candidate, including oracle-, test- and documentation-only edits.
         if result['affected']:
