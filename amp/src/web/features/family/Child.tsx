@@ -113,7 +113,7 @@ export function ChildScreen() {
               params={{ _splat: familyHref(family) }}
               className={buttonClass("primary")}
             >
-              Back to Today
+              Open Today
             </Link>
           }
         >

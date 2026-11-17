@@ -96,7 +96,7 @@ export function FamilyMissingScreen() {
             params={{ _splat: familyHref(place.family) }}
             className={buttonClass("primary")}
           >
-            Back to Today
+            Open Today
           </Link>
         }
       ></EmptyState>

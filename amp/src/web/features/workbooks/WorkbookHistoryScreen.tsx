@@ -11,6 +11,7 @@ import { TextField } from "../../ui/TextField";
 import { awaitingResults, workbookByCode, workbookHistoryOptions } from "./api";
 import { canMakeWorkbook, localDate, workbookMessage } from "./model";
 import { AllowancePause } from "../continue/AllowancePause";
+import { PageHeader } from "../../ui/PageHeader";
 import { WorkbookFrame, whose, type WorkbookLearner } from "./WorkbookFrame";
 import { WorkbookList } from "./WorkbookList";
 import styles from "./Workbooks.module.css";
@@ -51,8 +52,6 @@ export function WorkbookHistory({
   const who = whose(learner);
   const canMake = canMakeWorkbook(learner);
   const workbooks = history.data?.workbooks;
-  // A part of a child's page has no page header of its own.
-  const Head = section ? "div" : "header";
   const none = workbooks?.length === 0;
   const today = (label: string) => (
     <Link
@@ -64,48 +63,49 @@ export function WorkbookHistory({
       {label}
     </Link>
   );
+  const actions = (
+    <div className={styles.listActions}>
+      {workbooks && awaitingResults(workbooks) && (
+        <Button
+          variant="secondary"
+          onClick={() => setEntering(true)}
+          data-results-code
+        >
+          Enter results with a code
+        </Button>
+      )}
+      {canMake &&
+        (workbooks || history.error ? (
+          today(none ? "Make a workbook" : "Today’s workbook")
+        ) : (
+          <span
+            className={`${styles.actionSkeleton} amp-skeleton`}
+            aria-hidden="true"
+          >
+            <span />
+          </span>
+        ))}
+    </div>
+  );
   return (
     <>
-      <Head className={`${styles.listHead} ${section ? styles.inSection : ""}`}>
-        {section ? (
+      {section ? (
+        // A part of a child's page: its heading and its one action, empty
+        // or not.
+        <div className={styles.sectionHead}>
           <h2 id="child-workbooks">Workbooks</h2>
-        ) : (
-          <div className={styles.listTitle}>
-            {who.label && <p className={styles.learnerLabel}>{who.label}</p>}
-            <h1 className={styles.title}>
-              {who.own ? "Your workbooks" : "Workbooks"}
-            </h1>
-          </div>
-        )}
-        {/* The actions land with the list: the first workbook is made from
-            the empty list's own button, and results by code are offered only
-            while a workbook waits for them. On a child's page the list's
-            one action is its own, empty or not. */}
-        {(!none || section) && (
-          <div className={styles.listActions}>
-            {workbooks && awaitingResults(workbooks) && (
-              <Button
-                variant="secondary"
-                onClick={() => setEntering(true)}
-                data-results-code
-              >
-                Enter results with a code
-              </Button>
-            )}
-            {canMake &&
-              (workbooks || history.error ? (
-                today(none ? "Make a workbook" : "Today’s workbook")
-              ) : (
-                <span
-                  className={`${styles.actionSkeleton} amp-skeleton`}
-                  aria-hidden="true"
-                >
-                  <span />
-                </span>
-              ))}
-          </div>
-        )}
-      </Head>
+          {actions}
+        </div>
+      ) : (
+        <PageHeader
+          title={who.own ? "Your workbooks" : "Workbooks"}
+          subtitle={who.label}
+          // The actions land with the list: the first workbook is made from
+          // the empty list's own button, and results by code are offered
+          // only while a workbook waits for them.
+          actions={!none && actions}
+        />
+      )}
       {!canMake && (
         <AllowancePause
           kind="workbooks"
