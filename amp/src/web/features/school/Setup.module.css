@@ -1,72 +1,16 @@
-/* Guided setup: a ledger that writes itself on the left, one question on the
-   right, and the same bottom edge for what comes next on every step. */
-.frame {
+/* Guided setup (SetupScreen): the shared stepper, one question, and what
+   comes next at the same bottom edge on every step, on a standard Page. */
+.page {
   --target-size: 44px;
-  --gutter: var(--space-4);
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: auto minmax(0, 1fr) auto;
-  min-height: 100dvh;
-  background: var(--color-surface);
-  color: var(--color-on-surface);
+  --gutter: var(--page-gutter);
   font-size: var(--text-dense);
   line-height: 1.45;
-}
-.rail {
-  display: none;
-}
-.bar {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: var(--space-1) var(--space-3);
-  padding: var(--space-2) var(--gutter) var(--space-3);
-}
-.bar > :first-child {
-  padding-inline: 0;
-}
-.barStep {
-  color: var(--color-muted-text);
-  font-size: var(--text-table);
-  font-variant-numeric: var(--numeric);
-  white-space: nowrap;
-}
-.barMeter {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: var(--space-1);
-}
-.barMeter span {
-  height: 4px;
-  border-radius: 2px;
-  background: var(--color-border);
-  transition: background-color var(--motion-fast);
-}
-.barMeter span[data-filled] {
-  background: var(--color-primary);
-}
-.barPlaces,
-.places {
-  display: grid;
-}
-.barPlaces {
-  grid-column: 1 / -1;
-  padding-top: var(--space-2);
-}
-.places {
-  margin-top: calc(-1 * var(--space-4));
-}
-.main {
-  min-width: 0;
-  padding: var(--space-5) var(--gutter) var(--space-6);
 }
 .question {
   display: grid;
   /* A wide child wraps or scrolls in place; it never widens the question. */
   grid-template-columns: minmax(0, 1fr);
   gap: var(--space-5);
-  max-width: 600px;
   animation: enter 240ms var(--ease-standard);
 }
 .question h1 {
@@ -87,18 +31,16 @@
   position: sticky;
   bottom: 0;
   z-index: 5;
-  padding: var(--space-3) var(--gutter)
-    max(var(--space-3), env(safe-area-inset-bottom));
+  padding: var(--space-3) 0 max(var(--space-3), env(safe-area-inset-bottom));
   background: var(--color-surface);
   box-shadow: inset 0 1px 0 var(--color-border);
 }
 .footerInner {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: var(--space-3);
-  width: 100%;
-  max-width: 600px;
 }
 .footerRight {
   display: flex;
@@ -109,134 +51,6 @@
   min-width: 132px;
   min-height: 48px;
 }
-.back {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  margin-inline-start: calc(-1 * var(--space-3));
-  padding-inline: var(--space-3);
-  border-radius: var(--radius-control);
-  color: var(--color-primary);
-  font-weight: 600;
-  text-decoration: none;
-}
-.back:hover {
-  background: var(--color-secondary);
-}
-.back:focus-visible {
-  outline: 3px solid var(--color-focus-ring);
-  outline-offset: 2px;
-}
-@media (min-width: 1024px) {
-  .frame {
-    --gutter: var(--space-8);
-    grid-template-columns: 320px minmax(0, 1fr);
-    grid-template-rows: minmax(0, 1fr) auto;
-  }
-  .bar {
-    display: none;
-  }
-  .rail {
-    grid-row: 1 / -1;
-    position: sticky;
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-7);
-    height: 100dvh;
-    padding: var(--space-4) var(--space-4) var(--space-5);
-    background: var(--color-rail);
-    color: var(--color-on-rail);
-  }
-  .main {
-    padding-block: clamp(var(--space-7), 11vh, 112px) var(--space-7);
-  }
-}
-
-/* The ledger. */
-.ledger {
-  display: grid;
-  gap: var(--space-1);
-}
-.ledgerRow {
-  display: grid;
-  grid-template-columns: 28px minmax(0, 1fr);
-  gap: var(--space-3);
-  align-items: start;
-  min-height: 56px;
-  padding: var(--space-3) var(--space-2);
-  border-radius: var(--radius-small);
-  color: inherit;
-  text-decoration: none;
-}
-a.ledgerRow:hover {
-  background: var(--color-rail-hover);
-}
-a.ledgerRow:focus-visible {
-  outline: 3px solid var(--color-focus-ring);
-  outline-offset: -3px;
-}
-.ledgerMark {
-  display: grid;
-  place-items: center;
-  width: 28px;
-  height: 28px;
-  border: 1px solid var(--color-border-strong);
-  border-radius: 50%;
-  color: var(--color-muted-text);
-  font-size: var(--text-table-small);
-  font-weight: 600;
-  font-variant-numeric: var(--numeric);
-}
-.ledgerMark svg {
-  width: 14px;
-  height: 14px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-li[data-state="current"] .ledgerMark {
-  border-color: var(--color-primary);
-  background: var(--color-primary);
-  color: var(--color-on-primary);
-}
-li[data-state="done"] .ledgerMark {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
-.ledgerText {
-  display: grid;
-  gap: 2px;
-  min-width: 0;
-  padding-top: 3px;
-}
-.ledgerName {
-  font-size: var(--text-table);
-  font-weight: 600;
-  line-height: 1.3;
-}
-li[data-state="next"] .ledgerName {
-  color: var(--color-muted-text);
-  font-weight: 500;
-}
-/* One line under every step, there from the start: what the step asks, then
-   its answer in the same place, so nothing below it moves. A long answer keeps
-   to the line, whole in its title. */
-.ledgerAnswer {
-  overflow: hidden;
-  color: var(--color-muted-text);
-  font-size: var(--text-table-small);
-  line-height: 1.35;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.ledgerAnswer[data-answered] {
-  color: inherit;
-}
-
-/* Forms. */
 .form {
   display: grid;
   gap: var(--space-4);
@@ -281,7 +95,7 @@ li[data-state="next"] .ledgerName {
   /* Side by side until a date no longer fits on one line. */
   grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
   gap: var(--space-3);
-  max-width: 480px;
+  max-width: var(--page-narrow);
 }
 .waiting {
   min-height: 240px;

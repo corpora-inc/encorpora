@@ -57,6 +57,8 @@ export function shellFrame(
       board: false,
     };
   if (path === "/school/new") return null;
+  // A school's guided setup: the app's plain bar over its own stepper.
+  if (/^\/school\/[^/]+\/setup(?:\/|$)/.test(path)) return { kind: "plain" };
   if (
     [
       "/school/invite",

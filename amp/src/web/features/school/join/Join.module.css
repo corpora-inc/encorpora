@@ -48,10 +48,10 @@
   min-width: 0;
   max-width: 24rem;
 }
+/* The screen's Page column (JoinFrame): one thing to do, centred. */
 .main {
   display: grid;
   min-width: 0;
-  padding: var(--space-3) var(--gutter) var(--space-7);
 }
 .column {
   display: grid;
@@ -59,8 +59,6 @@
   justify-items: center;
   gap: var(--space-4);
   width: 100%;
-  max-width: 620px;
-  margin: 0 auto;
   padding-bottom: 8dvh;
   text-align: center;
 }
@@ -72,8 +70,6 @@
   align-content: start;
   gap: var(--space-2);
   width: 100%;
-  max-width: 1080px;
-  margin: 0 auto;
 }
 .title {
   margin: 0;
@@ -201,7 +197,7 @@
 .bigButton.bigButton {
   gap: var(--space-3);
   width: 100%;
-  max-width: 420px;
+  max-width: var(--page-narrow);
   min-height: 72px;
   border-radius: var(--radius-panel);
   font-size: clamp(20px, 5.4vw, 24px);
@@ -333,7 +329,9 @@
   position: relative;
   display: grid;
   width: 100%;
-  max-width: max(280px, calc(100dvh - 480px));
+  /* The room the screen's mark, name and prompt take above it. */
+  --chrome-block: 480px;
+  max-width: max(280px, calc(100dvh - var(--chrome-block)));
 }
 .grid {
   display: grid;
@@ -393,8 +391,6 @@
     align-content: center;
     align-items: center;
     gap: clamp(32px, 5vw, 80px);
-    max-width: 1320px;
-    margin: 0 auto;
   }
   .pad {
     width: min(calc(100dvh - 136px), 56vw);
