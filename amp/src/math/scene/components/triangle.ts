@@ -156,7 +156,14 @@ registerComponent("triangle", {
           color: side.color ?? "ink",
           halo: true,
           align: [ax as -1 | 0 | 1, ay as -1 | 0 | 1],
-          offset: [normal[0] * 10, -normal[1] * 10],
+          // Beside the side's middle, or slid along it, clear of the vertex
+          // names (placed first) at a short side's ends.
+          place: [0, 10, -10, 20, -20].map((k) => [
+            normal[0] * 10 + along[0] * k,
+            -normal[1] * 10 - along[1] * k,
+            ax as -1 | 0 | 1,
+            ay as -1 | 0 | 1,
+          ]),
         });
       }
     }
