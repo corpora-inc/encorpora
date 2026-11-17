@@ -994,8 +994,18 @@ function MapSearchField({
 } & Omit<ComponentProps<typeof SiteSearchField>, "field">) {
   const field = useUrlSearchText(saved, save);
   useImperativeHandle(handle, () => ({ flush: field.flush }), [field.flush]);
+  // A keystroke hands the query over in the same event, so the results
+  // follow in the very next (interruptible) render; a change from
+  // elsewhere (the map's view, a clear) follows once it lands.
   useEffect(() => {
     startTransition(() => onQuery(field.text));
   }, [field.text]);
-  return <SiteSearchField field={field} {...props} />;
+  const typed = {
+    ...field,
+    change: (value: string) => {
+      field.change(value);
+      startTransition(() => onQuery(value));
+    },
+  };
+  return <SiteSearchField field={typed} {...props} />;
 }
