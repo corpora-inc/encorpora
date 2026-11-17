@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Recovers a page whose code fails to load or run (public/entry-guard.js).
+      Deferred scripts run in document order: it starts before the app's. -->
+    <script vite-ignore defer src="/entry-guard.js"></script>
     <!-- Discover math fonts before the application module executes. -->
     <link
       rel="preload"
@@ -139,7 +142,47 @@
         max-width: 32ch;
         line-height: 1.5;
       }
+      /* The entry guard's Reload (public/entry-guard.js): before any
+         stylesheet, so it matches the app's primary button on its own. */
+      .app-recovery-button {
+        min-height: 44px;
+        padding: 0 20px;
+        border: 0;
+        border-radius: 999px;
+        background: var(--color-primary, #1f5f55);
+        color: var(--color-on-primary, #ffffff);
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .app-recovery-button:focus-visible {
+        outline: 3px solid var(--color-primary, #1f5f55);
+        outline-offset: 2px;
+      }
+      .app-recovery-toast {
+        position: fixed;
+        z-index: 2147483647;
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        max-width: 480px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        padding: 16px;
+        border-radius: 16px;
+        background: var(--color-surface, #f7f6f0);
+        color: var(--color-on-surface, #183e3a);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.24);
+      }
       @media (prefers-color-scheme: dark) {
+        .app-recovery-button {
+          background: var(--color-primary, #8bd1b5);
+          color: var(--color-on-primary, #122522);
+        }
+        .app-recovery-toast {
+          background: var(--color-surface, #122522);
+          color: var(--color-on-surface, #e9f0e8);
+        }
         html,
         body {
           background: #122522;

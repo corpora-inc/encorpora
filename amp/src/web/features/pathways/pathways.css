@@ -778,6 +778,16 @@
     gap: 2px;
   }
 }
+/* A phone: the camera's controls stay on one row of 44 px targets. Zoom is
+   the two-finger pinch there, so + and − give their room to the rest. */
+@media (max-width: 420px) {
+  .pathways-camera {
+    flex-wrap: nowrap;
+  }
+  .pathways-camera [data-camera="zoom"] {
+    display: none;
+  }
+}
 
 .pathways-brand,
 .pathways-status > a {

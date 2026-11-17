@@ -3,7 +3,8 @@ import { useState } from "react";
 import type { ProgressRecord } from "../../../schools/teacher-contracts";
 import { Loading } from "../../ui/Loading";
 import { Segmented } from "../../ui/Segmented";
-import { number, shortDay, TipZone } from "../school/classes/teacher-shared";
+import { shortDay, TipZone } from "../school/classes/teacher-shared";
+import { practiceMinutes } from "../../lib/practice-minutes";
 import { childTimeOptions } from "./api";
 import type { FamilyPlace } from "./FamilyFrame";
 import styles from "./ChildActivity.module.css";
@@ -14,6 +15,17 @@ const shift = (day: string, offset: number) =>
     .slice(0, 10);
 
 export type Interval = { date: string; minutes: number; problems?: number };
+
+/** A day's or a week's practice in words, the one way every family screen
+ * says it (lib/practice-minutes.ts): "4 min · 9 problems", "<1 min · 14
+ * problems", "1 min"; null when nothing was done. */
+export function practiceTime(entry: Interval): string | null {
+  const minutes = practiceMinutes(entry.minutes, entry.problems ?? 0);
+  if (!minutes) return null;
+  return entry.problems === undefined
+    ? minutes
+    : `${minutes} · ${entry.problems} ${entry.problems === 1 ? "problem" : "problems"}`;
+}
 
 /** Daily and weekly activity share one chart, beginning with practice.
  * Keep quiet intervals after that first practice; a single interval is a fact. */
@@ -56,12 +68,7 @@ export function ChildActivity({
   const shown = first < 0 ? [] : intervals.slice(first);
   const label = (entry: Interval) =>
     unit === "week" ? `Week of ${shortDay(entry.date)}` : shortDay(entry.date);
-  const detail = (entry: Interval) =>
-    `${number(entry.minutes)} min${
-      entry.problems === undefined
-        ? ""
-        : ` · ${entry.problems} ${entry.problems === 1 ? "problem" : "problems"}`
-    }`;
+  const detail = (entry: Interval) => practiceTime(entry) ?? "no practice";
   return (
     <section aria-labelledby="child-time" className={styles.activity}>
       <div className={styles.head}>

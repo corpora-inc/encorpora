@@ -1,9 +1,9 @@
 import { useQueries } from "@tanstack/react-query";
-import { minutesFigure } from "../../../schools/practice-rules";
 import { Button } from "../../ui/Button";
 import { number, shortDay, TipZone } from "../school/classes/teacher-shared";
+import { practiceMinutes } from "../../lib/practice-minutes";
 import { childTimeOptions } from "./api";
-import type { Interval } from "./ChildActivity";
+import { practiceTime, type Interval } from "./ChildActivity";
 import type { FamilyPlace } from "./FamilyFrame";
 import styles from "./FamilyWeek.module.css";
 
@@ -56,11 +56,7 @@ export function FamilyWeek({ place }: { place: FamilyPlace }) {
   const largest = Math.max(1, ...days.map((entry) => entry.minutes));
   const label = (entry: Interval) =>
     `${entry.date === data.today.date ? "Today" : shortDay(entry.date)}: ${
-      entry.minutes || entry.problems
-        ? `${number(entry.minutes)} min · ${entry.problems ?? 0} ${
-            entry.problems === 1 ? "problem" : "problems"
-          }`
-        : "no practice"
+      practiceTime(entry) ?? "no practice"
     }`;
   return (
     <section
@@ -71,7 +67,7 @@ export function FamilyWeek({ place }: { place: FamilyPlace }) {
       <div className={styles.head}>
         <h2 id="family-week">This week</h2>
         <p data-family-week-facts="">
-          {minutesFigure(week.minutes)} min
+          {practiceMinutes(week.minutes, week.problems)}
           {week.objectives > 0 &&
             ` · ${number(week.objectives)} ${
               week.objectives === 1 ? "skill earned" : "skills earned"

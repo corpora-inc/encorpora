@@ -65,6 +65,7 @@ import {
   knowStudentFirst,
   requireSignedIn,
   signInTarget,
+  toOnlyPlace,
   toOwnPlace,
   withQuery,
 } from "./sign-in-gate";
@@ -392,15 +393,21 @@ const home = createRoute({
     }
     return { pitch: shown };
   },
-  // `/` never decides for anyone: signed out it is the pitch, signed in the
-  // launcher, a real screen whether reached by a link or by Back. Only an
-  // address that carries a handoff (an auth link, a payment's return, a
-  // consent challenge) goes on, once, to the screen that handles it.
-  // (Old `/?sign-in`, `/?reset-password` and a consent email's link are
+  // Signed out, `/` is the pitch. Signed in with one place (a parent with
+  // one family), there is nothing to choose: one hop to that place
+  // (docs/design/ia.md, Navigation rule 6). With several, the launcher, a
+  // real screen whether reached by a link or by Back. An address that
+  // carries a handoff (an auth link, a payment's return, a consent
+  // challenge) goes on, once, to the screen that handles it first. (Old
+  // `/?sign-in`, `/?reset-password` and a consent email's link are
   // app/legacy-aliases.ts rows.)
-  beforeLoad: async ({ location }) => {
+  beforeLoad: async ({ location, preload }) => {
     if (nativeRuntime) return;
     await homeReturn(location);
+    // A hover's preload decides nothing (and reads nothing fresh).
+    if (preload) return;
+    const session = await queryClient.ensureQueryData(sessionOptions);
+    if (session) await toOnlyPlace(session);
   },
 });
 /** The launcher's account and places, read before it paints. */
@@ -741,11 +748,12 @@ const pathwaysIndex = createRoute({
 /** A skill open over your own map: the map stays mounted under it (this
  * route draws nothing of its own; nav/links.tsx `useLayers` reads the
  * skill from the address), and it is the map's overlay one leaf below it,
- * so Back to the map keeps the map's scroll (`overList`). */
+ * so Back to the map keeps the map's scroll (`overList`). Its space is
+ * the map's (`pathways`, the deepest route that declares one). */
 const pathwaysSkill = createRoute({
   getParentRoute: () => pathways,
   path: "$skill",
-  staticData: { space: "learner", overList: true },
+  staticData: { overList: true },
 });
 /** A learner's workbooks are a tab of their Progress. The address names
  * the learner (`$learnerId`): the screen reads it from there, and once the

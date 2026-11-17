@@ -2,6 +2,7 @@ import { SchoolError } from "./contracts.js";
 import { adultNameSql } from "../account/profile.js";
 import type { Pool } from "pg";
 import { levelAndRange } from "../learning/level-check.js";
+import { EARNED_AFTER } from "../learning/earned.js";
 import { hasProblemLesson } from "../content/problem-lessons.js";
 import { templates } from "../math/engine.js";
 import {
@@ -77,6 +78,8 @@ import {
 } from "./today.js";
 
 const DAY = 86_400_000;
+/** Before any AMP record: a span from here covers every day of one. */
+const EVER = "2000-01-01";
 const shift = (iso: string, days: number) =>
   new Date(Date.parse(`${iso}T00:00:00Z`) + days * DAY)
     .toISOString()
@@ -200,6 +203,9 @@ export async function readToday(
         endOn: null,
       })),
       policy,
+      // A family's week counts what its children earned, as their pages and
+      // Pathways do (learning/earned.ts); a class counts a grade's objectives.
+      projection ? EARNED_AFTER : undefined,
     ),
     perSkill(pool, roster, { from, to: today }),
   ]);
@@ -236,7 +242,7 @@ export async function readToday(
       reviewIndependent: lately?.reviewIndependent ?? 0,
       objectivesThisWeek: countedObjectives(
         objectives.get(student.id) ?? [],
-        stored?.overall.level,
+        projection ? null : stored?.overall.level,
         policy,
       ).length,
     };
@@ -794,9 +800,11 @@ export async function readProgress(
   timezone: string,
   today: string,
   reference: { from: number; to: number } | null,
-  /** "counted": objectives as a grade counts them (above the student's
-   * working level less the reach). "all": every one gained, for the
-   * learner's own record, where something earned never disappears. */
+  /** "counted": objectives as a grade counts them (shown twice on their
+   * own, above the student's working level less the reach, this year).
+   * "all": every skill earned (learning/earned.ts), ever, for a family's or
+   * an adult's own record, where something earned never disappears: the
+   * same skills Pathways lights. */
   objectiveList: "counted" | "all" = "counted",
 ): Promise<ProgressRecord> {
   const roster: RosterMember[] = [
@@ -804,23 +812,31 @@ export async function readProgress(
   ];
   const firstWeek = shift(weekStart(today), -7 * 11);
   const lastTerm = shift(today, -365);
+  const all = objectiveList === "all";
+  // Earned stays earned: the whole record, not this year's.
+  const since = all ? EVER : lastTerm;
   const [stored, days, objectives, work] = await Promise.all([
     levels(pool, roster),
     perDay(pool, roster, { from: firstWeek, to: today }),
-    objectivesBySpan(pool, [
-      {
-        id: member.personId,
-        learnerId: member.learnerId,
-        name: "",
-        first: "",
-        identifier: null,
-        gradeLevel: member.gradeLevel,
-        from: lastTerm,
-        to: today,
-        beginOn: lastTerm,
-        endOn: null,
-      },
-    ]),
+    objectivesBySpan(
+      pool,
+      [
+        {
+          id: member.personId,
+          learnerId: member.learnerId,
+          name: "",
+          first: "",
+          identifier: null,
+          gradeLevel: member.gradeLevel,
+          from: since,
+          to: today,
+          beginOn: since,
+          endOn: null,
+        },
+      ],
+      DEFAULT_GRADE_POLICY,
+      all ? EARNED_AFTER : undefined,
+    ),
     workSamples(
       pool,
       member.learnerId,
@@ -830,6 +846,10 @@ export async function readProgress(
     ),
   ]);
   const level = stored[0] ?? null;
+  const gained = countedObjectives(
+    objectives.get(member.personId) ?? [],
+    level && !all ? level.overall.level - 1 : null,
+  );
   const weekly = new Map<string, number>();
   for (const row of days) {
     const week = weekStart(row.day);
@@ -858,21 +878,22 @@ export async function readProgress(
           )
           .map(([id]) => ({ id, label: strandLabel(id) }))
       : [],
+    // A family's or an adult's own record: exact minutes, rounded once as
+    // they are shown (web/lib/practice-minutes.ts), so a week of 40 seconds
+    // is "<1 min" here as on Today. A teacher's record keeps whole minutes.
     weeks: mondays({ from: firstWeek, to: today }).map((week) => ({
       week,
-      minutes: Math.round(weekly.get(week) ?? 0),
+      minutes: all
+        ? (weekly.get(week) ?? 0)
+        : Math.round(weekly.get(week) ?? 0),
     })),
-    objectives: countedObjectives(
-      objectives.get(member.personId) ?? [],
-      level && objectiveList === "counted" ? level.overall.level - 1 : null,
-    )
-      .slice(0, 10)
-      .map(({ skillId, day }) => ({
-        skillId,
-        day,
-        title: skillTitleOf(skillId),
-        strand: skillStrandOf(skillId),
-      })),
+    ...(all ? { earned: gained.length } : {}),
+    objectives: gained.slice(0, 10).map(({ skillId, day }) => ({
+      skillId,
+      day,
+      title: skillTitleOf(skillId),
+      strand: skillStrandOf(skillId),
+    })),
     work,
   };
 }

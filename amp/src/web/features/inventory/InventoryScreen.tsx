@@ -1,3 +1,4 @@
+import { isEarned } from "../../../learning/earned";
 import { childAddress, practiceParams } from "../spaces/identity";
 import { PracticeLabel } from "../practice/CurriculumPractice";
 import { ScreenTitle } from "../../ui/ScreenTitle";
@@ -73,7 +74,7 @@ function strength(e?: Evidence) {
 const shows = (filter: Filter, e?: Evidence) =>
   filter === "all" ||
   (filter === "tried" && !!e?.attempts) ||
-  (filter === "earned" && !!e?.independentCorrect) ||
+  (filter === "earned" && isEarned(e)) ||
   (filter === "strong" && e?.status === "review-ready");
 
 export function InventoryScreen() {

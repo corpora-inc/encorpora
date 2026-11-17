@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
 import type { PlaceGroup } from "../../spaces/places";
-import { launches } from "../destination";
+import { launches, onlyLaunch } from "../destination";
 
 const me = (over: Record<string, unknown> = {}) =>
   ({
@@ -79,4 +79,22 @@ test("a waiting gift opens first only while no child has access", () => {
     null,
   )[0]!;
   expect(covered.path).toBe("family/f1");
+});
+
+test("one place: `/` opens it (onlyLaunch), a parent with one family never meets a chooser of one", () => {
+  const family = [groups[0]!];
+  expect(onlyLaunch(me(), family, null)?.path).toBe("family/f1");
+  // Several places: the launcher chooses.
+  expect(onlyLaunch(me(), groups, null)).toBeNull();
+  // No place yet, a gift, a student: not a place, so `/` shows its screen.
+  expect(onlyLaunch(me({ next: "start" }), family, null)).toBeNull();
+  expect(
+    onlyLaunch(me({ account: { id: "s", kind: "student" } }), family, null),
+  ).toBeNull();
+  expect(
+    onlyLaunch(me({ next: "accept-gift", learners: [] }), family, null),
+  ).toBeNull();
+  // A level to practice at is a choice, never a place: own practice alone
+  // is still one place.
+  expect(onlyLaunch(me(), [groups[2]!], null)?.path).toBe("me");
 });

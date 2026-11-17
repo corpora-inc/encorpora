@@ -1,4 +1,5 @@
 import { Fragment, useState, type ReactNode } from "react";
+import { learnerWhere } from "../../lib/learner-where";
 import {
   gradeName,
   levelDetails,
@@ -71,10 +72,8 @@ export function plainLevel(estimate: Estimate) {
 /** What the first answers found, as the line under a level says it: "Best
  * guess Grade 8, likely Grade 6 and above." */
 export function foundLevel(estimate: Estimate) {
-  return words.found(
-    gradeName(estimate.level),
-    named(shownGrades(likelyRange(estimate))),
-  );
+  const where = learnerWhere(estimate);
+  return where ? words.found(where.bestName, named(where.range)) : words.notYet;
 }
 
 /** A likely range in short grade words (`scale.ts`). */
@@ -476,6 +475,8 @@ function AreaRow({
   const size = strong ? "large" : "regular";
   const estimate = area.estimate;
   const range = estimate ? likelyRange(estimate) : null;
+  // Where this learner is, the answer every screen gives (Pathways too).
+  const where = estimate ? learnerWhere(estimate) : null;
   /** The row's likely range at its end, in grade words or the scale's
    * numbers. */
   const rangeText = (shown: readonly [number, number]) =>
@@ -485,14 +486,10 @@ function AreaRow({
         ? `${shown[0].toFixed(1)}+`
         : `${shown[0].toFixed(1)}–${shown[1].toFixed(1)}`;
   const label =
-    !estimate || !range
+    !estimate || !range || !where
       ? `${area.label}: ${notStarted ?? words.notYet}`
       : numbers
-        ? words.row(
-            area.label,
-            gradeName(estimate.level),
-            named(shownGrades(range)),
-          )
+        ? words.row(area.label, where.bestName, named(where.range))
         : words.rowUnnumbered(area.label);
   // One shape before and after the first answer, so the same bar element
   // glides from the whole scale to the estimate (CP-5 r2 #2).

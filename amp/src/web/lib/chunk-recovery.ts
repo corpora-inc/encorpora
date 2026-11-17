@@ -17,6 +17,8 @@ const subscribers = new Set<() => void>();
 export const chunkNotice = () => notice;
 export const subscribeChunkNotice = (callback: () => void) => {
   subscribers.add(callback);
+  // The app's notice is up: the entry guard's fixed one, if any, leaves.
+  window.ampEntryGuard?.hide();
   return () => {
     subscribers.delete(callback);
   };
@@ -51,18 +53,55 @@ export function recoverChunkError(
     reloading = true;
     // Persist synchronously and use keepalive before replacing the document.
     flush(true);
-    location.reload();
+    reloadWithFreshFiles(error);
   } else if (showNotice) {
     notice = true;
     subscribers.forEach((callback) => callback());
+    // No app screen is up to show the notice (the light pitch, or a page
+    // whose app never mounted): the entry guard says it in place instead.
+    // Not for a background preload: the visitor asked for nothing yet, and
+    // the screen they do open reports its own failure.
+    if (!subscribers.size && !preload) showEntryRecovery();
   }
   return true;
+}
+
+/** Reloads the page after a file failed. Safari keeps a failed modulepreload
+ * in its memory cache across a reload, so the reloaded page would fail on the
+ * same file without asking the server (seen in WebKit, 2026-11-17). The entry
+ * guard (public/entry-guard.js), which hears every failed file, asks for them
+ * again past the cache first; this keeps the app's own bundle small. Every
+ * reload after a failed file goes through here, automatic or pressed. */
+export function reloadWithFreshFiles(error?: unknown): void {
+  const named = String((error as Error)?.message ?? "").match(
+    /https?:\/\/[^\s'"]+\/assets\/[\w.-]+\.(?:js|css)/,
+  )?.[0];
+  if (window.ampEntryGuard) window.ampEntryGuard.reload(named);
+  else location.reload();
+}
+
+declare global {
+  interface Window {
+    /** public/entry-guard.js, loaded by every document before the app. */
+    ampEntryGuard?: {
+      show(kind: "load" | "engine"): void;
+      hide(): void;
+      /** Asks again for the files that failed, then reloads (≤ 3 s). */
+      reload(url?: string): void;
+    };
+  }
+}
+function showEntryRecovery() {
+  if (window.ampEntryGuard) window.ampEntryGuard.show("load");
+  else console.error("AMP: a file didn’t load and no screen can say so");
 }
 let listening = false;
 /** Recovery must work even when analytics is disabled by a privacy preference. */
 export function startRuntimeRecovery() {
   if (listening) return;
   listening = true;
+  // From here the app recovers its own failures; the entry guard stands down.
+  document.documentElement.setAttribute("data-amp-runtime", "");
   watchReloadSafety();
   window.addEventListener("vite:preloadError", (event) => {
     recoverChunkError(

@@ -5,8 +5,9 @@ import { useHomeHref as useHomePlaceHref } from "../lib/home-place";
 import { chooseProgram, isProgramChoice } from "../lib/program-choice";
 
 /**
- * The root (docs/design/ia.md, "Navigation", rule 6). `/` never redirects:
- * signed out it is the pitch, signed in the launcher
+ * The root (docs/design/ia.md, "Navigation", rule 6). Signed out, `/` is
+ * the pitch; signed in with one place, one hop to it
+ * (app/sign-in-gate.ts `toOnlyPlace`); with several, the launcher
  * (features/home/Launcher.tsx). Every way home inside the app goes straight
  * to the person's own place instead (these links, sign-in's destination).
  */

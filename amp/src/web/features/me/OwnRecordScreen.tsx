@@ -317,7 +317,10 @@ export function activityShown(data: Pick<OwnPractice, "record" | "time">) {
             count(problems, "problem", "problems"),
           ].join(" · ")
         : null,
-    weeks: data.record.weeks.filter((week) => week.minutes > 0).length >= 2,
+    // Whole minutes, as the strip shows them (the record's are exact).
+    weeks:
+      data.record.weeks.filter((week) => Math.round(week.minutes) > 0).length >=
+      2,
     objectives: data.record.objectives.length > 0,
     work: data.record.work.length > 0,
   };

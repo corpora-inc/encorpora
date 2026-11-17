@@ -96,7 +96,12 @@ function levels(input: ProgressReportInput) {
 <p class="note legend"><span class="key"><span class="keyBand"></span>Likely range</span><span class="key"><span class="keyDot"></span>Best estimate</span>${reference ? `<span class="key"><span class="keyCourse"></span>This course</span>` : ""}<span>Ranges narrow as more work is read.</span></p>`;
 }
 
-function weeks(record: ProgressRecord) {
+function weeks(exact: ProgressRecord) {
+  // Whole minutes on paper (a record may carry exact ones).
+  const record = {
+    ...exact,
+    weeks: exact.weeks.map((w) => ({ ...w, minutes: Math.round(w.minutes) })),
+  };
   const largest = Math.max(1, ...record.weeks.map((w) => w.minutes));
   const total = record.weeks.reduce((sum, w) => sum + w.minutes, 0);
   const active = record.weeks.filter((w) => w.minutes > 0).length;

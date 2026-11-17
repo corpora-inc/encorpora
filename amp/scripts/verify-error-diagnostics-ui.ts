@@ -205,7 +205,11 @@ try {
             continue;
           }
           if (failure === "css")
-            await page.getByText("This screen could not be loaded.").waitFor();
+            await page
+              .getByText(
+                "This page didn’t finish loading. Check your connection, then reload.",
+              )
+              .waitFor();
           else {
             await page.locator('[data-provider="google"]').waitFor();
             await page.addScriptTag({

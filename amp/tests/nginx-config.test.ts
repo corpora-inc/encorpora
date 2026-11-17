@@ -33,6 +33,12 @@ test("a missing file is a 404, and prefix routes win over the file rule", () => 
   assert.match(conf, /location \^~ \/pathways\//);
 });
 
+test("a 404 is never stored, so a file missing mid-rollout loads on reload", () => {
+  assert.match(conf, /error_page 404 \/404\.html;/);
+  const block = /location = \/404\.html \{([^}]*)\}/.exec(conf)?.[1] ?? "";
+  assert.match(block, /add_header Cache-Control "no-store" always;/);
+});
+
 test("the security headers are complete and scripts stay restricted", () => {
   for (const header of [
     "Strict-Transport-Security",

@@ -79,6 +79,15 @@ const box = async (page: Page, selector: string): Promise<Box> => {
   assert.ok(found, `${selector} is laid out`);
   return found;
 };
+/** The question in the stage's content space: the stage may scroll it clear
+ * of the feedback sheet, which is not a move. */
+const questionBox = async (page: Page): Promise<Box> => {
+  const found = await box(page, ".question");
+  const scrolled = await page
+    .locator(".problem-stage")
+    .evaluate((stage) => stage.scrollTop);
+  return { ...found, y: found.y + scrolled };
+};
 const same = (a: Box, b: Box, label: string) =>
   assert.ok(
     Math.abs(a.x - b.x) < 0.5 &&
@@ -194,7 +203,7 @@ try {
       }
       await noOverflow(page, `${label} open`);
       await page.screenshot({ path: `${shots}${label}-1-open.png` });
-      const question = await box(page, ".question");
+      const question = await questionBox(page);
       const freeBefore = await freeUsed(learnerId);
       await shifts(page);
 
@@ -244,7 +253,7 @@ try {
       assert.notEqual(paints.sheet, paints.danger, `${label}: sheet is red`);
       assert.notEqual(paints.mark, paints.accent, `${label}: mark is red`);
       // The problem never moved.
-      same(question, await box(page, ".question"), `${label}: question`);
+      same(question, await questionBox(page), `${label}: question`);
       assert.deepEqual(
         await shifts(page),
         [],
@@ -299,6 +308,10 @@ try {
         `${label}: the worked steps are shown`,
       );
 
+      // Where "See why" opened its explanation over the sheet (an editor
+      // or figure dock beside the problem), it closes back to the sheet.
+      if (await page.locator("dialog[open]").count())
+        await page.keyboard.press("Escape");
       // Next continues with a new problem.
       await page.locator(".next-action").click();
       await page.locator(".feedback").waitFor({ state: "detached" });
