@@ -5,7 +5,8 @@ import { useCurrentLearner } from "../../learner-store";
 import { AppError, refused, standing } from "../../lib/AppError";
 import { isConfirmed } from "../../lib/session-generation";
 import { hasAccountContext } from "../../lib/account-page";
-import { meOptions, sessionOptions } from "../../lib/query";
+import { meOptions } from "../../lib/query";
+import { useSessionOrNull } from "../../lib/session";
 import {
   classesOptions,
   classYearOptions,
@@ -112,7 +113,7 @@ const failedLookup = (query: Answer<unknown>) =>
   !replaced(query.error);
 
 export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
-  const session = useQuery(sessionOptions).data ?? null;
+  const session = useSessionOrNull();
   const auth = session ?? { accountId: "", token: "" };
   const student = !!session?.accountId.startsWith("school:");
   // Public information, sign-in and the gallery never read the account
