@@ -1,3 +1,4 @@
+import type { LinkedMessage } from "../email/email.js";
 import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import type { Pool } from "pg";
 import {
@@ -220,6 +221,33 @@ export function defineShareRoutes(define: typeof defineSchoolRoute) {
 
 /** Where "Talk to us" writes. */
 export const INQUIRY_MAILBOX = "support@corpora.inc";
+
+/** A school's inquiry from the public form, to the Corpora mailbox. */
+export function schoolInquiry(
+  inquiry: {
+    name: string;
+    email: string;
+    school: string;
+    students?: string | number | undefined;
+    message?: string | undefined;
+  },
+  origin: string,
+): LinkedMessage {
+  return {
+    subject: `School inquiry: ${inquiry.school}`,
+    text: [
+      `${inquiry.name} <${inquiry.email}> writes from ${inquiry.school}.`,
+      inquiry.students ? `Students: ${inquiry.students}` : "",
+      "",
+      inquiry.message ?? "",
+    ]
+      .filter((line, index) => index !== 1 || line)
+      .join("\n")
+      .trim(),
+    url: `${origin}/schools`,
+    action: "Open AMP for Schools",
+  };
+}
 /** Per address per hour, and from everyone per hour: a public form that only
  * ever writes to our own mailbox, so a person never meets the limit. */
 export const INQUIRIES_PER_ADDRESS = 5;
@@ -245,20 +273,7 @@ export function registerInquiryRoute(
         throw new SchoolError(429, "too_many_requests", 3600);
       if (!services.mail) throw new SchoolError(503, "mail_unavailable");
       await services
-        .mail(
-          INQUIRY_MAILBOX,
-          `School inquiry: ${inquiry.school}`,
-          [
-            `${inquiry.name} <${inquiry.email}> writes from ${inquiry.school}.`,
-            inquiry.students ? `Students: ${inquiry.students}` : "",
-            "",
-            inquiry.message ?? "",
-          ]
-            .filter((line, index) => index !== 1 || line)
-            .join("\n")
-            .trim(),
-          `${services.origin}/schools`,
-        )
+        .mail(INQUIRY_MAILBOX, schoolInquiry(inquiry, services.origin))
         .catch((error) => {
           console.error("[schools] inquiry mail not sent", {
             message: (error as Error).message,

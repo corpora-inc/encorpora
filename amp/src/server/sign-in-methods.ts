@@ -1,6 +1,11 @@
 import type { Pool } from "pg";
 import { APIError, createAuthEndpoint } from "better-auth/api";
 import { z } from "zod";
+import {
+  accountEmail,
+  type Email,
+  type LinkedMessage,
+} from "../email/email.js";
 
 /** The ways a parent can sign in, in the order they are named to them. */
 export const SIGN_IN_METHODS = [
@@ -101,6 +106,22 @@ export function signInLink(baseURL: string, from?: unknown, path = "/sign-in") {
   return link.href;
 }
 
+/** The email that confirms a new account's address. */
+export function confirmationMessage(
+  brandName: string,
+  school: boolean,
+  url: string,
+): LinkedMessage {
+  return {
+    subject: `Confirm your email for ${brandName}`,
+    text: school
+      ? `Confirm this address for your ${brandName} for Schools account. If you did not create an ${brandName} account, ignore this email; nothing happens without your confirmation.`
+      : `Confirm this address for your ${brandName} parent account. Until it is confirmed, the account cannot buy access or give consent for a learner. If you did not create an ${brandName} account, ignore this email; nothing happens without your confirmation.`,
+    url,
+    action: "Confirm email",
+  };
+}
+
 /** The email to an account's owner when someone tries to create an account
  * with its address: how it signs in, and a password reset only when it has a
  * password. */
@@ -108,22 +129,26 @@ export function existingAccountEmail(
   brandName: string,
   methods: readonly SignInMethod[],
   links: { signIn: string; forgot: string },
-) {
+): Email {
   const how = methods.length
     ? `It signs in with ${methodList(methods)}.`
     : "Choose Forgot password? on the sign-in page to set a password for it.";
-  return {
+  return accountEmail(new URL(links.signIn).origin, {
     subject: `You already have an ${brandName} account`,
-    text: [
+    body: [
       `You already have an ${brandName} account. ${how}`,
       `Someone tried to create a new ${brandName} account with this address. If that was not you, ignore this email; nothing changed.`,
       ...(methods.includes("password") || !methods.length
-        ? [`Forgot your password? Choose a new one here:\n${links.forgot}`]
+        ? [
+            {
+              link: { label: "Choose a new password", url: links.forgot },
+              lead: "Forgot your password? Choose a new one here:",
+            },
+          ]
         : []),
-      "Sign in:",
-    ].join("\n\n"),
-    url: links.signIn,
-  };
+      { button: { label: "Sign in", url: links.signIn }, lead: "Sign in:" },
+    ],
+  });
 }
 
 /** The password-reset email. An account without a password is told how it
@@ -132,20 +157,29 @@ export function resetPasswordEmail(
   brandName: string,
   methods: readonly SignInMethod[] | null,
   signIn: string,
-) {
+  reset: string,
+): Email {
+  const origin = new URL(signIn).origin;
   const others = (methods ?? []).filter((m) => m !== "password");
   if (methods?.includes("password") || !others.length)
-    return {
+    return accountEmail(origin, {
       subject: `Reset your ${brandName} password`,
-      text: "Use this link to choose a new password. It expires in one hour. If you did not ask for it, ignore this email.",
-    };
-  return {
+      body: [
+        "Use this link to choose a new password. It expires in one hour. If you did not ask for it, ignore this email.",
+        { button: { label: "Choose a new password", url: reset } },
+      ],
+    });
+  return accountEmail(origin, {
     subject: `Sign in to ${brandName}`,
-    text: [
-      `Your account signs in with ${methodList(others)}. Sign in here:\n${signIn}`,
+    body: [
+      {
+        button: { label: "Sign in", url: signIn },
+        lead: `Your account signs in with ${methodList(others)}. Sign in here:`,
+      },
       "Or add a password with this link. It expires in one hour. If you did not ask for it, ignore this email.",
-    ].join("\n\n"),
-  };
+      { link: { label: "Add a password", url: reset } },
+    ],
+  });
 }
 
 /**

@@ -1,3 +1,4 @@
+import type { TextOnlyRetry } from "../email/email.js";
 import { z } from "zod";
 export const EMAIL_PLUS_METHOD = "internal-email-plus-v1";
 /** Reserve the entire self-service family, including versions this server cannot read. */
@@ -127,6 +128,8 @@ export interface ConsentMail {
   idempotencyKey: string;
   recipient: string;
   subject: string;
+  /** Both parts, from one content (src/email/email.ts). */
+  html: string;
   text: string;
   attachments?: {
     filename: string;
@@ -134,6 +137,9 @@ export interface ConsentMail {
     contentType: "application/pdf";
   }[];
 }
+/** What a transport sends: a composed mail, or a retry first sent before mail
+ * carried HTML (`retryPayload`, src/email/email.ts). */
+export type ConsentPayload = ConsentMail | TextOnlyRetry<ConsentMail>;
 export type DeliveryResult =
   | { kind: "accepted"; receipt: string }
   | { kind: "rejected" }
@@ -145,8 +151,9 @@ export interface ConsentTransport {
     sender: string;
     credentialFingerprint: string;
   };
+  /** A text-only payload is a retry first sent before mail carried HTML. */
   send(
-    message: ConsentMail,
+    message: ConsentPayload,
     options: { signal: AbortSignal },
   ): Promise<DeliveryResult>;
 }

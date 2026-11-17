@@ -21,6 +21,7 @@
  *
  *     AMP_TEST_DATABASE_URL=... npx tsx scripts/verify-second-parent-ui.ts [--port 4540]
  */
+import type { LinkedMessage } from "../src/email/email.js";
 import { mkdir, writeFile } from "node:fs/promises";
 import { randomBytes, randomUUID } from "node:crypto";
 import pg from "pg";
@@ -92,12 +93,7 @@ console.info = (...args: unknown[]) => {
 const mail: { to: string; url: string }[] = [];
 const app = buildApp({ repository, authenticate, publicUrl: origin });
 await registerAccountRoutes(app, accounts, authenticate);
-const capture = async (
-  to: string,
-  _subject: string,
-  _text: string,
-  link: string,
-) => {
+const capture = async (to: string, { url: link }: LinkedMessage) => {
   mail.push({ to, url: link });
 };
 await registerFamilyRoutes(app, {
