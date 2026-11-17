@@ -113,22 +113,6 @@
   min-width: 0;
   margin: 0;
 }
-/* The box is reserved at the still's ratio, so nothing moves as it loads. */
-.product img {
-  display: block;
-  box-sizing: border-box;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-panel);
-  background: var(--color-surface-sunken);
-}
-@media (max-width: 480px) {
-  .product img {
-    aspect-ratio: 1;
-  }
-}
 .film {
   min-width: 0;
 }
@@ -398,24 +382,85 @@
   text-underline-offset: 3px;
 }
 
-/* The price, Buy and education funds, beside the guarantee from 768 px.
-   Try it free closes the price column. */
+/* The close of the page. On phones: the price with Buy and Try it free
+   under it, the guarantee, then the education funds. From 768 px, two
+   balanced columns: the price on the left; on the right the guarantee, a
+   panel that stretches to meet the price column's foot, with the funds
+   beneath it, so both columns end on one line. */
 .offer {
   display: grid;
   gap: 40px;
 }
-@media (min-width: 768px) {
-  .offer[data-offer="card"],
-  .offer[data-offer="funded"] {
-    grid-template-columns: var(--pitch-split) minmax(0, 1fr);
-    gap: var(--space-5) var(--pitch-gutter);
-    align-items: start;
-  }
-}
 .price .free {
   padding-top: var(--space-2);
 }
-/* Each program that sells now: a full-size target, in a row that wraps. */
+@media (min-width: 768px) {
+  .offer[data-offer="card"],
+  .offer[data-offer="funded"] {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas: "price guarantee";
+    gap: var(--space-5) var(--pitch-gutter);
+  }
+  .offer[data-offer="card"][data-funds],
+  .offer[data-offer="funded"][data-funds] {
+    grid-template-rows: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "price guarantee"
+      "price funds";
+  }
+  .offer > .price {
+    grid-area: price;
+  }
+  .offer > .guarantee {
+    grid-area: guarantee;
+    /* Level with the price column's rule. */
+    margin-top: 0;
+  }
+  .offer > .funds {
+    grid-area: funds;
+    align-self: end;
+    padding-top: 0;
+  }
+}
+@media (min-width: 960px) {
+  .offer[data-offer="card"],
+  .offer[data-offer="funded"] {
+    grid-template-columns: var(--pitch-split) minmax(0, 1fr);
+  }
+}
+/* The guarantee carries weight of its own: a soft panel, its promise and
+   fine print centred in whatever height the price column gives it. */
+.guarantee {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-3);
+  box-sizing: border-box;
+  padding: var(--space-5);
+  border: 1px solid
+    color-mix(in srgb, var(--color-success-accent) 22%, var(--color-border));
+  border-radius: var(--radius-panel);
+  background: var(--color-success);
+}
+.guarantee h2 {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(28px, 2.4vw + 10px, 40px);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--color-on-surface);
+}
+.guarantee p.footnote {
+  padding-top: var(--space-2);
+}
+/* Each program that sells now: a compact row of full-size targets that
+   wraps, never one program to a line with gaps between. */
+.funds {
+  display: grid;
+  gap: var(--space-2);
+  padding-top: var(--space-2);
+}
 .funds p {
   margin: 0;
   font-size: var(--text-label);
@@ -424,12 +469,19 @@
 .funds ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 0 var(--space-2);
-  margin: 0 0 0 calc(-1 * var(--space-4));
+  gap: var(--space-2);
+  margin: 0;
   padding: 0;
   list-style: none;
 }
+/* Over the legacy element rule's space under each list item. */
+.funds li {
+  margin: 0;
+}
 .fundLink {
+  min-height: var(--target-size);
+  padding-inline: var(--space-3);
+  font-size: var(--text-label);
   white-space: nowrap;
 }
 .details {
@@ -509,13 +561,14 @@
 }
 .guarantee p {
   margin: 0;
-  font-size: var(--text-body);
-  line-height: 1.55;
-  color: var(--color-muted-text);
+  font-size: clamp(var(--text-body), 0.6vw + 12px, 20px);
+  line-height: 1.5;
+  color: var(--color-on-surface);
 }
 .guarantee p.footnote {
   font-size: var(--text-label);
   line-height: 1.45;
+  color: var(--color-muted-text);
 }
 .trust {
   margin: 0;

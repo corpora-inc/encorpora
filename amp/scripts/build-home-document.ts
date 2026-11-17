@@ -2,6 +2,7 @@ import { readdir, readFile, rm, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { brand } from "../src/brand";
+import { showcaseSlides } from "../src/web/features/pitch/showcase-slides";
 
 /**
  * `/` gets its own document: the app's shell, with the light home entry
@@ -42,6 +43,19 @@ const asset = (pattern: RegExp) => {
   if (!name) throw new Error(`build-home-document: no asset ${pattern}`);
   return `/assets/${name}`;
 };
+const first = showcaseSlides[0]!;
+if (first.kind !== "app")
+  throw new Error("build-home-document: the first slide is a practice screen");
+const narrow = "(max-width: 480px)";
+const wide = "(min-width: 481px)";
+const dark = "(prefers-color-scheme: dark)";
+const light = "(prefers-color-scheme: light)";
+const firstSlide = [
+  [`${first.id}-narrow-light`, `${narrow} and ${light}`],
+  [`${first.id}-narrow-dark`, `${narrow} and ${dark}`],
+  [`${first.id}-wide-light`, `${wide} and ${light}`],
+  [`${first.id}-wide-dark`, `${wide} and ${dark}`],
+] as const;
 const origin = "https://amp.corpora.inc";
 const organization = "https://corpora.inc/#organization";
 const structured = {
@@ -75,8 +89,12 @@ const structured = {
 };
 const tags = [
   `<link rel="canonical" href="${origin}/" />`,
-  `<link rel="preload" as="image" type="image/webp" href="${asset(/^practice-square-.*\.webp$/)}" media="(max-width: 480px)" fetchpriority="high" />`,
-  `<link rel="preload" as="image" type="image/webp" href="${asset(/^practice-wide-.*\.webp$/)}" media="(min-width: 481px)" fetchpriority="high" />`,
+  // The showcase's first slide, in the shape and theme its <picture> picks
+  // (features/pitch/Showcase.tsx): one of the four, never all.
+  ...firstSlide.map(
+    ([file, media]) =>
+      `<link rel="preload" as="image" type="image/webp" href="${asset(new RegExp(`^${file}-[\\w-]+\\.webp$`))}" media="${media}" fetchpriority="high" />`,
+  ),
   `<link rel="preload" as="fetch" crossorigin="anonymous" href="/api/v1/billing/prices" />`,
   // The two answers `/` waits on to choose the pitch or the app, asked with
   // the document instead of after the main bundle runs. Each matches its

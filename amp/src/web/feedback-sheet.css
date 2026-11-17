@@ -570,8 +570,12 @@
   /* Absolutely placed in the answer column's grid area: the panel covers the
      column it replaces, flush to the screen's right and bottom edges and to
      the bar above, whatever the answer form's height. Its tone and the rule
-     on its left divide it from the problem; no card, radius or shadow. Both
-     grid lines are explicit; an auto end line would mean the padding edge. */
+     on its left divide it from the problem; no card or shadow. Its one free
+     corner, under the bar beside the problem, is rounded: a sheet resting
+     in the column, never a hard right angle against the bar's rule. The
+     rule tapers into the curve (no top border), so the bar keeps its one
+     line. Both grid lines are explicit; an auto end line would mean the
+     padding edge. */
   .practice-surface > .feedback {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
@@ -583,7 +587,7 @@
     padding: var(--space-5) var(--space-5)
       calc(var(--space-5) + env(safe-area-inset-bottom, 0px));
     border-width: 0 0 0 1px;
-    border-radius: 0;
+    border-radius: var(--radius-panel) 0 0 0;
     box-shadow: none;
   }
   /* The column's full height: the result reads at the top, the worked

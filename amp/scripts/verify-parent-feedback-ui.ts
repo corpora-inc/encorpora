@@ -153,14 +153,16 @@ try {
         return route.fulfill({ json: {} });
       });
       await page.goto(`${origin}/purchase/arkansas-efa`);
-      // The support address beside it, copyable where no mail app is set up.
+      // The support address beside it: a plain email link.
       const help = page.getByRole("complementary", {
         name: "Help and feedback",
       });
-      await help.getByText("support@corpora.inc", { exact: true }).waitFor();
-      await help
-        .getByRole("button", { name: "Copy support address" })
-        .waitFor();
+      assert.equal(
+        await help
+          .getByRole("link", { name: "support@corpora.inc", exact: true })
+          .getAttribute("href"),
+        "mailto:support@corpora.inc",
+      );
       const trigger = page.getByRole("button", {
         name: "Share parent feedback",
       });

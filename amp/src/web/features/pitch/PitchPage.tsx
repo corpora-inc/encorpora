@@ -19,8 +19,8 @@ import { choosePitchAction, pitchTarget } from "./targets";
 import { keepSignUpIntent } from "../../lib/program-choice";
 import { authStep } from "../../app/auth-links";
 import { usePitchAttention } from "./usePitchAttention";
-import { phoneVideoQuery, pitchVideo } from "./video";
-import { practiceStill } from "./product";
+import { pitchVideo } from "./video";
+import { Showcase } from "./Showcase";
 import styles from "./Pitch.module.css";
 import { FREE_ONLINE_PROBLEMS } from "../../../learning/free-allowance";
 import { TRIAL_WORKBOOKS_MAX } from "../../../learning/trial-workbooks";
@@ -87,6 +87,15 @@ export function PitchPage() {
       {TRIAL_WORKBOOKS_MAX} workbooks.
     </p>
   );
+  // The free trial, under Buy: the other way in, never left alone.
+  const free = (
+    <div className={styles.free} data-free-trial="">
+      {tryFree("secondary")}
+      {freeNote}
+    </div>
+  );
+  // Each program that sells now, where the visitor came without one.
+  const fundsShown = !funded && !!data.funds?.length;
   // Which buy layout the bottom takes; `BuyOptions` decides the same way.
   const offered = data.failed
     ? "error"
@@ -138,24 +147,9 @@ export function PitchPage() {
             {tryFree("primary")}
             {freeNote}
           </div>
-          <figure className={styles.product}>
-            <picture>
-              <source
-                media={phoneVideoQuery}
-                srcSet={practiceStill.square.url}
-                width={practiceStill.square.width}
-                height={practiceStill.square.height}
-              />
-              <img
-                src={practiceStill.wide.url}
-                width={practiceStill.wide.width}
-                height={practiceStill.wide.height}
-                alt={practiceStill.alt}
-                decoding="async"
-                fetchPriority="high"
-              />
-            </picture>
-          </figure>
+          <div className={styles.product}>
+            <Showcase />
+          </div>
         </section>
         <section className={styles.details} aria-labelledby="pitch-why">
           <h2 id="pitch-why">Why children move faster with AMP</h2>
@@ -193,7 +187,7 @@ export function PitchPage() {
           </section>
         )}
         <section className={styles.details} aria-labelledby="pitch-year">
-          <h2 id="pitch-year">Everything in one year</h2>
+          <h2 id="pitch-year">Everything you need for math education</h2>
           <ul className={styles.checklist}>
             <li>Unlimited adaptive practice, counting through precalculus</li>
             <li>
@@ -203,7 +197,11 @@ export function PitchPage() {
             <li>Progress you can see on phone, tablet and computer</li>
           </ul>
         </section>
-        <div className={styles.offer} data-offer={offered}>
+        <div
+          className={styles.offer}
+          data-offer={offered}
+          data-funds={fundsShown || undefined}
+        >
           <section
             ref={purchase}
             className={`${styles.details} ${styles.price}`}
@@ -230,34 +228,11 @@ export function PitchPage() {
                 onInterval={setPlan}
               />
             )}
-            {!funded && !!data.funds?.length && (
-              <div className={styles.funds} data-education-funds="">
-                <p>Paying with an education fund?</p>
-                <ul>
-                  {data.funds.map((entry) => (
-                    <li key={entry.slug}>
-                      <PitchLink
-                        place={{ to: `/invoice/${entry.slug}` }}
-                        className={buttonClass("quiet", styles.fundLink)}
-                        onClick={() =>
-                          track("buy_click", { path: "funded", from: "pitch" })
-                        }
-                      >
-                        {entry.name}
-                      </PitchLink>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            <div className={styles.free}>
-              {tryFree("secondary")}
-              {freeNote}
-            </div>
+            {free}
           </section>
           {guaranteed && (
             <section
-              className={`${styles.details} ${styles.guarantee}`}
+              className={styles.guarantee}
               aria-labelledby="pitch-guarantee"
               data-guarantee=""
             >
@@ -271,6 +246,26 @@ export function PitchPage() {
               </p>
               <p className={styles.footnote}>{GUARANTEE_FOOTNOTE}</p>
             </section>
+          )}
+          {fundsShown && (
+            <div className={styles.funds} data-education-funds="">
+              <p>Paying with an education fund?</p>
+              <ul>
+                {data.funds!.map((entry) => (
+                  <li key={entry.slug}>
+                    <PitchLink
+                      place={{ to: `/invoice/${entry.slug}` }}
+                      className={buttonClass("secondary", styles.fundLink)}
+                      onClick={() =>
+                        track("buy_click", { path: "funded", from: "pitch" })
+                      }
+                    >
+                      {entry.name}
+                    </PitchLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
         </div>
       </main>
