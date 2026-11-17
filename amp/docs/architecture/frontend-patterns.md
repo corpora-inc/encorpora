@@ -96,3 +96,15 @@ Show the error's own message when it is an `AppError`, because the request layer
 `lib/report-error.ts` is its own chunk, and each lazy route that loads it adds to the entry's dependency map, which counts against the 290 KB entry budget. Code that most routes load (practice, printing, the help form on every framed page) logs the error with `console.error` or `console.warn` and its context instead (`problem-flag.ts`, `features/support/SupportHelp.tsx`).
 
 A route guard must not turn a failed read into `null` and keep routing. Let the failure reach the route's error screen, or use `ifNotFound` when "none" is a real answer.
+
+## Navigation: the three sanctioned mechanisms
+
+`tests/architecture-ratchet.test.ts` lists these and never counts them. Nothing else redirects, hands search to a navigation or validates a search.
+
+| Module | What it is for |
+|---|---|
+| `app/legacy-aliases.ts` | Every old address is one row of `LEGACY_ALIASES` (`from` pattern, optional `when`, `to` builder). The root route's `beforeLoad` asks the table first, so a row hops once, replacing the entry, before any guard. `app/__tests__/legacy-aliases.test.tsx` needs an example per row and proves each lands in one hop on an address that is no row's. |
+| `app/sign-in-gate.ts` | `requireSignedIn(location, { web?, adults?, back? })` for a screen that needs an account (one hop to sign-in, then back); `admit({ web?, adults? })` for a device that may not open a screen; `toOwnPlace()` for a signed-in person on an address that isn't theirs. |
+| `app/third-party-returns.ts` | A provider's return value (Stripe's `?billing=&purchase=`, `/?signed-in`, `/?security`, Clever's `?error=`), read once and resolved. |
+
+For the rare case none fits, annotate the line: `// arch-exempt(<category>): <reason>`. The ratchet prints every exemption with its reason, and the list (snapshotted in the baseline) only shrinks. Never use it to skip work.

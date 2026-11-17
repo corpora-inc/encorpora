@@ -1,12 +1,12 @@
 {
   "about": "Frontend anti-pattern counts in src/web; they only fall (amp/AGENTS.md, Frontend architecture). Enforced by tests/architecture-ratchet.test.ts; `files` locates the counts for its failure messages.",
   "counts": {
-    "redirects": 80,
-    "validateSearch": 10,
-    "searchHandoffs": 144,
+    "redirects": 73,
+    "validateSearch": 9,
+    "searchHandoffs": 142,
     "navigatingEffects": 18,
     "renderNavigate": 24,
-    "silentCatches": 191,
+    "silentCatches": 190,
     "sessionProps": 64,
     "sessionReads": 44,
     "inlineQueryKeys": 47,
@@ -17,8 +17,7 @@
       "app/family-redirect.ts": 4,
       "app/family-routes.tsx": 9,
       "app/pay-routes.tsx": 3,
-      "app/privacy-routes.tsx": 1,
-      "app/router.tsx": 40,
+      "app/router.tsx": 34,
       "app/school-guards.ts": 18,
       "app/school-routes.tsx": 1,
       "features/home/destination.ts": 1,
@@ -26,11 +25,11 @@
       "features/profiles/practice-mode.ts": 1
     },
     "validateSearch": {
-      "app/router.tsx": 10
+      "app/router.tsx": 9
     },
     "searchHandoffs": {
       "app/family-routes.tsx": 2,
-      "app/router.tsx": 13,
+      "app/router.tsx": 11,
       "app/school-guards.ts": 4,
       "features/access/AccessScreen.tsx": 3,
       "features/account/AccountReady.tsx": 3,
@@ -143,7 +142,7 @@
       "app/family-redirect.ts": 10,
       "app/family-routes.tsx": 8,
       "app/LegacyApp.tsx": 7,
-      "app/router.tsx": 14,
+      "app/router.tsx": 13,
       "app/school-guards.ts": 3,
       "auth-config.ts": 1,
       "auth.ts": 3,
@@ -339,5 +338,6 @@
       "ReceiptDetails.tsx": 1,
       "StructuredWorkInput.tsx": 1
     }
-  }
+  },
+  "exempt": []
 }
