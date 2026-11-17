@@ -104,11 +104,6 @@ import { accountOverlays } from "./account-overlays";
 import { payAddresses } from "./pay-routes";
 import { appReturn } from "../features/spaces/returns";
 import { loadCurriculum, loadScope } from "../features/schools/api";
-import {
-  marksSearchSchema,
-  stackSearchSchema,
-  standingsSearchSchema,
-} from "../features/school/classroom/search";
 import { designAllowed } from "../features/design/search";
 import { stampPrevious, VIEW_KEYS } from "../lib/return-to";
 import { applyDeferredIdentity } from "../features/school/join/api";
@@ -1152,30 +1147,27 @@ const schoolConnect = createRoute({
     "ConnectionScreen",
   ),
 });
-/** An existing school joins a district (`docs/schools.md`). */
-const schoolAdopt = createRoute({
-  getParentRoute: () => root,
-  path: "/school/adopt",
-  staticData: { space: "account" },
-  validateSearch: (
-    search: Record<string, unknown>,
-  ): { district?: string; manage?: 1 } => ({
-    ...(z.uuid().safeParse(search.district).success
-      ? { district: String(search.district) }
-      : {}),
-    ...(search.manage === 1 || search.manage === "1"
-      ? { manage: 1 as const }
-      : {}),
-  }),
-  beforeLoad: (context) => {
-    prepareSchoolAdoption();
-    return staffScreen(context);
-  },
-  component: lazyRouteComponent(
-    () => import("../features/school/AdoptionScreen"),
-    "AdoptionScreen",
-  ),
-});
+/** An existing school joins a district (`docs/schools.md`): a school's
+ * approval (`/school/adopt`, its link in the fragment), a school approving a
+ * district's invitation (`/school/adopt/<district>`), and the district
+ * admin's page that hands it out (`…/<district>/manage`). */
+const adoptScreen = (path: string) =>
+  createRoute({
+    getParentRoute: () => root,
+    path,
+    staticData: { space: "account" },
+    beforeLoad: (context) => {
+      prepareSchoolAdoption();
+      return staffScreen(context);
+    },
+    component: lazyRouteComponent(
+      () => import("../features/school/AdoptionScreen"),
+      "AdoptionScreen",
+    ),
+  });
+const schoolAdopt = adoptScreen("/school/adopt");
+const schoolAdoptDistrict = adoptScreen("/school/adopt/$district");
+const schoolAdoptManage = adoptScreen("/school/adopt/$district/manage");
 /** The page a teacher sends their school's buyer. */
 const schoolsContinue = createRoute({
   getParentRoute: () => root,
@@ -1202,9 +1194,12 @@ const schoolClassStart = createRoute({
 const schoolClassCards = createRoute({
   getParentRoute: () => schoolClass,
   path: "cards",
-  validateSearch: z.object({
-    student: z.uuid().optional().catch(undefined),
-  }),
+  component: lazyRouteComponent(classScreens, "CardsScreen"),
+});
+/** One student's sign-in card. */
+const schoolClassStudentCard = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "cards/$student",
   component: lazyRouteComponent(classScreens, "CardsScreen"),
 });
 const classroomScreens = () => import("../features/school/classroom");
@@ -1225,13 +1220,11 @@ const schoolClassExperience = createRoute({
 const schoolClassWorkbooks = createRoute({
   getParentRoute: () => schoolClass,
   path: "workbooks",
-  validateSearch: stackSearchSchema,
   component: lazyRouteComponent(classroomScreens, "WorkbookStackScreen"),
 });
 const schoolClassMarks = createRoute({
   getParentRoute: () => schoolClass,
   path: "workbooks/$date",
-  validateSearch: marksSearchSchema,
   component: lazyRouteComponent(classroomScreens, "MarkingScreen"),
 });
 /** A student's board, in its own chunk: a student's device never loads a staff
@@ -1240,7 +1233,6 @@ const standings = createRoute({
   getParentRoute: () => root,
   path: "/standings",
   staticData: { space: "student" },
-  validateSearch: standingsSearchSchema,
   // A student whose classes have no board on: their practice.
   beforeLoad: async () => {
     if (!studentSession()) await toOwnPlace();
@@ -1587,6 +1579,7 @@ export const router = createRouter({
       schoolClassImportStep,
       schoolClassStart,
       schoolClassCards,
+      schoolClassStudentCard,
       schoolClassExperience,
       schoolClassWorkbooks,
       schoolClassMarks,
@@ -1609,6 +1602,8 @@ export const router = createRouter({
     schoolCreate,
     schoolConnect,
     schoolAdopt,
+    schoolAdoptDistrict,
+    schoolAdoptManage,
     familyLink,
     familyApprove,
     familyApproval,
