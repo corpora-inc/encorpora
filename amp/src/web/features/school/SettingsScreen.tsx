@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useParams } from "@tanstack/react-router";
+import { useParams } from "@tanstack/react-router";
+import { ViewLink } from "./ViewLink";
 import { buttonClass } from "../../ui/Button";
 import { OrgExperienceSection } from "./classroom/ExperienceScreens";
 import { WeeklyTargetSection } from "./classroom/WeeklyTargetSection";
@@ -36,13 +37,13 @@ export function OrgSettingsScreen() {
           >
             <h2 id="settings-schools">Schools</h2>
             <div>
-              <Link
+              <ViewLink
                 to="/school/adopt"
-                search={{ district: orgId, manage: 1 }}
+                view={{ district: orgId, manage: 1 }}
                 className={buttonClass("secondary")}
               >
                 Invite a school
-              </Link>
+              </ViewLink>
             </div>
           </section>
         )}

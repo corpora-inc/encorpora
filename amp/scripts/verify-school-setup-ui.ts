@@ -546,10 +546,14 @@ async function journey(
   await page.getByText("24 students, all with seats").waitFor();
   await pause(page);
   await shot(page, "students", width, theme);
-  // Search stays in the URL and survives reload.
+  // Search is the screen's view: never in the address, and it survives reload.
   await page.getByRole("textbox", { name: "Search students" }).fill("Cher");
   await page.getByText("1 match", { exact: true }).waitFor();
-  check(`${label} search in the URL`, page.url().includes("q=Cher"));
+  check(
+    `${label} search stays out of the URL`,
+    !new URL(page.url()).search,
+    page.url(),
+  );
   await page.reload();
   await page.getByText("1 match", { exact: true }).waitFor();
   // Open one: every action is real.
@@ -557,7 +561,11 @@ async function journey(
   await row.click();
   const studentSheet = page.getByRole("dialog");
   await studentSheet.getByLabel("Display name").waitFor();
-  check(`${label} sheet in the URL`, page.url().includes("student="));
+  check(
+    `${label} the sheet adds nothing to the URL`,
+    !new URL(page.url()).search,
+    page.url(),
+  );
   await studentSheet.getByLabel("Display name").fill("Cher R.");
   await studentSheet.getByRole("button", { name: "Save changes" }).click();
   await studentSheet.waitFor({ state: "detached" });
@@ -730,7 +738,12 @@ async function loneTeacher(
   await addSheet.getByLabel("Last name").fill("Tran");
   await addSheet.getByRole("button", { name: "Add student" }).click();
   await addSheet.getByText("Mei is in this class.").waitFor();
-  check("adding keeps the URL", page.url().includes("add=1"));
+  check(
+    "adding keeps the address as it was",
+    /\/settings$/.test(new URL(page.url()).pathname) &&
+      !new URL(page.url()).search,
+    page.url(),
+  );
   await addSheet.getByRole("button", { name: "Close" }).click();
   await addSheet.waitFor({ state: "detached" });
   await page.getByText("Mei Tran").waitFor();
@@ -964,7 +977,14 @@ async function sweep(
       )
     ).json();
     await context.close();
-    return { classId: json.classes[0].id, studentId: students.students[0].id };
+    const student = students.students[0];
+    return {
+      classId: json.classes[0].id,
+      studentName: (student.displayName ??
+        [student.givenName, student.familyName]
+          .filter(Boolean)
+          .join(" ")) as string,
+    };
   })();
   const setupPath = (step: string, extra = "") =>
     `/school/${pendingOrg}/setup${step === "school" ? "" : `/${step}`}${extra}`;
@@ -1047,10 +1067,17 @@ async function sweep(
         await shot(page, `screen-${name}`, width, theme);
         await resetRecord(page);
       }
-      // A sheet over the roster.
-      await page.goto(
-        `${origin}/school/${orgId}/students?student=${classes.studentId}`,
-      );
+      // A sheet over the roster: opened from its row, never from the address.
+      await page.goto(`${origin}/school/${orgId}/students`);
+      await heading(page, "Students");
+      await page
+        .getByRole("textbox", { name: "Search students" })
+        .fill(classes.studentName);
+      await page.getByText("1 match", { exact: true }).waitFor();
+      await page
+        .getByText(classes.studentName, { exact: true })
+        .first()
+        .click();
       await page.getByRole("dialog").getByLabel("Display name").waitFor();
       await measure(page, `${label} student sheet`, width);
       // A failed search moves nothing either.

@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "@tanstack/react-router";
+import { useScreenView } from "../view-store";
 import { useMemo, type CSSProperties } from "react";
 import type { PracticeResponse } from "../../../../schools/org-contracts";
 import { summarize } from "../../../../schools/practice-stats";
@@ -50,6 +51,9 @@ export function PracticeMap({
   sort: unknown;
 }) {
   const navigate = useNavigate();
+  // The rows' order: the screen's view (view-store.ts), shared with the
+  // screen that reads it as `sort`.
+  const [, setView] = useScreenView<{ rows: string }>();
   const currentIndex = data.weeks.indexOf(data.current);
   const midpointOf = (row: Data["rows"][number]) =>
     measure === "minutes" ? row.target : data.problemsMidpoint;
@@ -213,15 +217,7 @@ export function PracticeMap({
           rowHeight={44}
           sort={sort}
           onSortChange={(next) =>
-            void navigate({
-              to: ".",
-              replace: true,
-              resetScroll: false,
-              search: ((previous: Record<string, unknown>) => ({
-                ...previous,
-                rows: `${next.column}:${next.direction}`,
-              })) as never,
-            })
+            setView({ rows: `${next.column}:${next.direction}` })
           }
           onRowActivate={(row) =>
             void navigate({ to: "/$", params: { _splat: pathOf(row) } })

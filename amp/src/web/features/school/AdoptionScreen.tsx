@@ -5,6 +5,8 @@ import { Disclosure } from "../../ui/Disclosure";
 import { CopyButton } from "./parts";
 import { StatRow, StatTile } from "../../ui/StatTile";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
+import { useScreenView } from "./view-store";
+import { ViewLink } from "./ViewLink";
 import { useEffect, useMemo, useState } from "react";
 import { z } from "zod";
 import type { AdoptionReview } from "../../../schools/adoption-contracts";
@@ -98,12 +100,23 @@ function DistrictInvite({ districtId }: { districtId: string }) {
   );
 }
 
-function SchoolHomeRedirect() {
-  const navigate = useNavigate();
-  useEffect(() => {
-    void navigate({ href: "/school", replace: true });
-  }, [navigate]);
-  return <LoadingScreen overlay />;
+/** Nothing to approve, invite or withdraw: the way to the person's schools,
+ * in place (no screen navigates by itself). */
+function NothingToApprove() {
+  return (
+    <PlainPage title="No district approvals">
+      <Lead>There is nothing to approve or invite here.</Lead>
+      <Actions>
+        <Link
+          to="/$"
+          params={{ _splat: "school" }}
+          className={buttonClass("primary")}
+        >
+          Your schools
+        </Link>
+      </Actions>
+    </PlainPage>
+  );
 }
 
 /** The school's side: approve joining a district, then send the approval. */
@@ -131,7 +144,7 @@ function AuthorizeSchool({ districtId }: { districtId?: string }) {
   const open = data.grants.filter((grant) => grant.status === "open");
   // Nothing to approve, invite or withdraw: this page has no job here.
   if (!district && !data.districts.length && !open.length)
-    return <SchoolHomeRedirect />;
+    return <NothingToApprove />;
   const withdraw = (id: string) => {
     setBusy(true);
     setError("");
@@ -219,13 +232,13 @@ function AuthorizeSchool({ districtId }: { districtId?: string }) {
           {data.districts.map((item) => (
             <li key={item.id}>
               <span>{item.name}</span>
-              <Link
+              <ViewLink
                 to="/school/adopt"
-                search={{ district: item.id, manage: 1 }}
+                view={{ district: item.id, manage: 1 }}
                 className={buttonClass("secondary")}
               >
                 Invite a school
-              </Link>
+              </ViewLink>
             </li>
           ))}
         </ul>
@@ -587,9 +600,20 @@ function ReviewDecision({
 export function AdoptionScreen() {
   const session = currentSession(),
     location = useLocation();
-  const query = new URLSearchParams(location.searchStr),
-    parsed = z.uuid().safeParse(query.get("district"));
-  const districtId = parsed.success ? parsed.data : undefined;
+  // A school opens a district's invitation link (`?district=`, a link sent
+  // to another person, read once here). A district admin's own "Invite a
+  // school" opens this screen with its view set (view-store.ts).
+  const [view] = useScreenView<{ district: string; manage: number }>();
+  const shared = z
+    .uuid()
+    .safeParse(new URLSearchParams(location.searchStr).get("district"));
+  const managed = z.uuid().safeParse(view.district);
+  const managing = !shared.success && view.manage === 1 && managed.success;
+  const districtId = shared.success
+    ? shared.data
+    : managing
+      ? managed.data
+      : undefined;
   prepareSchoolAdoption();
   const [token, setToken] = useState(schoolAdoptionToken);
   useEffect(
@@ -598,7 +622,7 @@ export function AdoptionScreen() {
   );
   return token && !districtId ? (
     <ReviewSchool token={token} />
-  ) : districtId && query.get("manage") === "1" ? (
+  ) : districtId && managing ? (
     <DistrictInvite districtId={districtId} />
   ) : (
     <AuthorizeSchool districtId={districtId} />
