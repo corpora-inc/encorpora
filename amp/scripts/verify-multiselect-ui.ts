@@ -1,3 +1,4 @@
+import { seedLearner } from "./lib/learner-seed";
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
@@ -613,14 +614,8 @@ try {
   const context = await browser.newContext({
     viewport: { width: 390, height: 844 },
   });
-  await context.addInitScript(
-    (id) =>
-      localStorage.setItem(
-        "amp.learner",
-        JSON.stringify({ state: { learnerId: id }, version: 1 }),
-      ),
-    draft.id,
-  );
+  // Development sign-in's account (src/web/auth.ts).
+  await seedLearner(context, "development-household", draft.id);
   const page = await context.newPage();
   page.setDefaultTimeout(20_000);
   page.on("pageerror", (error) => errors.push(error.message));
