@@ -154,12 +154,19 @@ export function onlyLaunch(
  * accept or a student's own practice, none of which is a place.
  */
 export async function onlyPlace(session: AuthSession): Promise<string | null> {
-  // Fresh, as the launcher reads it: a place made a moment ago counts.
-  const me = await queryClient.fetchQuery({
-    ...meOptions(session),
-    staleTime: 0,
-  });
-  if (!me.signedIn || me.next === "start") return null;
+  // Fresh, as the launcher reads it: a place made a moment ago counts. A
+  // failed read is not "no place": `/` shows the launcher, which reads it
+  // again and says so.
+  const me = await queryClient
+    .fetchQuery({ ...meOptions(session), staleTime: 0 })
+    .catch((error: unknown) => {
+      console.warn(
+        "Your account didn’t load ahead; opening the launcher",
+        error,
+      );
+      return null;
+    });
+  if (!me?.signedIn || me.next === "start") return null;
   const groups = await loadPlaceGroups(session, me);
   const only = onlyLaunch(me, groups, rememberedPlace(me.account.id));
   if (!only) return null;

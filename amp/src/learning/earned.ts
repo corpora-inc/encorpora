@@ -13,8 +13,9 @@
 export const EARNED_AFTER = 1;
 
 /** A skill's evidence, earned or not. */
-export const isEarned = (evidence: { independentCorrect?: number } | undefined) =>
-  (evidence?.independentCorrect ?? 0) >= EARNED_AFTER;
+export const isEarned = (
+  evidence: { independentCorrect?: number } | undefined,
+) => (evidence?.independentCorrect ?? 0) >= EARNED_AFTER;
 
 /** How many skills a learner has earned, from their per-skill evidence. */
 export const earnedCount = (

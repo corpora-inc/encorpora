@@ -826,20 +826,25 @@ export async function readProgress(
   const [stored, days, objectives, work] = await Promise.all([
     levels(pool, roster),
     perDay(pool, roster, { from: firstWeek, to: today }),
-    objectivesBySpan(pool, [
-      {
-        id: member.personId,
-        learnerId: member.learnerId,
-        name: "",
-        first: "",
-        identifier: null,
-        gradeLevel: member.gradeLevel,
-        from: since,
-        to: today,
-        beginOn: since,
-        endOn: null,
-      },
-    ], DEFAULT_GRADE_POLICY, all ? EARNED_AFTER : undefined),
+    objectivesBySpan(
+      pool,
+      [
+        {
+          id: member.personId,
+          learnerId: member.learnerId,
+          name: "",
+          first: "",
+          identifier: null,
+          gradeLevel: member.gradeLevel,
+          from: since,
+          to: today,
+          beginOn: since,
+          endOn: null,
+        },
+      ],
+      DEFAULT_GRADE_POLICY,
+      all ? EARNED_AFTER : undefined,
+    ),
     workSamples(
       pool,
       member.learnerId,
@@ -881,22 +886,22 @@ export async function readProgress(
           )
           .map(([id]) => ({ id, label: strandLabel(id) }))
       : [],
-    // Exact minutes: a reader rounds them once, as it shows them
-    // (web/lib/practice-minutes.ts), so a week of 40 seconds is "<1 min"
-    // here as it is on Today.
+    // A family's or an adult's own record: exact minutes, rounded once as
+    // they are shown (web/lib/practice-minutes.ts), so a week of 40 seconds
+    // is "<1 min" here as on Today. A teacher's record keeps whole minutes.
     weeks: mondays({ from: firstWeek, to: today }).map((week) => ({
       week,
-      minutes: weekly.get(week) ?? 0,
+      minutes: all
+        ? (weekly.get(week) ?? 0)
+        : Math.round(weekly.get(week) ?? 0),
     })),
     ...(all ? { earned: gained.length } : {}),
-    objectives: gained
-      .slice(0, 10)
-      .map(({ skillId, day }) => ({
-        skillId,
-        day,
-        title: skillTitleOf(skillId),
-        strand: skillStrandOf(skillId),
-      })),
+    objectives: gained.slice(0, 10).map(({ skillId, day }) => ({
+      skillId,
+      day,
+      title: skillTitleOf(skillId),
+      strand: skillStrandOf(skillId),
+    })),
     work,
   };
 }

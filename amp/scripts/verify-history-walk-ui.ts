@@ -167,8 +167,7 @@ async function oneHop(
     !writes[0]!.startsWith("replace /?") &&
     writes[0] !== "replace /";
   const ok =
-    onlyPlace ||
-    (at === "load" ? writes.length <= 1 : writes.length === want);
+    onlyPlace || (at === "load" ? writes.length <= 1 : writes.length === want);
   if (!ok)
     fail(
       `${label}: ${writes.length} history writes, want ${at === "load" ? "at most 1" : want}`,

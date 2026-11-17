@@ -18,16 +18,19 @@ export function MathText({
   text,
   sourceText = text,
   displayLead = false,
+  inline = false,
 }: {
   text: string;
   sourceText?: string;
   /** The text introduces a displayed formula (set by MathText itself). */
   displayLead?: boolean;
+  /** One run of text, never a displayed formula (a list row's problem). */
+  inline?: boolean;
 }) {
   const parts = segments(text, displayLead);
   const glossary = useContext(GlossaryContext);
   const block = useContext(GlossaryBlockContext);
-  const display = trailingDisplayMath(text);
+  const display = inline ? null : trailingDisplayMath(text);
   // Inside a glossary block, prose links the block's first use of each term
   // to its card; formulas are never linked. Elsewhere, text is unchanged.
   const index = glossary && block ? block.texts.indexOf(sourceText) : -1;
@@ -168,7 +171,7 @@ const SPOKEN: Record<string, string> = {
 const FRACTION = /\\[td]?frac\{([^{}]*)\}\{([^{}]*)\}/g;
 /** A whole number, a decimal or a single letter, signed or not: a fraction's
  * part that needs no brackets on one line. */
-const ATOM = /^[-−]?(?:\d+(?:\.\d+)?|[A-Za-z])$/;
+const ATOM = /^[-−]?(?:\d+(?:\.\d+)?|[A-Za-z]|\\[A-Za-z]+)$/;
 /**
  * TeX fractions as plain text that reads only one way: a mixed number keeps
  * its space ("3 1/4", never "31/4"), and a part that is itself a fraction or
@@ -187,8 +190,9 @@ function plainFractions(tex: string): string {
   // Innermost first: each pass turns the fractions with no fraction inside.
   for (let pass = 0; pass < 8 && FRACTION.test(text); pass++) {
     FRACTION.lastIndex = 0;
-    text = text.replace(FRACTION, (_, top: string, bottom: string) =>
-      `${part(top)}/${part(bottom)}`,
+    text = text.replace(
+      FRACTION,
+      (_, top: string, bottom: string) => `${part(top)}/${part(bottom)}`,
     );
   }
   return text;

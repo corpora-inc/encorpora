@@ -568,10 +568,7 @@ export function MapView({
   const range = frontier ? frontierRange(frontier, selected?.strand) : null;
   const overall = frontier ? frontierRange(frontier) : null;
   const level = useMemo(
-    () =>
-      skills && !frontierLoading
-        ? levelRegion(skills, frontier)
-        : null,
+    () => (skills && !frontierLoading ? levelRegion(skills, frontier) : null),
     [skills, frontier, frontierLoading],
   );
   // What this map offers with a skill opened over it: what a search found

@@ -8,7 +8,10 @@ import type { Estimate } from "../../learning/frontier";
 
 /** An estimate as the server reports it (`reportEstimate`): a child's
  * record, an adult's own, or a learner's frontier. */
-export type ReportedEstimate = Pick<Estimate, "level" | "sd" | "low" | "high"> & {
+export type ReportedEstimate = Pick<
+  Estimate,
+  "level" | "sd" | "low" | "high"
+> & {
   answered?: number;
 };
 

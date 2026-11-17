@@ -73,9 +73,7 @@ export function plainLevel(estimate: Estimate) {
  * guess Grade 8, likely Grade 6 and above." */
 export function foundLevel(estimate: Estimate) {
   const where = learnerWhere(estimate);
-  return where
-    ? words.found(where.bestName, named(where.range))
-    : words.notYet;
+  return where ? words.found(where.bestName, named(where.range)) : words.notYet;
 }
 
 /** A likely range in short grade words (`scale.ts`). */

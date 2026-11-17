@@ -401,9 +401,11 @@ const home = createRoute({
   // challenge) goes on, once, to the screen that handles it first. (Old
   // `/?sign-in`, `/?reset-password` and a consent email's link are
   // app/legacy-aliases.ts rows.)
-  beforeLoad: async ({ location }) => {
+  beforeLoad: async ({ location, preload }) => {
     if (nativeRuntime) return;
     await homeReturn(location);
+    // A hover's preload decides nothing (and reads nothing fresh).
+    if (preload) return;
     const session = await queryClient.ensureQueryData(sessionOptions);
     if (session) await toOnlyPlace(session);
   },

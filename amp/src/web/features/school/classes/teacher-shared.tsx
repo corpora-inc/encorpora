@@ -443,7 +443,10 @@ export function WorkList({
                 title={promptLine(item.prompt)}
                 data-work-prompt=""
               >
-                <MathText text={item.prompt.replace(/\s+/g, " ").trim()} />
+                <MathText
+                  inline
+                  text={item.prompt.replace(/\s+/g, " ").trim()}
+                />
               </span>
             ) : (
               <span className={styles.promptMissing}>

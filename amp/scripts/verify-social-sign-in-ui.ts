@@ -1036,7 +1036,10 @@ try {
   // The new account's own place (`/` opens its only one, or the launcher
   // offers several: amp/AGENTS.md), never the first account's checkout
   // return.
-  assert.doesNotMatch(new URL(page.url()).pathname, /^\/(account\/billing|pay)/);
+  assert.doesNotMatch(
+    new URL(page.url()).pathname,
+    /^\/(account\/billing|pay)/,
+  );
   if (new URL(page.url()).pathname === "/")
     await page.locator("[data-launcher]").waitFor();
   await otherTab.close();

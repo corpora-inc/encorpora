@@ -103,7 +103,10 @@ test(
       ["mean-data", false, false],
     ];
     await learning.transaction(account, child, async (tx) => {
-      for (const [index, [templateId, correct, assisted]] of answers.entries()) {
+      for (const [
+        index,
+        [templateId, correct, assisted],
+      ] of answers.entries()) {
         const problem = generateProblem(templateId, randomUUID());
         await tx.saveProblem(problem);
         const wrong =
@@ -125,7 +128,9 @@ test(
           assisted,
           answer: problem.answer,
           explanation: problem.explanation,
-          createdAt: new Date(now - (answers.length - index) * 1000).toISOString(),
+          createdAt: new Date(
+            now - (answers.length - index) * 1000,
+          ).toISOString(),
         });
       }
       // The day's level, stored as practice stores it after answers.
@@ -153,7 +158,9 @@ test(
     assert.deepEqual(
       record.objectives.map((o: { skillId: string }) => o.skillId).sort(),
       progress.skills
-        .filter((s: { independentCorrect: number }) => s.independentCorrect >= 1)
+        .filter(
+          (s: { independentCorrect: number }) => s.independentCorrect >= 1,
+        )
         .map((s: { skillId: string }) => s.skillId)
         .sort(),
     );

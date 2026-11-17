@@ -54,9 +54,24 @@ const record: ProgressRecord = {
   weeks: [],
   earned: 3,
   objectives: [
-    { skillId: "a", title: "Multiplying fractions", strand: "fractions", day: "2026-11-17" },
-    { skillId: "b", title: "Powers of 10", strand: "number", day: "2026-11-17" },
-    { skillId: "c", title: "Dividing by a two-digit number", strand: "operations", day: "2026-11-17" },
+    {
+      skillId: "a",
+      title: "Multiplying fractions",
+      strand: "fractions",
+      day: "2026-11-17",
+    },
+    {
+      skillId: "b",
+      title: "Powers of 10",
+      strand: "number",
+      day: "2026-11-17",
+    },
+    {
+      skillId: "c",
+      title: "Dividing by a two-digit number",
+      strand: "operations",
+      day: "2026-11-17",
+    },
   ],
   work: [],
 };
