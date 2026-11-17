@@ -743,11 +743,11 @@ async function journeys(browser: Browser, engine: string) {
     await staff(teacherAccount, "POST", `classes/${period.id}/experience`, {
       values: { standings: "off" },
     });
-    // The board says so in place, with the way on to practice.
-    await reader.page.goto(`${origin}/standings`);
-    await heading(reader.page, "Standings are off for your class").waitFor();
-    await reader.page.getByRole("link", { name: "Practice" }).click();
-    await reader.page.waitForURL("**/practice");
+    // The route's guard opens practice instead (one hop). A board turned off
+    // while it is on view says so in place, with the way on to practice.
+    // The hop can interrupt the navigation itself, in WebKit.
+    await reader.page.goto(`${origin}/standings`).catch(() => undefined);
+    await reader.page.waitForURL("**/practice**");
     await staff(teacherAccount, "POST", `classes/${period.id}/experience`, {
       values: { standings: "class" },
     });
