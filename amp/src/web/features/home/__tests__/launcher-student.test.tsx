@@ -20,13 +20,15 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 
-function student(practice?: "seat" | "waiting" | "ended") {
+function student(practice?: "seat" | "waiting" | "ended", canPractice = true) {
   return {
     signedIn: true,
     account: { id: SESSION.accountId, kind: "student", email: null },
     consent: { status: "none", method: null },
     learners: [],
-    family: { learners: [] },
+    family: {
+      learners: [{ id: "learner", name: "Sam", deletedAt: null, canPractice }],
+    },
     school: { className: "Room 4", ...(practice ? { practice } : {}) },
     next: "practice",
   };
@@ -66,5 +68,14 @@ test("a seated student continues their practice", async () => {
   await mount(student());
   expect(
     await screen.findByRole("link", { name: "Continue practicing" }),
+  ).toBeTruthy();
+});
+
+test("a student whose learner can't practice, with no word from the school, has no seat yet", async () => {
+  await mount(student(undefined, false));
+  expect(
+    await screen.findByRole("heading", {
+      name: "Ask your teacher about your seat.",
+    }),
   ).toBeTruthy();
 });

@@ -26,9 +26,17 @@ export function Launcher() {
   const { groups, loading } = usePlaces(account);
   // A school's student who can't practice yet (no seat, practice not
   // started or ended) is told why here, never offered a practice that only
-  // says so.
+  // says so: the school's word for it, else no seat for a learner who can't
+  // practice (as practice itself decides, app/LegacyApp.tsx).
+  const own =
+    account?.account.kind === "student"
+      ? account.family.learners.find((learner) => !learner.deletedAt)
+      : undefined;
   const gate =
-    account?.account.kind === "student" ? account.school?.practice : undefined;
+    account?.account.kind === "student"
+      ? (account.school?.practice ??
+        (own?.canPractice === false ? "seat" : undefined))
+      : undefined;
   if (account && gate)
     return <StudentWaiting gate={gate} className={account.school?.className} />;
   if (!account || loading) return <LoadingScreen overlay />;
