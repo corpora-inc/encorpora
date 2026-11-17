@@ -68,7 +68,7 @@ import {
   type CurveLetter,
 } from "./grade-curve.js";
 import { helpWeeks } from "./help-events.js";
-import { practiced } from "./practice-rules.js";
+import { practiceCounts } from "./practice-rules.js";
 import {
   todayTodos,
   weekStart,
@@ -118,6 +118,7 @@ const teacherOf = async (pool: Pool, personId: string | null) =>
       ).rows[0]?.name ?? null)
     : null;
 
+const tenth = (value: number) => Math.round(value * 10) / 10;
 const partOfDay = (hour: number): TodayResponse["partOfDay"] =>
   hour < 12 ? "morning" : hour < 17 ? "afternoon" : "evening";
 
@@ -227,10 +228,8 @@ export async function readToday(
         : null,
       weekMinutes: thisWeek?.activeMinutes ?? 0,
       weekProblems: thisWeek?.problems ?? 0,
-      workedToday:
-        (dayRows.get(student.id)?.problems ?? 0) > 0 ||
-        (dayRows.get(student.id)?.activeMinutes ?? 0) > 0,
       todayMinutes: dayRows.get(student.id)?.activeMinutes ?? 0,
+      todayProblems: dayRows.get(student.id)?.problems ?? 0,
       usualWeeklyMinutes: earlierMinutes > 0 ? earlierMinutes / 4 : null,
       lastActive: lately?.lastActive ?? null,
       review: lately?.review ?? 0,
@@ -261,6 +260,8 @@ export async function readToday(
     },
     policy,
   );
+  // Today and the week, by one rule over the same rows (practice-rules).
+  const counts = practiceCounts(students);
   return {
     class: classSummaryOf(context),
     family,
@@ -276,9 +277,11 @@ export async function readToday(
         gradeLevel: student.gradeLevel,
         level: stored ? levelAndRange(stored.overall) : null,
         provisional: !stored || stored.overall.answered < PROVISIONAL_ANSWERS,
-        todayMinutes: Math.round(day?.activeMinutes ?? 0),
+        // To a tenth, as the rollup keeps them: a screen rounds, so a
+        // class of 20-second sessions reads "<1", never a median of 0.
+        todayMinutes: tenth(day?.activeMinutes ?? 0),
         todayProblems: day?.problems ?? 0,
-        weekMinutes: Math.round(students[index]!.weekMinutes),
+        weekMinutes: tenth(students[index]!.weekMinutes),
         weekProblems: students[index]!.weekProblems,
         lastActive: students[index]!.lastActive,
       };
@@ -289,9 +292,7 @@ export async function readToday(
     todos,
     week: {
       from,
-      minutes: Math.round(
-        week.reduce((sum, row) => sum + row.activeMinutes, 0),
-      ),
+      minutes: tenth(week.reduce((sum, row) => sum + row.activeMinutes, 0)),
       problems: week.reduce((sum, row) => sum + row.problems, 0),
       skills: new Set(
         skillsThisWeek.filter((row) => row.skillId).map((row) => row.skillId),
@@ -300,8 +301,7 @@ export async function readToday(
         (sum, student) => sum + student.objectivesThisWeek,
         0,
       ),
-      working: week.filter((row) => practiced(row.activeMinutes, row.problems))
-        .length,
+      working: counts.week,
       students: named.length,
     },
   };

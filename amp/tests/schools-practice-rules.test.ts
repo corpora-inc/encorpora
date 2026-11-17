@@ -127,7 +127,7 @@ const student = (
   level: null,
   weekMinutes: minutes,
   weekProblems: problems,
-  workedToday: false,
+  todayProblems: 0,
   todayMinutes: 0,
   usualWeeklyMinutes: null,
   lastActive: "2026-11-02",

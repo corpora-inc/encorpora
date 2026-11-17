@@ -354,6 +354,30 @@ async function sweep(
     await settled(page);
     await geometry(page, `${label} confirm`);
     await shoot(page, engine, "pictures-confirm", width, theme);
+    // A short phone: the whole screen fits, so a pick in the last row can't
+    // scroll the stepper off the top (FINDINGS #26).
+    if (width < 720) {
+      for (const [w, h] of [
+        [360, 640],
+        [320, 568],
+      ] as const) {
+        await page.setViewportSize({ width: w, height: h });
+        await settled(page);
+        const fit = await page.evaluate(() => ({
+          scroll: document.documentElement.scrollHeight,
+          view: innerHeight,
+        }));
+        check(`${label} pictures fit ${w}x${h}`, fit.scroll <= fit.view, fit);
+        const sizes = (await boxes(page, pictureButtons)).map((b) => b.width);
+        check(
+          `${label} pictures ${w}x${h} targets`,
+          Math.min(...sizes) >= 44,
+          sizes,
+        );
+      }
+      await page.setViewportSize({ width, height: 844 });
+      await settled(page);
+    }
     await tap(page, "Pick again");
     await heading(page, /Pick 3 pictures/).waitFor();
     await pick(page, MINE);
@@ -490,6 +514,36 @@ async function sweep(
       { timeout: 12_000 },
     );
     await geometry(page, `${label} board after`);
+    // A phone shows a small class whole, with the code and the QR: the last
+    // name is on the first screen (FINDINGS #27).
+    if (width < 720) {
+      const trio = await makeClass("Grade 4 Math");
+      for (const [given, family] of [
+        ["Ava", "Lin"],
+        ["Ben", "Cole"],
+        ["Leo", "Park"],
+      ] as const)
+        await addStudent(trio.id, given, family);
+      for (const [w, h] of [
+        [360, 640],
+        [320, 568],
+      ] as const) {
+        await page.setViewportSize({ width: w, height: h });
+        await page.goto(origin + classUrl(trio.id, "start"));
+        await page.getByText("0 of 3 here").waitFor();
+        await page.getByRole("img", { name: /QR code/ }).waitFor();
+        await settled(page);
+        const pills = await boxes(page, "ul[data-tier] li");
+        check(
+          `${label} board ${w}x${h} names on screen`,
+          pills.length === 3 &&
+            pills.every((pill) => pill.top + pill.height <= h),
+          pills,
+        );
+        await geometry(page, `${label} board ${w}x${h}`);
+      }
+      await page.setViewportSize({ width, height: 844 });
+    }
 
     // The roster.
     await page.goto(origin + classUrl(big.id, "roster"));
