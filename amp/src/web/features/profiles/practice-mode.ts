@@ -143,6 +143,11 @@ export async function adoptPracticeMode(location: {
     throw await (await import("../home/destination")).homeRedirect();
 }
 
+/** A learning screen's older address goes to its canonical one in one
+ * hop, replacing it in history (amp/AGENTS.md: a redirect only for a legacy
+ * URL, never chained). The one way this module redirects. */
+const olderAddress = (href: string) => redirect({ href, replace: true });
+
 /** Whose practice bare `/practice` meant: a school student's own learner;
  * an older link's `?learner=`; the adult's own; else the account's current
  * child (learner-store.ts), else its first. Null: nobody to practice. */
@@ -208,10 +213,9 @@ export async function practiceAddress(location: {
   );
   if (!learner) return;
   params.delete(LEARNER_KEY);
-  throw redirect({
-    href: `${practicePath(learner)}${params.size ? `?${params}` : ""}`,
-    replace: true,
-  });
+  throw olderAddress(
+    `${practicePath(learner)}${params.size ? `?${params}` : ""}`,
+  );
 }
 
 /**
@@ -249,7 +253,7 @@ export async function canonicalLearnerAddress(location: {
     currentLearner(),
   );
   if (href && href !== `${location.pathname}${location.searchStr}`)
-    throw redirect({ href, replace: true });
+    throw olderAddress(href);
 }
 
 /** The learner a resolved navigation's address names becomes the account's
