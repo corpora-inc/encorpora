@@ -96,12 +96,15 @@ test("funded purchase entry keeps its setup route", async () => {
   await expect(enter({ return: "arkansas-efa" })).resolves.toBeUndefined();
 });
 
-test("a signed-out trial link keeps its intent through sign-in", async () => {
+test("a signed-out trial link goes to sign-in in one hop; its intent is the tab's", async () => {
   queryClient.setQueryData(sessionOptions.queryKey, null);
+  // The root's keepInbound reads the arrival into the tab first
+  // (lib/program-choice.ts); the gate hands on only its own way back, so
+  // sign-in's address is clean and nothing hops again.
   await expect(
     enter({ ...trial, program: "az-esa", token: "discard" }),
   ).rejects.toMatchObject({
-    options: { to: "/sign-in", search: { ...trial, program: "az-esa" } },
+    options: { to: "/sign-in", search: {} },
   });
 });
 

@@ -1,10 +1,6 @@
 import type { InAppPlatform } from "../../../analytics/browser-kind";
 import { browserHandoffUrl } from "../../lib/funded-entry";
-import {
-  arrivalLabels,
-  chosenProgram,
-  signUpIntent,
-} from "../../lib/program-choice";
+import { arrivalLabels, arrivalTitleLabels } from "../../lib/program-choice";
 
 /**
  * The one-tap way out of an in-app browser into the phone's real browser,
@@ -47,14 +43,7 @@ export function browserHandoffHref(
  * handoff needs it, and the store loads with every first screen.
  */
 export function arrivalQuery(): Record<string, string> {
-  const { entry, free } = signUpIntent();
-  const program = chosenProgram();
-  return {
-    ...arrivalLabels(),
-    ...(program ? { program } : {}),
-    ...(entry ? { entry } : {}),
-    ...(free && entry !== "pitch-try" ? { return: "free-practice" } : {}),
-  };
+  return { ...arrivalLabels(), ...arrivalTitleLabels() };
 }
 
 /** An address with the tab's arrival on it, for another browser. */

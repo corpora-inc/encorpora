@@ -14,7 +14,7 @@ import {
   type PurchaseReturn,
 } from "../purchase-return";
 import { queryClient, sessionOptions } from "../lib/query";
-import { keepArrival } from "../lib/program-choice";
+import { keepArrival, keepSignUpIntent } from "../lib/program-choice";
 import { requireSignedIn, returnSearchShape, toOwnPlace } from "./sign-in-gate";
 
 /*
@@ -196,7 +196,9 @@ export async function homeReturn(location: Location) {
   if (!session) return;
   if ("signed-in" in search) {
     // A provider's sign-in: a sign-up intent kept from before its redirect
-    // is recorded now (features/auth/signup-intent.ts), never waited on.
+    // is recorded now (features/auth/signup-intent.ts), never waited on, and
+    // why this tab signed up has served.
+    keepSignUpIntent(null);
     void import("../features/auth/signup-intent")
       .then(({ recordPendingIntent }) => recordPendingIntent())
       .catch((error: unknown) =>

@@ -175,6 +175,18 @@ export function keepSignUpIntent(next: SignUpIntent | null) {
   }
 }
 
+/** The labels titles and measurement read for this tab (the program, why
+ * it signs up), as an ad's address would carry them; never put on one. */
+export function arrivalTitleLabels(): Record<string, string> {
+  const { entry, free } = signUpIntent();
+  const program = chosenProgram();
+  return {
+    ...(program ? { program } : {}),
+    ...(entry ? { entry } : {}),
+    ...(free && entry !== "pitch-try" ? { return: "free-practice" } : {}),
+  };
+}
+
 /** An arrival's address (an ad's, a funding page's link, an older sign-up
  * link): its program, its campaign labels and why it signs up, kept for the
  * tab. A visit that names none keeps what was kept. */

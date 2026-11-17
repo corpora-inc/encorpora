@@ -57,6 +57,7 @@ import {
   continuationUrl,
 } from "../lib/funded-entry";
 import { chosenPlan } from "../lib/pending-trial";
+import { keepSignUpIntent } from "../lib/program-choice";
 import { followAlias, LEGACY_ALIASES } from "./legacy-aliases";
 import { qk } from "../lib/keys";
 import {
@@ -339,6 +340,9 @@ const notForStudents = () => admit({ adults: true });
 /** A sign-up intent kept from before a provider's redirect, recorded once
  * signed in (features/auth/signup-intent.ts); never waited on. */
 function recordIntentAfterSignIn() {
+  // Signed in: why this tab signed up has served (the pending intent keeps
+  // its own copy until it is recorded).
+  keepSignUpIntent(null);
   void import("../features/auth/signup-intent")
     .then(({ recordPendingIntent }) => recordPendingIntent())
     .catch((error: unknown) =>
