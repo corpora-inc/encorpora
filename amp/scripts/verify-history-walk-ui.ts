@@ -141,18 +141,12 @@ async function firstRun(page: Page) {
   await oneHop(page, "Get started", "link");
   await page.getByRole("link", { name: /^I’m a parent/ }).click();
   await page.getByRole("button", { name: "Birth year, Child 1" }).click();
-  // Choosing the year saves the child; Next goes on once it is saved.
-  const saved = page.waitForResponse(
-    (response) =>
-      response.request().method() === "POST" &&
-      new URL(response.url()).pathname === "/api/v1/learners",
-  );
+  // Choosing the year saves the child; Next is tapped at once, while that
+  // save is in flight, and goes on when it is done (never a dead button).
   await page
     .getByRole("dialog", { name: "Birth year, Child 1" })
     .getByRole("option", { name: "2016", exact: true })
     .click();
-  await saved;
-  await settled(page);
   await forget(page);
   await page.getByRole("button", { name: "Next", exact: true }).click();
   await page.waitForURL((url) => url.pathname === "/practice");
