@@ -833,9 +833,10 @@ async function parentJourney(
   await page.getByRole("option", { name: "2019", exact: true }).click();
   await measured(page, `${label} add a child`);
   await shot(page, 1, "settings-add-child", width, theme);
-  await sheet.getByRole("button", { name: "Add child" }).click();
-  await sheet.getByText("Ivy is in your family.").waitFor();
-  await page.keyboard.press("Escape");
+  // The row is saved as its year is chosen (features/family/AddChildren);
+  // Done closes the sheet.
+  await sheet.getByRole("button", { name: "Done", exact: true }).click();
+  await sheet.waitFor({ state: "detached" });
   await page.goto(
     `${origin}/school/${place.org_id}/classes/${place.class_id}/today`,
   );
