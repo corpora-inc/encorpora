@@ -70,7 +70,12 @@ import {
   toOwnPlace,
   withQuery,
 } from "./sign-in-gate";
-import { cleverReturn, homeReturn, stripeReturn } from "./third-party-returns";
+import {
+  cleverReturn,
+  homeReturn,
+  resumeStripeReturn,
+  stripeReturn,
+} from "./third-party-returns";
 import { knownStale, onSignedOut } from "../lib/app-recovery";
 import { autoReloadBlock } from "../lib/reload-guard";
 import {
@@ -263,6 +268,8 @@ const root = createRootRoute({
     // An old address: one hop to its new one, before any screen's guard.
     if (!preload) await followAlias(location);
     if (nativeRuntime) return;
+    // A Stripe return kept across a sign-in: its confirmation, once.
+    if (!preload) await resumeStripeReturn();
     if (!preload) await restoreFamilyPractice(location);
     if (
       knownStale() &&
