@@ -1,0 +1,200 @@
+/* One school year (SchoolYearSection.tsx, SchoolYearSheet.tsx). Every block
+   keeps its height through loading, saving and a change of periods, so
+   nothing under it moves. */
+
+/* The heading's action: an Edit's room, kept with or without one. */
+.action {
+  display: flex;
+  min-height: var(--target-size);
+  align-items: center;
+}
+
+.body {
+  container-type: inline-size;
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+}
+/* The year's name, then its days: two lines at every width. */
+.line {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  font-variant-numeric: var(--numeric);
+  line-height: 1.45;
+}
+.line strong {
+  font-size: var(--text-body);
+  font-weight: 650;
+}
+.line span {
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+}
+.caption,
+.note {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+/* The longest caption takes two lines on a phone: its room is kept for
+   every caption, so a change of periods moves nothing. */
+.caption {
+  min-height: calc(2 * 1.45em);
+}
+@container (min-width: 560px) {
+  .caption {
+    min-height: 1.45em;
+  }
+}
+
+/* Loading: the same blocks at the same sizes. */
+.skeleton {
+  display: grid;
+  gap: var(--space-3);
+}
+.skeleton > span {
+  display: block;
+  border-radius: var(--radius-small);
+}
+.skeletonLine {
+  width: min(280px, 80%);
+  height: calc(1.45 * var(--text-body) + 2px + 1.45 * var(--text-table));
+}
+/* The bar with its Today line and month letters (School.module.css
+   `.ribbon`): 18 − 4 + 8 + 40 + 8 + 16. */
+.skeletonBar {
+  height: 86px;
+}
+.skeletonCaption {
+  width: 90%;
+  height: calc(2 * 1.45 * var(--text-table));
+}
+@container (min-width: 560px) {
+  .skeletonCaption {
+    height: calc(1.45 * var(--text-table));
+  }
+}
+
+/* A failed load holds the year's height: the message, then Try again. */
+.failed {
+  display: grid;
+  min-height: calc(
+    var(--text-body) * 1.45 + 86px + 2 * 1.45 * var(--text-table) + 2 *
+      var(--space-3)
+  );
+  align-content: start;
+  justify-items: start;
+  gap: var(--space-3);
+}
+.failed p {
+  margin: 0;
+  color: var(--color-danger);
+  font-size: var(--text-table);
+}
+
+/* The sheet. */
+.form {
+  display: grid;
+  gap: var(--space-5);
+  padding-bottom: var(--space-4);
+}
+.days {
+  display: grid;
+  gap: var(--space-3);
+}
+@container (min-width: 440px) {
+  .days {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.formBody {
+  container-type: inline-size;
+  display: grid;
+  gap: var(--space-5);
+  min-width: 0;
+}
+.field {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.fieldLabel {
+  font-size: var(--text-table);
+  font-weight: 600;
+}
+.fact {
+  margin: 0;
+  font-weight: 600;
+}
+
+/* The periods, each folding open to its two days. Room for four always:
+   choosing fewer moves nothing below. */
+.periods {
+  display: grid;
+  align-content: start;
+  min-height: calc(4 * 48px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.period + .period {
+  border-top: 0;
+}
+.periodSummary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0 var(--space-3);
+  min-width: 0;
+}
+.periodName {
+  font-weight: 600;
+}
+.periodDates {
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  font-variant-numeric: var(--numeric);
+  white-space: nowrap;
+}
+.periodDays {
+  display: grid;
+  gap: var(--space-3);
+  padding-bottom: var(--space-3);
+}
+@container (min-width: 440px) {
+  .periodDays {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.periodRow {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  border-block: 1px solid var(--color-border);
+}
+.periodRow > .periodSummary {
+  flex: 1;
+}
+.whole {
+  margin: 0;
+  padding-block: var(--space-3);
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+}
+
+/* The save's failure, in room kept for it above Save. */
+.error {
+  min-height: calc(1.45 * var(--text-table));
+  margin: 0;
+  color: var(--color-danger);
+  font-size: var(--text-table);
+  line-height: 1.45;
+}
+.save {
+  justify-self: start;
+  min-width: 148px;
+}
