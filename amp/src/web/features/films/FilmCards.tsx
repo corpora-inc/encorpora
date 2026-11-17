@@ -1,5 +1,4 @@
 import { Link } from "@tanstack/react-router";
-import { useHereWithLayers } from "../../nav/links";
 import type { CSSProperties } from "react";
 import { filmDuration, filmSpokenDuration } from "./FilmLink";
 import type { SkillFilm } from "./skill-films";
@@ -19,8 +18,6 @@ export function FilmCards({
   /** The skill's area on the map (pathways/model.ts `areaSlot`): the poster's hue. */
   area: number;
 }) {
-  // Where it was opened, its layers too (the skill it plays from).
-  const from = useHereWithLayers();
   if (!films.length) return null;
   return (
     <ul
@@ -34,7 +31,6 @@ export function FilmCards({
             className={styles.card}
             to="/lessons/$templateId/watch"
             params={{ templateId: film.templateId }}
-            search={{ from }}
             data-film-card={film.templateId}
           >
             <span className={styles.poster} aria-hidden="true">

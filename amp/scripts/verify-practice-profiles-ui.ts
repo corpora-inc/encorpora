@@ -358,10 +358,19 @@ async function adultTriesALevel(
   // One tap for the grade, one for the pace; every area fills in.
   await page.getByRole("radio", { name: "4th grade" }).click();
   await page.getByRole("radio", { name: /^Behind/ }).click();
-  await page.waitForURL(/grade=4/);
+  // The choice is the flow's draft (features/profiles/level-draft.ts): a
+  // reload keeps it, and the address carries none of it.
+  await page.reload();
+  await page
+    .getByRole("radio", { name: "4th grade" })
+    .and(page.locator('[aria-checked="true"]'))
+    .waitFor();
   check(
-    `${label} the URL keeps the grade and pace`,
-    /grade=4/.test(path(page)) && /pace=behind/.test(path(page)),
+    `${label} a reload keeps the grade and pace, and the URL carries neither`,
+    !path(page).includes("?") &&
+      (await page
+        .getByRole("radio", { name: /^Behind/ })
+        .getAttribute("aria-checked")) === "true",
     path(page),
   );
   const caption = page.locator("[data-grade-caption]");
@@ -446,7 +455,13 @@ async function adultTriesALevel(
   // Back and Forward go through the picker and practice.
   await page.goBack();
   await heading(page, "New profile");
-  check(`${label} back to the picker`, /grade=4/.test(path(page)), path(page));
+  check(
+    `${label} back to the picker, its grade kept`,
+    (await page
+      .getByRole("radio", { name: "4th grade" })
+      .getAttribute("aria-checked")) === "true",
+    path(page),
+  );
   await page.goForward();
   await practicing(page);
 
