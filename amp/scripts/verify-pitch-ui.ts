@@ -351,10 +351,10 @@ async function noOverflow(page: Page, tag: string) {
   assert.ok(overflow <= 1, `${tag}: no horizontal overflow (${overflow}px)`);
 }
 /**
- * The page's close is balanced: from 768 px the price sits beside the
- * guarantee and both columns end on one line, with Try it free under the
- * guarantee; the education funds take at most two compact rows; the footer
- * is one row from 768 px (address, links and icons centred on one line).
+ * The page's close is balanced: Try it free sits under Buy; from 768 px the
+ * guarantee sits beside the price, with the education funds beneath it, and
+ * both columns end on one line; the funds take at most two compact rows;
+ * the footer is one row from 768 px.
  */
 async function closeIsBalanced(
   page: Page,
@@ -378,32 +378,40 @@ async function closeIsBalanced(
       ).size;
     return {
       price: box("[data-actions]"),
+      buy: box("[data-buy]"),
       guarantee: box("[data-guarantee]"),
       free: box("[data-free-trial]"),
+      funds: box("[data-education-funds]"),
+      fundLinks: document.querySelectorAll("[data-education-funds] a").length,
       fundRows: rows("[data-education-funds] a"),
-      funds: document.querySelectorAll("[data-education-funds] a").length,
       footerRows: rows("footer a"),
     };
   });
-  const { price, guarantee, free } = found;
-  assert.ok(price && guarantee && free, `${tag}: the close's parts`);
+  const { price, buy, guarantee, free } = found;
+  assert.ok(price && buy && guarantee && free, `${tag}: the close's parts`);
+  assert.ok(
+    free.top >= buy.bottom && free.bottom <= price.bottom + 1,
+    `${tag}: Try it free under Buy: ${JSON.stringify(found)}`,
+  );
+  const right = funds ? found.funds : guarantee;
+  assert.ok(right, `${tag}: the right column's foot`);
   if (width >= 768) {
     assert.ok(
-      guarantee.left >= price.right && guarantee.top < price.top + 64,
+      guarantee.left >= price.right && Math.abs(guarantee.top - price.top) <= 1,
       `${tag}: the guarantee beside the price: ${JSON.stringify(found)}`,
     );
     assert.ok(
-      Math.abs(free.bottom - price.bottom) <= 2 && free.left >= price.right,
-      `${tag}: Try it free under the guarantee, both columns ending on one line: ${JSON.stringify(found)}`,
+      Math.abs(right.bottom - price.bottom) <= 2,
+      `${tag}: both columns end on one line: ${JSON.stringify(found)}`,
     );
     assert.equal(found.footerRows, 1, `${tag}: the footer is one row`);
   } else
     assert.ok(
-      guarantee.top >= price.bottom && free.top >= guarantee.bottom,
-      `${tag}: price, guarantee, then Try it free: ${JSON.stringify(found)}`,
+      guarantee.top >= price.bottom && right.top >= guarantee.top,
+      `${tag}: price, guarantee, then the funds: ${JSON.stringify(found)}`,
     );
   if (funds) {
-    assert.equal(found.funds, 3, `${tag}: every program is offered`);
+    assert.equal(found.fundLinks, 3, `${tag}: every program is offered`);
     assert.ok(found.fundRows <= 2, `${tag}: the funds take two rows at most`);
   }
 }

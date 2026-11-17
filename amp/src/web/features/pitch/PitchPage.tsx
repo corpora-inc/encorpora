@@ -87,14 +87,15 @@ export function PitchPage() {
       {TRIAL_WORKBOOKS_MAX} workbooks.
     </p>
   );
-  // The free trial beside the price: under the guarantee where there is a
-  // price, or the section's one action where nothing is for sale.
+  // The free trial, under Buy: the other way in, never left alone.
   const free = (
     <div className={styles.free} data-free-trial="">
       {tryFree("secondary")}
       {freeNote}
     </div>
   );
+  // Each program that sells now, where the visitor came without one.
+  const fundsShown = !funded && !!data.funds?.length;
   // Which buy layout the bottom takes; `BuyOptions` decides the same way.
   const offered = data.failed
     ? "error"
@@ -196,7 +197,11 @@ export function PitchPage() {
             <li>Progress you can see on phone, tablet and computer</li>
           </ul>
         </section>
-        <div className={styles.offer} data-offer={offered}>
+        <div
+          className={styles.offer}
+          data-offer={offered}
+          data-funds={fundsShown || undefined}
+        >
           <section
             ref={purchase}
             className={`${styles.details} ${styles.price}`}
@@ -223,27 +228,7 @@ export function PitchPage() {
                 onInterval={setPlan}
               />
             )}
-            {!funded && !!data.funds?.length && (
-              <div className={styles.funds} data-education-funds="">
-                <p>Paying with an education fund?</p>
-                <ul>
-                  {data.funds.map((entry) => (
-                    <li key={entry.slug}>
-                      <PitchLink
-                        place={{ to: `/invoice/${entry.slug}` }}
-                        className={buttonClass("secondary", styles.fundLink)}
-                        onClick={() =>
-                          track("buy_click", { path: "funded", from: "pitch" })
-                        }
-                      >
-                        {entry.name}
-                      </PitchLink>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            {offered === "free" && free}
+            {free}
           </section>
           {guaranteed && (
             <section
@@ -262,7 +247,26 @@ export function PitchPage() {
               <p className={styles.footnote}>{GUARANTEE_FOOTNOTE}</p>
             </section>
           )}
-          {offered !== "free" && free}
+          {fundsShown && (
+            <div className={styles.funds} data-education-funds="">
+              <p>Paying with an education fund?</p>
+              <ul>
+                {data.funds!.map((entry) => (
+                  <li key={entry.slug}>
+                    <PitchLink
+                      place={{ to: `/invoice/${entry.slug}` }}
+                      className={buttonClass("secondary", styles.fundLink)}
+                      onClick={() =>
+                        track("buy_click", { path: "funded", from: "pitch" })
+                      }
+                    >
+                      {entry.name}
+                    </PitchLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </main>
       <SiteFooter className={styles.footer}>
