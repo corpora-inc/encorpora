@@ -418,8 +418,8 @@ async function practicing(page: Page) {
   await page.locator("[data-problem-id]").first().waitFor({ timeout: 30_000 });
 }
 /** Back from Stripe: the pay overlay's confirmation, over the screen it was
- * opened from (features/pay/stripe-return.ts), whose Done closes to that
- * screen. */
+ * opened from (features/pay/stripe-return.ts), whose Done returns to where
+ * paying started (features/pay/CardDone.tsx). */
 async function paidAndDone(page: Page) {
   await page.waitForURL(/\/pay(\/[^/]+)?\/done$/, { timeout: 30_000 });
   const done = page.getByRole("dialog");
@@ -735,9 +735,10 @@ async function parentJourney(
     .getByRole("button", { name: /Continue to Stripe|Resume checkout/ })
     .click();
   await payInCheckout(page, 1, width, theme);
-  // Back on the child's page, with the name offered once.
+  // Done puts them back where paying started: practicing, with the name
+  // offered once.
   await paidAndDone(page);
-  await page.waitForURL(new RegExp(`/kids/${fox.id}$`));
+  await practicing(page);
   const naming = page.getByRole("dialog", { name: `Add ${fox.name}’s name` });
   await naming.waitFor();
   await measured(page, `${label} naming`);
@@ -745,9 +746,7 @@ async function parentJourney(
   await naming.getByLabel("Name", { exact: true }).fill("Rowan");
   await naming.getByRole("button", { name: "Save name" }).click();
   await naming.waitFor({ state: "detached" });
-  // Practice goes on from their page, past the 100.
-  await page.getByRole("button", { name: "Practice with Rowan" }).click();
-  await practicing(page);
+
   const named = (
     await db.query("SELECT name,name_pending FROM amp_learners WHERE id=$1", [
       fox.id,
