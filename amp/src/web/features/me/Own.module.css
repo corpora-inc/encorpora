@@ -145,10 +145,13 @@
   }
 }
 
-/* Beside the title: practicing at a level and the printed report. */
+/* Beside the title: practicing at a level and the printed report, one pair
+   of quiet actions: on one line where they fit, each on its own where they
+   don't (it may shrink to the row, so it wraps rather than overflow). */
 .titleTools {
   display: inline-flex;
-  flex: 0 0 auto;
+  flex: 0 1 auto;
+  min-width: 0;
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-1);

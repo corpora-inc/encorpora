@@ -177,7 +177,26 @@ async function shot(
 async function measured(page: Page, label: string) {
   await settle(page, 300);
   const geometry = await probe(page);
-  check(`${label} overflow`, geometry.overflow === 0, geometry.overflow);
+  check(
+    `${label} overflow`,
+    geometry.overflow === 0,
+    geometry.overflow === 0
+      ? 0
+      : {
+          by: geometry.overflow,
+          // What sticks out past the viewport, innermost first.
+          wide: await page.evaluate(() =>
+            [...document.querySelectorAll("body *")]
+              .filter((el) => el.getBoundingClientRect().right > innerWidth + 1)
+              .reverse()
+              .slice(0, 4)
+              .map(
+                (el) =>
+                  `${el.tagName.toLowerCase()}.${(el.className || "").toString().slice(0, 40)} ${Math.round(el.getBoundingClientRect().right)} "${(el.textContent ?? "").trim().slice(0, 30)}"`,
+              ),
+          ),
+        },
+  );
   check(
     `${label} targets`,
     geometry.smallTargets.length === 0,
