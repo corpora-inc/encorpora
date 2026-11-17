@@ -734,11 +734,12 @@ const pathwaysIndex = createRoute({
 /** A skill open over your own map: the map stays mounted under it (this
  * route draws nothing of its own; nav/links.tsx `useLayers` reads the
  * skill from the address), and it is the map's overlay one leaf below it,
- * so Back to the map keeps the map's scroll (`overList`). */
+ * so Back to the map keeps the map's scroll (`overList`). Its space is
+ * the map's (`pathways`, the deepest route that declares one). */
 const pathwaysSkill = createRoute({
   getParentRoute: () => pathways,
   path: "$skill",
-  staticData: { space: "learner", overList: true },
+  staticData: { overList: true },
 });
 /** A learner's workbooks are a tab of their Progress. The address names
  * the learner (`$learnerId`): the screen reads it from there, and once the
