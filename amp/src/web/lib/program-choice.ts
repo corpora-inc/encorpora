@@ -54,10 +54,10 @@ export function chooseProgram(program: ProgramChoice | null) {
   for (const listener of listeners) listener();
 }
 
-/** The labels an ad puts on its link. Kept as given (each at most 100
- * characters); readers check them against the known campaigns
- * (lib/funded-entry.ts `campaignSearch`, which also honors a privacy
- * preference). */
+/** The labels an ad puts on its link. Kept when each is a plain identifier
+ * (at most 100 characters) and the visitor hasn't opted out (GPC); readers
+ * still check them against the known campaigns (lib/funded-entry.ts
+ * `campaignSearch`, which honors a privacy preference set later). */
 export const CAMPAIGN_LABELS = [
   "utm_campaign",
   "utm_source",
@@ -87,14 +87,27 @@ export function arrivalLabels(): ArrivalLabels {
   return labels;
 }
 
+/** A label as ads write them: a plain identifier, never free text (an
+ * address, a name). */
+const LABEL = /^[A-Za-z0-9][A-Za-z0-9._-]{0,99}$/;
+
 function pickLabels(search: Record<string, unknown>): ArrivalLabels {
   const picked: ArrivalLabels = {};
   for (const key of CAMPAIGN_LABELS) {
     const value = search[key];
-    if (typeof value === "string" && value && value.length <= 100)
-      picked[key] = value;
+    if (typeof value === "string" && LABEL.test(value)) picked[key] = value;
   }
   return picked;
+}
+
+/** Global Privacy Control: a binding opt-out of sale and sharing, so no
+ * campaign label is kept (lib/funded-entry.ts measurementOptOut). */
+function optedOut() {
+  return (
+    typeof navigator !== "undefined" &&
+    (navigator as Navigator & { globalPrivacyControl?: boolean })
+      .globalPrivacyControl === true
+  );
 }
 
 /** An arrival's address (an ad's, a funding page's link): its program and
@@ -102,7 +115,7 @@ function pickLabels(search: Record<string, unknown>): ArrivalLabels {
  * was kept. */
 export function keepArrival(search: Record<string, unknown>) {
   if (isProgramChoice(search.program)) chooseProgram(search.program);
-  const given = pickLabels(search);
+  const given = optedOut() ? {} : pickLabels(search);
   if (Object.keys(given).length) {
     labels = given;
     try {

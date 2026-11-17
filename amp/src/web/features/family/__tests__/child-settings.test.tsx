@@ -280,3 +280,29 @@ test("over family Settings: the child's settings in a sheet named for them, with
   // Permission and data are disclosures here too, never a second sheet.
   expect(screen.getAllByRole("dialog")).toHaveLength(1);
 });
+
+test("Escape closes a child's settings sheet from anywhere in it, also right after a rename", async () => {
+  const closed: boolean[] = [];
+  mount(
+    <ChildSettingsSheet
+      place={place}
+      child={child}
+      open
+      onOpenChange={(next) => closed.push(!next)}
+    />,
+  );
+  const sheet = await screen.findByRole("dialog");
+  fireEvent.click(within(sheet).getByRole("button", { name: "Change" }));
+  const field = within(sheet).getByRole("textbox", { name: "Name" });
+  fireEvent.change(field, { target: { value: "Rowan" } });
+  fireEvent.click(within(sheet).getByRole("button", { name: "Save name" }));
+  await waitFor(() =>
+    expect(within(sheet).getByRole("button", { name: "Change" })).toBeTruthy(),
+  );
+  // After the save, focus is wherever the browser left it.
+  fireEvent.keyDown(document.activeElement ?? document.body, {
+    key: "Escape",
+  });
+  // One Escape: the sheet closes, never only the "Name saved." toast over it.
+  await waitFor(() => expect(closed).toContain(true));
+});

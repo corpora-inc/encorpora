@@ -167,11 +167,16 @@ export function continuationSearch(
     isFundedReturn(search.return)
       ? { return: search.return }
       : {}),
+    // Deleting the account asks for a fresh sign-in, then returns to its
+    // overlay (app/account-overlays.tsx); its older addresses return there
+    // too.
     ...(search.return === "security" &&
-    ["/account/security/delete", "/family/security/delete"].includes(
-      returnTarget(search.next) ?? "",
-    )
-      ? { next: "/account/security/delete" }
+    [
+      "/account/delete-account",
+      "/account/security/delete",
+      "/family/security/delete",
+    ].includes(returnTarget(search.next) ?? "")
+      ? { next: "/account/delete-account" }
       : {}),
     // A signed-out visit to any place (a family, a class, a school) signs
     // in and comes back to it, by the one return contract.

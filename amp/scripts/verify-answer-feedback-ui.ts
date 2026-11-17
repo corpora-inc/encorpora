@@ -457,8 +457,10 @@ try {
         assert(await next.isEnabled());
         failBranch = false;
         await next.click();
+        // The next problem, whatever its kind (a typed answer or a
+        // structured one).
         await page
-          .locator("#answer")
+          .locator(".question")
           .waitFor()
           .catch(async (error) => {
             await page.screenshot({
@@ -470,10 +472,12 @@ try {
         await page.keyboard.press("Escape");
         await page.getByRole("button", { name: "Open AMP menu" }).click();
         await page
-          .getByRole("checkbox", { name: "Sound", exact: true })
+          .getByRole("switch", { name: "Sound", exact: true })
+          .or(page.getByRole("checkbox", { name: "Sound", exact: true }))
           .check();
         await page
-          .getByRole("checkbox", { name: "Haptics", exact: true })
+          .getByRole("switch", { name: "Haptics", exact: true })
+          .or(page.getByRole("checkbox", { name: "Haptics", exact: true }))
           .check();
         await page.keyboard.press("Escape");
         await page.reload();
@@ -490,12 +494,14 @@ try {
         await page.getByRole("button", { name: "Open AMP menu" }).click();
         assert(
           await page
-            .getByRole("checkbox", { name: "Sound", exact: true })
+            .getByRole("switch", { name: "Sound", exact: true })
+            .or(page.getByRole("checkbox", { name: "Sound", exact: true }))
             .isChecked(),
         );
         assert(
           await page
-            .getByRole("checkbox", { name: "Haptics", exact: true })
+            .getByRole("switch", { name: "Haptics", exact: true })
+            .or(page.getByRole("checkbox", { name: "Haptics", exact: true }))
             .isChecked(),
         );
       }

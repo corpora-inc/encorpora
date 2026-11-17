@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import { chromium as rawChromium, type Page } from "playwright";
 const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
+import { settleArrival } from "./ui-settle";
 import {
   presentOffer,
   presentRequest,
@@ -36,7 +37,7 @@ export function notifyDeviceSessionChanged(){}export function notifyAccountSessi
 }
 export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}
 `;
-const client = `async function success(input){window.syntheticCallback=input?.callbackURL;localStorage.setItem('synthetic-signed-in','yes');return {data:{token:'synthetic'},error:null};}export const accountClient={signUp:{email:success},signIn:{email:success},sendVerificationEmail:success};`;
+const client = `async function success(input){window.syntheticCallback=input?.callbackURL;localStorage.setItem('synthetic-signed-in','yes');return {data:{token:'synthetic'},error:null};}export const accountClient={signUp:{email:success},signIn:{email:success},sendVerificationEmail:success};export function passkeyAccountClient(){return Promise.reject(new Error("no passkeys in this fixture"));}export function preloadPasskeys(){}`;
 const vite = await createServer({
   cacheDir: "node_modules/.vite-funded-entry",
   plugins: [
@@ -270,6 +271,14 @@ async function capture(page: Page, label: string) {
 /** A pay overlay's address: over the learner's own place
  * (features/pay/address.ts). */
 const payOverlay = (url: URL) => /\/pay(\/|$)/.test(url.pathname);
+/** The campaign labels the tab's arrival kept (lib/program-choice.ts). */
+const arrival = (page: Page) =>
+  page.evaluate(
+    () =>
+      JSON.parse(
+        sessionStorage.getItem("amp.arrival-labels") ?? "null",
+      ) as Record<string, string> | null,
+  );
 /** What the pay store holds for a learner (features/pay/store.ts). */
 const payChoice = (page: Page, learnerId: string) =>
   page.evaluate(
@@ -306,7 +315,18 @@ try {
           await page.goto(
             `${origin}/sign-up?return=free-practice&program=nh-efa&${entryCampaign}`,
           );
-          await page.getByText("Approved New Hampshire EFA vendor.").waitFor();
+          await page
+            .getByText("Approved New Hampshire EFA vendor.")
+            .waitFor()
+            .catch(async (e) => {
+              console.log(
+                page.url(),
+                await page.locator("body").innerText(),
+                await page.evaluate(() => ({ ...sessionStorage })),
+                faults,
+              );
+              throw e;
+            });
           await page.reload();
           await page.getByText("Approved New Hampshire EFA vendor.").waitFor();
           assert.equal(
@@ -316,7 +336,8 @@ try {
           await capture(page, `free-signup-nh-${width}-${theme}`);
         }
         // Signed out, a program's older purchase address is its public
-        // invoice form, in one hop: the ad's labels kept, nothing else.
+        // invoice form, in one hop, with no query: the ad's labels are the
+        // tab's arrival (lib/program-choice.ts).
         await page.goto(
           `${origin}/purchase/${entry.slug}?${entryCampaign}&email=must-not-forward`,
         );
@@ -334,17 +355,19 @@ try {
             );
             throw e;
           });
-        const at = new URL(page.url());
+        assert.equal(new URL(page.url()).search, "");
         assert.equal(
-          at.searchParams.get("utm_campaign"),
+          (await arrival(page))?.utm_campaign,
           new URLSearchParams(entryCampaign).get("utm_campaign"),
         );
-        assert.ok(!page.url().includes("must-not-forward"));
         assert.ok(
           !(await page.locator("body").innerText()).includes("Fixture program"),
         );
         await capture(page, `invoice-${entry.slug}-${width}-${theme}`);
         if (width === 390 && theme === "light") {
+          // Measured settled: mid fade-in (ui/loading.css amp-appear) text
+          // blends with the surface and reads as low contrast.
+          await settleArrival(page);
           const axe = await new AxeBuilder({ page }).analyze();
           assert.deepEqual(
             axe.violations
@@ -392,10 +415,10 @@ try {
     );
     await context.close();
   }
-  // Privacy signals never prevent the same funded purchase, and invalid labels
-  // cannot survive the router's redirects. Global Privacy Control drops the
-  // labels; Do Not Track has no legal force and changes nothing
-  // (lib/funded-entry.ts measurementOptOut).
+  // Privacy signals never prevent the same funded purchase, and no label
+  // rides into the next address. Global Privacy Control keeps no labels;
+  // free text (an address) is never kept; Do Not Track has no legal force
+  // and changes nothing (lib/program-choice.ts keepArrival).
   for (const privacy of [
     "gpc",
     "dnt",
@@ -428,13 +451,26 @@ try {
     await page.goto(`${origin}/purchase/arkansas-efa?${tags}`);
     await page.waitForURL((url) => url.pathname === "/invoice/arkansas-efa");
     await page.getByRole("heading", { name: "Get your AMP invoice" }).waitFor();
+    assert.equal(new URL(page.url()).search, "", `${privacy}: no query`);
+    const kept = (await arrival(page)) ?? {};
     assert.equal(
-      page.url().includes("utm_"),
-      measured || privacy === "invalid-creative",
-      `${privacy}: router filters labels`,
+      "utm_campaign" in kept,
+      measured || privacy === "invalid" || privacy === "invalid-creative",
+      `${privacy}: campaign kept unless opted out`,
     );
-    assert.equal(page.url().includes("utm_content"), measured);
-    assert.equal(page.url().includes("private"), false);
+    // Each plain label is kept on its own; a reader needs the full set
+    // (lib/funded-entry.ts campaignSearch).
+    assert.equal(
+      "utm_content" in kept,
+      measured || privacy === "invalid",
+      `${privacy}: creative`,
+    );
+    assert.equal(
+      "utm_source" in kept,
+      measured || privacy === "invalid-creative",
+      `${privacy}: source`,
+    );
+    assert.ok(!JSON.stringify(kept).includes("private"), "no free text kept");
     assert.deepEqual(faults, []);
     await context.close();
   }

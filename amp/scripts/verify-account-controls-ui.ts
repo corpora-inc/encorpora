@@ -291,10 +291,10 @@ try {
                     ? 390
                     : 844,
         });
+        // This account's current learner on the device, written once from
+        // any page of the app (signed in, /sign-in opens the account's place).
         await practice.goto(`${origin}/sign-in`);
-        await practice
-          .getByRole("heading", { name: "Sign in", exact: true })
-          .waitFor();
+        await practice.waitForLoadState("load");
         await writeLearner(practice, identity, practiceLearner);
         await practice.goto(`${origin}/practice`);
         if (!authenticated) {
@@ -386,7 +386,11 @@ try {
       await next.waitFor();
       assert.equal(await next.getAttribute("href"), "/start");
       await fits(page, `ready ${theme} ${width}`);
-      await page.getByRole("button", { name: "Open AMP menu" }).click();
+      await page
+        .getByRole("button", { name: "Open AMP menu" })
+        .filter({ visible: true })
+        .first()
+        .click();
       await page
         .getByRole("button", { name: "Sign out", exact: true })
         .waitFor();

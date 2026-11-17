@@ -230,7 +230,7 @@ try {
   await page.getByRole("button", { name: "Next", exact: true }).click();
   // One child goes straight into their first problem, on this device; the
   // child's Sign out gives it back to the parent, on the family's Today.
-  await page.waitForURL((url) => url.pathname === "/practice");
+  await page.waitForURL((url) => /^\/practice\/[^/]+$/.test(url.pathname));
   await page.locator(".problem-stage").waitFor();
   await returnToParent(page);
   await signedIn(page, email);

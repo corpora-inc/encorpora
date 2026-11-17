@@ -178,9 +178,11 @@ export function BillingPanel() {
           <Receipts onSelect={setReceipt} />
         </Disclosure>
       )}
-      <footer className={styles.support}>
+      {/* A line, not a <footer>: style.css gives every bare footer the
+          marketing page's rule and margins (an empty band under Receipts). */}
+      <p className={styles.support}>
         Questions about a payment? Write to support@corpora.inc
-      </footer>
+      </p>
     </div>
   );
 }

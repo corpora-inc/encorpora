@@ -8,10 +8,12 @@ const FADE = 28;
 /** A phone shows at most this many tabs; the rest are under More. */
 export const PHONE_TABS = 4;
 const PHONE = "(max-width: 599px)";
-/** Tighter paddings to try, in order, when the labels do not fit; `small`
- * (a 320 px phone with a long open tab under More) also takes the type down
- * a step. */
-const FIT_STEPS = ["snug", "tight", "small"] as const;
+/** The one tighter padding a row tries before More: `snug`, half of
+ * --space-3 a side, so neighbouring labels stay --space-3 (12 px) apart.
+ * Never tighter, and the type never shrinks: labels closer than that read
+ * as one phrase ("Workbooks Pathways"), so a row that can't hold its labels
+ * at that spacing shows whole tabs and More instead. */
+const FIT_STEPS = ["snug"] as const;
 
 export type TabItem = {
   id: string;
@@ -59,7 +61,31 @@ export function Tabs({
   useLayoutEffect(() => {
     const strip = list.current;
     if (!strip) return;
-    const over = () => strip.scrollWidth > strip.clientWidth + 1;
+    // Too wide: the row overflows its strip, or a shown label (or More's)
+    // is cut inside its own box. Either way, tabs go under More; a label
+    // never shrinks, truncates or wraps.
+    // A label also "doesn't fit" when it runs into its tab's padding: a
+    // segment may shrink to its text, and neighbours then read as one
+    // phrase.
+    const clipped = (el: HTMLElement) => {
+      if (!el.getClientRects().length) return false;
+      if (el.scrollWidth > el.clientWidth + 1) return true;
+      const style = getComputedStyle(el);
+      const room =
+        el.clientWidth -
+        parseFloat(style.paddingLeft) -
+        parseFloat(style.paddingRight);
+      const range = document.createRange();
+      range.selectNodeContents(el);
+      return range.getBoundingClientRect().width > room + 1;
+    };
+    const over = () =>
+      strip.scrollWidth > strip.clientWidth + 1 ||
+      [
+        ...strip.querySelectorAll<HTMLElement>(
+          "[data-tab]:not([data-hidden]), [data-tabs-more] button",
+        ),
+      ].some(clipped);
     const measure = () => {
       const tabs = [...strip.querySelectorAll<HTMLElement>("[data-tab]")];
       strip.removeAttribute("data-fit");
@@ -80,8 +106,8 @@ export function Tabs({
         // fit, and More. In order, the first that fits: every tab when More
         // would hold only one; the four phone tabs and a More wide enough for
         // any name it takes; the same with More saying only "More" (marked
-        // when it holds the open tab); then three and More. Each tries the
-        // type steps before giving up.
+        // when it holds the open tab); then three and More; then two. Each
+        // tries the one snug padding, never tighter.
         strip.removeAttribute("data-fit");
         strip.setAttribute("data-phone", "");
         const phone = phoneTabs(items).map((item) => item.id);
@@ -113,6 +139,13 @@ export function Tabs({
             : current && phone.includes(current)
               ? [...phone.slice(0, 2), current]
               : phone.slice(0, 3);
+        // The last resort: two and More, the open tab one of the two.
+        const two =
+          current && phone.slice(0, 2).includes(current)
+            ? phone.slice(0, 2)
+            : current && phone.includes(current)
+              ? [phone[0]!, current]
+              : phone.slice(0, 2);
         const fitted =
           (tabs.length === PHONE_TABS + 1 &&
             show(
@@ -121,7 +154,8 @@ export function Tabs({
             )) ||
           show(phone, "wide") ||
           show(phone, "narrow") ||
-          show(three, "narrow");
+          show(three, "narrow") ||
+          show(two, "narrow");
         if (!fitted) console.warn("The tab row is wider than a phone", label);
         strip.scrollLeft = 0;
       } else if (over()) {

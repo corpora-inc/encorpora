@@ -327,7 +327,10 @@ export async function handOver(page: Page, origin: string, learnerId: string) {
     .locator(`[data-practice-here=${JSON.stringify(learnerId)}]`)
     .first()
     .click();
-  await page.waitForURL((url) => url.pathname === "/practice");
+  // Practice opens at the learner's own address (`/practice/<learner>`).
+  await page.waitForURL(
+    (url) => url.pathname === `/practice/${encodeURIComponent(learnerId)}`,
+  );
   await page.locator(".problem-stage").waitFor();
 }
 

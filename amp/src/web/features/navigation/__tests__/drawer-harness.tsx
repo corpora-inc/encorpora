@@ -45,9 +45,6 @@ vi.mock("@tanstack/react-router", () => ({
 vi.mock("../../curriculum/CurriculumDetails", () => ({
   useCurriculumDetails: () => ({ shown: true, ready: true, scope: "test" }),
 }));
-vi.mock("../../practice/FeedbackPreferences", () => ({
-  FeedbackPreferences: () => null,
-}));
 vi.mock("../../profiles/ProfileBar", () => ({
   ProfilePlace: () => <span data-testid="profile-place" />,
 }));

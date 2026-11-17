@@ -83,7 +83,10 @@ export const useMapViewStore = create<MapViewState>()(
 /** A view from an older link's keys (`?topic=`, `?filter=`, `?area=`). */
 export function mapViewOf(search: Record<string, unknown>): Partial<MapView> {
   const view: Partial<MapView> = {};
-  if (typeof search.topic === "string") view.topic = search.topic;
+  // A search longer than the field takes (100) is no search anyone typed:
+  // an older shared link's is dropped, never an error.
+  if (typeof search.topic === "string" && search.topic.length <= 100)
+    view.topic = search.topic;
   if (typeof search.filter === "string") view.band = search.filter;
   if (isArea(search.area)) view.area = search.area;
   return view;

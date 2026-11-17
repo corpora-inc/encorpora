@@ -1421,12 +1421,15 @@ try {
   await drill.goto(`${origin}/pathways?skill=${target.id}`);
   await drill.getByRole("link", { name: "Practice", exact: true }).click();
   await drill.locator("#problem-prompt").waitFor();
-  assert.equal(
-    batches[0]?.templateId,
-    templates.find((t) => t.skillId === target.id)?.id,
-    "selected skill reaches the existing batch API",
+  // The skill is practice's own address (/practice/<learner>/skills/<id>):
+  // practice holds to it (its focus, features/practice/curriculum-filter.ts).
+  assert.match(
+    new URL(drill.url()).pathname,
+    new RegExp(`/skills/${target.id}$`),
+    "the selected skill is practice's address",
   );
-  await drill.waitForURL(`${origin}/practice`);
+  assert(batches.length > 0, "practice asks for its problems");
+  await drill.waitForURL((url) => url.pathname.startsWith("/practice"));
   await drill.close();
   const exactType = templates.filter((t) => t.skillId === target.id).at(-1)!;
   const typed = await browser.newPage({
@@ -1468,7 +1471,7 @@ try {
     linkedBatches[0]?.templateId,
     templates.find((t) => t.skillId === target.id)?.id,
   );
-  await linked.waitForURL(`${origin}/practice`);
+  await linked.waitForURL((url) => url.pathname.startsWith("/practice"));
   await linked.close();
 
   // Signed out, the map states the free allowance and its way in is sign-up.
@@ -1722,7 +1725,8 @@ try {
       .waitFor();
     assert.equal(
       await unknown.locator('meta[name="robots"]').getAttribute("content"),
-      "noindex",
+      // Kept out of the index, its links still followed (pathways-metadata.ts).
+      "noindex, follow",
     );
     await unknown.close();
   }
@@ -1765,6 +1769,10 @@ try {
     await phone.close();
   }
 
+  // A grown-up always has a current learner (adopted by default; the
+  // learner store). The one chooser rule (features/spaces/learner-choice.ts):
+  // with two or more learners the chooser names the current one and offers
+  // the others; with one there is no chooser.
   for (const learnerCount of [1, 2]) {
     const unselected = await browser.newPage({
       viewport: { width: 390, height: 844 },
@@ -1772,13 +1780,32 @@ try {
     await fixture(unselected, { learnerCount, selectedLearnerId: null });
     await unselected.goto(`${origin}/pathways`);
     await unselected
-      .getByRole("button", { name: /^Learner/ })
-      .filter({ hasText: "Choose learner" })
-      .waitFor();
-    assert.equal(
-      await unselected.getByRole("button", { name: /^Learner/ }).count(),
-      1,
-    );
+      .locator('.pathways-summary[aria-busy="false"]')
+      .waitFor({ state: "attached" });
+    const chooser = unselected.getByRole("button", { name: /^Learner/ });
+    if (learnerCount === 1) assert.equal(await chooser.count(), 0);
+    else {
+      await chooser.waitFor();
+      assert.equal(await chooser.count(), 1);
+      const current = await chooser.getAttribute("data-value");
+      assert.ok(current, "a current learner is chosen");
+      const names: Record<string, string> = {
+        "parent-one-a": "Sample learner A",
+        "parent-one-b": "Sample learner B",
+      };
+      assert.match(
+        (await chooser.textContent()) ?? "",
+        new RegExp(names[current!]!),
+        "the chooser names the current learner",
+      );
+      await chooser.click();
+      const list = unselected.getByRole("listbox", {
+        name: "Learner",
+        exact: true,
+      });
+      assert.equal(await list.locator('[role="option"]').count(), 2);
+      await unselected.keyboard.press("Escape");
+    }
     assert.equal(
       await unselected.getByRole("link", { name: "Add a learner →" }).count(),
       0,

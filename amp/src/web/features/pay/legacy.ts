@@ -69,21 +69,16 @@ export async function offerChoice(offerId: string) {
 }
 
 /** An education-funds address: signed out, the public invoice form for its
- * program (campaign labels kept); signed in, the learner's pay screen on
- * the education-funds tab. */
+ * program; signed in, the learner's pay screen on the education-funds tab.
+ * Its campaign labels are the tab's arrival (lib/program-choice.ts, kept by
+ * the root before this hop), never carried to the next address. */
 async function fundsTarget(input: Input, programId?: string) {
-  const { search, searchStr } = input;
+  const { search } = input;
   const named = Object.values(fundedPrograms).find(
     (entry) => entry.id === programId,
   );
   const session = await queryClient.ensureQueryData(sessionOptions);
-  if (!session) {
-    if (!named) return "/sign-in";
-    const labels = new URLSearchParams(searchStr);
-    for (const key of [...labels.keys()])
-      if (!key.startsWith("utm_")) labels.delete(key);
-    return `/invoice/${named.slug}${labels.size ? `?${labels}` : ""}`;
-  }
+  if (!session) return named ? `/invoice/${named.slug}` : "/sign-in";
   const { me } = await signedIn(input);
   const offered = text(search.offer)
     ? await offerChoice(text(search.offer)!)

@@ -28,7 +28,6 @@ import {
   handedReturnName,
   handedStudentDevice,
 } from "../../lib/student-device";
-import { ThisDevice } from "./ThisDevice";
 
 type Icon =
   | "child"
@@ -183,7 +182,8 @@ export default function DrawerContents({
     label: learner.name,
   }));
   // A learner's settings, only where there is a learner whose they are.
-  // A family's device preferences are one quiet section at the foot.
+  // This device's answer feedback is one quiet section at the foot, the
+  // same switches for everyone (practice/FeedbackPreferences.tsx).
   const learning = kind === "me" || kind === "student";
   const family = kind === "family";
   return (
@@ -336,7 +336,7 @@ export default function DrawerContents({
         {!learning && !family && (
           <div ref={setDrawerSettings} data-drawer-settings />
         )}
-        {family ? <ThisDevice /> : <FeedbackPreferences />}
+        <FeedbackPreferences />
       </div>
     </>
   );

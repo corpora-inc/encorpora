@@ -606,7 +606,8 @@ for (const width of widths)
           return (await el.count()) ? el.boundingBox() : null;
         };
         return {
-          title: await at("h2:not([id])"),
+          // The lesson's title is the overlay's heading.
+          title: await at("[data-layer-panel] h2"),
           watch: await at("[data-film-link]"),
           wait: await at("[data-layer-wait]"),
         };
@@ -623,7 +624,7 @@ for (const width of widths)
         assert(first.title.height > 40, `${tag}: the title wraps`);
       // The catalog is in; the lesson is still on its way.
       const catalogIn = wrapping.waitForResponse((r) =>
-        r.url().endsWith("/api/v1/catalog"),
+        /\/api\/v1\/catalog(?:\/map)?$/.test(r.url()),
       );
       releaseCatalog();
       await catalogIn;

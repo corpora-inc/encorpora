@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { licenseSummary } from "../../family-access";
+import { licenseChannel, licenseSummary } from "../../family-access";
+import { useSettingsHref } from "../spaces/settings-hub";
 import { Button, buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
 import { Sheet } from "../../ui/Sheet";
@@ -61,7 +62,10 @@ function PayOverlay({
   return (
     <Sheet
       open
-      tall
+      // Choosing a plan fills the sheet from the start, so nothing moves as
+      // its panels arrive; a learner who already has access has only their
+      // plan to show, and the sheet is its content's size.
+      tall={!learner?.hasAccess}
       onOpenChange={(open) => {
         if (!open) close();
       }}
@@ -105,7 +109,12 @@ function PayOverlay({
 
 export function PayScreen() {
   return (
-    <PayOverlay title={() => "Choose your plan"} screen="choose">
+    <PayOverlay
+      title={({ learner }) =>
+        learner.hasAccess ? "Current plan" : "Choose your plan"
+      }
+      screen="choose"
+    >
       {() => <Choose />}
     </PayOverlay>
   );
@@ -161,33 +170,59 @@ function Methods() {
   );
 }
 
+/** A learner who already has access: their plan as it is (what it is and
+ * its dates), and Billing, where its receipts and changes are. */
 function HasAccess() {
   const { learner } = usePay();
   const close = usePayClose();
+  const billing = useSettingsHref("billing");
   const access = licenseSummary(learner.access);
+  const license = access.license;
   return (
-    <div className={styles.panel}>
-      <p className={styles.text}>
-        {access.license
-          ? `${hasFull(learner)} ${access.kind === "scheduled" ? "from" : "through"} ${new Date(
-              access.kind === "scheduled"
-                ? access.license.startsAt
-                : access.license.endsAt,
-            ).toLocaleDateString(undefined, {
-              month: "long",
-              day: "numeric",
-              year: "numeric",
-            })}.`
-          : `${hasFull(learner)}.`}
-      </p>
+    <div className={styles.panel} data-pay-current="">
+      {license ? (
+        <dl className={styles.summary}>
+          <div>
+            <dt>Plan</dt>
+            <dd>{licenseChannel(license.channel)}</dd>
+          </div>
+          <div>
+            <dt>{access.kind === "scheduled" ? "Starts" : "Access through"}</dt>
+            <dd>
+              {longDate(
+                access.kind === "scheduled" ? license.startsAt : license.endsAt,
+              )}
+            </dd>
+          </div>
+        </dl>
+      ) : (
+        <p className={styles.text}>{hasFull(learner)}.</p>
+      )}
       <div className={styles.actions}>
-        <Button variant="primary" onClick={close}>
+        {/* Billing takes this overlay's place over the same settings. */}
+        <Link
+          to="/$"
+          params={{ _splat: billing.slice(1) }}
+          replace
+          className={buttonClass("primary")}
+          data-pay-billing=""
+        >
+          Manage in Billing
+        </Link>
+        <Button variant="quiet" onClick={close}>
           Done
         </Button>
       </div>
     </div>
   );
 }
+
+const longDate = (iso: string) =>
+  new Date(iso).toLocaleDateString(undefined, {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
 
 /** A plan already paid for that no learner holds yet: it becomes this
  * learner's, never a second checkout. */

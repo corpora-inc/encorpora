@@ -9,6 +9,7 @@ import { continuationSearch, fundedPrograms } from "../lib/funded-entry";
 import { meOptions, queryClient, sessionOptions } from "../lib/query";
 import { requestFetch } from "../lib/request-transport";
 import { nativeRuntime } from "../native-runtime";
+import { currentLearner } from "../learner-store";
 import { MAX_LAYERS, OPEN_KEY, work } from "../nav/entities";
 import { layerScope, pushed, seedLayers, type Layer } from "../nav/layer-store";
 import { withoutLayerKeys } from "../nav/legacy-layers";
@@ -916,9 +917,8 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
     about: "a district's adoption link in the query",
     when: ({ search }) => UUID.test(String(search.district ?? "")),
     to: async ({ search }) => {
-      const { prepareSchoolAdoption } = await import(
-        "../features/school/adoption-session"
-      );
+      const { prepareSchoolAdoption } =
+        await import("../features/school/adoption-session");
       prepareSchoolAdoption();
       const manage = search.manage === 1 || search.manage === "1";
       return `/school/adopt/${String(search.district)}${manage ? "/manage" : ""}`;
@@ -942,9 +942,8 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
     when: ({ search }) => STACK_KEYS.some((key) => key in search),
     to: (old) =>
       screenView(old, async () => {
-        const { stackSearchSchema } = await import(
-          "../features/school/classroom/search"
-        );
+        const { stackSearchSchema } =
+          await import("../features/school/classroom/search");
         return stackSearchSchema.parse(old.search);
       }),
   },
@@ -954,9 +953,8 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
     when: ({ search }) => "class" in search,
     to: (old) =>
       screenView(old, async () => {
-        const { standingsSearchSchema } = await import(
-          "../features/school/classroom/search"
-        );
+        const { standingsSearchSchema } =
+          await import("../features/school/classroom/search");
         return standingsSearchSchema.parse(old.search);
       }),
   },
@@ -1057,6 +1055,51 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
     about: "a printed page's QR code",
     when: ({ search }) => "set" in search || "student" in search,
     to: toMarking,
+  },
+  {
+    // Progress's view in its query (`?filter=&page=&strand=&skill=`): the
+    // area or skill is its address now, and which skills and the page are
+    // the learner's view, kept in its store (app/progress-view.ts).
+    from: "/progress",
+    about: "Progress's view in its query",
+    when: ({ search }) =>
+      ["filter", "page", "strand", "skill"].some((key) => key in search),
+    to: async ({ search }) => {
+      const text = (key: string) =>
+        typeof search[key] === "string" || typeof search[key] === "number"
+          ? String(search[key])
+          : "";
+      const view = await import("./progress-view");
+      const session = await sessionIfAny();
+      const me = session
+        ? await queryClient.ensureQueryData(meOptions(session))
+        : null;
+      // Whose Progress `/progress` shows: the adult's own, else the
+      // account's current child, else its first (LegacyApp).
+      const learner =
+        me?.signedIn && session
+          ? (me.adultPractice?.learner?.id ??
+            currentLearner(session.accountId) ??
+            me.learners[0]?.id)
+          : undefined;
+      const filter = text("filter");
+      if (session && learner)
+        view.useProgressViews
+          .getState()
+          .set(view.progressKey(session.accountId, learner), {
+            filter:
+              filter === "review" || filter === "explore"
+                ? filter
+                : "practiced",
+            page: Math.max(0, Number(text("page")) || 0),
+            strand: text("strand"),
+            skillId: null,
+          });
+      return view.progressPath({
+        strand: text("strand"),
+        skillId: text("skill") || null,
+      });
+    },
   },
 ];
 

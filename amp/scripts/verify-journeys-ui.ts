@@ -699,7 +699,7 @@ async function parentJourney(
   );
   check(
     `${label} pause stays on practice`,
-    new URL(page.url()).pathname === "/practice",
+    /^\/practice\/[^/]+$/.test(new URL(page.url()).pathname),
     page.url(),
   );
   await measured(page, `${label} pause`);
@@ -802,8 +802,10 @@ async function parentJourney(
   await rename.fill("Ro");
   await settings.getByRole("button", { name: "Save name" }).click();
   // The sheet and the family's list both say the new name at once.
-  await page.getByRole("dialog", { name: "Ro", exact: true }).waitFor();
-  await page.keyboard.press("Escape");
+  const renamed = page.getByRole("dialog", { name: "Ro", exact: true });
+  await renamed.waitFor();
+  await renamed.getByRole("button", { name: "Close" }).first().click();
+  await renamed.waitFor({ state: "detached" });
   await page.getByRole("button", { name: "Ro’s settings" }).waitFor();
   await page.goto(`${origin}/family/learners/new`);
   await page.getByRole("dialog", { name: "Add a child" }).waitFor();
@@ -831,9 +833,10 @@ async function parentJourney(
   await page.getByRole("option", { name: "2019", exact: true }).click();
   await measured(page, `${label} add a child`);
   await shot(page, 1, "settings-add-child", width, theme);
-  await sheet.getByRole("button", { name: "Add child" }).click();
-  await sheet.getByText("Ivy is in your family.").waitFor();
-  await page.keyboard.press("Escape");
+  // The row is saved as its year is chosen (features/family/AddChildren);
+  // Done closes the sheet.
+  await sheet.getByRole("button", { name: "Done", exact: true }).click();
+  await sheet.waitFor({ state: "detached" });
   await page.goto(
     `${origin}/school/${place.org_id}/classes/${place.class_id}/today`,
   );
@@ -910,9 +913,10 @@ async function adultJourney(
   );
   await measured(page, `${label} pause`);
   await shot(page, 2, "pause", width, theme);
-  // The pay overlay over their own practice (features/pay).
+  // The pay overlay (features/pay): an adult's opens over their account,
+  // at /account/pay/<their learner>.
   await page.getByRole("button", { name: "Continue with AMP" }).click();
-  await page.waitForURL(/\/pay$/);
+  await page.waitForURL(/\/pay(\/[^/]+)?$/);
   const pay = page.getByRole("dialog");
   await pay.getByRole("heading", { name: "Choose your plan" }).waitFor();
   const go = pay

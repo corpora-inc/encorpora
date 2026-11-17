@@ -665,10 +665,11 @@ try {
       .waitFor();
     assert.equal(attempts.length, 2);
     assert.notEqual(attempts[0], attempts[1], "expired session gets a new id");
-    await page
-      .getByRole("radio", { name: /Monthly/ })
-      .and(page.locator(":disabled"))
-      .waitFor();
+    // The plan stays changeable: a new plan closes the open session.
+    assert.equal(
+      await page.getByRole("radio", { name: /Monthly/ }).isDisabled(),
+      false,
+    );
     assert.equal(await retry.isDisabled(), false, "retry stays available");
     await page.getByRole("button", { name: "Dismiss message" }).click();
     await retry.click();
