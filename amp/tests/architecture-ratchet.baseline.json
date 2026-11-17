@@ -3,7 +3,7 @@
   "counts": {
     "redirects": 2,
     "validateSearch": 8,
-    "searchHandoffs": 78,
+    "searchHandoffs": 73,
     "navigatingEffects": 8,
     "renderNavigate": 4,
     "silentCatches": 87,
@@ -22,10 +22,6 @@
     },
     "searchHandoffs": {
       "features/account/AccountReady.tsx": 2,
-      "features/account/DeleteAccount.tsx": 1,
-      "features/family-approval/ApproveLinkScreen.tsx": 2,
-      "features/family/redirects.ts": 1,
-      "features/funding/FundingInvoices.tsx": 1,
       "features/inventory/InventoryScreen.tsx": 3,
       "features/pathways/AreaKey.tsx": 1,
       "features/pathways/PathwaysScreen.tsx": 5,

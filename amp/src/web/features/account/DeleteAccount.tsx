@@ -8,6 +8,7 @@ import {
 } from "../../../account/deletion-contracts";
 import { AppError } from "../../lib/AppError";
 import { returnTarget } from "../../lib/return-to";
+import { signInTarget } from "../../app/sign-in-gate";
 import { useSession } from "../../lib/session";
 import { Button, buttonClass } from "../../ui/Button";
 import { Loading } from "../../ui/Loading";
@@ -228,11 +229,11 @@ export function DeleteAccountPanel() {
           <div className={pages.footActions}>
             <Link
               className={buttonClass("primary")}
-              to="/sign-in"
-              search={{
-                return: "security",
-                next: returnTarget(here),
-              }}
+              // The sign-in gate's address: a fresh sign-in, back here.
+              {...signInTarget(
+                { pathname: here, searchStr: "" },
+                { return: "security", next: returnTarget(here) },
+              )}
             >
               Sign in again to delete
             </Link>

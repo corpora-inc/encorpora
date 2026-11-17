@@ -133,7 +133,7 @@ export async function toFamilyPage(
   // A tutoring group's class keeps its classroom.
   if (projection?.teachingPlace?.classId === parent.classId) return null;
   if (classId && classId !== parent.classId)
-    return { to: `/family/${family}/unavailable`, search: {} };
+    return { href: `/family/${family}/unavailable` };
   return familyOrgTarget({
       family,
       page,

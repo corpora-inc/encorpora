@@ -1,5 +1,6 @@
 import type { SignedInMe } from "../../../account/contracts";
 import type { FamilyPlaces } from "../../../family/projection-contracts";
+import { defaultStringifySearch } from "@tanstack/react-router";
 import { appReturn } from "../spaces/returns";
 import {
   OPEN_KEY,
@@ -40,12 +41,13 @@ export function parentFamilyAt(
 export type PersonMap = ReadonlyMap<string, string>;
 
 type Search = Record<string, unknown>;
+/** Where an old address opens now, for its legacy-alias row
+ * (app/legacy-aliases.ts) to hop to once. */
 export type FamilyTarget = {
-  /** The new address, with its leading slash. */
-  to: string;
-  search: Search;
-  /** Only a known settings section, never a secret. */
-  hash?: string;
+  /** The new address: its path (with its leading slash), the query the
+   * router would write, and a hash only for a known settings section or a
+   * part of a child's page, never a secret. */
+  href: string;
   /** The sheet the screen opens on arrival (nav/sheet.ts), in history
    * state, never the address: their own devices. */
   state?: { sheet: string };
@@ -107,6 +109,7 @@ function viaReturn(
   to: string,
   search: Search,
   opens: Search = {},
+  hash?: string,
 ): FamilyTarget {
   const query = new URLSearchParams();
   for (const [key, value] of Object.entries(search))
@@ -115,10 +118,13 @@ function viaReturn(
   const text = query.toString();
   const kept = appReturn(text ? `${to}?${text}` : to);
   const url = new URL(kept ?? to, "https://amp.invalid");
-  return {
-    to: url.pathname,
-    search: { ...Object.fromEntries(url.searchParams), ...opens },
-  };
+  // Written as the router writes a query, so each value reads back as
+  // the type it was (a set's number, a child's id).
+  const written = defaultStringifySearch({
+    ...Object.fromEntries(url.searchParams),
+    ...opens,
+  });
+  return { href: `${url.pathname}${written}${hash ? `#${hash}` : ""}` };
 }
 
 /** The family screen an old class leaf opens. */
@@ -239,19 +245,16 @@ export function familyClassTarget({
   const opens: Search = target.leaf.startsWith("workbooks")
     ? workbookIdentity(search)
     : {};
+  const section = target.section ?? hash;
   const result = viaReturn(
     familyPath(family, target.leaf),
     withOpen(pick(search, keys), rest),
     opens,
+    target.leaf === "settings" && section && SETTINGS_SECTIONS.has(section)
+      ? section
+      : undefined,
   );
-  const section = target.section ?? hash;
-  return {
-    ...result,
-    ...(target.leaf === "settings" && section && SETTINGS_SECTIONS.has(section)
-      ? { hash: section }
-      : {}),
-    ...(devices ? { state: { sheet: "devices" } } : {}),
-  };
+  return devices ? { ...result, state: { sheet: "devices" } } : result;
 }
 
 /** The record leaves that are parts of each child's page now (family-routes'
@@ -288,11 +291,12 @@ function childPart(
     part === null
       ? pick(search, only ? ["skill", "lens", "sort"] : ["skill"])
       : {};
-  const result = viaReturn(
+  return viaReturn(
     familyPath(family, only ? `kids/${only}` : ""),
     withOpen(carried, part === null ? [...rest] : []),
+    {},
+    part && only ? part : undefined,
   );
-  return part && only ? { ...result, hash: part } : result;
 }
 
 /** The family Settings sections an old settings anchor may name. */
@@ -385,10 +389,14 @@ export function familyOrgTarget({
     );
   const part = childPart(family, leaf, search, rest, only);
   if (part) return part;
-  const result = viaReturn(familyPath(family, leaf), search);
-  return leaf === "settings" && hash && SETTINGS_SECTIONS.has(hash)
-    ? { ...result, hash }
-    : result;
+  return viaReturn(
+    familyPath(family, leaf),
+    search,
+    {},
+    leaf === "settings" && hash && SETTINGS_SECTIONS.has(hash)
+      ? hash
+      : undefined,
+  );
 }
 
 /** The person→learner map of a family's own children in its class. */

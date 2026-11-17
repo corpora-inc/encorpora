@@ -81,19 +81,18 @@ vi.mock("../family-redirect", () => ({
     { params }: { params: { org: string } },
   ) =>
     state.parent && params.org === FAMILY_ORG
-      ? { to: `/family/${FAMILY}`, search: {} }
+      ? { href: `/family/${FAMILY}` }
       : null,
   toFamilyChild: async (_session: unknown, org: string, person: string) =>
     state.parent && org === FAMILY_ORG
-      ? { to: `/family/${FAMILY}/kids/${person}`, search: {} }
+      ? { href: `/family/${FAMILY}/kids/${person}` }
       : null,
   toFamilyPage: async (_session: unknown, org: string, page: string) =>
     state.parent && org === FAMILY_ORG
       ? {
           // Roster and Settings are Settings; Map and Today are Today (or a
           // one child's page: features/family/redirects.ts).
-          to: `/family/${FAMILY}${page === "roster" || page === "settings" ? "/settings" : ""}`,
-          search: {},
+          href: `/family/${FAMILY}${page === "roster" || page === "settings" ? "/settings" : ""}`,
         }
       : null,
 }));
