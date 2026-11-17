@@ -1,9 +1,7 @@
-import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useParams } from "@tanstack/react-router";
-import { Navigate } from "../../nav/Navigate";
 import { useState, type FormEvent } from "react";
-import type { AuthSession } from "../../auth";
-import { sessionOptions } from "../../lib/query";
+import { useSession } from "../../lib/session";
 import { Button, buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
 import { Sheet } from "../../ui/Sheet";
@@ -18,12 +16,10 @@ import { useWorkbookPaths } from "./paths";
 import styles from "./Workbooks.module.css";
 
 export function WorkbookHistoryScreen() {
-  const { data: session } = useSuspenseQuery(sessionOptions);
   const { learnerId } = useParams({ strict: false }) as { learnerId: string };
-  if (!session) return <Navigate to="/sign-in" replace />;
   return (
-    <WorkbookFrame session={session} learnerId={learnerId}>
-      {(learner) => <WorkbookHistory session={session} learner={learner} />}
+    <WorkbookFrame learnerId={learnerId}>
+      {(learner) => <WorkbookHistory learner={learner} />}
     </WorkbookFrame>
   );
 }
@@ -35,20 +31,14 @@ export function WorkbookHistoryScreen() {
  * it speaks to them and never names them. As a `section` of a child's own
  * page, it is one part under the page's title (h2), naming no one. */
 export function WorkbookHistory({
-  session: given,
   learner,
   section = false,
 }: {
-  session?: AuthSession;
   learner: WorkbookLearner;
   section?: boolean;
 }) {
-  const signedIn = useQuery({ ...sessionOptions, enabled: !given }).data;
-  const session = given ?? signedIn ?? { accountId: "", token: "" };
-  const history = useQuery({
-    ...workbookHistoryOptions(session, learner.id),
-    enabled: !!session.token,
-  });
+  const session = useSession();
+  const history = useQuery(workbookHistoryOptions(session, learner.id));
   const [entering, setEntering] = useState(false);
   const paths = useWorkbookPaths();
   const who = whose(learner);
@@ -136,11 +126,7 @@ export function WorkbookHistory({
               Past workbooks
             </h2>
           )}
-          <WorkbookList
-            session={session}
-            learnerId={learner.id}
-            query={history}
-          />
+          <WorkbookList learnerId={learner.id} query={history} />
         </section>
       )}
       <Sheet
@@ -149,7 +135,7 @@ export function WorkbookHistory({
         title="Enter results"
         description="Type the code printed on the workbook’s pages."
       >
-        <CodeEntry session={session} learnerId={learner.id} />
+        <CodeEntry learnerId={learner.id} />
       </Sheet>
     </>
   );
@@ -164,13 +150,8 @@ function PlusIcon() {
 }
 
 /** Opens a printed workbook's results by the code on its pages. */
-function CodeEntry({
-  session,
-  learnerId,
-}: {
-  session: AuthSession;
-  learnerId: string;
-}) {
+function CodeEntry({ learnerId }: { learnerId: string }) {
+  const session = useSession();
   const navigate = useNavigate();
   const paths = useWorkbookPaths();
   const [code, setCode] = useState("");

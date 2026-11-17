@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import type { SignedInMe } from "../../../account/contracts";
 import { currentLearner, selectLearner } from "../../learner-store";
-import { sessionOptions } from "../../lib/query";
+import { useSessionOrNull } from "../../lib/session";
 import { Menu, MenuItem, MenuLabel } from "../../ui/Menu";
 import { rememberPlace } from "../onboarding/place-memory";
 import { setHome } from "../../lib/home-place";
@@ -25,7 +25,7 @@ export type { PlaceEntry } from "../spaces/places";
 /** Every place this account can open, grouped by space, from one bounded
  * request (no request per school or class). */
 export function usePlaces(me: SignedInMe | null) {
-  const session = useQuery(sessionOptions).data;
+  const session = useSessionOrNull();
   const staff =
     !!me &&
     me.account.kind !== "student" &&

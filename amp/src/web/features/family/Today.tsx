@@ -144,9 +144,17 @@ export function WeekFact({ child }: { child: FamilyChild }) {
   const { week } = child;
   if (!week.lastPracticed)
     return <Fact value="Not started" label="no practice yet" />;
+  const minutes = practiceMinutes(week.minutes, week.problems);
+  // Practiced before, not yet this week: one quiet line, never "None".
+  if (!minutes)
+    return (
+      <span className={styles.fact} data-week-quiet="">
+        <span className={styles.factLabel}>No practice yet this week</span>
+      </span>
+    );
   return (
     <Fact
-      value={practiceMinutes(week.minutes, week.problems) ?? "None"}
+      value={minutes}
       label={
         week.minutes > 0 || week.problems > 0
           ? `${count(week.problems, "problem")} this week`
@@ -614,7 +622,7 @@ function ForAllKids({ place }: { place: ReturnType<typeof useFamilyPlace> }) {
           className={buttonClass("secondary")}
           data-workbooks-several=""
         >
-          Workbooks for several
+          Workbooks for all kids
         </Link>
       )}
     </ActionRow>

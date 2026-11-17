@@ -42,7 +42,11 @@ export function SatMathFocus({
       await onSaved();
       if (current.current)
         setNotice("Saved. It applies from the next problem.");
-    } catch {
+    } catch (error) {
+      console.error("AMP couldn’t save the SAT Math focus", {
+        learner: learner.id,
+        error,
+      });
       if (current.current)
         setError("The setting didn’t save. Refresh the page and try again.");
     } finally {

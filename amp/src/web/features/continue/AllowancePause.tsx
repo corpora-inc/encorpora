@@ -1,8 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { track } from "../../lib/analytics";
-import { meOptions, queryClient, sessionOptions } from "../../lib/query";
+import { meOptions, queryClient } from "../../lib/query";
+import { useSessionOrNull } from "../../lib/session";
 import { payLearnerFor } from "../pay/paths";
 import { learnerOrigin, payOver } from "../pay/address";
 import { TalkToUs } from "../schools/TalkToUs";
@@ -72,7 +72,7 @@ export function AllowancePause({
   compact?: boolean;
 }) {
   const navigate = useNavigate();
-  const session = useQuery(sessionOptions).data;
+  const session = useSessionOrNull();
   const here = useRouterState({
     select: (state) => state.location.pathname + state.location.searchStr,
   });
