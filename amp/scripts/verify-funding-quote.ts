@@ -40,7 +40,7 @@ for (const expected of [
   "$8.61",
   "$131.61",
   "12 months",
-  "Nov 16, 2026, 12:00 PM UTC",
+  "Nov 16, 2026",
   "10720fef-40bf-4e75-8982-208b5e05f84a",
 ])
   assert.ok(text.includes(expected), `Missing PDF text: ${expected}`);
@@ -77,15 +77,16 @@ await writeFile(
 execFileSync("pdftotext", ["-layout", invoiceFile, invoiceFile + ".txt"]);
 const invoiceText = await readFile(invoiceFile + ".txt", "utf8");
 for (const expected of [
-  "Education purchase invoice",
+  "Invoice",
   "Invoice number",
+  "Issue date",
   "Zoë García",
-  "Student name",
+  "Student",
   "$123.00",
   "$8.61",
   "$131.61",
+  "Amount due (USD)",
   "12 months",
-  "not a receipt",
   offer.merchant.legalName,
   offer.merchant.postalAddress,
   offer.merchant.supportEmail,
@@ -97,6 +98,8 @@ for (const expected of [
   );
 assert.ok(!invoiceText.includes("private-"));
 assert.ok(!invoiceText.includes("not an invoice"));
+// The submission steps belong to the invoice page and email, not the invoice.
+assert.ok(!invoiceText.includes(offer.instructions));
 execFileSync("pdftoppm", [
   "-scale-to",
   "1200",
