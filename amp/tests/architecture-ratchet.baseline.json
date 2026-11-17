@@ -4,11 +4,11 @@
     "redirects": 0,
     "validateSearch": 0,
     "searchHandoffs": 0,
-    "navigatingEffects": 2,
+    "navigatingEffects": 0,
     "renderNavigate": 0,
     "silentCatches": 0,
     "sessionProps": 0,
-    "sessionReads": 1,
+    "sessionReads": 0,
     "inlineQueryKeys": 0,
     "nativeControls": 0
   },
@@ -16,15 +16,11 @@
     "redirects": {},
     "validateSearch": {},
     "searchHandoffs": {},
-    "navigatingEffects": {
-      "app/LegacyApp.tsx": 2
-    },
+    "navigatingEffects": {},
     "renderNavigate": {},
     "silentCatches": {},
     "sessionProps": {},
-    "sessionReads": {
-      "app/LegacyApp.tsx": 1
-    },
+    "sessionReads": {},
     "inlineQueryKeys": {},
     "nativeControls": {}
   },
