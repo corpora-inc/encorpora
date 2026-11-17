@@ -1,3 +1,4 @@
+import type { MouseEvent } from "react";
 /**
  * Closing returns to where a view was opened (Q-67).
  *
@@ -122,7 +123,8 @@ export function stampPrevious(
 }
 
 /** Entries a close never goes Back to: signing in, joining, starting. */
-const PASSAGE = /^\/(?:sign-in|sign-up|reset-password|join|c|start|account)(?:[/?#]|$)/;
+const PASSAGE =
+  /^\/(?:sign-in|sign-up|reset-password|join|c|start|account)(?:[/?#]|$)/;
 
 /** The little of the router a close needs. */
 export type ClosingRouter = {

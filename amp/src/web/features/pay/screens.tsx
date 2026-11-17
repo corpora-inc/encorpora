@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import type { AuthSession } from "../../auth";
 import { licenseSummary } from "../../family-access";
 import { Button, buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
@@ -9,7 +8,8 @@ import { Page } from "../../ui/Page";
 import { PageHeader } from "../../ui/PageHeader";
 import { Toast } from "../../ui/Toast";
 import { useClaimEnrollment } from "../billing";
-import { childPagePath } from "../family/api";
+import { childFamily } from "../spaces/learner-urls";
+import type { SignedInMe } from "../../../account/contracts";
 import { fundingOffersOptions, fundingPrograms, fundingRequestOptions } from "./api";
 import { CardDone, useCardOutcome } from "./CardDone";
 import { CardPanel } from "./CardPanel";
@@ -27,18 +27,33 @@ import styles from "./Pay.module.css";
  * between its tabs, so switching never moves anything.
  */
 
-/** The learner's own page: where paying starts from and ends. A child's
- * page is in its family; the adult's is their own record. */
-function useLearnerHome(session: AuthSession | null, learner: PayLearner | undefined) {
-  const child = !!session && !!learner && !learner.adult && !learner.simulation;
-  const page = useQuery({
-    queryKey: ["account", session?.accountId, "families", "child-page", learner?.id],
-    queryFn: () => childPagePath(session!, learner!.id),
-    enabled: child,
-  });
-  if (!learner || learner.adult || learner.simulation) return "/me";
-  return page.data ?? "/family";
+type Target = { to: string; params?: Record<string, string> };
+
+/** The learner's own page: the pay screens' parent, where "‹ Back" goes up
+ * to and paying ends (founder, 2026-11-16: up, never a browser Back). A
+ * child's page is in their family, the adult's is their own record, a
+ * practice profile's the profiles; read from the account itself. */
+export function learnerPage(
+  me: SignedInMe | null,
+  learner: PayLearner | undefined,
+): Target {
+  if (!me || !learner) return { to: "/family" };
+  if (learner.simulation) return { to: "/me/profiles" };
+  if (learner.adult) return { to: "/me" };
+  const family = childFamily(me, learner.id);
+  return family
+    ? {
+        to: "/family/$family/kids/$learner",
+        params: { family, learner: learner.id },
+      }
+    : { to: "/family" };
 }
+/** The same page as an address. */
+export const targetHref = (target: Target) =>
+  Object.entries(target.params ?? {}).reduce(
+    (href, [key, value]) => href.replace(`$${key}`, encodeURIComponent(value)),
+    target.to,
+  );
 
 const hasFull = (learner: PayLearner) =>
   `${whoName(learner)} ${learner.adult ? "have" : "has"} full access`;
@@ -54,14 +69,13 @@ function PayFrame({
   screen: string;
   children: () => ReactNode;
 }) {
-  const { session, me, account, learner, ready } = usePayState();
-  const home = useLearnerHome(session, learner);
+  const { me, account, learner, ready } = usePayState();
   return (
     <Page width="standard" className={styles.step} data-pay={screen}>
       <PageHeader
         // Up to an explicit parent, the learner's page, never a browser
         // Back (founder, 2026-11-16).
-        back={home}
+        back={learnerPage(account, learner)}
         title={typeof title === "function" ? (ready ? title(ready) : " ") : title}
         subtitle={learner ? forWhom(learner) : " "}
       />
@@ -226,9 +240,14 @@ export function PayCardDoneScreen() {
 function CardDoneBody() {
   const { session, me, learner } = usePay();
   const { outcome, retry } = useCardOutcome(session, me, learner);
-  const home = useLearnerHome(session, learner);
   return (
-    <CardDone session={session} learner={learner} outcome={outcome} retry={retry} done={home} />
+    <CardDone
+      session={session}
+      learner={learner}
+      outcome={outcome}
+      retry={retry}
+      done={targetHref(learnerPage(me, learner))}
+    />
   );
 }
 

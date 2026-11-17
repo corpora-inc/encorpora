@@ -460,7 +460,9 @@ try {
     assert.equal(await page.getByRole("alert").count(), 0, failure.error);
     assert.equal(new URL(page.url()).pathname, "/pathways", failure.error);
     assert.equal(await page.locator(".progress-workspace").count(), 0);
-    await page.getByRole("heading", { name: "Pathways", exact: true }).waitFor();
+    await page
+      .getByRole("heading", { name: "Pathways", exact: true })
+      .waitFor();
     await returnToHistory(page);
   }
 

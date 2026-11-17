@@ -23,6 +23,7 @@ import {
 } from "../learning/nickname.js";
 import { allocateLabel } from "../server/learner-label.js";
 import { pastCoppaAge } from "../privacy/coppa-age.js";
+import { removableChildren } from "./setup-child.js";
 import { createHash, randomBytes, randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import {
@@ -131,6 +132,8 @@ export class FamilyRepository {
         for (const row of learners)
           if (row.simulation) row.has_access = covered;
       }
+      // Children a setup can still take back out (nothing yet in their name).
+      const removable = await removableChildren(client, accountId);
       const linked = (await this.stripeTable(client))
         ? (
             await client.query(
@@ -218,6 +221,7 @@ export class FamilyRepository {
           birthYear: row.birth_year ?? null,
           namePending: row.name_pending,
           ...(goesByNumber(row) ? { defaultName: true as const } : {}),
+          ...(removable.has(row.id) ? { removable: true as const } : {}),
           freeAllowance: freeAllowance(
             row.free_online_used,
             row.free_workbooks_used,

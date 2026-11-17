@@ -1,8 +1,6 @@
-import { Link, useLocation, useRouter } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { closeTo } from "../../../lib/return-to";
-import { Button, buttonClass } from "../../../ui/Button";
-import { appReturn } from "../../spaces/returns";
+import { buttonClass } from "../../../ui/Button";
 import { Page } from "../../../ui/Page";
 import { PageHeader } from "../../../ui/PageHeader";
 import styles from "./Setup.module.css";
@@ -35,14 +33,6 @@ export function StepFrame({
   hintLines?: 1 | 2;
   back: string;
 }) {
-  // Adding a place from elsewhere (`?from=`): every step can give up and go
-  // back there (docs/architecture/spaces.md, "Returns").
-  const router = useRouter();
-  const from = appReturn(
-    useLocation({
-      select: (location) => (location.search as Record<string, unknown>).from,
-    }),
-  );
   return (
     <Page>
       {steps.length > 1 && (
@@ -76,15 +66,11 @@ export function StepFrame({
                 new URLSearchParams(back.split("?")[1] ?? ""),
               ) as never
             }
+            // The step before, from the step map: never history.
             className={buttonClass("quiet")}
           >
             Back
           </Link>
-          {from && (
-            <Button variant="quiet" onClick={() => closeTo(router, from)}>
-              Cancel
-            </Button>
-          )}
           {next}
         </div>
         <p

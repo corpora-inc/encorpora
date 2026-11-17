@@ -172,22 +172,16 @@ try {
   // The parent hands the device to the child, whose practice is their own.
   await practiceHere(page, learner.id);
   await page.goto("http://127.0.0.1:4350/lessons?strand=data&topic=mean-data");
-  await page
-    .getByRole("link", { name: /^Try this problem type/ })
-    .waitFor();
+  await page.getByRole("link", { name: /^Try this problem type/ }).waitFor();
   await page.reload();
-  await page
-    .getByRole("link", { name: /^Try this problem type/ })
-    .waitFor();
+  await page.getByRole("link", { name: /^Try this problem type/ }).waitFor();
   // The lesson is a layer over Pathways at its own address, which a reload
   // keeps (`/pathways?open=lesson:<id>`).
   assert.equal(
     new URL(page.url()).searchParams.get("open"),
     "lesson:mean-data",
   );
-  await page
-    .getByRole("link", { name: /^Try this problem type/ })
-    .click();
+  await page.getByRole("link", { name: /^Try this problem type/ }).click();
   // Navigation intentionally cancels pending batches; establish practice first.
   await page.locator(".problem-stage").waitFor();
   // CI measures with a device font (scripts/ci-fonts.conf); prove the prompt
@@ -875,7 +869,10 @@ try {
           : [...document.querySelectorAll("body *")]
               .filter((e) => e.getBoundingClientRect().right > innerWidth + 1)
               .slice(0, 12)
-              .map((e) => `${e.tagName}.${e.className}: ${e.textContent?.slice(0, 40)}`),
+              .map(
+                (e) =>
+                  `${e.tagName}.${e.className}: ${e.textContent?.slice(0, 40)}`,
+              ),
       ),
       [],
       `A maximum-length learner nickname must fit ${size.width}px`,

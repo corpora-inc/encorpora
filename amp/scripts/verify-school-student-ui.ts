@@ -280,7 +280,9 @@ try {
         await page
           .getByRole("dialog")
           .evaluate((sheet) =>
-            Promise.all(sheet.getAnimations({ subtree: true }).map((a) => a.finished)),
+            Promise.all(
+              sheet.getAnimations({ subtree: true }).map((a) => a.finished),
+            ),
           );
         const practice = page.getByRole("dialog").getByRole("link", {
           name: "Practice",
@@ -446,9 +448,8 @@ try {
         (url) => url.pathname === "/overview" || url.pathname === "/practice",
       );
     const landed = new URL(page.url()).pathname;
-    await (landed === "/practice"
-      ? askTeacher(page).waitFor()
-      : studentHome(page)
+    await (
+      landed === "/practice" ? askTeacher(page).waitFor() : studentHome(page)
     ).catch((error) => {
       throw new Error(`${path} opened ${page.url()}`, { cause: error });
     });

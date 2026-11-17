@@ -1,10 +1,8 @@
 import { spaceWords } from "../../spaces/words";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
-import { Navigate } from "../../../nav/Navigate";
 import { useEffect, useId, useState, type ReactNode } from "react";
 import { create } from "zustand";
-import { z } from "zod";
 import type { SignedInMe } from "../../../../account/contracts";
 import {
   CHILD_NAME_MAX,
@@ -17,7 +15,7 @@ import type { AuthSession } from "../../../auth";
 import { request } from "../../../lib/api";
 import { flush } from "../../../lib/analytics";
 import { AppError } from "../../../lib/AppError";
-import { invalidateAccount, meOptions } from "../../../lib/query";
+import { invalidateAccount, meOptions, queryClient } from "../../../lib/query";
 import { chosenPlan } from "../../../lib/pending-trial";
 import { Button, buttonClass } from "../../../ui/Button";
 import { YearField } from "../../../ui/YearField";
@@ -29,13 +27,15 @@ import { Toast } from "../../../ui/Toast";
 import { approvalsOptions } from "../../family-approval/api";
 import { presenceOptions } from "../../school/classes/api";
 import { finishingSignIn, useFinishSignIn } from "../../school/join/api";
-import { useStartPlace } from "../starter-api";
+import { useChooseSetup, useFinishSetup, useStartPlace } from "../starter-api";
+import { setupOf } from "../guard";
+import { useAddKid, useKidYear, useRemoveKid, useRenameKid } from "./kids-api";
 import { familyPlacesOptions } from "../../family/api";
 import { DevicesSheet } from "../../family/Devices";
 import { useFamilyPlaceOf } from "../../family/FamilyFrame";
 import { StepFrame } from "./StepFrame";
-import { choosePersona, setupStep } from "../activation";
-import { appReturn } from "../../spaces/returns";
+import { setupStep } from "../activation";
+import { RETIRED_STEPS, SETUP_STEPS, type SetupKind, type Step } from "./steps";
 import styles from "./Setup.module.css";
 
 /* A parent's or a tutor's first run (docs/product-model.md): a few calm steps,
@@ -46,21 +46,8 @@ import styles from "./Setup.module.css";
    devices and a second parent wait, optional, in Account, Today and People.
    A tutor's in-flight setup keeps its steps. */
 
-export type SetupKind = "parent" | "tutor";
-type Step = { id: string; label: string };
-/** The retired name step's id: its links in flight still resolve. */
-const NAME_STEP_ID = "name";
-const STEPS = {
-  parent: [
-    { id: "", label: "Your kids" },
-    { id: "ready", label: "First practice" },
-  ],
-  tutor: [
-    { id: "", label: "Your students" },
-    { id: "join", label: "How they join" },
-    { id: "ready", label: "Start" },
-  ],
-} as const satisfies Record<SetupKind, readonly Step[]>;
+export type { SetupKind } from "./steps";
+const STEPS = SETUP_STEPS;
 
 /** The steps of this setup. A parent's name is never one of them: it is
  * asked where it is shown, in Account. */
@@ -72,37 +59,14 @@ export function setupSteps(
 }
 /** Every step id a setup's address may name; an old name-step link
  * (`/start/parent/name`) resolves to the setup's first step. */
-export const setupStepIds = (kind: SetupKind): readonly string[] =>
-  kind === "parent"
-    ? [NAME_STEP_ID, ...STEPS.parent.map((step) => step.id)]
-    : STEPS[kind].map((step) => step.id);
-/** A step's address. Adding a place from elsewhere keeps where it was
- * added from (`?from=`, validated by the one return contract) on every
- * step, so Cancel and Back always lead back there. */
-export const stepUrl = (kind: SetupKind, id: string, from?: string) =>
-  withFrom(id ? `/start/${kind}/${id}` : `/start/${kind}`, from);
-/** An address with the validated place this setup was opened from. */
-export const withFrom = (url: string, from?: string) => {
-  const back = appReturn(from);
-  return back ? `${url}?from=${encodeURIComponent(back)}` : url;
-};
-/** An address as the router's target: its path and its search apart, so the
- * query is never read as part of the path. */
-export const target = (url: string) => {
-  const [to = "", query = ""] = url.split("?");
-  return {
-    to: to as never,
-    search: Object.fromEntries(new URLSearchParams(query)) as never,
-  };
-};
-/** Where this setup was opened from, by the one return contract. */
-function useSetupFrom() {
-  return appReturn(
-    useLocation({
-      select: (location) => (location.search as Record<string, unknown>).from,
-    }),
-  );
-}
+export const setupStepIds = (kind: SetupKind): readonly string[] => [
+  ...(kind === "parent" ? ["name"] : []),
+  ...STEPS[kind].map((step) => step.id),
+];
+/** A step's address: the path names the step, and nothing else rides
+ * along (no query string). */
+export const stepUrl = (kind: SetupKind, id: string) =>
+  id ? `/start/${kind}/${id}` : `/start/${kind}`;
 const todayUrl = (place: { orgId: string; classId: string }) =>
   `/school/${place.orgId}/classes/${place.classId}/today`;
 /** A family's Today: its own address, the landing alias for theirs. */
@@ -133,6 +97,9 @@ const useDraft = create<
     ),
 }));
 
+/** One step of a parent's or a tutor's setup. The URL is the step; the
+ * route guard (`routeFor`) already sent any other address where it belongs,
+ * so this only draws the step it names. */
 export function FamilySetup({
   session,
   kind,
@@ -143,51 +110,40 @@ export function FamilySetup({
   step: string;
 }) {
   const me = useQuery(meOptions(session)).data;
-  const from = useSetupFrom();
   // The handoff remounts setup with the child's session before navigating to
   // practice. That child's /me has no familyClass; it is not an incomplete
-  // parent setup and must not redirect over the pending practice navigation.
+  // parent setup and must not draw over the pending practice navigation.
   if (finishingSignIn()) return <LoadingScreen />;
-  // A parent's setup from before (how they practice, a second parent): its
-  // links in flight open who practices first; both stay on Today and People.
-  if (kind === "parent" && (step === "practice" || step === "second-parent"))
-    return <Navigate {...target(stepUrl(kind, "ready", from))} replace />;
-  const known = setupStepIds(kind).includes(step);
-  if (!known) return <Navigate {...target(stepUrl(kind, "", from))} replace />;
+  const index = Math.max(
+    0,
+    STEPS[kind].findIndex((entry) => entry.id === step),
+  );
   if (!me?.signedIn)
     return (
       <StepFrame
         steps={STEPS[kind]}
-        index={0}
+        index={index}
         title={
-          step === "" || step === "name"
+          index === 0
             ? kind === "parent"
               ? "Add your kids"
               : "Your students"
             : ""
         }
-        back={withFrom("/start", from)}
+        back={backUrl(kind, STEPS[kind], index)}
       >
         <div className={styles.loading} aria-busy="true" />
       </StepFrame>
     );
   const steps = setupSteps(kind, me);
-  const index = steps.findIndex((entry) => entry.id === step);
-  // An old name-step link opens the setup's first step.
-  if (index < 0)
-    return <Navigate {...target(stepUrl(kind, "", from))} replace />;
-  const first = steps.findIndex((entry) => entry.id === "");
-  // Every step after the children needs the family step one makes.
-  if (index > first && !me.familyClass)
-    return <Navigate {...target(stepUrl(kind, "", from))} replace />;
-  const props = { session, me, kind, index, steps, from };
-  if (step === "")
+  const props = { session, me, kind, index, steps };
+  if (index === 0)
     return kind === "parent" ? (
       <ChildrenStep {...props} />
     ) : (
       <StudentsStep {...props} />
     );
-  if (step === "join") return <JoinStep {...props} />;
+  if (steps[index]!.id === "join") return <JoinStep {...props} />;
   return <ReadyStep {...props} />;
 }
 
@@ -197,12 +153,10 @@ type StepProps = {
   kind: SetupKind;
   index: number;
   steps: readonly Step[];
-  /** Where this setup was opened from (validated), carried to every step. */
-  from?: string;
 };
 /** The address of the step after this one. */
-export const nextUrl = ({ kind, index, steps, from }: StepProps) =>
-  stepUrl(kind, steps[index + 1]!.id, from);
+export const nextUrl = ({ kind, index, steps }: StepProps) =>
+  stepUrl(kind, steps[index + 1]!.id);
 
 /** One step of a parent's or tutor's setup, in the shared step frame. */
 function Frame({
@@ -215,26 +169,21 @@ function Frame({
   kind: SetupKind;
   back?: string;
 }) {
-  const from = useSetupFrom();
   return (
     <StepFrame
       steps={steps}
       index={index}
-      back={back ?? backUrl(kind, steps, index, from)}
+      back={back ?? backUrl(kind, steps, index)}
       {...rest}
     />
   );
 }
-/** Back from a step: the one before it, or the starter, keeping `from`. */
+/** Back from a step: the one before it, or the starter. */
 export const backUrl = (
   kind: SetupKind,
   steps: readonly { id: string }[],
   index: number,
-  from?: string,
-) =>
-  index === 0
-    ? withFrom("/start", from)
-    : stepUrl(kind, steps[index - 1]!.id, from);
+) => (index === 0 ? "/start" : stepUrl(kind, steps[index - 1]!.id));
 
 const why = (failure: unknown, fallback: string) => {
   console.error(fallback, failure);
@@ -254,12 +203,9 @@ const eventStep = (kind: SetupKind, steps: readonly Step[], index: number) =>
   SETUP_EVENT_STEP[kind][
     steps[index]!.id as keyof (typeof SETUP_EVENT_STEP)[SetupKind]
   ];
-function useSetupView({ session, kind, steps, index }: StepProps) {
+function useSetupView({ kind, steps, index }: StepProps) {
   const step = eventStep(kind, steps, index);
-  useEffect(() => {
-    setupStep(step, "view", kind);
-    choosePersona(session, kind);
-  }, [session, kind, step]);
+  useEffect(() => setupStep(step, "view", kind), [kind, step]);
 }
 const setupDone = ({ kind, steps, index }: StepProps) =>
   setupStep(eventStep(kind, steps, index), "complete", kind);
@@ -281,39 +227,60 @@ function usePracticeHere(session: AuthSession, kind: SetupKind, today: string) {
   };
 }
 
-/** Step one for a parent: each child's name (optional) and birth year,
- * adding or removing rows. Children already in the class are there too, and
- * their names can change here. */
+/** A saved child's Remove shows only where it will work: nothing yet in
+ * their name, and another saved child stays (the family keeps one). */
+export const canRemoveSaved = (
+  child: { removable?: true },
+  saved: number,
+): boolean => !!child.removable && saved > 1;
+
+/** A row being added: not a child until its birth year is chosen, when it is
+ * saved. `id` is the child it became, until `/me` lists them. */
+type FreshRow = { key: number; name: string; year: string; id?: string };
+
+/** Step one for a parent: each child's name (optional) and birth year. The
+ * kids are the server's, read from `/me`; every edit is a mutation, so Back,
+ * Forward, a refresh and every other screen show the same kids. A new row
+ * becomes a child when its year is chosen; a name is saved when its field is
+ * left (and at Next); a year at once; Remove takes a child with nothing yet
+ * in their name back out. What is typed but not yet saved is this screen's
+ * own input, never a copy of the kids. */
 function ChildrenStep(props: StepProps) {
   const { session, me, kind, index, steps } = props;
   useSetupView(props);
   const navigate = useNavigate();
-  const start = useStartPlace(session);
   const practiceHere = usePracticeHere(session, kind, FAMILY_TODAY);
-  const draft = useDraft();
-  const mine = draft.owner === session.accountId;
-  const existing = me.learners;
-  const rows = mine
-    ? draft.rows
-    : existing.length
-      ? []
-      : [{ name: "", year: "" }];
-  const renames = mine ? draft.renames : {};
-  const years = mine ? draft.years : {};
-  const yearOf = (child: (typeof existing)[number]) =>
-    years[child.id] ?? (child.birthYear ? String(child.birthYear) : "");
-  const [saving, setSaving] = useState(false);
+  const choose = useChooseSetup(session);
+  const addKid = useAddKid(session);
+  const renameKid = useRenameKid(session);
+  const kidYear = useKidYear(session);
+  const removeKid = useRemoveKid(session);
+  const saved = me.learners;
+  // Names typed into saved kids' fields, until saved.
+  const [names, setNames] = useState<Record<string, string>>({});
+  const [fresh, setFresh] = useState<FreshRow[]>([]);
+  const [saving, setSaving] = useState<Record<number, true>>({});
+  const [leaving, setLeaving] = useState(false);
   const [error, setError] = useState("");
-  const total = existing.length + rows.length;
-  const label = (at: number) => `Child ${at + 1}`;
-  const nameOf = (child: (typeof existing)[number]) =>
-    renames[child.id] ?? (child.defaultName ? "" : child.name);
-  // What's in the way is said at its own field: a name's problem under the
-  // name, a missing year under the year once Next is asked for.
+  const [asked, setAsked] = useState(false);
+  // A new row stays until `/me` lists the child it became: never shown twice,
+  // never missing in between.
+  const adding = fresh.filter(
+    (row) => !row.id || !saved.some((child) => child.id === row.id),
+  );
+  // A family with no child yet starts with one empty row (key 0, so typing
+  // into it keeps its field).
+  const rows: FreshRow[] =
+    adding.length || saved.length ? adding : [{ key: 0, name: "", year: "" }];
+  const total = saved.length + rows.length;
+  const nameOf = (child: (typeof saved)[number]) =>
+    names[child.id] ?? (child.defaultName ? "" : child.name);
   let hint = "";
   let invalid = -1;
-  const names = [...existing.map(nameOf), ...rows.map((row) => row.name)];
-  for (const [at, name] of names.entries()) {
+  for (const [at, name] of [
+    ...saved.map(nameOf),
+    ...rows.map((row) => row.name),
+  ].entries()) {
     const problem = childNameProblem(name);
     if (problem) {
       hint = problem;
@@ -321,88 +288,100 @@ function ChildrenStep(props: StepProps) {
       break;
     }
   }
-  const missingYear = rows.some((row) => !row.year);
-  const [asked, setAsked] = useState(false);
-  const setRows = (next: Draft["rows"]) =>
-    draft.set(session.accountId, { rows: next, renames, years });
-  const next = async () => {
-    if (missingYear) return setAsked(true);
-    if (hint || saving) return;
-    setSaving(true);
+  // A row with a name and no year, or no child at all, still needs a year.
+  const missingYear =
+    !saved.length || rows.some((row) => row.name.trim() && !row.year);
+  const busy =
+    leaving ||
+    Object.keys(saving).length > 0 ||
+    renameKid.isPending ||
+    kidYear.isPending ||
+    removeKid.isPending;
+  const fail = (failure: unknown, fallback: string) =>
+    setError(why(failure, fallback));
+  const edit = (key: number, change: Partial<FreshRow>) =>
+    setFresh((current) => {
+      const base = current.length ? current : rows;
+      return base.map((row) => (row.key === key ? { ...row, ...change } : row));
+    });
+  // Saved when its year is chosen; the first child also makes the family,
+  // so the answer is recorded first (a parent sent here by a link).
+  const create = async (row: FreshRow, year: string) => {
+    edit(row.key, { year });
+    if (childNameProblem(row.name)) return false;
+    setSaving((current) => ({ ...current, [row.key]: true }));
     setError("");
     try {
-      for (const child of existing) {
-        const name = renames[child.id]?.trim();
-        const current = child.defaultName ? "" : child.name;
-        if (name === undefined || name === current) continue;
-        await request(
-          `/family/learners/${encodeURIComponent(child.id)}/rename`,
-          z.unknown(),
-          { token: session.token, body: { name } },
-        );
-      }
-      // A year corrected here (Q-56): the child's start and class grade
-      // follow, and their answers stay.
-      for (const child of existing) {
-        const year = years[child.id];
-        if (!year || Number(year) === child.birthYear) continue;
-        await request(
-          `/family/learners/${encodeURIComponent(child.id)}/birth-year`,
-          z.unknown(),
-          { token: session.token, body: { birthYear: Number(year) } },
-        );
-      }
-      if (Object.keys(years).length) void invalidateAccount(session.accountId);
-      if (rows.length || !me.familyClass) {
-        const year = new Date().getFullYear();
-        // The starter's answer is the family's whole count: the children
-        // already here, then the new ones.
-        const made = await start.mutateAsync({
-          as: "parent",
-          children: [
-            ...existing.map((child) => ({
-              birthYear: Number(yearOf(child)) || year - 8,
-            })),
-            ...rows.map((row) => ({
-              birthYear: Number(row.year),
-              ...(row.name.trim() ? { name: row.name.trim() } : {}),
-            })),
-          ],
-        });
-        setupDone(props);
-        // A plan chosen on the pitch before signing up opens for the first
-        // child; setup's next steps wait on Today.
-        const plan = chosenPlan();
-        if (plan && made.learnerId) {
-          draft.set(session.accountId, { rows: [], renames: {}, years: {} });
-          await navigate({
-            to: "/continue/$learnerId",
-            params: { learnerId: made.learnerId },
-            search: { interval: plan },
-          });
-          return;
-        }
-        // One child practices first by default: their first problem opens
-        // now, with no "Who's practicing first?" to answer. If it can't (no
-        // access yet), that step says why.
-        if (total === 1 && made.learnerId && !props.from) {
-          draft.set(session.accountId, { rows: [], renames: {}, years: {} });
-          try {
-            await practiceHere(made.learnerId);
-            return;
-          } catch (failure) {
-            console.error("The first child's practice didn't open", failure);
-          }
-        }
-      } else setupDone(props);
-      draft.set(session.accountId, { rows: [], renames: {}, years: {} });
-      await navigate(target(nextUrl(props)));
+      const setup = setupOf(me);
+      if (!setup.done && setup.persona !== kind) await choose.mutateAsync(kind);
+      const child = await addKid.mutateAsync({
+        name: row.name,
+        birthYear: Number(year),
+      });
+      edit(row.key, { id: child.id });
+      await invalidateAccount(session.accountId);
+      return true;
     } catch (failure) {
-      setError(
-        why(failure, "That didn’t save. Check your connection and try again."),
-      );
+      fail(failure, "That child wasn’t saved. Choose the year again.");
+      edit(row.key, { year: "" });
+      return false;
     } finally {
-      setSaving(false);
+      setSaving(({ [row.key]: _, ...rest }) => rest);
+    }
+  };
+  const commitName = async (child: (typeof saved)[number]) => {
+    const name = names[child.id];
+    if (name === undefined) return;
+    const current = child.defaultName ? "" : child.name;
+    if (name.trim() === current || childNameProblem(name)) return;
+    await renameKid.mutateAsync({ id: child.id, name });
+    setNames(({ [child.id]: _, ...rest }) => rest);
+  };
+  const next = async () => {
+    if (missingYear) return setAsked(true);
+    if (hint || busy) return;
+    setLeaving(true);
+    setError("");
+    try {
+      for (const child of saved) await commitName(child);
+      // A row whose year was chosen while its name still needed fixing is
+      // saved now; the kids are then read again.
+      let kids = saved;
+      const unsaved = rows.filter((row) => row.year && !row.id);
+      if (unsaved.length) {
+        for (const row of unsaved) if (!(await create(row, row.year))) return;
+        const latest = await queryClient.fetchQuery(meOptions(session));
+        if (latest.signedIn) kids = latest.learners;
+      }
+      setupDone(props);
+      // A plan chosen on the pitch before signing up opens for the first
+      // child; setup's next steps wait on Today.
+      const plan = chosenPlan();
+      const first = kids[0]!;
+      if (plan) {
+        await navigate({
+          to: "/continue/$learnerId",
+          params: { learnerId: first.id },
+          search: { interval: plan },
+        });
+        return;
+      }
+      // One child practices first by default: their first problem opens
+      // now, with no "Who's practicing first?" to answer. If it can't (no
+      // access yet), that step says why.
+      if (kids.length === 1 && !setupOf(me).done) {
+        try {
+          await practiceHere(first.id);
+          return;
+        } catch (failure) {
+          console.error("The first child's practice didn't open", failure);
+        }
+      }
+      await navigate({ to: nextUrl(props) as never });
+    } catch (failure) {
+      fail(failure, "That didn’t save. Check your connection and try again.");
+    } finally {
+      setLeaving(false);
     }
   };
   return (
@@ -415,9 +394,9 @@ function ChildrenStep(props: StepProps) {
       next={
         <Button
           variant="primary"
-          aria-busy={saving || undefined}
+          aria-busy={leaving || undefined}
           data-waiting={missingYear || !!hint || undefined}
-          disabled={saving}
+          disabled={leaving}
           onClick={() => void next()}
         >
           Next
@@ -433,39 +412,49 @@ function ChildrenStep(props: StepProps) {
           max: CHILD_NAME_MAX,
         }}
         invalid={invalid}
-        disabled={saving}
+        disabled={leaving}
         rows={[
-          ...existing.map((child, at) => ({
+          ...saved.map((child, at) => ({
             key: child.id,
-            label: label(at),
+            // A child who goes by their number keeps that number.
+            label: child.defaultName ? child.name : `Child ${at + 1}`,
             name: nameOf(child),
-            year: yearOf(child),
+            year: child.birthYear ? String(child.birthYear) : "",
             fixed: true,
             onName: (name: string) =>
-              draft.set(session.accountId, {
-                rows,
-                years,
-                renames: { ...renames, [child.id]: name },
-              }),
+              setNames((current) => ({ ...current, [child.id]: name })),
+            onCommit: () =>
+              void commitName(child).catch((failure) =>
+                fail(failure, "That name didn’t save. Try again."),
+              ),
             onYear: (value: string) =>
-              draft.set(session.accountId, {
-                rows,
-                renames,
-                years: { ...years, [child.id]: value },
-              }),
+              kidYear.mutate(
+                { id: child.id, birthYear: Number(value) },
+                {
+                  onError: (failure) =>
+                    fail(failure, "That year didn’t save. Choose it again."),
+                },
+              ),
+            onRemove: canRemoveSaved(child, saved.length)
+              ? () =>
+                  removeKid.mutate(child.id, {
+                    onError: (failure) =>
+                      fail(failure, "That child wasn’t removed. Try again."),
+                  })
+              : undefined,
           })),
           ...rows.map((row, at) => ({
-            key: `new-${at}`,
-            label: label(existing.length + at),
+            key: `new-${row.key}`,
+            label: `Child ${saved.length + at + 1}`,
             name: row.name,
             year: row.year,
-            onName: (name: string) =>
-              setRows(rows.map((r, i) => (i === at ? { ...r, name } : r))),
-            onYear: (year: string) =>
-              setRows(rows.map((r, i) => (i === at ? { ...r, year } : r))),
+            busy: !!saving[row.key],
+            onName: (name: string) => edit(row.key, { name }),
+            onYear: (year: string) => void create(row, year),
             onRemove:
               total > 1
-                ? () => setRows(rows.filter((_, i) => i !== at))
+                ? () =>
+                    setFresh(adding.filter((other) => other.key !== row.key))
                 : undefined,
           })),
         ]}
@@ -473,7 +462,8 @@ function ChildrenStep(props: StepProps) {
           total < 6
             ? {
                 label: "Add a child",
-                onAdd: () => setRows([...rows, { name: "", year: "" }]),
+                onAdd: () =>
+                  setFresh([...rows, { key: Date.now(), name: "", year: "" }]),
               }
             : null
         }
@@ -533,7 +523,7 @@ function StudentsStep(props: StepProps) {
         });
       setupDone(props);
       draft.set(session.accountId, { rows: [] });
-      await navigate(target(nextUrl(props)));
+      await navigate({ to: nextUrl(props) as never });
     } catch (failure) {
       setError(
         why(failure, "That didn’t save. Check your connection and try again."),
@@ -618,12 +608,16 @@ type Row = {
   label: string;
   name: string;
   year: string;
-  /** Already in the class: the row stays (no Remove). Its year shows, and
-   * can be corrected when the row takes `onYear`. */
+  /** Already saved: Remove only when the row takes `onRemove`. Its year
+   * shows, and can be corrected when the row takes `onYear`. */
   fixed?: boolean;
   onName: (name: string) => void;
+  /** The name field was left: save what was typed. */
+  onCommit?: () => void;
   onYear?: (year: string) => void;
   onRemove?: () => void;
+  /** This row is being saved. */
+  busy?: boolean;
 };
 
 /** Each child: a name field whose placeholder is what they go by if it stays
@@ -668,7 +662,7 @@ function People({
           const remove = row.onRemove && (
             <RemoveRow
               label={`Remove ${row.name.trim() || row.label}`}
-              disabled={disabled}
+              disabled={disabled || !!row.busy}
               onRemove={row.onRemove}
             />
           );
@@ -696,8 +690,9 @@ function People({
                   spellCheck={false}
                   aria-invalid={invalid === at || undefined}
                   aria-label={`${field.label}, ${row.label} (${field.placeholder.toLowerCase()})`}
-                  disabled={disabled}
+                  disabled={disabled || row.busy}
                   onChange={(event) => row.onName(event.target.value)}
+                  onBlur={row.onCommit}
                 />
                 <span className={styles.cellNote} aria-live="polite">
                   {invalid === at ? nameNote : ""}
@@ -715,7 +710,7 @@ function People({
                     earlier
                     placeholder="Choose"
                     value={row.year}
-                    disabled={disabled}
+                    disabled={disabled || row.busy}
                     invalid={needsYear}
                     onChange={(value) => row.onYear?.(value)}
                   />
@@ -788,7 +783,7 @@ function JoinStep(props: StepProps) {
       title={parent ? "How they practice" : "How they join"}
       next={
         <Link
-          {...target(nextUrl(props))}
+          to={nextUrl(props) as never}
           className={buttonClass("primary")}
           onClick={() => setupDone(props)}
         >
@@ -869,14 +864,29 @@ function ReadyStep(props: StepProps) {
     }
   };
   const ready = children.filter((child) => child.entitlement.active);
+  // Going to Today ends the first run (`me.setup`); a failure to record that
+  // is logged and never keeps anyone here.
+  const navigate = useNavigate();
+  const finish = useFinishSetup(session);
+  const [leaving, setLeaving] = useState(false);
   const toToday = (
-    <Link
-      to={today as never}
-      className={buttonClass(parent && ready.length ? "secondary" : "primary")}
-      onClick={() => setupDone(props)}
+    <Button
+      variant={parent && ready.length ? "secondary" : "primary"}
+      aria-busy={leaving || undefined}
+      disabled={leaving}
+      onClick={async () => {
+        setLeaving(true);
+        setupDone(props);
+        try {
+          await finish.mutateAsync(kind);
+        } catch (failure) {
+          console.error("The first run wasn't marked done", failure);
+        }
+        await navigate({ to: today as never });
+      }}
     >
       Go to Today
-    </Link>
+    </Button>
   );
   if (parent && children.length > 0)
     return (

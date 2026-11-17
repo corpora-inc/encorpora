@@ -762,7 +762,10 @@ export function FamilyCenter({
                 ? back
                 : null
               : settingsFamily
-                ? `/family/${settingsFamily}/settings`
+                ? {
+                    to: "/family/$family/settings",
+                    params: { family: settingsFamily },
+                  }
                 : null
           }
           title={title}

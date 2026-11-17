@@ -3,7 +3,8 @@ import { z } from "zod";
 import type { AuthSession } from "../../auth";
 import { useLearnerStore } from "../../learner-store";
 import { request } from "../../lib/api";
-import { queryClient, refreshMe } from "../../lib/query";
+import { invalidateAccount, queryClient, refreshMe } from "../../lib/query";
+import type { Persona } from "./activation";
 import { rememberPlace } from "./place-memory";
 
 /** Where their own practice starts: a school-age birth year, or, past
@@ -88,5 +89,33 @@ export function useStartDemo(session: AuthSession) {
       await refreshMe(session);
       return demoHome(result);
     },
+  });
+}
+
+/** The answer to "What brings you to AMP?", recorded when it is chosen: the
+ * first run's own state on the server (`me.setup`), changeable until that
+ * first run is done. `/me` is read again, so the starter shows it at once. */
+export function useChooseSetup(session: AuthSession) {
+  return useMutation({
+    mutationFn: (answer: Persona) =>
+      request("/start/choice", z.unknown(), {
+        token: session.token,
+        body: { answer },
+      }),
+    onSuccess: () => invalidateAccount(session.accountId),
+    onError: (error) => console.error("The starter answer wasn’t saved", error),
+  });
+}
+
+/** The first run is done (a parent went from setup to Today): from now on the
+ * starter adds a place. */
+export function useFinishSetup(session: AuthSession) {
+  return useMutation({
+    mutationFn: (answer: Persona) =>
+      request("/start/done", z.unknown(), {
+        token: session.token,
+        body: { answer },
+      }),
+    onSuccess: () => invalidateAccount(session.accountId),
   });
 }

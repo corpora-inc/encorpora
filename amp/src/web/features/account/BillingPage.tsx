@@ -69,7 +69,10 @@ function Billing({ session }: { session: AuthSession }) {
           search.receipt
             ? () => receipt()
             : settingsFamily
-              ? `/family/${settingsFamily}/settings`
+              ? {
+                  to: "/family/$family/settings",
+                  params: { family: settingsFamily },
+                }
               : null
         }
         subtitle={

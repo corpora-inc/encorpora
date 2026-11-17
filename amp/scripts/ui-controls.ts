@@ -39,7 +39,9 @@ function childRow(drawer: Locator, id?: string) {
 /** Chooses the current learner where the app keeps the choice: the drawer. */
 export async function chooseLearner(page: Page, id: string) {
   const drawer = await openMenu(page);
-  const only = drawer.locator('[aria-label="Who is practicing"] [data-learner]');
+  const only = drawer.locator(
+    '[aria-label="Who is practicing"] [data-learner]',
+  );
   const folded = drawer.getByRole("button", { name: /^Current learner/ });
   const listbox = drawer.getByRole("listbox", { name: "Current learner" });
   const child = childRow(drawer, id);
@@ -108,14 +110,17 @@ export async function currentLearner(page: Page) {
   const drawer = await openMenu(page);
   const folded = drawer.getByRole("button", { name: /^Current learner/ });
   // One learner is named, not offered: the drawer marks whose it is.
-  const only = drawer.locator('[aria-label="Who is practicing"] [data-learner]');
+  const only = drawer.locator(
+    '[aria-label="Who is practicing"] [data-learner]',
+  );
   const children = childRow(drawer);
   const value = (await children.count())
-    ? ((await childRow(drawer)
-        .and(drawer.locator('[aria-current="page"]'))
-        .getAttribute("href", { timeout: 1_000 })
-        .catch(() => null))
-        ?.split("/kids/")[1] ?? null)
+    ? ((
+        await childRow(drawer)
+          .and(drawer.locator('[aria-current="page"]'))
+          .getAttribute("href", { timeout: 1_000 })
+          .catch(() => null)
+      )?.split("/kids/")[1] ?? null)
     : (await only.count())
       ? await only.getAttribute("data-learner")
       : (await folded.count())
