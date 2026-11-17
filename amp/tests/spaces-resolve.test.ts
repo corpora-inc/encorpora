@@ -1194,12 +1194,14 @@ test("a path that names a practice profile (/learners/<id>) is that profile; the
     at("/learners/profile-4/overview"),
     adult(power, "jonah"),
   );
+  expectSpace(byPath, "me");
   assert.notEqual(byPath.status, "unavailable");
   assert.equal(byPath.learner?.id, "profile-4");
   const byQuery = resolveSpace(
     at("/practice", { search: { learner: "profile-4" } }),
     adult(power, "jonah"),
   );
+  expectSpace(byQuery, "me");
   assert.equal(byQuery.status, "unavailable");
 });
 
