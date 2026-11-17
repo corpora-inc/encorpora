@@ -17,7 +17,7 @@ import {
   assertFinancialIdentity,
   holdFinancialRecord,
 } from "../evidence/repository.js";
-import type { Pool } from "pg";
+import type { Pool, PoolClient } from "pg";
 import { applyCommerceEventInTransaction } from "../../commerce/postgres.js";
 import { recordSubscriptionEvent } from "./subscriptions.js";
 import { annualEvents } from "./model.js";
@@ -230,6 +230,7 @@ export class StripeBilling {
         learnerId === null,
         enrollmentExpiresAt,
         row.price_tier ?? "full",
+        await confirmedEmail(client, accountId),
       );
       await client.query(
         "UPDATE amp_stripe_checkouts SET customer_id=$2,session_id=$3,session_url=$4 WHERE id=$1",
@@ -481,4 +482,28 @@ export class StripeBilling {
       StripeBilling.runningPools.delete(this.repository.pool);
     }
   }
+}
+
+/** The account's sign-in email, when the parent has confirmed it: Checkout
+ * shows it instead of asking (gateway.prefillEmail). An unconfirmed or
+ * missing address, or an account that isn't an email sign-in, prefills
+ * nothing and Checkout asks as before. */
+async function confirmedEmail(
+  client: PoolClient,
+  accountId: string,
+): Promise<string | undefined> {
+  if (!accountId.startsWith("amp|")) return undefined;
+  // A database without the sign-in tables (as account/adult.ts allows).
+  const auth = await client.query(
+    "SELECT to_regclass('amp_auth_users') AS relation",
+  );
+  if (!auth.rows[0]?.relation) return undefined;
+  const user = (
+    await client.query(
+      `SELECT email FROM amp_auth_users WHERE id=$1 AND "emailVerified"=true`,
+      [accountId.slice(4)],
+    )
+  ).rows[0];
+  const email = typeof user?.email === "string" ? user.email.trim() : "";
+  return email.length > 0 && email.length <= 512 ? email : undefined;
 }

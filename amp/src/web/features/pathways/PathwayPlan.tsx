@@ -241,14 +241,18 @@ export function PathwayPlan({
                     <strong className={styles.name}>
                       {named ? bandLabel(row.band) : `Stage ${order + 1}`}
                     </strong>
+                    {/* Said beside the name, where its unseen line sits
+                        inside the row (never past the row's edge). */}
+                    {record && (
+                      <span className="sr-only">{`${earned} of ${all.length} earned`}</span>
+                    )}
                     {current && (
                       <span className={styles.here}>Where you are</span>
                     )}
                     {record ? (
                       <>
-                        <span className={styles.count}>
-                          <span aria-hidden="true">{`${earned} / ${all.length}`}</span>
-                          <span className="sr-only">{`${earned} of ${all.length} earned`}</span>
+                        <span className={styles.count} aria-hidden="true">
+                          {`${earned} / ${all.length}`}
                         </span>
                         <span
                           className={styles.bar}

@@ -69,6 +69,17 @@ export function SkillLayer({
 }) {
   const catalog = useQuery(skillCatalogOptions);
   const found = catalog.data?.skills.find((entry) => entry.id === skill);
+  // Own practice: the learner's work on the skill sits near the top of the
+  // layer, so the layer paints once it is in (or failed), whole: nothing
+  // below it is pushed down as it arrives. The same query the section reads.
+  const session = useSessionOrNull();
+  const own = useQuery({
+    ...forSession(session, (signedIn) =>
+      learnerSkillOptions(signedIn, learner ?? "", skill),
+    ),
+    enabled: !!session && !!learner,
+  });
+  const waiting = !catalog.data || (!!learner && own.isPending && !!session);
   const types =
     catalog.data?.templates.filter((template) => template.skillId === skill) ??
     [];
@@ -90,14 +101,17 @@ export function SkillLayer({
       title={found?.title ?? "Skill"}
       back={back}
       // Its grade or course, and its area: a probability skill in the
-      // Geometry course reads "Geometry · Data & probability".
+      // Geometry course reads "Geometry · Data & probability". Its line is
+      // held while the catalog loads, so the body never moves down.
       description={
         found
           ? `${bandLabel(found.gradeBand)} · ${areas[areaSlot(found)]!.title}`
-          : undefined
+          : !catalog.data && !catalog.isError
+            ? "\u00a0"
+            : undefined
       }
     >
-      {!catalog.data ? (
+      {waiting ? (
         catalog.isError ? (
           <p role="alert">
             The skill didn’t load. Check your connection, then try again.
