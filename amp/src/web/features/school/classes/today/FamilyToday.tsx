@@ -15,7 +15,7 @@ import { Toast } from "../../../../ui/Toast";
 import { rememberContinuation } from "../../../continue/memory";
 import { SecondParentInviteSheet } from "../../../second-parent/SecondParent";
 import { JoinClass } from "../../join/JoinClass";
-import { useClassSearch } from "../teacher-shared";
+import { useSheet } from "../../../../nav/sheet";
 import { RowButton, RowList } from "../../../../ui/RowList";
 import { ChildRow, PracticeHere } from "./ChildRow";
 import { Feed, type FeedEntry } from "./Feed";
@@ -69,9 +69,8 @@ export function FamilyToday({
     dismissedSecondParent(session.accountId),
   );
   const [inviting, setInviting] = useState(false);
-  // The children's own devices, by address (`?devices=1`): Back closes it.
-  const [search, setSearch, closeSearch] = useClassSearch();
-  const joining = search.devices === 1 || search.devices === "1";
+  // The children's own devices: a sheet in history state, so Back closes it.
+  const devices = useSheet("devices");
   const holder = me?.familyClass?.classId === place.class;
   const learners: readonly Learner[] = holder
     ? me!.learners
@@ -215,7 +214,7 @@ export function FamilyToday({
               title="Their own devices"
               meta="Sign in with a code or a printed card"
               data-own-devices=""
-              onClick={() => setSearch({ devices: 1 })}
+              onClick={devices.show}
             />
           </RowList>
         )}
@@ -253,10 +252,8 @@ export function FamilyToday({
       />
       {code && (
         <Sheet
-          open={joining}
-          onOpenChange={(open) => {
-            if (!open) closeSearch("devices");
-          }}
+          open={devices.open}
+          onOpenChange={devices.onOpenChange}
           title="Their own devices"
           tall
         >

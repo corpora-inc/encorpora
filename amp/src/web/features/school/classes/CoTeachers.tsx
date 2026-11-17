@@ -1,7 +1,7 @@
 import { reportError } from "../../../lib/report-error";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import type { AuthSession } from "../../../auth";
+import { useSession } from "../../../lib/session";
 import { useLoggedError } from "../../../feedback";
 import { Badge } from "../../../ui/Badge";
 import { Button } from "../../../ui/Button";
@@ -17,14 +17,16 @@ import styles from "./Family.module.css";
  * role, limited to this class. The server decides what a co-teacher may do.
  * Rows only, for the people on Today; nothing while there's no one. */
 export function CoTeacherRows({
-  session,
   orgId,
   onError,
 }: {
-  session: AuthSession;
+  /** Unused: each reads the session itself (useSession). Kept until
+   * features/family/TutoringGroup.tsx stops passing it. */
+  session?: unknown;
   orgId: string;
   onError: (message: string) => void;
 }) {
+  const session = useSession();
   const staff = useQuery(staffOptions(session, orgId));
   // The family's second parent has her own row (`SecondParent`).
   const others = (staff.data ?? []).filter(
@@ -86,16 +88,18 @@ export function CoTeacherRows({
 
 /** "Invite a co-teacher": an email, then the invitation. */
 export function CoTeacherInviteSheet({
-  session,
   orgId,
   classId,
   onClose,
 }: {
-  session: AuthSession;
+  /** Unused: each reads the session itself (useSession). Kept until
+   * features/family/TutoringGroup.tsx stops passing it. */
+  session?: unknown;
   orgId: string;
   classId: string;
   onClose: () => void;
 }) {
+  const session = useSession();
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [error, setError] = useState("");

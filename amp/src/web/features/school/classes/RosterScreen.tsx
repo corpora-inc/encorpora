@@ -31,6 +31,8 @@ import { classesOptions, currentSession, orgOptions } from "../api";
 import { ClassPeople } from "./people/ClassPeople";
 import { canAddStudents } from "../permissions";
 import { classUrl } from "./teacher-shared";
+import { useOpenView } from "../view-store";
+import { ViewLink } from "../ViewLink";
 import { approvalsOptions } from "../../family-approval/api";
 import { secondParentOptions } from "../../second-parent/api";
 import styles from "./Roster.module.css";
@@ -119,6 +121,7 @@ export function RosterScreen() {
   const flash = useFlash((state) => state.message);
   const clearFlash = useFlash((state) => state.clear);
   const navigate = useNavigate();
+  const openView = useOpenView();
   const session = useStaffSession();
   const roster = useQuery({
     ...rosterOptions(session, place),
@@ -240,13 +243,17 @@ export function RosterScreen() {
               cell: (row) => (
                 <Menu label="Manage" aria-label={`Manage ${row.name}`}>
                   <MenuItem
-                    onSelect={() =>
+                    onSelect={() => {
+                      // The cards page opens on this student's card.
+                      openView(
+                        `school/${params.org}/classes/${params.class}/cards`,
+                        { student: row.id },
+                      );
                       void navigate({
                         to: "/school/$org/classes/$class/cards",
                         params,
-                        search: { student: row.id },
-                      })
-                    }
+                      });
+                    }}
                   >
                     {row.cardIssuedAt ? "Print a new card" : "Print a card"}
                   </MenuItem>
@@ -629,13 +636,13 @@ function ClassTeachers({ org, classId }: { org: string; classId: string }) {
         </ul>
       )}
       {invites && (
-        <Link
-          to={`/school/${org}/staff` as never}
-          search={{ class: classId } as never}
+        <ViewLink
+          to={`school/${org}/staff`}
+          view={{ class: classId }}
           className={buttonClass("quiet", "", "start")}
         >
           Invite a co-teacher
-        </Link>
+        </ViewLink>
       )}
     </section>
   );

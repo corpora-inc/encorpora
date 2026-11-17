@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { ApprovalRowResource } from "../../../../family/approval-contracts";
 import { useLoggedError } from "../../../feedback";
-import type { AuthSession } from "../../../auth";
+import { useSession } from "../../../lib/session";
 import { AppError } from "../../../lib/AppError";
 import { Badge } from "../../../ui/Badge";
 import { Button } from "../../../ui/Button";
@@ -88,14 +88,15 @@ export function OtherFamilyAccessSheet({
  * link and sees where it stands; they never see the other family's account. */
 export function OtherFamilyRow({
   row,
-  session,
   onAccess,
   onSend,
   onError,
   offerTalk = true,
 }: {
+  /** Unused: each reads the session itself (useSession). Kept until
+   * features/family/TutoringGroup.tsx stops passing it. */
+  session?: unknown;
   row: ApprovalRowResource;
-  session: AuthSession;
   /** Offer "Talk to us" once their free problems are used (a class's
    * access is set up with a person). Off where their own parent buys. */
   offerTalk?: boolean;
@@ -104,6 +105,7 @@ export function OtherFamilyRow({
   onSend: () => void;
   onError: (message: string) => void;
 }) {
+  const session = useSession();
   const [busy, setBusy] = useState<"resend" | "remove" | null>(null);
   const [confirming, setConfirming] = useState(false);
   const [sent, setSent] = useState(false);
@@ -215,17 +217,19 @@ export function OtherFamilyRow({
 /** "Add a child from another family": their parent's email, then the
  * approval link. */
 export function OtherFamilyAddSheet({
-  session,
   rows,
   student,
   onClose,
 }: {
-  session: AuthSession;
+  /** Unused: each reads the session itself (useSession). Kept until
+   * features/family/TutoringGroup.tsx stops passing it. */
+  session?: unknown;
   rows: ApprovalRowResource[];
   /** An unnamed student of the class whose parent the link is for. */
   student?: { personId?: string; name?: string };
   onClose: () => void;
 }) {
+  const session = useSession();
   const [parentEmail, setParentEmail] = useState("");
   const [errors, setErrors] = useState<{ email?: string }>({});
   const [busy, setBusy] = useState(false);

@@ -4,7 +4,9 @@ import { Link } from "@tanstack/react-router";
 import type { OrgResource } from "../../../../schools/contracts";
 import type { AuthSession } from "../../../auth";
 import { useLoggedError } from "../../../feedback";
+import { qk } from "../../../lib/keys";
 import { linkRefused } from "../../../lib/link-carry";
+import { sheetState } from "../../../nav/sheet";
 import { Button, buttonClass } from "../../../ui/Button";
 import { classesOptions, orgOptions, orgsOptions, school } from "../api";
 import { forgetInvite, orgHome, rememberedInvite } from "../paths";
@@ -40,7 +42,9 @@ export function SchoolNext({
   const [stored, setStored] = useState(() => rememberedInvite());
   const token = inviteToken(stored);
   const invite = useQuery({
-    queryKey: ["school-invite", token ?? ""],
+    // The invitation itself, the same for anyone holding its token
+    // (InviteScreen.tsx reads it under the same key).
+    queryKey: qk.account(null, "school", "invite", token ?? ""),
     enabled: !!token,
     retry: false,
     queryFn: () => school.lookupInvite(token!),
@@ -107,11 +111,7 @@ export function SchoolNext({
   const open = (org: OrgResource, label: string) => {
     const home = orgHome(org);
     return (
-      <Link
-        to={home.to as never}
-        search={("search" in home ? home.search : {}) as never}
-        className={buttonClass("primary")}
-      >
+      <Link to={home.to as never} className={buttonClass("primary")}>
         {label}
       </Link>
     );
@@ -172,7 +172,7 @@ export function SchoolNext({
             {mine && (
               <Link
                 to={`/school/${state.org.id}/classes/${mine.id}/today` as never}
-                search={{ seats: 1 } as never}
+                state={sheetState("seats") as never}
                 className={buttonClass("secondary")}
               >
                 Send to your school’s buyer

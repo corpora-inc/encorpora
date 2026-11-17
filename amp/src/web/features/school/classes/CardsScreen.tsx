@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import { useSearch } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import type { IssuedCards } from "../../../../schools/contracts";
 import { Button } from "../../../ui/Button";
@@ -16,6 +15,7 @@ import { WaveMark } from "../../../ui/NavigationSheet";
 import "../SchoolFrame.module.css";
 import { rosterOptions, useIssueCards, useStaffSession } from "./api";
 import { useClassHost, type ClassHost } from "./host";
+import { useClassView } from "./teacher-shared";
 import styles from "./Cards.module.css";
 import { ClosedSignIn, useClassAccess } from "../pilots/ClassAccess";
 
@@ -73,7 +73,8 @@ export function CardsScreen({ host: given }: { host?: ClassHost } = {}) {
   const host = useClassHost(given);
   const place = host.place;
   const words = host.words;
-  const raw = useSearch({ strict: false }) as { student?: unknown };
+  // One student's card, chosen where the cards were opened (the roster).
+  const [raw] = useClassView();
   const student =
     typeof raw.student === "string" && UUID.test(raw.student)
       ? raw.student

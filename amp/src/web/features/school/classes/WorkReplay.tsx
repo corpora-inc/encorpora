@@ -162,7 +162,6 @@ export function WorkReplay({
           .prefetchQuery(options(id))
           .catch(reported("load the next answer ahead", undefined));
   }, [replay?.previous, replay?.next]);
-  const search: Record<string, string> = skill ? { skill } : {};
   // Back to where it was opened: the record, Today, a gradebook's evidence.
   const close = () =>
     layer ? layer.close() : closeTo(router, `/${closePath ?? ""}`);
@@ -174,7 +173,6 @@ export function WorkReplay({
       : void navigate({
           to: "/$",
           params: { _splat: workPath!(to) },
-          search: search as never,
           replace: true,
         });
   useEffect(() => {
@@ -206,7 +204,6 @@ export function WorkReplay({
       <Link
         to="/$"
         params={{ _splat: workPath!(to) }}
-        search={search as never}
         replace
         {...rest}
       >
