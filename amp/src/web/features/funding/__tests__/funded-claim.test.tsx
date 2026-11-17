@@ -323,10 +323,8 @@ test("existing invoices are managed in Billing, outside a new invoice setup", as
     screen.queryByRole("heading", { name: "Education-fund invoices" }),
   ).toBeNull();
   expect(screen.queryByRole("button", { name: "Download invoice" })).toBeNull();
-  expect(
-    // The header's Back goes up to Billing, its declared parent.
-    screen.getByRole("link", { name: "Back" }).getAttribute("href"),
-  ).toBe("/account/billing");
+  // No in-page Back: Billing is the Account tab, and the browser's Back.
+  expect(screen.queryByRole("link", { name: "Back" })).toBeNull();
 });
 
 test("returning parents with incomplete consent can type and claim an invoice without a consent dead end", async () => {

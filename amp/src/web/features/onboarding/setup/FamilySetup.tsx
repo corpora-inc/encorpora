@@ -130,7 +130,7 @@ export function FamilySetup({
               : "Your students"
             : ""
         }
-        back={backUrl(kind, STEPS[kind], index)}
+        href={(id) => stepUrl(kind, id)}
       >
         <div className={styles.loading} aria-busy="true" />
       </StepFrame>
@@ -160,30 +160,12 @@ export const nextUrl = ({ kind, index, steps }: StepProps) =>
 
 /** One step of a parent's or tutor's setup, in the shared step frame. */
 function Frame({
-  steps,
   kind,
-  index,
-  back,
   ...rest
-}: Omit<Parameters<typeof StepFrame>[0], "back"> & {
-  kind: SetupKind;
-  back?: string;
-}) {
-  return (
-    <StepFrame
-      steps={steps}
-      index={index}
-      back={back ?? backUrl(kind, steps, index)}
-      {...rest}
-    />
-  );
+}: Omit<Parameters<typeof StepFrame>[0], "href"> & { kind: SetupKind }) {
+  // A done step is a link to its own address, in the stepper.
+  return <StepFrame href={(id) => stepUrl(kind, id)} {...rest} />;
 }
-/** Back from a step: the one before it, or the starter. */
-export const backUrl = (
-  kind: SetupKind,
-  steps: readonly { id: string }[],
-  index: number,
-) => (index === 0 ? "/start" : stepUrl(kind, steps[index - 1]!.id));
 
 const why = (failure: unknown, fallback: string) => {
   console.error(fallback, failure);

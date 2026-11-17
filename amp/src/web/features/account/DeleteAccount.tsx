@@ -212,7 +212,6 @@ function DeleteAccount({ session }: { session: AuthSession }) {
   return (
     <Page data-delete-account>
       <PageHeader
-        back={{ to: "/account/security" }}
         title="Delete your account"
         subtitle="Deleting your account is permanent. It can’t be undone."
       />

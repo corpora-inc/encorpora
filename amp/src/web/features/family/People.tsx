@@ -194,11 +194,7 @@ export function FamilyPeopleScreen() {
   const ownPractice = !!me?.adultPractice?.learner;
   const startPractice = !ownPractice && me?.adultPractice?.eligible === true;
   return (
-    <FamilyFrame
-      place={place}
-      title="People & sharing"
-      back={{ to: "/family/$family/settings", params: { family } }}
-    >
+    <FamilyFrame place={place} title="People & sharing">
       {data && (
         <div className={styles.page} data-family-people="">
           <section className={people.list} aria-labelledby="people-you">

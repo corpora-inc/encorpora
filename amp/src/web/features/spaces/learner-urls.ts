@@ -1,6 +1,5 @@
 import type { SignedInMe } from "../../../account/contracts";
 import type { FamilyPlaces } from "../../../family/projection-contracts";
-import type { PageBack } from "../../ui/PageHeader";
 import { childPath, type ChildScreen } from "./identity";
 
 /*
@@ -106,23 +105,4 @@ export function canonicalLearning(
   // their page opens as itself.
   const keep = screen !== "overview" && rest.size ? `?${rest}` : "";
   return `${childPath(family, child, screen)}${keep}`;
-}
-
-/** A learner's own page, the parent of their screens (Continue, their
- * workbooks), from the account itself: a child's page in their family, the
- * adult's progress, the practice profiles. Never where a screen was opened
- * from. */
-export function learnerPage(
-  account: SignedInMe,
-  learner: { id: string; adult?: boolean; simulation?: boolean },
-): PageBack {
-  if (learner.simulation) return { to: "/me/profiles" };
-  if (learner.adult) return { to: "/me" };
-  const family = childFamily(account, learner.id);
-  return family
-    ? {
-        to: "/family/$family/kids/$learner",
-        params: { family, learner: learner.id },
-      }
-    : { to: "/family" };
 }

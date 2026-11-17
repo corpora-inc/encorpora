@@ -107,10 +107,6 @@ function Results({
   return (
     <>
       <PageHeader
-        back={{
-          to: "/learners/$learnerId/workbooks",
-          params: { learnerId: learner.id },
-        }}
         title={
           data
             ? `No. ${data.workbook.number} · ${dateLabel(data.workbook.date)}`

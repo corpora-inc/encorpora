@@ -1,48 +1,11 @@
-/* A screen's header (PageHeader.tsx): the way back, the title, its subtitle
-   and actions. Every rule sets its element fully: legacy element rules
+/* A screen's header (PageHeader.tsx): the title, its subtitle and
+   actions. Every rule sets its element fully: legacy element rules
    (style.css, theme.css) style bare headings, paragraphs and buttons. */
 .header {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 0;
   min-width: 0;
-}
-/* The way back: its own row, close above the title, its text on the
-   column's edge and its touch target a full 44 px. */
-.back.back {
-  display: inline-flex;
-  align-items: center;
-  justify-self: start;
-  gap: var(--space-1);
-  min-height: var(--target-min);
-  margin: calc(-1 * var(--space-2)) 0 var(--space-1);
-  padding: 0;
-  border: 0;
-  border-radius: var(--radius-small);
-  background: transparent;
-  color: var(--color-primary);
-  font: inherit;
-  font-size: var(--text-label);
-  font-weight: 600;
-  line-height: 1.3;
-  text-decoration: none;
-  white-space: nowrap;
-  cursor: pointer;
-  filter: none;
-}
-/* Never underlined: the chevron says what it is. */
-.back.back:hover {
-  background: transparent;
-  color: var(--color-on-surface);
-  text-decoration: none;
-}
-.back:focus-visible {
-  outline: 3px solid var(--color-focus-ring);
-  outline-offset: 2px;
-}
-.chevron {
-  font-size: 1.25em;
-  line-height: 1;
 }
 .row {
   display: flex;

@@ -32,7 +32,6 @@ const learner: WorkbookLearner = {
   name: "Rowan",
   canPractice: true,
   pauseViewer: "adult",
-  home: { to: "/me" },
 };
 const workbook = (entered?: number): WorkbookSummary => ({
   id: `wb-${entered ?? "x"}`,

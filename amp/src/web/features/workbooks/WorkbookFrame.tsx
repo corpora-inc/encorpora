@@ -1,8 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { Page } from "../../ui/Page";
-import { PageHeader, type PageBack } from "../../ui/PageHeader";
-import { learnerPage } from "../spaces/learner-urls";
+import { PageHeader } from "../../ui/PageHeader";
 import type { ReactNode } from "react";
 import type { AuthSession } from "../../auth";
 import { meOptions } from "../../lib/query";
@@ -14,8 +13,6 @@ import styles from "./Workbooks.module.css";
 export type WorkbookLearner = { id: string; name: string } & WorkbookAccess & {
     /** Who sees the pause once the five free workbooks are used. */
     pauseViewer: PauseViewer;
-    /** The learner's own page: where their workbooks go up to. */
-    home: PageBack;
   };
 
 /** Whose workbooks these are, as the screen says it: the adult's own are
@@ -69,7 +66,7 @@ export function WorkbookFrame({
   else if (!learner)
     body = (
       <div className={styles.notice}>
-        <PageHeader title="Workbooks" back={{ to: "/family" }} />
+        <PageHeader title="Workbooks" />
         <p>This learner isn't in your family. Choose a learner in Family.</p>
         <Link
           to="/$"
@@ -86,7 +83,6 @@ export function WorkbookFrame({
         <PageHeader
           title="Workbooks"
           subtitle={learner.adult && !learner.simulation ? null : learner.name}
-          back={learnerPage(data, learner)}
         />
         <p>
           {learner.adult && !learner.simulation
@@ -107,7 +103,6 @@ export function WorkbookFrame({
   else
     body = children({
       ...learner,
-      home: learnerPage(data, learner),
       pauseViewer:
         data.account.kind === "student"
           ? "student"

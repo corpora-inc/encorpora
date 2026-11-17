@@ -655,146 +655,150 @@ test("every route's screen renders Page, or is listed with its reason", () => {
   assert.deepEqual(problems, []);
 });
 
-/* ---------- one parent per screen ---------- */
+/* ---------- no in-page Back ---------- */
 
 /**
- * A screen has exactly one parent (founder, 2026-11-16): its "‹ Back" goes
- * up to a route named once, from canonical state, never to where it was
- * opened from. A per-item action reached from several places is a sheet,
- * not a screen with several parents. Each `back` handed to PageHeader or
- * FamilyFrame (or to a screen's own wrapper of them) names at most one
- * route, as a literal that the router really has; an in-screen step passes
- * a callback instead.
+ * No in-page Back control (founder, 2026-11-16). Tabs, menus and the
+ * browser navigate; a flow shows the shared stepper (ui/FlowSteps), whose
+ * done steps link to their own addresses; a contextual screen is an overlay
+ * that closes (✕) to the screen behind it (lib/return-to's closeTo). No
+ * source draws a "‹" chevron, a control labelled "Back" or "Back to …",
+ * a page's own close-click (useCloseClick) or calls history.back(). Older
+ * screens that still do are listed with what replaces theirs; an entry that
+ * no longer matches fails, so the list only shrinks.
  */
-
-/** Functions that compute a parent from canonical state: one per entity
- * they are called for, several across entities. */
-const PARENT_RESOLVERS: Record<string, string> = {
-  "features/spaces/learner-urls.ts#learnerPage":
-    "one parent per learner, their own page: a child's in their family, the adult's /me, a profile's list (Continue, a learner's workbooks)",
-  "features/family/RecordLinks.tsx#useFamilyRecordBack":
-    "one parent per record: a child's page goes to Today; practice time, report cards and workbooks to Progress (with one child, that child's page)",
+const BACK_DEBT: Record<string, string> = {
+  "AnnualPurchase.tsx":
+    "a pay surface: the pay flow (redo-pay-flow) replaces it with the stepper in its overlay",
+  "BookReader.tsx":
+    "a legacy screen (phase 2): replaced when its feature migrates",
+  "ChooseHowToPay.tsx":
+    "a pay surface: the pay flow (redo-pay-flow) replaces it with the stepper in its overlay",
+  "FundingPurchaseCenter.tsx":
+    "a pay surface: the pay flow (redo-pay-flow) replaces it with the stepper in its overlay",
+  "NativeGate.tsx":
+    "a legacy screen (phase 2): replaced when its feature migrates",
+  "ParentConsentCenter.tsx":
+    "a legacy screen (phase 2): replaced when its feature migrates",
+  "PaymentHistoryCenter.tsx":
+    "a pay surface: the pay flow (redo-pay-flow) replaces it with the stepper in its overlay",
+  "PracticeWorkspace.tsx":
+    "a legacy screen (phase 2): replaced when its feature migrates",
+  "ProgressWorkspace.tsx":
+    "a legacy screen (phase 2): replaced when its feature migrates",
+  "app/LegacyApp.tsx":
+    "a legacy screen (phase 2): replaced when its feature migrates",
+  "features/account/Receipts.tsx":
+    "a pay surface: the pay flow (redo-pay-flow) replaces it with the stepper in its overlay",
+  "features/auth/SignInScreen.tsx":
+    "a sign-in or first-run card step: to move onto the shared stepper (phase 2)",
+  "features/design/sections/states.tsx":
+    "the /design gallery's sample empty state",
+  "features/family/Child.tsx":
+    "a family screen: the child-page worker removes it in its restructure (overlays close with ✕)",
+  "features/family/FamilyReturn.tsx":
+    "a family screen: the child-page worker removes it in its restructure (overlays close with ✕)",
+  "features/family/People.tsx":
+    "a family screen: the child-page worker removes it in its restructure (overlays close with ✕)",
+  "features/family/screens.tsx":
+    "a family screen: the child-page worker removes it in its restructure (overlays close with ✕)",
+  "features/films/FilmScreen.tsx":
+    "the immersive film's return to its problem or lesson: to become its ✕ (phase 2)",
+  "features/funding/InvoiceForm.tsx":
+    "a pay surface: the pay flow (redo-pay-flow) replaces it with the stepper in its overlay",
+  "features/me/OwnTimeScreen.tsx":
+    "an adult's practice time: Progress's tab replaces it (phase 2)",
+  "features/navigation/DrawerContents.tsx":
+    "practice modes' way back to where they started, in the bar and drawer: to become the mode's exit (phase 2)",
+  "features/onboarding/LearnerSteps.tsx":
+    "a sign-in or first-run card step: to move onto the shared stepper (phase 2)",
+  "features/onboarding/PurchaseStep.tsx":
+    "a pay surface: the pay flow (redo-pay-flow) replaces it with the stepper in its overlay",
+  "features/pathways/LessonRecovery.tsx":
+    "an overlay's failure state names where ✕ returns; to become the overlay's ✕ (phase 2)",
+  "features/practice/StudentSignOut.tsx":
+    "practice modes' way back to where they started, in the bar and drawer: to become the mode's exit (phase 2)",
+  "features/profiles/api.ts":
+    "practice modes' way back to where they started, in the bar and drawer: to become the mode's exit (phase 2)",
+  "features/profiles/practice-mode.ts":
+    "practice modes' way back to where they started, in the bar and drawer: to become the mode's exit (phase 2)",
+  "features/school/ImportScreen.tsx":
+    "a school screen (phase 2): tabs and overlays replace its way back",
+  "features/school/PlainPage.tsx":
+    "a school screen (phase 2): tabs and overlays replace its way back",
+  "features/school/SetupScreen.tsx":
+    "a school screen (phase 2): tabs and overlays replace its way back",
+  "features/school/classes/CardsScreen.tsx":
+    "a school screen (phase 2): tabs and overlays replace its way back",
+  "features/school/classes/GradebookScreen.tsx":
+    "a school screen (phase 2): tabs and overlays replace its way back",
+  "features/school/classes/ReportCardScreen.tsx":
+    "a school screen (phase 2): tabs and overlays replace its way back",
+  "features/school/classes/StartClassScreen.tsx":
+    "a school screen (phase 2): tabs and overlays replace its way back",
+  "features/school/classes/TimeScreen.tsx":
+    "a school screen (phase 2): tabs and overlays replace its way back",
+  "features/school/classroom/StandingsScreen.tsx":
+    "a school screen (phase 2): tabs and overlays replace its way back",
+  "features/school/join/ClassScreen.tsx":
+    "a school screen (phase 2): tabs and overlays replace its way back",
+  "features/school/join/PicturesScreen.tsx":
+    "a school screen (phase 2): tabs and overlays replace its way back",
+  "features/school/org/RolloverScreen.tsx":
+    "a school screen (phase 2): tabs and overlays replace its way back",
+  "features/school/pilots/ClassAccess.tsx":
+    "a school screen (phase 2): tabs and overlays replace its way back",
+  "features/school/pilots/SchoolStartScreen.tsx":
+    "a school screen (phase 2): tabs and overlays replace its way back",
+  "features/school/standing/parts.tsx":
+    "a school screen (phase 2): tabs and overlays replace its way back",
+  "nav/LayerHost.tsx":
+    "an overlay's failure state names where ✕ returns; to become the overlay's ✕ (phase 2)",
+  "scene/ScenePlayer.tsx":
+    "the immersive film's return to its problem or lesson: to become its ✕ (phase 2)",
+  "ui/LoadingScreen.tsx":
+    "a route error's recovery link names where it goes; to become the tab's own screen (phase 2)",
 };
-/** Files whose `back` names more than one route, with why (none). */
-const SEVERAL_PARENTS: Record<string, string> = {};
-/** Addresses the legacy host serves with no route of their own. */
-const LEGACY_ADDRESSES = new Set(["/account/security", "/account/privacy"]);
 
-/** Every address the router declares, with its `$params`. */
-export function routeAddresses() {
-  const found = new Set<string>(LEGACY_ADDRESSES);
-  for (const file of ["app/router.tsx", "app/school-routes.tsx"])
-    for (const match of read(file).matchAll(/\bpath:\s*"(\/[^"]*)"/g))
-      found.add(match[1]!);
-  const family = read("app/family-routes.tsx");
-  for (const match of family.matchAll(/\bpath:\s*"([^"]*)"/g)) {
-    const path = match[1]!;
-    found.add(path.startsWith("/") ? path : `/family/$family/${path}`);
-  }
-  for (const match of family.matchAll(/\b(?:leaf|childScreen)\(\s*"([^"]*)"/g))
-    found.add(
-      match[1] === "/" ? "/family/$family" : `/family/$family/${match[1]}`,
-    );
-  return found;
-}
+/** A drawn way back, in source with its comments removed. */
+const BACK_PATTERNS: [string, RegExp][] = [
+  ["a ‹ chevron", /‹/],
+  ["a control labelled Back", /(?:>|"|`)\s*Back(?: to [^<"`{]+)?\s*(?:<|"|`)/],
+  ["a page's own close-click", /\buseCloseClick\(/],
+  ["history.back()", /\bhistory\.back\(\)/],
+];
+/** Where the one overlay close and its link helper live. */
+const BACK_OWNERS = new Set(["lib/return-to.ts", "nav/links.tsx"]);
 
-/** The text of each `back={…}` attribute in a source. */
-function backExpressions(source: string) {
-  return calls(source, /\bback=\{/g).map((args) => args.join(","));
-}
-
-/** The route targets an expression names: literal `to:` values, and the
- * ones a non-literal `to:` leaves unknown. */
-function targetsOf(expression: string) {
-  const literal = [...expression.matchAll(/\bto:\s*"([^"]*)"/g)].map(
-    (match) => match[1]!,
-  );
-  const dynamic = [...expression.matchAll(/\bto:\s*(?!")([^,}\s]+)/g)].map(
-    (match) => match[1]!,
-  );
-  return { literal, dynamic };
-}
-
-/** A function's body, by its name in a source. */
-function bodyOf(source: string, name: string) {
-  const start = source.search(
-    new RegExp(`(?:function\\s+${name}\\b|const\\s+${name}\\s*=)`),
-  );
-  assert.ok(start >= 0, `${name} is defined`);
-  const open = source.indexOf("{", source.indexOf(")", start));
-  let depth = 0;
-  for (let at = open; at < source.length; at++) {
-    if (source[at] === "{") depth++;
-    if (source[at] === "}" && --depth === 0) return source.slice(open, at + 1);
-  }
-  throw new Error(`${name}: unbalanced`);
-}
+const withoutComments = (source: string) =>
+  source.replace(/\/\*[\s\S]*?\*\//g, "").replace(/(^|[^:"'`])\/\/.*$/gm, "$1");
 
 function sourceFiles(dir: string): string[] {
   return readdirSync(dir).flatMap((name) => {
     const path = join(dir, name);
     if (statSync(path).isDirectory())
       return name === "__tests__" ? [] : sourceFiles(path);
-    return name.endsWith(".tsx") ? [path] : [];
+    return /\.tsx?$/.test(name) ? [path] : [];
   });
 }
 
-test("a back expression's targets are read from its literals", () => {
-  assert.deepEqual(
-    targetsOf(`cond ? { to: "/family/$family/settings", params } : () => x()`),
-    { literal: ["/family/$family/settings"], dynamic: [] },
-  );
-  assert.deepEqual(targetsOf("{ to: here }").dynamic, ["here"]);
-  assert.ok(routeAddresses().has("/family/$family/settings"));
-  assert.ok(routeAddresses().has("/family/$family/kids/$learner"));
-  assert.ok(!routeAddresses().has("/account/privacy/consent"));
-});
-
-test("every screen's Back goes up to one parent, a route that exists", () => {
-  const routes = routeAddresses();
+test("no screen draws an in-page Back", () => {
   const problems: string[] = [];
-  const resolvers = new Map(
-    Object.keys(PARENT_RESOLVERS).map((key) => {
-      const [file, name] = key.split("#") as [string, string];
-      return [name, { file, body: bodyOf(read(file), name) }];
-    }),
-  );
-  const check = (where: string, to: string) => {
-    if (!routes.has(to))
-      problems.push(`${where}: Back goes to ${to}, which no route declares`);
-  };
-  for (const [name, { file, body }] of resolvers) {
-    const { literal, dynamic } = targetsOf(body);
-    for (const to of literal) check(`${file}#${name}`, to);
-    for (const to of dynamic)
-      problems.push(
-        `${file}#${name}: a parent computed as \`${to}\`, not a route`,
-      );
-  }
+  const seen = new Set<string>();
   for (const path of sourceFiles(WEB)) {
     const file = relative(WEB, path).split("\\").join("/");
-    const source = readFileSync(path, "utf8");
-    if (!/import\s*\{[^}]*\b(PageHeader|FamilyFrame)\b/.test(source)) continue;
-    for (const expression of backExpressions(source)) {
-      const { literal, dynamic } = targetsOf(expression);
-      for (const to of literal) check(file, to);
-      for (const to of dynamic)
-        problems.push(`${file}: Back to \`${to}\`, not a route named once`);
-      const parents = new Set(literal);
-      if (parents.size > 1 && !SEVERAL_PARENTS[file])
-        problems.push(
-          `${file}: one Back with ${parents.size} parents (${[...parents].join(", ")}); a screen has exactly one, and an action reached from several places is a sheet`,
-        );
-    }
-  }
-  for (const file of Object.keys(SEVERAL_PARENTS)) {
-    const parents = new Set(
-      backExpressions(read(file)).flatMap((e) => targetsOf(e).literal),
-    );
-    if (parents.size < 2)
+    if (BACK_OWNERS.has(file)) continue;
+    const source = withoutComments(readFileSync(path, "utf8"));
+    const found = BACK_PATTERNS.filter(([, pattern]) => pattern.test(source));
+    if (!found.length) continue;
+    seen.add(file);
+    if (!BACK_DEBT[file])
       problems.push(
-        `${file} has one parent now: delete it from SEVERAL_PARENTS`,
+        `${file} draws ${found.map(([what]) => what).join(", ")}: no in-page Back. Tabs, menus and the browser navigate; flows use ui/FlowSteps; a contextual screen is an overlay that closes to the screen behind it`,
       );
   }
+  for (const file of Object.keys(BACK_DEBT))
+    if (!seen.has(file))
+      problems.push(`${file} draws no Back now: delete it from BACK_DEBT`);
   assert.deepEqual(problems, []);
 });

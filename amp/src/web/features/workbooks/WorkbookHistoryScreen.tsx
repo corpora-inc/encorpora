@@ -58,7 +58,6 @@ export function WorkbookHistory({
   return (
     <>
       <PageHeader
-        back={learner.home}
         title={who.own ? "Your workbooks" : "Workbooks"}
         subtitle={who.label}
         // The actions land with the list: the first workbook is made from the
