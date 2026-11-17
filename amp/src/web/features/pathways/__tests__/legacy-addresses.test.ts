@@ -27,16 +27,16 @@ async function hop(href: string) {
   return null;
 }
 
-test("an older map address puts its layers and view in their stores, and names the map only", async () => {
+test("an older map address names its skill in the path, puts the rest in their stores, and keeps no query", async () => {
   const adult = { accountId: "adult", token: "t" };
   queryClient.setQueryData(sessionOptions.queryKey, adult);
   expect(
     await hop(
       "/pathways?skill=count-to-20&lesson=count-objects&topic=frac&filter=3&area=geometry",
     ),
-  ).toBe("/pathways");
+  ).toBe("/pathways/count-to-20");
+  // The skill's address is the map's screen: its lesson is the map's layer.
   expect(useLayerStore.getState().stacks["adult:/pathways"]).toEqual([
-    { kind: "skill", id: "count-to-20" },
     { kind: "lesson", id: "count-objects" },
   ]);
   expect(useMapViewStore.getState().views["adult:/pathways"]).toEqual({

@@ -71,11 +71,14 @@ const other = skills.find((s) => s.id === "nonlinear-intersection-count")!;
 const FAMILY_ID = "5b9f0f70-3d8e-45e4-a5f1-bbb98ee213d5";
 /** The map's address: a signed-in parent's child has their own
  * (`/family/<family>/kids/<learner>/pathways`, features/spaces/identity.ts);
- * yourself and a guest have `/pathways`. */
+ * yourself and a guest have `/pathways`, and `/pathways/<skill>` with a
+ * skill open over it. */
 const assertMap = (pathname: string) =>
   assert.match(
     pathname,
-    new RegExp(`^/(?:pathways|family/${FAMILY_ID}/kids/[^/]+/pathways)$`),
+    new RegExp(
+      `^/(?:pathways(?:/[^/]+)?|family/${FAMILY_ID}/kids/[^/]+/pathways)$`,
+    ),
   );
 function me(account: string, learnerCount = 2, self = false) {
   // Learning for themselves: their own map at /pathways, where they practice
@@ -808,12 +811,13 @@ async function choose(page: Page, label: string, value: string) {
 /** The one search's field (docs/design/ia.md): skills, lessons, films and
  * math words, grouped once something is typed. */
 const SEARCH = "Search";
-/** A skill among the grouped search results: a link that opens it as a
- * layer over the map; its href shares the map with it (`?open=skill:<id>`). */
+/** A skill among the grouped search results: a link that opens it over the
+ * map; its href shares the map with it (your own map: `/pathways/<id>`; a
+ * child's: `?open=skill:<id>`). */
 const skillResult = (page: Page, id: string) =>
   page
     .locator(
-      `[data-search-results] a[href*="open=skill%3A${encodeURIComponent(id)}"]`,
+      `[data-search-results] a[href*="open=skill%3A${encodeURIComponent(id)}"], [data-search-results] a[href$="/pathways/${encodeURIComponent(id)}"]`,
     )
     .first();
 /** The skills open over the map, oldest first (nav/layer-store.ts). */
@@ -997,7 +1001,8 @@ async function verifySearchFilters() {
       await waitForSkills(page, ["count-to-20"]);
       await skillLayer(page).waitFor();
       assertMap(new URL(page.url()).pathname);
-      // The skill is the screen's layer, never a step in the address.
+      // The skill is never a query: on your own map it is the address's
+      // path; on a child's map it is the screen's layer.
       assert.equal(new URL(page.url()).searchParams.get("open"), null);
       assert.equal(
         await searchField(page).inputValue(),
@@ -1133,8 +1138,153 @@ async function verifySearchTyping() {
   );
 }
 
+/**
+ * Your own map names an open skill in its address, `/pathways/<skill>`:
+ * opening one pushes it, Back closes it to the map, Forward and a reload
+ * open it again, and its link is that address with no query. Closing a
+ * skill chosen from the search returns the page to where it was when the
+ * search opened (the grades view centres the skill while it is open).
+ */
+async function verifySkillAddress() {
+  const page = await browser.newPage({
+    viewport: { width: 360, height: 640 },
+    reducedMotion: "reduce",
+  });
+  try {
+    await fixture(page, { signedIn: false });
+    await page.addInitScript(() =>
+      localStorage.setItem("amp.pathways-view", "grades"),
+    );
+    await page.goto(`${origin}/pathways`);
+    await page.locator("[data-plan-band]").first().waitFor();
+    const band = page.locator("[data-plan-band]").nth(3);
+    if (!(await band.locator("details[open]").count()))
+      await band.locator("summary").click();
+    const link = band.locator("[data-plan-skill]").first();
+    const id = (await link.getAttribute("data-plan-skill"))!;
+    assert.equal(await link.getAttribute("href"), `/pathways/${id}`);
+    await link.click();
+    await waitForSkills(page, [id]);
+    const opened = new URL(page.url());
+    assert.equal(opened.pathname, `/pathways/${id}`);
+    assert.equal(opened.search, "");
+    await page.goBack();
+    await waitForSkills(page, []);
+    assert.equal(new URL(page.url()).pathname, "/pathways");
+    await page.goForward();
+    await waitForSkills(page, [id]);
+    await page.reload();
+    await waitForSkills(page, [id]);
+    await skillLayer(page).waitFor();
+    await page.keyboard.press("Escape");
+    await waitForSkills(page, []);
+    assert.equal(new URL(page.url()).pathname, "/pathways");
+
+    // The search, from part-way down the page: closing what it found
+    // (with ✕, then with Back) returns the page exactly there.
+    for (const close of ["button", "back"] as const) {
+      await page.evaluate(() => scrollTo({ top: 40, behavior: "instant" }));
+      const before = await page.evaluate(() => scrollY);
+      const input = searchField(page);
+      await input.fill(skillTitle("round-whole-numbers"));
+      await skillResult(page, "round-whole-numbers").click();
+      await waitForSkills(page, ["round-whole-numbers"]);
+      await skillLayer(page).waitFor();
+      if (close === "button")
+        await page.getByRole("button", { name: "Close", exact: true }).click();
+      else await page.goBack();
+      await waitForSkills(page, []);
+      await page.waitForFunction(
+        (top) => Math.abs(scrollY - top) <= 1,
+        before,
+        { timeout: 5_000 },
+      );
+      await input.fill("");
+    }
+
+    // 3D full screen covers the page's key, so the map carries its own:
+    // choosing an area there works.
+    await page.getByRole("radio", { name: "3D" }).click();
+    await page.locator(".pathways-viewport canvas").waitFor();
+    await page.getByRole("button", { name: "Full screen" }).click();
+    const key = page.locator(".pathways-viewport.is-full [data-area-key]");
+    await key.waitFor();
+    const algebra = key.locator('[data-area-choice="algebra"]');
+    await algebra.click();
+    assert.equal(await algebra.getAttribute("aria-pressed"), "true");
+    const box = (await algebra.boundingBox())!;
+    assert.ok(box.y + box.height <= 640 && box.height >= 44);
+    await page.getByRole("button", { name: "Exit full screen" }).click();
+    await key.waitFor({ state: "detached" });
+  } finally {
+    await page.close();
+  }
+}
+
+/**
+ * The 3D map is optional: its code is never fetched until 3D is chosen, and
+ * when it fails to load or parse (an older browser, a failed deploy) the
+ * grades view takes its place with a quiet note, and the list keeps
+ * working. Pathways never falls to its route error because of 3D.
+ */
+async function verifyMapFailure() {
+  const page = await browser.newPage({
+    viewport: { width: 390, height: 844 },
+    reducedMotion: "reduce",
+  });
+  try {
+    await fixture(page, { signedIn: false });
+    await page.addInitScript(() =>
+      localStorage.setItem("amp.pathways-view", "grades"),
+    );
+    const mapCode: string[] = [];
+    page.on("request", (request) => {
+      if (/\/Graph(?:[-.][^/]*)?\.(?:tsx|js)(?:\?|$)/.test(request.url()))
+        mapCode.push(request.url());
+    });
+    // Code no engine can parse, in place of the map's module.
+    await page.route(/\/features\/pathways\/Graph\.tsx(?:\?|$)/, (route) =>
+      route.fulfill({
+        contentType: "text/javascript",
+        body: "export const Graph = (;",
+      }),
+    );
+    await page.goto(`${origin}/pathways`);
+    await page.locator("[data-plan-band]").first().waitFor();
+    // Long after the screen settles, the map's code is still not asked for.
+    await page.evaluate(
+      () => new Promise((done) => requestIdleCallback(() => done(null))),
+    );
+    assert.deepEqual(mapCode, [], "the 3D map's code waits for 3D");
+    await page.getByRole("radio", { name: "3D" }).click();
+    await page
+      .getByRole("status")
+      .filter({ hasText: "3D map unavailable here" })
+      .waitFor();
+    assert.equal(
+      await page.locator("[data-route-error], [role=alert]").count(),
+      0,
+    );
+    // The list still works: a skill opens at its address.
+    const band = page.locator("[data-plan-band]").nth(2);
+    if (!(await band.locator("details[open]").count()))
+      await band.locator("summary").click();
+    const link = band.locator("[data-plan-skill]").first();
+    const id = (await link.getAttribute("data-plan-skill"))!;
+    await link.click();
+    await waitForSkills(page, [id]);
+    assert.equal(new URL(page.url()).pathname, `/pathways/${id}`);
+    await noOverflow(page);
+    await page.screenshot({ path: `${output}/map-unavailable-390.png` });
+  } finally {
+    await page.close();
+  }
+}
+
 try {
   await verifySearchFilters();
+  await verifySkillAddress();
+  await verifyMapFailure();
   if (!process.env.AMP_MAP_FOCUS) await verifySearchTyping();
   if (!process.env.AMP_MAP_FOCUS) await verifyLessonRecovery();
   for (const width of process.env.AMP_MAP_FOCUS ? [] : [320, 390, 768, 1280])
@@ -1455,11 +1605,18 @@ try {
     .locator('a[data-entity="skill"]')
     .filter({ hasText: skillTitle("nonlinear-intersection-reading") });
   await related.click();
-  // A connection opens over the skill, in the same overlay; Escape and the
-  // trail go back up to it.
-  await waitForSkills(linked, [target.id, "nonlinear-intersection-reading"]);
-  await linked.locator("[data-layer-close]").last().waitFor();
+  // On your own map a connection is the skill's own address, in the same
+  // entry; Escape closes the sheet to the map (opened by its link, there
+  // is no map entry behind it to go Back to).
+  await waitForSkills(linked, ["nonlinear-intersection-reading"]);
+  assert.equal(
+    new URL(linked.url()).pathname,
+    "/pathways/nonlinear-intersection-reading",
+  );
   await linked.keyboard.press("Escape");
+  await waitForSkills(linked, []);
+  assert.equal(new URL(linked.url()).pathname, "/pathways");
+  await linked.goto(`${origin}/pathways/${target.id}`);
   await linked.getByRole("heading", { name: target.title }).waitFor();
   await lessonRow(linked).click();
   await linked
@@ -1474,7 +1631,8 @@ try {
   await linked.waitForURL((url) => url.pathname.startsWith("/practice"));
   await linked.close();
 
-  // Signed out, the map states the free allowance and its way in is sign-up.
+  // Signed out: one count line above the map, no record counts, the way in
+  // is sign-up, and the film of the map is under it.
   const guest = await browser.newPage({
     viewport: { width: 320, height: 568 },
   });
@@ -1484,13 +1642,29 @@ try {
       reelRequests.push(request.url());
   });
   await fixture(guest, { signedIn: false });
+  // The grades view, every visitor's default (the fixture chose 3D).
+  await guest.addInitScript(() =>
+    localStorage.setItem("amp.pathways-view", "grades"),
+  );
   await guest.goto(`${origin}/pathways?utm_source=example`);
-  await guest
-    .getByText(
-      `Free account · ${FREE_ONLINE_PROBLEMS} free problems for each learner`,
-      { exact: true },
-    )
-    .waitFor();
+  await guest.locator("[data-plan-band]").first().waitFor();
+  assert.equal(
+    await guest
+      .getByText(
+        `Free account · ${FREE_ONLINE_PROBLEMS} free problems for each learner`,
+      )
+      .count(),
+    0,
+  );
+  // A visitor has no record: each grade says how many skills it holds.
+  assert.equal((await guest.locator("[data-plan-total]").count()) > 0, true);
+  assert.equal(await guest.getByText(/^0 \/ \d+$/).count(), 0);
+  // The film of the map sits under the map, never above it.
+  const reel = await guest
+    .getByRole("link", { name: "See the map light up" })
+    .boundingBox();
+  const plan = await guest.locator(".pathways-plan").boundingBox();
+  assert.ok(reel && plan && reel.y > plan.y + plan.height - 1);
   assert.equal(
     await guest
       .getByRole("link", { name: "Try it free →" })
@@ -1521,11 +1695,9 @@ try {
     .locator('a[data-entity="skill"]')
     .filter({ hasText: skillTitle("nonlinear-intersection-reading") });
   const parentUrl = new URL((await parentLink.getAttribute("href"))!, origin);
-  assert.equal(parentUrl.pathname, "/pathways");
-  assert.equal(
-    parentUrl.searchParams.get("open"),
-    `skill:${target.id},skill:nonlinear-intersection-reading`,
-  );
+  // A connection is the skill's own address, shareable, with no query.
+  assert.equal(parentUrl.pathname, "/pathways/nonlinear-intersection-reading");
+  assert.equal(parentUrl.search, "");
   // The map's search and grade stay in its view, out of the address.
   assert.equal(parentUrl.searchParams.get("topic"), null);
   assert.equal(
@@ -1534,6 +1706,9 @@ try {
       .getAttribute("href"),
     "/sign-up",
   );
+  // Opened by its link (the alias put the skill in its address), ✕ closes
+  // it to the map.
+  assert.equal(new URL(guest.url()).pathname, `/pathways/${target.id}`);
   await guest.getByRole("button", { name: "Close", exact: true }).click();
   await waitForSkills(guest, []);
   assert.equal(new URL(guest.url()).pathname, "/pathways");
@@ -2041,26 +2216,24 @@ try {
         name: new RegExp(`^${skillTitle("event-sets")}`),
       });
       const href = new URL((await application.getAttribute("href"))!, origin);
-      assertMap(href.pathname);
-      assert.equal(
-        href.searchParams.get("open"),
-        "skill:odd-and-even,skill:event-sets",
-      );
+      assert.equal(href.pathname, "/pathways/event-sets");
+      assert.equal(href.search, "");
       await application.scrollIntoViewIfNeeded();
       await noOverflow(parity);
       await parity.screenshot({
         path: `${output}/connections-${width}-${colorScheme}.png`,
       });
       await application.click();
-      await waitForSkills(parity, ["odd-and-even", "event-sets"]);
+      await waitForSkills(parity, ["event-sets"]);
       await parity
         .getByRole("heading", { name: skillTitle("event-sets"), exact: true })
         .waitFor();
-      // Back to the skill it came from: the stack steps back to it.
+      // Its connection back is the other skill's address.
       await skillLayer(parity)
         .getByRole("link", { name: /^Odd and even/ })
         .click();
       await waitForSkills(parity, ["odd-and-even"]);
+      assert.equal(new URL(parity.url()).pathname, "/pathways/odd-and-even");
       await parity
         .getByRole("heading", {
           name: skillTitle("odd-and-even"),

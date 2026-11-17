@@ -351,24 +351,32 @@ const EXAMPLES: Example[] = [
   },
   // A lesson AMP no longer has; one it has opens in its reader (below).
   { from: "/lessons/retired-lesson", world: "adult", lands: "/pathways" },
+  // Your own map names its skill in its address (/pathways/<skill>); what
+  // is over the skill goes into the map's store.
   {
     from: "/pathways?skill=s1&view=3d",
     world: "signed out",
     // 3D becomes this device's choice of view.
-    lands: "/pathways",
-    layers: ["skill:s1"],
+    lands: "/pathways/s1",
+    layers: [],
   },
   {
     from: "/pathways?open=skill%3As2",
     world: "signed out",
-    lands: "/pathways",
-    layers: ["skill:s2"],
+    lands: "/pathways/s2",
+    layers: [],
   },
   {
     from: "/pathways/s1?lesson=t1",
     world: "adult",
-    lands: "/pathways",
-    layers: ["skill:s1", "lesson:t1"],
+    lands: "/pathways/s1",
+    layers: ["lesson:t1"],
+  },
+  {
+    from: "/pathways?open=skill%3As1%2Clesson%3At1",
+    world: "signed out",
+    lands: "/pathways/s1",
+    layers: ["lesson:t1"],
   },
   {
     from: "/pathways?topic=fractions&filter=3&area=geometry",
