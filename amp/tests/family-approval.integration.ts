@@ -47,7 +47,7 @@ test(
       approvals: {
         secret,
         origin,
-        mail: async (to, subject, text, link) => {
+        mail: async (to, { subject, text, url: link }) => {
           mailed.push({ to, subject, text, url: link });
         },
       },

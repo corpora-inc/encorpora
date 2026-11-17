@@ -1,3 +1,4 @@
+import type { LinkedMessage } from "../email/email.js";
 import { schoolGrading, setSchoolGrading } from "./grading-default.js";
 import type { FastifyInstance } from "fastify";
 import { schoolActions, SchoolError, type SchoolAction } from "./contracts.js";
@@ -57,6 +58,45 @@ const roleWord: Record<string, string> = {
   aide: "an aide",
   viewer: "a viewer",
 };
+/** A school's invitation to a staff member. */
+export function staffInvitation(
+  orgName: string,
+  role: string,
+  url: string,
+): LinkedMessage {
+  return {
+    subject: `${orgName} invited you to AMP for Schools`,
+    text: `${orgName} invited you to join as ${roleWord[role] ?? "staff"} on AMP for Schools. Open this link to accept. It works once and expires in 30 days. If you weren’t expecting this, you can ignore it.`,
+    url,
+    action: "Accept invitation",
+  };
+}
+
+/** A school's request for more seats, to the Corpora mailbox. */
+export function seatRequest(input: {
+  name: string;
+  orgId: string;
+  seats: number;
+  view: { used: number; seats: number; waiting: number };
+  requester: string | null;
+  note?: string | undefined;
+  origin: string;
+}): LinkedMessage {
+  const { name, orgId, view } = input;
+  return {
+    subject: `Seat request: ${name}`,
+    text: [
+      `${name} asks for ${input.seats} seats.`,
+      `Org: ${orgId}`,
+      `Now: ${view.used} of ${view.seats} used, ${view.waiting} waiting.`,
+      `From: ${input.requester ?? "unknown"}`,
+      ...(input.note ? [`Note: ${input.note}`] : []),
+    ].join("\n"),
+    url: `${input.origin}/school/${orgId}/license`,
+    action: "Open license",
+  };
+}
+
 export const eventsSince = async (
   repository: SchoolRepository,
   orgId: string,
@@ -89,9 +129,11 @@ async function mailInvite(
   try {
     await services.mail(
       invite.email,
-      `${orgName} invited you to AMP for Schools`,
-      `${orgName} invited you to join as ${roleWord[role] ?? "staff"} on AMP for Schools. Open this link to accept. It works once and expires in 30 days. If you weren’t expecting this, you can ignore it.`,
-      mailedInviteUrl(services, invite.credentialId),
+      staffInvitation(
+        orgName,
+        role,
+        mailedInviteUrl(services, invite.credentialId),
+      ),
     );
     return true;
   } catch (error) {
@@ -553,15 +595,15 @@ export function defineSetupRoutes(define: typeof defineSchoolRoute) {
       await services
         .mail(
           SEAT_REQUEST_MAILBOX,
-          `Seat request: ${name}`,
-          [
-            `${name} asks for ${input.seats} seats.`,
-            `Org: ${target.orgId}`,
-            `Now: ${view.used} of ${view.seats} used, ${view.waiting} waiting.`,
-            `From: ${requester ?? "unknown"}`,
-            ...(input.note ? [`Note: ${input.note}`] : []),
-          ].join("\n"),
-          `${services.origin}/school/${target.orgId}/license`,
+          seatRequest({
+            name,
+            orgId: target.orgId,
+            seats: input.seats,
+            view,
+            requester: requester ?? null,
+            note: input.note,
+            origin: services.origin,
+          }),
         )
         .catch((error) => {
           console.error("[schools] seat request mail not sent", {

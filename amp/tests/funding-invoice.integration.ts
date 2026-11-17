@@ -9,8 +9,8 @@ import { deliverFundingReminderMail } from "../src/funding-purchase/reminder-mai
 import { installConsentPolicy } from "../src/parent-consent/policy.js";
 import { consentFixture } from "./parent-consent.fixture.js";
 import type {
-  ConsentMail,
   ConsentTransport,
+  ConsentPayload,
 } from "../src/parent-consent/contracts.js";
 import {
   createSignupIntent,
@@ -1033,7 +1033,7 @@ test(
         input(),
         new Date(Date.now() - 11 * 86400000),
       );
-      const sent: ConsentMail[] = [];
+      const sent: ConsentPayload[] = [];
       const transport = invoiceTransport(async (mail) => {
         sent.push(mail);
         await new Promise((resolve) => setTimeout(resolve, 20));
@@ -1101,7 +1101,7 @@ test(
     fixture(async (pool, invoices) => {
       await installConsentPolicy(pool, invoicePolicy);
       await eligibleParent(pool);
-      const sent: ConsentMail[] = [];
+      const sent: ConsentPayload[] = [];
       const transport = invoiceTransport(async (mail) => {
         sent.push(mail);
         return { kind: "unknown" };
@@ -1227,7 +1227,7 @@ test(
       const data = input();
       const intent = await invoices.create(data);
       await invoices.create(data);
-      const messages: ConsentMail[] = [];
+      const messages: ConsentPayload[] = [];
       const transport = invoiceTransport(async (mail) => {
         messages.push(mail);
         await new Promise((resolve) => setTimeout(resolve, 20));
@@ -1275,7 +1275,7 @@ test(
     fixture(async (pool, invoices) => {
       await installConsentPolicy(pool, invoicePolicy);
       await invoices.create(input());
-      const messages: ConsentMail[] = [];
+      const messages: ConsentPayload[] = [];
       const transport = invoiceTransport(async (mail) => {
         messages.push(mail);
         return { kind: "unknown" };
@@ -1518,7 +1518,7 @@ for (const retry of [false, true])
         await eligibleParent(pool);
         const invoice = await invoices.create(input());
         await invoices.claim("amp|owner", invoice.id, "child");
-        const sent: ConsentMail[] = [];
+        const sent: ConsentPayload[] = [];
         const transport = invoiceTransport(async (mail) => {
           sent.push(mail);
           return { kind: "unknown" };

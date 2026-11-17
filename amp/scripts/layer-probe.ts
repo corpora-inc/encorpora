@@ -59,7 +59,12 @@ export const waitForSkills = (page: Page, ids: string[], timeout = 15_000) =>
  * or school's screen is keyed by its path, any other by `<account>:<path>`. */
 export const storedLayers = (page: Page) =>
   page.evaluate(() => {
-    const path = location.pathname.replace(/\/+$/, "") || "/";
+    // A skill's address on your own map is the map's screen
+    // (nav/layer-store.ts `layerScope`).
+    const path = (location.pathname.replace(/\/+$/, "") || "/").replace(
+      /^\/pathways\/[^/]+$/,
+      "/pathways",
+    );
     let stacks: Record<string, { kind: string; id: string }[]> = {};
     try {
       stacks =
@@ -86,7 +91,12 @@ export const waitForMapView = (
 ) =>
   page.waitForFunction(
     ([key, value]) => {
-      const path = location.pathname.replace(/\/+$/, "") || "/";
+      // A skill's address on your own map is the map's screen
+      // (nav/layer-store.ts `layerScope`).
+      const path = (location.pathname.replace(/\/+$/, "") || "/").replace(
+        /^\/pathways\/[^/]+$/,
+        "/pathways",
+      );
       let views: Record<string, Record<string, unknown>> = {};
       try {
         views =

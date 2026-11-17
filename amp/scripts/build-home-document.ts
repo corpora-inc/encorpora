@@ -75,8 +75,8 @@ const structured = {
 };
 const tags = [
   `<link rel="canonical" href="${origin}/" />`,
-  `<link rel="preload" as="image" type="image/webp" href="${asset(/^pitch-poster-square-.*\.webp$/)}" media="(max-width: 480px)" fetchpriority="high" />`,
-  `<link rel="preload" as="image" type="image/webp" href="${asset(/^pitch-poster-wide-.*\.webp$/)}" media="(min-width: 481px)" fetchpriority="high" />`,
+  `<link rel="preload" as="image" type="image/webp" href="${asset(/^practice-square-.*\.webp$/)}" media="(max-width: 480px)" fetchpriority="high" />`,
+  `<link rel="preload" as="image" type="image/webp" href="${asset(/^practice-wide-.*\.webp$/)}" media="(min-width: 481px)" fetchpriority="high" />`,
   `<link rel="preload" as="fetch" crossorigin="anonymous" href="/api/v1/billing/prices" />`,
   // The two answers `/` waits on to choose the pitch or the app, asked with
   // the document instead of after the main bundle runs. Each matches its
