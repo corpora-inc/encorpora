@@ -292,6 +292,20 @@
     gap: 6px;
   }
 }
+/* A 320 px phone's stage (258 px): three parts of a four-digit division
+   (5,869 ÷ 6) need every pixel, so the parts, their entries and the down
+   side's room take a little less. */
+@container (max-width: 279px) {
+  .work-diagram {
+    --work-part-min: 70px;
+    --work-side-entry: 58px;
+    --work-region-entry: 62px;
+    --work-line-entry: 58px;
+  }
+  .work-area-side[data-axis="down"] {
+    padding-right: var(--space-1);
+  }
+}
 @container (min-width: 480px) {
   .work-diagram {
     --work-region-min: 128px;
