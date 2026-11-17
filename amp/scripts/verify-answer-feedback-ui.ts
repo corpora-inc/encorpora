@@ -82,6 +82,57 @@ async function submit(page: Page, answer: string) {
   await page.locator("#answer:visible").press("Enter");
   await page.getByRole("region", { name: "Answer feedback" }).waitFor();
 }
+/**
+ * Stacked, the feedback sheet keeps the problem in view above it, and its
+ * result and explanation read in one body: nothing inside the body scrolls
+ * on its own, and the body scrolls only once the sheet has grown to the
+ * problem (never a sliver under empty room).
+ */
+async function solvedInView(page: Page, label: string) {
+  const found = await page.evaluate(() => {
+    const sheet = document.querySelector(".feedback")!.getBoundingClientRect();
+    const stage = document
+      .querySelector(".problem-stage")!
+      .getBoundingClientRect();
+    const question = document
+      .querySelector(".problem-content .question")!
+      .getBoundingClientRect();
+    const content = document.querySelector<HTMLElement>(".problem-content")!;
+    // The whole problem, its figure included, without its padding.
+    const problemEnd =
+      content.getBoundingClientRect().bottom -
+      (parseFloat(getComputedStyle(content).paddingBottom) || 0);
+    const body = document.querySelector<HTMLElement>("[data-feedback-body]");
+    const nested = body
+      ? [...body.querySelectorAll<HTMLElement>("*")]
+          .filter((e) => e.scrollHeight > e.clientHeight + 1)
+          .filter((e) => /(auto|scroll)/.test(getComputedStyle(e).overflowY))
+          .map((e) => e.className)
+      : ["no feedback body"];
+    return {
+      question: [question.top, question.bottom],
+      stageTop: stage.top,
+      sheetTop: sheet.top,
+      problemEnd,
+      nested,
+      body: body
+        ? { client: body.clientHeight, scroll: body.scrollHeight }
+        : null,
+    };
+  });
+  assert(
+    found.question[0]! >= found.stageTop - 1 &&
+      found.question[1]! <= found.sheetTop + 1,
+    `${label}: the problem stays in view above the sheet: ${JSON.stringify(found)}`,
+  );
+  assert.deepEqual(found.nested, [], `${label}: no nested scroller`);
+  assert(
+    found.body &&
+      (found.body.scroll <= found.body.client + 1 ||
+        found.sheetTop - found.problemEnd <= 48),
+    `${label}: the body scrolls only when the sheet meets the problem: ${JSON.stringify(found)}`,
+  );
+}
 // Signed-in practice for the family's learner.
 const mode = "account";
 try {
@@ -112,6 +163,8 @@ try {
       const batches: (string | null)[] = [];
       let practice = defaultPracticeSettings();
       let failProgress = false;
+      // Holds the strength request open while the check looks at the wait.
+      let holdProgress: Promise<void> | null = null;
       let failBranch = false;
       const errors: string[] = [];
       await context.route("**/api/**", async (route) => {
@@ -147,6 +200,7 @@ try {
             },
           });
         if (path.endsWith("/progress")) {
+          if (holdProgress) await holdProgress;
           if (failProgress)
             return route.fulfill({
               status: 503,
@@ -256,11 +310,52 @@ try {
           .reverse()
           .find((p) => p.public.templateId === id)!;
       };
+      let release = () => {};
+      holdProgress = new Promise((resolve) => (release = resolve));
       await submit(page, (await current()).answer);
       await page.getByText("+1 XP", { exact: true }).waitFor();
+      // The win lands on the sheet, never drawn over the problem.
+      assert.equal(await page.locator(".practice-celebration").count(), 0);
+      // While the strength loads: its loaded space, wordless (no status).
+      await page.locator("[data-strength-pending]").waitFor();
+      const strength = page.locator("[data-strength]");
+      assert.equal(
+        (await strength.innerText()).trim(),
+        "",
+        `${mode} ${width}: the wait for strength shows no status text`,
+      );
+      const pendingBox = await strength.boundingBox();
+      const pendingNext = await page
+        .getByRole("button", { name: "Next", exact: false })
+        .boundingBox();
+      holdProgress = null;
+      release();
       await page
         .getByText("4 more correct without help for Strong", { exact: true })
         .waitFor();
+      const loadedBox = await strength.boundingBox();
+      assert(
+        pendingBox &&
+          loadedBox &&
+          Math.abs(pendingBox.height - loadedBox.height) <= 0.5 &&
+          Math.abs(pendingBox.y - loadedBox.y) <= 0.5,
+        `${mode} ${width}: the strength arrives in its reserved space: ${JSON.stringify({ pendingBox, loadedBox })}`,
+      );
+      assert.deepEqual(
+        await page
+          .getByRole("button", { name: "Next", exact: false })
+          .boundingBox(),
+        pendingNext,
+        `${mode} ${width}: the strength arriving moves nothing`,
+      );
+      // What was solved stays readable with the win.
+      const given = await page.locator(".feedback-head small").innerText();
+      assert(
+        given.startsWith("You entered") &&
+          given.includes(String(attempts.at(-1)!.response)),
+        `${mode} ${width}: the correct head names the answer given: ${given}`,
+      );
+      if (width < 900) await solvedInView(page, `${mode} ${width} correct`);
       const next = page.getByRole("button", { name: "Next", exact: false });
       const box = await next.boundingBox();
       assert(
@@ -389,6 +484,7 @@ try {
         .getByRole("button", { name: "Builds on", exact: false })
         .waitFor();
       assert.equal(await page.getByText("+1 XP", { exact: true }).count(), 0);
+      if (width < 900) await solvedInView(page, `${mode} ${width} incorrect`);
       await page.screenshot({
         path: `${output}/${mode}-${width}-${theme}-incorrect.png`,
       });
