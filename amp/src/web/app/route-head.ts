@@ -1,4 +1,4 @@
-import { indexableDocumentPath } from "./document-routes";
+import { indexableDocumentPath } from "./document-index";
 import {
   appPageTitle,
   pitchProgramId,

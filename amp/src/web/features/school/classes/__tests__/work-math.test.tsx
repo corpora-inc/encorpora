@@ -1,6 +1,7 @@
 import { cleanup, render } from "@testing-library/react";
 import { afterEach, expect, test } from "vitest";
-import { promptLine, WorkList } from "../teacher-shared";
+import { promptLine } from "../prompt-line";
+import { WorkList } from "../teacher-shared";
 
 afterEach(cleanup);
 

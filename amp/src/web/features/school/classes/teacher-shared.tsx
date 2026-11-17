@@ -16,7 +16,8 @@ import type {
   ClassTabId,
   WorkItem,
 } from "../../../../schools/teacher-contracts";
-import { MathText, spokenMath } from "../../../MathText";
+import { MathText } from "../../../MathText";
+import { promptLine } from "./prompt-line";
 import { Badge, type BadgeTone } from "../../../ui/Badge";
 import { Button, buttonClass } from "../../../ui/Button";
 import type { GridSort } from "../../../ui/DataGrid";
@@ -386,14 +387,6 @@ export const clockTime = (iso: string) =>
         minute: "2-digit",
       })
     : "";
-/** A prompt as one line of plain text: TeX read out, lines joined. A mark
- * set after an expression (°, %, ′, ″) is held to it by a word joiner, so a
- * narrow column never breaks "(3x+16)°" inside the expression. */
-export const promptLine = (prompt: string) =>
-  spokenMath(prompt)
-    .replace(/\s+/g, " ")
-    .trim()
-    .replace(/(?<=\S)(?=[°%′″])/g, "\u2060");
 
 /** Real problems a student worked, newest first: when, the skill, the prompt
  * on one line, the answer and how it went. With `href`, each row opens its

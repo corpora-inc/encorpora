@@ -1,9 +1,13 @@
+import { renderEmail, type EmailBlock } from "../email/email.js";
 import type { FollowupStage } from "./contracts.js";
 export interface FollowupMail {
   from: string;
   to: string;
   reply_to: string;
   subject: string;
+  /** Both parts, from one content (src/email/email.ts). A payload stored
+   * before 2026-11-17 has no HTML and is resent as it was. */
+  html: string;
   text: string;
   headers: Record<string, string>;
 }
@@ -58,15 +62,24 @@ export function followupMail(
     config.origin,
   ).href;
   const welcome = input.stage === "welcome";
-  const paragraphs = welcome
+  const practiceButton = {
+    button: { label: "Continue free practice", url: practice.href },
+    lead: "Continue free practice:",
+  };
+  const signInAnywhere =
+    "Sign in on any device to continue. Your free problems stay on your account.";
+  const body: EmailBlock[] = welcome
     ? [
         "Your free AMP account is ready.",
         "AMP — Adaptive Math Pathways — is a complete math curriculum, from counting to precalculus. It finds the right level and chooses the next lesson as you answer. Try up to 100 free problems, with explanations when you need them. No payment card required.",
-        `Continue free practice:\n${practice.href}`,
-        "Sign in on any device to continue. Your free problems stay on your account.",
+        practiceButton,
+        signInAnywhere,
         ...(program
           ? [
-              `Have ${program.short} funds? Corpora Inc is an approved vendor. Eligible, available funds can cover the full cost of AMP. We’ll help with the purchase steps:\n${funding}`,
+              {
+                link: { label: "See the purchase steps", url: funding },
+                lead: `Have ${program.short} funds? Corpora Inc is an approved vendor. Eligible, available funds can cover the full cost of AMP. We’ll help with the purchase steps:`,
+              },
             ]
           : []),
       ]
@@ -75,29 +88,44 @@ export function followupMail(
           ? `Put your ${program.short} funds toward a complete math curriculum that plans the next lesson for you.`
           : "Ready for another look at AMP?",
         "Catch up or get ahead, from counting to precalculus. AMP adapts question by question, so you can spend time learning instead of deciding what to work on next.",
-        `Continue free practice:\n${practice.href}`,
-        ...(program
-          ? [
-              `Corpora Inc, the maker of AMP, is an approved vendor for the ${program.name} program. You can use eligible, available scholarship funds to cover AMP. Get your invoice and the payment steps here:\n${funding}`,
-            ]
-          : [`See learning options:\n${funding}`]),
-        "Sign in on any device to continue. Your free problems stay on your account.",
+        practiceButton,
+        program
+          ? {
+              link: { label: "Get your invoice", url: funding },
+              lead: `Corpora Inc, the maker of AMP, is an approved vendor for the ${program.name} program. You can use eligible, available scholarship funds to cover AMP. Get your invoice and the payment steps here:`,
+            }
+          : {
+              link: { label: "See learning options", url: funding },
+              lead: "See learning options:",
+            },
+        signInAnywhere,
       ];
-  paragraphs.push(
-    "Need a hand choosing a level or paying with your funds? Reply to this email or write to support@corpora.inc. We’re happy to help.",
-    `Corpora Inc\n${config.postalAddress}`,
-    `You requested free-account emails from AMP. Stop optional emails:\n${optout}`,
-  );
-  return {
-    from: config.sender,
-    to: input.email,
-    reply_to: "support@corpora.inc",
+  const email = renderEmail({
+    origin: config.origin,
     subject: welcome
       ? "Your free AMP account is ready"
       : program
         ? `Your ${program.short} funds can cover AMP`
         : "See how AMP adapts",
-    text: paragraphs.join("\n\n"),
+    body,
+    footer: [
+      "Need a hand choosing a level or paying with your funds? Reply to this email or write to support@corpora.inc. We’re happy to help.",
+      // Commercial email: a valid postal address and a working opt-out
+      // (CAN-SPAM, 15 U.S.C. 7704(a)(3), (a)(5)(A)(ii)-(iii)).
+      { lines: ["Corpora Inc", config.postalAddress] },
+      {
+        link: { label: "Stop optional emails", url: optout },
+        lead: "You requested free-account emails from AMP. Stop optional emails:",
+      },
+    ],
+  });
+  return {
+    from: config.sender,
+    to: input.email,
+    reply_to: "support@corpora.inc",
+    ...email,
+    // One-click unsubscribe (RFC 8058), required of bulk senders by Gmail's
+    // and Yahoo's sender requirements (February 2024).
     headers: {
       "List-Unsubscribe": `<${optout}>`,
       "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",

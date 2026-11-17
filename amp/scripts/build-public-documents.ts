@@ -1,6 +1,7 @@
 /** Generate direct-response metadata and the static server's known-route map. */
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { documentRoutesNginxMap } from "./lib/nginx-map";
+import { brandTitle } from "../src/brand.js";
 import { createRequire } from "node:module";
 import { routeHead, applyRouteHead } from "../src/web/app/route-head.js";
 import { documentRoutePatterns, publicDocumentPaths } from "../src/web/app/document-routes.js";
@@ -18,10 +19,11 @@ for (const path of publicDocumentPaths.filter(path => path !== "/")) {
 }
 const missing = new JSDOM(shell);
 const doc = missing.window.document;
-applyRouteHead(doc, { title: "Page not found | AMP", description: "Find AMP mathematics, free lessons and printable workbooks.", canonical: null, robots: "noindex, follow" });
+// The page names AMP by its brand title (src/brand.ts), never a second name.
+applyRouteHead(doc, { title: `Page not found | ${brandTitle}`, description: "Find AMP mathematics, free lessons and printable workbooks.", canonical: null, robots: "noindex, follow" });
 // A missing URL has a useful document without booting the learning application.
 doc.querySelectorAll('script,link[rel="modulepreload"],meta[property="og:image"],meta[name="twitter:image"]').forEach(node => node.remove());
-doc.body.innerHTML = '<main class="amp-missing"><p>AMP Mathematics</p><h1>Page not found</h1><p>This address does not lead to a page. Choose a place to continue.</p><nav aria-label="Find a page"><a href="/">Open AMP</a><a href="/pathways">Explore math skills</a><a href="https://corpora.inc/resources/">Free lessons and workbooks</a><a href="https://corpora.inc/support/">Get help</a></nav></main>';
+doc.body.innerHTML = `<main class="amp-missing"><p>${brandTitle}</p><h1>Page not found</h1><p>This address does not lead to a page. Choose a place to continue.</p><nav aria-label="Find a page"><a href="/">Open AMP</a><a href="/pathways">Explore math skills</a><a href="https://corpora.inc/resources/">Free lessons and workbooks</a><a href="https://corpora.inc/support/">Get help</a></nav></main>`;
 const style = doc.createElement("link"); style.rel = "stylesheet"; style.href = "/not-found.css"; doc.head.append(style);
 await writeFile(new URL("404.html", dist), missing.serialize());
 const tokens = await readFile(new URL("../src/web/ui/tokens.css", import.meta.url), "utf8");
