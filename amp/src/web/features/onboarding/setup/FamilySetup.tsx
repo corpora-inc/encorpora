@@ -28,6 +28,8 @@ import { setupOf } from "../guard";
 import { familyPlacesOptions } from "../../family/api";
 import { DevicesSheet } from "../../family/Devices";
 import { useFamilyPlaceOf } from "../../family/FamilyFrame";
+import { useSheet } from "../../../nav/sheet";
+import { payHref } from "../pay-link";
 import { StepFrame } from "./StepFrame";
 import { People } from "./PeopleRows";
 import { AddChildren, useChildrenEditor } from "../../family/AddChildren";
@@ -260,9 +262,10 @@ function ChildrenStep(props: StepProps) {
       const first = kids[0]!;
       if (plan) {
         await navigate({
-          to: "/continue/$learnerId",
-          params: { learnerId: first.id },
-          search: { interval: plan },
+          href: await payHref(session, first.id, {
+            method: "card",
+            interval: plan,
+          }),
         });
         return;
       }
@@ -534,7 +537,8 @@ function ReadyStep(props: StepProps) {
   const children = parent ? me.learners : [];
   const [starting, setStarting] = useState<string | null>(null);
   const [error, setError] = useState("");
-  const [devices, setDevices] = useSearchFlag("devices");
+  // An opened sheet is a history entry: Back closes it, a reload keeps it.
+  const devices = useSheet("devices");
   const today = parent ? familyToday(place) : todayUrl(place);
   const practiceHere = usePracticeHere(session, kind, async () => today);
   const begin = async (learnerId: string) => {
@@ -616,10 +620,14 @@ function ReadyStep(props: StepProps) {
           <RowButton
             title="On their own devices"
             data-own-devices=""
-            onClick={() => setDevices(true)}
+            onClick={devices.show}
           />
         </RowList>
-        <SetupDevices place={place} open={devices} onOpenChange={setDevices} />
+        <SetupDevices
+          place={place}
+          open={devices.open}
+          onOpenChange={devices.onOpenChange}
+        />
         <Toast message={error} onDismiss={() => setError("")} />
       </Frame>
     );
@@ -639,30 +647,6 @@ function ReadyStep(props: StepProps) {
       <Toast message={error} onDismiss={() => setError("")} />
     </Frame>
   );
-}
-
-/** A boolean address key (`?devices=1`): an opened sheet is a history
- * entry, so Back closes it and a refresh keeps it open. */
-function useSearchFlag(key: string) {
-  const navigate = useNavigate();
-  const on = useLocation({
-    select: (location) => {
-      const value = (location.search as Record<string, unknown>)[key];
-      return value === 1 || value === "1";
-    },
-  });
-  const set = (open: boolean) =>
-    void navigate({
-      to: ".",
-      search: ((current: Record<string, unknown>) => {
-        const next = { ...current };
-        if (open) next[key] = 1;
-        else delete next[key];
-        return next;
-      }) as never,
-      replace: !open,
-    });
-  return [on, set] as const;
 }
 
 /** "Their own devices" from setup: the family's own sheet, for the family

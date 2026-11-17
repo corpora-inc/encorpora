@@ -16,7 +16,8 @@ import {
 } from "../funding/invoice-offers";
 import { pricesOptions } from "../billing/prices";
 import { PitchLink, usePitchNav } from "./nav";
-import { pitchProgram, pitchTarget } from "./targets";
+import { pitchProgram, pitchProgramOf, pitchTarget } from "./targets";
+import { keepArrivalProgram } from "../../lib/program-choice";
 import styles from "./Pitch.module.css";
 import { storedHome } from "../../lib/home-href";
 
@@ -51,7 +52,8 @@ export function underPerDay(annualMinor: number) {
 /** Loads what Buy needs before a screen paints, so Buy never appears late
  * and moves the page. A failure stays for the screen to show in place. */
 export function loadBuyData(search: Record<string, unknown>) {
-  const program = pitchProgram(search.program);
+  // An ad's `?program=` is read here, once, and kept for the tab.
+  const program = pitchProgram(keepArrivalProgram(search));
   return Promise.all([
     queryClient
       .ensureQueryData(pricesOptions)
@@ -84,7 +86,7 @@ export type BuyData = {
 /** What Buy can sell here: the named funded program's live offer and the card
  * plans. Both come from the server; nothing is priced in the client. */
 export function useBuyData(search: Record<string, unknown>): BuyData {
-  const program = pitchProgram(search.program);
+  const program = pitchProgramOf(search);
   const prices = useQuery(pricesOptions);
   const funded = useQuery({
     ...invoiceOffersOptions(program?.id ?? ""),
@@ -115,7 +117,7 @@ export type BuyFrom = "pitch" | "chrome" | "invite";
  */
 export function BuyOptions({
   data,
-  search,
+  landing,
   signedIn = false,
   from,
   variant = "full",
@@ -126,7 +128,8 @@ export function BuyOptions({
   onInterval,
 }: {
   data: Pick<BuyData, "program" | "fundedOffer" | "offers" | "extraOffers">;
-  search: Record<string, unknown>;
+  /** The address the visitor landed on: an ad's campaign labels. */
+  landing: Record<string, unknown>;
   signedIn?: boolean;
   from: BuyFrom;
   variant?: "full" | "button";
@@ -160,14 +163,14 @@ export function BuyOptions({
     rememberPlanChoice(next);
     // Signed in: their place, where the plan waits (or `/`, which offers it).
     nav.go(
-      signedIn ? { to: storedHome() ?? "/" } : pitchTarget("card", search),
+      signedIn ? { to: storedHome() ?? "/" } : pitchTarget("card", landing),
     );
   }
   if (program && fundedOffer) {
     const link = (
       <PitchLink
         className={buttonClass(buttonVariant, className)}
-        place={pitchTarget("funded", search)}
+        place={pitchTarget("funded", landing)}
         onClick={() => track("buy_click", { path: "funded", from })}
         aria-label={ariaLabel}
       >

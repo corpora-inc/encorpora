@@ -1,5 +1,20 @@
-import { expect, test } from "vitest";
-import { pitchCarry, pitchProgram, pitchTarget } from "../targets";
+import { beforeEach, expect, test } from "vitest";
+import {
+  chosenProgram,
+  keepArrivalProgram,
+  resetProgramChoiceForTests,
+} from "../../../lib/program-choice";
+import {
+  pitchCarry,
+  pitchProgram,
+  pitchProgramOf,
+  pitchTarget,
+} from "../targets";
+
+beforeEach(() => {
+  sessionStorage.clear();
+  resetProgramChoiceForTests();
+});
 
 const campaign = {
   utm_campaign: "ar-efa-launch",
@@ -15,21 +30,31 @@ test("a funded program's Buy is its no-account invoice, with the campaign kept",
   ] as const)
     expect(pitchTarget("funded", { ...campaign, program: id })).toEqual({
       to: `/invoice/${slug}`,
-      search: { ...campaign, program: id },
+      search: campaign,
     });
+});
+
+test("the program is the tab's choice, never the next address's", () => {
+  expect(keepArrivalProgram({ program: "az-esa" })).toBe("az-esa");
+  // A later screen of the visit names none: the choice holds.
+  expect(pitchProgramOf({})?.slug).toBe("arizona-esa");
+  expect(pitchTarget("funded", campaign)).toEqual({
+    to: "/invoice/arizona-esa",
+    search: campaign,
+  });
+  expect(chosenProgram()).toBe("az-esa");
 });
 
 test("card Buy signs up for the purchase; Try it free signs up for free practice", () => {
   const search = { ...campaign, program: "nh-efa", gclid: "click" };
   expect(pitchTarget("card", search)).toEqual({
     to: "/sign-up",
-    search: { ...campaign, program: "nh-efa", entry: "pitch-buy" },
+    search: { ...campaign, entry: "pitch-buy" },
   });
   expect(pitchTarget("try", search)).toEqual({
     to: "/sign-up",
     search: {
       ...campaign,
-      program: "nh-efa",
       entry: "pitch-try",
       return: "free-practice",
     },

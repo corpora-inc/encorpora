@@ -1,8 +1,9 @@
-import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { RootLink } from "../../nav/root";
 import { Link, useNavigate } from "@tanstack/react-router";
-import { Navigate } from "../../nav/Navigate";
-import { meOptions, sessionOptions } from "../../lib/query";
+import { authStep } from "../../app/auth-links";
+import { meOptions } from "../../lib/query";
+import { useSession } from "../../lib/session";
 import { Button, buttonClass } from "../../ui/Button";
 import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
 import { Toast } from "../../ui/Toast";
@@ -14,16 +15,12 @@ import { useStartOwnPractice } from "../me/api";
 
 /** Shareable invitation destination. The URL contains no email or bearer capability. */
 export function AccessScreen() {
-  const { data: session } = useSuspenseQuery(sessionOptions);
-  const query = useQuery({
-    ...meOptions(session ?? { accountId: "", token: "" }),
-    enabled: !!session,
-  });
-  const claim = useActivateGift(session ?? { accountId: "", token: "" });
-  const startOwn = useStartOwnPractice(session ?? { accountId: "", token: "" });
+  // Signed out, the route's guard signs in and comes back here.
+  const session = useSession();
+  const query = useQuery(meOptions(session));
+  const claim = useActivateGift(session);
+  const startOwn = useStartOwnPractice(session);
   const navigate = useNavigate();
-  if (!session)
-    return <Navigate to="/sign-in" search={{ return: "access" }} replace />;
   const me =
     query.data?.signedIn && query.data.account.id === session.accountId
       ? query.data
@@ -33,7 +30,7 @@ export function AccessScreen() {
   if (me && !me.account.emailVerified)
     return (
       <PageFrame>
-        <VerifyEmailStep session={session} me={me} invitation />
+        <VerifyEmailStep me={me} invitation />
       </PageFrame>
     );
   const gift = me?.availableAccessGrant;
@@ -123,8 +120,7 @@ export function AccessScreen() {
             )}
             {query.data?.signedIn === false && (
               <Link
-                to="/sign-in"
-                search={{ return: "access" }}
+                {...authStep("sign-in", { return: "access" })}
                 className={buttonClass("primary")}
               >
                 Sign in again
@@ -215,7 +211,6 @@ export function AccessScreen() {
                     {meFirst && forMeButton("primary")}
                     <Link
                       to="/start/name"
-                      search={{ return: "access" }}
                       className={buttonClass(meFirst ? "secondary" : "primary")}
                     >
                       {paidSetup

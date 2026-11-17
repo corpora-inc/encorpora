@@ -18,6 +18,7 @@ import {
 import { PitchLink, usePitchNav } from "./nav";
 import { PitchVideo } from "./PitchVideo";
 import { pitchCarry, pitchTarget } from "./targets";
+import { authStep } from "../../app/auth-links";
 import { usePitchAttention } from "./usePitchAttention";
 import { pitchVideo } from "./video";
 import styles from "./Pitch.module.css";
@@ -93,7 +94,7 @@ export function PitchPage() {
     data.failed ? null : (
       <BuyOptions
         data={data}
-        search={search}
+        landing={search}
         from="pitch"
         variant={variant}
         interval={interval}
@@ -114,7 +115,7 @@ export function PitchPage() {
           <span className={styles.expansion}>{brand.expansion}</span>
         </PitchLink>
         <PitchLink
-          place={{ to: "/sign-in", search: pitchCarry(search) }}
+          place={authStep("sign-in", pitchCarry(search))}
           className={buttonClass("quiet", styles.signIn)}
         >
           Sign in

@@ -2,6 +2,7 @@ import { redirect } from "@tanstack/react-router";
 import type { AuthSession } from "../auth";
 import type { SignedInMe } from "../../account/contracts";
 import { continuationSearch } from "../lib/funded-entry";
+import { authStep, type AuthSearch } from "./auth-links";
 import { queryClient, sessionOptions } from "../lib/query";
 import { studentSession } from "../lib/student-device";
 import { nativeRuntime } from "../native-runtime";
@@ -40,9 +41,10 @@ export type GateLocation = {
 };
 
 /** How sign-in comes back: by the continuation the address carries (a
- * campaign, a program, a return; lib/funded-entry.ts), or, for a place
- * (a school's, a family's), straight back to this address. */
-export type Back = "continue" | "here";
+ * campaign, a program, a return; lib/funded-entry.ts), for a place (a
+ * school's, a family's) straight back to this address, or by a return of
+ * its own (`{ return: "access" }`). */
+export type Back = "continue" | "here" | AuthSearch;
 
 /** A device this screen isn't for: one hop to the device's own home. */
 export function admit({ web, adults }: Admits) {
@@ -53,14 +55,19 @@ export function admit({ web, adults }: Admits) {
 
 /** The sign-in address that comes back to `location`. */
 export function signInTarget(location: GateLocation, back: Back = "continue") {
-  const search =
-    back === "here"
-      ? {
-          return: "school" as const,
-          next: `${location.pathname}${location.searchStr}`,
-        }
-      : continuationSearch((location.search ?? {}) as Record<string, unknown>);
-  return { to: "/sign-in" as const, search };
+  return authStep(
+    "sign-in",
+    typeof back === "object"
+      ? back
+      : back === "here"
+        ? {
+            return: "school" as const,
+            next: `${location.pathname}${location.searchStr}`,
+          }
+        : continuationSearch(
+            (location.search ?? {}) as Record<string, unknown>,
+          ),
+  );
 }
 
 /**

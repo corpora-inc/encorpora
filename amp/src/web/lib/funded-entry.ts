@@ -284,6 +284,43 @@ export function forgetFundedPurchase(accountId: string) {
   } catch {}
 }
 
+/** The funded program this account's pending purchase is for, on this
+ * device, or null. */
+export function fundedReturnOf(accountId: string): FundedProgramSlug | null {
+  try {
+    const raw = localStorage.getItem(pendingPrefix + accountId);
+    if (!raw) return null;
+    const parsed = pendingSchema.safeParse(JSON.parse(raw));
+    if (
+      !parsed.success ||
+      parsed.data.expiresAt <= Date.now() ||
+      parsed.data.expiresAt > Date.now() + pendingLifetime
+    )
+      return null;
+    return parsed.data.destination ?? "arkansas-efa";
+  } catch (error) {
+    console.warn("The pending funded purchase couldn’t be read", error);
+    return null;
+  }
+}
+
+/**
+ * The funded program an account's first-run steps (`/start/…`) are for. The
+ * address names it on arrival (a sign-in's continuation, a funding page's
+ * "Set up learner"), which is kept for the account on this device; the next
+ * steps are plain paths and read it back. False when there is none.
+ */
+export function fundedSetup(
+  accountId: string,
+  search: Record<string, unknown>,
+): FundedProgramSlug | false {
+  if (isFundedReturn(search.return)) {
+    rememberFundedPurchase(accountId, search);
+    return search.return;
+  }
+  return fundedReturnOf(accountId) ?? false;
+}
+
 export function pendingFundedPurchase(accountId: string): string | null {
   try {
     const raw = localStorage.getItem(pendingPrefix + accountId);

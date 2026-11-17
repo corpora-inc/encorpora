@@ -38,6 +38,7 @@ import { Page } from "../../ui/Page";
 import { PageHeader } from "../../ui/PageHeader";
 import styles from "./Starter.module.css";
 import { practiceParams } from "../spaces/identity";
+import { payHref } from "./pay-link";
 
 /** Unsent answers live only in this tab's memory, per account. */
 type StarterDraft = {
@@ -288,11 +289,14 @@ function MyselfStep() {
         // and `/me` is where they come back to.
         const plan = chosenPlan();
         if (plan && result.learnerId)
-          void navigate({
-            to: "/continue/$learnerId",
-            params: { learnerId: result.learnerId },
-            search: { interval: plan },
-          });
+          void payHref(session, result.learnerId, {
+            method: "card",
+            interval: plan,
+          })
+            .then((href) => navigate({ href }))
+            .catch((error: unknown) =>
+              console.error("The chosen plan didn’t open", error),
+            );
         else
           void navigate({
             to: "/$",
