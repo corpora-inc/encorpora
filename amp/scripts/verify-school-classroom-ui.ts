@@ -732,7 +732,10 @@ async function journeys(browser: Browser, engine: string) {
     // No in-page Back: the menu is the way to practice.
     await reader.page.getByRole("button", { name: "Open AMP menu" }).click();
     await reader.page.getByRole("link", { name: "Practice" }).click();
-    await reader.page.waitForURL("**/practice");
+    // Practice is at the learner's own address.
+    await reader.page.waitForURL((url) =>
+      /^\/practice\/[^/]+$/.test(url.pathname),
+    );
     check(
       `${engine} a student sends no analytics`,
       !collected.length,
@@ -1114,14 +1117,10 @@ async function journeys(browser: Browser, engine: string) {
       `${engine} phone marks saved`,
       (await phone.page.locator("li", { hasText: /Right$/ }).count()) >= 1,
     );
+    // The student shown is the marking screen's view (school view store,
+    // no query string): On to the next one.
     await phone.page.getByRole("button", { name: "On to Hana S." }).click();
     await phone.page.getByText("Hana S.").waitFor();
-    check(
-      `${engine} a real URL per student`,
-      phone.page.url().includes(`student=${students[6]!.personId}`),
-    );
-    await phone.page.goBack();
-    await phone.page.getByText("Felix G.").waitFor();
   } catch (error) {
     let shot = 0;
     for (const { context } of open)

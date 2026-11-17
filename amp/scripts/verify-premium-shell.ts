@@ -219,7 +219,9 @@ try {
       await page.screenshot({
         path: `${shots}/guided-start-${width}-${theme}.png`,
       });
-      await page.route("**/api/v1/start", (r) =>
+      // Each child is saved as it is added; Next then reads the family
+      // again, which fails here.
+      await page.route("**/api/v1/me", (r) =>
         r.fulfill({ status: 503, json: { error: "temporarily_unavailable" } }),
       );
       // Scroll first, so the click's scroll is not mistaken for a shift.
@@ -236,7 +238,7 @@ try {
       await page.screenshot({
         path: `${shots}/setup-error-${width}-${theme}.png`,
       });
-      await page.unroute("**/api/v1/start");
+      await page.unroute("**/api/v1/me");
       await page.getByRole("button", { name: "Dismiss message" }).click();
       await page.getByRole("button", { name: "Next", exact: true }).click();
       // One child practices first, on this device: their first problem.
@@ -280,7 +282,7 @@ try {
             await page.screenshot({ path: `${shots}/reload-failure.png` });
             throw error;
           });
-        assert.equal(new URL(page.url()).pathname, "/practice");
+        assert.match(new URL(page.url()).pathname, /^\/practice\/[^/]+$/);
         await fits(page);
       }
       // Sign out gives the device back to the parent, on the family's Today.

@@ -137,7 +137,10 @@ async function verifyShell() {
             `${tag}: focus inset ${inset.reserved}px differs from app bar ${inset.bar}px`,
           );
         const found = await probe(page);
-        check(found.overflow === 0, `${tag}: overflows by ${found.overflow}px`);
+        check(
+          found.overflow === 0,
+          `${tag}: overflows by ${found.overflow}px ${found.overflowing.join("; ")}`,
+        );
         check(
           !found.overlaps.length,
           `${tag}: overlapping controls ${found.overlaps.join("; ")}`,

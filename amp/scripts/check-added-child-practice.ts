@@ -6,6 +6,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { chromium as rawChromium } from "playwright";
 import { secureChromium } from "../browser-security.mjs";
 import { purchasePreview } from "./purchase-preview-fixture.js";
+import { addChildInSheet } from "./lib/add-child";
 
 const fixture = await purchasePreview(
   Number(process.env.AMP_ADDED_CHILD_PREVIEW_PORT ?? 5050),
@@ -16,8 +17,7 @@ const output =
 await mkdir(output, { recursive: true });
 const results: unknown[] = [];
 try {
-  // Both have a family and no completed payment consent. Settings therefore
-  // opens the same parent setup route used by the reported regression.
+  // Both have a family; one has an invoice under way.
   for (const key of ["invoice", "returning"]) {
     const context = await browser.newContext({
       viewport: { width: 1280, height: 850 },
@@ -57,29 +57,12 @@ try {
         if (response.ok() && /\/learners\/[^/]+\/batches$/.test(path))
           batches.push(path.split("/").at(-2)!);
       });
+      // Settings' Add a child adds one in its sheet, in place.
       await page.goto(fixture.origin + `/family/${family}/settings`);
       await page
         .getByRole("button", { name: "Add a child", exact: true })
         .click();
-      await page.waitForURL("**/start/parent");
-      await page
-        .getByRole("heading", { name: "Add your kids", exact: true })
-        .waitFor();
-      await page
-        .getByRole("button", { name: "Add another child", exact: true })
-        .click();
-      await page
-        .getByRole("textbox", { name: /^Name, Child 2/ })
-        .fill("Morgan");
-      await page
-        .getByRole("button", { name: "Birth year, Morgan", exact: true })
-        .click();
-      await page.getByRole("option", { name: "2015", exact: true }).click();
-      await page.getByRole("button", { name: "Next", exact: true }).click();
-      await page.waitForURL("**/start/parent/ready");
-      await page
-        .getByRole("heading", { name: "Who’s practicing first?", exact: true })
-        .waitFor();
+      await addChildInSheet(page, { name: "Morgan", year: "2015" });
       const children = (
         await fixture.db.query<{
           id: string;
@@ -99,7 +82,9 @@ try {
       assert.ok(children.some((child) => child.id === persona.learnerId));
       const child = children.find((entry) => entry.name === "Morgan")!;
       assert.equal(child.birth_year, 2015);
-      const ready = "/start/parent/ready";
+      // Their first practice starts from the family's Today.
+      await page.goto(fixture.origin + `/family/${family}`);
+      const today = new URL(page.url()).pathname;
       const problem = page.getByLabel("Problem workspace", { exact: true });
       const loaded = () =>
         page.waitForResponse((response) => {
@@ -115,27 +100,23 @@ try {
         await firstBatch;
         await problem.waitFor();
         await page.waitForTimeout(300);
-        assert.equal(new URL(page.url()).pathname, "/practice");
+        const practice = `/practice/${child.id}`;
+        assert.equal(new URL(page.url()).pathname, practice);
         assert.ok(!routes.includes("/start/parent"), JSON.stringify(routes));
         assert.deepEqual([...new Set(batches)], [child.id]);
 
-        // Browser history must keep the parent's setup and the child's practice
-        // as separate entries, including after a refresh of practice.
+        // Browser history must keep the family's Today and the child's
+        // practice as separate entries, including after a refresh of
+        // practice.
         await page.goBack();
-        await page.waitForURL(fixture.origin + ready);
-        await page
-          .getByRole("heading", {
-            name: "Who’s practicing first?",
-            exact: true,
-          })
-          .waitFor();
+        await page.waitForURL((url) => url.pathname === today);
         assert.equal(
           await page.evaluate(() => !!sessionStorage.getItem("amp.student")),
           false,
         );
         await page.goForward();
         await problem.waitFor();
-        assert.equal(new URL(page.url()).pathname, "/practice");
+        assert.equal(new URL(page.url()).pathname, practice);
         const reloadBatch = loaded();
         await page.reload();
         await reloadBatch;

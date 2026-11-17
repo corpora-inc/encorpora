@@ -72,7 +72,11 @@ test(
         origin: "https://corpora.inc",
       });
       for (const mode of ["customer", "internal", "gpc", "delayed"] as const) {
-        const context = await browser.newContext();
+        // A person's browser: the server counts a headless one's
+        // user agent as automated (analytics/automated-client.ts).
+        const context = await browser.newContext({
+          userAgent: `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${browser.version().split(".")[0]}.0.0.0 Safari/537.36`,
+        });
         let releaseMarketing: () => void = () => {};
         const marketingGate = new Promise<void>((resolve) => {
           releaseMarketing = resolve;

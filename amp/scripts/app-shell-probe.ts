@@ -7,6 +7,8 @@ import type { Page } from "playwright";
 
 export type ShellProbe = {
   overflow: number;
+  /** What reaches past the window's right edge, when something does. */
+  overflowing: string[];
   smallTargets: string[];
   inlineTargets: number;
   midWordWraps: string[];
@@ -332,6 +334,23 @@ export async function probe(page: Page): Promise<ShellProbe> {
           document.body.scrollWidth,
         ) - innerWidth,
       ),
+      overflowing:
+        Math.max(
+          document.documentElement.scrollWidth,
+          document.body.scrollWidth,
+        ) > innerWidth
+          ? [...document.querySelectorAll<HTMLElement>("body *")]
+              .filter(
+                (el) =>
+                  el.getBoundingClientRect().right > innerWidth + 0.5 &&
+                  getComputedStyle(el).position !== "fixed",
+              )
+              .slice(-5)
+              .map(
+                (el) =>
+                  `${describe(el)} right ${Math.round(el.getBoundingClientRect().right)}`,
+              )
+          : [],
       smallTargets: [...new Set(smallTargets)],
       inlineTargets,
       midWordWraps: [...new Set(midWordWraps)],
