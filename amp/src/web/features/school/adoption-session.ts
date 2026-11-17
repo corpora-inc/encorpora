@@ -12,8 +12,12 @@ export function prepareSchoolAdoption() {
     if (TOKEN.test(token))
       sessionStorage.setItem(KEY, JSON.stringify({ token, saved: Date.now() }));
     else sessionStorage.removeItem(KEY);
-  } catch {
-    /* An unavailable session store is handled as a missing link. */
+  } catch (error) {
+    // An unavailable session store is handled as a missing link.
+    console.warn(
+      "The district approval link couldn’t be kept in this tab",
+      error,
+    );
   }
   window.history.replaceState(
     window.history.state,
@@ -30,8 +34,9 @@ export function schoolAdoptionToken(): string | null {
       Date.now() - value.saved < MAX_AGE
     )
       return value.token;
-  } catch {
-    /* Invalid or unavailable storage holds no approval. */
+  } catch (error) {
+    // Invalid or unavailable storage holds no approval.
+    console.warn("The kept district approval couldn’t be read", error);
   }
   clearSchoolAdoption();
   return null;
@@ -39,7 +44,7 @@ export function schoolAdoptionToken(): string | null {
 export function clearSchoolAdoption() {
   try {
     sessionStorage.removeItem(KEY);
-  } catch {
-    /* No stored approval. */
+  } catch (error) {
+    console.warn("The kept district approval couldn’t be cleared", error);
   }
 }

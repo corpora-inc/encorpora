@@ -1,3 +1,4 @@
+import { writeLearner } from "./lib/learner-seed";
 import { secureChromium } from "../browser-security.mjs";
 import { registerParentFollowupRoutes } from "../src/parent-followup/routes.js";
 import assert from "node:assert/strict";
@@ -832,17 +833,7 @@ try {
   await familyHome(page);
   // Simulate another account's saved learner selection on a shared device
   // (the store is keyed by account: learner-store.ts).
-  await page.evaluate(() =>
-    localStorage.setItem(
-      "amp.learner",
-      JSON.stringify({
-        state: {
-          learners: { "amp|another-account": "another-account-learner" },
-        },
-        version: 2,
-      }),
-    ),
-  );
+  await writeLearner(page, "amp|another-account", "another-account-learner");
   await page.goto(`${origin}/overview`);
   // The overview is the child's own page, titled with their name: that
   // proves the stale selection from another account did not leak into it.
@@ -1042,8 +1033,10 @@ try {
     0,
     "nothing of the first account shows",
   );
-  // The new account's own family, never the first account's checkout return.
-  assert.match(new URL(page.url()).pathname, /^\/family\/[^/]+$/);
+  // The new account's own places (`/` is the launcher and never redirects:
+  // amp/AGENTS.md), never the first account's checkout return.
+  assert.equal(new URL(page.url()).pathname, "/");
+  await page.locator("[data-launcher]").waitFor();
   await otherTab.close();
   assert.deepEqual(errors, []);
   await context.close();

@@ -36,11 +36,7 @@ export function ChooserScreen() {
           const home = orgHome(org);
           return (
             <li key={org.id}>
-              <Link
-                to={home.to as never}
-                search={("search" in home ? home.search : {}) as never}
-                className={styles.chooserRow}
-              >
+              <Link to={home.to as never} className={styles.chooserRow}>
                 <span className={styles.chooserName}>{org.name}</span>
                 <span className={styles.chooserRole}>
                   {org.setupPending

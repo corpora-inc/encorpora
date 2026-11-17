@@ -119,7 +119,6 @@ export function TutoringGroupScreen() {
                     offerTalk={false}
                     key={student.id}
                     row={row}
-                    session={session}
                     onAccess={() => setOpen({ kind: "access", row })}
                     onSend={() =>
                       setOpen({
@@ -154,7 +153,6 @@ export function TutoringGroupScreen() {
                     offerTalk={false}
                     key={row.id}
                     row={row}
-                    session={session}
                     onAccess={() => setOpen({ kind: "access", row })}
                     onSend={() =>
                       setOpen({
@@ -182,7 +180,6 @@ export function TutoringGroupScreen() {
               </h2>
               <ul className={`${rowStyles.children} ${people.rows}`}>
                 <CoTeacherRows
-                  session={session}
                   orgId={t?.class.orgId ?? family}
                   onError={setError}
                 />
@@ -198,7 +195,6 @@ export function TutoringGroupScreen() {
           )}
           {open?.kind === "co-teacher" && (
             <CoTeacherInviteSheet
-              session={session}
               orgId={t?.class.orgId ?? family}
               classId={t.class.id}
               onClose={close}
@@ -206,7 +202,6 @@ export function TutoringGroupScreen() {
           )}
           {open?.kind === "other-family" && (
             <OtherFamilyAddSheet
-              session={session}
               rows={rows}
               student={open.personId ? open : undefined}
               onClose={close}

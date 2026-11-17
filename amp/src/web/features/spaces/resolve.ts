@@ -17,6 +17,7 @@ import {
   namesLearnerByPath,
   practicePath,
   type AddressedIdentity,
+  selfOf,
 } from "./identity";
 import { spaceOfPath, type RouteSpace, type Space } from "./space";
 import {
@@ -567,14 +568,16 @@ function resolveOnce(
     }
   }
   if (route === "learner" || route === "me" || route === "family") {
-    // An unnamed shared learning screen is the adult's own (self).
+    // An unnamed shared learning screen is self's: the profile practiced
+    // as, else the adult's own (identity.ts selfOf).
     const named =
       route === "me"
         ? null
         : learningIdentity(
             match.pathname,
             match.search ?? {},
-            me?.adultPractice?.learner?.id,
+            selfOf(me, session.learnerId),
+            me,
           );
     const chosen =
       route === "me"

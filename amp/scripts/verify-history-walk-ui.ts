@@ -4,9 +4,9 @@
  * Back hung the tab in a render loop ("Maximum update depth exceeded"), with
  * no menu and no way to navigate away. The cause was a rendered redirect
  * that navigated again on every render while its navigation was pending
- * (src/web/nav/Navigate.tsx). And a screen that fails still fails inside the
- * app's frame, with its bar, menu and a way home (the router's
- * defaultErrorComponent).
+ * (rendered redirects are gone: guards compute destinations). And a screen
+ * that fails still fails inside the app's frame, with its bar, menu and a
+ * way home (the router's defaultErrorComponent).
  *
  *   AMP_TEST_DATABASE_URL=postgres://…/amp_history_walk \
  *     npx tsx scripts/verify-history-walk-ui.ts [--port 4964] [--widths 390,1280]
@@ -108,7 +108,8 @@ const watchPractice = `(() => {
   window.__tap = performance.now();
   const boxes = (window.__practiceBoxes = []);
   const poll = () => {
-    if (location.pathname.startsWith("/practice")) return;
+    // Practice has arrived (its address names the learner, and any focus).
+    if (/^\/practice(\/|$)/.test(location.pathname)) return;
     const button = document.querySelector(
       "[data-layer-frame] [data-curriculum-practice] button",
     );
@@ -196,7 +197,8 @@ async function firstRun(page: Page) {
   await oneHop(page, "first practice", "link");
 }
 
-/** A learner's practice: its address names them (`/practice/<learner>`). */
+/** A learner's practice: its address names them (`/practice/<learner>`),
+ * and any focus (`…/skills/<skill>`). */
 const PRACTICE = /^\/practice\/[^/]+(?:\/(?:types|skills|areas)\/[^/]+)?$/;
 const CHILD_PAGE = /^\/family\/[^/]+\/kids\/[^/]+$/;
 

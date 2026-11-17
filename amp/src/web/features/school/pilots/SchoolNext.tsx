@@ -2,9 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import type { OrgResource } from "../../../../schools/contracts";
-import type { AuthSession } from "../../../auth";
+import { useSession } from "../../../lib/session";
 import { useLoggedError } from "../../../feedback";
+import { qk } from "../../../lib/keys";
 import { linkRefused } from "../../../lib/link-carry";
+import { sheetState } from "../../../nav/sheet";
 import { Button, buttonClass } from "../../../ui/Button";
 import { classesOptions, orgOptions, orgsOptions, school } from "../api";
 import { forgetInvite, orgHome, rememberedInvite } from "../paths";
@@ -19,19 +21,18 @@ import { inviteToken, schoolState } from "./school-state";
  * the demo, or talks to us below. Clever is offered only where it is on.
  */
 export function SchoolNext({
-  session,
   clever,
   exploring,
   onExplore,
   className,
 }: {
-  session: AuthSession;
   /** The row the buttons sit in. */
   className?: string;
   clever: boolean;
   exploring: boolean;
   onExplore: () => void;
 }) {
+  const session = useSession();
   const orgs = useQuery(orgsOptions(session));
   useLoggedError(orgs.isError ? "Your schools didn’t load." : "");
   // An invitation kept on this device leads only while the server says it
@@ -40,7 +41,9 @@ export function SchoolNext({
   const [stored, setStored] = useState(() => rememberedInvite());
   const token = inviteToken(stored);
   const invite = useQuery({
-    queryKey: ["school-invite", token ?? ""],
+    // The invitation itself, the same for anyone holding its token
+    // (InviteScreen.tsx reads it under the same key).
+    queryKey: qk.account(null, "school", "invite", token ?? ""),
     enabled: !!token,
     retry: false,
     queryFn: () => school.lookupInvite(token!),
@@ -107,11 +110,7 @@ export function SchoolNext({
   const open = (org: OrgResource, label: string) => {
     const home = orgHome(org);
     return (
-      <Link
-        to={home.to as never}
-        search={("search" in home ? home.search : {}) as never}
-        className={buttonClass("primary")}
-      >
+      <Link to={home.to as never} className={buttonClass("primary")}>
         {label}
       </Link>
     );
@@ -172,7 +171,7 @@ export function SchoolNext({
             {mine && (
               <Link
                 to={`/school/${state.org.id}/classes/${mine.id}/today` as never}
-                search={{ seats: 1 } as never}
+                state={sheetState("seats") as never}
                 className={buttonClass("secondary")}
               >
                 Send to your school’s buyer

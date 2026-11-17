@@ -1,0 +1,27 @@
+/* A field inside a table cell: the one field style (tokens.css) at a table
+   row's size, with no label or message line of its own (the cell's row and
+   the grid's announcements carry those). */
+.field {
+  display: block;
+  width: 100%;
+  max-width: 72px;
+  height: 44px;
+  min-height: 44px;
+  margin: 0;
+  padding: 0 var(--space-2);
+  border: 1px solid var(--field-border);
+  border-radius: var(--field-radius);
+  background: var(--field-surface);
+  color: var(--field-on);
+  font-size: var(--text-dense);
+  font-variant-numeric: var(--numeric);
+  font-weight: 650;
+  text-align: center;
+}
+.field:hover {
+  border-color: var(--color-primary);
+}
+.field:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 1px;
+}

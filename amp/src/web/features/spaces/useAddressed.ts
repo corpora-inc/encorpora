@@ -5,9 +5,11 @@ import type { AuthSession } from "../../auth";
 import { meKey, meOptions, queryClient, sessionOptions } from "../../lib/query";
 import { forSession, useSessionOrNull } from "../../lib/session";
 import { familyOptions } from "../family/api";
+import { currentLearner, useCurrentLearner } from "../../learner-store";
 import {
   childAddress,
   learningIdentity,
+  selfOf,
   type AddressedIdentity,
 } from "./identity";
 
@@ -24,11 +26,9 @@ function shownLocation(state: ShownState) {
     ? { pathname: leaf.pathname, search: leaf.search }
     : (state.resolvedLocation ?? state.location);
 }
-/** The adult's own learner, when `me` is this session's. */
-function ownOf(session: AuthSession | null, me: Me | undefined) {
-  return me?.signedIn && me.account.id === session?.accountId
-    ? (me.adultPractice?.learner?.id ?? null)
-    : null;
+/** This session's `/me`, never another account's. */
+function accountOf(session: AuthSession | null, me: Me | undefined) {
+  return me?.signedIn && me.account.id === session?.accountId ? me : null;
 }
 
 /**
@@ -41,14 +41,18 @@ function ownOf(session: AuthSession | null, me: Me | undefined) {
 export function useAddressedIdentity(): AddressedIdentity | null {
   const session = useSessionOrNull();
   const me = useQuery(forSession(session, meOptions)).data;
-  const own = ownOf(session, me);
+  const account = accountOf(session, me);
+  // Self: the profile being practiced as, else the adult's own (selfOf).
+  const self = selfOf(account, useCurrentLearner());
+  const selfKey = self ? `${self.kind}:${self.id}` : "";
   const key = useRouterState({
     select: (state) => {
       const shown = shownLocation(state);
       const found = learningIdentity(
         shown.pathname,
         shown.search as Record<string, unknown>,
-        own,
+        selfKey ? self : null,
+        account,
       );
       return found ? `${found.kind}:${found.id}` : "";
     },
@@ -74,10 +78,12 @@ export function addressedIdentityNow(
     ? queryClient.getQueryData<Me>(meKey(session.accountId))
     : undefined;
   const shown = shownLocation(state);
+  const account = accountOf(session, me);
   return learningIdentity(
     shown.pathname,
     shown.search as Record<string, unknown>,
-    ownOf(session, me),
+    selfOf(account, session ? currentLearner(session.accountId) : null),
+    account,
   );
 }
 

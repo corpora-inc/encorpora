@@ -1,6 +1,5 @@
 import { useSession } from "../../../lib/session";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Link, useNavigate, useSearch } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type {
   StackSet,
@@ -18,6 +17,8 @@ import { dateLabel, defaultPaper } from "../../workbooks/model";
 import { currentSession, orgOptions } from "../api";
 import { useStaffSession } from "../classes/api";
 import { useClassHost, type ClassHost } from "../classes/host";
+import { useScreenView } from "../view-store";
+import { ViewLink } from "../ViewLink";
 import { stackSearchSchema } from "./search";
 import { PageHead } from "../parts";
 import { invalidateStack, say, stackOptions } from "./api";
@@ -142,12 +143,14 @@ export function WorkbookStackScreen({
 }: { host?: ClassHost } = {}) {
   const host = useClassHost(given);
   const params = host.place;
-  const raw = useSearch({ strict: false });
+  // What's chosen here (the day, the length, the paper, the workbook, who):
+  // this screen's view (view-store.ts). Another screen's link to a group
+  // sheet sets `students` and `skill` before it navigates.
+  const [raw, set] = useScreenView<StackSearch>();
   const search = useMemo(
     () => stackSearchSchema.parse(raw) as StackSearch,
     [raw],
   );
-  const navigate = useNavigate();
   const session = useStaffSession();
   const client = useQueryClient();
   const query = useQuery(stackOptions(session, params.class, search.skill));
@@ -168,15 +171,6 @@ export function WorkbookStackScreen({
   );
   const run = useStackRun(params.class);
   const data = shown;
-  const set = (change: Partial<StackSearch>) =>
-    void navigate({
-      to: ".",
-      search: ((previous: StackSearch) => ({
-        ...previous,
-        ...change,
-      })) as never,
-      replace: true,
-    });
   const busy = run?.status === "running" || run?.status === "merging";
   // A family's class is its children.
   const family =
@@ -231,7 +225,7 @@ export function WorkbookStackScreen({
       ) : (
         <Stack
           data={data}
-          search={search}
+          view={search}
           set={set}
           busy={busy}
           org={params.org}
@@ -247,7 +241,7 @@ export function WorkbookStackScreen({
 
 function Stack({
   data,
-  search,
+  view: search,
   set,
   busy,
   org,
@@ -260,7 +254,7 @@ function Stack({
   /** What the class calls the people in it: "student", or "child". */
   who: "student" | "child";
   data: StackView;
-  search: StackSearch;
+  view: StackSearch;
   set: (change: Partial<StackSearch>) => void;
   busy: boolean;
   org: string;
@@ -580,14 +574,13 @@ function Stack({
                     ? "All marked"
                     : `${entry.marked} of ${entry.students} marked`}
                 </Badge>
-                <Link
-                  to="/$"
-                  params={{ _splat: href(`workbooks/${entry.date}`) }}
-                  search={{ set: entry.number } as never}
+                <ViewLink
+                  to={href(`workbooks/${entry.date}`)}
+                  view={{ set: entry.number, student: undefined }}
                   className={buttonClass("secondary")}
                 >
                   Mark
-                </Link>
+                </ViewLink>
               </li>
             ))}
           </ul>

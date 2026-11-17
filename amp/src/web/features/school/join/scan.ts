@@ -12,7 +12,9 @@ export function readScan(text: string): ScannedSignIn | null {
   let url: URL;
   try {
     url = new URL(text);
-  } catch {
+  } catch (error) {
+    // A code that isn't an address is simply not ours.
+    console.warn("A scanned code isn’t an address", error);
     return null;
   }
   if (url.pathname === "/c" && url.hash.length > 1)

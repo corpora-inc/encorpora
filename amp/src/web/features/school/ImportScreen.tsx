@@ -2,13 +2,10 @@ import { reportError } from "../../lib/report-error";
 import { useQuery } from "@tanstack/react-query";
 import { queryClient } from "../../lib/query";
 import { pilotOptions } from "./pilots/api";
-import {
-  Link,
-  useNavigate,
-  useParams,
-  useSearch,
-} from "@tanstack/react-router";
-import { useRef, useState, type ChangeEvent, type DragEvent } from "react";
+import { Link, useNavigate, useParams } from "@tanstack/react-router";
+import { FileButton } from "../../ui/FileButton";
+import { useScreenView } from "./view-store";
+import { useState, type DragEvent } from "react";
 import { create } from "zustand";
 import {
   ROSTER_CHUNK,
@@ -140,7 +137,6 @@ function SourceStep({
   checking: boolean;
   onLoaded: (draft: Draft) => void;
 }) {
-  const fileInput = useRef<HTMLInputElement>(null);
   const [dragging, setDragging] = useState(false);
   const [paste, setPaste] = useState("");
   const [error, setError] = useState("");
@@ -239,11 +235,6 @@ function SourceStep({
     const file = event.dataTransfer.files[0];
     if (file) void readFile(file);
   };
-  const onPick = (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) void readFile(file);
-    event.target.value = "";
-  };
   return (
     <div className={styles.source}>
       <div
@@ -270,23 +261,16 @@ function SourceStep({
             <p>{classScope ? "Excel or CSV" : "Excel, CSV or OneRoster"}</p>
           </>
         )}
-        <input
-          ref={fileInput}
-          className={styles.fileInput}
-          type="file"
-          tabIndex={-1}
-          aria-label="Choose a roster file"
+        <FileButton
+          label="Choose a roster file"
           accept=".xlsx,.csv,.tsv,.txt,.zip,text/csv,application/zip,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-          onChange={onPick}
-        />
-        <Button
+          onFile={(file) => void readFile(file)}
           variant={workbook ? "secondary" : "primary"}
-          aria-busy={busy}
+          busy={busy}
           disabled={busy || checking}
-          onClick={() => fileInput.current?.click()}
         >
           {workbook ? "Choose another file" : "Choose a file"}
-        </Button>
+        </FileButton>
       </div>
       {workbook && (
         <div className={styles.paste}>
@@ -1443,7 +1427,8 @@ export function ImportScreen() {
     class?: string;
     step?: string;
   };
-  const search = useSearch({ strict: false }) as { show?: unknown };
+  // Which review rows show: this screen's view (view-store.ts).
+  const [search, setView] = useScreenView<{ show: string }>();
   const navigate = useNavigate();
   const session = currentSession();
   const org = useQuery(orgOptions(session, orgId)).data;
@@ -1664,15 +1649,7 @@ export function ImportScreen() {
           orgId={orgId}
           show={showAsked ?? "all"}
           onShow={(show) =>
-            void navigate({
-              to: ".",
-              search: ((previous: Record<string, unknown>) => ({
-                ...previous,
-                show: show === "all" ? undefined : show,
-              })) as never,
-              replace: true,
-              resetScroll: false,
-            })
+            setView({ show: show === "all" ? undefined : show })
           }
           onDone={() => (classId ? added() : goTo("done", true))}
         />

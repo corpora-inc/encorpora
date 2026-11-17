@@ -13,6 +13,7 @@ import { useLoggedError } from "../../feedback";
 import { request } from "../../lib/api";
 import { AppError } from "../../lib/AppError";
 import { invalidateAccount, meOptions } from "../../lib/query";
+import { useSession } from "../../lib/session";
 import { Button } from "../../ui/Button";
 import { BirthYearPicker } from "../../ui/Select";
 import { Sheet } from "../../ui/Sheet";
@@ -49,16 +50,15 @@ export const familyAddLabel = (kind: FamilyAdd) =>
 const created = z.object({ name: z.string().optional() }).passthrough();
 
 export function AddChildSheet({
-  session,
   kind,
   open,
   onOpenChange,
 }: {
-  session: AuthSession;
   kind: FamilyAdd;
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }) {
+  const session = useSession();
   const child = kind === "child";
   const [name, setName] = useState("");
   const [year, setYear] = useState("");
@@ -70,7 +70,10 @@ export function AddChildSheet({
   useLoggedError(error);
   const submit = async () => {
     const value = name.trim();
-    const problem = childNameProblem(value, child ? CHILD_NAME_MAX : NICKNAME_MAX);
+    const problem = childNameProblem(
+      value,
+      child ? CHILD_NAME_MAX : NICKNAME_MAX,
+    );
     if (problem) setNameError(problem);
     if (!year) setYearError("Choose the year they were born.");
     if (problem || !year) return;

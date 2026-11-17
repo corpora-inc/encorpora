@@ -1,3 +1,4 @@
+import { seedLearnerScript } from "./lib/learner-seed";
 import { secureChromium } from "../browser-security.mjs";
 /**
  * A realistic, disposable AMP for app-shell browser checks: the real API in
@@ -88,8 +89,8 @@ function startApi(url: string, origin: string, apiPort: number) {
 
 /** An init script that makes `learnerId` this device's current learner
  * (learner-store.ts). */
-const chooseLearner = (learnerId: string) =>
-  `localStorage.setItem('amp.learner', JSON.stringify({state:{learnerId:${JSON.stringify(learnerId)}},version:1}))`;
+const chooseLearner = (accountId: string, learnerId: string) =>
+  seedLearnerScript(accountId, learnerId);
 
 export async function startShellFixture({
   production = false,
@@ -225,7 +226,7 @@ export async function startShellFixture({
       .learnerId;
     if (!chosen) throw Error("The starter made no learner");
     starterLearner = chosen;
-    await context.addInitScript(chooseLearner(starterLearner));
+    await context.addInitScript(chooseLearner(starter.account, starterLearner));
     const page = await context.newPage();
     page.setDefaultTimeout(30000);
     await page.goto(`${origin}/practice`);
@@ -283,9 +284,13 @@ export async function startShellFixture({
         route.fulfill({ json: sessions[state] }),
       );
       if (state === "paid")
-        await context.addInitScript(chooseLearner(jordan.id));
+        await context.addInitScript(
+          chooseLearner(paidParent.account, jordan.id),
+        );
       if (state === "starter")
-        await context.addInitScript(chooseLearner(starterLearner));
+        await context.addInitScript(
+          chooseLearner(starter.account, starterLearner),
+        );
       return context;
     },
     async close() {

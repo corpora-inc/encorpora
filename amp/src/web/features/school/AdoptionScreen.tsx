@@ -4,7 +4,12 @@ import { useQuery } from "@tanstack/react-query";
 import { Disclosure } from "../../ui/Disclosure";
 import { CopyButton } from "./parts";
 import { StatRow, StatTile } from "../../ui/StatTile";
-import { Link, useLocation, useNavigate } from "@tanstack/react-router";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { z } from "zod";
 import type { AdoptionReview } from "../../../schools/adoption-contracts";
@@ -33,6 +38,7 @@ import {
 import { Actions, Lead, PlainPage } from "./PlainPage";
 import { adoptionLabels } from "./adoption-labels";
 import { AdoptionMatching } from "./AdoptionMatching";
+import { adoptPath } from "./paths";
 import styles from "./AdoptionScreen.module.css";
 import plainStyles from "./PlainPage.module.css";
 
@@ -89,21 +95,28 @@ function DistrictInvite({ districtId }: { districtId: string }) {
       <Lead>
         Send this link to the school. You’ll accept here once they approve.
       </Lead>
-      <CopyLink
-        url={address(
-          `/school/adopt?district=${encodeURIComponent(districtId)}`,
-        )}
-      />
+      <CopyLink url={address(`/${adoptPath(districtId)}`)} />
     </PlainPage>
   );
 }
 
-function SchoolHomeRedirect() {
-  const navigate = useNavigate();
-  useEffect(() => {
-    void navigate({ href: "/school", replace: true });
-  }, [navigate]);
-  return <LoadingScreen overlay />;
+/** Nothing to approve, invite or withdraw: the way to the person's schools,
+ * in place (no screen navigates by itself). */
+function NothingToApprove() {
+  return (
+    <PlainPage title="No district approvals">
+      <Lead>There is nothing to approve or invite here.</Lead>
+      <Actions>
+        <Link
+          to="/$"
+          params={{ _splat: "school" }}
+          className={buttonClass("primary")}
+        >
+          Your schools
+        </Link>
+      </Actions>
+    </PlainPage>
+  );
 }
 
 /** The school's side: approve joining a district, then send the approval. */
@@ -131,7 +144,7 @@ function AuthorizeSchool({ districtId }: { districtId?: string }) {
   const open = data.grants.filter((grant) => grant.status === "open");
   // Nothing to approve, invite or withdraw: this page has no job here.
   if (!district && !data.districts.length && !open.length)
-    return <SchoolHomeRedirect />;
+    return <NothingToApprove />;
   const withdraw = (id: string) => {
     setBusy(true);
     setError("");
@@ -220,8 +233,8 @@ function AuthorizeSchool({ districtId }: { districtId?: string }) {
             <li key={item.id}>
               <span>{item.name}</span>
               <Link
-                to="/school/adopt"
-                search={{ district: item.id, manage: 1 }}
+                to="/$"
+                params={{ _splat: adoptPath(item.id, true) }}
                 className={buttonClass("secondary")}
               >
                 Invite a school
@@ -587,9 +600,12 @@ function ReviewDecision({
 export function AdoptionScreen() {
   const session = currentSession(),
     location = useLocation();
-  const query = new URLSearchParams(location.searchStr),
-    parsed = z.uuid().safeParse(query.get("district"));
-  const districtId = parsed.success ? parsed.data : undefined;
+  // The district names the page (`/school/adopt/<district>`: a school
+  // approving; `…/manage`: the district admin's invitation link).
+  const { district } = useParams({ strict: false }) as { district?: string };
+  const named = z.uuid().safeParse(district);
+  const districtId = named.success ? named.data : undefined;
+  const managing = !!districtId && /\/manage\/?$/.test(location.pathname);
   prepareSchoolAdoption();
   const [token, setToken] = useState(schoolAdoptionToken);
   useEffect(
@@ -598,7 +614,7 @@ export function AdoptionScreen() {
   );
   return token && !districtId ? (
     <ReviewSchool token={token} />
-  ) : districtId && query.get("manage") === "1" ? (
+  ) : districtId && managing ? (
     <DistrictInvite districtId={districtId} />
   ) : (
     <AuthorizeSchool districtId={districtId} />
