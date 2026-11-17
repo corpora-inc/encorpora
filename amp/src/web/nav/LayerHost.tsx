@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { useSessionOrNull } from "../lib/session";
 import { useParams } from "@tanstack/react-router";
 import { lazy, Suspense, type ReactNode } from "react";
 // A lesson is its own chunk, with every problem type's title: it opens with
@@ -13,7 +14,6 @@ import { StudentLayer } from "../features/school/classes/StudentLayer";
 import { studentRecordOptions } from "../features/school/classes/teacher-api";
 import { WorkReplaySlot } from "../features/school/classes/WorkReplaySlot";
 import { skillCatalogOptions } from "../lib/learning-view";
-import { sessionOptions } from "../lib/query";
 import { ENTITIES, staffOnly, workParts, type Entity } from "./entities";
 import { useLayers } from "./links";
 import { MOTION_MS, useLayerStore } from "./layer-store";
@@ -294,7 +294,7 @@ function StudentArea({
   onClose: () => void;
   back?: string;
 }) {
-  const session = useQuery(sessionOptions).data ?? null;
+  const session = useSessionOrNull();
   const record = useQuery({
     ...studentRecordOptions(session, student),
     enabled: !!session,
@@ -315,7 +315,7 @@ function StudentArea({
  * name, a skill's or a lesson's title. Nothing while it loads, or for a
  * replayed answer (the X over it is plain). */
 export function useLayerTitle(entity: Entity | undefined) {
-  const session = useQuery(sessionOptions).data ?? null;
+  const session = useSessionOrNull();
   const student = useQuery({
     ...studentRecordOptions(session, entity?.id ?? ""),
     enabled: !!session && entity?.kind === "student",

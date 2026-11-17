@@ -33,15 +33,17 @@ function savedChoices(): Record<string, boolean> {
           ),
         )
       : {};
-  } catch {
+  } catch (error) {
+    console.warn("This device's open grades are not readable", error);
     return {};
   }
 }
 function saveChoices(choices: Record<string, boolean>) {
   try {
     localStorage.setItem(BANDS_KEY, JSON.stringify(choices));
-  } catch {
+  } catch (error) {
     // Kept for this visit only.
+    console.warn("This device keeps no open grades", error);
   }
 }
 const STATE_WORDS: Record<SkillState, string> = {

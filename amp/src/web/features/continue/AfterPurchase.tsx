@@ -3,7 +3,7 @@ import { useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { z } from "zod";
 import { request } from "../../lib/api";
-import { meOptions, refreshMe, sessionOptions } from "../../lib/query";
+import { invalidateAccount, meOptions, sessionOptions } from "../../lib/query";
 import { Button } from "../../ui/Button";
 import { Sheet } from "../../ui/Sheet";
 import { TextField } from "../../ui/TextField";
@@ -86,7 +86,9 @@ function NameSheet({
         z.object({ renamed: z.literal(true) }),
         { token, body: { name: value } },
       );
-      await refreshMe({ accountId, token });
+      // Everything that shows the name (the child's page, Today, the
+      // switcher) reads under the account's key, as a rename in Family does.
+      await invalidateAccount(accountId);
     },
     onSuccess: onDone,
     onError: (failure) => {
@@ -114,8 +116,8 @@ function NameSheet({
         }}
       >
         <p className={styles.sheetText}>
-          {learner.name} is ready to practice. Add their first name or
-          nickname, or keep {learner.name} for now.
+          {learner.name} is ready to practice. Add their first name or nickname,
+          or keep {learner.name} for now.
         </p>
         <TextField
           label="Name"

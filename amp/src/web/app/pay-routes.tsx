@@ -1,32 +1,27 @@
 import {
   createRoute,
   lazyRouteComponent,
-  redirect,
   type AnyRoute,
 } from "@tanstack/react-router";
-import { queryClient, sessionOptions } from "../lib/query";
 import { fundedPrograms } from "../lib/funded-entry";
-import { studentSession } from "../lib/student-device";
-import { nativeRuntime } from "../native-runtime";
-import type { LegacyHop } from "../features/pay/legacy";
+import { queryClient, sessionOptions } from "../lib/query";
+import { requireSignedIn, type GateLocation } from "./sign-in-gate";
 
 /*
  * Paying is an overlay nested under the screen it was opened from
  * (features/pay/address.ts): a child's page, the family's Today, Billing.
- * Its only redirects are the auth gate and one hop from each older pay
- * address (docs/architecture/web-app.md, "Pay"): what an old address
- * carried (a plan, a program) is written into the pay store on the way
- * through and never read from the address again. The hops' logic, like the
- * overlay, loads only when it is opened, never with the app's entry.
+ * Its only hop is the sign-in gate (app/sign-in-gate.ts). Each older pay
+ * address is an app/legacy-aliases.ts row (docs/architecture/web-app.md,
+ * "Pay"): what an old address carried (a plan, a program) is written into
+ * the pay store on the way through and never read from the address again.
+ * The hops' logic, like the overlay, loads only when it is opened, never
+ * with the app's entry.
  */
 
 /** Pay screens are a signed-in adult's, on the web: a school student's
  * device and the store apps never pay here. One hop to sign in. */
-async function payGate() {
-  if (studentSession() || nativeRuntime)
-    throw redirect({ to: "/", replace: true });
-  const session = await queryClient.ensureQueryData(sessionOptions);
-  if (!session) throw redirect({ to: "/sign-in" });
+async function payGate({ location }: { location: GateLocation }) {
+  await requireSignedIn(location, { web: true, adults: true });
 }
 
 const screens = () => import("../features/pay/screens");
@@ -65,39 +60,15 @@ export function payOverlays<Parent extends AnyRoute>(
   ] as const;
 }
 
-/** The older pay addresses, each one hop to a pay overlay. Typed by the
- * root they hang from. */
-export function payRoutes<Root extends AnyRoute>(root: Root) {
-  const legacy = <Path extends string>(path: Path, hop: LegacyHop) =>
-    createRoute({
-      getParentRoute: () => root,
-      path,
-      staticData: { space: "account" },
-      beforeLoad: async ({ params, location }) => {
-        const { legacyHop } = await import("../features/pay/legacy");
-        throw redirect({
-          href: await legacyHop(hop, {
-            params: params as Record<string, string>,
-            search: location.search as Record<string, unknown>,
-            searchStr: location.searchStr,
-            pathname: location.pathname,
-          }),
-          replace: true,
-        });
-      },
-    });
+/** The older pay addresses' paths, for the typed route table only: each is
+ * an app/legacy-aliases.ts row, which hops before any route here loads.
+ * Onboarding still links to them (features/onboarding); once those links
+ * go straight to the pay overlay, delete these. */
+export function payAddresses<Root extends AnyRoute>(root: Root) {
+  const address = <Path extends string>(path: Path) =>
+    createRoute({ getParentRoute: () => root, path });
   return [
-    // "Continue with AMP" for one learner (2026-11), and the pay screen of
-    // its own address for a day: the overlay over the learner's page.
-    legacy("/continue/$learnerId", "continue"),
-    legacy("/pay/$learnerId", "continue"),
-    // The card plan, and the return address of an older learner checkout.
-    legacy("/purchase/annual", "card"),
-    legacy("/purchase/choose", "choose"),
-    legacy("/purchase/funded", "funds"),
-    // A program's bookmarked entry, and where its sign-up returns.
-    ...Object.values(fundedPrograms).map((program) =>
-      legacy(program.path, "program"),
-    ),
+    address("/continue/$learnerId"),
+    ...Object.values(fundedPrograms).map((program) => address(program.path)),
   ] as const;
 }
