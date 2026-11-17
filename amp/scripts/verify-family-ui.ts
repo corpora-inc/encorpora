@@ -2,7 +2,7 @@ import { secureChromium } from "../browser-security.mjs";
 import { fixtureMe } from "./me-fixture";
 import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
-import { chromium as rawChromium, webkit } from "playwright";
+import { chromium as rawChromium, webkit, type Page } from "playwright";
 const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import {
@@ -10,26 +10,38 @@ import {
   type FamilySummary,
 } from "../src/family/contracts.js";
 import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
-/** `AMP_FAMILY_UI_PORT` keeps parallel local runs apart. */
+
+/**
+ * The account's Privacy & data (features/privacy), in a real browser, with
+ * synthetic account answers (scripts/privacy-fixture.tsx). Family Settings
+ * opens it as an overlay; its address, overlay and legacy hops are
+ * verify-privacy-overlay-ui's. Here: at 320 to 1280 px, every panel fits,
+ * never scrolls sideways and keeps 44 px targets; the download asks for a
+ * one-time ticket and posts it without cookies; withdrawing consent takes one
+ * inline confirmation; deleting learning data says what happened; a
+ * confirmed change stays reported when the refresh after it fails; and a
+ * change that finishes after the account changed reports nothing to the
+ * new account.
+ */
 const familyPort = Number(process.env.AMP_FAMILY_UI_PORT ?? 4324);
 const directory = new URL("../artifacts/family-review/", import.meta.url);
 await mkdir(directory, { recursive: true });
 await writeFile(
   new URL("index.html", directory),
-  '<!doctype html><html lang="en"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Family controls verification</title><div id="root"></div><script type="module" src="./entry.tsx"></script></html>',
+  '<!doctype html><html lang="en"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Privacy verification</title><div id="root"></div><script type="module" src="./entry.tsx"></script></html>',
 );
 await writeFile(
   new URL("entry.tsx", directory),
-  `import React from 'react';import {createRoot} from 'react-dom/client';import {FixtureRouter,FamilyFixture} from '../../scripts/family-fixture';import '../../src/web/style.css';import '../../src/web/theme.css';import '../../src/web/premium-controls.css';const root=createRoot(document.getElementById('root')!);const harness={events:[] as string[],render(token:string,identity=token){root.render(<FixtureRouter path="/account/billing"><FamilyFixture token={token} identity={identity} events={harness.events}/></FixtureRouter>);},unmount(){root.render(<p>Different account screen</p>)}};(window as any).familyHarness=harness;harness.render('ui-fixture');`,
+  `import React from 'react';import {createRoot} from 'react-dom/client';import {PrivacyFixture} from '../../scripts/privacy-fixture';import {queryClient} from '../../src/web/lib/query';import '../../src/web/style.css';import '../../src/web/theme.css';const root=createRoot(document.getElementById('root')!);const harness={render(token:string,identity=token){queryClient.clear();root.render(<PrivacyFixture key={identity} token={token} identity={identity}/>);},unmount(){root.render(<p>Different account screen</p>)}};(window as any).privacyHarness=harness;harness.render('ui-fixture');`,
 );
-let failExport = false,
-  exportPosts = 0;
+let exportPosts = 0;
 const ticket = "a".repeat(43);
 const vite = await createServer({
   plugins: [
     {
       name: "family-download-fixture",
       configureServer(server) {
+        // The browser's own form POST (features/privacy/export.ts).
         server.middlewares.use(async (request, response, next) => {
           if (request.url !== "/api/v1/family/export") return next();
           exportPosts++;
@@ -38,17 +50,12 @@ const vite = await createServer({
           let body = "";
           for await (const chunk of request) body += chunk;
           assert.equal(body, `ticket=${ticket}`);
-          if (failExport) {
-            response.writeHead(401, { "Content-Type": "application/json" });
-            response.end(JSON.stringify({ error: "sign_in_required" }));
-          } else {
-            response.writeHead(200, {
-              "Content-Type": "application/x-ndjson",
-              "Content-Disposition":
-                "attachment; filename=amp-family-fixture.ndjson",
-            });
-            response.end('{"type":"complete"}\n');
-          }
+          response.writeHead(200, {
+            "Content-Type": "application/x-ndjson",
+            "Content-Disposition":
+              "attachment; filename=amp-family-fixture.ndjson",
+          });
+          response.end('{"type":"complete"}\n');
         });
       },
     },
@@ -63,509 +70,264 @@ const vite = await createServer({
   },
 });
 await vite.listen();
+const url = `http://127.0.0.1:${familyPort}/artifacts/family-review/index.html`;
 const browser = await (
   process.env.AMP_BROWSER === "webkit" ? webkit : chromium
 ).launch({ headless: true });
+const NOTICE = {
+  version: "fixture",
+  operator: {
+    name: "Corpora",
+    address: "1 Main St",
+    telephone: "555-0100",
+    email: "privacy@example.test",
+  },
+  privacyUrl: "https://example.test/privacy",
+  childData: [],
+  processors: [],
+  reviewAndDeletion: "Review or delete any time.",
+  pendingContactDays: 7,
+  withdrawnEvidenceDays: 30,
+  evidenceRetentionPurpose: "Proof of consent.",
+};
 try {
-  const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
-  let family: FamilySummary = {
-    consent: {
-      status: "active",
-      policyVersion: "fixture",
-      recordedAt: "2026-01-01T00:00:00.000Z",
-      withdrawnAt: null,
-    },
-    learners: [
-      {
-        id: "fixture",
-        name: "Sample learner",
-        deletedAt: null,
-        access: [
-          {
-            channel: "stripe",
-            status: "active",
-            startsAt: "2026-01-01T00:00:00.000Z",
-            endsAt: "2027-01-01T00:00:00.000Z",
-          },
-        ],
-        stripeLinked: true,
-      },
-    ],
-    retained: retentionNotice,
-  };
-  const failures: string[] = [];
-  page.on("pageerror", (e) => failures.push(e.message));
-  let failNextSummary = false,
-    holdNextSummary = false;
-  let held!: () => void, releaseSummary!: () => void;
-  let summaryHeld = Promise.resolve(),
-    summaryRelease = Promise.resolve();
-  await page.route("**/api/v1/me", async (route) => {
-    if (failNextSummary) {
-      failNextSummary = false;
-      return route.fulfill({
-        status: 503,
-        json: { error: "family_service_unavailable" },
-      });
-    }
-    const snapshot = structuredClone(family);
-    if (holdNextSummary) {
-      holdNextSummary = false;
-      held();
-      await summaryRelease;
-    }
-    return route.fulfill({ json: fixtureMe(snapshot) });
+  const page = await browser.newPage({
+    viewport: { width: 390, height: 844 },
+    acceptDownloads: true,
   });
-  await page.route(
-    "**/api/v1/family/learners/fixture/rename",
-    async (route) => {
-      family = {
-        ...family,
-        learners: family.learners.map((l) => ({
-          ...l,
-          name: route.request().postDataJSON().name,
-        })),
-      };
-      await route.fulfill({ json: { renamed: true } });
-    },
-  );
-  await page.route("**/api/v1/family/consent/withdraw", async (route) => {
-    family = {
-      ...family,
+  page.setDefaultTimeout(15000);
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  const family = (identity: string, consent: string): FamilySummary =>
+    ({
       consent: {
-        ...family.consent,
-        status: "withdrawn",
-        withdrawnAt: new Date().toISOString(),
+        status: consent,
+        policyVersion: "fixture",
+        recordedAt: "2026-01-01T00:00:00.000Z",
+        withdrawnAt:
+          consent === "withdrawn" ? "2026-02-01T00:00:00.000Z" : null,
       },
-    };
-    await route.fulfill({ json: { withdrawn: true } });
-  });
-  await page.route(
-    /\/api\/v1\/family\/(?:learners\/fixture\/)?delete-learning-data$/,
-    async (route) => {
-      assert.equal(
-        route.request().postDataJSON().confirmation,
-        "delete-learning-data",
-      );
-      family = {
-        ...family,
-        learners: family.learners.map((l) => ({
-          ...l,
-          name: "Deleted learner",
-          deletedAt: new Date().toISOString(),
-        })),
-      };
-      await route.fulfill({
+      learners: [
+        {
+          id: `${identity}-child`,
+          name: identity === "other" ? "New account learner" : "Sample learner",
+          deletedAt: null,
+          access: [],
+          stripeLinked: false,
+        },
+      ],
+      retained: retentionNotice,
+    }) as unknown as FamilySummary;
+  let consent = "active";
+  let failMe = false;
+  let failTicket = false;
+  let hold: Promise<void> | null = null;
+  const posted: string[] = [];
+  await page.route("**/api/**", async (route) => {
+    const request = route.request();
+    const path = new URL(request.url()).pathname;
+    const identity =
+      request.headers().authorization === "Bearer other" ? "other" : "parent";
+    if (path === "/api/v1/events" || path === "/api/v1/events/context")
+      return route.fulfill({ status: 204, body: "" });
+    if (path === "/api/v1/me")
+      return failMe
+        ? route.fulfill({ status: 503, json: { error: "unavailable" } })
+        : route.fulfill({
+            json: fixtureMe(family(identity, consent), identity),
+          });
+    if (path === "/api/v1/consent")
+      return route.fulfill({
         json: {
-          requestId: "fixture",
-          deletedLearners: 1,
-          retainedBillingReferences: 1,
-          billingManagementRequired: true,
-          consentWithdrawn: false,
+          consentActive: consent === "active",
+          available: true,
+          notice: NOTICE,
+          noticeDigest: "b".repeat(64),
+          request: null,
         },
       });
-    },
-  );
-  let holdTicket = false;
-  let releaseTicket!: () => void, ticketHeld!: () => void;
-  let ticketRelease = Promise.resolve(),
-    ticketWaiting = Promise.resolve();
-  await page.route("**/api/v1/family/export-ticket", async (route) => {
-    if (holdTicket) {
-      holdTicket = false;
-      ticketHeld();
-      await ticketRelease;
+    if (path === "/api/v1/family/export-ticket")
+      return failTicket
+        ? route.fulfill({ status: 401, json: { error: "sign_in_required" } })
+        : route.fulfill({ json: { ticket } });
+    if (path === "/api/v1/family/consent/withdraw") {
+      posted.push(`withdraw:${identity}`);
+      if (hold) await hold;
+      consent = "withdrawn";
+      return route.fulfill({ json: { withdrawn: true } });
     }
-    await route.fulfill({ json: { ticket } });
+    if (path === "/api/v1/family/delete-learning-data") {
+      posted.push(`delete:${identity}`);
+      return route.fulfill({
+        json: {
+          deletedLearners: 1,
+          retainedBillingReferences: 0,
+          billingManagementRequired: false,
+          consentWithdrawn: true,
+        },
+      });
+    }
+    if (path === "/api/v1/family/export") return route.fallback();
+    return route.fulfill({ json: {} });
   });
-  await page.goto(
-    `http://127.0.0.1:${familyPort}/artifacts/family-review/index.html`,
-  );
-  await page
-    .getByRole("heading", { name: "Sample learner", exact: true })
-    .waitFor();
-  // The Account group's tabs: Sign-in, Billing and Privacy, links in the
-  // app frame's bar. Each child's name, year and learning data are the
-  // Family space's (its child pages), not the account's.
-  const tabNames: Record<string, string> = {
-    Access: "Billing",
-    Privacy: "Privacy",
-  };
-  const section = async (name: string) => {
-    await page
-      .getByRole("navigation", { name: "Account" })
-      .getByRole("link", { name: tabNames[name] ?? name, exact: true })
-      .click();
-  };
-  const billingRows = () =>
-    page.getByRole("list", { name: "What each learner holds" });
-  // Privacy → Delete learning data: its one action reviews the deletion.
-  const reviewDeletion = async () => {
-    await section("Privacy");
-    await page
-      .getByRole("button", { name: "Delete learning data", exact: false })
-      .click();
-    await page
-      .getByRole("button", { name: "Review deletion", exact: true })
-      .click();
-  };
-  const privacy = async (name: string) => {
-    await section("Privacy");
-    await page.getByRole("button", { name, exact: false }).click();
-    // Opening a privacy view moves focus to the screen's title.
-    await page.waitForFunction(() =>
-      document.activeElement?.matches("[data-account-body] h1"),
-    );
-  };
-  for (const [width, height] of [
-    [1280, 844],
-    [390, 844],
-    [320, 568],
-    [1024, 768],
-    [844, 390],
-  ]) {
-    await page.setViewportSize({ width, height });
-    // No horizontal page scroll; on failure, name what sticks out.
-    const overflow = await page.evaluate(() =>
-      document.documentElement.scrollWidth <= innerWidth
-        ? null
-        : [...document.querySelectorAll("body *")]
-            .filter(
-              (node) => node.getBoundingClientRect().right > innerWidth + 0.5,
-            )
-            .slice(0, 5)
-            .map(
-              (node) =>
-                `${node.tagName}.${node.className} ${Math.round(node.getBoundingClientRect().right)}`,
-            ),
-    );
-    assert.equal(overflow, null, `overflow at ${width}: ${overflow}`);
-    for (const name of ["Access", "Privacy"]) {
-      await section(name);
-      if (isPhoneLandscape([width, height]))
-        await assertPhoneLandscapeSmoke(page, `Family ${name}`);
-      else
-        assert.ok(
-          await page.evaluate(
-            () => document.documentElement.scrollHeight <= innerHeight + 1,
-          ),
-          `Parent workspace must fit ${width}×${height}`,
-        );
-      await page.screenshot({
-        path: new URL(`family-${name}-${width}.png`, directory).pathname,
-      });
-    }
-    await section("Access");
+  const panel = (summary: string) =>
+    page.locator("details").filter({
+      has: page.locator("summary", { hasText: summary }),
+    });
+  async function open(summary: string) {
+    const fold = panel(summary);
+    await fold.waitFor();
+    if (!(await fold.evaluate((node) => (node as HTMLDetailsElement).open)))
+      await fold.locator("summary").click();
   }
-  // Hover keeps every button readable: a light button never takes the
-  // primary fill while its text stays dark.
-  const luminance = (css: string) => {
-    const [r, g, b] = css
-      .match(/[\d.]+/g)!
-      .slice(0, 3)
-      .map((v) => {
-        const c = Number(v) / 255;
-        return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
-      });
-    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
-  };
-  for (const name of ["Access", "Privacy"]) {
-    await section(name);
-    for (const button of await page.locator("main button:visible").all()) {
-      if (await button.isDisabled()) continue;
-      await button.hover();
-      const [label, text, fill, alpha] = await button.evaluate((el) => {
-        const style = getComputedStyle(el);
-        return [
-          el.textContent ?? "",
-          style.color,
-          style.backgroundColor,
-          style.backgroundColor.startsWith("rgba") ? style.backgroundColor : "",
-        ];
-      });
-      if (/,\s*0\)$/.test(alpha)) continue; // transparent: text sits on the page
-      const [hi, lo] = [luminance(text), luminance(fill)].sort((a, b) => b - a);
-      const ratio = (hi + 0.05) / (lo + 0.05);
+  async function fits(label: string) {
+    const size = page.viewportSize()!;
+    await page.screenshot({
+      path: new URL(`${label}.png`, directory).pathname,
+      fullPage: true,
+    });
+    if (isPhoneLandscape(size)) return assertPhoneLandscapeSmoke(page, label);
+    const overflow = await page.evaluate(() =>
+      document.documentElement.scrollWidth > innerWidth
+        ? [...document.querySelectorAll<HTMLElement>("body *")]
+            .filter((node) => node.getBoundingClientRect().right > innerWidth)
+            .map((node) => node.tagName + "." + node.className)
+            .slice(0, 3)
+            .join(", ")
+        : null,
+    );
+    assert.equal(overflow, null, `${label}: scrolls sideways (${overflow})`);
+    for (const target of await page
+      .locator("[data-privacy-harness] button, [data-privacy-harness] summary")
+      .filter({ visible: true })
+      .all()) {
+      const box = await target.boundingBox();
       assert.ok(
-        ratio >= 4.5,
-        `hovered "${label}" contrast ${ratio.toFixed(2)}`,
+        box && box.height >= 44,
+        `${label}: “${await target.innerText()}” is ${box?.height}px tall`,
       );
     }
   }
-  await section("Access");
-  family = {
-    ...family,
-    learners: family.learners.map((learner) => ({
-      ...learner,
-      name: "W".repeat(80),
-    })),
-  };
-  await page.reload();
-  await page.setViewportSize({ width: 320, height: 568 });
-  await reviewDeletion();
-  const confirmation = page.getByRole("dialog");
-  await confirmation.waitFor();
-  assert.ok(
-    await confirmation.evaluate(
-      (node) => node.scrollWidth <= node.clientWidth + 1,
-    ),
-  );
-  const confirmBounds = await confirmation
-    .getByRole("button", { name: "Delete learning data", exact: true })
-    .boundingBox();
-  assert.ok(
-    confirmBounds && confirmBounds.y + confirmBounds.height <= 568,
-    "Long-name confirmation keeps actions visible",
-  );
-  await page.screenshot({
-    path: new URL("family-long-name-confirmation-320.png", directory).pathname,
-  });
-  await page.keyboard.press("Escape");
+  async function fresh(identity = "parent") {
+    await page.goto(url);
+    await page.evaluate(
+      (who) => (window as any).privacyHarness.render(who),
+      identity,
+    );
+    await panel("Download your data").waitFor();
+  }
+
+  // Every panel at every width.
+  for (const size of [
+    { width: 320, height: 568 },
+    { width: 390, height: 844 },
+    { width: 768, height: 1024 },
+    { width: 1024, height: 768 },
+    { width: 844, height: 390 },
+    { width: 1280, height: 900 },
+  ])
+    for (const scheme of ["light", "dark"] as const) {
+      await page.setViewportSize(size);
+      await page.emulateMedia({ colorScheme: scheme });
+      await fresh();
+      for (const summary of [
+        "Learning permission",
+        "Download your data",
+        "Delete learning data",
+        "Data retention",
+        "Policies & documents",
+      ]) {
+        await open(summary);
+        await fits(
+          `${summary.split(" ")[0]!.toLowerCase()}-${size.width}-${scheme}`,
+        );
+      }
+    }
+
+  // The download: a ticket, then the browser's own POST with no cookie.
   await page.setViewportSize({ width: 390, height: 844 });
-  // Closing the confirmation returns focus to what opened it.
-  await reviewDeletion();
-  await page.getByRole("dialog").waitFor();
-  await page.keyboard.press("Escape");
-  await page.waitForFunction(
-    () => document.activeElement?.textContent === "Review deletion",
-  );
-  await privacy("Download your records");
-  await page.getByRole("button", { name: "Privacy", exact: true }).click();
-  await page.waitForFunction(
-    () =>
-      document.activeElement?.getAttribute("data-privacy-choice") === "export",
-  );
-  await page
-    .getByRole("button", { name: "Download your records", exact: false })
-    .click();
+  await fresh();
+  await open("Download your data");
   const downloaded = page.waitForEvent("download");
   await page.getByRole("button", { name: "Download family data" }).click();
   assert.match((await downloaded).suggestedFilename(), /\.ndjson$/);
   assert.equal(exportPosts, 1);
-  assert.match(page.url(), /family-review/);
-  failExport = true;
+  await page
+    .getByText("Download requested. Check your browser’s downloads.")
+    .waitFor();
+  // A refused ticket says so in the panel's reserved line.
+  failTicket = true;
   await page.getByRole("button", { name: "Download family data" }).click();
+  await panel("Download your data").getByRole("alert").waitFor();
+  assert.equal(exportPosts, 1, "no POST without a ticket");
+  failTicket = false;
+
+  // Withdrawing consent: one inline confirmation, then one request. The
+  // refresh after it fails, and the withdrawal still stands.
+  await open("Learning permission");
+  await page.getByRole("button", { name: "Withdraw consent" }).click();
+  await page.getByRole("button", { name: "Keep consent" }).click();
+  assert.deepEqual(posted, []);
+  await page.getByRole("button", { name: "Withdraw consent" }).click();
+  failMe = true;
   await page
-    .getByRole("alert")
-    .filter({ hasText: "The download could not be completed" })
-    .waitFor();
-  assert.match(page.url(), /family-review/);
-  failExport = false;
-  // The message overlays the screen's foot until dismissed.
-  await page.getByRole("button", { name: "Dismiss message" }).click();
-  await privacy("Learning consent");
-  await page
-    .getByRole("button", { name: "Withdraw consent", exact: true })
+    .locator("[data-consent-confirm]")
+    .getByRole("button", { name: "Withdraw consent" })
     .click();
-  await page
-    .getByRole("dialog")
-    .getByRole("button", { name: "Withdraw consent", exact: true })
-    .click();
-  await page
-    .getByText("Consent is withdrawn. New learning activity is paused for children under 13.", {
-      exact: true,
-    })
-    .waitFor();
-  await section("Access");
+  await page.locator("[data-consent-confirm]").waitFor({ state: "detached" });
+  assert.deepEqual(posted, ["withdraw:parent"]);
   assert.equal(
-    await page
-      .getByRole("button", { name: /^Manage the plan for / })
-      .isVisible(),
-    true,
-  );
-  await reviewDeletion();
-  await page
-    .getByRole("dialog")
-    .getByRole("button", { name: "Delete learning data", exact: true })
-    .click();
-  await section("Access");
-  await page
-    .getByText("Learning data deleted. Billing records kept.")
-    .waitFor();
-  await section("Access");
-  assert.equal(
-    await page
-      .getByRole("button", { name: /^Manage the plan for / })
-      .isVisible(),
-    true,
-  );
-  // With every child's learning data deleted, the export is the account's.
-  await privacy("Download your records");
-  assert.equal(
-    await page.getByRole("button", { name: "Download your data" }).isVisible(),
-    true,
-  );
-  // A confirmed privacy mutation stays successful even when its refresh fails.
-  // Consent is offered while the family has a child (FamilyCenter
-  // privacyChoices), so the child is back.
-  family = {
-    ...family,
-    consent: { ...family.consent, status: "active", withdrawnAt: null },
-    learners: family.learners.map((l) => ({
-      ...l,
-      name: "Sample learner",
-      deletedAt: null,
-    })),
-  };
-  await page.reload();
-  await billingRows()
-    .getByRole("heading", { name: "Sample learner", exact: true })
-    .waitFor();
-  await privacy("Learning consent");
-  await page
-    .getByRole("button", { name: "Withdraw consent", exact: true })
-    .waitFor();
-  await page
-    .getByRole("button", { name: "Withdraw consent", exact: true })
-    .click();
-  failNextSummary = true;
-  await page
-    .getByRole("dialog")
-    .getByRole("button", { name: "Withdraw consent", exact: true })
-    .click();
-  await page
-    .getByText(
-      "Your change was saved, but refreshed family details could not be loaded. Try refreshing; do not repeat the deletion.",
-      { exact: true },
-    )
-    .waitFor();
-  assert.match(
-    await page.locator(".family-notice").innerText(),
-    /Consent withdrawn/,
-  );
-  assert.ok(
-    (
-      await page.evaluate(
-        () => (window as any).familyHarness.events as string[],
-      )
-    ).includes("invalidated"),
-  );
-  assert.equal(
-    await page
-      .getByText("Learning data deleted. Billing records kept.")
+    await panel("Learning permission")
+      .getByRole("alert")
+      .filter({ hasText: "Consent wasn’t withdrawn" })
       .count(),
     0,
+    "a confirmed withdrawal is not reported as failed when its refresh fails",
   );
-  for (const mode of ["unmount", "switch"]) {
-    family = {
-      ...family,
-      consent: { ...family.consent, status: "active", withdrawnAt: null },
-      learners: family.learners.map((l) => ({
-        ...l,
-        name: "Old account learner",
-        deletedAt: null,
-      })),
-    };
-    await page.reload();
-    await billingRows().waitFor();
-    // A confirmed change whose refresh is still out when the account goes
-    // away (or changes) must not report back.
-    await privacy("Learning consent");
-    summaryHeld = new Promise((resolve) => {
-      held = resolve;
-    });
-    summaryRelease = new Promise((resolve) => {
-      releaseSummary = resolve;
-    });
-    await page
-      .getByRole("button", { name: "Withdraw consent", exact: true })
-      .click();
-    holdNextSummary = true;
-    await page
-      .getByRole("dialog")
-      .getByRole("button", { name: "Withdraw consent", exact: true })
-      .click();
-    await summaryHeld;
-    if (mode === "unmount")
-      await page.evaluate(() => (window as any).familyHarness.unmount());
-    else {
-      family = {
-        ...family,
-        learners: family.learners.map((l) => ({
-          ...l,
-          name: "New account learner",
-        })),
-      };
-      await page.evaluate(() =>
-        (window as any).familyHarness.render("new-account-token"),
-      );
-      // The new account's own family, on Billing (the harness keeps the
-      // address it was on).
-      await section("Access");
-      await billingRows()
-        .getByRole("heading", { name: "New account learner", exact: true })
-        .waitFor();
-    }
-    const before = await page.evaluate(
-      () => (window as any).familyHarness.events.length as number,
-    );
-    releaseSummary();
-    await page.waitForTimeout(100);
-    assert.equal(
-      await page.evaluate(
-        () => (window as any).familyHarness.events.length as number,
-      ),
-      before,
-      `Late refresh must not notify parent after ${mode}`,
-    );
-    assert.equal(
-      await page
-        .locator(".family-notice")
-        .filter({ hasText: /Consent withdrawn/ })
-        .count(),
-      0,
-    );
-  }
-  for (const mode of ["switch", "unmount"]) {
-    await page.reload();
-    await billingRows().waitFor();
-    await privacy("Download your records");
-    ticketWaiting = new Promise((resolve) => {
-      ticketHeld = resolve;
-    });
-    ticketRelease = new Promise((resolve) => {
-      releaseTicket = resolve;
-    });
-    holdTicket = true;
-    await page.getByRole("button", { name: "Download family data" }).click();
-    await ticketWaiting;
-    const before: number = exportPosts;
-    await page.evaluate(
-      (mode) =>
-        mode === "switch"
-          ? (window as any).familyHarness.render("different-account")
-          : (window as any).familyHarness.unmount(),
-      mode,
-    );
-    await page.waitForTimeout(50);
-    releaseTicket();
-    await page.waitForTimeout(150);
-    assert.equal(
-      exportPosts,
-      before,
-      `Late ticket must not submit after ${mode}`,
-    );
-  }
-  // A renewable token does not change the parent identity or discard a confirmed action.
-  await page.reload();
-  await billingRows().waitFor();
-  await page.evaluate(() =>
-    (window as any).familyHarness.render("first-token", "same-parent"),
+  failMe = false;
+  await fits("withdrawn-390-light");
+
+  // Deleting learning data says what happened.
+  await open("Delete learning data");
+  await page.getByRole("button", { name: "Delete learning data" }).click();
+  await page.locator("[data-delete-done]").waitFor();
+  assert.deepEqual(posted, ["withdraw:parent", "delete:parent"]);
+  await fits("deleted-390-light");
+
+  // A withdrawal that finishes after the account changed reports nothing
+  // to the new account: its own learner, its own consent.
+  consent = "active";
+  posted.length = 0;
+  await fresh();
+  await open("Learning permission");
+  let release!: () => void;
+  hold = new Promise((resolve) => (release = resolve));
+  await page.getByRole("button", { name: "Withdraw consent" }).click();
+  await page
+    .locator("[data-consent-confirm]")
+    .getByRole("button", { name: "Withdraw consent" })
+    .click();
+  await expectSoon(page, () => posted.length === 1);
+  await page.evaluate(() => (window as any).privacyHarness.render("other"));
+  release();
+  hold = null;
+  await panel("Download your data").waitFor();
+  assert.equal(
+    await page.getByRole("alert").count(),
+    0,
+    "the first account's withdrawal is not reported to the new account",
   );
-  await billingRows().waitFor();
-  await privacy("Download your records");
-  await page.evaluate(() =>
-    (window as any).familyHarness.render("renewed-token", "same-parent"),
-  );
-  await page.getByRole("button", { name: "Download family data" }).waitFor();
-  const renewedDownload = page.waitForEvent("download");
-  await page.getByRole("button", { name: "Download family data" }).click();
-  await renewedDownload;
-  assert.deepEqual(failures, []);
+  assert.equal(await page.locator("[data-consent-confirm]").count(), 0);
+  assert.deepEqual(errors, []);
   console.log(
-    "Family UI: account tabs, confirmation focus, streamed browser download, withdrawal, deletion and retained billing passed at 320/390/1280px.",
+    "Privacy & data verified: panels at every width, download, consent, deletion and account changes.",
   );
 } finally {
   await browser.close();
   await vite.close();
+}
+
+async function expectSoon(page: Page, ready: () => boolean) {
+  for (let i = 0; i < 100 && !ready(); i++) await page.waitForTimeout(50);
+  assert.ok(ready(), "the request was sent");
 }

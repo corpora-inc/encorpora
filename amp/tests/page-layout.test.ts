@@ -145,10 +145,6 @@ const PHASE_2: Allowed = {
     why: "a parent's progress link",
   },
   "native-session.css": { widths: ["640px"], why: "the native session screen" },
-  "payment-history.css": {
-    widths: ["760px"],
-    why: "the native app's payment records",
-  },
   "practice-tablet.css": { widths: ["680px"], why: "practice on a tablet" },
   "practice.css": {
     widths: [
