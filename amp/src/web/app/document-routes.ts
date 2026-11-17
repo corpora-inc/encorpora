@@ -99,6 +99,7 @@ export const documentRoutePatterns: readonly string[] = [
   "^/school/[^/]+/classes/[^/]+/experience/?$",
   "^/school/[^/]+/classes/[^/]+/gradebook/?$",
   "^/school/[^/]+/classes/[^/]+/import/?$",
+  "^/school/[^/]+/classes/[^/]+/import/[^/]+/?$",
   "^/school/[^/]+/classes/[^/]+/map/?$",
   "^/school/[^/]+/classes/[^/]+/map/[^/]+/?$",
   "^/school/[^/]+/classes/[^/]+/map/[^/]+/work/[^/]+/?$",
@@ -112,6 +113,7 @@ export const documentRoutePatterns: readonly string[] = [
   "^/school/[^/]+/classes/[^/]+/workbooks/[^/]+/?$",
   "^/school/[^/]+/experience/?$",
   "^/school/[^/]+/import/?$",
+  "^/school/[^/]+/import/[^/]+/?$",
   "^/school/[^/]+/integrations/?$",
   "^/school/[^/]+/license/?$",
   "^/school/[^/]+/privacy/?$",
@@ -125,12 +127,14 @@ export const documentRoutePatterns: readonly string[] = [
   "^/school/[^/]+/students/[^/]+/?$",
   "^/school/[^/]+/students/[^/]+/work/[^/]+/?$",
   "^/school/[^/]+/year/?$",
+  "^/school/[^/]+/year/[^/]+/?$",
   "^/school/adopt/?$",
   "^/school/connect/?$",
   "^/school/invite/?$",
   "^/school/new/?$",
   "^/school/start/?$",
   "^/school/start/school/?$",
+  "^/school/start/students/?$",
   "^/schools/?$",
   "^/schools/continue/?$",
   "^/schools/scope-and-sequence/?$",
@@ -149,14 +153,23 @@ export const documentRoutePatterns: readonly string[] = [
   "^/start/purchase/?$",
   "^/start/verify-email/?$",
   "^/try/?$",
-  "^/try/.*/?$"
+  "^/try/.*/?$",
 ];
-const known = documentRoutePatterns.map(pattern => new RegExp(pattern));
-export const knownDocumentPath = (path: string) => known.some(pattern => pattern.test(path));
+const known = documentRoutePatterns.map((pattern) => new RegExp(pattern));
+export const knownDocumentPath = (path: string) =>
+  known.some((pattern) => pattern.test(path));
 
 /** Analytics-visible auth and purchase screens are deliberately not indexable. */
-export const publicDocumentPaths = ["/", "/schools", "/schools/trust", "/schools/scope-and-sequence"] as const;
+export const publicDocumentPaths = [
+  "/",
+  "/schools",
+  "/schools/trust",
+  "/schools/scope-and-sequence",
+] as const;
 export const indexableDocumentPath = (path: string) => {
   const clean = path.replace(/\/$/, "") || "/";
-  return (publicDocumentPaths as readonly string[]).includes(clean) || /^\/pathways(?:\/[^/]+)?$/.test(clean);
+  return (
+    (publicDocumentPaths as readonly string[]).includes(clean) ||
+    /^\/pathways(?:\/[^/]+)?$/.test(clean)
+  );
 };

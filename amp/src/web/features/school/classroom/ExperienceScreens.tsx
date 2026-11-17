@@ -26,11 +26,7 @@ export function ClassExperienceScreen() {
     >
       <PageHead title="Student experience" />
       {experience.data ? (
-        <ExperienceSettings
-          session={session}
-          scope={scope}
-          experience={experience.data}
-        />
+        <ExperienceSettings scope={scope} experience={experience.data} />
       ) : (
         <EmptyState
           title="These settings didn’t load"
@@ -69,11 +65,7 @@ export function ClassExperienceSection({
         {family ? "What children see" : "Student experience"}
       </h2>
       {experience.data ? (
-        <ExperienceSettings
-          session={session}
-          scope={scope}
-          experience={experience.data}
-        />
+        <ExperienceSettings scope={scope} experience={experience.data} />
       ) : experience.isPending ? (
         <Loading>Loading these settings…</Loading>
       ) : (
@@ -105,11 +97,7 @@ export function OrgExperienceSection({ orgId }: { orgId: string }) {
     >
       <h2 id="student-experience">Student experience</h2>
       {experience.data ? (
-        <ExperienceSettings
-          session={session}
-          scope={scope}
-          experience={experience.data}
-        />
+        <ExperienceSettings scope={scope} experience={experience.data} />
       ) : experience.isPending ? (
         <Loading>Loading these settings…</Loading>
       ) : (

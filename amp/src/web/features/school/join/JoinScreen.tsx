@@ -1,3 +1,4 @@
+import { reportError } from "../../../lib/report-error";
 import { useNavigate, useSearch } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -65,7 +66,12 @@ export function JoinScreen() {
         params: { code: formatJoinCode(value) },
       });
     } catch (failure) {
-      fail((failure as Error).message);
+      fail(
+        reportError(failure, {
+          doing: "open a class code",
+          fallback: "That code didn’t open. Check it and try again.",
+        }),
+      );
       setBusy(false);
       // Whatever's typed next replaces the code that didn't work.
       requestAnimationFrame(() => {
@@ -96,7 +102,12 @@ export function JoinScreen() {
           });
         } else await finish(await signInWithCard(read.token));
       } catch (failure) {
-        fail((failure as Error).message);
+        fail(
+          reportError(failure, {
+            doing: "open a class code",
+            fallback: "That code didn’t open. Check it and try again.",
+          }),
+        );
         setBusy(false);
       }
     })();
@@ -105,7 +116,7 @@ export function JoinScreen() {
 
   if (finishingSignIn()) return <LoadingScreen />;
   return (
-    <JoinFrame>
+    <JoinFrame step="code">
       <div className={styles.column}>
         <h1 className={styles.title}>
           {scanning ? "Hold up your card" : "Type your code"}

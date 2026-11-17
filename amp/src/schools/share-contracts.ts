@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { strandResource, studentLevelResource } from "./teacher-contracts.js";
+import { strandResource, studentLevelResource } from "./today-contracts.js";
 
 /** The API shapes of the public school pages and a family's progress link.
  * Shared by the routes and their screens. */

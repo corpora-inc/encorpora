@@ -258,15 +258,13 @@ export function TodayScreen() {
               />
             )}
           </header>
-          {signedIn && holder && (
-            <FamilyNotice session={account} me={signedIn} />
-          )}
+          {signedIn && holder && <FamilyNotice me={signedIn} />}
           {family ? (
             <FamilyToday
               data={data}
               place={place}
               code={code ?? null}
-              session={account}
+
               me={signedIn}
               secondParent={holder ? secondParent.data : undefined}
             />

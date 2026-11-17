@@ -15,7 +15,7 @@ import { meOptions, refreshMe, sessionOptions } from "../../lib/query";
 import { closeTo } from "../../lib/return-to";
 import { ROOT } from "../../nav/root";
 import { modeFrom, modePlace, modeReturnLabel } from "./practice-mode";
-import { classesOptions } from "../school/api";
+import { classesOptions } from "../school/core-api";
 
 /* Practice profiles (docs/families.md): the adult practicing as someone else.
    Every change refreshes `/me`, the one store the switcher, the drawer and

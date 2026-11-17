@@ -1,3 +1,4 @@
+import { jsonOrNull } from "../../../lib/report-error";
 import { workbookStackFilename } from "../../../../workbook/filename";
 import { create } from "zustand";
 import {
@@ -144,7 +145,7 @@ async function fetchPdf(
   if (response.status === 401 && signedOut())
     return new Promise<never>(() => {});
   if (!response.ok) {
-    const data: unknown = await response.json().catch(() => null);
+    const data: unknown = await jsonOrNull(response);
     const code =
       data && typeof data === "object" && "error" in data
         ? String(data.error)

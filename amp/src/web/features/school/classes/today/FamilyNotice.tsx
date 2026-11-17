@@ -1,19 +1,14 @@
+import { useSession } from "../../../../lib/session";
 import { z } from "zod";
 import type { SignedInMe } from "../../../../../account/contracts";
-import type { AuthSession } from "../../../../auth";
 import { request } from "../../../../lib/api";
 import { meKey, queryClient } from "../../../../lib/query";
 import styles from "./Today.module.css";
 
 /** For a family from before families had classes: one line on how the
  * children sign in now, gone on every device once dismissed. */
-export function FamilyNotice({
-  session,
-  me,
-}: {
-  session: AuthSession;
-  me: SignedInMe;
-}) {
+export function FamilyNotice({ me }: { me: SignedInMe }) {
+  const session = useSession();
   const held = me.familyClass;
   if (!held?.notice) return null;
   const dismiss = () => {

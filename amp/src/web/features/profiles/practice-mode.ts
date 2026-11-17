@@ -14,7 +14,7 @@ import { hasHome } from "../onboarding/guard";
 import { returnTarget } from "../../lib/return-to";
 import { meOptions, queryClient, sessionOptions } from "../../lib/query";
 import { studentSession } from "../../lib/student-device";
-import { classesOptions, preload } from "../school/api";
+import { classesOptions, preload } from "../school/core-api";
 
 /*
  * Practicing as someone else is a mode nested in a place (docs/design/ia.md,

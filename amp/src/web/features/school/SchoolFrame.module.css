@@ -110,33 +110,20 @@
   line-height: 1;
 }
 
+/* The school frame's column (OrgFrame, on ui/Page): its type and the
+   grids' sticky top. Page sets its width, gutters and top. */
 .content {
   --target-size: 44px;
-  --gutter: var(--space-4);
+  --gutter: var(--page-gutter);
   --grid-sticky-top: var(--shell-bar, 56px);
-  box-sizing: border-box;
-  width: 100%;
-  max-width: var(--width-content-wide);
-  min-height: calc(100dvh - var(--shell-bar, 56px));
-  margin-inline: auto;
-  padding: var(--space-5) var(--gutter) var(--space-8);
   color: var(--color-on-surface);
   font-size: var(--text-dense);
   line-height: 1.45;
-  outline: none;
-}
-.content[data-narrow] {
-  max-width: calc(880px + 2 * var(--gutter));
 }
 /* A grid with its own scrollport keeps headings at that scrollport's top. */
 .content :global([data-scrolls]),
 .content :global([data-virtual]) {
   --grid-sticky-top: 0px;
-}
-@media (min-width: 768px) {
-  .content {
-    --gutter: var(--space-6);
-  }
 }
 /* A tab's own screens: quiet sub-tabs under the bar, the open one marked by
    an underline, never a second row of buttons. */

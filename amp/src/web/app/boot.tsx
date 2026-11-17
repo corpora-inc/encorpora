@@ -31,7 +31,7 @@ import { authConfigOptions, queryClient, sessionOptions } from "../lib/query";
 import { fetchAuthConfig } from "../auth-config";
 import type { PitchPlace } from "../features/pitch/nav";
 import { startDocumentRuntime } from "./document-runtime";
-import { finishingSignIn } from "../features/school/join/api";
+import { finishingSignIn } from "../features/school/join/finishing";
 
 let started = false;
 /** The app's services, once per document. */

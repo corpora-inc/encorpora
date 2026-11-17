@@ -77,14 +77,17 @@ import {
   studentSignInEnded,
 } from "../lib/student-device";
 import { workbookSearchSchema } from "../features/workbooks/model";
-import { orgsOptions, preload } from "../features/school/api";
 import { prepareBuyerHandoff } from "../features/school/pilots/buyer-session";
 import { prepareSchoolAdoption } from "../features/school/adoption-session";
-import { finishingSignIn } from "../features/school/join/api";
+import { finishingSignIn } from "../features/school/join/finishing";
 import { SMALL_CLASS } from "../features/navigation/shell-frame";
 import { approvalsOptions } from "../features/family-approval/api";
 import { secondParentOptions } from "../features/second-parent/api";
-import { classYearOptions } from "../features/school/org/org-api";
+import {
+  classYearOptions,
+  orgsOptions,
+  preload,
+} from "../features/school/core-api";
 import { frameData, schoolRoutes, staffScreen } from "./school-routes";
 import { familyRoutes } from "./family-routes";
 import { privacyRoutes } from "./privacy-routes";
@@ -1352,34 +1355,45 @@ const schoolClassImport = createRoute({
     "ImportScreen",
   ),
 });
-/** A teacher sets up a class (one short form). `org` preselects a school. */
+/** The import's later steps, each at its own address: `import/columns`,
+ * `import/review`, `import/done`. */
+const schoolClassImportStep = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "import/$step",
+  component: lazyRouteComponent(
+    () => import("../features/school/ImportScreen"),
+    "ImportScreen",
+  ),
+});
+/** A teacher sets up a class: its two steps, each at its own address
+ * (features/school/pilots/start-steps.ts). Nothing rides along in a query. */
+const startLoader = async ({ context }: { context: unknown }) => {
+  const { session } = context as { session: AuthSession };
+  await Promise.all([
+    preload(meOptions(session)),
+    preload(orgsOptions(session)),
+  ]);
+};
 const schoolStart = createRoute({
   getParentRoute: () => root,
   path: "/school/start",
   staticData: { space: "account" },
   beforeLoad: staffScreen,
-  // `from`: adding a place from somewhere, its way back (appReturn).
-  validateSearch: (
-    search: Record<string, unknown>,
-  ): { org?: string; from?: string } => {
-    const from = appReturn(search.from);
-    return {
-      ...(z.uuid().safeParse(search.org).success
-        ? { org: String(search.org) }
-        : {}),
-      ...(from ? { from } : {}),
-    };
-  },
-  loader: async ({ context }) => {
-    const { session } = context as unknown as { session: AuthSession };
-    await Promise.all([
-      preload(meOptions(session)),
-      preload(orgsOptions(session)),
-    ]);
-  },
+  loader: startLoader,
   component: lazyRouteComponent(
     () => import("../features/school/pilots/SchoolStartScreen"),
     "SchoolStartScreen",
+  ),
+});
+const schoolStartStudents = createRoute({
+  getParentRoute: () => root,
+  path: "/school/start/students",
+  staticData: { space: "account" },
+  beforeLoad: staffScreen,
+  loader: startLoader,
+  component: lazyRouteComponent(
+    () => import("../features/school/pilots/SchoolStartScreen"),
+    "SchoolStartStudentsScreen",
   ),
 });
 /** "I run a school": the school, then its classes (one short form). */
@@ -1851,6 +1865,7 @@ export const router = createRouter({
       schoolClassSettings,
       schoolClassRoster,
       schoolClassImport,
+      schoolClassImportStep,
       schoolClassStart,
       schoolClassCards,
       schoolClassExperience,
@@ -1871,6 +1886,7 @@ export const router = createRouter({
     schoolsTrust,
     schoolsContinue,
     schoolStart,
+    schoolStartStudents,
     schoolCreate,
     schoolConnect,
     schoolAdopt,

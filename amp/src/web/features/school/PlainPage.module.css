@@ -1,61 +1,6 @@
-/* One centred column for the school pages outside a place. */
-.page {
-  width: min(100%, calc(var(--width-form) + 2 * var(--space-4)));
-  margin-inline: auto;
-  padding: var(--space-2) var(--space-4) var(--space-8);
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  align-content: start;
-  gap: var(--space-5);
-}
-.page[data-wide] {
-  width: min(100%, calc(var(--width-content) + 2 * var(--space-4)));
-}
-.back,
-.backSlot {
-  min-height: 44px;
-}
-.back {
-  justify-self: start;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
-  margin-inline-start: calc(-1 * var(--space-2));
-  padding-inline: var(--space-2);
-  border-radius: var(--radius-control);
-  color: var(--color-muted-text);
-  font-size: var(--text-label);
-  font-weight: 600;
-  text-decoration: none;
-}
-.back:hover {
-  background: var(--color-secondary);
-  color: var(--color-on-secondary);
-}
-.back:focus-visible {
-  outline: 2px solid var(--color-focus-ring);
-  outline-offset: 2px;
-}
-.back svg {
-  width: 16px;
-  height: 16px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.title {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: clamp(var(--text-title-min), 6vw, var(--text-heading-1));
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-  overflow-wrap: break-word;
-}
-/* The title and its one sentence read as one block. */
-.title + .lead {
+/* The parts of a school page outside any place (PlainPage.tsx), on Page's
+   column. The title and its one sentence read as one block. */
+:global([data-page-header]) + .lead {
   margin-top: calc(-1 * var(--space-3));
 }
 .lead {
@@ -114,11 +59,6 @@
   gap: var(--space-1);
   padding-top: var(--space-4);
   border-top: 1px solid var(--color-border);
-}
-@media (min-width: 768px) {
-  .page {
-    padding-top: var(--space-5);
-  }
 }
 @media (max-width: 479px) {
   /* The one primary action of a step spans the column on a phone. */

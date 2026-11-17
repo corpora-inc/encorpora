@@ -3,7 +3,7 @@
 .page {
   display: grid;
   gap: var(--space-6);
-  max-width: 960px;
+  max-width: var(--page-standard);
 }
 .readOnly {
   color: var(--color-muted-text);

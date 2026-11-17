@@ -55,16 +55,3 @@ test("the teacher's choice in Add a place is a path alone: no query string rides
   const teacher = screen.getByText("I’m a teacher").closest("a")!;
   expect(teacher.getAttribute("href")).toBe("/school/start");
 });
-
-vi.mock("../../../nav/links", () => ({ useCloseClick: () => () => {} }));
-test("CP-2 r2 M4: a school page opened to add a place offers Cancel back there", async () => {
-  const { PlainPage } = await import("../../school/PlainPage");
-  render(
-    <PlainPage back={FROM} backLabel="Cancel">
-      body
-    </PlainPage>,
-  );
-  expect(screen.getByText("Cancel").closest("a")!.getAttribute("href")).toBe(
-    FROM,
-  );
-});

@@ -1,13 +1,11 @@
 import {
   queryOptions,
   useMutation,
-  useQuery,
   useQueryClient,
 } from "@tanstack/react-query";
-import { useNavigate } from "@tanstack/react-router";
-import { useEffect } from "react";
 import { z } from "zod";
 import { keepRefusal } from "../../../lib/AppError";
+import { qk } from "../../../lib/keys";
 import {
   issuedCardsResource,
   orgResource,
@@ -16,7 +14,7 @@ import {
 } from "../../../../schools/contracts";
 import type { AuthSession } from "../../../auth";
 import { request } from "../../../lib/api";
-import { sessionOptions } from "../../../lib/query";
+import { useSession } from "../../../lib/session";
 
 type Place = { org: string; class: string };
 const classPath = ({ class: id }: Place) => `/school/classes/${id}`;
@@ -33,15 +31,9 @@ const key = (session: Session, place: Place, leaf: string) =>
 
 /** The staff member's session. The router's guard required one on the way in;
  * if it ends here (another tab signed out), this leaves for sign-in. */
-export function useStaffSession() {
-  const session = useQuery(sessionOptions);
-  const navigate = useNavigate();
-  const ended = session.isSuccess && !session.data;
-  useEffect(() => {
-    if (ended) void navigate({ to: "/sign-in" });
-  }, [ended, navigate]);
-  return session.data ?? null;
-}
+/** A staff screen's session: the one session (lib/session.ts). Staff routes
+ * guard it, so it is never null; a sign-out leaves for sign-in by itself. */
+export const useStaffSession = useSession;
 
 export const presenceOptions = (session: Session, place: Place) => {
   const queryKey = key(session, place, "presence");
@@ -71,7 +63,7 @@ export const rosterOptions = (session: Session, place: Place) =>
   });
 export const orgOptions = (session: Session, org: string) =>
   queryOptions({
-    queryKey: ["account", session?.accountId, "school", org, "org"],
+    queryKey: qk.account(session?.accountId ?? null, "school", org, "org"),
     enabled: !!session,
     queryFn: ({ signal }) =>
       request(
@@ -83,7 +75,7 @@ export const orgOptions = (session: Session, org: string) =>
   });
 export const classListOptions = (session: Session, org: string) =>
   queryOptions({
-    queryKey: ["account", session?.accountId, "school", org, "classes"],
+    queryKey: qk.account(session?.accountId ?? null, "school", org, "classes"),
     enabled: !!session,
     queryFn: ({ signal }) =>
       request(

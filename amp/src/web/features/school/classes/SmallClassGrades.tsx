@@ -55,12 +55,7 @@ export function SmallClassGrades({
       {/* The stepper's height is held while the gradebook loads. */}
       <div className={styles.targetRow}>
         {book?.canEdit && (
-          <WeeklyTarget
-            session={session}
-            place={place}
-            book={book}
-            onError={setError}
-          />
+          <WeeklyTarget place={place} book={book} onError={setError} />
         )}
       </div>
       <Toast message={error} onDismiss={() => setError("")} />

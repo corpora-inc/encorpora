@@ -20,7 +20,7 @@ import {
   useFinishSignIn,
   type JoinError,
 } from "./api";
-import { BackLink, JoinProblem } from "./ClassScreen";
+import { JoinProblem } from "./ClassScreen";
 import { JoinFrame } from "./JoinFrame";
 import { Picture, pictureNames } from "./pictures";
 import styles from "./Join.module.css";
@@ -174,15 +174,7 @@ export function PicturesScreen() {
         ? "Pick 3 pictures you’ll remember"
         : "Pick your 3 pictures";
   return (
-    <JoinFrame
-      lead={
-        <BackLink
-          to="/join/$code"
-          params={{ code: formatJoinCode(code) }}
-          label="Back to the names"
-        />
-      }
-    >
+    <JoinFrame step="pictures" code={formatJoinCode(code)}>
       <div className={styles.pictures}>
         <div className={styles.prompt}>
           <p className={styles.who}>

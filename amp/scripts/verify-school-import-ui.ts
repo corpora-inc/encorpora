@@ -121,9 +121,9 @@ try {
     await page.getByText("Noor Haddad", { exact: true }).waitFor();
     assert.equal(await page.getByText("Ana Ruiz", { exact: true }).count(), 0);
     await page.getByRole("button", { name: "Check for changes" }).click();
-    await page.waitForURL(/step=review/);
+    await page.waitForURL(/\/import\/review$/);
     await page.getByRole("button", { name: "Apply changes" }).click();
-    await page.waitForURL(/step=done/);
+    await page.waitForURL(/\/import\/done$/);
     assert.deepEqual(
       (
         await learning.pool.query(
@@ -147,7 +147,7 @@ try {
       .getByRole("button", { name: /^(Add these names|Use these rows)$/ })
       .click();
     await page.getByRole("button", { name: "Check for changes" }).click();
-    await page.waitForURL(/step=review/);
+    await page.waitForURL(/\/import\/review$/);
     assert.equal(
       await page.getByText(/Two students share this name/).count(),
       2,
