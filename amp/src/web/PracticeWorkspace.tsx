@@ -1361,7 +1361,9 @@ export function PracticeWorkspace(props: Props) {
       </>
     );
   }
-  function feedbackDetails() {
+  /** The result and its explanation; with `progress`, the skill's progress
+   * too (the stacked sheet pins that below its scrolling body instead). */
+  function feedbackDetails(progress = true) {
     if (!outcome) return null;
     return (
       <>
@@ -1487,11 +1489,7 @@ export function PracticeWorkspace(props: Props) {
             </ol>
           </Glossary>
         )}
-        {!editorInDock &&
-          !counterCompact &&
-          !trendCompact &&
-          !pegCompact &&
-          progressFeedback()}
+        {progress && progressInSheet && progressFeedback()}
         {review?.facts}
       </>
     );
@@ -1635,6 +1633,9 @@ export function PracticeWorkspace(props: Props) {
     !trendCompact &&
     !pegCompact &&
     ((!outcome.correct && !deferSteps) || showWhy || fullColumn);
+  // Compact answer surfaces show progress with "See why" instead.
+  const progressInSheet =
+    !editorInDock && !counterCompact && !trendCompact && !pegCompact;
   // These answers are drawn, marked or built in the problem itself, so the
   // problem shows what was given.
   const answerShownInProblem =
@@ -2140,12 +2141,16 @@ export function PracticeWorkspace(props: Props) {
             ) : sideBySide ? (
               feedbackDetails()
             ) : (
-              // Stacked, the result, its explanation and the skill read as
-              // one column that scrolls as a whole under the problem it
-              // keeps in view; Next and the tools stay put below it.
-              <div className="feedback-body" data-feedback-body>
-                {feedbackDetails()}
-              </div>
+              // Stacked, the result and its explanation read as one column
+              // that scrolls as a whole under the problem it keeps in view;
+              // the skill's progress, its connections, Next and the tools
+              // stay whole below it.
+              <>
+                <div className="feedback-body" data-feedback-body>
+                  {feedbackDetails(false)}
+                </div>
+                {progressInSheet && progressFeedback()}
+              </>
             )}
             {props.feedbackAside}
             {review ? (

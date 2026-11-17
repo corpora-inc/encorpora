@@ -84,9 +84,9 @@ async function submit(page: Page, answer: string) {
 }
 /**
  * Stacked, the feedback sheet keeps the problem in view above it, and its
- * result, explanation and skill read in one body: nothing inside the body
- * scrolls on its own, and a body that scrolls is a reading column, not a
- * sliver.
+ * result and explanation read in one body: nothing inside the body scrolls
+ * on its own, and the body scrolls only once the sheet has grown to the
+ * problem (never a sliver under empty room).
  */
 async function solvedInView(page: Page, label: string) {
   const found = await page.evaluate(() => {
@@ -97,6 +97,11 @@ async function solvedInView(page: Page, label: string) {
     const question = document
       .querySelector(".problem-content .question")!
       .getBoundingClientRect();
+    const content = document.querySelector<HTMLElement>(".problem-content")!;
+    // The whole problem, its figure included, without its padding.
+    const problemEnd =
+      content.getBoundingClientRect().bottom -
+      (parseFloat(getComputedStyle(content).paddingBottom) || 0);
     const body = document.querySelector<HTMLElement>("[data-feedback-body]");
     const nested = body
       ? [...body.querySelectorAll<HTMLElement>("*")]
@@ -108,6 +113,7 @@ async function solvedInView(page: Page, label: string) {
       question: [question.top, question.bottom],
       stageTop: stage.top,
       sheetTop: sheet.top,
+      problemEnd,
       nested,
       body: body
         ? { client: body.clientHeight, scroll: body.scrollHeight }
@@ -122,8 +128,9 @@ async function solvedInView(page: Page, label: string) {
   assert.deepEqual(found.nested, [], `${label}: no nested scroller`);
   assert(
     found.body &&
-      (found.body.scroll <= found.body.client + 1 || found.body.client >= 200),
-    `${label}: a scrolling body is a readable column: ${JSON.stringify(found.body)}`,
+      (found.body.scroll <= found.body.client + 1 ||
+        found.sheetTop - found.problemEnd <= 48),
+    `${label}: the body scrolls only when the sheet meets the problem: ${JSON.stringify(found)}`,
   );
 }
 // Signed-in practice for the family's learner.

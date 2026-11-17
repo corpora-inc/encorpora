@@ -13,9 +13,9 @@
    Stacked (phones, portrait tablets), the sheet rises over the answer dock it
    replaces, sized to what it says. The problem never moves: the stage
    scrolls it clear of the sheet (PracticeWorkspace), so what was solved
-   stays in view, and the sheet stops below it. Head, steps and progress
-   share one body that scrolls as a whole when long; no part of it scrolls
-   on its own. Side by side (landscape tablets and desktops), it fills the
+   stays in view, and the sheet stops below it. Head and steps share one
+   body that scrolls as a whole when long (no part of it scrolls on its
+   own); progress, Next and the tools stay whole below it. Side by side (landscape tablets and desktops), it fills the
    answer column. */
 
 /* ── Surface ─────────────────────────────────────────────────────────────── */
@@ -321,7 +321,7 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* ── Body (stacked): head, steps and progress scroll as one ─────────────── */
+/* ── Body (stacked): head and steps scroll as one ──────────────────────── */
 /* Sized to its content until the sheet's limit, then it alone scrolls. It
    reaches into the sheet's padding (12px each side and above), so the
    check mark's ring and every focus outline draw whole inside it. Its foot
@@ -335,7 +335,7 @@
   gap: 10px;
   overflow-y: auto;
   overscroll-behavior: contain;
-  margin: -12px -12px calc(-1 * var(--space-4));
+  margin: -12px -12px -10px;
   padding: 12px 12px var(--space-4);
   mask-image: linear-gradient(
     to bottom,
