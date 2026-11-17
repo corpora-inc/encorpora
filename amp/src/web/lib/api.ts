@@ -86,6 +86,10 @@ const messages: Record<string, string> = {
   own_practice_too_young:
     "Under 13, a parent sets up AMP for you. Ask yours to choose “I’m a parent”.",
   family_class_required: "Your family’s class couldn’t be made. Try again.",
+  child_has_history:
+    "This child already has practice or a purchase. Delete their learning data from Privacy instead.",
+  last_child:
+    "Your family keeps at least one child. Change this child’s name or year instead.",
   family_service_unavailable: "Family details could not be loaded. Try again.",
   notice_changed:
     "The parent notice was just updated. Review it and confirm again to continue.",

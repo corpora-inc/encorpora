@@ -1,4 +1,5 @@
 import { recordActivation } from "../analytics/activation.js";
+import { finishSetup } from "./first-run.js";
 import type { PoolClient } from "pg";
 import { z } from "zod";
 import { ownBirthYear, startAdultPractice } from "./adult.js";
@@ -102,6 +103,8 @@ export async function startPlace(
       birthYear: input.birthYear,
       start: input.start,
     });
+    // Their own practice starts now: that first run is done.
+    await finishSetup(families.pool, accountId, "myself");
     return { home: "me", learnerId };
   }
   return families.transaction(accountId, async (client) => {

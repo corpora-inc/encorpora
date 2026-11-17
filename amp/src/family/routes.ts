@@ -69,6 +69,8 @@ import {
 import { FamilyError } from "./contracts.js";
 import { dismissFamilyNotice } from "./family-class.js";
 import { FamilyRepository } from "./repository.js";
+import { removeSetupChild } from "./setup-child.js";
+import { chooseSetup, finishSetup } from "../account/first-run.js";
 import {
   inviteSecondParent,
   mailSecondParent,
@@ -444,6 +446,25 @@ export async function registerFamilyRoutes(
           step: "persona_chosen",
           persona: answer,
         });
+        // The first run's answer, changeable until that first run is done.
+        if (!isSchoolAccount(account) && !account.startsWith("trial:"))
+          await chooseSetup(repository.pool, account, answer);
+        return reply.code(204).send();
+      },
+    );
+    // The first run is done: a parent went from setup to Today.
+    scope.post(
+      "/api/v1/start/done",
+      {
+        bodyLimit: 256,
+        config: { rateLimit: { max: 60, timeWindow: "1 hour" } },
+      },
+      async (request, reply) => {
+        const account = await options.authenticate(request);
+        const { answer } = starterChoiceSchema.parse(request.body);
+        if (isSchoolAccount(account) || account.startsWith("trial:"))
+          throw new FamilyError(403, "starter_unavailable");
+        await finishSetup(repository.pool, account, answer);
         return reply.code(204).send();
       },
     );
@@ -484,9 +505,11 @@ export async function registerFamilyRoutes(
         const owner =
           (await secondParentOwner(options.pool, account, learnerId)) ??
           account;
-        return reply
-          .code(201)
-          .send(await repository.practiceHere(owner, learnerId, account));
+        const grant = await repository.practiceHere(owner, learnerId, account);
+        // A child's first practice ends the family's first run.
+        if (owner === account)
+          await finishSetup(options.pool, account, "parent");
+        return reply.code(201).send(grant);
       },
     );
     scope.post("/api/v1/family/class-notice/dismiss", async (request) => {
@@ -664,6 +687,19 @@ export async function registerFamilyRoutes(
       await repository.rename(account, learnerId, name);
       return { renamed: true };
     });
+    // A child added in setup who has nothing yet (no problem shown, no
+    // purchase) comes back out of the family (docs/product-model.md).
+    scope.post(
+      "/api/v1/family/learners/:learnerId/remove",
+      { bodyLimit: 256 },
+      async (request) => {
+        const account = await options.authenticate(request);
+        const { learnerId } = learnerParams.parse(request.params);
+        await refuseSecondParentFor(options.pool, account, learnerId);
+        empty.parse(request.body ?? {});
+        return removeSetupChild(repository, account, learnerId);
+      },
+    );
     // A parent corrects their own child's birth year (docs/families.md).
     scope.post(
       "/api/v1/family/learners/:learnerId/birth-year",

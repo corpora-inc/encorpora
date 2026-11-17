@@ -1,4 +1,5 @@
 import { accountProfile } from "./profile.js";
+import { readSetup } from "./first-run.js";
 import { followDemo } from "../schools/demo/shared.js";
 import { availableGift } from "../access-grants/repository.js";
 import type { Pool } from "pg";
@@ -31,6 +32,7 @@ function childEntries(family: FamilySummary) {
         birthYear: l.birthYear ?? null,
         namePending: l.namePending,
         ...(l.defaultName ? { defaultName: true as const } : {}),
+        ...(l.removable ? { removable: true as const } : {}),
         freeAllowance: l.freeAllowance,
         entitlement: {
           active: l.canPractice === true,
@@ -231,6 +233,7 @@ export async function accountSummary(
     ...(adultPractice ? { adultPractice } : {}),
     ...(profiles.length ? { practiceProfiles: profiles } : {}),
     ...(gift ? { availableAccessGrant: gift } : {}),
+    setup: await readSetup(pool, accountId),
     ...(unassigned
       ? {
           unassignedPurchase: {
