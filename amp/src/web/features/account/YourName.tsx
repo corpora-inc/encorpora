@@ -121,7 +121,9 @@ export function YourName() {
           <>
             <div className={styles.text}>
               <span className={styles.name}>
-                {account ? (known ?? "Not added yet") : " "}
+                {/* A no-break space holds the name's line while the account
+                    loads; a plain one collapses and the row grows. */}
+                {account ? (known ?? "Not added yet") : "\u00a0"}
               </span>
               <span className={styles.detail}>
                 Others see it when you invite or share.
