@@ -23,8 +23,7 @@ import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { ActionRow } from "../../ui/ActionRow";
 import { YearField } from "../../ui/YearField";
-import { PrintButton } from "../../ui/PrintButton";
-import { downloadPdf, paperFormat } from "../../lib/pdf-download";
+import { Disclosure } from "../../ui/Disclosure";
 import { SatMathFocus } from "../practice/SatMathFocus";
 import { ChildPracticeSettings } from "./Practice";
 import { rememberContinuation } from "../continue/memory";
@@ -37,6 +36,7 @@ import { useHandOver } from "../school/classes/today/use-hand-over";
 import { areaSourceOf } from "../../nav/AreaLayer";
 import { childProgressOptions, type FamilyChild } from "./api";
 import { DevicesSheet, SignInPictures } from "./Devices";
+import { ConsentSheet, DeleteDataSheet } from "./ChildPrivacy";
 import {
   childOf,
   FamilyFrame,
@@ -51,9 +51,11 @@ import { ChildActivity } from "./ChildActivity";
 /**
  * A child's page (`/family/<family>/kids/<learner>`): the same record a
  * teacher reads (where they are, their weeks, the skills they've earned and
- * their recent work), worded for a parent, with the one action that works
- * now and, for the parent who manages them, their name, birth year, consent
- * and devices. A second parent reads it and lets them practice here.
+ * their recent work), worded for a parent. Its actions: Practice, and beside
+ * it their own devices (a code, a QR code or a printed card). Their progress
+ * report is under Report cards. For the parent who manages them, their name,
+ * and the rarely needed rest under Advanced. A second parent reads it and
+ * lets them practice here.
  */
 export function ChildScreen() {
   const place = useFamilyPlace();
@@ -128,67 +130,13 @@ export function ChildScreen() {
     >
       {data && child && (
         <div className={styles.page} data-child-page={child.id}>
-          <ActionRow>
-            <ChildAction
-              child={child}
-              family={family}
-              accountId={session.accountId}
-              starting={starting}
-              onPracticeHere={(id) => void handOver(id)}
-              primary
-            />
-            {child.capabilities.readWorkbooks && (
-              <Link
-                to="/learners/$learnerId/workbooks"
-                params={{ learnerId: child.id }}
-                className={buttonClass("secondary")}
-              >
-                Workbooks
-              </Link>
-            )}
-            {/* While free problems remain, the plan is one step away. */}
-            {!child.access.hasAccess &&
-              child.access.canPractice &&
-              child.capabilities.continuePurchase &&
-              child.paths.continue && (
-                <Link
-                  to="/continue/$learnerId"
-                  params={{ learnerId: child.id }}
-                  className={buttonClass("secondary")}
-                  data-continue={child.id}
-                  onClick={() =>
-                    rememberContinuation({
-                      accountId: session.accountId,
-                      learnerId: child.id,
-                      returnTo: `/${familyHref(family, `kids/${child.id}`)}`,
-                    })
-                  }
-                >
-                  Continue with AMP
-                </Link>
-              )}
-            {/* A progress report once there is progress to report; the
-                  record arrives with the page (family-routes), so it never
-                  appears late. */}
-            {/* Decided when the page opens: a first answer while it is
-                  open takes the bar in place and adds nothing above it. */}
-            {child.capabilities.readProgress &&
-              hasReport &&
-              openedUnmeasured.current === false && (
-                <PrintButton
-                  variant="secondary"
-                  download={() =>
-                    downloadPdf({
-                      path: `${child.paths.progress.replace(/^\/api\/v1/, "")}.pdf?format=${paperFormat()}`,
-                      token: session.token,
-                      name: `amp-progress-report-${child.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}.pdf`,
-                    })
-                  }
-                >
-                  Progress report
-                </PrintButton>
-              )}
-          </ActionRow>
+          <ChildActions
+            place={place}
+            child={child}
+            starting={starting}
+            onPracticeHere={(id) => void handOver(id)}
+            onDevices={() => setDevices(true)}
+          />
           <section aria-labelledby="child-week" className={styles.section}>
             <h2 id="child-week" className={styles.label}>
               This week
@@ -279,11 +227,7 @@ export function ChildScreen() {
               Check your connection, then try again.
             </EmptyState>
           ) : null}
-          <ChildSettings
-            place={place}
-            child={child}
-            onDevices={() => setDevices(true)}
-          />
+          <ChildSettings place={place} child={child} />
           {place.own && child.capabilities.manageDevices && (
             <DevicesSheet
               place={place}
@@ -299,19 +243,86 @@ export function ChildScreen() {
   );
 }
 
-const ok = z.unknown();
-
-/** What the parent who manages this child can change: their name, birth
- * year, consent and devices. Each row only where the server allows it; a
- * second parent reads the year. */
-function ChildSettings({
+/** A child's actions: Practice, and beside it their own devices, as near to
+ * hand. Then their workbooks and, while free problems remain, the plan.
+ * Their progress report is under Report cards, not here. */
+export function ChildActions({
   place,
   child,
+  starting,
+  onPracticeHere,
   onDevices,
 }: {
   place: FamilyPlace;
   child: FamilyChild;
+  starting: string | null;
+  onPracticeHere: (learnerId: string) => void;
   onDevices: () => void;
+}) {
+  const { family, session } = place;
+  return (
+    <ActionRow>
+      <ChildAction
+        child={child}
+        family={family}
+        accountId={session.accountId}
+        starting={starting}
+        onPracticeHere={onPracticeHere}
+        primary
+      />
+      {/* Their own devices: as near to hand as Practice. */}
+      {place.own && child.capabilities.manageDevices && (
+        <Button variant="secondary" data-own-devices="" onClick={onDevices}>
+          Their own devices
+        </Button>
+      )}
+      {child.capabilities.readWorkbooks && (
+        <Link
+          to="/learners/$learnerId/workbooks"
+          params={{ learnerId: child.id }}
+          className={buttonClass("secondary")}
+        >
+          Workbooks
+        </Link>
+      )}
+      {/* While free problems remain, the plan is one step away. */}
+      {!child.access.hasAccess &&
+        child.access.canPractice &&
+        child.capabilities.continuePurchase &&
+        child.paths.continue && (
+          <Link
+            to="/continue/$learnerId"
+            params={{ learnerId: child.id }}
+            className={buttonClass("secondary")}
+            data-continue={child.id}
+            onClick={() =>
+              rememberContinuation({
+                accountId: session.accountId,
+                learnerId: child.id,
+                returnTo: `/${familyHref(family, `kids/${child.id}`)}`,
+              })
+            }
+          >
+            Continue with AMP
+          </Link>
+        )}
+    </ActionRow>
+  );
+}
+
+const ok = z.unknown();
+
+/** What the parent who manages this child can change: their name, and
+ * under Advanced (rarely needed) their birth year, practice settings,
+ * sign-in pictures, consent and deleting their learning data. Each row only
+ * where the server allows it; a second parent reads the year. Their own
+ * devices are an action beside Practice, not a setting. */
+export function ChildSettings({
+  place,
+  child,
+}: {
+  place: FamilyPlace;
+  child: FamilyChild;
 }) {
   const { session } = place;
   const caps = child.capabilities;
@@ -321,6 +332,8 @@ function ChildSettings({
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState("");
   const [error, setError] = useState("");
+  /** Consent or deleting their data, open over the settings. */
+  const [sheet, setSheet] = useState<"consent" | "delete" | null>(null);
   const say = (failure: unknown, fallback: string) => {
     console.error(fallback, failure);
     setError(
@@ -375,167 +388,189 @@ function ChildSettings({
     : null;
   const practice =
     caps.changePracticeSettings && !!summary && (age === null || age >= 13);
-  const rows = [
+  // Picture recovery, where the parent keeps the child's sign-in.
+  const pictures =
+    caps.manageDevices &&
+    !!place.own &&
+    child.classes.some(
+      (entry) => entry.id === place.own!.id && !!entry.personId,
+    );
+  const advanced = [
+    caps.changeBirthYear || !!child.birthYear,
     caps.changePracticeSettings,
     practice,
-    caps.rename || caps.changeBirthYear || !!child.birthYear,
+    pictures,
     caps.manageConsent,
-    caps.manageDevices && !!place.own,
     caps.delete,
-  ];
-  if (!rows.some(Boolean)) return null;
+  ].some(Boolean);
+  const named = caps.rename || naming;
+  if (!named && !advanced) return null;
   return (
     <section aria-labelledby="child-settings" className={styles.section}>
       <h2 id="child-settings">{child.name}’s settings</h2>
-      <dl className={styles.settings}>
-        {(caps.rename || naming) && (
-          <div className={styles.setting}>
-            {naming ? (
-              <form
-                className={styles.form}
-                noValidate
-                onSubmit={(event) => {
-                  event.preventDefault();
-                  void rename();
-                }}
-                style={{ gridColumn: "1 / -1" }}
-              >
-                <TextField
-                  label="Name"
-                  value={name}
-                  error={nameError}
-                  onChange={(event) => {
-                    setName(event.target.value);
-                    setNameError("");
+      <div className={styles.settingsGroup}>
+        {named && (
+          <dl className={styles.settings}>
+            <div className={styles.setting}>
+              {naming ? (
+                <form
+                  className={styles.form}
+                  noValidate
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                    void rename();
                   }}
-                  maxLength={CHILD_NAME_MAX}
-                  autoComplete="off"
-                  placeholder="First name or nickname"
-                  title={PARENT_ENTRY_LINE}
-                  autoFocus
-                  disabled={busy}
-                />
-                <div className={styles.formActions}>
-                  <Button
-                    variant="primary"
-                    disabled={busy}
-                    aria-busy={busy || undefined}
-                  >
-                    Save name
-                  </Button>
-                  <Button
-                    variant="quiet"
-                    type="button"
-                    onClick={() => {
-                      setNaming(false);
-                      setName(child.name);
+                  style={{ gridColumn: "1 / -1" }}
+                >
+                  <TextField
+                    label="Name"
+                    value={name}
+                    error={nameError}
+                    onChange={(event) => {
+                      setName(event.target.value);
+                      setNameError("");
                     }}
+                    maxLength={CHILD_NAME_MAX}
+                    autoComplete="off"
+                    placeholder="First name or nickname"
+                    title={PARENT_ENTRY_LINE}
+                    autoFocus
                     disabled={busy}
+                  />
+                  <div className={styles.formActions}>
+                    <Button
+                      variant="primary"
+                      disabled={busy}
+                      aria-busy={busy || undefined}
+                    >
+                      Save name
+                    </Button>
+                    <Button
+                      variant="quiet"
+                      type="button"
+                      onClick={() => {
+                        setNaming(false);
+                        setName(child.name);
+                      }}
+                      disabled={busy}
+                    >
+                      Cancel
+                    </Button>
+                  </div>
+                </form>
+              ) : (
+                <>
+                  <div className={styles.settingText}>
+                    <dt>Name</dt>
+                    <dd>{child.name}</dd>
+                  </div>
+                  <div className={styles.settingAction}>
+                    <Button variant="secondary" onClick={() => setNaming(true)}>
+                      Change
+                    </Button>
+                  </div>
+                </>
+              )}
+            </div>
+          </dl>
+        )}
+        {/* The rest is rarely needed: folded under Advanced, still in reach
+          (consent and deleting their data among it). */}
+        {advanced && (
+          <Disclosure summary="Advanced" className={styles.advanced}>
+            <dl className={styles.settings} data-child-advanced="">
+              {(caps.changeBirthYear || child.birthYear) && (
+                <div className={styles.setting}>
+                  <div className={styles.settingText}>
+                    <dt>Birth year</dt>
+                    <dd>Sets where practice starts. Their answers stay.</dd>
+                  </div>
+                  <div className={styles.settingAction}>
+                    <YearField
+                      label={`Birth year, ${child.name}`}
+                      earlier
+                      value={child.birthYear ? String(child.birthYear) : ""}
+                      placeholder="Choose a year"
+                      disabled={busy || !caps.changeBirthYear}
+                      onChange={(year) => void saveYear(year)}
+                    />
+                  </div>
+                </div>
+              )}
+              {caps.changePracticeSettings && (
+                <ChildPracticeSettings place={place} child={child} />
+              )}
+              {practice && summary && (
+                <div className={styles.setting} data-practice-settings="">
+                  <div
+                    className={styles.settingText}
+                    style={{ gridColumn: "1 / -1" }}
                   >
-                    Cancel
-                  </Button>
+                    <SatMathFocus
+                      key={`${session.accountId}:${child.id}`}
+                      learner={summary}
+                      token={session.token}
+                      identity={session.accountId}
+                      onSaved={() => invalidateAccount(session.accountId)}
+                    />
+                  </div>
                 </div>
-              </form>
-            ) : (
-              <>
-                <div className={styles.settingText}>
-                  <dt>Name</dt>
-                  <dd>{child.name}</dd>
+              )}
+              <SignInPictures key={child.id} place={place} child={child} />
+              {caps.manageConsent && (
+                <div className={styles.setting}>
+                  <div className={styles.settingText}>
+                    <dt>Consent</dt>
+                  </div>
+                  <div className={styles.settingAction}>
+                    <Button
+                      variant="secondary"
+                      data-child-consent=""
+                      onClick={() => setSheet("consent")}
+                    >
+                      Open
+                    </Button>
+                  </div>
                 </div>
-                <div className={styles.settingAction}>
-                  <Button variant="secondary" onClick={() => setNaming(true)}>
-                    Change
-                  </Button>
+              )}
+              {caps.delete && (
+                <div className={styles.setting}>
+                  <div className={styles.settingText}>
+                    <dt>Delete learning data</dt>
+                    <dd>{child.name}’s answers and levels, for good</dd>
+                  </div>
+                  <div className={styles.settingAction}>
+                    <Button
+                      variant="secondary"
+                      data-child-delete=""
+                      onClick={() => setSheet("delete")}
+                    >
+                      Open
+                    </Button>
+                  </div>
                 </div>
-              </>
-            )}
-          </div>
+              )}
+            </dl>
+          </Disclosure>
         )}
-        {(caps.changeBirthYear || child.birthYear) && (
-          <div className={styles.setting}>
-            <div className={styles.settingText}>
-              <dt>Birth year</dt>
-              <dd>Sets where practice starts. Their answers stay.</dd>
-            </div>
-            <div className={styles.settingAction}>
-              <YearField
-                label={`Birth year, ${child.name}`}
-                earlier
-                value={child.birthYear ? String(child.birthYear) : ""}
-                placeholder="Choose a year"
-                disabled={busy || !caps.changeBirthYear}
-                onChange={(year) => void saveYear(year)}
-              />
-            </div>
-          </div>
-        )}
-        {caps.changePracticeSettings && (
-          <ChildPracticeSettings place={place} child={child} />
-        )}
-        {practice && summary && (
-          <div className={styles.setting} data-practice-settings="">
-            <div
-              className={styles.settingText}
-              style={{ gridColumn: "1 / -1" }}
-            >
-              <SatMathFocus
-                key={`${session.accountId}:${child.id}`}
-                learner={summary}
-                token={session.token}
-                identity={session.accountId}
-                onSaved={() => invalidateAccount(session.accountId)}
-              />
-            </div>
-          </div>
-        )}
-        <SignInPictures key={child.id} place={place} child={child} />
-        {caps.manageDevices && place.own && (
-          <div className={styles.setting}>
-            <div className={styles.settingText}>
-              <dt>Their own devices</dt>
-              <dd>A code, a QR code or a printed card</dd>
-            </div>
-            <div className={styles.settingAction}>
-              <Button variant="secondary" onClick={onDevices}>
-                Open
-              </Button>
-            </div>
-          </div>
-        )}
-        {caps.manageConsent && (
-          <div className={styles.setting}>
-            <div className={styles.settingText}>
-              <dt>Consent</dt>
-            </div>
-            <div className={styles.settingAction}>
-              <Link
-                to="/$"
-                params={{ _splat: "account/privacy/consent" }}
-                className={buttonClass("secondary")}
-              >
-                Open
-              </Link>
-            </div>
-          </div>
-        )}
-        {caps.delete && (
-          <div className={styles.setting}>
-            <div className={styles.settingText}>
-              <dt>Delete learning data</dt>
-              <dd>{child.name}’s answers and levels, for good</dd>
-            </div>
-            <div className={styles.settingAction}>
-              <Link
-                to="/$"
-                params={{ _splat: "account/privacy/delete" }}
-                className={buttonClass("secondary")}
-              >
-                Open
-              </Link>
-            </div>
-          </div>
-        )}
-      </dl>
+      </div>
+      {/* Consent and deleting their data open over these settings: no
+          address of their own, so closing is this screen, where it was. */}
+      {caps.manageConsent && (
+        <ConsentSheet
+          place={place}
+          open={sheet === "consent"}
+          onOpenChange={(open) => setSheet(open ? "consent" : null)}
+        />
+      )}
+      {caps.delete && (
+        <DeleteDataSheet
+          place={place}
+          child={child}
+          open={sheet === "delete"}
+          onOpenChange={(open) => setSheet(open ? "delete" : null)}
+        />
+      )}
       <Toast
         message={notice || error}
         onDismiss={() => (setNotice(""), setError(""))}
