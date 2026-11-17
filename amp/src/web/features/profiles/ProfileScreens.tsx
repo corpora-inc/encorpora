@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import {
   Link,
-  Navigate,
   useNavigate,
   useParams,
   useSearch,
 } from "@tanstack/react-router";
+import { Navigate } from "../../nav/Navigate";
 import { useState, type FormEvent, type ReactNode } from "react";
 import {
   gradeCourse,

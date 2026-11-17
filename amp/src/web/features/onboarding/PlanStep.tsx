@@ -1,11 +1,11 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import {
   Link,
-  Navigate,
   useLocation,
   useNavigate,
   useSearch,
 } from "@tanstack/react-router";
+import { Navigate } from "../../nav/Navigate";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { signOut, type AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";

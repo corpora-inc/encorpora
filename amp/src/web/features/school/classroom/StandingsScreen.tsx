@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { RootLink } from "../../../nav/root";
-import { Link, Navigate, useSearch } from "@tanstack/react-router";
+import { Link, useSearch } from "@tanstack/react-router";
+import { Navigate } from "../../../nav/Navigate";
 import type { CSSProperties } from "react";
 import type { StandingsBoard } from "../../../../schools/classroom-contracts";
 import { sessionOptions } from "../../../lib/query";

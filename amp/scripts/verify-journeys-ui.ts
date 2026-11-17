@@ -263,8 +263,8 @@ async function pickYear(page: Page, field: string, year?: string) {
   await page.getByRole("button", { name: field, exact: true }).click();
   const years = page.getByRole("dialog", { name: field });
   const tile = year
-    ? years.getByRole("radio", { name: year, exact: true })
-    : years.getByRole("radio").first();
+    ? years.getByRole("option", { name: year, exact: true })
+    : years.getByRole("option").first();
   await tile.click();
   await years.waitFor({ state: "hidden" });
 }

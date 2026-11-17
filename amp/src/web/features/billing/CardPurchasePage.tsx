@@ -1,4 +1,5 @@
-import { Link, Navigate, useSearch } from "@tanstack/react-router";
+import { Link, useSearch } from "@tanstack/react-router";
+import { Navigate } from "../../nav/Navigate";
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { sessionOptions, meOptions } from "../../lib/query";
 import { buttonClass } from "../../ui/Button";

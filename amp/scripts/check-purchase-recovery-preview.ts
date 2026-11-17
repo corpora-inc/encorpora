@@ -66,7 +66,7 @@ try {
   await page.getByRole("link", { name: "Set up learner", exact: true }).click();
   await page.getByLabel("Learner name").fill("New Casey");
   await page.getByRole("button", { name: "Continue", exact: true }).click();
-  await page.getByRole("button", { name: "2016", exact: true }).click();
+  await page.getByRole("option", { name: "2016", exact: true }).click();
   await page.waitForURL(/\/purchase\/funded/);
   const me = await (await context.request.get(origin + "/api/v1/me")).json();
   const child = me.learners[0];

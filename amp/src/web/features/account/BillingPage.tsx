@@ -1,5 +1,6 @@
 import { useSettingsFamily } from "../family/account-settings";
-import { Link, Navigate, useNavigate, useSearch } from "@tanstack/react-router";
+import { Link, useNavigate, useSearch } from "@tanstack/react-router";
+import { Navigate } from "../../nav/Navigate";
 import { useMutation, useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { z } from "zod";
 import type { AuthSession } from "../../auth";

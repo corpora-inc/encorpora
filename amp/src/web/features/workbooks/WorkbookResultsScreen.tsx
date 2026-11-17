@@ -4,7 +4,8 @@ import {
   useQueryClient,
   useSuspenseQuery,
 } from "@tanstack/react-query";
-import { Navigate, useParams } from "@tanstack/react-router";
+import { useParams } from "@tanstack/react-router";
+import { Navigate } from "../../nav/Navigate";
 import { useState } from "react";
 import type { AuthSession } from "../../auth";
 import { invalidateAccount, sessionOptions } from "../../lib/query";

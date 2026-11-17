@@ -5,7 +5,8 @@
  * history: no `navigate({ to: "/" })`, `<Link to="/">`, `redirect({ to: "/" })`,
  * `window.location` assignment or `history.back()`. Each place that must
  * (sign-out, a payment provider, a full reload after an update) is listed
- * below with its reason and count; anything new fails the build.
+ * below with its reason and count; anything new fails the build. A screen's
+ * rendered redirect is nav/Navigate.tsx, never the router's own.
  *
  *   npx tsx scripts/check-navigation.ts
  */
@@ -87,6 +88,24 @@ for (const path of files(ROOT)) {
     });
 }
 let failed = 0;
+// A rendered redirect is src/web/nav/Navigate.tsx, which navigates once per
+// destination. The router's own re-navigates on every render with new
+// props, and a screen that renders while its navigation is pending then
+// never lets it commit (the tab hangs).
+for (const path of files(ROOT)) {
+  const file = relative(ROOT, path);
+  if (file === "nav/Navigate.tsx") continue;
+  if (
+    /import\s*\{[^}]*\bNavigate\b[^}]*\}\s*from\s*"@tanstack\/react-router"/.test(
+      readFileSync(path, "utf8"),
+    )
+  ) {
+    failed++;
+    console.error(
+      `${file}: imports the router's Navigate. Use src/web/nav/Navigate.tsx.`,
+    );
+  }
+}
 for (const [file, lines] of found) {
   const [allowed = 0] = ALLOWED[file] ?? [];
   if (lines.length > allowed) {
