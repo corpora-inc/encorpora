@@ -10,7 +10,7 @@ import {
   type StartSchoolClass,
 } from "../../../../schools/pilot-contracts";
 import type { AuthSession } from "../../../auth";
-import { call, keyFor, orgOptions, preload } from "../api";
+import { call, keyFor, orgOptions, pilotOptions, preload } from "../core-api";
 import { absoluteBuyerUrl } from "./buyer-url";
 const buyerUrlSchema = z.string().transform((value, context) => {
   try {
@@ -45,15 +45,8 @@ export const classAuthorizationOptions = (
         { signal },
       ),
   });
-export const pilotOptions = (session: AuthSession, classId: string) =>
-  queryOptions({
-    queryKey: keyFor(session, "class", classId, "pilot"),
-    queryFn: ({ signal }) =>
-      call(`/classes/${classId}/pilot`, pilotStateSchema, session, { signal }),
-    // A failed read is asked again by Try again or a change, never by each
-    // screen that mounts: a wait that holds a screen would ask forever.
-    retryOnMount: false,
-  });
+// A class's pilot is the shell's (core-api.ts).
+export { pilotOptions } from "../core-api";
 export async function preloadClassPilot(
   session: AuthSession,
   orgId: string,

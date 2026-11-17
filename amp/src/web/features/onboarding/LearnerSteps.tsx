@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import type { SignedInMe } from "../../../account/contracts";
 import type { AuthSession } from "../../auth";
 import { BirthYearPrompt } from "../../BirthYearPrompt";
-import { useLearnerStore } from "../../learner-store";
+import { selectLearner } from "../../learner-store";
 import {
   continuationSearch,
   fundedPrograms,
@@ -67,7 +67,7 @@ export function LearnerSteps({
     giftClaim.isPending ||
     correct.isPending;
   const practice = (learnerId: string) => {
-    useLearnerStore.getState().select(learnerId);
+    selectLearner(learnerId);
     draft.clear();
     void navigate(
       isFundedReturn(search.return)

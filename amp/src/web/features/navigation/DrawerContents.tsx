@@ -7,7 +7,7 @@ import {
   useRouter,
 } from "@tanstack/react-router";
 import { useLearningView } from "../../lib/learning-view";
-import { useLearnerStore } from "../../learner-store";
+import { selectLearner } from "../../learner-store";
 import { useShellSlots } from "../../lib/shell-slots";
 import { FeedbackPreferences } from "../practice/FeedbackPreferences";
 import { ChoicePicker, Listbox, type ListboxOption } from "../../ui/Listbox";
@@ -165,7 +165,7 @@ export default function DrawerContents({
       ? space.learner
       : null;
   function chooseLearner(id: string) {
-    useLearnerStore.getState().select(id);
+    selectLearner(id);
     const at = location.pathname;
     // A child's screens are at their own address, in their family: the
     // same tab for the new child, else their page.

@@ -13,21 +13,6 @@
   gap: var(--space-6);
   min-width: 0;
 }
-.up {
-  justify-self: start;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
-  min-height: 44px;
-  margin: calc(-1 * var(--space-3)) 0 calc(-1 * var(--space-4));
-  color: var(--color-muted-text);
-  font-size: var(--text-table);
-  font-weight: 600;
-  text-decoration: none;
-}
-.up:hover {
-  color: var(--color-on-surface);
-}
 .title p {
   margin-top: var(--space-1);
   color: var(--color-muted-text);

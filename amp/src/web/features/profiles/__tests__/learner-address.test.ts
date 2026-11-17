@@ -32,7 +32,7 @@ const me = {
 beforeEach(() => {
   queryClient.setQueryData(sessionOptions.queryKey, session);
   queryClient.setQueryData(meOptions(session).queryKey, me as never);
-  useLearnerStore.getState().select("wren");
+  useLearnerStore.getState().select(session.accountId, "wren");
 });
 afterEach(() => queryClient.clear());
 const at = (search: Record<string, unknown>) => ({
@@ -43,7 +43,7 @@ const at = (search: Record<string, unknown>) => ({
 test("CP-2 r2 H2: a route guard never chooses (a preload or a pending navigation runs it too)", async () => {
   await adoptPracticeMode(at({ learner: "pip" }));
   await adoptPracticeMode(at({ profile: "grade-4" }));
-  expect(useLearnerStore.getState().learnerId).toBe("wren");
+  expect(useLearnerStore.getState().learners[session.accountId]).toBe("wren");
 });
 
 test("CP-2 r2 H2: no route guard in the router chooses a learner", () => {
@@ -58,7 +58,7 @@ test("CP-2 H2: a learner or profile this account doesn't read is unavailable, no
     await expect(opened).rejects.toBeInstanceOf(AppError);
     await expect(opened).rejects.toMatchObject({ kind: "permission" });
   }
-  expect(useLearnerStore.getState().learnerId).toBe("wren");
+  expect(useLearnerStore.getState().learners[session.accountId]).toBe("wren");
 });
 
 test("CP-2 H2: one identity travels between learning screens", () => {
@@ -135,5 +135,5 @@ test("Q-209: an older ?learner= address is sent to its canonical one, and nobody
   // screen): no redirect.
   expect(await redirected("/pathways", "")).toBeNull();
   expect(await redirected("/pathways", "?learner=someone-else")).toBeNull();
-  expect(useLearnerStore.getState().learnerId).toBe("wren");
+  expect(useLearnerStore.getState().learners[session.accountId]).toBe("wren");
 });

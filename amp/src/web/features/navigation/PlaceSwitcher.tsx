@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useLocation, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import type { SignedInMe } from "../../../account/contracts";
-import { useLearnerStore } from "../../learner-store";
+import { currentLearner, selectLearner } from "../../learner-store";
 import { sessionOptions } from "../../lib/query";
 import { Menu, MenuItem, MenuLabel } from "../../ui/Menu";
 import { rememberPlace } from "../onboarding/place-memory";
@@ -89,7 +89,6 @@ export function choosePlace(me: SignedInMe, place: PlaceEntry) {
  * practice, one of the family's children for a family (unless one already
  * is), and nobody for a class or school, where no learner belongs. */
 export function choosePlaceLearner(me: SignedInMe, place: PlaceEntry["id"]) {
-  const store = useLearnerStore.getState();
   const own = me.adultPractice?.learner?.id ?? null;
   const shared = /^family:(.+)$/.exec(place)?.[1];
   const children =
@@ -100,16 +99,18 @@ export function choosePlaceLearner(me: SignedInMe, place: PlaceEntry["id"]) {
             ?.learners ?? [])
         : null;
   if (place === "me") {
-    if (own) store.select(own);
+    if (own) selectLearner(own, me.account.id);
   } else if (children) {
-    if (!children.some((learner) => learner.id === store.learnerId))
-      store.select(children[0]?.id ?? null);
+    if (
+      !children.some((learner) => learner.id === currentLearner(me.account.id))
+    )
+      selectLearner(children[0]?.id ?? null, me.account.id);
   } else if (
     place.startsWith("school:") ||
     place.startsWith("class:") ||
     place.startsWith("group:")
   )
-    store.select(null);
+    selectLearner(null, me.account.id);
 }
 
 /** What "Add a place" can still add: never a place the account has. */

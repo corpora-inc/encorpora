@@ -1,12 +1,5 @@
 /* Staff screens around the kit. Sizes and colors are tokens; hierarchy comes
    from type and space, not boxes. */
-.lost {
-  max-width: 640px;
-  min-height: 100dvh;
-  padding: var(--space-6) var(--space-5);
-  background: var(--color-surface);
-  color: var(--color-on-surface);
-}
 .pageHead {
   display: flex;
   flex-wrap: wrap;
@@ -333,20 +326,11 @@ button.copyPrimary {
   visibility: hidden;
 }
 
-/* Chooser and invitation: one card, centered in the page. */
-.chooser,
+/* The invitation: a narrow Page's column (InviteScreen). */
 .inviteCard {
-  display: grid;
   gap: var(--space-5);
-  align-content: start;
-  box-sizing: border-box;
-  max-width: 520px;
-  min-height: 100dvh;
-  margin-inline: auto;
-  padding: clamp(var(--space-5), 9vh, 96px) var(--space-4) var(--space-6);
   color: var(--color-on-surface);
 }
-.chooser > :first-child,
 .inviteCard > :first-child {
   padding-inline: 0;
 }
@@ -572,7 +556,6 @@ button.copyPrimary {
 .helpBody {
   display: grid;
   gap: var(--space-6);
-  max-width: 720px;
 }
 .helpLead {
   font-size: var(--text-body);
@@ -638,12 +621,10 @@ button.copyPrimary {
 .yearSection {
   display: grid;
   gap: var(--space-4);
-  max-width: 720px;
   margin-top: var(--space-6);
 }
 .yearSection + .settingsLinks,
 .classMeta + .settingsLinks {
-  max-width: 720px;
   margin-top: var(--space-6);
 }
 .yearSection h2 {
@@ -686,7 +667,7 @@ button.copyPrimary {
 .calendarControl {
   display: grid;
   gap: var(--space-2);
-  max-width: 480px;
+  max-width: var(--page-narrow);
 }
 .sessionList {
   display: grid;
@@ -770,6 +751,14 @@ button.copyPrimary {
   font-variant-numeric: var(--numeric);
   white-space: nowrap;
 }
+/* A name sits over today's hairline, on its part's own color. */
+.ribbonLabel {
+  position: relative;
+  z-index: 2;
+  padding-inline: var(--space-1);
+  border-radius: 3px;
+  background: inherit;
+}
 .ribbonBar[data-labelled] .ribbonPart + .ribbonPart {
   box-shadow: inset 2px 0 0 var(--color-surface);
 }
@@ -846,7 +835,7 @@ button.copyPrimary {
 .licenseFacts {
   display: grid;
   gap: var(--space-4);
-  max-width: 520px;
+  max-width: var(--page-narrow);
 }
 .waitingNote {
   display: flex;
@@ -872,12 +861,6 @@ button.copyPrimary {
   font-weight: 600;
 }
 
-.inviteCard[data-in-shell] {
-  max-width: var(--width-form);
-  min-height: calc(100dvh - var(--shell-bar, 56px));
-  padding-top: var(--space-5);
-}
-
 /* Settings: one page of sections, each a heading with its facts and
    controls, separated by space and a hairline (docs/design/ia.md). */
 /* A settings page is one focused column, centred (docs/design/ia.md). */
@@ -889,7 +872,7 @@ button.copyPrimary {
   margin-bottom: calc(-1 * var(--space-4));
 }
 .classSettings {
-  max-width: 880px;
+  max-width: var(--page-standard);
   margin-inline: auto;
 }
 .classSettings > .settingsSection {

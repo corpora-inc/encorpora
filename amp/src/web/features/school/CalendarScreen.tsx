@@ -1,3 +1,4 @@
+import { reportError } from "../../lib/report-error";
 import { closeSearch } from "../../lib/return-to";
 import { OrgFrame } from "./OrgFrame";
 import { useQuery } from "@tanstack/react-query";
@@ -18,7 +19,6 @@ import {
 } from "../../../schools/calendar";
 import type { SessionResource } from "../../../schools/setup-contracts";
 import type { GradingKind } from "../../../schools/contracts";
-import { AppError } from "../../lib/AppError";
 import { useLoggedError } from "../../feedback";
 import { Button, buttonClass } from "../../ui/Button";
 import { DatePicker } from "../../ui/DatePicker";
@@ -43,9 +43,6 @@ import styles from "./School.module.css";
 
 /** The term choice of a small class: None is the whole year, no terms. */
 const TERM_CHOICES = gradingChoices;
-
-const message = (failure: unknown, fallback: string) =>
-  failure instanceof AppError ? failure.message : fallback;
 
 /** Changing one session's dates (the year, a term): a sheet of two days. */
 export function EditSheet({
@@ -96,7 +93,10 @@ export function EditSheet({
               .then(onClose)
               .catch((failure) => {
                 setError(
-                  message(failure, "Those dates didn’t save. Try again."),
+                  reportError(failure, {
+                    doing: "save those dates",
+                    fallback: "Those dates didn’t save. Try again.",
+                  }),
                 );
                 setBusy(false);
               });
@@ -180,7 +180,12 @@ export function YearCalendar({
       .addDivision(session, orgId, kind)
       .then(() => refreshSchool(session))
       .catch((failure) =>
-        setError(message(failure, "Those terms didn’t save. Try again.")),
+        setError(
+          reportError(failure, {
+            doing: "save those terms",
+            fallback: "Those terms didn’t save. Try again.",
+          }),
+        ),
       )
       .finally(() => setBusy(false));
   };

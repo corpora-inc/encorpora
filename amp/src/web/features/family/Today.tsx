@@ -16,7 +16,7 @@ import { useChecks } from "../school/classes/today/todo-entries";
 import { useHandOver } from "../school/classes/today/use-hand-over";
 import { fullDay } from "../school/classes/teacher-shared";
 import type { FamilyChild } from "./api";
-import { useLearnerStore } from "../../learner-store";
+import { selectLearner } from "../../learner-store";
 import { useStartOwnPractice } from "../me/api";
 import { rememberPlace } from "../onboarding/place-memory";
 import { AddChildrenSheet } from "./AddChildren";
@@ -87,7 +87,7 @@ function ChildBillingLink({
     : pending
       ? "View invoice"
       : "Manage access";
-  const select = () => useLearnerStore.getState().select(child.id);
+  const select = () => selectLearner(child.id);
   if (!child.access.hasAccess)
     return (
       <PayLink

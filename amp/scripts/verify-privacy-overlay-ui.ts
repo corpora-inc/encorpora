@@ -69,7 +69,19 @@ async function signedIn(browser: Browser, person: string, width: number, scheme:
     try {
       new PerformanceObserver((list) => {
         for (const entry of list.getEntries())
-          if (!entry.hadRecentInput) window.__shifts.push(entry.value);
+          if (!entry.hadRecentInput)
+            window.__shifts.push({
+              value: entry.value,
+              sources: (entry.sources || []).map((source) => {
+                const node = source.node;
+                return node && node.nodeType === 1
+                  ? node.tagName.toLowerCase() +
+                      (typeof node.className === "string" && node.className
+                        ? "." + node.className.split(" ")[0]
+                        : "")
+                  : "?";
+              }),
+            });
       }).observe({ type: "layout-shift", buffered: true });
     } catch {}
   })()`);
@@ -94,13 +106,19 @@ async function hubOf(page: Page) {
   return new URL(page.url()).pathname.replace(/\/privacy$/, "");
 }
 
-async function shifts(page: Page) {
-  return page.evaluate(() =>
-    ((window as unknown as { __shifts: number[] }).__shifts ?? []).reduce(
-      (sum, value) => sum + value,
-      0,
-    ),
+type Shift = { value: number; sources: string[] };
+/** The layout shifts since the page loaded (none with recent input). */
+async function shifts(page: Page): Promise<Shift[]> {
+  return page.evaluate(
+    () => (window as unknown as { __shifts: Shift[] }).__shifts ?? [],
   );
+}
+/** The overlay's own shifts: those after `from`, and none from the hub
+ * page behind (its loading is the hub's to hold still). */
+async function assertStill(page: Page, from: number, label: string) {
+  const own = (await shifts(page)).slice(from);
+  const total = own.reduce((sum, shift) => sum + shift.value, 0);
+  assert.ok(total < 0.01, `${label}: layout shift ${total} ${JSON.stringify(own)}`);
 }
 
 async function geometry(page: Page, label: string) {
@@ -145,7 +163,10 @@ async function walk(browser: Browser, person: string, width: number, scheme: "li
     await page.locator(OVERLAY).waitFor();
     await page.locator("[data-privacy-panels]").waitFor();
     assert.equal(new URL(page.url()).pathname, `${hub}/privacy`, label);
-    const before = await shifts(page);
+    // Settle the hub behind, then count only what the overlay moves.
+    await page.waitForLoadState("networkidle").catch(() => undefined);
+    await page.waitForTimeout(500);
+    const before = (await shifts(page)).length;
     // Switching panels: one open at a time, nothing shifts.
     for (const id of ["export", "retention", "documents"]) {
       await panel(page, id).locator("summary").click();
@@ -164,6 +185,7 @@ async function walk(browser: Browser, person: string, width: number, scheme: "li
     }
     await panel(page, "retention").locator("summary").click();
     await page.waitForTimeout(150);
+    await assertStill(page, before, `${label} switching panels`);
     if (SHOTS)
       await page.screenshot({
         path: join(SHOTS, `privacy-${person}-${width}-${scheme}.png`),
@@ -177,15 +199,18 @@ async function walk(browser: Browser, person: string, width: number, scheme: "li
         ?.hasAttribute("open"),
     );
     assert.equal(new URL(page.url()).pathname, `${hub}/privacy`);
-    // ✕ closes it to the hub.
+    // ✕ closes it to the hub, and the hub doesn't move.
+    await page.waitForLoadState("networkidle").catch(() => undefined);
+    await page.waitForTimeout(500);
+    const open = (await shifts(page)).length;
     await page
       .getByRole("dialog")
       .getByRole("button", { name: /close/i })
       .click();
     await page.locator(OVERLAY).waitFor({ state: "detached" });
     assert.equal(new URL(page.url()).pathname, hub, `${label}: closes to the hub`);
-    const after = await shifts(page);
-    assert.ok(after - before < 0.01, `${label}: layout shift ${after - before}`);
+    await page.waitForTimeout(300);
+    await assertStill(page, open, `${label} closing`);
     // Each legacy address: one hop, its panel open.
     for (const [from, id] of [
       ["/account/privacy/export", "export"],

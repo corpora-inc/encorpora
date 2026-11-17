@@ -1,7 +1,7 @@
 import { secureChromium } from "../browser-security.mjs";
 /**
  * Search fields type instantly. For every search box that mirrors its text
- * into the URL (Lessons, Pathways, Inventory), a fast typing burst must:
+ * into the URL (Pathways, Inventory), a fast typing burst must:
  *
  * - land every character, in order (no dropped, doubled or reordered keys);
  * - add at most one history entry (the URL follows with `replace`);
@@ -96,13 +96,9 @@ type Screen = {
   label: string;
   param: string;
 };
+// `/lessons` opens Pathways (docs/design/ia.md): the one search is checked
+// on the two screens that hold it.
 const screens: Screen[] = [
-  {
-    id: "lessons",
-    path: "/lessons",
-    label: "Search",
-    param: "q",
-  },
   {
     id: "pathways",
     path: "/pathways",
@@ -175,11 +171,6 @@ try {
     }
     await page.goto(origin + screen.path, { waitUntil: "domcontentloaded" });
     await page.getByRole("searchbox", { name: screen.label }).waitFor();
-    if (screen.id === "lessons")
-      await page
-        .locator("[data-lesson-id]")
-        .first()
-        .waitFor({ state: "attached" });
     await settle(page, 600);
 
     const { field, record, added } = await typeBurst(page, screen);

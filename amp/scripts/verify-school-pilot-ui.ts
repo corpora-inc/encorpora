@@ -144,6 +144,15 @@ try {
   assert.equal(await page.getByLabel("Your role").count(), 0);
   await page.getByLabel("School name").fill("Alder pilot school");
   await page.getByLabel("Class name").fill("Grade 3 Math");
+  // Two steps on the shared stepper, each its own address; no in-page Back.
+  await page.getByText("Step 1 of 2").waitFor();
+  assert.equal(
+    await page.getByRole("link", { name: /^(Back|Cancel)$/ }).count(),
+    0,
+  );
+  await page.getByRole("button", { name: "Next", exact: true }).click();
+  await page.waitForURL(/\/school\/start\/students$/);
+  await page.getByRole("heading", { name: "Your students" }).waitFor();
   if (await page.getByLabel("Your name", { exact: true }).count())
     await page.getByLabel("Your name", { exact: true }).fill("Teacher Example");
   await page.getByRole("checkbox").check();
@@ -156,7 +165,8 @@ try {
     } else await route.continue();
   });
   await page.getByRole("button", { name: "Create class", exact: true }).click();
-  await page.locator("[role=alert]").filter({ hasText: /./ }).first().waitFor();
+  // The failure is said under the action, which stays pressable.
+  await page.getByText(/Check your connection and try again/).waitFor();
   await page.getByRole("button", { name: "Create class", exact: true }).click();
   await page.waitForURL(/\/classes\/[\w-]+\/roster/);
   assert.equal(
@@ -192,7 +202,7 @@ try {
     .getByRole("button", { name: /^(Add these names|Use these rows)$/ })
     .click();
   // Plain columns skip the column check and go straight to the students.
-  await page.waitForURL(/step=review/);
+  await page.waitForURL(/\/import\/review$/);
   await page.getByRole("heading", { name: "2 new students" }).waitFor();
   await page.getByRole("button", { name: "Add 2 students" }).click();
   await page.waitForURL(/\/roster$/);
@@ -226,6 +236,7 @@ try {
   await page.goto(`${origin}/school/start`);
   await page.getByLabel("Class name").fill("Math support");
   assert.equal(await page.getByLabel("School name").count(), 0);
+  await page.getByRole("button", { name: "Next", exact: true }).click();
   // The school's agreement already covers a second class: one line, no tick.
   await page.getByText(/^Covered by your agreement of/).waitFor();
   assert.equal(await page.getByRole("checkbox").count(), 0);
@@ -401,8 +412,9 @@ try {
   await capture("buyer-link-held");
   await page.unroute("**/api/v1/school/purchase-requests");
   // Import remains the first action for an empty class after this teacher's pilot.
-  await page.goto(`${origin}/school/start?org=${created.org_id}`);
+  await page.goto(`${origin}/school/start`);
   await page.getByLabel("Class name").fill("Empty after pilot");
+  await page.getByRole("button", { name: "Next", exact: true }).click();
   assert.equal(await page.getByLabel("Your name", { exact: true }).count(), 0);
   // Covered by the agreement this school already accepted.
   await page.getByText(/^Covered by your agreement of/).waitFor();
@@ -420,7 +432,7 @@ try {
   await page
     .getByRole("button", { name: /^(Add these names|Use these rows)$/ })
     .click();
-  await page.waitForURL(/step=map/);
+  await page.waitForURL(/\/import\/columns$/);
   await page.getByRole("heading", { name: "Check the columns" }).waitFor();
   await capture("unknown-column-review");
   // Coverage from another grant or pilot keeps the working sign-in controls.

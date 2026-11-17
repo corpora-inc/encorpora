@@ -35,7 +35,7 @@ import { Stepper } from "../../ui/Stepper";
 import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { currentSession } from "../school/api";
-import { useLearnerStore } from "../../learner-store";
+import { currentLearner, selectLearner } from "../../learner-store";
 import {
   choosePracticeProfile,
   leaveTarget,
@@ -574,9 +574,8 @@ function ProfileEditor({
                 onSuccess: () => {
                   setConfirm(false);
                   // Practicing as it ends: back to their own, or home.
-                  const store = useLearnerStore.getState();
-                  if (store.learnerId === profile.id)
-                    store.select(back.own ?? back.first);
+                  if (currentLearner() === profile.id)
+                    selectLearner(back.own ?? back.first);
                   if (back.own)
                     void navigate({ to: "/$", params: { _splat: "me" } });
                   else toHome();

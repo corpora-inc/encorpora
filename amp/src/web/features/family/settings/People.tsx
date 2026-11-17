@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
-import { useLearnerStore } from "../../../learner-store";
+import { selectLearner } from "../../../learner-store";
 import { useStartOwnPractice } from "../../me/api";
 import { OwnStartSetting } from "../../me/OwnStartSetting";
 import { Button } from "../../../ui/Button";
@@ -98,7 +98,7 @@ function OwnPractice({ place }: { place: FamilyPlace }) {
     ? me.family.learners.find((entry) => entry.id === own.id)
     : undefined;
   const practice = (learnerId: string) => {
-    useLearnerStore.getState().select(learnerId);
+    selectLearner(learnerId);
     void navigate({ to: "/$", params: { _splat: "practice" } });
   };
   return (

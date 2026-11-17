@@ -1,10 +1,6 @@
+import { reportError } from "../../../lib/report-error";
 import { useQuery } from "@tanstack/react-query";
-import {
-  Link,
-  useNavigate,
-  useParams,
-  useSearch,
-} from "@tanstack/react-router";
+import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import {
   divisionLabels,
@@ -29,6 +25,7 @@ import { Segmented } from "../../../ui/Segmented";
 import { Select } from "../../../ui/Select";
 import { currentSession, refreshSchool } from "../api";
 import { number } from "../classes/teacher-shared";
+import { FlowSteps } from "../../../ui/FlowSteps";
 import { OrgFrame } from "../OrgFrame";
 import { FormNote, gradeLabel, PageHead } from "../parts";
 import { orgPath } from "../paths";
@@ -45,6 +42,9 @@ const STEPS = [
 type StepId = (typeof STEPS)[number]["id"];
 const isStep = (value: unknown): value is StepId =>
   STEPS.some((step) => step.id === value);
+/** A step's own address: `/school/<org>/year`, then `/year/<step>`. */
+const stepUrl = (orgId: string, step: StepId) =>
+  `/${orgPath(orgId, "year")}${step === "dates" ? "" : `/${step}`}`;
 
 type Draft = {
   startsOn: string;
@@ -458,8 +458,11 @@ function ReviewStep({
 /** A new school year, as a short wizard with a real URL for each step. It ends in
  * a dry run of exactly what will happen, and one transaction when confirmed. */
 export function RolloverScreen() {
-  const { org: orgId } = useParams({ strict: false }) as { org: string };
-  const search = useSearch({ strict: false }) as { step?: unknown };
+  const params = useParams({ strict: false }) as {
+    org: string;
+    step?: unknown;
+  };
+  const orgId = params.org;
   const navigate = useNavigate();
   const session = currentSession();
   const options = useQuery(rolloverOptions(session, orgId));
@@ -469,20 +472,14 @@ export function RolloverScreen() {
   const [result, setResult] = useState<RolloverResult | null>(null);
   useLoggedError(error);
   const data = options.data;
-  const step: StepId = isStep(search.step) ? search.step : "dates";
+  const step: StepId = isStep(params.step) ? params.step : "dates";
   const current = useMemo(
     () => draft ?? (data ? startingDraft(data) : null),
     [draft, data],
   );
   const go = (next: StepId) => {
     setError("");
-    void navigate({
-      to: ".",
-      search: ((previous: Record<string, unknown>) => ({
-        ...previous,
-        step: next === "dates" ? undefined : next,
-      })) as never,
-    });
+    void navigate({ to: stepUrl(orgId, next) as never });
   };
   const change = (patch: Partial<Draft>) => {
     const next = { ...current!, ...patch };
@@ -505,9 +502,11 @@ export function RolloverScreen() {
       setResult(applied);
     } catch (failure) {
       setError(
-        failure instanceof AppError
-          ? failure.message
-          : "The new year didn’t start, and nothing changed. Try again.",
+        reportError(failure, {
+          doing: "start the new school year",
+          fallback:
+            "The new year didn’t start, and nothing changed. Try again.",
+        }),
       );
     } finally {
       setBusy(false);
@@ -574,24 +573,12 @@ export function RolloverScreen() {
         </div>
       ) : (
         <div className={styles.wizard}>
-          <ol className={styles.steps}>
-            {STEPS.map((entry, place) => (
-              <li
-                key={entry.id}
-                aria-current={entry.id === step ? "step" : undefined}
-                data-done={place < index || undefined}
-              >
-                <button
-                  type="button"
-                  disabled={place > index}
-                  onClick={() => go(entry.id)}
-                >
-                  <span aria-hidden="true">{place + 1}</span>
-                  {entry.label}
-                </button>
-              </li>
-            ))}
-          </ol>
+          <FlowSteps
+            steps={STEPS}
+            current={index}
+            href={(id) => stepUrl(orgId, id as StepId)}
+            label="New school year"
+          />
           {step === "dates" && <DatesStep draft={current} onChange={change} />}
           {step === "classes" && (
             <ClassesStep draft={current} options={data} onChange={change} />
@@ -608,15 +595,6 @@ export function RolloverScreen() {
           )}
           <FormNote error={error} />
           <div className={styles.stepActions}>
-            {index > 0 && (
-              <Button
-                variant="secondary"
-                disabled={busy}
-                onClick={() => go(STEPS[index - 1]!.id)}
-              >
-                Back
-              </Button>
-            )}
             {step === "review" ? (
               <Button
                 variant="primary"

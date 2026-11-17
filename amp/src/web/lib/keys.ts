@@ -62,6 +62,9 @@ export const qk = {
   session: () => ["session"] as const,
   /** How this deployment signs people in. */
   authConfig: () => ["auth-config"] as const,
+  /** The whole learning catalog the search corpus is built from
+   * (features/search/search-corpus.ts): the same for every visitor. */
+  searchCatalog: () => ["search-catalog"] as const,
   /** One account's data, or one of its resources. */
   account,
 };

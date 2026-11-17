@@ -25,14 +25,18 @@ import { meOptions, sessionOptions } from "../../lib/query";
 import { skillCatalogOptions } from "../../lib/learning-view";
 import { request } from "../../lib/api";
 import { useUrlSearchText } from "../../lib/url-search-text";
-import { useLearnerStore } from "../../learner-store";
+import { useCurrentLearner } from "../../learner-store";
 import type { AuthSession } from "../../auth";
 import { gradeName } from "../../Home";
 import { byArea, fitScale, LevelRows, WHOLE_SCALE } from "../../ui/level-range";
 import { measured } from "../../../learning/level-check";
-import { useLessonSearch, type SearchResult } from "../../lib/lesson-search";
-import { SearchResults, type SearchActions } from "../search/SearchResults";
-import { useSearchCorpus } from "../search/search-corpus";
+import { SearchResults } from "../search/SearchResults";
+import {
+  SiteSearchField,
+  useResultKeys,
+  useSearchActions,
+  useSiteSearch,
+} from "../search/SiteSearch";
 import { strandNames } from "../../BirthYearPrompt";
 import { lazyRouteComponent } from "../../lib/lazy-route-component";
 import { PathwayPlan } from "./PathwayPlan";
@@ -55,8 +59,7 @@ import {
 import { ListboxDisclosure, type ListboxOption } from "../../ui/Listbox";
 import { Segmented } from "../../ui/Segmented";
 import { LayerHost } from "../../nav/LayerHost";
-import { EntityLink, shareableHref, useLayers } from "../../nav/links";
-import { pushed } from "../../nav/layer-store";
+import { EntityLink, useLayers } from "../../nav/links";
 import { buttonClass } from "../../ui/Button";
 import layers from "../../nav/layers.module.css";
 import { RootLink } from "../../nav/root";
@@ -108,22 +111,6 @@ const bandOptions: ListboxOption[] = [
   { value: "", label: "All grades & courses" },
   ...bands.map((b) => ({ value: b, label: bandLabel(b) })),
 ];
-// Related words a learner may type for what the catalog calls something else.
-const synonyms: Record<string, string[]> = {
-  logic: ["reasoning", "proof", "argument", "justify"],
-  shapes: ["geometry", "polygon"],
-  times: ["multiplication", "multiply"],
-  share: ["division", "divide"],
-};
-function matchesQuery(text: string, query: string) {
-  const haystack = text.toLowerCase();
-  const q = query.trim().toLowerCase();
-  return (
-    haystack.includes(q) ||
-    (synonyms[q] ?? []).some((w) => haystack.includes(w))
-  );
-}
-
 /** A lesson, problem type or film a search found, offered first in its
  * skill's panel. */
 type SearchFound = {
@@ -178,7 +165,7 @@ function GuestMap() {
 
 function LearnerMap({ session }: { session: AuthSession }) {
   const me = useQuery(meOptions(session));
-  const { learnerId: chosenId, select } = useLearnerStore();
+  const chosenId = useCurrentLearner();
   // Whose map the address names (features/spaces/identity.ts): yourself at
   // /pathways, a family's child at /family/<family>/kids/<learner>/pathways,
   // a practice profile by `?profile=`. Unnamed, a parent with no practice of
@@ -201,10 +188,6 @@ function LearnerMap({ session }: { session: AuthSession }) {
   const own = practicingAsAdult(account, learnerId)
     ? adultLearner(account)
     : (profileLearner(account, learnerId) ?? solo);
-  useEffect(() => {
-    if (!addressed && solo && own === solo && learnerId !== solo.id)
-      select(solo.id);
-  }, [solo?.id, learnerId]);
   /** Another child's map is their own address. */
   const openChild = (id: string) => {
     const family = account ? childFamily(account, id, places.data) : null;
@@ -448,46 +431,36 @@ export function MapView({
   // The one search (docs/design/ia.md): skills, lessons, films and math
   // words, grouped, once there is something typed.
   const searching = query.trim().length > 0;
-  const docs = useSearchCorpus(searching);
-  const found = useLessonSearch(docs, searching ? query.trim() : "", "");
+  const found = useSiteSearch(query, browse);
+  const keys = useResultKeys();
   // On Pathways every result selects its skill in the map, as the list
   // without a search does (founder): the camera frames it, its panel opens,
   // the search closes with the query kept. A lesson, problem type or film is
   // then offered first in the panel, as found.
   const [picked, setPicked] = useState<SearchFound | null>(null);
-  const searchActionsFor = (): SearchActions => {
-    // An older server's result carries no skill: this page's own corpus
-    // knows every document's.
-    const skillOf = (result: SearchResult) =>
-      result.skill || docs?.find((doc) => doc.id === result.id)?.skill || "";
-    // A new tab or a copied link opens the map with the skill over it.
-    const href = (result: SearchResult) =>
-      shareableHref(
-        window.location.pathname,
-        window.location.search,
-        skillOf(result)
-          ? pushed(stack, { kind: "skill", id: skillOf(result) })
-          : stack,
-      );
-    return {
-      href,
-      open: (result) => {
-        const skill = skillOf(result);
-        if (!skill) return;
-        setPicked(
-          result.kind === "skill"
-            ? null
-            : {
-                kind: result.kind,
-                id: result.target,
-                title: result.title,
-                skill,
-              },
-        );
-        select(skill, true);
-      },
-    };
-  };
+  const searchActions = useSearchActions(found.docs, (result, skill) => {
+    setPicked(
+      result.kind === "skill"
+        ? null
+        : {
+            kind: result.kind,
+            id: result.target,
+            title: result.title,
+            skill,
+          },
+    );
+    select(skill, true);
+  });
+  // A chosen grade or course narrows the results too; math words stay.
+  const results = useMemo(
+    () =>
+      band
+        ? found.results.filter(
+            (result) => result.kind === "term" || result.band === band,
+          )
+        : found.results,
+    [found.results, band],
+  );
   const skills = catalog.data?.skills;
   const selected = skills?.find((s) => s.id === selectedId);
   // What a search found, while its skill is the one selected.
@@ -550,8 +523,7 @@ export function MapView({
     skills?.filter(
       (s) =>
         (!band || s.gradeBand === band) &&
-        (!area || areaSlot(s) === areas.findIndex((a) => a.id === area)) &&
-        matchesQuery(`${s.title} ${s.description}`, query),
+        (!area || areaSlot(s) === areas.findIndex((a) => a.id === area)),
     ) ?? [];
   const range = frontier ? frontierRange(frontier, selected?.strand) : null;
   const overall = frontier ? frontierRange(frontier) : null;
@@ -721,24 +693,15 @@ export function MapView({
           }
         }}
       >
-        <label className="pathways-search">
-          <input
-            type="search"
-            aria-label="Search"
-            placeholder="Search"
-            maxLength={100}
-            value={field.text}
-            onFocus={() => setBrowse(true)}
-            onChange={(e) => {
-              setBrowse(true);
-              field.change(e.target.value);
-            }}
-            onBlur={field.flush}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") field.flush();
-            }}
-          />
-        </label>
+        <SiteSearchField
+          className="pathways-search"
+          field={field}
+          inputRef={keys.input}
+          onFocus={() => setBrowse(true)}
+          onChange={() => setBrowse(true)}
+          onEscape={() => setBrowse(false)}
+          onKeyDown={keys.onKeyDown}
+        />
         <button
           aria-label={browse ? "Close browser" : "Browse skills"}
           aria-expanded={browse}
@@ -805,11 +768,15 @@ export function MapView({
                 />
               </div>
               {searching && (
-                <div className="pathways-results">
+                <div
+                  className="pathways-results"
+                  ref={keys.list}
+                  onKeyDown={keys.onKeyDown}
+                >
                   <SearchResults
-                    results={found.results}
+                    results={results}
                     pending={found.pending}
-                    actions={searchActionsFor()}
+                    actions={searchActions}
                   />
                 </div>
               )}

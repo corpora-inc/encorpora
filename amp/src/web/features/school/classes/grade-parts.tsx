@@ -1,6 +1,6 @@
+import { useSession } from "../../../lib/session";
 import { useEffect, useRef, useState } from "react";
 import type { SuggestionResource } from "../../../../schools/teacher-contracts";
-import type { AuthSession } from "../../../auth";
 import { failureMessage, useSaveFinal, type Place } from "./teacher-api";
 import styles from "./Teacher.module.css";
 
@@ -28,7 +28,6 @@ export function Suggested({ suggestion }: { suggestion: SuggestionResource }) {
 /** A blank on a gradebook line. Whatever form the school uses, it saves on blur
  * with a quiet check beside it, and nothing around it moves. */
 export function FinalField({
-  session,
   place,
   student,
   term,
@@ -37,7 +36,6 @@ export function FinalField({
   onError,
   onSaved,
 }: {
-  session: AuthSession | null;
   place: Place;
   student: { id: string; name: string; first: string };
   term: string;
@@ -46,6 +44,7 @@ export function FinalField({
   onError: (message: string) => void;
   onSaved: (message: string) => void;
 }) {
+  const session = useSession();
   const save = useSaveFinal(session, place);
   const [draft, setDraft] = useState(final ?? "");
   const [state, setState] = useState<"idle" | "saved" | "failed">("idle");

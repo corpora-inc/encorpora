@@ -3,7 +3,7 @@ import { EngagementClock } from "../../analytics/engagement";
 import { screenForPath } from "../../analytics/engagement";
 import type { Me } from "../../account/contracts";
 import type { AuthSession } from "../auth";
-import { useLearnerStore } from "../learner-store";
+import { currentLearner } from "../learner-store";
 import { nativeRuntime } from "../native-runtime";
 import { practicingAsAdult } from "./adult-learner";
 import { meKey, queryClient, sessionOptions } from "./query";
@@ -102,8 +102,7 @@ export function startAdultActivity(): Activity {
       );
       if (!session) return null;
       const me = queryClient.getQueryData<Me>(meKey(session.accountId));
-      return me?.signedIn &&
-        practicingAsAdult(me, useLearnerStore.getState().learnerId)
+      return me?.signedIn && practicingAsAdult(me, currentLearner())
         ? { url: "/api/v1/me/practice/activity", token: session.token }
         : null;
     },

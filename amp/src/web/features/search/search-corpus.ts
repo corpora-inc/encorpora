@@ -7,6 +7,7 @@ import type { TemplateMetadata } from "../../../math/contracts";
 import { buildCorpus, type SearchDoc } from "../../../search/corpus";
 import { gradeOrder } from "../../BirthYearPrompt";
 import { learningCatalog } from "../../learning-transport";
+import { qk } from "../../lib/keys";
 
 /** The search corpus outside the lessons library: the same catalog, lessons,
  * films and glossary, built once per session. Pathways' search is the one
@@ -41,7 +42,7 @@ let cache: { key: readonly unknown[]; docs: readonly SearchDoc[] } | undefined;
 
 export function useSearchCorpus(enabled: boolean): readonly SearchDoc[] {
   const catalog = useQuery({
-    queryKey: ["search-catalog"],
+    queryKey: qk.searchCatalog(),
     queryFn: () => learningCatalog() as Promise<SearchCatalog>,
     staleTime: Infinity,
     enabled,

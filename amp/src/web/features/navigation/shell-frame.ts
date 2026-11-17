@@ -61,6 +61,7 @@ export function shellFrame(
     [
       "/school/invite",
       "/school/start",
+      "/school/start/students",
       "/school/start/school",
       "/school/connect",
       "/school/adopt",

@@ -1,8 +1,8 @@
+import { reportError } from "../../lib/report-error";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
 import { useState } from "react";
 import { formatDay, formatLastDay } from "../../../schools/calendar";
-import { AppError } from "../../lib/AppError";
 import { useLoggedError } from "../../feedback";
 import { Badge } from "../../ui/Badge";
 import { Button, buttonClass } from "../../ui/Button";
@@ -50,9 +50,10 @@ function RequestSeats({ orgId, waiting }: { orgId: string; waiting: number }) {
           })
           .catch((failure) =>
             setError(
-              failure instanceof AppError
-                ? failure.message
-                : "The request didn’t send. Email support@corpora.inc.",
+              reportError(failure, {
+                doing: "send the request",
+                fallback: "The request didn’t send. Email support@corpora.inc.",
+              }),
             ),
           )
           .finally(() => setBusy(false));

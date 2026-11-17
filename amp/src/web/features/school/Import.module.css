@@ -113,7 +113,7 @@
 .map {
   display: grid;
   gap: var(--space-4);
-  max-width: 880px;
+  max-width: var(--page-standard);
 }
 .mapLead {
   color: var(--color-muted-text);
@@ -154,7 +154,7 @@
   overflow-wrap: anywhere;
 }
 .fallback {
-  max-width: 420px;
+  max-width: var(--page-narrow);
 }
 .fallback label {
   font-size: var(--text-table);
@@ -168,7 +168,7 @@
 .schoolPick {
   display: grid;
   gap: var(--space-2);
-  max-width: 420px;
+  max-width: var(--page-narrow);
 }
 
 /* The diff: the sentence a head of school reads aloud. */
