@@ -6,6 +6,8 @@ import { draw } from "./elementary-gap-kit";
 export const variableSituationTemplate: TemplateMetadata = {
   id: "variable-in-situation",
   version: 2,
+  // Version 1 replays on the same draws, so its saved workbooks reprint.
+  reprintsFrom: 1,
   requiredResponseCapability: "single-choice-v1",
   title: "What can change?",
   skillId: "variable-expressions",
