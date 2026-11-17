@@ -402,13 +402,17 @@ async function verifyShell() {
     await context.close();
   }
 
-  // 8. Pathway callouts show whole or not at all.
+  // 8. Pathway callouts show whole or not at all. They are the 3D map's
+  // (the grades view is the default; a device keeps its choice).
   for (const width of [320, 390, 768]) {
     const { page, context } = await open(
       "pathway-skill",
       { width, height: 844 },
       "light",
     );
+    await page.evaluate(() => localStorage.setItem("amp.pathways-view", "3d"));
+    await page.reload();
+    await page.locator(".pathways-map-labels .area-label").first().waitFor();
     await page.waitForTimeout(1500);
     const cut = await page.evaluate(() => {
       const host = document
@@ -451,34 +455,25 @@ async function verifyShell() {
     );
     await context.close();
   }
-  // Workbooks are on the one app shell, whose logo is the menu itself.
-  for (const id of ["account-ready"]) {
-    // The branded bar keeps the wordmark beside the menu.
+  // Account ready: an address moves to its own line whole, never split at
+  // a hyphen. (Its card's brand yields to the app frame's one logo, which is
+  // the menu: FrameBrand.test.tsx.)
+  {
     const { page, context } = await open(
-      id,
+      "account-ready",
       { width: 390, height: 844 },
       "light",
     );
-    const trigger = await box(page, "[data-navigation-trigger]");
-    const brand = await box(page, 'a[aria-label$="home"]');
-    check(
-      trigger && brand && brand.x - (trigger.x + trigger.width) < 24,
-      `${id} 390: wordmark is ${trigger && brand ? Math.round(brand.x - trigger.x - trigger.width) : "?"}px from the menu`,
-    );
-    if (id === "account-ready") {
-      // An address moves to its own line whole, never split at a hyphen.
-      const lines = await page.evaluate(() => {
-        const range = document.createRange();
-        const address = [...document.querySelectorAll("p span")].find((e) =>
-          e.textContent?.includes("@"),
-        )!;
-        range.selectNodeContents(address);
-        return new Set(
-          [...range.getClientRects()].map((r) => Math.round(r.top)),
-        ).size;
-      });
-      check(lines === 1, `account-ready 390: the address spans ${lines} lines`);
-    }
+    const lines = await page.evaluate(() => {
+      const range = document.createRange();
+      const address = [...document.querySelectorAll("p span")].find((e) =>
+        e.textContent?.includes("@"),
+      )!;
+      range.selectNodeContents(address);
+      return new Set([...range.getClientRects()].map((r) => Math.round(r.top)))
+        .size;
+    });
+    check(lines === 1, `account-ready 390: the address spans ${lines} lines`);
     await context.close();
   }
 }

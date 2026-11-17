@@ -22,7 +22,9 @@ const vite = await createServer({
       },
     },
   ],
-  server: { host: "127.0.0.1", port: 4394, strictPort: true },
+  // Nothing changes on disk during a check: no watcher, which on CI walked
+  // into the runner's /run/udev and crashed with ELOOP.
+  server: { host: "127.0.0.1", port: 4394, strictPort: true, watch: null },
 });
 await vite.listen();
 const browser = await chromium.launch();

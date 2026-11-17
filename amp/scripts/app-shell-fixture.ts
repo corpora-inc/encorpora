@@ -469,10 +469,9 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       id: "pathway-lesson",
       path: "/pathways?lesson=count-objects",
       state: "paid",
+      // The sheet's title, then the lesson itself.
       ready: (p) =>
-        p.waitForFunction(
-          () => document.querySelectorAll('[role="dialog"] h2').length >= 2,
-        ),
+        p.locator('[role="dialog"] article.problem-lesson').first().waitFor(),
     },
     {
       id: "lesson-reader",
