@@ -115,7 +115,9 @@ async function reconcile(
   signal.throwIfAborted();
   const parent = await accessSession();
   signal.throwIfAborted();
-  notifyDeviceSessionChanged(parent);
+  // The parent takes back the device they handed over (or a return that was
+  // interrupted finishes): a family handoff.
+  notifyDeviceSessionChanged(parent, { handoff: true });
   if (!wanted) return;
   if (!parent || parent.accountId.startsWith("school:"))
     throw new AppError(
@@ -131,7 +133,7 @@ async function reconcile(
   signal.throwIfAborted();
   const session = { accountId: grant.accountId, token: grant.token };
   rememberStudentSession(session, grant.mode, true, wanted.returnTo);
-  notifyDeviceSessionChanged(session);
+  notifyDeviceSessionChanged(session, { handoff: true });
   await queryClient.ensureQueryData(meOptions(session));
   signal.throwIfAborted();
 }
