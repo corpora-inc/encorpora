@@ -523,8 +523,9 @@ export async function probe(page: Page): Promise<Finding[]> {
     // problem paints: a reservation (bottom padding, a min-height, a spacer)
     // that makes a fitting problem scrollable, or leaves it scrolled, is a
     // defect. The problem's natural height is measured from what it paints
-    // (text, controls, figures, bordered or filled boxes) plus the content's
-    // own padding, so empty reserved space never counts as content.
+    // (text, controls, figures, bordered or filled boxes, an entry's reserved
+    // preview line) plus the content's own padding, so an empty reservation
+    // never counts as content.
     const stageEl = document.querySelector<HTMLElement>(".problem-stage");
     const contentEl = stageEl?.querySelector<HTMLElement>(".problem-content");
     if (
@@ -538,7 +539,13 @@ export async function probe(page: Page): Promise<Finding[]> {
       const cs = getComputedStyle(contentEl);
       let bottom = top + (parseFloat(cs.paddingTop) || 0);
       const painted = (e: Element) => {
-        if (e.matches("img, svg, canvas, video, input, button, textarea"))
+        // An entry's preview line is reserved on purpose (no shift when it
+        // fills), so it counts as the problem's own height.
+        if (
+          e.matches(
+            "img, svg, canvas, video, input, button, textarea, .work-note",
+          )
+        )
           return true;
         for (const n of e.childNodes)
           if (n.nodeType === 3 && n.textContent?.trim()) return true;

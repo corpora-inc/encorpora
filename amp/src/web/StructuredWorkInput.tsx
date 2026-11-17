@@ -374,26 +374,44 @@ export function StructuredWorkInput({
     const spacer = room.current;
     const work = spacer?.parentElement;
     if (!spacer || !work) return;
-    const release = () => spacer.style.removeProperty("--keypad-room");
     if (!keypadOpen || !active) {
       // Closing gives the range back: a stage scrolled into it settles at
-      // its new end, which is the top when the problem fits. When the
-      // learner went from an entry to a step's menu, the room waits until
-      // focus leaves the work, so the menu never moves under the finger.
+      // its new end, which is the top when the problem fits. The release
+      // waits a frame, so tapping straight from one entry to another (a blur
+      // then a focus) keeps the room and moves nothing.
+      if (locked) {
+        spacer.style.removeProperty("--keypad-room");
+        return;
+      }
+      let frame = 0;
+      const release = () => {
+        cancelAnimationFrame(frame);
+        frame = requestAnimationFrame(() =>
+          spacer.style.removeProperty("--keypad-room"),
+        );
+      };
+      // From an entry to a step's menu, the room stays while the menu is
+      // open, so the menu never moves under the finger. It goes when focus
+      // leaves the work, or comes back to it with no menu open.
       const within = (node: EventTarget | null) =>
         node instanceof Element &&
         node !== document.body &&
         (work.contains(node) || !!node.closest(".work-menu"));
-      const menuOpen = !!work.querySelector('[aria-expanded="true"]');
-      if (locked || !(menuOpen || within(document.activeElement))) {
-        release();
-        return;
-      }
+      const menuOpen = () => !!work.querySelector('[aria-expanded="true"]');
+      if (!menuOpen() && !within(document.activeElement)) release();
       const leave = (event: FocusEvent) => {
         if (!within(event.relatedTarget)) release();
       };
+      const back = () => {
+        if (!menuOpen()) release();
+      };
       work.addEventListener("focusout", leave);
-      return () => work.removeEventListener("focusout", leave);
+      work.addEventListener("focusin", back);
+      return () => {
+        cancelAnimationFrame(frame);
+        work.removeEventListener("focusout", leave);
+        work.removeEventListener("focusin", back);
+      };
     }
     const pad = keypad.current;
     const stage = work.closest<HTMLElement>(".answer-editor, .problem-stage");

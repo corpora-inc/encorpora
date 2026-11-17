@@ -946,25 +946,53 @@ async function assertKeypadRoom(page: Page, where: string, dir: string) {
   // Next walks every entry; each one shows above the keypad, and the last
   // step can always scroll there.
   const next = page.locator('.work-keypad [data-key="next"]');
-  for (let n = 0; n < 40 && (await next.count()); n++) {
-    const state = await stageState(page);
-    if (state.field && state.padTop !== null) {
-      assert.ok(
-        state.field.bottom <= state.padTop + 0.5,
-        `${where}: entry ${n + 1} is hidden by the keypad ${JSON.stringify(state)}`,
-      );
-      assert.ok(
-        state.field.top >= state.top - 0.5,
-        `${where}: entry ${n + 1} is above the stage ${JSON.stringify(state)}`,
-      );
+  const walk = async (stopAtLast: boolean) => {
+    for (let n = 0; n < 40 && (await next.count()); n++) {
+      const state = await stageState(page);
+      if (state.field && state.padTop !== null) {
+        assert.ok(
+          state.field.bottom <= state.padTop + 0.5,
+          `${where}: entry ${n + 1} is hidden by the keypad ${JSON.stringify(state)}`,
+        );
+        assert.ok(
+          state.field.top >= state.top - 0.5,
+          `${where}: entry ${n + 1} is above the stage ${JSON.stringify(state)}`,
+        );
+      }
+      if ((await next.textContent())?.trim() === "Done") {
+        if (stopAtLast) return;
+        await page.screenshot({
+          path: `${dir}/${where.split(" ")[0]}-keypad-last.png`,
+        });
+      }
+      // As fill() does: WebKit's emulated tap does not click a key whose
+      // pointerdown is prevented (the keypad keeps focus in the entry).
+      await next.click();
+      await settle(page);
     }
-    if ((await next.textContent())?.trim() === "Done")
-      await page.screenshot({
-        path: `${dir}/${where.split(" ")[0]}-keypad-last.png`,
-      });
-    await next.tap();
+  };
+  await walk(true);
+  // Tapping straight back to the first entry, while it shows above the
+  // keypad, keeps the keypad's room: nothing drops under the finger.
+  const last = await stageState(page);
+  const back = (await first.boundingBox())!;
+  if (
+    last.padTop !== null &&
+    back.y >= last.top &&
+    back.y + back.height <= last.padTop - 12
+  ) {
+    await first.tap();
     await settle(page);
+    const again = await stageState(page);
+    assert.ok(again.padTop !== null, `${where}: the keypad stays open`);
+    assert.equal(
+      again.question,
+      last.question,
+      `${where}: tapping from entry to entry moved the problem`,
+    );
+    await walk(true);
   }
+  await walk(false);
   await page.locator(".work-keypad").waitFor({ state: "detached" });
   await settle(page);
   const after = await stageState(page);
