@@ -16,6 +16,7 @@ import {
   type MultiPartChoiceResponse,
 } from "./multi-part-choice";
 import { lineTable, scene } from "./scene/author";
+import { typeset } from "./scene/type";
 import type { Element, PathOp, Scene } from "./scene/spec";
 import { storyNameSet } from "./story-kit/names";
 
@@ -174,6 +175,16 @@ const pxPer = (length: number) => (SCENE_WIDTH - 8) / (length + 1.2);
 const barSpace = (rows: number, length: number) =>
   (14 + rows * 42) / pxPer(length);
 const rulerDepth = (length: number) => 64 / pxPer(length);
+/** The ruler's numbering: every n-th mark, n from 1, 2, 5, 10 dividing the
+ * length (so the end is numbered), the first whose numbers stand clear of
+ * each other when a phone lays the figure out at 288 px (useCompact), where
+ * a mark is narrowest. */
+function labelStride(length: number, least = 1) {
+  const px = (288 - 8) / (length + 1.2);
+  const need = typeset(String(length), "sans", "sm").width + 6;
+  const strides = [1, 2, 5, 10].filter((k) => k >= least && length % k === 0);
+  return strides.find((k) => k * px >= need) ?? strides.at(-1) ?? length;
+}
 
 function rulerElements(d: RulerDraw): Element[] {
   const px = (p: number) => p / pxPer(d.length);
@@ -381,7 +392,7 @@ function lengthDifference(seed: string, salt: string): GeneratedProblem {
     id: "ruler",
     unit,
     length: ruler,
-    labelEvery: tape ? 5 : ruler > 15 ? 2 : 1,
+    labelEvery: labelStride(ruler, tape ? 5 : 1),
     half: ruler <= 15,
     tape,
     top: 0,
@@ -511,7 +522,7 @@ function compareLengths(seed: string, salt: string): GeneratedProblem {
     id: `ruler${i}`,
     unit,
     length: ruler,
-    labelEvery: ruler > 15 ? 2 : 1,
+    labelEvery: labelStride(ruler),
     half: ruler <= 15,
     tape: false,
     top: i === 0 ? top : lower,
@@ -529,7 +540,7 @@ function compareLengths(seed: string, salt: string): GeneratedProblem {
     scene: scene(...draws.flatMap(rulerElements)).build({
       title: `Two rulers: ${a(first.name)} on the top ruler and ${a(second.name)} on the bottom ruler`,
       note: [
-        `Each ruler is numbered from 0 to ${ruler} ${UNIT[unit].many}${ruler > 15 ? ", with a number at every 2 centimeters and a tick at every centimeter" : ""}.`,
+        `Each ruler is numbered from 0 to ${ruler} ${UNIT[unit].many}${draws[0]!.labelEvery > 1 ? `, with a number at every ${draws[0]!.labelEvery} ${UNIT[unit].many} and a tick at every ${UNIT[unit].one}` : ""}.`,
         ...draws.map((dr) => barSentence(dr.bars[0]!)),
       ].join(" "),
       width: SCENE_WIDTH,
