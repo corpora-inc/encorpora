@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Link } from "@tanstack/react-router";
+import { Link, useRouter } from "@tanstack/react-router";
 import {
   Component,
   lazy,
@@ -95,10 +95,19 @@ export function AppShell({ children }: { children: ReactNode }) {
   // A place this person can no longer open, or one that didn't load, shows
   // that in place of the screen: nothing of it renders or asks the server.
   const blocked = session ? blockedBy(resolved) : null;
-  const pathname = match?.pathname ?? "";
   const setDrawerOpen = useShellSlots((state) => state.setDrawerOpen);
-  // A screen change closes the drawer (a link inside it, or Back).
-  useEffect(() => setDrawerOpen(false), [pathname, setDrawerOpen]);
+  // Going to another screen closes the drawer as the navigation starts (a
+  // link inside it, Back). A drawer opened after that, while the new screen
+  // still loads, stays open when it arrives: closing it on arrival took the
+  // menu away from under the person who had just opened it.
+  const router = useRouter();
+  useEffect(
+    () =>
+      router.subscribe("onBeforeNavigate", ({ pathChanged }) => {
+        if (pathChanged) setDrawerOpen(false);
+      }),
+    [router, setDrawerOpen],
+  );
   const framed = useRef(false);
   if (space) framed.current = true;
   useEffect(() => {
