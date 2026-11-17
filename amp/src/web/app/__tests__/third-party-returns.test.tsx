@@ -194,3 +194,23 @@ test("an older sign-up link's arrival is dropped in one hop; the gate's way back
   expect(hop("/sign-in", { return: "access" })).toBeNull();
   expect(hop("/sign-up", {})).toBeNull();
 });
+
+test("in an app's own browser, an arrival stays on the address its Open in browser opens", async () => {
+  const { arrivalReturn } = await import("../third-party-returns");
+  const agent = vi
+    .spyOn(navigator, "userAgent", "get")
+    .mockReturnValue(
+      "Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Instagram 357.0.0.25.101 (iPhone16,2; iOS 18_1; en_US; en; scale=3.00; 1290x2796; 667412305)",
+    );
+  try {
+    expect(
+      arrivalReturn({
+        pathname: "/sign-up",
+        searchStr: "?entry=pitch-try",
+        search: { entry: "pitch-try" },
+      }),
+    ).toBeUndefined();
+  } finally {
+    agent.mockRestore();
+  }
+});

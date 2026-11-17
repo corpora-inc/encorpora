@@ -1,4 +1,5 @@
 import { redirect } from "@tanstack/react-router";
+import { currentInAppBrowser } from "../../analytics/browser-kind";
 import { z } from "zod";
 import { create } from "zustand";
 import { signupEntrySchema } from "../../parent-followup/contracts";
@@ -230,6 +231,11 @@ export function signInReturn(location: AuthLocation) {
  * `keepInbound`): one hop to the clean address. Signed in, the route's own
  * hop to the account's place goes first, so it is never a chain. */
 export function arrivalReturn(location: AuthLocation) {
+  // In an app's own browser the address keeps it: that address is what the
+  // app's "Open in browser" opens, and the phone's browser starts with empty
+  // storage (features/auth/OpenInBrowser.tsx writes it there when the
+  // one-tap jump didn't leave).
+  if (currentInAppBrowser()) return;
   if (carriesArrival((location.search ?? {}) as Record<string, unknown>))
     cleanAuthAddress(location);
 }
