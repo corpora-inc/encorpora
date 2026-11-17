@@ -1725,7 +1725,8 @@ try {
       .waitFor();
     assert.equal(
       await unknown.locator('meta[name="robots"]').getAttribute("content"),
-      "noindex",
+      // Kept out of the index, its links still followed (pathways-metadata.ts).
+      "noindex, follow",
     );
     await unknown.close();
   }
