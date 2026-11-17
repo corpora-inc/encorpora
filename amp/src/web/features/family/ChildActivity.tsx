@@ -104,7 +104,6 @@ export function ChildActivity({
           label={label}
           detail={detail}
           name={`${unit === "day" ? "Daily" : "Weekly"} practice time`}
-          caption={`Minutes per ${unit}`}
           edge={(entry) => shortDay(entry.date)}
         />
       )}
@@ -122,7 +121,6 @@ export function DailyBars({
   label,
   detail,
   name,
-  caption,
   edge = label,
 }: {
   intervals: readonly Interval[];
@@ -130,7 +128,6 @@ export function DailyBars({
   detail: (entry: Interval) => string;
   /** What the chart shows, for a screen reader. */
   name: string;
-  caption: string;
   /** The first and last interval's name under the chart. */
   edge?: (entry: Interval) => string;
 }) {
@@ -159,9 +156,10 @@ export function DailyBars({
             </div>
           ))}
         </div>
+        {/* The first and last interval's dates at the axis's ends; what
+            the bars measure is the section's heading (Practice time). */}
         <figcaption>
           <span>{edge(intervals[0]!)}</span>
-          <span>{caption}</span>
           <span>{edge(intervals.at(-1)!)}</span>
         </figcaption>
       </figure>

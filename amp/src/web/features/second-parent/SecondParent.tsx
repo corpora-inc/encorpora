@@ -182,6 +182,9 @@ export function SecondParentRow({
             )}
             <Button
               variant="quiet"
+              // Its row's only action: its label on the column's edge, the
+              // fill stepping into the gutter (ui/Button, align).
+              align={invited ? undefined : "start"}
               disabled={!!busy}
               onClick={() => setConfirming(true)}
             >

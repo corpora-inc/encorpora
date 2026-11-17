@@ -121,9 +121,10 @@
   justify-items: start;
   gap: 16px;
 }
+/* Billing's last line, under the Receipts row that already closes the
+   list with its rule: no divider of its own (two rules framed an empty
+   band). */
 .support {
-  border-top: 1px solid var(--color-border);
-  padding-top: 24px;
   font-size: 14px;
   line-height: 1.6;
 }
