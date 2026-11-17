@@ -7,6 +7,7 @@ import {
 } from "@tanstack/react-router";
 import { useLearningView } from "../../lib/learning-view";
 import { selectLearner } from "../../learner-store";
+import { useLearnerChoice } from "../spaces/learner-choice";
 import { useShellSlots } from "../../lib/shell-slots";
 import { FeedbackPreferences } from "../practice/FeedbackPreferences";
 import { ChoicePicker, Listbox, type ListboxOption } from "../../ui/Listbox";
@@ -149,8 +150,10 @@ export default function DrawerContents({
     </Link>
   );
   const kind = space?.space ?? null;
-  const learners =
-    kind === "family" && space?.space === "family" ? space.learners : [];
+  // One rule for every learner chooser (learner-choice.ts). A family's
+  // screens choose their child in place (their pages, Pathways), so the
+  // drawer adds no second chooser there.
+  const choice = useLearnerChoice();
   const chosen =
     space?.space === "family" || space?.space === "student"
       ? space.learner
@@ -174,7 +177,7 @@ export default function DrawerContents({
     }
     close();
   }
-  const learnerChoices: ListboxOption[] = learners.map((learner) => ({
+  const learnerChoices: ListboxOption[] = choice.learners.map((learner) => ({
     value: learner.id,
     label: learner.name,
   }));
@@ -197,7 +200,7 @@ export default function DrawerContents({
         <section className={styles.switcher} aria-label="Who is practicing">
           <ProfilePlace onNavigate={close} />
         </section>
-      ) : kind !== "family" && learnerChoices.length > 1 ? (
+      ) : kind !== "family" && choice.canChoose ? (
         <section className={styles.switcher} aria-label="Who is practicing">
           {learnerChoices.length <= 6 ? (
             <div className={styles.learnerChoice}>

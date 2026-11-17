@@ -182,7 +182,7 @@ export function shellFrame(
     /^\/start\/(parent|tutor)\/[a-z-]+$/.test(path)
   )
     return { kind: "plain" };
-  if (path === "/practice") return { kind: "practice" };
+  if (/^\/practice(?:\/[^/]+)?\/?$/.test(path)) return { kind: "practice" };
   // The immersive film route supplies its own return and playback controls.
   if (/^\/lessons\/[^/]+\/watch$/.test(path)) return null;
   if (under(path, "/lessons") || under(path, "/books"))

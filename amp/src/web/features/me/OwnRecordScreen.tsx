@@ -35,6 +35,7 @@ import type { Frontier } from "../pathways/model";
 import { ownPracticeOptions } from "./api";
 import { useHeroAction } from "../../lib/shell-slots";
 import styles from "./Own.module.css";
+import { practiceParams } from "../spaces/identity";
 
 /** The adult's own place, under the app frame's bar (logo, the Progress tabs
  * and Practice). The record reads in the teacher's dense styles, whose
@@ -167,7 +168,7 @@ export function OwnRecordScreen() {
               hero ? (
                 <Link
                   to="/$"
-                  params={{ _splat: "practice" }}
+                  params={practiceParams(data.learner.id)}
                   className={buttonClass("primary", styles.start)}
                 >
                   <svg viewBox="0 0 16 16" aria-hidden="true">

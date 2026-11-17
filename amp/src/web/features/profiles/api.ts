@@ -16,6 +16,7 @@ import { closeTo } from "../../lib/return-to";
 import { ROOT } from "../../nav/root";
 import { modeFrom, modePlace, modeReturnLabel } from "./practice-mode";
 import { classesOptions } from "../school/core-api";
+import { practiceParams } from "../spaces/identity";
 
 /* Practice profiles (docs/families.md): the adult practicing as someone else.
    Every change refreshes `/me`, the one store the switcher, the drawer and
@@ -185,7 +186,7 @@ export function usePracticingProfile() {
         selectLearner(target.own);
         void navigate({
           to: "/$",
-          params: { _splat: "practice" },
+          params: practiceParams(target.own),
           search: { profile: undefined, from: undefined },
         });
         return;

@@ -8,11 +8,27 @@ import {
   type PracticeIntent,
   type PracticeScope,
 } from "./practice-settings";
+import { levelName } from "../../../learning/practice-profiles";
 import styles from "./PracticeControls.module.css";
 import settings from "./DrawerSettings.module.css";
 
+/** What the drawer says about the practice on view: never the practice
+ * bar, which stays the learner's (nothing there to distract them). */
+export type Practicing = {
+  /** Whose practice it is; left out where the drawer already names them
+   * (a student's "Signed in as"). */
+  name?: string;
+  /** The address's filter, named ("Fractions", a skill): null is none. */
+  filter: string | null;
+  /** A skill's title, for the practice settings' focus. */
+  skillTitle: (skillId: string) => string | undefined;
+  /** The learner's estimated level, once answers measure it. */
+  level: number | null;
+};
+
 /** Lives only in the navigation sheet; the open problem gains no extra copy. */
 export function PracticeControls({
+  practicing,
   scope,
   problemId,
   apply,
@@ -22,6 +38,7 @@ export function PracticeControls({
   together = true,
   resetFrom = "Start from the learner’s birth year.",
 }: {
+  practicing?: Practicing;
   scope: PracticeScope;
   problemId?: string;
   apply: (change: PracticeIntent) => Promise<void>;
@@ -59,9 +76,40 @@ export function PracticeControls({
     }
   }
   const disabled = busy || saving || !state.data;
+  const focus = state.data?.focusSkillId;
+  // Mixed, or the area or skill it is held to (the address's, else a focus).
+  const problems =
+    practicing?.filter ??
+    (focus ? (practicing?.skillTitle(focus) ?? null) : null) ??
+    "Mixed";
+  // A grown-up may hide grade levels from the screens the child sees.
+  const level =
+    practicing?.level != null && state.data?.gradeLevelShown !== false
+      ? levelName(practicing.level)
+      : null;
   return (
     <fieldset className={settings.section} disabled={busy || saving}>
       <legend>Practice</legend>
+      {practicing && (
+        <dl className={styles.practicing} data-practicing>
+          {practicing.name && (
+            <div>
+              <dt>Who</dt>
+              <dd>{practicing.name}</dd>
+            </div>
+          )}
+          <div>
+            <dt>Problems</dt>
+            <dd>{problems}</dd>
+          </div>
+          {level && (
+            <div>
+              <dt>Level</dt>
+              <dd>{level}</dd>
+            </div>
+          )}
+        </dl>
+      )}
       {state.isError ? (
         <p className={settings.error} role="alert">
           Practice settings could not load.{" "}
@@ -71,9 +119,7 @@ export function PracticeControls({
         </p>
       ) : !together && !state.data?.workingTogether ? null : (
         <label className={settings.toggle}>
-          <span className={settings.toggleText}>
-            Working together
-          </span>
+          <span className={settings.toggleText}>Working together</span>
           <CheckboxControl
             disabled={disabled}
             checked={state.data?.workingTogether ?? false}

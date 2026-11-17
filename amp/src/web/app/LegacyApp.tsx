@@ -12,6 +12,7 @@ import {
 import { NavigationDrawer } from "../features/navigation/NavigationDrawer";
 import { closeShellDrawer, useShellDrawerSettings } from "../lib/shell-slots";
 import { learnerFrontierOptions } from "../lib/learning-view";
+import { forSession } from "../lib/session";
 import { createPortal } from "react-dom";
 import { withProblemHints, type HintedProblem } from "../lib/problem-hints";
 import { withMoneyArt } from "../scene/money-art";
@@ -26,6 +27,9 @@ import {
 import type { Step } from "../../math/scene/timeline";
 import { useQuery } from "@tanstack/react-query";
 import { secondParentChild } from "../features/second-parent/api";
+import { practicePath } from "../features/spaces/identity";
+import { useLearnerChoice } from "../features/spaces/learner-choice";
+import { ListboxDisclosure } from "../ui/Listbox";
 import { ChildOverview } from "../features/second-parent/ChildOverview";
 import {
   useFamilyCache,
@@ -54,7 +58,6 @@ import { closeTo } from "../lib/return-to";
 import { ROOT } from "../nav/root";
 import { signedOut as reportSignedOut } from "../lib/app-recovery";
 import { useAppRoute } from "../app-routes";
-import { Select } from "../PremiumControls";
 import { PrintMathText, printMathStyles } from "../../content/PrintMathText";
 import { ReferenceLesson } from "../../content/ReferenceLesson";
 import { nativeRuntime } from "../native-runtime";
@@ -330,7 +333,8 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           : "/",
     );
   const exploring = route.exploring;
-  const setExploring = (value: boolean) => navigate(value ? "/" : "/practice");
+  const setExploring = (value: boolean) =>
+    navigate(value ? "/" : practiceHref());
   const token = session?.token ?? null;
   const accountId = session?.accountId ?? null;
   const [catalog, setCatalog] = useState<Catalog | null>(null);
@@ -345,9 +349,6 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     setNativeFamilySnapshot(accountRef.current, summary);
   const learners =
     familySummary?.learners.filter((entry) => !entry.deletedAt) ?? [];
-  // The family's learners. The adult's own learner practices here too, but it
-  // is its own place: chosen through the place switcher, never listed here.
-  const childLearners = learners.filter((entry) => !entry.adult);
   const readingLesson =
     route.parts[0] === "lessons" && route.parts[1]
       ? (catalog?.lessons.find((entry) => entry.id === route.parts[1]) ?? null)
@@ -379,6 +380,16 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       ? secondParentChild(account, learnerId)
       : null;
   const learner = practiceLearner(familySummary, addressed?.id, chosenId);
+  // A learner chooser only where there is a real choice (learner-choice.ts).
+  const choice = useLearnerChoice();
+  // Practice is the chosen learner's own address: one navigation there;
+  // elsewhere the choice is the account's current learner.
+  const chooseLearner = (id: string) =>
+    route.parts[0] === "practice"
+      ? navigate(practicePath(id))
+      : selectLearner(id);
+  // Practice's own address names its learner (identity.ts `practicePath`).
+  const practiceHref = () => (learner ? practicePath(learner.id) : "/practice");
   // The adult's own learner, or one of their practice profiles: both learn
   // on the account's own terms, with no birth year.
   const ownLearner = learner?.adult === true;
@@ -510,6 +521,21 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     route.parts[0] === "practice" && catalog
       ? JSON.stringify(curriculumFilter(route.location.search, catalog))
       : "{}";
+  // The drawer's practice facts (PracticeControls): the area or skill the
+  // address holds practice to, and the level the answers so far measure.
+  const shownFilter = JSON.parse(filterKey) as PracticeFilter;
+  const filterName = shownFilter.skill
+    ? (catalog?.skills.find((skill) => skill.id === shownFilter.skill)?.title ??
+      null)
+    : shownFilter.strand
+      ? (strandNames[shownFilter.strand] ?? null)
+      : null;
+  const practiceLevel = useQuery({
+    ...forSession(session, (signedIn) =>
+      learnerFrontierOptions(signedIn, learner?.id ?? ""),
+    ),
+    enabled: !!learner && !nativeRuntime && route.parts[0] === "practice",
+  }).data?.overall;
   useLayoutEffect(() => {
     practiceFilter.current = JSON.parse(filterKey) as PracticeFilter;
     if (changingFilter.current) {
@@ -1213,7 +1239,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     navigationEpoch.current++;
   }, [learner?.id, !!learner?.satMathFocus]);
   function applyBatch(data: Batch) {
-    if (route.location.pathname !== "/practice") navigate("/practice");
+    if (route.parts[0] !== "practice") navigate(practiceHref());
     showProblem(data.problems[0]);
     setQueue(data.problems.slice(1));
     setLesson(data.lesson);
@@ -1232,7 +1258,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       // The free problems are used: the pause shows in practice itself.
       if (allowanceSpent) {
         setPausedFor(learner.id);
-        if (route.location.pathname !== "/practice") navigate("/practice");
+        if (route.parts[0] !== "practice") navigate(practiceHref());
       }
       // Otherwise learning is paused for consent; Family says why.
       else if (!student)
@@ -1261,7 +1287,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         // The free problems are used: pause here, in practice.
         if (allowanceEnded(error)) {
           setPausedFor(learner.id);
-          if (route.location.pathname !== "/practice") navigate("/practice");
+          if (route.parts[0] !== "practice") navigate(practiceHref());
           void loadFamily().catch((cause) =>
             console.error("Family refresh after the free problems", cause),
           );
@@ -1295,7 +1321,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       if (intent.kind !== "together") {
         practiceFilter.current = {};
         changingFilter.current = filterKey !== "{}";
-        navigate("/practice", { replace: true });
+        navigate(practiceHref(), { replace: true });
         setPending(null);
         const strand =
           intent.kind === "easier"
@@ -1620,10 +1646,8 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     if (!problem || !learnerEntry?.hasAccess) return;
     trackOnce("paid-practice-first", "paid_practice_first", {});
   }, [problem?.id, learnerEntry?.hasAccess]);
-  // A school student has no family or purchase screens: their practice is
-  // their one place.
-  if (student && (route.familyOpen || route.purchaseView || route.consentOpen))
-    return <Navigate to="/$" params={{ _splat: "practice" }} replace />;
+  // A school student has no family or purchase screens: their route sends
+  // them to their practice before this renders (practiceAddress).
   // The adult's home is their own record.
   if (
     ownLearner &&
@@ -1685,26 +1709,19 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             <span>MATHEMATICS</span>
           </a>
           <div className="account">
-            {token &&
-              !student &&
-              !familyOpen &&
-              learningAllowed &&
-              !ownLearner &&
-              childLearners.length > 0 && (
-                <Select
-                  aria-label="Learner"
-                  value={learner?.id ?? ""}
-                  disabled={busy}
-                  onValueChange={(e) => selectLearner(e || null)}
-                >
-                  {!learner && <option value="">Select a learner</option>}
-                  {childLearners.map((l) => (
-                    <option key={l.id} value={l.id}>
-                      {l.name}
-                    </option>
-                  ))}
-                </Select>
-              )}
+            {token && !familyOpen && learningAllowed && choice.canChoose && (
+              <ListboxDisclosure
+                label="Learner"
+                placeholder="Choose learner"
+                align="end"
+                options={choice.learners.map((entry) => ({
+                  value: entry.id,
+                  label: entry.name,
+                }))}
+                value={learner?.id ?? null}
+                onChange={chooseLearner}
+              />
+            )}
             {nativeRuntime && token && !familyOpen && (
               <Menu
                 label="Account"
@@ -2353,6 +2370,13 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         !exploring &&
         createPortal(
           <PracticeControls
+            practicing={{
+              name: student ? undefined : learner.name,
+              filter: filterName,
+              skillTitle: (id) =>
+                catalog?.skills.find((skill) => skill.id === id)?.title,
+              level: practiceLevel?.answered ? practiceLevel.level : null,
+            }}
             scope={adjustments.scope}
             problemId={problem.id}
             busy={busy || !!pending}
