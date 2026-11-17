@@ -116,10 +116,8 @@ import { layerScope, seedLayers, useLayerStore } from "../nav/layer-store";
 import {
   adoptPracticeMode,
   followResolvedLearner,
-  practiceAddress,
+  notAStudents,
   studentPracticeHref,
-  canonicalLearnerAddress,
-  carriedKeys,
   isLearningPath,
 } from "../features/profiles/practice-mode";
 const searchSchema = z
@@ -756,7 +754,6 @@ const inventory = createRoute({
   // A learning record belongs to an account: signed out, sign in first.
   beforeLoad: async ({ location }) => {
     await requireSignedIn(location, { web: true });
-    await canonicalLearnerAddress(location);
     await adoptPracticeMode(location);
   },
   // Its record and level arrive with it: one paint, whole.
@@ -782,7 +779,6 @@ const pathways = createRoute({
   // row, which seeds the store.)
   beforeLoad: async ({ location }) => {
     await framedScreen();
-    await canonicalLearnerAddress(location);
     await adoptPracticeMode(location);
   },
   // The curriculum and the learner's record arrive with it: one paint. A
@@ -1494,8 +1490,9 @@ const fallback = createRoute({
   // Reject unknown shapes before adopting a learner or loading the legacy app.
   beforeLoad: async ({ location }) => {
     if (!knownDocumentPath(location.pathname)) throw notFound();
-    await practiceAddress(location);
-    await canonicalLearnerAddress(location);
+    // A school student's device on a family's page: their own practice.
+    // (An older learning address is an app/legacy-aliases.ts row.)
+    if (notAStudents(location.pathname)) admit({ adults: true });
     await adoptPracticeMode(location);
   },
   // The app screen is rendered by the layout, so load its chunk here, as the
@@ -1754,26 +1751,6 @@ if (import.meta.env.DEV) {
   router.buildLocation = ((options: Parameters<typeof build>[0]) => {
     const next = build(options);
     const here = router.state.location;
-    // Who a learning screen is for, and where adding a place returns, go
-    // with the reader (features/profiles/practice-mode.ts, `carriedKeys`).
-    const identity = carriedKeys(
-      {
-        pathname: here.pathname,
-        search: here.search as Record<string, unknown>,
-      },
-      {
-        pathname: next.pathname,
-        search: next.search as Record<string, unknown>,
-      },
-      typeof options.search === "object" && options.search !== null
-        ? Object.keys(options.search)
-        : [],
-    );
-    if (identity)
-      return build({
-        ...options,
-        search: { ...(next.search as object), ...identity },
-      } as never);
     if (!overList(here.pathname, next.pathname)) return next;
     const from = here.search as Record<string, unknown>;
     const to = next.search as Record<string, unknown>;
