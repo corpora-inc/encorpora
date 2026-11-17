@@ -23,6 +23,7 @@ import { AddKidsSheet } from "./AddKids";
 import { accessUntil, sharedAccessOf } from "./access";
 import { DevicesSheet } from "./Devices";
 import { FamilyFrame, familyHref, useFamilyPlace } from "./FamilyFrame";
+import { ColumnList, ColumnRow, type Column } from "../../ui/ColumnList";
 import styles from "./Family.module.css";
 
 const count = (n: number, one: string, many = `${one}s`) =>
@@ -104,26 +105,55 @@ export function WeekFactsOf({
    * first answer moves nothing (a child's page; CP-5 r2 #2). */
   steady?: boolean;
 }) {
-  const { week } = child;
-  if (!week.lastPracticed)
+  if (!child.week.lastPracticed)
     return <Fact value="Not started" label="no practice yet" wide={steady} />;
   return (
     <>
-      <Fact
-        value={week.minutes > 0 ? `${week.minutes} min` : "None"}
-        label={
-          week.minutes > 0 || week.problems > 0
-            ? `${count(week.problems, "problem")} this week`
-            : "this week"
-        }
-      />
-      <Fact
-        value={lastPracticed(week.lastPracticed, today)}
-        label="last practiced"
-      />
+      <WeekFact child={child} />
+      <LastPracticedFact child={child} today={today} />
     </>
   );
 }
+
+/** A child's week on Today: minutes and problems, or that they haven't
+ * started. */
+function WeekFact({ child }: { child: FamilyChild }) {
+  const { week } = child;
+  if (!week.lastPracticed)
+    return <Fact value="Not started" label="no practice yet" />;
+  return (
+    <Fact
+      value={week.minutes > 0 ? `${week.minutes} min` : "None"}
+      label={
+        week.minutes > 0 || week.problems > 0
+          ? `${count(week.problems, "problem")} this week`
+          : "this week"
+      }
+    />
+  );
+}
+/** When a child last practiced; nothing before their first answer. */
+function LastPracticedFact({
+  child,
+  today,
+}: {
+  child: FamilyChild;
+  today: string;
+}) {
+  const last = child.week.lastPracticed;
+  return last ? (
+    <Fact value={lastPracticed(last, today)} label="last practiced" />
+  ) : null;
+}
+/** Today's children: name, this week, last practiced, access (when the
+ * family shows it per child), action. */
+const kidColumns = (access: boolean): Column[] => [
+  { key: "name", track: "minmax(120px, 1.2fr)", part: "title" },
+  { key: "week", track: "minmax(0, 1fr)" },
+  { key: "last", track: "minmax(0, 1fr)" },
+  ...(access ? [{ key: "access", track: "minmax(0, 1fr)" }] : []),
+  { key: "action", track: "auto", part: "action" as const },
+];
 
 /**
  * The one action that works for a child now: their practice on this device
@@ -362,30 +392,42 @@ export function FamilyTodayScreen() {
                   {sharedAccess}
                 </p>
               )}
-              <ul className={styles.kids} data-family-kids="">
+              <ColumnList
+                label={children.length === 1 ? "Your child" : "Your kids"}
+                columns={kidColumns(
+                  !sharedAccess || !!data.capabilities.manageBilling,
+                )}
+                data-family-kids=""
+              >
                 {children.map((child) => (
-                  <li
+                  <ColumnRow
                     key={child.id}
-                    className={styles.kid}
                     data-child={child.id}
-                  >
-                    <Link
-                      to="/$"
-                      params={{
-                        _splat: familyHref(family, `kids/${child.id}`),
-                      }}
-                      className={styles.kidName}
-                      data-child-link={child.id}
-                    >
-                      {child.name}
-                      <svg viewBox="0 0 12 12" aria-hidden="true">
-                        <path d="m4.5 2.5 3.5 3.5-3.5 3.5" />
-                      </svg>
-                    </Link>
-                    <span className={styles.facts}>
-                      <WeekFactsOf child={child} today={data.today.date} />
-                      {(!sharedAccess || data.capabilities.manageBilling) && (
-                        <span className={styles.accessCell}>
+                    cells={{
+                      name: (
+                        <Link
+                          to="/$"
+                          params={{
+                            _splat: familyHref(family, `kids/${child.id}`),
+                          }}
+                          className={styles.kidName}
+                          data-child-link={child.id}
+                        >
+                          {child.name}
+                          <svg viewBox="0 0 12 12" aria-hidden="true">
+                            <path d="m4.5 2.5 3.5 3.5-3.5 3.5" />
+                          </svg>
+                        </Link>
+                      ),
+                      week: <WeekFact child={child} />,
+                      last: (
+                        <LastPracticedFact
+                          child={child}
+                          today={data.today.date}
+                        />
+                      ),
+                      access: (
+                        <>
                           {!sharedAccess && <AccessFact child={child} />}
                           {data.capabilities.manageBilling && (
                             <ChildBillingLink
@@ -400,59 +442,65 @@ export function FamilyTodayScreen() {
                               }
                             />
                           )}
+                        </>
+                      ),
+                      action: (
+                        <span className={styles.action}>
+                          <ChildAction
+                            child={child}
+                            family={family}
+                            accountId={session.accountId}
+                            starting={starting}
+                            onPracticeHere={(id) => void handOver(id)}
+                            primary
+                          />
                         </span>
-                      )}
-                    </span>
-                    <span className={styles.action}>
-                      <ChildAction
-                        child={child}
-                        family={family}
-                        accountId={session.accountId}
-                        starting={starting}
-                        onPracticeHere={(id) => void handOver(id)}
-                        primary
-                      />
-                    </span>
-                  </li>
+                      ),
+                    }}
+                  />
                 ))}
                 {(practiceSelf || startSelf) && (
-                  <li
-                    className={`${styles.kid} ${styles.self}`}
-                    data-family-self
-                  >
-                    <span className={styles.kidName}>You</span>
-                    <span className={styles.action}>
-                      <Button
-                        variant="secondary"
-                        aria-label="Practice as yourself"
-                        aria-busy={startOwn.isPending || undefined}
-                        onClick={() => {
-                          if (startOwn.isPending) return;
-                          setOwnError("");
-                          void (
-                            practiceSelf
-                              ? Promise.resolve()
-                              : startOwn.mutateAsync(undefined)
-                          )
-                            .then(() => {
-                              rememberPlace(session.accountId, "home");
-                              return navigate({
-                                to: "/$",
-                                params: { _splat: "practice" },
-                                search: { from: `/${familyHref(family)}` },
-                              });
-                            })
-                            .catch(() =>
-                              setOwnError("Practice didn’t start. Try again."),
-                            );
-                        }}
-                      >
-                        Practice
-                      </Button>
-                    </span>
-                  </li>
+                  <ColumnRow
+                    data-family-self=""
+                    cells={{
+                      name: <span className={styles.kidName}>You</span>,
+                      action: (
+                        <span className={styles.action}>
+                          <Button
+                            variant="secondary"
+                            aria-label="Practice as yourself"
+                            aria-busy={startOwn.isPending || undefined}
+                            onClick={() => {
+                              if (startOwn.isPending) return;
+                              setOwnError("");
+                              void (
+                                practiceSelf
+                                  ? Promise.resolve()
+                                  : startOwn.mutateAsync(undefined)
+                              )
+                                .then(() => {
+                                  rememberPlace(session.accountId, "home");
+                                  return navigate({
+                                    to: "/$",
+                                    params: { _splat: "practice" },
+                                    search: { from: `/${familyHref(family)}` },
+                                  });
+                                })
+                                .catch(() =>
+                                  setOwnError(
+                                    "Practice didn’t start. Try again.",
+                                  ),
+                                );
+                            }}
+                          >
+                            Practice
+                          </Button>
+                        </span>
+                      ),
+                    }}
+                  />
                 )}
-              </ul>
+              </ColumnList>
               {own && manageDevices ? (
                 <div className={styles.quiet}>
                   <RowList label="More ways to practice">

@@ -40,16 +40,15 @@ test("a header's way back sits above its title, one label style", () => {
   const back = vi.fn();
   render(
     <PageHeader
-      back={{ label: "Billing", onClick: back }}
+      back={back}
       title="Receipt"
       subtitle="Paid Nov 1"
       actions={<button type="button">Print</button>}
     />,
   );
   const header = document.querySelector("[data-page-header]")!;
-  // Read as the screen it returns to; the chevron is drawn, not said.
-  const link = screen.getByRole("button", { name: "Billing" });
-  expect(link.textContent).toBe("‹Billing");
+  // Said as where it goes; the chevron is drawn, not said.
+  const link = screen.getByRole("button", { name: "Back" });
   const title = screen.getByRole("heading", { level: 1, name: "Receipt" });
   // The way back comes first, the title after it.
   expect(

@@ -30,11 +30,11 @@
   cursor: pointer;
   filter: none;
 }
+/* Never underlined: the chevron says what it is. */
 .back.back:hover {
   background: transparent;
-  color: var(--color-primary);
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+  color: var(--color-on-surface);
+  text-decoration: none;
 }
 .back:focus-visible {
   outline: 3px solid var(--color-focus-ring);
@@ -86,4 +86,8 @@
   align-items: center;
   gap: var(--space-2) var(--space-4);
   min-height: var(--target-min);
+}
+/* A screen's actions that have nothing to offer here take no room. */
+.actions:empty {
+  display: none;
 }

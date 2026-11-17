@@ -40,6 +40,8 @@ import { FamilySetup, type SetupKind } from "./setup/FamilySetup";
 import { OwnYearTiles } from "./OwnYearTiles";
 import { StepFrame } from "./setup/StepFrame";
 import { choosePersona, setupStep } from "./activation";
+import { Page } from "../../ui/Page";
+import { PageHeader } from "../../ui/PageHeader";
 import styles from "./Starter.module.css";
 
 /** Unsent answers live only in this tab's memory, per account. */
@@ -188,10 +190,8 @@ function StarterScreen({ session }: { session: AuthSession }) {
     choosePersona(session, answer);
   };
   return (
-    <main className={styles.page} data-starter={choice ?? ""}>
-      <h1 className={styles.title}>
-        {adding ? "Add a place" : "What brings you to AMP?"}
-      </h1>
+    <Page data-starter={choice ?? ""}>
+      <PageHeader title={adding ? "Add a place" : "What brings you to AMP?"} />
       <ul className={styles.choices}>
         {shown.map((entry) => {
           const content = (
@@ -249,7 +249,7 @@ function StarterScreen({ session }: { session: AuthSession }) {
           </Button>
         </div>
       )}
-    </main>
+    </Page>
   );
 }
 

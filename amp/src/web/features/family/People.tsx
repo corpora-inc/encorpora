@@ -194,16 +194,13 @@ export function FamilyPeopleScreen() {
   const ownPractice = !!me?.adultPractice?.learner;
   const startPractice = !ownPractice && me?.adultPractice?.eligible === true;
   return (
-    <FamilyFrame place={place} title="People & sharing">
+    <FamilyFrame
+      place={place}
+      title="People & sharing"
+      back={`/${familyHref(family, "settings")}`}
+    >
       {data && (
         <div className={styles.page} data-family-people="">
-          <Link
-            to="/$"
-            params={{ _splat: familyHref(family, "settings") }}
-            className={styles.settingBack}
-          >
-            ‹ Settings
-          </Link>
           <section className={people.list} aria-labelledby="people-you">
             <h2 id="people-you" className={people.title}>
               You

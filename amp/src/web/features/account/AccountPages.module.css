@@ -1,56 +1,9 @@
-/* Account: Sign-in, Learners, Billing, Privacy (docs/design/ia.md).
-   One page geometry with the rest of the app: the content width, one left
-   edge, a reading column for settings. Rows with hairlines, never cards.
+/* Account: Sign-in, Learners, Billing, Privacy (docs/design/ia.md). The
+   page, its column and its header are ui/Page and ui/PageHeader; these are
+   the account's rows and forms. Rows with hairlines, never cards.
    Legacy element rules (style.css, theme.css) style bare buttons, headings
    and labels; every rule here sets its element fully so they never leak. */
-.page {
-  --gutter: var(--space-4);
-  --page-top: var(--space-5);
-  box-sizing: border-box;
-  width: 100%;
-  max-width: var(--width-content-wide);
-  margin-inline: auto;
-  color: var(--color-on-surface);
-}
-@media (min-width: 768px) {
-  .page {
-    --gutter: var(--space-6);
-    --page-top: var(--space-6);
-  }
-}
-/* The padding sits on the column: legacy `.shell` rules reset a section's. */
-.column {
-  --column-gap: var(--space-6);
-  display: grid;
-  align-content: start;
-  gap: var(--column-gap);
-  /* Its full width from the first paint: centred by auto margins, a grid
-     item would otherwise shrink to whatever has loaded, and widen (moving
-     its heading) when the rest arrives. 720 px of content, plus gutters. */
-  box-sizing: border-box;
-  width: 100%;
-  max-width: calc(720px + 2 * var(--gutter));
-  /* A focused column, centred in the viewport (docs/design/ia.md). */
-  margin-inline: auto;
-  padding: var(--page-top) var(--gutter) var(--space-8);
-}
-@media (max-width: 639px) {
-  .column {
-    --column-gap: var(--space-5);
-  }
-}
-/* A step's way back sits close above the step it leaves. */
-.back {
-  margin-bottom: calc(var(--space-1) - var(--column-gap));
-}
-.back .chevron {
-  stroke: currentColor;
-  margin-inline-end: var(--space-1);
-}
-.head {
-  display: grid;
-  gap: var(--space-2);
-}
+/* The account header Billing still uses (AccountPageHeader). */
 .heading {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -90,7 +43,7 @@
   gap: var(--space-3);
 }
 /* Doubled: the legacy `.shell :is(h2, h3)` rule sets a bold sans. */
-.page .sectionTitle.sectionTitle {
+.sectionTitle.sectionTitle {
   margin: 0;
   color: inherit;
   font-family: var(--font-display);
@@ -279,14 +232,6 @@
   font-size: var(--text-label);
   font-weight: 600;
 }
-
-/* Account details share their parent's family page edges and heading. */
-.page[data-family-settings-detail] {
-  --page-top: var(--space-5);
-}
-.page[data-family-settings-detail] .column {
-  max-width: none;
-}
 .settingsReturn {
   display: inline-flex;
   align-items: center;
@@ -299,9 +244,4 @@
 }
 .settingsReturn:hover {
   text-decoration: underline;
-}
-@media (max-width: 639px) {
-  .page[data-family-settings-detail] {
-    --page-top: var(--space-4);
-  }
 }

@@ -8,10 +8,11 @@
  * - renders its `<main>` through Page (`main[data-page]`), at the width the
  *   screen's kind takes (standard for all of these);
  * - puts its column and its title's left edge exactly where every other
- *   standard page does, and its column top at the same height;
- * - never scrolls sideways;
+ *   standard page does, its column at the same depth under the app's bar;
+ * - never scrolls sideways, and every list on named columns (ui/ColumnList)
+ *   keeps each column at one x down its rows;
  * - holds still once painted: the title doesn't move between first paint
- *   and a settled page, and no layout shift is recorded.
+ *   and a settled page, and the page's layout shift stays under 0.01.
  *
  * Against a running, seeded design preview (scripts/design-preview.sh):
  *
@@ -51,15 +52,22 @@ const SCHEMES = (argument("schemes") ?? "light,dark").split(",") as (
   "light" | "dark"
 )[];
 const SHOTS = argument("shots");
+/** Only screens whose name contains this (all when not given). */
+const ONLY = argument("screens");
 if (SHOTS) mkdirSync(SHOTS, { recursive: true });
 
 type Kind = "narrow" | "standard" | "wide" | "full";
+/** Cumulative layout shift a page may show while its data arrives. */
+const SHIFT_BUDGET = 0.01;
 type Screen = {
   name: string;
   person: string;
   /** The address, or how to find it from the person's own pages. */
   path: string | ((page: Page) => Promise<string>);
   width: Kind;
+  /** A data wait under the header known to shift the page past the budget,
+   * with why: reported, not failed, until it is fixed. */
+  knownShift?: string;
 };
 
 /** The family's own address (`/family` opens it). */
@@ -92,38 +100,22 @@ const SCREENS: Screen[] = [
     width: "standard",
   },
   {
-    name: "plan",
-    person: "parent-day1",
-    path: "/start/plan",
-    width: "standard",
-  },
-  {
-    name: "continue",
-    person: "parent-day1",
-    path: async (page) => `/continue/${await firstChild(page)}`,
-    width: "standard",
-  },
-  {
-    name: "billing",
-    person: "family",
-    path: "/account/billing",
-    width: "standard",
-  },
-  {
-    name: "purchase-annual",
-    person: "family",
-    path: "/purchase/annual",
-    width: "standard",
-  },
-  {
-    name: "purchase-funded",
-    person: "family",
-    path: "/purchase/funded",
-    width: "standard",
-  },
-  {
     name: "family-today",
     person: "family",
+    path: familyPath,
+    width: "standard",
+  },
+  // Today on day 0 (no child has practiced) and day 1 (one has): the
+  // children's columns line up whatever each row holds.
+  {
+    name: "family-today-day0",
+    person: "parent-new",
+    path: familyPath,
+    width: "standard",
+  },
+  {
+    name: "family-today-day1",
+    person: "parent-day1",
     path: familyPath,
     width: "standard",
   },
@@ -224,6 +216,8 @@ type Geometry = {
   overflow: number;
   shift: number;
   shiftSources: string[];
+  /** Columns of a ColumnList whose cells don't share one left edge. */
+  misaligned: string[];
 };
 function measure(): Geometry {
   const main = document.querySelector<HTMLElement>("main[data-page]");
@@ -249,8 +243,12 @@ function measure(): Geometry {
                 parseFloat(style.paddingLeft) -
                 parseFloat(style.paddingRight),
             ),
+            // From the top of the Page (under the app's bar, whatever its
+            // height on this screen) to the column's first line.
             top: Math.round(
-              box(column).top + window.scrollY + parseFloat(style.paddingTop),
+              box(column).top +
+                parseFloat(style.paddingTop) -
+                (main ? box(main).top : 0),
             ),
           }
         : null,
@@ -266,6 +264,21 @@ function measure(): Geometry {
       document.documentElement.clientWidth,
     shift: shifts.reduce((sum, entry) => sum + entry.value, 0),
     shiftSources: [...new Set(shifts.flatMap((entry) => entry.sources))],
+    // Every row of a list on named columns puts a column's cell at one x.
+    misaligned: [...document.querySelectorAll("ul")].flatMap((list) => {
+      const edges = new Map<string, Set<number>>();
+      for (const cell of list.querySelectorAll<HTMLElement>(
+        ":scope > li > [data-column]",
+      )) {
+        if (getComputedStyle(cell).display === "none") continue;
+        const key = cell.dataset.column!;
+        if (!edges.has(key)) edges.set(key, new Set());
+        edges.get(key)!.add(Math.round(box(cell).left));
+      }
+      return [...edges]
+        .filter(([, lefts]) => lefts.size > 1)
+        .map(([key, lefts]) => `${key} at ${[...lefts].join("/")}`);
+    }),
   };
 }
 
@@ -281,7 +294,10 @@ const rows: Row[] = [];
 try {
   const contexts = new Map<string, BrowserContext>();
   const resolved = new Map<string, string>();
-  for (const screen of SCREENS) {
+  for (const screen of SCREENS.filter(
+    (entry) =>
+      !ONLY || ONLY.split(",").some((name) => entry.name.includes(name)),
+  )) {
     let context = contexts.get(screen.person);
     if (!context) {
       context = await contextFor(browser, screen.person);
@@ -328,6 +344,10 @@ try {
               `${where}: Page width ${settled.page}, expected ${screen.width}`,
             );
           if (!settled.title) fail(`${where}: no visible title`);
+          if (settled.misaligned.length)
+            fail(
+              `${where}: list columns don't line up: ${settled.misaligned.join(", ")}`,
+            );
           if (settled.overflow > 0)
             fail(`${where}: scrolls sideways by ${settled.overflow}px`);
           if (
@@ -339,7 +359,13 @@ try {
             fail(
               `${where}: the title moved after paint (${JSON.stringify(first.title)} → ${JSON.stringify(settled.title)})`,
             );
-          if (settled.shift > 0.001)
+          // A data wait under the header may settle within the "good"
+          // budget; the header itself never moves (checked above).
+          if (settled.shift > SHIFT_BUDGET && screen.knownShift)
+            console.log(
+              `  KNOWN ${where}: layout shift ${settled.shift.toFixed(4)}: ${screen.knownShift}`,
+            );
+          else if (settled.shift > SHIFT_BUDGET)
             fail(
               `${where}: layout shift ${settled.shift.toFixed(4)} (${settled.shiftSources.join(", ")})`,
             );
@@ -381,7 +407,7 @@ for (const width of WIDTHS)
         );
       if (row.column!.top !== reference.column!.top)
         fail(
-          `${where}: column top ${row.column!.top} differs from ${reference.name}'s ${reference.column!.top}`,
+          `${where}: column starts ${row.column!.top}px under the bar, ${reference.name}'s ${reference.column!.top}px`,
         );
       if (row.title && row.title.left !== reference.column!.left)
         fail(

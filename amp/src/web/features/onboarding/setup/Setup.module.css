@@ -1,22 +1,6 @@
-/* A parent's or tutor's setup: one calm step per screen, one column, with its
-   place in the setup at the top and Back and Next at the foot. */
-.page {
-  box-sizing: border-box;
-  display: grid;
-  align-content: start;
-  gap: var(--space-5);
-  width: min(100%, 680px);
-  margin: 0 auto;
-  padding: var(--space-6) max(var(--space-4), env(safe-area-inset-right))
-    max(var(--space-7), env(safe-area-inset-bottom))
-    max(var(--space-4), env(safe-area-inset-left));
-  color: var(--color-on-surface);
-}
-@media (min-width: 768px) {
-  .page {
-    padding-top: var(--space-7);
-  }
-}
+/* A parent's or tutor's setup: one calm step per screen, on one standard
+   Page column, with its place in the setup at the top and Back and Next at
+   the foot. */
 
 /* Where this step sits: a bar per step, filled up to here. */
 .progress {
@@ -75,25 +59,12 @@
   }
 }
 
-.title {
-  margin: 0;
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(var(--text-title-min), 6vw, 40px);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  text-wrap: balance;
-}
-.lede,
 .note {
   margin: 0;
   max-width: 60ch;
   color: var(--color-muted-text);
   font-size: var(--text-body);
   line-height: 1.5;
-}
-.lede {
-  margin-top: calc(var(--space-3) * -1);
 }
 .body {
   display: grid;

@@ -3,7 +3,7 @@
  * width, gutters and top come from Page and ui/tokens.css only, so pages
  * can't drift back into one width each:
  *
- * 1. No stylesheet outside ui/ sets a px width over 400 px (width, max-width,
+ * 1. No stylesheet outside ui/ sets a width over 400 px, in px or rem (width, max-width,
  *    min-width, their logical forms, flex-basis, or a custom property named
  *    for a width or column), in or out of min()/calc(). Media and container
  *    query conditions are not declarations and never count. The lists below
@@ -24,189 +24,220 @@ import { fileURLToPath } from "node:url";
 const WEB = fileURLToPath(new URL("../src/web/", import.meta.url));
 const LIMIT = 400;
 
-type Allowed = Record<string, { widths: number[]; why: string }>;
+type Allowed = Record<string, { widths: string[]; why: string }>;
 
 /** Real components, not page containers: sheets, dialogs, popovers, a
  * reading measure or a form's field column inside a page. */
 const COMPONENTS: Allowed = {
-  "account-security.css": { widths: [420], why: "the sign-in form's fields" },
-  "app-shell.css": { widths: [520], why: "the account error toast" },
+  "counter-builder.css": { widths: ["36rem"], why: "a practice input" },
+  "equal-addends.css": { widths: ["32rem"], why: "a practice input" },
+  "line-plot-build.css": { widths: ["36rem"], why: "a practice input" },
+  "peg-board.css": { widths: ["40rem"], why: "a practice input" },
+  "lesson-reading.css": {
+    widths: ["42rem"],
+    why: "a lesson's reading measure, inside its sheet or page",
+  },
+  "features/school/classes/HelpUsed.module.css": {
+    widths: ["40rem"],
+    why: "a table's measure inside its page",
+  },
+  "account-security.css": {
+    widths: ["420px"],
+    why: "the sign-in form's fields",
+  },
+  "app-shell.css": { widths: ["520px"], why: "the account error toast" },
   "features/account/AccountPages.module.css": {
-    widths: [420],
+    widths: ["420px"],
     why: "the rename and add-a-child forms' fields",
   },
   "features/account/DeleteAccount.module.css": {
-    widths: [420],
+    widths: ["420px"],
     why: "the typed confirmation's field column",
   },
   "features/family-class/AddChildSheet.module.css": {
-    widths: [480],
+    widths: ["480px"],
     why: "a sheet (the fallback of --width-form)",
   },
   "features/films/film-route.css": {
-    widths: [480],
+    widths: ["480px"],
     why: "the film player's caption measure",
   },
   "features/onboarding/setup/Setup.module.css": {
-    widths: [420],
+    widths: ["420px"],
     why: "a setup step's form fields",
   },
   "features/pitch/Pitch.module.css": {
-    widths: [1180, 1400],
+    widths: ["1180px", "1400px", "46rem"],
     why: "the signed-out pitch: a marketing page with its own art direction",
   },
   "features/schools/PublicFrame.module.css": {
-    widths: [1240],
+    widths: ["1240px"],
     why: "the signed-out schools site's own frame",
   },
   "features/school/classes/WorkReplay.module.css": {
-    widths: [760],
+    widths: ["760px"],
     why: "the full-screen answer replay's column",
   },
   "features/school/join/JoinWays.module.css": {
-    widths: [420],
+    widths: ["420px"],
     why: "the join code's field",
   },
-  "feedback-sheet.css": { widths: [620, 680], why: "the feedback sheet" },
-  "premium-controls.css": { widths: [420], why: "a popover of options" },
-  "problem-flag.css": { widths: [480], why: "the report-a-problem dialog" },
+  "feedback-sheet.css": {
+    widths: ["620px", "680px"],
+    why: "the feedback sheet",
+  },
+  "premium-controls.css": { widths: ["420px"], why: "a popover of options" },
+  "problem-flag.css": { widths: ["480px"], why: "the report-a-problem dialog" },
   "shape-composer.css": {
-    widths: [1000],
+    widths: ["1000px", "30rem"],
     why: "a figure's aspect, from its height",
   },
   "structured-work.css": {
-    widths: [480, 560],
+    widths: ["480px", "560px"],
     why: "the work menu and keypad over practice",
   },
-  "trend-line-fit.css": { widths: [520], why: "a practice figure" },
-  "work-diagram.css": { widths: [520], why: "a practice figure" },
+  "trend-line-fit.css": { widths: ["520px"], why: "a practice figure" },
+  "work-diagram.css": { widths: ["520px"], why: "a practice figure" },
 };
 
 /** Screens not on Page yet: phase 2 moves them and deletes their lines. */
 const PHASE_2: Allowed = {
-  "book-reader.css": { widths: [720, 760, 800], why: "the book reader" },
+  "annual-purchase.css": {
+    widths: ["46rem"],
+    why: "the native app's legacy annual purchase",
+  },
+  "parent-consent.css": {
+    widths: ["52rem"],
+    why: "the parent consent centre",
+  },
+  "features/funding/InvoiceForm.module.css": {
+    widths: ["34rem"],
+    why: "the signed-out ClassWallet invoice form, with its own brand header",
+  },
+  "book-reader.css": {
+    widths: ["720px", "760px", "800px"],
+    why: "the book reader",
+  },
   "family-center.css": {
-    widths: [560, 620, 720],
+    widths: ["560px", "620px", "720px"],
     why: "the legacy family centre (native) and its dialog",
   },
-  "features/account/AccountPages.module.css": {
-    widths: [720],
-    why: "account pages outside the family path (learners)",
-  },
   "features/design/Design.module.css": {
-    widths: [720, 1280],
+    widths: ["720px", "1280px"],
     why: "the /design gallery",
   },
   "features/inventory/Inventory.module.css": {
-    widths: [420, 560],
+    widths: ["420px", "560px"],
     why: "Inventory's day-0 hero",
   },
-  "features/me/Own.module.css": { widths: [760], why: "an adult's /me" },
+  "features/me/Own.module.css": { widths: ["760px"], why: "an adult's /me" },
   "features/pathways/pathways.css": {
-    widths: [660],
+    widths: ["660px"],
     why: "Pathways' panels",
   },
   "features/profiles/LevelScreen.module.css": {
-    widths: [560],
+    widths: ["560px"],
     why: "Try a level",
   },
   "features/profiles/Profiles.module.css": {
-    widths: [480, 560, 720, 960],
+    widths: ["480px", "560px", "720px", "960px"],
     why: "practice profiles",
   },
   "features/school/Import.module.css": {
-    widths: [420, 880],
+    widths: ["420px", "880px"],
     why: "a school's import",
   },
   "features/school/School.module.css": {
-    widths: [480, 520, 640, 720, 880],
+    widths: ["480px", "520px", "640px", "720px", "880px"],
     why: "school screens",
   },
   "features/school/SchoolFrame.module.css": {
-    widths: [880],
+    widths: ["880px"],
     why: "the school frame's narrow content",
   },
   "features/school/Setup.module.css": {
-    widths: [480, 600],
+    widths: ["480px", "600px"],
     why: "school setup",
   },
   "features/school/classes/Cards.module.css": {
-    widths: [560],
+    widths: ["560px"],
     why: "sign-in cards",
   },
   "features/school/classes/ReportCard.module.css": {
-    widths: [720],
+    widths: ["720px"],
     why: "report cards",
   },
   "features/school/classroom/Experience.module.css": {
-    widths: [960],
+    widths: ["960px"],
     why: "a class's student experience",
   },
   "features/school/classroom/Stack.module.css": {
-    widths: [640],
+    widths: ["640px"],
     why: "the workbook stack",
   },
   "features/school/classroom/Standings.module.css": {
-    widths: [720],
+    widths: ["720px"],
     why: "standings",
   },
   "features/school/join/Join.module.css": {
-    widths: [420, 480, 620, 1080, 1320],
+    widths: ["420px", "480px", "620px", "1080px", "1320px"],
     why: "joining a class and a student's sign-in",
   },
   "features/school/org/Org.module.css": {
-    widths: [420, 720, 760],
+    widths: ["420px", "720px", "760px"],
     why: "school and district screens",
   },
   "features/schools/Parent.module.css": {
-    widths: [720],
+    widths: ["720px"],
     why: "a parent's progress link",
   },
   "funding-purchase.css": {
-    widths: [900],
+    widths: ["900px"],
     why: "the native app's legacy education-funds centre",
   },
-  "native-session.css": { widths: [640], why: "the native session screen" },
+  "native-session.css": { widths: ["640px"], why: "the native session screen" },
   "payment-history.css": {
-    widths: [760],
+    widths: ["760px"],
     why: "the native app's payment records",
   },
-  "practice-tablet.css": { widths: [680], why: "practice on a tablet" },
+  "practice-tablet.css": { widths: ["680px"], why: "practice on a tablet" },
   "practice.css": {
-    widths: [440, 450, 520, 620, 640, 680, 760, 820, 1240],
+    widths: [
+      "440px",
+      "450px",
+      "520px",
+      "620px",
+      "640px",
+      "680px",
+      "760px",
+      "820px",
+      "1240px",
+    ],
     why: "practice and its legacy screens",
   },
   "progress-workspace.css": {
-    widths: [680, 700],
+    widths: ["680px", "700px"],
     why: "the legacy progress workspace",
   },
   "style.css": {
-    widths: [430, 440, 480, 520, 560, 720, 1240],
+    widths: ["430px", "440px", "480px", "520px", "560px", "720px", "1240px"],
     why: "legacy global shell rules",
   },
   "theme.css": {
-    widths: [420, 460, 640, 720, 800, 832],
+    widths: ["420px", "460px", "640px", "720px", "800px", "832px"],
     why: "legacy global shell rules",
   },
   "features/continue/Continue.module.css": {
-    widths: [520, 808],
-    why: "the free-allowance pause inside practice; Continue (family path)",
+    widths: ["520px", "808px"],
+    why: "the free-allowance pause inside practice; Continue (the pay flow)",
   },
   "features/account/BillingPage.module.css": {
-    widths: [808],
-    why: "Billing (family path)",
+    widths: ["808px"],
+    why: "Billing (the pay flow, redo-pay-flow)",
   },
   "features/funding/FundedPurchasePage.module.css": {
-    widths: [760],
-    why: "education funds (family path)",
-  },
-  "features/onboarding/Starter.module.css": {
-    widths: [640],
-    why: "What brings you to AMP? (family path)",
-  },
-  "features/onboarding/setup/Setup.module.css": {
-    widths: [680],
-    why: "a parent's setup (family path)",
+    widths: ["760px"],
+    why: "education funds (the pay flow, redo-pay-flow)",
   },
 };
 
@@ -227,7 +258,7 @@ export function wideDeclarations(css: string) {
   const source = css.replace(/\/\*[\s\S]*?\*\//g, (comment) =>
     comment.replace(/[^\n]/g, " "),
   );
-  const found: { line: number; declaration: string; widths: number[] }[] = [];
+  const found: { line: number; declaration: string; widths: string[] }[] = [];
   // A declaration: a property and a value up to `;` or the block's end. At
   // rules' conditions (`@media (max-width: …) {`) end at `{`, never `;`.
   for (const match of source.matchAll(/([\w-]+)\s*:\s*([^;{}]+)(?=[;}])/g)) {
@@ -237,9 +268,12 @@ export function wideDeclarations(css: string) {
     // Inside a selector (`a:hover`) the next brace opens a block.
     if (/^[^;{}]*\{/.test(source.slice(match.index))) continue;
     if (/@(media|container|supports)[^{};]*$/.test(before)) continue;
-    const widths = [...value!.matchAll(/(\d+(?:\.\d+)?)px/g)]
-      .map((px) => Number(px[1]))
-      .filter((px) => px > LIMIT);
+    // A rem is 16 px here: a container in rem is a container all the same.
+    const widths = [...value!.matchAll(/(\d+(?:\.\d+)?)(px|rem)\b/g)]
+      .filter(
+        ([, size, unit]) => Number(size) * (unit === "rem" ? 16 : 1) > LIMIT,
+      )
+      .map(([literal]) => literal);
     if (widths.length)
       found.push({
         line: before.split("\n").length,
@@ -261,14 +295,15 @@ test("the width check reads declarations, never query conditions", () => {
       .f:hover { color: red }
       /* width: 900px; */
       .g { --pitch-width: 1180px; --space: 480px; }
+      .h { max-width: 34rem; min-width: 2rem; }
     `).map((entry) => entry.widths),
-    [[808], [760], [720], [1180]],
+    [["808px"], ["760px"], ["720px"], ["1180px"], ["34rem"]],
   );
 });
 
 test("no page container sets its own px width: widths come from Page and its tokens", () => {
   const problems: string[] = [];
-  const seen = new Map<string, Set<number>>();
+  const seen = new Map<string, Set<string>>();
   for (const path of cssFiles(WEB)) {
     const file = relative(WEB, path).split("\\").join("/");
     if (file.startsWith("ui/")) continue;
@@ -294,7 +329,7 @@ test("no page container sets its own px width: widths come from Page and its tok
       for (const px of entry.widths)
         if (!seen.get(file)?.has(px))
           problems.push(
-            `${name} lists ${file} ${px}px, which it no longer sets: delete the entry`,
+            `${name} lists ${file} ${px}, which it no longer sets: delete the entry`,
           );
   assert.deepEqual(problems, []);
 });
@@ -305,63 +340,36 @@ test("no page container sets its own px width: widths come from Page and its tok
 const FRAMES: Record<string, string> = {
   Page: "ui/Page.tsx",
   PageFrame: "ui/PageFrame.tsx",
+  FamilyFrame: "features/family/FamilyFrame.tsx",
+  StepFrame: "features/onboarding/setup/StepFrame.tsx",
 };
 
 /** Route screens that don't render Page yet, `module#export`, with why. */
 const ROUTES_PHASE_2: Record<string, string> = {
+  "features/account/BillingPage.tsx#BillingPage":
+    "the pay flow (redo-pay-flow)",
+  "features/billing/CardPurchasePage.tsx#CardPurchasePage":
+    "the pay flow (redo-pay-flow)",
+  "features/funding/FundedPurchasePage.tsx#FundedPurchasePage":
+    "the pay flow (redo-pay-flow)",
+  "features/continue/ContinueScreen.tsx#ContinueScreen":
+    "the pay flow (redo-pay-flow)",
   "app/LegacyApp.tsx#LegacyApp":
     "the legacy host: practice (full) and the account centre",
-  "features/account/BillingPage.tsx#BillingPage": "family path (phase 1)",
-  "features/billing/CardPurchasePage.tsx#CardPurchasePage":
-    "family path (phase 1)",
-  "features/continue/ContinueScreen.tsx#ContinueScreen":
-    "family path (phase 1)",
   "features/design/DesignScreen.tsx#DesignScreen": "the /design gallery",
   "features/family-approval/ApprovalScreen.tsx#ApprovalScreen":
     "joining, approvals and links from outside the app",
   "features/family-approval/ApproveLinkScreen.tsx#ApproveLinkScreen":
     "joining, approvals and links from outside the app",
-  "features/family/screens.tsx#ChildScreen":
-    "a family screen (family path, phase 1)",
-  "features/family/screens.tsx#FamilyCardsScreen":
-    "a family screen (family path, phase 1)",
-  "features/family/screens.tsx#FamilyChooserScreen":
-    "a family screen (family path, phase 1)",
-  "features/family/screens.tsx#FamilyGradesScreen":
-    "a family screen (family path, phase 1)",
-  "features/family/screens.tsx#FamilyMapScreen":
-    "a family screen (family path, phase 1)",
-  "features/family/screens.tsx#FamilyMarkingScreen":
-    "a family screen (family path, phase 1)",
-  "features/family/screens.tsx#FamilyMissingScreen":
-    "a family screen (family path, phase 1)",
-  "features/family/screens.tsx#FamilyPeopleScreen":
-    "a family screen (family path, phase 1)",
-  "features/family/screens.tsx#FamilyReportsScreen":
-    "a family screen (family path, phase 1)",
-  "features/family/screens.tsx#FamilySettingsScreen":
-    "a family screen (family path, phase 1)",
-  "features/family/screens.tsx#FamilyTimeScreen":
-    "a family screen (family path, phase 1)",
-  "features/family/screens.tsx#FamilyTodayScreen":
-    "a family screen (family path, phase 1)",
-  "features/family/screens.tsx#FamilyWorkbooksScreen":
-    "a family screen (family path, phase 1)",
-  "features/family/screens.tsx#TutoringGroupScreen":
-    "a family screen (family path, phase 1)",
   "features/films/FilmScreen.tsx#FilmScreen": "the immersive film (full)",
-  "features/funding/FundedEntry.tsx#FundedEntry": "family path (phase 1)",
-  "features/funding/FundedPurchasePage.tsx#FundedPurchasePage":
-    "family path (phase 1)",
-  "features/funding/InvoiceForm.tsx#InvoiceForm": "family path (phase 1)",
+  "features/funding/InvoiceForm.tsx#InvoiceForm":
+    "the signed-out ClassWallet invoice form, with its own brand header",
   "features/inventory/InventoryScreen.tsx#InventoryScreen":
     "Pathways and Inventory (wide, or full for the 3D map)",
   "features/me/index.ts#OwnRecordScreen": "an adult's own practice",
   "features/me/index.ts#OwnTimeScreen": "an adult's own practice",
   "features/not-found/NotFoundScreen.tsx#NotFoundScreen":
     "the not-found screen",
-  "features/onboarding/Starter.tsx#Starter": "family path (phase 1)",
-  "features/onboarding/Starter.tsx#StarterStep": "family path (phase 1)",
   "features/pathways/PathwaysScreen.tsx#PathwaysScreen":
     "Pathways and Inventory (wide, or full for the 3D map)",
   "features/profiles/index.ts#EditProfileScreen": "an adult's own practice",
@@ -467,6 +475,8 @@ const ROUTES_PHASE_2: Record<string, string> = {
 /** Route screens that never will: another product's frame, or a
  * development tool. */
 const ROUTES_EXEMPT: Record<string, string> = {
+  "features/funding/FundedEntry.tsx#FundedEntry":
+    "a redirect to /purchase/funded; it renders nothing",
   "features/pitch/PitchScreen.tsx#PitchScreen":
     "the signed-out pitch: a marketing page with its own art direction",
   "features/schools/index.ts#SchoolsScreen":

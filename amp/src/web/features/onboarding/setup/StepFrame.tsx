@@ -3,6 +3,8 @@ import type { ReactNode } from "react";
 import { closeTo } from "../../../lib/return-to";
 import { Button, buttonClass } from "../../../ui/Button";
 import { appReturn } from "../../spaces/returns";
+import { Page } from "../../../ui/Page";
+import { PageHeader } from "../../../ui/PageHeader";
 import styles from "./Setup.module.css";
 
 /** One step of a first run (docs/design/ia.md): where it sits in the setup,
@@ -42,7 +44,7 @@ export function StepFrame({
     }),
   );
   return (
-    <main className={styles.page}>
+    <Page>
       {steps.length > 1 && (
         <nav className={styles.progress} aria-label="Setup">
           <p className={styles.count}>
@@ -62,10 +64,7 @@ export function StepFrame({
           </ol>
         </nav>
       )}
-      <h1 id={titleId} className={styles.title}>
-        {title}
-      </h1>
-      {lede && <p className={styles.lede}>{lede}</p>}
+      <PageHeader title={title} titleId={titleId} subtitle={lede} />
       <div className={styles.body}>{children}</div>
       <div className={styles.foot}>
         <div className={styles.actions}>
@@ -96,6 +95,6 @@ export function StepFrame({
           {hint}
         </p>
       </div>
-    </main>
+    </Page>
   );
 }

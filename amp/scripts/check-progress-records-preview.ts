@@ -71,7 +71,7 @@ try {
         assert.equal(await page.locator("main h1").count(), 1);
         assert.equal(
           await page
-            .locator("[data-family-heading] nav[aria-label='Progress records']")
+            .locator("[data-page-header] nav[aria-label='Progress records']")
             .count(),
           1,
         );
@@ -98,7 +98,7 @@ try {
         );
         assert(
           await page
-            .locator("[data-family-heading] nav a")
+            .locator("[data-page-header] nav a")
             .evaluateAll((links) =>
               links.every(
                 (link) => getComputedStyle(link).textDecorationLine === "none",

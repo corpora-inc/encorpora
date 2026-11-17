@@ -1,17 +1,17 @@
 import { Link } from "@tanstack/react-router";
+import { useCloseClick } from "../nav/links";
 import type { ReactNode, Ref } from "react";
 import styles from "./PageHeader.module.css";
 
-/** A header's way back: to the screen it names, or a step back in place
- * (a receipt back to its list, a close that goes Back). */
-export type PageBack = { label: string } & (
-  { to: string } | { onClick: () => void }
-);
+/** A header's way back: the screen's logical parent (an app address),
+ * where it goes when there is no previous screen to go Back to; or a step
+ * back within the screen itself (a receipt back to its list). */
+export type PageBack = string | (() => void);
 
 /**
  * A screen's header, the one anatomy every page uses: the way back on its
- * own row at the top left ("‹ Settings", named for the screen it returns
- * to), then the title in the app's serif, an optional subtitle under it,
+ * own row at the top left, always "‹ Back" (founder, 2026-11-16), going to
+ * the previous screen or step; then the title in the app's serif, an optional subtitle under it,
  * and optional actions at the right of the title (they wrap under it on a
  * phone). It is the first thing in a Page's column, so every screen's title
  * starts at the same place. `titleId` and `titleRef` let a screen label its
@@ -54,27 +54,31 @@ export function PageHeader({
 }
 
 function BackLink({ back }: { back: PageBack }) {
+  const close = useCloseClick(typeof back === "string" ? back : "/");
   const label = (
     <>
       <span className={styles.chevron} aria-hidden="true">
         ‹
       </span>
-      {back.label}
+      Back
     </>
   );
-  if ("onClick" in back)
+  if (typeof back === "function")
     return (
-      <button type="button" className={styles.back} onClick={back.onClick}>
+      <button type="button" className={styles.back} onClick={back}>
         {label}
       </button>
     );
-  const [path, query = ""] = back.to.split("?");
+  const [path, query = ""] = back.split("?");
   return (
+    // Back where the screen was opened, else to its parent; the parent's
+    // address stays the link's own, for a new tab.
     <Link
       to={path as never}
       // The query apart from the path, so its keys stay search keys.
       search={Object.fromEntries(new URLSearchParams(query)) as never}
       className={styles.back}
+      onClick={close}
     >
       {label}
     </Link>

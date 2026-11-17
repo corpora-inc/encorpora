@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithRef } from "react";
 import styles from "./Page.module.css";
 
 /** How wide a screen's column is (ui/tokens.css, `--page-*`). */
@@ -12,14 +12,15 @@ export type PageWidth = "narrow" | "standard" | "wide" | "full";
  * edge-to-edge surface (practice, the 3D map) that lays itself out. The
  * column stacks its children with the page's section gap; `className`
  * styles the column (its gap, its type), never its width, which
- * tests/page-layout.test.ts enforces. Other attributes go on the `<main>`.
+ * tests/page-layout.test.ts enforces. Other attributes, and a ref, go on
+ * the `<main>`.
  */
 export function Page({
   width = "standard",
   className,
   children,
   ...main
-}: Omit<ComponentPropsWithoutRef<"main">, "style"> & { width?: PageWidth }) {
+}: Omit<ComponentPropsWithRef<"main">, "style"> & { width?: PageWidth }) {
   if (width === "full")
     return (
       <main {...main} className={className} data-page="full">

@@ -194,9 +194,7 @@ try {
           headingBox && Math.abs(headingBox.x - todayGeometry.x) < 1,
           `${title} shares family left edge`,
         );
-        await page
-          .getByRole("link", { name: "‹ Settings", exact: true })
-          .click();
+        await page.getByRole("link", { name: "Back", exact: true }).click();
         await page.waitForURL(origin + base + "/settings");
       }
       await page.goto(origin + "/purchase/funded");
@@ -224,7 +222,7 @@ try {
         await tabs.locator('[aria-current="page"]').innerText(),
         "Settings",
       );
-      await page.getByRole("link", { name: "‹ Settings", exact: true }).click();
+      await page.getByRole("link", { name: "Back", exact: true }).click();
       await page.waitForURL(origin + base + "/settings");
       assert.ok(
         await page.evaluate(
@@ -311,7 +309,7 @@ try {
     });
     await open.click();
     await page.waitForURL(origin + detail);
-    await page.getByRole("link", { name: "All children", exact: true }).click();
+    await page.getByRole("link", { name: "Back", exact: true }).click();
     await page.waitForURL(origin + base + "/map");
     console.log("PASS several children", width);
   }
