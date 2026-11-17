@@ -30,15 +30,23 @@ export function WorkbookHistoryScreen() {
  * before as a list, and results by code as a quiet second action while a
  * workbook still waits for them. With none made yet, the list's place says
  * so and holds the one way to make the first. On the adult's own practice
- * it speaks to them and never names them. */
+ * it speaks to them and never names them. As a `section` of a child's own
+ * page, it is one part under the page's title (h2), naming no one. */
 export function WorkbookHistory({
-  session,
+  session: given,
   learner,
+  section = false,
 }: {
-  session: AuthSession;
+  session?: AuthSession;
   learner: WorkbookLearner;
+  section?: boolean;
 }) {
-  const history = useQuery(workbookHistoryOptions(session, learner.id));
+  const signedIn = useQuery({ ...sessionOptions, enabled: !given }).data;
+  const session = given ?? signedIn ?? { accountId: "", token: "" };
+  const history = useQuery({
+    ...workbookHistoryOptions(session, learner.id),
+    enabled: !!session.token,
+  });
   const [entering, setEntering] = useState(false);
   const who = whose(learner);
   const canMake = canMakeWorkbook(learner);
@@ -57,12 +65,16 @@ export function WorkbookHistory({
   return (
     <>
       <header className={styles.listHead}>
-        <div className={styles.listTitle}>
-          {who.label && <p className={styles.learnerLabel}>{who.label}</p>}
-          <h1 className={styles.title}>
-            {who.own ? "Your workbooks" : "Workbooks"}
-          </h1>
-        </div>
+        {section ? (
+          <h2 id="child-workbooks">Workbooks</h2>
+        ) : (
+          <div className={styles.listTitle}>
+            {who.label && <p className={styles.learnerLabel}>{who.label}</p>}
+            <h1 className={styles.title}>
+              {who.own ? "Your workbooks" : "Workbooks"}
+            </h1>
+          </div>
+        )}
         {/* The actions land with the list: the first workbook is made from
             the empty list's own button, and results by code are offered only
             while a workbook waits for them. */}
@@ -108,9 +120,15 @@ export function WorkbookHistory({
         </div>
       ) : (
         <section className={styles.past} aria-labelledby="past-workbooks">
-          <h2 id="past-workbooks" className={styles.sectionTitle}>
-            Past workbooks
-          </h2>
+          {section ? (
+            <h3 id="past-workbooks" className={styles.sectionTitle}>
+              Past workbooks
+            </h3>
+          ) : (
+            <h2 id="past-workbooks" className={styles.sectionTitle}>
+              Past workbooks
+            </h2>
+          )}
           <WorkbookList
             session={session}
             learnerId={learner.id}

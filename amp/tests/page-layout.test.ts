@@ -588,10 +588,15 @@ export function routeScreens() {
       )
         add(loaders.get("screens")!, args[0]!.slice(1, -1));
     }
-    // A family tab: `leaf(path, "FamilyTimeScreen")`, from `screens`.
+    // A family tab: `leaf(path, "FamilyMapScreen")`, from `screens`.
     for (const args of calls(source, /\bleaf\(/g))
       if (/^"\w+"$/.test(args[1] ?? "") && loaders.has("screens"))
         add(loaders.get("screens")!, args[1]!.slice(1, -1));
+    // A record alias that renders where it stays:
+    // `childAlias(path, anchor, "FamilyMapScreen", …)`.
+    for (const args of calls(source, /\bchildAlias\(/g))
+      if (/^"\w+"$/.test(args[2] ?? "") && loaders.has("screens"))
+        add(loaders.get("screens")!, args[2]!.slice(1, -1));
     // A child's learning screen: `childScreen(path, () => import(…), name)`.
     for (const args of calls(source, /\bchildScreen\(/g)) {
       const specifier = loaderOf(args[1] ?? "");
@@ -676,8 +681,6 @@ test("every route's screen renders Page, or is listed with its reason", () => {
 const PARENT_RESOLVERS: Record<string, string> = {
   "features/continue/ContinueScreen.tsx#learnerPage":
     "one parent per learner, their own page: a child's in their family, the adult's /me, a profile's list (the pay flow carries it to /pay)",
-  "features/family/RecordLinks.tsx#useFamilyRecordBack":
-    "one parent per record: a child's page goes to Today; practice time, report cards and workbooks to Progress (with one child, that child's page)",
 };
 /** Files whose `back` names more than one route, with why (none). */
 const SEVERAL_PARENTS: Record<string, string> = {};
@@ -695,7 +698,7 @@ export function routeAddresses() {
     const path = match[1]!;
     found.add(path.startsWith("/") ? path : `/family/$family/${path}`);
   }
-  for (const match of family.matchAll(/\b(?:leaf|childScreen)\(\s*"([^"]*)"/g))
+  for (const match of family.matchAll(/\b(?:leaf|childScreen|childAlias)\(\s*"([^"]*)"/g))
     found.add(
       match[1] === "/" ? "/family/$family" : `/family/$family/${match[1]}`,
     );

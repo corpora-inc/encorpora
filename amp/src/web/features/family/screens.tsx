@@ -17,10 +17,8 @@ export { FamilyTodayScreen } from "./Today";
 export { ChildScreen } from "./Child";
 export {
   FamilyMapScreen,
-  FamilyTimeScreen,
   FamilyWorkbooksScreen,
   FamilyMarkingScreen,
-  FamilyReportsScreen,
   FamilyGradesScreen,
   FamilyCardsScreen,
 } from "./Records";
