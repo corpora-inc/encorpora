@@ -22,7 +22,7 @@
   text-align: start;
   cursor: pointer;
 }
-.field:hover:not(:disabled) {
+.field:hover:not(:disabled, [aria-invalid="true"]) {
   filter: none;
   border-color: var(--field-border-hover);
 }

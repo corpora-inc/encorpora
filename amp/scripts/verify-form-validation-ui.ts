@@ -143,6 +143,22 @@ try {
           );
           assert.equal(await email.getAttribute("aria-invalid"), "true");
           assert(await note.isVisible(), `${label}: the message shows`);
+          // The field wears the error's edge, even under the pointer that
+          // just clicked it.
+          await email.hover();
+          const edge = await email.evaluate((input) => {
+            const probe = document.createElement("span");
+            probe.style.color = "var(--color-danger-accent)";
+            document.body.append(probe);
+            const danger = getComputedStyle(probe).color;
+            probe.remove();
+            return { border: getComputedStyle(input).borderTopColor, danger };
+          });
+          assert.equal(
+            edge.border,
+            edge.danger,
+            `${label}: the field's edge is the error's color`,
+          );
           const line = await note.evaluate((element) => {
             const style = getComputedStyle(element);
             return {

@@ -137,7 +137,7 @@
   color: var(--field-placeholder);
   opacity: 1;
 }
-.input.input:hover:not(:disabled, :focus) {
+.input.input:hover:not(:disabled, :focus, [aria-invalid="true"]) {
   border-color: var(--field-border-hover);
 }
 /* Focus hugs the field: its edge turns to the focus ink, with a soft halo
