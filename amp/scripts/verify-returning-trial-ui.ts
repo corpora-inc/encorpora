@@ -88,7 +88,8 @@ try {
       // Explicitly adding a place remains available to the same parent.
       await page.goto(`${f.origin}/start?from=${encodeURIComponent(home)}`);
       await page.getByRole("heading", { name: "Add a place" }).waitFor();
-      await page.getByRole("button", { name: "Back", exact: true }).click();
+      // No in-page Back: the browser's Back leaves it.
+      await page.goBack();
       await page.waitForURL((url) => url.pathname === home);
       assert.deepEqual(errors, []);
       await context.close();

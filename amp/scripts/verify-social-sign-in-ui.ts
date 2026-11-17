@@ -841,11 +841,10 @@ try {
     ),
   );
   await page.goto(`${origin}/overview`);
-  // This learner has no answers yet: #2157 gives their starting estimate
-  // its own heading. Naming the learner also proves the stale selection
-  // from another account did not leak into this overview.
+  // The overview is the child's own page, titled with their name: that
+  // proves the stale selection from another account did not leak into it.
   await page
-    .getByRole("heading", { name: "Where Test Learner is", exact: true })
+    .getByRole("heading", { level: 1, name: "Test Learner", exact: true })
     .waitFor();
   await page.screenshot({
     path: new URL("returning-learner-home-390.png", shots).pathname,
@@ -988,7 +987,7 @@ try {
     await router.navigate({ to: "/$", params: { _splat: "overview" } });
   });
   await page
-    .getByRole("heading", { name: "Where Test Learner is", exact: true })
+    .getByRole("heading", { level: 1, name: "Test Learner", exact: true })
     .waitFor();
   // The legacy overview resolves to this child's canonical address. An
   // account switch must refuse that address, not substitute another child.
