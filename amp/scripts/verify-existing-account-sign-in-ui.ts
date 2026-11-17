@@ -23,10 +23,10 @@ const chromium = secureChromium(rawChromium);
  *   signs in with Google" and one Continue with Google button, in place of the
  *   password form, keeping /access as the destination;
  * - Create account with that address does the same instead of a dead-end
- *   "Check your email";
- * - Create account with a password account's address reaches Check your
- *   email with copy true for both cases, the provider buttons, and a real
- *   email to the owner;
+ *   code form;
+ * - Create account with a password account's address shows the same-page
+ *   code form ("Confirm your email") with copy true for both cases, the
+ *   provider buttons, and a real email to the owner;
  * - sign-in from /access labels Google "Continue with Google".
  * Each state is measured for overflow and card movement at 390 and 1280 px in
  * both themes. Mail and Google are answered in this process. */
@@ -287,7 +287,7 @@ try {
       await page.unroute("**/api/auth/sign-in/social");
 
       // Create account (password) with the same address: same answer, no
-      // dead-end "Check your email", and nothing to mail.
+      // dead-end code form, and nothing to mail.
       sent.length = 0;
       await page.goto(`${origin}/sign-up?return=access&method=password`);
       await page.getByLabel("Email", { exact: true }).fill(googleEmail);
@@ -298,11 +298,12 @@ try {
         (await hint.locator("p").first().innerText()).trim(),
         "This email signs in with Google.",
       );
-      assert.notEqual(
-        new URL(page.url()).pathname,
-        "/sign-in/check-email",
-        `${label}: no dead end`,
+      assert.equal(
+        await page.locator("[data-email-code]").count(),
+        0,
+        `${label}: no code to wait for`,
       );
+      assert.equal(new URL(page.url()).pathname, "/sign-up");
       assert.equal(sent.length, 0, "no account is created and nothing mailed");
       await check(page, `${label} create hint`);
       if (theme === "light") {
@@ -314,38 +315,58 @@ try {
         });
       }
 
-      // A password account's address on Create account: Check your email,
-      // true for both cases, with the providers, and a real email sent.
+      // A password account's address on Create account: the same-page code
+      // form, true for both cases (a new address gets a code; an existing
+      // account gets the way to sign in), with the providers, and a real
+      // email sent.
       const passwordEmail = await parent("password");
       await page.goto(`${origin}/sign-up?method=password`);
       await page.getByLabel("Email", { exact: true }).fill(passwordEmail);
       await page.getByLabel(/^Password/).fill("a long enough password");
       await page.getByRole("button", { name: "Create account" }).click();
-      await page.getByRole("heading", { name: "Check your email" }).waitFor();
+      const codeForm = page.getByRole("form", { name: "Confirm your email" });
+      await codeForm.waitFor();
       assert.equal(
-        (await page.locator("[data-check-email] p").first().innerText()).trim(),
-        `We sent an email to ${passwordEmail}. A new address gets a confirmation link; an existing account gets the way to sign in. Check your spam folder too.`,
+        (await codeForm.locator("p").first().innerText()).trim(),
+        `We sent a 6-digit code to ${passwordEmail}. Enter it here to finish. If that email already has an AMP account, we sent it how to sign in instead.`,
       );
+      assert.equal(
+        new URL(page.url()).pathname,
+        "/sign-up",
+        `${label}: the code is typed on sign-up itself`,
+      );
+      await codeForm.getByLabel("Code", { exact: true }).waitFor();
+      for (const name of [
+        "Continue",
+        "Send a new code",
+        "Use a different email",
+      ])
+        await codeForm.getByRole("button", { name, exact: true }).waitFor();
+      // The providers stay one tap away, as sign-up shows them.
       assert.equal(
         await page.locator("button[data-provider]").count(),
         3,
         `${label}: the providers are one tap away`,
       );
-      assert.equal(
-        (await page.locator("button[data-provider=google]").innerText()).trim(),
-        "Continue with Google",
-      );
-      await page.getByRole("button", { name: "Back to sign in" }).waitFor();
       assert.equal(sent.length, 1);
       assert.equal(sent[0].to, passwordEmail);
       assert.equal(sent[0].subject, "You already have an AMP account");
-      await check(page, `${label} check email`);
+      await check(page, `${label} email code`);
       await settled(page);
       await page.screenshot({
-        path: new URL(`existing-check-email-${theme}-${size.width}.png`, shots)
+        path: new URL(`existing-email-code-${theme}-${size.width}.png`, shots)
           .pathname,
         fullPage: true,
       });
+      // A mistyped address: back to the form, the address kept to fix.
+      await codeForm
+        .getByRole("button", { name: "Use a different email", exact: true })
+        .click();
+      await codeForm.waitFor({ state: "detached" });
+      assert.equal(
+        await page.getByLabel("Email", { exact: true }).inputValue(),
+        passwordEmail,
+      );
       assert.deepEqual(errors, []);
       await context.close();
     }

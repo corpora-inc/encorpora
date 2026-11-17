@@ -410,20 +410,20 @@ test("the pitch reaches GA with its titles and video, Buy and try events, saniti
       ],
     );
 
-    // Each sign-up intent is its own title on the same sanitized URL.
-    await page.evaluate(() => {
-      history.pushState(
-        {},
-        "",
-        "/sign-up?entry=pitch-try&return=free-practice&program=ar-efa&email=private@example.test",
-      );
-      (window as any).amp.trackGooglePage();
-    });
-    await awaitHits("page_view", 2);
-    await page.evaluate(() => {
-      history.pushState({}, "", "/sign-up?entry=pitch-buy&program=ar-efa");
-      (window as any).amp.trackGooglePage();
-    });
+    // Each sign-up intent is its own title on the same plain URL: the
+    // pitch's Try it free and Buy open `/sign-up` with no query, and why the
+    // visitor signs up (and the ad's program) is the tab's
+    // (lib/program-choice.ts: `amp.sign-up-entry`, `amp.program-choice`).
+    for (const intent of [
+      { entry: "pitch-try", free: true },
+      { entry: "pitch-buy" },
+    ])
+      await page.evaluate((kept) => {
+        sessionStorage.setItem("amp.program-choice", "ar-efa");
+        sessionStorage.setItem("amp.sign-up-entry", JSON.stringify(kept));
+        history.pushState({}, "", "/sign-up");
+        (window as any).amp.trackGooglePage();
+      }, intent);
     await awaitHits("page_view", 3);
     assert.deepEqual(
       named("page_view")

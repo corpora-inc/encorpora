@@ -107,10 +107,27 @@ try {
             },
           );
           if (failure === "configuration") {
+            // A retry in place on `/sign-up`: the session check waits on the
+            // same configuration, so the route's own retry answers first
+            // ("Sign-in options couldn’t load"); SignInScreen's ConfigRetry
+            // ("Sign-in didn’t load") is the same promise once the screen
+            // has rendered. Either is a working retry, never a dead end.
             await page
-              .getByText("Sign-in options couldn’t load. Please try again.")
+              .getByText(
+                /^(Sign-in options couldn’t load\. Please try again\.|We couldn’t reach AMP to show the ways to sign in\. Check your connection, then try again\.)$/,
+              )
+              .first()
               .waitFor();
             assert.equal(new URL(page.url()).pathname, "/sign-up");
+            // The older free-practice link's arrival is the tab's already.
+            assert.deepEqual(
+              await page.evaluate(() =>
+                JSON.parse(
+                  sessionStorage.getItem("amp.sign-up-entry") ?? "null",
+                ),
+              ),
+              { free: true },
+            );
             assert.equal(
               await page.locator('[data-provider="google"]').count(),
               0,
@@ -128,7 +145,11 @@ try {
               .getByRole("button", { name: "Try again", exact: true })
               .click();
             await page.locator('[data-provider="google"]').waitFor();
+            await page.getByRole("heading", { name: "Try AMP free" }).waitFor();
+            // Recovered: the older link's one hop to the clean address, the
+            // token never kept.
             assert.equal(new URL(page.url()).pathname, "/sign-up");
+            assert.equal(new URL(page.url()).search, "", "older link cleaned");
             const deadline = Date.now() + 15000;
             while (
               !auth.some((event) => event.stage === "screen") &&

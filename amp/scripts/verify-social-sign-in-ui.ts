@@ -287,6 +287,24 @@ async function checkScreen(
   await context.close();
 }
 
+/** An older sign-up link's one hop: the clean `/sign-up`, and why the tab
+ * signs up (and its program) kept for it (lib/program-choice.ts). */
+async function keptArrival(
+  page: Page,
+  intent: { entry?: string; free?: boolean },
+  program?: string,
+) {
+  await page.locator('[data-provider="google"]').waitFor();
+  assert.equal(new URL(page.url()).pathname, "/sign-up", "one hop to sign-up");
+  assert.equal(new URL(page.url()).search, "", "the older link is cleaned");
+  const kept = await page.evaluate(() => ({
+    intent: JSON.parse(sessionStorage.getItem("amp.sign-up-entry") ?? "null"),
+    program: sessionStorage.getItem("amp.program-choice"),
+  }));
+  assert.deepEqual(kept.intent, intent, "the tab keeps why it signs up");
+  if (program) assert.equal(kept.program, program, "the tab keeps the program");
+}
+
 const browser = await chromium.launch({ headless: true });
 try {
   for (const path of ["/sign-up", "/sign-in"] as const)
@@ -300,8 +318,11 @@ try {
         colorScheme: theme,
       });
       const page = await context.newPage();
+      // An older free-practice link (a deliberate legacy input): one hop to
+      // the clean address, the tab keeping the trial and the program.
       await page.goto(`${origin}/sign-up?return=free-practice&program=az-esa`);
       await page.getByRole("heading", { name: "Try AMP free" }).waitFor();
+      await keptArrival(page, { free: true }, "az-esa");
       // Opt-in is a single quiet line, never a checkbox to decide on.
       assert.equal(await page.getByRole("checkbox").count(), 0);
       assert.match(
@@ -436,10 +457,14 @@ try {
   // A new parent from a free-practice link answers "What brings you to AMP?"
   // first, keeping the program.
   await page.goto(`${origin}/sign-up?return=free-practice&program=az-esa`);
+  await keptArrival(page, { free: true }, "az-esa");
   await page.getByRole("button", { name: "Continue with Google" }).click();
-  await page.waitForURL(
-    (url) =>
-      url.pathname === "/start" && url.searchParams.get("program") === "az-esa",
+  // The program is the tab's, never carried on the address.
+  await page.waitForURL((url) => url.pathname === "/start");
+  assert.equal(
+    await page.evaluate(() => sessionStorage.getItem("amp.program-choice")),
+    "az-esa",
+    "the tab keeps the program across the provider",
   );
   await page
     .getByRole("heading", { name: "What brings you to AMP?" })
@@ -497,6 +522,8 @@ try {
     });
     await context.clearCookies();
     await page.goto(`${origin}${entry}`);
+    if (entry.includes("?"))
+      await keptArrival(page, { entry: "pitch-try", free: true });
     await page.getByRole("button", { name: "Continue with Google" }).click();
     await page.waitForURL((url) => /^\/family\/[^/]+$/.test(url.pathname));
     await page
@@ -512,7 +539,10 @@ try {
   parentEmail = `standard-parent-${Date.now()}@example.com`;
 
   // A cancelled provider screen returns to the same screen with a message
-  // that overlays the page; the buttons do not move.
+  // that overlays the page; the buttons do not move. A standard sign-up:
+  // this tab no longer carries the Try it free intent kept above (a
+  // provider's sign-in leaves it in the tab, lib/program-choice.ts).
+  await page.evaluate(() => sessionStorage.removeItem("amp.sign-up-entry"));
   await page.goto(`${origin}/sign-up`);
   const before = await measureStack(page, "before cancel");
   await page.getByRole("button", { name: "Continue with GitHub" }).click();
