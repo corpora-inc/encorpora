@@ -1,3 +1,4 @@
+import { useAuthDraft } from "../../auth/draft";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import type { SignedInMe } from "../../../../account/contracts";
 import { router } from "../../../app/router";
@@ -152,9 +153,15 @@ test("a failed trial account read stays in route error recovery instead of setup
 test.each(["/sign-in", "/sign-up"] as const)(
   "%s resumes an existing session straight to its place",
   async (path) => {
-    const enterAuth = router.routesById[path].options.beforeLoad as (input: {
+    const beforeLoad = router.routesById[path].options.beforeLoad as (input: {
       search: Record<string, unknown>;
+      location: { pathname: string; searchStr: string; search: unknown };
     }) => Promise<unknown>;
+    const enterAuth = ({ search }: { search: Record<string, unknown> }) =>
+      beforeLoad({
+        search,
+        location: { pathname: path, searchStr: "", search },
+      });
     await expect(enterAuth({ search: {} })).rejects.toMatchObject({
       options: { href: HOME, replace: true },
     });
@@ -166,9 +173,23 @@ test.each(["/sign-in", "/sign-up"] as const)(
       { return: "school", next: "/school/connect" },
       { return: "school-invite" },
       { return: "family-approval" },
-      { ...trial, error: "access_denied", provider: "google" },
     ])
       await expect(enterAuth({ search })).resolves.toBeUndefined();
+    // A failed sign-in is kept, then one hop to the clean address, where
+    // the screen stays to show it, even for a session.
+    await expect(
+      enterAuth({
+        search: { ...trial, error: "access_denied", provider: "google" },
+      }),
+    ).rejects.toMatchObject({
+      options: { to: path, search: trial, replace: true },
+    });
+    expect(useAuthDraft.getState().arrival).toEqual({
+      error: "access_denied",
+      provider: "google",
+    });
+    await expect(enterAuth({ search: trial })).resolves.toBeUndefined();
+    useAuthDraft.getState().takeArrival();
     queryClient.setQueryData(sessionOptions.queryKey, null);
     await expect(enterAuth({ search: trial })).resolves.toBeUndefined();
   },

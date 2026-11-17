@@ -18,7 +18,11 @@ export function rememberPlace(accountId: string, place: PlaceId) {
 export function rememberedPlace(accountId: string): string | null {
   try {
     return localStorage.getItem(key(accountId));
-  } catch {
+  } catch (error) {
+    console.warn(
+      "Where you last worked couldn’t be read on this device",
+      error,
+    );
     return null;
   }
 }

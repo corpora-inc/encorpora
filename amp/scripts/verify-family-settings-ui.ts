@@ -129,6 +129,9 @@ async function walk(
   await page.goto(`${origin}/family/${family}`);
   await page.locator("[data-today-title]").waitFor();
   await settle(page);
+  const todayShift = await shift(page);
+  if (todayShift >= 0.01)
+    fail(tag, `Today cold-load layout shift ${todayShift.toFixed(4)}`);
   await pageChecks(page, `${tag} Today`);
   await page.screenshot({
     path: join(shots, `${persona}-today-${width}-${scheme}.png`),
