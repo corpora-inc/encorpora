@@ -395,9 +395,13 @@ def solve(public):
             first, second = value(first_text), value(second_text)
             elements = public['figure']['scene']['elements']
             methods = []
-            for x in (0, 10, 20):
-                top = sorted((e for e in elements if e['type'] == 'text' and e['at'][1] == 1 and x <= e['at'][0] < x+8), key=lambda e: e['at'][0])
-                bottom = sorted((e for e in elements if e['type'] == 'text' and e['at'][1] == -1 and x <= e['at'][0] < x+8), key=lambda e: e['at'][0])
+            # Each method's columns start two units left of its "Method" title;
+            # its digits stay within six units, short of the next method's sign.
+            starts = sorted(e['at'][0] - 2 for e in elements if e['type'] == 'text' and e['text'].startswith('Method '))
+            require(len(starts) == 3, 'Three written methods')
+            for x in starts:
+                top = sorted((e for e in elements if e['type'] == 'text' and e['at'][1] == 1 and x <= e['at'][0] < x+6), key=lambda e: e['at'][0])
+                bottom = sorted((e for e in elements if e['type'] == 'text' and e['at'][1] == -1 and x <= e['at'][0] < x+6), key=lambda e: e['at'][0])
                 rendered = [e for e in elements if e['type'] == 'text' and e['at'] == [x+2, -3.5]]
                 require(top and bottom and len(rendered) == 1, 'Each written method has two operands and a result')
                 top_text, bottom_text = ''.join(e['text'] for e in top), ''.join(e['text'] for e in bottom)

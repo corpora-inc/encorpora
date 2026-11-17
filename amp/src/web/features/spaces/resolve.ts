@@ -19,7 +19,6 @@ import {
 } from "./identity";
 import { spaceOfPath, type RouteSpace, type Space } from "./space";
 import {
-  accountTabs,
   childTabs,
   classroomTabs,
   familyPlaceTabs,
@@ -30,10 +29,6 @@ import {
 } from "./tabs";
 import { spaceWords, type SpaceWords } from "./words";
 import { parentHome } from "../family/parent-home";
-import {
-  settingsFamilyOf,
-  usesFamilySettingsFrame,
-} from "../family/settings-family";
 
 /*
  * The resolution truth table (docs/architecture/spaces.md, "Resolution"):
@@ -484,21 +479,6 @@ function resolveOnce(
       space: "public",
       entry: entryOf(match.pathname, route),
     };
-  if (route === "account" && usesFamilySettingsFrame(match.pathname)) {
-    const family = settingsFamilyOf(resources.families);
-    if (family && resources.family?.familyId === family.familyId)
-      return familyPlaceSpace(
-        { ...base, ...words("family") },
-        {
-          kind: "family",
-          family: family.familyId,
-          leaf: "settings",
-          active: "settings",
-        },
-        me,
-        resources,
-      );
-  }
   if (route === "account")
     return {
       ...base,
@@ -512,7 +492,7 @@ function resolveOnce(
             : /^\/school(\/|$)/.test(match.pathname)
               ? "setup"
               : "steps",
-      tabs: frame?.kind === "account" ? [...accountTabs] : [],
+      tabs: [],
       actions: frame?.kind === "plain" && frame.practice ? ["practice"] : [],
       label: frame?.kind === "account" ? "Account" : null,
     };
@@ -890,14 +870,12 @@ function familySpace(
               : {}),
           })
         : workbooks && orgId
-          ? familyPlaceTabs(orgId, {
-              onlyChild: learners.length === 1 ? learners[0]!.id : undefined,
-            })
+          ? familyPlaceTabs(orgId)
           : frame?.kind === "progress" && learner && orgId
             ? childTabs(orgId, learner.id)
             : [];
   const active = workbooks
-    ? "progress"
+    ? "today"
     : frame?.kind === "class" && frame.leaf === "report-cards"
       ? "report-cards"
       : base.active;
@@ -1292,9 +1270,7 @@ function familyPlaceSpace(
         ? []
         : onRecord && learner
           ? childTabs(frame.family, learner.id)
-          : familyPlaceTabs(frame.family, {
-              onlyChild: children.length === 1 ? children[0]!.id : undefined,
-            }),
+          : familyPlaceTabs(frame.family),
     bar: "tabs",
     active: onRecord ? record.screen : frame.active,
     actions: [],

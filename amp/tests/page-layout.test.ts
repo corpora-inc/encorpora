@@ -140,14 +140,6 @@ const PHASE_2: Allowed = {
     widths: ["480px", "560px", "720px", "960px"],
     why: "practice profiles",
   },
-  "features/school/Setup.module.css": {
-    widths: ["480px", "600px"],
-    why: "school setup",
-  },
-  "features/school/join/Join.module.css": {
-    widths: ["420px", "480px", "620px", "1080px", "1320px"],
-    why: "joining a class and a student's sign-in",
-  },
   "features/schools/Parent.module.css": {
     widths: ["720px"],
     why: "a parent's progress link",
@@ -294,6 +286,17 @@ const FRAMES: Record<string, string> = {
   WorkbookFrame: "features/workbooks/WorkbookFrame.tsx",
   PlainPage: "features/school/PlainPage.tsx",
   OrgFrame: "features/school/OrgFrame.tsx",
+  ClassFrame: "features/school/classes/ClassFrame.tsx",
+  JoinFrame: "features/school/join/JoinFrame.tsx",
+};
+/** A class's record screens render their host's frame (`host.Frame` from
+ * `useClassHost()`, features/school/classes/host.tsx): the class's
+ * ClassFrame, or the frame of the space that holds the class. */
+const HOST_FRAME = {
+  file: "features/school/classes/host.tsx",
+  hook: "useClassHost",
+  element: "host.Frame",
+  renders: "ClassFrame",
 };
 
 /** Route screens that don't render Page yet, `module#export`, with why. */
@@ -320,36 +323,6 @@ const ROUTES_PHASE_2: Record<string, string> = {
   "features/profiles/index.ts#LevelScreen": "an adult's own practice",
   "features/profiles/index.ts#NewProfileScreen": "an adult's own practice",
   "features/profiles/index.ts#ProfilesScreen": "an adult's own practice",
-  "features/school/SetupScreen.tsx#SetupScreen":
-    "a school, class or setup screen",
-  "features/school/classes/index.ts#GradebookScreen":
-    "a school, class or setup screen",
-  "features/school/classes/index.ts#MapScreen":
-    "a school, class or setup screen",
-  "features/school/classes/index.ts#RosterScreen":
-    "a school, class or setup screen",
-  "features/school/classes/index.ts#StartClassScreen":
-    "a school, class or setup screen",
-  "features/school/classes/index.ts#TimeScreen":
-    "a school, class or setup screen",
-  "features/school/classes/index.ts#TodayScreen":
-    "a school, class or setup screen",
-  "features/school/classroom/index.ts#ClassExperienceScreen":
-    "a school, class or setup screen",
-  "features/school/classroom/index.ts#MarkingScreen":
-    "a school, class or setup screen",
-  "features/school/classroom/index.ts#WorkbookStackScreen":
-    "a school, class or setup screen",
-  "features/school/join/index.ts#CardScreen":
-    "joining, approvals and links from outside the app",
-  "features/school/join/index.ts#ClassScreen":
-    "joining, approvals and links from outside the app",
-  "features/school/join/index.ts#ContinueScreen":
-    "joining, approvals and links from outside the app",
-  "features/school/join/index.ts#JoinScreen":
-    "joining, approvals and links from outside the app",
-  "features/school/join/index.ts#PicturesScreen":
-    "joining, approvals and links from outside the app",
   "features/schools/ParentScreen.tsx#ParentScreen":
     "joining, approvals and links from outside the app",
 };
@@ -361,8 +334,8 @@ const ROUTES_EXEMPT: Record<string, string> = {
     "a child's page (ChildScreen renders Page) with the pay overlay's outlet over it",
   "features/pay/hosts.tsx#TodayPayHost":
     "the family's Today (it renders Page) with the pay overlay's outlet over it",
-  "features/pay/hosts.tsx#BillingPayHost":
-    "Billing (it renders Page) with the pay overlay's outlet over it",
+  "features/account/AccountHub.tsx#AccountHost":
+    "the account hub (it renders Page) with its overlays' outlet over it",
   "features/pay/hosts.tsx#SettingsHost":
     "a family's Settings (it renders Page) with its overlays' outlet over it",
   "features/account/overlays.tsx#BillingOverlay":
@@ -383,6 +356,8 @@ const ROUTES_EXEMPT: Record<string, string> = {
     "the signed-out schools site, in its own PublicFrame",
   "features/school/standing/index.ts#ClassStandingScreen":
     "the school's curves (StandingScreen renders Page) with the class's overlay over them",
+  "features/school/join/index.ts#ContinueScreen":
+    "a school sign-in's handoff to practice: it only waits (LoadingScreen) while the sign-in finishes",
   "features/dev/PersonaSwitcher.tsx#PersonaSwitcher":
     "development only; never in a production bundle",
 };
@@ -504,15 +479,16 @@ export function routeScreens() {
       )
         add(loaders.get("screens")!, args[0]!.slice(1, -1));
     }
-    // A family tab: `leaf(path, "FamilyMapScreen")`, from `screens`.
+    // A family tab: `leaf(path, "FamilyMarkingScreen")`, from `screens`.
     for (const args of calls(source, /\bleaf\(/g))
       if (/^"\w+"$/.test(args[1] ?? "") && loaders.has("screens"))
         add(loaders.get("screens")!, args[1]!.slice(1, -1));
     // A record alias that renders where it stays:
-    // `childAlias(path, anchor, "FamilyMapScreen", …)`.
-    for (const args of calls(source, /\bchildAlias\(/g))
-      if (/^"\w+"$/.test(args[2] ?? "") && loaders.has("screens"))
-        add(loaders.get("screens")!, args[2]!.slice(1, -1));
+    // `childAlias(path, anchor, { …, component: "FamilyWorkbooksScreen" })`.
+    for (const args of calls(source, /\bchildAlias\(/g)) {
+      const named = args[2]?.match(/component:\s*"(\w+)"/)?.[1];
+      if (named && loaders.has("screens")) add(loaders.get("screens")!, named);
+    }
     // A child's learning screen: `childScreen(path, () => import(…), name)`.
     for (const args of calls(source, /\bchildScreen\(/g)) {
       const specifier = loaderOf(args[1] ?? "");
@@ -527,27 +503,52 @@ export function routeScreens() {
  * that component from its own file and renders it. */
 export function rendersPage(file: string) {
   const source = read(file);
-  return Object.entries(FRAMES).some(([name, frameFile]) => {
-    const module = frameFile.replace(/\.tsx$/, "");
-    const imported = [
-      ...source.matchAll(/import\s*\{([^}]*)\}\s*from\s*"([^"]+)"/g),
-    ].some(
-      (match) =>
-        match[1]!.split(",").some((part) => part.trim() === name) &&
-        moduleFile(file, match[2]!) === frameFile,
-    );
-    return (
-      (imported || file === frameFile) &&
-      new RegExp(`<${name}[\\s>]`).test(source) &&
-      module.length > 0
-    );
-  });
+  return (
+    Object.entries(FRAMES).some(([name, frameFile]) => {
+      const module = frameFile.replace(/\.tsx$/, "");
+      const imported = [
+        ...source.matchAll(/import\s*\{([^}]*)\}\s*from\s*"([^"]+)"/g),
+      ].some(
+        (match) =>
+          match[1]!.split(",").some((part) => part.trim() === name) &&
+          moduleFile(file, match[2]!) === frameFile,
+      );
+      return (
+        (imported || file === frameFile) &&
+        new RegExp(`<${name}[\\s>]`).test(source) &&
+        module.length > 0
+      );
+    }) || rendersHostFrame(file, source)
+  );
+}
+
+/** Whether a screen renders its class host's frame (HOST_FRAME). */
+function rendersHostFrame(file: string, source: string) {
+  const imported = [
+    ...source.matchAll(/import\s*\{([^}]*)\}\s*from\s*"([^"]+)"/g),
+  ].some(
+    (match) =>
+      match[1]!.split(",").some((part) => part.trim() === HOST_FRAME.hook) &&
+      moduleFile(file, match[2]!) === HOST_FRAME.file,
+  );
+  return imported && source.includes(`<${HOST_FRAME.element}`);
 }
 
 test("the frames that stand in for Page render it", () => {
-  for (const [name, file] of Object.entries(FRAMES))
-    if (name !== "Page")
-      assert.match(read(file), /<Page[\s>]/, `${file} renders <Page>`);
+  for (const [name, file] of Object.entries(FRAMES)) {
+    if (name === "Page") continue;
+    const source = read(file);
+    // Page itself, or another of these frames (ClassFrame is OrgFrame's).
+    const through = Object.keys(FRAMES).some(
+      (other) => other !== name && new RegExp(`<${other}[\\s>]`).test(source),
+    );
+    assert.ok(/<Page[\s>]/.test(source) || through, `${file} renders <Page>`);
+  }
+  assert.match(
+    read(HOST_FRAME.file),
+    new RegExp(`<${HOST_FRAME.renders}[\\s>]`),
+    `${HOST_FRAME.file}'s class frame renders <${HOST_FRAME.renders}>`,
+  );
 });
 
 test("every route's screen renders Page, or is listed with its reason", () => {
@@ -621,8 +622,6 @@ const BACK_DEBT: Record<string, string> = {
     "practice modes' way back to where they started, in the bar and drawer: to become the mode's exit (phase 2)",
   "features/profiles/practice-mode.ts":
     "practice modes' way back to where they started, in the bar and drawer: to become the mode's exit (phase 2)",
-  "features/school/SetupScreen.tsx":
-    "a school screen (phase 2): tabs and overlays replace its way back",
   "nav/LayerHost.tsx":
     "an overlay's failure state names where ✕ returns; to become the overlay's ✕ (phase 2)",
   "scene/ScenePlayer.tsx":

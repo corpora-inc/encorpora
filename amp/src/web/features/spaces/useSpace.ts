@@ -13,10 +13,6 @@ import {
   pilotOptions,
 } from "../school/core-api";
 import { familyOptions, familyPlacesOptions } from "../family/api";
-import {
-  settingsFamilyOf,
-  usesFamilySettingsFrame,
-} from "../family/settings-family";
 import { shellFrame } from "../navigation/shell-frame";
 import {
   resolveSpace,
@@ -143,18 +139,12 @@ export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
   const orgId =
     frame?.kind === "class" || frame?.kind === "school" ? frame.org : "";
   const classId = frame?.kind === "class" ? frame.classId : "";
-  const accountSettings = usesFamilySettingsFrame(match?.pathname ?? "");
   const families = useQuery({
     ...familyPlacesOptions(auth),
-    enabled: (!!classId || accountSettings) && !!session && !student,
+    enabled: !!classId && !!session && !student,
     refetchOnMount: false,
   });
-  const familyId =
-    frame?.kind === "family"
-      ? frame.family
-      : accountSettings
-        ? (settingsFamilyOf(current(families))?.familyId ?? "")
-        : "";
+  const familyId = frame?.kind === "family" ? frame.family : "";
   const family = useQuery({
     ...familyOptions(auth, familyId),
     enabled: !!familyId && !!session && !student,

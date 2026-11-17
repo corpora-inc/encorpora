@@ -30,14 +30,16 @@ const account = () => import("../features/account/overlays");
 const privacy = () => import("../features/privacy/PrivacyOverlay");
 
 export function accountOverlays<Host extends AnyRoute>(host: Host) {
-  const overlay = (
-    path: string,
+  const overlay = <Path extends string>(
+    path: Path,
     component: ReturnType<typeof lazyRouteComponent>,
     loader?: () => Promise<void>,
   ) =>
     createRoute({
       getParentRoute: () => host,
       path,
+      // Over the hub: opening and closing keep its scroll (router.tsx).
+      staticData: { overList: true },
       ...(loader ? { loader } : {}),
       component,
     });

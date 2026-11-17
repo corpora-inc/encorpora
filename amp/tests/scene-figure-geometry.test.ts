@@ -31,47 +31,10 @@ import {
  * labels draw at a readable size once the figure is scaled to its box
  * (tests/helpers/scene-geometry.ts).
  *
- * KNOWN lists the faults of figures drawn by one template's own primitives
- * (or a reference scene that composes two components by hand). Each needs a
- * fix in that template. The list only shrinks: an entry that no longer
- * fails must be removed, and any other fault fails the test.
+ * A reference scene drawn for a lesson ("(lesson)" in its name) is checked
+ * where lessons draw it, in the figure panel.
  */
-const KNOWN = new Set([
-  // Hand-placed labels and points in math units: they collide once the
-  // figure is laid out at a phone's width.
-  "cavalieri-sphere-argument figure | panel 320 | label/label",
-  "circle-equation figure | panel 320 | label/arrow",
-  "circle-equation figure | panel 320 | label/label",
-  "circle-equation figure | panel 320 | label/mark",
-  "circle-equation figure | panel/print | label/arrow",
-  "circle-equation figure | panel/print | label/label",
-  "circle-equation figure | panel/print | label/mark",
-  "circle-estimate-blanks figure | panel 320 | label/label",
-  "decimal-model-written-method figure | panel 320 | label/label",
-  "protractor-ray-choice figure | panel 320 | label/mark",
-  "tangent-construct-justify figure | panel 320 | label/label",
-  "tangent-construct-justify figure | panel/print | label/label",
-  "two-column-congruence-proof figure | panel 320 | label/mark",
-  "two-column-congruence-proof figure | panel/print | label/mark",
-  // Two triangles placed a fixed math distance apart: their facing vertex
-  // names meet at a phone's width.
-  "similar-triangle-side figure | panel 320 | label/label",
-  // Tables wider than a phone: their text scales below 12 px.
-  "decimal-rename-chain figure | panel 320 | text size",
-  "signed-changes-sum figure | panel 320 | text size",
-  "two-way-share figure | panel 320 | text size",
-  // Dot stacks taller than the shortest choice-card figure (160 px).
-  "distribution-match-description option | choice card 1280 | container",
-  "gallery: Line plot: amounts shared equally (lesson) | choice card 1280 | container",
-  "gallery: Two dot plots: MADs laid across the gap between means (lesson) | choice card 1280 | container",
-  // Reference scenes squeezed into a 160 px card or a phone.
-  "gallery: Dot plot: quartiles and the box over the data (lesson) | choice card 1280 | label/label",
-  "gallery: Box with a missing edge, and a stepped solid | choice card 1280 | label/label",
-  "gallery: Box with a missing edge, and a stepped solid | choice card 320 | label/label",
-  "gallery: Box with a missing edge, and a stepped solid | panel 320 | label/label",
-]);
-
-const SEEDS = 4;
+const SEEDS = 8;
 type Item = {
   src: string;
   scene: Scene;
@@ -111,10 +74,13 @@ function items() {
     out.push({
       src: `gallery: ${c.name}`,
       scene: c.scene,
-      reveal: "reveal" in c ? c.reveal : undefined,
-      boxes: c.scene.elements.every((e) => offered.has(e.type))
-        ? CONTAINERS
-        : [OWN, PHONE_PANEL],
+      reveal:
+        "reveal" in c && typeof c.reveal === "boolean" ? c.reveal : undefined,
+      boxes:
+        !c.name.includes("(lesson)") &&
+        c.scene.elements.every((e) => offered.has(e.type))
+          ? CONTAINERS
+          : [OWN, PHONE_PANEL],
     });
   return out;
 }
@@ -129,12 +95,8 @@ test("every scene-kit figure is readable in every box it is drawn in", () => {
         const key = `${it.src} | ${box.name} | ${f.rule}`;
         if (!found.has(key)) found.set(key, f.detail);
       }
-  const fresh = [...found].filter(([k]) => !KNOWN.has(k));
   assert.deepEqual(
-    fresh.map(([k, d]) => `${k}: ${d}`),
+    [...found].map(([k, d]) => `${k}: ${d}`),
     [],
-    "new figure faults",
   );
-  const fixed = [...KNOWN].filter((k) => !found.has(k));
-  assert.deepEqual(fixed, [], "fixed: remove these from KNOWN");
 });

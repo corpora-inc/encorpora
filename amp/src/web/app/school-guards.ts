@@ -9,6 +9,7 @@ import {
 import {
   markSchoolSignup,
   orgHome,
+  setupPath,
   setupSteps,
   type SetupStep,
 } from "../features/school/paths";
@@ -127,37 +128,54 @@ export const chooser = async ({ location }: { location: Location }) => {
 
 /** `/school/new`: guided setup, for the admin of a school we issued. */
 export const setup = async ({ location }: { location: Location }) => {
-  const search = location.search as unknown as {
-    org?: unknown;
-    step?: unknown;
-  };
-  if (nativeRuntime) throw redirect({ to: "/", replace: true });
-  // A student's home is their practice.
-  if (studentSession())
-    throw redirect({
-      to: "/$",
-      params: { _splat: "practice" },
-      replace: true,
-    });
+  const search = location.search as { org?: unknown; step?: unknown };
   const signedIn = await queryClient.ensureQueryData(sessionOptions);
   // A setup link from earlier: sign in, then carry on with it.
   if (!signedIn && typeof search.org !== "string")
     throw redirect({ to: "/schools", replace: true });
   const session = await staffSession(location);
-  const orgs = await queryClient.fetchQuery(orgsOptions(session));
-  // Setup is its admin's: anyone else's address for it is their
-  // first run, never a setup they can't make.
-  const requested =
+  const orgId =
     typeof search.org === "string"
-      ? orgs.find(
-          (org) =>
-            org.id === search.org &&
-            (!org.setupPending || org.roles.includes("admin")),
-        )
-      : orgs.find((org) => org.setupPending && org.roles.includes("admin"));
-  // Signed in with nothing to set up: the school first run, which
-  // knows what this account has (an invitation, a school, a pilot)
-  // and offers its next step. Never the public page and its Sign in.
+      ? search.org
+      : (await queryClient.fetchQuery(orgsOptions(session))).find(
+          (org) => org.setupPending && org.roles.includes("admin"),
+        )?.id;
+  // Signed in with nothing to set up: the school first run, which knows
+  // what this account has and offers its next step.
+  if (!orgId)
+    throw redirect({
+      to: "/start/$choice",
+      params: { choice: "school" },
+      replace: true,
+    } as never);
+  // The step's own address, in one hop (setupStep checks it).
+  const step = setupSteps.find((entry) => entry === search.step);
+  throw redirect({ to: `/${setupPath(orgId, step)}`, replace: true } as never);
+};
+
+/** `/school/<org>/setup[/<step>[/names]]`: guided setup, one step an
+ * address, for the admin of a school we issued. A step not yet reachable
+ * opens the first one not answered; a finished setup opens the school. */
+export const setupStep = async ({
+  location,
+  params,
+}: {
+  location: Location;
+  params: unknown;
+}) => {
+  const session = await staffSession(location);
+  const {
+    org: orgId,
+    step,
+    method,
+  } = params as { org: string; step?: string; method?: string };
+  const orgs = await queryClient.fetchQuery(orgsOptions(session));
+  // Setup is its admin's: anyone else's address for it is their first run,
+  // never a setup they can't make.
+  const requested = orgs.find(
+    (org) =>
+      org.id === orgId && (!org.setupPending || org.roles.includes("admin")),
+  );
   if (!requested)
     throw redirect({
       to: "/start/$choice",
@@ -180,18 +198,17 @@ export const setup = async ({ location }: { location: Location }) => {
       : !state.agreement
         ? "agreement"
         : "students";
-  const asked = setupSteps.find((step) => step === search.step);
+  const asked = setupSteps.find((entry) => entry === (step ?? "school"));
   const allowed =
-    asked && setupSteps.indexOf(asked) <= setupSteps.indexOf(open);
-  if (!allowed || search.org !== requested.id)
+    !!asked &&
+    setupSteps.indexOf(asked) <= setupSteps.indexOf(open) &&
+    (method === undefined || (asked === "students" && method === "names"));
+  if (!allowed)
     throw redirect({
-      to: "/school/new",
-      search: {
-        org: requested.id,
-        step: allowed ? asked : open,
-      },
+      to: `/${setupPath(orgId, open)}`,
       replace: true,
     } as never);
+  return { session };
 };
 
 /** `/school/invite`: anyone on the web; never a student's device. */

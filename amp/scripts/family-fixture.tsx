@@ -17,8 +17,15 @@ import { queryClient, meOptions, refreshMe } from "../src/web/lib/query";
 import { accountParts, useAppRoute } from "../src/web/app-routes";
 import { FamilyCenter } from "../src/web/FamilyCenter";
 import { Tabs } from "../src/web/ui/Tabs";
-import { accountTabs } from "../src/web/features/spaces/tabs";
+import type { TabItem } from "../src/web/ui/Tabs";
 import "../src/web/ui/tokens.css";
+/** The legacy account tabs this harness draws around FamilyCenter. The app
+ * no longer has them: the account is one page with overlays (IA v2). */
+const accountTabs: TabItem[] = [
+  { id: "security", label: "Profile", path: "account/security" },
+  { id: "access", label: "Billing", path: "account/billing" },
+  { id: "privacy", label: "Privacy", path: "account/privacy" },
+];
 const Content = createContext<React.ReactNode>(null);
 export function FixtureRouter({
   children,

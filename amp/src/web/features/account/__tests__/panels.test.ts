@@ -25,4 +25,9 @@ test("an overlay closes to the hub its address is under", () => {
   expect(overlayHub("/family/f/settings/privacy")).toBe("/family/f/settings");
   expect(overlayHub("/account/delete-account")).toBe("/account");
   expect(overlayHub("/account/billing/")).toBe("/account");
+  expect(overlayHub("/account/pay/l/done")).toBe("/account");
+  expect(overlayHub("/family/f/settings/pay/l/invoice/i")).toBe(
+    "/family/f/settings",
+  );
+  expect(overlayHub("/family/f/settings")).toBe("/family/f/settings");
 });

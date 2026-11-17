@@ -223,3 +223,18 @@
     margin-inline: calc(-1 * var(--space-3));
   }
 }
+/* Your own practice on a settings hub (OwnPractice). */
+.own {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: start;
+}
+.ownTitle {
+  margin: 0;
+  font-size: var(--text-heading-3);
+}
+.ownLine {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+}

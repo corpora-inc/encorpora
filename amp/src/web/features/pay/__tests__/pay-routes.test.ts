@@ -129,9 +129,11 @@ test("the pay overlays hang under their screens and carry no query", () => {
     "/family/$family/pay/$learner",
     "/family/$family/pay/$learner/done",
     "/family/$family/pay/$learner/invoice/$invoiceId",
-    "/account/billing/pay/$learner",
-    "/account/billing/pay/$learner/done",
-    "/account/billing/pay/$learner/invoice/$invoiceId",
+    "/family/$family/settings/pay/$learner",
+    "/family/$family/settings/pay/$learner/done",
+    "/account/pay/$learner",
+    "/account/pay/$learner/done",
+    "/account/pay/$learner/invoice/$invoiceId",
   ]) {
     const route = (router.routesByPath as unknown as Record<string, { options: { validateSearch?: unknown } }>)[path];
     expect(route, path).toBeTruthy();

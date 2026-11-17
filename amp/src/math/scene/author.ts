@@ -48,6 +48,26 @@ type SceneOptions = {
 };
 
 /** Several elements in one scene, sharing one coordinate system. */
+/** Candidate places for a label around its anchor (a point, the middle of
+ * a side), for a text element's `place`: beside, above, below and at the
+ * corners, at each distance in pixels in turn. The layout uses the first
+ * that is clear of marks, strokes and other labels and grows the figure
+ * least. */
+export function around(
+  ...distances: number[]
+): [number, number, -1 | 0 | 1, -1 | 0 | 1][] {
+  return distances.flatMap((d) => [
+    [d, -d, -1, 1],
+    [-d, -d, 1, 1],
+    [d, d, -1, -1],
+    [-d, d, 1, -1],
+    [0, -d - 2, 0, 1],
+    [0, d + 2, 0, -1],
+    [d + 2, 0, -1, 0],
+    [-d - 2, 0, 1, 0],
+  ] as [number, number, -1 | 0 | 1, -1 | 0 | 1][]);
+}
+
 export function scene(...parts: (Element | Built)[]) {
   const elements = parts.map((p) =>
     "element" in p && typeof p.element === "function"

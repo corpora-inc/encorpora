@@ -17,7 +17,12 @@ import { accountClient } from "../../account-client";
 import { SUPPORT_EMAIL } from "../support/SupportHelp";
 import { refreshSchool, school } from "./api";
 import { roleNames } from "./parts";
-import { forgetInvite, rememberInvite, rememberedInvite } from "./paths";
+import {
+  forgetInvite,
+  rememberInvite,
+  rememberedInvite,
+  setupPath,
+} from "./paths";
 import { Brand } from "./SchoolFrame";
 import styles from "./School.module.css";
 
@@ -110,8 +115,7 @@ export function InviteScreen() {
           ? ({ to: "/family", replace: true } as never)
           : joined.setup && joined.orgId
             ? ({
-                to: "/school/new",
-                search: { org: joined.orgId, step: "calendar" },
+                to: `/${setupPath(joined.orgId, "calendar")}`,
                 replace: true,
               } as never)
             : joined.orgId

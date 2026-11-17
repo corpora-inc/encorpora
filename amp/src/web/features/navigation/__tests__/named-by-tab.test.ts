@@ -8,7 +8,12 @@ test("a title the open tab already says is named by the tab", () => {
   expect(namedByTab(`${klass}/settings`, "Settings")).toBe(true);
   expect(namedByTab(`${klass}/roster`, "People")).toBe(true);
   expect(namedByTab(`${klass}/map`, "Class map")).toBe(true);
-  expect(namedByTab("/family/security", "Profile")).toBe(true);
+  expect(
+    namedByTab(
+      "/family/11111111-1111-4111-8111-111111111111/settings",
+      "Settings",
+    ),
+  ).toBe(true);
   expect(namedByTab("/inventory", "Inventory")).toBe(true);
   expect(namedByTab("/school/o1/activity", "Activity")).toBe(true);
 });

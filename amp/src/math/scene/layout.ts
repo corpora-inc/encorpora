@@ -45,6 +45,11 @@ export type CompileContext = {
   s: number;
   /** Draw derived values (the unknowns) instead of "?". */
   reveal: boolean;
+  /** The figure's target width in pixels: a component made of text (a
+   * table) reflows to fit it rather than be scaled below a readable size. */
+  width?: number;
+  /** The figure's height cap in pixels, for parts sized in pixels. */
+  height?: number;
 };
 export type ComponentDef<C> = {
   compile(c: C, ctx: CompileContext): Prim[];
@@ -172,11 +177,20 @@ function elementId(e: Element, index: number) {
   return e.id ?? `e${index}`;
 }
 
+const stroked = new Set(["segment", "polyline", "polygon", "circle"]);
 /** Compile every element to primitives with fully qualified ids. */
 export function compileScene(scene: Scene, ctx: CompileContext): Prim[] {
   return scene.elements.flatMap((e, index) => {
     const id = elementId(e, index);
-    if (!isComponent(e)) return [{ ...(e as Prim), id }];
+    // An author's own strokes are marks too: placed labels keep off them.
+    if (!isComponent(e))
+      return [
+        {
+          ...(e as Prim),
+          id,
+          ...(stroked.has(e.type) && { obstacle: true }),
+        },
+      ];
     return componentDef(e.type)!
       .compile(e, ctx)
       .map((p) => ({ ...p, id: p.id ? `${id}.${p.id}` : id }));
@@ -972,7 +986,12 @@ export function layoutScene(
   let s = 1;
   let result: ReturnType<typeof pass>;
   function pass(scale: number) {
-    const prims = compileScene(scene, { s: scale, reveal });
+    const prims = compileScene(scene, {
+      s: scale,
+      reveal,
+      width: W,
+      height: H,
+    });
     const mb = empty();
     for (const p of prims) for (const [x, y] of mathPoints(p)) grow(mb, x, y);
     const X = (x: number) => (x - mb.x0) * scale,

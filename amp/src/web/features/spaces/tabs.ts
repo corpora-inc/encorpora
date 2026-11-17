@@ -67,23 +67,14 @@ export function familyTabs(
   ).filter(allowed(can));
 }
 
-/** A family has three destinations at every size. Progress opens the only
- * child's record directly; several children share a comparison first.
- * Workbooks, time and reports belong to Progress; sharing to Settings. */
-export function familyPlaceTabs(
-  family: string,
-  { onlyChild }: { onlyChild?: string } = {},
-): TabItem[] {
+/** A family has two destinations at every size: Today, its home (each
+ * child's card, then the family's week), and Settings. A child's progress,
+ * workbooks, time and reports are their page, opened from their card. */
+export function familyPlaceTabs(family: string): TabItem[] {
   const at = (leaf: string) =>
     leaf ? `family/${family}/${leaf}` : `family/${family}`;
   return [
     tab("today", "Today", at(""), true),
-    tab(
-      "progress",
-      "Progress",
-      at(onlyChild ? `kids/${onlyChild}` : "map"),
-      true,
-    ),
     tab("settings", "Settings", at("settings"), true),
   ];
 }
@@ -204,16 +195,3 @@ export function meTabs(
     tab("inventory", "Inventory", "inventory"),
   ];
 }
-
-/** Where the account opens: its sign-in and security. */
-export const ACCOUNT_HOME = "account/security";
-
-/** The account: sign-in, billing and privacy. Children are their family's
- * (its Settings), never the account's. The account's own
- * settings have neutral addresses (`/account/…`); the old `/family/…` ones
- * still open the same screens. */
-export const accountTabs: readonly TabItem[] = [
-  tab("security", "Profile", "account/security"),
-  tab("access", "Billing", "account/billing"),
-  tab("privacy", "Privacy", "account/privacy"),
-];

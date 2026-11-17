@@ -1,23 +1,17 @@
 import { childrenElsewhere } from "./redirects";
 import { childTimeCsvPath, childTimeOptions } from "./api";
-import { useQueries, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo } from "react";
 import { downloadPdf, paperFormat } from "../../lib/pdf-download";
-import { Button, buttonClass } from "../../ui/Button";
-import { AddChildrenSheet } from "./AddChildren";
+import { buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
 import { PrintButton } from "../../ui/PrintButton";
-import { ActionRow } from "../../ui/ActionRow";
-import { ColumnList, ColumnRow } from "../../ui/ColumnList";
-import { CardsScreen } from "../school/classes/CardsScreen";
 import { GradebookScreen } from "../school/classes/GradebookScreen";
 import type { ClassHost } from "../school/classes/host";
 import { gradebookOptions } from "../school/classes/teacher-api";
-import { number } from "../school/classes/teacher-shared";
 import { MarkingScreen } from "../school/classroom/MarkingScreen";
 import { WorkbookStackScreen } from "../school/classroom/WorkbookStackScreen";
-import { childProgressOptions, type FamilyChild } from "./api";
 import {
   FamilyFrame,
   familyHref,
@@ -25,13 +19,11 @@ import {
   type FamilyPlace,
 } from "./FamilyFrame";
 import { peopleOf } from "./redirects";
-import { Fact, LastPracticedFact, WeekFact } from "./Today";
 import styles from "./Family.module.css";
 
 /*
- * A family's records (`/family/<family>/…`): Progress (several children's
- * overview), grades, the workbook print for several, marking, and sign-in
- * cards. Each child's time, workbooks and reports are on their own page
+ * A family's records (`/family/<family>/…`): grades, the workbook print for
+ * several, marking, and the family's report cards (on Today). Each child's time, workbooks and reports are on their own page
  * (Child.tsx). Each shows the family's own children only. Where a record lives in the family's own class (grades,
  * report cards, the workbook stack, cards), the class's screen is composed
  * here through a host: the family's frame, its addresses and its words, and
@@ -49,13 +41,13 @@ const WORDS: ClassHost["words"] = {
 /** A class screen's sibling, at the family's own address. */
 const FAMILY_LEAF: Record<string, string> = {
   gradebook: "reports/grades",
-  "report-cards": "map",
+  "report-cards": "",
   today: "",
   settings: "settings",
   calendar: "settings",
-  roster: "people",
-  map: "map",
-  time: "map",
+  roster: "settings",
+  map: "",
+  time: "",
   start: "",
 };
 
@@ -118,173 +110,30 @@ function useFamilyHost(place: FamilyPlace): ClassHost | null {
   };
 }
 
-/** Every child's record, from their own progress read: the screen waits for
- * all of them, so it paints once, whole. */
-function useRecords(place: FamilyPlace, children: readonly FamilyChild[]) {
-  return useQueries({
-    queries: children.map((child) => ({
-      ...childProgressOptions(place.session, place.family, child.id),
-      enabled: child.capabilities.readProgress,
-    })),
-  });
-}
-
-/** No children yet: the one step that adds them, over this screen, or who
- * does. */
-function NoChildren({ place }: { place: FamilyPlace }) {
-  const [adding, setAdding] = useState(false);
-  return place.holder ? (
-    <>
-      <EmptyState
-        title="Add your kids"
-        action={
-          <Button
-            variant="primary"
-            data-add-child=""
-            onClick={() => setAdding(true)}
-          >
-            Add your kids
-          </Button>
-        }
-      />
-      <AddChildrenSheet open={adding} onOpenChange={setAdding} />
-    </>
-  ) : (
-    <EmptyState title="No children here yet">
-      The parent who invited you adds the children.
-    </EmptyState>
-  );
-}
-
-/** The skills a child has earned this year, as the overview counts them. */
-function SkillsFact({ count }: { count: number | null }) {
-  return count === null ? null : (
-    <Fact
-      value={number(count)}
-      label={count === 1 ? "skill earned" : "skills earned"}
-    />
-  );
-}
-
-/**
- * Progress (`/family/<family>/map`) for a family of several: one row a
- * child (this week's time, skills earned this year, last practiced), each
- * opening the child's own page, where their time, workbooks and reports
- * are. The family's report cards download whole. A one-child family's
- * Progress is that child's page (the route's one hop).
- */
-export function FamilyMapScreen() {
-  const place = useFamilyPlace();
-  const host = useFamilyHost(place);
-  const { data, family } = place;
-  const children = data?.children ?? [];
-  const records = useRecords(place, children);
-  const pending = records.some(
-    (record) => record.isPending && record.isFetching,
-  );
-  const several =
-    !!host &&
-    children.length > 1 &&
-    children.some((child) => child.capabilities.createWorkbook);
-  return (
-    <FamilyFrame place={place} loading={pending} title="Progress">
-      {data && (
-        <div className={styles.page} data-family-progress="">
-          {children.length === 0 ? (
-            <NoChildren place={place} />
-          ) : (
-            <>
-              <ColumnList
-                label="Your kids"
-                columns={PROGRESS_COLUMNS}
-                data-progress-kids=""
-              >
-                {children.map((child, index) => (
-                  <ColumnRow
-                    key={child.id}
-                    data-progress-child={child.id}
-                    cells={{
-                      name: (
-                        <Link
-                          to="/$"
-                          params={{
-                            _splat: familyHref(family, `kids/${child.id}`),
-                          }}
-                          className={styles.kidName}
-                          data-map-child={child.id}
-                        >
-                          {child.name}
-                          <svg viewBox="0 0 12 12" aria-hidden="true">
-                            <path d="m4.5 2.5 3.5 3.5-3.5 3.5" />
-                          </svg>
-                        </Link>
-                      ),
-                      week: <WeekFact child={child} />,
-                      skills: (
-                        <SkillsFact
-                          count={
-                            records[index]?.data?.objectives.length ?? null
-                          }
-                        />
-                      ),
-                      last: (
-                        <LastPracticedFact
-                          child={child}
-                          today={data.today.date}
-                        />
-                      ),
-                    }}
-                  />
-                ))}
-              </ColumnList>
-              {(host || several) && (
-                <ActionRow label="For all your kids">
-                  {host && <FamilyReportCards host={host} place={place} />}
-                  {several && (
-                    <Link
-                      to="/$"
-                      params={{ _splat: familyHref(family, "workbooks") }}
-                      search={{ several: 1 } as never}
-                      className={buttonClass("secondary")}
-                    >
-                      Workbooks for several
-                    </Link>
-                  )}
-                </ActionRow>
-              )}
-            </>
-          )}
-        </div>
-      )}
-    </FamilyFrame>
-  );
-}
-
-const PROGRESS_COLUMNS = [
-  { key: "name", track: "minmax(0, 1.4fr)", part: "title" },
-  { key: "week", track: "minmax(0, 1fr)" },
-  { key: "skills", track: "minmax(0, 1fr)" },
-  { key: "last", track: "minmax(0, 1fr)" },
-] as const;
-
 /** The family's report cards for the current term, every child in one PDF:
- * only where the family's class holds its own children alone, and once
- * there is a term to report on. */
-function FamilyReportCards({
-  host,
-  place,
-}: {
-  host: ClassHost;
-  place: FamilyPlace;
-}) {
+ * only where the family's class holds its own children alone, and only once
+ * the term holds work to report on (a child's suggested grade or a final),
+ * never before practice has started. */
+export function FamilyReportCards({ place }: { place: FamilyPlace }) {
+  const host = useFamilyHost(place);
   const children = place.data?.children ?? [];
   const graded =
-    !host.shared && children.some((child) => child.capabilities.readGrades);
-  const term = useQuery({
-    ...gradebookOptions(place.session, host.place, undefined),
+    !!host &&
+    !host.shared &&
+    children.some((child) => child.capabilities.readGrades);
+  const book = useQuery({
+    ...gradebookOptions(
+      place.session,
+      host?.place ?? { org: "", class: "" },
+      undefined,
+    ),
     enabled: graded,
-  }).data?.term?.id;
-  if (!graded || !term) return null;
+  }).data;
+  const term = book?.term?.id;
+  const reported = book?.students.some(
+    (row) => row.final !== null || row.suggestion.status !== "not-enough-work",
+  );
+  if (!host || !graded || !term || !reported) return null;
   return (
     <PrintButton
       variant="secondary"
@@ -373,10 +222,10 @@ function NoClass({ place, what }: { place: FamilyPlace; what: string }) {
         action={
           <Link
             to="/$"
-            params={{ _splat: familyHref(place.family, "map") }}
+            params={{ _splat: familyHref(place.family) }}
             className={buttonClass("primary")}
           >
-            Open Progress
+            Open Today
           </Link>
         }
       ></EmptyState>
@@ -393,14 +242,4 @@ export function FamilyGradesScreen() {
   if (!place.data) return <FamilyFrame place={place}>{null}</FamilyFrame>;
   if (host) return <GradebookScreen host={host} />;
   return <NoClass place={place} what="Term grades" />;
-}
-
-/** Sign-in cards for the family's own children
- * (`/family/<family>/cards`). */
-export function FamilyCardsScreen() {
-  const place = useFamilyPlace();
-  const host = useFamilyHost(place);
-  if (!place.data) return <FamilyFrame place={place}>{null}</FamilyFrame>;
-  if (host) return <CardsScreen host={host} />;
-  return <NoClass place={place} what="Sign-in cards" />;
 }
