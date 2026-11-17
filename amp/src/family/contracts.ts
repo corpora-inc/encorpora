@@ -24,6 +24,9 @@ export interface FamilyLearner {
   namePending?: boolean;
   /** Goes by their number ("Child 2"): no nickname has been chosen. */
   defaultName?: true;
+  /** Nothing yet in their name (no problem shown, no purchase): a parent's
+   * setup can still take them back out. */
+  removable?: true;
   freeAllowance?: FreeAllowance;
   /** The account holder's own learner (docs/families.md), not a child. */
   adult?: true;

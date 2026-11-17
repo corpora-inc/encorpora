@@ -53,8 +53,8 @@ import { childAddress, childPath } from "../features/spaces/identity";
 import { closeAllPopovers } from "../ui/popover-owner";
 import {
   homePlace,
-  isStarterChoice,
   placeOfPath,
+  routeFor,
   startDestination,
   startNavigation,
 } from "../features/onboarding/guard";
@@ -694,15 +694,17 @@ const reset = createRoute({
   loader: loadAuthConfig,
   component: auth,
 });
-/** "What brings you to AMP?", at `/start` and `/start/<choice>`, the same
- * screen. Any signed-in adult may open it to add a place; an unknown choice
- * opens the question itself. */
+/** "What brings you to AMP?" (`/start`), each answer (`/start/<choice>`) and
+ * each step of a parent's or tutor's setup (`/start/<choice>/<step>`). Any
+ * signed-in adult may open it to add a place. Where each address goes
+ * instead is the one first-run router's (`routeFor`): the URL is the step and
+ * `me.setup` the progress. */
 async function beforeStarter({
   params,
   location,
 }: {
   params: { choice?: string };
-  location: { search: Record<string, unknown> };
+  location: { pathname: string; search: Record<string, unknown> };
 }) {
   notForStudents();
   if (nativeRuntime) throw redirect({ to: "/", replace: true });
@@ -712,28 +714,22 @@ async function beforeStarter({
       to: "/sign-in",
       search: continuationSearch(location.search),
     });
-  if (params.choice !== undefined && !isStarterChoice(params.choice))
-    throw redirect({ to: "/start", replace: true });
-  // Which question this is ("What brings you to AMP?" or "Add a place") and
-  // which answers it offers are the account's: known before the first paint,
-  // so neither changes under the reader. A failed read leaves the screen's
-  // own state.
+  // Which question this is and which answers it offers are the account's:
+  // known before the first paint, so neither changes under the reader. An
+  // old trial link reads the account fresh: a first run may have finished in
+  // another tab. A failed read routes by the address alone.
   const resuming =
     params.choice === undefined &&
     location.search.return === "free-practice" &&
     !appReturn(location.search.from);
-  // A place may have been created in another tab. Wait for the fresh read
-  // shared with the root guard; a failed read uses the route's retry UI.
   const me = resuming
     ? await queryClient.fetchQuery({ ...meOptions(session), staleTime: 0 })
     : await queryClient
         .ensureQueryData(meOptions(session))
         .catch((error) => console.warn("The account didn’t load ahead", error));
-  // A trial entry resumes an established account through the same home
-  // routing as sign-in. Only an explicit Add a place or setup step should
-  // offer another place to someone who already has one.
-  if (resuming && me?.signedIn && me.next !== "start")
-    throw redirect({ to: "/", replace: true });
+  const target = routeFor(me?.signedIn ? me : null, location);
+  if (target)
+    throw redirect({ to: target.to as never, replace: true });
   // The school answer's next step depends on the account's schools: there
   // before the page paints, so its buttons never arrive late.
   if (params.choice === "school") {
@@ -762,8 +758,8 @@ const starterChoice = createRoute({
   component: starter,
 });
 /** A parent's or a tutor's setup after its first step:
- * `/start/parent/practice`, `/start/parent/second-parent`, `/start/parent/ready`,
- * `/start/tutor/join` and `/start/tutor/ready`. */
+ * `/start/parent/ready`, `/start/tutor/join` and `/start/tutor/ready`; the
+ * retired steps' addresses resolve in `routeFor`. */
 const starterStep = createRoute({
   getParentRoute: () => root,
   path: "/start/$choice/$step",

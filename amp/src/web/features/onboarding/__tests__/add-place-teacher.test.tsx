@@ -32,7 +32,7 @@ vi.mock("@tanstack/react-router", () => ({
 }));
 afterEach(cleanup);
 
-test("CP-2 r2 M4: the teacher's choice in Add a place keeps its way back", () => {
+test("the teacher's choice in Add a place is a path alone: no query string rides along", () => {
   const client = new QueryClient();
   const session = { accountId: "amp|jo", token: "t" };
   client.setQueryData(sessionOptions.queryKey, session);
@@ -53,9 +53,7 @@ test("CP-2 r2 M4: the teacher's choice in Add a place keeps its way back", () =>
     </QueryClientProvider>,
   );
   const teacher = screen.getByText("I’m a teacher").closest("a")!;
-  expect(teacher.getAttribute("href")).toBe(
-    `/school/start?from=${encodeURIComponent(FROM)}`,
-  );
+  expect(teacher.getAttribute("href")).toBe("/school/start");
 });
 
 vi.mock("../../../nav/links", () => ({ useCloseClick: () => () => {} }));
