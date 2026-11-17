@@ -113,8 +113,8 @@ const withLayers = (
  * learner the address names (a parent's goes to their child's address,
  * olderLearningHref): the skill under any layers the address held, then a
  * lesson it names over them. Your own map names its newest skill in its
- * address (`/pathways/<skill>`) and keeps what is over it in its store; a
- * child's map keeps the whole stack in its store.
+ * address (`/pathways/<skill>`) and keeps that skill, with what is over it,
+ * in its store; a child's map keeps the whole stack in its store.
  */
 async function pathwaysTarget(
   search: Record<string, unknown>,
@@ -144,7 +144,8 @@ async function pathwaysTarget(
   const top = stack.map((layer) => layer.kind).lastIndexOf("skill");
   if (landed === "/pathways" && top >= 0) {
     href = `/pathways/${encodeURIComponent(stack[top]!.id)}${rest ? `?${rest}` : ""}`;
-    stack = stack.slice(top + 1);
+    // The store keeps the skill at the foot of what is over it.
+    stack = stack.slice(top);
   }
   return { href, layers: stack.slice(0, MAX_LAYERS) };
 }
@@ -719,12 +720,12 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
       "a skill's address with layers or a view in its query, or a parent's whose map is their child's",
     // Your own map at this address with nothing in its query is the
     // screen itself: no hop.
-    to: async ({ search, params, pathname }) => {
+    to: async ({ search, params, pathname, searchStr }) => {
       const target = await pathwaysTarget(search, params.skill);
       return typeof target === "object" &&
         "href" in target &&
-        target.href === pathname.replace(/\/+$/, "") &&
-        !target.layers?.length
+        target.href === `${pathname.replace(/\/+$/, "")}${searchStr}` &&
+        (target.layers?.length ?? 0) <= 1
         ? undefined
         : target;
     },

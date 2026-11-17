@@ -35,8 +35,10 @@ test("an older map address names its skill in the path, puts the rest in their s
       "/pathways?skill=count-to-20&lesson=count-objects&topic=frac&filter=3&area=geometry",
     ),
   ).toBe("/pathways/count-to-20");
-  // The skill's address is the map's screen: its lesson is the map's layer.
+  // The skill's address is the map's screen: its store keeps the skill
+  // with the lesson over it.
   expect(useLayerStore.getState().stacks["adult:/pathways"]).toEqual([
+    { kind: "skill", id: "count-to-20" },
     { kind: "lesson", id: "count-objects" },
   ]);
   expect(useMapViewStore.getState().views["adult:/pathways"]).toEqual({

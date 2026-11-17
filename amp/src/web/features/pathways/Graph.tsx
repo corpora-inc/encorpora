@@ -140,9 +140,11 @@ export function Graph({
   /** Full screen was just entered or left: the next size centres the map
    * (its selected skill, else the whole map) on the new screen, rather than
    * holding it where it sat on the page (on a phone, the lower half). */
-  const refit = useRef(false);
+  const refit = useRef(0);
   const toggleFullscreen = (next: boolean) => {
-    refit.current = true;
+    // The resizes that entering or leaving brings, within a second; a later
+    // one (a phone's address bar, a window) keeps the map where it is.
+    refit.current = performance.now() + 1000;
     setFullscreen(next);
   };
   // The toolbar appears whole, once it knows whether "Where you are" belongs in
@@ -1157,8 +1159,8 @@ export function Graph({
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
       placeAreas();
-      const centring = refit.current && !!before;
-      refit.current = false;
+      const centring = !!before && performance.now() < refit.current;
+      if (centring) refit.current = 0;
       if (fitView) {
         tween = null;
         place(overviewPose());

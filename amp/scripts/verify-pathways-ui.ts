@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {
   openLayers,
   openOf,
+  waitForLayers,
   waitForMapView,
   waitForSkills,
 } from "./layer-probe";
@@ -1168,13 +1169,21 @@ async function verifySkillAddress() {
     const opened = new URL(page.url());
     assert.equal(opened.pathname, `/pathways/${id}`);
     assert.equal(opened.search, "");
+    // A lesson opened over the skill is no history step: Back closes the
+    // skill to the map, and the lesson goes with it.
+    await lessonRow(page).click();
+    await lessonOpen(page).waitFor();
     await page.goBack();
-    await waitForSkills(page, []);
+    await waitForLayers(page, []);
     assert.equal(new URL(page.url()).pathname, "/pathways");
+    // Forward and a reload show the skill again, as it was left: its lesson
+    // over it. Escape goes up a level at a time, to the map.
     await page.goForward();
     await waitForSkills(page, [id]);
     await page.reload();
     await waitForSkills(page, [id]);
+    await lessonOpen(page).waitFor();
+    await page.keyboard.press("Escape");
     await skillLayer(page).waitFor();
     await page.keyboard.press("Escape");
     await waitForSkills(page, []);

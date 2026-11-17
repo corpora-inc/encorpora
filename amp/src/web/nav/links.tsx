@@ -136,8 +136,15 @@ export function useLayers() {
   // Your own Pathways: the skill open over the map is the screen's own
   // address (/pathways/<skill>), so Back closes it, a refresh keeps it and
   // a link shares it. What opens over that skill (a lesson) is the store's.
+  // The store keeps the skill a stack was opened over at its foot: layers
+  // left over another skill (Back closed it, a link named another) are
+  // not this one's.
   const skill = pathwaysSkill(location.pathname);
-  const over = kept.filter((layer) => layer.kind !== "skill");
+  const foot = kept[0]?.kind === "skill" ? kept[0].id : undefined;
+  const over =
+    foot === skill
+      ? kept.slice(skill ? 1 : 0).filter((layer) => layer.kind !== "skill")
+      : [];
   const stack: Layer[] = skill ? [{ kind: "skill", id: skill }, ...over] : over;
   /** The newest skill in a stack is the address; what is over it stays. */
   const split = (next: Layer[]) => {
@@ -157,7 +164,13 @@ export function useLayers() {
   };
   const apply = (next: Layer[], direction: 1 | -1) => {
     const { base, rest } = split(next);
-    useLayerStore.getState().set(scope, rest, direction);
+    useLayerStore
+      .getState()
+      .set(
+        scope,
+        base ? [{ kind: "skill", id: base }, ...rest] : rest,
+        direction,
+      );
     if (base === skill) return;
     // Closed: back to the map, as Back would (one entry, never a new one).
     if (!base) closeTo(router, OWN_MAP);
