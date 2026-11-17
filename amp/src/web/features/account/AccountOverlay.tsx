@@ -23,11 +23,18 @@ export const ACCOUNT_OVERLAYS = [
 ] as const;
 export type AccountOverlayName = (typeof ACCOUNT_OVERLAYS)[number];
 
-const OVERLAY = new RegExp(`/(?:${ACCOUNT_OVERLAYS.join("|")})/?$`);
+const OVERLAY = new RegExp(`/(?:${ACCOUNT_OVERLAYS.join("|")}|pay)(?:/.*)?$`);
 
-/** The hub an overlay's address is over: its address without the overlay. */
+/** The hub an overlay's address is over: its address without the overlay
+ * (an account overlay, or Pay with its steps). The hub itself is its own. */
 export function overlayHub(pathname: string): string {
-  return pathname.replace(OVERLAY, "") || "/account";
+  const path = pathname.replace(/\/+$/, "");
+  const hub = /^\/account(?:\/|$)/.test(path)
+    ? "/account"
+    : /^\/family\/[^/]+\/settings(?:\/|$)/.test(path)
+      ? path.replace(/^(\/family\/[^/]+\/settings).*$/, "$1")
+      : path.replace(OVERLAY, "");
+  return hub || "/account";
 }
 
 /** The hub behind the open overlay. */

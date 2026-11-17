@@ -16,10 +16,7 @@ import { settingsFamilyOf } from "../family/settings-family";
  */
 
 export type SettingsOverlay =
-  | "billing"
-  | "privacy"
-  | "security"
-  | "delete-account";
+  "billing" | "privacy" | "security" | "delete-account";
 
 /** The account's settings hub: its family's Settings, or `/account`. */
 export function settingsHub(places: FamilyPlaces | null | undefined): string {

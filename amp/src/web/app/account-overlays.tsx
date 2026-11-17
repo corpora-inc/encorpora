@@ -38,6 +38,8 @@ export function accountOverlays<Host extends AnyRoute>(host: Host) {
     createRoute({
       getParentRoute: () => host,
       path,
+      // Over the hub: opening and closing keep its scroll (router.tsx).
+      staticData: { overList: true },
       ...(loader ? { loader } : {}),
       component,
     });

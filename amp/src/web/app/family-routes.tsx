@@ -13,7 +13,12 @@ import {
   familyPlacesOptions,
   isFamilyId,
 } from "../features/family/api";
-import { familyPath, landingFamily } from "../features/family/redirects";
+import {
+  familyPath,
+  landingFamily,
+  sheetHop,
+} from "../features/family/redirects";
+import { sheetState } from "../nav/sheet";
 import { staffScreen } from "./school-routes";
 import { ownClassOf } from "../features/spaces/resolve";
 import { groupAddress } from "./family-redirect";
@@ -68,8 +73,8 @@ export function familyRoutes(root: AnyRoute) {
     }),
   ];
   /** The account's learners, from before families had a place: the family's
-   * Settings (its children), or adding a child on its Today. */
-  const learners = (path: string, leaf: string, search: object) =>
+   * Settings (its children), adding a child there (`sheet`). */
+  const learners = (path: string, sheet?: string) =>
     createRoute({
       getParentRoute: () => root,
       path,
@@ -78,8 +83,8 @@ export function familyRoutes(root: AnyRoute) {
         const { session } = await staffScreen(context);
         const { family } = await ownFamily(session);
         throw redirect({
-          to: family ? familyPath(family, leaf) : "/family",
-          search: family ? search : {},
+          to: family ? familyPath(family, "settings") : "/family",
+          ...(family && sheet ? { state: sheetState(sheet) } : {}),
           replace: true,
         } as never);
       },
@@ -131,6 +136,13 @@ export function familyRoutes(root: AnyRoute) {
       // Not a family's id: an address this app never made.
       if (!isFamilyId(id))
         throw redirect({ to: "/family", replace: true } as never);
+      // An older address that opened a sheet with a key (`?devices=1`,
+      // `?add=1`): the same screen, the sheet from history state.
+      const hop = sheetHop(
+        context.location.pathname,
+        context.location.search as Record<string, unknown>,
+      );
+      if (hop) throw redirect({ ...hop, replace: true } as never);
       return staffScreen(context);
     },
     loader: async ({ context, params }) => {
@@ -147,6 +159,20 @@ export function familyRoutes(root: AnyRoute) {
       getParentRoute: () => family,
       path,
       component: screen(name),
+    });
+  /** An older family leaf that is part of Settings now: one hop there,
+   * opening its sheet (`sheet`) from history state. */
+  const settingsHop = (path: string, sheet?: string) =>
+    createRoute({
+      getParentRoute: () => family,
+      path,
+      beforeLoad: ({ params }) => {
+        throw redirect({
+          to: familyPath((params as { family: string }).family, "settings"),
+          ...(sheet ? { state: sheetState(sheet) } : {}),
+          replace: true,
+        } as never);
+      },
     });
   /** A child's page paints whole: its record (levels, and whether there
    * is anything to report yet), its workbooks and its report card's term
@@ -199,39 +225,43 @@ export function familyRoutes(root: AnyRoute) {
     ]);
   };
 
-  /** Progress and the family's old record pages (practice time, report
-   * cards, workbooks), now parts of each child's page: one hop, for a
+  /** The family's old record pages (Progress, practice time, report cards,
+   * workbooks), now parts of each child's page and of Today: one hop, for a
    * one-child family, to that child's page at the part (`anchor`); for
-   * several, the old record pages open Progress. Progress itself shows the
-   * several, and keeps its linked curriculum layers on the way to one. The
+   * several, or with no part (Progress), to Today, where each child's card
+   * opens their page. Progress's linked curriculum layers go with it. The
    * workbook print for several (`?several`, `?kids`) stays at its address. */
   const childAlias = (
     path: string,
     anchor: string | null,
-    name: string,
-    stays: (search: Record<string, unknown>) => boolean = () => false,
+    stays?: {
+      when: (search: Record<string, unknown>) => boolean;
+      component: string;
+    },
   ) =>
     createRoute({
       getParentRoute: () => family,
       path,
       beforeLoad: async ({ context, params, location }) => {
         const search = location.search as Record<string, unknown>;
-        if (stays(search)) return;
-        const { session } = context as unknown as { session: AuthSession };
+        if (stays?.when(search)) return;
         const id = (params as { family: string }).family;
-        const data = await queryClient
-          .ensureQueryData(familyOptions(session, id))
-          .catch(() => null);
-        const only = data?.children.length === 1 ? data.children[0]! : null;
-        if (!only && !anchor) return;
+        let only: string | null = null;
+        if (anchor) {
+          const { session } = context as unknown as { session: AuthSession };
+          const data = await queryClient.ensureQueryData(
+            familyOptions(session, id),
+          );
+          only = data.children.length === 1 ? data.children[0]!.id : null;
+        }
         throw redirect({
-          to: familyPath(id, only ? `kids/${only.id}` : "map"),
-          search: (anchor ? {} : search) as never,
-          hash: anchor ?? location.hash,
+          to: familyPath(id, only ? `kids/${only}` : ""),
+          search: (only ? {} : search) as never,
+          hash: only ? anchor! : location.hash,
           replace: true,
         } as never);
       },
-      component: screen(name),
+      ...(stays ? { component: screen(stays.component) } : {}),
     });
   /** A child's learning screen at the child's own address
    * (`kids/<learner>/pathways`): the shared screen, for that child. The
@@ -341,8 +371,8 @@ export function familyRoutes(root: AnyRoute) {
     ...accountAlias("/family/security", "/account/security"),
     ...accountAlias("/family/access", "/account/billing"),
     ...accountAlias("/family/privacy", "/account/privacy"),
-    learners("/family/learners", "settings", {}),
-    learners("/family/learners/new", "", { add: 1 }),
+    learners("/family/learners"),
+    learners("/family/learners/new", "add-children"),
     family.addChildren([
       // Today, with the pay overlay its "Continue with AMP" opens over it
       // (`pay/<learner>`, features/pay): Today stays mounted behind.
@@ -375,22 +405,23 @@ export function familyRoutes(root: AnyRoute) {
         () => import("../features/inventory/InventoryScreen"),
         "InventoryScreen",
       ),
-      childAlias("map", null, "FamilyMapScreen"),
-      childAlias(
-        "workbooks",
-        "child-workbooks",
-        "FamilyWorkbooksScreen",
-        (search) => search.several !== undefined || search.kids !== undefined,
-      ),
+      childAlias("map", null),
+      childAlias("workbooks", "child-workbooks", {
+        when: (search) =>
+          search.several !== undefined || search.kids !== undefined,
+        component: "FamilyWorkbooksScreen",
+      }),
       leaf("workbooks/$date", "FamilyMarkingScreen"),
-      childAlias("time", "child-time", "FamilyMapScreen"),
-      childAlias("reports", "child-reports", "FamilyMapScreen"),
+      childAlias("time", "child-time"),
+      childAlias("reports", "child-reports"),
       leaf("reports/grades", "FamilyGradesScreen"),
-      leaf("people", "FamilyPeopleScreen"),
+      // People are Settings' People now.
+      settingsHop("people"),
       // Settings, and the overlays its rows open over it (billing, privacy,
       // sign-in, deleting the account, Pay): Settings stays mounted behind.
       settings.addChildren([...accountOverlays(settings)]),
-      leaf("cards", "FamilyCardsScreen"),
+      // The sign-in cards print from their own devices, over Settings.
+      settingsHop("cards", "devices"),
       // The tutoring group is its class's classroom: this address opens it.
       createRoute({
         getParentRoute: () => family,

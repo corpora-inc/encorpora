@@ -454,3 +454,12 @@
   display: grid;
   gap: var(--space-4);
 }
+/* A child's name that opens their settings (family Settings): the same look
+   as the name that opens their page. */
+button.kidName {
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  text-align: start;
+  cursor: pointer;
+}

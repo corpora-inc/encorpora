@@ -136,14 +136,14 @@ export function shellFrame(
     const active =
       (
         {
+          // A child's page, and the family's records, are reached from
+          // the children on Today.
           "": "today",
-          kids: "progress",
-          map: "progress",
-          time: "progress",
-          reports: "progress",
-          workbooks: "progress",
-          people: "settings",
-          cards: "settings",
+          kids: "today",
+          map: "today",
+          time: "today",
+          reports: "today",
+          workbooks: "today",
         } as Record<string, string>
       )[first] ?? first;
     return { kind: "family", family: family[1]!.toLowerCase(), active, leaf };

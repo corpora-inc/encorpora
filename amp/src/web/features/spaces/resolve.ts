@@ -890,14 +890,12 @@ function familySpace(
               : {}),
           })
         : workbooks && orgId
-          ? familyPlaceTabs(orgId, {
-              onlyChild: learners.length === 1 ? learners[0]!.id : undefined,
-            })
+          ? familyPlaceTabs(orgId)
           : frame?.kind === "progress" && learner && orgId
             ? childTabs(orgId, learner.id)
             : [];
   const active = workbooks
-    ? "progress"
+    ? "today"
     : frame?.kind === "class" && frame.leaf === "report-cards"
       ? "report-cards"
       : base.active;
@@ -1292,9 +1290,7 @@ function familyPlaceSpace(
         ? []
         : onRecord && learner
           ? childTabs(frame.family, learner.id)
-          : familyPlaceTabs(frame.family, {
-              onlyChild: children.length === 1 ? children[0]!.id : undefined,
-            }),
+          : familyPlaceTabs(frame.family),
     bar: "tabs",
     active: onRecord ? record.screen : frame.active,
     actions: [],

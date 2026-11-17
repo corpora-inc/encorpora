@@ -592,15 +592,16 @@ export function routeScreens() {
       )
         add(loaders.get("screens")!, args[0]!.slice(1, -1));
     }
-    // A family tab: `leaf(path, "FamilyMapScreen")`, from `screens`.
+    // A family tab: `leaf(path, "FamilyMarkingScreen")`, from `screens`.
     for (const args of calls(source, /\bleaf\(/g))
       if (/^"\w+"$/.test(args[1] ?? "") && loaders.has("screens"))
         add(loaders.get("screens")!, args[1]!.slice(1, -1));
     // A record alias that renders where it stays:
-    // `childAlias(path, anchor, "FamilyMapScreen", …)`.
-    for (const args of calls(source, /\bchildAlias\(/g))
-      if (/^"\w+"$/.test(args[2] ?? "") && loaders.has("screens"))
-        add(loaders.get("screens")!, args[2]!.slice(1, -1));
+    // `childAlias(path, anchor, { …, component: "FamilyWorkbooksScreen" })`.
+    for (const args of calls(source, /\bchildAlias\(/g)) {
+      const named = args[2]?.match(/component:\s*"(\w+)"/)?.[1];
+      if (named && loaders.has("screens")) add(loaders.get("screens")!, named);
+    }
     // A child's learning screen: `childScreen(path, () => import(…), name)`.
     for (const args of calls(source, /\bchildScreen\(/g)) {
       const specifier = loaderOf(args[1] ?? "");

@@ -242,11 +242,19 @@ test("paying for a learner highlights no Settings tab: it is a step, not a setti
     ],
     next: null,
   };
-  for (const path of ["/pay/child-1", "/pay/child-1/card", "/pay/child-1/esa/plan"]) {
-    const space = resolveSpace({ pathname: path, space: "account" }, adult(power), {
-      families,
-      family: familyA,
-    });
+  for (const path of [
+    "/pay/child-1",
+    "/pay/child-1/card",
+    "/pay/child-1/esa/plan",
+  ]) {
+    const space = resolveSpace(
+      { pathname: path, space: "account" },
+      adult(power),
+      {
+        families,
+        family: familyA,
+      },
+    );
     assert.equal(space.space, "account", path);
     assert.notEqual(space.active, "settings", path);
     assert.deepEqual(space.tabs, [], path);
@@ -265,11 +273,11 @@ test("a family's address is its own frame, Today at its root and a child's page 
   });
   assert.equal(
     (shellFrame(`/family/${A}/kids/pip`) as { active: string }).active,
-    "progress",
+    "today",
   );
   assert.equal(
     (shellFrame(`/family/${A}/reports/grades`) as { active: string }).active,
-    "progress",
+    "today",
   );
   assert.equal(shellFrame("/family")?.kind, "plain");
 });
@@ -294,15 +302,15 @@ test("holder: the family's own children only, its tabs, its name, its children a
   );
   assert.deepEqual(
     space.tabs.map((tab) => tab.id),
-    ["today", "progress", "settings"],
+    ["today", "settings"],
   );
   assert.deepEqual(
     space.tabs.filter((tab) => tab.phone).map((tab) => tab.id),
-    ["today", "progress", "settings"],
+    ["today", "settings"],
   );
   assert.deepEqual(
     space.tabs.map((tab) => tab.label),
-    ["Today", "Progress", "Settings"],
+    ["Today", "Settings"],
   );
   assert.deepEqual(
     space.destinations.map((entry) => [entry.label, entry.path]),
@@ -317,18 +325,16 @@ test("holder: the family's own children only, its tabs, its name, its children a
   assert.deepEqual(space.actions, []);
 });
 
-test("one child opens directly from Progress; records and sharing keep their section active", () => {
+test("two destinations: a child's page and the records are reached from Today", () => {
   const family = projection(A, "holder", [kid("pip", "Pip")]);
   for (const [leaf, active] of [
     ["", "today"],
-    ["kids/pip", "progress"],
-    ["map", "progress"],
-    ["time", "progress"],
-    ["reports", "progress"],
-    ["reports/grades", "progress"],
-    ["people", "settings"],
-    ["cards", "settings"],
+    ["kids/pip", "today"],
+    ["time", "today"],
+    ["reports", "today"],
+    ["reports/grades", "today"],
     ["settings", "settings"],
+    ["settings/privacy", "settings"],
   ]) {
     const space = resolveSpace(
       { pathname: `/family/${A}${leaf ? `/${leaf}` : ""}`, space: "family" },
@@ -336,21 +342,11 @@ test("one child opens directly from Progress; records and sharing keep their sec
       { family },
     );
     assert.equal(space.active, active, leaf);
-    assert.equal(
-      space.tabs.find((tab) => tab.id === "progress")?.path,
-      `family/${A}/kids/pip`,
+    assert.deepEqual(
+      space.tabs.map((tab) => tab.path),
+      [`family/${A}`, `family/${A}/settings`],
     );
-    assert.equal(space.tabs.length, 3);
   }
-  const several = resolveSpace(
-    { pathname: `/family/${A}`, space: "family" },
-    adult(power),
-    { family: familyA },
-  );
-  assert.equal(
-    several.tabs.find((tab) => tab.id === "progress")?.path,
-    `family/${A}/map`,
-  );
 });
 
 test("a child's page marks that child, and only one of the family's own", () => {
@@ -807,7 +803,7 @@ test("Family Time reads every owned child: the class's, and each one practicing 
   );
 });
 
-test("D-8: a child's workbooks stay in the family's Progress section", () => {
+test("D-8: a child's workbooks stay in the family's frame, under Today", () => {
   for (const pathname of [
     "/learners/pip/workbooks",
     "/learners/pip/workbooks/2026-11-09",
@@ -818,11 +814,11 @@ test("D-8: a child's workbooks stay in the family's Progress section", () => {
     );
     if (space.space !== "family") throw new Error(space.space);
     assert.equal(space.learner?.id, "pip");
-    assert.equal(space.active, "progress");
+    assert.equal(space.active, "today");
     // The family's own tabs, never the child's record (Overview, Pathways…).
     assert.deepEqual(
       space.tabs.map((tab) => tab.path),
-      [`family/${A}`, `family/${A}/map`, `family/${A}/settings`],
+      [`family/${A}`, `family/${A}/settings`],
     );
     assert.equal(space.label, "Your family");
   }
