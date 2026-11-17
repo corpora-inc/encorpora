@@ -84,6 +84,19 @@ const previewPrices: Plugin = {
   },
 };
 
+/** "New user" on `/dev/personas` (scripts/dev-new-user.ts). `apply: "serve"`
+ * is the same gate as the `import.meta.env.DEV` that adds the switcher: a
+ * build never registers it, so production has no such endpoint
+ * (tests/dev-new-user.test.ts). */
+const devNewUserPlugin: Plugin = {
+  name: "amp-dev-new-user",
+  apply: "serve",
+  async configureServer(server) {
+    const { devNewUser } = await import("./scripts/dev-new-user.ts");
+    server.middlewares.use(devNewUser(process.env.AMP_DATABASE_URL));
+  },
+};
+
 /** Money art in the browser is files: hashed, cached for good, fetched once
  * and decoded before a money problem shows (`src/web/scene/money-art.ts`).
  * Every other renderer (print, the server, film) keeps the embedded copies,
@@ -160,6 +173,7 @@ export default defineConfig({
     serverOnlyCrypto,
     devFixtures,
     previewPrices,
+    devNewUserPlugin,
     sceneArtFiles,
     homeDocument,
     react(),
