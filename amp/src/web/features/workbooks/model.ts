@@ -1,29 +1,9 @@
-import { z } from "zod";
 import { AppError } from "../../lib/AppError";
 import {
   workbookLeans,
   type WorkbookChoicesInput,
   type WorkbookPaper,
 } from "../../../workbook/contracts";
-
-/** The query string an older workbook-day link carried (its route still
- * parses it, app/router.tsx; the day reads its draft from draft-store.ts).
- * Delete once the route stops validating it. */
-export const workbookSearchSchema = z.object({
-  draft: z.string().uuid().optional().catch(undefined),
-  minutes: z
-    .union([z.literal(30), z.literal(45), z.literal(60)])
-    .optional()
-    .catch(undefined),
-  paper: z.enum(["letter", "a4"]).optional().catch(undefined),
-  number: z.coerce.number().int().min(1).max(999).optional().catch(undefined),
-  /** The workbook's choices: areas (comma-separated strands), lean, and
-   * `lesson=off` for problems only. Absent: mixed, at level, with a lesson. */
-  areas: z.string().max(400).optional().catch(undefined),
-  lean: z.enum(workbookLeans).optional().catch(undefined),
-  lesson: z.literal("off").optional().catch(undefined),
-});
-export type WorkbookSearch = z.infer<typeof workbookSearchSchema>;
 
 /** The device's calendar date, YYYY-MM-DD. */
 export function localDate(at = new Date()): string {
