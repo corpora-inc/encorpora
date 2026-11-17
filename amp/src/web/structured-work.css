@@ -9,10 +9,24 @@
   margin: var(--space-4) 0 0;
   container-type: inline-size;
 }
-/* The keypad covers the bottom of the screen while an entry is active; the
-   last step can always scroll above it. */
-.work[data-keypad-space] {
-  padding-bottom: 272px;
+/* While the keypad covers the bottom of the screen, the last step can
+   scroll above it: StructuredWorkInput sets --keypad-room to what the keypad
+   covers of the scrolling stage. The room hangs below the work out of flow,
+   so it lengthens the scroll range without moving anything, and it is zero
+   while the keypad is closed: a problem that fits never scrolls. */
+.work-keypad-room {
+  position: relative;
+  height: 0;
+  pointer-events: none;
+}
+.work-keypad-room::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: var(--keypad-room, 0px);
+  visibility: hidden;
 }
 .work-start,
 .work-goal {

@@ -25,7 +25,8 @@ export type Finding = {
     | "skip-miss-mark"
     | "feedback-gap"
     | "motion-under-reduce"
-    | "tinted-answer";
+    | "tinted-answer"
+    | "needless-scroll";
   selector: string;
   text: string;
   detail: string;
@@ -517,6 +518,70 @@ export async function probe(page: Page): Promise<Finding[]> {
             });
         }
       }
+    // A problem that fits its stage does not scroll. With no sheet, keypad
+    // or dialog over it, the stage's scroll range is exactly what the
+    // problem paints: a reservation (bottom padding, a min-height, a spacer)
+    // that makes a fitting problem scrollable, or leaves it scrolled, is a
+    // defect. The problem's natural height is measured from what it paints
+    // (text, controls, figures, bordered or filled boxes, an entry's reserved
+    // preview line) plus the content's own padding, so an empty reservation
+    // never counts as content.
+    const stageEl = document.querySelector<HTMLElement>(".problem-stage");
+    const contentEl = stageEl?.querySelector<HTMLElement>(".problem-content");
+    if (
+      stageEl &&
+      contentEl &&
+      !dialog &&
+      !sheet &&
+      !document.querySelector(".work-keypad")
+    ) {
+      const top = contentEl.getBoundingClientRect().top;
+      const cs = getComputedStyle(contentEl);
+      let bottom = top + (parseFloat(cs.paddingTop) || 0);
+      const painted = (e: Element) => {
+        // An entry's preview line is reserved on purpose (no shift when it
+        // fills), so it counts as the problem's own height.
+        if (
+          e.matches(
+            "img, svg, canvas, video, input, button, textarea, .work-note",
+          )
+        )
+          return true;
+        for (const n of e.childNodes)
+          if (n.nodeType === 3 && n.textContent?.trim()) return true;
+        const s = getComputedStyle(e);
+        const border = (["Top", "Right", "Bottom", "Left"] as const).some(
+          (side) =>
+            parseFloat(
+              s.getPropertyValue(`border-${side.toLowerCase()}-width`),
+            ) > 0 &&
+            s.getPropertyValue(`border-${side.toLowerCase()}-style`) !== "none",
+        );
+        const fill =
+          s.backgroundImage !== "none" ||
+          !/^(transparent|rgba\(0, 0, 0, 0\))$/.test(s.backgroundColor);
+        return border || fill;
+      };
+      for (const e of contentEl.querySelectorAll("*")) {
+        if (!visible(e) || e.closest(".sr-only, .katex-mathml")) continue;
+        if (!painted(e)) continue;
+        bottom = Math.max(bottom, e.getBoundingClientRect().bottom);
+      }
+      const natural = Math.ceil(
+        bottom - top + (parseFloat(cs.paddingBottom) || 0),
+      );
+      const overflow = stageEl.scrollHeight - stageEl.clientHeight;
+      if (
+        natural <= stageEl.clientHeight &&
+        (overflow > 1 || stageEl.scrollTop > 0)
+      )
+        found.push({
+          kind: "needless-scroll",
+          selector: name(stageEl),
+          text: "",
+          detail: `problem paints ${natural}px in a ${stageEl.clientHeight}px stage, yet scrolls ${stageEl.scrollHeight}px (scrollTop ${Math.round(stageEl.scrollTop)})`,
+        });
+    }
     // Answer fields are plain paper with a clear border: their fill is the
     // answer role (white in light, the page in dark), never a cream tint.
     const probeColor = document.createElement("span");

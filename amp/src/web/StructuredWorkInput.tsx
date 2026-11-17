@@ -303,6 +303,9 @@ function unitLabel(unit: string) {
   );
 }
 
+/** Space kept between the active entry and the keypad's top edge. */
+const KEY_GAP = 12;
+
 /** The steps (or proof lines) of the problem itself. */
 export function StructuredWorkInput({
   problemId,
@@ -362,20 +365,87 @@ export function StructuredWorkInput({
   );
   const digitsOnly = typed && keys.length === 0;
   const keypadOpen = small && active !== null && !locked && typed;
-  // Keep the active entry above the keypad within its own scrolling workspace.
+  // Room for the keypad exists only while it is open, and only as much as it
+  // covers of the problem's scrolling workspace: an out-of-flow spacer below
+  // the work (structured-work.css) lets the last step scroll above it. A
+  // problem that fits has no scroll range when the keypad is closed, and the
+  // spacer never moves what is on screen: it only lengthens the range below.
+  const room = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
-    if (!keypadOpen || !active) return;
-    const input = inputs.current.get(`${active.row}:${active.field}`);
+    const spacer = room.current;
+    const work = spacer?.parentElement;
+    if (!spacer || !work) return;
+    if (!keypadOpen || !active) {
+      // Closing gives the range back: a stage scrolled into it settles at
+      // its new end, which is the top when the problem fits. The release
+      // waits a frame, so tapping straight from one entry to another (a blur
+      // then a focus) keeps the room and moves nothing.
+      if (locked) {
+        spacer.style.removeProperty("--keypad-room");
+        return;
+      }
+      let frame = 0;
+      const release = () => {
+        cancelAnimationFrame(frame);
+        frame = requestAnimationFrame(() =>
+          spacer.style.removeProperty("--keypad-room"),
+        );
+      };
+      // From an entry to a step's menu, the room stays while the menu is
+      // open, so the menu never moves under the finger. It goes when focus
+      // leaves the work, or comes back to it with no menu open.
+      const within = (node: EventTarget | null) =>
+        node instanceof Element &&
+        node !== document.body &&
+        (work.contains(node) || !!node.closest(".work-menu"));
+      const menuOpen = () => !!work.querySelector('[aria-expanded="true"]');
+      if (!menuOpen() && !within(document.activeElement)) release();
+      const leave = (event: FocusEvent) => {
+        if (!within(event.relatedTarget)) release();
+      };
+      const back = () => {
+        if (!menuOpen()) release();
+      };
+      work.addEventListener("focusout", leave);
+      work.addEventListener("focusin", back);
+      return () => {
+        cancelAnimationFrame(frame);
+        work.removeEventListener("focusout", leave);
+        work.removeEventListener("focusin", back);
+      };
+    }
     const pad = keypad.current;
-    const stage = input?.closest<HTMLElement>(".answer-editor, .problem-stage");
-    if (!input || !pad || !stage) return;
-    // Just above the keypad, both ways: never hidden behind it, and never
-    // stranded above a dead band when the stage can scroll back.
-    const field = input.closest<HTMLElement>(".work-entry") ?? input;
-    const bottom = field.getBoundingClientRect().bottom;
-    const top = pad.getBoundingClientRect().top - 12;
-    stage.scrollTop = Math.max(0, stage.scrollTop + bottom - top);
-  }, [keypadOpen, active?.row, active?.field]);
+    const stage = work.closest<HTMLElement>(".answer-editor, .problem-stage");
+    if (!pad || !stage) return;
+    const fit = () => {
+      const stageBottom =
+        stage.getBoundingClientRect().top +
+        stage.clientTop +
+        stage.clientHeight;
+      const covered = stageBottom - (pad.getBoundingClientRect().top - KEY_GAP);
+      spacer.style.setProperty(
+        "--keypad-room",
+        `${Math.max(0, Math.ceil(covered))}px`,
+      );
+    };
+    fit();
+    // Scroll only when the keypad would hide the active entry, and then just
+    // enough to show it above the keypad.
+    const input = inputs.current.get(`${active.row}:${active.field}`);
+    const field = input?.closest<HTMLElement>(".work-entry") ?? input;
+    if (field) {
+      const box = field.getBoundingClientRect();
+      const limit = pad.getBoundingClientRect().top - KEY_GAP;
+      const top = stage.getBoundingClientRect().top + stage.clientTop;
+      if (box.bottom > limit)
+        stage.scrollTop += Math.min(box.bottom - limit, box.top - top);
+      else if (box.top < top) stage.scrollTop -= top - box.top + KEY_GAP;
+    }
+    if (typeof ResizeObserver === "undefined") return;
+    const observer = new ResizeObserver(fit);
+    observer.observe(stage);
+    return () => observer.disconnect();
+  }, [keypadOpen, active?.row, active?.field, locked]);
 
   const rows = r.mode === "order" ? [] : draftRows(r, value);
   // The typed entries in reading order, for the keypad's Next.
@@ -905,9 +975,6 @@ export function StructuredWorkInput({
       data-layout={r.layout}
       data-diagram={r.diagram?.kind}
       data-keypad={keypadOpen ? "" : undefined}
-      // Room for the keypad is reserved from the first frame, so opening
-      // and closing it never changes the scroll extent under a finger.
-      data-keypad-space={small && typed ? "" : undefined}
       role="group"
       aria-label={spokenMath(r.label)}
     >
@@ -961,6 +1028,7 @@ export function StructuredWorkInput({
           </span>
         </p>
       )}
+      <div ref={room} className="work-keypad-room" aria-hidden="true" />
       <p className="sr-only" role="status" aria-live="polite">
         {announce}
       </p>
