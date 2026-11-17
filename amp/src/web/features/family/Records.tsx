@@ -511,7 +511,8 @@ function NoClass({ place, what }: { place: FamilyPlace; what: string }) {
 }
 
 /** A child's progress report: a printed record of where they are, their
- * weeks and the skills they've earned. */
+ * weeks and the skills they've earned, downloaded as a PDF. Its name says
+ * whose report and the file's kind; nothing on the page warns of a file. */
 function ProgressReport({
   place,
   child,
@@ -525,6 +526,7 @@ function ProgressReport({
   return (
     <PrintButton
       variant="secondary"
+      label={`Download ${child.name}’s progress report, PDF`}
       download={() =>
         downloadPdf({
           path: `${child.paths.progress.replace(/^\/api\/v1/, "")}.pdf?format=${paperFormat()}`,
@@ -533,7 +535,7 @@ function ProgressReport({
         })
       }
     >
-      Print
+      Download
     </PrintButton>
   );
 }
