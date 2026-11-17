@@ -235,10 +235,13 @@ async function serve(page: Page, api: Api) {
     if (path === "/api/v1/funding/invoice-offers")
       return route.fulfill({
         json: {
-          offers:
-            new URL(request.url()).searchParams.get("program") === "ar-efa"
-              ? [fundedOffer]
-              : [],
+          // Each program sells, as in production: without a program the
+          // page lists all three.
+          offers: ["ar-efa", "nh-efa", "az-esa"].includes(
+            new URL(request.url()).searchParams.get("program") ?? "",
+          )
+            ? [fundedOffer]
+            : [],
         },
       });
     if (path === "/api/v1/parent-followup/intent") {
@@ -347,6 +350,85 @@ async function noOverflow(page: Page, tag: string) {
   );
   assert.ok(overflow <= 1, `${tag}: no horizontal overflow (${overflow}px)`);
 }
+/**
+ * The page's close is balanced: Try it free sits under Buy; from 768 px the
+ * guarantee sits beside the price, with the education funds beneath it, and
+ * both columns end on one line; the funds take at most two compact rows;
+ * the footer is one row from 768 px.
+ */
+async function closeIsBalanced(
+  page: Page,
+  tag: string,
+  width: number,
+  funds: boolean,
+) {
+  // tsx names the helpers below with esbuild's __name, which the page lacks.
+  await page.evaluate("globalThis.__name ??= (f) => f");
+  const found = await page.evaluate(() => {
+    const box = (selector: string) => {
+      const r = document.querySelector(selector)?.getBoundingClientRect();
+      return r
+        ? { top: r.top, bottom: r.bottom, left: r.left, right: r.right }
+        : null;
+    };
+    const rows = (selector: string) =>
+      new Set(
+        [...document.querySelectorAll(selector)].map((node) => {
+          const r = node.getBoundingClientRect();
+          return Math.round(r.top + r.height / 2);
+        }),
+      ).size;
+    return {
+      price: box("[data-actions]"),
+      buy: box("[data-buy]"),
+      guarantee: box("[data-guarantee]"),
+      free: box("[data-free-trial]"),
+      funds: box("[data-education-funds]"),
+      fundLinks: document.querySelectorAll("[data-education-funds] a").length,
+      fundRows: rows("[data-education-funds] a"),
+      footerSpread: (() => {
+        const centres = [...document.querySelectorAll("footer a")].map(
+          (node) => {
+            const r = node.getBoundingClientRect();
+            return r.top + r.height / 2;
+          },
+        );
+        return Math.max(...centres) - Math.min(...centres);
+      })(),
+    };
+  });
+  const { price, buy, guarantee, free } = found;
+  assert.ok(price && buy && guarantee && free, `${tag}: the close's parts`);
+  assert.ok(
+    free.top >= buy.bottom && free.bottom <= price.bottom + 1,
+    `${tag}: Try it free under Buy: ${JSON.stringify(found)}`,
+  );
+  const right = funds ? found.funds : guarantee;
+  assert.ok(right, `${tag}: the right column's foot`);
+  if (width >= 768) {
+    assert.ok(
+      guarantee.left >= price.right && Math.abs(guarantee.top - price.top) <= 1,
+      `${tag}: the guarantee beside the price: ${JSON.stringify(found)}`,
+    );
+    assert.ok(
+      Math.abs(right.bottom - price.bottom) <= 2,
+      `${tag}: both columns end on one line: ${JSON.stringify(found)}`,
+    );
+    assert.ok(
+      found.footerSpread <= 1,
+      `${tag}: the footer is one row, every link and icon on one centre line: ${found.footerSpread}px apart`,
+    );
+  } else
+    assert.ok(
+      guarantee.top >= price.bottom && right.top >= guarantee.top,
+      `${tag}: price, guarantee, then the funds: ${JSON.stringify(found)}`,
+    );
+  if (funds) {
+    assert.equal(found.fundLinks, 3, `${tag}: every program is offered`);
+    assert.ok(found.fundRows <= 2, `${tag}: the funds take two rows at most`);
+  }
+}
+
 /** Positions of everything a parent reads or presses, in page coordinates. */
 async function layout(page: Page) {
   return page.evaluate(() =>
@@ -480,6 +562,7 @@ async function viewports(browser: Browser, engine: string) {
           { tryShown: true, buyShown: false, priceShown: false },
           `${tag}: Try it free on the first screen, no price or Buy`,
         );
+        await closeIsBalanced(page, tag, width, !program);
         // Every control is a 44 px target; inline text links are exempt.
         const small = await page.evaluate(() =>
           [...document.querySelectorAll("[data-pitch] a, [data-pitch] button")]
@@ -678,6 +761,190 @@ async function fit(browser: Browser, engine: string) {
     }
     await context.close();
   }
+}
+
+/**
+ * The first screen's showcase (features/pitch/Showcase.tsx), at a phone's
+ * 360 x 640 and 1280 x 800, light and dark: it rotates by itself without
+ * moving anything (layout and CLS unchanged across a fade), pauses while
+ * pointed at or keyboard-focused, stops where the visitor chooses (a dot
+ * or a swipe), and with reduced motion never starts by itself. Try it free
+ * stays whole on the first screen throughout.
+ */
+async function showcase(browser: Browser, engine: string) {
+  for (const colorScheme of ["light", "dark"] as const)
+    for (const [width, height] of [
+      [360, 640],
+      [1280, 800],
+    ] as const) {
+      const tag = `${engine}-showcase-${width}x${height}-${colorScheme}`;
+      const context = await browser.newContext({
+        viewport: { width, height },
+        colorScheme,
+        reducedMotion: "no-preference",
+      });
+      const page = await context.newPage();
+      const errors: string[] = [];
+      page.on("pageerror", (error) => errors.push(error.message));
+      page.on("console", (message) => {
+        if (message.type() === "error" && /showcase/.test(message.text()))
+          errors.push(message.text());
+      });
+      await serve(page, {
+        signedIn: false,
+        intents: [],
+        events: [],
+        pricesFail: false,
+      });
+      if (engine === "chromium")
+        await page.addInitScript(() => {
+          const w = window as unknown as { shifts: number; moved: string[] };
+          w.shifts = 0;
+          w.moved = [];
+          new PerformanceObserver((list) => {
+            for (const entry of list.getEntries() as (PerformanceEntry & {
+              value: number;
+              sources: {
+                node?: Node;
+                previousRect: DOMRectReadOnly;
+                currentRect: DOMRectReadOnly;
+              }[];
+            })[]) {
+              w.shifts += entry.value;
+              for (const source of entry.sources)
+                w.moved.push(
+                  `${(source.node as Element | undefined)?.outerHTML?.slice(0, 120) ?? source.node?.nodeName} ${JSON.stringify(source.previousRect)} -> ${JSON.stringify(source.currentRect)}`,
+                );
+            }
+          }).observe({ type: "layout-shift", buffered: true });
+        });
+      await page.goto(`${origin}/`);
+      const root = page.locator("[data-showcase]");
+      await root.waitFor();
+      await page.evaluate(() => document.fonts.ready);
+      const stage = page.locator("[data-showcase] > div").first();
+      const current = () =>
+        page
+          .locator("[data-showcase] [data-current]")
+          .getAttribute("data-slide");
+      const box = async () => JSON.stringify(await stage.boundingBox());
+      assert.equal(await current(), "0", `${tag}: the first slide shows`);
+      assert.ok(
+        await page
+          .locator('[data-slide="0"] img')
+          .evaluate((img: HTMLImageElement) => img.complete),
+        `${tag}: the first slide's picture is in place`,
+      );
+      const before = await layout(page);
+      const stageBefore = await box();
+      // Rotation: the next slide fades in with nothing on the page moving.
+      await page.locator("[data-showcase][data-running]").waitFor();
+      await page
+        .locator('[data-slide="1"][data-current]')
+        .waitFor({ timeout: 15_000 });
+      await page.waitForTimeout(900);
+      assert.deepEqual(await layout(page), before, `${tag}: nothing moves`);
+      assert.equal(await box(), stageBefore, `${tag}: the box holds its size`);
+      if (engine === "chromium") {
+        const { shifts, moved } = await page.evaluate(() => {
+          const w = window as unknown as { shifts: number; moved: string[] };
+          return { shifts: w.shifts, moved: w.moved };
+        });
+        assert.equal(
+          shifts,
+          0,
+          `${tag}: cumulative layout shift while the showcase advances: ${moved.join("; ")}`,
+        );
+      }
+      await noOverflow(page, tag);
+      assert.deepEqual(
+        await firstScreen(page),
+        { tryShown: true, buyShown: false, priceShown: false },
+        `${tag}: Try it free on the first screen beside the showcase`,
+      );
+      if (width === 1280) {
+        // Pointing at it holds the slide; leaving lets it go on.
+        await stage.hover();
+        await page
+          .locator("[data-showcase]:not([data-running])")
+          .waitFor({ timeout: 2000 });
+        await page.mouse.move(2, 2);
+        await page.locator("[data-showcase][data-running]").waitFor();
+      }
+      // Keyboard focus inside it holds the slide.
+      await page.locator("[data-first-action] button").focus();
+      // WebKit's Tab skips buttons unless Option is held (Safari's default).
+      await page.keyboard.press(engine === "webkit" ? "Alt+Tab" : "Tab");
+      assert.equal(
+        await page.evaluate(() =>
+          document.activeElement?.closest("[data-showcase]") ? true : false,
+        ),
+        true,
+        `${tag}: Tab reaches the showcase's controls`,
+      );
+      await page
+        .locator("[data-showcase]:not([data-running])")
+        .waitFor({ timeout: 2000 });
+      // A chosen slide stays: rotation stops until Play.
+      await page
+        .getByRole("button", { name: "Slope of a line", exact: true })
+        .click();
+      assert.equal(await current(), "3", `${tag}: the chosen slide shows`);
+      await page.getByRole("button", { name: "Play slides" }).waitFor();
+      // A sideways stroke on a touch screen moves one slide.
+      for (const [type, x] of [
+        ["pointerdown", 300],
+        ["pointerup", 180],
+      ] as const)
+        await stage.dispatchEvent(type, {
+          pointerType: "touch",
+          isPrimary: true,
+          bubbles: true,
+          clientX: x,
+          clientY: 300,
+        });
+      assert.equal(await current(), "4", `${tag}: a swipe moves on`);
+      assert.deepEqual(await layout(page), before, `${tag}: still no shift`);
+      {
+        // The fade settles before the picture.
+        await page.waitForTimeout(900);
+        await page.evaluate(() => scrollTo(0, 0));
+        await page.screenshot({ path: `${shots}/${tag}.png` });
+      }
+      assert.deepEqual(errors, [], `${tag}: no page errors`);
+      await context.close();
+    }
+  // Reduced motion: the first slide stays, paused, until the visitor acts.
+  const context = await browser.newContext({
+    viewport: { width: 1280, height: 800 },
+    reducedMotion: "reduce",
+  });
+  const page = await context.newPage();
+  await serve(page, {
+    signedIn: false,
+    intents: [],
+    events: [],
+    pricesFail: false,
+  });
+  await page.goto(`${origin}/`);
+  await page.locator("[data-showcase][data-warm]").waitFor();
+  await page.waitForTimeout(8000);
+  assert.equal(
+    await page
+      .locator("[data-showcase] [data-current]")
+      .getAttribute("data-slide"),
+    "0",
+    `${engine} reduced motion: the showcase never moves by itself`,
+  );
+  await page.getByRole("button", { name: "Play slides" }).waitFor();
+  assert.equal(
+    await page
+      .locator('[data-slide="1"]')
+      .evaluate((node) => getComputedStyle(node).transitionDuration),
+    "0s",
+    `${engine} reduced motion: no fade`,
+  );
+  await context.close();
 }
 
 /** Each action lands on a screen that can succeed, and sign-up records the
@@ -1080,6 +1347,7 @@ try {
       await viewports(browser, engine);
       if (!noMedia) {
         await fit(browser, engine);
+        await showcase(browser, engine);
         await journeys(browser, engine);
         await signUpShots(browser, engine);
       }
@@ -1097,7 +1365,7 @@ try {
     console.log(
       noMedia
         ? `PASS ${engine}: pitch without media at ${widths.join("/")} px, light and dark: Try on the first screen, no player, no shift`
-        : `PASS ${engine}: pitch at ${widths.join("/")} px, light and dark, card and funded; Try on the first screen at every size, price and Buy at the bottom; video plays in place; every action reaches a working screen`,
+        : `PASS ${engine}: pitch at ${widths.join("/")} px, light and dark, card and funded; Try on the first screen at every size, price and Buy at the bottom; the showcase advances with no shift (CLS 0), pauses on hover and focus, stops where chosen or swiped, never starts under reduced motion; video plays in place; every action reaches a working screen`,
     );
   }
 } finally {

@@ -534,22 +534,14 @@ async function journeys(browser: Browser, engine: string) {
         sentMail[0]!.text.includes("Students: 1200"),
       sentMail,
     );
-    // The address is there to read and copy, and copying moves nothing.
-    const copy = visitor.page
+    // The address is a plain email link, its text the address itself.
+    const mail = visitor.page
       .locator("footer")
-      .getByRole("button", { name: "Copy support@corpora.inc" });
-    const copyBox = await copy.boundingBox();
-    await copy.click();
-    if (engine === "chromium")
-      await visitor.page
-        .locator("footer")
-        .getByText("Copied", { exact: true })
-        .waitFor();
-    const copiedBox = await copy.boundingBox();
+      .getByRole("link", { name: "support@corpora.inc", exact: true });
     check(
-      `${label} copy keeps its place`,
-      !!copyBox && !!copiedBox && copyBox.width === copiedBox.width,
-      [copyBox?.width, copiedBox?.width],
+      `${label} footer email link`,
+      (await mail.getAttribute("href")) === "mailto:support@corpora.inc" &&
+        ((await mail.boundingBox())?.height ?? 0) >= 44,
     );
     // AMP's other places, from the footer.
     const socials = visitor.page.getByRole("list", { name: "AMP elsewhere" });

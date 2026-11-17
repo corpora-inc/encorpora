@@ -142,13 +142,6 @@ try {
                   return void window.__handoffs.push(this.href);
                 return follow.call(this);
               };
-              Object.defineProperty(navigator, "clipboard", {
-                configurable: true,
-                value: { writeText: async (value) => {
-                  if (window.__denyCopy) throw new Error("clipboard denied");
-                  window.__copied = value;
-                } },
-              });
               if (PerformanceObserver.supportedEntryTypes.includes("layout-shift")) {
                 new PerformanceObserver((entries) => {
                   for (const entry of entries.getEntries()) {
@@ -255,52 +248,23 @@ try {
                   0,
                   "arrival has zero layout shift",
                 );
+                // The support address: a plain email link, its text the
+                // address itself, a full target.
                 const support = page.getByRole("complementary", {
                   name: "Help and feedback",
                 });
-                assert.equal(
-                  await support.locator('a[href^="mailto:"]').count(),
-                  0,
-                );
-                const supportGeometry = () =>
-                  support.evaluate((el) => {
-                    const r = el.getBoundingClientRect();
-                    return [r.x, r.y + scrollY, r.width, r.height].map(
-                      Math.round,
-                    );
-                  });
-                const supportBox = await supportGeometry();
-                const supportCopy = support.getByRole("button", {
-                  name: "Copy support address",
+                const mail = support.getByRole("link", {
+                  name: "support@corpora.inc",
+                  exact: true,
                 });
-                await supportCopy.click();
-                await support
-                  .getByRole("status")
-                  .filter({ hasText: "Copied" })
-                  .waitFor();
                 assert.equal(
-                  await page.evaluate(() => (window as any).__copied),
-                  "support@corpora.inc",
+                  await mail.getAttribute("href"),
+                  "mailto:support@corpora.inc",
                 );
-                await page.evaluate(() => {
-                  (window as any).__denyCopy = true;
-                });
-                await supportCopy.click();
-                await support
-                  .getByText("Select the address to copy it.")
-                  .waitFor();
-                assert.equal(
-                  await page.evaluate(() => window.getSelection()?.toString()),
-                  "support@corpora.inc",
+                assert.ok(
+                  ((await mail.boundingBox())?.height ?? 0) >= 44,
+                  "the support link is a full target",
                 );
-                assert.deepEqual(
-                  await supportGeometry(),
-                  supportBox,
-                  "support feedback does not move the footer",
-                );
-                await page.evaluate(() => {
-                  (window as any).__denyCopy = false;
-                });
                 const before = await geometry(page);
                 await page.evaluate(() => {
                   (window as any).__shifts = 0;

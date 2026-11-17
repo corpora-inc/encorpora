@@ -1,87 +1,61 @@
-/* The support address with its copy button, and the public pages' footer. */
-.contact {
-  display: inline-flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-2) var(--space-3);
-  min-width: 0;
-}
+/* The support address (a plain email link) and the public pages' footer. */
 .address {
-  /* One tap selects the whole address. */
-  user-select: all;
-  -webkit-user-select: all;
-  color: var(--color-on-surface);
-  font-size: var(--text-body);
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-size);
+  max-width: 100%;
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
   overflow-wrap: anywhere;
 }
-.copy {
-  display: inline-grid;
-  min-height: var(--target-size);
-  padding-inline: var(--space-4);
-  font-size: var(--text-label);
+.address:hover {
+  text-decoration-thickness: 2px;
 }
-/* Both labels sit in one cell, so the button is as wide as the longer. */
-.copy > span {
-  grid-area: 1 / 1;
-}
-.copy > span[data-hidden] {
-  visibility: hidden;
-}
-.srOnly {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-
-/* Over the legacy element rules for footer and nav. */
-.footer {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  justify-content: normal;
-  gap: var(--space-2);
-  letter-spacing: normal;
-}
-.footerTop {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3) var(--space-5);
-}
-.socials {
-  display: flex;
-  gap: var(--space-1);
-  margin: 0 0 0 calc(-1 * (var(--target-size) - 22px) / 2);
-  padding: 0;
-  list-style: none;
-}
-.socials a {
-  display: inline-grid;
-  place-items: center;
-  width: var(--target-size);
-  height: var(--target-size);
-  border-radius: 50%;
-  color: var(--color-muted-text);
-  transition: color 120ms ease;
-}
-.socials a:hover {
-  color: var(--color-on-surface);
-}
-.socials a:focus-visible,
-.footerLinks a:focus-visible {
+.address:focus-visible {
+  border-radius: 4px;
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
-/* Two even columns on phones, so no link is left alone on a line. */
-.footerLinks {
-  display: grid;
-  grid-template-columns: repeat(2, max-content);
+
+/* The footer: the address and the page's links on the left, AMP's other
+   places on the right, all on one line where it fits; stacked and left-
+   aligned where it doesn't. Every item is a 44 px row, so baselines align
+   whatever wraps. The font size and colour are one for every text link. */
+/* Over the legacy element rules for footer (a flex row; a column on
+   phones). */
+.footer {
+  display: block;
+  container-type: inline-size;
+  letter-spacing: normal;
+}
+.footerRow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+.footerText {
+  flex: 0 1 auto;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0 var(--space-6);
+  min-width: 0;
+}
+.footerAddress {
+  font-size: var(--text-label);
+}
+/* Over the legacy element rules for nav. */
+.footerLinks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--space-5);
   margin: 0;
+  padding: 0;
   border: 0;
 }
 .footerLinks a {
@@ -91,18 +65,58 @@
   min-height: var(--target-size);
   color: var(--color-primary);
   font-size: var(--text-label);
+  text-decoration-thickness: 1px;
   text-underline-offset: 3px;
+}
+.footerLinks a:hover {
+  text-decoration-thickness: 2px;
 }
 .footerLinks a:focus-visible {
   border-radius: 4px;
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
 }
-@media (min-width: 720px) {
-  .footerLinks {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0 var(--space-5);
+/* The icons' glyphs, not their 44 px targets, end on the content edge. */
+.socials {
+  --glyph-inset: calc((var(--target-size) - 22px) / 2);
+  display: flex;
+  gap: var(--space-1);
+  margin: 0 0 0 calc(-1 * var(--glyph-inset));
+  padding: 0;
+  list-style: none;
+}
+/* Each icon is its own 44 px box, centred on the text links' line: no
+   list-item line box adds room under it. */
+.socials li {
+  display: flex;
+  /* Over the legacy element rule's space between list items. */
+  margin: 0;
+}
+.socials a {
+  display: inline-grid;
+  place-items: center;
+  width: var(--target-size);
+  height: var(--target-size);
+  border-radius: 50%;
+  color: var(--color-muted-text);
+  transition: color var(--motion-fast) var(--ease-standard);
+}
+.socials a:hover {
+  color: var(--color-on-surface);
+}
+.socials a:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+}
+@container (min-width: 640px) {
+  .footerRow {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5);
   }
   .socials {
-    margin: 0 calc(-1 * (var(--target-size) - 22px) / 2) 0 0;
+    flex: none;
+    margin: 0 calc(-1 * var(--glyph-inset)) 0 0;
   }
 }

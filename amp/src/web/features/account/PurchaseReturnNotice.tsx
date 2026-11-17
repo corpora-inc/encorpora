@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useReturnNotices } from "../../app/third-party-returns";
 import { useSession } from "../../lib/session";
 import { Button } from "../../ui/Button";
-import { SUPPORT_EMAIL } from "../support/SupportAddress";
+import { SUPPORT_EMAIL } from "../support/support-email";
 import styles from "./PurchaseReturnNotice.module.css";
 
 /**

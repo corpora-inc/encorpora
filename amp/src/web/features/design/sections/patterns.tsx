@@ -177,7 +177,7 @@ export function PatternSections() {
             <LoadFailed what="The class map" onRetry={() => {}} />
           </div>
         </Specimen>
-        <Specimen label="Support address with Copy">
+        <Specimen label="Support address, an email link">
           <ContactAddress />
         </Specimen>
       </Section>
