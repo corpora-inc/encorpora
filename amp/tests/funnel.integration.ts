@@ -641,10 +641,7 @@ test(
         older.legacy?.find((step) => step.event === "try_click")?.visitors,
         1,
       );
-      assert.match(
-        formatFunnelReport(older),
-        /Legacy free trial \(retired\)/,
-      );
+      assert.match(formatFunnelReport(older), /Legacy free trial \(retired\)/);
       assert.equal(
         formatFunnelReport(alone).includes("Legacy free trial"),
         false,
@@ -713,6 +710,21 @@ test(
         utm_campaign: "deep-entry",
         traffic_kind: "external",
       });
+      // Meta's ad review reports itself as a visitor's browser; its address
+      // marks it automated (src/analytics/automated-client.ts), and a later
+      // batch from elsewhere can't make it a person again.
+      const crawler = randomUUID();
+      await post(app, { ...body, visitorId: crawler }, "57.141.4.12");
+      await post(app, { ...body, visitorId: crawler });
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT traffic_kind FROM amp_funnel_visitors WHERE visitor_id=$1",
+            [crawler],
+          )
+        ).rows[0].traffic_kind,
+        "automated",
+      );
       await post(app, { ...body, visitorId: internal, traffic: "internal" });
       // Marking a known internal browser external later must not leak its prior tests into customer totals.
       await post(app, { ...body, visitorId: internal });

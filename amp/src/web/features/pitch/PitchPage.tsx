@@ -8,11 +8,9 @@ import { Button, buttonClass } from "../../ui/Button";
 import { SiteFooter } from "../support/SiteFooter";
 import {
   BuyOptions,
-  formatPrice,
   GUARANTEE_FOOTNOTE,
   loadBuyData,
   REFUND_POLICY_URL,
-  underPerDay,
   useBuyData,
 } from "./BuyOptions";
 import { PitchLink, usePitchNav } from "./nav";
@@ -20,7 +18,8 @@ import { PitchVideo } from "./PitchVideo";
 import { pitchCarry, pitchTarget } from "./targets";
 import { authStep } from "../../app/auth-links";
 import { usePitchAttention } from "./usePitchAttention";
-import { pitchVideo } from "./video";
+import { phoneVideoQuery, pitchVideo } from "./video";
+import { practiceStill } from "./product";
 import styles from "./Pitch.module.css";
 import { FREE_ONLINE_PROBLEMS } from "../../../learning/free-allowance";
 import { TRIAL_WORKBOOKS_MAX } from "../../../learning/trial-workbooks";
@@ -29,8 +28,9 @@ import { TRIAL_WORKBOOKS_MAX } from "../../../learning/trial-workbooks";
  * complete. */
 export const loadPitch = loadBuyData;
 
-/** `/` for a signed-out web visitor: what AMP does for a child, what it
- * costs, and the two ways in. Buy leads; trying it free follows. It moves
+/** `/` for a signed-out web visitor: what AMP does, then one action, Try it
+ * free, on the first screen at every size. Why it works and the film follow;
+ * the price, education funds and Buy close the page. It moves
  * through `usePitchNav`: the app's router (`PitchScreen`), or the light home
  * entry that paints it before the app loads (`home-entry.tsx`). */
 export function PitchPage() {
@@ -57,8 +57,6 @@ export function PitchPage() {
     window.addEventListener("hashchange", receive);
     return () => window.removeEventListener("hashchange", receive);
   }, []);
-  const annual = offers.find((offer) => offer.interval === "year");
-  const monthly = offers.find((offer) => offer.interval === "month");
   const funded = program && fundedOffer ? { program, fundedOffer } : null;
   // The guarantee is universal; the footnote covers how refunds travel and
   // the programs that allow none. A program refunding the purchase as
@@ -68,9 +66,10 @@ export function PitchPage() {
     funded?.fundedOffer.refundPolicy === "purchase-to-account"
       ? "your purchase"
       : "every cent";
-  const tryFree = (
+  // Try it free: the first screen's one action, and again beside Buy.
+  const tryFree = (variant: "primary" | "secondary") => (
     <Button
-      variant="secondary"
+      variant={variant}
       className={styles.tryButton}
       onClick={() => {
         track("try_click");
@@ -80,7 +79,13 @@ export function PitchPage() {
       Try it free
     </Button>
   );
-  // Which buy layout the hero's actions take; `BuyOptions` decides the same way.
+  const freeNote = (
+    <p className={styles.note}>
+      No credit card. {FREE_ONLINE_PROBLEMS} free problems and{" "}
+      {TRIAL_WORKBOOKS_MAX} workbooks.
+    </p>
+  );
+  // Which buy layout the bottom takes; `BuyOptions` decides the same way.
   const offered = data.failed
     ? "error"
     : funded
@@ -88,19 +93,8 @@ export function PitchPage() {
       : offers.length > 0
         ? "card"
         : "free";
-  const actions = useRef<HTMLDivElement>(null);
-  usePitchAttention(actions, `.${styles.buyButton}`, offered);
-  const buy = (variant: "full" | "button") =>
-    data.failed ? null : (
-      <BuyOptions
-        data={data}
-        landing={search}
-        from="pitch"
-        variant={variant}
-        interval={interval}
-        onInterval={setPlan}
-      />
-    );
+  const purchase = useRef<HTMLDivElement>(null);
+  usePitchAttention(purchase, `.${styles.buyButton}`, offered);
   return (
     <div className={styles.page} data-pitch="">
       <LandingView />
@@ -123,44 +117,41 @@ export function PitchPage() {
       </header>
       <main className={styles.main}>
         <section
-          className={`${styles.hero} ${pitchVideo ? styles.withFilm : ""}`}
+          className={styles.hero}
           aria-labelledby="pitch-title"
-          data-hero={pitchVideo ? "film" : "text"}
+          data-hero="product"
         >
           <div className={styles.copy}>
             <h1 id="pitch-title" className={styles.title}>
-              See how far your child can go in math.
+              Kids put in the time and AMP does the rest.
             </h1>
             <p className={styles.lede}>
-              AMP is a complete math curriculum, from counting to precalculus,
-              that moves at your child’s pace: ahead as fast as they’re ready,
-              back to fill every gap. Thirty minutes a day, nothing to plan.
+              AMP chooses every next math problem, from counting to precalculus,
+              explains each one, and brings back what needs more practice.
             </p>
           </div>
-          {pitchVideo && (
-            <div className={styles.film}>
-              <PitchVideo video={pitchVideo} />
-            </div>
-          )}
-          <div ref={actions} className={styles.actions} data-actions={offered}>
-            {data.failed ? (
-              <div className={styles.priceError} role="alert">
-                <p>Prices didn’t load. Check your connection and try again.</p>
-                <Button variant="secondary" onClick={data.retry}>
-                  Try again
-                </Button>
-              </div>
-            ) : (
-              buy("full")
-            )}
-            <div className={styles.free}>
-              {tryFree}
-              <p className={styles.note}>
-                {FREE_ONLINE_PROBLEMS} free problems and {TRIAL_WORKBOOKS_MAX}{" "}
-                workbooks. No&nbsp;credit&nbsp;card.
-              </p>
-            </div>
+          <div className={styles.start} data-first-action="">
+            {tryFree("primary")}
+            {freeNote}
           </div>
+          <figure className={styles.product}>
+            <picture>
+              <source
+                media={phoneVideoQuery}
+                srcSet={practiceStill.square.url}
+                width={practiceStill.square.width}
+                height={practiceStill.square.height}
+              />
+              <img
+                src={practiceStill.wide.url}
+                width={practiceStill.wide.width}
+                height={practiceStill.wide.height}
+                alt={practiceStill.alt}
+                decoding="async"
+                fetchPriority="high"
+              />
+            </picture>
+          </figure>
         </section>
         <section className={styles.details} aria-labelledby="pitch-why">
           <h2 id="pitch-why">Why children move faster with AMP</h2>
@@ -168,7 +159,7 @@ export function PitchPage() {
             <li>
               <strong>No waiting for the class.</strong>
               <span>
-                Every area of math moves at your child’s pace, not the school
+                Every area of math moves at the learner’s pace, not the school
                 calendar’s. Ready children can cover years of material, not just
                 one.
               </span>
@@ -183,12 +174,20 @@ export function PitchPage() {
             <li>
               <strong>Nothing to plan.</strong>
               <span>
-                Your child presses Next. AMP builds the best next problem every
+                The learner presses Next. AMP builds the best next problem every
                 time, and prints workbooks made from where they are.
               </span>
             </li>
           </ul>
         </section>
+        {pitchVideo && (
+          <section className={styles.details} aria-labelledby="pitch-film">
+            <h2 id="pitch-film">How AMP works</h2>
+            <div className={styles.film}>
+              <PitchVideo video={pitchVideo} />
+            </div>
+          </section>
+        )}
         <section className={styles.details} aria-labelledby="pitch-year">
           <h2 id="pitch-year">Everything in one year</h2>
           <ul className={styles.checklist}>
@@ -196,52 +195,62 @@ export function PitchPage() {
             <li>
               A hint, a lesson and a step‑by‑step explanation for every problem
             </li>
-            <li>Unlimited printable workbooks, made for your child</li>
+            <li>Unlimited printable workbooks, made for each learner</li>
             <li>Progress you can see on phone, tablet and computer</li>
           </ul>
         </section>
         <div className={styles.offer} data-offer={offered}>
-          {(annual || monthly || funded) && (
-            <section
-              className={`${styles.details} ${styles.price}`}
-              aria-labelledby="pitch-price"
-            >
-              <h2 id="pitch-price">Price</h2>
-              {(annual || monthly) && (
-                <p className={styles.priceLine}>
-                  {annual && (
-                    <>
-                      <strong>{formatPrice(annual.amountMinor)} a year</strong>,
-                      under {underPerDay(annual.amountMinor)} a day.
-                    </>
-                  )}
-                  {annual && monthly && " "}
-                  {monthly &&
-                    (annual ? (
-                      <>
-                        Or <strong>{formatPrice(monthly.amountMinor)}</strong> a
-                        month.
-                      </>
-                    ) : (
-                      <>
-                        <strong>
-                          {formatPrice(monthly.amountMinor)} a month
-                        </strong>
-                        .
-                      </>
-                    ))}
-                </p>
-              )}
-              {funded && (
-                <p className={styles.priceLine}>
-                  {funded.program.name}:{" "}
-                  <strong>{formatPrice(funded.fundedOffer.totalMinor)}</strong>{" "}
-                  for {funded.fundedOffer.termMonths ?? 12} months, paid from
-                  your {funded.program.fund} balance.
-                </p>
-              )}
-            </section>
-          )}
+          <section
+            ref={purchase}
+            className={`${styles.details} ${styles.price}`}
+            // Nothing for sale here (no prices, no program): no "Price".
+            {...(offered === "free"
+              ? { "aria-label": "Get started" }
+              : { "aria-labelledby": "pitch-price" })}
+            data-actions={offered}
+          >
+            {offered !== "free" && <h2 id="pitch-price">Price</h2>}
+            {data.failed ? (
+              <div className={styles.priceError} role="alert">
+                <p>Prices didn’t load. Check your connection and try again.</p>
+                <Button variant="secondary" onClick={data.retry}>
+                  Try again
+                </Button>
+              </div>
+            ) : (
+              <BuyOptions
+                data={data}
+                landing={search}
+                from="pitch"
+                interval={interval}
+                onInterval={setPlan}
+              />
+            )}
+            {!funded && !!data.funds?.length && (
+              <div className={styles.funds} data-education-funds="">
+                <p>Paying with an education fund?</p>
+                <ul>
+                  {data.funds.map((entry) => (
+                    <li key={entry.slug}>
+                      <PitchLink
+                        place={{ to: `/invoice/${entry.slug}` }}
+                        className={buttonClass("quiet", styles.fundLink)}
+                        onClick={() =>
+                          track("buy_click", { path: "funded", from: "pitch" })
+                        }
+                      >
+                        {entry.name}
+                      </PitchLink>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            <div className={styles.free}>
+              {tryFree("secondary")}
+              {freeNote}
+            </div>
+          </section>
           {guaranteed && (
             <section
               className={`${styles.details} ${styles.guarantee}`}
@@ -250,9 +259,8 @@ export function PitchPage() {
             >
               <h2 id="pitch-guarantee">Give it 30 days.</h2>
               <p>
-                You’ll be amazed how far your child can go. If AMP isn’t right
-                for your child, tell us within 30 days and we’ll refund {amount}
-                . No questions asked.*{" "}
+                If AMP isn’t right for you, tell us within 30 days and we’ll
+                refund {amount}. No questions asked.*{" "}
                 <a href={REFUND_POLICY_URL} className={styles.inlineLink}>
                   Refund policy
                 </a>
@@ -260,10 +268,6 @@ export function PitchPage() {
               <p className={styles.footnote}>{GUARANTEE_FOOTNOTE}</p>
             </section>
           )}
-          <section className={styles.closing} aria-label="Get started">
-            {buy("button")}
-            {tryFree}
-          </section>
         </div>
       </main>
       <SiteFooter className={styles.footer}>

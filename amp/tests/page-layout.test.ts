@@ -68,7 +68,7 @@ const COMPONENTS: Allowed = {
     why: "a setup step's form fields",
   },
   "features/pitch/Pitch.module.css": {
-    widths: ["1180px", "1400px", "46rem"],
+    widths: ["1180px", "1400px", "28rem"],
     why: "the signed-out pitch: a marketing page with its own art direction",
   },
   "features/schools/PublicFrame.module.css": {
